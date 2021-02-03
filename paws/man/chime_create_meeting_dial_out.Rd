@@ -33,8 +33,9 @@ switched telephone network (PSTN) and joins them into Chime meeting.
 Also ensures that the From number belongs to the customer.
 
 To play welcome audio or implement an interactive voice response (IVR),
-use the \code{CreateSipMediaApplicationCall} API with the corresponding SIP
-media application ID.
+use the
+\code{\link[=chime_create_sip_media_application_call]{create_sip_media_application_call}}
+API with the corresponding SIP media application ID.
 }
 \section{Request syntax}{
 \preformatted{svc$create_meeting_dial_out(

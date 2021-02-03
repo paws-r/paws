@@ -8,7 +8,9 @@ NULL
 #'
 #' @description
 #' Accepts the Convertible Reserved Instance exchange quote described in
-#' the GetReservedInstancesExchangeQuote call.
+#' the
+#' [`get_reserved_instances_exchange_quote`][ec2_get_reserved_instances_exchange_quote]
+#' call.
 #'
 #' @usage
 #' ec2_accept_reserved_instances_exchange_quote(DryRun,
@@ -162,9 +164,10 @@ ec2_accept_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
 #' Accepts a request to attach a VPC to a transit gateway.
 #' 
 #' The VPC attachment must be in the `pendingAcceptance` state. Use
-#' DescribeTransitGatewayVpcAttachments to view your pending VPC attachment
-#' requests. Use RejectTransitGatewayVpcAttachment to reject a VPC
-#' attachment request.
+#' [`describe_transit_gateway_vpc_attachments`][ec2_describe_transit_gateway_vpc_attachments]
+#' to view your pending VPC attachment requests. Use
+#' [`reject_transit_gateway_vpc_attachment`][ec2_reject_transit_gateway_vpc_attachment]
+#' to reject a VPC attachment request.
 #'
 #' @usage
 #' ec2_accept_transit_gateway_vpc_attachment(TransitGatewayAttachmentId,
@@ -257,8 +260,9 @@ ec2_accept_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEnd
 #' @description
 #' Accept a VPC peering connection request. To accept a request, the VPC
 #' peering connection must be in the `pending-acceptance` state, and you
-#' must be the owner of the peer VPC. Use DescribeVpcPeeringConnections to
-#' view your outstanding VPC peering connection requests.
+#' must be the owner of the peer VPC. Use
+#' [`describe_vpc_peering_connections`][ec2_describe_vpc_peering_connections]
+#' to view your outstanding VPC peering connection requests.
 #' 
 #' For an inter-Region VPC peering connection request, you must accept the
 #' VPC peering connection in the Region of the accepter VPC.
@@ -320,7 +324,8 @@ ec2_accept_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #' It can take a few minutes before traffic to the specified addresses
 #' starts routing to AWS because of BGP propagation delays.
 #' 
-#' To stop advertising the BYOIP CIDR, use WithdrawByoipCidr.
+#' To stop advertising the BYOIP CIDR, use
+#' [`withdraw_byoip_cidr`][ec2_withdraw_byoip_cidr].
 #'
 #' @usage
 #' ec2_advertise_byoip_cidr(Cidr, DryRun)
@@ -415,9 +420,8 @@ ec2_advertise_byoip_cidr <- function(Cidr, DryRun = NULL) {
 #' IP address to this location. IP addresses cannot move between network
 #' border groups.
 #' 
-#' Use
-#' [DescribeAvailabilityZones](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html)
-#' to view the network border groups.
+#' Use [`describe_availability_zones`][ec2_describe_availability_zones] to
+#' view the network border groups.
 #' 
 #' You cannot use a network border group with EC2 Classic. If you attempt
 #' this operation on EC2 classic, you will receive an
@@ -937,7 +941,8 @@ ec2_associate_address <- function(AllocationId = NULL, InstanceId = NULL, Public
 #' If you specified a VPC when you created the Client VPN endpoint or if
 #' you have previous subnet associations, the specified subnet must be in
 #' the same VPC. To specify a subnet that's in a different VPC, you must
-#' first modify the Client VPN endpoint (ModifyClientVpnEndpoint) and
+#' first modify the Client VPN endpoint
+#' ([`modify_client_vpn_endpoint`][ec2_modify_client_vpn_endpoint]) and
 #' change the VPC that's associated with it.
 #'
 #' @usage
@@ -1299,7 +1304,7 @@ ec2_associate_subnet_cidr_block <- function(Ipv6CidrBlock, SubnetId) {
 #' 
 #' The transit gateway attachment must be in the available state before you
 #' can add a resource. Use
-#' [DescribeTransitGatewayAttachments](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html)
+#' [`describe_transit_gateway_attachments`][ec2_describe_transit_gateway_attachments]
 #' to see the state of the attachment.
 #'
 #' @usage
@@ -2442,7 +2447,7 @@ ec2_cancel_conversion_task <- function(ConversionTaskId, DryRun = NULL, ReasonMe
 #' ec2_cancel_export_task(ExportTaskId)
 #'
 #' @param ExportTaskId &#91;required&#93; The ID of the export task. This is the ID returned by
-#' `CreateInstanceExportTask`.
+#' [`create_instance_export_task`][ec2_create_instance_export_task].
 #'
 #' @section Request syntax:
 #' ```
@@ -2986,10 +2991,10 @@ ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = N
 #' requests](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html).
 #' 
 #' The `PresignedUrl` should use the snapshot source endpoint, the
-#' `CopySnapshot` action, and include the `SourceRegion`,
-#' `SourceSnapshotId`, and `DestinationRegion` parameters. The
-#' `PresignedUrl` must be signed using AWS Signature Version 4. Because EBS
-#' snapshots are stored in Amazon S3, the signing algorithm for this
+#' [`copy_snapshot`][ec2_copy_snapshot] action, and include the
+#' `SourceRegion`, `SourceSnapshotId`, and `DestinationRegion` parameters.
+#' The `PresignedUrl` must be signed using AWS Signature Version 4. Because
+#' EBS snapshots are stored in Amazon S3, the signing algorithm for this
 #' parameter uses the same logic that is described in [Authenticating
 #' Requests: Using Query Parameters (AWS Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
@@ -4347,7 +4352,7 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
 #'
 #' @param BlockDeviceMappings The block device mappings. This parameter cannot be used to modify the
 #' encryption status of existing volumes or snapshots. To create an AMI
-#' with encrypted snapshots, use the CopyImage action.
+#' with encrypted snapshots, use the [`copy_image`][ec2_copy_image] action.
 #' @param Description A description for the new image.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -4377,7 +4382,7 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
 #' If you specify other values for `ResourceType`, the request fails.
 #' 
 #' To tag an AMI or snapshot after it has been created, see
-#' [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html).
+#' [`create_tags`][ec2_create_tags].
 #'
 #' @section Request syntax:
 #' ```
@@ -4535,7 +4540,8 @@ ec2_create_instance_export_task <- function(Description = NULL, ExportToS3Task, 
 #'
 #' @description
 #' Creates an internet gateway for use with a VPC. After creating the
-#' internet gateway, you attach it to a VPC using AttachInternetGateway.
+#' internet gateway, you attach it to a VPC using
+#' [`attach_internet_gateway`][ec2_attach_internet_gateway].
 #' 
 #' For more information about your VPC and internet gateway, see the
 #' [Amazon Virtual Private Cloud User
@@ -4607,7 +4613,8 @@ ec2_create_internet_gateway <- function(TagSpecifications = NULL, DryRun = NULL)
 #' 
 #' The key pair returned to you is available only in the Region in which
 #' you create it. If you prefer, you can create your own key pair using a
-#' third-party tool and upload it to any Region using ImportKeyPair.
+#' third-party tool and upload it to any Region using
+#' [`import_key_pair`][ec2_import_key_pair].
 #' 
 #' For more information, see [Key
 #' Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
@@ -4676,10 +4683,10 @@ ec2_create_key_pair <- function(KeyName, DryRun = NULL, TagSpecifications = NULL
 #'
 #' @description
 #' Creates a launch template. A launch template contains the parameters to
-#' launch an instance. When you launch an instance using RunInstances, you
-#' can specify a launch template instead of providing the launch parameters
-#' in the request. For more information, see [Launching an instance from a
-#' launch
+#' launch an instance. When you launch an instance using
+#' [`run_instances`][ec2_run_instances], you can specify a launch template
+#' instead of providing the launch parameters in the request. For more
+#' information, see [Launching an instance from a launch
 #' template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)in
 #' the *Amazon Elastic Compute Cloud User Guide*.
 #'
@@ -5959,7 +5966,9 @@ ec2_create_placement_group <- function(DryRun = NULL, GroupName = NULL, Strategy
 #' Creates a listing for Amazon EC2 Standard Reserved Instances to be sold
 #' in the Reserved Instance Marketplace. You can submit one Standard
 #' Reserved Instance listing at a time. To get a list of your Standard
-#' Reserved Instances, you can use the DescribeReservedInstances operation.
+#' Reserved Instances, you can use the
+#' [`describe_reserved_instances`][ec2_describe_reserved_instances]
+#' operation.
 #' 
 #' Only Standard Reserved Instances can be sold in the Reserved Instance
 #' Marketplace. Convertible Reserved Instances cannot be sold.
@@ -5977,7 +5986,8 @@ ec2_create_placement_group <- function(DryRun = NULL, GroupName = NULL, Strategy
 #' the upfront price to receive for them. Your Standard Reserved Instance
 #' listings then become available for purchase. To view the details of your
 #' Standard Reserved Instance listing, you can use the
-#' DescribeReservedInstancesListings operation.
+#' [`describe_reserved_instances_listings`][ec2_describe_reserved_instances_listings]
+#' operation.
 #' 
 #' For more information, see [Reserved Instance
 #' Marketplace](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html)
@@ -6246,8 +6256,10 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 #' other.
 #' 
 #' You can add or remove rules from your security groups using
-#' AuthorizeSecurityGroupIngress, AuthorizeSecurityGroupEgress,
-#' RevokeSecurityGroupIngress, and RevokeSecurityGroupEgress.
+#' [`authorize_security_group_ingress`][ec2_authorize_security_group_ingress],
+#' [`authorize_security_group_egress`][ec2_authorize_security_group_egress],
+#' [`revoke_security_group_ingress`][ec2_revoke_security_group_ingress],
+#' and [`revoke_security_group_egress`][ec2_revoke_security_group_egress].
 #' 
 #' For more information about VPC security group limits, see [Amazon VPC
 #' Limits](https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html).
@@ -6775,10 +6787,10 @@ ec2_create_tags <- function(DryRun = NULL, Resources, Tags) {
 #' mirror.
 #' 
 #' By default, no traffic is mirrored. To mirror traffic, use
-#' [CreateTrafficMirrorFilterRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/)
+#' [`create_traffic_mirror_filter_rule`][ec2_create_traffic_mirror_filter_rule]
 #' to add Traffic Mirror rules to the filter. The rules you add define what
 #' traffic gets mirrored. You can also use
-#' [ModifyTrafficMirrorFilterNetworkServices](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTrafficMirrorFilterNetworkServices.html)
+#' [`modify_traffic_mirror_filter_network_services`][ec2_modify_traffic_mirror_filter_network_services]
 #' to mirror supported network services.
 #'
 #' @usage
@@ -6934,8 +6946,8 @@ ec2_create_traffic_mirror_filter_rule <- function(TrafficMirrorFilterId, Traffic
 #' VPC peering or a transit gateway.
 #' 
 #' By default, no traffic is mirrored. Use
-#' [CreateTrafficMirrorFilter](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/)
-#' to create filter rules that specify the traffic to mirror.
+#' [`create_traffic_mirror_filter`][ec2_create_traffic_mirror_filter] to
+#' create filter rules that specify the traffic to mirror.
 #'
 #' @usage
 #' ec2_create_traffic_mirror_session(NetworkInterfaceId,
@@ -6961,9 +6973,8 @@ ec2_create_traffic_mirror_filter_rule <- function(TrafficMirrorFilterId, Traffic
 #' 
 #' Valid values are 1-32766.
 #' @param VirtualNetworkId The VXLAN ID for the Traffic Mirror session. For more information about
-#' the VXLAN protocol, see [RFC 7348](https://tools.ietf.org/html/rfc7348).
-#' If you do not specify a `VirtualNetworkId`, an account-wide unique id is
-#' chosen at random.
+#' the VXLAN protocol, see RFC 7348. If you do not specify a
+#' `VirtualNetworkId`, an account-wide unique id is chosen at random.
 #' @param Description The description of the Traffic Mirror session.
 #' @param TagSpecifications The tags to assign to a Traffic Mirror session.
 #' @param DryRun Checks whether you have the required permissions for the action, without
@@ -7034,7 +7045,7 @@ ec2_create_traffic_mirror_session <- function(NetworkInterfaceId, TrafficMirrorT
 #' Balancer.
 #' 
 #' To use the target in a Traffic Mirror session, use
-#' [CreateTrafficMirrorSession](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/).
+#' [`create_traffic_mirror_session`][ec2_create_traffic_mirror_session].
 #'
 #' @usage
 #' ec2_create_traffic_mirror_target(NetworkInterfaceId,
@@ -7106,22 +7117,27 @@ ec2_create_traffic_mirror_target <- function(NetworkInterfaceId = NULL, NetworkL
 #' the `available` state, you can attach your VPCs and VPN connections to
 #' the transit gateway.
 #' 
-#' To attach your VPCs, use CreateTransitGatewayVpcAttachment.
+#' To attach your VPCs, use
+#' [`create_transit_gateway_vpc_attachment`][ec2_create_transit_gateway_vpc_attachment].
 #' 
-#' To attach a VPN connection, use CreateCustomerGateway to create a
+#' To attach a VPN connection, use
+#' [`create_customer_gateway`][ec2_create_customer_gateway] to create a
 #' customer gateway and specify the ID of the customer gateway and the ID
-#' of the transit gateway in a call to CreateVpnConnection.
+#' of the transit gateway in a call to
+#' [`create_vpn_connection`][ec2_create_vpn_connection].
 #' 
 #' When you create a transit gateway, we create a default transit gateway
 #' route table and use it as the default association route table and the
 #' default propagation route table. You can use
-#' CreateTransitGatewayRouteTable to create additional transit gateway
-#' route tables. If you disable automatic route propagation, we do not
-#' create a default transit gateway route table. You can use
-#' EnableTransitGatewayRouteTablePropagation to propagate routes from a
-#' resource attachment to a transit gateway route table. If you disable
-#' automatic associations, you can use AssociateTransitGatewayRouteTable to
-#' associate a resource attachment with a transit gateway route table.
+#' [`create_transit_gateway_route_table`][ec2_create_transit_gateway_route_table]
+#' to create additional transit gateway route tables. If you disable
+#' automatic route propagation, we do not create a default transit gateway
+#' route table. You can use
+#' [`enable_transit_gateway_route_table_propagation`][ec2_enable_transit_gateway_route_table_propagation]
+#' to propagate routes from a resource attachment to a transit gateway
+#' route table. If you disable automatic associations, you can use
+#' [`associate_transit_gateway_route_table`][ec2_associate_transit_gateway_route_table]
+#' to associate a resource attachment with a transit gateway route table.
 #'
 #' @usage
 #' ec2_create_transit_gateway(Description, Options, TagSpecifications,
@@ -7343,8 +7359,7 @@ ec2_create_transit_gateway_connect_peer <- function(TransitGatewayAttachmentId, 
 #' Creates a multicast domain using the specified transit gateway.
 #' 
 #' The transit gateway must be in the available state before you create a
-#' domain. Use
-#' [DescribeTransitGateways](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGateways.html)
+#' domain. Use [`describe_transit_gateways`][ec2_describe_transit_gateways]
 #' to see the state of transit gateway.
 #'
 #' @usage
@@ -7641,7 +7656,7 @@ ec2_create_transit_gateway_route_table <- function(TransitGatewayId, TagSpecific
 #' to the default propagation route table.
 #' 
 #' To send VPC traffic to an attached transit gateway, add a route to the
-#' VPC route table using CreateRoute.
+#' VPC route table using [`create_route`][ec2_create_route].
 #'
 #' @usage
 #' ec2_create_transit_gateway_vpc_attachment(TransitGatewayId, VpcId,
@@ -8061,7 +8076,9 @@ ec2_create_vpc <- function(CidrBlock, AmazonProvidedIpv6CidrBlock = NULL, Ipv6Po
 #' that serves an endpoint for communicating with a Gateway Load Balancer
 #' that you've configured as a VPC endpoint service.
 #' 
-#' Use DescribeVpcEndpointServices to get a list of supported services.
+#' Use
+#' [`describe_vpc_endpoint_services`][ec2_describe_vpc_endpoint_services]
+#' to get a list of supported services.
 #'
 #' @usage
 #' ec2_create_vpc_endpoint(DryRun, VpcEndpointType, VpcId, ServiceName,
@@ -8077,8 +8094,8 @@ ec2_create_vpc <- function(CidrBlock, AmazonProvidedIpv6CidrBlock = NULL, Ipv6Po
 #' Default: Gateway
 #' @param VpcId &#91;required&#93; The ID of the VPC in which the endpoint will be used.
 #' @param ServiceName &#91;required&#93; The service name. To get a list of available services, use the
-#' DescribeVpcEndpointServices request, or get the name from the service
-#' provider.
+#' [`describe_vpc_endpoint_services`][ec2_describe_vpc_endpoint_services]
+#' request, or get the name from the service provider.
 #' @param PolicyDocument (Interface and gateway endpoints) A policy to attach to the endpoint
 #' that controls access to the service. The policy must be in valid JSON
 #' format. If this parameter is not specified, we attach a default policy
@@ -8103,7 +8120,8 @@ ec2_create_vpc <- function(CidrBlock, AmazonProvidedIpv6CidrBlock = NULL, Ipv6Po
 #' 
 #' To use a private hosted zone, you must set the following VPC attributes
 #' to `true`: `enableDnsHostnames` and `enableDnsSupport`. Use
-#' ModifyVpcAttribute to set the VPC attributes.
+#' [`modify_vpc_attribute`][ec2_modify_vpc_attribute] to set the VPC
+#' attributes.
 #' 
 #' Default: `true`
 #' @param TagSpecifications The tags to associate with the endpoint.
@@ -8266,7 +8284,7 @@ ec2_create_vpc_endpoint_connection_notification <- function(DryRun = NULL, Servi
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param AcceptanceRequired Indicates whether requests from service consumers to create an endpoint
 #' to your service must be accepted. To accept a request, use
-#' AcceptVpcEndpointConnections.
+#' [`accept_vpc_endpoint_connections`][ec2_accept_vpc_endpoint_connections].
 #' @param PrivateDnsName (Interface endpoint configuration) The private DNS name to assign to the
 #' VPC endpoint service.
 #' @param NetworkLoadBalancerArns The Amazon Resource Names (ARNs) of one or more Network Load Balancers
@@ -8678,8 +8696,7 @@ ec2_create_vpn_gateway <- function(AvailabilityZone = NULL, Type, TagSpecificati
 #' 
 #' If you do not delete the route that contains the carrier gateway as the
 #' Target, the route is a blackhole route. For information about how to
-#' delete a route, see
-#' [DeleteRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteRoute.html).
+#' delete a route, see [`delete_route`][ec2_delete_route].
 #'
 #' @usage
 #' ec2_delete_carrier_gateway(CarrierGatewayId, DryRun)
@@ -9294,7 +9311,7 @@ ec2_delete_launch_template <- function(DryRun = NULL, LaunchTemplateId = NULL, L
 #' default version of a launch template; you must first assign a different
 #' version as the default. If the default version is the only version for
 #' the launch template, you must delete the entire launch template using
-#' DeleteLaunchTemplate.
+#' [`delete_launch_template`][ec2_delete_launch_template].
 #'
 #' @usage
 #' ec2_delete_launch_template_versions(DryRun, LaunchTemplateId,
@@ -10274,8 +10291,8 @@ ec2_delete_subnet <- function(SubnetId, DryRun = NULL) {
 #' @description
 #' Deletes the specified set of tags from the specified set of resources.
 #' 
-#' To list the current tags, use DescribeTags. For more information about
-#' tags, see [Tagging Your
+#' To list the current tags, use [`describe_tags`][ec2_describe_tags]. For
+#' more information about tags, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
@@ -11378,8 +11395,8 @@ ec2_delete_vpn_gateway <- function(VpnGatewayId, DryRun = NULL) {
 #' deletes the corresponding address pool.
 #' 
 #' Before you can release an address range, you must stop advertising it
-#' using WithdrawByoipCidr and you must not have any IP addresses allocated
-#' from its address range.
+#' using [`withdraw_byoip_cidr`][ec2_withdraw_byoip_cidr] and you must not
+#' have any IP addresses allocated from its address range.
 #'
 #' @usage
 #' ec2_deprovision_byoip_cidr(Cidr, DryRun)
@@ -12019,8 +12036,8 @@ ec2_describe_availability_zones <- function(Filters = NULL, ZoneNames = NULL, Zo
 #' 
 #' Completed bundle tasks are listed for only a limited time. If your
 #' bundle task is no longer in the list, you can still register an AMI from
-#' it. Just use `RegisterImage` with the Amazon S3 bucket name and image
-#' manifest name you provided to the bundle task.
+#' it. Just use [`register_image`][ec2_register_image] with the Amazon S3
+#' bucket name and image manifest name you provided to the bundle task.
 #'
 #' @usage
 #' ec2_describe_bundle_tasks(BundleIds, Filters, DryRun)
@@ -12100,10 +12117,12 @@ ec2_describe_bundle_tasks <- function(BundleIds = NULL, Filters = NULL, DryRun =
 #'
 #' @description
 #' Describes the IP address ranges that were specified in calls to
-#' ProvisionByoipCidr.
+#' [`provision_byoip_cidr`][ec2_provision_byoip_cidr].
 #' 
 #' To describe the address pools that were created when you provisioned the
-#' address ranges, use DescribePublicIpv4Pools or DescribeIpv6Pools.
+#' address ranges, use
+#' [`describe_public_ipv_4_pools`][ec2_describe_public_ipv_4_pools] or
+#' [`describe_ipv_6_pools`][ec2_describe_ipv_6_pools].
 #'
 #' @usage
 #' ec2_describe_byoip_cidrs(DryRun, MaxResults, NextToken)
@@ -14187,10 +14206,10 @@ ec2_describe_iam_instance_profile_associations <- function(AssociationIds = NULL
 #' These settings apply to the IAM user who makes the request; they do not
 #' apply to the entire AWS account. By default, an IAM user defaults to the
 #' same settings as the root user, unless they explicitly override the
-#' settings by running the ModifyIdFormat command. Resources created with
-#' longer IDs are visible to all IAM users, regardless of these settings
-#' and provided that they have permission to use the relevant `Describe`
-#' command for the resource type.
+#' settings by running the [`modify_id_format`][ec2_modify_id_format]
+#' command. Resources created with longer IDs are visible to all IAM users,
+#' regardless of these settings and provided that they have permission to
+#' use the relevant `Describe` command for the resource type.
 #'
 #' @usage
 #' ec2_describe_id_format(Resource)
@@ -14317,8 +14336,8 @@ ec2_describe_identity_id_format <- function(PrincipalArn, Resource = NULL) {
 #' 
 #' **Note**: Depending on your account privileges, the `blockDeviceMapping`
 #' attribute may return a `Client.AuthFailure` error. If this happens, use
-#' DescribeImages to get information about the block device mapping for the
-#' AMI.
+#' [`describe_images`][ec2_describe_images] to get information about the
+#' block device mapping for the AMI.
 #' @param ImageId &#91;required&#93; The ID of the AMI.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -16573,7 +16592,7 @@ ec2_describe_local_gateways <- function(LocalGatewayIds = NULL, Filters = NULL, 
 #' Describes your managed prefix lists and any AWS-managed prefix lists.
 #' 
 #' To view the entries for your prefix list, use
-#' GetManagedPrefixListEntries.
+#' [`get_managed_prefix_list_entries`][ec2_get_managed_prefix_list_entries].
 #'
 #' @usage
 #' ec2_describe_managed_prefix_lists(DryRun, Filters, MaxResults,
@@ -17497,7 +17516,9 @@ ec2_describe_placement_groups <- function(Filters = NULL, DryRun = NULL, GroupNa
 #' the prefix list name and prefix list ID of the service and the IP
 #' address range for the service.
 #' 
-#' We recommend that you use DescribeManagedPrefixLists instead.
+#' We recommend that you use
+#' [`describe_managed_prefix_lists`][ec2_describe_managed_prefix_lists]
+#' instead.
 #'
 #' @usage
 #' ec2_describe_prefix_lists(DryRun, Filters, MaxResults, NextToken,
@@ -18298,11 +18319,12 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
 #' -   `route.transit-gateway-id` - The ID of a transit gateway.
 #' 
 #' -   `route.origin` - Describes how the route was created.
-#'     `CreateRouteTable` indicates that the route was automatically
-#'     created when the route table was created; `CreateRoute` indicates
-#'     that the route was manually added to the route table;
-#'     `EnableVgwRoutePropagation` indicates that the route was propagated
-#'     by route propagation.
+#'     [`create_route_table`][ec2_create_route_table] indicates that the
+#'     route was automatically created when the route table was created;
+#'     [`create_route`][ec2_create_route] indicates that the route was
+#'     manually added to the route table;
+#'     [`enable_vgw_route_propagation`][ec2_enable_vgw_route_propagation]
+#'     indicates that the route was propagated by route propagation.
 #' 
 #' -   `route.state` - The state of a route in the route table (`active` |
 #'     `blackhole`). The blackhole state indicates that the route's target
@@ -18398,8 +18420,8 @@ ec2_describe_route_tables <- function(Filters = NULL, DryRun = NULL, RouteTableI
 #' hours.
 #' 
 #' After you find a schedule that meets your needs, call
-#' PurchaseScheduledInstances to purchase Scheduled Instances with that
-#' schedule.
+#' [`purchase_scheduled_instances`][ec2_purchase_scheduled_instances] to
+#' purchase Scheduled Instances with that schedule.
 #'
 #' @usage
 #' ec2_describe_scheduled_instance_availability(DryRun, Filters,
@@ -18952,11 +18974,11 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #' parameter sets the maximum number of results returned in a single page.
 #' If the list of results exceeds your `MaxResults` value, then that number
 #' of results is returned along with a `NextToken` value that can be passed
-#' to a subsequent `DescribeSnapshots` request to retrieve the remaining
-#' results.
+#' to a subsequent [`describe_snapshots`][ec2_describe_snapshots] request
+#' to retrieve the remaining results.
 #' 
 #' To get the state of fast snapshot restores for a snapshot, use
-#' DescribeFastSnapshotRestores.
+#' [`describe_fast_snapshot_restores`][ec2_describe_fast_snapshot_restores].
 #' 
 #' For more information about EBS snapshots, see [Amazon EBS
 #' snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html)
@@ -19004,21 +19026,25 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #' -   `volume-id` - The ID of the volume the snapshot is for.
 #' 
 #' -   `volume-size` - The size of the volume, in GiB.
-#' @param MaxResults The maximum number of snapshot results returned by `DescribeSnapshots`
-#' in paginated output. When this parameter is used, `DescribeSnapshots`
+#' @param MaxResults The maximum number of snapshot results returned by
+#' [`describe_snapshots`][ec2_describe_snapshots] in paginated output. When
+#' this parameter is used, [`describe_snapshots`][ec2_describe_snapshots]
 #' only returns `MaxResults` results in a single page along with a
 #' `NextToken` response element. The remaining results of the initial
-#' request can be seen by sending another `DescribeSnapshots` request with
-#' the returned `NextToken` value. This value can be between 5 and 1,000;
-#' if `MaxResults` is given a value larger than 1,000, only 1,000 results
-#' are returned. If this parameter is not used, then `DescribeSnapshots`
-#' returns all results. You cannot specify this parameter and the snapshot
-#' IDs parameter in the same request.
+#' request can be seen by sending another
+#' [`describe_snapshots`][ec2_describe_snapshots] request with the returned
+#' `NextToken` value. This value can be between 5 and 1,000; if
+#' `MaxResults` is given a value larger than 1,000, only 1,000 results are
+#' returned. If this parameter is not used, then
+#' [`describe_snapshots`][ec2_describe_snapshots] returns all results. You
+#' cannot specify this parameter and the snapshot IDs parameter in the same
+#' request.
 #' @param NextToken The `NextToken` value returned from a previous paginated
-#' `DescribeSnapshots` request where `MaxResults` was used and the results
-#' exceeded the value of that parameter. Pagination continues from the end
-#' of the previous results that returned the `NextToken` value. This value
-#' is `null` when there are no more results to return.
+#' [`describe_snapshots`][ec2_describe_snapshots] request where
+#' `MaxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `NextToken` value. This value is `null` when there are
+#' no more results to return.
 #' @param OwnerIds Scopes the results to snapshots with the specified owners. You can
 #' specify a combination of AWS account IDs, `self`, and `amazon`.
 #' @param RestorableByUserIds The IDs of the AWS accounts that can create volumes from the snapshot.
@@ -19357,21 +19383,22 @@ ec2_describe_spot_fleet_requests <- function(DryRun = NULL, MaxResults = NULL, N
 #' @description
 #' Describes the specified Spot Instance requests.
 #' 
-#' You can use `DescribeSpotInstanceRequests` to find a running Spot
-#' Instance by examining the response. If the status of the Spot Instance
-#' is `fulfilled`, the instance ID appears in the response and contains the
-#' identifier of the instance. Alternatively, you can use
-#' [DescribeInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
-#' with a filter to look for instances where the instance lifecycle is
-#' `spot`.
+#' You can use
+#' [`describe_spot_instance_requests`][ec2_describe_spot_instance_requests]
+#' to find a running Spot Instance by examining the response. If the status
+#' of the Spot Instance is `fulfilled`, the instance ID appears in the
+#' response and contains the identifier of the instance. Alternatively, you
+#' can use [`describe_instances`][ec2_describe_instances] with a filter to
+#' look for instances where the instance lifecycle is `spot`.
 #' 
 #' We recommend that you set `MaxResults` to a value between 5 and 1000 to
 #' limit the number of results returned. This paginates the output, which
 #' makes the list more manageable and returns the results faster. If the
 #' list of results exceeds your `MaxResults` value, then that number of
 #' results is returned along with a `NextToken` value that can be passed to
-#' a subsequent `DescribeSpotInstanceRequests` request to retrieve the
-#' remaining results.
+#' a subsequent
+#' [`describe_spot_instance_requests`][ec2_describe_spot_instance_requests]
+#' request to retrieve the remaining results.
 #' 
 #' Spot Instance requests are deleted four hours after they are canceled
 #' and their instances are terminated.
@@ -20878,8 +20905,8 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
 #' Volume actions notify you if any action needs to be taken in response to
 #' the event.
 #' 
-#' The `DescribeVolumeStatus` operation provides the following information
-#' about the specified volumes:
+#' The [`describe_volume_status`][ec2_describe_volume_status] operation
+#' provides the following information about the specified volumes:
 #' 
 #' *Status*: Reflects the current status of the volume. The possible values
 #' are `ok`, `impaired` , `warning`, or `insufficient-data`. If all checks
@@ -20901,8 +20928,9 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
 #' event. For example, if the status of the volume is `impaired` and the
 #' volume event shows `potential-data-inconsistency`, then the action shows
 #' `enable-volume-io`. This means that you may want to enable the I/O
-#' operations for the volume by calling the EnableVolumeIO action and then
-#' check the volume for data consistency.
+#' operations for the volume by calling the
+#' [`enable_volume_io`][ec2_enable_volume_io] action and then check the
+#' volume for data consistency.
 #' 
 #' Volume status is based on the volume status checks, and does not reflect
 #' the volume state. Therefore, volume status does not indicate volumes in
@@ -20946,19 +20974,22 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
 #' 
 #' -   `volume-status.status` - The status of the volume (`ok` | `impaired`
 #'     | `warning` | `insufficient-data`).
-#' @param MaxResults The maximum number of volume results returned by `DescribeVolumeStatus`
-#' in paginated output. When this parameter is used, the request only
-#' returns `MaxResults` results in a single page along with a `NextToken`
-#' response element. The remaining results of the initial request can be
-#' seen by sending another request with the returned `NextToken` value.
-#' This value can be between 5 and 1,000; if `MaxResults` is given a value
-#' larger than 1,000, only 1,000 results are returned. If this parameter is
-#' not used, then `DescribeVolumeStatus` returns all results. You cannot
-#' specify this parameter and the volume IDs parameter in the same request.
-#' @param NextToken The `NextToken` value to include in a future `DescribeVolumeStatus`
-#' request. When the results of the request exceed `MaxResults`, this value
-#' can be used to retrieve the next page of results. This value is `null`
-#' when there are no more results to return.
+#' @param MaxResults The maximum number of volume results returned by
+#' [`describe_volume_status`][ec2_describe_volume_status] in paginated
+#' output. When this parameter is used, the request only returns
+#' `MaxResults` results in a single page along with a `NextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another request with the returned `NextToken` value. This value
+#' can be between 5 and 1,000; if `MaxResults` is given a value larger than
+#' 1,000, only 1,000 results are returned. If this parameter is not used,
+#' then [`describe_volume_status`][ec2_describe_volume_status] returns all
+#' results. You cannot specify this parameter and the volume IDs parameter
+#' in the same request.
+#' @param NextToken The `NextToken` value to include in a future
+#' [`describe_volume_status`][ec2_describe_volume_status] request. When the
+#' results of the request exceed `MaxResults`, this value can be used to
+#' retrieve the next page of results. This value is `null` when there are
+#' no more results to return.
 #' @param VolumeIds The IDs of the volumes.
 #' 
 #' Default: Describes all your volumes.
@@ -21041,8 +21072,8 @@ ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' parameter sets the maximum number of results returned in a single page.
 #' If the list of results exceeds your `MaxResults` value, then that number
 #' of results is returned along with a `NextToken` value that can be passed
-#' to a subsequent `DescribeVolumes` request to retrieve the remaining
-#' results.
+#' to a subsequent [`describe_volumes`][ec2_describe_volumes] request to
+#' retrieve the remaining results.
 #' 
 #' For more information about EBS volumes, see [Amazon EBS
 #' volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes.html)
@@ -21109,21 +21140,24 @@ ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
-#' @param MaxResults The maximum number of volume results returned by `DescribeVolumes` in
-#' paginated output. When this parameter is used, `DescribeVolumes` only
+#' @param MaxResults The maximum number of volume results returned by
+#' [`describe_volumes`][ec2_describe_volumes] in paginated output. When
+#' this parameter is used, [`describe_volumes`][ec2_describe_volumes] only
 #' returns `MaxResults` results in a single page along with a `NextToken`
 #' response element. The remaining results of the initial request can be
-#' seen by sending another `DescribeVolumes` request with the returned
-#' `NextToken` value. This value can be between 5 and 500; if `MaxResults`
-#' is given a value larger than 500, only 500 results are returned. If this
-#' parameter is not used, then `DescribeVolumes` returns all results. You
+#' seen by sending another [`describe_volumes`][ec2_describe_volumes]
+#' request with the returned `NextToken` value. This value can be between 5
+#' and 500; if `MaxResults` is given a value larger than 500, only 500
+#' results are returned. If this parameter is not used, then
+#' [`describe_volumes`][ec2_describe_volumes] returns all results. You
 #' cannot specify this parameter and the volume IDs parameter in the same
 #' request.
 #' @param NextToken The `NextToken` value returned from a previous paginated
-#' `DescribeVolumes` request where `MaxResults` was used and the results
-#' exceeded the value of that parameter. Pagination continues from the end
-#' of the previous results that returned the `NextToken` value. This value
-#' is `null` when there are no more results to return.
+#' [`describe_volumes`][ec2_describe_volumes] request where `MaxResults`
+#' was used and the results exceeded the value of that parameter.
+#' Pagination continues from the end of the previous results that returned
+#' the `NextToken` value. This value is `null` when there are no more
+#' results to return.
 #'
 #' @section Request syntax:
 #' ```
@@ -23122,7 +23156,9 @@ ec2_disassociate_enclave_certificate_iam_role <- function(CertificateArn = NULL,
 #' Disassociates an IAM instance profile from a running or stopped
 #' instance.
 #' 
-#' Use DescribeIamInstanceProfileAssociations to get the association ID.
+#' Use
+#' [`describe_iam_instance_profile_associations`][ec2_describe_iam_instance_profile_associations]
+#' to get the association ID.
 #'
 #' @usage
 #' ec2_disassociate_iam_instance_profile(AssociationId)
@@ -23365,8 +23401,9 @@ ec2_disassociate_transit_gateway_route_table <- function(TransitGatewayRouteTabl
 #' @description
 #' Disassociates a CIDR block from a VPC. To disassociate the CIDR block,
 #' you must specify its association ID. You can get the association ID by
-#' using DescribeVpcs. You must detach or delete all gateways and resources
-#' that are associated with the CIDR block before you can disassociate it.
+#' using [`describe_vpcs`][ec2_describe_vpcs]. You must detach or delete
+#' all gateways and resources that are associated with the CIDR block
+#' before you can disassociate it.
 #' 
 #' You cannot disassociate the CIDR block with which you originally created
 #' the VPC (the primary CIDR block).
@@ -23417,7 +23454,8 @@ ec2_disassociate_vpc_cidr_block <- function(AssociationId) {
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
 #' You can specify the default CMK for encryption by default using
-#' ModifyEbsDefaultKmsKeyId or ResetEbsDefaultKmsKeyId.
+#' [`modify_ebs_default_kms_key_id`][ec2_modify_ebs_default_kms_key_id] or
+#' [`reset_ebs_default_kms_key_id`][ec2_reset_ebs_default_kms_key_id].
 #' 
 #' Enabling encryption by default has no effect on the encryption status of
 #' your existing volumes.
@@ -23471,8 +23509,9 @@ ec2_enable_ebs_encryption_by_default <- function(DryRun = NULL) {
 #' 
 #' You get the full benefit of fast snapshot restores after they enter the
 #' `enabled` state. To get the current state of fast snapshot restores, use
-#' DescribeFastSnapshotRestores. To disable fast snapshot restores, use
-#' DisableFastSnapshotRestores.
+#' [`describe_fast_snapshot_restores`][ec2_describe_fast_snapshot_restores].
+#' To disable fast snapshot restores, use
+#' [`disable_fast_snapshot_restores`][ec2_disable_fast_snapshot_restores].
 #' 
 #' For more information, see [Amazon EBS fast snapshot
 #' restore](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html)
@@ -24437,8 +24476,9 @@ ec2_get_default_credit_specification <- function(DryRun = NULL, InstanceFamily) 
 #' @description
 #' Describes the default customer master key (CMK) for EBS encryption by
 #' default for your account in this Region. You can change the default CMK
-#' for encryption by default using ModifyEbsDefaultKmsKeyId or
-#' ResetEbsDefaultKmsKeyId.
+#' for encryption by default using
+#' [`modify_ebs_default_kms_key_id`][ec2_modify_ebs_default_kms_key_id] or
+#' [`reset_ebs_default_kms_key_id`][ec2_reset_ebs_default_kms_key_id].
 #' 
 #' For more information, see [Amazon EBS
 #' encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
@@ -24584,8 +24624,9 @@ ec2_get_groups_for_capacity_reservation <- function(CapacityReservationId, NextT
 #' your Dedicated Host. You must have active Dedicated Hosts in your
 #' account before you purchase a reservation.
 #' 
-#' This is a preview of the PurchaseHostReservation action and does not
-#' result in the offering being purchased.
+#' This is a preview of the
+#' [`purchase_host_reservation`][ec2_purchase_host_reservation] action and
+#' does not result in the offering being purchased.
 #'
 #' @usage
 #' ec2_get_host_reservation_purchase_preview(HostIdSet, OfferingId)
@@ -24857,8 +24898,9 @@ ec2_get_password_data <- function(InstanceId, DryRun = NULL) {
 #' Returns a quote and exchange information for exchanging one or more
 #' specified Convertible Reserved Instances for a new Convertible Reserved
 #' Instance. If the exchange cannot be performed, the reason is returned in
-#' the response. Use AcceptReservedInstancesExchangeQuote to perform the
-#' exchange.
+#' the response. Use
+#' [`accept_reserved_instances_exchange_quote`][ec2_accept_reserved_instances_exchange_quote]
+#' to perform the exchange.
 #'
 #' @usage
 #' ec2_get_reserved_instances_exchange_quote(DryRun, ReservedInstanceIds,
@@ -25480,8 +25522,9 @@ ec2_import_image <- function(Architecture = NULL, ClientData = NULL, ClientToken
 #'
 #' @description
 #' Creates an import instance task using metadata from the specified disk
-#' image. `ImportInstance` only supports single-volume VMs. To import
-#' multi-volume VMs, use ImportImage. For more information, see [Importing
+#' image. [`import_instance`][ec2_import_instance] only supports
+#' single-volume VMs. To import multi-volume VMs, use
+#' [`import_image`][ec2_import_image]. For more information, see [Importing
 #' a Virtual Machine Using the Amazon EC2
 #' CLI](http://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf).
 #' 
@@ -25577,10 +25620,11 @@ ec2_import_instance <- function(Description = NULL, DiskImages = NULL, DryRun = 
 #'
 #' @description
 #' Imports the public key from an RSA key pair that you created with a
-#' third-party tool. Compare this with CreateKeyPair, in which AWS creates
-#' the key pair and gives the keys to you (AWS keeps a copy of the public
-#' key). With ImportKeyPair, you create the key pair and give AWS just the
-#' public key. The private key is never transferred between you and AWS.
+#' third-party tool. Compare this with
+#' [`create_key_pair`][ec2_create_key_pair], in which AWS creates the key
+#' pair and gives the keys to you (AWS keeps a copy of the public key).
+#' With ImportKeyPair, you create the key pair and give AWS just the public
+#' key. The private key is never transferred between you and AWS.
 #' 
 #' For more information about key pairs, see [Key
 #' Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
@@ -26068,14 +26112,15 @@ ec2_modify_client_vpn_endpoint <- function(ClientVpnEndpointId, ServerCertificat
 #' burstable performance instances in the account launch using the default
 #' credit option.
 #' 
-#' `ModifyDefaultCreditSpecification` is an asynchronous operation, which
-#' works at an AWS Region level and modifies the credit option for each
-#' Availability Zone. All zones in a Region are updated within five
-#' minutes. But if instances are launched during this operation, they might
-#' not get the new credit option until the zone is updated. To verify
-#' whether the update has occurred, you can call
-#' `GetDefaultCreditSpecification` and check `DefaultCreditSpecification`
-#' for updates.
+#' [`modify_default_credit_specification`][ec2_modify_default_credit_specification]
+#' is an asynchronous operation, which works at an AWS Region level and
+#' modifies the credit option for each Availability Zone. All zones in a
+#' Region are updated within five minutes. But if instances are launched
+#' during this operation, they might not get the new credit option until
+#' the zone is updated. To verify whether the update has occurred, you can
+#' call
+#' [`get_default_credit_specification`][ec2_get_default_credit_specification]
+#' and check `DefaultCreditSpecification` for updates.
 #' 
 #' For more information, see [Burstable performance
 #' instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
@@ -26134,7 +26179,8 @@ ec2_modify_default_credit_specification <- function(DryRun = NULL, InstanceFamil
 #' encryption by default. If you change the default CMK to a symmetric
 #' customer managed CMK, it is used instead of the AWS managed CMK. To
 #' reset the default CMK to the AWS managed CMK for EBS, use
-#' ResetEbsDefaultKmsKeyId. Amazon EBS does not support asymmetric CMKs.
+#' [`reset_ebs_default_kms_key_id`][ec2_reset_ebs_default_kms_key_id].
+#' Amazon EBS does not support asymmetric CMKs.
 #' 
 #' If you delete or disable the customer managed CMK that you specified for
 #' use with encryption by default, your instances will fail to launch.
@@ -26770,7 +26816,8 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
 #' can result in an error if the instance has more than one ENI. To change
 #' the security groups associated with an ENI attached to an instance that
 #' has multiple ENIs, we recommend that you use the
-#' ModifyNetworkInterfaceAttribute action.
+#' [`modify_network_interface_attribute`][ec2_modify_network_interface_attribute]
+#' action.
 #' 
 #' To modify some attributes, the instance must be stopped. For more
 #' information, see [Modifying attributes of a stopped
@@ -28312,8 +28359,9 @@ ec2_modify_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #' CloudWatch Events User
 #' Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/). You
 #' can also track the status of a modification using
-#' DescribeVolumesModifications. For information about tracking status
-#' changes using either method, see [Monitoring volume
+#' [`describe_volumes_modifications`][ec2_describe_volumes_modifications].
+#' For information about tracking status changes using either method, see
+#' [Monitoring volume
 #' modifications](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html#monitoring_mods).
 #' 
 #' With previous-generation instance types, resizing an EBS volume might
@@ -28888,7 +28936,8 @@ ec2_modify_vpc_endpoint_service_permissions <- function(DryRun = NULL, ServiceId
 #' the Region for the requester VPC to modify the requester VPC peering
 #' options and the Region for the accepter VPC to modify the accepter VPC
 #' peering options. To verify which VPCs are the accepter and the requester
-#' for a VPC peering connection, use the DescribeVpcPeeringConnections
+#' for a VPC peering connection, use the
+#' [`describe_vpc_peering_connections`][ec2_describe_vpc_peering_connections]
 #' command.
 #'
 #' @usage
@@ -29014,8 +29063,10 @@ ec2_modify_vpc_tenancy <- function(VpcId, InstanceTenancy, DryRun = NULL) {
 #' -   An existing transit gateway to a virtual private gateway
 #' 
 #' Before you perform the migration to the new gateway, you must configure
-#' the new gateway. Use CreateVpnGateway to create a virtual private
-#' gateway, or CreateTransitGateway to create a transit gateway.
+#' the new gateway. Use [`create_vpn_gateway`][ec2_create_vpn_gateway] to
+#' create a virtual private gateway, or
+#' [`create_transit_gateway`][ec2_create_transit_gateway] to create a
+#' transit gateway.
 #' 
 #' This step is required when you migrate from a virtual private gateway
 #' with static routes to a transit gateway.
@@ -29027,14 +29078,17 @@ ec2_modify_vpc_tenancy <- function(VpcId, InstanceTenancy, DryRun = NULL) {
 #' migration is complete.
 #' 
 #' After you migrate to the new gateway, you might need to modify your VPC
-#' route table. Use CreateRoute and DeleteRoute to make the changes
-#' described in [VPN Gateway Target Modification Required VPC Route Table
+#' route table. Use [`create_route`][ec2_create_route] and
+#' [`delete_route`][ec2_delete_route] to make the changes described in [VPN
+#' Gateway Target Modification Required VPC Route Table
 #' Updates](https://docs.aws.amazon.com/vpn/latest/s2svpn/modify-vpn-target.html#step-update-routing)
 #' in the *AWS Site-to-Site VPN User Guide*.
 #' 
 #' When the new gateway is a transit gateway, modify the transit gateway
 #' route table to allow traffic between the VPC and the AWS Site-to-Site
-#' VPN connection. Use CreateTransitGatewayRoute to add the routes.
+#' VPN connection. Use
+#' [`create_transit_gateway_route`][ec2_create_transit_gateway_route] to
+#' add the routes.
 #' 
 #' If you deleted VPN static routes, you must add the static routes to the
 #' transit gateway route table.
@@ -29361,9 +29415,9 @@ ec2_monitor_instances <- function(InstanceIds, DryRun = NULL) {
 #' more than 24 hours, and it must not be associated with an instance.
 #' After the Elastic IP address is moved, it is no longer available for use
 #' in the EC2-Classic platform, unless you move it back using the
-#' RestoreAddressToClassic request. You cannot move an Elastic IP address
-#' that was originally allocated for use in the EC2-VPC platform to the
-#' EC2-Classic platform.
+#' [`restore_address_to_classic`][ec2_restore_address_to_classic] request.
+#' You cannot move an Elastic IP address that was originally allocated for
+#' use in the EC2-VPC platform to the EC2-Classic platform.
 #'
 #' @usage
 #' ec2_move_address_to_vpc(DryRun, PublicIp)
@@ -29419,7 +29473,7 @@ ec2_move_address_to_vpc <- function(DryRun = NULL, PublicIp) {
 #' Provisions an IPv4 or IPv6 address range for use with your AWS resources
 #' through bring your own IP addresses (BYOIP) and creates a corresponding
 #' address pool. After the address range is provisioned, it is ready to be
-#' advertised using AdvertiseByoipCidr.
+#' advertised using [`advertise_byoip_cidr`][ec2_advertise_byoip_cidr].
 #' 
 #' AWS verifies that you own the address range and are authorized to
 #' advertise it. You must ensure that the address range is registered to
@@ -29432,10 +29486,11 @@ ec2_move_address_to_vpc <- function(DryRun = NULL, PublicIp) {
 #' Provisioning an address range is an asynchronous operation, so the call
 #' returns immediately, but the address range is not ready to use until its
 #' status changes from `pending-provision` to `provisioned`. To monitor the
-#' status of an address range, use DescribeByoipCidrs. To allocate an
-#' Elastic IP address from your IPv4 address pool, use AllocateAddress with
-#' either the specific address from the address pool or the ID of the
-#' address pool.
+#' status of an address range, use
+#' [`describe_byoip_cidrs`][ec2_describe_byoip_cidrs]. To allocate an
+#' Elastic IP address from your IPv4 address pool, use
+#' [`allocate_address`][ec2_allocate_address] with either the specific
+#' address from the address pool or the ID of the address pool.
 #'
 #' @usage
 #' ec2_provision_byoip_cidr(Cidr, CidrAuthorizationContext,
@@ -29585,10 +29640,12 @@ ec2_purchase_host_reservation <- function(ClientToken = NULL, CurrencyCode = NUL
 #' Instances, you pay a lower hourly rate compared to On-Demand instance
 #' pricing.
 #' 
-#' Use DescribeReservedInstancesOfferings to get a list of Reserved
-#' Instance offerings that match your specifications. After you've
-#' purchased a Reserved Instance, you can check for your new Reserved
-#' Instance with DescribeReservedInstances.
+#' Use
+#' [`describe_reserved_instances_offerings`][ec2_describe_reserved_instances_offerings]
+#' to get a list of Reserved Instance offerings that match your
+#' specifications. After you've purchased a Reserved Instance, you can
+#' check for your new Reserved Instance with
+#' [`describe_reserved_instances`][ec2_describe_reserved_instances].
 #' 
 #' To queue a purchase for a future date and time, specify a purchase time.
 #' If you do not specify a purchase time, the default is the current time.
@@ -29658,9 +29715,11 @@ ec2_purchase_reserved_instances_offering <- function(InstanceCount, ReservedInst
 #' 
 #' Scheduled Instances enable you to purchase Amazon EC2 compute capacity
 #' by the hour for a one-year term. Before you can purchase a Scheduled
-#' Instance, you must call DescribeScheduledInstanceAvailability to check
-#' for available schedules and obtain a purchase token. After you purchase
-#' a Scheduled Instance, you must call RunScheduledInstances during each
+#' Instance, you must call
+#' [`describe_scheduled_instance_availability`][ec2_describe_scheduled_instance_availability]
+#' to check for available schedules and obtain a purchase token. After you
+#' purchase a Scheduled Instance, you must call
+#' [`run_scheduled_instances`][ec2_run_scheduled_instances] during each
 #' scheduled time period.
 #' 
 #' After you purchase a Scheduled Instance, you can't cancel, modify, or
@@ -29799,13 +29858,14 @@ ec2_reboot_instances <- function(InstanceIds, DryRun = NULL) {
 #' AMIs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
-#' For Amazon EBS-backed instances, CreateImage creates and registers the
-#' AMI in a single request, so you don't have to register the AMI yourself.
+#' For Amazon EBS-backed instances, [`create_image`][ec2_create_image]
+#' creates and registers the AMI in a single request, so you don't have to
+#' register the AMI yourself.
 #' 
-#' You can also use `RegisterImage` to create an Amazon EBS-backed Linux
-#' AMI from a snapshot of a root device volume. You specify the snapshot
-#' using the block device mapping. For more information, see [Launching a
-#' Linux instance from a
+#' You can also use [`register_image`][ec2_register_image] to create an
+#' Amazon EBS-backed Linux AMI from a snapshot of a root device volume. You
+#' specify the snapshot using the block device mapping. For more
+#' information, see [Launching a Linux instance from a
 #' backup](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' 
@@ -29824,7 +29884,8 @@ ec2_reboot_instances <- function(InstanceIds, DryRun = NULL) {
 #' 
 #' 2.  Customize the instance.
 #' 
-#' 3.  Create an AMI from the instance using CreateImage.
+#' 3.  Create an AMI from the instance using
+#'     [`create_image`][ec2_create_image].
 #' 
 #' If you purchase a Reserved Instance to apply to an On-Demand Instance
 #' that was launched from an AMI with a billing product code, make sure
@@ -30011,7 +30072,7 @@ ec2_register_instance_event_notification_attributes <- function(DryRun = NULL, I
 #' in *Amazon VPC Transit Gateways*.
 #' 
 #' After you add the members, use
-#' [SearchTransitGatewayMulticastGroups](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html)
+#' [`search_transit_gateway_multicast_groups`][ec2_search_transit_gateway_multicast_groups]
 #' to verify that the members were added to the transit gateway multicast
 #' group.
 #'
@@ -30075,7 +30136,7 @@ ec2_register_transit_gateway_multicast_group_members <- function(TransitGatewayM
 #' in *Amazon VPC Transit Gateways*.
 #' 
 #' After you add the source, use
-#' [SearchTransitGatewayMulticastGroups](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html)
+#' [`search_transit_gateway_multicast_groups`][ec2_search_transit_gateway_multicast_groups]
 #' to verify that the source was added to the multicast group.
 #'
 #' @usage
@@ -30226,9 +30287,10 @@ ec2_reject_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
 #' Rejects a request to attach a VPC to a transit gateway.
 #' 
 #' The VPC attachment must be in the `pendingAcceptance` state. Use
-#' DescribeTransitGatewayVpcAttachments to view your pending VPC attachment
-#' requests. Use AcceptTransitGatewayVpcAttachment to accept a VPC
-#' attachment request.
+#' [`describe_transit_gateway_vpc_attachments`][ec2_describe_transit_gateway_vpc_attachments]
+#' to view your pending VPC attachment requests. Use
+#' [`accept_transit_gateway_vpc_attachment`][ec2_accept_transit_gateway_vpc_attachment]
+#' to accept a VPC attachment request.
 #'
 #' @usage
 #' ec2_reject_transit_gateway_vpc_attachment(TransitGatewayAttachmentId,
@@ -30321,10 +30383,11 @@ ec2_reject_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEnd
 #' @description
 #' Rejects a VPC peering connection request. The VPC peering connection
 #' must be in the `pending-acceptance` state. Use the
-#' DescribeVpcPeeringConnections request to view your outstanding VPC
-#' peering connection requests. To delete an active VPC peering connection,
-#' or to delete a VPC peering connection request that you initiated, use
-#' DeleteVpcPeeringConnection.
+#' [`describe_vpc_peering_connections`][ec2_describe_vpc_peering_connections]
+#' request to view your outstanding VPC peering connection requests. To
+#' delete an active VPC peering connection, or to delete a VPC peering
+#' connection request that you initiated, use
+#' [`delete_vpc_peering_connection`][ec2_delete_vpc_peering_connection].
 #'
 #' @usage
 #' ec2_reject_vpc_peering_connection(DryRun, VpcPeeringConnectionId)
@@ -30371,9 +30434,10 @@ ec2_reject_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #' \[EC2-Classic, default VPC\] Releasing an Elastic IP address
 #' automatically disassociates it from any instance that it's associated
 #' with. To disassociate an Elastic IP address without releasing it, use
-#' DisassociateAddress.
+#' [`disassociate_address`][ec2_disassociate_address].
 #' 
-#' \[Nondefault VPC\] You must use DisassociateAddress to disassociate the
+#' \[Nondefault VPC\] You must use
+#' [`disassociate_address`][ec2_disassociate_address] to disassociate the
 #' Elastic IP address before you can release it. Otherwise, Amazon EC2
 #' returns an error (`InvalidIPAddress.InUse`).
 #' 
@@ -30385,7 +30449,7 @@ ec2_reject_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #' 
 #' \[EC2-VPC\] After you release an Elastic IP address for use in a VPC,
 #' you might be able to recover it. For more information, see
-#' AllocateAddress.
+#' [`allocate_address`][ec2_allocate_address].
 #'
 #' @usage
 #' ec2_release_address(AllocationId, PublicIp, NetworkBorderGroup, DryRun)
@@ -30469,7 +30533,8 @@ ec2_release_address <- function(AllocationId = NULL, PublicIp = NULL, NetworkBor
 #' trying to allocate new Dedicated Hosts. Wait a few minutes and then try
 #' again.
 #' 
-#' Released hosts still appear in a DescribeHosts response.
+#' Released hosts still appear in a [`describe_hosts`][ec2_describe_hosts]
+#' response.
 #'
 #' @usage
 #' ec2_release_hosts(HostIds)
@@ -30513,7 +30578,9 @@ ec2_release_hosts <- function(HostIds) {
 #' with an instance without having to disassociate the existing IAM
 #' instance profile first.
 #' 
-#' Use DescribeIamInstanceProfileAssociations to get the association ID.
+#' Use
+#' [`describe_iam_instance_profile_associations`][ec2_describe_iam_instance_profile_associations]
+#' to get the association ID.
 #'
 #' @usage
 #' ec2_replace_iam_instance_profile_association(IamInstanceProfile,
@@ -30933,12 +31000,14 @@ ec2_replace_transit_gateway_route <- function(DestinationCidrBlock, TransitGatew
 #' @description
 #' Submits feedback about the status of an instance. The instance must be
 #' in the `running` state. If your experience with the instance differs
-#' from the instance status returned by DescribeInstanceStatus, use
-#' ReportInstanceStatus to report your experience with the instance. Amazon
-#' EC2 collects this information to improve the accuracy of status checks.
+#' from the instance status returned by
+#' [`describe_instance_status`][ec2_describe_instance_status], use
+#' [`report_instance_status`][ec2_report_instance_status] to report your
+#' experience with the instance. Amazon EC2 collects this information to
+#' improve the accuracy of status checks.
 #' 
 #' Use of this action does not change the value returned by
-#' DescribeInstanceStatus.
+#' [`describe_instance_status`][ec2_describe_instance_status].
 #'
 #' @usage
 #' ec2_report_instance_status(Description, DryRun, EndTime, Instances,
@@ -31481,8 +31550,7 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
 #' @param TagSpecifications The key-value pair for tagging the Spot Instance request on creation.
 #' The value for `ResourceType` must be `spot-instances-request`, otherwise
 #' the Spot Instance request fails. To tag the Spot Instance request after
-#' it has been created, see
-#' [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html).
+#' it has been created, see [`create_tags`][ec2_create_tags].
 #' @param InstanceInterruptionBehavior The behavior when a Spot Instance is interrupted. The default is
 #' `terminate`.
 #'
@@ -31836,7 +31904,7 @@ ec2_reset_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #' 
 #' You can only reset the following attributes: `kernel` | `ramdisk` |
 #' `sourceDestCheck`. To change an instance attribute, use
-#' ModifyInstanceAttribute.
+#' [`modify_instance_attribute`][ec2_modify_instance_attribute].
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -32156,8 +32224,9 @@ ec2_revoke_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkCidr
 #' rule's values, no error is returned, and the output describes the
 #' security group rules that were not revoked.
 #' 
-#' AWS recommends that you use DescribeSecurityGroups to verify that the
-#' rule has been removed.
+#' AWS recommends that you use
+#' [`describe_security_groups`][ec2_describe_security_groups] to verify
+#' that the rule has been removed.
 #' 
 #' Each rule consists of the protocol and the IPv4 or IPv6 CIDR range or
 #' source security group. For the TCP and UDP protocols, you must also
@@ -32272,8 +32341,9 @@ ec2_revoke_security_group_egress <- function(DryRun = NULL, GroupId, IpPermissio
 #' existing rule's values, no error is returned, and the output describes
 #' the security group rules that were not revoked.
 #' 
-#' AWS recommends that you use DescribeSecurityGroups to verify that the
-#' rule has been removed.
+#' AWS recommends that you use
+#' [`describe_security_groups`][ec2_describe_security_groups] to verify
+#' that the rule has been removed.
 #' 
 #' Each rule consists of the protocol and the CIDR range or source security
 #' group. For the TCP and UDP protocols, you must also specify the
@@ -32436,17 +32506,20 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' You can create a [launch
 #' template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html),
 #' which is a resource that contains the parameters to launch an instance.
-#' When you launch an instance using RunInstances, you can specify the
-#' launch template instead of specifying the launch parameters.
+#' When you launch an instance using [`run_instances`][ec2_run_instances],
+#' you can specify the launch template instead of specifying the launch
+#' parameters.
 #' 
 #' To ensure faster instance launches, break up large requests into smaller
 #' batches. For example, create five separate launch requests for 100
 #' instances each instead of one launch request for 500 instances.
 #' 
 #' An instance is ready for you to use when it's in the `running` state.
-#' You can check the state of your instance using DescribeInstances. You
-#' can tag instances and EBS volumes during launch, after launch, or both.
-#' For more information, see CreateTags and [Tagging your Amazon EC2
+#' You can check the state of your instance using
+#' [`describe_instances`][ec2_describe_instances]. You can tag instances
+#' and EBS volumes during launch, after launch, or both. For more
+#' information, see [`create_tags`][ec2_create_tags] and [Tagging your
+#' Amazon EC2
 #' resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html).
 #' 
 #' Linux instances have access to the public key of the key pair at boot.
@@ -32506,9 +32579,8 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param KeyName The name of the key pair. You can create a key pair using
-#' [CreateKeyPair](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html)
-#' or
-#' [ImportKeyPair](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html).
+#' [`create_key_pair`][ec2_create_key_pair] or
+#' [`import_key_pair`][ec2_import_key_pair].
 #' 
 #' If you do not specify a key pair, you can't connect to the instance
 #' unless you choose an AMI that is configured to allow users another way
@@ -32545,7 +32617,7 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param SecurityGroupIds The IDs of the security groups. You can create a security group using
-#' [CreateSecurityGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html).
+#' [`create_security_group`][ec2_create_security_group].
 #' 
 #' If you specify a network interface, you must specify any security groups
 #' as part of the network interface.
@@ -32580,7 +32652,7 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' @param DisableApiTermination If you set this parameter to `true`, you can't terminate the instance
 #' using the Amazon EC2 console, CLI, or API; otherwise, you can. To change
 #' this attribute after launch, use
-#' [ModifyInstanceAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html).
+#' [`modify_instance_attribute`][ec2_modify_instance_attribute].
 #' Alternatively, if you set `InstanceInitiatedShutdownBehavior` to
 #' `terminate`, you can terminate the instance by running the shutdown
 #' command from the instance.
@@ -32632,17 +32704,16 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' @param TagSpecifications The tags to apply to the resources during launch. You can only tag
 #' instances and volumes on launch. The specified tags are applied to all
 #' instances or volumes that are created during launch. To tag a resource
-#' after it has been created, see
-#' [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html).
+#' after it has been created, see [`create_tags`][ec2_create_tags].
 #' @param LaunchTemplate The launch template to use to launch the instances. Any parameters that
-#' you specify in RunInstances override the same parameters in the launch
-#' template. You can specify either the name or ID of a launch template,
-#' but not both.
+#' you specify in [`run_instances`][ec2_run_instances] override the same
+#' parameters in the launch template. You can specify either the name or ID
+#' of a launch template, but not both.
 #' @param InstanceMarketOptions The market (purchasing) option for the instances.
 #' 
-#' For RunInstances, persistent Spot Instance requests are only supported
-#' when **InstanceInterruptionBehavior** is set to either `hibernate` or
-#' `stop`.
+#' For [`run_instances`][ec2_run_instances], persistent Spot Instance
+#' requests are only supported when **InstanceInterruptionBehavior** is set
+#' to either `hibernate` or `stop`.
 #' @param CreditSpecification The credit option for CPU usage of the burstable performance instance.
 #' Valid values are `standard` and `unlimited`. To change this attribute
 #' after launch, use
@@ -32909,7 +32980,8 @@ ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, Instan
 #' Launches the specified Scheduled Instances.
 #' 
 #' Before you can launch a Scheduled Instance, you must purchase it and
-#' obtain an identifier using PurchaseScheduledInstances.
+#' obtain an identifier using
+#' [`purchase_scheduled_instances`][ec2_purchase_scheduled_instances].
 #' 
 #' You must launch a Scheduled Instance during its scheduled time period.
 #' You can't stop or reboot a Scheduled Instance, but you can terminate it

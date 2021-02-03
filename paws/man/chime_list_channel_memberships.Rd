@@ -10,8 +10,10 @@ chime_list_channel_memberships(ChannelArn, Type, MaxResults, NextToken)
 \item{ChannelArn}{[required] The maximum number of channel memberships that you want returned.}
 
 \item{Type}{The membership type of a user, \code{DEFAULT} or \code{HIDDEN}. Default members
-are always returned as part of \code{ListChannelMemberships}. Hidden members
-are only returned if the type filter in \code{ListChannelMemberships} equals
+are always returned as part of
+\code{\link[=chime_list_channel_memberships]{list_channel_memberships}}. Hidden
+members are only returned if the type filter in
+\code{\link[=chime_list_channel_memberships]{list_channel_memberships}} equals
 \code{HIDDEN}. Otherwise hidden members are not returned.}
 
 \item{MaxResults}{The maximum number of channel memberships that you want returned.}

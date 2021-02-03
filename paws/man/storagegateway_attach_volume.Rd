@@ -25,7 +25,8 @@ previously used for this volume as the new target name.}
 gateway.}
 
 \item{NetworkInterfaceId}{[required] The network interface of the gateway on which to expose the iSCSI
-target. Only IPv4 addresses are accepted. Use DescribeGatewayInformation
+target. Only IPv4 addresses are accepted. Use
+\code{\link[=storagegateway_describe_gateway_information]{describe_gateway_information}}
 to get a list of the network interfaces available on a gateway.
 
 Valid Values: A valid IP address.}

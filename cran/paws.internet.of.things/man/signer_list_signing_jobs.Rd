@@ -42,11 +42,12 @@ entity.}
 Lists all your signing jobs. You can use the \code{maxResults} parameter to
 limit the number of signing jobs that are returned in the response. If
 additional jobs remain to be listed, code signing returns a \code{nextToken}
-value. Use this value in subsequent calls to \code{ListSigningJobs} to fetch
-the remaining values. You can continue calling \code{ListSigningJobs} with
-your \code{maxResults} parameter and with new values that code signing
-returns in the \code{nextToken} parameter until all of your signing jobs have
-been returned.
+value. Use this value in subsequent calls to
+\code{\link[=signer_list_signing_jobs]{list_signing_jobs}} to fetch the remaining
+values. You can continue calling
+\code{\link[=signer_list_signing_jobs]{list_signing_jobs}} with your \code{maxResults}
+parameter and with new values that code signing returns in the
+\code{nextToken} parameter until all of your signing jobs have been returned.
 }
 \section{Request syntax}{
 \preformatted{svc$list_signing_jobs(

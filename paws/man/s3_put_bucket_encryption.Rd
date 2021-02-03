@@ -52,8 +52,8 @@ in the Amazon Simple Storage Service Developer Guide.
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html}{GetBucketEncryption}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html}{DeleteBucketEncryption}
+\item \code{\link[=s3_get_bucket_encryption]{get_bucket_encryption}}
+\item \code{\link[=s3_delete_bucket_encryption]{delete_bucket_encryption}}
 }
 }
 \section{Request syntax}{

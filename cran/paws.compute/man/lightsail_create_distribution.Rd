@@ -30,13 +30,14 @@ distribution.}
 A distribution bundle describes the specifications of your distribution,
 such as the monthly cost and monthly network transfer quota.
 
-Use the \code{GetDistributionBundles} action to get a list of distribution
-bundle IDs that you can specify.}
+Use the \code{\link[=lightsail_get_distribution_bundles]{get_distribution_bundles}}
+action to get a list of distribution bundle IDs that you can specify.}
 
 \item{tags}{The tag keys and optional values to add to the distribution during
 create.
 
-Use the \code{TagResource} action to tag a resource after it's created.}
+Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
+resource after it's created.}
 }
 \description{
 Creates an Amazon Lightsail content delivery network (CDN) distribution.

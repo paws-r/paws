@@ -11,8 +11,7 @@ synthetics_update_canary(Name, Code, ExecutionRoleArn, RuntimeVersion,
 }
 \arguments{
 \item{Name}{[required] The name of the canary that you want to update. To find the names of
-your canaries, use
-\href{https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html}{DescribeCanaries}.
+your canaries, use \code{\link[=synthetics_describe_canaries]{describe_canaries}}.
 
 You cannot change the name of a canary that has already been created.}
 
@@ -57,7 +56,7 @@ been created.
 
 You can't use this operation to update the tags of an existing canary.
 To change the tags of an existing canary, use
-\href{https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_TagResource.html}{TagResource}.
+\code{\link[=synthetics_tag_resource]{tag_resource}}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_canary(

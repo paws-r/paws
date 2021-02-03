@@ -27,7 +27,7 @@ resource.}
 
 \item{variables}{A map that defines the stage variables for the new Stage resource.
 Variable names can have alphanumeric and underscore characters, and the
-values must match \verb{\\\[A-Za-z0-9-._~:/?#&amp;=,\\\]+}.}
+values must match \verb{\\\[A-Za-z0-9-._~:/?#&=,\\\]+}.}
 
 \item{documentationVersion}{The version of the associated API documentation.}
 

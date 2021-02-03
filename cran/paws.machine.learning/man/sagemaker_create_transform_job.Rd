@@ -96,7 +96,7 @@ unique within an AWS Region in an AWS account.
 \item \code{ModelName} - Identifies the model to use. \code{ModelName} must be the
 name of an existing Amazon SageMaker model in the same AWS Region
 and AWS account. For information on creating a model, see
-CreateModel.
+\code{\link[=sagemaker_create_model]{create_model}}.
 \item \code{TransformInput} - Describes the dataset to be transformed and the
 Amazon S3 location where it is stored.
 \item \code{TransformOutput} - Identifies the Amazon S3 location where you want

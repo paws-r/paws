@@ -27,10 +27,12 @@ for the operation.}
 \description{
 Creates an AD Connector to connect to an on-premises directory.
 
-Before you call \code{ConnectDirectory}, ensure that all of the required
-permissions have been explicitly granted through a policy. For details
-about what permissions are required to run the \code{ConnectDirectory}
-operation, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
+Before you call
+\code{\link[=directoryservice_connect_directory]{connect_directory}}, ensure that
+all of the required permissions have been explicitly granted through a
+policy. For details about what permissions are required to run the
+\code{\link[=directoryservice_connect_directory]{connect_directory}} operation, see
+\href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
 \preformatted{svc$connect_directory(

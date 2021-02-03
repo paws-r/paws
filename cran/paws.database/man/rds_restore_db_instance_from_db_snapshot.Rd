@@ -83,7 +83,8 @@ the DB instance doesn't permit it.
 When the DB instance isn't publicly accessible, it is an internal DB
 instance with a DNS name that resolves to a private IP address.
 
-For more information, see CreateDBInstance.}
+For more information, see
+\code{\link[=rds_create_db_instance]{create_db_instance}}.}
 
 \item{AutoMinorVersionUpgrade}{A value that indicates whether minor version upgrades are applied
 automatically to the DB instance during the maintenance window.}
@@ -251,7 +252,8 @@ If you are restoring from a shared manual DB snapshot, the
 \code{DBSnapshotIdentifier} must be the ARN of the shared DB snapshot.
 
 This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-Aurora, use \code{RestoreDBClusterFromSnapshot}.
+Aurora, use
+\code{\link[=rds_restore_db_cluster_from_snapshot]{restore_db_cluster_from_snapshot}}.
 }
 \section{Request syntax}{
 \preformatted{svc$restore_db_instance_from_db_snapshot(

@@ -23,7 +23,7 @@ none is supplied, the AWS account ID is used by default.}
 Creates or updates partition statistics of columns.
 
 The Identity and Access Management (IAM) permission required for this
-operation is \code{UpdatePartition}.
+operation is \code{\link[=glue_update_partition]{update_partition}}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_column_statistics_for_partition(

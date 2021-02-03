@@ -20,11 +20,12 @@ possible values are: \code{COMPONENT}, \code{INSTANCE}, and \code{ATTEMPT}.}
 
 \item{marker}{The starting point for the results to be returned. For the first call,
 this value should be empty. As long as there are more results, continue
-to call \code{QueryObjects} with the marker value from the previous call to
-retrieve the next set of results.}
+to call \code{\link[=datapipeline_query_objects]{query_objects}} with the marker
+value from the previous call to retrieve the next set of results.}
 
-\item{limit}{The maximum number of object names that \code{QueryObjects} will return in a
-single call. The default value is 100.}
+\item{limit}{The maximum number of object names that
+\code{\link[=datapipeline_query_objects]{query_objects}} will return in a single
+call. The default value is 100.}
 }
 \description{
 Queries the specified pipeline for the names of objects that match the

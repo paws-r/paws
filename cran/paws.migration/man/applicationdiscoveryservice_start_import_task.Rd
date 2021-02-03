@@ -15,9 +15,10 @@ applicationdiscoveryservice_start_import_task(clientRequestToken, name,
 request from occurring more than once. If you don't provide a token, a
 token is automatically generated.
 
-Sending more than one \code{StartImportTask} request with the same client
-request token will return information about the original import task
-with that client request token.}
+Sending more than one
+\code{\link[=applicationdiscoveryservice_start_import_task]{start_import_task}}
+request with the same client request token will return information about
+the original import task with that client request token.}
 
 \item{name}{[required] A descriptive name for this request. You can use this name to filter
 future requests related to this import task, such as identifying
@@ -46,8 +47,10 @@ template, which you can find here:
 \item Fill out the template with your server and application data.
 \item Upload your import file to an Amazon S3 bucket, and make a note of
 it's Object URL. Your import file must be in the CSV format.
-\item Use the console or the \code{StartImportTask} command with the AWS CLI or
-one of the AWS SDKs to import the records from your file.
+\item Use the console or the
+\code{\link[=applicationdiscoveryservice_start_import_task]{start_import_task}}
+command with the AWS CLI or one of the AWS SDKs to import the
+records from your file.
 }
 
 For more information, including step-by-step procedures, see \href{https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-import.html}{Migration Hub Import}

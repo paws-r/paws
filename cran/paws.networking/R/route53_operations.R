@@ -56,8 +56,10 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
 #' If you want to associate a VPC that was created by using one AWS account
 #' with a private hosted zone that was created by using a different
 #' account, the AWS account that created the private hosted zone must first
-#' submit a `CreateVPCAssociationAuthorization` request. Then the account
-#' that created the VPC must submit an `AssociateVPCWithHostedZone`
+#' submit a
+#' [`create_vpc_association_authorization`][route53_create_vpc_association_authorization]
+#' request. Then the account that created the VPC must submit an
+#' [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone]
 #' request.
 #'
 #' @usage
@@ -125,9 +127,10 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' @description
 #' Creates, changes, or deletes a resource record set, which contains
 #' authoritative DNS information for a specified domain name or subdomain
-#' name. For example, you can use `ChangeResourceRecordSets` to create a
-#' resource record set that routes traffic for test.example.com to a web
-#' server that has an IP address of 192.0.2.44.
+#' name. For example, you can use
+#' [`change_resource_record_sets`][route53_change_resource_record_sets] to
+#' create a resource record set that routes traffic for test.example.com to
+#' a web server that has an IP address of 192.0.2.44.
 #' 
 #' **Deleting Resource Record Sets**
 #' 
@@ -195,21 +198,25 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' 
 #' Don't refer to the syntax in the "Parameter Syntax" section, which
 #' includes all of the elements for every kind of resource record set that
-#' you can create, delete, or update by using `ChangeResourceRecordSets`.
+#' you can create, delete, or update by using
+#' [`change_resource_record_sets`][route53_change_resource_record_sets].
 #' 
 #' **Change Propagation to Route 53 DNS Servers**
 #' 
-#' When you submit a `ChangeResourceRecordSets` request, Route 53
-#' propagates your changes to all of the Route 53 authoritative DNS
-#' servers. While your changes are propagating, `GetChange` returns a
-#' status of `PENDING`. When propagation is complete, `GetChange` returns a
+#' When you submit a
+#' [`change_resource_record_sets`][route53_change_resource_record_sets]
+#' request, Route 53 propagates your changes to all of the Route 53
+#' authoritative DNS servers. While your changes are propagating,
+#' [`get_change`][route53_get_change] returns a status of `PENDING`. When
+#' propagation is complete, [`get_change`][route53_get_change] returns a
 #' status of `INSYNC`. Changes generally propagate to all Route 53 name
 #' servers within 60 seconds. For more information, see
-#' [GetChange](https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetChange.html).
+#' [`get_change`][route53_get_change].
 #' 
 #' **Limits on ChangeResourceRecordSets Requests**
 #' 
-#' For information about the limits on a `ChangeResourceRecordSets`
+#' For information about the limits on a
+#' [`change_resource_record_sets`][route53_change_resource_record_sets]
 #' request, see
 #' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 #' in the *Amazon Route 53 Developer Guide*.
@@ -849,8 +856,7 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 #' 
 #' For information about adding health checks to resource record sets, see
 #' [HealthCheckId](https://docs.aws.amazon.com/Route53/latest/APIReference/API_ResourceRecordSet.html#Route53-Type-ResourceRecordSet-HealthCheckId)
-#' in
-#' [ChangeResourceRecordSets](https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html).
+#' in [`change_resource_record_sets`][route53_change_resource_record_sets].
 #' 
 #' **ELB Load Balancers**
 #' 
@@ -887,26 +893,28 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 #' route53_create_health_check(CallerReference, HealthCheckConfig)
 #'
 #' @param CallerReference &#91;required&#93; A unique string that identifies the request and that allows you to retry
-#' a failed `CreateHealthCheck` request without the risk of creating two
-#' identical health checks:
+#' a failed [`create_health_check`][route53_create_health_check] request
+#' without the risk of creating two identical health checks:
 #' 
-#' -   If you send a `CreateHealthCheck` request with the same
-#'     `CallerReference` and settings as a previous request, and if the
-#'     health check doesn't exist, Amazon Route 53 creates the health
-#'     check. If the health check does exist, Route 53 returns the settings
-#'     for the existing health check.
+#' -   If you send a [`create_health_check`][route53_create_health_check]
+#'     request with the same `CallerReference` and settings as a previous
+#'     request, and if the health check doesn't exist, Amazon Route 53
+#'     creates the health check. If the health check does exist, Route 53
+#'     returns the settings for the existing health check.
 #' 
-#' -   If you send a `CreateHealthCheck` request with the same
-#'     `CallerReference` as a deleted health check, regardless of the
-#'     settings, Route 53 returns a `HealthCheckAlreadyExists` error.
+#' -   If you send a [`create_health_check`][route53_create_health_check]
+#'     request with the same `CallerReference` as a deleted health check,
+#'     regardless of the settings, Route 53 returns a
+#'     `HealthCheckAlreadyExists` error.
 #' 
-#' -   If you send a `CreateHealthCheck` request with the same
-#'     `CallerReference` as an existing health check but with different
-#'     settings, Route 53 returns a `HealthCheckAlreadyExists` error.
+#' -   If you send a [`create_health_check`][route53_create_health_check]
+#'     request with the same `CallerReference` as an existing health check
+#'     but with different settings, Route 53 returns a
+#'     `HealthCheckAlreadyExists` error.
 #' 
-#' -   If you send a `CreateHealthCheck` request with a unique
-#'     `CallerReference` but settings identical to an existing health
-#'     check, Route 53 creates the health check.
+#' -   If you send a [`create_health_check`][route53_create_health_check]
+#'     request with a unique `CallerReference` but settings identical to an
+#'     existing health check, Route 53 creates the health check.
 #' @param HealthCheckConfig &#91;required&#93; A complex type that contains settings for a new health check.
 #'
 #' @section Request syntax:
@@ -1003,11 +1011,11 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #'     53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/MigratingDNS.html)
 #'     in the *Amazon Route 53 Developer Guide*.
 #' 
-#' When you submit a `CreateHostedZone` request, the initial status of the
-#' hosted zone is `PENDING`. For public hosted zones, this means that the
-#' NS and SOA records are not yet available on all Route 53 DNS servers.
-#' When the NS and SOA records are available, the status of the zone
-#' changes to `INSYNC`.
+#' When you submit a [`create_hosted_zone`][route53_create_hosted_zone]
+#' request, the initial status of the hosted zone is `PENDING`. For public
+#' hosted zones, this means that the NS and SOA records are not yet
+#' available on all Route 53 DNS servers. When the NS and SOA records are
+#' available, the status of the zone changes to `INSYNC`.
 #'
 #' @usage
 #' route53_create_hosted_zone(Name, VPC, CallerReference, HostedZoneConfig,
@@ -1022,20 +1030,23 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' If you're creating a public hosted zone, this is the name you have
 #' registered with your DNS registrar. If your domain name is registered
 #' with a registrar other than Route 53, change the name servers for your
-#' domain to the set of `NameServers` that `CreateHostedZone` returns in
+#' domain to the set of `NameServers` that
+#' [`create_hosted_zone`][route53_create_hosted_zone] returns in
 #' `DelegationSet`.
 #' @param VPC (Private hosted zones only) A complex type that contains information
 #' about the Amazon VPC that you're associating with this hosted zone.
 #' 
 #' You can specify only one Amazon VPC when you create a private hosted
 #' zone. To associate additional Amazon VPCs with the hosted zone, use
-#' [AssociateVPCWithHostedZone](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AssociateVPCWithHostedZone.html)
+#' [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone]
 #' after you create a hosted zone.
 #' @param CallerReference &#91;required&#93; A unique string that identifies the request and that allows failed
-#' `CreateHostedZone` requests to be retried without the risk of executing
-#' the operation twice. You must use a unique `CallerReference` string
-#' every time you submit a `CreateHostedZone` request. `CallerReference`
-#' can be any unique string, for example, a date/time stamp.
+#' [`create_hosted_zone`][route53_create_hosted_zone] requests to be
+#' retried without the risk of executing the operation twice. You must use
+#' a unique `CallerReference` string every time you submit a
+#' [`create_hosted_zone`][route53_create_hosted_zone] request.
+#' `CallerReference` can be any unique string, for example, a date/time
+#' stamp.
 #' @param HostedZoneConfig (Optional) A complex type that contains the following optional values:
 #' 
 #' -   For public and private hosted zones, an optional comment
@@ -1048,7 +1059,7 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' zone, the ID that Amazon Route 53 assigned to the reusable delegation
 #' set when you created it. For more information about reusable delegation
 #' sets, see
-#' [CreateReusableDelegationSet](https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateReusableDelegationSet.html).
+#' [`create_reusable_delegation_set`][route53_create_reusable_delegation_set].
 #'
 #' @section Request syntax:
 #' ```
@@ -1211,7 +1222,7 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #'     -   When you create log groups for query logging, we recommend that
 #'         you use a consistent prefix, for example:
 #' 
-#'         `/aws/route53/<i>hosted zone name</i> `
+#'         `/aws/route53/hosted zone name `
 #' 
 #'         In the next step, you'll create a resource policy, which
 #'         controls access to one or more log groups and the associated AWS
@@ -1249,7 +1260,7 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' 
 #' The name of each log stream is in the following format:
 #' 
-#' ` <i>hosted zone ID</i>/<i>edge location code</i> `
+#' ` hosted zone ID/edge location code `
 #' 
 #' The edge location code is a three-letter code and an arbitrarily
 #' assigned number, for example, DFW3. The three-letter code typically
@@ -1291,7 +1302,7 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' 
 #' If you want Route 53 to stop sending query logs to CloudWatch Logs,
 #' delete the query logging configuration. For more information, see
-#' [DeleteQueryLoggingConfig](https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteQueryLoggingConfig.html).
+#' [`delete_query_logging_config`][route53_delete_query_logging_config].
 #'
 #' @usage
 #' route53_create_query_logging_config(HostedZoneId,
@@ -1349,7 +1360,9 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
 #' 
 #' You can also create a reusable delegation set that uses the four name
 #' servers that are associated with an existing hosted zone. Specify the
-#' hosted zone ID in the `CreateReusableDelegationSet` request.
+#' hosted zone ID in the
+#' [`create_reusable_delegation_set`][route53_create_reusable_delegation_set]
+#' request.
 #' 
 #' You can't associate a reusable delegation set with a private hosted
 #' zone.
@@ -1398,11 +1411,13 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
 #' route53_create_reusable_delegation_set(CallerReference, HostedZoneId)
 #'
 #' @param CallerReference &#91;required&#93; A unique string that identifies the request, and that allows you to
-#' retry failed `CreateReusableDelegationSet` requests without the risk of
-#' executing the operation twice. You must use a unique `CallerReference`
-#' string every time you submit a `CreateReusableDelegationSet` request.
-#' `CallerReference` can be any unique string, for example a date/time
-#' stamp.
+#' retry failed
+#' [`create_reusable_delegation_set`][route53_create_reusable_delegation_set]
+#' requests without the risk of executing the operation twice. You must use
+#' a unique `CallerReference` string every time you submit a
+#' [`create_reusable_delegation_set`][route53_create_reusable_delegation_set]
+#' request. `CallerReference` can be any unique string, for example a
+#' date/time stamp.
 #' @param HostedZoneId If you want to mark the delegation set for an existing hosted zone as
 #' reusable, the ID for that hosted zone.
 #'
@@ -1487,11 +1502,13 @@ route53_create_traffic_policy <- function(Name, Document, Comment = NULL) {
 #' @description
 #' Creates resource record sets in a specified hosted zone based on the
 #' settings in a specified traffic policy version. In addition,
-#' `CreateTrafficPolicyInstance` associates the resource record sets with a
-#' specified domain name (such as example.com) or subdomain name (such as
-#' www.example.com). Amazon Route 53 responds to DNS queries for the domain
-#' or subdomain name by using the resource record sets that
-#' `CreateTrafficPolicyInstance` created.
+#' [`create_traffic_policy_instance`][route53_create_traffic_policy_instance]
+#' associates the resource record sets with a specified domain name (such
+#' as example.com) or subdomain name (such as www.example.com). Amazon
+#' Route 53 responds to DNS queries for the domain or subdomain name by
+#' using the resource record sets that
+#' [`create_traffic_policy_instance`][route53_create_traffic_policy_instance]
+#' created.
 #'
 #' @usage
 #' route53_create_traffic_policy_instance(HostedZoneId, Name, TTL,
@@ -1558,10 +1575,12 @@ route53_create_traffic_policy_instance <- function(HostedZoneId, Name, TTL, Traf
 #'
 #' @param Id &#91;required&#93; The ID of the traffic policy for which you want to create a new version.
 #' @param Document &#91;required&#93; The definition of this version of the traffic policy, in JSON format.
-#' You specified the JSON in the `CreateTrafficPolicyVersion` request. For
-#' more information about the JSON format, see
-#' [CreateTrafficPolicy](https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateTrafficPolicy.html).
-#' @param Comment The comment that you specified in the `CreateTrafficPolicyVersion`
+#' You specified the JSON in the
+#' [`create_traffic_policy_version`][route53_create_traffic_policy_version]
+#' request. For more information about the JSON format, see
+#' [`create_traffic_policy`][route53_create_traffic_policy].
+#' @param Comment The comment that you specified in the
+#' [`create_traffic_policy_version`][route53_create_traffic_policy_version]
 #' request, if any.
 #'
 #' @section Request syntax:
@@ -1599,12 +1618,15 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
 #'
 #' @description
 #' Authorizes the AWS account that created a specified VPC to submit an
-#' `AssociateVPCWithHostedZone` request to associate the VPC with a
-#' specified hosted zone that was created by a different account. To submit
-#' a `CreateVPCAssociationAuthorization` request, you must use the account
-#' that created the hosted zone. After you authorize the association, use
-#' the account that created the VPC to submit an
-#' `AssociateVPCWithHostedZone` request.
+#' [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone]
+#' request to associate the VPC with a specified hosted zone that was
+#' created by a different account. To submit a
+#' [`create_vpc_association_authorization`][route53_create_vpc_association_authorization]
+#' request, you must use the account that created the hosted zone. After
+#' you authorize the association, use the account that created the VPC to
+#' submit an
+#' [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone]
+#' request.
 #' 
 #' If you want to associate multiple VPCs that you created by using one
 #' account with a hosted zone that you created by using a different
@@ -1707,10 +1729,10 @@ route53_deactivate_key_signing_key <- function(HostedZoneId, Name) {
 #' 
 #' If you're using AWS Cloud Map and you configured Cloud Map to create a
 #' Route 53 health check when you register an instance, you can't use the
-#' Route 53 `DeleteHealthCheck` command to delete the health check. The
-#' health check is deleted automatically when you deregister the instance;
-#' there can be a delay of several hours before the health check is deleted
-#' from Route 53.
+#' Route 53 [`delete_health_check`][route53_delete_health_check] command to
+#' delete the health check. The health check is deleted automatically when
+#' you deregister the instance; there can be a delay of several hours
+#' before the health check is deleted from Route 53.
 #'
 #' @usage
 #' route53_delete_health_check(HealthCheckId)
@@ -1788,16 +1810,17 @@ route53_delete_health_check <- function(HealthCheckId) {
 #' resource record sets, the request fails, and Route 53 returns a
 #' `HostedZoneNotEmpty` error. For information about deleting records from
 #' your hosted zone, see
-#' [ChangeResourceRecordSets](https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html).
+#' [`change_resource_record_sets`][route53_change_resource_record_sets].
 #' 
 #' To verify that the hosted zone has been deleted, do one of the
 #' following:
 #' 
-#' -   Use the `GetHostedZone` action to request information about the
-#'     hosted zone.
+#' -   Use the [`get_hosted_zone`][route53_get_hosted_zone] action to
+#'     request information about the hosted zone.
 #' 
-#' -   Use the `ListHostedZones` action to get a list of the hosted zones
-#'     associated with the current AWS account.
+#' -   Use the [`list_hosted_zones`][route53_list_hosted_zones] action to
+#'     get a list of the hosted zones associated with the current AWS
+#'     account.
 #'
 #' @usage
 #' route53_delete_hosted_zone(Id)
@@ -1881,7 +1904,7 @@ route53_delete_key_signing_key <- function(HostedZoneId, Name) {
 #' Logs.
 #' 
 #' For more information about DNS query logs, see
-#' [CreateQueryLoggingConfig](https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html).
+#' [`create_query_logging_config`][route53_create_query_logging_config].
 #'
 #' @usage
 #' route53_delete_query_logging_config(Id)
@@ -1925,7 +1948,7 @@ route53_delete_query_logging_config <- function(Id) {
 #' 
 #' To verify that the reusable delegation set is not associated with any
 #' hosted zones, submit a
-#' [GetReusableDelegationSet](https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetReusableDelegationSet.html)
+#' [`get_reusable_delegation_set`][route53_get_reusable_delegation_set]
 #' request and specify the ID of the reusable delegation set that you want
 #' to delete.
 #'
@@ -1971,13 +1994,13 @@ route53_delete_reusable_delegation_set <- function(Id) {
 #' the traffic policy. Note the following:
 #' 
 #' -   Deleted traffic policies aren't listed if you run
-#'     [ListTrafficPolicies](https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListTrafficPolicies.html).
+#'     [`list_traffic_policies`][route53_list_traffic_policies].
 #' 
 #' -   There's no way to get a list of deleted policies.
 #' 
 #' -   If you retain the ID of the policy, you can get information about
 #'     the policy, including the traffic policy document, by running
-#'     [GetTrafficPolicy](https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetTrafficPolicy.html).
+#'     [`get_traffic_policy`][route53_get_traffic_policy].
 #'
 #' @usage
 #' route53_delete_traffic_policy(Id, Version)
@@ -2064,17 +2087,21 @@ route53_delete_traffic_policy_instance <- function(Id) {
 #' different account
 #'
 #' @description
-#' Removes authorization to submit an `AssociateVPCWithHostedZone` request
-#' to associate a specified VPC with a hosted zone that was created by a
-#' different account. You must use the account that created the hosted zone
-#' to submit a `DeleteVPCAssociationAuthorization` request.
+#' Removes authorization to submit an
+#' [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone]
+#' request to associate a specified VPC with a hosted zone that was created
+#' by a different account. You must use the account that created the hosted
+#' zone to submit a
+#' [`delete_vpc_association_authorization`][route53_delete_vpc_association_authorization]
+#' request.
 #' 
 #' Sending this request only prevents the AWS account that created the VPC
 #' from associating the VPC with the Amazon Route 53 hosted zone in the
 #' future. If the VPC is already associated with the hosted zone,
-#' `DeleteVPCAssociationAuthorization` won't disassociate the VPC from the
-#' hosted zone. If you want to delete an existing association, use
-#' `DisassociateVPCFromHostedZone`.
+#' [`delete_vpc_association_authorization`][route53_delete_vpc_association_authorization]
+#' won't disassociate the VPC from the hosted zone. If you want to delete
+#' an existing association, use
+#' [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone].
 #'
 #' @usage
 #' route53_delete_vpc_association_authorization(HostedZoneId, VPC)
@@ -2168,9 +2195,10 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' 
 #' -   You can't convert a private hosted zone into a public hosted zone.
 #' 
-#' -   You can submit a `DisassociateVPCFromHostedZone` request using
-#'     either the account that created the hosted zone or the account that
-#'     created the Amazon VPC.
+#' -   You can submit a
+#'     [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone]
+#'     request using either the account that created the hosted zone or the
+#'     account that created the Amazon VPC.
 #' 
 #' -   Some services, such as AWS Cloud Map and Amazon Elastic File System
 #'     (Amazon EFS) automatically create hosted zones and associate VPCs
@@ -2180,10 +2208,11 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #'     account.
 #' 
 #'     When you run
-#'     [DisassociateVPCFromHostedZone](https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListHostedZonesByVPC.html),
+#'     [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone],
 #'     if the hosted zone has a value for `OwningAccount`, you can use
-#'     `DisassociateVPCFromHostedZone`. If the hosted zone has a value for
-#'     `OwningService`, you can't use `DisassociateVPCFromHostedZone`.
+#'     [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone].
+#'     If the hosted zone has a value for `OwningService`, you can't use
+#'     [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone].
 #'
 #' @usage
 #' route53_disassociate_vpc_from_hosted_zone(HostedZoneId, VPC, Comment)
@@ -2347,8 +2376,9 @@ route53_get_account_limit <- function(Type) {
 #' route53_get_change(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the change batch request. The value that you specify here is
-#' the value that `ChangeResourceRecordSets` returned in the `Id` element
-#' when you submitted the request.
+#' the value that
+#' [`change_resource_record_sets`][route53_change_resource_record_sets]
+#' returned in the `Id` element when you submitted the request.
 #'
 #' @section Request syntax:
 #' ```
@@ -2381,9 +2411,10 @@ route53_get_change <- function(Id) {
 #' ip-ranges
 #'
 #' @description
-#' `GetCheckerIpRanges` still works, but we recommend that you download
-#' ip-ranges.json, which includes IP address ranges for all AWS services.
-#' For more information, see [IP Address Ranges of Amazon Route 53
+#' [`get_checker_ip_ranges`][route53_get_checker_ip_ranges] still works,
+#' but we recommend that you download ip-ranges.json, which includes IP
+#' address ranges for all AWS services. For more information, see [IP
+#' Address Ranges of Amazon Route 53
 #' Servers](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html)
 #' in the *Amazon Route 53 Developer Guide*.
 #'
@@ -2466,17 +2497,17 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' Use the following syntax to determine whether a continent is supported
 #' for geolocation:
 #' 
-#' `GET /2013-04-01/geolocation?continentcode=<i>two-letter abbreviation for a continent</i> `
+#' `GET /2013-04-01/geolocation?continentcode=two-letter abbreviation for a continent `
 #' 
 #' Use the following syntax to determine whether a country is supported for
 #' geolocation:
 #' 
-#' `GET /2013-04-01/geolocation?countrycode=<i>two-character country code</i> `
+#' `GET /2013-04-01/geolocation?countrycode=two-character country code `
 #' 
 #' Use the following syntax to determine whether a subdivision of a country
 #' is supported for geolocation:
 #' 
-#' `GET /2013-04-01/geolocation?countrycode=<i>two-character country code</i>&amp;subdivisioncode=<i>subdivision code</i> `
+#' `GET /2013-04-01/geolocation?countrycode=two-character country code&subdivisioncode=subdivision code `
 #'
 #' @usage
 #' route53_get_geo_location(ContinentCode, CountryCode, SubdivisionCode)
@@ -2622,13 +2653,15 @@ route53_get_health_check_count <- function() {
 #' route53_get_health_check_last_failure_reason(HealthCheckId)
 #'
 #' @param HealthCheckId &#91;required&#93; The ID for the health check for which you want the last failure reason.
-#' When you created the health check, `CreateHealthCheck` returned the ID
-#' in the response, in the `HealthCheckId` element.
+#' When you created the health check,
+#' [`create_health_check`][route53_create_health_check] returned the ID in
+#' the response, in the `HealthCheckId` element.
 #' 
 #' If you want to get the last failure reason for a calculated health
 #' check, you must use the Amazon Route 53 console or the CloudWatch
-#' console. You can't use `GetHealthCheckLastFailureReason` for a
-#' calculated health check.
+#' console. You can't use
+#' [`get_health_check_last_failure_reason`][route53_get_health_check_last_failure_reason]
+#' for a calculated health check.
 #'
 #' @section Request syntax:
 #' ```
@@ -2666,12 +2699,14 @@ route53_get_health_check_last_failure_reason <- function(HealthCheckId) {
 #' route53_get_health_check_status(HealthCheckId)
 #'
 #' @param HealthCheckId &#91;required&#93; The ID for the health check that you want the current status for. When
-#' you created the health check, `CreateHealthCheck` returned the ID in the
-#' response, in the `HealthCheckId` element.
+#' you created the health check,
+#' [`create_health_check`][route53_create_health_check] returned the ID in
+#' the response, in the `HealthCheckId` element.
 #' 
 #' If you want to check the status of a calculated health check, you must
 #' use the Amazon Route 53 console or the CloudWatch console. You can't use
-#' `GetHealthCheckStatus` to get the status of a calculated health check.
+#' [`get_health_check_status`][route53_get_health_check_status] to get the
+#' status of a calculated health check.
 #'
 #' @section Request syntax:
 #' ```
@@ -2841,8 +2876,8 @@ route53_get_hosted_zone_limit <- function(Type, HostedZoneId) {
 #' Gets information about a specified configuration for DNS query logging.
 #' 
 #' For more information about DNS query logs, see
-#' [CreateQueryLoggingConfig](https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html)
-#' and [Logging DNS
+#' [`create_query_logging_config`][route53_create_query_logging_config] and
+#' [Logging DNS
 #' Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html).
 #'
 #' @usage
@@ -2972,8 +3007,8 @@ route53_get_reusable_delegation_set_limit <- function(Type, DelegationSetId) {
 #' Gets information about a specific traffic policy version.
 #' 
 #' For information about how of deleting a traffic policy affects the
-#' response from `GetTrafficPolicy`, see
-#' [DeleteTrafficPolicy](https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html).
+#' response from [`get_traffic_policy`][route53_get_traffic_policy], see
+#' [`delete_traffic_policy`][route53_delete_traffic_policy].
 #'
 #' @usage
 #' route53_get_traffic_policy(Id, Version)
@@ -3015,11 +3050,13 @@ route53_get_traffic_policy <- function(Id, Version) {
 #' @description
 #' Gets information about a specified traffic policy instance.
 #' 
-#' After you submit a `CreateTrafficPolicyInstance` or an
-#' `UpdateTrafficPolicyInstance` request, there's a brief delay while
-#' Amazon Route 53 creates the resource record sets that are specified in
-#' the traffic policy definition. For more information, see the `State`
-#' response element.
+#' After you submit a
+#' [`create_traffic_policy_instance`][route53_create_traffic_policy_instance]
+#' or an
+#' [`update_traffic_policy_instance`][route53_update_traffic_policy_instance]
+#' request, there's a brief delay while Amazon Route 53 creates the
+#' resource record sets that are specified in the traffic policy
+#' definition. For more information, see the `State` response element.
 #' 
 #' In the Route 53 console, traffic policy instances are known as policy
 #' records.
@@ -3180,7 +3217,7 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
 #'
 #' @param Marker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more health checks. To get another group, submit another
-#' `ListHealthChecks` request.
+#' [`list_health_checks`][route53_list_health_checks] request.
 #' 
 #' For the value of `marker`, specify the value of `NextMarker` from the
 #' previous response, which is the ID of the first health check that Amazon
@@ -3188,10 +3225,11 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
 #' 
 #' If the value of `IsTruncated` in the previous response was `false`,
 #' there are no more health checks to get.
-#' @param MaxItems The maximum number of health checks that you want `ListHealthChecks` to
-#' return in response to the current request. Amazon Route 53 returns a
-#' maximum of 100 items. If you set `MaxItems` to a value greater than 100,
-#' Route 53 returns only the first 100 health checks.
+#' @param MaxItems The maximum number of health checks that you want
+#' [`list_health_checks`][route53_list_health_checks] to return in response
+#' to the current request. Amazon Route 53 returns a maximum of 100 items.
+#' If you set `MaxItems` to a value greater than 100, Route 53 returns only
+#' the first 100 health checks.
 #'
 #' @section Request syntax:
 #' ```
@@ -3238,7 +3276,7 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
 #'
 #' @param Marker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more hosted zones. To get more hosted zones, submit another
-#' `ListHostedZones` request.
+#' [`list_hosted_zones`][route53_list_hosted_zones] request.
 #' 
 #' For the value of `marker`, specify the value of `NextMarker` from the
 #' previous response, which is the ID of the first hosted zone that Amazon
@@ -3291,8 +3329,8 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' response includes a `HostedZones` child element for each hosted zone
 #' created by the current AWS account.
 #' 
-#' `ListHostedZonesByName` sorts hosted zones by name with the labels
-#' reversed. For example:
+#' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name] sorts
+#' hosted zones by name with the labels reversed. For example:
 #' 
 #' `com.example.www.`
 #' 
@@ -3300,10 +3338,12 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' circumstances.
 #' 
 #' If the domain name includes escape characters or Punycode,
-#' `ListHostedZonesByName` alphabetizes the domain name using the escaped
-#' or Punycoded value, which is the format that Amazon Route 53 saves in
-#' its database. For example, to create a hosted zone for exämple.com, you
-#' specify ex\\344mple.com for the domain name. `ListHostedZonesByName`
+#' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name]
+#' alphabetizes the domain name using the escaped or Punycoded value, which
+#' is the format that Amazon Route 53 saves in its database. For example,
+#' to create a hosted zone for exämple.com, you specify ex\\344mple.com for
+#' the domain name.
+#' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name]
 #' alphabetizes it as:
 #' 
 #' `com.ex\\344mple.`
@@ -3339,30 +3379,34 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #'     contain the domain name and the hosted zone ID of the next hosted
 #'     zone that is associated with the current AWS account. If you want to
 #'     list more hosted zones, make another call to
-#'     `ListHostedZonesByName`, and specify the value of `NextDNSName` and
-#'     `NextHostedZoneId` in the `dnsname` and `hostedzoneid` parameters,
-#'     respectively.
+#'     [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name],
+#'     and specify the value of `NextDNSName` and `NextHostedZoneId` in the
+#'     `dnsname` and `hostedzoneid` parameters, respectively.
 #'
 #' @usage
 #' route53_list_hosted_zones_by_name(DNSName, HostedZoneId, MaxItems)
 #'
-#' @param DNSName (Optional) For your first request to `ListHostedZonesByName`, include
-#' the `dnsname` parameter only if you want to specify the name of the
-#' first hosted zone in the response. If you don't include the `dnsname`
-#' parameter, Amazon Route 53 returns all of the hosted zones that were
-#' created by the current AWS account, in ASCII order. For subsequent
-#' requests, include both `dnsname` and `hostedzoneid` parameters. For
-#' `dnsname`, specify the value of `NextDNSName` from the previous
-#' response.
-#' @param HostedZoneId (Optional) For your first request to `ListHostedZonesByName`, do not
+#' @param DNSName (Optional) For your first request to
+#' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name],
+#' include the `dnsname` parameter only if you want to specify the name of
+#' the first hosted zone in the response. If you don't include the
+#' `dnsname` parameter, Amazon Route 53 returns all of the hosted zones
+#' that were created by the current AWS account, in ASCII order. For
+#' subsequent requests, include both `dnsname` and `hostedzoneid`
+#' parameters. For `dnsname`, specify the value of `NextDNSName` from the
+#' previous response.
+#' @param HostedZoneId (Optional) For your first request to
+#' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name], do not
 #' include the `hostedzoneid` parameter.
 #' 
 #' If you have more hosted zones than the value of `maxitems`,
-#' `ListHostedZonesByName` returns only the first `maxitems` hosted zones.
-#' To get the next group of `maxitems` hosted zones, submit another request
-#' to `ListHostedZonesByName` and include both `dnsname` and `hostedzoneid`
-#' parameters. For the value of `hostedzoneid`, specify the value of the
-#' `NextHostedZoneId` element from the previous response.
+#' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name] returns
+#' only the first `maxitems` hosted zones. To get the next group of
+#' `maxitems` hosted zones, submit another request to
+#' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name] and
+#' include both `dnsname` and `hostedzoneid` parameters. For the value of
+#' `hostedzoneid`, specify the value of the `NextHostedZoneId` element from
+#' the previous response.
 #' @param MaxItems The maximum number of hosted zones to be included in the response body
 #' for this request. If you have more than `maxitems` hosted zones, then
 #' the value of the `IsTruncated` element in the response is true, and the
@@ -3431,7 +3475,8 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #' zone that Route 53 will return if you submit another request.
 #' @param NextToken If the previous response included a `NextToken` element, the specified
 #' VPC is associated with more hosted zones. To get more hosted zones,
-#' submit another `ListHostedZonesByVPC` request.
+#' submit another
+#' [`list_hosted_zones_by_vpc`][route53_list_hosted_zones_by_vpc] request.
 #' 
 #' For the value of `NextToken`, specify the value of `NextToken` from the
 #' previous response.
@@ -3479,7 +3524,7 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 #' specified hosted zone.
 #' 
 #' For more information about DNS query logs, see
-#' [CreateQueryLoggingConfig](https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html).
+#' [`create_query_logging_config`][route53_create_query_logging_config].
 #' Additional information, including the format of DNS query logs, appears
 #' in [Logging DNS
 #' Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
@@ -3491,14 +3536,17 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 #' @param HostedZoneId (Optional) If you want to list the query logging configuration that is
 #' associated with a hosted zone, specify the ID in `HostedZoneId`.
 #' 
-#' If you don't specify a hosted zone ID, `ListQueryLoggingConfigs` returns
-#' all of the configurations that are associated with the current AWS
-#' account.
+#' If you don't specify a hosted zone ID,
+#' [`list_query_logging_configs`][route53_list_query_logging_configs]
+#' returns all of the configurations that are associated with the current
+#' AWS account.
 #' @param NextToken (Optional) If the current AWS account has more than `MaxResults` query
 #' logging configurations, use `NextToken` to get the second and subsequent
 #' pages of results.
 #' 
-#' For the first `ListQueryLoggingConfigs` request, omit this value.
+#' For the first
+#' [`list_query_logging_configs`][route53_list_query_logging_configs]
+#' request, omit this value.
 #' 
 #' For the second and subsequent requests, get the value of `NextToken`
 #' from the previous response and specify that value for `NextToken` in the
@@ -3547,24 +3595,25 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #' @description
 #' Lists the resource record sets in a specified hosted zone.
 #' 
-#' `ListResourceRecordSets` returns up to 100 resource record sets at a
-#' time in ASCII order, beginning at a position specified by the `name` and
-#' `type` elements.
+#' [`list_resource_record_sets`][route53_list_resource_record_sets] returns
+#' up to 100 resource record sets at a time in ASCII order, beginning at a
+#' position specified by the `name` and `type` elements.
 #' 
 #' **Sort order**
 #' 
-#' `ListResourceRecordSets` sorts results first by DNS name with the labels
-#' reversed, for example:
+#' [`list_resource_record_sets`][route53_list_resource_record_sets] sorts
+#' results first by DNS name with the labels reversed, for example:
 #' 
 #' `com.example.www.`
 #' 
 #' Note the trailing dot, which can change the sort order when the record
 #' name contains characters that appear before `.` (decimal 46) in the
 #' ASCII table. These characters include the following:
-#' `! \" # $ % &amp; \' ( ) * + , -`
+#' `! \" # $ % & \' ( ) * + , -`
 #' 
-#' When multiple records have the same DNS name, `ListResourceRecordSets`
-#' sorts results by the record type.
+#' When multiple records have the same DNS name,
+#' [`list_resource_record_sets`][route53_list_resource_record_sets] sorts
+#' results by the record type.
 #' 
 #' **Specifying where to start listing records**
 #' 
@@ -3601,19 +3650,22 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #' 
 #' To ensure that you get an accurate listing of the resource record sets
 #' for a hosted zone at a point in time, do not submit a
-#' `ChangeResourceRecordSets` request while you're paging through the
-#' results of a `ListResourceRecordSets` request. If you do, some pages may
-#' display results without the latest changes while other pages display
-#' results with the latest changes.
+#' [`change_resource_record_sets`][route53_change_resource_record_sets]
+#' request while you're paging through the results of a
+#' [`list_resource_record_sets`][route53_list_resource_record_sets]
+#' request. If you do, some pages may display results without the latest
+#' changes while other pages display results with the latest changes.
 #' 
 #' **Displaying the next page of results**
 #' 
-#' If a `ListResourceRecordSets` command returns more than one page of
-#' results, the value of `IsTruncated` is `true`. To display the next page
-#' of results, get the values of `NextRecordName`, `NextRecordType`, and
-#' `NextRecordIdentifier` (if any) from the response. Then submit another
-#' `ListResourceRecordSets` request, and specify those values for
-#' `StartRecordName`, `StartRecordType`, and `StartRecordIdentifier`.
+#' If a [`list_resource_record_sets`][route53_list_resource_record_sets]
+#' command returns more than one page of results, the value of
+#' `IsTruncated` is `true`. To display the next page of results, get the
+#' values of `NextRecordName`, `NextRecordType`, and `NextRecordIdentifier`
+#' (if any) from the response. Then submit another
+#' [`list_resource_record_sets`][route53_list_resource_record_sets]
+#' request, and specify those values for `StartRecordName`,
+#' `StartRecordType`, and `StartRecordIdentifier`.
 #'
 #' @usage
 #' route53_list_resource_record_sets(HostedZoneId, StartRecordName,
@@ -3708,7 +3760,8 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
 #'
 #' @param Marker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more reusable delegation sets. To get another group, submit another
-#' `ListReusableDelegationSets` request.
+#' [`list_reusable_delegation_sets`][route53_list_reusable_delegation_sets]
+#' request.
 #' 
 #' For the value of `marker`, specify the value of `NextMarker` from the
 #' previous response, which is the ID of the first reusable delegation set
@@ -3856,21 +3909,23 @@ route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
 #' order that they were created in.
 #' 
 #' For information about how of deleting a traffic policy affects the
-#' response from `ListTrafficPolicies`, see
-#' [DeleteTrafficPolicy](https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html).
+#' response from [`list_traffic_policies`][route53_list_traffic_policies],
+#' see [`delete_traffic_policy`][route53_delete_traffic_policy].
 #'
 #' @usage
 #' route53_list_traffic_policies(TrafficPolicyIdMarker, MaxItems)
 #'
-#' @param TrafficPolicyIdMarker (Conditional) For your first request to `ListTrafficPolicies`, don't
-#' include the `TrafficPolicyIdMarker` parameter.
+#' @param TrafficPolicyIdMarker (Conditional) For your first request to
+#' [`list_traffic_policies`][route53_list_traffic_policies], don't include
+#' the `TrafficPolicyIdMarker` parameter.
 #' 
 #' If you have more traffic policies than the value of `MaxItems`,
-#' `ListTrafficPolicies` returns only the first `MaxItems` traffic
-#' policies. To get the next group of policies, submit another request to
-#' `ListTrafficPolicies`. For the value of `TrafficPolicyIdMarker`, specify
-#' the value of `TrafficPolicyIdMarker` that was returned in the previous
-#' response.
+#' [`list_traffic_policies`][route53_list_traffic_policies] returns only
+#' the first `MaxItems` traffic policies. To get the next group of
+#' policies, submit another request to
+#' [`list_traffic_policies`][route53_list_traffic_policies]. For the value
+#' of `TrafficPolicyIdMarker`, specify the value of `TrafficPolicyIdMarker`
+#' that was returned in the previous response.
 #' @param MaxItems (Optional) The maximum number of traffic policies that you want Amazon
 #' Route 53 to return in response to this request. If you have more than
 #' `MaxItems` traffic policies, the value of `IsTruncated` in the response
@@ -3913,10 +3968,11 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
 #' Gets information about the traffic policy instances that you created by
 #' using the current AWS account.
 #' 
-#' After you submit an `UpdateTrafficPolicyInstance` request, there's a
-#' brief delay while Amazon Route 53 creates the resource record sets that
-#' are specified in the traffic policy definition. For more information,
-#' see the `State` response element.
+#' After you submit an
+#' [`update_traffic_policy_instance`][route53_update_traffic_policy_instance]
+#' request, there's a brief delay while Amazon Route 53 creates the
+#' resource record sets that are specified in the traffic policy
+#' definition. For more information, see the `State` response element.
 #' 
 #' Route 53 returns a maximum of 100 items in each response. If you have a
 #' lot of traffic policy instances, you can use the `MaxItems` parameter to
@@ -3929,35 +3985,40 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
 #'
 #' @param HostedZoneIdMarker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more traffic policy instances. To get more traffic policy
-#' instances, submit another `ListTrafficPolicyInstances` request. For the
-#' value of `HostedZoneId`, specify the value of `HostedZoneIdMarker` from
-#' the previous response, which is the hosted zone ID of the first traffic
-#' policy instance in the next group of traffic policy instances.
+#' instances, submit another
+#' [`list_traffic_policy_instances`][route53_list_traffic_policy_instances]
+#' request. For the value of `HostedZoneId`, specify the value of
+#' `HostedZoneIdMarker` from the previous response, which is the hosted
+#' zone ID of the first traffic policy instance in the next group of
+#' traffic policy instances.
 #' 
 #' If the value of `IsTruncated` in the previous response was `false`,
 #' there are no more traffic policy instances to get.
 #' @param TrafficPolicyInstanceNameMarker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more traffic policy instances. To get more traffic policy
-#' instances, submit another `ListTrafficPolicyInstances` request. For the
-#' value of `trafficpolicyinstancename`, specify the value of
-#' `TrafficPolicyInstanceNameMarker` from the previous response, which is
-#' the name of the first traffic policy instance in the next group of
+#' instances, submit another
+#' [`list_traffic_policy_instances`][route53_list_traffic_policy_instances]
+#' request. For the value of `trafficpolicyinstancename`, specify the value
+#' of `TrafficPolicyInstanceNameMarker` from the previous response, which
+#' is the name of the first traffic policy instance in the next group of
 #' traffic policy instances.
 #' 
 #' If the value of `IsTruncated` in the previous response was `false`,
 #' there are no more traffic policy instances to get.
 #' @param TrafficPolicyInstanceTypeMarker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more traffic policy instances. To get more traffic policy
-#' instances, submit another `ListTrafficPolicyInstances` request. For the
-#' value of `trafficpolicyinstancetype`, specify the value of
-#' `TrafficPolicyInstanceTypeMarker` from the previous response, which is
-#' the type of the first traffic policy instance in the next group of
+#' instances, submit another
+#' [`list_traffic_policy_instances`][route53_list_traffic_policy_instances]
+#' request. For the value of `trafficpolicyinstancetype`, specify the value
+#' of `TrafficPolicyInstanceTypeMarker` from the previous response, which
+#' is the type of the first traffic policy instance in the next group of
 #' traffic policy instances.
 #' 
 #' If the value of `IsTruncated` in the previous response was `false`,
 #' there are no more traffic policy instances to get.
 #' @param MaxItems The maximum number of traffic policy instances that you want Amazon
-#' Route 53 to return in response to a `ListTrafficPolicyInstances`
+#' Route 53 to return in response to a
+#' [`list_traffic_policy_instances`][route53_list_traffic_policy_instances]
 #' request. If you have more than `MaxItems` traffic policy instances, the
 #' value of the `IsTruncated` element in the response is `true`, and the
 #' values of `HostedZoneIdMarker`, `TrafficPolicyInstanceNameMarker`, and
@@ -4001,11 +4062,13 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
 #' Gets information about the traffic policy instances that you created in
 #' a specified hosted zone.
 #' 
-#' After you submit a `CreateTrafficPolicyInstance` or an
-#' `UpdateTrafficPolicyInstance` request, there's a brief delay while
-#' Amazon Route 53 creates the resource record sets that are specified in
-#' the traffic policy definition. For more information, see the `State`
-#' response element.
+#' After you submit a
+#' [`create_traffic_policy_instance`][route53_create_traffic_policy_instance]
+#' or an
+#' [`update_traffic_policy_instance`][route53_update_traffic_policy_instance]
+#' request, there's a brief delay while Amazon Route 53 creates the
+#' resource record sets that are specified in the traffic policy
+#' definition. For more information, see the `State` response element.
 #' 
 #' Route 53 returns a maximum of 100 items in each response. If you have a
 #' lot of traffic policy instances, you can use the `MaxItems` parameter to
@@ -4020,20 +4083,22 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
 #' for.
 #' @param TrafficPolicyInstanceNameMarker If the value of `IsTruncated` in the previous response is true, you have
 #' more traffic policy instances. To get more traffic policy instances,
-#' submit another `ListTrafficPolicyInstances` request. For the value of
-#' `trafficpolicyinstancename`, specify the value of
-#' `TrafficPolicyInstanceNameMarker` from the previous response, which is
-#' the name of the first traffic policy instance in the next group of
+#' submit another
+#' [`list_traffic_policy_instances`][route53_list_traffic_policy_instances]
+#' request. For the value of `trafficpolicyinstancename`, specify the value
+#' of `TrafficPolicyInstanceNameMarker` from the previous response, which
+#' is the name of the first traffic policy instance in the next group of
 #' traffic policy instances.
 #' 
 #' If the value of `IsTruncated` in the previous response was `false`,
 #' there are no more traffic policy instances to get.
 #' @param TrafficPolicyInstanceTypeMarker If the value of `IsTruncated` in the previous response is true, you have
 #' more traffic policy instances. To get more traffic policy instances,
-#' submit another `ListTrafficPolicyInstances` request. For the value of
-#' `trafficpolicyinstancetype`, specify the value of
-#' `TrafficPolicyInstanceTypeMarker` from the previous response, which is
-#' the type of the first traffic policy instance in the next group of
+#' submit another
+#' [`list_traffic_policy_instances`][route53_list_traffic_policy_instances]
+#' request. For the value of `trafficpolicyinstancetype`, specify the value
+#' of `TrafficPolicyInstanceTypeMarker` from the previous response, which
+#' is the type of the first traffic policy instance in the next group of
 #' traffic policy instances.
 #' 
 #' If the value of `IsTruncated` in the previous response was `false`,
@@ -4083,11 +4148,13 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
 #' Gets information about the traffic policy instances that you created by
 #' using a specify traffic policy version.
 #' 
-#' After you submit a `CreateTrafficPolicyInstance` or an
-#' `UpdateTrafficPolicyInstance` request, there's a brief delay while
-#' Amazon Route 53 creates the resource record sets that are specified in
-#' the traffic policy definition. For more information, see the `State`
-#' response element.
+#' After you submit a
+#' [`create_traffic_policy_instance`][route53_create_traffic_policy_instance]
+#' or an
+#' [`update_traffic_policy_instance`][route53_update_traffic_policy_instance]
+#' request, there's a brief delay while Amazon Route 53 creates the
+#' resource record sets that are specified in the traffic policy
+#' definition. For more information, see the `State` response element.
 #' 
 #' Route 53 returns a maximum of 100 items in each response. If you have a
 #' lot of traffic policy instances, you can use the `MaxItems` parameter to
@@ -4106,7 +4173,9 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
 #' that is specified by `TrafficPolicyId`.
 #' @param HostedZoneIdMarker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more traffic policy instances. To get more traffic policy
-#' instances, submit another `ListTrafficPolicyInstancesByPolicy` request.
+#' instances, submit another
+#' [`list_traffic_policy_instances_by_policy`][route53_list_traffic_policy_instances_by_policy]
+#' request.
 #' 
 #' For the value of `hostedzoneid`, specify the value of
 #' `HostedZoneIdMarker` from the previous response, which is the hosted
@@ -4117,7 +4186,9 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
 #' there are no more traffic policy instances to get.
 #' @param TrafficPolicyInstanceNameMarker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more traffic policy instances. To get more traffic policy
-#' instances, submit another `ListTrafficPolicyInstancesByPolicy` request.
+#' instances, submit another
+#' [`list_traffic_policy_instances_by_policy`][route53_list_traffic_policy_instances_by_policy]
+#' request.
 #' 
 #' For the value of `trafficpolicyinstancename`, specify the value of
 #' `TrafficPolicyInstanceNameMarker` from the previous response, which is
@@ -4128,7 +4199,9 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
 #' there are no more traffic policy instances to get.
 #' @param TrafficPolicyInstanceTypeMarker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more traffic policy instances. To get more traffic policy
-#' instances, submit another `ListTrafficPolicyInstancesByPolicy` request.
+#' instances, submit another
+#' [`list_traffic_policy_instances_by_policy`][route53_list_traffic_policy_instances_by_policy]
+#' request.
 #' 
 #' For the value of `trafficpolicyinstancetype`, specify the value of
 #' `TrafficPolicyInstanceTypeMarker` from the previous response, which is
@@ -4193,15 +4266,17 @@ route53_list_traffic_policy_instances_by_policy <- function(TrafficPolicyId, Tra
 #'
 #' @param Id &#91;required&#93; Specify the value of `Id` of the traffic policy for which you want to
 #' list all versions.
-#' @param TrafficPolicyVersionMarker For your first request to `ListTrafficPolicyVersions`, don't include the
-#' `TrafficPolicyVersionMarker` parameter.
+#' @param TrafficPolicyVersionMarker For your first request to
+#' [`list_traffic_policy_versions`][route53_list_traffic_policy_versions],
+#' don't include the `TrafficPolicyVersionMarker` parameter.
 #' 
 #' If you have more traffic policy versions than the value of `MaxItems`,
-#' `ListTrafficPolicyVersions` returns only the first group of `MaxItems`
-#' versions. To get more traffic policy versions, submit another
-#' `ListTrafficPolicyVersions` request. For the value of
-#' `TrafficPolicyVersionMarker`, specify the value of
-#' `TrafficPolicyVersionMarker` in the previous response.
+#' [`list_traffic_policy_versions`][route53_list_traffic_policy_versions]
+#' returns only the first group of `MaxItems` versions. To get more traffic
+#' policy versions, submit another
+#' [`list_traffic_policy_versions`][route53_list_traffic_policy_versions]
+#' request. For the value of `TrafficPolicyVersionMarker`, specify the
+#' value of `TrafficPolicyVersionMarker` in the previous response.
 #' @param MaxItems The maximum number of traffic policy versions that you want Amazon Route
 #' 53 to include in the response body for this request. If the specified
 #' traffic policy has more than `MaxItems` versions, the value of
@@ -4245,7 +4320,9 @@ route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker 
 #' @description
 #' Gets a list of the VPCs that were created by other accounts and that can
 #' be associated with a specified hosted zone because you've submitted one
-#' or more `CreateVPCAssociationAuthorization` requests.
+#' or more
+#' [`create_vpc_association_authorization`][route53_create_vpc_association_authorization]
+#' requests.
 #' 
 #' The response includes a `VPCs` element with a `VPC` child element for
 #' each VPC that can be associated with the hosted zone.
@@ -4260,7 +4337,8 @@ route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker 
 #' VPCs that can be associated with the specified hosted zone. To get the
 #' next page of results, submit another request, and include the value of
 #' `NextToken` from the response in the `nexttoken` parameter in another
-#' `ListVPCAssociationAuthorizations` request.
+#' [`list_vpc_association_authorizations`][route53_list_vpc_association_authorizations]
+#' request.
 #' @param MaxResults *Optional*: An integer that specifies the maximum number of VPCs that
 #' you want Amazon Route 53 to return. If you don't specify a value for
 #' `MaxResults`, Route 53 returns up to 50 VPCs per page.
@@ -4385,21 +4463,24 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #'   InsufficientDataHealthStatus, ResetElements)
 #'
 #' @param HealthCheckId &#91;required&#93; The ID for the health check for which you want detailed information.
-#' When you created the health check, `CreateHealthCheck` returned the ID
-#' in the response, in the `HealthCheckId` element.
+#' When you created the health check,
+#' [`create_health_check`][route53_create_health_check] returned the ID in
+#' the response, in the `HealthCheckId` element.
 #' @param HealthCheckVersion A sequential counter that Amazon Route 53 sets to `1` when you create a
 #' health check and increments by 1 each time you update settings for the
 #' health check.
 #' 
-#' We recommend that you use `GetHealthCheck` or `ListHealthChecks` to get
-#' the current value of `HealthCheckVersion` for the health check that you
-#' want to update, and that you include that value in your
-#' `UpdateHealthCheck` request. This prevents Route 53 from overwriting an
-#' intervening update:
+#' We recommend that you use [`get_health_check`][route53_get_health_check]
+#' or [`list_health_checks`][route53_list_health_checks] to get the current
+#' value of `HealthCheckVersion` for the health check that you want to
+#' update, and that you include that value in your
+#' [`update_health_check`][route53_update_health_check] request. This
+#' prevents Route 53 from overwriting an intervening update:
 #' 
-#' -   If the value in the `UpdateHealthCheck` request matches the value of
-#'     `HealthCheckVersion` in the health check, Route 53 updates the
-#'     health check with the new settings.
+#' -   If the value in the
+#'     [`update_health_check`][route53_update_health_check] request matches
+#'     the value of `HealthCheckVersion` in the health check, Route 53
+#'     updates the health check with the new settings.
 #' 
 #' -   If the value of `HealthCheckVersion` in the health check is greater,
 #'     the health check was changed after you got the version number. Route
@@ -4466,7 +4547,7 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' checks. The path can be any value for which your endpoint will return an
 #' HTTP status code of 2xx or 3xx when the endpoint is healthy, for example
 #' the file /docs/route53-health-check.html. You can also include query
-#' string parameters, for example, `/welcome.html?language=jp&amp;login=y`.
+#' string parameters, for example, `/welcome.html?language=jp&login=y`.
 #' 
 #' Specify this value only if you want to change it.
 #' @param FullyQualifiedDomainName Amazon Route 53 behavior depends on whether you specify a value for

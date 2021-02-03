@@ -9,7 +9,8 @@ lightsail_get_relational_database_bundles(pageToken)
 \arguments{
 \item{pageToken}{The token to advance to the next page of results from your request.
 
-To get a page token, perform an initial \code{GetRelationalDatabaseBundles}
+To get a page token, perform an initial
+\code{\link[=lightsail_get_relational_database_bundles]{get_relational_database_bundles}}
 request. If your results are paginated, the response will return a next
 page token that you can specify as the page token in a subsequent
 request.}

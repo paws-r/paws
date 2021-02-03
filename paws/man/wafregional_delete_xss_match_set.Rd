@@ -8,10 +8,12 @@ wafregional_delete_xss_match_set(XssMatchSetId, ChangeToken)
 }
 \arguments{
 \item{XssMatchSetId}{[required] The \code{XssMatchSetId} of the XssMatchSet that you want to delete.
-\code{XssMatchSetId} is returned by CreateXssMatchSet and by
-ListXssMatchSets.}
+\code{XssMatchSetId} is returned by
+\code{\link[=wafregional_create_xss_match_set]{create_xss_match_set}} and by
+\code{\link[=wafregional_list_xss_match_sets]{list_xss_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -28,16 +30,19 @@ it's still used in any \code{Rules} or if it still contains any XssMatchTuple
 objects.
 
 If you just want to remove an \code{XssMatchSet} from a \code{Rule}, use
-UpdateRule.
+\code{\link[=wafregional_update_rule]{update_rule}}.
 
 To permanently delete an \code{XssMatchSet} from AWS WAF, perform the
 following steps:
 \enumerate{
 \item Update the \code{XssMatchSet} to remove filters, if any. For more
-information, see UpdateXssMatchSet.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{DeleteXssMatchSet} request.
-\item Submit a \code{DeleteXssMatchSet} request.
+information, see
+\code{\link[=wafregional_update_xss_match_set]{update_xss_match_set}}.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=wafregional_delete_xss_match_set]{delete_xss_match_set}} request.
+\item Submit a \code{\link[=wafregional_delete_xss_match_set]{delete_xss_match_set}}
+request.
 }
 }
 \section{Request syntax}{

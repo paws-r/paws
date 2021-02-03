@@ -33,7 +33,8 @@ current location and start advertising it through AWS.
 It can take a few minutes before traffic to the specified addresses
 starts routing to AWS because of BGP propagation delays.
 
-To stop advertising the BYOIP CIDR, use WithdrawByoipCidr.
+To stop advertising the BYOIP CIDR, use
+\code{\link[=ec2_withdraw_byoip_cidr]{withdraw_byoip_cidr}}.
 }
 \section{Request syntax}{
 \preformatted{svc$advertise_byoip_cidr(

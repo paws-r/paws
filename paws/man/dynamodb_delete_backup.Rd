@@ -12,7 +12,8 @@ dynamodb_delete_backup(BackupArn)
 \description{
 Deletes an existing backup of a table.
 
-You can call \code{DeleteBackup} at a maximum rate of 10 times per second.
+You can call \code{\link[=dynamodb_delete_backup]{delete_backup}} at a maximum rate
+of 10 times per second.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_backup(

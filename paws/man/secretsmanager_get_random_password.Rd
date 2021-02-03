@@ -28,7 +28,7 @@ The following are the punctuation characters that \emph{can} be included in
 the generated password if you don't explicitly exclude them with
 \code{ExcludeCharacters} or \code{ExcludePunctuation}:
 
-\verb{! \\" # $ \% &amp; \\' ( ) * + , - . / : ; &lt; = &gt; ? @ \\\[ \\\\ \\\] ^ _ \\` \\\{ | \\\} ~}}
+\verb{! \\" # $ \% & \\' ( ) * + , - . / : ; < = > ? @ \\\[ \\\\ \\\] ^ _ \\` \\\{ | \\\} ~}}
 
 \item{ExcludeUppercase}{Specifies that the generated password should not include uppercase
 letters. The default if you do not include this switch parameter is that

@@ -50,17 +50,18 @@ FAILED
 \item DELETE PENDING > DELETE IN\\_PROGRESS
 }
 
-To get the campaign status, call DescribeCampaign.
+To get the campaign status, call
+\code{\link[=personalize_describe_campaign]{describe_campaign}}.
 
 Wait until the \code{status} of the campaign is \code{ACTIVE} before asking the
 campaign for recommendations.
 
 \strong{Related APIs}
 \itemize{
-\item ListCampaigns
-\item DescribeCampaign
-\item UpdateCampaign
-\item DeleteCampaign
+\item \code{\link[=personalize_list_campaigns]{list_campaigns}}
+\item \code{\link[=personalize_describe_campaign]{describe_campaign}}
+\item \code{\link[=personalize_update_campaign]{update_campaign}}
+\item \code{\link[=personalize_delete_campaign]{delete_campaign}}
 }
 }
 \section{Request syntax}{

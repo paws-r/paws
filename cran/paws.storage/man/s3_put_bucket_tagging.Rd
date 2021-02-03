@@ -44,7 +44,8 @@ default and can grant this permission to others. For more information
 about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
 and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
-\code{PutBucketTagging} has the following special errors:
+\code{\link[=s3_put_bucket_tagging]{put_bucket_tagging}} has the following special
+errors:
 \itemize{
 \item Error code: \code{InvalidTagError}
 \itemize{
@@ -69,10 +70,11 @@ the bucket.
 }
 }
 
-The following operations are related to \code{PutBucketTagging}:
+The following operations are related to
+\code{\link[=s3_put_bucket_tagging]{put_bucket_tagging}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html}{GetBucketTagging}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html}{DeleteBucketTagging}
+\item \code{\link[=s3_get_bucket_tagging]{get_bucket_tagging}}
+\item \code{\link[=s3_delete_bucket_tagging]{delete_bucket_tagging}}
 }
 }
 \section{Request syntax}{

@@ -30,12 +30,13 @@ combination of the bucket-level and account-level settings.
 For more information about when Amazon S3 considers a bucket or an
 object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of "Public"}.
 
-The following operations are related to \code{GetPublicAccessBlock}:
+The following operations are related to
+\code{\link[=s3_get_public_access_block]{get_public_access_block}}:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html}{Using Amazon S3 Block Public Access}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutPublicAccessBlock.html}{PutPublicAccessBlock}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetPublicAccessBlock.html}{GetPublicAccessBlock}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html}{DeletePublicAccessBlock}
+\item \code{\link[=s3_put_public_access_block]{put_public_access_block}}
+\item \code{\link[=s3_get_public_access_block]{get_public_access_block}}
+\item \code{\link[=s3_delete_public_access_block]{delete_public_access_block}}
 }
 }
 \section{Request syntax}{

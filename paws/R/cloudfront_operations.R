@@ -153,17 +153,16 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' Creates a new web distribution. You create a CloudFront distribution to
 #' tell CloudFront where you want content to be delivered from, and the
 #' details about how to track and manage content delivery. Send a `POST`
-#' request to the
-#' `/<i>CloudFront API version</i>/distribution`/`distribution ID`
+#' request to the `/CloudFront API version/distribution`/`distribution ID`
 #' resource.
 #' 
 #' When you update a distribution, there are more required fields than when
 #' you create a distribution. When you update your distribution by using
-#' [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html),
-#' follow the steps included in the documentation to get the current
-#' configuration and then make your updates. This helps to make sure that
-#' you include all of the required fields. To view a summary, see [Required
-#' Fields for Create Distribution and Update
+#' [`update_distribution`][cloudfront_update_distribution], follow the
+#' steps included in the documentation to get the current configuration and
+#' then make your updates. This helps to make sure that you include all of
+#' the required fields. To view a summary, see [Required Fields for Create
+#' Distribution and Update
 #' Distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html)
 #' in the *Amazon CloudFront Developer Guide*.
 #'
@@ -1276,8 +1275,8 @@ cloudfront_create_realtime_log_config <- function(EndPoints, Fields, Name, Sampl
 #' This API is deprecated. Amazon CloudFront is deprecating real-time
 #' messaging protocol (RTMP) distributions on December 31, 2020. For more
 #' information, [read the
-#' announcement](https://forums.aws.amazon.com:443/ann.jspa?annID=7356) on
-#' the Amazon CloudFront discussion forum.
+#' announcement](https://forums.aws.amazon.com/ann.jspa?annID=7356) on the
+#' Amazon CloudFront discussion forum.
 #'
 #' @usage
 #' cloudfront_create_streaming_distribution(StreamingDistributionConfig)
@@ -1344,8 +1343,8 @@ cloudfront_create_streaming_distribution <- function(StreamingDistributionConfig
 #' This API is deprecated. Amazon CloudFront is deprecating real-time
 #' messaging protocol (RTMP) distributions on December 31, 2020. For more
 #' information, [read the
-#' announcement](https://forums.aws.amazon.com:443/ann.jspa?annID=7356) on
-#' the Amazon CloudFront discussion forum.
+#' announcement](https://forums.aws.amazon.com/ann.jspa?annID=7356) on the
+#' Amazon CloudFront discussion forum.
 #'
 #' @usage
 #' cloudfront_create_streaming_distribution_with_tags(
@@ -1427,17 +1426,21 @@ cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistribu
 #' cache behaviors, then delete the cache policy.
 #' 
 #' To delete a cache policy, you must provide the policy’s identifier and
-#' version. To get these values, you can use `ListCachePolicies` or
-#' `GetCachePolicy`.
+#' version. To get these values, you can use
+#' [`list_cache_policies`][cloudfront_list_cache_policies] or
+#' [`get_cache_policy`][cloudfront_get_cache_policy].
 #'
 #' @usage
 #' cloudfront_delete_cache_policy(Id, IfMatch)
 #'
 #' @param Id &#91;required&#93; The unique identifier for the cache policy that you are deleting. To get
-#' the identifier, you can use `ListCachePolicies`.
+#' the identifier, you can use
+#' [`list_cache_policies`][cloudfront_list_cache_policies].
 #' @param IfMatch The version of the cache policy that you are deleting. The version is
 #' the cache policy’s `ETag` value, which you can get using
-#' `ListCachePolicies`, `GetCachePolicy`, or `GetCachePolicyConfig`.
+#' [`list_cache_policies`][cloudfront_list_cache_policies],
+#' [`get_cache_policy`][cloudfront_get_cache_policy], or
+#' [`get_cache_policy_config`][cloudfront_get_cache_policy_config].
 #'
 #' @section Request syntax:
 #' ```
@@ -1637,17 +1640,20 @@ cloudfront_delete_field_level_encryption_profile <- function(Id, IfMatch = NULL)
 #' behaviors, then delete the key group.
 #' 
 #' To delete a key group, you must provide the key group’s identifier and
-#' version. To get these values, use `ListKeyGroups` followed by
-#' `GetKeyGroup` or `GetKeyGroupConfig`.
+#' version. To get these values, use
+#' [`list_key_groups`][cloudfront_list_key_groups] followed by
+#' [`get_key_group`][cloudfront_get_key_group] or
+#' [`get_key_group_config`][cloudfront_get_key_group_config].
 #'
 #' @usage
 #' cloudfront_delete_key_group(Id, IfMatch)
 #'
 #' @param Id &#91;required&#93; The identifier of the key group that you are deleting. To get the
-#' identifier, use `ListKeyGroups`.
+#' identifier, use [`list_key_groups`][cloudfront_list_key_groups].
 #' @param IfMatch The version of the key group that you are deleting. The version is the
-#' key group’s `ETag` value. To get the `ETag`, use `GetKeyGroup` or
-#' `GetKeyGroupConfig`.
+#' key group’s `ETag` value. To get the `ETag`, use
+#' [`get_key_group`][cloudfront_get_key_group] or
+#' [`get_key_group_config`][cloudfront_get_key_group_config].
 #'
 #' @section Request syntax:
 #' ```
@@ -1727,18 +1733,21 @@ cloudfront_delete_monitoring_subscription <- function(DistributionId) {
 #' 
 #' To delete an origin request policy, you must provide the policy’s
 #' identifier and version. To get the identifier, you can use
-#' `ListOriginRequestPolicies` or `GetOriginRequestPolicy`.
+#' [`list_origin_request_policies`][cloudfront_list_origin_request_policies]
+#' or [`get_origin_request_policy`][cloudfront_get_origin_request_policy].
 #'
 #' @usage
 #' cloudfront_delete_origin_request_policy(Id, IfMatch)
 #'
 #' @param Id &#91;required&#93; The unique identifier for the origin request policy that you are
 #' deleting. To get the identifier, you can use
-#' `ListOriginRequestPolicies`.
+#' [`list_origin_request_policies`][cloudfront_list_origin_request_policies].
 #' @param IfMatch The version of the origin request policy that you are deleting. The
 #' version is the origin request policy’s `ETag` value, which you can get
-#' using `ListOriginRequestPolicies`, `GetOriginRequestPolicy`, or
-#' `GetOriginRequestPolicyConfig`.
+#' using
+#' [`list_origin_request_policies`][cloudfront_list_origin_request_policies],
+#' [`get_origin_request_policy`][cloudfront_get_origin_request_policy], or
+#' [`get_origin_request_policy_config`][cloudfront_get_origin_request_policy_config].
 #'
 #' @section Request syntax:
 #' ```
@@ -1949,18 +1958,21 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 #' 
 #' To get a cache policy, you must provide the policy’s identifier. If the
 #' cache policy is attached to a distribution’s cache behavior, you can get
-#' the policy’s identifier using `ListDistributions` or `GetDistribution`.
-#' If the cache policy is not attached to a cache behavior, you can get the
-#' identifier using `ListCachePolicies`.
+#' the policy’s identifier using
+#' [`list_distributions`][cloudfront_list_distributions] or
+#' [`get_distribution`][cloudfront_get_distribution]. If the cache policy
+#' is not attached to a cache behavior, you can get the identifier using
+#' [`list_cache_policies`][cloudfront_list_cache_policies].
 #'
 #' @usage
 #' cloudfront_get_cache_policy(Id)
 #'
 #' @param Id &#91;required&#93; The unique identifier for the cache policy. If the cache policy is
 #' attached to a distribution’s cache behavior, you can get the policy’s
-#' identifier using `ListDistributions` or `GetDistribution`. If the cache
+#' identifier using [`list_distributions`][cloudfront_list_distributions]
+#' or [`get_distribution`][cloudfront_get_distribution]. If the cache
 #' policy is not attached to a cache behavior, you can get the identifier
-#' using `ListCachePolicies`.
+#' using [`list_cache_policies`][cloudfront_list_cache_policies].
 #'
 #' @section Request syntax:
 #' ```
@@ -1996,18 +2008,21 @@ cloudfront_get_cache_policy <- function(Id) {
 #' 
 #' To get a cache policy configuration, you must provide the policy’s
 #' identifier. If the cache policy is attached to a distribution’s cache
-#' behavior, you can get the policy’s identifier using `ListDistributions`
-#' or `GetDistribution`. If the cache policy is not attached to a cache
-#' behavior, you can get the identifier using `ListCachePolicies`.
+#' behavior, you can get the policy’s identifier using
+#' [`list_distributions`][cloudfront_list_distributions] or
+#' [`get_distribution`][cloudfront_get_distribution]. If the cache policy
+#' is not attached to a cache behavior, you can get the identifier using
+#' [`list_cache_policies`][cloudfront_list_cache_policies].
 #'
 #' @usage
 #' cloudfront_get_cache_policy_config(Id)
 #'
 #' @param Id &#91;required&#93; The unique identifier for the cache policy. If the cache policy is
 #' attached to a distribution’s cache behavior, you can get the policy’s
-#' identifier using `ListDistributions` or `GetDistribution`. If the cache
+#' identifier using [`list_distributions`][cloudfront_list_distributions]
+#' or [`get_distribution`][cloudfront_get_distribution]. If the cache
 #' policy is not attached to a cache behavior, you can get the identifier
-#' using `ListCachePolicies`.
+#' using [`list_cache_policies`][cloudfront_list_cache_policies].
 #'
 #' @section Request syntax:
 #' ```
@@ -2384,15 +2399,17 @@ cloudfront_get_invalidation <- function(DistributionId, Id) {
 #' 
 #' To get a key group, you must provide the key group’s identifier. If the
 #' key group is referenced in a distribution’s cache behavior, you can get
-#' the key group’s identifier using `ListDistributions` or
-#' `GetDistribution`. If the key group is not referenced in a cache
-#' behavior, you can get the identifier using `ListKeyGroups`.
+#' the key group’s identifier using
+#' [`list_distributions`][cloudfront_list_distributions] or
+#' [`get_distribution`][cloudfront_get_distribution]. If the key group is
+#' not referenced in a cache behavior, you can get the identifier using
+#' [`list_key_groups`][cloudfront_list_key_groups].
 #'
 #' @usage
 #' cloudfront_get_key_group(Id)
 #'
 #' @param Id &#91;required&#93; The identifier of the key group that you are getting. To get the
-#' identifier, use `ListKeyGroups`.
+#' identifier, use [`list_key_groups`][cloudfront_list_key_groups].
 #'
 #' @section Request syntax:
 #' ```
@@ -2429,15 +2446,16 @@ cloudfront_get_key_group <- function(Id) {
 #' To get a key group configuration, you must provide the key group’s
 #' identifier. If the key group is referenced in a distribution’s cache
 #' behavior, you can get the key group’s identifier using
-#' `ListDistributions` or `GetDistribution`. If the key group is not
-#' referenced in a cache behavior, you can get the identifier using
-#' `ListKeyGroups`.
+#' [`list_distributions`][cloudfront_list_distributions] or
+#' [`get_distribution`][cloudfront_get_distribution]. If the key group is
+#' not referenced in a cache behavior, you can get the identifier using
+#' [`list_key_groups`][cloudfront_list_key_groups].
 #'
 #' @usage
 #' cloudfront_get_key_group_config(Id)
 #'
 #' @param Id &#91;required&#93; The identifier of the key group whose configuration you are getting. To
-#' get the identifier, use `ListKeyGroups`.
+#' get the identifier, use [`list_key_groups`][cloudfront_list_key_groups].
 #'
 #' @section Request syntax:
 #' ```
@@ -2518,19 +2536,23 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
 #' To get an origin request policy, you must provide the policy’s
 #' identifier. If the origin request policy is attached to a distribution’s
 #' cache behavior, you can get the policy’s identifier using
-#' `ListDistributions` or `GetDistribution`. If the origin request policy
-#' is not attached to a cache behavior, you can get the identifier using
-#' `ListOriginRequestPolicies`.
+#' [`list_distributions`][cloudfront_list_distributions] or
+#' [`get_distribution`][cloudfront_get_distribution]. If the origin request
+#' policy is not attached to a cache behavior, you can get the identifier
+#' using
+#' [`list_origin_request_policies`][cloudfront_list_origin_request_policies].
 #'
 #' @usage
 #' cloudfront_get_origin_request_policy(Id)
 #'
 #' @param Id &#91;required&#93; The unique identifier for the origin request policy. If the origin
 #' request policy is attached to a distribution’s cache behavior, you can
-#' get the policy’s identifier using `ListDistributions` or
-#' `GetDistribution`. If the origin request policy is not attached to a
-#' cache behavior, you can get the identifier using
-#' `ListOriginRequestPolicies`.
+#' get the policy’s identifier using
+#' [`list_distributions`][cloudfront_list_distributions] or
+#' [`get_distribution`][cloudfront_get_distribution]. If the origin request
+#' policy is not attached to a cache behavior, you can get the identifier
+#' using
+#' [`list_origin_request_policies`][cloudfront_list_origin_request_policies].
 #'
 #' @section Request syntax:
 #' ```
@@ -2567,19 +2589,23 @@ cloudfront_get_origin_request_policy <- function(Id) {
 #' To get an origin request policy configuration, you must provide the
 #' policy’s identifier. If the origin request policy is attached to a
 #' distribution’s cache behavior, you can get the policy’s identifier using
-#' `ListDistributions` or `GetDistribution`. If the origin request policy
-#' is not attached to a cache behavior, you can get the identifier using
-#' `ListOriginRequestPolicies`.
+#' [`list_distributions`][cloudfront_list_distributions] or
+#' [`get_distribution`][cloudfront_get_distribution]. If the origin request
+#' policy is not attached to a cache behavior, you can get the identifier
+#' using
+#' [`list_origin_request_policies`][cloudfront_list_origin_request_policies].
 #'
 #' @usage
 #' cloudfront_get_origin_request_policy_config(Id)
 #'
 #' @param Id &#91;required&#93; The unique identifier for the origin request policy. If the origin
 #' request policy is attached to a distribution’s cache behavior, you can
-#' get the policy’s identifier using `ListDistributions` or
-#' `GetDistribution`. If the origin request policy is not attached to a
-#' cache behavior, you can get the identifier using
-#' `ListOriginRequestPolicies`.
+#' get the policy’s identifier using
+#' [`list_distributions`][cloudfront_list_distributions] or
+#' [`get_distribution`][cloudfront_get_distribution]. If the origin request
+#' policy is not attached to a cache behavior, you can get the identifier
+#' using
+#' [`list_origin_request_policies`][cloudfront_list_origin_request_policies].
 #'
 #' @section Request syntax:
 #' ```
@@ -3754,14 +3780,15 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 #' with the values provided in the request. You cannot update some fields
 #' independent of others. To update a cache policy configuration:
 #' 
-#' 1.  Use `GetCachePolicyConfig` to get the current configuration.
+#' 1.  Use [`get_cache_policy_config`][cloudfront_get_cache_policy_config]
+#'     to get the current configuration.
 #' 
 #' 2.  Locally modify the fields in the cache policy configuration that you
 #'     want to update.
 #' 
-#' 3.  Call `UpdateCachePolicy` by providing the entire cache policy
-#'     configuration, including the fields that you modified and those that
-#'     you didn’t.
+#' 3.  Call [`update_cache_policy`][cloudfront_update_cache_policy] by
+#'     providing the entire cache policy configuration, including the
+#'     fields that you modified and those that you didn’t.
 #'
 #' @usage
 #' cloudfront_update_cache_policy(CachePolicyConfig, Id, IfMatch)
@@ -3769,10 +3796,11 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 #' @param CachePolicyConfig &#91;required&#93; A cache policy configuration.
 #' @param Id &#91;required&#93; The unique identifier for the cache policy that you are updating. The
 #' identifier is returned in a cache behavior’s `CachePolicyId` field in
-#' the response to `GetDistributionConfig`.
+#' the response to
+#' [`get_distribution_config`][cloudfront_get_distribution_config].
 #' @param IfMatch The version of the cache policy that you are updating. The version is
 #' returned in the cache policy’s `ETag` field in the response to
-#' `GetCachePolicyConfig`.
+#' [`get_cache_policy_config`][cloudfront_get_cache_policy_config].
 #'
 #' @section Request syntax:
 #' ```
@@ -3902,8 +3930,9 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' 
 #' The update process includes getting the current distribution
 #' configuration, updating the XML document that is returned to make your
-#' changes, and then submitting an `UpdateDistribution` request to make the
-#' updates.
+#' changes, and then submitting an
+#' [`update_distribution`][cloudfront_update_distribution] request to make
+#' the updates.
 #' 
 #' For information about updating a distribution using the CloudFront
 #' console instead, see [Creating a
@@ -3913,7 +3942,7 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' **To update a web distribution using the CloudFront API**
 #' 
 #' 1.  Submit a
-#'     [GetDistributionConfig](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistributionConfig.html)
+#'     [`get_distribution_config`][cloudfront_get_distribution_config]
 #'     request to get the current configuration and an `Etag` header for
 #'     the distribution.
 #' 
@@ -3921,7 +3950,8 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'     header.
 #' 
 #' 2.  Update the XML document that was returned in the response to your
-#'     `GetDistributionConfig` request to include your changes.
+#'     [`get_distribution_config`][cloudfront_get_distribution_config]
+#'     request to include your changes.
 #' 
 #'     When you edit the XML file, be aware of the following:
 #' 
@@ -3936,15 +3966,16 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'         change this value, CloudFront returns an `IllegalUpdate` error.
 #' 
 #'     -   The new configuration replaces the existing configuration; the
-#'         values that you specify in an `UpdateDistribution` request are
-#'         not merged into your existing configuration. When you add,
+#'         values that you specify in an
+#'         [`update_distribution`][cloudfront_update_distribution] request
+#'         are not merged into your existing configuration. When you add,
 #'         delete, or replace values in an element that allows multiple
 #'         values (for example, `CNAME`), you must specify all of the
 #'         values that you want to appear in the updated distribution. In
 #'         addition, you must update the corresponding `Quantity` element.
 #' 
-#' 3.  Submit an `UpdateDistribution` request to update the configuration
-#'     for your distribution:
+#' 3.  Submit an [`update_distribution`][cloudfront_update_distribution]
+#'     request to update the configuration for your distribution:
 #' 
 #'     -   In the request body, include the XML document that you updated
 #'         in Step 2. The request body must include an XML document with a
@@ -3952,13 +3983,14 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' 
 #'     -   Set the value of the HTTP `If-Match` header to the value of the
 #'         `ETag` header that CloudFront returned when you submitted the
-#'         `GetDistributionConfig` request in Step 1.
+#'         [`get_distribution_config`][cloudfront_get_distribution_config]
+#'         request in Step 1.
 #' 
-#' 4.  Review the response to the `UpdateDistribution` request to confirm
-#'     that the configuration was successfully updated.
+#' 4.  Review the response to the
+#'     [`update_distribution`][cloudfront_update_distribution] request to
+#'     confirm that the configuration was successfully updated.
 #' 
-#' 5.  Optional: Submit a
-#'     [GetDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistribution.html)
+#' 5.  Optional: Submit a [`get_distribution`][cloudfront_get_distribution]
 #'     request to confirm that your changes have propagated. When
 #'     propagation is complete, the value of `Status` is `Deployed`.
 #'
@@ -4408,13 +4440,16 @@ cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptio
 #' provided in the request. You cannot update some fields independent of
 #' others. To update a key group:
 #' 
-#' 1.  Get the current key group with `GetKeyGroup` or `GetKeyGroupConfig`.
+#' 1.  Get the current key group with
+#'     [`get_key_group`][cloudfront_get_key_group] or
+#'     [`get_key_group_config`][cloudfront_get_key_group_config].
 #' 
 #' 2.  Locally modify the fields in the key group that you want to update.
 #'     For example, add or remove public key IDs.
 #' 
-#' 3.  Call `UpdateKeyGroup` with the entire key group object, including
-#'     the fields that you modified and those that you didn’t.
+#' 3.  Call [`update_key_group`][cloudfront_update_key_group] with the
+#'     entire key group object, including the fields that you modified and
+#'     those that you didn’t.
 #'
 #' @usage
 #' cloudfront_update_key_group(KeyGroupConfig, Id, IfMatch)
@@ -4469,14 +4504,17 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 #' some fields independent of others. To update an origin request policy
 #' configuration:
 #' 
-#' 1.  Use `GetOriginRequestPolicyConfig` to get the current configuration.
+#' 1.  Use
+#'     [`get_origin_request_policy_config`][cloudfront_get_origin_request_policy_config]
+#'     to get the current configuration.
 #' 
 #' 2.  Locally modify the fields in the origin request policy configuration
 #'     that you want to update.
 #' 
-#' 3.  Call `UpdateOriginRequestPolicy` by providing the entire origin
-#'     request policy configuration, including the fields that you modified
-#'     and those that you didn’t.
+#' 3.  Call
+#'     [`update_origin_request_policy`][cloudfront_update_origin_request_policy]
+#'     by providing the entire origin request policy configuration,
+#'     including the fields that you modified and those that you didn’t.
 #'
 #' @usage
 #' cloudfront_update_origin_request_policy(OriginRequestPolicyConfig, Id,
@@ -4486,10 +4524,11 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 #' @param Id &#91;required&#93; The unique identifier for the origin request policy that you are
 #' updating. The identifier is returned in a cache behavior’s
 #' `OriginRequestPolicyId` field in the response to
-#' `GetDistributionConfig`.
+#' [`get_distribution_config`][cloudfront_get_distribution_config].
 #' @param IfMatch The version of the origin request policy that you are updating. The
 #' version is returned in the origin request policy’s `ETag` field in the
-#' response to `GetOriginRequestPolicyConfig`.
+#' response to
+#' [`get_origin_request_policy_config`][cloudfront_get_origin_request_policy_config].
 #'
 #' @section Request syntax:
 #' ```
@@ -4608,15 +4647,16 @@ cloudfront_update_public_key <- function(PublicKeyConfig, Id, IfMatch = NULL) {
 #' parameters independent of others. To update a real-time log
 #' configuration:
 #' 
-#' 1.  Call `GetRealtimeLogConfig` to get the current real-time log
-#'     configuration.
+#' 1.  Call [`get_realtime_log_config`][cloudfront_get_realtime_log_config]
+#'     to get the current real-time log configuration.
 #' 
 #' 2.  Locally modify the parameters in the real-time log configuration
 #'     that you want to update.
 #' 
-#' 3.  Call this API (`UpdateRealtimeLogConfig`) by providing the entire
-#'     real-time log configuration, including the parameters that you
-#'     modified and those that you didn’t.
+#' 3.  Call this API
+#'     ([`update_realtime_log_config`][cloudfront_update_realtime_log_config])
+#'     by providing the entire real-time log configuration, including the
+#'     parameters that you modified and those that you didn’t.
 #' 
 #' You cannot update a real-time log configuration’s `Name` or `ARN`.
 #'

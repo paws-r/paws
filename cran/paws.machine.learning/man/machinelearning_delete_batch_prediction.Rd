@@ -13,12 +13,15 @@ machinelearning_delete_batch_prediction(BatchPredictionId)
 Assigns the DELETED status to a \code{BatchPrediction}, rendering it
 unusable.
 
-After using the \code{DeleteBatchPrediction} operation, you can use the
-GetBatchPrediction operation to verify that the status of the
-\code{BatchPrediction} changed to DELETED.
+After using the
+\code{\link[=machinelearning_delete_batch_prediction]{delete_batch_prediction}}
+operation, you can use the
+\code{\link[=machinelearning_get_batch_prediction]{get_batch_prediction}} operation
+to verify that the status of the \code{BatchPrediction} changed to DELETED.
 
-\strong{Caution:} The result of the \code{DeleteBatchPrediction} operation is
-irreversible.
+\strong{Caution:} The result of the
+\code{\link[=machinelearning_delete_batch_prediction]{delete_batch_prediction}}
+operation is irreversible.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_batch_prediction(

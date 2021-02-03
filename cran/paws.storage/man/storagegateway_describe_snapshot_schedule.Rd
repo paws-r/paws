@@ -7,8 +7,9 @@
 storagegateway_describe_snapshot_schedule(VolumeARN)
 }
 \arguments{
-\item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
-operation to return a list of gateway volumes.}
+\item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the
+\code{\link[=storagegateway_list_volumes]{list_volumes}} operation to return a list
+of gateway volumes.}
 }
 \description{
 Describes the snapshot schedule for the specified gateway volume. The

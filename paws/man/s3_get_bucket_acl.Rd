@@ -23,7 +23,7 @@ the ACL of the bucket without using an authorization header.
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html}{ListObjects}
+\item \code{\link[=s3_list_objects]{list_objects}}
 }
 }
 \section{Request syntax}{

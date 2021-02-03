@@ -19,7 +19,7 @@ Deletes a virtual MFA device.
 
 You must deactivate a user's virtual MFA device before you can delete
 it. For information about deactivating MFA devices, see
-DeactivateMFADevice.
+\code{\link[=iam_deactivate_mfa_device]{deactivate_mfa_device}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_virtual_mfa_device(

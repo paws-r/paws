@@ -30,8 +30,9 @@ language.}
 }
 \description{
 Starts an asynchronous job to detect protected health information (PHI).
-Use the \code{DescribePHIDetectionJob} operation to track the status of a
-job.
+Use the
+\code{\link[=comprehendmedical_describe_phi_detection_job]{describe_phi_detection_job}}
+operation to track the status of a job.
 }
 \section{Request syntax}{
 \preformatted{svc$start_phi_detection_job(

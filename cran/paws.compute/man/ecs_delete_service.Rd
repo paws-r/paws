@@ -22,18 +22,19 @@ Deletes a specified service within a cluster. You can delete a service
 if you have no running tasks in it and the desired task count is zero.
 If the service is actively maintaining tasks, you cannot delete it, and
 you must update the service to a desired task count of zero. For more
-information, see UpdateService.
+information, see \code{\link[=ecs_update_service]{update_service}}.
 
 When you delete a service, if there are still running tasks that require
 cleanup, the service status moves from \code{ACTIVE} to \code{DRAINING}, and the
-service is no longer visible in the console or in the ListServices API
-operation. After all tasks have transitioned to either \code{STOPPING} or
-\code{STOPPED} status, the service status moves from \code{DRAINING} to
-\code{INACTIVE}. Services in the \code{DRAINING} or \code{INACTIVE} status can still be
-viewed with the DescribeServices API operation. However, in the future,
-\code{INACTIVE} services may be cleaned up and purged from Amazon ECS record
-keeping, and DescribeServices calls on those services return a
-\code{ServiceNotFoundException} error.
+service is no longer visible in the console or in the
+\code{\link[=ecs_list_services]{list_services}} API operation. After all tasks have
+transitioned to either \code{STOPPING} or \code{STOPPED} status, the service
+status moves from \code{DRAINING} to \code{INACTIVE}. Services in the \code{DRAINING}
+or \code{INACTIVE} status can still be viewed with the
+\code{\link[=ecs_describe_services]{describe_services}} API operation. However, in
+the future, \code{INACTIVE} services may be cleaned up and purged from Amazon
+ECS record keeping, and \code{\link[=ecs_describe_services]{describe_services}}
+calls on those services return a \code{ServiceNotFoundException} error.
 
 If you attempt to create a new service with the same name as an existing
 service in either \code{ACTIVE} or \code{DRAINING} status, you receive an error.

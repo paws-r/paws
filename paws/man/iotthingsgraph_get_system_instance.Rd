@@ -8,7 +8,7 @@ iotthingsgraph_get_system_instance(id)
 }
 \arguments{
 \item{id}{[required] The ID of the system deployment instance. This value is returned by
-\code{CreateSystemInstance}.
+\code{\link[=iotthingsgraph_create_system_instance]{create_system_instance}}.
 
 The ID should be in the following format.
 

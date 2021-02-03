@@ -11,17 +11,17 @@ elasticsearchservice_describe_elasticsearch_instance_type_limits(
 \arguments{
 \item{DomainName}{DomainName represents the name of the Domain that we are trying to
 modify. This should be present only if we are querying for Elasticsearch
-\verb{<a>Limits</a>} for existing domain.}
+\code{Limits} for existing domain.}
 
 \item{InstanceType}{[required] The instance type for an Elasticsearch cluster for which Elasticsearch
-\verb{<a>Limits</a>} are needed.}
+\code{Limits} are needed.}
 
-\item{ElasticsearchVersion}{[required] Version of Elasticsearch for which \verb{<a>Limits</a>} are needed.}
+\item{ElasticsearchVersion}{[required] Version of Elasticsearch for which \code{Limits} are needed.}
 }
 \description{
 Describe Elasticsearch Limits for a given InstanceType and
 ElasticsearchVersion. When modifying existing Domain, specify the
-\verb{<a>DomainName</a>} to know what Limits are supported for modifying.
+\code{DomainName} to know what Limits are supported for modifying.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_elasticsearch_instance_type_limits(

@@ -22,10 +22,10 @@ updating the agent differs depending on whether your container instance
 was launched with the Amazon ECS-optimized AMI or another operating
 system.
 
-\code{UpdateContainerAgent} requires the Amazon ECS-optimized AMI or Amazon
-Linux with the \code{ecs-init} service installed and running. For help
-updating the Amazon ECS container agent on other operating systems, see
-\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent}{Manually Updating the Amazon ECS Container Agent}
+\code{\link[=ecs_update_container_agent]{update_container_agent}} requires the
+Amazon ECS-optimized AMI or Amazon Linux with the \code{ecs-init} service
+installed and running. For help updating the Amazon ECS container agent
+on other operating systems, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent}{Manually Updating the Amazon ECS Container Agent}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{

@@ -27,7 +27,7 @@ input, if a cache cluster is enabled.}
 \item{variables}{A map that defines the stage variables for the Stage resource that is
 associated with the new deployment. Variable names can have alphanumeric
 and underscore characters, and the values must match
-\verb{\\\[A-Za-z0-9-._~:/?#&amp;=,\\\]+}.}
+\verb{\\\[A-Za-z0-9-._~:/?#&=,\\\]+}.}
 
 \item{canarySettings}{The input configuration for the canary deployment when the deployment is
 a canary release deployment.}

@@ -18,10 +18,9 @@ your AWS resources through bring your own IP addresses (BYOIP) and
 deletes the corresponding address pool.
 
 Before you can release an address range, you must stop advertising it by
-using
-\href{https://docs.aws.amazon.com/global-accelerator/latest/api/}{WithdrawByoipCidr}
-and you must not have any accelerators that are using static IP
-addresses allocated from its address range.
+using \code{\link[=globalaccelerator_withdraw_byoip_cidr]{withdraw_byoip_cidr}} and
+you must not have any accelerators that are using static IP addresses
+allocated from its address range.
 
 For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html}{Bring Your Own IP Addresses (BYOIP)}
 in the \emph{AWS Global Accelerator Developer Guide}.

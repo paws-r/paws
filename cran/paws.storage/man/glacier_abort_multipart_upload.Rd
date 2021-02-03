@@ -25,7 +25,8 @@ more parts to the multipart upload or complete the multipart upload.
 Aborting a completed upload fails. However, aborting an already-aborted
 upload will succeed, for a short time. For more information about
 uploading a part and completing a multipart upload, see
-UploadMultipartPart and CompleteMultipartUpload.
+\code{\link[=glacier_upload_multipart_part]{upload_multipart_part}} and
+\code{\link[=glacier_complete_multipart_upload]{complete_multipart_upload}}.
 
 This operation is idempotent.
 

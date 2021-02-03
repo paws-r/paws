@@ -18,8 +18,9 @@ mturk_list_assignments_for_hit(HITId, NextToken, MaxResults,
 \item{AssignmentStatuses}{The status of the assignments to return: Submitted | Approved | Rejected}
 }
 \description{
-The \code{ListAssignmentsForHIT} operation retrieves completed assignments
-for a HIT. You can use this operation to retrieve the results for a HIT.
+The \code{\link[=mturk_list_assignments_for_hit]{list_assignments_for_hit}}
+operation retrieves completed assignments for a HIT. You can use this
+operation to retrieve the results for a HIT.
 
 You can get assignments for a HIT at any time, even if the HIT is not
 yet Reviewable. If a HIT requested multiple assignments, and has

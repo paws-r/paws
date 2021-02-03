@@ -17,7 +17,8 @@ parameters must be passed explicitly for operations that take them.}
 \description{
 Returns the results of the AWS Trusted Advisor check that has the
 specified check ID. You can get the check IDs by calling the
-DescribeTrustedAdvisorChecks operation.
+\code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}}
+operation.
 
 The response contains a TrustedAdvisorCheckResult object, which contains
 these three objects:

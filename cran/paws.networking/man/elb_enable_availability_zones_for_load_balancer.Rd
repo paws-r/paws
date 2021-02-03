@@ -19,7 +19,7 @@ Adds the specified Availability Zones to the set of Availability Zones
 for the specified load balancer in EC2-Classic or a default VPC.
 
 For load balancers in a non-default VPC, use
-AttachLoadBalancerToSubnets.
+\code{\link[=elb_attach_load_balancer_to_subnets]{attach_load_balancer_to_subnets}}.
 
 The load balancer evenly distributes requests across all its registered
 Availability Zones that contain instances. For more information, see

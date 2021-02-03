@@ -21,7 +21,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 For an updated version of this API, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html}{PutBucketLifecycleConfiguration}.
+\code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}.
 This version has been deprecated. Existing lifecycle configurations will
 work. For new lifecycle configurations, use the updated API.
 
@@ -56,9 +56,9 @@ STANDARD\\_IA or ONEZONE\\_IA, see \href{https://docs.aws.amazon.com/AmazonS3/la
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycle.html}{GetBucketLifecycle}(Deprecated)
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html}{GetBucketLifecycleConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html}{RestoreObject}
+\item \code{\link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle}}(Deprecated)
+\item \code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
+\item \code{\link[=s3_restore_object]{restore_object}}
 \item By default, a resource owner—in this case, a bucket owner, which is
 the AWS account that created the bucket—can perform any of the
 operations. A resource owner can also grant others permission to

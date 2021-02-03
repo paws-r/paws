@@ -63,14 +63,14 @@ operations:
 \item Subscribe to email reports
 }
 
-To add custom permissions to an existing user, use \verb{<a>UpdateUser</a>}
-instead.
+To add custom permissions to an existing user, use
+\code{\link[=quicksight_update_user]{update_user}} instead.
 
 A set of custom permissions includes any combination of these
 restrictions. Currently, you need to create the profile names for custom
 permission sets by using the QuickSight console. Then, you use the
-\code{RegisterUser} API operation to assign the named set of permissions to a
-QuickSight user.
+\code{\link[=quicksight_register_user]{register_user}} API operation to assign the
+named set of permissions to a QuickSight user.
 
 QuickSight custom permissions are applied through IAM policies.
 Therefore, they override the permissions typically granted by assigning

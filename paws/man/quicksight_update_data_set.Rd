@@ -29,8 +29,7 @@ Currently, only geospatial hierarchy is supported.}
 
 \item{RowLevelPermissionDataSet}{The row-level security configuration for the data you want to create.}
 
-\item{ColumnLevelPermissionRules}{A set of one or more definitions of a
-\verb{<a>ColumnLevelPermissionRule</a>}.}
+\item{ColumnLevelPermissionRules}{A set of one or more definitions of a \code{ColumnLevelPermissionRule}.}
 }
 \description{
 Updates a dataset.

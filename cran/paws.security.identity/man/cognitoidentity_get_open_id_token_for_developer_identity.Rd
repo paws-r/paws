@@ -45,14 +45,15 @@ can only specify one developer provider as part of the \code{Logins} map,
 which is linked to the identity pool. The developer provider is the
 "domain" by which Cognito will refer to your users.
 
-You can use \code{GetOpenIdTokenForDeveloperIdentity} to create a new
-identity and to link new logins (that is, user credentials issued by a
-public provider or developer provider) to an existing identity. When you
-want to create a new identity, the \code{IdentityId} should be null. When you
-want to associate a new login with an existing
-authenticated/unauthenticated identity, you can do so by providing the
-existing \code{IdentityId}. This API will create the identity in the
-specified \code{IdentityPoolId}.
+You can use
+\code{\link[=cognitoidentity_get_open_id_token_for_developer_identity]{get_open_id_token_for_developer_identity}}
+to create a new identity and to link new logins (that is, user
+credentials issued by a public provider or developer provider) to an
+existing identity. When you want to create a new identity, the
+\code{IdentityId} should be null. When you want to associate a new login with
+an existing authenticated/unauthenticated identity, you can do so by
+providing the existing \code{IdentityId}. This API will create the identity
+in the specified \code{IdentityPoolId}.
 
 You must use AWS Developer credentials to call this API.
 }

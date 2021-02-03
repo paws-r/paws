@@ -12,17 +12,21 @@ sagemakerfeaturestoreruntime_put_record(FeatureGroupName, Record)
 \item{Record}{[required] List of FeatureValues to be inserted. This will be a full over-write. If
 you only want to update few of the feature values, do the following:
 \itemize{
-\item Use \code{GetRecord} to retrieve the latest record.
-\item Update the record returned from \code{GetRecord}.
-\item Use \code{PutRecord} to update feature values.
+\item Use \code{\link[=sagemakerfeaturestoreruntime_get_record]{get_record}} to
+retrieve the latest record.
+\item Update the record returned from
+\code{\link[=sagemakerfeaturestoreruntime_get_record]{get_record}}.
+\item Use \code{\link[=sagemakerfeaturestoreruntime_put_record]{put_record}} to
+update feature values.
 }}
 }
 \description{
-Used for data ingestion into the \code{FeatureStore}. The \code{PutRecord} API
-writes to both the \code{OnlineStore} and \code{OfflineStore}. If the record is
-the latest record for the \code{recordIdentifier}, the record is written to
-both the \code{OnlineStore} and \code{OfflineStore}. If the record is a historic
-record, it is written only to the \code{OfflineStore}.
+Used for data ingestion into the \code{FeatureStore}. The
+\code{\link[=sagemakerfeaturestoreruntime_put_record]{put_record}} API writes to
+both the \code{OnlineStore} and \code{OfflineStore}. If the record is the latest
+record for the \code{recordIdentifier}, the record is written to both the
+\code{OnlineStore} and \code{OfflineStore}. If the record is a historic record, it
+is written only to the \code{OfflineStore}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_record(

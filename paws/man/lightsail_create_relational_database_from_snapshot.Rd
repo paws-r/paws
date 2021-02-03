@@ -72,7 +72,8 @@ provided.}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-Use the \code{TagResource} action to tag a resource after it's created.}
+Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
+resource after it's created.}
 }
 \description{
 Creates a new database from an existing database snapshot in Amazon

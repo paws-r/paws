@@ -16,7 +16,7 @@ kinesisanalytics_delete_application_input_processing_configuration(
 \item{InputId}{[required] The ID of the input configuration from which to delete the input
 processing configuration. You can get a list of the input IDs for an
 application by using the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+\code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation.}
 }
 \description{

@@ -54,7 +54,8 @@ indicates the cause of the failure. For help interpreting the
 \code{ConnectionErrorCode}, see CustomKeyStoresListEntry.
 
 Custom key stores have a \code{DISCONNECTED} connection state if the key
-store has never been connected or you use the DisconnectCustomKeyStore
+store has never been connected or you use the
+\code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}}
 operation to disconnect it. If your custom key store state is
 \code{CONNECTED} but you are having trouble using it, make sure that its
 associated AWS CloudHSM cluster is active and contains the minimum
@@ -72,11 +73,11 @@ key store in a different AWS account.
 
 \strong{Related operations:}
 \itemize{
-\item ConnectCustomKeyStore
-\item CreateCustomKeyStore
-\item DeleteCustomKeyStore
-\item DisconnectCustomKeyStore
-\item UpdateCustomKeyStore
+\item \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}}
+\item \code{\link[=kms_create_custom_key_store]{create_custom_key_store}}
+\item \code{\link[=kms_delete_custom_key_store]{delete_custom_key_store}}
+\item \code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}}
+\item \code{\link[=kms_update_custom_key_store]{update_custom_key_store}}
 }
 }
 \section{Request syntax}{

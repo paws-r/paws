@@ -21,8 +21,9 @@ is exclusive.}
 \item{ExclusiveStartBackupArn}{\code{LastEvaluatedBackupArn} is the Amazon Resource Name (ARN) of the backup
 last evaluated when the current page of results was returned, inclusive
 of the current page of results. This value may be specified as the
-\code{ExclusiveStartBackupArn} of a new \code{ListBackups} operation in order to
-fetch the next page of results.}
+\code{ExclusiveStartBackupArn} of a new
+\code{\link[=dynamodb_list_backups]{list_backups}} operation in order to fetch the
+next page of results.}
 
 \item{BackupType}{The backups from the table specified by \code{BackupType} are listed.
 
@@ -35,15 +36,17 @@ Where \code{BackupType} can be:
 }
 \description{
 List backups associated with an AWS account. To list backups for a given
-table, specify \code{TableName}. \code{ListBackups} returns a paginated list of
-results with at most 1 MB worth of items in a page. You can also specify
-a maximum number of entries to be returned in a page.
+table, specify \code{TableName}. \code{\link[=dynamodb_list_backups]{list_backups}}
+returns a paginated list of results with at most 1 MB worth of items in
+a page. You can also specify a maximum number of entries to be returned
+in a page.
 
 In the request, start time is inclusive, but end time is exclusive. Note
 that these boundaries are for the time at which the original backup was
 requested.
 
-You can call \code{ListBackups} a maximum of five times per second.
+You can call \code{\link[=dynamodb_list_backups]{list_backups}} a maximum of five
+times per second.
 }
 \section{Request syntax}{
 \preformatted{svc$list_backups(

@@ -23,9 +23,11 @@ NULL
 #' [Tagging ACM
 #' certificates](https://docs.aws.amazon.com/acm/latest/userguide/tags.html).
 #' 
-#' To remove one or more tags, use the RemoveTagsFromCertificate action. To
-#' view all of the tags that have been applied to the certificate, use the
-#' ListTagsForCertificate action.
+#' To remove one or more tags, use the
+#' [`remove_tags_from_certificate`][acm_remove_tags_from_certificate]
+#' action. To view all of the tags that have been applied to the
+#' certificate, use the
+#' [`list_tags_for_certificate`][acm_list_tags_for_certificate] action.
 #'
 #' @usage
 #' acm_add_tags_to_certificate(CertificateArn, Tags)
@@ -78,9 +80,10 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 #' @description
 #' Deletes a certificate and its associated private key. If this action
 #' succeeds, the certificate no longer appears in the list that can be
-#' displayed by calling the ListCertificates action or be retrieved by
-#' calling the GetCertificate action. The certificate will not be available
-#' for use by AWS services integrated with ACM.
+#' displayed by calling the [`list_certificates`][acm_list_certificates]
+#' action or be retrieved by calling the
+#' [`get_certificate`][acm_get_certificate] action. The certificate will
+#' not be available for use by AWS services integrated with ACM.
 #' 
 #' You cannot delete an ACM certificate that is being used by another AWS
 #' service. To delete a certificate that is in use, the certificate
@@ -460,8 +463,11 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
 #' @description
 #' Lists the tags that have been applied to the ACM certificate. Use the
 #' certificate's Amazon Resource Name (ARN) to specify the certificate. To
-#' add a tag to an ACM certificate, use the AddTagsToCertificate action. To
-#' delete a tag, use the RemoveTagsFromCertificate action.
+#' add a tag to an ACM certificate, use the
+#' [`add_tags_to_certificate`][acm_add_tags_to_certificate] action. To
+#' delete a tag, use the
+#' [`remove_tags_from_certificate`][acm_remove_tags_from_certificate]
+#' action.
 #'
 #' @usage
 #' acm_list_tags_for_certificate(CertificateArn)
@@ -511,9 +517,11 @@ acm_list_tags_for_certificate <- function(CertificateArn) {
 #' you specify a value, the tag is removed only if it is associated with
 #' the specified value.
 #' 
-#' To add tags to a certificate, use the AddTagsToCertificate action. To
-#' view all of the tags that have been applied to a specific ACM
-#' certificate, use the ListTagsForCertificate action.
+#' To add tags to a certificate, use the
+#' [`add_tags_to_certificate`][acm_add_tags_to_certificate] action. To view
+#' all of the tags that have been applied to a specific ACM certificate,
+#' use the [`list_tags_for_certificate`][acm_list_tags_for_certificate]
+#' action.
 #'
 #' @usage
 #' acm_remove_tags_from_certificate(CertificateArn, Tags)
@@ -676,9 +684,10 @@ acm_renew_certificate <- function(CertificateArn) {
 #'     because the total length of the DNS name (63+1+63+1+63+1+62) exceeds
 #'     253 octets.
 #' @param IdempotencyToken Customer chosen string that can be used to distinguish between calls to
-#' `RequestCertificate`. Idempotency tokens time out after one hour.
-#' Therefore, if you call `RequestCertificate` multiple times with the same
-#' idempotency token within one hour, ACM recognizes that you are
+#' [`request_certificate`][acm_request_certificate]. Idempotency tokens
+#' time out after one hour. Therefore, if you call
+#' [`request_certificate`][acm_request_certificate] multiple times with the
+#' same idempotency token within one hour, ACM recognizes that you are
 #' requesting only one certificate and will issue only one. If you change
 #' the idempotency token for each call, ACM recognizes that you are
 #' requesting multiple certificates.
@@ -770,10 +779,11 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 #' acm_resend_validation_email(CertificateArn, Domain, ValidationDomain)
 #'
 #' @param CertificateArn &#91;required&#93; String that contains the ARN of the requested certificate. The
-#' certificate ARN is generated and returned by the RequestCertificate
-#' action as soon as the request is made. By default, using this parameter
-#' causes email to be sent to all top-level domains you specified in the
-#' certificate request. The ARN must be of the form:
+#' certificate ARN is generated and returned by the
+#' [`request_certificate`][acm_request_certificate] action as soon as the
+#' request is made. By default, using this parameter causes email to be
+#' sent to all top-level domains you specified in the certificate request.
+#' The ARN must be of the form:
 #' 
 #' `arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' @param Domain &#91;required&#93; The fully qualified domain name (FQDN) of the certificate that needs to
@@ -839,7 +849,7 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
 #'
 #' @param CertificateArn &#91;required&#93; ARN of the requested certificate to update. This must be of the form:
 #' 
-#' `arn:aws:acm:us-east-1:<i>account</i>:certificate/<i>12345678-1234-1234-1234-123456789012</i> `
+#' `arn:aws:acm:us-east-1:account:certificate/12345678-1234-1234-1234-123456789012 `
 #' @param Options &#91;required&#93; Use to update the options for your certificate. Currently, you can
 #' specify whether to add your certificate to a transparency log.
 #' Certificate transparency makes it possible to detect SSL/TLS

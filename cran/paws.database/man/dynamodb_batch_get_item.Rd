@@ -10,7 +10,8 @@ dynamodb_batch_get_item(RequestItems, ReturnConsumedCapacity)
 \arguments{
 \item{RequestItems}{[required] A map of one or more table names and, for each table, a map that
 describes one or more items to retrieve from that table. Each table name
-can be used only once per \code{BatchGetItem} request.
+can be used only once per \code{\link[=dynamodb_batch_get_item]{batch_get_item}}
+request.
 
 Each element in the map of items to retrieve consists of the following:
 \itemize{
@@ -81,18 +82,20 @@ in the \emph{Amazon DynamoDB Developer Guide}.
 \item{ReturnConsumedCapacity}{}
 }
 \description{
-The \code{BatchGetItem} operation returns the attributes of one or more items
-from one or more tables. You identify requested items by primary key.
+The \code{\link[=dynamodb_batch_get_item]{batch_get_item}} operation returns the
+attributes of one or more items from one or more tables. You identify
+requested items by primary key.
 
 A single operation can retrieve up to 16 MB of data, which can contain
-as many as 100 items. \code{BatchGetItem} returns a partial result if the
-response size limit is exceeded, the table's provisioned throughput is
-exceeded, or an internal processing failure occurs. If a partial result
-is returned, the operation returns a value for \code{UnprocessedKeys}. You
-can use this value to retry the operation starting with the next item to
-get.
+as many as 100 items. \code{\link[=dynamodb_batch_get_item]{batch_get_item}}
+returns a partial result if the response size limit is exceeded, the
+table's provisioned throughput is exceeded, or an internal processing
+failure occurs. If a partial result is returned, the operation returns a
+value for \code{UnprocessedKeys}. You can use this value to retry the
+operation starting with the next item to get.
 
-If you request more than 100 items, \code{BatchGetItem} returns a
+If you request more than 100 items,
+\code{\link[=dynamodb_batch_get_item]{batch_get_item}} returns a
 \code{ValidationException} with the message "Too many items requested for the
 BatchGetItem call."
 
@@ -103,11 +106,12 @@ you can get the next page of results. If desired, your application can
 include its own logic to assemble the pages of results into one dataset.
 
 If \emph{none} of the items can be processed due to insufficient provisioned
-throughput on all of the tables in the request, then \code{BatchGetItem}
-returns a \code{ProvisionedThroughputExceededException}. If \emph{at least one} of
-the items is successfully processed, then \code{BatchGetItem} completes
-successfully, while returning the keys of the unread items in
-\code{UnprocessedKeys}.
+throughput on all of the tables in the request, then
+\code{\link[=dynamodb_batch_get_item]{batch_get_item}} returns a
+\code{ProvisionedThroughputExceededException}. If \emph{at least one} of the items
+is successfully processed, then
+\code{\link[=dynamodb_batch_get_item]{batch_get_item}} completes successfully,
+while returning the keys of the unread items in \code{UnprocessedKeys}.
 
 If DynamoDB returns any unprocessed items, you should retry the batch
 operation on those items. However, \emph{we strongly recommend that you use
@@ -120,12 +124,13 @@ more likely to succeed.
 For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#BatchOperations}{Batch Operations and Error Handling}
 in the \emph{Amazon DynamoDB Developer Guide}.
 
-By default, \code{BatchGetItem} performs eventually consistent reads on every
-table in the request. If you want strongly consistent reads instead, you
-can set \code{ConsistentRead} to \code{true} for any or all tables.
+By default, \code{\link[=dynamodb_batch_get_item]{batch_get_item}} performs
+eventually consistent reads on every table in the request. If you want
+strongly consistent reads instead, you can set \code{ConsistentRead} to
+\code{true} for any or all tables.
 
-In order to minimize response latency, \code{BatchGetItem} retrieves items in
-parallel.
+In order to minimize response latency,
+\code{\link[=dynamodb_batch_get_item]{batch_get_item}} retrieves items in parallel.
 
 When designing your application, keep in mind that DynamoDB does not
 return items in any particular order. To help parse the response by

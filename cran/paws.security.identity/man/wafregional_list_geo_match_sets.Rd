@@ -10,9 +10,10 @@ wafregional_list_geo_match_sets(NextMarker, Limit)
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{GeoMatchSet}s than
 the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the
 response that allows you to list another group of \code{GeoMatchSet} objects.
-For the second and subsequent \code{ListGeoMatchSets} requests, specify the
-value of \code{NextMarker} from the previous response to get information
-about another batch of \code{GeoMatchSet} objects.}
+For the second and subsequent
+\code{\link[=wafregional_list_geo_match_sets]{list_geo_match_sets}} requests,
+specify the value of \code{NextMarker} from the previous response to get
+information about another batch of \code{GeoMatchSet} objects.}
 
 \item{Limit}{Specifies the number of \code{GeoMatchSet} objects that you want AWS WAF to
 return for this request. If you have more \code{GeoMatchSet} objects than the

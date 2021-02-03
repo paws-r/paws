@@ -10,7 +10,8 @@ machinelearning_get_ml_model(MLModelId, Verbose)
 \arguments{
 \item{MLModelId}{[required] The ID assigned to the \code{MLModel} at creation.}
 
-\item{Verbose}{Specifies whether the \code{GetMLModel} operation should return \code{Recipe}.
+\item{Verbose}{Specifies whether the \code{\link[=machinelearning_get_ml_model]{get_ml_model}}
+operation should return \code{Recipe}.
 
 If true, \code{Recipe} is returned.
 
@@ -20,7 +21,8 @@ If false, \code{Recipe} is not returned.}
 Returns an \code{MLModel} that includes detailed metadata, data source
 information, and the current status of the \code{MLModel}.
 
-\code{GetMLModel} provides results in normal or verbose format.
+\code{\link[=machinelearning_get_ml_model]{get_ml_model}} provides results in
+normal or verbose format.
 }
 \section{Request syntax}{
 \preformatted{svc$get_ml_model(

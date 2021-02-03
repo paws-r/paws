@@ -184,9 +184,9 @@ cloudtrail_create_trail <- function(Name, S3BucketName, S3KeyPrefix = NULL, SnsT
 #'
 #' @description
 #' Deletes a trail. This operation must be called from the region in which
-#' the trail was created. `DeleteTrail` cannot be called on the shadow
-#' trails (replicated trails in other regions) of a trail that is enabled
-#' in all regions.
+#' the trail was created. [`delete_trail`][cloudtrail_delete_trail] cannot
+#' be called on the shadow trails (replicated trails in other regions) of a
+#' trail that is enabled in all regions.
 #'
 #' @usage
 #' cloudtrail_delete_trail(Name)
@@ -363,9 +363,11 @@ cloudtrail_get_event_selectors <- function(TrailName) {
 #'
 #' @description
 #' Describes the settings for the Insights event selectors that you
-#' configured for your trail. `GetInsightSelectors` shows if CloudTrail
-#' Insights event logging is enabled on the trail, and if it is, which
-#' insight types are enabled. If you run `GetInsightSelectors` on a trail
+#' configured for your trail.
+#' [`get_insight_selectors`][cloudtrail_get_insight_selectors] shows if
+#' CloudTrail Insights event logging is enabled on the trail, and if it is,
+#' which insight types are enabled. If you run
+#' [`get_insight_selectors`][cloudtrail_get_insight_selectors] on a trail
 #' that does not have Insights events enabled, the operation throws the
 #' exception `InsightNotEnabledException`
 #' 
@@ -788,9 +790,9 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' 5.  The `GetConsoleOutput` is a read-only event that doesn't match your
 #'     event selector. The trail doesn't log the event.
 #' 
-#' The `PutEventSelectors` operation must be called from the region in
-#' which the trail was created; otherwise, an `InvalidHomeRegionException`
-#' exception is thrown.
+#' The [`put_event_selectors`][cloudtrail_put_event_selectors] operation
+#' must be called from the region in which the trail was created;
+#' otherwise, an `InvalidHomeRegionException` exception is thrown.
 #' 
 #' You can configure up to five event selectors for each trail. For more
 #' information, see [Logging data and management events for
@@ -832,8 +834,9 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' @param EventSelectors Specifies the settings for your event selectors. You can configure up to
 #' five event selectors for a trail. You can use either `EventSelectors` or
-#' `AdvancedEventSelectors` in a `PutEventSelectors` request, but not both.
-#' If you apply `EventSelectors` to a trail, any existing
+#' `AdvancedEventSelectors` in a
+#' [`put_event_selectors`][cloudtrail_put_event_selectors] request, but not
+#' both. If you apply `EventSelectors` to a trail, any existing
 #' `AdvancedEventSelectors` are overwritten.
 #' @param AdvancedEventSelectors Specifies the settings for advanced event selectors. You can add
 #' advanced event selectors, and conditions for your advanced event
@@ -923,9 +926,10 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 #' @description
 #' Lets you enable Insights event logging by specifying the Insights
 #' selectors that you want to enable on an existing trail. You also use
-#' `PutInsightSelectors` to turn off Insights event logging, by passing an
-#' empty list of insight types. In this release, only `ApiCallRateInsight`
-#' is supported as an Insights selector.
+#' [`put_insight_selectors`][cloudtrail_put_insight_selectors] to turn off
+#' Insights event logging, by passing an empty list of insight types. In
+#' this release, only `ApiCallRateInsight` is supported as an Insights
+#' selector.
 #'
 #' @usage
 #' cloudtrail_put_insight_selectors(TrailName, InsightSelectors)
@@ -1115,9 +1119,9 @@ cloudtrail_stop_logging <- function(Name) {
 #' trail do not require stopping the CloudTrail service. Use this action to
 #' designate an existing bucket for log delivery. If the existing bucket
 #' has previously been a target for CloudTrail log files, an IAM policy
-#' exists for the bucket. `UpdateTrail` must be called from the region in
-#' which the trail was created; otherwise, an `InvalidHomeRegionException`
-#' is thrown.
+#' exists for the bucket. [`update_trail`][cloudtrail_update_trail] must be
+#' called from the region in which the trail was created; otherwise, an
+#' `InvalidHomeRegionException` is thrown.
 #'
 #' @usage
 #' cloudtrail_update_trail(Name, S3BucketName, S3KeyPrefix, SnsTopicName,

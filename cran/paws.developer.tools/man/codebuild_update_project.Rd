@@ -79,8 +79,7 @@ You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
 
 You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-available, the CMK's alias (using the format
-\verb{alias/&lt;alias-name&gt;}).}
+available, the CMK's alias (using the format \verb{alias/<alias-name>}).}
 
 \item{tags}{An updated list of tag key and value pairs associated with this build
 project.

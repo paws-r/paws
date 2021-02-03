@@ -24,16 +24,17 @@ child shard.}
 \description{
 Splits a shard into two new shards in the Kinesis data stream, to
 increase the stream's capacity to ingest and transport data.
-\code{SplitShard} is called when there is a need to increase the overall
-capacity of a stream because of an expected increase in the volume of
-data records being ingested.
+\code{\link[=kinesis_split_shard]{split_shard}} is called when there is a need to
+increase the overall capacity of a stream because of an expected
+increase in the volume of data records being ingested.
 
-You can also use \code{SplitShard} when a shard appears to be approaching its
-maximum utilization; for example, the producers sending data into the
-specific shard are suddenly sending more than previously anticipated.
-You can also call \code{SplitShard} to increase stream capacity, so that more
-Kinesis Data Streams applications can simultaneously read data from the
-stream for real-time processing.
+You can also use \code{\link[=kinesis_split_shard]{split_shard}} when a shard
+appears to be approaching its maximum utilization; for example, the
+producers sending data into the specific shard are suddenly sending more
+than previously anticipated. You can also call
+\code{\link[=kinesis_split_shard]{split_shard}} to increase stream capacity, so
+that more Kinesis Data Streams applications can simultaneously read data
+from the stream for real-time processing.
 
 You must specify the shard to be split and the new hash key, which is
 the position in the shard where the shard gets split in two. In many
@@ -42,22 +43,28 @@ hash key, but it can be any hash key value in the range being mapped
 into the shard. For more information, see \href{https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-resharding-split.html}{Split a Shard}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.
 
-You can use DescribeStream to determine the shard ID and hash key values
-for the \code{ShardToSplit} and \code{NewStartingHashKey} parameters that are
-specified in the \code{SplitShard} request.
+You can use \code{\link[=kinesis_describe_stream]{describe_stream}} to determine
+the shard ID and hash key values for the \code{ShardToSplit} and
+\code{NewStartingHashKey} parameters that are specified in the
+\code{\link[=kinesis_split_shard]{split_shard}} request.
 
-\code{SplitShard} is an asynchronous operation. Upon receiving a \code{SplitShard}
-request, Kinesis Data Streams immediately returns a response and sets
-the stream status to \code{UPDATING}. After the operation is completed,
-Kinesis Data Streams sets the stream status to \code{ACTIVE}. Read and write
-operations continue to work while the stream is in the \code{UPDATING} state.
+\code{\link[=kinesis_split_shard]{split_shard}} is an asynchronous operation. Upon
+receiving a \code{\link[=kinesis_split_shard]{split_shard}} request, Kinesis Data
+Streams immediately returns a response and sets the stream status to
+\code{UPDATING}. After the operation is completed, Kinesis Data Streams sets
+the stream status to \code{ACTIVE}. Read and write operations continue to
+work while the stream is in the \code{UPDATING} state.
 
-You can use \code{DescribeStream} to check the status of the stream, which is
-returned in \code{StreamStatus}. If the stream is in the \code{ACTIVE} state, you
-can call \code{SplitShard}. If a stream is in \code{CREATING} or \code{UPDATING} or
-\code{DELETING} states, \code{DescribeStream} returns a \code{ResourceInUseException}.
+You can use \code{\link[=kinesis_describe_stream]{describe_stream}} to check the
+status of the stream, which is returned in \code{StreamStatus}. If the stream
+is in the \code{ACTIVE} state, you can call
+\code{\link[=kinesis_split_shard]{split_shard}}. If a stream is in \code{CREATING} or
+\code{UPDATING} or \code{DELETING} states,
+\code{\link[=kinesis_describe_stream]{describe_stream}} returns a
+\code{ResourceInUseException}.
 
-If the specified stream does not exist, \code{DescribeStream} returns a
+If the specified stream does not exist,
+\code{\link[=kinesis_describe_stream]{describe_stream}} returns a
 \code{ResourceNotFoundException}. If you try to create more shards than are
 authorized for your account, you receive a \code{LimitExceededException}.
 
@@ -66,10 +73,14 @@ in the \emph{Amazon Kinesis Data Streams Developer Guide}. To increase this
 limit, \href{https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html}{contact AWS Support}.
 
 If you try to operate on too many streams simultaneously using
-CreateStream, DeleteStream, MergeShards, and/or SplitShard, you receive
-a \code{LimitExceededException}.
+\code{\link[=kinesis_create_stream]{create_stream}},
+\code{\link[=kinesis_delete_stream]{delete_stream}},
+\code{\link[=kinesis_merge_shards]{merge_shards}}, and/or
+\code{\link[=kinesis_split_shard]{split_shard}}, you receive a
+\code{LimitExceededException}.
 
-\code{SplitShard} has a limit of five transactions per second per account.
+\code{\link[=kinesis_split_shard]{split_shard}} has a limit of five transactions
+per second per account.
 }
 \section{Request syntax}{
 \preformatted{svc$split_shard(

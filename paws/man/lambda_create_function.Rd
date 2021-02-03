@@ -98,7 +98,8 @@ When you create a function, Lambda provisions an instance of the
 function and its supporting resources. If your function connects to a
 VPC, this process can take a minute or so. During this time, you can't
 invoke or modify the function. The \code{State}, \code{StateReason}, and
-\code{StateReasonCode} fields in the response from GetFunctionConfiguration
+\code{StateReasonCode} fields in the response from
+\code{\link[=lambda_get_function_configuration]{get_function_configuration}}
 indicate when the function is ready to invoke. For more information, see
 \href{https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html}{Function States}.
 
@@ -112,28 +113,32 @@ your function from its initial configuration.
 
 The other parameters let you configure version-specific and
 function-level settings. You can modify version-specific settings later
-with UpdateFunctionConfiguration. Function-level settings apply to both
-the unpublished and published versions of the function, and include tags
-(TagResource) and per-function concurrency limits
-(PutFunctionConcurrency).
+with
+\code{\link[=lambda_update_function_configuration]{update_function_configuration}}.
+Function-level settings apply to both the unpublished and published
+versions of the function, and include tags
+(\code{\link[=lambda_tag_resource]{tag_resource}}) and per-function concurrency
+limits (\code{\link[=lambda_put_function_concurrency]{put_function_concurrency}}).
 
 You can use code signing if your deployment package is a .zip file
 archive. To enable code signing for this function, specify the ARN of a
 code-signing configuration. When a user attempts to deploy a code
-package with UpdateFunctionCode, Lambda checks that the code package has
-a valid signature from a trusted publisher. The code-signing
-configuration includes set set of signing profiles, which define the
-trusted publishers for this function.
+package with \code{\link[=lambda_update_function_code]{update_function_code}},
+Lambda checks that the code package has a valid signature from a trusted
+publisher. The code-signing configuration includes set set of signing
+profiles, which define the trusted publishers for this function.
 
 If another account or an AWS service invokes your function, use
-AddPermission to grant permission by creating a resource-based IAM
-policy. You can grant permissions at the function level, on a version,
-or on an alias.
+\code{\link[=lambda_add_permission]{add_permission}} to grant permission by
+creating a resource-based IAM policy. You can grant permissions at the
+function level, on a version, or on an alias.
 
-To invoke your function directly, use Invoke. To invoke your function in
-response to events in other AWS services, create an event source mapping
-(CreateEventSourceMapping), or configure a function trigger in the other
-service. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html}{Invoking Functions}.
+To invoke your function directly, use \code{\link[=lambda_invoke]{invoke}}. To
+invoke your function in response to events in other AWS services, create
+an event source mapping
+(\code{\link[=lambda_create_event_source_mapping]{create_event_source_mapping}}),
+or configure a function trigger in the other service. For more
+information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html}{Invoking Functions}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_function(

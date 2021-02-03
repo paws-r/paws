@@ -8,10 +8,11 @@ NULL
 #' @description
 #' Adds IP addresses to an inbound or an outbound Resolver endpoint. If you
 #' want to add more than one IP address, submit one
-#' `AssociateResolverEndpointIpAddress` request for each IP address.
+#' [`associate_resolver_endpoint_ip_address`][route53resolver_associate_resolver_endpoint_ip_address]
+#' request for each IP address.
 #' 
 #' To remove an IP address from an endpoint, see
-#' [DisassociateResolverEndpointIpAddress](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverEndpointIpAddress.html).
+#' [`disassociate_resolver_endpoint_ip_address`][route53resolver_disassociate_resolver_endpoint_ip_address].
 #'
 #' @usage
 #' route53resolver_associate_resolver_endpoint_ip_address(
@@ -62,13 +63,14 @@ route53resolver_associate_resolver_endpoint_ip_address <- function(ResolverEndpo
 #' Route 53 Resolver logs DNS queries that originate in all of the Amazon
 #' VPCs that are associated with a specified query logging configuration.
 #' To associate more than one VPC with a configuration, submit one
-#' `AssociateResolverQueryLogConfig` request for each VPC.
+#' [`associate_resolver_query_log_config`][route53resolver_associate_resolver_query_log_config]
+#' request for each VPC.
 #' 
 #' The VPCs that you associate with a query logging configuration must be
 #' in the same Region as the configuration.
 #' 
 #' To remove a VPC from a query logging configuration, see
-#' [DisassociateResolverQueryLogConfig](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverQueryLogConfig.html).
+#' [`disassociate_resolver_query_log_config`][route53resolver_disassociate_resolver_query_log_config].
 #'
 #' @usage
 #' route53resolver_associate_resolver_query_log_config(
@@ -117,14 +119,14 @@ route53resolver_associate_resolver_query_log_config <- function(ResolverQueryLog
 #' specified in the rule and that originate in the VPC. The queries are
 #' forwarded to the IP addresses for the DNS resolvers that are specified
 #' in the rule. For more information about rules, see
-#' [CreateResolverRule](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_CreateResolverRule.html).
+#' [`create_resolver_rule`][route53resolver_create_resolver_rule].
 #'
 #' @usage
 #' route53resolver_associate_resolver_rule(ResolverRuleId, Name, VPCId)
 #'
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to associate with the VPC. To
 #' list the existing Resolver rules, use
-#' [ListResolverRules](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRules.html).
+#' [`list_resolver_rules`][route53resolver_list_resolver_rules].
 #' @param Name A name for the association that you're creating between a Resolver rule
 #' and a VPC.
 #' @param VPCId &#91;required&#93; The ID of the VPC that you want to associate the Resolver rule with.
@@ -253,8 +255,9 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
 #' the query logging configuration.
 #' 
 #' To specify which VPCs you want to log queries for, you use
-#' `AssociateResolverQueryLogConfig`. For more information, see
-#' [AssociateResolverQueryLogConfig](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverQueryLogConfig.html).
+#' [`associate_resolver_query_log_config`][route53resolver_associate_resolver_query_log_config].
+#' For more information, see
+#' [`associate_resolver_query_log_config`][route53resolver_associate_resolver_query_log_config].
 #' 
 #' You can optionally use AWS Resource Access Manager (AWS RAM) to share a
 #' query logging configuration with other AWS accounts. The other accounts
@@ -477,7 +480,7 @@ route53resolver_delete_resolver_endpoint <- function(ResolverEndpointId) {
 #' 
 #' Before you can delete a query logging configuration, you must first
 #' disassociate all VPCs from the configuration. See
-#' [DisassociateResolverQueryLogConfig](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverQueryLogConfig.html).
+#' [`disassociate_resolver_query_log_config`][route53resolver_disassociate_resolver_query_log_config].
 #' 
 #' If you used Resource Access Manager (RAM) to share a query logging
 #' configuration with other accounts, you must stop sharing the
@@ -526,7 +529,7 @@ route53resolver_delete_resolver_query_log_config <- function(ResolverQueryLogCon
 #' Deletes a Resolver rule. Before you can delete a Resolver rule, you must
 #' disassociate it from all the VPCs that you associated the Resolver rule
 #' with. For more information, see
-#' [DisassociateResolverRule](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverRule.html).
+#' [`disassociate_resolver_rule`][route53resolver_disassociate_resolver_rule].
 #'
 #' @usage
 #' route53resolver_delete_resolver_rule(ResolverRuleId)
@@ -565,10 +568,11 @@ route53resolver_delete_resolver_rule <- function(ResolverRuleId) {
 #' @description
 #' Removes IP addresses from an inbound or an outbound Resolver endpoint.
 #' If you want to remove more than one IP address, submit one
-#' `DisassociateResolverEndpointIpAddress` request for each IP address.
+#' [`disassociate_resolver_endpoint_ip_address`][route53resolver_disassociate_resolver_endpoint_ip_address]
+#' request for each IP address.
 #' 
 #' To add an IP address to an endpoint, see
-#' [AssociateResolverEndpointIpAddress](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverEndpointIpAddress.html).
+#' [`associate_resolver_endpoint_ip_address`][route53resolver_associate_resolver_endpoint_ip_address].
 #'
 #' @usage
 #' route53resolver_disassociate_resolver_endpoint_ip_address(
@@ -960,7 +964,7 @@ route53resolver_get_resolver_rule <- function(ResolverRuleId) {
 #' @description
 #' Gets information about an association between a specified Resolver rule
 #' and a VPC. You associate a Resolver rule and a VPC using
-#' [AssociateResolverRule](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverRule.html).
+#' [`associate_resolver_rule`][route53resolver_associate_resolver_rule].
 #'
 #' @usage
 #' route53resolver_get_resolver_rule_association(ResolverRuleAssociationId)
@@ -1055,7 +1059,9 @@ route53resolver_get_resolver_rule_policy <- function(Arn) {
 #' configurations, use `NextToken` to get the second and subsequent pages
 #' of results.
 #' 
-#' For the first `ListResolverDnssecConfigs` request, omit this value.
+#' For the first
+#' [`list_resolver_dnssec_configs`][route53resolver_list_resolver_dnssec_configs]
+#' request, omit this value.
 #' 
 #' For the second and subsequent requests, get the value of `NextToken`
 #' from the previous response and specify that value for `NextToken` in the
@@ -1109,14 +1115,17 @@ route53resolver_list_resolver_dnssec_configs <- function(MaxResults = NULL, Next
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to get IP addresses for.
 #' @param MaxResults The maximum number of IP addresses that you want to return in the
-#' response to a `ListResolverEndpointIpAddresses` request. If you don't
-#' specify a value for `MaxResults`, Resolver returns up to 100 IP
-#' addresses.
-#' @param NextToken For the first `ListResolverEndpointIpAddresses` request, omit this
-#' value.
+#' response to a
+#' [`list_resolver_endpoint_ip_addresses`][route53resolver_list_resolver_endpoint_ip_addresses]
+#' request. If you don't specify a value for `MaxResults`, Resolver returns
+#' up to 100 IP addresses.
+#' @param NextToken For the first
+#' [`list_resolver_endpoint_ip_addresses`][route53resolver_list_resolver_endpoint_ip_addresses]
+#' request, omit this value.
 #' 
 #' If the specified Resolver endpoint has more than `MaxResults` IP
-#' addresses, you can submit another `ListResolverEndpointIpAddresses`
+#' addresses, you can submit another
+#' [`list_resolver_endpoint_ip_addresses`][route53resolver_list_resolver_endpoint_ip_addresses]
 #' request to get the next group of IP addresses. In the next request,
 #' specify the value of `NextToken` from the previous response.
 #'
@@ -1160,20 +1169,26 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
 #' route53resolver_list_resolver_endpoints(MaxResults, NextToken, Filters)
 #'
 #' @param MaxResults The maximum number of Resolver endpoints that you want to return in the
-#' response to a `ListResolverEndpoints` request. If you don't specify a
-#' value for `MaxResults`, Resolver returns up to 100 Resolver endpoints.
-#' @param NextToken For the first `ListResolverEndpoints` request, omit this value.
+#' response to a
+#' [`list_resolver_endpoints`][route53resolver_list_resolver_endpoints]
+#' request. If you don't specify a value for `MaxResults`, Resolver returns
+#' up to 100 Resolver endpoints.
+#' @param NextToken For the first
+#' [`list_resolver_endpoints`][route53resolver_list_resolver_endpoints]
+#' request, omit this value.
 #' 
 #' If you have more than `MaxResults` Resolver endpoints, you can submit
-#' another `ListResolverEndpoints` request to get the next group of
-#' Resolver endpoints. In the next request, specify the value of
-#' `NextToken` from the previous response.
+#' another
+#' [`list_resolver_endpoints`][route53resolver_list_resolver_endpoints]
+#' request to get the next group of Resolver endpoints. In the next
+#' request, specify the value of `NextToken` from the previous response.
 #' @param Filters An optional specification to return a subset of Resolver endpoints, such
 #' as all inbound Resolver endpoints.
 #' 
-#' If you submit a second or subsequent `ListResolverEndpoints` request and
-#' specify the `NextToken` parameter, you must use the same values for
-#' `Filters`, if any, as in the previous request.
+#' If you submit a second or subsequent
+#' [`list_resolver_endpoints`][route53resolver_list_resolver_endpoints]
+#' request and specify the `NextToken` parameter, you must use the same
+#' values for `Filters`, if any, as in the previous request.
 #'
 #' @section Request syntax:
 #' ```
@@ -1223,31 +1238,33 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
 #'   NextToken, Filters, SortBy, SortOrder)
 #'
 #' @param MaxResults The maximum number of query logging associations that you want to return
-#' in the response to a `ListResolverQueryLogConfigAssociations` request.
-#' If you don't specify a value for `MaxResults`, Resolver returns up to
-#' 100 query logging associations.
-#' @param NextToken For the first `ListResolverQueryLogConfigAssociations` request, omit
-#' this value.
+#' in the response to a
+#' [`list_resolver_query_log_config_associations`][route53resolver_list_resolver_query_log_config_associations]
+#' request. If you don't specify a value for `MaxResults`, Resolver returns
+#' up to 100 query logging associations.
+#' @param NextToken For the first
+#' [`list_resolver_query_log_config_associations`][route53resolver_list_resolver_query_log_config_associations]
+#' request, omit this value.
 #' 
 #' If there are more than `MaxResults` query logging associations that
 #' match the values that you specify for `Filters`, you can submit another
-#' `ListResolverQueryLogConfigAssociations` request to get the next group
-#' of associations. In the next request, specify the value of `NextToken`
-#' from the previous response.
+#' [`list_resolver_query_log_config_associations`][route53resolver_list_resolver_query_log_config_associations]
+#' request to get the next group of associations. In the next request,
+#' specify the value of `NextToken` from the previous response.
 #' @param Filters An optional specification to return a subset of query logging
 #' associations.
 #' 
 #' If you submit a second or subsequent
-#' `ListResolverQueryLogConfigAssociations` request and specify the
-#' `NextToken` parameter, you must use the same values for `Filters`, if
-#' any, as in the previous request.
+#' [`list_resolver_query_log_config_associations`][route53resolver_list_resolver_query_log_config_associations]
+#' request and specify the `NextToken` parameter, you must use the same
+#' values for `Filters`, if any, as in the previous request.
 #' @param SortBy The element that you want Resolver to sort query logging associations
 #' by.
 #' 
 #' If you submit a second or subsequent
-#' `ListResolverQueryLogConfigAssociations` request and specify the
-#' `NextToken` parameter, you must use the same value for `SortBy`, if any,
-#' as in the previous request.
+#' [`list_resolver_query_log_config_associations`][route53resolver_list_resolver_query_log_config_associations]
+#' request and specify the `NextToken` parameter, you must use the same
+#' value for `SortBy`, if any, as in the previous request.
 #' 
 #' Valid values include the following elements:
 #' 
@@ -1295,9 +1312,9 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
 #' logging associations to be listed in, `ASCENDING` or `DESCENDING`.
 #' 
 #' If you submit a second or subsequent
-#' `ListResolverQueryLogConfigAssociations` request and specify the
-#' `NextToken` parameter, you must use the same value for `SortOrder`, if
-#' any, as in the previous request.
+#' [`list_resolver_query_log_config_associations`][route53resolver_list_resolver_query_log_config_associations]
+#' request and specify the `NextToken` parameter, you must use the same
+#' value for `SortOrder`, if any, as in the previous request.
 #'
 #' @section Request syntax:
 #' ```
@@ -1349,26 +1366,31 @@ route53resolver_list_resolver_query_log_config_associations <- function(MaxResul
 #'   Filters, SortBy, SortOrder)
 #'
 #' @param MaxResults The maximum number of query logging configurations that you want to
-#' return in the response to a `ListResolverQueryLogConfigs` request. If
-#' you don't specify a value for `MaxResults`, Resolver returns up to 100
-#' query logging configurations.
-#' @param NextToken For the first `ListResolverQueryLogConfigs` request, omit this value.
+#' return in the response to a
+#' [`list_resolver_query_log_configs`][route53resolver_list_resolver_query_log_configs]
+#' request. If you don't specify a value for `MaxResults`, Resolver returns
+#' up to 100 query logging configurations.
+#' @param NextToken For the first
+#' [`list_resolver_query_log_configs`][route53resolver_list_resolver_query_log_configs]
+#' request, omit this value.
 #' 
 #' If there are more than `MaxResults` query logging configurations that
 #' match the values that you specify for `Filters`, you can submit another
-#' `ListResolverQueryLogConfigs` request to get the next group of
-#' configurations. In the next request, specify the value of `NextToken`
-#' from the previous response.
+#' [`list_resolver_query_log_configs`][route53resolver_list_resolver_query_log_configs]
+#' request to get the next group of configurations. In the next request,
+#' specify the value of `NextToken` from the previous response.
 #' @param Filters An optional specification to return a subset of query logging
 #' configurations.
 #' 
-#' If you submit a second or subsequent `ListResolverQueryLogConfigs`
+#' If you submit a second or subsequent
+#' [`list_resolver_query_log_configs`][route53resolver_list_resolver_query_log_configs]
 #' request and specify the `NextToken` parameter, you must use the same
 #' values for `Filters`, if any, as in the previous request.
 #' @param SortBy The element that you want Resolver to sort query logging configurations
 #' by.
 #' 
-#' If you submit a second or subsequent `ListResolverQueryLogConfigs`
+#' If you submit a second or subsequent
+#' [`list_resolver_query_log_configs`][route53resolver_list_resolver_query_log_configs]
 #' request and specify the `NextToken` parameter, you must use the same
 #' value for `SortBy`, if any, as in the previous request.
 #' 
@@ -1421,7 +1443,8 @@ route53resolver_list_resolver_query_log_config_associations <- function(MaxResul
 #' @param SortOrder If you specified a value for `SortBy`, the order that you want query
 #' logging configurations to be listed in, `ASCENDING` or `DESCENDING`.
 #' 
-#' If you submit a second or subsequent `ListResolverQueryLogConfigs`
+#' If you submit a second or subsequent
+#' [`list_resolver_query_log_configs`][route53resolver_list_resolver_query_log_configs]
 #' request and specify the `NextToken` parameter, you must use the same
 #' value for `SortOrder`, if any, as in the previous request.
 #'
@@ -1475,9 +1498,10 @@ route53resolver_list_resolver_query_log_configs <- function(MaxResults = NULL, N
 #'   Filters)
 #'
 #' @param MaxResults The maximum number of rule associations that you want to return in the
-#' response to a `ListResolverRuleAssociations` request. If you don't
-#' specify a value for `MaxResults`, Resolver returns up to 100 rule
-#' associations.
+#' response to a
+#' [`list_resolver_rule_associations`][route53resolver_list_resolver_rule_associations]
+#' request. If you don't specify a value for `MaxResults`, Resolver returns
+#' up to 100 rule associations.
 #' @param NextToken For the first `ListResolverRuleAssociation` request, omit this value.
 #' 
 #' If you have more than `MaxResults` rule associations, you can submit
@@ -1487,7 +1511,8 @@ route53resolver_list_resolver_query_log_configs <- function(MaxResults = NULL, N
 #' @param Filters An optional specification to return a subset of Resolver rules, such as
 #' Resolver rules that are associated with the same VPC ID.
 #' 
-#' If you submit a second or subsequent `ListResolverRuleAssociations`
+#' If you submit a second or subsequent
+#' [`list_resolver_rule_associations`][route53resolver_list_resolver_rule_associations]
 #' request and specify the `NextToken` parameter, you must use the same
 #' values for `Filters`, if any, as in the previous request.
 #'
@@ -1537,18 +1562,23 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
 #' route53resolver_list_resolver_rules(MaxResults, NextToken, Filters)
 #'
 #' @param MaxResults The maximum number of Resolver rules that you want to return in the
-#' response to a `ListResolverRules` request. If you don't specify a value
-#' for `MaxResults`, Resolver returns up to 100 Resolver rules.
-#' @param NextToken For the first `ListResolverRules` request, omit this value.
+#' response to a
+#' [`list_resolver_rules`][route53resolver_list_resolver_rules] request. If
+#' you don't specify a value for `MaxResults`, Resolver returns up to 100
+#' Resolver rules.
+#' @param NextToken For the first
+#' [`list_resolver_rules`][route53resolver_list_resolver_rules] request,
+#' omit this value.
 #' 
 #' If you have more than `MaxResults` Resolver rules, you can submit
-#' another `ListResolverRules` request to get the next group of Resolver
-#' rules. In the next request, specify the value of `NextToken` from the
-#' previous response.
+#' another [`list_resolver_rules`][route53resolver_list_resolver_rules]
+#' request to get the next group of Resolver rules. In the next request,
+#' specify the value of `NextToken` from the previous response.
 #' @param Filters An optional specification to return a subset of Resolver rules, such as
 #' all Resolver rules that are associated with the same Resolver endpoint.
 #' 
-#' If you submit a second or subsequent `ListResolverRules` request and
+#' If you submit a second or subsequent
+#' [`list_resolver_rules`][route53resolver_list_resolver_rules] request and
 #' specify the `NextToken` parameter, you must use the same values for
 #' `Filters`, if any, as in the previous request.
 #'
@@ -1600,14 +1630,17 @@ route53resolver_list_resolver_rules <- function(MaxResults = NULL, NextToken = N
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource that you want to list
 #' tags for.
 #' @param MaxResults The maximum number of tags that you want to return in the response to a
-#' `ListTagsForResource` request. If you don't specify a value for
-#' `MaxResults`, Resolver returns up to 100 tags.
-#' @param NextToken For the first `ListTagsForResource` request, omit this value.
+#' [`list_tags_for_resource`][route53resolver_list_tags_for_resource]
+#' request. If you don't specify a value for `MaxResults`, Resolver returns
+#' up to 100 tags.
+#' @param NextToken For the first
+#' [`list_tags_for_resource`][route53resolver_list_tags_for_resource]
+#' request, omit this value.
 #' 
 #' If you have more than `MaxResults` tags, you can submit another
-#' `ListTagsForResource` request to get the next group of tags for the
-#' resource. In the next request, specify the value of `NextToken` from the
-#' previous response.
+#' [`list_tags_for_resource`][route53resolver_list_tags_for_resource]
+#' request to get the next group of tags for the resource. In the next
+#' request, specify the value of `NextToken` from the previous response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1774,17 +1807,17 @@ route53resolver_put_resolver_rule_policy <- function(Arn, ResolverRulePolicy) {
 #' tags to. To get the ARN for a resource, use the applicable `Get` or
 #' `List` command:
 #' 
-#' -   [GetResolverEndpoint](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverEndpoint.html)
+#' -   [`get_resolver_endpoint`][route53resolver_get_resolver_endpoint]
 #' 
-#' -   [GetResolverRule](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverRule.html)
+#' -   [`get_resolver_rule`][route53resolver_get_resolver_rule]
 #' 
-#' -   [GetResolverRuleAssociation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverRuleAssociation.html)
+#' -   [`get_resolver_rule_association`][route53resolver_get_resolver_rule_association]
 #' 
-#' -   [ListResolverEndpoints](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverEndpoints.html)
+#' -   [`list_resolver_endpoints`][route53resolver_list_resolver_endpoints]
 #' 
-#' -   [ListResolverRuleAssociations](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRuleAssociations.html)
+#' -   [`list_resolver_rule_associations`][route53resolver_list_resolver_rule_associations]
 #' 
-#' -   [ListResolverRules](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRules.html)
+#' -   [`list_resolver_rules`][route53resolver_list_resolver_rules]
 #' @param Tags &#91;required&#93; The tags that you want to add to the specified resource.
 #'
 #' @section Request syntax:
@@ -1832,17 +1865,17 @@ route53resolver_tag_resource <- function(ResourceArn, Tags) {
 #' tags from. To get the ARN for a resource, use the applicable `Get` or
 #' `List` command:
 #' 
-#' -   [GetResolverEndpoint](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverEndpoint.html)
+#' -   [`get_resolver_endpoint`][route53resolver_get_resolver_endpoint]
 #' 
-#' -   [GetResolverRule](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverRule.html)
+#' -   [`get_resolver_rule`][route53resolver_get_resolver_rule]
 #' 
-#' -   [GetResolverRuleAssociation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverRuleAssociation.html)
+#' -   [`get_resolver_rule_association`][route53resolver_get_resolver_rule_association]
 #' 
-#' -   [ListResolverEndpoints](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverEndpoints.html)
+#' -   [`list_resolver_endpoints`][route53resolver_list_resolver_endpoints]
 #' 
-#' -   [ListResolverRuleAssociations](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRuleAssociations.html)
+#' -   [`list_resolver_rule_associations`][route53resolver_list_resolver_rule_associations]
 #' 
-#' -   [ListResolverRules](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRules.html)
+#' -   [`list_resolver_rules`][route53resolver_list_resolver_rules]
 #' @param TagKeys &#91;required&#93; The tags that you want to remove to the specified resource.
 #'
 #' @section Request syntax:

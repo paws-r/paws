@@ -45,9 +45,11 @@ see the following recommendations:
 parameter to specify whether to return AWS Health events that are
 public or account-specific.
 \item Use pagination to view all events from the response. For example, if
-you call the \code{DescribeEventsForOrganization} operation to get all
-events in your organization, you might receive several page results.
-Specify the \code{nextToken} in the next request to return more results.
+you call the
+\code{\link[=health_describe_events_for_organization]{describe_events_for_organization}}
+operation to get all events in your organization, you might receive
+several page results. Specify the \code{nextToken} in the next request to
+return more results.
 }
 }
 \section{Service syntax}{

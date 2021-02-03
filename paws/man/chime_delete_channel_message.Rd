@@ -14,7 +14,8 @@ chime_delete_channel_message(ChannelArn, MessageId)
 \description{
 Deletes a channel message. Only admins can perform this action. Deletion
 makes messages inaccessible immediately. A background process deletes
-any revisions created by \code{UpdateChannelMessage}.
+any revisions created by
+\code{\link[=chime_update_channel_message]{update_channel_message}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_channel_message(

@@ -14,12 +14,12 @@ either the build ID or ARN value.}
 \description{
 Retrieves a fresh set of credentials for use when uploading a new set of
 game build files to Amazon GameLift's Amazon S3. This is done as part of
-the build creation process; see CreateBuild.
+the build creation process; see \code{\link[=gamelift_create_build]{create_build}}.
 
 To request new credentials, specify the build ID as returned with an
-initial \code{CreateBuild} request. If successful, a new set of credentials
-are returned, along with the S3 storage location associated with the
-build ID.
+initial \code{\link[=gamelift_create_build]{create_build}} request. If successful,
+a new set of credentials are returned, along with the S3 storage
+location associated with the build ID.
 
 \strong{Learn more}
 
@@ -27,11 +27,11 @@ build ID.
 
 \strong{Related operations}
 \itemize{
-\item CreateBuild
-\item ListBuilds
-\item DescribeBuild
-\item UpdateBuild
-\item DeleteBuild
+\item \code{\link[=gamelift_create_build]{create_build}}
+\item \code{\link[=gamelift_list_builds]{list_builds}}
+\item \code{\link[=gamelift_describe_build]{describe_build}}
+\item \code{\link[=gamelift_update_build]{update_build}}
+\item \code{\link[=gamelift_delete_build]{delete_build}}
 }
 }
 \section{Request syntax}{

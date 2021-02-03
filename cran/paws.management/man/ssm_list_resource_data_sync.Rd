@@ -25,12 +25,13 @@ the last time a sync attempted to start, the last sync status, and the
 last time a sync successfully completed.
 
 The number of sync configurations might be too large to return using a
-single call to \code{ListResourceDataSync}. You can limit the number of sync
-configurations returned by using the \code{MaxResults} parameter. To
-determine whether there are more sync configurations to list, check the
-value of \code{NextToken} in the output. If there are more sync
-configurations to list, you can request them by specifying the
-\code{NextToken} returned in the call to the parameter of a subsequent call.
+single call to \code{\link[=ssm_list_resource_data_sync]{list_resource_data_sync}}.
+You can limit the number of sync configurations returned by using the
+\code{MaxResults} parameter. To determine whether there are more sync
+configurations to list, check the value of \code{NextToken} in the output. If
+there are more sync configurations to list, you can request them by
+specifying the \code{NextToken} returned in the call to the parameter of a
+subsequent call.
 }
 \section{Request syntax}{
 \preformatted{svc$list_resource_data_sync(

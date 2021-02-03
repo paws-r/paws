@@ -17,7 +17,8 @@ describe the application.}
 \description{
 Disassociates an attribute group from an application to remove the extra
 attributes contained in the attribute group from the application's
-metadata. This operation reverts \code{AssociateAttributeGroup}.
+metadata. This operation reverts
+\code{\link[=appregistry_associate_attribute_group]{associate_attribute_group}}.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_attribute_group(

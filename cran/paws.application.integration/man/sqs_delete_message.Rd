@@ -25,9 +25,9 @@ period configured for the queue.
 The \code{ReceiptHandle} is associated with a \emph{specific instance} of
 receiving a message. If you receive a message more than once, the
 \code{ReceiptHandle} is different each time you receive a message. When you
-use the \code{DeleteMessage} action, you must provide the most recently
-received \code{ReceiptHandle} for the message (otherwise, the request
-succeeds, but the message might not be deleted).
+use the \code{\link[=sqs_delete_message]{delete_message}} action, you must provide
+the most recently received \code{ReceiptHandle} for the message (otherwise,
+the request succeeds, but the message might not be deleted).
 
 For standard queues, it is possible to receive a message even after you
 delete it. This might happen on rare occasions if one of the servers

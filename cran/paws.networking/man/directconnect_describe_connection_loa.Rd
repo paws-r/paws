@@ -19,7 +19,7 @@ the cross connect.}
 value is application/pdf.}
 }
 \description{
-Deprecated. Use DescribeLoa instead.
+Deprecated. Use \code{\link[=directconnect_describe_loa]{describe_loa}} instead.
 
 Gets the LOA-CFA for a connection.
 

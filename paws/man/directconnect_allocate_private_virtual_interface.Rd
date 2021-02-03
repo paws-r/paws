@@ -21,9 +21,10 @@ Provisions a private virtual interface to be owned by the specified AWS
 account.
 
 Virtual interfaces created using this action must be confirmed by the
-owner using ConfirmPrivateVirtualInterface. Until then, the virtual
-interface is in the \code{Confirming} state and is not available to handle
-traffic.
+owner using
+\code{\link[=directconnect_confirm_private_virtual_interface]{confirm_private_virtual_interface}}.
+Until then, the virtual interface is in the \code{Confirming} state and is
+not available to handle traffic.
 }
 \section{Request syntax}{
 \preformatted{svc$allocate_private_virtual_interface(

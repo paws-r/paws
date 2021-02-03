@@ -15,11 +15,13 @@ refreshed causes an \code{InvalidParameterValue} error.}
 \description{
 Refreshes the AWS Trusted Advisor check that you specify using the check
 ID. You can get the check IDs by calling the
-DescribeTrustedAdvisorChecks operation.
+\code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}}
+operation.
 
 Some checks are refreshed automatically. If you call the
-\code{RefreshTrustedAdvisorCheck} operation to refresh them, you might see
-the \code{InvalidParameterValue} error.
+\code{\link[=support_refresh_trusted_advisor_check]{refresh_trusted_advisor_check}}
+operation to refresh them, you might see the \code{InvalidParameterValue}
+error.
 
 The response contains a TrustedAdvisorCheckRefreshStatus object.
 \itemize{

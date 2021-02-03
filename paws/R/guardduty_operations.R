@@ -2367,7 +2367,8 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
 #' @description
 #' Turns on GuardDuty monitoring of the specified member accounts. Use this
 #' operation to restart monitoring of accounts that you stopped monitoring
-#' with the `StopMonitoringMembers` operation.
+#' with the [`stop_monitoring_members`][guardduty_stop_monitoring_members]
+#' operation.
 #'
 #' @usage
 #' guardduty_start_monitoring_members(DetectorId, AccountIds)
@@ -2411,8 +2412,8 @@ guardduty_start_monitoring_members <- function(DetectorId, AccountIds) {
 #'
 #' @description
 #' Stops GuardDuty monitoring for the specified member accounts. Use the
-#' `StartMonitoringMembers` operation to restart monitoring for those
-#' accounts.
+#' [`start_monitoring_members`][guardduty_start_monitoring_members]
+#' operation to restart monitoring for those accounts.
 #'
 #' @usage
 #' guardduty_stop_monitoring_members(DetectorId, AccountIds)

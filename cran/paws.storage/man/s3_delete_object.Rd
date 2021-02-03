@@ -66,15 +66,16 @@ To see sample requests that use versioning, see \href{https://docs.aws.amazon.co
 
 You can delete objects by explicitly calling the DELETE Object API or
 configure its lifecycle
-(\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html}{PutBucketLifecycle})
-to enable Amazon S3 to remove them for you. If you want to block users
-or accounts from removing or deleting objects from your bucket, you must
-deny them the \code{s3:DeleteObject}, \code{s3:DeleteObjectVersion}, and
+(\code{\link[=s3_put_bucket_lifecycle]{put_bucket_lifecycle}}) to enable Amazon S3
+to remove them for you. If you want to block users or accounts from
+removing or deleting objects from your bucket, you must deny them the
+\code{s3:DeleteObject}, \code{s3:DeleteObjectVersion}, and
 \code{s3:PutLifeCycleConfiguration} actions.
 
-The following operation is related to \code{DeleteObject}:
+The following operation is related to
+\code{\link[=s3_delete_object]{delete_object}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
+\item \code{\link[=s3_put_object]{put_object}}
 }
 }
 \section{Request syntax}{

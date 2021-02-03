@@ -22,8 +22,8 @@ This action deletes an endpoint.
 
 Related actions include:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_CreateEndpoint.html}{CreateEndpoint}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_ListEndpoints.html}{ListEndpoints}
+\item \code{\link[=s3outposts_create_endpoint]{create_endpoint}}
+\item \code{\link[=s3outposts_list_endpoints]{list_endpoints}}
 }
 }
 \section{Request syntax}{

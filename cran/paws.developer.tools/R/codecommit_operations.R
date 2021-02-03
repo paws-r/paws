@@ -328,7 +328,7 @@ codecommit_batch_get_repositories <- function(repositoryNames) {
 #' template with a repository, AWS CodeCommit creates an approval rule that
 #' matches the conditions of the template for all pull requests that meet
 #' the conditions of the template. For more information, see
-#' AssociateApprovalRuleTemplateWithRepository.
+#' [`associate_approval_rule_template_with_repository`][codecommit_associate_approval_rule_template_with_repository].
 #'
 #' @usage
 #' codecommit_create_approval_rule_template(approvalRuleTemplateName,
@@ -922,7 +922,9 @@ codecommit_delete_branch <- function(repositoryName, branchName) {
 #' codecommit_delete_comment_content(commentId)
 #'
 #' @param commentId &#91;required&#93; The unique, system-generated ID of the comment. To get this ID, use
-#' GetCommentsForComparedCommit or GetCommentsForPullRequest.
+#' [`get_comments_for_compared_commit`][codecommit_get_comments_for_compared_commit]
+#' or
+#' [`get_comments_for_pull_request`][codecommit_get_comments_for_pull_request].
 #'
 #' @section Request syntax:
 #' ```
@@ -1191,7 +1193,7 @@ codecommit_describe_merge_conflicts <- function(repositoryName, destinationCommi
 #'   pullRequestEventType, actorArn, nextToken, maxResults)
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
-#' ListPullRequests.
+#' [`list_pull_requests`][codecommit_list_pull_requests].
 #' @param pullRequestEventType Optional. The pull request event type about which you want to return
 #' information.
 #' @param actorArn The Amazon Resource Name (ARN) of the user whose actions resulted in the
@@ -1294,7 +1296,8 @@ codecommit_disassociate_approval_rule_template_from_repository <- function(appro
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request you want to evaluate.
 #' @param revisionId &#91;required&#93; The system-generated ID for the pull request revision. To retrieve the
-#' most recent revision ID for a pull request, use GetPullRequest.
+#' most recent revision ID for a pull request, use
+#' [`get_pull_request`][codecommit_get_pull_request].
 #'
 #' @section Request syntax:
 #' ```
@@ -1460,7 +1463,9 @@ codecommit_get_branch <- function(repositoryName = NULL, branchName = NULL) {
 #' codecommit_get_comment(commentId)
 #'
 #' @param commentId &#91;required&#93; The unique, system-generated ID of the comment. To get this ID, use
-#' GetCommentsForComparedCommit or GetCommentsForPullRequest.
+#' [`get_comments_for_compared_commit`][codecommit_get_comments_for_compared_commit]
+#' or
+#' [`get_comments_for_pull_request`][codecommit_get_comments_for_pull_request].
 #'
 #' @section Request syntax:
 #' ```
@@ -1607,7 +1612,7 @@ codecommit_get_comments_for_compared_commit <- function(repositoryName, beforeCo
 #'   beforeCommitId, afterCommitId, nextToken, maxResults)
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
-#' ListPullRequests.
+#' [`list_pull_requests`][codecommit_list_pull_requests].
 #' @param repositoryName The name of the repository that contains the pull request.
 #' @param beforeCommitId The full commit ID of the commit in the destination branch that was the
 #' tip of the branch at the time the pull request was created.
@@ -2047,7 +2052,7 @@ codecommit_get_merge_options <- function(repositoryName, sourceCommitSpecifier, 
 #' codecommit_get_pull_request(pullRequestId)
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
-#' ListPullRequests.
+#' [`list_pull_requests`][codecommit_list_pull_requests].
 #'
 #' @section Request syntax:
 #' ```
@@ -2134,7 +2139,8 @@ codecommit_get_pull_request_approval_states <- function(pullRequestId, revisionI
 #' @param pullRequestId &#91;required&#93; The ID of the pull request for which you want to get information about
 #' whether approval rules have been set aside (overridden).
 #' @param revisionId &#91;required&#93; The system-generated ID of the revision for the pull request. To
-#' retrieve the most recent revision ID, use GetPullRequest.
+#' retrieve the most recent revision ID, use
+#' [`get_pull_request`][codecommit_get_pull_request].
 #'
 #' @section Request syntax:
 #' ```
@@ -2814,7 +2820,7 @@ codecommit_merge_branches_by_three_way <- function(repositoryName, sourceCommitS
 #'   repositoryName, sourceCommitId)
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
-#' ListPullRequests.
+#' [`list_pull_requests`][codecommit_list_pull_requests].
 #' @param repositoryName &#91;required&#93; The name of the repository where the pull request was created.
 #' @param sourceCommitId The full commit ID of the original or updated commit in the pull request
 #' source branch. Pass this value if you want an exception thrown if the
@@ -2866,7 +2872,7 @@ codecommit_merge_pull_request_by_fast_forward <- function(pullRequestId, reposit
 #'   commitMessage, authorName, email, keepEmptyFolders, conflictResolution)
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
-#' ListPullRequests.
+#' [`list_pull_requests`][codecommit_list_pull_requests].
 #' @param repositoryName &#91;required&#93; The name of the repository where the pull request was created.
 #' @param sourceCommitId The full commit ID of the original or updated commit in the pull request
 #' source branch. Pass this value if you want an exception thrown if the
@@ -2965,7 +2971,7 @@ codecommit_merge_pull_request_by_squash <- function(pullRequestId, repositoryNam
 #'   keepEmptyFolders, conflictResolution)
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
-#' ListPullRequests.
+#' [`list_pull_requests`][codecommit_list_pull_requests].
 #' @param repositoryName &#91;required&#93; The name of the repository where the pull request was created.
 #' @param sourceCommitId The full commit ID of the original or updated commit in the pull request
 #' source branch. Pass this value if you want an exception thrown if the
@@ -3060,7 +3066,7 @@ codecommit_merge_pull_request_by_three_way <- function(pullRequestId, repository
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request for which you want to
 #' override all approval rule requirements. To get this information, use
-#' GetPullRequest.
+#' [`get_pull_request`][codecommit_get_pull_request].
 #' @param revisionId &#91;required&#93; The system-generated ID of the most recent revision of the pull request.
 #' You cannot override approval rules for anything but the most recent
 #' revision of a pull request. To get the revision ID, use GetPullRequest.
@@ -3167,7 +3173,7 @@ codecommit_post_comment_for_compared_commit <- function(repositoryName, beforeCo
 #'   beforeCommitId, afterCommitId, location, content, clientRequestToken)
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
-#' ListPullRequests.
+#' [`list_pull_requests`][codecommit_list_pull_requests].
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to post a comment on a pull
 #' request.
 #' @param beforeCommitId &#91;required&#93; The full commit ID of the commit in the destination branch that was the
@@ -3234,8 +3240,10 @@ codecommit_post_comment_for_pull_request <- function(pullRequestId, repositoryNa
 #' codecommit_post_comment_reply(inReplyTo, clientRequestToken, content)
 #'
 #' @param inReplyTo &#91;required&#93; The system-generated ID of the comment to which you want to reply. To
-#' get this ID, use GetCommentsForComparedCommit or
-#' GetCommentsForPullRequest.
+#' get this ID, use
+#' [`get_comments_for_compared_commit`][codecommit_get_comments_for_compared_commit]
+#' or
+#' [`get_comments_for_pull_request`][codecommit_get_comments_for_pull_request].
 #' @param clientRequestToken A unique, client-generated idempotency token that, when provided in a
 #' request, ensures the request cannot be repeated with a changed
 #' parameter. If a request is received with the same parameters and a token
@@ -3605,7 +3613,8 @@ codecommit_untag_resource <- function(resourceArn, tagKeys) {
 #' @param newRuleContent &#91;required&#93; The content that replaces the existing content of the rule. Content
 #' statements must be complete. You cannot provide only the changes.
 #' @param existingRuleContentSha256 The SHA-256 hash signature for the content of the approval rule. You can
-#' retrieve this information by using GetPullRequest.
+#' retrieve this information by using
+#' [`get_pull_request`][codecommit_get_pull_request].
 #'
 #' @section Request syntax:
 #' ```
@@ -3725,7 +3734,10 @@ codecommit_update_approval_rule_template_name <- function(oldApprovalRuleTemplat
 #' codecommit_update_comment(commentId, content)
 #'
 #' @param commentId &#91;required&#93; The system-generated ID of the comment you want to update. To get this
-#' ID, use GetCommentsForComparedCommit or GetCommentsForPullRequest.
+#' ID, use
+#' [`get_comments_for_compared_commit`][codecommit_get_comments_for_compared_commit]
+#' or
+#' [`get_comments_for_pull_request`][codecommit_get_comments_for_pull_request].
 #' @param content &#91;required&#93; The updated content to replace the existing content of the comment.
 #'
 #' @section Request syntax:
@@ -3814,7 +3826,8 @@ codecommit_update_default_branch <- function(repositoryName, defaultBranchName) 
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request.
 #' @param approvalRuleName &#91;required&#93; The name of the approval rule you want to update.
 #' @param existingRuleContentSha256 The SHA-256 hash signature for the content of the approval rule. You can
-#' retrieve this information by using GetPullRequest.
+#' retrieve this information by using
+#' [`get_pull_request`][codecommit_get_pull_request].
 #' @param newRuleContent &#91;required&#93; The updated content for the approval rule.
 #' 
 #' When you update the content of the approval rule, you can specify
@@ -3929,7 +3942,7 @@ codecommit_update_pull_request_approval_state <- function(pullRequestId, revisio
 #' codecommit_update_pull_request_description(pullRequestId, description)
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
-#' ListPullRequests.
+#' [`list_pull_requests`][codecommit_list_pull_requests].
 #' @param description &#91;required&#93; The updated content of the description for the pull request. This
 #' content replaces the existing description.
 #'
@@ -3970,7 +3983,7 @@ codecommit_update_pull_request_description <- function(pullRequestId, descriptio
 #' codecommit_update_pull_request_status(pullRequestId, pullRequestStatus)
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
-#' ListPullRequests.
+#' [`list_pull_requests`][codecommit_list_pull_requests].
 #' @param pullRequestStatus &#91;required&#93; The status of the pull request. The only valid operations are to update
 #' the status from `OPEN` to `OPEN`, `OPEN` to `CLOSED` or from `CLOSED` to
 #' `CLOSED`.
@@ -4012,7 +4025,7 @@ codecommit_update_pull_request_status <- function(pullRequestId, pullRequestStat
 #' codecommit_update_pull_request_title(pullRequestId, title)
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
-#' ListPullRequests.
+#' [`list_pull_requests`][codecommit_list_pull_requests].
 #' @param title &#91;required&#93; The updated title of the pull request. This replaces the existing title.
 #'
 #' @section Request syntax:

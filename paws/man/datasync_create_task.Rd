@@ -19,10 +19,11 @@ is used to monitor and log events in the task.}
 identify the task in the console.}
 
 \item{Options}{The set of configuration options that control the behavior of a single
-execution of the task that occurs when you call \code{StartTaskExecution}.
-You can configure these options to preserve metadata such as user ID
-(UID) and group ID (GID), file permissions, data integrity verification,
-and so on.
+execution of the task that occurs when you call
+\code{\link[=datasync_start_task_execution]{start_task_execution}}. You can
+configure these options to preserve metadata such as user ID (UID) and
+group ID (GID), file permissions, data integrity verification, and so
+on.
 
 For each individual task execution, you can override these options by
 specifying the \code{OverrideOptions} before starting the task execution. For

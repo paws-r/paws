@@ -8,10 +8,12 @@ waf_delete_size_constraint_set(SizeConstraintSetId, ChangeToken)
 }
 \arguments{
 \item{SizeConstraintSetId}{[required] The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to
-delete. \code{SizeConstraintSetId} is returned by CreateSizeConstraintSet and
-by ListSizeConstraintSets.}
+delete. \code{SizeConstraintSetId} is returned by
+\code{\link[=waf_create_size_constraint_set]{create_size_constraint_set}} and by
+\code{\link[=waf_list_size_constraint_sets]{list_size_constraint_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -28,16 +30,21 @@ Permanently deletes a SizeConstraintSet. You can't delete a
 includes any SizeConstraint objects (any filters).
 
 If you just want to remove a \code{SizeConstraintSet} from a \code{Rule}, use
-UpdateRule.
+\code{\link[=waf_update_rule]{update_rule}}.
 
 To permanently delete a \code{SizeConstraintSet}, perform the following
 steps:
 \enumerate{
 \item Update the \code{SizeConstraintSet} to remove filters, if any. For more
-information, see UpdateSizeConstraintSet.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{DeleteSizeConstraintSet} request.
-\item Submit a \code{DeleteSizeConstraintSet} request.
+information, see
+\code{\link[=waf_update_size_constraint_set]{update_size_constraint_set}}.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=waf_delete_size_constraint_set]{delete_size_constraint_set}}
+request.
+\item Submit a
+\code{\link[=waf_delete_size_constraint_set]{delete_size_constraint_set}}
+request.
 }
 }
 \section{Request syntax}{

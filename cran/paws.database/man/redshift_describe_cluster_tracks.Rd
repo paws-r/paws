@@ -13,11 +13,12 @@ redshift_describe_cluster_tracks(MaintenanceTrackName, MaxRecords,
 \item{MaxRecords}{An integer value for the maximum number of maintenance tracks to return.}
 
 \item{Marker}{An optional parameter that specifies the starting point to return a set
-of response records. When the results of a \code{DescribeClusterTracks}
-request exceed the value specified in \code{MaxRecords}, Amazon Redshift
-returns a value in the \code{Marker} field of the response. You can retrieve
-the next set of response records by providing the returned marker value
-in the \code{Marker} parameter and retrying the request.}
+of response records. When the results of a
+\code{\link[=redshift_describe_cluster_tracks]{describe_cluster_tracks}} request
+exceed the value specified in \code{MaxRecords}, Amazon Redshift returns a
+value in the \code{Marker} field of the response. You can retrieve the next
+set of response records by providing the returned marker value in the
+\code{Marker} parameter and retrying the request.}
 }
 \description{
 Returns a list of all the available maintenance tracks.

@@ -9,10 +9,12 @@ cloudfront_get_origin_request_policy_config(Id)
 \arguments{
 \item{Id}{[required] The unique identifier for the origin request policy. If the origin
 request policy is attached to a distribution’s cache behavior, you can
-get the policy’s identifier using \code{ListDistributions} or
-\code{GetDistribution}. If the origin request policy is not attached to a
-cache behavior, you can get the identifier using
-\code{ListOriginRequestPolicies}.}
+get the policy’s identifier using
+\code{\link[=cloudfront_list_distributions]{list_distributions}} or
+\code{\link[=cloudfront_get_distribution]{get_distribution}}. If the origin request
+policy is not attached to a cache behavior, you can get the identifier
+using
+\code{\link[=cloudfront_list_origin_request_policies]{list_origin_request_policies}}.}
 }
 \description{
 Gets an origin request policy configuration.
@@ -20,9 +22,11 @@ Gets an origin request policy configuration.
 To get an origin request policy configuration, you must provide the
 policy’s identifier. If the origin request policy is attached to a
 distribution’s cache behavior, you can get the policy’s identifier using
-\code{ListDistributions} or \code{GetDistribution}. If the origin request policy
-is not attached to a cache behavior, you can get the identifier using
-\code{ListOriginRequestPolicies}.
+\code{\link[=cloudfront_list_distributions]{list_distributions}} or
+\code{\link[=cloudfront_get_distribution]{get_distribution}}. If the origin request
+policy is not attached to a cache behavior, you can get the identifier
+using
+\code{\link[=cloudfront_list_origin_request_policies]{list_origin_request_policies}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_origin_request_policy_config(

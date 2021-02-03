@@ -112,21 +112,21 @@ characters are encoded. The default is \code{html}.
 search term(s) you want to highlight. By default, the first
 occurrence is highlighted.
 \item \code{pre_tag}: specifies the string to prepend to an occurrence of a
-search term. The default for HTML highlights is
-\verb{&amp;lt;em&amp;gt;}. The default for text highlights is \code{*}.
+search term. The default for HTML highlights is \verb{&lt;em&gt;}. The
+default for text highlights is \code{*}.
 \item \code{post_tag}: specifies the string to append to an occurrence of a
-search term. The default for HTML highlights is
-\verb{&amp;lt;/em&amp;gt;}. The default for text highlights is \code{*}.
+search term. The default for HTML highlights is \verb{&lt;/em&gt;}. The
+default for text highlights is \code{*}.
 }
 
 If no highlight options are specified for a field, the returned field
 text is treated as HTML and the first match is highlighted with emphasis
-tags: \verb{&amp;lt;em&gt;search-term&amp;lt;/em&amp;gt;}.
+tags: \verb{&lt;em>search-term&lt;/em&gt;}.
 
 For example, the following request retrieves highlights for the \code{actors}
 and \code{title} fields.
 
-\verb{\\\{ "actors": \\\{\\\}, "title": \\\{"format": "text","max_phrases": 2,"pre_tag": "<b>","post_tag": "</b>"\\\} \\\}}}
+\verb{\\\{ "actors": \\\{\\\}, "title": \\\{"format": "text","max_phrases": 2,"pre_tag": "","post_tag": ""\\\} \\\}}}
 
 \item{partial}{Enables partial results to be returned if one or more index partitions
 are unavailable. When your search index is partitioned across multiple
@@ -339,11 +339,12 @@ parser.
 For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html}{Searching Your Data}
 in the \emph{Amazon CloudSearch Developer Guide}.
 
-The endpoint for submitting \code{Search} requests is domain-specific. You
-submit search requests to a domain's search endpoint. To get the search
-endpoint for your domain, use the Amazon CloudSearch configuration
-service \code{DescribeDomains} action. A domain's endpoints are also
-displayed on the domain dashboard in the Amazon CloudSearch console.
+The endpoint for submitting \code{\link[=cloudsearchdomain_search]{search}}
+requests is domain-specific. You submit search requests to a domain's
+search endpoint. To get the search endpoint for your domain, use the
+Amazon CloudSearch configuration service \code{DescribeDomains} action. A
+domain's endpoints are also displayed on the domain dashboard in the
+Amazon CloudSearch console.
 }
 \section{Request syntax}{
 \preformatted{svc$search(

@@ -10,10 +10,12 @@ forecastservice_describe_forecast(ForecastArn)
 \item{ForecastArn}{[required] The Amazon Resource Name (ARN) of the forecast.}
 }
 \description{
-Describes a forecast created using the CreateForecast operation.
+Describes a forecast created using the
+\code{\link[=forecastservice_create_forecast]{create_forecast}} operation.
 
-In addition to listing the properties provided in the \code{CreateForecast}
-request, this operation lists the following properties:
+In addition to listing the properties provided in the
+\code{\link[=forecastservice_create_forecast]{create_forecast}} request, this
+operation lists the following properties:
 \itemize{
 \item \code{DatasetGroupArn} - The dataset group that provided the training
 data.

@@ -9,7 +9,8 @@ cloudhsmv2_tag_resource(ResourceId, TagList)
 }
 \arguments{
 \item{ResourceId}{[required] The cluster identifier (ID) for the cluster that you are tagging. To
-find the cluster ID, use DescribeClusters.}
+find the cluster ID, use
+\code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 
 \item{TagList}{[required] A list of one or more tags.}
 }

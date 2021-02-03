@@ -15,25 +15,25 @@ NULL
 #' free all storage consumed by all parts.
 #' 
 #' To verify that all parts have been removed, so you don't get charged for
-#' the part storage, you should call the
-#' [ListParts](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html)
+#' the part storage, you should call the [`list_parts`][s3_list_parts]
 #' operation and ensure that the parts list is empty.
 #' 
 #' For information about permissions required to use the multipart upload
 #' API, see [Multipart Upload API and
 #' Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html).
 #' 
-#' The following operations are related to `AbortMultipartUpload`:
+#' The following operations are related to
+#' [`abort_multipart_upload`][s3_abort_multipart_upload]:
 #' 
-#' -   [CreateMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)
+#' -   [`create_multipart_upload`][s3_create_multipart_upload]
 #' 
-#' -   [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
+#' -   [`upload_part`][s3_upload_part]
 #' 
-#' -   [CompleteMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html)
+#' -   [`complete_multipart_upload`][s3_complete_multipart_upload]
 #' 
-#' -   [ListParts](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html)
+#' -   [`list_parts`][s3_list_parts]
 #' 
-#' -   [ListMultipartUploads](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html)
+#' -   [`list_multipart_uploads`][s3_list_multipart_uploads]
 #'
 #' @usage
 #' s3_abort_multipart_upload(Bucket, Key, UploadId, RequestPayer,
@@ -113,16 +113,15 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' Completes a multipart upload by assembling previously uploaded parts.
 #' 
 #' You first initiate the multipart upload and then upload all parts using
-#' the
-#' [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
-#' operation. After successfully uploading all relevant parts of an upload,
-#' you call this operation to complete the upload. Upon receiving this
-#' request, Amazon S3 concatenates all the parts in ascending order by part
-#' number to create a new object. In the Complete Multipart Upload request,
-#' you must provide the parts list. You must ensure that the parts list is
-#' complete. This operation concatenates the parts that you provide in the
-#' list. For each part in the list, you must provide the part number and
-#' the `ETag` value, returned after that part was uploaded.
+#' the [`upload_part`][s3_upload_part] operation. After successfully
+#' uploading all relevant parts of an upload, you call this operation to
+#' complete the upload. Upon receiving this request, Amazon S3 concatenates
+#' all the parts in ascending order by part number to create a new object.
+#' In the Complete Multipart Upload request, you must provide the parts
+#' list. You must ensure that the parts list is complete. This operation
+#' concatenates the parts that you provide in the list. For each part in
+#' the list, you must provide the part number and the `ETag` value,
+#' returned after that part was uploaded.
 #' 
 #' Processing of a Complete Multipart Upload request could take several
 #' minutes to complete. After Amazon S3 begins processing the request, it
@@ -133,9 +132,9 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' important that you check the response body to determine whether the
 #' request succeeded.
 #' 
-#' Note that if `CompleteMultipartUpload` fails, applications should be
-#' prepared to retry the failed requests. For more information, see [Amazon
-#' S3 Error Best
+#' Note that if [`complete_multipart_upload`][s3_complete_multipart_upload]
+#' fails, applications should be prepared to retry the failed requests. For
+#' more information, see [Amazon S3 Error Best
 #' Practices](https://docs.aws.amazon.com/AmazonS3/latest/dev/ErrorBestPractices.html).
 #' 
 #' For more information about multipart uploads, see [Uploading Objects
@@ -146,7 +145,8 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' API, see [Multipart Upload API and
 #' Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html).
 #' 
-#' `CompleteMultipartUpload` has the following special errors:
+#' [`complete_multipart_upload`][s3_complete_multipart_upload] has the
+#' following special errors:
 #' 
 #' -   Error code: `EntityTooSmall`
 #' 
@@ -179,17 +179,18 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' 
 #'     -   404 Not Found
 #' 
-#' The following operations are related to `CompleteMultipartUpload`:
+#' The following operations are related to
+#' [`complete_multipart_upload`][s3_complete_multipart_upload]:
 #' 
-#' -   [CreateMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)
+#' -   [`create_multipart_upload`][s3_create_multipart_upload]
 #' 
-#' -   [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
+#' -   [`upload_part`][s3_upload_part]
 #' 
-#' -   [AbortMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html)
+#' -   [`abort_multipart_upload`][s3_abort_multipart_upload]
 #' 
-#' -   [ListParts](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html)
+#' -   [`list_parts`][s3_list_parts]
 #' 
-#' -   [ListMultipartUploads](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html)
+#' -   [`list_multipart_uploads`][s3_list_multipart_uploads]
 #'
 #' @usage
 #' s3_complete_multipart_upload(Bucket, Key, MultipartUpload, UploadId,
@@ -395,9 +396,9 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' 
 #' **Storage Class Options**
 #' 
-#' You can use the `CopyObject` operation to change the storage class of an
-#' object that is already stored in Amazon S3 using the `StorageClass`
-#' parameter. For more information, see [Storage
+#' You can use the [`copy_object`][s3_copy_object] operation to change the
+#' storage class of an object that is already stored in Amazon S3 using the
+#' `StorageClass` parameter. For more information, see [Storage
 #' Classes](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html)
 #' in the *Amazon S3 Service Developer Guide*.
 #' 
@@ -420,13 +421,13 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' If the source object's storage class is GLACIER, you must restore a copy
 #' of this object before you can use it as a source object for the copy
 #' operation. For more information, see
-#' [RestoreObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html).
+#' [`restore_object`][s3_restore_object].
 #' 
-#' The following operations are related to `CopyObject`:
+#' The following operations are related to [`copy_object`][s3_copy_object]:
 #' 
-#' -   [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+#' -   [`put_object`][s3_put_object]
 #' 
-#' -   [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+#' -   [`get_object`][s3_get_object]
 #' 
 #' For more information, see [Copying
 #' Objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjectsExamples.html).
@@ -491,7 +492,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' -   For objects accessed through access points, specify the Amazon
 #'     Resource Name (ARN) of the object as accessed through the access
 #'     point, in the format
-#'     `arn:aws:s3:&lt;Region&gt;:&lt;account-id&gt;:accesspoint/&lt;access-point-name&gt;/object/&lt;key&gt;`.
+#'     `arn:aws:s3:<Region>:<account-id>:accesspoint/<access-point-name>/object/<key>`.
 #'     For example, to copy the object `reports/january.pdf` through access
 #'     point `my-access-point` owned by account `123456789012` in Region
 #'     `us-west-2`, use the URL encoding of
@@ -503,7 +504,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' 
 #'     Alternatively, for objects accessed through Amazon S3 on Outposts,
 #'     specify the ARN of the object as accessed in the format
-#'     `arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/object/&lt;key&gt;`.
+#'     `arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/object/<key>`.
 #'     For example, to copy the object `reports/january.pdf` through
 #'     outpost `my-outpost` owned by account `123456789012` in Region
 #'     `us-west-2`, use the URL encoding of
@@ -511,7 +512,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'     The value must be URL encoded.
 #' 
 #' To copy a specific version of an object, append
-#' `?versionId=&lt;version-id&gt;` to the value (for example,
+#' `?versionId=<version-id>` to the value (for example,
 #' `awsexamplebucket/reports/january.pdf?versionId=QUpfdndhfd8438MNFDN93jdnJFkdmqnh893`).
 #' If you don't specify a version ID, Amazon S3 copies the latest version
 #' of the source object.
@@ -782,11 +783,12 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDispo
 #' You can use either a canned ACL or specify access permissions
 #' explicitly. You cannot do both.
 #' 
-#' The following operations are related to `CreateBucket`:
+#' The following operations are related to
+#' [`create_bucket`][s3_create_bucket]:
 #' 
-#' -   [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+#' -   [`put_object`][s3_put_object]
 #' 
-#' -   [DeleteBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html)
+#' -   [`delete_bucket`][s3_delete_bucket]
 #'
 #' @usage
 #' s3_create_bucket(ACL, Bucket, CreateBucketConfiguration,
@@ -866,10 +868,9 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' This operation initiates a multipart upload and returns an upload ID.
 #' This upload ID is used to associate all of the parts in the specific
 #' multipart upload. You specify this upload ID in each of your subsequent
-#' upload part requests (see
-#' [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)).
-#' You also include this upload ID in the final request to either complete
-#' or abort the multipart upload request.
+#' upload part requests (see [`upload_part`][s3_upload_part]). You also
+#' include this upload ID in the final request to either complete or abort
+#' the multipart upload request.
 #' 
 #' For more information about multipart uploads, see [Multipart Upload
 #' Overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html).
@@ -906,11 +907,10 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' own encryption key, or use AWS Key Management Service (AWS KMS) customer
 #' master keys (CMKs) or Amazon S3-managed encryption keys. If you choose
 #' to provide your own encryption key, the request headers you provide in
-#' [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
-#' and
-#' [UploadPartCopy](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPartCopy.html)
-#' requests must match the headers you used in the request to initiate the
-#' upload by using `CreateMultipartUpload`.
+#' [`upload_part`][s3_upload_part] and
+#' [`upload_part_copy`][s3_upload_part_copy] requests must match the
+#' headers you used in the request to initiate the upload by using
+#' [`create_multipart_upload`][s3_create_multipart_upload].
 #' 
 #' To perform a multipart upload with encryption using an AWS KMS CMK, the
 #' requester must have permission to the `kms:Encrypt`, `kms:Decrypt`,
@@ -1073,17 +1073,18 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' 
 #'     `x-amz-grant-read: id="11112222333", id="444455556666" `
 #' 
-#' The following operations are related to `CreateMultipartUpload`:
+#' The following operations are related to
+#' [`create_multipart_upload`][s3_create_multipart_upload]:
 #' 
-#' -   [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
+#' -   [`upload_part`][s3_upload_part]
 #' 
-#' -   [CompleteMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html)
+#' -   [`complete_multipart_upload`][s3_complete_multipart_upload]
 #' 
-#' -   [AbortMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html)
+#' -   [`abort_multipart_upload`][s3_abort_multipart_upload]
 #' 
-#' -   [ListParts](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html)
+#' -   [`list_parts`][s3_list_parts]
 #' 
-#' -   [ListMultipartUploads](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html)
+#' -   [`list_multipart_uploads`][s3_list_multipart_uploads]
 #'
 #' @usage
 #' s3_create_multipart_upload(ACL, Bucket, CacheControl,
@@ -1269,9 +1270,9 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' 
 #' **Related Resources**
 #' 
-#' -   [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+#' -   [`create_bucket`][s3_create_bucket]
 #' 
-#' -   [DeleteObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html)
+#' -   [`delete_object`][s3_delete_object]
 #'
 #' @usage
 #' s3_delete_bucket(Bucket, ExpectedBucketOwner)
@@ -1338,13 +1339,13 @@ s3_delete_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Analysis](https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html).
 #' 
 #' The following operations are related to
-#' `DeleteBucketAnalyticsConfiguration`:
+#' [`delete_bucket_analytics_configuration`][s3_delete_bucket_analytics_configuration]:
 #' 
-#' -   [GetBucketAnalyticsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAnalyticsConfiguration.html)
+#' -   [`get_bucket_analytics_configuration`][s3_get_bucket_analytics_configuration]
 #' 
-#' -   [ListBucketAnalyticsConfigurations](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketAnalyticsConfigurations.html)
+#' -   [`list_bucket_analytics_configurations`][s3_list_bucket_analytics_configurations]
 #' 
-#' -   [PutBucketAnalyticsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html)
+#' -   [`put_bucket_analytics_configuration`][s3_put_bucket_analytics_configuration]
 #'
 #' @usage
 #' s3_delete_bucket_analytics_configuration(Bucket, Id,
@@ -1400,7 +1401,7 @@ s3_delete_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketO
 #' 
 #' **Related Resources:**
 #' 
-#' -   [PutBucketCors](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketCors.html)
+#' -   [`put_bucket_cors`][s3_put_bucket_cors]
 #' 
 #' -   [RESTOPTIONSobject](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html)
 #'
@@ -1470,9 +1471,9 @@ s3_delete_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' **Related Resources**
 #' 
-#' -   [PutBucketEncryption](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketEncryption.html)
+#' -   [`put_bucket_encryption`][s3_put_bucket_encryption]
 #' 
-#' -   [GetBucketEncryption](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html)
+#' -   [`get_bucket_encryption`][s3_get_bucket_encryption]
 #'
 #' @usage
 #' s3_delete_bucket_encryption(Bucket, ExpectedBucketOwner)
@@ -1536,14 +1537,15 @@ s3_delete_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' accessed
 #' objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access).
 #' 
-#' Operations related to `DeleteBucketIntelligentTieringConfiguration`
+#' Operations related to
+#' [`delete_bucket_intelligent_tiering_configuration`][s3_delete_bucket_intelligent_tiering_configuration]
 #' include:
 #' 
-#' -   [GetBucketIntelligentTieringConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketIntelligentTieringConfiguration.html)
+#' -   [`get_bucket_intelligent_tiering_configuration`][s3_get_bucket_intelligent_tiering_configuration]
 #' 
-#' -   [PutBucketIntelligentTieringConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketIntelligentTieringConfiguration.html)
+#' -   [`put_bucket_intelligent_tiering_configuration`][s3_put_bucket_intelligent_tiering_configuration]
 #' 
-#' -   [ListBucketIntelligentTieringConfigurations](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketIntelligentTieringConfigurations.html)
+#' -   [`list_bucket_intelligent_tiering_configurations`][s3_list_bucket_intelligent_tiering_configurations]
 #'
 #' @usage
 #' s3_delete_bucket_intelligent_tiering_configuration(Bucket, Id)
@@ -1599,13 +1601,15 @@ s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #' For information about the Amazon S3 inventory feature, see [Amazon S3
 #' Inventory](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html).
 #' 
-#' Operations related to `DeleteBucketInventoryConfiguration` include:
+#' Operations related to
+#' [`delete_bucket_inventory_configuration`][s3_delete_bucket_inventory_configuration]
+#' include:
 #' 
-#' -   [GetBucketInventoryConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketInventoryConfiguration.html)
+#' -   [`get_bucket_inventory_configuration`][s3_get_bucket_inventory_configuration]
 #' 
-#' -   [PutBucketInventoryConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html)
+#' -   [`put_bucket_inventory_configuration`][s3_put_bucket_inventory_configuration]
 #' 
-#' -   [ListBucketInventoryConfigurations](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html)
+#' -   [`list_bucket_inventory_configurations`][s3_list_bucket_inventory_configurations]
 #'
 #' @usage
 #' s3_delete_bucket_inventory_configuration(Bucket, Id,
@@ -1669,9 +1673,9 @@ s3_delete_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketO
 #' 
 #' Related actions include:
 #' 
-#' -   [PutBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html)
+#' -   [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration]
 #' 
-#' -   [GetBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html)
+#' -   [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration]
 #'
 #' @usage
 #' s3_delete_bucket_lifecycle(Bucket, ExpectedBucketOwner)
@@ -1739,13 +1743,13 @@ s3_delete_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' CloudWatch](https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html).
 #' 
 #' The following operations are related to
-#' `DeleteBucketMetricsConfiguration`:
+#' [`delete_bucket_metrics_configuration`][s3_delete_bucket_metrics_configuration]:
 #' 
-#' -   [GetBucketMetricsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetricsConfiguration.html)
+#' -   [`get_bucket_metrics_configuration`][s3_get_bucket_metrics_configuration]
 #' 
-#' -   [PutBucketMetricsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketMetricsConfiguration.html)
+#' -   [`put_bucket_metrics_configuration`][s3_put_bucket_metrics_configuration]
 #' 
-#' -   [ListBucketMetricsConfigurations](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketMetricsConfigurations.html)
+#' -   [`list_bucket_metrics_configurations`][s3_list_bucket_metrics_configurations]
 #' 
 #' -   [Monitoring Metrics with Amazon
 #'     CloudWatch](https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html)
@@ -1800,11 +1804,12 @@ s3_delete_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwn
 #' For information about Amazon S3 Object Ownership, see [Using Object
 #' Ownership](https://docs.aws.amazon.com/AmazonS3/latest/dev/about-object-ownership.html).
 #' 
-#' The following operations are related to `DeleteBucketOwnershipControls`:
+#' The following operations are related to
+#' [`delete_bucket_ownership_controls`][s3_delete_bucket_ownership_controls]:
 #' 
-#' -   GetBucketOwnershipControls
+#' -   [`get_bucket_ownership_controls`][s3_get_bucket_ownership_controls]
 #' 
-#' -   PutBucketOwnershipControls
+#' -   [`put_bucket_ownership_controls`][s3_put_bucket_ownership_controls]
 #'
 #' @usage
 #' s3_delete_bucket_ownership_controls(Bucket, ExpectedBucketOwner)
@@ -1849,14 +1854,16 @@ s3_delete_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NU
 #' This implementation of the DELETE operation uses the policy subresource
 #' to delete the policy of a specified bucket. If you are using an identity
 #' other than the root user of the AWS account that owns the bucket, the
-#' calling identity must have the `DeleteBucketPolicy` permissions on the
+#' calling identity must have the
+#' [`delete_bucket_policy`][s3_delete_bucket_policy] permissions on the
 #' specified bucket and belong to the bucket owner's account to use this
 #' operation.
 #' 
-#' If you don't have `DeleteBucketPolicy` permissions, Amazon S3 returns a
-#' `403 Access Denied` error. If you have the correct permissions, but
-#' you're not using an identity that belongs to the bucket owner's account,
-#' Amazon S3 returns a `405 Method Not Allowed` error.
+#' If you don't have [`delete_bucket_policy`][s3_delete_bucket_policy]
+#' permissions, Amazon S3 returns a `403 Access Denied` error. If you have
+#' the correct permissions, but you're not using an identity that belongs
+#' to the bucket owner's account, Amazon S3 returns a
+#' `405 Method Not Allowed` error.
 #' 
 #' As a security precaution, the root user of the AWS account that owns a
 #' bucket can always use this operation, even if the policy explicitly
@@ -1865,11 +1872,12 @@ s3_delete_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NU
 #' For more information about bucket policies, see Using Bucket Policies
 #' and UserPolicies.
 #' 
-#' The following operations are related to `DeleteBucketPolicy`
+#' The following operations are related to
+#' [`delete_bucket_policy`][s3_delete_bucket_policy]
 #' 
-#' -   [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+#' -   [`create_bucket`][s3_create_bucket]
 #' 
-#' -   [DeleteObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html)
+#' -   [`delete_object`][s3_delete_object]
 #'
 #' @usage
 #' s3_delete_bucket_policy(Bucket, ExpectedBucketOwner)
@@ -1934,11 +1942,12 @@ s3_delete_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' For information about replication configuration, see Replication in the
 #' *Amazon S3 Developer Guide*.
 #' 
-#' The following operations are related to `DeleteBucketReplication`:
+#' The following operations are related to
+#' [`delete_bucket_replication`][s3_delete_bucket_replication]:
 #' 
-#' -   [PutBucketReplication](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketReplication.html)
+#' -   [`put_bucket_replication`][s3_put_bucket_replication]
 #' 
-#' -   [GetBucketReplication](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketReplication.html)
+#' -   [`get_bucket_replication`][s3_get_bucket_replication]
 #'
 #' @usage
 #' s3_delete_bucket_replication(Bucket, ExpectedBucketOwner)
@@ -1993,11 +2002,12 @@ s3_delete_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' `s3:PutBucketTagging` action. By default, the bucket owner has this
 #' permission and can grant this permission to others.
 #' 
-#' The following operations are related to `DeleteBucketTagging`:
+#' The following operations are related to
+#' [`delete_bucket_tagging`][s3_delete_bucket_tagging]:
 #' 
-#' -   [GetBucketTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html)
+#' -   [`get_bucket_tagging`][s3_get_bucket_tagging]
 #' 
-#' -   [PutBucketTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html)
+#' -   [`put_bucket_tagging`][s3_put_bucket_tagging]
 #'
 #' @usage
 #' s3_delete_bucket_tagging(Bucket, ExpectedBucketOwner)
@@ -2063,11 +2073,12 @@ s3_delete_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Amazon
 #' S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html).
 #' 
-#' The following operations are related to `DeleteBucketWebsite`:
+#' The following operations are related to
+#' [`delete_bucket_website`][s3_delete_bucket_website]:
 #' 
-#' -   [GetBucketWebsite](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketWebsite.html)
+#' -   [`get_bucket_website`][s3_get_bucket_website]
 #' 
-#' -   [PutBucketWebsite](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketWebsite.html)
+#' -   [`put_bucket_website`][s3_put_bucket_website]
 #'
 #' @usage
 #' s3_delete_bucket_website(Bucket, ExpectedBucketOwner)
@@ -2138,15 +2149,16 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' You can delete objects by explicitly calling the DELETE Object API or
 #' configure its lifecycle
-#' ([PutBucketLifecycle](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html))
-#' to enable Amazon S3 to remove them for you. If you want to block users
-#' or accounts from removing or deleting objects from your bucket, you must
-#' deny them the `s3:DeleteObject`, `s3:DeleteObjectVersion`, and
+#' ([`put_bucket_lifecycle`][s3_put_bucket_lifecycle]) to enable Amazon S3
+#' to remove them for you. If you want to block users or accounts from
+#' removing or deleting objects from your bucket, you must deny them the
+#' `s3:DeleteObject`, `s3:DeleteObjectVersion`, and
 #' `s3:PutLifeCycleConfiguration` actions.
 #' 
-#' The following operation is related to `DeleteObject`:
+#' The following operation is related to
+#' [`delete_object`][s3_delete_object]:
 #' 
-#' -   [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+#' -   [`put_object`][s3_put_object]
 #'
 #' @usage
 #' s3_delete_object(Bucket, Key, MFA, VersionId, RequestPayer,
@@ -2248,11 +2260,11 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' `s3:DeleteObjectVersionTagging` action.
 #' 
 #' The following operations are related to
-#' `DeleteBucketMetricsConfiguration`:
+#' [`delete_bucket_metrics_configuration`][s3_delete_bucket_metrics_configuration]:
 #' 
-#' -   [PutObjectTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html)
+#' -   [`put_object_tagging`][s3_put_object_tagging]
 #' 
-#' -   [GetObjectTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html)
+#' -   [`get_object_tagging`][s3_get_object_tagging]
 #'
 #' @usage
 #' s3_delete_object_tagging(Bucket, Key, VersionId, ExpectedBucketOwner)
@@ -2370,17 +2382,18 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' requests. Amazon S3 uses the header value to ensure that your request
 #' body has not been altered in transit.
 #' 
-#' The following operations are related to `DeleteObjects`:
+#' The following operations are related to
+#' [`delete_objects`][s3_delete_objects]:
 #' 
-#' -   [CreateMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)
+#' -   [`create_multipart_upload`][s3_create_multipart_upload]
 #' 
-#' -   [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
+#' -   [`upload_part`][s3_upload_part]
 #' 
-#' -   [CompleteMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html)
+#' -   [`complete_multipart_upload`][s3_complete_multipart_upload]
 #' 
-#' -   [ListParts](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html)
+#' -   [`list_parts`][s3_list_parts]
 #' 
-#' -   [AbortMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html)
+#' -   [`abort_multipart_upload`][s3_abort_multipart_upload]
 #'
 #' @usage
 #' s3_delete_objects(Bucket, Delete, MFA, RequestPayer,
@@ -2512,16 +2525,17 @@ s3_delete_objects <- function(Bucket, Delete, MFA = NULL, RequestPayer = NULL, B
 #' and [Managing Access Permissions to Your Amazon S3
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html).
 #' 
-#' The following operations are related to `DeletePublicAccessBlock`:
+#' The following operations are related to
+#' [`delete_public_access_block`][s3_delete_public_access_block]:
 #' 
 #' -   [Using Amazon S3 Block Public
 #'     Access](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html)
 #' 
-#' -   [GetPublicAccessBlock](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetPublicAccessBlock.html)
+#' -   [`get_public_access_block`][s3_get_public_access_block]
 #' 
-#' -   [PutPublicAccessBlock](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutPublicAccessBlock.html)
+#' -   [`put_public_access_block`][s3_put_public_access_block]
 #' 
-#' -   [GetBucketPolicyStatus](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicyStatus.html)
+#' -   [`get_bucket_policy_status`][s3_get_bucket_policy_status]
 #'
 #' @usage
 #' s3_delete_public_access_block(Bucket, ExpectedBucketOwner)
@@ -2583,7 +2597,7 @@ s3_delete_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' You set the Transfer Acceleration state of an existing bucket to
 #' `Enabled` or `Suspended` by using the
-#' [PutBucketAccelerateConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAccelerateConfiguration.html)
+#' [`put_bucket_accelerate_configuration`][s3_put_bucket_accelerate_configuration]
 #' operation.
 #' 
 #' A GET `accelerate` request does not return a state value for a bucket
@@ -2596,7 +2610,7 @@ s3_delete_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' **Related Resources**
 #' 
-#' -   [PutBucketAccelerateConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAccelerateConfiguration.html)
+#' -   [`put_bucket_accelerate_configuration`][s3_put_bucket_accelerate_configuration]
 #'
 #' @usage
 #' s3_get_bucket_accelerate_configuration(Bucket, ExpectedBucketOwner)
@@ -2647,7 +2661,7 @@ s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner =
 #' 
 #' **Related Resources**
 #' 
-#' -   [ListObjects](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html)
+#' -   [`list_objects`][s3_list_objects]
 #'
 #' @usage
 #' s3_get_bucket_acl(Bucket, ExpectedBucketOwner)
@@ -2711,11 +2725,11 @@ s3_get_bucket_acl <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' **Related Resources**
 #' 
-#' -   [DeleteBucketAnalyticsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketAnalyticsConfiguration.html)
+#' -   [`delete_bucket_analytics_configuration`][s3_delete_bucket_analytics_configuration]
 #' 
-#' -   [ListBucketAnalyticsConfigurations](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketAnalyticsConfigurations.html)
+#' -   [`list_bucket_analytics_configurations`][s3_list_bucket_analytics_configurations]
 #' 
-#' -   [PutBucketAnalyticsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html)
+#' -   [`put_bucket_analytics_configuration`][s3_put_bucket_analytics_configuration]
 #'
 #' @usage
 #' s3_get_bucket_analytics_configuration(Bucket, Id, ExpectedBucketOwner)
@@ -2768,11 +2782,12 @@ s3_get_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' For more information about cors, see [Enabling Cross-Origin Resource
 #' Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html).
 #' 
-#' The following operations are related to `GetBucketCors`:
+#' The following operations are related to
+#' [`get_bucket_cors`][s3_get_bucket_cors]:
 #' 
-#' -   [PutBucketCors](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketCors.html)
+#' -   [`put_bucket_cors`][s3_put_bucket_cors]
 #' 
-#' -   [DeleteBucketCors](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketCors.html)
+#' -   [`delete_bucket_cors`][s3_delete_bucket_cors]
 #'
 #' @usage
 #' s3_get_bucket_cors(Bucket, ExpectedBucketOwner)
@@ -2836,11 +2851,12 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' and [Managing Access Permissions to Your Amazon S3
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html).
 #' 
-#' The following operations are related to `GetBucketEncryption`:
+#' The following operations are related to
+#' [`get_bucket_encryption`][s3_get_bucket_encryption]:
 #' 
-#' -   [PutBucketEncryption](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketEncryption.html)
+#' -   [`put_bucket_encryption`][s3_put_bucket_encryption]
 #' 
-#' -   [DeleteBucketEncryption](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html)
+#' -   [`delete_bucket_encryption`][s3_delete_bucket_encryption]
 #'
 #' @usage
 #' s3_get_bucket_encryption(Bucket, ExpectedBucketOwner)
@@ -2902,14 +2918,15 @@ s3_get_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' accessed
 #' objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access).
 #' 
-#' Operations related to `GetBucketIntelligentTieringConfiguration`
+#' Operations related to
+#' [`get_bucket_intelligent_tiering_configuration`][s3_get_bucket_intelligent_tiering_configuration]
 #' include:
 #' 
-#' -   [DeleteBucketIntelligentTieringConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketIntelligentTieringConfiguration.html)
+#' -   [`delete_bucket_intelligent_tiering_configuration`][s3_delete_bucket_intelligent_tiering_configuration]
 #' 
-#' -   [PutBucketIntelligentTieringConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketIntelligentTieringConfiguration.html)
+#' -   [`put_bucket_intelligent_tiering_configuration`][s3_put_bucket_intelligent_tiering_configuration]
 #' 
-#' -   [ListBucketIntelligentTieringConfigurations](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketIntelligentTieringConfigurations.html)
+#' -   [`list_bucket_intelligent_tiering_configurations`][s3_list_bucket_intelligent_tiering_configurations]
 #'
 #' @usage
 #' s3_get_bucket_intelligent_tiering_configuration(Bucket, Id)
@@ -2966,13 +2983,13 @@ s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #' Inventory](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html).
 #' 
 #' The following operations are related to
-#' `GetBucketInventoryConfiguration`:
+#' [`get_bucket_inventory_configuration`][s3_get_bucket_inventory_configuration]:
 #' 
-#' -   [DeleteBucketInventoryConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketInventoryConfiguration.html)
+#' -   [`delete_bucket_inventory_configuration`][s3_delete_bucket_inventory_configuration]
 #' 
-#' -   [ListBucketInventoryConfigurations](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html)
+#' -   [`list_bucket_inventory_configurations`][s3_list_bucket_inventory_configurations]
 #' 
-#' -   [PutBucketInventoryConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html)
+#' -   [`put_bucket_inventory_configuration`][s3_put_bucket_inventory_configuration]
 #'
 #' @usage
 #' s3_get_bucket_inventory_configuration(Bucket, Id, ExpectedBucketOwner)
@@ -3017,7 +3034,7 @@ s3_get_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #'
 #' @description
 #' For an updated version of this API, see
-#' [GetBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html).
+#' [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration].
 #' If you configured a bucket lifecycle using the `filter` element, you
 #' should see the updated version of this topic. This topic is provided for
 #' backward compatibility.
@@ -3035,7 +3052,8 @@ s3_get_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' and [Managing Access Permissions to Your Amazon S3
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html).
 #' 
-#' `GetBucketLifecycle` has the following special error:
+#' [`get_bucket_lifecycle`][s3_get_bucket_lifecycle] has the following
+#' special error:
 #' 
 #' -   Error code: `NoSuchLifecycleConfiguration`
 #' 
@@ -3045,13 +3063,14 @@ s3_get_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' 
 #'     -   SOAP Fault Code Prefix: Client
 #' 
-#' The following operations are related to `GetBucketLifecycle`:
+#' The following operations are related to
+#' [`get_bucket_lifecycle`][s3_get_bucket_lifecycle]:
 #' 
-#' -   [GetBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html)
+#' -   [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration]
 #' 
-#' -   [PutBucketLifecycle](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html)
+#' -   [`put_bucket_lifecycle`][s3_put_bucket_lifecycle]
 #' 
-#' -   [DeleteBucketLifecycle](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html)
+#' -   [`delete_bucket_lifecycle`][s3_delete_bucket_lifecycle]
 #'
 #' @usage
 #' s3_get_bucket_lifecycle(Bucket, ExpectedBucketOwner)
@@ -3109,7 +3128,7 @@ s3_get_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' specify a filter to select a subset of objects to which the rule
 #' applies. If you are using a previous version of the lifecycle
 #' configuration, it still works. For the earlier API description, see
-#' [GetBucketLifecycle](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycle.html).
+#' [`get_bucket_lifecycle`][s3_get_bucket_lifecycle].
 #' 
 #' Returns the lifecycle configuration information set on the bucket. For
 #' information about lifecycle configuration, see [Object Lifecycle
@@ -3124,7 +3143,8 @@ s3_get_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' and [Managing Access Permissions to Your Amazon S3
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html).
 #' 
-#' `GetBucketLifecycleConfiguration` has the following special error:
+#' [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration]
+#' has the following special error:
 #' 
 #' -   Error code: `NoSuchLifecycleConfiguration`
 #' 
@@ -3135,13 +3155,13 @@ s3_get_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'     -   SOAP Fault Code Prefix: Client
 #' 
 #' The following operations are related to
-#' `GetBucketLifecycleConfiguration`:
+#' [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration]:
 #' 
-#' -   [GetBucketLifecycle](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycle.html)
+#' -   [`get_bucket_lifecycle`][s3_get_bucket_lifecycle]
 #' 
-#' -   [PutBucketLifecycle](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html)
+#' -   [`put_bucket_lifecycle`][s3_put_bucket_lifecycle]
 #' 
-#' -   [DeleteBucketLifecycle](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html)
+#' -   [`delete_bucket_lifecycle`][s3_delete_bucket_lifecycle]
 #'
 #' @usage
 #' s3_get_bucket_lifecycle_configuration(Bucket, ExpectedBucketOwner)
@@ -3192,18 +3212,19 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = 
 #'
 #' @description
 #' Returns the Region the bucket resides in. You set the bucket's Region
-#' using the `LocationConstraint` request parameter in a `CreateBucket`
-#' request. For more information, see
-#' [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html).
+#' using the `LocationConstraint` request parameter in a
+#' [`create_bucket`][s3_create_bucket] request. For more information, see
+#' [`create_bucket`][s3_create_bucket].
 #' 
 #' To use this implementation of the operation, you must be the bucket
 #' owner.
 #' 
-#' The following operations are related to `GetBucketLocation`:
+#' The following operations are related to
+#' [`get_bucket_location`][s3_get_bucket_location]:
 #' 
-#' -   [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+#' -   [`get_object`][s3_get_object]
 #' 
-#' -   [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+#' -   [`create_bucket`][s3_create_bucket]
 #'
 #' @usage
 #' s3_get_bucket_location(Bucket, ExpectedBucketOwner)
@@ -3256,11 +3277,12 @@ s3_get_bucket_location <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Returns the logging status of a bucket and the permissions users have to
 #' view and modify that status. To use GET, you must be the bucket owner.
 #' 
-#' The following operations are related to `GetBucketLogging`:
+#' The following operations are related to
+#' [`get_bucket_logging`][s3_get_bucket_logging]:
 #' 
-#' -   [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+#' -   [`create_bucket`][s3_create_bucket]
 #' 
-#' -   [PutBucketLogging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLogging.html)
+#' -   [`put_bucket_logging`][s3_put_bucket_logging]
 #'
 #' @usage
 #' s3_get_bucket_logging(Bucket, ExpectedBucketOwner)
@@ -3319,13 +3341,14 @@ s3_get_bucket_logging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' [Monitoring Metrics with Amazon
 #' CloudWatch](https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html).
 #' 
-#' The following operations are related to `GetBucketMetricsConfiguration`:
+#' The following operations are related to
+#' [`get_bucket_metrics_configuration`][s3_get_bucket_metrics_configuration]:
 #' 
-#' -   [PutBucketMetricsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketMetricsConfiguration.html)
+#' -   [`put_bucket_metrics_configuration`][s3_put_bucket_metrics_configuration]
 #' 
-#' -   [DeleteBucketMetricsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetricsConfiguration.html)
+#' -   [`delete_bucket_metrics_configuration`][s3_delete_bucket_metrics_configuration]
 #' 
-#' -   [ListBucketMetricsConfigurations](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketMetricsConfigurations.html)
+#' -   [`list_bucket_metrics_configurations`][s3_list_bucket_metrics_configurations]
 #' 
 #' -   [Monitoring Metrics with Amazon
 #'     CloudWatch](https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html)
@@ -3372,7 +3395,7 @@ s3_get_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwner 
 #'
 #' @description
 #' No longer used, see
-#' [GetBucketNotificationConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html).
+#' [`get_bucket_notification_configuration`][s3_get_bucket_notification_configuration].
 #'
 #' @usage
 #' s3_get_bucket_notification(Bucket, ExpectedBucketOwner)
@@ -3444,9 +3467,10 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' For more information about bucket policies, see [Using Bucket
 #' Policies](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html).
 #' 
-#' The following operation is related to `GetBucketNotification`:
+#' The following operation is related to
+#' [`get_bucket_notification`][s3_get_bucket_notification]:
 #' 
-#' -   [PutBucketNotification](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketNotification.html)
+#' -   [`put_bucket_notification`][s3_put_bucket_notification]
 #'
 #' @usage
 #' s3_get_bucket_notification_configuration(Bucket, ExpectedBucketOwner)
@@ -3496,11 +3520,12 @@ s3_get_bucket_notification_configuration <- function(Bucket, ExpectedBucketOwner
 #' For information about Amazon S3 Object Ownership, see [Using Object
 #' Ownership](https://docs.aws.amazon.com/AmazonS3/latest/dev/about-object-ownership.html).
 #' 
-#' The following operations are related to `GetBucketOwnershipControls`:
+#' The following operations are related to
+#' [`get_bucket_ownership_controls`][s3_get_bucket_ownership_controls]:
 #' 
-#' -   PutBucketOwnershipControls
+#' -   [`put_bucket_ownership_controls`][s3_put_bucket_ownership_controls]
 #' 
-#' -   DeleteBucketOwnershipControls
+#' -   [`delete_bucket_ownership_controls`][s3_delete_bucket_ownership_controls]
 #'
 #' @usage
 #' s3_get_bucket_ownership_controls(Bucket, ExpectedBucketOwner)
@@ -3544,14 +3569,16 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 #' @description
 #' Returns the policy of a specified bucket. If you are using an identity
 #' other than the root user of the AWS account that owns the bucket, the
-#' calling identity must have the `GetBucketPolicy` permissions on the
-#' specified bucket and belong to the bucket owner's account in order to
-#' use this operation.
+#' calling identity must have the
+#' [`get_bucket_policy`][s3_get_bucket_policy] permissions on the specified
+#' bucket and belong to the bucket owner's account in order to use this
+#' operation.
 #' 
-#' If you don't have `GetBucketPolicy` permissions, Amazon S3 returns a
-#' `403 Access Denied` error. If you have the correct permissions, but
-#' you're not using an identity that belongs to the bucket owner's account,
-#' Amazon S3 returns a `405 Method Not Allowed` error.
+#' If you don't have [`get_bucket_policy`][s3_get_bucket_policy]
+#' permissions, Amazon S3 returns a `403 Access Denied` error. If you have
+#' the correct permissions, but you're not using an identity that belongs
+#' to the bucket owner's account, Amazon S3 returns a
+#' `405 Method Not Allowed` error.
 #' 
 #' As a security precaution, the root user of the AWS account that owns a
 #' bucket can always use this operation, even if the policy explicitly
@@ -3561,9 +3588,10 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 #' and User
 #' Policies](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html).
 #' 
-#' The following operation is related to `GetBucketPolicy`:
+#' The following operation is related to
+#' [`get_bucket_policy`][s3_get_bucket_policy]:
 #' 
-#' -   [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+#' -   [`get_object`][s3_get_object]
 #'
 #' @usage
 #' s3_get_bucket_policy(Bucket, ExpectedBucketOwner)
@@ -3623,16 +3651,17 @@ s3_get_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' [The Meaning of
 #' "Public"](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status).
 #' 
-#' The following operations are related to `GetBucketPolicyStatus`:
+#' The following operations are related to
+#' [`get_bucket_policy_status`][s3_get_bucket_policy_status]:
 #' 
 #' -   [Using Amazon S3 Block Public
 #'     Access](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html)
 #' 
-#' -   [GetPublicAccessBlock](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetPublicAccessBlock.html)
+#' -   [`get_public_access_block`][s3_get_public_access_block]
 #' 
-#' -   [PutPublicAccessBlock](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutPublicAccessBlock.html)
+#' -   [`put_public_access_block`][s3_put_public_access_block]
 #' 
-#' -   [DeletePublicAccessBlock](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html)
+#' -   [`delete_public_access_block`][s3_delete_public_access_block]
 #'
 #' @usage
 #' s3_get_bucket_policy_status(Bucket, ExpectedBucketOwner)
@@ -3693,15 +3722,17 @@ s3_get_bucket_policy_status <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' must also include the `DeleteMarkerReplication` and `Priority` elements.
 #' The response also returns those elements.
 #' 
-#' For information about `GetBucketReplication` errors, see [List of
-#' replication-related error
+#' For information about
+#' [`get_bucket_replication`][s3_get_bucket_replication] errors, see [List
+#' of replication-related error
 #' codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ReplicationErrorCodeList)
 #' 
-#' The following operations are related to `GetBucketReplication`:
+#' The following operations are related to
+#' [`get_bucket_replication`][s3_get_bucket_replication]:
 #' 
-#' -   [PutBucketReplication](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketReplication.html)
+#' -   [`put_bucket_replication`][s3_put_bucket_replication]
 #' 
-#' -   [DeleteBucketReplication](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html)
+#' -   [`delete_bucket_replication`][s3_delete_bucket_replication]
 #'
 #' @usage
 #' s3_get_bucket_replication(Bucket, ExpectedBucketOwner)
@@ -3755,9 +3786,10 @@ s3_get_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' information, see [Requester Pays
 #' Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html).
 #' 
-#' The following operations are related to `GetBucketRequestPayment`:
+#' The following operations are related to
+#' [`get_bucket_request_payment`][s3_get_bucket_request_payment]:
 #' 
-#' -   [ListObjects](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html)
+#' -   [`list_objects`][s3_list_objects]
 #'
 #' @usage
 #' s3_get_bucket_request_payment(Bucket, ExpectedBucketOwner)
@@ -3813,17 +3845,19 @@ s3_get_bucket_request_payment <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' `s3:GetBucketTagging` action. By default, the bucket owner has this
 #' permission and can grant this permission to others.
 #' 
-#' `GetBucketTagging` has the following special error:
+#' [`get_bucket_tagging`][s3_get_bucket_tagging] has the following special
+#' error:
 #' 
 #' -   Error code: `NoSuchTagSetError`
 #' 
 #'     -   Description: There is no tag set associated with the bucket.
 #' 
-#' The following operations are related to `GetBucketTagging`:
+#' The following operations are related to
+#' [`get_bucket_tagging`][s3_get_bucket_tagging]:
 #' 
-#' -   [PutBucketTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html)
+#' -   [`put_bucket_tagging`][s3_put_bucket_tagging]
 #' 
-#' -   [DeleteBucketTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html)
+#' -   [`delete_bucket_tagging`][s3_delete_bucket_tagging]
 #'
 #' @usage
 #' s3_get_bucket_tagging(Bucket, ExpectedBucketOwner)
@@ -3881,13 +3915,14 @@ s3_get_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' state. If the MFA Delete status is `enabled`, the bucket owner must use
 #' an authentication device to change the versioning state of the bucket.
 #' 
-#' The following operations are related to `GetBucketVersioning`:
+#' The following operations are related to
+#' [`get_bucket_versioning`][s3_get_bucket_versioning]:
 #' 
-#' -   [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+#' -   [`get_object`][s3_get_object]
 #' 
-#' -   [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+#' -   [`put_object`][s3_put_object]
 #' 
-#' -   [DeleteObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html)
+#' -   [`delete_object`][s3_delete_object]
 #'
 #' @usage
 #' s3_get_bucket_versioning(Bucket, ExpectedBucketOwner)
@@ -3948,11 +3983,12 @@ s3_get_bucket_versioning <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' website configuration by writing a bucket policy granting them the
 #' `S3:GetBucketWebsite` permission.
 #' 
-#' The following operations are related to `DeleteBucketWebsite`:
+#' The following operations are related to
+#' [`delete_bucket_website`][s3_delete_bucket_website]:
 #' 
-#' -   [DeleteBucketWebsite](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketWebsite.html)
+#' -   [`delete_bucket_website`][s3_delete_bucket_website]
 #' 
-#' -   [PutBucketWebsite](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketWebsite.html)
+#' -   [`put_bucket_website`][s3_put_bucket_website]
 #'
 #' @usage
 #' s3_get_bucket_website(Bucket, ExpectedBucketOwner)
@@ -4026,16 +4062,15 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' by using BitTorrent. For more information, see [Amazon S3
 #' Torrent](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3Torrent.html).
 #' For more information about returning the ACL of an object, see
-#' [GetObjectAcl](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html).
+#' [`get_object_acl`][s3_get_object_acl].
 #' 
 #' If the object you are retrieving is stored in the S3 Glacier or S3
 #' Glacier Deep Archive storage class, or S3 Intelligent-Tiering Archive or
 #' S3 Intelligent-Tiering Deep Archive tiers, before you can retrieve the
 #' object you must first restore a copy using
-#' [RestoreObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html).
-#' Otherwise, this operation returns an `InvalidObjectStateError` error.
-#' For information about restoring archived objects, see [Restoring
-#' Archived
+#' [`restore_object`][s3_restore_object]. Otherwise, this operation returns
+#' an `InvalidObjectStateError` error. For information about restoring
+#' archived objects, see [Restoring Archived
 #' Objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/restoring-objects.html).
 #' 
 #' Encryption request headers, like `x-amz-server-side-encryption`, should
@@ -4063,8 +4098,8 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' `s3:GetObjectVersionTagging` action), the response also returns the
 #' `x-amz-tagging-count` header that provides the count of number of tags
 #' associated with the object. You can use
-#' [GetObjectTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html)
-#' to retrieve the tag set associated with an object.
+#' [`get_object_tagging`][s3_get_object_tagging] to retrieve the tag set
+#' associated with an object.
 #' 
 #' **Permissions**
 #' 
@@ -4090,7 +4125,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' `x-amz-delete-marker: true` in the response.
 #' 
 #' For more information about versioning, see
-#' [PutBucketVersioning](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketVersioning.html).
+#' [`put_bucket_versioning`][s3_put_bucket_versioning].
 #' 
 #' **Overriding Response Header Values**
 #' 
@@ -4139,11 +4174,11 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' For more information about conditional requests, see [RFC
 #' 7232](https://tools.ietf.org/html/rfc7232).
 #' 
-#' The following operations are related to `GetObject`:
+#' The following operations are related to [`get_object`][s3_get_object]:
 #' 
-#' -   [ListBuckets](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html)
+#' -   [`list_buckets`][s3_list_buckets]
 #' 
-#' -   [GetObjectAcl](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html)
+#' -   [`get_object_acl`][s3_get_object_acl]
 #'
 #' @usage
 #' s3_get_object(Bucket, IfMatch, IfModifiedSince, IfNoneMatch,
@@ -4296,13 +4331,14 @@ s3_get_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNone
 #' object. To return ACL information about a different version, use the
 #' versionId subresource.
 #' 
-#' The following operations are related to `GetObjectAcl`:
+#' The following operations are related to
+#' [`get_object_acl`][s3_get_object_acl]:
 #' 
-#' -   [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+#' -   [`get_object`][s3_get_object]
 #' 
-#' -   [DeleteObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html)
+#' -   [`delete_object`][s3_delete_object]
 #' 
-#' -   [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+#' -   [`put_object`][s3_put_object]
 #'
 #' @usage
 #' s3_get_object_acl(Bucket, Key, VersionId, RequestPayer,
@@ -4567,9 +4603,10 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' For information about the Amazon S3 object tagging feature, see [Object
 #' Tagging](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html).
 #' 
-#' The following operation is related to `GetObjectTagging`:
+#' The following operation is related to
+#' [`get_object_tagging`][s3_get_object_tagging]:
 #' 
-#' -   [PutObjectTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html)
+#' -   [`put_object_tagging`][s3_put_object_tagging]
 #'
 #' @usage
 #' s3_get_object_tagging(Bucket, Key, VersionId, ExpectedBucketOwner)
@@ -4664,9 +4701,10 @@ s3_get_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBucketO
 #' 
 #' This action is not supported by Amazon S3 on Outposts.
 #' 
-#' The following operation is related to `GetObjectTorrent`:
+#' The following operation is related to
+#' [`get_object_torrent`][s3_get_object_torrent]:
 #' 
-#' -   [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+#' -   [`get_object`][s3_get_object]
 #'
 #' @usage
 #' s3_get_object_torrent(Bucket, Key, RequestPayer, ExpectedBucketOwner)
@@ -4738,16 +4776,17 @@ s3_get_object_torrent <- function(Bucket, Key, RequestPayer = NULL, ExpectedBuck
 #' object public, see [The Meaning of
 #' "Public"](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status).
 #' 
-#' The following operations are related to `GetPublicAccessBlock`:
+#' The following operations are related to
+#' [`get_public_access_block`][s3_get_public_access_block]:
 #' 
 #' -   [Using Amazon S3 Block Public
 #'     Access](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html)
 #' 
-#' -   [PutPublicAccessBlock](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutPublicAccessBlock.html)
+#' -   [`put_public_access_block`][s3_put_public_access_block]
 #' 
-#' -   [GetPublicAccessBlock](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetPublicAccessBlock.html)
+#' -   [`get_public_access_block`][s3_get_public_access_block]
 #' 
-#' -   [DeletePublicAccessBlock](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html)
+#' -   [`delete_public_access_block`][s3_delete_public_access_block]
 #'
 #' @usage
 #' s3_get_public_access_block(Bucket, ExpectedBucketOwner)
@@ -4941,9 +4980,9 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' -   If you don’t have the `s3:ListBucket` permission, Amazon S3 returns
 #'     an HTTP status code 403 ("access denied") error.
 #' 
-#' The following operation is related to `HeadObject`:
+#' The following operation is related to [`head_object`][s3_head_object]:
 #' 
-#' -   [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+#' -   [`get_object`][s3_get_object]
 #'
 #' @usage
 #' s3_head_object(Bucket, IfMatch, IfModifiedSince, IfNoneMatch,
@@ -5088,13 +5127,13 @@ s3_head_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNon
 #' Analysis](https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html).
 #' 
 #' The following operations are related to
-#' `ListBucketAnalyticsConfigurations`:
+#' [`list_bucket_analytics_configurations`][s3_list_bucket_analytics_configurations]:
 #' 
-#' -   [GetBucketAnalyticsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAnalyticsConfiguration.html)
+#' -   [`get_bucket_analytics_configuration`][s3_get_bucket_analytics_configuration]
 #' 
-#' -   [DeleteBucketAnalyticsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketAnalyticsConfiguration.html)
+#' -   [`delete_bucket_analytics_configuration`][s3_delete_bucket_analytics_configuration]
 #' 
-#' -   [PutBucketAnalyticsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html)
+#' -   [`put_bucket_analytics_configuration`][s3_put_bucket_analytics_configuration]
 #'
 #' @usage
 #' s3_list_bucket_analytics_configurations(Bucket, ContinuationToken,
@@ -5161,14 +5200,15 @@ s3_list_bucket_analytics_configurations <- function(Bucket, ContinuationToken = 
 #' accessed
 #' objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access).
 #' 
-#' Operations related to `ListBucketIntelligentTieringConfigurations`
+#' Operations related to
+#' [`list_bucket_intelligent_tiering_configurations`][s3_list_bucket_intelligent_tiering_configurations]
 #' include:
 #' 
-#' -   [DeleteBucketIntelligentTieringConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketIntelligentTieringConfiguration.html)
+#' -   [`delete_bucket_intelligent_tiering_configuration`][s3_delete_bucket_intelligent_tiering_configuration]
 #' 
-#' -   [PutBucketIntelligentTieringConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketIntelligentTieringConfiguration.html)
+#' -   [`put_bucket_intelligent_tiering_configuration`][s3_put_bucket_intelligent_tiering_configuration]
 #' 
-#' -   [GetBucketIntelligentTieringConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketIntelligentTieringConfiguration.html)
+#' -   [`get_bucket_intelligent_tiering_configuration`][s3_get_bucket_intelligent_tiering_configuration]
 #'
 #' @usage
 #' s3_list_bucket_intelligent_tiering_configurations(Bucket,
@@ -5235,13 +5275,13 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 #' Inventory](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html)
 #' 
 #' The following operations are related to
-#' `ListBucketInventoryConfigurations`:
+#' [`list_bucket_inventory_configurations`][s3_list_bucket_inventory_configurations]:
 #' 
-#' -   [GetBucketInventoryConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketInventoryConfiguration.html)
+#' -   [`get_bucket_inventory_configuration`][s3_get_bucket_inventory_configuration]
 #' 
-#' -   [DeleteBucketInventoryConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketInventoryConfiguration.html)
+#' -   [`delete_bucket_inventory_configuration`][s3_delete_bucket_inventory_configuration]
 #' 
-#' -   [PutBucketInventoryConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html)
+#' -   [`put_bucket_inventory_configuration`][s3_put_bucket_inventory_configuration]
 #'
 #' @usage
 #' s3_list_bucket_inventory_configurations(Bucket, ContinuationToken,
@@ -5317,13 +5357,13 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 #' CloudWatch](https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html).
 #' 
 #' The following operations are related to
-#' `ListBucketMetricsConfigurations`:
+#' [`list_bucket_metrics_configurations`][s3_list_bucket_metrics_configurations]:
 #' 
-#' -   [PutBucketMetricsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketMetricsConfiguration.html)
+#' -   [`put_bucket_metrics_configuration`][s3_put_bucket_metrics_configuration]
 #' 
-#' -   [GetBucketMetricsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetricsConfiguration.html)
+#' -   [`get_bucket_metrics_configuration`][s3_get_bucket_metrics_configuration]
 #' 
-#' -   [DeleteBucketMetricsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetricsConfiguration.html)
+#' -   [`delete_bucket_metrics_configuration`][s3_delete_bucket_metrics_configuration]
 #'
 #' @usage
 #' s3_list_bucket_metrics_configurations(Bucket, ContinuationToken,
@@ -5443,17 +5483,18 @@ s3_list_buckets <- function() {
 #' see [Multipart Upload API and
 #' Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html).
 #' 
-#' The following operations are related to `ListMultipartUploads`:
+#' The following operations are related to
+#' [`list_multipart_uploads`][s3_list_multipart_uploads]:
 #' 
-#' -   [CreateMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)
+#' -   [`create_multipart_upload`][s3_create_multipart_upload]
 #' 
-#' -   [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
+#' -   [`upload_part`][s3_upload_part]
 #' 
-#' -   [CompleteMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html)
+#' -   [`complete_multipart_upload`][s3_complete_multipart_upload]
 #' 
-#' -   [ListParts](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html)
+#' -   [`list_parts`][s3_list_parts]
 #' 
-#' -   [AbortMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html)
+#' -   [`abort_multipart_upload`][s3_abort_multipart_upload]
 #'
 #' @usage
 #' s3_list_multipart_uploads(Bucket, Delimiter, EncodingType, KeyMarker,
@@ -5582,15 +5623,16 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 #' 
 #' This action is not supported by Amazon S3 on Outposts.
 #' 
-#' The following operations are related to `ListObjectVersions`:
+#' The following operations are related to
+#' [`list_object_versions`][s3_list_object_versions]:
 #' 
-#' -   [ListObjectsV2](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html)
+#' -   [`list_objects_v2`][s3_list_objects_v2]
 #' 
-#' -   [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+#' -   [`get_object`][s3_get_object]
 #' 
-#' -   [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+#' -   [`put_object`][s3_put_object]
 #' 
-#' -   [DeleteObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html)
+#' -   [`delete_object`][s3_delete_object]
 #'
 #' @usage
 #' s3_list_object_versions(Bucket, Delimiter, EncodingType, KeyMarker,
@@ -5679,21 +5721,22 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' response and handle it appropriately.
 #' 
 #' This API has been revised. We recommend that you use the newer version,
-#' [ListObjectsV2](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html),
-#' when developing applications. For backward compatibility, Amazon S3
-#' continues to support `ListObjects`.
+#' [`list_objects_v2`][s3_list_objects_v2], when developing applications.
+#' For backward compatibility, Amazon S3 continues to support
+#' [`list_objects`][s3_list_objects].
 #' 
-#' The following operations are related to `ListObjects`:
+#' The following operations are related to
+#' [`list_objects`][s3_list_objects]:
 #' 
-#' -   [ListObjectsV2](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html)
+#' -   [`list_objects_v2`][s3_list_objects_v2]
 #' 
-#' -   [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+#' -   [`get_object`][s3_get_object]
 #' 
-#' -   [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+#' -   [`put_object`][s3_put_object]
 #' 
-#' -   [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+#' -   [`create_bucket`][s3_create_bucket]
 #' 
-#' -   [ListBuckets](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html)
+#' -   [`list_buckets`][s3_list_buckets]
 #'
 #' @usage
 #' s3_list_objects(Bucket, Delimiter, EncodingType, Marker, MaxKeys,
@@ -5799,19 +5842,18 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' This section describes the latest revision of the API. We recommend that
 #' you use this revised API for application development. For backward
 #' compatibility, Amazon S3 continues to support the prior version of this
-#' API,
-#' [ListObjects](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html).
+#' API, [`list_objects`][s3_list_objects].
 #' 
-#' To get a list of your buckets, see
-#' [ListBuckets](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html).
+#' To get a list of your buckets, see [`list_buckets`][s3_list_buckets].
 #' 
-#' The following operations are related to `ListObjectsV2`:
+#' The following operations are related to
+#' [`list_objects_v2`][s3_list_objects_v2]:
 #' 
-#' -   [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+#' -   [`get_object`][s3_get_object]
 #' 
-#' -   [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+#' -   [`put_object`][s3_put_object]
 #' 
-#' -   [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+#' -   [`create_bucket`][s3_create_bucket]
 #'
 #' @usage
 #' s3_list_objects_v2(Bucket, Delimiter, EncodingType, MaxKeys, Prefix,
@@ -5912,16 +5954,15 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' Lists the parts that have been uploaded for a specific multipart upload.
 #' This operation must include the upload ID, which you obtain by sending
 #' the initiate multipart upload request (see
-#' [CreateMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)).
-#' This request returns a maximum of 1,000 uploaded parts. The default
-#' number of parts returned is 1,000 parts. You can restrict the number of
-#' parts returned by specifying the `max-parts` request parameter. If your
-#' multipart upload consists of more than 1,000 parts, the response returns
-#' an `IsTruncated` field with the value of true, and a
-#' `NextPartNumberMarker` element. In subsequent `ListParts` requests you
-#' can include the part-number-marker query string parameter and set its
-#' value to the `NextPartNumberMarker` field value from the previous
-#' response.
+#' [`create_multipart_upload`][s3_create_multipart_upload]). This request
+#' returns a maximum of 1,000 uploaded parts. The default number of parts
+#' returned is 1,000 parts. You can restrict the number of parts returned
+#' by specifying the `max-parts` request parameter. If your multipart
+#' upload consists of more than 1,000 parts, the response returns an
+#' `IsTruncated` field with the value of true, and a `NextPartNumberMarker`
+#' element. In subsequent [`list_parts`][s3_list_parts] requests you can
+#' include the part-number-marker query string parameter and set its value
+#' to the `NextPartNumberMarker` field value from the previous response.
 #' 
 #' For more information on multipart uploads, see [Uploading Objects Using
 #' Multipart
@@ -5931,17 +5972,17 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' see [Multipart Upload API and
 #' Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html).
 #' 
-#' The following operations are related to `ListParts`:
+#' The following operations are related to [`list_parts`][s3_list_parts]:
 #' 
-#' -   [CreateMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)
+#' -   [`create_multipart_upload`][s3_create_multipart_upload]
 #' 
-#' -   [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
+#' -   [`upload_part`][s3_upload_part]
 #' 
-#' -   [CompleteMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html)
+#' -   [`complete_multipart_upload`][s3_complete_multipart_upload]
 #' 
-#' -   [AbortMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html)
+#' -   [`abort_multipart_upload`][s3_abort_multipart_upload]
 #' 
-#' -   [ListMultipartUploads](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html)
+#' -   [`list_multipart_uploads`][s3_list_multipart_uploads]
 #'
 #' @usage
 #' s3_list_parts(Bucket, Key, MaxParts, PartNumberMarker, UploadId,
@@ -6045,7 +6086,7 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 #' -   Suspended – Disables accelerated data transfers to the bucket.
 #' 
 #' The
-#' [GetBucketAccelerateConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAccelerateConfiguration.html)
+#' [`get_bucket_accelerate_configuration`][s3_get_bucket_accelerate_configuration]
 #' operation returns the transfer acceleration state of a bucket.
 #' 
 #' After setting the Transfer Acceleration state of a bucket to Enabled, it
@@ -6059,11 +6100,11 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 #' Acceleration](https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html).
 #' 
 #' The following operations are related to
-#' `PutBucketAccelerateConfiguration`:
+#' [`put_bucket_accelerate_configuration`][s3_put_bucket_accelerate_configuration]:
 #' 
-#' -   [GetBucketAccelerateConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAccelerateConfiguration.html)
+#' -   [`get_bucket_accelerate_configuration`][s3_get_bucket_accelerate_configuration]
 #' 
-#' -   [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+#' -   [`create_bucket`][s3_create_bucket]
 #'
 #' @usage
 #' s3_put_bucket_accelerate_configuration(Bucket, AccelerateConfiguration,
@@ -6204,17 +6245,17 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' 
 #' -   By the person's ID:
 #' 
-#'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt; &lt;/Grantee&gt;`
+#'     `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"><ID><>ID<></ID><DisplayName><>GranteesEmail<></DisplayName> </Grantee>`
 #' 
 #'     DisplayName is optional and ignored in the request
 #' 
 #' -   By URI:
 #' 
-#'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"&gt;&lt;URI&gt;&lt;&gt;http://acs.amazonaws.com/groups/global/AuthenticatedUsers&lt;&gt;&lt;/URI&gt;&lt;/Grantee&gt;`
+#'     `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"><URI><>http://acs.amazonaws.com/groups/global/AuthenticatedUsers<></URI></Grantee>`
 #' 
 #' -   By Email address:
 #' 
-#'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@@email.com&lt;&gt;&lt;/EmailAddress&gt;lt;/Grantee&gt;`
+#'     `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"><EmailAddress><>Grantees@@email.com<></EmailAddress>lt;/Grantee>`
 #' 
 #'     The grantee is resolved to the CanonicalUser and, in a response to a
 #'     GET Object acl request, appears as the CanonicalUser.
@@ -6245,11 +6286,11 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' 
 #' **Related Resources**
 #' 
-#' -   [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+#' -   [`create_bucket`][s3_create_bucket]
 #' 
-#' -   [DeleteBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html)
+#' -   [`delete_bucket`][s3_delete_bucket]
 #' 
-#' -   [GetObjectAcl](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html)
+#' -   [`get_object_acl`][s3_get_object_acl]
 #'
 #' @usage
 #' s3_put_bucket_acl(ACL, AccessControlPolicy, Bucket, ContentMD5,
@@ -6404,11 +6445,11 @@ s3_put_bucket_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' 
 #' **Related Resources**
 #' 
-#' -   [GetBucketAnalyticsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAnalyticsConfiguration.html)
+#' -   [`get_bucket_analytics_configuration`][s3_get_bucket_analytics_configuration]
 #' 
-#' -   [DeleteBucketAnalyticsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketAnalyticsConfiguration.html)
+#' -   [`delete_bucket_analytics_configuration`][s3_delete_bucket_analytics_configuration]
 #' 
-#' -   [ListBucketAnalyticsConfigurations](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketAnalyticsConfigurations.html)
+#' -   [`list_bucket_analytics_configurations`][s3_list_bucket_analytics_configurations]
 #'
 #' @usage
 #' s3_put_bucket_analytics_configuration(Bucket, Id,
@@ -6526,9 +6567,9 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #' 
 #' **Related Resources**
 #' 
-#' -   [GetBucketCors](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketCors.html)
+#' -   [`get_bucket_cors`][s3_get_bucket_cors]
 #' 
-#' -   [DeleteBucketCors](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketCors.html)
+#' -   [`delete_bucket_cors`][s3_delete_bucket_cors]
 #' 
 #' -   [RESTOPTIONSobject](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html)
 #'
@@ -6676,9 +6717,9 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Exp
 #' 
 #' **Related Resources**
 #' 
-#' -   [GetBucketEncryption](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html)
+#' -   [`get_bucket_encryption`][s3_get_bucket_encryption]
 #' 
-#' -   [DeleteBucketEncryption](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html)
+#' -   [`delete_bucket_encryption`][s3_delete_bucket_encryption]
 #'
 #' @usage
 #' s3_put_bucket_encryption(Bucket, ContentMD5,
@@ -6763,14 +6804,15 @@ s3_put_bucket_encryption <- function(Bucket, ContentMD5 = NULL, ServerSideEncryp
 #' accessed
 #' objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access).
 #' 
-#' Operations related to `PutBucketIntelligentTieringConfiguration`
+#' Operations related to
+#' [`put_bucket_intelligent_tiering_configuration`][s3_put_bucket_intelligent_tiering_configuration]
 #' include:
 #' 
-#' -   [DeleteBucketIntelligentTieringConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketIntelligentTieringConfiguration.html)
+#' -   [`delete_bucket_intelligent_tiering_configuration`][s3_delete_bucket_intelligent_tiering_configuration]
 #' 
-#' -   [GetBucketIntelligentTieringConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketIntelligentTieringConfiguration.html)
+#' -   [`get_bucket_intelligent_tiering_configuration`][s3_get_bucket_intelligent_tiering_configuration]
 #' 
-#' -   [ListBucketIntelligentTieringConfigurations](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketIntelligentTieringConfigurations.html)
+#' -   [`list_bucket_intelligent_tiering_configurations`][s3_list_bucket_intelligent_tiering_configurations]
 #'
 #' @usage
 #' s3_put_bucket_intelligent_tiering_configuration(Bucket, Id,
@@ -6900,11 +6942,11 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Intellig
 #' 
 #' **Related Resources**
 #' 
-#' -   [GetBucketInventoryConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketInventoryConfiguration.html)
+#' -   [`get_bucket_inventory_configuration`][s3_get_bucket_inventory_configuration]
 #' 
-#' -   [DeleteBucketInventoryConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketInventoryConfiguration.html)
+#' -   [`delete_bucket_inventory_configuration`][s3_delete_bucket_inventory_configuration]
 #' 
-#' -   [ListBucketInventoryConfigurations](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html)
+#' -   [`list_bucket_inventory_configurations`][s3_list_bucket_inventory_configurations]
 #'
 #' @usage
 #' s3_put_bucket_inventory_configuration(Bucket, Id,
@@ -6978,7 +7020,7 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 #'
 #' @description
 #' For an updated version of this API, see
-#' [PutBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html).
+#' [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration].
 #' This version has been deprecated. Existing lifecycle configurations will
 #' work. For new lifecycle configurations, use the updated API.
 #' 
@@ -7018,11 +7060,11 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 #' 
 #' **Related Resources**
 #' 
-#' -   [GetBucketLifecycle](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycle.html)(Deprecated)
+#' -   [`get_bucket_lifecycle`][s3_get_bucket_lifecycle](Deprecated)
 #' 
-#' -   [GetBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html)
+#' -   [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration]
 #' 
-#' -   [RestoreObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html)
+#' -   [`restore_object`][s3_restore_object]
 #' 
 #' -   By default, a resource owner—in this case, a bucket owner, which is
 #'     the AWS account that created the bucket—can perform any of the
@@ -7125,7 +7167,7 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, LifecycleConfigur
 #' The previous version of the API supported filtering based only on an
 #' object key name prefix, which is supported for backward compatibility.
 #' For the related API description, see
-#' [PutBucketLifecycle](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html).
+#' [`put_bucket_lifecycle`][s3_put_bucket_lifecycle].
 #' 
 #' **Rules**
 #' 
@@ -7177,14 +7219,15 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, LifecycleConfigur
 #' to Your Amazon S3
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html).
 #' 
-#' The following are related to `PutBucketLifecycleConfiguration`:
+#' The following are related to
+#' [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration]:
 #' 
 #' -   [Examples of Lifecycle
 #'     Configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-configuration-examples.html)
 #' 
-#' -   [GetBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html)
+#' -   [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration]
 #' 
-#' -   [DeleteBucketLifecycle](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html)
+#' -   [`delete_bucket_lifecycle`][s3_delete_bucket_lifecycle]
 #'
 #' @usage
 #' s3_put_bucket_lifecycle_configuration(Bucket, LifecycleConfiguration,
@@ -7327,44 +7370,45 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, LifecycleConfiguration
 #' 
 #' -   By the person's ID:
 #' 
-#'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt; &lt;/Grantee&gt;`
+#'     `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"><ID><>ID<></ID><DisplayName><>GranteesEmail<></DisplayName> </Grantee>`
 #' 
 #'     DisplayName is optional and ignored in the request.
 #' 
 #' -   By Email address:
 #' 
-#'     ` &lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@@email.com&lt;&gt;&lt;/EmailAddress&gt;&lt;/Grantee&gt;`
+#'     ` <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"><EmailAddress><>Grantees@@email.com<></EmailAddress></Grantee>`
 #' 
 #'     The grantee is resolved to the CanonicalUser and, in a response to a
 #'     GET Object acl request, appears as the CanonicalUser.
 #' 
 #' -   By URI:
 #' 
-#'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"&gt;&lt;URI&gt;&lt;&gt;http://acs.amazonaws.com/groups/global/AuthenticatedUsers&lt;&gt;&lt;/URI&gt;&lt;/Grantee&gt;`
+#'     `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"><URI><>http://acs.amazonaws.com/groups/global/AuthenticatedUsers<></URI></Grantee>`
 #' 
 #' To enable logging, you use LoggingEnabled and its children request
 #' elements. To disable logging, you use an empty BucketLoggingStatus
 #' request element:
 #' 
-#' `&lt;BucketLoggingStatus xmlns="http://doc.s3.amazonaws.com/2006-03-01" /&gt;`
+#' `<BucketLoggingStatus xmlns="http://doc.s3.amazonaws.com/2006-03-01" />`
 #' 
 #' For more information about server access logging, see [Server Access
 #' Logging](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html).
 #' 
 #' For more information about creating a bucket, see
-#' [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html).
-#' For more information about returning the logging status of a bucket, see
-#' [GetBucketLogging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLogging.html).
+#' [`create_bucket`][s3_create_bucket]. For more information about
+#' returning the logging status of a bucket, see
+#' [`get_bucket_logging`][s3_get_bucket_logging].
 #' 
-#' The following operations are related to `PutBucketLogging`:
+#' The following operations are related to
+#' [`put_bucket_logging`][s3_put_bucket_logging]:
 #' 
-#' -   [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+#' -   [`put_object`][s3_put_object]
 #' 
-#' -   [DeleteBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html)
+#' -   [`delete_bucket`][s3_delete_bucket]
 #' 
-#' -   [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+#' -   [`create_bucket`][s3_create_bucket]
 #' 
-#' -   [GetBucketLogging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLogging.html)
+#' -   [`get_bucket_logging`][s3_get_bucket_logging]
 #'
 #' @usage
 #' s3_put_bucket_logging(Bucket, BucketLoggingStatus, ContentMD5,
@@ -7372,7 +7416,8 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, LifecycleConfiguration
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to set the logging parameters.
 #' @param BucketLoggingStatus &#91;required&#93; Container for logging status information.
-#' @param ContentMD5 The MD5 hash of the `PutBucketLogging` request body.
+#' @param ContentMD5 The MD5 hash of the [`put_bucket_logging`][s3_put_bucket_logging]
+#' request body.
 #' 
 #' For requests made using the AWS Command Line Interface (CLI) or AWS
 #' SDKs, this field is calculated automatically.
@@ -7475,15 +7520,17 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 #' [Monitoring Metrics with Amazon
 #' CloudWatch](https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html).
 #' 
-#' The following operations are related to `PutBucketMetricsConfiguration`:
+#' The following operations are related to
+#' [`put_bucket_metrics_configuration`][s3_put_bucket_metrics_configuration]:
 #' 
-#' -   [DeleteBucketMetricsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetricsConfiguration.html)
+#' -   [`delete_bucket_metrics_configuration`][s3_delete_bucket_metrics_configuration]
 #' 
-#' -   [PutBucketMetricsConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketMetricsConfiguration.html)
+#' -   [`put_bucket_metrics_configuration`][s3_put_bucket_metrics_configuration]
 #' 
-#' -   [ListBucketMetricsConfigurations](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketMetricsConfigurations.html)
+#' -   [`list_bucket_metrics_configurations`][s3_list_bucket_metrics_configurations]
 #' 
-#' `GetBucketLifecycle` has the following special error:
+#' [`get_bucket_lifecycle`][s3_get_bucket_lifecycle] has the following
+#' special error:
 #' 
 #' -   Error code: `TooManyConfigurations`
 #' 
@@ -7555,7 +7602,7 @@ s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration
 #'
 #' @description
 #' No longer used, see the
-#' [PutBucketNotificationConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketNotificationConfiguration.html)
+#' [`put_bucket_notification_configuration`][s3_put_bucket_notification_configuration]
 #' operation.
 #'
 #' @usage
@@ -7563,7 +7610,8 @@ s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration
 #'   NotificationConfiguration, ExpectedBucketOwner)
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket.
-#' @param ContentMD5 The MD5 hash of the `PutPublicAccessBlock` request body.
+#' @param ContentMD5 The MD5 hash of the
+#' [`put_public_access_block`][s3_put_public_access_block] request body.
 #' 
 #' For requests made using the AWS Command Line Interface (CLI) or AWS
 #' SDKs, this field is calculated automatically.
@@ -7645,9 +7693,9 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, NotificationCo
 #' the notification configuration will be an empty
 #' `NotificationConfiguration`.
 #' 
-#' `&lt;NotificationConfiguration&gt;`
+#' `<NotificationConfiguration>`
 #' 
-#' `&lt;/NotificationConfiguration&gt;`
+#' `</NotificationConfiguration>`
 #' 
 #' This operation replaces the existing notification configuration with the
 #' configuration you include in the request body.
@@ -7686,9 +7734,9 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, NotificationCo
 #' of the test notification sent to the topic.
 #' 
 #' The following operation is related to
-#' `PutBucketNotificationConfiguration`:
+#' [`put_bucket_notification_configuration`][s3_put_bucket_notification_configuration]:
 #' 
-#' -   [GetBucketNotificationConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html)
+#' -   [`get_bucket_notification_configuration`][s3_get_bucket_notification_configuration]
 #'
 #' @usage
 #' s3_put_bucket_notification_configuration(Bucket,
@@ -7818,11 +7866,12 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #' For information about Amazon S3 Object Ownership, see [Using Object
 #' Ownership](https://docs.aws.amazon.com/AmazonS3/latest/dev/about-object-ownership.html).
 #' 
-#' The following operations are related to `PutBucketOwnershipControls`:
+#' The following operations are related to
+#' [`put_bucket_ownership_controls`][s3_put_bucket_ownership_controls]:
 #' 
-#' -   GetBucketOwnershipControls
+#' -   [`get_bucket_ownership_controls`][s3_get_bucket_ownership_controls]
 #' 
-#' -   DeleteBucketOwnershipControls
+#' -   [`delete_bucket_ownership_controls`][s3_delete_bucket_ownership_controls]
 #'
 #' @usage
 #' s3_put_bucket_ownership_controls(Bucket, ContentMD5,
@@ -7881,14 +7930,16 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' @description
 #' Applies an Amazon S3 bucket policy to an Amazon S3 bucket. If you are
 #' using an identity other than the root user of the AWS account that owns
-#' the bucket, the calling identity must have the `PutBucketPolicy`
-#' permissions on the specified bucket and belong to the bucket owner's
-#' account in order to use this operation.
+#' the bucket, the calling identity must have the
+#' [`put_bucket_policy`][s3_put_bucket_policy] permissions on the specified
+#' bucket and belong to the bucket owner's account in order to use this
+#' operation.
 #' 
-#' If you don't have `PutBucketPolicy` permissions, Amazon S3 returns a
-#' `403 Access Denied` error. If you have the correct permissions, but
-#' you're not using an identity that belongs to the bucket owner's account,
-#' Amazon S3 returns a `405 Method Not Allowed` error.
+#' If you don't have [`put_bucket_policy`][s3_put_bucket_policy]
+#' permissions, Amazon S3 returns a `403 Access Denied` error. If you have
+#' the correct permissions, but you're not using an identity that belongs
+#' to the bucket owner's account, Amazon S3 returns a
+#' `405 Method Not Allowed` error.
 #' 
 #' As a security precaution, the root user of the AWS account that owns a
 #' bucket can always use this operation, even if the policy explicitly
@@ -7898,11 +7949,12 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' and User
 #' Policies](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html).
 #' 
-#' The following operations are related to `PutBucketPolicy`:
+#' The following operations are related to
+#' [`put_bucket_policy`][s3_put_bucket_policy]:
 #' 
-#' -   [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+#' -   [`create_bucket`][s3_create_bucket]
 #' 
-#' -   [DeleteBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html)
+#' -   [`delete_bucket`][s3_delete_bucket]
 #'
 #' @usage
 #' s3_put_bucket_policy(Bucket, ContentMD5, ConfirmRemoveSelfBucketAccess,
@@ -8017,15 +8069,16 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ConfirmRemoveSelfBuc
 #' [Replicating Objects Created with SSE Using CMKs stored in AWS
 #' KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-config-for-kms-objects.html).
 #' 
-#' For information on `PutBucketReplication` errors, see [List of
-#' replication-related error
+#' For information on [`put_bucket_replication`][s3_put_bucket_replication]
+#' errors, see [List of replication-related error
 #' codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ReplicationErrorCodeList)
 #' 
-#' The following operations are related to `PutBucketReplication`:
+#' The following operations are related to
+#' [`put_bucket_replication`][s3_put_bucket_replication]:
 #' 
-#' -   [GetBucketReplication](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketReplication.html)
+#' -   [`get_bucket_replication`][s3_get_bucket_replication]
 #' 
-#' -   [DeleteBucketReplication](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html)
+#' -   [`delete_bucket_replication`][s3_delete_bucket_replication]
 #'
 #' @usage
 #' s3_put_bucket_replication(Bucket, ContentMD5, ReplicationConfiguration,
@@ -8170,11 +8223,12 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ReplicationConf
 #' information, see [Requester Pays
 #' Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html).
 #' 
-#' The following operations are related to `PutBucketRequestPayment`:
+#' The following operations are related to
+#' [`put_bucket_request_payment`][s3_put_bucket_request_payment]:
 #' 
-#' -   [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+#' -   [`create_bucket`][s3_create_bucket]
 #' 
-#' -   [GetBucketRequestPayment](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketRequestPayment.html)
+#' -   [`get_bucket_request_payment`][s3_get_bucket_request_payment]
 #'
 #' @usage
 #' s3_put_bucket_request_payment(Bucket, ContentMD5,
@@ -8265,7 +8319,8 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, RequestPaym
 #' and [Managing Access Permissions to Your Amazon S3
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html).
 #' 
-#' `PutBucketTagging` has the following special errors:
+#' [`put_bucket_tagging`][s3_put_bucket_tagging] has the following special
+#' errors:
 #' 
 #' -   Error code: `InvalidTagError`
 #' 
@@ -8290,11 +8345,12 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, RequestPaym
 #'     -   Description: The service was unable to apply the provided tag to
 #'         the bucket.
 #' 
-#' The following operations are related to `PutBucketTagging`:
+#' The following operations are related to
+#' [`put_bucket_tagging`][s3_put_bucket_tagging]:
 #' 
-#' -   [GetBucketTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html)
+#' -   [`get_bucket_tagging`][s3_get_bucket_tagging]
 #' 
-#' -   [DeleteBucketTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html)
+#' -   [`delete_bucket_tagging`][s3_delete_bucket_tagging]
 #'
 #' @usage
 #' s3_put_bucket_tagging(Bucket, ContentMD5, Tagging, ExpectedBucketOwner)
@@ -8385,8 +8441,7 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, Tagging, ExpectedBu
 #' objects added to the bucket receive the version ID null.
 #' 
 #' If the versioning state has never been set on a bucket, it has no
-#' versioning state; a
-#' [GetBucketVersioning](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html)
+#' versioning state; a [`get_bucket_versioning`][s3_get_bucket_versioning]
 #' request does not return a versioning state value.
 #' 
 #' If the bucket owner enables MFA Delete in the bucket versioning
@@ -8405,11 +8460,11 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, Tagging, ExpectedBu
 #' 
 #' **Related Resources**
 #' 
-#' -   [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+#' -   [`create_bucket`][s3_create_bucket]
 #' 
-#' -   [DeleteBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html)
+#' -   [`delete_bucket`][s3_delete_bucket]
 #' 
-#' -   [GetBucketVersioning](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html)
+#' -   [`get_bucket_versioning`][s3_get_bucket_versioning]
 #'
 #' @usage
 #' s3_put_bucket_versioning(Bucket, ContentMD5, MFA,
@@ -8718,13 +8773,13 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' Enabled
 #' Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/AddingObjectstoVersioningEnabledBuckets.html).
 #' For information about returning the versioning state of a bucket, see
-#' [GetBucketVersioning](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html).
+#' [`get_bucket_versioning`][s3_get_bucket_versioning].
 #' 
 #' **Related Resources**
 #' 
-#' -   [CopyObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html)
+#' -   [`copy_object`][s3_copy_object]
 #' 
-#' -   [DeleteObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html)
+#' -   [`delete_object`][s3_delete_object]
 #'
 #' @usage
 #' s3_put_object(ACL, Body, Bucket, CacheControl, ContentDisposition,
@@ -9113,17 +9168,17 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' 
 #' -   By the person's ID:
 #' 
-#'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt; &lt;/Grantee&gt;`
+#'     `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"><ID><>ID<></ID><DisplayName><>GranteesEmail<></DisplayName> </Grantee>`
 #' 
 #'     DisplayName is optional and ignored in the request.
 #' 
 #' -   By URI:
 #' 
-#'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"&gt;&lt;URI&gt;&lt;&gt;http://acs.amazonaws.com/groups/global/AuthenticatedUsers&lt;&gt;&lt;/URI&gt;&lt;/Grantee&gt;`
+#'     `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"><URI><>http://acs.amazonaws.com/groups/global/AuthenticatedUsers<></URI></Grantee>`
 #' 
 #' -   By Email address:
 #' 
-#'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@@email.com&lt;&gt;&lt;/EmailAddress&gt;lt;/Grantee&gt;`
+#'     `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"><EmailAddress><>Grantees@@email.com<></EmailAddress>lt;/Grantee>`
 #' 
 #'     The grantee is resolved to the CanonicalUser and, in a response to a
 #'     GET Object acl request, appears as the CanonicalUser.
@@ -9160,9 +9215,9 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' 
 #' **Related Resources**
 #' 
-#' -   [CopyObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html)
+#' -   [`copy_object`][s3_copy_object]
 #' 
-#' -   [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+#' -   [`get_object`][s3_get_object]
 #'
 #' @usage
 #' s3_put_object_acl(ACL, AccessControlPolicy, Bucket, ContentMD5,
@@ -9546,8 +9601,7 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' A tag is a key-value pair. You can associate tags with an object by
 #' sending a PUT request against the tagging subresource that is associated
 #' with the object. You can retrieve tags by sending a GET request. For
-#' more information, see
-#' [GetObjectTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html).
+#' more information, see [`get_object_tagging`][s3_get_object_tagging].
 #' 
 #' For tagging-related restrictions related to characters and encodings,
 #' see [Tag
@@ -9590,7 +9644,7 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' 
 #' **Related Resources**
 #' 
-#' -   [GetObjectTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html)
+#' -   [`get_object_tagging`][s3_get_object_tagging]
 #'
 #' @usage
 #' s3_put_object_tagging(Bucket, Key, VersionId, ContentMD5, Tagging,
@@ -9710,11 +9764,11 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' 
 #' **Related Resources**
 #' 
-#' -   [GetPublicAccessBlock](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetPublicAccessBlock.html)
+#' -   [`get_public_access_block`][s3_get_public_access_block]
 #' 
-#' -   [DeletePublicAccessBlock](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html)
+#' -   [`delete_public_access_block`][s3_delete_public_access_block]
 #' 
-#' -   [GetBucketPolicyStatus](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicyStatus.html)
+#' -   [`get_bucket_policy_status`][s3_get_bucket_policy_status]
 #' 
 #' -   [Using Amazon S3 Block Public
 #'     Access](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html)
@@ -9725,7 +9779,8 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose `PublicAccessBlock` configuration
 #' you want to set.
-#' @param ContentMD5 The MD5 hash of the `PutPublicAccessBlock` request body.
+#' @param ContentMD5 The MD5 hash of the
+#' [`put_public_access_block`][s3_put_public_access_block] request body.
 #' 
 #' For requests made using the AWS Command Line Interface (CLI) or AWS
 #' SDKs, this field is calculated automatically.
@@ -9823,7 +9878,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #'     For more information about the `S3` structure in the request body,
 #'     see the following:
 #' 
-#'     -   [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+#'     -   [`put_object`][s3_put_object]
 #' 
 #'     -   [Managing Access with
 #'         ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html)
@@ -9845,7 +9900,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #'     -   Assuming that you are not using any headers for data stored in
 #'         the object, you can specify columns with positional headers.
 #' 
-#'         `SELECT s._1, s._2 FROM Object s WHERE s._3 &gt; 100`
+#'         `SELECT s._1, s._2 FROM Object s WHERE s._3 > 100`
 #' 
 #'     -   If you have headers and you set the `fileHeaderInfo` in the
 #'         `CSV` structure in the request body to `USE`, you can specify
@@ -9965,7 +10020,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #' copy for 10 days, but the object is scheduled to expire in 3 days,
 #' Amazon S3 deletes the object in 3 days. For more information about
 #' lifecycle configuration, see
-#' [PutBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html)
+#' [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration]
 #' and [Object Lifecycle
 #' Management](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html)
 #' in *Amazon Simple Storage Service Developer Guide*.
@@ -10006,9 +10061,9 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #' 
 #' **Related Resources**
 #' 
-#' -   [PutBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html)
+#' -   [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration]
 #' 
-#' -   [GetBucketNotificationConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html)
+#' -   [`get_bucket_notification_configuration`][s3_get_bucket_notification_configuration]
 #' 
 #' -   [SQL Reference for Amazon S3 Select and S3 Glacier
 #'     Select](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html)
@@ -10226,9 +10281,8 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' 
 #'     For objects that are encrypted with customer-provided encryption
 #'     keys (SSE-C), you must use HTTPS, and you must use the headers that
-#'     are documented in the
-#'     [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html).
-#'     For more information about SSE-C, see [Server-Side Encryption (Using
+#'     are documented in the [`get_object`][s3_get_object]. For more
+#'     information about SSE-C, see [Server-Side Encryption (Using
 #'     Customer-Provided Encryption
 #'     Keys)](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html)
 #'     in the *Amazon Simple Storage Service Developer Guide*.
@@ -10253,9 +10307,9 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' 
 #' **GetObject Support**
 #' 
-#' The `SelectObjectContent` operation does not support the following
-#' `GetObject` functionality. For more information, see
-#' [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html).
+#' The [`select_object_content`][s3_select_object_content] operation does
+#' not support the following [`get_object`][s3_get_object] functionality.
+#' For more information, see [`get_object`][s3_get_object].
 #' 
 #' -   `Range`: Although you can specify a scan range for an Amazon S3
 #'     Select request (see [SelectObjectContentRequest -
@@ -10278,11 +10332,11 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' 
 #' **Related Resources**
 #' 
-#' -   [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+#' -   [`get_object`][s3_get_object]
 #' 
-#' -   [GetBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html)
+#' -   [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration]
 #' 
-#' -   [PutBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html)
+#' -   [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration]
 #'
 #' @usage
 #' s3_select_object_content(Bucket, Key, SSECustomerAlgorithm,
@@ -10315,15 +10369,15 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' 
 #' `ScanRange`may be used in the following ways:
 #' 
-#' -   `&lt;scanrange&gt;&lt;start&gt;50&lt;/start&gt;&lt;end&gt;100&lt;/end&gt;&lt;/scanrange&gt;` -
-#'     process only the records starting between the bytes 50 and 100
-#'     (inclusive, counting from zero)
+#' -   `<scanrange><start>50</start><end>100</end></scanrange>` - process
+#'     only the records starting between the bytes 50 and 100 (inclusive,
+#'     counting from zero)
 #' 
-#' -   `&lt;scanrange&gt;&lt;start&gt;50&lt;/start&gt;&lt;/scanrange&gt;` -
-#'     process only the records starting after the byte 50
+#' -   `<scanrange><start>50</start></scanrange>` - process only the
+#'     records starting after the byte 50
 #' 
-#' -   `&lt;scanrange&gt;&lt;end&gt;50&lt;/end&gt;&lt;/scanrange&gt;` -
-#'     process only the records within the last 50 bytes of the file.
+#' -   `<scanrange><end>50</end></scanrange>` - process only the records
+#'     within the last 50 bytes of the file.
 #' @param ExpectedBucketOwner The account id of the expected bucket owner. If the bucket is owned by a
 #' different account, the request will fail with an HTTP
 #' `403 (Access Denied)` error.
@@ -10405,15 +10459,13 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' In this operation, you provide part data in your request. However, you
 #' have an option to specify your existing Amazon S3 object as a data
 #' source for the part you are uploading. To upload a part from an existing
-#' object, you use the
-#' [UploadPartCopy](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPartCopy.html)
-#' operation.
+#' object, you use the [`upload_part_copy`][s3_upload_part_copy] operation.
 #' 
 #' You must initiate a multipart upload (see
-#' [CreateMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html))
-#' before you can upload any part. In response to your initiate request,
-#' Amazon S3 returns an upload ID, a unique identifier, that you must
-#' include in your upload part request.
+#' [`create_multipart_upload`][s3_create_multipart_upload]) before you can
+#' upload any part. In response to your initiate request, Amazon S3 returns
+#' an upload ID, a unique identifier, that you must include in your upload
+#' part request.
 #' 
 #' Part numbers can be any number from 1 to 10,000, inclusive. A part
 #' number uniquely identifies a part and also defines its position within
@@ -10455,8 +10507,8 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' If you choose to provide your own encryption key, the request headers
 #' you provide in the request must match the headers you used in the
 #' request to initiate the upload by using
-#' [CreateMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html).
-#' For more information, go to [Using Server-Side
+#' [`create_multipart_upload`][s3_create_multipart_upload]. For more
+#' information, go to [Using Server-Side
 #' Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html)
 #' in the *Amazon Simple Storage Service Developer Guide*.
 #' 
@@ -10465,7 +10517,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' to specify the encryption parameters in each UploadPart request.
 #' Instead, you only need to specify the server-side encryption parameters
 #' in the initial Initiate Multipart request. For more information, see
-#' [CreateMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html).
+#' [`create_multipart_upload`][s3_create_multipart_upload].
 #' 
 #' If you requested server-side encryption using a customer-provided
 #' encryption key in your initiate multipart upload request, you must
@@ -10492,15 +10544,15 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' 
 #' **Related Resources**
 #' 
-#' -   [CreateMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)
+#' -   [`create_multipart_upload`][s3_create_multipart_upload]
 #' 
-#' -   [CompleteMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html)
+#' -   [`complete_multipart_upload`][s3_complete_multipart_upload]
 #' 
-#' -   [AbortMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html)
+#' -   [`abort_multipart_upload`][s3_abort_multipart_upload]
 #' 
-#' -   [ListParts](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html)
+#' -   [`list_parts`][s3_list_parts]
 #' 
-#' -   [ListMultipartUploads](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html)
+#' -   [`list_multipart_uploads`][s3_list_multipart_uploads]
 #'
 #' @usage
 #' s3_upload_part(Body, Bucket, ContentLength, ContentMD5, Key, PartNumber,
@@ -10620,16 +10672,16 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' the *Amazon Simple Storage Service Developer Guide*.
 #' 
 #' Instead of using an existing object as part data, you might use the
-#' [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
-#' operation and provide data in your request.
+#' [`upload_part`][s3_upload_part] operation and provide data in your
+#' request.
 #' 
 #' You must initiate a multipart upload before you can upload any part. In
 #' response to your initiate request. Amazon S3 returns a unique
 #' identifier, the upload ID, that you must include in your upload part
 #' request.
 #' 
-#' For more information about using the `UploadPartCopy` operation, see the
-#' following:
+#' For more information about using the
+#' [`upload_part_copy`][s3_upload_part_copy] operation, see the following:
 #' 
 #' -   For conceptual information about multipart uploads, see [Uploading
 #'     Objects Using Multipart
@@ -10648,10 +10700,8 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' 
 #' -   For information about using server-side encryption with
 #'     customer-provided encryption keys with the UploadPartCopy operation,
-#'     see
-#'     [CopyObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html)
-#'     and
-#'     [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html).
+#'     see [`copy_object`][s3_copy_object] and
+#'     [`upload_part`][s3_upload_part].
 #' 
 #' Note the following additional considerations about the request headers
 #' `x-amz-copy-source-if-match`, `x-amz-copy-source-if-none-match`,
@@ -10718,17 +10768,17 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' 
 #' **Related Resources**
 #' 
-#' -   [CreateMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)
+#' -   [`create_multipart_upload`][s3_create_multipart_upload]
 #' 
-#' -   [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
+#' -   [`upload_part`][s3_upload_part]
 #' 
-#' -   [CompleteMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html)
+#' -   [`complete_multipart_upload`][s3_complete_multipart_upload]
 #' 
-#' -   [AbortMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html)
+#' -   [`abort_multipart_upload`][s3_abort_multipart_upload]
 #' 
-#' -   [ListParts](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html)
+#' -   [`list_parts`][s3_list_parts]
 #' 
-#' -   [ListMultipartUploads](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html)
+#' -   [`list_multipart_uploads`][s3_list_multipart_uploads]
 #'
 #' @usage
 #' s3_upload_part_copy(Bucket, CopySource, CopySourceIfMatch,
@@ -10774,7 +10824,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' -   For objects accessed through access points, specify the Amazon
 #'     Resource Name (ARN) of the object as accessed through the access
 #'     point, in the format
-#'     `arn:aws:s3:&lt;Region&gt;:&lt;account-id&gt;:accesspoint/&lt;access-point-name&gt;/object/&lt;key&gt;`.
+#'     `arn:aws:s3:<Region>:<account-id>:accesspoint/<access-point-name>/object/<key>`.
 #'     For example, to copy the object `reports/january.pdf` through access
 #'     point `my-access-point` owned by account `123456789012` in Region
 #'     `us-west-2`, use the URL encoding of
@@ -10786,7 +10836,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' 
 #'     Alternatively, for objects accessed through Amazon S3 on Outposts,
 #'     specify the ARN of the object as accessed in the format
-#'     `arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/object/&lt;key&gt;`.
+#'     `arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/object/<key>`.
 #'     For example, to copy the object `reports/january.pdf` through
 #'     outpost `my-outpost` owned by account `123456789012` in Region
 #'     `us-west-2`, use the URL encoding of
@@ -10794,7 +10844,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'     The value must be URL encoded.
 #' 
 #' To copy a specific version of an object, append
-#' `?versionId=&lt;version-id&gt;` to the value (for example,
+#' `?versionId=<version-id>` to the value (for example,
 #' `awsexamplebucket/reports/january.pdf?versionId=QUpfdndhfd8438MNFDN93jdnJFkdmqnh893`).
 #' If you don't specify a version ID, Amazon S3 copies the latest version
 #' of the source object.

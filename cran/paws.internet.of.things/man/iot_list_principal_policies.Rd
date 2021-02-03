@@ -23,8 +23,8 @@ ascending creation order.}
 Lists the policies attached to the specified principal. If you use an
 Cognito identity, the ID must be in \href{https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax}{AmazonCognito Identity format}.
 
-\strong{Note:} This API is deprecated. Please use ListAttachedPolicies
-instead.
+\strong{Note:} This API is deprecated. Please use
+\code{\link[=iot_list_attached_policies]{list_attached_policies}} instead.
 }
 \section{Request syntax}{
 \preformatted{svc$list_principal_policies(

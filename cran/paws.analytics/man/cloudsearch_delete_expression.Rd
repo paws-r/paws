@@ -9,11 +9,11 @@ cloudsearch_delete_expression(DomainName, ExpressionName)
 \arguments{
 \item{DomainName}{[required]}
 
-\item{ExpressionName}{[required] The name of the \verb{<a>Expression</a>} to delete.}
+\item{ExpressionName}{[required] The name of the \code{Expression} to delete.}
 }
 \description{
-Removes an \verb{<a>Expression</a>} from the search domain. For more
-information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html}{Configuring Expressions}
+Removes an \code{Expression} from the search domain. For more information,
+see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html}{Configuring Expressions}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{

@@ -10,9 +10,11 @@ opsworkscm_describe_servers(ServerName, NextToken, MaxResults)
 \arguments{
 \item{ServerName}{Describes the server with the specified ServerName.}
 
-\item{NextToken}{This is not currently implemented for \code{DescribeServers} requests.}
+\item{NextToken}{This is not currently implemented for
+\code{\link[=opsworkscm_describe_servers]{describe_servers}} requests.}
 
-\item{MaxResults}{This is not currently implemented for \code{DescribeServers} requests.}
+\item{MaxResults}{This is not currently implemented for
+\code{\link[=opsworkscm_describe_servers]{describe_servers}} requests.}
 }
 \description{
 Lists all configuration management servers that are identified with your

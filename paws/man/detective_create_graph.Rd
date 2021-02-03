@@ -22,12 +22,13 @@ quota. If it exceeds the quota, then you cannot enable Detective.
 The operation also enables Detective for the calling account in the
 currently selected Region. It returns the ARN of the new behavior graph.
 
-\code{CreateGraph} triggers a process to create the corresponding data tables
-for the new behavior graph.
+\code{\link[=detective_create_graph]{create_graph}} triggers a process to create
+the corresponding data tables for the new behavior graph.
 
 An account can only be the master account for one behavior graph within
-a Region. If the same account calls \code{CreateGraph} with the same master
-account, it always returns the same behavior graph ARN. It does not
-create a new behavior graph.
+a Region. If the same account calls
+\code{\link[=detective_create_graph]{create_graph}} with the same master account,
+it always returns the same behavior graph ARN. It does not create a new
+behavior graph.
 }
 \keyword{internal}

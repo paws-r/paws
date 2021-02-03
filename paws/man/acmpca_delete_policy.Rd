@@ -9,7 +9,7 @@ acmpca_delete_policy(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Number (ARN) of the private CA that will have its
 policy deleted. You can find the CA's ARN by calling the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html}{ListCertificateAuthorities}
+\code{\link[=acmpca_list_certificate_authorities]{list_certificate_authorities}}
 action. The ARN value must have the form
 \verb{arn:aws:acm-pca:region:account:certificate-authority/01234567-89ab-cdef-0123-0123456789ab}.}
 }
@@ -25,10 +25,8 @@ included.
 The AWS Certificate Manager Service Linked Role that the policy supports
 is not affected when you delete the policy.
 
-The current policy can be shown with
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetPolicy.html}{GetPolicy}
-and updated with
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_PutPolicy.html}{PutPolicy}.
+The current policy can be shown with \code{\link[=acmpca_get_policy]{get_policy}}
+and updated with \code{\link[=acmpca_put_policy]{put_policy}}.
 
 \strong{About Policies}
 \itemize{

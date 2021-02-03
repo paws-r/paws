@@ -61,7 +61,8 @@ elasticbeanstalk_abort_environment_update <- function(EnvironmentId = NULL, Envi
 #' @description
 #' Applies a scheduled managed action immediately. A managed action can be
 #' applied only if its status is `Scheduled`. Get the status and action ID
-#' of a managed action with DescribeEnvironmentManagedActions.
+#' of a managed action with
+#' [`describe_environment_managed_actions`][elasticbeanstalk_describe_environment_managed_actions].
 #'
 #' @usage
 #' elasticbeanstalk_apply_environment_managed_action(EnvironmentName,
@@ -486,11 +487,11 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 #' 
 #' Related Topics
 #' 
-#' -   DescribeConfigurationOptions
+#' -   [`describe_configuration_options`][elasticbeanstalk_describe_configuration_options]
 #' 
-#' -   DescribeConfigurationSettings
+#' -   [`describe_configuration_settings`][elasticbeanstalk_describe_configuration_settings]
 #' 
-#' -   ListAvailableSolutionStacks
+#' -   [`list_available_solution_stacks`][elasticbeanstalk_list_available_solution_stacks]
 #'
 #' @usage
 #' elasticbeanstalk_create_configuration_template(ApplicationName,
@@ -516,7 +517,7 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 #' `EnvironmentId`, or `SourceConfiguration`.
 #' 
 #' Use the
-#' [`ListAvailableSolutionStacks`](https://docs.aws.amazon.com/elasticbeanstalk/latest/api/API_ListAvailableSolutionStacks.html)
+#' [`list_available_solution_stacks`](https://docs.aws.amazon.com/elasticbeanstalk/latest/api/API_ListAvailableSolutionStacks.html)
 #' API to obtain a list of available solution stacks.
 #' @param PlatformArn The Amazon Resource Name (ARN) of the custom platform. For more
 #' information, see [Custom
@@ -840,8 +841,8 @@ elasticbeanstalk_create_platform_version <- function(PlatformName, PlatformVersi
 #' other files used by Elastic Beanstalk environments. The Elastic
 #' Beanstalk console and EB CLI call this API the first time you create an
 #' environment in a region. If the storage location already exists,
-#' `CreateStorageLocation` still returns the bucket name but does not
-#' create a new bucket.
+#' [`create_storage_location`][elasticbeanstalk_create_storage_location]
+#' still returns the bucket name but does not create a new bucket.
 #'
 #' @usage
 #' elasticbeanstalk_create_storage_location()
@@ -1051,10 +1052,11 @@ elasticbeanstalk_delete_configuration_template <- function(ApplicationName, Temp
 #' 
 #' Updating a running environment with any configuration changes creates a
 #' draft configuration set. You can get the draft configuration using
-#' DescribeConfigurationSettings while the update is in progress or if the
-#' update fails. The `DeploymentStatus` for the draft configuration
-#' indicates whether the deployment is in process or has failed. The draft
-#' configuration remains in existence until it is deleted with this action.
+#' [`describe_configuration_settings`][elasticbeanstalk_describe_configuration_settings]
+#' while the update is in progress or if the update fails. The
+#' `DeploymentStatus` for the draft configuration indicates whether the
+#' deployment is in process or has failed. The draft configuration remains
+#' in existence until it is deleted with this action.
 #'
 #' @usage
 #' elasticbeanstalk_delete_environment_configuration(ApplicationName,
@@ -1381,7 +1383,7 @@ elasticbeanstalk_describe_configuration_options <- function(ApplicationName = NU
 #' 
 #' Related Topics
 #' 
-#' -   DeleteEnvironmentConfiguration
+#' -   [`delete_environment_configuration`][elasticbeanstalk_delete_environment_configuration]
 #'
 #' @usage
 #' elasticbeanstalk_describe_configuration_settings(ApplicationName,
@@ -1896,8 +1898,8 @@ elasticbeanstalk_describe_instances_health <- function(EnvironmentName = NULL, E
 #'
 #' @description
 #' Describes a platform version. Provides full details. Compare to
-#' ListPlatformVersions, which provides summary information about a list of
-#' platform versions.
+#' [`list_platform_versions`][elasticbeanstalk_list_platform_versions],
+#' which provides summary information about a list of platform versions.
 #' 
 #' For definitions of platform version and other platform-related terms,
 #' see [AWS Elastic Beanstalk Platforms
@@ -2117,8 +2119,8 @@ elasticbeanstalk_list_platform_branches <- function(Filters = NULL, MaxRecords =
 #' @description
 #' Lists the platform versions available for your account in an AWS Region.
 #' Provides summary information about each platform version. Compare to
-#' DescribePlatformVersion, which provides full details about a single
-#' platform version.
+#' [`describe_platform_version`][elasticbeanstalk_describe_platform_version],
+#' which provides full details about a single platform version.
 #' 
 #' For definitions of platform version and other platform-related terms,
 #' see [AWS Elastic Beanstalk Platforms
@@ -2293,11 +2295,13 @@ elasticbeanstalk_rebuild_environment <- function(EnvironmentId = NULL, Environme
 #' files for every Amazon EC2 instance into a `.zip` file. Legacy and .NET
 #' containers do not support bundle logs.
 #' 
-#' Use RetrieveEnvironmentInfo to obtain the set of logs.
+#' Use
+#' [`retrieve_environment_info`][elasticbeanstalk_retrieve_environment_info]
+#' to obtain the set of logs.
 #' 
 #' Related Topics
 #' 
-#' -   RetrieveEnvironmentInfo
+#' -   [`retrieve_environment_info`][elasticbeanstalk_retrieve_environment_info]
 #'
 #' @usage
 #' elasticbeanstalk_request_environment_info(EnvironmentId,
@@ -2305,16 +2309,18 @@ elasticbeanstalk_rebuild_environment <- function(EnvironmentId = NULL, Environme
 #'
 #' @param EnvironmentId The ID of the environment of the requested data.
 #' 
-#' If no such environment is found, `RequestEnvironmentInfo` returns an
-#' `InvalidParameterValue` error.
+#' If no such environment is found,
+#' [`request_environment_info`][elasticbeanstalk_request_environment_info]
+#' returns an `InvalidParameterValue` error.
 #' 
 #' Condition: You must specify either this or an EnvironmentName, or both.
 #' If you do not specify either, AWS Elastic Beanstalk returns
 #' `MissingRequiredParameter` error.
 #' @param EnvironmentName The name of the environment of the requested data.
 #' 
-#' If no such environment is found, `RequestEnvironmentInfo` returns an
-#' `InvalidParameterValue` error.
+#' If no such environment is found,
+#' [`request_environment_info`][elasticbeanstalk_request_environment_info]
+#' returns an `InvalidParameterValue` error.
 #' 
 #' Condition: You must specify either this or an EnvironmentId, or both. If
 #' you do not specify either, AWS Elastic Beanstalk returns
@@ -2420,12 +2426,13 @@ elasticbeanstalk_restart_app_server <- function(EnvironmentId = NULL, Environmen
 #' Retrieves the compiled information from a RequestEnvironmentInfo request
 #'
 #' @description
-#' Retrieves the compiled information from a RequestEnvironmentInfo
+#' Retrieves the compiled information from a
+#' [`request_environment_info`][elasticbeanstalk_request_environment_info]
 #' request.
 #' 
 #' Related Topics
 #' 
-#' -   RequestEnvironmentInfo
+#' -   [`request_environment_info`][elasticbeanstalk_request_environment_info]
 #'
 #' @usage
 #' elasticbeanstalk_retrieve_environment_info(EnvironmentId,
@@ -2650,7 +2657,8 @@ elasticbeanstalk_terminate_environment <- function(EnvironmentId = NULL, Environ
 #' elasticbeanstalk_update_application(ApplicationName, Description)
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to update. If no such application is found,
-#' `UpdateApplication` returns an `InvalidParameterValue` error.
+#' [`update_application`][elasticbeanstalk_update_application] returns an
+#' `InvalidParameterValue` error.
 #' @param Description A new description for the application.
 #' 
 #' Default: If not specified, AWS Elastic Beanstalk does not update the
@@ -2764,12 +2772,14 @@ elasticbeanstalk_update_application_resource_lifecycle <- function(ApplicationNa
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application associated with this version.
 #' 
-#' If no application is found with this name, `UpdateApplication` returns
-#' an `InvalidParameterValue` error.
+#' If no application is found with this name,
+#' [`update_application`][elasticbeanstalk_update_application] returns an
+#' `InvalidParameterValue` error.
 #' @param VersionLabel &#91;required&#93; The name of the version to update.
 #' 
-#' If no application version is found with this label, `UpdateApplication`
-#' returns an `InvalidParameterValue` error.
+#' If no application version is found with this label,
+#' [`update_application`][elasticbeanstalk_update_application] returns an
+#' `InvalidParameterValue` error.
 #' @param Description A new description for this version.
 #'
 #' @section Request syntax:
@@ -2825,7 +2835,7 @@ elasticbeanstalk_update_application_version <- function(ApplicationName, Version
 #' 
 #' Related Topics
 #' 
-#' -   DescribeConfigurationOptions
+#' -   [`describe_configuration_options`][elasticbeanstalk_describe_configuration_options]
 #'
 #' @usage
 #' elasticbeanstalk_update_configuration_template(ApplicationName,
@@ -2834,12 +2844,14 @@ elasticbeanstalk_update_application_version <- function(ApplicationName, Version
 #' @param ApplicationName &#91;required&#93; The name of the application associated with the configuration template
 #' to update.
 #' 
-#' If no application is found with this name, `UpdateConfigurationTemplate`
+#' If no application is found with this name,
+#' [`update_configuration_template`][elasticbeanstalk_update_configuration_template]
 #' returns an `InvalidParameterValue` error.
 #' @param TemplateName &#91;required&#93; The name of the configuration template to update.
 #' 
 #' If no configuration template is found with this name,
-#' `UpdateConfigurationTemplate` returns an `InvalidParameterValue` error.
+#' [`update_configuration_template`][elasticbeanstalk_update_configuration_template]
+#' returns an `InvalidParameterValue` error.
 #' @param Description A new description for the configuration.
 #' @param OptionSettings A list of configuration option settings to update with the new specified
 #' option value.
@@ -2925,8 +2937,9 @@ elasticbeanstalk_update_configuration_template <- function(ApplicationName, Temp
 #' 
 #' When updating the configuration settings to a new template or individual
 #' settings, a draft configuration is created and
-#' DescribeConfigurationSettings for this environment returns two setting
-#' descriptions with different `DeploymentStatus` values.
+#' [`describe_configuration_settings`][elasticbeanstalk_describe_configuration_settings]
+#' for this environment returns two setting descriptions with different
+#' `DeploymentStatus` values.
 #'
 #' @usage
 #' elasticbeanstalk_update_environment(ApplicationName, EnvironmentId,
@@ -3087,13 +3100,15 @@ elasticbeanstalk_update_environment <- function(ApplicationName = NULL, Environm
 #' 
 #' ### elasticbeanstalk:AddTags
 #' 
-#' Controls permission to call `UpdateTagsForResource` and pass a list of
-#' tags to add in the `TagsToAdd` parameter.
+#' Controls permission to call
+#' [`update_tags_for_resource`][elasticbeanstalk_update_tags_for_resource]
+#' and pass a list of tags to add in the `TagsToAdd` parameter.
 #' 
 #' ### elasticbeanstalk:RemoveTags
 #' 
-#' Controls permission to call `UpdateTagsForResource` and pass a list of
-#' tag keys to remove in the `TagsToRemove` parameter.
+#' Controls permission to call
+#' [`update_tags_for_resource`][elasticbeanstalk_update_tags_for_resource]
+#' and pass a list of tag keys to remove in the `TagsToRemove` parameter.
 #' 
 #' For details about creating a custom user policy, see [Creating a Custom
 #' User

@@ -9,15 +9,13 @@ NULL
 #' @description
 #' Accepts the transfer of a domain from another AWS account to the current
 #' AWS account. You initiate a transfer between AWS accounts using
-#' [TransferDomainToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html).
+#' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
 #' 
-#' Use either
-#' [ListOperations](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html)
-#' or
-#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
-#' to determine whether the operation succeeded.
-#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
-#' provides additional information, for example,
+#' Use either [`list_operations`][route53domains_list_operations] or
+#' [`get_operation_detail`][route53domains_get_operation_detail] to
+#' determine whether the operation succeeded.
+#' [`get_operation_detail`][route53domains_get_operation_detail] provides
+#' additional information, for example,
 #' `Domain Transfer from Aws Account 111122223333 has been cancelled`.
 #'
 #' @usage
@@ -26,10 +24,10 @@ NULL
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that was specified when another AWS account
 #' submitted a
-#' [TransferDomainToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html)
+#' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account]
 #' request.
 #' @param Password &#91;required&#93; The password that was returned by the
-#' [TransferDomainToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html)
+#' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account]
 #' request.
 #'
 #' @section Request syntax:
@@ -66,19 +64,17 @@ route53domains_accept_domain_transfer_from_another_aws_account <- function(Domai
 #' @description
 #' Cancels the transfer of a domain from the current AWS account to another
 #' AWS account. You initiate a transfer between AWS accounts using
-#' [TransferDomainToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html).
+#' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
 #' 
 #' You must cancel the transfer before the other AWS account accepts the
 #' transfer using
-#' [AcceptDomainTransferFromAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_AcceptDomainTransferFromAnotherAwsAccount.html).
+#' [`accept_domain_transfer_from_another_aws_account`][route53domains_accept_domain_transfer_from_another_aws_account].
 #' 
-#' Use either
-#' [ListOperations](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html)
-#' or
-#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
-#' to determine whether the operation succeeded.
-#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
-#' provides additional information, for example,
+#' Use either [`list_operations`][route53domains_list_operations] or
+#' [`get_operation_detail`][route53domains_get_operation_detail] to
+#' determine whether the operation succeeded.
+#' [`get_operation_detail`][route53domains_get_operation_detail] provides
+#' additional information, for example,
 #' `Domain Transfer from Aws Account 111122223333 has been cancelled`.
 #'
 #' @usage
@@ -467,7 +463,8 @@ route53domains_enable_domain_transfer_lock <- function(DomainName) {
 #' responded.
 #' 
 #' If you want us to resend the email, use the
-#' `ResendContactReachabilityEmail` operation.
+#' [`resend_contact_reachability_email`][route53domains_resend_contact_reachability_email]
+#' operation.
 #'
 #' @usage
 #' route53domains_get_contact_reachability_status(domainName)
@@ -1021,15 +1018,13 @@ route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #' @description
 #' Rejects the transfer of a domain from another AWS account to the current
 #' AWS account. You initiate a transfer between AWS accounts using
-#' [TransferDomainToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html).
+#' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
 #' 
-#' Use either
-#' [ListOperations](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html)
-#' or
-#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
-#' to determine whether the operation succeeded.
-#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
-#' provides additional information, for example,
+#' Use either [`list_operations`][route53domains_list_operations] or
+#' [`get_operation_detail`][route53domains_get_operation_detail] to
+#' determine whether the operation succeeded.
+#' [`get_operation_detail`][route53domains_get_operation_detail] provides
+#' additional information, for example,
 #' `Domain Transfer from Aws Account 111122223333 has been cancelled`.
 #'
 #' @usage
@@ -1038,7 +1033,7 @@ route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that was specified when another AWS account
 #' submitted a
-#' [TransferDomainToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html)
+#' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account]
 #' request.
 #'
 #' @section Request syntax:
@@ -1229,7 +1224,7 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' 
 #' -   For information about how to transfer a domain from one AWS account
 #'     to another, see
-#'     [TransferDomainToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html).
+#'     [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
 #' 
 #' -   For information about how to transfer a domain to another domain
 #'     registrar, see [Transferring a Domain from Amazon Route 53 to
@@ -1434,13 +1429,13 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #' -   The AWS account that you're transferring the domain to must accept
 #'     the transfer. If the other account doesn't accept the transfer
 #'     within 3 days, we cancel the transfer. See
-#'     [AcceptDomainTransferFromAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_AcceptDomainTransferFromAnotherAwsAccount.html).
+#'     [`accept_domain_transfer_from_another_aws_account`][route53domains_accept_domain_transfer_from_another_aws_account].
 #' 
 #' -   You can cancel the transfer before the other account accepts it. See
-#'     [CancelDomainTransferToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_CancelDomainTransferToAnotherAwsAccount.html).
+#'     [`cancel_domain_transfer_to_another_aws_account`][route53domains_cancel_domain_transfer_to_another_aws_account].
 #' 
 #' -   The other account can reject the transfer. See
-#'     [RejectDomainTransferFromAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_RejectDomainTransferFromAnotherAwsAccount.html).
+#'     [`reject_domain_transfer_from_another_aws_account`][route53domains_reject_domain_transfer_from_another_aws_account].
 #' 
 #' When you transfer a domain from one AWS account to another, Route 53
 #' doesn't transfer the hosted zone that is associated with the domain. DNS
@@ -1451,13 +1446,11 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #' Account](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-migrating.html)
 #' in the *Amazon Route 53 Developer Guide*.
 #' 
-#' Use either
-#' [ListOperations](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html)
-#' or
-#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
-#' to determine whether the operation succeeded.
-#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
-#' provides additional information, for example,
+#' Use either [`list_operations`][route53domains_list_operations] or
+#' [`get_operation_detail`][route53domains_get_operation_detail] to
+#' determine whether the operation succeeded.
+#' [`get_operation_detail`][route53domains_get_operation_detail] provides
+#' additional information, for example,
 #' `Domain Transfer from Aws Account 111122223333 has been cancelled`.
 #'
 #' @usage
@@ -1620,19 +1613,19 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #' This operation affects only the contact information for the specified
 #' contact type (registrant, administrator, or tech). If the request
 #' succeeds, Amazon Route 53 returns an operation ID that you can use with
-#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
-#' to track the progress and completion of the action. If the request
-#' doesn't complete successfully, the domain registrant will be notified by
-#' email.
+#' [`get_operation_detail`][route53domains_get_operation_detail] to track
+#' the progress and completion of the action. If the request doesn't
+#' complete successfully, the domain registrant will be notified by email.
 #' 
 #' By disabling the privacy service via API, you consent to the publication
 #' of the contact information provided for this domain via the public WHOIS
 #' database. You certify that you are the registrant of this domain name
 #' and have the authority to make this decision. You may withdraw your
 #' consent at any time by enabling privacy protection using either
-#' `UpdateDomainContactPrivacy` or the Route 53 console. Enabling privacy
-#' protection removes the contact information provided for this domain from
-#' the WHOIS database. For more information on our privacy practices, see
+#' [`update_domain_contact_privacy`][route53domains_update_domain_contact_privacy]
+#' or the Route 53 console. Enabling privacy protection removes the contact
+#' information provided for this domain from the WHOIS database. For more
+#' information on our privacy practices, see
 #' <https://aws.amazon.com/privacy/>.
 #'
 #' @usage

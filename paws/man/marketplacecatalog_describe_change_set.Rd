@@ -10,7 +10,8 @@ marketplacecatalog_describe_change_set(Catalog, ChangeSetId)
 \item{Catalog}{[required] Required. The catalog related to the request. Fixed value:
 \code{AWSMarketplace}}
 
-\item{ChangeSetId}{[required] Required. The unique identifier for the \code{StartChangeSet} request that
+\item{ChangeSetId}{[required] Required. The unique identifier for the
+\code{\link[=marketplacecatalog_start_change_set]{start_change_set}} request that
 you want to describe the details for.}
 }
 \description{

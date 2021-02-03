@@ -28,16 +28,17 @@ Virginia) as follows:
 }}
 
 \item{TimeWindow}{[required] The start date and time and the end date and time of the range for which
-you want \code{GetSampledRequests} to return a sample of requests. You must
-specify the times in Coordinated Universal Time (UTC) format. UTC format
-includes the special designator, \code{Z}. For example,
-\code{"2016-09-27T14:50Z"}. You can specify any time range in the previous
-three hours.}
+you want \code{\link[=wafv2_get_sampled_requests]{get_sampled_requests}} to return
+a sample of requests. You must specify the times in Coordinated
+Universal Time (UTC) format. UTC format includes the special designator,
+\code{Z}. For example, \code{"2016-09-27T14:50Z"}. You can specify any time range
+in the previous three hours.}
 
 \item{MaxItems}{[required] The number of requests that you want AWS WAF to return from among the
 first 5,000 requests that your AWS resource received during the time
 range. If your resource received fewer requests than the value of
-\code{MaxItems}, \code{GetSampledRequests} returns information about all of them.}
+\code{MaxItems}, \code{\link[=wafv2_get_sampled_requests]{get_sampled_requests}} returns
+information about all of them.}
 }
 \description{
 This is the latest version of \strong{AWS WAF}, named AWS WAFV2, released in
@@ -50,12 +51,13 @@ requests that your AWS resource received during a time range that you
 choose. You can specify a sample size of up to 500 requests, and you can
 specify any time range in the previous three hours.
 
-\code{GetSampledRequests} returns a time range, which is usually the time
-range that you specified. However, if your resource (such as a
-CloudFront distribution) received 5,000 requests before the specified
-time range elapsed, \code{GetSampledRequests} returns an updated time range.
-This new time range indicates the actual period during which AWS WAF
-selected the requests in the sample.
+\code{\link[=wafv2_get_sampled_requests]{get_sampled_requests}} returns a time
+range, which is usually the time range that you specified. However, if
+your resource (such as a CloudFront distribution) received 5,000
+requests before the specified time range elapsed,
+\code{\link[=wafv2_get_sampled_requests]{get_sampled_requests}} returns an updated
+time range. This new time range indicates the actual period during which
+AWS WAF selected the requests in the sample.
 }
 \section{Request syntax}{
 \preformatted{svc$get_sampled_requests(

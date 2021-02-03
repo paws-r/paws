@@ -14,17 +14,16 @@ shield_create_protection(Name, ResourceArn)
 The ARN should be in one of the following formats:
 \itemize{
 \item For an Application Load Balancer:
-\verb{arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i>/<i>load-balancer-id</i> }
+\code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id }
 \item For an Elastic Load Balancer (Classic Load Balancer):
-\verb{arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/<i>load-balancer-name</i> }
+\code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/load-balancer-name }
 \item For an AWS CloudFront distribution:
-\verb{arn:aws:cloudfront::<i>account-id</i>:distribution/<i>distribution-id</i> }
+\code{arn:aws:cloudfront::account-id:distribution/distribution-id }
 \item For an AWS Global Accelerator accelerator:
-\verb{arn:aws:globalaccelerator::<i>account-id</i>:accelerator/<i>accelerator-id</i> }
-\item For Amazon Route 53:
-\verb{arn:aws:route53:::hostedzone/<i>hosted-zone-id</i> }
+\code{arn:aws:globalaccelerator::account-id:accelerator/accelerator-id }
+\item For Amazon Route 53: \code{arn:aws:route53:::hostedzone/hosted-zone-id }
 \item For an Elastic IP address:
-\verb{arn:aws:ec2:<i>region</i>:<i>account-id</i>:eip-allocation/<i>allocation-id</i> }
+\code{arn:aws:ec2:region:account-id:eip-allocation/allocation-id }
 }}
 }
 \description{

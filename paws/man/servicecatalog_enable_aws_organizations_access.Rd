@@ -17,7 +17,7 @@ organizations:EnableAWSServiceAccess on your behalf so that your shares
 can be in sync with any changes in your AWS Organizations structure.
 
 Note that a delegated administrator is not authorized to invoke
-\code{EnableAWSOrganizationsAccess}.
+\code{\link[=servicecatalog_enable_aws_organizations_access]{enable_aws_organizations_access}}.
 }
 \section{Request syntax}{
 \preformatted{svc$enable_aws_organizations_access()

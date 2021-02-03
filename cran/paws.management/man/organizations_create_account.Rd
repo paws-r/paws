@@ -65,15 +65,17 @@ not created.}
 \description{
 Creates an AWS account that is automatically a member of the
 organization whose credentials made the request. This is an asynchronous
-request that AWS performs in the background. Because \code{CreateAccount}
-operates asynchronously, it can return a successful completion message
-even though account initialization might still be in progress. You might
-need to wait a few minutes before you can successfully access the
-account. To check the status of the request, do one of the following:
+request that AWS performs in the background. Because
+\code{\link[=organizations_create_account]{create_account}} operates
+asynchronously, it can return a successful completion message even
+though account initialization might still be in progress. You might need
+to wait a few minutes before you can successfully access the account. To
+check the status of the request, do one of the following:
 \itemize{
 \item Use the \code{Id} member of the \code{CreateAccountStatus} response element
 from this operation to provide as a parameter to the
-DescribeCreateAccountStatus operation.
+\code{\link[=organizations_describe_create_account_status]{describe_create_account_status}}
+operation.
 \item Check the AWS CloudTrail log for the \code{CreateAccountResult} event.
 For information on using AWS CloudTrail with AWS Organizations, see
 \href{https://docs.aws.amazon.com/organizations/latest/userguide/}{Monitoring the Activity in Your Organization}
@@ -116,11 +118,11 @@ account limits for the organization, contact AWS Support.
 \item If you get an exception that indicates that the operation failed
 because your organization is still initializing, wait one hour and
 then try again. If the error persists, contact AWS Support.
-\item Using \code{CreateAccount} to create multiple temporary accounts isn't
-recommended. You can only close an account from the Billing and Cost
-Management Console, and you must be signed in as the root user. For
-information on the requirements and process for closing an account,
-see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html}{Closing an AWS Account}
+\item Using \code{\link[=organizations_create_account]{create_account}} to create
+multiple temporary accounts isn't recommended. You can only close an
+account from the Billing and Cost Management Console, and you must
+be signed in as the root user. For information on the requirements
+and process for closing an account, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html}{Closing an AWS Account}
 in the \emph{AWS Organizations User Guide}.
 }
 

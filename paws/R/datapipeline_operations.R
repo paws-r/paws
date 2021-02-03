@@ -10,7 +10,8 @@ NULL
 #' If the pipeline does not pass validation, activation fails.
 #' 
 #' If you need to pause the pipeline to investigate an issue with a
-#' component, such as a data source or script, call DeactivatePipeline.
+#' component, such as a data source or script, call
+#' [`deactivate_pipeline`][datapipeline_deactivate_pipeline].
 #' 
 #' To activate a finished pipeline, modify the end date for the pipeline
 #' and then activate it.
@@ -107,8 +108,9 @@ datapipeline_add_tags <- function(pipelineId, tags) {
 #' Creates a new, empty pipeline
 #'
 #' @description
-#' Creates a new, empty pipeline. Use PutPipelineDefinition to populate the
-#' pipeline.
+#' Creates a new, empty pipeline. Use
+#' [`put_pipeline_definition`][datapipeline_put_pipeline_definition] to
+#' populate the pipeline.
 #'
 #' @usage
 #' datapipeline_create_pipeline(name, uniqueId, description, tags)
@@ -120,14 +122,17 @@ datapipeline_add_tags <- function(pipelineId, tags) {
 #' identifier assigned by AWS Data Pipeline. You are responsible for
 #' defining the format and ensuring the uniqueness of this identifier. You
 #' use this parameter to ensure idempotency during repeated calls to
-#' `CreatePipeline`. For example, if the first call to `CreatePipeline`
-#' does not succeed, you can pass in the same unique identifier and
-#' pipeline name combination on a subsequent call to `CreatePipeline`.
-#' `CreatePipeline` ensures that if a pipeline already exists with the same
-#' name and unique identifier, a new pipeline is not created. Instead,
-#' you'll receive the pipeline identifier from the previous attempt. The
-#' uniqueness of the name and unique identifier combination is scoped to
-#' the AWS account or IAM user credentials.
+#' [`create_pipeline`][datapipeline_create_pipeline]. For example, if the
+#' first call to [`create_pipeline`][datapipeline_create_pipeline] does not
+#' succeed, you can pass in the same unique identifier and pipeline name
+#' combination on a subsequent call to
+#' [`create_pipeline`][datapipeline_create_pipeline].
+#' [`create_pipeline`][datapipeline_create_pipeline] ensures that if a
+#' pipeline already exists with the same name and unique identifier, a new
+#' pipeline is not created. Instead, you'll receive the pipeline identifier
+#' from the previous attempt. The uniqueness of the name and unique
+#' identifier combination is scoped to the AWS account or IAM user
+#' credentials.
 #' @param description The description for the pipeline.
 #' @param tags A list of tags to associate with the pipeline at creation. Tags let you
 #' control access to pipelines. For more information, see [Controlling User
@@ -176,7 +181,8 @@ datapipeline_create_pipeline <- function(name, uniqueId, description = NULL, tag
 #' Deactivates the specified running pipeline. The pipeline is set to the
 #' `DEACTIVATING` state until the deactivation process completes.
 #' 
-#' To resume a deactivated pipeline, use ActivatePipeline. By default, the
+#' To resume a deactivated pipeline, use
+#' [`activate_pipeline`][datapipeline_activate_pipeline]. By default, the
 #' pipeline resumes from the last completed execution. Optionally, you can
 #' specify the date and time to resume the pipeline.
 #'
@@ -225,8 +231,9 @@ datapipeline_deactivate_pipeline <- function(pipelineId, cancelActive = NULL) {
 #' 
 #' Deleting a pipeline cannot be undone. You cannot query or restore a
 #' deleted pipeline. To temporarily pause a pipeline instead of deleting
-#' it, call SetStatus with the status set to `PAUSE` on individual
-#' components. Components that are paused by SetStatus can be resumed.
+#' it, call [`set_status`][datapipeline_set_status] with the status set to
+#' `PAUSE` on individual components. Components that are paused by
+#' [`set_status`][datapipeline_set_status] can be resumed.
 #'
 #' @usage
 #' datapipeline_delete_pipeline(pipelineId)
@@ -275,13 +282,13 @@ datapipeline_delete_pipeline <- function(pipelineId) {
 #' @param pipelineId &#91;required&#93; The ID of the pipeline that contains the object definitions.
 #' @param objectIds &#91;required&#93; The IDs of the pipeline objects that contain the definitions to be
 #' described. You can pass as many as 25 identifiers in a single call to
-#' `DescribeObjects`.
+#' [`describe_objects`][datapipeline_describe_objects].
 #' @param evaluateExpressions Indicates whether any expressions in the object should be evaluated when
 #' the object descriptions are returned.
 #' @param marker The starting point for the results to be returned. For the first call,
 #' this value should be empty. As long as there are more results, continue
-#' to call `DescribeObjects` with the marker value from the previous call
-#' to retrieve the next set of results.
+#' to call [`describe_objects`][datapipeline_describe_objects] with the
+#' marker value from the previous call to retrieve the next set of results.
 #'
 #' @section Request syntax:
 #' ```
@@ -327,14 +334,15 @@ datapipeline_describe_objects <- function(pipelineId, objectIds, evaluateExpress
 #' read permissions.
 #' 
 #' To retrieve the full pipeline definition instead of metadata about the
-#' pipeline, call GetPipelineDefinition.
+#' pipeline, call
+#' [`get_pipeline_definition`][datapipeline_get_pipeline_definition].
 #'
 #' @usage
 #' datapipeline_describe_pipelines(pipelineIds)
 #'
 #' @param pipelineIds &#91;required&#93; The IDs of the pipelines to describe. You can pass as many as 25
 #' identifiers in a single call. To obtain pipeline IDs, call
-#' ListPipelines.
+#' [`list_pipelines`][datapipeline_list_pipelines].
 #'
 #' @section Request syntax:
 #' ```
@@ -369,9 +377,10 @@ datapipeline_describe_pipelines <- function(pipelineIds) {
 #' of the specified object
 #'
 #' @description
-#' Task runners call `EvaluateExpression` to evaluate a string in the
-#' context of the specified object. For example, a task runner can evaluate
-#' SQL queries stored in Amazon S3.
+#' Task runners call
+#' [`evaluate_expression`][datapipeline_evaluate_expression] to evaluate a
+#' string in the context of the specified object. For example, a task
+#' runner can evaluate SQL queries stored in Amazon S3.
 #'
 #' @usage
 #' datapipeline_evaluate_expression(pipelineId, objectId, expression)
@@ -413,8 +422,9 @@ datapipeline_evaluate_expression <- function(pipelineId, objectId, expression) {
 #'
 #' @description
 #' Gets the definition of the specified pipeline. You can call
-#' `GetPipelineDefinition` to retrieve the pipeline definition that you
-#' provided using PutPipelineDefinition.
+#' [`get_pipeline_definition`][datapipeline_get_pipeline_definition] to
+#' retrieve the pipeline definition that you provided using
+#' [`put_pipeline_definition`][datapipeline_put_pipeline_definition].
 #'
 #' @usage
 #' datapipeline_get_pipeline_definition(pipelineId, version)
@@ -464,8 +474,8 @@ datapipeline_get_pipeline_definition <- function(pipelineId, version = NULL) {
 #'
 #' @param marker The starting point for the results to be returned. For the first call,
 #' this value should be empty. As long as there are more results, continue
-#' to call `ListPipelines` with the marker value from the previous call to
-#' retrieve the next set of results.
+#' to call [`list_pipelines`][datapipeline_list_pipelines] with the marker
+#' value from the previous call to retrieve the next set of results.
 #'
 #' @section Request syntax:
 #' ```
@@ -498,21 +508,25 @@ datapipeline_list_pipelines <- function(marker = NULL) {
 #' Pipeline
 #'
 #' @description
-#' Task runners call `PollForTask` to receive a task to perform from AWS
-#' Data Pipeline. The task runner specifies which tasks it can perform by
-#' setting a value for the `workerGroup` parameter. The task returned can
-#' come from any of the pipelines that match the `workerGroup` value passed
-#' in by the task runner and that was launched using the IAM user
-#' credentials specified by the task runner.
+#' Task runners call [`poll_for_task`][datapipeline_poll_for_task] to
+#' receive a task to perform from AWS Data Pipeline. The task runner
+#' specifies which tasks it can perform by setting a value for the
+#' `workerGroup` parameter. The task returned can come from any of the
+#' pipelines that match the `workerGroup` value passed in by the task
+#' runner and that was launched using the IAM user credentials specified by
+#' the task runner.
 #' 
-#' If tasks are ready in the work queue, `PollForTask` returns a response
-#' immediately. If no tasks are available in the queue, `PollForTask` uses
-#' long-polling and holds on to a poll connection for up to a 90 seconds,
-#' during which time the first newly scheduled task is handed to the task
-#' runner. To accomodate this, set the socket timeout in your task runner
-#' to 90 seconds. The task runner should not call `PollForTask` again on
-#' the same `workerGroup` until it receives a response, and this can take
-#' up to 90 seconds.
+#' If tasks are ready in the work queue,
+#' [`poll_for_task`][datapipeline_poll_for_task] returns a response
+#' immediately. If no tasks are available in the queue,
+#' [`poll_for_task`][datapipeline_poll_for_task] uses long-polling and
+#' holds on to a poll connection for up to a 90 seconds, during which time
+#' the first newly scheduled task is handed to the task runner. To
+#' accomodate this, set the socket timeout in your task runner to 90
+#' seconds. The task runner should not call
+#' [`poll_for_task`][datapipeline_poll_for_task] again on the same
+#' `workerGroup` until it receives a response, and this can take up to 90
+#' seconds.
 #'
 #' @usage
 #' datapipeline_poll_for_task(workerGroup, hostname, instanceIdentity)
@@ -520,8 +534,9 @@ datapipeline_list_pipelines <- function(marker = NULL) {
 #' @param workerGroup &#91;required&#93; The type of task the task runner is configured to accept and process.
 #' The worker group is set as a field on objects in the pipeline when they
 #' are created. You can only specify a single value for `workerGroup` in
-#' the call to `PollForTask`. There are no wildcard values permitted in
-#' `workerGroup`; the string must be an exact, case-sensitive, match.
+#' the call to [`poll_for_task`][datapipeline_poll_for_task]. There are no
+#' wildcard values permitted in `workerGroup`; the string must be an exact,
+#' case-sensitive, match.
 #' @param hostname The public DNS name of the calling task runner.
 #' @param instanceIdentity Identity information for the EC2 instance that is hosting the task
 #' runner. You can get this value from the instance using
@@ -569,11 +584,14 @@ datapipeline_poll_for_task <- function(workerGroup, hostname = NULL, instanceIde
 #'
 #' @description
 #' Adds tasks, schedules, and preconditions to the specified pipeline. You
-#' can use `PutPipelineDefinition` to populate a new pipeline.
+#' can use
+#' [`put_pipeline_definition`][datapipeline_put_pipeline_definition] to
+#' populate a new pipeline.
 #' 
-#' `PutPipelineDefinition` also validates the configuration as it adds it
-#' to the pipeline. Changes to the pipeline are saved unless one of the
-#' following three validation errors exists in the pipeline.
+#' [`put_pipeline_definition`][datapipeline_put_pipeline_definition] also
+#' validates the configuration as it adds it to the pipeline. Changes to
+#' the pipeline are saved unless one of the following three validation
+#' errors exists in the pipeline.
 #' 
 #' 1.  An object is missing a name or identifier field.
 #' 2.  A string or reference field is empty.
@@ -581,8 +599,11 @@ datapipeline_poll_for_task <- function(workerGroup, hostname = NULL, instanceIde
 #'     objects.
 #' 4.  The pipeline is in a FINISHED state.
 #' 
-#' Pipeline object definitions are passed to the `PutPipelineDefinition`
-#' action and returned by the GetPipelineDefinition action.
+#' Pipeline object definitions are passed to the
+#' [`put_pipeline_definition`][datapipeline_put_pipeline_definition] action
+#' and returned by the
+#' [`get_pipeline_definition`][datapipeline_get_pipeline_definition]
+#' action.
 #'
 #' @usage
 #' datapipeline_put_pipeline_definition(pipelineId, pipelineObjects,
@@ -670,10 +691,11 @@ datapipeline_put_pipeline_definition <- function(pipelineId, pipelineObjects, pa
 #' possible values are: `COMPONENT`, `INSTANCE`, and `ATTEMPT`.
 #' @param marker The starting point for the results to be returned. For the first call,
 #' this value should be empty. As long as there are more results, continue
-#' to call `QueryObjects` with the marker value from the previous call to
-#' retrieve the next set of results.
-#' @param limit The maximum number of object names that `QueryObjects` will return in a
-#' single call. The default value is 100.
+#' to call [`query_objects`][datapipeline_query_objects] with the marker
+#' value from the previous call to retrieve the next set of results.
+#' @param limit The maximum number of object names that
+#' [`query_objects`][datapipeline_query_objects] will return in a single
+#' call. The default value is 100.
 #'
 #' @section Request syntax:
 #' ```
@@ -763,24 +785,28 @@ datapipeline_remove_tags <- function(pipelineId, tagKeys) {
 #' that it has the task
 #'
 #' @description
-#' Task runners call `ReportTaskProgress` when assigned a task to
-#' acknowledge that it has the task. If the web service does not receive
-#' this acknowledgement within 2 minutes, it assigns the task in a
-#' subsequent PollForTask call. After this initial acknowledgement, the
-#' task runner only needs to report progress every 15 minutes to maintain
-#' its ownership of the task. You can change this reporting time from 15
-#' minutes by specifying a `reportProgressTimeout` field in your pipeline.
+#' Task runners call
+#' [`report_task_progress`][datapipeline_report_task_progress] when
+#' assigned a task to acknowledge that it has the task. If the web service
+#' does not receive this acknowledgement within 2 minutes, it assigns the
+#' task in a subsequent [`poll_for_task`][datapipeline_poll_for_task] call.
+#' After this initial acknowledgement, the task runner only needs to report
+#' progress every 15 minutes to maintain its ownership of the task. You can
+#' change this reporting time from 15 minutes by specifying a
+#' `reportProgressTimeout` field in your pipeline.
 #' 
 #' If a task runner does not report its status after 5 minutes, AWS Data
 #' Pipeline assumes that the task runner is unable to process the task and
-#' reassigns the task in a subsequent response to PollForTask. Task runners
-#' should call `ReportTaskProgress` every 60 seconds.
+#' reassigns the task in a subsequent response to
+#' [`poll_for_task`][datapipeline_poll_for_task]. Task runners should call
+#' [`report_task_progress`][datapipeline_report_task_progress] every 60
+#' seconds.
 #'
 #' @usage
 #' datapipeline_report_task_progress(taskId, fields)
 #'
 #' @param taskId &#91;required&#93; The ID of the task assigned to the task runner. This value is provided
-#' in the response for PollForTask.
+#' in the response for [`poll_for_task`][datapipeline_poll_for_task].
 #' @param fields Key-value pairs that define the properties of the
 #' ReportTaskProgressInput object.
 #'
@@ -822,11 +848,12 @@ datapipeline_report_task_progress <- function(taskId, fields = NULL) {
 #' that they are operational
 #'
 #' @description
-#' Task runners call `ReportTaskRunnerHeartbeat` every 15 minutes to
-#' indicate that they are operational. If the AWS Data Pipeline Task Runner
-#' is launched on a resource managed by AWS Data Pipeline, the web service
-#' can use this call to detect when the task runner application has failed
-#' and restart a new instance.
+#' Task runners call
+#' [`report_task_runner_heartbeat`][datapipeline_report_task_runner_heartbeat]
+#' every 15 minutes to indicate that they are operational. If the AWS Data
+#' Pipeline Task Runner is launched on a resource managed by AWS Data
+#' Pipeline, the web service can use this call to detect when the task
+#' runner application has failed and restart a new instance.
 #'
 #' @usage
 #' datapipeline_report_task_runner_heartbeat(taskrunnerId, workerGroup,
@@ -930,18 +957,20 @@ datapipeline_set_status <- function(pipelineId, objectIds, status) {
 #' is completed and provide information about the final status
 #'
 #' @description
-#' Task runners call `SetTaskStatus` to notify AWS Data Pipeline that a
-#' task is completed and provide information about the final status. A task
-#' runner makes this call regardless of whether the task was sucessful. A
-#' task runner does not need to call `SetTaskStatus` for tasks that are
-#' canceled by the web service during a call to ReportTaskProgress.
+#' Task runners call [`set_task_status`][datapipeline_set_task_status] to
+#' notify AWS Data Pipeline that a task is completed and provide
+#' information about the final status. A task runner makes this call
+#' regardless of whether the task was sucessful. A task runner does not
+#' need to call [`set_task_status`][datapipeline_set_task_status] for tasks
+#' that are canceled by the web service during a call to
+#' [`report_task_progress`][datapipeline_report_task_progress].
 #'
 #' @usage
 #' datapipeline_set_task_status(taskId, taskStatus, errorId, errorMessage,
 #'   errorStackTrace)
 #'
 #' @param taskId &#91;required&#93; The ID of the task assigned to the task runner. This value is provided
-#' in the response for PollForTask.
+#' in the response for [`poll_for_task`][datapipeline_poll_for_task].
 #' @param taskStatus &#91;required&#93; If `FINISHED`, the task successfully completed. If `FAILED`, the task
 #' ended unsuccessfully. Preconditions use false.
 #' @param errorId If an error occurred during the task, this value specifies the error

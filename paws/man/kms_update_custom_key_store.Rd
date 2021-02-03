@@ -10,7 +10,8 @@ kms_update_custom_key_store(CustomKeyStoreId, NewCustomKeyStoreName,
 \arguments{
 \item{CustomKeyStoreId}{[required] Identifies the custom key store that you want to update. Enter the ID of
 the custom key store. To find the ID of a custom key store, use the
-DescribeCustomKeyStores operation.}
+\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
+operation.}
 
 \item{NewCustomKeyStoreName}{Changes the friendly name of the custom key store to the value that you
 specify. The custom key store name must be unique in the AWS account.}
@@ -40,13 +41,17 @@ parameter to identify the custom key store you want to edit. Use the
 remaining parameters to change the properties of the custom key store.
 
 You can only update a custom key store that is disconnected. To
-disconnect the custom key store, use DisconnectCustomKeyStore. To
+disconnect the custom key store, use
+\code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}}. To
 reconnect the custom key store after the update completes, use
-ConnectCustomKeyStore. To find the connection state of a custom key
-store, use the DescribeCustomKeyStores operation.
+\code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}}. To find the
+connection state of a custom key store, use the
+\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
+operation.
 
-Use the parameters of \code{UpdateCustomKeyStore} to edit your keystore
-settings.
+Use the parameters of
+\code{\link[=kms_update_custom_key_store]{update_custom_key_store}} to edit your
+keystore settings.
 \itemize{
 \item Use the \strong{NewCustomKeyStoreName} parameter to change the friendly
 name of the custom key store to the value that you specify.
@@ -80,11 +85,11 @@ key store in a different AWS account.
 
 \strong{Related operations:}
 \itemize{
-\item ConnectCustomKeyStore
-\item CreateCustomKeyStore
-\item DeleteCustomKeyStore
-\item DescribeCustomKeyStores
-\item DisconnectCustomKeyStore
+\item \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}}
+\item \code{\link[=kms_create_custom_key_store]{create_custom_key_store}}
+\item \code{\link[=kms_delete_custom_key_store]{delete_custom_key_store}}
+\item \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
+\item \code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}}
 }
 }
 \section{Request syntax}{

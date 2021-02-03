@@ -16,14 +16,15 @@ the presence or absence of the Qualification as the basis for a HIT
 requirement.}
 }
 \description{
-The \code{AcceptQualificationRequest} operation approves a Worker's request
-for a Qualification.
+The \code{\link[=mturk_accept_qualification_request]{accept_qualification_request}}
+operation approves a Worker's request for a Qualification.
 
 Only the owner of the Qualification type can grant a Qualification
 request for that type.
 
-A successful request for the \code{AcceptQualificationRequest} operation
-returns with no errors and an empty body.
+A successful request for the
+\code{\link[=mturk_accept_qualification_request]{accept_qualification_request}}
+operation returns with no errors and an empty body.
 }
 \section{Request syntax}{
 \preformatted{svc$accept_qualification_request(

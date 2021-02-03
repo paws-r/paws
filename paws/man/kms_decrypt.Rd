@@ -61,13 +61,15 @@ For example:
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To
-get the alias name and alias ARN, use ListAliases.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
+get the alias name and alias ARN, use
+\code{\link[=kms_list_aliases]{list_aliases}}.}
 
 \item{EncryptionAlgorithm}{Specifies the encryption algorithm that will be used to decrypt the
 ciphertext. Specify the same algorithm that was used to encrypt the
-data. If you specify a different algorithm, the \code{Decrypt} operation
-fails.
+data. If you specify a different algorithm, the \code{\link[=kms_decrypt]{decrypt}}
+operation fails.
 
 This parameter is required only when the ciphertext was encrypted under
 an asymmetric CMK. The default value, \code{SYMMETRIC_DEFAULT}, represents
@@ -77,11 +79,11 @@ the only supported algorithm that is valid for symmetric CMKs.}
 Decrypts ciphertext that was encrypted by a AWS KMS customer master key
 (CMK) using any of the following operations:
 \itemize{
-\item Encrypt
-\item GenerateDataKey
-\item GenerateDataKeyPair
-\item GenerateDataKeyWithoutPlaintext
-\item GenerateDataKeyPairWithoutPlaintext
+\item \code{\link[=kms_encrypt]{encrypt}}
+\item \code{\link[=kms_generate_data_key]{generate_data_key}}
+\item \code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}}
+\item \code{\link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext}}
+\item \code{\link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext}}
 }
 
 You can use this operation to decrypt ciphertext that was encrypted
@@ -107,17 +109,17 @@ decrypt ciphertext decades after it was encrypted, even if they've lost
 track of the CMK ID. However, specifying the CMK is always recommended
 as a best practice. When you use the \code{KeyId} parameter to specify a CMK,
 AWS KMS only uses the CMK you specify. If the ciphertext was encrypted
-under a different CMK, the \code{Decrypt} operation fails. This practice
-ensures that you use the CMK that you intend.
+under a different CMK, the \code{\link[=kms_decrypt]{decrypt}} operation fails.
+This practice ensures that you use the CMK that you intend.
 
 Whenever possible, use key policies to give users permission to call the
-\code{Decrypt} operation on a particular CMK, instead of using IAM policies.
-Otherwise, you might create an IAM user policy that gives the user
-\code{Decrypt} permission on all CMKs. This user could decrypt ciphertext
-that was encrypted by CMKs in other accounts if the key policy for the
-cross-account CMK permits it. If you must use an IAM policy for
-\code{Decrypt} permissions, limit the user to particular CMKs or particular
-trusted accounts. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html#iam-policies-best-practices}{Best practices for IAM policies}
+\code{\link[=kms_decrypt]{decrypt}} operation on a particular CMK, instead of using
+IAM policies. Otherwise, you might create an IAM user policy that gives
+the user \code{\link[=kms_decrypt]{decrypt}} permission on all CMKs. This user
+could decrypt ciphertext that was encrypted by CMKs in other accounts if
+the key policy for the cross-account CMK permits it. If you must use an
+IAM policy for \code{\link[=kms_decrypt]{decrypt}} permissions, limit the user to
+particular CMKs or particular trusted accounts. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html#iam-policies-best-practices}{Best practices for IAM policies}
 in the \emph{AWS Key Management Service Developer Guide}.
 
 The CMK that you use for this operation must be in a compatible key
@@ -133,10 +135,10 @@ a different AWS account.
 
 \strong{Related operations:}
 \itemize{
-\item Encrypt
-\item GenerateDataKey
-\item GenerateDataKeyPair
-\item ReEncrypt
+\item \code{\link[=kms_encrypt]{encrypt}}
+\item \code{\link[=kms_generate_data_key]{generate_data_key}}
+\item \code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}}
+\item \code{\link[=kms_re_encrypt]{re_encrypt}}
 }
 }
 \section{Request syntax}{

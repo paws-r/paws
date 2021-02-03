@@ -18,7 +18,8 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{PendingWindowInDays}{The waiting period, specified in number of days. After the waiting
 period ends, AWS KMS deletes the customer master key (CMK).
@@ -32,17 +33,19 @@ waiting period, specified in days, before deletion occurs. If you do not
 provide a waiting period, the default period of 30 days is used. When
 this operation is successful, the key state of the CMK changes to
 \code{PendingDeletion}. Before the waiting period ends, you can use
-CancelKeyDeletion to cancel the deletion of the CMK. After the waiting
-period ends, AWS KMS deletes the CMK and all AWS KMS data associated
-with it, including all aliases that refer to it.
+\code{\link[=kms_cancel_key_deletion]{cancel_key_deletion}} to cancel the deletion
+of the CMK. After the waiting period ends, AWS KMS deletes the CMK and
+all AWS KMS data associated with it, including all aliases that refer to
+it.
 
 Deleting a CMK is a destructive and potentially dangerous operation.
 When a CMK is deleted, all data that was encrypted under the CMK is
 unrecoverable. To prevent the use of a CMK without deleting it, use
-DisableKey.
+\code{\link[=kms_disable_key]{disable_key}}.
 
 If you schedule deletion of a CMK from a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store},
-when the waiting period expires, \code{ScheduleKeyDeletion} deletes the CMK
+when the waiting period expires,
+\code{\link[=kms_schedule_key_deletion]{schedule_key_deletion}} deletes the CMK
 from AWS KMS. Then AWS KMS makes a best effort to delete the key
 material from the associated AWS CloudHSM cluster. However, you might
 need to manually \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key}{delete the orphaned key material}
@@ -64,8 +67,8 @@ a different AWS account.
 
 \strong{Related operations}
 \itemize{
-\item CancelKeyDeletion
-\item DisableKey
+\item \code{\link[=kms_cancel_key_deletion]{cancel_key_deletion}}
+\item \code{\link[=kms_disable_key]{disable_key}}
 }
 }
 \section{Request syntax}{

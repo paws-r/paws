@@ -13,7 +13,9 @@ directoryservice_describe_shared_directories(OwnerDirectoryId,
 \item{SharedDirectoryIds}{A list of identifiers of all shared directories in your account.}
 
 \item{NextToken}{The \code{DescribeSharedDirectoriesResult.NextToken} value from a previous
-call to DescribeSharedDirectories. Pass null if this is the first call.}
+call to
+\code{\link[=directoryservice_describe_shared_directories]{describe_shared_directories}}.
+Pass null if this is the first call.}
 
 \item{Limit}{The number of shared directories to return in the response object.}
 }

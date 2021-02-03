@@ -15,7 +15,7 @@ For example:
 \verb{arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab}}
 
 \item{GrantId}{Unique identifier of the grant to retire. The grant ID is returned in
-the response to a \code{CreateGrant} operation.
+the response to a \code{\link[=kms_create_grant]{create_grant}} operation.
 \itemize{
 \item Grant ID Example -
 0123456789012345678901234567890123456789012345678901234567890123
@@ -29,15 +29,15 @@ API:
 \itemize{
 \item The AWS account (root user) under which the grant was created
 \item The \code{RetiringPrincipal}, if present in the grant
-\item The \code{GranteePrincipal}, if \code{RetireGrant} is an operation specified
-in the grant
+\item The \code{GranteePrincipal}, if \code{\link[=kms_retire_grant]{retire_grant}} is an
+operation specified in the grant
 }
 
 You must identify the grant to retire by its grant token or by a
 combination of the grant ID and the Amazon Resource Name (ARN) of the
 customer master key (CMK). A grant token is a unique variable-length
 base64-encoded string. A grant ID is a 64 character unique identifier of
-a grant. The CreateGrant operation returns both.
+a grant. The \code{\link[=kms_create_grant]{create_grant}} operation returns both.
 
 \strong{Cross-account use}: Yes. You can retire a grant on a CMK in a
 different AWS account.
@@ -49,10 +49,10 @@ in the \emph{AWS Key Management Service Developer Guide}.
 
 \strong{Related operations:}
 \itemize{
-\item CreateGrant
-\item ListGrants
-\item ListRetirableGrants
-\item RevokeGrant
+\item \code{\link[=kms_create_grant]{create_grant}}
+\item \code{\link[=kms_list_grants]{list_grants}}
+\item \code{\link[=kms_list_retirable_grants]{list_retirable_grants}}
+\item \code{\link[=kms_revoke_grant]{revoke_grant}}
 }
 }
 \section{Request syntax}{

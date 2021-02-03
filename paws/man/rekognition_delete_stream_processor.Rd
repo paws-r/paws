@@ -12,9 +12,10 @@ rekognition_delete_stream_processor(Name)
 \description{
 Deletes the stream processor identified by \code{Name}. You assign the value
 for \code{Name} when you create the stream processor with
-CreateStreamProcessor. You might not be able to use the same name for a
-stream processor for a few seconds after calling
-\code{DeleteStreamProcessor}.
+\code{\link[=rekognition_create_stream_processor]{create_stream_processor}}. You
+might not be able to use the same name for a stream processor for a few
+seconds after calling
+\code{\link[=rekognition_delete_stream_processor]{delete_stream_processor}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_stream_processor(

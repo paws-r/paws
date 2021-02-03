@@ -16,7 +16,7 @@ you must specify the name and the x-amz-outpost-id as well.
 
 For using this parameter with S3 on Outposts with the AWS SDK and CLI,
 you must specify the ARN of the bucket accessed in the format
-\verb{arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/bucket/&lt;my-bucket-name&gt;}.
+\verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/bucket/<my-bucket-name>}.
 For example, to access the bucket \code{reports} through outpost \code{my-outpost}
 owned by account \code{123456789012} in Region \code{us-west-2}, use the URL
 encoding of
@@ -26,16 +26,17 @@ The value must be URL encoded.}
 \description{
 This operation deletes an Amazon S3 on Outposts bucket's tags. To delete
 an S3 bucket tags, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html}{DeleteBucketTagging}
-in the \emph{Amazon Simple Storage Service API}.
+\code{\link[=s3control_delete_bucket_tagging]{delete_bucket_tagging}} in the
+\emph{Amazon Simple Storage Service API}.
 
 Deletes the tags from the Outposts bucket. For more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in \emph{Amazon Simple Storage Service Developer Guide}.
 
 To use this operation, you must have permission to perform the
-\code{PutBucketTagging} action. By default, the bucket owner has this
-permission and can grant this permission to others.
+\code{\link[=s3control_put_bucket_tagging]{put_bucket_tagging}} action. By default,
+the bucket owner has this permission and can grant this permission to
+others.
 
 All Amazon S3 on Outposts REST API requests for this action require an
 additional parameter of \code{x-amz-outpost-id} to be passed with the request
@@ -46,10 +47,11 @@ derived using the access point ARN, see the
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketTagging.html#API_control_DeleteBucketTagging_Examples}{Examples}
 section.
 
-The following actions are related to \code{DeleteBucketTagging}:
+The following actions are related to
+\code{\link[=s3control_delete_bucket_tagging]{delete_bucket_tagging}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketTagging.html}{GetBucketTagging}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketTagging.html}{PutBucketTagging}
+\item \code{\link[=s3control_get_bucket_tagging]{get_bucket_tagging}}
+\item \code{\link[=s3control_put_bucket_tagging]{put_bucket_tagging}}
 }
 }
 \section{Request syntax}{

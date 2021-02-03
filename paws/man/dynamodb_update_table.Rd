@@ -43,7 +43,7 @@ global secondary index.
 }
 
 You can create or delete only one global secondary index per
-\code{UpdateTable} operation.
+\code{\link[=dynamodb_update_table]{update_table}} operation.
 
 For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html}{Managing Global Secondary Indexes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
@@ -72,15 +72,16 @@ You can only perform one of the following operations at once:
 \item Enable or disable DynamoDB Streams on the table.
 \item Remove a global secondary index from the table.
 \item Create a new global secondary index on the table. After the index
-begins backfilling, you can use \code{UpdateTable} to perform other
-operations.
+begins backfilling, you can use
+\code{\link[=dynamodb_update_table]{update_table}} to perform other operations.
 }
 
-\code{UpdateTable} is an asynchronous operation; while it is executing, the
-table status changes from \code{ACTIVE} to \code{UPDATING}. While it is
-\code{UPDATING}, you cannot issue another \code{UpdateTable} request. When the
-table returns to the \code{ACTIVE} state, the \code{UpdateTable} operation is
-complete.
+\code{\link[=dynamodb_update_table]{update_table}} is an asynchronous operation;
+while it is executing, the table status changes from \code{ACTIVE} to
+\code{UPDATING}. While it is \code{UPDATING}, you cannot issue another
+\code{\link[=dynamodb_update_table]{update_table}} request. When the table returns
+to the \code{ACTIVE} state, the \code{\link[=dynamodb_update_table]{update_table}}
+operation is complete.
 }
 \section{Request syntax}{
 \preformatted{svc$update_table(

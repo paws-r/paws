@@ -8,9 +8,11 @@ waf_update_web_acl(WebACLId, ChangeToken, Updates, DefaultAction)
 }
 \arguments{
 \item{WebACLId}{[required] The \code{WebACLId} of the WebACL that you want to update. \code{WebACLId} is
-returned by CreateWebACL and by ListWebACLs.}
+returned by \code{\link[=waf_create_web_acl]{create_web_acl}} and by
+\code{\link[=waf_list_web_ac_ls]{list_web_ac_ls}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 
 \item{Updates}{An array of updates to make to the WebACL.
 
@@ -68,33 +70,42 @@ doesn't evaluate the request against the remaining \code{Rules} in the
 To create and configure a \code{WebACL}, perform the following steps:
 \enumerate{
 \item Create and update the predicates that you want to include in
-\code{Rules}. For more information, see CreateByteMatchSet,
-UpdateByteMatchSet, CreateIPSet, UpdateIPSet,
-CreateSqlInjectionMatchSet, and UpdateSqlInjectionMatchSet.
+\code{Rules}. For more information, see
+\code{\link[=waf_create_byte_match_set]{create_byte_match_set}},
+\code{\link[=waf_update_byte_match_set]{update_byte_match_set}},
+\code{\link[=waf_create_ip_set]{create_ip_set}},
+\code{\link[=waf_update_ip_set]{update_ip_set}},
+\code{\link[=waf_create_sql_injection_match_set]{create_sql_injection_match_set}},
+and
+\code{\link[=waf_update_sql_injection_match_set]{update_sql_injection_match_set}}.
 \item Create and update the \code{Rules} that you want to include in the
-\code{WebACL}. For more information, see CreateRule and UpdateRule.
-\item Create a \code{WebACL}. See CreateWebACL.
-\item Use \code{GetChangeToken} to get the change token that you provide in the
-\code{ChangeToken} parameter of an UpdateWebACL request.
-\item Submit an \code{UpdateWebACL} request to specify the \code{Rules} that you
-want to include in the \code{WebACL}, to specify the default action, and
-to associate the \code{WebACL} with a CloudFront distribution.
+\code{WebACL}. For more information, see \code{\link[=waf_create_rule]{create_rule}}
+and \code{\link[=waf_update_rule]{update_rule}}.
+\item Create a \code{WebACL}. See \code{\link[=waf_create_web_acl]{create_web_acl}}.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=waf_update_web_acl]{update_web_acl}} request.
+\item Submit an \code{\link[=waf_update_web_acl]{update_web_acl}} request to specify
+the \code{Rules} that you want to include in the \code{WebACL}, to specify the
+default action, and to associate the \code{WebACL} with a CloudFront
+distribution.
 
 The \code{ActivatedRule} can be a rule group. If you specify a rule group
 as your \code{ActivatedRule} , you can exclude specific rules from that
 rule group.
 
 If you already have a rule group associated with a web ACL and want
-to submit an \code{UpdateWebACL} request to exclude certain rules from
-that rule group, you must first remove the rule group from the web
-ACL, the re-insert it again, specifying the excluded rules. For
-details, see ActivatedRule$ExcludedRules .
+to submit an \code{\link[=waf_update_web_acl]{update_web_acl}} request to
+exclude certain rules from that rule group, you must first remove
+the rule group from the web ACL, the re-insert it again, specifying
+the excluded rules. For details, see ActivatedRule$ExcludedRules .
 }
 
 Be aware that if you try to add a RATE\\_BASED rule to a web ACL without
-setting the rule type when first creating the rule, the UpdateWebACL
-request will fail because the request tries to add a REGULAR rule (the
-default rule type) with the specified ID, which does not exist.
+setting the rule type when first creating the rule, the
+\code{\link[=waf_update_web_acl]{update_web_acl}} request will fail because the
+request tries to add a REGULAR rule (the default rule type) with the
+specified ID, which does not exist.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.

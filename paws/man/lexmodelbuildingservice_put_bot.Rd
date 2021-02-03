@@ -144,9 +144,10 @@ sidetracked halfway through placing an order. If the user doesn't
 complete the order within the specified time, Amazon Lex discards the
 slot information that it gathered, and the user must start over.
 
-If you don't include the \code{idleSessionTTLInSeconds} element in a \code{PutBot}
-operation request, Amazon Lex uses the default value. This is also true
-if the request replaces an existing bot.
+If you don't include the \code{idleSessionTTLInSeconds} element in a
+\code{\link[=lexmodelbuildingservice_put_bot]{put_bot}} operation request, Amazon
+Lex uses the default value. This is also true if the request replaces an
+existing bot.
 
 The default is 300 seconds (5 minutes).}
 
@@ -206,12 +207,14 @@ sentiment analysis. If you don't specify \code{detectSentiment}, the default
 is \code{false}.}
 
 \item{createVersion}{When set to \code{true} a new numbered version of the bot is created. This is
-the same as calling the \code{CreateBotVersion} operation. If you don't
-specify \code{createVersion}, the default is \code{false}.}
+the same as calling the
+\code{\link[=lexmodelbuildingservice_create_bot_version]{create_bot_version}}
+operation. If you don't specify \code{createVersion}, the default is \code{false}.}
 
 \item{tags}{A list of tags to add to the bot. You can only add tags when you create
-a bot, you can't use the \code{PutBot} operation to update the tags on a bot.
-To update tags, use the \code{TagResource} operation.}
+a bot, you can't use the \code{\link[=lexmodelbuildingservice_put_bot]{put_bot}}
+operation to update the tags on a bot. To update tags, use the
+\code{\link[=lexmodelbuildingservice_tag_resource]{tag_resource}} operation.}
 }
 \description{
 Creates an Amazon Lex conversational bot or replaces an existing bot.

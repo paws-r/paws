@@ -10,16 +10,17 @@ lightsail_delete_certificate(certificateName)
 \arguments{
 \item{certificateName}{[required] The name of the certificate to delete.
 
-Use the \code{GetCertificates} action to get a list of certificate names that
-you can specify.}
+Use the \code{\link[=lightsail_get_certificates]{get_certificates}} action to get a
+list of certificate names that you can specify.}
 }
 \description{
 Deletes an SSL/TLS certificate for your Amazon Lightsail content
 delivery network (CDN) distribution.
 
 Certificates that are currently attached to a distribution cannot be
-deleted. Use the \code{DetachCertificateFromDistribution} action to detach a
-certificate from a distribution.
+deleted. Use the
+\code{\link[=lightsail_detach_certificate_from_distribution]{detach_certificate_from_distribution}}
+action to detach a certificate from a distribution.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_certificate(

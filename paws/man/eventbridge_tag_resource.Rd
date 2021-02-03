@@ -22,11 +22,11 @@ In EventBridge, rules and event buses can be tagged.
 Tags don't have any semantic meaning to AWS and are interpreted strictly
 as strings of characters.
 
-You can use the \code{TagResource} action with a resource that already has
-tags. If you specify a new tag key, this tag is appended to the list of
-tags associated with the resource. If you specify a tag key that is
-already associated with the resource, the new tag value that you specify
-replaces the previous value for that tag.
+You can use the \code{\link[=eventbridge_tag_resource]{tag_resource}} action with a
+resource that already has tags. If you specify a new tag key, this tag
+is appended to the list of tags associated with the resource. If you
+specify a tag key that is already associated with the resource, the new
+tag value that you specify replaces the previous value for that tag.
 
 You can associate as many as 50 tags with a resource.
 }

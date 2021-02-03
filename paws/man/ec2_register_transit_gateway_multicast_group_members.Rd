@@ -30,7 +30,7 @@ about supported instances, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/
 in \emph{Amazon VPC Transit Gateways}.
 
 After you add the members, use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html}{SearchTransitGatewayMulticastGroups}
+\code{\link[=ec2_search_transit_gateway_multicast_groups]{search_transit_gateway_multicast_groups}}
 to verify that the members were added to the transit gateway multicast
 group.
 }

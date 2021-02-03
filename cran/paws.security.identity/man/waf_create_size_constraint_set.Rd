@@ -10,7 +10,8 @@ waf_create_size_constraint_set(Name, ChangeToken)
 \item{Name}{[required] A friendly name or description of the SizeConstraintSet. You can't
 change \code{Name} after you create a \code{SizeConstraintSet}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -22,7 +23,8 @@ in the developer guide.
 With the latest version, AWS WAF has a single set of endpoints for
 regional and global use.
 
-Creates a \code{SizeConstraintSet}. You then use UpdateSizeConstraintSet to
+Creates a \code{SizeConstraintSet}. You then use
+\code{\link[=waf_update_size_constraint_set]{update_size_constraint_set}} to
 identify the part of a web request that you want AWS WAF to check for
 length, such as the length of the \code{User-Agent} header or the length of
 the query string. For example, you can create a \code{SizeConstraintSet} that
@@ -32,14 +34,22 @@ bytes. You can then configure AWS WAF to reject those requests.
 To create and configure a \code{SizeConstraintSet}, perform the following
 steps:
 \enumerate{
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{CreateSizeConstraintSet} request.
-\item Submit a \code{CreateSizeConstraintSet} request.
-\item Use \code{GetChangeToken} to get the change token that you provide in the
-\code{ChangeToken} parameter of an \code{UpdateSizeConstraintSet} request.
-\item Submit an UpdateSizeConstraintSet request to specify the part of the
-request that you want AWS WAF to inspect (for example, the header or
-the URI) and the value that you want AWS WAF to watch for.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=waf_create_size_constraint_set]{create_size_constraint_set}}
+request.
+\item Submit a
+\code{\link[=waf_create_size_constraint_set]{create_size_constraint_set}}
+request.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=waf_update_size_constraint_set]{update_size_constraint_set}}
+request.
+\item Submit an
+\code{\link[=waf_update_size_constraint_set]{update_size_constraint_set}}
+request to specify the part of the request that you want AWS WAF to
+inspect (for example, the header or the URI) and the value that you
+want AWS WAF to watch for.
 }
 
 For more information about how to use the AWS WAF API to allow or block

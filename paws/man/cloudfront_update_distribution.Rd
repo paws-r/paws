@@ -26,8 +26,9 @@ in the \emph{Amazon CloudFront Developer Guide}.
 
 The update process includes getting the current distribution
 configuration, updating the XML document that is returned to make your
-changes, and then submitting an \code{UpdateDistribution} request to make the
-updates.
+changes, and then submitting an
+\code{\link[=cloudfront_update_distribution]{update_distribution}} request to make
+the updates.
 
 For information about updating a distribution using the CloudFront
 console instead, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html}{Creating a Distribution}
@@ -36,14 +37,15 @@ in the \emph{Amazon CloudFront Developer Guide}.
 \strong{To update a web distribution using the CloudFront API}
 \enumerate{
 \item Submit a
-\href{https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistributionConfig.html}{GetDistributionConfig}
+\code{\link[=cloudfront_get_distribution_config]{get_distribution_config}}
 request to get the current configuration and an \code{Etag} header for
 the distribution.
 
 If you update the distribution again, you must get a new \code{Etag}
 header.
 \item Update the XML document that was returned in the response to your
-\code{GetDistributionConfig} request to include your changes.
+\code{\link[=cloudfront_get_distribution_config]{get_distribution_config}}
+request to include your changes.
 
 When you edit the XML file, be aware of the following:
 \itemize{
@@ -55,27 +57,29 @@ and required to successfully update the distribution.
 \item You can't change the value of \code{CallerReference}. If you try to
 change this value, CloudFront returns an \code{IllegalUpdate} error.
 \item The new configuration replaces the existing configuration; the
-values that you specify in an \code{UpdateDistribution} request are
-not merged into your existing configuration. When you add,
+values that you specify in an
+\code{\link[=cloudfront_update_distribution]{update_distribution}} request
+are not merged into your existing configuration. When you add,
 delete, or replace values in an element that allows multiple
 values (for example, \code{CNAME}), you must specify all of the
 values that you want to appear in the updated distribution. In
 addition, you must update the corresponding \code{Quantity} element.
 }
-\item Submit an \code{UpdateDistribution} request to update the configuration
-for your distribution:
+\item Submit an \code{\link[=cloudfront_update_distribution]{update_distribution}}
+request to update the configuration for your distribution:
 \itemize{
 \item In the request body, include the XML document that you updated
 in Step 2. The request body must include an XML document with a
 \code{DistributionConfig} element.
 \item Set the value of the HTTP \code{If-Match} header to the value of the
 \code{ETag} header that CloudFront returned when you submitted the
-\code{GetDistributionConfig} request in Step 1.
+\code{\link[=cloudfront_get_distribution_config]{get_distribution_config}}
+request in Step 1.
 }
-\item Review the response to the \code{UpdateDistribution} request to confirm
-that the configuration was successfully updated.
-\item Optional: Submit a
-\href{https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistribution.html}{GetDistribution}
+\item Review the response to the
+\code{\link[=cloudfront_update_distribution]{update_distribution}} request to
+confirm that the configuration was successfully updated.
+\item Optional: Submit a \code{\link[=cloudfront_get_distribution]{get_distribution}}
 request to confirm that your changes have propagated. When
 propagation is complete, the value of \code{Status} is \code{Deployed}.
 }

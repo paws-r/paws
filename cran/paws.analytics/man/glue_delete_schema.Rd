@@ -14,9 +14,10 @@ Resource Name (ARN).}
 \description{
 Deletes the entire schema set, including the schema set and all of its
 versions. To get the status of the delete operation, you can call
-\code{GetSchema} API after the asynchronous call. Deleting a registry will
-disable all online operations for the schema, such as the
-\code{GetSchemaByDefinition}, and \code{RegisterSchemaVersion} APIs.
+\code{\link[=glue_get_schema]{get_schema}} API after the asynchronous call.
+Deleting a registry will disable all online operations for the schema,
+such as the \code{\link[=glue_get_schema_by_definition]{get_schema_by_definition}},
+and \code{\link[=glue_register_schema_version]{register_schema_version}} APIs.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_schema(

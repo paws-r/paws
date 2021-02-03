@@ -184,8 +184,9 @@ Amazon EC2.}
 Creates an Auto Scaling group with the specified name and attributes.
 
 If you exceed your maximum limit of Auto Scaling groups, the call fails.
-To query this limit, call the DescribeAccountLimits API. For information
-about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling service quotas}
+To query this limit, call the
+\code{\link[=autoscaling_describe_account_limits]{describe_account_limits}} API.
+For information about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling service quotas}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 For introductory exercises for creating an Auto Scaling group, see

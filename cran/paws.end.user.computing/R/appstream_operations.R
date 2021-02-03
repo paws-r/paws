@@ -2188,8 +2188,10 @@ appstream_stop_image_builder <- function(Name) {
 #' Each tag consists of a key and an optional value. If a resource already
 #' has a tag with the same key, this operation updates its value.
 #' 
-#' To list the current tags for your resources, use ListTagsForResource. To
-#' disassociate tags from your resources, use UntagResource.
+#' To list the current tags for your resources, use
+#' [`list_tags_for_resource`][appstream_list_tags_for_resource]. To
+#' disassociate tags from your resources, use
+#' [`untag_resource`][appstream_untag_resource].
 #' 
 #' For more information about tags, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
@@ -2246,7 +2248,8 @@ appstream_tag_resource <- function(ResourceArn, Tags) {
 #' Disassociates one or more specified tags from the specified AppStream
 #' 2.0 resource.
 #' 
-#' To list the current tags for your resources, use ListTagsForResource.
+#' To list the current tags for your resources, use
+#' [`list_tags_for_resource`][appstream_list_tags_for_resource].
 #' 
 #' For more information about tags, see [Tagging Your
 #' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)

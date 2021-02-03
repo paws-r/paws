@@ -27,7 +27,7 @@ idempotency of the request.}
 Updates an Amazon EKS cluster configuration. Your cluster continues to
 function during the update. The response output includes an update ID
 that you can use to track the status of your cluster update with the
-DescribeUpdate API operation.
+\code{\link[=eks_describe_update]{describe_update}} API operation.
 
 You can use this API operation to enable or disable exporting the
 Kubernetes control plane logs for your cluster to CloudWatch Logs. By

@@ -22,7 +22,8 @@ FAILED
 When the \code{status} is \verb{CREATE FAILED}, the response includes the
 \code{failureReason} key, which describes why.
 
-For more information on campaigns, see CreateCampaign.
+For more information on campaigns, see
+\code{\link[=personalize_create_campaign]{create_campaign}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_campaign(

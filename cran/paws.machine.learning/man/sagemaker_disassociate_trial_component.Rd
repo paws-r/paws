@@ -16,11 +16,11 @@ Disassociates a trial component from a trial. This doesn't effect other
 trials the component is associated with. Before you can delete a
 component, you must disassociate the component from all trials it is
 associated with. To associate a trial component with a trial, call the
-AssociateTrialComponent API.
+\code{\link[=sagemaker_associate_trial_component]{associate_trial_component}} API.
 
 To get a list of the trials a component is associated with, use the
-Search API. Specify \code{ExperimentTrialComponent} for the \code{Resource}
-parameter. The list appears in the response under
+\code{\link[=sagemaker_search]{search}} API. Specify \code{ExperimentTrialComponent} for
+the \code{Resource} parameter. The list appears in the response under
 \code{Results.TrialComponent.Parents}.
 }
 \section{Request syntax}{

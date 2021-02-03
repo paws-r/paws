@@ -21,11 +21,12 @@ Specify a shard iterator using the \code{ShardIterator} parameter. The shard
 iterator specifies the position in the shard from which you want to
 start reading stream records sequentially. If there are no stream
 records available in the portion of the shard that the iterator points
-to, \code{GetRecords} returns an empty list. Note that it might take multiple
-calls to get to a portion of the shard that contains stream records.
+to, \code{\link[=dynamodbstreams_get_records]{get_records}} returns an empty list.
+Note that it might take multiple calls to get to a portion of the shard
+that contains stream records.
 
-\code{GetRecords} can retrieve a maximum of 1 MB of data or 1000 stream
-records, whichever comes first.
+\code{\link[=dynamodbstreams_get_records]{get_records}} can retrieve a maximum of 1
+MB of data or 1000 stream records, whichever comes first.
 }
 \section{Request syntax}{
 \preformatted{svc$get_records(

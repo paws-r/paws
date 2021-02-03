@@ -32,9 +32,10 @@ Gets information about AWS CloudHSM clusters.
 This is a paginated operation, which means that each response might
 contain only a subset of all the clusters. When the response contains
 only a subset of clusters, it includes a \code{NextToken} value. Use this
-value in a subsequent \code{DescribeClusters} request to get more clusters.
-When you receive a response with no \code{NextToken} (or an empty or null
-value), that means there are no more clusters to get.
+value in a subsequent
+\code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}} request to get more
+clusters. When you receive a response with no \code{NextToken} (or an empty
+or null value), that means there are no more clusters to get.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_clusters(

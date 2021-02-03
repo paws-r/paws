@@ -10,7 +10,8 @@ sagemaker_describe_model(ModelName)
 \item{ModelName}{[required] The name of the model.}
 }
 \description{
-Describes a model that you created using the \code{CreateModel} API.
+Describes a model that you created using the
+\code{\link[=sagemaker_create_model]{create_model}} API.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_model(

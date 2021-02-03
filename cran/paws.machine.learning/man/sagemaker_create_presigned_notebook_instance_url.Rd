@@ -32,7 +32,8 @@ operator and the \code{aws:SourceIP} condition context key to specify the
 list of IP addresses that you want to have access to the notebook
 instance. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/security_iam_id-based-policy-examples.html#nbi-ip-filter}{Limit Access to a Notebook Instance by IP Address}.
 
-The URL that you get from a call to CreatePresignedNotebookInstanceUrl
+The URL that you get from a call to
+\code{\link[=sagemaker_create_presigned_notebook_instance_url]{create_presigned_notebook_instance_url}}
 is valid only for 5 minutes. If you try to use the URL after the
 5-minute limit expires, you are directed to the AWS console sign-in
 page.

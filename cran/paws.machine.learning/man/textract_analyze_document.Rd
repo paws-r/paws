@@ -53,8 +53,9 @@ You can choose which type of analysis to perform by specifying the
 
 The output is returned in a list of \code{Block} objects.
 
-\code{AnalyzeDocument} is a synchronous operation. To analyze documents
-asynchronously, use StartDocumentAnalysis.
+\code{\link[=textract_analyze_document]{analyze_document}} is a synchronous
+operation. To analyze documents asynchronously, use
+\code{\link[=textract_start_document_analysis]{start_document_analysis}}.
 
 For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html}{Document Text Analysis}.
 }

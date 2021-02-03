@@ -24,7 +24,7 @@ the function name, it is limited to 64 characters in length.}
 \description{
 Returns details about the reserved concurrency configuration for a
 function. To set a concurrency limit for a function, use
-PutFunctionConcurrency.
+\code{\link[=lambda_put_function_concurrency]{put_function_concurrency}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_function_concurrency(

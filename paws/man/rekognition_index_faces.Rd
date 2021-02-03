@@ -35,19 +35,20 @@ logical AND operator to determine which attributes to return (in this
 case, all attributes).}
 
 \item{MaxFaces}{The maximum number of faces to index. The value of \code{MaxFaces} must be
-greater than or equal to 1. \code{IndexFaces} returns no more than 100
-detected faces in an image, even if you specify a larger value for
-\code{MaxFaces}.
+greater than or equal to 1. \code{\link[=rekognition_index_faces]{index_faces}}
+returns no more than 100 detected faces in an image, even if you specify
+a larger value for \code{MaxFaces}.
 
-If \code{IndexFaces} detects more faces than the value of \code{MaxFaces}, the
-faces with the lowest quality are filtered out first. If there are still
-more faces than the value of \code{MaxFaces}, the faces with the smallest
-bounding boxes are filtered out (up to the number that's needed to
-satisfy the value of \code{MaxFaces}). Information about the unindexed faces
-is available in the \code{UnindexedFaces} array.
+If \code{\link[=rekognition_index_faces]{index_faces}} detects more faces than the
+value of \code{MaxFaces}, the faces with the lowest quality are filtered out
+first. If there are still more faces than the value of \code{MaxFaces}, the
+faces with the smallest bounding boxes are filtered out (up to the
+number that's needed to satisfy the value of \code{MaxFaces}). Information
+about the unindexed faces is available in the \code{UnindexedFaces} array.
 
-The faces that are returned by \code{IndexFaces} are sorted by the largest
-face bounding box size to the smallest size, in descending order.
+The faces that are returned by \code{\link[=rekognition_index_faces]{index_faces}}
+are sorted by the largest face bounding box size to the smallest size,
+in descending order.
 
 \code{MaxFaces} can be used with a collection associated with any version of
 the face model.}
@@ -75,34 +76,39 @@ Instead, the underlying detection algorithm first detects the faces in
 the input image. For each face, the algorithm extracts facial features
 into a feature vector, and stores it in the backend database. Amazon
 Rekognition uses feature vectors when it performs face match and search
-operations using the SearchFaces and SearchFacesByImage operations.
+operations using the \code{\link[=rekognition_search_faces]{search_faces}} and
+\code{\link[=rekognition_search_faces_by_image]{search_faces_by_image}} operations.
 
 For more information, see Adding Faces to a Collection in the Amazon
 Rekognition Developer Guide.
 
-To get the number of faces in a collection, call DescribeCollection.
+To get the number of faces in a collection, call
+\code{\link[=rekognition_describe_collection]{describe_collection}}.
 
-If you're using version 1.0 of the face detection model, \code{IndexFaces}
-indexes the 15 largest faces in the input image. Later versions of the
-face detection model index the 100 largest faces in the input image.
+If you're using version 1.0 of the face detection model,
+\code{\link[=rekognition_index_faces]{index_faces}} indexes the 15 largest faces in
+the input image. Later versions of the face detection model index the
+100 largest faces in the input image.
 
 If you're using version 4 or later of the face model, image orientation
 information is not returned in the \code{OrientationCorrection} field.
 
 To determine which version of the model you're using, call
-DescribeCollection and supply the collection ID. You can also get the
-model version from the value of \code{FaceModelVersion} in the response from
-\code{IndexFaces}
+\code{\link[=rekognition_describe_collection]{describe_collection}} and supply the
+collection ID. You can also get the model version from the value of
+\code{FaceModelVersion} in the response from
+\code{\link[=rekognition_index_faces]{index_faces}}
 
 For more information, see Model Versioning in the Amazon Rekognition
 Developer Guide.
 
 If you provide the optional \code{ExternalImageId} for the input image you
 provided, Amazon Rekognition associates this ID with all faces that it
-detects. When you call the ListFaces operation, the response returns the
-external ID. You can use this external image ID to create a client-side
-index to associate the faces with each image. You can then use the index
-to find all faces in an image.
+detects. When you call the \code{\link[=rekognition_list_faces]{list_faces}}
+operation, the response returns the external ID. You can use this
+external image ID to create a client-side index to associate the faces
+with each image. You can then use the index to find all faces in an
+image.
 
 You can specify the maximum number of faces to index with the \code{MaxFaces}
 input parameter. This is useful when you want to index the largest faces
@@ -111,15 +117,17 @@ belonging to people standing in the background.
 
 The \code{QualityFilter} input parameter allows you to filter out detected
 faces that don’t meet a required quality bar. The quality bar is based
-on a variety of common use cases. By default, \code{IndexFaces} chooses the
-quality bar that's used to filter faces. You can also explicitly choose
-the quality bar. Use \code{QualityFilter}, to set the quality bar by
-specifying \code{LOW}, \code{MEDIUM}, or \code{HIGH}. If you do not want to filter
-detected faces, specify \code{NONE}.
+on a variety of common use cases. By default,
+\code{\link[=rekognition_index_faces]{index_faces}} chooses the quality bar that's
+used to filter faces. You can also explicitly choose the quality bar.
+Use \code{QualityFilter}, to set the quality bar by specifying \code{LOW},
+\code{MEDIUM}, or \code{HIGH}. If you do not want to filter detected faces,
+specify \code{NONE}.
 
 To use quality filtering, you need a collection associated with version
 3 of the face model or higher. To get the version of the face model
-associated with a collection, call DescribeCollection.
+associated with a collection, call
+\code{\link[=rekognition_describe_collection]{describe_collection}}.
 
 Information about faces detected in an image, but not indexed, is
 returned in an array of UnindexedFace objects, \code{UnindexedFaces}. Faces
@@ -134,8 +142,9 @@ request parameter.
 \item The face doesn’t have enough detail to be suitable for face search.
 }
 
-In response, the \code{IndexFaces} operation returns an array of metadata for
-all detected faces, \code{FaceRecords}. This includes:
+In response, the \code{\link[=rekognition_index_faces]{index_faces}} operation
+returns an array of metadata for all detected faces, \code{FaceRecords}. This
+includes:
 \itemize{
 \item The bounding box, \code{BoundingBox}, of the detected face.
 \item A confidence value, \code{Confidence}, which indicates the confidence
@@ -149,8 +158,9 @@ If you request all facial attributes (by using the \code{detectionAttributes}
 parameter), Amazon Rekognition returns detailed facial attributes, such
 as facial landmarks (for example, location of eye and mouth) and other
 facial attributes. If you provide the same image, specify the same
-collection, and use the same external ID in the \code{IndexFaces} operation,
-Amazon Rekognition doesn't save duplicate face metadata.
+collection, and use the same external ID in the
+\code{\link[=rekognition_index_faces]{index_faces}} operation, Amazon Rekognition
+doesn't save duplicate face metadata.
 
 The input image is passed either as base64-encoded image bytes, or as a
 reference to an image in an Amazon S3 bucket. If you use the AWS CLI to

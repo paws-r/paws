@@ -7,7 +7,8 @@
 codedeploy_list_git_hub_account_token_names(nextToken)
 }
 \arguments{
-\item{nextToken}{An identifier returned from the previous \code{ListGitHubAccountTokenNames}
+\item{nextToken}{An identifier returned from the previous
+\code{\link[=codedeploy_list_git_hub_account_token_names]{list_git_hub_account_token_names}}
 call. It can be used to return the next set of names in the list.}
 }
 \description{

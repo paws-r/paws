@@ -11,7 +11,8 @@ securityhub_list_invitations(MaxResults, NextToken)
 \item{MaxResults}{The maximum number of items to return in the response.}
 
 \item{NextToken}{The token that is required for pagination. On your first call to the
-\code{ListInvitations} operation, set the value of this parameter to \code{NULL}.
+\code{\link[=securityhub_list_invitations]{list_invitations}} operation, set the
+value of this parameter to \code{NULL}.
 
 For subsequent calls to the operation, to continue listing data, set the
 value of this parameter to the value returned from the previous

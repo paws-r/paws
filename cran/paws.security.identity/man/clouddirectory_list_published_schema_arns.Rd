@@ -8,8 +8,10 @@ clouddirectory_list_published_schema_arns(SchemaArn, NextToken,
   MaxResults)
 }
 \arguments{
-\item{SchemaArn}{The response for \code{ListPublishedSchemaArns} when this parameter is used
-will list all minor version ARNs for a major version.}
+\item{SchemaArn}{The response for
+\code{\link[=clouddirectory_list_published_schema_arns]{list_published_schema_arns}}
+when this parameter is used will list all minor version ARNs for a major
+version.}
 
 \item{NextToken}{The pagination token.}
 

@@ -8,10 +8,13 @@ NULL
 #' @description
 #' Describes recommendation export jobs created in the last seven days.
 #' 
-#' Use the `ExportAutoScalingGroupRecommendations` or
-#' `ExportEC2InstanceRecommendations` actions to request an export of your
-#' recommendations. Then use the `DescribeRecommendationExportJobs` action
-#' to view your export jobs.
+#' Use the
+#' [`export_auto_scaling_group_recommendations`][computeoptimizer_export_auto_scaling_group_recommendations]
+#' or
+#' [`export_ec2_instance_recommendations`][computeoptimizer_export_ec2_instance_recommendations]
+#' actions to request an export of your recommendations. Then use the
+#' [`describe_recommendation_export_jobs`][computeoptimizer_describe_recommendation_export_jobs]
+#' action to view your export jobs.
 #'
 #' @usage
 #' computeoptimizer_describe_recommendation_export_jobs(jobIds, filters,
@@ -20,8 +23,10 @@ NULL
 #' @param jobIds The identification numbers of the export jobs to return.
 #' 
 #' An export job ID is returned when you create an export using the
-#' `ExportAutoScalingGroupRecommendations` or
-#' `ExportEC2InstanceRecommendations` actions.
+#' [`export_auto_scaling_group_recommendations`][computeoptimizer_export_auto_scaling_group_recommendations]
+#' or
+#' [`export_ec2_instance_recommendations`][computeoptimizer_export_ec2_instance_recommendations]
+#' actions.
 #' 
 #' All export jobs created in the last seven days are returned if this
 #' parameter is omitted.

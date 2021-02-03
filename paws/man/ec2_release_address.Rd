@@ -32,9 +32,10 @@ Releases the specified Elastic IP address.
 [EC2-Classic, default VPC] Releasing an Elastic IP address
 automatically disassociates it from any instance that it's associated
 with. To disassociate an Elastic IP address without releasing it, use
-DisassociateAddress.
+\code{\link[=ec2_disassociate_address]{disassociate_address}}.
 
-[Nondefault VPC] You must use DisassociateAddress to disassociate the
+[Nondefault VPC] You must use
+\code{\link[=ec2_disassociate_address]{disassociate_address}} to disassociate the
 Elastic IP address before you can release it. Otherwise, Amazon EC2
 returns an error (\code{InvalidIPAddress.InUse}).
 
@@ -46,7 +47,7 @@ the address is already allocated to another AWS account.
 
 [EC2-VPC] After you release an Elastic IP address for use in a VPC,
 you might be able to recover it. For more information, see
-AllocateAddress.
+\code{\link[=ec2_allocate_address]{allocate_address}}.
 }
 \section{Request syntax}{
 \preformatted{svc$release_address(

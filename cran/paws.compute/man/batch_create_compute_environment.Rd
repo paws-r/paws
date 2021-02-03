@@ -58,11 +58,9 @@ an optional value. For more information, see \href{https://docs.aws.amazon.com/g
 in \emph{AWS General Reference}.
 
 These tags can be updated or removed using the
-\href{https://docs.aws.amazon.com/batch/latest/APIReference/API_TagResource.html}{TagResource}
-and
-\href{https://docs.aws.amazon.com/batch/latest/APIReference/API_UntagResource.html}{UntagResource}
-API operations. These tags don't propagate to the underlying compute
-resources.}
+\code{\link[=batch_tag_resource]{tag_resource}} and
+\code{\link[=batch_untag_resource]{untag_resource}} API operations. These tags
+don't propagate to the underlying compute resources.}
 }
 \description{
 Creates an AWS Batch compute environment. You can create \code{MANAGED} or
@@ -90,10 +88,10 @@ need to verify that your AMI meets the Amazon ECS container instance AMI
 specification. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{container instance AMIs} in
 the \emph{Amazon Elastic Container Service Developer Guide}. After you have
 created your unmanaged compute environment, you can use the
-DescribeComputeEnvironments operation to find the Amazon ECS cluster
-that's associated with it. Then, manually launch your container
-instances into that Amazon ECS cluster. For more information, see
-\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html}{Launching an Amazon ECS container instance}
+\code{\link[=batch_describe_compute_environments]{describe_compute_environments}}
+operation to find the Amazon ECS cluster that's associated with it.
+Then, manually launch your container instances into that Amazon ECS
+cluster. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html}{Launching an Amazon ECS container instance}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 AWS Batch doesn't upgrade the AMIs in a compute environment after it's

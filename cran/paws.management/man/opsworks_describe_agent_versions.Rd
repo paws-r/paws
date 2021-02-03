@@ -13,8 +13,9 @@ opsworks_describe_agent_versions(StackId, ConfigurationManager)
 }
 \description{
 Describes the available AWS OpsWorks Stacks agent versions. You must
-specify a stack ID or a configuration manager. \code{DescribeAgentVersions}
-returns a list of available agent versions for the specified stack or
+specify a stack ID or a configuration manager.
+\code{\link[=opsworks_describe_agent_versions]{describe_agent_versions}} returns a
+list of available agent versions for the specified stack or
 configuration manager.
 }
 \section{Request syntax}{

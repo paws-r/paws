@@ -12,7 +12,7 @@ kms_import_key_material(KeyId, ImportToken, EncryptedKeyMaterial,
 \item{KeyId}{[required] The identifier of the symmetric CMK that receives the imported key
 material. The CMK's \code{Origin} must be \code{EXTERNAL}. This must be the same
 CMK specified in the \code{KeyID} parameter of the corresponding
-GetParametersForImport request.
+\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} request.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
@@ -23,16 +23,19 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{ImportToken}{[required] The import token that you received in the response to a previous
-GetParametersForImport request. It must be from the same response that
-contained the public key that you used to encrypt the key material.}
+\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} request. It
+must be from the same response that contained the public key that you
+used to encrypt the key material.}
 
 \item{EncryptedKeyMaterial}{[required] The encrypted key material to import. The key material must be encrypted
-with the public wrapping key that GetParametersForImport returned, using
-the wrapping algorithm that you specified in the same
-\code{GetParametersForImport} request.}
+with the public wrapping key that
+\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} returned,
+using the wrapping algorithm that you specified in the same
+\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} request.}
 
 \item{ValidTo}{The time at which the imported key material expires. When the key
 material expires, AWS KMS deletes the key material and the CMK becomes
@@ -56,23 +59,28 @@ a different AWS account. For more information about creating CMKs with
 no key material and then importing key material, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
 in the \emph{AWS Key Management Service Developer Guide}.
 
-Before using this operation, call GetParametersForImport. Its response
-includes a public key and an import token. Use the public key to encrypt
-the key material. Then, submit the import token from the same
-\code{GetParametersForImport} response.
+Before using this operation, call
+\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}}. Its
+response includes a public key and an import token. Use the public key
+to encrypt the key material. Then, submit the import token from the same
+\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} response.
 
 When calling this operation, you must specify the following values:
 \itemize{
 \item The key ID or key ARN of a CMK with no key material. Its \code{Origin}
 must be \code{EXTERNAL}.
 
-To create a CMK with no key material, call CreateKey and set the
-value of its \code{Origin} parameter to \code{EXTERNAL}. To get the \code{Origin}
-of a CMK, call DescribeKey.)
+To create a CMK with no key material, call
+\code{\link[=kms_create_key]{create_key}} and set the value of its \code{Origin}
+parameter to \code{EXTERNAL}. To get the \code{Origin} of a CMK, call
+\code{\link[=kms_describe_key]{describe_key}}.)
 \item The encrypted key material. To get the public key to encrypt the key
-material, call GetParametersForImport.
-\item The import token that GetParametersForImport returned. You must use
-a public key and token from the same \code{GetParametersForImport}
+material, call
+\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}}.
+\item The import token that
+\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}}
+returned. You must use a public key and token from the same
+\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}}
 response.
 \item Whether the key material expires and if so, when. If you set an
 expiration date, AWS KMS deletes the key material from the CMK on
@@ -87,9 +95,10 @@ When this operation is successful, the key state of the CMK changes from
 
 If this operation fails, use the exception to help determine the
 problem. If the error is related to the key material, the import token,
-or wrapping key, use GetParametersForImport to get a new public key and
-import token for the CMK and repeat the import procedure. For help, see
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#importing-keys-overview}{How To Import Key Material}
+or wrapping key, use
+\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} to get a
+new public key and import token for the CMK and repeat the import
+procedure. For help, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#importing-keys-overview}{How To Import Key Material}
 in the \emph{AWS Key Management Service Developer Guide}.
 
 The CMK that you use for this operation must be in a compatible key
@@ -105,8 +114,8 @@ a different AWS account.
 
 \strong{Related operations:}
 \itemize{
-\item DeleteImportedKeyMaterial
-\item GetParametersForImport
+\item \code{\link[=kms_delete_imported_key_material]{delete_imported_key_material}}
+\item \code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}}
 }
 }
 \section{Request syntax}{

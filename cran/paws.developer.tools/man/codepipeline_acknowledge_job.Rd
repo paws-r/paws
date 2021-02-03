@@ -13,7 +13,8 @@ receipt.}
 
 \item{nonce}{[required] A system-generated random number that AWS CodePipeline uses to ensure
 that the job is being worked on by only one job worker. Get this number
-from the response of the PollForJobs request that returned this job.}
+from the response of the \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}}
+request that returned this job.}
 }
 \description{
 Returns information about a specified job and whether that job has been

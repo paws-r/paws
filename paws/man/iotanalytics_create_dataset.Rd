@@ -47,8 +47,8 @@ Creates a dataset. A dataset stores data retrieved from a data store by
 applying a \code{queryAction} (a SQL query) or a \code{containerAction} (executing
 a containerized application). This operation creates the skeleton of a
 dataset. The dataset can be populated manually by calling
-\code{CreateDatasetContent} or automatically according to a trigger you
-specify.
+\code{\link[=iotanalytics_create_dataset_content]{create_dataset_content}} or
+automatically according to a trigger you specify.
 }
 \section{Request syntax}{
 \preformatted{svc$create_dataset(

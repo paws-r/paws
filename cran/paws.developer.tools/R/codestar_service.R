@@ -13,52 +13,61 @@ NULL
 #' 
 #' Projects and their resources, by calling the following:
 #' 
-#' -   `DeleteProject`, which deletes a project.
-#' 
-#' -   `DescribeProject`, which lists the attributes of a project.
-#' 
-#' -   `ListProjects`, which lists all projects associated with your AWS
-#'     account.
-#' 
-#' -   `ListResources`, which lists the resources associated with a
+#' -   [`delete_project`][codestar_delete_project], which deletes a
 #'     project.
 #' 
-#' -   `ListTagsForProject`, which lists the tags associated with a
+#' -   [`describe_project`][codestar_describe_project], which lists the
+#'     attributes of a project.
+#' 
+#' -   [`list_projects`][codestar_list_projects], which lists all projects
+#'     associated with your AWS account.
+#' 
+#' -   [`list_resources`][codestar_list_resources], which lists the
+#'     resources associated with a project.
+#' 
+#' -   [`list_tags_for_project`][codestar_list_tags_for_project], which
+#'     lists the tags associated with a project.
+#' 
+#' -   [`tag_project`][codestar_tag_project], which adds tags to a project.
+#' 
+#' -   [`untag_project`][codestar_untag_project], which removes tags from a
 #'     project.
 #' 
-#' -   `TagProject`, which adds tags to a project.
-#' 
-#' -   `UntagProject`, which removes tags from a project.
-#' 
-#' -   `UpdateProject`, which updates the attributes of a project.
+#' -   [`update_project`][codestar_update_project], which updates the
+#'     attributes of a project.
 #' 
 #' Teams and team members, by calling the following:
 #' 
-#' -   `AssociateTeamMember`, which adds an IAM user to the team for a
-#'     project.
+#' -   [`associate_team_member`][codestar_associate_team_member], which
+#'     adds an IAM user to the team for a project.
 #' 
-#' -   `DisassociateTeamMember`, which removes an IAM user from the team
-#'     for a project.
+#' -   [`disassociate_team_member`][codestar_disassociate_team_member],
+#'     which removes an IAM user from the team for a project.
 #' 
-#' -   `ListTeamMembers`, which lists all the IAM users in the team for a
-#'     project, including their roles and attributes.
+#' -   [`list_team_members`][codestar_list_team_members], which lists all
+#'     the IAM users in the team for a project, including their roles and
+#'     attributes.
 #' 
-#' -   `UpdateTeamMember`, which updates a team member's attributes in a
-#'     project.
+#' -   [`update_team_member`][codestar_update_team_member], which updates a
+#'     team member's attributes in a project.
 #' 
 #' Users, by calling the following:
 #' 
-#' -   `CreateUserProfile`, which creates a user profile that contains data
-#'     associated with the user across all projects.
+#' -   [`create_user_profile`][codestar_create_user_profile], which creates
+#'     a user profile that contains data associated with the user across
+#'     all projects.
 #' 
-#' -   `DeleteUserProfile`, which deletes all user profile information
-#'     across all projects.
+#' -   [`delete_user_profile`][codestar_delete_user_profile], which deletes
+#'     all user profile information across all projects.
 #' 
-#' -   `DescribeUserProfile`, which describes the profile of a user.
+#' -   [`describe_user_profile`][codestar_describe_user_profile], which
+#'     describes the profile of a user.
 #' 
-#' -   `ListUserProfiles`, which lists all user profiles.
+#' -   [`list_user_profiles`][codestar_list_user_profiles], which lists all
+#'     user profiles.
 #' 
-#' -   `UpdateUserProfile`, which updates the profile for a user.
+#' -   [`update_user_profile`][codestar_update_user_profile], which updates
+#'     the profile for a user.
 #'
 #' @param
 #' config

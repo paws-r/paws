@@ -8,9 +8,11 @@ wafregional_update_ip_set(IPSetId, ChangeToken, Updates)
 }
 \arguments{
 \item{IPSetId}{[required] The \code{IPSetId} of the IPSet that you want to update. \code{IPSetId} is
-returned by CreateIPSet and by ListIPSets.}
+returned by \code{\link[=wafregional_create_ip_set]{create_ip_set}} and by
+\code{\link[=wafregional_list_ip_sets]{list_ip_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 
 \item{Updates}{[required] An array of \code{IPSetUpdate} objects that you want to insert into or delete
 from an IPSet. For more information, see the applicable data types:
@@ -65,11 +67,12 @@ AWS WAF to block the requests.
 
 To create and configure an \code{IPSet}, perform the following steps:
 \enumerate{
-\item Submit a CreateIPSet request.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of an UpdateIPSet request.
-\item Submit an \code{UpdateIPSet} request to specify the IP addresses that you
-want AWS WAF to watch for.
+\item Submit a \code{\link[=wafregional_create_ip_set]{create_ip_set}} request.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=wafregional_update_ip_set]{update_ip_set}} request.
+\item Submit an \code{\link[=wafregional_update_ip_set]{update_ip_set}} request to
+specify the IP addresses that you want AWS WAF to watch for.
 }
 
 When you update an \code{IPSet}, you specify the IP addresses that you want

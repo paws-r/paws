@@ -11,8 +11,8 @@ pricing_describe_services(ServiceCode, FormatVersion, NextToken,
 \arguments{
 \item{ServiceCode}{The code for the service whose information you want to retrieve, such as
 \code{AmazonEC2}. You can use the \code{ServiceCode} to filter the results in a
-\code{GetProducts} call. To retrieve a list of all services, leave this
-blank.}
+\code{\link[=pricing_get_products]{get_products}} call. To retrieve a list of all
+services, leave this blank.}
 
 \item{FormatVersion}{The format version that you want the response to be in.
 

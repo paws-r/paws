@@ -45,11 +45,11 @@ NULL
 #' 
 #' **Allowed Header Values**
 #' 
-#' -   ` <b>Accept:</b> ` application/json
+#' -   ` Accept: ` application/json
 #' 
-#' -   ` <b>Accept-Encoding:</b> ` gzip, deflate
+#' -   ` Accept-Encoding: ` gzip, deflate
 #' 
-#' -   ` <b>Content-Type:</b> `application/json
+#' -   ` Content-Type: `application/json
 #' 
 #' **Resources**
 #' 
@@ -87,92 +87,104 @@ NULL
 #' are related. You can also use tags to manage access (see [Access
 #' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)).
 #' 
-#' The Amazon IVS API has these tag-related endpoints: TagResource,
-#' UntagResource, and ListTagsForResource. The following resources support
-#' tagging: Channels, Stream Keys, and Playback Key Pairs.
+#' The Amazon IVS API has these tag-related endpoints:
+#' [`tag_resource`][ivs_tag_resource],
+#' [`untag_resource`][ivs_untag_resource], and
+#' [`list_tags_for_resource`][ivs_list_tags_for_resource]. The following
+#' resources support tagging: Channels, Stream Keys, and Playback Key
+#' Pairs.
 #' 
 #' **Channel Endpoints**
 #' 
-#' -   CreateChannel — Creates a new channel and an associated stream key
-#'     to start streaming.
+#' -   [`create_channel`][ivs_create_channel] — Creates a new channel and
+#'     an associated stream key to start streaming.
 #' 
-#' -   GetChannel — Gets the channel configuration for the specified
-#'     channel ARN (Amazon Resource Name).
+#' -   [`get_channel`][ivs_get_channel] — Gets the channel configuration
+#'     for the specified channel ARN (Amazon Resource Name).
 #' 
-#' -   BatchGetChannel — Performs GetChannel on multiple ARNs
-#'     simultaneously.
+#' -   [`batch_get_channel`][ivs_batch_get_channel] — Performs
+#'     [`get_channel`][ivs_get_channel] on multiple ARNs simultaneously.
 #' 
-#' -   ListChannels — Gets summary information about all channels in your
-#'     account, in the AWS region where the API request is processed. This
-#'     list can be filtered to match a specified string.
+#' -   [`list_channels`][ivs_list_channels] — Gets summary information
+#'     about all channels in your account, in the AWS region where the API
+#'     request is processed. This list can be filtered to match a specified
+#'     string.
 #' 
-#' -   UpdateChannel — Updates a channel's configuration. This does not
-#'     affect an ongoing stream of this channel. You must stop and restart
-#'     the stream for the changes to take effect.
+#' -   [`update_channel`][ivs_update_channel] — Updates a channel's
+#'     configuration. This does not affect an ongoing stream of this
+#'     channel. You must stop and restart the stream for the changes to
+#'     take effect.
 #' 
-#' -   DeleteChannel — Deletes the specified channel.
+#' -   [`delete_channel`][ivs_delete_channel] — Deletes the specified
+#'     channel.
 #' 
 #' **StreamKey Endpoints**
 #' 
-#' -   CreateStreamKey — Creates a stream key, used to initiate a stream,
-#'     for the specified channel ARN.
+#' -   [`create_stream_key`][ivs_create_stream_key] — Creates a stream key,
+#'     used to initiate a stream, for the specified channel ARN.
 #' 
-#' -   GetStreamKey — Gets stream key information for the specified ARN.
+#' -   [`get_stream_key`][ivs_get_stream_key] — Gets stream key information
+#'     for the specified ARN.
 #' 
-#' -   BatchGetStreamKey — Performs GetStreamKey on multiple ARNs
+#' -   [`batch_get_stream_key`][ivs_batch_get_stream_key] — Performs
+#'     [`get_stream_key`][ivs_get_stream_key] on multiple ARNs
 #'     simultaneously.
 #' 
-#' -   ListStreamKeys — Gets summary information about stream keys for the
-#'     specified channel.
+#' -   [`list_stream_keys`][ivs_list_stream_keys] — Gets summary
+#'     information about stream keys for the specified channel.
 #' 
-#' -   DeleteStreamKey — Deletes the stream key for the specified ARN, so
-#'     it can no longer be used to stream.
+#' -   [`delete_stream_key`][ivs_delete_stream_key] — Deletes the stream
+#'     key for the specified ARN, so it can no longer be used to stream.
 #' 
 #' **Stream Endpoints**
 #' 
-#' -   GetStream — Gets information about the active (live) stream on a
-#'     specified channel.
+#' -   [`get_stream`][ivs_get_stream] — Gets information about the active
+#'     (live) stream on a specified channel.
 #' 
-#' -   ListStreams — Gets summary information about live streams in your
-#'     account, in the AWS region where the API request is processed.
+#' -   [`list_streams`][ivs_list_streams] — Gets summary information about
+#'     live streams in your account, in the AWS region where the API
+#'     request is processed.
 #' 
-#' -   StopStream — Disconnects the incoming RTMPS stream for the specified
-#'     channel. Can be used in conjunction with DeleteStreamKey to prevent
-#'     further streaming to a channel.
+#' -   [`stop_stream`][ivs_stop_stream] — Disconnects the incoming RTMPS
+#'     stream for the specified channel. Can be used in conjunction with
+#'     [`delete_stream_key`][ivs_delete_stream_key] to prevent further
+#'     streaming to a channel.
 #' 
-#' -   PutMetadata — Inserts metadata into an RTMPS stream for the
-#'     specified channel. A maximum of 5 requests per second per channel is
-#'     allowed, each with a maximum 1KB payload.
+#' -   [`put_metadata`][ivs_put_metadata] — Inserts metadata into an RTMPS
+#'     stream for the specified channel. A maximum of 5 requests per second
+#'     per channel is allowed, each with a maximum 1KB payload.
 #' 
 #' **PlaybackKeyPair Endpoints**
 #' 
-#' -   ImportPlaybackKeyPair — Imports the public portion of a new key pair
-#'     and returns its `arn` and `fingerprint`. The `privateKey` can then
-#'     be used to generate viewer authorization tokens, to grant viewers
-#'     access to authorized channels.
+#' -   [`import_playback_key_pair`][ivs_import_playback_key_pair] — Imports
+#'     the public portion of a new key pair and returns its `arn` and
+#'     `fingerprint`. The `privateKey` can then be used to generate viewer
+#'     authorization tokens, to grant viewers access to authorized
+#'     channels.
 #' 
-#' -   GetPlaybackKeyPair — Gets a specified playback authorization key
-#'     pair and returns the `arn` and `fingerprint`. The `privateKey` held
-#'     by the caller can be used to generate viewer authorization tokens,
-#'     to grant viewers access to authorized channels.
+#' -   [`get_playback_key_pair`][ivs_get_playback_key_pair] — Gets a
+#'     specified playback authorization key pair and returns the `arn` and
+#'     `fingerprint`. The `privateKey` held by the caller can be used to
+#'     generate viewer authorization tokens, to grant viewers access to
+#'     authorized channels.
 #' 
-#' -   ListPlaybackKeyPairs — Gets summary information about playback key
-#'     pairs.
+#' -   [`list_playback_key_pairs`][ivs_list_playback_key_pairs] — Gets
+#'     summary information about playback key pairs.
 #' 
-#' -   DeletePlaybackKeyPair — Deletes a specified authorization key pair.
-#'     This invalidates future viewer tokens generated using the key pair’s
-#'     `privateKey`.
+#' -   [`delete_playback_key_pair`][ivs_delete_playback_key_pair] — Deletes
+#'     a specified authorization key pair. This invalidates future viewer
+#'     tokens generated using the key pair’s `privateKey`.
 #' 
 #' **AWS Tags Endpoints**
 #' 
-#' -   TagResource — Adds or updates tags for the AWS resource with the
-#'     specified ARN.
+#' -   [`tag_resource`][ivs_tag_resource] — Adds or updates tags for the
+#'     AWS resource with the specified ARN.
 #' 
-#' -   UntagResource — Removes tags from the resource with the specified
-#'     ARN.
+#' -   [`untag_resource`][ivs_untag_resource] — Removes tags from the
+#'     resource with the specified ARN.
 #' 
-#' -   ListTagsForResource — Gets information about AWS tags for the
-#'     specified ARN.
+#' -   [`list_tags_for_resource`][ivs_list_tags_for_resource] — Gets
+#'     information about AWS tags for the specified ARN.
 #'
 #' @param
 #' config

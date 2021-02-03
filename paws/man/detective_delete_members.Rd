@@ -16,9 +16,10 @@ from the behavior graph.}
 \description{
 Deletes one or more member accounts from the master account behavior
 graph. This operation can only be called by a Detective master account.
-That account cannot use \code{DeleteMembers} to delete their own account from
-the behavior graph. To disable a behavior graph, the master account uses
-the \code{DeleteGraph} API method.
+That account cannot use \code{\link[=detective_delete_members]{delete_members}} to
+delete their own account from the behavior graph. To disable a behavior
+graph, the master account uses the
+\code{\link[=detective_delete_graph]{delete_graph}} API method.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_members(

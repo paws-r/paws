@@ -32,12 +32,13 @@ for a while if you submit a \code{ListHealthChecks} request, for example.
 }}
 
 \item{CreatorRequestId}{A unique string that identifies the request and that allows failed
-\code{RegisterInstance} requests to be retried without the risk of executing
-the operation twice. You must use a unique \code{CreatorRequestId} string
-every time you submit a \code{RegisterInstance} request if you're registering
-additional instances for the same namespace and service.
-\code{CreatorRequestId} can be any unique string, for example, a date/time
-stamp.}
+\code{\link[=servicediscovery_register_instance]{register_instance}} requests to be
+retried without the risk of executing the operation twice. You must use
+a unique \code{CreatorRequestId} string every time you submit a
+\code{\link[=servicediscovery_register_instance]{register_instance}} request if
+you're registering additional instances for the same namespace and
+service. \code{CreatorRequestId} can be any unique string, for example, a
+date/time stamp.}
 
 \item{Attributes}{[required] A string map that contains the following information for the service
 that you specify in \code{ServiceId}:
@@ -144,7 +145,8 @@ characters.}
 \description{
 Creates or updates one or more records and, optionally, creates a health
 check based on the settings in a specified service. When you submit a
-\code{RegisterInstance} request, the following occurs:
+\code{\link[=servicediscovery_register_instance]{register_instance}} request, the
+following occurs:
 \itemize{
 \item For each DNS record that you define in the service that is specified
 by \code{ServiceId}, a record is created or updated in the hosted zone
@@ -155,11 +157,12 @@ created based on the settings in the health check configuration.
 updated records.
 }
 
-One \code{RegisterInstance} request must complete before you can submit
-another request and specify the same service ID and instance ID.
+One \code{\link[=servicediscovery_register_instance]{register_instance}} request
+must complete before you can submit another request and specify the same
+service ID and instance ID.
 
 For more information, see
-\href{https://docs.aws.amazon.com/cloud-map/latest/api/API_CreateService.html}{CreateService}.
+\code{\link[=servicediscovery_create_service]{create_service}}.
 
 When AWS Cloud Map receives a DNS query for the specified DNS name, it
 returns the applicable value:

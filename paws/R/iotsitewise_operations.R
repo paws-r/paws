@@ -170,7 +170,7 @@ iotsitewise_batch_disassociate_project_assets <- function(projectId, assetIds, c
 #' -   A `propertyAlias`, which is a data stream alias (for example,
 #'     `/company/windfarm/3/turbine/7/temperature`). To define an asset
 #'     property's alias, see
-#'     [UpdateAssetProperty](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html).
+#'     [`update_asset_property`][iotsitewise_update_asset_property].
 #' 
 #' With respect to Unix epoch time, AWS IoT SiteWise accepts only TQVs that
 #' have a timestamp of no more than 7 days in the past and no more than 5
@@ -183,7 +183,8 @@ iotsitewise_batch_disassociate_project_assets <- function(projectId, assetIds, c
 #' you store a TQV `\{T1, GOOD, V1\}`, then storing `\{T1, GOOD, V2\}` replaces
 #' the existing TQV.
 #' 
-#' AWS IoT SiteWise authorizes access to each `BatchPutAssetPropertyValue`
+#' AWS IoT SiteWise authorizes access to each
+#' [`batch_put_asset_property_value`][iotsitewise_batch_put_asset_property_value]
 #' entry individually. For more information, see
 #' [BatchPutAssetPropertyValue
 #' authorization](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-batchputassetpropertyvalue-action)
@@ -620,9 +621,8 @@ iotsitewise_create_dashboard <- function(projectId, dashboardName, dashboardDesc
 #' @description
 #' Creates a gateway, which is a virtual or edge device that delivers
 #' industrial data streams from local servers to AWS IoT SiteWise. For more
-#' information, see [Ingesting data using a
-#' gateway](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/gateways.html)
-#' in the *AWS IoT SiteWise User Guide*.
+#' information, see Ingesting data using a gateway in the *AWS IoT SiteWise
+#' User Guide*.
 #'
 #' @usage
 #' iotsitewise_create_gateway(gatewayName, gatewayPlatform, tags)
@@ -871,7 +871,7 @@ iotsitewise_delete_access_policy <- function(accessPolicyId, clientToken = NULL)
 #' 
 #' You can't delete an asset that's associated to another asset. For more
 #' information, see
-#' [DisassociateAssets](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DisassociateAssets.html).
+#' [`disassociate_assets`][iotsitewise_disassociate_assets].
 #'
 #' @usage
 #' iotsitewise_delete_asset(assetId, clientToken)
@@ -1243,7 +1243,7 @@ iotsitewise_describe_asset_model <- function(assetModelId) {
 #' 
 #' This operation doesn't return the value of the asset property. To get
 #' the value of an asset property, use
-#' [GetAssetPropertyValue](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_GetAssetPropertyValue.html).
+#' [`get_asset_property_value`][iotsitewise_get_asset_property_value].
 #'
 #' @usage
 #' iotsitewise_describe_asset_property(assetId, propertyId)
@@ -1400,7 +1400,7 @@ iotsitewise_describe_gateway <- function(gatewayId) {
 #' define OPC-UA sources for a gateway in the AWS IoT SiteWise console, all
 #' of your OPC-UA sources are stored in one capability configuration. To
 #' list all capability configurations for a gateway, use
-#' [DescribeGateway](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeGateway.html).
+#' [`describe_gateway`][iotsitewise_describe_gateway].
 #'
 #' @usage
 #' iotsitewise_describe_gateway_capability_configuration(gatewayId,
@@ -1616,7 +1616,7 @@ iotsitewise_disassociate_assets <- function(assetId, hierarchyId, childAssetId, 
 #' -   A `propertyAlias`, which is a data stream alias (for example,
 #'     `/company/windfarm/3/turbine/7/temperature`). To define an asset
 #'     property's alias, see
-#'     [UpdateAssetProperty](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html).
+#'     [`update_asset_property`][iotsitewise_update_asset_property].
 #'
 #' @usage
 #' iotsitewise_get_asset_property_aggregates(assetId, propertyId,
@@ -1706,7 +1706,7 @@ iotsitewise_get_asset_property_aggregates <- function(assetId = NULL, propertyId
 #' -   A `propertyAlias`, which is a data stream alias (for example,
 #'     `/company/windfarm/3/turbine/7/temperature`). To define an asset
 #'     property's alias, see
-#'     [UpdateAssetProperty](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html).
+#'     [`update_asset_property`][iotsitewise_update_asset_property].
 #'
 #' @usage
 #' iotsitewise_get_asset_property_value(assetId, propertyId, propertyAlias)
@@ -1764,7 +1764,7 @@ iotsitewise_get_asset_property_value <- function(assetId = NULL, propertyId = NU
 #' -   A `propertyAlias`, which is a data stream alias (for example,
 #'     `/company/windfarm/3/turbine/7/temperature`). To define an asset
 #'     property's alias, see
-#'     [UpdateAssetProperty](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html).
+#'     [`update_asset_property`][iotsitewise_update_asset_property].
 #'
 #' @usage
 #' iotsitewise_get_asset_property_value_history(assetId, propertyId,
@@ -2002,9 +2002,9 @@ iotsitewise_list_asset_relationships <- function(assetId, traversalType, nextTok
 #' 
 #' You can't use this operation to list all assets. To retrieve summaries
 #' for all of your assets, use
-#' [ListAssetModels](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_ListAssetModels.html)
-#' to get all of your asset model IDs. Then, use ListAssets to get all
-#' assets for each asset model.
+#' [`list_asset_models`][iotsitewise_list_asset_models] to get all of your
+#' asset model IDs. Then, use ListAssets to get all assets for each asset
+#' model.
 #'
 #' @usage
 #' iotsitewise_list_assets(nextToken, maxResults, assetModelId, filter)
@@ -2075,10 +2075,9 @@ iotsitewise_list_assets <- function(nextToken = NULL, maxResults = NULL, assetMo
 #' @param assetId &#91;required&#93; The ID of the asset to query.
 #' @param hierarchyId The ID of the hierarchy by which child assets are associated to the
 #' asset. To find a hierarchy ID, use the
-#' [DescribeAsset](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAsset.html)
-#' or
-#' [DescribeAssetModel](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModel.html)
-#' operations. This parameter is required if you choose `CHILD` for
+#' [`describe_asset`][iotsitewise_describe_asset] or
+#' [`describe_asset_model`][iotsitewise_describe_asset_model] operations.
+#' This parameter is required if you choose `CHILD` for
 #' `traversalDirection`.
 #' 
 #' For more information, see [Asset
@@ -2689,7 +2688,7 @@ iotsitewise_update_asset <- function(assetId, assetName, clientToken = NULL) {
 #' avoid deleting your asset model's properties or hierarchies, you must
 #' include their IDs and definitions in the updated asset model payload.
 #' For more information, see
-#' [DescribeAssetModel](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModel.html).
+#' [`describe_asset_model`][iotsitewise_describe_asset_model].
 #' 
 #' If you remove a property from an asset model, AWS IoT SiteWise deletes
 #' all previous data for that property. If you remove a hierarchy
@@ -2874,7 +2873,7 @@ iotsitewise_update_asset_model <- function(assetModelId, assetModelName, assetMo
 #' state. To keep your existing property's alias or notification state, you
 #' must include the existing values in the UpdateAssetProperty request. For
 #' more information, see
-#' [DescribeAssetProperty](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetProperty.html).
+#' [`describe_asset_property`][iotsitewise_describe_asset_property].
 #'
 #' @usage
 #' iotsitewise_update_asset_property(assetId, propertyId, propertyAlias,
@@ -3033,8 +3032,7 @@ iotsitewise_update_gateway <- function(gatewayId, gatewayName) {
 #' configurations. If you define OPC-UA sources for a gateway in the AWS
 #' IoT SiteWise console, all of your OPC-UA sources are stored in one
 #' capability configuration. To list all capability configurations for a
-#' gateway, use
-#' [DescribeGateway](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeGateway.html).
+#' gateway, use [`describe_gateway`][iotsitewise_describe_gateway].
 #'
 #' @usage
 #' iotsitewise_update_gateway_capability_configuration(gatewayId,

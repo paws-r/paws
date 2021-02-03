@@ -24,8 +24,9 @@ exchange for your current Convertible Reserved Instances.}
 Returns a quote and exchange information for exchanging one or more
 specified Convertible Reserved Instances for a new Convertible Reserved
 Instance. If the exchange cannot be performed, the reason is returned in
-the response. Use AcceptReservedInstancesExchangeQuote to perform the
-exchange.
+the response. Use
+\code{\link[=ec2_accept_reserved_instances_exchange_quote]{accept_reserved_instances_exchange_quote}}
+to perform the exchange.
 }
 \section{Request syntax}{
 \preformatted{svc$get_reserved_instances_exchange_quote(

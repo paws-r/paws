@@ -73,10 +73,11 @@ would specify the \code{ReturnPathArn} to be
 For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
 
 \item{ConfigurationSetName}{The name of the configuration set to use when you send an email using
-\code{SendBulkTemplatedEmail}.}
+\code{\link[=ses_send_bulk_templated_email]{send_bulk_templated_email}}.}
 
 \item{DefaultTags}{A list of tags, in the form of name/value pairs, to apply to an email
-that you send to a destination using \code{SendBulkTemplatedEmail}.}
+that you send to a destination using
+\code{\link[=ses_send_bulk_templated_email]{send_bulk_templated_email}}.}
 
 \item{Template}{[required] The template to use when sending this email.}
 
@@ -98,11 +99,13 @@ specify up to 50 \code{Destination} objects within a \code{Destinations} array.}
 Composes an email message to multiple destinations. The message body is
 created using an email template.
 
-In order to send email using the \code{SendBulkTemplatedEmail} operation,
+In order to send email using the
+\code{\link[=ses_send_bulk_templated_email]{send_bulk_templated_email}} operation,
 your call to the API must meet the following requirements:
 \itemize{
 \item The call must refer to an existing email template. You can create
-email templates using the CreateTemplate operation.
+email templates using the \code{\link[=ses_create_template]{create_template}}
+operation.
 \item The message must be sent from a verified email address or domain.
 \item If your account is still in the Amazon SES sandbox, you may only
 send to verified addresses or domains, or to email addresses
@@ -120,8 +123,9 @@ are valid.
 \item The message may not include more than 50 recipients, across the To:,
 CC: and BCC: fields. If you need to send an email message to a
 larger audience, you can divide your recipient list into groups of
-50 or fewer, and then call the \code{SendBulkTemplatedEmail} operation
-several times to send the message to each group.
+50 or fewer, and then call the
+\code{\link[=ses_send_bulk_templated_email]{send_bulk_templated_email}}
+operation several times to send the message to each group.
 \item The number of destinations you can contact in a single call to the
 API may be limited by your account's maximum sending rate.
 }

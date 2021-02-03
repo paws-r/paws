@@ -19,20 +19,23 @@ the instances that are associated with the specified service.
 
 To get the IDs for the instances that you've registered by using a
 specified service, submit a
-\href{https://docs.aws.amazon.com/cloud-map/latest/api/API_ListInstances.html}{ListInstances}
-request.}
+\code{\link[=servicediscovery_list_instances]{list_instances}} request.}
 
 \item{MaxResults}{The maximum number of instances that you want AWS Cloud Map to return in
-the response to a \code{GetInstancesHealthStatus} request. If you don't
-specify a value for \code{MaxResults}, AWS Cloud Map returns up to 100
-instances.}
+the response to a
+\code{\link[=servicediscovery_get_instances_health_status]{get_instances_health_status}}
+request. If you don't specify a value for \code{MaxResults}, AWS Cloud Map
+returns up to 100 instances.}
 
-\item{NextToken}{For the first \code{GetInstancesHealthStatus} request, omit this value.
+\item{NextToken}{For the first
+\code{\link[=servicediscovery_get_instances_health_status]{get_instances_health_status}}
+request, omit this value.
 
 If more than \code{MaxResults} instances match the specified criteria, you
-can submit another \code{GetInstancesHealthStatus} request to get the next
-group of results. Specify the value of \code{NextToken} from the previous
-response in the next request.}
+can submit another
+\code{\link[=servicediscovery_get_instances_health_status]{get_instances_health_status}}
+request to get the next group of results. Specify the value of
+\code{NextToken} from the previous response in the next request.}
 }
 \description{
 Gets the current health status (\code{Healthy}, \code{Unhealthy}, or \code{Unknown}) of

@@ -28,7 +28,8 @@ characters: =,.@-}
 by the identity provider. Your application must get this token by
 authenticating the user who is using your application with a web
 identity provider before the application makes an
-\code{AssumeRoleWithWebIdentity} call.}
+\code{\link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity}}
+call.}
 
 \item{ProviderId}{The fully qualified host component of the domain name of the identity
 provider.
@@ -126,15 +127,18 @@ To learn more about Amazon Cognito, see \href{https://aws-amplify.github.io/docs
 in \emph{AWS SDK for Android Developer Guide} and \href{https://docs.aws.amazon.com/mobile/sdkforios/developerguide/#d0e664}{Amazon Cognito Overview}
 in the \emph{AWS SDK for iOS Developer Guide}.
 
-Calling \code{AssumeRoleWithWebIdentity} does not require the use of AWS
-security credentials. Therefore, you can distribute an application (for
-example, on mobile devices) that requests temporary security credentials
-without including long-term AWS credentials in the application. You also
-don't need to deploy server-based proxy services that use long-term AWS
-credentials. Instead, the identity of the caller is validated by using a
-token from the web identity provider. For a comparison of
-\code{AssumeRoleWithWebIdentity} with the other API operations that produce
-temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials}
+Calling
+\code{\link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity}}
+does not require the use of AWS security credentials. Therefore, you can
+distribute an application (for example, on mobile devices) that requests
+temporary security credentials without including long-term AWS
+credentials in the application. You also don't need to deploy
+server-based proxy services that use long-term AWS credentials. Instead,
+the identity of the caller is validated by using a token from the web
+identity provider. For a comparison of
+\code{\link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity}}
+with the other API operations that produce temporary credentials, see
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials}
 and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the AWS STS API operations}
 in the \emph{IAM User Guide}.
 
@@ -146,12 +150,12 @@ service API operations.
 \strong{Session Duration}
 
 By default, the temporary security credentials created by
-\code{AssumeRoleWithWebIdentity} last for one hour. However, you can use the
-optional \code{DurationSeconds} parameter to specify the duration of your
-session. You can provide a value from 900 seconds (15 minutes) up to the
-maximum session duration setting for the role. This setting can have a
-value from 1 hour to 12 hours. To learn how to view the maximum value
-for your role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session}{View the Maximum Session Duration Setting for a Role}
+\code{\link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity}}
+last for one hour. However, you can use the optional \code{DurationSeconds}
+parameter to specify the duration of your session. You can provide a
+value from 900 seconds (15 minutes) up to the maximum session duration
+setting for the role. This setting can have a value from 1 hour to 12
+hours. To learn how to view the maximum value for your role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session}{View the Maximum Session Duration Setting for a Role}
 in the \emph{IAM User Guide}. The maximum session duration limit applies when
 you use the \verb{AssumeRole*} API operations or the \verb{assume-role*} CLI
 commands. However the limit does not apply when you use those operations
@@ -161,9 +165,11 @@ in the \emph{IAM User Guide}.
 \strong{Permissions}
 
 The temporary security credentials created by
-\code{AssumeRoleWithWebIdentity} can be used to make API calls to any AWS
-service with the following exception: you cannot call the STS
-\code{GetFederationToken} or \code{GetSessionToken} API operations.
+\code{\link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity}} can
+be used to make API calls to any AWS service with the following
+exception: you cannot call the STS
+\code{\link[=sts_get_federation_token]{get_federation_token}} or
+\code{\link[=sts_get_session_token]{get_session_token}} API operations.
 
 (Optional) You can pass inline or managed \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{session policies}
 to this operation. You can pass a single JSON policy document to use as
@@ -215,15 +221,17 @@ in the \emph{IAM User Guide}.
 
 \strong{Identities}
 
-Before your application can call \code{AssumeRoleWithWebIdentity}, you must
-have an identity token from a supported identity provider and create a
-role that the application can assume. The role that your application
-assumes must trust the identity provider that is associated with the
-identity token. In other words, the identity provider must be specified
-in the role's trust policy.
+Before your application can call
+\code{\link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity}},
+you must have an identity token from a supported identity provider and
+create a role that the application can assume. The role that your
+application assumes must trust the identity provider that is associated
+with the identity token. In other words, the identity provider must be
+specified in the role's trust policy.
 
-Calling \code{AssumeRoleWithWebIdentity} can result in an entry in your AWS
-CloudTrail logs. The entry includes the
+Calling
+\code{\link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity}} can
+result in an entry in your AWS CloudTrail logs. The entry includes the
 \href{https://openid.net/specs/openid-connect-core-1_0.html#Claims}{Subject}
 of the provided Web Identity Token. We recommend that you avoid using
 any personally identifiable information (PII) in this field. For
@@ -231,7 +239,8 @@ example, you could instead use a GUID or a pairwise identifier, as
 \href{https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes}{suggested in the OIDC specification}.
 
 For more information about how to use web identity federation and the
-\code{AssumeRoleWithWebIdentity} API, see the following resources:
+\code{\link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity}}
+API, see the following resources:
 \itemize{
 \item \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc_manual.html}{Using Web Identity Federation API Operations for Mobile Apps}
 and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity}{Federation Through a Web-based Identity Provider}.

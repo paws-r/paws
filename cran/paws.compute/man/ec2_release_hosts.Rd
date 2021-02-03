@@ -23,7 +23,8 @@ stop counting toward your limit and you may receive capacity errors when
 trying to allocate new Dedicated Hosts. Wait a few minutes and then try
 again.
 
-Released hosts still appear in a DescribeHosts response.
+Released hosts still appear in a \code{\link[=ec2_describe_hosts]{describe_hosts}}
+response.
 }
 \section{Request syntax}{
 \preformatted{svc$release_hosts(

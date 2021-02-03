@@ -11,7 +11,7 @@ glue_create_schema(RegistryId, SchemaName, DataFormat, Compatibility,
 \item{RegistryId}{This is a wrapper shape to contain the registry identity fields. If this
 is not provided, the default registry will be used. The ARN format for
 the same will be:
-\verb{arn:aws:glue:us-east-2:&lt;customer id&gt;:registry/default-registry:random-5-letter-id}.}
+\verb{arn:aws:glue:us-east-2:<customer id>:registry/default-registry:random-5-letter-id}.}
 
 \item{SchemaName}{[required] Name of the schema to be created of max length of 255, and may only
 contain letters, numbers, hyphen, underscore, dollar sign, or hash mark.
@@ -77,7 +77,7 @@ first version. Compatibility mode "DISABLED" restricts any additional
 schema versions from being added after the first schema version. For all
 other compatibility modes, validation of compatibility settings will be
 applied only from the second version onwards when the
-\code{RegisterSchemaVersion} API is used.
+\code{\link[=glue_register_schema_version]{register_schema_version}} API is used.
 
 When this API is called without a \code{RegistryId}, this will create an
 entry for a "default-registry" in the registry database tables, if it is

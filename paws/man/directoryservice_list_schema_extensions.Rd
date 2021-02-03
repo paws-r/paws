@@ -11,7 +11,8 @@ directoryservice_list_schema_extensions(DirectoryId, NextToken, Limit)
 extension information.}
 
 \item{NextToken}{The \code{ListSchemaExtensions.NextToken} value from a previous call to
-\code{ListSchemaExtensions}. Pass null if this is the first call.}
+\code{\link[=directoryservice_list_schema_extensions]{list_schema_extensions}}.
+Pass null if this is the first call.}
 
 \item{Limit}{The maximum number of items to return.}
 }

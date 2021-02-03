@@ -19,8 +19,9 @@ container service makes up its configured capacity. To determine the
 monthly price of your container service, multiply the base price of the
 \code{power} with the \code{scale} (the number of nodes) of the service.
 
-Use the \code{GetContainerServicePowers} action to view the specifications of
-each power option.}
+Use the
+\code{\link[=lightsail_get_container_service_powers]{get_container_service_powers}}
+action to view the specifications of each power option.}
 
 \item{scale}{The scale for the container service.
 
@@ -45,8 +46,9 @@ domain of the container service.
 
 You must create and validate an SSL/TLS certificate before you can use
 public domain names with your container service. Use the
-\code{CreateCertificate} action to create a certificate for the public domain
-names you want to use with your container service.
+\code{\link[=lightsail_create_certificate]{create_certificate}} action to create a
+certificate for the public domain names you want to use with your
+container service.
 
 You can specify public domain names using a string to array map as shown
 in the example later on this page.}

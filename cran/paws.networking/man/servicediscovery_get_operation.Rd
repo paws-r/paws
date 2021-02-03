@@ -12,10 +12,11 @@ servicediscovery_get_operation(OperationId)
 }
 \description{
 Gets information about any operation that returns an operation ID in the
-response, such as a \code{CreateService} request.
+response, such as a \code{\link[=servicediscovery_create_service]{create_service}}
+request.
 
 To get a list of operations that match specified criteria, see
-\href{https://docs.aws.amazon.com/cloud-map/latest/api/API_ListOperations.html}{ListOperations}.
+\code{\link[=servicediscovery_list_operations]{list_operations}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_operation(

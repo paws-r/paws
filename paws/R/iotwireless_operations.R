@@ -547,7 +547,8 @@ iotwireless_create_wireless_gateway_task <- function(Id, WirelessGatewayTaskDefi
 #'
 #' @param AutoCreateTasks &#91;required&#93; Whether to automatically create tasks using this task definition for all
 #' gateways with the specified current version. If `false`, the task must
-#' me created by calling `CreateWirelessGatewayTask`.
+#' me created by calling
+#' [`create_wireless_gateway_task`][iotwireless_create_wireless_gateway_task].
 #' @param Name The name of the new resource.
 #' @param Update Information about the gateways to update.
 #' @param ClientRequestToken Each resource must have a unique client request token. If you try to

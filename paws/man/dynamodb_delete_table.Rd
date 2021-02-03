@@ -10,18 +10,18 @@ dynamodb_delete_table(TableName)
 \item{TableName}{[required] The name of the table to delete.}
 }
 \description{
-The \code{DeleteTable} operation deletes a table and all of its items. After
-a \code{DeleteTable} request, the specified table is in the \code{DELETING} state
-until DynamoDB completes the deletion. If the table is in the \code{ACTIVE}
-state, you can delete it. If a table is in \code{CREATING} or \code{UPDATING}
-states, then DynamoDB returns a \code{ResourceInUseException}. If the
-specified table does not exist, DynamoDB returns a
-\code{ResourceNotFoundException}. If table is already in the \code{DELETING}
-state, no error is returned.
+The \code{\link[=dynamodb_delete_table]{delete_table}} operation deletes a table
+and all of its items. After a \code{\link[=dynamodb_delete_table]{delete_table}}
+request, the specified table is in the \code{DELETING} state until DynamoDB
+completes the deletion. If the table is in the \code{ACTIVE} state, you can
+delete it. If a table is in \code{CREATING} or \code{UPDATING} states, then
+DynamoDB returns a \code{ResourceInUseException}. If the specified table does
+not exist, DynamoDB returns a \code{ResourceNotFoundException}. If table is
+already in the \code{DELETING} state, no error is returned.
 
 DynamoDB might continue to accept data read and write operations, such
-as \code{GetItem} and \code{PutItem}, on a table in the \code{DELETING} state until the
-table deletion is complete.
+as \href{dynamodb_get_item}{\code{get_item}} and \code{\link[=dynamodb_put_item]{put_item}},
+on a table in the \code{DELETING} state until the table deletion is complete.
 
 When you delete a table, any indexes on that table are also deleted.
 
@@ -29,7 +29,8 @@ If you have DynamoDB Streams enabled on the table, then the
 corresponding stream on that table goes into the \code{DISABLED} state, and
 the stream is automatically deleted after 24 hours.
 
-Use the \code{DescribeTable} action to check the status of the table.
+Use the \code{\link[=dynamodb_describe_table]{describe_table}} action to check the
+status of the table.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_table(

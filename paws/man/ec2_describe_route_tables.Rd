@@ -36,11 +36,12 @@ the table.
 \item \code{route.nat-gateway-id} - The ID of a NAT gateway.
 \item \code{route.transit-gateway-id} - The ID of a transit gateway.
 \item \code{route.origin} - Describes how the route was created.
-\code{CreateRouteTable} indicates that the route was automatically
-created when the route table was created; \code{CreateRoute} indicates
-that the route was manually added to the route table;
-\code{EnableVgwRoutePropagation} indicates that the route was propagated
-by route propagation.
+\code{\link[=ec2_create_route_table]{create_route_table}} indicates that the
+route was automatically created when the route table was created;
+\code{\link[=ec2_create_route]{create_route}} indicates that the route was
+manually added to the route table;
+\code{\link[=ec2_enable_vgw_route_propagation]{enable_vgw_route_propagation}}
+indicates that the route was propagated by route propagation.
 \item \code{route.state} - The state of a route in the route table (\code{active} |
 \code{blackhole}). The blackhole state indicates that the route's target
 isn't available (for example, the specified gateway isn't attached

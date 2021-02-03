@@ -20,7 +20,9 @@ game server in the specified game server group.}
 
 \item{GameServerData}{A set of custom game server properties, formatted as a single string
 value. This data is passed to a game client or service when it requests
-information on game servers using ListGameServers or ClaimGameServer.}
+information on game servers using
+\code{\link[=gamelift_list_game_servers]{list_game_servers}} or
+\code{\link[=gamelift_claim_game_server]{claim_game_server}}.}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -44,10 +46,11 @@ When a game server is successfully claimed, connection information is
 returned. A claimed game server's utilization status remains \code{AVAILABLE}
 while the claim status is set to \code{CLAIMED} for up to 60 seconds. This
 time period gives the game server time to update its status to
-\code{UTILIZED} (using UpdateGameServer) once players join. If the game
-server's status is not updated within 60 seconds, the game server
-reverts to unclaimed status and is available to be claimed by another
-request. The claim time period is a fixed value and is not configurable.
+\code{UTILIZED} (using \code{\link[=gamelift_update_game_server]{update_game_server}})
+once players join. If the game server's status is not updated within 60
+seconds, the game server reverts to unclaimed status and is available to
+be claimed by another request. The claim time period is a fixed value
+and is not configurable.
 
 If you try to claim a specific game server, this request will fail in
 the following cases:
@@ -59,7 +62,7 @@ the following cases:
 When claiming a specific game server, this request will succeed even if
 the game server is running on an instance in \code{DRAINING} status. To avoid
 this, first check the instance status by calling
-DescribeGameServerInstances.
+\code{\link[=gamelift_describe_game_server_instances]{describe_game_server_instances}}.
 
 \strong{Learn more}
 
@@ -67,12 +70,12 @@ DescribeGameServerInstances.
 
 \strong{Related operations}
 \itemize{
-\item RegisterGameServer
-\item ListGameServers
-\item ClaimGameServer
-\item DescribeGameServer
-\item UpdateGameServer
-\item DeregisterGameServer
+\item \code{\link[=gamelift_register_game_server]{register_game_server}}
+\item \code{\link[=gamelift_list_game_servers]{list_game_servers}}
+\item \code{\link[=gamelift_claim_game_server]{claim_game_server}}
+\item \code{\link[=gamelift_describe_game_server]{describe_game_server}}
+\item \code{\link[=gamelift_update_game_server]{update_game_server}}
+\item \code{\link[=gamelift_deregister_game_server]{deregister_game_server}}
 }
 }
 \section{Request syntax}{

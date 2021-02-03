@@ -66,7 +66,8 @@ Constraints:
 change is asynchronously applied as soon as possible.
 
 Not applicable. The associated list of EC2 VPC security groups is
-managed by the DB cluster. For more information, see ModifyDBCluster.
+managed by the DB cluster. For more information, see
+\code{\link[=neptune_modify_db_cluster]{modify_db_cluster}}.
 
 Constraints:
 \itemize{
@@ -79,8 +80,9 @@ of the \code{PreferredMaintenanceWindow} setting for the DB instance.
 
 If this parameter is set to \code{false}, changes to the DB instance are
 applied during the next maintenance window. Some parameter changes can
-cause an outage and are applied on the next call to RebootDBInstance, or
-the next failure reboot.
+cause an outage and are applied on the next call to
+\code{\link[=neptune_reboot_db_instance]{reboot_db_instance}}, or the next failure
+reboot.
 
 Default: \code{false}}
 
@@ -99,7 +101,8 @@ Constraints: The DB parameter group must be in the same DB parameter
 group family as this DB instance.}
 
 \item{BackupRetentionPeriod}{Not applicable. The retention period for automated backups is managed by
-the DB cluster. For more information, see ModifyDBCluster.
+the DB cluster. For more information, see
+\code{\link[=neptune_modify_db_cluster]{modify_db_cluster}}.
 
 Default: Uses existing setting}
 
@@ -107,7 +110,8 @@ Default: Uses existing setting}
 automated backups are enabled.
 
 Not applicable. The daily time range for creating automated backups is
-managed by the DB cluster. For more information, see ModifyDBCluster.
+managed by the DB cluster. For more information, see
+\code{\link[=neptune_modify_db_cluster]{modify_db_cluster}}.
 
 Constraints:
 \itemize{
@@ -142,7 +146,9 @@ set to \code{true} for this request.}
 
 \item{EngineVersion}{The version number of the database engine to upgrade to. Currently,
 setting this parameter has no effect. To upgrade your database engine to
-the most recent release, use the ApplyPendingMaintenanceAction API.}
+the most recent release, use the
+\code{\link[=neptune_apply_pending_maintenance_action]{apply_pending_maintenance_action}}
+API.}
 
 \item{AllowMajorVersionUpgrade}{Indicates that major version upgrades are allowed. Changing this
 parameter doesn't result in an outage and the change is asynchronously
@@ -243,7 +249,8 @@ You can enable IAM database authentication for the following database
 engines
 
 Not applicable. Mapping AWS IAM accounts to database accounts is managed
-by the DB cluster. For more information, see ModifyDBCluster.
+by the DB cluster. For more information, see
+\code{\link[=neptune_modify_db_cluster]{modify_db_cluster}}.
 
 Default: \code{false}}
 
@@ -262,8 +269,9 @@ enabled. By default, deletion protection is disabled. See \href{https://docs.aws
 Modifies settings for a DB instance. You can change one or more database
 configuration parameters by specifying these parameters and the new
 values in the request. To learn what modifications you can make to your
-DB instance, call DescribeValidDBInstanceModifications before you call
-ModifyDBInstance.
+DB instance, call
+\code{\link[=neptune_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}}
+before you call \code{\link[=neptune_modify_db_instance]{modify_db_instance}}.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_db_instance(

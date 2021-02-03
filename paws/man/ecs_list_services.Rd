@@ -12,23 +12,25 @@ ecs_list_services(cluster, nextToken, maxResults, launchType,
 hosts the services to list. If you do not specify a cluster, the default
 cluster is assumed.}
 
-\item{nextToken}{The \code{nextToken} value returned from a \code{ListServices} request indicating
-that more results are available to fulfill the request and further calls
-will be needed. If \code{maxResults} was provided, it is possible the number
-of results to be fewer than \code{maxResults}.
+\item{nextToken}{The \code{nextToken} value returned from a
+\code{\link[=ecs_list_services]{list_services}} request indicating that more
+results are available to fulfill the request and further calls will be
+needed. If \code{maxResults} was provided, it is possible the number of
+results to be fewer than \code{maxResults}.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
-\item{maxResults}{The maximum number of service results returned by \code{ListServices} in
-paginated output. When this parameter is used, \code{ListServices} only
-returns \code{maxResults} results in a single page along with a \code{nextToken}
-response element. The remaining results of the initial request can be
-seen by sending another \code{ListServices} request with the returned
-\code{nextToken} value. This value can be between 1 and 100. If this
-parameter is not used, then \code{ListServices} returns up to 10 results and
-a \code{nextToken} value if applicable.}
+\item{maxResults}{The maximum number of service results returned by
+\code{\link[=ecs_list_services]{list_services}} in paginated output. When this
+parameter is used, \code{\link[=ecs_list_services]{list_services}} only returns
+\code{maxResults} results in a single page along with a \code{nextToken} response
+element. The remaining results of the initial request can be seen by
+sending another \code{\link[=ecs_list_services]{list_services}} request with the
+returned \code{nextToken} value. This value can be between 1 and 100. If this
+parameter is not used, then \code{\link[=ecs_list_services]{list_services}} returns
+up to 10 results and a \code{nextToken} value if applicable.}
 
 \item{launchType}{The launch type for the services to list.}
 

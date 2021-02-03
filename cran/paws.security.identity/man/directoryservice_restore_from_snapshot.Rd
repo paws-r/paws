@@ -17,7 +17,8 @@ directory after the snapshot date are overwritten.
 
 This action returns as soon as the restore operation is initiated. You
 can monitor the progress of the restore operation by calling the
-DescribeDirectories operation with the directory identifier. When the
+\code{\link[=directoryservice_describe_directories]{describe_directories}}
+operation with the directory identifier. When the
 \strong{DirectoryDescription.Stage} value changes to \code{Active}, the restore
 operation is complete.
 }

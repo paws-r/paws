@@ -7,9 +7,10 @@
 kinesisvideo_list_tags_for_stream(NextToken, StreamARN, StreamName)
 }
 \arguments{
-\item{NextToken}{If you specify this parameter and the result of a \code{ListTagsForStream}
-call is truncated, the response includes a token that you can use in the
-next request to fetch the next batch of tags.}
+\item{NextToken}{If you specify this parameter and the result of a
+\code{\link[=kinesisvideo_list_tags_for_stream]{list_tags_for_stream}} call is
+truncated, the response includes a token that you can use in the next
+request to fetch the next batch of tags.}
 
 \item{StreamARN}{The Amazon Resource Name (ARN) of the stream that you want to list tags
 for.}

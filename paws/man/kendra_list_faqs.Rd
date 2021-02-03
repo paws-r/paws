@@ -9,8 +9,8 @@ kendra_list_faqs(IndexId, NextToken, MaxResults)
 \arguments{
 \item{IndexId}{[required] The index that contains the FAQ lists.}
 
-\item{NextToken}{If the result of the previous request to \code{ListFaqs} was truncated,
-include the \code{NextToken} to fetch the next set of FAQs.}
+\item{NextToken}{If the result of the previous request to \code{\link[=kendra_list_faqs]{list_faqs}}
+was truncated, include the \code{NextToken} to fetch the next set of FAQs.}
 
 \item{MaxResults}{The maximum number of FAQs to return in the response. If there are fewer
 results in the list, this response contains only the actual results.}

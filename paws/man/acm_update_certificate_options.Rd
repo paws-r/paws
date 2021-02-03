@@ -9,7 +9,7 @@ acm_update_certificate_options(CertificateArn, Options)
 \arguments{
 \item{CertificateArn}{[required] ARN of the requested certificate to update. This must be of the form:
 
-\verb{arn:aws:acm:us-east-1:<i>account</i>:certificate/<i>12345678-1234-1234-1234-123456789012</i> }}
+\code{arn:aws:acm:us-east-1:account:certificate/12345678-1234-1234-1234-123456789012 }}
 
 \item{Options}{[required] Use to update the options for your certificate. Currently, you can
 specify whether to add your certificate to a transparency log.

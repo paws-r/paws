@@ -13,11 +13,12 @@ simpledb_batch_put_attributes(DomainName, Items)
 \item{Items}{[required] A list of items on which to perform the operation.}
 }
 \description{
-The \code{BatchPutAttributes} operation creates or replaces attributes within
-one or more items. By using this operation, the client can perform
-multiple PutAttribute operation with a single call. This helps yield
-savings in round trips and latencies, enabling Amazon SimpleDB to
-optimize requests and generally produce better throughput.
+The \code{\link[=simpledb_batch_put_attributes]{batch_put_attributes}} operation
+creates or replaces attributes within one or more items. By using this
+operation, the client can perform multiple PutAttribute operation with a
+single call. This helps yield savings in round trips and latencies,
+enabling Amazon SimpleDB to optimize requests and generally produce
+better throughput.
 
 The client may specify the item name with the \code{Item.X.ItemName}
 parameter. The client may specify new attributes using a combination of
@@ -44,18 +45,19 @@ attributes of the item will be \verb{\\\{ 'a', '1' \\\}} and \verb{\\\{ 'b', '4'
 replacing the previous values of the 'b' attribute with the new value.
 
 You cannot specify an empty string as an item or as an attribute name.
-The \code{BatchPutAttributes} operation succeeds or fails in its entirety.
-There are no partial puts.
+The \code{\link[=simpledb_batch_put_attributes]{batch_put_attributes}} operation
+succeeds or fails in its entirety. There are no partial puts.
 
 This operation is vulnerable to exceeding the maximum URL size when
 making a REST request using the HTTP GET method. This operation does not
 support conditions using \code{Expected.X.Name}, \code{Expected.X.Value}, or
 \code{Expected.X.Exists}.
 
-You can execute multiple \code{BatchPutAttributes} operations and other
-operations in parallel. However, large numbers of concurrent
-\code{BatchPutAttributes} calls can result in Service Unavailable (503)
-responses.
+You can execute multiple
+\code{\link[=simpledb_batch_put_attributes]{batch_put_attributes}} operations and
+other operations in parallel. However, large numbers of concurrent
+\code{\link[=simpledb_batch_put_attributes]{batch_put_attributes}} calls can result
+in Service Unavailable (503) responses.
 
 The following limitations are enforced for this operation:
 \itemize{
@@ -63,7 +65,8 @@ The following limitations are enforced for this operation:
 \item 1 MB request size
 \item 1 billion attributes per domain
 \item 10 GB of total user data storage per domain
-\item 25 item limit per \code{BatchPutAttributes} operation
+\item 25 item limit per
+\code{\link[=simpledb_batch_put_attributes]{batch_put_attributes}} operation
 }
 }
 \section{Request syntax}{

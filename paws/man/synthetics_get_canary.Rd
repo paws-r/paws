@@ -12,8 +12,7 @@ synthetics_get_canary(Name)
 \description{
 Retrieves complete information about one canary. You must specify the
 name of the canary that you want. To get a list of canaries and their
-names, use
-\href{https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html}{DescribeCanaries}.
+names, use \code{\link[=synthetics_describe_canaries]{describe_canaries}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_canary(

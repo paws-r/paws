@@ -19,13 +19,15 @@ resources that it depends on.
 \item An intent exports dependent slot types.
 }}
 
-\item{mergeStrategy}{[required] Specifies the action that the \code{StartImport} operation should take when
-there is an existing resource with the same name.
+\item{mergeStrategy}{[required] Specifies the action that the
+\code{\link[=lexmodelbuildingservice_start_import]{start_import}} operation should
+take when there is an existing resource with the same name.
 \itemize{
 \item FAIL\\_ON\\_CONFLICT - The import operation is stopped on the first
 conflict between a resource in the import file and an existing
 resource. The name of the resource causing the conflict is in the
-\code{failureReason} field of the response to the \code{GetImport} operation.
+\code{failureReason} field of the response to the
+\code{\link[=lexmodelbuildingservice_get_import]{get_import}} operation.
 
 OVERWRITE\\_LATEST - The import operation proceeds even if there is a
 conflict with an existing resource. The $LASTEST version of the

@@ -18,35 +18,42 @@ create the dataset.
 
 If you don't specify \code{DatasetSource}, an empty dataset is created and
 the operation synchronously returns. Later, you can add JSON Lines by
-calling UpdateDatasetEntries.
+calling
+\code{\link[=lookoutforvision_update_dataset_entries]{update_dataset_entries}}.
 
 If you specify a value for \code{DataSource}, the manifest at the S3 location
-is validated and used to create the dataset. The call to \code{CreateDataset}
-is asynchronous and might take a while to complete. To find out the
-current status, Check the value of \code{Status} returned in a call to
-DescribeDataset.}
+is validated and used to create the dataset. The call to
+\code{\link[=lookoutforvision_create_dataset]{create_dataset}} is asynchronous and
+might take a while to complete. To find out the current status, Check
+the value of \code{Status} returned in a call to
+\code{\link[=lookoutforvision_describe_dataset]{describe_dataset}}.}
 
 \item{ClientToken}{ClientToken is an idempotency token that ensures a call to
-\code{CreateDataset} completes only once. You choose the value to pass. For
-example, An issue, such as an network outage, might prevent you from
-getting a response from \code{CreateDataset}. In this case, safely retry your
-call to \code{CreateDataset} by using the same \code{ClientToken} parameter value.
-An error occurs if the other input parameters are not the same as in the
-first request. Using a different value for \code{ClientToken} is considered a
-new call to \code{CreateDataset}. An idempotency token is active for 8 hours.}
+\code{\link[=lookoutforvision_create_dataset]{create_dataset}} completes only once.
+You choose the value to pass. For example, An issue, such as an network
+outage, might prevent you from getting a response from
+\code{\link[=lookoutforvision_create_dataset]{create_dataset}}. In this case,
+safely retry your call to
+\code{\link[=lookoutforvision_create_dataset]{create_dataset}} by using the same
+\code{ClientToken} parameter value. An error occurs if the other input
+parameters are not the same as in the first request. Using a different
+value for \code{ClientToken} is considered a new call to
+\code{\link[=lookoutforvision_create_dataset]{create_dataset}}. An idempotency
+token is active for 8 hours.}
 }
 \description{
 Creates a new dataset in an Amazon Lookout for Vision project.
-\code{CreateDataset} can create a training or a test dataset from a valid
-dataset source (\code{DatasetSource}).
+\code{\link[=lookoutforvision_create_dataset]{create_dataset}} can create a
+training or a test dataset from a valid dataset source
+(\code{DatasetSource}).
 
 If you want a single dataset project, specify \code{train} for the value of
 \code{DatasetType}.
 
 To have a project with separate training and test datasets, call
-\code{CreateDataset} twice. On the first call, specify \code{train} for the value
-of \code{DatasetType}. On the second call, specify \code{test} for the value of
-\code{DatasetType}. of dataset with
+\code{\link[=lookoutforvision_create_dataset]{create_dataset}} twice. On the first
+call, specify \code{train} for the value of \code{DatasetType}. On the second
+call, specify \code{test} for the value of \code{DatasetType}. of dataset with
 }
 \section{Request syntax}{
 \preformatted{svc$create_dataset(

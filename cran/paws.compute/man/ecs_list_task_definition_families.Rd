@@ -11,21 +11,22 @@ ecs_list_task_definition_families(familyPrefix, status, nextToken,
 }
 \arguments{
 \item{familyPrefix}{The \code{familyPrefix} is a string that is used to filter the results of
-\code{ListTaskDefinitionFamilies}. If you specify a \code{familyPrefix}, only task
-definition family names that begin with the \code{familyPrefix} string are
-returned.}
+\code{\link[=ecs_list_task_definition_families]{list_task_definition_families}}. If
+you specify a \code{familyPrefix}, only task definition family names that
+begin with the \code{familyPrefix} string are returned.}
 
 \item{status}{The task definition family status with which to filter the
-\code{ListTaskDefinitionFamilies} results. By default, both \code{ACTIVE} and
-\code{INACTIVE} task definition families are listed. If this parameter is set
-to \code{ACTIVE}, only task definition families that have an \code{ACTIVE} task
-definition revision are returned. If this parameter is set to
-\code{INACTIVE}, only task definition families that do not have any \code{ACTIVE}
-task definition revisions are returned. If you paginate the resulting
-output, be sure to keep the \code{status} value constant in each subsequent
-request.}
+\code{\link[=ecs_list_task_definition_families]{list_task_definition_families}}
+results. By default, both \code{ACTIVE} and \code{INACTIVE} task definition
+families are listed. If this parameter is set to \code{ACTIVE}, only task
+definition families that have an \code{ACTIVE} task definition revision are
+returned. If this parameter is set to \code{INACTIVE}, only task definition
+families that do not have any \code{ACTIVE} task definition revisions are
+returned. If you paginate the resulting output, be sure to keep the
+\code{status} value constant in each subsequent request.}
 
-\item{nextToken}{The \code{nextToken} value returned from a \code{ListTaskDefinitionFamilies}
+\item{nextToken}{The \code{nextToken} value returned from a
+\code{\link[=ecs_list_task_definition_families]{list_task_definition_families}}
 request indicating that more results are available to fulfill the
 request and further calls will be needed. If \code{maxResults} was provided,
 it is possible the number of results to be fewer than \code{maxResults}.
@@ -35,14 +36,17 @@ to retrieve the next items in a list and not for other programmatic
 purposes.}
 
 \item{maxResults}{The maximum number of task definition family results returned by
-\code{ListTaskDefinitionFamilies} in paginated output. When this parameter is
-used, \code{ListTaskDefinitions} only returns \code{maxResults} results in a
-single page along with a \code{nextToken} response element. The remaining
-results of the initial request can be seen by sending another
-\code{ListTaskDefinitionFamilies} request with the returned \code{nextToken}
-value. This value can be between 1 and 100. If this parameter is not
-used, then \code{ListTaskDefinitionFamilies} returns up to 100 results and a
-\code{nextToken} value if applicable.}
+\code{\link[=ecs_list_task_definition_families]{list_task_definition_families}} in
+paginated output. When this parameter is used,
+\code{\link[=ecs_list_task_definitions]{list_task_definitions}} only returns
+\code{maxResults} results in a single page along with a \code{nextToken} response
+element. The remaining results of the initial request can be seen by
+sending another
+\code{\link[=ecs_list_task_definition_families]{list_task_definition_families}}
+request with the returned \code{nextToken} value. This value can be between 1
+and 100. If this parameter is not used, then
+\code{\link[=ecs_list_task_definition_families]{list_task_definition_families}}
+returns up to 100 results and a \code{nextToken} value if applicable.}
 }
 \description{
 Returns a list of task definition families that are registered to your

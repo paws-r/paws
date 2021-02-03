@@ -29,8 +29,10 @@ and supports TCP, TLS, and UDP.
 }
 
 To describe the target groups for an Auto Scaling group, call the
-DescribeLoadBalancerTargetGroups API. To detach the target group from
-the Auto Scaling group, call the DetachLoadBalancerTargetGroups API.
+\code{\link[=autoscaling_describe_load_balancer_target_groups]{describe_load_balancer_target_groups}}
+API. To detach the target group from the Auto Scaling group, call the
+\code{\link[=autoscaling_detach_load_balancer_target_groups]{detach_load_balancer_target_groups}}
+API.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html}{Elastic Load Balancing and Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.

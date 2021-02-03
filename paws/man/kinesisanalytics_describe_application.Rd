@@ -20,14 +20,13 @@ Returns information about a specific Amazon Kinesis Analytics
 application.
 
 If you want to retrieve a list of all applications in your account, use
-the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_ListApplications.html}{ListApplications}
-operation.
+the \code{\link[=kinesisanalytics_list_applications]{list_applications}} operation.
 
 This operation requires permissions to perform the
 \code{kinesisanalytics:DescribeApplication} action. You can use
-\code{DescribeApplication} to get the current application versionId, which
-you need to call other operations such as \code{Update}.
+\code{\link[=kinesisanalytics_describe_application]{describe_application}} to get
+the current application versionId, which you need to call other
+operations such as \code{Update}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_application(

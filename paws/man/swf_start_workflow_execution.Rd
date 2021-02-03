@@ -72,12 +72,15 @@ specified, a fault is returned.}
 
 \item{tagList}{The list of tags to associate with the workflow execution. You can
 specify a maximum of 5 tags. You can list workflow executions with a
-specific tag by calling ListOpenWorkflowExecutions or
-ListClosedWorkflowExecutions and specifying a TagFilter.}
+specific tag by calling
+\code{\link[=swf_list_open_workflow_executions]{list_open_workflow_executions}} or
+\code{\link[=swf_list_closed_workflow_executions]{list_closed_workflow_executions}}
+and specifying a TagFilter.}
 
 \item{taskStartToCloseTimeout}{Specifies the maximum duration of decision tasks for this workflow
 execution. This parameter overrides the \code{defaultTaskStartToCloseTimout}
-specified when registering the workflow type using RegisterWorkflowType.
+specified when registering the workflow type using
+\code{\link[=swf_register_workflow_type]{register_workflow_type}}.
 
 The duration is specified in seconds, an integer greater than or equal
 to \code{0}. You can use \code{NONE} to specify unlimited duration.
@@ -90,9 +93,10 @@ is returned.}
 
 \item{childPolicy}{If set, specifies the policy to use for the child workflow executions of
 this workflow execution if it is terminated, by calling the
-TerminateWorkflowExecution action explicitly or due to an expired
-timeout. This policy overrides the default child policy specified when
-registering the workflow type using RegisterWorkflowType.
+\code{\link[=swf_terminate_workflow_execution]{terminate_workflow_execution}}
+action explicitly or due to an expired timeout. This policy overrides
+the default child policy specified when registering the workflow type
+using \code{\link[=swf_register_workflow_type]{register_workflow_type}}.
 
 The supported child policies are:
 \itemize{

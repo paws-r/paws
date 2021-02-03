@@ -11,10 +11,10 @@ acmpca_create_permission(CertificateAuthorityArn, Principal,
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of the CA that grants the permissions.
 You can find the ARN by calling the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html}{ListCertificateAuthorities}
+\code{\link[=acmpca_list_certificate_authorities]{list_certificate_authorities}}
 action. This must have the following form:
 
-\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
+\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 
 \item{Principal}{[required] The AWS service or identity that receives the permission. At this time,
 the only valid principal is \code{acm.amazonaws.com}.}
@@ -22,7 +22,9 @@ the only valid principal is \code{acm.amazonaws.com}.}
 \item{SourceAccount}{The ID of the calling account.}
 
 \item{Actions}{[required] The actions that the specified AWS service principal can use. These
-include \code{IssueCertificate}, \code{GetCertificate}, and \code{ListPermissions}.}
+include \code{\link[=acmpca_issue_certificate]{issue_certificate}},
+\code{\link[=acmpca_get_certificate]{get_certificate}}, and
+\code{\link[=acmpca_list_permissions]{list_permissions}}.}
 }
 \description{
 Grants one or more permissions on a private CA to the AWS Certificate
@@ -31,16 +33,15 @@ allow ACM to issue and renew ACM certificates that reside in the same
 AWS account as the CA.
 
 You can list current permissions with the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListPermissions.html}{ListPermissions}
-action and revoke them with the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeletePermission.html}{DeletePermission}
-action.
+\code{\link[=acmpca_list_permissions]{list_permissions}} action and revoke them
+with the \code{\link[=acmpca_delete_permission]{delete_permission}} action.
 
 \strong{About Permissions}
 \itemize{
 \item If the private CA and the certificates it issues reside in the same
-account, you can use \code{CreatePermission} to grant permissions for ACM
-to carry out automatic certificate renewals.
+account, you can use \code{\link[=acmpca_create_permission]{create_permission}}
+to grant permissions for ACM to carry out automatic certificate
+renewals.
 \item For automatic certificate renewal to succeed, the ACM service
 principal needs permissions to create, retrieve, and list
 certificates.

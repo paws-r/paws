@@ -11,8 +11,10 @@ computeoptimizer_describe_recommendation_export_jobs(jobIds, filters,
 \item{jobIds}{The identification numbers of the export jobs to return.
 
 An export job ID is returned when you create an export using the
-\code{ExportAutoScalingGroupRecommendations} or
-\code{ExportEC2InstanceRecommendations} actions.
+\code{\link[=computeoptimizer_export_auto_scaling_group_recommendations]{export_auto_scaling_group_recommendations}}
+or
+\code{\link[=computeoptimizer_export_ec2_instance_recommendations]{export_ec2_instance_recommendations}}
+actions.
 
 All export jobs created in the last seven days are returned if this
 parameter is omitted.}
@@ -30,10 +32,13 @@ returned \code{NextToken} value.}
 \description{
 Describes recommendation export jobs created in the last seven days.
 
-Use the \code{ExportAutoScalingGroupRecommendations} or
-\code{ExportEC2InstanceRecommendations} actions to request an export of your
-recommendations. Then use the \code{DescribeRecommendationExportJobs} action
-to view your export jobs.
+Use the
+\code{\link[=computeoptimizer_export_auto_scaling_group_recommendations]{export_auto_scaling_group_recommendations}}
+or
+\code{\link[=computeoptimizer_export_ec2_instance_recommendations]{export_ec2_instance_recommendations}}
+actions to request an export of your recommendations. Then use the
+\code{\link[=computeoptimizer_describe_recommendation_export_jobs]{describe_recommendation_export_jobs}}
+action to view your export jobs.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_recommendation_export_jobs(

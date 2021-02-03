@@ -10,9 +10,10 @@ sagemaker_list_hyper_parameter_tuning_jobs(NextToken, MaxResults,
   LastModifiedTimeAfter, LastModifiedTimeBefore, StatusEquals)
 }
 \arguments{
-\item{NextToken}{If the result of the previous \code{ListHyperParameterTuningJobs} request was
-truncated, the response includes a \code{NextToken}. To retrieve the next set
-of tuning jobs, use the token in the next request.}
+\item{NextToken}{If the result of the previous
+\code{\link[=sagemaker_list_hyper_parameter_tuning_jobs]{list_hyper_parameter_tuning_jobs}}
+request was truncated, the response includes a \code{NextToken}. To retrieve
+the next set of tuning jobs, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of tuning jobs to return. The default value is 10.}
 

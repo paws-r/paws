@@ -23,7 +23,8 @@ you specified when you created each volume. For more information, see
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 You can specify the default CMK for encryption by default using
-ModifyEbsDefaultKmsKeyId or ResetEbsDefaultKmsKeyId.
+\code{\link[=ec2_modify_ebs_default_kms_key_id]{modify_ebs_default_kms_key_id}} or
+\code{\link[=ec2_reset_ebs_default_kms_key_id]{reset_ebs_default_kms_key_id}}.
 
 Enabling encryption by default has no effect on the encryption status of
 your existing volumes.

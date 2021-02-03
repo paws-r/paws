@@ -13,8 +13,8 @@ cloudsearch_delete_index_field(DomainName, IndexFieldName)
 indexing options.}
 }
 \description{
-Removes an \verb{<a>IndexField</a>} from the search domain. For more
-information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html}{Configuring Index Fields}
+Removes an \code{IndexField} from the search domain. For more information,
+see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html}{Configuring Index Fields}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{

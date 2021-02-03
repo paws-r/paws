@@ -13,7 +13,8 @@ protection group in lists and to manage the protection group, for
 example to update, delete, or describe it.}
 
 \item{NextToken}{The next token value from a previous call to
-\code{ListResourcesInProtectionGroup}. Pass null if this is the first call.}
+\code{\link[=shield_list_resources_in_protection_group]{list_resources_in_protection_group}}.
+Pass null if this is the first call.}
 
 \item{MaxResults}{The maximum number of resource ARN objects to return. If you leave this
 blank, Shield Advanced returns the first 20 results.

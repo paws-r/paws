@@ -11,7 +11,7 @@ personalize_describe_solution(solutionArn)
 }
 \description{
 Describes a solution. For more information on solutions, see
-CreateSolution.
+\code{\link[=personalize_create_solution]{create_solution}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_solution(

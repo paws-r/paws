@@ -13,8 +13,9 @@ container image.}
 
 \item{image}{[required] The name of the container image to delete from the container service.
 
-Use the \code{GetContainerImages} action to get the name of the container
-images that are registered to a container service.
+Use the \code{\link[=lightsail_get_container_images]{get_container_images}} action
+to get the name of the container images that are registered to a
+container service.
 
 Container images sourced from your Lightsail container service, that are
 registered and stored on your service, start with a colon (\code{:}). For

@@ -30,8 +30,9 @@ Stops the application from processing data. You can stop an application
 only if it is in the running status, unless you set the \code{Force}
 parameter to \code{true}.
 
-You can use the DescribeApplication operation to find the application
-status.
+You can use the
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
+operation to find the application status.
 
 Kinesis Data Analytics takes a snapshot when the application is stopped,
 unless \code{Force} is set to \code{true}.

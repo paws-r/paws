@@ -26,11 +26,12 @@ Default: \code{100}
 Constraints: minimum 20, maximum 100.}
 
 \item{Marker}{An optional parameter that specifies the starting point to return a set
-of response records. When the results of a DescribeUsageLimits request
-exceed the value specified in \code{MaxRecords}, AWS returns a value in the
-\code{Marker} field of the response. You can retrieve the next set of
-response records by providing the returned marker value in the \code{Marker}
-parameter and retrying the request.}
+of response records. When the results of a
+\code{\link[=redshift_describe_usage_limits]{describe_usage_limits}} request exceed
+the value specified in \code{MaxRecords}, AWS returns a value in the \code{Marker}
+field of the response. You can retrieve the next set of response records
+by providing the returned marker value in the \code{Marker} parameter and
+retrying the request.}
 
 \item{TagKeys}{A tag key or keys for which you want to return all matching usage limit
 objects that are associated with the specified key or keys. For example,

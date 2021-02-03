@@ -8,14 +8,14 @@ glue_batch_get_triggers(TriggerNames)
 }
 \arguments{
 \item{TriggerNames}{[required] A list of trigger names, which may be the names returned from the
-\code{ListTriggers} operation.}
+\code{\link[=glue_list_triggers]{list_triggers}} operation.}
 }
 \description{
 Returns a list of resource metadata for a given list of trigger names.
-After calling the \code{ListTriggers} operation, you can call this operation
-to access the data to which you have been granted permissions. This
-operation supports all IAM permissions, including permission conditions
-that uses tags.
+After calling the \code{\link[=glue_list_triggers]{list_triggers}} operation, you
+can call this operation to access the data to which you have been
+granted permissions. This operation supports all IAM permissions,
+including permission conditions that uses tags.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_triggers(

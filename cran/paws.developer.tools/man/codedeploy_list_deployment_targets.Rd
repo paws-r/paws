@@ -10,9 +10,9 @@ codedeploy_list_deployment_targets(deploymentId, nextToken,
 \arguments{
 \item{deploymentId}{The unique ID of a deployment.}
 
-\item{nextToken}{A token identifier returned from the previous \code{ListDeploymentTargets}
-call. It can be used to return the next set of deployment targets in the
-list.}
+\item{nextToken}{A token identifier returned from the previous
+\code{\link[=codedeploy_list_deployment_targets]{list_deployment_targets}} call. It
+can be used to return the next set of deployment targets in the list.}
 
 \item{targetFilters}{A key used to filter the returned targets. The two valid values are:
 \itemize{

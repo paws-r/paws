@@ -82,7 +82,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 For more information about the \code{S3} structure in the request body,
 see the following:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
+\item \code{\link[=s3_put_object]{put_object}}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html}{Managing Access with ACLs}
 in the \emph{Amazon Simple Storage Service Developer Guide}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html}{Protecting Data Using Server-Side Encryption}
@@ -99,7 +99,7 @@ object.
 \item Assuming that you are not using any headers for data stored in
 the object, you can specify columns with positional headers.
 
-\verb{SELECT s._1, s._2 FROM Object s WHERE s._3 &gt; 100}
+\verb{SELECT s._1, s._2 FROM Object s WHERE s._3 > 100}
 \item If you have headers and you set the \code{fileHeaderInfo} in the
 \code{CSV} structure in the request body to \code{USE}, you can specify
 headers in the query. (If you set the \code{fileHeaderInfo} field to
@@ -214,7 +214,7 @@ you specify in a restore request. For example, if you restore an object
 copy for 10 days, but the object is scheduled to expire in 3 days,
 Amazon S3 deletes the object in 3 days. For more information about
 lifecycle configuration, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html}{PutBucketLifecycleConfiguration}
+\code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}
 and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html}{Object Lifecycle Management}
 in \emph{Amazon Simple Storage Service Developer Guide}.
 
@@ -254,8 +254,8 @@ retrievals.)}
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html}{PutBucketLifecycleConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html}{GetBucketNotificationConfiguration}
+\item \code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}
+\item \code{\link[=s3_get_bucket_notification_configuration]{get_bucket_notification_configuration}}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and S3 Glacier Select}
 in the \emph{Amazon Simple Storage Service Developer Guide}
 }

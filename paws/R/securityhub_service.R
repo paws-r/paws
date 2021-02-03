@@ -24,25 +24,28 @@ NULL
 #' command for each Region to apply the change to.
 #' 
 #' For example, if your Region is set to `us-west-2`, when you use
-#' ` <a>CreateMembers</a> ` to add a member account to Security Hub, the
-#' association of the member account with the master account is created
-#' only in the `us-west-2` Region. Security Hub must be enabled for the
-#' member account in the same Region that the invitation was sent from.
+#' [`create_members`][securityhub_create_members] to add a member account
+#' to Security Hub, the association of the member account with the master
+#' account is created only in the `us-west-2` Region. Security Hub must be
+#' enabled for the member account in the same Region that the invitation
+#' was sent from.
 #' 
 #' The following throttling limits apply to using Security Hub API
 #' operations.
 #' 
-#' -   ` <a>BatchEnableStandards</a> ` - `RateLimit` of 1 request per
-#'     second, `BurstLimit` of 1 request per second.
+#' -   [`batch_enable_standards`][securityhub_batch_enable_standards] -
+#'     `RateLimit` of 1 request per second, `BurstLimit` of 1 request per
+#'     second.
 #' 
-#' -   ` <a>GetFindings</a> ` - `RateLimit` of 3 requests per second.
-#'     `BurstLimit` of 6 requests per second.
+#' -   [`get_findings`][securityhub_get_findings] - `RateLimit` of 3
+#'     requests per second. `BurstLimit` of 6 requests per second.
 #' 
-#' -   ` <a>UpdateFindings</a> ` - `RateLimit` of 1 request per second.
-#'     `BurstLimit` of 5 requests per second.
+#' -   [`update_findings`][securityhub_update_findings] - `RateLimit` of 1
+#'     request per second. `BurstLimit` of 5 requests per second.
 #' 
-#' -   ` <a>UpdateStandardsControl</a> ` - `RateLimit` of 1 request per
-#'     second, `BurstLimit` of 5 requests per second.
+#' -   [`update_standards_control`][securityhub_update_standards_control] -
+#'     `RateLimit` of 1 request per second, `BurstLimit` of 5 requests per
+#'     second.
 #' 
 #' -   All other operations - `RateLimit` of 10 requests per second.
 #'     `BurstLimit` of 30 requests per second.

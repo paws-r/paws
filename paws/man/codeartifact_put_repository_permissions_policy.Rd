@@ -29,10 +29,12 @@ control resource policy on the provided repository.}
 Sets the resource policy on a repository that specifies permissions to
 access it.
 
-When you call \code{PutRepositoryPermissionsPolicy}, the resource policy on
-the repository is ignored when evaluting permissions. This ensures that
-the owner of a repository cannot lock themselves out of the repository,
-which would prevent them from being able to update the resource policy.
+When you call
+\code{\link[=codeartifact_put_repository_permissions_policy]{put_repository_permissions_policy}},
+the resource policy on the repository is ignored when evaluting
+permissions. This ensures that the owner of a repository cannot lock
+themselves out of the repository, which would prevent them from being
+able to update the resource policy.
 }
 \section{Request syntax}{
 \preformatted{svc$put_repository_permissions_policy(

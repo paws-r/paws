@@ -6,7 +6,9 @@ NULL
 #' Describes the status of the StartReportCreation operation
 #'
 #' @description
-#' Describes the status of the `StartReportCreation` operation.
+#' Describes the status of the
+#' [`start_report_creation`][resourcegroupstaggingapi_start_report_creation]
+#' operation.
 #' 
 #' You can call this operation only from the organization's master account
 #' and from the us-east-1 Region.
@@ -223,16 +225,17 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' by GetResources in paginated output. A resource with no tags is counted
 #' as having one tag (one key and value pair).
 #' 
-#' `GetResources` does not split a resource and its associated tags across
-#' pages. If the specified `TagsPerPage` would cause such a break, a
-#' `PaginationToken` is returned in place of the affected resource and its
-#' tags. Use that token in another request to get the remaining data. For
-#' example, if you specify a `TagsPerPage` of `100` and the account has 22
-#' resources with 10 tags each (meaning that each resource has 10 key and
-#' value pairs), the output will consist of three pages. The first page
-#' displays the first 10 resources, each with its 10 tags. The second page
-#' displays the next 10 resources, each with its 10 tags. The third page
-#' displays the remaining 2 resources, each with its 10 tags.
+#' [`get_resources`][resourcegroupstaggingapi_get_resources] does not split
+#' a resource and its associated tags across pages. If the specified
+#' `TagsPerPage` would cause such a break, a `PaginationToken` is returned
+#' in place of the affected resource and its tags. Use that token in
+#' another request to get the remaining data. For example, if you specify a
+#' `TagsPerPage` of `100` and the account has 22 resources with 10 tags
+#' each (meaning that each resource has 10 key and value pairs), the output
+#' will consist of three pages. The first page displays the first 10
+#' resources, each with its 10 tags. The second page displays the next 10
+#' resources, each with its 10 tags. The third page displays the remaining
+#' 2 resources, each with its 10 tags.
 #' 
 #' You can set `TagsPerPage` to a minimum of 100 items and the maximum of
 #' 500 items.

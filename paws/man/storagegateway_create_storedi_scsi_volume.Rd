@@ -12,8 +12,7 @@ storagegateway_create_storedi_scsi_volume(GatewayARN, DiskId,
 \item{GatewayARN}{[required]}
 
 \item{DiskId}{[required] The unique identifier for the gateway local disk that is configured as a
-stored volume. Use
-\href{https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_ListLocalDisks.html}{ListLocalDisks}
+stored volume. Use \code{\link[=storagegateway_list_local_disks]{list_local_disks}}
 to list disk IDs for a gateway.}
 
 \item{SnapshotId}{The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the
@@ -38,7 +37,8 @@ If you don't specify a value, Storage Gateway uses the value that was
 previously used for this volume as the new target name.}
 
 \item{NetworkInterfaceId}{[required] The network interface of the gateway on which to expose the iSCSI
-target. Only IPv4 addresses are accepted. Use DescribeGatewayInformation
+target. Only IPv4 addresses are accepted. Use
+\code{\link[=storagegateway_describe_gateway_information]{describe_gateway_information}}
 to get a list of the network interfaces available on a gateway.
 
 Valid Values: A valid IP address.}

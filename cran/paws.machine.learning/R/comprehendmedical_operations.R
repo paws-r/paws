@@ -13,8 +13,8 @@ NULL
 #' comprehendmedical_describe_entities_detection_v2_job(JobId)
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
-#' `StartEntitiesDetectionV2Job` operation returns this identifier in its
-#' response.
+#' [`start_entities_detection_v2_job`][comprehendmedical_start_entities_detection_v2_job]
+#' operation returns this identifier in its response.
 #'
 #' @section Request syntax:
 #' ```
@@ -94,8 +94,8 @@ comprehendmedical_describe_icd10cm_inference_job <- function(JobId) {
 #' comprehendmedical_describe_phi_detection_job(JobId)
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
-#' `StartPHIDetectionJob` operation returns this identifier in its
-#' response.
+#' [`start_phi_detection_job`][comprehendmedical_start_phi_detection_job]
+#' operation returns this identifier in its response.
 #'
 #' @section Request syntax:
 #' ```
@@ -167,8 +167,10 @@ comprehendmedical_describe_rx_norm_inference_job <- function(JobId) {
 #' The DetectEntities operation is deprecated
 #'
 #' @description
-#' The `DetectEntities` operation is deprecated. You should use the
-#' DetectEntitiesV2 operation instead.
+#' The [`detect_entities`][comprehendmedical_detect_entities] operation is
+#' deprecated. You should use the
+#' [`detect_entities_v2`][comprehendmedical_detect_entities_v2] operation
+#' instead.
 #' 
 #' Inspects the clinical text for a variety of medical entities and returns
 #' specific information about them such as entity category, location, and
@@ -218,14 +220,18 @@ comprehendmedical_detect_entities <- function(Text) {
 #' confidence score on that information. Amazon Comprehend Medical only
 #' detects medical entities in English language texts.
 #' 
-#' The `DetectEntitiesV2` operation replaces the DetectEntities operation.
-#' This new action uses a different model for determining the entities in
-#' your medical text and changes the way that some entities are returned in
-#' the output. You should use the `DetectEntitiesV2` operation in all new
-#' applications.
+#' The [`detect_entities_v2`][comprehendmedical_detect_entities_v2]
+#' operation replaces the
+#' [`detect_entities`][comprehendmedical_detect_entities] operation. This
+#' new action uses a different model for determining the entities in your
+#' medical text and changes the way that some entities are returned in the
+#' output. You should use the
+#' [`detect_entities_v2`][comprehendmedical_detect_entities_v2] operation
+#' in all new applications.
 #' 
-#' The `DetectEntitiesV2` operation returns the `Acuity` and `Direction`
-#' entities as attributes instead of types.
+#' The [`detect_entities_v2`][comprehendmedical_detect_entities_v2]
+#' operation returns the `Acuity` and `Direction` entities as attributes
+#' instead of types.
 #'
 #' @usage
 #' comprehendmedical_detect_entities_v2(Text)
@@ -613,8 +619,9 @@ comprehendmedical_list_rx_norm_inference_jobs <- function(Filter = NULL, NextTok
 #'
 #' @description
 #' Starts an asynchronous medical entity detection job for a collection of
-#' documents. Use the `DescribeEntitiesDetectionV2Job` operation to track
-#' the status of a job.
+#' documents. Use the
+#' [`describe_entities_detection_v2_job`][comprehendmedical_describe_entities_detection_v2_job]
+#' operation to track the status of a job.
 #'
 #' @usage
 #' comprehendmedical_start_entities_detection_v2_job(InputDataConfig,
@@ -680,8 +687,9 @@ comprehendmedical_start_entities_detection_v2_job <- function(InputDataConfig, O
 #'
 #' @description
 #' Starts an asynchronous job to detect medical conditions and link them to
-#' the ICD-10-CM ontology. Use the `DescribeICD10CMInferenceJob` operation
-#' to track the status of a job.
+#' the ICD-10-CM ontology. Use the
+#' [`describe_icd10cm_inference_job`][comprehendmedical_describe_icd10cm_inference_job]
+#' operation to track the status of a job.
 #'
 #' @usage
 #' comprehendmedical_start_icd10cm_inference_job(InputDataConfig,
@@ -746,8 +754,9 @@ comprehendmedical_start_icd10cm_inference_job <- function(InputDataConfig, Outpu
 #'
 #' @description
 #' Starts an asynchronous job to detect protected health information (PHI).
-#' Use the `DescribePHIDetectionJob` operation to track the status of a
-#' job.
+#' Use the
+#' [`describe_phi_detection_job`][comprehendmedical_describe_phi_detection_job]
+#' operation to track the status of a job.
 #'
 #' @usage
 #' comprehendmedical_start_phi_detection_job(InputDataConfig,
@@ -813,8 +822,9 @@ comprehendmedical_start_phi_detection_job <- function(InputDataConfig, OutputDat
 #'
 #' @description
 #' Starts an asynchronous job to detect medication entities and link them
-#' to the RxNorm ontology. Use the `DescribeRxNormInferenceJob` operation
-#' to track the status of a job.
+#' to the RxNorm ontology. Use the
+#' [`describe_rx_norm_inference_job`][comprehendmedical_describe_rx_norm_inference_job]
+#' operation to track the status of a job.
 #'
 #' @usage
 #' comprehendmedical_start_rx_norm_inference_job(InputDataConfig,

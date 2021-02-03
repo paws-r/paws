@@ -16,7 +16,8 @@ Returns a link to an Amazon S3 presigned URL for the manifest file
 associated with the specified \code{JobId} value. You can access the manifest
 file for up to 60 minutes after this request has been made. To access
 the manifest file after 60 minutes have passed, you'll have to make
-another call to the \code{GetJobManifest} action.
+another call to the \code{\link[=snowball_get_job_manifest]{get_job_manifest}}
+action.
 
 The manifest is an encrypted file that you can download after your job
 enters the \code{WithCustomer} status. The manifest is decrypted by using the

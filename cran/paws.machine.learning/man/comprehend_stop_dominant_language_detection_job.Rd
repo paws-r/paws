@@ -18,8 +18,8 @@ be stopped, it is put into the \code{COMPLETED} state; otherwise the job is
 stopped and put into the \code{STOPPED} state.
 
 If the job is in the \code{COMPLETED} or \code{FAILED} state when you call the
-\code{StopDominantLanguageDetectionJob} operation, the operation returns a
-400 Internal Request Exception.
+\code{\link[=comprehend_stop_dominant_language_detection_job]{stop_dominant_language_detection_job}}
+operation, the operation returns a 400 Internal Request Exception.
 
 When a job is stopped, any documents already processed are written to
 the output location.

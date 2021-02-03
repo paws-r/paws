@@ -31,8 +31,9 @@ language.}
 }
 \description{
 Starts an asynchronous medical entity detection job for a collection of
-documents. Use the \code{DescribeEntitiesDetectionV2Job} operation to track
-the status of a job.
+documents. Use the
+\code{\link[=comprehendmedical_describe_entities_detection_v2_job]{describe_entities_detection_v2_job}}
+operation to track the status of a job.
 }
 \section{Request syntax}{
 \preformatted{svc$start_entities_detection_v2_job(

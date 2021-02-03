@@ -9,7 +9,7 @@ cloudwatch_delete_insight_rules(RuleNames)
 \arguments{
 \item{RuleNames}{[required] An array of the rule names to delete. If you need to find out the names
 of your rules, use
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html}{DescribeInsightRules}.}
+\code{\link[=cloudwatch_describe_insight_rules]{describe_insight_rules}}.}
 }
 \description{
 Permanently deletes the specified Contributor Insights rules.

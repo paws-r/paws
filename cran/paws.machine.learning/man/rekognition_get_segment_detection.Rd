@@ -10,7 +10,7 @@ rekognition_get_segment_detection(JobId, MaxResults, NextToken)
 \arguments{
 \item{JobId}{[required] Job identifier for the text detection operation for which you want
 results returned. You get the job identifer from an initial call to
-\code{StartSegmentDetection}.}
+\code{\link[=rekognition_start_segment_detection]{start_segment_detection}}.}
 
 \item{MaxResults}{Maximum number of results to return per paginated call. The largest
 value you can specify is 1000.}
@@ -21,37 +21,44 @@ set of text.}
 }
 \description{
 Gets the segment detection results of a Amazon Rekognition Video
-analysis started by StartSegmentDetection.
+analysis started by
+\code{\link[=rekognition_start_segment_detection]{start_segment_detection}}.
 
 Segment detection with Amazon Rekognition Video is an asynchronous
-operation. You start segment detection by calling StartSegmentDetection
-which returns a job identifier (\code{JobId}). When the segment detection
-operation finishes, Amazon Rekognition publishes a completion status to
-the Amazon Simple Notification Service topic registered in the initial
-call to \code{StartSegmentDetection}. To get the results of the segment
-detection operation, first check that the status value published to the
-Amazon SNS topic is \code{SUCCEEDED}. if so, call \code{GetSegmentDetection} and
+operation. You start segment detection by calling
+\code{\link[=rekognition_start_segment_detection]{start_segment_detection}} which
+returns a job identifier (\code{JobId}). When the segment detection operation
+finishes, Amazon Rekognition publishes a completion status to the Amazon
+Simple Notification Service topic registered in the initial call to
+\code{\link[=rekognition_start_segment_detection]{start_segment_detection}}. To get
+the results of the segment detection operation, first check that the
+status value published to the Amazon SNS topic is \code{SUCCEEDED}. if so,
+call \code{\link[=rekognition_get_segment_detection]{get_segment_detection}} and
 pass the job identifier (\code{JobId}) from the initial call of
-\code{StartSegmentDetection}.
+\code{\link[=rekognition_start_segment_detection]{start_segment_detection}}.
 
-\code{GetSegmentDetection} returns detected segments in an array (\code{Segments})
-of SegmentDetection objects. \code{Segments} is sorted by the segment types
-specified in the \code{SegmentTypes} input parameter of
-\code{StartSegmentDetection}. Each element of the array includes the detected
-segment, the precentage confidence in the acuracy of the detected
-segment, the type of the segment, and the frame in which the segment was
-detected.
+\code{\link[=rekognition_get_segment_detection]{get_segment_detection}} returns
+detected segments in an array (\code{Segments}) of SegmentDetection objects.
+\code{Segments} is sorted by the segment types specified in the
+\code{SegmentTypes} input parameter of
+\code{\link[=rekognition_start_segment_detection]{start_segment_detection}}. Each
+element of the array includes the detected segment, the precentage
+confidence in the acuracy of the detected segment, the type of the
+segment, and the frame in which the segment was detected.
 
 Use \code{SelectedSegmentTypes} to find out the type of segment detection
-requested in the call to \code{StartSegmentDetection}.
+requested in the call to
+\code{\link[=rekognition_start_segment_detection]{start_segment_detection}}.
 
 Use the \code{MaxResults} parameter to limit the number of segment detections
 returned. If there are more results than specified in \code{MaxResults}, the
 value of \code{NextToken} in the operation response contains a pagination
 token for getting the next set of results. To get the next page of
-results, call \code{GetSegmentDetection} and populate the \code{NextToken} request
-parameter with the token value returned from the previous call to
-\code{GetSegmentDetection}.
+results, call
+\code{\link[=rekognition_get_segment_detection]{get_segment_detection}} and
+populate the \code{NextToken} request parameter with the token value returned
+from the previous call to
+\code{\link[=rekognition_get_segment_detection]{get_segment_detection}}.
 
 For more information, see Detecting Video Segments in Stored Video in
 the Amazon Rekognition Developer Guide.

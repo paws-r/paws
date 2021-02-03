@@ -33,13 +33,14 @@ updated with the values provided in the request. You cannot update some
 parameters independent of others. To update a real-time log
 configuration:
 \enumerate{
-\item Call \code{GetRealtimeLogConfig} to get the current real-time log
-configuration.
+\item Call \code{\link[=cloudfront_get_realtime_log_config]{get_realtime_log_config}}
+to get the current real-time log configuration.
 \item Locally modify the parameters in the real-time log configuration
 that you want to update.
-\item Call this API (\code{UpdateRealtimeLogConfig}) by providing the entire
-real-time log configuration, including the parameters that you
-modified and those that you didn’t.
+\item Call this API
+(\code{\link[=cloudfront_update_realtime_log_config]{update_realtime_log_config}})
+by providing the entire real-time log configuration, including the
+parameters that you modified and those that you didn’t.
 }
 
 You cannot update a real-time log configuration’s \code{Name} or \code{ARN}.

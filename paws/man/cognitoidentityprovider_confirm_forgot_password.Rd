@@ -20,12 +20,13 @@ a forgotten password.}
 
 \item{ConfirmationCode}{[required] The confirmation code sent by a user's request to retrieve a forgotten
 password. For more information, see
-\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ForgotPassword.html}{ForgotPassword}.}
+\code{\link[=cognitoidentityprovider_forgot_password]{forgot_password}}.}
 
 \item{Password}{[required] The password sent by a user's request to retrieve a forgotten password.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
-\code{ConfirmForgotPassword} calls.}
+\code{\link[=cognitoidentityprovider_confirm_forgot_password]{confirm_forgot_password}}
+calls.}
 
 \item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon

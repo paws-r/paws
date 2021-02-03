@@ -31,7 +31,8 @@ hyperparameter tuning job launched before you called this API. To make
 sure that the tags associated with a hyperparameter tuning job are also
 added to all training jobs that the hyperparameter tuning job launches,
 add the tags when you first create the tuning job by specifying them in
-the \code{Tags} parameter of CreateHyperParameterTuningJob
+the \code{Tags} parameter of
+\code{\link[=sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job}}
 }
 \section{Request syntax}{
 \preformatted{svc$add_tags(

@@ -69,7 +69,7 @@ while there are more log events available through the token.
 
 The returned log events are sorted by event timestamp, the timestamp
 when the event was ingested by CloudWatch Logs, and the ID of the
-\code{PutLogEvents} request.
+\code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} request.
 }
 \section{Request syntax}{
 \preformatted{svc$filter_log_events(

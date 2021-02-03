@@ -46,12 +46,14 @@ problems.
 \description{
 Submits feedback about the status of an instance. The instance must be
 in the \code{running} state. If your experience with the instance differs
-from the instance status returned by DescribeInstanceStatus, use
-ReportInstanceStatus to report your experience with the instance. Amazon
-EC2 collects this information to improve the accuracy of status checks.
+from the instance status returned by
+\code{\link[=ec2_describe_instance_status]{describe_instance_status}}, use
+\code{\link[=ec2_report_instance_status]{report_instance_status}} to report your
+experience with the instance. Amazon EC2 collects this information to
+improve the accuracy of status checks.
 
 Use of this action does not change the value returned by
-DescribeInstanceStatus.
+\code{\link[=ec2_describe_instance_status]{describe_instance_status}}.
 }
 \section{Request syntax}{
 \preformatted{svc$report_instance_status(

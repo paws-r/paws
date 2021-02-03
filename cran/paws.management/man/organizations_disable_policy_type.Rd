@@ -8,7 +8,8 @@ organizations_disable_policy_type(RootId, PolicyType)
 }
 \arguments{
 \item{RootId}{[required] The unique identifier (ID) of the root in which you want to disable a
-policy type. You can get the ID from the ListRoots operation.
+policy type. You can get the ID from the
+\code{\link[=organizations_list_roots]{list_roots}} operation.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a root ID
 string requires "r-" followed by from 4 to 32 lowercase letters or
@@ -29,20 +30,20 @@ type can be attached to entities in a root only if that type is enabled
 in the root. After you perform this operation, you no longer can attach
 policies of the specified type to that root or to any organizational
 unit (OU) or account in that root. You can undo this by using the
-EnablePolicyType operation.
+\code{\link[=organizations_enable_policy_type]{enable_policy_type}} operation.
 
 This is an asynchronous request that AWS performs in the background. If
 you disable a policy type for a root, it still appears enabled for the
 organization if \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{all features}
 are enabled for the organization. AWS recommends that you first use
-ListRoots to see the status of policy types for a specified root, and
-then use this operation.
+\code{\link[=organizations_list_roots]{list_roots}} to see the status of policy
+types for a specified root, and then use this operation.
 
 This operation can be called only from the organization's management
 account.
 
 To view the status of available policy types in the organization, use
-DescribeOrganization.
+\code{\link[=organizations_describe_organization]{describe_organization}}.
 }
 \section{Request syntax}{
 \preformatted{svc$disable_policy_type(

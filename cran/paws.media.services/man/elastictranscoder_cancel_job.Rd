@@ -10,14 +10,18 @@ elastictranscoder_cancel_job(Id)
 \item{Id}{[required] The identifier of the job that you want to cancel.
 
 To get a list of the jobs (including their \code{jobId}) that have a status
-of \code{Submitted}, use the ListJobsByStatus API action.}
+of \code{Submitted}, use the
+\code{\link[=elastictranscoder_list_jobs_by_status]{list_jobs_by_status}} API
+action.}
 }
 \description{
 The CancelJob operation cancels an unfinished job.
 
 You can only cancel a job that has a status of \code{Submitted}. To prevent a
 pipeline from starting to process a job while you're getting the job
-identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
+identifier, use
+\code{\link[=elastictranscoder_update_pipeline_status]{update_pipeline_status}} to
+temporarily pause the pipeline.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_job(

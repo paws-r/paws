@@ -50,8 +50,8 @@ recognizer. For more information, see \href{https://docs.aws.amazon.com/vpc/late
 }
 \description{
 Creates an entity recognizer using submitted files. After your
-\code{CreateEntityRecognizer} request is submitted, you can check job status
-using the API.
+\code{\link[=comprehend_create_entity_recognizer]{create_entity_recognizer}}
+request is submitted, you can check job status using the API.
 }
 \section{Request syntax}{
 \preformatted{svc$create_entity_recognizer(

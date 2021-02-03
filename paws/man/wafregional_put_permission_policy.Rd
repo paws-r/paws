@@ -25,9 +25,11 @@ regional and global use.
 Attaches an IAM policy to the specified resource. The only supported use
 for this action is to share a RuleGroup across accounts.
 
-The \code{PutPermissionPolicy} is subject to the following restrictions:
+The \code{\link[=wafregional_put_permission_policy]{put_permission_policy}} is
+subject to the following restrictions:
 \itemize{
-\item You can attach only one policy with each \code{PutPermissionPolicy}
+\item You can attach only one policy with each
+\code{\link[=wafregional_put_permission_policy]{put_permission_policy}}
 request.
 \item The policy must include an \code{Effect}, \code{Action} and \code{Principal}.
 \item \code{Effect} must specify \code{Allow}.

@@ -19,7 +19,7 @@ length of 64. All others have a maximum length of 20.}
 }
 \description{
 Creates a user who can be used in Amazon WorkMail by calling the
-RegisterToWorkMail operation.
+\code{\link[=workmail_register_to_work_mail]{register_to_work_mail}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$create_user(

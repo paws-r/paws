@@ -19,7 +19,8 @@ Valid principals are CertificateArn
 \description{
 Removes the specified policy from the specified certificate.
 
-\strong{Note:} This API is deprecated. Please use DetachPolicy instead.
+\strong{Note:} This API is deprecated. Please use
+\code{\link[=iot_detach_policy]{detach_policy}} instead.
 }
 \section{Request syntax}{
 \preformatted{svc$detach_principal_policy(

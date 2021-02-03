@@ -13,9 +13,10 @@ iotsecuretunneling_close_tunnel(tunnelId, delete)
 immediately.}
 }
 \description{
-Closes a tunnel identified by the unique tunnel id. When a \code{CloseTunnel}
-request is received, we close the WebSocket connections between the
-client and proxy server so no data can be transmitted.
+Closes a tunnel identified by the unique tunnel id. When a
+\code{\link[=iotsecuretunneling_close_tunnel]{close_tunnel}} request is received,
+we close the WebSocket connections between the client and proxy server
+so no data can be transmitted.
 }
 \section{Request syntax}{
 \preformatted{svc$close_tunnel(

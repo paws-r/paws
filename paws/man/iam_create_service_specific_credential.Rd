@@ -33,7 +33,7 @@ each supported service per user.
 The only supported service at this time is AWS CodeCommit.
 
 You can reset the password to a new service-generated value by calling
-ResetServiceSpecificCredential.
+\code{\link[=iam_reset_service_specific_credential]{reset_service_specific_credential}}.
 
 For more information about service-specific credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_ssh-keys.html}{Using IAM with AWS CodeCommit: Git Credentials, SSH Keys, and AWS Access Keys}
 in the \emph{IAM User Guide}.

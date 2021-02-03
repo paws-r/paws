@@ -8,9 +8,11 @@ cloudwatchlogs_get_log_record(logRecordPointer)
 }
 \arguments{
 \item{logRecordPointer}{[required] The pointer corresponding to the log event record you want to retrieve.
-You get this from the response of a \code{GetQueryResults} operation. In that
-response, the value of the \verb{@ptr} field for a log event is the value to
-use as \code{logRecordPointer} to retrieve that complete log event record.}
+You get this from the response of a
+\code{\link[=cloudwatchlogs_get_query_results]{get_query_results}} operation. In
+that response, the value of the \verb{@ptr} field for a log event is the
+value to use as \code{logRecordPointer} to retrieve that complete log event
+record.}
 }
 \description{
 Retrieves all of the fields and values of a single log event. All fields

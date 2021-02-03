@@ -16,9 +16,10 @@ compatibility, this name is entirely lowercase.}
 \item{TableInput}{[required] An updated \code{TableInput} object to define the metadata table in the
 catalog.}
 
-\item{SkipArchive}{By default, \code{UpdateTable} always creates an archived version of the
-table before updating it. However, if \code{skipArchive} is set to true,
-\code{UpdateTable} does not create the archived version.}
+\item{SkipArchive}{By default, \code{\link[=glue_update_table]{update_table}} always creates an
+archived version of the table before updating it. However, if
+\code{skipArchive} is set to true, \code{\link[=glue_update_table]{update_table}} does
+not create the archived version.}
 }
 \description{
 Updates a metadata table in the Data Catalog.

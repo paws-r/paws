@@ -80,14 +80,16 @@ For more information on expression attribute names, see \href{https://docs.aws.a
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
 \description{
-The \code{GetItem} operation returns a set of attributes for the item with
-the given primary key. If there is no matching item, \code{GetItem} does not
-return any data and there will be no \code{Item} element in the response.
+The \code{\link[=dynamodb_get_item]{get_item}} operation returns a set of
+attributes for the item with the given primary key. If there is no
+matching item, \code{\link[=dynamodb_get_item]{get_item}} does not return any data
+and there will be no \code{Item} element in the response.
 
-\code{GetItem} provides an eventually consistent read by default. If your
-application requires a strongly consistent read, set \code{ConsistentRead} to
-\code{true}. Although a strongly consistent read might take more time than an
-eventually consistent read, it always returns the last updated value.
+\code{\link[=dynamodb_get_item]{get_item}} provides an eventually consistent read
+by default. If your application requires a strongly consistent read, set
+\code{ConsistentRead} to \code{true}. Although a strongly consistent read might
+take more time than an eventually consistent read, it always returns the
+last updated value.
 }
 \section{Request syntax}{
 \preformatted{svc$get_item(

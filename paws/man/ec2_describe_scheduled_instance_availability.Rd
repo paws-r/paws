@@ -53,8 +53,8 @@ weekly schedule is 24 hours, and the minimum monthly schedule is 100
 hours.
 
 After you find a schedule that meets your needs, call
-PurchaseScheduledInstances to purchase Scheduled Instances with that
-schedule.
+\code{\link[=ec2_purchase_scheduled_instances]{purchase_scheduled_instances}} to
+purchase Scheduled Instances with that schedule.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_scheduled_instance_availability(

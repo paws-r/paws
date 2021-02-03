@@ -8,11 +8,13 @@ Resource Name (ARN)}
 codedeploy_list_tags_for_resource(ResourceArn, NextToken)
 }
 \arguments{
-\item{ResourceArn}{[required] The ARN of a CodeDeploy resource. \code{ListTagsForResource} returns all the
-tags associated with the resource that is identified by the
+\item{ResourceArn}{[required] The ARN of a CodeDeploy resource.
+\code{\link[=codedeploy_list_tags_for_resource]{list_tags_for_resource}} returns
+all the tags associated with the resource that is identified by the
 \code{ResourceArn}.}
 
-\item{NextToken}{An identifier returned from the previous \code{ListTagsForResource} call. It
+\item{NextToken}{An identifier returned from the previous
+\code{\link[=codedeploy_list_tags_for_resource]{list_tags_for_resource}} call. It
 can be used to return the next set of applications in the list.}
 }
 \description{

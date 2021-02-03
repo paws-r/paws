@@ -22,7 +22,7 @@ to retrieve the next items in a list and not for other programmatic
 purposes.}
 
 \item{addonName}{The name of the add-on. The name must match one of the names returned by
-\href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{ListAddons}}
+\href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{list_addons}}
 .}
 }
 \description{

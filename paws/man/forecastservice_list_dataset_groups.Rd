@@ -15,11 +15,14 @@ token in the next request. Tokens expire after 24 hours.}
 \item{MaxResults}{The number of items to return in the response.}
 }
 \description{
-Returns a list of dataset groups created using the CreateDatasetGroup
+Returns a list of dataset groups created using the
+\code{\link[=forecastservice_create_dataset_group]{create_dataset_group}}
 operation. For each dataset group, this operation returns a summary of
 its properties, including its Amazon Resource Name (ARN). You can
 retrieve the complete set of properties by using the dataset group ARN
-with the DescribeDatasetGroup operation.
+with the
+\code{\link[=forecastservice_describe_dataset_group]{describe_dataset_group}}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$list_dataset_groups(

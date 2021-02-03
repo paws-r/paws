@@ -12,7 +12,8 @@ forecastservice_create_dataset_group(DatasetGroupName, Domain,
 
 \item{Domain}{[required] The domain associated with the dataset group. When you add a dataset to
 a dataset group, this value and the value specified for the \code{Domain}
-parameter of the CreateDataset operation must match.
+parameter of the \code{\link[=forecastservice_create_dataset]{create_dataset}}
+operation must match.
 
 The \code{Domain} and \code{DatasetType} that you choose determine the fields that
 must be present in training data that you import to a dataset. For
@@ -53,18 +54,21 @@ count against your tags per resource limit.
 \description{
 Creates a dataset group, which holds a collection of related datasets.
 You can add datasets to the dataset group when you create the dataset
-group, or later by using the UpdateDatasetGroup operation.
+group, or later by using the
+\code{\link[=forecastservice_update_dataset_group]{update_dataset_group}}
+operation.
 
 After creating a dataset group and adding datasets, you use the dataset
 group when you create a predictor. For more information, see
 howitworks-datasets-groups.
 
-To get a list of all your datasets groups, use the ListDatasetGroups
-operation.
+To get a list of all your datasets groups, use the
+\code{\link[=forecastservice_list_dataset_groups]{list_dataset_groups}} operation.
 
 The \code{Status} of a dataset group must be \code{ACTIVE} before you can use the
 dataset group to create a predictor. To get the status, use the
-DescribeDatasetGroup operation.
+\code{\link[=forecastservice_describe_dataset_group]{describe_dataset_group}}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$create_dataset_group(

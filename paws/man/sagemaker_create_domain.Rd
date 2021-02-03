@@ -22,7 +22,7 @@ communication.}
 
 \item{Tags}{Tags to associated with the Domain. Each tag consists of a key and an
 optional value. Tag keys must be unique per resource. Tags are
-searchable using the Search API.}
+searchable using the \code{\link[=sagemaker_search]{search}} API.}
 
 \item{AppNetworkAccessType}{Specifies the VPC used for non-EFS traffic. The default value is
 \code{PublicInternetOnly}.

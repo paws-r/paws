@@ -8,10 +8,12 @@ waf_delete_regex_match_set(RegexMatchSetId, ChangeToken)
 }
 \arguments{
 \item{RegexMatchSetId}{[required] The \code{RegexMatchSetId} of the RegexMatchSet that you want to delete.
-\code{RegexMatchSetId} is returned by CreateRegexMatchSet and by
-ListRegexMatchSets.}
+\code{RegexMatchSetId} is returned by
+\code{\link[=waf_create_regex_match_set]{create_regex_match_set}} and by
+\code{\link[=waf_list_regex_match_sets]{list_regex_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -28,15 +30,18 @@ if it's still used in any \code{Rules} or if it still includes any
 \code{RegexMatchTuples} objects (any filters).
 
 If you just want to remove a \code{RegexMatchSet} from a \code{Rule}, use
-UpdateRule.
+\code{\link[=waf_update_rule]{update_rule}}.
 
 To permanently delete a \code{RegexMatchSet}, perform the following steps:
 \enumerate{
 \item Update the \code{RegexMatchSet} to remove filters, if any. For more
-information, see UpdateRegexMatchSet.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{DeleteRegexMatchSet} request.
-\item Submit a \code{DeleteRegexMatchSet} request.
+information, see
+\code{\link[=waf_update_regex_match_set]{update_regex_match_set}}.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=waf_delete_regex_match_set]{delete_regex_match_set}} request.
+\item Submit a \code{\link[=waf_delete_regex_match_set]{delete_regex_match_set}}
+request.
 }
 }
 \section{Request syntax}{

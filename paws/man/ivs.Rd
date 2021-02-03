@@ -49,9 +49,9 @@ Region name: EU West (Dublin)
 
 \strong{Allowed Header Values}
 \itemize{
-\item \verb{<b>Accept:</b>} application/json
-\item \verb{<b>Accept-Encoding:</b>} gzip, deflate
-\item \verb{<b>Content-Type:</b>}application/json
+\item \verb{Accept:} application/json
+\item \verb{Accept-Encoding:} gzip, deflate
+\item \verb{Content-Type:}application/json
 }
 
 \strong{Resources}
@@ -86,79 +86,91 @@ Tags can help you identify and organize your AWS resources. For example,
 you can use the same tag for different resources to indicate that they
 are related. You can also use tags to manage access (see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Access Tags}).
 
-The Amazon IVS API has these tag-related endpoints: TagResource,
-UntagResource, and ListTagsForResource. The following resources support
-tagging: Channels, Stream Keys, and Playback Key Pairs.
+The Amazon IVS API has these tag-related endpoints:
+\code{\link[=ivs_tag_resource]{tag_resource}},
+\code{\link[=ivs_untag_resource]{untag_resource}}, and
+\code{\link[=ivs_list_tags_for_resource]{list_tags_for_resource}}. The following
+resources support tagging: Channels, Stream Keys, and Playback Key
+Pairs.
 
 \strong{Channel Endpoints}
 \itemize{
-\item CreateChannel — Creates a new channel and an associated stream key
-to start streaming.
-\item GetChannel — Gets the channel configuration for the specified
-channel ARN (Amazon Resource Name).
-\item BatchGetChannel — Performs GetChannel on multiple ARNs
-simultaneously.
-\item ListChannels — Gets summary information about all channels in your
-account, in the AWS region where the API request is processed. This
-list can be filtered to match a specified string.
-\item UpdateChannel — Updates a channel's configuration. This does not
-affect an ongoing stream of this channel. You must stop and restart
-the stream for the changes to take effect.
-\item DeleteChannel — Deletes the specified channel.
+\item \code{\link[=ivs_create_channel]{create_channel}} — Creates a new channel and
+an associated stream key to start streaming.
+\item \code{\link[=ivs_get_channel]{get_channel}} — Gets the channel configuration
+for the specified channel ARN (Amazon Resource Name).
+\item \code{\link[=ivs_batch_get_channel]{batch_get_channel}} — Performs
+\code{\link[=ivs_get_channel]{get_channel}} on multiple ARNs simultaneously.
+\item \code{\link[=ivs_list_channels]{list_channels}} — Gets summary information
+about all channels in your account, in the AWS region where the API
+request is processed. This list can be filtered to match a specified
+string.
+\item \code{\link[=ivs_update_channel]{update_channel}} — Updates a channel's
+configuration. This does not affect an ongoing stream of this
+channel. You must stop and restart the stream for the changes to
+take effect.
+\item \code{\link[=ivs_delete_channel]{delete_channel}} — Deletes the specified
+channel.
 }
 
 \strong{StreamKey Endpoints}
 \itemize{
-\item CreateStreamKey — Creates a stream key, used to initiate a stream,
-for the specified channel ARN.
-\item GetStreamKey — Gets stream key information for the specified ARN.
-\item BatchGetStreamKey — Performs GetStreamKey on multiple ARNs
+\item \code{\link[=ivs_create_stream_key]{create_stream_key}} — Creates a stream key,
+used to initiate a stream, for the specified channel ARN.
+\item \code{\link[=ivs_get_stream_key]{get_stream_key}} — Gets stream key information
+for the specified ARN.
+\item \code{\link[=ivs_batch_get_stream_key]{batch_get_stream_key}} — Performs
+\code{\link[=ivs_get_stream_key]{get_stream_key}} on multiple ARNs
 simultaneously.
-\item ListStreamKeys — Gets summary information about stream keys for the
-specified channel.
-\item DeleteStreamKey — Deletes the stream key for the specified ARN, so
-it can no longer be used to stream.
+\item \code{\link[=ivs_list_stream_keys]{list_stream_keys}} — Gets summary
+information about stream keys for the specified channel.
+\item \code{\link[=ivs_delete_stream_key]{delete_stream_key}} — Deletes the stream
+key for the specified ARN, so it can no longer be used to stream.
 }
 
 \strong{Stream Endpoints}
 \itemize{
-\item GetStream — Gets information about the active (live) stream on a
-specified channel.
-\item ListStreams — Gets summary information about live streams in your
-account, in the AWS region where the API request is processed.
-\item StopStream — Disconnects the incoming RTMPS stream for the specified
-channel. Can be used in conjunction with DeleteStreamKey to prevent
-further streaming to a channel.
-\item PutMetadata — Inserts metadata into an RTMPS stream for the
-specified channel. A maximum of 5 requests per second per channel is
-allowed, each with a maximum 1KB payload.
+\item \code{\link[=ivs_get_stream]{get_stream}} — Gets information about the active
+(live) stream on a specified channel.
+\item \code{\link[=ivs_list_streams]{list_streams}} — Gets summary information about
+live streams in your account, in the AWS region where the API
+request is processed.
+\item \code{\link[=ivs_stop_stream]{stop_stream}} — Disconnects the incoming RTMPS
+stream for the specified channel. Can be used in conjunction with
+\code{\link[=ivs_delete_stream_key]{delete_stream_key}} to prevent further
+streaming to a channel.
+\item \code{\link[=ivs_put_metadata]{put_metadata}} — Inserts metadata into an RTMPS
+stream for the specified channel. A maximum of 5 requests per second
+per channel is allowed, each with a maximum 1KB payload.
 }
 
 \strong{PlaybackKeyPair Endpoints}
 \itemize{
-\item ImportPlaybackKeyPair — Imports the public portion of a new key pair
-and returns its \code{arn} and \code{fingerprint}. The \code{privateKey} can then
-be used to generate viewer authorization tokens, to grant viewers
-access to authorized channels.
-\item GetPlaybackKeyPair — Gets a specified playback authorization key
-pair and returns the \code{arn} and \code{fingerprint}. The \code{privateKey} held
-by the caller can be used to generate viewer authorization tokens,
-to grant viewers access to authorized channels.
-\item ListPlaybackKeyPairs — Gets summary information about playback key
-pairs.
-\item DeletePlaybackKeyPair — Deletes a specified authorization key pair.
-This invalidates future viewer tokens generated using the key pair’s
-\code{privateKey}.
+\item \code{\link[=ivs_import_playback_key_pair]{import_playback_key_pair}} — Imports
+the public portion of a new key pair and returns its \code{arn} and
+\code{fingerprint}. The \code{privateKey} can then be used to generate viewer
+authorization tokens, to grant viewers access to authorized
+channels.
+\item \code{\link[=ivs_get_playback_key_pair]{get_playback_key_pair}} — Gets a
+specified playback authorization key pair and returns the \code{arn} and
+\code{fingerprint}. The \code{privateKey} held by the caller can be used to
+generate viewer authorization tokens, to grant viewers access to
+authorized channels.
+\item \code{\link[=ivs_list_playback_key_pairs]{list_playback_key_pairs}} — Gets
+summary information about playback key pairs.
+\item \code{\link[=ivs_delete_playback_key_pair]{delete_playback_key_pair}} — Deletes
+a specified authorization key pair. This invalidates future viewer
+tokens generated using the key pair’s \code{privateKey}.
 }
 
 \strong{AWS Tags Endpoints}
 \itemize{
-\item TagResource — Adds or updates tags for the AWS resource with the
-specified ARN.
-\item UntagResource — Removes tags from the resource with the specified
-ARN.
-\item ListTagsForResource — Gets information about AWS tags for the
-specified ARN.
+\item \code{\link[=ivs_tag_resource]{tag_resource}} — Adds or updates tags for the
+AWS resource with the specified ARN.
+\item \code{\link[=ivs_untag_resource]{untag_resource}} — Removes tags from the
+resource with the specified ARN.
+\item \code{\link[=ivs_list_tags_for_resource]{list_tags_for_resource}} — Gets
+information about AWS tags for the specified ARN.
 }
 }
 \section{Service syntax}{

@@ -41,9 +41,10 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.}
 
-\item{Marker}{An optional pagination token provided by a previous DescribeDBClusters
-request. If this parameter is specified, the response includes only
-records beyond the marker, up to the value specified by \code{MaxRecords}.}
+\item{Marker}{An optional pagination token provided by a previous
+\code{\link[=neptune_describe_db_clusters]{describe_db_clusters}} request. If this
+parameter is specified, the response includes only records beyond the
+marker, up to the value specified by \code{MaxRecords}.}
 }
 \description{
 Returns information about provisioned DB clusters, and supports

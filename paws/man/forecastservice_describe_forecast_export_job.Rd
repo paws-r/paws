@@ -12,11 +12,12 @@ forecastservice_describe_forecast_export_job(ForecastExportJobArn)
 }
 \description{
 Describes a forecast export job created using the
-CreateForecastExportJob operation.
+\code{\link[=forecastservice_create_forecast_export_job]{create_forecast_export_job}}
+operation.
 
 In addition to listing the properties provided by the user in the
-\code{CreateForecastExportJob} request, this operation lists the following
-properties:
+\code{\link[=forecastservice_create_forecast_export_job]{create_forecast_export_job}}
+request, this operation lists the following properties:
 \itemize{
 \item \code{CreationTime}
 \item \code{LastModificationTime}

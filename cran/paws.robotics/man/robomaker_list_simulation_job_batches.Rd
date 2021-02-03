@@ -10,15 +10,18 @@ robomaker_list_simulation_job_batches(nextToken, maxResults, filters)
 \item{nextToken}{If the previous paginated request did not return all of the remaining
 results, the response object's \code{nextToken} parameter value is set to a
 token. To retrieve the next set of results, call
-\code{ListSimulationJobBatches} again and assign that token to the request
-object's \code{nextToken} parameter. If there are no remaining results, the
-previous response object's NextToken parameter is set to null.}
+\code{\link[=robomaker_list_simulation_job_batches]{list_simulation_job_batches}}
+again and assign that token to the request object's \code{nextToken}
+parameter. If there are no remaining results, the previous response
+object's NextToken parameter is set to null.}
 
-\item{maxResults}{When this parameter is used, \code{ListSimulationJobBatches} only returns
-\code{maxResults} results in a single page along with a \code{nextToken} response
-element. The remaining results of the initial request can be seen by
-sending another \code{ListSimulationJobBatches} request with the returned
-\code{nextToken} value.}
+\item{maxResults}{When this parameter is used,
+\code{\link[=robomaker_list_simulation_job_batches]{list_simulation_job_batches}}
+only returns \code{maxResults} results in a single page along with a
+\code{nextToken} response element. The remaining results of the initial
+request can be seen by sending another
+\code{\link[=robomaker_list_simulation_job_batches]{list_simulation_job_batches}}
+request with the returned \code{nextToken} value.}
 
 \item{filters}{Optional filters to limit results.}
 }

@@ -17,8 +17,9 @@ NULL
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Creates a `ByteMatchSet`. You then use UpdateByteMatchSet to identify
-#' the part of a web request that you want AWS WAF to inspect, such as the
+#' Creates a `ByteMatchSet`. You then use
+#' [`update_byte_match_set`][waf_update_byte_match_set] to identify the
+#' part of a web request that you want AWS WAF to inspect, such as the
 #' values of the `User-Agent` header or the query string. For example, you
 #' can create a `ByteMatchSet` that matches any requests with `User-Agent`
 #' headers that contain the string `BadBot`. You can then configure AWS WAF
@@ -26,17 +27,21 @@ NULL
 #' 
 #' To create and configure a `ByteMatchSet`, perform the following steps:
 #' 
-#' 1.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `CreateByteMatchSet` request.
+#' 1.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`create_byte_match_set`][waf_create_byte_match_set] request.
 #' 
-#' 2.  Submit a `CreateByteMatchSet` request.
+#' 2.  Submit a [`create_byte_match_set`][waf_create_byte_match_set]
+#'     request.
 #' 
-#' 3.  Use `GetChangeToken` to get the change token that you provide in the
-#'     `ChangeToken` parameter of an `UpdateByteMatchSet` request.
+#' 3.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_byte_match_set`][waf_update_byte_match_set] request.
 #' 
-#' 4.  Submit an UpdateByteMatchSet request to specify the part of the
-#'     request that you want AWS WAF to inspect (for example, the header or
-#'     the URI) and the value that you want AWS WAF to watch for.
+#' 4.  Submit an [`update_byte_match_set`][waf_update_byte_match_set]
+#'     request to specify the part of the request that you want AWS WAF to
+#'     inspect (for example, the header or the URI) and the value that you
+#'     want AWS WAF to watch for.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -47,7 +52,8 @@ NULL
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the ByteMatchSet. You can't change
 #' `Name` after you create a `ByteMatchSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -100,13 +106,15 @@ waf_create_byte_match_set <- function(Name, ChangeToken) {
 #' 
 #' To create and configure a `GeoMatchSet`, perform the following steps:
 #' 
-#' 1.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `CreateGeoMatchSet` request.
+#' 1.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`create_geo_match_set`][waf_create_geo_match_set] request.
 #' 
-#' 2.  Submit a `CreateGeoMatchSet` request.
+#' 2.  Submit a [`create_geo_match_set`][waf_create_geo_match_set] request.
 #' 
-#' 3.  Use `GetChangeToken` to get the change token that you provide in the
-#'     `ChangeToken` parameter of an UpdateGeoMatchSet request.
+#' 3.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_geo_match_set`][waf_update_geo_match_set] request.
 #' 
 #' 4.  Submit an `UpdateGeoMatchSetSet` request to specify the countries
 #'     that you want AWS WAF to watch for.
@@ -120,7 +128,8 @@ waf_create_byte_match_set <- function(Name, ChangeToken) {
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the GeoMatchSet. You can't change
 #' `Name` after you create the `GeoMatchSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -174,16 +183,18 @@ waf_create_geo_match_set <- function(Name, ChangeToken) {
 #' 
 #' To create and configure an `IPSet`, perform the following steps:
 #' 
-#' 1.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `CreateIPSet` request.
+#' 1.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`create_ip_set`][waf_create_ip_set] request.
 #' 
-#' 2.  Submit a `CreateIPSet` request.
+#' 2.  Submit a [`create_ip_set`][waf_create_ip_set] request.
 #' 
-#' 3.  Use `GetChangeToken` to get the change token that you provide in the
-#'     `ChangeToken` parameter of an UpdateIPSet request.
+#' 3.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_ip_set`][waf_update_ip_set] request.
 #' 
-#' 4.  Submit an `UpdateIPSet` request to specify the IP addresses that you
-#'     want AWS WAF to watch for.
+#' 4.  Submit an [`update_ip_set`][waf_update_ip_set] request to specify
+#'     the IP addresses that you want AWS WAF to watch for.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -194,7 +205,8 @@ waf_create_geo_match_set <- function(Name, ChangeToken) {
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the IPSet. You can't change `Name`
 #' after you create the `IPSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -293,22 +305,28 @@ waf_create_ip_set <- function(Name, ChangeToken) {
 #' To create and configure a `RateBasedRule`, perform the following steps:
 #' 
 #' 1.  Create and update the predicates that you want to include in the
-#'     rule. For more information, see CreateByteMatchSet, CreateIPSet, and
-#'     CreateSqlInjectionMatchSet.
+#'     rule. For more information, see
+#'     [`create_byte_match_set`][waf_create_byte_match_set],
+#'     [`create_ip_set`][waf_create_ip_set], and
+#'     [`create_sql_injection_match_set`][waf_create_sql_injection_match_set].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `CreateRule` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`create_rule`][waf_create_rule] request.
 #' 
-#' 3.  Submit a `CreateRateBasedRule` request.
+#' 3.  Submit a [`create_rate_based_rule`][waf_create_rate_based_rule]
+#'     request.
 #' 
-#' 4.  Use `GetChangeToken` to get the change token that you provide in the
-#'     `ChangeToken` parameter of an UpdateRule request.
+#' 4.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_rule`][waf_update_rule] request.
 #' 
-#' 5.  Submit an `UpdateRateBasedRule` request to specify the predicates
-#'     that you want to include in the rule.
+#' 5.  Submit an [`update_rate_based_rule`][waf_update_rate_based_rule]
+#'     request to specify the predicates that you want to include in the
+#'     rule.
 #' 
 #' 6.  Create and update a `WebACL` that contains the `RateBasedRule`. For
-#'     more information, see CreateWebACL.
+#'     more information, see [`create_web_acl`][waf_create_web_acl].
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -336,9 +354,11 @@ waf_create_ip_set <- function(Name, ChangeToken) {
 #' If the number of requests exceeds the `RateLimit` and the other
 #' predicates specified in the rule are also met, AWS WAF triggers the
 #' action that is specified for this rule.
-#' @param ChangeToken &#91;required&#93; The `ChangeToken` that you used to submit the `CreateRateBasedRule`
-#' request. You can also use this value to query the status of the request.
-#' For more information, see GetChangeTokenStatus.
+#' @param ChangeToken &#91;required&#93; The `ChangeToken` that you used to submit the
+#' [`create_rate_based_rule`][waf_create_rate_based_rule] request. You can
+#' also use this value to query the status of the request. For more
+#' information, see
+#' [`get_change_token_status`][waf_get_change_token_status].
 #' @param Tags 
 #'
 #' @section Request syntax:
@@ -392,8 +412,9 @@ waf_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, Cha
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Creates a RegexMatchSet. You then use UpdateRegexMatchSet to identify
-#' the part of a web request that you want AWS WAF to inspect, such as the
+#' Creates a RegexMatchSet. You then use
+#' [`update_regex_match_set`][waf_update_regex_match_set] to identify the
+#' part of a web request that you want AWS WAF to inspect, such as the
 #' values of the `User-Agent` header or the query string. For example, you
 #' can create a `RegexMatchSet` that contains a `RegexMatchTuple` that
 #' looks for any requests with `User-Agent` headers that match a
@@ -402,18 +423,21 @@ waf_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, Cha
 #' 
 #' To create and configure a `RegexMatchSet`, perform the following steps:
 #' 
-#' 1.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `CreateRegexMatchSet` request.
+#' 1.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`create_regex_match_set`][waf_create_regex_match_set] request.
 #' 
-#' 2.  Submit a `CreateRegexMatchSet` request.
+#' 2.  Submit a [`create_regex_match_set`][waf_create_regex_match_set]
+#'     request.
 #' 
-#' 3.  Use `GetChangeToken` to get the change token that you provide in the
-#'     `ChangeToken` parameter of an `UpdateRegexMatchSet` request.
+#' 3.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_regex_match_set`][waf_update_regex_match_set] request.
 #' 
-#' 4.  Submit an UpdateRegexMatchSet request to specify the part of the
-#'     request that you want AWS WAF to inspect (for example, the header or
-#'     the URI) and the value, using a `RegexPatternSet`, that you want AWS
-#'     WAF to watch for.
+#' 4.  Submit an [`update_regex_match_set`][waf_update_regex_match_set]
+#'     request to specify the part of the request that you want AWS WAF to
+#'     inspect (for example, the header or the URI) and the value, using a
+#'     `RegexPatternSet`, that you want AWS WAF to watch for.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -424,7 +448,8 @@ waf_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, Cha
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the RegexMatchSet. You can't change
 #' `Name` after you create a `RegexMatchSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -468,24 +493,28 @@ waf_create_regex_match_set <- function(Name, ChangeToken) {
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Creates a `RegexPatternSet`. You then use UpdateRegexPatternSet to
-#' specify the regular expression (regex) pattern that you want AWS WAF to
-#' search for, such as `B\\[a@@\\]dB\\[o0\\]t`. You can then configure AWS
-#' WAF to reject those requests.
+#' Creates a `RegexPatternSet`. You then use
+#' [`update_regex_pattern_set`][waf_update_regex_pattern_set] to specify
+#' the regular expression (regex) pattern that you want AWS WAF to search
+#' for, such as `B\\[a@@\\]dB\\[o0\\]t`. You can then configure AWS WAF to
+#' reject those requests.
 #' 
 #' To create and configure a `RegexPatternSet`, perform the following
 #' steps:
 #' 
-#' 1.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `CreateRegexPatternSet` request.
+#' 1.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`create_regex_pattern_set`][waf_create_regex_pattern_set] request.
 #' 
-#' 2.  Submit a `CreateRegexPatternSet` request.
+#' 2.  Submit a [`create_regex_pattern_set`][waf_create_regex_pattern_set]
+#'     request.
 #' 
-#' 3.  Use `GetChangeToken` to get the change token that you provide in the
-#'     `ChangeToken` parameter of an `UpdateRegexPatternSet` request.
+#' 3.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_regex_pattern_set`][waf_update_regex_pattern_set] request.
 #' 
-#' 4.  Submit an UpdateRegexPatternSet request to specify the string that
-#'     you want AWS WAF to watch for.
+#' 4.  Submit an [`update_regex_pattern_set`][waf_update_regex_pattern_set]
+#'     request to specify the string that you want AWS WAF to watch for.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -496,7 +525,8 @@ waf_create_regex_match_set <- function(Name, ChangeToken) {
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the RegexPatternSet. You can't change
 #' `Name` after you create a `RegexPatternSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -558,22 +588,26 @@ waf_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' To create and configure a `Rule`, perform the following steps:
 #' 
 #' 1.  Create and update the predicates that you want to include in the
-#'     `Rule`. For more information, see CreateByteMatchSet, CreateIPSet,
-#'     and CreateSqlInjectionMatchSet.
+#'     `Rule`. For more information, see
+#'     [`create_byte_match_set`][waf_create_byte_match_set],
+#'     [`create_ip_set`][waf_create_ip_set], and
+#'     [`create_sql_injection_match_set`][waf_create_sql_injection_match_set].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `CreateRule` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`create_rule`][waf_create_rule] request.
 #' 
-#' 3.  Submit a `CreateRule` request.
+#' 3.  Submit a [`create_rule`][waf_create_rule] request.
 #' 
-#' 4.  Use `GetChangeToken` to get the change token that you provide in the
-#'     `ChangeToken` parameter of an UpdateRule request.
+#' 4.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_rule`][waf_update_rule] request.
 #' 
-#' 5.  Submit an `UpdateRule` request to specify the predicates that you
-#'     want to include in the `Rule`.
+#' 5.  Submit an [`update_rule`][waf_update_rule] request to specify the
+#'     predicates that you want to include in the `Rule`.
 #' 
 #' 6.  Create and update a `WebACL` that contains the `Rule`. For more
-#'     information, see CreateWebACL.
+#'     information, see [`create_web_acl`][waf_create_web_acl].
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -589,7 +623,8 @@ waf_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' length 128 and minimum length one. It can't contain whitespace or metric
 #' names reserved for AWS WAF, including "All" and "Default\\_Action." You
 #' can't change the name of the metric after you create the `Rule`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #' @param Tags 
 #'
 #' @section Request syntax:
@@ -652,8 +687,9 @@ waf_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 #' regional and global use.
 #' 
 #' Creates a `RuleGroup`. A rule group is a collection of predefined rules
-#' that you add to a web ACL. You use UpdateRuleGroup to add rules to the
-#' rule group.
+#' that you add to a web ACL. You use
+#' [`update_rule_group`][waf_update_rule_group] to add rules to the rule
+#' group.
 #' 
 #' Rule groups are subject to the following limits:
 #' 
@@ -679,7 +715,8 @@ waf_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 #' or metric names reserved for AWS WAF, including "All" and
 #' "Default\\_Action." You can't change the name of the metric after you
 #' create the `RuleGroup`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #' @param Tags 
 #'
 #' @section Request syntax:
@@ -731,7 +768,8 @@ waf_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Creates a `SizeConstraintSet`. You then use UpdateSizeConstraintSet to
+#' Creates a `SizeConstraintSet`. You then use
+#' [`update_size_constraint_set`][waf_update_size_constraint_set] to
 #' identify the part of a web request that you want AWS WAF to check for
 #' length, such as the length of the `User-Agent` header or the length of
 #' the query string. For example, you can create a `SizeConstraintSet` that
@@ -741,17 +779,25 @@ waf_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 #' To create and configure a `SizeConstraintSet`, perform the following
 #' steps:
 #' 
-#' 1.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `CreateSizeConstraintSet` request.
+#' 1.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`create_size_constraint_set`][waf_create_size_constraint_set]
+#'     request.
 #' 
-#' 2.  Submit a `CreateSizeConstraintSet` request.
+#' 2.  Submit a
+#'     [`create_size_constraint_set`][waf_create_size_constraint_set]
+#'     request.
 #' 
-#' 3.  Use `GetChangeToken` to get the change token that you provide in the
-#'     `ChangeToken` parameter of an `UpdateSizeConstraintSet` request.
+#' 3.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_size_constraint_set`][waf_update_size_constraint_set]
+#'     request.
 #' 
-#' 4.  Submit an UpdateSizeConstraintSet request to specify the part of the
-#'     request that you want AWS WAF to inspect (for example, the header or
-#'     the URI) and the value that you want AWS WAF to watch for.
+#' 4.  Submit an
+#'     [`update_size_constraint_set`][waf_update_size_constraint_set]
+#'     request to specify the part of the request that you want AWS WAF to
+#'     inspect (for example, the header or the URI) and the value that you
+#'     want AWS WAF to watch for.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -762,7 +808,8 @@ waf_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the SizeConstraintSet. You can't
 #' change `Name` after you create a `SizeConstraintSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -824,17 +871,24 @@ waf_create_size_constraint_set <- function(Name, ChangeToken) {
 #' To create and configure a `SqlInjectionMatchSet`, perform the following
 #' steps:
 #' 
-#' 1.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `CreateSqlInjectionMatchSet` request.
+#' 1.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`create_sql_injection_match_set`][waf_create_sql_injection_match_set]
+#'     request.
 #' 
-#' 2.  Submit a `CreateSqlInjectionMatchSet` request.
+#' 2.  Submit a
+#'     [`create_sql_injection_match_set`][waf_create_sql_injection_match_set]
+#'     request.
 #' 
-#' 3.  Use `GetChangeToken` to get the change token that you provide in the
-#'     `ChangeToken` parameter of an UpdateSqlInjectionMatchSet request.
+#' 3.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_sql_injection_match_set`][waf_update_sql_injection_match_set]
+#'     request.
 #' 
-#' 4.  Submit an UpdateSqlInjectionMatchSet request to specify the parts of
-#'     web requests in which you want to allow, block, or count malicious
-#'     SQL code.
+#' 4.  Submit an
+#'     [`update_sql_injection_match_set`][waf_update_sql_injection_match_set]
+#'     request to specify the parts of web requests in which you want to
+#'     allow, block, or count malicious SQL code.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -846,7 +900,8 @@ waf_create_size_constraint_set <- function(Name, ChangeToken) {
 #' @param Name &#91;required&#93; A friendly name or description for the SqlInjectionMatchSet that you're
 #' creating. You can't change `Name` after you create the
 #' `SqlInjectionMatchSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -913,23 +968,32 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #' 
 #' 1.  Create and update the `ByteMatchSet` objects and other predicates
 #'     that you want to include in `Rules`. For more information, see
-#'     CreateByteMatchSet, UpdateByteMatchSet, CreateIPSet, UpdateIPSet,
-#'     CreateSqlInjectionMatchSet, and UpdateSqlInjectionMatchSet.
+#'     [`create_byte_match_set`][waf_create_byte_match_set],
+#'     [`update_byte_match_set`][waf_update_byte_match_set],
+#'     [`create_ip_set`][waf_create_ip_set],
+#'     [`update_ip_set`][waf_update_ip_set],
+#'     [`create_sql_injection_match_set`][waf_create_sql_injection_match_set],
+#'     and
+#'     [`update_sql_injection_match_set`][waf_update_sql_injection_match_set].
 #' 
 #' 2.  Create and update the `Rules` that you want to include in the
-#'     `WebACL`. For more information, see CreateRule and UpdateRule.
+#'     `WebACL`. For more information, see [`create_rule`][waf_create_rule]
+#'     and [`update_rule`][waf_update_rule].
 #' 
-#' 3.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `CreateWebACL` request.
+#' 3.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`create_web_acl`][waf_create_web_acl] request.
 #' 
-#' 4.  Submit a `CreateWebACL` request.
+#' 4.  Submit a [`create_web_acl`][waf_create_web_acl] request.
 #' 
-#' 5.  Use `GetChangeToken` to get the change token that you provide in the
-#'     `ChangeToken` parameter of an UpdateWebACL request.
+#' 5.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_web_acl`][waf_update_web_acl] request.
 #' 
-#' 6.  Submit an UpdateWebACL request to specify the `Rules` that you want
-#'     to include in the `WebACL`, to specify the default action, and to
-#'     associate the `WebACL` with a CloudFront distribution.
+#' 6.  Submit an [`update_web_acl`][waf_update_web_acl] request to specify
+#'     the `Rules` that you want to include in the `WebACL`, to specify the
+#'     default action, and to associate the `WebACL` with a CloudFront
+#'     distribution.
 #' 
 #' For more information about how to use the AWS WAF API, see the [AWS WAF
 #' Developer
@@ -949,7 +1013,8 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #' @param DefaultAction &#91;required&#93; The action that you want AWS WAF to take when a request doesn't match
 #' the criteria specified in any of the `Rule` objects that are associated
 #' with the `WebACL`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #' @param Tags 
 #'
 #' @section Request syntax:
@@ -1095,17 +1160,19 @@ waf_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, IgnoreUns
 #' 
 #' To create and configure an `XssMatchSet`, perform the following steps:
 #' 
-#' 1.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `CreateXssMatchSet` request.
+#' 1.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`create_xss_match_set`][waf_create_xss_match_set] request.
 #' 
-#' 2.  Submit a `CreateXssMatchSet` request.
+#' 2.  Submit a [`create_xss_match_set`][waf_create_xss_match_set] request.
 #' 
-#' 3.  Use `GetChangeToken` to get the change token that you provide in the
-#'     `ChangeToken` parameter of an UpdateXssMatchSet request.
+#' 3.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_xss_match_set`][waf_update_xss_match_set] request.
 #' 
-#' 4.  Submit an UpdateXssMatchSet request to specify the parts of web
-#'     requests in which you want to allow, block, or count cross-site
-#'     scripting attacks.
+#' 4.  Submit an [`update_xss_match_set`][waf_update_xss_match_set] request
+#'     to specify the parts of web requests in which you want to allow,
+#'     block, or count cross-site scripting attacks.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -1116,7 +1183,8 @@ waf_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, IgnoreUns
 #'
 #' @param Name &#91;required&#93; A friendly name or description for the XssMatchSet that you're creating.
 #' You can't change `Name` after you create the `XssMatchSet`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -1175,25 +1243,30 @@ waf_create_xss_match_set <- function(Name, ChangeToken) {
 #' ByteMatchTuple objects (any filters).
 #' 
 #' If you just want to remove a `ByteMatchSet` from a `Rule`, use
-#' UpdateRule.
+#' [`update_rule`][waf_update_rule].
 #' 
 #' To permanently delete a `ByteMatchSet`, perform the following steps:
 #' 
 #' 1.  Update the `ByteMatchSet` to remove filters, if any. For more
-#'     information, see UpdateByteMatchSet.
+#'     information, see
+#'     [`update_byte_match_set`][waf_update_byte_match_set].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `DeleteByteMatchSet` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`delete_byte_match_set`][waf_delete_byte_match_set] request.
 #' 
-#' 3.  Submit a `DeleteByteMatchSet` request.
+#' 3.  Submit a [`delete_byte_match_set`][waf_delete_byte_match_set]
+#'     request.
 #'
 #' @usage
 #' waf_delete_byte_match_set(ByteMatchSetId, ChangeToken)
 #'
 #' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to delete.
-#' `ByteMatchSetId` is returned by CreateByteMatchSet and by
-#' ListByteMatchSets.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' `ByteMatchSetId` is returned by
+#' [`create_byte_match_set`][waf_create_byte_match_set] and by
+#' [`list_byte_match_sets`][waf_list_byte_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -1251,26 +1324,29 @@ waf_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
 #' it's still used in any `Rules` or if it still includes any countries.
 #' 
 #' If you just want to remove a `GeoMatchSet` from a `Rule`, use
-#' UpdateRule.
+#' [`update_rule`][waf_update_rule].
 #' 
 #' To permanently delete a `GeoMatchSet` from AWS WAF, perform the
 #' following steps:
 #' 
 #' 1.  Update the `GeoMatchSet` to remove any countries. For more
-#'     information, see UpdateGeoMatchSet.
+#'     information, see [`update_geo_match_set`][waf_update_geo_match_set].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `DeleteGeoMatchSet` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`delete_geo_match_set`][waf_delete_geo_match_set] request.
 #' 
-#' 3.  Submit a `DeleteGeoMatchSet` request.
+#' 3.  Submit a [`delete_geo_match_set`][waf_delete_geo_match_set] request.
 #'
 #' @usage
 #' waf_delete_geo_match_set(GeoMatchSetId, ChangeToken)
 #'
 #' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetID` of the GeoMatchSet that you want to delete.
-#' `GeoMatchSetId` is returned by CreateGeoMatchSet and by
-#' ListGeoMatchSets.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' `GeoMatchSetId` is returned by
+#' [`create_geo_match_set`][waf_create_geo_match_set] and by
+#' [`list_geo_match_sets`][waf_list_geo_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -1317,25 +1393,29 @@ waf_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
 #' Permanently deletes an IPSet. You can't delete an `IPSet` if it's still
 #' used in any `Rules` or if it still includes any IP addresses.
 #' 
-#' If you just want to remove an `IPSet` from a `Rule`, use UpdateRule.
+#' If you just want to remove an `IPSet` from a `Rule`, use
+#' [`update_rule`][waf_update_rule].
 #' 
 #' To permanently delete an `IPSet` from AWS WAF, perform the following
 #' steps:
 #' 
 #' 1.  Update the `IPSet` to remove IP address ranges, if any. For more
-#'     information, see UpdateIPSet.
+#'     information, see [`update_ip_set`][waf_update_ip_set].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `DeleteIPSet` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`delete_ip_set`][waf_delete_ip_set] request.
 #' 
-#' 3.  Submit a `DeleteIPSet` request.
+#' 3.  Submit a [`delete_ip_set`][waf_delete_ip_set] request.
 #'
 #' @usage
 #' waf_delete_ip_set(IPSetId, ChangeToken)
 #'
 #' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to delete. `IPSetId` is
-#' returned by CreateIPSet and by ListIPSets.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' returned by [`create_ip_set`][waf_create_ip_set] and by
+#' [`list_ip_sets`][waf_list_ip_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -1495,25 +1575,31 @@ waf_delete_permission_policy <- function(ResourceArn) {
 #' still used in any `WebACL` objects or if it still includes any
 #' predicates, such as `ByteMatchSet` objects.
 #' 
-#' If you just want to remove a rule from a `WebACL`, use UpdateWebACL.
+#' If you just want to remove a rule from a `WebACL`, use
+#' [`update_web_acl`][waf_update_web_acl].
 #' 
 #' To permanently delete a `RateBasedRule` from AWS WAF, perform the
 #' following steps:
 #' 
 #' 1.  Update the `RateBasedRule` to remove predicates, if any. For more
-#'     information, see UpdateRateBasedRule.
+#'     information, see
+#'     [`update_rate_based_rule`][waf_update_rate_based_rule].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `DeleteRateBasedRule` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`delete_rate_based_rule`][waf_delete_rate_based_rule] request.
 #' 
-#' 3.  Submit a `DeleteRateBasedRule` request.
+#' 3.  Submit a [`delete_rate_based_rule`][waf_delete_rate_based_rule]
+#'     request.
 #'
 #' @usage
 #' waf_delete_rate_based_rule(RuleId, ChangeToken)
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule that you want to delete. `RuleId` is
-#' returned by CreateRateBasedRule and by ListRateBasedRules.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' returned by [`create_rate_based_rule`][waf_create_rate_based_rule] and
+#' by [`list_rate_based_rules`][waf_list_rate_based_rules].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -1562,25 +1648,30 @@ waf_delete_rate_based_rule <- function(RuleId, ChangeToken) {
 #' `RegexMatchTuples` objects (any filters).
 #' 
 #' If you just want to remove a `RegexMatchSet` from a `Rule`, use
-#' UpdateRule.
+#' [`update_rule`][waf_update_rule].
 #' 
 #' To permanently delete a `RegexMatchSet`, perform the following steps:
 #' 
 #' 1.  Update the `RegexMatchSet` to remove filters, if any. For more
-#'     information, see UpdateRegexMatchSet.
+#'     information, see
+#'     [`update_regex_match_set`][waf_update_regex_match_set].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `DeleteRegexMatchSet` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`delete_regex_match_set`][waf_delete_regex_match_set] request.
 #' 
-#' 3.  Submit a `DeleteRegexMatchSet` request.
+#' 3.  Submit a [`delete_regex_match_set`][waf_delete_regex_match_set]
+#'     request.
 #'
 #' @usage
 #' waf_delete_regex_match_set(RegexMatchSetId, ChangeToken)
 #'
 #' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to delete.
-#' `RegexMatchSetId` is returned by CreateRegexMatchSet and by
-#' ListRegexMatchSets.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' `RegexMatchSetId` is returned by
+#' [`create_regex_match_set`][waf_create_regex_match_set] and by
+#' [`list_regex_match_sets`][waf_list_regex_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -1632,9 +1723,11 @@ waf_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
 #' waf_delete_regex_pattern_set(RegexPatternSetId, ChangeToken)
 #'
 #' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to delete.
-#' `RegexPatternSetId` is returned by CreateRegexPatternSet and by
-#' ListRegexPatternSets.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' `RegexPatternSetId` is returned by
+#' [`create_regex_pattern_set`][waf_create_regex_pattern_set] and by
+#' [`list_regex_pattern_sets`][waf_list_regex_pattern_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -1682,25 +1775,29 @@ waf_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken) {
 #' in any `WebACL` objects or if it still includes any predicates, such as
 #' `ByteMatchSet` objects.
 #' 
-#' If you just want to remove a `Rule` from a `WebACL`, use UpdateWebACL.
+#' If you just want to remove a `Rule` from a `WebACL`, use
+#' [`update_web_acl`][waf_update_web_acl].
 #' 
 #' To permanently delete a `Rule` from AWS WAF, perform the following
 #' steps:
 #' 
 #' 1.  Update the `Rule` to remove predicates, if any. For more
-#'     information, see UpdateRule.
+#'     information, see [`update_rule`][waf_update_rule].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `DeleteRule` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`delete_rule`][waf_delete_rule] request.
 #' 
-#' 3.  Submit a `DeleteRule` request.
+#' 3.  Submit a [`delete_rule`][waf_delete_rule] request.
 #'
 #' @usage
 #' waf_delete_rule(RuleId, ChangeToken)
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the Rule that you want to delete. `RuleId` is returned
-#' by CreateRule and by ListRules.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' by [`create_rule`][waf_create_rule] and by
+#' [`list_rules`][waf_list_rules].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -1757,25 +1854,29 @@ waf_delete_rule <- function(RuleId, ChangeToken) {
 #' still used in any `WebACL` objects or if it still includes any rules.
 #' 
 #' If you just want to remove a `RuleGroup` from a `WebACL`, use
-#' UpdateWebACL.
+#' [`update_web_acl`][waf_update_web_acl].
 #' 
 #' To permanently delete a `RuleGroup` from AWS WAF, perform the following
 #' steps:
 #' 
 #' 1.  Update the `RuleGroup` to remove rules, if any. For more
-#'     information, see UpdateRuleGroup.
+#'     information, see [`update_rule_group`][waf_update_rule_group].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `DeleteRuleGroup` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`delete_rule_group`][waf_delete_rule_group] request.
 #' 
-#' 3.  Submit a `DeleteRuleGroup` request.
+#' 3.  Submit a [`delete_rule_group`][waf_delete_rule_group] request.
 #'
 #' @usage
 #' waf_delete_rule_group(RuleGroupId, ChangeToken)
 #'
 #' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to delete.
-#' `RuleGroupId` is returned by CreateRuleGroup and by ListRuleGroups.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' `RuleGroupId` is returned by
+#' [`create_rule_group`][waf_create_rule_group] and by
+#' [`list_rule_groups`][waf_list_rule_groups].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -1824,26 +1925,33 @@ waf_delete_rule_group <- function(RuleGroupId, ChangeToken) {
 #' includes any SizeConstraint objects (any filters).
 #' 
 #' If you just want to remove a `SizeConstraintSet` from a `Rule`, use
-#' UpdateRule.
+#' [`update_rule`][waf_update_rule].
 #' 
 #' To permanently delete a `SizeConstraintSet`, perform the following
 #' steps:
 #' 
 #' 1.  Update the `SizeConstraintSet` to remove filters, if any. For more
-#'     information, see UpdateSizeConstraintSet.
+#'     information, see
+#'     [`update_size_constraint_set`][waf_update_size_constraint_set].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `DeleteSizeConstraintSet` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`delete_size_constraint_set`][waf_delete_size_constraint_set]
+#'     request.
 #' 
-#' 3.  Submit a `DeleteSizeConstraintSet` request.
+#' 3.  Submit a
+#'     [`delete_size_constraint_set`][waf_delete_size_constraint_set]
+#'     request.
 #'
 #' @usage
 #' waf_delete_size_constraint_set(SizeConstraintSetId, ChangeToken)
 #'
 #' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to
-#' delete. `SizeConstraintSetId` is returned by CreateSizeConstraintSet and
-#' by ListSizeConstraintSets.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' delete. `SizeConstraintSetId` is returned by
+#' [`create_size_constraint_set`][waf_create_size_constraint_set] and by
+#' [`list_size_constraint_sets`][waf_list_size_constraint_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -1902,26 +2010,34 @@ waf_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeToken) {
 #' contains any SqlInjectionMatchTuple objects.
 #' 
 #' If you just want to remove a `SqlInjectionMatchSet` from a `Rule`, use
-#' UpdateRule.
+#' [`update_rule`][waf_update_rule].
 #' 
 #' To permanently delete a `SqlInjectionMatchSet` from AWS WAF, perform the
 #' following steps:
 #' 
 #' 1.  Update the `SqlInjectionMatchSet` to remove filters, if any. For
-#'     more information, see UpdateSqlInjectionMatchSet.
+#'     more information, see
+#'     [`update_sql_injection_match_set`][waf_update_sql_injection_match_set].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `DeleteSqlInjectionMatchSet` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`delete_sql_injection_match_set`][waf_delete_sql_injection_match_set]
+#'     request.
 #' 
-#' 3.  Submit a `DeleteSqlInjectionMatchSet` request.
+#' 3.  Submit a
+#'     [`delete_sql_injection_match_set`][waf_delete_sql_injection_match_set]
+#'     request.
 #'
 #' @usage
 #' waf_delete_sql_injection_match_set(SqlInjectionMatchSetId, ChangeToken)
 #'
 #' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the SqlInjectionMatchSet that you want
 #' to delete. `SqlInjectionMatchSetId` is returned by
-#' CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' [`create_sql_injection_match_set`][waf_create_sql_injection_match_set]
+#' and by
+#' [`list_sql_injection_match_sets`][waf_list_sql_injection_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -1981,19 +2097,22 @@ waf_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #' To delete a `WebACL`, perform the following steps:
 #' 
 #' 1.  Update the `WebACL` to remove `Rules`, if any. For more information,
-#'     see UpdateWebACL.
+#'     see [`update_web_acl`][waf_update_web_acl].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `DeleteWebACL` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`delete_web_acl`][waf_delete_web_acl] request.
 #' 
-#' 3.  Submit a `DeleteWebACL` request.
+#' 3.  Submit a [`delete_web_acl`][waf_delete_web_acl] request.
 #'
 #' @usage
 #' waf_delete_web_acl(WebACLId, ChangeToken)
 #'
 #' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to delete. `WebACLId` is
-#' returned by CreateWebACL and by ListWebACLs.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' returned by [`create_web_acl`][waf_create_web_acl] and by
+#' [`list_web_ac_ls`][waf_list_web_ac_ls].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -2052,26 +2171,29 @@ waf_delete_web_acl <- function(WebACLId, ChangeToken) {
 #' objects.
 #' 
 #' If you just want to remove an `XssMatchSet` from a `Rule`, use
-#' UpdateRule.
+#' [`update_rule`][waf_update_rule].
 #' 
 #' To permanently delete an `XssMatchSet` from AWS WAF, perform the
 #' following steps:
 #' 
 #' 1.  Update the `XssMatchSet` to remove filters, if any. For more
-#'     information, see UpdateXssMatchSet.
+#'     information, see [`update_xss_match_set`][waf_update_xss_match_set].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of a `DeleteXssMatchSet` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of a
+#'     [`delete_xss_match_set`][waf_delete_xss_match_set] request.
 #' 
-#' 3.  Submit a `DeleteXssMatchSet` request.
+#' 3.  Submit a [`delete_xss_match_set`][waf_delete_xss_match_set] request.
 #'
 #' @usage
 #' waf_delete_xss_match_set(XssMatchSetId, ChangeToken)
 #'
 #' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the XssMatchSet that you want to delete.
-#' `XssMatchSetId` is returned by CreateXssMatchSet and by
-#' ListXssMatchSets.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' `XssMatchSetId` is returned by
+#' [`create_xss_match_set`][waf_create_xss_match_set] and by
+#' [`list_xss_match_sets`][waf_list_xss_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -2131,8 +2253,9 @@ waf_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
 #' waf_get_byte_match_set(ByteMatchSetId)
 #'
 #' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to get.
-#' `ByteMatchSetId` is returned by CreateByteMatchSet and by
-#' ListByteMatchSets.
+#' `ByteMatchSetId` is returned by
+#' [`create_byte_match_set`][waf_create_byte_match_set] and by
+#' [`list_byte_match_sets`][waf_list_byte_match_sets].
 #'
 #' @section Request syntax:
 #' ```
@@ -2190,15 +2313,18 @@ waf_get_byte_match_set <- function(ByteMatchSetId) {
 #' conflicting requests to AWS WAF.
 #' 
 #' Each create, update, or delete request must use a unique change token.
-#' If your application submits a `GetChangeToken` request and then submits
-#' a second `GetChangeToken` request before submitting a create, update, or
-#' delete request, the second `GetChangeToken` request returns the same
-#' value as the first `GetChangeToken` request.
+#' If your application submits a [`get_change_token`][waf_get_change_token]
+#' request and then submits a second
+#' [`get_change_token`][waf_get_change_token] request before submitting a
+#' create, update, or delete request, the second
+#' [`get_change_token`][waf_get_change_token] request returns the same
+#' value as the first [`get_change_token`][waf_get_change_token] request.
 #' 
 #' When you use a change token in a create, update, or delete request, the
 #' status of the change token changes to `PENDING`, which indicates that
 #' AWS WAF is propagating the change to all AWS WAF servers. Use
-#' `GetChangeTokenStatus` to determine the status of your change token.
+#' [`get_change_token_status`][waf_get_change_token_status] to determine
+#' the status of your change token.
 #'
 #' @usage
 #' waf_get_change_token()
@@ -2250,11 +2376,12 @@ waf_get_change_token <- function() {
 #' regional and global use.
 #' 
 #' Returns the status of a `ChangeToken` that you got by calling
-#' GetChangeToken. `ChangeTokenStatus` is one of the following values:
+#' [`get_change_token`][waf_get_change_token]. `ChangeTokenStatus` is one
+#' of the following values:
 #' 
 #' -   `PROVISIONED`: You requested the change token by calling
-#'     `GetChangeToken`, but you haven't used it yet in a call to create,
-#'     update, or delete an AWS WAF object.
+#'     [`get_change_token`][waf_get_change_token], but you haven't used it
+#'     yet in a call to create, update, or delete an AWS WAF object.
 #' 
 #' -   `PENDING`: AWS WAF is propagating the create, update, or delete
 #'     request to all AWS WAF servers.
@@ -2265,7 +2392,8 @@ waf_get_change_token <- function() {
 #' waf_get_change_token_status(ChangeToken)
 #'
 #' @param ChangeToken &#91;required&#93; The change token for which you want to get the status. This change token
-#' was previously returned in the `GetChangeToken` response.
+#' was previously returned in the
+#' [`get_change_token`][waf_get_change_token] response.
 #'
 #' @section Request syntax:
 #' ```
@@ -2323,8 +2451,9 @@ waf_get_change_token_status <- function(ChangeToken) {
 #' waf_get_geo_match_set(GeoMatchSetId)
 #'
 #' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetId` of the GeoMatchSet that you want to get.
-#' `GeoMatchSetId` is returned by CreateGeoMatchSet and by
-#' ListGeoMatchSets.
+#' `GeoMatchSetId` is returned by
+#' [`create_geo_match_set`][waf_create_geo_match_set] and by
+#' [`list_geo_match_sets`][waf_list_geo_match_sets].
 #'
 #' @section Request syntax:
 #' ```
@@ -2373,7 +2502,8 @@ waf_get_geo_match_set <- function(GeoMatchSetId) {
 #' waf_get_ip_set(IPSetId)
 #'
 #' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to get. `IPSetId` is returned
-#' by CreateIPSet and by ListIPSets.
+#' by [`create_ip_set`][waf_create_ip_set] and by
+#' [`list_ip_sets`][waf_list_ip_sets].
 #'
 #' @section Request syntax:
 #' ```
@@ -2524,13 +2654,15 @@ waf_get_permission_policy <- function(ResourceArn) {
 #' regional and global use.
 #' 
 #' Returns the RateBasedRule that is specified by the `RuleId` that you
-#' included in the `GetRateBasedRule` request.
+#' included in the [`get_rate_based_rule`][waf_get_rate_based_rule]
+#' request.
 #'
 #' @usage
 #' waf_get_rate_based_rule(RuleId)
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule that you want to get. `RuleId` is
-#' returned by CreateRateBasedRule and by ListRateBasedRules.
+#' returned by [`create_rate_based_rule`][waf_create_rate_based_rule] and
+#' by [`list_rate_based_rules`][waf_list_rate_based_rules].
 #'
 #' @section Request syntax:
 #' ```
@@ -2583,8 +2715,9 @@ waf_get_rate_based_rule <- function(RuleId) {
 #' waf_get_rate_based_rule_managed_keys(RuleId, NextMarker)
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule for which you want to get a list of
-#' `ManagedKeys`. `RuleId` is returned by CreateRateBasedRule and by
-#' ListRateBasedRules.
+#' `ManagedKeys`. `RuleId` is returned by
+#' [`create_rate_based_rule`][waf_create_rate_based_rule] and by
+#' [`list_rate_based_rules`][waf_list_rate_based_rules].
 #' @param NextMarker A null value and not currently used. Do not include this in your
 #' request.
 #'
@@ -2636,8 +2769,9 @@ waf_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NULL) {
 #' waf_get_regex_match_set(RegexMatchSetId)
 #'
 #' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to get.
-#' `RegexMatchSetId` is returned by CreateRegexMatchSet and by
-#' ListRegexMatchSets.
+#' `RegexMatchSetId` is returned by
+#' [`create_regex_match_set`][waf_create_regex_match_set] and by
+#' [`list_regex_match_sets`][waf_list_regex_match_sets].
 #'
 #' @section Request syntax:
 #' ```
@@ -2686,8 +2820,9 @@ waf_get_regex_match_set <- function(RegexMatchSetId) {
 #' waf_get_regex_pattern_set(RegexPatternSetId)
 #'
 #' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to get.
-#' `RegexPatternSetId` is returned by CreateRegexPatternSet and by
-#' ListRegexPatternSets.
+#' `RegexPatternSetId` is returned by
+#' [`create_regex_pattern_set`][waf_create_regex_pattern_set] and by
+#' [`list_regex_pattern_sets`][waf_list_regex_pattern_sets].
 #'
 #' @section Request syntax:
 #' ```
@@ -2731,13 +2866,13 @@ waf_get_regex_pattern_set <- function(RegexPatternSetId) {
 #' regional and global use.
 #' 
 #' Returns the Rule that is specified by the `RuleId` that you included in
-#' the `GetRule` request.
+#' the [`get_rule`][waf_get_rule] request.
 #'
 #' @usage
 #' waf_get_rule(RuleId)
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the Rule that you want to get. `RuleId` is returned by
-#' CreateRule and by ListRules.
+#' [`create_rule`](waf_create_rule) and by [`list_rules`][waf_list_rules].
 #'
 #' @section Request syntax:
 #' ```
@@ -2790,15 +2925,17 @@ waf_get_rule <- function(RuleId) {
 #' regional and global use.
 #' 
 #' Returns the RuleGroup that is specified by the `RuleGroupId` that you
-#' included in the `GetRuleGroup` request.
+#' included in the [`get_rule_group`][waf_get_rule_group] request.
 #' 
-#' To view the rules in a rule group, use ListActivatedRulesInRuleGroup.
+#' To view the rules in a rule group, use
+#' [`list_activated_rules_in_rule_group`][waf_list_activated_rules_in_rule_group].
 #'
 #' @usage
 #' waf_get_rule_group(RuleGroupId)
 #'
 #' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to get. `RuleGroupId`
-#' is returned by CreateRuleGroup and by ListRuleGroups.
+#' is returned by [`create_rule_group`][waf_create_rule_group] and by
+#' [`list_rule_groups`][waf_list_rule_groups].
 #'
 #' @section Request syntax:
 #' ```
@@ -2847,37 +2984,42 @@ waf_get_rule_group <- function(RuleGroupId) {
 #' choose. You can specify a sample size of up to 500 requests, and you can
 #' specify any time range in the previous three hours.
 #' 
-#' `GetSampledRequests` returns a time range, which is usually the time
-#' range that you specified. However, if your resource (such as a
-#' CloudFront distribution) received 5,000 requests before the specified
-#' time range elapsed, `GetSampledRequests` returns an updated time range.
-#' This new time range indicates the actual period during which AWS WAF
-#' selected the requests in the sample.
+#' [`get_sampled_requests`][waf_get_sampled_requests] returns a time range,
+#' which is usually the time range that you specified. However, if your
+#' resource (such as a CloudFront distribution) received 5,000 requests
+#' before the specified time range elapsed,
+#' [`get_sampled_requests`][waf_get_sampled_requests] returns an updated
+#' time range. This new time range indicates the actual period during which
+#' AWS WAF selected the requests in the sample.
 #'
 #' @usage
 #' waf_get_sampled_requests(WebAclId, RuleId, TimeWindow, MaxItems)
 #'
-#' @param WebAclId &#91;required&#93; The `WebACLId` of the `WebACL` for which you want `GetSampledRequests`
-#' to return a sample of requests.
+#' @param WebAclId &#91;required&#93; The `WebACLId` of the `WebACL` for which you want
+#' [`get_sampled_requests`][waf_get_sampled_requests] to return a sample of
+#' requests.
 #' @param RuleId &#91;required&#93; `RuleId` is one of three values:
 #' 
 #' -   The `RuleId` of the `Rule` or the `RuleGroupId` of the `RuleGroup`
-#'     for which you want `GetSampledRequests` to return a sample of
-#'     requests.
+#'     for which you want
+#'     [`get_sampled_requests`][waf_get_sampled_requests] to return a
+#'     sample of requests.
 #' 
-#' -   `Default_Action`, which causes `GetSampledRequests` to return a
+#' -   `Default_Action`, which causes
+#'     [`get_sampled_requests`][waf_get_sampled_requests] to return a
 #'     sample of the requests that didn't match any of the rules in the
 #'     specified `WebACL`.
 #' @param TimeWindow &#91;required&#93; The start date and time and the end date and time of the range for which
-#' you want `GetSampledRequests` to return a sample of requests. You must
-#' specify the times in Coordinated Universal Time (UTC) format. UTC format
-#' includes the special designator, `Z`. For example,
-#' `"2016-09-27T14:50Z"`. You can specify any time range in the previous
-#' three hours.
+#' you want [`get_sampled_requests`][waf_get_sampled_requests] to return a
+#' sample of requests. You must specify the times in Coordinated Universal
+#' Time (UTC) format. UTC format includes the special designator, `Z`. For
+#' example, `"2016-09-27T14:50Z"`. You can specify any time range in the
+#' previous three hours.
 #' @param MaxItems &#91;required&#93; The number of requests that you want AWS WAF to return from among the
 #' first 5,000 requests that your AWS resource received during the time
 #' range. If your resource received fewer requests than the value of
-#' `MaxItems`, `GetSampledRequests` returns information about all of them.
+#' `MaxItems`, [`get_sampled_requests`][waf_get_sampled_requests] returns
+#' information about all of them.
 #'
 #' @section Request syntax:
 #' ```
@@ -2953,8 +3095,9 @@ waf_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxItems) {
 #' waf_get_size_constraint_set(SizeConstraintSetId)
 #'
 #' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to get.
-#' `SizeConstraintSetId` is returned by CreateSizeConstraintSet and by
-#' ListSizeConstraintSets.
+#' `SizeConstraintSetId` is returned by
+#' [`create_size_constraint_set`][waf_create_size_constraint_set] and by
+#' [`list_size_constraint_sets`][waf_list_size_constraint_sets].
 #'
 #' @section Request syntax:
 #' ```
@@ -3014,7 +3157,9 @@ waf_get_size_constraint_set <- function(SizeConstraintSetId) {
 #'
 #' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the SqlInjectionMatchSet that you want
 #' to get. `SqlInjectionMatchSetId` is returned by
-#' CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.
+#' [`create_sql_injection_match_set`][waf_create_sql_injection_match_set]
+#' and by
+#' [`list_sql_injection_match_sets`][waf_list_sql_injection_match_sets].
 #'
 #' @section Request syntax:
 #' ```
@@ -3072,7 +3217,8 @@ waf_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
 #' waf_get_web_acl(WebACLId)
 #'
 #' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to get. `WebACLId` is
-#' returned by CreateWebACL and by ListWebACLs.
+#' returned by [`create_web_acl`][waf_create_web_acl] and by
+#' [`list_web_ac_ls`][waf_list_web_ac_ls].
 #'
 #' @section Request syntax:
 #' ```
@@ -3130,8 +3276,9 @@ waf_get_web_acl <- function(WebACLId) {
 #' waf_get_xss_match_set(XssMatchSetId)
 #'
 #' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the XssMatchSet that you want to get.
-#' `XssMatchSetId` is returned by CreateXssMatchSet and by
-#' ListXssMatchSets.
+#' `XssMatchSetId` is returned by
+#' [`create_xss_match_set`][waf_create_xss_match_set] and by
+#' [`list_xss_match_sets`][waf_list_xss_match_sets].
 #'
 #' @section Request syntax:
 #' ```
@@ -3193,9 +3340,10 @@ waf_get_xss_match_set <- function(XssMatchSetId) {
 #' @param NextMarker If you specify a value for `Limit` and you have more `ActivatedRules`
 #' than the value of `Limit`, AWS WAF returns a `NextMarker` value in the
 #' response that allows you to list another group of `ActivatedRules`. For
-#' the second and subsequent `ListActivatedRulesInRuleGroup` requests,
-#' specify the value of `NextMarker` from the previous response to get
-#' information about another batch of `ActivatedRules`.
+#' the second and subsequent
+#' [`list_activated_rules_in_rule_group`][waf_list_activated_rules_in_rule_group]
+#' requests, specify the value of `NextMarker` from the previous response
+#' to get information about another batch of `ActivatedRules`.
 #' @param Limit Specifies the number of `ActivatedRules` that you want AWS WAF to return
 #' for this request. If you have more `ActivatedRules` than the number that
 #' you specify for `Limit`, the response includes a `NextMarker` value that
@@ -3252,7 +3400,8 @@ waf_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, NextMarke
 #' @param NextMarker If you specify a value for `Limit` and you have more `ByteMatchSets`
 #' than the value of `Limit`, AWS WAF returns a `NextMarker` value in the
 #' response that allows you to list another group of `ByteMatchSets`. For
-#' the second and subsequent `ListByteMatchSets` requests, specify the
+#' the second and subsequent
+#' [`list_byte_match_sets`][waf_list_byte_match_sets] requests, specify the
 #' value of `NextMarker` from the previous response to get information
 #' about another batch of `ByteMatchSets`.
 #' @param Limit Specifies the number of `ByteMatchSet` objects that you want AWS WAF to
@@ -3310,7 +3459,8 @@ waf_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @param NextMarker If you specify a value for `Limit` and you have more `GeoMatchSet`s than
 #' the value of `Limit`, AWS WAF returns a `NextMarker` value in the
 #' response that allows you to list another group of `GeoMatchSet` objects.
-#' For the second and subsequent `ListGeoMatchSets` requests, specify the
+#' For the second and subsequent
+#' [`list_geo_match_sets`][waf_list_geo_match_sets] requests, specify the
 #' value of `NextMarker` from the previous response to get information
 #' about another batch of `GeoMatchSet` objects.
 #' @param Limit Specifies the number of `GeoMatchSet` objects that you want AWS WAF to
@@ -3367,8 +3517,9 @@ waf_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #'
 #' @param NextMarker AWS WAF returns a `NextMarker` value in the response that allows you to
 #' list another group of `IPSets`. For the second and subsequent
-#' `ListIPSets` requests, specify the value of `NextMarker` from the
-#' previous response to get information about another batch of `IPSets`.
+#' [`list_ip_sets`][waf_list_ip_sets] requests, specify the value of
+#' `NextMarker` from the previous response to get information about another
+#' batch of `IPSets`.
 #' @param Limit Specifies the number of `IPSet` objects that you want AWS WAF to return
 #' for this request. If you have more `IPSet` objects than the number you
 #' specify for `Limit`, the response includes a `NextMarker` value that you
@@ -3433,9 +3584,10 @@ waf_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' `LoggingConfigurations` than the value of `Limit`, AWS WAF returns a
 #' `NextMarker` value in the response that allows you to list another group
 #' of `LoggingConfigurations`. For the second and subsequent
-#' `ListLoggingConfigurations` requests, specify the value of `NextMarker`
-#' from the previous response to get information about another batch of
-#' `ListLoggingConfigurations`.
+#' [`list_logging_configurations`][waf_list_logging_configurations]
+#' requests, specify the value of `NextMarker` from the previous response
+#' to get information about another batch of
+#' [`list_logging_configurations`][waf_list_logging_configurations].
 #' @param Limit Specifies the number of `LoggingConfigurations` that you want AWS WAF to
 #' return for this request. If you have more `LoggingConfigurations` than
 #' the number that you specify for `Limit`, the response includes a
@@ -3492,9 +3644,9 @@ waf_list_logging_configurations <- function(NextMarker = NULL, Limit = NULL) {
 #' @param NextMarker If you specify a value for `Limit` and you have more `Rules` than the
 #' value of `Limit`, AWS WAF returns a `NextMarker` value in the response
 #' that allows you to list another group of `Rules`. For the second and
-#' subsequent `ListRateBasedRules` requests, specify the value of
-#' `NextMarker` from the previous response to get information about another
-#' batch of `Rules`.
+#' subsequent [`list_rate_based_rules`][waf_list_rate_based_rules]
+#' requests, specify the value of `NextMarker` from the previous response
+#' to get information about another batch of `Rules`.
 #' @param Limit Specifies the number of `Rules` that you want AWS WAF to return for this
 #' request. If you have more `Rules` than the number that you specify for
 #' `Limit`, the response includes a `NextMarker` value that you can use to
@@ -3550,9 +3702,10 @@ waf_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
 #' @param NextMarker If you specify a value for `Limit` and you have more `RegexMatchSet`
 #' objects than the value of `Limit`, AWS WAF returns a `NextMarker` value
 #' in the response that allows you to list another group of
-#' `ByteMatchSets`. For the second and subsequent `ListRegexMatchSets`
-#' requests, specify the value of `NextMarker` from the previous response
-#' to get information about another batch of `RegexMatchSet` objects.
+#' `ByteMatchSets`. For the second and subsequent
+#' [`list_regex_match_sets`][waf_list_regex_match_sets] requests, specify
+#' the value of `NextMarker` from the previous response to get information
+#' about another batch of `RegexMatchSet` objects.
 #' @param Limit Specifies the number of `RegexMatchSet` objects that you want AWS WAF to
 #' return for this request. If you have more `RegexMatchSet` objects than
 #' the number you specify for `Limit`, the response includes a `NextMarker`
@@ -3609,9 +3762,9 @@ waf_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' objects than the value of `Limit`, AWS WAF returns a `NextMarker` value
 #' in the response that allows you to list another group of
 #' `RegexPatternSet` objects. For the second and subsequent
-#' `ListRegexPatternSets` requests, specify the value of `NextMarker` from
-#' the previous response to get information about another batch of
-#' `RegexPatternSet` objects.
+#' [`list_regex_pattern_sets`][waf_list_regex_pattern_sets] requests,
+#' specify the value of `NextMarker` from the previous response to get
+#' information about another batch of `RegexPatternSet` objects.
 #' @param Limit Specifies the number of `RegexPatternSet` objects that you want AWS WAF
 #' to return for this request. If you have more `RegexPatternSet` objects
 #' than the number you specify for `Limit`, the response includes a
@@ -3668,9 +3821,9 @@ waf_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @param NextMarker If you specify a value for `Limit` and you have more `RuleGroups` than
 #' the value of `Limit`, AWS WAF returns a `NextMarker` value in the
 #' response that allows you to list another group of `RuleGroups`. For the
-#' second and subsequent `ListRuleGroups` requests, specify the value of
-#' `NextMarker` from the previous response to get information about another
-#' batch of `RuleGroups`.
+#' second and subsequent [`list_rule_groups`][waf_list_rule_groups]
+#' requests, specify the value of `NextMarker` from the previous response
+#' to get information about another batch of `RuleGroups`.
 #' @param Limit Specifies the number of `RuleGroups` that you want AWS WAF to return for
 #' this request. If you have more `RuleGroups` than the number that you
 #' specify for `Limit`, the response includes a `NextMarker` value that you
@@ -3726,8 +3879,9 @@ waf_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 #' @param NextMarker If you specify a value for `Limit` and you have more `Rules` than the
 #' value of `Limit`, AWS WAF returns a `NextMarker` value in the response
 #' that allows you to list another group of `Rules`. For the second and
-#' subsequent `ListRules` requests, specify the value of `NextMarker` from
-#' the previous response to get information about another batch of `Rules`.
+#' subsequent [`list_rules`][waf_list_rules] requests, specify the value of
+#' `NextMarker` from the previous response to get information about another
+#' batch of `Rules`.
 #' @param Limit Specifies the number of `Rules` that you want AWS WAF to return for this
 #' request. If you have more `Rules` than the number that you specify for
 #' `Limit`, the response includes a `NextMarker` value that you can use to
@@ -3792,9 +3946,9 @@ waf_list_rules <- function(NextMarker = NULL, Limit = NULL) {
 #' `SizeConstraintSets` than the value of `Limit`, AWS WAF returns a
 #' `NextMarker` value in the response that allows you to list another group
 #' of `SizeConstraintSets`. For the second and subsequent
-#' `ListSizeConstraintSets` requests, specify the value of `NextMarker`
-#' from the previous response to get information about another batch of
-#' `SizeConstraintSets`.
+#' [`list_size_constraint_sets`][waf_list_size_constraint_sets] requests,
+#' specify the value of `NextMarker` from the previous response to get
+#' information about another batch of `SizeConstraintSets`.
 #' @param Limit Specifies the number of `SizeConstraintSet` objects that you want AWS
 #' WAF to return for this request. If you have more `SizeConstraintSets`
 #' objects than the number you specify for `Limit`, the response includes a
@@ -3861,9 +4015,9 @@ waf_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' SqlInjectionMatchSet objects than the value of `Limit`, AWS WAF returns
 #' a `NextMarker` value in the response that allows you to list another
 #' group of `SqlInjectionMatchSets`. For the second and subsequent
-#' `ListSqlInjectionMatchSets` requests, specify the value of `NextMarker`
-#' from the previous response to get information about another batch of
-#' `SqlInjectionMatchSets`.
+#' [`list_sql_injection_match_sets`][waf_list_sql_injection_match_sets]
+#' requests, specify the value of `NextMarker` from the previous response
+#' to get information about another batch of `SqlInjectionMatchSets`.
 #' @param Limit Specifies the number of SqlInjectionMatchSet objects that you want AWS
 #' WAF to return for this request. If you have more `SqlInjectionMatchSet`
 #' objects than the number you specify for `Limit`, the response includes a
@@ -4049,9 +4203,10 @@ waf_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resource
 #' @param NextMarker If you specify a value for `Limit` and you have more `WebACL` objects
 #' than the number that you specify for `Limit`, AWS WAF returns a
 #' `NextMarker` value in the response that allows you to list another group
-#' of `WebACL` objects. For the second and subsequent `ListWebACLs`
-#' requests, specify the value of `NextMarker` from the previous response
-#' to get information about another batch of `WebACL` objects.
+#' of `WebACL` objects. For the second and subsequent
+#' [`list_web_ac_ls`][waf_list_web_ac_ls] requests, specify the value of
+#' `NextMarker` from the previous response to get information about another
+#' batch of `WebACL` objects.
 #' @param Limit Specifies the number of `WebACL` objects that you want AWS WAF to return
 #' for this request. If you have more `WebACL` objects than the number that
 #' you specify for `Limit`, the response includes a `NextMarker` value that
@@ -4115,9 +4270,10 @@ waf_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
 #' @param NextMarker If you specify a value for `Limit` and you have more XssMatchSet objects
 #' than the value of `Limit`, AWS WAF returns a `NextMarker` value in the
 #' response that allows you to list another group of `XssMatchSets`. For
-#' the second and subsequent `ListXssMatchSets` requests, specify the value
-#' of `NextMarker` from the previous response to get information about
-#' another batch of `XssMatchSets`.
+#' the second and subsequent
+#' [`list_xss_match_sets`][waf_list_xss_match_sets] requests, specify the
+#' value of `NextMarker` from the previous response to get information
+#' about another batch of `XssMatchSets`.
 #' @param Limit Specifies the number of XssMatchSet objects that you want AWS WAF to
 #' return for this request. If you have more `XssMatchSet` objects than the
 #' number you specify for `Limit`, the response includes a `NextMarker`
@@ -4188,12 +4344,14 @@ waf_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #'     source.
 #' 
 #' 2.  Associate that firehose to your web ACL using a
-#'     `PutLoggingConfiguration` request.
+#'     [`put_logging_configuration`][waf_put_logging_configuration]
+#'     request.
 #' 
-#' When you successfully enable logging using a `PutLoggingConfiguration`
-#' request, AWS WAF will create a service linked role with the necessary
-#' permissions to write logs to the Amazon Kinesis Data Firehose. For more
-#' information, see [Logging Web ACL Traffic
+#' When you successfully enable logging using a
+#' [`put_logging_configuration`][waf_put_logging_configuration] request,
+#' AWS WAF will create a service linked role with the necessary permissions
+#' to write logs to the Amazon Kinesis Data Firehose. For more information,
+#' see [Logging Web ACL Traffic
 #' Information](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html)
 #' in the *AWS WAF Developer Guide*.
 #'
@@ -4262,10 +4420,11 @@ waf_put_logging_configuration <- function(LoggingConfiguration) {
 #' Attaches an IAM policy to the specified resource. The only supported use
 #' for this action is to share a RuleGroup across accounts.
 #' 
-#' The `PutPermissionPolicy` is subject to the following restrictions:
+#' The [`put_permission_policy`][waf_put_permission_policy] is subject to
+#' the following restrictions:
 #' 
-#' -   You can attach only one policy with each `PutPermissionPolicy`
-#'     request.
+#' -   You can attach only one policy with each
+#'     [`put_permission_policy`][waf_put_permission_policy] request.
 #' 
 #' -   The policy must include an `Effect`, `Action` and `Principal`.
 #' 
@@ -4483,14 +4642,16 @@ waf_untag_resource <- function(ResourceARN, TagKeys) {
 #' To create and configure a `ByteMatchSet`, perform the following steps:
 #' 
 #' 1.  Create a `ByteMatchSet.` For more information, see
-#'     CreateByteMatchSet.
+#'     [`create_byte_match_set`][waf_create_byte_match_set].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of an `UpdateByteMatchSet` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_byte_match_set`][waf_update_byte_match_set] request.
 #' 
-#' 3.  Submit an `UpdateByteMatchSet` request to specify the part of the
-#'     request that you want AWS WAF to inspect (for example, the header or
-#'     the URI) and the value that you want AWS WAF to watch for.
+#' 3.  Submit an [`update_byte_match_set`][waf_update_byte_match_set]
+#'     request to specify the part of the request that you want AWS WAF to
+#'     inspect (for example, the header or the URI) and the value that you
+#'     want AWS WAF to watch for.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -4500,9 +4661,11 @@ waf_untag_resource <- function(ResourceARN, TagKeys) {
 #' waf_update_byte_match_set(ByteMatchSetId, ChangeToken, Updates)
 #'
 #' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to update.
-#' `ByteMatchSetId` is returned by CreateByteMatchSet and by
-#' ListByteMatchSets.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' `ByteMatchSetId` is returned by
+#' [`create_byte_match_set`][waf_create_byte_match_set] and by
+#' [`list_byte_match_sets`][waf_list_byte_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #' @param Updates &#91;required&#93; An array of `ByteMatchSetUpdate` objects that you want to insert into or
 #' delete from a ByteMatchSet. For more information, see the applicable
 #' data types:
@@ -4609,13 +4772,14 @@ waf_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updates) {
 #' 
 #' To create and configure an `GeoMatchSet`, perform the following steps:
 #' 
-#' 1.  Submit a CreateGeoMatchSet request.
+#' 1.  Submit a [`create_geo_match_set`][waf_create_geo_match_set] request.
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of an UpdateGeoMatchSet request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_geo_match_set`][waf_update_geo_match_set] request.
 #' 
-#' 3.  Submit an `UpdateGeoMatchSet` request to specify the country that
-#'     you want AWS WAF to watch for.
+#' 3.  Submit an [`update_geo_match_set`][waf_update_geo_match_set] request
+#'     to specify the country that you want AWS WAF to watch for.
 #' 
 #' When you update an `GeoMatchSet`, you specify the country that you want
 #' to add and/or the country that you want to delete. If you want to change
@@ -4629,9 +4793,11 @@ waf_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updates) {
 #' waf_update_geo_match_set(GeoMatchSetId, ChangeToken, Updates)
 #'
 #' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetId` of the GeoMatchSet that you want to update.
-#' `GeoMatchSetId` is returned by CreateGeoMatchSet and by
-#' ListGeoMatchSets.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' `GeoMatchSetId` is returned by
+#' [`create_geo_match_set`][waf_create_geo_match_set] and by
+#' [`list_geo_match_sets`][waf_list_geo_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #' @param Updates &#91;required&#93; An array of `GeoMatchSetUpdate` objects that you want to insert into or
 #' delete from an GeoMatchSet. For more information, see the applicable
 #' data types:
@@ -4733,13 +4899,14 @@ waf_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates) {
 #' 
 #' To create and configure an `IPSet`, perform the following steps:
 #' 
-#' 1.  Submit a CreateIPSet request.
+#' 1.  Submit a [`create_ip_set`][waf_create_ip_set] request.
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of an UpdateIPSet request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_ip_set`][waf_update_ip_set] request.
 #' 
-#' 3.  Submit an `UpdateIPSet` request to specify the IP addresses that you
-#'     want AWS WAF to watch for.
+#' 3.  Submit an [`update_ip_set`][waf_update_ip_set] request to specify
+#'     the IP addresses that you want AWS WAF to watch for.
 #' 
 #' When you update an `IPSet`, you specify the IP addresses that you want
 #' to add and/or the IP addresses that you want to delete. If you want to
@@ -4756,8 +4923,10 @@ waf_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates) {
 #' waf_update_ip_set(IPSetId, ChangeToken, Updates)
 #'
 #' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to update. `IPSetId` is
-#' returned by CreateIPSet and by ListIPSets.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' returned by [`create_ip_set`][waf_create_ip_set] and by
+#' [`list_ip_sets`][waf_list_ip_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #' @param Updates &#91;required&#93; An array of `IPSetUpdate` objects that you want to insert into or delete
 #' from an IPSet. For more information, see the applicable data types:
 #' 
@@ -4883,8 +5052,10 @@ waf_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
 #' waf_update_rate_based_rule(RuleId, ChangeToken, Updates, RateLimit)
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the `RateBasedRule` that you want to update. `RuleId` is
-#' returned by `CreateRateBasedRule` and by ListRateBasedRules.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' returned by [`create_rate_based_rule`][waf_create_rate_based_rule] and
+#' by [`list_rate_based_rules`][waf_list_rate_based_rules].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #' @param Updates &#91;required&#93; An array of `RuleUpdate` objects that you want to insert into or delete
 #' from a RateBasedRule.
 #' @param RateLimit &#91;required&#93; The maximum number of requests, which have an identical value in the
@@ -4971,15 +5142,17 @@ waf_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, RateLimit) 
 #' To create and configure a `RegexMatchSet`, perform the following steps:
 #' 
 #' 1.  Create a `RegexMatchSet.` For more information, see
-#'     CreateRegexMatchSet.
+#'     [`create_regex_match_set`][waf_create_regex_match_set].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of an `UpdateRegexMatchSet` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_regex_match_set`][waf_update_regex_match_set] request.
 #' 
-#' 3.  Submit an `UpdateRegexMatchSet` request to specify the part of the
-#'     request that you want AWS WAF to inspect (for example, the header or
-#'     the URI) and the identifier of the `RegexPatternSet` that contain
-#'     the regular expression patters you want AWS WAF to watch for.
+#' 3.  Submit an [`update_regex_match_set`][waf_update_regex_match_set]
+#'     request to specify the part of the request that you want AWS WAF to
+#'     inspect (for example, the header or the URI) and the identifier of
+#'     the `RegexPatternSet` that contain the regular expression patters
+#'     you want AWS WAF to watch for.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -4989,12 +5162,14 @@ waf_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, RateLimit) 
 #' waf_update_regex_match_set(RegexMatchSetId, Updates, ChangeToken)
 #'
 #' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to update.
-#' `RegexMatchSetId` is returned by CreateRegexMatchSet and by
-#' ListRegexMatchSets.
+#' `RegexMatchSetId` is returned by
+#' [`create_regex_match_set`][waf_create_regex_match_set] and by
+#' [`list_regex_match_sets`][waf_list_regex_match_sets].
 #' @param Updates &#91;required&#93; An array of `RegexMatchSetUpdate` objects that you want to insert into
 #' or delete from a RegexMatchSet. For more information, see
 #' RegexMatchTuple.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -5074,13 +5249,15 @@ waf_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeToken) {
 #' steps:
 #' 
 #' 1.  Create a `RegexPatternSet.` For more information, see
-#'     CreateRegexPatternSet.
+#'     [`create_regex_pattern_set`][waf_create_regex_pattern_set].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of an `UpdateRegexPatternSet` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_regex_pattern_set`][waf_update_regex_pattern_set] request.
 #' 
-#' 3.  Submit an `UpdateRegexPatternSet` request to specify the regular
-#'     expression pattern that you want AWS WAF to watch for.
+#' 3.  Submit an [`update_regex_pattern_set`][waf_update_regex_pattern_set]
+#'     request to specify the regular expression pattern that you want AWS
+#'     WAF to watch for.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -5090,11 +5267,13 @@ waf_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeToken) {
 #' waf_update_regex_pattern_set(RegexPatternSetId, Updates, ChangeToken)
 #'
 #' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to update.
-#' `RegexPatternSetId` is returned by CreateRegexPatternSet and by
-#' ListRegexPatternSets.
+#' `RegexPatternSetId` is returned by
+#' [`create_regex_pattern_set`][waf_create_regex_pattern_set] and by
+#' [`list_regex_pattern_sets`][waf_list_regex_pattern_sets].
 #' @param Updates &#91;required&#93; An array of `RegexPatternSetUpdate` objects that you want to insert into
 #' or delete from a RegexPatternSet.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -5166,15 +5345,17 @@ waf_update_regex_pattern_set <- function(RegexPatternSetId, Updates, ChangeToken
 #' 1.  Create and update the predicates that you want to include in the
 #'     `Rule`.
 #' 
-#' 2.  Create the `Rule`. See CreateRule.
+#' 2.  Create the `Rule`. See [`create_rule`][waf_create_rule].
 #' 
-#' 3.  Use `GetChangeToken` to get the change token that you provide in the
-#'     `ChangeToken` parameter of an UpdateRule request.
+#' 3.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_rule`][waf_update_rule] request.
 #' 
-#' 4.  Submit an `UpdateRule` request to add predicates to the `Rule`.
+#' 4.  Submit an [`update_rule`][waf_update_rule] request to add predicates
+#'     to the `Rule`.
 #' 
 #' 5.  Create and update a `WebACL` that contains the `Rule`. See
-#'     CreateWebACL.
+#'     [`create_web_acl`][waf_create_web_acl].
 #' 
 #' If you want to replace one `ByteMatchSet` or `IPSet` with another, you
 #' delete the existing one and add the new one.
@@ -5187,8 +5368,10 @@ waf_update_regex_pattern_set <- function(RegexPatternSetId, Updates, ChangeToken
 #' waf_update_rule(RuleId, ChangeToken, Updates)
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the `Rule` that you want to update. `RuleId` is returned
-#' by `CreateRule` and by ListRules.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' by [`create_rule`][waf_create_rule] and by
+#' [`list_rules`][waf_list_rules].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #' @param Updates &#91;required&#93; An array of `RuleUpdate` objects that you want to insert into or delete
 #' from a Rule. For more information, see the applicable data types:
 #' 
@@ -5279,16 +5462,17 @@ waf_update_rule <- function(RuleId, ChangeToken, Updates) {
 #' To create and configure a `RuleGroup`, perform the following steps:
 #' 
 #' 1.  Create and update the `Rules` that you want to include in the
-#'     `RuleGroup`. See CreateRule.
+#'     `RuleGroup`. See [`create_rule`][waf_create_rule].
 #' 
-#' 2.  Use `GetChangeToken` to get the change token that you provide in the
-#'     `ChangeToken` parameter of an UpdateRuleGroup request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_rule_group`][waf_update_rule_group] request.
 #' 
-#' 3.  Submit an `UpdateRuleGroup` request to add `Rules` to the
-#'     `RuleGroup`.
+#' 3.  Submit an [`update_rule_group`][waf_update_rule_group] request to
+#'     add `Rules` to the `RuleGroup`.
 #' 
 #' 4.  Create and update a `WebACL` that contains the `RuleGroup`. See
-#'     CreateWebACL.
+#'     [`create_web_acl`][waf_create_web_acl].
 #' 
 #' If you want to replace one `Rule` with another, you delete the existing
 #' one and add the new one.
@@ -5301,7 +5485,9 @@ waf_update_rule <- function(RuleId, ChangeToken, Updates) {
 #' waf_update_rule_group(RuleGroupId, Updates, ChangeToken)
 #'
 #' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to update.
-#' `RuleGroupId` is returned by CreateRuleGroup and by ListRuleGroups.
+#' `RuleGroupId` is returned by
+#' [`create_rule_group`][waf_create_rule_group] and by
+#' [`list_rule_groups`][waf_list_rule_groups].
 #' @param Updates &#91;required&#93; An array of `RuleGroupUpdate` objects that you want to insert into or
 #' delete from a RuleGroup.
 #' 
@@ -5312,7 +5498,8 @@ waf_update_rule <- function(RuleId, ChangeToken, Updates) {
 #' `ActivatedRule|Action`. For all other update requests,
 #' `ActivatedRule|Action` is used instead of
 #' `ActivatedRule|OverrideAction`.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #'
 #' @section Request syntax:
 #' ```
@@ -5413,14 +5600,18 @@ waf_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 #' steps:
 #' 
 #' 1.  Create a `SizeConstraintSet.` For more information, see
-#'     CreateSizeConstraintSet.
+#'     [`create_size_constraint_set`][waf_create_size_constraint_set].
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of an `UpdateSizeConstraintSet` request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_size_constraint_set`][waf_update_size_constraint_set]
+#'     request.
 #' 
-#' 3.  Submit an `UpdateSizeConstraintSet` request to specify the part of
-#'     the request that you want AWS WAF to inspect (for example, the
-#'     header or the URI) and the value that you want AWS WAF to watch for.
+#' 3.  Submit an
+#'     [`update_size_constraint_set`][waf_update_size_constraint_set]
+#'     request to specify the part of the request that you want AWS WAF to
+#'     inspect (for example, the header or the URI) and the value that you
+#'     want AWS WAF to watch for.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -5431,9 +5622,11 @@ waf_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 #'   Updates)
 #'
 #' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to
-#' update. `SizeConstraintSetId` is returned by CreateSizeConstraintSet and
-#' by ListSizeConstraintSets.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' update. `SizeConstraintSetId` is returned by
+#' [`create_size_constraint_set`][waf_create_size_constraint_set] and by
+#' [`list_size_constraint_sets`][waf_list_size_constraint_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #' @param Updates &#91;required&#93; An array of `SizeConstraintSetUpdate` objects that you want to insert
 #' into or delete from a SizeConstraintSet. For more information, see the
 #' applicable data types:
@@ -5553,14 +5746,18 @@ waf_update_size_constraint_set <- function(SizeConstraintSetId, ChangeToken, Upd
 #' To create and configure a `SqlInjectionMatchSet`, perform the following
 #' steps:
 #' 
-#' 1.  Submit a CreateSqlInjectionMatchSet request.
+#' 1.  Submit a
+#'     [`create_sql_injection_match_set`][waf_create_sql_injection_match_set]
+#'     request.
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of an UpdateIPSet request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_ip_set`][waf_update_ip_set] request.
 #' 
-#' 3.  Submit an `UpdateSqlInjectionMatchSet` request to specify the parts
-#'     of web requests that you want AWS WAF to inspect for snippets of SQL
-#'     code.
+#' 3.  Submit an
+#'     [`update_sql_injection_match_set`][waf_update_sql_injection_match_set]
+#'     request to specify the parts of web requests that you want AWS WAF
+#'     to inspect for snippets of SQL code.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -5572,8 +5769,11 @@ waf_update_size_constraint_set <- function(SizeConstraintSetId, ChangeToken, Upd
 #'
 #' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the `SqlInjectionMatchSet` that you want
 #' to update. `SqlInjectionMatchSetId` is returned by
-#' CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' [`create_sql_injection_match_set`][waf_create_sql_injection_match_set]
+#' and by
+#' [`list_sql_injection_match_sets`][waf_list_sql_injection_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #' @param Updates &#91;required&#93; An array of `SqlInjectionMatchSetUpdate` objects that you want to insert
 #' into or delete from a SqlInjectionMatchSet. For more information, see
 #' the applicable data types:
@@ -5690,36 +5890,45 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #' To create and configure a `WebACL`, perform the following steps:
 #' 
 #' 1.  Create and update the predicates that you want to include in
-#'     `Rules`. For more information, see CreateByteMatchSet,
-#'     UpdateByteMatchSet, CreateIPSet, UpdateIPSet,
-#'     CreateSqlInjectionMatchSet, and UpdateSqlInjectionMatchSet.
+#'     `Rules`. For more information, see
+#'     [`create_byte_match_set`][waf_create_byte_match_set],
+#'     [`update_byte_match_set`][waf_update_byte_match_set],
+#'     [`create_ip_set`][waf_create_ip_set],
+#'     [`update_ip_set`][waf_update_ip_set],
+#'     [`create_sql_injection_match_set`][waf_create_sql_injection_match_set],
+#'     and
+#'     [`update_sql_injection_match_set`][waf_update_sql_injection_match_set].
 #' 
 #' 2.  Create and update the `Rules` that you want to include in the
-#'     `WebACL`. For more information, see CreateRule and UpdateRule.
+#'     `WebACL`. For more information, see [`create_rule`][waf_create_rule]
+#'     and [`update_rule`][waf_update_rule].
 #' 
-#' 3.  Create a `WebACL`. See CreateWebACL.
+#' 3.  Create a `WebACL`. See [`create_web_acl`][waf_create_web_acl].
 #' 
-#' 4.  Use `GetChangeToken` to get the change token that you provide in the
-#'     `ChangeToken` parameter of an UpdateWebACL request.
+#' 4.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_web_acl`][waf_update_web_acl] request.
 #' 
-#' 5.  Submit an `UpdateWebACL` request to specify the `Rules` that you
-#'     want to include in the `WebACL`, to specify the default action, and
-#'     to associate the `WebACL` with a CloudFront distribution.
+#' 5.  Submit an [`update_web_acl`][waf_update_web_acl] request to specify
+#'     the `Rules` that you want to include in the `WebACL`, to specify the
+#'     default action, and to associate the `WebACL` with a CloudFront
+#'     distribution.
 #' 
 #'     The `ActivatedRule` can be a rule group. If you specify a rule group
 #'     as your `ActivatedRule` , you can exclude specific rules from that
 #'     rule group.
 #' 
 #'     If you already have a rule group associated with a web ACL and want
-#'     to submit an `UpdateWebACL` request to exclude certain rules from
-#'     that rule group, you must first remove the rule group from the web
-#'     ACL, the re-insert it again, specifying the excluded rules. For
-#'     details, see ActivatedRule$ExcludedRules .
+#'     to submit an [`update_web_acl`][waf_update_web_acl] request to
+#'     exclude certain rules from that rule group, you must first remove
+#'     the rule group from the web ACL, the re-insert it again, specifying
+#'     the excluded rules. For details, see ActivatedRule$ExcludedRules .
 #' 
 #' Be aware that if you try to add a RATE\\_BASED rule to a web ACL without
-#' setting the rule type when first creating the rule, the UpdateWebACL
-#' request will fail because the request tries to add a REGULAR rule (the
-#' default rule type) with the specified ID, which does not exist.
+#' setting the rule type when first creating the rule, the
+#' [`update_web_acl`][waf_update_web_acl] request will fail because the
+#' request tries to add a REGULAR rule (the default rule type) with the
+#' specified ID, which does not exist.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -5729,8 +5938,10 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #' waf_update_web_acl(WebACLId, ChangeToken, Updates, DefaultAction)
 #'
 #' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to update. `WebACLId` is
-#' returned by CreateWebACL and by ListWebACLs.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' returned by [`create_web_acl`][waf_create_web_acl] and by
+#' [`list_web_ac_ls`][waf_list_web_ac_ls].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #' @param Updates An array of updates to make to the WebACL.
 #' 
 #' An array of `WebACLUpdate` objects that you want to insert into or
@@ -5868,14 +6079,15 @@ waf_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, DefaultAct
 #' 
 #' To create and configure an `XssMatchSet`, perform the following steps:
 #' 
-#' 1.  Submit a CreateXssMatchSet request.
+#' 1.  Submit a [`create_xss_match_set`][waf_create_xss_match_set] request.
 #' 
-#' 2.  Use GetChangeToken to get the change token that you provide in the
-#'     `ChangeToken` parameter of an UpdateIPSet request.
+#' 2.  Use [`get_change_token`][waf_get_change_token] to get the change
+#'     token that you provide in the `ChangeToken` parameter of an
+#'     [`update_ip_set`][waf_update_ip_set] request.
 #' 
-#' 3.  Submit an `UpdateXssMatchSet` request to specify the parts of web
-#'     requests that you want AWS WAF to inspect for cross-site scripting
-#'     attacks.
+#' 3.  Submit an [`update_xss_match_set`][waf_update_xss_match_set] request
+#'     to specify the parts of web requests that you want AWS WAF to
+#'     inspect for cross-site scripting attacks.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -5885,9 +6097,11 @@ waf_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, DefaultAct
 #' waf_update_xss_match_set(XssMatchSetId, ChangeToken, Updates)
 #'
 #' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the `XssMatchSet` that you want to update.
-#' `XssMatchSetId` is returned by CreateXssMatchSet and by
-#' ListXssMatchSets.
-#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
+#' `XssMatchSetId` is returned by
+#' [`create_xss_match_set`][waf_create_xss_match_set] and by
+#' [`list_xss_match_sets`][waf_list_xss_match_sets].
+#' @param ChangeToken &#91;required&#93; The value returned by the most recent call to
+#' [`get_change_token`][waf_get_change_token].
 #' @param Updates &#91;required&#93; An array of `XssMatchSetUpdate` objects that you want to insert into or
 #' delete from an XssMatchSet. For more information, see the applicable
 #' data types:

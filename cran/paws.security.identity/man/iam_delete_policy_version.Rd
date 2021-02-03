@@ -27,9 +27,10 @@ in the \emph{IAM User Guide}.}
 Deletes the specified version from the specified managed policy.
 
 You cannot delete the default version from a policy using this API. To
-delete the default version from a policy, use DeletePolicy. To find out
-which version of a policy is marked as the default version, use
-ListPolicyVersions.
+delete the default version from a policy, use
+\code{\link[=iam_delete_policy]{delete_policy}}. To find out which version of a
+policy is marked as the default version, use
+\code{\link[=iam_list_policy_versions]{list_policy_versions}}.
 
 For information about versions for managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.

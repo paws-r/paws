@@ -11,7 +11,7 @@ personalize_describe_dataset(datasetArn)
 }
 \description{
 Describes the given dataset. For more information on datasets, see
-CreateDataset.
+\code{\link[=personalize_create_dataset]{create_dataset}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_dataset(

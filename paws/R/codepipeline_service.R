@@ -21,52 +21,58 @@ NULL
 #' 
 #' You can work with pipelines by calling:
 #' 
-#' -   CreatePipeline, which creates a uniquely named pipeline.
+#' -   [`create_pipeline`][codepipeline_create_pipeline], which creates a
+#'     uniquely named pipeline.
 #' 
-#' -   DeletePipeline, which deletes the specified pipeline.
+#' -   [`delete_pipeline`][codepipeline_delete_pipeline], which deletes the
+#'     specified pipeline.
 #' 
-#' -   GetPipeline, which returns information about the pipeline structure
-#'     and pipeline metadata, including the pipeline Amazon Resource Name
-#'     (ARN).
+#' -   [`get_pipeline`][codepipeline_get_pipeline], which returns
+#'     information about the pipeline structure and pipeline metadata,
+#'     including the pipeline Amazon Resource Name (ARN).
 #' 
-#' -   GetPipelineExecution, which returns information about a specific
-#'     execution of a pipeline.
+#' -   [`get_pipeline_execution`][codepipeline_get_pipeline_execution],
+#'     which returns information about a specific execution of a pipeline.
 #' 
-#' -   GetPipelineState, which returns information about the current state
-#'     of the stages and actions of a pipeline.
+#' -   [`get_pipeline_state`][codepipeline_get_pipeline_state], which
+#'     returns information about the current state of the stages and
+#'     actions of a pipeline.
 #' 
-#' -   ListActionExecutions, which returns action-level details for past
-#'     executions. The details include full stage and action-level details,
-#'     including individual action duration, status, any errors that
-#'     occurred during the execution, and input and output artifact
-#'     location details.
+#' -   [`list_action_executions`][codepipeline_list_action_executions],
+#'     which returns action-level details for past executions. The details
+#'     include full stage and action-level details, including individual
+#'     action duration, status, any errors that occurred during the
+#'     execution, and input and output artifact location details.
 #' 
-#' -   ListPipelines, which gets a summary of all of the pipelines
-#'     associated with your account.
+#' -   [`list_pipelines`][codepipeline_list_pipelines], which gets a
+#'     summary of all of the pipelines associated with your account.
 #' 
-#' -   ListPipelineExecutions, which gets a summary of the most recent
-#'     executions for a pipeline.
+#' -   [`list_pipeline_executions`][codepipeline_list_pipeline_executions],
+#'     which gets a summary of the most recent executions for a pipeline.
 #' 
-#' -   StartPipelineExecution, which runs the most recent revision of an
-#'     artifact through the pipeline.
+#' -   [`start_pipeline_execution`][codepipeline_start_pipeline_execution],
+#'     which runs the most recent revision of an artifact through the
+#'     pipeline.
 #' 
-#' -   StopPipelineExecution, which stops the specified pipeline execution
-#'     from continuing through the pipeline.
+#' -   [`stop_pipeline_execution`][codepipeline_stop_pipeline_execution],
+#'     which stops the specified pipeline execution from continuing through
+#'     the pipeline.
 #' 
-#' -   UpdatePipeline, which updates a pipeline with edits or changes to
-#'     the structure of the pipeline.
+#' -   [`update_pipeline`][codepipeline_update_pipeline], which updates a
+#'     pipeline with edits or changes to the structure of the pipeline.
 #' 
 #' Pipelines include *stages*. Each stage contains one or more actions that
 #' must complete before the next stage begins. A stage results in success
 #' or failure. If a stage fails, the pipeline stops at that stage and
 #' remains stopped until either a new version of an artifact appears in the
 #' source location, or a user takes action to rerun the most recent
-#' artifact through the pipeline. You can call GetPipelineState, which
-#' displays the status of a pipeline, including the status of stages in the
-#' pipeline, or GetPipeline, which returns the entire structure of the
-#' pipeline, including the stages of that pipeline. For more information
-#' about the structure of stages and actions, see [AWS CodePipeline
-#' Pipeline Structure
+#' artifact through the pipeline. You can call
+#' [`get_pipeline_state`][codepipeline_get_pipeline_state], which displays
+#' the status of a pipeline, including the status of stages in the
+#' pipeline, or [`get_pipeline`][codepipeline_get_pipeline], which returns
+#' the entire structure of the pipeline, including the stages of that
+#' pipeline. For more information about the structure of stages and
+#' actions, see [AWS CodePipeline Pipeline Structure
 #' Reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html).
 #' 
 #' Pipeline stages include *actions* that are categorized into categories
@@ -74,8 +80,10 @@ NULL
 #' example, you can use a source action to import artifacts into a pipeline
 #' from a source such as Amazon S3. Like stages, you do not work with
 #' actions directly in most cases, but you do define and interact with
-#' actions when working with pipeline operations such as CreatePipeline and
-#' GetPipelineState. Valid action categories are:
+#' actions when working with pipeline operations such as
+#' [`create_pipeline`][codepipeline_create_pipeline] and
+#' [`get_pipeline_state`][codepipeline_get_pipeline_state]. Valid action
+#' categories are:
 #' 
 #' -   Source
 #' 
@@ -95,11 +103,12 @@ NULL
 #' 
 #' You can work with transitions by calling:
 #' 
-#' -   DisableStageTransition, which prevents artifacts from transitioning
-#'     to the next stage in a pipeline.
+#' -   [`disable_stage_transition`][codepipeline_disable_stage_transition],
+#'     which prevents artifacts from transitioning to the next stage in a
+#'     pipeline.
 #' 
-#' -   EnableStageTransition, which enables transition of artifacts between
-#'     stages in a pipeline.
+#' -   [`enable_stage_transition`][codepipeline_enable_stage_transition],
+#'     which enables transition of artifacts between stages in a pipeline.
 #' 
 #' **Using the API to integrate with AWS CodePipeline**
 #' 
@@ -113,16 +122,20 @@ NULL
 #' 
 #' You can work with jobs by calling:
 #' 
-#' -   AcknowledgeJob, which confirms whether a job worker has received the
-#'     specified job.
+#' -   [`acknowledge_job`][codepipeline_acknowledge_job], which confirms
+#'     whether a job worker has received the specified job.
 #' 
-#' -   GetJobDetails, which returns the details of a job.
+#' -   [`get_job_details`][codepipeline_get_job_details], which returns the
+#'     details of a job.
 #' 
-#' -   PollForJobs, which determines whether there are any jobs to act on.
+#' -   [`poll_for_jobs`][codepipeline_poll_for_jobs], which determines
+#'     whether there are any jobs to act on.
 #' 
-#' -   PutJobFailureResult, which provides details of a job failure.
+#' -   [`put_job_failure_result`][codepipeline_put_job_failure_result],
+#'     which provides details of a job failure.
 #' 
-#' -   PutJobSuccessResult, which provides details of a job success.
+#' -   [`put_job_success_result`][codepipeline_put_job_success_result],
+#'     which provides details of a job success.
 #' 
 #' **Third party jobs**, which are instances of an action created by a
 #' partner action and integrated into AWS CodePipeline. Partner actions are
@@ -130,20 +143,20 @@ NULL
 #' 
 #' You can work with third party jobs by calling:
 #' 
-#' -   AcknowledgeThirdPartyJob, which confirms whether a job worker has
-#'     received the specified job.
+#' -   [`acknowledge_third_party_job`][codepipeline_acknowledge_third_party_job],
+#'     which confirms whether a job worker has received the specified job.
 #' 
-#' -   GetThirdPartyJobDetails, which requests the details of a job for a
-#'     partner action.
+#' -   [`get_third_party_job_details`][codepipeline_get_third_party_job_details],
+#'     which requests the details of a job for a partner action.
 #' 
-#' -   PollForThirdPartyJobs, which determines whether there are any jobs
-#'     to act on.
+#' -   [`poll_for_third_party_jobs`][codepipeline_poll_for_third_party_jobs],
+#'     which determines whether there are any jobs to act on.
 #' 
-#' -   PutThirdPartyJobFailureResult, which provides details of a job
-#'     failure.
+#' -   [`put_third_party_job_failure_result`][codepipeline_put_third_party_job_failure_result],
+#'     which provides details of a job failure.
 #' 
-#' -   PutThirdPartyJobSuccessResult, which provides details of a job
-#'     success.
+#' -   [`put_third_party_job_success_result`][codepipeline_put_third_party_job_success_result],
+#'     which provides details of a job success.
 #'
 #' @param
 #' config

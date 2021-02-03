@@ -18,7 +18,8 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Use
 in the \emph{Amazon RDS User Guide.}
 
 This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-Aurora DB clusters, use \code{StartDBCluster} instead.
+Aurora DB clusters, use \code{\link[=rds_start_db_cluster]{start_db_cluster}}
+instead.
 }
 \section{Request syntax}{
 \preformatted{svc$start_db_instance(

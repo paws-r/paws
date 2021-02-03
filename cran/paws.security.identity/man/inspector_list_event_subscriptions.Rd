@@ -23,7 +23,8 @@ want in the response. The default value is 10. The maximum value is 500.}
 \description{
 Lists all the event subscriptions for the assessment template that is
 specified by the ARN of the assessment template. For more information,
-see SubscribeToEvent and UnsubscribeFromEvent.
+see \code{\link[=inspector_subscribe_to_event]{subscribe_to_event}} and
+\code{\link[=inspector_unsubscribe_from_event]{unsubscribe_from_event}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_event_subscriptions(

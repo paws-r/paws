@@ -10,9 +10,10 @@ lightsail_get_instances(pageToken)
 \arguments{
 \item{pageToken}{The token to advance to the next page of results from your request.
 
-To get a page token, perform an initial \code{GetInstances} request. If your
-results are paginated, the response will return a next page token that
-you can specify as the page token in a subsequent request.}
+To get a page token, perform an initial
+\code{\link[=lightsail_get_instances]{get_instances}} request. If your results are
+paginated, the response will return a next page token that you can
+specify as the page token in a subsequent request.}
 }
 \description{
 Returns information about all Amazon Lightsail virtual private servers,

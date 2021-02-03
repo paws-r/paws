@@ -16,9 +16,10 @@ To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal.
 This gracefully shuts the job down. If the job hasn't stopped, it sends
 the SIGKILL signal.
 
-When it receives a \code{StopCompilationJob} request, Amazon SageMaker
-changes the CompilationJobSummary$CompilationJobStatus of the job to
-\code{Stopping}. After Amazon SageMaker stops the job, it sets the
+When it receives a
+\code{\link[=sagemaker_stop_compilation_job]{stop_compilation_job}} request, Amazon
+SageMaker changes the CompilationJobSummary$CompilationJobStatus of the
+job to \code{Stopping}. After Amazon SageMaker stops the job, it sets the
 CompilationJobSummary$CompilationJobStatus to \code{Stopped}.
 }
 \section{Request syntax}{

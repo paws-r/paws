@@ -18,10 +18,11 @@ Default: \code{1}}
 \description{
 Allows you to purchase reserved nodes. Amazon Redshift offers a
 predefined set of reserved node offerings. You can purchase one or more
-of the offerings. You can call the DescribeReservedNodeOfferings API to
-obtain the available reserved node offerings. You can call this API by
-providing a specific reserved node offering and the number of nodes you
-want to reserve.
+of the offerings. You can call the
+\code{\link[=redshift_describe_reserved_node_offerings]{describe_reserved_node_offerings}}
+API to obtain the available reserved node offerings. You can call this
+API by providing a specific reserved node offering and the number of
+nodes you want to reserve.
 
 For more information about reserved node offerings, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html}{Purchasing Reserved Nodes}
 in the \emph{Amazon Redshift Cluster Management Guide}.

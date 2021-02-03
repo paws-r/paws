@@ -16,11 +16,12 @@ service.
 Use a descriptive label that you can use to track the different versions
 of your registered container images.
 
-Use the \code{GetContainerImages} action to return the container images
-registered to a Lightsail container service. The label is the
-\verb{&lt;imagelabel&gt;} portion of the following image name example:
+Use the \code{\link[=lightsail_get_container_images]{get_container_images}} action
+to return the container images registered to a Lightsail container
+service. The label is the \verb{<imagelabel>} portion of the following image
+name example:
 \itemize{
-\item \verb{:container-service-1.&lt;imagelabel&gt;.1}
+\item \verb{:container-service-1.<imagelabel>.1}
 }
 
 If the name of your container service is \code{mycontainerservice}, and the

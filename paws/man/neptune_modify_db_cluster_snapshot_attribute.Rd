@@ -54,7 +54,9 @@ a value for that parameter in this case.
 
 To view which AWS accounts have access to copy or restore a manual DB
 cluster snapshot, or whether a manual DB cluster snapshot public or
-private, use the DescribeDBClusterSnapshotAttributes API action.
+private, use the
+\code{\link[=neptune_describe_db_cluster_snapshot_attributes]{describe_db_cluster_snapshot_attributes}}
+API action.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_db_cluster_snapshot_attribute(

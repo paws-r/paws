@@ -22,7 +22,8 @@ zone that Route 53 will return if you submit another request.}
 
 \item{NextToken}{If the previous response included a \code{NextToken} element, the specified
 VPC is associated with more hosted zones. To get more hosted zones,
-submit another \code{ListHostedZonesByVPC} request.
+submit another
+\code{\link[=route53_list_hosted_zones_by_vpc]{list_hosted_zones_by_vpc}} request.
 
 For the value of \code{NextToken}, specify the value of \code{NextToken} from the
 previous response.

@@ -8,8 +8,8 @@ Amazon Mechanical Turk account}
 mturk_get_account_balance()
 }
 \description{
-The \code{GetAccountBalance} operation retrieves the amount of money in your
-Amazon Mechanical Turk account.
+The \code{\link[=mturk_get_account_balance]{get_account_balance}} operation
+retrieves the amount of money in your Amazon Mechanical Turk account.
 }
 \section{Request syntax}{
 \preformatted{svc$get_account_balance()

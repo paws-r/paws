@@ -14,7 +14,8 @@ then the tags are removed from the cluster.}
 }
 \description{
 Removes the association of tags from a DAX resource. You can call
-\code{UntagResource} up to 5 times per second, per account.
+\code{\link[=dax_untag_resource]{untag_resource}} up to 5 times per second, per
+account.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

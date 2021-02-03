@@ -30,8 +30,8 @@ the \verb{aws:} prefix).}
 \description{
 Deletes the specified set of tags from the specified set of resources.
 
-To list the current tags, use DescribeTags. For more information about
-tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources}
+To list the current tags, use \code{\link[=ec2_describe_tags]{describe_tags}}. For
+more information about tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

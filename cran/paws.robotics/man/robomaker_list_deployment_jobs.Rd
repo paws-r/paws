@@ -17,18 +17,21 @@ you are looking for items with the status \code{InProgress} or the status
 
 \item{nextToken}{If the previous paginated request did not return all of the remaining
 results, the response object's \code{nextToken} parameter value is set to a
-token. To retrieve the next set of results, call \code{ListDeploymentJobs}
-again and assign that token to the request object's \code{nextToken}
-parameter. If there are no remaining results, the previous response
-object's NextToken parameter is set to null.}
+token. To retrieve the next set of results, call
+\code{\link[=robomaker_list_deployment_jobs]{list_deployment_jobs}} again and
+assign that token to the request object's \code{nextToken} parameter. If
+there are no remaining results, the previous response object's NextToken
+parameter is set to null.}
 
-\item{maxResults}{When this parameter is used, \code{ListDeploymentJobs} only returns
+\item{maxResults}{When this parameter is used,
+\code{\link[=robomaker_list_deployment_jobs]{list_deployment_jobs}} only returns
 \code{maxResults} results in a single page along with a \code{nextToken} response
 element. The remaining results of the initial request can be seen by
-sending another \code{ListDeploymentJobs} request with the returned
-\code{nextToken} value. This value can be between 1 and 200. If this
-parameter is not used, then \code{ListDeploymentJobs} returns up to 200
-results and a \code{nextToken} value if applicable.}
+sending another \code{\link[=robomaker_list_deployment_jobs]{list_deployment_jobs}}
+request with the returned \code{nextToken} value. This value can be between 1
+and 200. If this parameter is not used, then
+\code{\link[=robomaker_list_deployment_jobs]{list_deployment_jobs}} returns up to
+200 results and a \code{nextToken} value if applicable.}
 }
 \description{
 Returns a list of deployment jobs for a fleet. You can optionally

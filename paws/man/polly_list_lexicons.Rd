@@ -7,8 +7,9 @@
 polly_list_lexicons(NextToken)
 }
 \arguments{
-\item{NextToken}{An opaque pagination token returned from previous \code{ListLexicons}
-operation. If present, indicates where to continue the list of lexicons.}
+\item{NextToken}{An opaque pagination token returned from previous
+\code{\link[=polly_list_lexicons]{list_lexicons}} operation. If present, indicates
+where to continue the list of lexicons.}
 }
 \description{
 Returns a list of pronunciation lexicons stored in an AWS Region. For

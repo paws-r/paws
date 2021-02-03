@@ -62,7 +62,9 @@ fms_associate_admin_account <- function(AdminAccount) {
 #' fms_delete_apps_list(ListId)
 #'
 #' @param ListId &#91;required&#93; The ID of the applications list that you want to delete. You can
-#' retrieve this ID from `PutAppsList`, `ListAppsLists`, and `GetAppsList`.
+#' retrieve this ID from [`put_apps_list`][fms_put_apps_list],
+#' [`list_apps_lists`][fms_list_apps_lists], and
+#' [`get_apps_list`][fms_get_apps_list].
 #'
 #' @section Request syntax:
 #' ```
@@ -137,7 +139,8 @@ fms_delete_notification_channel <- function() {
 #' fms_delete_policy(PolicyId, DeleteAllPolicyResources)
 #'
 #' @param PolicyId &#91;required&#93; The ID of the policy that you want to delete. You can retrieve this ID
-#' from `PutPolicy` and `ListPolicies`.
+#' from [`put_policy`][fms_put_policy] and
+#' [`list_policies`][fms_list_policies].
 #' @param DeleteAllPolicyResources If `True`, the request performs cleanup according to the policy type.
 #' 
 #' For AWS WAF and Shield Advanced policies, the cleanup does the
@@ -204,7 +207,8 @@ fms_delete_policy <- function(PolicyId, DeleteAllPolicyResources = NULL) {
 #' fms_delete_protocols_list(ListId)
 #'
 #' @param ListId &#91;required&#93; The ID of the protocols list that you want to delete. You can retrieve
-#' this ID from `PutProtocolsList`, `ListProtocolsLists`, and
+#' this ID from [`put_protocols_list`][fms_put_protocols_list],
+#' [`list_protocols_lists`][fms_list_protocols_lists], and
 #' `GetProtocolsLost`.
 #'
 #' @section Request syntax:
@@ -240,7 +244,8 @@ fms_delete_protocols_list <- function(ListId) {
 #' @description
 #' Disassociates the account that has been set as the AWS Firewall Manager
 #' administrator account. To set a different account as the administrator
-#' account, you must submit an `AssociateAdminAccount` request.
+#' account, you must submit an
+#' [`associate_admin_account`][fms_associate_admin_account] request.
 #'
 #' @usage
 #' fms_disassociate_admin_account()
@@ -370,7 +375,8 @@ fms_get_apps_list <- function(ListId, DefaultList = NULL) {
 #' fms_get_compliance_detail(PolicyId, MemberAccount)
 #'
 #' @param PolicyId &#91;required&#93; The ID of the policy that you want to get the details for. `PolicyId` is
-#' returned by `PutPolicy` and by `ListPolicies`.
+#' returned by [`put_policy`][fms_put_policy] and by
+#' [`list_policies`][fms_list_policies].
 #' @param MemberAccount &#91;required&#93; The AWS account that owns the resources that you want to get the details
 #' for.
 #'
@@ -501,8 +507,9 @@ fms_get_policy <- function(PolicyId) {
 #' the number that you specify for `MaxResults`, AWS Firewall Manager
 #' returns a `NextToken` value in the response, which you can use to
 #' retrieve another group of objects. For the second and subsequent
-#' `GetProtectionStatus` requests, specify the value of `NextToken` from
-#' the previous response to get information about another batch of objects.
+#' [`get_protection_status`][fms_get_protection_status] requests, specify
+#' the value of `NextToken` from the previous response to get information
+#' about another batch of objects.
 #' @param MaxResults Specifies the number of objects that you want AWS Firewall Manager to
 #' return for this request. If you have more objects than the number that
 #' you specify for `MaxResults`, the response includes a `NextToken` value
@@ -707,9 +714,9 @@ fms_list_apps_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxResult
 #' `MaxResults`, AWS Firewall Manager returns a `NextToken` value in the
 #' response that allows you to list another group of
 #' `PolicyComplianceStatus` objects. For the second and subsequent
-#' `ListComplianceStatus` requests, specify the value of `NextToken` from
-#' the previous response to get information about another batch of
-#' `PolicyComplianceStatus` objects.
+#' [`list_compliance_status`][fms_list_compliance_status] requests, specify
+#' the value of `NextToken` from the previous response to get information
+#' about another batch of `PolicyComplianceStatus` objects.
 #' @param MaxResults Specifies the number of `PolicyComplianceStatus` objects that you want
 #' AWS Firewall Manager to return for this request. If you have more
 #' `PolicyComplianceStatus` objects than the number that you specify for
@@ -752,8 +759,8 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
 #' Returns a `MemberAccounts` object that lists the member accounts in the
 #' administrator's AWS organization.
 #' 
-#' The `ListMemberAccounts` must be submitted by the account that is set as
-#' the AWS Firewall Manager administrator.
+#' The [`list_member_accounts`][fms_list_member_accounts] must be submitted
+#' by the account that is set as the AWS Firewall Manager administrator.
 #'
 #' @usage
 #' fms_list_member_accounts(NextToken, MaxResults)
@@ -810,9 +817,10 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #' `PolicySummary` objects than the number that you specify for
 #' `MaxResults`, AWS Firewall Manager returns a `NextToken` value in the
 #' response that allows you to list another group of `PolicySummary`
-#' objects. For the second and subsequent `ListPolicies` requests, specify
-#' the value of `NextToken` from the previous response to get information
-#' about another batch of `PolicySummary` objects.
+#' objects. For the second and subsequent
+#' [`list_policies`][fms_list_policies] requests, specify the value of
+#' `NextToken` from the previous response to get information about another
+#' batch of `PolicySummary` objects.
 #' @param MaxResults Specifies the number of `PolicySummary` objects that you want AWS
 #' Firewall Manager to return for this request. If you have more
 #' `PolicySummary` objects than the number that you specify for

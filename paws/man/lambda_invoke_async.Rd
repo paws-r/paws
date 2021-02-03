@@ -23,7 +23,7 @@ the function name, it is limited to 64 characters in length.}
 \item{InvokeArgs}{[required] The JSON that you want to provide to your Lambda function as input.}
 }
 \description{
-For asynchronous function invocation, use Invoke.
+For asynchronous function invocation, use \code{\link[=lambda_invoke]{invoke}}.
 
 Invokes a function asynchronously.
 }

@@ -14,8 +14,8 @@ iot_update_billing_group(billingGroupName, billingGroupProperties,
 
 \item{expectedVersion}{The expected version of the billing group. If the version of the billing
 group does not match the expected version specified in the request, the
-\code{UpdateBillingGroup} request is rejected with a
-\code{VersionConflictException}.}
+\code{\link[=iot_update_billing_group]{update_billing_group}} request is rejected
+with a \code{VersionConflictException}.}
 }
 \description{
 Updates information about the billing group.

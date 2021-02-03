@@ -13,46 +13,48 @@ hosts the tasks to list. If you do not specify a cluster, the default
 cluster is assumed.}
 
 \item{containerInstance}{The container instance ID or full ARN of the container instance with
-which to filter the \code{ListTasks} results. Specifying a
+which to filter the \code{\link[=ecs_list_tasks]{list_tasks}} results. Specifying a
 \code{containerInstance} limits the results to tasks that belong to that
 container instance.}
 
-\item{family}{The name of the family with which to filter the \code{ListTasks} results.
-Specifying a \code{family} limits the results to tasks that belong to that
-family.}
+\item{family}{The name of the family with which to filter the
+\code{\link[=ecs_list_tasks]{list_tasks}} results. Specifying a \code{family} limits the
+results to tasks that belong to that family.}
 
-\item{nextToken}{The \code{nextToken} value returned from a \code{ListTasks} request indicating
-that more results are available to fulfill the request and further calls
-will be needed. If \code{maxResults} was provided, it is possible the number
-of results to be fewer than \code{maxResults}.
+\item{nextToken}{The \code{nextToken} value returned from a \code{\link[=ecs_list_tasks]{list_tasks}}
+request indicating that more results are available to fulfill the
+request and further calls will be needed. If \code{maxResults} was provided,
+it is possible the number of results to be fewer than \code{maxResults}.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
-\item{maxResults}{The maximum number of task results returned by \code{ListTasks} in paginated
-output. When this parameter is used, \code{ListTasks} only returns
-\code{maxResults} results in a single page along with a \code{nextToken} response
-element. The remaining results of the initial request can be seen by
-sending another \code{ListTasks} request with the returned \code{nextToken} value.
-This value can be between 1 and 100. If this parameter is not used, then
-\code{ListTasks} returns up to 100 results and a \code{nextToken} value if
-applicable.}
+\item{maxResults}{The maximum number of task results returned by
+\code{\link[=ecs_list_tasks]{list_tasks}} in paginated output. When this parameter
+is used, \code{\link[=ecs_list_tasks]{list_tasks}} only returns \code{maxResults}
+results in a single page along with a \code{nextToken} response element. The
+remaining results of the initial request can be seen by sending another
+\code{\link[=ecs_list_tasks]{list_tasks}} request with the returned \code{nextToken}
+value. This value can be between 1 and 100. If this parameter is not
+used, then \code{\link[=ecs_list_tasks]{list_tasks}} returns up to 100 results and
+a \code{nextToken} value if applicable.}
 
 \item{startedBy}{The \code{startedBy} value with which to filter the task results. Specifying
 a \code{startedBy} value limits the results to tasks that were started with
 that value.}
 
-\item{serviceName}{The name of the service with which to filter the \code{ListTasks} results.
-Specifying a \code{serviceName} limits the results to tasks that belong to
-that service.}
+\item{serviceName}{The name of the service with which to filter the
+\code{\link[=ecs_list_tasks]{list_tasks}} results. Specifying a \code{serviceName}
+limits the results to tasks that belong to that service.}
 
-\item{desiredStatus}{The task desired status with which to filter the \code{ListTasks} results.
-Specifying a \code{desiredStatus} of \code{STOPPED} limits the results to tasks
-that Amazon ECS has set the desired status to \code{STOPPED}. This can be
-useful for debugging tasks that are not starting properly or have died
-or finished. The default status filter is \code{RUNNING}, which shows tasks
-that Amazon ECS has set the desired status to \code{RUNNING}.
+\item{desiredStatus}{The task desired status with which to filter the
+\code{\link[=ecs_list_tasks]{list_tasks}} results. Specifying a \code{desiredStatus} of
+\code{STOPPED} limits the results to tasks that Amazon ECS has set the
+desired status to \code{STOPPED}. This can be useful for debugging tasks that
+are not starting properly or have died or finished. The default status
+filter is \code{RUNNING}, which shows tasks that Amazon ECS has set the
+desired status to \code{RUNNING}.
 
 Although you can filter results based on a desired status of \code{PENDING},
 this does not return any results. Amazon ECS never sets the desired

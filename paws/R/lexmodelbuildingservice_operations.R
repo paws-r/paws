@@ -12,7 +12,8 @@ NULL
 #' last created version.
 #' 
 #' You can update only the `$LATEST` version of the bot. You can't update
-#' the numbered versions that you create with the `CreateBotVersion`
+#' the numbered versions that you create with the
+#' [`create_bot_version`][lexmodelbuildingservice_create_bot_version]
 #' operation.
 #' 
 #' When you create the first version of a bot, Amazon Lex sets the version
@@ -72,7 +73,8 @@ lexmodelbuildingservice_create_bot_version <- function(name, checksum = NULL) {
 #' 
 #' You can update only the `$LATEST` version of the intent. You can't
 #' update the numbered versions that you create with the
-#' `CreateIntentVersion` operation.
+#' [`create_intent_version`][lexmodelbuildingservice_create_intent_version]
+#' operation.
 #' 
 #' When you create a version of an intent, Amazon Lex sets the version to
 #' 1. Subsequent versions increment by 1. For more information, see
@@ -132,7 +134,8 @@ lexmodelbuildingservice_create_intent_version <- function(name, checksum = NULL)
 #' 
 #' You can update only the `$LATEST` version of a slot type. You can't
 #' update the numbered versions that you create with the
-#' `CreateSlotTypeVersion` operation.
+#' [`create_slot_type_version`][lexmodelbuildingservice_create_slot_type_version]
+#' operation.
 #' 
 #' When you create a version of a slot type, Amazon Lex sets the version to
 #' 1. Subsequent versions increment by 1. For more information, see
@@ -185,21 +188,25 @@ lexmodelbuildingservice_create_slot_type_version <- function(name, checksum = NU
 #'
 #' @description
 #' Deletes all versions of the bot, including the `$LATEST` version. To
-#' delete a specific version of the bot, use the DeleteBotVersion
-#' operation. The `DeleteBot` operation doesn't immediately remove the bot
-#' schema. Instead, it is marked for deletion and removed later.
+#' delete a specific version of the bot, use the
+#' [`delete_bot_version`][lexmodelbuildingservice_delete_bot_version]
+#' operation. The [`delete_bot`][lexmodelbuildingservice_delete_bot]
+#' operation doesn't immediately remove the bot schema. Instead, it is
+#' marked for deletion and removed later.
 #' 
 #' Amazon Lex stores utterances indefinitely for improving the ability of
 #' your bot to respond to user inputs. These utterances are not removed
 #' when the bot is deleted. To remove the utterances, use the
-#' DeleteUtterances operation.
+#' [`delete_utterances`][lexmodelbuildingservice_delete_utterances]
+#' operation.
 #' 
-#' If a bot has an alias, you can't delete it. Instead, the `DeleteBot`
-#' operation returns a `ResourceInUseException` exception that includes a
-#' reference to the alias that refers to the bot. To remove the reference
-#' to the bot, delete the alias. If you get the same exception again,
-#' delete the referring alias until the `DeleteBot` operation is
-#' successful.
+#' If a bot has an alias, you can't delete it. Instead, the
+#' [`delete_bot`][lexmodelbuildingservice_delete_bot] operation returns a
+#' `ResourceInUseException` exception that includes a reference to the
+#' alias that refers to the bot. To remove the reference to the bot, delete
+#' the alias. If you get the same exception again, delete the referring
+#' alias until the [`delete_bot`][lexmodelbuildingservice_delete_bot]
+#' operation is successful.
 #' 
 #' This operation requires permissions for the `lex:DeleteBot` action.
 #'
@@ -242,11 +249,13 @@ lexmodelbuildingservice_delete_bot <- function(name) {
 #' 
 #' You can't delete an alias that is used in the association between a bot
 #' and a messaging channel. If an alias is used in a channel association,
-#' the `DeleteBot` operation returns a `ResourceInUseException` exception
-#' that includes a reference to the channel association that refers to the
-#' bot. You can remove the reference to the alias by deleting the channel
-#' association. If you get the same exception again, delete the referring
-#' association until the `DeleteBotAlias` operation is successful.
+#' the [`delete_bot`][lexmodelbuildingservice_delete_bot] operation returns
+#' a `ResourceInUseException` exception that includes a reference to the
+#' channel association that refers to the bot. You can remove the reference
+#' to the alias by deleting the channel association. If you get the same
+#' exception again, delete the referring association until the
+#' [`delete_bot_alias`][lexmodelbuildingservice_delete_bot_alias] operation
+#' is successful.
 #'
 #' @usage
 #' lexmodelbuildingservice_delete_bot_alias(name, botName)
@@ -334,7 +343,7 @@ lexmodelbuildingservice_delete_bot_channel_association <- function(name, botName
 #'
 #' @description
 #' Deletes a specific version of a bot. To delete all versions of a bot,
-#' use the DeleteBot operation.
+#' use the [`delete_bot`][lexmodelbuildingservice_delete_bot] operation.
 #' 
 #' This operation requires permissions for the `lex:DeleteBotVersion`
 #' action.
@@ -344,8 +353,8 @@ lexmodelbuildingservice_delete_bot_channel_association <- function(name, botName
 #'
 #' @param name &#91;required&#93; The name of the bot.
 #' @param version &#91;required&#93; The version of the bot to delete. You cannot delete the `$LATEST`
-#' version of the bot. To delete the `$LATEST` version, use the DeleteBot
-#' operation.
+#' version of the bot. To delete the `$LATEST` version, use the
+#' [`delete_bot`][lexmodelbuildingservice_delete_bot] operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -379,7 +388,8 @@ lexmodelbuildingservice_delete_bot_version <- function(name, version) {
 #'
 #' @description
 #' Deletes all versions of the intent, including the `$LATEST` version. To
-#' delete a specific version of the intent, use the DeleteIntentVersion
+#' delete a specific version of the intent, use the
+#' [`delete_intent_version`][lexmodelbuildingservice_delete_intent_version]
 #' operation.
 #' 
 #' You can delete a version of an intent only if it is not referenced. To
@@ -390,8 +400,8 @@ lexmodelbuildingservice_delete_bot_version <- function(name, version) {
 #' example reference that shows where the intent is referenced. To remove
 #' the reference to the intent, either update the bot or delete it. If you
 #' get the same exception when you attempt to delete the intent again,
-#' repeat until the intent has no references and the call to `DeleteIntent`
-#' is successful.
+#' repeat until the intent has no references and the call to
+#' [`delete_intent`][lexmodelbuildingservice_delete_intent] is successful.
 #' 
 #' This operation requires permission for the `lex:DeleteIntent` action.
 #'
@@ -431,7 +441,8 @@ lexmodelbuildingservice_delete_intent <- function(name) {
 #'
 #' @description
 #' Deletes a specific version of an intent. To delete all versions of a
-#' intent, use the DeleteIntent operation.
+#' intent, use the [`delete_intent`][lexmodelbuildingservice_delete_intent]
+#' operation.
 #' 
 #' This operation requires permissions for the `lex:DeleteIntentVersion`
 #' action.
@@ -442,7 +453,7 @@ lexmodelbuildingservice_delete_intent <- function(name) {
 #' @param name &#91;required&#93; The name of the intent.
 #' @param version &#91;required&#93; The version of the intent to delete. You cannot delete the `$LATEST`
 #' version of the intent. To delete the `$LATEST` version, use the
-#' DeleteIntent operation.
+#' [`delete_intent`][lexmodelbuildingservice_delete_intent] operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -477,7 +488,8 @@ lexmodelbuildingservice_delete_intent_version <- function(name, version) {
 #' @description
 #' Deletes all versions of the slot type, including the `$LATEST` version.
 #' To delete a specific version of the slot type, use the
-#' DeleteSlotTypeVersion operation.
+#' [`delete_slot_type_version`][lexmodelbuildingservice_delete_slot_type_version]
+#' operation.
 #' 
 #' You can delete a version of a slot type only if it is not referenced. To
 #' delete a slot type that is referred to in one or more intents, you must
@@ -488,7 +500,9 @@ lexmodelbuildingservice_delete_intent_version <- function(name, version) {
 #' is referenced. To remove the reference to the slot type, either update
 #' the intent or delete it. If you get the same exception when you attempt
 #' to delete the slot type again, repeat until the slot type has no
-#' references and the `DeleteSlotType` call is successful.
+#' references and the
+#' [`delete_slot_type`][lexmodelbuildingservice_delete_slot_type] call is
+#' successful.
 #' 
 #' This operation requires permission for the `lex:DeleteSlotType` action.
 #'
@@ -528,7 +542,9 @@ lexmodelbuildingservice_delete_slot_type <- function(name) {
 #'
 #' @description
 #' Deletes a specific version of a slot type. To delete all versions of a
-#' slot type, use the DeleteSlotType operation.
+#' slot type, use the
+#' [`delete_slot_type`][lexmodelbuildingservice_delete_slot_type]
+#' operation.
 #' 
 #' This operation requires permissions for the `lex:DeleteSlotTypeVersion`
 #' action.
@@ -539,7 +555,8 @@ lexmodelbuildingservice_delete_slot_type <- function(name) {
 #' @param name &#91;required&#93; The name of the slot type.
 #' @param version &#91;required&#93; The version of the slot type to delete. You cannot delete the `$LATEST`
 #' version of the slot type. To delete the `$LATEST` version, use the
-#' DeleteSlotType operation.
+#' [`delete_slot_type`][lexmodelbuildingservice_delete_slot_type]
+#' operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -575,15 +592,19 @@ lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
 #' Deletes stored utterances.
 #' 
 #' Amazon Lex stores the utterances that users send to your bot. Utterances
-#' are stored for 15 days for use with the GetUtterancesView operation, and
-#' then stored indefinitely for use in improving the ability of your bot to
-#' respond to user input.
+#' are stored for 15 days for use with the
+#' [`get_utterances_view`][lexmodelbuildingservice_get_utterances_view]
+#' operation, and then stored indefinitely for use in improving the ability
+#' of your bot to respond to user input.
 #' 
-#' Use the `DeleteUtterances` operation to manually delete stored
-#' utterances for a specific user. When you use the `DeleteUtterances`
+#' Use the [`delete_utterances`][lexmodelbuildingservice_delete_utterances]
+#' operation to manually delete stored utterances for a specific user. When
+#' you use the
+#' [`delete_utterances`][lexmodelbuildingservice_delete_utterances]
 #' operation, utterances stored for improving your bot's ability to respond
 #' to user input are deleted immediately. Utterances stored for use with
-#' the `GetUtterancesView` operation are deleted after 15 days.
+#' the [`get_utterances_view`][lexmodelbuildingservice_get_utterances_view]
+#' operation are deleted after 15 days.
 #' 
 #' This operation requires permissions for the `lex:DeleteUtterances`
 #' action.
@@ -826,8 +847,10 @@ lexmodelbuildingservice_get_bot_channel_association <- function(name, botName, b
 #' @description
 #' Returns a list of all of the channels associated with the specified bot.
 #' 
-#' The `GetBotChannelAssociations` operation requires permissions for the
-#' `lex:GetBotChannelAssociations` action.
+#' The
+#' [`get_bot_channel_associations`][lexmodelbuildingservice_get_bot_channel_associations]
+#' operation requires permissions for the `lex:GetBotChannelAssociations`
+#' action.
 #'
 #' @usage
 #' lexmodelbuildingservice_get_bot_channel_associations(botName, botAlias,
@@ -883,14 +906,15 @@ lexmodelbuildingservice_get_bot_channel_associations <- function(botName, botAli
 #' @description
 #' Gets information about all of the versions of a bot.
 #' 
-#' The `GetBotVersions` operation returns a `BotMetadata` object for each
-#' version of a bot. For example, if a bot has three numbered versions, the
-#' `GetBotVersions` operation returns four `BotMetadata` objects in the
-#' response, one for each numbered version and one for the `$LATEST`
-#' version.
+#' The [`get_bot_versions`][lexmodelbuildingservice_get_bot_versions]
+#' operation returns a `BotMetadata` object for each version of a bot. For
+#' example, if a bot has three numbered versions, the
+#' [`get_bot_versions`][lexmodelbuildingservice_get_bot_versions] operation
+#' returns four `BotMetadata` objects in the response, one for each
+#' numbered version and one for the `$LATEST` version.
 #' 
-#' The `GetBotVersions` operation always returns at least one version, the
-#' `$LATEST` version.
+#' The [`get_bot_versions`][lexmodelbuildingservice_get_bot_versions]
+#' operation always returns at least one version, the `$LATEST` version.
 #' 
 #' This operation requires permissions for the `lex:GetBotVersions` action.
 #'
@@ -1205,8 +1229,8 @@ lexmodelbuildingservice_get_export <- function(name, version, resourceType, expo
 #' operation
 #'
 #' @description
-#' Gets information about an import job started with the `StartImport`
-#' operation.
+#' Gets information about an import job started with the
+#' [`start_import`][lexmodelbuildingservice_start_import] operation.
 #'
 #' @usage
 #' lexmodelbuildingservice_get_import(importId)
@@ -1297,14 +1321,15 @@ lexmodelbuildingservice_get_intent <- function(name, version) {
 #' @description
 #' Gets information about all of the versions of an intent.
 #' 
-#' The `GetIntentVersions` operation returns an `IntentMetadata` object for
-#' each version of an intent. For example, if an intent has three numbered
-#' versions, the `GetIntentVersions` operation returns four
-#' `IntentMetadata` objects in the response, one for each numbered version
-#' and one for the `$LATEST` version.
+#' The [`get_intent_versions`][lexmodelbuildingservice_get_intent_versions]
+#' operation returns an `IntentMetadata` object for each version of an
+#' intent. For example, if an intent has three numbered versions, the
+#' [`get_intent_versions`][lexmodelbuildingservice_get_intent_versions]
+#' operation returns four `IntentMetadata` objects in the response, one for
+#' each numbered version and one for the `$LATEST` version.
 #' 
-#' The `GetIntentVersions` operation always returns at least one version,
-#' the `$LATEST` version.
+#' The [`get_intent_versions`][lexmodelbuildingservice_get_intent_versions]
+#' operation always returns at least one version, the `$LATEST` version.
 #' 
 #' This operation requires permissions for the `lex:GetIntentVersions`
 #' action.
@@ -1473,14 +1498,17 @@ lexmodelbuildingservice_get_slot_type <- function(name, version) {
 #' @description
 #' Gets information about all versions of a slot type.
 #' 
-#' The `GetSlotTypeVersions` operation returns a `SlotTypeMetadata` object
-#' for each version of a slot type. For example, if a slot type has three
-#' numbered versions, the `GetSlotTypeVersions` operation returns four
-#' `SlotTypeMetadata` objects in the response, one for each numbered
-#' version and one for the `$LATEST` version.
+#' The
+#' [`get_slot_type_versions`][lexmodelbuildingservice_get_slot_type_versions]
+#' operation returns a `SlotTypeMetadata` object for each version of a slot
+#' type. For example, if a slot type has three numbered versions, the
+#' [`get_slot_type_versions`][lexmodelbuildingservice_get_slot_type_versions]
+#' operation returns four `SlotTypeMetadata` objects in the response, one
+#' for each numbered version and one for the `$LATEST` version.
 #' 
-#' The `GetSlotTypeVersions` operation always returns at least one version,
-#' the `$LATEST` version.
+#' The
+#' [`get_slot_type_versions`][lexmodelbuildingservice_get_slot_type_versions]
+#' operation always returns at least one version, the `$LATEST` version.
 #' 
 #' This operation requires permissions for the `lex:GetSlotTypeVersions`
 #' action.
@@ -1598,12 +1626,15 @@ lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults 
 #' utterances that your users have made to your bot
 #'
 #' @description
-#' Use the `GetUtterancesView` operation to get information about the
-#' utterances that your users have made to your bot. You can use this list
-#' to tune the utterances that your bot responds to.
+#' Use the
+#' [`get_utterances_view`][lexmodelbuildingservice_get_utterances_view]
+#' operation to get information about the utterances that your users have
+#' made to your bot. You can use this list to tune the utterances that your
+#' bot responds to.
 #' 
 #' For example, say that you have created a bot to order flowers. After
-#' your users have used your bot for a while, use the `GetUtterancesView`
+#' your users have used your bot for a while, use the
+#' [`get_utterances_view`][lexmodelbuildingservice_get_utterances_view]
 #' operation to see the requests that they have made and whether they have
 #' been successful. You might find that the utterance "I want flowers" is
 #' not being recognized. You could add this utterance to the `OrderFlowers`
@@ -1869,9 +1900,10 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' complete the order within the specified time, Amazon Lex discards the
 #' slot information that it gathered, and the user must start over.
 #' 
-#' If you don't include the `idleSessionTTLInSeconds` element in a `PutBot`
-#' operation request, Amazon Lex uses the default value. This is also true
-#' if the request replaces an existing bot.
+#' If you don't include the `idleSessionTTLInSeconds` element in a
+#' [`put_bot`][lexmodelbuildingservice_put_bot] operation request, Amazon
+#' Lex uses the default value. This is also true if the request replaces an
+#' existing bot.
 #' 
 #' The default is 300 seconds (5 minutes).
 #' @param voiceId The Amazon Polly voice ID that you want Amazon Lex to use for voice
@@ -1926,11 +1958,13 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' sentiment analysis. If you don't specify `detectSentiment`, the default
 #' is `false`.
 #' @param createVersion When set to `true` a new numbered version of the bot is created. This is
-#' the same as calling the `CreateBotVersion` operation. If you don't
-#' specify `createVersion`, the default is `false`.
+#' the same as calling the
+#' [`create_bot_version`][lexmodelbuildingservice_create_bot_version]
+#' operation. If you don't specify `createVersion`, the default is `false`.
 #' @param tags A list of tags to add to the bot. You can only add tags when you create
-#' a bot, you can't use the `PutBot` operation to update the tags on a bot.
-#' To update tags, use the `TagResource` operation.
+#' a bot, you can't use the [`put_bot`][lexmodelbuildingservice_put_bot]
+#' operation to update the tags on a bot. To update tags, use the
+#' [`tag_resource`][lexmodelbuildingservice_tag_resource] operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -2078,8 +2112,10 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #' exception.
 #' @param conversationLogs Settings for conversation logs for the alias.
 #' @param tags A list of tags to add to the bot alias. You can only add tags when you
-#' create an alias, you can't use the `PutBotAlias` operation to update the
-#' tags on a bot alias. To update tags, use the `TagResource` operation.
+#' create an alias, you can't use the
+#' [`put_bot_alias`][lexmodelbuildingservice_put_bot_alias] operation to
+#' update the tags on a bot alias. To update tags, use the
+#' [`tag_resource`][lexmodelbuildingservice_tag_resource] operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -2287,8 +2323,10 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' the `$LATEST` version, you get a `PreconditionFailedException`
 #' exception.
 #' @param createVersion When set to `true` a new numbered version of the intent is created. This
-#' is the same as calling the `CreateIntentVersion` operation. If you do
-#' not specify `createVersion`, the default is `false`.
+#' is the same as calling the
+#' [`create_intent_version`][lexmodelbuildingservice_create_intent_version]
+#' operation. If you do not specify `createVersion`, the default is
+#' `false`.
 #' @param kendraConfiguration Configuration information required to use the
 #' `AMAZON.KendraSearchIntent` intent to connect to an Amazon Kendra index.
 #' For more information, see
@@ -2655,8 +2693,10 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' If you don't specify the `valueSelectionStrategy`, the default is
 #' `ORIGINAL_VALUE`.
 #' @param createVersion When set to `true` a new numbered version of the slot type is created.
-#' This is the same as calling the `CreateSlotTypeVersion` operation. If
-#' you do not specify `createVersion`, the default is `false`.
+#' This is the same as calling the
+#' [`create_slot_type_version`][lexmodelbuildingservice_create_slot_type_version]
+#' operation. If you do not specify `createVersion`, the default is
+#' `false`.
 #' @param parentSlotTypeSignature The built-in slot type used as the parent of the slot type. When you
 #' define a parent slot type, the new slot type has all of the same
 #' configuration as the parent.
@@ -2748,13 +2788,15 @@ lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enum
 #' -   A bot exports dependent intents.
 #' 
 #' -   An intent exports dependent slot types.
-#' @param mergeStrategy &#91;required&#93; Specifies the action that the `StartImport` operation should take when
-#' there is an existing resource with the same name.
+#' @param mergeStrategy &#91;required&#93; Specifies the action that the
+#' [`start_import`][lexmodelbuildingservice_start_import] operation should
+#' take when there is an existing resource with the same name.
 #' 
 #' -   FAIL\\_ON\\_CONFLICT - The import operation is stopped on the first
 #'     conflict between a resource in the import file and an existing
 #'     resource. The name of the resource causing the conflict is in the
-#'     `failureReason` field of the response to the `GetImport` operation.
+#'     `failureReason` field of the response to the
+#'     [`get_import`][lexmodelbuildingservice_get_import] operation.
 #' 
 #'     OVERWRITE\\_LATEST - The import operation proceeds even if there is a
 #'     conflict with an existing resource. The $LASTEST version of the

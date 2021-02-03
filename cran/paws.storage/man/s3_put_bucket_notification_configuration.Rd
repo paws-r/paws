@@ -30,9 +30,9 @@ By default, your bucket has no event notifications configured. That is,
 the notification configuration will be an empty
 \code{NotificationConfiguration}.
 
-\verb{&lt;NotificationConfiguration&gt;}
+\verb{<NotificationConfiguration>}
 
-\verb{&lt;/NotificationConfiguration&gt;}
+\verb{</NotificationConfiguration>}
 
 This operation replaces the existing notification configuration with the
 configuration you include in the request body.
@@ -69,9 +69,9 @@ include the \code{x-amz-sns-test-message-id} header containing the message ID
 of the test notification sent to the topic.
 
 The following operation is related to
-\code{PutBucketNotificationConfiguration}:
+\code{\link[=s3_put_bucket_notification_configuration]{put_bucket_notification_configuration}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html}{GetBucketNotificationConfiguration}
+\item \code{\link[=s3_get_bucket_notification_configuration]{get_bucket_notification_configuration}}
 }
 }
 \section{Request syntax}{

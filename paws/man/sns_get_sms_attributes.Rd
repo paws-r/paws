@@ -11,14 +11,15 @@ sns_get_sms_attributes(attributes)
 for which you want values.
 
 For all attribute names, see
-\href{https://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html}{SetSMSAttributes}.
+\code{\link[=sns_set_sms_attributes]{set_sms_attributes}}.
 
 If you don't use this parameter, Amazon SNS returns all SMS attributes.}
 }
 \description{
 Returns the settings for sending SMS messages from your account.
 
-These settings are set with the \code{SetSMSAttributes} action.
+These settings are set with the
+\code{\link[=sns_set_sms_attributes]{set_sms_attributes}} action.
 }
 \section{Request syntax}{
 \preformatted{svc$get_sms_attributes(

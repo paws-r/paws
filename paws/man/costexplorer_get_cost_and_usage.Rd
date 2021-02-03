@@ -40,7 +40,8 @@ measured in different units (for example, hours vs. GB). To get more
 meaningful \code{UsageQuantity} metrics, filter by \code{UsageType} or
 \code{UsageTypeGroups}.
 
-\code{Metrics} is required for \code{GetCostAndUsage} requests.}
+\code{Metrics} is required for
+\code{\link[=costexplorer_get_cost_and_usage]{get_cost_and_usage}} requests.}
 
 \item{GroupBy}{You can group AWS costs using up to two different groups, either
 dimensions, tag keys, cost categories, or any two group by types.
@@ -62,8 +63,7 @@ cost and usage-related metric, such as \code{BlendedCosts} or
 \code{UsageQuantity}, that you want the request to return. You can also
 filter and group your data by various dimensions, such as \code{SERVICE} or
 \code{AZ}, in a specific time range. For a complete list of valid dimensions,
-see the
-\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html}{GetDimensionValues}
+see the \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}}
 operation. Management account in an organization in AWS Organizations
 have access to all member accounts.
 

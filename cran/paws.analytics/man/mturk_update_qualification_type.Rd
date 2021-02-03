@@ -53,10 +53,10 @@ be true.}
 This parameter is used only if the AutoGranted parameter is true.}
 }
 \description{
-The \code{UpdateQualificationType} operation modifies the attributes of an
-existing Qualification type, which is represented by a QualificationType
-data structure. Only the owner of a Qualification type can modify its
-attributes.
+The \code{\link[=mturk_update_qualification_type]{update_qualification_type}}
+operation modifies the attributes of an existing Qualification type,
+which is represented by a QualificationType data structure. Only the
+owner of a Qualification type can modify its attributes.
 
 Most attributes of a Qualification type can be changed after the type
 has been created. However, the Name and Keywords fields cannot be

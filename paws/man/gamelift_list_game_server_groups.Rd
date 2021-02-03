@@ -30,14 +30,14 @@ parameters to retrieve results in a set of sequential segments.
 
 \strong{Related operations}
 \itemize{
-\item CreateGameServerGroup
-\item ListGameServerGroups
-\item DescribeGameServerGroup
-\item UpdateGameServerGroup
-\item DeleteGameServerGroup
-\item ResumeGameServerGroup
-\item SuspendGameServerGroup
-\item DescribeGameServerInstances
+\item \code{\link[=gamelift_create_game_server_group]{create_game_server_group}}
+\item \code{\link[=gamelift_list_game_server_groups]{list_game_server_groups}}
+\item \code{\link[=gamelift_describe_game_server_group]{describe_game_server_group}}
+\item \code{\link[=gamelift_update_game_server_group]{update_game_server_group}}
+\item \code{\link[=gamelift_delete_game_server_group]{delete_game_server_group}}
+\item \code{\link[=gamelift_resume_game_server_group]{resume_game_server_group}}
+\item \code{\link[=gamelift_suspend_game_server_group]{suspend_game_server_group}}
+\item \code{\link[=gamelift_describe_game_server_instances]{describe_game_server_instances}}
 }
 }
 \section{Request syntax}{

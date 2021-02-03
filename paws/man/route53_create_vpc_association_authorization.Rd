@@ -17,12 +17,15 @@ want to authorize associating with your hosted zone.}
 }
 \description{
 Authorizes the AWS account that created a specified VPC to submit an
-\code{AssociateVPCWithHostedZone} request to associate the VPC with a
-specified hosted zone that was created by a different account. To submit
-a \code{CreateVPCAssociationAuthorization} request, you must use the account
-that created the hosted zone. After you authorize the association, use
-the account that created the VPC to submit an
-\code{AssociateVPCWithHostedZone} request.
+\code{\link[=route53_associate_vpc_with_hosted_zone]{associate_vpc_with_hosted_zone}}
+request to associate the VPC with a specified hosted zone that was
+created by a different account. To submit a
+\code{\link[=route53_create_vpc_association_authorization]{create_vpc_association_authorization}}
+request, you must use the account that created the hosted zone. After
+you authorize the association, use the account that created the VPC to
+submit an
+\code{\link[=route53_associate_vpc_with_hosted_zone]{associate_vpc_with_hosted_zone}}
+request.
 
 If you want to associate multiple VPCs that you created by using one
 account with a hosted zone that you created by using a different

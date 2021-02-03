@@ -15,7 +15,8 @@ lambda_publish_layer_version(LayerName, Description, Content,
 \item{Content}{[required] The function layer archive.}
 
 \item{CompatibleRuntimes}{A list of compatible \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{function runtimes}.
-Used for filtering with ListLayers and ListLayerVersions.}
+Used for filtering with \code{\link[=lambda_list_layers]{list_layers}} and
+\code{\link[=lambda_list_layer_versions]{list_layer_versions}}.}
 
 \item{LicenseInfo}{The layer's software license. It can be any of the following:
 \itemize{
@@ -28,11 +29,13 @@ example, \code{MIT}.
 }
 \description{
 Creates an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}
-from a ZIP archive. Each time you call \code{PublishLayerVersion} with the
-same layer name, a new version is created.
+from a ZIP archive. Each time you call
+\code{\link[=lambda_publish_layer_version]{publish_layer_version}} with the same
+layer name, a new version is created.
 
-Add layers to your function with CreateFunction or
-UpdateFunctionConfiguration.
+Add layers to your function with
+\code{\link[=lambda_create_function]{create_function}} or
+\code{\link[=lambda_update_function_configuration]{update_function_configuration}}.
 }
 \section{Request syntax}{
 \preformatted{svc$publish_layer_version(

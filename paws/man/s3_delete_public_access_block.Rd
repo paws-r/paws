@@ -20,12 +20,13 @@ To use this operation, you must have the \code{s3:PutBucketPublicAccessBlock}
 permission. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
 and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
-The following operations are related to \code{DeletePublicAccessBlock}:
+The following operations are related to
+\code{\link[=s3_delete_public_access_block]{delete_public_access_block}}:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html}{Using Amazon S3 Block Public Access}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetPublicAccessBlock.html}{GetPublicAccessBlock}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutPublicAccessBlock.html}{PutPublicAccessBlock}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicyStatus.html}{GetBucketPolicyStatus}
+\item \code{\link[=s3_get_public_access_block]{get_public_access_block}}
+\item \code{\link[=s3_put_public_access_block]{put_public_access_block}}
+\item \code{\link[=s3_get_bucket_policy_status]{get_bucket_policy_status}}
 }
 }
 \section{Request syntax}{

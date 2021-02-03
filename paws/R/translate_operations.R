@@ -149,8 +149,8 @@ translate_delete_terminology <- function(Name) {
 #' translate_describe_text_translation_job(JobId)
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Translate generated for the job. The
-#' StartTextTranslationJob operation returns this identifier in its
-#' response.
+#' [`start_text_translation_job`][translate_start_text_translation_job]
+#' operation returns this identifier in its response.
 #'
 #' @section Request syntax:
 #' ```
@@ -463,9 +463,12 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #' once. For more information, see async.
 #' 
 #' Batch translation jobs can be described with the
-#' DescribeTextTranslationJob operation, listed with the
-#' ListTextTranslationJobs operation, and stopped with the
-#' StopTextTranslationJob operation.
+#' [`describe_text_translation_job`][translate_describe_text_translation_job]
+#' operation, listed with the
+#' [`list_text_translation_jobs`][translate_list_text_translation_jobs]
+#' operation, and stopped with the
+#' [`stop_text_translation_job`][translate_stop_text_translation_job]
+#' operation.
 #' 
 #' Amazon Translate does not support batch translation of multiple source
 #' languages at once.
@@ -489,10 +492,11 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #' batch translation jobs.
 #' @param TargetLanguageCodes &#91;required&#93; The language code of the output language.
 #' @param TerminologyNames The name of the terminology to use in the batch translation job. For a
-#' list of available terminologies, use the ListTerminologies operation.
+#' list of available terminologies, use the
+#' [`list_terminologies`][translate_list_terminologies] operation.
 #' @param ParallelDataNames The names of the parallel data resources to use in the batch translation
 #' job. For a list of available parallel data resources, use the
-#' ListParallelData operation.
+#' [`list_parallel_data`][translate_list_parallel_data] operation.
 #' @param ClientToken &#91;required&#93; A unique identifier for the request. This token is auto-generated when
 #' using the Amazon Translate SDK.
 #'
@@ -553,9 +557,11 @@ translate_start_text_translation_job <- function(JobName = NULL, InputDataConfig
 #' state. Otherwise, the job is put into the `STOPPED` state.
 #' 
 #' Asynchronous batch translation jobs are started with the
-#' StartTextTranslationJob operation. You can use the
-#' DescribeTextTranslationJob or ListTextTranslationJobs operations to get
-#' a batch translation job's `JobId`.
+#' [`start_text_translation_job`][translate_start_text_translation_job]
+#' operation. You can use the
+#' [`describe_text_translation_job`][translate_describe_text_translation_job]
+#' or [`list_text_translation_jobs`][translate_list_text_translation_jobs]
+#' operations to get a batch translation job's `JobId`.
 #'
 #' @usage
 #' translate_stop_text_translation_job(JobId)
@@ -604,8 +610,9 @@ translate_stop_text_translation_job <- function(JobId) {
 #' long. Depending on your character set, this may be fewer than 5,000
 #' characters.
 #' @param TerminologyNames The name of the terminology list file to be used in the TranslateText
-#' request. You can use 1 terminology list at most in a `TranslateText`
-#' request. Terminology lists can contain a maximum of 256 terms.
+#' request. You can use 1 terminology list at most in a
+#' [`translate_text`][translate_translate_text] request. Terminology lists
+#' can contain a maximum of 256 terms.
 #' @param SourceLanguageCode &#91;required&#93; The language code for the language of the source text. The language must
 #' be a language supported by Amazon Translate. For a list of language
 #' codes, see what-is-languages.

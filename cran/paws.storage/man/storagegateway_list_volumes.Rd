@@ -19,8 +19,11 @@ number of items.}
 \description{
 Lists the iSCSI stored volumes of a gateway. Results are sorted by
 volume ARN. The response includes only the volume ARNs. If you want
-additional volume information, use the DescribeStorediSCSIVolumes or the
-DescribeCachediSCSIVolumes API.
+additional volume information, use the
+\code{\link[=storagegateway_describe_storedi_scsi_volumes]{describe_storedi_scsi_volumes}}
+or the
+\code{\link[=storagegateway_describe_cachedi_scsi_volumes]{describe_cachedi_scsi_volumes}}
+API.
 
 The operation supports pagination. By default, the operation returns a
 maximum of up to 100 volumes. You can optionally specify the \code{Limit}

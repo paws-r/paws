@@ -22,8 +22,8 @@ or a \code{HomeRegionNotSetException} error is returned.
 permitted outside of your home region.
 \item If you call a write API outside the home region, an
 \code{InvalidInputException} is returned.
-\item You can call \code{GetHomeRegion} action to obtain the account's
-Migration Hub home region.
+\item You can call \code{\link[=migrationhubconfig_get_home_region]{get_home_region}}
+action to obtain the account's Migration Hub home region.
 }
 
 For specific API usage, see the sections that follow in this AWS

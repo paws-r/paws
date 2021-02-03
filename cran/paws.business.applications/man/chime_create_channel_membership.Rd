@@ -12,8 +12,10 @@ chime_create_channel_membership(ChannelArn, MemberArn, Type)
 \item{MemberArn}{[required] The ARN of the member you want to add to the channel.}
 
 \item{Type}{[required] The membership type of a user, \code{DEFAULT} or \code{HIDDEN}. Default members
-are always returned as part of \code{ListChannelMemberships}. Hidden members
-are only returned if the type filter in \code{ListChannelMemberships} equals
+are always returned as part of
+\code{\link[=chime_list_channel_memberships]{list_channel_memberships}}. Hidden
+members are only returned if the type filter in
+\code{\link[=chime_list_channel_memberships]{list_channel_memberships}} equals
 \code{HIDDEN}. Otherwise hidden members are not returned. This is only
 supported by moderators.}
 }

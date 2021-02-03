@@ -10,13 +10,13 @@ lightsail_update_distribution_bundle(distributionName, bundleId)
 \arguments{
 \item{distributionName}{The name of the distribution for which to update the bundle.
 
-Use the \code{GetDistributions} action to get a list of distribution names
-that you can specify.}
+Use the \code{\link[=lightsail_get_distributions]{get_distributions}} action to get
+a list of distribution names that you can specify.}
 
 \item{bundleId}{The bundle ID of the new bundle to apply to your distribution.
 
-Use the \code{GetDistributionBundles} action to get a list of distribution
-bundle IDs that you can specify.}
+Use the \code{\link[=lightsail_get_distribution_bundles]{get_distribution_bundles}}
+action to get a list of distribution bundle IDs that you can specify.}
 }
 \description{
 Updates the bundle of your Amazon Lightsail content delivery network
@@ -30,7 +30,8 @@ monthly network transfer quota and is incurring an overage fee.
 
 You can update your distribution's bundle only one time within your
 monthly AWS billing cycle. To determine if you can update your
-distribution's bundle, use the \code{GetDistributions} action. The
+distribution's bundle, use the
+\code{\link[=lightsail_get_distributions]{get_distributions}} action. The
 \code{ableToUpdateBundle} parameter in the result will indicate whether you
 can currently update your distribution's bundle.
 }

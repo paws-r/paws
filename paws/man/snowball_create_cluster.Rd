@@ -73,8 +73,9 @@ most regions.}
 }
 \description{
 Creates an empty cluster. Each cluster supports five nodes. You use the
-CreateJob action separately to create the jobs for each of these nodes.
-The cluster does not ship until these five node jobs have been created.
+\code{\link[=snowball_create_job]{create_job}} action separately to create the jobs
+for each of these nodes. The cluster does not ship until these five node
+jobs have been created.
 }
 \section{Request syntax}{
 \preformatted{svc$create_cluster(

@@ -15,7 +15,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 For an updated version of this API, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html}{GetBucketLifecycleConfiguration}.
+\code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}.
 If you configured a bucket lifecycle using the \code{filter} element, you
 should see the updated version of this topic. This topic is provided for
 backward compatibility.
@@ -29,7 +29,8 @@ permission by default. The bucket owner can grant this permission to
 others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
 and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
-\code{GetBucketLifecycle} has the following special error:
+\code{\link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle}} has the following
+special error:
 \itemize{
 \item Error code: \code{NoSuchLifecycleConfiguration}
 \itemize{
@@ -39,11 +40,12 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 }
 }
 
-The following operations are related to \code{GetBucketLifecycle}:
+The following operations are related to
+\code{\link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html}{GetBucketLifecycleConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html}{PutBucketLifecycle}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html}{DeleteBucketLifecycle}
+\item \code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
+\item \code{\link[=s3_put_bucket_lifecycle]{put_bucket_lifecycle}}
+\item \code{\link[=s3_delete_bucket_lifecycle]{delete_bucket_lifecycle}}
 }
 }
 \section{Request syntax}{

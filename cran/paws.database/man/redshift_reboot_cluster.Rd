@@ -13,9 +13,9 @@ redshift_reboot_cluster(ClusterIdentifier)
 Reboots a cluster. This action is taken as soon as possible. It results
 in a momentary outage to the cluster, during which the cluster status is
 set to \code{rebooting}. A cluster event is created when the reboot is
-completed. Any pending cluster modifications (see ModifyCluster) are
-applied at this reboot. For more information about managing clusters, go
-to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
+completed. Any pending cluster modifications (see
+\code{\link[=redshift_modify_cluster]{modify_cluster}}) are applied at this reboot.
+For more information about managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{

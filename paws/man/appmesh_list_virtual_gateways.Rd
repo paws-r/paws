@@ -7,14 +7,17 @@
 appmesh_list_virtual_gateways(limit, meshName, meshOwner, nextToken)
 }
 \arguments{
-\item{limit}{The maximum number of results returned by \code{ListVirtualGateways} in
-paginated output. When you use this parameter, \code{ListVirtualGateways}
-returns only \code{limit} results in a single page along with a \code{nextToken}
-response element. You can see the remaining results of the initial
-request by sending another \code{ListVirtualGateways} request with the
-returned \code{nextToken} value. This value can be between 1 and 100. If you
-don't use this parameter, \code{ListVirtualGateways} returns up to 100
-results and a \code{nextToken} value if applicable.}
+\item{limit}{The maximum number of results returned by
+\code{\link[=appmesh_list_virtual_gateways]{list_virtual_gateways}} in paginated
+output. When you use this parameter,
+\code{\link[=appmesh_list_virtual_gateways]{list_virtual_gateways}} returns only
+\code{limit} results in a single page along with a \code{nextToken} response
+element. You can see the remaining results of the initial request by
+sending another \code{\link[=appmesh_list_virtual_gateways]{list_virtual_gateways}}
+request with the returned \code{nextToken} value. This value can be between 1
+and 100. If you don't use this parameter,
+\code{\link[=appmesh_list_virtual_gateways]{list_virtual_gateways}} returns up to
+100 results and a \code{nextToken} value if applicable.}
 
 \item{meshName}{[required] The name of the service mesh to list virtual gateways in.}
 
@@ -23,9 +26,10 @@ not your own, then it's the ID of the account that shared the mesh with
 your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{ListVirtualGateways} request where \code{limit} was used and the results
-exceeded the value of that parameter. Pagination continues from the end
-of the previous results that returned the \code{nextToken} value.}
+\code{\link[=appmesh_list_virtual_gateways]{list_virtual_gateways}} request where
+\code{limit} was used and the results exceeded the value of that parameter.
+Pagination continues from the end of the previous results that returned
+the \code{nextToken} value.}
 }
 \description{
 Returns a list of existing virtual gateways in a service mesh.

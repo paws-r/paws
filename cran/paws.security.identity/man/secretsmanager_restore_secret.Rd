@@ -44,7 +44,8 @@ To run this command, you must have the following permissions:
 
 \strong{Related operations}
 \itemize{
-\item To delete a secret, use DeleteSecret.
+\item To delete a secret, use
+\code{\link[=secretsmanager_delete_secret]{delete_secret}}.
 }
 }
 \section{Request syntax}{

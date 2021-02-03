@@ -29,21 +29,24 @@ sort is by \code{TIMESTAMP}.}
 }
 \description{
 Gets the label detection results of a Amazon Rekognition Video analysis
-started by StartLabelDetection.
+started by \code{\link[=rekognition_start_label_detection]{start_label_detection}}.
 
 The label detection operation is started by a call to
-StartLabelDetection which returns a job identifier (\code{JobId}). When the
-label detection operation finishes, Amazon Rekognition publishes a
-completion status to the Amazon Simple Notification Service topic
-registered in the initial call to \code{StartlabelDetection}. To get the
-results of the label detection operation, first check that the status
-value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call
-GetLabelDetection and pass the job identifier (\code{JobId}) from the initial
-call to \code{StartLabelDetection}.
+\code{\link[=rekognition_start_label_detection]{start_label_detection}} which
+returns a job identifier (\code{JobId}). When the label detection operation
+finishes, Amazon Rekognition publishes a completion status to the Amazon
+Simple Notification Service topic registered in the initial call to
+\code{StartlabelDetection}. To get the results of the label detection
+operation, first check that the status value published to the Amazon SNS
+topic is \code{SUCCEEDED}. If so, call
+\code{\link[=rekognition_get_label_detection]{get_label_detection}} and pass the
+job identifier (\code{JobId}) from the initial call to
+\code{\link[=rekognition_start_label_detection]{start_label_detection}}.
 
-\code{GetLabelDetection} returns an array of detected labels (\code{Labels})
-sorted by the time the labels were detected. You can also sort by the
-label name by specifying \code{NAME} for the \code{SortBy} input parameter.
+\code{\link[=rekognition_get_label_detection]{get_label_detection}} returns an
+array of detected labels (\code{Labels}) sorted by the time the labels were
+detected. You can also sort by the label name by specifying \code{NAME} for
+the \code{SortBy} input parameter.
 
 The labels returned include the label name, the percentage confidence in
 the accuracy of the detected label, and the time the label was detected
@@ -58,7 +61,8 @@ there are more results than specified in \code{MaxResults}, the value of
 \code{NextToken} in the operation response contains a pagination token for
 getting the next set of results. To get the next page of results, call
 \code{GetlabelDetection} and populate the \code{NextToken} request parameter with
-the token value returned from the previous call to \code{GetLabelDetection}.
+the token value returned from the previous call to
+\code{\link[=rekognition_get_label_detection]{get_label_detection}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_label_detection(

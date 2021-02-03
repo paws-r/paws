@@ -18,9 +18,10 @@ parameter value must be greater than 0. The number of items that Amazon
 FSx returns is the minimum of the \code{MaxResults} parameter specified in
 the request and the service's internal maximum number of items per page.}
 
-\item{NextToken}{Opaque pagination token returned from a previous \code{DescribeBackups}
-operation (String). If a token present, the action continues the list
-from where the returning call left off.}
+\item{NextToken}{Opaque pagination token returned from a previous
+\code{\link[=fsx_describe_backups]{describe_backups}} operation (String). If a
+token present, the action continues the list from where the returning
+call left off.}
 }
 \description{
 Returns the description of specific Amazon FSx backups, if a \code{BackupIds}
@@ -35,18 +36,19 @@ case, send a later request with the \code{NextToken} request parameter set to
 the value of \code{NextToken} from the last response.
 
 This action is used in an iterative process to retrieve a list of your
-backups. \code{DescribeBackups} is called first without a \code{NextToken}value.
-Then the action continues to be called with the \code{NextToken} parameter
-set to the value of the last \code{NextToken} value until a response has no
-\code{NextToken}.
+backups. \code{\link[=fsx_describe_backups]{describe_backups}} is called first
+without a \code{NextToken}value. Then the action continues to be called with
+the \code{NextToken} parameter set to the value of the last \code{NextToken} value
+until a response has no \code{NextToken}.
 
 When using this action, keep the following in mind:
 \itemize{
 \item The implementation might return fewer than \code{MaxResults} file system
 descriptions while still including a \code{NextToken} value.
 \item The order of backups returned in the response of one
-\code{DescribeBackups} call and the order of backups returned across the
-responses of a multi-call iteration is unspecified.
+\code{\link[=fsx_describe_backups]{describe_backups}} call and the order of
+backups returned across the responses of a multi-call iteration is
+unspecified.
 }
 }
 \section{Request syntax}{

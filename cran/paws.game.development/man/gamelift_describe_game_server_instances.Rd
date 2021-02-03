@@ -33,8 +33,8 @@ Retrieves status information about the Amazon EC2 instances associated
 with a GameLift FleetIQ game server group. Use this operation to detect
 when instances are active or not available to host new game servers. If
 you are looking for instance configuration information, call
-DescribeGameServerGroup or access the corresponding Auto Scaling group
-properties.
+\code{\link[=gamelift_describe_game_server_group]{describe_game_server_group}} or
+access the corresponding Auto Scaling group properties.
 
 To request status for all instances in the game server group, provide a
 game server group ID only. To request status for specific instances,
@@ -53,14 +53,14 @@ refresh your cache no more than once every 10 seconds.
 
 \strong{Related operations}
 \itemize{
-\item CreateGameServerGroup
-\item ListGameServerGroups
-\item DescribeGameServerGroup
-\item UpdateGameServerGroup
-\item DeleteGameServerGroup
-\item ResumeGameServerGroup
-\item SuspendGameServerGroup
-\item DescribeGameServerInstances
+\item \code{\link[=gamelift_create_game_server_group]{create_game_server_group}}
+\item \code{\link[=gamelift_list_game_server_groups]{list_game_server_groups}}
+\item \code{\link[=gamelift_describe_game_server_group]{describe_game_server_group}}
+\item \code{\link[=gamelift_update_game_server_group]{update_game_server_group}}
+\item \code{\link[=gamelift_delete_game_server_group]{delete_game_server_group}}
+\item \code{\link[=gamelift_resume_game_server_group]{resume_game_server_group}}
+\item \code{\link[=gamelift_suspend_game_server_group]{suspend_game_server_group}}
+\item \code{\link[=gamelift_describe_game_server_instances]{describe_game_server_instances}}
 }
 }
 \section{Request syntax}{

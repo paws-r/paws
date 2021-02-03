@@ -135,14 +135,16 @@ cloudhsm_create_hapg <- function(Label) {
 #' Creates an uninitialized HSM instance.
 #' 
 #' There is an upfront fee charged for each HSM instance that you create
-#' with the `CreateHsm` operation. If you accidentally provision an HSM and
-#' want to request a refund, delete the instance using the DeleteHsm
-#' operation, go to the AWS Support Center, create a new case, and select
-#' **Account and Billing Support**.
+#' with the [`create_hsm`][cloudhsm_create_hsm] operation. If you
+#' accidentally provision an HSM and want to request a refund, delete the
+#' instance using the [`delete_hsm`][cloudhsm_delete_hsm] operation, go to
+#' the AWS Support Center, create a new case, and select **Account and
+#' Billing Support**.
 #' 
 #' It can take up to 20 minutes to create and provision an HSM. You can
-#' monitor the status of the HSM with the DescribeHsm operation. The HSM is
-#' ready to be initialized when the status changes to `RUNNING`.
+#' monitor the status of the HSM with the
+#' [`describe_hsm`][cloudhsm_describe_hsm] operation. The HSM is ready to
+#' be initialized when the status changes to `RUNNING`.
 #'
 #' @usage
 #' cloudhsm_create_hsm(SubnetId, SshKey, EniIp, IamRoleArn, ExternalId,
@@ -682,14 +684,15 @@ cloudhsm_list_available_zones <- function() {
 #' 
 #' This operation supports pagination with the use of the `NextToken`
 #' member. If more results are available, the `NextToken` member of the
-#' response contains a token that you pass in the next call to `ListHapgs`
-#' to retrieve the next set of items.
+#' response contains a token that you pass in the next call to
+#' [`list_hapgs`][cloudhsm_list_hapgs] to retrieve the next set of items.
 #'
 #' @usage
 #' cloudhsm_list_hapgs(NextToken)
 #'
-#' @param NextToken The `NextToken` value from a previous call to `ListHapgs`. Pass null if
-#' this is the first call.
+#' @param NextToken The `NextToken` value from a previous call to
+#' [`list_hapgs`][cloudhsm_list_hapgs]. Pass null if this is the first
+#' call.
 #'
 #' @section Request syntax:
 #' ```
@@ -739,14 +742,14 @@ cloudhsm_list_hapgs <- function(NextToken = NULL) {
 #' 
 #' This operation supports pagination with the use of the `NextToken`
 #' member. If more results are available, the `NextToken` member of the
-#' response contains a token that you pass in the next call to `ListHsms`
-#' to retrieve the next set of items.
+#' response contains a token that you pass in the next call to
+#' [`list_hsms`][cloudhsm_list_hsms] to retrieve the next set of items.
 #'
 #' @usage
 #' cloudhsm_list_hsms(NextToken)
 #'
-#' @param NextToken The `NextToken` value from a previous call to `ListHsms`. Pass null if
-#' this is the first call.
+#' @param NextToken The `NextToken` value from a previous call to
+#' [`list_hsms`][cloudhsm_list_hsms]. Pass null if this is the first call.
 #'
 #' @section Request syntax:
 #' ```
@@ -796,13 +799,15 @@ cloudhsm_list_hsms <- function(NextToken = NULL) {
 #' This operation supports pagination with the use of the `NextToken`
 #' member. If more results are available, the `NextToken` member of the
 #' response contains a token that you pass in the next call to
-#' `ListLunaClients` to retrieve the next set of items.
+#' [`list_luna_clients`][cloudhsm_list_luna_clients] to retrieve the next
+#' set of items.
 #'
 #' @usage
 #' cloudhsm_list_luna_clients(NextToken)
 #'
-#' @param NextToken The `NextToken` value from a previous call to `ListLunaClients`. Pass
-#' null if this is the first call.
+#' @param NextToken The `NextToken` value from a previous call to
+#' [`list_luna_clients`][cloudhsm_list_luna_clients]. Pass null if this is
+#' the first call.
 #'
 #' @section Request syntax:
 #' ```
@@ -1086,7 +1091,8 @@ cloudhsm_modify_luna_client <- function(ClientArn, Certificate) {
 #' Removes one or more tags from the specified AWS CloudHSM resource.
 #' 
 #' To remove a tag, specify only the tag key to remove (not the value). To
-#' overwrite the value for an existing tag, use AddTagsToResource.
+#' overwrite the value for an existing tag, use
+#' [`add_tags_to_resource`][cloudhsm_add_tags_to_resource].
 #'
 #' @usage
 #' cloudhsm_remove_tags_from_resource(ResourceArn, TagKeyList)
@@ -1095,7 +1101,8 @@ cloudhsm_modify_luna_client <- function(ClientArn, Certificate) {
 #' @param TagKeyList &#91;required&#93; The tag key or keys to remove.
 #' 
 #' Specify only the tag key to remove (not the value). To overwrite the
-#' value for an existing tag, use AddTagsToResource.
+#' value for an existing tag, use
+#' [`add_tags_to_resource`][cloudhsm_add_tags_to_resource].
 #'
 #' @section Request syntax:
 #' ```

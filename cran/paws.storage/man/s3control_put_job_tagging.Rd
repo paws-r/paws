@@ -21,9 +21,9 @@ with any job by sending a PUT request against the tagging subresource
 that is associated with the job. To modify the existing tag set, you can
 either replace the existing tag set entirely, or make changes within the
 existing tag set by retrieving the existing tag set using
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetJobTagging.html}{GetJobTagging},
-modify that tag set, and use this action to replace the tag set with the
-one you modified. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags}
+\code{\link[=s3control_get_job_tagging]{get_job_tagging}}, modify that tag set, and
+use this action to replace the tag set with the one you modified. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 \itemize{
 \item If you send this request with an empty tag set, Amazon S3 deletes
@@ -31,9 +31,9 @@ the existing tag set on the Batch Operations job. If you use this
 method, you are charged for a Tier 1 Request (PUT). For more
 information, see \href{https://aws.amazon.com/s3/pricing/}{Amazon S3 pricing}.
 \item For deleting existing tags for your Batch Operations job, a
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html}{DeleteJobTagging}
-request is preferred because it achieves the same result without
-incurring charges.
+\code{\link[=s3control_delete_job_tagging]{delete_job_tagging}} request is
+preferred because it achieves the same result without incurring
+charges.
 \item A few things to consider about using tags:
 \itemize{
 \item Amazon S3 limits the maximum number of tags to 50 tags per job.
@@ -54,8 +54,8 @@ To use this operation, you must have permission to perform the
 Related actions include:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html}{CreatJob}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetJobTagging.html}{GetJobTagging}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html}{DeleteJobTagging}
+\item \code{\link[=s3control_get_job_tagging]{get_job_tagging}}
+\item \code{\link[=s3control_delete_job_tagging]{delete_job_tagging}}
 }
 }
 \section{Request syntax}{

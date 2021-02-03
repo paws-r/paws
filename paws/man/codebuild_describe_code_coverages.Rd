@@ -11,8 +11,9 @@ codebuild_describe_code_coverages(reportArn, nextToken, maxResults,
 \item{reportArn}{[required] The ARN of the report for which test cases are returned.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous call to
-\code{DescribeCodeCoverages}. This specifies the next item to return. To
-return the beginning of the list, exclude this parameter.}
+\code{\link[=codebuild_describe_code_coverages]{describe_code_coverages}}. This
+specifies the next item to return. To return the beginning of the list,
+exclude this parameter.}
 
 \item{maxResults}{The maximum number of results to return.}
 

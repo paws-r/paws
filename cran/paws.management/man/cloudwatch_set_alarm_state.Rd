@@ -33,12 +33,13 @@ Metric alarms returns to their actual state quickly, often within
 seconds. Because the metric alarm state change happens quickly, it is
 typically only visible in the alarm's \strong{History} tab in the Amazon
 CloudWatch console or through
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarmHistory.html}{DescribeAlarmHistory}.
+\code{\link[=cloudwatch_describe_alarm_history]{describe_alarm_history}}.
 
-If you use \code{SetAlarmState} on a composite alarm, the composite alarm is
-not guaranteed to return to its actual state. It returns to its actual
-state only once any of its children alarms change state. It is also
-reevaluated if you update its configuration.
+If you use \code{\link[=cloudwatch_set_alarm_state]{set_alarm_state}} on a
+composite alarm, the composite alarm is not guaranteed to return to its
+actual state. It returns to its actual state only once any of its
+children alarms change state. It is also reevaluated if you update its
+configuration.
 
 If an alarm triggers EC2 Auto Scaling policies or application Auto
 Scaling policies, you must include information in the \code{StateReasonData}

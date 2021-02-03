@@ -10,18 +10,19 @@ NULL
 #' Returns a set of temporary security credentials that you can use to
 #' access AWS resources that you might not normally have access to. These
 #' temporary credentials consist of an access key ID, a secret access key,
-#' and a security token. Typically, you use `AssumeRole` within your
-#' account or for cross-account access. For a comparison of `AssumeRole`
-#' with other API operations that produce temporary credentials, see
-#' [Requesting Temporary Security
+#' and a security token. Typically, you use
+#' [`assume_role`][sts_assume_role] within your account or for
+#' cross-account access. For a comparison of
+#' [`assume_role`][sts_assume_role] with other API operations that produce
+#' temporary credentials, see [Requesting Temporary Security
 #' Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html)
 #' and [Comparing the AWS STS API
 #' operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison)
 #' in the *IAM User Guide*.
 #' 
-#' You cannot use AWS account root user credentials to call `AssumeRole`.
-#' You must use credentials for an IAM user or an IAM role to call
-#' `AssumeRole`.
+#' You cannot use AWS account root user credentials to call
+#' [`assume_role`][sts_assume_role]. You must use credentials for an IAM
+#' user or an IAM role to call [`assume_role`][sts_assume_role].
 #' 
 #' For cross-account access, imagine that you own multiple accounts and
 #' need to access resources in each account. You could create long-term
@@ -36,13 +37,13 @@ NULL
 #' 
 #' **Session Duration**
 #' 
-#' By default, the temporary security credentials created by `AssumeRole`
-#' last for one hour. However, you can use the optional `DurationSeconds`
-#' parameter to specify the duration of your session. You can provide a
-#' value from 900 seconds (15 minutes) up to the maximum session duration
-#' setting for the role. This setting can have a value from 1 hour to 12
-#' hours. To learn how to view the maximum value for your role, see [View
-#' the Maximum Session Duration Setting for a
+#' By default, the temporary security credentials created by
+#' [`assume_role`][sts_assume_role] last for one hour. However, you can use
+#' the optional `DurationSeconds` parameter to specify the duration of your
+#' session. You can provide a value from 900 seconds (15 minutes) up to the
+#' maximum session duration setting for the role. This setting can have a
+#' value from 1 hour to 12 hours. To learn how to view the maximum value
+#' for your role, see [View the Maximum Session Duration Setting for a
 #' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
 #' in the *IAM User Guide*. The maximum session duration limit applies when
 #' you use the `AssumeRole*` API operations or the `assume-role*` CLI
@@ -53,10 +54,11 @@ NULL
 #' 
 #' **Permissions**
 #' 
-#' The temporary security credentials created by `AssumeRole` can be used
-#' to make API calls to any AWS service with the following exception: You
-#' cannot call the AWS STS `GetFederationToken` or `GetSessionToken` API
-#' operations.
+#' The temporary security credentials created by
+#' [`assume_role`][sts_assume_role] can be used to make API calls to any
+#' AWS service with the following exception: You cannot call the AWS STS
+#' [`get_federation_token`][sts_get_federation_token] or
+#' [`get_session_token`][sts_get_session_token] API operations.
 #' 
 #' (Optional) You can pass inline or managed [session
 #' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
@@ -82,9 +84,9 @@ NULL
 #' A user who wants to access a role in a different account must also have
 #' permissions that are delegated from the user account administrator. The
 #' administrator must attach a policy that allows the user to call
-#' `AssumeRole` for the ARN of the role in the other account. If the user
-#' is in the same account as the role, then you can do either of the
-#' following:
+#' [`assume_role`][sts_assume_role] for the ARN of the role in the other
+#' account. If the user is in the same account as the role, then you can do
+#' either of the following:
 #' 
 #' -   Attach a policy to the user (identical to the previous user in a
 #'     different account).
@@ -122,13 +124,14 @@ NULL
 #' **Using MFA with AssumeRole**
 #' 
 #' (Optional) You can include multi-factor authentication (MFA) information
-#' when you call `AssumeRole`. This is useful for cross-account scenarios
-#' to ensure that the user that assumes the role has been authenticated
-#' with an AWS MFA device. In that scenario, the trust policy of the role
-#' being assumed includes a condition that tests for MFA authentication. If
-#' the caller does not include valid MFA information, the request to assume
-#' the role is denied. The condition in a trust policy that tests for MFA
-#' authentication might look like the following example.
+#' when you call [`assume_role`][sts_assume_role]. This is useful for
+#' cross-account scenarios to ensure that the user that assumes the role
+#' has been authenticated with an AWS MFA device. In that scenario, the
+#' trust policy of the role being assumed includes a condition that tests
+#' for MFA authentication. If the caller does not include valid MFA
+#' information, the request to assume the role is denied. The condition in
+#' a trust policy that tests for MFA authentication might look like the
+#' following example.
 #' 
 #' `"Condition": \{"Bool": \{"aws:MultiFactorAuthPresent": true\}\}`
 #' 
@@ -136,10 +139,10 @@ NULL
 #' Access](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_configure-api-require.html)
 #' in the *IAM User Guide* guide.
 #' 
-#' To use MFA with `AssumeRole`, you pass values for the `SerialNumber` and
-#' `TokenCode` parameters. The `SerialNumber` value identifies the user's
-#' hardware or virtual MFA device. The `TokenCode` is the time-based
-#' one-time password (TOTP) that the MFA device produces.
+#' To use MFA with [`assume_role`][sts_assume_role], you pass values for
+#' the `SerialNumber` and `TokenCode` parameters. The `SerialNumber` value
+#' identifies the user's hardware or virtual MFA device. The `TokenCode` is
+#' the time-based one-time password (TOTP) that the MFA device produces.
 #'
 #' @usage
 #' sts_assume_role(RoleArn, RoleSessionName, PolicyArns, Policy,
@@ -306,11 +309,11 @@ NULL
 #' spaces. You can also include underscores or any of the following
 #' characters: =,.@@:/-
 #' @param SerialNumber The identification number of the MFA device that is associated with the
-#' user who is making the `AssumeRole` call. Specify this value if the
-#' trust policy of the role being assumed includes a condition that
-#' requires MFA authentication. The value is either the serial number for a
-#' hardware device (such as `GAHT12345678`) or an Amazon Resource Name
-#' (ARN) for a virtual device (such as
+#' user who is making the [`assume_role`][sts_assume_role] call. Specify
+#' this value if the trust policy of the role being assumed includes a
+#' condition that requires MFA authentication. The value is either the
+#' serial number for a hardware device (such as `GAHT12345678`) or an
+#' Amazon Resource Name (ARN) for a virtual device (such as
 #' `arn:aws:iam::123456789012:mfa/user`).
 #' 
 #' The regex used to validate this parameter is a string of characters
@@ -320,8 +323,8 @@ NULL
 #' @param TokenCode The value provided by the MFA device, if the trust policy of the role
 #' being assumed requires MFA (that is, if the policy includes a condition
 #' that tests for MFA). If the role being assumed requires MFA and if the
-#' `TokenCode` value is missing or expired, the `AssumeRole` call returns
-#' an "access denied" error.
+#' `TokenCode` value is missing or expired, the
+#' [`assume_role`][sts_assume_role] call returns an "access denied" error.
 #' 
 #' The format for this parameter, as described by its regex pattern, is a
 #' sequence of six numeric digits.
@@ -410,9 +413,10 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' authenticated via a SAML authentication response. This operation
 #' provides a mechanism for tying an enterprise identity store or directory
 #' to role-based AWS access without user-specific credentials or
-#' configuration. For a comparison of `AssumeRoleWithSAML` with the other
-#' API operations that produce temporary credentials, see [Requesting
-#' Temporary Security
+#' configuration. For a comparison of
+#' [`assume_role_with_saml`][sts_assume_role_with_saml] with the other API
+#' operations that produce temporary credentials, see [Requesting Temporary
+#' Security
 #' Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html)
 #' and [Comparing the AWS STS API
 #' operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison)
@@ -426,15 +430,15 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' **Session Duration**
 #' 
 #' By default, the temporary security credentials created by
-#' `AssumeRoleWithSAML` last for one hour. However, you can use the
-#' optional `DurationSeconds` parameter to specify the duration of your
-#' session. Your role session lasts for the duration that you specify, or
-#' until the time specified in the SAML authentication response's
-#' `SessionNotOnOrAfter` value, whichever is shorter. You can provide a
-#' `DurationSeconds` value from 900 seconds (15 minutes) up to the maximum
-#' session duration setting for the role. This setting can have a value
-#' from 1 hour to 12 hours. To learn how to view the maximum value for your
-#' role, see [View the Maximum Session Duration Setting for a
+#' [`assume_role_with_saml`][sts_assume_role_with_saml] last for one hour.
+#' However, you can use the optional `DurationSeconds` parameter to specify
+#' the duration of your session. Your role session lasts for the duration
+#' that you specify, or until the time specified in the SAML authentication
+#' response's `SessionNotOnOrAfter` value, whichever is shorter. You can
+#' provide a `DurationSeconds` value from 900 seconds (15 minutes) up to
+#' the maximum session duration setting for the role. This setting can have
+#' a value from 1 hour to 12 hours. To learn how to view the maximum value
+#' for your role, see [View the Maximum Session Duration Setting for a
 #' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
 #' in the *IAM User Guide*. The maximum session duration limit applies when
 #' you use the `AssumeRole*` API operations or the `assume-role*` CLI
@@ -445,10 +449,11 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' 
 #' **Permissions**
 #' 
-#' The temporary security credentials created by `AssumeRoleWithSAML` can
-#' be used to make API calls to any AWS service with the following
-#' exception: you cannot call the STS `GetFederationToken` or
-#' `GetSessionToken` API operations.
+#' The temporary security credentials created by
+#' [`assume_role_with_saml`][sts_assume_role_with_saml] can be used to make
+#' API calls to any AWS service with the following exception: you cannot
+#' call the STS [`get_federation_token`][sts_get_federation_token] or
+#' [`get_session_token`][sts_get_session_token] API operations.
 #' 
 #' (Optional) You can pass inline or managed [session
 #' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
@@ -466,17 +471,17 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 #' in the *IAM User Guide*.
 #' 
-#' Calling `AssumeRoleWithSAML` does not require the use of AWS security
-#' credentials. The identity of the caller is validated by using keys in
-#' the metadata document that is uploaded for the SAML provider entity for
-#' your identity provider.
+#' Calling [`assume_role_with_saml`][sts_assume_role_with_saml] does not
+#' require the use of AWS security credentials. The identity of the caller
+#' is validated by using keys in the metadata document that is uploaded for
+#' the SAML provider entity for your identity provider.
 #' 
-#' Calling `AssumeRoleWithSAML` can result in an entry in your AWS
-#' CloudTrail logs. The entry includes the value in the `NameID` element of
-#' the SAML assertion. We recommend that you use a `NameIDType` that is not
-#' associated with any personally identifiable information (PII). For
-#' example, you could instead use the persistent identifier
-#' (`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`).
+#' Calling [`assume_role_with_saml`][sts_assume_role_with_saml] can result
+#' in an entry in your AWS CloudTrail logs. The entry includes the value in
+#' the `NameID` element of the SAML assertion. We recommend that you use a
+#' `NameIDType` that is not associated with any personally identifiable
+#' information (PII). For example, you could instead use the persistent
+#' identifier (`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`).
 #' 
 #' **Tags**
 #' 
@@ -519,12 +524,13 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' 
 #' **SAML Configuration**
 #' 
-#' Before your application can call `AssumeRoleWithSAML`, you must
-#' configure your SAML identity provider (IdP) to issue the claims required
-#' by AWS. Additionally, you must use AWS Identity and Access Management
-#' (IAM) to create a SAML provider entity in your AWS account that
-#' represents your identity provider. You must also create an IAM role that
-#' specifies this SAML provider in its trust policy.
+#' Before your application can call
+#' [`assume_role_with_saml`][sts_assume_role_with_saml], you must configure
+#' your SAML identity provider (IdP) to issue the claims required by AWS.
+#' Additionally, you must use AWS Identity and Access Management (IAM) to
+#' create a SAML provider entity in your AWS account that represents your
+#' identity provider. You must also create an IAM role that specifies this
+#' SAML provider in its trust policy.
 #' 
 #' For more information, see the following resources:
 #' 
@@ -705,15 +711,18 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' Overview](https://docs.aws.amazon.com/mobile/sdkforios/developerguide/#d0e664)
 #' in the *AWS SDK for iOS Developer Guide*.
 #' 
-#' Calling `AssumeRoleWithWebIdentity` does not require the use of AWS
-#' security credentials. Therefore, you can distribute an application (for
-#' example, on mobile devices) that requests temporary security credentials
-#' without including long-term AWS credentials in the application. You also
-#' don't need to deploy server-based proxy services that use long-term AWS
-#' credentials. Instead, the identity of the caller is validated by using a
-#' token from the web identity provider. For a comparison of
-#' `AssumeRoleWithWebIdentity` with the other API operations that produce
-#' temporary credentials, see [Requesting Temporary Security
+#' Calling
+#' [`assume_role_with_web_identity`][sts_assume_role_with_web_identity]
+#' does not require the use of AWS security credentials. Therefore, you can
+#' distribute an application (for example, on mobile devices) that requests
+#' temporary security credentials without including long-term AWS
+#' credentials in the application. You also don't need to deploy
+#' server-based proxy services that use long-term AWS credentials. Instead,
+#' the identity of the caller is validated by using a token from the web
+#' identity provider. For a comparison of
+#' [`assume_role_with_web_identity`][sts_assume_role_with_web_identity]
+#' with the other API operations that produce temporary credentials, see
+#' [Requesting Temporary Security
 #' Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html)
 #' and [Comparing the AWS STS API
 #' operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison)
@@ -727,12 +736,13 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' **Session Duration**
 #' 
 #' By default, the temporary security credentials created by
-#' `AssumeRoleWithWebIdentity` last for one hour. However, you can use the
-#' optional `DurationSeconds` parameter to specify the duration of your
-#' session. You can provide a value from 900 seconds (15 minutes) up to the
-#' maximum session duration setting for the role. This setting can have a
-#' value from 1 hour to 12 hours. To learn how to view the maximum value
-#' for your role, see [View the Maximum Session Duration Setting for a
+#' [`assume_role_with_web_identity`][sts_assume_role_with_web_identity]
+#' last for one hour. However, you can use the optional `DurationSeconds`
+#' parameter to specify the duration of your session. You can provide a
+#' value from 900 seconds (15 minutes) up to the maximum session duration
+#' setting for the role. This setting can have a value from 1 hour to 12
+#' hours. To learn how to view the maximum value for your role, see [View
+#' the Maximum Session Duration Setting for a
 #' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
 #' in the *IAM User Guide*. The maximum session duration limit applies when
 #' you use the `AssumeRole*` API operations or the `assume-role*` CLI
@@ -744,9 +754,11 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' **Permissions**
 #' 
 #' The temporary security credentials created by
-#' `AssumeRoleWithWebIdentity` can be used to make API calls to any AWS
-#' service with the following exception: you cannot call the STS
-#' `GetFederationToken` or `GetSessionToken` API operations.
+#' [`assume_role_with_web_identity`][sts_assume_role_with_web_identity] can
+#' be used to make API calls to any AWS service with the following
+#' exception: you cannot call the STS
+#' [`get_federation_token`][sts_get_federation_token] or
+#' [`get_session_token`][sts_get_session_token] API operations.
 #' 
 #' (Optional) You can pass inline or managed [session
 #' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
@@ -805,15 +817,17 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' 
 #' **Identities**
 #' 
-#' Before your application can call `AssumeRoleWithWebIdentity`, you must
-#' have an identity token from a supported identity provider and create a
-#' role that the application can assume. The role that your application
-#' assumes must trust the identity provider that is associated with the
-#' identity token. In other words, the identity provider must be specified
-#' in the role's trust policy.
+#' Before your application can call
+#' [`assume_role_with_web_identity`][sts_assume_role_with_web_identity],
+#' you must have an identity token from a supported identity provider and
+#' create a role that the application can assume. The role that your
+#' application assumes must trust the identity provider that is associated
+#' with the identity token. In other words, the identity provider must be
+#' specified in the role's trust policy.
 #' 
-#' Calling `AssumeRoleWithWebIdentity` can result in an entry in your AWS
-#' CloudTrail logs. The entry includes the
+#' Calling
+#' [`assume_role_with_web_identity`][sts_assume_role_with_web_identity] can
+#' result in an entry in your AWS CloudTrail logs. The entry includes the
 #' [Subject](https://openid.net/specs/openid-connect-core-1_0.html#Claims)
 #' of the provided Web Identity Token. We recommend that you avoid using
 #' any personally identifiable information (PII) in this field. For
@@ -822,7 +836,8 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' specification](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes).
 #' 
 #' For more information about how to use web identity federation and the
-#' `AssumeRoleWithWebIdentity` API, see the following resources:
+#' [`assume_role_with_web_identity`][sts_assume_role_with_web_identity]
+#' API, see the following resources:
 #' 
 #' -   [Using Web Identity Federation API Operations for Mobile
 #'     Apps](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc_manual.html)
@@ -868,7 +883,8 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' by the identity provider. Your application must get this token by
 #' authenticating the user who is using your application with a web
 #' identity provider before the application makes an
-#' `AssumeRoleWithWebIdentity` call.
+#' [`assume_role_with_web_identity`][sts_assume_role_with_web_identity]
+#' call.
 #' @param ProviderId The fully qualified host component of the domain name of the identity
 #' provider.
 #' 
@@ -1025,7 +1041,8 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 #' can constitute privileged information that the user who requested the
 #' operation should not see. To decode an authorization status message, a
 #' user must be granted permissions via an IAM policy to request the
-#' `DecodeAuthorizationMessage` (`sts:DecodeAuthorizationMessage`) action.
+#' [`decode_authorization_message`][sts_decode_authorization_message]
+#' (`sts:DecodeAuthorizationMessage`) action.
 #' 
 #' The decoded message includes the following type of information:
 #' 
@@ -1218,12 +1235,14 @@ sts_get_caller_identity <- function() {
 #' key ID, a secret access key, and a security token) for a federated user.
 #' A typical use is in a proxy application that gets temporary security
 #' credentials on behalf of distributed applications inside a corporate
-#' network. You must call the `GetFederationToken` operation using the
+#' network. You must call the
+#' [`get_federation_token`][sts_get_federation_token] operation using the
 #' long-term security credentials of an IAM user. As a result, this call is
 #' appropriate in contexts where those credentials can be safely stored,
 #' usually in a server-based application. For a comparison of
-#' `GetFederationToken` with the other API operations that produce
-#' temporary credentials, see [Requesting Temporary Security
+#' [`get_federation_token`][sts_get_federation_token] with the other API
+#' operations that produce temporary credentials, see [Requesting Temporary
+#' Security
 #' Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html)
 #' and [Comparing the AWS STS API
 #' operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison)
@@ -1234,17 +1253,17 @@ sts_get_caller_identity <- function() {
 #' Google, or an OpenID Connect-compatible identity provider. In this case,
 #' we recommend that you use [Amazon
 #' Cognito](https://aws.amazon.com/cognito/) or
-#' `AssumeRoleWithWebIdentity`. For more information, see [Federation
-#' Through a Web-based Identity
+#' [`assume_role_with_web_identity`][sts_assume_role_with_web_identity].
+#' For more information, see [Federation Through a Web-based Identity
 #' Provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity)
 #' in the *IAM User Guide*.
 #' 
-#' You can also call `GetFederationToken` using the security credentials of
-#' an AWS account root user, but we do not recommend it. Instead, we
-#' recommend that you create an IAM user for the purpose of the proxy
-#' application. Then attach a policy to the IAM user that limits federated
-#' users to only the actions and resources that they need to access. For
-#' more information, see [IAM Best
+#' You can also call [`get_federation_token`][sts_get_federation_token]
+#' using the security credentials of an AWS account root user, but we do
+#' not recommend it. Instead, we recommend that you create an IAM user for
+#' the purpose of the proxy application. Then attach a policy to the IAM
+#' user that limits federated users to only the actions and resources that
+#' they need to access. For more information, see [IAM Best
 #' Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
 #' in the *IAM User Guide*.
 #' 
@@ -1258,12 +1277,14 @@ sts_get_caller_identity <- function() {
 #' 
 #' **Permissions**
 #' 
-#' You can use the temporary credentials created by `GetFederationToken` in
-#' any AWS service except the following:
+#' You can use the temporary credentials created by
+#' [`get_federation_token`][sts_get_federation_token] in any AWS service
+#' except the following:
 #' 
 #' -   You cannot call any IAM operations using the AWS CLI or the AWS API.
 #' 
-#' -   You cannot call any STS operations except `GetCallerIdentity`.
+#' -   You cannot call any STS operations except
+#'     [`get_caller_identity`][sts_get_caller_identity].
 #' 
 #' You must pass an inline or managed [session
 #' policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
@@ -1282,8 +1303,9 @@ sts_get_caller_identity <- function() {
 #' IAM user. For more information, see [Session
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 #' in the *IAM User Guide*. For information about using
-#' `GetFederationToken` to create temporary security credentials, see
-#' [GetFederationToken—Federation Through a Custom Identity
+#' [`get_federation_token`][sts_get_federation_token] to create temporary
+#' security credentials, see [GetFederationToken—Federation Through a
+#' Custom Identity
 #' Broker](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken).
 #' 
 #' You can use the credentials to access a resource that has a
@@ -1511,16 +1533,19 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 #' @description
 #' Returns a set of temporary credentials for an AWS account or IAM user.
 #' The credentials consist of an access key ID, a secret access key, and a
-#' security token. Typically, you use `GetSessionToken` if you want to use
-#' MFA to protect programmatic calls to specific AWS API operations like
-#' Amazon EC2 `StopInstances`. MFA-enabled IAM users would need to call
-#' `GetSessionToken` and submit an MFA code that is associated with their
-#' MFA device. Using the temporary security credentials that are returned
-#' from the call, IAM users can then make programmatic calls to API
-#' operations that require MFA authentication. If you do not supply a
-#' correct MFA code, then the API returns an access denied error. For a
-#' comparison of `GetSessionToken` with the other API operations that
-#' produce temporary credentials, see [Requesting Temporary Security
+#' security token. Typically, you use
+#' [`get_session_token`][sts_get_session_token] if you want to use MFA to
+#' protect programmatic calls to specific AWS API operations like Amazon
+#' EC2 `StopInstances`. MFA-enabled IAM users would need to call
+#' [`get_session_token`][sts_get_session_token] and submit an MFA code that
+#' is associated with their MFA device. Using the temporary security
+#' credentials that are returned from the call, IAM users can then make
+#' programmatic calls to API operations that require MFA authentication. If
+#' you do not supply a correct MFA code, then the API returns an access
+#' denied error. For a comparison of
+#' [`get_session_token`][sts_get_session_token] with the other API
+#' operations that produce temporary credentials, see [Requesting Temporary
+#' Security
 #' Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html)
 #' and [Comparing the AWS STS API
 #' operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison)
@@ -1528,41 +1553,47 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 #' 
 #' **Session Duration**
 #' 
-#' The `GetSessionToken` operation must be called by using the long-term
-#' AWS security credentials of the AWS account root user or an IAM user.
-#' Credentials that are created by IAM users are valid for the duration
-#' that you specify. This duration can range from 900 seconds (15 minutes)
-#' up to a maximum of 129,600 seconds (36 hours), with a default of 43,200
-#' seconds (12 hours). Credentials based on account credentials can range
-#' from 900 seconds (15 minutes) up to 3,600 seconds (1 hour), with a
-#' default of 1 hour.
+#' The [`get_session_token`][sts_get_session_token] operation must be
+#' called by using the long-term AWS security credentials of the AWS
+#' account root user or an IAM user. Credentials that are created by IAM
+#' users are valid for the duration that you specify. This duration can
+#' range from 900 seconds (15 minutes) up to a maximum of 129,600 seconds
+#' (36 hours), with a default of 43,200 seconds (12 hours). Credentials
+#' based on account credentials can range from 900 seconds (15 minutes) up
+#' to 3,600 seconds (1 hour), with a default of 1 hour.
 #' 
 #' **Permissions**
 #' 
-#' The temporary security credentials created by `GetSessionToken` can be
-#' used to make API calls to any AWS service with the following exceptions:
+#' The temporary security credentials created by
+#' [`get_session_token`][sts_get_session_token] can be used to make API
+#' calls to any AWS service with the following exceptions:
 #' 
 #' -   You cannot call any IAM API operations unless MFA authentication
 #'     information is included in the request.
 #' 
-#' -   You cannot call any STS API *except* `AssumeRole` or
-#'     `GetCallerIdentity`.
+#' -   You cannot call any STS API *except*
+#'     [`assume_role`][sts_assume_role] or
+#'     [`get_caller_identity`][sts_get_caller_identity].
 #' 
-#' We recommend that you do not call `GetSessionToken` with AWS account
-#' root user credentials. Instead, follow our [best
+#' We recommend that you do not call
+#' [`get_session_token`][sts_get_session_token] with AWS account root user
+#' credentials. Instead, follow our [best
 #' practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#create-iam-users)
 #' by creating one or more IAM users, giving them the necessary
 #' permissions, and using IAM users for everyday interaction with AWS.
 #' 
-#' The credentials that are returned by `GetSessionToken` are based on
-#' permissions associated with the user whose credentials were used to call
-#' the operation. If `GetSessionToken` is called using AWS account root
-#' user credentials, the temporary credentials have root user permissions.
-#' Similarly, if `GetSessionToken` is called using the credentials of an
-#' IAM user, the temporary credentials have the same permissions as the IAM
-#' user.
+#' The credentials that are returned by
+#' [`get_session_token`][sts_get_session_token] are based on permissions
+#' associated with the user whose credentials were used to call the
+#' operation. If [`get_session_token`][sts_get_session_token] is called
+#' using AWS account root user credentials, the temporary credentials have
+#' root user permissions. Similarly, if
+#' [`get_session_token`][sts_get_session_token] is called using the
+#' credentials of an IAM user, the temporary credentials have the same
+#' permissions as the IAM user.
 #' 
-#' For more information about using `GetSessionToken` to create temporary
+#' For more information about using
+#' [`get_session_token`][sts_get_session_token] to create temporary
 #' credentials, go to [Temporary Credentials for Users in Untrusted
 #' Environments](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken)
 #' in the *IAM User Guide*.
@@ -1577,13 +1608,13 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 #' maximum of 3,600 seconds (one hour). If the duration is longer than one
 #' hour, the session for AWS account owners defaults to one hour.
 #' @param SerialNumber The identification number of the MFA device that is associated with the
-#' IAM user who is making the `GetSessionToken` call. Specify this value if
-#' the IAM user has a policy that requires MFA authentication. The value is
-#' either the serial number for a hardware device (such as `GAHT12345678`)
-#' or an Amazon Resource Name (ARN) for a virtual device (such as
-#' `arn:aws:iam::123456789012:mfa/user`). You can find the device for an
-#' IAM user by going to the AWS Management Console and viewing the user's
-#' security credentials.
+#' IAM user who is making the [`get_session_token`][sts_get_session_token]
+#' call. Specify this value if the IAM user has a policy that requires MFA
+#' authentication. The value is either the serial number for a hardware
+#' device (such as `GAHT12345678`) or an Amazon Resource Name (ARN) for a
+#' virtual device (such as `arn:aws:iam::123456789012:mfa/user`). You can
+#' find the device for an IAM user by going to the AWS Management Console
+#' and viewing the user's security credentials.
 #' 
 #' The regex used to validate this parameter is a string of characters
 #' consisting of upper- and lower-case alphanumeric characters with no

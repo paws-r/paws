@@ -21,14 +21,17 @@ default is 10.}
 \description{
 Gets information about all versions of a slot type.
 
-The \code{GetSlotTypeVersions} operation returns a \code{SlotTypeMetadata} object
-for each version of a slot type. For example, if a slot type has three
-numbered versions, the \code{GetSlotTypeVersions} operation returns four
-\code{SlotTypeMetadata} objects in the response, one for each numbered
-version and one for the \verb{$LATEST} version.
+The
+\code{\link[=lexmodelbuildingservice_get_slot_type_versions]{get_slot_type_versions}}
+operation returns a \code{SlotTypeMetadata} object for each version of a slot
+type. For example, if a slot type has three numbered versions, the
+\code{\link[=lexmodelbuildingservice_get_slot_type_versions]{get_slot_type_versions}}
+operation returns four \code{SlotTypeMetadata} objects in the response, one
+for each numbered version and one for the \verb{$LATEST} version.
 
-The \code{GetSlotTypeVersions} operation always returns at least one version,
-the \verb{$LATEST} version.
+The
+\code{\link[=lexmodelbuildingservice_get_slot_type_versions]{get_slot_type_versions}}
+operation always returns at least one version, the \verb{$LATEST} version.
 
 This operation requires permissions for the \code{lex:GetSlotTypeVersions}
 action.

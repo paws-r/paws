@@ -11,7 +11,8 @@ kinesisanalyticsv2_delete_application_vpc_configuration(ApplicationName,
 \item{ApplicationName}{[required] The name of an existing application.}
 
 \item{CurrentApplicationVersionId}{[required] The current application version ID. You can retrieve the application
-version ID using DescribeApplication.}
+version ID using
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.}
 
 \item{VpcConfigurationId}{[required] The ID of the VPC configuration to delete.}
 }

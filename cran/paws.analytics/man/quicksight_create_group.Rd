@@ -20,7 +20,7 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 Creates an Amazon QuickSight group.
 
 The permissions resource is
-\verb{arn:aws:quicksight:us-east-1:<i>&lt;relevant-aws-account-id&gt;</i>:group/default/<i>&lt;group-name&gt;</i> }.
+\verb{arn:aws:quicksight:us-east-1:<relevant-aws-account-id>:group/default/<group-name> }.
 
 The response is a group object.
 }

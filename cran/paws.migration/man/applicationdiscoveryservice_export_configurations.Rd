@@ -7,7 +7,9 @@
 applicationdiscoveryservice_export_configurations()
 }
 \description{
-Deprecated. Use \code{StartExportTask} instead.
+Deprecated. Use
+\code{\link[=applicationdiscoveryservice_start_export_task]{start_export_task}}
+instead.
 
 Exports all discovered configuration data to an Amazon S3 bucket or an
 application that enables you to view and evaluate the data. Data

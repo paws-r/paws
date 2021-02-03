@@ -16,11 +16,11 @@ ivs_create_stream_key(channelArn, tags)
 Creates a stream key, used to initiate a stream, for the specified
 channel ARN.
 
-Note that CreateChannel creates a stream key. If you subsequently use
-CreateStreamKey on the same channel, it will fail because a stream key
-already exists and there is a limit of 1 stream key per channel. To
-reset the stream key on a channel, use DeleteStreamKey and then
-CreateStreamKey.
+Note that \code{\link[=ivs_create_channel]{create_channel}} creates a stream key.
+If you subsequently use CreateStreamKey on the same channel, it will
+fail because a stream key already exists and there is a limit of 1
+stream key per channel. To reset the stream key on a channel, use
+\code{\link[=ivs_delete_stream_key]{delete_stream_key}} and then CreateStreamKey.
 }
 \section{Request syntax}{
 \preformatted{svc$create_stream_key(

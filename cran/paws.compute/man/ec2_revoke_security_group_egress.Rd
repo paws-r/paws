@@ -45,8 +45,9 @@ ports) must match the existing rule's values exactly.
 rule's values, no error is returned, and the output describes the
 security group rules that were not revoked.
 
-AWS recommends that you use DescribeSecurityGroups to verify that the
-rule has been removed.
+AWS recommends that you use
+\code{\link[=ec2_describe_security_groups]{describe_security_groups}} to verify
+that the rule has been removed.
 
 Each rule consists of the protocol and the IPv4 or IPv6 CIDR range or
 source security group. For the TCP and UDP protocols, you must also

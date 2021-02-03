@@ -28,22 +28,25 @@ that Region. To make the same change in other Regions, execute the same
 command for each Region to apply the change to.
 
 For example, if your Region is set to \code{us-west-2}, when you use
-\verb{<a>CreateMembers</a>} to add a member account to Security Hub, the
-association of the member account with the master account is created
-only in the \code{us-west-2} Region. Security Hub must be enabled for the
-member account in the same Region that the invitation was sent from.
+\code{\link[=securityhub_create_members]{create_members}} to add a member account
+to Security Hub, the association of the member account with the master
+account is created only in the \code{us-west-2} Region. Security Hub must be
+enabled for the member account in the same Region that the invitation
+was sent from.
 
 The following throttling limits apply to using Security Hub API
 operations.
 \itemize{
-\item \verb{<a>BatchEnableStandards</a>} - \code{RateLimit} of 1 request per
-second, \code{BurstLimit} of 1 request per second.
-\item \verb{<a>GetFindings</a>} - \code{RateLimit} of 3 requests per second.
-\code{BurstLimit} of 6 requests per second.
-\item \verb{<a>UpdateFindings</a>} - \code{RateLimit} of 1 request per second.
-\code{BurstLimit} of 5 requests per second.
-\item \verb{<a>UpdateStandardsControl</a>} - \code{RateLimit} of 1 request per
-second, \code{BurstLimit} of 5 requests per second.
+\item \code{\link[=securityhub_batch_enable_standards]{batch_enable_standards}} -
+\code{RateLimit} of 1 request per second, \code{BurstLimit} of 1 request per
+second.
+\item \code{\link[=securityhub_get_findings]{get_findings}} - \code{RateLimit} of 3
+requests per second. \code{BurstLimit} of 6 requests per second.
+\item \code{\link[=securityhub_update_findings]{update_findings}} - \code{RateLimit} of 1
+request per second. \code{BurstLimit} of 5 requests per second.
+\item \code{\link[=securityhub_update_standards_control]{update_standards_control}} -
+\code{RateLimit} of 1 request per second, \code{BurstLimit} of 5 requests per
+second.
 \item All other operations - \code{RateLimit} of 10 requests per second.
 \code{BurstLimit} of 30 requests per second.
 }

@@ -8,7 +8,8 @@ shield_list_protections(NextToken, MaxResults)
 }
 \arguments{
 \item{NextToken}{The \code{ListProtectionsRequest.NextToken} value from a previous call to
-\code{ListProtections}. Pass null if this is the first call.}
+\code{\link[=shield_list_protections]{list_protections}}. Pass null if this is the
+first call.}
 
 \item{MaxResults}{The maximum number of Protection objects to return. If you leave this
 blank, Shield Advanced returns the first 20 results.

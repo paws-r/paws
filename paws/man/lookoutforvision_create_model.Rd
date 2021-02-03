@@ -13,14 +13,17 @@ lookoutforvision_create_model(ProjectName, Description, ClientToken,
 
 \item{Description}{A description for the version of the model.}
 
-\item{ClientToken}{ClientToken is an idempotency token that ensures a call to \code{CreateModel}
-completes only once. You choose the value to pass. For example, An
-issue, such as an network outage, might prevent you from getting a
-response from \code{CreateModel}. In this case, safely retry your call to
-\code{CreateModel} by using the same \code{ClientToken} parameter value. An error
-occurs if the other input parameters are not the same as in the first
-request. Using a different value for \code{ClientToken} is considered a new
-call to \code{CreateModel}. An idempotency token is active for 8 hours.}
+\item{ClientToken}{ClientToken is an idempotency token that ensures a call to
+\code{\link[=lookoutforvision_create_model]{create_model}} completes only once. You
+choose the value to pass. For example, An issue, such as an network
+outage, might prevent you from getting a response from
+\code{\link[=lookoutforvision_create_model]{create_model}}. In this case, safely
+retry your call to \code{\link[=lookoutforvision_create_model]{create_model}} by
+using the same \code{ClientToken} parameter value. An error occurs if the
+other input parameters are not the same as in the first request. Using a
+different value for \code{ClientToken} is considered a new call to
+\code{\link[=lookoutforvision_create_model]{create_model}}. An idempotency token is
+active for 8 hours.}
 
 \item{OutputConfig}{[required] The location where Amazon Lookout for Vision saves the training results.}
 
@@ -31,12 +34,12 @@ manages.}
 }
 \description{
 Creates a new version of a model within an an Amazon Lookout for Vision
-project. \code{CreateModel} is an asynchronous operation in which Amazon
-Lookout for Vision trains, tests, and evaluates a new version of a
-model.
+project. \code{\link[=lookoutforvision_create_model]{create_model}} is an
+asynchronous operation in which Amazon Lookout for Vision trains, tests,
+and evaluates a new version of a model.
 
 To get the current status, check the \code{Status} field returned in the
-response from DescribeModel.
+response from \code{\link[=lookoutforvision_describe_model]{describe_model}}.
 
 If the project has a single dataset, Amazon Lookout for Vision
 internally splits the dataset to create a training and a test dataset.

@@ -21,12 +21,12 @@ records. If successful, the retrieved information includes both active
 and pending connections. Active connections identify the IpV4 CIDR block
 that the VPC uses to connect.
 \itemize{
-\item CreateVpcPeeringAuthorization
-\item DescribeVpcPeeringAuthorizations
-\item DeleteVpcPeeringAuthorization
-\item CreateVpcPeeringConnection
-\item DescribeVpcPeeringConnections
-\item DeleteVpcPeeringConnection
+\item \code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}
+\item \code{\link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations}}
+\item \code{\link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization}}
+\item \code{\link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection}}
+\item \code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
+\item \code{\link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection}}
 }
 }
 \section{Request syntax}{

@@ -17,7 +17,8 @@ NULL
 #' receipt.
 #' @param nonce &#91;required&#93; A system-generated random number that AWS CodePipeline uses to ensure
 #' that the job is being worked on by only one job worker. Get this number
-#' from the response of the PollForJobs request that returned this job.
+#' from the response of the [`poll_for_jobs`][codepipeline_poll_for_jobs]
+#' request that returned this job.
 #'
 #' @section Request syntax:
 #' ```
@@ -59,7 +60,9 @@ codepipeline_acknowledge_job <- function(jobId, nonce) {
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job.
 #' @param nonce &#91;required&#93; A system-generated random number that AWS CodePipeline uses to ensure
 #' that the job is being worked on by only one job worker. Get this number
-#' from the response to a GetThirdPartyJobDetails request.
+#' from the response to a
+#' [`get_third_party_job_details`][codepipeline_get_third_party_job_details]
+#' request.
 #' @param clientToken &#91;required&#93; The clientToken portion of the clientId and clientToken pair used to
 #' verify that the calling entity is allowed access to the job and its
 #' details.
@@ -296,7 +299,8 @@ codepipeline_create_pipeline <- function(pipeline, tags = NULL) {
 #' Marks a custom action as deleted
 #'
 #' @description
-#' Marks a custom action as deleted. `PollForJobs` for the custom action
+#' Marks a custom action as deleted.
+#' [`poll_for_jobs`][codepipeline_poll_for_jobs] for the custom action
 #' fails after the action is marked for deletion. Used for custom actions
 #' only.
 #' 
@@ -611,7 +615,7 @@ codepipeline_get_job_details <- function(jobId) {
 #' Returns the metadata, structure, stages, and actions of a pipeline. Can
 #' be used to return the entire structure of a pipeline in JSON format,
 #' which can then be modified and used to update the pipeline structure
-#' with UpdatePipeline.
+#' with [`update_pipeline`][codepipeline_update_pipeline].
 #'
 #' @usage
 #' codepipeline_get_pipeline(name, version)
@@ -802,9 +806,10 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
 #' 
 #' Detailed execution history is available for executions run on or after
 #' February 21, 2019.
-#' @param nextToken The token that was returned from the previous `ListActionExecutions`
-#' call, which can be used to return the next set of action executions in
-#' the list.
+#' @param nextToken The token that was returned from the previous
+#' [`list_action_executions`][codepipeline_list_action_executions] call,
+#' which can be used to return the next set of action executions in the
+#' list.
 #'
 #' @section Request syntax:
 #' ```
@@ -896,7 +901,8 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #' the remaining results, make another call with the returned nextToken
 #' value. Pipeline history is limited to the most recent 12 months, based
 #' on pipeline execution start times. Default value is 100.
-#' @param nextToken The token that was returned from the previous `ListPipelineExecutions`
+#' @param nextToken The token that was returned from the previous
+#' [`list_pipeline_executions`][codepipeline_list_pipeline_executions]
 #' call, which can be used to return the next set of pipeline executions in
 #' the list.
 #'
@@ -1060,9 +1066,10 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @description
 #' Returns information about any jobs for AWS CodePipeline to act on.
-#' `PollForJobs` is valid only for action types with "Custom" in the owner
-#' field. If the action type contains "AWS" or "ThirdParty" in the owner
-#' field, the `PollForJobs` action returns an error.
+#' [`poll_for_jobs`][codepipeline_poll_for_jobs] is valid only for action
+#' types with "Custom" in the owner field. If the action type contains
+#' "AWS" or "ThirdParty" in the owner field, the
+#' [`poll_for_jobs`][codepipeline_poll_for_jobs] action returns an error.
 #' 
 #' When this API is called, AWS CodePipeline returns temporary credentials
 #' for the S3 bucket used to store artifacts for the pipeline, if the
@@ -1235,8 +1242,9 @@ codepipeline_put_action_revision <- function(pipelineName, stageName, actionName
 #' @param result &#91;required&#93; Represents information about the result of the approval request.
 #' @param token &#91;required&#93; The system-generated token used to identify a unique approval request.
 #' The token for each open approval request can be obtained using the
-#' GetPipelineState action. It is used to validate that the approval
-#' request corresponding to this token is still valid.
+#' [`get_pipeline_state`][codepipeline_get_pipeline_state] action. It is
+#' used to validate that the approval request corresponding to this token
+#' is still valid.
 #'
 #' @section Request syntax:
 #' ```
@@ -1283,7 +1291,7 @@ codepipeline_put_approval_result <- function(pipelineName, stageName, actionName
 #' codepipeline_put_job_failure_result(jobId, failureDetails)
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job that failed. This is the same
-#' ID returned from `PollForJobs`.
+#' ID returned from [`poll_for_jobs`][codepipeline_poll_for_jobs].
 #' @param failureDetails &#91;required&#93; The details about the failure of a job.
 #'
 #' @section Request syntax:
@@ -1330,7 +1338,7 @@ codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
 #'   continuationToken, executionDetails, outputVariables)
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job that succeeded. This is the
-#' same ID returned from `PollForJobs`.
+#' same ID returned from [`poll_for_jobs`][codepipeline_poll_for_jobs].
 #' @param currentRevision The ID of the current revision of the artifact successfully worked on by
 #' the job.
 #' @param continuationToken A token generated by a job worker, such as an AWS CodeDeploy deployment
@@ -1401,7 +1409,7 @@ codepipeline_put_job_success_result <- function(jobId, currentRevision = NULL, c
 #'   failureDetails)
 #'
 #' @param jobId &#91;required&#93; The ID of the job that failed. This is the same ID returned from
-#' `PollForThirdPartyJobs`.
+#' [`poll_for_third_party_jobs`][codepipeline_poll_for_third_party_jobs].
 #' @param clientToken &#91;required&#93; The clientToken portion of the clientId and clientToken pair used to
 #' verify that the calling entity is allowed access to the job and its
 #' details.
@@ -1452,7 +1460,8 @@ codepipeline_put_third_party_job_failure_result <- function(jobId, clientToken, 
 #'   currentRevision, continuationToken, executionDetails)
 #'
 #' @param jobId &#91;required&#93; The ID of the job that successfully completed. This is the same ID
-#' returned from `PollForThirdPartyJobs`.
+#' returned from
+#' [`poll_for_third_party_jobs`][codepipeline_poll_for_third_party_jobs].
 #' @param clientToken &#91;required&#93; The clientToken portion of the clientId and clientToken pair used to
 #' verify that the calling entity is allowed access to the job and its
 #' details.
@@ -1636,8 +1645,8 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
 #' @param pipelineName &#91;required&#93; The name of the pipeline that contains the failed stage.
 #' @param stageName &#91;required&#93; The name of the failed stage to be retried.
 #' @param pipelineExecutionId &#91;required&#93; The ID of the pipeline execution in the failed stage to be retried. Use
-#' the GetPipelineState action to retrieve the current pipelineExecutionId
-#' of the failed stage
+#' the [`get_pipeline_state`][codepipeline_get_pipeline_state] action to
+#' retrieve the current pipelineExecutionId of the failed stage
 #' @param retryMode &#91;required&#93; The scope of the retry attempt. Currently, the only supported value is
 #' FAILED\\_ACTIONS.
 #'
@@ -1728,8 +1737,8 @@ codepipeline_start_pipeline_execution <- function(name, clientRequestToken = NUL
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline to stop.
 #' @param pipelineExecutionId &#91;required&#93; The ID of the pipeline execution to be stopped in the current stage. Use
-#' the `GetPipelineState` action to retrieve the current
-#' pipelineExecutionId.
+#' the [`get_pipeline_state`][codepipeline_get_pipeline_state] action to
+#' retrieve the current pipelineExecutionId.
 #' @param abandon Use this option to stop the pipeline execution by abandoning, rather
 #' than finishing, in-progress actions.
 #' 
@@ -1857,9 +1866,10 @@ codepipeline_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @description
 #' Updates a specified pipeline with edits or changes to its structure. Use
-#' a JSON file with the pipeline structure and `UpdatePipeline` to provide
-#' the full structure of the pipeline. Updating the pipeline increases the
-#' version number of the pipeline by 1.
+#' a JSON file with the pipeline structure and
+#' [`update_pipeline`][codepipeline_update_pipeline] to provide the full
+#' structure of the pipeline. Updating the pipeline increases the version
+#' number of the pipeline by 1.
 #'
 #' @usage
 #' codepipeline_update_pipeline(pipeline)

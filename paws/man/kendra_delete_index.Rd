@@ -12,8 +12,9 @@ kendra_delete_index(Id)
 \description{
 Deletes an existing Amazon Kendra index. An exception is not thrown if
 the index is already being deleted. While the index is being deleted,
-the \code{Status} field returned by a call to the DescribeIndex operation is
-set to \code{DELETING}.
+the \code{Status} field returned by a call to the
+\code{\link[=kendra_describe_index]{describe_index}} operation is set to
+\code{DELETING}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_index(

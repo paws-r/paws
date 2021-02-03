@@ -21,13 +21,14 @@ the \code{DeletionTaskId} of the earlier request is returned.
 
 If you submit a deletion request for a service-linked role whose linked
 service is still accessing a resource, then the deletion task fails. If
-it fails, the GetServiceLinkedRoleDeletionStatus API operation returns
-the reason for the failure, usually including the resources that must be
-deleted. To delete the service-linked role, you must first remove those
-resources from the linked service and then submit the deletion request
-again. Resources are specific to the service that is linked to the role.
-For more information about removing resources from a service, see the
-\href{https://docs.aws.amazon.com/}{AWS documentation} for your service.
+it fails, the
+\code{\link[=iam_get_service_linked_role_deletion_status]{get_service_linked_role_deletion_status}}
+API operation returns the reason for the failure, usually including the
+resources that must be deleted. To delete the service-linked role, you
+must first remove those resources from the linked service and then
+submit the deletion request again. Resources are specific to the service
+that is linked to the role. For more information about removing
+resources from a service, see the \href{https://docs.aws.amazon.com/}{AWS documentation} for your service.
 
 For more information about service-linked roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role}{Roles Terms and Concepts: AWS Service-Linked Role}
 in the \emph{IAM User Guide}.

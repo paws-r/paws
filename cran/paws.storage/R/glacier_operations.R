@@ -13,7 +13,8 @@ NULL
 #' Aborting a completed upload fails. However, aborting an already-aborted
 #' upload will succeed, for a short time. For more information about
 #' uploading a part and completing a multipart upload, see
-#' UploadMultipartPart and CompleteMultipartUpload.
+#' [`upload_multipart_part`][glacier_upload_multipart_part] and
+#' [`complete_multipart_upload`][glacier_complete_multipart_upload].
 #' 
 #' This operation is idempotent.
 #' 
@@ -93,10 +94,12 @@ glacier_abort_multipart_upload <- function(accountId, vaultName, uploadId) {
 #' removes the vault lock policy from the specified vault.
 #' 
 #' A vault lock is put into the `InProgress` state by calling
-#' InitiateVaultLock. A vault lock is put into the `Locked` state by
-#' calling CompleteVaultLock. You can get the state of a vault lock by
-#' calling GetVaultLock. For more information about the vault locking
-#' process, see [Amazon Glacier Vault
+#' [`initiate_vault_lock`][glacier_initiate_vault_lock]. A vault lock is
+#' put into the `Locked` state by calling
+#' [`complete_vault_lock`][glacier_complete_vault_lock]. You can get the
+#' state of a vault lock by calling
+#' [`get_vault_lock`][glacier_get_vault_lock]. For more information about
+#' the vault locking process, see [Amazon Glacier Vault
 #' Lock](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html).
 #' For more information about vault lock policies, see [Amazon Glacier
 #' Access Control with Vault Lock
@@ -236,7 +239,7 @@ glacier_add_tags_to_vault <- function(accountId, vaultName, Tags = NULL) {
 #' After you upload an archive, you should save the archive ID returned to
 #' retrieve the archive at a later point. You can also get the vault
 #' inventory to obtain a list of archive IDs in a vault. For more
-#' information, see InitiateJob.
+#' information, see [`initiate_job`][glacier_initiate_job].
 #' 
 #' In the request, you must include the computed SHA256 tree hash of the
 #' entire archive you have uploaded. For information about computing a
@@ -245,9 +248,10 @@ glacier_add_tags_to_vault <- function(accountId, vaultName, Tags = NULL) {
 #' On the server side, Glacier also constructs the SHA256 tree hash of the
 #' assembled archive. If the values match, Glacier saves the archive to the
 #' vault; otherwise, it returns an error, and the operation fails. The
-#' ListParts operation returns a list of parts uploaded for a specific
-#' multipart upload. It includes checksum information for each uploaded
-#' part that can be used to debug a bad checksum issue.
+#' [`list_parts`][glacier_list_parts] operation returns a list of parts
+#' uploaded for a specific multipart upload. It includes checksum
+#' information for each uploaded part that can be used to debug a bad
+#' checksum issue.
 #' 
 #' Additionally, Glacier also checks for any missing content ranges when
 #' assembling the archive, if missing content ranges are found, Glacier
@@ -348,9 +352,11 @@ glacier_complete_multipart_upload <- function(accountId, vaultName, uploadId, ar
 #' This operation completes the vault locking process by transitioning the
 #' vault lock from the `InProgress` state to the `Locked` state, which
 #' causes the vault lock policy to become unchangeable. A vault lock is put
-#' into the `InProgress` state by calling InitiateVaultLock. You can obtain
-#' the state of the vault lock by calling GetVaultLock. For more
-#' information about the vault locking process, [Amazon Glacier Vault
+#' into the `InProgress` state by calling
+#' [`initiate_vault_lock`][glacier_initiate_vault_lock]. You can obtain the
+#' state of the vault lock by calling
+#' [`get_vault_lock`][glacier_get_vault_lock]. For more information about
+#' the vault locking process, [Amazon Glacier Vault
 #' Lock](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html).
 #' 
 #' This operation is idempotent. This request is always successful if the
@@ -373,8 +379,8 @@ glacier_complete_multipart_upload <- function(accountId, vaultName, uploadId, ar
 #' associated with the credentials used to sign the request. If you specify
 #' your account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
-#' @param lockId &#91;required&#93; The `lockId` value is the lock ID obtained from a InitiateVaultLock
-#' request.
+#' @param lockId &#91;required&#93; The `lockId` value is the lock ID obtained from a
+#' [`initiate_vault_lock`][glacier_initiate_vault_lock] request.
 #'
 #' @section Request syntax:
 #' ```
@@ -586,8 +592,8 @@ glacier_delete_archive <- function(accountId, vaultName, archiveId) {
 #' there have been no writes to the vault since the last inventory. If
 #' either of these conditions is not satisfied, the vault deletion fails
 #' (that is, the vault is not removed) and Amazon S3 Glacier returns an
-#' error. You can use DescribeVault to return the number of archives in a
-#' vault, and you can use [Initiate a Job (POST
+#' error. You can use [`describe_vault`][glacier_describe_vault] to return
+#' the number of archives in a vault, and you can use [Initiate a Job (POST
 #' jobs)](https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html)
 #' to initiate a new inventory retrieval for a vault. The inventory
 #' contains the archive IDs you use to delete archives using [Delete
@@ -802,7 +808,7 @@ glacier_delete_vault_notifications <- function(accountId, vaultName) {
 #' including the job initiation date, the user who initiated the job, the
 #' job status code/message and the Amazon SNS topic to notify after Amazon
 #' S3 Glacier (Glacier) completes the job. For more information about
-#' initiating a job, see InitiateJob.
+#' initiating a job, see [`initiate_job`][glacier_initiate_job].
 #' 
 #' This operation enables you to check the status of your job. However, it
 #' is strongly recommended that you set up an Amazon SNS topic and specify
@@ -888,9 +894,10 @@ glacier_describe_job <- function(accountId, vaultName, jobId) {
 #' inventory generation. This means that if you add or remove an archive
 #' from a vault, and then immediately use Describe Vault, the change in
 #' contents will not be immediately reflected. If you want to retrieve the
-#' latest inventory of the vault, use InitiateJob. Amazon S3 Glacier
-#' generates vault inventories approximately daily. For more information,
-#' see [Downloading a Vault Inventory in Amazon S3
+#' latest inventory of the vault, use
+#' [`initiate_job`][glacier_initiate_job]. Amazon S3 Glacier generates
+#' vault inventories approximately daily. For more information, see
+#' [Downloading a Vault Inventory in Amazon S3
 #' Glacier](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html).
 #' 
 #' An AWS account has full permission to perform all operations (actions).
@@ -1013,9 +1020,9 @@ glacier_get_data_retrieval_policy <- function(accountId) {
 #'
 #' @description
 #' This operation downloads the output of the job you initiated using
-#' InitiateJob. Depending on the job type you specified when you initiated
-#' the job, the output will be either the content of an archive or a vault
-#' inventory.
+#' [`initiate_job`][glacier_initiate_job]. Depending on the job type you
+#' specified when you initiated the job, the output will be either the
+#' content of an archive or a vault inventory.
 #' 
 #' You can download all the job output or download a portion of the output
 #' by specifying a byte range. In the case of an archive retrieval job,
@@ -1098,12 +1105,12 @@ glacier_get_data_retrieval_policy <- function(accountId) {
 #' 
 #' 4.  After downloading all the parts of the job output, you have a list
 #'     of eight checksum values. Compute the tree hash of these values to
-#'     find the checksum of the entire output. Using the DescribeJob API,
-#'     obtain job information of the job that provided you the output. The
-#'     response includes the checksum of the entire archive stored in
-#'     Amazon S3 Glacier. You compare this value with the checksum you
-#'     computed to ensure you have downloaded the entire archive content
-#'     with no errors.
+#'     find the checksum of the entire output. Using the
+#'     [`describe_job`][glacier_describe_job] API, obtain job information
+#'     of the job that provided you the output. The response includes the
+#'     checksum of the entire archive stored in Amazon S3 Glacier. You
+#'     compare this value with the checksum you computed to ensure you have
+#'     downloaded the entire archive content with no errors.
 #'
 #' @section Request syntax:
 #' ```
@@ -1229,10 +1236,12 @@ glacier_get_vault_access_policy <- function(accountId, vaultName) {
 #'     state.
 #' 
 #' A vault lock is put into the `InProgress` state by calling
-#' InitiateVaultLock. A vault lock is put into the `Locked` state by
-#' calling CompleteVaultLock. You can abort the vault locking process by
-#' calling AbortVaultLock. For more information about the vault locking
-#' process, [Amazon Glacier Vault
+#' [`initiate_vault_lock`][glacier_initiate_vault_lock]. A vault lock is
+#' put into the `Locked` state by calling
+#' [`complete_vault_lock`][glacier_complete_vault_lock]. You can abort the
+#' vault locking process by calling
+#' [`abort_vault_lock`][glacier_abort_vault_lock]. For more information
+#' about the vault locking process, [Amazon Glacier Vault
 #' Lock](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html).
 #' 
 #' If there is no vault lock policy set on the vault, the operation returns
@@ -1296,10 +1305,10 @@ glacier_get_vault_lock <- function(accountId, vaultName) {
 #' the specified vault.
 #' 
 #' For information about setting a notification configuration on a vault,
-#' see SetVaultNotifications. If a notification configuration for a vault
-#' is not set, the operation returns a `404 Not Found` error. For more
-#' information about vault notifications, see [Configuring Vault
-#' Notifications in Amazon S3
+#' see [`set_vault_notifications`][glacier_set_vault_notifications]. If a
+#' notification configuration for a vault is not set, the operation returns
+#' a `404 Not Found` error. For more information about vault notifications,
+#' see [Configuring Vault Notifications in Amazon S3
 #' Glacier](https://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html).
 #' 
 #' An AWS account has full permission to perform all operations (actions).
@@ -1504,7 +1513,7 @@ glacier_initiate_job <- function(accountId, vaultName, jobParameters = NULL) {
 #' This operation initiates a multipart upload. Amazon S3 Glacier creates a
 #' multipart upload resource and returns its ID in the response. The
 #' multipart upload ID is used in subsequent requests to upload parts of an
-#' archive (see UploadMultipartPart).
+#' archive (see [`upload_multipart_part`][glacier_upload_multipart_part]).
 #' 
 #' When you initiate a multipart upload, you specify the part size in
 #' number of bytes. The part size must be a megabyte (1024 KB) multiplied
@@ -1512,11 +1521,12 @@ glacier_initiate_job <- function(accountId, vaultName, jobParameters = NULL) {
 #' MB), 8388608 (8 MB), and so on. The minimum allowable part size is 1 MB,
 #' and the maximum is 4 GB.
 #' 
-#' Every part you upload to this resource (see UploadMultipartPart), except
-#' the last one, must have the same size. The last one can be the same size
-#' or smaller. For example, suppose you want to upload a 16.2 MB file. If
-#' you initiate the multipart upload with a part size of 4 MB, you will
-#' upload four parts of 4 MB each and one part of 0.2 MB.
+#' Every part you upload to this resource (see
+#' [`upload_multipart_part`][glacier_upload_multipart_part]), except the
+#' last one, must have the same size. The last one can be the same size or
+#' smaller. For example, suppose you want to upload a 16.2 MB file. If you
+#' initiate the multipart upload with a part size of 4 MB, you will upload
+#' four parts of 4 MB each and one part of 0.2 MB.
 #' 
 #' You don't need to know the size of the archive when you start a
 #' multipart upload because Amazon S3 Glacier does not require you to
@@ -1624,21 +1634,25 @@ glacier_initiate_multipart_upload <- function(accountId, vaultName, archiveDescr
 #' vault lock enters the `InProgress` state. After the 24 hour window ends,
 #' the lock ID expires, the vault automatically exits the `InProgress`
 #' state, and the vault lock policy is removed from the vault. You call
-#' CompleteVaultLock to complete the vault locking process by setting the
-#' state of the vault lock to `Locked`.
+#' [`complete_vault_lock`][glacier_complete_vault_lock] to complete the
+#' vault locking process by setting the state of the vault lock to
+#' `Locked`.
 #' 
 #' After a vault lock is in the `Locked` state, you cannot initiate a new
 #' vault lock for the vault.
 #' 
-#' You can abort the vault locking process by calling AbortVaultLock. You
-#' can get the state of the vault lock by calling GetVaultLock. For more
-#' information about the vault locking process, [Amazon Glacier Vault
+#' You can abort the vault locking process by calling
+#' [`abort_vault_lock`][glacier_abort_vault_lock]. You can get the state of
+#' the vault lock by calling [`get_vault_lock`][glacier_get_vault_lock].
+#' For more information about the vault locking process, [Amazon Glacier
+#' Vault
 #' Lock](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html).
 #' 
 #' If this operation is called when the vault lock is in the `InProgress`
 #' state, the operation returns an `AccessDeniedException` error. When the
-#' vault lock is in the `InProgress` state you must call AbortVaultLock
-#' before you can initiate a new vault lock policy.
+#' vault lock is in the `InProgress` state you must call
+#' [`abort_vault_lock`][glacier_abort_vault_lock] before you can initiate a
+#' new vault lock policy.
 #'
 #' @usage
 #' glacier_initiate_vault_lock(accountId, vaultName, policy)
@@ -1808,9 +1822,10 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
 #' @description
 #' This operation lists in-progress multipart uploads for the specified
 #' vault. An in-progress multipart upload is a multipart upload that has
-#' been initiated by an InitiateMultipartUpload request, but has not yet
-#' been completed or aborted. The list returned in the List Multipart
-#' Upload response has no guaranteed order.
+#' been initiated by an
+#' [`initiate_multipart_upload`][glacier_initiate_multipart_upload]
+#' request, but has not yet been completed or aborted. The list returned in
+#' the List Multipart Upload response has no guaranteed order.
 #' 
 #' The List Multipart Uploads operation supports pagination. By default,
 #' this operation returns up to 50 multipart uploads in the response. You
@@ -1823,10 +1838,10 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
 #' request.
 #' 
 #' Note the difference between this operation and listing parts
-#' (ListParts). The List Multipart Uploads operation lists all multipart
-#' uploads for a vault and does not require a multipart upload ID. The List
-#' Parts operation requires a multipart upload ID since parts are
-#' associated with a single upload.
+#' ([`list_parts`][glacier_list_parts]). The List Multipart Uploads
+#' operation lists all multipart uploads for a vault and does not require a
+#' multipart upload ID. The List Parts operation requires a multipart
+#' upload ID since parts are associated with a single upload.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
 #' However, AWS Identity and Access Management (IAM) users don't have any
@@ -1907,9 +1922,9 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
 #' This operation lists the parts of an archive that have been uploaded in
 #' a specific multipart upload. You can make this request at any time
 #' during an in-progress multipart upload before you complete the upload
-#' (see CompleteMultipartUpload. List Parts returns an error for completed
-#' uploads. The list returned in the List Parts response is sorted by part
-#' range.
+#' (see [`complete_multipart_upload`][glacier_complete_multipart_upload].
+#' List Parts returns an error for completed uploads. The list returned in
+#' the List Parts response is sorted by part range.
 #' 
 #' The List Parts operation supports pagination. By default, this operation
 #' returns up to 50 uploaded parts in the response. You should always check
@@ -2459,16 +2474,18 @@ glacier_set_vault_access_policy <- function(accountId, vaultName, policy = NULL)
 #' a notification for the following vault events:
 #' 
 #' -   **ArchiveRetrievalCompleted** This event occurs when a job that was
-#'     initiated for an archive retrieval is completed (InitiateJob). The
-#'     status of the completed job can be "Succeeded" or "Failed". The
-#'     notification sent to the SNS topic is the same output as returned
-#'     from DescribeJob.
+#'     initiated for an archive retrieval is completed
+#'     ([`initiate_job`][glacier_initiate_job]). The status of the
+#'     completed job can be "Succeeded" or "Failed". The notification sent
+#'     to the SNS topic is the same output as returned from
+#'     [`describe_job`][glacier_describe_job].
 #' 
 #' -   **InventoryRetrievalCompleted** This event occurs when a job that
-#'     was initiated for an inventory retrieval is completed (InitiateJob).
-#'     The status of the completed job can be "Succeeded" or "Failed". The
-#'     notification sent to the SNS topic is the same output as returned
-#'     from DescribeJob.
+#'     was initiated for an inventory retrieval is completed
+#'     ([`initiate_job`][glacier_initiate_job]). The status of the
+#'     completed job can be "Succeeded" or "Failed". The notification sent
+#'     to the SNS topic is the same output as returned from
+#'     [`describe_job`][glacier_describe_job].
 #' 
 #' An AWS account has full permission to perform all operations (actions).
 #' However, AWS Identity and Access Management (IAM) users don't have any
@@ -2562,7 +2579,7 @@ glacier_set_vault_notifications <- function(accountId, vaultName, vaultNotificat
 #' field to specify how the archive is referred to in an external index of
 #' archives, such as you might create in Amazon DynamoDB. You can also get
 #' the vault inventory to obtain a list of archive IDs in a vault. For more
-#' information, see InitiateJob.
+#' information, see [`initiate_job`][glacier_initiate_job].
 #' 
 #' You must provide a SHA256 tree hash of the data you are uploading. For
 #' information about computing a SHA256 tree hash, see [Computing
@@ -2571,10 +2588,10 @@ glacier_set_vault_notifications <- function(accountId, vaultName, vaultNotificat
 #' You can optionally specify an archive description of up to 1,024
 #' printable ASCII characters. You can get the archive description when you
 #' either retrieve the archive or get the vault inventory. For more
-#' information, see InitiateJob. Amazon Glacier does not interpret the
-#' description in any way. An archive description does not need to be
-#' unique. You cannot use the description to retrieve or sort the archive
-#' list.
+#' information, see [`initiate_job`][glacier_initiate_job]. Amazon Glacier
+#' does not interpret the description in any way. An archive description
+#' does not need to be unique. You cannot use the description to retrieve
+#' or sort the archive list.
 #' 
 #' Archives are immutable. After you upload an archive, you cannot edit the
 #' archive or its description.
@@ -2670,8 +2687,9 @@ glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NU
 #' 
 #' -   **Part size does not match**The size of each part except the last
 #'     must match the size specified in the corresponding
-#'     InitiateMultipartUpload request. The size of the last part must be
-#'     the same size as, or smaller than, the specified size.
+#'     [`initiate_multipart_upload`][glacier_initiate_multipart_upload]
+#'     request. The size of the last part must be the same size as, or
+#'     smaller than, the specified size.
 #' 
 #'     If you upload a part whose size is smaller than the part size you
 #'     specified in your initiate multipart upload request and that part is

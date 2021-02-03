@@ -39,17 +39,21 @@ Conditional: You must specify only one of the following parameters:
 }
 \description{
 Returns information about a new or existing template. The
-\code{GetTemplateSummary} action is useful for viewing parameter information,
-such as default parameter values and parameter types, before you create
-or update a stack or stack set.
+\code{\link[=cloudformation_get_template_summary]{get_template_summary}} action is
+useful for viewing parameter information, such as default parameter
+values and parameter types, before you create or update a stack or stack
+set.
 
-You can use the \code{GetTemplateSummary} action when you submit a template,
-or you can get template information for a stack set, or a running or
-deleted stack.
+You can use the
+\code{\link[=cloudformation_get_template_summary]{get_template_summary}} action
+when you submit a template, or you can get template information for a
+stack set, or a running or deleted stack.
 
-For deleted stacks, \code{GetTemplateSummary} returns the template
-information for up to 90 days after the stack has been deleted. If the
-template does not exist, a \code{ValidationError} is returned.
+For deleted stacks,
+\code{\link[=cloudformation_get_template_summary]{get_template_summary}} returns
+the template information for up to 90 days after the stack has been
+deleted. If the template does not exist, a \code{ValidationError} is
+returned.
 }
 \section{Request syntax}{
 \preformatted{svc$get_template_summary(

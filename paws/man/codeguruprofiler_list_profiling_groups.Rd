@@ -15,16 +15,20 @@ objects that contain detailed information about profiling groups is
 returned. If \code{false}, then a list of profiling group names is returned.}
 
 \item{maxResults}{The maximum number of profiling groups results returned by
-\code{ListProfilingGroups} in paginated output. When this parameter is used,
-\code{ListProfilingGroups} only returns \code{maxResults} results in a single page
-along with a \code{nextToken} response element. The remaining results of the
-initial request can be seen by sending another \code{ListProfilingGroups}
+\code{\link[=codeguruprofiler_list_profiling_groups]{list_profiling_groups}} in
+paginated output. When this parameter is used,
+\code{\link[=codeguruprofiler_list_profiling_groups]{list_profiling_groups}} only
+returns \code{maxResults} results in a single page along with a \code{nextToken}
+response element. The remaining results of the initial request can be
+seen by sending another
+\code{\link[=codeguruprofiler_list_profiling_groups]{list_profiling_groups}}
 request with the returned \code{nextToken} value.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{ListProfilingGroups} request where \code{maxResults} was used and the
-results exceeded the value of that parameter. Pagination continues from
-the end of the previous results that returned the \code{nextToken} value.
+\code{\link[=codeguruprofiler_list_profiling_groups]{list_profiling_groups}}
+request where \code{maxResults} was used and the results exceeded the value
+of that parameter. Pagination continues from the end of the previous
+results that returned the \code{nextToken} value.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic

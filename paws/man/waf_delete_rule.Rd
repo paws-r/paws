@@ -8,9 +8,11 @@ waf_delete_rule(RuleId, ChangeToken)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the Rule that you want to delete. \code{RuleId} is returned
-by CreateRule and by ListRules.}
+by \code{\link[=waf_create_rule]{create_rule}} and by
+\code{\link[=waf_list_rules]{list_rules}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -26,16 +28,18 @@ Permanently deletes a Rule. You can't delete a \code{Rule} if it's still used
 in any \code{WebACL} objects or if it still includes any predicates, such as
 \code{ByteMatchSet} objects.
 
-If you just want to remove a \code{Rule} from a \code{WebACL}, use UpdateWebACL.
+If you just want to remove a \code{Rule} from a \code{WebACL}, use
+\code{\link[=waf_update_web_acl]{update_web_acl}}.
 
 To permanently delete a \code{Rule} from AWS WAF, perform the following
 steps:
 \enumerate{
 \item Update the \code{Rule} to remove predicates, if any. For more
-information, see UpdateRule.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{DeleteRule} request.
-\item Submit a \code{DeleteRule} request.
+information, see \code{\link[=waf_update_rule]{update_rule}}.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=waf_delete_rule]{delete_rule}} request.
+\item Submit a \code{\link[=waf_delete_rule]{delete_rule}} request.
 }
 }
 \section{Request syntax}{

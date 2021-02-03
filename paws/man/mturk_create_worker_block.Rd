@@ -15,9 +15,10 @@ enables you to keep track of your Workers. The Worker does not see this
 message.}
 }
 \description{
-The \code{CreateWorkerBlock} operation allows you to prevent a Worker from
-working on your HITs. For example, you can block a Worker who is
-producing poor quality work. You can block up to 100,000 Workers.
+The \code{\link[=mturk_create_worker_block]{create_worker_block}} operation allows
+you to prevent a Worker from working on your HITs. For example, you can
+block a Worker who is producing poor quality work. You can block up to
+100,000 Workers.
 }
 \section{Request syntax}{
 \preformatted{svc$create_worker_block(

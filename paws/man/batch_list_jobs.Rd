@@ -21,20 +21,21 @@ with the specified job.}
 \item{jobStatus}{The job status used to filter jobs in the specified queue. If you don't
 specify a status, only \code{RUNNING} jobs are returned.}
 
-\item{maxResults}{The maximum number of results returned by \code{ListJobs} in paginated
-output. When this parameter is used, \code{ListJobs} only returns
-\code{maxResults} results in a single page along with a \code{nextToken} response
-element. The remaining results of the initial request can be seen by
-sending another \code{ListJobs} request with the returned \code{nextToken} value.
-This value can be between 1 and 100. If this parameter isn't used, then
-\code{ListJobs} returns up to 100 results and a \code{nextToken} value if
-applicable.}
+\item{maxResults}{The maximum number of results returned by \code{\link[=batch_list_jobs]{list_jobs}}
+in paginated output. When this parameter is used,
+\code{\link[=batch_list_jobs]{list_jobs}} only returns \code{maxResults} results in a
+single page along with a \code{nextToken} response element. The remaining
+results of the initial request can be seen by sending another
+\code{\link[=batch_list_jobs]{list_jobs}} request with the returned \code{nextToken}
+value. This value can be between 1 and 100. If this parameter isn't
+used, then \code{\link[=batch_list_jobs]{list_jobs}} returns up to 100 results and
+a \code{nextToken} value if applicable.}
 
-\item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListJobs}
-request where \code{maxResults} was used and the results exceeded the value
-of that parameter. Pagination continues from the end of the previous
-results that returned the \code{nextToken} value. This value is \code{null} when
-there are no more results to return.
+\item{nextToken}{The \code{nextToken} value returned from a previous paginated
+\code{\link[=batch_list_jobs]{list_jobs}} request where \code{maxResults} was used and
+the results exceeded the value of that parameter. Pagination continues
+from the end of the previous results that returned the \code{nextToken}
+value. This value is \code{null} when there are no more results to return.
 
 This token should be treated as an opaque identifier that's only used to
 retrieve the next items in a list and not for other programmatic

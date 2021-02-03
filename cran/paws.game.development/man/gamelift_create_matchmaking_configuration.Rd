@@ -75,9 +75,10 @@ set to \code{STANDALONE}.}
 \item{BackfillMode}{The method used to backfill game sessions that are created with this
 matchmaking configuration. Specify \code{MANUAL} when your game manages
 backfill requests manually or does not use the match backfill feature.
-Specify \code{AUTOMATIC} to have GameLift create a StartMatchBackfill request
-whenever a game session has one or more open slots. Learn more about
-manual and automatic backfill in \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-backfill.html}{Backfill Existing Games with FlexMatch}.
+Specify \code{AUTOMATIC} to have GameLift create a
+\code{\link[=gamelift_start_match_backfill]{start_match_backfill}} request whenever
+a game session has one or more open slots. Learn more about manual and
+automatic backfill in \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-backfill.html}{Backfill Existing Games with FlexMatch}.
 Automatic backfill is not available when \code{FlexMatchMode} is set to
 \code{STANDALONE}.}
 
@@ -97,9 +98,11 @@ resource. Tags are developer-defined key-value pairs. Tagging AWS
 resources are useful for resource management, access management and cost
 allocation. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
 in the \emph{AWS General Reference}. Once the resource is created, you can
-use TagResource, UntagResource, and ListTagsForResource to add, remove,
-and view tags. The maximum tag limit may be lower than stated. See the
-AWS General Reference for actual tagging limits.}
+use \code{\link[=gamelift_tag_resource]{tag_resource}},
+\code{\link[=gamelift_untag_resource]{untag_resource}}, and
+\code{\link[=gamelift_list_tags_for_resource]{list_tags_for_resource}} to add,
+remove, and view tags. The maximum tag limit may be lower than stated.
+See the AWS General Reference for actual tagging limits.}
 }
 \description{
 Defines a new matchmaking configuration for use with FlexMatch. Whether
@@ -108,9 +111,11 @@ matchmaking service, the matchmaking configuration sets out rules for
 matching players and forming teams. If you're also using GameLift
 hosting, it defines how to start game sessions for each match. Your
 matchmaking system can use multiple configurations to handle different
-game scenarios. All matchmaking requests (StartMatchmaking or
-StartMatchBackfill) identify the matchmaking configuration to use and
-provide player attributes consistent with that configuration.
+game scenarios. All matchmaking requests
+(\code{\link[=gamelift_start_matchmaking]{start_matchmaking}} or
+\code{\link[=gamelift_start_match_backfill]{start_match_backfill}}) identify the
+matchmaking configuration to use and provide player attributes
+consistent with that configuration.
 
 To create a matchmaking configuration, you must provide the following:
 configuration name and FlexMatch mode (with or without GameLift
@@ -123,8 +128,9 @@ to use when starting a game session for the match.
 In addition, you must set up an Amazon Simple Notification Service (SNS)
 to receive matchmaking notifications, and provide the topic ARN in the
 matchmaking configuration. An alternative method, continuously polling
-ticket status with DescribeMatchmaking, is only suitable for games in
-development with low matchmaking usage.
+ticket status with
+\code{\link[=gamelift_describe_matchmaking]{describe_matchmaking}}, is only
+suitable for games in development with low matchmaking usage.
 
 \strong{Learn more}
 
@@ -136,14 +142,14 @@ development with low matchmaking usage.
 
 \strong{Related operations}
 \itemize{
-\item CreateMatchmakingConfiguration
-\item DescribeMatchmakingConfigurations
-\item UpdateMatchmakingConfiguration
-\item DeleteMatchmakingConfiguration
-\item CreateMatchmakingRuleSet
-\item DescribeMatchmakingRuleSets
-\item ValidateMatchmakingRuleSet
-\item DeleteMatchmakingRuleSet
+\item \code{\link[=gamelift_create_matchmaking_configuration]{create_matchmaking_configuration}}
+\item \code{\link[=gamelift_describe_matchmaking_configurations]{describe_matchmaking_configurations}}
+\item \code{\link[=gamelift_update_matchmaking_configuration]{update_matchmaking_configuration}}
+\item \code{\link[=gamelift_delete_matchmaking_configuration]{delete_matchmaking_configuration}}
+\item \code{\link[=gamelift_create_matchmaking_rule_set]{create_matchmaking_rule_set}}
+\item \code{\link[=gamelift_describe_matchmaking_rule_sets]{describe_matchmaking_rule_sets}}
+\item \code{\link[=gamelift_validate_matchmaking_rule_set]{validate_matchmaking_rule_set}}
+\item \code{\link[=gamelift_delete_matchmaking_rule_set]{delete_matchmaking_rule_set}}
 }
 }
 \section{Request syntax}{

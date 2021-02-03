@@ -30,13 +30,12 @@ processes it, and writes the output to the configured destination.
 
 The application status must be \code{READY} for you to start an application.
 You can get the application status in the console or using the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+\code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation.
 
 After you start the application, you can stop the application from
 processing the input by calling the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_StopApplication.html}{StopApplication}
-operation.
+\code{\link[=kinesisanalytics_stop_application]{stop_application}} operation.
 
 This operation requires permissions to perform the
 \code{kinesisanalytics:StartApplication} action.

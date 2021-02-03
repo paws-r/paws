@@ -15,9 +15,9 @@ algorithm the \code{SIGTERM} signal, which delays job termination for 120
 seconds. Algorithms might use this 120-second window to save the model
 artifacts, so the results of the training is not lost.
 
-When it receives a \code{StopTrainingJob} request, Amazon SageMaker changes
-the status of the job to \code{Stopping}. After Amazon SageMaker stops the
-job, it sets the status to \code{Stopped}.
+When it receives a \code{\link[=sagemaker_stop_training_job]{stop_training_job}}
+request, Amazon SageMaker changes the status of the job to \code{Stopping}.
+After Amazon SageMaker stops the job, it sets the status to \code{Stopped}.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_training_job(

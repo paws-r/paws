@@ -37,8 +37,8 @@ If \code{GroupBy} is set, \code{Granularity} can't be set. If \code{Granularity}
 set, the response object doesn't include \code{Granularity}, either \code{MONTHLY}
 or \code{DAILY}.
 
-The \code{GetReservationCoverage} operation supports only \code{DAILY} and
-\code{MONTHLY} granularities.}
+The \code{\link[=costexplorer_get_reservation_coverage]{get_reservation_coverage}}
+operation supports only \code{DAILY} and \code{MONTHLY} granularities.}
 
 \item{Filter}{Filters utilization data by dimensions. You can filter by the following
 dimensions:
@@ -57,7 +57,8 @@ dimensions:
 \item TENANCY
 }
 
-\code{GetReservationCoverage} uses the same
+\code{\link[=costexplorer_get_reservation_coverage]{get_reservation_coverage}} uses
+the same
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}
 object as the other operations, but only \code{AND} is supported among each
 dimension. You can nest only one level deep. If there are multiple
@@ -122,8 +123,8 @@ filter data about reservation usage by the following dimensions:
 \item TENANCY
 }
 
-To determine valid values for a dimension, use the \code{GetDimensionValues}
-operation.
+To determine valid values for a dimension, use the
+\code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$get_reservation_coverage(

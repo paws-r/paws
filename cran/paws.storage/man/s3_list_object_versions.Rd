@@ -54,12 +54,13 @@ To use this operation, you must have READ access to the bucket.
 
 This action is not supported by Amazon S3 on Outposts.
 
-The following operations are related to \code{ListObjectVersions}:
+The following operations are related to
+\code{\link[=s3_list_object_versions]{list_object_versions}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html}{ListObjectsV2}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html}{DeleteObject}
+\item \code{\link[=s3_list_objects_v2]{list_objects_v2}}
+\item \code{\link[=s3_get_object]{get_object}}
+\item \code{\link[=s3_put_object]{put_object}}
+\item \code{\link[=s3_delete_object]{delete_object}}
 }
 }
 \section{Request syntax}{

@@ -9,10 +9,12 @@ ssooidc_create_token(clientId, clientSecret, grantType, deviceCode,
 }
 \arguments{
 \item{clientId}{[required] The unique identifier string for each client. This value should come
-from the persisted result of the RegisterClient API.}
+from the persisted result of the
+\code{\link[=ssooidc_register_client]{register_client}} API.}
 
 \item{clientSecret}{[required] A secret string generated for the client. This value should come from
-the persisted result of the RegisterClient API.}
+the persisted result of the \code{\link[=ssooidc_register_client]{register_client}}
+API.}
 
 \item{grantType}{[required] Supports grant types for authorization code, refresh token, and device
 code request.}
@@ -20,7 +22,7 @@ code request.}
 \item{deviceCode}{[required] Used only when calling this API for the device code grant type. This
 short-term code is used to identify this authentication attempt. This
 should come from an in-memory reference to the result of the
-StartDeviceAuthorization API.}
+\code{\link[=ssooidc_start_device_authorization]{start_device_authorization}} API.}
 
 \item{code}{The authorization code received from the authorization service. This
 parameter is required to perform an authorization grant request to get

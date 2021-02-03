@@ -14,7 +14,7 @@ available offerings matching the specified version.
 Default: All versions.
 
 Constraints: Must be one of the version returned from
-DescribeClusterVersions.}
+\code{\link[=redshift_describe_cluster_versions]{describe_cluster_versions}}.}
 
 \item{NodeType}{The node type filter value. Specify this parameter to show only the
 available offerings matching the specified node type.}
@@ -31,11 +31,11 @@ Constraints: minimum 20, maximum 100.}
 
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a
-DescribeOrderableClusterOptions request exceed the value specified in
-\code{MaxRecords}, AWS returns a value in the \code{Marker} field of the response.
-You can retrieve the next set of response records by providing the
-returned marker value in the \code{Marker} parameter and retrying the
-request.}
+\code{\link[=redshift_describe_orderable_cluster_options]{describe_orderable_cluster_options}}
+request exceed the value specified in \code{MaxRecords}, AWS returns a value
+in the \code{Marker} field of the response. You can retrieve the next set of
+response records by providing the returned marker value in the \code{Marker}
+parameter and retrying the request.}
 }
 \description{
 Returns a list of orderable cluster options. Before you create a new

@@ -12,10 +12,12 @@ sagemaker_list_notebook_instances(NextToken, MaxResults, SortBy,
   DefaultCodeRepositoryContains, AdditionalCodeRepositoryEquals)
 }
 \arguments{
-\item{NextToken}{If the previous call to the \code{ListNotebookInstances} is truncated, the
-response includes a \code{NextToken}. You can use this token in your
-subsequent \code{ListNotebookInstances} request to fetch the next set of
-notebook instances.
+\item{NextToken}{If the previous call to the
+\code{\link[=sagemaker_list_notebook_instances]{list_notebook_instances}} is
+truncated, the response includes a \code{NextToken}. You can use this token
+in your subsequent
+\code{\link[=sagemaker_list_notebook_instances]{list_notebook_instances}} request
+to fetch the next set of notebook instances.
 
 You might specify a filter or a sort order in your request. When
 response is truncated, you must use the same values for the filer and

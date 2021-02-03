@@ -40,11 +40,11 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 For information about Amazon S3 analytics feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html}{Amazon S3 Analytics – Storage Class Analysis}.
 
 The following operations are related to
-\code{ListBucketAnalyticsConfigurations}:
+\code{\link[=s3_list_bucket_analytics_configurations]{list_bucket_analytics_configurations}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAnalyticsConfiguration.html}{GetBucketAnalyticsConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketAnalyticsConfiguration.html}{DeleteBucketAnalyticsConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html}{PutBucketAnalyticsConfiguration}
+\item \code{\link[=s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration}}
+\item \code{\link[=s3_delete_bucket_analytics_configuration]{delete_bucket_analytics_configuration}}
+\item \code{\link[=s3_put_bucket_analytics_configuration]{put_bucket_analytics_configuration}}
 }
 }
 \section{Request syntax}{

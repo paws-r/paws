@@ -53,7 +53,7 @@ parameter group, specify the \code{DBParameterGroup} name and
 \code{ResetAllParameters} parameters. When resetting the entire group,
 dynamic parameters are updated immediately and static parameters are set
 to \code{pending-reboot} to take effect on the next DB instance restart or
-\code{RebootDBInstance} request.
+\code{\link[=rds_reboot_db_instance]{reboot_db_instance}} request.
 }
 \section{Request syntax}{
 \preformatted{svc$reset_db_parameter_group(

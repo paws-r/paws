@@ -10,9 +10,9 @@ waf_list_rule_groups(NextMarker, Limit)
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{RuleGroups} than
 the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the
 response that allows you to list another group of \code{RuleGroups}. For the
-second and subsequent \code{ListRuleGroups} requests, specify the value of
-\code{NextMarker} from the previous response to get information about another
-batch of \code{RuleGroups}.}
+second and subsequent \code{\link[=waf_list_rule_groups]{list_rule_groups}}
+requests, specify the value of \code{NextMarker} from the previous response
+to get information about another batch of \code{RuleGroups}.}
 
 \item{Limit}{Specifies the number of \code{RuleGroups} that you want AWS WAF to return for
 this request. If you have more \code{RuleGroups} than the number that you

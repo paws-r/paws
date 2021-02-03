@@ -20,7 +20,9 @@ date to avoid a validation error.}
 
 \item{Metric}{[required] Which metric Cost Explorer uses to create your forecast.
 
-Valid values for a \code{GetUsageForecast} call are the following:
+Valid values for a
+\code{\link[=costexplorer_get_usage_forecast]{get_usage_forecast}} call are the
+following:
 \itemize{
 \item USAGE\\_QUANTITY
 \item NORMALIZED\\_USAGE\\_AMOUNT
@@ -29,8 +31,8 @@ Valid values for a \code{GetUsageForecast} call are the following:
 \item{Granularity}{[required] How granular you want the forecast to be. You can get 3 months of
 \code{DAILY} forecasts or 12 months of \code{MONTHLY} forecasts.
 
-The \code{GetUsageForecast} operation supports only \code{DAILY} and \code{MONTHLY}
-granularities.}
+The \code{\link[=costexplorer_get_usage_forecast]{get_usage_forecast}} operation
+supports only \code{DAILY} and \code{MONTHLY} granularities.}
 
 \item{Filter}{The filters that you want to use to filter your forecast. Cost Explorer
 API supports all of the Cost Explorer filters.}

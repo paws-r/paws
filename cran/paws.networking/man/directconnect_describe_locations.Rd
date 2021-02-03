@@ -8,7 +8,8 @@ directconnect_describe_locations()
 }
 \description{
 Lists the AWS Direct Connect locations in the current AWS Region. These
-are the locations that can be selected when calling CreateConnection or
-CreateInterconnect.
+are the locations that can be selected when calling
+\code{\link[=directconnect_create_connection]{create_connection}} or
+\code{\link[=directconnect_create_interconnect]{create_interconnect}}.
 }
 \keyword{internal}

@@ -25,15 +25,16 @@ Wildcard domain entries (e.g., \verb{*.example.com}) are not supported.}
 \item{tags}{The tag keys and optional values to add to the certificate during
 create.
 
-Use the \code{TagResource} action to tag a resource after it's created.}
+Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
+resource after it's created.}
 }
 \description{
 Creates an SSL/TLS certificate for a Amazon Lightsail content delivery
 network (CDN) distribution.
 
 After the certificate is created, use the
-\code{AttachCertificateToDistribution} action to attach the certificate to
-your distribution.
+\code{\link[=lightsail_attach_certificate_to_distribution]{attach_certificate_to_distribution}}
+action to attach the certificate to your distribution.
 
 Only certificates created in the \code{us-east-1} AWS Region can be attached
 to Lightsail distributions. Lightsail distributions are global resources

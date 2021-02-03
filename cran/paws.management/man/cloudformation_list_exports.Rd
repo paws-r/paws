@@ -8,8 +8,9 @@ call this action}
 cloudformation_list_exports(NextToken)
 }
 \arguments{
-\item{NextToken}{A string (provided by the ListExports response output) that identifies
-the next page of exported output values that you asked to retrieve.}
+\item{NextToken}{A string (provided by the \code{\link[=cloudformation_list_exports]{list_exports}}
+response output) that identifies the next page of exported output values
+that you asked to retrieve.}
 }
 \description{
 Lists all exported output values in the account and Region in which you

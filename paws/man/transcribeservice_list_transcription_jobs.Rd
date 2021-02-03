@@ -16,8 +16,9 @@ transcription jobs ordered by creation date.}
 \item{JobNameContains}{When specified, the jobs returned in the list are limited to jobs whose
 name contains the specified string.}
 
-\item{NextToken}{If the result of the previous request to \code{ListTranscriptionJobs} was
-truncated, include the \code{NextToken} to fetch the next set of jobs.}
+\item{NextToken}{If the result of the previous request to
+\code{\link[=transcribeservice_list_transcription_jobs]{list_transcription_jobs}}
+was truncated, include the \code{NextToken} to fetch the next set of jobs.}
 
 \item{MaxResults}{The maximum number of jobs to return in the response. If there are fewer
 results in the list, this response contains only the actual results.}

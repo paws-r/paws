@@ -11,8 +11,9 @@ datapipeline_poll_for_task(workerGroup, hostname, instanceIdentity)
 \item{workerGroup}{[required] The type of task the task runner is configured to accept and process.
 The worker group is set as a field on objects in the pipeline when they
 are created. You can only specify a single value for \code{workerGroup} in
-the call to \code{PollForTask}. There are no wildcard values permitted in
-\code{workerGroup}; the string must be an exact, case-sensitive, match.}
+the call to \code{\link[=datapipeline_poll_for_task]{poll_for_task}}. There are no
+wildcard values permitted in \code{workerGroup}; the string must be an exact,
+case-sensitive, match.}
 
 \item{hostname}{The public DNS name of the calling task runner.}
 
@@ -26,21 +27,25 @@ the proper AWS Data Pipeline service charges are applied to your
 pipeline.}
 }
 \description{
-Task runners call \code{PollForTask} to receive a task to perform from AWS
-Data Pipeline. The task runner specifies which tasks it can perform by
-setting a value for the \code{workerGroup} parameter. The task returned can
-come from any of the pipelines that match the \code{workerGroup} value passed
-in by the task runner and that was launched using the IAM user
-credentials specified by the task runner.
+Task runners call \code{\link[=datapipeline_poll_for_task]{poll_for_task}} to
+receive a task to perform from AWS Data Pipeline. The task runner
+specifies which tasks it can perform by setting a value for the
+\code{workerGroup} parameter. The task returned can come from any of the
+pipelines that match the \code{workerGroup} value passed in by the task
+runner and that was launched using the IAM user credentials specified by
+the task runner.
 
-If tasks are ready in the work queue, \code{PollForTask} returns a response
-immediately. If no tasks are available in the queue, \code{PollForTask} uses
-long-polling and holds on to a poll connection for up to a 90 seconds,
-during which time the first newly scheduled task is handed to the task
-runner. To accomodate this, set the socket timeout in your task runner
-to 90 seconds. The task runner should not call \code{PollForTask} again on
-the same \code{workerGroup} until it receives a response, and this can take
-up to 90 seconds.
+If tasks are ready in the work queue,
+\code{\link[=datapipeline_poll_for_task]{poll_for_task}} returns a response
+immediately. If no tasks are available in the queue,
+\code{\link[=datapipeline_poll_for_task]{poll_for_task}} uses long-polling and
+holds on to a poll connection for up to a 90 seconds, during which time
+the first newly scheduled task is handed to the task runner. To
+accomodate this, set the socket timeout in your task runner to 90
+seconds. The task runner should not call
+\code{\link[=datapipeline_poll_for_task]{poll_for_task}} again on the same
+\code{workerGroup} until it receives a response, and this can take up to 90
+seconds.
 }
 \section{Request syntax}{
 \preformatted{svc$poll_for_task(

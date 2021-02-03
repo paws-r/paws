@@ -8,31 +8,30 @@ acmpca_restore_certificate_authority(CertificateAuthorityArn)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}
+\code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}
 action. This must be of the form:
 
-\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
+\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 }
 \description{
 Restores a certificate authority (CA) that is in the \code{DELETED} state.
 You can restore a CA during the period that you defined in the
 \strong{PermanentDeletionTimeInDays} parameter of the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeleteCertificateAuthority.html}{DeleteCertificateAuthority}
+\code{\link[=acmpca_delete_certificate_authority]{delete_certificate_authority}}
 action. Currently, you can specify 7 to 30 days. If you did not specify
 a \strong{PermanentDeletionTimeInDays} value, by default you can restore the
 CA at any time in a 30 day period. You can check the time remaining in
 the restoration period of a private CA in the \code{DELETED} state by calling
 the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DescribeCertificateAuthority.html}{DescribeCertificateAuthority}
-or
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html}{ListCertificateAuthorities}
+\code{\link[=acmpca_describe_certificate_authority]{describe_certificate_authority}}
+or \code{\link[=acmpca_list_certificate_authorities]{list_certificate_authorities}}
 actions. The status of a restored CA is set to its pre-deletion status
 when the \strong{RestoreCertificateAuthority} action returns. To change its
 status to \code{ACTIVE}, call the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UpdateCertificateAuthority.html}{UpdateCertificateAuthority}
+\code{\link[=acmpca_update_certificate_authority]{update_certificate_authority}}
 action. If the private CA was in the \code{PENDING_CERTIFICATE} state at
 deletion, you must use the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ImportCertificateAuthorityCertificate.html}{ImportCertificateAuthorityCertificate}
+\code{\link[=acmpca_import_certificate_authority_certificate]{import_certificate_authority_certificate}}
 action to import a certificate authority into the private CA before it
 can be activated. You cannot restore a CA after the restoration period
 has ended.

@@ -123,15 +123,15 @@ rights (using request elements) in the following ways:
 \itemize{
 \item By the person's ID:
 
-\verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt; &lt;/Grantee&gt;}
+\verb{<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"><ID><>ID<></ID><DisplayName><>GranteesEmail<></DisplayName> </Grantee>}
 
 DisplayName is optional and ignored in the request
 \item By URI:
 
-\verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"&gt;&lt;URI&gt;&lt;&gt;http://acs.amazonaws.com/groups/global/AuthenticatedUsers&lt;&gt;&lt;/URI&gt;&lt;/Grantee&gt;}
+\verb{<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"><URI><>http://acs.amazonaws.com/groups/global/AuthenticatedUsers<></URI></Grantee>}
 \item By Email address:
 
-\verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@email.com&lt;&gt;&lt;/EmailAddress&gt;lt;/Grantee&gt;}
+\verb{<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"><EmailAddress><>Grantees@email.com<></EmailAddress>lt;/Grantee>}
 
 The grantee is resolved to the CanonicalUser and, in a response to a
 GET Object acl request, appears as the CanonicalUser.
@@ -156,9 +156,9 @@ in the AWS General Reference.
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html}{DeleteBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html}{GetObjectAcl}
+\item \code{\link[=s3_create_bucket]{create_bucket}}
+\item \code{\link[=s3_delete_bucket]{delete_bucket}}
+\item \code{\link[=s3_get_object_acl]{get_object_acl}}
 }
 }
 \section{Request syntax}{

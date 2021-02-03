@@ -16,11 +16,13 @@ NULL
 #' cloudformation_cancel_update_stack(StackName, ClientRequestToken)
 #'
 #' @param StackName &#91;required&#93; The name or the unique stack ID that is associated with the stack.
-#' @param ClientRequestToken A unique identifier for this `CancelUpdateStack` request. Specify this
-#' token if you plan to retry requests so that AWS CloudFormation knows
-#' that you're not attempting to cancel an update on a stack with the same
-#' name. You might retry `CancelUpdateStack` requests to ensure that AWS
-#' CloudFormation successfully received them.
+#' @param ClientRequestToken A unique identifier for this
+#' [`cancel_update_stack`][cloudformation_cancel_update_stack] request.
+#' Specify this token if you plan to retry requests so that AWS
+#' CloudFormation knows that you're not attempting to cancel an update on a
+#' stack with the same name. You might retry
+#' [`cancel_update_stack`][cloudformation_cancel_update_stack] requests to
+#' ensure that AWS CloudFormation successfully received them.
 #'
 #' @section Request syntax:
 #' ```
@@ -98,7 +100,8 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
 #' resources that are in the `UPDATE_FAILED` state because a rollback
 #' failed. You can't specify resources that are in the `UPDATE_FAILED`
 #' state for other reasons, for example, because an update was cancelled.
-#' To check why a resource update failed, use the DescribeStackResources
+#' To check why a resource update failed, use the
+#' [`describe_stack_resources`][cloudformation_describe_stack_resources]
 #' action, and view the resource status reason.
 #' 
 #' Specify this property to skip rolling back resources that AWS
@@ -130,11 +133,13 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
 #' rollback operation with nested stacks, see [Using ResourcesToSkip to
 #' recover a nested stacks
 #' hierarchy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html#nested-stacks).
-#' @param ClientRequestToken A unique identifier for this `ContinueUpdateRollback` request. Specify
-#' this token if you plan to retry requests so that AWS CloudFormation
-#' knows that you're not attempting to continue the rollback to a stack
-#' with the same name. You might retry `ContinueUpdateRollback` requests to
-#' ensure that AWS CloudFormation successfully received them.
+#' @param ClientRequestToken A unique identifier for this
+#' [`continue_update_rollback`][cloudformation_continue_update_rollback]
+#' request. Specify this token if you plan to retry requests so that AWS
+#' CloudFormation knows that you're not attempting to continue the rollback
+#' to a stack with the same name. You might retry
+#' [`continue_update_rollback`][cloudformation_continue_update_rollback]
+#' requests to ensure that AWS CloudFormation successfully received them.
 #'
 #' @section Request syntax:
 #' ```
@@ -188,13 +193,15 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' `ChangeSetType` parameter, specify `CREATE`. To create a change set for
 #' an existing stack, specify `UPDATE` for the `ChangeSetType` parameter.
 #' To create a change set for an import operation, specify `IMPORT` for the
-#' `ChangeSetType` parameter. After the `CreateChangeSet` call successfully
-#' completes, AWS CloudFormation starts creating the change set. To check
-#' the status of the change set or to review it, use the DescribeChangeSet
-#' action.
+#' `ChangeSetType` parameter. After the
+#' [`create_change_set`][cloudformation_create_change_set] call
+#' successfully completes, AWS CloudFormation starts creating the change
+#' set. To check the status of the change set or to review it, use the
+#' [`describe_change_set`][cloudformation_describe_change_set] action.
 #' 
 #' When you are satisfied with the changes the change set will make,
-#' execute the change set by using the ExecuteChangeSet action. AWS
+#' execute the change set by using the
+#' [`execute_change_set`][cloudformation_execute_change_set] action. AWS
 #' CloudFormation doesn't make changes until you execute the change set.
 #' 
 #' To create a change set for the entire stack hierachy, set
@@ -294,8 +301,10 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' 
 #'     If you want to create a stack from a stack template that contains
 #'     macros *and* nested stacks, you must create or update the stack
-#'     directly from the template using the CreateStack or UpdateStack
-#'     action, and specifying this capability.
+#'     directly from the template using the
+#'     [`create_stack`][cloudformation_create_stack] or
+#'     [`update_stack`][cloudformation_update_stack] action, and specifying
+#'     this capability.
 #' 
 #'     For more information on macros, see [Using AWS CloudFormation Macros
 #'     to Perform Custom Processing on
@@ -339,11 +348,13 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' A change set name can contain only alphanumeric, case sensitive
 #' characters and hyphens. It must start with an alphabetic character and
 #' cannot exceed 128 characters.
-#' @param ClientToken A unique identifier for this `CreateChangeSet` request. Specify this
-#' token if you plan to retry requests so that AWS CloudFormation knows
-#' that you're not attempting to create another change set with the same
-#' name. You might retry `CreateChangeSet` requests to ensure that AWS
-#' CloudFormation successfully received them.
+#' @param ClientToken A unique identifier for this
+#' [`create_change_set`][cloudformation_create_change_set] request. Specify
+#' this token if you plan to retry requests so that AWS CloudFormation
+#' knows that you're not attempting to create another change set with the
+#' same name. You might retry
+#' [`create_change_set`][cloudformation_create_change_set] requests to
+#' ensure that AWS CloudFormation successfully received them.
 #' @param Description A description to help you identify this change set.
 #' @param ChangeSetType The type of change set operation. To create a change set for a new
 #' stack, specify `CREATE`. To create a change set for an existing stack,
@@ -446,7 +457,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' @description
 #' Creates a stack as specified in the template. After the call completes
 #' successfully, the stack creation starts. You can check the status of the
-#' stack via the DescribeStacks API.
+#' stack via the [`describe_stacks`][cloudformation_describe_stacks] API.
 #'
 #' @usage
 #' cloudformation_create_stack(StackName, TemplateBody, TemplateURL,
@@ -575,10 +586,9 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' this create stack action, such as `AWS::EC2::Instance`, `AWS::EC2::*`,
 #' or `Custom::MyCustomInstance`. Use the following syntax to describe
 #' template resource types: `AWS::*` (for all AWS resource), `Custom::*`
-#' (for all custom resources), `Custom::<i>logical_ID</i> ` (for a specific
-#' custom resource), `AWS::<i>service_name</i>::*` (for all resources of a
-#' particular AWS service), and
-#' `AWS::<i>service_name</i>::<i>resource_logical_ID</i> ` (for a specific
+#' (for all custom resources), `Custom::logical_ID ` (for a specific custom
+#' resource), `AWS::service_name::*` (for all resources of a particular AWS
+#' service), and `AWS::service_name::resource_logical_ID ` (for a specific
 #' AWS resource).
 #' 
 #' If the list of resource types doesn't include a resource that you're
@@ -617,17 +627,18 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' @param Tags Key-value pairs to associate with this stack. AWS CloudFormation also
 #' propagates these tags to the resources created in the stack. A maximum
 #' number of 50 tags can be specified.
-#' @param ClientRequestToken A unique identifier for this `CreateStack` request. Specify this token
-#' if you plan to retry requests so that AWS CloudFormation knows that
-#' you're not attempting to create a stack with the same name. You might
-#' retry `CreateStack` requests to ensure that AWS CloudFormation
-#' successfully received them.
+#' @param ClientRequestToken A unique identifier for this
+#' [`create_stack`][cloudformation_create_stack] request. Specify this
+#' token if you plan to retry requests so that AWS CloudFormation knows
+#' that you're not attempting to create a stack with the same name. You
+#' might retry [`create_stack`][cloudformation_create_stack] requests to
+#' ensure that AWS CloudFormation successfully received them.
 #' 
 #' All events triggered by a given stack operation are assigned the same
 #' client request token, which you can use to track operations. For
-#' example, if you execute a `CreateStack` operation with the token
-#' `token1`, then all the `StackEvents` generated by that operation will
-#' have `ClientRequestToken` set as `token1`.
+#' example, if you execute a [`create_stack`][cloudformation_create_stack]
+#' operation with the token `token1`, then all the `StackEvents` generated
+#' by that operation will have `ClientRequestToken` set as `token1`.
 #' 
 #' In the console, stack operations display the client request token on the
 #' Events tab. Stack operations that are initiated from the console use the
@@ -777,8 +788,8 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
 #' 
 #' You can only override the parameter *values* that are specified in the
 #' stack set; to add or delete a parameter itself, use
-#' [UpdateStackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
-#' to update the stack set template.
+#' [`update_stack_set`][cloudformation_update_stack_set] to update the
+#' stack set template.
 #' @param OperationPreferences Preferences for how AWS CloudFormation performs this stack set
 #' operation.
 #' @param OperationId The unique identifier for this stack set operation.
@@ -957,10 +968,12 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' supported resources that are created in the stacks. A maximum number of
 #' 50 tags can be specified.
 #' 
-#' If you specify tags as part of a `CreateStackSet` action, AWS
+#' If you specify tags as part of a
+#' [`create_stack_set`][cloudformation_create_stack_set] action, AWS
 #' CloudFormation checks to see if you have the required IAM permission to
-#' tag resources. If you don't, the entire `CreateStackSet` action fails
-#' with an `access denied` error, and the stack set is not created.
+#' tag resources. If you don't, the entire
+#' [`create_stack_set`][cloudformation_create_stack_set] action fails with
+#' an `access denied` error, and the stack set is not created.
 #' @param AdministrationRoleARN The Amazon Resource Number (ARN) of the IAM role to use to create this
 #' stack set.
 #' 
@@ -994,11 +1007,13 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' @param AutoDeployment Describes whether StackSets automatically deploys to AWS Organizations
 #' accounts that are added to the target organization or organizational
 #' unit (OU). Specify only if `PermissionModel` is `SERVICE_MANAGED`.
-#' @param ClientRequestToken A unique identifier for this `CreateStackSet` request. Specify this
-#' token if you plan to retry requests so that AWS CloudFormation knows
-#' that you're not attempting to create another stack set with the same
-#' name. You might retry `CreateStackSet` requests to ensure that AWS
-#' CloudFormation successfully received them.
+#' @param ClientRequestToken A unique identifier for this
+#' [`create_stack_set`][cloudformation_create_stack_set] request. Specify
+#' this token if you plan to retry requests so that AWS CloudFormation
+#' knows that you're not attempting to create another stack set with the
+#' same name. You might retry
+#' [`create_stack_set`][cloudformation_create_stack_set] requests to ensure
+#' that AWS CloudFormation successfully received them.
 #' 
 #' If you don't specify an operation ID, the SDK generates one
 #' automatically.
@@ -1068,9 +1083,10 @@ cloudformation_create_stack_set <- function(StackSetName, Description = NULL, Te
 #' deleted the change set.
 #' 
 #' If `IncludeNestedStacks` specifies `True` during the creation of the
-#' nested change set, then `DeleteChangeSet` will delete all change sets
-#' that belong to the stacks hierarchy and will also delete all change sets
-#' for nested stacks with the status of `REVIEW_IN_PROGRESS`.
+#' nested change set, then
+#' [`delete_change_set`][cloudformation_delete_change_set] will delete all
+#' change sets that belong to the stacks hierarchy and will also delete all
+#' change sets for nested stacks with the status of `REVIEW_IN_PROGRESS`.
 #'
 #' @usage
 #' cloudformation_delete_change_set(ChangeSetName, StackName)
@@ -1112,8 +1128,9 @@ cloudformation_delete_change_set <- function(ChangeSetName, StackName = NULL) {
 #'
 #' @description
 #' Deletes a specified stack. Once the call completes successfully, stack
-#' deletion starts. Deleted stacks do not show up in the DescribeStacks API
-#' if the deletion has been completed successfully.
+#' deletion starts. Deleted stacks do not show up in the
+#' [`describe_stacks`][cloudformation_describe_stacks] API if the deletion
+#' has been completed successfully.
 #'
 #' @usage
 #' cloudformation_delete_stack(StackName, RetainResources, RoleARN,
@@ -1135,17 +1152,18 @@ cloudformation_delete_change_set <- function(ChangeSetName, StackName = NULL) {
 #' previously associated with the stack. If no role is available, AWS
 #' CloudFormation uses a temporary session that is generated from your user
 #' credentials.
-#' @param ClientRequestToken A unique identifier for this `DeleteStack` request. Specify this token
-#' if you plan to retry requests so that AWS CloudFormation knows that
-#' you're not attempting to delete a stack with the same name. You might
-#' retry `DeleteStack` requests to ensure that AWS CloudFormation
-#' successfully received them.
+#' @param ClientRequestToken A unique identifier for this
+#' [`delete_stack`][cloudformation_delete_stack] request. Specify this
+#' token if you plan to retry requests so that AWS CloudFormation knows
+#' that you're not attempting to delete a stack with the same name. You
+#' might retry [`delete_stack`][cloudformation_delete_stack] requests to
+#' ensure that AWS CloudFormation successfully received them.
 #' 
 #' All events triggered by a given stack operation are assigned the same
 #' client request token, which you can use to track operations. For
-#' example, if you execute a `CreateStack` operation with the token
-#' `token1`, then all the `StackEvents` generated by that operation will
-#' have `ClientRequestToken` set as `token1`.
+#' example, if you execute a [`create_stack`][cloudformation_create_stack]
+#' operation with the token `token1`, then all the `StackEvents` generated
+#' by that operation will have `ClientRequestToken` set as `token1`.
 #' 
 #' In the console, stack operations display the client request token on the
 #' Events tab. Stack operations that are initiated from the console use the
@@ -1288,13 +1306,15 @@ cloudformation_delete_stack_instances <- function(StackSetName, Accounts = NULL,
 #' @description
 #' Deletes a stack set. Before you can delete a stack set, all of its
 #' member stack instances must be deleted. For more information about how
-#' to do this, see DeleteStackInstances.
+#' to do this, see
+#' [`delete_stack_instances`][cloudformation_delete_stack_instances].
 #'
 #' @usage
 #' cloudformation_delete_stack_set(StackSetName)
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you're deleting. You can
-#' obtain this value by running ListStackSets.
+#' obtain this value by running
+#' [`list_stack_sets`][cloudformation_list_stack_sets].
 #'
 #' @section Request syntax:
 #' ```
@@ -1448,8 +1468,10 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #' to describe.
 #' @param StackName If you specified the name of a change set, specify the stack name or ID
 #' (ARN) of the change set you want to describe.
-#' @param NextToken A string (provided by the DescribeChangeSet response output) that
-#' identifies the next page of information that you want to retrieve.
+#' @param NextToken A string (provided by the
+#' [`describe_change_set`][cloudformation_describe_change_set] response
+#' output) that identifies the next page of information that you want to
+#' retrieve.
 #'
 #' @section Request syntax:
 #' ```
@@ -1492,12 +1514,15 @@ cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, 
 #' [Detecting Unregulated Configuration Changes to Stacks and
 #' Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 #' 
-#' Use DetectStackDrift to initiate a stack drift detection operation.
-#' `DetectStackDrift` returns a `StackDriftDetectionId` you can use to
-#' monitor the progress of the operation using
-#' `DescribeStackDriftDetectionStatus`. Once the drift detection operation
-#' has completed, use DescribeStackResourceDrifts to return drift
-#' information about the stack and its resources.
+#' Use [`detect_stack_drift`][cloudformation_detect_stack_drift] to
+#' initiate a stack drift detection operation.
+#' [`detect_stack_drift`][cloudformation_detect_stack_drift] returns a
+#' `StackDriftDetectionId` you can use to monitor the progress of the
+#' operation using
+#' [`describe_stack_drift_detection_status`][cloudformation_describe_stack_drift_detection_status].
+#' Once the drift detection operation has completed, use
+#' [`describe_stack_resource_drifts`][cloudformation_describe_stack_resource_drifts]
+#' to return drift information about the stack and its resources.
 #'
 #' @usage
 #' cloudformation_describe_stack_drift_detection_status(
@@ -1601,7 +1626,7 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
 #' set, AWS account, and Region.
 #' 
 #' For a list of stack instances that are associated with a specific stack
-#' set, use ListStackInstances.
+#' set, use [`list_stack_instances`][cloudformation_list_stack_instances].
 #'
 #' @usage
 #' cloudformation_describe_stack_instance(StackSetName,
@@ -1710,9 +1735,11 @@ cloudformation_describe_stack_resource <- function(StackName, LogicalResourceId)
 #' Drift
 #' Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html).
 #' 
-#' Use DetectStackResourceDrift to detect drift on individual resources, or
-#' DetectStackDrift to detect drift on all supported resources for a given
-#' stack.
+#' Use
+#' [`detect_stack_resource_drift`][cloudformation_detect_stack_resource_drift]
+#' to detect drift on individual resources, or
+#' [`detect_stack_drift`][cloudformation_detect_stack_drift] to detect
+#' drift on all supported resources for a given stack.
 #'
 #' @usage
 #' cloudformation_describe_stack_resource_drifts(StackName,
@@ -1781,10 +1808,13 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
 #' returned.
 #' 
 #' Only the first 100 resources will be returned. If your stack has more
-#' resources than this, you should use `ListStackResources` instead.
+#' resources than this, you should use
+#' [`list_stack_resources`][cloudformation_list_stack_resources] instead.
 #' 
-#' For deleted stacks, `DescribeStackResources` returns resource
-#' information for up to 90 days after the stack has been deleted.
+#' For deleted stacks,
+#' [`describe_stack_resources`][cloudformation_describe_stack_resources]
+#' returns resource information for up to 90 days after the stack has been
+#' deleted.
 #' 
 #' You must specify either `StackName` or `PhysicalResourceId`, but not
 #' both. In addition, you can specify `LogicalResourceId` to filter the
@@ -1820,8 +1850,10 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
 #' 
 #' For example, for an Amazon Elastic Compute Cloud (EC2) instance,
 #' `PhysicalResourceId` corresponds to the `InstanceId`. You can pass the
-#' EC2 `InstanceId` to `DescribeStackResources` to find which stack the
-#' instance belongs to and what other resources are part of the stack.
+#' EC2 `InstanceId` to
+#' [`describe_stack_resources`][cloudformation_describe_stack_resources] to
+#' find which stack the instance belongs to and what other resources are
+#' part of the stack.
 #' 
 #' Required: Conditional. If you do not specify `PhysicalResourceId`, you
 #' must specify `StackName`.
@@ -1992,9 +2024,10 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
 #' @description
 #' Returns detailed information about a type that has been registered.
 #' 
-#' If you specify a `VersionId`, `DescribeType` returns information about
-#' that specific type version. Otherwise, it returns information about the
-#' default type version.
+#' If you specify a `VersionId`,
+#' [`describe_type`][cloudformation_describe_type] returns information
+#' about that specific type version. Otherwise, it returns information
+#' about the default type version.
 #'
 #' @usage
 #' cloudformation_describe_type(Type, TypeName, Arn, VersionId)
@@ -2014,9 +2047,10 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
 #' the end of the Amazon Resource Name (ARN) assigned to the type version
 #' when it is registered.
 #' 
-#' If you specify a `VersionId`, `DescribeType` returns information about
-#' that specific type version. Otherwise, it returns information about the
-#' default type version.
+#' If you specify a `VersionId`,
+#' [`describe_type`][cloudformation_describe_type] returns information
+#' about that specific type version. Otherwise, it returns information
+#' about the default type version.
 #'
 #' @section Request syntax:
 #' ```
@@ -2055,12 +2089,14 @@ cloudformation_describe_type <- function(Type = NULL, TypeName = NULL, Arn = NUL
 #' Returns information about a type's registration, including its current
 #' status and type and version identifiers.
 #' 
-#' When you initiate a registration request using ` <a>RegisterType</a> `,
-#' you can then use ` <a>DescribeTypeRegistration</a> ` to monitor the
-#' progress of that registration request.
+#' When you initiate a registration request using
+#' [`register_type`][cloudformation_register_type], you can then use
+#' [`describe_type_registration`][cloudformation_describe_type_registration]
+#' to monitor the progress of that registration request.
 #' 
-#' Once the registration request has completed, use ` <a>DescribeType</a> `
-#' to return detailed informaiton about a type.
+#' Once the registration request has completed, use
+#' [`describe_type`][cloudformation_describe_type] to return detailed
+#' informaiton about a type.
 #'
 #' @usage
 #' cloudformation_describe_type_registration(RegistrationToken)
@@ -2068,7 +2104,8 @@ cloudformation_describe_type <- function(Type = NULL, TypeName = NULL, Arn = NUL
 #' @param RegistrationToken &#91;required&#93; The identifier for this registration request.
 #' 
 #' This registration token is generated by CloudFormation when you initiate
-#' a registration request using ` <a>RegisterType</a> `.
+#' a registration request using
+#' [`register_type`][cloudformation_register_type].
 #'
 #' @section Request syntax:
 #' ```
@@ -2114,24 +2151,28 @@ cloudformation_describe_type_registration <- function(RegistrationToken) {
 #' Unregulated Configuration Changes to Stacks and
 #' Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 #' 
-#' Use `DetectStackDrift` to detect drift on all supported resources for a
-#' given stack, or DetectStackResourceDrift to detect drift on individual
-#' resources.
+#' Use [`detect_stack_drift`][cloudformation_detect_stack_drift] to detect
+#' drift on all supported resources for a given stack, or
+#' [`detect_stack_resource_drift`][cloudformation_detect_stack_resource_drift]
+#' to detect drift on individual resources.
 #' 
 #' For a list of stack resources that currently support drift detection,
 #' see [Resources that Support Drift
 #' Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html).
 #' 
-#' `DetectStackDrift` can take up to several minutes, depending on the
-#' number of resources contained within the stack. Use
-#' DescribeStackDriftDetectionStatus to monitor the progress of a detect
-#' stack drift operation. Once the drift detection operation has completed,
-#' use DescribeStackResourceDrifts to return drift information about the
-#' stack and its resources.
+#' [`detect_stack_drift`][cloudformation_detect_stack_drift] can take up to
+#' several minutes, depending on the number of resources contained within
+#' the stack. Use
+#' [`describe_stack_drift_detection_status`][cloudformation_describe_stack_drift_detection_status]
+#' to monitor the progress of a detect stack drift operation. Once the
+#' drift detection operation has completed, use
+#' [`describe_stack_resource_drifts`][cloudformation_describe_stack_resource_drifts]
+#' to return drift information about the stack and its resources.
 #' 
 #' When detecting drift on a stack, AWS CloudFormation does not detect
 #' drift on any nested stacks belonging to that stack. Perform
-#' `DetectStackDrift` directly on the nested stack itself.
+#' [`detect_stack_drift`][cloudformation_detect_stack_drift] directly on
+#' the nested stack itself.
 #'
 #' @usage
 #' cloudformation_detect_stack_drift(StackName, LogicalResourceIds)
@@ -2184,9 +2225,11 @@ cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NU
 #' [Detecting Unregulated Configuration Changes to Stacks and
 #' Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 #' 
-#' Use `DetectStackResourceDrift` to detect drift on individual resources,
-#' or DetectStackDrift to detect drift on all resources in a given stack
-#' that support drift detection.
+#' Use
+#' [`detect_stack_resource_drift`][cloudformation_detect_stack_resource_drift]
+#' to detect drift on individual resources, or
+#' [`detect_stack_drift`][cloudformation_detect_stack_drift] to detect
+#' drift on all resources in a given stack that support drift detection.
 #' 
 #' Resources that do not currently support drift detection cannot be
 #' checked. For a list of resources that support drift detection, see
@@ -2236,28 +2279,33 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 #' information, see [How CloudFormation Performs Drift Detection on a Stack
 #' Set](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html).
 #' 
-#' `DetectStackSetDrift` returns the `OperationId` of the stack set drift
-#' detection operation. Use this operation id with
-#' ` <a>DescribeStackSetOperation</a> ` to monitor the progress of the
-#' drift detection operation. The drift detection operation may take some
-#' time, depending on the number of stack instances included in the stack
-#' set, as well as the number of resources included in each stack.
+#' [`detect_stack_set_drift`][cloudformation_detect_stack_set_drift]
+#' returns the `OperationId` of the stack set drift detection operation.
+#' Use this operation id with
+#' [`describe_stack_set_operation`][cloudformation_describe_stack_set_operation]
+#' to monitor the progress of the drift detection operation. The drift
+#' detection operation may take some time, depending on the number of stack
+#' instances included in the stack set, as well as the number of resources
+#' included in each stack.
 #' 
 #' Once the operation has completed, use the following actions to return
 #' drift information:
 #' 
-#' -   Use ` <a>DescribeStackSet</a> ` to return detailed informaiton about
-#'     the stack set, including detailed information about the last
-#'     *completed* drift operation performed on the stack set. (Information
-#'     about drift operations that are in progress is not included.)
+#' -   Use [`describe_stack_set`][cloudformation_describe_stack_set] to
+#'     return detailed informaiton about the stack set, including detailed
+#'     information about the last *completed* drift operation performed on
+#'     the stack set. (Information about drift operations that are in
+#'     progress is not included.)
 #' 
-#' -   Use ` <a>ListStackInstances</a> ` to return a list of stack
-#'     instances belonging to the stack set, including the drift status and
-#'     last drift time checked of each instance.
+#' -   Use [`list_stack_instances`][cloudformation_list_stack_instances] to
+#'     return a list of stack instances belonging to the stack set,
+#'     including the drift status and last drift time checked of each
+#'     instance.
 #' 
-#' -   Use ` <a>DescribeStackInstance</a> ` to return detailed information
-#'     about a specific stack instance, including its drift status and last
-#'     drift time checked.
+#' -   Use
+#'     [`describe_stack_instance`][cloudformation_describe_stack_instance]
+#'     to return detailed information about a specific stack instance,
+#'     including its drift status and last drift time checked.
 #' 
 #' For more information on performing a drift detection operation on a
 #' stack set, see [Detecting Unmanaged Changes in Stack
@@ -2267,7 +2315,7 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 #' at one time.
 #' 
 #' To stop a drift detection stack set operation, use
-#' ` <a>StopStackSetOperation</a> `.
+#' [`stop_stack_set_operation`][cloudformation_stop_stack_set_operation].
 #'
 #' @usage
 #' cloudformation_detect_stack_set_drift(StackSetName,
@@ -2386,8 +2434,9 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
 #' @description
 #' Updates a stack using the input information that was provided when the
 #' specified change set was created. After the call successfully completes,
-#' AWS CloudFormation starts updating the stack. Use the DescribeStacks
-#' action to view the status of the update.
+#' AWS CloudFormation starts updating the stack. Use the
+#' [`describe_stacks`][cloudformation_describe_stacks] action to view the
+#' status of the update.
 #' 
 #' When you execute a change set, AWS CloudFormation deletes all other
 #' change sets associated with the stack because they aren't valid for the
@@ -2408,10 +2457,12 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
 #' specified stack.
 #' @param StackName If you specified the name of a change set, specify the stack name or ID
 #' (ARN) that is associated with the change set you want to execute.
-#' @param ClientRequestToken A unique identifier for this `ExecuteChangeSet` request. Specify this
-#' token if you plan to retry requests so that AWS CloudFormation knows
-#' that you're not attempting to execute a change set to update a stack
-#' with the same name. You might retry `ExecuteChangeSet` requests to
+#' @param ClientRequestToken A unique identifier for this
+#' [`execute_change_set`][cloudformation_execute_change_set] request.
+#' Specify this token if you plan to retry requests so that AWS
+#' CloudFormation knows that you're not attempting to execute a change set
+#' to update a stack with the same name. You might retry
+#' [`execute_change_set`][cloudformation_execute_change_set] requests to
 #' ensure that AWS CloudFormation successfully received them.
 #'
 #' @section Request syntax:
@@ -2550,17 +2601,21 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #'
 #' @description
 #' Returns information about a new or existing template. The
-#' `GetTemplateSummary` action is useful for viewing parameter information,
-#' such as default parameter values and parameter types, before you create
-#' or update a stack or stack set.
+#' [`get_template_summary`][cloudformation_get_template_summary] action is
+#' useful for viewing parameter information, such as default parameter
+#' values and parameter types, before you create or update a stack or stack
+#' set.
 #' 
-#' You can use the `GetTemplateSummary` action when you submit a template,
-#' or you can get template information for a stack set, or a running or
-#' deleted stack.
+#' You can use the
+#' [`get_template_summary`][cloudformation_get_template_summary] action
+#' when you submit a template, or you can get template information for a
+#' stack set, or a running or deleted stack.
 #' 
-#' For deleted stacks, `GetTemplateSummary` returns the template
-#' information for up to 90 days after the stack has been deleted. If the
-#' template does not exist, a `ValidationError` is returned.
+#' For deleted stacks,
+#' [`get_template_summary`][cloudformation_get_template_summary] returns
+#' the template information for up to 90 days after the stack has been
+#' deleted. If the template does not exist, a `ValidationError` is
+#' returned.
 #'
 #' @usage
 #' cloudformation_get_template_summary(TemplateBody, TemplateURL,
@@ -2636,8 +2691,9 @@ cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL
 #'
 #' @param StackName &#91;required&#93; The name or the Amazon Resource Name (ARN) of the stack for which you
 #' want to list change sets.
-#' @param NextToken A string (provided by the ListChangeSets response output) that
-#' identifies the next page of change sets that you want to retrieve.
+#' @param NextToken A string (provided by the
+#' [`list_change_sets`][cloudformation_list_change_sets] response output)
+#' that identifies the next page of change sets that you want to retrieve.
 #'
 #' @section Request syntax:
 #' ```
@@ -2683,8 +2739,9 @@ cloudformation_list_change_sets <- function(StackName, NextToken = NULL) {
 #' @usage
 #' cloudformation_list_exports(NextToken)
 #'
-#' @param NextToken A string (provided by the ListExports response output) that identifies
-#' the next page of exported output values that you asked to retrieve.
+#' @param NextToken A string (provided by the [`list_exports`][cloudformation_list_exports]
+#' response output) that identifies the next page of exported output values
+#' that you asked to retrieve.
 #'
 #' @section Request syntax:
 #' ```
@@ -2719,7 +2776,7 @@ cloudformation_list_exports <- function(NextToken = NULL) {
 #' Lists all stacks that are importing an exported output value. To modify
 #' or remove an exported output value, first use this action to see which
 #' stacks are using it. To see the exported output values in your account,
-#' see ListExports.
+#' see [`list_exports`][cloudformation_list_exports].
 #' 
 #' For more information about importing an exported output value, see the
 #' [`Fn::ImportValue`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
@@ -2730,9 +2787,9 @@ cloudformation_list_exports <- function(NextToken = NULL) {
 #'
 #' @param ExportName &#91;required&#93; The name of the exported output value. AWS CloudFormation returns the
 #' stack names that are importing this value.
-#' @param NextToken A string (provided by the ListImports response output) that identifies
-#' the next page of stacks that are importing the specified exported output
-#' value.
+#' @param NextToken A string (provided by the [`list_imports`][cloudformation_list_imports]
+#' response output) that identifies the next page of stacks that are
+#' importing the specified exported output value.
 #'
 #' @section Request syntax:
 #' ```
@@ -2779,10 +2836,11 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 #' instances for.
 #' @param NextToken If the previous request didn't return all of the remaining results, the
 #' response's `NextToken` parameter value is set to a token. To retrieve
-#' the next set of results, call `ListStackInstances` again and assign that
-#' token to the request object's `NextToken` parameter. If there are no
-#' remaining results, the previous response object's `NextToken` parameter
-#' is set to `null`.
+#' the next set of results, call
+#' [`list_stack_instances`][cloudformation_list_stack_instances] again and
+#' assign that token to the request object's `NextToken` parameter. If
+#' there are no remaining results, the previous response object's
+#' `NextToken` parameter is set to `null`.
 #' @param MaxResults The maximum number of results to be returned with a single call. If the
 #' number of available results exceeds this maximum, the response includes
 #' a `NextToken` value that you can assign to the `NextToken` request
@@ -2893,7 +2951,8 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
 #' @param OperationId &#91;required&#93; The ID of the stack set operation.
 #' @param NextToken If the previous request didn't return all of the remaining results, the
 #' response object's `NextToken` parameter value is set to a token. To
-#' retrieve the next set of results, call `ListStackSetOperationResults`
+#' retrieve the next set of results, call
+#' [`list_stack_set_operation_results`][cloudformation_list_stack_set_operation_results]
 #' again and assign that token to the request object's `NextToken`
 #' parameter. If there are no remaining results, the previous response
 #' object's `NextToken` parameter is set to `null`.
@@ -2946,9 +3005,10 @@ cloudformation_list_stack_set_operation_results <- function(StackSetName, Operat
 #' @param NextToken If the previous paginated request didn't return all of the remaining
 #' results, the response object's `NextToken` parameter value is set to a
 #' token. To retrieve the next set of results, call
-#' `ListStackSetOperations` again and assign that token to the request
-#' object's `NextToken` parameter. If there are no remaining results, the
-#' previous response object's `NextToken` parameter is set to `null`.
+#' [`list_stack_set_operations`][cloudformation_list_stack_set_operations]
+#' again and assign that token to the request object's `NextToken`
+#' parameter. If there are no remaining results, the previous response
+#' object's `NextToken` parameter is set to `null`.
 #' @param MaxResults The maximum number of results to be returned with a single call. If the
 #' number of available results exceeds this maximum, the response includes
 #' a `NextToken` value that you can assign to the `NextToken` request
@@ -2995,10 +3055,11 @@ cloudformation_list_stack_set_operations <- function(StackSetName, NextToken = N
 #'
 #' @param NextToken If the previous paginated request didn't return all of the remaining
 #' results, the response object's `NextToken` parameter value is set to a
-#' token. To retrieve the next set of results, call `ListStackSets` again
-#' and assign that token to the request object's `NextToken` parameter. If
-#' there are no remaining results, the previous response object's
-#' `NextToken` parameter is set to `null`.
+#' token. To retrieve the next set of results, call
+#' [`list_stack_sets`][cloudformation_list_stack_sets] again and assign
+#' that token to the request object's `NextToken` parameter. If there are
+#' no remaining results, the previous response object's `NextToken`
+#' parameter is set to `null`.
 #' @param MaxResults The maximum number of results to be returned with a single call. If the
 #' number of available results exceeds this maximum, the response includes
 #' a `NextToken` value that you can assign to the `NextToken` request
@@ -3402,11 +3463,12 @@ cloudformation_record_handler_progress <- function(BearerToken, OperationStatus,
 #' 
 #' You can have a maximum of 50 resource type versions registered at a
 #' time. This maximum is per account and per region. Use
-#' [DeregisterType](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeregisterType.html)
-#' to deregister specific resource type versions if necessary.
+#' [`deregister_type`][cloudformation_deregister_type] to deregister
+#' specific resource type versions if necessary.
 #' 
 #' Once you have initiated a registration request using
-#' ` <a>RegisterType</a> `, you can use ` <a>DescribeTypeRegistration</a> `
+#' [`register_type`][cloudformation_register_type], you can use
+#' [`describe_type_registration`][cloudformation_describe_type_registration]
 #' to monitor the progress of the registration request.
 #'
 #' @usage
@@ -3711,10 +3773,11 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #' @description
 #' Updates a stack as specified in the template. After the call completes
 #' successfully, the stack update starts. You can check the status of the
-#' stack via the DescribeStacks action.
+#' stack via the [`describe_stacks`][cloudformation_describe_stacks]
+#' action.
 #' 
 #' To get a copy of the template for an existing stack, you can use the
-#' GetTemplate action.
+#' [`get_template`][cloudformation_get_template] action.
 #' 
 #' For more information about creating an update template, updating a
 #' stack, and monitoring the progress of the update, see [Updating a
@@ -3903,17 +3966,18 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #' If you don't specify this parameter, AWS CloudFormation doesn't modify
 #' the stack's tags. If you specify an empty value, AWS CloudFormation
 #' removes all associated tags.
-#' @param ClientRequestToken A unique identifier for this `UpdateStack` request. Specify this token
-#' if you plan to retry requests so that AWS CloudFormation knows that
-#' you're not attempting to update a stack with the same name. You might
-#' retry `UpdateStack` requests to ensure that AWS CloudFormation
-#' successfully received them.
+#' @param ClientRequestToken A unique identifier for this
+#' [`update_stack`][cloudformation_update_stack] request. Specify this
+#' token if you plan to retry requests so that AWS CloudFormation knows
+#' that you're not attempting to update a stack with the same name. You
+#' might retry [`update_stack`][cloudformation_update_stack] requests to
+#' ensure that AWS CloudFormation successfully received them.
 #' 
 #' All events triggered by a given stack operation are assigned the same
 #' client request token, which you can use to track operations. For
-#' example, if you execute a `CreateStack` operation with the token
-#' `token1`, then all the `StackEvents` generated by that operation will
-#' have `ClientRequestToken` set as `token1`.
+#' example, if you execute a [`create_stack`][cloudformation_create_stack]
+#' operation with the token `token1`, then all the `StackEvents` generated
+#' by that operation will have `ClientRequestToken` set as `token1`.
 #' 
 #' In the console, stack operations display the client request token on the
 #' Events tab. Stack operations that are initiated from the console use the
@@ -4001,22 +4065,21 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 #' 
 #' You can only update stack instances in Regions and accounts where they
 #' already exist; to create additional stack instances, use
-#' [CreateStackInstances](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html).
+#' [`create_stack_instances`][cloudformation_create_stack_instances].
 #' 
 #' During stack set updates, any parameters overridden for a stack instance
 #' are not updated, but retain their overridden value.
 #' 
 #' You can only update the parameter *values* that are specified in the
 #' stack set; to add or delete a parameter itself, use
-#' [UpdateStackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
-#' to update the stack set template. If you add a parameter to a template,
-#' before you can override the parameter value specified in the stack set
-#' you must first use
-#' [UpdateStackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
-#' to update all stack instances with the updated template and parameter
-#' value specified in the stack set. Once a stack instance has been updated
-#' with the new parameter, you can then override the parameter value using
-#' `UpdateStackInstances`.
+#' [`update_stack_set`][cloudformation_update_stack_set] to update the
+#' stack set template. If you add a parameter to a template, before you can
+#' override the parameter value specified in the stack set you must first
+#' use [`update_stack_set`][cloudformation_update_stack_set] to update all
+#' stack instances with the updated template and parameter value specified
+#' in the stack set. Once a stack instance has been updated with the new
+#' parameter, you can then override the parameter value using
+#' [`update_stack_instances`][cloudformation_update_stack_instances].
 #'
 #' @usage
 #' cloudformation_update_stack_instances(StackSetName, Accounts,
@@ -4073,15 +4136,15 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 #' instance are not updated, but retain their overridden value.
 #' 
 #' You can only override the parameter *values* that are specified in the
-#' stack set; to add or delete a parameter itself, use `UpdateStackSet` to
-#' update the stack set template. If you add a parameter to a template,
-#' before you can override the parameter value specified in the stack set
-#' you must first use
-#' [UpdateStackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html)
-#' to update all stack instances with the updated template and parameter
-#' value specified in the stack set. Once a stack instance has been updated
-#' with the new parameter, you can then override the parameter value using
-#' `UpdateStackInstances`.
+#' stack set; to add or delete a parameter itself, use
+#' [`update_stack_set`][cloudformation_update_stack_set] to update the
+#' stack set template. If you add a parameter to a template, before you can
+#' override the parameter value specified in the stack set you must first
+#' use [`update_stack_set`][cloudformation_update_stack_set] to update all
+#' stack instances with the updated template and parameter value specified
+#' in the stack set. Once a stack instance has been updated with the new
+#' parameter, you can then override the parameter value using
+#' [`update_stack_instances`][cloudformation_update_stack_instances].
 #' @param OperationPreferences Preferences for how AWS CloudFormation performs this stack set
 #' operation.
 #' @param OperationId The unique identifier for this stack set operation.
@@ -4164,8 +4227,8 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' Even if the stack set operation created by updating the stack set fails
 #' (completely or partially, below or above a specified failure tolerance),
 #' the stack set is updated with your changes. Subsequent
-#' CreateStackInstances calls on the specified stack set use the updated
-#' stack set.
+#' [`create_stack_instances`][cloudformation_create_stack_instances] calls
+#' on the specified stack set use the updated stack set.
 #'
 #' @usage
 #' cloudformation_update_stack_set(StackSetName, Description, TemplateBody,
@@ -4282,13 +4345,15 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' -   If you specify an empty value, AWS CloudFormation removes all
 #'     currently associated tags.
 #' 
-#' If you specify new tags as part of an `UpdateStackSet` action, AWS
+#' If you specify new tags as part of an
+#' [`update_stack_set`][cloudformation_update_stack_set] action, AWS
 #' CloudFormation checks to see if you have the required IAM permission to
 #' tag resources. If you omit tags that are currently associated with the
 #' stack set from the list of tags you specify, AWS CloudFormation assumes
 #' that you want to remove those tags from the stack set, and checks to see
 #' if you have permission to untag resources. If you don't have the
-#' necessary permission(s), the entire `UpdateStackSet` action fails with
+#' necessary permission(s), the entire
+#' [`update_stack_set`][cloudformation_update_stack_set] action fails with
 #' an `access denied` error, and the stack set is not updated.
 #' @param OperationPreferences Preferences for how AWS CloudFormation performs this stack set
 #' operation.

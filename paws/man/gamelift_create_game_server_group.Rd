@@ -101,9 +101,11 @@ are developer-defined key-value pairs. Tagging AWS resources is useful
 for resource management, access management, and cost allocation. For
 more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
 in the \emph{AWS General Reference}. Once the resource is created, you can
-use TagResource, UntagResource, and ListTagsForResource to add, remove,
-and view tags, respectively. The maximum tag limit may be lower than
-stated. See the AWS General Reference for actual tagging limits.}
+use \code{\link[=gamelift_tag_resource]{tag_resource}},
+\code{\link[=gamelift_untag_resource]{untag_resource}}, and
+\code{\link[=gamelift_list_tags_for_resource]{list_tags_for_resource}} to add,
+remove, and view tags, respectively. The maximum tag limit may be lower
+than stated. See the AWS General Reference for actual tagging limits.}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -150,14 +152,14 @@ optimize for availability and cost.
 
 \strong{Related operations}
 \itemize{
-\item CreateGameServerGroup
-\item ListGameServerGroups
-\item DescribeGameServerGroup
-\item UpdateGameServerGroup
-\item DeleteGameServerGroup
-\item ResumeGameServerGroup
-\item SuspendGameServerGroup
-\item DescribeGameServerInstances
+\item \code{\link[=gamelift_create_game_server_group]{create_game_server_group}}
+\item \code{\link[=gamelift_list_game_server_groups]{list_game_server_groups}}
+\item \code{\link[=gamelift_describe_game_server_group]{describe_game_server_group}}
+\item \code{\link[=gamelift_update_game_server_group]{update_game_server_group}}
+\item \code{\link[=gamelift_delete_game_server_group]{delete_game_server_group}}
+\item \code{\link[=gamelift_resume_game_server_group]{resume_game_server_group}}
+\item \code{\link[=gamelift_suspend_game_server_group]{suspend_game_server_group}}
+\item \code{\link[=gamelift_describe_game_server_instances]{describe_game_server_instances}}
 }
 }
 \section{Request syntax}{

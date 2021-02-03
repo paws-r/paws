@@ -8,8 +8,8 @@ NULL
 #' @description
 #' Adds one or more tags to an object, up to a limit of 10. Each tag
 #' consists of a key and an optional value. If you add a tag using a key
-#' that is already associated with the ML object, `AddTags` updates the
-#' tag's value.
+#' that is already associated with the ML object,
+#' [`add_tags`][machinelearning_add_tags] updates the tag's value.
 #'
 #' @usage
 #' machinelearning_add_tags(Tags, ResourceId, ResourceType)
@@ -63,15 +63,18 @@ machinelearning_add_tags <- function(Tags, ResourceId, ResourceType) {
 #' and the data files referenced by the `DataSource` as information
 #' sources.
 #' 
-#' `CreateBatchPrediction` is an asynchronous operation. In response to
-#' `CreateBatchPrediction`, Amazon Machine Learning (Amazon ML) immediately
-#' returns and sets the `BatchPrediction` status to `PENDING`. After the
-#' `BatchPrediction` completes, Amazon ML sets the status to `COMPLETED`.
+#' [`create_batch_prediction`][machinelearning_create_batch_prediction] is
+#' an asynchronous operation. In response to
+#' [`create_batch_prediction`][machinelearning_create_batch_prediction],
+#' Amazon Machine Learning (Amazon ML) immediately returns and sets the
+#' `BatchPrediction` status to `PENDING`. After the `BatchPrediction`
+#' completes, Amazon ML sets the status to `COMPLETED`.
 #' 
-#' You can poll for status updates by using the GetBatchPrediction
-#' operation and checking the `Status` parameter of the result. After the
-#' `COMPLETED` status appears, the results are available in the location
-#' specified by the `OutputUri` parameter.
+#' You can poll for status updates by using the
+#' [`get_batch_prediction`][machinelearning_get_batch_prediction] operation
+#' and checking the `Status` parameter of the result. After the `COMPLETED`
+#' status appears, the results are available in the location specified by
+#' the `OutputUri` parameter.
 #'
 #' @usage
 #' machinelearning_create_batch_prediction(BatchPredictionId,
@@ -131,20 +134,28 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' @description
 #' Creates a `DataSource` object from an [Amazon Relational Database
 #' Service](https://aws.amazon.com/rds/) (Amazon RDS). A `DataSource`
-#' references data that can be used to perform `CreateMLModel`,
-#' `CreateEvaluation`, or `CreateBatchPrediction` operations.
+#' references data that can be used to perform
+#' [`create_ml_model`][machinelearning_create_ml_model],
+#' [`create_evaluation`][machinelearning_create_evaluation], or
+#' [`create_batch_prediction`][machinelearning_create_batch_prediction]
+#' operations.
 #' 
-#' `CreateDataSourceFromRDS` is an asynchronous operation. In response to
-#' `CreateDataSourceFromRDS`, Amazon Machine Learning (Amazon ML)
-#' immediately returns and sets the `DataSource` status to `PENDING`. After
-#' the `DataSource` is created and ready for use, Amazon ML sets the
-#' `Status` parameter to `COMPLETED`. `DataSource` in the `COMPLETED` or
-#' `PENDING` state can be used only to perform `&gt;CreateMLModel`&gt;,
-#' `CreateEvaluation`, or `CreateBatchPrediction` operations.
+#' [`create_data_source_from_rds`][machinelearning_create_data_source_from_rds]
+#' is an asynchronous operation. In response to
+#' [`create_data_source_from_rds`][machinelearning_create_data_source_from_rds],
+#' Amazon Machine Learning (Amazon ML) immediately returns and sets the
+#' `DataSource` status to `PENDING`. After the `DataSource` is created and
+#' ready for use, Amazon ML sets the `Status` parameter to `COMPLETED`.
+#' `DataSource` in the `COMPLETED` or `PENDING` state can be used only to
+#' perform `>CreateMLModel`&gt;,
+#' [`create_evaluation`][machinelearning_create_evaluation], or
+#' [`create_batch_prediction`][machinelearning_create_batch_prediction]
+#' operations.
 #' 
 #' If Amazon ML cannot accept the input source, it sets the `Status`
 #' parameter to `FAILED` and includes an error message in the `Message`
-#' attribute of the `GetDataSource` operation response.
+#' attribute of the [`get_data_source`][machinelearning_get_data_source]
+#' operation response.
 #'
 #' @usage
 #' machinelearning_create_data_source_from_rds(DataSourceId,
@@ -267,20 +278,27 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
 #' @description
 #' Creates a `DataSource` from a database hosted on an Amazon Redshift
 #' cluster. A `DataSource` references data that can be used to perform
-#' either `CreateMLModel`, `CreateEvaluation`, or `CreateBatchPrediction`
+#' either [`create_ml_model`][machinelearning_create_ml_model],
+#' [`create_evaluation`][machinelearning_create_evaluation], or
+#' [`create_batch_prediction`][machinelearning_create_batch_prediction]
 #' operations.
 #' 
-#' `CreateDataSourceFromRedshift` is an asynchronous operation. In response
-#' to `CreateDataSourceFromRedshift`, Amazon Machine Learning (Amazon ML)
-#' immediately returns and sets the `DataSource` status to `PENDING`. After
-#' the `DataSource` is created and ready for use, Amazon ML sets the
-#' `Status` parameter to `COMPLETED`. `DataSource` in `COMPLETED` or
-#' `PENDING` states can be used to perform only `CreateMLModel`,
-#' `CreateEvaluation`, or `CreateBatchPrediction` operations.
+#' [`create_data_source_from_redshift`][machinelearning_create_data_source_from_redshift]
+#' is an asynchronous operation. In response to
+#' [`create_data_source_from_redshift`][machinelearning_create_data_source_from_redshift],
+#' Amazon Machine Learning (Amazon ML) immediately returns and sets the
+#' `DataSource` status to `PENDING`. After the `DataSource` is created and
+#' ready for use, Amazon ML sets the `Status` parameter to `COMPLETED`.
+#' `DataSource` in `COMPLETED` or `PENDING` states can be used to perform
+#' only [`create_ml_model`][machinelearning_create_ml_model],
+#' [`create_evaluation`][machinelearning_create_evaluation], or
+#' [`create_batch_prediction`][machinelearning_create_batch_prediction]
+#' operations.
 #' 
 #' If Amazon ML can't accept the input source, it sets the `Status`
 #' parameter to `FAILED` and includes an error message in the `Message`
-#' attribute of the `GetDataSource` operation response.
+#' attribute of the [`get_data_source`][machinelearning_get_data_source]
+#' operation response.
 #' 
 #' The observations should be contained in the database hosted on an Amazon
 #' Redshift cluster and should be specified by a `SelectSqlQuery` query.
@@ -298,10 +316,11 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
 #' 
 #' You can't change an existing datasource, but you can copy and modify the
 #' settings from an existing Amazon Redshift datasource to create a new
-#' datasource. To do so, call `GetDataSource` for an existing datasource
-#' and copy the values to a `CreateDataSource` call. Change the settings
-#' that you want to change and make sure that all required fields have the
-#' appropriate values.
+#' datasource. To do so, call
+#' [`get_data_source`][machinelearning_get_data_source] for an existing
+#' datasource and copy the values to a `CreateDataSource` call. Change the
+#' settings that you want to change and make sure that all required fields
+#' have the appropriate values.
 #'
 #' @usage
 #' machinelearning_create_data_source_from_redshift(DataSourceId,
@@ -402,20 +421,28 @@ machinelearning_create_data_source_from_redshift <- function(DataSourceId, DataS
 #'
 #' @description
 #' Creates a `DataSource` object. A `DataSource` references data that can
-#' be used to perform `CreateMLModel`, `CreateEvaluation`, or
-#' `CreateBatchPrediction` operations.
+#' be used to perform [`create_ml_model`][machinelearning_create_ml_model],
+#' [`create_evaluation`][machinelearning_create_evaluation], or
+#' [`create_batch_prediction`][machinelearning_create_batch_prediction]
+#' operations.
 #' 
-#' `CreateDataSourceFromS3` is an asynchronous operation. In response to
-#' `CreateDataSourceFromS3`, Amazon Machine Learning (Amazon ML)
-#' immediately returns and sets the `DataSource` status to `PENDING`. After
-#' the `DataSource` has been created and is ready for use, Amazon ML sets
-#' the `Status` parameter to `COMPLETED`. `DataSource` in the `COMPLETED`
-#' or `PENDING` state can be used to perform only `CreateMLModel`,
-#' `CreateEvaluation` or `CreateBatchPrediction` operations.
+#' [`create_data_source_from_s3`][machinelearning_create_data_source_from_s3]
+#' is an asynchronous operation. In response to
+#' [`create_data_source_from_s3`][machinelearning_create_data_source_from_s3],
+#' Amazon Machine Learning (Amazon ML) immediately returns and sets the
+#' `DataSource` status to `PENDING`. After the `DataSource` has been
+#' created and is ready for use, Amazon ML sets the `Status` parameter to
+#' `COMPLETED`. `DataSource` in the `COMPLETED` or `PENDING` state can be
+#' used to perform only
+#' [`create_ml_model`][machinelearning_create_ml_model],
+#' [`create_evaluation`][machinelearning_create_evaluation] or
+#' [`create_batch_prediction`][machinelearning_create_batch_prediction]
+#' operations.
 #' 
 #' If Amazon ML can't accept the input source, it sets the `Status`
 #' parameter to `FAILED` and includes an error message in the `Message`
-#' attribute of the `GetDataSource` operation response.
+#' attribute of the [`get_data_source`][machinelearning_get_data_source]
+#' operation response.
 #' 
 #' The observation data used in a `DataSource` should be ready to use; that
 #' is, it should have a consistent structure, and missing data values
@@ -508,14 +535,16 @@ machinelearning_create_data_source_from_s3 <- function(DataSourceId, DataSourceN
 #' RegressionRMSE or MulticlassAvgFScore based on the corresponding
 #' `MLModelType`: `BINARY`, `REGRESSION` or `MULTICLASS`.
 #' 
-#' `CreateEvaluation` is an asynchronous operation. In response to
-#' `CreateEvaluation`, Amazon Machine Learning (Amazon ML) immediately
-#' returns and sets the evaluation status to `PENDING`. After the
-#' `Evaluation` is created and ready for use, Amazon ML sets the status to
-#' `COMPLETED`.
+#' [`create_evaluation`][machinelearning_create_evaluation] is an
+#' asynchronous operation. In response to
+#' [`create_evaluation`][machinelearning_create_evaluation], Amazon Machine
+#' Learning (Amazon ML) immediately returns and sets the evaluation status
+#' to `PENDING`. After the `Evaluation` is created and ready for use,
+#' Amazon ML sets the status to `COMPLETED`.
 #' 
-#' You can use the `GetEvaluation` operation to check progress of the
-#' evaluation during the creation operation.
+#' You can use the [`get_evaluation`][machinelearning_get_evaluation]
+#' operation to check progress of the evaluation during the creation
+#' operation.
 #'
 #' @usage
 #' machinelearning_create_evaluation(EvaluationId, EvaluationName,
@@ -571,18 +600,24 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
 #' `MLModelName` and the `ScoreThreshold` in an `MLModel` without creating
 #' a new `MLModel`.
 #' 
-#' `CreateMLModel` is an asynchronous operation. In response to
-#' `CreateMLModel`, Amazon Machine Learning (Amazon ML) immediately returns
-#' and sets the `MLModel` status to `PENDING`. After the `MLModel` has been
-#' created and ready is for use, Amazon ML sets the status to `COMPLETED`.
+#' [`create_ml_model`][machinelearning_create_ml_model] is an asynchronous
+#' operation. In response to
+#' [`create_ml_model`][machinelearning_create_ml_model], Amazon Machine
+#' Learning (Amazon ML) immediately returns and sets the `MLModel` status
+#' to `PENDING`. After the `MLModel` has been created and ready is for use,
+#' Amazon ML sets the status to `COMPLETED`.
 #' 
-#' You can use the `GetMLModel` operation to check the progress of the
-#' `MLModel` during the creation operation.
+#' You can use the [`get_ml_model`][machinelearning_get_ml_model] operation
+#' to check the progress of the `MLModel` during the creation operation.
 #' 
-#' `CreateMLModel` requires a `DataSource` with computed statistics, which
-#' can be created by setting `ComputeStatistics` to `true` in
-#' `CreateDataSourceFromRDS`, `CreateDataSourceFromS3`, or
-#' `CreateDataSourceFromRedshift` operations.
+#' [`create_ml_model`][machinelearning_create_ml_model] requires a
+#' `DataSource` with computed statistics, which can be created by setting
+#' `ComputeStatistics` to `true` in
+#' [`create_data_source_from_rds`][machinelearning_create_data_source_from_rds],
+#' [`create_data_source_from_s3`][machinelearning_create_data_source_from_s3],
+#' or
+#' [`create_data_source_from_redshift`][machinelearning_create_data_source_from_redshift]
+#' operations.
 #'
 #' @usage
 #' machinelearning_create_ml_model(MLModelId, MLModelName, MLModelType,
@@ -731,12 +766,15 @@ machinelearning_create_realtime_endpoint <- function(MLModelId) {
 #' Assigns the DELETED status to a `BatchPrediction`, rendering it
 #' unusable.
 #' 
-#' After using the `DeleteBatchPrediction` operation, you can use the
-#' GetBatchPrediction operation to verify that the status of the
-#' `BatchPrediction` changed to DELETED.
+#' After using the
+#' [`delete_batch_prediction`][machinelearning_delete_batch_prediction]
+#' operation, you can use the
+#' [`get_batch_prediction`][machinelearning_get_batch_prediction] operation
+#' to verify that the status of the `BatchPrediction` changed to DELETED.
 #' 
-#' **Caution:** The result of the `DeleteBatchPrediction` operation is
-#' irreversible.
+#' **Caution:** The result of the
+#' [`delete_batch_prediction`][machinelearning_delete_batch_prediction]
+#' operation is irreversible.
 #'
 #' @usage
 #' machinelearning_delete_batch_prediction(BatchPredictionId)
@@ -775,11 +813,14 @@ machinelearning_delete_batch_prediction <- function(BatchPredictionId) {
 #' @description
 #' Assigns the DELETED status to a `DataSource`, rendering it unusable.
 #' 
-#' After using the `DeleteDataSource` operation, you can use the
-#' GetDataSource operation to verify that the status of the `DataSource`
-#' changed to DELETED.
+#' After using the
+#' [`delete_data_source`][machinelearning_delete_data_source] operation,
+#' you can use the [`get_data_source`][machinelearning_get_data_source]
+#' operation to verify that the status of the `DataSource` changed to
+#' DELETED.
 #' 
-#' **Caution:** The results of the `DeleteDataSource` operation are
+#' **Caution:** The results of the
+#' [`delete_data_source`][machinelearning_delete_data_source] operation are
 #' irreversible.
 #'
 #' @usage
@@ -819,13 +860,16 @@ machinelearning_delete_data_source <- function(DataSourceId) {
 #' @description
 #' Assigns the `DELETED` status to an `Evaluation`, rendering it unusable.
 #' 
-#' After invoking the `DeleteEvaluation` operation, you can use the
-#' `GetEvaluation` operation to verify that the status of the `Evaluation`
-#' changed to `DELETED`.
+#' After invoking the
+#' [`delete_evaluation`][machinelearning_delete_evaluation] operation, you
+#' can use the [`get_evaluation`][machinelearning_get_evaluation] operation
+#' to verify that the status of the `Evaluation` changed to `DELETED`.
 #' 
 #' Caution
 #' 
-#' The results of the `DeleteEvaluation` operation are irreversible.
+#' The results of the
+#' [`delete_evaluation`][machinelearning_delete_evaluation] operation are
+#' irreversible.
 #'
 #' @usage
 #' machinelearning_delete_evaluation(EvaluationId)
@@ -864,10 +908,13 @@ machinelearning_delete_evaluation <- function(EvaluationId) {
 #' @description
 #' Assigns the `DELETED` status to an `MLModel`, rendering it unusable.
 #' 
-#' After using the `DeleteMLModel` operation, you can use the `GetMLModel`
-#' operation to verify that the status of the `MLModel` changed to DELETED.
+#' After using the [`delete_ml_model`][machinelearning_delete_ml_model]
+#' operation, you can use the
+#' [`get_ml_model`][machinelearning_get_ml_model] operation to verify that
+#' the status of the `MLModel` changed to DELETED.
 #' 
-#' **Caution:** The result of the `DeleteMLModel` operation is
+#' **Caution:** The result of the
+#' [`delete_ml_model`][machinelearning_delete_ml_model] operation is
 #' irreversible.
 #'
 #' @usage
@@ -1195,8 +1242,9 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
 #' the request
 #'
 #' @description
-#' Returns a list of `DescribeEvaluations` that match the search criteria
-#' in the request.
+#' Returns a list of
+#' [`describe_evaluations`][machinelearning_describe_evaluations] that
+#' match the search criteria in the request.
 #'
 #' @usage
 #' machinelearning_describe_evaluations(FilterVariable, EQ, GT, LT, GE, LE,
@@ -1486,16 +1534,17 @@ machinelearning_get_batch_prediction <- function(BatchPredictionId) {
 #' Returns a `DataSource` that includes metadata and data file information,
 #' as well as the current status of the `DataSource`.
 #' 
-#' `GetDataSource` provides results in normal or verbose format. The
-#' verbose format adds the schema description and the list of files pointed
-#' to by the DataSource to the normal format.
+#' [`get_data_source`][machinelearning_get_data_source] provides results in
+#' normal or verbose format. The verbose format adds the schema description
+#' and the list of files pointed to by the DataSource to the normal format.
 #'
 #' @usage
 #' machinelearning_get_data_source(DataSourceId, Verbose)
 #'
 #' @param DataSourceId &#91;required&#93; The ID assigned to the `DataSource` at creation.
-#' @param Verbose Specifies whether the `GetDataSource` operation should return
-#' `DataSourceSchema`.
+#' @param Verbose Specifies whether the
+#' [`get_data_source`][machinelearning_get_data_source] operation should
+#' return `DataSourceSchema`.
 #' 
 #' If true, `DataSourceSchema` is returned.
 #' 
@@ -1577,13 +1626,15 @@ machinelearning_get_evaluation <- function(EvaluationId) {
 #' Returns an `MLModel` that includes detailed metadata, data source
 #' information, and the current status of the `MLModel`.
 #' 
-#' `GetMLModel` provides results in normal or verbose format.
+#' [`get_ml_model`][machinelearning_get_ml_model] provides results in
+#' normal or verbose format.
 #'
 #' @usage
 #' machinelearning_get_ml_model(MLModelId, Verbose)
 #'
 #' @param MLModelId &#91;required&#93; The ID assigned to the `MLModel` at creation.
-#' @param Verbose Specifies whether the `GetMLModel` operation should return `Recipe`.
+#' @param Verbose Specifies whether the [`get_ml_model`][machinelearning_get_ml_model]
+#' operation should return `Recipe`.
 #' 
 #' If true, `Recipe` is returned.
 #' 
@@ -1671,8 +1722,9 @@ machinelearning_predict <- function(MLModelId, Record, PredictEndpoint) {
 #' @description
 #' Updates the `BatchPredictionName` of a `BatchPrediction`.
 #' 
-#' You can use the `GetBatchPrediction` operation to view the contents of
-#' the updated data element.
+#' You can use the
+#' [`get_batch_prediction`][machinelearning_get_batch_prediction] operation
+#' to view the contents of the updated data element.
 #'
 #' @usage
 #' machinelearning_update_batch_prediction(BatchPredictionId,
@@ -1714,8 +1766,8 @@ machinelearning_update_batch_prediction <- function(BatchPredictionId, BatchPred
 #' @description
 #' Updates the `DataSourceName` of a `DataSource`.
 #' 
-#' You can use the `GetDataSource` operation to view the contents of the
-#' updated data element.
+#' You can use the [`get_data_source`][machinelearning_get_data_source]
+#' operation to view the contents of the updated data element.
 #'
 #' @usage
 #' machinelearning_update_data_source(DataSourceId, DataSourceName)
@@ -1757,8 +1809,8 @@ machinelearning_update_data_source <- function(DataSourceId, DataSourceName) {
 #' @description
 #' Updates the `EvaluationName` of an `Evaluation`.
 #' 
-#' You can use the `GetEvaluation` operation to view the contents of the
-#' updated data element.
+#' You can use the [`get_evaluation`][machinelearning_get_evaluation]
+#' operation to view the contents of the updated data element.
 #'
 #' @usage
 #' machinelearning_update_evaluation(EvaluationId, EvaluationName)
@@ -1800,8 +1852,8 @@ machinelearning_update_evaluation <- function(EvaluationId, EvaluationName) {
 #' @description
 #' Updates the `MLModelName` and the `ScoreThreshold` of an `MLModel`.
 #' 
-#' You can use the `GetMLModel` operation to view the contents of the
-#' updated data element.
+#' You can use the [`get_ml_model`][machinelearning_get_ml_model] operation
+#' to view the contents of the updated data element.
 #'
 #' @usage
 #' machinelearning_update_ml_model(MLModelId, MLModelName, ScoreThreshold)

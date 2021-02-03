@@ -316,13 +316,14 @@ managedblockchain_create_proposal <- function(ClientRequestToken, NetworkId, Mem
 #'
 #' @description
 #' Deletes a member. Deleting a member removes the member and all
-#' associated resources from the network. `DeleteMember` can only be called
+#' associated resources from the network.
+#' [`delete_member`][managedblockchain_delete_member] can only be called
 #' for a specified `MemberId` if the principal performing the action is
 #' associated with the AWS account that owns the member. In all other
-#' cases, the `DeleteMember` action is carried out as the result of an
-#' approved proposal to remove a member. If `MemberId` is the last member
-#' in a network specified by the last AWS account, the network is deleted
-#' also.
+#' cases, the [`delete_member`][managedblockchain_delete_member] action is
+#' carried out as the result of an approved proposal to remove a member. If
+#' `MemberId` is the last member in a network specified by the last AWS
+#' account, the network is deleted also.
 #' 
 #' Applies only to Hyperledger Fabric.
 #'

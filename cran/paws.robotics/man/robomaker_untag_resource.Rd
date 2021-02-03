@@ -18,7 +18,7 @@ Removes the specified tags from the specified AWS RoboMaker resource.
 
 To remove a tag, specify the tag key. To change the tag value of an
 existing tag key, use
-\href{https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html}{\code{TagResource}}
+\href{https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html}{\code{tag_resource}}
 .
 }
 \section{Request syntax}{

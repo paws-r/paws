@@ -11,19 +11,22 @@ eks_list_nodegroups(clusterName, maxResults, nextToken)
 \item{clusterName}{[required] The name of the Amazon EKS cluster that you would like to list node
 groups in.}
 
-\item{maxResults}{The maximum number of node group results returned by \code{ListNodegroups} in
-paginated output. When you use this parameter, \code{ListNodegroups} returns
+\item{maxResults}{The maximum number of node group results returned by
+\code{\link[=eks_list_nodegroups]{list_nodegroups}} in paginated output. When you
+use this parameter, \code{\link[=eks_list_nodegroups]{list_nodegroups}} returns
 only \code{maxResults} results in a single page along with a \code{nextToken}
 response element. You can see the remaining results of the initial
-request by sending another \code{ListNodegroups} request with the returned
-\code{nextToken} value. This value can be between 1 and 100. If you don't use
-this parameter, \code{ListNodegroups} returns up to 100 results and a
+request by sending another \code{\link[=eks_list_nodegroups]{list_nodegroups}}
+request with the returned \code{nextToken} value. This value can be between 1
+and 100. If you don't use this parameter,
+\code{\link[=eks_list_nodegroups]{list_nodegroups}} returns up to 100 results and a
 \code{nextToken} value if applicable.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{ListNodegroups} request where \code{maxResults} was used and the results
-exceeded the value of that parameter. Pagination continues from the end
-of the previous results that returned the \code{nextToken} value.}
+\code{\link[=eks_list_nodegroups]{list_nodegroups}} request where \code{maxResults} was
+used and the results exceeded the value of that parameter. Pagination
+continues from the end of the previous results that returned the
+\code{nextToken} value.}
 }
 \description{
 Lists the Amazon EKS managed node groups associated with the specified

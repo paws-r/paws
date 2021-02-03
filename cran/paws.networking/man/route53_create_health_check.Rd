@@ -8,23 +8,25 @@ route53_create_health_check(CallerReference, HealthCheckConfig)
 }
 \arguments{
 \item{CallerReference}{[required] A unique string that identifies the request and that allows you to retry
-a failed \code{CreateHealthCheck} request without the risk of creating two
-identical health checks:
+a failed \code{\link[=route53_create_health_check]{create_health_check}} request
+without the risk of creating two identical health checks:
 \itemize{
-\item If you send a \code{CreateHealthCheck} request with the same
-\code{CallerReference} and settings as a previous request, and if the
-health check doesn't exist, Amazon Route 53 creates the health
-check. If the health check does exist, Route 53 returns the settings
-for the existing health check.
-\item If you send a \code{CreateHealthCheck} request with the same
-\code{CallerReference} as a deleted health check, regardless of the
-settings, Route 53 returns a \code{HealthCheckAlreadyExists} error.
-\item If you send a \code{CreateHealthCheck} request with the same
-\code{CallerReference} as an existing health check but with different
-settings, Route 53 returns a \code{HealthCheckAlreadyExists} error.
-\item If you send a \code{CreateHealthCheck} request with a unique
-\code{CallerReference} but settings identical to an existing health
-check, Route 53 creates the health check.
+\item If you send a \code{\link[=route53_create_health_check]{create_health_check}}
+request with the same \code{CallerReference} and settings as a previous
+request, and if the health check doesn't exist, Amazon Route 53
+creates the health check. If the health check does exist, Route 53
+returns the settings for the existing health check.
+\item If you send a \code{\link[=route53_create_health_check]{create_health_check}}
+request with the same \code{CallerReference} as a deleted health check,
+regardless of the settings, Route 53 returns a
+\code{HealthCheckAlreadyExists} error.
+\item If you send a \code{\link[=route53_create_health_check]{create_health_check}}
+request with the same \code{CallerReference} as an existing health check
+but with different settings, Route 53 returns a
+\code{HealthCheckAlreadyExists} error.
+\item If you send a \code{\link[=route53_create_health_check]{create_health_check}}
+request with a unique \code{CallerReference} but settings identical to an
+existing health check, Route 53 creates the health check.
 }}
 
 \item{HealthCheckConfig}{[required] A complex type that contains settings for a new health check.}
@@ -34,8 +36,7 @@ Creates a new health check.
 
 For information about adding health checks to resource record sets, see
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ResourceRecordSet.html#Route53-Type-ResourceRecordSet-HealthCheckId}{HealthCheckId}
-in
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html}{ChangeResourceRecordSets}.
+in \code{\link[=route53_change_resource_record_sets]{change_resource_record_sets}}.
 
 \strong{ELB Load Balancers}
 

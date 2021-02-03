@@ -15,13 +15,17 @@ training dataset. Specify \code{test} to delete the test dataset. To delete
 the dataset in a single dataset project, specify \code{train}.}
 
 \item{ClientToken}{ClientToken is an idempotency token that ensures a call to
-\code{DeleteDataset} completes only once. You choose the value to pass. For
-example, An issue, such as an network outage, might prevent you from
-getting a response from \code{DeleteDataset}. In this case, safely retry your
-call to \code{DeleteDataset} by using the same \code{ClientToken} parameter value.
-An error occurs if the other input parameters are not the same as in the
-first request. Using a different value for \code{ClientToken} is considered a
-new call to \code{DeleteDataset}. An idempotency token is active for 8 hours.}
+\code{\link[=lookoutforvision_delete_dataset]{delete_dataset}} completes only once.
+You choose the value to pass. For example, An issue, such as an network
+outage, might prevent you from getting a response from
+\code{\link[=lookoutforvision_delete_dataset]{delete_dataset}}. In this case,
+safely retry your call to
+\code{\link[=lookoutforvision_delete_dataset]{delete_dataset}} by using the same
+\code{ClientToken} parameter value. An error occurs if the other input
+parameters are not the same as in the first request. Using a different
+value for \code{ClientToken} is considered a new call to
+\code{\link[=lookoutforvision_delete_dataset]{delete_dataset}}. An idempotency
+token is active for 8 hours.}
 }
 \description{
 Deletes an existing Amazon Lookout for Vision \code{dataset}.
@@ -42,7 +46,7 @@ dataset before you can create a model.
 
 It might take a while to delete the dataset. To check the current
 status, check the \code{Status} field in the response from a call to
-DescribeDataset.
+\code{\link[=lookoutforvision_describe_dataset]{describe_dataset}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_dataset(

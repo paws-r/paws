@@ -31,8 +31,10 @@ exception.}
 \item{conversationLogs}{Settings for conversation logs for the alias.}
 
 \item{tags}{A list of tags to add to the bot alias. You can only add tags when you
-create an alias, you can't use the \code{PutBotAlias} operation to update the
-tags on a bot alias. To update tags, use the \code{TagResource} operation.}
+create an alias, you can't use the
+\code{\link[=lexmodelbuildingservice_put_bot_alias]{put_bot_alias}} operation to
+update the tags on a bot alias. To update tags, use the
+\code{\link[=lexmodelbuildingservice_tag_resource]{tag_resource}} operation.}
 }
 \description{
 Creates an alias for the specified version of the bot or replaces an

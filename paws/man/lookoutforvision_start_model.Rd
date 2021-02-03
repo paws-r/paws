@@ -17,25 +17,28 @@ represents 1 hour of processing and can support up to 5 Transaction Pers
 Second (TPS). Use a higher number to increase the TPS throughput of your
 model. You are charged for the number of inference units that you use.}
 
-\item{ClientToken}{ClientToken is an idempotency token that ensures a call to \code{StartModel}
-completes only once. You choose the value to pass. For example, An
-issue, such as an network outage, might prevent you from getting a
-response from \code{StartModel}. In this case, safely retry your call to
-\code{StartModel} by using the same \code{ClientToken} parameter value. An error
-occurs if the other input parameters are not the same as in the first
-request. Using a different value for \code{ClientToken} is considered a new
-call to \code{StartModel}. An idempotency token is active for 8 hours.}
+\item{ClientToken}{ClientToken is an idempotency token that ensures a call to
+\code{\link[=lookoutforvision_start_model]{start_model}} completes only once. You
+choose the value to pass. For example, An issue, such as an network
+outage, might prevent you from getting a response from
+\code{\link[=lookoutforvision_start_model]{start_model}}. In this case, safely
+retry your call to \code{\link[=lookoutforvision_start_model]{start_model}} by
+using the same \code{ClientToken} parameter value. An error occurs if the
+other input parameters are not the same as in the first request. Using a
+different value for \code{ClientToken} is considered a new call to
+\code{\link[=lookoutforvision_start_model]{start_model}}. An idempotency token is
+active for 8 hours.}
 }
 \description{
 Starts the running of the version of an Amazon Lookout for Vision model.
 Starting a model takes a while to complete. To check the current state
-of the model, use DescribeModel.
+of the model, use \code{\link[=lookoutforvision_describe_model]{describe_model}}.
 
 Once the model is running, you can detect custom labels in new images by
-calling DetectAnomalies.
+calling \code{\link[=lookoutforvision_detect_anomalies]{detect_anomalies}}.
 
 You are charged for the amount of time that the model is running. To
-stop a running model, call StopModel.
+stop a running model, call \code{\link[=lookoutforvision_stop_model]{stop_model}}.
 }
 \section{Request syntax}{
 \preformatted{svc$start_model(

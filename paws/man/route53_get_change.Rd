@@ -8,8 +8,9 @@ route53_get_change(Id)
 }
 \arguments{
 \item{Id}{[required] The ID of the change batch request. The value that you specify here is
-the value that \code{ChangeResourceRecordSets} returned in the \code{Id} element
-when you submitted the request.}
+the value that
+\code{\link[=route53_change_resource_record_sets]{change_resource_record_sets}}
+returned in the \code{Id} element when you submitted the request.}
 }
 \description{
 Returns the current status of a change batch request. The status is one

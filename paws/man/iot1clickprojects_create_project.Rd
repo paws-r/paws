@@ -16,7 +16,7 @@ iot1clickprojects_create_project(projectName, description,
 defines placement default attributes and device templates. You cannot
 add or remove device templates after the project has been created.
 However, you can update \code{callbackOverrides} for the device templates
-using the \code{UpdateProject} API.}
+using the \code{\link[=iot1clickprojects_update_project]{update_project}} API.}
 
 \item{tags}{Optional tags (metadata key/value pairs) to be associated with the
 project. For example, \verb{\\\{ \\\{"key1": "value1", "key2": "value2"\\\} \\\}}. For

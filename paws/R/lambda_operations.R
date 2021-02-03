@@ -14,8 +14,9 @@ NULL
 #' can grant permission to a single account, all AWS accounts, or all
 #' accounts in an organization.
 #' 
-#' To revoke permission, call RemoveLayerVersionPermission with the
-#' statement ID that you specified when you added it.
+#' To revoke permission, call
+#' [`remove_layer_version_permission`][lambda_remove_layer_version_permission]
+#' with the statement ID that you specified when you added it.
 #'
 #' @usage
 #' lambda_add_layer_version_permission(LayerName, VersionNumber,
@@ -558,7 +559,8 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' function and its supporting resources. If your function connects to a
 #' VPC, this process can take a minute or so. During this time, you can't
 #' invoke or modify the function. The `State`, `StateReason`, and
-#' `StateReasonCode` fields in the response from GetFunctionConfiguration
+#' `StateReasonCode` fields in the response from
+#' [`get_function_configuration`][lambda_get_function_configuration]
 #' indicate when the function is ready to invoke. For more information, see
 #' [Function
 #' States](https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html).
@@ -573,28 +575,32 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' 
 #' The other parameters let you configure version-specific and
 #' function-level settings. You can modify version-specific settings later
-#' with UpdateFunctionConfiguration. Function-level settings apply to both
-#' the unpublished and published versions of the function, and include tags
-#' (TagResource) and per-function concurrency limits
-#' (PutFunctionConcurrency).
+#' with
+#' [`update_function_configuration`][lambda_update_function_configuration].
+#' Function-level settings apply to both the unpublished and published
+#' versions of the function, and include tags
+#' ([`tag_resource`][lambda_tag_resource]) and per-function concurrency
+#' limits ([`put_function_concurrency`][lambda_put_function_concurrency]).
 #' 
 #' You can use code signing if your deployment package is a .zip file
 #' archive. To enable code signing for this function, specify the ARN of a
 #' code-signing configuration. When a user attempts to deploy a code
-#' package with UpdateFunctionCode, Lambda checks that the code package has
-#' a valid signature from a trusted publisher. The code-signing
-#' configuration includes set set of signing profiles, which define the
-#' trusted publishers for this function.
+#' package with [`update_function_code`][lambda_update_function_code],
+#' Lambda checks that the code package has a valid signature from a trusted
+#' publisher. The code-signing configuration includes set set of signing
+#' profiles, which define the trusted publishers for this function.
 #' 
 #' If another account or an AWS service invokes your function, use
-#' AddPermission to grant permission by creating a resource-based IAM
-#' policy. You can grant permissions at the function level, on a version,
-#' or on an alias.
+#' [`add_permission`][lambda_add_permission] to grant permission by
+#' creating a resource-based IAM policy. You can grant permissions at the
+#' function level, on a version, or on an alias.
 #' 
-#' To invoke your function directly, use Invoke. To invoke your function in
-#' response to events in other AWS services, create an event source mapping
-#' (CreateEventSourceMapping), or configure a function trigger in the other
-#' service. For more information, see [Invoking
+#' To invoke your function directly, use [`invoke`][lambda_invoke]. To
+#' invoke your function in response to events in other AWS services, create
+#' an event source mapping
+#' ([`create_event_source_mapping`][lambda_create_event_source_mapping]),
+#' or configure a function trigger in the other service. For more
+#' information, see [Invoking
 #' Functions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html).
 #'
 #' @usage
@@ -888,7 +894,7 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
 #' Deletes an [event source
 #' mapping](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html).
 #' You can get the identifier of a mapping from the output of
-#' ListEventSourceMappings.
+#' [`list_event_source_mappings`][lambda_list_event_source_mappings].
 #' 
 #' When you delete an event source mapping, it enters a `Deleting` state
 #' and might not be completely deleted for several seconds.
@@ -942,9 +948,9 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #' deleted.
 #' 
 #' To delete Lambda event source mappings that invoke a function, use
-#' DeleteEventSourceMapping. For AWS services and resources that invoke
-#' your function directly, delete the trigger in the service where you
-#' originally configured it.
+#' [`delete_event_source_mapping`][lambda_delete_event_source_mapping]. For
+#' AWS services and resources that invoke your function directly, delete
+#' the trigger in the service where you originally configured it.
 #'
 #' @usage
 #' lambda_delete_function(FunctionName, Qualifier)
@@ -1120,7 +1126,7 @@ lambda_delete_function_concurrency <- function(FunctionName) {
 #' version, or alias.
 #' 
 #' To configure options for asynchronous invocation, use
-#' PutFunctionEventInvokeConfig.
+#' [`put_function_event_invoke_config`][lambda_put_function_event_invoke_config].
 #'
 #' @usage
 #' lambda_delete_function_event_invoke_config(FunctionName, Qualifier)
@@ -1438,7 +1444,8 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
 #'
 #' @description
 #' Returns details about an event source mapping. You can get the
-#' identifier of a mapping from the output of ListEventSourceMappings.
+#' identifier of a mapping from the output of
+#' [`list_event_source_mappings`][lambda_list_event_source_mappings].
 #'
 #' @usage
 #' lambda_get_event_source_mapping(UUID)
@@ -1604,7 +1611,7 @@ lambda_get_function_code_signing_config <- function(FunctionName) {
 #' @description
 #' Returns details about the reserved concurrency configuration for a
 #' function. To set a concurrency limit for a function, use
-#' PutFunctionConcurrency.
+#' [`put_function_concurrency`][lambda_put_function_concurrency].
 #'
 #' @usage
 #' lambda_get_function_concurrency(FunctionName)
@@ -1664,10 +1671,11 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' @description
 #' Returns the version-specific settings of a Lambda function or version.
 #' The output includes only options that can vary between versions of a
-#' function. To modify these settings, use UpdateFunctionConfiguration.
+#' function. To modify these settings, use
+#' [`update_function_configuration`][lambda_update_function_configuration].
 #' 
 #' To get all of a function's details, including function-level settings,
-#' use GetFunction.
+#' use [`get_function`][lambda_get_function].
 #'
 #' @usage
 #' lambda_get_function_configuration(FunctionName, Qualifier)
@@ -1736,7 +1744,7 @@ lambda_get_function_configuration <- function(FunctionName, Qualifier = NULL) {
 #' version, or alias.
 #' 
 #' To configure options for asynchronous invocation, use
-#' PutFunctionEventInvokeConfig.
+#' [`put_function_event_invoke_config`][lambda_put_function_event_invoke_config].
 #'
 #' @usage
 #' lambda_get_function_event_invoke_config(FunctionName, Qualifier)
@@ -1902,7 +1910,8 @@ lambda_get_layer_version_by_arn <- function(Arn) {
 #' @description
 #' Returns the permission policy for a version of an [AWS Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
-#' For more information, see AddLayerVersionPermission.
+#' For more information, see
+#' [`add_layer_version_permission`][lambda_add_layer_version_permission].
 #'
 #' @usage
 #' lambda_get_layer_version_policy(LayerName, VersionNumber)
@@ -2218,7 +2227,7 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
 #' For asynchronous function invocation, use Invoke
 #'
 #' @description
-#' For asynchronous function invocation, use Invoke.
+#' For asynchronous function invocation, use [`invoke`][lambda_invoke].
 #' 
 #' Invokes a function asynchronously.
 #'
@@ -2475,7 +2484,7 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
 #' function.
 #' 
 #' To configure options for asynchronous invocation, use
-#' PutFunctionEventInvokeConfig.
+#' [`put_function_event_invoke_config`][lambda_put_function_event_invoke_config].
 #'
 #' @usage
 #' lambda_list_function_event_invoke_configs(FunctionName, Marker,
@@ -2545,7 +2554,7 @@ lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NUL
 #' 
 #' Set `FunctionVersion` to `ALL` to include all published versions of each
 #' function in addition to the unpublished version. To get more information
-#' about a function or version, use GetFunction.
+#' about a function or version, use [`get_function`][lambda_get_function].
 #'
 #' @usage
 #' lambda_list_functions(MasterRegion, FunctionVersion, Marker, MaxItems)
@@ -2827,7 +2836,7 @@ lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = N
 #' @description
 #' Returns a function's
 #' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html).
-#' You can also view tags with GetFunction.
+#' You can also view tags with [`get_function`][lambda_get_function].
 #'
 #' @usage
 #' lambda_list_tags(Resource)
@@ -2942,11 +2951,13 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #' @description
 #' Creates an [AWS Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
-#' from a ZIP archive. Each time you call `PublishLayerVersion` with the
-#' same layer name, a new version is created.
+#' from a ZIP archive. Each time you call
+#' [`publish_layer_version`][lambda_publish_layer_version] with the same
+#' layer name, a new version is created.
 #' 
-#' Add layers to your function with CreateFunction or
-#' UpdateFunctionConfiguration.
+#' Add layers to your function with
+#' [`create_function`][lambda_create_function] or
+#' [`update_function_configuration`][lambda_update_function_configuration].
 #'
 #' @usage
 #' lambda_publish_layer_version(LayerName, Description, Content,
@@ -2957,7 +2968,8 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #' @param Content &#91;required&#93; The function layer archive.
 #' @param CompatibleRuntimes A list of compatible [function
 #' runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
-#' Used for filtering with ListLayers and ListLayerVersions.
+#' Used for filtering with [`list_layers`][lambda_list_layers] and
+#' [`list_layer_versions`][lambda_list_layer_versions].
 #' @param LicenseInfo The layer's software license. It can be any of the following:
 #' 
 #' -   An [SPDX license identifier](https://spdx.org/licenses/). For
@@ -3036,12 +3048,13 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' change.
 #' 
 #' AWS Lambda doesn't publish a version if the function's configuration and
-#' code haven't changed since the last version. Use UpdateFunctionCode or
-#' UpdateFunctionConfiguration to update the function before publishing a
-#' version.
+#' code haven't changed since the last version. Use
+#' [`update_function_code`][lambda_update_function_code] or
+#' [`update_function_configuration`][lambda_update_function_configuration]
+#' to update the function before publishing a version.
 #' 
 #' Clients can invoke versions directly or with an alias. To create an
-#' alias, use CreateAlias.
+#' alias, use [`create_alias`][lambda_create_alias].
 #'
 #' @usage
 #' lambda_publish_version(FunctionName, CodeSha256, Description,
@@ -3063,7 +3076,8 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' @param CodeSha256 Only publish a version if the hash value matches the value that's
 #' specified. Use this option to avoid publishing a version if the function
 #' code has changed since you last updated it. You can get the hash for the
-#' version that you uploaded from the output of UpdateFunctionCode.
+#' version that you uploaded from the output of
+#' [`update_function_code`][lambda_update_function_code].
 #' @param Description A description for the version to override the description in the
 #' function configuration.
 #' @param RevisionId Only update the function if the revision ID matches the ID that's
@@ -3175,13 +3189,14 @@ lambda_put_function_code_signing_config <- function(CodeSigningConfigArn, Functi
 #' published versions and the unpublished version. Reserving concurrency
 #' both ensures that your function has capacity to process the specified
 #' number of events simultaneously, and prevents it from scaling beyond
-#' that level. Use GetFunction to see the current setting for a function.
+#' that level. Use [`get_function`][lambda_get_function] to see the current
+#' setting for a function.
 #' 
-#' Use GetAccountSettings to see your Regional concurrency limit. You can
-#' reserve concurrency for as many functions as you like, as long as you
-#' leave at least 100 simultaneous executions unreserved for functions that
-#' aren't configured with a per-function limit. For more information, see
-#' [Managing
+#' Use [`get_account_settings`][lambda_get_account_settings] to see your
+#' Regional concurrency limit. You can reserve concurrency for as many
+#' functions as you like, as long as you leave at least 100 simultaneous
+#' executions unreserved for functions that aren't configured with a
+#' per-function limit. For more information, see [Managing
 #' Concurrency](https://docs.aws.amazon.com/lambda/latest/dg/invocation-scaling.html).
 #'
 #' @usage
@@ -3251,14 +3266,14 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
 #' a function, version, or alias, this operation overwrites it. If you
 #' exclude any settings, they are removed. To set one option without
 #' affecting existing settings for other options, use
-#' UpdateFunctionEventInvokeConfig.
+#' [`update_function_event_invoke_config`][lambda_update_function_event_invoke_config].
 #' 
 #' By default, Lambda retries an asynchronous invocation twice if the
 #' function returns an error. It retains events in a queue for up to six
 #' hours. When an event fails all processing attempts or stays in the
 #' asynchronous invocation queue for too long, Lambda discards it. To
 #' retain discarded events, configure a dead-letter queue with
-#' UpdateFunctionConfiguration.
+#' [`update_function_configuration`][lambda_update_function_configuration].
 #' 
 #' To send an invocation record to a queue, topic, function, or event bus,
 #' specify a
@@ -3428,7 +3443,8 @@ lambda_put_provisioned_concurrency_config <- function(FunctionName, Qualifier, P
 #' Removes a statement from the permissions policy for a version of an [AWS
 #' Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
-#' For more information, see AddLayerVersionPermission.
+#' For more information, see
+#' [`add_layer_version_permission`][lambda_add_layer_version_permission].
 #'
 #' @usage
 #' lambda_remove_layer_version_permission(LayerName, VersionNumber,
@@ -3486,7 +3502,8 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 #'
 #' @description
 #' Revokes function-use permission from an AWS service or another account.
-#' You can get the ID of the statement from the output of GetPolicy.
+#' You can get the ID of the statement from the output of
+#' [`get_policy`][lambda_get_policy].
 #'
 #' @usage
 #' lambda_remove_permission(FunctionName, StatementId, Qualifier,
@@ -3992,7 +4009,8 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' use.
 #' @param ImageUri URI of a container image in the Amazon ECR registry.
 #' @param Publish Set to true to publish a new version of the function after updating the
-#' code. This has the same effect as calling PublishVersion separately.
+#' code. This has the same effect as calling
+#' [`publish_version`][lambda_publish_version] separately.
 #' @param DryRun Set to true to validate the request parameters and access permissions
 #' without modifying the function code.
 #' @param RevisionId Only update the function if the revision ID matches the ID that's
@@ -4056,17 +4074,20 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' VPC, this process can take a minute. During this time, you can't modify
 #' the function, but you can still invoke it. The `LastUpdateStatus`,
 #' `LastUpdateStatusReason`, and `LastUpdateStatusReasonCode` fields in the
-#' response from GetFunctionConfiguration indicate when the update is
-#' complete and the function is processing events with the new
-#' configuration. For more information, see [Function
+#' response from
+#' [`get_function_configuration`][lambda_get_function_configuration]
+#' indicate when the update is complete and the function is processing
+#' events with the new configuration. For more information, see [Function
 #' States](https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html).
 #' 
 #' These settings can vary between versions of a function and are locked
 #' when you publish a version. You can't modify the configuration of a
 #' published version, only the unpublished version.
 #' 
-#' To configure function concurrency, use PutFunctionConcurrency. To grant
-#' invoke permissions to an account or AWS service, use AddPermission.
+#' To configure function concurrency, use
+#' [`put_function_concurrency`][lambda_put_function_concurrency]. To grant
+#' invoke permissions to an account or AWS service, use
+#' [`add_permission`][lambda_add_permission].
 #'
 #' @usage
 #' lambda_update_function_configuration(FunctionName, Role, Handler,
@@ -4217,7 +4238,7 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
 #' version, or alias.
 #' 
 #' To configure options for asynchronous invocation, use
-#' PutFunctionEventInvokeConfig.
+#' [`put_function_event_invoke_config`][lambda_put_function_event_invoke_config].
 #'
 #' @usage
 #' lambda_update_function_event_invoke_config(FunctionName, Qualifier,

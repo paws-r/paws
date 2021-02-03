@@ -50,11 +50,11 @@ in the \emph{AWS Key Management Service Developer Guide}.
 
 When the operation completes successfully, it returns the ID of the new
 custom key store. Before you can use your new custom key store, you need
-to use the ConnectCustomKeyStore operation to connect the new key store
-to its AWS CloudHSM cluster. Even if you are not going to use your
-custom key store immediately, you might want to connect it to verify
-that all settings are correct and then disconnect it until you are ready
-to use it.
+to use the \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}}
+operation to connect the new key store to its AWS CloudHSM cluster. Even
+if you are not going to use your custom key store immediately, you might
+want to connect it to verify that all settings are correct and then
+disconnect it until you are ready to use it.
 
 For help with failures, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html}{Troubleshooting a Custom Key Store}
 in the \emph{AWS Key Management Service Developer Guide}.
@@ -68,11 +68,11 @@ key store in a different AWS account.
 
 \strong{Related operations:}
 \itemize{
-\item ConnectCustomKeyStore
-\item DeleteCustomKeyStore
-\item DescribeCustomKeyStores
-\item DisconnectCustomKeyStore
-\item UpdateCustomKeyStore
+\item \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}}
+\item \code{\link[=kms_delete_custom_key_store]{delete_custom_key_store}}
+\item \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
+\item \code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}}
+\item \code{\link[=kms_update_custom_key_store]{update_custom_key_store}}
 }
 }
 \section{Request syntax}{

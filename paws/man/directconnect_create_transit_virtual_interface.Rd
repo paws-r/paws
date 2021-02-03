@@ -29,8 +29,10 @@ an update to the underlying physical connection if it wasn't updated to
 support jumbo frames. Updating the connection disrupts network
 connectivity for all virtual interfaces associated with the connection
 for up to 30 seconds. To check whether your connection supports jumbo
-frames, call DescribeConnections. To check whether your virtual
-interface supports jumbo frames, call DescribeVirtualInterfaces.
+frames, call
+\code{\link[=directconnect_describe_connections]{describe_connections}}. To check
+whether your virtual interface supports jumbo frames, call
+\code{\link[=directconnect_describe_virtual_interfaces]{describe_virtual_interfaces}}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_transit_virtual_interface(

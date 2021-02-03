@@ -11,18 +11,17 @@ acmpca_revoke_certificate(CertificateAuthorityArn, CertificateSerial,
 \item{CertificateAuthorityArn}{[required] Amazon Resource Name (ARN) of the private CA that issued the certificate
 to be revoked. This must be of the form:
 
-\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
+\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 
 \item{CertificateSerial}{[required] Serial number of the certificate to be revoked. This must be in
 hexadecimal format. You can retrieve the serial number by calling
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetCertificate.html}{GetCertificate}
-with the Amazon Resource Name (ARN) of the certificate you want and the
-ARN of your private CA. The \strong{GetCertificate} action retrieves the
-certificate in the PEM format. You can use the following OpenSSL command
-to list the certificate in text format and copy the hexadecimal serial
-number.
+\code{\link[=acmpca_get_certificate]{get_certificate}} with the Amazon Resource
+Name (ARN) of the certificate you want and the ARN of your private CA.
+The \strong{GetCertificate} action retrieves the certificate in the PEM
+format. You can use the following OpenSSL command to list the
+certificate in text format and copy the hexadecimal serial number.
 
-\verb{openssl x509 -in <i>file_path</i> -text -noout}
+\verb{openssl x509 -in file_path -text -noout}
 
 You can also copy the serial number from the console or use the
 \href{https://docs.aws.amazon.com/acm/latest/APIReference/API_DescribeCertificate.html}{DescribeCertificate}
@@ -48,7 +47,7 @@ more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide
 
 ACM Private CA also writes revocation information to the audit report.
 For more information, see
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html}{CreateCertificateAuthorityAuditReport}.
+\code{\link[=acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report}}.
 
 You cannot revoke a root CA self-signed certificate.
 }

@@ -27,7 +27,8 @@ You can specify the \code{KmsKeyId} using any of the following:
 Modifies the KMS key for an existing database. While updating the
 database, you must specify the database name and the identifier of the
 new KMS key to be used (\code{KmsKeyId}). If there are any concurrent
-\code{UpdateDatabase} requests, first writer wins.
+\code{\link[=timestreamwrite_update_database]{update_database}} requests, first
+writer wins.
 }
 \section{Request syntax}{
 \preformatted{svc$update_database(

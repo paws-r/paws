@@ -22,7 +22,8 @@ SageMaker to perform tasks on your behalf.}
 }
 \description{
 Updates the properties of a SageMaker image. To change the image's tags,
-use the AddTags and DeleteTags APIs.
+use the \code{\link[=sagemaker_add_tags]{add_tags}} and
+\code{\link[=sagemaker_delete_tags]{delete_tags}} APIs.
 }
 \section{Request syntax}{
 \preformatted{svc$update_image(

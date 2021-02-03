@@ -16,18 +16,18 @@ cluster is assumed.}
 \item{reason}{An optional message specified when a task is stopped. For example, if
 you are using a custom scheduler, you can use this parameter to specify
 the reason for stopping the task here, and the message appears in
-subsequent DescribeTasks API operations on this task. Up to 255
-characters are allowed in this message.}
+subsequent \code{\link[=ecs_describe_tasks]{describe_tasks}} API operations on this
+task. Up to 255 characters are allowed in this message.}
 }
 \description{
 Stops a running task. Any tags associated with the task will be deleted.
 
-When StopTask is called on a task, the equivalent of \verb{docker stop} is
-issued to the containers running in the task. This results in a
-\code{SIGTERM} value and a default 30-second timeout, after which the
-\code{SIGKILL} value is sent and the containers are forcibly stopped. If the
-container handles the \code{SIGTERM} value gracefully and exits within 30
-seconds from receiving it, no \code{SIGKILL} value is sent.
+When \code{\link[=ecs_stop_task]{stop_task}} is called on a task, the equivalent of
+\verb{docker stop} is issued to the containers running in the task. This
+results in a \code{SIGTERM} value and a default 30-second timeout, after
+which the \code{SIGKILL} value is sent and the containers are forcibly
+stopped. If the container handles the \code{SIGTERM} value gracefully and
+exits within 30 seconds from receiving it, no \code{SIGKILL} value is sent.
 
 The default 30-second timeout can be configured on the Amazon ECS
 container agent with the \code{ECS_CONTAINER_STOP_TIMEOUT} variable. For more

@@ -9,7 +9,7 @@ rekognition_get_face_detection(JobId, MaxResults, NextToken)
 }
 \arguments{
 \item{JobId}{[required] Unique identifier for the face detection job. The \code{JobId} is returned
-from \code{StartFaceDetection}.}
+from \code{\link[=rekognition_start_face_detection]{start_face_detection}}.}
 
 \item{MaxResults}{Maximum number of results to return per paginated call. The largest
 value you can specify is 1000. If you specify a value greater than 1000,
@@ -22,27 +22,31 @@ faces.}
 }
 \description{
 Gets face detection results for a Amazon Rekognition Video analysis
-started by StartFaceDetection.
+started by \code{\link[=rekognition_start_face_detection]{start_face_detection}}.
 
 Face detection with Amazon Rekognition Video is an asynchronous
-operation. You start face detection by calling StartFaceDetection which
-returns a job identifier (\code{JobId}). When the face detection operation
-finishes, Amazon Rekognition Video publishes a completion status to the
-Amazon Simple Notification Service topic registered in the initial call
-to \code{StartFaceDetection}. To get the results of the face detection
-operation, first check that the status value published to the Amazon SNS
-topic is \code{SUCCEEDED}. If so, call GetFaceDetection and pass the job
-identifier (\code{JobId}) from the initial call to \code{StartFaceDetection}.
+operation. You start face detection by calling
+\code{\link[=rekognition_start_face_detection]{start_face_detection}} which returns
+a job identifier (\code{JobId}). When the face detection operation finishes,
+Amazon Rekognition Video publishes a completion status to the Amazon
+Simple Notification Service topic registered in the initial call to
+\code{\link[=rekognition_start_face_detection]{start_face_detection}}. To get the
+results of the face detection operation, first check that the status
+value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call
+\code{\link[=rekognition_get_face_detection]{get_face_detection}} and pass the job
+identifier (\code{JobId}) from the initial call to
+\code{\link[=rekognition_start_face_detection]{start_face_detection}}.
 
-\code{GetFaceDetection} returns an array of detected faces (\code{Faces}) sorted
-by the time the faces were detected.
+\code{\link[=rekognition_get_face_detection]{get_face_detection}} returns an array
+of detected faces (\code{Faces}) sorted by the time the faces were detected.
 
 Use MaxResults parameter to limit the number of labels returned. If
 there are more results than specified in \code{MaxResults}, the value of
 \code{NextToken} in the operation response contains a pagination token for
 getting the next set of results. To get the next page of results, call
-\code{GetFaceDetection} and populate the \code{NextToken} request parameter with
-the token value returned from the previous call to \code{GetFaceDetection}.
+\code{\link[=rekognition_get_face_detection]{get_face_detection}} and populate the
+\code{NextToken} request parameter with the token value returned from the
+previous call to \code{\link[=rekognition_get_face_detection]{get_face_detection}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_face_detection(

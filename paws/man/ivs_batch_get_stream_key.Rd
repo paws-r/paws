@@ -10,7 +10,8 @@ ivs_batch_get_stream_key(arns)
 \item{arns}{[required] Array of ARNs, one per channel.}
 }
 \description{
-Performs GetStreamKey on multiple ARNs simultaneously.
+Performs \code{\link[=ivs_get_stream_key]{get_stream_key}} on multiple ARNs
+simultaneously.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_stream_key(

@@ -64,8 +64,9 @@ customizations can apply to an AWS account or to a namespace.
 Settings that you apply to a namespace override settings that you
 apply to an AWS account. All settings are isolated to a single AWS
 Region. To apply them in other AWS Regions, run the
-\code{CreateAccountCustomization} command in each AWS Region where you
-want to apply the same customizations.
+\code{\link[=quicksight_create_account_customization]{create_account_customization}}
+command in each AWS Region where you want to apply the same
+customizations.
 }
 }
 \section{Request syntax}{

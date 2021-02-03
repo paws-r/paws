@@ -18,11 +18,13 @@ file system policy, see \href{https://docs.aws.amazon.com/efs/latest/ug/access-c
 \item{BypassPolicyLockoutSafetyCheck}{(Optional) A flag to indicate whether to bypass the \code{FileSystemPolicy}
 lockout safety check. The policy lockout safety check determines whether
 the policy in the request will prevent the principal making the request
-will be locked out from making future \code{PutFileSystemPolicy} requests on
-the file system. Set \code{BypassPolicyLockoutSafetyCheck} to \code{True} only
-when you intend to prevent the principal that is making the request from
-making a subsequent \code{PutFileSystemPolicy} request on the file system.
-The default value is False.}
+will be locked out from making future
+\code{\link[=efs_put_file_system_policy]{put_file_system_policy}} requests on the
+file system. Set \code{BypassPolicyLockoutSafetyCheck} to \code{True} only when
+you intend to prevent the principal that is making the request from
+making a subsequent
+\code{\link[=efs_put_file_system_policy]{put_file_system_policy}} request on the
+file system. The default value is False.}
 }
 \description{
 Applies an Amazon EFS \code{FileSystemPolicy} to an Amazon EFS file system. A

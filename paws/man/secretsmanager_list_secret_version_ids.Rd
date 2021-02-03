@@ -74,7 +74,8 @@ To run this command, you must have the following permissions:
 
 \strong{Related operations}
 \itemize{
-\item To list the secrets in an account, use ListSecrets.
+\item To list the secrets in an account, use
+\code{\link[=secretsmanager_list_secrets]{list_secrets}}.
 }
 }
 \section{Request syntax}{

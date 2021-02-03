@@ -60,7 +60,8 @@ When you create a new stream, Kinesis Video Streams assigns it a version
 number. When you change the stream's metadata, Kinesis Video Streams
 updates the version.
 
-\code{CreateStream} is an asynchronous operation.
+\code{\link[=kinesisvideo_create_stream]{create_stream}} is an asynchronous
+operation.
 
 For information about how the service works, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html}{How it Works}.
 

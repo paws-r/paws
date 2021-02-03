@@ -11,12 +11,12 @@ sqs_send_message_batch(QueueUrl, Entries)
 
 Queue URLs and names are case-sensitive.}
 
-\item{Entries}{[required] A list of \verb{<a>SendMessageBatchRequestEntry</a>} items.}
+\item{Entries}{[required] A list of \code{SendMessageBatchRequestEntry} items.}
 }
 \description{
 Delivers up to ten messages to the specified queue. This is a batch
-version of \verb{ <a>SendMessage</a>.} For a FIFO queue, multiple messages
-within a single batch are enqueued in the order they are sent.
+version of \code{ SendMessage.} For a FIFO queue, multiple messages within a
+single batch are enqueued in the order they are sent.
 
 The result of sending each message is reported individually in the
 response. Because the batch request can result in a combination of
@@ -43,9 +43,9 @@ Some actions take lists of parameters. These lists are specified using
 the \code{param.n} notation. Values of \code{n} are integers starting from 1. For
 example, a parameter list with two elements looks like this:
 
-\verb{&amp;AttributeName.1=first}
+\verb{&AttributeName.1=first}
 
-\verb{&amp;AttributeName.2=second}
+\verb{&AttributeName.2=second}
 }
 \section{Request syntax}{
 \preformatted{svc$send_message_batch(

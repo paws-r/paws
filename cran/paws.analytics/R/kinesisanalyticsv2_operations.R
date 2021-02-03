@@ -16,7 +16,8 @@ NULL
 #'
 #' @param ApplicationName &#91;required&#93; The Kinesis Data Analytics application name.
 #' @param CurrentApplicationVersionId &#91;required&#93; The version ID of the Kinesis Data Analytics application. You can
-#' retrieve the application version ID using DescribeApplication.
+#' retrieve the application version ID using
+#' [`describe_application`][kinesisanalyticsv2_describe_application].
 #' @param CloudWatchLoggingOption &#91;required&#93; Provides the Amazon CloudWatch log stream Amazon Resource Name (ARN).
 #'
 #' @section Request syntax:
@@ -59,11 +60,13 @@ kinesisanalyticsv2_add_application_cloud_watch_logging_option <- function(Applic
 #' 
 #' You can add a streaming source when you create an application, or you
 #' can use this operation to add a streaming source after you create an
-#' application. For more information, see CreateApplication.
+#' application. For more information, see
+#' [`create_application`][kinesisanalyticsv2_create_application].
 #' 
 #' Any configuration update, including adding a streaming source using this
 #' operation, results in a new version of the application. You can use the
-#' DescribeApplication operation to find the current application version.
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation to find the current application version.
 #'
 #' @usage
 #' kinesisanalyticsv2_add_application_input(ApplicationName,
@@ -72,7 +75,8 @@ kinesisanalyticsv2_add_application_cloud_watch_logging_option <- function(Applic
 #' @param ApplicationName &#91;required&#93; The name of your existing application to which you want to add the
 #' streaming source.
 #' @param CurrentApplicationVersionId &#91;required&#93; The current version of your application. You can use the
-#' DescribeApplication operation to find the current application version.
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation to find the current application version.
 #' @param Input &#91;required&#93; The Input to add.
 #'
 #' @section Request syntax:
@@ -160,12 +164,16 @@ kinesisanalyticsv2_add_application_input <- function(ApplicationName, CurrentApp
 #' @param ApplicationName &#91;required&#93; The name of the application to which you want to add the input
 #' processing configuration.
 #' @param CurrentApplicationVersionId &#91;required&#93; The version of the application to which you want to add the input
-#' processing configuration. You can use the DescribeApplication operation
-#' to get the current application version. If the version specified is not
-#' the current version, the `ConcurrentModificationException` is returned.
+#' processing configuration. You can use the
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation to get the current application version. If the version
+#' specified is not the current version, the
+#' `ConcurrentModificationException` is returned.
 #' @param InputId &#91;required&#93; The ID of the input configuration to add the input processing
 #' configuration to. You can get a list of the input IDs for an application
-#' using the DescribeApplication operation.
+#' using the
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation.
 #' @param InputProcessingConfiguration &#91;required&#93; The InputProcessingConfiguration to add to the application.
 #'
 #' @section Request syntax:
@@ -223,7 +231,8 @@ kinesisanalyticsv2_add_application_input_processing_configuration <- function(Ap
 #' 
 #' Any configuration update, including adding a streaming source using this
 #' operation, results in a new version of the application. You can use the
-#' DescribeApplication operation to find the current application version.
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation to find the current application version.
 #'
 #' @usage
 #' kinesisanalyticsv2_add_application_output(ApplicationName,
@@ -232,9 +241,11 @@ kinesisanalyticsv2_add_application_input_processing_configuration <- function(Ap
 #' @param ApplicationName &#91;required&#93; The name of the application to which you want to add the output
 #' configuration.
 #' @param CurrentApplicationVersionId &#91;required&#93; The version of the application to which you want to add the output
-#' configuration. You can use the DescribeApplication operation to get the
-#' current application version. If the version specified is not the current
-#' version, the `ConcurrentModificationException` is returned.
+#' configuration. You can use the
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation to get the current application version. If the version
+#' specified is not the current version, the
+#' `ConcurrentModificationException` is returned.
 #' @param Output &#91;required&#93; An array of objects, each describing one output configuration. In the
 #' output configuration, you specify the name of an in-application stream,
 #' a destination (that is, a Kinesis data stream, a Kinesis Data Firehose
@@ -304,9 +315,11 @@ kinesisanalyticsv2_add_application_output <- function(ApplicationName, CurrentAp
 #'
 #' @param ApplicationName &#91;required&#93; The name of an existing application.
 #' @param CurrentApplicationVersionId &#91;required&#93; The version of the application for which you are adding the reference
-#' data source. You can use the DescribeApplication operation to get the
-#' current application version. If the version specified is not the current
-#' version, the `ConcurrentModificationException` is returned.
+#' data source. You can use the
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation to get the current application version. If the version
+#' specified is not the current version, the
+#' `ConcurrentModificationException` is returned.
 #' @param ReferenceDataSource &#91;required&#93; The reference data source can be an object in your Amazon S3 bucket.
 #' Kinesis Data Analytics reads the object and copies the data into the
 #' in-application table that is created. You provide an S3 bucket, object
@@ -391,9 +404,11 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 #'
 #' @param ApplicationName &#91;required&#93; The name of an existing application.
 #' @param CurrentApplicationVersionId &#91;required&#93; The version of the application to which you want to add the VPC
-#' configuration. You can use the DescribeApplication operation to get the
-#' current application version. If the version specified is not the current
-#' version, the `ConcurrentModificationException` is returned.
+#' configuration. You can use the
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation to get the current application version. If the version
+#' specified is not the current version, the
+#' `ConcurrentModificationException` is returned.
 #' @param VpcConfiguration &#91;required&#93; Description of the VPC to add to the application.
 #'
 #' @section Request syntax:
@@ -755,7 +770,9 @@ kinesisanalyticsv2_create_application_snapshot <- function(ApplicationName, Snap
 #' kinesisanalyticsv2_delete_application(ApplicationName, CreateTimestamp)
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to delete.
-#' @param CreateTimestamp &#91;required&#93; Use the `DescribeApplication` operation to get this value.
+#' @param CreateTimestamp &#91;required&#93; Use the
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation to get this value.
 #'
 #' @section Request syntax:
 #' ```
@@ -800,10 +817,12 @@ kinesisanalyticsv2_delete_application <- function(ApplicationName, CreateTimesta
 #'
 #' @param ApplicationName &#91;required&#93; The application name.
 #' @param CurrentApplicationVersionId &#91;required&#93; The version ID of the application. You can retrieve the application
-#' version ID using DescribeApplication.
+#' version ID using
+#' [`describe_application`][kinesisanalyticsv2_describe_application].
 #' @param CloudWatchLoggingOptionId &#91;required&#93; The `CloudWatchLoggingOptionId` of the Amazon CloudWatch logging option
 #' to delete. You can get the `CloudWatchLoggingOptionId` by using the
-#' DescribeApplication operation.
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -844,12 +863,16 @@ kinesisanalyticsv2_delete_application_cloud_watch_logging_option <- function(App
 #'   ApplicationName, CurrentApplicationVersionId, InputId)
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application.
-#' @param CurrentApplicationVersionId &#91;required&#93; The application version. You can use the DescribeApplication operation
-#' to get the current application version. If the version specified is not
-#' the current version, the `ConcurrentModificationException` is returned.
+#' @param CurrentApplicationVersionId &#91;required&#93; The application version. You can use the
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation to get the current application version. If the version
+#' specified is not the current version, the
+#' `ConcurrentModificationException` is returned.
 #' @param InputId &#91;required&#93; The ID of the input configuration from which to delete the input
 #' processing configuration. You can get a list of the input IDs for an
-#' application by using the DescribeApplication operation.
+#' application by using the
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -894,15 +917,20 @@ kinesisanalyticsv2_delete_application_input_processing_configuration <- function
 #'   CurrentApplicationVersionId, OutputId)
 #'
 #' @param ApplicationName &#91;required&#93; The application name.
-#' @param CurrentApplicationVersionId &#91;required&#93; The application version. You can use the DescribeApplication operation
-#' to get the current application version. If the version specified is not
-#' the current version, the `ConcurrentModificationException` is returned.
+#' @param CurrentApplicationVersionId &#91;required&#93; The application version. You can use the
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation to get the current application version. If the version
+#' specified is not the current version, the
+#' `ConcurrentModificationException` is returned.
 #' @param OutputId &#91;required&#93; The ID of the configuration to delete. Each output configuration that is
 #' added to the application (either when the application is created or
-#' later) using the AddApplicationOutput operation has a unique ID. You
-#' need to provide the ID to uniquely identify the output configuration
-#' that you want to delete from the application configuration. You can use
-#' the DescribeApplication operation to get the specific `OutputId`.
+#' later) using the
+#' [`add_application_output`][kinesisanalyticsv2_add_application_output]
+#' operation has a unique ID. You need to provide the ID to uniquely
+#' identify the output configuration that you want to delete from the
+#' application configuration. You can use the
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation to get the specific `OutputId`.
 #'
 #' @section Request syntax:
 #' ```
@@ -942,21 +970,25 @@ kinesisanalyticsv2_delete_application_output <- function(ApplicationName, Curren
 #' 
 #' If the application is running, Kinesis Data Analytics immediately
 #' removes the in-application table that you created using the
-#' AddApplicationReferenceDataSource operation.
+#' [`add_application_reference_data_source`][kinesisanalyticsv2_add_application_reference_data_source]
+#' operation.
 #'
 #' @usage
 #' kinesisanalyticsv2_delete_application_reference_data_source(
 #'   ApplicationName, CurrentApplicationVersionId, ReferenceId)
 #'
 #' @param ApplicationName &#91;required&#93; The name of an existing application.
-#' @param CurrentApplicationVersionId &#91;required&#93; The current application version. You can use the DescribeApplication
+#' @param CurrentApplicationVersionId &#91;required&#93; The current application version. You can use the
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
 #' operation to get the current application version. If the version
 #' specified is not the current version, the
 #' `ConcurrentModificationException` is returned.
 #' @param ReferenceId &#91;required&#93; The ID of the reference data source. When you add a reference data
-#' source to your application using the AddApplicationReferenceDataSource,
+#' source to your application using the
+#' [`add_application_reference_data_source`][kinesisanalyticsv2_add_application_reference_data_source],
 #' Kinesis Data Analytics assigns an ID. You can use the
-#' DescribeApplication operation to get the reference ID.
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation to get the reference ID.
 #'
 #' @section Request syntax:
 #' ```
@@ -1043,7 +1075,8 @@ kinesisanalyticsv2_delete_application_snapshot <- function(ApplicationName, Snap
 #'
 #' @param ApplicationName &#91;required&#93; The name of an existing application.
 #' @param CurrentApplicationVersionId &#91;required&#93; The current application version ID. You can retrieve the application
-#' version ID using DescribeApplication.
+#' version ID using
+#' [`describe_application`][kinesisanalyticsv2_describe_application].
 #' @param VpcConfigurationId &#91;required&#93; The ID of the VPC configuration to delete.
 #'
 #' @section Request syntax:
@@ -1081,7 +1114,8 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
 #' Returns information about a specific Kinesis Data Analytics application.
 #' 
 #' If you want to retrieve a list of all applications in your account, use
-#' the ListApplications operation.
+#' the [`list_applications`][kinesisanalyticsv2_list_applications]
+#' operation.
 #'
 #' @usage
 #' kinesisanalyticsv2_describe_application(ApplicationName,
@@ -1284,7 +1318,7 @@ kinesisanalyticsv2_list_application_snapshots <- function(ApplicationName, Limit
 #' Resource Name (ARN), and status.
 #' 
 #' If you want detailed information about a specific application, use
-#' DescribeApplication.
+#' [`describe_application`][kinesisanalyticsv2_describe_application].
 #'
 #' @usage
 #' kinesisanalyticsv2_list_applications(Limit, NextToken)
@@ -1427,8 +1461,9 @@ kinesisanalyticsv2_start_application <- function(ApplicationName, RunConfigurati
 #' only if it is in the running status, unless you set the `Force`
 #' parameter to `true`.
 #' 
-#' You can use the DescribeApplication operation to find the application
-#' status.
+#' You can use the
+#' [`describe_application`][kinesisanalyticsv2_describe_application]
+#' operation to find the application status.
 #' 
 #' Kinesis Data Analytics takes a snapshot when the application is stopped,
 #' unless `Force` is set to `true`.
@@ -1595,14 +1630,15 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to update.
 #' @param CurrentApplicationVersionId &#91;required&#93; The current application version ID. You can retrieve the application
-#' version ID using DescribeApplication.
+#' version ID using
+#' [`describe_application`][kinesisanalyticsv2_describe_application].
 #' @param ApplicationConfigurationUpdate Describes application configuration updates.
 #' @param ServiceExecutionRoleUpdate Describes updates to the service execution role.
 #' @param RunConfigurationUpdate Describes updates to the application's starting parameters.
 #' @param CloudWatchLoggingOptionUpdates Describes application Amazon CloudWatch logging option updates. You can
 #' only update existing CloudWatch logging options with this action. To add
 #' a new CloudWatch logging option, use
-#' AddApplicationCloudWatchLoggingOption.
+#' [`add_application_cloud_watch_logging_option`][kinesisanalyticsv2_add_application_cloud_watch_logging_option].
 #'
 #' @section Request syntax:
 #' ```

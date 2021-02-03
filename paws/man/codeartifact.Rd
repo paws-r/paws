@@ -86,81 +86,96 @@ files.
 
 CodeArtifact supports these operations:
 \itemize{
-\item \code{AssociateExternalConnection}: Adds an existing external connection
-to a repository.
-\item \code{CopyPackageVersions}: Copies package versions from one repository
-to another repository in the same domain.
-\item \code{CreateDomain}: Creates a domain
-\item \code{CreateRepository}: Creates a CodeArtifact repository in a domain.
-\item \code{DeleteDomain}: Deletes a domain. You cannot delete a domain that
-contains repositories.
-\item \code{DeleteDomainPermissionsPolicy}: Deletes the resource policy that is
-set on a domain.
-\item \code{DeletePackageVersions}: Deletes versions of a package. After a
-package has been deleted, it can be republished, but its assets and
-metadata cannot be restored because they have been permanently
+\item \code{\link[=codeartifact_associate_external_connection]{associate_external_connection}}:
+Adds an existing external connection to a repository.
+\item \code{\link[=codeartifact_copy_package_versions]{copy_package_versions}}:
+Copies package versions from one repository to another repository in
+the same domain.
+\item \code{\link[=codeartifact_create_domain]{create_domain}}: Creates a domain
+\item \code{\link[=codeartifact_create_repository]{create_repository}}: Creates a
+CodeArtifact repository in a domain.
+\item \code{\link[=codeartifact_delete_domain]{delete_domain}}: Deletes a domain. You
+cannot delete a domain that contains repositories.
+\item \code{\link[=codeartifact_delete_domain_permissions_policy]{delete_domain_permissions_policy}}:
+Deletes the resource policy that is set on a domain.
+\item \code{\link[=codeartifact_delete_package_versions]{delete_package_versions}}:
+Deletes versions of a package. After a package has been deleted, it
+can be republished, but its assets and metadata cannot be restored
+because they have been permanently removed from storage.
+\item \code{\link[=codeartifact_delete_repository]{delete_repository}}: Deletes a
+repository.
+\item \code{\link[=codeartifact_delete_repository_permissions_policy]{delete_repository_permissions_policy}}:
+Deletes the resource policy that is set on a repository.
+\item \code{\link[=codeartifact_describe_domain]{describe_domain}}: Returns a
+\code{DomainDescription} object that contains information about the
+requested domain.
+\item \code{\link[=codeartifact_describe_package_version]{describe_package_version}}:
+Returns a \code{PackageVersionDescription} object that contains details
+about a package version.
+\item \code{\link[=codeartifact_describe_repository]{describe_repository}}: Returns a
+\code{RepositoryDescription} object that contains detailed information
+about the requested repository.
+\item \code{\link[=codeartifact_dispose_package_versions]{dispose_package_versions}}:
+Disposes versions of a package. A package version with the status
+\code{Disposed} cannot be restored because they have been permanently
 removed from storage.
-\item \code{DeleteRepository}: Deletes a repository.
-\item \code{DeleteRepositoryPermissionsPolicy}: Deletes the resource policy
-that is set on a repository.
-\item \code{DescribeDomain}: Returns a \code{DomainDescription} object that contains
-information about the requested domain.
-\item \code{DescribePackageVersion}: Returns a
-\verb{<a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html">PackageVersionDescription</a>}
-object that contains details about a package version.
-\item \code{DescribeRepository}: Returns a \code{RepositoryDescription} object that
-contains detailed information about the requested repository.
-\item \code{DisposePackageVersions}: Disposes versions of a package. A package
-version with the status \code{Disposed} cannot be restored because they
-have been permanently removed from storage.
-\item \code{DisassociateExternalConnection}: Removes an existing external
-connection from a repository.
-\item \code{GetAuthorizationToken}: Generates a temporary authorization token
-for accessing repositories in the domain. The token expires the
-authorization period has passed. The default authorization period is
-12 hours and can be customized to any length with a maximum of 12
-hours.
-\item \code{GetDomainPermissionsPolicy}: Returns the policy of a resource that
-is attached to the specified domain.
-\item \code{GetPackageVersionAsset}: Returns the contents of an asset that is
-in a package version.
-\item \code{GetPackageVersionReadme}: Gets the readme file or descriptive text
-for a package version.
-\item \code{GetRepositoryEndpoint}: Returns the endpoint of a repository for a
-specific package format. A repository has one endpoint for each
-package format:
+\item \code{\link[=codeartifact_disassociate_external_connection]{disassociate_external_connection}}:
+Removes an existing external connection from a repository.
+\item \code{\link[=codeartifact_get_authorization_token]{get_authorization_token}}:
+Generates a temporary authorization token for accessing repositories
+in the domain. The token expires the authorization period has
+passed. The default authorization period is 12 hours and can be
+customized to any length with a maximum of 12 hours.
+\item \code{\link[=codeartifact_get_domain_permissions_policy]{get_domain_permissions_policy}}:
+Returns the policy of a resource that is attached to the specified
+domain.
+\item \code{\link[=codeartifact_get_package_version_asset]{get_package_version_asset}}:
+Returns the contents of an asset that is in a package version.
+\item \code{\link[=codeartifact_get_package_version_readme]{get_package_version_readme}}:
+Gets the readme file or descriptive text for a package version.
+\item \code{\link[=codeartifact_get_repository_endpoint]{get_repository_endpoint}}:
+Returns the endpoint of a repository for a specific package format.
+A repository has one endpoint for each package format:
 \itemize{
 \item \code{npm}
 \item \code{pypi}
 \item \code{maven}
 \item \code{nuget}
 }
-\item \code{GetRepositoryPermissionsPolicy}: Returns the resource policy that
-is set on a repository.
-\item \code{ListDomains}: Returns a list of \code{DomainSummary} objects. Each
-returned \code{DomainSummary} object contains information about a domain.
-\item \code{ListPackages}: Lists the packages in a repository.
-\item \code{ListPackageVersionAssets}: Lists the assets for a given package
-version.
-\item \code{ListPackageVersionDependencies}: Returns a list of the direct
-dependencies for a package version.
-\item \code{ListPackageVersions}: Returns a list of package versions for a
-specified package in a repository.
-\item \code{ListRepositories}: Returns a list of repositories owned by the AWS
-account that called this method.
-\item \code{ListRepositoriesInDomain}: Returns a list of the repositories in a
-domain.
-\item \code{ListTagsForResource}: Returns a list of the tags associated with a
-resource.
-\item \code{PutDomainPermissionsPolicy}: Attaches a resource policy to a
-domain.
-\item \code{PutRepositoryPermissionsPolicy}: Sets the resource policy on a
-repository that specifies permissions to access it.
-\item \code{TagResource}: Adds or updates tags for a resource.
-\item \code{UntagResource}: Removes a tag from a resource.
-\item \code{UpdatePackageVersionsStatus}: Updates the status of one or more
-versions of a package.
-\item \code{UpdateRepository}: Updates the properties of a repository.
+\item \code{\link[=codeartifact_get_repository_permissions_policy]{get_repository_permissions_policy}}:
+Returns the resource policy that is set on a repository.
+\item \code{\link[=codeartifact_list_domains]{list_domains}}: Returns a list of
+\code{DomainSummary} objects. Each returned \code{DomainSummary} object
+contains information about a domain.
+\item \code{\link[=codeartifact_list_packages]{list_packages}}: Lists the packages in
+a repository.
+\item \code{\link[=codeartifact_list_package_version_assets]{list_package_version_assets}}:
+Lists the assets for a given package version.
+\item \code{\link[=codeartifact_list_package_version_dependencies]{list_package_version_dependencies}}:
+Returns a list of the direct dependencies for a package version.
+\item \code{\link[=codeartifact_list_package_versions]{list_package_versions}}:
+Returns a list of package versions for a specified package in a
+repository.
+\item \code{\link[=codeartifact_list_repositories]{list_repositories}}: Returns a
+list of repositories owned by the AWS account that called this
+method.
+\item \code{\link[=codeartifact_list_repositories_in_domain]{list_repositories_in_domain}}:
+Returns a list of the repositories in a domain.
+\item \code{\link[=codeartifact_list_tags_for_resource]{list_tags_for_resource}}:
+Returns a list of the tags associated with a resource.
+\item \code{\link[=codeartifact_put_domain_permissions_policy]{put_domain_permissions_policy}}:
+Attaches a resource policy to a domain.
+\item \code{\link[=codeartifact_put_repository_permissions_policy]{put_repository_permissions_policy}}:
+Sets the resource policy on a repository that specifies permissions
+to access it.
+\item \code{\link[=codeartifact_tag_resource]{tag_resource}}: Adds or updates tags
+for a resource.
+\item \code{\link[=codeartifact_untag_resource]{untag_resource}}: Removes a tag from
+a resource.
+\item \code{\link[=codeartifact_update_package_versions_status]{update_package_versions_status}}:
+Updates the status of one or more versions of a package.
+\item \code{\link[=codeartifact_update_repository]{update_repository}}: Updates the
+properties of a repository.
 }
 }
 \section{Service syntax}{

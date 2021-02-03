@@ -26,8 +26,9 @@ contain at most three datasets, one for each type of dataset:
 }
 
 To train a model (create a solution), a dataset group that contains an
-\code{Interactions} dataset is required. Call CreateDataset to add a dataset
-to the group.
+\code{Interactions} dataset is required. Call
+\code{\link[=personalize_create_dataset]{create_dataset}} to add a dataset to the
+group.
 
 A dataset group can be in one of the following states:
 \itemize{
@@ -36,9 +37,10 @@ FAILED
 \item DELETE PENDING
 }
 
-To get the status of the dataset group, call DescribeDatasetGroup. If
-the status shows as CREATE FAILED, the response includes a
-\code{failureReason} key, which describes why the creation failed.
+To get the status of the dataset group, call
+\code{\link[=personalize_describe_dataset_group]{describe_dataset_group}}. If the
+status shows as CREATE FAILED, the response includes a \code{failureReason}
+key, which describes why the creation failed.
 
 You must wait until the \code{status} of the dataset group is \code{ACTIVE} before
 adding a dataset to the group.
@@ -50,16 +52,16 @@ access the key.
 
 \strong{APIs that require a dataset group ARN in the request}
 \itemize{
-\item CreateDataset
-\item CreateEventTracker
-\item CreateSolution
+\item \code{\link[=personalize_create_dataset]{create_dataset}}
+\item \code{\link[=personalize_create_event_tracker]{create_event_tracker}}
+\item \code{\link[=personalize_create_solution]{create_solution}}
 }
 
 \strong{Related APIs}
 \itemize{
-\item ListDatasetGroups
-\item DescribeDatasetGroup
-\item DeleteDatasetGroup
+\item \code{\link[=personalize_list_dataset_groups]{list_dataset_groups}}
+\item \code{\link[=personalize_describe_dataset_group]{describe_dataset_group}}
+\item \code{\link[=personalize_delete_dataset_group]{delete_dataset_group}}
 }
 }
 \section{Request syntax}{

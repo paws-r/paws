@@ -23,7 +23,8 @@ Deleting a user's password does not prevent a user from accessing AWS
 through the command line interface or the API. To prevent all user
 access, you must also either make any access keys inactive or delete
 them. For more information about making keys inactive or deleting them,
-see UpdateAccessKey and DeleteAccessKey.
+see \code{\link[=iam_update_access_key]{update_access_key}} and
+\code{\link[=iam_delete_access_key]{delete_access_key}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_login_profile(

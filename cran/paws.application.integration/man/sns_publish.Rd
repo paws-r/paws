@@ -47,8 +47,8 @@ sends the message as multiple messages, each fitting within the size
 limit. Messages aren't truncated mid-word but are cut off at
 whole-word boundaries.
 
-The total size limit for a single SMS \code{Publish} action is 1,600
-characters.
+The total size limit for a single SMS \code{\link[=sns_publish]{publish}}
+action is 1,600 characters.
 }
 
 JSON-specific constraints:
@@ -68,7 +68,8 @@ allowed).
 ignored.
 \item Duplicate keys are not allowed.
 \item Failure to parse or validate any key or value in the message will
-cause the \code{Publish} call to return an error (no partial delivery).
+cause the \code{\link[=sns_publish]{publish}} call to return an error (no
+partial delivery).
 }}
 
 \item{Subject}{Optional parameter to be used as the "Subject" line when the message is
@@ -100,7 +101,7 @@ Valid value: \code{json}}
 \item{MessageDeduplicationId}{This parameter applies only to FIFO (first-in-first-out) topics. The
 \code{MessageDeduplicationId} can contain up to 128 alphanumeric characters
 (a-z, A-Z, 0-9) and punctuation
-\verb{(!\\"#$\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
+\verb{(!\\"#$\%&\\'()*+,-./:;<=>?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
 
 Every message must have a unique \code{MessageDeduplicationId}, which is a
 token used for deduplication of sent messages. If a message with a
@@ -115,7 +116,7 @@ If the topic has \code{ContentBasedDeduplication} set, the system generates a
 \item{MessageGroupId}{This parameter applies only to FIFO (first-in-first-out) topics. The
 \code{MessageGroupId} can contain up to 128 alphanumeric characters (a-z,
 A-Z, 0-9) and punctuation
-\verb{(!\\"#$\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
+\verb{(!\\"#$\%&\\'()*+,-./:;<=>?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
 
 The \code{MessageGroupId} is a tag that specifies that a message belongs to a
 specific message group. Messages that belong to the same message group
@@ -135,10 +136,11 @@ depends on the notification protocol for each subscribed endpoint.
 When a \code{messageId} is returned, the message has been saved and Amazon
 SNS will attempt to deliver it shortly.
 
-To use the \code{Publish} action for sending a message to a mobile endpoint,
-such as an app on a Kindle device or mobile phone, you must specify the
-EndpointArn for the TargetArn parameter. The EndpointArn is returned
-when making a call with the \code{CreatePlatformEndpoint} action.
+To use the \code{\link[=sns_publish]{publish}} action for sending a message to a
+mobile endpoint, such as an app on a Kindle device or mobile phone, you
+must specify the EndpointArn for the TargetArn parameter. The
+EndpointArn is returned when making a call with the
+\code{\link[=sns_create_platform_endpoint]{create_platform_endpoint}} action.
 
 For more information about formatting messages, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-send-custom-platform-specific-payloads-mobile-devices.html}{Send Custom Platform-Specific Payloads in Messages to Mobile Devices}.
 

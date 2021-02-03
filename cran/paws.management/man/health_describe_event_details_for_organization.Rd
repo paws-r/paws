@@ -19,21 +19,23 @@ default and the only supported value at this time.}
 Returns detailed information about one or more specified events for one
 or more accounts in your organization. Information includes standard
 event data (Region, service, and so on, as returned by
-\href{https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventsForOrganization.html}{DescribeEventsForOrganization}),
+\code{\link[=health_describe_events_for_organization]{describe_events_for_organization}}),
 a detailed event description, and possible additional metadata that
 depends upon the nature of the event. Affected entities are not
 included; to retrieve those, use the
-\href{https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntitiesForOrganization.html}{DescribeAffectedEntitiesForOrganization}
+\code{\link[=health_describe_affected_entities_for_organization]{describe_affected_entities_for_organization}}
 operation.
 
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
-\href{https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html}{EnableHealthServiceAccessForOrganization}
+\code{\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization}}
 operation from your organization's master account.
 
-When you call the \code{DescribeEventDetailsForOrganization} operation, you
-specify the \code{organizationEventDetailFilters} object in the request.
-Depending on the AWS Health event type, note the following differences:
+When you call the
+\code{\link[=health_describe_event_details_for_organization]{describe_event_details_for_organization}}
+operation, you specify the \code{organizationEventDetailFilters} object in
+the request. Depending on the AWS Health event type, note the following
+differences:
 \itemize{
 \item If the event is public, the \code{awsAccountId} parameter must be empty.
 If you specify an account ID for a public event, then an error

@@ -47,8 +47,9 @@ previous pending operation to add nodes. The customer can modify the
 previous pending operation to add more nodes or explicitly cancel the
 pending request and retry the new request. To cancel pending operations
 to modify the number of cache nodes in a cluster, use the
-\code{ModifyCacheCluster} request and set \code{NumCacheNodes} equal to the number
-of cache nodes currently in the cluster.}
+\code{\link[=elasticache_modify_cache_cluster]{modify_cache_cluster}} request and
+set \code{NumCacheNodes} equal to the number of cache nodes currently in the
+cluster.}
 
 \item{CacheNodeIdsToRemove}{A list of cache node IDs to be removed. A node ID is a numeric
 identifier (0001, 0002, etc.). This parameter is only valid when
@@ -59,7 +60,8 @@ pending cache nodes, whichever is greater, and the value of
 \code{NumCacheNodes} in the request.
 
 For example: If you have 3 active cache nodes, 7 pending cache nodes,
-and the number of cache nodes in this \code{ModifyCacheCluster} call is 5,
+and the number of cache nodes in this
+\code{\link[=elasticache_modify_cache_cluster]{modify_cache_cluster}} call is 5,
 you must list 2 (7 - 5) cache node IDs to remove.}
 
 \item{AZMode}{Specifies whether the new nodes in this Memcached cluster are all
@@ -201,8 +203,10 @@ cluster.
 If \code{false}, changes to the cluster are applied on the next maintenance
 reboot, or the next failure reboot, whichever occurs first.
 
-If you perform a \code{ModifyCacheCluster} before a pending modification is
-applied, the pending modification is replaced by the newer modification.
+If you perform a
+\code{\link[=elasticache_modify_cache_cluster]{modify_cache_cluster}} before a
+pending modification is applied, the pending modification is replaced by
+the newer modification.
 
 Valid values: \code{true} | \code{false}
 

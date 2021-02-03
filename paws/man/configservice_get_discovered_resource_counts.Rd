@@ -40,8 +40,9 @@ for your AWS account.
 \item AWS Config is recording three resource types in the US East (Ohio)
 Region for your account: 25 EC2 instances, 20 IAM users, and 15 S3
 buckets.
-\item You make a call to the \code{GetDiscoveredResourceCounts} action and
-specify that you want all resource types.
+\item You make a call to the
+\code{\link[=configservice_get_discovered_resource_counts]{get_discovered_resource_counts}}
+action and specify that you want all resource types.
 \item AWS Config returns the following:
 \itemize{
 \item The resource types (EC2 instances, IAM users, and S3 buckets).
@@ -56,8 +57,10 @@ the \code{limit} parameter. The response includes a \code{nextToken} string. To
 get the next page of results, run the request again and specify the
 string for the \code{nextToken} parameter.
 
-If you make a call to the GetDiscoveredResourceCounts action, you might
-not immediately receive resource counts in the following situations:
+If you make a call to the
+\code{\link[=configservice_get_discovered_resource_counts]{get_discovered_resource_counts}}
+action, you might not immediately receive resource counts in the
+following situations:
 \itemize{
 \item You are a new AWS Config customer.
 \item You just enabled resource recording.
@@ -65,7 +68,8 @@ not immediately receive resource counts in the following situations:
 
 It might take a few minutes for AWS Config to record and count your
 resources. Wait a few minutes and then retry the
-GetDiscoveredResourceCounts action.
+\code{\link[=configservice_get_discovered_resource_counts]{get_discovered_resource_counts}}
+action.
 }
 \section{Request syntax}{
 \preformatted{svc$get_discovered_resource_counts(

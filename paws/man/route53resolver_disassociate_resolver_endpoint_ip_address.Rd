@@ -16,10 +16,11 @@ address from.}
 \description{
 Removes IP addresses from an inbound or an outbound Resolver endpoint.
 If you want to remove more than one IP address, submit one
-\code{DisassociateResolverEndpointIpAddress} request for each IP address.
+\code{\link[=route53resolver_disassociate_resolver_endpoint_ip_address]{disassociate_resolver_endpoint_ip_address}}
+request for each IP address.
 
 To add an IP address to an endpoint, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverEndpointIpAddress.html}{AssociateResolverEndpointIpAddress}.
+\code{\link[=route53resolver_associate_resolver_endpoint_ip_address]{associate_resolver_endpoint_ip_address}}.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_resolver_endpoint_ip_address(

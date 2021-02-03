@@ -8,9 +8,12 @@ wafregional_delete_rate_based_rule(RuleId, ChangeToken)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the RateBasedRule that you want to delete. \code{RuleId} is
-returned by CreateRateBasedRule and by ListRateBasedRules.}
+returned by
+\code{\link[=wafregional_create_rate_based_rule]{create_rate_based_rule}} and by
+\code{\link[=wafregional_list_rate_based_rules]{list_rate_based_rules}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -26,16 +29,22 @@ Permanently deletes a RateBasedRule. You can't delete a rule if it's
 still used in any \code{WebACL} objects or if it still includes any
 predicates, such as \code{ByteMatchSet} objects.
 
-If you just want to remove a rule from a \code{WebACL}, use UpdateWebACL.
+If you just want to remove a rule from a \code{WebACL}, use
+\code{\link[=wafregional_update_web_acl]{update_web_acl}}.
 
 To permanently delete a \code{RateBasedRule} from AWS WAF, perform the
 following steps:
 \enumerate{
 \item Update the \code{RateBasedRule} to remove predicates, if any. For more
-information, see UpdateRateBasedRule.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{DeleteRateBasedRule} request.
-\item Submit a \code{DeleteRateBasedRule} request.
+information, see
+\code{\link[=wafregional_update_rate_based_rule]{update_rate_based_rule}}.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=wafregional_delete_rate_based_rule]{delete_rate_based_rule}}
+request.
+\item Submit a
+\code{\link[=wafregional_delete_rate_based_rule]{delete_rate_based_rule}}
+request.
 }
 }
 \section{Request syntax}{

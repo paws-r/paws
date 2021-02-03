@@ -19,9 +19,10 @@ returned.}
 }
 \description{
 Returns information about any jobs for AWS CodePipeline to act on.
-\code{PollForJobs} is valid only for action types with "Custom" in the owner
-field. If the action type contains "AWS" or "ThirdParty" in the owner
-field, the \code{PollForJobs} action returns an error.
+\code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}} is valid only for action
+types with "Custom" in the owner field. If the action type contains
+"AWS" or "ThirdParty" in the owner field, the
+\code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}} action returns an error.
 
 When this API is called, AWS CodePipeline returns temporary credentials
 for the S3 bucket used to store artifacts for the pipeline, if the

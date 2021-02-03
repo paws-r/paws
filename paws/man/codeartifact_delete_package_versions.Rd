@@ -53,9 +53,8 @@ cannot be restored in your repository. If you want to remove a package
 version from your repository and be able to restore it later, set its
 status to \code{Archived}. Archived packages cannot be downloaded from a
 repository and don't show up with list package APIs (for example,
-\verb{<a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html">ListackageVersions</a>}),
-but you can restore them using
-\verb{<a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_UpdatePackageVersionsStatus.html">UpdatePackageVersionsStatus</a>}.
+\code{ListackageVersions}), but you can restore them using
+\code{\link[=codeartifact_update_package_versions_status]{update_package_versions_status}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_package_versions(

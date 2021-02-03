@@ -35,7 +35,7 @@ following two values:
 }
 
 The
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAccelerateConfiguration.html}{GetBucketAccelerateConfiguration}
+\code{\link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration}}
 operation returns the transfer acceleration state of a bucket.
 
 After setting the Transfer Acceleration state of a bucket to Enabled, it
@@ -48,10 +48,10 @@ DNS-compliant and must not contain periods (".").
 For more information about transfer acceleration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html}{Transfer Acceleration}.
 
 The following operations are related to
-\code{PutBucketAccelerateConfiguration}:
+\code{\link[=s3_put_bucket_accelerate_configuration]{put_bucket_accelerate_configuration}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAccelerateConfiguration.html}{GetBucketAccelerateConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
+\item \code{\link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration}}
+\item \code{\link[=s3_create_bucket]{create_bucket}}
 }
 }
 \section{Request syntax}{

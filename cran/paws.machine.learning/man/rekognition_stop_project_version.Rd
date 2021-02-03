@@ -15,7 +15,8 @@ This operation requires permissions to perform the
 }
 \description{
 Stops a running model. The operation might take a while to complete. To
-check the current status, call DescribeProjectVersions.
+check the current status, call
+\code{\link[=rekognition_describe_project_versions]{describe_project_versions}}.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_project_version(

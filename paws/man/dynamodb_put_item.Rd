@@ -40,19 +40,21 @@ information, see
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ReturnValues}{Use \code{ReturnValues} if you want to get the item attributes as they
-appeared before they were updated with the \code{PutItem} request. For
-\code{PutItem}, the valid values are:
+appeared before they were updated with the
+\code{\link[=dynamodb_put_item]{put_item}} request. For
+\code{\link[=dynamodb_put_item]{put_item}}, the valid values are:
 \itemize{
 \item \code{NONE} - If \code{ReturnValues} is not specified, or if its value is
 \code{NONE}, then nothing is returned. (This setting is the default for
 \code{ReturnValues}.)
-\item \code{ALL_OLD} - If \code{PutItem} overwrote an attribute name-value pair,
-then the content of the old item is returned.
+\item \code{ALL_OLD} - If \code{\link[=dynamodb_put_item]{put_item}} overwrote an
+attribute name-value pair, then the content of the old item is
+returned.
 }
 
 The \code{ReturnValues} parameter is used by several DynamoDB operations;
-however, \code{PutItem} does not recognize any values other than \code{NONE} or
-\code{ALL_OLD}.}
+however, \code{\link[=dynamodb_put_item]{put_item}} does not recognize any values
+other than \code{NONE} or \code{ALL_OLD}.}
 
 \item{ReturnConsumedCapacity}{}
 
@@ -66,8 +68,8 @@ information, see
 \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html}{ConditionalOperator}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
-\item{ConditionExpression}{A condition that must be satisfied in order for a conditional \code{PutItem}
-operation to succeed.
+\item{ConditionExpression}{A condition that must be satisfied in order for a conditional
+\code{\link[=dynamodb_put_item]{put_item}} operation to succeed.
 
 An expression can contain any of the following:
 \itemize{
@@ -75,8 +77,7 @@ An expression can contain any of the following:
 \code{attribute_exists | attribute_not_exists | attribute_type | contains | begins_with | size}
 
 These function names are case-sensitive.
-\item Comparison operators:
-\verb{= | &lt;&gt; | &lt; | &gt; | &lt;= | &gt;= | BETWEEN | IN }
+\item Comparison operators: \verb{= | <> | < | > | <= | >= | BETWEEN | IN }
 \item Logical operators: \code{AND | OR | NOT}
 }
 
@@ -149,10 +150,11 @@ specified primary key doesn't exist), or replace an existing item if it
 has certain attribute values. You can return the item's attribute values
 in the same operation, using the \code{ReturnValues} parameter.
 
-This topic provides general information about the \code{PutItem} API.
+This topic provides general information about the
+\code{\link[=dynamodb_put_item]{put_item}} API.
 
-For information on how to call the \code{PutItem} API using the AWS SDK in
-specific languages, see the following:
+For information on how to call the \code{\link[=dynamodb_put_item]{put_item}} API
+using the AWS SDK in specific languages, see the following:
 \itemize{
 \item \href{https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html}{PutItem in the AWS Command Line Interface}
 \item \href{https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=DynamoDBv2/MDynamoDBPutItemPutItemRequest.html}{PutItem in the AWS SDK for .NET}
@@ -183,7 +185,7 @@ Since every record must contain that attribute, the
 \code{attribute_not_exists} function will only succeed if no matching item
 exists.
 
-For more information about \code{PutItem}, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html}{Working with Items}
+For more information about \code{\link[=dynamodb_put_item]{put_item}}, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html}{Working with Items}
 in the \emph{Amazon DynamoDB Developer Guide}.
 }
 \section{Request syntax}{

@@ -183,11 +183,11 @@ transfer_create_server <- function(Certificate = NULL, Domain = NULL, EndpointDe
 #' Creates a user and associates them with an existing file transfer
 #' protocol-enabled server. You can only create and associate users with
 #' servers that have the `IdentityProviderType` set to `SERVICE_MANAGED`.
-#' Using parameters for `CreateUser`, you can specify the user name, set
-#' the home directory, store the user's public key, and assign the user's
-#' AWS Identity and Access Management (IAM) role. You can also optionally
-#' add a scope-down policy, and assign metadata with tags that can be used
-#' to group and search for users.
+#' Using parameters for [`create_user`][transfer_create_user], you can
+#' specify the user name, set the home directory, store the user's public
+#' key, and assign the user's AWS Identity and Access Management (IAM)
+#' role. You can also optionally add a scope-down policy, and assign
+#' metadata with tags that can be used to group and search for users.
 #'
 #' @usage
 #' transfer_create_user(HomeDirectory, HomeDirectoryType,
@@ -197,7 +197,7 @@ transfer_create_server <- function(Certificate = NULL, Domain = NULL, EndpointDe
 #' @param HomeDirectory The landing directory (folder) for a user when they log in to the server
 #' using the client.
 #' 
-#' An example is *`your-Amazon-S3-bucket-name&gt;/home/username`* .
+#' An example is *`your-Amazon-S3-bucket-name>/home/username`* .
 #' @param HomeDirectoryType The type of landing directory (folder) you want your users' home
 #' directory to be when they log into the server. If you set it to `PATH`,
 #' the user will see the absolute Amazon S3 bucket paths as is in their
@@ -637,11 +637,12 @@ transfer_import_ssh_public_key <- function(ServerId, SshPublicKeyBody, UserName)
 #' transfer_list_security_policies(MaxResults, NextToken)
 #'
 #' @param MaxResults Specifies the number of security policies to return as a response to the
-#' `ListSecurityPolicies` query.
-#' @param NextToken When additional results are obtained from the `ListSecurityPolicies`
-#' command, a `NextToken` parameter is returned in the output. You can then
-#' pass the `NextToken` parameter in a subsequent command to continue
-#' listing additional security policies.
+#' [`list_security_policies`][transfer_list_security_policies] query.
+#' @param NextToken When additional results are obtained from the
+#' [`list_security_policies`][transfer_list_security_policies] command, a
+#' `NextToken` parameter is returned in the output. You can then pass the
+#' `NextToken` parameter in a subsequent command to continue listing
+#' additional security policies.
 #'
 #' @section Request syntax:
 #' ```
@@ -682,11 +683,11 @@ transfer_list_security_policies <- function(MaxResults = NULL, NextToken = NULL)
 #' transfer_list_servers(MaxResults, NextToken)
 #'
 #' @param MaxResults Specifies the number of servers to return as a response to the
-#' `ListServers` query.
-#' @param NextToken When additional results are obtained from the `ListServers` command, a
-#' `NextToken` parameter is returned in the output. You can then pass the
-#' `NextToken` parameter in a subsequent command to continue listing
-#' additional servers.
+#' [`list_servers`][transfer_list_servers] query.
+#' @param NextToken When additional results are obtained from the
+#' [`list_servers`][transfer_list_servers] command, a `NextToken` parameter
+#' is returned in the output. You can then pass the `NextToken` parameter
+#' in a subsequent command to continue listing additional servers.
 #'
 #' @section Request syntax:
 #' ```
@@ -730,11 +731,12 @@ transfer_list_servers <- function(MaxResults = NULL, NextToken = NULL) {
 #' (ARN). An ARN is an identifier for a specific AWS resource, such as a
 #' server, user, or role.
 #' @param MaxResults Specifies the number of tags to return as a response to the
-#' `ListTagsForResource` request.
-#' @param NextToken When you request additional results from the `ListTagsForResource`
-#' operation, a `NextToken` parameter is returned in the input. You can
-#' then pass in a subsequent command to the `NextToken` parameter to
-#' continue listing additional tags.
+#' [`list_tags_for_resource`][transfer_list_tags_for_resource] request.
+#' @param NextToken When you request additional results from the
+#' [`list_tags_for_resource`][transfer_list_tags_for_resource] operation, a
+#' `NextToken` parameter is returned in the input. You can then pass in a
+#' subsequent command to the `NextToken` parameter to continue listing
+#' additional tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -775,12 +777,12 @@ transfer_list_tags_for_resource <- function(Arn, MaxResults = NULL, NextToken = 
 #' @usage
 #' transfer_list_users(MaxResults, NextToken, ServerId)
 #'
-#' @param MaxResults Specifies the number of users to return as a response to the `ListUsers`
-#' request.
-#' @param NextToken When you can get additional results from the `ListUsers` call, a
-#' `NextToken` parameter is returned in the output. You can then pass in a
-#' subsequent command to the `NextToken` parameter to continue listing
-#' additional users.
+#' @param MaxResults Specifies the number of users to return as a response to the
+#' [`list_users`][transfer_list_users] request.
+#' @param NextToken When you can get additional results from the
+#' [`list_users`][transfer_list_users] call, a `NextToken` parameter is
+#' returned in the output. You can then pass in a subsequent command to the
+#' `NextToken` parameter to continue listing additional users.
 #' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server that has users assigned
 #' to it.
 #'
@@ -1080,8 +1082,8 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #' Updates the file transfer protocol-enabled server's properties after
 #' that server has been created.
 #' 
-#' The `UpdateServer` call returns the `ServerId` of the server you
-#' updated.
+#' The [`update_server`][transfer_update_server] call returns the
+#' `ServerId` of the server you updated.
 #'
 #' @usage
 #' transfer_update_server(Certificate, EndpointDetails, EndpointType,
@@ -1248,7 +1250,7 @@ transfer_update_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #' @param HomeDirectory Specifies the landing directory (folder) for a user when they log in to
 #' the server using their file transfer protocol client.
 #' 
-#' An example is `your-Amazon-S3-bucket-name&gt;/home/username`.
+#' An example is `your-Amazon-S3-bucket-name>/home/username`.
 #' @param HomeDirectoryType The type of landing directory (folder) you want your users' home
 #' directory to be when they log into the server. If you set it to `PATH`,
 #' the user will see the absolute Amazon S3 bucket paths as is in their

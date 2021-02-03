@@ -9,7 +9,8 @@ sfn_get_activity_task(activityArn, workerName)
 }
 \arguments{
 \item{activityArn}{[required] The Amazon Resource Name (ARN) of the activity to retrieve tasks from
-(assigned when you create the task using CreateActivity.)}
+(assigned when you create the task using
+\code{\link[=sfn_create_activity]{create_activity}}.)}
 
 \item{workerName}{You can provide an arbitrary name in order to identify the worker that
 the task is assigned to. This name is used when it is logged in the
@@ -28,8 +29,8 @@ Workers should set their client side socket timeout to at least 65
 seconds (5 seconds higher than the maximum time the service may hold the
 poll request).
 
-Polling with \code{GetActivityTask} can cause latency in some
-implementations. See \href{https://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html}{Avoid Latency When Polling for Activity Tasks}
+Polling with \code{\link[=sfn_get_activity_task]{get_activity_task}} can cause
+latency in some implementations. See \href{https://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html}{Avoid Latency When Polling for Activity Tasks}
 in the Step Functions Developer Guide.
 }
 \section{Request syntax}{

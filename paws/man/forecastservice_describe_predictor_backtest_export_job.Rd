@@ -13,11 +13,12 @@ forecastservice_describe_predictor_backtest_export_job(
 }
 \description{
 Describes a predictor backtest export job created using the
-CreatePredictorBacktestExportJob operation.
+\code{\link[=forecastservice_create_predictor_backtest_export_job]{create_predictor_backtest_export_job}}
+operation.
 
 In addition to listing the properties provided by the user in the
-\code{CreatePredictorBacktestExportJob} request, this operation lists the
-following properties:
+\code{\link[=forecastservice_create_predictor_backtest_export_job]{create_predictor_backtest_export_job}}
+request, this operation lists the following properties:
 \itemize{
 \item \code{CreationTime}
 \item \code{LastModificationTime}

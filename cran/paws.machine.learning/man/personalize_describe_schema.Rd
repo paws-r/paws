@@ -10,7 +10,8 @@ personalize_describe_schema(schemaArn)
 \item{schemaArn}{[required] The Amazon Resource Name (ARN) of the schema to retrieve.}
 }
 \description{
-Describes a schema. For more information on schemas, see CreateSchema.
+Describes a schema. For more information on schemas, see
+\code{\link[=personalize_create_schema]{create_schema}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_schema(

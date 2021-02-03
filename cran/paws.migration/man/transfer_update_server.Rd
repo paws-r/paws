@@ -104,8 +104,8 @@ account is assigned to.}
 Updates the file transfer protocol-enabled server's properties after
 that server has been created.
 
-The \code{UpdateServer} call returns the \code{ServerId} of the server you
-updated.
+The \code{\link[=transfer_update_server]{update_server}} call returns the
+\code{ServerId} of the server you updated.
 }
 \section{Request syntax}{
 \preformatted{svc$update_server(

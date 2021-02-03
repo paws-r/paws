@@ -12,47 +12,54 @@ NULL
 #' 
 #' Notification rules, by calling the following:
 #' 
-#' -   CreateNotificationRule, which creates a notification rule for a
-#'     resource in your account.
+#' -   [`create_notification_rule`][codestarnotifications_create_notification_rule],
+#'     which creates a notification rule for a resource in your account.
 #' 
-#' -   DeleteNotificationRule, which deletes a notification rule.
+#' -   [`delete_notification_rule`][codestarnotifications_delete_notification_rule],
+#'     which deletes a notification rule.
 #' 
-#' -   DescribeNotificationRule, which provides information about a
+#' -   [`describe_notification_rule`][codestarnotifications_describe_notification_rule],
+#'     which provides information about a notification rule.
+#' 
+#' -   [`list_notification_rules`][codestarnotifications_list_notification_rules],
+#'     which lists the notification rules associated with your account.
+#' 
+#' -   [`update_notification_rule`][codestarnotifications_update_notification_rule],
+#'     which changes the name, events, or targets associated with a
 #'     notification rule.
 #' 
-#' -   ListNotificationRules, which lists the notification rules associated
-#'     with your account.
+#' -   [`subscribe`][codestarnotifications_subscribe], which subscribes a
+#'     target to a notification rule.
 #' 
-#' -   UpdateNotificationRule, which changes the name, events, or targets
-#'     associated with a notification rule.
-#' 
-#' -   Subscribe, which subscribes a target to a notification rule.
-#' 
-#' -   Unsubscribe, which removes a target from a notification rule.
+#' -   [`unsubscribe`][codestarnotifications_unsubscribe], which removes a
+#'     target from a notification rule.
 #' 
 #' Targets, by calling the following:
 #' 
-#' -   DeleteTarget, which removes a notification rule target (SNS topic)
-#'     from a notification rule.
-#' 
-#' -   ListTargets, which lists the targets associated with a notification
+#' -   [`delete_target`][codestarnotifications_delete_target], which
+#'     removes a notification rule target (SNS topic) from a notification
 #'     rule.
+#' 
+#' -   [`list_targets`][codestarnotifications_list_targets], which lists
+#'     the targets associated with a notification rule.
 #' 
 #' Events, by calling the following:
 #' 
-#' -   ListEventTypes, which lists the event types you can include in a
-#'     notification rule.
+#' -   [`list_event_types`][codestarnotifications_list_event_types], which
+#'     lists the event types you can include in a notification rule.
 #' 
 #' Tags, by calling the following:
 #' 
-#' -   ListTagsForResource, which lists the tags already associated with a
-#'     notification rule in your account.
+#' -   [`list_tags_for_resource`][codestarnotifications_list_tags_for_resource],
+#'     which lists the tags already associated with a notification rule in
+#'     your account.
 #' 
-#' -   TagResource, which associates a tag you provide with a notification
-#'     rule in your account.
-#' 
-#' -   UntagResource, which removes a tag from a notification rule in your
+#' -   [`tag_resource`][codestarnotifications_tag_resource], which
+#'     associates a tag you provide with a notification rule in your
 #'     account.
+#' 
+#' -   [`untag_resource`][codestarnotifications_untag_resource], which
+#'     removes a tag from a notification rule in your account.
 #' 
 #' For information about how to use AWS CodeStar Notifications, see link in
 #' the CodeStarNotifications User Guide.

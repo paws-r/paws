@@ -23,8 +23,9 @@ that use this token return the same response as the first call.}
 }
 \description{
 Initiates a signing job to be performed on the code provided. Signing
-jobs are viewable by the \code{ListSigningJobs} operation for two years after
-they are performed. Note the following requirements:
+jobs are viewable by the \code{\link[=signer_list_signing_jobs]{list_signing_jobs}}
+operation for two years after they are performed. Note the following
+requirements:
 \itemize{
 \item You must create an Amazon S3 source bucket. For more information,
 see \href{https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html}{Create a Bucket}
@@ -33,13 +34,15 @@ in the \emph{Amazon S3 Getting Started Guide}.
 \item You must create an S3 destination bucket. Code signing uses your S3
 destination bucket to write your signed code.
 \item You specify the name of the source and destination buckets when
-calling the \code{StartSigningJob} operation.
+calling the \code{\link[=signer_start_signing_job]{start_signing_job}}
+operation.
 \item You must also specify a request token that identifies your request
 to code signing.
 }
 
-You can call the DescribeSigningJob and the ListSigningJobs actions
-after you call \code{StartSigningJob}.
+You can call the \code{\link[=signer_describe_signing_job]{describe_signing_job}}
+and the \code{\link[=signer_list_signing_jobs]{list_signing_jobs}} actions after
+you call \code{\link[=signer_start_signing_job]{start_signing_job}}.
 
 For a Java example that shows how to use this action, see
 \href{https://docs.aws.amazon.com/acm/latest/userguide/}{http://docs.aws.amazon.com/acm/latest/userguide/}

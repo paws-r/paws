@@ -26,7 +26,8 @@ time with the \code{NextToken} parameter (with the returned token as its
 value). The next set of responses appears, with a token if there are
 still more containers to receive.
 
-See also DescribeContainer, which gets the properties of one container.
+See also \code{\link[=mediastore_describe_container]{describe_container}}, which
+gets the properties of one container.
 }
 \section{Request syntax}{
 \preformatted{svc$list_containers(

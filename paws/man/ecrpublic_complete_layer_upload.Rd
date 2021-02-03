@@ -16,8 +16,9 @@ assumed.}
 \item{repositoryName}{[required] The name of the repository in a public registry to associate with the
 image layer.}
 
-\item{uploadId}{[required] The upload ID from a previous InitiateLayerUpload operation to associate
-with the image layer.}
+\item{uploadId}{[required] The upload ID from a previous
+\code{\link[=ecrpublic_initiate_layer_upload]{initiate_layer_upload}} operation to
+associate with the image layer.}
 
 \item{layerDigests}{[required] The \code{sha256} digest of the image layer.}
 }

@@ -70,12 +70,14 @@ you must complete before you can launch an instance from the AMI. For
 more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami}{Creating your own AMIs}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-For Amazon EBS-backed instances, CreateImage creates and registers the
-AMI in a single request, so you don't have to register the AMI yourself.
+For Amazon EBS-backed instances, \code{\link[=ec2_create_image]{create_image}}
+creates and registers the AMI in a single request, so you don't have to
+register the AMI yourself.
 
-You can also use \code{RegisterImage} to create an Amazon EBS-backed Linux
-AMI from a snapshot of a root device volume. You specify the snapshot
-using the block device mapping. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot}{Launching a Linux instance from a backup}
+You can also use \code{\link[=ec2_register_image]{register_image}} to create an
+Amazon EBS-backed Linux AMI from a snapshot of a root device volume. You
+specify the snapshot using the block device mapping. For more
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot}{Launching a Linux instance from a backup}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 If any snapshots have AWS Marketplace product codes, they are copied to
@@ -91,7 +93,8 @@ following to preserve the billing product code association:
 \item Launch an instance from an existing AMI with that billing product
 code.
 \item Customize the instance.
-\item Create an AMI from the instance using CreateImage.
+\item Create an AMI from the instance using
+\code{\link[=ec2_create_image]{create_image}}.
 }
 
 If you purchase a Reserved Instance to apply to an On-Demand Instance

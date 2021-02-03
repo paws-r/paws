@@ -115,7 +115,7 @@ codegurureviewer_associate_repository <- function(Repository, ClientRequestToken
 #' @param RepositoryAssociationArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
 #' object. You can retrieve this ARN by calling
-#' [`ListRepositoryAssociations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
+#' [`list_repository_associations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
 #' .
 #' 
 #' A code review can only be created on an associated repository. This is
@@ -270,7 +270,7 @@ codegurureviewer_describe_recommendation_feedback <- function(CodeReviewArn, Rec
 #' @param AssociationArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
 #' object. You can retrieve this ARN by calling
-#' [`ListRepositoryAssociations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
+#' [`list_repository_associations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
 #' .
 #'
 #' @section Request syntax:
@@ -313,7 +313,7 @@ codegurureviewer_describe_repository_association <- function(AssociationArn) {
 #' @param AssociationArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
 #' object. You can retrieve this ARN by calling
-#' [`ListRepositoryAssociations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
+#' [`list_repository_associations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
 #' .
 #'
 #' @section Request syntax:
@@ -592,18 +592,22 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
 #' Enterprise Server, this is name of the account that was used to
 #' associate the repository.
 #' @param MaxResults The maximum number of repository association results returned by
-#' `ListRepositoryAssociations` in paginated output. When this parameter is
-#' used, `ListRepositoryAssociations` only returns `maxResults` results in
-#' a single page with a `nextToken` response element. The remaining results
-#' of the initial request can be seen by sending another
-#' `ListRepositoryAssociations` request with the returned `nextToken`
-#' value. This value can be between 1 and 100. If this parameter is not
-#' used, `ListRepositoryAssociations` returns up to 100 results and a
-#' `nextToken` value if applicable.
+#' [`list_repository_associations`][codegurureviewer_list_repository_associations]
+#' in paginated output. When this parameter is used,
+#' [`list_repository_associations`][codegurureviewer_list_repository_associations]
+#' only returns `maxResults` results in a single page with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another
+#' [`list_repository_associations`][codegurureviewer_list_repository_associations]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If this parameter is not used,
+#' [`list_repository_associations`][codegurureviewer_list_repository_associations]
+#' returns up to 100 results and a `nextToken` value if applicable.
 #' @param NextToken The `nextToken` value returned from a previous paginated
-#' `ListRepositoryAssociations` request where `maxResults` was used and the
-#' results exceeded the value of that parameter. Pagination continues from
-#' the end of the previous results that returned the `nextToken` value.
+#' [`list_repository_associations`][codegurureviewer_list_repository_associations]
+#' request where `maxResults` was used and the results exceeded the value
+#' of that parameter. Pagination continues from the end of the previous
+#' results that returned the `nextToken` value.
 #' 
 #' Treat this token as an opaque identifier that is only used to retrieve
 #' the next items in a list and not for other programmatic purposes.
@@ -661,7 +665,7 @@ codegurureviewer_list_repository_associations <- function(ProviderTypes = NULL, 
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
 #' object. You can retrieve this ARN by calling
-#' [`ListRepositoryAssociations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
+#' [`list_repository_associations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
 #' .
 #'
 #' @section Request syntax:
@@ -752,7 +756,7 @@ codegurureviewer_put_recommendation_feedback <- function(CodeReviewArn, Recommen
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
 #' object. You can retrieve this ARN by calling
-#' [`ListRepositoryAssociations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
+#' [`list_repository_associations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
 #' .
 #' @param Tags &#91;required&#93; An array of key-value pairs used to tag an associated repository. A tag
 #' is a custom attribute label with two parts:
@@ -806,7 +810,7 @@ codegurureviewer_tag_resource <- function(resourceArn, Tags) {
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
 #' object. You can retrieve this ARN by calling
-#' [`ListRepositoryAssociations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
+#' [`list_repository_associations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
 #' .
 #' @param TagKeys &#91;required&#93; A list of the keys for each tag you want to remove from an associated
 #' repository.

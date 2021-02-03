@@ -32,7 +32,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 You set the Transfer Acceleration state of an existing bucket to
 \code{Enabled} or \code{Suspended} by using the
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAccelerateConfiguration.html}{PutBucketAccelerateConfiguration}
+\code{\link[=s3_put_bucket_accelerate_configuration]{put_bucket_accelerate_configuration}}
 operation.
 
 A GET \code{accelerate} request does not return a state value for a bucket
@@ -44,7 +44,7 @@ in the Amazon Simple Storage Service Developer Guide.
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAccelerateConfiguration.html}{PutBucketAccelerateConfiguration}
+\item \code{\link[=s3_put_bucket_accelerate_configuration]{put_bucket_accelerate_configuration}}
 }
 }
 \section{Request syntax}{

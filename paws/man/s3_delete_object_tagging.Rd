@@ -46,10 +46,10 @@ parameter in the request. You will need permission for the
 \code{s3:DeleteObjectVersionTagging} action.
 
 The following operations are related to
-\code{DeleteBucketMetricsConfiguration}:
+\code{\link[=s3_delete_bucket_metrics_configuration]{delete_bucket_metrics_configuration}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html}{PutObjectTagging}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html}{GetObjectTagging}
+\item \code{\link[=s3_put_object_tagging]{put_object_tagging}}
+\item \code{\link[=s3_get_object_tagging]{get_object_tagging}}
 }
 }
 \section{Request syntax}{

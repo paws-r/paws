@@ -12,13 +12,14 @@ fleet ID or ARN value.}
 }
 \description{
 Deletes everything related to a fleet. Before deleting a fleet, you must
-set the fleet's desired capacity to zero. See UpdateFleetCapacity.
+set the fleet's desired capacity to zero. See
+\code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}.
 
 If the fleet being deleted has a VPC peering connection, you first need
 to get a valid authorization (good for 24 hours) by calling
-CreateVpcPeeringAuthorization. You do not need to explicitly delete the
-VPC peering connection--this is done as part of the delete fleet
-process.
+\code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}.
+You do not need to explicitly delete the VPC peering connection--this is
+done as part of the delete fleet process.
 
 This operation removes the fleet and its resources. Once a fleet is
 deleted, you can no longer use any of the resource in that fleet.
@@ -29,12 +30,13 @@ deleted, you can no longer use any of the resource in that fleet.
 
 \strong{Related operations}
 \itemize{
-\item CreateFleet
-\item ListFleets
-\item DeleteFleet
-\item DescribeFleetAttributes
-\item UpdateFleetAttributes
-\item StartFleetActions or StopFleetActions
+\item \code{\link[=gamelift_create_fleet]{create_fleet}}
+\item \code{\link[=gamelift_list_fleets]{list_fleets}}
+\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
+\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
+\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
+\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
 }
 }
 \section{Request syntax}{

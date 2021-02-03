@@ -284,8 +284,10 @@ devicefarm_create_project <- function(name, defaultJobTimeoutMinutes = NULL) {
 #' @param name The name of the remote access session to create.
 #' @param clientId Unique identifier for the client. If you want access to multiple devices
 #' on the same client, you should pass the same `clientId` value in each
-#' call to `CreateRemoteAccessSession`. This identifier is required only if
-#' `remoteDebugEnabled` is set to `true`.
+#' call to
+#' [`create_remote_access_session`][devicefarm_create_remote_access_session].
+#' This identifier is required only if `remoteDebugEnabled` is set to
+#' `true`.
 #' 
 #' Remote debugging is [no longer
 #' supported](https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).
@@ -416,8 +418,10 @@ devicefarm_create_test_grid_project <- function(name, description = NULL) {
 #' @usage
 #' devicefarm_create_test_grid_url(projectArn, expiresInSeconds)
 #'
-#' @param projectArn &#91;required&#93; ARN (from CreateTestGridProject or ListTestGridProjects) to associate
-#' with the short-term URL.
+#' @param projectArn &#91;required&#93; ARN (from
+#' [`create_test_grid_project`][devicefarm_create_test_grid_project] or
+#' [`list_test_grid_projects`][devicefarm_list_test_grid_projects]) to
+#' associate with the short-term URL.
 #' @param expiresInSeconds &#91;required&#93; Lifetime, in seconds, of the URL.
 #'
 #' @section Request syntax:
@@ -530,8 +534,8 @@ devicefarm_create_test_grid_url <- function(projectArn, expiresInSeconds) {
 #' 
 #' -   XCTEST\\_UI\\_TEST\\_SPEC
 #' 
-#' If you call `CreateUpload` with `WEB_APP` specified, AWS Device Farm
-#' throws an `ArgumentException` error.
+#' If you call [`create_upload`][devicefarm_create_upload] with `WEB_APP`
+#' specified, AWS Device Farm throws an `ArgumentException` error.
 #' @param contentType The upload's content type (for example, `application/octet-stream`).
 #'
 #' @section Request syntax:
@@ -902,8 +906,9 @@ devicefarm_delete_run <- function(arn) {
 #' @usage
 #' devicefarm_delete_test_grid_project(projectArn)
 #'
-#' @param projectArn &#91;required&#93; The ARN of the project to delete, from CreateTestGridProject or
-#' ListTestGridProjects.
+#' @param projectArn &#91;required&#93; The ARN of the project to delete, from
+#' [`create_test_grid_project`][devicefarm_create_test_grid_project] or
+#' [`list_test_grid_projects`][devicefarm_list_test_grid_projects].
 #'
 #' @section Request syntax:
 #' ```
@@ -1736,7 +1741,8 @@ devicefarm_get_test <- function(arn) {
 #' devicefarm_get_test_grid_project(projectArn)
 #'
 #' @param projectArn &#91;required&#93; The ARN of the Selenium testing project, from either
-#' CreateTestGridProject or ListTestGridProjects.
+#' [`create_test_grid_project`][devicefarm_create_test_grid_project] or
+#' [`list_test_grid_projects`][devicefarm_list_test_grid_projects].
 #'
 #' @section Request syntax:
 #' ```
@@ -1783,7 +1789,8 @@ devicefarm_get_test_grid_project <- function(projectArn) {
 #' devicefarm_get_test_grid_session(projectArn, sessionId, sessionArn)
 #'
 #' @param projectArn The ARN for the project that this session belongs to. See
-#' CreateTestGridProject and ListTestGridProjects.
+#' [`create_test_grid_project`][devicefarm_create_test_grid_project] and
+#' [`list_test_grid_projects`][devicefarm_list_test_grid_projects].
 #' @param sessionId An ID associated with this session.
 #' @param sessionArn An ARN that uniquely identifies a TestGridSession.
 #'
@@ -3077,9 +3084,9 @@ devicefarm_list_tests <- function(arn, nextToken = NULL) {
 #' Unique problems are defined as a single instance of an error across a
 #' run, job, or suite. For example, if a call in your application
 #' consistently raises an exception
-#' (`OutOfBoundsException in MyActivity.java:386`), `ListUniqueProblems`
-#' returns a single entry instead of many individual entries for that
-#' exception.
+#' (`OutOfBoundsException in MyActivity.java:386`),
+#' [`list_unique_problems`][devicefarm_list_unique_problems] returns a
+#' single entry instead of many individual entries for that exception.
 #'
 #' @usage
 #' devicefarm_list_unique_problems(arn, nextToken)
@@ -3410,7 +3417,8 @@ devicefarm_renew_offering <- function(offeringId = NULL, quantity = NULL) {
 #'
 #' @param projectArn &#91;required&#93; The ARN of the project for the run to be scheduled.
 #' @param appArn The ARN of an application package to run tests against, created with
-#' CreateUpload. See ListUploads.
+#' [`create_upload`][devicefarm_create_upload]. See
+#' [`list_uploads`][devicefarm_list_uploads].
 #' @param devicePoolArn The ARN of the device pool for the run to be scheduled.
 #' @param deviceSelectionConfiguration The filter criteria used to dynamically select a set of devices for a
 #' test run and the maximum number of devices to be included in the run.

@@ -19,13 +19,15 @@ For example, \code{CORP} for the directory DNS \code{corp.example.com}.}
 \item{Password}{[required] The password for the default administrative user named \code{Admin}.
 
 If you need to change the password for the administrator account, you
-can use the ResetUserPassword API call.}
+can use the
+\code{\link[=directoryservice_reset_user_password]{reset_user_password}} API call.}
 
 \item{Description}{A description for the directory. This label will appear on the AWS
 console \verb{Directory Details} page after the directory is created.}
 
-\item{VpcSettings}{[required] Contains VPC information for the CreateDirectory or CreateMicrosoftAD
-operation.}
+\item{VpcSettings}{[required] Contains VPC information for the
+\code{\link[=directoryservice_create_directory]{create_directory}} or
+\code{\link[=directoryservice_create_microsoft_ad]{create_microsoft_ad}} operation.}
 
 \item{Edition}{AWS Managed Microsoft AD is available in two editions: \code{Standard} and
 \code{Enterprise}. \code{Enterprise} is the default.}

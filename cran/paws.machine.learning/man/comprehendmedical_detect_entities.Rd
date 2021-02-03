@@ -12,8 +12,10 @@ entities. Each string must contain fewer than 20,000 bytes of
 characters.}
 }
 \description{
-The \code{DetectEntities} operation is deprecated. You should use the
-DetectEntitiesV2 operation instead.
+The \code{\link[=comprehendmedical_detect_entities]{detect_entities}} operation is
+deprecated. You should use the
+\code{\link[=comprehendmedical_detect_entities_v2]{detect_entities_v2}} operation
+instead.
 
 Inspects the clinical text for a variety of medical entities and returns
 specific information about them such as entity category, location, and

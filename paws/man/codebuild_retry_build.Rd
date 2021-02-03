@@ -10,10 +10,11 @@ codebuild_retry_build(id, idempotencyToken)
 \item{id}{Specifies the identifier of the build to restart.}
 
 \item{idempotencyToken}{A unique, case sensitive identifier you provide to ensure the
-idempotency of the \code{RetryBuild} request. The token is included in the
-\code{RetryBuild} request and is valid for five minutes. If you repeat the
-\code{RetryBuild} request with the same token, but change a parameter, AWS
-CodeBuild returns a parameter mismatch error.}
+idempotency of the \code{\link[=codebuild_retry_build]{retry_build}} request. The
+token is included in the \code{\link[=codebuild_retry_build]{retry_build}} request
+and is valid for five minutes. If you repeat the
+\code{\link[=codebuild_retry_build]{retry_build}} request with the same token, but
+change a parameter, AWS CodeBuild returns a parameter mismatch error.}
 }
 \description{
 Restarts a build.

@@ -10,9 +10,10 @@ cloudfront_get_cache_policy(Id)
 \arguments{
 \item{Id}{[required] The unique identifier for the cache policy. If the cache policy is
 attached to a distribution’s cache behavior, you can get the policy’s
-identifier using \code{ListDistributions} or \code{GetDistribution}. If the cache
+identifier using \code{\link[=cloudfront_list_distributions]{list_distributions}}
+or \code{\link[=cloudfront_get_distribution]{get_distribution}}. If the cache
 policy is not attached to a cache behavior, you can get the identifier
-using \code{ListCachePolicies}.}
+using \code{\link[=cloudfront_list_cache_policies]{list_cache_policies}}.}
 }
 \description{
 Gets a cache policy, including the following metadata:
@@ -23,9 +24,11 @@ Gets a cache policy, including the following metadata:
 
 To get a cache policy, you must provide the policy’s identifier. If the
 cache policy is attached to a distribution’s cache behavior, you can get
-the policy’s identifier using \code{ListDistributions} or \code{GetDistribution}.
-If the cache policy is not attached to a cache behavior, you can get the
-identifier using \code{ListCachePolicies}.
+the policy’s identifier using
+\code{\link[=cloudfront_list_distributions]{list_distributions}} or
+\code{\link[=cloudfront_get_distribution]{get_distribution}}. If the cache policy
+is not attached to a cache behavior, you can get the identifier using
+\code{\link[=cloudfront_list_cache_policies]{list_cache_policies}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_cache_policy(

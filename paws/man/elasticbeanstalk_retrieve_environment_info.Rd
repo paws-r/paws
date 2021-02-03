@@ -29,12 +29,13 @@ you do not specify either, AWS Elastic Beanstalk returns
 \item{InfoType}{[required] The type of information to retrieve.}
 }
 \description{
-Retrieves the compiled information from a RequestEnvironmentInfo
+Retrieves the compiled information from a
+\code{\link[=elasticbeanstalk_request_environment_info]{request_environment_info}}
 request.
 
 Related Topics
 \itemize{
-\item RequestEnvironmentInfo
+\item \code{\link[=elasticbeanstalk_request_environment_info]{request_environment_info}}
 }
 }
 \section{Request syntax}{

@@ -81,16 +81,19 @@ function and its supporting resources. If your function connects to a
 VPC, this process can take a minute. During this time, you can't modify
 the function, but you can still invoke it. The \code{LastUpdateStatus},
 \code{LastUpdateStatusReason}, and \code{LastUpdateStatusReasonCode} fields in the
-response from GetFunctionConfiguration indicate when the update is
-complete and the function is processing events with the new
-configuration. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html}{Function States}.
+response from
+\code{\link[=lambda_get_function_configuration]{get_function_configuration}}
+indicate when the update is complete and the function is processing
+events with the new configuration. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html}{Function States}.
 
 These settings can vary between versions of a function and are locked
 when you publish a version. You can't modify the configuration of a
 published version, only the unpublished version.
 
-To configure function concurrency, use PutFunctionConcurrency. To grant
-invoke permissions to an account or AWS service, use AddPermission.
+To configure function concurrency, use
+\code{\link[=lambda_put_function_concurrency]{put_function_concurrency}}. To grant
+invoke permissions to an account or AWS service, use
+\code{\link[=lambda_add_permission]{add_permission}}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_function_configuration(

@@ -30,11 +30,11 @@ You can run the test on public, private, transit, and hosted virtual
 interfaces.
 
 You can use
-\href{https://docs.aws.amazon.com/directconnect/latest/APIReference/API_ListVirtualInterfaceTestHistory.html}{ListVirtualInterfaceTestHistory}
+\code{\link[=directconnect_list_virtual_interface_test_history]{list_virtual_interface_test_history}}
 to view the virtual interface test history.
 
 If you need to stop the test before the test interval completes, use
-\href{https://docs.aws.amazon.com/directconnect/latest/APIReference/API_StopBgpFailoverTest.html}{StopBgpFailoverTest}.
+\code{\link[=directconnect_stop_bgp_failover_test]{stop_bgp_failover_test}}.
 }
 \section{Request syntax}{
 \preformatted{svc$start_bgp_failover_test(

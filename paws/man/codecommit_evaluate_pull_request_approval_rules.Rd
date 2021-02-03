@@ -12,7 +12,8 @@ codecommit_evaluate_pull_request_approval_rules(pullRequestId,
 \item{pullRequestId}{[required] The system-generated ID of the pull request you want to evaluate.}
 
 \item{revisionId}{[required] The system-generated ID for the pull request revision. To retrieve the
-most recent revision ID for a pull request, use GetPullRequest.}
+most recent revision ID for a pull request, use
+\code{\link[=codecommit_get_pull_request]{get_pull_request}}.}
 }
 \description{
 Evaluates whether a pull request has met all the conditions specified in

@@ -18,8 +18,10 @@ be used to query data at a certain point in time.}
 }
 \description{
 Deletes a \code{Record} from a \code{FeatureGroup}. A new record will show up in
-the \code{OfflineStore} when the \code{DeleteRecord} API is called. This record
-will have a value of \code{True} in the \code{is_deleted} column.
+the \code{OfflineStore} when the
+\code{\link[=sagemakerfeaturestoreruntime_delete_record]{delete_record}} API is
+called. This record will have a value of \code{True} in the \code{is_deleted}
+column.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_record(

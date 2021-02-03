@@ -12,7 +12,8 @@ personalize_delete_dataset(datasetArn)
 \description{
 Deletes a dataset. You can't delete a dataset if an associated
 \code{DatasetImportJob} or \code{SolutionVersion} is in the CREATE PENDING or IN
-PROGRESS state. For more information on datasets, see CreateDataset.
+PROGRESS state. For more information on datasets, see
+\code{\link[=personalize_create_dataset]{create_dataset}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_dataset(

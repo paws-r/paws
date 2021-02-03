@@ -18,7 +18,7 @@ return in the response. The default is 1000.}
 }
 \description{
 Gets a list of stream processors that you have created with
-CreateStreamProcessor.
+\code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_stream_processors(

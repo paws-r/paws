@@ -18,8 +18,10 @@ mturk_list_workers_with_qualification_type(QualificationTypeId, Status,
 \item{MaxResults}{Limit the number of results returned.}
 }
 \description{
-The \code{ListWorkersWithQualificationType} operation returns all of the
-Workers that have been associated with a given Qualification type.
+The
+\code{\link[=mturk_list_workers_with_qualification_type]{list_workers_with_qualification_type}}
+operation returns all of the Workers that have been associated with a
+given Qualification type.
 }
 \section{Request syntax}{
 \preformatted{svc$list_workers_with_qualification_type(

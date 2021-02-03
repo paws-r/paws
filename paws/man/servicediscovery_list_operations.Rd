@@ -7,11 +7,13 @@
 servicediscovery_list_operations(NextToken, MaxResults, Filters)
 }
 \arguments{
-\item{NextToken}{For the first \code{ListOperations} request, omit this value.
+\item{NextToken}{For the first \code{\link[=servicediscovery_list_operations]{list_operations}}
+request, omit this value.
 
-If the response contains \code{NextToken}, submit another \code{ListOperations}
-request to get the next group of results. Specify the value of
-\code{NextToken} from the previous response in the next request.
+If the response contains \code{NextToken}, submit another
+\code{\link[=servicediscovery_list_operations]{list_operations}} request to get the
+next group of results. Specify the value of \code{NextToken} from the
+previous response in the next request.
 
 AWS Cloud Map gets \code{MaxResults} operations and then filters them based
 on the specified criteria. It's possible that no operations in the first
@@ -20,15 +22,16 @@ subsequent groups of \code{MaxResults} operations do contain operations that
 match the criteria.}
 
 \item{MaxResults}{The maximum number of items that you want AWS Cloud Map to return in the
-response to a \code{ListOperations} request. If you don't specify a value for
-\code{MaxResults}, AWS Cloud Map returns up to 100 operations.}
+response to a \code{\link[=servicediscovery_list_operations]{list_operations}}
+request. If you don't specify a value for \code{MaxResults}, AWS Cloud Map
+returns up to 100 operations.}
 
 \item{Filters}{A complex type that contains specifications for the operations that you
 want to list, for example, operations that you started between a
 specified start date and end date.
 
 If you specify more than one filter, an operation must match all filters
-to be returned by \code{ListOperations}.}
+to be returned by \code{\link[=servicediscovery_list_operations]{list_operations}}.}
 }
 \description{
 Lists operations that match the criteria that you specify.

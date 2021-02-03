@@ -34,8 +34,9 @@ Use this action to grant layer usage permission to other accounts. You
 can grant permission to a single account, all AWS accounts, or all
 accounts in an organization.
 
-To revoke permission, call RemoveLayerVersionPermission with the
-statement ID that you specified when you added it.
+To revoke permission, call
+\code{\link[=lambda_remove_layer_version_permission]{remove_layer_version_permission}}
+with the statement ID that you specified when you added it.
 }
 \section{Request syntax}{
 \preformatted{svc$add_layer_version_permission(

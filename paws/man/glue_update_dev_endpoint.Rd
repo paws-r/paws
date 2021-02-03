@@ -36,9 +36,10 @@ Valid arguments are:
 }
 
 You can specify a version of Python support for development endpoints by
-using the \code{Arguments} parameter in the \code{CreateDevEndpoint} or
-\code{UpdateDevEndpoint} APIs. If no arguments are provided, the version
-defaults to Python 2.}
+using the \code{Arguments} parameter in the
+\code{\link[=glue_create_dev_endpoint]{create_dev_endpoint}} or
+\code{\link[=glue_update_dev_endpoint]{update_dev_endpoint}} APIs. If no arguments
+are provided, the version defaults to Python 2.}
 }
 \description{
 Updates a specified development endpoint.

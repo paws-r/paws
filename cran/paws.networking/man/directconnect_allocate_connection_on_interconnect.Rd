@@ -24,7 +24,9 @@ be provisioned.}
 \item{vlan}{[required] The dedicated VLAN provisioned to the connection.}
 }
 \description{
-Deprecated. Use AllocateHostedConnection instead.
+Deprecated. Use
+\code{\link[=directconnect_allocate_hosted_connection]{allocate_hosted_connection}}
+instead.
 
 Creates a hosted connection on an interconnect.
 

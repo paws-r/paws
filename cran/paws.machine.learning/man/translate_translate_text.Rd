@@ -13,8 +13,9 @@ long. Depending on your character set, this may be fewer than 5,000
 characters.}
 
 \item{TerminologyNames}{The name of the terminology list file to be used in the TranslateText
-request. You can use 1 terminology list at most in a \code{TranslateText}
-request. Terminology lists can contain a maximum of 256 terms.}
+request. You can use 1 terminology list at most in a
+\code{\link[=translate_translate_text]{translate_text}} request. Terminology lists
+can contain a maximum of 256 terms.}
 
 \item{SourceLanguageCode}{[required] The language code for the language of the source text. The language must
 be a language supported by Amazon Translate. For a list of language

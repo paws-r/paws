@@ -41,9 +41,9 @@ included in the snapshot description.}
 }
 \description{
 Returns information about cluster or replication group snapshots. By
-default, \code{DescribeSnapshots} lists all of your snapshots; it can
-optionally describe a single snapshot, or just the snapshots associated
-with a particular cache cluster.
+default, \code{\link[=elasticache_describe_snapshots]{describe_snapshots}} lists
+all of your snapshots; it can optionally describe a single snapshot, or
+just the snapshots associated with a particular cache cluster.
 
 This operation is valid for Redis only.
 }

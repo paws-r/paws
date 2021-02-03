@@ -11,13 +11,15 @@ elasticbeanstalk_update_application_version(ApplicationName,
 \arguments{
 \item{ApplicationName}{[required] The name of the application associated with this version.
 
-If no application is found with this name, \code{UpdateApplication} returns
-an \code{InvalidParameterValue} error.}
+If no application is found with this name,
+\code{\link[=elasticbeanstalk_update_application]{update_application}} returns an
+\code{InvalidParameterValue} error.}
 
 \item{VersionLabel}{[required] The name of the version to update.
 
-If no application version is found with this label, \code{UpdateApplication}
-returns an \code{InvalidParameterValue} error.}
+If no application version is found with this label,
+\code{\link[=elasticbeanstalk_update_application]{update_application}} returns an
+\code{InvalidParameterValue} error.}
 
 \item{Description}{A new description for this version.}
 }

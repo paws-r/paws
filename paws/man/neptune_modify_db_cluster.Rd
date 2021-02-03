@@ -118,7 +118,7 @@ parameter is set to true.
 
 For a list of valid engine versions, see \href{https://docs.aws.amazon.com/neptune/latest/userguide/engine-releases.html}{Engine Releases for Amazon Neptune},
 or call
-\href{https://docs.aws.amazon.com/neptune/latest/userguide/api-other-apis.html#DescribeDBEngineVersions}{DescribeDBEngineVersions}.}
+\code{\link[=neptune_describe_db_engine_versions]{describe_db_engine_versions}}.}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
 enabled. The database can't be deleted when deletion protection is

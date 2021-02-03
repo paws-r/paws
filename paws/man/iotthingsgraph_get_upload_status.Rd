@@ -8,7 +8,8 @@ iotthingsgraph_get_upload_status(uploadId)
 }
 \arguments{
 \item{uploadId}{[required] The ID of the upload. This value is returned by the
-\code{UploadEntityDefinitions} action.}
+\code{\link[=iotthingsgraph_upload_entity_definitions]{upload_entity_definitions}}
+action.}
 }
 \description{
 Gets the status of the specified upload.

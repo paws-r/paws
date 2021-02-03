@@ -108,10 +108,11 @@ and its metadata:
 You can use either a canned ACL or specify access permissions
 explicitly. You cannot do both.
 
-The following operations are related to \code{CreateBucket}:
+The following operations are related to
+\code{\link[=s3_create_bucket]{create_bucket}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html}{DeleteBucket}
+\item \code{\link[=s3_put_object]{put_object}}
+\item \code{\link[=s3_delete_bucket]{delete_bucket}}
 }
 }
 \section{Request syntax}{

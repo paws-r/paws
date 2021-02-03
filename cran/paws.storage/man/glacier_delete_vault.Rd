@@ -21,8 +21,8 @@ only if there are no archives in the vault as of the last inventory and
 there have been no writes to the vault since the last inventory. If
 either of these conditions is not satisfied, the vault deletion fails
 (that is, the vault is not removed) and Amazon S3 Glacier returns an
-error. You can use DescribeVault to return the number of archives in a
-vault, and you can use \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html}{Initiate a Job (POST jobs)}
+error. You can use \code{\link[=glacier_describe_vault]{describe_vault}} to return
+the number of archives in a vault, and you can use \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html}{Initiate a Job (POST jobs)}
 to initiate a new inventory retrieval for a vault. The inventory
 contains the archive IDs you use to delete archives using \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html}{Delete Archive (DELETE archive)}.
 

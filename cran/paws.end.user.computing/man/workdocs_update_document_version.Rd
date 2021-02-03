@@ -22,7 +22,8 @@ Changes the status of the document version to ACTIVE.
 
 Amazon WorkDocs also sets its document container to ACTIVE. This is the
 last step in a document upload, after the client uploads the document to
-an S3-presigned URL returned by InitiateDocumentVersionUpload.
+an S3-presigned URL returned by
+\code{\link[=workdocs_initiate_document_version_upload]{initiate_document_version_upload}}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_document_version(

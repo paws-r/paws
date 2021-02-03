@@ -15,7 +15,8 @@ parameters must be passed explicitly for operations that take them.}
 \description{
 Returns the list of severity levels that you can assign to an AWS
 Support case. The severity level for a case is also a field in the
-CaseDetails data type that you include for a CreateCase request.
+CaseDetails data type that you include for a
+\code{\link[=support_create_case]{create_case}} request.
 \itemize{
 \item You must have a Business or Enterprise support plan to use the AWS
 Support API.

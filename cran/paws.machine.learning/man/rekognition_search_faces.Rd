@@ -23,11 +23,12 @@ matches is less than 70\%. The default value is 80\%.}
 \description{
 For a given input face ID, searches for matching faces in the collection
 the face belongs to. You get a face ID when you add a face to the
-collection using the IndexFaces operation. The operation compares the
-features of the input face with faces in the specified collection.
+collection using the \code{\link[=rekognition_index_faces]{index_faces}} operation.
+The operation compares the features of the input face with faces in the
+specified collection.
 
 You can also search faces without indexing faces by using the
-\code{SearchFacesByImage} operation.
+\code{\link[=rekognition_search_faces_by_image]{search_faces_by_image}} operation.
 
 The operation response returns an array of faces that match, ordered by
 similarity score with the highest similarity first. More specifically,

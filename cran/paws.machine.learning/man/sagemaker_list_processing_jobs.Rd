@@ -30,7 +30,8 @@ jobs whose name contains the specified string.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 
-\item{NextToken}{If the result of the previous \code{ListProcessingJobs} request was
+\item{NextToken}{If the result of the previous
+\code{\link[=sagemaker_list_processing_jobs]{list_processing_jobs}} request was
 truncated, the response includes a \code{NextToken}. To retrieve the next set
 of processing jobs, use the token in the next request.}
 

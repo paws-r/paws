@@ -27,7 +27,9 @@ update stream. This API has the following traits:
 \item Gets the list of the created artifacts while migration is taking
 place.
 \item Shows the artifacts created by the migration tool that was
-associated by the \code{AssociateCreatedArtifact} API.
+associated by the
+\code{\link[=migrationhub_associate_created_artifact]{associate_created_artifact}}
+API.
 \item Lists created artifacts in a paginated interface.
 }
 }

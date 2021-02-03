@@ -8,12 +8,12 @@ gamelift_create_script(Name, Version, StorageLocation, ZipFile, Tags)
 }
 \arguments{
 \item{Name}{A descriptive label that is associated with a script. Script names do
-not need to be unique. You can use UpdateScript to change this value
-later.}
+not need to be unique. You can use
+\code{\link[=gamelift_update_script]{update_script}} to change this value later.}
 
 \item{Version}{The version that is associated with a build or script. Version strings
-do not need to be unique. You can use UpdateScript to change this value
-later.}
+do not need to be unique. You can use
+\code{\link[=gamelift_update_script]{update_script}} to change this value later.}
 
 \item{StorageLocation}{The Amazon S3 location of your Realtime scripts. The storage location
 must specify the S3 bucket name, the zip file name (the "key"), and an
@@ -40,9 +40,11 @@ developer-defined key-value pairs. Tagging AWS resources are useful for
 resource management, access management and cost allocation. For more
 information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
 in the \emph{AWS General Reference}. Once the resource is created, you can
-use TagResource, UntagResource, and ListTagsForResource to add, remove,
-and view tags. The maximum tag limit may be lower than stated. See the
-AWS General Reference for actual tagging limits.}
+use \code{\link[=gamelift_tag_resource]{tag_resource}},
+\code{\link[=gamelift_untag_resource]{untag_resource}}, and
+\code{\link[=gamelift_list_tags_for_resource]{list_tags_for_resource}} to add,
+remove, and view tags. The maximum tag limit may be lower than stated.
+See the AWS General Reference for actual tagging limits.}
 }
 \description{
 Creates a new script record for your Realtime Servers script. Realtime
@@ -79,11 +81,11 @@ location as needed for deployment.
 
 \strong{Related operations}
 \itemize{
-\item CreateScript
-\item ListScripts
-\item DescribeScript
-\item UpdateScript
-\item DeleteScript
+\item \code{\link[=gamelift_create_script]{create_script}}
+\item \code{\link[=gamelift_list_scripts]{list_scripts}}
+\item \code{\link[=gamelift_describe_script]{describe_script}}
+\item \code{\link[=gamelift_update_script]{update_script}}
+\item \code{\link[=gamelift_delete_script]{delete_script}}
 }
 }
 \section{Request syntax}{

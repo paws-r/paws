@@ -11,7 +11,8 @@ backup_update_global_settings(GlobalSettings)
 }
 \description{
 Updates the current global settings for the AWS Account. Use the
-\code{DescribeGlobalSettings} API to determine the current settings.
+\code{\link[=backup_describe_global_settings]{describe_global_settings}} API to
+determine the current settings.
 }
 \section{Request syntax}{
 \preformatted{svc$update_global_settings(

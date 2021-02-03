@@ -12,9 +12,9 @@ ssm_start_session(Target, DocumentName, Parameters)
 
 \item{DocumentName}{The name of the SSM document to define the parameters and plugin
 settings for the session. For example, \code{SSM-SessionManagerRunShell}. You
-can call the GetDocument API to verify the document exists before
-attempting to start a session. If no document name is provided, a shell
-to the instance is launched by default.}
+can call the \code{\link[=ssm_get_document]{get_document}} API to verify the
+document exists before attempting to start a session. If no document
+name is provided, a shell to the instance is launched by default.}
 
 \item{Parameters}{Reserved for future use.}
 }

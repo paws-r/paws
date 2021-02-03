@@ -11,11 +11,12 @@ forecastservice_describe_dataset(DatasetArn)
 \item{DatasetArn}{[required] The Amazon Resource Name (ARN) of the dataset.}
 }
 \description{
-Describes an Amazon Forecast dataset created using the CreateDataset
-operation.
+Describes an Amazon Forecast dataset created using the
+\code{\link[=forecastservice_create_dataset]{create_dataset}} operation.
 
-In addition to listing the parameters specified in the \code{CreateDataset}
-request, this operation includes the following dataset properties:
+In addition to listing the parameters specified in the
+\code{\link[=forecastservice_create_dataset]{create_dataset}} request, this
+operation includes the following dataset properties:
 \itemize{
 \item \code{CreationTime}
 \item \code{LastModificationTime}

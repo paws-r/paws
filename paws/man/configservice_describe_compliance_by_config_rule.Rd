@@ -30,8 +30,9 @@ If AWS Config has no current evaluation results for the rule, it returns
 conditions:
 \itemize{
 \item AWS Config has never invoked an evaluation for the rule. To check
-whether it has, use the \code{DescribeConfigRuleEvaluationStatus} action
-to get the \code{LastSuccessfulInvocationTime} and
+whether it has, use the
+\code{\link[=configservice_describe_config_rule_evaluation_status]{describe_config_rule_evaluation_status}}
+action to get the \code{LastSuccessfulInvocationTime} and
 \code{LastFailedInvocationTime}.
 \item The rule's AWS Lambda function is failing to send evaluation results
 to AWS Config. Verify that the role you assigned to your

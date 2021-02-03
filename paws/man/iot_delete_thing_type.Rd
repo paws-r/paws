@@ -12,9 +12,11 @@ iot_delete_thing_type(thingTypeName)
 \description{
 Deletes the specified thing type. You cannot delete a thing type if it
 has things associated with it. To delete a thing type, first mark it as
-deprecated by calling DeprecateThingType, then remove any associated
-things by calling UpdateThing to change the thing type on any associated
-thing, and finally use DeleteThingType to delete the thing type.
+deprecated by calling
+\code{\link[=iot_deprecate_thing_type]{deprecate_thing_type}}, then remove any
+associated things by calling \code{\link[=iot_update_thing]{update_thing}} to
+change the thing type on any associated thing, and finally use
+\code{\link[=iot_delete_thing_type]{delete_thing_type}} to delete the thing type.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_thing_type(

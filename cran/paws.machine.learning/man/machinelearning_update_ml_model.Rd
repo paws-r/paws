@@ -22,8 +22,8 @@ than the \code{ScoreThreshold} receive a negative response from the
 \description{
 Updates the \code{MLModelName} and the \code{ScoreThreshold} of an \code{MLModel}.
 
-You can use the \code{GetMLModel} operation to view the contents of the
-updated data element.
+You can use the \code{\link[=machinelearning_get_ml_model]{get_ml_model}} operation
+to view the contents of the updated data element.
 }
 \section{Request syntax}{
 \preformatted{svc$update_ml_model(

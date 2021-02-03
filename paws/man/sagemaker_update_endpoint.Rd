@@ -42,12 +42,13 @@ availability loss).
 When Amazon SageMaker receives the request, it sets the endpoint status
 to \code{Updating}. After updating the endpoint, it sets the status to
 \code{InService}. To check the status of an endpoint, use the
-DescribeEndpoint API.
+\code{\link[=sagemaker_describe_endpoint]{describe_endpoint}} API.
 
 You must not delete an \code{EndpointConfig} in use by an endpoint that is
-live or while the \code{UpdateEndpoint} or \code{CreateEndpoint} operations are
-being performed on the endpoint. To update an endpoint, you must create
-a new \code{EndpointConfig}.
+live or while the \code{\link[=sagemaker_update_endpoint]{update_endpoint}} or
+\code{\link[=sagemaker_create_endpoint]{create_endpoint}} operations are being
+performed on the endpoint. To update an endpoint, you must create a new
+\code{EndpointConfig}.
 
 If you delete the \code{EndpointConfig} of an endpoint that is active or
 being created or updated you may lose visibility into the instance type

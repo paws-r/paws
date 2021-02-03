@@ -29,7 +29,8 @@ set of 10.}
 \description{
 Lists agents or connectors as specified by ID or other filters. All
 agents/connectors associated with your user account can be listed if you
-call \code{DescribeAgents} as is without passing any parameters.
+call \code{\link[=applicationdiscoveryservice_describe_agents]{describe_agents}} as
+is without passing any parameters.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_agents(

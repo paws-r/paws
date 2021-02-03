@@ -166,14 +166,20 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #' the logging configuration.
 #' 
 #' To update the settings for a firewall, you use the operations that apply
-#' to the settings themselves, for example UpdateLoggingConfiguration,
-#' AssociateSubnets, and UpdateFirewallDeleteProtection.
+#' to the settings themselves, for example
+#' [`update_logging_configuration`][networkfirewall_update_logging_configuration],
+#' [`associate_subnets`][networkfirewall_associate_subnets], and
+#' [`update_firewall_delete_protection`][networkfirewall_update_firewall_delete_protection].
 #' 
 #' To manage a firewall's tags, use the standard AWS resource tagging
-#' operations, ListTagsForResource, TagResource, and UntagResource.
+#' operations,
+#' [`list_tags_for_resource`][networkfirewall_list_tags_for_resource],
+#' [`tag_resource`][networkfirewall_tag_resource], and
+#' [`untag_resource`][networkfirewall_untag_resource].
 #' 
-#' To retrieve information about firewalls, use ListFirewalls and
-#' DescribeFirewall.
+#' To retrieve information about firewalls, use
+#' [`list_firewalls`][networkfirewall_list_firewalls] and
+#' [`describe_firewall`][networkfirewall_describe_firewall].
 #'
 #' @usage
 #' networkfirewall_create_firewall(FirewallName, FirewallPolicyArn, VpcId,
@@ -388,8 +394,9 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #' file. Network Firewall uses the file contents to populate the rule group
 #' rules, but does not maintain a reference to the file or use the file in
 #' any way after performing the create or update. If you call
-#' DescribeRuleGroup to retrieve the rule group, Network Firewall returns
-#' rules settings inside a RuleGroup object.
+#' [`describe_rule_group`][networkfirewall_describe_rule_group] to retrieve
+#' the rule group, Network Firewall returns rules settings inside a
+#' RuleGroup object.
 #' @param Type &#91;required&#93; Indicates whether the rule group is stateless or stateful. If the rule
 #' group is stateless, it contains stateless rules. If it is stateful, it
 #' contains stateful rules.
@@ -401,8 +408,9 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #' group.
 #' 
 #' You can retrieve the capacity that would be required for a rule group
-#' before you create the rule group by calling CreateRuleGroup with
-#' `DryRun` set to `TRUE`.
+#' before you create the rule group by calling
+#' [`create_rule_group`][networkfirewall_create_rule_group] with `DryRun`
+#' set to `TRUE`.
 #' 
 #' You can't change or exceed this capacity when you update the rule group,
 #' so leave room for your rule group to grow.
@@ -613,15 +621,17 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #' 
 #' You can check whether a firewall is in use by reviewing the route tables
 #' for the Availability Zones where you have firewall subnet mappings.
-#' Retrieve the subnet mappings by calling DescribeFirewall. You define and
+#' Retrieve the subnet mappings by calling
+#' [`describe_firewall`][networkfirewall_describe_firewall]. You define and
 #' update the route tables through Amazon VPC. As needed, update the route
 #' tables for the zones to remove the firewall endpoints. When the route
 #' tables no longer use the firewall endpoints, you can remove the firewall
 #' safely.
 #' 
 #' To delete a firewall, remove the delete protection if you need to using
-#' UpdateFirewallDeleteProtection, then delete the firewall by calling
-#' DeleteFirewall.
+#' [`update_firewall_delete_protection`][networkfirewall_update_firewall_delete_protection],
+#' then delete the firewall by calling
+#' [`delete_firewall`][networkfirewall_delete_firewall].
 #'
 #' @usage
 #' networkfirewall_delete_firewall(FirewallName, FirewallArn)
@@ -711,8 +721,8 @@ networkfirewall_delete_firewall_policy <- function(FirewallPolicyName = NULL, Fi
 #' request
 #'
 #' @description
-#' Deletes a resource policy that you created in a PutResourcePolicy
-#' request.
+#' Deletes a resource policy that you created in a
+#' [`put_resource_policy`][networkfirewall_put_resource_policy] request.
 #'
 #' @usage
 #' networkfirewall_delete_resource_policy(ResourceArn)
@@ -936,8 +946,8 @@ networkfirewall_describe_logging_configuration <- function(FirewallArn = NULL, F
 #' request
 #'
 #' @description
-#' Retrieves a resource policy that you created in a PutResourcePolicy
-#' request.
+#' Retrieves a resource policy that you created in a
+#' [`put_resource_policy`][networkfirewall_put_resource_policy] request.
 #'
 #' @usage
 #' networkfirewall_describe_resource_policy(ResourceArn)
@@ -1815,13 +1825,14 @@ networkfirewall_update_firewall_policy_change_protection <- function(UpdateToken
 #' Sets the logging configuration for the specified firewall.
 #' 
 #' To change the logging configuration, retrieve the LoggingConfiguration
-#' by calling DescribeLoggingConfiguration, then change it and provide the
-#' modified object to this update call. You must change the logging
-#' configuration one LogDestinationConfig at a time inside the retrieved
-#' LoggingConfiguration object.
+#' by calling
+#' [`describe_logging_configuration`][networkfirewall_describe_logging_configuration],
+#' then change it and provide the modified object to this update call. You
+#' must change the logging configuration one LogDestinationConfig at a time
+#' inside the retrieved LoggingConfiguration object.
 #' 
 #' You can perform only one of the following actions in any call to
-#' `UpdateLoggingConfiguration`:
+#' [`update_logging_configuration`][networkfirewall_update_logging_configuration]:
 #' 
 #' -   Create a new log destination object by adding a single
 #'     `LogDestinationConfig` array element to `LogDestinationConfigs`.
@@ -1897,9 +1908,10 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #' group by reference in one or more firewall policies. When you modify a
 #' rule group, you modify all firewall policies that use the rule group.
 #' 
-#' To update a rule group, first call DescribeRuleGroup to retrieve the
-#' current RuleGroup object, update the object as needed, and then provide
-#' the updated object to this call.
+#' To update a rule group, first call
+#' [`describe_rule_group`][networkfirewall_describe_rule_group] to retrieve
+#' the current RuleGroup object, update the object as needed, and then
+#' provide the updated object to this call.
 #'
 #' @usage
 #' networkfirewall_update_rule_group(UpdateToken, RuleGroupArn,
@@ -1940,8 +1952,9 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #' file. Network Firewall uses the file contents to populate the rule group
 #' rules, but does not maintain a reference to the file or use the file in
 #' any way after performing the create or update. If you call
-#' DescribeRuleGroup to retrieve the rule group, Network Firewall returns
-#' rules settings inside a RuleGroup object.
+#' [`describe_rule_group`][networkfirewall_describe_rule_group] to retrieve
+#' the rule group, Network Firewall returns rules settings inside a
+#' RuleGroup object.
 #' @param Type Indicates whether the rule group is stateless or stateful. If the rule
 #' group is stateless, it contains stateless rules. If it is stateful, it
 #' contains stateful rules.

@@ -59,9 +59,10 @@ add more by updating the fleet.}
 \item{NewGameSessionProtectionPolicy}{A game session protection policy to apply to all instances in this
 fleet. If this parameter is not set, instances in this fleet default to
 no protection. You can change a fleet's protection policy using
-UpdateFleetAttributes, but this change will only affect sessions created
-after the policy change. You can also set protection for individual
-instances using UpdateGameSession.
+\code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}, but this
+change will only affect sessions created after the policy change. You
+can also set protection for individual instances using
+\code{\link[=gamelift_update_game_session]{update_game_session}}.
 \itemize{
 \item \strong{NoProtection} - The game session can be terminated during a
 scale-down event.
@@ -138,9 +139,11 @@ developer-defined key-value pairs. Tagging AWS resources are useful for
 resource management, access management and cost allocation. For more
 information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
 in the \emph{AWS General Reference}. Once the resource is created, you can
-use TagResource, UntagResource, and ListTagsForResource to add, remove,
-and view tags. The maximum tag limit may be lower than stated. See the
-AWS General Reference for actual tagging limits.}
+use \code{\link[=gamelift_tag_resource]{tag_resource}},
+\code{\link[=gamelift_untag_resource]{untag_resource}}, and
+\code{\link[=gamelift_list_tags_for_resource]{list_tags_for_resource}} to add,
+remove, and view tags. The maximum tag limit may be lower than stated.
+See the AWS General Reference for actual tagging limits.}
 }
 \description{
 Creates a new fleet to run your game servers. whether they are custom
@@ -156,9 +159,10 @@ for your game build or script ID if using Realtime Servers, and (4) a
 runtime configuration, which determines how game servers will run on
 each instance in the fleet.
 
-If the \code{CreateFleet} call is successful, Amazon GameLift performs the
-following tasks. You can track the process of a fleet by checking the
-fleet status or by monitoring fleet creation events:
+If the \code{\link[=gamelift_create_fleet]{create_fleet}} call is successful,
+Amazon GameLift performs the following tasks. You can track the process
+of a fleet by checking the fleet status or by monitoring fleet creation
+events:
 \itemize{
 \item Creates a fleet resource. Status: \code{NEW}.
 \item Begins writing events to the fleet event log, which can be accessed
@@ -183,12 +187,13 @@ ready to host a game session.
 
 \strong{Related operations}
 \itemize{
-\item CreateFleet
-\item ListFleets
-\item DeleteFleet
-\item DescribeFleetAttributes
-\item UpdateFleetAttributes
-\item StartFleetActions or StopFleetActions
+\item \code{\link[=gamelift_create_fleet]{create_fleet}}
+\item \code{\link[=gamelift_list_fleets]{list_fleets}}
+\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
+\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
+\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
+\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
 }
 }
 \section{Request syntax}{

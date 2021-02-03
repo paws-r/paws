@@ -10,7 +10,8 @@ organizations_leave_organization()
 Removes a member account from its parent organization. This version of
 the operation is performed by the account that wants to leave. To remove
 a member account as a user in the management account, use
-RemoveAccountFromOrganization instead.
+\code{\link[=organizations_remove_account_from_organization]{remove_account_from_organization}}
+instead.
 
 This operation can be called only from a member account in the
 organization.
@@ -18,8 +19,9 @@ organization.
 \item The management account in an organization with all features enabled
 can set service control policies (SCPs) that can restrict what
 administrators of member accounts can do. This includes preventing
-them from successfully calling \code{LeaveOrganization} and leaving the
-organization.
+them from successfully calling
+\code{\link[=organizations_leave_organization]{leave_organization}} and leaving
+the organization.
 \item You can leave an organization as a member account only if the
 account is configured with the information required to operate as a
 standalone account. When you create an account in an organization

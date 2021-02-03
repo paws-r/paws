@@ -10,15 +10,16 @@ NULL
 #' `SUBMITTED`, `PENDING`, or `RUNNABLE` state are canceled. Jobs that have
 #' progressed to `STARTING` or `RUNNING` are not canceled (but the API
 #' operation still succeeds, even if no job is canceled); these jobs must
-#' be terminated with the TerminateJob operation.
+#' be terminated with the [`terminate_job`][batch_terminate_job] operation.
 #'
 #' @usage
 #' batch_cancel_job(jobId, reason)
 #'
 #' @param jobId &#91;required&#93; The AWS Batch job ID of the job to cancel.
 #' @param reason &#91;required&#93; A message to attach to the job that explains the reason for canceling
-#' it. This message is returned by future DescribeJobs operations on the
-#' job. This message is also recorded in the AWS Batch activity logs.
+#' it. This message is returned by future
+#' [`describe_jobs`][batch_describe_jobs] operations on the job. This
+#' message is also recorded in the AWS Batch activity logs.
 #'
 #' @section Request syntax:
 #' ```
@@ -87,10 +88,10 @@ batch_cancel_job <- function(jobId, reason) {
 #' AMIs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
 #' the *Amazon Elastic Container Service Developer Guide*. After you have
 #' created your unmanaged compute environment, you can use the
-#' DescribeComputeEnvironments operation to find the Amazon ECS cluster
-#' that's associated with it. Then, manually launch your container
-#' instances into that Amazon ECS cluster. For more information, see
-#' [Launching an Amazon ECS container
+#' [`describe_compute_environments`][batch_describe_compute_environments]
+#' operation to find the Amazon ECS cluster that's associated with it.
+#' Then, manually launch your container instances into that Amazon ECS
+#' cluster. For more information, see [Launching an Amazon ECS container
 #' instance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
@@ -163,11 +164,9 @@ batch_cancel_job <- function(jobId, reason) {
 #' in *AWS General Reference*.
 #' 
 #' These tags can be updated or removed using the
-#' [TagResource](https://docs.aws.amazon.com/batch/latest/APIReference/API_TagResource.html)
-#' and
-#' [UntagResource](https://docs.aws.amazon.com/batch/latest/APIReference/API_UntagResource.html)
-#' API operations. These tags don't propagate to the underlying compute
-#' resources.
+#' [`tag_resource`][batch_tag_resource] and
+#' [`untag_resource`][batch_untag_resource] API operations. These tags
+#' don't propagate to the underlying compute resources.
 #'
 #' @section Request syntax:
 #' ```
@@ -440,12 +439,14 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, priority, compute
 #' Deletes an AWS Batch compute environment.
 #' 
 #' Before you can delete a compute environment, you must set its state to
-#' `DISABLED` with the UpdateComputeEnvironment API operation and
-#' disassociate it from any job queues with the UpdateJobQueue API
-#' operation. Compute environments that use AWS Fargate resources must
-#' terminate all active jobs on that compute environment before deleting
-#' the compute environment. If this isn't done, the compute environment
-#' will end up in an invalid state.
+#' `DISABLED` with the
+#' [`update_compute_environment`][batch_update_compute_environment] API
+#' operation and disassociate it from any job queues with the
+#' [`update_job_queue`][batch_update_job_queue] API operation. Compute
+#' environments that use AWS Fargate resources must terminate all active
+#' jobs on that compute environment before deleting the compute
+#' environment. If this isn't done, the compute environment will end up in
+#' an invalid state.
 #'
 #' @usage
 #' batch_delete_compute_environment(computeEnvironment)
@@ -492,12 +493,13 @@ batch_delete_compute_environment <- function(computeEnvironment) {
 #'
 #' @description
 #' Deletes the specified job queue. You must first disable submissions for
-#' a queue with the UpdateJobQueue operation. All jobs in the queue are
-#' eventually terminated when you delete a job queue. The jobs are
-#' terminated at a rate of about 16 jobs each second.
+#' a queue with the [`update_job_queue`][batch_update_job_queue] operation.
+#' All jobs in the queue are eventually terminated when you delete a job
+#' queue. The jobs are terminated at a rate of about 16 jobs each second.
 #' 
 #' It's not necessary to disassociate compute environments from a queue
-#' before submitting a `DeleteJobQueue` request.
+#' before submitting a [`delete_job_queue`][batch_delete_job_queue]
+#' request.
 #'
 #' @usage
 #' batch_delete_job_queue(jobQueue)
@@ -603,19 +605,23 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #' @param computeEnvironments A list of up to 100 compute environment names or full Amazon Resource
 #' Name (ARN) entries.
 #' @param maxResults The maximum number of cluster results returned by
-#' `DescribeComputeEnvironments` in paginated output. When this parameter
-#' is used, `DescribeComputeEnvironments` only returns `maxResults` results
-#' in a single page along with a `nextToken` response element. The
-#' remaining results of the initial request can be seen by sending another
-#' `DescribeComputeEnvironments` request with the returned `nextToken`
-#' value. This value can be between 1 and 100. If this parameter isn't
-#' used, then `DescribeComputeEnvironments` returns up to 100 results and a
-#' `nextToken` value if applicable.
+#' [`describe_compute_environments`][batch_describe_compute_environments]
+#' in paginated output. When this parameter is used,
+#' [`describe_compute_environments`][batch_describe_compute_environments]
+#' only returns `maxResults` results in a single page along with a
+#' `nextToken` response element. The remaining results of the initial
+#' request can be seen by sending another
+#' [`describe_compute_environments`][batch_describe_compute_environments]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If this parameter isn't used, then
+#' [`describe_compute_environments`][batch_describe_compute_environments]
+#' returns up to 100 results and a `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated
-#' `DescribeComputeEnvironments` request where `maxResults` was used and
-#' the results exceeded the value of that parameter. Pagination continues
-#' from the end of the previous results that returned the `nextToken`
-#' value. This value is `null` when there are no more results to return.
+#' [`describe_compute_environments`][batch_describe_compute_environments]
+#' request where `maxResults` was used and the results exceeded the value
+#' of that parameter. Pagination continues from the end of the previous
+#' results that returned the `nextToken` value. This value is `null` when
+#' there are no more results to return.
 #' 
 #' This token should be treated as an opaque identifier that's only used to
 #' retrieve the next items in a list and not for other programmatic
@@ -674,21 +680,26 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'
 #' @param jobDefinitions A list of up to 100 job definition names or full Amazon Resource Name
 #' (ARN) entries.
-#' @param maxResults The maximum number of results returned by `DescribeJobDefinitions` in
-#' paginated output. When this parameter is used, `DescribeJobDefinitions`
-#' only returns `maxResults` results in a single page along with a
-#' `nextToken` response element. The remaining results of the initial
-#' request can be seen by sending another `DescribeJobDefinitions` request
+#' @param maxResults The maximum number of results returned by
+#' [`describe_job_definitions`][batch_describe_job_definitions] in
+#' paginated output. When this parameter is used,
+#' [`describe_job_definitions`][batch_describe_job_definitions] only
+#' returns `maxResults` results in a single page along with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another
+#' [`describe_job_definitions`][batch_describe_job_definitions] request
 #' with the returned `nextToken` value. This value can be between 1 and
-#' 100. If this parameter isn't used, then `DescribeJobDefinitions` returns
-#' up to 100 results and a `nextToken` value if applicable.
+#' 100. If this parameter isn't used, then
+#' [`describe_job_definitions`][batch_describe_job_definitions] returns up
+#' to 100 results and a `nextToken` value if applicable.
 #' @param jobDefinitionName The name of the job definition to describe.
 #' @param status The status used to filter job definitions.
 #' @param nextToken The `nextToken` value returned from a previous paginated
-#' `DescribeJobDefinitions` request where `maxResults` was used and the
-#' results exceeded the value of that parameter. Pagination continues from
-#' the end of the previous results that returned the `nextToken` value.
-#' This value is `null` when there are no more results to return.
+#' [`describe_job_definitions`][batch_describe_job_definitions] request
+#' where `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is `null` when there are
+#' no more results to return.
 #' 
 #' This token should be treated as an opaque identifier that's only used to
 #' retrieve the next items in a list and not for other programmatic
@@ -745,19 +756,23 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
 #'
 #' @param jobQueues A list of up to 100 queue names or full queue Amazon Resource Name (ARN)
 #' entries.
-#' @param maxResults The maximum number of results returned by `DescribeJobQueues` in
-#' paginated output. When this parameter is used, `DescribeJobQueues` only
-#' returns `maxResults` results in a single page along with a `nextToken`
-#' response element. The remaining results of the initial request can be
-#' seen by sending another `DescribeJobQueues` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If this
-#' parameter isn't used, then `DescribeJobQueues` returns up to 100 results
-#' and a `nextToken` value if applicable.
+#' @param maxResults The maximum number of results returned by
+#' [`describe_job_queues`][batch_describe_job_queues] in paginated output.
+#' When this parameter is used,
+#' [`describe_job_queues`][batch_describe_job_queues] only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another [`describe_job_queues`][batch_describe_job_queues]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If this parameter isn't used, then
+#' [`describe_job_queues`][batch_describe_job_queues] returns up to 100
+#' results and a `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated
-#' `DescribeJobQueues` request where `maxResults` was used and the results
-#' exceeded the value of that parameter. Pagination continues from the end
-#' of the previous results that returned the `nextToken` value. This value
-#' is `null` when there are no more results to return.
+#' [`describe_job_queues`][batch_describe_job_queues] request where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is `null` when there are
+#' no more results to return.
 #' 
 #' This token should be treated as an opaque identifier that's only used to
 #' retrieve the next items in a list and not for other programmatic
@@ -882,19 +897,20 @@ batch_describe_jobs <- function(jobs) {
 #' with the specified job.
 #' @param jobStatus The job status used to filter jobs in the specified queue. If you don't
 #' specify a status, only `RUNNING` jobs are returned.
-#' @param maxResults The maximum number of results returned by `ListJobs` in paginated
-#' output. When this parameter is used, `ListJobs` only returns
-#' `maxResults` results in a single page along with a `nextToken` response
-#' element. The remaining results of the initial request can be seen by
-#' sending another `ListJobs` request with the returned `nextToken` value.
-#' This value can be between 1 and 100. If this parameter isn't used, then
-#' `ListJobs` returns up to 100 results and a `nextToken` value if
-#' applicable.
-#' @param nextToken The `nextToken` value returned from a previous paginated `ListJobs`
-#' request where `maxResults` was used and the results exceeded the value
-#' of that parameter. Pagination continues from the end of the previous
-#' results that returned the `nextToken` value. This value is `null` when
-#' there are no more results to return.
+#' @param maxResults The maximum number of results returned by [`list_jobs`][batch_list_jobs]
+#' in paginated output. When this parameter is used,
+#' [`list_jobs`][batch_list_jobs] only returns `maxResults` results in a
+#' single page along with a `nextToken` response element. The remaining
+#' results of the initial request can be seen by sending another
+#' [`list_jobs`][batch_list_jobs] request with the returned `nextToken`
+#' value. This value can be between 1 and 100. If this parameter isn't
+#' used, then [`list_jobs`][batch_list_jobs] returns up to 100 results and
+#' a `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' [`list_jobs`][batch_list_jobs] request where `maxResults` was used and
+#' the results exceeded the value of that parameter. Pagination continues
+#' from the end of the previous results that returned the `nextToken`
+#' value. This value is `null` when there are no more results to return.
 #' 
 #' This token should be treated as an opaque identifier that's only used to
 #' retrieve the next items in a list and not for other programmatic
@@ -1019,8 +1035,8 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' supported.
 #' @param parameters Default parameter substitution placeholders to set in the job
 #' definition. Parameters are specified as a key-value pair mapping.
-#' Parameters in a `SubmitJob` request override any corresponding parameter
-#' defaults from the job definition.
+#' Parameters in a [`submit_job`][batch_submit_job] request override any
+#' corresponding parameter defaults from the job definition.
 #' @param containerProperties An object with various properties specific to single-node
 #' container-based jobs. If the job definition's `type` parameter is
 #' `container`, then you must specify either `containerProperties` or
@@ -1039,9 +1055,9 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' If the job runs on Fargate resources, then you must not specify
 #' `nodeProperties`; use `containerProperties` instead.
 #' @param retryStrategy The retry strategy to use for failed jobs that are submitted with this
-#' job definition. Any retry strategy that's specified during a SubmitJob
-#' operation overrides the retry strategy defined here. If a job is
-#' terminated due to a timeout, it isn't retried.
+#' job definition. Any retry strategy that's specified during a
+#' [`submit_job`][batch_submit_job] operation overrides the retry strategy
+#' defined here. If a job is terminated due to a timeout, it isn't retried.
 #' @param propagateTags Specifies whether to propagate the tags from the job or job definition
 #' to the corresponding Amazon ECS task. If no value is specified, the tags
 #' are not propagated. Tags can only be propagated to the tasks during task
@@ -1052,8 +1068,9 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' definition, after which AWS Batch terminates your jobs if they have not
 #' finished. If a job is terminated due to a timeout, it isn't retried. The
 #' minimum value for the timeout is 60 seconds. Any timeout configuration
-#' that's specified during a SubmitJob operation overrides the timeout
-#' configuration defined here. For more information, see [Job
+#' that's specified during a [`submit_job`][batch_submit_job] operation
+#' overrides the timeout configuration defined here. For more information,
+#' see [Job
 #' Timeouts](https://docs.aws.amazon.com/batch/latest/userguide/job_timeouts.html)
 #' in the *AWS Batch User Guide*.
 #' @param tags The tags that you apply to the job definition to help you categorize and
@@ -1360,7 +1377,8 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #'
 #' @description
 #' Submits an AWS Batch job from a job definition. Parameters specified
-#' during SubmitJob override parameters defined in the job definition.
+#' during [`submit_job`][batch_submit_job] override parameters defined in
+#' the job definition.
 #' 
 #' Jobs run on Fargate resources don't run for more than 14 days. After 14
 #' days, the Fargate resources might no longer be available and the job is
@@ -1396,8 +1414,8 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' @param parameters Additional parameters passed to the job that replace parameter
 #' substitution placeholders that are set in the job definition. Parameters
 #' are specified as a key and value pair mapping. Parameters in a
-#' `SubmitJob` request override any corresponding parameter defaults from
-#' the job definition.
+#' [`submit_job`][batch_submit_job] request override any corresponding
+#' parameter defaults from the job definition.
 #' @param containerOverrides A list of container overrides in JSON format that specify the name of a
 #' container in the specified job definition and the overrides it should
 #' receive. You can override the default command for a container (that's
@@ -1410,9 +1428,10 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' 
 #' This parameter isn't applicable to jobs running on Fargate resources;
 #' use `containerOverrides` instead.
-#' @param retryStrategy The retry strategy to use for failed jobs from this SubmitJob operation.
-#' When a retry strategy is specified here, it overrides the retry strategy
-#' defined in the job definition.
+#' @param retryStrategy The retry strategy to use for failed jobs from this
+#' [`submit_job`][batch_submit_job] operation. When a retry strategy is
+#' specified here, it overrides the retry strategy defined in the job
+#' definition.
 #' @param propagateTags Specifies whether to propagate the tags from the job or job definition
 #' to the corresponding Amazon ECS task. If no value is specified, the tags
 #' aren't propagated. Tags can only be propagated to the tasks during task
@@ -1421,13 +1440,14 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' and job definition is over 50, the job is moved to the `FAILED` state.
 #' When specified, this overrides the tag propagation setting in the job
 #' definition.
-#' @param timeout The timeout configuration for this SubmitJob operation. You can specify
-#' a timeout duration after which AWS Batch terminates your jobs if they
-#' haven't finished. If a job is terminated due to a timeout, it isn't
-#' retried. The minimum value for the timeout is 60 seconds. This
-#' configuration overrides any timeout configuration specified in the job
-#' definition. For array jobs, child jobs have the same timeout
-#' configuration as the parent job. For more information, see [Job
+#' @param timeout The timeout configuration for this [`submit_job`][batch_submit_job]
+#' operation. You can specify a timeout duration after which AWS Batch
+#' terminates your jobs if they haven't finished. If a job is terminated
+#' due to a timeout, it isn't retried. The minimum value for the timeout is
+#' 60 seconds. This configuration overrides any timeout configuration
+#' specified in the job definition. For array jobs, child jobs have the
+#' same timeout configuration as the parent job. For more information, see
+#' [Job
 #' Timeouts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param tags The tags that you apply to the job request to help you categorize and
@@ -1633,8 +1653,9 @@ batch_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param jobId &#91;required&#93; The AWS Batch job ID of the job to terminate.
 #' @param reason &#91;required&#93; A message to attach to the job that explains the reason for canceling
-#' it. This message is returned by future DescribeJobs operations on the
-#' job. This message is also recorded in the AWS Batch activity logs.
+#' it. This message is returned by future
+#' [`describe_jobs`][batch_describe_jobs] operations on the job. This
+#' message is also recorded in the AWS Batch activity logs.
 #'
 #' @section Request syntax:
 #' ```

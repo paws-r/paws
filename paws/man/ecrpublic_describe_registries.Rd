@@ -8,23 +8,27 @@ ecrpublic_describe_registries(nextToken, maxResults)
 }
 \arguments{
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{DescribeRegistries} request where \code{maxResults} was used and the results
-exceeded the value of that parameter. Pagination continues from the end
-of the previous results that returned the \code{nextToken} value. This value
-is \code{null} when there are no more results to return.
+\code{\link[=ecrpublic_describe_registries]{describe_registries}} request where
+\code{maxResults} was used and the results exceeded the value of that
+parameter. Pagination continues from the end of the previous results
+that returned the \code{nextToken} value. This value is \code{null} when there are
+no more results to return.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
 \item{maxResults}{The maximum number of repository results returned by
-\code{DescribeRegistries} in paginated output. When this parameter is used,
-\code{DescribeRegistries} only returns \code{maxResults} results in a single page
-along with a \code{nextToken} response element. The remaining results of the
-initial request can be seen by sending another \code{DescribeRegistries}
+\code{\link[=ecrpublic_describe_registries]{describe_registries}} in paginated
+output. When this parameter is used,
+\code{\link[=ecrpublic_describe_registries]{describe_registries}} only returns
+\code{maxResults} results in a single page along with a \code{nextToken} response
+element. The remaining results of the initial request can be seen by
+sending another \code{\link[=ecrpublic_describe_registries]{describe_registries}}
 request with the returned \code{nextToken} value. This value can be between 1
-and 1000. If this parameter is not used, then \code{DescribeRegistries}
-returns up to 100 results and a \code{nextToken} value, if applicable.}
+and 1000. If this parameter is not used, then
+\code{\link[=ecrpublic_describe_registries]{describe_registries}} returns up to 100
+results and a \code{nextToken} value, if applicable.}
 }
 \description{
 Returns details for a public registry.

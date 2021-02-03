@@ -56,7 +56,7 @@ This operation overwrites the existing model with the provided model. To
 avoid deleting your asset model's properties or hierarchies, you must
 include their IDs and definitions in the updated asset model payload.
 For more information, see
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModel.html}{DescribeAssetModel}.
+\code{\link[=iotsitewise_describe_asset_model]{describe_asset_model}}.
 
 If you remove a property from an asset model, AWS IoT SiteWise deletes
 all previous data for that property. If you remove a hierarchy

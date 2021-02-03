@@ -283,7 +283,8 @@ applicationdiscoveryservice_delete_tags <- function(configurationIds, tags = NUL
 #' @description
 #' Lists agents or connectors as specified by ID or other filters. All
 #' agents/connectors associated with your user account can be listed if you
-#' call `DescribeAgents` as is without passing any parameters.
+#' call [`describe_agents`][applicationdiscoveryservice_describe_agents] as
+#' is without passing any parameters.
 #'
 #' @usage
 #' applicationdiscoveryservice_describe_agents(agentIds, filters,
@@ -408,7 +409,8 @@ applicationdiscoveryservice_describe_configurations <- function(configurationIds
 #'
 #' @description
 #' Lists exports as specified by ID. All continuous exports associated with
-#' your user account can be listed if you call `DescribeContinuousExports`
+#' your user account can be listed if you call
+#' [`describe_continuous_exports`][applicationdiscoveryservice_describe_continuous_exports]
 #' as is without passing any parameters.
 #'
 #' @usage
@@ -418,7 +420,8 @@ applicationdiscoveryservice_describe_configurations <- function(configurationIds
 #' @param exportIds The unique IDs assigned to the exports.
 #' @param maxResults A number between 1 and 100 specifying the maximum number of continuous
 #' export descriptions returned.
-#' @param nextToken The token from the previous call to `DescribeExportTasks`.
+#' @param nextToken The token from the previous call to
+#' [`describe_export_tasks`][applicationdiscoveryservice_describe_export_tasks].
 #'
 #' @section Request syntax:
 #' ```
@@ -454,8 +457,9 @@ applicationdiscoveryservice_describe_continuous_exports <- function(exportIds = 
 #' DescribeExportConfigurations is deprecated
 #'
 #' @description
-#' `DescribeExportConfigurations` is deprecated. Use
-#' [DescribeImportTasks](https://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html),
+#' [`describe_export_configurations`][applicationdiscoveryservice_describe_export_configurations]
+#' is deprecated. Use
+#' [`describe_import_tasks`][applicationdiscoveryservice_describe_import_tasks],
 #' instead.
 #'
 #' @usage
@@ -513,15 +517,18 @@ applicationdiscoveryservice_describe_export_configurations <- function(exportIds
 #' @param filters One or more filters.
 #' 
 #' -   `AgentId` - ID of the agent whose collected data will be exported
-#' @param maxResults The maximum number of volume results returned by `DescribeExportTasks`
-#' in paginated output. When this parameter is used, `DescribeExportTasks`
+#' @param maxResults The maximum number of volume results returned by
+#' [`describe_export_tasks`][applicationdiscoveryservice_describe_export_tasks]
+#' in paginated output. When this parameter is used,
+#' [`describe_export_tasks`][applicationdiscoveryservice_describe_export_tasks]
 #' only returns `maxResults` results in a single page along with a
 #' `nextToken` response element.
 #' @param nextToken The `nextToken` value returned from a previous paginated
-#' `DescribeExportTasks` request where `maxResults` was used and the
-#' results exceeded the value of that parameter. Pagination continues from
-#' the end of the previous results that returned the `nextToken` value.
-#' This value is null when there are no more results to return.
+#' [`describe_export_tasks`][applicationdiscoveryservice_describe_export_tasks]
+#' request where `maxResults` was used and the results exceeded the value
+#' of that parameter. Pagination continues from the end of the previous
+#' results that returned the `nextToken` value. This value is null when
+#' there are no more results to return.
 #'
 #' @section Request syntax:
 #' ```
@@ -637,8 +644,9 @@ applicationdiscoveryservice_describe_import_tasks <- function(filters = NULL, ma
 #' -   configurationId
 #' 
 #' Also, all configuration items associated with your user account that
-#' have tags can be listed if you call `DescribeTags` as is without passing
-#' any parameters.
+#' have tags can be listed if you call
+#' [`describe_tags`][applicationdiscoveryservice_describe_tags] as is
+#' without passing any parameters.
 #'
 #' @usage
 #' applicationdiscoveryservice_describe_tags(filters, maxResults,
@@ -734,7 +742,9 @@ applicationdiscoveryservice_disassociate_configuration_items_from_application <-
 #' Deprecated
 #'
 #' @description
-#' Deprecated. Use `StartExportTask` instead.
+#' Deprecated. Use
+#' [`start_export_task`][applicationdiscoveryservice_start_export_task]
+#' instead.
 #' 
 #' Exports all discovered configuration data to an Amazon S3 bucket or an
 #' application that enables you to view and evaluate the data. Data
@@ -1044,10 +1054,11 @@ applicationdiscoveryservice_start_data_collection_by_agent_ids <- function(agent
 #' **Note:** *The* `GRAPHML` *option has been deprecated.*
 #' @param filters If a filter is present, it selects the single `agentId` of the
 #' Application Discovery Agent for which data is exported. The `agentId`
-#' can be found in the results of the `DescribeAgents` API or CLI. If no
-#' filter is present, `startTime` and `endTime` are ignored and exported
-#' data includes both Agentless Discovery Connector data and summary data
-#' from Application Discovery agents.
+#' can be found in the results of the
+#' [`describe_agents`][applicationdiscoveryservice_describe_agents] API or
+#' CLI. If no filter is present, `startTime` and `endTime` are ignored and
+#' exported data includes both Agentless Discovery Connector data and
+#' summary data from Application Discovery agents.
 #' @param startTime The start timestamp for exported data from the single Application
 #' Discovery Agent selected in the filters. If no value is specified, data
 #' is exported starting from the first data collected by the agent.
@@ -1124,8 +1135,10 @@ applicationdiscoveryservice_start_export_task <- function(exportDataFormat = NUL
 #' 3.  Upload your import file to an Amazon S3 bucket, and make a note of
 #'     it's Object URL. Your import file must be in the CSV format.
 #' 
-#' 4.  Use the console or the `StartImportTask` command with the AWS CLI or
-#'     one of the AWS SDKs to import the records from your file.
+#' 4.  Use the console or the
+#'     [`start_import_task`][applicationdiscoveryservice_start_import_task]
+#'     command with the AWS CLI or one of the AWS SDKs to import the
+#'     records from your file.
 #' 
 #' For more information, including step-by-step procedures, see [Migration
 #' Hub
@@ -1146,9 +1159,10 @@ applicationdiscoveryservice_start_export_task <- function(exportDataFormat = NUL
 #' request from occurring more than once. If you don't provide a token, a
 #' token is automatically generated.
 #' 
-#' Sending more than one `StartImportTask` request with the same client
-#' request token will return information about the original import task
-#' with that client request token.
+#' Sending more than one
+#' [`start_import_task`][applicationdiscoveryservice_start_import_task]
+#' request with the same client request token will return information about
+#' the original import task with that client request token.
 #' @param name &#91;required&#93; A descriptive name for this request. You can use this name to filter
 #' future requests related to this import task, such as identifying
 #' applications and servers that were included in this import task. We

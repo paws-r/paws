@@ -17,7 +17,7 @@ tag value.
 To remove more than one tag from the resource, append the \code{TagKeys}
 parameter and argument for each additional tag to remove, separated by
 an ampersand. For example:
-\verb{/v1/email/tags?ResourceArn=ResourceArn&amp;TagKeys=Key1&amp;TagKeys=Key2}}
+\verb{/v1/email/tags?ResourceArn=ResourceArn&TagKeys=Key1&TagKeys=Key2}}
 }
 \description{
 Remove one or more tags (keys and values) from a specified resource.

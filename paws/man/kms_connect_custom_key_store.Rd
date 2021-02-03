@@ -9,7 +9,8 @@ kms_connect_custom_key_store(CustomKeyStoreId)
 }
 \arguments{
 \item{CustomKeyStoreId}{[required] Enter the key store ID of the custom key store that you want to connect.
-To find the ID of a custom key store, use the DescribeCustomKeyStores
+To find the ID of a custom key store, use the
+\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
 operation.}
 }
 \description{
@@ -36,22 +37,26 @@ does not wait for it to complete. When it succeeds, this operation
 quickly returns an HTTP 200 response and a JSON object with no
 properties. However, this response does not indicate that the custom key
 store is connected. To get the connection state of the custom key store,
-use the DescribeCustomKeyStores operation.
+use the \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
+operation.
 
 During the connection process, AWS KMS finds the AWS CloudHSM cluster
 that is associated with the custom key store, creates the connection
 infrastructure, connects to the cluster, logs into the AWS CloudHSM
 client as the \code{kmsuser} CU, and rotates its password.
 
-The \code{ConnectCustomKeyStore} operation might fail for various reasons. To
-find the reason, use the DescribeCustomKeyStores operation and see the
-\code{ConnectionErrorCode} in the response. For help interpreting the
-\code{ConnectionErrorCode}, see CustomKeyStoresListEntry.
+The \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}} operation
+might fail for various reasons. To find the reason, use the
+\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}} operation
+and see the \code{ConnectionErrorCode} in the response. For help interpreting
+the \code{ConnectionErrorCode}, see CustomKeyStoresListEntry.
 
-To fix the failure, use the DisconnectCustomKeyStore operation to
-disconnect the custom key store, correct the error, use the
-UpdateCustomKeyStore operation if necessary, and then use
-\code{ConnectCustomKeyStore} again.
+To fix the failure, use the
+\code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}}
+operation to disconnect the custom key store, correct the error, use the
+\code{\link[=kms_update_custom_key_store]{update_custom_key_store}} operation if
+necessary, and then use
+\code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}} again.
 
 If you are having trouble connecting or disconnecting a custom key
 store, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html}{Troubleshooting a Custom Key Store}
@@ -66,11 +71,11 @@ key store in a different AWS account.
 
 \strong{Related operations}
 \itemize{
-\item CreateCustomKeyStore
-\item DeleteCustomKeyStore
-\item DescribeCustomKeyStores
-\item DisconnectCustomKeyStore
-\item UpdateCustomKeyStore
+\item \code{\link[=kms_create_custom_key_store]{create_custom_key_store}}
+\item \code{\link[=kms_delete_custom_key_store]{delete_custom_key_store}}
+\item \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
+\item \code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}}
+\item \code{\link[=kms_update_custom_key_store]{update_custom_key_store}}
 }
 }
 \section{Request syntax}{

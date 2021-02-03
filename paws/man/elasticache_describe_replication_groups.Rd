@@ -29,8 +29,9 @@ the value specified by \code{MaxRecords}.}
 }
 \description{
 Returns information about a particular replication group. If no
-identifier is specified, \code{DescribeReplicationGroups} returns information
-about all replication groups.
+identifier is specified,
+\code{\link[=elasticache_describe_replication_groups]{describe_replication_groups}}
+returns information about all replication groups.
 
 This operation is valid for Redis only.
 }

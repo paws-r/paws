@@ -19,8 +19,8 @@ of the web site.}
 previously rejected. Defaults to \code{False}.}
 }
 \description{
-The \code{ApproveAssignment} operation approves the results of a completed
-assignment.
+The \code{\link[=mturk_approve_assignment]{approve_assignment}} operation approves
+the results of a completed assignment.
 
 Approving an assignment initiates two payments from the Requester's
 Amazon.com account

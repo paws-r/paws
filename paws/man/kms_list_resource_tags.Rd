@@ -18,7 +18,8 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{Limit}{Use this parameter to specify the maximum number of items to return.
 When this value is present, AWS KMS does not return more than the
@@ -51,8 +52,8 @@ a different AWS account.
 
 \strong{Related operations:}
 \itemize{
-\item TagResource
-\item UntagResource
+\item \code{\link[=kms_tag_resource]{tag_resource}}
+\item \code{\link[=kms_untag_resource]{untag_resource}}
 }
 }
 \section{Request syntax}{

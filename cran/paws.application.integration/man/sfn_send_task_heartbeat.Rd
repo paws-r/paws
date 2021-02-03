@@ -31,8 +31,9 @@ pattern.
 
 The \code{Timeout} of a task, defined in the state machine's Amazon States
 Language definition, is its maximum allowed duration, regardless of the
-number of SendTaskHeartbeat requests received. Use \code{HeartbeatSeconds} to
-configure the timeout interval for heartbeats.
+number of \code{\link[=sfn_send_task_heartbeat]{send_task_heartbeat}} requests
+received. Use \code{HeartbeatSeconds} to configure the timeout interval for
+heartbeats.
 }
 \section{Request syntax}{
 \preformatted{svc$send_task_heartbeat(

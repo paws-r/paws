@@ -26,9 +26,8 @@ from which AWS advertises IP addresses. Use this parameter to limit the
 IP address to this location. IP addresses cannot move between network
 border groups.
 
-Use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html}{DescribeAvailabilityZones}
-to view the network border groups.
+Use \code{\link[=ec2_describe_availability_zones]{describe_availability_zones}} to
+view the network border groups.
 
 You cannot use a network border group with EC2 Classic. If you attempt
 this operation on EC2 classic, you will receive an

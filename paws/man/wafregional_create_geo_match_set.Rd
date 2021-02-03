@@ -10,7 +10,8 @@ wafregional_create_geo_match_set(Name, ChangeToken)
 \item{Name}{[required] A friendly name or description of the GeoMatchSet. You can't change
 \code{Name} after you create the \code{GeoMatchSet}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -31,11 +32,14 @@ to block the requests.
 
 To create and configure a \code{GeoMatchSet}, perform the following steps:
 \enumerate{
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{CreateGeoMatchSet} request.
-\item Submit a \code{CreateGeoMatchSet} request.
-\item Use \code{GetChangeToken} to get the change token that you provide in the
-\code{ChangeToken} parameter of an UpdateGeoMatchSet request.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=wafregional_create_geo_match_set]{create_geo_match_set}} request.
+\item Submit a \code{\link[=wafregional_create_geo_match_set]{create_geo_match_set}}
+request.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=wafregional_update_geo_match_set]{update_geo_match_set}} request.
 \item Submit an \code{UpdateGeoMatchSetSet} request to specify the countries
 that you want AWS WAF to watch for.
 }

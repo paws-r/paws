@@ -20,8 +20,9 @@ Lists all cost allocation tags currently on the named resource. A
 case-sensitive and the value is optional. You can use cost allocation
 tags to categorize and track your AWS costs.
 
-If the cluster is not in the \emph{available} state, \code{ListTagsForResource}
-returns an error.
+If the cluster is not in the \emph{available} state,
+\code{\link[=elasticache_list_tags_for_resource]{list_tags_for_resource}} returns
+an error.
 
 You can have a maximum of 50 cost allocation tags on an ElastiCache
 resource. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html}{Monitoring Costs with Tags}.

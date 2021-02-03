@@ -14,9 +14,9 @@ glue_put_resource_policy(PolicyInJson, ResourceArn, PolicyHashCondition,
 more information about AWS Glue resource ARNs, see the \href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id}{AWS Glue ARN string pattern}}
 
 \item{PolicyHashCondition}{The hash value returned when the previous policy was set using
-\code{PutResourcePolicy}. Its purpose is to prevent concurrent modifications
-of a policy. Do not use this parameter if no previous policy has been
-set.}
+\code{\link[=glue_put_resource_policy]{put_resource_policy}}. Its purpose is to
+prevent concurrent modifications of a policy. Do not use this parameter
+if no previous policy has been set.}
 
 \item{PolicyExistsCondition}{A value of \code{MUST_EXIST} is used to update a policy. A value of
 \code{NOT_EXIST} is used to create a new policy. If a value of \code{NONE} or a

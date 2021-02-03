@@ -49,9 +49,11 @@ quicksight_cancel_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
 #' @description
 #' Creates Amazon QuickSight customizations the current AWS Region.
 #' Currently, you can add a custom default theme by using the
-#' `CreateAccountCustomization` or `UpdateAccountCustomization` API
-#' operation. To further customize QuickSight by removing QuickSight sample
-#' assets and videos for all new users, see [Customizing
+#' [`create_account_customization`][quicksight_create_account_customization]
+#' or
+#' [`update_account_customization`][quicksight_update_account_customization]
+#' API operation. To further customize QuickSight by removing QuickSight
+#' sample assets and videos for all new users, see [Customizing
 #' QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/customizing-quicksight.html)
 #' in the *Amazon QuickSight User Guide.*
 #' 
@@ -59,15 +61,19 @@ quicksight_cancel_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
 #' namespace, for a QuickSight namespace instead. Customizations that apply
 #' to a namespace always override customizations that apply to an AWS
 #' account. To find out which customizations apply, use the
-#' `DescribeAccountCustomization` API operation.
+#' [`describe_account_customization`][quicksight_describe_account_customization]
+#' API operation.
 #' 
-#' Before you use the `CreateAccountCustomization` API operation to add a
-#' theme as the namespace default, make sure that you first share the theme
-#' with the namespace. If you don't share it with the namespace, the theme
-#' isn't visible to your users even if you make it the default theme. To
-#' check if the theme is shared, view the current permissions by using the
-#' ` <a>DescribeThemePermissions</a> ` API operation. To share the theme,
-#' grant permissions by using the ` <a>UpdateThemePermissions</a> ` API
+#' Before you use the
+#' [`create_account_customization`][quicksight_create_account_customization]
+#' API operation to add a theme as the namespace default, make sure that
+#' you first share the theme with the namespace. If you don't share it with
+#' the namespace, the theme isn't visible to your users even if you make it
+#' the default theme. To check if the theme is shared, view the current
+#' permissions by using the
+#' [`describe_theme_permissions`][quicksight_describe_theme_permissions]
+#' API operation. To share the theme, grant permissions by using the
+#' [`update_theme_permissions`][quicksight_update_theme_permissions] API
 #' operation.
 #'
 #' @usage
@@ -251,7 +257,7 @@ quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 #'
 #' @description
 #' Creates a dashboard from a template. To first create a template, see the
-#' ` <a>CreateTemplate</a> ` API operation.
+#' [`create_template`][quicksight_create_template] API operation.
 #' 
 #' A dashboard is an entity in QuickSight that identifies QuickSight
 #' reports, created from analyses. You can share QuickSight dashboards.
@@ -280,9 +286,10 @@ quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 #' source. You can only create a dashboard from a template, so you use a
 #' `SourceTemplate` entity. If you need to create a dashboard from an
 #' analysis, first convert the analysis to a template by using the
-#' CreateTemplate API operation. For `SourceTemplate`, specify the Amazon
-#' Resource Name (ARN) of the source template. The `SourceTemplate`ARN can
-#' contain any AWS Account and any QuickSight-supported AWS Region.
+#' [`create_template`][quicksight_create_template] API operation. For
+#' `SourceTemplate`, specify the Amazon Resource Name (ARN) of the source
+#' template. The `SourceTemplate`ARN can contain any AWS Account and any
+#' QuickSight-supported AWS Region.
 #' 
 #' Use the `DataSetReferences` entity within `SourceTemplate` to list the
 #' replacement datasets for the placeholders listed in the original. The
@@ -439,8 +446,7 @@ quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Paramet
 #' @param Permissions A list of resource permissions on the dataset.
 #' @param RowLevelPermissionDataSet The row-level security configuration for the data that you want to
 #' create.
-#' @param ColumnLevelPermissionRules A set of one or more definitions of a
-#' ` <a>ColumnLevelPermissionRule</a> `.
+#' @param ColumnLevelPermissionRules A set of one or more definitions of a ` ColumnLevelPermissionRule `.
 #' @param Tags Contains a map of the key-value pairs for the resource tag or tags
 #' assigned to the dataset.
 #'
@@ -635,7 +641,8 @@ quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTa
 #' @param Type &#91;required&#93; The type of the data source. Currently, the supported types for this
 #' operation are:
 #' `ATHENA, AURORA, AURORA_POSTGRESQL, MARIADB, MYSQL, POSTGRESQL, PRESTO, REDSHIFT, S3, SNOWFLAKE, SPARK, SQLSERVER, TERADATA`.
-#' Use `ListDataSources` to return a list of all data sources.
+#' Use [`list_data_sources`][quicksight_list_data_sources] to return a list
+#' of all data sources.
 #' @param DataSourceParameters The parameters that QuickSight uses to connect to your underlying
 #' source.
 #' @param Credentials The credentials QuickSight that uses to connect to your underlying
@@ -896,7 +903,7 @@ quicksight_create_data_source <- function(AwsAccountId, DataSourceId, Name, Type
 #' Creates an Amazon QuickSight group.
 #' 
 #' The permissions resource is
-#' `arn:aws:quicksight:us-east-1:<i>&lt;relevant-aws-account-id&gt;</i>:group/default/<i>&lt;group-name&gt;</i> `.
+#' `arn:aws:quicksight:us-east-1:<relevant-aws-account-id>:group/default/<group-name> `.
 #' 
 #' The response is a group object.
 #'
@@ -1208,9 +1215,9 @@ quicksight_create_namespace <- function(AwsAccountId, Namespace, IdentityStore, 
 #' assigned to the resource.
 #' @param VersionDescription A description of the current template version being created. This API
 #' operation creates the first version of the template. Every time
-#' `UpdateTemplate` is called, a new version is created. Each version of
-#' the template maintains a description of the version in the
-#' `VersionDescription` field.
+#' [`update_template`][quicksight_update_template] is called, a new version
+#' is created. Each version of the template maintains a description of the
+#' version in the `VersionDescription` field.
 #'
 #' @section Request syntax:
 #' ```
@@ -1338,12 +1345,13 @@ quicksight_create_template_alias <- function(AwsAccountId, TemplateId, AliasName
 #' @param Name &#91;required&#93; A display name for the theme.
 #' @param BaseThemeId &#91;required&#93; The ID of the theme that a custom theme will inherit from. All themes
 #' inherit from one of the starting themes defined by Amazon QuickSight.
-#' For a list of the starting themes, use `ListThemes` or choose **Themes**
-#' from within a QuickSight analysis.
+#' For a list of the starting themes, use
+#' [`list_themes`][quicksight_list_themes] or choose **Themes** from within
+#' a QuickSight analysis.
 #' @param VersionDescription A description of the first version of the theme that you're creating.
-#' Every time `UpdateTheme` is called, a new version is created. Each
-#' version of the theme has a description of the version in the
-#' `VersionDescription` field.
+#' Every time [`update_theme`][quicksight_update_theme] is called, a new
+#' version is created. Each version of the theme has a description of the
+#' version in the `VersionDescription` field.
 #' @param Configuration &#91;required&#93; The theme configuration, which contains the theme display properties.
 #' @param Permissions A valid grouping of resource permissions to apply to the new theme.
 #' @param Tags A map of the key-value pairs for the resource tag or tags that you want
@@ -1538,10 +1546,10 @@ quicksight_delete_account_customization <- function(AwsAccountId, Namespace = NU
 #' window, QuickSight deletes the analysis permanently.
 #' 
 #' At any time before recovery window ends, you can use the
-#' `RestoreAnalysis` API operation to remove the `DeletionTime` stamp and
-#' cancel the deletion of the analysis. The analysis remains visible in the
-#' API until it's deleted, so you can describe it but you can't make a
-#' template from it.
+#' [`restore_analysis`][quicksight_restore_analysis] API operation to
+#' remove the `DeletionTime` stamp and cancel the deletion of the analysis.
+#' The analysis remains visible in the API until it's deleted, so you can
+#' describe it but you can't make a template from it.
 #' 
 #' An analysis that's scheduled for deletion isn't accessible in the
 #' QuickSight console. To access it in the console, restore it. Deleting an
@@ -1902,7 +1910,8 @@ quicksight_delete_namespace <- function(AwsAccountId, Namespace) {
 #' deleting.
 #' @param TemplateId &#91;required&#93; An ID for the template you want to delete.
 #' @param VersionNumber Specifies the version of the template that you want to delete. If you
-#' don't provide a version number, `DeleteTemplate` deletes all versions of
+#' don't provide a version number,
+#' [`delete_template`][quicksight_delete_template] deletes all versions of
 #' the template.
 #'
 #' @section Request syntax:
@@ -1993,7 +2002,8 @@ quicksight_delete_template_alias <- function(AwsAccountId, TemplateId, AliasName
 #' @param VersionNumber The version of the theme that you want to delete.
 #' 
 #' **Note:** If you don't provide a version number, you're using this call
-#' to `DeleteTheme` to delete all versions of the theme.
+#' to [`delete_theme`][quicksight_delete_theme] to delete all versions of
+#' the theme.
 #'
 #' @section Request syntax:
 #' ```
@@ -2209,8 +2219,9 @@ quicksight_delete_user_by_principal_id <- function(PrincipalId, AwsAccountId, Na
 #'     Settings that you apply to a namespace override settings that you
 #'     apply to an AWS account. All settings are isolated to a single AWS
 #'     Region. To apply them in other AWS Regions, run the
-#'     `CreateAccountCustomization` command in each AWS Region where you
-#'     want to apply the same customizations.
+#'     [`create_account_customization`][quicksight_create_account_customization]
+#'     command in each AWS Region where you want to apply the same
+#'     customizations.
 #'
 #' @usage
 #' quicksight_describe_account_customization(AwsAccountId, Namespace,
@@ -3228,15 +3239,16 @@ quicksight_get_dashboard_embed_url <- function(AwsAccountId, DashboardId, Identi
 #' @description
 #' Generates a session URL and authorization code that you can use to embed
 #' the Amazon QuickSight console in your web server code. Use
-#' `GetSessionEmbedUrl` where you want to provide an authoring portal that
-#' allows users to create data sources, datasets, analyses, and dashboards.
-#' The users who access an embedded QuickSight console need belong to the
-#' author or admin security cohort. If you want to restrict permissions to
-#' some of these features, add a custom permissions profile to the user
-#' with the ` <a>UpdateUser</a> ` API operation. Use
-#' ` <a>RegisterUser</a> ` API operation to add a new user with a custom
-#' permission profile attached. For more information, see the following
-#' sections in the *Amazon QuickSight User Guide*:
+#' [`get_session_embed_url`][quicksight_get_session_embed_url] where you
+#' want to provide an authoring portal that allows users to create data
+#' sources, datasets, analyses, and dashboards. The users who access an
+#' embedded QuickSight console need belong to the author or admin security
+#' cohort. If you want to restrict permissions to some of these features,
+#' add a custom permissions profile to the user with the
+#' [`update_user`][quicksight_update_user] API operation. Use
+#' [`register_user`][quicksight_register_user] API operation to add a new
+#' user with a custom permission profile attached. For more information,
+#' see the following sections in the *Amazon QuickSight User Guide*:
 #' 
 #' -   [Embedding the Amazon QuickSight
 #'     Console](https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html)
@@ -3260,11 +3272,11 @@ quicksight_get_dashboard_embed_url <- function(AwsAccountId, DashboardId, Identi
 #' 
 #' -   `/start/favorites`
 #' 
-#' -   `/dashboards/<i>DashboardId</i> ` - where `DashboardId` is the
-#'     actual ID key from the QuickSight console URL of the dashboard
+#' -   `/dashboards/DashboardId ` - where `DashboardId` is the actual ID
+#'     key from the QuickSight console URL of the dashboard
 #' 
-#' -   `/analyses/<i>AnalysisId</i> ` - where `AnalysisId` is the actual ID
-#'     key from the QuickSight console URL of the analysis
+#' -   `/analyses/AnalysisId ` - where `AnalysisId` is the actual ID key
+#'     from the QuickSight console URL of the analysis
 #' @param SessionLifetimeInMinutes How many minutes the session is valid. The session lifetime must be
 #' 15-600 minutes.
 #' @param UserArn The Amazon QuickSight user's Amazon Resource Name (ARN), for use with
@@ -4288,14 +4300,14 @@ quicksight_list_users <- function(AwsAccountId, NextToken = NULL, MaxResults = N
 #' 
 #' -   Subscribe to email reports
 #' 
-#' To add custom permissions to an existing user, use ` <a>UpdateUser</a> `
-#' instead.
+#' To add custom permissions to an existing user, use
+#' [`update_user`][quicksight_update_user] instead.
 #' 
 #' A set of custom permissions includes any combination of these
 #' restrictions. Currently, you need to create the profile names for custom
 #' permission sets by using the QuickSight console. Then, you use the
-#' `RegisterUser` API operation to assign the named set of permissions to a
-#' QuickSight user.
+#' [`register_user`][quicksight_register_user] API operation to assign the
+#' named set of permissions to a QuickSight user.
 #' 
 #' QuickSight custom permissions are applied through IAM policies.
 #' Therefore, they override the permissions typically granted by assigning
@@ -4495,11 +4507,11 @@ quicksight_search_dashboards <- function(AwsAccountId, Filters, NextToken = NULL
 #' Tags can help you organize and categorize your resources. You can also
 #' use them to scope user permissions, by granting a user permission to
 #' access or change only resources with certain tag values. You can use the
-#' `TagResource` operation with a resource that already has tags. If you
-#' specify a new tag key for the resource, this tag is appended to the list
-#' of tags associated with the resource. If you specify a tag key that is
-#' already associated with the resource, the new tag value that you specify
-#' replaces the previous value for that tag.
+#' [`tag_resource`][quicksight_tag_resource] operation with a resource that
+#' already has tags. If you specify a new tag key for the resource, this
+#' tag is appended to the list of tags associated with the resource. If you
+#' specify a tag key that is already associated with the resource, the new
+#' tag value that you specify replaces the previous value for that tag.
 #' 
 #' You can associate as many as 50 tags with a resource. QuickSight
 #' supports tagging on data set, data source, dashboard, and template.
@@ -4606,7 +4618,8 @@ quicksight_untag_resource <- function(ResourceArn, TagKeys) {
 #' namespace, for a QuickSight namespace instead. Customizations that apply
 #' to a namespace override customizations that apply to an AWS account. To
 #' find out which customizations apply, use the
-#' `DescribeAccountCustomization` API operation.
+#' [`describe_account_customization`][quicksight_describe_account_customization]
+#' API operation.
 #'
 #' @usage
 #' quicksight_update_account_customization(AwsAccountId, Namespace,
@@ -4879,9 +4892,10 @@ quicksight_update_analysis_permissions <- function(AwsAccountId, AnalysisId, Gra
 #' source. You can only update a dashboard from a template, so you use a
 #' `SourceTemplate` entity. If you need to update a dashboard from an
 #' analysis, first convert the analysis to a template by using the
-#' CreateTemplate API operation. For `SourceTemplate`, specify the Amazon
-#' Resource Name (ARN) of the source template. The `SourceTemplate` ARN can
-#' contain any AWS Account and any QuickSight-supported AWS Region.
+#' [`create_template`][quicksight_create_template] API operation. For
+#' `SourceTemplate`, specify the Amazon Resource Name (ARN) of the source
+#' template. The `SourceTemplate` ARN can contain any AWS Account and any
+#' QuickSight-supported AWS Region.
 #' 
 #' Use the `DataSetReferences` entity within `SourceTemplate` to list the
 #' replacement datasets for the placeholders listed in the original. The
@@ -5124,8 +5138,7 @@ quicksight_update_dashboard_published_version <- function(AwsAccountId, Dashboar
 #' @param ColumnGroups Groupings of columns that work together in certain QuickSight features.
 #' Currently, only geospatial hierarchy is supported.
 #' @param RowLevelPermissionDataSet The row-level security configuration for the data you want to create.
-#' @param ColumnLevelPermissionRules A set of one or more definitions of a
-#' ` <a>ColumnLevelPermissionRule</a> `.
+#' @param ColumnLevelPermissionRules A set of one or more definitions of a ` ColumnLevelPermissionRule `.
 #'
 #' @section Request syntax:
 #' ```
@@ -5798,9 +5811,10 @@ quicksight_update_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' listed in the original. The schema in each dataset must match its
 #' placeholder.
 #' @param VersionDescription A description of the current template version that is being updated.
-#' Every time you call `UpdateTemplate`, you create a new version of the
-#' template. Each version of the template maintains a description of the
-#' version in the `VersionDescription` field.
+#' Every time you call [`update_template`][quicksight_update_template], you
+#' create a new version of the template. Each version of the template
+#' maintains a description of the version in the `VersionDescription`
+#' field.
 #' @param Name The name for the template.
 #'
 #' @section Request syntax:
@@ -5969,9 +5983,9 @@ quicksight_update_template_permissions <- function(AwsAccountId, TemplateId, Gra
 #' @param BaseThemeId &#91;required&#93; The theme ID, defined by Amazon QuickSight, that a custom theme inherits
 #' from. All themes initially inherit from a default QuickSight theme.
 #' @param VersionDescription A description of the theme version that you're updating Every time that
-#' you call `UpdateTheme`, you create a new version of the theme. Each
-#' version of the theme maintains a description of the version in
-#' `VersionDescription`.
+#' you call [`update_theme`][quicksight_update_theme], you create a new
+#' version of the theme. Each version of the theme maintains a description
+#' of the version in `VersionDescription`.
 #' @param Configuration The theme configuration, which contains the theme display properties.
 #'
 #' @section Request syntax:
@@ -6237,8 +6251,8 @@ quicksight_update_theme_permissions <- function(AwsAccountId, ThemeId, GrantPerm
 #' A set of custom permissions includes any combination of these
 #' restrictions. Currently, you need to create the profile names for custom
 #' permission sets by using the QuickSight console. Then, you use the
-#' `RegisterUser` API operation to assign the named set of permissions to a
-#' QuickSight user.
+#' [`register_user`][quicksight_register_user] API operation to assign the
+#' named set of permissions to a QuickSight user.
 #' 
 #' QuickSight custom permissions are applied through IAM policies.
 #' Therefore, they override the permissions typically granted by assigning

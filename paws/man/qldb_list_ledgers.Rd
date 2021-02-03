@@ -8,20 +8,22 @@ current AWS account and Region}
 qldb_list_ledgers(MaxResults, NextToken)
 }
 \arguments{
-\item{MaxResults}{The maximum number of results to return in a single \code{ListLedgers}
-request. (The actual number of results returned might be fewer.)}
+\item{MaxResults}{The maximum number of results to return in a single
+\code{\link[=qldb_list_ledgers]{list_ledgers}} request. (The actual number of
+results returned might be fewer.)}
 
 \item{NextToken}{A pagination token, indicating that you want to retrieve the next page
 of results. If you received a value for \code{NextToken} in the response from
-a previous \code{ListLedgers} call, then you should use that value as input
-here.}
+a previous \code{\link[=qldb_list_ledgers]{list_ledgers}} call, then you should use
+that value as input here.}
 }
 \description{
 Returns an array of ledger summaries that are associated with the
 current AWS account and Region.
 
 This action returns a maximum of 100 items and is paginated so that you
-can retrieve all the items by calling \code{ListLedgers} multiple times.
+can retrieve all the items by calling
+\code{\link[=qldb_list_ledgers]{list_ledgers}} multiple times.
 }
 \section{Request syntax}{
 \preformatted{svc$list_ledgers(

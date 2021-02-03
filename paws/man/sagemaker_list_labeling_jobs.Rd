@@ -24,9 +24,10 @@ time (timestamp).}
 \item{MaxResults}{The maximum number of labeling jobs to return in each page of the
 response.}
 
-\item{NextToken}{If the result of the previous \code{ListLabelingJobs} request was truncated,
-the response includes a \code{NextToken}. To retrieve the next set of
-labeling jobs, use the token in the next request.}
+\item{NextToken}{If the result of the previous
+\code{\link[=sagemaker_list_labeling_jobs]{list_labeling_jobs}} request was
+truncated, the response includes a \code{NextToken}. To retrieve the next set
+of labeling jobs, use the token in the next request.}
 
 \item{NameContains}{A string in the labeling job name. This filter returns only labeling
 jobs whose name contains the specified string.}

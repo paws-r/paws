@@ -13,7 +13,9 @@ modify.
 Example: \code{examplecluster}}
 
 \item{RevisionTarget}{[required] The identifier of the database revision. You can retrieve this value
-from the response to the DescribeClusterDbRevisions request.}
+from the response to the
+\code{\link[=redshift_describe_cluster_db_revisions]{describe_cluster_db_revisions}}
+request.}
 }
 \description{
 Modifies the database revision of a cluster. The database revision is a

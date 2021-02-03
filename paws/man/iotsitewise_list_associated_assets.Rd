@@ -12,10 +12,9 @@ iotsitewise_list_associated_assets(assetId, hierarchyId,
 
 \item{hierarchyId}{The ID of the hierarchy by which child assets are associated to the
 asset. To find a hierarchy ID, use the
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAsset.html}{DescribeAsset}
-or
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModel.html}{DescribeAssetModel}
-operations. This parameter is required if you choose \code{CHILD} for
+\code{\link[=iotsitewise_describe_asset]{describe_asset}} or
+\code{\link[=iotsitewise_describe_asset_model]{describe_asset_model}} operations.
+This parameter is required if you choose \code{CHILD} for
 \code{traversalDirection}.
 
 For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html}{Asset hierarchies}

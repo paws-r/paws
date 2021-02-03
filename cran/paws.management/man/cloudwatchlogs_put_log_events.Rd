@@ -15,12 +15,13 @@ cloudwatchlogs_put_log_events(logGroupName, logStreamName, logEvents,
 \item{logEvents}{[required] The log events.}
 
 \item{sequenceToken}{The sequence token obtained from the response of the previous
-\code{PutLogEvents} call. An upload in a newly created log stream does not
-require a sequence token. You can also get the sequence token using
-\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogStreams.html}{DescribeLogStreams}.
-If you call \code{PutLogEvents} twice within a narrow time period using the
-same value for \code{sequenceToken}, both calls might be successful or one
-might be rejected.}
+\code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} call. An upload in a
+newly created log stream does not require a sequence token. You can also
+get the sequence token using
+\code{\link[=cloudwatchlogs_describe_log_streams]{describe_log_streams}}. If you
+call \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} twice within a
+narrow time period using the same value for \code{sequenceToken}, both calls
+might be successful or one might be rejected.}
 }
 \description{
 Uploads a batch of log events to the specified log stream.
@@ -29,9 +30,9 @@ You must include the sequence token obtained from the response of the
 previous call. An upload in a newly created log stream does not require
 a sequence token. You can also get the sequence token in the
 \code{expectedSequenceToken} field from \code{InvalidSequenceTokenException}. If
-you call \code{PutLogEvents} twice within a narrow time period using the same
-value for \code{sequenceToken}, both calls might be successful or one might
-be rejected.
+you call \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} twice within
+a narrow time period using the same value for \code{sequenceToken}, both
+calls might be successful or one might be rejected.
 
 The batch of events must satisfy the following constraints:
 \itemize{
@@ -55,8 +56,9 @@ hours. Otherwise, the operation fails.
 requests are throttled. This quota can't be changed.
 }
 
-If a call to \code{PutLogEvents} returns "UnrecognizedClientException" the
-most likely cause is an invalid AWS access key ID or secret key.
+If a call to \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} returns
+"UnrecognizedClientException" the most likely cause is an invalid AWS
+access key ID or secret key.
 }
 \section{Request syntax}{
 \preformatted{svc$put_log_events(

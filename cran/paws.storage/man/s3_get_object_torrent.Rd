@@ -31,9 +31,10 @@ To use GET, you must have READ access to the object.
 
 This action is not supported by Amazon S3 on Outposts.
 
-The following operation is related to \code{GetObjectTorrent}:
+The following operation is related to
+\code{\link[=s3_get_object_torrent]{get_object_torrent}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
+\item \code{\link[=s3_get_object]{get_object}}
 }
 }
 \section{Request syntax}{

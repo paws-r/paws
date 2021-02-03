@@ -13,10 +13,11 @@ applicationdiscoveryservice_start_export_task(exportDataFormat, filters,
 
 \item{filters}{If a filter is present, it selects the single \code{agentId} of the
 Application Discovery Agent for which data is exported. The \code{agentId}
-can be found in the results of the \code{DescribeAgents} API or CLI. If no
-filter is present, \code{startTime} and \code{endTime} are ignored and exported
-data includes both Agentless Discovery Connector data and summary data
-from Application Discovery agents.}
+can be found in the results of the
+\code{\link[=applicationdiscoveryservice_describe_agents]{describe_agents}} API or
+CLI. If no filter is present, \code{startTime} and \code{endTime} are ignored and
+exported data includes both Agentless Discovery Connector data and
+summary data from Application Discovery agents.}
 
 \item{startTime}{The start timestamp for exported data from the single Application
 Discovery Agent selected in the filters. If no value is specified, data

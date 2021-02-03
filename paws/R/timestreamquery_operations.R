@@ -109,8 +109,8 @@ timestreamquery_describe_endpoints <- function() {
 #' @param QueryString &#91;required&#93; The query to be executed by Timestream.
 #' @param ClientToken Unique, case-sensitive string of up to 64 ASCII characters that you
 #' specify when you make a Query request. Providing a `ClientToken` makes
-#' the call to `Query` idempotent, meaning that multiple identical calls
-#' have the same effect as one single call.
+#' the call to [`query`][timestreamquery_query] idempotent, meaning that
+#' multiple identical calls have the same effect as one single call.
 #' 
 #' Your query request will fail in the following cases:
 #' 

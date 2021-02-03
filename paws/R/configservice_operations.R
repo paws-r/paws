@@ -161,11 +161,12 @@ configservice_delete_aggregation_authorization <- function(AuthorizedAccountId, 
 #' 
 #' AWS Config sets the state of a rule to `DELETING` until the deletion is
 #' complete. You cannot update a rule while it is in this state. If you
-#' make a `PutConfigRule` or `DeleteConfigRule` request for the rule, you
-#' will receive a `ResourceInUseException`.
+#' make a [`put_config_rule`][configservice_put_config_rule] or
+#' [`delete_config_rule`][configservice_delete_config_rule] request for the
+#' rule, you will receive a `ResourceInUseException`.
 #' 
-#' You can check the state of a rule by using the `DescribeConfigRules`
-#' request.
+#' You can check the state of a rule by using the
+#' [`describe_config_rules`][configservice_describe_config_rules] request.
 #'
 #' @usage
 #' configservice_delete_config_rule(ConfigRuleName)
@@ -250,16 +251,18 @@ configservice_delete_configuration_aggregator <- function(ConfigurationAggregato
 #' 
 #' This action does not delete the configuration information that was
 #' previously recorded. You will be able to access the previously recorded
-#' information by using the `GetResourceConfigHistory` action, but you will
-#' not be able to access this information in the AWS Config console until
-#' you create a new configuration recorder.
+#' information by using the
+#' [`get_resource_config_history`][configservice_get_resource_config_history]
+#' action, but you will not be able to access this information in the AWS
+#' Config console until you create a new configuration recorder.
 #'
 #' @usage
 #' configservice_delete_configuration_recorder(ConfigurationRecorderName)
 #'
 #' @param ConfigurationRecorderName &#91;required&#93; The name of the configuration recorder to be deleted. You can retrieve
 #' the name of your configuration recorder by using the
-#' `DescribeConfigurationRecorders` action.
+#' [`describe_configuration_recorders`][configservice_describe_configuration_recorders]
+#' action.
 #'
 #' @section Request syntax:
 #' ```
@@ -339,7 +342,9 @@ configservice_delete_conformance_pack <- function(ConformancePackName) {
 #' Deletes the delivery channel.
 #' 
 #' Before you can delete the delivery channel, you must stop the
-#' configuration recorder by using the StopConfigurationRecorder action.
+#' configuration recorder by using the
+#' [`stop_configuration_recorder`][configservice_stop_configuration_recorder]
+#' action.
 #'
 #' @usage
 #' configservice_delete_delivery_channel(DeliveryChannelName)
@@ -378,8 +383,9 @@ configservice_delete_delivery_channel <- function(DeliveryChannelName) {
 #' @description
 #' Deletes the evaluation results for the specified AWS Config rule. You
 #' can specify one AWS Config rule per request. After you delete the
-#' evaluation results, you can call the StartConfigRulesEvaluation API to
-#' start evaluating your AWS resources against the rule.
+#' evaluation results, you can call the
+#' [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation]
+#' API to start evaluating your AWS resources against the rule.
 #'
 #' @usage
 #' configservice_delete_evaluation_results(ConfigRuleName)
@@ -931,8 +937,9 @@ configservice_describe_aggregation_authorizations <- function(Limit = NULL, Next
 #' conditions:
 #' 
 #' -   AWS Config has never invoked an evaluation for the rule. To check
-#'     whether it has, use the `DescribeConfigRuleEvaluationStatus` action
-#'     to get the `LastSuccessfulInvocationTime` and
+#'     whether it has, use the
+#'     [`describe_config_rule_evaluation_status`][configservice_describe_config_rule_evaluation_status]
+#'     action to get the `LastSuccessfulInvocationTime` and
 #'     `LastFailedInvocationTime`.
 #' 
 #' -   The rule's AWS Lambda function is failing to send evaluation results
@@ -1005,8 +1012,9 @@ configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = N
 #' following conditions about the rules that evaluate the resource:
 #' 
 #' -   AWS Config has never invoked an evaluation for the rule. To check
-#'     whether it has, use the `DescribeConfigRuleEvaluationStatus` action
-#'     to get the `LastSuccessfulInvocationTime` and
+#'     whether it has, use the
+#'     [`describe_config_rule_evaluation_status`][configservice_describe_config_rule_evaluation_status]
+#'     action to get the `LastSuccessfulInvocationTime` and
 #'     `LastFailedInvocationTime`.
 #' 
 #' -   The rule's AWS Lambda function is failing to send evaluation results
@@ -2637,8 +2645,9 @@ configservice_get_conformance_pack_compliance_summary <- function(ConformancePac
 #'     Region for your account: 25 EC2 instances, 20 IAM users, and 15 S3
 #'     buckets.
 #' 
-#' 2.  You make a call to the `GetDiscoveredResourceCounts` action and
-#'     specify that you want all resource types.
+#' 2.  You make a call to the
+#'     [`get_discovered_resource_counts`][configservice_get_discovered_resource_counts]
+#'     action and specify that you want all resource types.
 #' 
 #' 3.  AWS Config returns the following:
 #' 
@@ -2654,8 +2663,10 @@ configservice_get_conformance_pack_compliance_summary <- function(ConformancePac
 #' get the next page of results, run the request again and specify the
 #' string for the `nextToken` parameter.
 #' 
-#' If you make a call to the GetDiscoveredResourceCounts action, you might
-#' not immediately receive resource counts in the following situations:
+#' If you make a call to the
+#' [`get_discovered_resource_counts`][configservice_get_discovered_resource_counts]
+#' action, you might not immediately receive resource counts in the
+#' following situations:
 #' 
 #' -   You are a new AWS Config customer.
 #' 
@@ -2663,7 +2674,8 @@ configservice_get_conformance_pack_compliance_summary <- function(ConformancePac
 #' 
 #' It might take a few minutes for AWS Config to record and count your
 #' resources. Wait a few minutes and then retry the
-#' GetDiscoveredResourceCounts action.
+#' [`get_discovered_resource_counts`][configservice_get_discovered_resource_counts]
+#' action.
 #'
 #' @usage
 #' configservice_get_discovered_resource_counts(resourceTypes, limit,
@@ -3227,9 +3239,10 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #' 
 #' If you are adding a new custom AWS Config rule, you must first create
 #' the AWS Lambda function that the rule invokes to evaluate your
-#' resources. When you use the `PutConfigRule` action to add the rule to
-#' AWS Config, you must specify the Amazon Resource Name (ARN) that AWS
-#' Lambda assigns to the function. Specify the ARN for the
+#' resources. When you use the
+#' [`put_config_rule`][configservice_put_config_rule] action to add the
+#' rule to AWS Config, you must specify the Amazon Resource Name (ARN) that
+#' AWS Lambda assigns to the function. Specify the ARN for the
 #' `SourceIdentifier` key. This key is part of the `Source` object, which
 #' is part of the `ConfigRule` object.
 #' 
@@ -3613,13 +3626,16 @@ configservice_put_delivery_channel <- function(DeliveryChannel) {
 #' AWS Config rule that invokes the AWS Lambda function.
 #' @param ResultToken &#91;required&#93; An encrypted token that associates an evaluation with an AWS Config
 #' rule. Identifies the rule and the event that triggered the evaluation.
-#' @param TestMode Use this parameter to specify a test run for `PutEvaluations`. You can
-#' verify whether your AWS Lambda function will deliver evaluation results
-#' to AWS Config. No updates occur to your existing evaluations, and
-#' evaluation results are not sent to AWS Config.
+#' @param TestMode Use this parameter to specify a test run for
+#' [`put_evaluations`][configservice_put_evaluations]. You can verify
+#' whether your AWS Lambda function will deliver evaluation results to AWS
+#' Config. No updates occur to your existing evaluations, and evaluation
+#' results are not sent to AWS Config.
 #' 
-#' When `TestMode` is `true`, `PutEvaluations` doesn't require a valid
-#' value for the `ResultToken` parameter, but the value cannot be null.
+#' When `TestMode` is `true`,
+#' [`put_evaluations`][configservice_put_evaluations] doesn't require a
+#' valid value for the `ResultToken` parameter, but the value cannot be
+#' null.
 #'
 #' @section Request syntax:
 #' ```
@@ -3738,10 +3754,11 @@ configservice_put_external_evaluation <- function(ConfigRuleName, ExternalEvalua
 #' managed Config rules. If you are adding a new custom AWS Config rule,
 #' you must first create AWS Lambda function in the master account or a
 #' delegated administrator that the rule invokes to evaluate your
-#' resources. When you use the `PutOrganizationConfigRule` action to add
-#' the rule to AWS Config, you must specify the Amazon Resource Name (ARN)
-#' that AWS Lambda assigns to the function. If you are adding an AWS
-#' managed Config rule, specify the rule's identifier for the
+#' resources. When you use the
+#' [`put_organization_config_rule`][configservice_put_organization_config_rule]
+#' action to add the rule to AWS Config, you must specify the Amazon
+#' Resource Name (ARN) that AWS Lambda assigns to the function. If you are
+#' adding an AWS managed Config rule, specify the rule's identifier for the
 #' `RuleIdentifier` key.
 #' 
 #' The maximum number of organization config rules that AWS Config supports
@@ -4355,24 +4372,30 @@ configservice_select_resource_config <- function(Expression, Limit = NULL, NextT
 #' @description
 #' Runs an on-demand evaluation for the specified AWS Config rules against
 #' the last known configuration state of the resources. Use
-#' `StartConfigRulesEvaluation` when you want to test that a rule you
-#' updated is working as expected. `StartConfigRulesEvaluation` does not
-#' re-record the latest configuration state for your resources. It re-runs
-#' an evaluation against the last known state of your resources.
+#' [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation]
+#' when you want to test that a rule you updated is working as expected.
+#' [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation]
+#' does not re-record the latest configuration state for your resources. It
+#' re-runs an evaluation against the last known state of your resources.
 #' 
 #' You can specify up to 25 AWS Config rules per request.
 #' 
-#' An existing `StartConfigRulesEvaluation` call for the specified rules
-#' must complete before you can call the API again. If you chose to have
-#' AWS Config stream to an Amazon SNS topic, you will receive a
-#' `ConfigRuleEvaluationStarted` notification when the evaluation starts.
+#' An existing
+#' [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation]
+#' call for the specified rules must complete before you can call the API
+#' again. If you chose to have AWS Config stream to an Amazon SNS topic,
+#' you will receive a `ConfigRuleEvaluationStarted` notification when the
+#' evaluation starts.
 #' 
-#' You don't need to call the `StartConfigRulesEvaluation` API to run an
-#' evaluation for a new rule. When you create a rule, AWS Config evaluates
-#' your resources against the rule automatically.
+#' You don't need to call the
+#' [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation]
+#' API to run an evaluation for a new rule. When you create a rule, AWS
+#' Config evaluates your resources against the rule automatically.
 #' 
-#' The `StartConfigRulesEvaluation` API is useful if you want to run
-#' on-demand evaluations, such as the following example:
+#' The
+#' [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation]
+#' API is useful if you want to run on-demand evaluations, such as the
+#' following example:
 #' 
 #' 1.  You have a custom rule that evaluates your IAM resources every 24
 #'     hours.
@@ -4381,7 +4404,8 @@ configservice_select_resource_config <- function(Expression, Limit = NULL, NextT
 #'     rule.
 #' 
 #' 3.  Instead of waiting for the next periodic evaluation, you call the
-#'     `StartConfigRulesEvaluation` API.
+#'     [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation]
+#'     API.
 #' 
 #' 4.  AWS Config invokes your Lambda function and evaluates your IAM
 #'     resources.

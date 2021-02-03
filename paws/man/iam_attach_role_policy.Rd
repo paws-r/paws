@@ -24,12 +24,13 @@ you attach a managed policy to a role, the managed policy becomes part
 of the role's permission (access) policy.
 
 You cannot use a managed policy as the role's trust policy. The role's
-trust policy is created at the same time as the role, using CreateRole.
-You can update a role's trust policy using UpdateAssumeRolePolicy.
+trust policy is created at the same time as the role, using
+\code{\link[=iam_create_role]{create_role}}. You can update a role's trust policy
+using \code{\link[=iam_update_assume_role_policy]{update_assume_role_policy}}.
 
 Use this API to attach a \emph{managed} policy to a role. To embed an inline
-policy in a role, use PutRolePolicy. For more information about
-policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+policy in a role, use \code{\link[=iam_put_role_policy]{put_role_policy}}. For more
+information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

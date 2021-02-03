@@ -20,16 +20,16 @@ FSx returns is the minimum of the \code{MaxResults} parameter specified in
 the request and the service's internal maximum number of items per page.}
 
 \item{NextToken}{Opaque pagination token returned from a previous
-\code{DescribeFileSystemAliases} operation (String). If a token is included
-in the request, the action continues the list from where the previous
-returning call left off.}
+\code{\link[=fsx_describe_file_system_aliases]{describe_file_system_aliases}}
+operation (String). If a token is included in the request, the action
+continues the list from where the previous returning call left off.}
 }
 \description{
 Returns the DNS aliases that are associated with the specified Amazon
 FSx for Windows File Server file system. A history of all DNS aliases
 that have been associated with and disassociated from the file system is
 available in the list of AdministrativeAction provided in the
-DescribeFileSystems operation response.
+\code{\link[=fsx_describe_file_systems]{describe_file_systems}} operation response.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_file_system_aliases(

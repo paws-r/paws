@@ -61,16 +61,17 @@ A limit that restricts the number of tags (key and value pairs) returned
 by GetResources in paginated output. A resource with no tags is counted
 as having one tag (one key and value pair).
 
-\code{GetResources} does not split a resource and its associated tags across
-pages. If the specified \code{TagsPerPage} would cause such a break, a
-\code{PaginationToken} is returned in place of the affected resource and its
-tags. Use that token in another request to get the remaining data. For
-example, if you specify a \code{TagsPerPage} of \code{100} and the account has 22
-resources with 10 tags each (meaning that each resource has 10 key and
-value pairs), the output will consist of three pages. The first page
-displays the first 10 resources, each with its 10 tags. The second page
-displays the next 10 resources, each with its 10 tags. The third page
-displays the remaining 2 resources, each with its 10 tags.
+\code{\link[=resourcegroupstaggingapi_get_resources]{get_resources}} does not split
+a resource and its associated tags across pages. If the specified
+\code{TagsPerPage} would cause such a break, a \code{PaginationToken} is returned
+in place of the affected resource and its tags. Use that token in
+another request to get the remaining data. For example, if you specify a
+\code{TagsPerPage} of \code{100} and the account has 22 resources with 10 tags
+each (meaning that each resource has 10 key and value pairs), the output
+will consist of three pages. The first page displays the first 10
+resources, each with its 10 tags. The second page displays the next 10
+resources, each with its 10 tags. The third page displays the remaining
+2 resources, each with its 10 tags.
 
 You can set \code{TagsPerPage} to a minimum of 100 items and the maximum of
 500 items.}

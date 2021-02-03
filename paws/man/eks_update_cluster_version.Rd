@@ -18,7 +18,8 @@ idempotency of the request.}
 Updates an Amazon EKS cluster to the specified Kubernetes version. Your
 cluster continues to function during the update. The response output
 includes an update ID that you can use to track the status of your
-cluster update with the DescribeUpdate API operation.
+cluster update with the \code{\link[=eks_describe_update]{describe_update}} API
+operation.
 
 Cluster updates are asynchronous, and they should finish within a few
 minutes. During an update, the cluster status moves to \code{UPDATING} (this

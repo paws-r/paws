@@ -17,8 +17,10 @@ this, the default event bus is used.}
 \item{Force}{If this is a managed rule, created by an AWS service on your behalf, you
 must specify \code{Force} as \code{True} to remove targets. This parameter is
 ignored for rules that are not managed rules. You can check whether a
-rule is a managed rule by using \code{DescribeRule} or \code{ListRules} and
-checking the \code{ManagedBy} field of the response.}
+rule is a managed rule by using
+\code{\link[=cloudwatchevents_describe_rule]{describe_rule}} or
+\code{\link[=cloudwatchevents_list_rules]{list_rules}} and checking the \code{ManagedBy}
+field of the response.}
 }
 \description{
 Removes the specified targets from the specified rule. When the rule is

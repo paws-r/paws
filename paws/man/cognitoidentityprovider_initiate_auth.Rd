@@ -107,7 +107,7 @@ don't use it to provide sensitive information.
 \item{ClientId}{[required] The app client ID.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
-\code{InitiateAuth} calls.}
+\code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}} calls.}
 
 \item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon

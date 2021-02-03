@@ -10,9 +10,12 @@ waf_update_sql_injection_match_set(SqlInjectionMatchSetId, ChangeToken,
 \arguments{
 \item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the \code{SqlInjectionMatchSet} that you want
 to update. \code{SqlInjectionMatchSetId} is returned by
-CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.}
+\code{\link[=waf_create_sql_injection_match_set]{create_sql_injection_match_set}}
+and by
+\code{\link[=waf_list_sql_injection_match_sets]{list_sql_injection_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 
 \item{Updates}{[required] An array of \code{SqlInjectionMatchSetUpdate} objects that you want to insert
 into or delete from a SqlInjectionMatchSet. For more information, see
@@ -62,12 +65,16 @@ AWS WAF to block the requests.
 To create and configure a \code{SqlInjectionMatchSet}, perform the following
 steps:
 \enumerate{
-\item Submit a CreateSqlInjectionMatchSet request.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of an UpdateIPSet request.
-\item Submit an \code{UpdateSqlInjectionMatchSet} request to specify the parts
-of web requests that you want AWS WAF to inspect for snippets of SQL
-code.
+\item Submit a
+\code{\link[=waf_create_sql_injection_match_set]{create_sql_injection_match_set}}
+request.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=waf_update_ip_set]{update_ip_set}} request.
+\item Submit an
+\code{\link[=waf_update_sql_injection_match_set]{update_sql_injection_match_set}}
+request to specify the parts of web requests that you want AWS WAF
+to inspect for snippets of SQL code.
 }
 
 For more information about how to use the AWS WAF API to allow or block

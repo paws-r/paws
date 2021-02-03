@@ -23,9 +23,11 @@ features enabled only after all administrators in the invited accounts
 approve the change by accepting the handshake.
 
 After you enable all features, you can separately enable or disable
-individual policy types in a root using EnablePolicyType and
-DisablePolicyType. To see the status of policy types in a root, use
-ListRoots.
+individual policy types in a root using
+\code{\link[=organizations_enable_policy_type]{enable_policy_type}} and
+\code{\link[=organizations_disable_policy_type]{disable_policy_type}}. To see the
+status of policy types in a root, use
+\code{\link[=organizations_list_roots]{list_roots}}.
 
 After all invited member accounts accept the handshake, you finalize the
 feature set change by accepting the handshake that contains

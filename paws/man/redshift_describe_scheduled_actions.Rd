@@ -25,7 +25,8 @@ disabled scheduled actions.}
 \item{Filters}{List of scheduled action filters.}
 
 \item{Marker}{An optional parameter that specifies the starting point to return a set
-of response records. When the results of a DescribeScheduledActions
+of response records. When the results of a
+\code{\link[=redshift_describe_scheduled_actions]{describe_scheduled_actions}}
 request exceed the value specified in \code{MaxRecords}, AWS returns a value
 in the \code{Marker} field of the response. You can retrieve the next set of
 response records by providing the returned marker value in the \code{Marker}

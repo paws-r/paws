@@ -12,22 +12,25 @@ qldb_list_journal_kinesis_streams_for_ledger(LedgerName, MaxResults,
 \item{LedgerName}{[required] The name of the ledger.}
 
 \item{MaxResults}{The maximum number of results to return in a single
-\code{ListJournalKinesisStreamsForLedger} request. (The actual number of
-results returned might be fewer.)}
+\code{\link[=qldb_list_journal_kinesis_streams_for_ledger]{list_journal_kinesis_streams_for_ledger}}
+request. (The actual number of results returned might be fewer.)}
 
 \item{NextToken}{A pagination token, indicating that you want to retrieve the next page
 of results. If you received a value for \code{NextToken} in the response from
-a previous \code{ListJournalKinesisStreamsForLedger} call, you should use
-that value as input here.}
+a previous
+\code{\link[=qldb_list_journal_kinesis_streams_for_ledger]{list_journal_kinesis_streams_for_ledger}}
+call, you should use that value as input here.}
 }
 \description{
 Returns an array of all Amazon QLDB journal stream descriptors for a
 given ledger. The output of each stream descriptor includes the same
-details that are returned by \code{DescribeJournalKinesisStream}.
+details that are returned by
+\code{\link[=qldb_describe_journal_kinesis_stream]{describe_journal_kinesis_stream}}.
 
 This action returns a maximum of \code{MaxResults} items. It is paginated so
 that you can retrieve all the items by calling
-\code{ListJournalKinesisStreamsForLedger} multiple times.
+\code{\link[=qldb_list_journal_kinesis_streams_for_ledger]{list_journal_kinesis_streams_for_ledger}}
+multiple times.
 }
 \section{Request syntax}{
 \preformatted{svc$list_journal_kinesis_streams_for_ledger(

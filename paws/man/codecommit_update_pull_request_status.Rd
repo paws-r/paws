@@ -8,7 +8,7 @@ codecommit_update_pull_request_status(pullRequestId, pullRequestStatus)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use
-ListPullRequests.}
+\code{\link[=codecommit_list_pull_requests]{list_pull_requests}}.}
 
 \item{pullRequestStatus}{[required] The status of the pull request. The only valid operations are to update
 the status from \code{OPEN} to \code{OPEN}, \code{OPEN} to \code{CLOSED} or from \code{CLOSED} to

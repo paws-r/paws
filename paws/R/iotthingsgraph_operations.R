@@ -113,7 +113,8 @@ iotthingsgraph_create_flow_template <- function(definition, compatibleNamespaceV
 #' deployment-related resources. For Greengrass deployments, it updates the
 #' Greengrass group that is specified by the `greengrassGroupName`
 #' parameter. It also adds a file to the S3 bucket specified by the
-#' `s3BucketName` parameter. You need to call `DeploySystemInstance` after
+#' `s3BucketName` parameter. You need to call
+#' [`deploy_system_instance`][iotthingsgraph_deploy_system_instance] after
 #' running this action.
 #' 
 #' For Greengrass deployments, since this action modifies and adds
@@ -414,7 +415,7 @@ iotthingsgraph_delete_system_template <- function(id) {
 #' **Greengrass and Cloud Deployments**
 #' 
 #' Deploys the system instance to the target specified in
-#' `CreateSystemInstance`.
+#' [`create_system_instance`][iotthingsgraph_create_system_instance].
 #' 
 #' **Greengrass Deployments**
 #' 
@@ -435,7 +436,8 @@ iotthingsgraph_delete_system_template <- function(id) {
 #' iotthingsgraph_deploy_system_instance(id)
 #'
 #' @param id The ID of the system instance. This value is returned by the
-#' `CreateSystemInstance` action.
+#' [`create_system_instance`][iotthingsgraph_create_system_instance]
+#' action.
 #' 
 #' The ID should be in the following format.
 #' 
@@ -838,7 +840,7 @@ iotthingsgraph_get_namespace_deletion_status <- function() {
 #' iotthingsgraph_get_system_instance(id)
 #'
 #' @param id &#91;required&#93; The ID of the system deployment instance. This value is returned by
-#' `CreateSystemInstance`.
+#' [`create_system_instance`][iotthingsgraph_create_system_instance].
 #' 
 #' The ID should be in the following format.
 #' 
@@ -972,7 +974,8 @@ iotthingsgraph_get_system_template_revisions <- function(id, nextToken = NULL, m
 #' iotthingsgraph_get_upload_status(uploadId)
 #'
 #' @param uploadId &#91;required&#93; The ID of the upload. This value is returned by the
-#' `UploadEntityDefinitions` action.
+#' [`upload_entity_definitions`][iotthingsgraph_upload_entity_definitions]
+#' action.
 #'
 #' @section Request syntax:
 #' ```
@@ -1573,8 +1576,8 @@ iotthingsgraph_untag_resource <- function(resourceArn, tagKeys) {
 #' @param compatibleNamespaceVersion The version of the user's namespace.
 #' 
 #' If no value is specified, the latest version is used by default. Use the
-#' `GetFlowTemplateRevisions` if you want to find earlier revisions of the
-#' flow to update.
+#' [`get_flow_template_revisions`][iotthingsgraph_get_flow_template_revisions]
+#' if you want to find earlier revisions of the flow to update.
 #'
 #' @section Request syntax:
 #' ```

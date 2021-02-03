@@ -12,11 +12,14 @@ ecs_list_container_instances(cluster, filter, nextToken, maxResults,
 hosts the container instances to list. If you do not specify a cluster,
 the default cluster is assumed.}
 
-\item{filter}{You can filter the results of a \code{ListContainerInstances} operation with
-cluster query language statements. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html}{Cluster Query Language}
+\item{filter}{You can filter the results of a
+\code{\link[=ecs_list_container_instances]{list_container_instances}} operation
+with cluster query language statements. For more information, see
+\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html}{Cluster Query Language}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
-\item{nextToken}{The \code{nextToken} value returned from a \code{ListContainerInstances} request
+\item{nextToken}{The \code{nextToken} value returned from a
+\code{\link[=ecs_list_container_instances]{list_container_instances}} request
 indicating that more results are available to fulfill the request and
 further calls will be needed. If \code{maxResults} was provided, it is
 possible the number of results to be fewer than \code{maxResults}.
@@ -26,26 +29,31 @@ to retrieve the next items in a list and not for other programmatic
 purposes.}
 
 \item{maxResults}{The maximum number of container instance results returned by
-\code{ListContainerInstances} in paginated output. When this parameter is
-used, \code{ListContainerInstances} only returns \code{maxResults} results in a
-single page along with a \code{nextToken} response element. The remaining
-results of the initial request can be seen by sending another
-\code{ListContainerInstances} request with the returned \code{nextToken} value.
-This value can be between 1 and 100. If this parameter is not used, then
-\code{ListContainerInstances} returns up to 100 results and a \code{nextToken}
-value if applicable.}
+\code{\link[=ecs_list_container_instances]{list_container_instances}} in paginated
+output. When this parameter is used,
+\code{\link[=ecs_list_container_instances]{list_container_instances}} only returns
+\code{maxResults} results in a single page along with a \code{nextToken} response
+element. The remaining results of the initial request can be seen by
+sending another
+\code{\link[=ecs_list_container_instances]{list_container_instances}} request with
+the returned \code{nextToken} value. This value can be between 1 and 100. If
+this parameter is not used, then
+\code{\link[=ecs_list_container_instances]{list_container_instances}} returns up to
+100 results and a \code{nextToken} value if applicable.}
 
 \item{status}{Filters the container instances by status. For example, if you specify
 the \code{DRAINING} status, the results include only container instances that
-have been set to \code{DRAINING} using UpdateContainerInstancesState. If you
-do not specify this parameter, the default is to include container
-instances set to all states other than \code{INACTIVE}.}
+have been set to \code{DRAINING} using
+\code{\link[=ecs_update_container_instances_state]{update_container_instances_state}}.
+If you do not specify this parameter, the default is to include
+container instances set to all states other than \code{INACTIVE}.}
 }
 \description{
 Returns a list of container instances in a specified cluster. You can
-filter the results of a \code{ListContainerInstances} operation with cluster
-query language statements inside the \code{filter} parameter. For more
-information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html}{Cluster Query Language}
+filter the results of a
+\code{\link[=ecs_list_container_instances]{list_container_instances}} operation
+with cluster query language statements inside the \code{filter} parameter.
+For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html}{Cluster Query Language}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{

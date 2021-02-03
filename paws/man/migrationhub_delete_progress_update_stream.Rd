@@ -20,21 +20,28 @@ Deletes a progress update stream, including all of its tasks, which was
 previously created as an AWS resource used for access control. This API
 has the following traits:
 \itemize{
-\item The only parameter needed for \code{DeleteProgressUpdateStream} is the
-stream name (same as a \code{CreateProgressUpdateStream} call).
+\item The only parameter needed for
+\code{\link[=migrationhub_delete_progress_update_stream]{delete_progress_update_stream}}
+is the stream name (same as a
+\code{\link[=migrationhub_create_progress_update_stream]{create_progress_update_stream}}
+call).
 \item The call will return, and a background process will asynchronously
 delete the stream and all of its resources (tasks, associated
 resources, resource attributes, created artifacts).
 \item If the stream takes time to be deleted, it might still show up on a
-\code{ListProgressUpdateStreams} call.
-\item \code{CreateProgressUpdateStream}, \code{ImportMigrationTask},
-\code{NotifyMigrationTaskState}, and all Associate[*] APIs related to
-the tasks belonging to the stream will throw "InvalidInputException"
-if the stream of the same name is in the process of being deleted.
+\code{\link[=migrationhub_list_progress_update_streams]{list_progress_update_streams}}
+call.
+\item \code{\link[=migrationhub_create_progress_update_stream]{create_progress_update_stream}},
+\code{\link[=migrationhub_import_migration_task]{import_migration_task}},
+\code{\link[=migrationhub_notify_migration_task_state]{notify_migration_task_state}},
+and all Associate[*] APIs related to the tasks belonging to the
+stream will throw "InvalidInputException" if the stream of the same
+name is in the process of being deleted.
 \item Once the stream and all of its resources are deleted,
-\code{CreateProgressUpdateStream} for a stream of the same name will
-succeed, and that stream will be an entirely new logical resource
-(without any resources associated with the old stream).
+\code{\link[=migrationhub_create_progress_update_stream]{create_progress_update_stream}}
+for a stream of the same name will succeed, and that stream will be
+an entirely new logical resource (without any resources associated
+with the old stream).
 }
 }
 \section{Request syntax}{

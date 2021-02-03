@@ -16,8 +16,9 @@ groundstation_list_contacts(endTime, groundStation, maxResults,
 
 \item{missionProfileArn}{ARN of a mission profile.}
 
-\item{nextToken}{Next token returned in the request of a previous \code{ListContacts} call.
-Used to get the next page of results.}
+\item{nextToken}{Next token returned in the request of a previous
+\code{\link[=groundstation_list_contacts]{list_contacts}} call. Used to get the
+next page of results.}
 
 \item{satelliteArn}{ARN of a satellite.}
 

@@ -8,8 +8,9 @@ storagegateway_update_snapshot_schedule(VolumeARN, StartAt,
   RecurrenceInHours, Description, Tags)
 }
 \arguments{
-\item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
-operation to return a list of gateway volumes.}
+\item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the
+\code{\link[=storagegateway_list_volumes]{list_volumes}} operation to return a list
+of gateway volumes.}
 
 \item{StartAt}{[required] The hour of the day at which the snapshot schedule begins represented as
 \emph{hh}, where \emph{hh} is the hour (0 to 23). The hour of the day is in the

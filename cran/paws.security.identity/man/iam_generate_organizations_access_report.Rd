@@ -63,9 +63,10 @@ successful or denied access. For more information, see \href{https://docs.aws.a
 in the \emph{IAM User Guide}.
 
 This operation returns a \code{JobId}. Use this parameter in the
-\verb{<a>GetOrganizationsAccessReport</a>} operation to check the status of
-the report generation. To check the status of this request, use the
-\code{JobId} parameter in the \verb{<a>GetOrganizationsAccessReport</a>}
+\code{\link[=iam_get_organizations_access_report]{get_organizations_access_report}}
+operation to check the status of the report generation. To check the
+status of this request, use the \code{JobId} parameter in the
+\code{\link[=iam_get_organizations_access_report]{get_organizations_access_report}}
 operation and test the \code{JobStatus} response parameter. When the job is
 complete, you can retrieve the report.
 

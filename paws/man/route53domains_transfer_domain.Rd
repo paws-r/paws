@@ -91,7 +91,7 @@ Route 53, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/do
 in the \emph{Amazon Route 53 Developer Guide}.
 \item For information about how to transfer a domain from one AWS account
 to another, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html}{TransferDomainToAnotherAwsAccount}.
+\code{\link[=route53domains_transfer_domain_to_another_aws_account]{transfer_domain_to_another_aws_account}}.
 \item For information about how to transfer a domain to another domain
 registrar, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-from-route-53.html}{Transferring a Domain from Amazon Route 53 to Another Registrar}
 in the \emph{Amazon Route 53 Developer Guide}.

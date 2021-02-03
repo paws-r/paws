@@ -27,14 +27,15 @@ level per AWS Region, and is specified per instance family. All new
 burstable performance instances in the account launch using the default
 credit option.
 
-\code{ModifyDefaultCreditSpecification} is an asynchronous operation, which
-works at an AWS Region level and modifies the credit option for each
-Availability Zone. All zones in a Region are updated within five
-minutes. But if instances are launched during this operation, they might
-not get the new credit option until the zone is updated. To verify
-whether the update has occurred, you can call
-\code{GetDefaultCreditSpecification} and check \code{DefaultCreditSpecification}
-for updates.
+\code{\link[=ec2_modify_default_credit_specification]{modify_default_credit_specification}}
+is an asynchronous operation, which works at an AWS Region level and
+modifies the credit option for each Availability Zone. All zones in a
+Region are updated within five minutes. But if instances are launched
+during this operation, they might not get the new credit option until
+the zone is updated. To verify whether the update has occurred, you can
+call
+\code{\link[=ec2_get_default_credit_specification]{get_default_credit_specification}}
+and check \code{DefaultCreditSpecification} for updates.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable performance instances}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

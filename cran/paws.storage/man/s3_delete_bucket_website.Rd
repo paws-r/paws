@@ -29,10 +29,11 @@ policy granting them the \code{S3:DeleteBucketWebsite} permission.
 
 For more information about hosting websites, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
 
-The following operations are related to \code{DeleteBucketWebsite}:
+The following operations are related to
+\code{\link[=s3_delete_bucket_website]{delete_bucket_website}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketWebsite.html}{GetBucketWebsite}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketWebsite.html}{PutBucketWebsite}
+\item \code{\link[=s3_get_bucket_website]{get_bucket_website}}
+\item \code{\link[=s3_put_bucket_website]{put_bucket_website}}
 }
 }
 \section{Request syntax}{

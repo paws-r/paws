@@ -45,18 +45,22 @@ member of.
 
 You can optionally include a list of one or more additional policies,
 specified as strings. If you want to include \emph{only} a list of policies
-by string, use GetContextKeysForCustomPolicy instead.
+by string, use
+\code{\link[=iam_get_context_keys_for_custom_policy]{get_context_keys_for_custom_policy}}
+instead.
 
 \strong{Note:} This API discloses information about the permissions granted
 to other users. If you do not want users to see other user's
 permissions, then consider allowing them to use
-GetContextKeysForCustomPolicy instead.
+\code{\link[=iam_get_context_keys_for_custom_policy]{get_context_keys_for_custom_policy}}
+instead.
 
 Context keys are variables maintained by AWS and its services that
 provide details about the context of an API query request. Context keys
 can be evaluated by testing against a value in an IAM policy. Use
-GetContextKeysForPrincipalPolicy to understand what key names and values
-you must supply when you call SimulatePrincipalPolicy.
+\code{\link[=iam_get_context_keys_for_principal_policy]{get_context_keys_for_principal_policy}}
+to understand what key names and values you must supply when you call
+\code{\link[=iam_simulate_principal_policy]{simulate_principal_policy}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_context_keys_for_principal_policy(

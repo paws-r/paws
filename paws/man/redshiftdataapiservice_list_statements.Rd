@@ -19,8 +19,9 @@ NextToken value in the next NextToken parameter and retrying the
 command. If the NextToken field is empty, all response records have been
 retrieved for the request.}
 
-\item{StatementName}{The name of the SQL statement specified as input to \code{ExecuteStatement}
-to identify the query. You can list multiple statements by providing a
+\item{StatementName}{The name of the SQL statement specified as input to
+\code{\link[=redshiftdataapiservice_execute_statement]{execute_statement}} to
+identify the query. You can list multiple statements by providing a
 prefix that matches the beginning of the statement name. For example, to
 list myStatement1, myStatement2, myStatement3, and so on, then provide
 the a value of \code{myStatement}. Data API does a case-sensitive match of

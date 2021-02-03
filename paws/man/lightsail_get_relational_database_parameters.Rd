@@ -14,9 +14,10 @@ lightsail_get_relational_database_parameters(relationalDatabaseName,
 \item{pageToken}{The token to advance to the next page of results from your request.
 
 To get a page token, perform an initial
-\code{GetRelationalDatabaseParameters} request. If your results are
-paginated, the response will return a next page token that you can
-specify as the page token in a subsequent request.}
+\code{\link[=lightsail_get_relational_database_parameters]{get_relational_database_parameters}}
+request. If your results are paginated, the response will return a next
+page token that you can specify as the page token in a subsequent
+request.}
 }
 \description{
 Returns all of the runtime parameters offered by the underlying database

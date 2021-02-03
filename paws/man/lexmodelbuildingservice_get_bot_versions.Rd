@@ -20,14 +20,15 @@ default is 10.}
 \description{
 Gets information about all of the versions of a bot.
 
-The \code{GetBotVersions} operation returns a \code{BotMetadata} object for each
-version of a bot. For example, if a bot has three numbered versions, the
-\code{GetBotVersions} operation returns four \code{BotMetadata} objects in the
-response, one for each numbered version and one for the \verb{$LATEST}
-version.
+The \code{\link[=lexmodelbuildingservice_get_bot_versions]{get_bot_versions}}
+operation returns a \code{BotMetadata} object for each version of a bot. For
+example, if a bot has three numbered versions, the
+\code{\link[=lexmodelbuildingservice_get_bot_versions]{get_bot_versions}} operation
+returns four \code{BotMetadata} objects in the response, one for each
+numbered version and one for the \verb{$LATEST} version.
 
-The \code{GetBotVersions} operation always returns at least one version, the
-\verb{$LATEST} version.
+The \code{\link[=lexmodelbuildingservice_get_bot_versions]{get_bot_versions}}
+operation always returns at least one version, the \verb{$LATEST} version.
 
 This operation requires permissions for the \code{lex:GetBotVersions} action.
 }

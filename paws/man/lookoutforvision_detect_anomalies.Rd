@@ -21,15 +21,18 @@ use.}
 \description{
 Detects anomalies in an image that you supply.
 
-The response from \code{DetectAnomalies} includes a boolean prediction that
-the image contains one or more anomalies and a confidence value for the
-prediction.
+The response from
+\code{\link[=lookoutforvision_detect_anomalies]{detect_anomalies}} includes a
+boolean prediction that the image contains one or more anomalies and a
+confidence value for the prediction.
 
-Before calling \code{DetectAnomalies}, you must first start your model with
-the StartModel operation. You are charged for the amount of time, in
-minutes, that a model runs and for the number of anomaly detection units
-that your model uses. If you are not using a model, use the StopModel
-operation to stop your model.
+Before calling \code{\link[=lookoutforvision_detect_anomalies]{detect_anomalies}},
+you must first start your model with the
+\code{\link[=lookoutforvision_start_model]{start_model}} operation. You are charged
+for the amount of time, in minutes, that a model runs and for the number
+of anomaly detection units that your model uses. If you are not using a
+model, use the \code{\link[=lookoutforvision_stop_model]{stop_model}} operation to
+stop your model.
 }
 \section{Request syntax}{
 \preformatted{svc$detect_anomalies(

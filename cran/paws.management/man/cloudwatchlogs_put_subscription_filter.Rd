@@ -16,7 +16,7 @@ filter, you must specify the correct name in \code{filterName}. Otherwise,
 the call fails because you cannot associate a second filter with a log
 group. To find the name of the filter currently associated with a log
 group, use
-\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeSubscriptionFilters.html}{DescribeSubscriptionFilters}.}
+\code{\link[=cloudwatchlogs_describe_subscription_filters]{describe_subscription_filters}}.}
 
 \item{filterPattern}{[required] A filter pattern for subscribing to a filtered stream of log events.}
 
@@ -47,10 +47,10 @@ destination is an Amazon Kinesis stream.}
 Creates or updates a subscription filter and associates it with the
 specified log group. Subscription filters allow you to subscribe to a
 real-time stream of log events ingested through
-\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html}{PutLogEvents}
-and have them delivered to a specific destination. When log events are
-sent to the receiving service, they are Base64 encoded and compressed
-with the gzip format.
+\code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} and have them
+delivered to a specific destination. When log events are sent to the
+receiving service, they are Base64 encoded and compressed with the gzip
+format.
 
 The following destinations are supported for subscription filters:
 \itemize{
@@ -69,8 +69,9 @@ If you are updating an existing filter, you must specify the correct
 name in \code{filterName}. Otherwise, the call fails because you cannot
 associate a second filter with a log group.
 
-To perform a \code{PutSubscriptionFilter} operation, you must also have the
-\code{iam:PassRole} permission.
+To perform a
+\code{\link[=cloudwatchlogs_put_subscription_filter]{put_subscription_filter}}
+operation, you must also have the \code{iam:PassRole} permission.
 }
 \section{Request syntax}{
 \preformatted{svc$put_subscription_filter(

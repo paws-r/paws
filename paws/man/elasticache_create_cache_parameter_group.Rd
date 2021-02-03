@@ -30,7 +30,7 @@ parameter group for the CacheParameterGroupFamily. To customize the
 newly created CacheParameterGroup you can change the values of specific
 parameters. For more information, see:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyCacheParameterGroup.html}{ModifyCacheParameterGroup}
+\item \code{\link[=elasticache_modify_cache_parameter_group]{modify_cache_parameter_group}}
 in the ElastiCache API Reference.
 \item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html}{Parameters and Parameter Groups}
 in the ElastiCache User Guide.

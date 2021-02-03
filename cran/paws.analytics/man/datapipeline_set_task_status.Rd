@@ -10,7 +10,7 @@ datapipeline_set_task_status(taskId, taskStatus, errorId, errorMessage,
 }
 \arguments{
 \item{taskId}{[required] The ID of the task assigned to the task runner. This value is provided
-in the response for PollForTask.}
+in the response for \code{\link[=datapipeline_poll_for_task]{poll_for_task}}.}
 
 \item{taskStatus}{[required] If \code{FINISHED}, the task successfully completed. If \code{FAILED}, the task
 ended unsuccessfully. Preconditions use false.}
@@ -31,11 +31,13 @@ attempt object. It is used to display error information to the user. The
 web service does not parse this value.}
 }
 \description{
-Task runners call \code{SetTaskStatus} to notify AWS Data Pipeline that a
-task is completed and provide information about the final status. A task
-runner makes this call regardless of whether the task was sucessful. A
-task runner does not need to call \code{SetTaskStatus} for tasks that are
-canceled by the web service during a call to ReportTaskProgress.
+Task runners call \code{\link[=datapipeline_set_task_status]{set_task_status}} to
+notify AWS Data Pipeline that a task is completed and provide
+information about the final status. A task runner makes this call
+regardless of whether the task was sucessful. A task runner does not
+need to call \code{\link[=datapipeline_set_task_status]{set_task_status}} for tasks
+that are canceled by the web service during a call to
+\code{\link[=datapipeline_report_task_progress]{report_task_progress}}.
 }
 \section{Request syntax}{
 \preformatted{svc$set_task_status(

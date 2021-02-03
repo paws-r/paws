@@ -8,7 +8,8 @@ elasticbeanstalk_update_application(ApplicationName, Description)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to update. If no such application is found,
-\code{UpdateApplication} returns an \code{InvalidParameterValue} error.}
+\code{\link[=elasticbeanstalk_update_application]{update_application}} returns an
+\code{InvalidParameterValue} error.}
 
 \item{Description}{A new description for the application.
 

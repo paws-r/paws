@@ -11,8 +11,9 @@ NULL
 #' S3 bucket containing your AWS WAF logs. You can associate up to 10
 #' Amazon S3 buckets with your subscription.
 #' 
-#' To use the services of the DRT and make an `AssociateDRTLogBucket`
-#' request, you must be subscribed to the [Business Support
+#' To use the services of the DRT and make an
+#' [`associate_drt_log_bucket`][shield_associate_drt_log_bucket] request,
+#' you must be subscribed to the [Business Support
 #' plan](https://aws.amazon.com/premiumsupport/plans/business/) or the
 #' [Enterprise Support
 #' plan](https://aws.amazon.com/premiumsupport/plans/enterprise/).
@@ -60,15 +61,16 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' configuration and create or update AWS WAF rules and web ACLs.
 #' 
 #' You can associate only one `RoleArn` with your subscription. If you
-#' submit an `AssociateDRTRole` request for an account that already has an
-#' associated role, the new `RoleArn` will replace the existing `RoleArn`.
+#' submit an [`associate_drt_role`][shield_associate_drt_role] request for
+#' an account that already has an associated role, the new `RoleArn` will
+#' replace the existing `RoleArn`.
 #' 
-#' Prior to making the `AssociateDRTRole` request, you must attach the
-#' AWSShieldDRTAccessPolicy managed policy to the role you will specify in
-#' the request. For more information see Attaching and Detaching IAM
-#' Policies. The role must also trust the service principal
-#' ` drt.shield.amazonaws.com`. For more information, see [IAM JSON Policy
-#' Elements:
+#' Prior to making the [`associate_drt_role`][shield_associate_drt_role]
+#' request, you must attach the AWSShieldDRTAccessPolicy managed policy to
+#' the role you will specify in the request. For more information see
+#' Attaching and Detaching IAM Policies. The role must also trust the
+#' service principal ` drt.shield.amazonaws.com`. For more information, see
+#' [IAM JSON Policy Elements:
 #' Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html).
 #' 
 #' The DRT will have access only to your AWS WAF and Shield resources. By
@@ -78,12 +80,13 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' authorized by you.
 #' 
 #' You must have the `iam:PassRole` permission to make an
-#' `AssociateDRTRole` request. For more information, see [Granting a User
-#' Permissions to Pass a Role to an AWS
+#' [`associate_drt_role`][shield_associate_drt_role] request. For more
+#' information, see [Granting a User Permissions to Pass a Role to an AWS
 #' Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html).
 #' 
-#' To use the services of the DRT and make an `AssociateDRTRole` request,
-#' you must be subscribed to the [Business Support
+#' To use the services of the DRT and make an
+#' [`associate_drt_role`][shield_associate_drt_role] request, you must be
+#' subscribed to the [Business Support
 #' plan](https://aws.amazon.com/premiumsupport/plans/business/) or the
 #' [Enterprise Support
 #' plan](https://aws.amazon.com/premiumsupport/plans/enterprise/).
@@ -94,9 +97,10 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role the DRT will use to access
 #' your AWS account.
 #' 
-#' Prior to making the `AssociateDRTRole` request, you must attach the
-#' AWSShieldDRTAccessPolicy managed policy to this role. For more
-#' information see Attaching and Detaching IAM Policies.
+#' Prior to making the [`associate_drt_role`][shield_associate_drt_role]
+#' request, you must attach the AWSShieldDRTAccessPolicy managed policy to
+#' this role. For more information see Attaching and Detaching IAM
+#' Policies.
 #'
 #' @section Request syntax:
 #' ```
@@ -187,7 +191,8 @@ shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' 
 #' After you have initialized proactive engagement using this call, to
 #' disable or enable proactive engagement, use the calls
-#' `DisableProactiveEngagement` and `EnableProactiveEngagement`.
+#' [`disable_proactive_engagement`][shield_disable_proactive_engagement]
+#' and [`enable_proactive_engagement`][shield_enable_proactive_engagement].
 #' 
 #' This call defines the list of email addresses and phone numbers that the
 #' DDoS Response Team (DRT) can use to contact you for escalations to the
@@ -195,8 +200,9 @@ shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' 
 #' The contacts that you provide in the request replace any contacts that
 #' were already defined. If you already have contacts defined and want to
-#' use them, retrieve the list using `DescribeEmergencyContactSettings` and
-#' then provide it to this call.
+#' use them, retrieve the list using
+#' [`describe_emergency_contact_settings`][shield_describe_emergency_contact_settings]
+#' and then provide it to this call.
 #'
 #' @usage
 #' shield_associate_proactive_engagement_details(EmergencyContactList)
@@ -210,8 +216,9 @@ shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' 
 #' The contacts that you provide here replace any contacts that were
 #' already defined. If you already have contacts defined and want to use
-#' them, retrieve the list using `DescribeEmergencyContactSettings` and
-#' then provide it here.
+#' them, retrieve the list using
+#' [`describe_emergency_contact_settings`][shield_describe_emergency_contact_settings]
+#' and then provide it here.
 #'
 #' @section Request syntax:
 #' ```
@@ -272,22 +279,21 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' The ARN should be in one of the following formats:
 #' 
 #' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i>/<i>load-balancer-id</i> `
+#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
 #' -   For an Elastic Load Balancer (Classic Load Balancer):
-#'     `arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/<i>load-balancer-name</i> `
+#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/load-balancer-name `
 #' 
 #' -   For an AWS CloudFront distribution:
-#'     `arn:aws:cloudfront::<i>account-id</i>:distribution/<i>distribution-id</i> `
+#'     `arn:aws:cloudfront::account-id:distribution/distribution-id `
 #' 
 #' -   For an AWS Global Accelerator accelerator:
-#'     `arn:aws:globalaccelerator::<i>account-id</i>:accelerator/<i>accelerator-id</i> `
+#'     `arn:aws:globalaccelerator::account-id:accelerator/accelerator-id `
 #' 
-#' -   For Amazon Route 53:
-#'     `arn:aws:route53:::hostedzone/<i>hosted-zone-id</i> `
+#' -   For Amazon Route 53: `arn:aws:route53:::hostedzone/hosted-zone-id `
 #' 
 #' -   For an Elastic IP address:
-#'     `arn:aws:ec2:<i>region</i>:<i>account-id</i>:eip-allocation/<i>allocation-id</i> `
+#'     `arn:aws:ec2:region:account-id:eip-allocation/allocation-id `
 #'
 #' @section Request syntax:
 #' ```
@@ -400,7 +406,8 @@ shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 #' 
 #' When you initally create a subscription, your subscription is set to be
 #' automatically renewed at the end of the existing subscription period.
-#' You can change this by submitting an `UpdateSubscription` request.
+#' You can change this by submitting an
+#' [`update_subscription`][shield_update_subscription] request.
 #'
 #' @usage
 #' shield_create_subscription()
@@ -709,12 +716,13 @@ shield_describe_emergency_contact_settings <- function() {
 #' shield_describe_protection(ProtectionId, ResourceArn)
 #'
 #' @param ProtectionId The unique identifier (ID) for the Protection object that is described.
-#' When submitting the `DescribeProtection` request you must provide either
-#' the `ResourceArn` or the `ProtectionID`, but not both.
-#' @param ResourceArn The ARN (Amazon Resource Name) of the AWS resource for the Protection
-#' object that is described. When submitting the `DescribeProtection`
+#' When submitting the [`describe_protection`][shield_describe_protection]
 #' request you must provide either the `ResourceArn` or the `ProtectionID`,
 #' but not both.
+#' @param ResourceArn The ARN (Amazon Resource Name) of the AWS resource for the Protection
+#' object that is described. When submitting the
+#' [`describe_protection`][shield_describe_protection] request you must
+#' provide either the `ResourceArn` or the `ProtectionID`, but not both.
 #'
 #' @section Request syntax:
 #' ```
@@ -862,14 +870,17 @@ shield_disable_proactive_engagement <- function() {
 #' Removes the DDoS Response Team's (DRT) access to the specified Amazon S3
 #' bucket containing your AWS WAF logs.
 #' 
-#' To make a `DisassociateDRTLogBucket` request, you must be subscribed to
-#' the [Business Support
+#' To make a
+#' [`disassociate_drt_log_bucket`][shield_disassociate_drt_log_bucket]
+#' request, you must be subscribed to the [Business Support
 #' plan](https://aws.amazon.com/premiumsupport/plans/business/) or the
 #' [Enterprise Support
 #' plan](https://aws.amazon.com/premiumsupport/plans/enterprise/). However,
 #' if you are not subscribed to one of these support plans, but had been
 #' previously and had granted the DRT access to your account, you can
-#' submit a `DisassociateDRTLogBucket` request to remove this access.
+#' submit a
+#' [`disassociate_drt_log_bucket`][shield_disassociate_drt_log_bucket]
+#' request to remove this access.
 #'
 #' @usage
 #' shield_disassociate_drt_log_bucket(LogBucket)
@@ -908,14 +919,15 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
 #' @description
 #' Removes the DDoS Response Team's (DRT) access to your AWS account.
 #' 
-#' To make a `DisassociateDRTRole` request, you must be subscribed to the
-#' [Business Support
+#' To make a [`disassociate_drt_role`][shield_disassociate_drt_role]
+#' request, you must be subscribed to the [Business Support
 #' plan](https://aws.amazon.com/premiumsupport/plans/business/) or the
 #' [Enterprise Support
 #' plan](https://aws.amazon.com/premiumsupport/plans/enterprise/). However,
 #' if you are not subscribed to one of these support plans, but had been
 #' previously and had granted the DRT access to your account, you can
-#' submit a `DisassociateDRTRole` request to remove this access.
+#' submit a [`disassociate_drt_role`][shield_disassociate_drt_role] request
+#' to remove this access.
 #'
 #' @usage
 #' shield_disassociate_drt_role()
@@ -1159,8 +1171,9 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
 #' @usage
 #' shield_list_protection_groups(NextToken, MaxResults)
 #'
-#' @param NextToken The next token value from a previous call to `ListProtectionGroups`.
-#' Pass null if this is the first call.
+#' @param NextToken The next token value from a previous call to
+#' [`list_protection_groups`][shield_list_protection_groups]. Pass null if
+#' this is the first call.
 #' @param MaxResults The maximum number of ProtectionGroup objects to return. If you leave
 #' this blank, Shield Advanced returns the first 20 results.
 #' 
@@ -1208,7 +1221,8 @@ shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' shield_list_protections(NextToken, MaxResults)
 #'
 #' @param NextToken The `ListProtectionsRequest.NextToken` value from a previous call to
-#' `ListProtections`. Pass null if this is the first call.
+#' [`list_protections`][shield_list_protections]. Pass null if this is the
+#' first call.
 #' @param MaxResults The maximum number of Protection objects to return. If you leave this
 #' blank, Shield Advanced returns the first 20 results.
 #' 
@@ -1260,7 +1274,8 @@ shield_list_protections <- function(NextToken = NULL, MaxResults = NULL) {
 #' protection group in lists and to manage the protection group, for
 #' example to update, delete, or describe it.
 #' @param NextToken The next token value from a previous call to
-#' `ListResourcesInProtectionGroup`. Pass null if this is the first call.
+#' [`list_resources_in_protection_group`][shield_list_resources_in_protection_group].
+#' Pass null if this is the first call.
 #' @param MaxResults The maximum number of resource ARN objects to return. If you leave this
 #' blank, Shield Advanced returns the first 20 results.
 #' 
@@ -1441,7 +1456,8 @@ shield_update_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 #' @param AutoRenew When you initally create a subscription, `AutoRenew` is set to
 #' `ENABLED`. If `ENABLED`, the subscription will be automatically renewed
 #' at the end of the existing subscription period. You can change this by
-#' submitting an `UpdateSubscription` request. If the `UpdateSubscription`
+#' submitting an [`update_subscription`][shield_update_subscription]
+#' request. If the [`update_subscription`][shield_update_subscription]
 #' request does not included a value for `AutoRenew`, the existing value
 #' for `AutoRenew` remains unchanged.
 #'

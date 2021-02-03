@@ -359,7 +359,7 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' @description
 #' Deregisters an Application Auto Scaling scalable target when you have
 #' finished using it. To see which resources have been registered, use
-#' [DescribeScalableTargets](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html).
+#' [`describe_scalable_targets`][applicationautoscaling_describe_scalable_targets].
 #' 
 #' Deregistering a scalable target deletes the scaling policies and the
 #' scheduled actions that are associated with it.
@@ -1599,12 +1599,11 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' `custom-resource` instead.
 #' @param Schedule The schedule for this action. The following formats are supported:
 #' 
-#' -   At expressions -
-#'     "`at(<i>yyyy</i>-<i>mm</i>-<i>dd</i>T<i>hh</i>:<i>mm</i>:<i>ss</i>)`"
+#' -   At expressions - "`at(yyyy-mm-ddThh:mm:ss)`"
 #' 
-#' -   Rate expressions - "`rate(<i>value</i> <i>unit</i>)`"
+#' -   Rate expressions - "`rate(value unit)`"
 #' 
-#' -   Cron expressions - "`cron(<i>fields</i>)`"
+#' -   Cron expressions - "`cron(fields)`"
 #' 
 #' At expressions are useful for one-time schedules. Specify the time in
 #' UTC.
@@ -1804,11 +1803,11 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' After you register a scalable target, you do not need to register it
 #' again to use other Application Auto Scaling operations. To see which
 #' resources have been registered, use
-#' [DescribeScalableTargets](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html).
+#' [`describe_scalable_targets`][applicationautoscaling_describe_scalable_targets].
 #' You can also view the scaling policies for a service namespace by using
-#' [DescribeScalableTargets](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html).
+#' [`describe_scalable_targets`][applicationautoscaling_describe_scalable_targets].
 #' If you no longer need a scalable target, you can deregister it by using
-#' [DeregisterScalableTarget](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DeregisterScalableTarget.html).
+#' [`deregister_scalable_target`][applicationautoscaling_deregister_scalable_target].
 #' 
 #' To update a scalable target, specify the parameters that you want to
 #' change. Include the parameters that identify the scalable target:

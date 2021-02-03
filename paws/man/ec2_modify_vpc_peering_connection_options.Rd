@@ -45,7 +45,8 @@ connection options. For inter-region peering connections, you must use
 the Region for the requester VPC to modify the requester VPC peering
 options and the Region for the accepter VPC to modify the accepter VPC
 peering options. To verify which VPCs are the accepter and the requester
-for a VPC peering connection, use the DescribeVpcPeeringConnections
+for a VPC peering connection, use the
+\code{\link[=ec2_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
 command.
 }
 \section{Request syntax}{

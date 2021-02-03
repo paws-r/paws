@@ -76,16 +76,17 @@ would specify the \code{ReturnPathArn} to be
 For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
 
 \item{Tags}{A list of tags, in the form of name/value pairs, to apply to an email
-that you send using \code{SendEmail}. Tags correspond to characteristics of
-the email that you define, so that you can publish email sending events.}
+that you send using \code{\link[=ses_send_email]{send_email}}. Tags correspond to
+characteristics of the email that you define, so that you can publish
+email sending events.}
 
 \item{ConfigurationSetName}{The name of the configuration set to use when you send an email using
-\code{SendEmail}.}
+\code{\link[=ses_send_email]{send_email}}.}
 }
 \description{
 Composes an email message and immediately queues it for sending. In
-order to send email using the \code{SendEmail} operation, your message must
-meet the following requirements:
+order to send email using the \code{\link[=ses_send_email]{send_email}} operation,
+your message must meet the following requirements:
 \itemize{
 \item The message must be sent from a verified email address or domain. If
 you attempt to send email using a non-verified address or domain,
@@ -105,8 +106,8 @@ recipients that are valid.
 \item The message may not include more than 50 recipients, across the To:,
 CC: and BCC: fields. If you need to send an email message to a
 larger audience, you can divide your recipient list into groups of
-50 or fewer, and then call the \code{SendEmail} operation several times
-to send the message to each group.
+50 or fewer, and then call the \code{\link[=ses_send_email]{send_email}}
+operation several times to send the message to each group.
 }
 
 For every message that you send, the total number of recipients

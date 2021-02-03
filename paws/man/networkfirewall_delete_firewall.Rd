@@ -23,15 +23,17 @@ revert this operation.
 
 You can check whether a firewall is in use by reviewing the route tables
 for the Availability Zones where you have firewall subnet mappings.
-Retrieve the subnet mappings by calling DescribeFirewall. You define and
+Retrieve the subnet mappings by calling
+\code{\link[=networkfirewall_describe_firewall]{describe_firewall}}. You define and
 update the route tables through Amazon VPC. As needed, update the route
 tables for the zones to remove the firewall endpoints. When the route
 tables no longer use the firewall endpoints, you can remove the firewall
 safely.
 
 To delete a firewall, remove the delete protection if you need to using
-UpdateFirewallDeleteProtection, then delete the firewall by calling
-DeleteFirewall.
+\code{\link[=networkfirewall_update_firewall_delete_protection]{update_firewall_delete_protection}},
+then delete the firewall by calling
+\code{\link[=networkfirewall_delete_firewall]{delete_firewall}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_firewall(

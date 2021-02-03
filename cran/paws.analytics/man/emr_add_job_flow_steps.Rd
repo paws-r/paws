@@ -8,7 +8,8 @@ emr_add_job_flow_steps(JobFlowId, Steps)
 }
 \arguments{
 \item{JobFlowId}{[required] A string that uniquely identifies the job flow. This identifier is
-returned by RunJobFlow and can also be obtained from ListClusters.}
+returned by \code{\link[=emr_run_job_flow]{run_job_flow}} and can also be obtained
+from \code{\link[=emr_list_clusters]{list_clusters}}.}
 
 \item{Steps}{[required] A list of StepConfig to be executed by the job flow.}
 }

@@ -30,8 +30,9 @@ Used to test if the caller has permission to make the call.}
 Notifies Migration Hub of the current status, progress, or other detail
 regarding a migration task. This API has the following traits:
 \itemize{
-\item Migration tools will call the \code{NotifyMigrationTaskState} API to
-share the latest progress and status.
+\item Migration tools will call the
+\code{\link[=migrationhub_notify_migration_task_state]{notify_migration_task_state}}
+API to share the latest progress and status.
 \item \code{MigrationTaskName} is used for addressing updates to the correct
 target.
 \item \code{ProgressUpdateStream} is used for access control and to provide a

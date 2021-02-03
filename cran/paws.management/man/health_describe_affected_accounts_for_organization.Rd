@@ -10,7 +10,7 @@ health_describe_affected_accounts_for_organization(eventArn, nextToken,
 }
 \arguments{
 \item{eventArn}{[required] The unique identifier for the event. Format:
-\verb{arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> }.
+\code{arn:aws:health:event-region::event/SERVICE/EVENT_TYPE_CODE/EVENT_TYPE_PLUS_ID }.
 Example:
 \verb{Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456}}
 
@@ -31,7 +31,7 @@ different types of AWS Health events, see
 
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
-\href{https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html}{EnableHealthServiceAccessForOrganization}
+\code{\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization}}
 operation from your organization's master account.
 
 This API operation uses pagination. Specify the \code{nextToken} parameter in

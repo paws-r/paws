@@ -6,7 +6,8 @@ NULL
 #' Performs GetChannel on multiple ARNs simultaneously
 #'
 #' @description
-#' Performs GetChannel on multiple ARNs simultaneously.
+#' Performs [`get_channel`][ivs_get_channel] on multiple ARNs
+#' simultaneously.
 #'
 #' @usage
 #' ivs_batch_get_channel(arns)
@@ -45,7 +46,8 @@ ivs_batch_get_channel <- function(arns) {
 #' Performs GetStreamKey on multiple ARNs simultaneously
 #'
 #' @description
-#' Performs GetStreamKey on multiple ARNs simultaneously.
+#' Performs [`get_stream_key`][ivs_get_stream_key] on multiple ARNs
+#' simultaneously.
 #'
 #' @usage
 #' ivs_batch_get_stream_key(arns)
@@ -149,11 +151,11 @@ ivs_create_channel <- function(name = NULL, latencyMode = NULL, type = NULL, aut
 #' Creates a stream key, used to initiate a stream, for the specified
 #' channel ARN.
 #' 
-#' Note that CreateChannel creates a stream key. If you subsequently use
-#' CreateStreamKey on the same channel, it will fail because a stream key
-#' already exists and there is a limit of 1 stream key per channel. To
-#' reset the stream key on a channel, use DeleteStreamKey and then
-#' CreateStreamKey.
+#' Note that [`create_channel`][ivs_create_channel] creates a stream key.
+#' If you subsequently use CreateStreamKey on the same channel, it will
+#' fail because a stream key already exists and there is a limit of 1
+#' stream key per channel. To reset the stream key on a channel, use
+#' [`delete_stream_key`][ivs_delete_stream_key] and then CreateStreamKey.
 #'
 #' @usage
 #' ivs_create_stream_key(channelArn, tags)
@@ -309,7 +311,7 @@ ivs_delete_stream_key <- function(arn) {
 #'
 #' @description
 #' Gets the channel configuration for the specified channel ARN. See also
-#' BatchGetChannel.
+#' [`batch_get_channel`][ivs_batch_get_channel].
 #'
 #' @usage
 #' ivs_get_channel(arn)
@@ -764,8 +766,8 @@ ivs_put_metadata <- function(channelArn, metadata) {
 #'
 #' @description
 #' Disconnects the incoming RTMPS stream for the specified channel. Can be
-#' used in conjunction with DeleteStreamKey to prevent further streaming to
-#' a channel.
+#' used in conjunction with [`delete_stream_key`][ivs_delete_stream_key] to
+#' prevent further streaming to a channel.
 #' 
 #' Many streaming client-software libraries automatically reconnect a
 #' dropped RTMPS session, so to stop the stream permanently, you may want

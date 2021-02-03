@@ -12,8 +12,8 @@ networkfirewall_describe_resource_policy(ResourceArn)
 whose resource policy you want to retrieve.}
 }
 \description{
-Retrieves a resource policy that you created in a PutResourcePolicy
-request.
+Retrieves a resource policy that you created in a
+\code{\link[=networkfirewall_put_resource_policy]{put_resource_policy}} request.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_resource_policy(

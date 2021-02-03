@@ -24,8 +24,8 @@ This data is used to add new attributes or update existing attributes.}
 
 \item{expectedVersion}{The expected version of the thing record in the registry. If the version
 of the record in the registry does not match the expected version
-specified in the request, the \code{UpdateThing} request is rejected with a
-\code{VersionConflictException}.}
+specified in the request, the \code{\link[=iot_update_thing]{update_thing}} request
+is rejected with a \code{VersionConflictException}.}
 
 \item{removeThingType}{Remove a thing type association. If \strong{true}, the association is
 removed.}

@@ -24,9 +24,10 @@ NULL
 #' that you can use to interact with Amazon A2I programmatically. Use this
 #' guide to:
 #' 
-#' -   Start a human loop with the `StartHumanLoop` operation when using
-#'     Amazon A2I with a *custom task type*. To learn more about the
-#'     difference between custom and built-in task types, see [Use Task
+#' -   Start a human loop with the
+#'     [`start_human_loop`][augmentedairuntime_start_human_loop] operation
+#'     when using Amazon A2I with a *custom task type*. To learn more about
+#'     the difference between custom and built-in task types, see [Use Task
 #'     Types](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-task-types-general.html)
 #'     . To learn how to start a human loop using this API, see [Create and
 #'     Start a Human Loop for a Custom Task

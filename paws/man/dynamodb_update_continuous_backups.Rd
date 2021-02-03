@@ -14,11 +14,13 @@ dynamodb_update_continuous_backups(TableName,
 \item{PointInTimeRecoverySpecification}{[required] Represents the settings used to enable point in time recovery.}
 }
 \description{
-\code{UpdateContinuousBackups} enables or disables point in time recovery for
-the specified table. A successful \code{UpdateContinuousBackups} call returns
-the current \code{ContinuousBackupsDescription}. Continuous backups are
-\code{ENABLED} on all tables at table creation. If point in time recovery is
-enabled, \code{PointInTimeRecoveryStatus} will be set to ENABLED.
+\code{\link[=dynamodb_update_continuous_backups]{update_continuous_backups}}
+enables or disables point in time recovery for the specified table. A
+successful
+\code{\link[=dynamodb_update_continuous_backups]{update_continuous_backups}} call
+returns the current \code{ContinuousBackupsDescription}. Continuous backups
+are \code{ENABLED} on all tables at table creation. If point in time recovery
+is enabled, \code{PointInTimeRecoveryStatus} will be set to ENABLED.
 
 Once continuous backups and point in time recovery are enabled, you can
 restore to any point in time within \code{EarliestRestorableDateTime} and

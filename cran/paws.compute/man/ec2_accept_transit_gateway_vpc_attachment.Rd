@@ -19,9 +19,10 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Accepts a request to attach a VPC to a transit gateway.
 
 The VPC attachment must be in the \code{pendingAcceptance} state. Use
-DescribeTransitGatewayVpcAttachments to view your pending VPC attachment
-requests. Use RejectTransitGatewayVpcAttachment to reject a VPC
-attachment request.
+\code{\link[=ec2_describe_transit_gateway_vpc_attachments]{describe_transit_gateway_vpc_attachments}}
+to view your pending VPC attachment requests. Use
+\code{\link[=ec2_reject_transit_gateway_vpc_attachment]{reject_transit_gateway_vpc_attachment}}
+to reject a VPC attachment request.
 }
 \section{Request syntax}{
 \preformatted{svc$accept_transit_gateway_vpc_attachment(

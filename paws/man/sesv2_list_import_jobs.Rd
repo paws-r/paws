@@ -12,8 +12,8 @@ that have a certain \code{ImportDestinationType}.}
 
 \item{NextToken}{A string token indicating that there might be additional import jobs
 available to be listed. Copy this token to a subsequent call to
-\code{ListImportJobs} with the same parameters to retrieve the next page of
-import jobs.}
+\code{\link[=sesv2_list_import_jobs]{list_import_jobs}} with the same parameters to
+retrieve the next page of import jobs.}
 
 \item{PageSize}{Maximum number of import jobs to return at once. Use this parameter to
 paginate results. If additional import jobs exist beyond the specified

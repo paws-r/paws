@@ -17,7 +17,8 @@ to base64-encode image bytes that are passed using the \code{Bytes} field.}
 \description{
 Detects text in the input document. Amazon Textract can detect lines of
 text and the words that make up a line of text. The input document must
-be an image in JPEG or PNG format. \code{DetectDocumentText} returns the
+be an image in JPEG or PNG format.
+\code{\link[=textract_detect_document_text]{detect_document_text}} returns the
 detected text in an array of Block objects.
 
 Each document page has as an associated \code{Block} of type PAGE. Each PAGE
@@ -26,8 +27,9 @@ lines of detected text on a page. A LINE \code{Block} object is a parent for
 each word that makes up the line. Words are represented by \code{Block}
 objects of type WORD.
 
-\code{DetectDocumentText} is a synchronous operation. To analyze documents
-asynchronously, use StartDocumentTextDetection.
+\code{\link[=textract_detect_document_text]{detect_document_text}} is a synchronous
+operation. To analyze documents asynchronously, use
+\code{\link[=textract_start_document_text_detection]{start_document_text_detection}}.
 
 For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html}{Document Text Detection}.
 }

@@ -15,8 +15,9 @@ chime_create_app_instance(Name, Metadata, ClientRequestToken)
 }
 \description{
 Creates an Amazon Chime Messaging SDK \code{AppInstance} under an AWS
-Account. Only Messaging SDK customers use this API. \code{CreateAppInstance}
-supports \code{idempotency} behavior as described in the AWS API Standard.
+Account. Only Messaging SDK customers use this API.
+\code{\link[=chime_create_app_instance]{create_app_instance}} supports
+\code{idempotency} behavior as described in the AWS API Standard.
 }
 \section{Request syntax}{
 \preformatted{svc$create_app_instance(

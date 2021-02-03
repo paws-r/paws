@@ -9,7 +9,8 @@ storagegateway_describe_storedi_scsi_volumes(VolumeARNs)
 \arguments{
 \item{VolumeARNs}{[required] An array of strings where each string represents the Amazon Resource
 Name (ARN) of a stored volume. All of the specified stored volumes must
-be from the same gateway. Use ListVolumes to get volume ARNs for a
+be from the same gateway. Use
+\code{\link[=storagegateway_list_volumes]{list_volumes}} to get volume ARNs for a
 gateway.}
 }
 \description{

@@ -48,8 +48,7 @@ Sets the supplied tag-set to an object that already exists in a bucket.
 A tag is a key-value pair. You can associate tags with an object by
 sending a PUT request against the tagging subresource that is associated
 with the object. You can retrieve tags by sending a GET request. For
-more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html}{GetObjectTagging}.
+more information, see \code{\link[=s3_get_object_tagging]{get_object_tagging}}.
 
 For tagging-related restrictions related to characters and encodings,
 see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html}{Tag Restrictions}.
@@ -95,7 +94,7 @@ object.}
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html}{GetObjectTagging}
+\item \code{\link[=s3_get_object_tagging]{get_object_tagging}}
 }
 }
 \section{Request syntax}{

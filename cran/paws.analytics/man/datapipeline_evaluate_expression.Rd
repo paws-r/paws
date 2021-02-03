@@ -15,9 +15,10 @@ datapipeline_evaluate_expression(pipelineId, objectId, expression)
 \item{expression}{[required] The expression to evaluate.}
 }
 \description{
-Task runners call \code{EvaluateExpression} to evaluate a string in the
-context of the specified object. For example, a task runner can evaluate
-SQL queries stored in Amazon S3.
+Task runners call
+\code{\link[=datapipeline_evaluate_expression]{evaluate_expression}} to evaluate a
+string in the context of the specified object. For example, a task
+runner can evaluate SQL queries stored in Amazon S3.
 }
 \section{Request syntax}{
 \preformatted{svc$evaluate_expression(

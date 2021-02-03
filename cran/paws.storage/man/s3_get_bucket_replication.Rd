@@ -32,12 +32,14 @@ If you include the \code{Filter} element in a replication configuration, you
 must also include the \code{DeleteMarkerReplication} and \code{Priority} elements.
 The response also returns those elements.
 
-For information about \code{GetBucketReplication} errors, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ReplicationErrorCodeList}{List of replication-related error codes}
+For information about
+\code{\link[=s3_get_bucket_replication]{get_bucket_replication}} errors, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ReplicationErrorCodeList}{List of replication-related error codes}
 
-The following operations are related to \code{GetBucketReplication}:
+The following operations are related to
+\code{\link[=s3_get_bucket_replication]{get_bucket_replication}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketReplication.html}{PutBucketReplication}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html}{DeleteBucketReplication}
+\item \code{\link[=s3_put_bucket_replication]{put_bucket_replication}}
+\item \code{\link[=s3_delete_bucket_replication]{delete_bucket_replication}}
 }
 }
 \section{Request syntax}{

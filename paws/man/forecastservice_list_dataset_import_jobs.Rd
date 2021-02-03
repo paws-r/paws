@@ -37,11 +37,13 @@ specify the following filter:
 }
 \description{
 Returns a list of dataset import jobs created using the
-CreateDatasetImportJob operation. For each import job, this operation
-returns a summary of its properties, including its Amazon Resource Name
-(ARN). You can retrieve the complete set of properties by using the ARN
-with the DescribeDatasetImportJob operation. You can filter the list by
-providing an array of Filter objects.
+\code{\link[=forecastservice_create_dataset_import_job]{create_dataset_import_job}}
+operation. For each import job, this operation returns a summary of its
+properties, including its Amazon Resource Name (ARN). You can retrieve
+the complete set of properties by using the ARN with the
+\code{\link[=forecastservice_describe_dataset_import_job]{describe_dataset_import_job}}
+operation. You can filter the list by providing an array of Filter
+objects.
 }
 \section{Request syntax}{
 \preformatted{svc$list_dataset_import_jobs(

@@ -28,10 +28,11 @@ system:
 \item \code{elasticfilesystem:DeleteMountTarget}
 }
 
-The \code{DeleteMountTarget} call returns while the mount target state is
-still \code{deleting}. You can check the mount target deletion by calling the
-DescribeMountTargets operation, which returns a list of mount target
-descriptions for the given file system.
+The \code{\link[=efs_delete_mount_target]{delete_mount_target}} call returns while
+the mount target state is still \code{deleting}. You can check the mount
+target deletion by calling the
+\code{\link[=efs_describe_mount_targets]{describe_mount_targets}} operation, which
+returns a list of mount target descriptions for the given file system.
 
 The operation also requires permissions for the following Amazon EC2
 action on the mount target's network interface:

@@ -21,7 +21,8 @@ in the \emph{Amazon EKS User Guide}.
 
 If you have managed node groups or Fargate profiles attached to the
 cluster, you must delete them first. For more information, see
-DeleteNodegroup and DeleteFargateProfile.
+\code{\link[=eks_delete_nodegroup]{delete_nodegroup}} and
+\code{\link[=eks_delete_fargate_profile]{delete_fargate_profile}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_cluster(

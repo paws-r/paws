@@ -19,8 +19,9 @@ behavior is subject to change in the future, so you should not rely on
 
 You must deregister all container instances from this cluster before you
 may delete it. You can list the container instances in a cluster with
-ListContainerInstances and deregister them with
-DeregisterContainerInstance.
+\code{\link[=ecs_list_container_instances]{list_container_instances}} and
+deregister them with
+\code{\link[=ecs_deregister_container_instance]{deregister_container_instance}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_cluster(

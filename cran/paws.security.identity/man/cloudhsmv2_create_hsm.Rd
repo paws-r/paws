@@ -9,10 +9,11 @@ cloudhsmv2_create_hsm(ClusterId, AvailabilityZone, IpAddress)
 }
 \arguments{
 \item{ClusterId}{[required] The identifier (ID) of the HSM's cluster. To find the cluster ID, use
-DescribeClusters.}
+\code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 
 \item{AvailabilityZone}{[required] The Availability Zone where you are creating the HSM. To find the
-cluster's Availability Zones, use DescribeClusters.}
+cluster's Availability Zones, use
+\code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 
 \item{IpAddress}{The HSM's IP address. If you specify an IP address, use an available
 address from the subnet that maps to the Availability Zone where you are

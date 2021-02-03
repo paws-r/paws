@@ -8,10 +8,12 @@ waf_update_xss_match_set(XssMatchSetId, ChangeToken, Updates)
 }
 \arguments{
 \item{XssMatchSetId}{[required] The \code{XssMatchSetId} of the \code{XssMatchSet} that you want to update.
-\code{XssMatchSetId} is returned by CreateXssMatchSet and by
-ListXssMatchSets.}
+\code{XssMatchSetId} is returned by
+\code{\link[=waf_create_xss_match_set]{create_xss_match_set}} and by
+\code{\link[=waf_list_xss_match_sets]{list_xss_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 
 \item{Updates}{[required] An array of \code{XssMatchSetUpdate} objects that you want to insert into or
 delete from an XssMatchSet. For more information, see the applicable
@@ -57,12 +59,13 @@ requests.
 
 To create and configure an \code{XssMatchSet}, perform the following steps:
 \enumerate{
-\item Submit a CreateXssMatchSet request.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of an UpdateIPSet request.
-\item Submit an \code{UpdateXssMatchSet} request to specify the parts of web
-requests that you want AWS WAF to inspect for cross-site scripting
-attacks.
+\item Submit a \code{\link[=waf_create_xss_match_set]{create_xss_match_set}} request.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=waf_update_ip_set]{update_ip_set}} request.
+\item Submit an \code{\link[=waf_update_xss_match_set]{update_xss_match_set}} request
+to specify the parts of web requests that you want AWS WAF to
+inspect for cross-site scripting attacks.
 }
 
 For more information about how to use the AWS WAF API to allow or block

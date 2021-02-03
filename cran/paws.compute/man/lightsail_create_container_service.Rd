@@ -13,7 +13,7 @@ lightsail_create_container_service(serviceName, power, scale, tags,
 The name that you specify for your container service will make up part
 of its default domain. The default domain of a container service is
 typically
-\verb{https://&lt;ServiceName&gt;.&lt;RandomGUID&gt;.&lt;AWSRegion&gt;.cs.amazonlightsail.com}.
+\verb{https://<ServiceName>.<RandomGUID>.<AWSRegion>.cs.amazonlightsail.com}.
 If the name of your container service is \code{container-service-1}, and it's
 located in the US East (Ohio) AWS region (\code{us-east-2}), then the domain
 for your container service will be like the following example:
@@ -36,9 +36,10 @@ container service makes up its configured capacity. To determine the
 monthly price of your container service, multiply the base price of the
 \code{power} with the \code{scale} (the number of nodes) of the service.
 
-Use the \code{GetContainerServicePowers} action to get a list of power
-options that you can specify using this parameter, and their base
-monthly cost.}
+Use the
+\code{\link[=lightsail_get_container_service_powers]{get_container_service_powers}}
+action to get a list of power options that you can specify using this
+parameter, and their base monthly cost.}
 
 \item{scale}{[required] The scale specification for the container service.
 
@@ -66,8 +67,9 @@ domain of the container service.
 
 You must create and validate an SSL/TLS certificate before you can use
 public domain names with your container service. Use the
-\code{CreateCertificate} action to create a certificate for the public domain
-names you want to use with your container service.
+\code{\link[=lightsail_create_certificate]{create_certificate}} action to create a
+certificate for the public domain names you want to use with your
+container service.
 
 You can specify public domain names using a string to array map as shown
 in the example later on this page.}

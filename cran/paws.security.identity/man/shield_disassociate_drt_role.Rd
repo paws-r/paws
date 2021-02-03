@@ -9,12 +9,13 @@ shield_disassociate_drt_role()
 \description{
 Removes the DDoS Response Team's (DRT) access to your AWS account.
 
-To make a \code{DisassociateDRTRole} request, you must be subscribed to the
-\href{https://aws.amazon.com/premiumsupport/plans/business/}{Business Support plan} or the
+To make a \code{\link[=shield_disassociate_drt_role]{disassociate_drt_role}}
+request, you must be subscribed to the \href{https://aws.amazon.com/premiumsupport/plans/business/}{Business Support plan} or the
 \href{https://aws.amazon.com/premiumsupport/plans/enterprise/}{Enterprise Support plan}. However,
 if you are not subscribed to one of these support plans, but had been
 previously and had granted the DRT access to your account, you can
-submit a \code{DisassociateDRTRole} request to remove this access.
+submit a \code{\link[=shield_disassociate_drt_role]{disassociate_drt_role}} request
+to remove this access.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_drt_role()

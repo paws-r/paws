@@ -15,17 +15,20 @@ specified stack.}
 \item{StackName}{If you specified the name of a change set, specify the stack name or ID
 (ARN) that is associated with the change set you want to execute.}
 
-\item{ClientRequestToken}{A unique identifier for this \code{ExecuteChangeSet} request. Specify this
-token if you plan to retry requests so that AWS CloudFormation knows
-that you're not attempting to execute a change set to update a stack
-with the same name. You might retry \code{ExecuteChangeSet} requests to
+\item{ClientRequestToken}{A unique identifier for this
+\code{\link[=cloudformation_execute_change_set]{execute_change_set}} request.
+Specify this token if you plan to retry requests so that AWS
+CloudFormation knows that you're not attempting to execute a change set
+to update a stack with the same name. You might retry
+\code{\link[=cloudformation_execute_change_set]{execute_change_set}} requests to
 ensure that AWS CloudFormation successfully received them.}
 }
 \description{
 Updates a stack using the input information that was provided when the
 specified change set was created. After the call successfully completes,
-AWS CloudFormation starts updating the stack. Use the DescribeStacks
-action to view the status of the update.
+AWS CloudFormation starts updating the stack. Use the
+\code{\link[=cloudformation_describe_stacks]{describe_stacks}} action to view the
+status of the update.
 
 When you execute a change set, AWS CloudFormation deletes all other
 change sets associated with the stack because they aren't valid for the

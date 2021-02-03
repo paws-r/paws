@@ -26,8 +26,9 @@ the \code{PutEvents} call. The contents of this dataset are not available to
 the user.
 
 Only one event tracker can be associated with a dataset group. You will
-get an error if you call \code{CreateEventTracker} using the same dataset
-group as an existing event tracker.
+get an error if you call
+\code{\link[=personalize_create_event_tracker]{create_event_tracker}} using the
+same dataset group as an existing event tracker.
 
 When you send event data you include your tracking ID. The tracking ID
 identifies the customer and authorizes the customer to send the data.
@@ -39,16 +40,17 @@ FAILED
 \item DELETE PENDING > DELETE IN\\_PROGRESS
 }
 
-To get the status of the event tracker, call DescribeEventTracker.
+To get the status of the event tracker, call
+\code{\link[=personalize_describe_event_tracker]{describe_event_tracker}}.
 
 The event tracker must be in the ACTIVE state before using the tracking
 ID.
 
 \strong{Related APIs}
 \itemize{
-\item ListEventTrackers
-\item DescribeEventTracker
-\item DeleteEventTracker
+\item \code{\link[=personalize_list_event_trackers]{list_event_trackers}}
+\item \code{\link[=personalize_describe_event_tracker]{describe_event_tracker}}
+\item \code{\link[=personalize_delete_event_tracker]{delete_event_tracker}}
 }
 }
 \section{Request syntax}{

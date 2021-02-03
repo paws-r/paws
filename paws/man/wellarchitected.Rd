@@ -17,61 +17,80 @@ The AWS Well-Architected Tool API provides programmatic access to the
 
 \strong{Managing workloads:}
 \itemize{
-\item CreateWorkload: Define a new workload.
-\item ListWorkloads: List workloads.
-\item GetWorkload: Get the properties of a workload.
-\item UpdateWorkload: Update the properties of a workload.
-\item DeleteWorkload: Delete a workload.
+\item \code{\link[=wellarchitected_create_workload]{create_workload}}: Define a new
+workload.
+\item \code{\link[=wellarchitected_list_workloads]{list_workloads}}: List workloads.
+\item \code{\link[=wellarchitected_get_workload]{get_workload}}: Get the properties
+of a workload.
+\item \code{\link[=wellarchitected_update_workload]{update_workload}}: Update the
+properties of a workload.
+\item \code{\link[=wellarchitected_delete_workload]{delete_workload}}: Delete a
+workload.
 }
 
 \strong{Managing milestones:}
 \itemize{
-\item CreateMilestone: Create a milestone.
-\item ListMilestones: List milestones.
-\item GetMilestone: Get the properties of a milestone.
+\item \code{\link[=wellarchitected_create_milestone]{create_milestone}}: Create a
+milestone.
+\item \code{\link[=wellarchitected_list_milestones]{list_milestones}}: List
+milestones.
+\item \code{\link[=wellarchitected_get_milestone]{get_milestone}}: Get the properties
+of a milestone.
 }
 
 \strong{Managing lenses:}
 \itemize{
-\item ListLenses: List the available lenses.
-\item AssociateLenses: Add one or more lenses to a workload.
-\item DisassociateLenses: Remove one or more lenses from a workload.
-\item ListNotifications: List lens notifications for a workload.
-\item GetLensVersionDifference: Get the differences between the version of
-a lens used in a workload and the latest version.
-\item UpgradeLensReview: Upgrade a workload to use the latest version of a
-lens.
+\item \code{\link[=wellarchitected_list_lenses]{list_lenses}}: List the available
+lenses.
+\item \code{\link[=wellarchitected_associate_lenses]{associate_lenses}}: Add one or
+more lenses to a workload.
+\item \code{\link[=wellarchitected_disassociate_lenses]{disassociate_lenses}}: Remove
+one or more lenses from a workload.
+\item \code{\link[=wellarchitected_list_notifications]{list_notifications}}: List
+lens notifications for a workload.
+\item \code{\link[=wellarchitected_get_lens_version_difference]{get_lens_version_difference}}:
+Get the differences between the version of a lens used in a workload
+and the latest version.
+\item \code{\link[=wellarchitected_upgrade_lens_review]{upgrade_lens_review}}:
+Upgrade a workload to use the latest version of a lens.
 }
 
 \strong{Managing reviews:}
 \itemize{
-\item ListLensReviews: List reviews associated with a workload.
-\item GetLensReview: Get pillar and risk data associated with a workload
-review.
-\item GetLensReviewReport: Get the report associated with a workload
-review.
-\item UpdateLensReview: Update the notes associated with a workload
-review.
-\item ListAnswers: List the questions and answers in a workload review.
-\item UpdateAnswer: Update the answer to a specific question in a workload
-review.
-\item ListLensReviewImprovements: List the improvement plan associated
-with a workload review.
+\item \code{\link[=wellarchitected_list_lens_reviews]{list_lens_reviews}}: List
+reviews associated with a workload.
+\item \code{\link[=wellarchitected_get_lens_review]{get_lens_review}}: Get pillar and
+risk data associated with a workload review.
+\item \code{\link[=wellarchitected_get_lens_review_report]{get_lens_review_report}}:
+Get the report associated with a workload review.
+\item \code{\link[=wellarchitected_update_lens_review]{update_lens_review}}: Update
+the notes associated with a workload review.
+\item \code{\link[=wellarchitected_list_answers]{list_answers}}: List the questions
+and answers in a workload review.
+\item \code{\link[=wellarchitected_update_answer]{update_answer}}: Update the answer
+to a specific question in a workload review.
+\item \code{\link[=wellarchitected_list_lens_review_improvements]{list_lens_review_improvements}}:
+List the improvement plan associated with a workload review.
 }
 
 \strong{Managing workload shares:}
 \itemize{
-\item ListWorkloadShares: List the workload shares associated with a
-workload.
-\item CreateWorkloadShare: Create a workload share.
-\item UpdateWorkloadShare: Update a workload share.
-\item DeleteWorkloadShare: Delete a workload share.
+\item \code{\link[=wellarchitected_list_workload_shares]{list_workload_shares}}: List
+the workload shares associated with a workload.
+\item \code{\link[=wellarchitected_create_workload_share]{create_workload_share}}:
+Create a workload share.
+\item \code{\link[=wellarchitected_update_workload_share]{update_workload_share}}:
+Update a workload share.
+\item \code{\link[=wellarchitected_delete_workload_share]{delete_workload_share}}:
+Delete a workload share.
 }
 
 \strong{Managing workload share invitations:}
 \itemize{
-\item ListShareInvitations: List workload share invitations.
-\item UpdateShareInvitation: Update a workload share invitation.
+\item \code{\link[=wellarchitected_list_share_invitations]{list_share_invitations}}:
+List workload share invitations.
+\item \code{\link[=wellarchitected_update_share_invitation]{update_share_invitation}}:
+Update a workload share invitation.
 }
 
 For information about the AWS Well-Architected Tool, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html}{AWS Well-Architected Tool User Guide}.

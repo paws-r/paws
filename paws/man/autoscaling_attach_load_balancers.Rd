@@ -17,16 +17,18 @@ balancers.}
 }
 \description{
 To attach an Application Load Balancer, Network Load Balancer, or
-Gateway Load Balancer, use the AttachLoadBalancerTargetGroups API
-operation instead.
+Gateway Load Balancer, use the
+\code{\link[=autoscaling_attach_load_balancer_target_groups]{attach_load_balancer_target_groups}}
+API operation instead.
 
 Attaches one or more Classic Load Balancers to the specified Auto
 Scaling group. Amazon EC2 Auto Scaling registers the running instances
 with these Classic Load Balancers.
 
 To describe the load balancers for an Auto Scaling group, call the
-DescribeLoadBalancers API. To detach the load balancer from the Auto
-Scaling group, call the DetachLoadBalancers API.
+\code{\link[=autoscaling_describe_load_balancers]{describe_load_balancers}} API. To
+detach the load balancer from the Auto Scaling group, call the
+\code{\link[=autoscaling_detach_load_balancers]{detach_load_balancers}} API.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html}{Elastic Load Balancing and Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.

@@ -12,7 +12,7 @@ codeguruprofiler_post_agent_profile(agentProfile, contentType,
 
 \item{contentType}{[required] The format of the submitted profiling data. The format maps to the
 \code{Accept} and \code{Content-Type} headers of the HTTP request. You can specify
-one of the following: or the default .\preformatted{ &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/json&lt;/code&gt; — standard JSON format &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/x-amzn-ion&lt;/code&gt; — the Amazon Ion data format. For more information, see &lt;a href="http://amzn.github.io/ion-docs/"&gt;Amazon Ion&lt;/a&gt;. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+one of the following: or the default .\preformatted{ <ul> <li> <p> <code>application/json</code> — standard JSON format </p> </li> <li> <p> <code>application/x-amzn-ion</code> — the Amazon Ion data format. For more information, see <a href="http://amzn.github.io/ion-docs/">Amazon Ion</a>. </p> </li> </ul>
 }}
 
 \item{profileToken}{Amazon CodeGuru Profiler uses this universally unique identifier (UUID)
@@ -25,7 +25,7 @@ receives the submitted profiling data.}
 \description{
 Submits profiling data to an aggregated profile of a profiling group. To
 get an aggregated profile that is created with this profiling data, use
-\href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetProfile.html}{\code{GetProfile}}
+\href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetProfile.html}{\code{get_profile}}
 .
 }
 \section{Request syntax}{

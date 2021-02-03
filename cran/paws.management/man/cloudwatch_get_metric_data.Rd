@@ -10,10 +10,11 @@ cloudwatch_get_metric_data(MetricDataQueries, StartTime, EndTime,
   NextToken, ScanBy, MaxDatapoints)
 }
 \arguments{
-\item{MetricDataQueries}{[required] The metric queries to be returned. A single \code{GetMetricData} call can
-include as many as 500 \code{MetricDataQuery} structures. Each of these
-structures can specify either a metric to retrieve, or a math expression
-to perform on retrieved data.}
+\item{MetricDataQueries}{[required] The metric queries to be returned. A single
+\code{\link[=cloudwatch_get_metric_data]{get_metric_data}} call can include as many
+as 500 \code{MetricDataQuery} structures. Each of these structures can
+specify either a metric to retrieve, or a math expression to perform on
+retrieved data.}
 
 \item{StartTime}{[required] The time stamp indicating the earliest data to be returned.
 
@@ -58,8 +59,9 @@ beginning and end of an hour. For example, if the \code{Period} of a metric
 is 5 minutes, specifying 12:05 or 12:30 as \code{EndTime} can get a faster
 response from CloudWatch than setting 12:07 or 12:29 as the \code{EndTime}.}
 
-\item{NextToken}{Include this value, if it was returned by the previous \code{GetMetricData}
-operation, to get the next set of data points.}
+\item{NextToken}{Include this value, if it was returned by the previous
+\code{\link[=cloudwatch_get_metric_data]{get_metric_data}} operation, to get the
+next set of data points.}
 
 \item{ScanBy}{The order in which data points should be returned. \code{TimestampDescending}
 returns the newest data first and paginates when the \code{MaxDatapoints}
@@ -70,19 +72,20 @@ paginates when the \code{MaxDatapoints} limit is reached.}
 paginating. If you omit this, the default of 100,800 is used.}
 }
 \description{
-You can use the \code{GetMetricData} API to retrieve as many as 500 different
-metrics in a single request, with a total of as many as 100,800 data
-points. You can also optionally perform math expressions on the values
-of the returned statistics, to create new time series that represent new
-insights into your data. For example, using Lambda metrics, you could
-divide the Errors metric by the Invocations metric to get an error rate
-time series. For more information about metric math expressions, see
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax}{Metric Math Syntax and Functions}
+You can use the \code{\link[=cloudwatch_get_metric_data]{get_metric_data}} API to
+retrieve as many as 500 different metrics in a single request, with a
+total of as many as 100,800 data points. You can also optionally perform
+math expressions on the values of the returned statistics, to create new
+time series that represent new insights into your data. For example,
+using Lambda metrics, you could divide the Errors metric by the
+Invocations metric to get an error rate time series. For more
+information about metric math expressions, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax}{Metric Math Syntax and Functions}
 in the \emph{Amazon CloudWatch User Guide}.
 
-Calls to the \code{GetMetricData} API have a different pricing structure than
-calls to \code{GetMetricStatistics}. For more information about pricing, see
-\href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
+Calls to the \code{\link[=cloudwatch_get_metric_data]{get_metric_data}} API have a
+different pricing structure than calls to
+\code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}}. For more
+information about pricing, see \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
 
 Amazon CloudWatch retains metric data as follows:
 \itemize{

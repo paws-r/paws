@@ -29,12 +29,12 @@ timestamp range within the archived data.
 Listing fragments is eventually consistent. This means that even if the
 producer receives an acknowledgment that a fragment is persisted, the
 result might not be returned immediately from a request to
-\code{ListFragments}. However, results are typically available in less than
-one second.
+\code{\link[=kinesisvideoarchivedmedia_list_fragments]{list_fragments}}. However,
+results are typically available in less than one second.
 
 You must first call the \code{GetDataEndpoint} API to get an endpoint. Then
-send the \code{ListFragments} requests to this endpoint using the
-\href{https://docs.aws.amazon.com/cli/latest/reference/}{--endpoint-url parameter}.
+send the \code{\link[=kinesisvideoarchivedmedia_list_fragments]{list_fragments}}
+requests to this endpoint using the \href{https://docs.aws.amazon.com/cli/latest/reference/}{--endpoint-url parameter}.
 
 If an error is thrown after invoking a Kinesis Video Streams archived
 media API, in addition to the HTTP status code and the response body, it

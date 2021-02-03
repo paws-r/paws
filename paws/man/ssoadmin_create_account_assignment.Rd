@@ -35,13 +35,15 @@ specified permission set.
 The term \emph{principal} here refers to a user or group that is defined in
 AWS SSO.
 
-As part of a successful \code{CreateAccountAssignment} call, the specified
-permission set will automatically be provisioned to the account in the
-form of an IAM policy attached to the SSO-created IAM role. If the
-permission set is subsequently updated, the corresponding IAM policies
-attached to roles in your accounts will not be updated automatically. In
-this case, you will need to call \verb{<a>ProvisionPermissionSet</a>} to
-make these updates.
+As part of a successful
+\code{\link[=ssoadmin_create_account_assignment]{create_account_assignment}} call,
+the specified permission set will automatically be provisioned to the
+account in the form of an IAM policy attached to the SSO-created IAM
+role. If the permission set is subsequently updated, the corresponding
+IAM policies attached to roles in your accounts will not be updated
+automatically. In this case, you will need to call
+\code{\link[=ssoadmin_provision_permission_set]{provision_permission_set}} to make
+these updates.
 }
 \section{Request syntax}{
 \preformatted{svc$create_account_assignment(

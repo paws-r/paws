@@ -693,10 +693,11 @@ datasync_create_location_smb <- function(Subdirectory, ServerHostname, User, Dom
 #' @param Name The name of a task. This value is a text reference that is used to
 #' identify the task in the console.
 #' @param Options The set of configuration options that control the behavior of a single
-#' execution of the task that occurs when you call `StartTaskExecution`.
-#' You can configure these options to preserve metadata such as user ID
-#' (UID) and group ID (GID), file permissions, data integrity verification,
-#' and so on.
+#' execution of the task that occurs when you call
+#' [`start_task_execution`][datasync_start_task_execution]. You can
+#' configure these options to preserve metadata such as user ID (UID) and
+#' group ID (GID), file permissions, data integrity verification, and so
+#' on.
 #' 
 #' For each individual task execution, you can override these options by
 #' specifying the `OverrideOptions` before starting the task execution. For
@@ -783,8 +784,8 @@ datasync_create_task <- function(SourceLocationArn, DestinationLocationArn, Clou
 #' datasync_delete_agent(AgentArn)
 #'
 #' @param AgentArn &#91;required&#93; The Amazon Resource Name (ARN) of the agent to delete. Use the
-#' `ListAgents` operation to return a list of agents for your account and
-#' AWS Region.
+#' [`list_agents`][datasync_list_agents] operation to return a list of
+#' agents for your account and AWS Region.
 #'
 #' @section Request syntax:
 #' ```
@@ -1306,9 +1307,10 @@ datasync_list_agents <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param NextToken An opaque string that indicates the position at which to begin the next
 #' list of locations.
 #' @param Filters You can use API filters to narrow down the list of resources returned by
-#' `ListLocations`. For example, to retrieve all tasks on a specific source
-#' location, you can use `ListLocations` with filter name `LocationType S3`
-#' and `Operator Equals`.
+#' [`list_locations`][datasync_list_locations]. For example, to retrieve
+#' all tasks on a specific source location, you can use
+#' [`list_locations`][datasync_list_locations] with filter name
+#' `LocationType S3` and `Operator Equals`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1443,8 +1445,9 @@ datasync_list_task_executions <- function(TaskArn = NULL, MaxResults = NULL, Nex
 #' @param NextToken An opaque string that indicates the position at which to begin the next
 #' list of tasks.
 #' @param Filters You can use API filters to narrow down the list of resources returned by
-#' `ListTasks`. For example, to retrieve all tasks on a specific source
-#' location, you can use `ListTasks` with filter name `LocationId` and
+#' [`list_tasks`][datasync_list_tasks]. For example, to retrieve all tasks
+#' on a specific source location, you can use
+#' [`list_tasks`][datasync_list_tasks] with filter name `LocationId` and
 #' `Operator Equals` with the ARN for the location.
 #'
 #' @section Request syntax:
@@ -1766,8 +1769,9 @@ datasync_update_task <- function(TaskArn, Options = NULL, Excludes = NULL, Sched
 #' or queued. For more information, see Adjusting Bandwidth Throttling for
 #' a Task Execution.
 #' 
-#' The only `Option` that can be modified by `UpdateTaskExecution` is
-#' ` <a href="https://docs.aws.amazon.com/datasync/latest/userguide/API_Options.html#DataSync-Type-Options-BytesPerSecond">BytesPerSecond</a> `.
+#' The only `Option` that can be modified by
+#' [`update_task_execution`][datasync_update_task_execution] is
+#' ` BytesPerSecond `.
 #'
 #' @usage
 #' datasync_update_task_execution(TaskExecutionArn, Options)

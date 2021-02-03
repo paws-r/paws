@@ -8,7 +8,7 @@ codecommit_get_pull_request(pullRequestId)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use
-ListPullRequests.}
+\code{\link[=codecommit_list_pull_requests]{list_pull_requests}}.}
 }
 \description{
 Gets information about a pull request in a specified repository.

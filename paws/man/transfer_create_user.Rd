@@ -13,7 +13,7 @@ transfer_create_user(HomeDirectory, HomeDirectoryType,
 \item{HomeDirectory}{The landing directory (folder) for a user when they log in to the server
 using the client.
 
-An example is \emph{\verb{your-Amazon-S3-bucket-name&gt;/home/username}} .}
+An example is \emph{\verb{your-Amazon-S3-bucket-name>/home/username}} .}
 
 \item{HomeDirectoryType}{The type of landing directory (folder) you want your users' home
 directory to be when they log into the server. If you set it to \code{PATH},
@@ -90,11 +90,11 @@ user name can't start with a hyphen, period, or at sign.}
 Creates a user and associates them with an existing file transfer
 protocol-enabled server. You can only create and associate users with
 servers that have the \code{IdentityProviderType} set to \code{SERVICE_MANAGED}.
-Using parameters for \code{CreateUser}, you can specify the user name, set
-the home directory, store the user's public key, and assign the user's
-AWS Identity and Access Management (IAM) role. You can also optionally
-add a scope-down policy, and assign metadata with tags that can be used
-to group and search for users.
+Using parameters for \code{\link[=transfer_create_user]{create_user}}, you can
+specify the user name, set the home directory, store the user's public
+key, and assign the user's AWS Identity and Access Management (IAM)
+role. You can also optionally add a scope-down policy, and assign
+metadata with tags that can be used to group and search for users.
 }
 \section{Request syntax}{
 \preformatted{svc$create_user(

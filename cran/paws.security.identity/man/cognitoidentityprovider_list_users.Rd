@@ -35,8 +35,9 @@ example, "\code{given_name} ^= \\"Jon\\"".
 user.
 }
 
-If the filter string is empty, \code{ListUsers} returns all users in the user
-pool.
+If the filter string is empty,
+\code{\link[=cognitoidentityprovider_list_users]{list_users}} returns all users in
+the user pool.
 
 You can only search for the following standard attributes:
 \itemize{
@@ -49,7 +50,7 @@ You can only search for the following standard attributes:
 \item \code{preferred_username}
 \item \code{cognito:user_status} (called \strong{Status} in the Console)
 (case-insensitive)
-\item \verb{status (called <b>Enabled</b> in the Console) (case-sensitive)}
+\item \verb{status (called Enabled in the Console) (case-sensitive)}
 \item \code{sub}
 }
 

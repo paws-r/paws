@@ -39,17 +39,17 @@ supported for Amazon Route 53 geolocation resource record sets.
 Use the following syntax to determine whether a continent is supported
 for geolocation:
 
-\verb{GET /2013-04-01/geolocation?continentcode=<i>two-letter abbreviation for a continent</i> }
+\verb{GET /2013-04-01/geolocation?continentcode=two-letter abbreviation for a continent }
 
 Use the following syntax to determine whether a country is supported for
 geolocation:
 
-\verb{GET /2013-04-01/geolocation?countrycode=<i>two-character country code</i> }
+\verb{GET /2013-04-01/geolocation?countrycode=two-character country code }
 
 Use the following syntax to determine whether a subdivision of a country
 is supported for geolocation:
 
-\verb{GET /2013-04-01/geolocation?countrycode=<i>two-character country code</i>&amp;subdivisioncode=<i>subdivision code</i> }
+\verb{GET /2013-04-01/geolocation?countrycode=two-character country code&subdivisioncode=subdivision code }
 }
 \section{Request syntax}{
 \preformatted{svc$get_geo_location(

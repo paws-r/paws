@@ -8,10 +8,12 @@ waf_delete_geo_match_set(GeoMatchSetId, ChangeToken)
 }
 \arguments{
 \item{GeoMatchSetId}{[required] The \code{GeoMatchSetID} of the GeoMatchSet that you want to delete.
-\code{GeoMatchSetId} is returned by CreateGeoMatchSet and by
-ListGeoMatchSets.}
+\code{GeoMatchSetId} is returned by
+\code{\link[=waf_create_geo_match_set]{create_geo_match_set}} and by
+\code{\link[=waf_list_geo_match_sets]{list_geo_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -27,16 +29,17 @@ Permanently deletes a GeoMatchSet. You can't delete a \code{GeoMatchSet} if
 it's still used in any \code{Rules} or if it still includes any countries.
 
 If you just want to remove a \code{GeoMatchSet} from a \code{Rule}, use
-UpdateRule.
+\code{\link[=waf_update_rule]{update_rule}}.
 
 To permanently delete a \code{GeoMatchSet} from AWS WAF, perform the
 following steps:
 \enumerate{
 \item Update the \code{GeoMatchSet} to remove any countries. For more
-information, see UpdateGeoMatchSet.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{DeleteGeoMatchSet} request.
-\item Submit a \code{DeleteGeoMatchSet} request.
+information, see \code{\link[=waf_update_geo_match_set]{update_geo_match_set}}.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=waf_delete_geo_match_set]{delete_geo_match_set}} request.
+\item Submit a \code{\link[=waf_delete_geo_match_set]{delete_geo_match_set}} request.
 }
 }
 \section{Request syntax}{

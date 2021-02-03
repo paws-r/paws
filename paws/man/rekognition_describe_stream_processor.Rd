@@ -12,9 +12,10 @@ rekognition_describe_stream_processor(Name)
 }
 \description{
 Provides information about a stream processor created by
-CreateStreamProcessor. You can get information about the input and
-output streams, the input parameters for the face recognition being
-performed, and the current status of the stream processor.
+\code{\link[=rekognition_create_stream_processor]{create_stream_processor}}. You
+can get information about the input and output streams, the input
+parameters for the face recognition being performed, and the current
+status of the stream processor.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_stream_processor(

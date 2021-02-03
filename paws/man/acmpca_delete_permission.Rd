@@ -11,10 +11,10 @@ acmpca_delete_permission(CertificateAuthorityArn, Principal,
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Number (ARN) of the private CA that issued the
 permissions. You can find the CA's ARN by calling the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html}{ListCertificateAuthorities}
+\code{\link[=acmpca_list_certificate_authorities]{list_certificate_authorities}}
 action. This must have the following form:
 
-\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
+\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 
 \item{Principal}{[required] The AWS service or identity that will have its CA permissions revoked.
 At this time, the only valid service principal is \code{acm.amazonaws.com}}
@@ -31,16 +31,15 @@ permissions, ACM will no longer renew the affected certificates
 automatically.
 
 Permissions can be granted with the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreatePermission.html}{CreatePermission}
-action and listed with the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListPermissions.html}{ListPermissions}
-action.
+\code{\link[=acmpca_create_permission]{create_permission}} action and listed with
+the \code{\link[=acmpca_list_permissions]{list_permissions}} action.
 
 \strong{About Permissions}
 \itemize{
 \item If the private CA and the certificates it issues reside in the same
-account, you can use \code{CreatePermission} to grant permissions for ACM
-to carry out automatic certificate renewals.
+account, you can use \code{\link[=acmpca_create_permission]{create_permission}}
+to grant permissions for ACM to carry out automatic certificate
+renewals.
 \item For automatic certificate renewal to succeed, the ACM service
 principal needs permissions to create, retrieve, and list
 certificates.

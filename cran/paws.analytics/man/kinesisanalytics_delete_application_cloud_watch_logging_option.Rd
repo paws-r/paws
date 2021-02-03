@@ -15,7 +15,7 @@ kinesisanalytics_delete_application_cloud_watch_logging_option(
 
 \item{CloudWatchLoggingOptionId}{[required] The \code{CloudWatchLoggingOptionId} of the CloudWatch logging option to
 delete. You can get the \code{CloudWatchLoggingOptionId} by using the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+\code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation.}
 }
 \description{

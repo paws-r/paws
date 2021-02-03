@@ -13,12 +13,13 @@ mturk_get_qualification_score(QualificationTypeId, WorkerId)
 \item{WorkerId}{[required] The ID of the Worker whose Qualification is being updated.}
 }
 \description{
-The \code{GetQualificationScore} operation returns the value of a Worker's
-Qualification for a given Qualification type.
+The \code{\link[=mturk_get_qualification_score]{get_qualification_score}} operation
+returns the value of a Worker's Qualification for a given Qualification
+type.
 
 To get a Worker's Qualification, you must know the Worker's ID. The
 Worker's ID is included in the assignment data returned by the
-\code{ListAssignmentsForHIT} operation.
+\code{\link[=mturk_list_assignments_for_hit]{list_assignments_for_hit}} operation.
 
 Only the owner of a Qualification type can query the value of a Worker's
 Qualification of that type.

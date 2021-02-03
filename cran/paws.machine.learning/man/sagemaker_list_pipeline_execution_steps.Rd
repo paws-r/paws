@@ -10,9 +10,11 @@ sagemaker_list_pipeline_execution_steps(PipelineExecutionArn, NextToken,
 \arguments{
 \item{PipelineExecutionArn}{The Amazon Resource Name (ARN) of the pipeline execution.}
 
-\item{NextToken}{If the result of the previous \code{ListPipelineExecutionSteps} request was
-truncated, the response includes a \code{NextToken}. To retrieve the next set
-of pipeline execution steps, use the token in the next request.}
+\item{NextToken}{If the result of the previous
+\code{\link[=sagemaker_list_pipeline_execution_steps]{list_pipeline_execution_steps}}
+request was truncated, the response includes a \code{NextToken}. To retrieve
+the next set of pipeline execution steps, use the token in the next
+request.}
 
 \item{MaxResults}{The maximum number of pipeline execution steps to return in the
 response.}

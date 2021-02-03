@@ -17,15 +17,18 @@ Returns a list of DB cluster snapshot attribute names and values for a
 manual DB cluster snapshot.
 
 When sharing snapshots with other AWS accounts,
-\code{DescribeDBClusterSnapshotAttributes} returns the \code{restore} attribute
-and a list of IDs for the AWS accounts that are authorized to copy or
-restore the manual DB cluster snapshot. If \code{all} is included in the list
-of values for the \code{restore} attribute, then the manual DB cluster
-snapshot is public and can be copied or restored by all AWS accounts.
+\code{\link[=neptune_describe_db_cluster_snapshot_attributes]{describe_db_cluster_snapshot_attributes}}
+returns the \code{restore} attribute and a list of IDs for the AWS accounts
+that are authorized to copy or restore the manual DB cluster snapshot.
+If \code{all} is included in the list of values for the \code{restore} attribute,
+then the manual DB cluster snapshot is public and can be copied or
+restored by all AWS accounts.
 
 To add or remove access for an AWS account to copy or restore a manual
 DB cluster snapshot, or to make the manual DB cluster snapshot public or
-private, use the ModifyDBClusterSnapshotAttribute API action.
+private, use the
+\code{\link[=neptune_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute}}
+API action.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_db_cluster_snapshot_attributes(

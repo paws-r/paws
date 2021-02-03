@@ -11,9 +11,11 @@ kinesisanalyticsv2_add_application_vpc_configuration(ApplicationName,
 \item{ApplicationName}{[required] The name of an existing application.}
 
 \item{CurrentApplicationVersionId}{[required] The version of the application to which you want to add the VPC
-configuration. You can use the DescribeApplication operation to get the
-current application version. If the version specified is not the current
-version, the \code{ConcurrentModificationException} is returned.}
+configuration. You can use the
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
+operation to get the current application version. If the version
+specified is not the current version, the
+\code{ConcurrentModificationException} is returned.}
 
 \item{VpcConfiguration}{[required] Description of the VPC to add to the application.}
 }

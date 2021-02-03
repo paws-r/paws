@@ -18,7 +18,8 @@ connector types. If you don't specify a connector type, this operation
 describes all connectors vended by Amazon AppFlow. If there are more
 connectors than can be returned in one page, the response contains a
 \code{nextToken} object, which can be be passed in to the next call to the
-\code{DescribeConnectors} API operation to retrieve the next page.
+\code{\link[=appflow_describe_connectors]{describe_connectors}} API operation to
+retrieve the next page.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_connectors(

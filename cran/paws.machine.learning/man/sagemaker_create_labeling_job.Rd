@@ -51,13 +51,13 @@ following format. Identify the labels you want to use by replacing
 
 \verb{ \\\{}
 
-\code{ "label": "<i>label_1</i>"}
+\code{ "label": "label_1"}
 
 \verb{ \\\},}
 
 \verb{ \\\{}
 
-\code{ "label": "<i>label_2</i>"}
+\code{ "label": "label_2"}
 
 \verb{ \\\},}
 
@@ -65,7 +65,7 @@ following format. Identify the labels you want to use by replacing
 
 \verb{ \\\{}
 
-\code{ "label": "<i>label_n</i>"}
+\code{ "label": "label_n"}
 
 \verb{ \\\}}
 

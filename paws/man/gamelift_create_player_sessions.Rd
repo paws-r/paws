@@ -21,7 +21,8 @@ parameter are ignored.}
 Reserves open slots in a game session for a group of players. Before
 players can be added, a game session must have an \code{ACTIVE} status, have
 a creation policy of \code{ALLOW_ALL}, and have an open player slot. To add a
-single player to a game session, use CreatePlayerSession. When a player
+single player to a game session, use
+\code{\link[=gamelift_create_player_session]{create_player_session}}. When a player
 connects to the game server and references a player session ID, the game
 server contacts the Amazon GameLift service to validate the player
 reservation and accept the player.
@@ -33,14 +34,14 @@ PlayerSession objects is returned. Player sessions cannot be updated.
 
 \emph{Available in Amazon GameLift Local.}
 \itemize{
-\item CreatePlayerSession
-\item CreatePlayerSessions
-\item DescribePlayerSessions
+\item \code{\link[=gamelift_create_player_session]{create_player_session}}
+\item \code{\link[=gamelift_create_player_sessions]{create_player_sessions}}
+\item \code{\link[=gamelift_describe_player_sessions]{describe_player_sessions}}
 \item Game session placements
 \itemize{
-\item StartGameSessionPlacement
-\item DescribeGameSessionPlacement
-\item StopGameSessionPlacement
+\item \code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+\item \code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
+\item \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
 }
 }
 }

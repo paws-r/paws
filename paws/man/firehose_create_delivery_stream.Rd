@@ -69,24 +69,32 @@ is created, its status is \code{ACTIVE} and it now accepts data. If the
 delivery stream creation fails, the status transitions to
 \code{CREATING_FAILED}. Attempts to send data to a delivery stream that is
 not in the \code{ACTIVE} state cause an exception. To check the state of a
-delivery stream, use DescribeDeliveryStream.
+delivery stream, use
+\code{\link[=firehose_describe_delivery_stream]{describe_delivery_stream}}.
 
 If the status of a delivery stream is \code{CREATING_FAILED}, this status
-doesn't change, and you can't invoke \code{CreateDeliveryStream} again on it.
-However, you can invoke the DeleteDeliveryStream operation to delete it.
+doesn't change, and you can't invoke
+\code{\link[=firehose_create_delivery_stream]{create_delivery_stream}} again on it.
+However, you can invoke the
+\code{\link[=firehose_delete_delivery_stream]{delete_delivery_stream}} operation to
+delete it.
 
 A Kinesis Data Firehose delivery stream can be configured to receive
-records directly from providers using PutRecord or PutRecordBatch, or it
-can be configured to use an existing Kinesis stream as its source. To
-specify a Kinesis data stream as input, set the \code{DeliveryStreamType}
-parameter to \code{KinesisStreamAsSource}, and provide the Kinesis stream
-Amazon Resource Name (ARN) and role ARN in the
-\code{KinesisStreamSourceConfiguration} parameter.
+records directly from providers using
+\code{\link[=firehose_put_record]{put_record}} or
+\code{\link[=firehose_put_record_batch]{put_record_batch}}, or it can be configured
+to use an existing Kinesis stream as its source. To specify a Kinesis
+data stream as input, set the \code{DeliveryStreamType} parameter to
+\code{KinesisStreamAsSource}, and provide the Kinesis stream Amazon Resource
+Name (ARN) and role ARN in the \code{KinesisStreamSourceConfiguration}
+parameter.
 
 To create a delivery stream with server-side encryption (SSE) enabled,
 include DeliveryStreamEncryptionConfigurationInput in your request. This
-is optional. You can also invoke StartDeliveryStreamEncryption to turn
-on SSE for an existing delivery stream that doesn't have SSE enabled.
+is optional. You can also invoke
+\code{\link[=firehose_start_delivery_stream_encryption]{start_delivery_stream_encryption}}
+to turn on SSE for an existing delivery stream that doesn't have SSE
+enabled.
 
 A delivery stream is configured with a single destination: Amazon S3,
 Amazon ES, Amazon Redshift, or Splunk. You must specify only one of the

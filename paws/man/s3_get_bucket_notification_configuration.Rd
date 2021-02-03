@@ -28,9 +28,10 @@ For more information about setting and reading the notification
 configuration on a bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html}{Setting Up Notification of Bucket Events}.
 For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html}{Using Bucket Policies}.
 
-The following operation is related to \code{GetBucketNotification}:
+The following operation is related to
+\code{\link[=s3_get_bucket_notification]{get_bucket_notification}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketNotification.html}{PutBucketNotification}
+\item \code{\link[=s3_put_bucket_notification]{put_bucket_notification}}
 }
 }
 \section{Request syntax}{

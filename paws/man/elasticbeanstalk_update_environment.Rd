@@ -78,8 +78,9 @@ error.
 
 When updating the configuration settings to a new template or individual
 settings, a draft configuration is created and
-DescribeConfigurationSettings for this environment returns two setting
-descriptions with different \code{DeploymentStatus} values.
+\code{\link[=elasticbeanstalk_describe_configuration_settings]{describe_configuration_settings}}
+for this environment returns two setting descriptions with different
+\code{DeploymentStatus} values.
 }
 \section{Request syntax}{
 \preformatted{svc$update_environment(

@@ -25,13 +25,15 @@ underlying alarm actions, and any alarm that no longer has an associated
 action.
 
 To remove instances from the Auto Scaling group before deleting it, call
-the DetachInstances API with the list of instances and the option to
-decrement the desired capacity. This ensures that Amazon EC2 Auto
-Scaling does not launch replacement instances.
+the \code{\link[=autoscaling_detach_instances]{detach_instances}} API with the list
+of instances and the option to decrement the desired capacity. This
+ensures that Amazon EC2 Auto Scaling does not launch replacement
+instances.
 
 To terminate all instances before deleting the Auto Scaling group, call
-the UpdateAutoScalingGroup API and set the minimum size and desired
-capacity of the Auto Scaling group to zero.
+the \code{\link[=autoscaling_update_auto_scaling_group]{update_auto_scaling_group}}
+API and set the minimum size and desired capacity of the Auto Scaling
+group to zero.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_auto_scaling_group(

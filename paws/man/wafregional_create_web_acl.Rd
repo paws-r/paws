@@ -22,7 +22,8 @@ or metric names reserved for AWS WAF, including "All" and
 the criteria specified in any of the \code{Rule} objects that are associated
 with the \code{WebACL}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 
 \item{Tags}{}
 }
@@ -49,18 +50,28 @@ To create and configure a \code{WebACL}, perform the following steps:
 \enumerate{
 \item Create and update the \code{ByteMatchSet} objects and other predicates
 that you want to include in \code{Rules}. For more information, see
-CreateByteMatchSet, UpdateByteMatchSet, CreateIPSet, UpdateIPSet,
-CreateSqlInjectionMatchSet, and UpdateSqlInjectionMatchSet.
+\code{\link[=wafregional_create_byte_match_set]{create_byte_match_set}},
+\code{\link[=wafregional_update_byte_match_set]{update_byte_match_set}},
+\code{\link[=wafregional_create_ip_set]{create_ip_set}},
+\code{\link[=wafregional_update_ip_set]{update_ip_set}},
+\code{\link[=wafregional_create_sql_injection_match_set]{create_sql_injection_match_set}},
+and
+\code{\link[=wafregional_update_sql_injection_match_set]{update_sql_injection_match_set}}.
 \item Create and update the \code{Rules} that you want to include in the
-\code{WebACL}. For more information, see CreateRule and UpdateRule.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{CreateWebACL} request.
-\item Submit a \code{CreateWebACL} request.
-\item Use \code{GetChangeToken} to get the change token that you provide in the
-\code{ChangeToken} parameter of an UpdateWebACL request.
-\item Submit an UpdateWebACL request to specify the \code{Rules} that you want
-to include in the \code{WebACL}, to specify the default action, and to
-associate the \code{WebACL} with a CloudFront distribution.
+\code{WebACL}. For more information, see
+\code{\link[=wafregional_create_rule]{create_rule}} and
+\code{\link[=wafregional_update_rule]{update_rule}}.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=wafregional_create_web_acl]{create_web_acl}} request.
+\item Submit a \code{\link[=wafregional_create_web_acl]{create_web_acl}} request.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=wafregional_update_web_acl]{update_web_acl}} request.
+\item Submit an \code{\link[=wafregional_update_web_acl]{update_web_acl}} request to
+specify the \code{Rules} that you want to include in the \code{WebACL}, to
+specify the default action, and to associate the \code{WebACL} with a
+CloudFront distribution.
 }
 
 For more information about how to use the AWS WAF API, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.

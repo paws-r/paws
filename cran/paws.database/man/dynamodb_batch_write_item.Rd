@@ -13,8 +13,9 @@ dynamodb_batch_write_item(RequestItems, ReturnConsumedCapacity,
 operations to be performed (\code{DeleteRequest} or \code{PutRequest}). Each
 element in the map consists of the following:
 \itemize{
-\item \code{DeleteRequest} - Perform a \code{DeleteItem} operation on the specified
-item. The item to be deleted is identified by a \code{Key} subelement:
+\item \code{DeleteRequest} - Perform a \code{\link[=dynamodb_delete_item]{delete_item}}
+operation on the specified item. The item to be deleted is
+identified by a \code{Key} subelement:
 \itemize{
 \item \code{Key} - A map of primary key attribute values that uniquely
 identify the item. Each entry in this map consists of an
@@ -24,8 +25,9 @@ simple primary key, you only need to provide a value for the
 partition key. For a composite primary key, you must provide
 values for \emph{both} the partition key and the sort key.
 }
-\item \code{PutRequest} - Perform a \code{PutItem} operation on the specified item.
-The item to be put is identified by an \code{Item} subelement:
+\item \code{PutRequest} - Perform a \code{\link[=dynamodb_put_item]{put_item}} operation
+on the specified item. The item to be put is identified by an \code{Item}
+subelement:
 \itemize{
 \item \code{Item} - A map of attributes and their values. Each entry in
 this map consists of an attribute name and an attribute value.
@@ -48,28 +50,32 @@ that were modified during the operation are returned in the response. If
 set to \code{NONE} (the default), no statistics are returned.}
 }
 \description{
-The \code{BatchWriteItem} operation puts or deletes multiple items in one or
-more tables. A single call to \code{BatchWriteItem} can write up to 16 MB of
+The \code{\link[=dynamodb_batch_write_item]{batch_write_item}} operation puts or
+deletes multiple items in one or more tables. A single call to
+\code{\link[=dynamodb_batch_write_item]{batch_write_item}} can write up to 16 MB of
 data, which can comprise as many as 25 put or delete requests.
 Individual items to be written can be as large as 400 KB.
 
-\code{BatchWriteItem} cannot update items. To update items, use the
-\code{UpdateItem} action.
+\code{\link[=dynamodb_batch_write_item]{batch_write_item}} cannot update items. To
+update items, use the \code{\link[=dynamodb_update_item]{update_item}} action.
 
-The individual \code{PutItem} and \code{DeleteItem} operations specified in
-\code{BatchWriteItem} are atomic; however \code{BatchWriteItem} as a whole is not.
-If any requested operations fail because the table's provisioned
-throughput is exceeded or an internal processing failure occurs, the
-failed operations are returned in the \code{UnprocessedItems} response
-parameter. You can investigate and optionally resend the requests.
-Typically, you would call \code{BatchWriteItem} in a loop. Each iteration
-would check for unprocessed items and submit a new \code{BatchWriteItem}
-request with those unprocessed items until all items have been
-processed.
+The individual \code{\link[=dynamodb_put_item]{put_item}} and
+\code{\link[=dynamodb_delete_item]{delete_item}} operations specified in
+\code{\link[=dynamodb_batch_write_item]{batch_write_item}} are atomic; however
+\code{\link[=dynamodb_batch_write_item]{batch_write_item}} as a whole is not. If
+any requested operations fail because the table's provisioned throughput
+is exceeded or an internal processing failure occurs, the failed
+operations are returned in the \code{UnprocessedItems} response parameter.
+You can investigate and optionally resend the requests. Typically, you
+would call \code{\link[=dynamodb_batch_write_item]{batch_write_item}} in a loop.
+Each iteration would check for unprocessed items and submit a new
+\code{\link[=dynamodb_batch_write_item]{batch_write_item}} request with those
+unprocessed items until all items have been processed.
 
 If \emph{none} of the items can be processed due to insufficient provisioned
-throughput on all of the tables in the request, then \code{BatchWriteItem}
-returns a \code{ProvisionedThroughputExceededException}.
+throughput on all of the tables in the request, then
+\code{\link[=dynamodb_batch_write_item]{batch_write_item}} returns a
+\code{ProvisionedThroughputExceededException}.
 
 If DynamoDB returns any unprocessed items, you should retry the batch
 operation on those items. However, \emph{we strongly recommend that you use
@@ -82,21 +88,25 @@ more likely to succeed.
 For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.BatchOperations}{Batch Operations and Error Handling}
 in the \emph{Amazon DynamoDB Developer Guide}.
 
-With \code{BatchWriteItem}, you can efficiently write or delete large amounts
-of data, such as from Amazon EMR, or copy data from another database
-into DynamoDB. In order to improve performance with these large-scale
-operations, \code{BatchWriteItem} does not behave in the same way as
-individual \code{PutItem} and \code{DeleteItem} calls would. For example, you
+With \code{\link[=dynamodb_batch_write_item]{batch_write_item}}, you can
+efficiently write or delete large amounts of data, such as from Amazon
+EMR, or copy data from another database into DynamoDB. In order to
+improve performance with these large-scale operations,
+\code{\link[=dynamodb_batch_write_item]{batch_write_item}} does not behave in the
+same way as individual \code{\link[=dynamodb_put_item]{put_item}} and
+\code{\link[=dynamodb_delete_item]{delete_item}} calls would. For example, you
 cannot specify conditions on individual put and delete requests, and
-\code{BatchWriteItem} does not return deleted items in the response.
+\code{\link[=dynamodb_batch_write_item]{batch_write_item}} does not return deleted
+items in the response.
 
 If you use a programming language that supports concurrency, you can use
 threads to write items in parallel. Your application must include the
 necessary logic to manage the threads. With languages that don't support
 threading, you must update or delete the specified items one at a time.
-In both situations, \code{BatchWriteItem} performs the specified put and
-delete operations in parallel, giving you the power of the thread pool
-approach without having to introduce complexity into your application.
+In both situations, \code{\link[=dynamodb_batch_write_item]{batch_write_item}}
+performs the specified put and delete operations in parallel, giving you
+the power of the thread pool approach without having to introduce
+complexity into your application.
 
 Parallel processing reduces latency, but each specified put and delete
 request consumes the same number of write capacity units whether it is
@@ -106,13 +116,15 @@ consume one write capacity unit.
 If one or more of the following is true, DynamoDB rejects the entire
 batch write operation:
 \itemize{
-\item One or more tables specified in the \code{BatchWriteItem} request does
-not exist.
+\item One or more tables specified in the
+\code{\link[=dynamodb_batch_write_item]{batch_write_item}} request does not
+exist.
 \item Primary key attributes specified on an item in the request do not
 match those in the corresponding table's primary key schema.
 \item You try to perform multiple operations on the same item in the same
-\code{BatchWriteItem} request. For example, you cannot put and delete the
-same item in the same \code{BatchWriteItem} request.
+\code{\link[=dynamodb_batch_write_item]{batch_write_item}} request. For
+example, you cannot put and delete the same item in the same
+\code{\link[=dynamodb_batch_write_item]{batch_write_item}} request.
 \item Your request contains at least two items with identical hash and
 range keys (which essentially is two put operations).
 \item There are more than 25 requests in the batch.

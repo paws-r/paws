@@ -21,9 +21,10 @@ on action execution start times. Default value is 100.
 Detailed execution history is available for executions run on or after
 February 21, 2019.}
 
-\item{nextToken}{The token that was returned from the previous \code{ListActionExecutions}
-call, which can be used to return the next set of action executions in
-the list.}
+\item{nextToken}{The token that was returned from the previous
+\code{\link[=codepipeline_list_action_executions]{list_action_executions}} call,
+which can be used to return the next set of action executions in the
+list.}
 }
 \description{
 Lists the action executions that have occurred in a pipeline.

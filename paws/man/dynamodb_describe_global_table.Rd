@@ -14,9 +14,7 @@ Returns information about the specified global table.
 
 This operation only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html}{Version 2017.11.29}
 of global tables. If you are using global tables \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html}{Version 2019.11.21}
-you can use
-\href{https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_DescribeTable.html}{DescribeTable}
-instead.
+you can use \code{\link[=dynamodb_describe_table]{describe_table}} instead.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_global_table(

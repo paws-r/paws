@@ -49,8 +49,8 @@ You can't set a value for \code{IncludeOnly} if you also set a value for
 
 To identify the names of the default individual assessments that AWS DMS
 supports for the associated migration task, run the
-\code{DescribeApplicableIndividualAssessments} operation using its own
-\code{ReplicationTaskArn} request parameter.}
+\code{\link[=databasemigrationservice_describe_applicable_individual_assessments]{describe_applicable_individual_assessments}}
+operation using its own \code{ReplicationTaskArn} request parameter.}
 
 \item{Exclude}{Space-separated list of names for specific individual assessments that
 you want to exclude. These names come from the default list of
@@ -62,8 +62,8 @@ You can't set a value for \code{Exclude} if you also set a value for
 
 To identify the names of the default individual assessments that AWS DMS
 supports for the associated migration task, run the
-\code{DescribeApplicableIndividualAssessments} operation using its own
-\code{ReplicationTaskArn} request parameter.}
+\code{\link[=databasemigrationservice_describe_applicable_individual_assessments]{describe_applicable_individual_assessments}}
+operation using its own \code{ReplicationTaskArn} request parameter.}
 }
 \description{
 Starts a new premigration assessment run for one or more individual

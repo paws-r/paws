@@ -21,14 +21,19 @@ you must delete all the policy's versions. The following steps describe
 the process for deleting a managed policy:
 \itemize{
 \item Detach the policy from all users, groups, and roles that the policy
-is attached to, using the DetachUserPolicy, DetachGroupPolicy, or
-DetachRolePolicy API operations. To list all the users, groups, and
-roles that a policy is attached to, use ListEntitiesForPolicy.
-\item Delete all versions of the policy using DeletePolicyVersion. To list
-the policy's versions, use ListPolicyVersions. You cannot use
-DeletePolicyVersion to delete the version that is marked as the
-default version. You delete the policy's default version in the next
-step of the process.
+is attached to, using the
+\code{\link[=iam_detach_user_policy]{detach_user_policy}},
+\code{\link[=iam_detach_group_policy]{detach_group_policy}}, or
+\code{\link[=iam_detach_role_policy]{detach_role_policy}} API operations. To
+list all the users, groups, and roles that a policy is attached to,
+use \code{\link[=iam_list_entities_for_policy]{list_entities_for_policy}}.
+\item Delete all versions of the policy using
+\code{\link[=iam_delete_policy_version]{delete_policy_version}}. To list the
+policy's versions, use
+\code{\link[=iam_list_policy_versions]{list_policy_versions}}. You cannot use
+\code{\link[=iam_delete_policy_version]{delete_policy_version}} to delete the
+version that is marked as the default version. You delete the
+policy's default version in the next step of the process.
 \item Delete the policy (this automatically deletes the policy's default
 version) using this API.
 }

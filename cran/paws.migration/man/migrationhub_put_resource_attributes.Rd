@@ -42,7 +42,9 @@ Used to test if the caller has permission to make the call.}
 \description{
 Provides identifying details of the resource being migrated so that it
 can be associated in the Application Discovery Service repository. This
-association occurs asynchronously after \code{PutResourceAttributes} returns.
+association occurs asynchronously after
+\code{\link[=migrationhub_put_resource_attributes]{put_resource_attributes}}
+returns.
 \itemize{
 \item Keep in mind that subsequent calls to PutResourceAttributes will
 override previously stored attributes. For example, if it is first
@@ -56,7 +58,8 @@ parameter when specifying any "VM" related value.
 
 Because this is an asynchronous call, it will always return 200, whether
 an association occurs or not. To confirm if an association was found
-based on the provided details, call \code{ListDiscoveredResources}.
+based on the provided details, call
+\code{\link[=migrationhub_list_discovered_resources]{list_discovered_resources}}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_resource_attributes(

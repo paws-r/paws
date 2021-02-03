@@ -80,7 +80,7 @@ iotanalytics_batch_put_message <- function(channelName, messages) {
 #'
 #' @param pipelineName &#91;required&#93; The name of pipeline for which data reprocessing is canceled.
 #' @param reprocessingId &#91;required&#93; The ID of the reprocessing task (returned by
-#' `StartPipelineReprocessing`).
+#' [`start_pipeline_reprocessing`][iotanalytics_start_pipeline_reprocessing]).
 #'
 #' @section Request syntax:
 #' ```
@@ -182,8 +182,8 @@ iotanalytics_create_channel <- function(channelName, channelStorage = NULL, rete
 #' applying a `queryAction` (a SQL query) or a `containerAction` (executing
 #' a containerized application). This operation creates the skeleton of a
 #' dataset. The dataset can be populated manually by calling
-#' `CreateDatasetContent` or automatically according to a trigger you
-#' specify.
+#' [`create_dataset_content`][iotanalytics_create_dataset_content] or
+#' automatically according to a trigger you specify.
 #'
 #' @usage
 #' iotanalytics_create_dataset(datasetName, actions, triggers,
@@ -1067,10 +1067,11 @@ iotanalytics_list_channels <- function(nextToken = NULL, maxResults = NULL) {
 #' @param maxResults The maximum number of results to return in this request.
 #' @param scheduledOnOrAfter A filter to limit results to those data set contents whose creation is
 #' scheduled on or after the given time. See the field `triggers.schedule`
-#' in the `CreateDataset` request. (timestamp)
+#' in the [`create_dataset`][iotanalytics_create_dataset] request.
+#' (timestamp)
 #' @param scheduledBefore A filter to limit results to those data set contents whose creation is
 #' scheduled before the given time. See the field `triggers.schedule` in
-#' the `CreateDataset` request. (timestamp)
+#' the [`create_dataset`][iotanalytics_create_dataset] request. (timestamp)
 #'
 #' @section Request syntax:
 #' ```

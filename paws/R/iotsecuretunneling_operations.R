@@ -6,9 +6,10 @@ NULL
 #' Closes a tunnel identified by the unique tunnel id
 #'
 #' @description
-#' Closes a tunnel identified by the unique tunnel id. When a `CloseTunnel`
-#' request is received, we close the WebSocket connections between the
-#' client and proxy server so no data can be transmitted.
+#' Closes a tunnel identified by the unique tunnel id. When a
+#' [`close_tunnel`][iotsecuretunneling_close_tunnel] request is received,
+#' we close the WebSocket connections between the client and proxy server
+#' so no data can be transmitted.
 #'
 #' @usage
 #' iotsecuretunneling_close_tunnel(tunnelId, delete)

@@ -20,8 +20,8 @@ can be deleted.
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html}{DeleteObject}
+\item \code{\link[=s3_create_bucket]{create_bucket}}
+\item \code{\link[=s3_delete_object]{delete_object}}
 }
 }
 \section{Request syntax}{

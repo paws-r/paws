@@ -14,8 +14,9 @@ fsx_describe_data_repository_tasks(TaskIds, Filters, MaxResults,
 (String).}
 
 \item{Filters}{(Optional) You can use filters to narrow the
-\code{DescribeDataRepositoryTasks} response to include just tasks for
-specific file systems, or tasks in a specific lifecycle state.}
+\code{\link[=fsx_describe_data_repository_tasks]{describe_data_repository_tasks}}
+response to include just tasks for specific file systems, or tasks in a
+specific lifecycle state.}
 
 \item{MaxResults}{}
 

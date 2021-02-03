@@ -79,11 +79,12 @@ in the \emph{CloudFormation CLI User Guide}.
 
 You can have a maximum of 50 resource type versions registered at a
 time. This maximum is per account and per region. Use
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeregisterType.html}{DeregisterType}
-to deregister specific resource type versions if necessary.
+\code{\link[=cloudformation_deregister_type]{deregister_type}} to deregister
+specific resource type versions if necessary.
 
 Once you have initiated a registration request using
-\verb{<a>RegisterType</a>}, you can use \verb{<a>DescribeTypeRegistration</a>}
+\code{\link[=cloudformation_register_type]{register_type}}, you can use
+\code{\link[=cloudformation_describe_type_registration]{describe_type_registration}}
 to monitor the progress of the registration request.
 }
 \section{Request syntax}{

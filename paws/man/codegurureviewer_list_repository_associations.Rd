@@ -49,19 +49,23 @@ Enterprise Server, this is name of the account that was used to
 associate the repository.}
 
 \item{MaxResults}{The maximum number of repository association results returned by
-\code{ListRepositoryAssociations} in paginated output. When this parameter is
-used, \code{ListRepositoryAssociations} only returns \code{maxResults} results in
-a single page with a \code{nextToken} response element. The remaining results
-of the initial request can be seen by sending another
-\code{ListRepositoryAssociations} request with the returned \code{nextToken}
-value. This value can be between 1 and 100. If this parameter is not
-used, \code{ListRepositoryAssociations} returns up to 100 results and a
-\code{nextToken} value if applicable.}
+\code{\link[=codegurureviewer_list_repository_associations]{list_repository_associations}}
+in paginated output. When this parameter is used,
+\code{\link[=codegurureviewer_list_repository_associations]{list_repository_associations}}
+only returns \code{maxResults} results in a single page with a \code{nextToken}
+response element. The remaining results of the initial request can be
+seen by sending another
+\code{\link[=codegurureviewer_list_repository_associations]{list_repository_associations}}
+request with the returned \code{nextToken} value. This value can be between 1
+and 100. If this parameter is not used,
+\code{\link[=codegurureviewer_list_repository_associations]{list_repository_associations}}
+returns up to 100 results and a \code{nextToken} value if applicable.}
 
 \item{NextToken}{The \code{nextToken} value returned from a previous paginated
-\code{ListRepositoryAssociations} request where \code{maxResults} was used and the
-results exceeded the value of that parameter. Pagination continues from
-the end of the previous results that returned the \code{nextToken} value.
+\code{\link[=codegurureviewer_list_repository_associations]{list_repository_associations}}
+request where \code{maxResults} was used and the results exceeded the value
+of that parameter. Pagination continues from the end of the previous
+results that returned the \code{nextToken} value.
 
 Treat this token as an opaque identifier that is only used to retrieve
 the next items in a list and not for other programmatic purposes.}

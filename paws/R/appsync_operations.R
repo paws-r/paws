@@ -1138,8 +1138,8 @@ appsync_get_type <- function(apiId, typeName, format) {
 #' 
 #' API keys are deleted automatically 60 days after they expire. However,
 #' they may still be included in the response until they have actually been
-#' deleted. You can safely call `DeleteApiKey` to manually delete a key
-#' before it's automatically deleted.
+#' deleted. You can safely call [`delete_api_key`][appsync_delete_api_key]
+#' to manually delete a key before it's automatically deleted.
 #'
 #' @usage
 #' appsync_list_api_keys(apiId, nextToken, maxResults)

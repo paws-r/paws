@@ -32,13 +32,14 @@ Concurrency settings apply to the function as a whole, including all
 published versions and the unpublished version. Reserving concurrency
 both ensures that your function has capacity to process the specified
 number of events simultaneously, and prevents it from scaling beyond
-that level. Use GetFunction to see the current setting for a function.
+that level. Use \code{\link[=lambda_get_function]{get_function}} to see the current
+setting for a function.
 
-Use GetAccountSettings to see your Regional concurrency limit. You can
-reserve concurrency for as many functions as you like, as long as you
-leave at least 100 simultaneous executions unreserved for functions that
-aren't configured with a per-function limit. For more information, see
-\href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-scaling.html}{Managing Concurrency}.
+Use \code{\link[=lambda_get_account_settings]{get_account_settings}} to see your
+Regional concurrency limit. You can reserve concurrency for as many
+functions as you like, as long as you leave at least 100 simultaneous
+executions unreserved for functions that aren't configured with a
+per-function limit. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-scaling.html}{Managing Concurrency}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_function_concurrency(

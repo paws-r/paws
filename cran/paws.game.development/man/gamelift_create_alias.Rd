@@ -20,9 +20,11 @@ developer-defined key-value pairs. Tagging AWS resources are useful for
 resource management, access management and cost allocation. For more
 information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
 in the \emph{AWS General Reference}. Once the resource is created, you can
-use TagResource, UntagResource, and ListTagsForResource to add, remove,
-and view tags. The maximum tag limit may be lower than stated. See the
-AWS General Reference for actual tagging limits.}
+use \code{\link[=gamelift_tag_resource]{tag_resource}},
+\code{\link[=gamelift_untag_resource]{untag_resource}}, and
+\code{\link[=gamelift_list_tags_for_resource]{list_tags_for_resource}} to add,
+remove, and view tags. The maximum tag limit may be lower than stated.
+See the AWS General Reference for actual tagging limits.}
 }
 \description{
 Creates an alias for a fleet. In most situations, you can use an alias
@@ -41,14 +43,14 @@ To create a fleet alias, specify an alias name, routing strategy, and
 optional description. Each simple alias can point to only one fleet, but
 a fleet can have multiple aliases. If successful, a new alias record is
 returned, including an alias ID and an ARN. You can reassign an alias to
-another fleet by calling \code{UpdateAlias}.
+another fleet by calling \code{\link[=gamelift_update_alias]{update_alias}}.
 \itemize{
-\item CreateAlias
-\item ListAliases
-\item DescribeAlias
-\item UpdateAlias
-\item DeleteAlias
-\item ResolveAlias
+\item \code{\link[=gamelift_create_alias]{create_alias}}
+\item \code{\link[=gamelift_list_aliases]{list_aliases}}
+\item \code{\link[=gamelift_describe_alias]{describe_alias}}
+\item \code{\link[=gamelift_update_alias]{update_alias}}
+\item \code{\link[=gamelift_delete_alias]{delete_alias}}
+\item \code{\link[=gamelift_resolve_alias]{resolve_alias}}
 }
 }
 \section{Request syntax}{

@@ -23,7 +23,7 @@ vocabulary. The URI must be in the same AWS Region as the resource that
 you're calling. Enter information about your \code{VocabularyFileUri} in the
 following format:
 
-\verb{https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt;}
+\verb{https://s3.<aws-region>.amazonaws.com/<bucket-name>/<keyprefix>/<objectkey>}
 
 The following is an example URI for a vocabulary file that is stored in
 Amazon S3:

@@ -16,11 +16,13 @@ Deletes an alias for the specified bot.
 
 You can't delete an alias that is used in the association between a bot
 and a messaging channel. If an alias is used in a channel association,
-the \code{DeleteBot} operation returns a \code{ResourceInUseException} exception
-that includes a reference to the channel association that refers to the
-bot. You can remove the reference to the alias by deleting the channel
-association. If you get the same exception again, delete the referring
-association until the \code{DeleteBotAlias} operation is successful.
+the \code{\link[=lexmodelbuildingservice_delete_bot]{delete_bot}} operation returns
+a \code{ResourceInUseException} exception that includes a reference to the
+channel association that refers to the bot. You can remove the reference
+to the alias by deleting the channel association. If you get the same
+exception again, delete the referring association until the
+\code{\link[=lexmodelbuildingservice_delete_bot_alias]{delete_bot_alias}} operation
+is successful.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bot_alias(

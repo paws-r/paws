@@ -25,7 +25,7 @@ the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Related Resources:}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketCors.html}{PutBucketCors}
+\item \code{\link[=s3_put_bucket_cors]{put_bucket_cors}}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html}{RESTOPTIONSobject}
 }
 }

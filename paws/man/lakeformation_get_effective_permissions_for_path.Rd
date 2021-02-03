@@ -25,8 +25,8 @@ list.}
 \description{
 Returns the Lake Formation permissions for a specified table or database
 resource located at a path in Amazon S3.
-\code{GetEffectivePermissionsForPath} will not return databases and tables if
-the catalog is encrypted.
+\code{\link[=lakeformation_get_effective_permissions_for_path]{get_effective_permissions_for_path}}
+will not return databases and tables if the catalog is encrypted.
 }
 \section{Request syntax}{
 \preformatted{svc$get_effective_permissions_for_path(

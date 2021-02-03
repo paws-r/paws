@@ -16,7 +16,8 @@ management network interface. Specify an IP address range that is
 compatible with your network and in CIDR notation (that is, specify the
 range as an IPv4 CIDR block). The CIDR block size must be /16 (for
 example, 203.0.113.25/16). It must also be specified as available by the
-\code{ListAvailableManagementCidrRanges} operation.}
+\code{\link[=workspaces_list_available_management_cidr_ranges]{list_available_management_cidr_ranges}}
+operation.}
 }
 \description{
 Modifies the configuration of Bring Your Own License (BYOL) for the

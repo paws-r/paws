@@ -2284,8 +2284,9 @@ frauddetector_update_detector_version_metadata <- function(detectorId, detectorV
 #'
 #' @description
 #' Updates the detector version’s status. You can perform the following
-#' promotions or demotions using `UpdateDetectorVersionStatus`: `DRAFT` to
-#' `ACTIVE`, `ACTIVE` to `INACTIVE`, and `INACTIVE` to `ACTIVE`.
+#' promotions or demotions using
+#' [`update_detector_version_status`][frauddetector_update_detector_version_status]:
+#' `DRAFT` to `ACTIVE`, `ACTIVE` to `INACTIVE`, and `INACTIVE` to `ACTIVE`.
 #'
 #' @usage
 #' frauddetector_update_detector_version_status(detectorId,

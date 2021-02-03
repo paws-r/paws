@@ -12,23 +12,26 @@ NULL
 #' stream of chunks in order by fragment number.
 #' 
 #' You must first call the `GetDataEndpoint` API to get an endpoint. Then
-#' send the `GetMedia` requests to this endpoint using the [--endpoint-url
+#' send the [`get_media`][kinesisvideomedia_get_media] requests to this
+#' endpoint using the [--endpoint-url
 #' parameter](https://docs.aws.amazon.com/cli/latest/reference/).
 #' 
 #' When you put media data (fragments) on a stream, Kinesis Video Streams
 #' stores each incoming fragment and related metadata in what is called a
 #' "chunk." For more information, see
 #' [PutMedia](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_dataplane_PutMedia.html).
-#' The `GetMedia` API returns a stream of these chunks starting from the
-#' chunk that you specify in the request.
+#' The [`get_media`][kinesisvideomedia_get_media] API returns a stream of
+#' these chunks starting from the chunk that you specify in the request.
 #' 
-#' The following limits apply when using the `GetMedia` API:
+#' The following limits apply when using the
+#' [`get_media`][kinesisvideomedia_get_media] API:
 #' 
-#' -   A client can call `GetMedia` up to five times per second per stream.
+#' -   A client can call [`get_media`][kinesisvideomedia_get_media] up to
+#'     five times per second per stream.
 #' 
 #' -   Kinesis Video Streams sends media data at a rate of up to 25
 #'     megabytes per second (or 200 megabits per second) during a
-#'     `GetMedia` session.
+#'     [`get_media`][kinesisvideomedia_get_media] session.
 #' 
 #' If an error is thrown after invoking a Kinesis Video Streams media API,
 #' in addition to the HTTP status code and the response body, it includes

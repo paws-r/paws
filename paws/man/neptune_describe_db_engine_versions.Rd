@@ -41,12 +41,14 @@ marker, up to the value specified by \code{MaxRecords}.}
 engine and major version combination is returned.}
 
 \item{ListSupportedCharacterSets}{If this parameter is specified and the requested engine supports the
-\code{CharacterSetName} parameter for \code{CreateDBInstance}, the response
+\code{CharacterSetName} parameter for
+\code{\link[=neptune_create_db_instance]{create_db_instance}}, the response
 includes a list of supported character sets for each engine version.}
 
 \item{ListSupportedTimezones}{If this parameter is specified and the requested engine supports the
-\code{TimeZone} parameter for \code{CreateDBInstance}, the response includes a
-list of supported time zones for each engine version.}
+\code{TimeZone} parameter for
+\code{\link[=neptune_create_db_instance]{create_db_instance}}, the response
+includes a list of supported time zones for each engine version.}
 }
 \description{
 Returns a list of the available DB engines.

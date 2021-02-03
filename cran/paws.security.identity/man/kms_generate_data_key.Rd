@@ -24,8 +24,10 @@ For example:
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To
-get the alias name and alias ARN, use ListAliases.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
+get the alias name and alias ARN, use
+\code{\link[=kms_list_aliases]{list_aliases}}.}
 
 \item{EncryptionContext}{Specifies the encryption context that will be used when encrypting the
 data key.
@@ -46,13 +48,15 @@ value 64 to generate a 512-bit data key (64 bytes is 512 bits). For
 parameter.
 
 You must specify either the \code{KeySpec} or the \code{NumberOfBytes} parameter
-(but not both) in every \code{GenerateDataKey} request.}
+(but not both) in every \code{\link[=kms_generate_data_key]{generate_data_key}}
+request.}
 
 \item{KeySpec}{Specifies the length of the data key. Use \code{AES_128} to generate a
 128-bit symmetric key, or \code{AES_256} to generate a 256-bit symmetric key.
 
 You must specify either the \code{KeySpec} or the \code{NumberOfBytes} parameter
-(but not both) in every \code{GenerateDataKey} request.}
+(but not both) in every \code{\link[=kms_generate_data_key]{generate_data_key}}
+request.}
 
 \item{GrantTokens}{A list of grant tokens.
 
@@ -66,21 +70,25 @@ encrypted under a customer master key (CMK) that you specify. You can
 use the plaintext key to encrypt your data outside of AWS KMS and store
 the encrypted data key with the encrypted data.
 
-\code{GenerateDataKey} returns a unique data key for each request. The bytes
-in the plaintext key are not related to the caller or the CMK.
+\code{\link[=kms_generate_data_key]{generate_data_key}} returns a unique data key
+for each request. The bytes in the plaintext key are not related to the
+caller or the CMK.
 
 To generate a data key, specify the symmetric CMK that will be used to
 encrypt the data key. You cannot use an asymmetric CMK to generate data
-keys. To get the type of your CMK, use the DescribeKey operation. You
-must also specify the length of the data key. Use either the \code{KeySpec}
-or \code{NumberOfBytes} parameters (but not both). For 128-bit and 256-bit
-data keys, use the \code{KeySpec} parameter.
+keys. To get the type of your CMK, use the
+\code{\link[=kms_describe_key]{describe_key}} operation. You must also specify the
+length of the data key. Use either the \code{KeySpec} or \code{NumberOfBytes}
+parameters (but not both). For 128-bit and 256-bit data keys, use the
+\code{KeySpec} parameter.
 
 To get only an encrypted copy of the data key, use
-GenerateDataKeyWithoutPlaintext. To generate an asymmetric data key
-pair, use the GenerateDataKeyPair or GenerateDataKeyPairWithoutPlaintext
+\code{\link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext}}.
+To generate an asymmetric data key pair, use the
+\code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}} or
+\code{\link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext}}
 operation. To get a cryptographically secure random byte string, use
-GenerateRandom.
+\code{\link[=kms_generate_random]{generate_random}}.
 
 You can use the optional encryption context to add additional security
 to the encryption operation. If you specify an \code{EncryptionContext}, you
@@ -105,7 +113,8 @@ to do these tasks for you.
 
 To encrypt data outside of AWS KMS:
 \enumerate{
-\item Use the \code{GenerateDataKey} operation to get a data key.
+\item Use the \code{\link[=kms_generate_data_key]{generate_data_key}} operation to
+get a data key.
 \item Use the plaintext data key (in the \code{Plaintext} field of the
 response) to encrypt your data outside of AWS KMS. Then erase the
 plaintext data key from memory.
@@ -115,8 +124,8 @@ response) with the encrypted data.
 
 To decrypt data outside of AWS KMS:
 \enumerate{
-\item Use the Decrypt operation to decrypt the encrypted data key. The
-operation returns a plaintext copy of the data key.
+\item Use the \code{\link[=kms_decrypt]{decrypt}} operation to decrypt the encrypted
+data key. The operation returns a plaintext copy of the data key.
 \item Use the plaintext data key to decrypt data outside of AWS KMS, then
 erase the plaintext data key from memory.
 }
@@ -131,11 +140,11 @@ the \code{KeyId} parameter.
 
 \strong{Related operations:}
 \itemize{
-\item Decrypt
-\item Encrypt
-\item GenerateDataKeyPair
-\item GenerateDataKeyPairWithoutPlaintext
-\item GenerateDataKeyWithoutPlaintext
+\item \code{\link[=kms_decrypt]{decrypt}}
+\item \code{\link[=kms_encrypt]{encrypt}}
+\item \code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}}
+\item \code{\link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext}}
+\item \code{\link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext}}
 }
 }
 \section{Request syntax}{

@@ -23,9 +23,9 @@ Default: 100
 Constraints: Minimum 20, maximum 100.}
 
 \item{Marker}{An optional pagination token provided by a previous
-\code{DescribeEngineDefaultParameters} request. If this parameter is
-specified, the response includes only records beyond the marker, up to
-the value specified by \code{MaxRecords}.}
+\code{\link[=rds_describe_engine_default_parameters]{describe_engine_default_parameters}}
+request. If this parameter is specified, the response includes only
+records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
 \description{
 Returns the default engine and system parameter information for the

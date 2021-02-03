@@ -18,8 +18,8 @@ If \code{DisplayName} isn't specified, \code{TrialName} is displayed.}
 
 \item{MetadataProperties}{}
 
-\item{Tags}{A list of tags to associate with the trial. You can use Search API to
-search on the tags.}
+\item{Tags}{A list of tags to associate with the trial. You can use
+\code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }
 \description{
 Creates an Amazon SageMaker \emph{trial}. A trial is a set of steps called
@@ -31,12 +31,14 @@ all experiments, trials, and trial components are automatically tracked,
 logged, and indexed. When you use the AWS SDK for Python (Boto), you
 must use the logging APIs provided by the SDK.
 
-You can add tags to a trial and then use the Search API to search for
-the tags.
+You can add tags to a trial and then use the
+\code{\link[=sagemaker_search]{search}} API to search for the tags.
 
-To get a list of all your trials, call the ListTrials API. To view a
-trial's properties, call the DescribeTrial API. To create a trial
-component, call the CreateTrialComponent API.
+To get a list of all your trials, call the
+\code{\link[=sagemaker_list_trials]{list_trials}} API. To view a trial's
+properties, call the \code{\link[=sagemaker_describe_trial]{describe_trial}} API.
+To create a trial component, call the
+\code{\link[=sagemaker_create_trial_component]{create_trial_component}} API.
 }
 \section{Request syntax}{
 \preformatted{svc$create_trial(

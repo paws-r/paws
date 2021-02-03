@@ -17,8 +17,10 @@ sets provided. To execute a SQL statement with no parameters, use one of
 the following options:
 \itemize{
 \item Specify one or more empty parameter sets.
-\item Use the \code{ExecuteStatement} operation instead of the
-\code{BatchExecuteStatement} operation.
+\item Use the \code{\link[=rdsdataservice_execute_statement]{execute_statement}}
+operation instead of the
+\code{\link[=rdsdataservice_batch_execute_statement]{batch_execute_statement}}
+operation.
 }
 
 Array parameters are not supported.}
@@ -32,8 +34,9 @@ Array parameters are not supported.}
 \item{sql}{[required] The SQL statement to run.}
 
 \item{transactionId}{The identifier of a transaction that was started by using the
-\code{BeginTransaction} operation. Specify the transaction ID of the
-transaction that you want to include the SQL statement in.
+\code{\link[=rdsdataservice_begin_transaction]{begin_transaction}} operation.
+Specify the transaction ID of the transaction that you want to include
+the SQL statement in.
 
 If the SQL statement is not part of a transaction, don't set this
 parameter.}

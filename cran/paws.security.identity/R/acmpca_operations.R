@@ -174,11 +174,9 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
 #' @description
 #' Creates an audit report that lists every time that your CA private key
 #' is used. The report is saved in the Amazon S3 bucket that you specify on
-#' input. The
-#' [IssueCertificate](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_IssueCertificate.html)
-#' and
-#' [RevokeCertificate](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_RevokeCertificate.html)
-#' actions use the private key.
+#' input. The [`issue_certificate`][acmpca_issue_certificate] and
+#' [`revoke_certificate`][acmpca_revoke_certificate] actions use the
+#' private key.
 #' 
 #' Both PCA and the IAM principal must have permission to write to the S3
 #' bucket that you specify. If the IAM principal making the call does not
@@ -197,7 +195,7 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of the CA to be audited. This is of the
 #' form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `.
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
 #' @param S3BucketName &#91;required&#93; The name of the S3 bucket that will contain the audit report.
 #' @param AuditReportResponseFormat &#91;required&#93; The format in which to create the report. This can be either **JSON** or
 #' **CSV**.
@@ -241,16 +239,15 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 #' AWS account as the CA.
 #' 
 #' You can list current permissions with the
-#' [ListPermissions](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListPermissions.html)
-#' action and revoke them with the
-#' [DeletePermission](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeletePermission.html)
-#' action.
+#' [`list_permissions`][acmpca_list_permissions] action and revoke them
+#' with the [`delete_permission`][acmpca_delete_permission] action.
 #' 
 #' **About Permissions**
 #' 
 #' -   If the private CA and the certificates it issues reside in the same
-#'     account, you can use `CreatePermission` to grant permissions for ACM
-#'     to carry out automatic certificate renewals.
+#'     account, you can use [`create_permission`][acmpca_create_permission]
+#'     to grant permissions for ACM to carry out automatic certificate
+#'     renewals.
 #' 
 #' -   For automatic certificate renewal to succeed, the ACM service
 #'     principal needs permissions to create, retrieve, and list
@@ -270,15 +267,17 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of the CA that grants the permissions.
 #' You can find the ARN by calling the
-#' [ListCertificateAuthorities](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html)
+#' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
 #' action. This must have the following form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `.
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
 #' @param Principal &#91;required&#93; The AWS service or identity that receives the permission. At this time,
 #' the only valid principal is `acm.amazonaws.com`.
 #' @param SourceAccount The ID of the calling account.
 #' @param Actions &#91;required&#93; The actions that the specified AWS service principal can use. These
-#' include `IssueCertificate`, `GetCertificate`, and `ListPermissions`.
+#' include [`issue_certificate`][acmpca_issue_certificate],
+#' [`get_certificate`][acmpca_get_certificate], and
+#' [`list_permissions`][acmpca_list_permissions].
 #'
 #' @section Request syntax:
 #' ```
@@ -318,7 +317,7 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' Deletes a private certificate authority (CA). You must provide the
 #' Amazon Resource Name (ARN) of the private CA that you want to delete.
 #' You can find the ARN by calling the
-#' [ListCertificateAuthorities](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html)
+#' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
 #' action.
 #' 
 #' Deleting a CA will invalidate other CAs and certificates below it in
@@ -326,7 +325,7 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' 
 #' Before you can delete a CA that you have created and activated, you must
 #' disable it. To do this, call the
-#' [UpdateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UpdateCertificateAuthority.html)
+#' [`update_certificate_authority`][acmpca_update_certificate_authority]
 #' action and set the **CertificateAuthorityStatus** parameter to
 #' `DISABLED`.
 #' 
@@ -337,16 +336,16 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' `PENDING_CERTIFICATE`).
 #' 
 #' When you successfully call
-#' [DeleteCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeleteCertificateAuthority.html),
+#' [`delete_certificate_authority`][acmpca_delete_certificate_authority],
 #' the CA's status changes to `DELETED`. However, the CA won't be
 #' permanently deleted until the restoration period has passed. By default,
 #' if you do not set the `PermanentDeletionTimeInDays` parameter, the CA
 #' remains restorable for 30 days. You can set the parameter from 7 to 30
 #' days. The
-#' [DescribeCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DescribeCertificateAuthority.html)
+#' [`describe_certificate_authority`][acmpca_describe_certificate_authority]
 #' action returns the time remaining in the restoration window of a private
 #' CA in the `DELETED` state. To restore an eligible CA, call the
-#' [RestoreCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_RestoreCertificateAuthority.html)
+#' [`restore_certificate_authority`][acmpca_restore_certificate_authority]
 #' action.
 #'
 #' @usage
@@ -354,10 +353,10 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #'   PermanentDeletionTimeInDays)
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html).
+#' [`create_certificate_authority`][acmpca_create_certificate_authority].
 #' This must have the following form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `.
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
 #' @param PermanentDeletionTimeInDays The number of days to make a CA restorable after it has been deleted.
 #' This can be anywhere from 7 to 30 days, with 30 being the default.
 #'
@@ -402,16 +401,15 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
 #' automatically.
 #' 
 #' Permissions can be granted with the
-#' [CreatePermission](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreatePermission.html)
-#' action and listed with the
-#' [ListPermissions](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListPermissions.html)
-#' action.
+#' [`create_permission`][acmpca_create_permission] action and listed with
+#' the [`list_permissions`][acmpca_list_permissions] action.
 #' 
 #' **About Permissions**
 #' 
 #' -   If the private CA and the certificates it issues reside in the same
-#'     account, you can use `CreatePermission` to grant permissions for ACM
-#'     to carry out automatic certificate renewals.
+#'     account, you can use [`create_permission`][acmpca_create_permission]
+#'     to grant permissions for ACM to carry out automatic certificate
+#'     renewals.
 #' 
 #' -   For automatic certificate renewal to succeed, the ACM service
 #'     principal needs permissions to create, retrieve, and list
@@ -431,10 +429,10 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that issued the
 #' permissions. You can find the CA's ARN by calling the
-#' [ListCertificateAuthorities](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html)
+#' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
 #' action. This must have the following form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `.
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
 #' @param Principal &#91;required&#93; The AWS service or identity that will have its CA permissions revoked.
 #' At this time, the only valid service principal is `acm.amazonaws.com`
 #' @param SourceAccount The AWS account that calls this action.
@@ -482,10 +480,8 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' The AWS Certificate Manager Service Linked Role that the policy supports
 #' is not affected when you delete the policy.
 #' 
-#' The current policy can be shown with
-#' [GetPolicy](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetPolicy.html)
-#' and updated with
-#' [PutPolicy](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_PutPolicy.html).
+#' The current policy can be shown with [`get_policy`][acmpca_get_policy]
+#' and updated with [`put_policy`][acmpca_put_policy].
 #' 
 #' **About Policies**
 #' 
@@ -515,7 +511,7 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that will have its
 #' policy deleted. You can find the CA's ARN by calling the
-#' [ListCertificateAuthorities](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html)
+#' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
 #' action. The ARN value must have the form
 #' `arn:aws:acm-pca:region:account:certificate-authority/01234567-89ab-cdef-0123-0123456789ab`.
 #'
@@ -581,10 +577,10 @@ acmpca_delete_policy <- function(ResourceArn) {
 #' acmpca_describe_certificate_authority(CertificateAuthorityArn)
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html).
+#' [`create_certificate_authority`][acmpca_create_certificate_authority].
 #' This must be of the form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `.
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
 #'
 #' @section Request syntax:
 #' ```
@@ -618,14 +614,11 @@ acmpca_describe_certificate_authority <- function(CertificateAuthorityArn) {
 #'
 #' @description
 #' Lists information about a specific audit report created by calling the
-#' [CreateCertificateAuthorityAuditReport](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html)
+#' [`create_certificate_authority_audit_report`][acmpca_create_certificate_authority_audit_report]
 #' action. Audit information is created every time the certificate
 #' authority (CA) private key is used. The private key is used when you
-#' call the
-#' [IssueCertificate](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_IssueCertificate.html)
-#' action or the
-#' [RevokeCertificate](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_RevokeCertificate.html)
-#' action.
+#' call the [`issue_certificate`][acmpca_issue_certificate] action or the
+#' [`revoke_certificate`][acmpca_revoke_certificate] action.
 #'
 #' @usage
 #' acmpca_describe_certificate_authority_audit_report(
@@ -634,9 +627,9 @@ acmpca_describe_certificate_authority <- function(CertificateAuthorityArn) {
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of the private CA. This must be of the
 #' form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `.
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
 #' @param AuditReportId &#91;required&#93; The report ID returned by calling the
-#' [CreateCertificateAuthorityAuditReport](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html)
+#' [`create_certificate_authority_audit_report`][acmpca_create_certificate_authority_audit_report]
 #' action.
 #'
 #' @section Request syntax:
@@ -673,12 +666,11 @@ acmpca_describe_certificate_authority_audit_report <- function(CertificateAuthor
 #' @description
 #' Retrieves a certificate from your private CA or one that has been shared
 #' with you. The ARN of the certificate is returned when you call the
-#' [IssueCertificate](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_IssueCertificate.html)
-#' action. You must specify both the ARN of your private CA and the ARN of
-#' the issued certificate when calling the **GetCertificate** action. You
-#' can retrieve the certificate if it is in the **ISSUED** state. You can
-#' call the
-#' [CreateCertificateAuthorityAuditReport](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html)
+#' [`issue_certificate`][acmpca_issue_certificate] action. You must specify
+#' both the ARN of your private CA and the ARN of the issued certificate
+#' when calling the **GetCertificate** action. You can retrieve the
+#' certificate if it is in the **ISSUED** state. You can call the
+#' [`create_certificate_authority_audit_report`][acmpca_create_certificate_authority_audit_report]
 #' action to create a report that contains information about all of the
 #' certificates issued and revoked by your private CA.
 #'
@@ -686,14 +678,14 @@ acmpca_describe_certificate_authority_audit_report <- function(CertificateAuthor
 #' acmpca_get_certificate(CertificateAuthorityArn, CertificateArn)
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html).
+#' [`create_certificate_authority`][acmpca_create_certificate_authority].
 #' This must be of the form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `.
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
 #' @param CertificateArn &#91;required&#93; The ARN of the issued certificate. The ARN contains the certificate
 #' serial number and must be in the following form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i>/certificate/<i>286535153982981100925020015808220737245</i> `
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012/certificate/286535153982981100925020015808220737245 `
 #'
 #' @section Request syntax:
 #' ```
@@ -738,7 +730,7 @@ acmpca_get_certificate <- function(CertificateAuthorityArn, CertificateArn) {
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of your private CA. This is of the form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `.
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
 #'
 #' @section Request syntax:
 #' ```
@@ -773,21 +765,21 @@ acmpca_get_certificate_authority_certificate <- function(CertificateAuthorityArn
 #' @description
 #' Retrieves the certificate signing request (CSR) for your private
 #' certificate authority (CA). The CSR is created when you call the
-#' [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
+#' [`create_certificate_authority`][acmpca_create_certificate_authority]
 #' action. Sign the CSR with your ACM Private CA-hosted or on-premises root
 #' or subordinate CA. Then import the signed certificate back into ACM
 #' Private CA by calling the
-#' [ImportCertificateAuthorityCertificate](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ImportCertificateAuthorityCertificate.html)
+#' [`import_certificate_authority_certificate`][acmpca_import_certificate_authority_certificate]
 #' action. The CSR is returned as a base64 PEM-encoded string.
 #'
 #' @usage
 #' acmpca_get_certificate_authority_csr(CertificateAuthorityArn)
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called the
-#' [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
+#' [`create_certificate_authority`][acmpca_create_certificate_authority]
 #' action. This must be of the form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #'
 #' @section Request syntax:
 #' ```
@@ -824,9 +816,8 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
 #' returns a `ResourceNotFoundException`.
 #' 
 #' The policy can be attached or updated with
-#' [PutPolicy](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_PutPolicy.html)
-#' and removed with
-#' [DeletePolicy](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeletePolicy.html).
+#' [`put_policy`][acmpca_put_policy] and removed with
+#' [`delete_policy`][acmpca_delete_policy].
 #' 
 #' **About Policies**
 #' 
@@ -894,12 +885,12 @@ acmpca_get_policy <- function(ResourceArn) {
 #' preparations must in place:
 #' 
 #' 1.  In ACM Private CA, call the
-#'     [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
+#'     [`create_certificate_authority`][acmpca_create_certificate_authority]
 #'     action to create the private CA that that you plan to back with the
 #'     imported certificate.
 #' 
 #' 2.  Call the
-#'     [GetCertificateAuthorityCsr](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetCertificateAuthorityCsr.html)
+#'     [`get_certificate_authority_csr`][acmpca_get_certificate_authority_csr]
 #'     action to generate a certificate signing request (CSR).
 #' 
 #' 3.  Sign the CSR using a root or intermediate CA hosted by either an
@@ -988,10 +979,10 @@ acmpca_get_policy <- function(ResourceArn) {
 #'   Certificate, CertificateChain)
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html).
+#' [`create_certificate_authority`][acmpca_create_certificate_authority].
 #' This must be of the form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #' @param Certificate &#91;required&#93; The PEM-encoded certificate for a private CA. This may be a self-signed
 #' certificate in the case of a root CA, or it may be signed by another CA
 #' that you control.
@@ -1039,8 +1030,7 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' Uses your private certificate authority (CA), or one that has been
 #' shared with you, to issue a client certificate. This action returns the
 #' Amazon Resource Name (ARN) of the certificate. You can retrieve the
-#' certificate by calling the
-#' [GetCertificate](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetCertificate.html)
+#' certificate by calling the [`get_certificate`][acmpca_get_certificate]
 #' action and specifying the ARN.
 #' 
 #' You cannot use the ACM **ListCertificateAuthorities** action to retrieve
@@ -1051,10 +1041,10 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #'   TemplateArn, Validity, IdempotencyToken)
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html).
+#' [`create_certificate_authority`][acmpca_create_certificate_authority].
 #' This must be of the form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #' @param Csr &#91;required&#93; The certificate signing request (CSR) for the certificate you want to
 #' issue. You can use the following OpenSSL command to create the CSR and a
 #' 2048 bit RSA private key.
@@ -1177,7 +1167,7 @@ acmpca_issue_certificate <- function(CertificateAuthorityArn, Csr, SigningAlgori
 #'
 #' @description
 #' Lists the private certificate authorities that you created by using the
-#' [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
+#' [`create_certificate_authority`][acmpca_create_certificate_authority]
 #' action.
 #'
 #' @usage
@@ -1235,16 +1225,15 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
 #' reside in the same AWS account as the CA.
 #' 
 #' Permissions can be granted with the
-#' [CreatePermission](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreatePermission.html)
-#' action and revoked with the
-#' [DeletePermission](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeletePermission.html)
-#' action.
+#' [`create_permission`][acmpca_create_permission] action and revoked with
+#' the [`delete_permission`][acmpca_delete_permission] action.
 #' 
 #' **About Permissions**
 #' 
 #' -   If the private CA and the certificates it issues reside in the same
-#'     account, you can use `CreatePermission` to grant permissions for ACM
-#'     to carry out automatic certificate renewals.
+#'     account, you can use [`create_permission`][acmpca_create_permission]
+#'     to grant permissions for ACM to carry out automatic certificate
+#'     renewals.
 #' 
 #' -   For automatic certificate renewal to succeed, the ACM service
 #'     principal needs permissions to create, retrieve, and list
@@ -1263,11 +1252,11 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA to inspect. You can
 #' find the ARN by calling the
-#' [ListCertificateAuthorities](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html)
+#' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
 #' action. This must be of the form:
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012`
 #' You can get a private CA's ARN by running the
-#' [ListCertificateAuthorities](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html)
+#' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
 #' action.
 #' @param NextToken When paginating results, use this parameter in a subsequent request
 #' after you receive a response with truncated results. Set it to the value
@@ -1315,19 +1304,19 @@ acmpca_list_permissions <- function(CertificateAuthorityArn, NextToken = NULL, M
 #' that has been shared with you. Tags are labels that you can use to
 #' identify and organize your CAs. Each tag consists of a key and an
 #' optional value. Call the
-#' [TagCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_TagCertificateAuthority.html)
-#' action to add one or more tags to your CA. Call the
-#' [UntagCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UntagCertificateAuthority.html)
+#' [`tag_certificate_authority`][acmpca_tag_certificate_authority] action
+#' to add one or more tags to your CA. Call the
+#' [`untag_certificate_authority`][acmpca_untag_certificate_authority]
 #' action to remove tags.
 #'
 #' @usage
 #' acmpca_list_tags(CertificateAuthorityArn, NextToken, MaxResults)
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called the
-#' [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
+#' [`create_certificate_authority`][acmpca_create_certificate_authority]
 #' action. This must be of the form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #' @param NextToken Use this parameter when paginating results in a subsequent request after
 #' you receive a response with truncated results. Set it to the value of
 #' **NextToken** from the response you just received.
@@ -1376,10 +1365,8 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
 #' Policy for Cross-Account
 #' Access](https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-ram.html).
 #' 
-#' The policy can be displayed with
-#' [GetPolicy](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetPolicy.html)
-#' and removed with
-#' [DeletePolicy](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeletePolicy.html).
+#' The policy can be displayed with [`get_policy`][acmpca_get_policy] and
+#' removed with [`delete_policy`][acmpca_delete_policy].
 #' 
 #' **About Policies**
 #' 
@@ -1409,14 +1396,14 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA to associate with the
 #' policy. The ARN of the CA can be found by calling the
-#' [ListCertificateAuthorities](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html)
+#' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
 #' action.
 #' @param Policy &#91;required&#93; The path and filename of a JSON-formatted IAM policy to attach to the
 #' specified private CA resource. If this policy does not contain all
 #' required statements or if it includes any statement that is not allowed,
-#' the `PutPolicy` action returns an `InvalidPolicyException`. For
-#' information about IAM policy and statement structure, see [Overview of
-#' JSON
+#' the [`put_policy`][acmpca_put_policy] action returns an
+#' `InvalidPolicyException`. For information about IAM policy and statement
+#' structure, see [Overview of JSON
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-json).
 #'
 #' @section Request syntax:
@@ -1453,22 +1440,21 @@ acmpca_put_policy <- function(ResourceArn, Policy) {
 #' Restores a certificate authority (CA) that is in the `DELETED` state.
 #' You can restore a CA during the period that you defined in the
 #' **PermanentDeletionTimeInDays** parameter of the
-#' [DeleteCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeleteCertificateAuthority.html)
+#' [`delete_certificate_authority`][acmpca_delete_certificate_authority]
 #' action. Currently, you can specify 7 to 30 days. If you did not specify
 #' a **PermanentDeletionTimeInDays** value, by default you can restore the
 #' CA at any time in a 30 day period. You can check the time remaining in
 #' the restoration period of a private CA in the `DELETED` state by calling
 #' the
-#' [DescribeCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DescribeCertificateAuthority.html)
-#' or
-#' [ListCertificateAuthorities](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html)
+#' [`describe_certificate_authority`][acmpca_describe_certificate_authority]
+#' or [`list_certificate_authorities`][acmpca_list_certificate_authorities]
 #' actions. The status of a restored CA is set to its pre-deletion status
 #' when the **RestoreCertificateAuthority** action returns. To change its
 #' status to `ACTIVE`, call the
-#' [UpdateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UpdateCertificateAuthority.html)
+#' [`update_certificate_authority`][acmpca_update_certificate_authority]
 #' action. If the private CA was in the `PENDING_CERTIFICATE` state at
 #' deletion, you must use the
-#' [ImportCertificateAuthorityCertificate](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ImportCertificateAuthorityCertificate.html)
+#' [`import_certificate_authority_certificate`][acmpca_import_certificate_authority_certificate]
 #' action to import a certificate authority into the private CA before it
 #' can be activated. You cannot restore a CA after the restoration period
 #' has ended.
@@ -1477,10 +1463,10 @@ acmpca_put_policy <- function(ResourceArn, Policy) {
 #' acmpca_restore_certificate_authority(CertificateAuthorityArn)
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called the
-#' [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
+#' [`create_certificate_authority`][acmpca_create_certificate_authority]
 #' action. This must be of the form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #'
 #' @section Request syntax:
 #' ```
@@ -1532,7 +1518,7 @@ acmpca_restore_certificate_authority <- function(CertificateAuthorityArn) {
 #' 
 #' ACM Private CA also writes revocation information to the audit report.
 #' For more information, see
-#' [CreateCertificateAuthorityAuditReport](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html).
+#' [`create_certificate_authority_audit_report`][acmpca_create_certificate_authority_audit_report].
 #' 
 #' You cannot revoke a root CA self-signed certificate.
 #'
@@ -1543,17 +1529,16 @@ acmpca_restore_certificate_authority <- function(CertificateAuthorityArn) {
 #' @param CertificateAuthorityArn &#91;required&#93; Amazon Resource Name (ARN) of the private CA that issued the certificate
 #' to be revoked. This must be of the form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #' @param CertificateSerial &#91;required&#93; Serial number of the certificate to be revoked. This must be in
 #' hexadecimal format. You can retrieve the serial number by calling
-#' [GetCertificate](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetCertificate.html)
-#' with the Amazon Resource Name (ARN) of the certificate you want and the
-#' ARN of your private CA. The **GetCertificate** action retrieves the
-#' certificate in the PEM format. You can use the following OpenSSL command
-#' to list the certificate in text format and copy the hexadecimal serial
-#' number.
+#' [`get_certificate`][acmpca_get_certificate] with the Amazon Resource
+#' Name (ARN) of the certificate you want and the ARN of your private CA.
+#' The **GetCertificate** action retrieves the certificate in the PEM
+#' format. You can use the following OpenSSL command to list the
+#' certificate in text format and copy the hexadecimal serial number.
 #' 
-#' `openssl x509 -in <i>file_path</i> -text -noout`
+#' `openssl x509 -in file_path -text -noout`
 #' 
 #' You can also copy the serial number from the console or use the
 #' [DescribeCertificate](https://docs.aws.amazon.com/acm/latest/APIReference/API_DescribeCertificate.html)
@@ -1600,19 +1585,18 @@ acmpca_revoke_certificate <- function(CertificateAuthorityArn, CertificateSerial
 #' a specific characteristic of that CA, or you can apply the same tag to
 #' multiple private CAs if you want to filter for a common relationship
 #' among those CAs. To remove one or more tags, use the
-#' [UntagCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UntagCertificateAuthority.html)
-#' action. Call the
-#' [ListTags](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListTags.html)
-#' action to see what tags are associated with your CA.
+#' [`untag_certificate_authority`][acmpca_untag_certificate_authority]
+#' action. Call the [`list_tags`][acmpca_list_tags] action to see what tags
+#' are associated with your CA.
 #'
 #' @usage
 #' acmpca_tag_certificate_authority(CertificateAuthorityArn, Tags)
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html).
+#' [`create_certificate_authority`][acmpca_create_certificate_authority].
 #' This must be of the form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #' @param Tags &#91;required&#93; List of tags to be associated with the CA.
 #'
 #' @section Request syntax:
@@ -1656,19 +1640,18 @@ acmpca_tag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' calling this action, the tag will be removed regardless of value. If you
 #' specify a value, the tag is removed only if it is associated with the
 #' specified value. To add tags to a private CA, use the
-#' [TagCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_TagCertificateAuthority.html).
-#' Call the
-#' [ListTags](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListTags.html)
-#' action to see what tags are associated with your CA.
+#' [`tag_certificate_authority`][acmpca_tag_certificate_authority]. Call
+#' the [`list_tags`][acmpca_list_tags] action to see what tags are
+#' associated with your CA.
 #'
 #' @usage
 #' acmpca_untag_certificate_authority(CertificateAuthorityArn, Tags)
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
-#' [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html).
+#' [`create_certificate_authority`][acmpca_create_certificate_authority].
 #' This must be of the form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #' @param Tags &#91;required&#93; List of tags to be removed from the CA.
 #'
 #' @section Request syntax:
@@ -1726,7 +1709,7 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' @param CertificateAuthorityArn &#91;required&#93; Amazon Resource Name (ARN) of the private CA that issued the certificate
 #' to be revoked. This must be of the form:
 #' 
-#' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `
+#' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #' @param RevocationConfiguration Revocation information for your private CA.
 #' @param Status Status of your private CA.
 #'

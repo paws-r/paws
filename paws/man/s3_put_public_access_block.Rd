@@ -12,7 +12,8 @@ s3_put_public_access_block(Bucket, ContentMD5,
 \item{Bucket}{[required] The name of the Amazon S3 bucket whose \code{PublicAccessBlock} configuration
 you want to set.}
 
-\item{ContentMD5}{The MD5 hash of the \code{PutPublicAccessBlock} request body.
+\item{ContentMD5}{The MD5 hash of the
+\code{\link[=s3_put_public_access_block]{put_public_access_block}} request body.
 
 For requests made using the AWS Command Line Interface (CLI) or AWS
 SDKs, this field is calculated automatically.}
@@ -45,9 +46,9 @@ object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetPublicAccessBlock.html}{GetPublicAccessBlock}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html}{DeletePublicAccessBlock}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicyStatus.html}{GetBucketPolicyStatus}
+\item \code{\link[=s3_get_public_access_block]{get_public_access_block}}
+\item \code{\link[=s3_delete_public_access_block]{delete_public_access_block}}
+\item \code{\link[=s3_get_bucket_policy_status]{get_bucket_policy_status}}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html}{Using Amazon S3 Block Public Access}
 }
 }

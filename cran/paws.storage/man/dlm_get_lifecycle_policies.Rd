@@ -30,7 +30,8 @@ tags.}
 Gets summary information about all or the specified data lifecycle
 policies.
 
-To get complete information about a policy, use GetLifecyclePolicy.
+To get complete information about a policy, use
+\code{\link[=dlm_get_lifecycle_policy]{get_lifecycle_policy}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_lifecycle_policies(

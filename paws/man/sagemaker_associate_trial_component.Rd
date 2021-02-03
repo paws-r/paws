@@ -14,7 +14,9 @@ sagemaker_associate_trial_component(TrialComponentName, TrialName)
 \description{
 Associates a trial component with a trial. A trial component can be
 associated with multiple trials. To disassociate a trial component from
-a trial, call the DisassociateTrialComponent API.
+a trial, call the
+\code{\link[=sagemaker_disassociate_trial_component]{disassociate_trial_component}}
+API.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_trial_component(

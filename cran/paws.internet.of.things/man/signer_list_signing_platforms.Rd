@@ -26,10 +26,11 @@ that you just received.}
 Lists all signing platforms available in code signing that match the
 request parameters. If additional jobs remain to be listed, code signing
 returns a \code{nextToken} value. Use this value in subsequent calls to
-\code{ListSigningJobs} to fetch the remaining values. You can continue
-calling \code{ListSigningJobs} with your \code{maxResults} parameter and with new
-values that code signing returns in the \code{nextToken} parameter until all
-of your signing jobs have been returned.
+\code{\link[=signer_list_signing_jobs]{list_signing_jobs}} to fetch the remaining
+values. You can continue calling
+\code{\link[=signer_list_signing_jobs]{list_signing_jobs}} with your \code{maxResults}
+parameter and with new values that code signing returns in the
+\code{nextToken} parameter until all of your signing jobs have been returned.
 }
 \section{Request syntax}{
 \preformatted{svc$list_signing_platforms(

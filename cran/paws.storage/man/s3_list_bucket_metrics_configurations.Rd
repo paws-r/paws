@@ -45,11 +45,11 @@ For more information about metrics configurations and CloudWatch request
 metrics, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html}{Monitoring Metrics with Amazon CloudWatch}.
 
 The following operations are related to
-\code{ListBucketMetricsConfigurations}:
+\code{\link[=s3_list_bucket_metrics_configurations]{list_bucket_metrics_configurations}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketMetricsConfiguration.html}{PutBucketMetricsConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetricsConfiguration.html}{GetBucketMetricsConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetricsConfiguration.html}{DeleteBucketMetricsConfiguration}
+\item \code{\link[=s3_put_bucket_metrics_configuration]{put_bucket_metrics_configuration}}
+\item \code{\link[=s3_get_bucket_metrics_configuration]{get_bucket_metrics_configuration}}
+\item \code{\link[=s3_delete_bucket_metrics_configuration]{delete_bucket_metrics_configuration}}
 }
 }
 \section{Request syntax}{

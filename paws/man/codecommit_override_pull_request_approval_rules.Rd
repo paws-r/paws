@@ -11,7 +11,7 @@ codecommit_override_pull_request_approval_rules(pullRequestId,
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request for which you want to
 override all approval rule requirements. To get this information, use
-GetPullRequest.}
+\code{\link[=codecommit_get_pull_request]{get_pull_request}}.}
 
 \item{revisionId}{[required] The system-generated ID of the most recent revision of the pull request.
 You cannot override approval rules for anything but the most recent

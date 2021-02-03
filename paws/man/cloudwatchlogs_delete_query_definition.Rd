@@ -8,7 +8,7 @@ cloudwatchlogs_delete_query_definition(queryDefinitionId)
 }
 \arguments{
 \item{queryDefinitionId}{[required] The ID of the query definition that you want to delete. You can use
-\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeQueryDefinitions.html}{DescribeQueryDefinitions}
+\code{\link[=cloudwatchlogs_describe_query_definitions]{describe_query_definitions}}
 to retrieve the IDs of your saved query definitions.}
 }
 \description{
@@ -16,7 +16,8 @@ Deletes a saved CloudWatch Logs Insights query definition. A query
 definition contains details about a saved CloudWatch Logs Insights
 query.
 
-Each \code{DeleteQueryDefinition} operation can delete one query definition.
+Each \code{\link[=cloudwatchlogs_delete_query_definition]{delete_query_definition}}
+operation can delete one query definition.
 
 You must have the \code{logs:DeleteQueryDefinition} permission to be able to
 perform this operation.

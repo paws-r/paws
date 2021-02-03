@@ -118,8 +118,10 @@ the \verb{$LATEST} version, you get a \code{PreconditionFailedException}
 exception.}
 
 \item{createVersion}{When set to \code{true} a new numbered version of the intent is created. This
-is the same as calling the \code{CreateIntentVersion} operation. If you do
-not specify \code{createVersion}, the default is \code{false}.}
+is the same as calling the
+\code{\link[=lexmodelbuildingservice_create_intent_version]{create_intent_version}}
+operation. If you do not specify \code{createVersion}, the default is
+\code{false}.}
 
 \item{kendraConfiguration}{Configuration information required to use the
 \code{AMAZON.KendraSearchIntent} intent to connect to an Amazon Kendra index.

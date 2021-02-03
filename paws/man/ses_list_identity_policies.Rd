@@ -20,7 +20,7 @@ To successfully call this API, you must own the identity.}
 Returns a list of sending authorization policies that are attached to
 the given identity (an email address or a domain). This API returns only
 a list. If you want the actual policy content, you can use
-\code{GetIdentityPolicies}.
+\code{\link[=ses_get_identity_policies]{get_identity_policies}}.
 
 This API is for the identity owner only. If you have not verified the
 identity, this API will return an error.

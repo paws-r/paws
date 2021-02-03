@@ -21,8 +21,10 @@ the default event bus is used.}
 Revokes the permission of another AWS account to be able to put events
 to the specified event bus. Specify the account to revoke by the
 \code{StatementId} value that you associated with the account when you
-granted it permission with \code{PutPermission}. You can find the
-\code{StatementId} by using DescribeEventBus.
+granted it permission with
+\code{\link[=cloudwatchevents_put_permission]{put_permission}}. You can find the
+\code{StatementId} by using
+\code{\link[=cloudwatchevents_describe_event_bus]{describe_event_bus}}.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_permission(

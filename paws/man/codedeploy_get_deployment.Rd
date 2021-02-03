@@ -14,9 +14,10 @@ account.}
 Gets information about a deployment.
 
 The \code{content} property of the \code{appSpecContent} object in the returned
-revision is always null. Use \code{GetApplicationRevision} and the \code{sha256}
-property of the returned \code{appSpecContent} object to get the content of
-the deployment’s AppSpec file.
+revision is always null. Use
+\code{\link[=codedeploy_get_application_revision]{get_application_revision}} and
+the \code{sha256} property of the returned \code{appSpecContent} object to get the
+content of the deployment’s AppSpec file.
 }
 \section{Request syntax}{
 \preformatted{svc$get_deployment(

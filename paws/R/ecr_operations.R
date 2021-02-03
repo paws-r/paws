@@ -231,8 +231,9 @@ ecr_batch_get_image <- function(registryId = NULL, repositoryName, imageIds, acc
 #' layers. If you do not specify a registry, the default registry is
 #' assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to associate with the image layer.
-#' @param uploadId &#91;required&#93; The upload ID from a previous InitiateLayerUpload operation to associate
-#' with the image layer.
+#' @param uploadId &#91;required&#93; The upload ID from a previous
+#' [`initiate_layer_upload`][ecr_initiate_layer_upload] operation to
+#' associate with the image layer.
 #' @param layerDigests &#91;required&#93; The `sha256` digest of the image layer.
 #'
 #' @section Request syntax:
@@ -543,19 +544,23 @@ ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
 #' @param repositoryName &#91;required&#93; The repository for the image for which to describe the scan findings.
 #' @param imageId &#91;required&#93; 
 #' @param nextToken The `nextToken` value returned from a previous paginated
-#' `DescribeImageScanFindings` request where `maxResults` was used and the
-#' results exceeded the value of that parameter. Pagination continues from
-#' the end of the previous results that returned the `nextToken` value.
-#' This value is null when there are no more results to return.
+#' [`describe_image_scan_findings`][ecr_describe_image_scan_findings]
+#' request where `maxResults` was used and the results exceeded the value
+#' of that parameter. Pagination continues from the end of the previous
+#' results that returned the `nextToken` value. This value is null when
+#' there are no more results to return.
 #' @param maxResults The maximum number of image scan results returned by
-#' `DescribeImageScanFindings` in paginated output. When this parameter is
-#' used, `DescribeImageScanFindings` only returns `maxResults` results in a
-#' single page along with a `nextToken` response element. The remaining
-#' results of the initial request can be seen by sending another
-#' `DescribeImageScanFindings` request with the returned `nextToken` value.
-#' This value can be between 1 and 1000. If this parameter is not used,
-#' then `DescribeImageScanFindings` returns up to 100 results and a
-#' `nextToken` value, if applicable.
+#' [`describe_image_scan_findings`][ecr_describe_image_scan_findings] in
+#' paginated output. When this parameter is used,
+#' [`describe_image_scan_findings`][ecr_describe_image_scan_findings] only
+#' returns `maxResults` results in a single page along with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another
+#' [`describe_image_scan_findings`][ecr_describe_image_scan_findings]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 1000. If this parameter is not used, then
+#' [`describe_image_scan_findings`][ecr_describe_image_scan_findings]
+#' returns up to 100 results and a `nextToken` value, if applicable.
 #'
 #' @section Request syntax:
 #' ```
@@ -600,7 +605,7 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
 #' layers before pushing them to a V2 Docker registry. The output of the
 #' `docker images` command shows the uncompressed image size, so it may
 #' return a larger image size than the image sizes returned by
-#' DescribeImages.
+#' [`describe_images`][ecr_describe_images].
 #'
 #' @usage
 #' ecr_describe_images(registryId, repositoryName, imageIds, nextToken,
@@ -612,22 +617,25 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
 #' @param repositoryName &#91;required&#93; The repository that contains the images to describe.
 #' @param imageIds The list of image IDs for the requested repository.
 #' @param nextToken The `nextToken` value returned from a previous paginated
-#' `DescribeImages` request where `maxResults` was used and the results
-#' exceeded the value of that parameter. Pagination continues from the end
-#' of the previous results that returned the `nextToken` value. This value
-#' is `null` when there are no more results to return. This option cannot
-#' be used when you specify images with `imageIds`.
-#' @param maxResults The maximum number of repository results returned by `DescribeImages` in
-#' paginated output. When this parameter is used, `DescribeImages` only
-#' returns `maxResults` results in a single page along with a `nextToken`
-#' response element. The remaining results of the initial request can be
-#' seen by sending another `DescribeImages` request with the returned
-#' `nextToken` value. This value can be between 1 and 1000. If this
-#' parameter is not used, then `DescribeImages` returns up to 100 results
-#' and a `nextToken` value, if applicable. This option cannot be used when
-#' you specify images with `imageIds`.
-#' @param filter The filter key and value with which to filter your `DescribeImages`
-#' results.
+#' [`describe_images`][ecr_describe_images] request where `maxResults` was
+#' used and the results exceeded the value of that parameter. Pagination
+#' continues from the end of the previous results that returned the
+#' `nextToken` value. This value is `null` when there are no more results
+#' to return. This option cannot be used when you specify images with
+#' `imageIds`.
+#' @param maxResults The maximum number of repository results returned by
+#' [`describe_images`][ecr_describe_images] in paginated output. When this
+#' parameter is used, [`describe_images`][ecr_describe_images] only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another [`describe_images`][ecr_describe_images] request with
+#' the returned `nextToken` value. This value can be between 1 and 1000. If
+#' this parameter is not used, then
+#' [`describe_images`][ecr_describe_images] returns up to 100 results and a
+#' `nextToken` value, if applicable. This option cannot be used when you
+#' specify images with `imageIds`.
+#' @param filter The filter key and value with which to filter your
+#' [`describe_images`][ecr_describe_images] results.
 #'
 #' @section Request syntax:
 #' ```
@@ -673,7 +681,8 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
 #' @description
 #' Describes the settings for a registry. The replication configuration for
 #' a repository can be created or updated with the
-#' PutReplicationConfiguration API action.
+#' [`put_replication_configuration`][ecr_put_replication_configuration] API
+#' action.
 #'
 #' @usage
 #' ecr_describe_registry()
@@ -718,26 +727,28 @@ ecr_describe_registry <- function() {
 #' @param repositoryNames A list of repositories to describe. If this parameter is omitted, then
 #' all repositories in a registry are described.
 #' @param nextToken The `nextToken` value returned from a previous paginated
-#' `DescribeRepositories` request where `maxResults` was used and the
-#' results exceeded the value of that parameter. Pagination continues from
-#' the end of the previous results that returned the `nextToken` value.
-#' This value is `null` when there are no more results to return. This
-#' option cannot be used when you specify repositories with
-#' `repositoryNames`.
+#' [`describe_repositories`][ecr_describe_repositories] request where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is `null` when there are
+#' no more results to return. This option cannot be used when you specify
+#' repositories with `repositoryNames`.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
 #' @param maxResults The maximum number of repository results returned by
-#' `DescribeRepositories` in paginated output. When this parameter is used,
-#' `DescribeRepositories` only returns `maxResults` results in a single
-#' page along with a `nextToken` response element. The remaining results of
-#' the initial request can be seen by sending another
-#' `DescribeRepositories` request with the returned `nextToken` value. This
-#' value can be between 1 and 1000. If this parameter is not used, then
-#' `DescribeRepositories` returns up to 100 results and a `nextToken`
-#' value, if applicable. This option cannot be used when you specify
-#' repositories with `repositoryNames`.
+#' [`describe_repositories`][ecr_describe_repositories] in paginated
+#' output. When this parameter is used,
+#' [`describe_repositories`][ecr_describe_repositories] only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another [`describe_repositories`][ecr_describe_repositories]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 1000. If this parameter is not used, then
+#' [`describe_repositories`][ecr_describe_repositories] returns up to 100
+#' results and a `nextToken` value, if applicable. This option cannot be
+#' used when you specify repositories with `repositoryNames`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1146,9 +1157,10 @@ ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 #' You can filter images based on whether or not they are tagged by using
 #' the `tagStatus` filter and specifying either `TAGGED`, `UNTAGGED` or
 #' `ANY`. For example, you can filter your results to return only
-#' `UNTAGGED` images and then pipe that result to a BatchDeleteImage
-#' operation to delete them. Or, you can filter your results to return only
-#' `TAGGED` images to list all of the tags in your repository.
+#' `UNTAGGED` images and then pipe that result to a
+#' [`batch_delete_image`][ecr_batch_delete_image] operation to delete them.
+#' Or, you can filter your results to return only `TAGGED` images to list
+#' all of the tags in your repository.
 #'
 #' @usage
 #' ecr_list_images(registryId, repositoryName, nextToken, maxResults,
@@ -1158,24 +1170,26 @@ ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 #' repository in which to list images. If you do not specify a registry,
 #' the default registry is assumed.
 #' @param repositoryName &#91;required&#93; The repository with image IDs to be listed.
-#' @param nextToken The `nextToken` value returned from a previous paginated `ListImages`
-#' request where `maxResults` was used and the results exceeded the value
-#' of that parameter. Pagination continues from the end of the previous
-#' results that returned the `nextToken` value. This value is `null` when
-#' there are no more results to return.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' [`list_images`][ecr_list_images] request where `maxResults` was used and
+#' the results exceeded the value of that parameter. Pagination continues
+#' from the end of the previous results that returned the `nextToken`
+#' value. This value is `null` when there are no more results to return.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults The maximum number of image results returned by `ListImages` in
-#' paginated output. When this parameter is used, `ListImages` only returns
+#' @param maxResults The maximum number of image results returned by
+#' [`list_images`][ecr_list_images] in paginated output. When this
+#' parameter is used, [`list_images`][ecr_list_images] only returns
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
-#' sending another `ListImages` request with the returned `nextToken`
-#' value. This value can be between 1 and 1000. If this parameter is not
-#' used, then `ListImages` returns up to 100 results and a `nextToken`
-#' value, if applicable.
-#' @param filter The filter key and value with which to filter your `ListImages` results.
+#' sending another [`list_images`][ecr_list_images] request with the
+#' returned `nextToken` value. This value can be between 1 and 1000. If
+#' this parameter is not used, then [`list_images`][ecr_list_images]
+#' returns up to 100 results and a `nextToken` value, if applicable.
+#' @param filter The filter key and value with which to filter your
+#' [`list_images`][ecr_list_images] results.
 #'
 #' @section Request syntax:
 #' ```
@@ -1517,17 +1531,18 @@ ecr_put_registry_policy <- function(policyText) {
 #' @description
 #' Creates or updates the replication configuration for a registry. The
 #' existing replication configuration for a repository can be retrieved
-#' with the DescribeRegistry API action. The first time the
-#' PutReplicationConfiguration API is called, a service-linked IAM role is
-#' created in your account for the replication process. For more
-#' information, see [Using Service-Linked Roles for Amazon
+#' with the [`describe_registry`][ecr_describe_registry] API action. The
+#' first time the PutReplicationConfiguration API is called, a
+#' service-linked IAM role is created in your account for the replication
+#' process. For more information, see [Using Service-Linked Roles for
+#' Amazon
 #' ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/using-service-linked-roles.html)
 #' in the *Amazon Elastic Container Registry User Guide*.
 #' 
 #' When configuring cross-account replication, the destination account must
 #' grant the source account permission to replicate. This permission is
 #' controlled using a registry permissions policy. For more information,
-#' see PutRegistryPolicy.
+#' see [`put_registry_policy`][ecr_put_registry_policy].
 #'
 #' @usage
 #' ecr_put_replication_configuration(replicationConfiguration)
@@ -1594,8 +1609,8 @@ ecr_put_replication_configuration <- function(replicationConfiguration) {
 #' in the *Amazon Elastic Container Registry User Guide*.
 #' @param force If the policy you are attempting to set on a repository policy would
 #' prevent you from setting another policy in the future, you must force
-#' the SetRepositoryPolicy operation. This is intended to prevent
-#' accidental repository lock outs.
+#' the [`set_repository_policy`][ecr_set_repository_policy] operation. This
+#' is intended to prevent accidental repository lock outs.
 #'
 #' @section Request syntax:
 #' ```
@@ -1838,8 +1853,9 @@ ecr_untag_resource <- function(resourceArn, tagKeys) {
 #' uploading layer parts. If you do not specify a registry, the default
 #' registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to which you are uploading layer parts.
-#' @param uploadId &#91;required&#93; The upload ID from a previous InitiateLayerUpload operation to associate
-#' with the layer part upload.
+#' @param uploadId &#91;required&#93; The upload ID from a previous
+#' [`initiate_layer_upload`][ecr_initiate_layer_upload] operation to
+#' associate with the layer part upload.
 #' @param partFirstByte &#91;required&#93; The position of the first byte of the layer part witin the overall image
 #' layer.
 #' @param partLastByte &#91;required&#93; The position of the last byte of the layer part within the overall image

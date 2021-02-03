@@ -13,8 +13,9 @@ detective_get_members(GraphArn, AccountIds)
 \item{AccountIds}{[required] The list of AWS account identifiers for the member account for which to
 return member details.
 
-You cannot use \code{GetMembers} to retrieve information about member
-accounts that were removed from the behavior graph.}
+You cannot use \code{\link[=detective_get_members]{get_members}} to retrieve
+information about member accounts that were removed from the behavior
+graph.}
 }
 \description{
 Returns the membership details for specified member accounts for a

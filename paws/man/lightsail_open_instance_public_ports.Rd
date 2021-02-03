@@ -18,9 +18,10 @@ Opens ports for a specific Amazon Lightsail instance, and specifies the
 IP addresses allowed to connect to the instance through the ports, and
 the protocol.
 
-The \code{OpenInstancePublicPorts} action supports tag-based access control
-via resource tags applied to the resource identified by \code{instanceName}.
-For more information, see the Lightsail Dev Guide.
+The \code{\link[=lightsail_open_instance_public_ports]{open_instance_public_ports}}
+action supports tag-based access control via resource tags applied to
+the resource identified by \code{instanceName}. For more information, see the
+Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$open_instance_public_ports(

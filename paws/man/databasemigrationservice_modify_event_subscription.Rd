@@ -20,8 +20,9 @@ subscribe to.
 Valid values: replication-instance | replication-task}
 
 \item{EventCategories}{A list of event categories for a source type that you want to subscribe
-to. Use the \code{DescribeEventCategories} action to see a list of event
-categories.}
+to. Use the
+\code{\link[=databasemigrationservice_describe_event_categories]{describe_event_categories}}
+action to see a list of event categories.}
 
 \item{Enabled}{A Boolean value; set to \strong{true} to activate the subscription.}
 }

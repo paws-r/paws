@@ -51,10 +51,10 @@ API, you must supply a pre-signed URL. This parameter is optional for
 unencrypted snapshots. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html}{Query requests}.
 
 The \code{PresignedUrl} should use the snapshot source endpoint, the
-\code{CopySnapshot} action, and include the \code{SourceRegion},
-\code{SourceSnapshotId}, and \code{DestinationRegion} parameters. The
-\code{PresignedUrl} must be signed using AWS Signature Version 4. Because EBS
-snapshots are stored in Amazon S3, the signing algorithm for this
+\code{\link[=ec2_copy_snapshot]{copy_snapshot}} action, and include the
+\code{SourceRegion}, \code{SourceSnapshotId}, and \code{DestinationRegion} parameters.
+The \code{PresignedUrl} must be signed using AWS Signature Version 4. Because
+EBS snapshots are stored in Amazon S3, the signing algorithm for this
 parameter uses the same logic that is described in \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
 in the \emph{Amazon Simple Storage Service API Reference}. An invalid or
 improperly signed \code{PresignedUrl} will cause the copy operation to fail

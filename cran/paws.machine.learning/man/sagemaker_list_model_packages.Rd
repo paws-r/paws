@@ -34,9 +34,10 @@ This can be one of the following values.
 \item \code{BOTH} - List both versioned and unversioned models.
 }}
 
-\item{NextToken}{If the response to a previous \code{ListModelPackages} request was truncated,
-the response includes a \code{NextToken}. To retrieve the next set of model
-packages, use the token in the next request.}
+\item{NextToken}{If the response to a previous
+\code{\link[=sagemaker_list_model_packages]{list_model_packages}} request was
+truncated, the response includes a \code{NextToken}. To retrieve the next set
+of model packages, use the token in the next request.}
 
 \item{SortBy}{The parameter by which to sort the results. The default is
 \code{CreationTime}.}

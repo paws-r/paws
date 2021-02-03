@@ -15,8 +15,8 @@ replace the current content.}
 \description{
 Updates the \code{EvaluationName} of an \code{Evaluation}.
 
-You can use the \code{GetEvaluation} operation to view the contents of the
-updated data element.
+You can use the \code{\link[=machinelearning_get_evaluation]{get_evaluation}}
+operation to view the contents of the updated data element.
 }
 \section{Request syntax}{
 \preformatted{svc$update_evaluation(

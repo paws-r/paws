@@ -24,7 +24,8 @@ changes until the time of the request to the last full table snapshot.
 Backup requests are processed instantaneously and become available for
 restore within minutes.
 
-You can call \code{CreateBackup} at a maximum rate of 50 times per second.
+You can call \code{\link[=dynamodb_create_backup]{create_backup}} at a maximum rate
+of 50 times per second.
 
 All backups in DynamoDB work without consuming any provisioned
 throughput on the table.

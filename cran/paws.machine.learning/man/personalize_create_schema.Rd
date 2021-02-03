@@ -17,13 +17,14 @@ The schema you create must be in Avro JSON format.
 
 Amazon Personalize recognizes three schema variants. Each schema is
 associated with a dataset type and has a set of required field and
-keywords. You specify a schema when you call CreateDataset.
+keywords. You specify a schema when you call
+\code{\link[=personalize_create_dataset]{create_dataset}}.
 
 \strong{Related APIs}
 \itemize{
-\item ListSchemas
-\item DescribeSchema
-\item DeleteSchema
+\item \code{\link[=personalize_list_schemas]{list_schemas}}
+\item \code{\link[=personalize_describe_schema]{describe_schema}}
+\item \code{\link[=personalize_delete_schema]{delete_schema}}
 }
 }
 \section{Request syntax}{

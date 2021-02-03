@@ -17,13 +17,15 @@ certain Amazon Rekognition is that the moderated content is correctly
 identified. 0 is the lowest confidence. 100 is the highest confidence.
 Amazon Rekognition doesn't return any moderated content labels with a
 confidence level lower than this specified value. If you don't specify
-\code{MinConfidence}, \code{GetContentModeration} returns labels with confidence
-values greater than or equal to 50 percent.}
+\code{MinConfidence},
+\code{\link[=rekognition_get_content_moderation]{get_content_moderation}} returns
+labels with confidence values greater than or equal to 50 percent.}
 
 \item{ClientRequestToken}{Idempotent token used to identify the start request. If you use the same
-token with multiple \code{StartContentModeration} requests, the same \code{JobId}
-is returned. Use \code{ClientRequestToken} to prevent the same job from being
-accidently started more than once.}
+token with multiple
+\code{\link[=rekognition_start_content_moderation]{start_content_moderation}}
+requests, the same \code{JobId} is returned. Use \code{ClientRequestToken} to
+prevent the same job from being accidently started more than once.}
 
 \item{NotificationChannel}{The Amazon SNS topic ARN that you want Amazon Rekognition Video to
 publish the completion status of the unsafe content analysis to.}
@@ -38,16 +40,18 @@ Starts asynchronous detection of unsafe content in a stored video.
 
 Amazon Rekognition Video can moderate content in a video stored in an
 Amazon S3 bucket. Use Video to specify the bucket name and the filename
-of the video. \code{StartContentModeration} returns a job identifier
-(\code{JobId}) which you use to get the results of the analysis. When unsafe
-content analysis is finished, Amazon Rekognition Video publishes a
-completion status to the Amazon Simple Notification Service topic that
-you specify in \code{NotificationChannel}.
+of the video.
+\code{\link[=rekognition_start_content_moderation]{start_content_moderation}}
+returns a job identifier (\code{JobId}) which you use to get the results of
+the analysis. When unsafe content analysis is finished, Amazon
+Rekognition Video publishes a completion status to the Amazon Simple
+Notification Service topic that you specify in \code{NotificationChannel}.
 
 To get the results of the unsafe content analysis, first check that the
 status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so,
-call GetContentModeration and pass the job identifier (\code{JobId}) from the
-initial call to \code{StartContentModeration}.
+call \code{\link[=rekognition_get_content_moderation]{get_content_moderation}} and
+pass the job identifier (\code{JobId}) from the initial call to
+\code{\link[=rekognition_start_content_moderation]{start_content_moderation}}.
 
 For more information, see Detecting Unsafe Content in the Amazon
 Rekognition Developer Guide.

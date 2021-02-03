@@ -21,10 +21,12 @@ value.}
 }
 \description{
 Describes the IP address ranges that were specified in calls to
-ProvisionByoipCidr.
+\code{\link[=ec2_provision_byoip_cidr]{provision_byoip_cidr}}.
 
 To describe the address pools that were created when you provisioned the
-address ranges, use DescribePublicIpv4Pools or DescribeIpv6Pools.
+address ranges, use
+\code{\link[=ec2_describe_public_ipv_4_pools]{describe_public_ipv_4_pools}} or
+\code{\link[=ec2_describe_ipv_6_pools]{describe_ipv_6_pools}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_byoip_cidrs(

@@ -10,9 +10,10 @@ lightsail_get_disks(pageToken)
 \arguments{
 \item{pageToken}{The token to advance to the next page of results from your request.
 
-To get a page token, perform an initial \code{GetDisks} request. If your
-results are paginated, the response will return a next page token that
-you can specify as the page token in a subsequent request.}
+To get a page token, perform an initial
+\code{\link[=lightsail_get_disks]{get_disks}} request. If your results are
+paginated, the response will return a next page token that you can
+specify as the page token in a subsequent request.}
 }
 \description{
 Returns information about all block storage disks in your AWS account

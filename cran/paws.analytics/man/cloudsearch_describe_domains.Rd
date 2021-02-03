@@ -14,8 +14,8 @@ Gets information about the search domains owned by this account. Can be
 limited to specific domains. Shows all domains by default. To get the
 number of searchable documents in a domain, use the console or submit a
 \code{matchall} request to your domain's search endpoint:
-\verb{q=matchall&amp;amp;q.parser=structured&amp;amp;size=0}. For more
-information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html}{Getting Information about a Search Domain}
+\verb{q=matchall&amp;q.parser=structured&amp;size=0}. For more information,
+see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html}{Getting Information about a Search Domain}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{

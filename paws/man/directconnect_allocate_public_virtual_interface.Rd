@@ -24,9 +24,10 @@ The owner of a connection calls this function to provision a public
 virtual interface to be owned by the specified AWS account.
 
 Virtual interfaces created using this function must be confirmed by the
-owner using ConfirmPublicVirtualInterface. Until this step has been
-completed, the virtual interface is in the \code{confirming} state and is not
-available to handle traffic.
+owner using
+\code{\link[=directconnect_confirm_public_virtual_interface]{confirm_public_virtual_interface}}.
+Until this step has been completed, the virtual interface is in the
+\code{confirming} state and is not available to handle traffic.
 
 When creating an IPv6 public virtual interface, omit the Amazon address
 and customer address. IPv6 addresses are automatically assigned from the

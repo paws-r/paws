@@ -13,8 +13,9 @@ the \code{ListDevEndpoint} operation.}
 }
 \description{
 Returns a list of resource metadata for a given list of development
-endpoint names. After calling the \code{ListDevEndpoints} operation, you can
-call this operation to access the data to which you have been granted
+endpoint names. After calling the
+\code{\link[=glue_list_dev_endpoints]{list_dev_endpoints}} operation, you can call
+this operation to access the data to which you have been granted
 permissions. This operation supports all IAM permissions, including
 permission conditions that uses tags.
 }

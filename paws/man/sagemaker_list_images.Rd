@@ -27,8 +27,9 @@ value is 10.}
 \item{NameContains}{A filter that returns only images whose name contains the specified
 string.}
 
-\item{NextToken}{If the previous call to \code{ListImages} didn't return the full set of
-images, the call returns a token for getting the next set of images.}
+\item{NextToken}{If the previous call to \code{\link[=sagemaker_list_images]{list_images}} didn't
+return the full set of images, the call returns a token for getting the
+next set of images.}
 
 \item{SortBy}{The property used to sort results. The default value is \code{CREATION_TIME}.}
 

@@ -10,14 +10,14 @@ cloudwatchlogs_start_query(logGroupName, logGroupNames, startTime,
 \arguments{
 \item{logGroupName}{The log group on which to perform the query.
 
-A \code{StartQuery} operation must include a \code{logGroupNames} or a
-\code{logGroupName} parameter, but not both.}
+A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include a
+\code{logGroupNames} or a \code{logGroupName} parameter, but not both.}
 
 \item{logGroupNames}{The list of log groups to be queried. You can include up to 20 log
 groups.
 
-A \code{StartQuery} operation must include a \code{logGroupNames} or a
-\code{logGroupName} parameter, but not both.}
+A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include a
+\code{logGroupNames} or a \code{logGroupName} parameter, but not both.}
 
 \item{startTime}{[required] The beginning of the time range to query. The range is inclusive, so the
 specified start time is included in the query. Specified as epoch time,

@@ -8,8 +8,8 @@ comprehendmedical_describe_entities_detection_v2_job(JobId)
 }
 \arguments{
 \item{JobId}{[required] The identifier that Amazon Comprehend Medical generated for the job. The
-\code{StartEntitiesDetectionV2Job} operation returns this identifier in its
-response.}
+\code{\link[=comprehendmedical_start_entities_detection_v2_job]{start_entities_detection_v2_job}}
+operation returns this identifier in its response.}
 }
 \description{
 Gets the properties associated with a medical entities detection job.

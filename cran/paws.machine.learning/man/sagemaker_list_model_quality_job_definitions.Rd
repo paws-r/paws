@@ -16,13 +16,14 @@ are associated with the specified endpoint.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Descending}.}
 
-\item{NextToken}{If the result of the previous \code{ListModelQualityJobDefinitions} request
-was truncated, the response includes a \code{NextToken}. To retrieve the next
-set of model quality monitoring job definitions, use the token in the
-next request.}
+\item{NextToken}{If the result of the previous
+\code{\link[=sagemaker_list_model_quality_job_definitions]{list_model_quality_job_definitions}}
+request was truncated, the response includes a \code{NextToken}. To retrieve
+the next set of model quality monitoring job definitions, use the token
+in the next request.}
 
 \item{MaxResults}{The maximum number of results to return in a call to
-\code{ListModelQualityJobDefinitions}.}
+\code{\link[=sagemaker_list_model_quality_job_definitions]{list_model_quality_job_definitions}}.}
 
 \item{NameContains}{A string in the transform job name. This filter returns only model
 quality monitoring job definitions whose name contains the specified

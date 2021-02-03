@@ -22,7 +22,8 @@ Lightsail is currently available.}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-Use the \code{TagResource} action to tag a resource after it's created.}
+Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
+resource after it's created.}
 
 \item{addOns}{An array of objects that represent the add-ons to enable for the new
 disk.}

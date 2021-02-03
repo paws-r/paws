@@ -20,9 +20,10 @@ specified time.}
 
 \item{SortOrder}{The sort order for results.}
 
-\item{NextToken}{If the result of the previous \code{ListPipelineExecutions} request was
-truncated, the response includes a \code{NextToken}. To retrieve the next set
-of pipeline executions, use the token in the next request.}
+\item{NextToken}{If the result of the previous
+\code{\link[=sagemaker_list_pipeline_executions]{list_pipeline_executions}} request
+was truncated, the response includes a \code{NextToken}. To retrieve the next
+set of pipeline executions, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of pipeline executions to return in the response.}
 }

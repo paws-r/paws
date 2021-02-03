@@ -27,8 +27,8 @@ You pass the input image as base64-encoded image bytes or as a reference
 to an image in an Amazon S3 bucket. The image must be either a PNG or
 JPG formatted file.
 
-\code{DetectProtectiveEquipment} detects PPE worn by up to 15 persons
-detected in an image.
+\code{\link[=rekognition_detect_protective_equipment]{detect_protective_equipment}}
+detects PPE worn by up to 15 persons detected in an image.
 
 For each person detected in the image the API returns an array of body
 parts (face, head, left-hand, right-hand). For each body part, an array

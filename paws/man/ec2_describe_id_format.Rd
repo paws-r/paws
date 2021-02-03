@@ -41,10 +41,10 @@ The following resource types support longer IDs: \code{bundle} |
 These settings apply to the IAM user who makes the request; they do not
 apply to the entire AWS account. By default, an IAM user defaults to the
 same settings as the root user, unless they explicitly override the
-settings by running the ModifyIdFormat command. Resources created with
-longer IDs are visible to all IAM users, regardless of these settings
-and provided that they have permission to use the relevant \code{Describe}
-command for the resource type.
+settings by running the \code{\link[=ec2_modify_id_format]{modify_id_format}}
+command. Resources created with longer IDs are visible to all IAM users,
+regardless of these settings and provided that they have permission to
+use the relevant \code{Describe} command for the resource type.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_id_format(

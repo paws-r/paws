@@ -16,8 +16,10 @@ and other items as required when performing an audit.}
 \item{auditNotificationTargetConfigurations}{Information about the targets to which audit notifications are sent.}
 
 \item{auditCheckConfigurations}{Specifies which audit checks are enabled and disabled for this account.
-Use \code{DescribeAccountAuditConfiguration} to see the list of all checks,
-including those that are currently enabled.
+Use
+\code{\link[=iot_describe_account_audit_configuration]{describe_account_audit_configuration}}
+to see the list of all checks, including those that are currently
+enabled.
 
 Some data collection might start immediately when certain checks are
 enabled. When a check is disabled, any data collected so far in relation
@@ -27,8 +29,9 @@ You cannot disable a check if it's used by any scheduled audit. You must
 first delete the check from the scheduled audit or delete the scheduled
 audit itself.
 
-On the first call to \code{UpdateAccountAuditConfiguration}, this parameter
-is required and must specify at least one enabled check.}
+On the first call to
+\code{\link[=iot_update_account_audit_configuration]{update_account_audit_configuration}},
+this parameter is required and must specify at least one enabled check.}
 }
 \description{
 Configures or reconfigures the Device Defender audit settings for this

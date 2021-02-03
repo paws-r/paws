@@ -60,10 +60,12 @@ AWS console)
 
 \strong{Chef Versions}
 
-When you call CreateStack, CloneStack, or UpdateStack we recommend you
-use the \code{ConfigurationManager} parameter to specify the Chef version.
-The recommended and default value for Linux stacks is currently 12.
-Windows stacks use Chef 12.2. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-chef11.html}{Chef Versions}.
+When you call \code{\link[=opsworks_create_stack]{create_stack}},
+\code{\link[=opsworks_clone_stack]{clone_stack}}, or
+\code{\link[=opsworks_update_stack]{update_stack}} we recommend you use the
+\code{ConfigurationManager} parameter to specify the Chef version. The
+recommended and default value for Linux stacks is currently 12. Windows
+stacks use Chef 12.2. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-chef11.html}{Chef Versions}.
 
 You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We
 recommend migrating your existing Linux stacks to Chef 12 as soon as

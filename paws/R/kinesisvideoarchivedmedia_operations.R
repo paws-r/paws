@@ -145,12 +145,14 @@ kinesisvideoarchivedmedia_get_clip <- function(StreamName = NULL, StreamARN = NU
 #'     specifying `GET_DASH_STREAMING_SESSION_URL` for the `APIName`
 #'     parameter.
 #' 
-#' 2.  Retrieve the MPEG-DASH URL using `GetDASHStreamingSessionURL`.
+#' 2.  Retrieve the MPEG-DASH URL using
+#'     [`get_dash_streaming_session_url`][kinesisvideoarchivedmedia_get_dash_streaming_session_url].
 #'     Kinesis Video Streams creates an MPEG-DASH streaming session to be
 #'     used for accessing content in a stream using the MPEG-DASH protocol.
-#'     `GetDASHStreamingSessionURL` returns an authenticated URL (that
-#'     includes an encrypted session token) for the session's MPEG-DASH
-#'     *manifest* (the root resource needed for streaming with MPEG-DASH).
+#'     [`get_dash_streaming_session_url`][kinesisvideoarchivedmedia_get_dash_streaming_session_url]
+#'     returns an authenticated URL (that includes an encrypted session
+#'     token) for the session's MPEG-DASH *manifest* (the root resource
+#'     needed for streaming with MPEG-DASH).
 #' 
 #'     Don't share or store this token where an unauthorized entity could
 #'     access it. The token provides access to the content of the stream.
@@ -343,8 +345,9 @@ kinesisvideoarchivedmedia_get_clip <- function(StreamName = NULL, StreamARN = NU
 #' Kinesis Video Streams fragment number is added to each S element in the
 #' manifest file with the attribute name “kvs:fn”. These fragment numbers
 #' can be used for logging or for use with other APIs (e.g. `GetMedia` and
-#' `GetMediaForFragmentList`). A custom MPEG-DASH media player is necessary
-#' to leverage these this custom attribute.
+#' [`get_media_for_fragment_list`][kinesisvideoarchivedmedia_get_media_for_fragment_list]).
+#' A custom MPEG-DASH media player is necessary to leverage these this
+#' custom attribute.
 #' 
 #' The default value is `NEVER`.
 #' @param DASHFragmentSelector The time range of the requested fragment and the source of the
@@ -473,12 +476,14 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 #'     specifying `GET_HLS_STREAMING_SESSION_URL` for the `APIName`
 #'     parameter.
 #' 
-#' 2.  Retrieve the HLS URL using `GetHLSStreamingSessionURL`. Kinesis
-#'     Video Streams creates an HLS streaming session to be used for
-#'     accessing content in a stream using the HLS protocol.
-#'     `GetHLSStreamingSessionURL` returns an authenticated URL (that
-#'     includes an encrypted session token) for the session's HLS *master
-#'     playlist* (the root resource needed for streaming with HLS).
+#' 2.  Retrieve the HLS URL using
+#'     [`get_hls_streaming_session_url`][kinesisvideoarchivedmedia_get_hls_streaming_session_url].
+#'     Kinesis Video Streams creates an HLS streaming session to be used
+#'     for accessing content in a stream using the HLS protocol.
+#'     [`get_hls_streaming_session_url`][kinesisvideoarchivedmedia_get_hls_streaming_session_url]
+#'     returns an authenticated URL (that includes an encrypted session
+#'     token) for the session's HLS *master playlist* (the root resource
+#'     needed for streaming with HLS).
 #' 
 #'     Don't share or store this token where an unauthorized entity could
 #'     access it. The token provides access to the content of the stream.
@@ -825,18 +830,23 @@ kinesisvideoarchivedmedia_get_hls_streaming_session_url <- function(StreamName =
 #' the archived data in an Amazon Kinesis video stream.
 #' 
 #' You must first call the `GetDataEndpoint` API to get an endpoint. Then
-#' send the `GetMediaForFragmentList` requests to this endpoint using the
-#' [--endpoint-url
+#' send the
+#' [`get_media_for_fragment_list`][kinesisvideoarchivedmedia_get_media_for_fragment_list]
+#' requests to this endpoint using the [--endpoint-url
 #' parameter](https://docs.aws.amazon.com/cli/latest/reference/).
 #' 
-#' The following limits apply when using the `GetMediaForFragmentList` API:
+#' The following limits apply when using the
+#' [`get_media_for_fragment_list`][kinesisvideoarchivedmedia_get_media_for_fragment_list]
+#' API:
 #' 
-#' -   A client can call `GetMediaForFragmentList` up to five times per
-#'     second per stream.
+#' -   A client can call
+#'     [`get_media_for_fragment_list`][kinesisvideoarchivedmedia_get_media_for_fragment_list]
+#'     up to five times per second per stream.
 #' 
 #' -   Kinesis Video Streams sends media data at a rate of up to 25
 #'     megabytes per second (or 200 megabits per second) during a
-#'     `GetMediaForFragmentList` session.
+#'     [`get_media_for_fragment_list`][kinesisvideoarchivedmedia_get_media_for_fragment_list]
+#'     session.
 #' 
 #' If an error is thrown after invoking a Kinesis Video Streams archived
 #' media API, in addition to the HTTP status code and the response body, it
@@ -865,7 +875,8 @@ kinesisvideoarchivedmedia_get_hls_streaming_session_url <- function(StreamName =
 #'
 #' @param StreamName &#91;required&#93; The name of the stream from which to retrieve fragment media.
 #' @param Fragments &#91;required&#93; A list of the numbers of fragments for which to retrieve media. You
-#' retrieve these values with ListFragments.
+#' retrieve these values with
+#' [`list_fragments`][kinesisvideoarchivedmedia_list_fragments].
 #'
 #' @section Request syntax:
 #' ```
@@ -907,12 +918,12 @@ kinesisvideoarchivedmedia_get_media_for_fragment_list <- function(StreamName, Fr
 #' Listing fragments is eventually consistent. This means that even if the
 #' producer receives an acknowledgment that a fragment is persisted, the
 #' result might not be returned immediately from a request to
-#' `ListFragments`. However, results are typically available in less than
-#' one second.
+#' [`list_fragments`][kinesisvideoarchivedmedia_list_fragments]. However,
+#' results are typically available in less than one second.
 #' 
 #' You must first call the `GetDataEndpoint` API to get an endpoint. Then
-#' send the `ListFragments` requests to this endpoint using the
-#' [--endpoint-url
+#' send the [`list_fragments`][kinesisvideoarchivedmedia_list_fragments]
+#' requests to this endpoint using the [--endpoint-url
 #' parameter](https://docs.aws.amazon.com/cli/latest/reference/).
 #' 
 #' If an error is thrown after invoking a Kinesis Video Streams archived

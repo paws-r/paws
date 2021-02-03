@@ -400,21 +400,24 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
 #' instead.***
 #' @param Group The name or the ARN of the resource group
 #' @param Filters Filters, formatted as ResourceFilter objects, that you want to apply to
-#' a `ListGroupResources` operation. Filters the results to include only
-#' those of the specified resource types.
+#' a [`list_group_resources`][resourcegroups_list_group_resources]
+#' operation. Filters the results to include only those of the specified
+#' resource types.
 #' 
 #' -   `resource-type` - Filter resources by their type. Specify up to five
 #'     resource types in the format `AWS::ServiceCode::ResourceType`. For
 #'     example, `AWS::EC2::Instance`, or `AWS::S3::Bucket`.
 #' 
-#' When you specify a `resource-type` filter for `ListGroupResources`, AWS
+#' When you specify a `resource-type` filter for
+#' [`list_group_resources`][resourcegroups_list_group_resources], AWS
 #' Resource Groups validates your filter resource types against the types
 #' that are defined in the query associated with the group. For example, if
 #' a group contains only S3 buckets because its query specifies only that
 #' resource type, but your `resource-type` filter includes EC2 instances,
 #' AWS Resource Groups does not filter for EC2 instances. In this case, a
-#' `ListGroupResources` request returns a `BadRequestException` error with
-#' a message similar to the following:
+#' [`list_group_resources`][resourcegroups_list_group_resources] request
+#' returns a `BadRequestException` error with a message similar to the
+#' following:
 #' 
 #' `The resource types specified as filters in the request are not valid.`
 #' 
@@ -493,11 +496,11 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
 #' resourcegroups_list_groups(Filters, MaxResults, NextToken)
 #'
 #' @param Filters Filters, formatted as GroupFilter objects, that you want to apply to a
-#' `ListGroups` operation.
+#' [`list_groups`][resourcegroups_list_groups] operation.
 #' 
 #' -   `resource-type` - Filter the results to include only those of the
 #'     specified resource types. Specify up to five resource types in the
-#'     format `AWS::<i>ServiceCode</i>::<i>ResourceType</i> `. For example,
+#'     format `AWS::ServiceCode::ResourceType `. For example,
 #'     `AWS::EC2::Instance`, or `AWS::S3::Bucket`.
 #' 
 #' -   `configuration-type` - Filter the results to include only those
@@ -564,7 +567,8 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' @description
 #' Attaches a service configuration to the specified group. This occurs
 #' asynchronously, and can take time to complete. You can use
-#' GetGroupConfiguration to check the status of the update.
+#' [`get_group_configuration`][resourcegroups_get_group_configuration] to
+#' check the status of the update.
 #' 
 #' **Minimum permissions**
 #' 
@@ -647,7 +651,8 @@ resourcegroups_put_group_configuration <- function(Group = NULL, Configuration =
 #' resourcegroups_search_resources(ResourceQuery, MaxResults, NextToken)
 #'
 #' @param ResourceQuery &#91;required&#93; The search query, using the same formats that are supported for resource
-#' group definition. For more information, see CreateGroup.
+#' group definition. For more information, see
+#' [`create_group`][resourcegroups_create_group].
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the

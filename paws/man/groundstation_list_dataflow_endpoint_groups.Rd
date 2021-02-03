@@ -10,7 +10,8 @@ groundstation_list_dataflow_endpoint_groups(maxResults, nextToken)
 \item{maxResults}{Maximum number of dataflow endpoint groups returned.}
 
 \item{nextToken}{Next token returned in the request of a previous
-\code{ListDataflowEndpointGroups} call. Used to get the next page of results.}
+\code{\link[=groundstation_list_dataflow_endpoint_groups]{list_dataflow_endpoint_groups}}
+call. Used to get the next page of results.}
 }
 \description{
 Returns a list of \code{DataflowEndpoint} groups.

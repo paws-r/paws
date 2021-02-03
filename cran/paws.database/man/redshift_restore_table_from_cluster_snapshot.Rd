@@ -34,16 +34,20 @@ Creates a new table from a table in an Amazon Redshift cluster snapshot.
 You must create the new table within the Amazon Redshift cluster that
 the snapshot was taken from.
 
-You cannot use \code{RestoreTableFromClusterSnapshot} to restore a table with
-the same name as an existing table in an Amazon Redshift cluster. That
-is, you cannot overwrite an existing table in a cluster with a restored
-table. If you want to replace your original table with a new, restored
-table, then rename or drop your original table before you call
-\code{RestoreTableFromClusterSnapshot}. When you have renamed your original
-table, then you can pass the original name of the table as the
-\code{NewTableName} parameter value in the call to
-\code{RestoreTableFromClusterSnapshot}. This way, you can replace the
-original table with the table created from the snapshot.
+You cannot use
+\code{\link[=redshift_restore_table_from_cluster_snapshot]{restore_table_from_cluster_snapshot}}
+to restore a table with the same name as an existing table in an Amazon
+Redshift cluster. That is, you cannot overwrite an existing table in a
+cluster with a restored table. If you want to replace your original
+table with a new, restored table, then rename or drop your original
+table before you call
+\code{\link[=redshift_restore_table_from_cluster_snapshot]{restore_table_from_cluster_snapshot}}.
+When you have renamed your original table, then you can pass the
+original name of the table as the \code{NewTableName} parameter value in the
+call to
+\code{\link[=redshift_restore_table_from_cluster_snapshot]{restore_table_from_cluster_snapshot}}.
+This way, you can replace the original table with the table created from
+the snapshot.
 }
 \section{Request syntax}{
 \preformatted{svc$restore_table_from_cluster_snapshot(

@@ -28,11 +28,13 @@ FlowDefinition the image will be sent to.}
 }
 \description{
 Detects unsafe content in a specified JPEG or PNG format image. Use
-\code{DetectModerationLabels} to moderate images depending on your
-requirements. For example, you might want to filter images that contain
-nudity, but not images containing suggestive content.
+\code{\link[=rekognition_detect_moderation_labels]{detect_moderation_labels}} to
+moderate images depending on your requirements. For example, you might
+want to filter images that contain nudity, but not images containing
+suggestive content.
 
-To filter images, use the labels returned by \code{DetectModerationLabels} to
+To filter images, use the labels returned by
+\code{\link[=rekognition_detect_moderation_labels]{detect_moderation_labels}} to
 determine which types of content are appropriate.
 
 For information about moderation labels, see Detecting Unsafe Content in

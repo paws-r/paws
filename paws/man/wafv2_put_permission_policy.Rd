@@ -35,8 +35,8 @@ You must be the owner of the rule group to perform this operation.
 
 This action is subject to the following restrictions:
 \itemize{
-\item You can attach only one policy with each \code{PutPermissionPolicy}
-request.
+\item You can attach only one policy with each
+\code{\link[=wafv2_put_permission_policy]{put_permission_policy}} request.
 \item The ARN in the request must be a valid WAF RuleGroup ARN and the
 rule group must exist in the same region.
 \item The user making the request must be the owner of the rule group.

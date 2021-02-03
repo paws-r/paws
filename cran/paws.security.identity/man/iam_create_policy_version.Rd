@@ -46,7 +46,8 @@ in the \emph{IAM User Guide}.}
 Creates a new version of the specified managed policy. To update a
 managed policy, you create a new policy version. A managed policy can
 have up to five versions. If the policy has five versions, you must
-delete an existing version using DeletePolicyVersion before you create a
+delete an existing version using
+\code{\link[=iam_delete_policy_version]{delete_policy_version}} before you create a
 new version.
 
 Optionally, you can set the new version as the policy's default version.

@@ -9,7 +9,8 @@ sagemaker_list_compilation_jobs(NextToken, MaxResults,
   LastModifiedTimeBefore, NameContains, StatusEquals, SortBy, SortOrder)
 }
 \arguments{
-\item{NextToken}{If the result of the previous \code{ListCompilationJobs} request was
+\item{NextToken}{If the result of the previous
+\code{\link[=sagemaker_list_compilation_jobs]{list_compilation_jobs}} request was
 truncated, the response includes a \code{NextToken}. To retrieve the next set
 of model compilation jobs, use the token in the next request.}
 
@@ -40,9 +41,10 @@ DescribeCompilationJobResponse$CompilationJobStatus status.}
 \description{
 Lists model compilation jobs that satisfy various filters.
 
-To create a model compilation job, use CreateCompilationJob. To get
+To create a model compilation job, use
+\code{\link[=sagemaker_create_compilation_job]{create_compilation_job}}. To get
 information about a particular model compilation job you have created,
-use DescribeCompilationJob.
+use \code{\link[=sagemaker_describe_compilation_job]{describe_compilation_job}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_compilation_jobs(

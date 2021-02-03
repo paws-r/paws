@@ -76,10 +76,10 @@ the most useful for most applications. You will likely perform
 operations other than these, such as creating keys and assigning
 policies, by using the console.
 \itemize{
-\item Encrypt
-\item Decrypt
-\item GenerateDataKey
-\item GenerateDataKeyWithoutPlaintext
+\item \code{\link[=kms_encrypt]{encrypt}}
+\item \code{\link[=kms_decrypt]{decrypt}}
+\item \code{\link[=kms_generate_data_key]{generate_data_key}}
+\item \code{\link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext}}
 }
 }
 \section{Service syntax}{

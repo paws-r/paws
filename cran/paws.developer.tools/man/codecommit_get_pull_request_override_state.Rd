@@ -14,7 +14,8 @@ codecommit_get_pull_request_override_state(pullRequestId, revisionId)
 whether approval rules have been set aside (overridden).}
 
 \item{revisionId}{[required] The system-generated ID of the revision for the pull request. To
-retrieve the most recent revision ID, use GetPullRequest.}
+retrieve the most recent revision ID, use
+\code{\link[=codecommit_get_pull_request]{get_pull_request}}.}
 }
 \description{
 Returns information about whether approval rules have been set aside

@@ -27,8 +27,9 @@ returned. If false, the operation returns all Qualification types.}
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \description{
-The \code{ListQualificationTypes} operation returns a list of Qualification
-types, filtered by an optional search term.
+The \code{\link[=mturk_list_qualification_types]{list_qualification_types}}
+operation returns a list of Qualification types, filtered by an optional
+search term.
 }
 \section{Request syntax}{
 \preformatted{svc$list_qualification_types(

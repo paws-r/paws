@@ -2190,8 +2190,10 @@ clouddirectory_get_typed_link_facet_information <- function(SchemaArn, Name) {
 #'   NextToken, MaxResults)
 #'
 #' @param DirectoryArn &#91;required&#93; The ARN of the directory you are listing.
-#' @param SchemaArn The response for `ListAppliedSchemaArns` when this parameter is used
-#' will list all minor version ARNs for a major version.
+#' @param SchemaArn The response for
+#' [`list_applied_schema_arns`][clouddirectory_list_applied_schema_arns]
+#' when this parameter is used will list all minor version ARNs for a major
+#' version.
 #' @param NextToken The pagination token.
 #' @param MaxResults The maximum number of results to retrieve.
 #'
@@ -3098,8 +3100,10 @@ clouddirectory_list_policy_attachments <- function(DirectoryArn, PolicyReference
 #' clouddirectory_list_published_schema_arns(SchemaArn, NextToken,
 #'   MaxResults)
 #'
-#' @param SchemaArn The response for `ListPublishedSchemaArns` when this parameter is used
-#' will list all minor version ARNs for a major version.
+#' @param SchemaArn The response for
+#' [`list_published_schema_arns`][clouddirectory_list_published_schema_arns]
+#' when this parameter is used will list all minor version ARNs for a major
+#' version.
 #' @param NextToken The pagination token.
 #' @param MaxResults The maximum number of results to retrieve.
 #'

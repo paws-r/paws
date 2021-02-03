@@ -11,7 +11,7 @@ personalize_describe_dataset_group(datasetGroupArn)
 }
 \description{
 Describes the given dataset group. For more information on dataset
-groups, see CreateDatasetGroup.
+groups, see \code{\link[=personalize_create_dataset_group]{create_dataset_group}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_dataset_group(

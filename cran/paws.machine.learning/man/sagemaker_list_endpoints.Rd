@@ -13,9 +13,9 @@ sagemaker_list_endpoints(SortBy, SortOrder, NextToken, MaxResults,
 
 \item{SortOrder}{The sort order for results. The default is \code{Descending}.}
 
-\item{NextToken}{If the result of a \code{ListEndpoints} request was truncated, the response
-includes a \code{NextToken}. To retrieve the next set of endpoints, use the
-token in the next request.}
+\item{NextToken}{If the result of a \code{\link[=sagemaker_list_endpoints]{list_endpoints}} request
+was truncated, the response includes a \code{NextToken}. To retrieve the next
+set of endpoints, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of endpoints to return in the response.}
 

@@ -21,7 +21,9 @@ NULL
 #'
 #' @param OpenIDConnectProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC) provider
 #' resource to add the client ID to. You can get a list of OIDC provider
-#' ARNs by using the ListOpenIDConnectProviders operation.
+#' ARNs by using the
+#' [`list_open_id_connect_providers`][iam_list_open_id_connect_providers]
+#' operation.
 #' @param ClientID &#91;required&#93; The client ID (also known as audience) to add to the IAM OpenID Connect
 #' provider resource.
 #'
@@ -209,7 +211,8 @@ iam_add_user_to_group <- function(GroupName, UserName) {
 #' Attaches the specified managed policy to the specified IAM group.
 #' 
 #' You use this API to attach a managed policy to a group. To embed an
-#' inline policy in a group, use PutGroupPolicy.
+#' inline policy in a group, use
+#' [`put_group_policy`][iam_put_group_policy].
 #' 
 #' For more information about policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
@@ -277,12 +280,13 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
 #' of the role's permission (access) policy.
 #' 
 #' You cannot use a managed policy as the role's trust policy. The role's
-#' trust policy is created at the same time as the role, using CreateRole.
-#' You can update a role's trust policy using UpdateAssumeRolePolicy.
+#' trust policy is created at the same time as the role, using
+#' [`create_role`][iam_create_role]. You can update a role's trust policy
+#' using [`update_assume_role_policy`][iam_update_assume_role_policy].
 #' 
 #' Use this API to attach a *managed* policy to a role. To embed an inline
-#' policy in a role, use PutRolePolicy. For more information about
-#' policies, see [Managed Policies and Inline
+#' policy in a role, use [`put_role_policy`][iam_put_role_policy]. For more
+#' information about policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
@@ -346,7 +350,7 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
 #' Attaches the specified managed policy to the specified user.
 #' 
 #' You use this API to attach a *managed* policy to a user. To embed an
-#' inline policy in a user, use PutUserPolicy.
+#' inline policy in a user, use [`put_user_policy`][iam_put_user_policy].
 #' 
 #' For more information about policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
@@ -413,8 +417,9 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
 #' Changes the password of the IAM user who is calling this operation. The
 #' AWS account root user password is not affected by this operation.
 #' 
-#' To change the password for a different user, see UpdateLoginProfile. For
-#' more information about modifying passwords, see [Managing
+#' To change the password for a different user, see
+#' [`update_login_profile`][iam_update_login_profile]. For more information
+#' about modifying passwords, see [Managing
 #' Passwords](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html)
 #' in the *IAM User Guide*.
 #'
@@ -841,7 +846,8 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' 
 #' The trust for the OIDC provider is derived from the IAM provider that
 #' this operation creates. Therefore, it is best to limit access to the
-#' CreateOpenIDConnectProvider operation to highly privileged users.
+#' [`create_open_id_connect_provider`][iam_create_open_id_connect_provider]
+#' operation to highly privileged users.
 #'
 #' @usage
 #' iam_create_open_id_connect_provider(Url, ClientIDList, ThumbprintList)
@@ -1043,7 +1049,8 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 #' Creates a new version of the specified managed policy. To update a
 #' managed policy, you create a new policy version. A managed policy can
 #' have up to five versions. If the policy has five versions, you must
-#' delete an existing version using DeletePolicyVersion before you create a
+#' delete an existing version using
+#' [`delete_policy_version`][iam_delete_policy_version] before you create a
 #' new version.
 #' 
 #' Optionally, you can set the new version as the policy's default version.
@@ -1426,7 +1433,7 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
 #' The only supported service at this time is AWS CodeCommit.
 #' 
 #' You can reset the password to a new service-generated value by calling
-#' ResetServiceSpecificCredential.
+#' [`reset_service_specific_credential`][iam_reset_service_specific_credential].
 #' 
 #' For more information about service-specific credentials, see [Using IAM
 #' with AWS CodeCommit: Git Credentials, SSH Keys, and AWS Access
@@ -1569,9 +1576,9 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
 #'
 #' @description
 #' Creates a new virtual MFA device for the AWS account. After creating the
-#' virtual MFA, use EnableMFADevice to attach the MFA device to an IAM
-#' user. For more information about creating and working with virtual MFA
-#' devices, go to [Using a Virtual MFA
+#' virtual MFA, use [`enable_mfa_device`][iam_enable_mfa_device] to attach
+#' the MFA device to an IAM user. For more information about creating and
+#' working with virtual MFA devices, go to [Using a Virtual MFA
 #' Device](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html)
 #' in the *IAM User Guide*.
 #' 
@@ -1907,7 +1914,8 @@ iam_delete_group <- function(GroupName) {
 #' IAM group.
 #' 
 #' A group can also have managed policies attached to it. To detach a
-#' managed policy from a group, use DetachGroupPolicy. For more information
+#' managed policy from a group, use
+#' [`detach_group_policy`][iam_detach_group_policy]. For more information
 #' about policies, refer to [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
@@ -2039,7 +2047,8 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
 #' through the command line interface or the API. To prevent all user
 #' access, you must also either make any access keys inactive or delete
 #' them. For more information about making keys inactive or deleting them,
-#' see UpdateAccessKey and DeleteAccessKey.
+#' see [`update_access_key`][iam_update_access_key] and
+#' [`delete_access_key`][iam_delete_access_key].
 #'
 #' @usage
 #' iam_delete_login_profile(UserName)
@@ -2104,7 +2113,9 @@ iam_delete_login_profile <- function(UserName) {
 #'
 #' @param OpenIDConnectProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM OpenID Connect provider
 #' resource object to delete. You can get a list of OpenID Connect provider
-#' resource ARNs by using the ListOpenIDConnectProviders operation.
+#' resource ARNs by using the
+#' [`list_open_id_connect_providers`][iam_list_open_id_connect_providers]
+#' operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -2144,15 +2155,20 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' the process for deleting a managed policy:
 #' 
 #' -   Detach the policy from all users, groups, and roles that the policy
-#'     is attached to, using the DetachUserPolicy, DetachGroupPolicy, or
-#'     DetachRolePolicy API operations. To list all the users, groups, and
-#'     roles that a policy is attached to, use ListEntitiesForPolicy.
+#'     is attached to, using the
+#'     [`detach_user_policy`][iam_detach_user_policy],
+#'     [`detach_group_policy`][iam_detach_group_policy], or
+#'     [`detach_role_policy`][iam_detach_role_policy] API operations. To
+#'     list all the users, groups, and roles that a policy is attached to,
+#'     use [`list_entities_for_policy`][iam_list_entities_for_policy].
 #' 
-#' -   Delete all versions of the policy using DeletePolicyVersion. To list
-#'     the policy's versions, use ListPolicyVersions. You cannot use
-#'     DeletePolicyVersion to delete the version that is marked as the
-#'     default version. You delete the policy's default version in the next
-#'     step of the process.
+#' -   Delete all versions of the policy using
+#'     [`delete_policy_version`][iam_delete_policy_version]. To list the
+#'     policy's versions, use
+#'     [`list_policy_versions`][iam_list_policy_versions]. You cannot use
+#'     [`delete_policy_version`][iam_delete_policy_version] to delete the
+#'     version that is marked as the default version. You delete the
+#'     policy's default version in the next step of the process.
 #' 
 #' -   Delete the policy (this automatically deletes the policy's default
 #'     version) using this API.
@@ -2204,9 +2220,10 @@ iam_delete_policy <- function(PolicyArn) {
 #' Deletes the specified version from the specified managed policy.
 #' 
 #' You cannot delete the default version from a policy using this API. To
-#' delete the default version from a policy, use DeletePolicy. To find out
-#' which version of a policy is marked as the default version, use
-#' ListPolicyVersions.
+#' delete the default version from a policy, use
+#' [`delete_policy`][iam_delete_policy]. To find out which version of a
+#' policy is marked as the default version, use
+#' [`list_policy_versions`][iam_list_policy_versions].
 #' 
 #' For information about versions for managed policies, see [Versioning for
 #' Managed
@@ -2371,7 +2388,8 @@ iam_delete_role_permissions_boundary <- function(RoleName) {
 #' IAM role.
 #' 
 #' A role can also have managed policies attached to it. To detach a
-#' managed policy from a role, use DetachRolePolicy. For more information
+#' managed policy from a role, use
+#' [`detach_role_policy`][iam_detach_role_policy]. For more information
 #' about policies, refer to [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
@@ -2604,13 +2622,15 @@ iam_delete_server_certificate <- function(ServerCertificateName) {
 #' 
 #' If you submit a deletion request for a service-linked role whose linked
 #' service is still accessing a resource, then the deletion task fails. If
-#' it fails, the GetServiceLinkedRoleDeletionStatus API operation returns
-#' the reason for the failure, usually including the resources that must be
-#' deleted. To delete the service-linked role, you must first remove those
-#' resources from the linked service and then submit the deletion request
-#' again. Resources are specific to the service that is linked to the role.
-#' For more information about removing resources from a service, see the
-#' [AWS documentation](https://docs.aws.amazon.com/) for your service.
+#' it fails, the
+#' [`get_service_linked_role_deletion_status`][iam_get_service_linked_role_deletion_status]
+#' API operation returns the reason for the failure, usually including the
+#' resources that must be deleted. To delete the service-linked role, you
+#' must first remove those resources from the linked service and then
+#' submit the deletion request again. Resources are specific to the service
+#' that is linked to the role. For more information about removing
+#' resources from a service, see the [AWS
+#' documentation](https://docs.aws.amazon.com/) for your service.
 #' 
 #' For more information about service-linked roles, see [Roles Terms and
 #' Concepts: AWS Service-Linked
@@ -2667,7 +2687,8 @@ iam_delete_service_linked_role <- function(RoleName) {
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param ServiceSpecificCredentialId &#91;required&#93; The unique identifier of the service-specific credential. You can get
-#' this value by calling ListServiceSpecificCredentials.
+#' this value by calling
+#' [`list_service_specific_credentials`][iam_list_service_specific_credentials].
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
@@ -2775,24 +2796,30 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
 #' User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_deleting_cli).
 #' Before attempting to delete a user, remove the following items:
 #' 
-#' -   Password (DeleteLoginProfile)
+#' -   Password ([`delete_login_profile`][iam_delete_login_profile])
 #' 
-#' -   Access keys (DeleteAccessKey)
+#' -   Access keys ([`delete_access_key`][iam_delete_access_key])
 #' 
-#' -   Signing certificate (DeleteSigningCertificate)
+#' -   Signing certificate
+#'     ([`delete_signing_certificate`][iam_delete_signing_certificate])
 #' 
-#' -   SSH public key (DeleteSSHPublicKey)
+#' -   SSH public key
+#'     ([`delete_ssh_public_key`][iam_delete_ssh_public_key])
 #' 
-#' -   Git credentials (DeleteServiceSpecificCredential)
+#' -   Git credentials
+#'     ([`delete_service_specific_credential`][iam_delete_service_specific_credential])
 #' 
-#' -   Multi-factor authentication (MFA) device (DeactivateMFADevice,
-#'     DeleteVirtualMFADevice)
+#' -   Multi-factor authentication (MFA) device
+#'     ([`deactivate_mfa_device`][iam_deactivate_mfa_device],
+#'     [`delete_virtual_mfa_device`][iam_delete_virtual_mfa_device])
 #' 
-#' -   Inline policies (DeleteUserPolicy)
+#' -   Inline policies ([`delete_user_policy`][iam_delete_user_policy])
 #' 
-#' -   Attached managed policies (DetachUserPolicy)
+#' -   Attached managed policies
+#'     ([`detach_user_policy`][iam_detach_user_policy])
 #' 
-#' -   Group memberships (RemoveUserFromGroup)
+#' -   Group memberships
+#'     ([`remove_user_from_group`][iam_remove_user_from_group])
 #'
 #' @usage
 #' iam_delete_user(UserName)
@@ -2890,7 +2917,8 @@ iam_delete_user_permissions_boundary <- function(UserName) {
 #' IAM user.
 #' 
 #' A user can also have managed policies attached to it. To detach a
-#' managed policy from a user, use DetachUserPolicy. For more information
+#' managed policy from a user, use
+#' [`detach_user_policy`][iam_detach_user_policy]. For more information
 #' about policies, refer to [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
@@ -2957,7 +2985,7 @@ iam_delete_user_policy <- function(UserName, PolicyName) {
 #' 
 #' You must deactivate a user's virtual MFA device before you can delete
 #' it. For information about deactivating MFA devices, see
-#' DeactivateMFADevice.
+#' [`deactivate_mfa_device`][iam_deactivate_mfa_device].
 #'
 #' @usage
 #' iam_delete_virtual_mfa_device(SerialNumber)
@@ -3012,8 +3040,8 @@ iam_delete_virtual_mfa_device <- function(SerialNumber) {
 #' Removes the specified managed policy from the specified IAM group.
 #' 
 #' A group can also have inline policies embedded with it. To delete an
-#' inline policy, use the DeleteGroupPolicy API. For information about
-#' policies, see [Managed Policies and Inline
+#' inline policy, use the [`delete_group_policy`][iam_delete_group_policy]
+#' API. For information about policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
@@ -3068,8 +3096,8 @@ iam_detach_group_policy <- function(GroupName, PolicyArn) {
 #' Removes the specified managed policy from the specified role.
 #' 
 #' A role can also have inline policies embedded with it. To delete an
-#' inline policy, use the DeleteRolePolicy API. For information about
-#' policies, see [Managed Policies and Inline
+#' inline policy, use the [`delete_role_policy`][iam_delete_role_policy]
+#' API. For information about policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
@@ -3124,8 +3152,8 @@ iam_detach_role_policy <- function(RoleName, PolicyArn) {
 #' Removes the specified managed policy from the specified user.
 #' 
 #' A user can also have inline policies embedded with it. To delete an
-#' inline policy, use the DeleteUserPolicy API. For information about
-#' policies, see [Managed Policies and Inline
+#' inline policy, use the [`delete_user_policy`][iam_delete_user_policy]
+#' API. For information about policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #'
@@ -3334,9 +3362,10 @@ iam_generate_credential_report <- function() {
 #' in the *IAM User Guide*.
 #' 
 #' This operation returns a `JobId`. Use this parameter in the
-#' ` <a>GetOrganizationsAccessReport</a> ` operation to check the status of
-#' the report generation. To check the status of this request, use the
-#' `JobId` parameter in the ` <a>GetOrganizationsAccessReport</a> `
+#' [`get_organizations_access_report`][iam_get_organizations_access_report]
+#' operation to check the status of the report generation. To check the
+#' status of this request, use the `JobId` parameter in the
+#' [`get_organizations_access_report`][iam_get_organizations_access_report]
 #' operation and test the `JobStatus` response parameter. When the job is
 #' complete, you can retrieve the report.
 #' 
@@ -3498,32 +3527,35 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' CloudTrail](https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html)
 #' in the *IAM User Guide*.
 #' 
-#' The `GenerateServiceLastAccessedDetails` operation returns a `JobId`.
-#' Use this parameter in the following operations to retrieve the following
-#' details from your report:
+#' The
+#' [`generate_service_last_accessed_details`][iam_generate_service_last_accessed_details]
+#' operation returns a `JobId`. Use this parameter in the following
+#' operations to retrieve the following details from your report:
 #' 
-#' -   GetServiceLastAccessedDetails – Use this operation for users,
-#'     groups, roles, or policies to list every AWS service that the
-#'     resource could access using permissions policies. For each service,
-#'     the response includes information about the most recent access
-#'     attempt.
+#' -   [`get_service_last_accessed_details`][iam_get_service_last_accessed_details]
+#'     – Use this operation for users, groups, roles, or policies to list
+#'     every AWS service that the resource could access using permissions
+#'     policies. For each service, the response includes information about
+#'     the most recent access attempt.
 #' 
 #'     The `JobId` returned by `GenerateServiceLastAccessedDetail` must be
 #'     used by the same role within a session, or by the same user when
 #'     used to call `GetServiceLastAccessedDetail`.
 #' 
-#' -   GetServiceLastAccessedDetailsWithEntities – Use this operation for
-#'     groups and policies to list information about the associated
-#'     entities (users or roles) that attempted to access a specific AWS
-#'     service.
+#' -   [`get_service_last_accessed_details_with_entities`][iam_get_service_last_accessed_details_with_entities]
+#'     – Use this operation for groups and policies to list information
+#'     about the associated entities (users or roles) that attempted to
+#'     access a specific AWS service.
 #' 
-#' To check the status of the `GenerateServiceLastAccessedDetails` request,
-#' use the `JobId` parameter in the same operations and test the
+#' To check the status of the
+#' [`generate_service_last_accessed_details`][iam_generate_service_last_accessed_details]
+#' request, use the `JobId` parameter in the same operations and test the
 #' `JobStatus` response parameter.
 #' 
 #' For additional information about the permissions policies that allow an
 #' identity (user, group, or role) to access specific services, use the
-#' ListPoliciesGrantingServiceAccess operation.
+#' [`list_policies_granting_service_access`][iam_list_policies_granting_service_access]
+#' operation.
 #' 
 #' Service last accessed data does not use other policy types when
 #' determining whether a resource could access a service. These other
@@ -3800,13 +3832,16 @@ iam_get_account_summary <- function() {
 #' Gets a list of all of the context keys referenced in the input policies.
 #' The policies are supplied as a list of one or more strings. To get the
 #' context keys from policies associated with an IAM user, group, or role,
-#' use GetContextKeysForPrincipalPolicy.
+#' use
+#' [`get_context_keys_for_principal_policy`][iam_get_context_keys_for_principal_policy].
 #' 
 #' Context keys are variables maintained by AWS and its services that
 #' provide details about the context of an API query request. Context keys
 #' can be evaluated by testing against a value specified in an IAM policy.
-#' Use `GetContextKeysForCustomPolicy` to understand what key names and
-#' values you must supply when you call SimulateCustomPolicy. Note that all
+#' Use
+#' [`get_context_keys_for_custom_policy`][iam_get_context_keys_for_custom_policy]
+#' to understand what key names and values you must supply when you call
+#' [`simulate_custom_policy`][iam_simulate_custom_policy]. Note that all
 #' parameters are shown in unencoded form here for clarity but must be URL
 #' encoded to be included as a part of a real HTML request.
 #'
@@ -3871,18 +3906,22 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
 #' 
 #' You can optionally include a list of one or more additional policies,
 #' specified as strings. If you want to include *only* a list of policies
-#' by string, use GetContextKeysForCustomPolicy instead.
+#' by string, use
+#' [`get_context_keys_for_custom_policy`][iam_get_context_keys_for_custom_policy]
+#' instead.
 #' 
 #' **Note:** This API discloses information about the permissions granted
 #' to other users. If you do not want users to see other user's
 #' permissions, then consider allowing them to use
-#' GetContextKeysForCustomPolicy instead.
+#' [`get_context_keys_for_custom_policy`][iam_get_context_keys_for_custom_policy]
+#' instead.
 #' 
 #' Context keys are variables maintained by AWS and its services that
 #' provide details about the context of an API query request. Context keys
 #' can be evaluated by testing against a value in an IAM policy. Use
-#' GetContextKeysForPrincipalPolicy to understand what key names and values
-#' you must supply when you call SimulatePrincipalPolicy.
+#' [`get_context_keys_for_principal_policy`][iam_get_context_keys_for_principal_policy]
+#' to understand what key names and values you must supply when you call
+#' [`simulate_principal_policy`][iam_simulate_principal_policy].
 #'
 #' @usage
 #' iam_get_context_keys_for_principal_policy(PolicySourceArn,
@@ -4055,8 +4094,9 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' SDKs provide similar functionality.
 #' 
 #' An IAM group can also have managed policies attached to it. To retrieve
-#' a managed policy document that is attached to a group, use GetPolicy to
-#' determine the policy's default version, then use GetPolicyVersion to
+#' a managed policy document that is attached to a group, use
+#' [`get_policy`][iam_get_policy] to determine the policy's default
+#' version, then use [`get_policy_version`][iam_get_policy_version] to
 #' retrieve the policy document.
 #' 
 #' For more information about policies, see [Managed Policies and Inline
@@ -4229,7 +4269,9 @@ iam_get_login_profile <- function(UserName) {
 #'
 #' @param OpenIDConnectProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the OIDC provider resource object in
 #' IAM to get information for. You can get a list of OIDC provider resource
-#' ARNs by using the ListOpenIDConnectProviders operation.
+#' ARNs by using the
+#' [`list_open_id_connect_providers`][iam_list_open_id_connect_providers]
+#' operation.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
@@ -4270,12 +4312,14 @@ iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' @description
 #' Retrieves the service last accessed data report for AWS Organizations
 #' that was previously generated using the
-#' ` <a>GenerateOrganizationsAccessReport</a> ` operation. This operation
-#' retrieves the status of your report job and the report contents.
+#' [`generate_organizations_access_report`][iam_generate_organizations_access_report]
+#' operation. This operation retrieves the status of your report job and
+#' the report contents.
 #' 
 #' Depending on the parameters that you passed when you generated the
 #' report, the data returned could include different information. For
-#' details, see GenerateOrganizationsAccessReport.
+#' details, see
+#' [`generate_organizations_access_report`][iam_generate_organizations_access_report].
 #' 
 #' To call this operation, you must be signed in to the master account in
 #' your organization. SCPs must be enabled for your organization root. You
@@ -4297,7 +4341,8 @@ iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' iam_get_organizations_access_report(JobId, MaxItems, Marker, SortKey)
 #'
 #' @param JobId &#91;required&#93; The identifier of the request generated by the
-#' GenerateOrganizationsAccessReport operation.
+#' [`generate_organizations_access_report`][iam_generate_organizations_access_report]
+#' operation.
 #' @param MaxItems Use this only when paginating results to indicate the maximum number of
 #' items you want in the response. If additional items exist beyond the
 #' maximum you specify, the `IsTruncated` response element is `true`.
@@ -4363,14 +4408,16 @@ iam_get_organizations_access_report <- function(JobId, MaxItems = NULL, Marker =
 #' policy's default version and the total number of IAM users, groups, and
 #' roles to which the policy is attached. To retrieve the list of the
 #' specific users, groups, and roles that the policy is attached to, use
-#' the ListEntitiesForPolicy API. This API returns metadata about the
-#' policy. To retrieve the actual policy document for a specific version of
-#' the policy, use GetPolicyVersion.
+#' the [`list_entities_for_policy`][iam_list_entities_for_policy] API. This
+#' API returns metadata about the policy. To retrieve the actual policy
+#' document for a specific version of the policy, use
+#' [`get_policy_version`][iam_get_policy_version].
 #' 
 #' This API retrieves information about managed policies. To retrieve
 #' information about an inline policy that is embedded with an IAM user,
-#' group, or role, use the GetUserPolicy, GetGroupPolicy, or GetRolePolicy
-#' API.
+#' group, or role, use the [`get_user_policy`][iam_get_user_policy],
+#' [`get_group_policy`][iam_get_group_policy], or
+#' [`get_role_policy`][iam_get_role_policy] API.
 #' 
 #' For more information about policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
@@ -4428,11 +4475,14 @@ iam_get_policy <- function(PolicyArn) {
 #' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
 #' SDKs provide similar functionality.
 #' 
-#' To list the available versions for a policy, use ListPolicyVersions.
+#' To list the available versions for a policy, use
+#' [`list_policy_versions`][iam_list_policy_versions].
 #' 
 #' This API retrieves information about managed policies. To retrieve
 #' information about an inline policy that is embedded in a user, group, or
-#' role, use the GetUserPolicy, GetGroupPolicy, or GetRolePolicy API.
+#' role, use the [`get_user_policy`][iam_get_user_policy],
+#' [`get_group_policy`][iam_get_group_policy], or
+#' [`get_role_policy`][iam_get_role_policy] API.
 #' 
 #' For more information about the types of policies, see [Managed Policies
 #' and Inline
@@ -4567,8 +4617,9 @@ iam_get_role <- function(RoleName) {
 #' SDKs provide similar functionality.
 #' 
 #' An IAM role can also have managed policies attached to it. To retrieve a
-#' managed policy document that is attached to a role, use GetPolicy to
-#' determine the policy's default version, then use GetPolicyVersion to
+#' managed policy document that is attached to a role, use
+#' [`get_policy`][iam_get_policy] to determine the policy's default
+#' version, then use [`get_policy_version`][iam_get_policy_version] to
 #' retrieve the policy document.
 #' 
 #' For more information about policies, see [Managed Policies and Inline
@@ -4787,11 +4838,13 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #'
 #' @description
 #' Retrieves a service last accessed report that was created using the
-#' `GenerateServiceLastAccessedDetails` operation. You can use the `JobId`
-#' parameter in `GetServiceLastAccessedDetails` to retrieve the status of
-#' your report job. When the report is complete, you can retrieve the
-#' generated report. The report includes a list of AWS services that the
-#' resource (user, group, role, or managed policy) can access.
+#' [`generate_service_last_accessed_details`][iam_generate_service_last_accessed_details]
+#' operation. You can use the `JobId` parameter in
+#' [`get_service_last_accessed_details`][iam_get_service_last_accessed_details]
+#' to retrieve the status of your report job. When the report is complete,
+#' you can retrieve the generated report. The report includes a list of AWS
+#' services that the resource (user, group, role, or managed policy) can
+#' access.
 #' 
 #' Service last accessed data does not use other policy types when
 #' determining whether a resource could access a service. These other
@@ -4806,14 +4859,16 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #' policies, the operation returns details about the most recent access
 #' attempt. If there was no attempt, the service is listed without details
 #' about the most recent attempt to access the service. If the operation
-#' fails, the `GetServiceLastAccessedDetails` operation returns the reason
-#' that it failed.
+#' fails, the
+#' [`get_service_last_accessed_details`][iam_get_service_last_accessed_details]
+#' operation returns the reason that it failed.
 #' 
-#' The `GetServiceLastAccessedDetails` operation returns a list of
-#' services. This list includes the number of entities that have attempted
-#' to access the service and the date and time of the last attempt. It also
-#' returns the ARN of the following entity, depending on the resource ARN
-#' that you used to generate the report:
+#' The
+#' [`get_service_last_accessed_details`][iam_get_service_last_accessed_details]
+#' operation returns a list of services. This list includes the number of
+#' entities that have attempted to access the service and the date and time
+#' of the last attempt. It also returns the ARN of the following entity,
+#' depending on the resource ARN that you used to generate the report:
 #' 
 #' -   **User** – Returns the user ARN that you used to generate the report
 #' 
@@ -4841,10 +4896,10 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #' iam_get_service_last_accessed_details(JobId, MaxItems, Marker)
 #'
 #' @param JobId &#91;required&#93; The ID of the request generated by the
-#' GenerateServiceLastAccessedDetails operation. The `JobId` returned by
-#' `GenerateServiceLastAccessedDetail` must be used by the same role within
-#' a session, or by the same user when used to call
-#' `GetServiceLastAccessedDetail`.
+#' [`generate_service_last_accessed_details`][iam_generate_service_last_accessed_details]
+#' operation. The `JobId` returned by `GenerateServiceLastAccessedDetail`
+#' must be used by the same role within a session, or by the same user when
+#' used to call `GetServiceLastAccessedDetail`.
 #' @param MaxItems Use this only when paginating results to indicate the maximum number of
 #' items you want in the response. If additional items exist beyond the
 #' maximum you specify, the `IsTruncated` response element is `true`.
@@ -4903,11 +4958,12 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #'
 #' @description
 #' After you generate a group or policy report using the
-#' `GenerateServiceLastAccessedDetails` operation, you can use the `JobId`
-#' parameter in `GetServiceLastAccessedDetailsWithEntities`. This operation
-#' retrieves the status of your report job and a list of entities that
-#' could have used group or policy permissions to access the specified
-#' service.
+#' [`generate_service_last_accessed_details`][iam_generate_service_last_accessed_details]
+#' operation, you can use the `JobId` parameter in
+#' [`get_service_last_accessed_details_with_entities`][iam_get_service_last_accessed_details_with_entities].
+#' This operation retrieves the status of your report job and a list of
+#' entities that could have used group or policy permissions to access the
+#' specified service.
 #' 
 #' -   **Group** – For a group report, this operation returns a list of
 #'     users in the group that could have used the group’s policies in an
@@ -4920,7 +4976,8 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' You can also use this operation for user or role reports to retrieve
 #' details about those entities.
 #' 
-#' If the operation fails, the `GetServiceLastAccessedDetailsWithEntities`
+#' If the operation fails, the
+#' [`get_service_last_accessed_details_with_entities`][iam_get_service_last_accessed_details_with_entities]
 #' operation returns the reason that it failed.
 #' 
 #' By default, the list of associated entities is sorted by date, with the
@@ -4931,7 +4988,8 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #'   ServiceNamespace, MaxItems, Marker)
 #'
 #' @param JobId &#91;required&#93; The ID of the request generated by the
-#' `GenerateServiceLastAccessedDetails` operation.
+#' [`generate_service_last_accessed_details`][iam_generate_service_last_accessed_details]
+#' operation.
 #' @param ServiceNamespace &#91;required&#93; The service namespace for an AWS service. Provide the service namespace
 #' to learn when the IAM entity last attempted to access the specified
 #' service.
@@ -5003,18 +5061,21 @@ iam_get_service_last_accessed_details_with_entities <- function(JobId, ServiceNa
 #'
 #' @description
 #' Retrieves the status of your service-linked role deletion. After you use
-#' the DeleteServiceLinkedRole API operation to submit a service-linked
-#' role for deletion, you can use the `DeletionTaskId` parameter in
-#' `GetServiceLinkedRoleDeletionStatus` to check the status of the
-#' deletion. If the deletion fails, this operation returns the reason that
-#' it failed, if that information is returned by the service.
+#' the [`delete_service_linked_role`][iam_delete_service_linked_role] API
+#' operation to submit a service-linked role for deletion, you can use the
+#' `DeletionTaskId` parameter in
+#' [`get_service_linked_role_deletion_status`][iam_get_service_linked_role_deletion_status]
+#' to check the status of the deletion. If the deletion fails, this
+#' operation returns the reason that it failed, if that information is
+#' returned by the service.
 #'
 #' @usage
 #' iam_get_service_linked_role_deletion_status(DeletionTaskId)
 #'
 #' @param DeletionTaskId &#91;required&#93; The deletion task identifier. This identifier is returned by the
-#' DeleteServiceLinkedRole operation in the format
-#' `task/aws-service-role/&lt;service-principal-name&gt;/&lt;role-name&gt;/&lt;task-uuid&gt;`.
+#' [`delete_service_linked_role`][iam_delete_service_linked_role] operation
+#' in the format
+#' `task/aws-service-role/<service-principal-name>/<role-name>/<task-uuid>`.
 #'
 #' @section Request syntax:
 #' ```
@@ -5115,8 +5176,9 @@ iam_get_user <- function(UserName = NULL) {
 #' SDKs provide similar functionality.
 #' 
 #' An IAM user can also have managed policies attached to it. To retrieve a
-#' managed policy document that is attached to a user, use GetPolicy to
-#' determine the policy's default version. Then use GetPolicyVersion to
+#' managed policy document that is attached to a user, use
+#' [`get_policy`][iam_get_policy] to determine the policy's default
+#' version. Then use [`get_policy_version`][iam_get_policy_version] to
 #' retrieve the policy document.
 #' 
 #' For more information about policies, see [Managed Policies and Inline
@@ -5315,8 +5377,9 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
 #' Lists all managed policies that are attached to the specified IAM group.
 #' 
 #' An IAM group can also have inline policies embedded with it. To list the
-#' inline policies for a group, use the ListGroupPolicies API. For
-#' information about policies, see [Managed Policies and Inline
+#' inline policies for a group, use the
+#' [`list_group_policies`][iam_list_group_policies] API. For information
+#' about policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
@@ -5397,8 +5460,9 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
 #' Lists all managed policies that are attached to the specified IAM role.
 #' 
 #' An IAM role can also have inline policies embedded with it. To list the
-#' inline policies for a role, use the ListRolePolicies API. For
-#' information about policies, see [Managed Policies and Inline
+#' inline policies for a role, use the
+#' [`list_role_policies`][iam_list_role_policies] API. For information
+#' about policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
@@ -5478,8 +5542,9 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
 #' Lists all managed policies that are attached to the specified IAM user.
 #' 
 #' An IAM user can also have inline policies embedded with it. To list the
-#' inline policies for a user, use the ListUserPolicies API. For
-#' information about policies, see [Managed Policies and Inline
+#' inline policies for a user, use the
+#' [`list_user_policies`][iam_list_user_policies] API. For information
+#' about policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
@@ -5660,8 +5725,8 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
 #' 
 #' An IAM group can also have managed policies attached to it. To list the
 #' managed policies that are attached to a group, use
-#' ListAttachedGroupPolicies. For more information about policies, see
-#' [Managed Policies and Inline
+#' [`list_attached_group_policies`][iam_list_attached_group_policies]. For
+#' more information about policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
@@ -6246,8 +6311,8 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' 
 #' Policies that are attached to users and roles as permissions boundaries
 #' are not returned. To view which managed policy is currently used to set
-#' the permissions boundary for a user or role, use the GetUser or GetRole
-#' operations.
+#' the permissions boundary for a user or role, use the
+#' [`get_user`](iam_get_user) or [`get_role`][iam_get_role] operations.
 #'
 #' @usage
 #' iam_list_policies_granting_service_access(Marker, Arn,
@@ -6392,8 +6457,8 @@ iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) 
 #' 
 #' An IAM role can also have managed policies attached to it. To list the
 #' managed policies that are attached to a role, use
-#' ListAttachedRolePolicies. For more information about policies, see
-#' [Managed Policies and Inline
+#' [`list_attached_role_policies`][iam_list_attached_role_policies]. For
+#' more information about policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
@@ -6916,8 +6981,8 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
 #' 
 #' An IAM user can also have managed policies attached to it. To list the
 #' managed policies that are attached to a user, use
-#' ListAttachedUserPolicies. For more information about policies, see
-#' [Managed Policies and Inline
+#' [`list_attached_user_policies`][iam_list_attached_user_policies]. For
+#' more information about policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
@@ -7197,9 +7262,10 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' specified IAM group.
 #' 
 #' A user can also have managed policies attached to it. To attach a
-#' managed policy to a group, use AttachGroupPolicy. To create a new
-#' managed policy, use CreatePolicy. For information about policies, see
-#' [Managed Policies and Inline
+#' managed policy to a group, use
+#' [`attach_group_policy`][iam_attach_group_policy]. To create a new
+#' managed policy, use [`create_policy`][iam_create_policy]. For
+#' information about policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
@@ -7209,8 +7275,8 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' in the *IAM User Guide*.
 #' 
 #' Because policy documents can be large, you should use POST rather than
-#' GET when calling `PutGroupPolicy`. For general information about using
-#' the Query API with IAM, go to [Making Query
+#' GET when calling [`put_group_policy`][iam_put_group_policy]. For general
+#' information about using the Query API with IAM, go to [Making Query
 #' Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html)
 #' in the *IAM User Guide*.
 #'
@@ -7354,16 +7420,18 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' 
 #' When you embed an inline policy in a role, the inline policy is used as
 #' part of the role's access (permissions) policy. The role's trust policy
-#' is created at the same time as the role, using CreateRole. You can
-#' update a role's trust policy using UpdateAssumeRolePolicy. For more
-#' information about IAM roles, go to [Using Roles to Delegate Permissions
-#' and Federate
+#' is created at the same time as the role, using
+#' [`create_role`][iam_create_role]. You can update a role's trust policy
+#' using [`update_assume_role_policy`][iam_update_assume_role_policy]. For
+#' more information about IAM roles, go to [Using Roles to Delegate
+#' Permissions and Federate
 #' Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 #' 
 #' A role can also have a managed policy attached to it. To attach a
-#' managed policy to a role, use AttachRolePolicy. To create a new managed
-#' policy, use CreatePolicy. For information about policies, see [Managed
-#' Policies and Inline
+#' managed policy to a role, use
+#' [`attach_role_policy`][iam_attach_role_policy]. To create a new managed
+#' policy, use [`create_policy`][iam_create_policy]. For information about
+#' policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
@@ -7373,8 +7441,8 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' in the *IAM User Guide*.
 #' 
 #' Because policy documents can be large, you should use POST rather than
-#' GET when calling `PutRolePolicy`. For general information about using
-#' the Query API with IAM, go to [Making Query
+#' GET when calling [`put_role_policy`][iam_put_role_policy]. For general
+#' information about using the Query API with IAM, go to [Making Query
 #' Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html)
 #' in the *IAM User Guide*.
 #'
@@ -7515,9 +7583,10 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' specified IAM user.
 #' 
 #' An IAM user can also have a managed policy attached to it. To attach a
-#' managed policy to a user, use AttachUserPolicy. To create a new managed
-#' policy, use CreatePolicy. For information about policies, see [Managed
-#' Policies and Inline
+#' managed policy to a user, use
+#' [`attach_user_policy`][iam_attach_user_policy]. To create a new managed
+#' policy, use [`create_policy`][iam_create_policy]. For information about
+#' policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
@@ -7527,8 +7596,8 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' in the *IAM User Guide*.
 #' 
 #' Because policy documents can be large, you should use POST rather than
-#' GET when calling `PutUserPolicy`. For general information about using
-#' the Query API with IAM, go to [Making Query
+#' GET when calling [`put_user_policy`][iam_put_user_policy]. For general
+#' information about using the Query API with IAM, go to [Making Query
 #' Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html)
 #' in the *IAM User Guide*.
 #'
@@ -7624,7 +7693,9 @@ iam_put_user_policy <- function(UserName, PolicyName, PolicyDocument) {
 #'
 #' @param OpenIDConnectProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM OIDC provider resource to
 #' remove the client ID from. You can get a list of OIDC provider ARNs by
-#' using the ListOpenIDConnectProviders operation.
+#' using the
+#' [`list_open_id_connect_providers`][iam_list_open_id_connect_providers]
+#' operation.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
@@ -7632,7 +7703,7 @@ iam_put_user_policy <- function(UserName, PolicyName, PolicyDocument) {
 #' in the *AWS General Reference*.
 #' @param ClientID &#91;required&#93; The client ID (also known as audience) to remove from the IAM OIDC
 #' provider resource. For more information about client IDs, see
-#' CreateOpenIDConnectProvider.
+#' [`create_open_id_connect_provider`][iam_create_open_id_connect_provider].
 #'
 #' @section Request syntax:
 #' ```
@@ -7918,7 +7989,8 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 #' 
 #' This operation affects all users, groups, and roles that the policy is
 #' attached to. To list the users, groups, and roles that the policy is
-#' attached to, use the ListEntitiesForPolicy API.
+#' attached to, use the
+#' [`list_entities_for_policy`][iam_list_entities_for_policy] API.
 #' 
 #' For information about managed policies, see [Managed Policies and Inline
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
@@ -7998,7 +8070,7 @@ iam_set_default_policy_version <- function(PolicyArn, VersionId) {
 #' 
 #' To view the current session token version, see the
 #' `GlobalEndpointTokenVersion` entry in the response of the
-#' GetAccountSummary operation.
+#' [`get_account_summary`][iam_get_account_summary] operation.
 #'
 #' @usage
 #' iam_set_security_token_service_preferences(GlobalEndpointTokenVersion)
@@ -8064,13 +8136,15 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' operations.
 #' 
 #' If you want to simulate existing policies that are attached to an IAM
-#' user, group, or role, use SimulatePrincipalPolicy instead.
+#' user, group, or role, use
+#' [`simulate_principal_policy`][iam_simulate_principal_policy] instead.
 #' 
 #' Context keys are variables that are maintained by AWS and its services
 #' and which provide details about the context of an API query request. You
 #' can use the `Condition` element of an IAM policy to evaluate context
 #' keys. To get the list of context keys that the policies require for
-#' correct simulation, use GetContextKeysForCustomPolicy.
+#' correct simulation, use
+#' [`get_context_keys_for_custom_policy`][iam_get_context_keys_for_custom_policy].
 #' 
 #' If the output is long, you can use `MaxItems` and `Marker` parameters to
 #' paginate the results.
@@ -8178,7 +8252,7 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' from the account that owns the simulated calling user `CallerArn`.
 #' 
 #' The ARN for an account uses the following syntax:
-#' `arn:aws:iam::<i>AWS-account-ID</i>:root`. For example, to represent the
+#' `arn:aws:iam::AWS-account-ID:root`. For example, to represent the
 #' account with the 112233445566 ID, use the following ARN:
 #' `arn:aws:iam::112233445566-ID:root`.
 #' @param CallerArn The ARN of the IAM user that you want to use as the simulated caller of
@@ -8312,8 +8386,8 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' 
 #' You can optionally include a list of one or more additional policies
 #' specified as strings to include in the simulation. If you want to
-#' simulate only policies specified as strings, use SimulateCustomPolicy
-#' instead.
+#' simulate only policies specified as strings, use
+#' [`simulate_custom_policy`][iam_simulate_custom_policy] instead.
 #' 
 #' You can also optionally include one resource-based policy to be
 #' evaluated with each of the resources included in the simulation.
@@ -8324,14 +8398,15 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' 
 #' **Note:** This API discloses information about the permissions granted
 #' to other users. If you do not want users to see other user's
-#' permissions, then consider allowing them to use SimulateCustomPolicy
-#' instead.
+#' permissions, then consider allowing them to use
+#' [`simulate_custom_policy`][iam_simulate_custom_policy] instead.
 #' 
 #' Context keys are variables maintained by AWS and its services that
 #' provide details about the context of an API query request. You can use
 #' the `Condition` element of an IAM policy to evaluate context keys. To
 #' get the list of context keys that the policies require for correct
-#' simulation, use GetContextKeysForPrincipalPolicy.
+#' simulation, use
+#' [`get_context_keys_for_principal_policy`][iam_get_context_keys_for_principal_policy].
 #' 
 #' If the output is long, you can use the `MaxItems` and `Marker`
 #' parameters to paginate the results.
@@ -9276,8 +9351,9 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 #' @description
 #' Changes the password for the specified IAM user.
 #' 
-#' IAM users can change their own passwords by calling ChangePassword. For
-#' more information about modifying passwords, see [Managing
+#' IAM users can change their own passwords by calling
+#' [`change_password`][iam_change_password]. For more information about
+#' modifying passwords, see [Managing
 #' Passwords](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html)
 #' in the *IAM User Guide*.
 #'
@@ -9307,7 +9383,8 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 #' 
 #' However, the format can be further restricted by the account
 #' administrator by setting a password policy on the AWS account. For more
-#' information, see UpdateAccountPasswordPolicy.
+#' information, see
+#' [`update_account_password_policy`][iam_update_account_password_policy].
 #' @param PasswordResetRequired Allows this new password to be used only once by requiring the specified
 #' IAM user to set a new password on next sign-in.
 #'
@@ -9370,8 +9447,9 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
 #' 
 #' Trust for the OIDC provider is derived from the provider's certificate
 #' and is validated by the thumbprint. Therefore, it is best to limit
-#' access to the `UpdateOpenIDConnectProviderThumbprint` operation to
-#' highly privileged users.
+#' access to the
+#' [`update_open_id_connect_provider_thumbprint`][iam_update_open_id_connect_provider_thumbprint]
+#' operation to highly privileged users.
 #'
 #' @usage
 #' iam_update_open_id_connect_provider_thumbprint(OpenIDConnectProviderArn,
@@ -9379,7 +9457,9 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
 #'
 #' @param OpenIDConnectProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM OIDC provider resource object
 #' for which you want to update the thumbprint. You can get a list of OIDC
-#' provider ARNs by using the ListOpenIDConnectProviders operation.
+#' provider ARNs by using the
+#' [`list_open_id_connect_providers`][iam_list_open_id_connect_providers]
+#' operation.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' AWS Service
@@ -9387,7 +9467,7 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
 #' in the *AWS General Reference*.
 #' @param ThumbprintList &#91;required&#93; A list of certificate thumbprints that are associated with the specified
 #' IAM OpenID Connect provider. For more information, see
-#' CreateOpenIDConnectProvider.
+#' [`create_open_id_connect_provider`][iam_create_open_id_connect_provider].
 #'
 #' @section Request syntax:
 #' ```
@@ -9478,11 +9558,11 @@ iam_update_role <- function(RoleName, Description = NULL, MaxSessionDuration = N
 #' Use UpdateRole instead
 #'
 #' @description
-#' Use UpdateRole instead.
+#' Use [`update_role`][iam_update_role] instead.
 #' 
 #' Modifies only the description of a role. This operation performs the
-#' same function as the `Description` parameter in the `UpdateRole`
-#' operation.
+#' same function as the `Description` parameter in the
+#' [`update_role`][iam_update_role] operation.
 #'
 #' @usage
 #' iam_update_role_description(RoleName, Description)
@@ -10029,8 +10109,9 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' 
 #' Because the body of the public key certificate, private key, and the
 #' certificate chain can be large, you should use POST rather than GET when
-#' calling `UploadServerCertificate`. For information about setting up
-#' signatures and authorization through the API, go to [Signing AWS API
+#' calling [`upload_server_certificate`][iam_upload_server_certificate].
+#' For information about setting up signatures and authorization through
+#' the API, go to [Signing AWS API
 #' Requests](https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html)
 #' in the *AWS General Reference*. For general information about using the
 #' Query API with IAM, go to [Calling the API by Making HTTP Query
@@ -10168,7 +10249,8 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' if the AWS account has no associated users.
 #' 
 #' Because the body of an X.509 certificate can be large, you should use
-#' POST rather than GET when calling `UploadSigningCertificate`. For
+#' POST rather than GET when calling
+#' [`upload_signing_certificate`][iam_upload_signing_certificate]. For
 #' information about setting up signatures and authorization through the
 #' API, go to [Signing AWS API
 #' Requests](https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html)

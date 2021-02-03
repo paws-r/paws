@@ -24,7 +24,7 @@ based on their owner. The default is SELF.}
 }
 \description{
 Lists the private certificate authorities that you created by using the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}
+\code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}
 action.
 }
 \section{Request syntax}{

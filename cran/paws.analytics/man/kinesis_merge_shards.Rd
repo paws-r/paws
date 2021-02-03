@@ -27,36 +27,44 @@ could merge these two shards into a single shard that would have a hash
 key range of 276...454. After the merge, the single child shard receives
 data for all hash key values covered by the two parent shards.
 
-\code{MergeShards} is called when there is a need to reduce the overall
-capacity of a stream because of excess capacity that is not being used.
-You must specify the shard to be merged and the adjacent shard for a
-stream. For more information about merging shards, see \href{https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-resharding-merge.html}{Merge Two Shards}
+\code{\link[=kinesis_merge_shards]{merge_shards}} is called when there is a need to
+reduce the overall capacity of a stream because of excess capacity that
+is not being used. You must specify the shard to be merged and the
+adjacent shard for a stream. For more information about merging shards,
+see \href{https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-resharding-merge.html}{Merge Two Shards}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.
 
-If the stream is in the \code{ACTIVE} state, you can call \code{MergeShards}. If a
-stream is in the \code{CREATING}, \code{UPDATING}, or \code{DELETING} state,
-\code{MergeShards} returns a \code{ResourceInUseException}. If the specified
-stream does not exist, \code{MergeShards} returns a
+If the stream is in the \code{ACTIVE} state, you can call
+\code{\link[=kinesis_merge_shards]{merge_shards}}. If a stream is in the
+\code{CREATING}, \code{UPDATING}, or \code{DELETING} state,
+\code{\link[=kinesis_merge_shards]{merge_shards}} returns a
+\code{ResourceInUseException}. If the specified stream does not exist,
+\code{\link[=kinesis_merge_shards]{merge_shards}} returns a
 \code{ResourceNotFoundException}.
 
-You can use DescribeStream to check the state of the stream, which is
-returned in \code{StreamStatus}.
+You can use \code{\link[=kinesis_describe_stream]{describe_stream}} to check the
+state of the stream, which is returned in \code{StreamStatus}.
 
-\code{MergeShards} is an asynchronous operation. Upon receiving a
-\code{MergeShards} request, Amazon Kinesis Data Streams immediately returns a
-response and sets the \code{StreamStatus} to \code{UPDATING}. After the operation
-is completed, Kinesis Data Streams sets the \code{StreamStatus} to \code{ACTIVE}.
-Read and write operations continue to work while the stream is in the
-\code{UPDATING} state.
+\code{\link[=kinesis_merge_shards]{merge_shards}} is an asynchronous operation.
+Upon receiving a \code{\link[=kinesis_merge_shards]{merge_shards}} request, Amazon
+Kinesis Data Streams immediately returns a response and sets the
+\code{StreamStatus} to \code{UPDATING}. After the operation is completed, Kinesis
+Data Streams sets the \code{StreamStatus} to \code{ACTIVE}. Read and write
+operations continue to work while the stream is in the \code{UPDATING} state.
 
-You use DescribeStream to determine the shard IDs that are specified in
-the \code{MergeShards} request.
+You use \code{\link[=kinesis_describe_stream]{describe_stream}} to determine the
+shard IDs that are specified in the
+\code{\link[=kinesis_merge_shards]{merge_shards}} request.
 
 If you try to operate on too many streams in parallel using
-CreateStream, DeleteStream, \code{MergeShards}, or SplitShard, you receive a
+\code{\link[=kinesis_create_stream]{create_stream}},
+\code{\link[=kinesis_delete_stream]{delete_stream}},
+\code{\link[=kinesis_merge_shards]{merge_shards}}, or
+\code{\link[=kinesis_split_shard]{split_shard}}, you receive a
 \code{LimitExceededException}.
 
-\code{MergeShards} has a limit of five transactions per second per account.
+\code{\link[=kinesis_merge_shards]{merge_shards}} has a limit of five transactions
+per second per account.
 }
 \section{Request syntax}{
 \preformatted{svc$merge_shards(

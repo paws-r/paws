@@ -15,8 +15,9 @@ kinesisvideo_update_data_retention(StreamName, StreamARN,
 want to change.}
 
 \item{CurrentVersion}{[required] The version of the stream whose retention period you want to change. To
-get the version, call either the \code{DescribeStream} or the \code{ListStreams}
-API.}
+get the version, call either the
+\code{\link[=kinesisvideo_describe_stream]{describe_stream}} or the
+\code{\link[=kinesisvideo_list_streams]{list_streams}} API.}
 
 \item{Operation}{[required] Indicates whether you want to increase or decrease the retention period.}
 

@@ -15,17 +15,18 @@ different account, the request will fail with an HTTP
 }
 \description{
 Returns the Region the bucket resides in. You set the bucket's Region
-using the \code{LocationConstraint} request parameter in a \code{CreateBucket}
-request. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}.
+using the \code{LocationConstraint} request parameter in a
+\code{\link[=s3_create_bucket]{create_bucket}} request. For more information, see
+\code{\link[=s3_create_bucket]{create_bucket}}.
 
 To use this implementation of the operation, you must be the bucket
 owner.
 
-The following operations are related to \code{GetBucketLocation}:
+The following operations are related to
+\code{\link[=s3_get_bucket_location]{get_bucket_location}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
+\item \code{\link[=s3_get_object]{get_object}}
+\item \code{\link[=s3_create_bucket]{create_bucket}}
 }
 }
 \section{Request syntax}{

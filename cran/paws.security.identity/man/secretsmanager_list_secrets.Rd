@@ -31,9 +31,10 @@ In a subsequent call, set it to the value of the previous call
 \description{
 Lists all of the secrets that are stored by Secrets Manager in the AWS
 account. To list the versions currently stored for a specific secret,
-use ListSecretVersionIds. The encrypted fields \code{SecretString} and
-\code{SecretBinary} are not included in the output. To get that information,
-call the GetSecretValue operation.
+use \code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}.
+The encrypted fields \code{SecretString} and \code{SecretBinary} are not included
+in the output. To get that information, call the
+\code{\link[=secretsmanager_get_secret_value]{get_secret_value}} operation.
 
 Always check the \code{NextToken} response parameter when calling any of the
 \verb{List*} operations. These operations can occasionally return an empty or
@@ -51,7 +52,8 @@ To run this command, you must have the following permissions:
 
 \strong{Related operations}
 \itemize{
-\item To list the versions attached to a secret, use ListSecretVersionIds.
+\item To list the versions attached to a secret, use
+\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}.
 }
 }
 \section{Request syntax}{

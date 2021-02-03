@@ -26,7 +26,7 @@ actions if they have the proper IAM policy permissions. If set to
 \code{false}, only the IAM user that created the cluster can perform actions.
 This action works on running clusters. You can override the default
 \code{true} setting when you create a cluster by using the
-\code{VisibleToAllUsers} parameter with \code{RunJobFlow}.
+\code{VisibleToAllUsers} parameter with \code{\link[=emr_run_job_flow]{run_job_flow}}.
 }
 \section{Request syntax}{
 \preformatted{svc$set_visible_to_all_users(

@@ -24,8 +24,9 @@ Categories defined in the account. You have the option to use
 specific date. If there is no \code{EffectiveOn} specified, you’ll see Cost
 Categories that are effective on the current date. If Cost Category is
 still effective, \code{EffectiveEnd} is omitted in the response.
-\code{ListCostCategoryDefinitions} supports pagination. The request can have
-a \code{MaxResults} range up to 100.
+\code{\link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions}}
+supports pagination. The request can have a \code{MaxResults} range up to
+100.
 }
 \section{Request syntax}{
 \preformatted{svc$list_cost_category_definitions(

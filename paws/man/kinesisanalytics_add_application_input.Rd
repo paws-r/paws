@@ -13,8 +13,7 @@ kinesisanalytics_add_application_input(ApplicationName,
 want to add the streaming source.}
 
 \item{CurrentApplicationVersionId}{[required] Current version of your Amazon Kinesis Analytics application. You can
-use the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+use the \code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation to find the current application version.}
 
 \item{Input}{[required] The
@@ -33,11 +32,11 @@ conceptual information, see \href{https://docs.aws.amazon.com/kinesisanalytics/l
 You can add a streaming source either when you create an application or
 you can use this operation to add a streaming source after you create an
 application. For more information, see
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_CreateApplication.html}{CreateApplication}.
+\code{\link[=kinesisanalytics_create_application]{create_application}}.
 
 Any configuration update, including adding a streaming source using this
 operation, results in a new version of the application. You can use the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+\code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation to find the current application version.
 
 This operation requires permissions to perform the

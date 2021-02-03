@@ -23,7 +23,7 @@ none is supplied, the AWS account ID is used by default.}
 Delete the partition column statistics of a column.
 
 The Identity and Access Management (IAM) permission required for this
-operation is \code{DeletePartition}.
+operation is \code{\link[=glue_delete_partition]{delete_partition}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_column_statistics_for_partition(

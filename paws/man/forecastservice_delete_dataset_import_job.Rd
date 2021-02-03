@@ -11,10 +11,12 @@ forecastservice_delete_dataset_import_job(DatasetImportJobArn)
 \item{DatasetImportJobArn}{[required] The Amazon Resource Name (ARN) of the dataset import job to delete.}
 }
 \description{
-Deletes a dataset import job created using the CreateDatasetImportJob
+Deletes a dataset import job created using the
+\code{\link[=forecastservice_create_dataset_import_job]{create_dataset_import_job}}
 operation. You can delete only dataset import jobs that have a status of
 \code{ACTIVE} or \code{CREATE_FAILED}. To get the status, use the
-DescribeDatasetImportJob operation.
+\code{\link[=forecastservice_describe_dataset_import_job]{describe_dataset_import_job}}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_dataset_import_job(

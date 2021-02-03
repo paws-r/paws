@@ -23,14 +23,14 @@ rule set JSON string.
 
 \strong{Related operations}
 \itemize{
-\item CreateMatchmakingConfiguration
-\item DescribeMatchmakingConfigurations
-\item UpdateMatchmakingConfiguration
-\item DeleteMatchmakingConfiguration
-\item CreateMatchmakingRuleSet
-\item DescribeMatchmakingRuleSets
-\item ValidateMatchmakingRuleSet
-\item DeleteMatchmakingRuleSet
+\item \code{\link[=gamelift_create_matchmaking_configuration]{create_matchmaking_configuration}}
+\item \code{\link[=gamelift_describe_matchmaking_configurations]{describe_matchmaking_configurations}}
+\item \code{\link[=gamelift_update_matchmaking_configuration]{update_matchmaking_configuration}}
+\item \code{\link[=gamelift_delete_matchmaking_configuration]{delete_matchmaking_configuration}}
+\item \code{\link[=gamelift_create_matchmaking_rule_set]{create_matchmaking_rule_set}}
+\item \code{\link[=gamelift_describe_matchmaking_rule_sets]{describe_matchmaking_rule_sets}}
+\item \code{\link[=gamelift_validate_matchmaking_rule_set]{validate_matchmaking_rule_set}}
+\item \code{\link[=gamelift_delete_matchmaking_rule_set]{delete_matchmaking_rule_set}}
 }
 }
 \section{Request syntax}{

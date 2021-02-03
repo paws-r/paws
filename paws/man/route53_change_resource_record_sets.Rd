@@ -18,9 +18,10 @@ element.}
 \description{
 Creates, changes, or deletes a resource record set, which contains
 authoritative DNS information for a specified domain name or subdomain
-name. For example, you can use \code{ChangeResourceRecordSets} to create a
-resource record set that routes traffic for test.example.com to a web
-server that has an IP address of 192.0.2.44.
+name. For example, you can use
+\code{\link[=route53_change_resource_record_sets]{change_resource_record_sets}} to
+create a resource record set that routes traffic for test.example.com to
+a web server that has an IP address of 192.0.2.44.
 
 \strong{Deleting Resource Record Sets}
 
@@ -85,21 +86,25 @@ For an example for each type of resource record set, see "Examples."
 
 Don't refer to the syntax in the "Parameter Syntax" section, which
 includes all of the elements for every kind of resource record set that
-you can create, delete, or update by using \code{ChangeResourceRecordSets}.
+you can create, delete, or update by using
+\code{\link[=route53_change_resource_record_sets]{change_resource_record_sets}}.
 
 \strong{Change Propagation to Route 53 DNS Servers}
 
-When you submit a \code{ChangeResourceRecordSets} request, Route 53
-propagates your changes to all of the Route 53 authoritative DNS
-servers. While your changes are propagating, \code{GetChange} returns a
-status of \code{PENDING}. When propagation is complete, \code{GetChange} returns a
+When you submit a
+\code{\link[=route53_change_resource_record_sets]{change_resource_record_sets}}
+request, Route 53 propagates your changes to all of the Route 53
+authoritative DNS servers. While your changes are propagating,
+\code{\link[=route53_get_change]{get_change}} returns a status of \code{PENDING}. When
+propagation is complete, \code{\link[=route53_get_change]{get_change}} returns a
 status of \code{INSYNC}. Changes generally propagate to all Route 53 name
 servers within 60 seconds. For more information, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetChange.html}{GetChange}.
+\code{\link[=route53_get_change]{get_change}}.
 
 \strong{Limits on ChangeResourceRecordSets Requests}
 
-For information about the limits on a \code{ChangeResourceRecordSets}
+For information about the limits on a
+\code{\link[=route53_change_resource_record_sets]{change_resource_record_sets}}
 request, see
 \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html}{Limits}
 in the \emph{Amazon Route 53 Developer Guide}.

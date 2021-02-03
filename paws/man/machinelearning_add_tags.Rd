@@ -18,8 +18,8 @@ value of null.}
 \description{
 Adds one or more tags to an object, up to a limit of 10. Each tag
 consists of a key and an optional value. If you add a tag using a key
-that is already associated with the ML object, \code{AddTags} updates the
-tag's value.
+that is already associated with the ML object,
+\code{\link[=machinelearning_add_tags]{add_tags}} updates the tag's value.
 }
 \section{Request syntax}{
 \preformatted{svc$add_tags(

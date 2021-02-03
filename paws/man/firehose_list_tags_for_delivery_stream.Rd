@@ -11,8 +11,9 @@ firehose_list_tags_for_delivery_stream(DeliveryStreamName,
 \item{DeliveryStreamName}{[required] The name of the delivery stream whose tags you want to list.}
 
 \item{ExclusiveStartTagKey}{The key to use as the starting point for the list of tags. If you set
-this parameter, \code{ListTagsForDeliveryStream} gets all tags that occur
-after \code{ExclusiveStartTagKey}.}
+this parameter,
+\code{\link[=firehose_list_tags_for_delivery_stream]{list_tags_for_delivery_stream}}
+gets all tags that occur after \code{ExclusiveStartTagKey}.}
 
 \item{Limit}{The number of tags to return. If this number is less than the total
 number of tags associated with the delivery stream, \code{HasMoreTags} is set

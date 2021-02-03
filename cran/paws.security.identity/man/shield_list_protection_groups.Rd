@@ -7,8 +7,9 @@
 shield_list_protection_groups(NextToken, MaxResults)
 }
 \arguments{
-\item{NextToken}{The next token value from a previous call to \code{ListProtectionGroups}.
-Pass null if this is the first call.}
+\item{NextToken}{The next token value from a previous call to
+\code{\link[=shield_list_protection_groups]{list_protection_groups}}. Pass null if
+this is the first call.}
 
 \item{MaxResults}{The maximum number of ProtectionGroup objects to return. If you leave
 this blank, Shield Advanced returns the first 20 results.

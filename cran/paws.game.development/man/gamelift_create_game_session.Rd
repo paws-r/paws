@@ -38,13 +38,13 @@ instead.} Custom string that uniquely identifies a request for a new
 game session. Maximum token length is 48 characters. If provided, this
 string is included in the new game session's ID. (A game session ARN has
 the following format:
-\verb{arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;}.)}
+\verb{arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>}.)}
 
 \item{IdempotencyToken}{Custom string that uniquely identifies a request for a new game session.
 Maximum token length is 48 characters. If provided, this string is
 included in the new game session's ID. (A game session ARN has the
 following format:
-\verb{arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;}.)
+\verb{arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>}.)
 Idempotency tokens remain in use for 30 days after a game session has
 ended; game session objects are retained for this time period and then
 deleted.}
@@ -79,26 +79,27 @@ evaluate the policy for this new game session request.
 
 \strong{Player acceptance policy.} By default, newly created game sessions
 are open to new players. You can restrict new player access by using
-UpdateGameSession to change the game session's player session creation
-policy.
+\code{\link[=gamelift_update_game_session]{update_game_session}} to change the game
+session's player session creation policy.
 
 \strong{Game session logs.} Logs are retained for all active game sessions
-for 14 days. To access the logs, call GetGameSessionLogUrl to download
-the log files.
+for 14 days. To access the logs, call
+\code{\link[=gamelift_get_game_session_log_url]{get_game_session_log_url}} to
+download the log files.
 
 \emph{Available in Amazon GameLift Local.}
 \itemize{
-\item CreateGameSession
-\item DescribeGameSessions
-\item DescribeGameSessionDetails
-\item SearchGameSessions
-\item UpdateGameSession
-\item GetGameSessionLogUrl
+\item \code{\link[=gamelift_create_game_session]{create_game_session}}
+\item \code{\link[=gamelift_describe_game_sessions]{describe_game_sessions}}
+\item \code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}
+\item \code{\link[=gamelift_search_game_sessions]{search_game_sessions}}
+\item \code{\link[=gamelift_update_game_session]{update_game_session}}
+\item \code{\link[=gamelift_get_game_session_log_url]{get_game_session_log_url}}
 \item Game session placements
 \itemize{
-\item StartGameSessionPlacement
-\item DescribeGameSessionPlacement
-\item StopGameSessionPlacement
+\item \code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+\item \code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
+\item \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
 }
 }
 }

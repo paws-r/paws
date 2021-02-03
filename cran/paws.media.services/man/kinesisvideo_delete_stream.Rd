@@ -12,7 +12,8 @@ kinesisvideo_delete_stream(StreamARN, CurrentVersion)
 \item{CurrentVersion}{Optional: The version of the stream that you want to delete.
 
 Specify the version as a safeguard to ensure that your are deleting the
-correct stream. To get the stream version, use the \code{DescribeStream} API.
+correct stream. To get the stream version, use the
+\code{\link[=kinesisvideo_describe_stream]{describe_stream}} API.
 
 If not specified, only the \code{CreationTime} is checked before deleting the
 stream.}
@@ -27,7 +28,7 @@ To ensure that you have the latest version of the stream before deleting
 it, you can specify the stream version. Kinesis Video Streams assigns a
 version to each stream. When you update a stream, Kinesis Video Streams
 assigns a new version number. To get the latest stream version, use the
-\code{DescribeStream} API.
+\code{\link[=kinesisvideo_describe_stream]{describe_stream}} API.
 
 This operation requires permission for the \code{KinesisVideo:DeleteStream}
 action.

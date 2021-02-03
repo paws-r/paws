@@ -40,7 +40,7 @@ in the \emph{IAM User Guide}.
 
 To view the current session token version, see the
 \code{GlobalEndpointTokenVersion} entry in the response of the
-GetAccountSummary operation.
+\code{\link[=iam_get_account_summary]{get_account_summary}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$set_security_token_service_preferences(

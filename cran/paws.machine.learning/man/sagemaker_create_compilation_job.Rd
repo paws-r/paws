@@ -65,10 +65,12 @@ You can also provide a \code{Tag} to track the model compilation job's
 resource use and costs. The response body contains the
 \code{CompilationJobArn} for the compiled job.
 
-To stop a model compilation job, use StopCompilationJob. To get
+To stop a model compilation job, use
+\code{\link[=sagemaker_stop_compilation_job]{stop_compilation_job}}. To get
 information about a particular model compilation job, use
-DescribeCompilationJob. To get information about multiple model
-compilation jobs, use ListCompilationJobs.
+\code{\link[=sagemaker_describe_compilation_job]{describe_compilation_job}}. To get
+information about multiple model compilation jobs, use
+\code{\link[=sagemaker_list_compilation_jobs]{list_compilation_jobs}}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_compilation_job(

@@ -21,8 +21,8 @@ supported.}
 
 \item{parameters}{Default parameter substitution placeholders to set in the job
 definition. Parameters are specified as a key-value pair mapping.
-Parameters in a \code{SubmitJob} request override any corresponding parameter
-defaults from the job definition.}
+Parameters in a \code{\link[=batch_submit_job]{submit_job}} request override any
+corresponding parameter defaults from the job definition.}
 
 \item{containerProperties}{An object with various properties specific to single-node
 container-based jobs. If the job definition's \code{type} parameter is
@@ -43,9 +43,9 @@ If the job runs on Fargate resources, then you must not specify
 \code{nodeProperties}; use \code{containerProperties} instead.}
 
 \item{retryStrategy}{The retry strategy to use for failed jobs that are submitted with this
-job definition. Any retry strategy that's specified during a SubmitJob
-operation overrides the retry strategy defined here. If a job is
-terminated due to a timeout, it isn't retried.}
+job definition. Any retry strategy that's specified during a
+\code{\link[=batch_submit_job]{submit_job}} operation overrides the retry strategy
+defined here. If a job is terminated due to a timeout, it isn't retried.}
 
 \item{propagateTags}{Specifies whether to propagate the tags from the job or job definition
 to the corresponding Amazon ECS task. If no value is specified, the tags
@@ -58,8 +58,9 @@ and job definition is over 50, the job is moved to the \code{FAILED} state.}
 definition, after which AWS Batch terminates your jobs if they have not
 finished. If a job is terminated due to a timeout, it isn't retried. The
 minimum value for the timeout is 60 seconds. Any timeout configuration
-that's specified during a SubmitJob operation overrides the timeout
-configuration defined here. For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/job_timeouts.html}{Job Timeouts}
+that's specified during a \code{\link[=batch_submit_job]{submit_job}} operation
+overrides the timeout configuration defined here. For more information,
+see \href{https://docs.aws.amazon.com/batch/latest/userguide/job_timeouts.html}{Job Timeouts}
 in the \emph{AWS Batch User Guide}.}
 
 \item{tags}{The tags that you apply to the job definition to help you categorize and

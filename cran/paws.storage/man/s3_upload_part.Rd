@@ -71,15 +71,13 @@ Uploads a part in a multipart upload.
 In this operation, you provide part data in your request. However, you
 have an option to specify your existing Amazon S3 object as a data
 source for the part you are uploading. To upload a part from an existing
-object, you use the
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPartCopy.html}{UploadPartCopy}
-operation.
+object, you use the \code{\link[=s3_upload_part_copy]{upload_part_copy}} operation.
 
 You must initiate a multipart upload (see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload})
-before you can upload any part. In response to your initiate request,
-Amazon S3 returns an upload ID, a unique identifier, that you must
-include in your upload part request.
+\code{\link[=s3_create_multipart_upload]{create_multipart_upload}}) before you can
+upload any part. In response to your initiate request, Amazon S3 returns
+an upload ID, a unique identifier, that you must include in your upload
+part request.
 
 Part numbers can be any number from 1 to 10,000, inclusive. A part
 number uniquely identifies a part and also defines its position within
@@ -117,8 +115,8 @@ your own encryption key, or you can use the AWS managed encryption keys.
 If you choose to provide your own encryption key, the request headers
 you provide in the request must match the headers you used in the
 request to initiate the upload by using
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}.
-For more information, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html}{Using Server-Side Encryption}
+\code{\link[=s3_create_multipart_upload]{create_multipart_upload}}. For more
+information, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html}{Using Server-Side Encryption}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Server-side encryption is supported by the S3 Multipart Upload actions.
@@ -126,7 +124,7 @@ Unless you are using a customer-provided encryption key, you don't need
 to specify the encryption parameters in each UploadPart request.
 Instead, you only need to specify the server-side encryption parameters
 in the initial Initiate Multipart request. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}.
+\code{\link[=s3_create_multipart_upload]{create_multipart_upload}}.
 
 If you requested server-side encryption using a customer-provided
 encryption key in your initiate multipart upload request, you must
@@ -153,11 +151,11 @@ been aborted or completed.}
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html}{CompleteMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html}{AbortMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html}{ListParts}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html}{ListMultipartUploads}
+\item \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}
+\item \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}
+\item \code{\link[=s3_abort_multipart_upload]{abort_multipart_upload}}
+\item \code{\link[=s3_list_parts]{list_parts}}
+\item \code{\link[=s3_list_multipart_uploads]{list_multipart_uploads}}
 }
 }
 \section{Request syntax}{

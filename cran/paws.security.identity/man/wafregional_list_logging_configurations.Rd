@@ -11,9 +11,10 @@ wafregional_list_logging_configurations(NextMarker, Limit)
 \code{LoggingConfigurations} than the value of \code{Limit}, AWS WAF returns a
 \code{NextMarker} value in the response that allows you to list another group
 of \code{LoggingConfigurations}. For the second and subsequent
-\code{ListLoggingConfigurations} requests, specify the value of \code{NextMarker}
-from the previous response to get information about another batch of
-\code{ListLoggingConfigurations}.}
+\code{\link[=wafregional_list_logging_configurations]{list_logging_configurations}}
+requests, specify the value of \code{NextMarker} from the previous response
+to get information about another batch of
+\code{\link[=wafregional_list_logging_configurations]{list_logging_configurations}}.}
 
 \item{Limit}{Specifies the number of \code{LoggingConfigurations} that you want AWS WAF to
 return for this request. If you have more \code{LoggingConfigurations} than

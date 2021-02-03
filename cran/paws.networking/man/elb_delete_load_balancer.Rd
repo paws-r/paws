@@ -19,7 +19,8 @@ balancer no longer exist and traffic sent to any of its IP addresses is
 no longer delivered to your instances.
 
 If the load balancer does not exist or has already been deleted, the
-call to \code{DeleteLoadBalancer} still succeeds.
+call to \code{\link[=elb_delete_load_balancer]{delete_load_balancer}} still
+succeeds.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_load_balancer(

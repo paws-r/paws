@@ -62,7 +62,8 @@ Returns a list of tags. You can return tags from a specific resource by
 specifying an ARN, or you can return all tags for a given type of
 resource, such as clusters, snapshots, and so on.
 
-The following are limitations for \code{DescribeTags}:
+The following are limitations for
+\code{\link[=redshift_describe_tags]{describe_tags}}:
 \itemize{
 \item You cannot specify an ARN and a resource-type value together in the
 same request.

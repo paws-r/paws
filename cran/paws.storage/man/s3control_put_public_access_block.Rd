@@ -21,8 +21,8 @@ account. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/la
 
 Related actions include:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetPublicAccessBlock.html}{GetPublicAccessBlock}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeletePublicAccessBlock.html}{DeletePublicAccessBlock}
+\item \code{\link[=s3control_get_public_access_block]{get_public_access_block}}
+\item \code{\link[=s3control_delete_public_access_block]{delete_public_access_block}}
 }
 }
 \section{Request syntax}{

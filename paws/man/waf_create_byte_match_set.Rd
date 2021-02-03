@@ -10,7 +10,8 @@ waf_create_byte_match_set(Name, ChangeToken)
 \item{Name}{[required] A friendly name or description of the ByteMatchSet. You can't change
 \code{Name} after you create a \code{ByteMatchSet}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -22,8 +23,9 @@ in the developer guide.
 With the latest version, AWS WAF has a single set of endpoints for
 regional and global use.
 
-Creates a \code{ByteMatchSet}. You then use UpdateByteMatchSet to identify
-the part of a web request that you want AWS WAF to inspect, such as the
+Creates a \code{ByteMatchSet}. You then use
+\code{\link[=waf_update_byte_match_set]{update_byte_match_set}} to identify the
+part of a web request that you want AWS WAF to inspect, such as the
 values of the \code{User-Agent} header or the query string. For example, you
 can create a \code{ByteMatchSet} that matches any requests with \code{User-Agent}
 headers that contain the string \code{BadBot}. You can then configure AWS WAF
@@ -31,14 +33,18 @@ to reject those requests.
 
 To create and configure a \code{ByteMatchSet}, perform the following steps:
 \enumerate{
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{CreateByteMatchSet} request.
-\item Submit a \code{CreateByteMatchSet} request.
-\item Use \code{GetChangeToken} to get the change token that you provide in the
-\code{ChangeToken} parameter of an \code{UpdateByteMatchSet} request.
-\item Submit an UpdateByteMatchSet request to specify the part of the
-request that you want AWS WAF to inspect (for example, the header or
-the URI) and the value that you want AWS WAF to watch for.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=waf_create_byte_match_set]{create_byte_match_set}} request.
+\item Submit a \code{\link[=waf_create_byte_match_set]{create_byte_match_set}}
+request.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=waf_update_byte_match_set]{update_byte_match_set}} request.
+\item Submit an \code{\link[=waf_update_byte_match_set]{update_byte_match_set}}
+request to specify the part of the request that you want AWS WAF to
+inspect (for example, the header or the URI) and the value that you
+want AWS WAF to watch for.
 }
 
 For more information about how to use the AWS WAF API to allow or block

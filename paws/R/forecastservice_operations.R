@@ -27,13 +27,16 @@ NULL
 #' the dataset to a dataset group. You use the dataset group to create a
 #' predictor. For more information, see howitworks-datasets-groups.
 #' 
-#' To get a list of all your datasets, use the ListDatasets operation.
+#' To get a list of all your datasets, use the
+#' [`list_datasets`][forecastservice_list_datasets] operation.
 #' 
 #' For example Forecast datasets, see the [Amazon Forecast Sample GitHub
 #' repository](https://github.com/aws-samples/amazon-forecast-samples).
 #' 
 #' The `Status` of a dataset must be `ACTIVE` before you can import
-#' training data. Use the DescribeDataset operation to get the status.
+#' training data. Use the
+#' [`describe_dataset`][forecastservice_describe_dataset] operation to get
+#' the status.
 #'
 #' @usage
 #' forecastservice_create_dataset(DatasetName, Domain, DatasetType,
@@ -42,7 +45,9 @@ NULL
 #' @param DatasetName &#91;required&#93; A name for the dataset.
 #' @param Domain &#91;required&#93; The domain associated with the dataset. When you add a dataset to a
 #' dataset group, this value and the value specified for the `Domain`
-#' parameter of the CreateDatasetGroup operation must match.
+#' parameter of the
+#' [`create_dataset_group`][forecastservice_create_dataset_group] operation
+#' must match.
 #' 
 #' The `Domain` and `DatasetType` that you choose determine the fields that
 #' must be present in the training data that you import to the dataset. For
@@ -149,18 +154,21 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #' @description
 #' Creates a dataset group, which holds a collection of related datasets.
 #' You can add datasets to the dataset group when you create the dataset
-#' group, or later by using the UpdateDatasetGroup operation.
+#' group, or later by using the
+#' [`update_dataset_group`][forecastservice_update_dataset_group]
+#' operation.
 #' 
 #' After creating a dataset group and adding datasets, you use the dataset
 #' group when you create a predictor. For more information, see
 #' howitworks-datasets-groups.
 #' 
-#' To get a list of all your datasets groups, use the ListDatasetGroups
-#' operation.
+#' To get a list of all your datasets groups, use the
+#' [`list_dataset_groups`][forecastservice_list_dataset_groups] operation.
 #' 
 #' The `Status` of a dataset group must be `ACTIVE` before you can use the
 #' dataset group to create a predictor. To get the status, use the
-#' DescribeDatasetGroup operation.
+#' [`describe_dataset_group`][forecastservice_describe_dataset_group]
+#' operation.
 #'
 #' @usage
 #' forecastservice_create_dataset_group(DatasetGroupName, Domain,
@@ -169,7 +177,8 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #' @param DatasetGroupName &#91;required&#93; A name for the dataset group.
 #' @param Domain &#91;required&#93; The domain associated with the dataset group. When you add a dataset to
 #' a dataset group, this value and the value specified for the `Domain`
-#' parameter of the CreateDataset operation must match.
+#' parameter of the [`create_dataset`][forecastservice_create_dataset]
+#' operation must match.
 #' 
 #' The `Domain` and `DatasetType` that you choose determine the fields that
 #' must be present in training data that you import to a dataset. For
@@ -275,7 +284,9 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' since the previous import.
 #' 
 #' To get a list of all your dataset import jobs, filtered by specified
-#' criteria, use the ListDatasetImportJobs operation.
+#' criteria, use the
+#' [`list_dataset_import_jobs`][forecastservice_list_dataset_import_jobs]
+#' operation.
 #'
 #' @usage
 #' forecastservice_create_dataset_import_job(DatasetImportJobName,
@@ -294,7 +305,8 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' If encryption is used, `DataSource` must include an AWS Key Management
 #' Service (KMS) key and the IAM role must allow Amazon Forecast permission
 #' to access the key. The KMS key and IAM role must match those specified
-#' in the `EncryptionConfig` parameter of the CreateDataset operation.
+#' in the `EncryptionConfig` parameter of the
+#' [`create_dataset`][forecastservice_create_dataset] operation.
 #' @param TimestampFormat The format of timestamps in the dataset. The format that you specify
 #' depends on the `DataFrequency` specified when the dataset was created.
 #' The following formats are supported
@@ -314,9 +326,7 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' for datasets with all timestamps within a single time zone, or if all
 #' timestamps are normalized to a single time zone.
 #' 
-#' Refer to the [Joda-Time
-#' API](http://joda-time.sourceforge.net/timezones.html) for a complete
-#' list of valid time zone names.
+#' Refer to the Joda-Time API for a complete list of valid time zone names.
 #' @param UseGeolocationForTimeZone Automatically derive time zone information from the geolocation
 #' attribute. This option is ideal for datasets that contain timestamps in
 #' multiple time zones and those timestamps are expressed in local time.
@@ -412,14 +422,18 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #' that was used to train the predictor. This is known as inference. To
 #' retrieve the forecast for a single item at low latency, use the
 #' operation. To export the complete forecast into your Amazon Simple
-#' Storage Service (Amazon S3) bucket, use the CreateForecastExportJob
+#' Storage Service (Amazon S3) bucket, use the
+#' [`create_forecast_export_job`][forecastservice_create_forecast_export_job]
 #' operation.
 #' 
 #' The range of the forecast is determined by the `ForecastHorizon` value,
-#' which you specify in the CreatePredictor request. When you query a
-#' forecast, you can request a specific date range within the forecast.
+#' which you specify in the
+#' [`create_predictor`][forecastservice_create_predictor] request. When you
+#' query a forecast, you can request a specific date range within the
+#' forecast.
 #' 
-#' To get a list of all your forecasts, use the ListForecasts operation.
+#' To get a list of all your forecasts, use the
+#' [`list_forecasts`][forecastservice_list_forecasts] operation.
 #' 
 #' The forecasts generated by Amazon Forecast are in the same time zone as
 #' the dataset that was used to create the predictor.
@@ -427,8 +441,9 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #' For more information, see howitworks-forecast.
 #' 
 #' The `Status` of the forecast must be `ACTIVE` before you can query or
-#' export the forecast. Use the DescribeForecast operation to get the
-#' status.
+#' export the forecast. Use the
+#' [`describe_forecast`][forecastservice_describe_forecast] operation to
+#' get the status.
 #'
 #' @usage
 #' forecastservice_create_forecast(ForecastName, PredictorArn,
@@ -515,7 +530,8 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #' Amazon Simple Storage Service (Amazon S3) bucket
 #'
 #' @description
-#' Exports a forecast created by the CreateForecast operation to your
+#' Exports a forecast created by the
+#' [`create_forecast`][forecastservice_create_forecast] operation to your
 #' Amazon Simple Storage Service (Amazon S3) bucket. The forecast file name
 #' will match the following conventions:
 #' 
@@ -532,11 +548,13 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #' For more information, see howitworks-forecast.
 #' 
 #' To get a list of all your forecast export jobs, use the
-#' ListForecastExportJobs operation.
+#' [`list_forecast_export_jobs`][forecastservice_list_forecast_export_jobs]
+#' operation.
 #' 
 #' The `Status` of the forecast export job must be `ACTIVE` before you can
 #' access the forecast in your Amazon S3 bucket. To get the status, use the
-#' DescribeForecastExportJob operation.
+#' [`describe_forecast_export_job`][forecastservice_describe_forecast_export_job]
+#' operation.
 #'
 #' @usage
 #' forecastservice_create_forecast_export_job(ForecastExportJobName,
@@ -635,15 +653,19 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' 
 #' Amazon Forecast uses the algorithm to train a predictor using the latest
 #' version of the datasets in the specified dataset group. You can then
-#' generate a forecast using the CreateForecast operation.
+#' generate a forecast using the
+#' [`create_forecast`][forecastservice_create_forecast] operation.
 #' 
-#' To see the evaluation metrics, use the GetAccuracyMetrics operation.
+#' To see the evaluation metrics, use the
+#' [`get_accuracy_metrics`][forecastservice_get_accuracy_metrics]
+#' operation.
 #' 
 #' You can specify a featurization configuration to fill and aggregate the
 #' data fields in the `TARGET_TIME_SERIES` dataset to improve model
 #' training. For more information, see FeaturizationConfig.
 #' 
-#' For RELATED\\_TIME\\_SERIES datasets, `CreatePredictor` verifies that the
+#' For RELATED\\_TIME\\_SERIES datasets,
+#' [`create_predictor`][forecastservice_create_predictor] verifies that the
 #' `DataFrequency` specified when the dataset was created matches the
 #' `ForecastFrequency`. TARGET\\_TIME\\_SERIES datasets don't have this
 #' restriction. Amazon Forecast also verifies the delimiter and timestamp
@@ -671,12 +693,13 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' 
 #' -   `TrainingParameters`
 #' 
-#' To get a list of all of your predictors, use the ListPredictors
-#' operation.
+#' To get a list of all of your predictors, use the
+#' [`list_predictors`][forecastservice_list_predictors] operation.
 #' 
 #' Before you can use the predictor to create a forecast, the `Status` of
 #' the predictor must be `ACTIVE`, signifying that training has completed.
-#' To get the status, use the DescribePredictor operation.
+#' To get the status, use the
+#' [`describe_predictor`][forecastservice_describe_predictor] operation.
 #'
 #' @usage
 #' forecastservice_create_predictor(PredictorName, AlgorithmArn,
@@ -705,7 +728,8 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' The forecast horizon is also called the prediction length.
 #' 
 #' For example, if you configure a dataset for daily data collection (using
-#' the `DataFrequency` parameter of the CreateDataset operation) and set
+#' the `DataFrequency` parameter of the
+#' [`create_dataset`][forecastservice_create_dataset] operation) and set
 #' the forecast horizon to 10, the model returns predictions for 10 days.
 #' 
 #' The maximum forecast horizon is the lesser of 500 time-steps or 1/3 of
@@ -908,12 +932,12 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 #'
 #' @description
 #' Exports backtest forecasts and accuracy metrics generated by the
-#' CreatePredictor operation. Two folders containing CSV files are exported
-#' to your specified S3 bucket.
+#' [`create_predictor`][forecastservice_create_predictor] operation. Two
+#' folders containing CSV files are exported to your specified S3 bucket.
 #' 
 #' The export file names will match the following conventions:
 #' 
-#' `&lt;ExportJobName&gt;_&lt;ExportTimestamp&gt;_&lt;PartNumber&gt;.csv`
+#' `<ExportJobName>_<ExportTimestamp>_<PartNumber>.csv`
 #' 
 #' The &lt;ExportTimestamp&gt; component is in Java SimpleDate format
 #' (yyyy-MM-ddTHH-mm-ssZ).
@@ -925,7 +949,8 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 #' 
 #' The `Status` of the export job must be `ACTIVE` before you can access
 #' the export in your Amazon S3 bucket. To get the status, use the
-#' DescribePredictorBacktestExportJob operation.
+#' [`describe_predictor_backtest_export_job`][forecastservice_describe_predictor_backtest_export_job]
+#' operation.
 #'
 #' @usage
 #' forecastservice_create_predictor_backtest_export_job(
@@ -1007,9 +1032,10 @@ forecastservice_create_predictor_backtest_export_job <- function(PredictorBackte
 #'
 #' @description
 #' Deletes an Amazon Forecast dataset that was created using the
-#' CreateDataset operation. You can only delete datasets that have a status
-#' of `ACTIVE` or `CREATE_FAILED`. To get the status use the
-#' DescribeDataset operation.
+#' [`create_dataset`][forecastservice_create_dataset] operation. You can
+#' only delete datasets that have a status of `ACTIVE` or `CREATE_FAILED`.
+#' To get the status use the
+#' [`describe_dataset`][forecastservice_describe_dataset] operation.
 #' 
 #' Forecast does not automatically update any dataset groups that contain
 #' the deleted dataset. In order to update the dataset group, use the
@@ -1050,10 +1076,12 @@ forecastservice_delete_dataset <- function(DatasetArn) {
 #' Deletes a dataset group created using the CreateDatasetGroup operation
 #'
 #' @description
-#' Deletes a dataset group created using the CreateDatasetGroup operation.
-#' You can only delete dataset groups that have a status of `ACTIVE`,
-#' `CREATE_FAILED`, or `UPDATE_FAILED`. To get the status, use the
-#' DescribeDatasetGroup operation.
+#' Deletes a dataset group created using the
+#' [`create_dataset_group`][forecastservice_create_dataset_group]
+#' operation. You can only delete dataset groups that have a status of
+#' `ACTIVE`, `CREATE_FAILED`, or `UPDATE_FAILED`. To get the status, use
+#' the [`describe_dataset_group`][forecastservice_describe_dataset_group]
+#' operation.
 #' 
 #' This operation deletes only the dataset group, not the datasets in the
 #' group.
@@ -1094,10 +1122,12 @@ forecastservice_delete_dataset_group <- function(DatasetGroupArn) {
 #' operation
 #'
 #' @description
-#' Deletes a dataset import job created using the CreateDatasetImportJob
+#' Deletes a dataset import job created using the
+#' [`create_dataset_import_job`][forecastservice_create_dataset_import_job]
 #' operation. You can delete only dataset import jobs that have a status of
 #' `ACTIVE` or `CREATE_FAILED`. To get the status, use the
-#' DescribeDatasetImportJob operation.
+#' [`describe_dataset_import_job`][forecastservice_describe_dataset_import_job]
+#' operation.
 #'
 #' @usage
 #' forecastservice_delete_dataset_import_job(DatasetImportJobArn)
@@ -1134,9 +1164,11 @@ forecastservice_delete_dataset_import_job <- function(DatasetImportJobArn) {
 #' Deletes a forecast created using the CreateForecast operation
 #'
 #' @description
-#' Deletes a forecast created using the CreateForecast operation. You can
+#' Deletes a forecast created using the
+#' [`create_forecast`][forecastservice_create_forecast] operation. You can
 #' delete only forecasts that have a status of `ACTIVE` or `CREATE_FAILED`.
-#' To get the status, use the DescribeForecast operation.
+#' To get the status, use the
+#' [`describe_forecast`][forecastservice_describe_forecast] operation.
 #' 
 #' You can't delete a forecast while it is being exported. After a forecast
 #' is deleted, you can no longer query the forecast.
@@ -1177,10 +1209,12 @@ forecastservice_delete_forecast <- function(ForecastArn) {
 #' operation
 #'
 #' @description
-#' Deletes a forecast export job created using the CreateForecastExportJob
+#' Deletes a forecast export job created using the
+#' [`create_forecast_export_job`][forecastservice_create_forecast_export_job]
 #' operation. You can delete only export jobs that have a status of
 #' `ACTIVE` or `CREATE_FAILED`. To get the status, use the
-#' DescribeForecastExportJob operation.
+#' [`describe_forecast_export_job`][forecastservice_describe_forecast_export_job]
+#' operation.
 #'
 #' @usage
 #' forecastservice_delete_forecast_export_job(ForecastExportJobArn)
@@ -1217,9 +1251,11 @@ forecastservice_delete_forecast_export_job <- function(ForecastExportJobArn) {
 #' Deletes a predictor created using the CreatePredictor operation
 #'
 #' @description
-#' Deletes a predictor created using the CreatePredictor operation. You can
-#' delete only predictor that have a status of `ACTIVE` or `CREATE_FAILED`.
-#' To get the status, use the DescribePredictor operation.
+#' Deletes a predictor created using the
+#' [`create_predictor`][forecastservice_create_predictor] operation. You
+#' can delete only predictor that have a status of `ACTIVE` or
+#' `CREATE_FAILED`. To get the status, use the
+#' [`describe_predictor`][forecastservice_describe_predictor] operation.
 #'
 #' @usage
 #' forecastservice_delete_predictor(PredictorArn)
@@ -1296,11 +1332,12 @@ forecastservice_delete_predictor_backtest_export_job <- function(PredictorBackte
 #' operation
 #'
 #' @description
-#' Describes an Amazon Forecast dataset created using the CreateDataset
-#' operation.
+#' Describes an Amazon Forecast dataset created using the
+#' [`create_dataset`][forecastservice_create_dataset] operation.
 #' 
-#' In addition to listing the parameters specified in the `CreateDataset`
-#' request, this operation includes the following dataset properties:
+#' In addition to listing the parameters specified in the
+#' [`create_dataset`][forecastservice_create_dataset] request, this
+#' operation includes the following dataset properties:
 #' 
 #' -   `CreationTime`
 #' 
@@ -1343,12 +1380,13 @@ forecastservice_describe_dataset <- function(DatasetArn) {
 #' Describes a dataset group created using the CreateDatasetGroup operation
 #'
 #' @description
-#' Describes a dataset group created using the CreateDatasetGroup
+#' Describes a dataset group created using the
+#' [`create_dataset_group`][forecastservice_create_dataset_group]
 #' operation.
 #' 
 #' In addition to listing the parameters provided in the
-#' `CreateDatasetGroup` request, this operation includes the following
-#' properties:
+#' [`create_dataset_group`][forecastservice_create_dataset_group] request,
+#' this operation includes the following properties:
 #' 
 #' -   `DatasetArns` - The datasets belonging to the group.
 #' 
@@ -1394,12 +1432,13 @@ forecastservice_describe_dataset_group <- function(DatasetGroupArn) {
 #' operation
 #'
 #' @description
-#' Describes a dataset import job created using the CreateDatasetImportJob
+#' Describes a dataset import job created using the
+#' [`create_dataset_import_job`][forecastservice_create_dataset_import_job]
 #' operation.
 #' 
 #' In addition to listing the parameters provided in the
-#' `CreateDatasetImportJob` request, this operation includes the following
-#' properties:
+#' [`create_dataset_import_job`][forecastservice_create_dataset_import_job]
+#' request, this operation includes the following properties:
 #' 
 #' -   `CreationTime`
 #' 
@@ -1448,10 +1487,12 @@ forecastservice_describe_dataset_import_job <- function(DatasetImportJobArn) {
 #' Describes a forecast created using the CreateForecast operation
 #'
 #' @description
-#' Describes a forecast created using the CreateForecast operation.
+#' Describes a forecast created using the
+#' [`create_forecast`][forecastservice_create_forecast] operation.
 #' 
-#' In addition to listing the properties provided in the `CreateForecast`
-#' request, this operation lists the following properties:
+#' In addition to listing the properties provided in the
+#' [`create_forecast`][forecastservice_create_forecast] request, this
+#' operation lists the following properties:
 #' 
 #' -   `DatasetGroupArn` - The dataset group that provided the training
 #'     data.
@@ -1501,11 +1542,12 @@ forecastservice_describe_forecast <- function(ForecastArn) {
 #'
 #' @description
 #' Describes a forecast export job created using the
-#' CreateForecastExportJob operation.
+#' [`create_forecast_export_job`][forecastservice_create_forecast_export_job]
+#' operation.
 #' 
 #' In addition to listing the properties provided by the user in the
-#' `CreateForecastExportJob` request, this operation lists the following
-#' properties:
+#' [`create_forecast_export_job`][forecastservice_create_forecast_export_job]
+#' request, this operation lists the following properties:
 #' 
 #' -   `CreationTime`
 #' 
@@ -1550,10 +1592,12 @@ forecastservice_describe_forecast_export_job <- function(ForecastExportJobArn) {
 #' Describes a predictor created using the CreatePredictor operation
 #'
 #' @description
-#' Describes a predictor created using the CreatePredictor operation.
+#' Describes a predictor created using the
+#' [`create_predictor`][forecastservice_create_predictor] operation.
 #' 
-#' In addition to listing the properties provided in the `CreatePredictor`
-#' request, this operation lists the following properties:
+#' In addition to listing the properties provided in the
+#' [`create_predictor`][forecastservice_create_predictor] request, this
+#' operation lists the following properties:
 #' 
 #' -   `DatasetImportJobArns` - The dataset import jobs used to import
 #'     training data.
@@ -1607,11 +1651,12 @@ forecastservice_describe_predictor <- function(PredictorArn) {
 #'
 #' @description
 #' Describes a predictor backtest export job created using the
-#' CreatePredictorBacktestExportJob operation.
+#' [`create_predictor_backtest_export_job`][forecastservice_create_predictor_backtest_export_job]
+#' operation.
 #' 
 #' In addition to listing the properties provided by the user in the
-#' `CreatePredictorBacktestExportJob` request, this operation lists the
-#' following properties:
+#' [`create_predictor_backtest_export_job`][forecastservice_create_predictor_backtest_export_job]
+#' request, this operation lists the following properties:
 #' 
 #' -   `CreationTime`
 #' 
@@ -1659,16 +1704,18 @@ forecastservice_describe_predictor_backtest_export_job <- function(PredictorBack
 #'
 #' @description
 #' Provides metrics on the accuracy of the models that were trained by the
-#' CreatePredictor operation. Use metrics to see how well the model
-#' performed and to decide whether to use the predictor to generate a
-#' forecast. For more information, see [Predictor
+#' [`create_predictor`][forecastservice_create_predictor] operation. Use
+#' metrics to see how well the model performed and to decide whether to use
+#' the predictor to generate a forecast. For more information, see
+#' [Predictor
 #' Metrics](https://docs.aws.amazon.com/forecast/latest/dg/metrics.html).
 #' 
 #' This operation generates metrics for each backtest window that was
 #' evaluated. The number of backtest windows (`NumberOfBacktestWindows`) is
 #' specified using the EvaluationParameters object, which is optionally
-#' included in the `CreatePredictor` request. If `NumberOfBacktestWindows`
-#' isn't specified, the number defaults to one.
+#' included in the [`create_predictor`][forecastservice_create_predictor]
+#' request. If `NumberOfBacktestWindows` isn't specified, the number
+#' defaults to one.
 #' 
 #' The parameters of the `filling` method determine which items contribute
 #' to the metrics. If you want all items to contribute, specify `zero`. If
@@ -1678,7 +1725,8 @@ forecastservice_describe_predictor_backtest_export_job <- function(PredictorBack
 #' 
 #' Before you can get accuracy metrics, the `Status` of the predictor must
 #' be `ACTIVE`, signifying that training has completed. To get the status,
-#' use the DescribePredictor operation.
+#' use the [`describe_predictor`][forecastservice_describe_predictor]
+#' operation.
 #'
 #' @usage
 #' forecastservice_get_accuracy_metrics(PredictorArn)
@@ -1716,11 +1764,14 @@ forecastservice_get_accuracy_metrics <- function(PredictorArn) {
 #' operation
 #'
 #' @description
-#' Returns a list of dataset groups created using the CreateDatasetGroup
+#' Returns a list of dataset groups created using the
+#' [`create_dataset_group`][forecastservice_create_dataset_group]
 #' operation. For each dataset group, this operation returns a summary of
 #' its properties, including its Amazon Resource Name (ARN). You can
 #' retrieve the complete set of properties by using the dataset group ARN
-#' with the DescribeDatasetGroup operation.
+#' with the
+#' [`describe_dataset_group`][forecastservice_describe_dataset_group]
+#' operation.
 #'
 #' @usage
 #' forecastservice_list_dataset_groups(NextToken, MaxResults)
@@ -1763,11 +1814,13 @@ forecastservice_list_dataset_groups <- function(NextToken = NULL, MaxResults = N
 #'
 #' @description
 #' Returns a list of dataset import jobs created using the
-#' CreateDatasetImportJob operation. For each import job, this operation
-#' returns a summary of its properties, including its Amazon Resource Name
-#' (ARN). You can retrieve the complete set of properties by using the ARN
-#' with the DescribeDatasetImportJob operation. You can filter the list by
-#' providing an array of Filter objects.
+#' [`create_dataset_import_job`][forecastservice_create_dataset_import_job]
+#' operation. For each import job, this operation returns a summary of its
+#' properties, including its Amazon Resource Name (ARN). You can retrieve
+#' the complete set of properties by using the ARN with the
+#' [`describe_dataset_import_job`][forecastservice_describe_dataset_import_job]
+#' operation. You can filter the list by providing an array of Filter
+#' objects.
 #'
 #' @usage
 #' forecastservice_list_dataset_import_jobs(NextToken, MaxResults, Filters)
@@ -1836,10 +1889,12 @@ forecastservice_list_dataset_import_jobs <- function(NextToken = NULL, MaxResult
 #' Returns a list of datasets created using the CreateDataset operation
 #'
 #' @description
-#' Returns a list of datasets created using the CreateDataset operation.
-#' For each dataset, a summary of its properties, including its Amazon
-#' Resource Name (ARN), is returned. To retrieve the complete set of
-#' properties, use the ARN with the DescribeDataset operation.
+#' Returns a list of datasets created using the
+#' [`create_dataset`][forecastservice_create_dataset] operation. For each
+#' dataset, a summary of its properties, including its Amazon Resource Name
+#' (ARN), is returned. To retrieve the complete set of properties, use the
+#' ARN with the [`describe_dataset`][forecastservice_describe_dataset]
+#' operation.
 #'
 #' @usage
 #' forecastservice_list_datasets(NextToken, MaxResults)
@@ -1882,11 +1937,12 @@ forecastservice_list_datasets <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @description
 #' Returns a list of forecast export jobs created using the
-#' CreateForecastExportJob operation. For each forecast export job, this
-#' operation returns a summary of its properties, including its Amazon
-#' Resource Name (ARN). To retrieve the complete set of properties, use the
-#' ARN with the DescribeForecastExportJob operation. You can filter the
-#' list using an array of Filter objects.
+#' [`create_forecast_export_job`][forecastservice_create_forecast_export_job]
+#' operation. For each forecast export job, this operation returns a
+#' summary of its properties, including its Amazon Resource Name (ARN). To
+#' retrieve the complete set of properties, use the ARN with the
+#' [`describe_forecast_export_job`][forecastservice_describe_forecast_export_job]
+#' operation. You can filter the list using an array of Filter objects.
 #'
 #' @usage
 #' forecastservice_list_forecast_export_jobs(NextToken, MaxResults,
@@ -1917,7 +1973,7 @@ forecastservice_list_datasets <- function(NextToken = NULL, MaxResults = NULL) {
 #' For example, to list all jobs that export a forecast named
 #' *electricityforecast*, specify the following filter:
 #' 
-#' `"Filters": \\[ \{ "Condition": "IS", "Key": "ForecastArn", "Value": "arn:aws:forecast:us-west-2:&lt;acct-id&gt;:forecast/electricityforecast" \} \\]`
+#' `"Filters": \\[ \{ "Condition": "IS", "Key": "ForecastArn", "Value": "arn:aws:forecast:us-west-2:<acct-id>:forecast/electricityforecast" \} \\]`
 #'
 #' @section Request syntax:
 #' ```
@@ -1957,10 +2013,12 @@ forecastservice_list_forecast_export_jobs <- function(NextToken = NULL, MaxResul
 #' Returns a list of forecasts created using the CreateForecast operation
 #'
 #' @description
-#' Returns a list of forecasts created using the CreateForecast operation.
-#' For each forecast, this operation returns a summary of its properties,
-#' including its Amazon Resource Name (ARN). To retrieve the complete set
-#' of properties, specify the ARN with the DescribeForecast operation. You
+#' Returns a list of forecasts created using the
+#' [`create_forecast`][forecastservice_create_forecast] operation. For each
+#' forecast, this operation returns a summary of its properties, including
+#' its Amazon Resource Name (ARN). To retrieve the complete set of
+#' properties, specify the ARN with the
+#' [`describe_forecast`][forecastservice_describe_forecast] operation. You
 #' can filter the list using an array of Filter objects.
 #'
 #' @usage
@@ -2032,12 +2090,13 @@ forecastservice_list_forecasts <- function(NextToken = NULL, MaxResults = NULL, 
 #'
 #' @description
 #' Returns a list of predictor backtest export jobs created using the
-#' CreatePredictorBacktestExportJob operation. This operation returns a
-#' summary for each backtest export job. You can filter the list using an
-#' array of Filter objects.
+#' [`create_predictor_backtest_export_job`][forecastservice_create_predictor_backtest_export_job]
+#' operation. This operation returns a summary for each backtest export
+#' job. You can filter the list using an array of Filter objects.
 #' 
 #' To retrieve the complete set of properties for a particular backtest
-#' export job, use the ARN with the DescribePredictorBacktestExportJob
+#' export job, use the ARN with the
+#' [`describe_predictor_backtest_export_job`][forecastservice_describe_predictor_backtest_export_job]
 #' operation.
 #'
 #' @usage
@@ -2104,12 +2163,13 @@ forecastservice_list_predictor_backtest_export_jobs <- function(NextToken = NULL
 #' Returns a list of predictors created using the CreatePredictor operation
 #'
 #' @description
-#' Returns a list of predictors created using the CreatePredictor
-#' operation. For each predictor, this operation returns a summary of its
-#' properties, including its Amazon Resource Name (ARN). You can retrieve
-#' the complete set of properties by using the ARN with the
-#' DescribePredictor operation. You can filter the list using an array of
-#' Filter objects.
+#' Returns a list of predictors created using the
+#' [`create_predictor`][forecastservice_create_predictor] operation. For
+#' each predictor, this operation returns a summary of its properties,
+#' including its Amazon Resource Name (ARN). You can retrieve the complete
+#' set of properties by using the ARN with the
+#' [`describe_predictor`][forecastservice_describe_predictor] operation.
+#' You can filter the list using an array of Filter objects.
 #'
 #' @usage
 #' forecastservice_list_predictors(NextToken, MaxResults, Filters)
@@ -2343,7 +2403,8 @@ forecastservice_untag_resource <- function(ResourceArn, TagKeys) {
 #' Replaces the datasets in a dataset group with the specified datasets.
 #' 
 #' The `Status` of the dataset group must be `ACTIVE` before you can use
-#' the dataset group to create a predictor. Use the DescribeDatasetGroup
+#' the dataset group to create a predictor. Use the
+#' [`describe_dataset_group`][forecastservice_describe_dataset_group]
 #' operation to get the status.
 #'
 #' @usage

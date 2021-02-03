@@ -12,8 +12,9 @@ dax_tag_resource(ResourceName, Tags)
 \item{Tags}{[required] The tags to be assigned to the DAX resource.}
 }
 \description{
-Associates a set of tags with a DAX resource. You can call \code{TagResource}
-up to 5 times per second, per account.
+Associates a set of tags with a DAX resource. You can call
+\code{\link[=dax_tag_resource]{tag_resource}} up to 5 times per second, per
+account.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

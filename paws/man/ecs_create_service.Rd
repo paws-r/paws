@@ -109,9 +109,10 @@ must be omitted.}
 A capacity provider strategy consists of one or more capacity providers
 along with the \code{base} and \code{weight} to assign to them. A capacity
 provider must be associated with the cluster to be used in a capacity
-provider strategy. The PutClusterCapacityProviders API is used to
-associate a capacity provider with a cluster. Only capacity providers
-with an \code{ACTIVE} or \code{UPDATING} status can be used.
+provider strategy. The
+\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
+API is used to associate a capacity provider with a cluster. Only
+capacity providers with an \code{ACTIVE} or \code{UPDATING} status can be used.
 
 If a \code{capacityProviderStrategy} is specified, the \code{launchType} parameter
 must be omitted. If no \code{capacityProviderStrategy} or \code{launchType} is
@@ -120,16 +121,19 @@ used.
 
 If specifying a capacity provider that uses an Auto Scaling group, the
 capacity provider must already be created. New capacity providers can be
-created with the CreateCapacityProvider API operation.
+created with the
+\code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
+operation.
 
 To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
 \code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
 are available to all accounts and only need to be associated with a
 cluster to be used.
 
-The PutClusterCapacityProviders API operation is used to update the list
-of available capacity providers for a cluster after the cluster is
-created.}
+The
+\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
+API operation is used to update the list of available capacity providers
+for a cluster after the cluster is created.}
 
 \item{platformVersion}{The platform version that your tasks in the service are running on. A
 platform version is specified only for tasks using the Fargate launch
@@ -252,7 +256,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.}
 service to the tasks in the service. If no value is specified, the tags
 are not propagated. Tags can only be propagated to the tasks within the
 service during service creation. To add tags to a task after service
-creation, use the TagResource API action.}
+creation, use the \code{\link[=ecs_tag_resource]{tag_resource}} API action.}
 }
 \description{
 Runs and maintains a desired number of tasks from a specified task
@@ -294,10 +298,10 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 You can optionally specify a deployment configuration for your service.
 The deployment is triggered by changing properties, such as the task
-definition or the desired count of a service, with an UpdateService
-operation. The default value for a replica service for
-\code{minimumHealthyPercent} is 100\%. The default value for a daemon service
-for \code{minimumHealthyPercent} is 0\%.
+definition or the desired count of a service, with an
+\code{\link[=ecs_update_service]{update_service}} operation. The default value for
+a replica service for \code{minimumHealthyPercent} is 100\%. The default value
+for a daemon service for \code{minimumHealthyPercent} is 0\%.
 
 If a service is using the \code{ECS} deployment controller, the minimum
 healthy percent represents a lower limit on the number of tasks in a
@@ -340,8 +344,8 @@ used, although they're currently visible when describing your service.
 When creating a service that uses the \code{EXTERNAL} deployment controller,
 you can specify only parameters that aren't controlled at the task set
 level. The only required parameter is the service name. You control your
-services using the CreateTaskSet operation. For more information, see
-\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS Deployment Types}
+services using the \code{\link[=ecs_create_task_set]{create_task_set}} operation.
+For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS Deployment Types}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 When the service scheduler launches new tasks, it determines task

@@ -114,13 +114,15 @@ stack set, and therefore from the stacks and resources as well.
 currently associated tags.
 }
 
-If you specify new tags as part of an \code{UpdateStackSet} action, AWS
+If you specify new tags as part of an
+\code{\link[=cloudformation_update_stack_set]{update_stack_set}} action, AWS
 CloudFormation checks to see if you have the required IAM permission to
 tag resources. If you omit tags that are currently associated with the
 stack set from the list of tags you specify, AWS CloudFormation assumes
 that you want to remove those tags from the stack set, and checks to see
 if you have permission to untag resources. If you don't have the
-necessary permission(s), the entire \code{UpdateStackSet} action fails with
+necessary permission(s), the entire
+\code{\link[=cloudformation_update_stack_set]{update_stack_set}} action fails with
 an \verb{access denied} error, and the stack set is not updated.}
 
 \item{OperationPreferences}{Preferences for how AWS CloudFormation performs this stack set
@@ -241,8 +243,8 @@ accounts and Regions.
 Even if the stack set operation created by updating the stack set fails
 (completely or partially, below or above a specified failure tolerance),
 the stack set is updated with your changes. Subsequent
-CreateStackInstances calls on the specified stack set use the updated
-stack set.
+\code{\link[=cloudformation_create_stack_instances]{create_stack_instances}} calls
+on the specified stack set use the updated stack set.
 }
 \section{Request syntax}{
 \preformatted{svc$update_stack_set(

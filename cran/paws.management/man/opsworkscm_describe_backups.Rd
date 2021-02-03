@@ -11,9 +11,11 @@ opsworkscm_describe_backups(BackupId, ServerName, NextToken, MaxResults)
 
 \item{ServerName}{Returns backups for the server with the specified ServerName.}
 
-\item{NextToken}{This is not currently implemented for \code{DescribeBackups} requests.}
+\item{NextToken}{This is not currently implemented for
+\code{\link[=opsworkscm_describe_backups]{describe_backups}} requests.}
 
-\item{MaxResults}{This is not currently implemented for \code{DescribeBackups} requests.}
+\item{MaxResults}{This is not currently implemented for
+\code{\link[=opsworkscm_describe_backups]{describe_backups}} requests.}
 }
 \description{
 Describes backups. The results are ordered by time, with newest backups

@@ -18,7 +18,7 @@ Amazon Kinesis Data Analytics API V2 Documentation.
 
 Stops the application from processing input data. You can stop an
 application only if it is in the running state. You can use the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+\code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation to find the application state. After the application is
 stopped, Amazon Kinesis Analytics stops reading data from the input, the
 application stops processing data, and there is no output written to the

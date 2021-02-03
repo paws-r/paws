@@ -10,7 +10,7 @@ synthetics_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The ARN of the canary that you want to view tags for.
 
 The ARN format of a canary is
-\verb{arn:aws:synthetics:<i>Region</i>:<i>account-id</i>:canary:<i>canary-name</i> }.}
+\code{arn:aws:synthetics:Region:account-id:canary:canary-name }.}
 }
 \description{
 Displays the tags associated with a canary.

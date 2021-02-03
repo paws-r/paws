@@ -24,11 +24,13 @@ GetParametersByPath API action recursively for \verb{/a} and view \verb{/a/b}.}
 
 \item{ParameterFilters}{Filters to limit the request results.
 
-For \code{GetParametersByPath}, the following filter \code{Key} names are
-supported: \code{Type}, \code{KeyId}, \code{Label}, and \code{DataType}.
+For \code{\link[=ssm_get_parameters_by_path]{get_parameters_by_path}}, the
+following filter \code{Key} names are supported: \code{Type}, \code{KeyId}, \code{Label},
+and \code{DataType}.
 
-The following \code{Key} values are not supported for \code{GetParametersByPath}:
-\code{tag}, \code{Name}, \code{Path}, and \code{Tier}.}
+The following \code{Key} values are not supported for
+\code{\link[=ssm_get_parameters_by_path]{get_parameters_by_path}}: \code{tag}, \code{Name},
+\code{Path}, and \code{Tier}.}
 
 \item{WithDecryption}{Retrieve all parameters in a hierarchy with their value decrypted.}
 

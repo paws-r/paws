@@ -17,9 +17,10 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 \description{
 Deletes a certificate and its associated private key. If this action
 succeeds, the certificate no longer appears in the list that can be
-displayed by calling the ListCertificates action or be retrieved by
-calling the GetCertificate action. The certificate will not be available
-for use by AWS services integrated with ACM.
+displayed by calling the \code{\link[=acm_list_certificates]{list_certificates}}
+action or be retrieved by calling the
+\code{\link[=acm_get_certificate]{get_certificate}} action. The certificate will
+not be available for use by AWS services integrated with ACM.
 
 You cannot delete an ACM certificate that is being used by another AWS
 service. To delete a certificate that is in use, the certificate

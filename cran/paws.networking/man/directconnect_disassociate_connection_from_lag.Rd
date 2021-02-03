@@ -15,10 +15,10 @@ directconnect_disassociate_connection_from_lag(connectionId, lagId)
 Disassociates a connection from a link aggregation group (LAG). The
 connection is interrupted and re-established as a standalone connection
 (the connection is not deleted; to delete the connection, use the
-DeleteConnection request). If the LAG has associated virtual interfaces
-or hosted connections, they remain associated with the LAG. A
-disassociated connection owned by an AWS Direct Connect Partner is
-automatically converted to an interconnect.
+\code{\link[=directconnect_delete_connection]{delete_connection}} request). If the
+LAG has associated virtual interfaces or hosted connections, they remain
+associated with the LAG. A disassociated connection owned by an AWS
+Direct Connect Partner is automatically converted to an interconnect.
 
 If disassociating the connection would cause the LAG to fall below its
 setting for minimum number of operational connections, the request

@@ -44,9 +44,10 @@ Adds or updates an inline policy document that is embedded in the
 specified IAM group.
 
 A user can also have managed policies attached to it. To attach a
-managed policy to a group, use AttachGroupPolicy. To create a new
-managed policy, use CreatePolicy. For information about policies, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+managed policy to a group, use
+\code{\link[=iam_attach_group_policy]{attach_group_policy}}. To create a new
+managed policy, use \code{\link[=iam_create_policy]{create_policy}}. For
+information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 
 For information about limits on the number of inline policies that you
@@ -54,8 +55,8 @@ can embed in a group, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 in the \emph{IAM User Guide}.
 
 Because policy documents can be large, you should use POST rather than
-GET when calling \code{PutGroupPolicy}. For general information about using
-the Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html}{Making Query Requests}
+GET when calling \code{\link[=iam_put_group_policy]{put_group_policy}}. For general
+information about using the Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html}{Making Query Requests}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

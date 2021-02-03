@@ -26,8 +26,9 @@ NULL
 #' Network Load Balancers.
 #' 
 #' To get started, create a load balancer with one or more listeners using
-#' CreateLoadBalancer. Register your instances with the load balancer using
-#' RegisterInstancesWithLoadBalancer.
+#' [`create_load_balancer`][elb_create_load_balancer]. Register your
+#' instances with the load balancer using
+#' [`register_instances_with_load_balancer`][elb_register_instances_with_load_balancer].
 #' 
 #' All Elastic Load Balancing operations are *idempotent*, which means that
 #' they complete at most one time. If you repeat an operation, it succeeds

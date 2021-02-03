@@ -12,7 +12,7 @@ organizations_invite_account_to_organization(Target, Notes, Tags)
 your organization. This is a JSON object that contains the following
 elements:
 
-\verb{\\\{ "Type": "ACCOUNT", "Id": "&lt;<i> <b>account id number</b> </i>&gt;" \\\}}
+\verb{\\\{ "Type": "ACCOUNT", "Id": "< account id number >" \\\}}
 
 If you use the AWS CLI, you can submit this as a single string, similar
 to the following example:

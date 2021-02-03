@@ -26,7 +26,8 @@ Deletes the specified inline policy that is embedded in the specified
 IAM role.
 
 A role can also have managed policies attached to it. To detach a
-managed policy from a role, use DetachRolePolicy. For more information
+managed policy from a role, use
+\code{\link[=iam_detach_role_policy]{detach_role_policy}}. For more information
 about policies, refer to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }

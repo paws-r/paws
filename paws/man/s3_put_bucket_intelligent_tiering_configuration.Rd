@@ -34,12 +34,13 @@ If you delete an object before the end of the 30-day minimum storage
 duration period, you are charged for 30 days. For more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access}{Storage class for automatically optimizing frequently and infrequently accessed objects}.
 
-Operations related to \code{PutBucketIntelligentTieringConfiguration}
+Operations related to
+\code{\link[=s3_put_bucket_intelligent_tiering_configuration]{put_bucket_intelligent_tiering_configuration}}
 include:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketIntelligentTieringConfiguration.html}{DeleteBucketIntelligentTieringConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketIntelligentTieringConfiguration.html}{GetBucketIntelligentTieringConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketIntelligentTieringConfigurations.html}{ListBucketIntelligentTieringConfigurations}
+\item \code{\link[=s3_delete_bucket_intelligent_tiering_configuration]{delete_bucket_intelligent_tiering_configuration}}
+\item \code{\link[=s3_get_bucket_intelligent_tiering_configuration]{get_bucket_intelligent_tiering_configuration}}
+\item \code{\link[=s3_list_bucket_intelligent_tiering_configurations]{list_bucket_intelligent_tiering_configurations}}
 }
 }
 \section{Request syntax}{

@@ -19,14 +19,18 @@ specific information about them such as entity category, location, and
 confidence score on that information. Amazon Comprehend Medical only
 detects medical entities in English language texts.
 
-The \code{DetectEntitiesV2} operation replaces the DetectEntities operation.
-This new action uses a different model for determining the entities in
-your medical text and changes the way that some entities are returned in
-the output. You should use the \code{DetectEntitiesV2} operation in all new
-applications.
+The \code{\link[=comprehendmedical_detect_entities_v2]{detect_entities_v2}}
+operation replaces the
+\code{\link[=comprehendmedical_detect_entities]{detect_entities}} operation. This
+new action uses a different model for determining the entities in your
+medical text and changes the way that some entities are returned in the
+output. You should use the
+\code{\link[=comprehendmedical_detect_entities_v2]{detect_entities_v2}} operation
+in all new applications.
 
-The \code{DetectEntitiesV2} operation returns the \code{Acuity} and \code{Direction}
-entities as attributes instead of types.
+The \code{\link[=comprehendmedical_detect_entities_v2]{detect_entities_v2}}
+operation returns the \code{Acuity} and \code{Direction} entities as attributes
+instead of types.
 }
 \section{Request syntax}{
 \preformatted{svc$detect_entities_v2(

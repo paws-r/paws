@@ -584,8 +584,9 @@ codestarnotifications_untag_resource <- function(Arn, TagKeys) {
 #' that trigger the notification rule, the status of the rule, and the
 #' targets that receive the notifications.
 #' 
-#' To add or remove tags for a notification rule, you must use TagResource
-#' and UntagResource.
+#' To add or remove tags for a notification rule, you must use
+#' [`tag_resource`][codestarnotifications_tag_resource] and
+#' [`untag_resource`][codestarnotifications_untag_resource].
 #'
 #' @usage
 #' codestarnotifications_update_notification_rule(Arn, Name, Status,

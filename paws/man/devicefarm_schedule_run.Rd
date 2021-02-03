@@ -12,7 +12,8 @@ devicefarm_schedule_run(projectArn, appArn, devicePoolArn,
 \item{projectArn}{[required] The ARN of the project for the run to be scheduled.}
 
 \item{appArn}{The ARN of an application package to run tests against, created with
-CreateUpload. See ListUploads.}
+\code{\link[=devicefarm_create_upload]{create_upload}}. See
+\code{\link[=devicefarm_list_uploads]{list_uploads}}.}
 
 \item{devicePoolArn}{The ARN of the device pool for the run to be scheduled.}
 

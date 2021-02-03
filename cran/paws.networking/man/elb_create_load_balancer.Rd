@@ -26,7 +26,8 @@ balancer.
 You must specify at least one Availability Zone.
 
 You can add more Availability Zones after you create the load balancer
-using EnableAvailabilityZonesForLoadBalancer.}
+using
+\code{\link[=elb_enable_availability_zones_for_load_balancer]{enable_availability_zones_for_load_balancer}}.}
 
 \item{Subnets}{The IDs of the subnets in your VPC to attach to the load balancer.
 Specify one subnet per Availability Zone specified in
@@ -54,12 +55,15 @@ Creates a Classic Load Balancer.
 
 You can add listeners, security groups, subnets, and tags when you
 create your load balancer, or you can add them later using
-CreateLoadBalancerListeners, ApplySecurityGroupsToLoadBalancer,
-AttachLoadBalancerToSubnets, and AddTags.
+\code{\link[=elb_create_load_balancer_listeners]{create_load_balancer_listeners}},
+\code{\link[=elb_apply_security_groups_to_load_balancer]{apply_security_groups_to_load_balancer}},
+\code{\link[=elb_attach_load_balancer_to_subnets]{attach_load_balancer_to_subnets}},
+and \code{\link[=elb_add_tags]{add_tags}}.
 
-To describe your current load balancers, see DescribeLoadBalancers. When
-you are finished with a load balancer, you can delete it using
-DeleteLoadBalancer.
+To describe your current load balancers, see
+\code{\link[=elb_describe_load_balancers]{describe_load_balancers}}. When you are
+finished with a load balancer, you can delete it using
+\code{\link[=elb_delete_load_balancer]{delete_load_balancer}}.
 
 You can create up to 20 load balancers per region per account. You can
 request an increase for the number of load balancers for your account.

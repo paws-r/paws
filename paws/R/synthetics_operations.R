@@ -12,8 +12,8 @@ NULL
 #' load time data, screenshots of the UI, logs, and metrics. You can set up
 #' a canary to run continuously or just once.
 #' 
-#' Do not use `CreateCanary` to modify an existing canary. Use
-#' [UpdateCanary](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_UpdateCanary.html)
+#' Do not use [`create_canary`][synthetics_create_canary] to modify an
+#' existing canary. Use [`update_canary`][synthetics_update_canary]
 #' instead.
 #' 
 #' To create canaries, you must have the `CloudWatchSyntheticsFullAccess`
@@ -161,32 +161,31 @@ synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRo
 #' intend to use again, you should also delete the following:
 #' 
 #' -   The Lambda functions and layers used by this canary. These have the
-#'     prefix `cwsyn-<i>MyCanaryName</i> `.
+#'     prefix `cwsyn-MyCanaryName `.
 #' 
 #' -   The CloudWatch alarms created for this canary. These alarms have a
-#'     name of `Synthetics-SharpDrop-Alarm-<i>MyCanaryName</i> `.
+#'     name of `Synthetics-SharpDrop-Alarm-MyCanaryName `.
 #' 
 #' -   Amazon S3 objects and buckets, such as the canary's artifact
 #'     location.
 #' 
 #' -   IAM roles created for the canary. If they were created in the
 #'     console, these roles have the name
-#'     ` role/service-role/CloudWatchSyntheticsRole-<i>MyCanaryName</i> `.
+#'     ` role/service-role/CloudWatchSyntheticsRole-MyCanaryName `.
 #' 
 #' -   CloudWatch Logs log groups created for the canary. These logs groups
-#'     have the name `/aws/lambda/cwsyn-<i>MyCanaryName</i> `.
+#'     have the name `/aws/lambda/cwsyn-MyCanaryName `.
 #' 
-#' Before you delete a canary, you might want to use `GetCanary` to display
-#' the information about this canary. Make note of the information returned
-#' by this operation so that you can delete these resources after you
-#' delete the canary.
+#' Before you delete a canary, you might want to use
+#' [`get_canary`][synthetics_get_canary] to display the information about
+#' this canary. Make note of the information returned by this operation so
+#' that you can delete these resources after you delete the canary.
 #'
 #' @usage
 #' synthetics_delete_canary(Name)
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to delete. To find the names of
-#' your canaries, use
-#' [DescribeCanaries](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html).
+#' your canaries, use [`describe_canaries`][synthetics_describe_canaries].
 #'
 #' @section Request syntax:
 #' ```
@@ -223,9 +222,10 @@ synthetics_delete_canary <- function(Name) {
 #' with full details about each canary.
 #' 
 #' This operation does not have resource-level authorization, so if a user
-#' is able to use `DescribeCanaries`, the user can see all of the canaries
-#' in the account. A deny policy can only be used to restrict access to all
-#' canaries. It cannot be used on specific resources.
+#' is able to use [`describe_canaries`][synthetics_describe_canaries], the
+#' user can see all of the canaries in the account. A deny policy can only
+#' be used to restrict access to all canaries. It cannot be used on
+#' specific resources.
 #'
 #' @usage
 #' synthetics_describe_canaries(NextToken, MaxResults)
@@ -234,8 +234,8 @@ synthetics_delete_canary <- function(Name) {
 #' this token in a subsequent operation to retrieve the next set of
 #' results.
 #' @param MaxResults Specify this parameter to limit how many canaries are returned each time
-#' you use the `DescribeCanaries` operation. If you omit this parameter,
-#' the default of 100 is used.
+#' you use the [`describe_canaries`][synthetics_describe_canaries]
+#' operation. If you omit this parameter, the default of 100 is used.
 #'
 #' @section Request syntax:
 #' ```
@@ -276,8 +276,9 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL) {
 #' synthetics_describe_canaries_last_run(NextToken, MaxResults)
 #'
 #' @param NextToken A token that indicates that there is more data available. You can use
-#' this token in a subsequent `DescribeCanaries` operation to retrieve the
-#' next set of results.
+#' this token in a subsequent
+#' [`describe_canaries`][synthetics_describe_canaries] operation to
+#' retrieve the next set of results.
 #' @param MaxResults Specify this parameter to limit how many runs are returned each time you
 #' use the `DescribeLastRun` operation. If you omit this parameter, the
 #' default of 100 is used.
@@ -321,11 +322,13 @@ synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults =
 #' synthetics_describe_runtime_versions(NextToken, MaxResults)
 #'
 #' @param NextToken A token that indicates that there is more data available. You can use
-#' this token in a subsequent `DescribeRuntimeVersions` operation to
-#' retrieve the next set of results.
+#' this token in a subsequent
+#' [`describe_runtime_versions`][synthetics_describe_runtime_versions]
+#' operation to retrieve the next set of results.
 #' @param MaxResults Specify this parameter to limit how many runs are returned each time you
-#' use the `DescribeRuntimeVersions` operation. If you omit this parameter,
-#' the default of 100 is used.
+#' use the
+#' [`describe_runtime_versions`][synthetics_describe_runtime_versions]
+#' operation. If you omit this parameter, the default of 100 is used.
 #'
 #' @section Request syntax:
 #' ```
@@ -360,8 +363,7 @@ synthetics_describe_runtime_versions <- function(NextToken = NULL, MaxResults = 
 #' @description
 #' Retrieves complete information about one canary. You must specify the
 #' name of the canary that you want. To get a list of canaries and their
-#' names, use
-#' [DescribeCanaries](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html).
+#' names, use [`describe_canaries`][synthetics_describe_canaries].
 #'
 #' @usage
 #' synthetics_get_canary(Name)
@@ -405,11 +407,12 @@ synthetics_get_canary <- function(Name) {
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to see runs for.
 #' @param NextToken A token that indicates that there is more data available. You can use
-#' this token in a subsequent `GetCanaryRuns` operation to retrieve the
-#' next set of results.
+#' this token in a subsequent
+#' [`get_canary_runs`][synthetics_get_canary_runs] operation to retrieve
+#' the next set of results.
 #' @param MaxResults Specify this parameter to limit how many runs are returned each time you
-#' use the `GetCanaryRuns` operation. If you omit this parameter, the
-#' default of 100 is used.
+#' use the [`get_canary_runs`][synthetics_get_canary_runs] operation. If
+#' you omit this parameter, the default of 100 is used.
 #'
 #' @section Request syntax:
 #' ```
@@ -451,7 +454,7 @@ synthetics_get_canary_runs <- function(Name, NextToken = NULL, MaxResults = NULL
 #' @param ResourceArn &#91;required&#93; The ARN of the canary that you want to view tags for.
 #' 
 #' The ARN format of a canary is
-#' `arn:aws:synthetics:<i>Region</i>:<i>account-id</i>:canary:<i>canary-name</i> `.
+#' `arn:aws:synthetics:Region:account-id:canary:canary-name `.
 #'
 #' @section Request syntax:
 #' ```
@@ -486,13 +489,13 @@ synthetics_list_tags_for_resource <- function(ResourceArn) {
 #' Use this operation to run a canary that has already been created. The
 #' frequency of the canary runs is determined by the value of the canary's
 #' `Schedule`. To see a canary's schedule, use
-#' [GetCanary](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_GetCanary.html).
+#' [`get_canary`][synthetics_get_canary].
 #'
 #' @usage
 #' synthetics_start_canary(Name)
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to run. To find canary names, use
-#' [DescribeCanaries](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html).
+#' [`describe_canaries`][synthetics_describe_canaries].
 #'
 #' @section Request syntax:
 #' ```
@@ -530,15 +533,15 @@ synthetics_start_canary <- function(Name) {
 #' publishes metrics, and uploads artifacts, but it is not recorded in
 #' Synthetics as a completed run.
 #' 
-#' You can use `StartCanary` to start it running again with the canary’s
-#' current schedule at any point in the future.
+#' You can use [`start_canary`][synthetics_start_canary] to start it
+#' running again with the canary’s current schedule at any point in the
+#' future.
 #'
 #' @usage
 #' synthetics_stop_canary(Name)
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to stop. To find the names of your
-#' canaries, use
-#' [DescribeCanaries](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html).
+#' canaries, use [`describe_canaries`][synthetics_describe_canaries].
 #'
 #' @section Request syntax:
 #' ```
@@ -579,11 +582,12 @@ synthetics_stop_canary <- function(Name) {
 #' Tags don't have any semantic meaning to AWS and are interpreted strictly
 #' as strings of characters.
 #' 
-#' You can use the `TagResource` action with a canary that already has
-#' tags. If you specify a new tag key for the alarm, this tag is appended
-#' to the list of tags associated with the alarm. If you specify a tag key
-#' that is already associated with the alarm, the new tag value that you
-#' specify replaces the previous value for that tag.
+#' You can use the [`tag_resource`][synthetics_tag_resource] action with a
+#' canary that already has tags. If you specify a new tag key for the
+#' alarm, this tag is appended to the list of tags associated with the
+#' alarm. If you specify a tag key that is already associated with the
+#' alarm, the new tag value that you specify replaces the previous value
+#' for that tag.
 #' 
 #' You can associate as many as 50 tags with a canary.
 #'
@@ -593,7 +597,7 @@ synthetics_stop_canary <- function(Name) {
 #' @param ResourceArn &#91;required&#93; The ARN of the canary that you're adding tags to.
 #' 
 #' The ARN format of a canary is
-#' `arn:aws:synthetics:<i>Region</i>:<i>account-id</i>:canary:<i>canary-name</i> `.
+#' `arn:aws:synthetics:Region:account-id:canary:canary-name `.
 #' @param Tags &#91;required&#93; The list of key-value pairs to associate with the canary.
 #'
 #' @section Request syntax:
@@ -637,7 +641,7 @@ synthetics_tag_resource <- function(ResourceArn, Tags) {
 #' @param ResourceArn &#91;required&#93; The ARN of the canary that you're removing tags from.
 #' 
 #' The ARN format of a canary is
-#' `arn:aws:synthetics:<i>Region</i>:<i>account-id</i>:canary:<i>canary-name</i> `.
+#' `arn:aws:synthetics:Region:account-id:canary:canary-name `.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
 #'
 #' @section Request syntax:
@@ -679,7 +683,7 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' 
 #' You can't use this operation to update the tags of an existing canary.
 #' To change the tags of an existing canary, use
-#' [TagResource](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_TagResource.html).
+#' [`tag_resource`][synthetics_tag_resource].
 #'
 #' @usage
 #' synthetics_update_canary(Name, Code, ExecutionRoleArn, RuntimeVersion,
@@ -687,8 +691,7 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #'   FailureRetentionPeriodInDays, VpcConfig)
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to update. To find the names of
-#' your canaries, use
-#' [DescribeCanaries](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html).
+#' your canaries, use [`describe_canaries`][synthetics_describe_canaries].
 #' 
 #' You cannot change the name of a canary that has already been created.
 #' @param Code A structure that includes the entry point from which the canary should

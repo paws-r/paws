@@ -39,8 +39,7 @@ objects added to the bucket receive a unique version ID.
 objects added to the bucket receive the version ID null.
 
 If the versioning state has never been set on a bucket, it has no
-versioning state; a
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html}{GetBucketVersioning}
+versioning state; a \code{\link[=s3_get_bucket_versioning]{get_bucket_versioning}}
 request does not return a versioning state value.
 
 If the bucket owner enables MFA Delete in the bucket versioning
@@ -58,9 +57,9 @@ object versions.) For more information, see \href{https://docs.aws.amazon.com/Am
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html}{DeleteBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html}{GetBucketVersioning}
+\item \code{\link[=s3_create_bucket]{create_bucket}}
+\item \code{\link[=s3_delete_bucket]{delete_bucket}}
+\item \code{\link[=s3_get_bucket_versioning]{get_bucket_versioning}}
 }
 }
 \section{Request syntax}{

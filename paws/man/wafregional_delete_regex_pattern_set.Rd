@@ -8,10 +8,12 @@ wafregional_delete_regex_pattern_set(RegexPatternSetId, ChangeToken)
 }
 \arguments{
 \item{RegexPatternSetId}{[required] The \code{RegexPatternSetId} of the RegexPatternSet that you want to delete.
-\code{RegexPatternSetId} is returned by CreateRegexPatternSet and by
-ListRegexPatternSets.}
+\code{RegexPatternSetId} is returned by
+\code{\link[=wafregional_create_regex_pattern_set]{create_regex_pattern_set}} and
+by \code{\link[=wafregional_list_regex_pattern_sets]{list_regex_pattern_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

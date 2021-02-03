@@ -25,8 +25,8 @@ When you submit your cluster resize request, your existing cluster goes
 into a read-only mode. After Amazon Redshift provisions a new cluster
 based on your resize requirements, there will be outage for a period
 while the old cluster is deleted and your connection is switched to the
-new cluster. You can use DescribeResize to track the progress of the
-resize request.
+new cluster. You can use \code{\link[=redshift_describe_resize]{describe_resize}}
+to track the progress of the resize request.
 
 Valid Values: \code{multi-node | single-node}}
 
@@ -89,7 +89,7 @@ Constraints:
 
 \item{ClusterParameterGroupName}{The name of the cluster parameter group to apply to this cluster. This
 change is applied only after the cluster is rebooted. To reboot a
-cluster use RebootCluster.
+cluster use \code{\link[=redshift_reboot_cluster]{reboot_cluster}}.
 
 Default: Uses existing setting.
 
@@ -99,7 +99,7 @@ group family that matches the cluster version.}
 \item{AutomatedSnapshotRetentionPeriod}{The number of days that automated snapshots are retained. If the value
 is 0, automated snapshots are disabled. Even if automated snapshots are
 disabled, you can still create manual snapshots when you want with
-CreateClusterSnapshot.
+\code{\link[=redshift_create_cluster_snapshot]{create_cluster_snapshot}}.
 
 If you decrease the automated snapshot retention period from its current
 value, existing automated snapshots that fall outside of the new

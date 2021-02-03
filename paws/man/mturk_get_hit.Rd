@@ -10,7 +10,8 @@ mturk_get_hit(HITId)
 \item{HITId}{[required] The ID of the HIT to be retrieved.}
 }
 \description{
-The \code{GetHIT} operation retrieves the details of the specified HIT.
+The \code{\link[=mturk_get_hit]{get_hit}} operation retrieves the details of the
+specified HIT.
 }
 \section{Request syntax}{
 \preformatted{svc$get_hit(

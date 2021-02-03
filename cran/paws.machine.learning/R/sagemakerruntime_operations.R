@@ -20,9 +20,9 @@ NULL
 #' on the behavior of headers outside those enumerated in the request
 #' syntax.
 #' 
-#' Calls to `InvokeEndpoint` are authenticated by using AWS Signature
-#' Version 4. For information, see [Authenticating Requests (AWS Signature
-#' Version
+#' Calls to [`invoke_endpoint`][sagemakerruntime_invoke_endpoint] are
+#' authenticated by using AWS Signature Version 4. For information, see
+#' [Authenticating Requests (AWS Signature Version
 #' 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
 #' in the *Amazon S3 API Reference*.
 #' 

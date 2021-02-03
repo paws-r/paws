@@ -39,7 +39,7 @@ This operation overwrites the property's existing alias and notification
 state. To keep your existing property's alias or notification state, you
 must include the existing values in the UpdateAssetProperty request. For
 more information, see
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetProperty.html}{DescribeAssetProperty}.
+\code{\link[=iotsitewise_describe_asset_property]{describe_asset_property}}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_asset_property(

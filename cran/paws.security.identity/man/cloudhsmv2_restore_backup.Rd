@@ -9,12 +9,12 @@ cloudhsmv2_restore_backup(BackupId)
 }
 \arguments{
 \item{BackupId}{[required] The ID of the backup to be restored. To find the ID of a backup, use the
-DescribeBackups operation.}
+\code{\link[=cloudhsmv2_describe_backups]{describe_backups}} operation.}
 }
 \description{
 Restores a specified AWS CloudHSM backup that is in the
 \code{PENDING_DELETION} state. For mor information on deleting a backup, see
-DeleteBackup.
+\code{\link[=cloudhsmv2_delete_backup]{delete_backup}}.
 }
 \section{Request syntax}{
 \preformatted{svc$restore_backup(

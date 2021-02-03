@@ -35,14 +35,16 @@ operation, specify one of the following two virtual actions (or both)
 instead of the API operation name:
 \subsection{elasticbeanstalk:AddTags}{
 
-Controls permission to call \code{UpdateTagsForResource} and pass a list of
-tags to add in the \code{TagsToAdd} parameter.
+Controls permission to call
+\code{\link[=elasticbeanstalk_update_tags_for_resource]{update_tags_for_resource}}
+and pass a list of tags to add in the \code{TagsToAdd} parameter.
 }
 
 \subsection{elasticbeanstalk:RemoveTags}{
 
-Controls permission to call \code{UpdateTagsForResource} and pass a list of
-tag keys to remove in the \code{TagsToRemove} parameter.
+Controls permission to call
+\code{\link[=elasticbeanstalk_update_tags_for_resource]{update_tags_for_resource}}
+and pass a list of tag keys to remove in the \code{TagsToRemove} parameter.
 
 For details about creating a custom user policy, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies}{Creating a Custom User Policy}.
 }

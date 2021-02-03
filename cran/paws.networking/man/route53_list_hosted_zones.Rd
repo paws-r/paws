@@ -10,7 +10,7 @@ route53_list_hosted_zones(Marker, MaxItems, DelegationSetId)
 \arguments{
 \item{Marker}{If the value of \code{IsTruncated} in the previous response was \code{true}, you
 have more hosted zones. To get more hosted zones, submit another
-\code{ListHostedZones} request.
+\code{\link[=route53_list_hosted_zones]{list_hosted_zones}} request.
 
 For the value of \code{marker}, specify the value of \code{NextMarker} from the
 previous response, which is the ID of the first hosted zone that Amazon

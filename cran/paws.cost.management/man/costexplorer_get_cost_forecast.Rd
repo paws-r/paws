@@ -17,7 +17,8 @@ error.}
 \item{Metric}{[required] Which metric Cost Explorer uses to create your forecast. For more
 information about blended and unblended rates, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
 
-Valid values for a \code{GetCostForecast} call are the following:
+Valid values for a \code{\link[=costexplorer_get_cost_forecast]{get_cost_forecast}}
+call are the following:
 \itemize{
 \item AMORTIZED\\_COST
 \item BLENDED\\_COST
@@ -29,8 +30,8 @@ Valid values for a \code{GetCostForecast} call are the following:
 \item{Granularity}{[required] How granular you want the forecast to be. You can get 3 months of
 \code{DAILY} forecasts or 12 months of \code{MONTHLY} forecasts.
 
-The \code{GetCostForecast} operation supports only \code{DAILY} and \code{MONTHLY}
-granularities.}
+The \code{\link[=costexplorer_get_cost_forecast]{get_cost_forecast}} operation
+supports only \code{DAILY} and \code{MONTHLY} granularities.}
 
 \item{Filter}{The filters that you want to use to filter your forecast. Cost Explorer
 API supports all of the Cost Explorer filters.}

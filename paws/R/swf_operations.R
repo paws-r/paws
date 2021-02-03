@@ -1645,9 +1645,12 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' Because the number of workflow history events for a single workflow
 #' execution might be very large, the result returned might be split up
 #' across a number of pages. To retrieve subsequent pages, make additional
-#' calls to `PollForDecisionTask` using the `nextPageToken` returned by the
-#' initial call. Note that you do *not* call `GetWorkflowExecutionHistory`
-#' with this `nextPageToken`. Instead, call `PollForDecisionTask` again.
+#' calls to [`poll_for_decision_task`][swf_poll_for_decision_task] using
+#' the `nextPageToken` returned by the initial call. Note that you do *not*
+#' call
+#' [`get_workflow_execution_history`][swf_get_workflow_execution_history]
+#' with this `nextPageToken`. Instead, call
+#' [`poll_for_decision_task`][swf_poll_for_decision_task] again.
 #' 
 #' **Access Control**
 #' 
@@ -1698,9 +1701,11 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' returned in a single call.
 #' 
 #' The `nextPageToken` returned by this action cannot be used with
-#' GetWorkflowExecutionHistory to get the next page. You must call
-#' PollForDecisionTask again (with the `nextPageToken`) to retrieve the
-#' next page of history records. Calling PollForDecisionTask with a
+#' [`get_workflow_execution_history`][swf_get_workflow_execution_history]
+#' to get the next page. You must call
+#' [`poll_for_decision_task`][swf_poll_for_decision_task] again (with the
+#' `nextPageToken`) to retrieve the next page of history records. Calling
+#' [`poll_for_decision_task`][swf_poll_for_decision_task] with a
 #' `nextPageToken` doesn't return a new decision task.
 #' @param maximumPageSize The maximum number of results that are returned per call. Use
 #' `nextPageToken` to obtain further pages of results.
@@ -1759,7 +1764,8 @@ swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPa
 #' service is set to `true`.
 #' 
 #' This action resets the `taskHeartbeatTimeout` clock. The
-#' `taskHeartbeatTimeout` is specified in RegisterActivityType.
+#' `taskHeartbeatTimeout` is specified in
+#' [`register_activity_type`][swf_register_activity_type].
 #' 
 #' This action doesn't in itself create an event in the workflow execution
 #' history. However, if the task times out, the workflow execution history
@@ -1768,8 +1774,9 @@ swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPa
 #' 
 #' The `taskStartToCloseTimeout` of an activity type is the maximum
 #' duration of an activity task, regardless of the number of
-#' RecordActivityTaskHeartbeat requests received. The
-#' `taskStartToCloseTimeout` is also specified in RegisterActivityType.
+#' [`record_activity_task_heartbeat`][swf_record_activity_task_heartbeat]
+#' requests received. The `taskStartToCloseTimeout` is also specified in
+#' [`register_activity_type`][swf_register_activity_type].
 #' 
 #' This operation is only useful for long-lived activities to report
 #' liveliness of the task and to determine if a cancellation is being
@@ -1777,8 +1784,8 @@ swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPa
 #' 
 #' If the `cancelRequested` flag returns `true`, a cancellation is being
 #' attempted. If the worker can cancel the activity, it should respond with
-#' RespondActivityTaskCanceled. Otherwise, it should ignore the
-#' cancellation request.
+#' [`respond_activity_task_canceled`][swf_respond_activity_task_canceled].
+#' Otherwise, it should ignore the cancellation request.
 #' 
 #' **Access Control**
 #' 
@@ -1911,13 +1918,14 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' to `0`. You can use `NONE` to specify unlimited duration.
 #' @param defaultTaskHeartbeatTimeout If set, specifies the default maximum time before which a worker
 #' processing a task of this type must report progress by calling
-#' RecordActivityTaskHeartbeat. If the timeout is exceeded, the activity
-#' task is automatically timed out. This default can be overridden when
-#' scheduling an activity task using the `ScheduleActivityTask` Decision.
-#' If the activity worker subsequently attempts to record a heartbeat or
-#' returns a result, the activity worker receives an `UnknownResource`
-#' fault. In this case, Amazon SWF no longer considers the activity task to
-#' be valid; the activity worker should clean up the activity task.
+#' [`record_activity_task_heartbeat`][swf_record_activity_task_heartbeat].
+#' If the timeout is exceeded, the activity task is automatically timed
+#' out. This default can be overridden when scheduling an activity task
+#' using the `ScheduleActivityTask` Decision. If the activity worker
+#' subsequently attempts to record a heartbeat or returns a result, the
+#' activity worker receives an `UnknownResource` fault. In this case,
+#' Amazon SWF no longer considers the activity task to be valid; the
+#' activity worker should clean up the activity task.
 #' 
 #' The duration is specified in seconds, an integer greater than or equal
 #' to `0`. You can use `NONE` to specify unlimited duration.
@@ -2085,7 +2093,7 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' specified domain.
 #' 
 #' The retention period for the workflow history is set by the
-#' RegisterDomain action.
+#' [`register_domain`][swf_register_domain] action.
 #' 
 #' If the type already exists, then a `TypeAlreadyExists` fault is
 #' returned. You cannot change the configuration settings of a workflow
@@ -2137,7 +2145,8 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' 
 #' The workflow type consists of the name and version, the combination of
 #' which must be unique within the domain. To get a list of all currently
-#' registered workflow types, use the ListWorkflowTypes action.
+#' registered workflow types, use the
+#' [`list_workflow_types`][swf_list_workflow_types] action.
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
@@ -2146,15 +2155,16 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' @param description Textual description of the workflow type.
 #' @param defaultTaskStartToCloseTimeout If set, specifies the default maximum duration of decision tasks for
 #' this workflow type. This default can be overridden when starting a
-#' workflow execution using the StartWorkflowExecution action or the
+#' workflow execution using the
+#' [`start_workflow_execution`][swf_start_workflow_execution] action or the
 #' `StartChildWorkflowExecution` Decision.
 #' 
 #' The duration is specified in seconds, an integer greater than or equal
 #' to `0`. You can use `NONE` to specify unlimited duration.
 #' @param defaultExecutionStartToCloseTimeout If set, specifies the default maximum duration for executions of this
 #' workflow type. You can override this default when starting an execution
-#' through the StartWorkflowExecution Action or
-#' `StartChildWorkflowExecution` Decision.
+#' through the [`start_workflow_execution`][swf_start_workflow_execution]
+#' Action or `StartChildWorkflowExecution` Decision.
 #' 
 #' The duration is specified in seconds; an integer greater than or equal
 #' to 0. Unlike some of the other timeout parameters in Amazon SWF, you
@@ -2165,7 +2175,8 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' @param defaultTaskList If set, specifies the default task list to use for scheduling decision
 #' tasks for executions of this workflow type. This default is used only if
 #' a task list isn't provided when starting the execution through the
-#' StartWorkflowExecution Action or `StartChildWorkflowExecution` Decision.
+#' [`start_workflow_execution`][swf_start_workflow_execution] Action or
+#' `StartChildWorkflowExecution` Decision.
 #' @param defaultTaskPriority The default task priority to assign to the workflow type. If not
 #' assigned, then `0` is used. Valid values are integers that range from
 #' Java's `Integer.MIN_VALUE` (-2147483648) to `Integer.MAX_VALUE`
@@ -2176,9 +2187,11 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' in the *Amazon SWF Developer Guide*.
 #' @param defaultChildPolicy If set, specifies the default policy to use for the child workflow
 #' executions when a workflow execution of this type is terminated, by
-#' calling the TerminateWorkflowExecution action explicitly or due to an
-#' expired timeout. This default can be overridden when starting a workflow
-#' execution using the StartWorkflowExecution action or the
+#' calling the
+#' [`terminate_workflow_execution`][swf_terminate_workflow_execution]
+#' action explicitly or due to an expired timeout. This default can be
+#' overridden when starting a workflow execution using the
+#' [`start_workflow_execution`][swf_start_workflow_execution] action or the
 #' `StartChildWorkflowExecution` Decision.
 #' 
 #' The supported child policies are:
@@ -2256,7 +2269,8 @@ swf_register_workflow_type <- function(domain, name, version, description = NULL
 #' 
 #' Because this action allows the workflow to properly clean up and
 #' gracefully close, it should be used instead of
-#' TerminateWorkflowExecution when possible.
+#' [`terminate_workflow_execution`][swf_terminate_workflow_execution] when
+#' possible.
 #' 
 #' **Access Control**
 #' 
@@ -2327,14 +2341,17 @@ swf_request_cancel_workflow_execution <- function(domain, workflowId, runId = NU
 #' added to the workflow history.
 #' 
 #' Only use this operation if the `canceled` flag of a
-#' RecordActivityTaskHeartbeat request returns `true` and if the activity
-#' can be safely undone or abandoned.
+#' [`record_activity_task_heartbeat`][swf_record_activity_task_heartbeat]
+#' request returns `true` and if the activity can be safely undone or
+#' abandoned.
 #' 
 #' A task is considered open from the time that it is scheduled until it is
 #' closed. Therefore a task is reported as open while a worker is
 #' processing it. A task is closed after it has been specified in a call to
-#' RespondActivityTaskCompleted, RespondActivityTaskCanceled,
-#' RespondActivityTaskFailed, or the task has [timed
+#' [`respond_activity_task_completed`][swf_respond_activity_task_completed],
+#' RespondActivityTaskCanceled,
+#' [`respond_activity_task_failed`][swf_respond_activity_task_failed], or
+#' the task has [timed
 #' out](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
 #' 
 #' **Access Control**
@@ -2407,16 +2424,20 @@ swf_respond_activity_task_canceled <- function(taskToken, details = NULL) {
 #' workflow history.
 #' 
 #' If the requested task doesn't complete successfully, use
-#' RespondActivityTaskFailed instead. If the worker finds that the task is
-#' canceled through the `canceled` flag returned by
-#' RecordActivityTaskHeartbeat, it should cancel the task, clean up and
-#' then call RespondActivityTaskCanceled.
+#' [`respond_activity_task_failed`][swf_respond_activity_task_failed]
+#' instead. If the worker finds that the task is canceled through the
+#' `canceled` flag returned by
+#' [`record_activity_task_heartbeat`][swf_record_activity_task_heartbeat],
+#' it should cancel the task, clean up and then call
+#' [`respond_activity_task_canceled`][swf_respond_activity_task_canceled].
 #' 
 #' A task is considered open from the time that it is scheduled until it is
 #' closed. Therefore a task is reported as open while a worker is
 #' processing it. A task is closed after it has been specified in a call to
-#' RespondActivityTaskCompleted, RespondActivityTaskCanceled,
-#' RespondActivityTaskFailed, or the task has [timed
+#' RespondActivityTaskCompleted,
+#' [`respond_activity_task_canceled`][swf_respond_activity_task_canceled],
+#' [`respond_activity_task_failed`][swf_respond_activity_task_failed], or
+#' the task has [timed
 #' out](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
 #' 
 #' **Access Control**
@@ -2492,7 +2513,8 @@ swf_respond_activity_task_completed <- function(taskToken, result = NULL) {
 #' A task is considered open from the time that it is scheduled until it is
 #' closed. Therefore a task is reported as open while a worker is
 #' processing it. A task is closed after it has been specified in a call to
-#' RespondActivityTaskCompleted, RespondActivityTaskCanceled,
+#' [`respond_activity_task_completed`][swf_respond_activity_task_completed],
+#' [`respond_activity_task_canceled`][swf_respond_activity_task_canceled],
 #' RespondActivityTaskFailed, or the task has [timed
 #' out](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
 #' 
@@ -2573,13 +2595,13 @@ swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details =
 #' **Access Control**
 #' 
 #' If an IAM policy grants permission to use
-#' `RespondDecisionTaskCompleted`, it can express permissions for the list
-#' of decisions in the `decisions` parameter. Each of the decisions has one
-#' or more parameters, much like a regular API call. To allow for policies
-#' to be as readable as possible, you can express permissions on decisions
-#' as if they were actual API calls, including applying conditions to some
-#' parameters. For more information, see [Using IAM to Manage Access to
-#' Amazon SWF
+#' [`respond_decision_task_completed`][swf_respond_decision_task_completed],
+#' it can express permissions for the list of decisions in the `decisions`
+#' parameter. Each of the decisions has one or more parameters, much like a
+#' regular API call. To allow for policies to be as readable as possible,
+#' you can express permissions on decisions as if they were actual API
+#' calls, including applying conditions to some parameters. For more
+#' information, see [Using IAM to Manage Access to Amazon SWF
 #' Workflows](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
 #' in the *Amazon SWF Developer Guide*.
 #'
@@ -2919,11 +2941,14 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' specified, a fault is returned.
 #' @param tagList The list of tags to associate with the workflow execution. You can
 #' specify a maximum of 5 tags. You can list workflow executions with a
-#' specific tag by calling ListOpenWorkflowExecutions or
-#' ListClosedWorkflowExecutions and specifying a TagFilter.
+#' specific tag by calling
+#' [`list_open_workflow_executions`][swf_list_open_workflow_executions] or
+#' [`list_closed_workflow_executions`][swf_list_closed_workflow_executions]
+#' and specifying a TagFilter.
 #' @param taskStartToCloseTimeout Specifies the maximum duration of decision tasks for this workflow
 #' execution. This parameter overrides the `defaultTaskStartToCloseTimout`
-#' specified when registering the workflow type using RegisterWorkflowType.
+#' specified when registering the workflow type using
+#' [`register_workflow_type`][swf_register_workflow_type].
 #' 
 #' The duration is specified in seconds, an integer greater than or equal
 #' to `0`. You can use `NONE` to specify unlimited duration.
@@ -2935,9 +2960,10 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' is returned.
 #' @param childPolicy If set, specifies the policy to use for the child workflow executions of
 #' this workflow execution if it is terminated, by calling the
-#' TerminateWorkflowExecution action explicitly or due to an expired
-#' timeout. This policy overrides the default child policy specified when
-#' registering the workflow type using RegisterWorkflowType.
+#' [`terminate_workflow_execution`][swf_terminate_workflow_execution]
+#' action explicitly or due to an expired timeout. This policy overrides
+#' the default child policy specified when registering the workflow type
+#' using [`register_workflow_type`][swf_register_workflow_type].
 #' 
 #' The supported child policies are:
 #' 
@@ -3074,9 +3100,11 @@ swf_tag_resource <- function(resourceArn, tags) {
 #' is recorded in the history of the current open workflow with the
 #' matching workflowId in the domain.
 #' 
-#' You should consider using RequestCancelWorkflowExecution action instead
-#' because it allows the workflow to gracefully close while
-#' TerminateWorkflowExecution doesn't.
+#' You should consider using
+#' [`request_cancel_workflow_execution`][swf_request_cancel_workflow_execution]
+#' action instead because it allows the workflow to gracefully close while
+#' [`terminate_workflow_execution`][swf_terminate_workflow_execution]
+#' doesn't.
 #' 
 #' **Access Control**
 #' 

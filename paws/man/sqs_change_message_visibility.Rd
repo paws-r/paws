@@ -14,8 +14,8 @@ sqs_change_message_visibility(QueueUrl, ReceiptHandle,
 Queue URLs and names are case-sensitive.}
 
 \item{ReceiptHandle}{[required] The receipt handle associated with the message whose visibility timeout
-is changed. This parameter is returned by the \verb{<a>ReceiveMessage</a>}
-action.}
+is changed. This parameter is returned by the
+\code{\link[=sqs_receive_message]{receive_message}} action.}
 
 \item{VisibilityTimeout}{[required] The new value for the message's visibility timeout (in seconds). Values
 range: \code{0} to \code{43200}. Maximum: 12 hours.}
@@ -28,8 +28,10 @@ see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperG
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
 For example, you have a message with a visibility timeout of 5 minutes.
-After 3 minutes, you call \code{ChangeMessageVisibility} with a timeout of 10
-minutes. You can continue to call \code{ChangeMessageVisibility} to extend
+After 3 minutes, you call
+\code{\link[=sqs_change_message_visibility]{change_message_visibility}} with a
+timeout of 10 minutes. You can continue to call
+\code{\link[=sqs_change_message_visibility]{change_message_visibility}} to extend
 the visibility timeout to the maximum allowed time. If you try to extend
 the visibility timeout beyond the maximum, your request is rejected.
 
@@ -74,7 +76,8 @@ specific message the timeout value is applied immediately but isn't
 saved in memory for that message. If you don't delete a message after it
 is received, the visibility timeout for the message reverts to the
 original timeout value (not to the value you set using the
-\code{ChangeMessageVisibility} action) the next time the message is received.
+\code{\link[=sqs_change_message_visibility]{change_message_visibility}} action) the
+next time the message is received.
 }
 \section{Request syntax}{
 \preformatted{svc$change_message_visibility(

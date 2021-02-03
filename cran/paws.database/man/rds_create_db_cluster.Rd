@@ -190,22 +190,24 @@ valid in the destination AWS Region. This CMK is used to encrypt the
 read replica in that AWS Region.}
 
 \item{PreSignedUrl}{A URL that contains a Signature Version 4 signed request for the
-\code{CreateDBCluster} action to be called in the source AWS Region where the
-DB cluster is replicated from. You only need to specify \code{PreSignedUrl}
-when you are performing cross-region replication from an encrypted DB
-cluster.
+\code{\link[=rds_create_db_cluster]{create_db_cluster}} action to be called in the
+source AWS Region where the DB cluster is replicated from. You only need
+to specify \code{PreSignedUrl} when you are performing cross-region
+replication from an encrypted DB cluster.
 
-The pre-signed URL must be a valid request for the \code{CreateDBCluster} API
-action that can be executed in the source AWS Region that contains the
-encrypted DB cluster to be copied.
+The pre-signed URL must be a valid request for the
+\code{\link[=rds_create_db_cluster]{create_db_cluster}} API action that can be
+executed in the source AWS Region that contains the encrypted DB cluster
+to be copied.
 
 The pre-signed URL request must contain the following parameter values:
 \itemize{
 \item \code{KmsKeyId} - The AWS KMS key identifier for the key to use to
 encrypt the copy of the DB cluster in the destination AWS Region.
 This should refer to the same AWS KMS CMK for both the
-\code{CreateDBCluster} action that is called in the destination AWS
-Region, and the action contained in the pre-signed URL.
+\code{\link[=rds_create_db_cluster]{create_db_cluster}} action that is called
+in the destination AWS Region, and the action contained in the
+pre-signed URL.
 \item \code{DestinationRegion} - The name of the AWS Region that Aurora read
 replica will be created in.
 \item \code{ReplicationSourceIdentifier} - The DB cluster identifier for the

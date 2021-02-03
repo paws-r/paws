@@ -18,8 +18,11 @@ emr_describe_job_flows(CreatedAfter, CreatedBefore, JobFlowIds,
 }
 \description{
 This API is no longer supported and will eventually be removed. We
-recommend you use ListClusters, DescribeCluster, ListSteps,
-ListInstanceGroups and ListBootstrapActions instead.
+recommend you use \code{\link[=emr_list_clusters]{list_clusters}},
+\code{\link[=emr_describe_cluster]{describe_cluster}},
+\code{\link[=emr_list_steps]{list_steps}},
+\code{\link[=emr_list_instance_groups]{list_instance_groups}} and
+\code{\link[=emr_list_bootstrap_actions]{list_bootstrap_actions}} instead.
 
 DescribeJobFlows returns a list of job flows that match all of the
 supplied parameters. The parameters can include a list of job flow IDs,

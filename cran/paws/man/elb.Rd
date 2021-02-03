@@ -30,8 +30,9 @@ Balancers. The 2015-12-01 API supports Application Load Balancers and
 Network Load Balancers.
 
 To get started, create a load balancer with one or more listeners using
-CreateLoadBalancer. Register your instances with the load balancer using
-RegisterInstancesWithLoadBalancer.
+\code{\link[=elb_create_load_balancer]{create_load_balancer}}. Register your
+instances with the load balancer using
+\code{\link[=elb_register_instances_with_load_balancer]{register_instances_with_load_balancer}}.
 
 All Elastic Load Balancing operations are \emph{idempotent}, which means that
 they complete at most one time. If you repeat an operation, it succeeds

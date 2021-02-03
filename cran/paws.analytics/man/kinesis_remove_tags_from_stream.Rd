@@ -18,8 +18,8 @@ completes.
 
 If you specify a tag that does not exist, it is ignored.
 
-RemoveTagsFromStream has a limit of five transactions per second per
-account.
+\code{\link[=kinesis_remove_tags_from_stream]{remove_tags_from_stream}} has a limit
+of five transactions per second per account.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_tags_from_stream(

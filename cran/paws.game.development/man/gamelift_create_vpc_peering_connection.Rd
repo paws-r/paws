@@ -31,11 +31,12 @@ Amazon GameLift fleets. You cannot peer with VPCs that are in different
 Regions. For more information, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.
 
 Before calling this operation to establish the peering connection, you
-first need to call CreateVpcPeeringAuthorization and identify the VPC
-you want to peer with. Once the authorization for the specified VPC is
-issued, you have 24 hours to establish the connection. These two
-operations handle all tasks necessary to peer the two VPCs, including
-acceptance, updating routing tables, etc.
+first need to call
+\code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}
+and identify the VPC you want to peer with. Once the authorization for
+the specified VPC is issued, you have 24 hours to establish the
+connection. These two operations handle all tasks necessary to peer the
+two VPCs, including acceptance, updating routing tables, etc.
 
 To establish the connection, call this operation from the AWS account
 that is used to manage the Amazon GameLift fleets. Identify the
@@ -44,15 +45,17 @@ peering connection for; (2) The AWS account with the VPC that you want
 to peer with; and (3) The ID of the VPC you want to peer with. This
 operation is asynchronous. If successful, a VpcPeeringConnection request
 is created. You can use continuous polling to track the request's status
-using DescribeVpcPeeringConnections, or by monitoring fleet events for
-success or failure using DescribeFleetEvents.
+using
+\code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}},
+or by monitoring fleet events for success or failure using
+\code{\link[=gamelift_describe_fleet_events]{describe_fleet_events}}.
 \itemize{
-\item CreateVpcPeeringAuthorization
-\item DescribeVpcPeeringAuthorizations
-\item DeleteVpcPeeringAuthorization
-\item CreateVpcPeeringConnection
-\item DescribeVpcPeeringConnections
-\item DeleteVpcPeeringConnection
+\item \code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}
+\item \code{\link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations}}
+\item \code{\link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization}}
+\item \code{\link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection}}
+\item \code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
+\item \code{\link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection}}
 }
 }
 \section{Request syntax}{

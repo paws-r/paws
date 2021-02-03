@@ -14,7 +14,7 @@ NULL
 #' 
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
-#' [EnableHealthServiceAccessForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html)
+#' [`enable_health_service_access_for_organization`][health_enable_health_service_access_for_organization]
 #' operation from your organization's master account.
 #' 
 #' This API operation uses pagination. Specify the `nextToken` parameter in
@@ -25,7 +25,7 @@ NULL
 #'   maxResults)
 #'
 #' @param eventArn &#91;required&#93; The unique identifier for the event. Format:
-#' `arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> `.
+#' `arn:aws:health:event-region::event/SERVICE/EVENT_TYPE_CODE/EVENT_TYPE_PLUS_ID `.
 #' Example:
 #' `Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456`
 #' @param nextToken If the results of a search are large, only a portion of the results are
@@ -172,7 +172,7 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' 
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
-#' [EnableHealthServiceAccessForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html)
+#' [`enable_health_service_access_for_organization`][health_enable_health_service_access_for_organization]
 #' operation from your organization's master account.
 #' 
 #' This API operation uses pagination. Specify the `nextToken` parameter in
@@ -394,12 +394,11 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
 #' @description
 #' Returns detailed information about one or more specified events.
 #' Information includes standard event data (Region, service, and so on, as
-#' returned by
-#' [DescribeEvents](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEvents.html)),
-#' a detailed event description, and possible additional metadata that
-#' depends upon the nature of the event. Affected entities are not
-#' included. To retrieve those, use the
-#' [DescribeAffectedEntities](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntities.html)
+#' returned by [`describe_events`][health_describe_events]), a detailed
+#' event description, and possible additional metadata that depends upon
+#' the nature of the event. Affected entities are not included. To retrieve
+#' those, use the
+#' [`describe_affected_entities`][health_describe_affected_entities]
 #' operation.
 #' 
 #' If a specified event cannot be retrieved, an error message is returned
@@ -450,21 +449,23 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
 #' Returns detailed information about one or more specified events for one
 #' or more accounts in your organization. Information includes standard
 #' event data (Region, service, and so on, as returned by
-#' [DescribeEventsForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventsForOrganization.html)),
+#' [`describe_events_for_organization`][health_describe_events_for_organization]),
 #' a detailed event description, and possible additional metadata that
 #' depends upon the nature of the event. Affected entities are not
 #' included; to retrieve those, use the
-#' [DescribeAffectedEntitiesForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntitiesForOrganization.html)
+#' [`describe_affected_entities_for_organization`][health_describe_affected_entities_for_organization]
 #' operation.
 #' 
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
-#' [EnableHealthServiceAccessForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html)
+#' [`enable_health_service_access_for_organization`][health_enable_health_service_access_for_organization]
 #' operation from your organization's master account.
 #' 
-#' When you call the `DescribeEventDetailsForOrganization` operation, you
-#' specify the `organizationEventDetailFilters` object in the request.
-#' Depending on the AWS Health event type, note the following differences:
+#' When you call the
+#' [`describe_event_details_for_organization`][health_describe_event_details_for_organization]
+#' operation, you specify the `organizationEventDetailFilters` object in
+#' the request. Depending on the AWS Health event type, note the following
+#' differences:
 #' 
 #' -   If the event is public, the `awsAccountId` parameter must be empty.
 #'     If you specify an account ID for a public event, then an error
@@ -592,22 +593,22 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 #' criteria. Events are returned in a summary form and do not include the
 #' detailed description, any additional metadata that depends on the event
 #' type, or any affected resources. To retrieve that information, use the
-#' [DescribeEventDetails](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetails.html)
-#' and
-#' [DescribeAffectedEntities](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntities.html)
+#' [`describe_event_details`][health_describe_event_details] and
+#' [`describe_affected_entities`][health_describe_affected_entities]
 #' operations.
 #' 
 #' If no filter criteria are specified, all events are returned. Results
 #' are sorted by `lastModifiedTime`, starting with the most recent event.
 #' 
-#' -   When you call the `DescribeEvents` operation and specify an entity
-#'     for the `entityValues` parameter, AWS Health might return public
-#'     events that aren't specific to that resource. For example, if you
-#'     call `DescribeEvents` and specify an ID for an Amazon Elastic
-#'     Compute Cloud (Amazon EC2) instance, AWS Health might return events
-#'     that aren't specific to that resource or service. To get events that
-#'     are specific to a service, use the `services` parameter in the
-#'     `filter` object. For more information, see
+#' -   When you call the [`describe_events`][health_describe_events]
+#'     operation and specify an entity for the `entityValues` parameter,
+#'     AWS Health might return public events that aren't specific to that
+#'     resource. For example, if you call
+#'     [`describe_events`][health_describe_events] and specify an ID for an
+#'     Amazon Elastic Compute Cloud (Amazon EC2) instance, AWS Health might
+#'     return events that aren't specific to that resource or service. To
+#'     get events that are specific to a service, use the `services`
+#'     parameter in the `filter` object. For more information, see
 #'     [Event](https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html).
 #' 
 #' -   This API operation uses pagination. Specify the `nextToken`
@@ -731,11 +732,11 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' metadata that depends on the event type, or any affected resources. To
 #' retrieve that information, use the following operations:
 #' 
-#' -   [DescribeAffectedAccountsForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedAccountsForOrganization.html)
+#' -   [`describe_affected_accounts_for_organization`][health_describe_affected_accounts_for_organization]
 #' 
-#' -   [DescribeEventDetailsForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetailsForOrganization.html)
+#' -   [`describe_event_details_for_organization`][health_describe_event_details_for_organization]
 #' 
-#' -   [DescribeAffectedEntitiesForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntitiesForOrganization.html)
+#' -   [`describe_affected_entities_for_organization`][health_describe_affected_entities_for_organization]
 #' 
 #' If you don't specify a `filter`, the `DescribeEventsForOrganizations`
 #' returns all events across your organization. Results are sorted by
@@ -746,7 +747,7 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' 
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
-#' [EnableHealthServiceAccessForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html)
+#' [`enable_health_service_access_for_organization`][health_enable_health_service_access_for_organization]
 #' operation from your organization's master AWS account.
 #' 
 #' This API operation uses pagination. Specify the `nextToken` parameter in

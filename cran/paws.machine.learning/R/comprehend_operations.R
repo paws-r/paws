@@ -462,8 +462,8 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceU
 #'
 #' @description
 #' Creates an entity recognizer using submitted files. After your
-#' `CreateEntityRecognizer` request is submitted, you can check job status
-#' using the API.
+#' [`create_entity_recognizer`][comprehend_create_entity_recognizer]
+#' request is submitted, you can check job status using the API.
 #'
 #' @usage
 #' comprehend_create_entity_recognizer(RecognizerName, DataAccessRoleArn,
@@ -2217,8 +2217,10 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>.
 #' @param JobName The identifier of the job.
 #' @param EntityRecognizerArn The Amazon Resource Name (ARN) that identifies the specific entity
-#' recognizer to be used by the `StartEntitiesDetectionJob`. This ARN is
-#' optional and is only used for a custom entity recognition job.
+#' recognizer to be used by the
+#' [`start_entities_detection_job`][comprehend_start_entities_detection_job].
+#' This ARN is optional and is only used for a custom entity recognition
+#' job.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
 #' language. You can specify any of the languages supported by Amazon
 #' Comprehend. If custom entities recognition is used, this parameter is
@@ -2690,8 +2692,8 @@ comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataCon
 #' stopped and put into the `STOPPED` state.
 #' 
 #' If the job is in the `COMPLETED` or `FAILED` state when you call the
-#' `StopDominantLanguageDetectionJob` operation, the operation returns a
-#' 400 Internal Request Exception.
+#' [`stop_dominant_language_detection_job`][comprehend_stop_dominant_language_detection_job]
+#' operation, the operation returns a 400 Internal Request Exception.
 #' 
 #' When a job is stopped, any documents already processed are written to
 #' the output location.
@@ -2739,8 +2741,8 @@ comprehend_stop_dominant_language_detection_job <- function(JobId) {
 #' stopped and put into the `STOPPED` state.
 #' 
 #' If the job is in the `COMPLETED` or `FAILED` state when you call the
-#' `StopDominantLanguageDetectionJob` operation, the operation returns a
-#' 400 Internal Request Exception.
+#' [`stop_dominant_language_detection_job`][comprehend_stop_dominant_language_detection_job]
+#' operation, the operation returns a 400 Internal Request Exception.
 #' 
 #' When a job is stopped, any documents already processed are written to
 #' the output location.
@@ -2825,8 +2827,8 @@ comprehend_stop_events_detection_job <- function(JobId) {
 #' stopped and put into the `STOPPED` state.
 #' 
 #' If the job is in the `COMPLETED` or `FAILED` state when you call the
-#' `StopDominantLanguageDetectionJob` operation, the operation returns a
-#' 400 Internal Request Exception.
+#' [`stop_dominant_language_detection_job`][comprehend_stop_dominant_language_detection_job]
+#' operation, the operation returns a 400 Internal Request Exception.
 #' 
 #' When a job is stopped, any documents already processed are written to
 #' the output location.
@@ -2911,8 +2913,8 @@ comprehend_stop_pii_entities_detection_job <- function(JobId) {
 #' be stopped and put into the `STOPPED` state.
 #' 
 #' If the job is in the `COMPLETED` or `FAILED` state when you call the
-#' `StopDominantLanguageDetectionJob` operation, the operation returns a
-#' 400 Internal Request Exception.
+#' [`stop_dominant_language_detection_job`][comprehend_stop_dominant_language_detection_job]
+#' operation, the operation returns a 400 Internal Request Exception.
 #' 
 #' When a job is stopped, any documents already processed are written to
 #' the output location.

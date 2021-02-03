@@ -132,7 +132,8 @@ unpredictable workloads. \code{PAY_PER_REQUEST} sets the billing mode to
 }}
 
 \item{ProvisionedThroughput}{Represents the provisioned throughput settings for a specified table or
-index. The settings can be modified using the \code{UpdateTable} operation.
+index. The settings can be modified using the
+\code{\link[=dynamodb_update_table]{update_table}} operation.
 
 If you set BillingMode as \code{PROVISIONED}, you must specify this property.
 If you set BillingMode as \code{PAY_PER_REQUEST}, you cannot specify this
@@ -168,24 +169,26 @@ the item are written to the stream.
 \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html}{Tagging for DynamoDB}.}
 }
 \description{
-The \code{CreateTable} operation adds a new table to your account. In an AWS
-account, table names must be unique within each Region. That is, you can
-have two tables with same name if you create the tables in different
-Regions.
+The \code{\link[=dynamodb_create_table]{create_table}} operation adds a new table
+to your account. In an AWS account, table names must be unique within
+each Region. That is, you can have two tables with same name if you
+create the tables in different Regions.
 
-\code{CreateTable} is an asynchronous operation. Upon receiving a
-\code{CreateTable} request, DynamoDB immediately returns a response with a
-\code{TableStatus} of \code{CREATING}. After the table is created, DynamoDB sets
-the \code{TableStatus} to \code{ACTIVE}. You can perform read and write operations
-only on an \code{ACTIVE} table.
+\code{\link[=dynamodb_create_table]{create_table}} is an asynchronous operation.
+Upon receiving a \code{\link[=dynamodb_create_table]{create_table}} request,
+DynamoDB immediately returns a response with a \code{TableStatus} of
+\code{CREATING}. After the table is created, DynamoDB sets the \code{TableStatus}
+to \code{ACTIVE}. You can perform read and write operations only on an
+\code{ACTIVE} table.
 
 You can optionally define secondary indexes on the new table, as part of
-the \code{CreateTable} operation. If you want to create multiple tables with
-secondary indexes on them, you must create the tables sequentially. Only
-one table with secondary indexes can be in the \code{CREATING} state at any
-given time.
+the \code{\link[=dynamodb_create_table]{create_table}} operation. If you want to
+create multiple tables with secondary indexes on them, you must create
+the tables sequentially. Only one table with secondary indexes can be in
+the \code{CREATING} state at any given time.
 
-You can use the \code{DescribeTable} action to check the table status.
+You can use the \code{\link[=dynamodb_describe_table]{describe_table}} action to
+check the table status.
 }
 \section{Request syntax}{
 \preformatted{svc$create_table(

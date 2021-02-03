@@ -10,12 +10,13 @@ synthetics_get_canary_runs(Name, NextToken, MaxResults)
 \item{Name}{[required] The name of the canary that you want to see runs for.}
 
 \item{NextToken}{A token that indicates that there is more data available. You can use
-this token in a subsequent \code{GetCanaryRuns} operation to retrieve the
-next set of results.}
+this token in a subsequent
+\code{\link[=synthetics_get_canary_runs]{get_canary_runs}} operation to retrieve
+the next set of results.}
 
 \item{MaxResults}{Specify this parameter to limit how many runs are returned each time you
-use the \code{GetCanaryRuns} operation. If you omit this parameter, the
-default of 100 is used.}
+use the \code{\link[=synthetics_get_canary_runs]{get_canary_runs}} operation. If
+you omit this parameter, the default of 100 is used.}
 }
 \description{
 Retrieves a list of runs for a specified canary.

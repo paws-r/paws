@@ -9,21 +9,24 @@ robomaker_list_fleets(nextToken, maxResults, filters)
 \arguments{
 \item{nextToken}{If the previous paginated request did not return all of the remaining
 results, the response object's \code{nextToken} parameter value is set to a
-token. To retrieve the next set of results, call \code{ListFleets} again and
-assign that token to the request object's \code{nextToken} parameter. If
-there are no remaining results, the previous response object's NextToken
-parameter is set to null.
+token. To retrieve the next set of results, call
+\code{\link[=robomaker_list_fleets]{list_fleets}} again and assign that token to
+the request object's \code{nextToken} parameter. If there are no remaining
+results, the previous response object's NextToken parameter is set to
+null.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
-\item{maxResults}{When this parameter is used, \code{ListFleets} only returns \code{maxResults}
-results in a single page along with a \code{nextToken} response element. The
-remaining results of the initial request can be seen by sending another
-\code{ListFleets} request with the returned \code{nextToken} value. This value can
-be between 1 and 200. If this parameter is not used, then \code{ListFleets}
-returns up to 200 results and a \code{nextToken} value if applicable.}
+\item{maxResults}{When this parameter is used, \code{\link[=robomaker_list_fleets]{list_fleets}} only
+returns \code{maxResults} results in a single page along with a \code{nextToken}
+response element. The remaining results of the initial request can be
+seen by sending another \code{\link[=robomaker_list_fleets]{list_fleets}} request
+with the returned \code{nextToken} value. This value can be between 1 and
+200. If this parameter is not used, then
+\code{\link[=robomaker_list_fleets]{list_fleets}} returns up to 200 results and a
+\code{nextToken} value if applicable.}
 
 \item{filters}{Optional filters to limit results.
 

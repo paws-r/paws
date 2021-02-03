@@ -62,9 +62,10 @@ mediastore_create_container <- function(ContainerName, Tags = NULL) {
 #' Deletes the specified container
 #'
 #' @description
-#' Deletes the specified container. Before you make a `DeleteContainer`
-#' request, delete any objects in the container or in any folders in the
-#' container. You can delete only empty containers.
+#' Deletes the specified container. Before you make a
+#' [`delete_container`][mediastore_delete_container] request, delete any
+#' objects in the container or in any folders in the container. You can
+#' delete only empty containers.
 #'
 #' @usage
 #' mediastore_delete_container(ContainerName)
@@ -266,9 +267,10 @@ mediastore_delete_metric_policy <- function(ContainerName) {
 #' commonly used to retrieve the endpoint of a container. An endpoint is a
 #' value assigned by the service when a new container is created. A
 #' container's endpoint does not change after it has been assigned. The
-#' `DescribeContainer` request returns a single `Container` object based on
-#' `ContainerName`. To return all `Container` objects that are associated
-#' with a specified AWS account, use ListContainers.
+#' [`describe_container`][mediastore_describe_container] request returns a
+#' single `Container` object based on `ContainerName`. To return all
+#' `Container` objects that are associated with a specified AWS account,
+#' use [`list_containers`][mediastore_list_containers].
 #'
 #' @usage
 #' mediastore_describe_container(ContainerName)
@@ -473,7 +475,8 @@ mediastore_get_metric_policy <- function(ContainerName) {
 #' value). The next set of responses appears, with a token if there are
 #' still more containers to receive.
 #' 
-#' See also DescribeContainer, which gets the properties of one container.
+#' See also [`describe_container`][mediastore_describe_container], which
+#' gets the properties of one container.
 #'
 #' @usage
 #' mediastore_list_containers(NextToken, MaxResults)
@@ -560,8 +563,9 @@ mediastore_list_tags_for_resource <- function(Resource) {
 #' Management User Guide](https://docs.aws.amazon.com/iam/index.html).
 #' 
 #' For this release of the REST API, you can create only one policy for a
-#' container. If you enter `PutContainerPolicy` twice, the second command
-#' modifies the existing policy.
+#' container. If you enter
+#' [`put_container_policy`][mediastore_put_container_policy] twice, the
+#' second command modifies the existing policy.
 #'
 #' @usage
 #' mediastore_put_container_policy(ContainerName, Policy)

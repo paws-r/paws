@@ -77,9 +77,9 @@ Default: 100
 Constraints: Minimum 20, maximum 100.}
 
 \item{Marker}{An optional pagination token provided by a previous
-\code{DescribeDBClusterSnapshots} request. If this parameter is specified,
-the response includes only records beyond the marker, up to the value
-specified by \code{MaxRecords}.}
+\code{\link[=rds_describe_db_cluster_snapshots]{describe_db_cluster_snapshots}}
+request. If this parameter is specified, the response includes only
+records beyond the marker, up to the value specified by \code{MaxRecords}.}
 
 \item{IncludeShared}{A value that indicates whether to include shared manual DB cluster
 snapshots from other AWS accounts that this AWS account has been given
@@ -88,14 +88,16 @@ included.
 
 You can give an AWS account permission to restore a manual DB cluster
 snapshot from another AWS account by the
-\code{ModifyDBClusterSnapshotAttribute} API action.}
+\code{\link[=rds_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute}}
+API action.}
 
 \item{IncludePublic}{A value that indicates whether to include manual DB cluster snapshots
 that are public and can be copied or restored by any AWS account. By
 default, the public snapshots are not included.
 
 You can share a manual DB cluster snapshot as public by using the
-ModifyDBClusterSnapshotAttribute API action.}
+\code{\link[=rds_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute}}
+API action.}
 }
 \description{
 Returns information about DB cluster snapshots. This API action supports

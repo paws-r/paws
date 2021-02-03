@@ -13,7 +13,8 @@ s3_put_bucket_logging(Bucket, BucketLoggingStatus, ContentMD5,
 
 \item{BucketLoggingStatus}{[required] Container for logging status information.}
 
-\item{ContentMD5}{The MD5 hash of the \code{PutBucketLogging} request body.
+\item{ContentMD5}{The MD5 hash of the \code{\link[=s3_put_bucket_logging]{put_bucket_logging}}
+request body.
 
 For requests made using the AWS Command Line Interface (CLI) or AWS
 SDKs, this field is calculated automatically.}
@@ -40,39 +41,40 @@ rights (using request elements) in the following ways:
 \itemize{
 \item By the person's ID:
 
-\verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt; &lt;/Grantee&gt;}
+\verb{<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"><ID><>ID<></ID><DisplayName><>GranteesEmail<></DisplayName> </Grantee>}
 
 DisplayName is optional and ignored in the request.
 \item By Email address:
 
-\verb{ &lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@email.com&lt;&gt;&lt;/EmailAddress&gt;&lt;/Grantee&gt;}
+\verb{ <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"><EmailAddress><>Grantees@email.com<></EmailAddress></Grantee>}
 
 The grantee is resolved to the CanonicalUser and, in a response to a
 GET Object acl request, appears as the CanonicalUser.
 \item By URI:
 
-\verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"&gt;&lt;URI&gt;&lt;&gt;http://acs.amazonaws.com/groups/global/AuthenticatedUsers&lt;&gt;&lt;/URI&gt;&lt;/Grantee&gt;}
+\verb{<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"><URI><>http://acs.amazonaws.com/groups/global/AuthenticatedUsers<></URI></Grantee>}
 }
 
 To enable logging, you use LoggingEnabled and its children request
 elements. To disable logging, you use an empty BucketLoggingStatus
 request element:
 
-\verb{&lt;BucketLoggingStatus xmlns="http://doc.s3.amazonaws.com/2006-03-01" /&gt;}
+\verb{<BucketLoggingStatus xmlns="http://doc.s3.amazonaws.com/2006-03-01" />}
 
 For more information about server access logging, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html}{Server Access Logging}.
 
 For more information about creating a bucket, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}.
-For more information about returning the logging status of a bucket, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLogging.html}{GetBucketLogging}.
+\code{\link[=s3_create_bucket]{create_bucket}}. For more information about
+returning the logging status of a bucket, see
+\code{\link[=s3_get_bucket_logging]{get_bucket_logging}}.
 
-The following operations are related to \code{PutBucketLogging}:
+The following operations are related to
+\code{\link[=s3_put_bucket_logging]{put_bucket_logging}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html}{DeleteBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLogging.html}{GetBucketLogging}
+\item \code{\link[=s3_put_object]{put_object}}
+\item \code{\link[=s3_delete_bucket]{delete_bucket}}
+\item \code{\link[=s3_create_bucket]{create_bucket}}
+\item \code{\link[=s3_get_bucket_logging]{get_bucket_logging}}
 }
 }
 \section{Request syntax}{

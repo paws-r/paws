@@ -12,8 +12,8 @@ dynamodb_list_exports(TableArn, MaxResults, NextToken)
 \item{MaxResults}{Maximum number of results to return per page.}
 
 \item{NextToken}{An optional string that, if supplied, must be copied from the output of
-a previous call to \code{ListExports}. When provided in this manner, the API
-fetches the next page of results.}
+a previous call to \code{\link[=dynamodb_list_exports]{list_exports}}. When
+provided in this manner, the API fetches the next page of results.}
 }
 \description{
 Lists completed exports within the past 90 days.

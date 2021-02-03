@@ -42,8 +42,9 @@ returns \code{INSUFFICIENT_DATA}. This result might indicate one of the
 following conditions about the rules that evaluate the resource:
 \itemize{
 \item AWS Config has never invoked an evaluation for the rule. To check
-whether it has, use the \code{DescribeConfigRuleEvaluationStatus} action
-to get the \code{LastSuccessfulInvocationTime} and
+whether it has, use the
+\code{\link[=configservice_describe_config_rule_evaluation_status]{describe_config_rule_evaluation_status}}
+action to get the \code{LastSuccessfulInvocationTime} and
 \code{LastFailedInvocationTime}.
 \item The rule's AWS Lambda function is failing to send evaluation results
 to AWS Config. Verify that the role that you assigned to your

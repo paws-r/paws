@@ -23,10 +23,11 @@ command line tools, base64 encoding is performed for you.}
 }
 \description{
 Imports the public key from an RSA key pair that you created with a
-third-party tool. Compare this with CreateKeyPair, in which AWS creates
-the key pair and gives the keys to you (AWS keeps a copy of the public
-key). With ImportKeyPair, you create the key pair and give AWS just the
-public key. The private key is never transferred between you and AWS.
+third-party tool. Compare this with
+\code{\link[=ec2_create_key_pair]{create_key_pair}}, in which AWS creates the key
+pair and gives the keys to you (AWS keeps a copy of the public key).
+With ImportKeyPair, you create the key pair and give AWS just the public
+key. The private key is never transferred between you and AWS.
 
 For more information about key pairs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html}{Key Pairs}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

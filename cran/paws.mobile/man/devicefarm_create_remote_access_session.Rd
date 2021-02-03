@@ -39,8 +39,10 @@ access session.}
 
 \item{clientId}{Unique identifier for the client. If you want access to multiple devices
 on the same client, you should pass the same \code{clientId} value in each
-call to \code{CreateRemoteAccessSession}. This identifier is required only if
-\code{remoteDebugEnabled} is set to \code{true}.
+call to
+\code{\link[=devicefarm_create_remote_access_session]{create_remote_access_session}}.
+This identifier is required only if \code{remoteDebugEnabled} is set to
+\code{true}.
 
 Remote debugging is \href{https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html}{no longer supported}.}
 

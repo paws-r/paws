@@ -19,9 +19,9 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Related actions include:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html}{CreateJob}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutJobTagging.html}{PutJobTagging}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html}{DeleteJobTagging}
+\item \code{\link[=s3control_create_job]{create_job}}
+\item \code{\link[=s3control_put_job_tagging]{put_job_tagging}}
+\item \code{\link[=s3control_delete_job_tagging]{delete_job_tagging}}
 }
 }
 \section{Request syntax}{

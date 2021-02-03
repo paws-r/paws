@@ -108,7 +108,7 @@ resource-based policy and account that owns the resource is different
 from the account that owns the simulated calling user \code{CallerArn}.
 
 The ARN for an account uses the following syntax:
-\verb{arn:aws:iam::<i>AWS-account-ID</i>:root}. For example, to represent the
+\code{arn:aws:iam::AWS-account-ID:root}. For example, to represent the
 account with the 112233445566 ID, use the following ARN:
 \verb{arn:aws:iam::112233445566-ID:root}.}
 
@@ -187,13 +187,15 @@ authorization to determine if the simulated policies allow or deny the
 operations.
 
 If you want to simulate existing policies that are attached to an IAM
-user, group, or role, use SimulatePrincipalPolicy instead.
+user, group, or role, use
+\code{\link[=iam_simulate_principal_policy]{simulate_principal_policy}} instead.
 
 Context keys are variables that are maintained by AWS and its services
 and which provide details about the context of an API query request. You
 can use the \code{Condition} element of an IAM policy to evaluate context
 keys. To get the list of context keys that the policies require for
-correct simulation, use GetContextKeysForCustomPolicy.
+correct simulation, use
+\code{\link[=iam_get_context_keys_for_custom_policy]{get_context_keys_for_custom_policy}}.
 
 If the output is long, you can use \code{MaxItems} and \code{Marker} parameters to
 paginate the results.

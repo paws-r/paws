@@ -29,8 +29,10 @@ associations, use a hyphen ("-") as the \code{nameContains} parameter.}
 \description{
 Returns a list of all of the channels associated with the specified bot.
 
-The \code{GetBotChannelAssociations} operation requires permissions for the
-\code{lex:GetBotChannelAssociations} action.
+The
+\code{\link[=lexmodelbuildingservice_get_bot_channel_associations]{get_bot_channel_associations}}
+operation requires permissions for the \code{lex:GetBotChannelAssociations}
+action.
 }
 \section{Request syntax}{
 \preformatted{svc$get_bot_channel_associations(

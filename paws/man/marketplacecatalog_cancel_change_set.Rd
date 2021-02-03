@@ -10,8 +10,9 @@ marketplacecatalog_cancel_change_set(Catalog, ChangeSetId)
 \item{Catalog}{[required] Required. The catalog related to the request. Fixed value:
 \code{AWSMarketplace}.}
 
-\item{ChangeSetId}{[required] Required. The unique identifier of the \code{StartChangeSet} request that you
-want to cancel.}
+\item{ChangeSetId}{[required] Required. The unique identifier of the
+\code{\link[=marketplacecatalog_start_change_set]{start_change_set}} request that
+you want to cancel.}
 }
 \description{
 Used to cancel an open change request. Must be sent before the status of

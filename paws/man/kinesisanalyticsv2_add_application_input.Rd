@@ -13,7 +13,8 @@ kinesisanalyticsv2_add_application_input(ApplicationName,
 streaming source.}
 
 \item{CurrentApplicationVersionId}{[required] The current version of your application. You can use the
-DescribeApplication operation to find the current application version.}
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
+operation to find the current application version.}
 
 \item{Input}{[required] The Input to add.}
 }
@@ -23,11 +24,13 @@ application.
 
 You can add a streaming source when you create an application, or you
 can use this operation to add a streaming source after you create an
-application. For more information, see CreateApplication.
+application. For more information, see
+\code{\link[=kinesisanalyticsv2_create_application]{create_application}}.
 
 Any configuration update, including adding a streaming source using this
 operation, results in a new version of the application. You can use the
-DescribeApplication operation to find the current application version.
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
+operation to find the current application version.
 }
 \section{Request syntax}{
 \preformatted{svc$add_application_input(

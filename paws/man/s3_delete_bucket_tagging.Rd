@@ -20,10 +20,11 @@ To use this operation, you must have permission to perform the
 \code{s3:PutBucketTagging} action. By default, the bucket owner has this
 permission and can grant this permission to others.
 
-The following operations are related to \code{DeleteBucketTagging}:
+The following operations are related to
+\code{\link[=s3_delete_bucket_tagging]{delete_bucket_tagging}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html}{GetBucketTagging}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html}{PutBucketTagging}
+\item \code{\link[=s3_get_bucket_tagging]{get_bucket_tagging}}
+\item \code{\link[=s3_put_bucket_tagging]{put_bucket_tagging}}
 }
 }
 \section{Request syntax}{

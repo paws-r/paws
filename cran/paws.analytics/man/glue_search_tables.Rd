@@ -9,7 +9,7 @@ glue_search_tables(CatalogId, NextToken, Filters, SearchText,
   SortCriteria, MaxResults, ResourceShareType)
 }
 \arguments{
-\item{CatalogId}{A unique identifier, consisting of \verb{<i>account_id</i>}.}
+\item{CatalogId}{A unique identifier, consisting of \code{account_id}.}
 
 \item{NextToken}{A continuation token, included if this is a continuation call.}
 

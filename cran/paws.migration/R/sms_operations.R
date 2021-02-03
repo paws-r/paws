@@ -836,7 +836,7 @@ sms_get_replication_runs <- function(replicationJobId, nextToken = NULL, maxResu
 #' Describes the servers in your server catalog.
 #' 
 #' Before you can describe your servers, you must import them using
-#' ImportServerCatalog.
+#' [`import_server_catalog`][sms_import_server_catalog].
 #'
 #' @usage
 #' sms_get_servers(nextToken, maxResults, vmServerAddressList)

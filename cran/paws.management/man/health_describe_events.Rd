@@ -26,22 +26,22 @@ Returns information about events that meet the specified filter
 criteria. Events are returned in a summary form and do not include the
 detailed description, any additional metadata that depends on the event
 type, or any affected resources. To retrieve that information, use the
-\href{https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetails.html}{DescribeEventDetails}
-and
-\href{https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntities.html}{DescribeAffectedEntities}
+\code{\link[=health_describe_event_details]{describe_event_details}} and
+\code{\link[=health_describe_affected_entities]{describe_affected_entities}}
 operations.
 
 If no filter criteria are specified, all events are returned. Results
 are sorted by \code{lastModifiedTime}, starting with the most recent event.
 \itemize{
-\item When you call the \code{DescribeEvents} operation and specify an entity
-for the \code{entityValues} parameter, AWS Health might return public
-events that aren't specific to that resource. For example, if you
-call \code{DescribeEvents} and specify an ID for an Amazon Elastic
-Compute Cloud (Amazon EC2) instance, AWS Health might return events
-that aren't specific to that resource or service. To get events that
-are specific to a service, use the \code{services} parameter in the
-\code{filter} object. For more information, see
+\item When you call the \code{\link[=health_describe_events]{describe_events}}
+operation and specify an entity for the \code{entityValues} parameter,
+AWS Health might return public events that aren't specific to that
+resource. For example, if you call
+\code{\link[=health_describe_events]{describe_events}} and specify an ID for an
+Amazon Elastic Compute Cloud (Amazon EC2) instance, AWS Health might
+return events that aren't specific to that resource or service. To
+get events that are specific to a service, use the \code{services}
+parameter in the \code{filter} object. For more information, see
 \href{https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html}{Event}.
 \item This API operation uses pagination. Specify the \code{nextToken}
 parameter in the next request to return more results.

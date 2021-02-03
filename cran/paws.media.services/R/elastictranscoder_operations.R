@@ -10,7 +10,9 @@ NULL
 #' 
 #' You can only cancel a job that has a status of `Submitted`. To prevent a
 #' pipeline from starting to process a job while you're getting the job
-#' identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
+#' identifier, use
+#' [`update_pipeline_status`][elastictranscoder_update_pipeline_status] to
+#' temporarily pause the pipeline.
 #'
 #' @usage
 #' elastictranscoder_cancel_job(Id)
@@ -18,7 +20,9 @@ NULL
 #' @param Id &#91;required&#93; The identifier of the job that you want to cancel.
 #' 
 #' To get a list of the jobs (including their `jobId`) that have a status
-#' of `Submitted`, use the ListJobsByStatus API action.
+#' of `Submitted`, use the
+#' [`list_jobs_by_status`][elastictranscoder_list_jobs_by_status] API
+#' action.
 #'
 #' @section Request syntax:
 #' ```
@@ -821,7 +825,8 @@ elastictranscoder_create_preset <- function(Name, Description = NULL, Container,
 #' 
 #' You can only delete a pipeline that has never been used or that is not
 #' currently in use (doesn't contain any active jobs). If the pipeline is
-#' currently in use, `DeletePipeline` returns an error.
+#' currently in use, [`delete_pipeline`][elastictranscoder_delete_pipeline]
+#' returns an error.
 #'
 #' @usage
 #' elastictranscoder_delete_pipeline(Id)
@@ -1210,12 +1215,12 @@ elastictranscoder_read_preset <- function(Id) {
 #' @description
 #' The TestRole operation tests the IAM role used to create the pipeline.
 #' 
-#' The `TestRole` action lets you determine whether the IAM role you are
-#' using has sufficient permissions to let Elastic Transcoder perform tasks
-#' associated with the transcoding process. The action attempts to assume
-#' the specified IAM role, checks read access to the input and output
-#' buckets, and tries to send a test notification to Amazon SNS topics that
-#' you specify.
+#' The [`test_role`][elastictranscoder_test_role] action lets you determine
+#' whether the IAM role you are using has sufficient permissions to let
+#' Elastic Transcoder perform tasks associated with the transcoding
+#' process. The action attempts to assume the specified IAM role, checks
+#' read access to the input and output buckets, and tries to send a test
+#' notification to Amazon SNS topics that you specify.
 #'
 #' @usage
 #' elastictranscoder_test_role(Role, InputBucket, OutputBucket, Topics)
@@ -1264,7 +1269,8 @@ elastictranscoder_test_role <- function(Role, InputBucket, OutputBucket, Topics)
 #' Use the UpdatePipeline operation to update settings for a pipeline
 #'
 #' @description
-#' Use the `UpdatePipeline` operation to update settings for a pipeline.
+#' Use the [`update_pipeline`][elastictranscoder_update_pipeline] operation
+#' to update settings for a pipeline.
 #' 
 #' When you change pipeline settings, your changes take effect immediately.
 #' Jobs that you have already submitted and that Elastic Transcoder has not
@@ -1597,7 +1603,8 @@ elastictranscoder_update_pipeline_notifications <- function(Id, Notifications) {
 #' jobs. You can't cancel jobs after Elastic Transcoder has started
 #' processing them; if you pause the pipeline to which you submitted the
 #' jobs, you have more time to get the job IDs for the jobs that you want
-#' to cancel, and to send a CancelJob request.
+#' to cancel, and to send a [`cancel_job`][elastictranscoder_cancel_job]
+#' request.
 #'
 #' @usage
 #' elastictranscoder_update_pipeline_status(Id, Status)

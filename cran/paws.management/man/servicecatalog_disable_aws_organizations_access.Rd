@@ -18,7 +18,7 @@ This API can't be invoked if there are active delegated administrators
 in the organization.
 
 Note that a delegated administrator is not authorized to invoke
-\code{DisableAWSOrganizationsAccess}.
+\code{\link[=servicecatalog_disable_aws_organizations_access]{disable_aws_organizations_access}}.
 }
 \section{Request syntax}{
 \preformatted{svc$disable_aws_organizations_access()

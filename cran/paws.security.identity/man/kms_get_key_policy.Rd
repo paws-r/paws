@@ -18,10 +18,12 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{PolicyName}{[required] Specifies the name of the key policy. The only valid name is \code{default}.
-To get the names of key policies, use ListKeyPolicies.}
+To get the names of key policies, use
+\code{\link[=kms_list_key_policies]{list_key_policies}}.}
 }
 \description{
 Gets a key policy attached to the specified customer master key (CMK).
@@ -33,7 +35,7 @@ a different AWS account.
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:GetKeyPolicy}
 (key policy)
 
-\strong{Related operations}: PutKeyPolicy
+\strong{Related operations}: \code{\link[=kms_put_key_policy]{put_key_policy}}
 }
 \section{Request syntax}{
 \preformatted{svc$get_key_policy(

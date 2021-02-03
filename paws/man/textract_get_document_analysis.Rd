@@ -9,7 +9,8 @@ textract_get_document_analysis(JobId, MaxResults, NextToken)
 }
 \arguments{
 \item{JobId}{[required] A unique identifier for the text-detection job. The \code{JobId} is returned
-from \code{StartDocumentAnalysis}. A \code{JobId} value is only valid for 7 days.}
+from \code{\link[=textract_start_document_analysis]{start_document_analysis}}. A
+\code{JobId} value is only valid for 7 days.}
 
 \item{MaxResults}{The maximum number of results to return per paginated call. The largest
 value that you can specify is 1,000. If you specify a value greater than
@@ -25,18 +26,21 @@ blocks.}
 Gets the results for an Amazon Textract asynchronous operation that
 analyzes text in a document.
 
-You start asynchronous text analysis by calling StartDocumentAnalysis,
-which returns a job identifier (\code{JobId}). When the text analysis
-operation finishes, Amazon Textract publishes a completion status to the
-Amazon Simple Notification Service (Amazon SNS) topic that's registered
-in the initial call to \code{StartDocumentAnalysis}. To get the results of
-the text-detection operation, first check that the status value
-published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call
-\code{GetDocumentAnalysis}, and pass the job identifier (\code{JobId}) from the
-initial call to \code{StartDocumentAnalysis}.
+You start asynchronous text analysis by calling
+\code{\link[=textract_start_document_analysis]{start_document_analysis}}, which
+returns a job identifier (\code{JobId}). When the text analysis operation
+finishes, Amazon Textract publishes a completion status to the Amazon
+Simple Notification Service (Amazon SNS) topic that's registered in the
+initial call to
+\code{\link[=textract_start_document_analysis]{start_document_analysis}}. To get
+the results of the text-detection operation, first check that the status
+value published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call
+\code{\link[=textract_get_document_analysis]{get_document_analysis}}, and pass the
+job identifier (\code{JobId}) from the initial call to
+\code{\link[=textract_start_document_analysis]{start_document_analysis}}.
 
-\code{GetDocumentAnalysis} returns an array of Block objects. The following
-types of information are returned:
+\code{\link[=textract_get_document_analysis]{get_document_analysis}} returns an
+array of Block objects. The following types of information are returned:
 \itemize{
 \item Form data (key-value pairs). The related information is returned in
 two Block objects, each of type \code{KEY_VALUE_SET}: a KEY \code{Block}
@@ -49,7 +53,8 @@ returned for each cell in a table.
 \item Lines and words of text. A LINE \code{Block} object contains one or more
 WORD \code{Block} objects. All lines and words that are detected in the
 document are returned (including text that doesn't have a
-relationship with the value of the \code{StartDocumentAnalysis}
+relationship with the value of the
+\code{\link[=textract_start_document_analysis]{start_document_analysis}}
 \code{FeatureTypes} input parameter).
 }
 
@@ -62,9 +67,10 @@ Use the \code{MaxResults} parameter to limit the number of blocks that are
 returned. If there are more results than specified in \code{MaxResults}, the
 value of \code{NextToken} in the operation response contains a pagination
 token for getting the next set of results. To get the next page of
-results, call \code{GetDocumentAnalysis}, and populate the \code{NextToken}
-request parameter with the token value that's returned from the previous
-call to \code{GetDocumentAnalysis}.
+results, call \code{\link[=textract_get_document_analysis]{get_document_analysis}},
+and populate the \code{NextToken} request parameter with the token value
+that's returned from the previous call to
+\code{\link[=textract_get_document_analysis]{get_document_analysis}}.
 
 For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html}{Document Text Analysis}.
 }

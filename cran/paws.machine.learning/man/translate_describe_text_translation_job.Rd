@@ -10,8 +10,8 @@ translate_describe_text_translation_job(JobId)
 }
 \arguments{
 \item{JobId}{[required] The identifier that Amazon Translate generated for the job. The
-StartTextTranslationJob operation returns this identifier in its
-response.}
+\code{\link[=translate_start_text_translation_job]{start_text_translation_job}}
+operation returns this identifier in its response.}
 }
 \description{
 Gets the properties associated with an asycnhronous batch translation

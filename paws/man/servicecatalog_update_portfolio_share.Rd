@@ -31,7 +31,8 @@ on the portfolio share will not be modified.}
 Updates the specified portfolio share. You can use this API to enable or
 disable TagOptions sharing for an existing portfolio share.
 
-The portfolio share cannot be updated if the \code{ CreatePortfolioShare}
+The portfolio share cannot be updated if the
+\code{\link[=servicecatalog_create_portfolio_share]{create_portfolio_share}}
 operation is \code{IN_PROGRESS}, as the share is not available to recipient
 entities. In this case, you must wait for the portfolio share to be
 COMPLETED.
@@ -41,10 +42,12 @@ not both.
 
 If the portfolio is shared to both an external account and an
 organization node, and both shares need to be updated, you must invoke
-\code{UpdatePortfolioShare} separately for each share type.
+\code{\link[=servicecatalog_update_portfolio_share]{update_portfolio_share}}
+separately for each share type.
 
 This API cannot be used for removing the portfolio share. You must use
-\code{DeletePortfolioShare} API for that action.
+\code{\link[=servicecatalog_delete_portfolio_share]{delete_portfolio_share}} API
+for that action.
 }
 \section{Request syntax}{
 \preformatted{svc$update_portfolio_share(

@@ -8,7 +8,8 @@ wafregional_get_change_token_status(ChangeToken)
 }
 \arguments{
 \item{ChangeToken}{[required] The change token for which you want to get the status. This change token
-was previously returned in the \code{GetChangeToken} response.}
+was previously returned in the
+\code{\link[=wafregional_get_change_token]{get_change_token}} response.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -21,11 +22,13 @@ With the latest version, AWS WAF has a single set of endpoints for
 regional and global use.
 
 Returns the status of a \code{ChangeToken} that you got by calling
-GetChangeToken. \code{ChangeTokenStatus} is one of the following values:
+\code{\link[=wafregional_get_change_token]{get_change_token}}. \code{ChangeTokenStatus}
+is one of the following values:
 \itemize{
 \item \code{PROVISIONED}: You requested the change token by calling
-\code{GetChangeToken}, but you haven't used it yet in a call to create,
-update, or delete an AWS WAF object.
+\code{\link[=wafregional_get_change_token]{get_change_token}}, but you haven't
+used it yet in a call to create, update, or delete an AWS WAF
+object.
 \item \code{PENDING}: AWS WAF is propagating the create, update, or delete
 request to all AWS WAF servers.
 \item \code{INSYNC}: Propagation is complete.

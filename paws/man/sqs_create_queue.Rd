@@ -20,7 +20,8 @@ Queue URLs and names are case-sensitive.}
 \item{Attributes}{A map of attributes with their corresponding values.
 
 The following lists the names, descriptions, and values of the special
-request parameters that the \code{CreateQueue} action uses:
+request parameters that the \code{\link[=sqs_create_queue]{create_queue}} action
+uses:
 \itemize{
 \item \code{DelaySeconds} – The length of time, in seconds, for which the
 delivery of all messages in the queue is delayed. Valid values: An
@@ -37,8 +38,9 @@ seconds (1 minute) to 1,209,600 seconds (14 days). Default: 345,600
 information about policy structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html}{Overview of AWS IAM Policies}
 in the \emph{Amazon IAM User Guide}.
 \item \code{ReceiveMessageWaitTimeSeconds} – The length of time, in seconds,
-for which a \verb{<a>ReceiveMessage</a>} action waits for a message to
-arrive. Valid values: An integer from 0 to 20 (seconds). Default: 0.
+for which a \code{\link[=sqs_receive_message]{receive_message}} action waits
+for a message to arrive. Valid values: An integer from 0 to 20
+(seconds). Default: 0.
 \item \code{RedrivePolicy} – The string that includes the parameters for the
 dead-letter queue functionality of the source queue as a JSON
 object. For more information about the redrive policy and
@@ -72,7 +74,7 @@ The following attributes apply only to
 (CMK) for Amazon SQS or a custom CMK. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms}{Key Terms}.
 While the alias of the AWS-managed CMK for Amazon SQS is always
 \code{alias/aws/sqs}, the alias of a custom CMK can, for example, be
-\verb{alias/<i>MyAlias</i> }. For more examples, see
+\code{alias/MyAlias }. For more examples, see
 \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters}{KeyId}
 in the \emph{AWS Key Management Service API Reference}.
 \item \code{KmsDataKeyReusePeriodSeconds} – The length of time, in seconds, for
@@ -220,24 +222,26 @@ and is unique within the scope of your queues.
 After you create a queue, you must wait at least one second after the
 queue is created to be able to use the queue.
 
-To get the queue URL, use the \verb{<a>GetQueueUrl</a>} action.
-\verb{<a>GetQueueUrl</a>} requires only the \code{QueueName} parameter. be aware
-of existing queue names:
+To get the queue URL, use the \code{\link[=sqs_get_queue_url]{get_queue_url}}
+action. \code{\link[=sqs_get_queue_url]{get_queue_url}} requires only the
+\code{QueueName} parameter. be aware of existing queue names:
 \itemize{
 \item If you provide the name of an existing queue along with the exact
-names and values of all the queue's attributes, \code{CreateQueue}
-returns the queue URL for the existing queue.
+names and values of all the queue's attributes,
+\code{\link[=sqs_create_queue]{create_queue}} returns the queue URL for the
+existing queue.
 \item If the queue name, attribute names, or attribute values don't match
-an existing queue, \code{CreateQueue} returns an error.
+an existing queue, \code{\link[=sqs_create_queue]{create_queue}} returns an
+error.
 }
 
 Some actions take lists of parameters. These lists are specified using
 the \code{param.n} notation. Values of \code{n} are integers starting from 1. For
 example, a parameter list with two elements looks like this:
 
-\verb{&amp;AttributeName.1=first}
+\verb{&AttributeName.1=first}
 
-\verb{&amp;AttributeName.2=second}
+\verb{&AttributeName.2=second}
 
 Cross-account permissions don't apply to this action. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a user name}

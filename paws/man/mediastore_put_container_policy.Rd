@@ -22,8 +22,9 @@ users and clients that can access it. For information about the data
 that is included in an access policy, see the \href{https://docs.aws.amazon.com/iam/index.html}{AWS Identity and Access Management User Guide}.
 
 For this release of the REST API, you can create only one policy for a
-container. If you enter \code{PutContainerPolicy} twice, the second command
-modifies the existing policy.
+container. If you enter
+\code{\link[=mediastore_put_container_policy]{put_container_policy}} twice, the
+second command modifies the existing policy.
 }
 \section{Request syntax}{
 \preformatted{svc$put_container_policy(

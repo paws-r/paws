@@ -176,10 +176,13 @@ use the account's default AWS managed CMK for Secrets Manager.
 \strong{Related operations}
 \itemize{
 \item To retrieve the encrypted value you store in the version of a
-secret, use GetSecretValue.
-\item To create a secret, use CreateSecret.
-\item To get the details for a secret, use DescribeSecret.
-\item To list the versions attached to a secret, use ListSecretVersionIds.
+secret, use \code{\link[=secretsmanager_get_secret_value]{get_secret_value}}.
+\item To create a secret, use
+\code{\link[=secretsmanager_create_secret]{create_secret}}.
+\item To get the details for a secret, use
+\code{\link[=secretsmanager_describe_secret]{describe_secret}}.
+\item To list the versions attached to a secret, use
+\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}.
 }
 }
 \section{Request syntax}{

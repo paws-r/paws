@@ -9,8 +9,9 @@ NULL
 #' Attaches an IAM managed policy ARN to a permission set.
 #' 
 #' If the permission set is already referenced by one or more account
-#' assignments, you will need to call ` <a>ProvisionPermissionSet</a> `
-#' after this action to apply the corresponding IAM policy updates to all
+#' assignments, you will need to call
+#' [`provision_permission_set`][ssoadmin_provision_permission_set] after
+#' this action to apply the corresponding IAM policy updates to all
 #' assigned accounts.
 #'
 #' @usage
@@ -63,13 +64,15 @@ ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, Permis
 #' The term *principal* here refers to a user or group that is defined in
 #' AWS SSO.
 #' 
-#' As part of a successful `CreateAccountAssignment` call, the specified
-#' permission set will automatically be provisioned to the account in the
-#' form of an IAM policy attached to the SSO-created IAM role. If the
-#' permission set is subsequently updated, the corresponding IAM policies
-#' attached to roles in your accounts will not be updated automatically. In
-#' this case, you will need to call ` <a>ProvisionPermissionSet</a> ` to
-#' make these updates.
+#' As part of a successful
+#' [`create_account_assignment`][ssoadmin_create_account_assignment] call,
+#' the specified permission set will automatically be provisioned to the
+#' account in the form of an IAM policy attached to the SSO-created IAM
+#' role. If the permission set is subsequently updated, the corresponding
+#' IAM policies attached to roles in your accounts will not be updated
+#' automatically. In this case, you will need to call
+#' [`provision_permission_set`][ssoadmin_provision_permission_set] to make
+#' these updates.
 #'
 #' @usage
 #' ssoadmin_create_account_assignment(InstanceArn, TargetId, TargetType,
@@ -188,7 +191,7 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
 #' Creates a permission set within a specified SSO instance.
 #' 
 #' To grant users and groups access to AWS account resources, use
-#' ` <a>CreateAccountAssignment</a> `.
+#' [`create_account_assignment`][ssoadmin_create_account_assignment].
 #'
 #' @usage
 #' ssoadmin_create_permission_set(Name, Description, InstanceArn,
@@ -607,7 +610,8 @@ ssoadmin_describe_permission_set <- function(InstanceArn, PermissionSetArn) {
 #' @param InstanceArn &#91;required&#93; The ARN of the SSO instance under which the operation will be executed.
 #' For more information about ARNs, see Amazon Resource Names (ARNs) and
 #' AWS Service Namespaces in the *AWS General Reference*.
-#' @param ProvisionPermissionSetRequestId &#91;required&#93; The identifier that is provided by the ProvisionPermissionSet call to
+#' @param ProvisionPermissionSetRequestId &#91;required&#93; The identifier that is provided by the
+#' [`provision_permission_set`][ssoadmin_provision_permission_set] call to
 #' retrieve the current status of the provisioning workflow.
 #'
 #' @section Request syntax:
@@ -1265,8 +1269,9 @@ ssoadmin_provision_permission_set <- function(InstanceArn, PermissionSetArn, Tar
 #' Attaches an IAM inline policy to a permission set.
 #' 
 #' If the permission set is already referenced by one or more account
-#' assignments, you will need to call ` <a>ProvisionPermissionSet</a> `
-#' after this action to apply the corresponding IAM policy updates to all
+#' assignments, you will need to call
+#' [`provision_permission_set`][ssoadmin_provision_permission_set] after
+#' this action to apply the corresponding IAM policy updates to all
 #' assigned accounts.
 #'
 #' @usage

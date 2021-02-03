@@ -40,7 +40,8 @@ that hosts the specified LAG. If there are no available ports on the
 endpoint, the request fails and no interconnect is created.
 
 For each end customer, the AWS Direct Connect Partner provisions a
-connection on their interconnect by calling AllocateHostedConnection.
+connection on their interconnect by calling
+\code{\link[=directconnect_allocate_hosted_connection]{allocate_hosted_connection}}.
 The end customer can then connect to AWS resources by creating a virtual
 interface on their connection, using the VLAN assigned to them by the
 AWS Direct Connect Partner.

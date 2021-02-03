@@ -18,7 +18,9 @@ view your estimated savings associated with recommendations with
 consideration of existing Savings Plans or RI benefits, or neither.}
 
 \item{Service}{[required] The specific service that you want recommendations for. The only valid
-value for \code{GetRightsizingRecommendation} is "\code{AmazonEC2}".}
+value for
+\code{\link[=costexplorer_get_rightsizing_recommendation]{get_rightsizing_recommendation}}
+is "\code{AmazonEC2}".}
 
 \item{PageSize}{The number of recommendations that you want returned in a single
 response object.}

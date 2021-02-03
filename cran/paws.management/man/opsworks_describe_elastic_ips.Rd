@@ -7,18 +7,20 @@
 opsworks_describe_elastic_ips(InstanceId, StackId, Ips)
 }
 \arguments{
-\item{InstanceId}{The instance ID. If you include this parameter, \code{DescribeElasticIps}
-returns a description of the Elastic IP addresses associated with the
-specified instance.}
+\item{InstanceId}{The instance ID. If you include this parameter,
+\code{\link[=opsworks_describe_elastic_ips]{describe_elastic_ips}} returns a
+description of the Elastic IP addresses associated with the specified
+instance.}
 
-\item{StackId}{A stack ID. If you include this parameter, \code{DescribeElasticIps} returns
-a description of the Elastic IP addresses that are registered with the
+\item{StackId}{A stack ID. If you include this parameter,
+\code{\link[=opsworks_describe_elastic_ips]{describe_elastic_ips}} returns a
+description of the Elastic IP addresses that are registered with the
 specified stack.}
 
 \item{Ips}{An array of Elastic IP addresses to be described. If you include this
-parameter, \code{DescribeElasticIps} returns a description of the specified
-Elastic IP addresses. Otherwise, it returns a description of every
-Elastic IP address.}
+parameter, \code{\link[=opsworks_describe_elastic_ips]{describe_elastic_ips}}
+returns a description of the specified Elastic IP addresses. Otherwise,
+it returns a description of every Elastic IP address.}
 }
 \description{
 Describes \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP addresses}.

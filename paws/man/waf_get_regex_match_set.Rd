@@ -8,8 +8,9 @@ waf_get_regex_match_set(RegexMatchSetId)
 }
 \arguments{
 \item{RegexMatchSetId}{[required] The \code{RegexMatchSetId} of the RegexMatchSet that you want to get.
-\code{RegexMatchSetId} is returned by CreateRegexMatchSet and by
-ListRegexMatchSets.}
+\code{RegexMatchSetId} is returned by
+\code{\link[=waf_create_regex_match_set]{create_regex_match_set}} and by
+\code{\link[=waf_list_regex_match_sets]{list_regex_match_sets}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

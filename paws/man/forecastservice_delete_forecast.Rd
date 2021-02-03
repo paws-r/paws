@@ -10,9 +10,11 @@ forecastservice_delete_forecast(ForecastArn)
 \item{ForecastArn}{[required] The Amazon Resource Name (ARN) of the forecast to delete.}
 }
 \description{
-Deletes a forecast created using the CreateForecast operation. You can
+Deletes a forecast created using the
+\code{\link[=forecastservice_create_forecast]{create_forecast}} operation. You can
 delete only forecasts that have a status of \code{ACTIVE} or \code{CREATE_FAILED}.
-To get the status, use the DescribeForecast operation.
+To get the status, use the
+\code{\link[=forecastservice_describe_forecast]{describe_forecast}} operation.
 
 You can't delete a forecast while it is being exported. After a forecast
 is deleted, you can no longer query the forecast.

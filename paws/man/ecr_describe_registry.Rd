@@ -9,7 +9,8 @@ ecr_describe_registry()
 \description{
 Describes the settings for a registry. The replication configuration for
 a repository can be created or updated with the
-PutReplicationConfiguration API action.
+\code{\link[=ecr_put_replication_configuration]{put_replication_configuration}} API
+action.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_registry()

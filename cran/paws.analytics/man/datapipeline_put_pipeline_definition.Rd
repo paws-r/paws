@@ -19,11 +19,14 @@ existing pipeline definition.}
 }
 \description{
 Adds tasks, schedules, and preconditions to the specified pipeline. You
-can use \code{PutPipelineDefinition} to populate a new pipeline.
+can use
+\code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}} to
+populate a new pipeline.
 
-\code{PutPipelineDefinition} also validates the configuration as it adds it
-to the pipeline. Changes to the pipeline are saved unless one of the
-following three validation errors exists in the pipeline.
+\code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}} also
+validates the configuration as it adds it to the pipeline. Changes to
+the pipeline are saved unless one of the following three validation
+errors exists in the pipeline.
 \enumerate{
 \item An object is missing a name or identifier field.
 \item A string or reference field is empty.
@@ -32,8 +35,11 @@ objects.
 \item The pipeline is in a FINISHED state.
 }
 
-Pipeline object definitions are passed to the \code{PutPipelineDefinition}
-action and returned by the GetPipelineDefinition action.
+Pipeline object definitions are passed to the
+\code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}} action
+and returned by the
+\code{\link[=datapipeline_get_pipeline_definition]{get_pipeline_definition}}
+action.
 }
 \section{Request syntax}{
 \preformatted{svc$put_pipeline_definition(

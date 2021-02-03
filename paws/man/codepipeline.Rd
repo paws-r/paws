@@ -25,30 +25,35 @@ uniquely named, and consists of stages, actions, and transitions.
 
 You can work with pipelines by calling:
 \itemize{
-\item CreatePipeline, which creates a uniquely named pipeline.
-\item DeletePipeline, which deletes the specified pipeline.
-\item GetPipeline, which returns information about the pipeline structure
-and pipeline metadata, including the pipeline Amazon Resource Name
-(ARN).
-\item GetPipelineExecution, which returns information about a specific
-execution of a pipeline.
-\item GetPipelineState, which returns information about the current state
-of the stages and actions of a pipeline.
-\item ListActionExecutions, which returns action-level details for past
-executions. The details include full stage and action-level details,
-including individual action duration, status, any errors that
-occurred during the execution, and input and output artifact
-location details.
-\item ListPipelines, which gets a summary of all of the pipelines
-associated with your account.
-\item ListPipelineExecutions, which gets a summary of the most recent
-executions for a pipeline.
-\item StartPipelineExecution, which runs the most recent revision of an
-artifact through the pipeline.
-\item StopPipelineExecution, which stops the specified pipeline execution
-from continuing through the pipeline.
-\item UpdatePipeline, which updates a pipeline with edits or changes to
-the structure of the pipeline.
+\item \code{\link[=codepipeline_create_pipeline]{create_pipeline}}, which creates a
+uniquely named pipeline.
+\item \code{\link[=codepipeline_delete_pipeline]{delete_pipeline}}, which deletes the
+specified pipeline.
+\item \code{\link[=codepipeline_get_pipeline]{get_pipeline}}, which returns
+information about the pipeline structure and pipeline metadata,
+including the pipeline Amazon Resource Name (ARN).
+\item \code{\link[=codepipeline_get_pipeline_execution]{get_pipeline_execution}},
+which returns information about a specific execution of a pipeline.
+\item \code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}}, which
+returns information about the current state of the stages and
+actions of a pipeline.
+\item \code{\link[=codepipeline_list_action_executions]{list_action_executions}},
+which returns action-level details for past executions. The details
+include full stage and action-level details, including individual
+action duration, status, any errors that occurred during the
+execution, and input and output artifact location details.
+\item \code{\link[=codepipeline_list_pipelines]{list_pipelines}}, which gets a
+summary of all of the pipelines associated with your account.
+\item \code{\link[=codepipeline_list_pipeline_executions]{list_pipeline_executions}},
+which gets a summary of the most recent executions for a pipeline.
+\item \code{\link[=codepipeline_start_pipeline_execution]{start_pipeline_execution}},
+which runs the most recent revision of an artifact through the
+pipeline.
+\item \code{\link[=codepipeline_stop_pipeline_execution]{stop_pipeline_execution}},
+which stops the specified pipeline execution from continuing through
+the pipeline.
+\item \code{\link[=codepipeline_update_pipeline]{update_pipeline}}, which updates a
+pipeline with edits or changes to the structure of the pipeline.
 }
 
 Pipelines include \emph{stages}. Each stage contains one or more actions that
@@ -56,19 +61,23 @@ must complete before the next stage begins. A stage results in success
 or failure. If a stage fails, the pipeline stops at that stage and
 remains stopped until either a new version of an artifact appears in the
 source location, or a user takes action to rerun the most recent
-artifact through the pipeline. You can call GetPipelineState, which
-displays the status of a pipeline, including the status of stages in the
-pipeline, or GetPipeline, which returns the entire structure of the
-pipeline, including the stages of that pipeline. For more information
-about the structure of stages and actions, see \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html}{AWS CodePipeline Pipeline Structure Reference}.
+artifact through the pipeline. You can call
+\code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}}, which displays
+the status of a pipeline, including the status of stages in the
+pipeline, or \code{\link[=codepipeline_get_pipeline]{get_pipeline}}, which returns
+the entire structure of the pipeline, including the stages of that
+pipeline. For more information about the structure of stages and
+actions, see \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html}{AWS CodePipeline Pipeline Structure Reference}.
 
 Pipeline stages include \emph{actions} that are categorized into categories
 such as source or build actions performed in a stage of a pipeline. For
 example, you can use a source action to import artifacts into a pipeline
 from a source such as Amazon S3. Like stages, you do not work with
 actions directly in most cases, but you do define and interact with
-actions when working with pipeline operations such as CreatePipeline and
-GetPipelineState. Valid action categories are:
+actions when working with pipeline operations such as
+\code{\link[=codepipeline_create_pipeline]{create_pipeline}} and
+\code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}}. Valid action
+categories are:
 \itemize{
 \item Source
 \item Build
@@ -84,10 +93,11 @@ one stage complete.
 
 You can work with transitions by calling:
 \itemize{
-\item DisableStageTransition, which prevents artifacts from transitioning
-to the next stage in a pipeline.
-\item EnableStageTransition, which enables transition of artifacts between
-stages in a pipeline.
+\item \code{\link[=codepipeline_disable_stage_transition]{disable_stage_transition}},
+which prevents artifacts from transitioning to the next stage in a
+pipeline.
+\item \code{\link[=codepipeline_enable_stage_transition]{enable_stage_transition}},
+which enables transition of artifacts between stages in a pipeline.
 }
 
 \strong{Using the API to integrate with AWS CodePipeline}
@@ -102,12 +112,16 @@ source action might import a revision of an artifact from a source.
 
 You can work with jobs by calling:
 \itemize{
-\item AcknowledgeJob, which confirms whether a job worker has received the
-specified job.
-\item GetJobDetails, which returns the details of a job.
-\item PollForJobs, which determines whether there are any jobs to act on.
-\item PutJobFailureResult, which provides details of a job failure.
-\item PutJobSuccessResult, which provides details of a job success.
+\item \code{\link[=codepipeline_acknowledge_job]{acknowledge_job}}, which confirms
+whether a job worker has received the specified job.
+\item \code{\link[=codepipeline_get_job_details]{get_job_details}}, which returns the
+details of a job.
+\item \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}}, which determines
+whether there are any jobs to act on.
+\item \code{\link[=codepipeline_put_job_failure_result]{put_job_failure_result}},
+which provides details of a job failure.
+\item \code{\link[=codepipeline_put_job_success_result]{put_job_success_result}},
+which provides details of a job success.
 }
 
 \strong{Third party jobs}, which are instances of an action created by a
@@ -116,16 +130,16 @@ created by members of the AWS Partner Network.
 
 You can work with third party jobs by calling:
 \itemize{
-\item AcknowledgeThirdPartyJob, which confirms whether a job worker has
-received the specified job.
-\item GetThirdPartyJobDetails, which requests the details of a job for a
-partner action.
-\item PollForThirdPartyJobs, which determines whether there are any jobs
-to act on.
-\item PutThirdPartyJobFailureResult, which provides details of a job
-failure.
-\item PutThirdPartyJobSuccessResult, which provides details of a job
-success.
+\item \code{\link[=codepipeline_acknowledge_third_party_job]{acknowledge_third_party_job}},
+which confirms whether a job worker has received the specified job.
+\item \code{\link[=codepipeline_get_third_party_job_details]{get_third_party_job_details}},
+which requests the details of a job for a partner action.
+\item \code{\link[=codepipeline_poll_for_third_party_jobs]{poll_for_third_party_jobs}},
+which determines whether there are any jobs to act on.
+\item \code{\link[=codepipeline_put_third_party_job_failure_result]{put_third_party_job_failure_result}},
+which provides details of a job failure.
+\item \code{\link[=codepipeline_put_third_party_job_success_result]{put_third_party_job_success_result}},
+which provides details of a job success.
 }
 }
 \section{Service syntax}{

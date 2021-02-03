@@ -11,8 +11,9 @@ sagemaker_delete_experiment(ExperimentName)
 }
 \description{
 Deletes an Amazon SageMaker experiment. All trials associated with the
-experiment must be deleted first. Use the ListTrials API to get a list
-of the trials associated with the experiment.
+experiment must be deleted first. Use the
+\code{\link[=sagemaker_list_trials]{list_trials}} API to get a list of the trials
+associated with the experiment.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_experiment(

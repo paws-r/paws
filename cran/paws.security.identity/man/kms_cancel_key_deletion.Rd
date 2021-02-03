@@ -19,12 +19,13 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \description{
 Cancels the deletion of a customer master key (CMK). When this operation
 succeeds, the key state of the CMK is \code{Disabled}. To enable the CMK, use
-EnableKey.
+\code{\link[=kms_enable_key]{enable_key}}.
 
 For more information about scheduling and canceling deletion of a CMK,
 see \href{https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html}{Deleting Customer Master Keys}
@@ -41,7 +42,8 @@ a different AWS account.
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:CancelKeyDeletion}
 (key policy)
 
-\strong{Related operations}: ScheduleKeyDeletion
+\strong{Related operations}:
+\code{\link[=kms_schedule_key_deletion]{schedule_key_deletion}}
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_key_deletion(

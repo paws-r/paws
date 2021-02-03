@@ -316,8 +316,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' artifacts if your service role has permission to that key.
 #' 
 #' You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-#' available, the CMK's alias (using the format
-#' `alias/&lt;alias-name&gt;`).
+#' available, the CMK's alias (using the format `alias/<alias-name>`).
 #' @param tags A list of tag key and value pairs associated with this build project.
 #' 
 #' These tags are available for use by AWS services that support AWS
@@ -779,10 +778,10 @@ codebuild_delete_report <- function(arn) {
 #' deleting the report group.
 #' 
 #' If `false`, you must delete any reports in the report group. Use
-#' [ListReportsForReportGroup](https://docs.aws.amazon.com/codebuild/latest/APIReference/API_ListReportsForReportGroup.html)
+#' [`list_reports_for_report_group`][codebuild_list_reports_for_report_group]
 #' to get the reports in a report group. Use
-#' [DeleteReport](https://docs.aws.amazon.com/codebuild/latest/APIReference/API_DeleteReport.html)
-#' to delete the reports. If you call `DeleteReportGroup` for a report
+#' [`delete_report`][codebuild_delete_report] to delete the reports. If you
+#' call [`delete_report_group`][codebuild_delete_report_group] for a report
 #' group that contains one or more reports, an exception is thrown.
 #'
 #' @section Request syntax:
@@ -943,8 +942,9 @@ codebuild_delete_webhook <- function(projectName) {
 #'
 #' @param reportArn &#91;required&#93; The ARN of the report for which test cases are returned.
 #' @param nextToken The `nextToken` value returned from a previous call to
-#' `DescribeCodeCoverages`. This specifies the next item to return. To
-#' return the beginning of the list, exclude this parameter.
+#' [`describe_code_coverages`][codebuild_describe_code_coverages]. This
+#' specifies the next item to return. To return the beginning of the list,
+#' exclude this parameter.
 #' @param maxResults The maximum number of results to return.
 #' @param sortOrder Specifies if the results are sorted in ascending or descending order.
 #' @param sortBy Specifies how the results are sorted. Possible values are:
@@ -1238,8 +1238,9 @@ codebuild_invalidate_project_cache <- function(projectName) {
 #' -   `DESCENDING`: List the batch build identifiers in descending order
 #'     by identifier.
 #' @param nextToken The `nextToken` value returned from a previous call to
-#' `ListBuildBatches`. This specifies the next item to return. To return
-#' the beginning of the list, exclude this parameter.
+#' [`list_build_batches`][codebuild_list_build_batches]. This specifies the
+#' next item to return. To return the beginning of the list, exclude this
+#' parameter.
 #'
 #' @section Request syntax:
 #' ```
@@ -1293,8 +1294,9 @@ codebuild_list_build_batches <- function(filter = NULL, maxResults = NULL, sortO
 #' -   `DESCENDING`: List the batch build identifiers in descending order
 #'     by identifier.
 #' @param nextToken The `nextToken` value returned from a previous call to
-#' `ListBuildBatchesForProject`. This specifies the next item to return. To
-#' return the beginning of the list, exclude this parameter.
+#' [`list_build_batches_for_project`][codebuild_list_build_batches_for_project].
+#' This specifies the next item to return. To return the beginning of the
+#' list, exclude this parameter.
 #'
 #' @section Request syntax:
 #' ```
@@ -1920,10 +1922,11 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'
 #' @param id Specifies the identifier of the build to restart.
 #' @param idempotencyToken A unique, case sensitive identifier you provide to ensure the
-#' idempotency of the `RetryBuild` request. The token is included in the
-#' `RetryBuild` request and is valid for five minutes. If you repeat the
-#' `RetryBuild` request with the same token, but change a parameter, AWS
-#' CodeBuild returns a parameter mismatch error.
+#' idempotency of the [`retry_build`][codebuild_retry_build] request. The
+#' token is included in the [`retry_build`][codebuild_retry_build] request
+#' and is valid for five minutes. If you repeat the
+#' [`retry_build`][codebuild_retry_build] request with the same token, but
+#' change a parameter, AWS CodeBuild returns a parameter mismatch error.
 #'
 #' @section Request syntax:
 #' ```
@@ -1964,10 +1967,13 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'
 #' @param id Specifies the identifier of the batch build to restart.
 #' @param idempotencyToken A unique, case sensitive identifier you provide to ensure the
-#' idempotency of the `RetryBuildBatch` request. The token is included in
-#' the `RetryBuildBatch` request and is valid for five minutes. If you
-#' repeat the `RetryBuildBatch` request with the same token, but change a
-#' parameter, AWS CodeBuild returns a parameter mismatch error.
+#' idempotency of the [`retry_build_batch`][codebuild_retry_build_batch]
+#' request. The token is included in the
+#' [`retry_build_batch`][codebuild_retry_build_batch] request and is valid
+#' for five minutes. If you repeat the
+#' [`retry_build_batch`][codebuild_retry_build_batch] request with the same
+#' token, but change a parameter, AWS CodeBuild returns a parameter
+#' mismatch error.
 #' @param retryType Specifies the type of retry to perform.
 #'
 #' @section Request syntax:
@@ -2128,8 +2134,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' artifacts if your service role has permission to that key.
 #' 
 #' You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-#' available, the CMK's alias (using the format
-#' `alias/&lt;alias-name&gt;`).
+#' available, the CMK's alias (using the format `alias/<alias-name>`).
 #' @param idempotencyToken A unique, case sensitive identifier you provide to ensure the
 #' idempotency of the StartBuild request. The token is included in the
 #' StartBuild request and is valid for 5 minutes. If you repeat the
@@ -2421,13 +2426,15 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' artifacts if your service role has permission to that key.
 #' 
 #' You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-#' available, the CMK's alias (using the format
-#' `alias/&lt;alias-name&gt;`).
+#' available, the CMK's alias (using the format `alias/<alias-name>`).
 #' @param idempotencyToken A unique, case sensitive identifier you provide to ensure the
-#' idempotency of the `StartBuildBatch` request. The token is included in
-#' the `StartBuildBatch` request and is valid for five minutes. If you
-#' repeat the `StartBuildBatch` request with the same token, but change a
-#' parameter, AWS CodeBuild returns a parameter mismatch error.
+#' idempotency of the [`start_build_batch`][codebuild_start_build_batch]
+#' request. The token is included in the
+#' [`start_build_batch`][codebuild_start_build_batch] request and is valid
+#' for five minutes. If you repeat the
+#' [`start_build_batch`][codebuild_start_build_batch] request with the same
+#' token, but change a parameter, AWS CodeBuild returns a parameter
+#' mismatch error.
 #' @param logsConfigOverride A `LogsConfig` object that override the log settings defined in the
 #' batch build project.
 #' @param registryCredentialOverride A `RegistryCredential` object that overrides credentials for access to a
@@ -2740,8 +2747,7 @@ codebuild_stop_build_batch <- function(id) {
 #' artifacts if your service role has permission to that key.
 #' 
 #' You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-#' available, the CMK's alias (using the format
-#' `alias/&lt;alias-name&gt;`).
+#' available, the CMK's alias (using the format `alias/<alias-name>`).
 #' @param tags An updated list of tag key and value pairs associated with this build
 #' project.
 #' 

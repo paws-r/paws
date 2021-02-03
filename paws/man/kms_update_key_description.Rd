@@ -18,13 +18,14 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{Description}{[required] New description for the CMK.}
 }
 \description{
 Updates the description of a customer master key (CMK). To see the
-description of a CMK, use DescribeKey.
+description of a CMK, use \code{\link[=kms_describe_key]{describe_key}}.
 
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
@@ -39,8 +40,8 @@ a different AWS account.
 
 \strong{Related operations}
 \itemize{
-\item CreateKey
-\item DescribeKey
+\item \code{\link[=kms_create_key]{create_key}}
+\item \code{\link[=kms_describe_key]{describe_key}}
 }
 }
 \section{Request syntax}{

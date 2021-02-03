@@ -22,7 +22,8 @@ creation.}
 Case communications are available for 12 months after creation.}
 
 \item{includeResolvedCases}{Specifies whether to include resolved support cases in the
-\code{DescribeCases} response. By default, resolved cases aren't included.}
+\code{\link[=support_describe_cases]{describe_cases}} response. By default,
+resolved cases aren't included.}
 
 \item{nextToken}{A resumption point for pagination.}
 
@@ -32,8 +33,9 @@ Case communications are available for 12 months after creation.}
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.}
 
-\item{includeCommunications}{Specifies whether to include communications in the \code{DescribeCases}
-response. By default, communications are incuded.}
+\item{includeCommunications}{Specifies whether to include communications in the
+\code{\link[=support_describe_cases]{describe_cases}} response. By default,
+communications are incuded.}
 }
 \description{
 Returns a list of cases that you specify by passing one or more case

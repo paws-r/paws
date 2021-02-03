@@ -14,8 +14,9 @@ iot_delete_policy_version(policyName, policyVersionId)
 \description{
 Deletes the specified version of the specified policy. You cannot delete
 the default version of a policy using this API. To delete the default
-version of a policy, use DeletePolicy. To find out which version of a
-policy is marked as the default version, use ListPolicyVersions.
+version of a policy, use \code{\link[=iot_delete_policy]{delete_policy}}. To find
+out which version of a policy is marked as the default version, use
+ListPolicyVersions.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_policy_version(

@@ -36,7 +36,7 @@ for better searching. You can also use the optional archive description
 field to specify how the archive is referred to in an external index of
 archives, such as you might create in Amazon DynamoDB. You can also get
 the vault inventory to obtain a list of archive IDs in a vault. For more
-information, see InitiateJob.
+information, see \code{\link[=glacier_initiate_job]{initiate_job}}.
 
 You must provide a SHA256 tree hash of the data you are uploading. For
 information about computing a SHA256 tree hash, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html}{Computing Checksums}.
@@ -44,10 +44,10 @@ information about computing a SHA256 tree hash, see \href{https://docs.aws.amazo
 You can optionally specify an archive description of up to 1,024
 printable ASCII characters. You can get the archive description when you
 either retrieve the archive or get the vault inventory. For more
-information, see InitiateJob. Amazon Glacier does not interpret the
-description in any way. An archive description does not need to be
-unique. You cannot use the description to retrieve or sort the archive
-list.
+information, see \code{\link[=glacier_initiate_job]{initiate_job}}. Amazon Glacier
+does not interpret the description in any way. An archive description
+does not need to be unique. You cannot use the description to retrieve
+or sort the archive list.
 
 Archives are immutable. After you upload an archive, you cannot edit the
 archive or its description.

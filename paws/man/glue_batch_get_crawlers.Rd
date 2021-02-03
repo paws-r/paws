@@ -8,14 +8,14 @@ glue_batch_get_crawlers(CrawlerNames)
 }
 \arguments{
 \item{CrawlerNames}{[required] A list of crawler names, which might be the names returned from the
-\code{ListCrawlers} operation.}
+\code{\link[=glue_list_crawlers]{list_crawlers}} operation.}
 }
 \description{
 Returns a list of resource metadata for a given list of crawler names.
-After calling the \code{ListCrawlers} operation, you can call this operation
-to access the data to which you have been granted permissions. This
-operation supports all IAM permissions, including permission conditions
-that uses tags.
+After calling the \code{\link[=glue_list_crawlers]{list_crawlers}} operation, you
+can call this operation to access the data to which you have been
+granted permissions. This operation supports all IAM permissions,
+including permission conditions that uses tags.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_crawlers(

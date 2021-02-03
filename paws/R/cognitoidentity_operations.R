@@ -347,9 +347,8 @@ cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NU
 #' -   Facebook: `graph.facebook.com`
 #' 
 #' -   Amazon Cognito user pool:
-#'     `cognito-idp.&lt;region&gt;.amazonaws.com/&lt;YOUR_USER_POOL_ID&gt;`,
-#'     for example,
-#'     `cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789`.
+#'     `cognito-idp.<region>.amazonaws.com/<YOUR_USER_POOL_ID>`, for
+#'     example, `cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789`.
 #' 
 #' -   Google: `accounts.google.com`
 #' 
@@ -433,8 +432,9 @@ cognitoidentity_get_identity_pool_roles <- function(IdentityPoolId) {
 #'
 #' @description
 #' Gets an OpenID token, using a known Cognito ID. This known Cognito ID is
-#' returned by GetId. You can optionally add additional logins for the
-#' identity. Supplying multiple logins creates an implicit link.
+#' returned by [`get_id`][cognitoidentity_get_id]. You can optionally add
+#' additional logins for the identity. Supplying multiple logins creates an
+#' implicit link.
 #' 
 #' The OpenId token is valid for 10 minutes.
 #' 
@@ -491,14 +491,15 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #' which is linked to the identity pool. The developer provider is the
 #' "domain" by which Cognito will refer to your users.
 #' 
-#' You can use `GetOpenIdTokenForDeveloperIdentity` to create a new
-#' identity and to link new logins (that is, user credentials issued by a
-#' public provider or developer provider) to an existing identity. When you
-#' want to create a new identity, the `IdentityId` should be null. When you
-#' want to associate a new login with an existing
-#' authenticated/unauthenticated identity, you can do so by providing the
-#' existing `IdentityId`. This API will create the identity in the
-#' specified `IdentityPoolId`.
+#' You can use
+#' [`get_open_id_token_for_developer_identity`][cognitoidentity_get_open_id_token_for_developer_identity]
+#' to create a new identity and to link new logins (that is, user
+#' credentials issued by a public provider or developer provider) to an
+#' existing identity. When you want to create a new identity, the
+#' `IdentityId` should be null. When you want to associate a new login with
+#' an existing authenticated/unauthenticated identity, you can do so by
+#' providing the existing `IdentityId`. This API will create the identity
+#' in the specified `IdentityPoolId`.
 #' 
 #' You must use AWS Developer credentials to call this API.
 #'
@@ -712,12 +713,13 @@ cognitoidentity_list_tags_for_resource <- function(ResourceArn) {
 #' values and is the same as the request. Otherwise a
 #' `ResourceConflictException` is thrown.
 #' 
-#' `LookupDeveloperIdentity` is intended for low-throughput control plane
-#' operations: for example, to enable customer service to locate an
-#' identity ID by username. If you are using it for higher-volume
-#' operations such as user authentication, your requests are likely to be
-#' throttled. GetOpenIdTokenForDeveloperIdentity is a better option for
-#' higher-volume operations for user authentication.
+#' [`lookup_developer_identity`][cognitoidentity_lookup_developer_identity]
+#' is intended for low-throughput control plane operations: for example, to
+#' enable customer service to locate an identity ID by username. If you are
+#' using it for higher-volume operations such as user authentication, your
+#' requests are likely to be throttled.
+#' [`get_open_id_token_for_developer_identity`][cognitoidentity_get_open_id_token_for_developer_identity]
+#' is a better option for higher-volume operations for user authentication.
 #' 
 #' You must use AWS Developer credentials to call this API.
 #'
@@ -839,7 +841,9 @@ cognitoidentity_merge_developer_identities <- function(SourceUserIdentifier, Des
 #'
 #' @description
 #' Sets the roles for an identity pool. These roles are used when making
-#' calls to GetCredentialsForIdentity action.
+#' calls to
+#' [`get_credentials_for_identity`][cognitoidentity_get_credentials_for_identity]
+#' action.
 #' 
 #' You must use AWS Developer credentials to call this API.
 #'

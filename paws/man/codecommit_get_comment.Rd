@@ -9,7 +9,9 @@ codecommit_get_comment(commentId)
 }
 \arguments{
 \item{commentId}{[required] The unique, system-generated ID of the comment. To get this ID, use
-GetCommentsForComparedCommit or GetCommentsForPullRequest.}
+\code{\link[=codecommit_get_comments_for_compared_commit]{get_comments_for_compared_commit}}
+or
+\code{\link[=codecommit_get_comments_for_pull_request]{get_comments_for_pull_request}}.}
 }
 \description{
 Returns the content of a comment made on a change, file, or commit in a

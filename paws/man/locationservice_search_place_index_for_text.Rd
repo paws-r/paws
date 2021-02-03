@@ -16,7 +16,7 @@ parameter defined by longitude, and latitude.
 \item The second \code{bias} position is the Y coordinate, or latitude.
 }
 
-For example, \verb{bias=xLongitude&amp;bias=yLatitude}.}
+For example, \code{bias=xLongitude&bias=yLatitude}.}
 
 \item{FilterBBox}{Filters the results by returning only Places within the provided
 bounding box. An optional parameter.
@@ -29,7 +29,7 @@ lower southwest corner.
 lower southwest corner.
 }
 
-For example, \verb{bbox=xLongitudeSW&amp;bbox=yLatitudeSW}.
+For example, \code{bbox=xLongitudeSW&bbox=yLatitudeSW}.
 
 The next \code{bbox} parameters describe the upper northeast corner:
 \itemize{
@@ -39,7 +39,7 @@ upper northeast corner.
 upper northeast corner.
 }
 
-For example, \verb{bbox=xLongitudeNE&amp;bbox=yLatitudeNE}}
+For example, \code{bbox=xLongitudeNE&bbox=yLatitudeNE}}
 
 \item{FilterCountries}{Limits the search to the given a list of countries/regions. An optional
 parameter.

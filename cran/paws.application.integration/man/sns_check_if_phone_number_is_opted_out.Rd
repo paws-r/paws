@@ -16,7 +16,7 @@ out of receiving SMS messages from your account. You cannot send SMS
 messages to a number that is opted out.
 
 To resume sending messages, you can opt in the number by using the
-\code{OptInPhoneNumber} action.
+\code{\link[=sns_opt_in_phone_number]{opt_in_phone_number}} action.
 }
 \section{Request syntax}{
 \preformatted{svc$check_if_phone_number_is_opted_out(

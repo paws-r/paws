@@ -8,11 +8,13 @@ current AWS account}
 servicediscovery_list_namespaces(NextToken, MaxResults, Filters)
 }
 \arguments{
-\item{NextToken}{For the first \code{ListNamespaces} request, omit this value.
+\item{NextToken}{For the first \code{\link[=servicediscovery_list_namespaces]{list_namespaces}}
+request, omit this value.
 
-If the response contains \code{NextToken}, submit another \code{ListNamespaces}
-request to get the next group of results. Specify the value of
-\code{NextToken} from the previous response in the next request.
+If the response contains \code{NextToken}, submit another
+\code{\link[=servicediscovery_list_namespaces]{list_namespaces}} request to get the
+next group of results. Specify the value of \code{NextToken} from the
+previous response in the next request.
 
 AWS Cloud Map gets \code{MaxResults} namespaces and then filters them based
 on the specified criteria. It's possible that no namespaces in the first
@@ -21,14 +23,16 @@ subsequent groups of \code{MaxResults} namespaces do contain namespaces that
 match the criteria.}
 
 \item{MaxResults}{The maximum number of namespaces that you want AWS Cloud Map to return
-in the response to a \code{ListNamespaces} request. If you don't specify a
-value for \code{MaxResults}, AWS Cloud Map returns up to 100 namespaces.}
+in the response to a
+\code{\link[=servicediscovery_list_namespaces]{list_namespaces}} request. If you
+don't specify a value for \code{MaxResults}, AWS Cloud Map returns up to 100
+namespaces.}
 
 \item{Filters}{A complex type that contains specifications for the namespaces that you
 want to list.
 
 If you specify more than one filter, a namespace must match all filters
-to be returned by \code{ListNamespaces}.}
+to be returned by \code{\link[=servicediscovery_list_namespaces]{list_namespaces}}.}
 }
 \description{
 Lists summary information about the namespaces that were created by the

@@ -30,7 +30,7 @@ You must specify \code{SolutionStackName} if you don't specify \code{PlatformArn
 \code{EnvironmentId}, or \code{SourceConfiguration}.
 
 Use the
-\href{https://docs.aws.amazon.com/elasticbeanstalk/latest/api/API_ListAvailableSolutionStacks.html}{\code{ListAvailableSolutionStacks}}
+\href{https://docs.aws.amazon.com/elasticbeanstalk/latest/api/API_ListAvailableSolutionStacks.html}{\code{list_available_solution_stacks}}
 API to obtain a list of available solution stacks.}
 
 \item{PlatformArn}{The Amazon Resource Name (ARN) of the custom platform. For more
@@ -79,9 +79,9 @@ response element is always \code{null}.
 
 Related Topics
 \itemize{
-\item DescribeConfigurationOptions
-\item DescribeConfigurationSettings
-\item ListAvailableSolutionStacks
+\item \code{\link[=elasticbeanstalk_describe_configuration_options]{describe_configuration_options}}
+\item \code{\link[=elasticbeanstalk_describe_configuration_settings]{describe_configuration_settings}}
+\item \code{\link[=elasticbeanstalk_list_available_solution_stacks]{list_available_solution_stacks}}
 }
 }
 \section{Request syntax}{

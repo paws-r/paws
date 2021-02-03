@@ -148,14 +148,16 @@ You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
 
 You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-available, the CMK's alias (using the format
-\verb{alias/&lt;alias-name&gt;}).}
+available, the CMK's alias (using the format \verb{alias/<alias-name>}).}
 
 \item{idempotencyToken}{A unique, case sensitive identifier you provide to ensure the
-idempotency of the \code{StartBuildBatch} request. The token is included in
-the \code{StartBuildBatch} request and is valid for five minutes. If you
-repeat the \code{StartBuildBatch} request with the same token, but change a
-parameter, AWS CodeBuild returns a parameter mismatch error.}
+idempotency of the \code{\link[=codebuild_start_build_batch]{start_build_batch}}
+request. The token is included in the
+\code{\link[=codebuild_start_build_batch]{start_build_batch}} request and is valid
+for five minutes. If you repeat the
+\code{\link[=codebuild_start_build_batch]{start_build_batch}} request with the same
+token, but change a parameter, AWS CodeBuild returns a parameter
+mismatch error.}
 
 \item{logsConfigOverride}{A \code{LogsConfig} object that override the log settings defined in the
 batch build project.}

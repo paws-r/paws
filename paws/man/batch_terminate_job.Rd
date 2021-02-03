@@ -10,8 +10,9 @@ batch_terminate_job(jobId, reason)
 \item{jobId}{[required] The AWS Batch job ID of the job to terminate.}
 
 \item{reason}{[required] A message to attach to the job that explains the reason for canceling
-it. This message is returned by future DescribeJobs operations on the
-job. This message is also recorded in the AWS Batch activity logs.}
+it. This message is returned by future
+\code{\link[=batch_describe_jobs]{describe_jobs}} operations on the job. This
+message is also recorded in the AWS Batch activity logs.}
 }
 \description{
 Terminates a job in a job queue. Jobs that are in the \code{STARTING} or

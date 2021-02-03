@@ -30,8 +30,9 @@ returns a RuleGroup object that Network Firewall has populated from your
 file. Network Firewall uses the file contents to populate the rule group
 rules, but does not maintain a reference to the file or use the file in
 any way after performing the create or update. If you call
-DescribeRuleGroup to retrieve the rule group, Network Firewall returns
-rules settings inside a RuleGroup object.}
+\code{\link[=networkfirewall_describe_rule_group]{describe_rule_group}} to retrieve
+the rule group, Network Firewall returns rules settings inside a
+RuleGroup object.}
 
 \item{Type}{[required] Indicates whether the rule group is stateless or stateful. If the rule
 group is stateless, it contains stateless rules. If it is stateful, it
@@ -46,8 +47,9 @@ firewall policy, Network Firewall reserves this capacity for the rule
 group.
 
 You can retrieve the capacity that would be required for a rule group
-before you create the rule group by calling CreateRuleGroup with
-\code{DryRun} set to \code{TRUE}.
+before you create the rule group by calling
+\code{\link[=networkfirewall_create_rule_group]{create_rule_group}} with \code{DryRun}
+set to \code{TRUE}.
 
 You can't change or exceed this capacity when you update the rule group,
 so leave room for your rule group to grow.

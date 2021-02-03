@@ -32,9 +32,11 @@ original environment ("BLUE") or those in the replacement environment
 ("GREEN"), for which you want to view instance information.}
 }
 \description{
-The newer \code{BatchGetDeploymentTargets} should be used instead because it
-works with all compute types. \code{ListDeploymentInstances} throws an
-exception if it is used with a compute platform other than
+The newer
+\code{\link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets}}
+should be used instead because it works with all compute types.
+\code{\link[=codedeploy_list_deployment_instances]{list_deployment_instances}}
+throws an exception if it is used with a compute platform other than
 EC2/On-premises or AWS Lambda.
 
 Lists the instance for a deployment associated with the IAM user or AWS

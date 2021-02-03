@@ -22,15 +22,18 @@ request. Change tokens ensure that your application doesn't submit
 conflicting requests to AWS WAF.
 
 Each create, update, or delete request must use a unique change token.
-If your application submits a \code{GetChangeToken} request and then submits
-a second \code{GetChangeToken} request before submitting a create, update, or
-delete request, the second \code{GetChangeToken} request returns the same
-value as the first \code{GetChangeToken} request.
+If your application submits a \code{\link[=waf_get_change_token]{get_change_token}}
+request and then submits a second
+\code{\link[=waf_get_change_token]{get_change_token}} request before submitting a
+create, update, or delete request, the second
+\code{\link[=waf_get_change_token]{get_change_token}} request returns the same
+value as the first \code{\link[=waf_get_change_token]{get_change_token}} request.
 
 When you use a change token in a create, update, or delete request, the
 status of the change token changes to \code{PENDING}, which indicates that
 AWS WAF is propagating the change to all AWS WAF servers. Use
-\code{GetChangeTokenStatus} to determine the status of your change token.
+\code{\link[=waf_get_change_token_status]{get_change_token_status}} to determine
+the status of your change token.
 }
 \section{Request syntax}{
 \preformatted{svc$get_change_token()

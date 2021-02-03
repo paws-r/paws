@@ -9,12 +9,14 @@ cloudfront_delete_origin_request_policy(Id, IfMatch)
 \arguments{
 \item{Id}{[required] The unique identifier for the origin request policy that you are
 deleting. To get the identifier, you can use
-\code{ListOriginRequestPolicies}.}
+\code{\link[=cloudfront_list_origin_request_policies]{list_origin_request_policies}}.}
 
 \item{IfMatch}{The version of the origin request policy that you are deleting. The
 version is the origin request policy’s \code{ETag} value, which you can get
-using \code{ListOriginRequestPolicies}, \code{GetOriginRequestPolicy}, or
-\code{GetOriginRequestPolicyConfig}.}
+using
+\code{\link[=cloudfront_list_origin_request_policies]{list_origin_request_policies}},
+\code{\link[=cloudfront_get_origin_request_policy]{get_origin_request_policy}}, or
+\code{\link[=cloudfront_get_origin_request_policy_config]{get_origin_request_policy_config}}.}
 }
 \description{
 Deletes an origin request policy.
@@ -25,7 +27,8 @@ policy from all cache behaviors, then delete the origin request policy.
 
 To delete an origin request policy, you must provide the policy’s
 identifier and version. To get the identifier, you can use
-\code{ListOriginRequestPolicies} or \code{GetOriginRequestPolicy}.
+\code{\link[=cloudfront_list_origin_request_policies]{list_origin_request_policies}}
+or \code{\link[=cloudfront_get_origin_request_policy]{get_origin_request_policy}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_origin_request_policy(

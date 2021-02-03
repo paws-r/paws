@@ -20,28 +20,28 @@ tags that have been applied to instances.
 
 \strong{Example 1}: Specify instance IDs
 
-\verb{Key=InstanceIds,Values=<i>instance-id-1</i>,<i>instance-id-2</i>,<i>instance-id-3</i> }
+\verb{Key=InstanceIds,Values=instance-id-1,instance-id-2,instance-id-3 }
 
 \strong{Example 2}: Use tag key-pairs applied to instances
 
-\verb{Key=tag:<i>my-tag-key</i>,Values=<i>my-tag-value-1</i>,<i>my-tag-value-2</i> }
+\verb{Key=tag:my-tag-key,Values=my-tag-value-1,my-tag-value-2 }
 
 \strong{Example 3}: Use tag-keys applied to instances
 
-\verb{Key=tag-key,Values=<i>my-tag-key-1</i>,<i>my-tag-key-2</i> }
+\verb{Key=tag-key,Values=my-tag-key-1,my-tag-key-2 }
 
 \strong{Example 4}: Use resource group names
 
-\verb{Key=resource-groups:Name,Values=<i>resource-group-name</i> }
+\verb{Key=resource-groups:Name,Values=resource-group-name }
 
 \strong{Example 5}: Use filters for resource group types
 
-\verb{Key=resource-groups:ResourceTypeFilters,Values=<i>resource-type-1</i>,<i>resource-type-2</i> }
+\verb{Key=resource-groups:ResourceTypeFilters,Values=resource-type-1,resource-type-2 }
 
 For \code{Key=resource-groups:ResourceTypeFilters}, specify resource types in
 the following format
 
-\verb{Key=resource-groups:ResourceTypeFilters,Values=<i>AWS::EC2::INSTANCE</i>,<i>AWS::EC2::VPC</i> }
+\verb{Key=resource-groups:ResourceTypeFilters,Values=AWS::EC2::INSTANCE,AWS::EC2::VPC }
 
 For more information about these examples formats, including the best
 use case for each one, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html}{Examples: Register targets with a maintenance window}

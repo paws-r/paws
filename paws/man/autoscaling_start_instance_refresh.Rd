@@ -40,10 +40,12 @@ group with a new group of instances.
 
 If successful, this call creates a new instance refresh request with a
 unique ID that you can use to track its progress. To query its status,
-call the DescribeInstanceRefreshes API. To describe the instance
-refreshes that have already run, call the DescribeInstanceRefreshes API.
-To cancel an instance refresh operation in progress, use the
-CancelInstanceRefresh API.
+call the
+\code{\link[=autoscaling_describe_instance_refreshes]{describe_instance_refreshes}}
+API. To describe the instance refreshes that have already run, call the
+\code{\link[=autoscaling_describe_instance_refreshes]{describe_instance_refreshes}}
+API. To cancel an instance refresh operation in progress, use the
+\code{\link[=autoscaling_cancel_instance_refresh]{cancel_instance_refresh}} API.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html}{Replacing Auto Scaling Instances Based on an Instance Refresh}.
 }

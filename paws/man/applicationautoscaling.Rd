@@ -44,7 +44,7 @@ schedule one-time or recurring scaling actions, and retrieve your
 recent scaling activity history.
 \item Suspend and resume scaling - Temporarily suspend and later resume
 automatic scaling by calling the
-\href{https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html}{RegisterScalableTarget}
+\code{\link[=applicationautoscaling_register_scalable_target]{register_scalable_target}}
 API action for any Application Auto Scaling scalable target. You can
 suspend and resume (individually or in combination) scale-out
 activities that are triggered by a scaling policy, scale-in

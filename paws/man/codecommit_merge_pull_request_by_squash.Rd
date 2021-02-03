@@ -12,7 +12,7 @@ codecommit_merge_pull_request_by_squash(pullRequestId, repositoryName,
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use
-ListPullRequests.}
+\code{\link[=codecommit_list_pull_requests]{list_pull_requests}}.}
 
 \item{repositoryName}{[required] The name of the repository where the pull request was created.}
 

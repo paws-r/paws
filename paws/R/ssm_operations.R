@@ -242,8 +242,10 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' Manager for the first time and are assigned a managed instance ID. This
 #' means they are listed in the AWS Systems Manager console with an ID that
 #' is prefixed with "mi-". For information about how to add tags to your
-#' managed instances, see AddTagsToResource. For information about how to
-#' remove tags from your managed instances, see RemoveTagsFromResource.
+#' managed instances, see
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource]. For information
+#' about how to remove tags from your managed instances, see
+#' [`remove_tags_from_resource`][ssm_remove_tags_from_resource].
 #'
 #' @section Request syntax:
 #' ```
@@ -318,7 +320,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' For SSM documents that are shared with you from other AWS accounts, you
 #' must specify the complete SSM document ARN, in the following format:
 #' 
-#' `arn:<i>partition</i>:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> `
+#' `arn:partition:ssm:region:account-id:document/document-name `
 #' 
 #' For example:
 #' 
@@ -386,9 +388,10 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' association is `NON-COMPLIANT`.
 #' 
 #' In `MANUAL` mode, you must specify the `AssociationId` as a parameter
-#' for the PutComplianceItems API action. In this case, compliance data is
-#' not managed by State Manager. It is managed by your direct call to the
-#' PutComplianceItems API action.
+#' for the [`put_compliance_items`][ssm_put_compliance_items] API action.
+#' In this case, compliance data is not managed by State Manager. It is
+#' managed by your direct call to the
+#' [`put_compliance_items`][ssm_put_compliance_items] API action.
 #' 
 #' By default, all associations use `AUTO` mode.
 #' @param ApplyOnlyAtCronInterval By default, when you create a new associations, the system runs it
@@ -639,8 +642,8 @@ ssm_create_association_batch <- function(Entries) {
 #' 
 #' -   `Key=Environment,Value=Production`
 #' 
-#' To add tags to an existing SSM document, use the AddTagsToResource
-#' action.
+#' To add tags to an existing SSM document, use the
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
 #'
 #' @section Request syntax:
 #' ```
@@ -764,8 +767,8 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #' 
 #' -   `Key=Environment,Value=Production`
 #' 
-#' To add tags to an existing maintenance window, use the AddTagsToResource
-#' action.
+#' To add tags to an existing maintenance window, use the
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
 #'
 #' @section Request syntax:
 #' ```
@@ -847,9 +850,10 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' You can choose to make the data searchable by other users in the account
 #' or you can restrict search access. Searchable data means that all users
 #' with access to the OpsItem Overview page (as provided by the
-#' DescribeOpsItems API action) can view and search on the specified data.
-#' Operational data that is not searchable is only viewable by users who
-#' have access to the OpsItem (as provided by the GetOpsItem API action).
+#' [`describe_ops_items`][ssm_describe_ops_items] API action) can view and
+#' search on the specified data. Operational data that is not searchable is
+#' only viewable by users who have access to the OpsItem (as provided by
+#' the [`get_ops_item`][ssm_get_ops_item] API action).
 #' 
 #' Use the `/aws/resources` key in OperationalData to specify a related
 #' resource in the request. Use the `/aws/automations` key in
@@ -882,7 +886,8 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' 
 #' `Key=Department,Value=Finance`
 #' 
-#' To add tags to an existing OpsItem, use the AddTagsToResource action.
+#' To add tags to an existing OpsItem, use the
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
 #' @param Category Specify a category to assign to an OpsItem.
 #' @param Severity Specify a severity to assign to an OpsItem.
 #' @param ActualStartTime The time a runbook workflow started. Currently reported only for the
@@ -1078,8 +1083,8 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL) {
 #' 
 #' -   `Key=OS,Value=Windows`
 #' 
-#' To add tags to an existing patch baseline, use the AddTagsToResource
-#' action.
+#' To add tags to an existing patch baseline, use the
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
 #'
 #' @section Request syntax:
 #' ```
@@ -1193,7 +1198,7 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
 #' A resource data sync is an asynchronous operation that returns
 #' immediately. After a successful initial sync is completed, the system
 #' continuously syncs data. To check the status of a sync, use the
-#' ListResourceDataSync.
+#' [`list_resource_data_sync`][ssm_list_resource_data_sync].
 #' 
 #' By default, data is not encrypted in Amazon S3. We strongly recommend
 #' that you enable encryption in Amazon S3 to ensure secure data storage.
@@ -1369,8 +1374,8 @@ ssm_delete_association <- function(Name = NULL, InstanceId = NULL, AssociationId
 #' the document.
 #' 
 #' Before you delete the document, we recommend that you use
-#' DeleteAssociation to disassociate all instances that are associated with
-#' the document.
+#' [`delete_association`][ssm_delete_association] to disassociate all
+#' instances that are associated with the document.
 #'
 #' @usage
 #' ssm_delete_document(Name, DocumentVersion, VersionName, Force)
@@ -1436,8 +1441,9 @@ ssm_delete_document <- function(Name, DocumentVersion = NULL, VersionName = NULL
 #' 
 #' DisableSchema: If you choose this option, the system ignores all
 #' inventory data for the specified version, and any earlier versions. To
-#' enable this schema again, you must call the `PutInventory` action for a
-#' version greater than the disabled version.
+#' enable this schema again, you must call the
+#' [`put_inventory`][ssm_put_inventory] action for a version greater than
+#' the disabled version.
 #' 
 #' DeleteSchema: This option deletes the specified custom type from the
 #' Inventory service. You can recreate the schema later, if you want.
@@ -1947,9 +1953,10 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
 #' @param AssociationId The association ID for which you want information.
 #' @param AssociationVersion Specify the association version to retrieve. To view the latest version,
 #' either specify `$LATEST` for this parameter, or omit this parameter. To
-#' view a list of all associations for an instance, use ListAssociations.
-#' To get a list of versions for a specific association, use
-#' ListAssociationVersions.
+#' view a list of all associations for an instance, use
+#' [`list_associations`][ssm_list_associations]. To get a list of versions
+#' for a specific association, use
+#' [`list_association_versions`][ssm_list_association_versions].
 #'
 #' @section Request syntax:
 #' ```
@@ -2746,7 +2753,7 @@ ssm_describe_instance_patches <- function(InstanceId, Filters = NULL, NextToken 
 #' ssm_describe_inventory_deletions(DeletionId, NextToken, MaxResults)
 #'
 #' @param DeletionId Specify the delete inventory ID for which you want information. This ID
-#' was returned by the `DeleteInventory` action.
+#' was returned by the [`delete_inventory`][ssm_delete_inventory] action.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -3549,7 +3556,8 @@ ssm_describe_patch_group_state <- function(PatchGroup) {
 #' @param Filters One or more filters. Use a filter to return a more specific list of
 #' results.
 #' 
-#' For `DescribePatchGroups`,valid filter keys include the following:
+#' For [`describe_patch_groups`][ssm_describe_patch_groups],valid filter
+#' keys include the following:
 #' 
 #' -   `NAME_PREFIX`: The name of the patch group. Wildcards (*) are
 #'     accepted.
@@ -3557,7 +3565,7 @@ ssm_describe_patch_group_state <- function(PatchGroup) {
 #' -   `OPERATING_SYSTEM`: The supported operating system type to return
 #'     results for. For valid operating system values, see
 #'     GetDefaultPatchBaselineRequest$OperatingSystem in
-#'     CreatePatchBaseline.
+#'     [`create_patch_baseline`][ssm_create_patch_baseline].
 #' 
 #'     Examples:
 #' 
@@ -3611,9 +3619,11 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
 #' Lists the properties of available patches organized by product, product
 #' family, classification, severity, and other properties of available
 #' patches. You can use the reported properties in the filters you specify
-#' in requests for actions such as CreatePatchBaseline,
-#' UpdatePatchBaseline, DescribeAvailablePatches, and
-#' DescribePatchBaselines.
+#' in requests for actions such as
+#' [`create_patch_baseline`][ssm_create_patch_baseline],
+#' [`update_patch_baseline`][ssm_update_patch_baseline],
+#' [`describe_available_patches`][ssm_describe_available_patches], and
+#' [`describe_patch_baselines`][ssm_describe_patch_baselines].
 #' 
 #' The following section lists the properties that can be used in filters
 #' for each major operating system type:
@@ -3804,11 +3814,12 @@ ssm_get_automation_execution <- function(AutomationExecutionId) {
 #'
 #' @description
 #' Gets the state of the AWS Systems Manager Change Calendar at an
-#' optional, specified time. If you specify a time, `GetCalendarState`
-#' returns the state of the calendar at a specific time, and returns the
-#' next time that the Change Calendar state will transition. If you do not
-#' specify a time, `GetCalendarState` assumes the current time. Change
-#' Calendar entries have two possible states: `OPEN` or `CLOSED`.
+#' optional, specified time. If you specify a time,
+#' [`get_calendar_state`][ssm_get_calendar_state] returns the state of the
+#' calendar at a specific time, and returns the next time that the Change
+#' Calendar state will transition. If you do not specify a time,
+#' [`get_calendar_state`][ssm_get_calendar_state] assumes the current time.
+#' Change Calendar entries have two possible states: `OPEN` or `CLOSED`.
 #' 
 #' If you specify more than one calendar in a request, the command returns
 #' the status of `OPEN` only if all calendars in the request are open. If
@@ -4607,7 +4618,8 @@ ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = N
 #'
 #' @description
 #' Get information about a parameter by using the parameter name. Don't
-#' confuse this API action with the GetParameters API action.
+#' confuse this API action with the [`get_parameters`][ssm_get_parameters]
+#' API action.
 #'
 #' @usage
 #' ssm_get_parameter(Name, WithDecryption)
@@ -4695,7 +4707,7 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
 #'
 #' @description
 #' Get details of a parameter. Don't confuse this API action with the
-#' GetParameter API action.
+#' [`get_parameter`][ssm_get_parameter] API action.
 #'
 #' @usage
 #' ssm_get_parameters(Names, WithDecryption)
@@ -4767,11 +4779,13 @@ ssm_get_parameters <- function(Names, WithDecryption = NULL) {
 #' GetParametersByPath API action recursively for `/a` and view `/a/b`.
 #' @param ParameterFilters Filters to limit the request results.
 #' 
-#' For `GetParametersByPath`, the following filter `Key` names are
-#' supported: `Type`, `KeyId`, `Label`, and `DataType`.
+#' For [`get_parameters_by_path`][ssm_get_parameters_by_path], the
+#' following filter `Key` names are supported: `Type`, `KeyId`, `Label`,
+#' and `DataType`.
 #' 
-#' The following `Key` values are not supported for `GetParametersByPath`:
-#' `tag`, `Name`, `Path`, and `Tier`.
+#' The following `Key` values are not supported for
+#' [`get_parameters_by_path`][ssm_get_parameters_by_path]: `tag`, `Name`,
+#' `Path`, and `Tier`.
 #' @param WithDecryption Retrieve all parameters in a hierarchy with their value decrypted.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
@@ -4913,9 +4927,10 @@ ssm_get_patch_baseline_for_patch_group <- function(PatchGroup, OperatingSystem =
 #' define the default value for a `SettingId`. You can't create a new
 #' `SettingId`, but you can overwrite the default value if you have the
 #' `ssm:UpdateServiceSetting` permission for the setting. Use the
-#' UpdateServiceSetting API action to change the default setting. Or use
-#' the ResetServiceSetting to change the value back to the original value
-#' defined by the AWS service team.
+#' [`update_service_setting`][ssm_update_service_setting] API action to
+#' change the default setting. Or use the
+#' [`reset_service_setting`][ssm_reset_service_setting] to change the value
+#' back to the original value defined by the AWS service team.
 #' 
 #' Query the current service setting for the account.
 #'
@@ -5770,12 +5785,13 @@ ssm_list_resource_compliance_summaries <- function(Filters = NULL, NextToken = N
 #' last time a sync successfully completed.
 #' 
 #' The number of sync configurations might be too large to return using a
-#' single call to `ListResourceDataSync`. You can limit the number of sync
-#' configurations returned by using the `MaxResults` parameter. To
-#' determine whether there are more sync configurations to list, check the
-#' value of `NextToken` in the output. If there are more sync
-#' configurations to list, you can request them by specifying the
-#' `NextToken` returned in the call to the parameter of a subsequent call.
+#' single call to [`list_resource_data_sync`][ssm_list_resource_data_sync].
+#' You can limit the number of sync configurations returned by using the
+#' `MaxResults` parameter. To determine whether there are more sync
+#' configurations to list, check the value of `NextToken` in the output. If
+#' there are more sync configurations to list, you can request them by
+#' specifying the `NextToken` returned in the call to the parameter of a
+#' subsequent call.
 #'
 #' @usage
 #' ssm_list_resource_data_sync(SyncType, NextToken, MaxResults)
@@ -6158,8 +6174,8 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' limit of 8 KB.
 #' 
 #' Parameters can't be referenced or nested in the values of other
-#' parameters. You can't include `\{\{\}\}` or `\{\{ssm:<i>parameter-name</i>\}\}`
-#' in a parameter value.
+#' parameters. You can't include `\{\{\}\}` or `\{\{ssm:parameter-name\}\}` in a
+#' parameter value.
 #' @param Type The type of parameter that you want to add to the system.
 #' 
 #' `SecureString` is not currently supported for AWS CloudFormation
@@ -6207,7 +6223,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' -   `Key=ParameterType,Value=LicenseKey`
 #' 
 #' To add tags to an existing Systems Manager parameter, use the
-#' AddTagsToResource action.
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
 #' @param Tier The parameter tier to assign to a parameter.
 #' 
 #' Parameter Store offers a standard tier and an advanced tier for
@@ -6238,12 +6254,12 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' 
 #' **Using the Default Tier Configuration**
 #' 
-#' In `PutParameter` requests, you can specify the tier to create the
-#' parameter in. Whenever you specify a tier in the request, Parameter
-#' Store creates or updates the parameter according to that request.
-#' However, if you do not specify a tier in a request, Parameter Store
-#' assigns the tier based on the current Parameter Store default tier
-#' configuration.
+#' In [`put_parameter`][ssm_put_parameter] requests, you can specify the
+#' tier to create the parameter in. Whenever you specify a tier in the
+#' request, Parameter Store creates or updates the parameter according to
+#' that request. However, if you do not specify a tier in a request,
+#' Parameter Store assigns the tier based on the current Parameter Store
+#' default tier configuration.
 #' 
 #' The default tier when you begin using Parameter Store is the
 #' standard-parameter tier. If you use the advanced-parameter tier, you can
@@ -6462,28 +6478,28 @@ ssm_register_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup) 
 #' 
 #' **Example 1**: Specify instance IDs
 #' 
-#' `Key=InstanceIds,Values=<i>instance-id-1</i>,<i>instance-id-2</i>,<i>instance-id-3</i> `
+#' `Key=InstanceIds,Values=instance-id-1,instance-id-2,instance-id-3 `
 #' 
 #' **Example 2**: Use tag key-pairs applied to instances
 #' 
-#' `Key=tag:<i>my-tag-key</i>,Values=<i>my-tag-value-1</i>,<i>my-tag-value-2</i> `
+#' `Key=tag:my-tag-key,Values=my-tag-value-1,my-tag-value-2 `
 #' 
 #' **Example 3**: Use tag-keys applied to instances
 #' 
-#' `Key=tag-key,Values=<i>my-tag-key-1</i>,<i>my-tag-key-2</i> `
+#' `Key=tag-key,Values=my-tag-key-1,my-tag-key-2 `
 #' 
 #' **Example 4**: Use resource group names
 #' 
-#' `Key=resource-groups:Name,Values=<i>resource-group-name</i> `
+#' `Key=resource-groups:Name,Values=resource-group-name `
 #' 
 #' **Example 5**: Use filters for resource group types
 #' 
-#' `Key=resource-groups:ResourceTypeFilters,Values=<i>resource-type-1</i>,<i>resource-type-2</i> `
+#' `Key=resource-groups:ResourceTypeFilters,Values=resource-type-1,resource-type-2 `
 #' 
 #' For `Key=resource-groups:ResourceTypeFilters`, specify resource types in
 #' the following format
 #' 
-#' `Key=resource-groups:ResourceTypeFilters,Values=<i>AWS::EC2::INSTANCE</i>,<i>AWS::EC2::VPC</i> `
+#' `Key=resource-groups:ResourceTypeFilters,Values=AWS::EC2::INSTANCE,AWS::EC2::VPC `
 #' 
 #' For more information about these examples formats, including the best
 #' use case for each one, see [Examples: Register targets with a
@@ -6560,17 +6576,18 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' 
 #' Specify instances using the following format:
 #' 
-#' `Key=InstanceIds,Values=&lt;instance-id-1&gt;,&lt;instance-id-2&gt;`
+#' `Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>`
 #' 
 #' Specify maintenance window targets using the following format:
 #' 
-#' `Key=WindowTargetIds,Values=&lt;window-target-id-1&gt;,&lt;window-target-id-2&gt;`
+#' `Key=WindowTargetIds,Values=<window-target-id-1>,<window-target-id-2>`
 #' @param TaskArn &#91;required&#93; The ARN of the task to run.
 #' @param ServiceRoleArn The ARN of the IAM service role for Systems Manager to assume when
 #' running a maintenance window task. If you do not specify a service role
 #' ARN, Systems Manager uses your account's service-linked role. If no
 #' service-linked role for Systems Manager exists in your account, it is
-#' created when you run `RegisterTaskWithMaintenanceWindow`.
+#' created when you run
+#' [`register_task_with_maintenance_window`][ssm_register_task_with_maintenance_window].
 #' 
 #' For more information, see the following topics in the in the *AWS
 #' Systems Manager User Guide*:
@@ -6796,8 +6813,10 @@ ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
 #' define the default value for a `SettingId`. You can't create a new
 #' `SettingId`, but you can overwrite the default value if you have the
 #' `ssm:UpdateServiceSetting` permission for the setting. Use the
-#' GetServiceSetting API action to view the current value. Use the
-#' UpdateServiceSetting API action to change the default setting.
+#' [`get_service_setting`][ssm_get_service_setting] API action to view the
+#' current value. Use the
+#' [`update_service_setting`][ssm_update_service_setting] API action to
+#' change the default setting.
 #' 
 #' Reset the service setting for the account to the default value as
 #' provisioned by the AWS service team.
@@ -7200,8 +7219,8 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' 
 #' -   `Key=OS,Value=Windows`
 #' 
-#' To add tags to an existing patch baseline, use the AddTagsToResource
-#' action.
+#' To add tags to an existing patch baseline, use the
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
 #'
 #' @section Request syntax:
 #' ```
@@ -7421,9 +7440,9 @@ ssm_start_change_request_execution <- function(ScheduledTime = NULL, DocumentNam
 #' @param Target &#91;required&#93; The instance to connect to for the session.
 #' @param DocumentName The name of the SSM document to define the parameters and plugin
 #' settings for the session. For example, `SSM-SessionManagerRunShell`. You
-#' can call the GetDocument API to verify the document exists before
-#' attempting to start a session. If no document name is provided, a shell
-#' to the instance is launched by default.
+#' can call the [`get_document`][ssm_get_document] API to verify the
+#' document exists before attempting to start a session. If no document
+#' name is provided, a shell to the instance is launched by default.
 #' @param Parameters Reserved for future use.
 #'
 #' @section Request syntax:
@@ -7546,10 +7565,11 @@ ssm_terminate_session <- function(SessionId) {
 #' the document version, schedule, parameters, and Amazon S3 output.
 #' 
 #' In order to call this API action, your IAM user account, group, or role
-#' must be configured with permission to call the DescribeAssociation API
-#' action. If you don't have permission to call DescribeAssociation, then
-#' you receive the following error:
-#' `An error occurred (AccessDeniedException) when calling the UpdateAssociation operation: User: &lt;user_arn&gt; is not authorized to perform: ssm:DescribeAssociation on resource: &lt;resource_arn&gt;`
+#' must be configured with permission to call the
+#' [`describe_association`][ssm_describe_association] API action. If you
+#' don't have permission to call DescribeAssociation, then you receive the
+#' following error:
+#' `An error occurred (AccessDeniedException) when calling the UpdateAssociation operation: User: <user_arn> is not authorized to perform: ssm:DescribeAssociation on resource: <resource_arn>`
 #' 
 #' When you update an association, the association immediately runs against
 #' the specified targets.
@@ -7578,7 +7598,7 @@ ssm_terminate_session <- function(SessionId) {
 #' For SSM documents that are shared with you from other AWS accounts, you
 #' must specify the complete SSM document ARN, in the following format:
 #' 
-#' `arn:aws:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> `
+#' `arn:aws:ssm:region:account-id:document/document-name `
 #' 
 #' For example:
 #' 
@@ -7630,9 +7650,10 @@ ssm_terminate_session <- function(SessionId) {
 #' association is `NON-COMPLIANT`.
 #' 
 #' In `MANUAL` mode, you must specify the `AssociationId` as a parameter
-#' for the PutComplianceItems API action. In this case, compliance data is
-#' not managed by State Manager. It is managed by your direct call to the
-#' PutComplianceItems API action.
+#' for the [`put_compliance_items`][ssm_put_compliance_items] API action.
+#' In this case, compliance data is not managed by State Manager. It is
+#' managed by your direct call to the
+#' [`put_compliance_items`][ssm_put_compliance_items] API action.
 #' 
 #' By default, all associations use `AUTO` mode.
 #' @param ApplyOnlyAtCronInterval By default, when you update an association, the system runs it
@@ -8129,9 +8150,11 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' targets](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
 #' in the *AWS Systems Manager User Guide*.
 #' 
-#' If the value for a parameter in `UpdateMaintenanceWindowTask` is null,
-#' then the corresponding field is not modified. If you set `Replace` to
-#' true, then all fields required by the RegisterTaskWithMaintenanceWindow
+#' If the value for a parameter in
+#' [`update_maintenance_window_task`][ssm_update_maintenance_window_task]
+#' is null, then the corresponding field is not modified. If you set
+#' `Replace` to true, then all fields required by the
+#' [`register_task_with_maintenance_window`][ssm_register_task_with_maintenance_window]
 #' action are required for this request. Optional fields that aren't
 #' specified are set to null.
 #' 
@@ -8169,7 +8192,8 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' running a maintenance window task. If you do not specify a service role
 #' ARN, Systems Manager uses your account's service-linked role. If no
 #' service-linked role for Systems Manager exists in your account, it is
-#' created when you run `RegisterTaskWithMaintenanceWindow`.
+#' created when you run
+#' [`register_task_with_maintenance_window`][ssm_register_task_with_maintenance_window].
 #' 
 #' For more information, see the following topics in the in the *AWS
 #' Systems Manager User Guide*:
@@ -8345,7 +8369,8 @@ ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets =
 #' Changes the Amazon Identity and Access Management (IAM) role that is
 #' assigned to the on-premises instance or virtual machines (VM). IAM roles
 #' are first assigned to these hybrid instances during the activation
-#' process. For more information, see CreateActivation.
+#' process. For more information, see
+#' [`create_activation`][ssm_create_activation].
 #'
 #' @usage
 #' ssm_update_managed_instance_role(InstanceId, IamRole)
@@ -8420,9 +8445,10 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' You can choose to make the data searchable by other users in the account
 #' or you can restrict search access. Searchable data means that all users
 #' with access to the OpsItem Overview page (as provided by the
-#' DescribeOpsItems API action) can view and search on the specified data.
-#' Operational data that is not searchable is only viewable by users who
-#' have access to the OpsItem (as provided by the GetOpsItem API action).
+#' [`describe_ops_items`][ssm_describe_ops_items] API action) can view and
+#' search on the specified data. Operational data that is not searchable is
+#' only viewable by users who have access to the OpsItem (as provided by
+#' the [`get_ops_item`][ssm_get_ops_item] API action).
 #' 
 #' Use the `/aws/resources` key in OperationalData to specify a related
 #' resource in the request. Use the `/aws/automations` key in
@@ -8789,9 +8815,10 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 #' define the default value for a `SettingId`. You can't create a new
 #' `SettingId`, but you can overwrite the default value if you have the
 #' `ssm:UpdateServiceSetting` permission for the setting. Use the
-#' GetServiceSetting API action to view the current value. Or, use the
-#' ResetServiceSetting to change the value back to the original value
-#' defined by the AWS service team.
+#' [`get_service_setting`][ssm_get_service_setting] API action to view the
+#' current value. Or, use the
+#' [`reset_service_setting`][ssm_reset_service_setting] to change the value
+#' back to the original value defined by the AWS service team.
 #' 
 #' Update the service setting for the account.
 #'

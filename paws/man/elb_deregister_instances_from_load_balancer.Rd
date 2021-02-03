@@ -16,8 +16,8 @@ Deregisters the specified instances from the specified load balancer.
 After the instance is deregistered, it no longer receives traffic from
 the load balancer.
 
-You can use DescribeLoadBalancers to verify that the instance is
-deregistered from the load balancer.
+You can use \code{\link[=elb_describe_load_balancers]{describe_load_balancers}} to
+verify that the instance is deregistered from the load balancer.
 
 For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html}{Register or De-Register EC2 Instances}
 in the \emph{Classic Load Balancers Guide}.

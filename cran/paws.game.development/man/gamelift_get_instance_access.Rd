@@ -33,7 +33,8 @@ request, as shown in one of the examples for this operation.
 
 To request access to a specific instance, specify the IDs of both the
 instance and the fleet it belongs to. You can retrieve a fleet's
-instance IDs by calling DescribeInstances. If successful, an
+instance IDs by calling
+\code{\link[=gamelift_describe_instances]{describe_instances}}. If successful, an
 InstanceAccess object is returned that contains the instance's IP
 address and a set of credentials.
 
@@ -45,8 +46,8 @@ address and a set of credentials.
 
 \strong{Related operations}
 \itemize{
-\item DescribeInstances
-\item GetInstanceAccess
+\item \code{\link[=gamelift_describe_instances]{describe_instances}}
+\item \code{\link[=gamelift_get_instance_access]{get_instance_access}}
 }
 }
 \section{Request syntax}{

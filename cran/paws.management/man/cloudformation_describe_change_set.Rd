@@ -14,8 +14,10 @@ to describe.}
 \item{StackName}{If you specified the name of a change set, specify the stack name or ID
 (ARN) of the change set you want to describe.}
 
-\item{NextToken}{A string (provided by the DescribeChangeSet response output) that
-identifies the next page of information that you want to retrieve.}
+\item{NextToken}{A string (provided by the
+\code{\link[=cloudformation_describe_change_set]{describe_change_set}} response
+output) that identifies the next page of information that you want to
+retrieve.}
 }
 \description{
 Returns the inputs for the change set and a list of changes that AWS

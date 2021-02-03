@@ -28,13 +28,13 @@ condition consists of the following:
 \code{gameSessionName}, \code{gameSessionId}, \code{gameSessionProperties},
 \code{maximumSessions}, \code{creationTimeMillis}, \code{playerSessionCount},
 \code{hasAvailablePlayerSessions}.
-\item \strong{Comparator} -- Valid comparators are: \code{=}, \verb{&lt;&gt;}, \verb{&lt;},
-\verb{&gt;}, \verb{&lt;=}, \verb{&gt;=}.
+\item \strong{Comparator} -- Valid comparators are: \code{=}, \verb{<>}, \code{<}, \code{>}, \code{<=},
+\code{>=}.
 \item \strong{Value} -- Value to be searched for. Values may be numbers,
 boolean values (true/false) or strings depending on the operand.
 String values are case sensitive and must be enclosed in single
 quotes. Special characters must be escaped. Boolean and string
-values can only be used with the comparators \code{=} and \verb{&lt;&gt;}. For
+values can only be used with the comparators \code{=} and \verb{<>}. For
 example, the following filter expression searches on
 \code{gameSessionName}:
 "\verb{FilterExpression\\": \\"gameSessionName = \\'Matt\\\\\\'s Awesome Game 1\\'\\"}.
@@ -47,7 +47,7 @@ keywords \code{AND}, \code{OR}, and \code{NOT} and parentheses as needed. For ex
 Session search evaluates conditions from left to right using the
 following precedence rules:
 \enumerate{
-\item \code{=}, \verb{&lt;&gt;}, \verb{&lt;}, \verb{&gt;}, \verb{&lt;=}, \verb{&gt;=}
+\item \code{=}, \verb{<>}, \code{<}, \code{>}, \code{<=}, \code{>=}
 \item Parentheses
 \item NOT
 \item AND
@@ -56,7 +56,7 @@ following precedence rules:
 
 For example, this filter expression retrieves game sessions hosting at
 least ten players that have an open player slot:
-\code{"maximumSessions&gt;=10 AND hasAvailablePlayerSessions=true"}.}
+\code{"maximumSessions>=10 AND hasAvailablePlayerSessions=true"}.}
 
 \item{SortExpression}{Instructions on how to sort the search results. If no sort expression is
 included, the request returns results in random order. A sort expression
@@ -91,9 +91,10 @@ following game session attributes:
 \item \strong{gameSessionId} -- A unique identifier for the game session. You
 can use either a \code{GameSessionId} or \code{GameSessionArn} value.
 \item \strong{gameSessionName} -- Name assigned to a game session. This value
-is set when requesting a new game session with CreateGameSession or
-updating with UpdateGameSession. Game session names do not need to
-be unique to a game session.
+is set when requesting a new game session with
+\code{\link[=gamelift_create_game_session]{create_game_session}} or updating
+with \code{\link[=gamelift_update_game_session]{update_game_session}}. Game
+session names do not need to be unique to a game session.
 \item \strong{gameSessionProperties} -- Custom data defined in a game session's
 \code{GameProperty} parameter. \code{GameProperty} values are stored as
 key:value pairs; the filter expression must indicate the key and a
@@ -104,7 +105,8 @@ game sessions with custom data containing the key:value pair
 are searched as strings.
 \item \strong{maximumSessions} -- Maximum number of player sessions allowed for
 a game session. This value is set when requesting a new game session
-with CreateGameSession or updating with UpdateGameSession.
+with \code{\link[=gamelift_create_game_session]{create_game_session}} or
+updating with \code{\link[=gamelift_update_game_session]{update_game_session}}.
 \item \strong{creationTimeMillis} -- Value indicating when a game session was
 created. It is expressed in Unix time as milliseconds.
 \item \strong{playerSessionCount} -- Number of players currently connected to a
@@ -133,19 +135,20 @@ You can search for game sessions one fleet at a time only. To find game
 sessions across multiple fleets, you must search each fleet separately
 and combine the results. This search feature finds only game sessions
 that are in \code{ACTIVE} status. To locate games in statuses other than
-active, use DescribeGameSessionDetails.
+active, use
+\code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}.
 \itemize{
-\item CreateGameSession
-\item DescribeGameSessions
-\item DescribeGameSessionDetails
-\item SearchGameSessions
-\item UpdateGameSession
-\item GetGameSessionLogUrl
+\item \code{\link[=gamelift_create_game_session]{create_game_session}}
+\item \code{\link[=gamelift_describe_game_sessions]{describe_game_sessions}}
+\item \code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}
+\item \code{\link[=gamelift_search_game_sessions]{search_game_sessions}}
+\item \code{\link[=gamelift_update_game_session]{update_game_session}}
+\item \code{\link[=gamelift_get_game_session_log_url]{get_game_session_log_url}}
 \item Game session placements
 \itemize{
-\item StartGameSessionPlacement
-\item DescribeGameSessionPlacement
-\item StopGameSessionPlacement
+\item \code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+\item \code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
+\item \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
 }
 }
 }

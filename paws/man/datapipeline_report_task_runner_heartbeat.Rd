@@ -25,11 +25,12 @@ be an exact, case-sensitive, match.}
 \item{hostname}{The public DNS name of the task runner.}
 }
 \description{
-Task runners call \code{ReportTaskRunnerHeartbeat} every 15 minutes to
-indicate that they are operational. If the AWS Data Pipeline Task Runner
-is launched on a resource managed by AWS Data Pipeline, the web service
-can use this call to detect when the task runner application has failed
-and restart a new instance.
+Task runners call
+\code{\link[=datapipeline_report_task_runner_heartbeat]{report_task_runner_heartbeat}}
+every 15 minutes to indicate that they are operational. If the AWS Data
+Pipeline Task Runner is launched on a resource managed by AWS Data
+Pipeline, the web service can use this call to detect when the task
+runner application has failed and restart a new instance.
 }
 \section{Request syntax}{
 \preformatted{svc$report_task_runner_heartbeat(

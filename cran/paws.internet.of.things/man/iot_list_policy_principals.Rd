@@ -19,8 +19,8 @@ ascending creation order.}
 \description{
 Lists the principals associated with the specified policy.
 
-\strong{Note:} This API is deprecated. Please use ListTargetsForPolicy
-instead.
+\strong{Note:} This API is deprecated. Please use
+\code{\link[=iot_list_targets_for_policy]{list_targets_for_policy}} instead.
 }
 \section{Request syntax}{
 \preformatted{svc$list_policy_principals(

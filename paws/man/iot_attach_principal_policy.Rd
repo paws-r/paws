@@ -17,7 +17,8 @@ CreateCertificate operation) or an Amazon Cognito ID.}
 Attaches the specified policy to the specified principal (certificate or
 other credential).
 
-\strong{Note:} This API is deprecated. Please use AttachPolicy instead.
+\strong{Note:} This API is deprecated. Please use
+\code{\link[=iot_attach_policy]{attach_policy}} instead.
 }
 \section{Request syntax}{
 \preformatted{svc$attach_principal_policy(

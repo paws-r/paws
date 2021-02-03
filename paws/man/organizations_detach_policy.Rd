@@ -9,15 +9,19 @@ organizations_detach_policy(PolicyId, TargetId)
 }
 \arguments{
 \item{PolicyId}{[required] The unique identifier (ID) of the policy you want to detach. You can get
-the ID from the ListPolicies or ListPoliciesForTarget operations.
+the ID from the \code{\link[=organizations_list_policies]{list_policies}} or
+\code{\link[=organizations_list_policies_for_target]{list_policies_for_target}}
+operations.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lowercase or uppercase
 letters, digits, or the underscore character (\\_).}
 
 \item{TargetId}{[required] The unique identifier (ID) of the root, OU, or account that you want to
-detach the policy from. You can get the ID from the ListRoots,
-ListOrganizationalUnitsForParent, or ListAccounts operations.
+detach the policy from. You can get the ID from the
+\code{\link[=organizations_list_roots]{list_roots}},
+\code{\link[=organizations_list_organizational_units_for_parent]{list_organizational_units_for_parent}},
+or \code{\link[=organizations_list_accounts]{list_accounts}} operations.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a target ID
 string requires one of the following:

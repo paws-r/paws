@@ -16,7 +16,8 @@ the dataset group.}
 Replaces the datasets in a dataset group with the specified datasets.
 
 The \code{Status} of the dataset group must be \code{ACTIVE} before you can use
-the dataset group to create a predictor. Use the DescribeDatasetGroup
+the dataset group to create a predictor. Use the
+\code{\link[=forecastservice_describe_dataset_group]{describe_dataset_group}}
 operation to get the status.
 }
 \section{Request syntax}{

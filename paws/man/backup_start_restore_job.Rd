@@ -15,9 +15,11 @@ backup_start_restore_job(RecoveryPointArn, Metadata, IamRoleArn,
 resource name, required to restore a recovery point.
 
 You can get configuration metadata about a resource at the time it was
-backed up by calling \code{GetRecoveryPointRestoreMetadata}. However, values
-in addition to those provided by \code{GetRecoveryPointRestoreMetadata} might
-be required to restore a resource. For example, you might need to
+backed up by calling
+\code{\link[=backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata}}.
+However, values in addition to those provided by
+\code{\link[=backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata}}
+might be required to restore a resource. For example, you might need to
 provide a new resource name if the original already exists.
 
 You need to specify specific metadata to restore an Amazon Elastic File
@@ -25,7 +27,7 @@ System (Amazon EFS) instance:
 \itemize{
 \item \code{file-system-id}: The ID of the Amazon EFS file system that is
 backed up by AWS Backup. Returned in
-\code{GetRecoveryPointRestoreMetadata}.
+\code{\link[=backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata}}.
 \item \code{Encrypted}: A Boolean value that, if true, specifies that the file
 system is encrypted. If \code{KmsKeyId} is specified, \code{Encrypted} must be
 set to \code{true}.
@@ -49,7 +51,7 @@ create the target recovery point; for example,
 \verb{arn:aws:iam::123456789012:role/S3Access}.}
 
 \item{IdempotencyToken}{A customer chosen string that can be used to distinguish between calls
-to \code{StartRestoreJob}.}
+to \code{\link[=backup_start_restore_job]{start_restore_job}}.}
 
 \item{ResourceType}{Starts a job to restore a recovery point for one of the following
 resources:

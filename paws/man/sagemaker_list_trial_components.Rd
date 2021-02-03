@@ -31,9 +31,10 @@ by \code{ExperimentName} or \code{TrialName}.}
 \item{MaxResults}{The maximum number of components to return in the response. The default
 value is 10.}
 
-\item{NextToken}{If the previous call to \code{ListTrialComponents} didn't return the full set
-of components, the call returns a token for getting the next set of
-components.}
+\item{NextToken}{If the previous call to
+\code{\link[=sagemaker_list_trial_components]{list_trial_components}} didn't return
+the full set of components, the call returns a token for getting the
+next set of components.}
 }
 \description{
 Lists the trial components in your account. You can sort the list by

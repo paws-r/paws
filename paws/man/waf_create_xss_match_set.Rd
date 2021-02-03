@@ -10,7 +10,8 @@ waf_create_xss_match_set(Name, ChangeToken)
 \item{Name}{[required] A friendly name or description for the XssMatchSet that you're creating.
 You can't change \code{Name} after you create the \code{XssMatchSet}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -29,14 +30,16 @@ malicious strings.
 
 To create and configure an \code{XssMatchSet}, perform the following steps:
 \enumerate{
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{CreateXssMatchSet} request.
-\item Submit a \code{CreateXssMatchSet} request.
-\item Use \code{GetChangeToken} to get the change token that you provide in the
-\code{ChangeToken} parameter of an UpdateXssMatchSet request.
-\item Submit an UpdateXssMatchSet request to specify the parts of web
-requests in which you want to allow, block, or count cross-site
-scripting attacks.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=waf_create_xss_match_set]{create_xss_match_set}} request.
+\item Submit a \code{\link[=waf_create_xss_match_set]{create_xss_match_set}} request.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=waf_update_xss_match_set]{update_xss_match_set}} request.
+\item Submit an \code{\link[=waf_update_xss_match_set]{update_xss_match_set}} request
+to specify the parts of web requests in which you want to allow,
+block, or count cross-site scripting attacks.
 }
 
 For more information about how to use the AWS WAF API to allow or block

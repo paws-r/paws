@@ -47,11 +47,11 @@ Management Console. The built-in targets are
 \verb{EC2 CreateSnapshot API call}, \verb{EC2 RebootInstances API call},
 \verb{EC2 StopInstances API call}, and \verb{EC2 TerminateInstances API call}.
 
-For some target types, \code{PutTargets} provides target-specific parameters.
-If the target is a Kinesis data stream, you can optionally specify which
-shard the event goes to by using the \code{KinesisParameters} argument. To
-invoke a command on multiple EC2 instances with one rule, you can use
-the \code{RunCommandParameters} field.
+For some target types, \code{\link[=eventbridge_put_targets]{put_targets}} provides
+target-specific parameters. If the target is a Kinesis data stream, you
+can optionally specify which shard the event goes to by using the
+\code{KinesisParameters} argument. To invoke a command on multiple EC2
+instances with one rule, you can use the \code{RunCommandParameters} field.
 
 To be able to make API calls against the resources that you own, Amazon
 EventBridge (CloudWatch Events) needs the appropriate permissions. For
@@ -59,18 +59,20 @@ AWS Lambda and Amazon SNS resources, EventBridge relies on
 resource-based policies. For EC2 instances, Kinesis data streams, AWS
 Step Functions state machines and API Gateway REST APIs, EventBridge
 relies on IAM roles that you specify in the \code{RoleARN} argument in
-\code{PutTargets}. For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/auth-and-access-control-eventbridge.html}{Authentication and Access Control}
+\code{\link[=eventbridge_put_targets]{put_targets}}. For more information, see
+\href{https://docs.aws.amazon.com/eventbridge/latest/userguide/auth-and-access-control-eventbridge.html}{Authentication and Access Control}
 in the \emph{Amazon EventBridge User Guide}.
 
 If another AWS account is in the same region and has granted you
-permission (using \code{PutPermission}), you can send events to that account.
-Set that account's event bus as a target of the rules in your account.
-To send the matched events to the other account, specify that account's
-event bus as the \code{Arn} value when you run \code{PutTargets}. If your account
-sends events to another account, your account is charged for each sent
-event. Each event sent to another account is charged as a custom event.
-The account receiving the event is not charged. For more information,
-see \href{https://aws.amazon.com/eventbridge/pricing/}{Amazon EventBridge (CloudWatch Events) Pricing}.
+permission (using \code{\link[=eventbridge_put_permission]{put_permission}}), you
+can send events to that account. Set that account's event bus as a
+target of the rules in your account. To send the matched events to the
+other account, specify that account's event bus as the \code{Arn} value when
+you run \code{\link[=eventbridge_put_targets]{put_targets}}. If your account sends
+events to another account, your account is charged for each sent event.
+Each event sent to another account is charged as a custom event. The
+account receiving the event is not charged. For more information, see
+\href{https://aws.amazon.com/eventbridge/pricing/}{Amazon EventBridge (CloudWatch Events) Pricing}.
 
 \code{Input}, \code{InputPath}, and \code{InputTransformer} are not available with
 \code{PutTarget} if the target is an event bus of a different AWS account.
@@ -83,7 +85,7 @@ see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-c
 in the \emph{Amazon EventBridge User Guide}.
 
 For more information about enabling cross-account events, see
-PutPermission.
+\code{\link[=eventbridge_put_permission]{put_permission}}.
 
 \strong{Input}, \strong{InputPath}, and \strong{InputTransformer} are mutually
 exclusive and optional parameters of a target. When a rule is triggered

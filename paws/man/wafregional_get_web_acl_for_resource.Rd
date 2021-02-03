@@ -13,9 +13,9 @@ ACL, either an application load balancer or Amazon API Gateway stage.
 The ARN should be in one of the following formats:
 \itemize{
 \item For an Application Load Balancer:
-\verb{arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i>/<i>load-balancer-id</i> }
+\code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id }
 \item For an Amazon API Gateway stage:
-\verb{arn:aws:apigateway:<i>region</i>::/restapis/<i>api-id</i>/stages/<i>stage-name</i> }
+\verb{arn:aws:apigateway:region::/restapis/api-id/stages/stage-name }
 }}
 }
 \description{

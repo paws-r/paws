@@ -13,13 +13,13 @@ simpledb_list_domains(MaxNumberOfDomains, NextToken)
 \item{NextToken}{A string informing Amazon SimpleDB where to start the next list of domain names.}
 }
 \description{
-The \code{ListDomains} operation lists all domains associated with the Access
-Key ID. It returns domain names up to the limit set by
-MaxNumberOfDomains. A NextToken is returned if there are more than
-\code{MaxNumberOfDomains} domains. Calling \code{ListDomains} successive times
-with the \code{NextToken} provided by the operation returns up to
-\code{MaxNumberOfDomains} more domain names with each successive operation
-call.
+The \code{\link[=simpledb_list_domains]{list_domains}} operation lists all domains
+associated with the Access Key ID. It returns domain names up to the
+limit set by MaxNumberOfDomains. A NextToken is returned if there are
+more than \code{MaxNumberOfDomains} domains. Calling
+\code{\link[=simpledb_list_domains]{list_domains}} successive times with the
+\code{NextToken} provided by the operation returns up to \code{MaxNumberOfDomains}
+more domain names with each successive operation call.
 }
 \section{Request syntax}{
 \preformatted{svc$list_domains(

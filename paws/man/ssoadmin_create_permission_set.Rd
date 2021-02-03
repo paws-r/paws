@@ -28,7 +28,7 @@ authentication process.}
 Creates a permission set within a specified SSO instance.
 
 To grant users and groups access to AWS account resources, use
-\verb{<a>CreateAccountAssignment</a>}.
+\code{\link[=ssoadmin_create_account_assignment]{create_account_assignment}}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_permission_set(

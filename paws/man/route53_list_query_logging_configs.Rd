@@ -12,15 +12,18 @@ route53_list_query_logging_configs(HostedZoneId, NextToken, MaxResults)
 \item{HostedZoneId}{(Optional) If you want to list the query logging configuration that is
 associated with a hosted zone, specify the ID in \code{HostedZoneId}.
 
-If you don't specify a hosted zone ID, \code{ListQueryLoggingConfigs} returns
-all of the configurations that are associated with the current AWS
-account.}
+If you don't specify a hosted zone ID,
+\code{\link[=route53_list_query_logging_configs]{list_query_logging_configs}}
+returns all of the configurations that are associated with the current
+AWS account.}
 
 \item{NextToken}{(Optional) If the current AWS account has more than \code{MaxResults} query
 logging configurations, use \code{NextToken} to get the second and subsequent
 pages of results.
 
-For the first \code{ListQueryLoggingConfigs} request, omit this value.
+For the first
+\code{\link[=route53_list_query_logging_configs]{list_query_logging_configs}}
+request, omit this value.
 
 For the second and subsequent requests, get the value of \code{NextToken}
 from the previous response and specify that value for \code{NextToken} in the
@@ -42,7 +45,7 @@ the current AWS account or the configuration that is associated with a
 specified hosted zone.
 
 For more information about DNS query logs, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html}{CreateQueryLoggingConfig}.
+\code{\link[=route53_create_query_logging_config]{create_query_logging_config}}.
 Additional information, including the format of DNS query logs, appears
 in \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html}{Logging DNS Queries}
 in the \emph{Amazon Route 53 Developer Guide}.

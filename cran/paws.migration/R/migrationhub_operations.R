@@ -12,8 +12,10 @@ NULL
 #' receiving the migration, with the migration task performed by a
 #' migration tool. This API has the following traits:
 #' 
-#' -   Migration tools can call the `AssociateCreatedArtifact` operation to
-#'     indicate which AWS artifact is associated with a migration task.
+#' -   Migration tools can call the
+#'     [`associate_created_artifact`][migrationhub_associate_created_artifact]
+#'     operation to indicate which AWS artifact is associated with a
+#'     migration task.
 #' 
 #' -   The created artifact name must be provided in ARN (Amazon Resource
 #'     Name) format which will contain information about type and region;
@@ -176,25 +178,32 @@ migrationhub_create_progress_update_stream <- function(ProgressUpdateStreamName,
 #' previously created as an AWS resource used for access control. This API
 #' has the following traits:
 #' 
-#' -   The only parameter needed for `DeleteProgressUpdateStream` is the
-#'     stream name (same as a `CreateProgressUpdateStream` call).
+#' -   The only parameter needed for
+#'     [`delete_progress_update_stream`][migrationhub_delete_progress_update_stream]
+#'     is the stream name (same as a
+#'     [`create_progress_update_stream`][migrationhub_create_progress_update_stream]
+#'     call).
 #' 
 #' -   The call will return, and a background process will asynchronously
 #'     delete the stream and all of its resources (tasks, associated
 #'     resources, resource attributes, created artifacts).
 #' 
 #' -   If the stream takes time to be deleted, it might still show up on a
-#'     `ListProgressUpdateStreams` call.
+#'     [`list_progress_update_streams`][migrationhub_list_progress_update_streams]
+#'     call.
 #' 
-#' -   `CreateProgressUpdateStream`, `ImportMigrationTask`,
-#'     `NotifyMigrationTaskState`, and all Associate\[*\] APIs related to
-#'     the tasks belonging to the stream will throw "InvalidInputException"
-#'     if the stream of the same name is in the process of being deleted.
+#' -   [`create_progress_update_stream`][migrationhub_create_progress_update_stream],
+#'     [`import_migration_task`][migrationhub_import_migration_task],
+#'     [`notify_migration_task_state`][migrationhub_notify_migration_task_state],
+#'     and all Associate\[*\] APIs related to the tasks belonging to the
+#'     stream will throw "InvalidInputException" if the stream of the same
+#'     name is in the process of being deleted.
 #' 
 #' -   Once the stream and all of its resources are deleted,
-#'     `CreateProgressUpdateStream` for a stream of the same name will
-#'     succeed, and that stream will be an entirely new logical resource
-#'     (without any resources associated with the old stream).
+#'     [`create_progress_update_stream`][migrationhub_create_progress_update_stream]
+#'     for a stream of the same name will succeed, and that stream will be
+#'     an entirely new logical resource (without any resources associated
+#'     with the old stream).
 #'
 #' @usage
 #' migrationhub_delete_progress_update_stream(ProgressUpdateStreamName,
@@ -431,8 +440,9 @@ migrationhub_disassociate_discovered_resource <- function(ProgressUpdateStream, 
 #' Registers a new migration task which represents a server, database,
 #' etc., being migrated to AWS by a migration tool.
 #' 
-#' This API is a prerequisite to calling the `NotifyMigrationTaskState` API
-#' as the migration tool must first register the migration task with
+#' This API is a prerequisite to calling the
+#' [`notify_migration_task_state`][migrationhub_notify_migration_task_state]
+#' API as the migration tool must first register the migration task with
 #' Migration Hub.
 #'
 #' @usage
@@ -534,7 +544,9 @@ migrationhub_list_application_states <- function(ApplicationIds = NULL, NextToke
 #'     place.
 #' 
 #' -   Shows the artifacts created by the migration tool that was
-#'     associated by the `AssociateCreatedArtifact` API.
+#'     associated by the
+#'     [`associate_created_artifact`][migrationhub_associate_created_artifact]
+#'     API.
 #' 
 #' -   Lists created artifacts in a paginated interface.
 #'
@@ -780,8 +792,9 @@ migrationhub_notify_application_state <- function(ApplicationId, Status, UpdateD
 #' Notifies Migration Hub of the current status, progress, or other detail
 #' regarding a migration task. This API has the following traits:
 #' 
-#' -   Migration tools will call the `NotifyMigrationTaskState` API to
-#'     share the latest progress and status.
+#' -   Migration tools will call the
+#'     [`notify_migration_task_state`][migrationhub_notify_migration_task_state]
+#'     API to share the latest progress and status.
 #' 
 #' -   `MigrationTaskName` is used for addressing updates to the correct
 #'     target.
@@ -849,7 +862,9 @@ migrationhub_notify_migration_task_state <- function(ProgressUpdateStream, Migra
 #' @description
 #' Provides identifying details of the resource being migrated so that it
 #' can be associated in the Application Discovery Service repository. This
-#' association occurs asynchronously after `PutResourceAttributes` returns.
+#' association occurs asynchronously after
+#' [`put_resource_attributes`][migrationhub_put_resource_attributes]
+#' returns.
 #' 
 #' -   Keep in mind that subsequent calls to PutResourceAttributes will
 #'     override previously stored attributes. For example, if it is first
@@ -863,7 +878,8 @@ migrationhub_notify_migration_task_state <- function(ProgressUpdateStream, Migra
 #' 
 #' Because this is an asynchronous call, it will always return 200, whether
 #' an association occurs or not. To confirm if an association was found
-#' based on the provided details, call `ListDiscoveredResources`.
+#' based on the provided details, call
+#' [`list_discovered_resources`][migrationhub_list_discovered_resources].
 #'
 #' @usage
 #' migrationhub_put_resource_attributes(ProgressUpdateStream,

@@ -33,17 +33,20 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \description{
 Creates a friendly name for a customer master key (CMK). You can use an
-alias to identify a CMK in the AWS KMS console, in the DescribeKey
-operation and in \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations},
-such as Encrypt and GenerateDataKey.
+alias to identify a CMK in the AWS KMS console, in the
+\code{\link[=kms_describe_key]{describe_key}} operation and in \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations},
+such as \code{\link[=kms_encrypt]{encrypt}} and
+\code{\link[=kms_generate_data_key]{generate_data_key}}.
 
 You can also change the CMK that's associated with the alias
-(UpdateAlias) or delete the alias (DeleteAlias) at any time. These
-operations don't affect the underlying CMK.
+(\code{\link[=kms_update_alias]{update_alias}}) or delete the alias
+(\code{\link[=kms_delete_alias]{delete_alias}}) at any time. These operations don't
+affect the underlying CMK.
 
 You can associate the alias with any customer managed CMK in the same
 AWS Region. Each alias is associated with only on CMK at a time, but a
@@ -56,7 +59,7 @@ information about aliases, see \href{https://docs.aws.amazon.com/kms/latest/deve
 in the \emph{AWS Key Management Service Developer Guide}.
 
 This operation does not return a response. To get the alias that you
-created, use the ListAliases operation.
+created, use the \code{\link[=kms_list_aliases]{list_aliases}} operation.
 
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
@@ -78,9 +81,9 @@ in the \emph{AWS Key Management Service Developer Guide}.
 
 \strong{Related operations:}
 \itemize{
-\item DeleteAlias
-\item ListAliases
-\item UpdateAlias
+\item \code{\link[=kms_delete_alias]{delete_alias}}
+\item \code{\link[=kms_list_aliases]{list_aliases}}
+\item \code{\link[=kms_update_alias]{update_alias}}
 }
 }
 \section{Request syntax}{

@@ -164,11 +164,11 @@ spaces. You can also include underscores or any of the following
 characters: =,.@:/-}
 
 \item{SerialNumber}{The identification number of the MFA device that is associated with the
-user who is making the \code{AssumeRole} call. Specify this value if the
-trust policy of the role being assumed includes a condition that
-requires MFA authentication. The value is either the serial number for a
-hardware device (such as \code{GAHT12345678}) or an Amazon Resource Name
-(ARN) for a virtual device (such as
+user who is making the \code{\link[=sts_assume_role]{assume_role}} call. Specify
+this value if the trust policy of the role being assumed includes a
+condition that requires MFA authentication. The value is either the
+serial number for a hardware device (such as \code{GAHT12345678}) or an
+Amazon Resource Name (ARN) for a virtual device (such as
 \verb{arn:aws:iam::123456789012:mfa/user}).
 
 The regex used to validate this parameter is a string of characters
@@ -179,8 +179,8 @@ characters: =,.@-}
 \item{TokenCode}{The value provided by the MFA device, if the trust policy of the role
 being assumed requires MFA (that is, if the policy includes a condition
 that tests for MFA). If the role being assumed requires MFA and if the
-\code{TokenCode} value is missing or expired, the \code{AssumeRole} call returns
-an "access denied" error.
+\code{TokenCode} value is missing or expired, the
+\code{\link[=sts_assume_role]{assume_role}} call returns an "access denied" error.
 
 The format for this parameter, as described by its regex pattern, is a
 sequence of six numeric digits.}
@@ -189,16 +189,17 @@ sequence of six numeric digits.}
 Returns a set of temporary security credentials that you can use to
 access AWS resources that you might not normally have access to. These
 temporary credentials consist of an access key ID, a secret access key,
-and a security token. Typically, you use \code{AssumeRole} within your
-account or for cross-account access. For a comparison of \code{AssumeRole}
-with other API operations that produce temporary credentials, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials}
+and a security token. Typically, you use
+\code{\link[=sts_assume_role]{assume_role}} within your account or for
+cross-account access. For a comparison of
+\code{\link[=sts_assume_role]{assume_role}} with other API operations that produce
+temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials}
 and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the AWS STS API operations}
 in the \emph{IAM User Guide}.
 
-You cannot use AWS account root user credentials to call \code{AssumeRole}.
-You must use credentials for an IAM user or an IAM role to call
-\code{AssumeRole}.
+You cannot use AWS account root user credentials to call
+\code{\link[=sts_assume_role]{assume_role}}. You must use credentials for an IAM
+user or an IAM role to call \code{\link[=sts_assume_role]{assume_role}}.
 
 For cross-account access, imagine that you own multiple accounts and
 need to access resources in each account. You could create long-term
@@ -212,12 +213,13 @@ in the \emph{IAM User Guide}.
 
 \strong{Session Duration}
 
-By default, the temporary security credentials created by \code{AssumeRole}
-last for one hour. However, you can use the optional \code{DurationSeconds}
-parameter to specify the duration of your session. You can provide a
-value from 900 seconds (15 minutes) up to the maximum session duration
-setting for the role. This setting can have a value from 1 hour to 12
-hours. To learn how to view the maximum value for your role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session}{View the Maximum Session Duration Setting for a Role}
+By default, the temporary security credentials created by
+\code{\link[=sts_assume_role]{assume_role}} last for one hour. However, you can use
+the optional \code{DurationSeconds} parameter to specify the duration of your
+session. You can provide a value from 900 seconds (15 minutes) up to the
+maximum session duration setting for the role. This setting can have a
+value from 1 hour to 12 hours. To learn how to view the maximum value
+for your role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session}{View the Maximum Session Duration Setting for a Role}
 in the \emph{IAM User Guide}. The maximum session duration limit applies when
 you use the \verb{AssumeRole*} API operations or the \verb{assume-role*} CLI
 commands. However the limit does not apply when you use those operations
@@ -226,10 +228,11 @@ in the \emph{IAM User Guide}.
 
 \strong{Permissions}
 
-The temporary security credentials created by \code{AssumeRole} can be used
-to make API calls to any AWS service with the following exception: You
-cannot call the AWS STS \code{GetFederationToken} or \code{GetSessionToken} API
-operations.
+The temporary security credentials created by
+\code{\link[=sts_assume_role]{assume_role}} can be used to make API calls to any
+AWS service with the following exception: You cannot call the AWS STS
+\code{\link[=sts_get_federation_token]{get_federation_token}} or
+\code{\link[=sts_get_session_token]{get_session_token}} API operations.
 
 (Optional) You can pass inline or managed \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{session policies}
 to this operation. You can pass a single JSON policy document to use as
@@ -253,9 +256,9 @@ accounts are allowed to delegate that access to users in the account.
 A user who wants to access a role in a different account must also have
 permissions that are delegated from the user account administrator. The
 administrator must attach a policy that allows the user to call
-\code{AssumeRole} for the ARN of the role in the other account. If the user
-is in the same account as the role, then you can do either of the
-following:
+\code{\link[=sts_assume_role]{assume_role}} for the ARN of the role in the other
+account. If the user is in the same account as the role, then you can do
+either of the following:
 \itemize{
 \item Attach a policy to the user (identical to the previous user in a
 different account).
@@ -288,23 +291,24 @@ in the \emph{IAM User Guide}.
 \strong{Using MFA with AssumeRole}
 
 (Optional) You can include multi-factor authentication (MFA) information
-when you call \code{AssumeRole}. This is useful for cross-account scenarios
-to ensure that the user that assumes the role has been authenticated
-with an AWS MFA device. In that scenario, the trust policy of the role
-being assumed includes a condition that tests for MFA authentication. If
-the caller does not include valid MFA information, the request to assume
-the role is denied. The condition in a trust policy that tests for MFA
-authentication might look like the following example.
+when you call \code{\link[=sts_assume_role]{assume_role}}. This is useful for
+cross-account scenarios to ensure that the user that assumes the role
+has been authenticated with an AWS MFA device. In that scenario, the
+trust policy of the role being assumed includes a condition that tests
+for MFA authentication. If the caller does not include valid MFA
+information, the request to assume the role is denied. The condition in
+a trust policy that tests for MFA authentication might look like the
+following example.
 
 \verb{"Condition": \\\{"Bool": \\\{"aws:MultiFactorAuthPresent": true\\\}\\\}}
 
 For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_configure-api-require.html}{Configuring MFA-Protected API Access}
 in the \emph{IAM User Guide} guide.
 
-To use MFA with \code{AssumeRole}, you pass values for the \code{SerialNumber} and
-\code{TokenCode} parameters. The \code{SerialNumber} value identifies the user's
-hardware or virtual MFA device. The \code{TokenCode} is the time-based
-one-time password (TOTP) that the MFA device produces.
+To use MFA with \code{\link[=sts_assume_role]{assume_role}}, you pass values for
+the \code{SerialNumber} and \code{TokenCode} parameters. The \code{SerialNumber} value
+identifies the user's hardware or virtual MFA device. The \code{TokenCode} is
+the time-based one-time password (TOTP) that the MFA device produces.
 }
 \section{Request syntax}{
 \preformatted{svc$assume_role(

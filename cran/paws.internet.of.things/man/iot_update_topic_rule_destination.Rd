@@ -13,31 +13,38 @@ iot_update_topic_rule_destination(arn, status)
 \subsection{IN\\_PROGRESS}{
 
 A topic rule destination was created but has not been confirmed. You can
-set \code{status} to \code{IN_PROGRESS} by calling \code{UpdateTopicRuleDestination}.
-Calling \code{UpdateTopicRuleDestination} causes a new confirmation challenge
-to be sent to your confirmation endpoint.
+set \code{status} to \code{IN_PROGRESS} by calling
+\code{\link[=iot_update_topic_rule_destination]{update_topic_rule_destination}}.
+Calling
+\code{\link[=iot_update_topic_rule_destination]{update_topic_rule_destination}}
+causes a new confirmation challenge to be sent to your confirmation
+endpoint.
 }
 
 \subsection{ENABLED}{
 
 Confirmation was completed, and traffic to this destination is allowed.
 You can set \code{status} to \code{DISABLED} by calling
-\code{UpdateTopicRuleDestination}.
+\code{\link[=iot_update_topic_rule_destination]{update_topic_rule_destination}}.
 }
 
 \subsection{DISABLED}{
 
 Confirmation was completed, and traffic to this destination is not
 allowed. You can set \code{status} to \code{ENABLED} by calling
-\code{UpdateTopicRuleDestination}.
+\code{\link[=iot_update_topic_rule_destination]{update_topic_rule_destination}}.
 }
 
 \subsection{ERROR}{
 
 Confirmation could not be completed, for example if the confirmation
-timed out. You can call \code{GetTopicRuleDestination} for details about the
-error. You can set \code{status} to \code{IN_PROGRESS} by calling
-\code{UpdateTopicRuleDestination}. Calling \code{UpdateTopicRuleDestination}
+timed out. You can call
+\code{\link[=iot_get_topic_rule_destination]{get_topic_rule_destination}} for
+details about the error. You can set \code{status} to \code{IN_PROGRESS} by
+calling
+\code{\link[=iot_update_topic_rule_destination]{update_topic_rule_destination}}.
+Calling
+\code{\link[=iot_update_topic_rule_destination]{update_topic_rule_destination}}
 causes a new confirmation challenge to be sent to your confirmation
 endpoint.
 }}

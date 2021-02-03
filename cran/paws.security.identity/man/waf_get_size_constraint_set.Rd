@@ -8,8 +8,9 @@ waf_get_size_constraint_set(SizeConstraintSetId)
 }
 \arguments{
 \item{SizeConstraintSetId}{[required] The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to get.
-\code{SizeConstraintSetId} is returned by CreateSizeConstraintSet and by
-ListSizeConstraintSets.}
+\code{SizeConstraintSetId} is returned by
+\code{\link[=waf_create_size_constraint_set]{create_size_constraint_set}} and by
+\code{\link[=waf_list_size_constraint_sets]{list_size_constraint_sets}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

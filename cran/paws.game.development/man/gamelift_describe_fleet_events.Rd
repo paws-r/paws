@@ -40,21 +40,22 @@ collection of event log entries matching the request are returned.
 
 \strong{Related operations}
 \itemize{
-\item CreateFleet
-\item ListFleets
-\item DeleteFleet
+\item \code{\link[=gamelift_create_fleet]{create_fleet}}
+\item \code{\link[=gamelift_list_fleets]{list_fleets}}
+\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
 \item Describe fleets:
 \itemize{
-\item DescribeFleetAttributes
-\item DescribeFleetCapacity
-\item DescribeFleetPortSettings
-\item DescribeFleetUtilization
-\item DescribeRuntimeConfiguration
-\item DescribeEC2InstanceLimits
-\item DescribeFleetEvents
+\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
+\item \code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}}
+\item \code{\link[=gamelift_describe_fleet_port_settings]{describe_fleet_port_settings}}
+\item \code{\link[=gamelift_describe_fleet_utilization]{describe_fleet_utilization}}
+\item \code{\link[=gamelift_describe_runtime_configuration]{describe_runtime_configuration}}
+\item \code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
+\item \code{\link[=gamelift_describe_fleet_events]{describe_fleet_events}}
 }
-\item UpdateFleetAttributes
-\item StartFleetActions or StopFleetActions
+\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
+\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
 }
 }
 \section{Request syntax}{

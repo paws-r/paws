@@ -8,7 +8,10 @@ codecommit_update_comment(commentId, content)
 }
 \arguments{
 \item{commentId}{[required] The system-generated ID of the comment you want to update. To get this
-ID, use GetCommentsForComparedCommit or GetCommentsForPullRequest.}
+ID, use
+\code{\link[=codecommit_get_comments_for_compared_commit]{get_comments_for_compared_commit}}
+or
+\code{\link[=codecommit_get_comments_for_pull_request]{get_comments_for_pull_request}}.}
 
 \item{content}{[required] The updated content to replace the existing content of the comment.}
 }

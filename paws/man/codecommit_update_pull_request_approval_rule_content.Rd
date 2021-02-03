@@ -14,7 +14,8 @@ codecommit_update_pull_request_approval_rule_content(pullRequestId,
 \item{approvalRuleName}{[required] The name of the approval rule you want to update.}
 
 \item{existingRuleContentSha256}{The SHA-256 hash signature for the content of the approval rule. You can
-retrieve this information by using GetPullRequest.}
+retrieve this information by using
+\code{\link[=codecommit_get_pull_request]{get_pull_request}}.}
 
 \item{newRuleContent}{[required] The updated content for the approval rule.
 

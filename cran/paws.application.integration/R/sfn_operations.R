@@ -9,20 +9,21 @@ NULL
 #' Creates an activity. An activity is a task that you write in any
 #' programming language and host on any machine that has access to AWS Step
 #' Functions. Activities must poll Step Functions using the
-#' `GetActivityTask` API action and respond using `SendTask*` API actions.
-#' This function lets Step Functions know the existence of your activity
-#' and returns an identifier for use in a state machine and when polling
-#' from the activity.
+#' [`get_activity_task`][sfn_get_activity_task] API action and respond
+#' using `SendTask*` API actions. This function lets Step Functions know
+#' the existence of your activity and returns an identifier for use in a
+#' state machine and when polling from the activity.
 #' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
 #' 
-#' `CreateActivity` is an idempotent API. Subsequent requests won’t create
-#' a duplicate resource if it was already created. `CreateActivity`'s
-#' idempotency check is based on the activity `name`. If a following
-#' request has different `tags` values, Step Functions will ignore these
-#' differences and treat it as an idempotent request of the previous. In
-#' this case, `tags` will not be updated, even if they are different.
+#' [`create_activity`][sfn_create_activity] is an idempotent API.
+#' Subsequent requests won’t create a duplicate resource if it was already
+#' created. [`create_activity`][sfn_create_activity]'s idempotency check is
+#' based on the activity `name`. If a following request has different
+#' `tags` values, Step Functions will ignore these differences and treat it
+#' as an idempotent request of the previous. In this case, `tags` will not
+#' be updated, even if they are different.
 #'
 #' @usage
 #' sfn_create_activity(name, tags)
@@ -37,11 +38,11 @@ NULL
 #' 
 #' -   white space
 #' 
-#' -   brackets `&lt; &gt; \{ \} \\[ \\]`
+#' -   brackets `< > \{ \} \\[ \\]`
 #' 
 #' -   wildcard characters `? *`
 #' 
-#' -   special characters `` \" # % \\ ^ | ~ \` $ &amp; , ; : / ``
+#' -   special characters `` \" # % \\ ^ | ~ \` $ & , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
 #' 
@@ -107,14 +108,15 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
 #' 
-#' `CreateStateMachine` is an idempotent API. Subsequent requests won’t
-#' create a duplicate resource if it was already created.
-#' `CreateStateMachine`'s idempotency check is based on the state machine
-#' `name`, `definition`, `type`, `LoggingConfiguration` and
-#' `TracingConfiguration`. If a following request has a different `roleArn`
-#' or `tags`, Step Functions will ignore these differences and treat it as
-#' an idempotent request of the previous. In this case, `roleArn` and
-#' `tags` will not be updated, even if they are different.
+#' [`create_state_machine`][sfn_create_state_machine] is an idempotent API.
+#' Subsequent requests won’t create a duplicate resource if it was already
+#' created. [`create_state_machine`][sfn_create_state_machine]'s
+#' idempotency check is based on the state machine `name`, `definition`,
+#' `type`, `LoggingConfiguration` and `TracingConfiguration`. If a
+#' following request has a different `roleArn` or `tags`, Step Functions
+#' will ignore these differences and treat it as an idempotent request of
+#' the previous. In this case, `roleArn` and `tags` will not be updated,
+#' even if they are different.
 #'
 #' @usage
 #' sfn_create_state_machine(name, definition, roleArn, type,
@@ -126,11 +128,11 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' 
 #' -   white space
 #' 
-#' -   brackets `&lt; &gt; \{ \} \\[ \\]`
+#' -   brackets `< > \{ \} \\[ \\]`
 #' 
 #' -   wildcard characters `? *`
 #' 
-#' -   special characters `` \" # % \\ ^ | ~ \` $ &amp; , ; : / ``
+#' -   special characters `` \" # % \\ ^ | ~ \` $ & , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
 #' 
@@ -258,7 +260,7 @@ sfn_delete_activity <- function(activityArn) {
 #' 
 #' For `EXPRESS`state machines, the deletion will happen eventually
 #' (usually less than a minute). Running executions may emit logs after
-#' `DeleteStateMachine` API is called.
+#' [`delete_state_machine`][sfn_delete_state_machine] API is called.
 #'
 #' @usage
 #' sfn_delete_state_machine(stateMachineArn)
@@ -473,8 +475,9 @@ sfn_describe_state_machine_for_execution <- function(executionArn) {
 #' seconds (5 seconds higher than the maximum time the service may hold the
 #' poll request).
 #' 
-#' Polling with `GetActivityTask` can cause latency in some
-#' implementations. See [Avoid Latency When Polling for Activity
+#' Polling with [`get_activity_task`][sfn_get_activity_task] can cause
+#' latency in some implementations. See [Avoid Latency When Polling for
+#' Activity
 #' Tasks](https://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html)
 #' in the Step Functions Developer Guide.
 #'
@@ -482,7 +485,8 @@ sfn_describe_state_machine_for_execution <- function(executionArn) {
 #' sfn_get_activity_task(activityArn, workerName)
 #'
 #' @param activityArn &#91;required&#93; The Amazon Resource Name (ARN) of the activity to retrieve tasks from
-#' (assigned when you create the task using CreateActivity.)
+#' (assigned when you create the task using
+#' [`create_activity`][sfn_create_activity].)
 #' @param workerName You can provide an arbitrary name in order to identify the worker that
 #' the task is assigned to. This name is used when it is logged in the
 #' execution history.
@@ -883,8 +887,9 @@ sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
 #' 
 #' The `Timeout` of a task, defined in the state machine's Amazon States
 #' Language definition, is its maximum allowed duration, regardless of the
-#' number of SendTaskHeartbeat requests received. Use `HeartbeatSeconds` to
-#' configure the timeout interval for heartbeats.
+#' number of [`send_task_heartbeat`][sfn_send_task_heartbeat] requests
+#' received. Use `HeartbeatSeconds` to configure the timeout interval for
+#' heartbeats.
 #'
 #' @usage
 #' sfn_send_task_heartbeat(taskToken)
@@ -975,11 +980,12 @@ sfn_send_task_success <- function(taskToken, output) {
 #' @description
 #' Starts a state machine execution.
 #' 
-#' `StartExecution` is idempotent. If `StartExecution` is called with the
-#' same name and input as a running execution, the call will succeed and
-#' return the same response as the original request. If the execution is
-#' closed or if the input is different, it will return a 400
-#' `ExecutionAlreadyExists` error. Names can be reused after 90 days.
+#' [`start_execution`][sfn_start_execution] is idempotent. If
+#' [`start_execution`][sfn_start_execution] is called with the same name
+#' and input as a running execution, the call will succeed and return the
+#' same response as the original request. If the execution is closed or if
+#' the input is different, it will return a 400 `ExecutionAlreadyExists`
+#' error. Names can be reused after 90 days.
 #'
 #' @usage
 #' sfn_start_execution(stateMachineArn, name, input, traceHeader)
@@ -995,11 +1001,11 @@ sfn_send_task_success <- function(taskToken, output) {
 #' 
 #' -   white space
 #' 
-#' -   brackets `&lt; &gt; \{ \} \\[ \\]`
+#' -   brackets `< > \{ \} \\[ \\]`
 #' 
 #' -   wildcard characters `? *`
 #' 
-#' -   special characters `` \" # % \\ ^ | ~ \` $ &amp; , ; : / ``
+#' -   special characters `` \" # % \\ ^ | ~ \` $ & , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
 #' 
@@ -1254,10 +1260,11 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
 #' least one of `definition` or `roleArn` or you will receive a
 #' `MissingRequiredParameter` error.
 #' 
-#' All `StartExecution` calls within a few seconds will use the updated
-#' `definition` and `roleArn`. Executions started immediately after calling
-#' `UpdateStateMachine` may use the previous state machine `definition` and
-#' `roleArn`.
+#' All [`start_execution`][sfn_start_execution] calls within a few seconds
+#' will use the updated `definition` and `roleArn`. Executions started
+#' immediately after calling
+#' [`update_state_machine`][sfn_update_state_machine] may use the previous
+#' state machine `definition` and `roleArn`.
 #'
 #' @usage
 #' sfn_update_state_machine(stateMachineArn, definition, roleArn,

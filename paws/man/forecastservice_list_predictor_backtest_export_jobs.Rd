@@ -34,12 +34,13 @@ export jobs, specify \code{IS_NOT}.
 }
 \description{
 Returns a list of predictor backtest export jobs created using the
-CreatePredictorBacktestExportJob operation. This operation returns a
-summary for each backtest export job. You can filter the list using an
-array of Filter objects.
+\code{\link[=forecastservice_create_predictor_backtest_export_job]{create_predictor_backtest_export_job}}
+operation. This operation returns a summary for each backtest export
+job. You can filter the list using an array of Filter objects.
 
 To retrieve the complete set of properties for a particular backtest
-export job, use the ARN with the DescribePredictorBacktestExportJob
+export job, use the ARN with the
+\code{\link[=forecastservice_describe_predictor_backtest_export_job]{describe_predictor_backtest_export_job}}
 operation.
 }
 \section{Request syntax}{

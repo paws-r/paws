@@ -23,7 +23,8 @@ the data. The training data must be stored in an Amazon S3 bucket.
 If encryption is used, \code{DataSource} must include an AWS Key Management
 Service (KMS) key and the IAM role must allow Amazon Forecast permission
 to access the key. The KMS key and IAM role must match those specified
-in the \code{EncryptionConfig} parameter of the CreateDataset operation.}
+in the \code{EncryptionConfig} parameter of the
+\code{\link[=forecastservice_create_dataset]{create_dataset}} operation.}
 
 \item{TimestampFormat}{The format of timestamps in the dataset. The format that you specify
 depends on the \code{DataFrequency} specified when the dataset was created.
@@ -45,8 +46,7 @@ If the format isn't specified, Amazon Forecast expects the format to be
 for datasets with all timestamps within a single time zone, or if all
 timestamps are normalized to a single time zone.
 
-Refer to the \href{http://joda-time.sourceforge.net/timezones.html}{Joda-Time API} for a complete
-list of valid time zone names.}
+Refer to the Joda-Time API for a complete list of valid time zone names.}
 
 \item{UseGeolocationForTimeZone}{Automatically derive time zone information from the geolocation
 attribute. This option is ideal for datasets that contain timestamps in
@@ -113,7 +113,9 @@ the data you want to model off of, and not just the new data collected
 since the previous import.
 
 To get a list of all your dataset import jobs, filtered by specified
-criteria, use the ListDatasetImportJobs operation.
+criteria, use the
+\code{\link[=forecastservice_list_dataset_import_jobs]{list_dataset_import_jobs}}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$create_dataset_import_job(

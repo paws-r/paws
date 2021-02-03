@@ -33,9 +33,8 @@ matching filter is the one that mirrors the packets.
 Valid values are 1-32766.}
 
 \item{VirtualNetworkId}{The VXLAN ID for the Traffic Mirror session. For more information about
-the VXLAN protocol, see \href{https://tools.ietf.org/html/rfc7348}{RFC 7348}.
-If you do not specify a \code{VirtualNetworkId}, an account-wide unique id is
-chosen at random.}
+the VXLAN protocol, see RFC 7348. If you do not specify a
+\code{VirtualNetworkId}, an account-wide unique id is chosen at random.}
 
 \item{Description}{The description of the Traffic Mirror session.}
 
@@ -62,8 +61,8 @@ appliances) can be in the same VPC, or in a different VPC connected via
 VPC peering or a transit gateway.
 
 By default, no traffic is mirrored. Use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/}{CreateTrafficMirrorFilter}
-to create filter rules that specify the traffic to mirror.
+\code{\link[=ec2_create_traffic_mirror_filter]{create_traffic_mirror_filter}} to
+create filter rules that specify the traffic to mirror.
 }
 \section{Request syntax}{
 \preformatted{svc$create_traffic_mirror_session(

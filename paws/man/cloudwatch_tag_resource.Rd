@@ -11,10 +11,10 @@ cloudwatch_tag_resource(ResourceARN, Tags)
 \item{ResourceARN}{[required] The ARN of the CloudWatch resource that you're adding tags to.
 
 The ARN format of an alarm is
-\verb{arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:alarm:<i>alarm-name</i> }
+\code{arn:aws:cloudwatch:Region:account-id:alarm:alarm-name }
 
 The ARN format of a Contributor Insights rule is
-\verb{arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:insight-rule:<i>insight-rule-name</i> }
+\code{arn:aws:cloudwatch:Region:account-id:insight-rule:insight-rule-name }
 
 For more information about ARN format, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies}{Resource Types Defined by Amazon CloudWatch}
 in the \emph{Amazon Web Services General Reference}.}
@@ -33,11 +33,11 @@ access or change only resources with certain tag values.
 Tags don't have any semantic meaning to AWS and are interpreted strictly
 as strings of characters.
 
-You can use the \code{TagResource} action with an alarm that already has
-tags. If you specify a new tag key for the alarm, this tag is appended
-to the list of tags associated with the alarm. If you specify a tag key
-that is already associated with the alarm, the new tag value that you
-specify replaces the previous value for that tag.
+You can use the \code{\link[=cloudwatch_tag_resource]{tag_resource}} action with an
+alarm that already has tags. If you specify a new tag key for the alarm,
+this tag is appended to the list of tags associated with the alarm. If
+you specify a tag key that is already associated with the alarm, the new
+tag value that you specify replaces the previous value for that tag.
 
 You can associate as many as 50 tags with a CloudWatch resource.
 }

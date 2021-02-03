@@ -11,9 +11,10 @@ rekognition_start_segment_detection(Video, ClientRequestToken,
 \item{Video}{[required]}
 
 \item{ClientRequestToken}{Idempotent token used to identify the start request. If you use the same
-token with multiple \code{StartSegmentDetection} requests, the same \code{JobId}
-is returned. Use \code{ClientRequestToken} to prevent the same job from being
-accidently started more than once.}
+token with multiple
+\code{\link[=rekognition_start_segment_detection]{start_segment_detection}}
+requests, the same \code{JobId} is returned. Use \code{ClientRequestToken} to
+prevent the same job from being accidently started more than once.}
 
 \item{NotificationChannel}{The ARN of the Amazon SNS topic to which you want Amazon Rekognition
 Video to publish the completion status of the segment detection
@@ -34,11 +35,12 @@ Starts asynchronous detection of segment detection in a stored video.
 
 Amazon Rekognition Video can detect segments in a video stored in an
 Amazon S3 bucket. Use Video to specify the bucket name and the filename
-of the video. \code{StartSegmentDetection} returns a job identifier (\code{JobId})
-which you use to get the results of the operation. When segment
-detection is finished, Amazon Rekognition Video publishes a completion
-status to the Amazon Simple Notification Service topic that you specify
-in \code{NotificationChannel}.
+of the video.
+\code{\link[=rekognition_start_segment_detection]{start_segment_detection}} returns
+a job identifier (\code{JobId}) which you use to get the results of the
+operation. When segment detection is finished, Amazon Rekognition Video
+publishes a completion status to the Amazon Simple Notification Service
+topic that you specify in \code{NotificationChannel}.
 
 You can use the \code{Filters} (StartSegmentDetectionFilters) input parameter
 to specify the minimum detection confidence returned in the response.
@@ -48,8 +50,9 @@ detected shots. Use \code{TechnicalCueFilter}
 
 To get the results of the segment detection operation, first check that
 the status value published to the Amazon SNS topic is \code{SUCCEEDED}. if
-so, call GetSegmentDetection and pass the job identifier (\code{JobId}) from
-the initial call to \code{StartSegmentDetection}.
+so, call \code{\link[=rekognition_get_segment_detection]{get_segment_detection}}
+and pass the job identifier (\code{JobId}) from the initial call to
+\code{\link[=rekognition_start_segment_detection]{start_segment_detection}}.
 
 For more information, see Detecting Video Segments in Stored Video in
 the Amazon Rekognition Developer Guide.

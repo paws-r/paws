@@ -28,8 +28,7 @@ gateway. A capability configuration can contain multiple data source
 configurations. If you define OPC-UA sources for a gateway in the AWS
 IoT SiteWise console, all of your OPC-UA sources are stored in one
 capability configuration. To list all capability configurations for a
-gateway, use
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeGateway.html}{DescribeGateway}.
+gateway, use \code{\link[=iotsitewise_describe_gateway]{describe_gateway}}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_gateway_capability_configuration(

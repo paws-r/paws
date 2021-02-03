@@ -48,13 +48,15 @@ For example:
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To
-get the alias name and alias ARN, use ListAliases.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
+get the alias name and alias ARN, use
+\code{\link[=kms_list_aliases]{list_aliases}}.}
 
 \item{DestinationKeyId}{[required] A unique identifier for the CMK that is used to reencrypt the data.
 Specify a symmetric or asymmetric CMK with a \code{KeyUsage} value of
 \code{ENCRYPT_DECRYPT}. To find the \code{KeyUsage} value of a CMK, use the
-DescribeKey operation.
+\code{\link[=kms_describe_key]{describe_key}} operation.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}.
@@ -70,8 +72,10 @@ For example:
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To
-get the alias name and alias ARN, use ListAliases.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
+get the alias name and alias ARN, use
+\code{\link[=kms_list_aliases]{list_aliases}}.}
 
 \item{DestinationEncryptionContext}{Specifies that encryption context to use when the reencrypting the data.
 
@@ -120,18 +124,20 @@ to reencrypt ciphertext under the same CMK, such as to change the
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{encryption context}
 of a ciphertext.
 
-The \code{ReEncrypt} operation can decrypt ciphertext that was encrypted by
-using an AWS KMS CMK in an AWS KMS operation, such as Encrypt or
-GenerateDataKey. It can also decrypt ciphertext that was encrypted by
-using the public key of an \href{https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-concepts.html#asymmetric-cmks}{asymmetric CMK}
+The \code{\link[=kms_re_encrypt]{re_encrypt}} operation can decrypt ciphertext that
+was encrypted by using an AWS KMS CMK in an AWS KMS operation, such as
+\code{\link[=kms_encrypt]{encrypt}} or
+\code{\link[=kms_generate_data_key]{generate_data_key}}. It can also decrypt
+ciphertext that was encrypted by using the public key of an \href{https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-concepts.html#asymmetric-cmks}{asymmetric CMK}
 outside of AWS KMS. However, it cannot decrypt ciphertext produced by
 other libraries, such as the \href{https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/}{AWS Encryption SDK}
 or \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html}{Amazon S3 client-side encryption}.
 These libraries return a ciphertext format that is incompatible with AWS
 KMS.
 
-When you use the \code{ReEncrypt} operation, you need to provide information
-for the decrypt operation and the subsequent encrypt operation.
+When you use the \code{\link[=kms_re_encrypt]{re_encrypt}} operation, you need to
+provide information for the decrypt operation and the subsequent encrypt
+operation.
 \itemize{
 \item If your ciphertext was encrypted under an asymmetric CMK, you must
 use the \code{SourceKeyId} parameter to identify the CMK that encrypted
@@ -146,8 +152,8 @@ it was encrypted, even if they've lost track of the CMK ID. However,
 specifying the source CMK is always recommended as a best practice.
 When you use the \code{SourceKeyId} parameter to specify a CMK, AWS KMS
 uses only the CMK you specify. If the ciphertext was encrypted under
-a different CMK, the \code{ReEncrypt} operation fails. This practice
-ensures that you use the CMK that you intend.
+a different CMK, the \code{\link[=kms_re_encrypt]{re_encrypt}} operation fails.
+This practice ensures that you use the CMK that you intend.
 \item To reencrypt the data, you must use the \code{DestinationKeyId} parameter
 specify the CMK that re-encrypts the data after it is decrypted. You
 can select a symmetric or asymmetric CMK. If the destination CMK is
@@ -187,15 +193,15 @@ To permit reencryption from or to a CMK, include the \code{"kms:ReEncrypt*"}
 permission in your \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{key policy}.
 This permission is automatically included in the key policy when you use
 the console to create a CMK. But you must include it manually when you
-create a CMK programmatically or when you use the PutKeyPolicy operation
-to set a key policy.
+create a CMK programmatically or when you use the
+\code{\link[=kms_put_key_policy]{put_key_policy}} operation to set a key policy.
 
 \strong{Related operations:}
 \itemize{
-\item Decrypt
-\item Encrypt
-\item GenerateDataKey
-\item GenerateDataKeyPair
+\item \code{\link[=kms_decrypt]{decrypt}}
+\item \code{\link[=kms_encrypt]{encrypt}}
+\item \code{\link[=kms_generate_data_key]{generate_data_key}}
+\item \code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}}
 }
 }
 \section{Request syntax}{

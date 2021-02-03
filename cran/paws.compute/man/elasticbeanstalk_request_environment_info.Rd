@@ -11,8 +11,9 @@ elasticbeanstalk_request_environment_info(EnvironmentId,
 \arguments{
 \item{EnvironmentId}{The ID of the environment of the requested data.
 
-If no such environment is found, \code{RequestEnvironmentInfo} returns an
-\code{InvalidParameterValue} error.
+If no such environment is found,
+\code{\link[=elasticbeanstalk_request_environment_info]{request_environment_info}}
+returns an \code{InvalidParameterValue} error.
 
 Condition: You must specify either this or an EnvironmentName, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
@@ -20,8 +21,9 @@ If you do not specify either, AWS Elastic Beanstalk returns
 
 \item{EnvironmentName}{The name of the environment of the requested data.
 
-If no such environment is found, \code{RequestEnvironmentInfo} returns an
-\code{InvalidParameterValue} error.
+If no such environment is found,
+\code{\link[=elasticbeanstalk_request_environment_info]{request_environment_info}}
+returns an \code{InvalidParameterValue} error.
 
 Condition: You must specify either this or an EnvironmentId, or both. If
 you do not specify either, AWS Elastic Beanstalk returns
@@ -41,11 +43,13 @@ Setting the \code{InfoType} to \code{bundle} compresses the application server l
 files for every Amazon EC2 instance into a \code{.zip} file. Legacy and .NET
 containers do not support bundle logs.
 
-Use RetrieveEnvironmentInfo to obtain the set of logs.
+Use
+\code{\link[=elasticbeanstalk_retrieve_environment_info]{retrieve_environment_info}}
+to obtain the set of logs.
 
 Related Topics
 \itemize{
-\item RetrieveEnvironmentInfo
+\item \code{\link[=elasticbeanstalk_retrieve_environment_info]{retrieve_environment_info}}
 }
 }
 \section{Request syntax}{

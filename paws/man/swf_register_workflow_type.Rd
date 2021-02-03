@@ -24,7 +24,8 @@ the literal string \code{arn}.}
 
 The workflow type consists of the name and version, the combination of
 which must be unique within the domain. To get a list of all currently
-registered workflow types, use the ListWorkflowTypes action.
+registered workflow types, use the
+\code{\link[=swf_list_workflow_types]{list_workflow_types}} action.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
@@ -35,7 +36,8 @@ the literal string \code{arn}.}
 
 \item{defaultTaskStartToCloseTimeout}{If set, specifies the default maximum duration of decision tasks for
 this workflow type. This default can be overridden when starting a
-workflow execution using the StartWorkflowExecution action or the
+workflow execution using the
+\code{\link[=swf_start_workflow_execution]{start_workflow_execution}} action or the
 \code{StartChildWorkflowExecution} Decision.
 
 The duration is specified in seconds, an integer greater than or equal
@@ -43,8 +45,8 @@ to \code{0}. You can use \code{NONE} to specify unlimited duration.}
 
 \item{defaultExecutionStartToCloseTimeout}{If set, specifies the default maximum duration for executions of this
 workflow type. You can override this default when starting an execution
-through the StartWorkflowExecution Action or
-\code{StartChildWorkflowExecution} Decision.
+through the \code{\link[=swf_start_workflow_execution]{start_workflow_execution}}
+Action or \code{StartChildWorkflowExecution} Decision.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. Unlike some of the other timeout parameters in Amazon SWF, you
@@ -56,7 +58,8 @@ causes the workflow execution to time out.}
 \item{defaultTaskList}{If set, specifies the default task list to use for scheduling decision
 tasks for executions of this workflow type. This default is used only if
 a task list isn't provided when starting the execution through the
-StartWorkflowExecution Action or \code{StartChildWorkflowExecution} Decision.}
+\code{\link[=swf_start_workflow_execution]{start_workflow_execution}} Action or
+\code{StartChildWorkflowExecution} Decision.}
 
 \item{defaultTaskPriority}{The default task priority to assign to the workflow type. If not
 assigned, then \code{0} is used. Valid values are integers that range from
@@ -68,9 +71,11 @@ in the \emph{Amazon SWF Developer Guide}.}
 
 \item{defaultChildPolicy}{If set, specifies the default policy to use for the child workflow
 executions when a workflow execution of this type is terminated, by
-calling the TerminateWorkflowExecution action explicitly or due to an
-expired timeout. This default can be overridden when starting a workflow
-execution using the StartWorkflowExecution action or the
+calling the
+\code{\link[=swf_terminate_workflow_execution]{terminate_workflow_execution}}
+action explicitly or due to an expired timeout. This default can be
+overridden when starting a workflow execution using the
+\code{\link[=swf_start_workflow_execution]{start_workflow_execution}} action or the
 \code{StartChildWorkflowExecution} Decision.
 
 The supported child policies are:
@@ -98,7 +103,7 @@ Registers a new \emph{workflow type} and its configuration settings in the
 specified domain.
 
 The retention period for the workflow history is set by the
-RegisterDomain action.
+\code{\link[=swf_register_domain]{register_domain}} action.
 
 If the type already exists, then a \code{TypeAlreadyExists} fault is
 returned. You cannot change the configuration settings of a workflow

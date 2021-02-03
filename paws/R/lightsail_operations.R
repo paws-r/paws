@@ -50,8 +50,8 @@ lightsail_allocate_static_ip <- function(staticIpName) {
 #' After the certificate is attached, your distribution accepts HTTPS
 #' traffic for all of the domains that are associated with the certificate.
 #' 
-#' Use the `CreateCertificate` action to create a certificate that you can
-#' attach to your distribution.
+#' Use the [`create_certificate`][lightsail_create_certificate] action to
+#' create a certificate that you can attach to your distribution.
 #' 
 #' Only certificates created in the `us-east-1` AWS Region can be attached
 #' to Lightsail distributions. Lightsail distributions are global resources
@@ -65,15 +65,15 @@ lightsail_allocate_static_ip <- function(staticIpName) {
 #'
 #' @param distributionName &#91;required&#93; The name of the distribution that the certificate will be attached to.
 #' 
-#' Use the `GetDistributions` action to get a list of distribution names
-#' that you can specify.
+#' Use the [`get_distributions`][lightsail_get_distributions] action to get
+#' a list of distribution names that you can specify.
 #' @param certificateName &#91;required&#93; The name of the certificate to attach to a distribution.
 #' 
 #' Only certificates with a status of `ISSUED` can be attached to a
 #' distribution.
 #' 
-#' Use the `GetCertificates` action to get a list of certificate names that
-#' you can specify.
+#' Use the [`get_certificates`][lightsail_get_certificates] action to get a
+#' list of certificate names that you can specify.
 #' 
 #' This is the name of the certificate resource type and is used only to
 #' reference the certificate in other API actions. It can be different than
@@ -224,13 +224,16 @@ lightsail_attach_instances_to_load_balancer <- function(loadBalancerName, instan
 #' 
 #' Once you create and validate your certificate, you can attach it to your
 #' load balancer. You can also use this API to rotate the certificates on
-#' your account. Use the `AttachLoadBalancerTlsCertificate` action with the
-#' non-attached certificate, and it will replace the existing one and
-#' become the attached certificate.
+#' your account. Use the
+#' [`attach_load_balancer_tls_certificate`][lightsail_attach_load_balancer_tls_certificate]
+#' action with the non-attached certificate, and it will replace the
+#' existing one and become the attached certificate.
 #' 
-#' The `AttachLoadBalancerTlsCertificate` operation supports tag-based
-#' access control via resource tags applied to the resource identified by
-#' `load balancer name`. For more information, see the Lightsail Dev Guide.
+#' The
+#' [`attach_load_balancer_tls_certificate`][lightsail_attach_load_balancer_tls_certificate]
+#' operation supports tag-based access control via resource tags applied to
+#' the resource identified by `load balancer name`. For more information,
+#' see the Lightsail Dev Guide.
 #'
 #' @usage
 #' lightsail_attach_load_balancer_tls_certificate(loadBalancerName,
@@ -312,9 +315,11 @@ lightsail_attach_static_ip <- function(staticIpName, instanceName) {
 #' @description
 #' Closes ports for a specific Amazon Lightsail instance.
 #' 
-#' The `CloseInstancePublicPorts` action supports tag-based access control
-#' via resource tags applied to the resource identified by `instanceName`.
-#' For more information, see the Lightsail Dev Guide.
+#' The
+#' [`close_instance_public_ports`][lightsail_close_instance_public_ports]
+#' action supports tag-based access control via resource tags applied to
+#' the resource identified by `instanceName`. For more information, see the
+#' Lightsail Dev Guide.
 #'
 #' @usage
 #' lightsail_close_instance_public_ports(portInfo, instanceName)
@@ -466,8 +471,8 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 #' network (CDN) distribution.
 #' 
 #' After the certificate is created, use the
-#' `AttachCertificateToDistribution` action to attach the certificate to
-#' your distribution.
+#' [`attach_certificate_to_distribution`][lightsail_attach_certificate_to_distribution]
+#' action to attach the certificate to your distribution.
 #' 
 #' Only certificates created in the `us-east-1` AWS Region can be attached
 #' to Lightsail distributions. Lightsail distributions are global resources
@@ -492,7 +497,8 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 #' @param tags The tag keys and optional values to add to the certificate during
 #' create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -686,7 +692,7 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' The name that you specify for your container service will make up part
 #' of its default domain. The default domain of a container service is
 #' typically
-#' `https://&lt;ServiceName&gt;.&lt;RandomGUID&gt;.&lt;AWSRegion&gt;.cs.amazonlightsail.com`.
+#' `https://<ServiceName>.<RandomGUID>.<AWSRegion>.cs.amazonlightsail.com`.
 #' If the name of your container service is `container-service-1`, and it's
 #' located in the US East (Ohio) AWS region (`us-east-2`), then the domain
 #' for your container service will be like the following example:
@@ -710,9 +716,10 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' monthly price of your container service, multiply the base price of the
 #' `power` with the `scale` (the number of nodes) of the service.
 #' 
-#' Use the `GetContainerServicePowers` action to get a list of power
-#' options that you can specify using this parameter, and their base
-#' monthly cost.
+#' Use the
+#' [`get_container_service_powers`][lightsail_get_container_service_powers]
+#' action to get a list of power options that you can specify using this
+#' parameter, and their base monthly cost.
 #' @param scale &#91;required&#93; The scale specification for the container service.
 #' 
 #' The scale specifies the allocated compute nodes of the container
@@ -737,8 +744,9 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' 
 #' You must create and validate an SSL/TLS certificate before you can use
 #' public domain names with your container service. Use the
-#' `CreateCertificate` action to create a certificate for the public domain
-#' names you want to use with your container service.
+#' [`create_certificate`][lightsail_create_certificate] action to create a
+#' certificate for the public domain names you want to use with your
+#' container service.
 #' 
 #' You can specify public domain names using a string to array map as shown
 #' in the example later on this page.
@@ -917,8 +925,9 @@ lightsail_create_container_service_deployment <- function(serviceName, container
 #' registry of your Lightsail account.
 #' 
 #' After you push your container images to the container image registry of
-#' your Lightsail account, use the `RegisterContainerImage` action to
-#' register the pushed images to a specific Lightsail container service.
+#' your Lightsail account, use the
+#' [`register_container_image`][lightsail_register_container_image] action
+#' to register the pushed images to a specific Lightsail container service.
 #' 
 #' This action is not required if you install and use the Lightsail Control
 #' (lightsailctl) plugin to push container images to your Lightsail
@@ -978,7 +987,8 @@ lightsail_create_container_service_registry_login <- function() {
 #' @param sizeInGb &#91;required&#93; The size of the disk in GB (e.g., `32`).
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #' @param addOns An array of objects that represent the add-ons to enable for the new
 #' disk.
 #'
@@ -1061,7 +1071,8 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' @param sizeInGb &#91;required&#93; The size of the disk in GB (e.g., `32`).
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #' @param addOns An array of objects that represent the add-ons to enable for the new
 #' disk.
 #' @param sourceDiskName The name of the source disk from which the source automatic snapshot was
@@ -1203,7 +1214,8 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NUL
 #' exclusive.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -1271,12 +1283,13 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #' A distribution bundle describes the specifications of your distribution,
 #' such as the monthly cost and monthly network transfer quota.
 #' 
-#' Use the `GetDistributionBundles` action to get a list of distribution
-#' bundle IDs that you can specify.
+#' Use the [`get_distribution_bundles`][lightsail_get_distribution_bundles]
+#' action to get a list of distribution bundle IDs that you can specify.
 #' @param tags The tag keys and optional values to add to the distribution during
 #' create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -1370,7 +1383,8 @@ lightsail_create_distribution <- function(distributionName, origin, defaultCache
 #' parameter to manage the DNS records for that domain.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -1484,7 +1498,8 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
 #' @param instanceName &#91;required&#93; The Lightsail instance on which to base your snapshot.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -1567,7 +1582,8 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #' @param keyPairName The name of your key pair.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #' @param addOns An array of objects representing the add-ons to enable for the new
 #' instance.
 #'
@@ -1667,7 +1683,8 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' @param keyPairName The name for your key pair.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #' @param addOns An array of objects representing the add-ons to enable for the new
 #' instance.
 #' @param sourceInstanceName The name of the source instance from which the source automatic snapshot
@@ -1784,7 +1801,8 @@ lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDisk
 #' @param keyPairName &#91;required&#93; The name for your new key pair.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -1829,7 +1847,8 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' 
 #' When you create a load balancer, you can specify a unique name and port
 #' settings. To change additional load balancer settings, use the
-#' `UpdateLoadBalancerAttribute` operation.
+#' [`update_load_balancer_attribute`][lightsail_update_load_balancer_attribute]
+#' operation.
 #' 
 #' The `create load balancer` operation supports tag-based access control
 #' via request tags. For more information, see the Lightsail Dev Guide.
@@ -1862,7 +1881,8 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' `blog.example.com`).
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -1912,9 +1932,11 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
 #' TLS is just an updated, more secure version of Secure Socket Layer
 #' (SSL).
 #' 
-#' The `CreateLoadBalancerTlsCertificate` operation supports tag-based
-#' access control via resource tags applied to the resource identified by
-#' `load balancer name`. For more information, see the Lightsail Dev Guide.
+#' The
+#' [`create_load_balancer_tls_certificate`][lightsail_create_load_balancer_tls_certificate]
+#' operation supports tag-based access control via resource tags applied to
+#' the resource identified by `load balancer name`. For more information,
+#' see the Lightsail Dev Guide.
 #'
 #' @usage
 #' lightsail_create_load_balancer_tls_certificate(loadBalancerName,
@@ -1937,7 +1959,8 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
 #' domain). We do not support wildcards (e.g., `*.example.com`).
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -2093,7 +2116,8 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' database.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -2214,7 +2238,8 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
 #' provided.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -2283,7 +2308,8 @@ lightsail_create_relational_database_from_snapshot <- function(relationalDatabas
 #' -   The first and last character must be a letter or number.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' Use the `TagResource` action to tag a resource after it's created.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -2412,16 +2438,17 @@ lightsail_delete_auto_snapshot <- function(resourceName, date) {
 #' delivery network (CDN) distribution.
 #' 
 #' Certificates that are currently attached to a distribution cannot be
-#' deleted. Use the `DetachCertificateFromDistribution` action to detach a
-#' certificate from a distribution.
+#' deleted. Use the
+#' [`detach_certificate_from_distribution`][lightsail_detach_certificate_from_distribution]
+#' action to detach a certificate from a distribution.
 #'
 #' @usage
 #' lightsail_delete_certificate(certificateName)
 #'
 #' @param certificateName &#91;required&#93; The name of the certificate to delete.
 #' 
-#' Use the `GetCertificates` action to get a list of certificate names that
-#' you can specify.
+#' Use the [`get_certificates`][lightsail_get_certificates] action to get a
+#' list of certificate names that you can specify.
 #'
 #' @section Request syntax:
 #' ```
@@ -2469,7 +2496,9 @@ lightsail_delete_certificate <- function(certificateName) {
 #' messaging).
 #' 
 #' To delete an `Email` and an `SMS` contact method if you added both, you
-#' must run separate `DeleteContactMethod` actions to delete each protocol.
+#' must run separate
+#' [`delete_contact_method`][lightsail_delete_contact_method] actions to
+#' delete each protocol.
 #'
 #' @section Request syntax:
 #' ```
@@ -2512,8 +2541,9 @@ lightsail_delete_contact_method <- function(protocol) {
 #' container image.
 #' @param image &#91;required&#93; The name of the container image to delete from the container service.
 #' 
-#' Use the `GetContainerImages` action to get the name of the container
-#' images that are registered to a container service.
+#' Use the [`get_container_images`][lightsail_get_container_images] action
+#' to get the name of the container images that are registered to a
+#' container service.
 #' 
 #' Container images sourced from your Lightsail container service, that are
 #' registered and stored on your service, start with a colon (`:`). For
@@ -2695,8 +2725,8 @@ lightsail_delete_disk_snapshot <- function(diskSnapshotName) {
 #'
 #' @param distributionName The name of the distribution to delete.
 #' 
-#' Use the `GetDistributions` action to get a list of distribution names
-#' that you can specify.
+#' Use the [`get_distributions`][lightsail_get_distributions] action to get
+#' a list of distribution names that you can specify.
 #'
 #' @section Request syntax:
 #' ```
@@ -3045,9 +3075,11 @@ lightsail_delete_load_balancer <- function(loadBalancerName) {
 #' Deletes an SSL/TLS certificate associated with a Lightsail load
 #' balancer.
 #' 
-#' The `DeleteLoadBalancerTlsCertificate` operation supports tag-based
-#' access control via resource tags applied to the resource identified by
-#' `load balancer name`. For more information, see the Lightsail Dev Guide.
+#' The
+#' [`delete_load_balancer_tls_certificate`][lightsail_delete_load_balancer_tls_certificate]
+#' operation supports tag-based access control via resource tags applied to
+#' the resource identified by `load balancer name`. For more information,
+#' see the Lightsail Dev Guide.
 #'
 #' @usage
 #' lightsail_delete_load_balancer_tls_certificate(loadBalancerName,
@@ -3214,8 +3246,8 @@ lightsail_delete_relational_database_snapshot <- function(relationalDatabaseSnap
 #'
 #' @param distributionName &#91;required&#93; The name of the distribution from which to detach the certificate.
 #' 
-#' Use the `GetDistributions` action to get a list of distribution names
-#' that you can specify.
+#' Use the [`get_distributions`][lightsail_get_distributions] action to get
+#' a list of distribution names that you can specify.
 #'
 #' @section Request syntax:
 #' ```
@@ -3563,9 +3595,10 @@ lightsail_export_snapshot <- function(sourceSnapshotName) {
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetActiveNames` request. If
-#' your results are paginated, the response will return a next page token
-#' that you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_active_names`][lightsail_get_active_names] request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -3615,9 +3648,10 @@ lightsail_get_active_names <- function(pageToken = NULL) {
 #' Specify an alarm name to return information about a specific alarm.
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetAlarms` request. If your
-#' results are paginated, the response will return a next page token that
-#' you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_alarms`][lightsail_get_alarms] request. If your results are
+#' paginated, the response will return a next page token that you can
+#' specify as the page token in a subsequent request.
 #' @param monitoredResourceName The name of the Lightsail resource being monitored by the alarm.
 #' 
 #' Specify a monitored resource name to return information about all alarms
@@ -3713,9 +3747,10 @@ lightsail_get_auto_snapshots <- function(resourceName) {
 #' request.
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetBlueprints` request. If your
-#' results are paginated, the response will return a next page token that
-#' you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_blueprints`][lightsail_get_blueprints] request. If your results
+#' are paginated, the response will return a next page token that you can
+#' specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -3758,9 +3793,10 @@ lightsail_get_blueprints <- function(includeInactive = NULL, pageToken = NULL) {
 #' results in your request.
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetBundles` request. If your
-#' results are paginated, the response will return a next page token that
-#' you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_bundles`][lightsail_get_bundles] request. If your results are
+#' paginated, the response will return a next page token that you can
+#' specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4101,9 +4137,10 @@ lightsail_get_container_images <- function(serviceName) {
 #'     term, specify a filter pattern of `"?ERROR ?Exception"`.
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetContainerLog` request. If
-#' your results are paginated, the response will return a next page token
-#' that you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_container_log`][lightsail_get_container_log] request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4467,9 +4504,10 @@ lightsail_get_disk_snapshot <- function(diskSnapshotName) {
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetDiskSnapshots` request. If
-#' your results are paginated, the response will return a next page token
-#' that you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_disk_snapshots`][lightsail_get_disk_snapshots] request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4510,9 +4548,10 @@ lightsail_get_disk_snapshots <- function(pageToken = NULL) {
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetDisks` request. If your
-#' results are paginated, the response will return a next page token that
-#' you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_disks`][lightsail_get_disks] request. If your results are
+#' paginated, the response will return a next page token that you can
+#' specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4592,8 +4631,8 @@ lightsail_get_distribution_bundles <- function() {
 #' @param distributionName The name of the distribution for which to return the timestamp of the
 #' last cache reset.
 #' 
-#' Use the `GetDistributions` action to get a list of distribution names
-#' that you can specify.
+#' Use the [`get_distributions`][lightsail_get_distributions] action to get
+#' a list of distribution names that you can specify.
 #' 
 #' When omitted, the response includes the latest cache reset timestamp of
 #' all your distributions.
@@ -4642,8 +4681,8 @@ lightsail_get_distribution_latest_cache_reset <- function(distributionName = NUL
 #'
 #' @param distributionName &#91;required&#93; The name of the distribution for which to get metric data.
 #' 
-#' Use the `GetDistributions` action to get a list of distribution names
-#' that you can specify.
+#' Use the [`get_distributions`][lightsail_get_distributions] action to get
+#' a list of distribution names that you can specify.
 #' @param metricName &#91;required&#93; The metric for which you want to return information.
 #' 
 #' Valid distribution metric names are listed below, along with the most
@@ -4807,16 +4846,17 @@ lightsail_get_distribution_metric_data <- function(distributionName, metricName,
 #'
 #' @param distributionName The name of the distribution for which to return information.
 #' 
-#' Use the `GetDistributions` action to get a list of distribution names
-#' that you can specify.
+#' Use the [`get_distributions`][lightsail_get_distributions] action to get
+#' a list of distribution names that you can specify.
 #' 
 #' When omitted, the response includes all of your distributions in the AWS
 #' Region where the request is made.
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetDistributions` request. If
-#' your results are paginated, the response will return a next page token
-#' that you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_distributions`][lightsail_get_distributions] request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4893,9 +4933,10 @@ lightsail_get_domain <- function(domainName) {
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetDomains` request. If your
-#' results are paginated, the response will return a next page token that
-#' you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_domains`][lightsail_get_domains] request. If your results are
+#' paginated, the response will return a next page token that you can
+#' specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4940,7 +4981,8 @@ lightsail_get_domains <- function(pageToken = NULL) {
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetExportSnapshotRecords`
+#' To get a page token, perform an initial
+#' [`get_export_snapshot_records`][lightsail_get_export_snapshot_records]
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
@@ -5332,9 +5374,10 @@ lightsail_get_instance_snapshot <- function(instanceSnapshotName) {
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetInstanceSnapshots` request.
-#' If your results are paginated, the response will return a next page
-#' token that you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_instance_snapshots`][lightsail_get_instance_snapshots] request. If
+#' your results are paginated, the response will return a next page token
+#' that you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -5413,9 +5456,10 @@ lightsail_get_instance_state <- function(instanceName) {
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetInstances` request. If your
-#' results are paginated, the response will return a next page token that
-#' you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_instances`][lightsail_get_instances] request. If your results are
+#' paginated, the response will return a next page token that you can
+#' specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -5491,9 +5535,10 @@ lightsail_get_key_pair <- function(keyPairName) {
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetKeyPairs` request. If your
-#' results are paginated, the response will return a next page token that
-#' you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_key_pairs`][lightsail_get_key_pairs] request. If your results are
+#' paginated, the response will return a next page token that you can
+#' specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -5816,9 +5861,10 @@ lightsail_get_load_balancer_tls_certificates <- function(loadBalancerName) {
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetLoadBalancers` request. If
-#' your results are paginated, the response will return a next page token
-#' that you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_load_balancers`][lightsail_get_load_balancers] request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -5892,18 +5938,19 @@ lightsail_get_operation <- function(operationId) {
 #' Returns information about all operations.
 #' 
 #' Results are returned from oldest to newest, up to a maximum of 200.
-#' Results can be paged by making each subsequent call to `GetOperations`
-#' use the maximum (last) `statusChangedAt` value from the previous
-#' request.
+#' Results can be paged by making each subsequent call to
+#' [`get_operations`][lightsail_get_operations] use the maximum (last)
+#' `statusChangedAt` value from the previous request.
 #'
 #' @usage
 #' lightsail_get_operations(pageToken)
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetOperations` request. If your
-#' results are paginated, the response will return a next page token that
-#' you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_operations`][lightsail_get_operations] request. If your results
+#' are paginated, the response will return a next page token that you can
+#' specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -5944,7 +5991,8 @@ lightsail_get_operations <- function(pageToken = NULL) {
 #' @param resourceName &#91;required&#93; The name of the resource for which you are requesting information.
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetOperationsForResource`
+#' To get a page token, perform an initial
+#' [`get_operations_for_resource`][lightsail_get_operations_for_resource]
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
@@ -6075,9 +6123,10 @@ lightsail_get_relational_database <- function(relationalDatabaseName) {
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
 #' To get a page token, perform an initial
-#' `GetRelationalDatabaseBlueprints` request. If your results are
-#' paginated, the response will return a next page token that you can
-#' specify as the page token in a subsequent request.
+#' [`get_relational_database_blueprints`][lightsail_get_relational_database_blueprints]
+#' request. If your results are paginated, the response will return a next
+#' page token that you can specify as the page token in a subsequent
+#' request.
 #'
 #' @section Request syntax:
 #' ```
@@ -6120,7 +6169,8 @@ lightsail_get_relational_database_blueprints <- function(pageToken = NULL) {
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetRelationalDatabaseBundles`
+#' To get a page token, perform an initial
+#' [`get_relational_database_bundles`][lightsail_get_relational_database_bundles]
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
@@ -6170,7 +6220,8 @@ lightsail_get_relational_database_bundles <- function(pageToken = NULL) {
 #' The minimum is 1 and the maximum is 14 days (20160 minutes).
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetRelationalDatabaseEvents`
+#' To get a page token, perform an initial
+#' [`get_relational_database_events`][lightsail_get_relational_database_events]
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
@@ -6247,7 +6298,8 @@ lightsail_get_relational_database_events <- function(relationalDatabaseName, dur
 #' @param pageToken The token to advance to the next or previous page of results from your
 #' request.
 #' 
-#' To get a page token, perform an initial `GetRelationalDatabaseLogEvents`
+#' To get a page token, perform an initial
+#' [`get_relational_database_log_events`][lightsail_get_relational_database_log_events]
 #' request. If your results are paginated, the response will return a next
 #' forward token and/or next backward token that you can specify as the
 #' page token in a subsequent request.
@@ -6334,9 +6386,10 @@ lightsail_get_relational_database_log_streams <- function(relationalDatabaseName
 #' Returns the current, previous, or pending versions of the master user
 #' password for a Lightsail database.
 #' 
-#' The `GetRelationalDatabaseMasterUserPassword` operation supports
-#' tag-based access control via resource tags applied to the resource
-#' identified by relationalDatabaseName.
+#' The
+#' [`get_relational_database_master_user_password`][lightsail_get_relational_database_master_user_password]
+#' operation supports tag-based access control via resource tags applied to
+#' the resource identified by relationalDatabaseName.
 #'
 #' @usage
 #' lightsail_get_relational_database_master_user_password(
@@ -6559,9 +6612,10 @@ lightsail_get_relational_database_metric_data <- function(relationalDatabaseName
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
 #' To get a page token, perform an initial
-#' `GetRelationalDatabaseParameters` request. If your results are
-#' paginated, the response will return a next page token that you can
-#' specify as the page token in a subsequent request.
+#' [`get_relational_database_parameters`][lightsail_get_relational_database_parameters]
+#' request. If your results are paginated, the response will return a next
+#' page token that you can specify as the page token in a subsequent
+#' request.
 #'
 #' @section Request syntax:
 #' ```
@@ -6643,7 +6697,8 @@ lightsail_get_relational_database_snapshot <- function(relationalDatabaseSnapsho
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetRelationalDatabaseSnapshots`
+#' To get a page token, perform an initial
+#' [`get_relational_database_snapshots`][lightsail_get_relational_database_snapshots]
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
@@ -6685,7 +6740,8 @@ lightsail_get_relational_database_snapshots <- function(pageToken = NULL) {
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetRelationalDatabases`
+#' To get a page token, perform an initial
+#' [`get_relational_databases`][lightsail_get_relational_databases]
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
@@ -6764,9 +6820,10 @@ lightsail_get_static_ip <- function(staticIpName) {
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
-#' To get a page token, perform an initial `GetStaticIps` request. If your
-#' results are paginated, the response will return a next page token that
-#' you can specify as the page token in a subsequent request.
+#' To get a page token, perform an initial
+#' [`get_static_ips`][lightsail_get_static_ips] request. If your results
+#' are paginated, the response will return a next page token that you can
+#' specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -6876,9 +6933,10 @@ lightsail_is_vpc_peered <- function() {
 #' IP addresses allowed to connect to the instance through the ports, and
 #' the protocol.
 #' 
-#' The `OpenInstancePublicPorts` action supports tag-based access control
-#' via resource tags applied to the resource identified by `instanceName`.
-#' For more information, see the Lightsail Dev Guide.
+#' The [`open_instance_public_ports`][lightsail_open_instance_public_ports]
+#' action supports tag-based access control via resource tags applied to
+#' the resource identified by `instanceName`. For more information, see the
+#' Lightsail Dev Guide.
 #'
 #' @usage
 #' lightsail_open_instance_public_ports(portInfo, instanceName)
@@ -7064,8 +7122,8 @@ lightsail_peer_vpc <- function() {
 #' if notifications are not enabled for the alarm using the
 #' `notificationEnabled` paramater.
 #' 
-#' Use the `CreateContactMethod` action to configure a contact protocol in
-#' an AWS Region.
+#' Use the [`create_contact_method`][lightsail_create_contact_method]
+#' action to configure a contact protocol in an AWS Region.
 #' @param notificationTriggers The alarm states that trigger a notification.
 #' 
 #' An alarm has the following possible states:
@@ -7148,13 +7206,16 @@ lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, co
 #' IP addresses allowed to connect to the instance through the ports, and
 #' the protocol. This action also closes all currently open ports that are
 #' not included in the request. Include all of the ports and the protocols
-#' you want to open in your `PutInstancePublicPorts`request. Or use the
-#' `OpenInstancePublicPorts` action to open ports without closing currently
-#' open ports.
+#' you want to open in your
+#' [`put_instance_public_ports`][lightsail_put_instance_public_ports]request.
+#' Or use the
+#' [`open_instance_public_ports`][lightsail_open_instance_public_ports]
+#' action to open ports without closing currently open ports.
 #' 
-#' The `PutInstancePublicPorts` action supports tag-based access control
-#' via resource tags applied to the resource identified by `instanceName`.
-#' For more information, see the Lightsail Dev Guide.
+#' The [`put_instance_public_ports`][lightsail_put_instance_public_ports]
+#' action supports tag-based access control via resource tags applied to
+#' the resource identified by `instanceName`. For more information, see the
+#' Lightsail Dev Guide.
 #'
 #' @usage
 #' lightsail_put_instance_public_ports(portInfos, instanceName)
@@ -7308,11 +7369,12 @@ lightsail_reboot_relational_database <- function(relationalDatabaseName) {
 #' Use a descriptive label that you can use to track the different versions
 #' of your registered container images.
 #' 
-#' Use the `GetContainerImages` action to return the container images
-#' registered to a Lightsail container service. The label is the
-#' `&lt;imagelabel&gt;` portion of the following image name example:
+#' Use the [`get_container_images`][lightsail_get_container_images] action
+#' to return the container images registered to a Lightsail container
+#' service. The label is the `<imagelabel>` portion of the following image
+#' name example:
 #' 
-#' -   `:container-service-1.&lt;imagelabel&gt;.1`
+#' -   `:container-service-1.<imagelabel>.1`
 #' 
 #' If the name of your container service is `mycontainerservice`, and the
 #' label that you specify is `mystaticwebsite`, then the name of the
@@ -7408,8 +7470,8 @@ lightsail_release_static_ip <- function(staticIpName) {
 #'
 #' @param distributionName The name of the distribution for which to reset cache.
 #' 
-#' Use the `GetDistributions` action to get a list of distribution names
-#' that you can specify.
+#' Use the [`get_distributions`][lightsail_get_distributions] action to get
+#' a list of distribution names that you can specify.
 #'
 #' @section Request syntax:
 #' ```
@@ -7894,8 +7956,9 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #' monthly price of your container service, multiply the base price of the
 #' `power` with the `scale` (the number of nodes) of the service.
 #' 
-#' Use the `GetContainerServicePowers` action to view the specifications of
-#' each power option.
+#' Use the
+#' [`get_container_service_powers`][lightsail_get_container_service_powers]
+#' action to view the specifications of each power option.
 #' @param scale The scale for the container service.
 #' 
 #' The scale specifies the allocated compute nodes of the container
@@ -7917,8 +7980,9 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #' 
 #' You must create and validate an SSL/TLS certificate before you can use
 #' public domain names with your container service. Use the
-#' `CreateCertificate` action to create a certificate for the public domain
-#' names you want to use with your container service.
+#' [`create_certificate`][lightsail_create_certificate] action to create a
+#' certificate for the public domain names you want to use with your
+#' container service.
 #' 
 #' You can specify public domain names using a string to array map as shown
 #' in the example later on this page.
@@ -7974,8 +8038,8 @@ lightsail_update_container_service <- function(serviceName, power = NULL, scale 
 #'
 #' @param distributionName &#91;required&#93; The name of the distribution to update.
 #' 
-#' Use the `GetDistributions` action to get a list of distribution names
-#' that you can specify.
+#' Use the [`get_distributions`][lightsail_get_distributions] action to get
+#' a list of distribution names that you can specify.
 #' @param origin An object that describes the origin resource for the distribution, such
 #' as a Lightsail instance or load balancer.
 #' 
@@ -8074,7 +8138,8 @@ lightsail_update_distribution <- function(distributionName, origin = NULL, defau
 #' 
 #' You can update your distribution's bundle only one time within your
 #' monthly AWS billing cycle. To determine if you can update your
-#' distribution's bundle, use the `GetDistributions` action. The
+#' distribution's bundle, use the
+#' [`get_distributions`][lightsail_get_distributions] action. The
 #' `ableToUpdateBundle` parameter in the result will indicate whether you
 #' can currently update your distribution's bundle.
 #'
@@ -8083,12 +8148,12 @@ lightsail_update_distribution <- function(distributionName, origin = NULL, defau
 #'
 #' @param distributionName The name of the distribution for which to update the bundle.
 #' 
-#' Use the `GetDistributions` action to get a list of distribution names
-#' that you can specify.
+#' Use the [`get_distributions`][lightsail_get_distributions] action to get
+#' a list of distribution names that you can specify.
 #' @param bundleId The bundle ID of the new bundle to apply to your distribution.
 #' 
-#' Use the `GetDistributionBundles` action to get a list of distribution
-#' bundle IDs that you can specify.
+#' Use the [`get_distribution_bundles`][lightsail_get_distribution_bundles]
+#' action to get a list of distribution bundle IDs that you can specify.
 #'
 #' @section Request syntax:
 #' ```

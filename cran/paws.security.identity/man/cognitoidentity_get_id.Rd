@@ -16,9 +16,8 @@ tokens. The available provider names for \code{Logins} are as follows:
 \itemize{
 \item Facebook: \code{graph.facebook.com}
 \item Amazon Cognito user pool:
-\verb{cognito-idp.&lt;region&gt;.amazonaws.com/&lt;YOUR_USER_POOL_ID&gt;},
-for example,
-\verb{cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789}.
+\verb{cognito-idp.<region>.amazonaws.com/<YOUR_USER_POOL_ID>}, for
+example, \verb{cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789}.
 \item Google: \code{accounts.google.com}
 \item Amazon: \code{www.amazon.com}
 \item Twitter: \code{api.twitter.com}

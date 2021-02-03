@@ -31,11 +31,11 @@ NULL
 #' to 80% are returned in the response. You can change this value by
 #' specifying the `SimilarityThreshold` parameter.
 #' 
-#' `CompareFaces` also returns an array of faces that don't match the
-#' source image. For each face, it returns a bounding box, confidence
-#' value, landmarks, pose details, and quality. The response also returns
-#' information about the face in the source image, including the bounding
-#' box of the face and confidence value.
+#' [`compare_faces`][rekognition_compare_faces] also returns an array of
+#' faces that don't match the source image. For each face, it returns a
+#' bounding box, confidence value, landmarks, pose details, and quality.
+#' The response also returns information about the face in the source
+#' image, including the bounding box of the face and confidence value.
 #' 
 #' The `QualityFilter` input parameter allows you to filter out detected
 #' faces that don’t meet a required quality bar. The quality bar is based
@@ -43,12 +43,14 @@ NULL
 #' bar by specifying `LOW`, `MEDIUM`, or `HIGH`. If you do not want to
 #' filter detected faces, specify `NONE`. The default value is `NONE`.
 #' 
-#' If the image doesn't contain Exif metadata, `CompareFaces` returns
-#' orientation information for the source and target images. Use these
-#' values to display the images with the correct image orientation.
+#' If the image doesn't contain Exif metadata,
+#' [`compare_faces`][rekognition_compare_faces] returns orientation
+#' information for the source and target images. Use these values to
+#' display the images with the correct image orientation.
 #' 
-#' If no faces are detected in the source or target images, `CompareFaces`
-#' returns an `InvalidParameterException` error.
+#' If no faces are detected in the source or target images,
+#' [`compare_faces`][rekognition_compare_faces] returns an
+#' `InvalidParameterException` error.
 #' 
 #' This is a stateless API operation. That is, data returned by this
 #' operation doesn't persist.
@@ -161,12 +163,13 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #'
 #' @description
 #' Creates a collection in an AWS Region. You can add faces to the
-#' collection using the IndexFaces operation.
+#' collection using the [`index_faces`][rekognition_index_faces] operation.
 #' 
 #' For example, you might create collections, one for each of your
-#' application users. A user can then index faces using the `IndexFaces`
-#' operation and persist results in a specific collection. Then, a user can
-#' search the collection for faces in the user-specific container.
+#' application users. A user can then index faces using the
+#' [`index_faces`][rekognition_index_faces] operation and persist results
+#' in a specific collection. Then, a user can search the collection for
+#' faces in the user-specific container.
 #' 
 #' When you create a collection, it is associated with the latest version
 #' of the face model version.
@@ -264,17 +267,19 @@ rekognition_create_project <- function(ProjectName) {
 #' Creates a new version of a model and begins training. Models are managed
 #' as part of an Amazon Rekognition Custom Labels project. You can specify
 #' one training dataset and one testing dataset. The response from
-#' `CreateProjectVersion` is an Amazon Resource Name (ARN) for the version
-#' of the model.
+#' [`create_project_version`][rekognition_create_project_version] is an
+#' Amazon Resource Name (ARN) for the version of the model.
 #' 
 #' Training takes a while to complete. You can get the current status by
-#' calling DescribeProjectVersions.
+#' calling
+#' [`describe_project_versions`][rekognition_describe_project_versions].
 #' 
-#' Once training has successfully completed, call DescribeProjectVersions
-#' to get the training results and evaluate the model.
+#' Once training has successfully completed, call
+#' [`describe_project_versions`][rekognition_describe_project_versions] to
+#' get the training results and evaluate the model.
 #' 
 #' After evaluating the model, you start the model by calling
-#' StartProjectVersion.
+#' [`start_project_version`][rekognition_start_project_version].
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:CreateProjectVersion` action.
@@ -366,11 +371,13 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
 #' want to recognize. Use `Name` to assign an identifier for the stream
 #' processor. You use `Name` to manage the stream processor. For example,
 #' you can start processing the source video by calling
-#' StartStreamProcessor with the `Name` field.
+#' [`start_stream_processor`][rekognition_start_stream_processor] with the
+#' `Name` field.
 #' 
 #' After you have finished analyzing a streaming video, use
-#' StopStreamProcessor to stop processing. You can delete the stream
-#' processor by calling DeleteStreamProcessor.
+#' [`stop_stream_processor`][rekognition_stop_stream_processor] to stop
+#' processing. You can delete the stream processor by calling
+#' [`delete_stream_processor`][rekognition_delete_stream_processor].
 #'
 #' @usage
 #' rekognition_create_stream_processor(Input, Output, Name, Settings,
@@ -383,8 +390,9 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
 #' `StreamProcessorOutput`.
 #' @param Name &#91;required&#93; An identifier you assign to the stream processor. You can use `Name` to
 #' manage the stream processor. For example, you can get the current status
-#' of the stream processor by calling DescribeStreamProcessor. `Name` is
-#' idempotent.
+#' of the stream processor by calling
+#' [`describe_stream_processor`][rekognition_describe_stream_processor].
+#' `Name` is idempotent.
 #' @param Settings &#91;required&#93; Face recognition input parameters to be used by the stream processor.
 #' Includes the collection to use for face recognition and the face
 #' attributes to detect.
@@ -545,7 +553,8 @@ rekognition_delete_faces <- function(CollectionId, FaceIds) {
 #' @description
 #' Deletes an Amazon Rekognition Custom Labels project. To delete a project
 #' you must first delete all models associated with the project. To delete
-#' a model, see DeleteProjectVersion.
+#' a model, see
+#' [`delete_project_version`][rekognition_delete_project_version].
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:DeleteProject` action.
@@ -589,8 +598,10 @@ rekognition_delete_project <- function(ProjectArn) {
 #' 
 #' You can't delete a model if it is running or if it is training. To check
 #' the status of a model, use the `Status` field returned from
-#' DescribeProjectVersions. To stop a running model call
-#' StopProjectVersion. If the model is training, wait until it finishes.
+#' [`describe_project_versions`][rekognition_describe_project_versions]. To
+#' stop a running model call
+#' [`stop_project_version`][rekognition_stop_project_version]. If the model
+#' is training, wait until it finishes.
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:DeleteProjectVersion` action.
@@ -633,9 +644,10 @@ rekognition_delete_project_version <- function(ProjectVersionArn) {
 #' @description
 #' Deletes the stream processor identified by `Name`. You assign the value
 #' for `Name` when you create the stream processor with
-#' CreateStreamProcessor. You might not be able to use the same name for a
-#' stream processor for a few seconds after calling
-#' `DeleteStreamProcessor`.
+#' [`create_stream_processor`][rekognition_create_stream_processor]. You
+#' might not be able to use the same name for a stream processor for a few
+#' seconds after calling
+#' [`delete_stream_processor`][rekognition_delete_stream_processor].
 #'
 #' @usage
 #' rekognition_delete_stream_processor(Name)
@@ -672,9 +684,10 @@ rekognition_delete_stream_processor <- function(Name) {
 #' Describes the specified collection
 #'
 #' @description
-#' Describes the specified collection. You can use `DescribeCollection` to
-#' get information, such as the number of faces indexed into a collection
-#' and the version of the model used by the collection for face detection.
+#' Describes the specified collection. You can use
+#' [`describe_collection`][rekognition_describe_collection] to get
+#' information, such as the number of faces indexed into a collection and
+#' the version of the model used by the collection for face detection.
 #' 
 #' For more information, see Describing a Collection in the Amazon
 #' Rekognition Developer Guide.
@@ -734,7 +747,7 @@ rekognition_describe_collection <- function(CollectionId) {
 #' model descriptions are returned. A version name is part of a model
 #' (ProjectVersion) ARN. For example, `my-model.2020-01-21T09.10.15` is the
 #' version name in the following ARN.
-#' `arn:aws:rekognition:us-east-1:123456789012:project/getting-started/version/<i>my-model.2020-01-21T09.10.15</i>/1234567890123`.
+#' `arn:aws:rekognition:us-east-1:123456789012:project/getting-started/version/my-model.2020-01-21T09.10.15/1234567890123`.
 #' @param NextToken If the previous response was incomplete (because there is more results
 #' to retrieve), Amazon Rekognition Custom Labels returns a pagination
 #' token in the response. You can use this pagination token to retrieve the
@@ -829,9 +842,10 @@ rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @description
 #' Provides information about a stream processor created by
-#' CreateStreamProcessor. You can get information about the input and
-#' output streams, the input parameters for the face recognition being
-#' performed, and the current status of the stream processor.
+#' [`create_stream_processor`][rekognition_create_stream_processor]. You
+#' can get information about the input and output streams, the input
+#' parameters for the face recognition being performed, and the current
+#' status of the stream processor.
 #'
 #' @usage
 #' rekognition_describe_stream_processor(Name)
@@ -888,7 +902,8 @@ rekognition_describe_stream_processor <- function(Name) {
 #' (`Geometry`).
 #' 
 #' During training model calculates a threshold value that determines if a
-#' prediction for a label is true. By default, `DetectCustomLabels` doesn't
+#' prediction for a label is true. By default,
+#' [`detect_custom_labels`][rekognition_detect_custom_labels] doesn't
 #' return labels whose confidence value is below the model's calculated
 #' threshold value. To filter labels that are returned, specify a value for
 #' `MinConfidence` that is higher than the model's calculated threshold.
@@ -962,12 +977,12 @@ rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResult
 #' @description
 #' Detects faces within an image that is provided as input.
 #' 
-#' `DetectFaces` detects the 100 largest faces in the image. For each face
-#' detected, the operation returns face details. These details include a
-#' bounding box of the face, a confidence value (that the bounding box
-#' contains a face), and a fixed set of attributes such as facial landmarks
-#' (for example, coordinates of eye and mouth), presence of beard,
-#' sunglasses, and so on.
+#' [`detect_faces`][rekognition_detect_faces] detects the 100 largest faces
+#' in the image. For each face detected, the operation returns face
+#' details. These details include a bounding box of the face, a confidence
+#' value (that the bounding box contains a face), and a fixed set of
+#' attributes such as facial landmarks (for example, coordinates of eye and
+#' mouth), presence of beard, sunglasses, and so on.
 #' 
 #' The face-detection algorithm is most effective on frontal faces. For
 #' non-frontal or obscured faces, the algorithm might not detect the faces
@@ -1068,10 +1083,10 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' For an example, see Analyzing Images Stored in an Amazon S3 Bucket in
 #' the Amazon Rekognition Developer Guide.
 #' 
-#' `DetectLabels` does not support the detection of activities. However,
-#' activity detection is supported for label detection in videos. For more
-#' information, see StartLabelDetection in the Amazon Rekognition Developer
-#' Guide.
+#' [`detect_labels`][rekognition_detect_labels] does not support the
+#' detection of activities. However, activity detection is supported for
+#' label detection in videos. For more information, see StartLabelDetection
+#' in the Amazon Rekognition Developer Guide.
 #' 
 #' You pass the input image as base64-encoded image bytes or as a reference
 #' to an image in an Amazon S3 bucket. If you use the AWS CLI to call
@@ -1112,20 +1127,23 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' parameter to limit the number of labels returned.
 #' 
 #' If the object detected is a person, the operation doesn't provide the
-#' same facial details that the DetectFaces operation provides.
+#' same facial details that the [`detect_faces`][rekognition_detect_faces]
+#' operation provides.
 #' 
-#' `DetectLabels` returns bounding boxes for instances of common object
-#' labels in an array of Instance objects. An `Instance` object contains a
-#' BoundingBox object, for the location of the label on the image. It also
-#' includes the confidence by which the bounding box was detected.
+#' [`detect_labels`][rekognition_detect_labels] returns bounding boxes for
+#' instances of common object labels in an array of Instance objects. An
+#' `Instance` object contains a BoundingBox object, for the location of the
+#' label on the image. It also includes the confidence by which the
+#' bounding box was detected.
 #' 
-#' `DetectLabels` also returns a hierarchical taxonomy of detected labels.
-#' For example, a detected car might be assigned the label *car*. The label
-#' *car* has two parent labels: *Vehicle* (its parent) and *Transportation*
-#' (its grandparent). The response returns the entire list of ancestors for
-#' a label. Each ancestor is a unique label in the response. In the
-#' previous example, *Car*, *Vehicle*, and *Transportation* are returned as
-#' unique labels in the response.
+#' [`detect_labels`][rekognition_detect_labels] also returns a hierarchical
+#' taxonomy of detected labels. For example, a detected car might be
+#' assigned the label *car*. The label *car* has two parent labels:
+#' *Vehicle* (its parent) and *Transportation* (its grandparent). The
+#' response returns the entire list of ancestors for a label. Each ancestor
+#' is a unique label in the response. In the previous example, *Car*,
+#' *Vehicle*, and *Transportation* are returned as unique labels in the
+#' response.
 #' 
 #' This is a stateless API operation. That is, the operation does not
 #' persist any data.
@@ -1208,11 +1226,13 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #'
 #' @description
 #' Detects unsafe content in a specified JPEG or PNG format image. Use
-#' `DetectModerationLabels` to moderate images depending on your
-#' requirements. For example, you might want to filter images that contain
-#' nudity, but not images containing suggestive content.
+#' [`detect_moderation_labels`][rekognition_detect_moderation_labels] to
+#' moderate images depending on your requirements. For example, you might
+#' want to filter images that contain nudity, but not images containing
+#' suggestive content.
 #' 
-#' To filter images, use the labels returned by `DetectModerationLabels` to
+#' To filter images, use the labels returned by
+#' [`detect_moderation_labels`][rekognition_detect_moderation_labels] to
 #' determine which types of content are appropriate.
 #' 
 #' For information about moderation labels, see Detecting Unsafe Content in
@@ -1304,8 +1324,8 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, Hu
 #' to an image in an Amazon S3 bucket. The image must be either a PNG or
 #' JPG formatted file.
 #' 
-#' `DetectProtectiveEquipment` detects PPE worn by up to 15 persons
-#' detected in an image.
+#' [`detect_protective_equipment`][rekognition_detect_protective_equipment]
+#' detects PPE worn by up to 15 persons detected in an image.
 #' 
 #' For each person detected in the image the API returns an array of body
 #' parts (face, head, left-hand, right-hand). For each body part, an array
@@ -1394,13 +1414,14 @@ rekognition_detect_protective_equipment <- function(Image, SummarizationAttribut
 #' an Amazon S3 bucket. For the AWS CLI, passing image bytes is not
 #' supported. The image must be either a .png or .jpeg formatted file.
 #' 
-#' The `DetectText` operation returns text in an array of TextDetection
-#' elements, `TextDetections`. Each `TextDetection` element provides
-#' information about a single word or line of text that was detected in the
-#' image.
+#' The [`detect_text`][rekognition_detect_text] operation returns text in
+#' an array of TextDetection elements, `TextDetections`. Each
+#' `TextDetection` element provides information about a single word or line
+#' of text that was detected in the image.
 #' 
 #' A word is one or more ISO basic latin script characters that are not
-#' separated by spaces. `DetectText` can detect up to 50 words in an image.
+#' separated by spaces. [`detect_text`][rekognition_detect_text] can detect
+#' up to 50 words in an image.
 #' 
 #' A line is a string of equally spaced words. A line isn't necessarily a
 #' complete sentence. For example, a driver's license number is detected as
@@ -1409,7 +1430,8 @@ rekognition_detect_protective_equipment <- function(Image, SummarizationAttribut
 #' the words. This means, depending on the gap between words, Amazon
 #' Rekognition may detect multiple lines in text aligned in the same
 #' direction. Periods don't represent the end of a line. If a sentence
-#' spans multiple lines, the `DetectText` operation returns multiple lines.
+#' spans multiple lines, the [`detect_text`][rekognition_detect_text]
+#' operation returns multiple lines.
 #' 
 #' To determine whether a `TextDetection` element is a line of text or a
 #' word, use the `TextDetection` object `Type` field.
@@ -1503,8 +1525,8 @@ rekognition_detect_text <- function(Image, Filters = NULL) {
 #' rekognition_get_celebrity_info(Id)
 #'
 #' @param Id &#91;required&#93; The ID for the celebrity. You get the celebrity ID from a call to the
-#' RecognizeCelebrities operation, which recognizes celebrities in an
-#' image.
+#' [`recognize_celebrities`][rekognition_recognize_celebrities] operation,
+#' which recognizes celebrities in an image.
 #'
 #' @section Request syntax:
 #' ```
@@ -1538,33 +1560,38 @@ rekognition_get_celebrity_info <- function(Id) {
 #'
 #' @description
 #' Gets the celebrity recognition results for a Amazon Rekognition Video
-#' analysis started by StartCelebrityRecognition.
+#' analysis started by
+#' [`start_celebrity_recognition`][rekognition_start_celebrity_recognition].
 #' 
 #' Celebrity recognition in a video is an asynchronous operation. Analysis
-#' is started by a call to StartCelebrityRecognition which returns a job
-#' identifier (`JobId`). When the celebrity recognition operation finishes,
-#' Amazon Rekognition Video publishes a completion status to the Amazon
-#' Simple Notification Service topic registered in the initial call to
-#' `StartCelebrityRecognition`. To get the results of the celebrity
-#' recognition analysis, first check that the status value published to the
-#' Amazon SNS topic is `SUCCEEDED`. If so, call `GetCelebrityDetection` and
-#' pass the job identifier (`JobId`) from the initial call to
-#' `StartCelebrityDetection`.
+#' is started by a call to
+#' [`start_celebrity_recognition`][rekognition_start_celebrity_recognition]
+#' which returns a job identifier (`JobId`). When the celebrity recognition
+#' operation finishes, Amazon Rekognition Video publishes a completion
+#' status to the Amazon Simple Notification Service topic registered in the
+#' initial call to
+#' [`start_celebrity_recognition`][rekognition_start_celebrity_recognition].
+#' To get the results of the celebrity recognition analysis, first check
+#' that the status value published to the Amazon SNS topic is `SUCCEEDED`.
+#' If so, call `GetCelebrityDetection` and pass the job identifier
+#' (`JobId`) from the initial call to `StartCelebrityDetection`.
 #' 
 #' For more information, see Working With Stored Videos in the Amazon
 #' Rekognition Developer Guide.
 #' 
-#' `GetCelebrityRecognition` returns detected celebrities and the time(s)
-#' they are detected in an array (`Celebrities`) of CelebrityRecognition
-#' objects. Each `CelebrityRecognition` contains information about the
-#' celebrity in a CelebrityDetail object and the time, `Timestamp`, the
-#' celebrity was detected.
+#' [`get_celebrity_recognition`][rekognition_get_celebrity_recognition]
+#' returns detected celebrities and the time(s) they are detected in an
+#' array (`Celebrities`) of CelebrityRecognition objects. Each
+#' `CelebrityRecognition` contains information about the celebrity in a
+#' CelebrityDetail object and the time, `Timestamp`, the celebrity was
+#' detected.
 #' 
-#' `GetCelebrityRecognition` only returns the default facial attributes
-#' (`BoundingBox`, `Confidence`, `Landmarks`, `Pose`, and `Quality`). The
-#' other facial attributes listed in the `Face` object of the following
-#' response syntax are not returned. For more information, see FaceDetail
-#' in the Amazon Rekognition Developer Guide.
+#' [`get_celebrity_recognition`][rekognition_get_celebrity_recognition]
+#' only returns the default facial attributes (`BoundingBox`, `Confidence`,
+#' `Landmarks`, `Pose`, and `Quality`). The other facial attributes listed
+#' in the `Face` object of the following response syntax are not returned.
+#' For more information, see FaceDetail in the Amazon Rekognition Developer
+#' Guide.
 #' 
 #' By default, the `Celebrities` array is sorted by time (milliseconds from
 #' the start of the video). You can also sort the array by celebrity by
@@ -1572,8 +1599,9 @@ rekognition_get_celebrity_info <- function(Id) {
 #' 
 #' The `CelebrityDetail` object includes the celebrity identifer and
 #' additional information urls. If you don't store the additional
-#' information urls, you can get them later by calling GetCelebrityInfo
-#' with the celebrity identifer.
+#' information urls, you can get them later by calling
+#' [`get_celebrity_info`][rekognition_get_celebrity_info] with the
+#' celebrity identifer.
 #' 
 #' No information is returned for faces not recognized as celebrities.
 #' 
@@ -1583,14 +1611,15 @@ rekognition_get_celebrity_info <- function(Id) {
 #' getting the next set of results. To get the next page of results, call
 #' `GetCelebrityDetection` and populate the `NextToken` request parameter
 #' with the token value returned from the previous call to
-#' `GetCelebrityRecognition`.
+#' [`get_celebrity_recognition`][rekognition_get_celebrity_recognition].
 #'
 #' @usage
 #' rekognition_get_celebrity_recognition(JobId, MaxResults, NextToken,
 #'   SortBy)
 #'
 #' @param JobId &#91;required&#93; Job identifier for the required celebrity recognition analysis. You can
-#' get the job identifer from a call to `StartCelebrityRecognition`.
+#' get the job identifer from a call to
+#' [`start_celebrity_recognition`][rekognition_start_celebrity_recognition].
 #' @param MaxResults Maximum number of results to return per paginated call. The largest
 #' value you can specify is 1000. If you specify a value greater than 1000,
 #' a maximum of 1000 results is returned. The default value is 1000.
@@ -1637,24 +1666,28 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #'
 #' @description
 #' Gets the unsafe content analysis results for a Amazon Rekognition Video
-#' analysis started by StartContentModeration.
+#' analysis started by
+#' [`start_content_moderation`][rekognition_start_content_moderation].
 #' 
 #' Unsafe content analysis of a video is an asynchronous operation. You
-#' start analysis by calling StartContentModeration which returns a job
-#' identifier (`JobId`). When analysis finishes, Amazon Rekognition Video
-#' publishes a completion status to the Amazon Simple Notification Service
-#' topic registered in the initial call to `StartContentModeration`. To get
-#' the results of the unsafe content analysis, first check that the status
-#' value published to the Amazon SNS topic is `SUCCEEDED`. If so, call
-#' `GetContentModeration` and pass the job identifier (`JobId`) from the
-#' initial call to `StartContentModeration`.
+#' start analysis by calling
+#' [`start_content_moderation`][rekognition_start_content_moderation] which
+#' returns a job identifier (`JobId`). When analysis finishes, Amazon
+#' Rekognition Video publishes a completion status to the Amazon Simple
+#' Notification Service topic registered in the initial call to
+#' [`start_content_moderation`][rekognition_start_content_moderation]. To
+#' get the results of the unsafe content analysis, first check that the
+#' status value published to the Amazon SNS topic is `SUCCEEDED`. If so,
+#' call [`get_content_moderation`][rekognition_get_content_moderation] and
+#' pass the job identifier (`JobId`) from the initial call to
+#' [`start_content_moderation`][rekognition_start_content_moderation].
 #' 
 #' For more information, see Working with Stored Videos in the Amazon
 #' Rekognition Devlopers Guide.
 #' 
-#' `GetContentModeration` returns detected unsafe content labels, and the
-#' time they are detected, in an array, `ModerationLabels`, of
-#' ContentModerationDetection objects.
+#' [`get_content_moderation`][rekognition_get_content_moderation] returns
+#' detected unsafe content labels, and the time they are detected, in an
+#' array, `ModerationLabels`, of ContentModerationDetection objects.
 #' 
 #' By default, the moderated labels are returned sorted by time, in
 #' milliseconds from the start of the video. You can also sort them by
@@ -1662,12 +1695,15 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #' 
 #' Since video analysis can return a large number of results, use the
 #' `MaxResults` parameter to limit the number of labels returned in a
-#' single call to `GetContentModeration`. If there are more results than
-#' specified in `MaxResults`, the value of `NextToken` in the operation
-#' response contains a pagination token for getting the next set of
-#' results. To get the next page of results, call `GetContentModeration`
-#' and populate the `NextToken` request parameter with the value of
-#' `NextToken` returned from the previous call to `GetContentModeration`.
+#' single call to
+#' [`get_content_moderation`][rekognition_get_content_moderation]. If there
+#' are more results than specified in `MaxResults`, the value of
+#' `NextToken` in the operation response contains a pagination token for
+#' getting the next set of results. To get the next page of results, call
+#' [`get_content_moderation`][rekognition_get_content_moderation] and
+#' populate the `NextToken` request parameter with the value of `NextToken`
+#' returned from the previous call to
+#' [`get_content_moderation`][rekognition_get_content_moderation].
 #' 
 #' For more information, see Detecting Unsafe Content in the Amazon
 #' Rekognition Developer Guide.
@@ -1676,7 +1712,8 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #' rekognition_get_content_moderation(JobId, MaxResults, NextToken, SortBy)
 #'
 #' @param JobId &#91;required&#93; The identifier for the unsafe content job. Use `JobId` to identify the
-#' job in a subsequent call to `GetContentModeration`.
+#' job in a subsequent call to
+#' [`get_content_moderation`][rekognition_get_content_moderation].
 #' @param MaxResults Maximum number of results to return per paginated call. The largest
 #' value you can specify is 1000. If you specify a value greater than 1000,
 #' a maximum of 1000 results is returned. The default value is 1000.
@@ -1725,33 +1762,37 @@ rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextTok
 #'
 #' @description
 #' Gets face detection results for a Amazon Rekognition Video analysis
-#' started by StartFaceDetection.
+#' started by [`start_face_detection`][rekognition_start_face_detection].
 #' 
 #' Face detection with Amazon Rekognition Video is an asynchronous
-#' operation. You start face detection by calling StartFaceDetection which
-#' returns a job identifier (`JobId`). When the face detection operation
-#' finishes, Amazon Rekognition Video publishes a completion status to the
-#' Amazon Simple Notification Service topic registered in the initial call
-#' to `StartFaceDetection`. To get the results of the face detection
-#' operation, first check that the status value published to the Amazon SNS
-#' topic is `SUCCEEDED`. If so, call GetFaceDetection and pass the job
-#' identifier (`JobId`) from the initial call to `StartFaceDetection`.
+#' operation. You start face detection by calling
+#' [`start_face_detection`][rekognition_start_face_detection] which returns
+#' a job identifier (`JobId`). When the face detection operation finishes,
+#' Amazon Rekognition Video publishes a completion status to the Amazon
+#' Simple Notification Service topic registered in the initial call to
+#' [`start_face_detection`][rekognition_start_face_detection]. To get the
+#' results of the face detection operation, first check that the status
+#' value published to the Amazon SNS topic is `SUCCEEDED`. If so, call
+#' [`get_face_detection`][rekognition_get_face_detection] and pass the job
+#' identifier (`JobId`) from the initial call to
+#' [`start_face_detection`][rekognition_start_face_detection].
 #' 
-#' `GetFaceDetection` returns an array of detected faces (`Faces`) sorted
-#' by the time the faces were detected.
+#' [`get_face_detection`][rekognition_get_face_detection] returns an array
+#' of detected faces (`Faces`) sorted by the time the faces were detected.
 #' 
 #' Use MaxResults parameter to limit the number of labels returned. If
 #' there are more results than specified in `MaxResults`, the value of
 #' `NextToken` in the operation response contains a pagination token for
 #' getting the next set of results. To get the next page of results, call
-#' `GetFaceDetection` and populate the `NextToken` request parameter with
-#' the token value returned from the previous call to `GetFaceDetection`.
+#' [`get_face_detection`][rekognition_get_face_detection] and populate the
+#' `NextToken` request parameter with the token value returned from the
+#' previous call to [`get_face_detection`][rekognition_get_face_detection].
 #'
 #' @usage
 #' rekognition_get_face_detection(JobId, MaxResults, NextToken)
 #'
 #' @param JobId &#91;required&#93; Unique identifier for the face detection job. The `JobId` is returned
-#' from `StartFaceDetection`.
+#' from [`start_face_detection`][rekognition_start_face_detection].
 #' @param MaxResults Maximum number of results to return per paginated call. The largest
 #' value you can specify is 1000. If you specify a value greater than 1000,
 #' a maximum of 1000 results is returned. The default value is 1000.
@@ -1794,18 +1835,23 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #'
 #' @description
 #' Gets the face search results for Amazon Rekognition Video face search
-#' started by StartFaceSearch. The search returns faces in a collection
-#' that match the faces of persons detected in a video. It also includes
-#' the time(s) that faces are matched in the video.
+#' started by [`start_face_search`][rekognition_start_face_search]. The
+#' search returns faces in a collection that match the faces of persons
+#' detected in a video. It also includes the time(s) that faces are matched
+#' in the video.
 #' 
 #' Face search in a video is an asynchronous operation. You start face
-#' search by calling to StartFaceSearch which returns a job identifier
-#' (`JobId`). When the search operation finishes, Amazon Rekognition Video
-#' publishes a completion status to the Amazon Simple Notification Service
-#' topic registered in the initial call to `StartFaceSearch`. To get the
-#' search results, first check that the status value published to the
-#' Amazon SNS topic is `SUCCEEDED`. If so, call `GetFaceSearch` and pass
-#' the job identifier (`JobId`) from the initial call to `StartFaceSearch`.
+#' search by calling to
+#' [`start_face_search`][rekognition_start_face_search] which returns a job
+#' identifier (`JobId`). When the search operation finishes, Amazon
+#' Rekognition Video publishes a completion status to the Amazon Simple
+#' Notification Service topic registered in the initial call to
+#' [`start_face_search`][rekognition_start_face_search]. To get the search
+#' results, first check that the status value published to the Amazon SNS
+#' topic is `SUCCEEDED`. If so, call
+#' [`get_face_search`][rekognition_get_face_search] and pass the job
+#' identifier (`JobId`) from the initial call to
+#' [`start_face_search`][rekognition_start_face_search].
 #' 
 #' For more information, see Searching Faces in a Collection in the Amazon
 #' Rekognition Developer Guide.
@@ -1816,11 +1862,11 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' bounding boxes, and person identifer) for the matched person, and the
 #' time the person was matched in the video.
 #' 
-#' `GetFaceSearch` only returns the default facial attributes
-#' (`BoundingBox`, `Confidence`, `Landmarks`, `Pose`, and `Quality`). The
-#' other facial attributes listed in the `Face` object of the following
-#' response syntax are not returned. For more information, see FaceDetail
-#' in the Amazon Rekognition Developer Guide.
+#' [`get_face_search`][rekognition_get_face_search] only returns the
+#' default facial attributes (`BoundingBox`, `Confidence`, `Landmarks`,
+#' `Pose`, and `Quality`). The other facial attributes listed in the `Face`
+#' object of the following response syntax are not returned. For more
+#' information, see FaceDetail in the Amazon Rekognition Developer Guide.
 #' 
 #' By default, the `Persons` array is sorted by the time, in milliseconds
 #' from the start of the video, persons are matched. You can also sort by
@@ -1830,7 +1876,8 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' rekognition_get_face_search(JobId, MaxResults, NextToken, SortBy)
 #'
 #' @param JobId &#91;required&#93; The job identifer for the search request. You get the job identifier
-#' from an initial call to `StartFaceSearch`.
+#' from an initial call to
+#' [`start_face_search`][rekognition_start_face_search].
 #' @param MaxResults Maximum number of results to return per paginated call. The largest
 #' value you can specify is 1000. If you specify a value greater than 1000,
 #' a maximum of 1000 results is returned. The default value is 1000.
@@ -1877,21 +1924,24 @@ rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NU
 #'
 #' @description
 #' Gets the label detection results of a Amazon Rekognition Video analysis
-#' started by StartLabelDetection.
+#' started by [`start_label_detection`][rekognition_start_label_detection].
 #' 
 #' The label detection operation is started by a call to
-#' StartLabelDetection which returns a job identifier (`JobId`). When the
-#' label detection operation finishes, Amazon Rekognition publishes a
-#' completion status to the Amazon Simple Notification Service topic
-#' registered in the initial call to `StartlabelDetection`. To get the
-#' results of the label detection operation, first check that the status
-#' value published to the Amazon SNS topic is `SUCCEEDED`. If so, call
-#' GetLabelDetection and pass the job identifier (`JobId`) from the initial
-#' call to `StartLabelDetection`.
+#' [`start_label_detection`][rekognition_start_label_detection] which
+#' returns a job identifier (`JobId`). When the label detection operation
+#' finishes, Amazon Rekognition publishes a completion status to the Amazon
+#' Simple Notification Service topic registered in the initial call to
+#' `StartlabelDetection`. To get the results of the label detection
+#' operation, first check that the status value published to the Amazon SNS
+#' topic is `SUCCEEDED`. If so, call
+#' [`get_label_detection`][rekognition_get_label_detection] and pass the
+#' job identifier (`JobId`) from the initial call to
+#' [`start_label_detection`][rekognition_start_label_detection].
 #' 
-#' `GetLabelDetection` returns an array of detected labels (`Labels`)
-#' sorted by the time the labels were detected. You can also sort by the
-#' label name by specifying `NAME` for the `SortBy` input parameter.
+#' [`get_label_detection`][rekognition_get_label_detection] returns an
+#' array of detected labels (`Labels`) sorted by the time the labels were
+#' detected. You can also sort by the label name by specifying `NAME` for
+#' the `SortBy` input parameter.
 #' 
 #' The labels returned include the label name, the percentage confidence in
 #' the accuracy of the detected label, and the time the label was detected
@@ -1906,7 +1956,8 @@ rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NU
 #' `NextToken` in the operation response contains a pagination token for
 #' getting the next set of results. To get the next page of results, call
 #' `GetlabelDetection` and populate the `NextToken` request parameter with
-#' the token value returned from the previous call to `GetLabelDetection`.
+#' the token value returned from the previous call to
+#' [`get_label_detection`][rekognition_get_label_detection].
 #'
 #' @usage
 #' rekognition_get_label_detection(JobId, MaxResults, NextToken, SortBy)
@@ -1962,26 +2013,29 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
 #'
 #' @description
 #' Gets the path tracking results of a Amazon Rekognition Video analysis
-#' started by StartPersonTracking.
+#' started by [`start_person_tracking`][rekognition_start_person_tracking].
 #' 
 #' The person path tracking operation is started by a call to
-#' `StartPersonTracking` which returns a job identifier (`JobId`). When the
-#' operation finishes, Amazon Rekognition Video publishes a completion
-#' status to the Amazon Simple Notification Service topic registered in the
-#' initial call to `StartPersonTracking`.
+#' [`start_person_tracking`][rekognition_start_person_tracking] which
+#' returns a job identifier (`JobId`). When the operation finishes, Amazon
+#' Rekognition Video publishes a completion status to the Amazon Simple
+#' Notification Service topic registered in the initial call to
+#' [`start_person_tracking`][rekognition_start_person_tracking].
 #' 
 #' To get the results of the person path tracking operation, first check
 #' that the status value published to the Amazon SNS topic is `SUCCEEDED`.
-#' If so, call GetPersonTracking and pass the job identifier (`JobId`) from
-#' the initial call to `StartPersonTracking`.
+#' If so, call [`get_person_tracking`][rekognition_get_person_tracking] and
+#' pass the job identifier (`JobId`) from the initial call to
+#' [`start_person_tracking`][rekognition_start_person_tracking].
 #' 
-#' `GetPersonTracking` returns an array, `Persons`, of tracked persons and
-#' the time(s) their paths were tracked in the video.
+#' [`get_person_tracking`][rekognition_get_person_tracking] returns an
+#' array, `Persons`, of tracked persons and the time(s) their paths were
+#' tracked in the video.
 #' 
-#' `GetPersonTracking` only returns the default facial attributes
-#' (`BoundingBox`, `Confidence`, `Landmarks`, `Pose`, and `Quality`). The
-#' other facial attributes listed in the `Face` object of the following
-#' response syntax are not returned.
+#' [`get_person_tracking`][rekognition_get_person_tracking] only returns
+#' the default facial attributes (`BoundingBox`, `Confidence`, `Landmarks`,
+#' `Pose`, and `Quality`). The other facial attributes listed in the `Face`
+#' object of the following response syntax are not returned.
 #' 
 #' For more information, see FaceDetail in the Amazon Rekognition Developer
 #' Guide.
@@ -1994,14 +2048,17 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
 #' there are more results than specified in `MaxResults`, the value of
 #' `NextToken` in the operation response contains a pagination token for
 #' getting the next set of results. To get the next page of results, call
-#' `GetPersonTracking` and populate the `NextToken` request parameter with
-#' the token value returned from the previous call to `GetPersonTracking`.
+#' [`get_person_tracking`][rekognition_get_person_tracking] and populate
+#' the `NextToken` request parameter with the token value returned from the
+#' previous call to
+#' [`get_person_tracking`][rekognition_get_person_tracking].
 #'
 #' @usage
 #' rekognition_get_person_tracking(JobId, MaxResults, NextToken, SortBy)
 #'
 #' @param JobId &#91;required&#93; The identifier for a job that tracks persons in a video. You get the
-#' `JobId` from a call to `StartPersonTracking`.
+#' `JobId` from a call to
+#' [`start_person_tracking`][rekognition_start_person_tracking].
 #' @param MaxResults Maximum number of results to return per paginated call. The largest
 #' value you can specify is 1000. If you specify a value greater than 1000,
 #' a maximum of 1000 results is returned. The default value is 1000.
@@ -2050,37 +2107,44 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #'
 #' @description
 #' Gets the segment detection results of a Amazon Rekognition Video
-#' analysis started by StartSegmentDetection.
+#' analysis started by
+#' [`start_segment_detection`][rekognition_start_segment_detection].
 #' 
 #' Segment detection with Amazon Rekognition Video is an asynchronous
-#' operation. You start segment detection by calling StartSegmentDetection
-#' which returns a job identifier (`JobId`). When the segment detection
-#' operation finishes, Amazon Rekognition publishes a completion status to
-#' the Amazon Simple Notification Service topic registered in the initial
-#' call to `StartSegmentDetection`. To get the results of the segment
-#' detection operation, first check that the status value published to the
-#' Amazon SNS topic is `SUCCEEDED`. if so, call `GetSegmentDetection` and
+#' operation. You start segment detection by calling
+#' [`start_segment_detection`][rekognition_start_segment_detection] which
+#' returns a job identifier (`JobId`). When the segment detection operation
+#' finishes, Amazon Rekognition publishes a completion status to the Amazon
+#' Simple Notification Service topic registered in the initial call to
+#' [`start_segment_detection`][rekognition_start_segment_detection]. To get
+#' the results of the segment detection operation, first check that the
+#' status value published to the Amazon SNS topic is `SUCCEEDED`. if so,
+#' call [`get_segment_detection`][rekognition_get_segment_detection] and
 #' pass the job identifier (`JobId`) from the initial call of
-#' `StartSegmentDetection`.
+#' [`start_segment_detection`][rekognition_start_segment_detection].
 #' 
-#' `GetSegmentDetection` returns detected segments in an array (`Segments`)
-#' of SegmentDetection objects. `Segments` is sorted by the segment types
-#' specified in the `SegmentTypes` input parameter of
-#' `StartSegmentDetection`. Each element of the array includes the detected
-#' segment, the precentage confidence in the acuracy of the detected
-#' segment, the type of the segment, and the frame in which the segment was
-#' detected.
+#' [`get_segment_detection`][rekognition_get_segment_detection] returns
+#' detected segments in an array (`Segments`) of SegmentDetection objects.
+#' `Segments` is sorted by the segment types specified in the
+#' `SegmentTypes` input parameter of
+#' [`start_segment_detection`][rekognition_start_segment_detection]. Each
+#' element of the array includes the detected segment, the precentage
+#' confidence in the acuracy of the detected segment, the type of the
+#' segment, and the frame in which the segment was detected.
 #' 
 #' Use `SelectedSegmentTypes` to find out the type of segment detection
-#' requested in the call to `StartSegmentDetection`.
+#' requested in the call to
+#' [`start_segment_detection`][rekognition_start_segment_detection].
 #' 
 #' Use the `MaxResults` parameter to limit the number of segment detections
 #' returned. If there are more results than specified in `MaxResults`, the
 #' value of `NextToken` in the operation response contains a pagination
 #' token for getting the next set of results. To get the next page of
-#' results, call `GetSegmentDetection` and populate the `NextToken` request
-#' parameter with the token value returned from the previous call to
-#' `GetSegmentDetection`.
+#' results, call
+#' [`get_segment_detection`][rekognition_get_segment_detection] and
+#' populate the `NextToken` request parameter with the token value returned
+#' from the previous call to
+#' [`get_segment_detection`][rekognition_get_segment_detection].
 #' 
 #' For more information, see Detecting Video Segments in Stored Video in
 #' the Amazon Rekognition Developer Guide.
@@ -2090,7 +2154,7 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #'
 #' @param JobId &#91;required&#93; Job identifier for the text detection operation for which you want
 #' results returned. You get the job identifer from an initial call to
-#' `StartSegmentDetection`.
+#' [`start_segment_detection`][rekognition_start_segment_detection].
 #' @param MaxResults Maximum number of results to return per paginated call. The largest
 #' value you can specify is 1000.
 #' @param NextToken If the response is truncated, Amazon Rekognition Video returns this
@@ -2131,21 +2195,24 @@ rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToke
 #'
 #' @description
 #' Gets the text detection results of a Amazon Rekognition Video analysis
-#' started by StartTextDetection.
+#' started by [`start_text_detection`][rekognition_start_text_detection].
 #' 
 #' Text detection with Amazon Rekognition Video is an asynchronous
-#' operation. You start text detection by calling StartTextDetection which
-#' returns a job identifier (`JobId`) When the text detection operation
-#' finishes, Amazon Rekognition publishes a completion status to the Amazon
-#' Simple Notification Service topic registered in the initial call to
-#' `StartTextDetection`. To get the results of the text detection
-#' operation, first check that the status value published to the Amazon SNS
-#' topic is `SUCCEEDED`. if so, call `GetTextDetection` and pass the job
-#' identifier (`JobId`) from the initial call of `StartLabelDetection`.
+#' operation. You start text detection by calling
+#' [`start_text_detection`][rekognition_start_text_detection] which returns
+#' a job identifier (`JobId`) When the text detection operation finishes,
+#' Amazon Rekognition publishes a completion status to the Amazon Simple
+#' Notification Service topic registered in the initial call to
+#' [`start_text_detection`][rekognition_start_text_detection]. To get the
+#' results of the text detection operation, first check that the status
+#' value published to the Amazon SNS topic is `SUCCEEDED`. if so, call
+#' [`get_text_detection`][rekognition_get_text_detection] and pass the job
+#' identifier (`JobId`) from the initial call of
+#' [`start_label_detection`][rekognition_start_label_detection].
 #' 
-#' `GetTextDetection` returns an array of detected text (`TextDetections`)
-#' sorted by the time the text was detected, up to 50 words per frame of
-#' video.
+#' [`get_text_detection`][rekognition_get_text_detection] returns an array
+#' of detected text (`TextDetections`) sorted by the time the text was
+#' detected, up to 50 words per frame of video.
 #' 
 #' Each element of the array includes the detected text, the precentage
 #' confidence in the acuracy of the detected text, the time the text was
@@ -2156,16 +2223,17 @@ rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToke
 #' returned. If there are more results than specified in `MaxResults`, the
 #' value of `NextToken` in the operation response contains a pagination
 #' token for getting the next set of results. To get the next page of
-#' results, call `GetTextDetection` and populate the `NextToken` request
-#' parameter with the token value returned from the previous call to
-#' `GetTextDetection`.
+#' results, call [`get_text_detection`][rekognition_get_text_detection] and
+#' populate the `NextToken` request parameter with the token value returned
+#' from the previous call to
+#' [`get_text_detection`][rekognition_get_text_detection].
 #'
 #' @usage
 #' rekognition_get_text_detection(JobId, MaxResults, NextToken)
 #'
 #' @param JobId &#91;required&#93; Job identifier for the text detection operation for which you want
 #' results returned. You get the job identifer from an initial call to
-#' `StartTextDetection`.
+#' [`start_text_detection`][rekognition_start_text_detection].
 #' @param MaxResults Maximum number of results to return per paginated call. The largest
 #' value you can specify is 1000.
 #' @param NextToken If the previous response was incomplete (because there are more labels
@@ -2214,34 +2282,39 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' the input image. For each face, the algorithm extracts facial features
 #' into a feature vector, and stores it in the backend database. Amazon
 #' Rekognition uses feature vectors when it performs face match and search
-#' operations using the SearchFaces and SearchFacesByImage operations.
+#' operations using the [`search_faces`][rekognition_search_faces] and
+#' [`search_faces_by_image`][rekognition_search_faces_by_image] operations.
 #' 
 #' For more information, see Adding Faces to a Collection in the Amazon
 #' Rekognition Developer Guide.
 #' 
-#' To get the number of faces in a collection, call DescribeCollection.
+#' To get the number of faces in a collection, call
+#' [`describe_collection`][rekognition_describe_collection].
 #' 
-#' If you're using version 1.0 of the face detection model, `IndexFaces`
-#' indexes the 15 largest faces in the input image. Later versions of the
-#' face detection model index the 100 largest faces in the input image.
+#' If you're using version 1.0 of the face detection model,
+#' [`index_faces`][rekognition_index_faces] indexes the 15 largest faces in
+#' the input image. Later versions of the face detection model index the
+#' 100 largest faces in the input image.
 #' 
 #' If you're using version 4 or later of the face model, image orientation
 #' information is not returned in the `OrientationCorrection` field.
 #' 
 #' To determine which version of the model you're using, call
-#' DescribeCollection and supply the collection ID. You can also get the
-#' model version from the value of `FaceModelVersion` in the response from
-#' `IndexFaces`
+#' [`describe_collection`][rekognition_describe_collection] and supply the
+#' collection ID. You can also get the model version from the value of
+#' `FaceModelVersion` in the response from
+#' [`index_faces`][rekognition_index_faces]
 #' 
 #' For more information, see Model Versioning in the Amazon Rekognition
 #' Developer Guide.
 #' 
 #' If you provide the optional `ExternalImageId` for the input image you
 #' provided, Amazon Rekognition associates this ID with all faces that it
-#' detects. When you call the ListFaces operation, the response returns the
-#' external ID. You can use this external image ID to create a client-side
-#' index to associate the faces with each image. You can then use the index
-#' to find all faces in an image.
+#' detects. When you call the [`list_faces`][rekognition_list_faces]
+#' operation, the response returns the external ID. You can use this
+#' external image ID to create a client-side index to associate the faces
+#' with each image. You can then use the index to find all faces in an
+#' image.
 #' 
 #' You can specify the maximum number of faces to index with the `MaxFaces`
 #' input parameter. This is useful when you want to index the largest faces
@@ -2250,15 +2323,17 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' 
 #' The `QualityFilter` input parameter allows you to filter out detected
 #' faces that don’t meet a required quality bar. The quality bar is based
-#' on a variety of common use cases. By default, `IndexFaces` chooses the
-#' quality bar that's used to filter faces. You can also explicitly choose
-#' the quality bar. Use `QualityFilter`, to set the quality bar by
-#' specifying `LOW`, `MEDIUM`, or `HIGH`. If you do not want to filter
-#' detected faces, specify `NONE`.
+#' on a variety of common use cases. By default,
+#' [`index_faces`][rekognition_index_faces] chooses the quality bar that's
+#' used to filter faces. You can also explicitly choose the quality bar.
+#' Use `QualityFilter`, to set the quality bar by specifying `LOW`,
+#' `MEDIUM`, or `HIGH`. If you do not want to filter detected faces,
+#' specify `NONE`.
 #' 
 #' To use quality filtering, you need a collection associated with version
 #' 3 of the face model or higher. To get the version of the face model
-#' associated with a collection, call DescribeCollection.
+#' associated with a collection, call
+#' [`describe_collection`][rekognition_describe_collection].
 #' 
 #' Information about faces detected in an image, but not indexed, is
 #' returned in an array of UnindexedFace objects, `UnindexedFaces`. Faces
@@ -2277,8 +2352,9 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' 
 #' -   The face doesn’t have enough detail to be suitable for face search.
 #' 
-#' In response, the `IndexFaces` operation returns an array of metadata for
-#' all detected faces, `FaceRecords`. This includes:
+#' In response, the [`index_faces`][rekognition_index_faces] operation
+#' returns an array of metadata for all detected faces, `FaceRecords`. This
+#' includes:
 #' 
 #' -   The bounding box, `BoundingBox`, of the detected face.
 #' 
@@ -2294,8 +2370,9 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' parameter), Amazon Rekognition returns detailed facial attributes, such
 #' as facial landmarks (for example, location of eye and mouth) and other
 #' facial attributes. If you provide the same image, specify the same
-#' collection, and use the same external ID in the `IndexFaces` operation,
-#' Amazon Rekognition doesn't save duplicate face metadata.
+#' collection, and use the same external ID in the
+#' [`index_faces`][rekognition_index_faces] operation, Amazon Rekognition
+#' doesn't save duplicate face metadata.
 #' 
 #' The input image is passed either as base64-encoded image bytes, or as a
 #' reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
@@ -2331,19 +2408,20 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' logical AND operator to determine which attributes to return (in this
 #' case, all attributes).
 #' @param MaxFaces The maximum number of faces to index. The value of `MaxFaces` must be
-#' greater than or equal to 1. `IndexFaces` returns no more than 100
-#' detected faces in an image, even if you specify a larger value for
-#' `MaxFaces`.
+#' greater than or equal to 1. [`index_faces`][rekognition_index_faces]
+#' returns no more than 100 detected faces in an image, even if you specify
+#' a larger value for `MaxFaces`.
 #' 
-#' If `IndexFaces` detects more faces than the value of `MaxFaces`, the
-#' faces with the lowest quality are filtered out first. If there are still
-#' more faces than the value of `MaxFaces`, the faces with the smallest
-#' bounding boxes are filtered out (up to the number that's needed to
-#' satisfy the value of `MaxFaces`). Information about the unindexed faces
-#' is available in the `UnindexedFaces` array.
+#' If [`index_faces`][rekognition_index_faces] detects more faces than the
+#' value of `MaxFaces`, the faces with the lowest quality are filtered out
+#' first. If there are still more faces than the value of `MaxFaces`, the
+#' faces with the smallest bounding boxes are filtered out (up to the
+#' number that's needed to satisfy the value of `MaxFaces`). Information
+#' about the unindexed faces is available in the `UnindexedFaces` array.
 #' 
-#' The faces that are returned by `IndexFaces` are sorted by the largest
-#' face bounding box size to the smallest size, in descending order.
+#' The faces that are returned by [`index_faces`][rekognition_index_faces]
+#' are sorted by the largest face bounding box size to the smallest size,
+#' in descending order.
 #' 
 #' `MaxFaces` can be used with a collection associated with any version of
 #' the face model.
@@ -2537,7 +2615,7 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
 #'
 #' @description
 #' Gets a list of stream processors that you have created with
-#' CreateStreamProcessor.
+#' [`create_stream_processor`][rekognition_create_stream_processor].
 #'
 #' @usage
 #' rekognition_list_stream_processors(NextToken, MaxResults)
@@ -2584,13 +2662,15 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 #' information, see Recognizing Celebrities in the Amazon Rekognition
 #' Developer Guide.
 #' 
-#' `RecognizeCelebrities` returns the 64 largest faces in the image. It
-#' lists recognized celebrities in the `CelebrityFaces` array and
-#' unrecognized faces in the `UnrecognizedFaces` array.
-#' `RecognizeCelebrities` doesn't return celebrities whose faces aren't
-#' among the largest 64 faces in the image.
+#' [`recognize_celebrities`][rekognition_recognize_celebrities] returns the
+#' 64 largest faces in the image. It lists recognized celebrities in the
+#' `CelebrityFaces` array and unrecognized faces in the `UnrecognizedFaces`
+#' array. [`recognize_celebrities`][rekognition_recognize_celebrities]
+#' doesn't return celebrities whose faces aren't among the largest 64 faces
+#' in the image.
 #' 
-#' For each celebrity recognized, `RecognizeCelebrities` returns a
+#' For each celebrity recognized,
+#' [`recognize_celebrities`][rekognition_recognize_celebrities] returns a
 #' `Celebrity` object. The `Celebrity` object contains the celebrity name,
 #' ID, URL links to additional information, match confidence, and a
 #' `ComparedFace` object that you can use to locate the celebrity's face on
@@ -2600,9 +2680,10 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 #' celebrity has been recognized in. Your application must store this
 #' information and use the `Celebrity` ID property as a unique identifier
 #' for the celebrity. If you don't store the celebrity name or additional
-#' information URLs returned by `RecognizeCelebrities`, you will need the
-#' ID to identify the celebrity in a call to the GetCelebrityInfo
-#' operation.
+#' information URLs returned by
+#' [`recognize_celebrities`][rekognition_recognize_celebrities], you will
+#' need the ID to identify the celebrity in a call to the
+#' [`get_celebrity_info`][rekognition_get_celebrity_info] operation.
 #' 
 #' You pass the input image either as base64-encoded image bytes or as a
 #' reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
@@ -2666,11 +2747,12 @@ rekognition_recognize_celebrities <- function(Image) {
 #' @description
 #' For a given input face ID, searches for matching faces in the collection
 #' the face belongs to. You get a face ID when you add a face to the
-#' collection using the IndexFaces operation. The operation compares the
-#' features of the input face with faces in the specified collection.
+#' collection using the [`index_faces`][rekognition_index_faces] operation.
+#' The operation compares the features of the input face with faces in the
+#' specified collection.
 #' 
 #' You can also search faces without indexing faces by using the
-#' `SearchFacesByImage` operation.
+#' [`search_faces_by_image`][rekognition_search_faces_by_image] operation.
 #' 
 #' The operation response returns an array of faces that match, ordered by
 #' similarity score with the highest similarity first. More specifically,
@@ -2749,12 +2831,14 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' specified collection.
 #' 
 #' To search for all faces in an input image, you might first call the
-#' IndexFaces operation, and then use the face IDs returned in subsequent
-#' calls to the SearchFaces operation.
+#' [`index_faces`][rekognition_index_faces] operation, and then use the
+#' face IDs returned in subsequent calls to the
+#' [`search_faces`][rekognition_search_faces] operation.
 #' 
-#' You can also call the `DetectFaces` operation and use the bounding boxes
-#' in the response to make face crops, which then you can pass in to the
-#' `SearchFacesByImage` operation.
+#' You can also call the [`detect_faces`][rekognition_detect_faces]
+#' operation and use the bounding boxes in the response to make face crops,
+#' which then you can pass in to the
+#' [`search_faces_by_image`][rekognition_search_faces_by_image] operation.
 #' 
 #' You pass the input image either as base64-encoded image bytes or as a
 #' reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
@@ -2781,7 +2865,8 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' 
 #' To use quality filtering, you need a collection associated with version
 #' 3 of the face model or higher. To get the version of the face model
-#' associated with a collection, call DescribeCollection.
+#' associated with a collection, call
+#' [`describe_collection`][rekognition_describe_collection].
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:SearchFacesByImage` action.
@@ -2879,15 +2964,18 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
 #' 
 #' Amazon Rekognition Video can detect celebrities in a video must be
 #' stored in an Amazon S3 bucket. Use Video to specify the bucket name and
-#' the filename of the video. `StartCelebrityRecognition` returns a job
-#' identifier (`JobId`) which you use to get the results of the analysis.
-#' When celebrity recognition analysis is finished, Amazon Rekognition
-#' Video publishes a completion status to the Amazon Simple Notification
-#' Service topic that you specify in `NotificationChannel`. To get the
-#' results of the celebrity recognition analysis, first check that the
-#' status value published to the Amazon SNS topic is `SUCCEEDED`. If so,
-#' call GetCelebrityRecognition and pass the job identifier (`JobId`) from
-#' the initial call to `StartCelebrityRecognition`.
+#' the filename of the video.
+#' [`start_celebrity_recognition`][rekognition_start_celebrity_recognition]
+#' returns a job identifier (`JobId`) which you use to get the results of
+#' the analysis. When celebrity recognition analysis is finished, Amazon
+#' Rekognition Video publishes a completion status to the Amazon Simple
+#' Notification Service topic that you specify in `NotificationChannel`. To
+#' get the results of the celebrity recognition analysis, first check that
+#' the status value published to the Amazon SNS topic is `SUCCEEDED`. If
+#' so, call
+#' [`get_celebrity_recognition`][rekognition_get_celebrity_recognition] and
+#' pass the job identifier (`JobId`) from the initial call to
+#' [`start_celebrity_recognition`][rekognition_start_celebrity_recognition].
 #' 
 #' For more information, see Recognizing Celebrities in the Amazon
 #' Rekognition Developer Guide.
@@ -2899,9 +2987,10 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
 #' @param Video &#91;required&#93; The video in which you want to recognize celebrities. The video must be
 #' stored in an Amazon S3 bucket.
 #' @param ClientRequestToken Idempotent token used to identify the start request. If you use the same
-#' token with multiple `StartCelebrityRecognition` requests, the same
-#' `JobId` is returned. Use `ClientRequestToken` to prevent the same job
-#' from being accidently started more than once.
+#' token with multiple
+#' [`start_celebrity_recognition`][rekognition_start_celebrity_recognition]
+#' requests, the same `JobId` is returned. Use `ClientRequestToken` to
+#' prevent the same job from being accidently started more than once.
 #' @param NotificationChannel The Amazon SNS topic ARN that you want Amazon Rekognition Video to
 #' publish the completion status of the celebrity recognition analysis to.
 #' @param JobTag An identifier you specify that's returned in the completion notification
@@ -2955,16 +3044,18 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
 #' 
 #' Amazon Rekognition Video can moderate content in a video stored in an
 #' Amazon S3 bucket. Use Video to specify the bucket name and the filename
-#' of the video. `StartContentModeration` returns a job identifier
-#' (`JobId`) which you use to get the results of the analysis. When unsafe
-#' content analysis is finished, Amazon Rekognition Video publishes a
-#' completion status to the Amazon Simple Notification Service topic that
-#' you specify in `NotificationChannel`.
+#' of the video.
+#' [`start_content_moderation`][rekognition_start_content_moderation]
+#' returns a job identifier (`JobId`) which you use to get the results of
+#' the analysis. When unsafe content analysis is finished, Amazon
+#' Rekognition Video publishes a completion status to the Amazon Simple
+#' Notification Service topic that you specify in `NotificationChannel`.
 #' 
 #' To get the results of the unsafe content analysis, first check that the
 #' status value published to the Amazon SNS topic is `SUCCEEDED`. If so,
-#' call GetContentModeration and pass the job identifier (`JobId`) from the
-#' initial call to `StartContentModeration`.
+#' call [`get_content_moderation`][rekognition_get_content_moderation] and
+#' pass the job identifier (`JobId`) from the initial call to
+#' [`start_content_moderation`][rekognition_start_content_moderation].
 #' 
 #' For more information, see Detecting Unsafe Content in the Amazon
 #' Rekognition Developer Guide.
@@ -2981,12 +3072,14 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
 #' identified. 0 is the lowest confidence. 100 is the highest confidence.
 #' Amazon Rekognition doesn't return any moderated content labels with a
 #' confidence level lower than this specified value. If you don't specify
-#' `MinConfidence`, `GetContentModeration` returns labels with confidence
-#' values greater than or equal to 50 percent.
+#' `MinConfidence`,
+#' [`get_content_moderation`][rekognition_get_content_moderation] returns
+#' labels with confidence values greater than or equal to 50 percent.
 #' @param ClientRequestToken Idempotent token used to identify the start request. If you use the same
-#' token with multiple `StartContentModeration` requests, the same `JobId`
-#' is returned. Use `ClientRequestToken` to prevent the same job from being
-#' accidently started more than once.
+#' token with multiple
+#' [`start_content_moderation`][rekognition_start_content_moderation]
+#' requests, the same `JobId` is returned. Use `ClientRequestToken` to
+#' prevent the same job from being accidently started more than once.
 #' @param NotificationChannel The Amazon SNS topic ARN that you want Amazon Rekognition Video to
 #' publish the completion status of the unsafe content analysis to.
 #' @param JobTag An identifier you specify that's returned in the completion notification
@@ -3041,14 +3134,16 @@ rekognition_start_content_moderation <- function(Video, MinConfidence = NULL, Cl
 #' 
 #' Amazon Rekognition Video can detect faces in a video stored in an Amazon
 #' S3 bucket. Use Video to specify the bucket name and the filename of the
-#' video. `StartFaceDetection` returns a job identifier (`JobId`) that you
-#' use to get the results of the operation. When face detection is
-#' finished, Amazon Rekognition Video publishes a completion status to the
-#' Amazon Simple Notification Service topic that you specify in
-#' `NotificationChannel`. To get the results of the face detection
-#' operation, first check that the status value published to the Amazon SNS
-#' topic is `SUCCEEDED`. If so, call GetFaceDetection and pass the job
-#' identifier (`JobId`) from the initial call to `StartFaceDetection`.
+#' video. [`start_face_detection`][rekognition_start_face_detection]
+#' returns a job identifier (`JobId`) that you use to get the results of
+#' the operation. When face detection is finished, Amazon Rekognition Video
+#' publishes a completion status to the Amazon Simple Notification Service
+#' topic that you specify in `NotificationChannel`. To get the results of
+#' the face detection operation, first check that the status value
+#' published to the Amazon SNS topic is `SUCCEEDED`. If so, call
+#' [`get_face_detection`][rekognition_get_face_detection] and pass the job
+#' identifier (`JobId`) from the initial call to
+#' [`start_face_detection`][rekognition_start_face_detection].
 #' 
 #' For more information, see Detecting Faces in a Stored Video in the
 #' Amazon Rekognition Developer Guide.
@@ -3060,9 +3155,10 @@ rekognition_start_content_moderation <- function(Video, MinConfidence = NULL, Cl
 #' @param Video &#91;required&#93; The video in which you want to detect faces. The video must be stored in
 #' an Amazon S3 bucket.
 #' @param ClientRequestToken Idempotent token used to identify the start request. If you use the same
-#' token with multiple `StartFaceDetection` requests, the same `JobId` is
-#' returned. Use `ClientRequestToken` to prevent the same job from being
-#' accidently started more than once.
+#' token with multiple
+#' [`start_face_detection`][rekognition_start_face_detection] requests, the
+#' same `JobId` is returned. Use `ClientRequestToken` to prevent the same
+#' job from being accidently started more than once.
 #' @param NotificationChannel The ARN of the Amazon SNS topic to which you want Amazon Rekognition
 #' Video to publish the completion status of the face detection operation.
 #' @param FaceAttributes The face attributes you want returned.
@@ -3124,15 +3220,18 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
 #' faces of persons detected in a stored video.
 #' 
 #' The video must be stored in an Amazon S3 bucket. Use Video to specify
-#' the bucket name and the filename of the video. `StartFaceSearch` returns
-#' a job identifier (`JobId`) which you use to get the search results once
-#' the search has completed. When searching is finished, Amazon Rekognition
+#' the bucket name and the filename of the video.
+#' [`start_face_search`][rekognition_start_face_search] returns a job
+#' identifier (`JobId`) which you use to get the search results once the
+#' search has completed. When searching is finished, Amazon Rekognition
 #' Video publishes a completion status to the Amazon Simple Notification
 #' Service topic that you specify in `NotificationChannel`. To get the
 #' search results, first check that the status value published to the
-#' Amazon SNS topic is `SUCCEEDED`. If so, call GetFaceSearch and pass the
-#' job identifier (`JobId`) from the initial call to `StartFaceSearch`. For
-#' more information, see procedure-person-search-videos.
+#' Amazon SNS topic is `SUCCEEDED`. If so, call
+#' [`get_face_search`][rekognition_get_face_search] and pass the job
+#' identifier (`JobId`) from the initial call to
+#' [`start_face_search`][rekognition_start_face_search]. For more
+#' information, see procedure-person-search-videos.
 #'
 #' @usage
 #' rekognition_start_face_search(Video, ClientRequestToken,
@@ -3141,9 +3240,9 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
 #' @param Video &#91;required&#93; The video you want to search. The video must be stored in an Amazon S3
 #' bucket.
 #' @param ClientRequestToken Idempotent token used to identify the start request. If you use the same
-#' token with multiple `StartFaceSearch` requests, the same `JobId` is
-#' returned. Use `ClientRequestToken` to prevent the same job from being
-#' accidently started more than once.
+#' token with multiple [`start_face_search`][rekognition_start_face_search]
+#' requests, the same `JobId` is returned. Use `ClientRequestToken` to
+#' prevent the same job from being accidently started more than once.
 #' @param FaceMatchThreshold The minimum confidence in the person match to return. For example, don't
 #' return any matches where confidence in matches is less than 70%. The
 #' default value is 80%.
@@ -3208,16 +3307,18 @@ rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, Face
 #' person getting out of a car or a person skiing.
 #' 
 #' The video must be stored in an Amazon S3 bucket. Use Video to specify
-#' the bucket name and the filename of the video. `StartLabelDetection`
-#' returns a job identifier (`JobId`) which you use to get the results of
-#' the operation. When label detection is finished, Amazon Rekognition
-#' Video publishes a completion status to the Amazon Simple Notification
-#' Service topic that you specify in `NotificationChannel`.
+#' the bucket name and the filename of the video.
+#' [`start_label_detection`][rekognition_start_label_detection] returns a
+#' job identifier (`JobId`) which you use to get the results of the
+#' operation. When label detection is finished, Amazon Rekognition Video
+#' publishes a completion status to the Amazon Simple Notification Service
+#' topic that you specify in `NotificationChannel`.
 #' 
 #' To get the results of the label detection operation, first check that
 #' the status value published to the Amazon SNS topic is `SUCCEEDED`. If
-#' so, call GetLabelDetection and pass the job identifier (`JobId`) from
-#' the initial call to `StartLabelDetection`.
+#' so, call [`get_label_detection`][rekognition_get_label_detection] and
+#' pass the job identifier (`JobId`) from the initial call to
+#' [`start_label_detection`][rekognition_start_label_detection].
 #'
 #' @usage
 #' rekognition_start_label_detection(Video, ClientRequestToken,
@@ -3226,9 +3327,10 @@ rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, Face
 #' @param Video &#91;required&#93; The video in which you want to detect labels. The video must be stored
 #' in an Amazon S3 bucket.
 #' @param ClientRequestToken Idempotent token used to identify the start request. If you use the same
-#' token with multiple `StartLabelDetection` requests, the same `JobId` is
-#' returned. Use `ClientRequestToken` to prevent the same job from being
-#' accidently started more than once.
+#' token with multiple
+#' [`start_label_detection`][rekognition_start_label_detection] requests,
+#' the same `JobId` is returned. Use `ClientRequestToken` to prevent the
+#' same job from being accidently started more than once.
 #' @param MinConfidence Specifies the minimum confidence that Amazon Rekognition Video must have
 #' in order to return a detected label. Confidence represents how certain
 #' Amazon Rekognition is that a label is correctly identified.0 is the
@@ -3292,16 +3394,18 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
 #' 
 #' Amazon Rekognition Video can track the path of people in a video stored
 #' in an Amazon S3 bucket. Use Video to specify the bucket name and the
-#' filename of the video. `StartPersonTracking` returns a job identifier
-#' (`JobId`) which you use to get the results of the operation. When label
-#' detection is finished, Amazon Rekognition publishes a completion status
-#' to the Amazon Simple Notification Service topic that you specify in
-#' `NotificationChannel`.
+#' filename of the video.
+#' [`start_person_tracking`][rekognition_start_person_tracking] returns a
+#' job identifier (`JobId`) which you use to get the results of the
+#' operation. When label detection is finished, Amazon Rekognition
+#' publishes a completion status to the Amazon Simple Notification Service
+#' topic that you specify in `NotificationChannel`.
 #' 
 #' To get the results of the person detection operation, first check that
 #' the status value published to the Amazon SNS topic is `SUCCEEDED`. If
-#' so, call GetPersonTracking and pass the job identifier (`JobId`) from
-#' the initial call to `StartPersonTracking`.
+#' so, call [`get_person_tracking`][rekognition_get_person_tracking] and
+#' pass the job identifier (`JobId`) from the initial call to
+#' [`start_person_tracking`][rekognition_start_person_tracking].
 #'
 #' @usage
 #' rekognition_start_person_tracking(Video, ClientRequestToken,
@@ -3310,9 +3414,10 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
 #' @param Video &#91;required&#93; The video in which you want to detect people. The video must be stored
 #' in an Amazon S3 bucket.
 #' @param ClientRequestToken Idempotent token used to identify the start request. If you use the same
-#' token with multiple `StartPersonTracking` requests, the same `JobId` is
-#' returned. Use `ClientRequestToken` to prevent the same job from being
-#' accidently started more than once.
+#' token with multiple
+#' [`start_person_tracking`][rekognition_start_person_tracking] requests,
+#' the same `JobId` is returned. Use `ClientRequestToken` to prevent the
+#' same job from being accidently started more than once.
 #' @param NotificationChannel The Amazon SNS topic ARN you want Amazon Rekognition Video to publish
 #' the completion status of the people detection operation to.
 #' @param JobTag An identifier you specify that's returned in the completion notification
@@ -3364,13 +3469,14 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 #' @description
 #' Starts the running of the version of a model. Starting a model takes a
 #' while to complete. To check the current state of the model, use
-#' DescribeProjectVersions.
+#' [`describe_project_versions`][rekognition_describe_project_versions].
 #' 
 #' Once the model is running, you can detect custom labels in new images by
-#' calling DetectCustomLabels.
+#' calling [`detect_custom_labels`][rekognition_detect_custom_labels].
 #' 
 #' You are charged for the amount of time that the model is running. To
-#' stop a running model, call StopProjectVersion.
+#' stop a running model, call
+#' [`stop_project_version`][rekognition_stop_project_version].
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:StartProjectVersion` action.
@@ -3420,11 +3526,12 @@ rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUni
 #' 
 #' Amazon Rekognition Video can detect segments in a video stored in an
 #' Amazon S3 bucket. Use Video to specify the bucket name and the filename
-#' of the video. `StartSegmentDetection` returns a job identifier (`JobId`)
-#' which you use to get the results of the operation. When segment
-#' detection is finished, Amazon Rekognition Video publishes a completion
-#' status to the Amazon Simple Notification Service topic that you specify
-#' in `NotificationChannel`.
+#' of the video.
+#' [`start_segment_detection`][rekognition_start_segment_detection] returns
+#' a job identifier (`JobId`) which you use to get the results of the
+#' operation. When segment detection is finished, Amazon Rekognition Video
+#' publishes a completion status to the Amazon Simple Notification Service
+#' topic that you specify in `NotificationChannel`.
 #' 
 #' You can use the `Filters` (StartSegmentDetectionFilters) input parameter
 #' to specify the minimum detection confidence returned in the response.
@@ -3434,8 +3541,9 @@ rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUni
 #' 
 #' To get the results of the segment detection operation, first check that
 #' the status value published to the Amazon SNS topic is `SUCCEEDED`. if
-#' so, call GetSegmentDetection and pass the job identifier (`JobId`) from
-#' the initial call to `StartSegmentDetection`.
+#' so, call [`get_segment_detection`][rekognition_get_segment_detection]
+#' and pass the job identifier (`JobId`) from the initial call to
+#' [`start_segment_detection`][rekognition_start_segment_detection].
 #' 
 #' For more information, see Detecting Video Segments in Stored Video in
 #' the Amazon Rekognition Developer Guide.
@@ -3446,9 +3554,10 @@ rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUni
 #'
 #' @param Video &#91;required&#93; 
 #' @param ClientRequestToken Idempotent token used to identify the start request. If you use the same
-#' token with multiple `StartSegmentDetection` requests, the same `JobId`
-#' is returned. Use `ClientRequestToken` to prevent the same job from being
-#' accidently started more than once.
+#' token with multiple
+#' [`start_segment_detection`][rekognition_start_segment_detection]
+#' requests, the same `JobId` is returned. Use `ClientRequestToken` to
+#' prevent the same job from being accidently started more than once.
 #' @param NotificationChannel The ARN of the Amazon SNS topic to which you want Amazon Rekognition
 #' Video to publish the completion status of the segment detection
 #' operation.
@@ -3514,9 +3623,12 @@ rekognition_start_segment_detection <- function(Video, ClientRequestToken = NULL
 #'
 #' @description
 #' Starts processing a stream processor. You create a stream processor by
-#' calling CreateStreamProcessor. To tell `StartStreamProcessor` which
-#' stream processor to start, use the value of the `Name` field specified
-#' in the call to `CreateStreamProcessor`.
+#' calling
+#' [`create_stream_processor`][rekognition_create_stream_processor]. To
+#' tell [`start_stream_processor`][rekognition_start_stream_processor]
+#' which stream processor to start, use the value of the `Name` field
+#' specified in the call to
+#' [`create_stream_processor`][rekognition_create_stream_processor].
 #'
 #' @usage
 #' rekognition_start_stream_processor(Name)
@@ -3557,16 +3669,17 @@ rekognition_start_stream_processor <- function(Name) {
 #' 
 #' Amazon Rekognition Video can detect text in a video stored in an Amazon
 #' S3 bucket. Use Video to specify the bucket name and the filename of the
-#' video. `StartTextDetection` returns a job identifier (`JobId`) which you
-#' use to get the results of the operation. When text detection is
-#' finished, Amazon Rekognition Video publishes a completion status to the
-#' Amazon Simple Notification Service topic that you specify in
-#' `NotificationChannel`.
+#' video. [`start_text_detection`][rekognition_start_text_detection]
+#' returns a job identifier (`JobId`) which you use to get the results of
+#' the operation. When text detection is finished, Amazon Rekognition Video
+#' publishes a completion status to the Amazon Simple Notification Service
+#' topic that you specify in `NotificationChannel`.
 #' 
 #' To get the results of the text detection operation, first check that the
 #' status value published to the Amazon SNS topic is `SUCCEEDED`. if so,
-#' call GetTextDetection and pass the job identifier (`JobId`) from the
-#' initial call to `StartTextDetection`.
+#' call [`get_text_detection`][rekognition_get_text_detection] and pass the
+#' job identifier (`JobId`) from the initial call to
+#' [`start_text_detection`][rekognition_start_text_detection].
 #'
 #' @usage
 #' rekognition_start_text_detection(Video, ClientRequestToken,
@@ -3574,9 +3687,10 @@ rekognition_start_stream_processor <- function(Name) {
 #'
 #' @param Video &#91;required&#93; 
 #' @param ClientRequestToken Idempotent token used to identify the start request. If you use the same
-#' token with multiple `StartTextDetection` requests, the same `JobId` is
-#' returned. Use `ClientRequestToken` to prevent the same job from being
-#' accidentaly started more than once.
+#' token with multiple
+#' [`start_text_detection`][rekognition_start_text_detection] requests, the
+#' same `JobId` is returned. Use `ClientRequestToken` to prevent the same
+#' job from being accidentaly started more than once.
 #' @param NotificationChannel 
 #' @param JobTag An identifier returned in the completion status published by your Amazon
 #' Simple Notification Service topic. For example, you can use `JobTag` to
@@ -3644,7 +3758,8 @@ rekognition_start_text_detection <- function(Video, ClientRequestToken = NULL, N
 #'
 #' @description
 #' Stops a running model. The operation might take a while to complete. To
-#' check the current status, call DescribeProjectVersions.
+#' check the current status, call
+#' [`describe_project_versions`][rekognition_describe_project_versions].
 #'
 #' @usage
 #' rekognition_stop_project_version(ProjectVersionArn)
@@ -3687,12 +3802,13 @@ rekognition_stop_project_version <- function(ProjectVersionArn) {
 #'
 #' @description
 #' Stops a running stream processor that was created by
-#' CreateStreamProcessor.
+#' [`create_stream_processor`][rekognition_create_stream_processor].
 #'
 #' @usage
 #' rekognition_stop_stream_processor(Name)
 #'
-#' @param Name &#91;required&#93; The name of a stream processor created by CreateStreamProcessor.
+#' @param Name &#91;required&#93; The name of a stream processor created by
+#' [`create_stream_processor`][rekognition_create_stream_processor].
 #'
 #' @section Request syntax:
 #' ```

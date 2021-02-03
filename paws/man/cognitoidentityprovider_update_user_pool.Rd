@@ -52,13 +52,16 @@ token.
 that you can use to categorize and manage user pools in different ways,
 such as by purpose, owner, environment, or other criteria.}
 
-\item{AdminCreateUserConfig}{The configuration for \code{AdminCreateUser} requests.}
+\item{AdminCreateUserConfig}{The configuration for
+\code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}}
+requests.}
 
 \item{UserPoolAddOns}{Used to enable advanced security risk detection. Set the key
 \code{AdvancedSecurityMode} to the value "AUDIT".}
 
 \item{AccountRecoverySetting}{Use this setting to define which verified available method a user can
-use to recover their password when they call \code{ForgotPassword}. It allows
+use to recover their password when they call
+\code{\link[=cognitoidentityprovider_forgot_password]{forgot_password}}. It allows
 you to define a preferred method when a user has more than one method
 available. With this setting, SMS does not qualify for a valid password
 recovery mechanism if the user also has SMS MFA enabled. In the absence
@@ -68,7 +71,7 @@ recovery method where SMS is preferred over email.}
 \description{
 Updates the specified user pool with the specified attributes. You can
 get a list of the current user pool settings using
-\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPool.html}{DescribeUserPool}.
+\code{\link[=cognitoidentityprovider_describe_user_pool]{describe_user_pool}}.
 
 If you don't provide a value for an attribute, it will be set to the
 default value.

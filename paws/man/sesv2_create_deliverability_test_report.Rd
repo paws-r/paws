@@ -28,8 +28,9 @@ placement test, you provide a sample message that contains the content
 that you plan to send to your customers. Amazon SES then sends that
 message to special email addresses spread across several major email
 providers. After about 24 hours, the test is complete, and you can use
-the \code{GetDeliverabilityTestReport} operation to view the results of the
-test.
+the
+\code{\link[=sesv2_get_deliverability_test_report]{get_deliverability_test_report}}
+operation to view the results of the test.
 }
 \section{Request syntax}{
 \preformatted{svc$create_deliverability_test_report(

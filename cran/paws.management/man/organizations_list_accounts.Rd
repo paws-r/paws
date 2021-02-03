@@ -27,7 +27,8 @@ results.}
 \description{
 Lists all the accounts in the organization. To request only the accounts
 in a specified root or organizational unit (OU), use the
-ListAccountsForParent operation instead.
+\code{\link[=organizations_list_accounts_for_parent]{list_accounts_for_parent}}
+operation instead.
 
 Always check the \code{NextToken} response parameter for a \code{null} value when
 calling a \verb{List*} operation. These operations can occasionally return an

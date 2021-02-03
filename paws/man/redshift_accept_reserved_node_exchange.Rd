@@ -15,7 +15,7 @@ exchanged.}
 
 \item{TargetReservedNodeOfferingId}{[required] The unique identifier of the DC2 Reserved Node offering to be used for
 the exchange. You can obtain the value for the parameter by calling
-GetReservedNodeExchangeOfferings}
+\code{\link[=redshift_get_reserved_node_exchange_offerings]{get_reserved_node_exchange_offerings}}}
 }
 \description{
 Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes to

@@ -18,7 +18,7 @@ To successfully call this API, you must own the identity.}
 \item{PolicyNames}{[required] A list of the names of policies to be retrieved. You can retrieve a
 maximum of 20 policies at a time. If you do not know the names of the
 policies that are attached to the identity, you can use
-\code{ListIdentityPolicies}.}
+\code{\link[=ses_list_identity_policies]{list_identity_policies}}.}
 }
 \description{
 Returns the requested sending authorization policies for the given

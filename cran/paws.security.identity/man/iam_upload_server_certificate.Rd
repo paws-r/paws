@@ -97,8 +97,9 @@ in the \emph{IAM User Guide}.
 
 Because the body of the public key certificate, private key, and the
 certificate chain can be large, you should use POST rather than GET when
-calling \code{UploadServerCertificate}. For information about setting up
-signatures and authorization through the API, go to \href{https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests}
+calling \code{\link[=iam_upload_server_certificate]{upload_server_certificate}}.
+For information about setting up signatures and authorization through
+the API, go to \href{https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests}
 in the \emph{AWS General Reference}. For general information about using the
 Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html}{Calling the API by Making HTTP Query Requests}
 in the \emph{IAM User Guide}.

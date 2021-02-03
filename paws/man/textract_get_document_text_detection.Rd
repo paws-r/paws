@@ -9,8 +9,9 @@ textract_get_document_text_detection(JobId, MaxResults, NextToken)
 }
 \arguments{
 \item{JobId}{[required] A unique identifier for the text detection job. The \code{JobId} is returned
-from \code{StartDocumentTextDetection}. A \code{JobId} value is only valid for 7
-days.}
+from
+\code{\link[=textract_start_document_text_detection]{start_document_text_detection}}.
+A \code{JobId} value is only valid for 7 days.}
 
 \item{MaxResults}{The maximum number of results to return per paginated call. The largest
 value you can specify is 1,000. If you specify a value greater than
@@ -28,17 +29,21 @@ detects text in a document. Amazon Textract can detect lines of text and
 the words that make up a line of text.
 
 You start asynchronous text detection by calling
-StartDocumentTextDetection, which returns a job identifier (\code{JobId}).
-When the text detection operation finishes, Amazon Textract publishes a
-completion status to the Amazon Simple Notification Service (Amazon SNS)
-topic that's registered in the initial call to
-\code{StartDocumentTextDetection}. To get the results of the text-detection
-operation, first check that the status value published to the Amazon SNS
-topic is \code{SUCCEEDED}. If so, call \code{GetDocumentTextDetection}, and pass
-the job identifier (\code{JobId}) from the initial call to
-\code{StartDocumentTextDetection}.
+\code{\link[=textract_start_document_text_detection]{start_document_text_detection}},
+which returns a job identifier (\code{JobId}). When the text detection
+operation finishes, Amazon Textract publishes a completion status to the
+Amazon Simple Notification Service (Amazon SNS) topic that's registered
+in the initial call to
+\code{\link[=textract_start_document_text_detection]{start_document_text_detection}}.
+To get the results of the text-detection operation, first check that the
+status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so,
+call
+\code{\link[=textract_get_document_text_detection]{get_document_text_detection}},
+and pass the job identifier (\code{JobId}) from the initial call to
+\code{\link[=textract_start_document_text_detection]{start_document_text_detection}}.
 
-\code{GetDocumentTextDetection} returns an array of Block objects.
+\code{\link[=textract_get_document_text_detection]{get_document_text_detection}}
+returns an array of Block objects.
 
 Each document page has as an associated \code{Block} of type PAGE. Each PAGE
 \code{Block} object is the parent of LINE \code{Block} objects that represent the
@@ -50,9 +55,11 @@ Use the MaxResults parameter to limit the number of blocks that are
 returned. If there are more results than specified in \code{MaxResults}, the
 value of \code{NextToken} in the operation response contains a pagination
 token for getting the next set of results. To get the next page of
-results, call \code{GetDocumentTextDetection}, and populate the \code{NextToken}
-request parameter with the token value that's returned from the previous
-call to \code{GetDocumentTextDetection}.
+results, call
+\code{\link[=textract_get_document_text_detection]{get_document_text_detection}},
+and populate the \code{NextToken} request parameter with the token value
+that's returned from the previous call to
+\code{\link[=textract_get_document_text_detection]{get_document_text_detection}}.
 
 For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html}{Document Text Detection}.
 }

@@ -95,8 +95,10 @@ it when creating change sets has no effect.
 
 If you want to create a stack from a stack template that contains
 macros \emph{and} nested stacks, you must create or update the stack
-directly from the template using the CreateStack or UpdateStack
-action, and specifying this capability.
+directly from the template using the
+\code{\link[=cloudformation_create_stack]{create_stack}} or
+\code{\link[=cloudformation_update_stack]{update_stack}} action, and specifying
+this capability.
 
 For more information on macros, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using AWS CloudFormation Macros to Perform Custom Processing on Templates}.
 }}
@@ -144,11 +146,13 @@ A change set name can contain only alphanumeric, case sensitive
 characters and hyphens. It must start with an alphabetic character and
 cannot exceed 128 characters.}
 
-\item{ClientToken}{A unique identifier for this \code{CreateChangeSet} request. Specify this
-token if you plan to retry requests so that AWS CloudFormation knows
-that you're not attempting to create another change set with the same
-name. You might retry \code{CreateChangeSet} requests to ensure that AWS
-CloudFormation successfully received them.}
+\item{ClientToken}{A unique identifier for this
+\code{\link[=cloudformation_create_change_set]{create_change_set}} request. Specify
+this token if you plan to retry requests so that AWS CloudFormation
+knows that you're not attempting to create another change set with the
+same name. You might retry
+\code{\link[=cloudformation_create_change_set]{create_change_set}} requests to
+ensure that AWS CloudFormation successfully received them.}
 
 \item{Description}{A description to help you identify this change set.}
 
@@ -190,13 +194,15 @@ To create a change set for a stack that doesn't exist, for the
 \code{ChangeSetType} parameter, specify \code{CREATE}. To create a change set for
 an existing stack, specify \code{UPDATE} for the \code{ChangeSetType} parameter.
 To create a change set for an import operation, specify \code{IMPORT} for the
-\code{ChangeSetType} parameter. After the \code{CreateChangeSet} call successfully
-completes, AWS CloudFormation starts creating the change set. To check
-the status of the change set or to review it, use the DescribeChangeSet
-action.
+\code{ChangeSetType} parameter. After the
+\code{\link[=cloudformation_create_change_set]{create_change_set}} call
+successfully completes, AWS CloudFormation starts creating the change
+set. To check the status of the change set or to review it, use the
+\code{\link[=cloudformation_describe_change_set]{describe_change_set}} action.
 
 When you are satisfied with the changes the change set will make,
-execute the change set by using the ExecuteChangeSet action. AWS
+execute the change set by using the
+\code{\link[=cloudformation_execute_change_set]{execute_change_set}} action. AWS
 CloudFormation doesn't make changes until you execute the change set.
 
 To create a change set for the entire stack hierachy, set

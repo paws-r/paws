@@ -32,20 +32,23 @@ for \code{io-performance}: \code{normal} | \code{degraded} | \code{severely-degr
 | \code{warning} | \code{insufficient-data}).
 }}
 
-\item{MaxResults}{The maximum number of volume results returned by \code{DescribeVolumeStatus}
-in paginated output. When this parameter is used, the request only
-returns \code{MaxResults} results in a single page along with a \code{NextToken}
-response element. The remaining results of the initial request can be
-seen by sending another request with the returned \code{NextToken} value.
-This value can be between 5 and 1,000; if \code{MaxResults} is given a value
-larger than 1,000, only 1,000 results are returned. If this parameter is
-not used, then \code{DescribeVolumeStatus} returns all results. You cannot
-specify this parameter and the volume IDs parameter in the same request.}
+\item{MaxResults}{The maximum number of volume results returned by
+\code{\link[=ec2_describe_volume_status]{describe_volume_status}} in paginated
+output. When this parameter is used, the request only returns
+\code{MaxResults} results in a single page along with a \code{NextToken} response
+element. The remaining results of the initial request can be seen by
+sending another request with the returned \code{NextToken} value. This value
+can be between 5 and 1,000; if \code{MaxResults} is given a value larger than
+1,000, only 1,000 results are returned. If this parameter is not used,
+then \code{\link[=ec2_describe_volume_status]{describe_volume_status}} returns all
+results. You cannot specify this parameter and the volume IDs parameter
+in the same request.}
 
-\item{NextToken}{The \code{NextToken} value to include in a future \code{DescribeVolumeStatus}
-request. When the results of the request exceed \code{MaxResults}, this value
-can be used to retrieve the next page of results. This value is \code{null}
-when there are no more results to return.}
+\item{NextToken}{The \code{NextToken} value to include in a future
+\code{\link[=ec2_describe_volume_status]{describe_volume_status}} request. When the
+results of the request exceed \code{MaxResults}, this value can be used to
+retrieve the next page of results. This value is \code{null} when there are
+no more results to return.}
 
 \item{VolumeIds}{The IDs of the volumes.
 
@@ -67,8 +70,8 @@ inconsistencies on the volume. Volume events notify you if this occurs.
 Volume actions notify you if any action needs to be taken in response to
 the event.
 
-The \code{DescribeVolumeStatus} operation provides the following information
-about the specified volumes:
+The \code{\link[=ec2_describe_volume_status]{describe_volume_status}} operation
+provides the following information about the specified volumes:
 
 \emph{Status}: Reflects the current status of the volume. The possible values
 are \code{ok}, \code{impaired} , \code{warning}, or \code{insufficient-data}. If all checks
@@ -89,8 +92,9 @@ host, has all I/O operations disabled, and might have inconsistent data.
 event. For example, if the status of the volume is \code{impaired} and the
 volume event shows \code{potential-data-inconsistency}, then the action shows
 \code{enable-volume-io}. This means that you may want to enable the I/O
-operations for the volume by calling the EnableVolumeIO action and then
-check the volume for data consistency.
+operations for the volume by calling the
+\code{\link[=ec2_enable_volume_io]{enable_volume_io}} action and then check the
+volume for data consistency.
 
 Volume status is based on the volume status checks, and does not reflect
 the volume state. Therefore, volume status does not indicate volumes in

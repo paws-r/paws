@@ -11,8 +11,8 @@ iot_delete_thing(thingName, expectedVersion)
 
 \item{expectedVersion}{The expected version of the thing record in the registry. If the version
 of the record in the registry does not match the expected version
-specified in the request, the \code{DeleteThing} request is rejected with a
-\code{VersionConflictException}.}
+specified in the request, the \code{\link[=iot_delete_thing]{delete_thing}} request
+is rejected with a \code{VersionConflictException}.}
 }
 \description{
 Deletes the specified thing. Returns successfully with no error if the

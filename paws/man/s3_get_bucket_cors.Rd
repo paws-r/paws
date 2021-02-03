@@ -22,10 +22,11 @@ permission and can grant it to others.
 
 For more information about cors, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html}{Enabling Cross-Origin Resource Sharing}.
 
-The following operations are related to \code{GetBucketCors}:
+The following operations are related to
+\code{\link[=s3_get_bucket_cors]{get_bucket_cors}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketCors.html}{PutBucketCors}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketCors.html}{DeleteBucketCors}
+\item \code{\link[=s3_put_bucket_cors]{put_bucket_cors}}
+\item \code{\link[=s3_delete_bucket_cors]{delete_bucket_cors}}
 }
 }
 \section{Request syntax}{

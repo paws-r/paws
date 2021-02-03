@@ -21,8 +21,8 @@ Default: Gateway}
 \item{VpcId}{[required] The ID of the VPC in which the endpoint will be used.}
 
 \item{ServiceName}{[required] The service name. To get a list of available services, use the
-DescribeVpcEndpointServices request, or get the name from the service
-provider.}
+\code{\link[=ec2_describe_vpc_endpoint_services]{describe_vpc_endpoint_services}}
+request, or get the name from the service provider.}
 
 \item{PolicyDocument}{(Interface and gateway endpoints) A policy to attach to the endpoint
 that controls access to the service. The policy must be in valid JSON
@@ -52,7 +52,8 @@ by the VPC endpoint service.
 
 To use a private hosted zone, you must set the following VPC attributes
 to \code{true}: \code{enableDnsHostnames} and \code{enableDnsSupport}. Use
-ModifyVpcAttribute to set the VPC attributes.
+\code{\link[=ec2_modify_vpc_attribute]{modify_vpc_attribute}} to set the VPC
+attributes.
 
 Default: \code{true}}
 
@@ -80,7 +81,9 @@ A \code{GatewayLoadBalancer} endpoint is a network interface in your subnet
 that serves an endpoint for communicating with a Gateway Load Balancer
 that you've configured as a VPC endpoint service.
 
-Use DescribeVpcEndpointServices to get a list of supported services.
+Use
+\code{\link[=ec2_describe_vpc_endpoint_services]{describe_vpc_endpoint_services}}
+to get a list of supported services.
 }
 \section{Request syntax}{
 \preformatted{svc$create_vpc_endpoint(

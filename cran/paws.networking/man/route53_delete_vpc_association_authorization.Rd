@@ -18,17 +18,21 @@ AWS account with a hosted zone that was created with a different AWS
 account, a complex type that includes the ID and region of the VPC.}
 }
 \description{
-Removes authorization to submit an \code{AssociateVPCWithHostedZone} request
-to associate a specified VPC with a hosted zone that was created by a
-different account. You must use the account that created the hosted zone
-to submit a \code{DeleteVPCAssociationAuthorization} request.
+Removes authorization to submit an
+\code{\link[=route53_associate_vpc_with_hosted_zone]{associate_vpc_with_hosted_zone}}
+request to associate a specified VPC with a hosted zone that was created
+by a different account. You must use the account that created the hosted
+zone to submit a
+\code{\link[=route53_delete_vpc_association_authorization]{delete_vpc_association_authorization}}
+request.
 
 Sending this request only prevents the AWS account that created the VPC
 from associating the VPC with the Amazon Route 53 hosted zone in the
 future. If the VPC is already associated with the hosted zone,
-\code{DeleteVPCAssociationAuthorization} won't disassociate the VPC from the
-hosted zone. If you want to delete an existing association, use
-\code{DisassociateVPCFromHostedZone}.
+\code{\link[=route53_delete_vpc_association_authorization]{delete_vpc_association_authorization}}
+won't disassociate the VPC from the hosted zone. If you want to delete
+an existing association, use
+\code{\link[=route53_disassociate_vpc_from_hosted_zone]{disassociate_vpc_from_hosted_zone}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_vpc_association_authorization(

@@ -41,14 +41,16 @@ and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS Cl
 Creates an uninitialized HSM instance.
 
 There is an upfront fee charged for each HSM instance that you create
-with the \code{CreateHsm} operation. If you accidentally provision an HSM and
-want to request a refund, delete the instance using the DeleteHsm
-operation, go to the AWS Support Center, create a new case, and select
-\strong{Account and Billing Support}.
+with the \code{\link[=cloudhsm_create_hsm]{create_hsm}} operation. If you
+accidentally provision an HSM and want to request a refund, delete the
+instance using the \code{\link[=cloudhsm_delete_hsm]{delete_hsm}} operation, go to
+the AWS Support Center, create a new case, and select \strong{Account and
+Billing Support}.
 
 It can take up to 20 minutes to create and provision an HSM. You can
-monitor the status of the HSM with the DescribeHsm operation. The HSM is
-ready to be initialized when the status changes to \code{RUNNING}.
+monitor the status of the HSM with the
+\code{\link[=cloudhsm_describe_hsm]{describe_hsm}} operation. The HSM is ready to
+be initialized when the status changes to \code{RUNNING}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_hsm(

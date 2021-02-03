@@ -9,10 +9,10 @@ acmpca_list_tags(CertificateAuthorityArn, NextToken, MaxResults)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}
+\code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}
 action. This must be of the form:
 
-\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
+\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 
 \item{NextToken}{Use this parameter when paginating results in a subsequent request after
 you receive a response with truncated results. Set it to the value of
@@ -29,9 +29,9 @@ Lists the tags, if any, that are associated with your private CA or one
 that has been shared with you. Tags are labels that you can use to
 identify and organize your CAs. Each tag consists of a key and an
 optional value. Call the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_TagCertificateAuthority.html}{TagCertificateAuthority}
-action to add one or more tags to your CA. Call the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UntagCertificateAuthority.html}{UntagCertificateAuthority}
+\code{\link[=acmpca_tag_certificate_authority]{tag_certificate_authority}} action
+to add one or more tags to your CA. Call the
+\code{\link[=acmpca_untag_certificate_authority]{untag_certificate_authority}}
 action to remove tags.
 }
 \section{Request syntax}{

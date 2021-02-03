@@ -9,7 +9,7 @@ datapipeline_describe_pipelines(pipelineIds)
 \arguments{
 \item{pipelineIds}{[required] The IDs of the pipelines to describe. You can pass as many as 25
 identifiers in a single call. To obtain pipeline IDs, call
-ListPipelines.}
+\code{\link[=datapipeline_list_pipelines]{list_pipelines}}.}
 }
 \description{
 Retrieves metadata about one or more pipelines. The information
@@ -21,7 +21,8 @@ you can retrieve metadata about only those pipelines for which you have
 read permissions.
 
 To retrieve the full pipeline definition instead of metadata about the
-pipeline, call GetPipelineDefinition.
+pipeline, call
+\code{\link[=datapipeline_get_pipeline_definition]{get_pipeline_definition}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_pipelines(

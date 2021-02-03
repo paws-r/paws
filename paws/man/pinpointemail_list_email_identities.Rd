@@ -8,11 +8,13 @@ your Amazon Pinpoint account}
 pinpointemail_list_email_identities(NextToken, PageSize)
 }
 \arguments{
-\item{NextToken}{A token returned from a previous call to \code{ListEmailIdentities} to
+\item{NextToken}{A token returned from a previous call to
+\code{\link[=pinpointemail_list_email_identities]{list_email_identities}} to
 indicate the position in the list of identities.}
 
-\item{PageSize}{The number of results to show in a single call to \code{ListEmailIdentities}.
-If the number of results is larger than the number you specified in this
+\item{PageSize}{The number of results to show in a single call to
+\code{\link[=pinpointemail_list_email_identities]{list_email_identities}}. If the
+number of results is larger than the number you specified in this
 parameter, then the response includes a \code{NextToken} element, which you
 can use to obtain additional results.
 

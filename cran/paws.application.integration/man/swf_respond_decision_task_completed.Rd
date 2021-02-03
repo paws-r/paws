@@ -34,12 +34,13 @@ execution history.
 \strong{Access Control}
 
 If an IAM policy grants permission to use
-\code{RespondDecisionTaskCompleted}, it can express permissions for the list
-of decisions in the \code{decisions} parameter. Each of the decisions has one
-or more parameters, much like a regular API call. To allow for policies
-to be as readable as possible, you can express permissions on decisions
-as if they were actual API calls, including applying conditions to some
-parameters. For more information, see \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
+\code{\link[=swf_respond_decision_task_completed]{respond_decision_task_completed}},
+it can express permissions for the list of decisions in the \code{decisions}
+parameter. Each of the decisions has one or more parameters, much like a
+regular API call. To allow for policies to be as readable as possible,
+you can express permissions on decisions as if they were actual API
+calls, including applying conditions to some parameters. For more
+information, see \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
 in the \emph{Amazon SWF Developer Guide}.
 }
 \section{Request syntax}{

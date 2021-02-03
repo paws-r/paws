@@ -11,9 +11,12 @@ rekognition_start_stream_processor(Name)
 }
 \description{
 Starts processing a stream processor. You create a stream processor by
-calling CreateStreamProcessor. To tell \code{StartStreamProcessor} which
-stream processor to start, use the value of the \code{Name} field specified
-in the call to \code{CreateStreamProcessor}.
+calling
+\code{\link[=rekognition_create_stream_processor]{create_stream_processor}}. To
+tell \code{\link[=rekognition_start_stream_processor]{start_stream_processor}}
+which stream processor to start, use the value of the \code{Name} field
+specified in the call to
+\code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
 }
 \section{Request syntax}{
 \preformatted{svc$start_stream_processor(

@@ -25,9 +25,10 @@ Services map a \code{SettingId} object to a setting value. AWS services teams
 define the default value for a \code{SettingId}. You can't create a new
 \code{SettingId}, but you can overwrite the default value if you have the
 \code{ssm:UpdateServiceSetting} permission for the setting. Use the
-UpdateServiceSetting API action to change the default setting. Or use
-the ResetServiceSetting to change the value back to the original value
-defined by the AWS service team.
+\code{\link[=ssm_update_service_setting]{update_service_setting}} API action to
+change the default setting. Or use the
+\code{\link[=ssm_reset_service_setting]{reset_service_setting}} to change the value
+back to the original value defined by the AWS service team.
 
 Query the current service setting for the account.
 }

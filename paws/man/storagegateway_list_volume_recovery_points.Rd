@@ -17,7 +17,8 @@ Each cache volume has one recovery point. A volume recovery point is a
 point in time at which all data of the volume is consistent and from
 which you can create a snapshot or clone a new cached volume from a
 source volume. To create a snapshot from a volume recovery point use the
-CreateSnapshotFromVolumeRecoveryPoint operation.
+\code{\link[=storagegateway_create_snapshot_from_volume_recovery_point]{create_snapshot_from_volume_recovery_point}}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$list_volume_recovery_points(

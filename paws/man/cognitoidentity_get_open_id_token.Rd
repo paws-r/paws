@@ -17,8 +17,9 @@ OpenId Connect provider, always include the \code{id_token}.}
 }
 \description{
 Gets an OpenID token, using a known Cognito ID. This known Cognito ID is
-returned by GetId. You can optionally add additional logins for the
-identity. Supplying multiple logins creates an implicit link.
+returned by \code{\link[=cognitoidentity_get_id]{get_id}}. You can optionally add
+additional logins for the identity. Supplying multiple logins creates an
+implicit link.
 
 The OpenId token is valid for 10 minutes.
 

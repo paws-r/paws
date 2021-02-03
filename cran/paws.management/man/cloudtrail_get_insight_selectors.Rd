@@ -26,9 +26,11 @@ If you specify a trail ARN, it must be in the format:
 }
 \description{
 Describes the settings for the Insights event selectors that you
-configured for your trail. \code{GetInsightSelectors} shows if CloudTrail
-Insights event logging is enabled on the trail, and if it is, which
-insight types are enabled. If you run \code{GetInsightSelectors} on a trail
+configured for your trail.
+\code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} shows if
+CloudTrail Insights event logging is enabled on the trail, and if it is,
+which insight types are enabled. If you run
+\code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} on a trail
 that does not have Insights events enabled, the operation throws the
 exception \code{InsightNotEnabledException}
 

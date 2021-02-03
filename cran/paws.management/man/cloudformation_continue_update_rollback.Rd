@@ -35,7 +35,8 @@ during the continue update rollback operation. You can specify only
 resources that are in the \code{UPDATE_FAILED} state because a rollback
 failed. You can't specify resources that are in the \code{UPDATE_FAILED}
 state for other reasons, for example, because an update was cancelled.
-To check why a resource update failed, use the DescribeStackResources
+To check why a resource update failed, use the
+\code{\link[=cloudformation_describe_stack_resources]{describe_stack_resources}}
 action, and view the resource status reason.
 
 Specify this property to skip rolling back resources that AWS
@@ -66,11 +67,13 @@ Don't confuse a child stack's name with its corresponding logical ID
 defined in the parent stack. For an example of a continue update
 rollback operation with nested stacks, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html#nested-stacks}{Using ResourcesToSkip to recover a nested stacks hierarchy}.}
 
-\item{ClientRequestToken}{A unique identifier for this \code{ContinueUpdateRollback} request. Specify
-this token if you plan to retry requests so that AWS CloudFormation
-knows that you're not attempting to continue the rollback to a stack
-with the same name. You might retry \code{ContinueUpdateRollback} requests to
-ensure that AWS CloudFormation successfully received them.}
+\item{ClientRequestToken}{A unique identifier for this
+\code{\link[=cloudformation_continue_update_rollback]{continue_update_rollback}}
+request. Specify this token if you plan to retry requests so that AWS
+CloudFormation knows that you're not attempting to continue the rollback
+to a stack with the same name. You might retry
+\code{\link[=cloudformation_continue_update_rollback]{continue_update_rollback}}
+requests to ensure that AWS CloudFormation successfully received them.}
 }
 \description{
 For a specified stack that is in the \code{UPDATE_ROLLBACK_FAILED} state,

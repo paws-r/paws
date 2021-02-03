@@ -51,9 +51,10 @@ permission to others.
 
 For information about the Amazon S3 object tagging feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html}{Object Tagging}.
 
-The following operation is related to \code{GetObjectTagging}:
+The following operation is related to
+\code{\link[=s3_get_object_tagging]{get_object_tagging}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html}{PutObjectTagging}
+\item \code{\link[=s3_put_object_tagging]{put_object_tagging}}
 }
 }
 \section{Request syntax}{

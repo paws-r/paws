@@ -10,9 +10,12 @@ wafregional_delete_sql_injection_match_set(SqlInjectionMatchSetId,
 \arguments{
 \item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the SqlInjectionMatchSet that you want
 to delete. \code{SqlInjectionMatchSetId} is returned by
-CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.}
+\code{\link[=wafregional_create_sql_injection_match_set]{create_sql_injection_match_set}}
+and by
+\code{\link[=wafregional_list_sql_injection_match_sets]{list_sql_injection_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -29,16 +32,21 @@ Permanently deletes a SqlInjectionMatchSet. You can't delete a
 contains any SqlInjectionMatchTuple objects.
 
 If you just want to remove a \code{SqlInjectionMatchSet} from a \code{Rule}, use
-UpdateRule.
+\code{\link[=wafregional_update_rule]{update_rule}}.
 
 To permanently delete a \code{SqlInjectionMatchSet} from AWS WAF, perform the
 following steps:
 \enumerate{
 \item Update the \code{SqlInjectionMatchSet} to remove filters, if any. For
-more information, see UpdateSqlInjectionMatchSet.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{DeleteSqlInjectionMatchSet} request.
-\item Submit a \code{DeleteSqlInjectionMatchSet} request.
+more information, see
+\code{\link[=wafregional_update_sql_injection_match_set]{update_sql_injection_match_set}}.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=wafregional_delete_sql_injection_match_set]{delete_sql_injection_match_set}}
+request.
+\item Submit a
+\code{\link[=wafregional_delete_sql_injection_match_set]{delete_sql_injection_match_set}}
+request.
 }
 }
 \section{Request syntax}{

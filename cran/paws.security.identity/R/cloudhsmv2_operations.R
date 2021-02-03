@@ -66,7 +66,8 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #' is `hsm1.medium`.
 #' @param SourceBackupId The identifier (ID) of the cluster backup to restore. Use this value to
 #' restore the cluster from a backup instead of creating a new cluster. To
-#' find the backup ID, use DescribeBackups.
+#' find the backup ID, use
+#' [`describe_backups`][cloudhsmv2_describe_backups].
 #' @param SubnetIds &#91;required&#93; The identifiers (IDs) of the subnets where you are creating the cluster.
 #' You must specify at least one subnet. If you specify multiple subnets,
 #' they must meet the following criteria:
@@ -128,9 +129,10 @@ cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, Sou
 #' cloudhsmv2_create_hsm(ClusterId, AvailabilityZone, IpAddress)
 #'
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the HSM's cluster. To find the cluster ID, use
-#' DescribeClusters.
+#' [`describe_clusters`][cloudhsmv2_describe_clusters].
 #' @param AvailabilityZone &#91;required&#93; The Availability Zone where you are creating the HSM. To find the
-#' cluster's Availability Zones, use DescribeClusters.
+#' cluster's Availability Zones, use
+#' [`describe_clusters`][cloudhsmv2_describe_clusters].
 #' @param IpAddress The HSM's IP address. If you specify an IP address, use an available
 #' address from the subnet that maps to the Availability Zone where you are
 #' creating the HSM. If you don't specify an IP address, one is chosen for
@@ -170,13 +172,13 @@ cloudhsmv2_create_hsm <- function(ClusterId, AvailabilityZone, IpAddress = NULL)
 #' @description
 #' Deletes a specified AWS CloudHSM backup. A backup can be restored up to
 #' 7 days after the DeleteBackup request is made. For more information on
-#' restoring a backup, see RestoreBackup.
+#' restoring a backup, see [`restore_backup`][cloudhsmv2_restore_backup].
 #'
 #' @usage
 #' cloudhsmv2_delete_backup(BackupId)
 #'
 #' @param BackupId &#91;required&#93; The ID of the backup to be deleted. To find the ID of a backup, use the
-#' DescribeBackups operation.
+#' [`describe_backups`][cloudhsmv2_describe_backups] operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -210,14 +212,15 @@ cloudhsmv2_delete_backup <- function(BackupId) {
 #' @description
 #' Deletes the specified AWS CloudHSM cluster. Before you can delete a
 #' cluster, you must delete all HSMs in the cluster. To see if the cluster
-#' contains any HSMs, use DescribeClusters. To delete an HSM, use
-#' DeleteHsm.
+#' contains any HSMs, use
+#' [`describe_clusters`][cloudhsmv2_describe_clusters]. To delete an HSM,
+#' use [`delete_hsm`][cloudhsmv2_delete_hsm].
 #'
 #' @usage
 #' cloudhsmv2_delete_cluster(ClusterId)
 #'
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you are deleting. To find the
-#' cluster ID, use DescribeClusters.
+#' cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
 #'
 #' @section Request syntax:
 #' ```
@@ -252,7 +255,8 @@ cloudhsmv2_delete_cluster <- function(ClusterId) {
 #' Deletes the specified HSM. To specify an HSM, you can use its identifier
 #' (ID), the IP address of the HSM's elastic network interface (ENI), or
 #' the ID of the HSM's ENI. You need to specify only one of these values.
-#' To find these values, use DescribeClusters.
+#' To find these values, use
+#' [`describe_clusters`][cloudhsmv2_describe_clusters].
 #'
 #' @usage
 #' cloudhsmv2_delete_hsm(ClusterId, HsmId, EniId, EniIp)
@@ -303,9 +307,10 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
 #' This is a paginated operation, which means that each response might
 #' contain only a subset of all the backups. When the response contains
 #' only a subset of backups, it includes a `NextToken` value. Use this
-#' value in a subsequent `DescribeBackups` request to get more backups.
-#' When you receive a response with no `NextToken` (or an empty or null
-#' value), that means there are no more backups to get.
+#' value in a subsequent [`describe_backups`][cloudhsmv2_describe_backups]
+#' request to get more backups. When you receive a response with no
+#' `NextToken` (or an empty or null value), that means there are no more
+#' backups to get.
 #'
 #' @usage
 #' cloudhsmv2_describe_backups(NextToken, MaxResults, Filters,
@@ -323,7 +328,8 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
 #' 
 #' Use the `sourceBackupIds` filter to return only the backups created from
 #' a source backup. The `sourceBackupID` of a source backup is returned by
-#' the CopyBackupToRegion operation.
+#' the [`copy_backup_to_region`][cloudhsmv2_copy_backup_to_region]
+#' operation.
 #' 
 #' Use the `clusterIds` filter to return only the backups for the specified
 #' clusters. Specify clusters by their cluster identifier (ID).
@@ -380,9 +386,10 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
 #' This is a paginated operation, which means that each response might
 #' contain only a subset of all the clusters. When the response contains
 #' only a subset of clusters, it includes a `NextToken` value. Use this
-#' value in a subsequent `DescribeClusters` request to get more clusters.
-#' When you receive a response with no `NextToken` (or an empty or null
-#' value), that means there are no more clusters to get.
+#' value in a subsequent
+#' [`describe_clusters`][cloudhsmv2_describe_clusters] request to get more
+#' clusters. When you receive a response with no `NextToken` (or an empty
+#' or null value), that means there are no more clusters to get.
 #'
 #' @usage
 #' cloudhsmv2_describe_clusters(Filters, NextToken, MaxResults)
@@ -446,13 +453,13 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
 #' issued by your issuing certificate authority (CA) and the CA's root
 #' certificate. Before you can claim a cluster, you must sign the cluster's
 #' certificate signing request (CSR) with your issuing CA. To get the
-#' cluster's CSR, use DescribeClusters.
+#' cluster's CSR, use [`describe_clusters`][cloudhsmv2_describe_clusters].
 #'
 #' @usage
 #' cloudhsmv2_initialize_cluster(ClusterId, SignedCert, TrustAnchor)
 #'
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you are claiming. To find the
-#' cluster ID, use DescribeClusters.
+#' cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
 #' @param SignedCert &#91;required&#93; The cluster certificate issued (signed) by your issuing certificate
 #' authority (CA). The certificate must be in PEM format and can contain a
 #' maximum of 5000 characters.
@@ -499,15 +506,16 @@ cloudhsmv2_initialize_cluster <- function(ClusterId, SignedCert, TrustAnchor) {
 #' This is a paginated operation, which means that each response might
 #' contain only a subset of all the tags. When the response contains only a
 #' subset of tags, it includes a `NextToken` value. Use this value in a
-#' subsequent `ListTags` request to get more tags. When you receive a
-#' response with no `NextToken` (or an empty or null value), that means
-#' there are no more tags to get.
+#' subsequent [`list_tags`][cloudhsmv2_list_tags] request to get more tags.
+#' When you receive a response with no `NextToken` (or an empty or null
+#' value), that means there are no more tags to get.
 #'
 #' @usage
 #' cloudhsmv2_list_tags(ResourceId, NextToken, MaxResults)
 #'
 #' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster whose tags you are getting.
-#' To find the cluster ID, use DescribeClusters.
+#' To find the cluster ID, use
+#' [`describe_clusters`][cloudhsmv2_describe_clusters].
 #' @param NextToken The `NextToken` value that you received in the previous response. Use
 #' this value to get more tags.
 #' @param MaxResults The maximum number of tags to return in the response. When there are
@@ -552,7 +560,7 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
 #' cloudhsmv2_modify_backup_attributes(BackupId, NeverExpires)
 #'
 #' @param BackupId &#91;required&#93; The identifier (ID) of the backup to modify. To find the ID of a backup,
-#' use the DescribeBackups operation.
+#' use the [`describe_backups`][cloudhsmv2_describe_backups] operation.
 #' @param NeverExpires &#91;required&#93; Specifies whether the service should exempt a backup from the retention
 #' policy for the cluster. `True` exempts a backup from the retention
 #' policy. `False` means the service applies the backup retention policy
@@ -596,7 +604,7 @@ cloudhsmv2_modify_backup_attributes <- function(BackupId, NeverExpires) {
 #'
 #' @param BackupRetentionPolicy &#91;required&#93; A policy that defines how the service retains backups.
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you want to modify. To find the
-#' cluster ID, use DescribeClusters.
+#' cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
 #'
 #' @section Request syntax:
 #' ```
@@ -635,13 +643,13 @@ cloudhsmv2_modify_cluster <- function(BackupRetentionPolicy, ClusterId) {
 #' @description
 #' Restores a specified AWS CloudHSM backup that is in the
 #' `PENDING_DELETION` state. For mor information on deleting a backup, see
-#' DeleteBackup.
+#' [`delete_backup`][cloudhsmv2_delete_backup].
 #'
 #' @usage
 #' cloudhsmv2_restore_backup(BackupId)
 #'
 #' @param BackupId &#91;required&#93; The ID of the backup to be restored. To find the ID of a backup, use the
-#' DescribeBackups operation.
+#' [`describe_backups`][cloudhsmv2_describe_backups] operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -681,7 +689,8 @@ cloudhsmv2_restore_backup <- function(BackupId) {
 #' cloudhsmv2_tag_resource(ResourceId, TagList)
 #'
 #' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster that you are tagging. To
-#' find the cluster ID, use DescribeClusters.
+#' find the cluster ID, use
+#' [`describe_clusters`][cloudhsmv2_describe_clusters].
 #' @param TagList &#91;required&#93; A list of one or more tags.
 #'
 #' @section Request syntax:
@@ -728,7 +737,8 @@ cloudhsmv2_tag_resource <- function(ResourceId, TagList) {
 #' cloudhsmv2_untag_resource(ResourceId, TagKeyList)
 #'
 #' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster whose tags you are removing.
-#' To find the cluster ID, use DescribeClusters.
+#' To find the cluster ID, use
+#' [`describe_clusters`][cloudhsmv2_describe_clusters].
 #' @param TagKeyList &#91;required&#93; A list of one or more tag keys for the tags that you are removing.
 #' Specify only the tag keys, not the tag values.
 #'

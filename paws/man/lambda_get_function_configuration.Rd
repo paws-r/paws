@@ -28,10 +28,11 @@ the function.}
 \description{
 Returns the version-specific settings of a Lambda function or version.
 The output includes only options that can vary between versions of a
-function. To modify these settings, use UpdateFunctionConfiguration.
+function. To modify these settings, use
+\code{\link[=lambda_update_function_configuration]{update_function_configuration}}.
 
 To get all of a function's details, including function-level settings,
-use GetFunction.
+use \code{\link[=lambda_get_function]{get_function}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_function_configuration(

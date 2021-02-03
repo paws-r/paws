@@ -23,23 +23,27 @@ account settings for the root user or the default setting for the
 \code{principalArn} are returned if they are set. Otherwise, no account
 settings are returned.}
 
-\item{nextToken}{The \code{nextToken} value returned from a \code{ListAccountSettings} request
-indicating that more results are available to fulfill the request and
-further calls will be needed. If \code{maxResults} was provided, it is
-possible the number of results to be fewer than \code{maxResults}.
+\item{nextToken}{The \code{nextToken} value returned from a
+\code{\link[=ecs_list_account_settings]{list_account_settings}} request indicating
+that more results are available to fulfill the request and further calls
+will be needed. If \code{maxResults} was provided, it is possible the number
+of results to be fewer than \code{maxResults}.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
 \item{maxResults}{The maximum number of account setting results returned by
-\code{ListAccountSettings} in paginated output. When this parameter is used,
-\code{ListAccountSettings} only returns \code{maxResults} results in a single page
-along with a \code{nextToken} response element. The remaining results of the
-initial request can be seen by sending another \code{ListAccountSettings}
+\code{\link[=ecs_list_account_settings]{list_account_settings}} in paginated
+output. When this parameter is used,
+\code{\link[=ecs_list_account_settings]{list_account_settings}} only returns
+\code{maxResults} results in a single page along with a \code{nextToken} response
+element. The remaining results of the initial request can be seen by
+sending another \code{\link[=ecs_list_account_settings]{list_account_settings}}
 request with the returned \code{nextToken} value. This value can be between 1
-and 10. If this parameter is not used, then \code{ListAccountSettings}
-returns up to 10 results and a \code{nextToken} value if applicable.}
+and 10. If this parameter is not used, then
+\code{\link[=ecs_list_account_settings]{list_account_settings}} returns up to 10
+results and a \code{nextToken} value if applicable.}
 }
 \description{
 Lists the account settings for a specified principal.

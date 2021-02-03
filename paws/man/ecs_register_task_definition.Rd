@@ -68,8 +68,8 @@ used.
 Docker for Windows uses different network modes than Docker for Linux.
 When you register a task definition with Windows containers, you must
 not specify a network mode. If you use the console to register a task
-definition with Windows containers, you must choose the
-\verb{&lt;default&gt;} network mode object.
+definition with Windows containers, you must choose the \verb{<default>}
+network mode object.
 
 For more information, see \href{https://docs.docker.com/engine/reference/run/#network-settings}{Network settings}
 in the \emph{Docker run reference}.}

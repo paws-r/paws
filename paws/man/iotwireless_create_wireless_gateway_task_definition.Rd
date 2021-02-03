@@ -10,7 +10,8 @@ iotwireless_create_wireless_gateway_task_definition(AutoCreateTasks,
 \arguments{
 \item{AutoCreateTasks}{[required] Whether to automatically create tasks using this task definition for all
 gateways with the specified current version. If \code{false}, the task must
-me created by calling \code{CreateWirelessGatewayTask}.}
+me created by calling
+\code{\link[=iotwireless_create_wireless_gateway_task]{create_wireless_gateway_task}}.}
 
 \item{Name}{The name of the new resource.}
 

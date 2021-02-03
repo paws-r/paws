@@ -11,8 +11,8 @@ storagegateway_update_chap_credentials(TargetARN,
 }
 \arguments{
 \item{TargetARN}{[required] The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-DescribeStorediSCSIVolumes operation to return the TargetARN for
-specified VolumeARN.}
+\code{\link[=storagegateway_describe_storedi_scsi_volumes]{describe_storedi_scsi_volumes}}
+operation to return the TargetARN for specified VolumeARN.}
 
 \item{SecretToAuthenticateInitiator}{[required] The secret key that the initiator (for example, the Windows client) must
 provide to participate in mutual CHAP with the target.

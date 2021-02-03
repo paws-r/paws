@@ -44,11 +44,14 @@ To run this command, you must have the following permissions:
 
 \strong{Related operations}
 \itemize{
-\item To create a secret, use CreateSecret.
-\item To modify a secret, use UpdateSecret.
+\item To create a secret, use
+\code{\link[=secretsmanager_create_secret]{create_secret}}.
+\item To modify a secret, use
+\code{\link[=secretsmanager_update_secret]{update_secret}}.
 \item To retrieve the encrypted secret information in a version of the
-secret, use GetSecretValue.
-\item To list all of the secrets in the AWS account, use ListSecrets.
+secret, use \code{\link[=secretsmanager_get_secret_value]{get_secret_value}}.
+\item To list all of the secrets in the AWS account, use
+\code{\link[=secretsmanager_list_secrets]{list_secrets}}.
 }
 }
 \section{Request syntax}{

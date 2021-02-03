@@ -27,11 +27,12 @@ configuration.
 For public and private DNS namespaces, note the following:
 \itemize{
 \item If you omit any existing \code{DnsRecords} or \code{HealthCheckConfig}
-configurations from an \code{UpdateService} request, the configurations
-are deleted from the service.
+configurations from an
+\code{\link[=servicediscovery_update_service]{update_service}} request, the
+configurations are deleted from the service.
 \item If you omit an existing \code{HealthCheckCustomConfig} configuration from
-an \code{UpdateService} request, the configuration is not deleted from
-the service.
+an \code{\link[=servicediscovery_update_service]{update_service}} request, the
+configuration is not deleted from the service.
 }
 
 When you update settings for a service, AWS Cloud Map also updates the

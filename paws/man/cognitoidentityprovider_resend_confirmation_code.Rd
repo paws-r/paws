@@ -23,7 +23,8 @@ Cognito advanced security.}
 code.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
-\code{ResendConfirmationCode} calls.}
+\code{\link[=cognitoidentityprovider_resend_confirmation_code]{resend_confirmation_code}}
+calls.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.

@@ -21,7 +21,8 @@ read it.}
 }
 \description{
 Removes a statement from the permissions policy for a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
-For more information, see AddLayerVersionPermission.
+For more information, see
+\code{\link[=lambda_add_layer_version_permission]{add_layer_version_permission}}.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_layer_version_permission(

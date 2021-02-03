@@ -35,15 +35,16 @@ specify \code{IS_NOT}.
 For example, to list all jobs that export a forecast named
 \emph{electricityforecast}, specify the following filter:
 
-\verb{"Filters": \\\[ \\\{ "Condition": "IS", "Key": "ForecastArn", "Value": "arn:aws:forecast:us-west-2:&lt;acct-id&gt;:forecast/electricityforecast" \\\} \\\]}}
+\verb{"Filters": \\\[ \\\{ "Condition": "IS", "Key": "ForecastArn", "Value": "arn:aws:forecast:us-west-2:<acct-id>:forecast/electricityforecast" \\\} \\\]}}
 }
 \description{
 Returns a list of forecast export jobs created using the
-CreateForecastExportJob operation. For each forecast export job, this
-operation returns a summary of its properties, including its Amazon
-Resource Name (ARN). To retrieve the complete set of properties, use the
-ARN with the DescribeForecastExportJob operation. You can filter the
-list using an array of Filter objects.
+\code{\link[=forecastservice_create_forecast_export_job]{create_forecast_export_job}}
+operation. For each forecast export job, this operation returns a
+summary of its properties, including its Amazon Resource Name (ARN). To
+retrieve the complete set of properties, use the ARN with the
+\code{\link[=forecastservice_describe_forecast_export_job]{describe_forecast_export_job}}
+operation. You can filter the list using an array of Filter objects.
 }
 \section{Request syntax}{
 \preformatted{svc$list_forecast_export_jobs(

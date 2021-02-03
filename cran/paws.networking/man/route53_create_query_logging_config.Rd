@@ -53,7 +53,7 @@ the hosted zone that you want to configure query logging for.
 \item When you create log groups for query logging, we recommend that
 you use a consistent prefix, for example:
 
-\verb{/aws/route53/<i>hosted zone name</i> }
+\verb{/aws/route53/hosted zone name }
 
 In the next step, you'll create a resource policy, which
 controls access to one or more log groups and the associated AWS
@@ -93,7 +93,7 @@ for that edge location.
 
 The name of each log stream is in the following format:
 
-\verb{<i>hosted zone ID</i>/<i>edge location code</i>}
+\verb{hosted zone ID/edge location code}
 
 The edge location code is a three-letter code and an arbitrarily
 assigned number, for example, DFW3. The three-letter code typically
@@ -134,7 +134,7 @@ For information about charges for query logs, see \href{https://aws.amazon.com/c
 
 If you want Route 53 to stop sending query logs to CloudWatch Logs,
 delete the query logging configuration. For more information, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteQueryLoggingConfig.html}{DeleteQueryLoggingConfig}.
+\code{\link[=route53_delete_query_logging_config]{delete_query_logging_config}}.
 }
 }
 \section{Request syntax}{

@@ -21,9 +21,10 @@ This operation retrieves the \code{notification-configuration} subresource of
 the specified vault.
 
 For information about setting a notification configuration on a vault,
-see SetVaultNotifications. If a notification configuration for a vault
-is not set, the operation returns a \verb{404 Not Found} error. For more
-information about vault notifications, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html}{Configuring Vault Notifications in Amazon S3 Glacier}.
+see \code{\link[=glacier_set_vault_notifications]{set_vault_notifications}}. If a
+notification configuration for a vault is not set, the operation returns
+a \verb{404 Not Found} error. For more information about vault notifications,
+see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html}{Configuring Vault Notifications in Amazon S3 Glacier}.
 
 An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any

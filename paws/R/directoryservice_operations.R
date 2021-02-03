@@ -297,11 +297,13 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #' @description
 #' Creates an AD Connector to connect to an on-premises directory.
 #' 
-#' Before you call `ConnectDirectory`, ensure that all of the required
-#' permissions have been explicitly granted through a policy. For details
-#' about what permissions are required to run the `ConnectDirectory`
-#' operation, see [AWS Directory Service API Permissions: Actions,
-#' Resources, and Conditions
+#' Before you call
+#' [`connect_directory`][directoryservice_connect_directory], ensure that
+#' all of the required permissions have been explicitly granted through a
+#' policy. For details about what permissions are required to run the
+#' [`connect_directory`][directoryservice_connect_directory] operation, see
+#' [AWS Directory Service API Permissions: Actions, Resources, and
+#' Conditions
 #' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
 #' @usage
@@ -370,7 +372,7 @@ directoryservice_connect_directory <- function(Name, ShortName = NULL, Password,
 #' @description
 #' Creates an alias for a directory and assigns the alias to the directory.
 #' The alias is used to construct the access URL for the directory, such as
-#' `http://&lt;alias&gt;.awsapps.com`.
+#' `http://<alias>.awsapps.com`.
 #' 
 #' After an alias has been created, it cannot be deleted or reused, so this
 #' operation should only be used when absolutely necessary.
@@ -524,11 +526,12 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' Directory](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html)
 #' in the *AWS Directory Service Admin Guide*.
 #' 
-#' Before you call `CreateDirectory`, ensure that all of the required
-#' permissions have been explicitly granted through a policy. For details
-#' about what permissions are required to run the `CreateDirectory`
-#' operation, see [AWS Directory Service API Permissions: Actions,
-#' Resources, and Conditions
+#' Before you call [`create_directory`][directoryservice_create_directory],
+#' ensure that all of the required permissions have been explicitly granted
+#' through a policy. For details about what permissions are required to run
+#' the [`create_directory`][directoryservice_create_directory] operation,
+#' see [AWS Directory Service API Permissions: Actions, Resources, and
+#' Conditions
 #' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
 #' @usage
@@ -542,7 +545,8 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' `Administrator` and this password.
 #' 
 #' If you need to change the password for the administrator account, you
-#' can use the ResetUserPassword API call.
+#' can use the
+#' [`reset_user_password`][directoryservice_reset_user_password] API call.
 #' 
 #' The regex pattern for this string is made up of the following
 #' conditions:
@@ -690,11 +694,13 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #' @param Password &#91;required&#93; The password for the default administrative user named `Admin`.
 #' 
 #' If you need to change the password for the administrator account, you
-#' can use the ResetUserPassword API call.
+#' can use the
+#' [`reset_user_password`][directoryservice_reset_user_password] API call.
 #' @param Description A description for the directory. This label will appear on the AWS
 #' console `Directory Details` page after the directory is created.
-#' @param VpcSettings &#91;required&#93; Contains VPC information for the CreateDirectory or CreateMicrosoftAD
-#' operation.
+#' @param VpcSettings &#91;required&#93; Contains VPC information for the
+#' [`create_directory`][directoryservice_create_directory] or
+#' [`create_microsoft_ad`][directoryservice_create_microsoft_ad] operation.
 #' @param Edition AWS Managed Microsoft AD is available in two editions: `Standard` and
 #' `Enterprise`. `Enterprise` is the default.
 #' @param Tags The tags to be assigned to the AWS Managed Microsoft AD directory.
@@ -901,11 +907,12 @@ directoryservice_delete_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @description
 #' Deletes an AWS Directory Service directory.
 #' 
-#' Before you call `DeleteDirectory`, ensure that all of the required
-#' permissions have been explicitly granted through a policy. For details
-#' about what permissions are required to run the `DeleteDirectory`
-#' operation, see [AWS Directory Service API Permissions: Actions,
-#' Resources, and Conditions
+#' Before you call [`delete_directory`][directoryservice_delete_directory],
+#' ensure that all of the required permissions have been explicitly granted
+#' through a policy. For details about what permissions are required to run
+#' the [`delete_directory`][directoryservice_delete_directory] operation,
+#' see [AWS Directory Service API Permissions: Actions, Resources, and
+#' Conditions
 #' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
 #' @usage
@@ -1241,8 +1248,9 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #' This operation supports pagination with the use of the `NextToken`
 #' request and response parameters. If more results are available, the
 #' `DescribeDirectoriesResult.NextToken` member contains a token that you
-#' pass in the next call to DescribeDirectories to retrieve the next set of
-#' items.
+#' pass in the next call to
+#' [`describe_directories`][directoryservice_describe_directories] to
+#' retrieve the next set of items.
 #' 
 #' You can also specify a maximum number of return results with the `Limit`
 #' parameter.
@@ -1256,7 +1264,8 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #' 
 #' An empty list results in an `InvalidParameterException` being thrown.
 #' @param NextToken The `DescribeDirectoriesResult.NextToken` value from a previous call to
-#' DescribeDirectories. Pass null if this is the first call.
+#' [`describe_directories`][directoryservice_describe_directories]. Pass
+#' null if this is the first call.
 #' @param Limit The maximum number of items to return. If this value is zero, the
 #' maximum number of items is specified by the limitations of the
 #' operation.
@@ -1306,7 +1315,8 @@ directoryservice_describe_directories <- function(DirectoryIds = NULL, NextToken
 #' @param DomainControllerIds A list of identifiers for the domain controllers whose information will
 #' be provided.
 #' @param NextToken The *DescribeDomainControllers.NextToken* value from a previous call to
-#' DescribeDomainControllers. Pass null if this is the first call.
+#' [`describe_domain_controllers`][directoryservice_describe_domain_controllers].
+#' Pass null if this is the first call.
 #' @param Limit The maximum number of items to return.
 #'
 #' @section Request syntax:
@@ -1450,7 +1460,8 @@ directoryservice_describe_ldaps_settings <- function(DirectoryId, Type = NULL, N
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param RegionName The name of the Region. For example, `us-east-1`.
 #' @param NextToken The `DescribeRegionsResult.NextToken` value from a previous call to
-#' DescribeRegions. Pass null if this is the first call.
+#' [`describe_regions`][directoryservice_describe_regions]. Pass null if
+#' this is the first call.
 #'
 #' @section Request syntax:
 #' ```
@@ -1493,7 +1504,9 @@ directoryservice_describe_regions <- function(DirectoryId, RegionName = NULL, Ne
 #' @param OwnerDirectoryId &#91;required&#93; Returns the identifier of the directory in the directory owner account.
 #' @param SharedDirectoryIds A list of identifiers of all shared directories in your account.
 #' @param NextToken The `DescribeSharedDirectoriesResult.NextToken` value from a previous
-#' call to DescribeSharedDirectories. Pass null if this is the first call.
+#' call to
+#' [`describe_shared_directories`][directoryservice_describe_shared_directories].
+#' Pass null if this is the first call.
 #' @param Limit The number of shared directories to return in the response object.
 #'
 #' @section Request syntax:
@@ -1538,7 +1551,9 @@ directoryservice_describe_shared_directories <- function(OwnerDirectoryId, Share
 #' This operation supports pagination with the use of the *NextToken*
 #' request and response parameters. If more results are available, the
 #' *DescribeSnapshots.NextToken* member contains a token that you pass in
-#' the next call to DescribeSnapshots to retrieve the next set of items.
+#' the next call to
+#' [`describe_snapshots`][directoryservice_describe_snapshots] to retrieve
+#' the next set of items.
 #' 
 #' You can also specify a maximum number of return results with the *Limit*
 #' parameter.
@@ -1553,7 +1568,8 @@ directoryservice_describe_shared_directories <- function(OwnerDirectoryId, Share
 #' this member is null or empty, all snapshots are returned using the
 #' *Limit* and *NextToken* members.
 #' @param NextToken The *DescribeSnapshotsResult.NextToken* value from a previous call to
-#' DescribeSnapshots. Pass null if this is the first call.
+#' [`describe_snapshots`][directoryservice_describe_snapshots]. Pass null
+#' if this is the first call.
 #' @param Limit The maximum number of objects to return.
 #'
 #' @section Request syntax:
@@ -1609,7 +1625,8 @@ directoryservice_describe_snapshots <- function(DirectoryId = NULL, SnapshotIds 
 #' 
 #' An empty list results in an `InvalidParameterException` being thrown.
 #' @param NextToken The *DescribeTrustsResult.NextToken* value from a previous call to
-#' DescribeTrusts. Pass null if this is the first call.
+#' [`describe_trusts`][directoryservice_describe_trusts]. Pass null if this
+#' is the first call.
 #' @param Limit The maximum number of objects to return.
 #'
 #' @section Request syntax:
@@ -2138,8 +2155,9 @@ directoryservice_list_certificates <- function(DirectoryId, NextToken = NULL, Li
 #'
 #' @param DirectoryId &#91;required&#93; Identifier (ID) of the directory for which you want to retrieve the IP
 #' addresses.
-#' @param NextToken The *ListIpRoutes.NextToken* value from a previous call to ListIpRoutes.
-#' Pass null if this is the first call.
+#' @param NextToken The *ListIpRoutes.NextToken* value from a previous call to
+#' [`list_ip_routes`][directoryservice_list_ip_routes]. Pass null if this
+#' is the first call.
 #' @param Limit Maximum number of items to return. If this value is zero, the maximum
 #' number of items is specified by the limitations of the operation.
 #'
@@ -2228,7 +2246,8 @@ directoryservice_list_log_subscriptions <- function(DirectoryId = NULL, NextToke
 #' @param DirectoryId &#91;required&#93; The identifier of the directory from which to retrieve the schema
 #' extension information.
 #' @param NextToken The `ListSchemaExtensions.NextToken` value from a previous call to
-#' `ListSchemaExtensions`. Pass null if this is the first call.
+#' [`list_schema_extensions`][directoryservice_list_schema_extensions].
+#' Pass null if this is the first call.
 #' @param Limit The maximum number of items to return.
 #'
 #' @section Request syntax:
@@ -2485,7 +2504,8 @@ directoryservice_remove_ip_routes <- function(DirectoryId, CidrIps) {
 #' @description
 #' Stops all replication and removes the domain controllers from the
 #' specified Region. You cannot remove the primary Region with this
-#' operation. Instead, use the `DeleteDirectory` API.
+#' operation. Instead, use the
+#' [`delete_directory`][directoryservice_delete_directory] API.
 #'
 #' @usage
 #' directoryservice_remove_region(DirectoryId)
@@ -2631,7 +2651,8 @@ directoryservice_reset_user_password <- function(DirectoryId, UserName, NewPassw
 #' 
 #' This action returns as soon as the restore operation is initiated. You
 #' can monitor the progress of the restore operation by calling the
-#' DescribeDirectories operation with the directory identifier. When the
+#' [`describe_directories`][directoryservice_describe_directories]
+#' operation with the directory identifier. When the
 #' **DirectoryDescription.Stage** value changes to `Active`, the restore
 #' operation is complete.
 #'

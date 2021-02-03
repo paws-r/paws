@@ -19,22 +19,26 @@ force and GameLift removes all record of it. To delete a scaling policy,
 specify both the scaling policy name and the fleet ID it is associated
 with.
 
-To temporarily suspend scaling policies, call StopFleetActions. This
-operation suspends all policies for the fleet.
+To temporarily suspend scaling policies, call
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}. This operation
+suspends all policies for the fleet.
 \itemize{
-\item DescribeFleetCapacity
-\item UpdateFleetCapacity
-\item DescribeEC2InstanceLimits
+\item \code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}}
+\item \code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}
+\item \code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
 \item Manage scaling policies:
 \itemize{
-\item PutScalingPolicy (auto-scaling)
-\item DescribeScalingPolicies (auto-scaling)
-\item DeleteScalingPolicy (auto-scaling)
+\item \code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}}
+(auto-scaling)
+\item \code{\link[=gamelift_describe_scaling_policies]{describe_scaling_policies}}
+(auto-scaling)
+\item \code{\link[=gamelift_delete_scaling_policy]{delete_scaling_policy}}
+(auto-scaling)
 }
 \item Manage fleet actions:
 \itemize{
-\item StartFleetActions
-\item StopFleetActions
+\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}}
+\item \code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
 }
 }
 }

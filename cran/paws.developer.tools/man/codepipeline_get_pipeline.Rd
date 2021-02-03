@@ -17,7 +17,7 @@ defaults to the current version.}
 Returns the metadata, structure, stages, and actions of a pipeline. Can
 be used to return the entire structure of a pipeline in JSON format,
 which can then be modified and used to update the pipeline structure
-with UpdatePipeline.
+with \code{\link[=codepipeline_update_pipeline]{update_pipeline}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_pipeline(

@@ -12,11 +12,14 @@ delete.}
 
 \item{CurrentVersion}{The current version of the signaling channel that you want to delete.
 You can obtain the current version by invoking the
-\code{DescribeSignalingChannel} or \code{ListSignalingChannels} API operations.}
+\code{\link[=kinesisvideo_describe_signaling_channel]{describe_signaling_channel}}
+or \code{\link[=kinesisvideo_list_signaling_channels]{list_signaling_channels}} API
+operations.}
 }
 \description{
-Deletes a specified signaling channel. \code{DeleteSignalingChannel} is an
-asynchronous operation. If you don't specify the channel's current
+Deletes a specified signaling channel.
+\code{\link[=kinesisvideo_delete_signaling_channel]{delete_signaling_channel}} is
+an asynchronous operation. If you don't specify the channel's current
 version, the most recent version is deleted.
 }
 \section{Request syntax}{

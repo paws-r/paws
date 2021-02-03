@@ -20,8 +20,9 @@ values to be set for the user to be created. You can create a user
 without specifying any attributes other than \code{Username}. However, any
 attributes that you specify as required (when creating a user pool or in
 the \strong{Attributes} tab of the console) must be supplied either by you
-(in your call to \code{AdminCreateUser}) or by the user (when he or she signs
-up in response to your welcome message).
+(in your call to
+\code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}}) or by
+the user (when he or she signs up in response to your welcome message).
 
 For custom attributes, you must prepend the \verb{custom:} prefix to the
 attribute name.
@@ -31,10 +32,12 @@ user's email address or phone number. This can be done in your call to
 AdminCreateUser or in the \strong{Users} tab of the Amazon Cognito console
 for managing your user pools.
 
-In your call to \code{AdminCreateUser}, you can set the \code{email_verified}
-attribute to \code{True}, and you can set the \code{phone_number_verified}
-attribute to \code{True}. (You can also do this by calling
-\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminUpdateUserAttributes.html}{AdminUpdateUserAttributes}.)
+In your call to
+\code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}}, you
+can set the \code{email_verified} attribute to \code{True}, and you can set the
+\code{phone_number_verified} attribute to \code{True}. (You can also do this by
+calling
+\code{\link[=cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes}}.)
 \itemize{
 \item \strong{email}: The email address of the user to whom the message that
 contains the code and username will be sent. Required if the
@@ -71,8 +74,9 @@ Cognito generates one for you.
 
 The temporary password can only be used until the user account
 expiration limit that you specified when you created the user pool. To
-reset the account after that time limit, you must call \code{AdminCreateUser}
-again, specifying \code{"RESEND"} for the \code{MessageAction} parameter.}
+reset the account after that time limit, you must call
+\code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}} again,
+specifying \code{"RESEND"} for the \code{MessageAction} parameter.}
 
 \item{ForceAliasCreation}{This parameter is only used if the \code{phone_number_verified} or
 \code{email_verified} attribute is set to \code{True}. Otherwise, it is ignored.
@@ -135,13 +139,16 @@ This message is based on a template that you configured in your call to
 create or update a user pool. This template includes your custom sign-up
 instructions and placeholders for user name and temporary password.
 
-Alternatively, you can call \code{AdminCreateUser} with “SUPPRESS” for the
-\code{MessageAction} parameter, and Amazon Cognito will not send any email.
+Alternatively, you can call
+\code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}} with
+“SUPPRESS” for the \code{MessageAction} parameter, and Amazon Cognito will
+not send any email.
 
 In either case, the user will be in the \code{FORCE_CHANGE_PASSWORD} state
 until they sign in and change their password.
 
-\code{AdminCreateUser} requires developer credentials.
+\code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}}
+requires developer credentials.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_create_user(

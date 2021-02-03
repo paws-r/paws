@@ -9,8 +9,9 @@ NULL
 #' Accepts a pending certificate transfer. The default state of the
 #' certificate is INACTIVE.
 #' 
-#' To check for pending certificate transfers, call ListCertificates to
-#' enumerate your certificates.
+#' To check for pending certificate transfers, call
+#' [`list_certificates`][iot_list_certificates] to enumerate your
+#' certificates.
 #'
 #' @usage
 #' iot_accept_certificate_transfer(certificateId, setAsActive)
@@ -167,7 +168,7 @@ iot_add_thing_to_thing_group <- function(thingGroupName = NULL, thingGroupArn = 
 #' notifications to MQTT topics that contain the value in the following
 #' format.
 #' 
-#' `$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/`
+#' `$aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/`
 #' 
 #' The `namespaceId` feature is in public preview.
 #'
@@ -251,7 +252,8 @@ iot_attach_policy <- function(policyName, target) {
 #' Attaches the specified policy to the specified principal (certificate or
 #' other credential).
 #' 
-#' **Note:** This API is deprecated. Please use AttachPolicy instead.
+#' **Note:** This API is deprecated. Please use
+#' [`attach_policy`][iot_attach_policy] instead.
 #'
 #' @usage
 #' iot_attach_principal_policy(policyName, principal)
@@ -459,10 +461,10 @@ iot_cancel_audit_task <- function(taskId) {
 #' 
 #' **Note** Only the transfer source account can use this operation to
 #' cancel a transfer. (Transfer destinations can use
-#' RejectCertificateTransfer instead.) After transfer, AWS IoT returns the
-#' certificate to the source account in the INACTIVE state. After the
-#' destination account has accepted the transfer, the transfer cannot be
-#' cancelled.
+#' [`reject_certificate_transfer`][iot_reject_certificate_transfer]
+#' instead.) After transfer, AWS IoT returns the certificate to the source
+#' account in the INACTIVE state. After the destination account has
+#' accepted the transfer, the transfer cannot be cancelled.
 #' 
 #' After a certificate transfer is cancelled, the status of the certificate
 #' changes from PENDING\\_TRANSFER to INACTIVE.
@@ -691,8 +693,9 @@ iot_clear_default_authorizer <- function() {
 #' Confirms a topic rule destination. When you create a rule requiring a
 #' destination, AWS IoT sends a confirmation message to the endpoint or
 #' base address you specify. The message includes a token which you pass
-#' back when calling `ConfirmTopicRuleDestination` to confirm that you own
-#' or have access to the endpoint.
+#' back when calling
+#' [`confirm_topic_rule_destination`][iot_confirm_topic_rule_destination]
+#' to confirm that you own or have access to the endpoint.
 #'
 #' @usage
 #' iot_confirm_topic_rule_destination(confirmationToken)
@@ -1283,7 +1286,7 @@ iot_create_dynamic_thing_group <- function(thingGroupName, thingGroupProperties 
 #' 
 #' The placeholder link is of the following form:
 #' 
-#' `$\{aws:iot:s3-presigned-url:https://s3.amazonaws.com/<i>bucket</i>/<i>key</i>\}`
+#' `$\{aws:iot:s3-presigned-url:https://s3.amazonaws.com/bucket/key\}`
 #' 
 #' where *bucket* is your bucket name and *key* is the object in the bucket
 #' to which you are linking.
@@ -1309,7 +1312,7 @@ iot_create_dynamic_thing_group <- function(thingGroupName, thingGroupProperties 
 #' notifications to MQTT topics that contain the value in the following
 #' format.
 #' 
-#' `$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/`
+#' `$aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/`
 #' 
 #' The `namespaceId` feature is in public preview.
 #'
@@ -1386,7 +1389,8 @@ iot_create_job <- function(jobId, targets, documentSource = NULL, document = NUL
 #'
 #' @description
 #' Creates a 2048-bit RSA key pair and issues an X.509 certificate using
-#' the issued public key. You can also call `CreateKeysAndCertificate` over
+#' the issued public key. You can also call
+#' [`create_keys_and_certificate`][iot_create_keys_and_certificate] over
 #' MQTT from a device, for more information, see [Provisioning MQTT
 #' API](https://docs.aws.amazon.com/iot/latest/developerguide/provision-wo-cert.html#provision-mqtt-api).
 #' 
@@ -1728,8 +1732,8 @@ iot_create_policy <- function(policyName, policyDocument, tags = NULL) {
 #' Creates a new version of the specified AWS IoT policy. To update a
 #' policy, create a new policy version. A managed policy can have up to
 #' five versions. If the policy has five versions, you must use
-#' DeletePolicyVersion to delete an existing version before you create a
-#' new one.
+#' [`delete_policy_version`][iot_delete_policy_version] to delete an
+#' existing version before you create a new one.
 #' 
 #' Optionally, you can set the new version as the policy's default version.
 #' The default version is the operative version (that is, the version that
@@ -2000,9 +2004,11 @@ iot_create_role_alias <- function(roleAlias, roleArn, credentialDurationSeconds 
 #' `SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, or `SAT`. This field is
 #' required if the `frequency` parameter is set to `WEEKLY` or `BIWEEKLY`.
 #' @param targetCheckNames &#91;required&#93; Which checks are performed during the scheduled audit. Checks must be
-#' enabled for your account. (Use `DescribeAccountAuditConfiguration` to
-#' see the list of all checks, including those that are enabled or use
-#' `UpdateAccountAuditConfiguration` to select which checks are enabled.)
+#' enabled for your account. (Use
+#' [`describe_account_audit_configuration`][iot_describe_account_audit_configuration]
+#' to see the list of all checks, including those that are enabled or use
+#' [`update_account_audit_configuration`][iot_update_account_audit_configuration]
+#' to select which checks are enabled.)
 #' @param scheduledAuditName &#91;required&#93; The name you want to give to the scheduled audit. (Max. 128 chars)
 #' @param tags Metadata that can be used to manage the scheduled audit.
 #'
@@ -2992,8 +2998,8 @@ iot_delete_authorizer <- function(authorizerName) {
 #' @param billingGroupName &#91;required&#93; The name of the billing group.
 #' @param expectedVersion The expected version of the billing group. If the version of the billing
 #' group does not match the expected version specified in the request, the
-#' `DeleteBillingGroup` request is rejected with a
-#' `VersionConflictException`.
+#' [`delete_billing_group`][iot_delete_billing_group] request is rejected
+#' with a `VersionConflictException`.
 #'
 #' @section Request syntax:
 #' ```
@@ -3068,8 +3074,10 @@ iot_delete_ca_certificate <- function(certificateId) {
 #' 
 #' A certificate cannot be deleted if it has a policy or IoT thing attached
 #' to it or if its status is set to ACTIVE. To delete a certificate, first
-#' use the DetachPrincipalPolicy API to detach all policies. Next, use the
-#' UpdateCertificate API to set the certificate to the INACTIVE status.
+#' use the [`detach_principal_policy`][iot_detach_principal_policy] API to
+#' detach all policies. Next, use the
+#' [`update_certificate`][iot_update_certificate] API to set the
+#' certificate to the INACTIVE status.
 #'
 #' @usage
 #' iot_delete_certificate(certificateId, forceDelete)
@@ -3114,8 +3122,8 @@ iot_delete_certificate <- function(certificateId, forceDelete = NULL) {
 #' Before you can delete a custom metric, you must first remove the custom
 #' metric from all security profiles it's a part of. The security profile
 #' associated with the custom metric can be found using the
-#' [ListSecurityProfiles](https://docs.aws.amazon.com/iot/latest/apireference/API_ListSecurityProfiles.html)
-#' API with `metricName` set to your custom metric name.
+#' [`list_security_profiles`][iot_list_security_profiles] API with
+#' `metricName` set to your custom metric name.
 #' 
 #' Deletes a Device Defender detect custom metric.
 #'
@@ -3304,7 +3312,7 @@ iot_delete_dynamic_thing_group <- function(thingGroupName, expectedVersion = NUL
 #' notifications to MQTT topics that contain the value in the following
 #' format.
 #' 
-#' `$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/`
+#' `$aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/`
 #' 
 #' The `namespaceId` feature is in public preview.
 #'
@@ -3369,7 +3377,7 @@ iot_delete_job <- function(jobId, force = NULL, namespaceId = NULL) {
 #' notifications to MQTT topics that contain the value in the following
 #' format.
 #' 
-#' `$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/`
+#' `$aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/`
 #' 
 #' The `namespaceId` feature is in public preview.
 #'
@@ -3537,8 +3545,9 @@ iot_delete_policy <- function(policyName) {
 #' @description
 #' Deletes the specified version of the specified policy. You cannot delete
 #' the default version of a policy using this API. To delete the default
-#' version of a policy, use DeletePolicy. To find out which version of a
-#' policy is marked as the default version, use ListPolicyVersions.
+#' version of a policy, use [`delete_policy`][iot_delete_policy]. To find
+#' out which version of a policy is marked as the default version, use
+#' ListPolicyVersions.
 #'
 #' @usage
 #' iot_delete_policy_version(policyName, policyVersionId)
@@ -3848,8 +3857,8 @@ iot_delete_stream <- function(streamId) {
 #' @param thingName &#91;required&#93; The name of the thing to delete.
 #' @param expectedVersion The expected version of the thing record in the registry. If the version
 #' of the record in the registry does not match the expected version
-#' specified in the request, the `DeleteThing` request is rejected with a
-#' `VersionConflictException`.
+#' specified in the request, the [`delete_thing`][iot_delete_thing] request
+#' is rejected with a `VersionConflictException`.
 #'
 #' @section Request syntax:
 #' ```
@@ -3923,9 +3932,11 @@ iot_delete_thing_group <- function(thingGroupName, expectedVersion = NULL) {
 #' @description
 #' Deletes the specified thing type. You cannot delete a thing type if it
 #' has things associated with it. To delete a thing type, first mark it as
-#' deprecated by calling DeprecateThingType, then remove any associated
-#' things by calling UpdateThing to change the thing type on any associated
-#' thing, and finally use DeleteThingType to delete the thing type.
+#' deprecated by calling
+#' [`deprecate_thing_type`][iot_deprecate_thing_type], then remove any
+#' associated things by calling [`update_thing`][iot_update_thing] to
+#' change the thing type on any associated thing, and finally use
+#' [`delete_thing_type`][iot_delete_thing_type] to delete the thing type.
 #'
 #' @usage
 #' iot_delete_thing_type(thingTypeName)
@@ -5311,7 +5322,8 @@ iot_detach_policy <- function(policyName, target) {
 #' @description
 #' Removes the specified policy from the specified certificate.
 #' 
-#' **Note:** This API is deprecated. Please use DetachPolicy instead.
+#' **Note:** This API is deprecated. Please use
+#' [`detach_policy`][iot_detach_policy] instead.
 #'
 #' @usage
 #' iot_detach_principal_policy(policyName, principal)
@@ -5725,8 +5737,8 @@ iot_get_job_document <- function(jobId) {
 #' @description
 #' Gets the logging options.
 #' 
-#' NOTE: use of this command is not recommended. Use `GetV2LoggingOptions`
-#' instead.
+#' NOTE: use of this command is not recommended. Use
+#' [`get_v2_logging_options`][iot_get_v2_logging_options] instead.
 #'
 #' @usage
 #' iot_get_logging_options()
@@ -5799,15 +5811,15 @@ iot_get_ota_update <- function(otaUpdateId) {
 #' @description
 #' Groups the aggregated values that match the query into percentile
 #' groupings. The default percentile groupings are: 1,5,25,50,75,95,99,
-#' although you can specify your own when you call `GetPercentiles`. This
-#' function returns a value for each percentile group specified (or the
-#' default percentile groupings). The percentile group "1" contains the
-#' aggregated field value that occurs in approximately one percent of the
-#' values that match the query. The percentile group "5" contains the
-#' aggregated field value that occurs in approximately five percent of the
-#' values that match the query, and so on. The result is an approximation,
-#' the more values that match the query, the more accurate the percentile
-#' values.
+#' although you can specify your own when you call
+#' [`get_percentiles`][iot_get_percentiles]. This function returns a value
+#' for each percentile group specified (or the default percentile
+#' groupings). The percentile group "1" contains the aggregated field value
+#' that occurs in approximately one percent of the values that match the
+#' query. The percentile group "5" contains the aggregated field value that
+#' occurs in approximately five percent of the values that match the query,
+#' and so on. The result is an approximation, the more values that match
+#' the query, the more accurate the percentile values.
 #'
 #' @usage
 #' iot_get_percentiles(indexName, queryString, aggregationField,
@@ -7078,7 +7090,7 @@ iot_list_job_executions_for_job <- function(jobId, status = NULL, maxResults = N
 #' notifications to MQTT topics that contain the value in the following
 #' format.
 #' 
-#' `$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/`
+#' `$aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/`
 #' 
 #' The `namespaceId` feature is in public preview.
 #' @param maxResults The maximum number of results to be returned per request.
@@ -7142,7 +7154,7 @@ iot_list_job_executions_for_thing <- function(thingName, status = NULL, namespac
 #' notifications to MQTT topics that contain the value in the following
 #' format.
 #' 
-#' `$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/`
+#' `$aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/`
 #' 
 #' The `namespaceId` feature is in public preview.
 #'
@@ -7353,8 +7365,8 @@ iot_list_policies <- function(marker = NULL, pageSize = NULL, ascendingOrder = N
 #' @description
 #' Lists the principals associated with the specified policy.
 #' 
-#' **Note:** This API is deprecated. Please use ListTargetsForPolicy
-#' instead.
+#' **Note:** This API is deprecated. Please use
+#' [`list_targets_for_policy`][iot_list_targets_for_policy] instead.
 #'
 #' @usage
 #' iot_list_policy_principals(policyName, marker, pageSize, ascendingOrder)
@@ -7441,8 +7453,8 @@ iot_list_policy_versions <- function(policyName) {
 #' Cognito identity, the ID must be in [AmazonCognito Identity
 #' format](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax).
 #' 
-#' **Note:** This API is deprecated. Please use ListAttachedPolicies
-#' instead.
+#' **Note:** This API is deprecated. Please use
+#' [`list_attached_policies`][iot_list_attached_policies] instead.
 #'
 #' @usage
 #' iot_list_principal_policies(principal, marker, pageSize, ascendingOrder)
@@ -8228,9 +8240,10 @@ iot_list_thing_types <- function(nextToken = NULL, maxResults = NULL, thingTypeN
 #'
 #' @description
 #' Lists your things. Use the **attributeName** and **attributeValue**
-#' parameters to filter your things. For example, calling `ListThings` with
-#' attributeName=Color and attributeValue=Red retrieves all things in the
-#' registry that contain an attribute **Color** with the value **Red**.
+#' parameters to filter your things. For example, calling
+#' [`list_things`][iot_list_things] with attributeName=Color and
+#' attributeValue=Red retrieves all things in the registry that contain an
+#' attribute **Color** with the value **Red**.
 #' 
 #' You will not be charged for calling this API if an `Access denied` error
 #' is returned. You will also not be charged if no attributes or pagination
@@ -8777,8 +8790,9 @@ iot_register_thing <- function(templateBody, parameters = NULL) {
 #' certificate transfer, the certificate status changes from
 #' **PENDING\\_TRANSFER** to **INACTIVE**.
 #' 
-#' To check for pending certificate transfers, call ListCertificates to
-#' enumerate your certificates.
+#' To check for pending certificate transfers, call
+#' [`list_certificates`][iot_list_certificates] to enumerate your
+#' certificates.
 #' 
 #' This operation can only be called by the transfer destination. After it
 #' is called, the certificate will be returned to the source's account in
@@ -9429,8 +9443,8 @@ iot_set_default_policy_version <- function(policyName, policyVersionId) {
 #' @description
 #' Sets the logging options.
 #' 
-#' NOTE: use of this command is not recommended. Use `SetV2LoggingOptions`
-#' instead.
+#' NOTE: use of this command is not recommended. Use
+#' [`set_v2_logging_options`][iot_set_v2_logging_options] instead.
 #'
 #' @usage
 #' iot_set_logging_options(loggingOptionsPayload)
@@ -9697,9 +9711,10 @@ iot_start_detect_mitigation_actions_task <- function(taskId, target, actions, vi
 #'
 #' @param targetCheckNames &#91;required&#93; Which checks are performed during the audit. The checks you specify must
 #' be enabled for your account or an exception occurs. Use
-#' `DescribeAccountAuditConfiguration` to see the list of all checks,
-#' including those that are enabled or `UpdateAccountAuditConfiguration` to
-#' select which checks are enabled.
+#' [`describe_account_audit_configuration`][iot_describe_account_audit_configuration]
+#' to see the list of all checks, including those that are enabled or
+#' [`update_account_audit_configuration`][iot_update_account_audit_configuration]
+#' to select which checks are enabled.
 #'
 #' @section Request syntax:
 #' ```
@@ -10102,8 +10117,10 @@ iot_untag_resource <- function(resourceArn, tagKeys) {
 #' and other items as required when performing an audit.
 #' @param auditNotificationTargetConfigurations Information about the targets to which audit notifications are sent.
 #' @param auditCheckConfigurations Specifies which audit checks are enabled and disabled for this account.
-#' Use `DescribeAccountAuditConfiguration` to see the list of all checks,
-#' including those that are currently enabled.
+#' Use
+#' [`describe_account_audit_configuration`][iot_describe_account_audit_configuration]
+#' to see the list of all checks, including those that are currently
+#' enabled.
 #' 
 #' Some data collection might start immediately when certain checks are
 #' enabled. When a check is disabled, any data collected so far in relation
@@ -10113,8 +10130,9 @@ iot_untag_resource <- function(resourceArn, tagKeys) {
 #' first delete the check from the scheduled audit or delete the scheduled
 #' audit itself.
 #' 
-#' On the first call to `UpdateAccountAuditConfiguration`, this parameter
-#' is required and must specify at least one enabled check.
+#' On the first call to
+#' [`update_account_audit_configuration`][iot_update_account_audit_configuration],
+#' this parameter is required and must specify at least one enabled check.
 #'
 #' @section Request syntax:
 #' ```
@@ -10277,8 +10295,8 @@ iot_update_authorizer <- function(authorizerName, authorizerFunctionArn = NULL, 
 #' @param billingGroupProperties &#91;required&#93; The properties of the billing group.
 #' @param expectedVersion The expected version of the billing group. If the version of the billing
 #' group does not match the expected version specified in the request, the
-#' `UpdateBillingGroup` request is rejected with a
-#' `VersionConflictException`.
+#' [`update_billing_group`][iot_update_billing_group] request is rejected
+#' with a `VersionConflictException`.
 #'
 #' @section Request syntax:
 #' ```
@@ -10754,7 +10772,7 @@ iot_update_indexing_configuration <- function(thingIndexingConfiguration = NULL,
 #' notifications to MQTT topics that contain the value in the following
 #' format.
 #' 
-#' `$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/`
+#' `$aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/`
 #' 
 #' The `namespaceId` feature is in public preview.
 #'
@@ -10824,8 +10842,9 @@ iot_update_job <- function(jobId, description = NULL, presignedUrlConfig = NULL,
 #' iot_update_mitigation_action(actionName, roleArn, actionParams)
 #'
 #' @param actionName &#91;required&#93; The friendly name for the mitigation action. You cannot change the name
-#' by using `UpdateMitigationAction`. Instead, you must delete and recreate
-#' the mitigation action with the new name.
+#' by using [`update_mitigation_action`][iot_update_mitigation_action].
+#' Instead, you must delete and recreate the mitigation action with the new
+#' name.
 #' @param roleArn The ARN of the IAM role that is used to apply the mitigation action.
 #' @param actionParams Defines the type of action and the parameters for that action.
 #'
@@ -11001,9 +11020,11 @@ iot_update_role_alias <- function(roleAlias, roleArn = NULL, credentialDurationS
 #' is required if the "frequency" parameter is set to `WEEKLY` or
 #' `BIWEEKLY`.
 #' @param targetCheckNames Which checks are performed during the scheduled audit. Checks must be
-#' enabled for your account. (Use `DescribeAccountAuditConfiguration` to
-#' see the list of all checks, including those that are enabled or use
-#' `UpdateAccountAuditConfiguration` to select which checks are enabled.)
+#' enabled for your account. (Use
+#' [`describe_account_audit_configuration`][iot_describe_account_audit_configuration]
+#' to see the list of all checks, including those that are enabled or use
+#' [`update_account_audit_configuration`][iot_update_account_audit_configuration]
+#' to select which checks are enabled.)
 #' @param scheduledAuditName &#91;required&#93; The name of the scheduled audit. (Max. 128 chars)
 #'
 #' @section Request syntax:
@@ -11245,8 +11266,8 @@ iot_update_stream <- function(streamId, description = NULL, files = NULL, roleAr
 #' This data is used to add new attributes or update existing attributes.
 #' @param expectedVersion The expected version of the thing record in the registry. If the version
 #' of the record in the registry does not match the expected version
-#' specified in the request, the `UpdateThing` request is rejected with a
-#' `VersionConflictException`.
+#' specified in the request, the [`update_thing`][iot_update_thing] request
+#' is rejected with a `VersionConflictException`.
 #' @param removeThingType Remove a thing type association. If **true**, the association is
 #' removed.
 #'
@@ -11403,28 +11424,35 @@ iot_update_thing_groups_for_thing <- function(thingName = NULL, thingGroupsToAdd
 #' ### IN\\_PROGRESS
 #' 
 #' A topic rule destination was created but has not been confirmed. You can
-#' set `status` to `IN_PROGRESS` by calling `UpdateTopicRuleDestination`.
-#' Calling `UpdateTopicRuleDestination` causes a new confirmation challenge
-#' to be sent to your confirmation endpoint.
+#' set `status` to `IN_PROGRESS` by calling
+#' [`update_topic_rule_destination`][iot_update_topic_rule_destination].
+#' Calling
+#' [`update_topic_rule_destination`][iot_update_topic_rule_destination]
+#' causes a new confirmation challenge to be sent to your confirmation
+#' endpoint.
 #' 
 #' ### ENABLED
 #' 
 #' Confirmation was completed, and traffic to this destination is allowed.
 #' You can set `status` to `DISABLED` by calling
-#' `UpdateTopicRuleDestination`.
+#' [`update_topic_rule_destination`][iot_update_topic_rule_destination].
 #' 
 #' ### DISABLED
 #' 
 #' Confirmation was completed, and traffic to this destination is not
 #' allowed. You can set `status` to `ENABLED` by calling
-#' `UpdateTopicRuleDestination`.
+#' [`update_topic_rule_destination`][iot_update_topic_rule_destination].
 #' 
 #' ### ERROR
 #' 
 #' Confirmation could not be completed, for example if the confirmation
-#' timed out. You can call `GetTopicRuleDestination` for details about the
-#' error. You can set `status` to `IN_PROGRESS` by calling
-#' `UpdateTopicRuleDestination`. Calling `UpdateTopicRuleDestination`
+#' timed out. You can call
+#' [`get_topic_rule_destination`][iot_get_topic_rule_destination] for
+#' details about the error. You can set `status` to `IN_PROGRESS` by
+#' calling
+#' [`update_topic_rule_destination`][iot_update_topic_rule_destination].
+#' Calling
+#' [`update_topic_rule_destination`][iot_update_topic_rule_destination]
 #' causes a new confirmation challenge to be sent to your confirmation
 #' endpoint.
 #'

@@ -11,8 +11,8 @@ signer_describe_signing_job(jobId)
 }
 \description{
 Returns information about a specific code signing job. You specify the
-job by using the \code{jobId} value that is returned by the StartSigningJob
-operation.
+job by using the \code{jobId} value that is returned by the
+\code{\link[=signer_start_signing_job]{start_signing_job}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_signing_job(

@@ -392,8 +392,9 @@ sesv2_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
 #' that you plan to send to your customers. Amazon SES then sends that
 #' message to special email addresses spread across several major email
 #' providers. After about 24 hours, the test is complete, and you can use
-#' the `GetDeliverabilityTestReport` operation to view the results of the
-#' test.
+#' the
+#' [`get_deliverability_test_report`][sesv2_get_deliverability_test_report]
+#' operation to view the results of the test.
 #'
 #' @usage
 #' sesv2_create_deliverability_test_report(ReportName, FromEmailAddress,
@@ -493,11 +494,11 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #' Alternatively, you can perform the verification process by providing
 #' your own public-private key pair. This verification method is known as
 #' Bring Your Own DKIM (BYODKIM). To use BYODKIM, your call to the
-#' `CreateEmailIdentity` operation has to include the
-#' `DkimSigningAttributes` object. When you specify this object, you
-#' provide a selector (a component of the DNS record name that identifies
-#' the public key that you want to use for DKIM authentication) and a
-#' private key.
+#' [`create_email_identity`][sesv2_create_email_identity] operation has to
+#' include the `DkimSigningAttributes` object. When you specify this
+#' object, you provide a selector (a component of the DNS record name that
+#' identifies the public key that you want to use for DKIM authentication)
+#' and a private key.
 #'
 #' @usage
 #' sesv2_create_email_identity(EmailIdentity, Tags, DkimSigningAttributes)
@@ -1479,8 +1480,9 @@ sesv2_get_dedicated_ip <- function(Ip) {
 #'
 #' @param PoolName The name of the IP pool that the dedicated IP address is associated
 #' with.
-#' @param NextToken A token returned from a previous call to `GetDedicatedIps` to indicate
-#' the position of the dedicated IP pool in the list of IP pools.
+#' @param NextToken A token returned from a previous call to
+#' [`get_dedicated_ips`][sesv2_get_dedicated_ips] to indicate the position
+#' of the dedicated IP pool in the list of IP pools.
 #' @param PageSize The number of results to show in a single call to
 #' `GetDedicatedIpsRequest`. If the number of results is larger than the
 #' number you specified in this parameter, then the response includes a
@@ -1911,12 +1913,14 @@ sesv2_get_suppressed_destination <- function(EmailAddress) {
 #' @usage
 #' sesv2_list_configuration_sets(NextToken, PageSize)
 #'
-#' @param NextToken A token returned from a previous call to `ListConfigurationSets` to
-#' indicate the position in the list of configuration sets.
+#' @param NextToken A token returned from a previous call to
+#' [`list_configuration_sets`][sesv2_list_configuration_sets] to indicate
+#' the position in the list of configuration sets.
 #' @param PageSize The number of results to show in a single call to
-#' `ListConfigurationSets`. If the number of results is larger than the
-#' number you specified in this parameter, then the response includes a
-#' `NextToken` element, which you can use to obtain additional results.
+#' [`list_configuration_sets`][sesv2_list_configuration_sets]. If the
+#' number of results is larger than the number you specified in this
+#' parameter, then the response includes a `NextToken` element, which you
+#' can use to obtain additional results.
 #'
 #' @section Request syntax:
 #' ```
@@ -2066,13 +2070,14 @@ sesv2_list_contacts <- function(ContactListName, Filter = NULL, PageSize = NULL,
 #' sesv2_list_custom_verification_email_templates(NextToken, PageSize)
 #'
 #' @param NextToken A token returned from a previous call to
-#' `ListCustomVerificationEmailTemplates` to indicate the position in the
-#' list of custom verification email templates.
+#' [`list_custom_verification_email_templates`][sesv2_list_custom_verification_email_templates]
+#' to indicate the position in the list of custom verification email
+#' templates.
 #' @param PageSize The number of results to show in a single call to
-#' `ListCustomVerificationEmailTemplates`. If the number of results is
-#' larger than the number you specified in this parameter, then the
-#' response includes a `NextToken` element, which you can use to obtain
-#' additional results.
+#' [`list_custom_verification_email_templates`][sesv2_list_custom_verification_email_templates].
+#' If the number of results is larger than the number you specified in this
+#' parameter, then the response includes a `NextToken` element, which you
+#' can use to obtain additional results.
 #' 
 #' The value you specify has to be at least 1, and can be no more than 50.
 #'
@@ -2114,12 +2119,14 @@ sesv2_list_custom_verification_email_templates <- function(NextToken = NULL, Pag
 #' @usage
 #' sesv2_list_dedicated_ip_pools(NextToken, PageSize)
 #'
-#' @param NextToken A token returned from a previous call to `ListDedicatedIpPools` to
-#' indicate the position in the list of dedicated IP pools.
+#' @param NextToken A token returned from a previous call to
+#' [`list_dedicated_ip_pools`][sesv2_list_dedicated_ip_pools] to indicate
+#' the position in the list of dedicated IP pools.
 #' @param PageSize The number of results to show in a single call to
-#' `ListDedicatedIpPools`. If the number of results is larger than the
-#' number you specified in this parameter, then the response includes a
-#' `NextToken` element, which you can use to obtain additional results.
+#' [`list_dedicated_ip_pools`][sesv2_list_dedicated_ip_pools]. If the
+#' number of results is larger than the number you specified in this
+#' parameter, then the response includes a `NextToken` element, which you
+#' can use to obtain additional results.
 #'
 #' @section Request syntax:
 #' ```
@@ -2155,19 +2162,22 @@ sesv2_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = NULL) {
 #' @description
 #' Show a list of the predictive inbox placement tests that you've
 #' performed, regardless of their statuses. For predictive inbox placement
-#' tests that are complete, you can use the `GetDeliverabilityTestReport`
+#' tests that are complete, you can use the
+#' [`get_deliverability_test_report`][sesv2_get_deliverability_test_report]
 #' operation to view the results.
 #'
 #' @usage
 #' sesv2_list_deliverability_test_reports(NextToken, PageSize)
 #'
-#' @param NextToken A token returned from a previous call to `ListDeliverabilityTestReports`
+#' @param NextToken A token returned from a previous call to
+#' [`list_deliverability_test_reports`][sesv2_list_deliverability_test_reports]
 #' to indicate the position in the list of predictive inbox placement
 #' tests.
 #' @param PageSize The number of results to show in a single call to
-#' `ListDeliverabilityTestReports`. If the number of results is larger than
-#' the number you specified in this parameter, then the response includes a
-#' `NextToken` element, which you can use to obtain additional results.
+#' [`list_deliverability_test_reports`][sesv2_list_deliverability_test_reports].
+#' If the number of results is larger than the number you specified in this
+#' parameter, then the response includes a `NextToken` element, which you
+#' can use to obtain additional results.
 #' 
 #' The value you specify has to be at least 0, and can be no more than
 #' 1000.
@@ -2220,13 +2230,15 @@ sesv2_list_deliverability_test_reports <- function(NextToken = NULL, PageSize = 
 #' days after the value of the `StartDate` parameter.
 #' @param SubscribedDomain &#91;required&#93; The domain to obtain deliverability data for.
 #' @param NextToken A token that’s returned from a previous call to the
-#' `ListDomainDeliverabilityCampaigns` operation. This token indicates the
-#' position of a campaign in the list of campaigns.
+#' [`list_domain_deliverability_campaigns`][sesv2_list_domain_deliverability_campaigns]
+#' operation. This token indicates the position of a campaign in the list
+#' of campaigns.
 #' @param PageSize The maximum number of results to include in response to a single call to
-#' the `ListDomainDeliverabilityCampaigns` operation. If the number of
-#' results is larger than the number that you specify in this parameter,
-#' the response includes a `NextToken` element, which you can use to obtain
-#' additional results.
+#' the
+#' [`list_domain_deliverability_campaigns`][sesv2_list_domain_deliverability_campaigns]
+#' operation. If the number of results is larger than the number that you
+#' specify in this parameter, the response includes a `NextToken` element,
+#' which you can use to obtain additional results.
 #'
 #' @section Request syntax:
 #' ```
@@ -2276,12 +2288,14 @@ sesv2_list_domain_deliverability_campaigns <- function(StartDate, EndDate, Subsc
 #' @usage
 #' sesv2_list_email_identities(NextToken, PageSize)
 #'
-#' @param NextToken A token returned from a previous call to `ListEmailIdentities` to
-#' indicate the position in the list of identities.
-#' @param PageSize The number of results to show in a single call to `ListEmailIdentities`.
-#' If the number of results is larger than the number you specified in this
-#' parameter, then the response includes a `NextToken` element, which you
-#' can use to obtain additional results.
+#' @param NextToken A token returned from a previous call to
+#' [`list_email_identities`][sesv2_list_email_identities] to indicate the
+#' position in the list of identities.
+#' @param PageSize The number of results to show in a single call to
+#' [`list_email_identities`][sesv2_list_email_identities]. If the number of
+#' results is larger than the number you specified in this parameter, then
+#' the response includes a `NextToken` element, which you can use to obtain
+#' additional results.
 #' 
 #' The value you specify has to be at least 0, and can be no more than
 #' 1000.
@@ -2326,12 +2340,14 @@ sesv2_list_email_identities <- function(NextToken = NULL, PageSize = NULL) {
 #' @usage
 #' sesv2_list_email_templates(NextToken, PageSize)
 #'
-#' @param NextToken A token returned from a previous call to `ListEmailTemplates` to
-#' indicate the position in the list of email templates.
-#' @param PageSize The number of results to show in a single call to `ListEmailTemplates`.
-#' If the number of results is larger than the number you specified in this
-#' parameter, then the response includes a `NextToken` element, which you
-#' can use to obtain additional results.
+#' @param NextToken A token returned from a previous call to
+#' [`list_email_templates`][sesv2_list_email_templates] to indicate the
+#' position in the list of email templates.
+#' @param PageSize The number of results to show in a single call to
+#' [`list_email_templates`][sesv2_list_email_templates]. If the number of
+#' results is larger than the number you specified in this parameter, then
+#' the response includes a `NextToken` element, which you can use to obtain
+#' additional results.
 #' 
 #' The value you specify has to be at least 1, and can be no more than 10.
 #'
@@ -2375,8 +2391,8 @@ sesv2_list_email_templates <- function(NextToken = NULL, PageSize = NULL) {
 #' that have a certain `ImportDestinationType`.
 #' @param NextToken A string token indicating that there might be additional import jobs
 #' available to be listed. Copy this token to a subsequent call to
-#' `ListImportJobs` with the same parameters to retrieve the next page of
-#' import jobs.
+#' [`list_import_jobs`][sesv2_list_import_jobs] with the same parameters to
+#' retrieve the next page of import jobs.
 #' @param PageSize Maximum number of import jobs to return at once. Use this parameter to
 #' paginate results. If additional import jobs exist beyond the specified
 #' limit, the `NextToken` element is sent in the response. Use the
@@ -2430,12 +2446,14 @@ sesv2_list_import_jobs <- function(ImportDestinationType = NULL, NextToken = NUL
 #' @param EndDate Used to filter the list of suppressed email destinations so that it only
 #' includes addresses that were added to the list before a specific date.
 #' The date that you specify should be in Unix time format.
-#' @param NextToken A token returned from a previous call to `ListSuppressedDestinations` to
+#' @param NextToken A token returned from a previous call to
+#' [`list_suppressed_destinations`][sesv2_list_suppressed_destinations] to
 #' indicate the position in the list of suppressed email addresses.
 #' @param PageSize The number of results to show in a single call to
-#' `ListSuppressedDestinations`. If the number of results is larger than
-#' the number you specified in this parameter, then the response includes a
-#' `NextToken` element, which you can use to obtain additional results.
+#' [`list_suppressed_destinations`][sesv2_list_suppressed_destinations]. If
+#' the number of results is larger than the number you specified in this
+#' parameter, then the response includes a `NextToken` element, which you
+#' can use to obtain additional results.
 #'
 #' @section Request syntax:
 #' ```
@@ -2960,7 +2978,8 @@ sesv2_put_configuration_set_tracking_options <- function(ConfigurationSetName, C
 #' be associated with your AWS account.
 #' 
 #' The dedicated IP pool you specify must already exist. You can create a
-#' new pool by using the `CreateDedicatedIpPool` operation.
+#' new pool by using the
+#' [`create_dedicated_ip_pool`][sesv2_create_dedicated_ip_pool] operation.
 #'
 #' @usage
 #' sesv2_put_dedicated_ip_in_pool(Ip, DestinationPoolName)
@@ -3429,9 +3448,9 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' @param DefaultEmailTags A list of tags, in the form of name/value pairs, to apply to an email
-#' that you send using the `SendEmail` operation. Tags correspond to
-#' characteristics of the email that you define, so that you can publish
-#' email sending events.
+#' that you send using the [`send_email`][sesv2_send_email] operation. Tags
+#' correspond to characteristics of the email that you define, so that you
+#' can publish email sending events.
 #' @param DefaultContent &#91;required&#93; An object that contains the body of the message. You can specify a
 #' template message.
 #' @param BulkEmailEntries &#91;required&#93; The list of bulk email entry objects.
@@ -3636,9 +3655,9 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' @param Content &#91;required&#93; An object that contains the body of the message. You can send either a
 #' Simple message Raw message or a template Message.
 #' @param EmailTags A list of tags, in the form of name/value pairs, to apply to an email
-#' that you send using the `SendEmail` operation. Tags correspond to
-#' characteristics of the email that you define, so that you can publish
-#' email sending events.
+#' that you send using the [`send_email`][sesv2_send_email] operation. Tags
+#' correspond to characteristics of the email that you define, so that you
+#' can publish email sending events.
 #' @param ConfigurationSetName The name of the configuration set that you want to use when sending the
 #' email.
 #' @param ListManagementOptions An object used to specify a list or topic to which an email belongs,
@@ -3844,7 +3863,7 @@ sesv2_test_render_email_template <- function(TemplateName, TemplateData) {
 #' To remove more than one tag from the resource, append the `TagKeys`
 #' parameter and argument for each additional tag to remove, separated by
 #' an ampersand. For example:
-#' `/v2/email/tags?ResourceArn=ResourceArn&amp;TagKeys=Key1&amp;TagKeys=Key2`
+#' `/v2/email/tags?ResourceArn=ResourceArn&TagKeys=Key1&TagKeys=Key2`
 #'
 #' @section Request syntax:
 #' ```

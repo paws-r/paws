@@ -78,14 +78,14 @@ your API request, see the
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html#API_control_CreateBucket_Examples}{Examples}
 section.
 
-The following actions are related to \code{CreateBucket} for Amazon S3 on
-Outposts:
+The following actions are related to
+\code{\link[=s3control_create_bucket]{create_bucket}} for Amazon S3 on Outposts:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucket.html}{GetBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucket.html}{DeleteBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateAccessPoint.html}{CreateAccessPoint}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicy.html}{PutAccessPointPolicy}
+\item \code{\link[=s3control_get_bucket]{get_bucket}}
+\item \code{\link[=s3control_delete_bucket]{delete_bucket}}
+\item \code{\link[=s3control_create_access_point]{create_access_point}}
+\item \code{\link[=s3control_put_access_point_policy]{put_access_point_policy}}
 }
 }
 \section{Request syntax}{

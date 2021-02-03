@@ -85,7 +85,7 @@ transcribeservice_create_language_model <- function(LanguageCode, BaseModelName,
 #' you're calling. Enter information about your `VocabularyFileUri` in the
 #' following format:
 #' 
-#' ` https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; `
+#' ` https://s3.<aws-region>.amazonaws.com/<bucket-name>/<keyprefix>/<objectkey> `
 #' 
 #' The following is an example URI for a vocabulary file that is stored in
 #' Amazon S3:
@@ -304,8 +304,9 @@ transcribeservice_delete_language_model <- function(ModelName) {
 #' transcribeservice_delete_medical_transcription_job(
 #'   MedicalTranscriptionJobName)
 #'
-#' @param MedicalTranscriptionJobName &#91;required&#93; The name you provide to the `DeleteMedicalTranscriptionJob` object to
-#' delete a transcription job.
+#' @param MedicalTranscriptionJobName &#91;required&#93; The name you provide to the
+#' [`delete_medical_transcription_job`][transcribeservice_delete_medical_transcription_job]
+#' object to delete a transcription job.
 #'
 #' @section Request syntax:
 #' ```
@@ -799,8 +800,8 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
 #' @param JobNameContains When specified, the jobs returned in the list are limited to jobs whose
 #' name contains the specified string.
 #' @param NextToken If you a receive a truncated result in the previous request of
-#' `ListMedicalTranscriptionJobs`, include `NextToken` to fetch the next
-#' set of jobs.
+#' [`list_medical_transcription_jobs`][transcribeservice_list_medical_transcription_jobs],
+#' include `NextToken` to fetch the next set of jobs.
 #' @param MaxResults The maximum number of medical transcription jobs to return in the
 #' response. IF there are fewer results in the list, this response contains
 #' only the actual results.
@@ -846,16 +847,18 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
 #' transcribeservice_list_medical_vocabularies(NextToken, MaxResults,
 #'   StateEquals, NameContains)
 #'
-#' @param NextToken If the result of your previous request to `ListMedicalVocabularies` was
-#' truncated, include the `NextToken` to fetch the next set of
+#' @param NextToken If the result of your previous request to
+#' [`list_medical_vocabularies`][transcribeservice_list_medical_vocabularies]
+#' was truncated, include the `NextToken` to fetch the next set of
 #' vocabularies.
 #' @param MaxResults The maximum number of vocabularies to return in the response.
 #' @param StateEquals When specified, returns only vocabularies with the `VocabularyState`
 #' equal to the specified vocabulary state. Use this field to see which
 #' vocabularies are ready for your medical transcription jobs.
 #' @param NameContains Returns vocabularies whose names contain the specified string. The
-#' search is not case sensitive. `ListMedicalVocabularies` returns both
-#' "`vocabularyname`" and "`VocabularyName`".
+#' search is not case sensitive.
+#' [`list_medical_vocabularies`][transcribeservice_list_medical_vocabularies]
+#' returns both "`vocabularyname`" and "`VocabularyName`".
 #'
 #' @section Request syntax:
 #' ```
@@ -902,8 +905,9 @@ transcribeservice_list_medical_vocabularies <- function(NextToken = NULL, MaxRes
 #' transcription jobs ordered by creation date.
 #' @param JobNameContains When specified, the jobs returned in the list are limited to jobs whose
 #' name contains the specified string.
-#' @param NextToken If the result of the previous request to `ListTranscriptionJobs` was
-#' truncated, include the `NextToken` to fetch the next set of jobs.
+#' @param NextToken If the result of the previous request to
+#' [`list_transcription_jobs`][transcribeservice_list_transcription_jobs]
+#' was truncated, include the `NextToken` to fetch the next set of jobs.
 #' @param MaxResults The maximum number of jobs to return in the response. If there are fewer
 #' results in the list, this response contains only the actual results.
 #'
@@ -947,7 +951,8 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
 #' transcribeservice_list_vocabularies(NextToken, MaxResults, StateEquals,
 #'   NameContains)
 #'
-#' @param NextToken If the result of the previous request to `ListVocabularies` was
+#' @param NextToken If the result of the previous request to
+#' [`list_vocabularies`][transcribeservice_list_vocabularies] was
 #' truncated, include the `NextToken` to fetch the next set of jobs.
 #' @param MaxResults The maximum number of vocabularies to return in the response. If there
 #' are fewer results in the list, this response contains only the actual
@@ -956,8 +961,9 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
 #' field equal to the specified state.
 #' @param NameContains When specified, the vocabularies returned in the list are limited to
 #' vocabularies whose name contains the specified string. The search is not
-#' case sensitive, `ListVocabularies` returns both "vocabularyname" and
-#' "VocabularyName" in the response list.
+#' case sensitive,
+#' [`list_vocabularies`][transcribeservice_list_vocabularies] returns both
+#' "vocabularyname" and "VocabularyName" in the response list.
 #'
 #' @section Request syntax:
 #' ```
@@ -998,8 +1004,10 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #' transcribeservice_list_vocabulary_filters(NextToken, MaxResults,
 #'   NameContains)
 #'
-#' @param NextToken If the result of the previous request to `ListVocabularyFilters` was
-#' truncated, include the `NextToken` to fetch the next set of collections.
+#' @param NextToken If the result of the previous request to
+#' [`list_vocabulary_filters`][transcribeservice_list_vocabulary_filters]
+#' was truncated, include the `NextToken` to fetch the next set of
+#' collections.
 #' @param MaxResults The maximum number of filters to return in the response. If there are
 #' fewer results in the list, this response contains only the actual
 #' results.
@@ -1068,11 +1076,12 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' 
 #' You must set `OutputBucketName` for Amazon Transcribe Medical to store
 #' the transcription results. Your transcript appears in the S3 location
-#' you specify. When you call the GetMedicalTranscriptionJob, the operation
-#' returns this location in the `TranscriptFileUri` field. The S3 bucket
-#' must have permissions that allow Amazon Transcribe Medical to put files
-#' in the bucket. For more information, see [Permissions Required for IAM
-#' User
+#' you specify. When you call the
+#' [`get_medical_transcription_job`][transcribeservice_get_medical_transcription_job],
+#' the operation returns this location in the `TranscriptFileUri` field.
+#' The S3 bucket must have permissions that allow Amazon Transcribe Medical
+#' to put files in the bucket. For more information, see [Permissions
+#' Required for IAM User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
 #' 
 #' You can specify an AWS Key Management Service (KMS) key to encrypt the
@@ -1100,8 +1109,9 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' `OutputBucketName` parameter.
 #' @param OutputEncryptionKMSKeyId The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS)
 #' key used to encrypt the output of the transcription job. The user
-#' calling the StartMedicalTranscriptionJob operation must have permission
-#' to use the specified KMS key.
+#' calling the
+#' [`start_medical_transcription_job`][transcribeservice_start_medical_transcription_job]
+#' operation must have permission to use the specified KMS key.
 #' 
 #' You use either of the following to identify a KMS key in the current
 #' account:
@@ -1207,7 +1217,8 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' @param OutputBucketName The location where the transcription is stored.
 #' 
 #' If you set the `OutputBucketName`, Amazon Transcribe puts the transcript
-#' in the specified S3 bucket. When you call the GetTranscriptionJob
+#' in the specified S3 bucket. When you call the
+#' [`get_transcription_job`][transcribeservice_get_transcription_job]
 #' operation, the operation returns this location in the
 #' `TranscriptFileUri` field. If you enable content redaction, the redacted
 #' transcript appears in `RedactedTranscriptFileUri`. If you enable content
@@ -1248,8 +1259,9 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' `OutputBucketName` parameter.
 #' @param OutputEncryptionKMSKeyId The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS)
 #' key used to encrypt the output of the transcription job. The user
-#' calling the `StartTranscriptionJob` operation must have permission to
-#' use the specified KMS key.
+#' calling the
+#' [`start_transcription_job`][transcribeservice_start_transcription_job]
+#' operation must have permission to use the specified KMS key.
 #' 
 #' You can use either of the following to identify a KMS key in the current
 #' account:
@@ -1355,8 +1367,9 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
 #' @description
 #' Updates a vocabulary with new values that you provide in a different
 #' text file from the one you used to create the vocabulary. The
-#' `UpdateMedicalVocabulary` operation overwrites all of the existing
-#' information with the values that you provide in the request.
+#' [`update_medical_vocabulary`][transcribeservice_update_medical_vocabulary]
+#' operation overwrites all of the existing information with the values
+#' that you provide in the request.
 #'
 #' @usage
 #' transcribeservice_update_medical_vocabulary(VocabularyName,
@@ -1372,7 +1385,7 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
 #' your custom vocabulary. The URI must be in the same AWS Region as the
 #' resource that you are calling. The following is the format for a URI:
 #' 
-#' ` https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; `
+#' ` https://s3.<aws-region>.amazonaws.com/<bucket-name>/<keyprefix>/<objectkey> `
 #' 
 #' For example:
 #' 
@@ -1418,9 +1431,10 @@ transcribeservice_update_medical_vocabulary <- function(VocabularyName, Language
 #' Updates an existing vocabulary with new values
 #'
 #' @description
-#' Updates an existing vocabulary with new values. The `UpdateVocabulary`
-#' operation overwrites all of the existing information with the values
-#' that you provide in the request.
+#' Updates an existing vocabulary with new values. The
+#' [`update_vocabulary`][transcribeservice_update_vocabulary] operation
+#' overwrites all of the existing information with the values that you
+#' provide in the request.
 #'
 #' @usage
 #' transcribeservice_update_vocabulary(VocabularyName, LanguageCode,

@@ -16,8 +16,8 @@ service-opt-in is enabled for a service, AWS Backup tries to protect
 that service's resources in this Region, when the resource is included
 in an on-demand backup or scheduled backup plan. Otherwise, AWS Backup
 does not try to protect that service's resources in this Region. Use the
-\code{DescribeRegionSettings} API to determine the resource types that are
-supported.
+\code{\link[=backup_describe_region_settings]{describe_region_settings}} API to
+determine the resource types that are supported.
 }
 \section{Request syntax}{
 \preformatted{svc$update_region_settings(

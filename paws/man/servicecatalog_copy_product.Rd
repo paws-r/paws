@@ -44,7 +44,8 @@ You can copy a product to the same account or another account. You can
 copy a product to the same region or another region.
 
 This operation is performed asynchronously. To track the progress of the
-operation, use DescribeCopyProductStatus.
+operation, use
+\code{\link[=servicecatalog_describe_copy_product_status]{describe_copy_product_status}}.
 }
 \section{Request syntax}{
 \preformatted{svc$copy_product(

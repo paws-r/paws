@@ -21,11 +21,11 @@ NULL
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to create the add-on for.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
-#' [`ListAddons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
+#' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
 #' @param addonVersion The version of the add-on. The version must match one of the versions
 #' returned by
-#' [`DescribeAddonVersions`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
+#' [`describe_addon_versions`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
 #' .
 #' @param serviceAccountRoleArn The Amazon Resource Name (ARN) of an existing IAM role to bind to the
 #' add-on's service account. The role must be assigned the IAM permissions
@@ -579,7 +579,7 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to delete the add-on from.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
-#' [`ListAddons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
+#' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
 #'
 #' @section Request syntax:
@@ -625,7 +625,8 @@ eks_delete_addon <- function(clusterName, addonName) {
 #' 
 #' If you have managed node groups or Fargate profiles attached to the
 #' cluster, you must delete them first. For more information, see
-#' DeleteNodegroup and DeleteFargateProfile.
+#' [`delete_nodegroup`][eks_delete_nodegroup] and
+#' [`delete_fargate_profile`][eks_delete_fargate_profile].
 #'
 #' @usage
 #' eks_delete_cluster(name)
@@ -768,7 +769,7 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
-#' [`ListAddons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
+#' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
 #'
 #' @section Request syntax:
@@ -819,7 +820,7 @@ eks_describe_addon <- function(clusterName, addonName) {
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
 #' @param addonName The name of the add-on. The name must match one of the names returned by
-#' [`ListAddons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
+#' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
 #'
 #' @section Request syntax:
@@ -1003,7 +1004,7 @@ eks_describe_nodegroup <- function(clusterName, nodegroupName) {
 #' @param updateId &#91;required&#93; The ID of the update to describe.
 #' @param nodegroupName The name of the Amazon EKS node group associated with the update.
 #' @param addonName The name of the add-on. The name must match one of the names returned by
-#' [`ListAddons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
+#' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
 #'
 #' @section Request syntax:
@@ -1101,18 +1102,20 @@ eks_list_addons <- function(clusterName, maxResults = NULL, nextToken = NULL) {
 #' @usage
 #' eks_list_clusters(maxResults, nextToken)
 #'
-#' @param maxResults The maximum number of cluster results returned by `ListClusters` in
-#' paginated output. When you use this parameter, `ListClusters` returns
-#' only `maxResults` results in a single page along with a `nextToken`
-#' response element. You can see the remaining results of the initial
-#' request by sending another `ListClusters` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If you don't use
-#' this parameter, `ListClusters` returns up to 100 results and a
-#' `nextToken` value if applicable.
-#' @param nextToken The `nextToken` value returned from a previous paginated `ListClusters`
-#' request where `maxResults` was used and the results exceeded the value
-#' of that parameter. Pagination continues from the end of the previous
-#' results that returned the `nextToken` value.
+#' @param maxResults The maximum number of cluster results returned by
+#' [`list_clusters`][eks_list_clusters] in paginated output. When you use
+#' this parameter, [`list_clusters`][eks_list_clusters] returns only
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. You can see the remaining results of the initial request by
+#' sending another [`list_clusters`][eks_list_clusters] request with the
+#' returned `nextToken` value. This value can be between 1 and 100. If you
+#' don't use this parameter, [`list_clusters`][eks_list_clusters] returns
+#' up to 100 results and a `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' [`list_clusters`][eks_list_clusters] request where `maxResults` was used
+#' and the results exceeded the value of that parameter. Pagination
+#' continues from the end of the previous results that returned the
+#' `nextToken` value.
 #' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
@@ -1166,17 +1169,21 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that you would like to listFargate
 #' profiles in.
 #' @param maxResults The maximum number of Fargate profile results returned by
-#' `ListFargateProfiles` in paginated output. When you use this parameter,
-#' `ListFargateProfiles` returns only `maxResults` results in a single page
-#' along with a `nextToken` response element. You can see the remaining
-#' results of the initial request by sending another `ListFargateProfiles`
+#' [`list_fargate_profiles`][eks_list_fargate_profiles] in paginated
+#' output. When you use this parameter,
+#' [`list_fargate_profiles`][eks_list_fargate_profiles] returns only
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. You can see the remaining results of the initial request by
+#' sending another [`list_fargate_profiles`][eks_list_fargate_profiles]
 #' request with the returned `nextToken` value. This value can be between 1
-#' and 100. If you don't use this parameter, `ListFargateProfiles` returns
-#' up to 100 results and a `nextToken` value if applicable.
+#' and 100. If you don't use this parameter,
+#' [`list_fargate_profiles`][eks_list_fargate_profiles] returns up to 100
+#' results and a `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated
-#' `ListFargateProfiles` request where `maxResults` was used and the
-#' results exceeded the value of that parameter. Pagination continues from
-#' the end of the previous results that returned the `nextToken` value.
+#' [`list_fargate_profiles`][eks_list_fargate_profiles] request where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value.
 #'
 #' @section Request syntax:
 #' ```
@@ -1220,18 +1227,21 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that you would like to list node
 #' groups in.
-#' @param maxResults The maximum number of node group results returned by `ListNodegroups` in
-#' paginated output. When you use this parameter, `ListNodegroups` returns
+#' @param maxResults The maximum number of node group results returned by
+#' [`list_nodegroups`][eks_list_nodegroups] in paginated output. When you
+#' use this parameter, [`list_nodegroups`][eks_list_nodegroups] returns
 #' only `maxResults` results in a single page along with a `nextToken`
 #' response element. You can see the remaining results of the initial
-#' request by sending another `ListNodegroups` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If you don't use
-#' this parameter, `ListNodegroups` returns up to 100 results and a
+#' request by sending another [`list_nodegroups`][eks_list_nodegroups]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If you don't use this parameter,
+#' [`list_nodegroups`][eks_list_nodegroups] returns up to 100 results and a
 #' `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated
-#' `ListNodegroups` request where `maxResults` was used and the results
-#' exceeded the value of that parameter. Pagination continues from the end
-#' of the previous results that returned the `nextToken` value.
+#' [`list_nodegroups`][eks_list_nodegroups] request where `maxResults` was
+#' used and the results exceeded the value of that parameter. Pagination
+#' continues from the end of the previous results that returned the
+#' `nextToken` value.
 #'
 #' @section Request syntax:
 #' ```
@@ -1322,18 +1332,20 @@ eks_list_tags_for_resource <- function(resourceArn) {
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to list updates for.
 #' @param nodegroupName The name of the Amazon EKS managed node group to list updates for.
 #' @param addonName The names of the installed add-ons that have available updates.
-#' @param nextToken The `nextToken` value returned from a previous paginated `ListUpdates`
-#' request where `maxResults` was used and the results exceeded the value
-#' of that parameter. Pagination continues from the end of the previous
-#' results that returned the `nextToken` value.
-#' @param maxResults The maximum number of update results returned by `ListUpdates` in
-#' paginated output. When you use this parameter, `ListUpdates` returns
-#' only `maxResults` results in a single page along with a `nextToken`
-#' response element. You can see the remaining results of the initial
-#' request by sending another `ListUpdates` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If you don't use
-#' this parameter, `ListUpdates` returns up to 100 results and a
-#' `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' [`list_updates`][eks_list_updates] request where `maxResults` was used
+#' and the results exceeded the value of that parameter. Pagination
+#' continues from the end of the previous results that returned the
+#' `nextToken` value.
+#' @param maxResults The maximum number of update results returned by
+#' [`list_updates`][eks_list_updates] in paginated output. When you use
+#' this parameter, [`list_updates`][eks_list_updates] returns only
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. You can see the remaining results of the initial request by
+#' sending another [`list_updates`][eks_list_updates] request with the
+#' returned `nextToken` value. This value can be between 1 and 100. If you
+#' don't use this parameter, [`list_updates`][eks_list_updates] returns up
+#' to 100 results and a `nextToken` value if applicable.
 #'
 #' @section Request syntax:
 #' ```
@@ -1471,11 +1483,11 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
-#' [`ListAddons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
+#' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
 #' @param addonVersion The version of the add-on. The version must match one of the versions
 #' returned by
-#' [`DescribeAddonVersions`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
+#' [`describe_addon_versions`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
 #' .
 #' @param serviceAccountRoleArn The Amazon Resource Name (ARN) of an existing IAM role to bind to the
 #' add-on's service account. The role must be assigned the IAM permissions
@@ -1533,7 +1545,7 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' Updates an Amazon EKS cluster configuration. Your cluster continues to
 #' function during the update. The response output includes an update ID
 #' that you can use to track the status of your cluster update with the
-#' DescribeUpdate API operation.
+#' [`describe_update`][eks_describe_update] API operation.
 #' 
 #' You can use this API operation to enable or disable exporting the
 #' Kubernetes control plane logs for your cluster to CloudWatch Logs. By
@@ -1637,7 +1649,8 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' Updates an Amazon EKS cluster to the specified Kubernetes version. Your
 #' cluster continues to function during the update. The response output
 #' includes an update ID that you can use to track the status of your
-#' cluster update with the DescribeUpdate API operation.
+#' cluster update with the [`describe_update`][eks_describe_update] API
+#' operation.
 #' 
 #' Cluster updates are asynchronous, and they should finish within a few
 #' minutes. During an update, the cluster status moves to `UPDATING` (this
@@ -1691,8 +1704,9 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
 #' Updates an Amazon EKS managed node group configuration. Your node group
 #' continues to function during the update. The response output includes an
 #' update ID that you can use to track the status of your node group update
-#' with the DescribeUpdate API operation. Currently you can update the
-#' Kubernetes labels for a node group or the scaling configuration.
+#' with the [`describe_update`][eks_describe_update] API operation.
+#' Currently you can update the Kubernetes labels for a node group or the
+#' scaling configuration.
 #'
 #' @usage
 #' eks_update_nodegroup_config(clusterName, nodegroupName, labels,

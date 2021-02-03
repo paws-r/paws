@@ -11,8 +11,9 @@ personalize_list_campaigns(solutionArn, nextToken, maxResults)
 for. When a solution is not specified, all the campaigns associated with
 the account are listed.}
 
-\item{nextToken}{A token returned from the previous call to \code{ListCampaigns} for getting
-the next set of campaigns (if they exist).}
+\item{nextToken}{A token returned from the previous call to
+\code{\link[=personalize_list_campaigns]{list_campaigns}} for getting the next set
+of campaigns (if they exist).}
 
 \item{maxResults}{The maximum number of campaigns to return.}
 }
@@ -21,7 +22,7 @@ Returns a list of campaigns that use the given solution. When a solution
 is not specified, all the campaigns associated with the account are
 listed. The response provides the properties for each campaign,
 including the Amazon Resource Name (ARN). For more information on
-campaigns, see CreateCampaign.
+campaigns, see \code{\link[=personalize_create_campaign]{create_campaign}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_campaigns(

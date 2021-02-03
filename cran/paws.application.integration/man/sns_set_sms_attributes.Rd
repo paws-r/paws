@@ -84,8 +84,9 @@ Use this request to set the default settings for sending SMS messages
 and receiving daily SMS usage reports.
 
 You can override some of these settings for a single message when you
-use the \code{Publish} action with the \code{MessageAttributes.entry.N} parameter.
-For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html}{Publishing to a mobile phone}
+use the \code{\link[=sns_publish]{publish}} action with the
+\code{MessageAttributes.entry.N} parameter. For more information, see
+\href{https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html}{Publishing to a mobile phone}
 in the \emph{Amazon SNS Developer Guide}.
 }
 \section{Request syntax}{

@@ -161,7 +161,7 @@ locationservice_batch_evaluate_geofences <- function(CollectionName, DevicePosit
 #' @param DeviceIds &#91;required&#93; Devices whose position you want to retrieve.
 #' 
 #' -   For example, for two devices:
-#'     `device-ids=DeviceId1&amp;device-ids=DeviceId2`
+#'     `device-ids=DeviceId1&device-ids=DeviceId2`
 #' @param TrackerName &#91;required&#93; The tracker resource retrieving the device position.
 #'
 #' @section Request syntax:
@@ -1644,7 +1644,7 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #' 
 #' -   The second position is the Y coordinate, or latitude.
 #' 
-#' For example, `position=xLongitude&amp;position=yLatitude` .
+#' For example, `position=xLongitude&position=yLatitude` .
 #'
 #' @section Request syntax:
 #' ```
@@ -1713,7 +1713,7 @@ locationservice_search_place_index_for_position <- function(IndexName, MaxResult
 #' 
 #' -   The second `bias` position is the Y coordinate, or latitude.
 #' 
-#' For example, `bias=xLongitude&amp;bias=yLatitude`.
+#' For example, `bias=xLongitude&bias=yLatitude`.
 #' @param FilterBBox Filters the results by returning only Places within the provided
 #' bounding box. An optional parameter.
 #' 
@@ -1725,7 +1725,7 @@ locationservice_search_place_index_for_position <- function(IndexName, MaxResult
 #' -   The second `bbox` position is the Y coordinate or latitude of the
 #'     lower southwest corner.
 #' 
-#' For example, `bbox=xLongitudeSW&amp;bbox=yLatitudeSW`.
+#' For example, `bbox=xLongitudeSW&bbox=yLatitudeSW`.
 #' 
 #' The next `bbox` parameters describe the upper northeast corner:
 #' 
@@ -1735,7 +1735,7 @@ locationservice_search_place_index_for_position <- function(IndexName, MaxResult
 #' -   The fourth `bbox` position is the Y coordinate, or longitude of the
 #'     upper northeast corner.
 #' 
-#' For example, `bbox=xLongitudeNE&amp;bbox=yLatitudeNE`
+#' For example, `bbox=xLongitudeNE&bbox=yLatitudeNE`
 #' @param FilterCountries Limits the search to the given a list of countries/regions. An optional
 #' parameter.
 #' 

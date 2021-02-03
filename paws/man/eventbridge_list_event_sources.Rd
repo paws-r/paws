@@ -21,7 +21,7 @@ operation to retrieve the next set of results.}
 \description{
 You can use this to see all the partner event sources that have been
 shared with your AWS account. For more information about partner event
-sources, see CreateEventBus.
+sources, see \code{\link[=eventbridge_create_event_bus]{create_event_bus}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_event_sources(

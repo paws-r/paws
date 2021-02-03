@@ -17,8 +17,8 @@ SDK.}
 \item{Tags}{(Optional) The tags to apply to the backup at backup creation. The key
 value of the \code{Name} tag appears in the console as the backup name. If
 you have set \code{CopyTagsToBackups} to true, and you specify one or more
-tags using the \code{CreateBackup} action, no existing file system tags are
-copied from the file system to the backup.}
+tags using the \code{\link[=fsx_create_backup]{create_backup}} action, no existing
+file system tags are copied from the file system to the backup.}
 }
 \description{
 Creates a backup of an existing Amazon FSx file system. Creating regular
@@ -44,24 +44,27 @@ parameters match, this operation returns the description of the existing
 backup. If a backup specified client request token exists, and the
 parameters don't match, this operation returns
 \code{IncompatibleParameterError}. If a backup with the specified client
-request token doesn't exist, \code{CreateBackup} does the following:
+request token doesn't exist, \code{\link[=fsx_create_backup]{create_backup}} does
+the following:
 \itemize{
 \item Creates a new Amazon FSx backup with an assigned ID, and an initial
 lifecycle state of \code{CREATING}.
 \item Returns the description of the backup.
 }
 
-By using the idempotent operation, you can retry a \code{CreateBackup}
-operation without the risk of creating an extra backup. This approach
-can be useful when an initial call fails in a way that makes it unclear
-whether a backup was created. If you use the same client request token
-and the initial call created a backup, the operation returns a
-successful result because all the parameters are the same.
+By using the idempotent operation, you can retry a
+\code{\link[=fsx_create_backup]{create_backup}} operation without the risk of
+creating an extra backup. This approach can be useful when an initial
+call fails in a way that makes it unclear whether a backup was created.
+If you use the same client request token and the initial call created a
+backup, the operation returns a successful result because all the
+parameters are the same.
 
-The \code{CreateBackup} operation returns while the backup's lifecycle state
-is still \code{CREATING}. You can check the backup creation status by calling
-the DescribeBackups operation, which returns the backup state along with
-other information.
+The \code{\link[=fsx_create_backup]{create_backup}} operation returns while the
+backup's lifecycle state is still \code{CREATING}. You can check the backup
+creation status by calling the
+\code{\link[=fsx_describe_backups]{describe_backups}} operation, which returns the
+backup state along with other information.
 }
 \section{Request syntax}{
 \preformatted{svc$create_backup(

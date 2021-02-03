@@ -23,8 +23,8 @@ in the \emph{AWS General Reference}.}
 Removes the specified managed policy from the specified role.
 
 A role can also have inline policies embedded with it. To delete an
-inline policy, use the DeleteRolePolicy API. For information about
-policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+inline policy, use the \code{\link[=iam_delete_role_policy]{delete_role_policy}}
+API. For information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

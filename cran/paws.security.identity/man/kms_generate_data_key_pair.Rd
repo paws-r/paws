@@ -23,8 +23,8 @@ in the \emph{AWS Key Management Service Developer Guide}.}
 
 \item{KeyId}{[required] Specifies the symmetric CMK that encrypts the private key in the data
 key pair. You cannot specify an asymmetric CMK or a CMK in a custom key
-store. To get the type and origin of your CMK, use the DescribeKey
-operation.
+store. To get the type and origin of your CMK, use the
+\code{\link[=kms_describe_key]{describe_key}} operation.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}.
@@ -40,8 +40,10 @@ For example:
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To
-get the alias name and alias ARN, use ListAliases.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
+get the alias name and alias ARN, use
+\code{\link[=kms_list_aliases]{list_aliases}}.}
 
 \item{KeyPairSpec}{[required] Determines the type of data key pair that is generated.
 
@@ -56,35 +58,40 @@ For more information, see \href{https://docs.aws.amazon.com/kms/latest/developer
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \description{
-Generates a unique asymmetric data key pair. The \code{GenerateDataKeyPair}
-operation returns a plaintext public key, a plaintext private key, and a
-copy of the private key that is encrypted under the symmetric CMK you
-specify. You can use the data key pair to perform asymmetric
-cryptography outside of AWS KMS.
+Generates a unique asymmetric data key pair. The
+\code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}} operation returns
+a plaintext public key, a plaintext private key, and a copy of the
+private key that is encrypted under the symmetric CMK you specify. You
+can use the data key pair to perform asymmetric cryptography outside of
+AWS KMS.
 
-\code{GenerateDataKeyPair} returns a unique data key pair for each request.
-The bytes in the keys are not related to the caller or the CMK that is
-used to encrypt the private key.
+\code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}} returns a unique
+data key pair for each request. The bytes in the keys are not related to
+the caller or the CMK that is used to encrypt the private key.
 
-You can use the public key that \code{GenerateDataKeyPair} returns to encrypt
-data or verify a signature outside of AWS KMS. Then, store the encrypted
-private key with the data. When you are ready to decrypt data or sign a
-message, you can use the Decrypt operation to decrypt the encrypted
-private key.
+You can use the public key that
+\code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}} returns to
+encrypt data or verify a signature outside of AWS KMS. Then, store the
+encrypted private key with the data. When you are ready to decrypt data
+or sign a message, you can use the \code{\link[=kms_decrypt]{decrypt}} operation to
+decrypt the encrypted private key.
 
 To generate a data key pair, you must specify a symmetric customer
 master key (CMK) to encrypt the private key in a data key pair. You
 cannot use an asymmetric CMK or a CMK in a custom key store. To get the
-type and origin of your CMK, use the DescribeKey operation.
+type and origin of your CMK, use the \code{\link[=kms_describe_key]{describe_key}}
+operation.
 
 If you are using the data key pair to encrypt data, or for any operation
 where you don't immediately need a private key, consider using the
-GenerateDataKeyPairWithoutPlaintext operation.
-\code{GenerateDataKeyPairWithoutPlaintext} returns a plaintext public key and
-an encrypted private key, but omits the plaintext private key that you
-need only to decrypt ciphertext or sign a message. Later, when you need
-to decrypt the data or sign a message, use the Decrypt operation to
-decrypt the encrypted private key in the data key pair.
+\code{\link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext}}
+operation.
+\code{\link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext}}
+returns a plaintext public key and an encrypted private key, but omits
+the plaintext private key that you need only to decrypt ciphertext or
+sign a message. Later, when you need to decrypt the data or sign a
+message, use the \code{\link[=kms_decrypt]{decrypt}} operation to decrypt the
+encrypted private key in the data key pair.
 
 You can use the optional encryption context to add additional security
 to the encryption operation. If you specify an \code{EncryptionContext}, you
@@ -108,11 +115,11 @@ the \code{KeyId} parameter.
 
 \strong{Related operations:}
 \itemize{
-\item Decrypt
-\item Encrypt
-\item GenerateDataKey
-\item GenerateDataKeyPairWithoutPlaintext
-\item GenerateDataKeyWithoutPlaintext
+\item \code{\link[=kms_decrypt]{decrypt}}
+\item \code{\link[=kms_encrypt]{encrypt}}
+\item \code{\link[=kms_generate_data_key]{generate_data_key}}
+\item \code{\link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext}}
+\item \code{\link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext}}
 }
 }
 \section{Request syntax}{

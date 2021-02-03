@@ -33,18 +33,17 @@ you don't specify a value, the default is \code{exportedlogs}.}
 \description{
 Creates an export task, which allows you to efficiently export data from
 a log group to an Amazon S3 bucket. When you perform a
-\code{CreateExportTask} operation, you must use credentials that have
-permission to write to the S3 bucket that you specify as the
-destination.
+\code{\link[=cloudwatchlogs_create_export_task]{create_export_task}} operation, you
+must use credentials that have permission to write to the S3 bucket that
+you specify as the destination.
 
 This is an asynchronous call. If all the required information is
 provided, this operation initiates an export task and responds with the
 ID of the task. After the task has started, you can use
-\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeExportTasks.html}{DescribeExportTasks}
-to get the status of the export task. Each account can only have one
-active (\code{RUNNING} or \code{PENDING}) export task at a time. To cancel an
-export task, use
-\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_CancelExportTask.html}{CancelExportTask}.
+\code{\link[=cloudwatchlogs_describe_export_tasks]{describe_export_tasks}} to get
+the status of the export task. Each account can only have one active
+(\code{RUNNING} or \code{PENDING}) export task at a time. To cancel an export
+task, use \code{\link[=cloudwatchlogs_cancel_export_task]{cancel_export_task}}.
 
 You can export logs from multiple log groups or multiple time ranges to
 the same S3 bucket. To separate out log data for each export task, you

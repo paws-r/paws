@@ -11,10 +11,12 @@ forecastservice_delete_forecast_export_job(ForecastExportJobArn)
 \item{ForecastExportJobArn}{[required] The Amazon Resource Name (ARN) of the forecast export job to delete.}
 }
 \description{
-Deletes a forecast export job created using the CreateForecastExportJob
+Deletes a forecast export job created using the
+\code{\link[=forecastservice_create_forecast_export_job]{create_forecast_export_job}}
 operation. You can delete only export jobs that have a status of
 \code{ACTIVE} or \code{CREATE_FAILED}. To get the status, use the
-DescribeForecastExportJob operation.
+\code{\link[=forecastservice_describe_forecast_export_job]{describe_forecast_export_job}}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_forecast_export_job(

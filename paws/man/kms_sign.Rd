@@ -10,8 +10,8 @@ kms_sign(KeyId, Message, MessageType, GrantTokens, SigningAlgorithm)
 \arguments{
 \item{KeyId}{[required] Identifies an asymmetric CMK. AWS KMS uses the private key in the
 asymmetric CMK to sign the message. The \code{KeyUsage} type of the CMK must
-be \code{SIGN_VERIFY}. To find the \code{KeyUsage} of a CMK, use the DescribeKey
-operation.
+be \code{SIGN_VERIFY}. To find the \code{KeyUsage} of a CMK, use the
+\code{\link[=kms_describe_key]{describe_key}} operation.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}.
@@ -27,8 +27,10 @@ For example:
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To
-get the alias name and alias ARN, use ListAliases.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
+get the alias name and alias ARN, use
+\code{\link[=kms_list_aliases]{list_aliases}}.}
 
 \item{Message}{[required] Specifies the message or message digest to sign. Messages can be 0-4096
 bytes. To sign a larger message, provide the message digest.
@@ -53,9 +55,9 @@ specified asymmetric CMK.}
 \description{
 Creates a \href{https://en.wikipedia.org/wiki/Digital_signature}{digital signature} for a
 message or message digest by using the private key in an asymmetric CMK.
-To verify the signature, use the Verify operation, or use the public key
-in the same asymmetric CMK outside of AWS KMS. For information about
-symmetric and asymmetric CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric CMKs}
+To verify the signature, use the \code{\link[=kms_verify]{verify}} operation, or
+use the public key in the same asymmetric CMK outside of AWS KMS. For
+information about symmetric and asymmetric CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric CMKs}
 in the \emph{AWS Key Management Service Developer Guide}.
 
 Digital signatures are generated and verified by using asymmetric key
@@ -65,12 +67,13 @@ their private key to sign a message. Anyone with the public key can
 verify that the message was signed with that particular private key and
 that the message hasn't changed since it was signed.
 
-To use the \code{Sign} operation, provide the following information:
+To use the \code{\link[=kms_sign]{sign}} operation, provide the following
+information:
 \itemize{
 \item Use the \code{KeyId} parameter to identify an asymmetric CMK with a
 \code{KeyUsage} value of \code{SIGN_VERIFY}. To get the \code{KeyUsage} value of a
-CMK, use the DescribeKey operation. The caller must have \code{kms:Sign}
-permission on the CMK.
+CMK, use the \code{\link[=kms_describe_key]{describe_key}} operation. The
+caller must have \code{kms:Sign} permission on the CMK.
 \item Use the \code{Message} parameter to specify the message or message digest
 to sign. You can submit messages of up to 4096 bytes. To sign a
 larger message, generate a hash digest of the message, and then
@@ -83,9 +86,11 @@ whether the message is a full message or a digest, use the
 When signing a message, be sure to record the CMK and the signing
 algorithm. This information is required to verify the signature.
 
-To verify the signature that this operation generates, use the Verify
-operation. Or use the GetPublicKey operation to download the public key
-and then use the public key to verify the signature outside of AWS KMS.
+To verify the signature that this operation generates, use the
+\code{\link[=kms_verify]{verify}} operation. Or use the
+\code{\link[=kms_get_public_key]{get_public_key}} operation to download the public
+key and then use the public key to verify the signature outside of AWS
+KMS.
 
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
@@ -99,7 +104,7 @@ the \code{KeyId} parameter.
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:Sign}
 (key policy)
 
-\strong{Related operations}: Verify
+\strong{Related operations}: \code{\link[=kms_verify]{verify}}
 }
 \section{Request syntax}{
 \preformatted{svc$sign(

@@ -15,7 +15,7 @@ parameter types.}
 }
 \description{
 Get details of a parameter. Don't confuse this API action with the
-GetParameter API action.
+\code{\link[=ssm_get_parameter]{get_parameter}} API action.
 }
 \section{Request syntax}{
 \preformatted{svc$get_parameters(

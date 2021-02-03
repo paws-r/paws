@@ -19,7 +19,8 @@ sagemaker_list_algorithms(CreationTimeAfter, CreationTimeBefore,
 \item{NameContains}{A string in the algorithm name. This filter returns only algorithms
 whose name contains the specified string.}
 
-\item{NextToken}{If the response to a previous \code{ListAlgorithms} request was truncated,
+\item{NextToken}{If the response to a previous
+\code{\link[=sagemaker_list_algorithms]{list_algorithms}} request was truncated,
 the response includes a \code{NextToken}. To retrieve the next set of
 algorithms, use the token in the next request.}
 

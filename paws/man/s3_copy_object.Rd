@@ -67,7 +67,7 @@ encoded.
 \item For objects accessed through access points, specify the Amazon
 Resource Name (ARN) of the object as accessed through the access
 point, in the format
-\verb{arn:aws:s3:&lt;Region&gt;:&lt;account-id&gt;:accesspoint/&lt;access-point-name&gt;/object/&lt;key&gt;}.
+\verb{arn:aws:s3:<Region>:<account-id>:accesspoint/<access-point-name>/object/<key>}.
 For example, to copy the object \code{reports/january.pdf} through access
 point \code{my-access-point} owned by account \code{123456789012} in Region
 \code{us-west-2}, use the URL encoding of
@@ -79,7 +79,7 @@ source and destination buckets are in the same AWS Region.
 
 Alternatively, for objects accessed through Amazon S3 on Outposts,
 specify the ARN of the object as accessed in the format
-\verb{arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/object/&lt;key&gt;}.
+\verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/object/<key>}.
 For example, to copy the object \code{reports/january.pdf} through
 outpost \code{my-outpost} owned by account \code{123456789012} in Region
 \code{us-west-2}, use the URL encoding of
@@ -88,7 +88,7 @@ The value must be URL encoded.
 }
 
 To copy a specific version of an object, append
-\verb{?versionId=&lt;version-id&gt;} to the value (for example,
+\verb{?versionId=<version-id>} to the value (for example,
 \code{awsexamplebucket/reports/january.pdf?versionId=QUpfdndhfd8438MNFDN93jdnJFkdmqnh893}).
 If you don't specify a version ID, Amazon S3 copies the latest version
 of the source object.}
@@ -323,9 +323,9 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-using-rest-api.htm
 
 \strong{Storage Class Options}
 
-You can use the \code{CopyObject} operation to change the storage class of an
-object that is already stored in Amazon S3 using the \code{StorageClass}
-parameter. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html}{Storage Classes}
+You can use the \code{\link[=s3_copy_object]{copy_object}} operation to change the
+storage class of an object that is already stored in Amazon S3 using the
+\code{StorageClass} parameter. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html}{Storage Classes}
 in the \emph{Amazon S3 Service Developer Guide}.
 
 \strong{Versioning}
@@ -347,12 +347,12 @@ version ID that Amazon S3 generates is always null.
 If the source object's storage class is GLACIER, you must restore a copy
 of this object before you can use it as a source object for the copy
 operation. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html}{RestoreObject}.
+\code{\link[=s3_restore_object]{restore_object}}.
 
-The following operations are related to \code{CopyObject}:
+The following operations are related to \code{\link[=s3_copy_object]{copy_object}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
+\item \code{\link[=s3_put_object]{put_object}}
+\item \code{\link[=s3_get_object]{get_object}}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjectsExamples.html}{Copying Objects}.

@@ -8,14 +8,14 @@ glue_batch_get_jobs(JobNames)
 }
 \arguments{
 \item{JobNames}{[required] A list of job names, which might be the names returned from the
-\code{ListJobs} operation.}
+\code{\link[=glue_list_jobs]{list_jobs}} operation.}
 }
 \description{
 Returns a list of resource metadata for a given list of job names. After
-calling the \code{ListJobs} operation, you can call this operation to access
-the data to which you have been granted permissions. This operation
-supports all IAM permissions, including permission conditions that uses
-tags.
+calling the \code{\link[=glue_list_jobs]{list_jobs}} operation, you can call this
+operation to access the data to which you have been granted permissions.
+This operation supports all IAM permissions, including permission
+conditions that uses tags.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_jobs(

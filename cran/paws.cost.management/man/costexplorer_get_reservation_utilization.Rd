@@ -19,10 +19,12 @@ usage data is retrieved from \code{2017-01-01} up to and including
 \item{Granularity}{If \code{GroupBy} is set, \code{Granularity} can't be set. If \code{Granularity} isn't
 set, the response object doesn't include \code{Granularity}, either \code{MONTHLY}
 or \code{DAILY}. If both \code{GroupBy} and \code{Granularity} aren't set,
-\code{GetReservationUtilization} defaults to \code{DAILY}.
+\code{\link[=costexplorer_get_reservation_utilization]{get_reservation_utilization}}
+defaults to \code{DAILY}.
 
-The \code{GetReservationUtilization} operation supports only \code{DAILY} and
-\code{MONTHLY} granularities.}
+The
+\code{\link[=costexplorer_get_reservation_utilization]{get_reservation_utilization}}
+operation supports only \code{DAILY} and \code{MONTHLY} granularities.}
 
 \item{Filter}{Filters utilization data by dimensions. You can filter by the following
 dimensions:
@@ -40,7 +42,8 @@ dimensions:
 \item TENANCY
 }
 
-\code{GetReservationUtilization} uses the same
+\code{\link[=costexplorer_get_reservation_utilization]{get_reservation_utilization}}
+uses the same
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}
 object as the other operations, but only \code{AND} is supported among each
 dimension, and nesting is supported up to only one level deep. If there
@@ -84,8 +87,9 @@ next batch of objects.}
 Retrieves the reservation utilization for your account. Management
 account in an organization have access to member accounts. You can
 filter data by dimensions in a time period. You can use
-\code{GetDimensionValues} to determine the possible dimension values.
-Currently, you can group only by \code{SUBSCRIPTION_ID}.
+\code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} to determine
+the possible dimension values. Currently, you can group only by
+\code{SUBSCRIPTION_ID}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_reservation_utilization(

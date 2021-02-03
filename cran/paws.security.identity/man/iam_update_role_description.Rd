@@ -12,11 +12,11 @@ iam_update_role_description(RoleName, Description)
 \item{Description}{[required] The new description that you want to apply to the specified role.}
 }
 \description{
-Use UpdateRole instead.
+Use \code{\link[=iam_update_role]{update_role}} instead.
 
 Modifies only the description of a role. This operation performs the
-same function as the \code{Description} parameter in the \code{UpdateRole}
-operation.
+same function as the \code{Description} parameter in the
+\code{\link[=iam_update_role]{update_role}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$update_role_description(

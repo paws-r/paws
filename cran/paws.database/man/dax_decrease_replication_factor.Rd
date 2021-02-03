@@ -19,8 +19,10 @@ dax_decrease_replication_factor(ClusterName, NewReplicationFactor,
 \description{
 Removes one or more nodes from a DAX cluster.
 
-You cannot use \code{DecreaseReplicationFactor} to remove the last node in a
-DAX cluster. If you need to do this, use \code{DeleteCluster} instead.
+You cannot use
+\code{\link[=dax_decrease_replication_factor]{decrease_replication_factor}} to
+remove the last node in a DAX cluster. If you need to do this, use
+\code{\link[=dax_delete_cluster]{delete_cluster}} instead.
 }
 \section{Request syntax}{
 \preformatted{svc$decrease_replication_factor(

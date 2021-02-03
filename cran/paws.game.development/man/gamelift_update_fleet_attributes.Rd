@@ -19,7 +19,8 @@ need to be unique.}
 
 \item{NewGameSessionProtectionPolicy}{Game session protection policy to apply to all new instances created in
 this fleet. Instances that already exist are not affected. You can set
-protection for individual instances using UpdateGameSession.
+protection for individual instances using
+\code{\link[=gamelift_update_game_session]{update_game_session}}.
 \itemize{
 \item \strong{NoProtection} -- The game session can be terminated during a
 scale-down event.
@@ -48,18 +49,19 @@ returned.
 
 \strong{Related operations}
 \itemize{
-\item CreateFleet
-\item ListFleets
-\item DeleteFleet
-\item DescribeFleetAttributes
+\item \code{\link[=gamelift_create_fleet]{create_fleet}}
+\item \code{\link[=gamelift_list_fleets]{list_fleets}}
+\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
+\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
 \item Update fleets:
 \itemize{
-\item UpdateFleetAttributes
-\item UpdateFleetCapacity
-\item UpdateFleetPortSettings
-\item UpdateRuntimeConfiguration
+\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
+\item \code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}
+\item \code{\link[=gamelift_update_fleet_port_settings]{update_fleet_port_settings}}
+\item \code{\link[=gamelift_update_runtime_configuration]{update_runtime_configuration}}
 }
-\item StartFleetActions or StopFleetActions
+\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
 }
 }
 \section{Request syntax}{

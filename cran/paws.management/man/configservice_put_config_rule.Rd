@@ -23,9 +23,10 @@ that AWS Config provides.
 
 If you are adding a new custom AWS Config rule, you must first create
 the AWS Lambda function that the rule invokes to evaluate your
-resources. When you use the \code{PutConfigRule} action to add the rule to
-AWS Config, you must specify the Amazon Resource Name (ARN) that AWS
-Lambda assigns to the function. Specify the ARN for the
+resources. When you use the
+\code{\link[=configservice_put_config_rule]{put_config_rule}} action to add the
+rule to AWS Config, you must specify the Amazon Resource Name (ARN) that
+AWS Lambda assigns to the function. Specify the ARN for the
 \code{SourceIdentifier} key. This key is part of the \code{Source} object, which
 is part of the \code{ConfigRule} object.
 

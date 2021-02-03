@@ -11,8 +11,8 @@ lightsail_get_distribution_metric_data(distributionName, metricName,
 \arguments{
 \item{distributionName}{[required] The name of the distribution for which to get metric data.
 
-Use the \code{GetDistributions} action to get a list of distribution names
-that you can specify.}
+Use the \code{\link[=lightsail_get_distributions]{get_distributions}} action to get
+a list of distribution names that you can specify.}
 
 \item{metricName}{[required] The metric for which you want to return information.
 

@@ -11,13 +11,14 @@ qldb_list_journal_s3_exports_for_ledger(Name, MaxResults, NextToken)
 \item{Name}{[required] The name of the ledger.}
 
 \item{MaxResults}{The maximum number of results to return in a single
-\code{ListJournalS3ExportsForLedger} request. (The actual number of results
-returned might be fewer.)}
+\code{\link[=qldb_list_journal_s3_exports_for_ledger]{list_journal_s3_exports_for_ledger}}
+request. (The actual number of results returned might be fewer.)}
 
 \item{NextToken}{A pagination token, indicating that you want to retrieve the next page
 of results. If you received a value for \code{NextToken} in the response from
-a previous \code{ListJournalS3ExportsForLedger} call, then you should use
-that value as input here.}
+a previous
+\code{\link[=qldb_list_journal_s3_exports_for_ledger]{list_journal_s3_exports_for_ledger}}
+call, then you should use that value as input here.}
 }
 \description{
 Returns an array of journal export job descriptions for a specified
@@ -25,7 +26,8 @@ ledger.
 
 This action returns a maximum of \code{MaxResults} items, and is paginated so
 that you can retrieve all the items by calling
-\code{ListJournalS3ExportsForLedger} multiple times.
+\code{\link[=qldb_list_journal_s3_exports_for_ledger]{list_journal_s3_exports_for_ledger}}
+multiple times.
 
 This action does not return any expired export jobs. For more
 information, see \href{https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration}{Export Job Expiration}

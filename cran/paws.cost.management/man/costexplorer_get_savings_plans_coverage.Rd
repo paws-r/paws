@@ -19,8 +19,9 @@ or \code{SERVICE}.}
 \item{Granularity}{The granularity of the Amazon Web Services cost data for your Savings
 Plans. \code{Granularity} can't be set if \code{GroupBy} is set.
 
-The \code{GetSavingsPlansCoverage} operation supports only \code{DAILY} and
-\code{MONTHLY} granularities.}
+The
+\code{\link[=costexplorer_get_savings_plans_coverage]{get_savings_plans_coverage}}
+operation supports only \code{DAILY} and \code{MONTHLY} granularities.}
 
 \item{Filter}{Filters Savings Plans coverage data by dimensions. You can filter data
 for Savings Plans usage with the following dimensions:
@@ -31,7 +32,8 @@ for Savings Plans usage with the following dimensions:
 \item \code{INSTANCE_FAMILY}
 }
 
-\code{GetSavingsPlansCoverage} uses the same
+\code{\link[=costexplorer_get_savings_plans_coverage]{get_savings_plans_coverage}}
+uses the same
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}
 object as the other operations, but only \code{AND} is supported among each
 dimension. If there are multiple values for a dimension, they are OR'd
@@ -78,8 +80,8 @@ usage with the following dimensions:
 \item \code{INSTANCE_FAMILY}
 }
 
-To determine valid values for a dimension, use the \code{GetDimensionValues}
-operation.
+To determine valid values for a dimension, use the
+\code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$get_savings_plans_coverage(

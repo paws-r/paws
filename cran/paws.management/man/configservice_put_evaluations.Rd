@@ -15,13 +15,16 @@ AWS Config rule that invokes the AWS Lambda function.}
 \item{ResultToken}{[required] An encrypted token that associates an evaluation with an AWS Config
 rule. Identifies the rule and the event that triggered the evaluation.}
 
-\item{TestMode}{Use this parameter to specify a test run for \code{PutEvaluations}. You can
-verify whether your AWS Lambda function will deliver evaluation results
-to AWS Config. No updates occur to your existing evaluations, and
-evaluation results are not sent to AWS Config.
+\item{TestMode}{Use this parameter to specify a test run for
+\code{\link[=configservice_put_evaluations]{put_evaluations}}. You can verify
+whether your AWS Lambda function will deliver evaluation results to AWS
+Config. No updates occur to your existing evaluations, and evaluation
+results are not sent to AWS Config.
 
-When \code{TestMode} is \code{true}, \code{PutEvaluations} doesn't require a valid
-value for the \code{ResultToken} parameter, but the value cannot be null.}
+When \code{TestMode} is \code{true},
+\code{\link[=configservice_put_evaluations]{put_evaluations}} doesn't require a
+valid value for the \code{ResultToken} parameter, but the value cannot be
+null.}
 }
 \description{
 Used by an AWS Lambda function to deliver evaluation results to AWS

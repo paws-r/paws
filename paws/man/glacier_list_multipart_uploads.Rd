@@ -29,9 +29,10 @@ If this value is not specified, the List Uploads operation returns up to
 \description{
 This operation lists in-progress multipart uploads for the specified
 vault. An in-progress multipart upload is a multipart upload that has
-been initiated by an InitiateMultipartUpload request, but has not yet
-been completed or aborted. The list returned in the List Multipart
-Upload response has no guaranteed order.
+been initiated by an
+\code{\link[=glacier_initiate_multipart_upload]{initiate_multipart_upload}}
+request, but has not yet been completed or aborted. The list returned in
+the List Multipart Upload response has no guaranteed order.
 
 The List Multipart Uploads operation supports pagination. By default,
 this operation returns up to 50 multipart uploads in the response. You
@@ -44,10 +45,10 @@ returned in the response by specifying the \code{limit} parameter in the
 request.
 
 Note the difference between this operation and listing parts
-(ListParts). The List Multipart Uploads operation lists all multipart
-uploads for a vault and does not require a multipart upload ID. The List
-Parts operation requires a multipart upload ID since parts are
-associated with a single upload.
+(\code{\link[=glacier_list_parts]{list_parts}}). The List Multipart Uploads
+operation lists all multipart uploads for a vault and does not require a
+multipart upload ID. The List Parts operation requires a multipart
+upload ID since parts are associated with a single upload.
 
 An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any

@@ -22,7 +22,8 @@ in the \emph{AWS General Reference}.}
 Attaches the specified managed policy to the specified IAM group.
 
 You use this API to attach a managed policy to a group. To embed an
-inline policy in a group, use PutGroupPolicy.
+inline policy in a group, use
+\code{\link[=iam_put_group_policy]{put_group_policy}}.
 
 For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.

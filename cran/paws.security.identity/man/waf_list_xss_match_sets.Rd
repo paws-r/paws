@@ -10,9 +10,10 @@ waf_list_xss_match_sets(NextMarker, Limit)
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more XssMatchSet objects
 than the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the
 response that allows you to list another group of \code{XssMatchSets}. For
-the second and subsequent \code{ListXssMatchSets} requests, specify the value
-of \code{NextMarker} from the previous response to get information about
-another batch of \code{XssMatchSets}.}
+the second and subsequent
+\code{\link[=waf_list_xss_match_sets]{list_xss_match_sets}} requests, specify the
+value of \code{NextMarker} from the previous response to get information
+about another batch of \code{XssMatchSets}.}
 
 \item{Limit}{Specifies the number of XssMatchSet objects that you want AWS WAF to
 return for this request. If you have more \code{XssMatchSet} objects than the

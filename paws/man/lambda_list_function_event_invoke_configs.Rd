@@ -32,7 +32,7 @@ Retrieves a list of configurations for asynchronous invocation for a
 function.
 
 To configure options for asynchronous invocation, use
-PutFunctionEventInvokeConfig.
+\code{\link[=lambda_put_function_event_invoke_config]{put_function_event_invoke_config}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_function_event_invoke_configs(

@@ -23,7 +23,8 @@ channel.}
 \description{
 Creates a signaling channel.
 
-\code{CreateSignalingChannel} is an asynchronous operation.
+\code{\link[=kinesisvideo_create_signaling_channel]{create_signaling_channel}} is
+an asynchronous operation.
 }
 \section{Request syntax}{
 \preformatted{svc$create_signaling_channel(

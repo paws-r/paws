@@ -15,8 +15,8 @@ created by the Requester.}
 of the web site.}
 }
 \description{
-The \code{RejectAssignment} operation rejects the results of a completed
-assignment.
+The \code{\link[=mturk_reject_assignment]{reject_assignment}} operation rejects the
+results of a completed assignment.
 
 You can include an optional feedback message with the rejection, which
 the Worker can see in the Status section of the web site. When you

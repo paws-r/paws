@@ -35,7 +35,8 @@ point. The \code{VolumeSizeInBytes} value for this new volume must be equal
 to or larger than the size of the existing volume, in bytes.}
 
 \item{NetworkInterfaceId}{[required] The network interface of the gateway on which to expose the iSCSI
-target. Only IPv4 addresses are accepted. Use DescribeGatewayInformation
+target. Only IPv4 addresses are accepted. Use
+\code{\link[=storagegateway_describe_gateway_information]{describe_gateway_information}}
 to get a list of the network interfaces available on a gateway.
 
 Valid Values: A valid IP address.}
@@ -72,8 +73,8 @@ Creates a cached volume on a specified cached volume gateway. This
 operation is only supported in the cached volume gateway type.
 
 Cache storage must be allocated to the gateway before you can create a
-cached volume. Use the AddCache operation to add cache storage to a
-gateway.
+cached volume. Use the \code{\link[=storagegateway_add_cache]{add_cache}} operation
+to add cache storage to a gateway.
 
 In the request, you must specify the gateway, size of the volume in
 bytes, the iSCSI target name, an IP address on which to expose the

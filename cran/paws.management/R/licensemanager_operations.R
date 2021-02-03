@@ -1586,8 +1586,8 @@ licensemanager_list_received_licenses <- function(LicenseArns = NULL, Filters = 
 #' -   `resource_id` - The ID of the resource. Logical operators are
 #'     `EQUALS` | `NOT_EQUALS`.
 #' 
-#' -   `tag:&lt;key&gt;` - The key/value combination of a tag assigned to
-#'     the resource. Logical operators are `EQUALS` (single account) or
+#' -   `tag:<key>` - The key/value combination of a tag assigned to the
+#'     resource. Logical operators are `EQUALS` (single account) or
 #'     `EQUALS` | `NOT_EQUALS` (cross account).
 #'
 #' @section Request syntax:

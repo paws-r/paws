@@ -21,9 +21,10 @@ In \code{SourceEntity}, you specify the type of object you're using as
 source. You can only update a dashboard from a template, so you use a
 \code{SourceTemplate} entity. If you need to update a dashboard from an
 analysis, first convert the analysis to a template by using the
-CreateTemplate API operation. For \code{SourceTemplate}, specify the Amazon
-Resource Name (ARN) of the source template. The \code{SourceTemplate} ARN can
-contain any AWS Account and any QuickSight-supported AWS Region.
+\code{\link[=quicksight_create_template]{create_template}} API operation. For
+\code{SourceTemplate}, specify the Amazon Resource Name (ARN) of the source
+template. The \code{SourceTemplate} ARN can contain any AWS Account and any
+QuickSight-supported AWS Region.
 
 Use the \code{DataSetReferences} entity within \code{SourceTemplate} to list the
 replacement datasets for the placeholders listed in the original. The

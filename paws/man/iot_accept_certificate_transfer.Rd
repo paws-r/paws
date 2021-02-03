@@ -16,8 +16,9 @@ contains the certificate ID.)}
 Accepts a pending certificate transfer. The default state of the
 certificate is INACTIVE.
 
-To check for pending certificate transfers, call ListCertificates to
-enumerate your certificates.
+To check for pending certificate transfers, call
+\code{\link[=iot_list_certificates]{list_certificates}} to enumerate your
+certificates.
 }
 \section{Request syntax}{
 \preformatted{svc$accept_certificate_transfer(

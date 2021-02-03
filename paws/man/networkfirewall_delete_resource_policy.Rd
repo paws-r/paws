@@ -12,8 +12,8 @@ networkfirewall_delete_resource_policy(ResourceArn)
 whose resource policy you want to delete.}
 }
 \description{
-Deletes a resource policy that you created in a PutResourcePolicy
-request.
+Deletes a resource policy that you created in a
+\code{\link[=networkfirewall_put_resource_policy]{put_resource_policy}} request.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_resource_policy(

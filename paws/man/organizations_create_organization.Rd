@@ -26,7 +26,8 @@ in the \emph{AWS Organizations User Guide.}
 }
 \description{
 Creates an AWS organization. The account whose user is calling the
-\code{CreateOrganization} operation automatically becomes the \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account}{management account}
+\code{\link[=organizations_create_organization]{create_organization}} operation
+automatically becomes the \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account}{management account}
 of the new organization.
 
 This operation must be called using credentials from the account that is

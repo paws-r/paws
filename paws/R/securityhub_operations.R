@@ -100,8 +100,8 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 #'
 #' @description
 #' Enables the standards specified by the provided `StandardsArn`. To
-#' obtain the ARN for a standard, use the ` <a>DescribeStandards</a> `
-#' operation.
+#' obtain the ARN for a standard, use the
+#' [`describe_standards`][securityhub_describe_standards] operation.
 #' 
 #' For more information, see the [Security
 #' Standards](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html)
@@ -157,9 +157,10 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #' The maximum allowed size for a finding is 240 Kb. An error is returned
 #' for any finding larger than 240 Kb.
 #' 
-#' After a finding is created, `BatchImportFindings` cannot be used to
-#' update the following finding fields and objects, which Security Hub
-#' customers use to manage their investigation workflow.
+#' After a finding is created,
+#' [`batch_import_findings`][securityhub_batch_import_findings] cannot be
+#' used to update the following finding fields and objects, which Security
+#' Hub customers use to manage their investigation workflow.
 #' 
 #' -   `Note`
 #' 
@@ -169,11 +170,14 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #' 
 #' -   `Workflow`
 #' 
-#' `BatchImportFindings` can be used to update the following finding fields
-#' and objects only if they have not been updated using
-#' `BatchUpdateFindings`. After they are updated using
-#' `BatchUpdateFindings`, these fields cannot be updated using
-#' `BatchImportFindings`.
+#' [`batch_import_findings`][securityhub_batch_import_findings] can be used
+#' to update the following finding fields and objects only if they have not
+#' been updated using
+#' [`batch_update_findings`][securityhub_batch_update_findings]. After they
+#' are updated using
+#' [`batch_update_findings`][securityhub_batch_update_findings], these
+#' fields cannot be updated using
+#' [`batch_import_findings`][securityhub_batch_import_findings].
 #' 
 #' -   `Confidence`
 #' 
@@ -1857,11 +1861,13 @@ securityhub_batch_import_findings <- function(Findings) {
 #' their member accounts. Member accounts can update findings for their
 #' account.
 #' 
-#' Updates from `BatchUpdateFindings` do not affect the value of
-#' `UpdatedAt` for a finding.
+#' Updates from
+#' [`batch_update_findings`][securityhub_batch_update_findings] do not
+#' affect the value of `UpdatedAt` for a finding.
 #' 
-#' Master and member accounts can use `BatchUpdateFindings` to update the
-#' following finding fields and objects.
+#' Master and member accounts can use
+#' [`batch_update_findings`][securityhub_batch_update_findings] to update
+#' the following finding fields and objects.
 #' 
 #' -   `Confidence`
 #' 
@@ -1893,8 +1899,9 @@ securityhub_batch_import_findings <- function(Findings) {
 #'   VerificationState, Confidence, Criticality, Types, UserDefinedFields,
 #'   Workflow, RelatedFindings)
 #'
-#' @param FindingIdentifiers &#91;required&#93; The list of findings to update. `BatchUpdateFindings` can be used to
-#' update up to 100 findings at a time.
+#' @param FindingIdentifiers &#91;required&#93; The list of findings to update.
+#' [`batch_update_findings`][securityhub_batch_update_findings] can be used
+#' to update up to 100 findings at a time.
 #' 
 #' For each finding, the list provides the finding identifier and the ARN
 #' of the finding provider.
@@ -2665,11 +2672,12 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #' account is the Security Hub administrator account that is designated by
 #' the organization management account.
 #' 
-#' `CreateMembers` is always used to add accounts that are not organization
-#' members.
+#' [`create_members`][securityhub_create_members] is always used to add
+#' accounts that are not organization members.
 #' 
-#' For accounts that are part of an organization, `CreateMembers` is only
-#' used in the following cases:
+#' For accounts that are part of an organization,
+#' [`create_members`][securityhub_create_members] is only used in the
+#' following cases:
 #' 
 #' -   Security Hub is not configured to automatically add new accounts in
 #'     an organization.
@@ -2678,13 +2686,14 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #' 
 #' This action can only be used by an account that has Security Hub
 #' enabled. To enable Security Hub, you can use the
-#' ` <a>EnableSecurityHub</a> ` operation.
+#' [`enable_security_hub`][securityhub_enable_security_hub] operation.
 #' 
 #' For accounts that are not organization members, you create the account
 #' association and then send an invitation to the member account. To send
-#' the invitation, you use the ` <a>InviteMembers</a> ` operation. If the
-#' account owner accepts the invitation, the account becomes a member
-#' account in Security Hub.
+#' the invitation, you use the
+#' [`invite_members`][securityhub_invite_members] operation. If the account
+#' owner accepts the invitation, the account becomes a member account in
+#' Security Hub.
 #' 
 #' Accounts that are part of an organization do not receive an invitation.
 #' They automatically become a member account in Security Hub.
@@ -2695,8 +2704,9 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #' master accounts.
 #' 
 #' To remove the association between the master and member accounts, use
-#' the ` <a>DisassociateFromMasterAccount</a> ` or
-#' ` <a>DisassociateMembers</a> ` operation.
+#' the
+#' [`disassociate_from_master_account`][securityhub_disassociate_from_master_account]
+#' or [`disassociate_members`][securityhub_disassociate_members] operation.
 #'
 #' @usage
 #' securityhub_create_members(AccountDetails)
@@ -2958,8 +2968,8 @@ securityhub_delete_members <- function(AccountIds) {
 #' @param ActionTargetArns A list of custom action target ARNs for the custom action targets to
 #' retrieve.
 #' @param NextToken The token that is required for pagination. On your first call to the
-#' `DescribeActionTargets` operation, set the value of this parameter to
-#' `NULL`.
+#' [`describe_action_targets`][securityhub_describe_action_targets]
+#' operation, set the value of this parameter to `NULL`.
 #' 
 #' For subsequent calls to the operation, to continue listing data, set the
 #' value of this parameter to the value returned from the previous
@@ -3082,7 +3092,8 @@ securityhub_describe_organization_configuration <- function() {
 #' securityhub_describe_products(NextToken, MaxResults)
 #'
 #' @param NextToken The token that is required for pagination. On your first call to the
-#' `DescribeProducts` operation, set the value of this parameter to `NULL`.
+#' [`describe_products`][securityhub_describe_products] operation, set the
+#' value of this parameter to `NULL`.
 #' 
 #' For subsequent calls to the operation, to continue listing data, set the
 #' value of this parameter to the value returned from the previous
@@ -3129,8 +3140,8 @@ securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL) {
 #' securityhub_describe_standards(NextToken, MaxResults)
 #'
 #' @param NextToken The token that is required for pagination. On your first call to the
-#' `DescribeStandards` operation, set the value of this parameter to
-#' `NULL`.
+#' [`describe_standards`][securityhub_describe_standards] operation, set
+#' the value of this parameter to `NULL`.
 #' 
 #' For subsequent calls to the operation, to continue listing data, set the
 #' value of this parameter to the value returned from the previous
@@ -3179,10 +3190,11 @@ securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) 
 #'
 #' @param StandardsSubscriptionArn &#91;required&#93; The ARN of a resource that represents your subscription to a supported
 #' standard. To get the subscription ARNs of the standards you have
-#' enabled, use the ` <a>GetEnabledStandards</a> ` operation.
+#' enabled, use the
+#' [`get_enabled_standards`][securityhub_get_enabled_standards] operation.
 #' @param NextToken The token that is required for pagination. On your first call to the
-#' `DescribeStandardsControls` operation, set the value of this parameter
-#' to `NULL`.
+#' [`describe_standards_controls`][securityhub_describe_standards_controls]
+#' operation, set the value of this parameter to `NULL`.
 #' 
 #' For subsequent calls to the operation, to continue listing data, set the
 #' value of this parameter to the value returned from the previous
@@ -3517,8 +3529,10 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
 #' necessary to gather findings from other services that are integrated
 #' with Security Hub.
 #' 
-#' When you use the `EnableSecurityHub` operation to enable Security Hub,
-#' you also automatically enable the following standards.
+#' When you use the
+#' [`enable_security_hub`][securityhub_enable_security_hub] operation to
+#' enable Security Hub, you also automatically enable the following
+#' standards.
 #' 
 #' -   CIS AWS Foundations
 #' 
@@ -3531,8 +3545,10 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
 #' `EnableDefaultStandards` to `false`.
 #' 
 #' After you enable Security Hub, to enable a standard, use the
-#' ` <a>BatchEnableStandards</a> ` operation. To disable a standard, use
-#' the ` <a>BatchDisableStandards</a> ` operation.
+#' [`batch_enable_standards`][securityhub_batch_enable_standards]
+#' operation. To disable a standard, use the
+#' [`batch_disable_standards`][securityhub_batch_disable_standards]
+#' operation.
 #' 
 #' To learn more, see [Setting Up AWS Security
 #' Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html)
@@ -3590,8 +3606,8 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
 #' @param StandardsSubscriptionArns The list of the standards subscription ARNs for the standards to
 #' retrieve.
 #' @param NextToken The token that is required for pagination. On your first call to the
-#' `GetEnabledStandards` operation, set the value of this parameter to
-#' `NULL`.
+#' [`get_enabled_standards`][securityhub_get_enabled_standards] operation,
+#' set the value of this parameter to `NULL`.
 #' 
 #' For subsequent calls to the operation, to continue listing data, set the
 #' value of this parameter to the value returned from the previous
@@ -3648,7 +3664,8 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #' `WorkflowStatus`.
 #' @param SortCriteria The finding attributes used to sort the list of returned findings.
 #' @param NextToken The token that is required for pagination. On your first call to the
-#' `GetFindings` operation, set the value of this parameter to `NULL`.
+#' [`get_findings`][securityhub_get_findings] operation, set the value of
+#' this parameter to `NULL`.
 #' 
 #' For subsequent calls to the operation, to continue listing data, set the
 #' value of this parameter to the value returned from the previous
@@ -4292,10 +4309,11 @@ securityhub_get_insight_results <- function(InsightArn) {
 #' securityhub_get_insights(InsightArns, NextToken, MaxResults)
 #'
 #' @param InsightArns The ARNs of the insights to describe. If you do not provide any insight
-#' ARNs, then `GetInsights` returns all of your custom insights. It does
-#' not return any managed insights.
+#' ARNs, then [`get_insights`][securityhub_get_insights] returns all of
+#' your custom insights. It does not return any managed insights.
 #' @param NextToken The token that is required for pagination. On your first call to the
-#' `GetInsights` operation, set the value of this parameter to `NULL`.
+#' [`get_insights`][securityhub_get_insights] operation, set the value of
+#' this parameter to `NULL`.
 #' 
 #' For subsequent calls to the operation, to continue listing data, set the
 #' value of this parameter to the value returned from the previous
@@ -4468,8 +4486,8 @@ securityhub_get_members <- function(AccountIds) {
 #' organization. Organization accounts do not receive invitations.
 #' 
 #' Before you can use this action to invite a member, you must first use
-#' the ` <a>CreateMembers</a> ` action to create the member account in
-#' Security Hub.
+#' the [`create_members`][securityhub_create_members] action to create the
+#' member account in Security Hub.
 #' 
 #' When the account owner enables Security Hub and accepts the invitation
 #' to become a member account, the master account can view the findings
@@ -4521,8 +4539,8 @@ securityhub_invite_members <- function(AccountIds) {
 #' securityhub_list_enabled_products_for_import(NextToken, MaxResults)
 #'
 #' @param NextToken The token that is required for pagination. On your first call to the
-#' `ListEnabledProductsForImport` operation, set the value of this
-#' parameter to `NULL`.
+#' [`list_enabled_products_for_import`][securityhub_list_enabled_products_for_import]
+#' operation, set the value of this parameter to `NULL`.
 #' 
 #' For subsequent calls to the operation, to continue listing data, set the
 #' value of this parameter to the value returned from the previous
@@ -4572,7 +4590,8 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
 #'
 #' @param MaxResults The maximum number of items to return in the response.
 #' @param NextToken The token that is required for pagination. On your first call to the
-#' `ListInvitations` operation, set the value of this parameter to `NULL`.
+#' [`list_invitations`][securityhub_list_invitations] operation, set the
+#' value of this parameter to `NULL`.
 #' 
 #' For subsequent calls to the operation, to continue listing data, set the
 #' value of this parameter to the value returned from the previous
@@ -4630,7 +4649,8 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' existing member accounts.
 #' @param MaxResults The maximum number of items to return in the response.
 #' @param NextToken The token that is required for pagination. On your first call to the
-#' `ListMembers` operation, set the value of this parameter to `NULL`.
+#' [`list_members`][securityhub_list_members] operation, set the value of
+#' this parameter to `NULL`.
 #' 
 #' For subsequent calls to the operation, to continue listing data, set the
 #' value of this parameter to the value returned from the previous
@@ -4676,10 +4696,10 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
 #'
 #' @param MaxResults The maximum number of items to return in the response.
 #' @param NextToken The token that is required for pagination. On your first call to the
-#' `ListOrganizationAdminAccounts` operation, set the value of this
-#' parameter to `NULL`. For subsequent calls to the operation, to continue
-#' listing data, set the value of this parameter to the value returned from
-#' the previous response.
+#' [`list_organization_admin_accounts`][securityhub_list_organization_admin_accounts]
+#' operation, set the value of this parameter to `NULL`. For subsequent
+#' calls to the operation, to continue listing data, set the value of this
+#' parameter to the value returned from the previous response.
 #'
 #' @section Request syntax:
 #' ```
@@ -4874,8 +4894,9 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #' UpdateFindings is deprecated
 #'
 #' @description
-#' `UpdateFindings` is deprecated. Instead of `UpdateFindings`, use
-#' `BatchUpdateFindings`.
+#' [`update_findings`][securityhub_update_findings] is deprecated. Instead
+#' of [`update_findings`][securityhub_update_findings], use
+#' [`batch_update_findings`][securityhub_batch_update_findings].
 #' 
 #' Updates the `Note` and `RecordState` of the Security Hub-aggregated
 #' findings that the filter attributes specify. Any member account that can

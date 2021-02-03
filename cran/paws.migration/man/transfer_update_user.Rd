@@ -11,7 +11,7 @@ transfer_update_user(HomeDirectory, HomeDirectoryType,
 \item{HomeDirectory}{Specifies the landing directory (folder) for a user when they log in to
 the server using their file transfer protocol client.
 
-An example is \verb{your-Amazon-S3-bucket-name&gt;/home/username}.}
+An example is \verb{your-Amazon-S3-bucket-name>/home/username}.}
 
 \item{HomeDirectoryType}{The type of landing directory (folder) you want your users' home
 directory to be when they log into the server. If you set it to \code{PATH},

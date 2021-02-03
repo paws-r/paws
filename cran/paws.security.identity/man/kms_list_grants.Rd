@@ -30,15 +30,16 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \description{
 Gets a list of all grants for the specified customer master key (CMK).
 
-The \code{GranteePrincipal} field in the \code{ListGrants} response usually
-contains the user or role designated as the grantee principal in the
-grant. However, when the grantee principal in the grant is an AWS
-service, the \code{GranteePrincipal} field contains the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#principal-services}{service principal},
+The \code{GranteePrincipal} field in the \code{\link[=kms_list_grants]{list_grants}}
+response usually contains the user or role designated as the grantee
+principal in the grant. However, when the grantee principal in the grant
+is an AWS service, the \code{GranteePrincipal} field contains the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#principal-services}{service principal},
 which might represent several different grantee principals.
 
 \strong{Cross-account use}: Yes. To perform this operation on a CMK in a
@@ -51,10 +52,10 @@ parameter.
 
 \strong{Related operations:}
 \itemize{
-\item CreateGrant
-\item ListRetirableGrants
-\item RetireGrant
-\item RevokeGrant
+\item \code{\link[=kms_create_grant]{create_grant}}
+\item \code{\link[=kms_list_retirable_grants]{list_retirable_grants}}
+\item \code{\link[=kms_retire_grant]{retire_grant}}
+\item \code{\link[=kms_revoke_grant]{revoke_grant}}
 }
 }
 \section{Request syntax}{

@@ -35,12 +35,13 @@ specify:
 \verb{"Filters": \\\[ \\\{ "Condition": "IS", "Key": "Status", "Value": "ACTIVE" \\\} \\\]}}
 }
 \description{
-Returns a list of predictors created using the CreatePredictor
-operation. For each predictor, this operation returns a summary of its
-properties, including its Amazon Resource Name (ARN). You can retrieve
-the complete set of properties by using the ARN with the
-DescribePredictor operation. You can filter the list using an array of
-Filter objects.
+Returns a list of predictors created using the
+\code{\link[=forecastservice_create_predictor]{create_predictor}} operation. For
+each predictor, this operation returns a summary of its properties,
+including its Amazon Resource Name (ARN). You can retrieve the complete
+set of properties by using the ARN with the
+\code{\link[=forecastservice_describe_predictor]{describe_predictor}} operation.
+You can filter the list using an array of Filter objects.
 }
 \section{Request syntax}{
 \preformatted{svc$list_predictors(

@@ -9,7 +9,9 @@ kms_disconnect_custom_key_store(CustomKeyStoreId)
 }
 \arguments{
 \item{CustomKeyStoreId}{[required] Enter the ID of the custom key store you want to disconnect. To find the
-ID of a custom key store, use the DescribeCustomKeyStores operation.}
+ID of a custom key store, use the
+\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
+operation.}
 }
 \description{
 Disconnects the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
@@ -25,8 +27,9 @@ will fail. This action can prevent users from storing and accessing
 sensitive data.
 
 To find the connection state of a custom key store, use the
-DescribeCustomKeyStores operation. To reconnect a custom key store, use
-the ConnectCustomKeyStore operation.
+\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
+operation. To reconnect a custom key store, use the
+\code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}} operation.
 
 If the operation succeeds, it returns a JSON object with no properties.
 
@@ -44,11 +47,11 @@ key store in a different AWS account.
 
 \strong{Related operations:}
 \itemize{
-\item ConnectCustomKeyStore
-\item CreateCustomKeyStore
-\item DeleteCustomKeyStore
-\item DescribeCustomKeyStores
-\item UpdateCustomKeyStore
+\item \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}}
+\item \code{\link[=kms_create_custom_key_store]{create_custom_key_store}}
+\item \code{\link[=kms_delete_custom_key_store]{delete_custom_key_store}}
+\item \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
+\item \code{\link[=kms_update_custom_key_store]{update_custom_key_store}}
 }
 }
 \section{Request syntax}{

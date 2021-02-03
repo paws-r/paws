@@ -37,14 +37,16 @@ is, two streams in two different accounts can have the same name, and
 two streams in the same account, but in two different Regions, can have
 the same name.
 
-\code{CreateStream} is an asynchronous operation. Upon receiving a
-\code{CreateStream} request, Kinesis Data Streams immediately returns and
-sets the stream status to \code{CREATING}. After the stream is created,
-Kinesis Data Streams sets the stream status to \code{ACTIVE}. You should
-perform read and write operations only on an \code{ACTIVE} stream.
+\code{\link[=kinesis_create_stream]{create_stream}} is an asynchronous operation.
+Upon receiving a \code{\link[=kinesis_create_stream]{create_stream}} request,
+Kinesis Data Streams immediately returns and sets the stream status to
+\code{CREATING}. After the stream is created, Kinesis Data Streams sets the
+stream status to \code{ACTIVE}. You should perform read and write operations
+only on an \code{ACTIVE} stream.
 
-You receive a \code{LimitExceededException} when making a \code{CreateStream}
-request when you try to do one of the following:
+You receive a \code{LimitExceededException} when making a
+\code{\link[=kinesis_create_stream]{create_stream}} request when you try to do one
+of the following:
 \itemize{
 \item Have more than five streams in the \code{CREATING} state at any point in
 time.
@@ -55,10 +57,11 @@ For the default shard limit for an AWS account, see \href{https://docs.aws.amazo
 in the \emph{Amazon Kinesis Data Streams Developer Guide}. To increase this
 limit, \href{https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html}{contact AWS Support}.
 
-You can use \code{DescribeStream} to check the stream status, which is
-returned in \code{StreamStatus}.
+You can use \code{\link[=kinesis_describe_stream]{describe_stream}} to check the
+stream status, which is returned in \code{StreamStatus}.
 
-CreateStream has a limit of five transactions per second per account.
+\code{\link[=kinesis_create_stream]{create_stream}} has a limit of five
+transactions per second per account.
 }
 \section{Request syntax}{
 \preformatted{svc$create_stream(

@@ -77,12 +77,12 @@ would specify the \code{ReturnPathArn} to be
 For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
 
 \item{Tags}{A list of tags, in the form of name/value pairs, to apply to an email
-that you send using \code{SendTemplatedEmail}. Tags correspond to
-characteristics of the email that you define, so that you can publish
-email sending events.}
+that you send using \code{\link[=ses_send_templated_email]{send_templated_email}}.
+Tags correspond to characteristics of the email that you define, so that
+you can publish email sending events.}
 
 \item{ConfigurationSetName}{The name of the configuration set to use when you send an email using
-\code{SendTemplatedEmail}.}
+\code{\link[=ses_send_templated_email]{send_templated_email}}.}
 
 \item{Template}{[required] The template to use when sending this email.}
 
@@ -96,11 +96,13 @@ correspond to replacement tags in the email template.}
 Composes an email message using an email template and immediately queues
 it for sending.
 
-In order to send email using the \code{SendTemplatedEmail} operation, your
-call to the API must meet the following requirements:
+In order to send email using the
+\code{\link[=ses_send_templated_email]{send_templated_email}} operation, your call
+to the API must meet the following requirements:
 \itemize{
 \item The call must refer to an existing email template. You can create
-email templates using the CreateTemplate operation.
+email templates using the \code{\link[=ses_create_template]{create_template}}
+operation.
 \item The message must be sent from a verified email address or domain.
 \item If your account is still in the Amazon SES sandbox, you may only
 send to verified addresses or domains, or to email addresses
@@ -108,11 +110,11 @@ associated with the Amazon SES Mailbox Simulator. For more
 information, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Verifying Email Addresses and Domains}
 in the \emph{Amazon SES Developer Guide.}
 \item The maximum message size is 10 MB.
-\item Calls to the \code{SendTemplatedEmail} operation may only include one
-\code{Destination} parameter. A destination is a set of recipients who
-will receive the same version of the email. The \code{Destination}
-parameter can include up to 50 recipients, across the To:, CC: and
-BCC: fields.
+\item Calls to the \code{\link[=ses_send_templated_email]{send_templated_email}}
+operation may only include one \code{Destination} parameter. A
+destination is a set of recipients who will receive the same version
+of the email. The \code{Destination} parameter can include up to 50
+recipients, across the To:, CC: and BCC: fields.
 \item The \code{Destination} parameter must include at least one recipient
 email address. The recipient address can be a To: address, a CC:
 address, or a BCC: address. If a recipient email address is invalid
@@ -122,12 +124,12 @@ will be rejected, even if the message contains other recipients that
 are valid.
 }
 
-If your call to the \code{SendTemplatedEmail} operation includes all of the
-required parameters, Amazon SES accepts it and returns a Message ID.
-However, if Amazon SES can't render the email because the template
-contains errors, it doesn't send the email. Additionally, because it
-already accepted the message, Amazon SES doesn't return a message
-stating that it was unable to send the email.
+If your call to the \code{\link[=ses_send_templated_email]{send_templated_email}}
+operation includes all of the required parameters, Amazon SES accepts it
+and returns a Message ID. However, if Amazon SES can't render the email
+because the template contains errors, it doesn't send the email.
+Additionally, because it already accepted the message, Amazon SES
+doesn't return a message stating that it was unable to send the email.
 
 For these reasons, we highly recommend that you set up Amazon SES to
 send you notifications when Rendering Failure events occur. For more

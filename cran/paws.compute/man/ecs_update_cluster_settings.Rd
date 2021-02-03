@@ -12,7 +12,8 @@ ecs_update_cluster_settings(cluster, settings)
 \item{settings}{[required] The setting to use by default for a cluster. This parameter is used to
 enable CloudWatch Container Insights for a cluster. If this value is
 specified, it will override the \code{containerInsights} value set with
-PutAccountSetting or PutAccountSettingDefault.}
+\code{\link[=ecs_put_account_setting]{put_account_setting}} or
+\code{\link[=ecs_put_account_setting_default]{put_account_setting_default}}.}
 }
 \description{
 Modifies the settings to use for a cluster.

@@ -14,8 +14,9 @@ confirmation URL.}
 Confirms a topic rule destination. When you create a rule requiring a
 destination, AWS IoT sends a confirmation message to the endpoint or
 base address you specify. The message includes a token which you pass
-back when calling \code{ConfirmTopicRuleDestination} to confirm that you own
-or have access to the endpoint.
+back when calling
+\code{\link[=iot_confirm_topic_rule_destination]{confirm_topic_rule_destination}}
+to confirm that you own or have access to the endpoint.
 }
 \section{Request syntax}{
 \preformatted{svc$confirm_topic_rule_destination(
