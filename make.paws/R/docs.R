@@ -461,9 +461,12 @@ list_to_string <- function(x, quote = TRUE) {
 
 # Returns the title of an operation (the first sentence of its description).
 get_operation_title <- function(operation) {
-  docs <- paste(html_to_text(operation$documentation), collapse = " ")
-  docs <- gsub(" +", " ", docs)
-  title <- first_sentence(docs)
+  docs <- html_to_text(operation$documentation)
+  blank_line <- which(docs == "")
+  first_paragraph <- ifelse(length(blank_line) >= 1, blank_line[1] - 1, length(docs))
+  paragraph <- paste(docs[1:first_paragraph], collapse = " ")
+  paragraph <- gsub(" +", " ", paragraph)
+  title <- first_sentence(paragraph)
   title <- mask(title, c("[" = "&#91;", "]" = "&#93;"))
   if (length(title) == 0 || title == "") {
     title <- gsub("_", " ", get_operation_name(operation))
