@@ -83,12 +83,11 @@ appconfig_create_application <- function(Name, Description = NULL, Tags = NULL) 
 #' @param LocationUri &#91;required&#93; A URI to locate the configuration. You can specify a Systems Manager
 #' (SSM) document, an SSM Parameter Store parameter, or an Amazon S3
 #' object. For an SSM document, specify either the document name in the
-#' format `ssm-document://&lt;Document_name&gt;` or the Amazon Resource
-#' Name (ARN). For a parameter, specify either the parameter name in the
-#' format `ssm-parameter://&lt;Parameter_name&gt;` or the ARN. For an
-#' Amazon S3 object, specify the URI in the following format:
-#' `s3://&lt;bucket&gt;/&lt;objectKey&gt; `. Here is an example:
-#' s3://my-bucket/my-app/us-east-1/my-config.json
+#' format `ssm-document://<Document_name>` or the Amazon Resource Name
+#' (ARN). For a parameter, specify either the parameter name in the format
+#' `ssm-parameter://<Parameter_name>` or the ARN. For an Amazon S3 object,
+#' specify the URI in the following format: `s3://<bucket>/<objectKey> `.
+#' Here is an example: s3://my-bucket/my-app/us-east-1/my-config.json
 #' @param RetrievalRoleArn The ARN of an IAM role with permission to access the configuration at
 #' the specified LocationUri.
 #' @param Validators A list of methods for validating the configuration.
@@ -590,14 +589,16 @@ appconfig_get_application <- function(ApplicationId) {
 #' AWS AppConfig uses the value of the `ClientConfigurationVersion`
 #' parameter to identify the configuration version on your clients. If you
 #' don’t send `ClientConfigurationVersion` with each call to
-#' `GetConfiguration`, your clients receive the current configuration. You
-#' are charged each time your clients receive a configuration.
+#' [`get_configuration`][appconfig_get_configuration], your clients receive
+#' the current configuration. You are charged each time your clients
+#' receive a configuration.
 #' 
 #' To avoid excess charges, we recommend that you include the
 #' `ClientConfigurationVersion` value with every call to
-#' `GetConfiguration`. This value must be saved on your client. Subsequent
-#' calls to `GetConfiguration` must pass this value by using the
-#' `ClientConfigurationVersion` parameter.
+#' [`get_configuration`][appconfig_get_configuration]. This value must be
+#' saved on your client. Subsequent calls to
+#' [`get_configuration`][appconfig_get_configuration] must pass this value
+#' by using the `ClientConfigurationVersion` parameter.
 #'
 #' @usage
 #' appconfig_get_configuration(Application, Environment, Configuration,
@@ -612,20 +613,22 @@ appconfig_get_application <- function(ApplicationId) {
 #' @param ClientId &#91;required&#93; A unique ID to identify the client for the configuration. This ID
 #' enables AppConfig to deploy the configuration in intervals, as defined
 #' in the deployment strategy.
-#' @param ClientConfigurationVersion The configuration version returned in the most recent `GetConfiguration`
-#' response.
+#' @param ClientConfigurationVersion The configuration version returned in the most recent
+#' [`get_configuration`][appconfig_get_configuration] response.
 #' 
 #' AWS AppConfig uses the value of the `ClientConfigurationVersion`
 #' parameter to identify the configuration version on your clients. If you
 #' don’t send `ClientConfigurationVersion` with each call to
-#' `GetConfiguration`, your clients receive the current configuration. You
-#' are charged each time your clients receive a configuration.
+#' [`get_configuration`][appconfig_get_configuration], your clients receive
+#' the current configuration. You are charged each time your clients
+#' receive a configuration.
 #' 
 #' To avoid excess charges, we recommend that you include the
 #' `ClientConfigurationVersion` value with every call to
-#' `GetConfiguration`. This value must be saved on your client. Subsequent
-#' calls to `GetConfiguration` must pass this value by using the
-#' `ClientConfigurationVersion` parameter.
+#' [`get_configuration`][appconfig_get_configuration]. This value must be
+#' saved on your client. Subsequent calls to
+#' [`get_configuration`][appconfig_get_configuration] must pass this value
+#' by using the `ClientConfigurationVersion` parameter.
 #' 
 #' For more information about working with configurations, see [Retrieving
 #' the

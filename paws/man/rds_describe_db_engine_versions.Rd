@@ -43,15 +43,17 @@ engine or engine and major version combination is returned.}
 each engine version.
 
 If this parameter is enabled and the requested engine supports the
-\code{CharacterSetName} parameter for \code{CreateDBInstance}, the response
-includes a list of supported character sets for each engine version.}
+\code{CharacterSetName} parameter for
+\code{\link[=rds_create_db_instance]{create_db_instance}}, the response includes a
+list of supported character sets for each engine version.}
 
 \item{ListSupportedTimezones}{A value that indicates whether to list the supported time zones for each
 engine version.
 
 If this parameter is enabled and the requested engine supports the
-\code{TimeZone} parameter for \code{CreateDBInstance}, the response includes a
-list of supported time zones for each engine version.}
+\code{TimeZone} parameter for \code{\link[=rds_create_db_instance]{create_db_instance}},
+the response includes a list of supported time zones for each engine
+version.}
 
 \item{IncludeAll}{A value that indicates whether to include engine versions that aren't
 available in the list. The default is to list only available engine

@@ -111,20 +111,21 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
 #' 
 #' -   DELETE PENDING &gt; DELETE IN\\_PROGRESS
 #' 
-#' To get the campaign status, call DescribeCampaign.
+#' To get the campaign status, call
+#' [`describe_campaign`][personalize_describe_campaign].
 #' 
 #' Wait until the `status` of the campaign is `ACTIVE` before asking the
 #' campaign for recommendations.
 #' 
 #' **Related APIs**
 #' 
-#' -   ListCampaigns
+#' -   [`list_campaigns`][personalize_list_campaigns]
 #' 
-#' -   DescribeCampaign
+#' -   [`describe_campaign`][personalize_describe_campaign]
 #' 
-#' -   UpdateCampaign
+#' -   [`update_campaign`][personalize_update_campaign]
 #' 
-#' -   DeleteCampaign
+#' -   [`delete_campaign`][personalize_delete_campaign]
 #'
 #' @usage
 #' personalize_create_campaign(name, solutionVersionArn, minProvisionedTPS,
@@ -175,7 +176,8 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
 #'
 #' @description
 #' Creates an empty dataset and adds it to the specified dataset group. Use
-#' CreateDatasetImportJob to import your training data to a dataset.
+#' [`create_dataset_import_job`][personalize_create_dataset_import_job] to
+#' import your training data to a dataset.
 #' 
 #' There are three types of datasets:
 #' 
@@ -196,17 +198,18 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
 #' 
 #' -   DELETE PENDING &gt; DELETE IN\\_PROGRESS
 #' 
-#' To get the status of the dataset, call DescribeDataset.
+#' To get the status of the dataset, call
+#' [`describe_dataset`][personalize_describe_dataset].
 #' 
 #' **Related APIs**
 #' 
-#' -   CreateDatasetGroup
+#' -   [`create_dataset_group`][personalize_create_dataset_group]
 #' 
-#' -   ListDatasets
+#' -   [`list_datasets`][personalize_list_datasets]
 #' 
-#' -   DescribeDataset
+#' -   [`describe_dataset`][personalize_describe_dataset]
 #' 
-#' -   DeleteDataset
+#' -   [`delete_dataset`][personalize_delete_dataset]
 #'
 #' @usage
 #' personalize_create_dataset(name, schemaArn, datasetGroupArn,
@@ -271,8 +274,9 @@ personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, dataset
 #' -   Users
 #' 
 #' To train a model (create a solution), a dataset group that contains an
-#' `Interactions` dataset is required. Call CreateDataset to add a dataset
-#' to the group.
+#' `Interactions` dataset is required. Call
+#' [`create_dataset`][personalize_create_dataset] to add a dataset to the
+#' group.
 #' 
 #' A dataset group can be in one of the following states:
 #' 
@@ -281,9 +285,10 @@ personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, dataset
 #' 
 #' -   DELETE PENDING
 #' 
-#' To get the status of the dataset group, call DescribeDatasetGroup. If
-#' the status shows as CREATE FAILED, the response includes a
-#' `failureReason` key, which describes why the creation failed.
+#' To get the status of the dataset group, call
+#' [`describe_dataset_group`][personalize_describe_dataset_group]. If the
+#' status shows as CREATE FAILED, the response includes a `failureReason`
+#' key, which describes why the creation failed.
 #' 
 #' You must wait until the `status` of the dataset group is `ACTIVE` before
 #' adding a dataset to the group.
@@ -295,19 +300,19 @@ personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, dataset
 #' 
 #' **APIs that require a dataset group ARN in the request**
 #' 
-#' -   CreateDataset
+#' -   [`create_dataset`][personalize_create_dataset]
 #' 
-#' -   CreateEventTracker
+#' -   [`create_event_tracker`][personalize_create_event_tracker]
 #' 
-#' -   CreateSolution
+#' -   [`create_solution`][personalize_create_solution]
 #' 
 #' **Related APIs**
 #' 
-#' -   ListDatasetGroups
+#' -   [`list_dataset_groups`][personalize_list_dataset_groups]
 #' 
-#' -   DescribeDatasetGroup
+#' -   [`describe_dataset_group`][personalize_describe_dataset_group]
 #' 
-#' -   DeleteDatasetGroup
+#' -   [`delete_dataset_group`][personalize_delete_dataset_group]
 #'
 #' @usage
 #' personalize_create_dataset_group(name, roleArn, kmsKeyArn)
@@ -367,7 +372,8 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
 #'     FAILED
 #' 
-#' To get the status of the import job, call DescribeDatasetImportJob,
+#' To get the status of the import job, call
+#' [`describe_dataset_import_job`][personalize_describe_dataset_import_job],
 #' providing the Amazon Resource Name (ARN) of the dataset import job. The
 #' dataset import is complete when the status shows as ACTIVE. If the
 #' status shows as CREATE FAILED, the response includes a `failureReason`
@@ -378,9 +384,9 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' 
 #' **Related APIs**
 #' 
-#' -   ListDatasetImportJobs
+#' -   [`list_dataset_import_jobs`][personalize_list_dataset_import_jobs]
 #' 
-#' -   DescribeDatasetImportJob
+#' -   [`describe_dataset_import_job`][personalize_describe_dataset_import_job]
 #'
 #' @usage
 #' personalize_create_dataset_import_job(jobName, datasetArn, dataSource,
@@ -440,8 +446,9 @@ personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSourc
 #' the user.
 #' 
 #' Only one event tracker can be associated with a dataset group. You will
-#' get an error if you call `CreateEventTracker` using the same dataset
-#' group as an existing event tracker.
+#' get an error if you call
+#' [`create_event_tracker`][personalize_create_event_tracker] using the
+#' same dataset group as an existing event tracker.
 #' 
 #' When you send event data you include your tracking ID. The tracking ID
 #' identifies the customer and authorizes the customer to send the data.
@@ -453,18 +460,19 @@ personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSourc
 #' 
 #' -   DELETE PENDING &gt; DELETE IN\\_PROGRESS
 #' 
-#' To get the status of the event tracker, call DescribeEventTracker.
+#' To get the status of the event tracker, call
+#' [`describe_event_tracker`][personalize_describe_event_tracker].
 #' 
 #' The event tracker must be in the ACTIVE state before using the tracking
 #' ID.
 #' 
 #' **Related APIs**
 #' 
-#' -   ListEventTrackers
+#' -   [`list_event_trackers`][personalize_list_event_trackers]
 #' 
-#' -   DescribeEventTracker
+#' -   [`describe_event_tracker`][personalize_describe_event_tracker]
 #' 
-#' -   DeleteEventTracker
+#' -   [`delete_event_tracker`][personalize_delete_event_tracker]
 #'
 #' @usage
 #' personalize_create_event_tracker(name, datasetGroupArn)
@@ -561,15 +569,16 @@ personalize_create_filter <- function(name, datasetGroupArn, filterExpression) {
 #' 
 #' Amazon Personalize recognizes three schema variants. Each schema is
 #' associated with a dataset type and has a set of required field and
-#' keywords. You specify a schema when you call CreateDataset.
+#' keywords. You specify a schema when you call
+#' [`create_dataset`][personalize_create_dataset].
 #' 
 #' **Related APIs**
 #' 
-#' -   ListSchemas
+#' -   [`list_schemas`][personalize_list_schemas]
 #' 
-#' -   DescribeSchema
+#' -   [`describe_schema`][personalize_describe_schema]
 #' 
-#' -   DeleteSchema
+#' -   [`delete_schema`][personalize_delete_schema]
 #'
 #' @usage
 #' personalize_create_schema(name, schema)
@@ -610,14 +619,17 @@ personalize_create_schema <- function(name, schema) {
 #' @description
 #' Creates the configuration for training a model. A trained model is known
 #' as a solution. After the configuration is created, you train the model
-#' (create a solution) by calling the CreateSolutionVersion operation.
-#' Every time you call `CreateSolutionVersion`, a new version of the
-#' solution is created.
+#' (create a solution) by calling the
+#' [`create_solution_version`][personalize_create_solution_version]
+#' operation. Every time you call
+#' [`create_solution_version`][personalize_create_solution_version], a new
+#' version of the solution is created.
 #' 
 #' After creating a solution version, you check its accuracy by calling
-#' GetSolutionMetrics. When you are satisfied with the version, you deploy
-#' it using CreateCampaign. The campaign provides recommendations to a
-#' client through the
+#' [`get_solution_metrics`][personalize_get_solution_metrics]. When you are
+#' satisfied with the version, you deploy it using
+#' [`create_campaign`][personalize_create_campaign]. The campaign provides
+#' recommendations to a client through the
 #' [GetRecommendations](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html)
 #' API.
 #' 
@@ -638,24 +650,26 @@ personalize_create_schema <- function(name, schema) {
 #' 
 #' -   DELETE PENDING &gt; DELETE IN\\_PROGRESS
 #' 
-#' To get the status of the solution, call DescribeSolution. Wait until the
-#' status shows as ACTIVE before calling `CreateSolutionVersion`.
+#' To get the status of the solution, call
+#' [`describe_solution`][personalize_describe_solution]. Wait until the
+#' status shows as ACTIVE before calling
+#' [`create_solution_version`][personalize_create_solution_version].
 #' 
 #' **Related APIs**
 #' 
-#' -   ListSolutions
+#' -   [`list_solutions`][personalize_list_solutions]
 #' 
-#' -   CreateSolutionVersion
+#' -   [`create_solution_version`][personalize_create_solution_version]
 #' 
-#' -   DescribeSolution
+#' -   [`describe_solution`][personalize_describe_solution]
 #' 
-#' -   DeleteSolution
+#' -   [`delete_solution`][personalize_delete_solution]
 #' 
 #' <!-- -->
 #' 
-#' -   ListSolutionVersions
+#' -   [`list_solution_versions`][personalize_list_solution_versions]
 #' 
-#' -   DescribeSolutionVersion
+#' -   [`describe_solution_version`][personalize_describe_solution_version]
 #'
 #' @usage
 #' personalize_create_solution(name, performHPO, performAutoML, recipeArn,
@@ -773,9 +787,10 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #'
 #' @description
 #' Trains or retrains an active solution. A solution is created using the
-#' CreateSolution operation and must be in the ACTIVE state before calling
-#' `CreateSolutionVersion`. A new version of the solution is created every
-#' time you call this operation.
+#' [`create_solution`][personalize_create_solution] operation and must be
+#' in the ACTIVE state before calling
+#' [`create_solution_version`][personalize_create_solution_version]. A new
+#' version of the solution is created every time you call this operation.
 #' 
 #' **Status**
 #' 
@@ -784,27 +799,29 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
 #'     FAILED
 #' 
-#' To get the status of the version, call DescribeSolutionVersion. Wait
-#' until the status shows as ACTIVE before calling `CreateCampaign`.
+#' To get the status of the version, call
+#' [`describe_solution_version`][personalize_describe_solution_version].
+#' Wait until the status shows as ACTIVE before calling
+#' [`create_campaign`][personalize_create_campaign].
 #' 
 #' If the status shows as CREATE FAILED, the response includes a
 #' `failureReason` key, which describes why the job failed.
 #' 
 #' **Related APIs**
 #' 
-#' -   ListSolutionVersions
+#' -   [`list_solution_versions`][personalize_list_solution_versions]
 #' 
-#' -   DescribeSolutionVersion
+#' -   [`describe_solution_version`][personalize_describe_solution_version]
 #' 
 #' <!-- -->
 #' 
-#' -   ListSolutions
+#' -   [`list_solutions`][personalize_list_solutions]
 #' 
-#' -   CreateSolution
+#' -   [`create_solution`][personalize_create_solution]
 #' 
-#' -   DescribeSolution
+#' -   [`describe_solution`][personalize_describe_solution]
 #' 
-#' -   DeleteSolution
+#' -   [`delete_solution`][personalize_delete_solution]
 #'
 #' @usage
 #' personalize_create_solution_version(solutionArn, trainingMode)
@@ -858,7 +875,8 @@ personalize_create_solution_version <- function(solutionArn, trainingMode = NULL
 #' that the campaign is based on is not deleted and can be redeployed when
 #' needed. A deleted campaign can no longer be specified in a
 #' [GetRecommendations](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html)
-#' request. For more information on campaigns, see CreateCampaign.
+#' request. For more information on campaigns, see
+#' [`create_campaign`][personalize_create_campaign].
 #'
 #' @usage
 #' personalize_delete_campaign(campaignArn)
@@ -897,7 +915,8 @@ personalize_delete_campaign <- function(campaignArn) {
 #' @description
 #' Deletes a dataset. You can't delete a dataset if an associated
 #' `DatasetImportJob` or `SolutionVersion` is in the CREATE PENDING or IN
-#' PROGRESS state. For more information on datasets, see CreateDataset.
+#' PROGRESS state. For more information on datasets, see
+#' [`create_dataset`][personalize_create_dataset].
 #'
 #' @usage
 #' personalize_delete_dataset(datasetArn)
@@ -980,7 +999,8 @@ personalize_delete_dataset_group <- function(datasetGroupArn) {
 #' @description
 #' Deletes the event tracker. Does not delete the event-interactions
 #' dataset from the associated dataset group. For more information on event
-#' trackers, see CreateEventTracker.
+#' trackers, see
+#' [`create_event_tracker`][personalize_create_event_tracker].
 #'
 #' @usage
 #' personalize_delete_event_tracker(eventTrackerArn)
@@ -1056,7 +1076,7 @@ personalize_delete_filter <- function(filterArn) {
 #' @description
 #' Deletes a schema. Before deleting a schema, you must delete all datasets
 #' referencing the schema. For more information on schemas, see
-#' CreateSchema.
+#' [`create_schema`][personalize_create_schema].
 #'
 #' @usage
 #' personalize_delete_schema(schemaArn)
@@ -1096,10 +1116,11 @@ personalize_delete_schema <- function(schemaArn) {
 #' Deletes all versions of a solution and the `Solution` object itself.
 #' Before deleting a solution, you must delete all campaigns based on the
 #' solution. To determine what campaigns are using the solution, call
-#' ListCampaigns and supply the Amazon Resource Name (ARN) of the solution.
-#' You can't delete a solution if an associated `SolutionVersion` is in the
-#' CREATE PENDING or IN PROGRESS state. For more information on solutions,
-#' see CreateSolution.
+#' [`list_campaigns`][personalize_list_campaigns] and supply the Amazon
+#' Resource Name (ARN) of the solution. You can't delete a solution if an
+#' associated `SolutionVersion` is in the CREATE PENDING or IN PROGRESS
+#' state. For more information on solutions, see
+#' [`create_solution`][personalize_create_solution].
 #'
 #' @usage
 #' personalize_delete_solution(solutionArn)
@@ -1226,7 +1247,8 @@ personalize_describe_batch_inference_job <- function(batchInferenceJobArn) {
 #' When the `status` is `CREATE FAILED`, the response includes the
 #' `failureReason` key, which describes why.
 #' 
-#' For more information on campaigns, see CreateCampaign.
+#' For more information on campaigns, see
+#' [`create_campaign`][personalize_create_campaign].
 #'
 #' @usage
 #' personalize_describe_campaign(campaignArn)
@@ -1264,7 +1286,7 @@ personalize_describe_campaign <- function(campaignArn) {
 #'
 #' @description
 #' Describes the given dataset. For more information on datasets, see
-#' CreateDataset.
+#' [`create_dataset`][personalize_create_dataset].
 #'
 #' @usage
 #' personalize_describe_dataset(datasetArn)
@@ -1302,7 +1324,7 @@ personalize_describe_dataset <- function(datasetArn) {
 #'
 #' @description
 #' Describes the given dataset group. For more information on dataset
-#' groups, see CreateDatasetGroup.
+#' groups, see [`create_dataset_group`][personalize_create_dataset_group].
 #'
 #' @usage
 #' personalize_describe_dataset_group(datasetGroupArn)
@@ -1340,7 +1362,8 @@ personalize_describe_dataset_group <- function(datasetGroupArn) {
 #' including the import job status
 #'
 #' @description
-#' Describes the dataset import job created by CreateDatasetImportJob,
+#' Describes the dataset import job created by
+#' [`create_dataset_import_job`][personalize_create_dataset_import_job],
 #' including the import job status.
 #'
 #' @usage
@@ -1380,7 +1403,7 @@ personalize_describe_dataset_import_job <- function(datasetImportJobArn) {
 #' @description
 #' Describes an event tracker. The response includes the `trackingId` and
 #' `status` of the event tracker. For more information on event trackers,
-#' see CreateEventTracker.
+#' see [`create_event_tracker`][personalize_create_event_tracker].
 #'
 #' @usage
 #' personalize_describe_event_tracker(eventTrackerArn)
@@ -1504,10 +1527,12 @@ personalize_describe_filter <- function(filterArn) {
 #'     before training.
 #' 
 #' Amazon Personalize provides a set of predefined recipes. You specify a
-#' recipe when you create a solution with the CreateSolution API.
-#' `CreateSolution` trains a model by using the algorithm in the specified
-#' recipe and a training dataset. The solution, when deployed as a
-#' campaign, can provide recommendations using the
+#' recipe when you create a solution with the
+#' [`create_solution`][personalize_create_solution] API.
+#' [`create_solution`][personalize_create_solution] trains a model by using
+#' the algorithm in the specified recipe and a training dataset. The
+#' solution, when deployed as a campaign, can provide recommendations using
+#' the
 #' [GetRecommendations](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html)
 #' API.
 #'
@@ -1546,7 +1571,8 @@ personalize_describe_recipe <- function(recipeArn) {
 #' Describes a schema
 #'
 #' @description
-#' Describes a schema. For more information on schemas, see CreateSchema.
+#' Describes a schema. For more information on schemas, see
+#' [`create_schema`][personalize_create_schema].
 #'
 #' @usage
 #' personalize_describe_schema(schemaArn)
@@ -1584,7 +1610,7 @@ personalize_describe_schema <- function(schemaArn) {
 #'
 #' @description
 #' Describes a solution. For more information on solutions, see
-#' CreateSolution.
+#' [`create_solution`][personalize_create_solution].
 #'
 #' @usage
 #' personalize_describe_solution(solutionArn)
@@ -1622,7 +1648,7 @@ personalize_describe_solution <- function(solutionArn) {
 #'
 #' @description
 #' Describes a specific version of a solution. For more information on
-#' solutions, see CreateSolution.
+#' solutions, see [`create_solution`][personalize_create_solution].
 #'
 #' @usage
 #' personalize_describe_solution_version(solutionVersionArn)
@@ -1747,7 +1773,7 @@ personalize_list_batch_inference_jobs <- function(solutionVersionArn = NULL, nex
 #' is not specified, all the campaigns associated with the account are
 #' listed. The response provides the properties for each campaign,
 #' including the Amazon Resource Name (ARN). For more information on
-#' campaigns, see CreateCampaign.
+#' campaigns, see [`create_campaign`][personalize_create_campaign].
 #'
 #' @usage
 #' personalize_list_campaigns(solutionArn, nextToken, maxResults)
@@ -1755,8 +1781,9 @@ personalize_list_batch_inference_jobs <- function(solutionVersionArn = NULL, nex
 #' @param solutionArn The Amazon Resource Name (ARN) of the solution to list the campaigns
 #' for. When a solution is not specified, all the campaigns associated with
 #' the account are listed.
-#' @param nextToken A token returned from the previous call to `ListCampaigns` for getting
-#' the next set of campaigns (if they exist).
+#' @param nextToken A token returned from the previous call to
+#' [`list_campaigns`][personalize_list_campaigns] for getting the next set
+#' of campaigns (if they exist).
 #' @param maxResults The maximum number of campaigns to return.
 #'
 #' @section Request syntax:
@@ -1793,13 +1820,15 @@ personalize_list_campaigns <- function(solutionArn = NULL, nextToken = NULL, max
 #' @description
 #' Returns a list of dataset groups. The response provides the properties
 #' for each dataset group, including the Amazon Resource Name (ARN). For
-#' more information on dataset groups, see CreateDatasetGroup.
+#' more information on dataset groups, see
+#' [`create_dataset_group`][personalize_create_dataset_group].
 #'
 #' @usage
 #' personalize_list_dataset_groups(nextToken, maxResults)
 #'
-#' @param nextToken A token returned from the previous call to `ListDatasetGroups` for
-#' getting the next set of dataset groups (if they exist).
+#' @param nextToken A token returned from the previous call to
+#' [`list_dataset_groups`][personalize_list_dataset_groups] for getting the
+#' next set of dataset groups (if they exist).
 #' @param maxResults The maximum number of dataset groups to return.
 #'
 #' @section Request syntax:
@@ -1837,15 +1866,18 @@ personalize_list_dataset_groups <- function(nextToken = NULL, maxResults = NULL)
 #' dataset is not specified, all the dataset import jobs associated with
 #' the account are listed. The response provides the properties for each
 #' dataset import job, including the Amazon Resource Name (ARN). For more
-#' information on dataset import jobs, see CreateDatasetImportJob. For more
-#' information on datasets, see CreateDataset.
+#' information on dataset import jobs, see
+#' [`create_dataset_import_job`][personalize_create_dataset_import_job].
+#' For more information on datasets, see
+#' [`create_dataset`][personalize_create_dataset].
 #'
 #' @usage
 #' personalize_list_dataset_import_jobs(datasetArn, nextToken, maxResults)
 #'
 #' @param datasetArn The Amazon Resource Name (ARN) of the dataset to list the dataset import
 #' jobs for.
-#' @param nextToken A token returned from the previous call to `ListDatasetImportJobs` for
+#' @param nextToken A token returned from the previous call to
+#' [`list_dataset_import_jobs`][personalize_list_dataset_import_jobs] for
 #' getting the next set of dataset import jobs (if they exist).
 #' @param maxResults The maximum number of dataset import jobs to return.
 #'
@@ -1884,14 +1916,15 @@ personalize_list_dataset_import_jobs <- function(datasetArn = NULL, nextToken = 
 #' Returns the list of datasets contained in the given dataset group. The
 #' response provides the properties for each dataset, including the Amazon
 #' Resource Name (ARN). For more information on datasets, see
-#' CreateDataset.
+#' [`create_dataset`][personalize_create_dataset].
 #'
 #' @usage
 #' personalize_list_datasets(datasetGroupArn, nextToken, maxResults)
 #'
 #' @param datasetGroupArn The Amazon Resource Name (ARN) of the dataset group that contains the
 #' datasets to list.
-#' @param nextToken A token returned from the previous call to `ListDatasetImportJobs` for
+#' @param nextToken A token returned from the previous call to
+#' [`list_dataset_import_jobs`][personalize_list_dataset_import_jobs] for
 #' getting the next set of dataset import jobs (if they exist).
 #' @param maxResults The maximum number of datasets to return.
 #'
@@ -1930,14 +1963,16 @@ personalize_list_datasets <- function(datasetGroupArn = NULL, nextToken = NULL, 
 #' Returns the list of event trackers associated with the account. The
 #' response provides the properties for each event tracker, including the
 #' Amazon Resource Name (ARN) and tracking ID. For more information on
-#' event trackers, see CreateEventTracker.
+#' event trackers, see
+#' [`create_event_tracker`][personalize_create_event_tracker].
 #'
 #' @usage
 #' personalize_list_event_trackers(datasetGroupArn, nextToken, maxResults)
 #'
 #' @param datasetGroupArn The ARN of a dataset group used to filter the response.
-#' @param nextToken A token returned from the previous call to `ListEventTrackers` for
-#' getting the next set of event trackers (if they exist).
+#' @param nextToken A token returned from the previous call to
+#' [`list_event_trackers`][personalize_list_event_trackers] for getting the
+#' next set of event trackers (if they exist).
 #' @param maxResults The maximum number of event trackers to return.
 #'
 #' @section Request syntax:
@@ -1978,8 +2013,9 @@ personalize_list_event_trackers <- function(datasetGroupArn = NULL, nextToken = 
 #' personalize_list_filters(datasetGroupArn, nextToken, maxResults)
 #'
 #' @param datasetGroupArn The ARN of the dataset group that contains the filters.
-#' @param nextToken A token returned from the previous call to `ListFilters` for getting the
-#' next set of filters (if they exist).
+#' @param nextToken A token returned from the previous call to
+#' [`list_filters`][personalize_list_filters] for getting the next set of
+#' filters (if they exist).
 #' @param maxResults The maximum number of filters to return.
 #'
 #' @section Request syntax:
@@ -2022,8 +2058,9 @@ personalize_list_filters <- function(datasetGroupArn = NULL, nextToken = NULL, m
 #' personalize_list_recipes(recipeProvider, nextToken, maxResults)
 #'
 #' @param recipeProvider The default is `SERVICE`.
-#' @param nextToken A token returned from the previous call to `ListRecipes` for getting the
-#' next set of recipes (if they exist).
+#' @param nextToken A token returned from the previous call to
+#' [`list_recipes`][personalize_list_recipes] for getting the next set of
+#' recipes (if they exist).
 #' @param maxResults The maximum number of recipes to return.
 #'
 #' @section Request syntax:
@@ -2060,13 +2097,15 @@ personalize_list_recipes <- function(recipeProvider = NULL, nextToken = NULL, ma
 #' @description
 #' Returns the list of schemas associated with the account. The response
 #' provides the properties for each schema, including the Amazon Resource
-#' Name (ARN). For more information on schemas, see CreateSchema.
+#' Name (ARN). For more information on schemas, see
+#' [`create_schema`][personalize_create_schema].
 #'
 #' @usage
 #' personalize_list_schemas(nextToken, maxResults)
 #'
-#' @param nextToken A token returned from the previous call to `ListSchemas` for getting the
-#' next set of schemas (if they exist).
+#' @param nextToken A token returned from the previous call to
+#' [`list_schemas`][personalize_list_schemas] for getting the next set of
+#' schemas (if they exist).
 #' @param maxResults The maximum number of schemas to return.
 #'
 #' @section Request syntax:
@@ -2104,13 +2143,15 @@ personalize_list_schemas <- function(nextToken = NULL, maxResults = NULL) {
 #' solution is not specified, all the solution versions associated with the
 #' account are listed. The response provides the properties for each
 #' solution version, including the Amazon Resource Name (ARN). For more
-#' information on solutions, see CreateSolution.
+#' information on solutions, see
+#' [`create_solution`][personalize_create_solution].
 #'
 #' @usage
 #' personalize_list_solution_versions(solutionArn, nextToken, maxResults)
 #'
 #' @param solutionArn The Amazon Resource Name (ARN) of the solution.
-#' @param nextToken A token returned from the previous call to `ListSolutionVersions` for
+#' @param nextToken A token returned from the previous call to
+#' [`list_solution_versions`][personalize_list_solution_versions] for
 #' getting the next set of solution versions (if they exist).
 #' @param maxResults The maximum number of solution versions to return.
 #'
@@ -2150,14 +2191,15 @@ personalize_list_solution_versions <- function(solutionArn = NULL, nextToken = N
 #' dataset group is not specified, all the solutions associated with the
 #' account are listed. The response provides the properties for each
 #' solution, including the Amazon Resource Name (ARN). For more information
-#' on solutions, see CreateSolution.
+#' on solutions, see [`create_solution`][personalize_create_solution].
 #'
 #' @usage
 #' personalize_list_solutions(datasetGroupArn, nextToken, maxResults)
 #'
 #' @param datasetGroupArn The Amazon Resource Name (ARN) of the dataset group.
-#' @param nextToken A token returned from the previous call to `ListSolutions` for getting
-#' the next set of solutions (if they exist).
+#' @param nextToken A token returned from the previous call to
+#' [`list_solutions`][personalize_list_solutions] for getting the next set
+#' of solutions (if they exist).
 #' @param maxResults The maximum number of solutions to return.
 #'
 #' @section Request syntax:
@@ -2197,12 +2239,14 @@ personalize_list_solutions <- function(datasetGroupArn = NULL, nextToken = NULL,
 #' value of the campaign's `minProvisionedTPS` parameter.
 #' 
 #' To update a campaign, the campaign status must be ACTIVE or CREATE
-#' FAILED. Check the campaign status using the DescribeCampaign API.
+#' FAILED. Check the campaign status using the
+#' [`describe_campaign`][personalize_describe_campaign] API.
 #' 
 #' You must wait until the `status` of the updated campaign is `ACTIVE`
 #' before asking the campaign for recommendations.
 #' 
-#' For more information on campaigns, see CreateCampaign.
+#' For more information on campaigns, see
+#' [`create_campaign`][personalize_create_campaign].
 #'
 #' @usage
 #' personalize_update_campaign(campaignArn, solutionVersionArn,

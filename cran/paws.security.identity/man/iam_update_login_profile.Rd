@@ -29,7 +29,8 @@ carriage return (\verb{U+000D})
 
 However, the format can be further restricted by the account
 administrator by setting a password policy on the AWS account. For more
-information, see UpdateAccountPasswordPolicy.}
+information, see
+\code{\link[=iam_update_account_password_policy]{update_account_password_policy}}.}
 
 \item{PasswordResetRequired}{Allows this new password to be used only once by requiring the specified
 IAM user to set a new password on next sign-in.}
@@ -37,8 +38,9 @@ IAM user to set a new password on next sign-in.}
 \description{
 Changes the password for the specified IAM user.
 
-IAM users can change their own passwords by calling ChangePassword. For
-more information about modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
+IAM users can change their own passwords by calling
+\code{\link[=iam_change_password]{change_password}}. For more information about
+modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

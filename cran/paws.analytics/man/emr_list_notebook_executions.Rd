@@ -23,11 +23,13 @@ stages.
 finish successfully.
 \item \code{FAILED} indicates that the execution failed.
 \item \code{STOP_PENDING} indicates that the cluster has received a
-\code{StopNotebookExecution} request and the stop is pending.
+\code{\link[=emr_stop_notebook_execution]{stop_notebook_execution}} request and
+the stop is pending.
 \item \code{STOPPING} indicates that the cluster is in the process of stopping
-the execution as a result of a \code{StopNotebookExecution} request.
+the execution as a result of a
+\code{\link[=emr_stop_notebook_execution]{stop_notebook_execution}} request.
 \item \code{STOPPED} indicates that the execution stopped because of a
-\code{StopNotebookExecution} request.
+\code{\link[=emr_stop_notebook_execution]{stop_notebook_execution}} request.
 }}
 
 \item{From}{The beginning of time range filter for listing notebook executions. The
@@ -36,9 +38,10 @@ default is the timestamp of 30 days ago.}
 \item{To}{The end of time range filter for listing notebook executions. The
 default is the current timestamp.}
 
-\item{Marker}{The pagination token, returned by a previous \code{ListNotebookExecutions}
-call, that indicates the start of the list for this
-\code{ListNotebookExecutions} call.}
+\item{Marker}{The pagination token, returned by a previous
+\code{\link[=emr_list_notebook_executions]{list_notebook_executions}} call, that
+indicates the start of the list for this
+\code{\link[=emr_list_notebook_executions]{list_notebook_executions}} call.}
 }
 \description{
 Provides summaries of all notebook executions. You can filter the list

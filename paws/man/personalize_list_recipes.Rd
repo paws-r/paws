@@ -9,8 +9,9 @@ personalize_list_recipes(recipeProvider, nextToken, maxResults)
 \arguments{
 \item{recipeProvider}{The default is \code{SERVICE}.}
 
-\item{nextToken}{A token returned from the previous call to \code{ListRecipes} for getting the
-next set of recipes (if they exist).}
+\item{nextToken}{A token returned from the previous call to
+\code{\link[=personalize_list_recipes]{list_recipes}} for getting the next set of
+recipes (if they exist).}
 
 \item{maxResults}{The maximum number of recipes to return.}
 }

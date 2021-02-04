@@ -37,7 +37,7 @@ starting with the most recent.
 
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
-\href{https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html}{EnableHealthServiceAccessForOrganization}
+\code{\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization}}
 operation from your organization's master account.
 
 This API operation uses pagination. Specify the \code{nextToken} parameter in

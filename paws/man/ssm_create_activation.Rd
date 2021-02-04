@@ -53,8 +53,10 @@ can tag your on-premises servers and VMs after they connect to Systems
 Manager for the first time and are assigned a managed instance ID. This
 means they are listed in the AWS Systems Manager console with an ID that
 is prefixed with "mi-". For information about how to add tags to your
-managed instances, see AddTagsToResource. For information about how to
-remove tags from your managed instances, see RemoveTagsFromResource.}
+managed instances, see
+\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}}. For information
+about how to remove tags from your managed instances, see
+\code{\link[=ssm_remove_tags_from_resource]{remove_tags_from_resource}}.}
 }
 \description{
 Generates an activation code and activation ID you can use to register

@@ -23,9 +23,11 @@ properties explicitly defined in the stack template are checked for
 drift. For more information about stack and resource drift, see
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html}{Detecting Unregulated Configuration Changes to Stacks and Resources}.
 
-Use \code{DetectStackResourceDrift} to detect drift on individual resources,
-or DetectStackDrift to detect drift on all resources in a given stack
-that support drift detection.
+Use
+\code{\link[=cloudformation_detect_stack_resource_drift]{detect_stack_resource_drift}}
+to detect drift on individual resources, or
+\code{\link[=cloudformation_detect_stack_drift]{detect_stack_drift}} to detect
+drift on all resources in a given stack that support drift detection.
 
 Resources that do not currently support drift detection cannot be
 checked. For a list of resources that support drift detection, see

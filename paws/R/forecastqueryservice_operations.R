@@ -15,8 +15,9 @@ NULL
 #' `TARGET_TIME_SERIES` dataset, or one of the forecast dimensions
 #' specified as part of the `FeaturizationConfig` object.
 #' 
-#' By default, `QueryForecast` returns the complete date range for the
-#' filtered forecast. You can request a specific date range.
+#' By default, [`query_forecast`][forecastqueryservice_query_forecast]
+#' returns the complete date range for the filtered forecast. You can
+#' request a specific date range.
 #' 
 #' To get the full forecast, use the
 #' [CreateForecastExportJob](https://docs.aws.amazon.com/en_us/forecast/latest/dg/API_CreateForecastExportJob.html)

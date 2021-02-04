@@ -20,8 +20,9 @@ Used to test if the caller has permission to make the call.}
 Registers a new migration task which represents a server, database,
 etc., being migrated to AWS by a migration tool.
 
-This API is a prerequisite to calling the \code{NotifyMigrationTaskState} API
-as the migration tool must first register the migration task with
+This API is a prerequisite to calling the
+\code{\link[=migrationhub_notify_migration_task_state]{notify_migration_task_state}}
+API as the migration tool must first register the migration task with
 Migration Hub.
 }
 \section{Request syntax}{

@@ -29,7 +29,8 @@ The message is encoded because the details of the authorization status
 can constitute privileged information that the user who requested the
 operation should not see. To decode an authorization status message, a
 user must be granted permissions via an IAM policy to request the
-\code{DecodeAuthorizationMessage} (\code{sts:DecodeAuthorizationMessage}) action.
+\code{\link[=sts_decode_authorization_message]{decode_authorization_message}}
+(\code{sts:DecodeAuthorizationMessage}) action.
 
 The decoded message includes the following type of information:
 \itemize{

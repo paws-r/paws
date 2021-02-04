@@ -57,8 +57,9 @@ snowball_cancel_cluster <- function(ClusterId) {
 #' @description
 #' Cancels the specified job. You can only cancel a job before its
 #' `JobState` value changes to `PreparingAppliance`. Requesting the
-#' `ListJobs` or `DescribeJob` action returns a job's `JobState` as part of
-#' the response element data returned.
+#' [`list_jobs`][snowball_list_jobs] or
+#' [`describe_job`][snowball_describe_job] action returns a job's
+#' `JobState` as part of the response element data returned.
 #'
 #' @usage
 #' snowball_cancel_job(JobId)
@@ -181,8 +182,9 @@ snowball_create_address <- function(Address) {
 #'
 #' @description
 #' Creates an empty cluster. Each cluster supports five nodes. You use the
-#' CreateJob action separately to create the jobs for each of these nodes.
-#' The cluster does not ship until these five node jobs have been created.
+#' [`create_job`][snowball_create_job] action separately to create the jobs
+#' for each of these nodes. The cluster does not ship until these five node
+#' jobs have been created.
 #'
 #' @usage
 #' snowball_create_cluster(JobType, Resources, Description, AddressId,
@@ -839,7 +841,8 @@ snowball_describe_return_shipping_label <- function(JobId = NULL) {
 #' associated with the specified `JobId` value. You can access the manifest
 #' file for up to 60 minutes after this request has been made. To access
 #' the manifest file after 60 minutes have passed, you'll have to make
-#' another call to the `GetJobManifest` action.
+#' another call to the [`get_job_manifest`][snowball_get_job_manifest]
+#' action.
 #' 
 #' The manifest is an encrypted file that you can download after your job
 #' enters the `WithCustomer` status. The manifest is decrypted by using the

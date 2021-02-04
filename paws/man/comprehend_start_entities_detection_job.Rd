@@ -22,8 +22,10 @@ For more information, see
 \item{JobName}{The identifier of the job.}
 
 \item{EntityRecognizerArn}{The Amazon Resource Name (ARN) that identifies the specific entity
-recognizer to be used by the \code{StartEntitiesDetectionJob}. This ARN is
-optional and is only used for a custom entity recognition job.}
+recognizer to be used by the
+\code{\link[=comprehend_start_entities_detection_job]{start_entities_detection_job}}.
+This ARN is optional and is only used for a custom entity recognition
+job.}
 
 \item{LanguageCode}{[required] The language of the input documents. All documents must be in the same
 language. You can specify any of the languages supported by Amazon

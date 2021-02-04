@@ -7,16 +7,18 @@
 opsworks_describe_service_errors(StackId, InstanceId, ServiceErrorIds)
 }
 \arguments{
-\item{StackId}{The stack ID. If you use this parameter, \code{DescribeServiceErrors} returns
+\item{StackId}{The stack ID. If you use this parameter,
+\code{\link[=opsworks_describe_service_errors]{describe_service_errors}} returns
 descriptions of the errors associated with the specified stack.}
 
-\item{InstanceId}{The instance ID. If you use this parameter, \code{DescribeServiceErrors}
-returns descriptions of the errors associated with the specified
-instance.}
+\item{InstanceId}{The instance ID. If you use this parameter,
+\code{\link[=opsworks_describe_service_errors]{describe_service_errors}} returns
+descriptions of the errors associated with the specified instance.}
 
 \item{ServiceErrorIds}{An array of service error IDs. If you use this parameter,
-\code{DescribeServiceErrors} returns descriptions of the specified errors.
-Otherwise, it returns a description of every error.}
+\code{\link[=opsworks_describe_service_errors]{describe_service_errors}} returns
+descriptions of the specified errors. Otherwise, it returns a
+description of every error.}
 }
 \description{
 Describes AWS OpsWorks Stacks service errors.

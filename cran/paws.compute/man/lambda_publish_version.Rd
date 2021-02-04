@@ -24,7 +24,8 @@ the function name, it is limited to 64 characters in length.}
 \item{CodeSha256}{Only publish a version if the hash value matches the value that's
 specified. Use this option to avoid publishing a version if the function
 code has changed since you last updated it. You can get the hash for the
-version that you uploaded from the output of UpdateFunctionCode.}
+version that you uploaded from the output of
+\code{\link[=lambda_update_function_code]{update_function_code}}.}
 
 \item{Description}{A description for the version to override the description in the
 function configuration.}
@@ -41,12 +42,13 @@ create a snapshot of your function code and configuration that doesn't
 change.
 
 AWS Lambda doesn't publish a version if the function's configuration and
-code haven't changed since the last version. Use UpdateFunctionCode or
-UpdateFunctionConfiguration to update the function before publishing a
-version.
+code haven't changed since the last version. Use
+\code{\link[=lambda_update_function_code]{update_function_code}} or
+\code{\link[=lambda_update_function_configuration]{update_function_configuration}}
+to update the function before publishing a version.
 
 Clients can invoke versions directly or with an alias. To create an
-alias, use CreateAlias.
+alias, use \code{\link[=lambda_create_alias]{create_alias}}.
 }
 \section{Request syntax}{
 \preformatted{svc$publish_version(

@@ -21,8 +21,8 @@ NULL
 #'
 #' @param ServiceCode The code for the service whose information you want to retrieve, such as
 #' `AmazonEC2`. You can use the `ServiceCode` to filter the results in a
-#' `GetProducts` call. To retrieve a list of all services, leave this
-#' blank.
+#' [`get_products`][pricing_get_products] call. To retrieve a list of all
+#' services, leave this blank.
 #' @param FormatVersion The format version that you want the response to be in.
 #' 
 #' Valid values are: `aws_v1`

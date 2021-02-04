@@ -9,7 +9,7 @@ codecommit_post_comment_for_pull_request(pullRequestId, repositoryName,
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use
-ListPullRequests.}
+\code{\link[=codecommit_list_pull_requests]{list_pull_requests}}.}
 
 \item{repositoryName}{[required] The name of the repository where you want to post a comment on a pull
 request.}

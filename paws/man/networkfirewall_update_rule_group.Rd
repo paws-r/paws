@@ -47,8 +47,9 @@ returns a RuleGroup object that Network Firewall has populated from your
 file. Network Firewall uses the file contents to populate the rule group
 rules, but does not maintain a reference to the file or use the file in
 any way after performing the create or update. If you call
-DescribeRuleGroup to retrieve the rule group, Network Firewall returns
-rules settings inside a RuleGroup object.}
+\code{\link[=networkfirewall_describe_rule_group]{describe_rule_group}} to retrieve
+the rule group, Network Firewall returns rules settings inside a
+RuleGroup object.}
 
 \item{Type}{Indicates whether the rule group is stateless or stateful. If the rule
 group is stateless, it contains stateless rules. If it is stateful, it
@@ -78,9 +79,10 @@ Updates the rule settings for the specified rule group. You use a rule
 group by reference in one or more firewall policies. When you modify a
 rule group, you modify all firewall policies that use the rule group.
 
-To update a rule group, first call DescribeRuleGroup to retrieve the
-current RuleGroup object, update the object as needed, and then provide
-the updated object to this call.
+To update a rule group, first call
+\code{\link[=networkfirewall_describe_rule_group]{describe_rule_group}} to retrieve
+the current RuleGroup object, update the object as needed, and then
+provide the updated object to this call.
 }
 \section{Request syntax}{
 \preformatted{svc$update_rule_group(

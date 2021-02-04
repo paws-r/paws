@@ -23,8 +23,9 @@ specified}
 \item{MaxResults}{}
 }
 \description{
-The \code{ListBonusPayments} operation retrieves the amounts of bonuses you
-have paid to Workers for a given HIT or assignment.
+The \code{\link[=mturk_list_bonus_payments]{list_bonus_payments}} operation
+retrieves the amounts of bonuses you have paid to Workers for a given
+HIT or assignment.
 }
 \section{Request syntax}{
 \preformatted{svc$list_bonus_payments(

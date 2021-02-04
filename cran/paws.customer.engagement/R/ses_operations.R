@@ -1098,8 +1098,8 @@ ses_delete_template <- function(TemplateName) {
 #' Deprecated
 #'
 #' @description
-#' Deprecated. Use the `DeleteIdentity` operation to delete email addresses
-#' and domains.
+#' Deprecated. Use the [`delete_identity`][ses_delete_identity] operation
+#' to delete email addresses and domains.
 #'
 #' @usage
 #' ses_delete_verified_email_address(EmailAddress)
@@ -1654,7 +1654,7 @@ ses_get_identity_notification_attributes <- function(Identities) {
 #' @param PolicyNames &#91;required&#93; A list of the names of policies to be retrieved. You can retrieve a
 #' maximum of 20 policies at a time. If you do not know the names of the
 #' policies that are attached to the identity, you can use
-#' `ListIdentityPolicies`.
+#' [`list_identity_policies`][ses_list_identity_policies].
 #'
 #' @section Request syntax:
 #' ```
@@ -1911,16 +1911,16 @@ ses_get_template <- function(TemplateName) {
 #' operation will return up to 1,000 configuration sets each time it is
 #' run. If your Amazon SES account has more than 1,000 configuration sets,
 #' this operation will also return a NextToken element. You can then
-#' execute the `ListConfigurationSets` operation again, passing the
-#' `NextToken` parameter and the value of the NextToken element to retrieve
-#' additional results.
+#' execute the [`list_configuration_sets`][ses_list_configuration_sets]
+#' operation again, passing the `NextToken` parameter and the value of the
+#' NextToken element to retrieve additional results.
 #'
 #' @usage
 #' ses_list_configuration_sets(NextToken, MaxItems)
 #'
-#' @param NextToken A token returned from a previous call to `ListConfigurationSets` to
-#' indicate the position of the configuration set in the configuration set
-#' list.
+#' @param NextToken A token returned from a previous call to
+#' [`list_configuration_sets`][ses_list_configuration_sets] to indicate the
+#' position of the configuration set in the configuration set list.
 #' @param MaxItems The number of configuration sets to return.
 #'
 #' @section Request syntax:
@@ -2071,7 +2071,7 @@ ses_list_identities <- function(IdentityType = NULL, NextToken = NULL, MaxItems 
 #' Returns a list of sending authorization policies that are attached to
 #' the given identity (an email address or a domain). This API returns only
 #' a list. If you want the actual policy content, you can use
-#' `GetIdentityPolicies`.
+#' [`get_identity_policies`][ses_get_identity_policies].
 #' 
 #' This API is for the identity owner only. If you have not verified the
 #' identity, this API will return an error.
@@ -2185,7 +2185,8 @@ ses_list_receipt_filters <- function() {
 #' Lists the receipt rule sets that exist under your AWS account in the
 #' current AWS Region. If there are additional receipt rule sets to be
 #' retrieved, you will receive a `NextToken` that you can provide to the
-#' next call to `ListReceiptRuleSets` to retrieve the additional entries.
+#' next call to [`list_receipt_rule_sets`][ses_list_receipt_rule_sets] to
+#' retrieve the additional entries.
 #' 
 #' For information about managing receipt rule sets, see the [Amazon SES
 #' Developer
@@ -2196,8 +2197,9 @@ ses_list_receipt_filters <- function() {
 #' @usage
 #' ses_list_receipt_rule_sets(NextToken)
 #'
-#' @param NextToken A token returned from a previous call to `ListReceiptRuleSets` to
-#' indicate the position in the receipt rule set list.
+#' @param NextToken A token returned from a previous call to
+#' [`list_receipt_rule_sets`][ses_list_receipt_rule_sets] to indicate the
+#' position in the receipt rule set list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2247,8 +2249,9 @@ ses_list_receipt_rule_sets <- function(NextToken = NULL) {
 #' @usage
 #' ses_list_templates(NextToken, MaxItems)
 #'
-#' @param NextToken A token returned from a previous call to `ListTemplates` to indicate the
-#' position in the list of email templates.
+#' @param NextToken A token returned from a previous call to
+#' [`list_templates`][ses_list_templates] to indicate the position in the
+#' list of email templates.
 #' @param MaxItems The maximum number of templates to return. This value must be at least 1
 #' and less than or equal to 10. If you do not specify a value, or if you
 #' specify a value less than 1 or greater than 10, the operation will
@@ -2285,8 +2288,8 @@ ses_list_templates <- function(NextToken = NULL, MaxItems = NULL) {
 #' Deprecated
 #'
 #' @description
-#' Deprecated. Use the `ListIdentities` operation to list the email
-#' addresses and domains associated with your account.
+#' Deprecated. Use the [`list_identities`][ses_list_identities] operation
+#' to list the email addresses and domains associated with your account.
 #'
 #' @usage
 #' ses_list_verified_email_addresses()
@@ -2618,11 +2621,13 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' Composes an email message to multiple destinations. The message body is
 #' created using an email template.
 #' 
-#' In order to send email using the `SendBulkTemplatedEmail` operation,
+#' In order to send email using the
+#' [`send_bulk_templated_email`][ses_send_bulk_templated_email] operation,
 #' your call to the API must meet the following requirements:
 #' 
 #' -   The call must refer to an existing email template. You can create
-#'     email templates using the CreateTemplate operation.
+#'     email templates using the [`create_template`][ses_create_template]
+#'     operation.
 #' 
 #' -   The message must be sent from a verified email address or domain.
 #' 
@@ -2646,8 +2651,9 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' -   The message may not include more than 50 recipients, across the To:,
 #'     CC: and BCC: fields. If you need to send an email message to a
 #'     larger audience, you can divide your recipient list into groups of
-#'     50 or fewer, and then call the `SendBulkTemplatedEmail` operation
-#'     several times to send the message to each group.
+#'     50 or fewer, and then call the
+#'     [`send_bulk_templated_email`][ses_send_bulk_templated_email]
+#'     operation several times to send the message to each group.
 #' 
 #' -   The number of destinations you can contact in a single call to the
 #'     API may be limited by your account's maximum sending rate.
@@ -2723,9 +2729,10 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' @param ConfigurationSetName The name of the configuration set to use when you send an email using
-#' `SendBulkTemplatedEmail`.
+#' [`send_bulk_templated_email`][ses_send_bulk_templated_email].
 #' @param DefaultTags A list of tags, in the form of name/value pairs, to apply to an email
-#' that you send to a destination using `SendBulkTemplatedEmail`.
+#' that you send to a destination using
+#' [`send_bulk_templated_email`][ses_send_bulk_templated_email].
 #' @param Template &#91;required&#93; The template to use when sending this email.
 #' @param TemplateArn The ARN of the template to use when sending this email.
 #' @param DefaultTemplateData A list of replacement values to apply to the template when replacement
@@ -2863,8 +2870,8 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #'
 #' @description
 #' Composes an email message and immediately queues it for sending. In
-#' order to send email using the `SendEmail` operation, your message must
-#' meet the following requirements:
+#' order to send email using the [`send_email`][ses_send_email] operation,
+#' your message must meet the following requirements:
 #' 
 #' -   The message must be sent from a verified email address or domain. If
 #'     you attempt to send email using a non-verified address or domain,
@@ -2889,8 +2896,8 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' -   The message may not include more than 50 recipients, across the To:,
 #'     CC: and BCC: fields. If you need to send an email message to a
 #'     larger audience, you can divide your recipient list into groups of
-#'     50 or fewer, and then call the `SendEmail` operation several times
-#'     to send the message to each group.
+#'     50 or fewer, and then call the [`send_email`][ses_send_email]
+#'     operation several times to send the message to each group.
 #' 
 #' For every message that you send, the total number of recipients
 #' (including each recipient in the To:, CC: and BCC: fields) is counted
@@ -2972,10 +2979,11 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' @param Tags A list of tags, in the form of name/value pairs, to apply to an email
-#' that you send using `SendEmail`. Tags correspond to characteristics of
-#' the email that you define, so that you can publish email sending events.
+#' that you send using [`send_email`][ses_send_email]. Tags correspond to
+#' characteristics of the email that you define, so that you can publish
+#' email sending events.
 #' @param ConfigurationSetName The name of the configuration set to use when you send an email using
-#' `SendEmail`.
+#' [`send_email`][ses_send_email].
 #'
 #' @section Request syntax:
 #' ```
@@ -3087,14 +3095,16 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' @description
 #' Composes an email message and immediately queues it for sending.
 #' 
-#' This operation is more flexible than the `SendEmail` API operation. When
-#' you use the `SendRawEmail` operation, you can specify the headers of the
-#' message as well as its content. This flexibility is useful, for example,
-#' when you want to send a multipart MIME email (such a message that
-#' contains both a text and an HTML version). You can also use this
-#' operation to send messages that include attachments.
+#' This operation is more flexible than the [`send_email`][ses_send_email]
+#' API operation. When you use the [`send_raw_email`][ses_send_raw_email]
+#' operation, you can specify the headers of the message as well as its
+#' content. This flexibility is useful, for example, when you want to send
+#' a multipart MIME email (such a message that contains both a text and an
+#' HTML version). You can also use this operation to send messages that
+#' include attachments.
 #' 
-#' The `SendRawEmail` operation has the following requirements:
+#' The [`send_raw_email`][ses_send_raw_email] operation has the following
+#' requirements:
 #' 
 #' -   You can only send email from [verified email addresses or
 #'     domains](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html).
@@ -3135,20 +3145,21 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #'     in the *Amazon SES Developer Guide*.
 #' 
 #' Additionally, keep the following considerations in mind when using the
-#' `SendRawEmail` operation:
+#' [`send_raw_email`][ses_send_raw_email] operation:
 #' 
 #' -   Although you can customize the message headers when using the
-#'     `SendRawEmail` operation, Amazon SES will automatically apply its
-#'     own `Message-ID` and `Date` headers; if you passed these headers
-#'     when creating the message, they will be overwritten by the values
-#'     that Amazon SES provides.
+#'     [`send_raw_email`][ses_send_raw_email] operation, Amazon SES will
+#'     automatically apply its own `Message-ID` and `Date` headers; if you
+#'     passed these headers when creating the message, they will be
+#'     overwritten by the values that Amazon SES provides.
 #' 
 #' -   If you are using sending authorization to send on behalf of another
-#'     user, `SendRawEmail` enables you to specify the cross-account
-#'     identity for the email's Source, From, and Return-Path parameters in
-#'     one of two ways: you can pass optional parameters `SourceArn`,
-#'     `FromArn`, and/or `ReturnPathArn` to the API, or you can include the
-#'     following X-headers in the header of your raw email:
+#'     user, [`send_raw_email`][ses_send_raw_email] enables you to specify
+#'     the cross-account identity for the email's Source, From, and
+#'     Return-Path parameters in one of two ways: you can pass optional
+#'     parameters `SourceArn`, `FromArn`, and/or `ReturnPathArn` to the
+#'     API, or you can include the following X-headers in the header of
+#'     your raw email:
 #' 
 #'     -   `X-SES-SOURCE-ARN`
 #' 
@@ -3242,7 +3253,8 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' value of the `FromArn` parameter.
 #' 
 #' For information about when to use this parameter, see the description of
-#' `SendRawEmail` in this guide, or see the [Amazon SES Developer
+#' [`send_raw_email`][ses_send_raw_email] in this guide, or see the [Amazon
+#' SES Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
 #' @param SourceArn This parameter is used only for sending authorization. It is the ARN of
 #' the identity that is associated with the sending authorization policy
@@ -3262,7 +3274,8 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' the value of the `SourceArn` parameter.
 #' 
 #' For information about when to use this parameter, see the description of
-#' `SendRawEmail` in this guide, or see the [Amazon SES Developer
+#' [`send_raw_email`][ses_send_raw_email] in this guide, or see the [Amazon
+#' SES Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
 #' @param ReturnPathArn This parameter is used only for sending authorization. It is the ARN of
 #' the identity that is associated with the sending authorization policy
@@ -3282,14 +3295,15 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' uses the value of the `ReturnPathArn` parameter.
 #' 
 #' For information about when to use this parameter, see the description of
-#' `SendRawEmail` in this guide, or see the [Amazon SES Developer
+#' [`send_raw_email`][ses_send_raw_email] in this guide, or see the [Amazon
+#' SES Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html).
 #' @param Tags A list of tags, in the form of name/value pairs, to apply to an email
-#' that you send using `SendRawEmail`. Tags correspond to characteristics
-#' of the email that you define, so that you can publish email sending
-#' events.
+#' that you send using [`send_raw_email`][ses_send_raw_email]. Tags
+#' correspond to characteristics of the email that you define, so that you
+#' can publish email sending events.
 #' @param ConfigurationSetName The name of the configuration set to use when you send an email using
-#' `SendRawEmail`.
+#' [`send_raw_email`][ses_send_raw_email].
 #'
 #' @section Request syntax:
 #' ```
@@ -3356,11 +3370,13 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' Composes an email message using an email template and immediately queues
 #' it for sending.
 #' 
-#' In order to send email using the `SendTemplatedEmail` operation, your
-#' call to the API must meet the following requirements:
+#' In order to send email using the
+#' [`send_templated_email`][ses_send_templated_email] operation, your call
+#' to the API must meet the following requirements:
 #' 
 #' -   The call must refer to an existing email template. You can create
-#'     email templates using the CreateTemplate operation.
+#'     email templates using the [`create_template`][ses_create_template]
+#'     operation.
 #' 
 #' -   The message must be sent from a verified email address or domain.
 #' 
@@ -3373,11 +3389,11 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' 
 #' -   The maximum message size is 10 MB.
 #' 
-#' -   Calls to the `SendTemplatedEmail` operation may only include one
-#'     `Destination` parameter. A destination is a set of recipients who
-#'     will receive the same version of the email. The `Destination`
-#'     parameter can include up to 50 recipients, across the To:, CC: and
-#'     BCC: fields.
+#' -   Calls to the [`send_templated_email`][ses_send_templated_email]
+#'     operation may only include one `Destination` parameter. A
+#'     destination is a set of recipients who will receive the same version
+#'     of the email. The `Destination` parameter can include up to 50
+#'     recipients, across the To:, CC: and BCC: fields.
 #' 
 #' -   The `Destination` parameter must include at least one recipient
 #'     email address. The recipient address can be a To: address, a CC:
@@ -3387,12 +3403,12 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #'     will be rejected, even if the message contains other recipients that
 #'     are valid.
 #' 
-#' If your call to the `SendTemplatedEmail` operation includes all of the
-#' required parameters, Amazon SES accepts it and returns a Message ID.
-#' However, if Amazon SES can't render the email because the template
-#' contains errors, it doesn't send the email. Additionally, because it
-#' already accepted the message, Amazon SES doesn't return a message
-#' stating that it was unable to send the email.
+#' If your call to the [`send_templated_email`][ses_send_templated_email]
+#' operation includes all of the required parameters, Amazon SES accepts it
+#' and returns a Message ID. However, if Amazon SES can't render the email
+#' because the template contains errors, it doesn't send the email.
+#' Additionally, because it already accepted the message, Amazon SES
+#' doesn't return a message stating that it was unable to send the email.
 #' 
 #' For these reasons, we highly recommend that you set up Amazon SES to
 #' send you notifications when Rendering Failure events occur. For more
@@ -3473,11 +3489,11 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' @param Tags A list of tags, in the form of name/value pairs, to apply to an email
-#' that you send using `SendTemplatedEmail`. Tags correspond to
-#' characteristics of the email that you define, so that you can publish
-#' email sending events.
+#' that you send using [`send_templated_email`][ses_send_templated_email].
+#' Tags correspond to characteristics of the email that you define, so that
+#' you can publish email sending events.
 #' @param ConfigurationSetName The name of the configuration set to use when you send an email using
-#' `SendTemplatedEmail`.
+#' [`send_templated_email`][ses_send_templated_email].
 #' @param Template &#91;required&#93; The template to use when sending this email.
 #' @param TemplateArn The ARN of the template to use when sending this email.
 #' @param TemplateData &#91;required&#93; A list of replacement values to apply to the template. This parameter is
@@ -4593,10 +4609,11 @@ ses_update_template <- function(Template) {
 #' @description
 #' Returns a set of DKIM tokens for a domain identity.
 #' 
-#' When you execute the `VerifyDomainDkim` operation, the domain that you
-#' specify is added to the list of identities that are associated with your
-#' account. This is true even if you haven't already associated the domain
-#' with your account by using the `VerifyDomainIdentity` operation.
+#' When you execute the [`verify_domain_dkim`][ses_verify_domain_dkim]
+#' operation, the domain that you specify is added to the list of
+#' identities that are associated with your account. This is true even if
+#' you haven't already associated the domain with your account by using the
+#' [`verify_domain_identity`][ses_verify_domain_identity] operation.
 #' However, you can't send email from the domain until you either
 #' successfully [verify
 #' it](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-domains.html)
@@ -4724,8 +4741,8 @@ ses_verify_domain_identity <- function(Domain) {
 #' Deprecated
 #'
 #' @description
-#' Deprecated. Use the `VerifyEmailIdentity` operation to verify a new
-#' email address.
+#' Deprecated. Use the [`verify_email_identity`][ses_verify_email_identity]
+#' operation to verify a new email address.
 #'
 #' @usage
 #' ses_verify_email_address(EmailAddress)

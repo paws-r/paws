@@ -12,11 +12,14 @@ machinelearning_delete_data_source(DataSourceId)
 \description{
 Assigns the DELETED status to a \code{DataSource}, rendering it unusable.
 
-After using the \code{DeleteDataSource} operation, you can use the
-GetDataSource operation to verify that the status of the \code{DataSource}
-changed to DELETED.
+After using the
+\code{\link[=machinelearning_delete_data_source]{delete_data_source}} operation,
+you can use the \code{\link[=machinelearning_get_data_source]{get_data_source}}
+operation to verify that the status of the \code{DataSource} changed to
+DELETED.
 
-\strong{Caution:} The results of the \code{DeleteDataSource} operation are
+\strong{Caution:} The results of the
+\code{\link[=machinelearning_delete_data_source]{delete_data_source}} operation are
 irreversible.
 }
 \section{Request syntax}{

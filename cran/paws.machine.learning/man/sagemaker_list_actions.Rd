@@ -22,8 +22,9 @@ time.}
 
 \item{SortOrder}{The sort order. The default value is \code{Descending}.}
 
-\item{NextToken}{If the previous call to \code{ListActions} didn't return the full set of
-actions, the call returns a token for getting the next set of actions.}
+\item{NextToken}{If the previous call to \code{\link[=sagemaker_list_actions]{list_actions}} didn't
+return the full set of actions, the call returns a token for getting the
+next set of actions.}
 
 \item{MaxResults}{The maximum number of actions to return in the response. The default
 value is 10.}

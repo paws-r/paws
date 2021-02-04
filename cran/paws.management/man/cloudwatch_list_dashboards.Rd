@@ -20,10 +20,11 @@ Returns a list of the dashboards for your account. If you include
 the prefix are listed. Otherwise, all dashboards in your account are
 listed.
 
-\code{ListDashboards} returns up to 1000 results on one page. If there are
-more than 1000 dashboards, you can call \code{ListDashboards} again and
-include the value you received for \code{NextToken} in the first call, to
-receive the next 1000 results.
+\code{\link[=cloudwatch_list_dashboards]{list_dashboards}} returns up to 1000
+results on one page. If there are more than 1000 dashboards, you can
+call \code{\link[=cloudwatch_list_dashboards]{list_dashboards}} again and include
+the value you received for \code{NextToken} in the first call, to receive the
+next 1000 results.
 }
 \section{Request syntax}{
 \preformatted{svc$list_dashboards(

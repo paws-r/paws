@@ -13,8 +13,10 @@ or ARN value.}
 }
 \description{
 Deletes a game session queue. Once a queue is successfully deleted,
-unfulfilled StartGameSessionPlacement requests that reference the queue
-will fail. To delete a queue, specify the queue name.
+unfulfilled
+\code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+requests that reference the queue will fail. To delete a queue, specify
+the queue name.
 
 \strong{Learn more}
 
@@ -22,10 +24,10 @@ will fail. To delete a queue, specify the queue name.
 
 \strong{Related operations}
 \itemize{
-\item CreateGameSessionQueue
-\item DescribeGameSessionQueues
-\item UpdateGameSessionQueue
-\item DeleteGameSessionQueue
+\item \code{\link[=gamelift_create_game_session_queue]{create_game_session_queue}}
+\item \code{\link[=gamelift_describe_game_session_queues]{describe_game_session_queues}}
+\item \code{\link[=gamelift_update_game_session_queue]{update_game_session_queue}}
+\item \code{\link[=gamelift_delete_game_session_queue]{delete_game_session_queue}}
 }
 }
 \section{Request syntax}{

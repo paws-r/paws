@@ -29,7 +29,9 @@ You must provide a value for either the \code{CacheClusterId} or the
 Lists all available node types that you can scale your Redis cluster's
 or replication group's current node type.
 
-When you use the \code{ModifyCacheCluster} or \code{ModifyReplicationGroup}
+When you use the
+\code{\link[=elasticache_modify_cache_cluster]{modify_cache_cluster}} or
+\code{\link[=elasticache_modify_replication_group]{modify_replication_group}}
 operations to scale your cluster or replication group, the value of the
 \code{CacheNodeType} parameter must be one of the node types returned by this
 operation.

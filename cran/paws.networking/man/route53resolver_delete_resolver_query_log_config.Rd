@@ -19,7 +19,7 @@ accounts have associated VPCs with the shared configuration.
 
 Before you can delete a query logging configuration, you must first
 disassociate all VPCs from the configuration. See
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverQueryLogConfig.html}{DisassociateResolverQueryLogConfig}.
+\code{\link[=route53resolver_disassociate_resolver_query_log_config]{disassociate_resolver_query_log_config}}.
 
 If you used Resource Access Manager (RAM) to share a query logging
 configuration with other accounts, you must stop sharing the

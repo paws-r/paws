@@ -59,8 +59,9 @@ To run this command, you must have the following permissions:
 \strong{Related operations}
 \itemize{
 \item To add one or more tags to the collection attached to a secret, use
-TagResource.
-\item To view the list of tags attached to a secret, use DescribeSecret.
+\code{\link[=secretsmanager_tag_resource]{tag_resource}}.
+\item To view the list of tags attached to a secret, use
+\code{\link[=secretsmanager_describe_secret]{describe_secret}}.
 }
 }
 \section{Request syntax}{

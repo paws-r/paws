@@ -16,8 +16,9 @@ NULL
 #'
 #' @param Catalog &#91;required&#93; Required. The catalog related to the request. Fixed value:
 #' `AWSMarketplace`.
-#' @param ChangeSetId &#91;required&#93; Required. The unique identifier of the `StartChangeSet` request that you
-#' want to cancel.
+#' @param ChangeSetId &#91;required&#93; Required. The unique identifier of the
+#' [`start_change_set`][marketplacecatalog_start_change_set] request that
+#' you want to cancel.
 #'
 #' @section Request syntax:
 #' ```
@@ -57,7 +58,8 @@ marketplacecatalog_cancel_change_set <- function(Catalog, ChangeSetId) {
 #'
 #' @param Catalog &#91;required&#93; Required. The catalog related to the request. Fixed value:
 #' `AWSMarketplace`
-#' @param ChangeSetId &#91;required&#93; Required. The unique identifier for the `StartChangeSet` request that
+#' @param ChangeSetId &#91;required&#93; Required. The unique identifier for the
+#' [`start_change_set`][marketplacecatalog_start_change_set] request that
 #' you want to describe the details for.
 #'
 #' @section Request syntax:

@@ -17,8 +17,9 @@ greater than the default value for the \code{MaxResults} parameter, or if you
 explicitly specify a value for \code{MaxResults} that is less than the number
 of consumers that are registered with the data stream, the response
 includes a pagination token named \code{NextToken}. You can specify this
-\code{NextToken} value in a subsequent call to \code{ListStreamConsumers} to list
-the next set of registered consumers.
+\code{NextToken} value in a subsequent call to
+\code{\link[=kinesis_list_stream_consumers]{list_stream_consumers}} to list the
+next set of registered consumers.
 
 Don't specify \code{StreamName} or \code{StreamCreationTimestamp} if you specify
 \code{NextToken} because the latter unambiguously identifies the stream.
@@ -28,15 +29,18 @@ you specify \code{NextToken}. If you specify a \code{MaxResults} value that is
 less than the number of consumers that the operation returns if you
 don't specify \code{MaxResults}, the response will contain a new \code{NextToken}
 value. You can use the new \code{NextToken} value in a subsequent call to the
-\code{ListStreamConsumers} operation to list the next set of consumers.
+\code{\link[=kinesis_list_stream_consumers]{list_stream_consumers}} operation to
+list the next set of consumers.
 
 Tokens expire after 300 seconds. When you obtain a value for \code{NextToken}
-in the response to a call to \code{ListStreamConsumers}, you have 300 seconds
-to use that value. If you specify an expired token in a call to
-\code{ListStreamConsumers}, you get \code{ExpiredNextTokenException}.}
+in the response to a call to
+\code{\link[=kinesis_list_stream_consumers]{list_stream_consumers}}, you have 300
+seconds to use that value. If you specify an expired token in a call to
+\code{\link[=kinesis_list_stream_consumers]{list_stream_consumers}}, you get
+\code{ExpiredNextTokenException}.}
 
 \item{MaxResults}{The maximum number of consumers that you want a single call of
-\code{ListStreamConsumers} to return.}
+\code{\link[=kinesis_list_stream_consumers]{list_stream_consumers}} to return.}
 
 \item{StreamCreationTimestamp}{Specify this input parameter to distinguish data streams that have the
 same name. For example, if you create a data stream and then delete it,

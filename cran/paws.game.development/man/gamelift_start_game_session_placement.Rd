@@ -42,10 +42,10 @@ object with a request to start a new game session (see \href{https://docs.aws.am
 }
 \description{
 Places a request for a new game session in a queue (see
-CreateGameSessionQueue). When processing a placement request, Amazon
-GameLift searches for available resources on the queue's destinations,
-scanning each until it finds resources or the placement request times
-out.
+\code{\link[=gamelift_create_game_session_queue]{create_game_session_queue}}). When
+processing a placement request, Amazon GameLift searches for available
+resources on the queue's destinations, scanning each until it finds
+resources or the placement request times out.
 
 A game session placement request can also request player sessions. When
 a new game session is successfully created, Amazon GameLift creates a
@@ -80,22 +80,23 @@ the players)
 If successful, a new game session placement is created.
 
 To track the status of a placement request, call
-DescribeGameSessionPlacement and check the request's status. If the
-status is \code{FULFILLED}, a new game session has been created and a game
-session ARN and Region are referenced. If the placement request times
-out, you can resubmit the request or retry it with a different queue.
+\code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
+and check the request's status. If the status is \code{FULFILLED}, a new game
+session has been created and a game session ARN and Region are
+referenced. If the placement request times out, you can resubmit the
+request or retry it with a different queue.
 \itemize{
-\item CreateGameSession
-\item DescribeGameSessions
-\item DescribeGameSessionDetails
-\item SearchGameSessions
-\item UpdateGameSession
-\item GetGameSessionLogUrl
+\item \code{\link[=gamelift_create_game_session]{create_game_session}}
+\item \code{\link[=gamelift_describe_game_sessions]{describe_game_sessions}}
+\item \code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}
+\item \code{\link[=gamelift_search_game_sessions]{search_game_sessions}}
+\item \code{\link[=gamelift_update_game_session]{update_game_session}}
+\item \code{\link[=gamelift_get_game_session_log_url]{get_game_session_log_url}}
 \item Game session placements
 \itemize{
-\item StartGameSessionPlacement
-\item DescribeGameSessionPlacement
-\item StopGameSessionPlacement
+\item \code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+\item \code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
+\item \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
 }
 }
 }

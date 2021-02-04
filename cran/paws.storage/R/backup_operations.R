@@ -10,8 +10,8 @@ NULL
 #' backup plan is a document that contains information that AWS Backup uses
 #' to schedule tasks that create recovery points for resources.
 #' 
-#' If you call `CreateBackupPlan` with a plan that already exists, an
-#' `AlreadyExistsException` is returned.
+#' If you call [`create_backup_plan`][backup_create_backup_plan] with a
+#' plan that already exists, an `AlreadyExistsException` is returned.
 #'
 #' @usage
 #' backup_create_backup_plan(BackupPlan, BackupPlanTags, CreatorRequestId)
@@ -184,8 +184,9 @@ backup_create_backup_selection <- function(BackupPlanId, BackupSelection, Creato
 #'
 #' @description
 #' Creates a logical container where backups are stored. A
-#' `CreateBackupVault` request includes a name, optionally one or more
-#' resource tags, an encryption key, and a request ID.
+#' [`create_backup_vault`][backup_create_backup_vault] request includes a
+#' name, optionally one or more resource tags, an encryption key, and a
+#' request ID.
 #' 
 #' Sensitive data, such as passport numbers, should not be included the
 #' name of a backup vault.
@@ -1769,14 +1770,16 @@ backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL, ByAcco
 #' Returns a list of key-value pairs assigned to a target recovery point,
 #' backup plan, or backup vault.
 #' 
-#' `ListTags` are currently only supported with Amazon EFS backups.
+#' [`list_tags`][backup_list_tags] are currently only supported with Amazon
+#' EFS backups.
 #'
 #' @usage
 #' backup_list_tags(ResourceArn, NextToken, MaxResults)
 #'
 #' @param ResourceArn &#91;required&#93; An Amazon Resource Name (ARN) that uniquely identifies a resource. The
 #' format of the ARN depends on the type of resource. Valid targets for
-#' `ListTags` are recovery points, backup plans, and backup vaults.
+#' [`list_tags`][backup_list_tags] are recovery points, backup plans, and
+#' backup vaults.
 #' @param NextToken The next item following a partial list of returned items. For example,
 #' if a request is made to return `maxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
@@ -1928,7 +1931,7 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
 #' @param IamRoleArn &#91;required&#93; Specifies the IAM role ARN used to create the target recovery point; for
 #' example, `arn:aws:iam::123456789012:role/S3Access`.
 #' @param IdempotencyToken A customer chosen string that can be used to distinguish between calls
-#' to `StartBackupJob`.
+#' to [`start_backup_job`][backup_start_backup_job].
 #' @param StartWindowMinutes A value in minutes after a backup is scheduled before a job will be
 #' canceled if it doesn't start successfully. This value is optional.
 #' @param CompleteWindowMinutes A value in minutes after a backup job is successfully started before it
@@ -2017,7 +2020,7 @@ backup_start_backup_job <- function(BackupVaultName, ResourceArn, IamRoleArn, Id
 #' @param IamRoleArn &#91;required&#93; Specifies the IAM role ARN used to copy the target recovery point; for
 #' example, `arn:aws:iam::123456789012:role/S3Access`.
 #' @param IdempotencyToken A customer chosen string that can be used to distinguish between calls
-#' to `StartCopyJob`.
+#' to [`start_copy_job`][backup_start_copy_job].
 #' @param Lifecycle 
 #'
 #' @section Request syntax:
@@ -2070,9 +2073,11 @@ backup_start_copy_job <- function(RecoveryPointArn, SourceBackupVaultName, Desti
 #' resource name, required to restore a recovery point.
 #' 
 #' You can get configuration metadata about a resource at the time it was
-#' backed up by calling `GetRecoveryPointRestoreMetadata`. However, values
-#' in addition to those provided by `GetRecoveryPointRestoreMetadata` might
-#' be required to restore a resource. For example, you might need to
+#' backed up by calling
+#' [`get_recovery_point_restore_metadata`][backup_get_recovery_point_restore_metadata].
+#' However, values in addition to those provided by
+#' [`get_recovery_point_restore_metadata`][backup_get_recovery_point_restore_metadata]
+#' might be required to restore a resource. For example, you might need to
 #' provide a new resource name if the original already exists.
 #' 
 #' You need to specify specific metadata to restore an Amazon Elastic File
@@ -2080,7 +2085,7 @@ backup_start_copy_job <- function(RecoveryPointArn, SourceBackupVaultName, Desti
 #' 
 #' -   `file-system-id`: The ID of the Amazon EFS file system that is
 #'     backed up by AWS Backup. Returned in
-#'     `GetRecoveryPointRestoreMetadata`.
+#'     [`get_recovery_point_restore_metadata`][backup_get_recovery_point_restore_metadata].
 #' 
 #' -   `Encrypted`: A Boolean value that, if true, specifies that the file
 #'     system is encrypted. If `KmsKeyId` is specified, `Encrypted` must be
@@ -2107,7 +2112,7 @@ backup_start_copy_job <- function(RecoveryPointArn, SourceBackupVaultName, Desti
 #' create the target recovery point; for example,
 #' `arn:aws:iam::123456789012:role/S3Access`.
 #' @param IdempotencyToken A customer chosen string that can be used to distinguish between calls
-#' to `StartRestoreJob`.
+#' to [`start_restore_job`][backup_start_restore_job].
 #' @param ResourceType Starts a job to restore a recovery point for one of the following
 #' resources:
 #' 
@@ -2365,7 +2370,8 @@ backup_update_backup_plan <- function(BackupPlanId, BackupPlan) {
 #'
 #' @description
 #' Updates the current global settings for the AWS Account. Use the
-#' `DescribeGlobalSettings` API to determine the current settings.
+#' [`describe_global_settings`][backup_describe_global_settings] API to
+#' determine the current settings.
 #'
 #' @usage
 #' backup_update_global_settings(GlobalSettings)
@@ -2477,8 +2483,8 @@ backup_update_recovery_point_lifecycle <- function(BackupVaultName, RecoveryPoin
 #' that service's resources in this Region, when the resource is included
 #' in an on-demand backup or scheduled backup plan. Otherwise, AWS Backup
 #' does not try to protect that service's resources in this Region. Use the
-#' `DescribeRegionSettings` API to determine the resource types that are
-#' supported.
+#' [`describe_region_settings`][backup_describe_region_settings] API to
+#' determine the resource types that are supported.
 #'
 #' @usage
 #' backup_update_region_settings(ResourceTypeOptInPreference)

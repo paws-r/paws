@@ -28,7 +28,7 @@ account field do not match any events sent from other accounts.}
 \item{StatementId}{An identifier string for the external account that you are granting
 permissions to. If you later want to revoke the permission for this
 external account, specify this \code{StatementId} when you run
-RemovePermission.}
+\code{\link[=cloudwatchevents_remove_permission]{remove_permission}}.}
 
 \item{Condition}{This parameter enables you to limit the permission to accounts that
 fulfill a certain condition, such as being a member of a certain AWS
@@ -47,21 +47,23 @@ include a \code{Policy} parameter in the request instead of using the
 \code{StatementId}, \code{Action}, \code{Principal}, or \code{Condition} parameters.}
 }
 \description{
-Running \code{PutPermission} permits the specified AWS account or AWS
-organization to put events to the specified \emph{event bus}. Amazon
-EventBridge (CloudWatch Events) rules in your account are triggered by
-these events arriving to an event bus in your account.
+Running \code{\link[=cloudwatchevents_put_permission]{put_permission}} permits the
+specified AWS account or AWS organization to put events to the specified
+\emph{event bus}. Amazon EventBridge (CloudWatch Events) rules in your
+account are triggered by these events arriving to an event bus in your
+account.
 
 For another account to send events to your account, that external
 account must have an EventBridge rule with your account's event bus as a
 target.
 
 To enable multiple AWS accounts to put events to your event bus, run
-\code{PutPermission} once for each of these accounts. Or, if all the accounts
-are members of the same AWS organization, you can run \code{PutPermission}
-once specifying \code{Principal} as "*" and specifying the AWS organization
-ID in \code{Condition}, to grant permissions to all accounts in that
-organization.
+\code{\link[=cloudwatchevents_put_permission]{put_permission}} once for each of
+these accounts. Or, if all the accounts are members of the same AWS
+organization, you can run
+\code{\link[=cloudwatchevents_put_permission]{put_permission}} once specifying
+\code{Principal} as "*" and specifying the AWS organization ID in
+\code{Condition}, to grant permissions to all accounts in that organization.
 
 If you grant permissions using an organization, then accounts in that
 organization must specify a \code{RoleArn} with proper permissions when they

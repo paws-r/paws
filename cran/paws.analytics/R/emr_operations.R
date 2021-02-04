@@ -232,7 +232,8 @@ emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
 #' emr_add_job_flow_steps(JobFlowId, Steps)
 #'
 #' @param JobFlowId &#91;required&#93; A string that uniquely identifies the job flow. This identifier is
-#' returned by RunJobFlow and can also be obtained from ListClusters.
+#' returned by [`run_job_flow`][emr_run_job_flow] and can also be obtained
+#' from [`list_clusters`][emr_list_clusters].
 #' @param Steps &#91;required&#93; A list of StepConfig to be executed by the job flow.
 #'
 #' @section Request syntax:
@@ -346,9 +347,10 @@ emr_add_tags <- function(ResourceId, Tags) {
 #' emr_cancel_steps(ClusterId, StepIds, StepCancellationOption)
 #'
 #' @param ClusterId &#91;required&#93; The `ClusterID` for the specified steps that will be canceled. Use
-#' RunJobFlow and ListClusters to get ClusterIDs.
-#' @param StepIds &#91;required&#93; The list of `StepIDs` to cancel. Use ListSteps to get steps and their
-#' states for the specified cluster.
+#' [`run_job_flow`][emr_run_job_flow] and
+#' [`list_clusters`][emr_list_clusters] to get ClusterIDs.
+#' @param StepIds &#91;required&#93; The list of `StepIDs` to cancel. Use [`list_steps`][emr_list_steps] to
+#' get steps and their states for the specified cluster.
 #' @param StepCancellationOption The option to choose to cancel `RUNNING` steps. By default, the value is
 #' `SEND_INTERRUPT`.
 #'
@@ -765,8 +767,11 @@ emr_describe_cluster <- function(ClusterId) {
 #'
 #' @description
 #' This API is no longer supported and will eventually be removed. We
-#' recommend you use ListClusters, DescribeCluster, ListSteps,
-#' ListInstanceGroups and ListBootstrapActions instead.
+#' recommend you use [`list_clusters`][emr_list_clusters],
+#' [`describe_cluster`][emr_describe_cluster],
+#' [`list_steps`][emr_list_steps],
+#' [`list_instance_groups`][emr_list_instance_groups] and
+#' [`list_bootstrap_actions`][emr_list_bootstrap_actions] instead.
 #' 
 #' DescribeJobFlows returns a list of job flows that match all of the
 #' supplied parameters. The parameters can include a list of job flow IDs,
@@ -1393,20 +1398,23 @@ emr_list_instances <- function(ClusterId, InstanceGroupId = NULL, InstanceGroupT
 #' -   `FAILED` indicates that the execution failed.
 #' 
 #' -   `STOP_PENDING` indicates that the cluster has received a
-#'     `StopNotebookExecution` request and the stop is pending.
+#'     [`stop_notebook_execution`][emr_stop_notebook_execution] request and
+#'     the stop is pending.
 #' 
 #' -   `STOPPING` indicates that the cluster is in the process of stopping
-#'     the execution as a result of a `StopNotebookExecution` request.
+#'     the execution as a result of a
+#'     [`stop_notebook_execution`][emr_stop_notebook_execution] request.
 #' 
 #' -   `STOPPED` indicates that the execution stopped because of a
-#'     `StopNotebookExecution` request.
+#'     [`stop_notebook_execution`][emr_stop_notebook_execution] request.
 #' @param From The beginning of time range filter for listing notebook executions. The
 #' default is the timestamp of 30 days ago.
 #' @param To The end of time range filter for listing notebook executions. The
 #' default is the current timestamp.
-#' @param Marker The pagination token, returned by a previous `ListNotebookExecutions`
-#' call, that indicates the start of the list for this
-#' `ListNotebookExecutions` call.
+#' @param Marker The pagination token, returned by a previous
+#' [`list_notebook_executions`][emr_list_notebook_executions] call, that
+#' indicates the start of the list for this
+#' [`list_notebook_executions`][emr_list_notebook_executions] call.
 #'
 #' @section Request syntax:
 #' ```
@@ -2594,18 +2602,20 @@ emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, 
 #' in the cluster cannot be terminated by user intervention, an API call,
 #' or in the event of a job-flow error. The cluster still terminates upon
 #' successful completion of the job flow. Calling
-#' `SetTerminationProtection` on a cluster is similar to calling the Amazon
-#' EC2 `DisableAPITermination` API on all EC2 instances in a cluster.
+#' [`set_termination_protection`][emr_set_termination_protection] on a
+#' cluster is similar to calling the Amazon EC2 `DisableAPITermination` API
+#' on all EC2 instances in a cluster.
 #' 
-#' `SetTerminationProtection` is used to prevent accidental termination of
-#' a cluster and to ensure that in the event of an error, the instances
-#' persist so that you can recover any data stored in their ephemeral
-#' instance storage.
+#' [`set_termination_protection`][emr_set_termination_protection] is used
+#' to prevent accidental termination of a cluster and to ensure that in the
+#' event of an error, the instances persist so that you can recover any
+#' data stored in their ephemeral instance storage.
 #' 
 #' To terminate a cluster that has been locked by setting
-#' `SetTerminationProtection` to `true`, you must first unlock the job flow
-#' by a subsequent call to `SetTerminationProtection` in which you set the
-#' value to `false`.
+#' [`set_termination_protection`][emr_set_termination_protection] to
+#' `true`, you must first unlock the job flow by a subsequent call to
+#' [`set_termination_protection`][emr_set_termination_protection] in which
+#' you set the value to `false`.
 #' 
 #' For more information, see[Managing Cluster
 #' Termination](https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html)
@@ -2615,8 +2625,8 @@ emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, 
 #' emr_set_termination_protection(JobFlowIds, TerminationProtected)
 #'
 #' @param JobFlowIds &#91;required&#93; A list of strings that uniquely identify the clusters to protect. This
-#' identifier is returned by RunJobFlow and can also be obtained from
-#' DescribeJobFlows .
+#' identifier is returned by [`run_job_flow`][emr_run_job_flow] and can
+#' also be obtained from [`describe_job_flows`][emr_describe_job_flows] .
 #' @param TerminationProtected &#91;required&#93; A Boolean that indicates whether to protect the cluster and prevent the
 #' Amazon EC2 instances in the cluster from shutting down due to API calls,
 #' user intervention, or job-flow error.
@@ -2665,7 +2675,7 @@ emr_set_termination_protection <- function(JobFlowIds, TerminationProtected) {
 #' `false`, only the IAM user that created the cluster can perform actions.
 #' This action works on running clusters. You can override the default
 #' `true` setting when you create a cluster by using the
-#' `VisibleToAllUsers` parameter with `RunJobFlow`.
+#' `VisibleToAllUsers` parameter with [`run_job_flow`][emr_run_job_flow].
 #'
 #' @usage
 #' emr_set_visible_to_all_users(JobFlowIds, VisibleToAllUsers)
@@ -2829,9 +2839,10 @@ emr_stop_notebook_execution <- function(NotebookExecutionId) {
 #' the cluster was created.
 #' 
 #' The maximum number of clusters allowed is 10. The call to
-#' `TerminateJobFlows` is asynchronous. Depending on the configuration of
-#' the cluster, it may take up to 1-5 minutes for the cluster to completely
-#' terminate and release allocated resources, such as Amazon EC2 instances.
+#' [`terminate_job_flows`][emr_terminate_job_flows] is asynchronous.
+#' Depending on the configuration of the cluster, it may take up to 1-5
+#' minutes for the cluster to completely terminate and release allocated
+#' resources, such as Amazon EC2 instances.
 #'
 #' @usage
 #' emr_terminate_job_flows(JobFlowIds)

@@ -10,8 +10,8 @@ lightsail_detach_certificate_from_distribution(distributionName)
 \arguments{
 \item{distributionName}{[required] The name of the distribution from which to detach the certificate.
 
-Use the \code{GetDistributions} action to get a list of distribution names
-that you can specify.}
+Use the \code{\link[=lightsail_get_distributions]{get_distributions}} action to get
+a list of distribution names that you can specify.}
 }
 \description{
 Detaches an SSL/TLS certificate from your Amazon Lightsail content

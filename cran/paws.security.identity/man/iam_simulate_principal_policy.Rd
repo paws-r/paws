@@ -192,8 +192,8 @@ policies that are attached to groups that the user belongs to.
 
 You can optionally include a list of one or more additional policies
 specified as strings to include in the simulation. If you want to
-simulate only policies specified as strings, use SimulateCustomPolicy
-instead.
+simulate only policies specified as strings, use
+\code{\link[=iam_simulate_custom_policy]{simulate_custom_policy}} instead.
 
 You can also optionally include one resource-based policy to be
 evaluated with each of the resources included in the simulation.
@@ -204,14 +204,15 @@ operations.
 
 \strong{Note:} This API discloses information about the permissions granted
 to other users. If you do not want users to see other user's
-permissions, then consider allowing them to use SimulateCustomPolicy
-instead.
+permissions, then consider allowing them to use
+\code{\link[=iam_simulate_custom_policy]{simulate_custom_policy}} instead.
 
 Context keys are variables maintained by AWS and its services that
 provide details about the context of an API query request. You can use
 the \code{Condition} element of an IAM policy to evaluate context keys. To
 get the list of context keys that the policies require for correct
-simulation, use GetContextKeysForPrincipalPolicy.
+simulation, use
+\code{\link[=iam_get_context_keys_for_principal_policy]{get_context_keys_for_principal_policy}}.
 
 If the output is long, you can use the \code{MaxItems} and \code{Marker}
 parameters to paginate the results.

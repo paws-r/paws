@@ -11,12 +11,13 @@ rekognition_create_collection(CollectionId)
 }
 \description{
 Creates a collection in an AWS Region. You can add faces to the
-collection using the IndexFaces operation.
+collection using the \code{\link[=rekognition_index_faces]{index_faces}} operation.
 
 For example, you might create collections, one for each of your
-application users. A user can then index faces using the \code{IndexFaces}
-operation and persist results in a specific collection. Then, a user can
-search the collection for faces in the user-specific container.
+application users. A user can then index faces using the
+\code{\link[=rekognition_index_faces]{index_faces}} operation and persist results
+in a specific collection. Then, a user can search the collection for
+faces in the user-specific container.
 
 When you create a collection, it is associated with the latest version
 of the face model version.

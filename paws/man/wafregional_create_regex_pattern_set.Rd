@@ -10,7 +10,8 @@ wafregional_create_regex_pattern_set(Name, ChangeToken)
 \item{Name}{[required] A friendly name or description of the RegexPatternSet. You can't change
 \code{Name} after you create a \code{RegexPatternSet}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -22,7 +23,8 @@ in the developer guide.
 With the latest version, AWS WAF has a single set of endpoints for
 regional and global use.
 
-Creates a \code{RegexPatternSet}. You then use UpdateRegexPatternSet to
+Creates a \code{RegexPatternSet}. You then use
+\code{\link[=wafregional_update_regex_pattern_set]{update_regex_pattern_set}} to
 specify the regular expression (regex) pattern that you want AWS WAF to
 search for, such as \verb{B\\\[a@\\\]dB\\\[o0\\\]t}. You can then configure AWS
 WAF to reject those requests.
@@ -30,13 +32,20 @@ WAF to reject those requests.
 To create and configure a \code{RegexPatternSet}, perform the following
 steps:
 \enumerate{
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{CreateRegexPatternSet} request.
-\item Submit a \code{CreateRegexPatternSet} request.
-\item Use \code{GetChangeToken} to get the change token that you provide in the
-\code{ChangeToken} parameter of an \code{UpdateRegexPatternSet} request.
-\item Submit an UpdateRegexPatternSet request to specify the string that
-you want AWS WAF to watch for.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=wafregional_create_regex_pattern_set]{create_regex_pattern_set}}
+request.
+\item Submit a
+\code{\link[=wafregional_create_regex_pattern_set]{create_regex_pattern_set}}
+request.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=wafregional_update_regex_pattern_set]{update_regex_pattern_set}}
+request.
+\item Submit an
+\code{\link[=wafregional_update_regex_pattern_set]{update_regex_pattern_set}}
+request to specify the string that you want AWS WAF to watch for.
 }
 
 For more information about how to use the AWS WAF API to allow or block

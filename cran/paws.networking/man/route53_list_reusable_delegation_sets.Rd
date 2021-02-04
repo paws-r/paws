@@ -10,7 +10,8 @@ route53_list_reusable_delegation_sets(Marker, MaxItems)
 \arguments{
 \item{Marker}{If the value of \code{IsTruncated} in the previous response was \code{true}, you
 have more reusable delegation sets. To get another group, submit another
-\code{ListReusableDelegationSets} request.
+\code{\link[=route53_list_reusable_delegation_sets]{list_reusable_delegation_sets}}
+request.
 
 For the value of \code{marker}, specify the value of \code{NextMarker} from the
 previous response, which is the ID of the first reusable delegation set

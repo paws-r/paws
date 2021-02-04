@@ -11,8 +11,9 @@ mturk_delete_qualification_type(QualificationTypeId)
 \item{QualificationTypeId}{[required] The ID of the QualificationType to dispose.}
 }
 \description{
-The \code{DeleteQualificationType} deletes a Qualification type and deletes
-any HIT types that are associated with the Qualification type.
+The \code{\link[=mturk_delete_qualification_type]{delete_qualification_type}}
+deletes a Qualification type and deletes any HIT types that are
+associated with the Qualification type.
 
 This operation does not revoke Qualifications already assigned to
 Workers because the Qualifications might be needed for active HITs. If

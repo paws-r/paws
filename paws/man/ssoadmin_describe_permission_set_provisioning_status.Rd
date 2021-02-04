@@ -12,7 +12,8 @@ ssoadmin_describe_permission_set_provisioning_status(InstanceArn,
 For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces in the \emph{AWS General Reference}.}
 
-\item{ProvisionPermissionSetRequestId}{[required] The identifier that is provided by the ProvisionPermissionSet call to
+\item{ProvisionPermissionSetRequestId}{[required] The identifier that is provided by the
+\code{\link[=ssoadmin_provision_permission_set]{provision_permission_set}} call to
 retrieve the current status of the provisioning workflow.}
 }
 \description{

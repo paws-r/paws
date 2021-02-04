@@ -22,8 +22,8 @@ This action lists endpoints associated with the Outpost.
 
 Related actions include:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_CreateEndpoint.html}{CreateEndpoint}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_DeleteEndpoint.html}{DeleteEndpoint}
+\item \code{\link[=s3outposts_create_endpoint]{create_endpoint}}
+\item \code{\link[=s3outposts_delete_endpoint]{delete_endpoint}}
 }
 }
 \section{Request syntax}{

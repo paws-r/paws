@@ -49,7 +49,8 @@ shared product.
 If the portfolio share with the specified account or organization node
 already exists, this action will have no effect and will not return an
 error. To update an existing share, you must use the
-\code{ UpdatePortfolioShare} API instead.
+\code{\link[=servicecatalog_update_portfolio_share]{update_portfolio_share}} API
+instead.
 }
 \section{Request syntax}{
 \preformatted{svc$create_portfolio_share(

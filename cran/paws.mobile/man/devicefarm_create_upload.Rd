@@ -53,8 +53,8 @@ Must be one of the following values:
 \item XCTEST\\_UI\\_TEST\\_SPEC
 }
 
-If you call \code{CreateUpload} with \code{WEB_APP} specified, AWS Device Farm
-throws an \code{ArgumentException} error.}
+If you call \code{\link[=devicefarm_create_upload]{create_upload}} with \code{WEB_APP}
+specified, AWS Device Farm throws an \code{ArgumentException} error.}
 
 \item{contentType}{The upload's content type (for example, \code{application/octet-stream}).}
 }

@@ -11,8 +11,8 @@ ivs_stop_stream(channelArn)
 }
 \description{
 Disconnects the incoming RTMPS stream for the specified channel. Can be
-used in conjunction with DeleteStreamKey to prevent further streaming to
-a channel.
+used in conjunction with \code{\link[=ivs_delete_stream_key]{delete_stream_key}} to
+prevent further streaming to a channel.
 
 Many streaming client-software libraries automatically reconnect a
 dropped RTMPS session, so to stop the stream permanently, you may want

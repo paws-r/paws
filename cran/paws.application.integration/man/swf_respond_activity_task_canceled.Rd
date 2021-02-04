@@ -26,14 +26,17 @@ These \code{details} (if provided) appear in the \code{ActivityTaskCanceled} eve
 added to the workflow history.
 
 Only use this operation if the \code{canceled} flag of a
-RecordActivityTaskHeartbeat request returns \code{true} and if the activity
-can be safely undone or abandoned.
+\code{\link[=swf_record_activity_task_heartbeat]{record_activity_task_heartbeat}}
+request returns \code{true} and if the activity can be safely undone or
+abandoned.
 
 A task is considered open from the time that it is scheduled until it is
 closed. Therefore a task is reported as open while a worker is
 processing it. A task is closed after it has been specified in a call to
-RespondActivityTaskCompleted, RespondActivityTaskCanceled,
-RespondActivityTaskFailed, or the task has \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types}{timed out}.
+\code{\link[=swf_respond_activity_task_completed]{respond_activity_task_completed}},
+RespondActivityTaskCanceled,
+\code{\link[=swf_respond_activity_task_failed]{respond_activity_task_failed}}, or
+the task has \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types}{timed out}.
 
 \strong{Access Control}
 

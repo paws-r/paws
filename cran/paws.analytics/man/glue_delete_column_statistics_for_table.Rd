@@ -21,7 +21,7 @@ none is supplied, the AWS account ID is used by default.}
 Retrieves table statistics of columns.
 
 The Identity and Access Management (IAM) permission required for this
-operation is \code{DeleteTable}.
+operation is \code{\link[=glue_delete_table]{delete_table}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_column_statistics_for_table(

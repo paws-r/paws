@@ -15,9 +15,8 @@ cloudwatchlogs_tag_log_group(logGroupName, tags)
 Adds or updates the specified tags for the specified log group.
 
 To list the tags for a log group, use
-\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_ListTagsLogGroup.html}{ListTagsLogGroup}.
-To remove tags, use
-\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_UntagLogGroup.html}{UntagLogGroup}.
+\code{\link[=cloudwatchlogs_list_tags_log_group]{list_tags_log_group}}. To remove
+tags, use \code{\link[=cloudwatchlogs_untag_log_group]{untag_log_group}}.
 
 For more information about tags, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html#log-group-tagging}{Tag Log Groups in Amazon CloudWatch Logs}
 in the \emph{Amazon CloudWatch Logs User Guide}.

@@ -13,7 +13,8 @@ lambda_get_layer_version_policy(LayerName, VersionNumber)
 }
 \description{
 Returns the permission policy for a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
-For more information, see AddLayerVersionPermission.
+For more information, see
+\code{\link[=lambda_add_layer_version_permission]{add_layer_version_permission}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_layer_version_policy(

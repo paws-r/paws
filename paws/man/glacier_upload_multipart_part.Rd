@@ -43,8 +43,9 @@ values don't match, the operation fails. For information about
 computing a SHA256 tree hash, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html}{Computing Checksums}.
 \item \strong{Part size does not match}The size of each part except the last
 must match the size specified in the corresponding
-InitiateMultipartUpload request. The size of the last part must be
-the same size as, or smaller than, the specified size.
+\code{\link[=glacier_initiate_multipart_upload]{initiate_multipart_upload}}
+request. The size of the last part must be the same size as, or
+smaller than, the specified size.
 
 If you upload a part whose size is smaller than the part size you
 specified in your initiate multipart upload request and that part is

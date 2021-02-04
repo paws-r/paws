@@ -18,7 +18,8 @@ case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
 support case.}
 
 \item{attachmentSetId}{The ID of a set of one or more attachments for the communication to add
-to the case. Create the set by calling AddAttachmentsToSet}
+to the case. Create the set by calling
+\code{\link[=support_add_attachments_to_set]{add_attachments_to_set}}}
 }
 \description{
 Adds additional customer communication to an AWS Support case. Use the

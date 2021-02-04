@@ -40,7 +40,7 @@ deployment or that failed to deploy.
 
 Related Topics
 \itemize{
-\item DeleteEnvironmentConfiguration
+\item \code{\link[=elasticbeanstalk_delete_environment_configuration]{delete_environment_configuration}}
 }
 }
 \section{Request syntax}{

@@ -1939,7 +1939,8 @@ imagebuilder_list_tags_for_resource <- function(resourceArn) {
 #' Applies a policy to a component. We recommend that you call the RAM API
 #' [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html)
 #' to share resources. If you call the Image Builder API
-#' `PutComponentPolicy`, you must also call the RAM API
+#' [`put_component_policy`][imagebuilder_put_component_policy], you must
+#' also call the RAM API
 #' [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
 #' in order for the resource to be visible to all principals with whom the
 #' resource is shared.
@@ -2032,8 +2033,9 @@ imagebuilder_put_container_recipe_policy <- function(containerRecipeArn, policy)
 #' @description
 #' Applies a policy to an image. We recommend that you call the RAM API
 #' [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html)
-#' to share resources. If you call the Image Builder API `PutImagePolicy`,
-#' you must also call the RAM API
+#' to share resources. If you call the Image Builder API
+#' [`put_image_policy`][imagebuilder_put_image_policy], you must also call
+#' the RAM API
 #' [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
 #' in order for the resource to be visible to all principals with whom the
 #' resource is shared.
@@ -2080,7 +2082,8 @@ imagebuilder_put_image_policy <- function(imageArn, policy) {
 #' API
 #' [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html)
 #' to share resources. If you call the Image Builder API
-#' `PutImageRecipePolicy`, you must also call the RAM API
+#' [`put_image_recipe_policy`][imagebuilder_put_image_recipe_policy], you
+#' must also call the RAM API
 #' [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
 #' in order for the resource to be visible to all principals with whom the
 #' resource is shared.

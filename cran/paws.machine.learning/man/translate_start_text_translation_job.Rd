@@ -29,11 +29,12 @@ batch translation jobs.}
 \item{TargetLanguageCodes}{[required] The language code of the output language.}
 
 \item{TerminologyNames}{The name of the terminology to use in the batch translation job. For a
-list of available terminologies, use the ListTerminologies operation.}
+list of available terminologies, use the
+\code{\link[=translate_list_terminologies]{list_terminologies}} operation.}
 
 \item{ParallelDataNames}{The names of the parallel data resources to use in the batch translation
 job. For a list of available parallel data resources, use the
-ListParallelData operation.}
+\code{\link[=translate_list_parallel_data]{list_parallel_data}} operation.}
 
 \item{ClientToken}{[required] A unique identifier for the request. This token is auto-generated when
 using the Amazon Translate SDK.}
@@ -44,9 +45,12 @@ be used to translate large volumes of text across multiple documents at
 once. For more information, see async.
 
 Batch translation jobs can be described with the
-DescribeTextTranslationJob operation, listed with the
-ListTextTranslationJobs operation, and stopped with the
-StopTextTranslationJob operation.
+\code{\link[=translate_describe_text_translation_job]{describe_text_translation_job}}
+operation, listed with the
+\code{\link[=translate_list_text_translation_jobs]{list_text_translation_jobs}}
+operation, and stopped with the
+\code{\link[=translate_stop_text_translation_job]{stop_text_translation_job}}
+operation.
 
 Amazon Translate does not support batch translation of multiple source
 languages at once.

@@ -26,8 +26,9 @@ specified Availability Zones.
 
 You get the full benefit of fast snapshot restores after they enter the
 \code{enabled} state. To get the current state of fast snapshot restores, use
-DescribeFastSnapshotRestores. To disable fast snapshot restores, use
-DisableFastSnapshotRestores.
+\code{\link[=ec2_describe_fast_snapshot_restores]{describe_fast_snapshot_restores}}.
+To disable fast snapshot restores, use
+\code{\link[=ec2_disable_fast_snapshot_restores]{disable_fast_snapshot_restores}}.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html}{Amazon EBS fast snapshot restore}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

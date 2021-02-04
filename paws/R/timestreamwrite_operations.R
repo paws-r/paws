@@ -576,7 +576,8 @@ timestreamwrite_untag_resource <- function(ResourceARN, TagKeys) {
 #' Modifies the KMS key for an existing database. While updating the
 #' database, you must specify the database name and the identifier of the
 #' new KMS key to be used (`KmsKeyId`). If there are any concurrent
-#' `UpdateDatabase` requests, first writer wins.
+#' [`update_database`][timestreamwrite_update_database] requests, first
+#' writer wins.
 #'
 #' @usage
 #' timestreamwrite_update_database(DatabaseName, KmsKeyId)

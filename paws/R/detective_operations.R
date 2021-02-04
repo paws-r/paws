@@ -68,13 +68,14 @@ detective_accept_invitation <- function(GraphArn) {
 #' The operation also enables Detective for the calling account in the
 #' currently selected Region. It returns the ARN of the new behavior graph.
 #' 
-#' `CreateGraph` triggers a process to create the corresponding data tables
-#' for the new behavior graph.
+#' [`create_graph`][detective_create_graph] triggers a process to create
+#' the corresponding data tables for the new behavior graph.
 #' 
 #' An account can only be the master account for one behavior graph within
-#' a Region. If the same account calls `CreateGraph` with the same master
-#' account, it always returns the same behavior graph ARN. It does not
-#' create a new behavior graph.
+#' a Region. If the same account calls
+#' [`create_graph`][detective_create_graph] with the same master account,
+#' it always returns the same behavior graph ARN. It does not create a new
+#' behavior graph.
 #'
 #' @usage
 #' detective_create_graph()
@@ -111,22 +112,22 @@ detective_create_graph <- function() {
 #' accounts in the behavior graph. This operation can only be called by the
 #' master account for a behavior graph.
 #' 
-#' `CreateMembers` verifies the accounts and then sends invitations to the
-#' verified accounts.
+#' [`create_members`][detective_create_members] verifies the accounts and
+#' then sends invitations to the verified accounts.
 #' 
 #' The request provides the behavior graph ARN and the list of accounts to
 #' invite.
 #' 
 #' The response separates the requested accounts into two lists:
 #' 
-#' -   The accounts that `CreateMembers` was able to start the verification
-#'     for. This list includes member accounts that are being verified,
-#'     that have passed verification and are being sent an invitation, and
-#'     that have failed verification.
+#' -   The accounts that [`create_members`][detective_create_members] was
+#'     able to start the verification for. This list includes member
+#'     accounts that are being verified, that have passed verification and
+#'     are being sent an invitation, and that have failed verification.
 #' 
-#' -   The accounts that `CreateMembers` was unable to process. This list
-#'     includes accounts that were already invited to be member accounts in
-#'     the behavior graph.
+#' -   The accounts that [`create_members`][detective_create_members] was
+#'     unable to process. This list includes accounts that were already
+#'     invited to be member accounts in the behavior graph.
 #'
 #' @usage
 #' detective_create_members(GraphArn, Message, Accounts)
@@ -180,8 +181,8 @@ detective_create_members <- function(GraphArn, Message = NULL, Accounts) {
 #' operation removes the graph from each member account's list of behavior
 #' graphs.
 #' 
-#' `DeleteGraph` can only be called by the master account for a behavior
-#' graph.
+#' [`delete_graph`][detective_delete_graph] can only be called by the
+#' master account for a behavior graph.
 #'
 #' @usage
 #' detective_delete_graph(GraphArn)
@@ -221,9 +222,10 @@ detective_delete_graph <- function(GraphArn) {
 #' @description
 #' Deletes one or more member accounts from the master account behavior
 #' graph. This operation can only be called by a Detective master account.
-#' That account cannot use `DeleteMembers` to delete their own account from
-#' the behavior graph. To disable a behavior graph, the master account uses
-#' the `DeleteGraph` API method.
+#' That account cannot use [`delete_members`][detective_delete_members] to
+#' delete their own account from the behavior graph. To disable a behavior
+#' graph, the master account uses the
+#' [`delete_graph`][detective_delete_graph] API method.
 #'
 #' @usage
 #' detective_delete_members(GraphArn, AccountIds)
@@ -318,8 +320,9 @@ detective_disassociate_membership <- function(GraphArn) {
 #' @param AccountIds &#91;required&#93; The list of AWS account identifiers for the member account for which to
 #' return member details.
 #' 
-#' You cannot use `GetMembers` to retrieve information about member
-#' accounts that were removed from the behavior graph.
+#' You cannot use [`get_members`][detective_get_members] to retrieve
+#' information about member accounts that were removed from the behavior
+#' graph.
 #'
 #' @section Request syntax:
 #' ```

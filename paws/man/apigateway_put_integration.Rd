@@ -37,16 +37,14 @@ Here, \verb{\\\{Region\\\}} is the API Gateway region (e.g., \code{us-east-1});
 and \verb{\\\{subdomain\\\}} is a designated subdomain supported by certain AWS
 service for fast host-name lookup. \code{action} can be used for an AWS
 service action-based API, using an
-\verb{Action=\\\{name\\\}&amp;\\\{p1\\\}=\\\{v1\\\}&amp;p2=\\\{v2\\\}...} query string. The
-ensuing \verb{\\\{service_api\\\}} refers to a supported action \verb{\\\{name\\\}} plus
-any required input parameters. Alternatively, \code{path} can be used for
-an AWS service path-based API. The ensuing \code{service_api} refers to
-the path to an AWS service resource, including the region of the
+\verb{Action=\\\{name\\\}&\\\{p1\\\}=\\\{v1\\\}&p2=\\\{v2\\\}...} query string. The ensuing
+\verb{\\\{service_api\\\}} refers to a supported action \verb{\\\{name\\\}} plus any
+required input parameters. Alternatively, \code{path} can be used for an
+AWS service path-based API. The ensuing \code{service_api} refers to the
+path to an AWS service resource, including the region of the
 integrated AWS service, if applicable. For example, for integration
-with the S3 API of
-\verb{<a href="https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html">GetObject</a>},
-the \code{uri} can be either
-\verb{arn:aws:apigateway:us-west-2:s3:action/GetObject&amp;Bucket=\\\{bucket\\\}&amp;Key=\\\{key\\\}}
+with the S3 API of \code{GetObject}, the \code{uri} can be either
+\verb{arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket=\\\{bucket\\\}&Key=\\\{key\\\}}
 or \verb{arn:aws:apigateway:us-west-2:s3:path/\\\{bucket\\\}/\\\{key\\\}}
 }}
 

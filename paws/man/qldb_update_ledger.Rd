@@ -15,9 +15,10 @@ default.
 
 If deletion protection is enabled, you must first disable it before you
 can delete the ledger using the QLDB API or the AWS Command Line
-Interface (AWS CLI). You can disable it by calling the \code{UpdateLedger}
-operation to set the flag to \code{false}. The QLDB console disables deletion
-protection for you when you use it to delete a ledger.}
+Interface (AWS CLI). You can disable it by calling the
+\code{\link[=qldb_update_ledger]{update_ledger}} operation to set the flag to
+\code{false}. The QLDB console disables deletion protection for you when you
+use it to delete a ledger.}
 }
 \description{
 Updates properties on a ledger.

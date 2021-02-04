@@ -30,7 +30,7 @@ Deletes the configuration for asynchronous invocation for a function,
 version, or alias.
 
 To configure options for asynchronous invocation, use
-PutFunctionEventInvokeConfig.
+\code{\link[=lambda_put_function_event_invoke_config]{put_function_event_invoke_config}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_function_event_invoke_config(

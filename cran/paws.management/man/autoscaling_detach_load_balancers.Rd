@@ -20,12 +20,15 @@ Scaling group.
 
 This operation detaches only Classic Load Balancers. If you have
 Application Load Balancers, Network Load Balancers, or Gateway Load
-Balancers, use the DetachLoadBalancerTargetGroups API instead.
+Balancers, use the
+\code{\link[=autoscaling_detach_load_balancer_target_groups]{detach_load_balancer_target_groups}}
+API instead.
 
 When you detach a load balancer, it enters the \code{Removing} state while
 deregistering the instances in the group. When all instances are
 deregistered, then you can no longer describe the load balancer using
-the DescribeLoadBalancers API call. The instances remain running.
+the \code{\link[=autoscaling_describe_load_balancers]{describe_load_balancers}} API
+call. The instances remain running.
 }
 \section{Request syntax}{
 \preformatted{svc$detach_load_balancers(

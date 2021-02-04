@@ -97,10 +97,12 @@ rule-based scaling policies, or both. We recommend caution, however,
 because multiple auto-scaling policies can have unintended consequences.
 
 You can temporarily suspend all scaling policies for a fleet by calling
-StopFleetActions with the fleet action AUTO\\_SCALING. To resume scaling
-policies, call StartFleetActions with the same fleet action. To stop
-just one scaling policy--or to permanently remove it, you must delete
-the policy with DeleteScalingPolicy.
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}} with the fleet
+action AUTO\\_SCALING. To resume scaling policies, call
+\code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} with the same
+fleet action. To stop just one scaling policy--or to permanently remove
+it, you must delete the policy with
+\code{\link[=gamelift_delete_scaling_policy]{delete_scaling_policy}}.
 
 Learn more about how to work with auto-scaling in \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-autoscaling.html}{Set Up Fleet Automatic Scaling}.
 
@@ -163,19 +165,22 @@ as soon as they're successfully created. If the fleet's auto-scaling
 actions are temporarily suspended, the new policy will be in force once
 the fleet actions are restarted.
 \itemize{
-\item DescribeFleetCapacity
-\item UpdateFleetCapacity
-\item DescribeEC2InstanceLimits
+\item \code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}}
+\item \code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}
+\item \code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
 \item Manage scaling policies:
 \itemize{
-\item PutScalingPolicy (auto-scaling)
-\item DescribeScalingPolicies (auto-scaling)
-\item DeleteScalingPolicy (auto-scaling)
+\item \code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}}
+(auto-scaling)
+\item \code{\link[=gamelift_describe_scaling_policies]{describe_scaling_policies}}
+(auto-scaling)
+\item \code{\link[=gamelift_delete_scaling_policy]{delete_scaling_policy}}
+(auto-scaling)
 }
 \item Manage fleet actions:
 \itemize{
-\item StartFleetActions
-\item StopFleetActions
+\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}}
+\item \code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
 }
 }
 }

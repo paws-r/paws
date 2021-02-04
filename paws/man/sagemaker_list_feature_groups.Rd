@@ -26,9 +26,11 @@ specific date and time.}
 
 \item{SortBy}{The value on which the feature group list is sorted.}
 
-\item{MaxResults}{The maximum number of results returned by \code{ListFeatureGroups}.}
+\item{MaxResults}{The maximum number of results returned by
+\code{\link[=sagemaker_list_feature_groups]{list_feature_groups}}.}
 
-\item{NextToken}{A token to resume pagination of \code{ListFeatureGroups} results.}
+\item{NextToken}{A token to resume pagination of
+\code{\link[=sagemaker_list_feature_groups]{list_feature_groups}} results.}
 }
 \description{
 List \code{FeatureGroup}s based on given filter and order.

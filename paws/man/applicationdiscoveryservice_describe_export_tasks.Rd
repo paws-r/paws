@@ -16,16 +16,19 @@ request.}
 \item \code{AgentId} - ID of the agent whose collected data will be exported
 }}
 
-\item{maxResults}{The maximum number of volume results returned by \code{DescribeExportTasks}
-in paginated output. When this parameter is used, \code{DescribeExportTasks}
+\item{maxResults}{The maximum number of volume results returned by
+\code{\link[=applicationdiscoveryservice_describe_export_tasks]{describe_export_tasks}}
+in paginated output. When this parameter is used,
+\code{\link[=applicationdiscoveryservice_describe_export_tasks]{describe_export_tasks}}
 only returns \code{maxResults} results in a single page along with a
 \code{nextToken} response element.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{DescribeExportTasks} request where \code{maxResults} was used and the
-results exceeded the value of that parameter. Pagination continues from
-the end of the previous results that returned the \code{nextToken} value.
-This value is null when there are no more results to return.}
+\code{\link[=applicationdiscoveryservice_describe_export_tasks]{describe_export_tasks}}
+request where \code{maxResults} was used and the results exceeded the value
+of that parameter. Pagination continues from the end of the previous
+results that returned the \code{nextToken} value. This value is null when
+there are no more results to return.}
 }
 \description{
 Retrieve status of one or more export tasks. You can retrieve the status

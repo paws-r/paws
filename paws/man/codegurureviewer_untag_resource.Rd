@@ -10,7 +10,7 @@ codegurureviewer_untag_resource(resourceArn, TagKeys)
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the
 \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html}{\code{RepositoryAssociation}}
 object. You can retrieve this ARN by calling
-\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html}{\code{ListRepositoryAssociations}}
+\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html}{\code{list_repository_associations}}
 .}
 
 \item{TagKeys}{[required] A list of the keys for each tag you want to remove from an associated

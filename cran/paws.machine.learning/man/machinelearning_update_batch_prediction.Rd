@@ -15,8 +15,9 @@ machinelearning_update_batch_prediction(BatchPredictionId,
 \description{
 Updates the \code{BatchPredictionName} of a \code{BatchPrediction}.
 
-You can use the \code{GetBatchPrediction} operation to view the contents of
-the updated data element.
+You can use the
+\code{\link[=machinelearning_get_batch_prediction]{get_batch_prediction}} operation
+to view the contents of the updated data element.
 }
 \section{Request syntax}{
 \preformatted{svc$update_batch_prediction(

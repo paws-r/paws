@@ -38,7 +38,7 @@ returned include grants for CMKs in your AWS account and other AWS
 accounts.
 
 You might use this operation to determine which grants you may retire.
-To retire a grant, use the RetireGrant operation.
+To retire a grant, use the \code{\link[=kms_retire_grant]{retire_grant}} operation.
 
 \strong{Cross-account use}: You must specify a principal in your AWS account.
 However, this operation can return grants in any AWS account. You do not
@@ -51,10 +51,10 @@ permission) in any AWS account other than your own.
 
 \strong{Related operations:}
 \itemize{
-\item CreateGrant
-\item ListGrants
-\item RetireGrant
-\item RevokeGrant
+\item \code{\link[=kms_create_grant]{create_grant}}
+\item \code{\link[=kms_list_grants]{list_grants}}
+\item \code{\link[=kms_retire_grant]{retire_grant}}
+\item \code{\link[=kms_revoke_grant]{revoke_grant}}
 }
 }
 \section{Request syntax}{

@@ -18,7 +18,8 @@ networkmanager_describe_global_networks(GlobalNetworkIds, MaxResults,
 Describes one or more global networks. By default, all global networks
 are described. To describe the objects in your global network, you must
 use the appropriate \verb{Get*} action. For example, to list the transit
-gateways in your global network, use GetTransitGatewayRegistrations.
+gateways in your global network, use
+\code{\link[=networkmanager_get_transit_gateway_registrations]{get_transit_gateway_registrations}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_global_networks(

@@ -10,7 +10,8 @@ sagemaker_list_pipeline_parameters_for_execution(PipelineExecutionArn,
 \arguments{
 \item{PipelineExecutionArn}{[required] The Amazon Resource Name (ARN) of the pipeline execution.}
 
-\item{NextToken}{If the result of the previous \code{ListPipelineParametersForExecution}
+\item{NextToken}{If the result of the previous
+\code{\link[=sagemaker_list_pipeline_parameters_for_execution]{list_pipeline_parameters_for_execution}}
 request was truncated, the response includes a \code{NextToken}. To retrieve
 the next set of parameters, use the token in the next request.}
 

@@ -38,20 +38,23 @@ You must complete the vault locking process within 24 hours after the
 vault lock enters the \code{InProgress} state. After the 24 hour window ends,
 the lock ID expires, the vault automatically exits the \code{InProgress}
 state, and the vault lock policy is removed from the vault. You call
-CompleteVaultLock to complete the vault locking process by setting the
-state of the vault lock to \code{Locked}.
+\code{\link[=glacier_complete_vault_lock]{complete_vault_lock}} to complete the
+vault locking process by setting the state of the vault lock to
+\code{Locked}.
 
 After a vault lock is in the \code{Locked} state, you cannot initiate a new
 vault lock for the vault.
 
-You can abort the vault locking process by calling AbortVaultLock. You
-can get the state of the vault lock by calling GetVaultLock. For more
-information about the vault locking process, \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
+You can abort the vault locking process by calling
+\code{\link[=glacier_abort_vault_lock]{abort_vault_lock}}. You can get the state of
+the vault lock by calling \code{\link[=glacier_get_vault_lock]{get_vault_lock}}.
+For more information about the vault locking process, \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
 
 If this operation is called when the vault lock is in the \code{InProgress}
 state, the operation returns an \code{AccessDeniedException} error. When the
-vault lock is in the \code{InProgress} state you must call AbortVaultLock
-before you can initiate a new vault lock policy.
+vault lock is in the \code{InProgress} state you must call
+\code{\link[=glacier_abort_vault_lock]{abort_vault_lock}} before you can initiate a
+new vault lock policy.
 }
 \section{Request syntax}{
 \preformatted{svc$initiate_vault_lock(

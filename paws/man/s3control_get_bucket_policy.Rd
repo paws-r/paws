@@ -16,7 +16,7 @@ you must specify the name and the x-amz-outpost-id as well.
 
 For using this parameter with S3 on Outposts with the AWS SDK and CLI,
 you must specify the ARN of the bucket accessed in the format
-\verb{arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/bucket/&lt;my-bucket-name&gt;}.
+\verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/bucket/<my-bucket-name>}.
 For example, to access the bucket \code{reports} through outpost \code{my-outpost}
 owned by account \code{123456789012} in Region \code{us-west-2}, use the URL
 encoding of
@@ -26,8 +26,8 @@ The value must be URL encoded.}
 \description{
 This action gets a bucket policy for an Amazon S3 on Outposts bucket. To
 get a policy for an S3 bucket, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicy.html}{GetBucketPolicy}
-in the \emph{Amazon Simple Storage Service API}.
+\code{\link[=s3control_get_bucket_policy]{get_bucket_policy}} in the \emph{Amazon Simple
+Storage Service API}.
 
 Returns the policy of a specified Outposts bucket. For more information,
 see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
@@ -35,8 +35,9 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 If you are using an identity other than the root user of the AWS account
 that owns the bucket, the calling identity must have the
-\code{GetBucketPolicy} permissions on the specified bucket and belong to the
-bucket owner's account in order to use this operation.
+\code{\link[=s3control_get_bucket_policy]{get_bucket_policy}} permissions on the
+specified bucket and belong to the bucket owner's account in order to
+use this operation.
 
 Only users from Outposts bucket owner account with the right permissions
 can perform actions on an Outposts bucket. If you don't have
@@ -59,11 +60,12 @@ derived using the access point ARN, see the
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketPolicy.html#API_control_GetBucketPolicy_Examples}{Examples}
 section.
 
-The following actions are related to \code{GetBucketPolicy}:
+The following actions are related to
+\code{\link[=s3control_get_bucket_policy]{get_bucket_policy}}:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketPolicy.html}{PutBucketPolicy}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketPolicy.html}{DeleteBucketPolicy}
+\item \code{\link[=s3control_put_bucket_policy]{put_bucket_policy}}
+\item \code{\link[=s3control_delete_bucket_policy]{delete_bucket_policy}}
 }
 }
 \section{Request syntax}{

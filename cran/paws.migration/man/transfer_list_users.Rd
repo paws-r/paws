@@ -8,13 +8,13 @@ specify by passing the ServerId parameter}
 transfer_list_users(MaxResults, NextToken, ServerId)
 }
 \arguments{
-\item{MaxResults}{Specifies the number of users to return as a response to the \code{ListUsers}
-request.}
+\item{MaxResults}{Specifies the number of users to return as a response to the
+\code{\link[=transfer_list_users]{list_users}} request.}
 
-\item{NextToken}{When you can get additional results from the \code{ListUsers} call, a
-\code{NextToken} parameter is returned in the output. You can then pass in a
-subsequent command to the \code{NextToken} parameter to continue listing
-additional users.}
+\item{NextToken}{When you can get additional results from the
+\code{\link[=transfer_list_users]{list_users}} call, a \code{NextToken} parameter is
+returned in the output. You can then pass in a subsequent command to the
+\code{NextToken} parameter to continue listing additional users.}
 
 \item{ServerId}{[required] A system-assigned unique identifier for a server that has users assigned
 to it.}

@@ -8,10 +8,12 @@ account}
 organizations_describe_create_account_status(CreateAccountRequestId)
 }
 \arguments{
-\item{CreateAccountRequestId}{[required] Specifies the \code{Id} value that uniquely identifies the \code{CreateAccount}
-request. You can get the value from the \code{CreateAccountStatus.Id}
-response in an earlier CreateAccount request, or from the
-ListCreateAccountStatus operation.
+\item{CreateAccountRequestId}{[required] Specifies the \code{Id} value that uniquely identifies the
+\code{\link[=organizations_create_account]{create_account}} request. You can get
+the value from the \code{CreateAccountStatus.Id} response in an earlier
+\code{\link[=organizations_create_account]{create_account}} request, or from the
+\code{\link[=organizations_list_create_account_status]{list_create_account_status}}
+operation.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a create
 account request ID string requires "car-" followed by from 8 to 32

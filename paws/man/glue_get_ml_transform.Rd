@@ -17,7 +17,8 @@ corresponding metadata. Machine learning transforms are a special type
 of transform that use machine learning to learn the details of the
 transformation to be performed by learning from examples provided by
 humans. These transformations are then saved by AWS Glue. You can
-retrieve their metadata by calling \code{GetMLTransform}.
+retrieve their metadata by calling
+\code{\link[=glue_get_ml_transform]{get_ml_transform}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_ml_transform(

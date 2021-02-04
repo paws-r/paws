@@ -15,7 +15,8 @@ sagemaker_list_workteams(SortBy, SortOrder, NameContains, NextToken,
 \item{NameContains}{A string in the work team's name. This filter returns only work teams
 whose name contains the specified string.}
 
-\item{NextToken}{If the result of the previous \code{ListWorkteams} request was truncated, the
+\item{NextToken}{If the result of the previous
+\code{\link[=sagemaker_list_workteams]{list_workteams}} request was truncated, the
 response includes a \code{NextToken}. To retrieve the next set of labeling
 jobs, use the token in the next request.}
 

@@ -8,9 +8,10 @@ NULL
 #'
 #' @description
 #' Aborts the upload of the specified document version that was previously
-#' initiated by InitiateDocumentVersionUpload. The client should make this
-#' call only when it no longer intends to upload the document version, or
-#' fails to do so.
+#' initiated by
+#' [`initiate_document_version_upload`][workdocs_initiate_document_version_upload].
+#' The client should make this call only when it no longer intends to
+#' upload the document version, or fails to do so.
 #'
 #' @usage
 #' workdocs_abort_document_version_upload(AuthenticationToken, DocumentId,
@@ -1680,9 +1681,10 @@ workdocs_get_resources <- function(AuthenticationToken = NULL, UserId = NULL, Co
 #' upload. The ID is optionally specified when creating a new version of an
 #' existing document. This is the first step to upload a document. Next,
 #' upload the document to the URL returned from the call, and then call
-#' UpdateDocumentVersion.
+#' [`update_document_version`][workdocs_update_document_version].
 #' 
-#' To cancel the document upload, call AbortDocumentVersionUpload.
+#' To cancel the document upload, call
+#' [`abort_document_version_upload`][workdocs_abort_document_version_upload].
 #'
 #' @usage
 #' workdocs_initiate_document_version_upload(AuthenticationToken, Id, Name,
@@ -1881,7 +1883,8 @@ workdocs_update_document <- function(AuthenticationToken = NULL, DocumentId, Nam
 #' 
 #' Amazon WorkDocs also sets its document container to ACTIVE. This is the
 #' last step in a document upload, after the client uploads the document to
-#' an S3-presigned URL returned by InitiateDocumentVersionUpload.
+#' an S3-presigned URL returned by
+#' [`initiate_document_version_upload`][workdocs_initiate_document_version_upload].
 #'
 #' @usage
 #' workdocs_update_document_version(AuthenticationToken, DocumentId,

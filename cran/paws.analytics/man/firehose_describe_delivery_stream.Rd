@@ -19,16 +19,19 @@ stream.}
 }
 \description{
 Describes the specified delivery stream and its status. For example,
-after your delivery stream is created, call \code{DescribeDeliveryStream} to
-see whether the delivery stream is \code{ACTIVE} and therefore ready for data
-to be sent to it.
+after your delivery stream is created, call
+\code{\link[=firehose_describe_delivery_stream]{describe_delivery_stream}} to see
+whether the delivery stream is \code{ACTIVE} and therefore ready for data to
+be sent to it.
 
 If the status of a delivery stream is \code{CREATING_FAILED}, this status
-doesn't change, and you can't invoke CreateDeliveryStream again on it.
-However, you can invoke the DeleteDeliveryStream operation to delete it.
-If the status is \code{DELETING_FAILED}, you can force deletion by invoking
-DeleteDeliveryStream again but with
-DeleteDeliveryStreamInput$AllowForceDelete set to true.
+doesn't change, and you can't invoke
+\code{\link[=firehose_create_delivery_stream]{create_delivery_stream}} again on it.
+However, you can invoke the
+\code{\link[=firehose_delete_delivery_stream]{delete_delivery_stream}} operation to
+delete it. If the status is \code{DELETING_FAILED}, you can force deletion by
+invoking \code{\link[=firehose_delete_delivery_stream]{delete_delivery_stream}}
+again but with DeleteDeliveryStreamInput$AllowForceDelete set to true.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_delivery_stream(

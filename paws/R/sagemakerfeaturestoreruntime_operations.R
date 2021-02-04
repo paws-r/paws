@@ -7,8 +7,10 @@ NULL
 #'
 #' @description
 #' Deletes a `Record` from a `FeatureGroup`. A new record will show up in
-#' the `OfflineStore` when the `DeleteRecord` API is called. This record
-#' will have a value of `True` in the `is_deleted` column.
+#' the `OfflineStore` when the
+#' [`delete_record`][sagemakerfeaturestoreruntime_delete_record] API is
+#' called. This record will have a value of `True` in the `is_deleted`
+#' column.
 #'
 #' @usage
 #' sagemakerfeaturestoreruntime_delete_record(FeatureGroupName,
@@ -100,11 +102,12 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
 #' Used for data ingestion into the FeatureStore
 #'
 #' @description
-#' Used for data ingestion into the `FeatureStore`. The `PutRecord` API
-#' writes to both the `OnlineStore` and `OfflineStore`. If the record is
-#' the latest record for the `recordIdentifier`, the record is written to
-#' both the `OnlineStore` and `OfflineStore`. If the record is a historic
-#' record, it is written only to the `OfflineStore`.
+#' Used for data ingestion into the `FeatureStore`. The
+#' [`put_record`][sagemakerfeaturestoreruntime_put_record] API writes to
+#' both the `OnlineStore` and `OfflineStore`. If the record is the latest
+#' record for the `recordIdentifier`, the record is written to both the
+#' `OnlineStore` and `OfflineStore`. If the record is a historic record, it
+#' is written only to the `OfflineStore`.
 #'
 #' @usage
 #' sagemakerfeaturestoreruntime_put_record(FeatureGroupName, Record)
@@ -113,11 +116,14 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
 #' @param Record &#91;required&#93; List of FeatureValues to be inserted. This will be a full over-write. If
 #' you only want to update few of the feature values, do the following:
 #' 
-#' -   Use `GetRecord` to retrieve the latest record.
+#' -   Use [`get_record`][sagemakerfeaturestoreruntime_get_record] to
+#'     retrieve the latest record.
 #' 
-#' -   Update the record returned from `GetRecord`.
+#' -   Update the record returned from
+#'     [`get_record`][sagemakerfeaturestoreruntime_get_record].
 #' 
-#' -   Use `PutRecord` to update feature values.
+#' -   Use [`put_record`][sagemakerfeaturestoreruntime_put_record] to
+#'     update feature values.
 #'
 #' @section Request syntax:
 #' ```

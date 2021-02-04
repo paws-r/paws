@@ -37,8 +37,8 @@ metrics, snapshots, logs, and images.}
 
 \item{MetadataProperties}{}
 
-\item{Tags}{A list of tags to associate with the component. You can use Search API
-to search on the tags.}
+\item{Tags}{A list of tags to associate with the component. You can use
+\code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }
 \description{
 Creates a \emph{trial component}, which is a stage of a machine learning
@@ -53,14 +53,15 @@ all experiments, trials, and trial components are automatically tracked,
 logged, and indexed. When you use the AWS SDK for Python (Boto), you
 must use the logging APIs provided by the SDK.
 
-You can add tags to a trial component and then use the Search API to
-search for the tags.
+You can add tags to a trial component and then use the
+\code{\link[=sagemaker_search]{search}} API to search for the tags.
 
-\code{CreateTrialComponent} can only be invoked from within an Amazon
-SageMaker managed environment. This includes Amazon SageMaker training
-jobs, processing jobs, transform jobs, and Amazon SageMaker notebooks. A
-call to \code{CreateTrialComponent} from outside one of these environments
-results in an error.
+\code{\link[=sagemaker_create_trial_component]{create_trial_component}} can only be
+invoked from within an Amazon SageMaker managed environment. This
+includes Amazon SageMaker training jobs, processing jobs, transform
+jobs, and Amazon SageMaker notebooks. A call to
+\code{\link[=sagemaker_create_trial_component]{create_trial_component}} from
+outside one of these environments results in an error.
 }
 \section{Request syntax}{
 \preformatted{svc$create_trial_component(

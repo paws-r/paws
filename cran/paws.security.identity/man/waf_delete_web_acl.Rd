@@ -8,9 +8,11 @@ waf_delete_web_acl(WebACLId, ChangeToken)
 }
 \arguments{
 \item{WebACLId}{[required] The \code{WebACLId} of the WebACL that you want to delete. \code{WebACLId} is
-returned by CreateWebACL and by ListWebACLs.}
+returned by \code{\link[=waf_create_web_acl]{create_web_acl}} and by
+\code{\link[=waf_list_web_ac_ls]{list_web_ac_ls}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -28,10 +30,11 @@ contains any \code{Rules}.
 To delete a \code{WebACL}, perform the following steps:
 \enumerate{
 \item Update the \code{WebACL} to remove \code{Rules}, if any. For more information,
-see UpdateWebACL.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{DeleteWebACL} request.
-\item Submit a \code{DeleteWebACL} request.
+see \code{\link[=waf_update_web_acl]{update_web_acl}}.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=waf_delete_web_acl]{delete_web_acl}} request.
+\item Submit a \code{\link[=waf_delete_web_acl]{delete_web_acl}} request.
 }
 }
 \section{Request syntax}{

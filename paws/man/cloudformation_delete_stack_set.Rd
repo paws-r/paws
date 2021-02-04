@@ -8,12 +8,14 @@ cloudformation_delete_stack_set(StackSetName)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you're deleting. You can
-obtain this value by running ListStackSets.}
+obtain this value by running
+\code{\link[=cloudformation_list_stack_sets]{list_stack_sets}}.}
 }
 \description{
 Deletes a stack set. Before you can delete a stack set, all of its
 member stack instances must be deleted. For more information about how
-to do this, see DeleteStackInstances.
+to do this, see
+\code{\link[=cloudformation_delete_stack_instances]{delete_stack_instances}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_stack_set(

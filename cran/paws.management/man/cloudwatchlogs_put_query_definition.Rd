@@ -12,11 +12,11 @@ cloudwatchlogs_put_query_definition(name, queryDefinitionId,
 definitions, we recommend that you name them so that you can easily find
 the ones you want by using the first part of the name as a filter in the
 \code{queryDefinitionNamePrefix} parameter of
-\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeQueryDefinitions.html}{DescribeQueryDefinitions}.}
+\code{\link[=cloudwatchlogs_describe_query_definitions]{describe_query_definitions}}.}
 
 \item{queryDefinitionId}{If you are updating a query definition, use this parameter to specify
 the ID of the query definition that you want to update. You can use
-\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeQueryDefinitions.html}{DescribeQueryDefinitions}
+\code{\link[=cloudwatchlogs_describe_query_definitions]{describe_query_definitions}}
 to retrieve the IDs of your saved query definitions.
 
 If you are creating a query definition, do not specify this parameter.

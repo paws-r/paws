@@ -8,7 +8,8 @@ NULL
 #' @description
 #' Retrieves a list of traces specified by ID. Each trace is a collection
 #' of segment documents that originates from a single request. Use
-#' `GetTraceSummaries` to get a list of trace IDs.
+#' [`get_trace_summaries`][xray_get_trace_summaries] to get a list of trace
+#' IDs.
 #'
 #' @usage
 #' xray_batch_get_traces(TraceIds, NextToken)
@@ -130,13 +131,14 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
 #'
 #' @description
 #' Creates a rule to control sampling behavior for instrumented
-#' applications. Services retrieve rules with GetSamplingRules, and
-#' evaluate each rule in ascending order of *priority* for each request. If
-#' a rule matches, the service records a trace, borrowing it from the
-#' reservoir size. After 10 seconds, the service reports back to X-Ray with
-#' GetSamplingTargets to get updated versions of each in-use rule. The
-#' updated rule contains a trace quota that the service can use instead of
-#' borrowing from the reservoir.
+#' applications. Services retrieve rules with
+#' [`get_sampling_rules`][xray_get_sampling_rules], and evaluate each rule
+#' in ascending order of *priority* for each request. If a rule matches,
+#' the service records a trace, borrowing it from the reservoir size. After
+#' 10 seconds, the service reports back to X-Ray with
+#' [`get_sampling_targets`][xray_get_sampling_targets] to get updated
+#' versions of each in-use rule. The updated rule contains a trace quota
+#' that the service can use instead of borrowing from the reservoir.
 #'
 #' @usage
 #' xray_create_sampling_rule(SamplingRule, Tags)
@@ -898,7 +900,7 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #' @description
 #' Retrieves IDs and annotations for traces available for a specified time
 #' frame using an optional filter. To get the full traces, pass the trace
-#' IDs to `BatchGetTraces`.
+#' IDs to [`batch_get_traces`][xray_batch_get_traces].
 #' 
 #' A filter expression can target traced requests that hit specific service
 #' nodes or edges, have errors, or come from a known user. For example, the

@@ -15,9 +15,10 @@ simpledb_select(SelectExpression, NextToken, ConsistentRead)
 \item{ConsistentRead}{Determines whether or not strong consistency should be enforced when data is read from SimpleDB. If <code>true</code>, any data previously written to SimpleDB will be returned. Otherwise, results will be consistent eventually, and the client may not see data that was written immediately before your read.}
 }
 \description{
-The \code{Select} operation returns a set of attributes for \code{ItemNames} that
-match the select expression. \code{Select} is similar to the standard SQL
-SELECT statement.
+The \code{\link[=simpledb_select]{select}} operation returns a set of attributes
+for \code{ItemNames} that match the select expression.
+\code{\link[=simpledb_select]{select}} is similar to the standard SQL SELECT
+statement.
 
 The total size of the response cannot exceed 1 MB in total size. Amazon
 SimpleDB automatically adjusts the number of items returned per page to

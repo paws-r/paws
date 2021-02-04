@@ -54,7 +54,8 @@ instance is deleted.}
 The DeleteDBInstance action deletes a previously provisioned DB
 instance. When you delete a DB instance, all automated backups for that
 instance are deleted and can't be recovered. Manual DB snapshots of the
-DB instance to be deleted by \code{DeleteDBInstance} are not deleted.
+DB instance to be deleted by
+\code{\link[=rds_delete_db_instance]{delete_db_instance}} are not deleted.
 
 If you request a final DB snapshot the status of the Amazon RDS DB
 instance is \code{deleting} until the DB snapshot is created. The API action
@@ -76,10 +77,11 @@ cluster.
 }
 
 To delete a DB instance in this case, first call the
-\code{PromoteReadReplicaDBCluster} API action to promote the DB cluster so
-it's no longer a read replica. After the promotion completes, then call
-the \code{DeleteDBInstance} API action to delete the final instance in the DB
-cluster.
+\code{\link[=rds_promote_read_replica_db_cluster]{promote_read_replica_db_cluster}}
+API action to promote the DB cluster so it's no longer a read replica.
+After the promotion completes, then call the
+\code{\link[=rds_delete_db_instance]{delete_db_instance}} API action to delete the
+final instance in the DB cluster.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_db_instance(

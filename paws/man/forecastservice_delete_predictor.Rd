@@ -10,9 +10,11 @@ forecastservice_delete_predictor(PredictorArn)
 \item{PredictorArn}{[required] The Amazon Resource Name (ARN) of the predictor to delete.}
 }
 \description{
-Deletes a predictor created using the CreatePredictor operation. You can
-delete only predictor that have a status of \code{ACTIVE} or \code{CREATE_FAILED}.
-To get the status, use the DescribePredictor operation.
+Deletes a predictor created using the
+\code{\link[=forecastservice_create_predictor]{create_predictor}} operation. You
+can delete only predictor that have a status of \code{ACTIVE} or
+\code{CREATE_FAILED}. To get the status, use the
+\code{\link[=forecastservice_describe_predictor]{describe_predictor}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_predictor(

@@ -13,9 +13,10 @@ datasync_list_locations(MaxResults, NextToken, Filters)
 list of locations.}
 
 \item{Filters}{You can use API filters to narrow down the list of resources returned by
-\code{ListLocations}. For example, to retrieve all tasks on a specific source
-location, you can use \code{ListLocations} with filter name \verb{LocationType S3}
-and \verb{Operator Equals}.}
+\code{\link[=datasync_list_locations]{list_locations}}. For example, to retrieve
+all tasks on a specific source location, you can use
+\code{\link[=datasync_list_locations]{list_locations}} with filter name
+\verb{LocationType S3} and \verb{Operator Equals}.}
 }
 \description{
 Returns a list of source and destination locations.

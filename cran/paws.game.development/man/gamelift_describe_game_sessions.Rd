@@ -30,9 +30,10 @@ To start at the beginning of the result set, do not specify a value.}
 \description{
 Retrieves a set of one or more game sessions. Request a specific game
 session or request all game sessions on a fleet. Alternatively, use
-SearchGameSessions to request a set of active game sessions that are
-filtered by certain criteria. To retrieve protection policy settings for
-game sessions, use DescribeGameSessionDetails.
+\code{\link[=gamelift_search_game_sessions]{search_game_sessions}} to request a set
+of active game sessions that are filtered by certain criteria. To
+retrieve protection policy settings for game sessions, use
+\code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}.
 
 To get game sessions, specify one of the following: game session ID,
 fleet ID, or alias ID. You can filter this request by game session
@@ -42,17 +43,17 @@ each game session matching the request.
 
 \emph{Available in Amazon GameLift Local.}
 \itemize{
-\item CreateGameSession
-\item DescribeGameSessions
-\item DescribeGameSessionDetails
-\item SearchGameSessions
-\item UpdateGameSession
-\item GetGameSessionLogUrl
+\item \code{\link[=gamelift_create_game_session]{create_game_session}}
+\item \code{\link[=gamelift_describe_game_sessions]{describe_game_sessions}}
+\item \code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}
+\item \code{\link[=gamelift_search_game_sessions]{search_game_sessions}}
+\item \code{\link[=gamelift_update_game_session]{update_game_session}}
+\item \code{\link[=gamelift_get_game_session_log_url]{get_game_session_log_url}}
 \item Game session placements
 \itemize{
-\item StartGameSessionPlacement
-\item DescribeGameSessionPlacement
-\item StopGameSessionPlacement
+\item \code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+\item \code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
+\item \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
 }
 }
 }

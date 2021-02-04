@@ -12,9 +12,10 @@ sagemaker_describe_compilation_job(CompilationJobName)
 \description{
 Returns information about a model compilation job.
 
-To create a model compilation job, use CreateCompilationJob. To get
+To create a model compilation job, use
+\code{\link[=sagemaker_create_compilation_job]{create_compilation_job}}. To get
 information about multiple model compilation jobs, use
-ListCompilationJobs.
+\code{\link[=sagemaker_list_compilation_jobs]{list_compilation_jobs}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_compilation_job(

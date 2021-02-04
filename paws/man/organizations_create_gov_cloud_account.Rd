@@ -14,9 +14,11 @@ the commercial Region. This email address must not already be associated
 with another AWS account. You must use a valid email address to complete
 account creation. You can't access the root user of the account or
 remove an account that was created with an invalid email address. Like
-all request parameters for \code{CreateGovCloudAccount}, the request for the
-email address for the AWS GovCloud (US) account originates from the
-commercial Region, not from the AWS GovCloud (US) Region.}
+all request parameters for
+\code{\link[=organizations_create_gov_cloud_account]{create_gov_cloud_account}},
+the request for the email address for the AWS GovCloud (US) account
+originates from the commercial Region, not from the AWS GovCloud (US)
+Region.}
 
 \item{AccountName}{[required] The friendly name of the member account.}
 
@@ -56,8 +58,9 @@ information for the new account.}
 \item{Tags}{A list of tags that you want to attach to the newly created account.
 These tags are attached to the commercial account associated with the
 GovCloud account, and not to the GovCloud account itself. To add tags to
-the actual GovCloud account, call the TagResource operation in the
-GovCloud region after the new GovCloud account exists.
+the actual GovCloud account, call the
+\code{\link[=organizations_tag_resource]{tag_resource}} operation in the GovCloud
+region after the new GovCloud account exists.
 
 For each tag in the list, you must specify both a tag key and a value.
 You can set the value to an empty string, but you can't set it to
@@ -100,8 +103,8 @@ If the request includes tags, then the requester must have the
 \code{organizations:TagResource} permission. The tags are attached to the
 commercial account associated with the GovCloud account, rather than the
 GovCloud account itself. To add tags to the GovCloud account, call the
-TagResource operation in the GovCloud Region after the new GovCloud
-account exists.
+\code{\link[=organizations_tag_resource]{tag_resource}} operation in the GovCloud
+Region after the new GovCloud account exists.
 
 You call this action from the management account of your organization in
 the commercial Region to create a standalone AWS account in the AWS
@@ -111,27 +114,32 @@ to that organization. For more information on inviting standalone
 accounts in the AWS GovCloud (US) to join an organization, see \href{https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html}{AWS Organizations}
 in the \emph{AWS GovCloud User Guide.}
 
-Calling \code{CreateGovCloudAccount} is an asynchronous request that AWS
-performs in the background. Because \code{CreateGovCloudAccount} operates
-asynchronously, it can return a successful completion message even
-though account initialization might still be in progress. You might need
-to wait a few minutes before you can successfully access the account. To
-check the status of the request, do one of the following:
+Calling
+\code{\link[=organizations_create_gov_cloud_account]{create_gov_cloud_account}} is
+an asynchronous request that AWS performs in the background. Because
+\code{\link[=organizations_create_gov_cloud_account]{create_gov_cloud_account}}
+operates asynchronously, it can return a successful completion message
+even though account initialization might still be in progress. You might
+need to wait a few minutes before you can successfully access the
+account. To check the status of the request, do one of the following:
 \itemize{
 \item Use the \code{OperationId} response element from this operation to
-provide as a parameter to the DescribeCreateAccountStatus operation.
+provide as a parameter to the
+\code{\link[=organizations_describe_create_account_status]{describe_create_account_status}}
+operation.
 \item Check the AWS CloudTrail log for the \code{CreateAccountResult} event.
 For information on using AWS CloudTrail with Organizations, see
 \href{https://docs.aws.amazon.com/organizations/latest/userguide/}{Monitoring the Activity in Your Organization}
 in the \emph{AWS Organizations User Guide.}
 }
 
-When you call the \code{CreateGovCloudAccount} action, you create two
-accounts: a standalone account in the AWS GovCloud (US) Region and an
-associated account in the commercial Region for billing and support
-purposes. The account in the commercial Region is automatically a member
-of the organization whose credentials made the request. Both accounts
-are associated with the same email address.
+When you call the
+\code{\link[=organizations_create_gov_cloud_account]{create_gov_cloud_account}}
+action, you create two accounts: a standalone account in the AWS
+GovCloud (US) Region and an associated account in the commercial Region
+for billing and support purposes. The account in the commercial Region
+is automatically a member of the organization whose credentials made the
+request. Both accounts are associated with the same email address.
 
 A role is created in the new account in the commercial Region that
 allows the management account in the organization in the commercial
@@ -159,11 +167,12 @@ account limits for the organization, contact AWS Support.
 \item If you get an exception that indicates that the operation failed
 because your organization is still initializing, wait one hour and
 then try again. If the error persists, contact AWS Support.
-\item Using \code{CreateGovCloudAccount} to create multiple temporary accounts
-isn't recommended. You can only close an account from the AWS
-Billing and Cost Management console, and you must be signed in as
-the root user. For information on the requirements and process for
-closing an account, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html}{Closing an AWS Account}
+\item Using
+\code{\link[=organizations_create_gov_cloud_account]{create_gov_cloud_account}}
+to create multiple temporary accounts isn't recommended. You can
+only close an account from the AWS Billing and Cost Management
+console, and you must be signed in as the root user. For information
+on the requirements and process for closing an account, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html}{Closing an AWS Account}
 in the \emph{AWS Organizations User Guide}.
 }
 

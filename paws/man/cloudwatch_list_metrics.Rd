@@ -31,26 +31,23 @@ specified time interval.}
 }
 \description{
 List the specified metrics. You can use the returned metrics with
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html}{GetMetricData}
-or
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html}{GetMetricStatistics}
-to obtain statistical data.
+\code{\link[=cloudwatch_get_metric_data]{get_metric_data}} or
+\code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}} to obtain
+statistical data.
 
 Up to 500 results are returned for any one call. To retrieve additional
 results, use the returned token with subsequent calls.
 
 After you create a metric, allow up to 15 minutes before the metric
 appears. You can see statistics about the metric sooner by using
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html}{GetMetricData}
-or
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html}{GetMetricStatistics}.
+\code{\link[=cloudwatch_get_metric_data]{get_metric_data}} or
+\code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}}.
 
-\code{ListMetrics} doesn't return information about metrics if those metrics
-haven't reported data in the past two weeks. To retrieve those metrics,
-use
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html}{GetMetricData}
-or
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html}{GetMetricStatistics}.
+\code{\link[=cloudwatch_list_metrics]{list_metrics}} doesn't return information
+about metrics if those metrics haven't reported data in the past two
+weeks. To retrieve those metrics, use
+\code{\link[=cloudwatch_get_metric_data]{get_metric_data}} or
+\code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_metrics(

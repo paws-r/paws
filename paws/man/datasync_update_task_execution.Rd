@@ -19,8 +19,9 @@ You can modify bandwidth throttling for a task execution that is running
 or queued. For more information, see Adjusting Bandwidth Throttling for
 a Task Execution.
 
-The only \code{Option} that can be modified by \code{UpdateTaskExecution} is
-\verb{<a href="https://docs.aws.amazon.com/datasync/latest/userguide/API_Options.html#DataSync-Type-Options-BytesPerSecond">BytesPerSecond</a>}.
+The only \code{Option} that can be modified by
+\code{\link[=datasync_update_task_execution]{update_task_execution}} is
+\code{BytesPerSecond}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_task_execution(

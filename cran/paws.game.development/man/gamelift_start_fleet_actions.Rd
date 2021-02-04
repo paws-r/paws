@@ -13,16 +13,16 @@ the fleet ID or ARN value.}
 \item{Actions}{[required] List of actions to restart on the fleet.}
 }
 \description{
-Resumes activity on a fleet that was suspended with StopFleetActions.
-Currently, this operation is used to restart a fleet's auto-scaling
-activity.
+Resumes activity on a fleet that was suspended with
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}. Currently, this
+operation is used to restart a fleet's auto-scaling activity.
 
 To start fleet actions, specify the fleet ID and the type of actions to
 restart. When auto-scaling fleet actions are restarted, Amazon GameLift
 once again initiates scaling events as triggered by the fleet's scaling
 policies. If actions on the fleet were never stopped, this operation
 will have no effect. You can view a fleet's stopped actions using
-DescribeFleetAttributes.
+\code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}.
 
 \strong{Learn more}
 
@@ -30,12 +30,13 @@ DescribeFleetAttributes.
 
 \strong{Related operations}
 \itemize{
-\item CreateFleet
-\item ListFleets
-\item DeleteFleet
-\item DescribeFleetAttributes
-\item UpdateFleetAttributes
-\item StartFleetActions or StopFleetActions
+\item \code{\link[=gamelift_create_fleet]{create_fleet}}
+\item \code{\link[=gamelift_list_fleets]{list_fleets}}
+\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
+\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
+\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
+\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
 }
 }
 \section{Request syntax}{

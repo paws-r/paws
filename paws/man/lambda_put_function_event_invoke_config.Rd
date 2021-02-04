@@ -48,14 +48,14 @@ on a function, version, or alias. If a configuration already exists for
 a function, version, or alias, this operation overwrites it. If you
 exclude any settings, they are removed. To set one option without
 affecting existing settings for other options, use
-UpdateFunctionEventInvokeConfig.
+\code{\link[=lambda_update_function_event_invoke_config]{update_function_event_invoke_config}}.
 
 By default, Lambda retries an asynchronous invocation twice if the
 function returns an error. It retains events in a queue for up to six
 hours. When an event fails all processing attempts or stays in the
 asynchronous invocation queue for too long, Lambda discards it. To
 retain discarded events, configure a dead-letter queue with
-UpdateFunctionConfiguration.
+\code{\link[=lambda_update_function_configuration]{update_function_configuration}}.
 
 To send an invocation record to a queue, topic, function, or event bus,
 specify a

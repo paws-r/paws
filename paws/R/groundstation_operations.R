@@ -629,8 +629,9 @@ groundstation_get_satellite <- function(satelliteId) {
 #' groundstation_list_configs(maxResults, nextToken)
 #'
 #' @param maxResults Maximum number of `Configs` returned.
-#' @param nextToken Next token returned in the request of a previous `ListConfigs` call.
-#' Used to get the next page of results.
+#' @param nextToken Next token returned in the request of a previous
+#' [`list_configs`][groundstation_list_configs] call. Used to get the next
+#' page of results.
 #'
 #' @section Request syntax:
 #' ```
@@ -676,8 +677,9 @@ groundstation_list_configs <- function(maxResults = NULL, nextToken = NULL) {
 #' @param groundStation Name of a ground station.
 #' @param maxResults Maximum number of contacts returned.
 #' @param missionProfileArn ARN of a mission profile.
-#' @param nextToken Next token returned in the request of a previous `ListContacts` call.
-#' Used to get the next page of results.
+#' @param nextToken Next token returned in the request of a previous
+#' [`list_contacts`][groundstation_list_contacts] call. Used to get the
+#' next page of results.
 #' @param satelliteArn ARN of a satellite.
 #' @param startTime &#91;required&#93; Start time of a contact.
 #' @param statusList &#91;required&#93; Status of a contact reservation.
@@ -732,7 +734,8 @@ groundstation_list_contacts <- function(endTime, groundStation = NULL, maxResult
 #'
 #' @param maxResults Maximum number of dataflow endpoint groups returned.
 #' @param nextToken Next token returned in the request of a previous
-#' `ListDataflowEndpointGroups` call. Used to get the next page of results.
+#' [`list_dataflow_endpoint_groups`][groundstation_list_dataflow_endpoint_groups]
+#' call. Used to get the next page of results.
 #'
 #' @section Request syntax:
 #' ```
@@ -813,8 +816,9 @@ groundstation_list_ground_stations <- function(maxResults = NULL, nextToken = NU
 #' groundstation_list_mission_profiles(maxResults, nextToken)
 #'
 #' @param maxResults Maximum number of mission profiles returned.
-#' @param nextToken Next token returned in the request of a previous `ListMissionProfiles`
-#' call. Used to get the next page of results.
+#' @param nextToken Next token returned in the request of a previous
+#' [`list_mission_profiles`][groundstation_list_mission_profiles] call.
+#' Used to get the next page of results.
 #'
 #' @section Request syntax:
 #' ```

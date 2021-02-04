@@ -215,8 +215,9 @@ pinpointemail_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
 #' that you plan to send to your customers. Amazon Pinpoint then sends that
 #' message to special email addresses spread across several major email
 #' providers. After about 24 hours, the test is complete, and you can use
-#' the `GetDeliverabilityTestReport` operation to view the results of the
-#' test.
+#' the
+#' [`get_deliverability_test_report`][pinpointemail_get_deliverability_test_report]
+#' operation to view the results of the test.
 #'
 #' @usage
 #' pinpointemail_create_deliverability_test_report(ReportName,
@@ -748,8 +749,9 @@ pinpointemail_get_dedicated_ip <- function(Ip) {
 #'
 #' @param PoolName The name of the IP pool that the dedicated IP address is associated
 #' with.
-#' @param NextToken A token returned from a previous call to `GetDedicatedIps` to indicate
-#' the position of the dedicated IP pool in the list of IP pools.
+#' @param NextToken A token returned from a previous call to
+#' [`get_dedicated_ips`][pinpointemail_get_dedicated_ips] to indicate the
+#' position of the dedicated IP pool in the list of IP pools.
 #' @param PageSize The number of results to show in a single call to
 #' `GetDedicatedIpsRequest`. If the number of results is larger than the
 #' number you specified in this parameter, then the response includes a
@@ -872,7 +874,8 @@ pinpointemail_get_deliverability_test_report <- function(ReportId) {
 #' Retrieve all the deliverability data for a specific campaign. This data
 #' is available for a campaign only if the campaign sent email by using a
 #' domain that the Deliverability dashboard is enabled for
-#' (`PutDeliverabilityDashboardOption` operation).
+#' ([`put_deliverability_dashboard_option`][pinpointemail_put_deliverability_dashboard_option]
+#' operation).
 #'
 #' @usage
 #' pinpointemail_get_domain_deliverability_campaign(CampaignId)
@@ -1017,12 +1020,14 @@ pinpointemail_get_email_identity <- function(EmailIdentity) {
 #' @usage
 #' pinpointemail_list_configuration_sets(NextToken, PageSize)
 #'
-#' @param NextToken A token returned from a previous call to `ListConfigurationSets` to
+#' @param NextToken A token returned from a previous call to
+#' [`list_configuration_sets`][pinpointemail_list_configuration_sets] to
 #' indicate the position in the list of configuration sets.
 #' @param PageSize The number of results to show in a single call to
-#' `ListConfigurationSets`. If the number of results is larger than the
-#' number you specified in this parameter, then the response includes a
-#' `NextToken` element, which you can use to obtain additional results.
+#' [`list_configuration_sets`][pinpointemail_list_configuration_sets]. If
+#' the number of results is larger than the number you specified in this
+#' parameter, then the response includes a `NextToken` element, which you
+#' can use to obtain additional results.
 #'
 #' @section Request syntax:
 #' ```
@@ -1062,12 +1067,14 @@ pinpointemail_list_configuration_sets <- function(NextToken = NULL, PageSize = N
 #' @usage
 #' pinpointemail_list_dedicated_ip_pools(NextToken, PageSize)
 #'
-#' @param NextToken A token returned from a previous call to `ListDedicatedIpPools` to
+#' @param NextToken A token returned from a previous call to
+#' [`list_dedicated_ip_pools`][pinpointemail_list_dedicated_ip_pools] to
 #' indicate the position in the list of dedicated IP pools.
 #' @param PageSize The number of results to show in a single call to
-#' `ListDedicatedIpPools`. If the number of results is larger than the
-#' number you specified in this parameter, then the response includes a
-#' `NextToken` element, which you can use to obtain additional results.
+#' [`list_dedicated_ip_pools`][pinpointemail_list_dedicated_ip_pools]. If
+#' the number of results is larger than the number you specified in this
+#' parameter, then the response includes a `NextToken` element, which you
+#' can use to obtain additional results.
 #'
 #' @section Request syntax:
 #' ```
@@ -1103,19 +1110,22 @@ pinpointemail_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = N
 #' @description
 #' Show a list of the predictive inbox placement tests that you've
 #' performed, regardless of their statuses. For predictive inbox placement
-#' tests that are complete, you can use the `GetDeliverabilityTestReport`
+#' tests that are complete, you can use the
+#' [`get_deliverability_test_report`][pinpointemail_get_deliverability_test_report]
 #' operation to view the results.
 #'
 #' @usage
 #' pinpointemail_list_deliverability_test_reports(NextToken, PageSize)
 #'
-#' @param NextToken A token returned from a previous call to `ListDeliverabilityTestReports`
+#' @param NextToken A token returned from a previous call to
+#' [`list_deliverability_test_reports`][pinpointemail_list_deliverability_test_reports]
 #' to indicate the position in the list of predictive inbox placement
 #' tests.
 #' @param PageSize The number of results to show in a single call to
-#' `ListDeliverabilityTestReports`. If the number of results is larger than
-#' the number you specified in this parameter, then the response includes a
-#' `NextToken` element, which you can use to obtain additional results.
+#' [`list_deliverability_test_reports`][pinpointemail_list_deliverability_test_reports].
+#' If the number of results is larger than the number you specified in this
+#' parameter, then the response includes a `NextToken` element, which you
+#' can use to obtain additional results.
 #' 
 #' The value you specify has to be at least 0, and can be no more than
 #' 1000.
@@ -1155,7 +1165,8 @@ pinpointemail_list_deliverability_test_reports <- function(NextToken = NULL, Pag
 #' Retrieve deliverability data for all the campaigns that used a specific
 #' domain to send email during a specified time range. This data is
 #' available for a domain only if you enabled the Deliverability dashboard
-#' (`PutDeliverabilityDashboardOption` operation) for the domain.
+#' ([`put_deliverability_dashboard_option`][pinpointemail_put_deliverability_dashboard_option]
+#' operation) for the domain.
 #'
 #' @usage
 #' pinpointemail_list_domain_deliverability_campaigns(StartDate, EndDate,
@@ -1168,13 +1179,15 @@ pinpointemail_list_deliverability_test_reports <- function(NextToken = NULL, Pag
 #' days after the value of the `StartDate` parameter.
 #' @param SubscribedDomain &#91;required&#93; The domain to obtain deliverability data for.
 #' @param NextToken A token that’s returned from a previous call to the
-#' `ListDomainDeliverabilityCampaigns` operation. This token indicates the
-#' position of a campaign in the list of campaigns.
+#' [`list_domain_deliverability_campaigns`][pinpointemail_list_domain_deliverability_campaigns]
+#' operation. This token indicates the position of a campaign in the list
+#' of campaigns.
 #' @param PageSize The maximum number of results to include in response to a single call to
-#' the `ListDomainDeliverabilityCampaigns` operation. If the number of
-#' results is larger than the number that you specify in this parameter,
-#' the response includes a `NextToken` element, which you can use to obtain
-#' additional results.
+#' the
+#' [`list_domain_deliverability_campaigns`][pinpointemail_list_domain_deliverability_campaigns]
+#' operation. If the number of results is larger than the number that you
+#' specify in this parameter, the response includes a `NextToken` element,
+#' which you can use to obtain additional results.
 #'
 #' @section Request syntax:
 #' ```
@@ -1223,10 +1236,12 @@ pinpointemail_list_domain_deliverability_campaigns <- function(StartDate, EndDat
 #' @usage
 #' pinpointemail_list_email_identities(NextToken, PageSize)
 #'
-#' @param NextToken A token returned from a previous call to `ListEmailIdentities` to
+#' @param NextToken A token returned from a previous call to
+#' [`list_email_identities`][pinpointemail_list_email_identities] to
 #' indicate the position in the list of identities.
-#' @param PageSize The number of results to show in a single call to `ListEmailIdentities`.
-#' If the number of results is larger than the number you specified in this
+#' @param PageSize The number of results to show in a single call to
+#' [`list_email_identities`][pinpointemail_list_email_identities]. If the
+#' number of results is larger than the number you specified in this
 #' parameter, then the response includes a `NextToken` element, which you
 #' can use to obtain additional results.
 #' 
@@ -1580,7 +1595,9 @@ pinpointemail_put_configuration_set_tracking_options <- function(ConfigurationSe
 #' be associated with your Amazon Pinpoint account.
 #' 
 #' The dedicated IP pool you specify must already exist. You can create a
-#' new pool by using the `CreateDedicatedIpPool` operation.
+#' new pool by using the
+#' [`create_dedicated_ip_pool`][pinpointemail_create_dedicated_ip_pool]
+#' operation.
 #'
 #' @usage
 #' pinpointemail_put_dedicated_ip_in_pool(Ip, DestinationPoolName)
@@ -1931,9 +1948,9 @@ pinpointemail_put_email_identity_mail_from_attributes <- function(EmailIdentity,
 #' @param Content &#91;required&#93; An object that contains the body of the message. You can send either a
 #' Simple message or a Raw message.
 #' @param EmailTags A list of tags, in the form of name/value pairs, to apply to an email
-#' that you send using the `SendEmail` operation. Tags correspond to
-#' characteristics of the email that you define, so that you can publish
-#' email sending events.
+#' that you send using the [`send_email`][pinpointemail_send_email]
+#' operation. Tags correspond to characteristics of the email that you
+#' define, so that you can publish email sending events.
 #' @param ConfigurationSetName The name of the configuration set that you want to use when sending the
 #' email.
 #'
@@ -2085,7 +2102,7 @@ pinpointemail_tag_resource <- function(ResourceArn, Tags) {
 #' To remove more than one tag from the resource, append the `TagKeys`
 #' parameter and argument for each additional tag to remove, separated by
 #' an ampersand. For example:
-#' `/v1/email/tags?ResourceArn=ResourceArn&amp;TagKeys=Key1&amp;TagKeys=Key2`
+#' `/v1/email/tags?ResourceArn=ResourceArn&TagKeys=Key1&TagKeys=Key2`
 #'
 #' @section Request syntax:
 #' ```

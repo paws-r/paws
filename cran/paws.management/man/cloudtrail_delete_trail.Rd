@@ -13,9 +13,9 @@ format of a trail ARN is:
 }
 \description{
 Deletes a trail. This operation must be called from the region in which
-the trail was created. \code{DeleteTrail} cannot be called on the shadow
-trails (replicated trails in other regions) of a trail that is enabled
-in all regions.
+the trail was created. \code{\link[=cloudtrail_delete_trail]{delete_trail}} cannot
+be called on the shadow trails (replicated trails in other regions) of a
+trail that is enabled in all regions.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_trail(

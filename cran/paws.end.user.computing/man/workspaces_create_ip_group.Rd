@@ -22,7 +22,8 @@ An IP access control group provides you with the ability to control the
 IP addresses from which users are allowed to access their WorkSpaces. To
 specify the CIDR address ranges, add rules to your IP access control
 group and then associate the group with your directory. You can add
-rules when you create the group or at any time using AuthorizeIpRules.
+rules when you create the group or at any time using
+\code{\link[=workspaces_authorize_ip_rules]{authorize_ip_rules}}.
 
 There is a default IP access control group associated with your
 directory. If you don't associate an IP access control group with your

@@ -8,7 +8,8 @@ NULL
 #' @description
 #' Creates a signaling channel.
 #' 
-#' `CreateSignalingChannel` is an asynchronous operation.
+#' [`create_signaling_channel`][kinesisvideo_create_signaling_channel] is
+#' an asynchronous operation.
 #'
 #' @usage
 #' kinesisvideo_create_signaling_channel(ChannelName, ChannelType,
@@ -69,7 +70,8 @@ kinesisvideo_create_signaling_channel <- function(ChannelName, ChannelType = NUL
 #' number. When you change the stream's metadata, Kinesis Video Streams
 #' updates the version.
 #' 
-#' `CreateStream` is an asynchronous operation.
+#' [`create_stream`][kinesisvideo_create_stream] is an asynchronous
+#' operation.
 #' 
 #' For information about how the service works, see [How it
 #' Works](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html).
@@ -159,8 +161,9 @@ kinesisvideo_create_stream <- function(DeviceName = NULL, StreamName, MediaType 
 #' Deletes a specified signaling channel
 #'
 #' @description
-#' Deletes a specified signaling channel. `DeleteSignalingChannel` is an
-#' asynchronous operation. If you don't specify the channel's current
+#' Deletes a specified signaling channel.
+#' [`delete_signaling_channel`][kinesisvideo_delete_signaling_channel] is
+#' an asynchronous operation. If you don't specify the channel's current
 #' version, the most recent version is deleted.
 #'
 #' @usage
@@ -170,7 +173,9 @@ kinesisvideo_create_stream <- function(DeviceName = NULL, StreamName, MediaType 
 #' delete.
 #' @param CurrentVersion The current version of the signaling channel that you want to delete.
 #' You can obtain the current version by invoking the
-#' `DescribeSignalingChannel` or `ListSignalingChannels` API operations.
+#' [`describe_signaling_channel`][kinesisvideo_describe_signaling_channel]
+#' or [`list_signaling_channels`][kinesisvideo_list_signaling_channels] API
+#' operations.
 #'
 #' @section Request syntax:
 #' ```
@@ -212,7 +217,7 @@ kinesisvideo_delete_signaling_channel <- function(ChannelARN, CurrentVersion = N
 #' it, you can specify the stream version. Kinesis Video Streams assigns a
 #' version to each stream. When you update a stream, Kinesis Video Streams
 #' assigns a new version number. To get the latest stream version, use the
-#' `DescribeStream` API.
+#' [`describe_stream`][kinesisvideo_describe_stream] API.
 #' 
 #' This operation requires permission for the `KinesisVideo:DeleteStream`
 #' action.
@@ -224,7 +229,8 @@ kinesisvideo_delete_signaling_channel <- function(ChannelARN, CurrentVersion = N
 #' @param CurrentVersion Optional: The version of the stream that you want to delete.
 #' 
 #' Specify the version as a safeguard to ensure that your are deleting the
-#' correct stream. To get the stream version, use the `DescribeStream` API.
+#' correct stream. To get the stream version, use the
+#' [`describe_stream`][kinesisvideo_describe_stream] API.
 #' 
 #' If not specified, only the `CreationTime` is checked before deleting the
 #' stream.
@@ -467,9 +473,10 @@ kinesisvideo_get_signaling_channel_endpoint <- function(ChannelARN, SingleMaster
 #' @param MaxResults The maximum number of channels to return in the response. The default is
 #' 500.
 #' @param NextToken If you specify this parameter, when the result of a
-#' `ListSignalingChannels` operation is truncated, the call returns the
-#' `NextToken` in the response. To get another batch of channels, provide
-#' this token in your next request.
+#' [`list_signaling_channels`][kinesisvideo_list_signaling_channels]
+#' operation is truncated, the call returns the `NextToken` in the
+#' response. To get another batch of channels, provide this token in your
+#' next request.
 #' @param ChannelNameCondition Optional: Returns only the channels that satisfy a specific condition.
 #'
 #' @section Request syntax:
@@ -516,10 +523,10 @@ kinesisvideo_list_signaling_channels <- function(MaxResults = NULL, NextToken = 
 #'
 #' @param MaxResults The maximum number of streams to return in the response. The default is
 #' 10,000.
-#' @param NextToken If you specify this parameter, when the result of a `ListStreams`
-#' operation is truncated, the call returns the `NextToken` in the
-#' response. To get another batch of streams, provide this token in your
-#' next request.
+#' @param NextToken If you specify this parameter, when the result of a
+#' [`list_streams`][kinesisvideo_list_streams] operation is truncated, the
+#' call returns the `NextToken` in the response. To get another batch of
+#' streams, provide this token in your next request.
 #' @param StreamNameCondition Optional: Returns only streams that satisfy a specific condition.
 #' Currently, you can specify only the prefix of a stream name as a
 #' condition.
@@ -564,9 +571,10 @@ kinesisvideo_list_streams <- function(MaxResults = NULL, NextToken = NULL, Strea
 #' @usage
 #' kinesisvideo_list_tags_for_resource(NextToken, ResourceARN)
 #'
-#' @param NextToken If you specify this parameter and the result of a `ListTagsForResource`
-#' call is truncated, the response includes a token that you can use in the
-#' next request to fetch the next batch of tags.
+#' @param NextToken If you specify this parameter and the result of a
+#' [`list_tags_for_resource`][kinesisvideo_list_tags_for_resource] call is
+#' truncated, the response includes a token that you can use in the next
+#' request to fetch the next batch of tags.
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the signaling channel for which you
 #' want to list tags.
 #'
@@ -609,9 +617,10 @@ kinesisvideo_list_tags_for_resource <- function(NextToken = NULL, ResourceARN) {
 #' @usage
 #' kinesisvideo_list_tags_for_stream(NextToken, StreamARN, StreamName)
 #'
-#' @param NextToken If you specify this parameter and the result of a `ListTagsForStream`
-#' call is truncated, the response includes a token that you can use in the
-#' next request to fetch the next batch of tags.
+#' @param NextToken If you specify this parameter and the result of a
+#' [`list_tags_for_stream`][kinesisvideo_list_tags_for_stream] call is
+#' truncated, the response includes a token that you can use in the next
+#' request to fetch the next batch of tags.
 #' @param StreamARN The Amazon Resource Name (ARN) of the stream that you want to list tags
 #' for.
 #' @param StreamName The name of the stream that you want to list tags for.
@@ -884,8 +893,9 @@ kinesisvideo_untag_stream <- function(StreamARN = NULL, StreamName = NULL, TagKe
 #' @param StreamARN The Amazon Resource Name (ARN) of the stream whose retention period you
 #' want to change.
 #' @param CurrentVersion &#91;required&#93; The version of the stream whose retention period you want to change. To
-#' get the version, call either the `DescribeStream` or the `ListStreams`
-#' API.
+#' get the version, call either the
+#' [`describe_stream`][kinesisvideo_describe_stream] or the
+#' [`list_streams`][kinesisvideo_list_streams] API.
 #' @param Operation &#91;required&#93; Indicates whether you want to increase or decrease the retention period.
 #' @param DataRetentionChangeInHours &#91;required&#93; The retention period, in hours. The value you specify replaces the
 #' current value. The maximum value for this parameter is 87600 (ten
@@ -986,9 +996,10 @@ kinesisvideo_update_signaling_channel <- function(ChannelARN, CurrentVersion, Si
 #' updating it, you can specify the stream version. Kinesis Video Streams
 #' assigns a version to each stream. When you update a stream, Kinesis
 #' Video Streams assigns a new version number. To get the latest stream
-#' version, use the `DescribeStream` API.
+#' version, use the [`describe_stream`][kinesisvideo_describe_stream] API.
 #' 
-#' `UpdateStream` is an asynchronous operation, and takes time to complete.
+#' [`update_stream`][kinesisvideo_update_stream] is an asynchronous
+#' operation, and takes time to complete.
 #'
 #' @usage
 #' kinesisvideo_update_stream(StreamName, StreamARN, CurrentVersion,

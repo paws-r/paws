@@ -10,17 +10,22 @@ lookoutforvision_create_project(ProjectName, ClientToken)
 \item{ProjectName}{[required] S nsme for the project.}
 
 \item{ClientToken}{ClientToken is an idempotency token that ensures a call to
-\code{CreateProject} completes only once. You choose the value to pass. For
-example, An issue, such as an network outage, might prevent you from
-getting a response from \code{CreateProject}. In this case, safely retry your
-call to \code{CreateProject} by using the same \code{ClientToken} parameter value.
-An error occurs if the other input parameters are not the same as in the
-first request. Using a different value for \code{ClientToken} is considered a
-new call to \code{CreateProject}. An idempotency token is active for 8 hours.}
+\code{\link[=lookoutforvision_create_project]{create_project}} completes only once.
+You choose the value to pass. For example, An issue, such as an network
+outage, might prevent you from getting a response from
+\code{\link[=lookoutforvision_create_project]{create_project}}. In this case,
+safely retry your call to
+\code{\link[=lookoutforvision_create_project]{create_project}} by using the same
+\code{ClientToken} parameter value. An error occurs if the other input
+parameters are not the same as in the first request. Using a different
+value for \code{ClientToken} is considered a new call to
+\code{\link[=lookoutforvision_create_project]{create_project}}. An idempotency
+token is active for 8 hours.}
 }
 \description{
 Creates an empty Amazon Lookout for Vision project. After you create the
-project, add a dataset by calling CreateDataset.
+project, add a dataset by calling
+\code{\link[=lookoutforvision_create_dataset]{create_dataset}}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_project(

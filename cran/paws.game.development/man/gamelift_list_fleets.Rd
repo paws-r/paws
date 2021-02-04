@@ -38,12 +38,13 @@ Fleet resources are not listed in a particular order.
 
 \strong{Related operations}
 \itemize{
-\item CreateFleet
-\item ListFleets
-\item DeleteFleet
-\item DescribeFleetAttributes
-\item UpdateFleetAttributes
-\item StartFleetActions or StopFleetActions
+\item \code{\link[=gamelift_create_fleet]{create_fleet}}
+\item \code{\link[=gamelift_list_fleets]{list_fleets}}
+\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
+\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
+\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
+\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
 }
 }
 \section{Request syntax}{

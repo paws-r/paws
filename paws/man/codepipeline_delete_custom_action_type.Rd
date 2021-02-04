@@ -16,7 +16,8 @@ CodeDeploy.}
 \item{version}{[required] The version of the custom action to delete.}
 }
 \description{
-Marks a custom action as deleted. \code{PollForJobs} for the custom action
+Marks a custom action as deleted.
+\code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}} for the custom action
 fails after the action is marked for deletion. Used for custom actions
 only.
 

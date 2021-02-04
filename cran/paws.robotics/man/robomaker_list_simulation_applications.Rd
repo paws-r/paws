@@ -13,17 +13,21 @@ robomaker_list_simulation_applications(versionQualifier, nextToken,
 \item{nextToken}{If the previous paginated request did not return all of the remaining
 results, the response object's \code{nextToken} parameter value is set to a
 token. To retrieve the next set of results, call
-\code{ListSimulationApplications} again and assign that token to the request
-object's \code{nextToken} parameter. If there are no remaining results, the
-previous response object's NextToken parameter is set to null.}
+\code{\link[=robomaker_list_simulation_applications]{list_simulation_applications}}
+again and assign that token to the request object's \code{nextToken}
+parameter. If there are no remaining results, the previous response
+object's NextToken parameter is set to null.}
 
-\item{maxResults}{When this parameter is used, \code{ListSimulationApplications} only returns
-\code{maxResults} results in a single page along with a \code{nextToken} response
-element. The remaining results of the initial request can be seen by
-sending another \code{ListSimulationApplications} request with the returned
-\code{nextToken} value. This value can be between 1 and 100. If this
-parameter is not used, then \code{ListSimulationApplications} returns up to
-100 results and a \code{nextToken} value if applicable.}
+\item{maxResults}{When this parameter is used,
+\code{\link[=robomaker_list_simulation_applications]{list_simulation_applications}}
+only returns \code{maxResults} results in a single page along with a
+\code{nextToken} response element. The remaining results of the initial
+request can be seen by sending another
+\code{\link[=robomaker_list_simulation_applications]{list_simulation_applications}}
+request with the returned \code{nextToken} value. This value can be between 1
+and 100. If this parameter is not used, then
+\code{\link[=robomaker_list_simulation_applications]{list_simulation_applications}}
+returns up to 100 results and a \code{nextToken} value if applicable.}
 
 \item{filters}{Optional list of filters to limit results.
 

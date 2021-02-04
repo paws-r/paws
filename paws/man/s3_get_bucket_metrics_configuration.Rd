@@ -30,11 +30,12 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 For information about CloudWatch request metrics for Amazon S3, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html}{Monitoring Metrics with Amazon CloudWatch}.
 
-The following operations are related to \code{GetBucketMetricsConfiguration}:
+The following operations are related to
+\code{\link[=s3_get_bucket_metrics_configuration]{get_bucket_metrics_configuration}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketMetricsConfiguration.html}{PutBucketMetricsConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetricsConfiguration.html}{DeleteBucketMetricsConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketMetricsConfigurations.html}{ListBucketMetricsConfigurations}
+\item \code{\link[=s3_put_bucket_metrics_configuration]{put_bucket_metrics_configuration}}
+\item \code{\link[=s3_delete_bucket_metrics_configuration]{delete_bucket_metrics_configuration}}
+\item \code{\link[=s3_list_bucket_metrics_configurations]{list_bucket_metrics_configurations}}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html}{Monitoring Metrics with Amazon CloudWatch}
 }
 }

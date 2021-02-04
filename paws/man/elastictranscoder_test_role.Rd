@@ -22,12 +22,12 @@ topics that you want the action to send a test notification to.}
 \description{
 The TestRole operation tests the IAM role used to create the pipeline.
 
-The \code{TestRole} action lets you determine whether the IAM role you are
-using has sufficient permissions to let Elastic Transcoder perform tasks
-associated with the transcoding process. The action attempts to assume
-the specified IAM role, checks read access to the input and output
-buckets, and tries to send a test notification to Amazon SNS topics that
-you specify.
+The \code{\link[=elastictranscoder_test_role]{test_role}} action lets you determine
+whether the IAM role you are using has sufficient permissions to let
+Elastic Transcoder perform tasks associated with the transcoding
+process. The action attempts to assume the specified IAM role, checks
+read access to the input and output buckets, and tries to send a test
+notification to Amazon SNS topics that you specify.
 }
 \section{Request syntax}{
 \preformatted{svc$test_role(

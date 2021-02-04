@@ -41,9 +41,10 @@ To make sure that you have the latest version of the stream before
 updating it, you can specify the stream version. Kinesis Video Streams
 assigns a version to each stream. When you update a stream, Kinesis
 Video Streams assigns a new version number. To get the latest stream
-version, use the \code{DescribeStream} API.
+version, use the \code{\link[=kinesisvideo_describe_stream]{describe_stream}} API.
 
-\code{UpdateStream} is an asynchronous operation, and takes time to complete.
+\code{\link[=kinesisvideo_update_stream]{update_stream}} is an asynchronous
+operation, and takes time to complete.
 }
 \section{Request syntax}{
 \preformatted{svc$update_stream(

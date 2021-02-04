@@ -14,7 +14,7 @@ account must be unique.}
 \item{RepositoryAssociationArn}{[required] The Amazon Resource Name (ARN) of the
 \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html}{\code{RepositoryAssociation}}
 object. You can retrieve this ARN by calling
-\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html}{\code{ListRepositoryAssociations}}
+\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html}{\code{list_repository_associations}}
 .
 
 A code review can only be created on an associated repository. This is

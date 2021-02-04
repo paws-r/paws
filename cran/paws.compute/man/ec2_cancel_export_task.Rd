@@ -8,7 +8,7 @@ ec2_cancel_export_task(ExportTaskId)
 }
 \arguments{
 \item{ExportTaskId}{[required] The ID of the export task. This is the ID returned by
-\code{CreateInstanceExportTask}.}
+\code{\link[=ec2_create_instance_export_task]{create_instance_export_task}}.}
 }
 \description{
 Cancels an active export task. The request removes all artifacts of the

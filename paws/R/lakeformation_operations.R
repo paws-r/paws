@@ -303,8 +303,8 @@ lakeformation_get_data_lake_settings <- function(CatalogId = NULL) {
 #' @description
 #' Returns the Lake Formation permissions for a specified table or database
 #' resource located at a path in Amazon S3.
-#' `GetEffectivePermissionsForPath` will not return databases and tables if
-#' the catalog is encrypted.
+#' [`get_effective_permissions_for_path`][lakeformation_get_effective_permissions_for_path]
+#' will not return databases and tables if the catalog is encrypted.
 #'
 #' @usage
 #' lakeformation_get_effective_permissions_for_path(CatalogId, ResourceArn,

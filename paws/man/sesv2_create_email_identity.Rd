@@ -41,11 +41,11 @@ verification method is known as \href{https://docs.aws.amazon.com/ses/latest/Dev
 Alternatively, you can perform the verification process by providing
 your own public-private key pair. This verification method is known as
 Bring Your Own DKIM (BYODKIM). To use BYODKIM, your call to the
-\code{CreateEmailIdentity} operation has to include the
-\code{DkimSigningAttributes} object. When you specify this object, you
-provide a selector (a component of the DNS record name that identifies
-the public key that you want to use for DKIM authentication) and a
-private key.
+\code{\link[=sesv2_create_email_identity]{create_email_identity}} operation has to
+include the \code{DkimSigningAttributes} object. When you specify this
+object, you provide a selector (a component of the DNS record name that
+identifies the public key that you want to use for DKIM authentication)
+and a private key.
 }
 \section{Request syntax}{
 \preformatted{svc$create_email_identity(

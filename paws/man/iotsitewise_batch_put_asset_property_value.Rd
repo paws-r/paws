@@ -22,7 +22,7 @@ To identify an asset property, you must specify one of the following:
 \item A \code{propertyAlias}, which is a data stream alias (for example,
 \verb{/company/windfarm/3/turbine/7/temperature}). To define an asset
 property's alias, see
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html}{UpdateAssetProperty}.
+\code{\link[=iotsitewise_update_asset_property]{update_asset_property}}.
 }
 
 With respect to Unix epoch time, AWS IoT SiteWise accepts only TQVs that
@@ -36,7 +36,8 @@ timestamps unless the newer TQV has a different quality. For example, if
 you store a TQV \verb{\\\{T1, GOOD, V1\\\}}, then storing \verb{\\\{T1, GOOD, V2\\\}} replaces
 the existing TQV.
 
-AWS IoT SiteWise authorizes access to each \code{BatchPutAssetPropertyValue}
+AWS IoT SiteWise authorizes access to each
+\code{\link[=iotsitewise_batch_put_asset_property_value]{batch_put_asset_property_value}}
 entry individually. For more information, see
 \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-batchputassetpropertyvalue-action}{BatchPutAssetPropertyValue authorization}
 in the \emph{AWS IoT SiteWise User Guide}.

@@ -48,7 +48,8 @@ count against your tags per resource limit.
 }}
 }
 \description{
-Exports a forecast created by the CreateForecast operation to your
+Exports a forecast created by the
+\code{\link[=forecastservice_create_forecast]{create_forecast}} operation to your
 Amazon Simple Storage Service (Amazon S3) bucket. The forecast file name
 will match the following conventions:
 
@@ -65,11 +66,13 @@ aws-forecast-iam-roles.
 For more information, see howitworks-forecast.
 
 To get a list of all your forecast export jobs, use the
-ListForecastExportJobs operation.
+\code{\link[=forecastservice_list_forecast_export_jobs]{list_forecast_export_jobs}}
+operation.
 
 The \code{Status} of the forecast export job must be \code{ACTIVE} before you can
 access the forecast in your Amazon S3 bucket. To get the status, use the
-DescribeForecastExportJob operation.
+\code{\link[=forecastservice_describe_forecast_export_job]{describe_forecast_export_job}}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$create_forecast_export_job(

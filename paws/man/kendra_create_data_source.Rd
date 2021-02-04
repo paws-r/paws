@@ -30,7 +30,8 @@ The \code{Configuration} parameter is required for all other data sources.}
 \item{Schedule}{Sets the frequency that Amazon Kendra will check the documents in your
 repository and update the index. If you don't set a schedule Amazon
 Kendra will not periodically update the index. You can call the
-\code{StartDataSourceSyncJob} operation to update the index.
+\code{\link[=kendra_start_data_source_sync_job]{start_data_source_sync_job}}
+operation to update the index.
 
 You can't specify the \code{Schedule} parameter when the \code{Type} parameter is
 set to \code{CUSTOM}. If you do, you receive a \code{ValidationException}
@@ -50,8 +51,9 @@ tags to identify and organize your resources and to control access to
 resources.}
 
 \item{ClientToken}{A token that you provide to identify the request to create a data
-source. Multiple calls to the \code{CreateDataSource} operation with the same
-client token will create only one data source.}
+source. Multiple calls to the
+\code{\link[=kendra_create_data_source]{create_data_source}} operation with the
+same client token will create only one data source.}
 }
 \description{
 Creates a data source that you use to with an Amazon Kendra index.
@@ -60,9 +62,9 @@ You specify a name, data source connector type and description for your
 data source. You also specify configuration information such as document
 metadata (author, source URI, and so on) and user context information.
 
-\code{CreateDataSource} is a synchronous operation. The operation returns 200
-if the data source was successfully created. Otherwise, an exception is
-raised.
+\code{\link[=kendra_create_data_source]{create_data_source}} is a synchronous
+operation. The operation returns 200 if the data source was successfully
+created. Otherwise, an exception is raised.
 }
 \section{Request syntax}{
 \preformatted{svc$create_data_source(

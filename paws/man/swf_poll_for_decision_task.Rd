@@ -34,9 +34,11 @@ The configured \code{maximumPageSize} determines how many results can be
 returned in a single call.
 
 The \code{nextPageToken} returned by this action cannot be used with
-GetWorkflowExecutionHistory to get the next page. You must call
-PollForDecisionTask again (with the \code{nextPageToken}) to retrieve the
-next page of history records. Calling PollForDecisionTask with a
+\code{\link[=swf_get_workflow_execution_history]{get_workflow_execution_history}}
+to get the next page. You must call
+\code{\link[=swf_poll_for_decision_task]{poll_for_decision_task}} again (with the
+\code{nextPageToken}) to retrieve the next page of history records. Calling
+\code{\link[=swf_poll_for_decision_task]{poll_for_decision_task}} with a
 \code{nextPageToken} doesn't return a new decision task.}
 
 \item{maximumPageSize}{The maximum number of results that are returned per call. Use
@@ -70,9 +72,12 @@ seconds (10 seconds higher than the timeout).
 Because the number of workflow history events for a single workflow
 execution might be very large, the result returned might be split up
 across a number of pages. To retrieve subsequent pages, make additional
-calls to \code{PollForDecisionTask} using the \code{nextPageToken} returned by the
-initial call. Note that you do \emph{not} call \code{GetWorkflowExecutionHistory}
-with this \code{nextPageToken}. Instead, call \code{PollForDecisionTask} again.
+calls to \code{\link[=swf_poll_for_decision_task]{poll_for_decision_task}} using
+the \code{nextPageToken} returned by the initial call. Note that you do \emph{not}
+call
+\code{\link[=swf_get_workflow_execution_history]{get_workflow_execution_history}}
+with this \code{nextPageToken}. Instead, call
+\code{\link[=swf_poll_for_decision_task]{poll_for_decision_task}} again.
 
 \strong{Access Control}
 

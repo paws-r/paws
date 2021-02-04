@@ -9,8 +9,8 @@ comprehendmedical_describe_phi_detection_job(JobId)
 }
 \arguments{
 \item{JobId}{[required] The identifier that Amazon Comprehend Medical generated for the job. The
-\code{StartPHIDetectionJob} operation returns this identifier in its
-response.}
+\code{\link[=comprehendmedical_start_phi_detection_job]{start_phi_detection_job}}
+operation returns this identifier in its response.}
 }
 \description{
 Gets the properties associated with a protected health information (PHI)

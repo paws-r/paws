@@ -38,15 +38,14 @@ for either Indian English (en-IN) or Hindi (hi-IN).
 If a bilingual voice is used and no language code is specified, Amazon
 Polly will use the default language of the bilingual voice. The default
 language for any voice is the one returned by the
-\href{https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html}{DescribeVoices}
-operation for the \code{LanguageCode} parameter. For example, if no language
-code is specified, Aditi will use Indian English rather than Hindi.}
+\code{\link[=polly_describe_voices]{describe_voices}} operation for the
+\code{LanguageCode} parameter. For example, if no language code is specified,
+Aditi will use Indian English rather than Hindi.}
 
 \item{LexiconNames}{List of one or more pronunciation lexicon names you want the service to
 apply during synthesis. Lexicons are applied only if the language of the
 lexicon is the same as the language of the voice. For information about
-storing lexicons, see
-\href{https://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html}{PutLexicon}.}
+storing lexicons, see \code{\link[=polly_put_lexicon]{put_lexicon}}.}
 
 \item{OutputFormat}{[required] The format in which the returned output will be encoded. For audio
 stream, this will be mp3, ogg\\_vorbis, or pcm. For speech marks, this
@@ -73,9 +72,7 @@ follow the SSML format for the input text.}
 value is plain text. For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/ssml.html}{Using SSML}.}
 
 \item{VoiceId}{[required] Voice ID to use for the synthesis. You can get a list of available voice
-IDs by calling the
-\href{https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html}{DescribeVoices}
-operation.}
+IDs by calling the \code{\link[=polly_describe_voices]{describe_voices}} operation.}
 }
 \description{
 Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML

@@ -101,9 +101,9 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' interprets the user input using the machine learning model that it built
 #' for the bot.
 #' 
-#' The `PostContent` operation supports audio input at 8kHz and 16kHz. You
-#' can use 8kHz audio to achieve higher speech recognition accuracy in
-#' telephone audio applications.
+#' The [`post_content`][lexruntimeservice_post_content] operation supports
+#' audio input at 8kHz and 16kHz. You can use 8kHz audio to achieve higher
+#' speech recognition accuracy in telephone audio applications.
 #' 
 #' In response, Amazon Lex returns the next message to convey to the user.
 #' Consider the following example messages:
@@ -502,11 +502,15 @@ lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttrib
 #' 
 #' -   `slotToElict`
 #' 
-#' If you send the `recentIntentSummaryView` parameter in a `PutSession`
-#' request, the contents of the new summary view replaces the old summary
-#' view. For example, if a `GetSession` request returns three intents in
-#' the summary view and you call `PutSession` with one intent in the
-#' summary view, the next call to `GetSession` will only return one intent.
+#' If you send the `recentIntentSummaryView` parameter in a
+#' [`put_session`][lexruntimeservice_put_session] request, the contents of
+#' the new summary view replaces the old summary view. For example, if a
+#' [`get_session`][lexruntimeservice_get_session] request returns three
+#' intents in the summary view and you call
+#' [`put_session`][lexruntimeservice_put_session] with one intent in the
+#' summary view, the next call to
+#' [`get_session`][lexruntimeservice_get_session] will only return one
+#' intent.
 #' @param accept The message that Amazon Lex returns in the response can be either text
 #' or speech based depending on the value of this field.
 #' 

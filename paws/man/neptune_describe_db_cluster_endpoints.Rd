@@ -16,8 +16,8 @@ a lowercase string.}
 
 \item{Filters}{A set of name-value pairs that define which endpoints to include in the
 output. The filters are specified as name-value pairs, in the format
-\verb{Name=<i>endpoint_type</i>,Values=<i>endpoint_type1</i>,<i>endpoint_type2</i>,...}.
-\code{Name} can be one of: \code{db-cluster-endpoint-type},
+\verb{Name=endpoint_type,Values=endpoint_type1,endpoint_type2,...}. \code{Name}
+can be one of: \code{db-cluster-endpoint-type},
 \code{db-cluster-endpoint-custom-type}, \code{db-cluster-endpoint-id},
 \code{db-cluster-endpoint-status}. \code{Values} for the
 \code{ db-cluster-endpoint-type} filter can be one or more of: \code{reader},
@@ -36,9 +36,9 @@ Default: 100
 Constraints: Minimum 20, maximum 100.}
 
 \item{Marker}{An optional pagination token provided by a previous
-\code{DescribeDBClusterEndpoints} request. If this parameter is specified,
-the response includes only records beyond the marker, up to the value
-specified by \code{MaxRecords}.}
+\code{\link[=neptune_describe_db_cluster_endpoints]{describe_db_cluster_endpoints}}
+request. If this parameter is specified, the response includes only
+records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
 \description{
 Returns information about endpoints for an Amazon Neptune DB cluster.

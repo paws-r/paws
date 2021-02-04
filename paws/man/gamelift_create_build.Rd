@@ -10,11 +10,12 @@ gamelift_create_build(Name, Version, StorageLocation, OperatingSystem,
 }
 \arguments{
 \item{Name}{A descriptive label that is associated with a build. Build names do not
-need to be unique. You can use UpdateBuild to change this value later.}
+need to be unique. You can use \code{\link[=gamelift_update_build]{update_build}}
+to change this value later.}
 
 \item{Version}{Version information that is associated with a build or script. Version
-strings do not need to be unique. You can use UpdateBuild to change this
-value later.}
+strings do not need to be unique. You can use
+\code{\link[=gamelift_update_build]{update_build}} to change this value later.}
 
 \item{StorageLocation}{The location where your game build files are stored. Use this parameter
 only when creating a build using files that are stored in an S3 bucket
@@ -37,9 +38,11 @@ developer-defined key-value pairs. Tagging AWS resources are useful for
 resource management, access management and cost allocation. For more
 information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
 in the \emph{AWS General Reference}. Once the resource is created, you can
-use TagResource, UntagResource, and ListTagsForResource to add, remove,
-and view tags. The maximum tag limit may be lower than stated. See the
-AWS General Reference for actual tagging limits.}
+use \code{\link[=gamelift_tag_resource]{tag_resource}},
+\code{\link[=gamelift_untag_resource]{untag_resource}}, and
+\code{\link[=gamelift_list_tags_for_resource]{list_tags_for_resource}} to add,
+remove, and view tags. The maximum tag limit may be lower than stated.
+See the AWS General Reference for actual tagging limits.}
 }
 \description{
 Creates a new Amazon GameLift build resource for your game server binary
@@ -53,19 +56,22 @@ AWS CLI command
 files from a file directory to a GameLift Amazon S3 location, and (2) it
 creates a new build resource.
 
-The \code{CreateBuild} operation can used in the following scenarios:
+The \code{\link[=gamelift_create_build]{create_build}} operation can used in the
+following scenarios:
 \itemize{
 \item To create a new game build with build files that are in an S3
 location under an AWS account that you control. To use this option,
 you must first give Amazon GameLift access to the S3 bucket. With
-permissions in place, call \code{CreateBuild} and specify a build name,
-operating system, and the S3 storage location of your game build.
+permissions in place, call \code{\link[=gamelift_create_build]{create_build}}
+and specify a build name, operating system, and the S3 storage
+location of your game build.
 \item To directly upload your build files to a GameLift S3 location. To
-use this option, first call \code{CreateBuild} and specify a build name
-and operating system. This operation creates a new build resource
-and also returns an S3 location with temporary access credentials.
-Use the credentials to manually upload your build files to the
-specified S3 location. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html}{Uploading Objects}
+use this option, first call \code{\link[=gamelift_create_build]{create_build}}
+and specify a build name and operating system. This operation
+creates a new build resource and also returns an S3 location with
+temporary access credentials. Use the credentials to manually upload
+your build files to the specified S3 location. For more information,
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html}{Uploading Objects}
 in the \emph{Amazon S3 Developer Guide}. Build files can be uploaded to
 the GameLift S3 location once only; that can't be updated.
 }
@@ -82,11 +88,11 @@ build ID and places it in \code{INITIALIZED} status. A build must be in
 
 \strong{Related operations}
 \itemize{
-\item CreateBuild
-\item ListBuilds
-\item DescribeBuild
-\item UpdateBuild
-\item DeleteBuild
+\item \code{\link[=gamelift_create_build]{create_build}}
+\item \code{\link[=gamelift_list_builds]{list_builds}}
+\item \code{\link[=gamelift_describe_build]{describe_build}}
+\item \code{\link[=gamelift_update_build]{update_build}}
+\item \code{\link[=gamelift_delete_build]{delete_build}}
 }
 }
 \section{Request syntax}{

@@ -13,8 +13,9 @@ datasync_list_tasks(MaxResults, NextToken, Filters)
 list of tasks.}
 
 \item{Filters}{You can use API filters to narrow down the list of resources returned by
-\code{ListTasks}. For example, to retrieve all tasks on a specific source
-location, you can use \code{ListTasks} with filter name \code{LocationId} and
+\code{\link[=datasync_list_tasks]{list_tasks}}. For example, to retrieve all tasks
+on a specific source location, you can use
+\code{\link[=datasync_list_tasks]{list_tasks}} with filter name \code{LocationId} and
 \verb{Operator Equals} with the ARN for the location.}
 }
 \description{

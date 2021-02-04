@@ -29,39 +29,46 @@ NULL
 #' The following list describes the AWS Support case management operations:
 #' 
 #' -   **Service names, issue categories, and available severity levels.**
-#'     The DescribeServices and DescribeSeverityLevels operations return
-#'     AWS service names, service codes, service categories, and problem
-#'     severity levels. You use these values when you call the CreateCase
-#'     operation.
+#'     The [`describe_services`][support_describe_services] and
+#'     [`describe_severity_levels`][support_describe_severity_levels]
+#'     operations return AWS service names, service codes, service
+#'     categories, and problem severity levels. You use these values when
+#'     you call the [`create_case`][support_create_case] operation.
 #' 
 #' -   **Case creation, case details, and case resolution.** The
-#'     CreateCase, DescribeCases, DescribeAttachment, and ResolveCase
-#'     operations create AWS Support cases, retrieve information about
-#'     cases, and resolve cases.
+#'     [`create_case`][support_create_case],
+#'     [`describe_cases`][support_describe_cases],
+#'     [`describe_attachment`][support_describe_attachment], and
+#'     [`resolve_case`][support_resolve_case] operations create AWS Support
+#'     cases, retrieve information about cases, and resolve cases.
 #' 
-#' -   **Case communication.** The DescribeCommunications,
-#'     AddCommunicationToCase, and AddAttachmentsToSet operations retrieve
-#'     and add communications and attachments to AWS Support cases.
+#' -   **Case communication.** The
+#'     [`describe_communications`][support_describe_communications],
+#'     [`add_communication_to_case`][support_add_communication_to_case],
+#'     and [`add_attachments_to_set`][support_add_attachments_to_set]
+#'     operations retrieve and add communications and attachments to AWS
+#'     Support cases.
 #' 
 #' The following list describes the operations available from the AWS
 #' Support service for Trusted Advisor:
 #' 
-#' -   DescribeTrustedAdvisorChecks returns the list of checks that run
-#'     against your AWS resources.
+#' -   [`describe_trusted_advisor_checks`][support_describe_trusted_advisor_checks]
+#'     returns the list of checks that run against your AWS resources.
 #' 
 #' -   Using the `checkId` for a specific check returned by
-#'     DescribeTrustedAdvisorChecks, you can call
-#'     DescribeTrustedAdvisorCheckResult to obtain the results for the
-#'     check that you specified.
+#'     [`describe_trusted_advisor_checks`][support_describe_trusted_advisor_checks],
+#'     you can call
+#'     [`describe_trusted_advisor_check_result`][support_describe_trusted_advisor_check_result]
+#'     to obtain the results for the check that you specified.
 #' 
-#' -   DescribeTrustedAdvisorCheckSummaries returns summarized results for
-#'     one or more Trusted Advisor checks.
+#' -   [`describe_trusted_advisor_check_summaries`][support_describe_trusted_advisor_check_summaries]
+#'     returns summarized results for one or more Trusted Advisor checks.
 #' 
-#' -   RefreshTrustedAdvisorCheck requests that Trusted Advisor rerun a
-#'     specified check.
+#' -   [`refresh_trusted_advisor_check`][support_refresh_trusted_advisor_check]
+#'     requests that Trusted Advisor rerun a specified check.
 #' 
-#' -   DescribeTrustedAdvisorCheckRefreshStatuses reports the refresh
-#'     status of one or more checks.
+#' -   [`describe_trusted_advisor_check_refresh_statuses`][support_describe_trusted_advisor_check_refresh_statuses]
+#'     reports the refresh status of one or more checks.
 #' 
 #' For authentication of requests, AWS Support uses [Signature Version 4
 #' Signing

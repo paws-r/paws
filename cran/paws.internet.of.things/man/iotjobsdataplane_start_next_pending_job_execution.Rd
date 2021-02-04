@@ -17,12 +17,12 @@ execution. If not specified, the statusDetails are unchanged.}
 \item{stepTimeoutInMinutes}{Specifies the amount of time this device has to finish execution of this
 job. If the job execution status is not set to a terminal state before
 this timer expires, or before the timer is reset (by calling
-\code{UpdateJobExecution}, setting the status to \code{IN_PROGRESS} and specifying
-a new timeout value in field \code{stepTimeoutInMinutes}) the job execution
-status will be automatically set to \code{TIMED_OUT}. Note that setting this
-timeout has no effect on that job execution timeout which may have been
-specified when the job was created (\code{CreateJob} using field
-\code{timeoutConfig}).}
+\code{\link[=iotjobsdataplane_update_job_execution]{update_job_execution}}, setting
+the status to \code{IN_PROGRESS} and specifying a new timeout value in field
+\code{stepTimeoutInMinutes}) the job execution status will be automatically
+set to \code{TIMED_OUT}. Note that setting this timeout has no effect on that
+job execution timeout which may have been specified when the job was
+created (\code{CreateJob} using field \code{timeoutConfig}).}
 }
 \description{
 Gets and starts the next pending (status IN\\_PROGRESS or QUEUED) job

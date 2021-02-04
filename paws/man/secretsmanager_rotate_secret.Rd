@@ -95,9 +95,9 @@ secret.
 }
 
 If the \code{AWSPENDING} staging label is present but not attached to the
-same version as \code{AWSCURRENT} then any later invocation of \code{RotateSecret}
-assumes that a previous rotation request is still in progress and
-returns an error.
+same version as \code{AWSCURRENT} then any later invocation of
+\code{\link[=secretsmanager_rotate_secret]{rotate_secret}} assumes that a previous
+rotation request is still in progress and returns an error.
 
 \strong{Minimum permissions}
 
@@ -110,11 +110,15 @@ metadata)
 
 \strong{Related operations}
 \itemize{
-\item To list the secrets in your account, use ListSecrets.
-\item To get the details for a version of a secret, use DescribeSecret.
-\item To create a new version of a secret, use CreateSecret.
+\item To list the secrets in your account, use
+\code{\link[=secretsmanager_list_secrets]{list_secrets}}.
+\item To get the details for a version of a secret, use
+\code{\link[=secretsmanager_describe_secret]{describe_secret}}.
+\item To create a new version of a secret, use
+\code{\link[=secretsmanager_create_secret]{create_secret}}.
 \item To attach staging labels to or remove staging labels from a version
-of a secret, use UpdateSecretVersionStage.
+of a secret, use
+\code{\link[=secretsmanager_update_secret_version_stage]{update_secret_version_stage}}.
 }
 }
 \section{Request syntax}{

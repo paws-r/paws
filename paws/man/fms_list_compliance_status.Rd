@@ -14,9 +14,9 @@ fms_list_compliance_status(PolicyId, NextToken, MaxResults)
 \code{MaxResults}, AWS Firewall Manager returns a \code{NextToken} value in the
 response that allows you to list another group of
 \code{PolicyComplianceStatus} objects. For the second and subsequent
-\code{ListComplianceStatus} requests, specify the value of \code{NextToken} from
-the previous response to get information about another batch of
-\code{PolicyComplianceStatus} objects.}
+\code{\link[=fms_list_compliance_status]{list_compliance_status}} requests, specify
+the value of \code{NextToken} from the previous response to get information
+about another batch of \code{PolicyComplianceStatus} objects.}
 
 \item{MaxResults}{Specifies the number of \code{PolicyComplianceStatus} objects that you want
 AWS Firewall Manager to return for this request. If you have more

@@ -50,10 +50,11 @@ The default value is -1.}
 \description{
 Deletes a previously provisioned cluster without its final snapshot
 being created. A successful response from the web service indicates that
-the request was received correctly. Use DescribeClusters to monitor the
-status of the deletion. The delete operation cannot be canceled or
-reverted once submitted. For more information about managing clusters,
-go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
+the request was received correctly. Use
+\code{\link[=redshift_describe_clusters]{describe_clusters}} to monitor the status
+of the deletion. The delete operation cannot be canceled or reverted
+once submitted. For more information about managing clusters, go to
+\href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 
 If you want to shut down the cluster and retain it for future use, set

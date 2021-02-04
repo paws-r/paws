@@ -154,8 +154,7 @@ You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
 
 You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-available, the CMK's alias (using the format
-\verb{alias/&lt;alias-name&gt;}).}
+available, the CMK's alias (using the format \verb{alias/<alias-name>}).}
 
 \item{idempotencyToken}{A unique, case sensitive identifier you provide to ensure the
 idempotency of the StartBuild request. The token is included in the

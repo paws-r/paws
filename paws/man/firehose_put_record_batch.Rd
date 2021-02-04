@@ -17,20 +17,21 @@ firehose_put_record_batch(DeliveryStreamName, Records)
 Writes multiple data records into a delivery stream in a single call,
 which can achieve higher throughput per producer than when writing
 single records. To write single data records into a delivery stream, use
-PutRecord. Applications using these operations are referred to as
-producers.
+\code{\link[=firehose_put_record]{put_record}}. Applications using these operations
+are referred to as producers.
 
 For information about service quota, see \href{https://docs.aws.amazon.com/firehose/latest/dev/limits.html}{Amazon Kinesis Data Firehose Quota}.
 
-Each PutRecordBatch request supports up to 500 records. Each record in
-the request can be as large as 1,000 KB (before 64-bit encoding), up to
-a limit of 4 MB for the entire request. These limits cannot be changed.
+Each \code{\link[=firehose_put_record_batch]{put_record_batch}} request supports up
+to 500 records. Each record in the request can be as large as 1,000 KB
+(before 64-bit encoding), up to a limit of 4 MB for the entire request.
+These limits cannot be changed.
 
 You must specify the name of the delivery stream and the data record
-when using PutRecord. The data record consists of a data blob that can
-be up to 1,000 KB in size, and any kind of data. For example, it could
-be a segment from a log file, geographic location data, website
-clickstream data, and so on.
+when using \code{\link[=firehose_put_record]{put_record}}. The data record consists
+of a data blob that can be up to 1,000 KB in size, and any kind of data.
+For example, it could be a segment from a log file, geographic location
+data, website clickstream data, and so on.
 
 Kinesis Data Firehose buffers records before delivering them to the
 destination. To disambiguate the data blobs at the destination, a common
@@ -39,17 +40,19 @@ some other character unique within the data. This allows the consumer
 application to parse individual data items when reading the data from
 the destination.
 
-The PutRecordBatch response includes a count of failed records,
-\code{FailedPutCount}, and an array of responses, \code{RequestResponses}. Even if
-the PutRecordBatch call succeeds, the value of \code{FailedPutCount} may be
-greater than 0, indicating that there are records for which the
-operation didn't succeed. Each entry in the \code{RequestResponses} array
-provides additional information about the processed record. It directly
-correlates with a record in the request array using the same ordering,
-from the top to the bottom. The response array always includes the same
-number of records as the request array. \code{RequestResponses} includes both
-successfully and unsuccessfully processed records. Kinesis Data Firehose
-tries to process all records in each PutRecordBatch request. A single
+The \code{\link[=firehose_put_record_batch]{put_record_batch}} response includes a
+count of failed records, \code{FailedPutCount}, and an array of responses,
+\code{RequestResponses}. Even if the
+\code{\link[=firehose_put_record_batch]{put_record_batch}} call succeeds, the value
+of \code{FailedPutCount} may be greater than 0, indicating that there are
+records for which the operation didn't succeed. Each entry in the
+\code{RequestResponses} array provides additional information about the
+processed record. It directly correlates with a record in the request
+array using the same ordering, from the top to the bottom. The response
+array always includes the same number of records as the request array.
+\code{RequestResponses} includes both successfully and unsuccessfully
+processed records. Kinesis Data Firehose tries to process all records in
+each \code{\link[=firehose_put_record_batch]{put_record_batch}} request. A single
 record failure does not stop the processing of subsequent records.
 
 A successfully processed record includes a \code{RecordId} value, which is
@@ -66,9 +69,10 @@ failed processing. This minimizes the possible duplicate records and
 also reduces the total bytes sent (and corresponding charges). We
 recommend that you handle any duplicates at the destination.
 
-If PutRecordBatch throws \code{ServiceUnavailableException}, back off and
-retry. If the exception persists, it is possible that the throughput
-limits have been exceeded for the delivery stream.
+If \code{\link[=firehose_put_record_batch]{put_record_batch}} throws
+\code{ServiceUnavailableException}, back off and retry. If the exception
+persists, it is possible that the throughput limits have been exceeded
+for the delivery stream.
 
 Data records sent to Kinesis Data Firehose are stored for 24 hours from
 the time they are added to a delivery stream as it attempts to send the

@@ -203,7 +203,8 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
 #' Gets summary information about all or the specified data lifecycle
 #' policies.
 #' 
-#' To get complete information about a policy, use GetLifecyclePolicy.
+#' To get complete information about a policy, use
+#' [`get_lifecycle_policy`][dlm_get_lifecycle_policy].
 #'
 #' @usage
 #' dlm_get_lifecycle_policies(PolicyIds, State, ResourceTypes, TargetTags,

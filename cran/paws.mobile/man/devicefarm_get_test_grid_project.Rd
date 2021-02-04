@@ -8,7 +8,8 @@ devicefarm_get_test_grid_project(projectArn)
 }
 \arguments{
 \item{projectArn}{[required] The ARN of the Selenium testing project, from either
-CreateTestGridProject or ListTestGridProjects.}
+\code{\link[=devicefarm_create_test_grid_project]{create_test_grid_project}} or
+\code{\link[=devicefarm_list_test_grid_projects]{list_test_grid_projects}}.}
 }
 \description{
 Retrieves information about a Selenium testing project.

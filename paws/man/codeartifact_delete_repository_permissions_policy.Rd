@@ -28,9 +28,11 @@ resource policy is deleted, the permissions allowed and denied by the
 deleted policy are removed. The effect of deleting a resource policy
 might not be immediate.
 
-Use \code{DeleteRepositoryPermissionsPolicy} with caution. After a policy is
-deleted, AWS users, roles, and accounts lose permissions to perform the
-repository actions granted by the deleted policy.
+Use
+\code{\link[=codeartifact_delete_repository_permissions_policy]{delete_repository_permissions_policy}}
+with caution. After a policy is deleted, AWS users, roles, and accounts
+lose permissions to perform the repository actions granted by the
+deleted policy.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_repository_permissions_policy(

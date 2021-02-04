@@ -23,11 +23,11 @@ in the \emph{AWS Systems Manager User Guide}.
 
 Specify instances using the following format:
 
-\verb{Key=InstanceIds,Values=&lt;instance-id-1&gt;,&lt;instance-id-2&gt;}
+\verb{Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>}
 
 Specify maintenance window targets using the following format:
 
-\verb{Key=WindowTargetIds,Values=&lt;window-target-id-1&gt;,&lt;window-target-id-2&gt;}}
+\verb{Key=WindowTargetIds,Values=<window-target-id-1>,<window-target-id-2>}}
 
 \item{TaskArn}{[required] The ARN of the task to run.}
 
@@ -35,7 +35,8 @@ Specify maintenance window targets using the following format:
 running a maintenance window task. If you do not specify a service role
 ARN, Systems Manager uses your account's service-linked role. If no
 service-linked role for Systems Manager exists in your account, it is
-created when you run \code{RegisterTaskWithMaintenanceWindow}.
+created when you run
+\code{\link[=ssm_register_task_with_maintenance_window]{register_task_with_maintenance_window}}.
 
 For more information, see the following topics in the in the \emph{AWS
 Systems Manager User Guide}:

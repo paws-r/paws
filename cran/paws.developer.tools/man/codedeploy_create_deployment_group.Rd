@@ -68,8 +68,7 @@ groups. Cannot be used in the same call as \code{ec2TagFilters}.}
 \item{ecsServices}{The target Amazon ECS services in the deployment group. This applies
 only to deployment groups that use the Amazon ECS compute platform. A
 target Amazon ECS service is specified as an Amazon ECS cluster and
-service name pair using the format
-\verb{&lt;clustername&gt;:&lt;servicename&gt;}.}
+service name pair using the format \verb{<clustername>:<servicename>}.}
 
 \item{onPremisesTagSet}{Information about groups of tags applied to on-premises instances. The
 deployment group includes only on-premises instances identified by all

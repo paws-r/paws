@@ -17,8 +17,8 @@ of the target AWS IoT thing or thing group.}
 
 You can create deployments without names. If you create a deployment
 without a name, the AWS IoT Greengrass V2 console shows the deployment
-name as \verb{&lt;targetType&gt;:&lt;targetName&gt;}, where \code{targetType} and
-\code{targetName} are the type and name of the deployment target.}
+name as \verb{<targetType>:<targetName>}, where \code{targetType} and \code{targetName}
+are the type and name of the deployment target.}
 
 \item{components}{The components to deploy. This is a dictionary, where each key is the
 name of a component, and each key's value is the version and

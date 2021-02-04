@@ -12,9 +12,9 @@ sagemaker_list_models(SortBy, SortOrder, NextToken, MaxResults,
 
 \item{SortOrder}{The sort order for results. The default is \code{Descending}.}
 
-\item{NextToken}{If the response to a previous \code{ListModels} request was truncated, the
-response includes a \code{NextToken}. To retrieve the next set of models, use
-the token in the next request.}
+\item{NextToken}{If the response to a previous \code{\link[=sagemaker_list_models]{list_models}}
+request was truncated, the response includes a \code{NextToken}. To retrieve
+the next set of models, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of models to return in the response.}
 
@@ -28,7 +28,8 @@ the training job whose name contains the specified string.}
 equal to the specified time (timestamp).}
 }
 \description{
-Lists models created with the CreateModel API.
+Lists models created with the \code{\link[=sagemaker_create_model]{create_model}}
+API.
 }
 \section{Request syntax}{
 \preformatted{svc$list_models(

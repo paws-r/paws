@@ -24,9 +24,9 @@ notifications to.}
 Simple message or a Raw message.}
 
 \item{EmailTags}{A list of tags, in the form of name/value pairs, to apply to an email
-that you send using the \code{SendEmail} operation. Tags correspond to
-characteristics of the email that you define, so that you can publish
-email sending events.}
+that you send using the \code{\link[=pinpointemail_send_email]{send_email}}
+operation. Tags correspond to characteristics of the email that you
+define, so that you can publish email sending events.}
 
 \item{ConfigurationSetName}{The name of the configuration set that you want to use when sending the
 email.}

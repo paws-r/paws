@@ -61,7 +61,8 @@ added. Depending on the specific updates requested, this operation can
 update with no interruption, with some interruption, or replace the
 provisioned product entirely.
 
-You can check the status of this request using DescribeRecord.
+You can check the status of this request using
+\code{\link[=servicecatalog_describe_record]{describe_record}}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_provisioned_product(

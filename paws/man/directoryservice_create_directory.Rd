@@ -17,7 +17,8 @@ process creates a directory administrator account with the user name
 \code{Administrator} and this password.
 
 If you need to change the password for the administrator account, you
-can use the ResetUserPassword API call.
+can use the
+\code{\link[=directoryservice_reset_user_password]{reset_user_password}} API call.
 
 The regex pattern for this string is made up of the following
 conditions:
@@ -55,10 +56,11 @@ the operation.}
 Creates a Simple AD directory. For more information, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html}{Simple Active Directory}
 in the \emph{AWS Directory Service Admin Guide}.
 
-Before you call \code{CreateDirectory}, ensure that all of the required
-permissions have been explicitly granted through a policy. For details
-about what permissions are required to run the \code{CreateDirectory}
-operation, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
+Before you call \code{\link[=directoryservice_create_directory]{create_directory}},
+ensure that all of the required permissions have been explicitly granted
+through a policy. For details about what permissions are required to run
+the \code{\link[=directoryservice_create_directory]{create_directory}} operation,
+see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_directory(

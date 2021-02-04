@@ -11,7 +11,8 @@ personalize_describe_dataset_import_job(datasetImportJobArn)
 \item{datasetImportJobArn}{[required] The Amazon Resource Name (ARN) of the dataset import job to describe.}
 }
 \description{
-Describes the dataset import job created by CreateDatasetImportJob,
+Describes the dataset import job created by
+\code{\link[=personalize_create_dataset_import_job]{create_dataset_import_job}},
 including the import job status.
 }
 \section{Request syntax}{

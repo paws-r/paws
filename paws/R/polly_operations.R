@@ -8,8 +8,8 @@ NULL
 #' @description
 #' Deletes the specified pronunciation lexicon stored in an AWS Region. A
 #' lexicon which has been deleted is not available for speech synthesis,
-#' nor is it possible to retrieve it using either the `GetLexicon` or
-#' `ListLexicon` APIs.
+#' nor is it possible to retrieve it using either the
+#' [`get_lexicon`][polly_get_lexicon] or `ListLexicon` APIs.
 #' 
 #' For more information, see [Managing
 #' Lexicons](https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
@@ -64,14 +64,15 @@ polly_delete_lexicon <- function(Name) {
 #' or female, and is identified by an ID, which is the ASCII version of the
 #' voice name.
 #' 
-#' When synthesizing speech ( `SynthesizeSpeech` ), you provide the voice
+#' When synthesizing speech (
+#' [`synthesize_speech`][polly_synthesize_speech] ), you provide the voice
 #' ID for the voice you want from the list of voices returned by
-#' `DescribeVoices`.
+#' [`describe_voices`][polly_describe_voices].
 #' 
 #' For example, you want your news reader application to read news in a
 #' specific language, but giving a user the option to choose the voice.
-#' Using the `DescribeVoices` operation you can provide the user with a
-#' list of available voices to select from.
+#' Using the [`describe_voices`][polly_describe_voices] operation you can
+#' provide the user with a list of available voices to select from.
 #' 
 #' You can optionally specify a language code to filter the available
 #' voices. For example, if you specify `en-US`, the operation returns a
@@ -95,8 +96,9 @@ polly_delete_lexicon <- function(Name) {
 #' request all languages that use US English (es-US), and there is an
 #' Italian voice that speaks both Italian (it-IT) and US English, that
 #' voice will be included if you specify `yes` but not if you specify `no`.
-#' @param NextToken An opaque pagination token returned from the previous `DescribeVoices`
-#' operation. If present, this indicates where to continue the listing.
+#' @param NextToken An opaque pagination token returned from the previous
+#' [`describe_voices`][polly_describe_voices] operation. If present, this
+#' indicates where to continue the listing.
 #'
 #' @section Request syntax:
 #' ```
@@ -238,8 +240,9 @@ polly_get_speech_synthesis_task <- function(TaskId) {
 #' @usage
 #' polly_list_lexicons(NextToken)
 #'
-#' @param NextToken An opaque pagination token returned from previous `ListLexicons`
-#' operation. If present, indicates where to continue the list of lexicons.
+#' @param NextToken An opaque pagination token returned from previous
+#' [`list_lexicons`][polly_list_lexicons] operation. If present, indicates
+#' where to continue the list of lexicons.
 #'
 #' @section Request syntax:
 #' ```
@@ -404,9 +407,9 @@ polly_put_lexicon <- function(Name, Content) {
 #' If a bilingual voice is used and no language code is specified, Amazon
 #' Polly will use the default language of the bilingual voice. The default
 #' language for any voice is the one returned by the
-#' [DescribeVoices](https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html)
-#' operation for the `LanguageCode` parameter. For example, if no language
-#' code is specified, Aditi will use Indian English rather than Hindi.
+#' [`describe_voices`][polly_describe_voices] operation for the
+#' `LanguageCode` parameter. For example, if no language code is specified,
+#' Aditi will use Indian English rather than Hindi.
 #' @param LexiconNames List of one or more pronunciation lexicon names you want the service to
 #' apply during synthesis. Lexicons are applied only if the language of the
 #' lexicon is the same as the language of the voice.
@@ -518,14 +521,13 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' If a bilingual voice is used and no language code is specified, Amazon
 #' Polly will use the default language of the bilingual voice. The default
 #' language for any voice is the one returned by the
-#' [DescribeVoices](https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html)
-#' operation for the `LanguageCode` parameter. For example, if no language
-#' code is specified, Aditi will use Indian English rather than Hindi.
+#' [`describe_voices`][polly_describe_voices] operation for the
+#' `LanguageCode` parameter. For example, if no language code is specified,
+#' Aditi will use Indian English rather than Hindi.
 #' @param LexiconNames List of one or more pronunciation lexicon names you want the service to
 #' apply during synthesis. Lexicons are applied only if the language of the
 #' lexicon is the same as the language of the voice. For information about
-#' storing lexicons, see
-#' [PutLexicon](https://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html).
+#' storing lexicons, see [`put_lexicon`][polly_put_lexicon].
 #' @param OutputFormat &#91;required&#93; The format in which the returned output will be encoded. For audio
 #' stream, this will be mp3, ogg\\_vorbis, or pcm. For speech marks, this
 #' will be json.
@@ -547,9 +549,7 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' value is plain text. For more information, see [Using
 #' SSML](https://docs.aws.amazon.com/polly/latest/dg/ssml.html).
 #' @param VoiceId &#91;required&#93; Voice ID to use for the synthesis. You can get a list of available voice
-#' IDs by calling the
-#' [DescribeVoices](https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html)
-#' operation.
+#' IDs by calling the [`describe_voices`][polly_describe_voices] operation.
 #'
 #' @section Request syntax:
 #' ```

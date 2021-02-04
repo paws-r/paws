@@ -26,7 +26,8 @@ create a new version. It returns the last version that you created.
 
 You can update only the \verb{$LATEST} version of a slot type. You can't
 update the numbered versions that you create with the
-\code{CreateSlotTypeVersion} operation.
+\code{\link[=lexmodelbuildingservice_create_slot_type_version]{create_slot_type_version}}
+operation.
 
 When you create a version of a slot type, Amazon Lex sets the version to
 \enumerate{

@@ -21,11 +21,11 @@ Note the following:
 \item The AWS account that you're transferring the domain to must accept
 the transfer. If the other account doesn't accept the transfer
 within 3 days, we cancel the transfer. See
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_AcceptDomainTransferFromAnotherAwsAccount.html}{AcceptDomainTransferFromAnotherAwsAccount}.
+\code{\link[=route53domains_accept_domain_transfer_from_another_aws_account]{accept_domain_transfer_from_another_aws_account}}.
 \item You can cancel the transfer before the other account accepts it. See
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_CancelDomainTransferToAnotherAwsAccount.html}{CancelDomainTransferToAnotherAwsAccount}.
+\code{\link[=route53domains_cancel_domain_transfer_to_another_aws_account]{cancel_domain_transfer_to_another_aws_account}}.
 \item The other account can reject the transfer. See
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_RejectDomainTransferFromAnotherAwsAccount.html}{RejectDomainTransferFromAnotherAwsAccount}.
+\code{\link[=route53domains_reject_domain_transfer_from_another_aws_account]{reject_domain_transfer_from_another_aws_account}}.
 }
 
 When you transfer a domain from one AWS account to another, Route 53
@@ -36,13 +36,11 @@ information about transferring the hosted zone to another AWS account,
 see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-migrating.html}{Migrating a Hosted Zone to a Different AWS Account}
 in the \emph{Amazon Route 53 Developer Guide}.
 
-Use either
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html}{ListOperations}
-or
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html}{GetOperationDetail}
-to determine whether the operation succeeded.
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html}{GetOperationDetail}
-provides additional information, for example,
+Use either \code{\link[=route53domains_list_operations]{list_operations}} or
+\code{\link[=route53domains_get_operation_detail]{get_operation_detail}} to
+determine whether the operation succeeded.
+\code{\link[=route53domains_get_operation_detail]{get_operation_detail}} provides
+additional information, for example,
 \verb{Domain Transfer from Aws Account 111122223333 has been cancelled}.
 }
 \section{Request syntax}{

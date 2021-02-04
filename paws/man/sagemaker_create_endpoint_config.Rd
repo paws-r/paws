@@ -10,7 +10,7 @@ sagemaker_create_endpoint_config(EndpointConfigName, ProductionVariants,
 }
 \arguments{
 \item{EndpointConfigName}{[required] The name of the endpoint configuration. You specify this name in a
-CreateEndpoint request.}
+\code{\link[=sagemaker_create_endpoint]{create_endpoint}} request.}
 
 \item{ProductionVariants}{[required] An list of \code{ProductionVariant} objects, one for each model that you want
 to host at this endpoint.}
@@ -36,7 +36,8 @@ The KmsKeyId can be any of the following formats:
 }
 
 The KMS key policy must grant permission to the IAM role that you
-specify in your \code{CreateEndpoint}, \code{UpdateEndpoint} requests. For more
+specify in your \code{\link[=sagemaker_create_endpoint]{create_endpoint}},
+\code{\link[=sagemaker_update_endpoint]{update_endpoint}} requests. For more
 information, refer to the AWS Key Management Service section \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{Using Key Policies in AWS KMS}
 
 Certain Nitro-based instances include local storage, dependent on the
@@ -46,7 +47,8 @@ instance type with local storage. If any of the models that you specify
 in the \code{ProductionVariants} parameter use nitro-based instances with
 local storage, do not specify a value for the \code{KmsKeyId} parameter. If
 you specify a value for \code{KmsKeyId} when using any nitro-based instances
-with local storage, the call to \code{CreateEndpointConfig} fails.
+with local storage, the call to
+\code{\link[=sagemaker_create_endpoint_config]{create_endpoint_config}} fails.
 
 For a list of instance types that support local instance storage, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes}{Instance Store Volumes}.
@@ -56,9 +58,9 @@ For more information about local instance storage encryption, see \href{https://
 \description{
 Creates an endpoint configuration that Amazon SageMaker hosting services
 uses to deploy models. In the configuration, you identify one or more
-models, created using the \code{CreateModel} API, to deploy and the resources
-that you want Amazon SageMaker to provision. Then you call the
-CreateEndpoint API.
+models, created using the \code{\link[=sagemaker_create_model]{create_model}} API,
+to deploy and the resources that you want Amazon SageMaker to provision.
+Then you call the \code{\link[=sagemaker_create_endpoint]{create_endpoint}} API.
 
 Use this API if you want to use Amazon SageMaker hosting services to
 deploy models into production.
@@ -78,9 +80,9 @@ B.
 For an example that calls this method when deploying a model to Amazon
 SageMaker hosting services, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto}{Deploy the Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).}
 
-When you call CreateEndpoint, a load call is made to DynamoDB to verify
-that your endpoint configuration exists. When you read data from a
-DynamoDB table supporting
+When you call \code{\link[=sagemaker_create_endpoint]{create_endpoint}}, a load
+call is made to DynamoDB to verify that your endpoint configuration
+exists. When you read data from a DynamoDB table supporting
 \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html}{\verb{Eventually Consistent Reads}}
 , the response might not reflect the results of a recently completed
 write operation. The response might include some stale data. If the
@@ -88,7 +90,8 @@ dependent entities are not yet in DynamoDB, this causes a validation
 error. If you repeat your read request after a short time, the response
 should return the latest data. So retry logic is recommended to handle
 these possible issues. We also recommend that customers call
-DescribeEndpointConfig before calling CreateEndpoint to minimize the
+\code{\link[=sagemaker_describe_endpoint_config]{describe_endpoint_config}} before
+calling \code{\link[=sagemaker_create_endpoint]{create_endpoint}} to minimize the
 potential impact of a DynamoDB eventually consistent read.
 }
 \section{Request syntax}{

@@ -18,7 +18,8 @@ When you deactivate a partner event source, the source goes into PENDING
 state. If it remains in PENDING state for more than two weeks, it is
 deleted.
 
-To activate a deactivated partner event source, use ActivateEventSource.
+To activate a deactivated partner event source, use
+\code{\link[=eventbridge_activate_event_source]{activate_event_source}}.
 }
 \section{Request syntax}{
 \preformatted{svc$deactivate_event_source(

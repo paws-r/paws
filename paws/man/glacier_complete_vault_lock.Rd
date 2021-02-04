@@ -18,16 +18,18 @@ your account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 
-\item{lockId}{[required] The \code{lockId} value is the lock ID obtained from a InitiateVaultLock
-request.}
+\item{lockId}{[required] The \code{lockId} value is the lock ID obtained from a
+\code{\link[=glacier_initiate_vault_lock]{initiate_vault_lock}} request.}
 }
 \description{
 This operation completes the vault locking process by transitioning the
 vault lock from the \code{InProgress} state to the \code{Locked} state, which
 causes the vault lock policy to become unchangeable. A vault lock is put
-into the \code{InProgress} state by calling InitiateVaultLock. You can obtain
-the state of the vault lock by calling GetVaultLock. For more
-information about the vault locking process, \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
+into the \code{InProgress} state by calling
+\code{\link[=glacier_initiate_vault_lock]{initiate_vault_lock}}. You can obtain the
+state of the vault lock by calling
+\code{\link[=glacier_get_vault_lock]{get_vault_lock}}. For more information about
+the vault locking process, \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
 
 This operation is idempotent. This request is always successful if the
 vault lock is in the \code{Locked} state and the provided lock ID matches the

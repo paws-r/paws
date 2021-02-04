@@ -22,7 +22,8 @@ you are deleting.}
 Deletes the specified HSM. To specify an HSM, you can use its identifier
 (ID), the IP address of the HSM's elastic network interface (ENI), or
 the ID of the HSM's ENI. You need to specify only one of these values.
-To find these values, use DescribeClusters.
+To find these values, use
+\code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_hsm(

@@ -15,8 +15,8 @@ sagemaker_get_search_suggestions(Resource, SuggestionQuery)
 \description{
 An auto-complete API for the search functionality in the Amazon
 SageMaker console. It returns suggestions of possible matches for the
-property name to use in \code{Search} queries. Provides suggestions for
-\code{HyperParameters}, \code{Tags}, and \code{Metrics}.
+property name to use in \code{\link[=sagemaker_search]{search}} queries. Provides
+suggestions for \code{HyperParameters}, \code{Tags}, and \code{Metrics}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_search_suggestions(

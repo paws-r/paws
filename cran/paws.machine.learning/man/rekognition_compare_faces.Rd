@@ -66,11 +66,11 @@ By default, only faces with a similarity score of greater than or equal
 to 80\% are returned in the response. You can change this value by
 specifying the \code{SimilarityThreshold} parameter.
 
-\code{CompareFaces} also returns an array of faces that don't match the
-source image. For each face, it returns a bounding box, confidence
-value, landmarks, pose details, and quality. The response also returns
-information about the face in the source image, including the bounding
-box of the face and confidence value.
+\code{\link[=rekognition_compare_faces]{compare_faces}} also returns an array of
+faces that don't match the source image. For each face, it returns a
+bounding box, confidence value, landmarks, pose details, and quality.
+The response also returns information about the face in the source
+image, including the bounding box of the face and confidence value.
 
 The \code{QualityFilter} input parameter allows you to filter out detected
 faces that don’t meet a required quality bar. The quality bar is based
@@ -78,12 +78,14 @@ on a variety of common use cases. Use \code{QualityFilter} to set the quality
 bar by specifying \code{LOW}, \code{MEDIUM}, or \code{HIGH}. If you do not want to
 filter detected faces, specify \code{NONE}. The default value is \code{NONE}.
 
-If the image doesn't contain Exif metadata, \code{CompareFaces} returns
-orientation information for the source and target images. Use these
-values to display the images with the correct image orientation.
+If the image doesn't contain Exif metadata,
+\code{\link[=rekognition_compare_faces]{compare_faces}} returns orientation
+information for the source and target images. Use these values to
+display the images with the correct image orientation.
 
-If no faces are detected in the source or target images, \code{CompareFaces}
-returns an \code{InvalidParameterException} error.
+If no faces are detected in the source or target images,
+\code{\link[=rekognition_compare_faces]{compare_faces}} returns an
+\code{InvalidParameterException} error.
 
 This is a stateless API operation. That is, data returned by this
 operation doesn't persist.

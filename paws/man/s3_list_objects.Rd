@@ -55,17 +55,18 @@ XML. Be sure to design your application to parse the contents of the
 response and handle it appropriately.
 
 This API has been revised. We recommend that you use the newer version,
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html}{ListObjectsV2},
-when developing applications. For backward compatibility, Amazon S3
-continues to support \code{ListObjects}.
+\code{\link[=s3_list_objects_v2]{list_objects_v2}}, when developing applications.
+For backward compatibility, Amazon S3 continues to support
+\code{\link[=s3_list_objects]{list_objects}}.
 
-The following operations are related to \code{ListObjects}:
+The following operations are related to
+\code{\link[=s3_list_objects]{list_objects}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html}{ListObjectsV2}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html}{ListBuckets}
+\item \code{\link[=s3_list_objects_v2]{list_objects_v2}}
+\item \code{\link[=s3_get_object]{get_object}}
+\item \code{\link[=s3_put_object]{put_object}}
+\item \code{\link[=s3_create_bucket]{create_bucket}}
+\item \code{\link[=s3_list_buckets]{list_buckets}}
 }
 }
 \section{Request syntax}{

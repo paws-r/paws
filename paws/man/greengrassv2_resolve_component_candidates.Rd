@@ -21,8 +21,8 @@ components to install.
 This operation identifies components that meet all dependency
 requirements for a deployment. If the requirements conflict, then this
 operation returns an error and the deployment fails. For example, this
-occurs if component \code{A} requires version \verb{&gt;2.0.0} and component \code{B}
-requires version \verb{&lt;2.0.0} of a component dependency.
+occurs if component \code{A} requires version \verb{>2.0.0} and component \code{B}
+requires version \verb{<2.0.0} of a component dependency.
 
 When you specify the component candidates to resolve, AWS IoT Greengrass
 compares each component's digest from the core device with the

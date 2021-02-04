@@ -10,13 +10,17 @@ kinesisanalyticsv2_delete_application_input_processing_configuration(
 \arguments{
 \item{ApplicationName}{[required] The name of the application.}
 
-\item{CurrentApplicationVersionId}{[required] The application version. You can use the DescribeApplication operation
-to get the current application version. If the version specified is not
-the current version, the \code{ConcurrentModificationException} is returned.}
+\item{CurrentApplicationVersionId}{[required] The application version. You can use the
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
+operation to get the current application version. If the version
+specified is not the current version, the
+\code{ConcurrentModificationException} is returned.}
 
 \item{InputId}{[required] The ID of the input configuration from which to delete the input
 processing configuration. You can get a list of the input IDs for an
-application by using the DescribeApplication operation.}
+application by using the
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
+operation.}
 }
 \description{
 Deletes an InputProcessingConfiguration from an input.

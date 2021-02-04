@@ -10,11 +10,13 @@ route53_create_traffic_policy_version(Id, Document, Comment)
 \item{Id}{[required] The ID of the traffic policy for which you want to create a new version.}
 
 \item{Document}{[required] The definition of this version of the traffic policy, in JSON format.
-You specified the JSON in the \code{CreateTrafficPolicyVersion} request. For
-more information about the JSON format, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateTrafficPolicy.html}{CreateTrafficPolicy}.}
+You specified the JSON in the
+\code{\link[=route53_create_traffic_policy_version]{create_traffic_policy_version}}
+request. For more information about the JSON format, see
+\code{\link[=route53_create_traffic_policy]{create_traffic_policy}}.}
 
-\item{Comment}{The comment that you specified in the \code{CreateTrafficPolicyVersion}
+\item{Comment}{The comment that you specified in the
+\code{\link[=route53_create_traffic_policy_version]{create_traffic_policy_version}}
 request, if any.}
 }
 \description{

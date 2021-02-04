@@ -18,12 +18,15 @@ returned. The limit is 5 versions per request.}
 To return utterances that were not recognized, use \code{Missed}.}
 }
 \description{
-Use the \code{GetUtterancesView} operation to get information about the
-utterances that your users have made to your bot. You can use this list
-to tune the utterances that your bot responds to.
+Use the
+\code{\link[=lexmodelbuildingservice_get_utterances_view]{get_utterances_view}}
+operation to get information about the utterances that your users have
+made to your bot. You can use this list to tune the utterances that your
+bot responds to.
 
 For example, say that you have created a bot to order flowers. After
-your users have used your bot for a while, use the \code{GetUtterancesView}
+your users have used your bot for a while, use the
+\code{\link[=lexmodelbuildingservice_get_utterances_view]{get_utterances_view}}
 operation to see the requests that they have made and whether they have
 been successful. You might find that the utterance "I want flowers" is
 not being recognized. You could add this utterance to the \code{OrderFlowers}

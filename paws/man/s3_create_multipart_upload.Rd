@@ -138,10 +138,9 @@ different account, the request will fail with an HTTP
 This operation initiates a multipart upload and returns an upload ID.
 This upload ID is used to associate all of the parts in the specific
 multipart upload. You specify this upload ID in each of your subsequent
-upload part requests (see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}).
-You also include this upload ID in the final request to either complete
-or abort the multipart upload request.
+upload part requests (see \code{\link[=s3_upload_part]{upload_part}}). You also
+include this upload ID in the final request to either complete or abort
+the multipart upload request.
 
 For more information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html}{Multipart Upload Overview}.
 
@@ -173,11 +172,10 @@ data centers and decrypts it when you access it. You can provide your
 own encryption key, or use AWS Key Management Service (AWS KMS) customer
 master keys (CMKs) or Amazon S3-managed encryption keys. If you choose
 to provide your own encryption key, the request headers you provide in
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
-and
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPartCopy.html}{UploadPartCopy}
-requests must match the headers you used in the request to initiate the
-upload by using \code{CreateMultipartUpload}.
+\code{\link[=s3_upload_part]{upload_part}} and
+\code{\link[=s3_upload_part_copy]{upload_part_copy}} requests must match the
+headers you used in the request to initiate the upload by using
+\code{\link[=s3_create_multipart_upload]{create_multipart_upload}}.
 
 To perform a multipart upload with encryption using an AWS KMS CMK, the
 requester must have permission to the \code{kms:Encrypt}, \code{kms:Decrypt},
@@ -317,13 +315,14 @@ and its metadata:
 \verb{x-amz-grant-read: id="11112222333", id="444455556666" }
 }
 
-The following operations are related to \code{CreateMultipartUpload}:
+The following operations are related to
+\code{\link[=s3_create_multipart_upload]{create_multipart_upload}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html}{CompleteMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html}{AbortMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html}{ListParts}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html}{ListMultipartUploads}
+\item \code{\link[=s3_upload_part]{upload_part}}
+\item \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}
+\item \code{\link[=s3_abort_multipart_upload]{abort_multipart_upload}}
+\item \code{\link[=s3_list_parts]{list_parts}}
+\item \code{\link[=s3_list_multipart_uploads]{list_multipart_uploads}}
 }
 }
 }

@@ -63,22 +63,25 @@ If you copy an unencrypted DB cluster snapshot and specify a value for
 the \code{KmsKeyId} parameter, an error is returned.}
 
 \item{PreSignedUrl}{The URL that contains a Signature Version 4 signed request for the
-\code{CopyDBClusterSnapshot} API action in the AWS Region that contains the
-source DB cluster snapshot to copy. The \code{PreSignedUrl} parameter must be
-used when copying an encrypted DB cluster snapshot from another AWS
-Region. Don't specify \code{PreSignedUrl} when you are copying an encrypted
-DB cluster snapshot in the same AWS Region.
+\code{\link[=rds_copy_db_cluster_snapshot]{copy_db_cluster_snapshot}} API action in
+the AWS Region that contains the source DB cluster snapshot to copy. The
+\code{PreSignedUrl} parameter must be used when copying an encrypted DB
+cluster snapshot from another AWS Region. Don't specify \code{PreSignedUrl}
+when you are copying an encrypted DB cluster snapshot in the same AWS
+Region.
 
 The pre-signed URL must be a valid request for the
-\code{CopyDBClusterSnapshot} API action that can be executed in the source
-AWS Region that contains the encrypted DB cluster snapshot to be copied.
-The pre-signed URL request must contain the following parameter values:
+\code{\link[=rds_copy_db_cluster_snapshot]{copy_db_cluster_snapshot}} API action
+that can be executed in the source AWS Region that contains the
+encrypted DB cluster snapshot to be copied. The pre-signed URL request
+must contain the following parameter values:
 \itemize{
 \item \code{KmsKeyId} - The AWS KMS key identifier for the customer master key
 (CMK) to use to encrypt the copy of the DB cluster snapshot in the
 destination AWS Region. This is the same identifier for both the
-\code{CopyDBClusterSnapshot} action that is called in the destination AWS
-Region, and the action contained in the pre-signed URL.
+\code{\link[=rds_copy_db_cluster_snapshot]{copy_db_cluster_snapshot}} action
+that is called in the destination AWS Region, and the action
+contained in the pre-signed URL.
 \item \code{DestinationRegion} - The name of the AWS Region that the DB cluster
 snapshot is to be created in.
 \item \code{SourceDBClusterSnapshotIdentifier} - The DB cluster snapshot
@@ -120,21 +123,23 @@ To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
 (ARN) of the shared DB cluster snapshot.
 
 You can copy an encrypted DB cluster snapshot from another AWS Region.
-In that case, the AWS Region where you call the \code{CopyDBClusterSnapshot}
-action is the destination AWS Region for the encrypted DB cluster
-snapshot to be copied to. To copy an encrypted DB cluster snapshot from
-another AWS Region, you must provide the following values:
+In that case, the AWS Region where you call the
+\code{\link[=rds_copy_db_cluster_snapshot]{copy_db_cluster_snapshot}} action is the
+destination AWS Region for the encrypted DB cluster snapshot to be
+copied to. To copy an encrypted DB cluster snapshot from another AWS
+Region, you must provide the following values:
 \itemize{
 \item \code{KmsKeyId} - The AWS Key Management System (AWS KMS) key identifier
 for the key to use to encrypt the copy of the DB cluster snapshot in
 the destination AWS Region.
 \item \code{PreSignedUrl} - A URL that contains a Signature Version 4 signed
-request for the \code{CopyDBClusterSnapshot} action to be called in the
-source AWS Region where the DB cluster snapshot is copied from. The
-pre-signed URL must be a valid request for the
-\code{CopyDBClusterSnapshot} API action that can be executed in the
-source AWS Region that contains the encrypted DB cluster snapshot to
-be copied.
+request for the
+\code{\link[=rds_copy_db_cluster_snapshot]{copy_db_cluster_snapshot}} action to
+be called in the source AWS Region where the DB cluster snapshot is
+copied from. The pre-signed URL must be a valid request for the
+\code{\link[=rds_copy_db_cluster_snapshot]{copy_db_cluster_snapshot}} API
+action that can be executed in the source AWS Region that contains
+the encrypted DB cluster snapshot to be copied.
 
 The pre-signed URL request must contain the following parameter
 values:
@@ -142,9 +147,10 @@ values:
 \item \code{KmsKeyId} - The AWS KMS key identifier for the customer master
 key (CMK) to use to encrypt the copy of the DB cluster snapshot
 in the destination AWS Region. This is the same identifier for
-both the \code{CopyDBClusterSnapshot} action that is called in the
-destination AWS Region, and the action contained in the
-pre-signed URL.
+both the
+\code{\link[=rds_copy_db_cluster_snapshot]{copy_db_cluster_snapshot}}
+action that is called in the destination AWS Region, and the
+action contained in the pre-signed URL.
 \item \code{DestinationRegion} - The name of the AWS Region that the DB
 cluster snapshot is to be created in.
 \item \code{SourceDBClusterSnapshotIdentifier} - The DB cluster snapshot

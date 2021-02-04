@@ -8,9 +8,12 @@ wafregional_delete_rule_group(RuleGroupId, ChangeToken)
 }
 \arguments{
 \item{RuleGroupId}{[required] The \code{RuleGroupId} of the RuleGroup that you want to delete.
-\code{RuleGroupId} is returned by CreateRuleGroup and by ListRuleGroups.}
+\code{RuleGroupId} is returned by
+\code{\link[=wafregional_create_rule_group]{create_rule_group}} and by
+\code{\link[=wafregional_list_rule_groups]{list_rule_groups}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -26,16 +29,19 @@ Permanently deletes a RuleGroup. You can't delete a \code{RuleGroup} if it's
 still used in any \code{WebACL} objects or if it still includes any rules.
 
 If you just want to remove a \code{RuleGroup} from a \code{WebACL}, use
-UpdateWebACL.
+\code{\link[=wafregional_update_web_acl]{update_web_acl}}.
 
 To permanently delete a \code{RuleGroup} from AWS WAF, perform the following
 steps:
 \enumerate{
 \item Update the \code{RuleGroup} to remove rules, if any. For more
-information, see UpdateRuleGroup.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{DeleteRuleGroup} request.
-\item Submit a \code{DeleteRuleGroup} request.
+information, see
+\code{\link[=wafregional_update_rule_group]{update_rule_group}}.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=wafregional_delete_rule_group]{delete_rule_group}} request.
+\item Submit a \code{\link[=wafregional_delete_rule_group]{delete_rule_group}}
+request.
 }
 }
 \section{Request syntax}{

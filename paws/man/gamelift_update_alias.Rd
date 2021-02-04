@@ -24,12 +24,12 @@ ID to be updated and provide the information to be changed. To reassign
 an alias to another fleet, provide an updated routing strategy. If
 successful, the updated alias record is returned.
 \itemize{
-\item CreateAlias
-\item ListAliases
-\item DescribeAlias
-\item UpdateAlias
-\item DeleteAlias
-\item ResolveAlias
+\item \code{\link[=gamelift_create_alias]{create_alias}}
+\item \code{\link[=gamelift_list_aliases]{list_aliases}}
+\item \code{\link[=gamelift_describe_alias]{describe_alias}}
+\item \code{\link[=gamelift_update_alias]{update_alias}}
+\item \code{\link[=gamelift_delete_alias]{delete_alias}}
+\item \code{\link[=gamelift_resolve_alias]{resolve_alias}}
 }
 }
 \section{Request syntax}{

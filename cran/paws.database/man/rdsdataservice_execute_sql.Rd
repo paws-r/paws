@@ -26,8 +26,9 @@ manipulation, and commit statements.}
 \description{
 Runs one or more SQL statements.
 
-This operation is deprecated. Use the \code{BatchExecuteStatement} or
-\code{ExecuteStatement} operation.
+This operation is deprecated. Use the
+\code{\link[=rdsdataservice_batch_execute_statement]{batch_execute_statement}} or
+\code{\link[=rdsdataservice_execute_statement]{execute_statement}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$execute_sql(

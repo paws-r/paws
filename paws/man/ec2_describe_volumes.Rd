@@ -53,22 +53,25 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{MaxResults}{The maximum number of volume results returned by \code{DescribeVolumes} in
-paginated output. When this parameter is used, \code{DescribeVolumes} only
+\item{MaxResults}{The maximum number of volume results returned by
+\code{\link[=ec2_describe_volumes]{describe_volumes}} in paginated output. When
+this parameter is used, \code{\link[=ec2_describe_volumes]{describe_volumes}} only
 returns \code{MaxResults} results in a single page along with a \code{NextToken}
 response element. The remaining results of the initial request can be
-seen by sending another \code{DescribeVolumes} request with the returned
-\code{NextToken} value. This value can be between 5 and 500; if \code{MaxResults}
-is given a value larger than 500, only 500 results are returned. If this
-parameter is not used, then \code{DescribeVolumes} returns all results. You
+seen by sending another \code{\link[=ec2_describe_volumes]{describe_volumes}}
+request with the returned \code{NextToken} value. This value can be between 5
+and 500; if \code{MaxResults} is given a value larger than 500, only 500
+results are returned. If this parameter is not used, then
+\code{\link[=ec2_describe_volumes]{describe_volumes}} returns all results. You
 cannot specify this parameter and the volume IDs parameter in the same
 request.}
 
 \item{NextToken}{The \code{NextToken} value returned from a previous paginated
-\code{DescribeVolumes} request where \code{MaxResults} was used and the results
-exceeded the value of that parameter. Pagination continues from the end
-of the previous results that returned the \code{NextToken} value. This value
-is \code{null} when there are no more results to return.}
+\code{\link[=ec2_describe_volumes]{describe_volumes}} request where \code{MaxResults}
+was used and the results exceeded the value of that parameter.
+Pagination continues from the end of the previous results that returned
+the \code{NextToken} value. This value is \code{null} when there are no more
+results to return.}
 }
 \description{
 Describes the specified EBS volumes or all of your EBS volumes.
@@ -78,8 +81,8 @@ paginate the output to make the list more manageable. The \code{MaxResults}
 parameter sets the maximum number of results returned in a single page.
 If the list of results exceeds your \code{MaxResults} value, then that number
 of results is returned along with a \code{NextToken} value that can be passed
-to a subsequent \code{DescribeVolumes} request to retrieve the remaining
-results.
+to a subsequent \code{\link[=ec2_describe_volumes]{describe_volumes}} request to
+retrieve the remaining results.
 
 For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes.html}{Amazon EBS volumes}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

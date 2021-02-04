@@ -11,16 +11,16 @@ lightsail_attach_certificate_to_distribution(distributionName,
 \arguments{
 \item{distributionName}{[required] The name of the distribution that the certificate will be attached to.
 
-Use the \code{GetDistributions} action to get a list of distribution names
-that you can specify.}
+Use the \code{\link[=lightsail_get_distributions]{get_distributions}} action to get
+a list of distribution names that you can specify.}
 
 \item{certificateName}{[required] The name of the certificate to attach to a distribution.
 
 Only certificates with a status of \code{ISSUED} can be attached to a
 distribution.
 
-Use the \code{GetCertificates} action to get a list of certificate names that
-you can specify.
+Use the \code{\link[=lightsail_get_certificates]{get_certificates}} action to get a
+list of certificate names that you can specify.
 
 This is the name of the certificate resource type and is used only to
 reference the certificate in other API actions. It can be different than
@@ -35,8 +35,8 @@ delivery network (CDN) distribution.
 After the certificate is attached, your distribution accepts HTTPS
 traffic for all of the domains that are associated with the certificate.
 
-Use the \code{CreateCertificate} action to create a certificate that you can
-attach to your distribution.
+Use the \code{\link[=lightsail_create_certificate]{create_certificate}} action to
+create a certificate that you can attach to your distribution.
 
 Only certificates created in the \code{us-east-1} AWS Region can be attached
 to Lightsail distributions. Lightsail distributions are global resources

@@ -24,8 +24,9 @@ matchmaking ticket status. This practice can cause you to exceed your
 API limit, which results in errors. Instead, as a best practice, set up
 an Amazon Simple Notification Service (SNS) to receive notifications,
 and provide the topic ARN in the matchmaking configuration. Continuously
-poling ticket status with DescribeMatchmaking should only be used for
-games in development with low matchmaking usage.
+poling ticket status with
+\code{\link[=gamelift_describe_matchmaking]{describe_matchmaking}} should only be
+used for games in development with low matchmaking usage.
 
 \strong{Learn more}
 
@@ -35,11 +36,11 @@ games in development with low matchmaking usage.
 
 \strong{Related operations}
 \itemize{
-\item StartMatchmaking
-\item DescribeMatchmaking
-\item StopMatchmaking
-\item AcceptMatch
-\item StartMatchBackfill
+\item \code{\link[=gamelift_start_matchmaking]{start_matchmaking}}
+\item \code{\link[=gamelift_describe_matchmaking]{describe_matchmaking}}
+\item \code{\link[=gamelift_stop_matchmaking]{stop_matchmaking}}
+\item \code{\link[=gamelift_accept_match]{accept_match}}
+\item \code{\link[=gamelift_start_match_backfill]{start_match_backfill}}
 }
 }
 \section{Request syntax}{

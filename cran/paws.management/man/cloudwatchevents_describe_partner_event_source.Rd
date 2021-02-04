@@ -13,7 +13,8 @@ cloudwatchevents_describe_partner_event_source(Name)
 \description{
 An SaaS partner can use this operation to list details about a partner
 event source that they have created. AWS customers do not use this
-operation. Instead, AWS customers can use DescribeEventSource to see
+operation. Instead, AWS customers can use
+\code{\link[=cloudwatchevents_describe_event_source]{describe_event_source}} to see
 details about a partner event source that is shared with them.
 }
 \section{Request syntax}{

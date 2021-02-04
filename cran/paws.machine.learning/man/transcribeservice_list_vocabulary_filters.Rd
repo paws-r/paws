@@ -8,8 +8,10 @@ transcribeservice_list_vocabulary_filters(NextToken, MaxResults,
   NameContains)
 }
 \arguments{
-\item{NextToken}{If the result of the previous request to \code{ListVocabularyFilters} was
-truncated, include the \code{NextToken} to fetch the next set of collections.}
+\item{NextToken}{If the result of the previous request to
+\code{\link[=transcribeservice_list_vocabulary_filters]{list_vocabulary_filters}}
+was truncated, include the \code{NextToken} to fetch the next set of
+collections.}
 
 \item{MaxResults}{The maximum number of filters to return in the response. If there are
 fewer results in the list, this response contains only the actual

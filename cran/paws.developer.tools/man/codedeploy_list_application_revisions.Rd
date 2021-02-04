@@ -51,7 +51,8 @@ deployment group.
 \item \code{ignore}: List all revisions.
 }}
 
-\item{nextToken}{An identifier returned from the previous \code{ListApplicationRevisions}
+\item{nextToken}{An identifier returned from the previous
+\code{\link[=codedeploy_list_application_revisions]{list_application_revisions}}
 call. It can be used to return the next set of applications in the list.}
 }
 \description{

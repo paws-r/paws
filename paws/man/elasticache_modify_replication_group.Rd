@@ -166,7 +166,7 @@ Modifies the settings for a replication group.
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html}{Scaling for Amazon ElastiCache for Redis (cluster mode enabled)}
 in the ElastiCache User Guide
-\item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyReplicationGroupShardConfiguration.html}{ModifyReplicationGroupShardConfiguration}
+\item \code{\link[=elasticache_modify_replication_group_shard_configuration]{modify_replication_group_shard_configuration}}
 in the ElastiCache API Reference
 }
 

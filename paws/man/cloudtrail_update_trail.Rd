@@ -96,9 +96,9 @@ Updates the settings that specify delivery of log files. Changes to a
 trail do not require stopping the CloudTrail service. Use this action to
 designate an existing bucket for log delivery. If the existing bucket
 has previously been a target for CloudTrail log files, an IAM policy
-exists for the bucket. \code{UpdateTrail} must be called from the region in
-which the trail was created; otherwise, an \code{InvalidHomeRegionException}
-is thrown.
+exists for the bucket. \code{\link[=cloudtrail_update_trail]{update_trail}} must be
+called from the region in which the trail was created; otherwise, an
+\code{InvalidHomeRegionException} is thrown.
 }
 \section{Request syntax}{
 \preformatted{svc$update_trail(

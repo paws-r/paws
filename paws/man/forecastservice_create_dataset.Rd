@@ -12,7 +12,9 @@ forecastservice_create_dataset(DatasetName, Domain, DatasetType,
 
 \item{Domain}{[required] The domain associated with the dataset. When you add a dataset to a
 dataset group, this value and the value specified for the \code{Domain}
-parameter of the CreateDatasetGroup operation must match.
+parameter of the
+\code{\link[=forecastservice_create_dataset_group]{create_dataset_group}} operation
+must match.
 
 The \code{Domain} and \code{DatasetType} that you choose determine the fields that
 must be present in the training data that you import to the dataset. For
@@ -87,12 +89,15 @@ After creating a dataset, you import your training data into it and add
 the dataset to a dataset group. You use the dataset group to create a
 predictor. For more information, see howitworks-datasets-groups.
 
-To get a list of all your datasets, use the ListDatasets operation.
+To get a list of all your datasets, use the
+\code{\link[=forecastservice_list_datasets]{list_datasets}} operation.
 
 For example Forecast datasets, see the \href{https://github.com/aws-samples/amazon-forecast-samples}{Amazon Forecast Sample GitHub repository}.
 
 The \code{Status} of a dataset must be \code{ACTIVE} before you can import
-training data. Use the DescribeDataset operation to get the status.
+training data. Use the
+\code{\link[=forecastservice_describe_dataset]{describe_dataset}} operation to get
+the status.
 }
 \section{Request syntax}{
 \preformatted{svc$create_dataset(

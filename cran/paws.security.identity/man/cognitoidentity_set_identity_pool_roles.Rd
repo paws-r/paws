@@ -23,7 +23,9 @@ Up to 25 rules can be specified per identity provider.}
 }
 \description{
 Sets the roles for an identity pool. These roles are used when making
-calls to GetCredentialsForIdentity action.
+calls to
+\code{\link[=cognitoidentity_get_credentials_for_identity]{get_credentials_for_identity}}
+action.
 
 You must use AWS Developer credentials to call this API.
 }

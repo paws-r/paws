@@ -31,7 +31,8 @@ target in order to access their file system. For more information, see
 
 In the request, you also specify a file system ID for which you are
 creating the mount target and the file system's lifecycle state must be
-\code{available}. For more information, see DescribeFileSystems.
+\code{available}. For more information, see
+\code{\link[=efs_describe_file_systems]{describe_file_systems}}.
 
 In the request, you also provide a subnet ID, which determines the
 following:
@@ -77,9 +78,8 @@ does not specify a primary private IP address).
 is associated with those security groups. Otherwise, it belongs
 to the default security group for the subnet's VPC.
 \item Assigns the description
-\verb{Mount target <i>fsmt-id</i> for file system <i>fs-id</i> }
-where \verb{<i>fsmt-id</i>} is the mount target ID, and
-\verb{<i>fs-id</i>} is the \code{FileSystemId}.
+\verb{Mount target fsmt-id for file system fs-id } where \code{fsmt-id}
+is the mount target ID, and \code{fs-id} is the \code{FileSystemId}.
 \item Sets the \code{requesterManaged} property of the network interface to
 \code{true}, and the \code{requesterId} value to \code{EFS}.
 }
@@ -89,14 +89,14 @@ EC2 network interface. After the network interface is created,
 Amazon EFS sets the \code{NetworkInterfaceId} field in the mount target's
 description to the network interface ID, and the \code{IpAddress} field
 to its address. If network interface creation fails, the entire
-\code{CreateMountTarget} operation fails.
+\code{\link[=efs_create_mount_target]{create_mount_target}} operation fails.
 }
 
-The \code{CreateMountTarget} call returns only after creating the network
-interface, but while the mount target state is still \code{creating}, you can
-check the mount target creation status by calling the
-DescribeMountTargets operation, which among other things returns the
-mount target state.
+The \code{\link[=efs_create_mount_target]{create_mount_target}} call returns only
+after creating the network interface, but while the mount target state
+is still \code{creating}, you can check the mount target creation status by
+calling the \code{\link[=efs_describe_mount_targets]{describe_mount_targets}}
+operation, which among other things returns the mount target state.
 
 We recommend that you create a mount target in each of the Availability
 Zones. There are cost considerations for using a file system in an

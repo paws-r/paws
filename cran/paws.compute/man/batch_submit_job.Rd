@@ -38,8 +38,8 @@ active revision is used.}
 \item{parameters}{Additional parameters passed to the job that replace parameter
 substitution placeholders that are set in the job definition. Parameters
 are specified as a key and value pair mapping. Parameters in a
-\code{SubmitJob} request override any corresponding parameter defaults from
-the job definition.}
+\code{\link[=batch_submit_job]{submit_job}} request override any corresponding
+parameter defaults from the job definition.}
 
 \item{containerOverrides}{A list of container overrides in JSON format that specify the name of a
 container in the specified job definition and the overrides it should
@@ -55,9 +55,10 @@ target and the container overrides for that node range.
 This parameter isn't applicable to jobs running on Fargate resources;
 use \code{containerOverrides} instead.}
 
-\item{retryStrategy}{The retry strategy to use for failed jobs from this SubmitJob operation.
-When a retry strategy is specified here, it overrides the retry strategy
-defined in the job definition.}
+\item{retryStrategy}{The retry strategy to use for failed jobs from this
+\code{\link[=batch_submit_job]{submit_job}} operation. When a retry strategy is
+specified here, it overrides the retry strategy defined in the job
+definition.}
 
 \item{propagateTags}{Specifies whether to propagate the tags from the job or job definition
 to the corresponding Amazon ECS task. If no value is specified, the tags
@@ -68,13 +69,14 @@ and job definition is over 50, the job is moved to the \code{FAILED} state.
 When specified, this overrides the tag propagation setting in the job
 definition.}
 
-\item{timeout}{The timeout configuration for this SubmitJob operation. You can specify
-a timeout duration after which AWS Batch terminates your jobs if they
-haven't finished. If a job is terminated due to a timeout, it isn't
-retried. The minimum value for the timeout is 60 seconds. This
-configuration overrides any timeout configuration specified in the job
-definition. For array jobs, child jobs have the same timeout
-configuration as the parent job. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Job Timeouts}
+\item{timeout}{The timeout configuration for this \code{\link[=batch_submit_job]{submit_job}}
+operation. You can specify a timeout duration after which AWS Batch
+terminates your jobs if they haven't finished. If a job is terminated
+due to a timeout, it isn't retried. The minimum value for the timeout is
+60 seconds. This configuration overrides any timeout configuration
+specified in the job definition. For array jobs, child jobs have the
+same timeout configuration as the parent job. For more information, see
+\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Job Timeouts}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{tags}{The tags that you apply to the job request to help you categorize and
@@ -84,7 +86,8 @@ in \emph{AWS General Reference}.}
 }
 \description{
 Submits an AWS Batch job from a job definition. Parameters specified
-during SubmitJob override parameters defined in the job definition.
+during \code{\link[=batch_submit_job]{submit_job}} override parameters defined in
+the job definition.
 
 Jobs run on Fargate resources don't run for more than 14 days. After 14
 days, the Fargate resources might no longer be available and the job is

@@ -45,7 +45,7 @@ Service tasks on the container instance that are in the \code{RUNNING} state
 are stopped and replaced according to the service's deployment
 configuration parameters, \code{minimumHealthyPercent} and \code{maximumPercent}.
 You can change the deployment configuration of your service using
-UpdateService.
+\code{\link[=ecs_update_service]{update_service}}.
 \itemize{
 \item If \code{minimumHealthyPercent} is below 100\%, the scheduler can ignore
 \code{desiredCount} temporarily during task replacement. For example,
@@ -72,7 +72,8 @@ Any \code{PENDING} or \code{RUNNING} tasks that do not belong to a service are n
 affected. You must wait for them to finish or stop them manually.
 
 A container instance has completed draining when it has no more
-\code{RUNNING} tasks. You can verify this using ListTasks.
+\code{RUNNING} tasks. You can verify this using
+\code{\link[=ecs_list_tasks]{list_tasks}}.
 
 When a container instance has been drained, you can set a container
 instance to \code{ACTIVE} status and once it has reached that status the

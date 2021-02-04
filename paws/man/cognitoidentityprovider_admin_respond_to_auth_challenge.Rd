@@ -14,7 +14,7 @@ cognitoidentityprovider_admin_respond_to_auth_challenge(UserPoolId,
 \item{ClientId}{[required] The app client ID.}
 
 \item{ChallengeName}{[required] The challenge name. For more information, see
-\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminInitiateAuth.html}{AdminInitiateAuth}.}
+\code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}.}
 
 \item{ChallengeResponses}{The challenge responses. These are inputs corresponding to the value of
 \code{ChallengeName}, for example:
@@ -33,18 +33,26 @@ with client secret).
 
 The value of the \code{USERNAME} attribute must be the user's actual
 username, not an alias (such as email address or phone number). To make
-this easier, the \code{AdminInitiateAuth} response includes the actual
-username value in the \code{USERNAMEUSER_ID_FOR_SRP} attribute, even if you
-specified an alias in your call to \code{AdminInitiateAuth}.}
+this easier, the
+\code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}
+response includes the actual username value in the
+\code{USERNAMEUSER_ID_FOR_SRP} attribute, even if you specified an alias in
+your call to
+\code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}.}
 
 \item{Session}{The session which should be passed both ways in challenge-response calls
-to the service. If \code{InitiateAuth} or \code{RespondToAuthChallenge} API call
-determines that the caller needs to go through another challenge, they
-return a session with other challenge parameters. This session should be
-passed as it is to the next \code{RespondToAuthChallenge} API call.}
+to the service. If
+\code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}} or
+\code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}}
+API call determines that the caller needs to go through another
+challenge, they return a session with other challenge parameters. This
+session should be passed as it is to the next
+\code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}}
+API call.}
 
 \item{AnalyticsMetadata}{The analytics metadata for collecting Amazon Pinpoint metrics for
-\code{AdminRespondToAuthChallenge} calls.}
+\code{\link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge}}
+calls.}
 
 \item{ContextData}{Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon

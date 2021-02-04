@@ -208,7 +208,7 @@ cloudwatchevents_create_event_bus <- function(Name, EventSourceName = NULL, Tags
 #' 
 #' Partner event source names follow this format:
 #' 
-#' ` <i>partner_name</i>/<i>event_namespace</i>/<i>event_name</i> `
+#' ` partner_name/event_namespace/event_name `
 #' 
 #' *partner\\_name* is determined during partner registration and identifies
 #' the partner to AWS customers. *event\\_namespace* is determined by the
@@ -222,9 +222,8 @@ cloudwatchevents_create_event_bus <- function(Name, EventSourceName = NULL, Tags
 #' cloudwatchevents_create_partner_event_source(Name, Account)
 #'
 #' @param Name &#91;required&#93; The name of the partner event source. This name must be unique and must
-#' be in the format
-#' ` <i>partner_name</i>/<i>event_namespace</i>/<i>event_name</i> `. The
-#' AWS account that wants to use this partner event source must create a
+#' be in the format ` partner_name/event_namespace/event_name `. The AWS
+#' account that wants to use this partner event source must create a
 #' partner event bus with a name that matches the name of the partner event
 #' source.
 #' @param Account &#91;required&#93; The AWS account ID that is permitted to create a matching partner event
@@ -269,7 +268,8 @@ cloudwatchevents_create_partner_event_source <- function(Name, Account) {
 #' state. If it remains in PENDING state for more than two weeks, it is
 #' deleted.
 #' 
-#' To activate a deactivated partner event source, use ActivateEventSource.
+#' To activate a deactivated partner event source, use
+#' [`activate_event_source`][cloudwatchevents_activate_event_source].
 #'
 #' @usage
 #' cloudwatchevents_deactivate_event_source(Name)
@@ -429,7 +429,7 @@ cloudwatchevents_delete_partner_event_source <- function(Name, Account) {
 #' Deletes the specified rule.
 #' 
 #' Before you can delete the rule, you must remove all targets, using
-#' RemoveTargets.
+#' [`remove_targets`][cloudwatchevents_remove_targets].
 #' 
 #' When you delete a rule, incoming events might continue to match to the
 #' deleted rule. Allow a short period of time for changes to take effect.
@@ -449,8 +449,10 @@ cloudwatchevents_delete_partner_event_source <- function(Name, Account) {
 #' @param Force If this is a managed rule, created by an AWS service on your behalf, you
 #' must specify `Force` as `True` to delete the rule. This parameter is
 #' ignored for rules that are not managed rules. You can check whether a
-#' rule is a managed rule by using `DescribeRule` or `ListRules` and
-#' checking the `ManagedBy` field of the response.
+#' rule is a managed rule by using
+#' [`describe_rule`][cloudwatchevents_describe_rule] or
+#' [`list_rules`][cloudwatchevents_list_rules] and checking the `ManagedBy`
+#' field of the response.
 #'
 #' @section Request syntax:
 #' ```
@@ -528,9 +530,11 @@ cloudwatchevents_describe_archive <- function(ArchiveName) {
 #' creation time.
 #' 
 #' To enable your account to receive events from other accounts on its
-#' default event bus, use PutPermission.
+#' default event bus, use
+#' [`put_permission`][cloudwatchevents_put_permission].
 #' 
-#' For more information about partner event buses, see CreateEventBus.
+#' For more information about partner event buses, see
+#' [`create_event_bus`][cloudwatchevents_create_event_bus].
 #'
 #' @usage
 #' cloudwatchevents_describe_event_bus(Name)
@@ -610,7 +614,8 @@ cloudwatchevents_describe_event_source <- function(Name) {
 #' @description
 #' An SaaS partner can use this operation to list details about a partner
 #' event source that they have created. AWS customers do not use this
-#' operation. Instead, AWS customers can use DescribeEventSource to see
+#' operation. Instead, AWS customers can use
+#' [`describe_event_source`][cloudwatchevents_describe_event_source] to see
 #' details about a partner event source that is shared with them.
 #'
 #' @usage
@@ -648,14 +653,16 @@ cloudwatchevents_describe_partner_event_source <- function(Name) {
 #' Retrieves details about a replay
 #'
 #' @description
-#' Retrieves details about a replay. Use `DescribeReplay` to determine the
+#' Retrieves details about a replay. Use
+#' [`describe_replay`][cloudwatchevents_describe_replay] to determine the
 #' progress of a running replay. A replay processes events to replay based
 #' on the time in the event, and replays them using 1 minute intervals. If
-#' you use `StartReplay` and specify an `EventStartTime` and an
-#' `EventEndTime` that covers a 20 minute time range, the events are
-#' replayed from the first minute of that 20 minute range first. Then the
-#' events from the second minute are replayed. You can use `DescribeReplay`
-#' to determine the progress of a replay. The value returned for
+#' you use [`start_replay`][cloudwatchevents_start_replay] and specify an
+#' `EventStartTime` and an `EventEndTime` that covers a 20 minute time
+#' range, the events are replayed from the first minute of that 20 minute
+#' range first. Then the events from the second minute are replayed. You
+#' can use [`describe_replay`][cloudwatchevents_describe_replay] to
+#' determine the progress of a replay. The value returned for
 #' `EventLastReplayedTime` indicates the time within the specified time
 #' range associated with the last event replayed.
 #'
@@ -697,7 +704,8 @@ cloudwatchevents_describe_replay <- function(ReplayName) {
 #' Describes the specified rule.
 #' 
 #' DescribeRule does not list the targets of a rule. To see the targets
-#' associated with a rule, use ListTargetsByRule.
+#' associated with a rule, use
+#' [`list_targets_by_rule`][cloudwatchevents_list_targets_by_rule].
 #'
 #' @usage
 #' cloudwatchevents_describe_rule(Name, EventBusName)
@@ -926,7 +934,7 @@ cloudwatchevents_list_event_buses <- function(NamePrefix = NULL, NextToken = NUL
 #' @description
 #' You can use this to see all the partner event sources that have been
 #' shared with your AWS account. For more information about partner event
-#' sources, see CreateEventBus.
+#' sources, see [`create_event_bus`][cloudwatchevents_create_event_bus].
 #'
 #' @usage
 #' cloudwatchevents_list_event_sources(NamePrefix, NextToken, Limit)
@@ -1170,7 +1178,8 @@ cloudwatchevents_list_rule_names_by_target <- function(TargetArn, EventBusName =
 #' or you can provide a prefix to match to the rule names.
 #' 
 #' ListRules does not list the targets of a rule. To see the targets
-#' associated with a rule, use ListTargetsByRule.
+#' associated with a rule, use
+#' [`list_targets_by_rule`][cloudwatchevents_list_targets_by_rule].
 #'
 #' @usage
 #' cloudwatchevents_list_rules(NamePrefix, EventBusName, NextToken, Limit)
@@ -1405,21 +1414,23 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #' organization to put events to the specified event bus
 #'
 #' @description
-#' Running `PutPermission` permits the specified AWS account or AWS
-#' organization to put events to the specified *event bus*. Amazon
-#' EventBridge (CloudWatch Events) rules in your account are triggered by
-#' these events arriving to an event bus in your account.
+#' Running [`put_permission`][cloudwatchevents_put_permission] permits the
+#' specified AWS account or AWS organization to put events to the specified
+#' *event bus*. Amazon EventBridge (CloudWatch Events) rules in your
+#' account are triggered by these events arriving to an event bus in your
+#' account.
 #' 
 #' For another account to send events to your account, that external
 #' account must have an EventBridge rule with your account's event bus as a
 #' target.
 #' 
 #' To enable multiple AWS accounts to put events to your event bus, run
-#' `PutPermission` once for each of these accounts. Or, if all the accounts
-#' are members of the same AWS organization, you can run `PutPermission`
-#' once specifying `Principal` as "*" and specifying the AWS organization
-#' ID in `Condition`, to grant permissions to all accounts in that
-#' organization.
+#' [`put_permission`][cloudwatchevents_put_permission] once for each of
+#' these accounts. Or, if all the accounts are members of the same AWS
+#' organization, you can run
+#' [`put_permission`][cloudwatchevents_put_permission] once specifying
+#' `Principal` as "*" and specifying the AWS organization ID in
+#' `Condition`, to grant permissions to all accounts in that organization.
 #' 
 #' If you grant permissions using an organization, then accounts in that
 #' organization must specify a `RoleArn` with proper permissions when they
@@ -1451,7 +1462,7 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #' @param StatementId An identifier string for the external account that you are granting
 #' permissions to. If you later want to revoke the permission for this
 #' external account, specify this `StatementId` when you run
-#' RemovePermission.
+#' [`remove_permission`][cloudwatchevents_remove_permission].
 #' @param Condition This parameter enables you to limit the permission to accounts that
 #' fulfill a certain condition, such as being a member of a certain AWS
 #' organization. For more information about AWS Organizations, see [What Is
@@ -1509,7 +1520,8 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, 
 #'
 #' @description
 #' Creates or updates the specified rule. Rules are enabled by default, or
-#' based on value of the state. You can disable a rule using DisableRule.
+#' based on value of the state. You can disable a rule using
+#' [`disable_rule`][cloudwatchevents_disable_rule].
 #' 
 #' A single rule watches for events from a single event bus. Events
 #' generated by AWS services go to your account's default event bus. Events
@@ -1517,12 +1529,13 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, 
 #' partner event bus. If you have custom applications or services, you can
 #' specify whether their events go to your default event bus or a custom
 #' event bus that you have created. For more information, see
-#' CreateEventBus.
+#' [`create_event_bus`][cloudwatchevents_create_event_bus].
 #' 
 #' If you are updating an existing rule, the rule is replaced with what you
-#' specify in this `PutRule` command. If you omit arguments in `PutRule`,
-#' the old values for those arguments are not kept. Instead, they are
-#' replaced with null values.
+#' specify in this [`put_rule`][cloudwatchevents_put_rule] command. If you
+#' omit arguments in [`put_rule`][cloudwatchevents_put_rule], the old
+#' values for those arguments are not kept. Instead, they are replaced with
+#' null values.
 #' 
 #' When you create or update a rule, incoming events might not immediately
 #' start matching to new or updated rules. Allow a short period of time for
@@ -1539,12 +1552,15 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, 
 #' tags to the rule. Tags can help you organize and categorize your
 #' resources. You can also use them to scope user permissions, by granting
 #' a user permission to access or change only rules with certain tag
-#' values. To use the `PutRule` operation and assign tags, you must have
-#' both the `events:PutRule` and `events:TagResource` permissions.
+#' values. To use the [`put_rule`][cloudwatchevents_put_rule] operation and
+#' assign tags, you must have both the `events:PutRule` and
+#' `events:TagResource` permissions.
 #' 
 #' If you are updating an existing rule, any tags you specify in the
-#' `PutRule` operation are ignored. To update the tags of an existing rule,
-#' use TagResource and UntagResource.
+#' [`put_rule`][cloudwatchevents_put_rule] operation are ignored. To update
+#' the tags of an existing rule, use
+#' [`tag_resource`][cloudwatchevents_tag_resource] and
+#' [`untag_resource`][cloudwatchevents_untag_resource].
 #' 
 #' Most services in AWS treat : or / as the same character in Amazon
 #' Resource Names (ARNs). However, EventBridge uses an exact match in event
@@ -1675,11 +1691,12 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' `EC2 CreateSnapshot API call`, `EC2 RebootInstances API call`,
 #' `EC2 StopInstances API call`, and `EC2 TerminateInstances API call`.
 #' 
-#' For some target types, `PutTargets` provides target-specific parameters.
-#' If the target is a Kinesis data stream, you can optionally specify which
-#' shard the event goes to by using the `KinesisParameters` argument. To
-#' invoke a command on multiple EC2 instances with one rule, you can use
-#' the `RunCommandParameters` field.
+#' For some target types, [`put_targets`][cloudwatchevents_put_targets]
+#' provides target-specific parameters. If the target is a Kinesis data
+#' stream, you can optionally specify which shard the event goes to by
+#' using the `KinesisParameters` argument. To invoke a command on multiple
+#' EC2 instances with one rule, you can use the `RunCommandParameters`
+#' field.
 #' 
 #' To be able to make API calls against the resources that you own, Amazon
 #' EventBridge (CloudWatch Events) needs the appropriate permissions. For
@@ -1687,15 +1704,17 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' resource-based policies. For EC2 instances, Kinesis data streams, AWS
 #' Step Functions state machines and API Gateway REST APIs, EventBridge
 #' relies on IAM roles that you specify in the `RoleARN` argument in
-#' `PutTargets`. For more information, see [Authentication and Access
+#' [`put_targets`][cloudwatchevents_put_targets]. For more information, see
+#' [Authentication and Access
 #' Control](https://docs.aws.amazon.com/eventbridge/latest/userguide/auth-and-access-control-eventbridge.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
 #' If another AWS account is in the same region and has granted you
-#' permission (using `PutPermission`), you can send events to that account.
-#' Set that account's event bus as a target of the rules in your account.
-#' To send the matched events to the other account, specify that account's
-#' event bus as the `Arn` value when you run `PutTargets`. If your account
+#' permission (using [`put_permission`][cloudwatchevents_put_permission]),
+#' you can send events to that account. Set that account's event bus as a
+#' target of the rules in your account. To send the matched events to the
+#' other account, specify that account's event bus as the `Arn` value when
+#' you run [`put_targets`][cloudwatchevents_put_targets]. If your account
 #' sends events to another account, your account is charged for each sent
 #' event. Each event sent to another account is charged as a custom event.
 #' The account receiving the event is not charged. For more information,
@@ -1714,7 +1733,7 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' in the *Amazon EventBridge User Guide*.
 #' 
 #' For more information about enabling cross-account events, see
-#' PutPermission.
+#' [`put_permission`][cloudwatchevents_put_permission].
 #' 
 #' **Input**, **InputPath**, and **InputTransformer** are mutually
 #' exclusive and optional parameters of a target. When a rule is triggered
@@ -1877,8 +1896,10 @@ cloudwatchevents_put_targets <- function(Rule, EventBusName = NULL, Targets) {
 #' Revokes the permission of another AWS account to be able to put events
 #' to the specified event bus. Specify the account to revoke by the
 #' `StatementId` value that you associated with the account when you
-#' granted it permission with `PutPermission`. You can find the
-#' `StatementId` by using DescribeEventBus.
+#' granted it permission with
+#' [`put_permission`][cloudwatchevents_put_permission]. You can find the
+#' `StatementId` by using
+#' [`describe_event_bus`][cloudwatchevents_describe_event_bus].
 #'
 #' @usage
 #' cloudwatchevents_remove_permission(StatementId, RemoveAllPermissions,
@@ -1944,8 +1965,10 @@ cloudwatchevents_remove_permission <- function(StatementId = NULL, RemoveAllPerm
 #' @param Force If this is a managed rule, created by an AWS service on your behalf, you
 #' must specify `Force` as `True` to remove targets. This parameter is
 #' ignored for rules that are not managed rules. You can check whether a
-#' rule is a managed rule by using `DescribeRule` or `ListRules` and
-#' checking the `ManagedBy` field of the response.
+#' rule is a managed rule by using
+#' [`describe_rule`][cloudwatchevents_describe_rule] or
+#' [`list_rules`][cloudwatchevents_list_rules] and checking the `ManagedBy`
+#' field of the response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1988,10 +2011,11 @@ cloudwatchevents_remove_targets <- function(Rule, EventBusName = NULL, Ids, Forc
 #' 1 minute intervals. If you specify an `EventStartTime` and an
 #' `EventEndTime` that covers a 20 minute time range, the events are
 #' replayed from the first minute of that 20 minute range first. Then the
-#' events from the second minute are replayed. You can use `DescribeReplay`
-#' to determine the progress of a replay. The value returned for
-#' `EventLastReplayedTime` indicates the time within the specified time
-#' range associated with the last event replayed.
+#' events from the second minute are replayed. You can use
+#' [`describe_replay`][cloudwatchevents_describe_replay] to determine the
+#' progress of a replay. The value returned for `EventLastReplayedTime`
+#' indicates the time within the specified time range associated with the
+#' last event replayed.
 #'
 #' @usage
 #' cloudwatchevents_start_replay(ReplayName, Description, EventSourceArn,
@@ -2061,11 +2085,12 @@ cloudwatchevents_start_replay <- function(ReplayName, Description = NULL, EventS
 #' Tags don't have any semantic meaning to AWS and are interpreted strictly
 #' as strings of characters.
 #' 
-#' You can use the `TagResource` action with a resource that already has
-#' tags. If you specify a new tag key, this tag is appended to the list of
-#' tags associated with the resource. If you specify a tag key that is
-#' already associated with the resource, the new tag value that you specify
-#' replaces the previous value for that tag.
+#' You can use the [`tag_resource`][cloudwatchevents_tag_resource] action
+#' with a resource that already has tags. If you specify a new tag key,
+#' this tag is appended to the list of tags associated with the resource.
+#' If you specify a tag key that is already associated with the resource,
+#' the new tag value that you specify replaces the previous value for that
+#' tag.
 #' 
 #' You can associate as many as 50 tags with a resource.
 #'

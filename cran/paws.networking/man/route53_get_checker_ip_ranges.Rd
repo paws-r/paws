@@ -8,9 +8,9 @@ ip-ranges}
 route53_get_checker_ip_ranges()
 }
 \description{
-\code{GetCheckerIpRanges} still works, but we recommend that you download
-ip-ranges.json, which includes IP address ranges for all AWS services.
-For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html}{IP Address Ranges of Amazon Route 53 Servers}
+\code{\link[=route53_get_checker_ip_ranges]{get_checker_ip_ranges}} still works,
+but we recommend that you download ip-ranges.json, which includes IP
+address ranges for all AWS services. For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html}{IP Address Ranges of Amazon Route 53 Servers}
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{

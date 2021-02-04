@@ -17,13 +17,14 @@ AWS Region in each AWS account.}
 
 \item{BaseThemeId}{[required] The ID of the theme that a custom theme will inherit from. All themes
 inherit from one of the starting themes defined by Amazon QuickSight.
-For a list of the starting themes, use \code{ListThemes} or choose \strong{Themes}
-from within a QuickSight analysis.}
+For a list of the starting themes, use
+\code{\link[=quicksight_list_themes]{list_themes}} or choose \strong{Themes} from within
+a QuickSight analysis.}
 
 \item{VersionDescription}{A description of the first version of the theme that you're creating.
-Every time \code{UpdateTheme} is called, a new version is created. Each
-version of the theme has a description of the version in the
-\code{VersionDescription} field.}
+Every time \code{\link[=quicksight_update_theme]{update_theme}} is called, a new
+version is created. Each version of the theme has a description of the
+version in the \code{VersionDescription} field.}
 
 \item{Configuration}{[required] The theme configuration, which contains the theme display properties.}
 

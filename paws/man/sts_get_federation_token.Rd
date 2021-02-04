@@ -136,12 +136,13 @@ Returns a set of temporary security credentials (consisting of an access
 key ID, a secret access key, and a security token) for a federated user.
 A typical use is in a proxy application that gets temporary security
 credentials on behalf of distributed applications inside a corporate
-network. You must call the \code{GetFederationToken} operation using the
+network. You must call the
+\code{\link[=sts_get_federation_token]{get_federation_token}} operation using the
 long-term security credentials of an IAM user. As a result, this call is
 appropriate in contexts where those credentials can be safely stored,
 usually in a server-based application. For a comparison of
-\code{GetFederationToken} with the other API operations that produce
-temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials}
+\code{\link[=sts_get_federation_token]{get_federation_token}} with the other API
+operations that produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials}
 and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the AWS STS API operations}
 in the \emph{IAM User Guide}.
 
@@ -149,15 +150,16 @@ You can create a mobile-based or browser-based app that can authenticate
 users using a web identity provider like Login with Amazon, Facebook,
 Google, or an OpenID Connect-compatible identity provider. In this case,
 we recommend that you use \href{https://aws.amazon.com/cognito/}{Amazon Cognito} or
-\code{AssumeRoleWithWebIdentity}. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity}{Federation Through a Web-based Identity Provider}
+\code{\link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity}}.
+For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity}{Federation Through a Web-based Identity Provider}
 in the \emph{IAM User Guide}.
 
-You can also call \code{GetFederationToken} using the security credentials of
-an AWS account root user, but we do not recommend it. Instead, we
-recommend that you create an IAM user for the purpose of the proxy
-application. Then attach a policy to the IAM user that limits federated
-users to only the actions and resources that they need to access. For
-more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html}{IAM Best Practices}
+You can also call \code{\link[=sts_get_federation_token]{get_federation_token}}
+using the security credentials of an AWS account root user, but we do
+not recommend it. Instead, we recommend that you create an IAM user for
+the purpose of the proxy application. Then attach a policy to the IAM
+user that limits federated users to only the actions and resources that
+they need to access. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html}{IAM Best Practices}
 in the \emph{IAM User Guide}.
 
 \strong{Session duration}
@@ -170,11 +172,13 @@ have a maximum duration of 3,600 seconds (1 hour).
 
 \strong{Permissions}
 
-You can use the temporary credentials created by \code{GetFederationToken} in
-any AWS service except the following:
+You can use the temporary credentials created by
+\code{\link[=sts_get_federation_token]{get_federation_token}} in any AWS service
+except the following:
 \itemize{
 \item You cannot call any IAM operations using the AWS CLI or the AWS API.
-\item You cannot call any STS operations except \code{GetCallerIdentity}.
+\item You cannot call any STS operations except
+\code{\link[=sts_get_caller_identity]{get_caller_identity}}.
 }
 
 You must pass an inline or managed \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{session policy}
@@ -192,8 +196,8 @@ federated user. You cannot use session policies to grant more
 permissions than those that are defined in the permissions policy of the
 IAM user. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{Session Policies}
 in the \emph{IAM User Guide}. For information about using
-\code{GetFederationToken} to create temporary security credentials, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken}{GetFederationToken—Federation Through a Custom Identity Broker}.
+\code{\link[=sts_get_federation_token]{get_federation_token}} to create temporary
+security credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken}{GetFederationToken—Federation Through a Custom Identity Broker}.
 
 You can use the credentials to access a resource that has a
 resource-based policy. If that policy specifically references the

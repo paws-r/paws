@@ -24,7 +24,7 @@ link when specifying the document.
 
 The placeholder link is of the following form:
 
-\verb{$\\\{aws:iot:s3-presigned-url:https://s3.amazonaws.com/<i>bucket</i>/<i>key</i>\\\}}
+\verb{$\\\{aws:iot:s3-presigned-url:https://s3.amazonaws.com/bucket/key\\\}}
 
 where \emph{bucket} is your bucket name and \emph{key} is the object in the bucket
 to which you are linking.}
@@ -58,7 +58,7 @@ When you specify a value for this parameter, AWS IoT Core sends jobs
 notifications to MQTT topics that contain the value in the following
 format.
 
-\verb{$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/}
+\verb{$aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/}
 
 The \code{namespaceId} feature is in public preview.}
 }

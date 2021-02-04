@@ -9,8 +9,9 @@ storagegateway_create_tape_with_barcode(GatewayARN, TapeSizeInBytes,
 }
 \arguments{
 \item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) that represents the gateway to
-associate the virtual tape with. Use the ListGateways operation to
-return a list of gateways for your account and AWS Region.}
+associate the virtual tape with. Use the
+\code{\link[=storagegateway_list_gateways]{list_gateways}} operation to return a
+list of gateways for your account and AWS Region.}
 
 \item{TapeSizeInBytes}{[required] The size, in bytes, of the virtual tape that you want to create.
 
@@ -58,8 +59,8 @@ barcodes used on deleted tapes. This operation is only supported in the
 tape gateway type.
 
 Cache storage must be allocated to the gateway before you can create a
-virtual tape. Use the AddCache operation to add cache storage to a
-gateway.
+virtual tape. Use the \code{\link[=storagegateway_add_cache]{add_cache}} operation
+to add cache storage to a gateway.
 }
 \section{Request syntax}{
 \preformatted{svc$create_tape_with_barcode(

@@ -18,7 +18,8 @@ to the current account are returned.
 An empty list results in an \code{InvalidParameterException} being thrown.}
 
 \item{NextToken}{The \emph{DescribeTrustsResult.NextToken} value from a previous call to
-DescribeTrusts. Pass null if this is the first call.}
+\code{\link[=directoryservice_describe_trusts]{describe_trusts}}. Pass null if this
+is the first call.}
 
 \item{Limit}{The maximum number of objects to return.}
 }

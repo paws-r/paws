@@ -22,9 +22,9 @@ time.}
 
 \item{SortOrder}{The sort order. The default value is \code{Descending}.}
 
-\item{NextToken}{If the previous call to \code{ListArtifacts} didn't return the full set of
-artifacts, the call returns a token for getting the next set of
-artifacts.}
+\item{NextToken}{If the previous call to \code{\link[=sagemaker_list_artifacts]{list_artifacts}}
+didn't return the full set of artifacts, the call returns a token for
+getting the next set of artifacts.}
 
 \item{MaxResults}{The maximum number of artifacts to return in the response. The default
 value is 10.}

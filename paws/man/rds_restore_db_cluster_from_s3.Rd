@@ -244,11 +244,13 @@ described in \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/
 in the \emph{Amazon Aurora User Guide}.
 
 This action only restores the DB cluster, not the DB instances for that
-DB cluster. You must invoke the \code{CreateDBInstance} action to create DB
+DB cluster. You must invoke the
+\code{\link[=rds_create_db_instance]{create_db_instance}} action to create DB
 instances for the restored DB cluster, specifying the identifier of the
 restored DB cluster in \code{DBClusterIdentifier}. You can create DB
-instances only after the \code{RestoreDBClusterFromS3} action has completed
-and the DB cluster is available.
+instances only after the
+\code{\link[=rds_restore_db_cluster_from_s3]{restore_db_cluster_from_s3}} action
+has completed and the DB cluster is available.
 
 For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}

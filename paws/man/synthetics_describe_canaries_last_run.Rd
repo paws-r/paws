@@ -9,8 +9,9 @@ synthetics_describe_canaries_last_run(NextToken, MaxResults)
 }
 \arguments{
 \item{NextToken}{A token that indicates that there is more data available. You can use
-this token in a subsequent \code{DescribeCanaries} operation to retrieve the
-next set of results.}
+this token in a subsequent
+\code{\link[=synthetics_describe_canaries]{describe_canaries}} operation to
+retrieve the next set of results.}
 
 \item{MaxResults}{Specify this parameter to limit how many runs are returned each time you
 use the \code{DescribeLastRun} operation. If you omit this parameter, the

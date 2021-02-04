@@ -8,11 +8,11 @@ resourcegroups_list_groups(Filters, MaxResults, NextToken)
 }
 \arguments{
 \item{Filters}{Filters, formatted as GroupFilter objects, that you want to apply to a
-\code{ListGroups} operation.
+\code{\link[=resourcegroups_list_groups]{list_groups}} operation.
 \itemize{
 \item \code{resource-type} - Filter the results to include only those of the
 specified resource types. Specify up to five resource types in the
-format \verb{AWS::<i>ServiceCode</i>::<i>ResourceType</i> }. For example,
+format \verb{AWS::ServiceCode::ResourceType }. For example,
 \verb{AWS::EC2::Instance}, or \verb{AWS::S3::Bucket}.
 \item \code{configuration-type} - Filter the results to include only those
 groups that have the specified configuration types attached. The

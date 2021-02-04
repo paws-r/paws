@@ -14,14 +14,15 @@ kinesis_put_records(Records, StreamName)
 }
 \description{
 Writes multiple data records into a Kinesis data stream in a single call
-(also referred to as a \code{PutRecords} request). Use this operation to send
-data into the stream for data ingestion and processing.
+(also referred to as a \code{\link[=kinesis_put_records]{put_records}} request).
+Use this operation to send data into the stream for data ingestion and
+processing.
 
-Each \code{PutRecords} request can support up to 500 records. Each record in
-the request can be as large as 1 MiB, up to a limit of 5 MiB for the
-entire request, including partition keys. Each shard can support writes
-up to 1,000 records per second, up to a maximum data write total of 1
-MiB per second.
+Each \code{\link[=kinesis_put_records]{put_records}} request can support up to 500
+records. Each record in the request can be as large as 1 MiB, up to a
+limit of 5 MiB for the entire request, including partition keys. Each
+shard can support writes up to 1,000 records per second, up to a maximum
+data write total of 1 MiB per second.
 
 You must specify the name of the stream that captures, stores, and
 transports the data; and an array of request \code{Records}, with each record
@@ -46,19 +47,22 @@ This parameter allows a data producer to determine explicitly the shard
 where the record is stored. For more information, see \href{https://docs.aws.amazon.com/streams/latest/dev/developing-producers-with-sdk.html#kinesis-using-sdk-java-putrecords}{Adding Multiple Records with PutRecords}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.
 
-The \code{PutRecords} response includes an array of response \code{Records}. Each
-record in the response array directly correlates with a record in the
-request array using natural ordering, from the top to the bottom of the
-request and response. The response \code{Records} array always includes the
-same number of records as the request array.
+The \code{\link[=kinesis_put_records]{put_records}} response includes an array of
+response \code{Records}. Each record in the response array directly
+correlates with a record in the request array using natural ordering,
+from the top to the bottom of the request and response. The response
+\code{Records} array always includes the same number of records as the
+request array.
 
 The response \code{Records} array includes both successfully and
 unsuccessfully processed records. Kinesis Data Streams attempts to
-process all records in each \code{PutRecords} request. A single record
-failure does not stop the processing of subsequent records. As a result,
-PutRecords doesn't guarantee the ordering of records. If you need to
-read records in the same order they are written to the stream, use
-PutRecord instead of \code{PutRecords}, and write to the same shard.
+process all records in each \code{\link[=kinesis_put_records]{put_records}}
+request. A single record failure does not stop the processing of
+subsequent records. As a result, PutRecords doesn't guarantee the
+ordering of records. If you need to read records in the same order they
+are written to the stream, use \code{\link[=kinesis_put_record]{put_record}}
+instead of \code{\link[=kinesis_put_records]{put_records}}, and write to the same
+shard.
 
 A successfully processed record includes \code{ShardId} and \code{SequenceNumber}
 values. The \code{ShardId} parameter identifies the shard in the stream where
@@ -79,8 +83,11 @@ After you write a record to a stream, you cannot modify that record or
 its order within the stream.
 
 By default, data records are accessible for 24 hours from the time that
-they are added to a stream. You can use IncreaseStreamRetentionPeriod or
-DecreaseStreamRetentionPeriod to modify this retention period.
+they are added to a stream. You can use
+\code{\link[=kinesis_increase_stream_retention_period]{increase_stream_retention_period}}
+or
+\code{\link[=kinesis_decrease_stream_retention_period]{decrease_stream_retention_period}}
+to modify this retention period.
 }
 \section{Request syntax}{
 \preformatted{svc$put_records(

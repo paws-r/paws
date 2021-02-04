@@ -15,8 +15,9 @@ the virtual tapes you want to describe. If this parameter is not
 specified, Tape gateway returns a description of all virtual tapes
 associated with the specified gateway.}
 
-\item{Marker}{A marker value, obtained in a previous call to \code{DescribeTapes}. This
-marker indicates which page of results to retrieve.
+\item{Marker}{A marker value, obtained in a previous call to
+\code{\link[=storagegateway_describe_tapes]{describe_tapes}}. This marker indicates
+which page of results to retrieve.
 
 If not specified, the first page of results is retrieved.}
 

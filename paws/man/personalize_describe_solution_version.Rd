@@ -11,7 +11,7 @@ personalize_describe_solution_version(solutionVersionArn)
 }
 \description{
 Describes a specific version of a solution. For more information on
-solutions, see CreateSolution.
+solutions, see \code{\link[=personalize_create_solution]{create_solution}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_solution_version(

@@ -41,11 +41,12 @@ By default, GET returns ACL information about the current version of an
 object. To return ACL information about a different version, use the
 versionId subresource.
 
-The following operations are related to \code{GetObjectAcl}:
+The following operations are related to
+\code{\link[=s3_get_object_acl]{get_object_acl}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html}{DeleteObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
+\item \code{\link[=s3_get_object]{get_object}}
+\item \code{\link[=s3_delete_object]{delete_object}}
+\item \code{\link[=s3_put_object]{put_object}}
 }
 }
 \section{Request syntax}{

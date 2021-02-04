@@ -8,15 +8,17 @@ is associated with the current AWS account}
 route53_list_traffic_policies(TrafficPolicyIdMarker, MaxItems)
 }
 \arguments{
-\item{TrafficPolicyIdMarker}{(Conditional) For your first request to \code{ListTrafficPolicies}, don't
-include the \code{TrafficPolicyIdMarker} parameter.
+\item{TrafficPolicyIdMarker}{(Conditional) For your first request to
+\code{\link[=route53_list_traffic_policies]{list_traffic_policies}}, don't include
+the \code{TrafficPolicyIdMarker} parameter.
 
 If you have more traffic policies than the value of \code{MaxItems},
-\code{ListTrafficPolicies} returns only the first \code{MaxItems} traffic
-policies. To get the next group of policies, submit another request to
-\code{ListTrafficPolicies}. For the value of \code{TrafficPolicyIdMarker}, specify
-the value of \code{TrafficPolicyIdMarker} that was returned in the previous
-response.}
+\code{\link[=route53_list_traffic_policies]{list_traffic_policies}} returns only
+the first \code{MaxItems} traffic policies. To get the next group of
+policies, submit another request to
+\code{\link[=route53_list_traffic_policies]{list_traffic_policies}}. For the value
+of \code{TrafficPolicyIdMarker}, specify the value of \code{TrafficPolicyIdMarker}
+that was returned in the previous response.}
 
 \item{MaxItems}{(Optional) The maximum number of traffic policies that you want Amazon
 Route 53 to return in response to this request. If you have more than
@@ -31,8 +33,8 @@ is associated with the current AWS account. Policies are listed in the
 order that they were created in.
 
 For information about how of deleting a traffic policy affects the
-response from \code{ListTrafficPolicies}, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html}{DeleteTrafficPolicy}.
+response from \code{\link[=route53_list_traffic_policies]{list_traffic_policies}},
+see \code{\link[=route53_delete_traffic_policy]{delete_traffic_policy}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_traffic_policies(

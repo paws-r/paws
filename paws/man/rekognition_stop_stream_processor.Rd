@@ -8,11 +8,12 @@ CreateStreamProcessor}
 rekognition_stop_stream_processor(Name)
 }
 \arguments{
-\item{Name}{[required] The name of a stream processor created by CreateStreamProcessor.}
+\item{Name}{[required] The name of a stream processor created by
+\code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.}
 }
 \description{
 Stops a running stream processor that was created by
-CreateStreamProcessor.
+\code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_stream_processor(

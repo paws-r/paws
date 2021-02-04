@@ -13,10 +13,11 @@ personalize_delete_solution(solutionArn)
 Deletes all versions of a solution and the \code{Solution} object itself.
 Before deleting a solution, you must delete all campaigns based on the
 solution. To determine what campaigns are using the solution, call
-ListCampaigns and supply the Amazon Resource Name (ARN) of the solution.
-You can't delete a solution if an associated \code{SolutionVersion} is in the
-CREATE PENDING or IN PROGRESS state. For more information on solutions,
-see CreateSolution.
+\code{\link[=personalize_list_campaigns]{list_campaigns}} and supply the Amazon
+Resource Name (ARN) of the solution. You can't delete a solution if an
+associated \code{SolutionVersion} is in the CREATE PENDING or IN PROGRESS
+state. For more information on solutions, see
+\code{\link[=personalize_create_solution]{create_solution}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_solution(

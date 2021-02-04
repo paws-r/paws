@@ -12,7 +12,7 @@ sagemaker_describe_endpoint_config(EndpointConfigName)
 }
 \description{
 Returns the description of an endpoint configuration created using the
-\code{CreateEndpointConfig} API.
+\code{\link[=sagemaker_create_endpoint_config]{create_endpoint_config}} API.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_endpoint_config(

@@ -16,7 +16,8 @@ this, the default event bus is used.}
 Describes the specified rule.
 
 DescribeRule does not list the targets of a rule. To see the targets
-associated with a rule, use ListTargetsByRule.
+associated with a rule, use
+\code{\link[=cloudwatchevents_list_targets_by_rule]{list_targets_by_rule}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_rule(

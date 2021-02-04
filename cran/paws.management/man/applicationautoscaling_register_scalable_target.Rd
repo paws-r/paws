@@ -172,11 +172,11 @@ this range.
 After you register a scalable target, you do not need to register it
 again to use other Application Auto Scaling operations. To see which
 resources have been registered, use
-\href{https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html}{DescribeScalableTargets}.
+\code{\link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets}}.
 You can also view the scaling policies for a service namespace by using
-\href{https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html}{DescribeScalableTargets}.
+\code{\link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets}}.
 If you no longer need a scalable target, you can deregister it by using
-\href{https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DeregisterScalableTarget.html}{DeregisterScalableTarget}.
+\code{\link[=applicationautoscaling_deregister_scalable_target]{deregister_scalable_target}}.
 
 To update a scalable target, specify the parameters that you want to
 change. Include the parameters that identify the scalable target:

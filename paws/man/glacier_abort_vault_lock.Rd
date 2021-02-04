@@ -25,10 +25,12 @@ this operation is requested, the operation returns an
 removes the vault lock policy from the specified vault.
 
 A vault lock is put into the \code{InProgress} state by calling
-InitiateVaultLock. A vault lock is put into the \code{Locked} state by
-calling CompleteVaultLock. You can get the state of a vault lock by
-calling GetVaultLock. For more information about the vault locking
-process, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
+\code{\link[=glacier_initiate_vault_lock]{initiate_vault_lock}}. A vault lock is
+put into the \code{Locked} state by calling
+\code{\link[=glacier_complete_vault_lock]{complete_vault_lock}}. You can get the
+state of a vault lock by calling
+\code{\link[=glacier_get_vault_lock]{get_vault_lock}}. For more information about
+the vault locking process, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
 For more information about vault lock policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html}{Amazon Glacier Access Control with Vault Lock Policies}.
 
 This operation is idempotent. You can successfully invoke this operation

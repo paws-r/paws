@@ -12,7 +12,7 @@ personalize_describe_event_tracker(eventTrackerArn)
 \description{
 Describes an event tracker. The response includes the \code{trackingId} and
 \code{status} of the event tracker. For more information on event trackers,
-see CreateEventTracker.
+see \code{\link[=personalize_create_event_tracker]{create_event_tracker}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_event_tracker(

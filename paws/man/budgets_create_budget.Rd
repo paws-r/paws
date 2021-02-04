@@ -14,8 +14,8 @@ budgets_create_budget(AccountId, Budget, NotificationsWithSubscribers)
 \item{NotificationsWithSubscribers}{A notification that you want to associate with a budget. A budget can
 have up to five notifications, and each notification can have one SNS
 subscriber and up to 10 email subscribers. If you include notifications
-and subscribers in your \code{CreateBudget} call, AWS creates the
-notifications and subscribers for you.}
+and subscribers in your \code{\link[=budgets_create_budget]{create_budget}} call,
+AWS creates the notifications and subscribers for you.}
 }
 \description{
 Creates a budget and, if included, notifications and subscribers.

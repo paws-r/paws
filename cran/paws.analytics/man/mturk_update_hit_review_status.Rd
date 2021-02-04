@@ -18,10 +18,10 @@ to \code{Reviewing}
 }}
 }
 \description{
-The \code{UpdateHITReviewStatus} operation updates the status of a HIT. If
-the status is Reviewable, this operation can update the status to
-Reviewing, or it can revert a Reviewing HIT back to the Reviewable
-status.
+The \code{\link[=mturk_update_hit_review_status]{update_hit_review_status}}
+operation updates the status of a HIT. If the status is Reviewable, this
+operation can update the status to Reviewing, or it can revert a
+Reviewing HIT back to the Reviewable status.
 }
 \section{Request syntax}{
 \preformatted{svc$update_hit_review_status(

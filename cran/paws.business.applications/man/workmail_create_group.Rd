@@ -14,7 +14,7 @@ workmail_create_group(OrganizationId, Name)
 }
 \description{
 Creates a group that can be used in Amazon WorkMail by calling the
-RegisterToWorkMail operation.
+\code{\link[=workmail_register_to_work_mail]{register_to_work_mail}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$create_group(

@@ -26,9 +26,10 @@ time.}
 \item{MaxResults}{The maximum number of versions to return in the response. The default
 value is 10.}
 
-\item{NextToken}{If the previous call to \code{ListImageVersions} didn't return the full set
-of versions, the call returns a token for getting the next set of
-versions.}
+\item{NextToken}{If the previous call to
+\code{\link[=sagemaker_list_image_versions]{list_image_versions}} didn't return the
+full set of versions, the call returns a token for getting the next set
+of versions.}
 
 \item{SortBy}{The property used to sort results. The default value is \code{CREATION_TIME}.}
 

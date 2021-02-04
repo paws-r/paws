@@ -18,8 +18,9 @@ analysis results. If you are using the AWS CLI, the parameter name is
 
 \item{Name}{[required] An identifier you assign to the stream processor. You can use \code{Name} to
 manage the stream processor. For example, you can get the current status
-of the stream processor by calling DescribeStreamProcessor. \code{Name} is
-idempotent.}
+of the stream processor by calling
+\code{\link[=rekognition_describe_stream_processor]{describe_stream_processor}}.
+\code{Name} is idempotent.}
 
 \item{Settings}{[required] Face recognition input parameters to be used by the stream processor.
 Includes the collection to use for face recognition and the face
@@ -41,11 +42,13 @@ in \code{Settings}. For example, the collection containing faces that you
 want to recognize. Use \code{Name} to assign an identifier for the stream
 processor. You use \code{Name} to manage the stream processor. For example,
 you can start processing the source video by calling
-StartStreamProcessor with the \code{Name} field.
+\code{\link[=rekognition_start_stream_processor]{start_stream_processor}} with the
+\code{Name} field.
 
 After you have finished analyzing a streaming video, use
-StopStreamProcessor to stop processing. You can delete the stream
-processor by calling DeleteStreamProcessor.
+\code{\link[=rekognition_stop_stream_processor]{stop_stream_processor}} to stop
+processing. You can delete the stream processor by calling
+\code{\link[=rekognition_delete_stream_processor]{delete_stream_processor}}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_stream_processor(

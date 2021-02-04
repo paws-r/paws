@@ -98,8 +98,9 @@ Returns a set of temporary security credentials for users who have been
 authenticated via a SAML authentication response. This operation
 provides a mechanism for tying an enterprise identity store or directory
 to role-based AWS access without user-specific credentials or
-configuration. For a comparison of \code{AssumeRoleWithSAML} with the other
-API operations that produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials}
+configuration. For a comparison of
+\code{\link[=sts_assume_role_with_saml]{assume_role_with_saml}} with the other API
+operations that produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials}
 and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the AWS STS API operations}
 in the \emph{IAM User Guide}.
 
@@ -111,15 +112,15 @@ to AWS services.
 \strong{Session Duration}
 
 By default, the temporary security credentials created by
-\code{AssumeRoleWithSAML} last for one hour. However, you can use the
-optional \code{DurationSeconds} parameter to specify the duration of your
-session. Your role session lasts for the duration that you specify, or
-until the time specified in the SAML authentication response's
-\code{SessionNotOnOrAfter} value, whichever is shorter. You can provide a
-\code{DurationSeconds} value from 900 seconds (15 minutes) up to the maximum
-session duration setting for the role. This setting can have a value
-from 1 hour to 12 hours. To learn how to view the maximum value for your
-role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session}{View the Maximum Session Duration Setting for a Role}
+\code{\link[=sts_assume_role_with_saml]{assume_role_with_saml}} last for one hour.
+However, you can use the optional \code{DurationSeconds} parameter to specify
+the duration of your session. Your role session lasts for the duration
+that you specify, or until the time specified in the SAML authentication
+response's \code{SessionNotOnOrAfter} value, whichever is shorter. You can
+provide a \code{DurationSeconds} value from 900 seconds (15 minutes) up to
+the maximum session duration setting for the role. This setting can have
+a value from 1 hour to 12 hours. To learn how to view the maximum value
+for your role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session}{View the Maximum Session Duration Setting for a Role}
 in the \emph{IAM User Guide}. The maximum session duration limit applies when
 you use the \verb{AssumeRole*} API operations or the \verb{assume-role*} CLI
 commands. However the limit does not apply when you use those operations
@@ -128,10 +129,11 @@ in the \emph{IAM User Guide}.
 
 \strong{Permissions}
 
-The temporary security credentials created by \code{AssumeRoleWithSAML} can
-be used to make API calls to any AWS service with the following
-exception: you cannot call the STS \code{GetFederationToken} or
-\code{GetSessionToken} API operations.
+The temporary security credentials created by
+\code{\link[=sts_assume_role_with_saml]{assume_role_with_saml}} can be used to make
+API calls to any AWS service with the following exception: you cannot
+call the STS \code{\link[=sts_get_federation_token]{get_federation_token}} or
+\code{\link[=sts_get_session_token]{get_session_token}} API operations.
 
 (Optional) You can pass inline or managed \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{session policies}
 to this operation. You can pass a single JSON policy document to use as
@@ -147,17 +149,17 @@ more permissions than those allowed by the identity-based policy of the
 role that is being assumed. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{Session Policies}
 in the \emph{IAM User Guide}.
 
-Calling \code{AssumeRoleWithSAML} does not require the use of AWS security
-credentials. The identity of the caller is validated by using keys in
-the metadata document that is uploaded for the SAML provider entity for
-your identity provider.
+Calling \code{\link[=sts_assume_role_with_saml]{assume_role_with_saml}} does not
+require the use of AWS security credentials. The identity of the caller
+is validated by using keys in the metadata document that is uploaded for
+the SAML provider entity for your identity provider.
 
-Calling \code{AssumeRoleWithSAML} can result in an entry in your AWS
-CloudTrail logs. The entry includes the value in the \code{NameID} element of
-the SAML assertion. We recommend that you use a \code{NameIDType} that is not
-associated with any personally identifiable information (PII). For
-example, you could instead use the persistent identifier
-(\code{urn:oasis:names:tc:SAML:2.0:nameid-format:persistent}).
+Calling \code{\link[=sts_assume_role_with_saml]{assume_role_with_saml}} can result
+in an entry in your AWS CloudTrail logs. The entry includes the value in
+the \code{NameID} element of the SAML assertion. We recommend that you use a
+\code{NameIDType} that is not associated with any personally identifiable
+information (PII). For example, you could instead use the persistent
+identifier (\code{urn:oasis:names:tc:SAML:2.0:nameid-format:persistent}).
 
 \strong{Tags}
 
@@ -195,12 +197,13 @@ in the \emph{IAM User Guide}.
 
 \strong{SAML Configuration}
 
-Before your application can call \code{AssumeRoleWithSAML}, you must
-configure your SAML identity provider (IdP) to issue the claims required
-by AWS. Additionally, you must use AWS Identity and Access Management
-(IAM) to create a SAML provider entity in your AWS account that
-represents your identity provider. You must also create an IAM role that
-specifies this SAML provider in its trust policy.
+Before your application can call
+\code{\link[=sts_assume_role_with_saml]{assume_role_with_saml}}, you must configure
+your SAML identity provider (IdP) to issue the claims required by AWS.
+Additionally, you must use AWS Identity and Access Management (IAM) to
+create a SAML provider entity in your AWS account that represents your
+identity provider. You must also create an IAM role that specifies this
+SAML provider in its trust policy.
 
 For more information, see the following resources:
 \itemize{

@@ -60,20 +60,23 @@ days. Secrets Manager attaches a \code{DeletionDate} stamp to the secret that
 specifies the end of the recovery window. At the end of the recovery
 window, Secrets Manager deletes the secret permanently.
 
-At any time before recovery window ends, you can use RestoreSecret to
-remove the \code{DeletionDate} and cancel the deletion of the secret.
+At any time before recovery window ends, you can use
+\code{\link[=secretsmanager_restore_secret]{restore_secret}} to remove the
+\code{DeletionDate} and cancel the deletion of the secret.
 
 You cannot access the encrypted secret information in any secret that is
 scheduled for deletion. If you need to access that information, you must
-cancel the deletion with RestoreSecret and then retrieve the
+cancel the deletion with
+\code{\link[=secretsmanager_restore_secret]{restore_secret}} and then retrieve the
 information.
 \itemize{
 \item There is no explicit operation to delete a version of a secret.
 Instead, remove all staging labels from the \code{VersionStage} field of
 a version. That marks the version as deprecated and allows Secrets
 Manager to delete it as needed. Versions that do not have any
-staging labels do not show up in ListSecretVersionIds unless you
-specify \code{IncludeDeprecated}.
+staging labels do not show up in
+\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}
+unless you specify \code{IncludeDeprecated}.
 \item The permanent secret deletion at the end of the waiting period is
 performed as a background task with low priority. There is no
 guarantee of a specific time after the recovery window for the
@@ -89,9 +92,11 @@ To run this command, you must have the following permissions:
 
 \strong{Related operations}
 \itemize{
-\item To create a secret, use CreateSecret.
+\item To create a secret, use
+\code{\link[=secretsmanager_create_secret]{create_secret}}.
 \item To cancel deletion of a version of a secret before the recovery
-window has expired, use RestoreSecret.
+window has expired, use
+\code{\link[=secretsmanager_restore_secret]{restore_secret}}.
 }
 }
 \section{Request syntax}{

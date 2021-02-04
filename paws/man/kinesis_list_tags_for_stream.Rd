@@ -10,8 +10,8 @@ kinesis_list_tags_for_stream(StreamName, ExclusiveStartTagKey, Limit)
 \item{StreamName}{[required] The name of the stream.}
 
 \item{ExclusiveStartTagKey}{The key to use as the starting point for the list of tags. If this
-parameter is set, \code{ListTagsForStream} gets all tags that occur after
-\code{ExclusiveStartTagKey}.}
+parameter is set, \code{\link[=kinesis_list_tags_for_stream]{list_tags_for_stream}}
+gets all tags that occur after \code{ExclusiveStartTagKey}.}
 
 \item{Limit}{The number of tags to return. If this number is less than the total
 number of tags associated with the stream, \code{HasMoreTags} is set to

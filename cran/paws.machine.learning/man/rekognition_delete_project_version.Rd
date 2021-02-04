@@ -15,8 +15,10 @@ Deletes an Amazon Rekognition Custom Labels model.
 
 You can't delete a model if it is running or if it is training. To check
 the status of a model, use the \code{Status} field returned from
-DescribeProjectVersions. To stop a running model call
-StopProjectVersion. If the model is training, wait until it finishes.
+\code{\link[=rekognition_describe_project_versions]{describe_project_versions}}. To
+stop a running model call
+\code{\link[=rekognition_stop_project_version]{stop_project_version}}. If the model
+is training, wait until it finishes.
 
 This operation requires permissions to perform the
 \code{rekognition:DeleteProjectVersion} action.

@@ -10,16 +10,18 @@ servicediscovery_list_instances(ServiceId, NextToken, MaxResults)
 \arguments{
 \item{ServiceId}{[required] The ID of the service that you want to list instances for.}
 
-\item{NextToken}{For the first \code{ListInstances} request, omit this value.
+\item{NextToken}{For the first \code{\link[=servicediscovery_list_instances]{list_instances}}
+request, omit this value.
 
 If more than \code{MaxResults} instances match the specified criteria, you
-can submit another \code{ListInstances} request to get the next group of
-results. Specify the value of \code{NextToken} from the previous response in
-the next request.}
+can submit another \code{\link[=servicediscovery_list_instances]{list_instances}}
+request to get the next group of results. Specify the value of
+\code{NextToken} from the previous response in the next request.}
 
 \item{MaxResults}{The maximum number of instances that you want AWS Cloud Map to return in
-the response to a \code{ListInstances} request. If you don't specify a value
-for \code{MaxResults}, AWS Cloud Map returns up to 100 instances.}
+the response to a \code{\link[=servicediscovery_list_instances]{list_instances}}
+request. If you don't specify a value for \code{MaxResults}, AWS Cloud Map
+returns up to 100 instances.}
 }
 \description{
 Lists summary information about the instances that you registered by

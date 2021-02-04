@@ -23,8 +23,8 @@ your AWS resources through bring your own IP addresses (BYOIP) and
 deletes the corresponding address pool.
 
 Before you can release an address range, you must stop advertising it
-using WithdrawByoipCidr and you must not have any IP addresses allocated
-from its address range.
+using \code{\link[=ec2_withdraw_byoip_cidr]{withdraw_byoip_cidr}} and you must not
+have any IP addresses allocated from its address range.
 }
 \section{Request syntax}{
 \preformatted{svc$deprovision_byoip_cidr(

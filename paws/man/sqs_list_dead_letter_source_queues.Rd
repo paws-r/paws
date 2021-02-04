@@ -22,14 +22,16 @@ the response.}
 Returns a list of your queues that have the \code{RedrivePolicy} queue
 attribute configured with a dead-letter queue.
 
-The \code{ListDeadLetterSourceQueues} methods supports pagination. Set
-parameter \code{MaxResults} in the request to specify the maximum number of
-results to be returned in the response. If you do not set \code{MaxResults},
-the response includes a maximum of 1,000 results. If you set
-\code{MaxResults} and there are additional results to display, the response
-includes a value for \code{NextToken}. Use \code{NextToken} as a parameter in your
-next request to \code{ListDeadLetterSourceQueues} to receive the next page of
-results.
+The
+\code{\link[=sqs_list_dead_letter_source_queues]{list_dead_letter_source_queues}}
+methods supports pagination. Set parameter \code{MaxResults} in the request
+to specify the maximum number of results to be returned in the response.
+If you do not set \code{MaxResults}, the response includes a maximum of 1,000
+results. If you set \code{MaxResults} and there are additional results to
+display, the response includes a value for \code{NextToken}. Use \code{NextToken}
+as a parameter in your next request to
+\code{\link[=sqs_list_dead_letter_source_queues]{list_dead_letter_source_queues}}
+to receive the next page of results.
 
 For more information about using dead-letter queues, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Using Amazon SQS Dead-Letter Queues}
 in the \emph{Amazon Simple Queue Service Developer Guide}.

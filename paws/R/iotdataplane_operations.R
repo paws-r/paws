@@ -9,8 +9,8 @@ NULL
 #' Deletes the shadow for the specified thing.
 #' 
 #' For more information, see
-#' [DeleteThingShadow](https://docs.aws.amazon.com/iot/latest/developerguide/device-shadow-rest-api.html#API_DeleteThingShadow)
-#' in the AWS IoT Developer Guide.
+#' [`delete_thing_shadow`][iotdataplane_delete_thing_shadow] in the AWS IoT
+#' Developer Guide.
 #'
 #' @usage
 #' iotdataplane_delete_thing_shadow(thingName, shadowName)
@@ -52,8 +52,8 @@ iotdataplane_delete_thing_shadow <- function(thingName, shadowName = NULL) {
 #' Gets the shadow for the specified thing.
 #' 
 #' For more information, see
-#' [GetThingShadow](https://docs.aws.amazon.com/iot/latest/developerguide/device-shadow-rest-api.html#API_GetThingShadow)
-#' in the AWS IoT Developer Guide.
+#' [`get_thing_shadow`][iotdataplane_get_thing_shadow] in the AWS IoT
+#' Developer Guide.
 #'
 #' @usage
 #' iotdataplane_get_thing_shadow(thingName, shadowName)
@@ -182,8 +182,8 @@ iotdataplane_publish <- function(topic, qos = NULL, payload = NULL) {
 #' Updates the shadow for the specified thing.
 #' 
 #' For more information, see
-#' [UpdateThingShadow](https://docs.aws.amazon.com/iot/latest/developerguide/device-shadow-rest-api.html#API_UpdateThingShadow)
-#' in the AWS IoT Developer Guide.
+#' [`update_thing_shadow`][iotdataplane_update_thing_shadow] in the AWS IoT
+#' Developer Guide.
 #'
 #' @usage
 #' iotdataplane_update_thing_shadow(thingName, shadowName, payload)

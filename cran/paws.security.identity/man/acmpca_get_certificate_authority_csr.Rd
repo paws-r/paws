@@ -9,19 +9,19 @@ acmpca_get_certificate_authority_csr(CertificateAuthorityArn)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}
+\code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}
 action. This must be of the form:
 
-\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
+\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 }
 \description{
 Retrieves the certificate signing request (CSR) for your private
 certificate authority (CA). The CSR is created when you call the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}
+\code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}
 action. Sign the CSR with your ACM Private CA-hosted or on-premises root
 or subordinate CA. Then import the signed certificate back into ACM
 Private CA by calling the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ImportCertificateAuthorityCertificate.html}{ImportCertificateAuthorityCertificate}
+\code{\link[=acmpca_import_certificate_authority_certificate]{import_certificate_authority_certificate}}
 action. The CSR is returned as a base64 PEM-encoded string.
 }
 \section{Request syntax}{

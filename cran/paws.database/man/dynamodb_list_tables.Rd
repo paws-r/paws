@@ -17,8 +17,8 @@ specified, the limit is 100.}
 }
 \description{
 Returns an array of table names associated with the current account and
-endpoint. The output from \code{ListTables} is paginated, with each page
-returning a maximum of 100 table names.
+endpoint. The output from \code{\link[=dynamodb_list_tables]{list_tables}} is
+paginated, with each page returning a maximum of 100 table names.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tables(

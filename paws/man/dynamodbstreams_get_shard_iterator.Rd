@@ -36,8 +36,8 @@ reading.}
 \description{
 Returns a shard iterator. A shard iterator provides information about
 how to retrieve the stream records from within a shard. Use the shard
-iterator in a subsequent \code{GetRecords} request to read the stream records
-from the shard.
+iterator in a subsequent \code{\link[=dynamodbstreams_get_records]{get_records}}
+request to read the stream records from the shard.
 
 A shard iterator expires 15 minutes after it is returned to the
 requester.

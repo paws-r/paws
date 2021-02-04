@@ -12,16 +12,16 @@ kinesisanalytics_delete_application_reference_data_source(
 \item{ApplicationName}{[required] Name of an existing application.}
 
 \item{CurrentApplicationVersionId}{[required] Version of the application. You can use the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+\code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation to get the current application version. If the version
 specified is not the current version, the
 \code{ConcurrentModificationException} is returned.}
 
 \item{ReferenceId}{[required] ID of the reference data source. When you add a reference data source to
 your application using the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html}{AddApplicationReferenceDataSource},
+\code{\link[=kinesisanalytics_add_application_reference_data_source]{add_application_reference_data_source}},
 Amazon Kinesis Analytics assigns an ID. You can use the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+\code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation to get the reference ID.}
 }
 \description{
@@ -35,7 +35,7 @@ application configuration.
 
 If the application is running, Amazon Kinesis Analytics immediately
 removes the in-application table that you created using the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html}{AddApplicationReferenceDataSource}
+\code{\link[=kinesisanalytics_add_application_reference_data_source]{add_application_reference_data_source}}
 operation.
 
 This operation requires permissions to perform the

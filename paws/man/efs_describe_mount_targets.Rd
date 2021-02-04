@@ -15,8 +15,9 @@ ignored. The response is paginated at 100 per page if you have more than
 100 mount targets.}
 
 \item{Marker}{(Optional) Opaque pagination token returned from a previous
-\code{DescribeMountTargets} operation (String). If present, it specifies to
-continue the list from where the previous returning call left off.}
+\code{\link[=efs_describe_mount_targets]{describe_mount_targets}} operation
+(String). If present, it specifies to continue the list from where the
+previous returning call left off.}
 
 \item{FileSystemId}{(Optional) ID of the file system whose mount targets you want to list
 (String). It must be included in your request if an \code{AccessPointId} or

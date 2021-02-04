@@ -227,10 +227,12 @@ glue_batch_delete_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #' the discretion of the service.
 #' 
 #' To ensure the immediate deletion of all related resources, before
-#' calling `BatchDeleteTable`, use `DeleteTableVersion` or
-#' `BatchDeleteTableVersion`, and `DeletePartition` or
-#' `BatchDeletePartition`, to delete any resources that belong to the
-#' table.
+#' calling [`batch_delete_table`][glue_batch_delete_table], use
+#' [`delete_table_version`][glue_delete_table_version] or
+#' [`batch_delete_table_version`][glue_batch_delete_table_version], and
+#' [`delete_partition`][glue_delete_partition] or
+#' [`batch_delete_partition`][glue_batch_delete_partition], to delete any
+#' resources that belong to the table.
 #'
 #' @usage
 #' glue_batch_delete_table(CatalogId, DatabaseName, TablesToDelete)
@@ -326,16 +328,16 @@ glue_batch_delete_table_version <- function(CatalogId = NULL, DatabaseName, Tabl
 #'
 #' @description
 #' Returns a list of resource metadata for a given list of crawler names.
-#' After calling the `ListCrawlers` operation, you can call this operation
-#' to access the data to which you have been granted permissions. This
-#' operation supports all IAM permissions, including permission conditions
-#' that uses tags.
+#' After calling the [`list_crawlers`][glue_list_crawlers] operation, you
+#' can call this operation to access the data to which you have been
+#' granted permissions. This operation supports all IAM permissions,
+#' including permission conditions that uses tags.
 #'
 #' @usage
 #' glue_batch_get_crawlers(CrawlerNames)
 #'
 #' @param CrawlerNames &#91;required&#93; A list of crawler names, which might be the names returned from the
-#' `ListCrawlers` operation.
+#' [`list_crawlers`][glue_list_crawlers] operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -371,8 +373,9 @@ glue_batch_get_crawlers <- function(CrawlerNames) {
 #'
 #' @description
 #' Returns a list of resource metadata for a given list of development
-#' endpoint names. After calling the `ListDevEndpoints` operation, you can
-#' call this operation to access the data to which you have been granted
+#' endpoint names. After calling the
+#' [`list_dev_endpoints`][glue_list_dev_endpoints] operation, you can call
+#' this operation to access the data to which you have been granted
 #' permissions. This operation supports all IAM permissions, including
 #' permission conditions that uses tags.
 #'
@@ -415,16 +418,16 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'
 #' @description
 #' Returns a list of resource metadata for a given list of job names. After
-#' calling the `ListJobs` operation, you can call this operation to access
-#' the data to which you have been granted permissions. This operation
-#' supports all IAM permissions, including permission conditions that uses
-#' tags.
+#' calling the [`list_jobs`][glue_list_jobs] operation, you can call this
+#' operation to access the data to which you have been granted permissions.
+#' This operation supports all IAM permissions, including permission
+#' conditions that uses tags.
 #'
 #' @usage
 #' glue_batch_get_jobs(JobNames)
 #'
 #' @param JobNames &#91;required&#93; A list of job names, which might be the names returned from the
-#' `ListJobs` operation.
+#' [`list_jobs`][glue_list_jobs] operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -510,16 +513,16 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'
 #' @description
 #' Returns a list of resource metadata for a given list of trigger names.
-#' After calling the `ListTriggers` operation, you can call this operation
-#' to access the data to which you have been granted permissions. This
-#' operation supports all IAM permissions, including permission conditions
-#' that uses tags.
+#' After calling the [`list_triggers`][glue_list_triggers] operation, you
+#' can call this operation to access the data to which you have been
+#' granted permissions. This operation supports all IAM permissions,
+#' including permission conditions that uses tags.
 #'
 #' @usage
 #' glue_batch_get_triggers(TriggerNames)
 #'
 #' @param TriggerNames &#91;required&#93; A list of trigger names, which may be the names returned from the
-#' `ListTriggers` operation.
+#' [`list_triggers`][glue_list_triggers] operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -554,16 +557,16 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #'
 #' @description
 #' Returns a list of resource metadata for a given list of workflow names.
-#' After calling the `ListWorkflows` operation, you can call this operation
-#' to access the data to which you have been granted permissions. This
-#' operation supports all IAM permissions, including permission conditions
-#' that uses tags.
+#' After calling the [`list_workflows`][glue_list_workflows] operation, you
+#' can call this operation to access the data to which you have been
+#' granted permissions. This operation supports all IAM permissions,
+#' including permission conditions that uses tags.
 #'
 #' @usage
 #' glue_batch_get_workflows(Names, IncludeGraph)
 #'
 #' @param Names &#91;required&#93; A list of workflow names, which may be the names returned from the
-#' `ListWorkflows` operation.
+#' [`list_workflows`][glue_list_workflows] operation.
 #' @param IncludeGraph Specifies whether to include a graph when returning the workflow
 #' resource metadata.
 #'
@@ -768,8 +771,9 @@ glue_batch_update_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #' Cancels (stops) a task run. Machine learning task runs are asynchronous
 #' tasks that AWS Glue runs on your behalf as part of various machine
 #' learning workflows. You can cancel a machine learning task run at any
-#' time by calling `CancelMLTaskRun` with a task run's parent transform's
-#' `TransformID` and the task run's `TaskRunId`.
+#' time by calling [`cancel_ml_task_run`][glue_cancel_ml_task_run] with a
+#' task run's parent transform's `TransformID` and the task run's
+#' `TaskRunId`.
 #'
 #' @usage
 #' glue_cancel_ml_task_run(TransformId, TaskRunId)
@@ -1199,9 +1203,9 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput) {
 #' 
 #' If you previously created an endpoint with a public key, you must remove
 #' that key to be able to set a list of public keys. Call the
-#' `UpdateDevEndpoint` API with the public key content in the
-#' `deletePublicKeys` attribute, and the list of new keys in the
-#' `addPublicKeys` attribute.
+#' [`update_dev_endpoint`][glue_update_dev_endpoint] API with the public
+#' key content in the `deletePublicKeys` attribute, and the list of new
+#' keys in the `addPublicKeys` attribute.
 #' @param NumberOfNodes The number of AWS Glue Data Processing Units (DPUs) to allocate to this
 #' `DevEndpoint`.
 #' @param WorkerType The type of predefined worker that is allocated to the development
@@ -1234,9 +1238,10 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput) {
 #' default to Glue 0.9.
 #' 
 #' You can specify a version of Python support for development endpoints by
-#' using the `Arguments` parameter in the `CreateDevEndpoint` or
-#' `UpdateDevEndpoint` APIs. If no arguments are provided, the version
-#' defaults to Python 2.
+#' using the `Arguments` parameter in the
+#' [`create_dev_endpoint`][glue_create_dev_endpoint] or
+#' [`update_dev_endpoint`][glue_update_dev_endpoint] APIs. If no arguments
+#' are provided, the version defaults to Python 2.
 #' @param NumberOfWorkers The number of workers of a defined `workerType` that are allocated to
 #' the development endpoint.
 #' 
@@ -1887,7 +1892,7 @@ glue_create_registry <- function(RegistryName, Description = NULL, Tags = NULL) 
 #' schema versions from being added after the first schema version. For all
 #' other compatibility modes, validation of compatibility settings will be
 #' applied only from the second version onwards when the
-#' `RegisterSchemaVersion` API is used.
+#' [`register_schema_version`][glue_register_schema_version] API is used.
 #' 
 #' When this API is called without a `RegistryId`, this will create an
 #' entry for a "default-registry" in the registry database tables, if it is
@@ -1900,7 +1905,7 @@ glue_create_registry <- function(RegistryName, Description = NULL, Tags = NULL) 
 #' @param RegistryId This is a wrapper shape to contain the registry identity fields. If this
 #' is not provided, the default registry will be used. The ARN format for
 #' the same will be:
-#' `arn:aws:glue:us-east-2:&lt;customer id&gt;:registry/default-registry:random-5-letter-id`.
+#' `arn:aws:glue:us-east-2:<customer id>:registry/default-registry:random-5-letter-id`.
 #' @param SchemaName &#91;required&#93; Name of the schema to be created of max length of 255, and may only
 #' contain letters, numbers, hyphen, underscore, dollar sign, or hash mark.
 #' No whitespace.
@@ -2503,7 +2508,7 @@ glue_delete_classifier <- function(Name) {
 #' Delete the partition column statistics of a column.
 #' 
 #' The Identity and Access Management (IAM) permission required for this
-#' operation is `DeletePartition`.
+#' operation is [`delete_partition`][glue_delete_partition].
 #'
 #' @usage
 #' glue_delete_column_statistics_for_partition(CatalogId, DatabaseName,
@@ -2555,7 +2560,7 @@ glue_delete_column_statistics_for_partition <- function(CatalogId = NULL, Databa
 #' Retrieves table statistics of columns.
 #' 
 #' The Identity and Access Management (IAM) permission required for this
-#' operation is `DeleteTable`.
+#' operation is [`delete_table`][glue_delete_table].
 #'
 #' @usage
 #' glue_delete_column_statistics_for_table(CatalogId, DatabaseName,
@@ -2688,10 +2693,15 @@ glue_delete_crawler <- function(Name) {
 #' discretion of the service.
 #' 
 #' To ensure the immediate deletion of all related resources, before
-#' calling `DeleteDatabase`, use `DeleteTableVersion` or
-#' `BatchDeleteTableVersion`, `DeletePartition` or `BatchDeletePartition`,
-#' `DeleteUserDefinedFunction`, and `DeleteTable` or `BatchDeleteTable`, to
-#' delete any resources that belong to the database.
+#' calling [`delete_database`][glue_delete_database], use
+#' [`delete_table_version`][glue_delete_table_version] or
+#' [`batch_delete_table_version`][glue_batch_delete_table_version],
+#' [`delete_partition`][glue_delete_partition] or
+#' [`batch_delete_partition`][glue_batch_delete_partition],
+#' [`delete_user_defined_function`][glue_delete_user_defined_function], and
+#' [`delete_table`][glue_delete_table] or
+#' [`batch_delete_table`][glue_batch_delete_table], to delete any resources
+#' that belong to the database.
 #'
 #' @usage
 #' glue_delete_database(CatalogId, Name)
@@ -2944,10 +2954,13 @@ glue_delete_partition_index <- function(CatalogId = NULL, DatabaseName, TableNam
 #'
 #' @description
 #' Delete the entire registry including schema and all of its versions. To
-#' get the status of the delete operation, you can call the `GetRegistry`
-#' API after the asynchronous call. Deleting a registry will disable all
-#' online operations for the registry such as the `UpdateRegistry`,
-#' `CreateSchema`, `UpdateSchema`, and `RegisterSchemaVersion` APIs.
+#' get the status of the delete operation, you can call the
+#' [`get_registry`][glue_get_registry] API after the asynchronous call.
+#' Deleting a registry will disable all online operations for the registry
+#' such as the [`update_registry`][glue_update_registry],
+#' [`create_schema`][glue_create_schema],
+#' [`update_schema`][glue_update_schema], and
+#' [`register_schema_version`][glue_register_schema_version] APIs.
 #'
 #' @usage
 #' glue_delete_registry(RegistryId)
@@ -3030,9 +3043,10 @@ glue_delete_resource_policy <- function(PolicyHashCondition = NULL, ResourceArn 
 #' @description
 #' Deletes the entire schema set, including the schema set and all of its
 #' versions. To get the status of the delete operation, you can call
-#' `GetSchema` API after the asynchronous call. Deleting a registry will
-#' disable all online operations for the schema, such as the
-#' `GetSchemaByDefinition`, and `RegisterSchemaVersion` APIs.
+#' [`get_schema`][glue_get_schema] API after the asynchronous call.
+#' Deleting a registry will disable all online operations for the schema,
+#' such as the [`get_schema_by_definition`][glue_get_schema_by_definition],
+#' and [`register_schema_version`][glue_register_schema_version] APIs.
 #'
 #' @usage
 #' glue_delete_schema(SchemaId)
@@ -3085,11 +3099,12 @@ glue_delete_schema <- function(SchemaId) {
 #' have to remove the checkpoint first using the `DeleteSchemaCheckpoint`
 #' API before using this API.
 #' 
-#' You cannot use the `DeleteSchemaVersions` API to delete the first schema
-#' version in the schema set. The first schema version can only be deleted
-#' by the `DeleteSchema` API. This operation will also delete the attached
-#' `SchemaVersionMetadata` under the schema versions. Hard deletes will be
-#' enforced on the database.
+#' You cannot use the
+#' [`delete_schema_versions`][glue_delete_schema_versions] API to delete
+#' the first schema version in the schema set. The first schema version can
+#' only be deleted by the [`delete_schema`][glue_delete_schema] API. This
+#' operation will also delete the attached `SchemaVersionMetadata` under
+#' the schema versions. Hard deletes will be enforced on the database.
 #' 
 #' If the compatibility mode forbids deleting of a version that is
 #' necessary, such as BACKWARDS\\_FULL, an error is returned.
@@ -3185,10 +3200,12 @@ glue_delete_security_configuration <- function(Name) {
 #' the discretion of the service.
 #' 
 #' To ensure the immediate deletion of all related resources, before
-#' calling `DeleteTable`, use `DeleteTableVersion` or
-#' `BatchDeleteTableVersion`, and `DeletePartition` or
-#' `BatchDeletePartition`, to delete any resources that belong to the
-#' table.
+#' calling [`delete_table`][glue_delete_table], use
+#' [`delete_table_version`][glue_delete_table_version] or
+#' [`batch_delete_table_version`][glue_batch_delete_table_version], and
+#' [`delete_partition`][glue_delete_partition] or
+#' [`batch_delete_partition`][glue_batch_delete_partition], to delete any
+#' resources that belong to the table.
 #'
 #' @usage
 #' glue_delete_table(CatalogId, DatabaseName, Name)
@@ -3513,7 +3530,7 @@ glue_get_classifiers <- function(MaxResults = NULL, NextToken = NULL) {
 #' Retrieves partition statistics of columns.
 #' 
 #' The Identity and Access Management (IAM) permission required for this
-#' operation is `GetPartition`.
+#' operation is [`get_partition`][glue_get_partition].
 #'
 #' @usage
 #' glue_get_column_statistics_for_partition(CatalogId, DatabaseName,
@@ -3567,7 +3584,7 @@ glue_get_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseN
 #' Retrieves table statistics of columns.
 #' 
 #' The Identity and Access Management (IAM) permission required for this
-#' operation is `GetTable`.
+#' operation is [`get_table`][glue_get_table].
 #'
 #' @usage
 #' glue_get_column_statistics_for_table(CatalogId, DatabaseName, TableName,
@@ -4290,8 +4307,9 @@ glue_get_jobs <- function(NextToken = NULL, MaxResults = NULL) {
 #' Gets details for a specific task run on a machine learning transform.
 #' Machine learning task runs are asynchronous tasks that AWS Glue runs on
 #' your behalf as part of various machine learning workflows. You can check
-#' the stats of any task run by calling `GetMLTaskRun` with the `TaskRunID`
-#' and its parent transform's `TransformID`.
+#' the stats of any task run by calling
+#' [`get_ml_task_run`][glue_get_ml_task_run] with the `TaskRunID` and its
+#' parent transform's `TransformID`.
 #'
 #' @usage
 #' glue_get_ml_task_run(TransformId, TaskRunId)
@@ -4333,9 +4351,10 @@ glue_get_ml_task_run <- function(TransformId, TaskRunId) {
 #' Gets a list of runs for a machine learning transform. Machine learning
 #' task runs are asynchronous tasks that AWS Glue runs on your behalf as
 #' part of various machine learning workflows. You can get a sortable,
-#' filterable list of machine learning task runs by calling `GetMLTaskRuns`
-#' with their parent transform's `TransformID` and other optional
-#' parameters as documented in this section.
+#' filterable list of machine learning task runs by calling
+#' [`get_ml_task_runs`][glue_get_ml_task_runs] with their parent
+#' transform's `TransformID` and other optional parameters as documented in
+#' this section.
 #' 
 #' This operation returns a list of historic runs and must be paginated.
 #'
@@ -4402,7 +4421,8 @@ glue_get_ml_task_runs <- function(TransformId, NextToken = NULL, MaxResults = NU
 #' of transform that use machine learning to learn the details of the
 #' transformation to be performed by learning from examples provided by
 #' humans. These transformations are then saved by AWS Glue. You can
-#' retrieve their metadata by calling `GetMLTransform`.
+#' retrieve their metadata by calling
+#' [`get_ml_transform`][glue_get_ml_transform].
 #'
 #' @usage
 #' glue_get_ml_transform(TransformId)
@@ -4446,7 +4466,7 @@ glue_get_ml_transform <- function(TransformId) {
 #' that use machine learning to learn the details of the transformation to
 #' be performed by learning from examples provided by humans. These
 #' transformations are then saved by AWS Glue, and you can retrieve their
-#' metadata by calling `GetMLTransforms`.
+#' metadata by calling [`get_ml_transforms`][glue_get_ml_transforms].
 #'
 #' @usage
 #' glue_get_ml_transforms(NextToken, MaxResults, Filter, Sort)
@@ -4691,9 +4711,7 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' @param Expression An expression that filters the partitions to be returned.
 #' 
 #' The expression uses SQL syntax similar to the SQL `WHERE` filter clause.
-#' The SQL statement parser
-#' [JSQLParser](http://jsqlparser.sourceforge.net/home.php) parses the
-#' expression.
+#' The SQL statement parser JSQLParser parses the expression.
 #' 
 #' *Operators*: The following are the operators that you can use in the
 #' `Expression` API call:
@@ -6500,9 +6518,9 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
 #' string
 #' pattern](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id)
 #' @param PolicyHashCondition The hash value returned when the previous policy was set using
-#' `PutResourcePolicy`. Its purpose is to prevent concurrent modifications
-#' of a policy. Do not use this parameter if no previous policy has been
-#' set.
+#' [`put_resource_policy`][glue_put_resource_policy]. Its purpose is to
+#' prevent concurrent modifications of a policy. Do not use this parameter
+#' if no previous policy has been set.
 #' @param PolicyExistsCondition A value of `MUST_EXIST` is used to update a policy. A value of
 #' `NOT_EXIST` is used to create a new policy. If a value of `NONE` or a
 #' null value is used, the call will not depend on the existence of a
@@ -6725,8 +6743,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #' Registry, this API will store the schema version and return immediately.
 #' Otherwise, this call has the potential to run longer than other
 #' operations due to compatibility modes. You can call the
-#' `GetSchemaVersion` API with the `SchemaVersionId` to check compatibility
-#' modes.
+#' [`get_schema_version`][glue_get_schema_version] API with the
+#' `SchemaVersionId` to check compatibility modes.
 #' 
 #' If the same schema definition is already stored in Schema Registry as a
 #' version, the schema ID of the existing schema is returned to the caller.
@@ -6941,7 +6959,7 @@ glue_resume_workflow_run <- function(Name, RunId, NodeIds) {
 #' glue_search_tables(CatalogId, NextToken, Filters, SearchText,
 #'   SortCriteria, MaxResults, ResourceShareType)
 #'
-#' @param CatalogId A unique identifier, consisting of ` <i>account_id</i> `.
+#' @param CatalogId A unique identifier, consisting of ` account_id `.
 #' @param NextToken A continuation token, included if this is a continuation call.
 #' @param Filters A list of key-value pairs, and a comparator used to filter the search
 #' results. Returns all entities matching the predicate.
@@ -7103,13 +7121,14 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #' Begins an asynchronous task to export all labeled data for a particular
 #' transform. This task is the only label-related API call that is not part
 #' of the typical active learning workflow. You typically use
-#' `StartExportLabelsTaskRun` when you want to work with all of your
-#' existing labels at the same time, such as when you want to remove or
-#' change labels that were previously submitted as truth. This API
-#' operation accepts the `TransformId` whose labels you want to export and
-#' an Amazon Simple Storage Service (Amazon S3) path to export the labels
-#' to. The operation returns a `TaskRunId`. You can check on the status of
-#' your task run by calling the `GetMLTaskRun` API.
+#' [`start_export_labels_task_run`][glue_start_export_labels_task_run] when
+#' you want to work with all of your existing labels at the same time, such
+#' as when you want to remove or change labels that were previously
+#' submitted as truth. This API operation accepts the `TransformId` whose
+#' labels you want to export and an Amazon Simple Storage Service (Amazon
+#' S3) path to export the labels to. The operation returns a `TaskRunId`.
+#' You can check on the status of your task run by calling the
+#' [`get_ml_task_run`][glue_get_ml_task_run] API.
 #'
 #' @usage
 #' glue_start_export_labels_task_run(TransformId, OutputS3Path)
@@ -7152,31 +7171,38 @@ glue_start_export_labels_task_run <- function(TransformId, OutputS3Path) {
 #' Enables you to provide additional labels (examples of truth) to be used
 #' to teach the machine learning transform and improve its quality. This
 #' API operation is generally used as part of the active learning workflow
-#' that starts with the `StartMLLabelingSetGenerationTaskRun` call and that
-#' ultimately results in improving the quality of your machine learning
-#' transform.
+#' that starts with the
+#' [`start_ml_labeling_set_generation_task_run`][glue_start_ml_labeling_set_generation_task_run]
+#' call and that ultimately results in improving the quality of your
+#' machine learning transform.
 #' 
-#' After the `StartMLLabelingSetGenerationTaskRun` finishes, AWS Glue
-#' machine learning will have generated a series of questions for humans to
-#' answer. (Answering these questions is often called 'labeling' in the
-#' machine learning workflows). In the case of the `FindMatches` transform,
-#' these questions are of the form, “What is the correct way to group these
-#' rows together into groups composed entirely of matching records?” After
-#' the labeling process is finished, users upload their answers/labels with
-#' a call to `StartImportLabelsTaskRun`. After `StartImportLabelsTaskRun`
+#' After the
+#' [`start_ml_labeling_set_generation_task_run`][glue_start_ml_labeling_set_generation_task_run]
+#' finishes, AWS Glue machine learning will have generated a series of
+#' questions for humans to answer. (Answering these questions is often
+#' called 'labeling' in the machine learning workflows). In the case of the
+#' `FindMatches` transform, these questions are of the form, “What is the
+#' correct way to group these rows together into groups composed entirely
+#' of matching records?” After the labeling process is finished, users
+#' upload their answers/labels with a call to
+#' [`start_import_labels_task_run`][glue_start_import_labels_task_run].
+#' After
+#' [`start_import_labels_task_run`][glue_start_import_labels_task_run]
 #' finishes, all future runs of the machine learning transform use the new
 #' and improved labels and perform a higher-quality transformation.
 #' 
-#' By default, `StartMLLabelingSetGenerationTaskRun` continually learns
-#' from and combines all labels that you upload unless you set `Replace` to
-#' true. If you set `Replace` to true, `StartImportLabelsTaskRun` deletes
-#' and forgets all previously uploaded labels and learns only from the
-#' exact set that you upload. Replacing labels can be helpful if you
+#' By default,
+#' [`start_ml_labeling_set_generation_task_run`][glue_start_ml_labeling_set_generation_task_run]
+#' continually learns from and combines all labels that you upload unless
+#' you set `Replace` to true. If you set `Replace` to true,
+#' [`start_import_labels_task_run`][glue_start_import_labels_task_run]
+#' deletes and forgets all previously uploaded labels and learns only from
+#' the exact set that you upload. Replacing labels can be helpful if you
 #' realize that you previously uploaded incorrect labels, and you believe
 #' that they are having a negative effect on your transform quality.
 #' 
 #' You can check on the status of your task run by calling the
-#' `GetMLTaskRun` operation.
+#' [`get_ml_task_run`][glue_get_ml_task_run] operation.
 #'
 #' @usage
 #' glue_start_import_labels_task_run(TransformId, InputS3Path,
@@ -7341,8 +7367,9 @@ glue_start_job_run <- function(JobName, JobRunId = NULL, Arguments = NULL, Alloc
 #' learning uses some of those examples to learn from them. The rest of the
 #' labels are used as a test to estimate quality.
 #' 
-#' Returns a unique identifier for the run. You can call `GetMLTaskRun` to
-#' get more information about the stats of the `EvaluationTaskRun`.
+#' Returns a unique identifier for the run. You can call
+#' [`get_ml_task_run`][glue_get_ml_task_run] to get more information about
+#' the stats of the `EvaluationTaskRun`.
 #'
 #' @usage
 #' glue_start_ml_evaluation_task_run(TransformId)
@@ -7385,16 +7412,20 @@ glue_start_ml_evaluation_task_run <- function(TransformId) {
 #' to improve the transform's quality by generating label sets and adding
 #' labels.
 #' 
-#' When the `StartMLLabelingSetGenerationTaskRun` finishes, AWS Glue will
-#' have generated a "labeling set" or a set of questions for humans to
-#' answer.
+#' When the
+#' [`start_ml_labeling_set_generation_task_run`][glue_start_ml_labeling_set_generation_task_run]
+#' finishes, AWS Glue will have generated a "labeling set" or a set of
+#' questions for humans to answer.
 #' 
 #' In the case of the `FindMatches` transform, these questions are of the
 #' form, “What is the correct way to group these rows together into groups
 #' composed entirely of matching records?”
 #' 
 #' After the labeling process is finished, you can upload your labels with
-#' a call to `StartImportLabelsTaskRun`. After `StartImportLabelsTaskRun`
+#' a call to
+#' [`start_import_labels_task_run`][glue_start_import_labels_task_run].
+#' After
+#' [`start_import_labels_task_run`][glue_start_import_labels_task_run]
 #' finishes, all future runs of the machine learning transform will use the
 #' new and improved labels and perform a higher-quality transformation.
 #'
@@ -7825,7 +7856,7 @@ glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #' Creates or updates partition statistics of columns.
 #' 
 #' The Identity and Access Management (IAM) permission required for this
-#' operation is `UpdatePartition`.
+#' operation is [`update_partition`][glue_update_partition].
 #'
 #' @usage
 #' glue_update_column_statistics_for_partition(CatalogId, DatabaseName,
@@ -7938,7 +7969,7 @@ glue_update_column_statistics_for_partition <- function(CatalogId = NULL, Databa
 #' Creates or updates table statistics of columns.
 #' 
 #' The Identity and Access Management (IAM) permission required for this
-#' operation is `UpdateTable`.
+#' operation is [`update_table`][glue_update_table].
 #'
 #' @usage
 #' glue_update_column_statistics_for_table(CatalogId, DatabaseName,
@@ -8104,7 +8135,7 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #'
 #' @description
 #' Updates a crawler. If a crawler is running, you must stop it using
-#' `StopCrawler` before updating it.
+#' [`stop_crawler`][glue_stop_crawler] before updating it.
 #'
 #' @usage
 #' glue_update_crawler(Name, Role, DatabaseName, Description, Targets,
@@ -8367,9 +8398,10 @@ glue_update_database <- function(CatalogId = NULL, Name, DatabaseInput) {
 #' -   `"GLUE_PYTHON_VERSION": "2"`
 #' 
 #' You can specify a version of Python support for development endpoints by
-#' using the `Arguments` parameter in the `CreateDevEndpoint` or
-#' `UpdateDevEndpoint` APIs. If no arguments are provided, the version
-#' defaults to Python 2.
+#' using the `Arguments` parameter in the
+#' [`create_dev_endpoint`][glue_create_dev_endpoint] or
+#' [`update_dev_endpoint`][glue_update_dev_endpoint] APIs. If no arguments
+#' are provided, the version defaults to Python 2.
 #'
 #' @section Request syntax:
 #' ```
@@ -8496,9 +8528,10 @@ glue_update_job <- function(JobName, JobUpdate) {
 #' tune the algorithm parameters to achieve better results.
 #' 
 #' After calling this operation, you can call the
-#' `StartMLEvaluationTaskRun` operation to assess how well your new
-#' parameters achieved your goals (such as improving the quality of your
-#' machine learning transform, or making it more cost-effective).
+#' [`start_ml_evaluation_task_run`][glue_start_ml_evaluation_task_run]
+#' operation to assess how well your new parameters achieved your goals
+#' (such as improving the quality of your machine learning transform, or
+#' making it more cost-effective).
 #'
 #' @usage
 #' glue_update_ml_transform(TransformId, Name, Description, Parameters,
@@ -8848,9 +8881,10 @@ glue_update_schema <- function(SchemaId, SchemaVersionNumber = NULL, Compatibili
 #' compatibility, this name is entirely lowercase.
 #' @param TableInput &#91;required&#93; An updated `TableInput` object to define the metadata table in the
 #' catalog.
-#' @param SkipArchive By default, `UpdateTable` always creates an archived version of the
-#' table before updating it. However, if `skipArchive` is set to true,
-#' `UpdateTable` does not create the archived version.
+#' @param SkipArchive By default, [`update_table`][glue_update_table] always creates an
+#' archived version of the table before updating it. However, if
+#' `skipArchive` is set to true, [`update_table`][glue_update_table] does
+#' not create the archived version.
 #'
 #' @section Request syntax:
 #' ```

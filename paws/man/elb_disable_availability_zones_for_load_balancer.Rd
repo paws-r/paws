@@ -18,7 +18,7 @@ Removes the specified Availability Zones from the set of Availability
 Zones for the specified load balancer in EC2-Classic or a default VPC.
 
 For load balancers in a non-default VPC, use
-DetachLoadBalancerFromSubnets.
+\code{\link[=elb_detach_load_balancer_from_subnets]{detach_load_balancer_from_subnets}}.
 
 There must be at least one Availability Zone registered with a load
 balancer at all times. After an Availability Zone is removed, all

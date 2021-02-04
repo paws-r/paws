@@ -18,7 +18,8 @@ need to be signed up for this service.}
 
 \item{ActionName}{[required] The action you want to allow for the specified principal(s).
 
-Valid values: Any Amazon SNS action name, for example \code{Publish}.}
+Valid values: Any Amazon SNS action name, for example
+\code{\link[=sns_publish]{publish}}.}
 }
 \description{
 Adds a statement to a topic's access control policy, granting access for

@@ -15,21 +15,23 @@ kinesis_list_streams(Limit, ExclusiveStartStreamName)
 Lists your Kinesis data streams.
 
 The number of streams may be too large to return from a single call to
-\code{ListStreams}. You can limit the number of returned streams using the
-\code{Limit} parameter. If you do not specify a value for the \code{Limit}
-parameter, Kinesis Data Streams uses the default limit, which is
-currently 10.
+\code{\link[=kinesis_list_streams]{list_streams}}. You can limit the number of
+returned streams using the \code{Limit} parameter. If you do not specify a
+value for the \code{Limit} parameter, Kinesis Data Streams uses the default
+limit, which is currently 10.
 
 You can detect if there are more streams available to list by using the
 \code{HasMoreStreams} flag from the returned output. If there are more
 streams available, you can request more streams by using the name of the
-last stream returned by the \code{ListStreams} request in the
-\code{ExclusiveStartStreamName} parameter in a subsequent request to
-\code{ListStreams}. The group of stream names returned by the subsequent
-request is then added to the list. You can continue this process until
-all the stream names have been collected in the list.
+last stream returned by the \code{\link[=kinesis_list_streams]{list_streams}}
+request in the \code{ExclusiveStartStreamName} parameter in a subsequent
+request to \code{\link[=kinesis_list_streams]{list_streams}}. The group of stream
+names returned by the subsequent request is then added to the list. You
+can continue this process until all the stream names have been collected
+in the list.
 
-ListStreams has a limit of five transactions per second per account.
+\code{\link[=kinesis_list_streams]{list_streams}} has a limit of five transactions
+per second per account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_streams(

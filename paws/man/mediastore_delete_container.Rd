@@ -10,9 +10,10 @@ mediastore_delete_container(ContainerName)
 \item{ContainerName}{[required] The name of the container to delete.}
 }
 \description{
-Deletes the specified container. Before you make a \code{DeleteContainer}
-request, delete any objects in the container or in any folders in the
-container. You can delete only empty containers.
+Deletes the specified container. Before you make a
+\code{\link[=mediastore_delete_container]{delete_container}} request, delete any
+objects in the container or in any folders in the container. You can
+delete only empty containers.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_container(

@@ -14,12 +14,14 @@ delete.}
 Deletes an AWS Batch compute environment.
 
 Before you can delete a compute environment, you must set its state to
-\code{DISABLED} with the UpdateComputeEnvironment API operation and
-disassociate it from any job queues with the UpdateJobQueue API
-operation. Compute environments that use AWS Fargate resources must
-terminate all active jobs on that compute environment before deleting
-the compute environment. If this isn't done, the compute environment
-will end up in an invalid state.
+\code{DISABLED} with the
+\code{\link[=batch_update_compute_environment]{update_compute_environment}} API
+operation and disassociate it from any job queues with the
+\code{\link[=batch_update_job_queue]{update_job_queue}} API operation. Compute
+environments that use AWS Fargate resources must terminate all active
+jobs on that compute environment before deleting the compute
+environment. If this isn't done, the compute environment will end up in
+an invalid state.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_compute_environment(

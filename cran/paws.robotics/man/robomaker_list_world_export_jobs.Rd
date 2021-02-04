@@ -9,18 +9,22 @@ robomaker_list_world_export_jobs(nextToken, maxResults, filters)
 \arguments{
 \item{nextToken}{If the previous paginated request did not return all of the remaining
 results, the response object's \code{nextToken} parameter value is set to a
-token. To retrieve the next set of results, call \code{ListWorldExportJobs}
-again and assign that token to the request object's \code{nextToken}
-parameter. If there are no remaining results, the previous response
-object's NextToken parameter is set to null.}
+token. To retrieve the next set of results, call
+\code{\link[=robomaker_list_world_export_jobs]{list_world_export_jobs}} again and
+assign that token to the request object's \code{nextToken} parameter. If
+there are no remaining results, the previous response object's NextToken
+parameter is set to null.}
 
-\item{maxResults}{When this parameter is used, \code{ListWorldExportJobs} only returns
-\code{maxResults} results in a single page along with a \code{nextToken} response
-element. The remaining results of the initial request can be seen by
-sending another \code{ListWorldExportJobs} request with the returned
-\code{nextToken} value. This value can be between 1 and 100. If this
-parameter is not used, then \code{ListWorldExportJobs} returns up to 100
-results and a \code{nextToken} value if applicable.}
+\item{maxResults}{When this parameter is used,
+\code{\link[=robomaker_list_world_export_jobs]{list_world_export_jobs}} only
+returns \code{maxResults} results in a single page along with a \code{nextToken}
+response element. The remaining results of the initial request can be
+seen by sending another
+\code{\link[=robomaker_list_world_export_jobs]{list_world_export_jobs}} request
+with the returned \code{nextToken} value. This value can be between 1 and
+100. If this parameter is not used, then
+\code{\link[=robomaker_list_world_export_jobs]{list_world_export_jobs}} returns up
+to 100 results and a \code{nextToken} value if applicable.}
 
 \item{filters}{Optional filters to limit results. You can use \code{generationJobId} and
 \code{templateId}.}

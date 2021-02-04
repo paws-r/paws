@@ -22,8 +22,10 @@ subsequent calls will return an error with a message containing the
 request ID.}
 }
 \description{
-The \code{CreateAdditionalAssignmentsForHIT} operation increases the maximum
-number of assignments of an existing HIT.
+The
+\code{\link[=mturk_create_additional_assignments_for_hit]{create_additional_assignments_for_hit}}
+operation increases the maximum number of assignments of an existing
+HIT.
 
 To extend the maximum number of assignments, specify the number of
 additional assignments.

@@ -35,7 +35,8 @@ use.}
 \item{ImageUri}{URI of a container image in the Amazon ECR registry.}
 
 \item{Publish}{Set to true to publish a new version of the function after updating the
-code. This has the same effect as calling PublishVersion separately.}
+code. This has the same effect as calling
+\code{\link[=lambda_publish_version]{publish_version}} separately.}
 
 \item{DryRun}{Set to true to validate the request parameters and access permissions
 without modifying the function code.}

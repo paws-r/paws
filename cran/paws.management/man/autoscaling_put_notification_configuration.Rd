@@ -16,7 +16,8 @@ autoscaling_put_notification_configuration(AutoScalingGroupName,
 
 \item{NotificationTypes}{[required] The type of event that causes the notification to be sent. To query the
 notification types supported by Amazon EC2 Auto Scaling, call the
-DescribeAutoScalingNotificationTypes API.}
+\code{\link[=autoscaling_describe_auto_scaling_notification_types]{describe_auto_scaling_notification_types}}
+API.}
 }
 \description{
 Configures an Auto Scaling group to send notifications when specified

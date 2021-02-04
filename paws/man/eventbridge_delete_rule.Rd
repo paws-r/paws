@@ -15,14 +15,16 @@ this, the default event bus is used.}
 \item{Force}{If this is a managed rule, created by an AWS service on your behalf, you
 must specify \code{Force} as \code{True} to delete the rule. This parameter is
 ignored for rules that are not managed rules. You can check whether a
-rule is a managed rule by using \code{DescribeRule} or \code{ListRules} and
-checking the \code{ManagedBy} field of the response.}
+rule is a managed rule by using
+\code{\link[=eventbridge_describe_rule]{describe_rule}} or
+\code{\link[=eventbridge_list_rules]{list_rules}} and checking the \code{ManagedBy}
+field of the response.}
 }
 \description{
 Deletes the specified rule.
 
 Before you can delete the rule, you must remove all targets, using
-RemoveTargets.
+\code{\link[=eventbridge_remove_targets]{remove_targets}}.
 
 When you delete a rule, incoming events might continue to match to the
 deleted rule. Allow a short period of time for changes to take effect.

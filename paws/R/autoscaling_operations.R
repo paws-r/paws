@@ -86,8 +86,10 @@ autoscaling_attach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' -   Gateway Load Balancer - Operates at the network layer (layer 3).
 #' 
 #' To describe the target groups for an Auto Scaling group, call the
-#' DescribeLoadBalancerTargetGroups API. To detach the target group from
-#' the Auto Scaling group, call the DetachLoadBalancerTargetGroups API.
+#' [`describe_load_balancer_target_groups`][autoscaling_describe_load_balancer_target_groups]
+#' API. To detach the target group from the Auto Scaling group, call the
+#' [`detach_load_balancer_target_groups`][autoscaling_detach_load_balancer_target_groups]
+#' API.
 #' 
 #' For more information, see [Elastic Load Balancing and Amazon EC2 Auto
 #' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html)
@@ -152,16 +154,18 @@ autoscaling_attach_load_balancer_target_groups <- function(AutoScalingGroupName,
 #'
 #' @description
 #' To attach an Application Load Balancer, Network Load Balancer, or
-#' Gateway Load Balancer, use the AttachLoadBalancerTargetGroups API
-#' operation instead.
+#' Gateway Load Balancer, use the
+#' [`attach_load_balancer_target_groups`][autoscaling_attach_load_balancer_target_groups]
+#' API operation instead.
 #' 
 #' Attaches one or more Classic Load Balancers to the specified Auto
 #' Scaling group. Amazon EC2 Auto Scaling registers the running instances
 #' with these Classic Load Balancers.
 #' 
 #' To describe the load balancers for an Auto Scaling group, call the
-#' DescribeLoadBalancers API. To detach the load balancer from the Auto
-#' Scaling group, call the DetachLoadBalancers API.
+#' [`describe_load_balancers`][autoscaling_describe_load_balancers] API. To
+#' detach the load balancer from the Auto Scaling group, call the
+#' [`detach_load_balancers`][autoscaling_detach_load_balancers] API.
 #' 
 #' For more information, see [Elastic Load Balancing and Amazon EC2 Auto
 #' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html)
@@ -472,8 +476,10 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' Creates an Auto Scaling group with the specified name and attributes.
 #' 
 #' If you exceed your maximum limit of Auto Scaling groups, the call fails.
-#' To query this limit, call the DescribeAccountLimits API. For information
-#' about updating this limit, see [Amazon EC2 Auto Scaling service
+#' To query this limit, call the
+#' [`describe_account_limits`][autoscaling_describe_account_limits] API.
+#' For information about updating this limit, see [Amazon EC2 Auto Scaling
+#' service
 #' quotas](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
@@ -822,8 +828,9 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' Creates a launch configuration.
 #' 
 #' If you exceed your maximum limit of launch configurations, the call
-#' fails. To query this limit, call the DescribeAccountLimits API. For
-#' information about updating this limit, see [Amazon EC2 Auto Scaling
+#' fails. To query this limit, call the
+#' [`describe_account_limits`][autoscaling_describe_account_limits] API.
+#' For information about updating this limit, see [Amazon EC2 Auto Scaling
 #' service
 #' quotas](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
@@ -1169,13 +1176,15 @@ autoscaling_create_or_update_tags <- function(Tags) {
 #' action.
 #' 
 #' To remove instances from the Auto Scaling group before deleting it, call
-#' the DetachInstances API with the list of instances and the option to
-#' decrement the desired capacity. This ensures that Amazon EC2 Auto
-#' Scaling does not launch replacement instances.
+#' the [`detach_instances`][autoscaling_detach_instances] API with the list
+#' of instances and the option to decrement the desired capacity. This
+#' ensures that Amazon EC2 Auto Scaling does not launch replacement
+#' instances.
 #' 
 #' To terminate all instances before deleting the Auto Scaling group, call
-#' the UpdateAutoScalingGroup API and set the minimum size and desired
-#' capacity of the Auto Scaling group to zero.
+#' the [`update_auto_scaling_group`][autoscaling_update_auto_scaling_group]
+#' API and set the minimum size and desired capacity of the Auto Scaling
+#' group to zero.
 #'
 #' @usage
 #' autoscaling_delete_auto_scaling_group(AutoScalingGroupName, ForceDelete)
@@ -2095,7 +2104,9 @@ autoscaling_describe_load_balancer_target_groups <- function(AutoScalingGroupNam
 #' 
 #' This operation describes only Classic Load Balancers. If you have
 #' Application Load Balancers, Network Load Balancers, or Gateway Load
-#' Balancers, use the DescribeLoadBalancerTargetGroups API instead.
+#' Balancers, use the
+#' [`describe_load_balancer_target_groups`][autoscaling_describe_load_balancer_target_groups]
+#' API instead.
 #'
 #' @usage
 #' autoscaling_describe_load_balancers(AutoScalingGroupName, NextToken,
@@ -2151,7 +2162,8 @@ autoscaling_describe_load_balancers <- function(AutoScalingGroupName, NextToken 
 #' Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.
 #' 
 #' The `GroupStandbyInstances` metric is not returned by default. You must
-#' explicitly request this metric when calling the EnableMetricsCollection
+#' explicitly request this metric when calling the
+#' [`enable_metrics_collection`][autoscaling_enable_metrics_collection]
 #' API.
 #'
 #' @usage
@@ -2378,8 +2390,9 @@ autoscaling_describe_scaling_activities <- function(ActivityIds = NULL, AutoScal
 #' SuspendProcesses APIs
 #'
 #' @description
-#' Describes the scaling process types for use with the ResumeProcesses and
-#' SuspendProcesses APIs.
+#' Describes the scaling process types for use with the
+#' [`resume_processes`][autoscaling_resume_processes] and
+#' [`suspend_processes`][autoscaling_suspend_processes] APIs.
 #'
 #' @usage
 #' autoscaling_describe_scaling_process_types()
@@ -2420,7 +2433,9 @@ autoscaling_describe_scaling_process_types <- function() {
 #' @description
 #' Describes the actions scheduled for your Auto Scaling group that haven't
 #' run or that have not reached their end time. To describe the actions
-#' that have already run, call the DescribeScalingActivities API.
+#' that have already run, call the
+#' [`describe_scaling_activities`][autoscaling_describe_scaling_activities]
+#' API.
 #'
 #' @usage
 #' autoscaling_describe_scheduled_actions(AutoScalingGroupName,
@@ -2748,12 +2763,15 @@ autoscaling_detach_load_balancer_target_groups <- function(AutoScalingGroupName,
 #' 
 #' This operation detaches only Classic Load Balancers. If you have
 #' Application Load Balancers, Network Load Balancers, or Gateway Load
-#' Balancers, use the DetachLoadBalancerTargetGroups API instead.
+#' Balancers, use the
+#' [`detach_load_balancer_target_groups`][autoscaling_detach_load_balancer_target_groups]
+#' API instead.
 #' 
 #' When you detach a load balancer, it enters the `Removing` state while
 #' deregistering the instances in the group. When all instances are
 #' deregistered, then you can no longer describe the load balancer using
-#' the DescribeLoadBalancers API call. The instances remain running.
+#' the [`describe_load_balancers`][autoscaling_describe_load_balancers] API
+#' call. The instances remain running.
 #'
 #' @usage
 #' autoscaling_detach_load_balancers(AutoScalingGroupName,
@@ -3212,10 +3230,13 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
 #' 
 #' 4.  If you need more time, record the lifecycle action heartbeat to keep
 #'     the instance in a pending state using the
-#'     RecordLifecycleActionHeartbeat API call.
+#'     [`record_lifecycle_action_heartbeat`][autoscaling_record_lifecycle_action_heartbeat]
+#'     API call.
 #' 
 #' 5.  If you finish before the timeout period ends, complete the lifecycle
-#'     action using the CompleteLifecycleAction API call.
+#'     action using the
+#'     [`complete_lifecycle_action`][autoscaling_complete_lifecycle_action]
+#'     API call.
 #' 
 #' For more information, see [Amazon EC2 Auto Scaling lifecycle
 #' hooks](https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
@@ -3225,8 +3246,10 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
 #' 50 per Auto Scaling group, the call fails.
 #' 
 #' You can view the lifecycle hooks for an Auto Scaling group using the
-#' DescribeLifecycleHooks API call. If you are no longer using a lifecycle
-#' hook, you can delete it by calling the DeleteLifecycleHook API.
+#' [`describe_lifecycle_hooks`][autoscaling_describe_lifecycle_hooks] API
+#' call. If you are no longer using a lifecycle hook, you can delete it by
+#' calling the [`delete_lifecycle_hook`][autoscaling_delete_lifecycle_hook]
+#' API.
 #'
 #' @usage
 #' autoscaling_put_lifecycle_hook(LifecycleHookName, AutoScalingGroupName,
@@ -3272,7 +3295,8 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
 #' If the lifecycle hook times out, Amazon EC2 Auto Scaling performs the
 #' action that you specified in the `DefaultResult` parameter. You can
 #' prevent the lifecycle hook from timing out by calling the
-#' RecordLifecycleActionHeartbeat API.
+#' [`record_lifecycle_action_heartbeat`][autoscaling_record_lifecycle_action_heartbeat]
+#' API.
 #' @param DefaultResult Defines the action the Auto Scaling group should take when the lifecycle
 #' hook timeout elapses or if an unexpected failure occurs. This parameter
 #' can be either `CONTINUE` or `ABANDON`. The default value is `ABANDON`.
@@ -3350,7 +3374,8 @@ autoscaling_put_lifecycle_hook <- function(LifecycleHookName, AutoScalingGroupNa
 #' (Amazon SNS) topic.
 #' @param NotificationTypes &#91;required&#93; The type of event that causes the notification to be sent. To query the
 #' notification types supported by Amazon EC2 Auto Scaling, call the
-#' DescribeAutoScalingNotificationTypes API.
+#' [`describe_auto_scaling_notification_types`][autoscaling_describe_auto_scaling_notification_types]
+#' API.
 #'
 #' @section Request syntax:
 #' ```
@@ -3699,7 +3724,8 @@ autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, 
 #' @description
 #' Records a heartbeat for the lifecycle action associated with the
 #' specified token or instance. This extends the timeout by the length of
-#' time defined using the PutLifecycleHook API call.
+#' time defined using the
+#' [`put_lifecycle_hook`][autoscaling_put_lifecycle_hook] API call.
 #' 
 #' This step is a part of the procedure for adding a lifecycle hook to an
 #' Auto Scaling group:
@@ -3948,8 +3974,8 @@ autoscaling_set_desired_capacity <- function(AutoScalingGroupName, DesiredCapaci
 #' respect the grace period associated with the group.
 #' 
 #' For more information about the health check grace period, see
-#' [CreateAutoScalingGroup](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CreateAutoScalingGroup.html)
-#' in the *Amazon EC2 Auto Scaling API Reference*.
+#' [`create_auto_scaling_group`][autoscaling_create_auto_scaling_group] in
+#' the *Amazon EC2 Auto Scaling API Reference*.
 #'
 #' @section Request syntax:
 #' ```
@@ -4075,10 +4101,12 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' 
 #' If successful, this call creates a new instance refresh request with a
 #' unique ID that you can use to track its progress. To query its status,
-#' call the DescribeInstanceRefreshes API. To describe the instance
-#' refreshes that have already run, call the DescribeInstanceRefreshes API.
-#' To cancel an instance refresh operation in progress, use the
-#' CancelInstanceRefresh API.
+#' call the
+#' [`describe_instance_refreshes`][autoscaling_describe_instance_refreshes]
+#' API. To describe the instance refreshes that have already run, call the
+#' [`describe_instance_refreshes`][autoscaling_describe_instance_refreshes]
+#' API. To cancel an instance refresh operation in progress, use the
+#' [`cancel_instance_refresh`][autoscaling_cancel_instance_refresh] API.
 #' 
 #' For more information, see [Replacing Auto Scaling Instances Based on an
 #' Instance
@@ -4167,8 +4195,8 @@ autoscaling_start_instance_refresh <- function(AutoScalingGroupName, Strategy = 
 #' processes](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
-#' To resume processes that have been suspended, call the ResumeProcesses
-#' API.
+#' To resume processes that have been suspended, call the
+#' [`resume_processes`][autoscaling_resume_processes] API.
 #'
 #' @usage
 #' autoscaling_suspend_processes(AutoScalingGroupName, ScalingProcesses)
@@ -4358,9 +4386,11 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #'     to the new `MaxSize` value.
 #' 
 #' To see which parameters have been set, call the
-#' DescribeAutoScalingGroups API. To view the scaling policies for an Auto
-#' Scaling group, call the DescribePolicies API. If the group has scaling
-#' policies, you can update them by calling the PutScalingPolicy API.
+#' [`describe_auto_scaling_groups`][autoscaling_describe_auto_scaling_groups]
+#' API. To view the scaling policies for an Auto Scaling group, call the
+#' [`describe_policies`][autoscaling_describe_policies] API. If the group
+#' has scaling policies, you can update them by calling the
+#' [`put_scaling_policy`][autoscaling_put_scaling_policy] API.
 #'
 #' @usage
 #' autoscaling_update_auto_scaling_group(AutoScalingGroupName,

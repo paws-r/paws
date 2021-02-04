@@ -10,9 +10,10 @@ rekognition_describe_collection(CollectionId)
 \item{CollectionId}{[required] The ID of the collection to describe.}
 }
 \description{
-Describes the specified collection. You can use \code{DescribeCollection} to
-get information, such as the number of faces indexed into a collection
-and the version of the model used by the collection for face detection.
+Describes the specified collection. You can use
+\code{\link[=rekognition_describe_collection]{describe_collection}} to get
+information, such as the number of faces indexed into a collection and
+the version of the model used by the collection for face detection.
 
 For more information, see Describing a Collection in the Amazon
 Rekognition Developer Guide.

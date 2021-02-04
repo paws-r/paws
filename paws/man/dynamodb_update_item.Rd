@@ -37,8 +37,8 @@ information, see
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ReturnValues}{Use \code{ReturnValues} if you want to get the item attributes as they appear
-before or after they are updated. For \code{UpdateItem}, the valid values
-are:
+before or after they are updated. For
+\code{\link[=dynamodb_update_item]{update_item}}, the valid values are:
 \itemize{
 \item \code{NONE} - If \code{ReturnValues} is not specified, or if its value is
 \code{NONE}, then nothing is returned. (This setting is the default for
@@ -157,8 +157,7 @@ An expression can contain any of the following:
 \code{attribute_exists | attribute_not_exists | attribute_type | contains | begins_with | size}
 
 These function names are case-sensitive.
-\item Comparison operators:
-\verb{= | &lt;&gt; | &lt; | &gt; | &lt;= | &gt;= | BETWEEN | IN }
+\item Comparison operators: \verb{= | <> | < | > | <= | >= | BETWEEN | IN }
 \item Logical operators: \code{AND | OR | NOT}
 }
 
@@ -229,8 +228,9 @@ You can also perform a conditional update on an existing item (insert a
 new attribute name-value pair if it doesn't exist, or replace an
 existing name-value pair if it has certain expected attribute values).
 
-You can also return the item's attribute values in the same \code{UpdateItem}
-operation using the \code{ReturnValues} parameter.
+You can also return the item's attribute values in the same
+\code{\link[=dynamodb_update_item]{update_item}} operation using the \code{ReturnValues}
+parameter.
 }
 \section{Request syntax}{
 \preformatted{svc$update_item(

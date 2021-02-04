@@ -17,7 +17,8 @@ associated with the hosted zone.}
 VPCs that can be associated with the specified hosted zone. To get the
 next page of results, submit another request, and include the value of
 \code{NextToken} from the response in the \code{nexttoken} parameter in another
-\code{ListVPCAssociationAuthorizations} request.}
+\code{\link[=route53_list_vpc_association_authorizations]{list_vpc_association_authorizations}}
+request.}
 
 \item{MaxResults}{\emph{Optional}: An integer that specifies the maximum number of VPCs that
 you want Amazon Route 53 to return. If you don't specify a value for
@@ -26,7 +27,9 @@ you want Amazon Route 53 to return. If you don't specify a value for
 \description{
 Gets a list of the VPCs that were created by other accounts and that can
 be associated with a specified hosted zone because you've submitted one
-or more \code{CreateVPCAssociationAuthorization} requests.
+or more
+\code{\link[=route53_create_vpc_association_authorization]{create_vpc_association_authorization}}
+requests.
 
 The response includes a \code{VPCs} element with a \code{VPC} child element for
 each VPC that can be associated with the hosted zone.

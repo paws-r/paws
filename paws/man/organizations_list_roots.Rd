@@ -42,7 +42,7 @@ whether they're available in the organization. When you enable all
 features, you make policy types available for use in that organization.
 Individual policy types can then be enabled and disabled in a root. To
 see the availability of a policy type in an organization, use
-DescribeOrganization.
+\code{\link[=organizations_describe_organization]{describe_organization}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_roots(

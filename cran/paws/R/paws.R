@@ -4139,8 +4139,9 @@ directconnect <- function(config = list()) {
 #' Network Load Balancers.
 #' 
 #' To get started, create a load balancer with one or more listeners using
-#' CreateLoadBalancer. Register your instances with the load balancer using
-#' RegisterInstancesWithLoadBalancer.
+#' [`create_load_balancer`][elb_create_load_balancer]. Register your
+#' instances with the load balancer using
+#' [`register_instances_with_load_balancer`][elb_register_instances_with_load_balancer].
 #' 
 #' All Elastic Load Balancing operations are *idempotent*, which means that
 #' they complete at most one time. If you repeat an operation, it succeeds
@@ -5050,7 +5051,7 @@ servicediscovery <- function(config = list()) {
 #' 
 #' -   Suspend and resume scaling - Temporarily suspend and later resume
 #'     automatic scaling by calling the
-#'     [RegisterScalableTarget](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html)
+#'     [`register_scalable_target`][applicationautoscaling_register_scalable_target]
 #'     API action for any Application Auto Scaling scalable target. You can
 #'     suspend and resume (individually or in combination) scale-out
 #'     activities that are triggered by a scaling policy, scale-in
@@ -6112,9 +6113,11 @@ configservice <- function(config = list()) {
 #'     public or account-specific.
 #' 
 #' -   Use pagination to view all events from the response. For example, if
-#'     you call the `DescribeEventsForOrganization` operation to get all
-#'     events in your organization, you might receive several page results.
-#'     Specify the `nextToken` in the next request to return more results.
+#'     you call the
+#'     [`describe_events_for_organization`][health_describe_events_for_organization]
+#'     operation to get all events in your organization, you might receive
+#'     several page results. Specify the `nextToken` in the next request to
+#'     return more results.
 #'
 #' @param
 #' config
@@ -6333,10 +6336,12 @@ licensemanager <- function(config = list()) {
 #' 
 #' **Chef Versions**
 #' 
-#' When you call CreateStack, CloneStack, or UpdateStack we recommend you
-#' use the `ConfigurationManager` parameter to specify the Chef version.
-#' The recommended and default value for Linux stacks is currently 12.
-#' Windows stacks use Chef 12.2. For more information, see [Chef
+#' When you call [`create_stack`][opsworks_create_stack],
+#' [`clone_stack`][opsworks_clone_stack], or
+#' [`update_stack`][opsworks_update_stack] we recommend you use the
+#' `ConfigurationManager` parameter to specify the Chef version. The
+#' recommended and default value for Linux stacks is currently 12. Windows
+#' stacks use Chef 12.2. For more information, see [Chef
 #' Versions](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-chef11.html).
 #' 
 #' You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We
@@ -7678,39 +7683,46 @@ ssm <- function(config = list()) {
 #' The following list describes the AWS Support case management operations:
 #' 
 #' -   **Service names, issue categories, and available severity levels.**
-#'     The DescribeServices and DescribeSeverityLevels operations return
-#'     AWS service names, service codes, service categories, and problem
-#'     severity levels. You use these values when you call the CreateCase
-#'     operation.
+#'     The [`describe_services`][support_describe_services] and
+#'     [`describe_severity_levels`][support_describe_severity_levels]
+#'     operations return AWS service names, service codes, service
+#'     categories, and problem severity levels. You use these values when
+#'     you call the [`create_case`][support_create_case] operation.
 #' 
 #' -   **Case creation, case details, and case resolution.** The
-#'     CreateCase, DescribeCases, DescribeAttachment, and ResolveCase
-#'     operations create AWS Support cases, retrieve information about
-#'     cases, and resolve cases.
+#'     [`create_case`][support_create_case],
+#'     [`describe_cases`][support_describe_cases],
+#'     [`describe_attachment`][support_describe_attachment], and
+#'     [`resolve_case`][support_resolve_case] operations create AWS Support
+#'     cases, retrieve information about cases, and resolve cases.
 #' 
-#' -   **Case communication.** The DescribeCommunications,
-#'     AddCommunicationToCase, and AddAttachmentsToSet operations retrieve
-#'     and add communications and attachments to AWS Support cases.
+#' -   **Case communication.** The
+#'     [`describe_communications`][support_describe_communications],
+#'     [`add_communication_to_case`][support_add_communication_to_case],
+#'     and [`add_attachments_to_set`][support_add_attachments_to_set]
+#'     operations retrieve and add communications and attachments to AWS
+#'     Support cases.
 #' 
 #' The following list describes the operations available from the AWS
 #' Support service for Trusted Advisor:
 #' 
-#' -   DescribeTrustedAdvisorChecks returns the list of checks that run
-#'     against your AWS resources.
+#' -   [`describe_trusted_advisor_checks`][support_describe_trusted_advisor_checks]
+#'     returns the list of checks that run against your AWS resources.
 #' 
 #' -   Using the `checkId` for a specific check returned by
-#'     DescribeTrustedAdvisorChecks, you can call
-#'     DescribeTrustedAdvisorCheckResult to obtain the results for the
-#'     check that you specified.
+#'     [`describe_trusted_advisor_checks`][support_describe_trusted_advisor_checks],
+#'     you can call
+#'     [`describe_trusted_advisor_check_result`][support_describe_trusted_advisor_check_result]
+#'     to obtain the results for the check that you specified.
 #' 
-#' -   DescribeTrustedAdvisorCheckSummaries returns summarized results for
-#'     one or more Trusted Advisor checks.
+#' -   [`describe_trusted_advisor_check_summaries`][support_describe_trusted_advisor_check_summaries]
+#'     returns summarized results for one or more Trusted Advisor checks.
 #' 
-#' -   RefreshTrustedAdvisorCheck requests that Trusted Advisor rerun a
-#'     specified check.
+#' -   [`refresh_trusted_advisor_check`][support_refresh_trusted_advisor_check]
+#'     requests that Trusted Advisor rerun a specified check.
 #' 
-#' -   DescribeTrustedAdvisorCheckRefreshStatuses reports the refresh
-#'     status of one or more checks.
+#' -   [`describe_trusted_advisor_check_refresh_statuses`][support_describe_trusted_advisor_check_refresh_statuses]
+#'     reports the refresh status of one or more checks.
 #' 
 #' For authentication of requests, AWS Support uses [Signature Version 4
 #' Signing
@@ -9228,12 +9240,14 @@ cloudsearch <- function(config = list()) {
 #' You use the AmazonCloudSearch2013 API to upload documents to a search
 #' domain and search those documents.
 #' 
-#' The endpoints for submitting `UploadDocuments`, `Search`, and `Suggest`
-#' requests are domain-specific. To get the endpoints for your domain, use
-#' the Amazon CloudSearch configuration service `DescribeDomains` action.
-#' The domain endpoints are also displayed on the domain dashboard in the
-#' Amazon CloudSearch console. You submit suggest requests to the search
-#' endpoint.
+#' The endpoints for submitting
+#' [`upload_documents`][cloudsearchdomain_upload_documents],
+#' [`search`][cloudsearchdomain_search], and
+#' [`suggest`][cloudsearchdomain_suggest] requests are domain-specific. To
+#' get the endpoints for your domain, use the Amazon CloudSearch
+#' configuration service `DescribeDomains` action. The domain endpoints are
+#' also displayed on the domain dashboard in the Amazon CloudSearch
+#' console. You submit suggest requests to the search endpoint.
 #' 
 #' For more information, see the [Amazon CloudSearch Developer
 #' Guide](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/).
@@ -11780,13 +11794,13 @@ inspector <- function(config = list()) {
 #' operations other than these, such as creating keys and assigning
 #' policies, by using the console.
 #' 
-#' -   Encrypt
+#' -   [`encrypt`][kms_encrypt]
 #' 
-#' -   Decrypt
+#' -   [`decrypt`][kms_decrypt]
 #' 
-#' -   GenerateDataKey
+#' -   [`generate_data_key`][kms_generate_data_key]
 #' 
-#' -   GenerateDataKeyWithoutPlaintext
+#' -   [`generate_data_key_without_plaintext`][kms_generate_data_key_without_plaintext]
 #'
 #' @param
 #' config
@@ -12178,25 +12192,28 @@ secretsmanager <- function(config = list()) {
 #' command for each Region to apply the change to.
 #' 
 #' For example, if your Region is set to `us-west-2`, when you use
-#' ` <a>CreateMembers</a> ` to add a member account to Security Hub, the
-#' association of the member account with the master account is created
-#' only in the `us-west-2` Region. Security Hub must be enabled for the
-#' member account in the same Region that the invitation was sent from.
+#' [`create_members`][securityhub_create_members] to add a member account
+#' to Security Hub, the association of the member account with the master
+#' account is created only in the `us-west-2` Region. Security Hub must be
+#' enabled for the member account in the same Region that the invitation
+#' was sent from.
 #' 
 #' The following throttling limits apply to using Security Hub API
 #' operations.
 #' 
-#' -   ` <a>BatchEnableStandards</a> ` - `RateLimit` of 1 request per
-#'     second, `BurstLimit` of 1 request per second.
+#' -   [`batch_enable_standards`][securityhub_batch_enable_standards] -
+#'     `RateLimit` of 1 request per second, `BurstLimit` of 1 request per
+#'     second.
 #' 
-#' -   ` <a>GetFindings</a> ` - `RateLimit` of 3 requests per second.
-#'     `BurstLimit` of 6 requests per second.
+#' -   [`get_findings`][securityhub_get_findings] - `RateLimit` of 3
+#'     requests per second. `BurstLimit` of 6 requests per second.
 #' 
-#' -   ` <a>UpdateFindings</a> ` - `RateLimit` of 1 request per second.
-#'     `BurstLimit` of 5 requests per second.
+#' -   [`update_findings`][securityhub_update_findings] - `RateLimit` of 1
+#'     request per second. `BurstLimit` of 5 requests per second.
 #' 
-#' -   ` <a>UpdateStandardsControl</a> ` - `RateLimit` of 1 request per
-#'     second, `BurstLimit` of 5 requests per second.
+#' -   [`update_standards_control`][securityhub_update_standards_control] -
+#'     `RateLimit` of 1 request per second, `BurstLimit` of 5 requests per
+#'     second.
 #' 
 #' -   All other operations - `RateLimit` of 10 requests per second.
 #'     `BurstLimit` of 30 requests per second.
@@ -13792,9 +13809,11 @@ marketplacemetering <- function(config = list()) {
 #' Use `GetServices` without a service code to retrieve the service codes
 #' for all AWS services, then `GetServices` with a service code to retreive
 #' the attribute names for that service. After you have the service code
-#' and attribute names, you can use `GetAttributeValues` to see what values
-#' are available for an attribute. With the service code and an attribute
-#' name and value, you can use `GetProducts` to find specific products that
+#' and attribute names, you can use
+#' [`get_attribute_values`][pricing_get_attribute_values] to see what
+#' values are available for an attribute. With the service code and an
+#' attribute name and value, you can use
+#' [`get_products`][pricing_get_products] to find specific products that
 #' you're interested in, such as an `AmazonEC2` instance, with a
 #' `Provisioned IOPS` `volumeType`.
 #' 

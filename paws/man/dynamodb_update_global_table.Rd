@@ -18,9 +18,10 @@ added must be empty, have the same name as the global table, have the
 same key schema, have DynamoDB Streams enabled, and have the same
 provisioned and maximum write capacity units.
 
-Although you can use \code{UpdateGlobalTable} to add replicas and remove
-replicas in a single request, for simplicity we recommend that you issue
-separate requests for adding or removing replicas.
+Although you can use
+\code{\link[=dynamodb_update_global_table]{update_global_table}} to add replicas
+and remove replicas in a single request, for simplicity we recommend
+that you issue separate requests for adding or removing replicas.
 
 If global secondary indexes are specified, then the following conditions
 must also be met:

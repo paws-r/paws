@@ -15,7 +15,8 @@ content of the rule.}
 statements must be complete. You cannot provide only the changes.}
 
 \item{existingRuleContentSha256}{The SHA-256 hash signature for the content of the approval rule. You can
-retrieve this information by using GetPullRequest.}
+retrieve this information by using
+\code{\link[=codecommit_get_pull_request]{get_pull_request}}.}
 }
 \description{
 Updates the content of an approval rule template. You can change the

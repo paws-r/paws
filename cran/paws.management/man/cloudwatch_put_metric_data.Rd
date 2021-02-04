@@ -20,19 +20,20 @@ Publishes metric data points to Amazon CloudWatch. CloudWatch associates
 the data points with the specified metric. If the specified metric does
 not exist, CloudWatch creates the metric. When CloudWatch creates a
 metric, it can take up to fifteen minutes for the metric to appear in
-calls to
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_ListMetrics.html}{ListMetrics}.
+calls to \code{\link[=cloudwatch_list_metrics]{list_metrics}}.
 
 You can publish either individual data points in the \code{Value} field, or
 arrays of values and the number of times each value occurred during the
 period by using the \code{Values} and \code{Counts} fields in the \code{MetricDatum}
 structure. Using the \code{Values} and \code{Counts} method enables you to publish
-up to 150 values per metric with one \code{PutMetricData} request, and
-supports retrieving percentile statistics on this data.
+up to 150 values per metric with one
+\code{\link[=cloudwatch_put_metric_data]{put_metric_data}} request, and supports
+retrieving percentile statistics on this data.
 
-Each \code{PutMetricData} request is limited to 40 KB in size for HTTP POST
-requests. You can send a payload compressed by gzip. Each request is
-also limited to no more than 20 different metrics.
+Each \code{\link[=cloudwatch_put_metric_data]{put_metric_data}} request is limited
+to 40 KB in size for HTTP POST requests. You can send a payload
+compressed by gzip. Each request is also limited to no more than 20
+different metrics.
 
 Although the \code{Value} parameter accepts numbers of type \code{Double},
 CloudWatch rejects values that are either too small or too large. Values
@@ -50,14 +51,12 @@ date, and as much as 2 hours after the current day and time.
 
 Data points with time stamps from 24 hours ago or longer can take at
 least 48 hours to become available for
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html}{GetMetricData}
-or
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html}{GetMetricStatistics}
-from the time they are submitted. Data points with time stamps between 3
-and 24 hours ago can take as much as 2 hours to become available for for
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html}{GetMetricData}
-or
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html}{GetMetricStatistics}.
+\code{\link[=cloudwatch_get_metric_data]{get_metric_data}} or
+\code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}} from the
+time they are submitted. Data points with time stamps between 3 and 24
+hours ago can take as much as 2 hours to become available for for
+\code{\link[=cloudwatch_get_metric_data]{get_metric_data}} or
+\code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}}.
 
 CloudWatch needs raw data points to calculate percentile statistics. If
 you publish data using a statistic set instead, you can only retrieve

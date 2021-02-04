@@ -302,8 +302,9 @@ codestarconnections_get_host <- function(HostArn) {
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
-#' @param NextToken The token that was returned from the previous `ListConnections` call,
-#' which can be used to return the next set of connections in the list.
+#' @param NextToken The token that was returned from the previous
+#' [`list_connections`][codestarconnections_list_connections] call, which
+#' can be used to return the next set of connections in the list.
 #'
 #' @section Request syntax:
 #' ```
@@ -346,8 +347,9 @@ codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, Host
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
-#' @param NextToken The token that was returned from the previous `ListHosts` call, which
-#' can be used to return the next set of hosts in the list.
+#' @param NextToken The token that was returned from the previous
+#' [`list_hosts`][codestarconnections_list_hosts] call, which can be used
+#' to return the next set of hosts in the list.
 #'
 #' @section Request syntax:
 #' ```

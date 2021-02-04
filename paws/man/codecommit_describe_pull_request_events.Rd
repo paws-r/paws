@@ -9,7 +9,7 @@ codecommit_describe_pull_request_events(pullRequestId,
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use
-ListPullRequests.}
+\code{\link[=codecommit_list_pull_requests]{list_pull_requests}}.}
 
 \item{pullRequestEventType}{Optional. The pull request event type about which you want to return
 information.}

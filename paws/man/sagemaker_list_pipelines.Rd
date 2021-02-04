@@ -20,7 +20,8 @@ time.}
 
 \item{SortOrder}{The sort order for results.}
 
-\item{NextToken}{If the result of the previous \code{ListPipelines} request was truncated, the
+\item{NextToken}{If the result of the previous
+\code{\link[=sagemaker_list_pipelines]{list_pipelines}} request was truncated, the
 response includes a \code{NextToken}. To retrieve the next set of pipelines,
 use the token in the next request.}
 

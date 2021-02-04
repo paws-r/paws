@@ -46,7 +46,8 @@ Lambda function.
 \item{Attributes}{A map of attributes with their corresponding values.
 
 The following lists the names, descriptions, and values of the special
-request parameters that the \code{SetTopicAttributes} action uses:
+request parameters that the
+\code{\link[=sns_set_topic_attributes]{set_topic_attributes}} action uses:
 \itemize{
 \item \code{DeliveryPolicy} – The policy that defines how Amazon SNS retries
 failed deliveries to HTTP/S endpoints.
@@ -65,26 +66,30 @@ service that powers the subscribed endpoint becomes unavailable) are
 held in the dead-letter queue for further analysis or reprocessing.
 }}
 
-\item{ReturnSubscriptionArn}{Sets whether the response from the \code{Subscribe} request includes the
-subscription ARN, even if the subscription is not yet confirmed.
+\item{ReturnSubscriptionArn}{Sets whether the response from the \code{\link[=sns_subscribe]{subscribe}} request
+includes the subscription ARN, even if the subscription is not yet
+confirmed.
 
 If you set this parameter to \code{true}, the response includes the ARN in
 all cases, even if the subscription is not yet confirmed. In addition to
 the ARN for confirmed subscriptions, the response also includes the
 \verb{pending subscription} ARN value for subscriptions that aren't yet
 confirmed. A subscription becomes confirmed when the subscriber calls
-the \code{ConfirmSubscription} action with a confirmation token.
+the \code{\link[=sns_confirm_subscription]{confirm_subscription}} action with a
+confirmation token.
 
 The default value is \code{false}.}
 }
 \description{
 Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is
 HTTP/S or email, or if the endpoint and the topic are not in the same
-AWS account, the endpoint owner must run the \code{ConfirmSubscription}
-action to confirm the subscription.
+AWS account, the endpoint owner must run the
+\code{\link[=sns_confirm_subscription]{confirm_subscription}} action to confirm the
+subscription.
 
-You call the \code{ConfirmSubscription} action with the token from the
-subscription response. Confirmation tokens are valid for three days.
+You call the \code{\link[=sns_confirm_subscription]{confirm_subscription}} action
+with the token from the subscription response. Confirmation tokens are
+valid for three days.
 
 This action is throttled at 100 transactions per second (TPS).
 }

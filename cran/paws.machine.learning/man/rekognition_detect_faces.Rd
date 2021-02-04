@@ -30,12 +30,12 @@ case, all attributes).}
 \description{
 Detects faces within an image that is provided as input.
 
-\code{DetectFaces} detects the 100 largest faces in the image. For each face
-detected, the operation returns face details. These details include a
-bounding box of the face, a confidence value (that the bounding box
-contains a face), and a fixed set of attributes such as facial landmarks
-(for example, coordinates of eye and mouth), presence of beard,
-sunglasses, and so on.
+\code{\link[=rekognition_detect_faces]{detect_faces}} detects the 100 largest faces
+in the image. For each face detected, the operation returns face
+details. These details include a bounding box of the face, a confidence
+value (that the bounding box contains a face), and a fixed set of
+attributes such as facial landmarks (for example, coordinates of eye and
+mouth), presence of beard, sunglasses, and so on.
 
 The face-detection algorithm is most effective on frontal faces. For
 non-frontal or obscured faces, the algorithm might not detect the faces

@@ -16,11 +16,12 @@ name that identifies the snapshot. ElastiCache creates the snapshot, and
 then deletes the cluster immediately afterward.}
 }
 \description{
-Deletes a previously provisioned cluster. \code{DeleteCacheCluster} deletes
-all associated cache nodes, node endpoints and the cluster itself. When
-you receive a successful response from this operation, Amazon
-ElastiCache immediately begins deleting the cluster; you cannot cancel
-or revert this operation.
+Deletes a previously provisioned cluster.
+\code{\link[=elasticache_delete_cache_cluster]{delete_cache_cluster}} deletes all
+associated cache nodes, node endpoints and the cluster itself. When you
+receive a successful response from this operation, Amazon ElastiCache
+immediately begins deleting the cluster; you cannot cancel or revert
+this operation.
 
 This operation is not valid for:
 \itemize{

@@ -8,7 +8,8 @@ wafregional_get_rule(RuleId)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the Rule that you want to get. \code{RuleId} is returned by
-CreateRule and by ListRules.}
+\code{\link[=wafregional_create_rule]{create_rule}} and by
+\code{\link[=wafregional_list_rules]{list_rules}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -21,7 +22,7 @@ With the latest version, AWS WAF has a single set of endpoints for
 regional and global use.
 
 Returns the Rule that is specified by the \code{RuleId} that you included in
-the \code{GetRule} request.
+the \code{\link[=wafregional_get_rule]{get_rule}} request.
 }
 \section{Request syntax}{
 \preformatted{svc$get_rule(

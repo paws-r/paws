@@ -14,7 +14,8 @@ ignored for String and StringList parameter types.}
 }
 \description{
 Get information about a parameter by using the parameter name. Don't
-confuse this API action with the GetParameters API action.
+confuse this API action with the \code{\link[=ssm_get_parameters]{get_parameters}}
+API action.
 }
 \section{Request syntax}{
 \preformatted{svc$get_parameter(

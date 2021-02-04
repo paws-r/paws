@@ -28,7 +28,8 @@ with the specified workflowId in the domain.
 
 Because this action allows the workflow to properly clean up and
 gracefully close, it should be used instead of
-TerminateWorkflowExecution when possible.
+\code{\link[=swf_terminate_workflow_execution]{terminate_workflow_execution}} when
+possible.
 
 \strong{Access Control}
 

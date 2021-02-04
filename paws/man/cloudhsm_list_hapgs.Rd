@@ -7,8 +7,9 @@
 cloudhsm_list_hapgs(NextToken)
 }
 \arguments{
-\item{NextToken}{The \code{NextToken} value from a previous call to \code{ListHapgs}. Pass null if
-this is the first call.}
+\item{NextToken}{The \code{NextToken} value from a previous call to
+\code{\link[=cloudhsm_list_hapgs]{list_hapgs}}. Pass null if this is the first
+call.}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -22,8 +23,8 @@ Lists the high-availability partition groups for the account.
 
 This operation supports pagination with the use of the \code{NextToken}
 member. If more results are available, the \code{NextToken} member of the
-response contains a token that you pass in the next call to \code{ListHapgs}
-to retrieve the next set of items.
+response contains a token that you pass in the next call to
+\code{\link[=cloudhsm_list_hapgs]{list_hapgs}} to retrieve the next set of items.
 }
 \section{Request syntax}{
 \preformatted{svc$list_hapgs(

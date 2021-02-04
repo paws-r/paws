@@ -11,8 +11,7 @@ servicediscovery_deregister_instance(ServiceId, InstanceId)
 \item{ServiceId}{[required] The ID of the service that the instance is associated with.}
 
 \item{InstanceId}{[required] The value that you specified for \code{Id} in the
-\href{https://docs.aws.amazon.com/cloud-map/latest/api/API_RegisterInstance.html}{RegisterInstance}
-request.}
+\code{\link[=servicediscovery_register_instance]{register_instance}} request.}
 }
 \description{
 Deletes the Amazon Route 53 DNS records and health check, if any, that

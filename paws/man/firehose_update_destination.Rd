@@ -69,8 +69,8 @@ race conditions and conflicting merges. This is a required field, and
 the service updates the configuration only if the existing configuration
 has a version ID that matches. After the update is applied successfully,
 the version ID is updated, and can be retrieved using
-DescribeDeliveryStream. Use the new version ID to set
-\code{CurrentDeliveryStreamVersionId} in the next call.
+\code{\link[=firehose_describe_delivery_stream]{describe_delivery_stream}}. Use the
+new version ID to set \code{CurrentDeliveryStreamVersionId} in the next call.
 }
 \section{Request syntax}{
 \preformatted{svc$update_destination(

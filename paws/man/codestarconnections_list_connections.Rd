@@ -18,8 +18,9 @@ host.}
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 
-\item{NextToken}{The token that was returned from the previous \code{ListConnections} call,
-which can be used to return the next set of connections in the list.}
+\item{NextToken}{The token that was returned from the previous
+\code{\link[=codestarconnections_list_connections]{list_connections}} call, which
+can be used to return the next set of connections in the list.}
 }
 \description{
 Lists the connections associated with your account.

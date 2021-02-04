@@ -38,11 +38,15 @@ provide valid values for:
 \item \code{slotToElict}
 }
 
-If you send the \code{recentIntentSummaryView} parameter in a \code{PutSession}
-request, the contents of the new summary view replaces the old summary
-view. For example, if a \code{GetSession} request returns three intents in
-the summary view and you call \code{PutSession} with one intent in the
-summary view, the next call to \code{GetSession} will only return one intent.}
+If you send the \code{recentIntentSummaryView} parameter in a
+\code{\link[=lexruntimeservice_put_session]{put_session}} request, the contents of
+the new summary view replaces the old summary view. For example, if a
+\code{\link[=lexruntimeservice_get_session]{get_session}} request returns three
+intents in the summary view and you call
+\code{\link[=lexruntimeservice_put_session]{put_session}} with one intent in the
+summary view, the next call to
+\code{\link[=lexruntimeservice_get_session]{get_session}} will only return one
+intent.}
 
 \item{accept}{The message that Amazon Lex returns in the response can be either text
 or speech based depending on the value of this field.

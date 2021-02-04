@@ -31,8 +31,8 @@ information, see
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ReturnValues}{Use \code{ReturnValues} if you want to get the item attributes as they
-appeared before they were deleted. For \code{DeleteItem}, the valid values
-are:
+appeared before they were deleted. For
+\code{\link[=dynamodb_delete_item]{delete_item}}, the valid values are:
 \itemize{
 \item \code{NONE} - If \code{ReturnValues} is not specified, or if its value is
 \code{NONE}, then nothing is returned. (This setting is the default for
@@ -41,8 +41,8 @@ are:
 }
 
 The \code{ReturnValues} parameter is used by several DynamoDB operations;
-however, \code{DeleteItem} does not recognize any values other than \code{NONE} or
-\code{ALL_OLD}.}
+however, \code{\link[=dynamodb_delete_item]{delete_item}} does not recognize any
+values other than \code{NONE} or \code{ALL_OLD}.}
 
 \item{ReturnConsumedCapacity}{}
 
@@ -52,7 +52,7 @@ that were modified during the operation are returned in the response. If
 set to \code{NONE} (the default), no statistics are returned.}
 
 \item{ConditionExpression}{A condition that must be satisfied in order for a conditional
-\code{DeleteItem} to succeed.
+\code{\link[=dynamodb_delete_item]{delete_item}} to succeed.
 
 An expression can contain any of the following:
 \itemize{
@@ -60,8 +60,7 @@ An expression can contain any of the following:
 \code{attribute_exists | attribute_not_exists | attribute_type | contains | begins_with | size}
 
 These function names are case-sensitive.
-\item Comparison operators:
-\verb{= | &lt;&gt; | &lt; | &gt; | &lt;= | &gt;= | BETWEEN | IN }
+\item Comparison operators: \verb{= | <> | < | > | <= | >= | BETWEEN | IN }
 \item Logical operators: \code{AND | OR | NOT}
 }
 
@@ -134,9 +133,9 @@ In addition to deleting an item, you can also return the item's
 attribute values in the same operation, using the \code{ReturnValues}
 parameter.
 
-Unless you specify conditions, the \code{DeleteItem} is an idempotent
-operation; running it multiple times on the same item or attribute does
-\emph{not} result in an error response.
+Unless you specify conditions, the \code{\link[=dynamodb_delete_item]{delete_item}}
+is an idempotent operation; running it multiple times on the same item
+or attribute does \emph{not} result in an error response.
 
 Conditional deletes are useful for deleting items only if specific
 conditions are met. If those conditions are met, DynamoDB performs the

@@ -101,7 +101,8 @@ the DB instance doesn't permit it.
 When the DB instance isn't publicly accessible, it is an internal DB
 instance with a DNS name that resolves to a private IP address.
 
-For more information, see CreateDBInstance.}
+For more information, see
+\code{\link[=rds_create_db_instance]{create_db_instance}}.}
 
 \item{AutoMinorVersionUpgrade}{A value that indicates whether minor version upgrades are applied
 automatically to the DB instance during the maintenance window.}
@@ -265,7 +266,8 @@ is associated with mirroring; in this case, the instance becomes a
 mirrored deployment and not a single-AZ deployment.
 
 This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-Aurora, use \code{RestoreDBClusterToPointInTime}.
+Aurora, use
+\code{\link[=rds_restore_db_cluster_to_point_in_time]{restore_db_cluster_to_point_in_time}}.
 }
 \section{Request syntax}{
 \preformatted{svc$restore_db_instance_to_point_in_time(

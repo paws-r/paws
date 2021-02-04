@@ -92,8 +92,9 @@ number in the session. If DisplayFragmentNumber is set to \code{ALWAYS}, the
 Kinesis Video Streams fragment number is added to each S element in the
 manifest file with the attribute name “kvs:fn”. These fragment numbers
 can be used for logging or for use with other APIs (e.g. \code{GetMedia} and
-\code{GetMediaForFragmentList}). A custom MPEG-DASH media player is necessary
-to leverage these this custom attribute.
+\code{\link[=kinesisvideoarchivedmedia_get_media_for_fragment_list]{get_media_for_fragment_list}}).
+A custom MPEG-DASH media player is necessary to leverage these this
+custom attribute.
 
 The default value is \code{NEVER}.}
 
@@ -170,12 +171,14 @@ Streams:
 \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_GetDataEndpoint.html}{GetDataEndpoint},
 specifying \code{GET_DASH_STREAMING_SESSION_URL} for the \code{APIName}
 parameter.
-\item Retrieve the MPEG-DASH URL using \code{GetDASHStreamingSessionURL}.
+\item Retrieve the MPEG-DASH URL using
+\code{\link[=kinesisvideoarchivedmedia_get_dash_streaming_session_url]{get_dash_streaming_session_url}}.
 Kinesis Video Streams creates an MPEG-DASH streaming session to be
 used for accessing content in a stream using the MPEG-DASH protocol.
-\code{GetDASHStreamingSessionURL} returns an authenticated URL (that
-includes an encrypted session token) for the session's MPEG-DASH
-\emph{manifest} (the root resource needed for streaming with MPEG-DASH).
+\code{\link[=kinesisvideoarchivedmedia_get_dash_streaming_session_url]{get_dash_streaming_session_url}}
+returns an authenticated URL (that includes an encrypted session
+token) for the session's MPEG-DASH \emph{manifest} (the root resource
+needed for streaming with MPEG-DASH).
 
 Don't share or store this token where an unauthorized entity could
 access it. The token provides access to the content of the stream.

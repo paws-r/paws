@@ -34,7 +34,7 @@ VPC that is already attached, the new VPC CIDR range is not propagated
 to the default propagation route table.
 
 To send VPC traffic to an attached transit gateway, add a route to the
-VPC route table using CreateRoute.
+VPC route table using \code{\link[=ec2_create_route]{create_route}}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_transit_gateway_vpc_attachment(

@@ -11,7 +11,8 @@ iot_create_keys_and_certificate(setAsActive)
 }
 \description{
 Creates a 2048-bit RSA key pair and issues an X.509 certificate using
-the issued public key. You can also call \code{CreateKeysAndCertificate} over
+the issued public key. You can also call
+\code{\link[=iot_create_keys_and_certificate]{create_keys_and_certificate}} over
 MQTT from a device, for more information, see \href{https://docs.aws.amazon.com/iot/latest/developerguide/provision-wo-cert.html#provision-mqtt-api}{Provisioning MQTT API}.
 
 \strong{Note} This is the only time AWS IoT issues the private key for this

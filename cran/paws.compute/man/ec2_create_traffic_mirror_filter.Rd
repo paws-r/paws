@@ -27,10 +27,10 @@ A Traffic Mirror filter is a set of rules that defines the traffic to
 mirror.
 
 By default, no traffic is mirrored. To mirror traffic, use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/}{CreateTrafficMirrorFilterRule}
+\code{\link[=ec2_create_traffic_mirror_filter_rule]{create_traffic_mirror_filter_rule}}
 to add Traffic Mirror rules to the filter. The rules you add define what
 traffic gets mirrored. You can also use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTrafficMirrorFilterNetworkServices.html}{ModifyTrafficMirrorFilterNetworkServices}
+\code{\link[=ec2_modify_traffic_mirror_filter_network_services]{modify_traffic_mirror_filter_network_services}}
 to mirror supported network services.
 }
 \section{Request syntax}{

@@ -20,7 +20,8 @@ To search for a finding based on its workflow status, use
 \item{SortCriteria}{The finding attributes used to sort the list of returned findings.}
 
 \item{NextToken}{The token that is required for pagination. On your first call to the
-\code{GetFindings} operation, set the value of this parameter to \code{NULL}.
+\code{\link[=securityhub_get_findings]{get_findings}} operation, set the value of
+this parameter to \code{NULL}.
 
 For subsequent calls to the operation, to continue listing data, set the
 value of this parameter to the value returned from the previous

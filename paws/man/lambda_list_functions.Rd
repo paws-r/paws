@@ -27,7 +27,7 @@ configuration of each. Lambda returns up to 50 functions per call.
 
 Set \code{FunctionVersion} to \code{ALL} to include all published versions of each
 function in addition to the unpublished version. To get more information
-about a function or version, use GetFunction.
+about a function or version, use \code{\link[=lambda_get_function]{get_function}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_functions(

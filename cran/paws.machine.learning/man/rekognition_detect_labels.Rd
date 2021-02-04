@@ -36,10 +36,10 @@ landscape, evening, and nature.
 For an example, see Analyzing Images Stored in an Amazon S3 Bucket in
 the Amazon Rekognition Developer Guide.
 
-\code{DetectLabels} does not support the detection of activities. However,
-activity detection is supported for label detection in videos. For more
-information, see StartLabelDetection in the Amazon Rekognition Developer
-Guide.
+\code{\link[=rekognition_detect_labels]{detect_labels}} does not support the
+detection of activities. However, activity detection is supported for
+label detection in videos. For more information, see StartLabelDetection
+in the Amazon Rekognition Developer Guide.
 
 You pass the input image as base64-encoded image bytes or as a reference
 to an image in an Amazon S3 bucket. If you use the AWS CLI to call
@@ -80,20 +80,23 @@ labels returned. The default is 55\%. You can also add the \code{MaxLabels}
 parameter to limit the number of labels returned.
 
 If the object detected is a person, the operation doesn't provide the
-same facial details that the DetectFaces operation provides.
+same facial details that the \code{\link[=rekognition_detect_faces]{detect_faces}}
+operation provides.
 
-\code{DetectLabels} returns bounding boxes for instances of common object
-labels in an array of Instance objects. An \code{Instance} object contains a
-BoundingBox object, for the location of the label on the image. It also
-includes the confidence by which the bounding box was detected.
+\code{\link[=rekognition_detect_labels]{detect_labels}} returns bounding boxes for
+instances of common object labels in an array of Instance objects. An
+\code{Instance} object contains a BoundingBox object, for the location of the
+label on the image. It also includes the confidence by which the
+bounding box was detected.
 
-\code{DetectLabels} also returns a hierarchical taxonomy of detected labels.
-For example, a detected car might be assigned the label \emph{car}. The label
-\emph{car} has two parent labels: \emph{Vehicle} (its parent) and \emph{Transportation}
-(its grandparent). The response returns the entire list of ancestors for
-a label. Each ancestor is a unique label in the response. In the
-previous example, \emph{Car}, \emph{Vehicle}, and \emph{Transportation} are returned as
-unique labels in the response.
+\code{\link[=rekognition_detect_labels]{detect_labels}} also returns a hierarchical
+taxonomy of detected labels. For example, a detected car might be
+assigned the label \emph{car}. The label \emph{car} has two parent labels:
+\emph{Vehicle} (its parent) and \emph{Transportation} (its grandparent). The
+response returns the entire list of ancestors for a label. Each ancestor
+is a unique label in the response. In the previous example, \emph{Car},
+\emph{Vehicle}, and \emph{Transportation} are returned as unique labels in the
+response.
 
 This is a stateless API operation. That is, the operation does not
 persist any data.

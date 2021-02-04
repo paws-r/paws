@@ -8,8 +8,9 @@ waf_get_regex_pattern_set(RegexPatternSetId)
 }
 \arguments{
 \item{RegexPatternSetId}{[required] The \code{RegexPatternSetId} of the RegexPatternSet that you want to get.
-\code{RegexPatternSetId} is returned by CreateRegexPatternSet and by
-ListRegexPatternSets.}
+\code{RegexPatternSetId} is returned by
+\code{\link[=waf_create_regex_pattern_set]{create_regex_pattern_set}} and by
+\code{\link[=waf_list_regex_pattern_sets]{list_regex_pattern_sets}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

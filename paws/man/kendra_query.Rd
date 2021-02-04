@@ -57,8 +57,8 @@ information, such as the user's email address, as the \code{VisitorId}.}
 }
 \description{
 Searches an active index. Use this API to search your documents using
-query. The \code{Query} operation enables to do faceted search and to filter
-results based on document attributes.
+query. The \code{\link[=kendra_query]{query}} operation enables to do faceted
+search and to filter results based on document attributes.
 
 It also enables you to provide user context that Amazon Kendra uses to
 enforce document access control in the search results.

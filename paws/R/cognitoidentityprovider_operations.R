@@ -192,13 +192,16 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' create or update a user pool. This template includes your custom sign-up
 #' instructions and placeholders for user name and temporary password.
 #' 
-#' Alternatively, you can call `AdminCreateUser` with “SUPPRESS” for the
-#' `MessageAction` parameter, and Amazon Cognito will not send any email.
+#' Alternatively, you can call
+#' [`admin_create_user`][cognitoidentityprovider_admin_create_user] with
+#' “SUPPRESS” for the `MessageAction` parameter, and Amazon Cognito will
+#' not send any email.
 #' 
 #' In either case, the user will be in the `FORCE_CHANGE_PASSWORD` state
 #' until they sign in and change their password.
 #' 
-#' `AdminCreateUser` requires developer credentials.
+#' [`admin_create_user`][cognitoidentityprovider_admin_create_user]
+#' requires developer credentials.
 #'
 #' @usage
 #' cognitoidentityprovider_admin_create_user(UserPoolId, Username,
@@ -214,8 +217,9 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' without specifying any attributes other than `Username`. However, any
 #' attributes that you specify as required (when creating a user pool or in
 #' the **Attributes** tab of the console) must be supplied either by you
-#' (in your call to `AdminCreateUser`) or by the user (when he or she signs
-#' up in response to your welcome message).
+#' (in your call to
+#' [`admin_create_user`][cognitoidentityprovider_admin_create_user]) or by
+#' the user (when he or she signs up in response to your welcome message).
 #' 
 #' For custom attributes, you must prepend the `custom:` prefix to the
 #' attribute name.
@@ -225,10 +229,12 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' AdminCreateUser or in the **Users** tab of the Amazon Cognito console
 #' for managing your user pools.
 #' 
-#' In your call to `AdminCreateUser`, you can set the `email_verified`
-#' attribute to `True`, and you can set the `phone_number_verified`
-#' attribute to `True`. (You can also do this by calling
-#' [AdminUpdateUserAttributes](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminUpdateUserAttributes.html).)
+#' In your call to
+#' [`admin_create_user`][cognitoidentityprovider_admin_create_user], you
+#' can set the `email_verified` attribute to `True`, and you can set the
+#' `phone_number_verified` attribute to `True`. (You can also do this by
+#' calling
+#' [`admin_update_user_attributes`][cognitoidentityprovider_admin_update_user_attributes].)
 #' 
 #' -   **email**: The email address of the user to whom the message that
 #'     contains the code and username will be sent. Required if the
@@ -263,8 +269,9 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' 
 #' The temporary password can only be used until the user account
 #' expiration limit that you specified when you created the user pool. To
-#' reset the account after that time limit, you must call `AdminCreateUser`
-#' again, specifying `"RESEND"` for the `MessageAction` parameter.
+#' reset the account after that time limit, you must call
+#' [`admin_create_user`][cognitoidentityprovider_admin_create_user] again,
+#' specifying `"RESEND"` for the `MessageAction` parameter.
 #' @param ForceAliasCreation This parameter is only used if the `phone_number_verified` or
 #' `email_verified` attribute is set to `True`. Otherwise, it is ignored.
 #' 
@@ -470,7 +477,7 @@ cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Use
 #' The next time the external user (no longer attached to the previously
 #' linked `DestinationUser`) signs in, they must create a new user account.
 #' See
-#' [AdminLinkProviderForUser](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html).
+#' [`admin_link_provider_for_user`][cognitoidentityprovider_admin_link_provider_for_user].
 #' 
 #' This action is enabled only for admin access and requires developer
 #' credentials.
@@ -492,11 +499,11 @@ cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Use
 #' identity has not yet been used to sign-in, the `ProviderAttributeName`
 #' and `ProviderAttributeValue` must be the same values that were used for
 #' the `SourceUser` when the identities were originally linked using
-#' ` AdminLinkProviderForUser` call. (If the linking was done with
-#' `ProviderAttributeName` set to `Cognito_Subject`, the same applies
-#' here). However, if the user has already signed in, the
-#' `ProviderAttributeName` must be `Cognito_Subject` and
-#' `ProviderAttributeValue` must be the subject of the SAML assertion.
+#' [`admin_link_provider_for_user`][cognitoidentityprovider_admin_link_provider_for_user]
+#' call. (If the linking was done with `ProviderAttributeName` set to
+#' `Cognito_Subject`, the same applies here). However, if the user has
+#' already signed in, the `ProviderAttributeName` must be `Cognito_Subject`
+#' and `ProviderAttributeValue` must be the subject of the SAML assertion.
 #'
 #' @usage
 #' cognitoidentityprovider_admin_disable_provider_for_user(UserPoolId,
@@ -876,7 +883,8 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' -   Amazon Cognito does not encrypt the the ClientMetadata value, so
 #'     don't use it to provide sensitive information.
 #' @param AnalyticsMetadata The analytics metadata for collecting Amazon Pinpoint metrics for
-#' `AdminInitiateAuth` calls.
+#' [`admin_initiate_auth`][cognitoidentityprovider_admin_initiate_auth]
+#' calls.
 #' @param ContextData Contextual data such as the user's device fingerprint, IP address, or
 #' location used for evaluating the risk of an unexpected event by Amazon
 #' Cognito advanced security.
@@ -1324,7 +1332,7 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' @param UserPoolId &#91;required&#93; The ID of the Amazon Cognito user pool.
 #' @param ClientId &#91;required&#93; The app client ID.
 #' @param ChallengeName &#91;required&#93; The challenge name. For more information, see
-#' [AdminInitiateAuth](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminInitiateAuth.html).
+#' [`admin_initiate_auth`][cognitoidentityprovider_admin_initiate_auth].
 #' @param ChallengeResponses The challenge responses. These are inputs corresponding to the value of
 #' `ChallengeName`, for example:
 #' 
@@ -1344,16 +1352,24 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' 
 #' The value of the `USERNAME` attribute must be the user's actual
 #' username, not an alias (such as email address or phone number). To make
-#' this easier, the `AdminInitiateAuth` response includes the actual
-#' username value in the `USERNAMEUSER_ID_FOR_SRP` attribute, even if you
-#' specified an alias in your call to `AdminInitiateAuth`.
+#' this easier, the
+#' [`admin_initiate_auth`][cognitoidentityprovider_admin_initiate_auth]
+#' response includes the actual username value in the
+#' `USERNAMEUSER_ID_FOR_SRP` attribute, even if you specified an alias in
+#' your call to
+#' [`admin_initiate_auth`][cognitoidentityprovider_admin_initiate_auth].
 #' @param Session The session which should be passed both ways in challenge-response calls
-#' to the service. If `InitiateAuth` or `RespondToAuthChallenge` API call
-#' determines that the caller needs to go through another challenge, they
-#' return a session with other challenge parameters. This session should be
-#' passed as it is to the next `RespondToAuthChallenge` API call.
+#' to the service. If
+#' [`initiate_auth`][cognitoidentityprovider_initiate_auth] or
+#' [`respond_to_auth_challenge`][cognitoidentityprovider_respond_to_auth_challenge]
+#' API call determines that the caller needs to go through another
+#' challenge, they return a session with other challenge parameters. This
+#' session should be passed as it is to the next
+#' [`respond_to_auth_challenge`][cognitoidentityprovider_respond_to_auth_challenge]
+#' API call.
 #' @param AnalyticsMetadata The analytics metadata for collecting Amazon Pinpoint metrics for
-#' `AdminRespondToAuthChallenge` calls.
+#' [`admin_respond_to_auth_challenge`][cognitoidentityprovider_admin_respond_to_auth_challenge]
+#' calls.
 #' @param ContextData Contextual data such as the user's device fingerprint, IP address, or
 #' location used for evaluating the risk of an unexpected event by Amazon
 #' Cognito advanced security.
@@ -1560,7 +1576,7 @@ cognitoidentityprovider_admin_set_user_password <- function(UserPoolId, Username
 #' *This action is no longer supported.* You can use it to configure only
 #' SMS MFA. You can't use it to configure TOTP software token MFA. To
 #' configure either type of MFA, use
-#' [AdminSetUserMFAPreference](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminSetUserMFAPreference.html)
+#' [`admin_set_user_mfa_preference`][cognitoidentityprovider_admin_set_user_mfa_preference]
 #' instead.
 #'
 #' @usage
@@ -1990,10 +2006,11 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
 #' a forgotten password.
 #' @param ConfirmationCode &#91;required&#93; The confirmation code sent by a user's request to retrieve a forgotten
 #' password. For more information, see
-#' [ForgotPassword](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ForgotPassword.html).
+#' [`forgot_password`][cognitoidentityprovider_forgot_password].
 #' @param Password &#91;required&#93; The password sent by a user's request to retrieve a forgotten password.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
-#' `ConfirmForgotPassword` calls.
+#' [`confirm_forgot_password`][cognitoidentityprovider_confirm_forgot_password]
+#' calls.
 #' @param UserContextData Contextual data such as the user's device fingerprint, IP address, or
 #' location used for evaluating the risk of an unexpected event by Amazon
 #' Cognito advanced security.
@@ -2093,7 +2110,7 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
 #' alias from the previous user to the newly created user being confirmed.
 #' If set to `False`, the API will throw an **AliasExistsException** error.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
-#' `ConfirmSignUp` calls.
+#' [`confirm_sign_up`][cognitoidentityprovider_confirm_sign_up] calls.
 #' @param UserContextData Contextual data such as the user's device fingerprint, IP address, or
 #' location used for evaluating the risk of an unexpected event by Amazon
 #' Cognito advanced security.
@@ -2503,7 +2520,9 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' @param UserPoolTags The tag keys and values to assign to the user pool. A tag is a label
 #' that you can use to categorize and manage user pools in different ways,
 #' such as by purpose, owner, environment, or other criteria.
-#' @param AdminCreateUserConfig The configuration for `AdminCreateUser` requests.
+#' @param AdminCreateUserConfig The configuration for
+#' [`admin_create_user`][cognitoidentityprovider_admin_create_user]
+#' requests.
 #' @param Schema An array of schema attributes for the new user pool. These attributes
 #' can be standard or custom attributes.
 #' @param UserPoolAddOns Used to enable advanced security risk detection. Set the key
@@ -2515,7 +2534,8 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' see
 #' [UsernameConfigurationType](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UsernameConfigurationType.html).
 #' @param AccountRecoverySetting Use this setting to define which verified available method a user can
-#' use to recover their password when they call `ForgotPassword`. It allows
+#' use to recover their password when they call
+#' [`forgot_password`][cognitoidentityprovider_forgot_password]. It allows
 #' you to define a preferred method when a user has more than one method
 #' available. With this setting, SMS does not qualify for a valid password
 #' recovery mechanism if the user also has SMS MFA enabled. In the absence
@@ -3578,7 +3598,7 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' in the *Amazon Cognito Developer Guide*. If neither a verified phone
 #' number nor a verified email exists, an `InvalidParameterException` is
 #' thrown. To use the confirmation code for resetting the password, call
-#' [ConfirmForgotPassword](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ConfirmForgotPassword.html).
+#' [`confirm_forgot_password`][cognitoidentityprovider_confirm_forgot_password].
 #'
 #' @usage
 #' cognitoidentityprovider_forgot_password(ClientId, SecretHash,
@@ -3594,7 +3614,7 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' @param Username &#91;required&#93; The user name of the user for whom you want to enter a code to reset a
 #' forgotten password.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
-#' `ForgotPassword` calls.
+#' [`forgot_password`][cognitoidentityprovider_forgot_password] calls.
 #' @param ClientMetadata A map of custom key-value pairs that you can provide as input for any
 #' custom workflows that this action triggers.
 #' 
@@ -4214,7 +4234,7 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #'     don't use it to provide sensitive information.
 #' @param ClientId &#91;required&#93; The app client ID.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
-#' `InitiateAuth` calls.
+#' [`initiate_auth`][cognitoidentityprovider_initiate_auth] calls.
 #' @param UserContextData Contextual data such as the user's device fingerprint, IP address, or
 #' location used for evaluating the risk of an unexpected event by Amazon
 #' Cognito advanced security.
@@ -4487,8 +4507,8 @@ cognitoidentityprovider_list_tags_for_resource <- function(ResourceArn) {
 #' into.
 #' @param MaxResults &#91;required&#93; The maximum number of import jobs you want the request to return.
 #' @param PaginationToken An identifier that was returned from the previous call to
-#' `ListUserImportJobs`, which can be used to return the next set of import
-#' jobs in the list.
+#' [`list_user_import_jobs`][cognitoidentityprovider_list_user_import_jobs],
+#' which can be used to return the next set of import jobs in the list.
 #'
 #' @section Request syntax:
 #' ```
@@ -4640,8 +4660,9 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #' -   *AttributeValue*: The attribute value that must be matched for each
 #'     user.
 #' 
-#' If the filter string is empty, `ListUsers` returns all users in the user
-#' pool.
+#' If the filter string is empty,
+#' [`list_users`][cognitoidentityprovider_list_users] returns all users in
+#' the user pool.
 #' 
 #' You can only search for the following standard attributes:
 #' 
@@ -4662,7 +4683,7 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #' -   `cognito:user_status` (called **Status** in the Console)
 #'     (case-insensitive)
 #' 
-#' -   `status (called <b>Enabled</b> in the Console) (case-sensitive)`
+#' -   `status (called Enabled in the Console) (case-sensitive)`
 #' 
 #' -   `sub`
 #' 
@@ -4776,7 +4797,8 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
 #' @param Username &#91;required&#93; The user name of the user to whom you wish to resend a confirmation
 #' code.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
-#' `ResendConfirmationCode` calls.
+#' [`resend_confirmation_code`][cognitoidentityprovider_resend_confirmation_code]
+#' calls.
 #' @param ClientMetadata A map of custom key-value pairs that you can provide as input for any
 #' custom workflows that this action triggers.
 #' 
@@ -4858,14 +4880,18 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #'
 #' @param ClientId &#91;required&#93; The app client ID.
 #' @param ChallengeName &#91;required&#93; The challenge name. For more information, see
-#' [InitiateAuth](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_InitiateAuth.html).
+#' [`initiate_auth`][cognitoidentityprovider_initiate_auth].
 #' 
 #' `ADMIN_NO_SRP_AUTH` is not a valid value.
 #' @param Session The session which should be passed both ways in challenge-response calls
-#' to the service. If `InitiateAuth` or `RespondToAuthChallenge` API call
-#' determines that the caller needs to go through another challenge, they
-#' return a session with other challenge parameters. This session should be
-#' passed as it is to the next `RespondToAuthChallenge` API call.
+#' to the service. If
+#' [`initiate_auth`][cognitoidentityprovider_initiate_auth] or
+#' [`respond_to_auth_challenge`][cognitoidentityprovider_respond_to_auth_challenge]
+#' API call determines that the caller needs to go through another
+#' challenge, they return a session with other challenge parameters. This
+#' session should be passed as it is to the next
+#' [`respond_to_auth_challenge`][cognitoidentityprovider_respond_to_auth_challenge]
+#' API call.
 #' @param ChallengeResponses The challenge responses. These are inputs corresponding to the value of
 #' `ChallengeName`, for example:
 #' 
@@ -4889,7 +4915,8 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #' -   `DEVICE_PASSWORD_VERIFIER` requires everything that
 #'     `PASSWORD_VERIFIER` requires plus `DEVICE_KEY`.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
-#' `RespondToAuthChallenge` calls.
+#' [`respond_to_auth_challenge`][cognitoidentityprovider_respond_to_auth_challenge]
+#' calls.
 #' @param UserContextData Contextual data such as the user's device fingerprint, IP address, or
 #' location used for evaluating the risk of an unexpected event by Amazon
 #' Cognito advanced security.
@@ -5253,7 +5280,7 @@ cognitoidentityprovider_set_user_pool_mfa_config <- function(UserPoolId, SmsMfaC
 #' *This action is no longer supported.* You can use it to configure only
 #' SMS MFA. You can't use it to configure TOTP software token MFA. To
 #' configure either type of MFA, use
-#' [SetUserMFAPreference](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_SetUserMFAPreference.html)
+#' [`set_user_mfa_preference`][cognitoidentityprovider_set_user_mfa_preference]
 #' instead.
 #'
 #' @usage
@@ -5320,7 +5347,7 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
 #' attribute name.
 #' @param ValidationData The validation data in the request to register a user.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata for collecting metrics for
-#' `SignUp` calls.
+#' [`sign_up`][cognitoidentityprovider_sign_up] calls.
 #' @param UserContextData Contextual data such as the user's device fingerprint, IP address, or
 #' location used for evaluating the risk of an unexpected event by Amazon
 #' Cognito advanced security.
@@ -5701,8 +5728,7 @@ cognitoidentityprovider_update_device_status <- function(AccessToken, DeviceKey,
 #' @param RoleArn The new role ARN for the group. This is used for setting the
 #' `cognito:roles` and `cognito:preferred_role` claims in the token.
 #' @param Precedence The new precedence value for the group. For more information about this
-#' parameter, see
-#' [CreateGroup](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateGroup.html).
+#' parameter, see [`create_group`][cognitoidentityprovider_create_group].
 #'
 #' @section Request syntax:
 #' ```
@@ -5927,7 +5953,7 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' @description
 #' Updates the specified user pool with the specified attributes. You can
 #' get a list of the current user pool settings using
-#' [DescribeUserPool](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPool.html).
+#' [`describe_user_pool`][cognitoidentityprovider_describe_user_pool].
 #' 
 #' If you don't provide a value for an attribute, it will be set to the
 #' default value.
@@ -5967,11 +5993,14 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' @param UserPoolTags The tag keys and values to assign to the user pool. A tag is a label
 #' that you can use to categorize and manage user pools in different ways,
 #' such as by purpose, owner, environment, or other criteria.
-#' @param AdminCreateUserConfig The configuration for `AdminCreateUser` requests.
+#' @param AdminCreateUserConfig The configuration for
+#' [`admin_create_user`][cognitoidentityprovider_admin_create_user]
+#' requests.
 #' @param UserPoolAddOns Used to enable advanced security risk detection. Set the key
 #' `AdvancedSecurityMode` to the value "AUDIT".
 #' @param AccountRecoverySetting Use this setting to define which verified available method a user can
-#' use to recover their password when they call `ForgotPassword`. It allows
+#' use to recover their password when they call
+#' [`forgot_password`][cognitoidentityprovider_forgot_password]. It allows
 #' you to define a preferred method when a user has more than one method
 #' available. With this setting, SMS does not qualify for a valid password
 #' recovery mechanism if the user also has SMS MFA enabled. In the absence
@@ -6096,7 +6125,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' Updates the specified user pool app client with the specified
 #' attributes. You can get a list of the current user pool app client
 #' settings using
-#' [DescribeUserPoolClient](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPoolClient.html).
+#' [`describe_user_pool_client`][cognitoidentityprovider_describe_user_pool_client].
 #' 
 #' If you don't provide a value for an attribute, it will be set to the
 #' default value.

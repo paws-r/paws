@@ -13,7 +13,8 @@ sagemaker_delete_trial_component(TrialComponentName)
 Deletes the specified trial component. A trial component must be
 disassociated from all trials before the trial component can be deleted.
 To disassociate a trial component from a trial, call the
-DisassociateTrialComponent API.
+\code{\link[=sagemaker_disassociate_trial_component]{disassociate_trial_component}}
+API.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_trial_component(

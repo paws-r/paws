@@ -41,13 +41,13 @@ range.
 
 \code{ScanRange}may be used in the following ways:
 \itemize{
-\item \verb{&lt;scanrange&gt;&lt;start&gt;50&lt;/start&gt;&lt;end&gt;100&lt;/end&gt;&lt;/scanrange&gt;} -
-process only the records starting between the bytes 50 and 100
-(inclusive, counting from zero)
-\item \verb{&lt;scanrange&gt;&lt;start&gt;50&lt;/start&gt;&lt;/scanrange&gt;} -
-process only the records starting after the byte 50
-\item \verb{&lt;scanrange&gt;&lt;end&gt;50&lt;/end&gt;&lt;/scanrange&gt;} -
-process only the records within the last 50 bytes of the file.
+\item \verb{<scanrange><start>50</start><end>100</end></scanrange>} - process
+only the records starting between the bytes 50 and 100 (inclusive,
+counting from zero)
+\item \verb{<scanrange><start>50</start></scanrange>} - process only the
+records starting after the byte 50
+\item \verb{<scanrange><end>50</end></scanrange>} - process only the records
+within the last 50 bytes of the file.
 }}
 
 \item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
@@ -97,9 +97,8 @@ objects that are protected with server-side encryption.
 
 For objects that are encrypted with customer-provided encryption
 keys (SSE-C), you must use HTTPS, and you must use the headers that
-are documented in the
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}.
-For more information about SSE-C, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}
+are documented in the \code{\link[=s3_get_object]{get_object}}. For more
+information about SSE-C, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 For objects that are encrypted with Amazon S3 managed encryption
@@ -121,9 +120,9 @@ information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/RESTSelec
 
 \strong{GetObject Support}
 
-The \code{SelectObjectContent} operation does not support the following
-\code{GetObject} functionality. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}.
+The \code{\link[=s3_select_object_content]{select_object_content}} operation does
+not support the following \code{\link[=s3_get_object]{get_object}} functionality.
+For more information, see \code{\link[=s3_get_object]{get_object}}.
 \itemize{
 \item \code{Range}: Although you can specify a scan range for an Amazon S3
 Select request (see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_SelectObjectContent.html#AmazonS3-SelectObjectContent-request-ScanRange}{SelectObjectContentRequest - ScanRange}
@@ -142,9 +141,9 @@ For a list of special errors for this operation, see \href{https://docs.aws.amaz
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html}{GetBucketLifecycleConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html}{PutBucketLifecycleConfiguration}
+\item \code{\link[=s3_get_object]{get_object}}
+\item \code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
+\item \code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}
 }
 }
 \section{Request syntax}{

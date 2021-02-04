@@ -12,7 +12,8 @@ sagemaker_stop_transform_job(TransformJobName)
 \description{
 Stops a transform job.
 
-When Amazon SageMaker receives a \code{StopTransformJob} request, the status
+When Amazon SageMaker receives a
+\code{\link[=sagemaker_stop_transform_job]{stop_transform_job}} request, the status
 of the job changes to \code{Stopping}. After Amazon SageMaker stops the job,
 the status is set to \code{Stopped}. When you stop a transform job before it
 is completed, Amazon SageMaker doesn't store the job's output in Amazon

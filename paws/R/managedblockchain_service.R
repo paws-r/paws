@@ -15,8 +15,10 @@ NULL
 #' open-source frameworks. Because of fundamental differences between the
 #' frameworks, some API actions or data types may only apply in the context
 #' of one framework and not the other. For example, actions related to
-#' Hyperledger Fabric network members such as `CreateMember` and
-#' `DeleteMember` do not apply to Ethereum.
+#' Hyperledger Fabric network members such as
+#' [`create_member`][managedblockchain_create_member] and
+#' [`delete_member`][managedblockchain_delete_member] do not apply to
+#' Ethereum.
 #' 
 #' The description for each action indicates the framework or frameworks to
 #' which it applies. Data types and properties that apply only in the

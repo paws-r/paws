@@ -10,10 +10,12 @@ forecastservice_delete_dataset_group(DatasetGroupArn)
 \item{DatasetGroupArn}{[required] The Amazon Resource Name (ARN) of the dataset group to delete.}
 }
 \description{
-Deletes a dataset group created using the CreateDatasetGroup operation.
-You can only delete dataset groups that have a status of \code{ACTIVE},
-\code{CREATE_FAILED}, or \code{UPDATE_FAILED}. To get the status, use the
-DescribeDatasetGroup operation.
+Deletes a dataset group created using the
+\code{\link[=forecastservice_create_dataset_group]{create_dataset_group}}
+operation. You can only delete dataset groups that have a status of
+\code{ACTIVE}, \code{CREATE_FAILED}, or \code{UPDATE_FAILED}. To get the status, use
+the \code{\link[=forecastservice_describe_dataset_group]{describe_dataset_group}}
+operation.
 
 This operation deletes only the dataset group, not the datasets in the
 group.

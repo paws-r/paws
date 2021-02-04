@@ -19,7 +19,7 @@ single call.}
 Create or update an attribute on an Amazon ECS resource. If the
 attribute does not exist, it is created. If the attribute exists, its
 value is replaced with the specified value. To delete an attribute, use
-DeleteAttributes. For more information, see
+\code{\link[=ecs_delete_attributes]{delete_attributes}}. For more information, see
 \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes}{Attributes}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }

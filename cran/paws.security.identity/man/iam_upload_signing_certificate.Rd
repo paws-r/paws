@@ -40,7 +40,8 @@ can use this operation to manage AWS account root user credentials even
 if the AWS account has no associated users.
 
 Because the body of an X.509 certificate can be large, you should use
-POST rather than GET when calling \code{UploadSigningCertificate}. For
+POST rather than GET when calling
+\code{\link[=iam_upload_signing_certificate]{upload_signing_certificate}}. For
 information about setting up signatures and authorization through the
 API, go to \href{https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html}{Signing AWS API Requests}
 in the \emph{AWS General Reference}. For general information about using the

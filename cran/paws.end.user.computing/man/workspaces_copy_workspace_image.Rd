@@ -34,7 +34,7 @@ from the correct AWS account. To determine if an image has been shared
 and to see the AWS account ID that owns an image, use the
 \href{https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImages.html}{DescribeWorkSpaceImages}
 and
-\href{https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImagePermissions.html}{DescribeWorkspaceImagePermissions}
+\code{\link[=workspaces_describe_workspace_image_permissions]{describe_workspace_image_permissions}}
 API operations.
 }
 \section{Request syntax}{

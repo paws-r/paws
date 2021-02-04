@@ -23,12 +23,14 @@ only the back-end server authentication policy type can be applied to
 the instance ports; this policy type is composed of multiple public key
 policies.
 
-Each time you use \code{SetLoadBalancerPoliciesForBackendServer} to enable
-the policies, use the \code{PolicyNames} parameter to list the policies that
-you want to enable.
+Each time you use
+\code{\link[=elb_set_load_balancer_policies_for_backend_server]{set_load_balancer_policies_for_backend_server}}
+to enable the policies, use the \code{PolicyNames} parameter to list the
+policies that you want to enable.
 
-You can use DescribeLoadBalancers or DescribeLoadBalancerPolicies to
-verify that the policy is associated with the EC2 instance.
+You can use \code{\link[=elb_describe_load_balancers]{describe_load_balancers}} or
+\code{\link[=elb_describe_load_balancer_policies]{describe_load_balancer_policies}}
+to verify that the policy is associated with the EC2 instance.
 
 For more information about enabling back-end instance authentication,
 see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html#configure_backendauth_clt}{Configure Back-end Instance Authentication}

@@ -19,13 +19,16 @@ Opens ports for a specific Amazon Lightsail instance, and specifies the
 IP addresses allowed to connect to the instance through the ports, and
 the protocol. This action also closes all currently open ports that are
 not included in the request. Include all of the ports and the protocols
-you want to open in your \code{PutInstancePublicPorts}request. Or use the
-\code{OpenInstancePublicPorts} action to open ports without closing currently
-open ports.
+you want to open in your
+\code{\link[=lightsail_put_instance_public_ports]{put_instance_public_ports}}request.
+Or use the
+\code{\link[=lightsail_open_instance_public_ports]{open_instance_public_ports}}
+action to open ports without closing currently open ports.
 
-The \code{PutInstancePublicPorts} action supports tag-based access control
-via resource tags applied to the resource identified by \code{instanceName}.
-For more information, see the Lightsail Dev Guide.
+The \code{\link[=lightsail_put_instance_public_ports]{put_instance_public_ports}}
+action supports tag-based access control via resource tags applied to
+the resource identified by \code{instanceName}. For more information, see the
+Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$put_instance_public_ports(

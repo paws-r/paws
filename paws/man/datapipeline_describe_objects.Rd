@@ -13,15 +13,15 @@ datapipeline_describe_objects(pipelineId, objectIds,
 
 \item{objectIds}{[required] The IDs of the pipeline objects that contain the definitions to be
 described. You can pass as many as 25 identifiers in a single call to
-\code{DescribeObjects}.}
+\code{\link[=datapipeline_describe_objects]{describe_objects}}.}
 
 \item{evaluateExpressions}{Indicates whether any expressions in the object should be evaluated when
 the object descriptions are returned.}
 
 \item{marker}{The starting point for the results to be returned. For the first call,
 this value should be empty. As long as there are more results, continue
-to call \code{DescribeObjects} with the marker value from the previous call
-to retrieve the next set of results.}
+to call \code{\link[=datapipeline_describe_objects]{describe_objects}} with the
+marker value from the previous call to retrieve the next set of results.}
 }
 \description{
 Gets the object definitions for a set of objects associated with the

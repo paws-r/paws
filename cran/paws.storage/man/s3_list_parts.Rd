@@ -46,29 +46,28 @@ different account, the request will fail with an HTTP
 Lists the parts that have been uploaded for a specific multipart upload.
 This operation must include the upload ID, which you obtain by sending
 the initiate multipart upload request (see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}).
-This request returns a maximum of 1,000 uploaded parts. The default
-number of parts returned is 1,000 parts. You can restrict the number of
-parts returned by specifying the \code{max-parts} request parameter. If your
-multipart upload consists of more than 1,000 parts, the response returns
-an \code{IsTruncated} field with the value of true, and a
-\code{NextPartNumberMarker} element. In subsequent \code{ListParts} requests you
-can include the part-number-marker query string parameter and set its
-value to the \code{NextPartNumberMarker} field value from the previous
-response.
+\code{\link[=s3_create_multipart_upload]{create_multipart_upload}}). This request
+returns a maximum of 1,000 uploaded parts. The default number of parts
+returned is 1,000 parts. You can restrict the number of parts returned
+by specifying the \code{max-parts} request parameter. If your multipart
+upload consists of more than 1,000 parts, the response returns an
+\code{IsTruncated} field with the value of true, and a \code{NextPartNumberMarker}
+element. In subsequent \code{\link[=s3_list_parts]{list_parts}} requests you can
+include the part-number-marker query string parameter and set its value
+to the \code{NextPartNumberMarker} field value from the previous response.
 
 For more information on multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html}{Uploading Objects Using Multipart Upload}.
 
 For information on permissions required to use the multipart upload API,
 see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html}{Multipart Upload API and Permissions}.
 
-The following operations are related to \code{ListParts}:
+The following operations are related to \code{\link[=s3_list_parts]{list_parts}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html}{CompleteMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html}{AbortMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html}{ListMultipartUploads}
+\item \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}
+\item \code{\link[=s3_upload_part]{upload_part}}
+\item \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}
+\item \code{\link[=s3_abort_multipart_upload]{abort_multipart_upload}}
+\item \code{\link[=s3_list_multipart_uploads]{list_multipart_uploads}}
 }
 }
 \section{Request syntax}{

@@ -23,7 +23,7 @@ none is supplied, the AWS account ID is used by default.}
 Retrieves partition statistics of columns.
 
 The Identity and Access Management (IAM) permission required for this
-operation is \code{GetPartition}.
+operation is \code{\link[=glue_get_partition]{get_partition}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_column_statistics_for_partition(

@@ -15,8 +15,8 @@ replace the current description.}
 \description{
 Updates the \code{DataSourceName} of a \code{DataSource}.
 
-You can use the \code{GetDataSource} operation to view the contents of the
-updated data element.
+You can use the \code{\link[=machinelearning_get_data_source]{get_data_source}}
+operation to view the contents of the updated data element.
 }
 \section{Request syntax}{
 \preformatted{svc$update_data_source(

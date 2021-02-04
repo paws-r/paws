@@ -9,25 +9,24 @@ acmpca_get_certificate(CertificateAuthorityArn, CertificateArn)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}.
+\code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}.
 This must be of the form:
 
-\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
+\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 
 \item{CertificateArn}{[required] The ARN of the issued certificate. The ARN contains the certificate
 serial number and must be in the following form:
 
-\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i>/certificate/<i>286535153982981100925020015808220737245</i> }}
+\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012/certificate/286535153982981100925020015808220737245 }}
 }
 \description{
 Retrieves a certificate from your private CA or one that has been shared
 with you. The ARN of the certificate is returned when you call the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_IssueCertificate.html}{IssueCertificate}
-action. You must specify both the ARN of your private CA and the ARN of
-the issued certificate when calling the \strong{GetCertificate} action. You
-can retrieve the certificate if it is in the \strong{ISSUED} state. You can
-call the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html}{CreateCertificateAuthorityAuditReport}
+\code{\link[=acmpca_issue_certificate]{issue_certificate}} action. You must specify
+both the ARN of your private CA and the ARN of the issued certificate
+when calling the \strong{GetCertificate} action. You can retrieve the
+certificate if it is in the \strong{ISSUED} state. You can call the
+\code{\link[=acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report}}
 action to create a report that contains information about all of the
 certificates issued and revoked by your private CA.
 }

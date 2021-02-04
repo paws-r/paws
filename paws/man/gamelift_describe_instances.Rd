@@ -38,8 +38,8 @@ successful, an Instance object is returned for each result.
 
 \strong{Related operations}
 \itemize{
-\item DescribeInstances
-\item GetInstanceAccess
+\item \code{\link[=gamelift_describe_instances]{describe_instances}}
+\item \code{\link[=gamelift_get_instance_access]{get_instance_access}}
 }
 }
 \section{Request syntax}{

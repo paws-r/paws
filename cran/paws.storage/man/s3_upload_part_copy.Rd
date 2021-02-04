@@ -45,7 +45,7 @@ encoded.
 \item For objects accessed through access points, specify the Amazon
 Resource Name (ARN) of the object as accessed through the access
 point, in the format
-\verb{arn:aws:s3:&lt;Region&gt;:&lt;account-id&gt;:accesspoint/&lt;access-point-name&gt;/object/&lt;key&gt;}.
+\verb{arn:aws:s3:<Region>:<account-id>:accesspoint/<access-point-name>/object/<key>}.
 For example, to copy the object \code{reports/january.pdf} through access
 point \code{my-access-point} owned by account \code{123456789012} in Region
 \code{us-west-2}, use the URL encoding of
@@ -57,7 +57,7 @@ source and destination buckets are in the same AWS Region.
 
 Alternatively, for objects accessed through Amazon S3 on Outposts,
 specify the ARN of the object as accessed in the format
-\verb{arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/object/&lt;key&gt;}.
+\verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/object/<key>}.
 For example, to copy the object \code{reports/january.pdf} through
 outpost \code{my-outpost} owned by account \code{123456789012} in Region
 \code{us-west-2}, use the URL encoding of
@@ -66,7 +66,7 @@ The value must be URL encoded.
 }
 
 To copy a specific version of an object, append
-\verb{?versionId=&lt;version-id&gt;} to the value (for example,
+\verb{?versionId=<version-id>} to the value (for example,
 \code{awsexamplebucket/reports/january.pdf?versionId=QUpfdndhfd8438MNFDN93jdnJFkdmqnh893}).
 If you don't specify a version ID, Amazon S3 copies the latest version
 of the source object.}
@@ -140,16 +140,16 @@ information about multipart upload limits, go to \href{https://docs.aws.amazon.c
 the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Instead of using an existing object as part data, you might use the
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
-operation and provide data in your request.
+\code{\link[=s3_upload_part]{upload_part}} operation and provide data in your
+request.
 
 You must initiate a multipart upload before you can upload any part. In
 response to your initiate request. Amazon S3 returns a unique
 identifier, the upload ID, that you must include in your upload part
 request.
 
-For more information about using the \code{UploadPartCopy} operation, see the
-following:
+For more information about using the
+\code{\link[=s3_upload_part_copy]{upload_part_copy}} operation, see the following:
 \itemize{
 \item For conceptual information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html}{Uploading Objects Using Multipart Upload}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
@@ -161,10 +161,8 @@ operation vs. the multipart upload, see \href{https://docs.aws.amazon.com/Amazon
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 \item For information about using server-side encryption with
 customer-provided encryption keys with the UploadPartCopy operation,
-see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html}{CopyObject}
-and
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}.
+see \code{\link[=s3_copy_object]{copy_object}} and
+\code{\link[=s3_upload_part]{upload_part}}.
 }
 
 Note the following additional considerations about the request headers
@@ -234,12 +232,12 @@ byte-range copy source.}
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html}{CompleteMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html}{AbortMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html}{ListParts}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html}{ListMultipartUploads}
+\item \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}
+\item \code{\link[=s3_upload_part]{upload_part}}
+\item \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}
+\item \code{\link[=s3_abort_multipart_upload]{abort_multipart_upload}}
+\item \code{\link[=s3_list_parts]{list_parts}}
+\item \code{\link[=s3_list_multipart_uploads]{list_multipart_uploads}}
 }
 }
 \section{Request syntax}{

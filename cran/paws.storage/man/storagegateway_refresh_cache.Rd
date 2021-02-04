@@ -40,7 +40,7 @@ necessarily mean that the file refresh has completed. You should use the
 refresh-complete notification to determine that the operation has
 completed before you check for new files on the gateway file share. You
 can subscribe to be notified through an CloudWatch event when your
-\code{RefreshCache} operation completes.
+\code{\link[=storagegateway_refresh_cache]{refresh_cache}} operation completes.
 
 Throttle limit: This API is asynchronous so the gateway will accept no
 more than two refreshes at any time. We recommend using the

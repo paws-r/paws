@@ -9,29 +9,34 @@ route53resolver_list_resolver_query_log_configs(MaxResults, NextToken,
 }
 \arguments{
 \item{MaxResults}{The maximum number of query logging configurations that you want to
-return in the response to a \code{ListResolverQueryLogConfigs} request. If
-you don't specify a value for \code{MaxResults}, Resolver returns up to 100
-query logging configurations.}
+return in the response to a
+\code{\link[=route53resolver_list_resolver_query_log_configs]{list_resolver_query_log_configs}}
+request. If you don't specify a value for \code{MaxResults}, Resolver returns
+up to 100 query logging configurations.}
 
-\item{NextToken}{For the first \code{ListResolverQueryLogConfigs} request, omit this value.
+\item{NextToken}{For the first
+\code{\link[=route53resolver_list_resolver_query_log_configs]{list_resolver_query_log_configs}}
+request, omit this value.
 
 If there are more than \code{MaxResults} query logging configurations that
 match the values that you specify for \code{Filters}, you can submit another
-\code{ListResolverQueryLogConfigs} request to get the next group of
-configurations. In the next request, specify the value of \code{NextToken}
-from the previous response.}
+\code{\link[=route53resolver_list_resolver_query_log_configs]{list_resolver_query_log_configs}}
+request to get the next group of configurations. In the next request,
+specify the value of \code{NextToken} from the previous response.}
 
 \item{Filters}{An optional specification to return a subset of query logging
 configurations.
 
-If you submit a second or subsequent \code{ListResolverQueryLogConfigs}
+If you submit a second or subsequent
+\code{\link[=route53resolver_list_resolver_query_log_configs]{list_resolver_query_log_configs}}
 request and specify the \code{NextToken} parameter, you must use the same
 values for \code{Filters}, if any, as in the previous request.}
 
 \item{SortBy}{The element that you want Resolver to sort query logging configurations
 by.
 
-If you submit a second or subsequent \code{ListResolverQueryLogConfigs}
+If you submit a second or subsequent
+\code{\link[=route53resolver_list_resolver_query_log_configs]{list_resolver_query_log_configs}}
 request and specify the \code{NextToken} parameter, you must use the same
 value for \code{SortBy}, if any, as in the previous request.
 
@@ -75,7 +80,8 @@ was deleted.
 \item{SortOrder}{If you specified a value for \code{SortBy}, the order that you want query
 logging configurations to be listed in, \code{ASCENDING} or \code{DESCENDING}.
 
-If you submit a second or subsequent \code{ListResolverQueryLogConfigs}
+If you submit a second or subsequent
+\code{\link[=route53resolver_list_resolver_query_log_configs]{list_resolver_query_log_configs}}
 request and specify the \code{NextToken} parameter, you must use the same
 value for \code{SortOrder}, if any, as in the previous request.}
 }

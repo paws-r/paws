@@ -13,7 +13,8 @@ support_describe_trusted_advisor_check_summaries(checkIds)
 \description{
 Returns the results for the AWS Trusted Advisor check summaries for the
 check IDs that you specified. You can get the check IDs by calling the
-DescribeTrustedAdvisorChecks operation.
+\code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}}
+operation.
 
 The response contains an array of TrustedAdvisorCheckSummary objects.
 \itemize{

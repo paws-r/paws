@@ -12,15 +12,17 @@ forecastservice_get_accuracy_metrics(PredictorArn)
 }
 \description{
 Provides metrics on the accuracy of the models that were trained by the
-CreatePredictor operation. Use metrics to see how well the model
-performed and to decide whether to use the predictor to generate a
-forecast. For more information, see \href{https://docs.aws.amazon.com/forecast/latest/dg/metrics.html}{Predictor Metrics}.
+\code{\link[=forecastservice_create_predictor]{create_predictor}} operation. Use
+metrics to see how well the model performed and to decide whether to use
+the predictor to generate a forecast. For more information, see
+\href{https://docs.aws.amazon.com/forecast/latest/dg/metrics.html}{Predictor Metrics}.
 
 This operation generates metrics for each backtest window that was
 evaluated. The number of backtest windows (\code{NumberOfBacktestWindows}) is
 specified using the EvaluationParameters object, which is optionally
-included in the \code{CreatePredictor} request. If \code{NumberOfBacktestWindows}
-isn't specified, the number defaults to one.
+included in the \code{\link[=forecastservice_create_predictor]{create_predictor}}
+request. If \code{NumberOfBacktestWindows} isn't specified, the number
+defaults to one.
 
 The parameters of the \code{filling} method determine which items contribute
 to the metrics. If you want all items to contribute, specify \code{zero}. If
@@ -30,7 +32,8 @@ FeaturizationMethod.
 
 Before you can get accuracy metrics, the \code{Status} of the predictor must
 be \code{ACTIVE}, signifying that training has completed. To get the status,
-use the DescribePredictor operation.
+use the \code{\link[=forecastservice_describe_predictor]{describe_predictor}}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$get_accuracy_metrics(

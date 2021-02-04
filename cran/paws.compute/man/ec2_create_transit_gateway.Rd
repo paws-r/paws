@@ -27,22 +27,27 @@ clouds (VPC) and on-premises networks. After the transit gateway enters
 the \code{available} state, you can attach your VPCs and VPN connections to
 the transit gateway.
 
-To attach your VPCs, use CreateTransitGatewayVpcAttachment.
+To attach your VPCs, use
+\code{\link[=ec2_create_transit_gateway_vpc_attachment]{create_transit_gateway_vpc_attachment}}.
 
-To attach a VPN connection, use CreateCustomerGateway to create a
+To attach a VPN connection, use
+\code{\link[=ec2_create_customer_gateway]{create_customer_gateway}} to create a
 customer gateway and specify the ID of the customer gateway and the ID
-of the transit gateway in a call to CreateVpnConnection.
+of the transit gateway in a call to
+\code{\link[=ec2_create_vpn_connection]{create_vpn_connection}}.
 
 When you create a transit gateway, we create a default transit gateway
 route table and use it as the default association route table and the
 default propagation route table. You can use
-CreateTransitGatewayRouteTable to create additional transit gateway
-route tables. If you disable automatic route propagation, we do not
-create a default transit gateway route table. You can use
-EnableTransitGatewayRouteTablePropagation to propagate routes from a
-resource attachment to a transit gateway route table. If you disable
-automatic associations, you can use AssociateTransitGatewayRouteTable to
-associate a resource attachment with a transit gateway route table.
+\code{\link[=ec2_create_transit_gateway_route_table]{create_transit_gateway_route_table}}
+to create additional transit gateway route tables. If you disable
+automatic route propagation, we do not create a default transit gateway
+route table. You can use
+\code{\link[=ec2_enable_transit_gateway_route_table_propagation]{enable_transit_gateway_route_table_propagation}}
+to propagate routes from a resource attachment to a transit gateway
+route table. If you disable automatic associations, you can use
+\code{\link[=ec2_associate_transit_gateway_route_table]{associate_transit_gateway_route_table}}
+to associate a resource attachment with a transit gateway route table.
 }
 \section{Request syntax}{
 \preformatted{svc$create_transit_gateway(

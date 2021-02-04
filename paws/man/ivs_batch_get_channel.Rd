@@ -10,7 +10,8 @@ ivs_batch_get_channel(arns)
 \item{arns}{[required] Array of ARNs, one per channel.}
 }
 \description{
-Performs GetChannel on multiple ARNs simultaneously.
+Performs \code{\link[=ivs_get_channel]{get_channel}} on multiple ARNs
+simultaneously.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_channel(

@@ -8,8 +8,8 @@ datasync_delete_agent(AgentArn)
 }
 \arguments{
 \item{AgentArn}{[required] The Amazon Resource Name (ARN) of the agent to delete. Use the
-\code{ListAgents} operation to return a list of agents for your account and
-AWS Region.}
+\code{\link[=datasync_list_agents]{list_agents}} operation to return a list of
+agents for your account and AWS Region.}
 }
 \description{
 Deletes an agent. To specify which agent to delete, use the Amazon

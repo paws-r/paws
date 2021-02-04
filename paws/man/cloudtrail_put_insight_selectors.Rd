@@ -18,9 +18,10 @@ insight type.}
 \description{
 Lets you enable Insights event logging by specifying the Insights
 selectors that you want to enable on an existing trail. You also use
-\code{PutInsightSelectors} to turn off Insights event logging, by passing an
-empty list of insight types. In this release, only \code{ApiCallRateInsight}
-is supported as an Insights selector.
+\code{\link[=cloudtrail_put_insight_selectors]{put_insight_selectors}} to turn off
+Insights event logging, by passing an empty list of insight types. In
+this release, only \code{ApiCallRateInsight} is supported as an Insights
+selector.
 }
 \section{Request syntax}{
 \preformatted{svc$put_insight_selectors(

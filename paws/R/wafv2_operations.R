@@ -33,13 +33,13 @@ NULL
 #' The ARN must be in one of the following formats:
 #' 
 #' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i>/<i>load-balancer-id</i> `
+#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
 #' -   For an API Gateway REST API:
-#'     `arn:aws:apigateway:<i>region</i>::/restapis/<i>api-id</i>/stages/<i>stage-name</i> `
+#'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
 #' 
 #' -   For an AppSync GraphQL API:
-#'     `arn:aws:appsync:<i>region</i>:<i>account-id</i>:apis/<i>GraphQLApiId</i> `
+#'     `arn:aws:appsync:region:account-id:apis/GraphQLApiId `
 #'
 #' @section Request syntax:
 #' ```
@@ -540,7 +540,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' When you create your own rule group, you define this, and you cannot
 #' change it after creation. When you add or modify the rules in a rule
 #' group, AWS WAF enforces this limit. You can check the capacity for a set
-#' of rules using CheckCapacity.
+#' of rules using [`check_capacity`][wafv2_check_capacity].
 #' 
 #' AWS WAF uses WCUs to calculate and control the operating resources that
 #' are used to run your rules, rule groups, and web ACLs. AWS WAF
@@ -1575,13 +1575,13 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope) {
 #' The ARN must be in one of the following formats:
 #' 
 #' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i>/<i>load-balancer-id</i> `
+#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
 #' -   For an API Gateway REST API:
-#'     `arn:aws:apigateway:<i>region</i>::/restapis/<i>api-id</i>/stages/<i>stage-name</i> `
+#'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
 #' 
 #' -   For an AppSync GraphQL API:
-#'     `arn:aws:appsync:<i>region</i>:<i>account-id</i>:apis/<i>GraphQLApiId</i> `
+#'     `arn:aws:appsync:region:account-id:apis/GraphQLApiId `
 #'
 #' @section Request syntax:
 #' ```
@@ -1955,12 +1955,13 @@ wafv2_get_rule_group <- function(Name, Scope, Id) {
 #' choose. You can specify a sample size of up to 500 requests, and you can
 #' specify any time range in the previous three hours.
 #' 
-#' `GetSampledRequests` returns a time range, which is usually the time
-#' range that you specified. However, if your resource (such as a
-#' CloudFront distribution) received 5,000 requests before the specified
-#' time range elapsed, `GetSampledRequests` returns an updated time range.
-#' This new time range indicates the actual period during which AWS WAF
-#' selected the requests in the sample.
+#' [`get_sampled_requests`][wafv2_get_sampled_requests] returns a time
+#' range, which is usually the time range that you specified. However, if
+#' your resource (such as a CloudFront distribution) received 5,000
+#' requests before the specified time range elapsed,
+#' [`get_sampled_requests`][wafv2_get_sampled_requests] returns an updated
+#' time range. This new time range indicates the actual period during which
+#' AWS WAF selected the requests in the sample.
 #'
 #' @usage
 #' wafv2_get_sampled_requests(WebAclArn, RuleMetricName, Scope, TimeWindow,
@@ -1982,15 +1983,16 @@ wafv2_get_rule_group <- function(Name, Scope, Id) {
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param TimeWindow &#91;required&#93; The start date and time and the end date and time of the range for which
-#' you want `GetSampledRequests` to return a sample of requests. You must
-#' specify the times in Coordinated Universal Time (UTC) format. UTC format
-#' includes the special designator, `Z`. For example,
-#' `"2016-09-27T14:50Z"`. You can specify any time range in the previous
-#' three hours.
+#' you want [`get_sampled_requests`][wafv2_get_sampled_requests] to return
+#' a sample of requests. You must specify the times in Coordinated
+#' Universal Time (UTC) format. UTC format includes the special designator,
+#' `Z`. For example, `"2016-09-27T14:50Z"`. You can specify any time range
+#' in the previous three hours.
 #' @param MaxItems &#91;required&#93; The number of requests that you want AWS WAF to return from among the
 #' first 5,000 requests that your AWS resource received during the time
 #' range. If your resource received fewer requests than the value of
-#' `MaxItems`, `GetSampledRequests` returns information about all of them.
+#' `MaxItems`, [`get_sampled_requests`][wafv2_get_sampled_requests] returns
+#' information about all of them.
 #'
 #' @section Request syntax:
 #' ```
@@ -2664,12 +2666,14 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'     source.
 #' 
 #' 2.  Associate that firehose to your web ACL using a
-#'     `PutLoggingConfiguration` request.
+#'     [`put_logging_configuration`][wafv2_put_logging_configuration]
+#'     request.
 #' 
-#' When you successfully enable logging using a `PutLoggingConfiguration`
-#' request, AWS WAF will create a service linked role with the necessary
-#' permissions to write logs to the Amazon Kinesis Data Firehose. For more
-#' information, see [Logging Web ACL Traffic
+#' When you successfully enable logging using a
+#' [`put_logging_configuration`][wafv2_put_logging_configuration] request,
+#' AWS WAF will create a service linked role with the necessary permissions
+#' to write logs to the Amazon Kinesis Data Firehose. For more information,
+#' see [Logging Web ACL Traffic
 #' Information](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html)
 #' in the *AWS WAF Developer Guide*.
 #'
@@ -2736,8 +2740,8 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 #' 
 #' This action is subject to the following restrictions:
 #' 
-#' -   You can attach only one policy with each `PutPermissionPolicy`
-#'     request.
+#' -   You can attach only one policy with each
+#'     [`put_permission_policy`][wafv2_put_permission_policy] request.
 #' 
 #' -   The ARN in the request must be a valid WAF RuleGroup ARN and the
 #'     rule group must exist in the same region.

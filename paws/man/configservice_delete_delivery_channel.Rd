@@ -13,7 +13,9 @@ configservice_delete_delivery_channel(DeliveryChannelName)
 Deletes the delivery channel.
 
 Before you can delete the delivery channel, you must stop the
-configuration recorder by using the StopConfigurationRecorder action.
+configuration recorder by using the
+\code{\link[=configservice_stop_configuration_recorder]{stop_configuration_recorder}}
+action.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_delivery_channel(

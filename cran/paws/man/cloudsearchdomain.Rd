@@ -13,12 +13,14 @@ cloudsearchdomain(config = list())
 You use the AmazonCloudSearch2013 API to upload documents to a search
 domain and search those documents.
 
-The endpoints for submitting \code{UploadDocuments}, \code{Search}, and \code{Suggest}
-requests are domain-specific. To get the endpoints for your domain, use
-the Amazon CloudSearch configuration service \code{DescribeDomains} action.
-The domain endpoints are also displayed on the domain dashboard in the
-Amazon CloudSearch console. You submit suggest requests to the search
-endpoint.
+The endpoints for submitting
+\code{\link[=cloudsearchdomain_upload_documents]{upload_documents}},
+\code{\link[=cloudsearchdomain_search]{search}}, and
+\code{\link[=cloudsearchdomain_suggest]{suggest}} requests are domain-specific. To
+get the endpoints for your domain, use the Amazon CloudSearch
+configuration service \code{DescribeDomains} action. The domain endpoints are
+also displayed on the domain dashboard in the Amazon CloudSearch
+console. You submit suggest requests to the search endpoint.
 
 For more information, see the \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/}{Amazon CloudSearch Developer Guide}.
 }

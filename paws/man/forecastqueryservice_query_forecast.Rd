@@ -42,8 +42,9 @@ equivalent non-timestamp, non-target field) from the
 \code{TARGET_TIME_SERIES} dataset, or one of the forecast dimensions
 specified as part of the \code{FeaturizationConfig} object.
 
-By default, \code{QueryForecast} returns the complete date range for the
-filtered forecast. You can request a specific date range.
+By default, \code{\link[=forecastqueryservice_query_forecast]{query_forecast}}
+returns the complete date range for the filtered forecast. You can
+request a specific date range.
 
 To get the full forecast, use the
 \href{https://docs.aws.amazon.com/en_us/forecast/latest/dg/API_CreateForecastExportJob.html}{CreateForecastExportJob}

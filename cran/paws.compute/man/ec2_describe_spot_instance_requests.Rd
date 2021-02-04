@@ -105,21 +105,22 @@ another call with the returned \code{NextToken} value.}
 \description{
 Describes the specified Spot Instance requests.
 
-You can use \code{DescribeSpotInstanceRequests} to find a running Spot
-Instance by examining the response. If the status of the Spot Instance
-is \code{fulfilled}, the instance ID appears in the response and contains the
-identifier of the instance. Alternatively, you can use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html}{DescribeInstances}
-with a filter to look for instances where the instance lifecycle is
-\code{spot}.
+You can use
+\code{\link[=ec2_describe_spot_instance_requests]{describe_spot_instance_requests}}
+to find a running Spot Instance by examining the response. If the status
+of the Spot Instance is \code{fulfilled}, the instance ID appears in the
+response and contains the identifier of the instance. Alternatively, you
+can use \code{\link[=ec2_describe_instances]{describe_instances}} with a filter to
+look for instances where the instance lifecycle is \code{spot}.
 
 We recommend that you set \code{MaxResults} to a value between 5 and 1000 to
 limit the number of results returned. This paginates the output, which
 makes the list more manageable and returns the results faster. If the
 list of results exceeds your \code{MaxResults} value, then that number of
 results is returned along with a \code{NextToken} value that can be passed to
-a subsequent \code{DescribeSpotInstanceRequests} request to retrieve the
-remaining results.
+a subsequent
+\code{\link[=ec2_describe_spot_instance_requests]{describe_spot_instance_requests}}
+request to retrieve the remaining results.
 
 Spot Instance requests are deleted four hours after they are canceled
 and their instances are terminated.

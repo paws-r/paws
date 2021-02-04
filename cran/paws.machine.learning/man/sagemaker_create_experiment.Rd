@@ -17,8 +17,8 @@ unique. If you don't specify \code{DisplayName}, the value in
 
 \item{Description}{The description of the experiment.}
 
-\item{Tags}{A list of tags to associate with the experiment. You can use Search API
-to search on the tags.}
+\item{Tags}{A list of tags to associate with the experiment. You can use
+\code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }
 \description{
 Creates an SageMaker \emph{experiment}. An experiment is a collection of
@@ -37,16 +37,20 @@ logged, and indexed. When you use the AWS SDK for Python (Boto), you
 must use the logging APIs provided by the SDK.
 
 You can add tags to experiments, trials, trial components and then use
-the Search API to search for the tags.
+the \code{\link[=sagemaker_search]{search}} API to search for the tags.
 
 To add a description to an experiment, specify the optional
 \code{Description} parameter. To add a description later, or to change the
-description, call the UpdateExperiment API.
+description, call the \code{\link[=sagemaker_update_experiment]{update_experiment}}
+API.
 
-To get a list of all your experiments, call the ListExperiments API. To
-view an experiment's properties, call the DescribeExperiment API. To get
-a list of all the trials associated with an experiment, call the
-ListTrials API. To create a trial call the CreateTrial API.
+To get a list of all your experiments, call the
+\code{\link[=sagemaker_list_experiments]{list_experiments}} API. To view an
+experiment's properties, call the
+\code{\link[=sagemaker_describe_experiment]{describe_experiment}} API. To get a
+list of all the trials associated with an experiment, call the
+\code{\link[=sagemaker_list_trials]{list_trials}} API. To create a trial call the
+\code{\link[=sagemaker_create_trial]{create_trial}} API.
 }
 \section{Request syntax}{
 \preformatted{svc$create_experiment(

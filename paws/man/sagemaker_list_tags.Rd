@@ -10,9 +10,9 @@ sagemaker_list_tags(ResourceArn, NextToken, MaxResults)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource whose tags you want to
 retrieve.}
 
-\item{NextToken}{If the response to the previous \code{ListTags} request is truncated, Amazon
-SageMaker returns this token. To retrieve the next set of tags, use it
-in the subsequent request.}
+\item{NextToken}{If the response to the previous \code{\link[=sagemaker_list_tags]{list_tags}}
+request is truncated, Amazon SageMaker returns this token. To retrieve
+the next set of tags, use it in the subsequent request.}
 
 \item{MaxResults}{Maximum number of tags to return.}
 }

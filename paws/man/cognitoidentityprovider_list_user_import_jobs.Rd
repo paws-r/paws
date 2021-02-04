@@ -14,8 +14,8 @@ into.}
 \item{MaxResults}{[required] The maximum number of import jobs you want the request to return.}
 
 \item{PaginationToken}{An identifier that was returned from the previous call to
-\code{ListUserImportJobs}, which can be used to return the next set of import
-jobs in the list.}
+\code{\link[=cognitoidentityprovider_list_user_import_jobs]{list_user_import_jobs}},
+which can be used to return the next set of import jobs in the list.}
 }
 \description{
 Lists the user import jobs.

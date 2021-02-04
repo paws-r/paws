@@ -54,9 +54,8 @@ more information, see
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{KeyName}{The name of the key pair. You can create a key pair using
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html}{CreateKeyPair}
-or
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html}{ImportKeyPair}.
+\code{\link[=ec2_create_key_pair]{create_key_pair}} or
+\code{\link[=ec2_import_key_pair]{import_key_pair}}.
 
 If you do not specify a key pair, you can't connect to the instance
 unless you choose an AMI that is configured to allow users another way
@@ -95,7 +94,7 @@ more information, see
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{SecurityGroupIds}{The IDs of the security groups. You can create a security group using
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html}{CreateSecurityGroup}.
+\code{\link[=ec2_create_security_group]{create_security_group}}.
 
 If you specify a network interface, you must specify any security groups
 as part of the network interface.}
@@ -133,7 +132,7 @@ Constraints: Maximum 64 ASCII characters}
 \item{DisableApiTermination}{If you set this parameter to \code{true}, you can't terminate the instance
 using the Amazon EC2 console, CLI, or API; otherwise, you can. To change
 this attribute after launch, use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html}{ModifyInstanceAttribute}.
+\code{\link[=ec2_modify_instance_attribute]{modify_instance_attribute}}.
 Alternatively, if you set \code{InstanceInitiatedShutdownBehavior} to
 \code{terminate}, you can terminate the instance by running the shutdown
 command from the instance.
@@ -193,19 +192,18 @@ request.}
 \item{TagSpecifications}{The tags to apply to the resources during launch. You can only tag
 instances and volumes on launch. The specified tags are applied to all
 instances or volumes that are created during launch. To tag a resource
-after it has been created, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html}{CreateTags}.}
+after it has been created, see \code{\link[=ec2_create_tags]{create_tags}}.}
 
 \item{LaunchTemplate}{The launch template to use to launch the instances. Any parameters that
-you specify in RunInstances override the same parameters in the launch
-template. You can specify either the name or ID of a launch template,
-but not both.}
+you specify in \code{\link[=ec2_run_instances]{run_instances}} override the same
+parameters in the launch template. You can specify either the name or ID
+of a launch template, but not both.}
 
 \item{InstanceMarketOptions}{The market (purchasing) option for the instances.
 
-For RunInstances, persistent Spot Instance requests are only supported
-when \strong{InstanceInterruptionBehavior} is set to either \code{hibernate} or
-\code{stop}.}
+For \code{\link[=ec2_run_instances]{run_instances}}, persistent Spot Instance
+requests are only supported when \strong{InstanceInterruptionBehavior} is set
+to either \code{hibernate} or \code{stop}.}
 
 \item{CreditSpecification}{The credit option for CPU usage of the burstable performance instance.
 Valid values are \code{standard} and \code{unlimited}. To change this attribute
@@ -272,17 +270,19 @@ has not subscribed, the request fails.
 
 You can create a \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html}{launch template},
 which is a resource that contains the parameters to launch an instance.
-When you launch an instance using RunInstances, you can specify the
-launch template instead of specifying the launch parameters.
+When you launch an instance using \code{\link[=ec2_run_instances]{run_instances}},
+you can specify the launch template instead of specifying the launch
+parameters.
 
 To ensure faster instance launches, break up large requests into smaller
 batches. For example, create five separate launch requests for 100
 instances each instead of one launch request for 500 instances.
 
 An instance is ready for you to use when it's in the \code{running} state.
-You can check the state of your instance using DescribeInstances. You
-can tag instances and EBS volumes during launch, after launch, or both.
-For more information, see CreateTags and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging your Amazon EC2 resources}.
+You can check the state of your instance using
+\code{\link[=ec2_describe_instances]{describe_instances}}. You can tag instances
+and EBS volumes during launch, after launch, or both. For more
+information, see \code{\link[=ec2_create_tags]{create_tags}} and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging your Amazon EC2 resources}.
 
 Linux instances have access to the public key of the key pair at boot.
 You can use this key to provide secure access to the instance. Amazon

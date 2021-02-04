@@ -9,8 +9,10 @@ codecommit_post_comment_reply(inReplyTo, clientRequestToken, content)
 }
 \arguments{
 \item{inReplyTo}{[required] The system-generated ID of the comment to which you want to reply. To
-get this ID, use GetCommentsForComparedCommit or
-GetCommentsForPullRequest.}
+get this ID, use
+\code{\link[=codecommit_get_comments_for_compared_commit]{get_comments_for_compared_commit}}
+or
+\code{\link[=codecommit_get_comments_for_pull_request]{get_comments_for_pull_request}}.}
 
 \item{clientRequestToken}{A unique, client-generated idempotency token that, when provided in a
 request, ensures the request cannot be repeated with a changed

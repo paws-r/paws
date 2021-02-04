@@ -33,7 +33,7 @@ document that is shared with you from another account.
 For SSM documents that are shared with you from other AWS accounts, you
 must specify the complete SSM document ARN, in the following format:
 
-\verb{arn:aws:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> }
+\code{arn:aws:ssm:region:account-id:document/document-name }
 
 For example:
 
@@ -93,9 +93,10 @@ association execution runs successfully, then the association is
 association is \code{NON-COMPLIANT}.
 
 In \code{MANUAL} mode, you must specify the \code{AssociationId} as a parameter
-for the PutComplianceItems API action. In this case, compliance data is
-not managed by State Manager. It is managed by your direct call to the
-PutComplianceItems API action.
+for the \code{\link[=ssm_put_compliance_items]{put_compliance_items}} API action.
+In this case, compliance data is not managed by State Manager. It is
+managed by your direct call to the
+\code{\link[=ssm_put_compliance_items]{put_compliance_items}} API action.
 
 By default, all associations use \code{AUTO} mode.}
 
@@ -120,10 +121,11 @@ Updates an association. You can update the association name and version,
 the document version, schedule, parameters, and Amazon S3 output.
 
 In order to call this API action, your IAM user account, group, or role
-must be configured with permission to call the DescribeAssociation API
-action. If you don't have permission to call DescribeAssociation, then
-you receive the following error:
-\verb{An error occurred (AccessDeniedException) when calling the UpdateAssociation operation: User: &lt;user_arn&gt; is not authorized to perform: ssm:DescribeAssociation on resource: &lt;resource_arn&gt;}
+must be configured with permission to call the
+\code{\link[=ssm_describe_association]{describe_association}} API action. If you
+don't have permission to call DescribeAssociation, then you receive the
+following error:
+\verb{An error occurred (AccessDeniedException) when calling the UpdateAssociation operation: User: <user_arn> is not authorized to perform: ssm:DescribeAssociation on resource: <resource_arn>}
 
 When you update an association, the association immediately runs against
 the specified targets.

@@ -13,7 +13,8 @@ directoryservice_describe_regions(DirectoryId, RegionName, NextToken)
 \item{RegionName}{The name of the Region. For example, \code{us-east-1}.}
 
 \item{NextToken}{The \code{DescribeRegionsResult.NextToken} value from a previous call to
-DescribeRegions. Pass null if this is the first call.}
+\code{\link[=directoryservice_describe_regions]{describe_regions}}. Pass null if
+this is the first call.}
 }
 \description{
 Provides information about the Regions that are configured for

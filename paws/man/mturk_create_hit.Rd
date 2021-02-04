@@ -106,19 +106,21 @@ with values using the HITLayoutParameter structure. For more
 information, see HITLayout.}
 }
 \description{
-The \code{CreateHIT} operation creates a new Human Intelligence Task (HIT).
-The new HIT is made available for Workers to find and accept on the
-Amazon Mechanical Turk website.
+The \code{\link[=mturk_create_hit]{create_hit}} operation creates a new Human
+Intelligence Task (HIT). The new HIT is made available for Workers to
+find and accept on the Amazon Mechanical Turk website.
 
 This operation allows you to specify a new HIT by passing in values for
 the properties of the HIT, such as its title, reward amount and number
-of assignments. When you pass these values to \code{CreateHIT}, a new HIT is
-created for you, with a new \code{HITTypeID}. The HITTypeID can be used to
-create additional HITs in the future without needing to specify common
-parameters such as the title, description and reward amount each time.
+of assignments. When you pass these values to
+\code{\link[=mturk_create_hit]{create_hit}}, a new HIT is created for you, with a
+new \code{HITTypeID}. The HITTypeID can be used to create additional HITs in
+the future without needing to specify common parameters such as the
+title, description and reward amount each time.
 
 An alternative way to create HITs is to first generate a HITTypeID using
-the \code{CreateHITType} operation and then call the \code{CreateHITWithHITType}
+the \code{\link[=mturk_create_hit_type]{create_hit_type}} operation and then call
+the \code{\link[=mturk_create_hit_with_hit_type]{create_hit_with_hit_type}}
 operation. This is the recommended best practice for Requesters who are
 creating large numbers of HITs.
 

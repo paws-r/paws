@@ -22,7 +22,7 @@ Replaces the current set of policies for the specified load balancer
 port with the specified set of policies.
 
 To enable back-end server authentication, use
-SetLoadBalancerPoliciesForBackendServer.
+\code{\link[=elb_set_load_balancer_policies_for_backend_server]{set_load_balancer_policies_for_backend_server}}.
 
 For more information about setting policies, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ssl-config-update.html}{Update the SSL Negotiation Configuration},
 \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration}{Duration-Based Session Stickiness},

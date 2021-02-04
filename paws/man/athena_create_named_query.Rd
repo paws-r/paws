@@ -17,10 +17,11 @@ athena_create_named_query(Name, Description, Database, QueryString,
 \item{QueryString}{[required] The contents of the query with all query statements.}
 
 \item{ClientRequestToken}{A unique case-sensitive string used to ensure the request to create the
-query is idempotent (executes only once). If another \code{CreateNamedQuery}
-request is received, the same response is returned and another query is
-not created. If a parameter has changed, for example, the \code{QueryString},
-an error is returned.
+query is idempotent (executes only once). If another
+\code{\link[=athena_create_named_query]{create_named_query}} request is received,
+the same response is returned and another query is not created. If a
+parameter has changed, for example, the \code{QueryString}, an error is
+returned.
 
 This token is listed as not required because AWS SDKs (for example the
 AWS SDK for Java) auto-generate the token for users. If you are not

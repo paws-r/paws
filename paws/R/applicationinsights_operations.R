@@ -712,19 +712,24 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #' @param EndTime The end time of the event.
 #' @param EventStatus The status of the configuration update event. Possible values include
 #' INFO, WARN, and ERROR.
-#' @param MaxResults The maximum number of results returned by `ListConfigurationHistory` in
-#' paginated output. When this parameter is used,
-#' `ListConfigurationHistory` returns only `MaxResults` in a single page
-#' along with a `NextToken` response element. The remaining results of the
-#' initial request can be seen by sending another
-#' `ListConfigurationHistory` request with the returned `NextToken` value.
-#' If this parameter is not used, then `ListConfigurationHistory` returns
-#' all results.
+#' @param MaxResults The maximum number of results returned by
+#' [`list_configuration_history`][applicationinsights_list_configuration_history]
+#' in paginated output. When this parameter is used,
+#' [`list_configuration_history`][applicationinsights_list_configuration_history]
+#' returns only `MaxResults` in a single page along with a `NextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another
+#' [`list_configuration_history`][applicationinsights_list_configuration_history]
+#' request with the returned `NextToken` value. If this parameter is not
+#' used, then
+#' [`list_configuration_history`][applicationinsights_list_configuration_history]
+#' returns all results.
 #' @param NextToken The `NextToken` value returned from a previous paginated
-#' `ListConfigurationHistory` request where `MaxResults` was used and the
-#' results exceeded the value of that parameter. Pagination continues from
-#' the end of the previous results that returned the `NextToken` value.
-#' This value is `null` when there are no more results to return.
+#' [`list_configuration_history`][applicationinsights_list_configuration_history]
+#' request where `MaxResults` was used and the results exceeded the value
+#' of that parameter. Pagination continues from the end of the previous
+#' results that returned the `NextToken` value. This value is `null` when
+#' there are no more results to return.
 #'
 #' @section Request syntax:
 #' ```
@@ -1162,7 +1167,7 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #' Updates the monitoring configurations for the component. The
 #' configuration input parameter is an escaped JSON of the configuration
 #' and should match the schema of what is returned by
-#' `DescribeComponentConfigurationRecommendation`.
+#' [`describe_component_configuration_recommendation`][applicationinsights_describe_component_configuration_recommendation].
 #'
 #' @usage
 #' applicationinsights_update_component_configuration(ResourceGroupName,
@@ -1178,7 +1183,8 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #' JSON of the configuration. For more information about the JSON format,
 #' see [Working with
 #' JSON](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/working-with-json.html).
-#' You can send a request to `DescribeComponentConfigurationRecommendation`
+#' You can send a request to
+#' [`describe_component_configuration_recommendation`][applicationinsights_describe_component_configuration_recommendation]
 #' to see the recommended configuration for a component. For the complete
 #' format of the component configuration file, see [Component
 #' Configuration](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/component-config.html).

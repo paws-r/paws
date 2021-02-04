@@ -28,8 +28,9 @@ seconds. However, any valid \code{timestamp} format is allowed.}
 the number that you specify for \code{MaxResults}, AWS Firewall Manager
 returns a \code{NextToken} value in the response, which you can use to
 retrieve another group of objects. For the second and subsequent
-\code{GetProtectionStatus} requests, specify the value of \code{NextToken} from
-the previous response to get information about another batch of objects.}
+\code{\link[=fms_get_protection_status]{get_protection_status}} requests, specify
+the value of \code{NextToken} from the previous response to get information
+about another batch of objects.}
 
 \item{MaxResults}{Specifies the number of objects that you want AWS Firewall Manager to
 return for this request. If you have more objects than the number that

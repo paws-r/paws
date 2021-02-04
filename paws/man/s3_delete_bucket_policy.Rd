@@ -18,14 +18,16 @@ different account, the request will fail with an HTTP
 This implementation of the DELETE operation uses the policy subresource
 to delete the policy of a specified bucket. If you are using an identity
 other than the root user of the AWS account that owns the bucket, the
-calling identity must have the \code{DeleteBucketPolicy} permissions on the
+calling identity must have the
+\code{\link[=s3_delete_bucket_policy]{delete_bucket_policy}} permissions on the
 specified bucket and belong to the bucket owner's account to use this
 operation.
 
-If you don't have \code{DeleteBucketPolicy} permissions, Amazon S3 returns a
-\verb{403 Access Denied} error. If you have the correct permissions, but
-you're not using an identity that belongs to the bucket owner's account,
-Amazon S3 returns a \verb{405 Method Not Allowed} error.
+If you don't have \code{\link[=s3_delete_bucket_policy]{delete_bucket_policy}}
+permissions, Amazon S3 returns a \verb{403 Access Denied} error. If you have
+the correct permissions, but you're not using an identity that belongs
+to the bucket owner's account, Amazon S3 returns a
+\verb{405 Method Not Allowed} error.
 
 As a security precaution, the root user of the AWS account that owns a
 bucket can always use this operation, even if the policy explicitly
@@ -34,10 +36,11 @@ denies the root user the ability to perform this action.
 For more information about bucket policies, see Using Bucket Policies
 and UserPolicies.
 
-The following operations are related to \code{DeleteBucketPolicy}
+The following operations are related to
+\code{\link[=s3_delete_bucket_policy]{delete_bucket_policy}}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html}{DeleteObject}
+\item \code{\link[=s3_create_bucket]{create_bucket}}
+\item \code{\link[=s3_delete_object]{delete_object}}
 }
 }
 \section{Request syntax}{

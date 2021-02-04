@@ -33,10 +33,10 @@ has been received across all queues but not deleted.
 (\href{https://en.wikipedia.org/wiki/Unix_time}{epoch time} in
 milliseconds).
 \item \code{MessageDeduplicationId} – Returns the value provided by the
-producer that calls the \verb{<a>SendMessage</a>} action.
+producer that calls the \code{\link[=sqs_send_message]{send_message}} action.
 \item \code{MessageGroupId} – Returns the value provided by the producer that
-calls the \verb{<a>SendMessage</a>} action. Messages with the same
-\code{MessageGroupId} are returned in sequence.
+calls the \code{\link[=sqs_send_message]{send_message}} action. Messages with
+the same \code{MessageGroupId} are returned in sequence.
 \item \code{SequenceNumber} – Returns the value provided by Amazon SQS.
 }}
 
@@ -53,18 +53,18 @@ not have periods in succession (\code{..}).
 \item The name can be up to 256 characters long.
 }
 
-When using \code{ReceiveMessage}, you can send a list of attribute names to
-receive, or you can return all of the attributes by specifying \code{All} or
-\verb{.*} in your request. You can also use all message attributes starting
-with a prefix, for example \verb{bar.*}.}
+When using \code{\link[=sqs_receive_message]{receive_message}}, you can send a list
+of attribute names to receive, or you can return all of the attributes
+by specifying \code{All} or \verb{.*} in your request. You can also use all
+message attributes starting with a prefix, for example \verb{bar.*}.}
 
 \item{MaxNumberOfMessages}{The maximum number of messages to return. Amazon SQS never returns more
 messages than this value (however, fewer messages might be returned).
 Valid values: 1 to 10. Default: 1.}
 
 \item{VisibilityTimeout}{The duration (in seconds) that the received messages are hidden from
-subsequent retrieve requests after being retrieved by a \code{ReceiveMessage}
-request.}
+subsequent retrieve requests after being retrieved by a
+\code{\link[=sqs_receive_message]{receive_message}} request.}
 
 \item{WaitTimeSeconds}{The duration (in seconds) for which the call waits for a message to
 arrive in the queue before returning. If a message is available, the
@@ -73,9 +73,9 @@ and the wait time expires, the call returns successfully with an empty
 list of messages.
 
 To avoid HTTP errors, ensure that the HTTP response timeout for
-\code{ReceiveMessage} requests is longer than the \code{WaitTimeSeconds}
-parameter. For example, with the Java SDK, you can set HTTP transport
-settings using the
+\code{\link[=sqs_receive_message]{receive_message}} requests is longer than the
+\code{WaitTimeSeconds} parameter. For example, with the Java SDK, you can set
+HTTP transport settings using the
 \href{https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/nio/netty/NettyNioAsyncHttpClient.html}{NettyNioAsyncHttpClient}
 for asynchronous clients, or the
 \href{https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/apache/ApacheHttpClient.html}{ApacheHttpClient}
@@ -83,34 +83,39 @@ for synchronous clients.}
 
 \item{ReceiveRequestAttemptId}{This parameter applies only to FIFO (first-in-first-out) queues.
 
-The token used for deduplication of \code{ReceiveMessage} calls. If a
-networking issue occurs after a \code{ReceiveMessage} action, and instead of
-a response you receive a generic error, it is possible to retry the same
-action with an identical \code{ReceiveRequestAttemptId} to retrieve the same
-set of messages, even if their visibility timeout has not yet expired.
+The token used for deduplication of
+\code{\link[=sqs_receive_message]{receive_message}} calls. If a networking issue
+occurs after a \code{\link[=sqs_receive_message]{receive_message}} action, and
+instead of a response you receive a generic error, it is possible to
+retry the same action with an identical \code{ReceiveRequestAttemptId} to
+retrieve the same set of messages, even if their visibility timeout has
+not yet expired.
 \itemize{
 \item You can use \code{ReceiveRequestAttemptId} only for 5 minutes after a
-\code{ReceiveMessage} action.
-\item When you set \code{FifoQueue}, a caller of the \code{ReceiveMessage} action
-can provide a \code{ReceiveRequestAttemptId} explicitly.
-\item If a caller of the \code{ReceiveMessage} action doesn't provide a
-\code{ReceiveRequestAttemptId}, Amazon SQS generates a
+\code{\link[=sqs_receive_message]{receive_message}} action.
+\item When you set \code{FifoQueue}, a caller of the
+\code{\link[=sqs_receive_message]{receive_message}} action can provide a
+\code{ReceiveRequestAttemptId} explicitly.
+\item If a caller of the \code{\link[=sqs_receive_message]{receive_message}} action
+doesn't provide a \code{ReceiveRequestAttemptId}, Amazon SQS generates a
 \code{ReceiveRequestAttemptId}.
-\item It is possible to retry the \code{ReceiveMessage} action with the same
-\code{ReceiveRequestAttemptId} if none of the messages have been modified
-(deleted or had their visibility changes).
+\item It is possible to retry the \code{\link[=sqs_receive_message]{receive_message}}
+action with the same \code{ReceiveRequestAttemptId} if none of the
+messages have been modified (deleted or had their visibility
+changes).
 \item During a visibility timeout, subsequent calls with the same
 \code{ReceiveRequestAttemptId} return the same messages and receipt
 handles. If a retry occurs within the deduplication interval, it
 resets the visibility timeout. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
-If a caller of the \code{ReceiveMessage} action still processes messages
-when the visibility timeout expires and messages become visible,
-another worker consuming from the same queue can receive the same
-messages and therefore process duplicates. Also, if a consumer whose
-message processing time is longer than the visibility timeout tries
-to delete the processed messages, the action fails with an error.
+If a caller of the \code{\link[=sqs_receive_message]{receive_message}} action
+still processes messages when the visibility timeout expires and
+messages become visible, another worker consuming from the same
+queue can receive the same messages and therefore process
+duplicates. Also, if a consumer whose message processing time is
+longer than the visibility timeout tries to delete the processed
+messages, the action fails with an error.
 
 To mitigate this effect, ensure that your application observes a
 safe threshold before the visibility timeout expires and extend the
@@ -119,8 +124,8 @@ visibility timeout as necessary.
 more messages belonging to the same \code{MessageGroupId} are returned
 until the visibility timeout expires. You can still receive messages
 with another \code{MessageGroupId} as long as it is also visible.
-\item If a caller of \code{ReceiveMessage} can't track the
-\code{ReceiveRequestAttemptId}, no retries work until the original
+\item If a caller of \code{\link[=sqs_receive_message]{receive_message}} can't track
+the \code{ReceiveRequestAttemptId}, no retries work until the original
 visibility timeout expires. As a result, delays might occur but the
 messages in the queue remain in a strict order.
 }
@@ -128,7 +133,7 @@ messages in the queue remain in a strict order.
 The maximum length of \code{ReceiveRequestAttemptId} is 128 characters.
 \code{ReceiveRequestAttemptId} can contain alphanumeric characters (\code{a-z},
 \code{A-Z}, \code{0-9}) and punctuation
-(\verb{!\\"#$\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~}).
+(\verb{!\\"#$\%&\\'()*+,-./:;<=>?@\\\[\\\\\]^_\\`\\\{|\\\}~}).
 
 For best practices of using \code{ReceiveRequestAttemptId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html}{Using the ReceiveRequestAttemptId Request Parameter}
 in the \emph{Amazon Simple Queue Service Developer Guide}.}
@@ -140,13 +145,14 @@ more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/la
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
 Short poll is the default behavior where a weighted random set of
-machines is sampled on a \code{ReceiveMessage} call. Thus, only the messages
-on the sampled machines are returned. If the number of messages in the
-queue is small (fewer than 1,000), you most likely get fewer messages
-than you requested per \code{ReceiveMessage} call. If the number of messages
+machines is sampled on a \code{\link[=sqs_receive_message]{receive_message}} call.
+Thus, only the messages on the sampled machines are returned. If the
+number of messages in the queue is small (fewer than 1,000), you most
+likely get fewer messages than you requested per
+\code{\link[=sqs_receive_message]{receive_message}} call. If the number of messages
 in the queue is extremely small, you might not receive any messages in a
-particular \code{ReceiveMessage} response. If this happens, repeat the
-request.
+particular \code{\link[=sqs_receive_message]{receive_message}} response. If this
+happens, repeat the request.
 
 For each message returned, the response includes the following:
 \itemize{

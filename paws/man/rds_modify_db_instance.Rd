@@ -37,7 +37,7 @@ least 10\% greater than the existing value are rounded up so that they
 are 10\% greater than the current value.
 
 For the valid values for allocated storage for each engine, see
-\code{CreateDBInstance}.}
+\code{\link[=rds_create_db_instance]{create_db_instance}}.}
 
 \item{DBInstanceClass}{The new compute and memory capacity of the DB instance, for example,
 \code{db.m4.large}. Not all DB instance classes are available in all AWS
@@ -81,7 +81,8 @@ change is asynchronously applied as soon as possible.
 \strong{Amazon Aurora}
 
 Not applicable. The associated list of EC2 VPC security groups is
-managed by the DB cluster. For more information, see \code{ModifyDBCluster}.
+managed by the DB cluster. For more information, see
+\code{\link[=rds_modify_db_cluster]{modify_db_cluster}}.
 
 Constraints:
 \itemize{
@@ -95,8 +96,9 @@ instance. By default, this parameter is disabled.
 
 If this parameter is disabled, changes to the DB instance are applied
 during the next maintenance window. Some parameter changes can cause an
-outage and are applied on the next call to RebootDBInstance, or the next
-failure reboot. Review the table of parameters in \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html}{Modifying a DB Instance}
+outage and are applied on the next call to
+\code{\link[=rds_reboot_db_instance]{reboot_db_instance}}, or the next failure
+reboot. Review the table of parameters in \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html}{Modifying a DB Instance}
 in the \emph{Amazon RDS User Guide.} to see the impact of enabling or
 disabling \code{ApplyImmediately} for each modified parameter and to
 determine when the changes are applied.}
@@ -113,7 +115,8 @@ response.
 \strong{Amazon Aurora}
 
 Not applicable. The password for the master user is managed by the DB
-cluster. For more information, see \code{ModifyDBCluster}.
+cluster. For more information, see
+\code{\link[=rds_modify_db_cluster]{modify_db_cluster}}.
 
 Default: Uses existing setting
 
@@ -168,7 +171,8 @@ asynchronously applied as soon as possible.
 \strong{Amazon Aurora}
 
 Not applicable. The retention period for automated backups is managed by
-the DB cluster. For more information, see \code{ModifyDBCluster}.
+the DB cluster. For more information, see
+\code{\link[=rds_modify_db_cluster]{modify_db_cluster}}.
 
 Default: Uses existing setting
 
@@ -191,7 +195,8 @@ possible.
 \strong{Amazon Aurora}
 
 Not applicable. The daily time range for creating automated backups is
-managed by the DB cluster. For more information, see \code{ModifyDBCluster}.
+managed by the DB cluster. For more information, see
+\code{\link[=rds_modify_db_cluster]{modify_db_cluster}}.
 
 Constraints:
 \itemize{
@@ -234,8 +239,9 @@ currently in use, a new DB parameter group in the DB parameter group
 family for the new engine version must be specified. The new DB
 parameter group can be the default for that DB parameter group family.
 
-For information about valid engine versions, see \code{CreateDBInstance}, or
-call \code{DescribeDBEngineVersions}.}
+For information about valid engine versions, see
+\code{\link[=rds_create_db_instance]{create_db_instance}}, or call
+\code{\link[=rds_describe_db_engine_versions]{describe_db_engine_versions}}.}
 
 \item{AllowMajorVersionUpgrade}{A value that indicates whether major version upgrades are allowed.
 Changing this parameter doesn't result in an outage and the change is
@@ -366,7 +372,8 @@ snapshots of the DB instance. By default, tags are not copied.
 
 Not applicable. Copying tags to snapshots is managed by the DB cluster.
 Setting this value for an Aurora DB instance has no effect on the DB
-cluster setting. For more information, see \code{ModifyDBCluster}.}
+cluster setting. For more information, see
+\code{\link[=rds_modify_db_cluster]{modify_db_cluster}}.}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB instance. To disable collecting
@@ -567,8 +574,9 @@ in the \emph{AWS Outposts User Guide}.}
 Modifies settings for a DB instance. You can change one or more database
 configuration parameters by specifying these parameters and the new
 values in the request. To learn what modifications you can make to your
-DB instance, call \code{DescribeValidDBInstanceModifications} before you call
-\code{ModifyDBInstance}.
+DB instance, call
+\code{\link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}}
+before you call \code{\link[=rds_modify_db_instance]{modify_db_instance}}.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_db_instance(

@@ -23,10 +23,10 @@ in the \emph{Amazon Route 53 Developer Guide}.
 
 If you're using AWS Cloud Map and you configured Cloud Map to create a
 Route 53 health check when you register an instance, you can't use the
-Route 53 \code{DeleteHealthCheck} command to delete the health check. The
-health check is deleted automatically when you deregister the instance;
-there can be a delay of several hours before the health check is deleted
-from Route 53.
+Route 53 \code{\link[=route53_delete_health_check]{delete_health_check}} command to
+delete the health check. The health check is deleted automatically when
+you deregister the instance; there can be a delay of several hours
+before the health check is deleted from Route 53.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_health_check(

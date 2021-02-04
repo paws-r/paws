@@ -15,18 +15,20 @@ returned. If set to \code{False}, analysis data is returned from smaller time
 windows (for example, one hour).}
 
 \item{maxResults}{The maximum number of results returned by
-\code{ GetFindingsReportAccountSummary} in paginated output. When this
-parameter is used, \code{GetFindingsReportAccountSummary} only returns
-\code{maxResults} results in a single page along with a \code{nextToken} response
-element. The remaining results of the initial request can be seen by
-sending another \code{GetFindingsReportAccountSummary} request with the
-returned \code{nextToken} value.}
+\code{\link[=codeguruprofiler_get_findings_report_account_summary]{get_findings_report_account_summary}}
+in paginated output. When this parameter is used,
+\code{\link[=codeguruprofiler_get_findings_report_account_summary]{get_findings_report_account_summary}}
+only returns \code{maxResults} results in a single page along with a
+\code{nextToken} response element. The remaining results of the initial
+request can be seen by sending another
+\code{\link[=codeguruprofiler_get_findings_report_account_summary]{get_findings_report_account_summary}}
+request with the returned \code{nextToken} value.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{GetFindingsReportAccountSummary} request where \code{maxResults} was used
-and the results exceeded the value of that parameter. Pagination
-continues from the end of the previous results that returned the
-\code{nextToken} value.
+\code{\link[=codeguruprofiler_get_findings_report_account_summary]{get_findings_report_account_summary}}
+request where \code{maxResults} was used and the results exceeded the value
+of that parameter. Pagination continues from the end of the previous
+results that returned the \code{nextToken} value.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic

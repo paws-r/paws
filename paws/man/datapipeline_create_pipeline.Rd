@@ -15,14 +15,17 @@ assigns each pipeline a unique pipeline identifier.}
 identifier assigned by AWS Data Pipeline. You are responsible for
 defining the format and ensuring the uniqueness of this identifier. You
 use this parameter to ensure idempotency during repeated calls to
-\code{CreatePipeline}. For example, if the first call to \code{CreatePipeline}
-does not succeed, you can pass in the same unique identifier and
-pipeline name combination on a subsequent call to \code{CreatePipeline}.
-\code{CreatePipeline} ensures that if a pipeline already exists with the same
-name and unique identifier, a new pipeline is not created. Instead,
-you'll receive the pipeline identifier from the previous attempt. The
-uniqueness of the name and unique identifier combination is scoped to
-the AWS account or IAM user credentials.}
+\code{\link[=datapipeline_create_pipeline]{create_pipeline}}. For example, if the
+first call to \code{\link[=datapipeline_create_pipeline]{create_pipeline}} does not
+succeed, you can pass in the same unique identifier and pipeline name
+combination on a subsequent call to
+\code{\link[=datapipeline_create_pipeline]{create_pipeline}}.
+\code{\link[=datapipeline_create_pipeline]{create_pipeline}} ensures that if a
+pipeline already exists with the same name and unique identifier, a new
+pipeline is not created. Instead, you'll receive the pipeline identifier
+from the previous attempt. The uniqueness of the name and unique
+identifier combination is scoped to the AWS account or IAM user
+credentials.}
 
 \item{description}{The description for the pipeline.}
 
@@ -31,8 +34,9 @@ control access to pipelines. For more information, see \href{https://docs.aws.am
 in the \emph{AWS Data Pipeline Developer Guide}.}
 }
 \description{
-Creates a new, empty pipeline. Use PutPipelineDefinition to populate the
-pipeline.
+Creates a new, empty pipeline. Use
+\code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}} to
+populate the pipeline.
 }
 \section{Request syntax}{
 \preformatted{svc$create_pipeline(

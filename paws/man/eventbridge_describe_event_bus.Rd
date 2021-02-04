@@ -18,9 +18,10 @@ partner event buses, it displays the name, ARN, policy, state, and
 creation time.
 
 To enable your account to receive events from other accounts on its
-default event bus, use PutPermission.
+default event bus, use \code{\link[=eventbridge_put_permission]{put_permission}}.
 
-For more information about partner event buses, see CreateEventBus.
+For more information about partner event buses, see
+\code{\link[=eventbridge_create_event_bus]{create_event_bus}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_event_bus(

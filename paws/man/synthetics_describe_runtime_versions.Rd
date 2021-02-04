@@ -8,12 +8,14 @@ synthetics_describe_runtime_versions(NextToken, MaxResults)
 }
 \arguments{
 \item{NextToken}{A token that indicates that there is more data available. You can use
-this token in a subsequent \code{DescribeRuntimeVersions} operation to
-retrieve the next set of results.}
+this token in a subsequent
+\code{\link[=synthetics_describe_runtime_versions]{describe_runtime_versions}}
+operation to retrieve the next set of results.}
 
 \item{MaxResults}{Specify this parameter to limit how many runs are returned each time you
-use the \code{DescribeRuntimeVersions} operation. If you omit this parameter,
-the default of 100 is used.}
+use the
+\code{\link[=synthetics_describe_runtime_versions]{describe_runtime_versions}}
+operation. If you omit this parameter, the default of 100 is used.}
 }
 \description{
 Returns a list of Synthetics canary runtime versions. For more

@@ -23,8 +23,8 @@ account is no longer charged for any expenses accrued by the member
 account after it's removed from the organization.
 
 This operation can be called only from the organization's management
-account. Member accounts can remove themselves with LeaveOrganization
-instead.
+account. Member accounts can remove themselves with
+\code{\link[=organizations_leave_organization]{leave_organization}} instead.
 \itemize{
 \item You can remove an account from your organization only if the account
 is configured with the information required to operate as a

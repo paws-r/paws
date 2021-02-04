@@ -20,7 +20,7 @@ in the \emph{AWS IoT SiteWise User Guide}.
 
 You can't delete an asset that's associated to another asset. For more
 information, see
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DisassociateAssets.html}{DisassociateAssets}.
+\code{\link[=iotsitewise_disassociate_assets]{disassociate_assets}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_asset(

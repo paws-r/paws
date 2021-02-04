@@ -27,7 +27,9 @@ month remaining in the Reserved Instance term.}
 Creates a listing for Amazon EC2 Standard Reserved Instances to be sold
 in the Reserved Instance Marketplace. You can submit one Standard
 Reserved Instance listing at a time. To get a list of your Standard
-Reserved Instances, you can use the DescribeReservedInstances operation.
+Reserved Instances, you can use the
+\code{\link[=ec2_describe_reserved_instances]{describe_reserved_instances}}
+operation.
 
 Only Standard Reserved Instances can be sold in the Reserved Instance
 Marketplace. Convertible Reserved Instances cannot be sold.
@@ -45,7 +47,8 @@ listing of some or all of your Standard Reserved Instances, and specify
 the upfront price to receive for them. Your Standard Reserved Instance
 listings then become available for purchase. To view the details of your
 Standard Reserved Instance listing, you can use the
-DescribeReservedInstancesListings operation.
+\code{\link[=ec2_describe_reserved_instances_listings]{describe_reserved_instances_listings}}
+operation.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

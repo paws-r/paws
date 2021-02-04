@@ -64,20 +64,28 @@ training.}
 }
 \description{
 Creates a \code{DataSource} object from an \href{https://aws.amazon.com/rds/}{Amazon Relational Database Service} (Amazon RDS). A \code{DataSource}
-references data that can be used to perform \code{CreateMLModel},
-\code{CreateEvaluation}, or \code{CreateBatchPrediction} operations.
+references data that can be used to perform
+\code{\link[=machinelearning_create_ml_model]{create_ml_model}},
+\code{\link[=machinelearning_create_evaluation]{create_evaluation}}, or
+\code{\link[=machinelearning_create_batch_prediction]{create_batch_prediction}}
+operations.
 
-\code{CreateDataSourceFromRDS} is an asynchronous operation. In response to
-\code{CreateDataSourceFromRDS}, Amazon Machine Learning (Amazon ML)
-immediately returns and sets the \code{DataSource} status to \code{PENDING}. After
-the \code{DataSource} is created and ready for use, Amazon ML sets the
-\code{Status} parameter to \code{COMPLETED}. \code{DataSource} in the \code{COMPLETED} or
-\code{PENDING} state can be used only to perform \verb{&gt;CreateMLModel}>,
-\code{CreateEvaluation}, or \code{CreateBatchPrediction} operations.
+\code{\link[=machinelearning_create_data_source_from_rds]{create_data_source_from_rds}}
+is an asynchronous operation. In response to
+\code{\link[=machinelearning_create_data_source_from_rds]{create_data_source_from_rds}},
+Amazon Machine Learning (Amazon ML) immediately returns and sets the
+\code{DataSource} status to \code{PENDING}. After the \code{DataSource} is created and
+ready for use, Amazon ML sets the \code{Status} parameter to \code{COMPLETED}.
+\code{DataSource} in the \code{COMPLETED} or \code{PENDING} state can be used only to
+perform \verb{>CreateMLModel}>,
+\code{\link[=machinelearning_create_evaluation]{create_evaluation}}, or
+\code{\link[=machinelearning_create_batch_prediction]{create_batch_prediction}}
+operations.
 
 If Amazon ML cannot accept the input source, it sets the \code{Status}
 parameter to \code{FAILED} and includes an error message in the \code{Message}
-attribute of the \code{GetDataSource} operation response.
+attribute of the \code{\link[=machinelearning_get_data_source]{get_data_source}}
+operation response.
 }
 \section{Request syntax}{
 \preformatted{svc$create_data_source_from_rds(

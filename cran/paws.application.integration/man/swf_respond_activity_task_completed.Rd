@@ -25,16 +25,20 @@ The \code{result} appears in the \code{ActivityTaskCompleted} event in the
 workflow history.
 
 If the requested task doesn't complete successfully, use
-RespondActivityTaskFailed instead. If the worker finds that the task is
-canceled through the \code{canceled} flag returned by
-RecordActivityTaskHeartbeat, it should cancel the task, clean up and
-then call RespondActivityTaskCanceled.
+\code{\link[=swf_respond_activity_task_failed]{respond_activity_task_failed}}
+instead. If the worker finds that the task is canceled through the
+\code{canceled} flag returned by
+\code{\link[=swf_record_activity_task_heartbeat]{record_activity_task_heartbeat}},
+it should cancel the task, clean up and then call
+\code{\link[=swf_respond_activity_task_canceled]{respond_activity_task_canceled}}.
 
 A task is considered open from the time that it is scheduled until it is
 closed. Therefore a task is reported as open while a worker is
 processing it. A task is closed after it has been specified in a call to
-RespondActivityTaskCompleted, RespondActivityTaskCanceled,
-RespondActivityTaskFailed, or the task has \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types}{timed out}.
+RespondActivityTaskCompleted,
+\code{\link[=swf_respond_activity_task_canceled]{respond_activity_task_canceled}},
+\code{\link[=swf_respond_activity_task_failed]{respond_activity_task_failed}}, or
+the task has \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types}{timed out}.
 
 \strong{Access Control}
 

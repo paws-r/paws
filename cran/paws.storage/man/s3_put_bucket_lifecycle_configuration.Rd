@@ -28,7 +28,7 @@ combination of both. Accordingly, this section describes the latest API.
 The previous version of the API supported filtering based only on an
 object key name prefix, which is supported for backward compatibility.
 For the related API description, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html}{PutBucketLifecycle}.
+\code{\link[=s3_put_bucket_lifecycle]{put_bucket_lifecycle}}.
 
 \strong{Rules}
 
@@ -74,11 +74,12 @@ permissions for the following actions:
 
 For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
-The following are related to \code{PutBucketLifecycleConfiguration}:
+The following are related to
+\code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-configuration-examples.html}{Examples of Lifecycle Configuration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html}{GetBucketLifecycleConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html}{DeleteBucketLifecycle}
+\item \code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
+\item \code{\link[=s3_delete_bucket_lifecycle]{delete_bucket_lifecycle}}
 }
 }
 \section{Request syntax}{

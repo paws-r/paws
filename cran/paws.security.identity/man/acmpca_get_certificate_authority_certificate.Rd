@@ -10,7 +10,7 @@ acmpca_get_certificate_authority_certificate(CertificateAuthorityArn)
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of your private CA. This is of the form:
 
-\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
+\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 }
 \description{
 Retrieves the certificate and certificate chain for your private

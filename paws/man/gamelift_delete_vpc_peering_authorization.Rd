@@ -20,14 +20,14 @@ Management Console. Learn more about VPC peering in \href{https://docs.aws.amazo
 \description{
 Cancels a pending VPC peering authorization for the specified VPC. If
 you need to delete an existing VPC peering connection, call
-DeleteVpcPeeringConnection.
+\code{\link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection}}.
 \itemize{
-\item CreateVpcPeeringAuthorization
-\item DescribeVpcPeeringAuthorizations
-\item DeleteVpcPeeringAuthorization
-\item CreateVpcPeeringConnection
-\item DescribeVpcPeeringConnections
-\item DeleteVpcPeeringConnection
+\item \code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}
+\item \code{\link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations}}
+\item \code{\link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization}}
+\item \code{\link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection}}
+\item \code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
+\item \code{\link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection}}
 }
 }
 \section{Request syntax}{

@@ -14,11 +14,12 @@ Deletes the specified AWS Config rule and all of its evaluation results.
 
 AWS Config sets the state of a rule to \code{DELETING} until the deletion is
 complete. You cannot update a rule while it is in this state. If you
-make a \code{PutConfigRule} or \code{DeleteConfigRule} request for the rule, you
-will receive a \code{ResourceInUseException}.
+make a \code{\link[=configservice_put_config_rule]{put_config_rule}} or
+\code{\link[=configservice_delete_config_rule]{delete_config_rule}} request for the
+rule, you will receive a \code{ResourceInUseException}.
 
-You can check the state of a rule by using the \code{DescribeConfigRules}
-request.
+You can check the state of a rule by using the
+\code{\link[=configservice_describe_config_rules]{describe_config_rules}} request.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_config_rule(

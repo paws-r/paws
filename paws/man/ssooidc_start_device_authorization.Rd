@@ -10,10 +10,11 @@ ssooidc_start_device_authorization(clientId, clientSecret, startUrl)
 \arguments{
 \item{clientId}{[required] The unique identifier string for the client that is registered with AWS
 SSO. This value should come from the persisted result of the
-RegisterClient API operation.}
+\code{\link[=ssooidc_register_client]{register_client}} API operation.}
 
 \item{clientSecret}{[required] A secret string that is generated for the client. This value should come
-from the persisted result of the RegisterClient API operation.}
+from the persisted result of the
+\code{\link[=ssooidc_register_client]{register_client}} API operation.}
 
 \item{startUrl}{[required] The URL for the AWS SSO user portal. For more information, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html}{Using the User Portal}
 in the \emph{AWS Single Sign-On User Guide}.}

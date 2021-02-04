@@ -37,9 +37,11 @@ are developer-defined key-value pairs. Tagging AWS resources are useful
 for resource management, access management and cost allocation. For more
 information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
 in the \emph{AWS General Reference}. Once the resource is created, you can
-use TagResource, UntagResource, and ListTagsForResource to add, remove,
-and view tags. The maximum tag limit may be lower than stated. See the
-AWS General Reference for actual tagging limits.}
+use \code{\link[=gamelift_tag_resource]{tag_resource}},
+\code{\link[=gamelift_untag_resource]{untag_resource}}, and
+\code{\link[=gamelift_list_tags_for_resource]{list_tags_for_resource}} to add,
+remove, and view tags. The maximum tag limit may be lower than stated.
+See the AWS General Reference for actual tagging limits.}
 }
 \description{
 Establishes a new queue for processing requests to place new game
@@ -47,8 +49,9 @@ sessions. A queue identifies where new game sessions can be hosted -- by
 specifying a list of destinations (fleets or aliases) -- and how long
 requests can wait in the queue before timing out. You can set up a queue
 to try to place game sessions on fleets in multiple Regions. To add
-placement requests to a queue, call StartGameSessionPlacement and
-reference the queue name.
+placement requests to a queue, call
+\code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+and reference the queue name.
 
 \strong{Destination order.} When processing a request for a game session,
 Amazon GameLift tries each destination in order until it finds one with
@@ -83,10 +86,10 @@ a new queue object is returned.
 
 \strong{Related operations}
 \itemize{
-\item CreateGameSessionQueue
-\item DescribeGameSessionQueues
-\item UpdateGameSessionQueue
-\item DeleteGameSessionQueue
+\item \code{\link[=gamelift_create_game_session_queue]{create_game_session_queue}}
+\item \code{\link[=gamelift_describe_game_session_queues]{describe_game_session_queues}}
+\item \code{\link[=gamelift_update_game_session_queue]{update_game_session_queue}}
+\item \code{\link[=gamelift_delete_game_session_queue]{delete_game_session_queue}}
 }
 }
 \section{Request syntax}{

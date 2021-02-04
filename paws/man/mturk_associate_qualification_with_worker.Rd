@@ -22,21 +22,28 @@ saying that the qualification was assigned to the Worker. Note: this is
 true by default.}
 }
 \description{
-The \code{AssociateQualificationWithWorker} operation gives a Worker a
-Qualification. \code{AssociateQualificationWithWorker} does not require that
-the Worker submit a Qualification request. It gives the Qualification
-directly to the Worker.
+The
+\code{\link[=mturk_associate_qualification_with_worker]{associate_qualification_with_worker}}
+operation gives a Worker a Qualification.
+\code{\link[=mturk_associate_qualification_with_worker]{associate_qualification_with_worker}}
+does not require that the Worker submit a Qualification request. It
+gives the Qualification directly to the Worker.
 
 You can only assign a Qualification of a Qualification type that you
-created (using the \code{CreateQualificationType} operation).
+created (using the
+\code{\link[=mturk_create_qualification_type]{create_qualification_type}}
+operation).
 
-Note: \code{AssociateQualificationWithWorker} does not affect any pending
-Qualification requests for the Qualification by the Worker. If you
-assign a Qualification to a Worker, then later grant a Qualification
-request made by the Worker, the granting of the request may modify the
-Qualification score. To resolve a pending Qualification request without
-affecting the Qualification the Worker already has, reject the request
-with the \code{RejectQualificationRequest} operation.
+Note:
+\code{\link[=mturk_associate_qualification_with_worker]{associate_qualification_with_worker}}
+does not affect any pending Qualification requests for the Qualification
+by the Worker. If you assign a Qualification to a Worker, then later
+grant a Qualification request made by the Worker, the granting of the
+request may modify the Qualification score. To resolve a pending
+Qualification request without affecting the Qualification the Worker
+already has, reject the request with the
+\code{\link[=mturk_reject_qualification_request]{reject_qualification_request}}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_qualification_with_worker(

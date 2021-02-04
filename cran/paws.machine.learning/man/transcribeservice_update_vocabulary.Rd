@@ -28,9 +28,10 @@ in the \emph{Amazon S3 Developer Guide}.
 For more information about custom vocabularies, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary}{Custom Vocabularies}.}
 }
 \description{
-Updates an existing vocabulary with new values. The \code{UpdateVocabulary}
-operation overwrites all of the existing information with the values
-that you provide in the request.
+Updates an existing vocabulary with new values. The
+\code{\link[=transcribeservice_update_vocabulary]{update_vocabulary}} operation
+overwrites all of the existing information with the values that you
+provide in the request.
 }
 \section{Request syntax}{
 \preformatted{svc$update_vocabulary(

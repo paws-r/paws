@@ -27,7 +27,8 @@ Valid Values:
 
 \item{EngineVersion}{[required] The version number of the database engine to use.
 
-For a list of valid engine versions, call DescribeDBEngineVersions.
+For a list of valid engine versions, call
+\code{\link[=rds_describe_db_engine_versions]{describe_db_engine_versions}}.
 
 The following are the database engines and links to information about
 the major and minor versions. The list only includes DB engines that

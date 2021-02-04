@@ -17,7 +17,7 @@ you must specify the name and the x-amz-outpost-id as well.
 
 For using this parameter with S3 on Outposts with the AWS SDK and CLI,
 you must specify the ARN of the bucket accessed in the format
-\verb{arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/bucket/&lt;my-bucket-name&gt;}.
+\verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/bucket/<my-bucket-name>}.
 For example, to access the bucket \code{reports} through outpost \code{my-outpost}
 owned by account \code{123456789012} in Region \code{us-west-2}, use the URL
 encoding of
@@ -27,7 +27,7 @@ The value must be URL encoded.}
 \description{
 This operation gets an Amazon S3 on Outposts bucket's lifecycle
 configuration. To get an S3 bucket's lifecycle configuration, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html}{GetBucketLifecycleConfiguration}
+\code{\link[=s3control_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
 in the \emph{Amazon Simple Storage Service API}.
 
 Returns the lifecycle configuration information set on the Outposts
@@ -51,7 +51,8 @@ derived using the access point ARN, see the
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html#API_control_GetBucketLifecycleConfiguration_Examples}{Examples}
 section.
 
-\code{GetBucketLifecycleConfiguration} has the following special error:
+\code{\link[=s3control_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
+has the following special error:
 \itemize{
 \item Error code: \code{NoSuchLifecycleConfiguration}
 \itemize{
@@ -61,10 +62,11 @@ section.
 }
 }
 
-The following actions are related to \code{GetBucketLifecycleConfiguration}:
+The following actions are related to
+\code{\link[=s3control_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketLifecycleConfiguration.html}{PutBucketLifecycleConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketLifecycleConfiguration.html}{DeleteBucketLifecycleConfiguration}
+\item \code{\link[=s3control_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}
+\item \code{\link[=s3control_delete_bucket_lifecycle_configuration]{delete_bucket_lifecycle_configuration}}
 }
 }
 \section{Request syntax}{

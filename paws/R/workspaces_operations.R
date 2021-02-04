@@ -161,7 +161,7 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 #' and to see the AWS account ID that owns an image, use the
 #' [DescribeWorkSpaceImages](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImages.html)
 #' and
-#' [DescribeWorkspaceImagePermissions](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImagePermissions.html)
+#' [`describe_workspace_image_permissions`][workspaces_describe_workspace_image_permissions]
 #' API operations.
 #'
 #' @usage
@@ -274,7 +274,8 @@ workspaces_create_connection_alias <- function(ConnectionString, Tags = NULL) {
 #' IP addresses from which users are allowed to access their WorkSpaces. To
 #' specify the CIDR address ranges, add rules to your IP access control
 #' group and then associate the group with your directory. You can add
-#' rules when you create the group or at any time using AuthorizeIpRules.
+#' rules when you create the group or at any time using
+#' [`authorize_ip_rules`][workspaces_authorize_ip_rules].
 #' 
 #' There is a default IP access control group associated with your
 #' directory. If you don't associate an IP access control group with your
@@ -1212,9 +1213,11 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #' @param WorkspaceIds The identifiers of the WorkSpaces. You cannot combine this parameter
 #' with any other filter.
 #' 
-#' Because the CreateWorkspaces operation is asynchronous, the identifier
-#' it returns is not immediately available. If you immediately call
-#' DescribeWorkspaces with this identifier, no information is returned.
+#' Because the [`create_workspaces`][workspaces_create_workspaces]
+#' operation is asynchronous, the identifier it returns is not immediately
+#' available. If you immediately call
+#' [`describe_workspaces`][workspaces_describe_workspaces] with this
+#' identifier, no information is returned.
 #' @param DirectoryId The identifier of the directory. In addition, you can optionally specify
 #' a specific directory user (see `UserName`). You cannot combine this
 #' parameter with any other filter.
@@ -1596,7 +1599,8 @@ workspaces_migrate_workspace <- function(SourceWorkspaceId, BundleId) {
 #' compatible with your network and in CIDR notation (that is, specify the
 #' range as an IPv4 CIDR block). The CIDR block size must be /16 (for
 #' example, 203.0.113.25/16). It must also be specified as available by the
-#' `ListAvailableManagementCidrRanges` operation.
+#' [`list_available_management_cidr_ranges`][workspaces_list_available_management_cidr_ranges]
+#' operation.
 #'
 #' @section Request syntax:
 #' ```

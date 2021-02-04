@@ -109,19 +109,21 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' For basic use cases, you can use a randomly generated UUID for the
 #' creation token.
 #' 
-#' The idempotent operation allows you to retry a `CreateFileSystem` call
-#' without risk of creating an extra file system. This can happen when an
-#' initial call fails in a way that leaves it uncertain whether or not a
-#' file system was actually created. An example might be that a transport
-#' level timeout occurred or your connection was reset. As long as you use
-#' the same creation token, if the initial call had succeeded in creating a
-#' file system, the client can learn of its existence from the
+#' The idempotent operation allows you to retry a
+#' [`create_file_system`][efs_create_file_system] call without risk of
+#' creating an extra file system. This can happen when an initial call
+#' fails in a way that leaves it uncertain whether or not a file system was
+#' actually created. An example might be that a transport level timeout
+#' occurred or your connection was reset. As long as you use the same
+#' creation token, if the initial call had succeeded in creating a file
+#' system, the client can learn of its existence from the
 #' `FileSystemAlreadyExists` error.
 #' 
-#' The `CreateFileSystem` call returns while the file system's lifecycle
-#' state is still `creating`. You can check the file system creation status
-#' by calling the DescribeFileSystems operation, which among other things
-#' returns the file system state.
+#' The [`create_file_system`][efs_create_file_system] call returns while
+#' the file system's lifecycle state is still `creating`. You can check the
+#' file system creation status by calling the
+#' [`describe_file_systems`][efs_describe_file_systems] operation, which
+#' among other things returns the file system state.
 #' 
 #' This operation also takes an optional `PerformanceMode` parameter that
 #' you choose for your file system. We recommend `generalPurpose`
@@ -136,9 +138,9 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' After the file system is fully created, Amazon EFS sets its lifecycle
 #' state to `available`, at which point you can create one or more mount
 #' targets for the file system in your VPC. For more information, see
-#' CreateMountTarget. You mount your Amazon EFS file system on an EC2
-#' instances in your VPC by using the mount target. For more information,
-#' see [Amazon EFS: How it
+#' [`create_mount_target`][efs_create_mount_target]. You mount your Amazon
+#' EFS file system on an EC2 instances in your VPC by using the mount
+#' target. For more information, see [Amazon EFS: How it
 #' Works](https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html).
 #' 
 #' This operation requires permissions for the
@@ -277,7 +279,8 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #' 
 #' In the request, you also specify a file system ID for which you are
 #' creating the mount target and the file system's lifecycle state must be
-#' `available`. For more information, see DescribeFileSystems.
+#' `available`. For more information, see
+#' [`describe_file_systems`][efs_describe_file_systems].
 #' 
 #' In the request, you also provide a subnet ID, which determines the
 #' following:
@@ -328,9 +331,8 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #'         to the default security group for the subnet's VPC.
 #' 
 #'     -   Assigns the description
-#'         `Mount target <i>fsmt-id</i> for file system <i>fs-id</i> `
-#'         where ` <i>fsmt-id</i> ` is the mount target ID, and
-#'         ` <i>fs-id</i> ` is the `FileSystemId`.
+#'         `Mount target fsmt-id for file system fs-id ` where ` fsmt-id `
+#'         is the mount target ID, and ` fs-id ` is the `FileSystemId`.
 #' 
 #'     -   Sets the `requesterManaged` property of the network interface to
 #'         `true`, and the `requesterId` value to `EFS`.
@@ -340,13 +342,13 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #'     Amazon EFS sets the `NetworkInterfaceId` field in the mount target's
 #'     description to the network interface ID, and the `IpAddress` field
 #'     to its address. If network interface creation fails, the entire
-#'     `CreateMountTarget` operation fails.
+#'     [`create_mount_target`][efs_create_mount_target] operation fails.
 #' 
-#' The `CreateMountTarget` call returns only after creating the network
-#' interface, but while the mount target state is still `creating`, you can
-#' check the mount target creation status by calling the
-#' DescribeMountTargets operation, which among other things returns the
-#' mount target state.
+#' The [`create_mount_target`][efs_create_mount_target] call returns only
+#' after creating the network interface, but while the mount target state
+#' is still `creating`, you can check the mount target creation status by
+#' calling the [`describe_mount_targets`][efs_describe_mount_targets]
+#' operation, which among other things returns the mount target state.
 #' 
 #' We recommend that you create a mount target in each of the Availability
 #' Zones. There are cost considerations for using a file system in an
@@ -430,8 +432,8 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
 #' key-value pair. If a tag key specified in the request already exists on
 #' the file system, this operation overwrites its value with the value
 #' provided in the request. If you add the `Name` tag to your file system,
-#' Amazon EFS returns it in the response to the DescribeFileSystems
-#' operation.
+#' Amazon EFS returns it in the response to the
+#' [`describe_file_systems`][efs_describe_file_systems] operation.
 #' 
 #' This operation requires permission for the
 #' `elasticfilesystem:CreateTags` action.
@@ -542,13 +544,16 @@ efs_delete_access_point <- function(AccessPointId) {
 #' 
 #' You can't delete a file system that is in use. That is, if the file
 #' system has any mount targets, you must first delete them. For more
-#' information, see DescribeMountTargets and DeleteMountTarget.
+#' information, see [`describe_mount_targets`][efs_describe_mount_targets]
+#' and [`delete_mount_target`][efs_delete_mount_target].
 #' 
-#' The `DeleteFileSystem` call returns while the file system state is still
-#' `deleting`. You can check the file system deletion status by calling the
-#' DescribeFileSystems operation, which returns a list of file systems in
-#' your account. If you pass file system ID or creation token for the
-#' deleted file system, the DescribeFileSystems returns a
+#' The [`delete_file_system`][efs_delete_file_system] call returns while
+#' the file system state is still `deleting`. You can check the file system
+#' deletion status by calling the
+#' [`describe_file_systems`][efs_describe_file_systems] operation, which
+#' returns a list of file systems in your account. If you pass file system
+#' ID or creation token for the deleted file system, the
+#' [`describe_file_systems`][efs_describe_file_systems] returns a
 #' `404 FileSystemNotFound` error.
 #' 
 #' This operation requires permissions for the
@@ -659,10 +664,11 @@ efs_delete_file_system_policy <- function(FileSystemId) {
 #' 
 #' -   `elasticfilesystem:DeleteMountTarget`
 #' 
-#' The `DeleteMountTarget` call returns while the mount target state is
-#' still `deleting`. You can check the mount target deletion by calling the
-#' DescribeMountTargets operation, which returns a list of mount target
-#' descriptions for the given file system.
+#' The [`delete_mount_target`][efs_delete_mount_target] call returns while
+#' the mount target state is still `deleting`. You can check the mount
+#' target deletion by calling the
+#' [`describe_mount_targets`][efs_describe_mount_targets] operation, which
+#' returns a list of mount target descriptions for the given file system.
 #' 
 #' The operation also requires permissions for the following Amazon EC2
 #' action on the mount target's network interface:
@@ -712,10 +718,10 @@ efs_delete_mount_target <- function(MountTargetId) {
 #' Deletes the specified tags from a file system
 #'
 #' @description
-#' Deletes the specified tags from a file system. If the `DeleteTags`
-#' request includes a tag key that doesn't exist, Amazon EFS ignores it and
-#' doesn't cause an error. For more information about tags and related
-#' restrictions, see [Tag
+#' Deletes the specified tags from a file system. If the
+#' [`delete_tags`][efs_delete_tags] request includes a tag key that doesn't
+#' exist, Amazon EFS ignores it and doesn't cause an error. For more
+#' information about tags and related restrictions, see [Tag
 #' Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 #' in the *AWS Billing and Cost Management User Guide*.
 #' 
@@ -923,14 +929,16 @@ efs_describe_file_system_policy <- function(FileSystemId) {
 #' of `NextMarker`.
 #' 
 #' To retrieve a list of your file system descriptions, this operation is
-#' used in an iterative process, where `DescribeFileSystems` is called
-#' first without the `Marker` and then the operation continues to call it
-#' with the `Marker` parameter set to the value of the `NextMarker` from
-#' the previous response until the response has no `NextMarker`.
+#' used in an iterative process, where
+#' [`describe_file_systems`][efs_describe_file_systems] is called first
+#' without the `Marker` and then the operation continues to call it with
+#' the `Marker` parameter set to the value of the `NextMarker` from the
+#' previous response until the response has no `NextMarker`.
 #' 
 #' The order of file systems returned in the response of one
-#' `DescribeFileSystems` call and the order of file systems returned across
-#' the responses of a multi-call iteration is unspecified.
+#' [`describe_file_systems`][efs_describe_file_systems] call and the order
+#' of file systems returned across the responses of a multi-call iteration
+#' is unspecified.
 #' 
 #' This operation requires permissions for the
 #' `elasticfilesystem:DescribeFileSystems` action.
@@ -943,8 +951,9 @@ efs_describe_file_system_policy <- function(FileSystemId) {
 #' response is paginated at 100 per page if you have more than 100 file
 #' systems.
 #' @param Marker (Optional) Opaque pagination token returned from a previous
-#' `DescribeFileSystems` operation (String). If present, specifies to
-#' continue the list from where the returning call had left off.
+#' [`describe_file_systems`][efs_describe_file_systems] operation (String).
+#' If present, specifies to continue the list from where the returning call
+#' had left off.
 #' @param CreationToken (Optional) Restricts the list to the file system with this creation
 #' token (String). You specify a creation token when you create an Amazon
 #' EFS file system.
@@ -1124,8 +1133,9 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
 #' ignored. The response is paginated at 100 per page if you have more than
 #' 100 mount targets.
 #' @param Marker (Optional) Opaque pagination token returned from a previous
-#' `DescribeMountTargets` operation (String). If present, it specifies to
-#' continue the list from where the previous returning call left off.
+#' [`describe_mount_targets`][efs_describe_mount_targets] operation
+#' (String). If present, it specifies to continue the list from where the
+#' previous returning call left off.
 #' @param FileSystemId (Optional) ID of the file system whose mount targets you want to list
 #' (String). It must be included in your request if an `AccessPointId` or
 #' `MountTargetId` is not included. Accepts either a file system ID or ARN
@@ -1181,9 +1191,9 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
 #'
 #' @description
 #' Returns the tags associated with a file system. The order of tags
-#' returned in the response of one `DescribeTags` call and the order of
-#' tags returned across the responses of a multiple-call iteration (when
-#' using pagination) is unspecified.
+#' returned in the response of one [`describe_tags`][efs_describe_tags]
+#' call and the order of tags returned across the responses of a
+#' multiple-call iteration (when using pagination) is unspecified.
 #' 
 #' This operation requires permissions for the
 #' `elasticfilesystem:DescribeTags` action.
@@ -1196,8 +1206,8 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
 #' values are ignored. The response is paginated at 100 per page if you
 #' have more than 100 tags.
 #' @param Marker (Optional) An opaque pagination token returned from a previous
-#' `DescribeTags` operation (String). If present, it specifies to continue
-#' the list from where the previous call left off.
+#' [`describe_tags`][efs_describe_tags] operation (String). If present, it
+#' specifies to continue the list from where the previous call left off.
 #' @param FileSystemId &#91;required&#93; The ID of the file system whose tag set you want to retrieve.
 #'
 #' @section Request syntax:
@@ -1292,7 +1302,8 @@ efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken 
 #' Modifies the set of security groups in effect for a mount target.
 #' 
 #' When you create a mount target, Amazon EFS also creates a new network
-#' interface. For more information, see CreateMountTarget. This operation
+#' interface. For more information, see
+#' [`create_mount_target`][efs_create_mount_target]. This operation
 #' replaces the security groups in effect for the network interface
 #' associated with a mount target, with the `SecurityGroups` provided in
 #' the request. This operation requires that the network interface of the
@@ -1365,7 +1376,8 @@ efs_modify_mount_target_security_groups <- function(MountTargetId, SecurityGroup
 #' efs_put_backup_policy(FileSystemId, BackupPolicy)
 #'
 #' @param FileSystemId &#91;required&#93; Specifies which EFS file system to update the backup policy for.
-#' @param BackupPolicy &#91;required&#93; The backup policy included in the `PutBackupPolicy` request.
+#' @param BackupPolicy &#91;required&#93; The backup policy included in the
+#' [`put_backup_policy`][efs_put_backup_policy] request.
 #'
 #' @section Request syntax:
 #' ```
@@ -1425,11 +1437,13 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
 #' @param BypassPolicyLockoutSafetyCheck (Optional) A flag to indicate whether to bypass the `FileSystemPolicy`
 #' lockout safety check. The policy lockout safety check determines whether
 #' the policy in the request will prevent the principal making the request
-#' will be locked out from making future `PutFileSystemPolicy` requests on
-#' the file system. Set `BypassPolicyLockoutSafetyCheck` to `True` only
-#' when you intend to prevent the principal that is making the request from
-#' making a subsequent `PutFileSystemPolicy` request on the file system.
-#' The default value is False.
+#' will be locked out from making future
+#' [`put_file_system_policy`][efs_put_file_system_policy] requests on the
+#' file system. Set `BypassPolicyLockoutSafetyCheck` to `True` only when
+#' you intend to prevent the principal that is making the request from
+#' making a subsequent
+#' [`put_file_system_policy`][efs_put_file_system_policy] request on the
+#' file system. The default value is False.
 #'
 #' @section Request syntax:
 #' ```
@@ -1473,10 +1487,11 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
 #' Each Amazon EFS file system supports one lifecycle configuration, which
 #' applies to all files in the file system. If a `LifecycleConfiguration`
 #' object already exists for the specified file system, a
-#' `PutLifecycleConfiguration` call modifies the existing configuration. A
-#' `PutLifecycleConfiguration` call with an empty `LifecyclePolicies` array
-#' in the request body deletes any existing `LifecycleConfiguration` and
-#' disables lifecycle management.
+#' [`put_lifecycle_configuration`][efs_put_lifecycle_configuration] call
+#' modifies the existing configuration. A
+#' [`put_lifecycle_configuration`][efs_put_lifecycle_configuration] call
+#' with an empty `LifecyclePolicies` array in the request body deletes any
+#' existing `LifecycleConfiguration` and disables lifecycle management.
 #' 
 #' In the request, specify the following:
 #' 

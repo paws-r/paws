@@ -14,7 +14,8 @@ Queue URLs and names are case-sensitive.}
 \item{Attributes}{[required] A map of attributes to set.
 
 The following lists the names, descriptions, and values of the special
-request parameters that the \code{SetQueueAttributes} action uses:
+request parameters that the
+\code{\link[=sqs_set_queue_attributes]{set_queue_attributes}} action uses:
 \itemize{
 \item \code{DelaySeconds} – The length of time, in seconds, for which the
 delivery of all messages in the queue is delayed. Valid values: An
@@ -31,8 +32,9 @@ seconds, from 60 (1 minute) to 1,209,600 (14 days). Default: 345,600
 information about policy structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html}{Overview of AWS IAM Policies}
 in the \emph{Amazon IAM User Guide}.
 \item \code{ReceiveMessageWaitTimeSeconds} – The length of time, in seconds,
-for which a \verb{<a>ReceiveMessage</a>} action waits for a message to
-arrive. Valid values: An integer from 0 to 20 (seconds). Default: 0.
+for which a \code{\link[=sqs_receive_message]{receive_message}} action waits
+for a message to arrive. Valid values: An integer from 0 to 20
+(seconds). Default: 0.
 \item \code{RedrivePolicy} – The string that includes the parameters for the
 dead-letter queue functionality of the source queue as a JSON
 object. For more information about the redrive policy and
@@ -66,7 +68,7 @@ The following attributes apply only to
 (CMK) for Amazon SQS or a custom CMK. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms}{Key Terms}.
 While the alias of the AWS-managed CMK for Amazon SQS is always
 \code{alias/aws/sqs}, the alias of a custom CMK can, for example, be
-\verb{alias/<i>MyAlias</i> }. For more examples, see
+\code{alias/MyAlias }. For more examples, see
 \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters}{KeyId}
 in the \emph{AWS Key Management Service API Reference}.
 \item \code{KmsDataKeyReusePeriodSeconds} – The length of time, in seconds, for
@@ -167,8 +169,10 @@ it can handle new attributes gracefully.
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a user name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \item To remove the ability to change queue permissions, you must deny
-permission to the \code{AddPermission}, \code{RemovePermission}, and
-\code{SetQueueAttributes} actions in your IAM policy.
+permission to the \code{\link[=sqs_add_permission]{add_permission}},
+\code{\link[=sqs_remove_permission]{remove_permission}}, and
+\code{\link[=sqs_set_queue_attributes]{set_queue_attributes}} actions in your
+IAM policy.
 }
 }
 \section{Request syntax}{

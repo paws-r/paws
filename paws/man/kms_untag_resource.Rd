@@ -18,7 +18,8 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{TagKeys}{[required] One or more tag keys. Specify only the tag keys, not the tag values.}
 }
@@ -26,10 +27,11 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 Deletes tags from a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed CMK}.
 To delete a tag, specify the tag key and the CMK.
 
-When it succeeds, the \code{UntagResource} operation doesn't return any
-output. Also, if the specified tag key isn't found on the CMK, it
-doesn't throw an exception or return a response. To confirm that the
-operation worked, use the ListResourceTags operation.
+When it succeeds, the \code{\link[=kms_untag_resource]{untag_resource}} operation
+doesn't return any output. Also, if the specified tag key isn't found on
+the CMK, it doesn't throw an exception or return a response. To confirm
+that the operation worked, use the
+\code{\link[=kms_list_resource_tags]{list_resource_tags}} operation.
 
 For general information about tags, including the format and syntax, see
 \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
@@ -49,8 +51,8 @@ a different AWS account.
 
 \strong{Related operations}
 \itemize{
-\item TagResource
-\item ListResourceTags
+\item \code{\link[=kms_tag_resource]{tag_resource}}
+\item \code{\link[=kms_list_resource_tags]{list_resource_tags}}
 }
 }
 \section{Request syntax}{

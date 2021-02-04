@@ -34,7 +34,8 @@ run status values.
 
 This operation doesn't return information about individual assessments.
 For this information, see the
-\code{DescribeReplicationTaskIndividualAssessments} operation.
+\code{\link[=databasemigrationservice_describe_replication_task_individual_assessments]{describe_replication_task_individual_assessments}}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_replication_task_assessment_runs(

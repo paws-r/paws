@@ -13,9 +13,9 @@ sagemaker_list_training_jobs_for_hyper_parameter_tuning_job(
 \item{HyperParameterTuningJobName}{[required] The name of the tuning job whose training jobs you want to list.}
 
 \item{NextToken}{If the result of the previous
-\code{ListTrainingJobsForHyperParameterTuningJob} request was truncated, the
-response includes a \code{NextToken}. To retrieve the next set of training
-jobs, use the token in the next request.}
+\code{\link[=sagemaker_list_training_jobs_for_hyper_parameter_tuning_job]{list_training_jobs_for_hyper_parameter_tuning_job}}
+request was truncated, the response includes a \code{NextToken}. To retrieve
+the next set of training jobs, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of training jobs to return. The default value is 10.}
 

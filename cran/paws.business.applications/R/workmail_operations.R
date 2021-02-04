@@ -178,7 +178,7 @@ workmail_create_alias <- function(OrganizationId, EntityId, Alias) {
 #'
 #' @description
 #' Creates a group that can be used in Amazon WorkMail by calling the
-#' RegisterToWorkMail operation.
+#' [`register_to_work_mail`][workmail_register_to_work_mail] operation.
 #'
 #' @usage
 #' workmail_create_group(OrganizationId, Name)
@@ -340,7 +340,7 @@ workmail_create_resource <- function(OrganizationId, Name, Type) {
 #'
 #' @description
 #' Creates a user who can be used in Amazon WorkMail by calling the
-#' RegisterToWorkMail operation.
+#' [`register_to_work_mail`][workmail_register_to_work_mail] operation.
 #'
 #' @usage
 #' workmail_create_user(OrganizationId, Name, DisplayName, Password)
@@ -681,7 +681,8 @@ workmail_delete_retention_policy <- function(OrganizationId, Id) {
 #' @description
 #' Deletes a user from Amazon WorkMail and all subsequent systems. Before
 #' you can delete a user, the user state must be `DISABLED`. Use the
-#' DescribeUser action to confirm the user state.
+#' [`describe_user`][workmail_describe_user] action to confirm the user
+#' state.
 #' 
 #' Deleting a user is permanent and cannot be undone. WorkMail archives
 #' user mailboxes for 30 days before they are permanently removed.
@@ -1837,9 +1838,10 @@ workmail_put_retention_policy <- function(OrganizationId, Id = NULL, Name, Descr
 #' [Pricing](https://aws.amazon.com/workmail/pricing/). The equivalent
 #' console functionality for this operation is *Enable*.
 #' 
-#' Users can either be created by calling the CreateUser API operation or
-#' they can be synchronized from your directory. For more information, see
-#' DeregisterFromWorkMail.
+#' Users can either be created by calling the
+#' [`create_user`][workmail_create_user] API operation or they can be
+#' synchronized from your directory. For more information, see
+#' [`deregister_from_work_mail`][workmail_deregister_from_work_mail].
 #'
 #' @usage
 #' workmail_register_to_work_mail(OrganizationId, EntityId, Email)
@@ -2162,9 +2164,9 @@ workmail_update_primary_email_address <- function(OrganizationId, EntityId, Emai
 #'
 #' @description
 #' Updates data for the resource. To have the latest information, it must
-#' be preceded by a DescribeResource call. The dataset in the request
-#' should be the one expected when performing another `DescribeResource`
-#' call.
+#' be preceded by a [`describe_resource`][workmail_describe_resource] call.
+#' The dataset in the request should be the one expected when performing
+#' another [`describe_resource`][workmail_describe_resource] call.
 #'
 #' @usage
 #' workmail_update_resource(OrganizationId, ResourceId, Name,

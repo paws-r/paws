@@ -20,11 +20,12 @@ account. If you are integrated with Organizations, then the master
 account is the Security Hub administrator account that is designated by
 the organization management account.
 
-\code{CreateMembers} is always used to add accounts that are not organization
-members.
+\code{\link[=securityhub_create_members]{create_members}} is always used to add
+accounts that are not organization members.
 
-For accounts that are part of an organization, \code{CreateMembers} is only
-used in the following cases:
+For accounts that are part of an organization,
+\code{\link[=securityhub_create_members]{create_members}} is only used in the
+following cases:
 \itemize{
 \item Security Hub is not configured to automatically add new accounts in
 an organization.
@@ -33,13 +34,14 @@ an organization.
 
 This action can only be used by an account that has Security Hub
 enabled. To enable Security Hub, you can use the
-\verb{<a>EnableSecurityHub</a>} operation.
+\code{\link[=securityhub_enable_security_hub]{enable_security_hub}} operation.
 
 For accounts that are not organization members, you create the account
 association and then send an invitation to the member account. To send
-the invitation, you use the \verb{<a>InviteMembers</a>} operation. If the
-account owner accepts the invitation, the account becomes a member
-account in Security Hub.
+the invitation, you use the
+\code{\link[=securityhub_invite_members]{invite_members}} operation. If the account
+owner accepts the invitation, the account becomes a member account in
+Security Hub.
 
 Accounts that are part of an organization do not receive an invitation.
 They automatically become a member account in Security Hub.
@@ -50,8 +52,9 @@ enabled in a member account, findings are sent to both the member and
 master accounts.
 
 To remove the association between the master and member accounts, use
-the \verb{<a>DisassociateFromMasterAccount</a>} or
-\verb{<a>DisassociateMembers</a>} operation.
+the
+\code{\link[=securityhub_disassociate_from_master_account]{disassociate_from_master_account}}
+or \code{\link[=securityhub_disassociate_members]{disassociate_members}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$create_members(

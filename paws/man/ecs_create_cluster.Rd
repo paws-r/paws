@@ -39,7 +39,8 @@ limit.
 \item{settings}{The setting to use when creating a cluster. This parameter is used to
 enable CloudWatch Container Insights for a cluster. If this value is
 specified, it will override the \code{containerInsights} value set with
-PutAccountSetting or PutAccountSettingDefault.}
+\code{\link[=ecs_put_account_setting]{put_account_setting}} or
+\code{\link[=ecs_put_account_setting_default]{put_account_setting_default}}.}
 
 \item{capacityProviders}{The short name of one or more capacity providers to associate with the
 cluster.
@@ -47,16 +48,18 @@ cluster.
 If specifying a capacity provider that uses an Auto Scaling group, the
 capacity provider must already be created and not already associated
 with another cluster. New capacity providers can be created with the
-CreateCapacityProvider API operation.
+\code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
+operation.
 
 To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
 \code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
 are available to all accounts and only need to be associated with a
 cluster to be used.
 
-The PutClusterCapacityProviders API operation is used to update the list
-of available capacity providers for a cluster after the cluster is
-created.}
+The
+\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
+API operation is used to update the list of available capacity providers
+for a cluster after the cluster is created.}
 
 \item{defaultCapacityProviderStrategy}{The capacity provider strategy to use by default for the cluster.
 
@@ -67,13 +70,16 @@ strategy for the cluster is used.
 A capacity provider strategy consists of one or more capacity providers
 along with the \code{base} and \code{weight} to assign to them. A capacity
 provider must be associated with the cluster to be used in a capacity
-provider strategy. The PutClusterCapacityProviders API is used to
-associate a capacity provider with a cluster. Only capacity providers
-with an \code{ACTIVE} or \code{UPDATING} status can be used.
+provider strategy. The
+\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
+API is used to associate a capacity provider with a cluster. Only
+capacity providers with an \code{ACTIVE} or \code{UPDATING} status can be used.
 
 If specifying a capacity provider that uses an Auto Scaling group, the
 capacity provider must already be created. New capacity providers can be
-created with the CreateCapacityProvider API operation.
+created with the
+\code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
+operation.
 
 To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
 \code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
@@ -82,20 +88,21 @@ cluster to be used.
 
 If a default capacity provider strategy is not defined for a cluster
 during creation, it can be defined later with the
-PutClusterCapacityProviders API operation.}
+\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
+API operation.}
 }
 \description{
 Creates a new Amazon ECS cluster. By default, your account receives a
 \code{default} cluster when you launch your first container instance.
 However, you can create your own cluster with a unique name with the
-\code{CreateCluster} action.
+\code{\link[=ecs_create_cluster]{create_cluster}} action.
 
-When you call the CreateCluster API operation, Amazon ECS attempts to
-create the Amazon ECS service-linked role for your account so that
-required resources in other AWS services can be managed on your behalf.
-However, if the IAM user that makes the call does not have permissions
-to create the service-linked role, it is not created. For more
-information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using Service-Linked Roles for Amazon ECS}
+When you call the \code{\link[=ecs_create_cluster]{create_cluster}} API operation,
+Amazon ECS attempts to create the Amazon ECS service-linked role for
+your account so that required resources in other AWS services can be
+managed on your behalf. However, if the IAM user that makes the call
+does not have permissions to create the service-linked role, it is not
+created. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using Service-Linked Roles for Amazon ECS}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{

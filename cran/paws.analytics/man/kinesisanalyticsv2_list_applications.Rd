@@ -19,7 +19,7 @@ For each application, the response includes the application name, Amazon
 Resource Name (ARN), and status.
 
 If you want detailed information about a specific application, use
-DescribeApplication.
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_applications(

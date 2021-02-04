@@ -12,9 +12,11 @@ cloudwatch_get_dashboard(DashboardName)
 \description{
 Displays the details of the dashboard that you specify.
 
-To copy an existing dashboard, use \code{GetDashboard}, and then use the data
+To copy an existing dashboard, use
+\code{\link[=cloudwatch_get_dashboard]{get_dashboard}}, and then use the data
 returned within \code{DashboardBody} as the template for the new dashboard
-when you call \code{PutDashboard} to create the copy.
+when you call \code{\link[=cloudwatch_put_dashboard]{put_dashboard}} to create the
+copy.
 }
 \section{Request syntax}{
 \preformatted{svc$get_dashboard(

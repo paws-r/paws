@@ -20,10 +20,11 @@ For more information about Amazon S3 permissions, see \href{https://docs.aws.ama
 
 For information about Amazon S3 Object Ownership, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/about-object-ownership.html}{Using Object Ownership}.
 
-The following operations are related to \code{DeleteBucketOwnershipControls}:
+The following operations are related to
+\code{\link[=s3_delete_bucket_ownership_controls]{delete_bucket_ownership_controls}}:
 \itemize{
-\item GetBucketOwnershipControls
-\item PutBucketOwnershipControls
+\item \code{\link[=s3_get_bucket_ownership_controls]{get_bucket_ownership_controls}}
+\item \code{\link[=s3_put_bucket_ownership_controls]{put_bucket_ownership_controls}}
 }
 }
 \section{Request syntax}{

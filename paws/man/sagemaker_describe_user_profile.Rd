@@ -12,7 +12,8 @@ sagemaker_describe_user_profile(DomainId, UserProfileName)
 \item{UserProfileName}{[required] The user profile name.}
 }
 \description{
-Describes a user profile. For more information, see \code{CreateUserProfile}.
+Describes a user profile. For more information, see
+\code{\link[=sagemaker_create_user_profile]{create_user_profile}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_user_profile(

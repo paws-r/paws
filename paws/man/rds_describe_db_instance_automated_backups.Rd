@@ -58,8 +58,8 @@ Displays backups for both current and deleted instances. For example,
 use this operation to find details about automated backups for
 previously deleted instances. Current instances with retention periods
 greater than zero (0) are returned for both the
-\code{DescribeDBInstanceAutomatedBackups} and \code{DescribeDBInstances}
-operations.
+\code{\link[=rds_describe_db_instance_automated_backups]{describe_db_instance_automated_backups}}
+and \code{\link[=rds_describe_db_instances]{describe_db_instances}} operations.
 
 All parameters are optional.
 }

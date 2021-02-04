@@ -25,8 +25,10 @@ For example:
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To
-get the alias name and alias ARN, use ListAliases.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
+get the alias name and alias ARN, use
+\code{\link[=kms_list_aliases]{list_aliases}}.}
 
 \item{EncryptionContext}{Specifies the encryption context that will be used when encrypting the
 data key.
@@ -57,14 +59,17 @@ in the \emph{AWS Key Management Service Developer Guide}.}
 \description{
 Generates a unique symmetric data key. This operation returns a data key
 that is encrypted under a customer master key (CMK) that you specify. To
-request an asymmetric data key pair, use the GenerateDataKeyPair or
-GenerateDataKeyPairWithoutPlaintext operations.
+request an asymmetric data key pair, use the
+\code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}} or
+\code{\link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext}}
+operations.
 
-\code{GenerateDataKeyWithoutPlaintext} is identical to the GenerateDataKey
+\code{\link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext}}
+is identical to the \code{\link[=kms_generate_data_key]{generate_data_key}}
 operation except that returns only the encrypted copy of the data key.
 This operation is useful for systems that need to encrypt data at some
 point, but not immediately. When you need to encrypt the data, you call
-the Decrypt operation on the encrypted copy of the key.
+the \code{\link[=kms_decrypt]{decrypt}} operation on the encrypted copy of the key.
 
 It's also useful in distributed systems with different levels of trust.
 For example, you might store encrypted data in containers. One component
@@ -75,14 +80,15 @@ plaintext data key to encrypt data, puts the encrypted data into the
 container, and then destroys the plaintext data key. In this system, the
 component that creates the containers never sees the plaintext data key.
 
-\code{GenerateDataKeyWithoutPlaintext} returns a unique data key for each
-request. The bytes in the keys are not related to the caller or CMK that
-is used to encrypt the private key.
+\code{\link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext}}
+returns a unique data key for each request. The bytes in the keys are
+not related to the caller or CMK that is used to encrypt the private
+key.
 
 To generate a data key, you must specify the symmetric customer master
 key (CMK) that is used to encrypt the data key. You cannot use an
 asymmetric CMK to generate a data key. To get the type of your CMK, use
-the DescribeKey operation.
+the \code{\link[=kms_describe_key]{describe_key}} operation.
 
 If the operation succeeds, you will find the encrypted copy of the data
 key in the \code{CiphertextBlob} field.
@@ -109,11 +115,11 @@ the \code{KeyId} parameter.
 
 \strong{Related operations:}
 \itemize{
-\item Decrypt
-\item Encrypt
-\item GenerateDataKey
-\item GenerateDataKeyPair
-\item GenerateDataKeyPairWithoutPlaintext
+\item \code{\link[=kms_decrypt]{decrypt}}
+\item \code{\link[=kms_encrypt]{encrypt}}
+\item \code{\link[=kms_generate_data_key]{generate_data_key}}
+\item \code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}}
+\item \code{\link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext}}
 }
 }
 \section{Request syntax}{

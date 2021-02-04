@@ -13,16 +13,20 @@ codeguruprofiler_list_profile_times(endTime, maxResults, nextToken,
 \item{endTime}{[required] The end time of the time range from which to list the profiles.}
 
 \item{maxResults}{The maximum number of profile time results returned by
-\code{ListProfileTimes} in paginated output. When this parameter is used,
-\code{ListProfileTimes} only returns \code{maxResults} results in a single page
-with a \code{nextToken} response element. The remaining results of the
-initial request can be seen by sending another \code{ListProfileTimes}
-request with the returned \code{nextToken} value.}
+\code{\link[=codeguruprofiler_list_profile_times]{list_profile_times}} in paginated
+output. When this parameter is used,
+\code{\link[=codeguruprofiler_list_profile_times]{list_profile_times}} only returns
+\code{maxResults} results in a single page with a \code{nextToken} response
+element. The remaining results of the initial request can be seen by
+sending another
+\code{\link[=codeguruprofiler_list_profile_times]{list_profile_times}} request with
+the returned \code{nextToken} value.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{ListProfileTimes} request where \code{maxResults} was used and the results
-exceeded the value of that parameter. Pagination continues from the end
-of the previous results that returned the \code{nextToken} value.
+\code{\link[=codeguruprofiler_list_profile_times]{list_profile_times}} request
+where \code{maxResults} was used and the results exceeded the value of that
+parameter. Pagination continues from the end of the previous results
+that returned the \code{nextToken} value.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic

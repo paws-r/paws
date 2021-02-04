@@ -70,8 +70,8 @@ this case, you could specify the following key name/value pairs:
 \item \verb{Key=Environment,Value=Production}
 }
 
-To add tags to an existing SSM document, use the AddTagsToResource
-action.}
+To add tags to an existing SSM document, use the
+\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
 }
 \description{
 Creates a Systems Manager (SSM) document. An SSM document defines the

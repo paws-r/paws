@@ -23,8 +23,9 @@ by identifier.
 }}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous call to
-\code{ListBuildBatchesForProject}. This specifies the next item to return. To
-return the beginning of the list, exclude this parameter.}
+\code{\link[=codebuild_list_build_batches_for_project]{list_build_batches_for_project}}.
+This specifies the next item to return. To return the beginning of the
+list, exclude this parameter.}
 }
 \description{
 Retrieves the identifiers of the build batches for a specific project.

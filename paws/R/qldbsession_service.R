@@ -12,9 +12,9 @@ NULL
 #' 
 #' -   If you are working with an AWS SDK, use the QLDB driver. The driver
 #'     provides a high-level abstraction layer above this *QLDB Session*
-#'     data plane and manages `SendCommand` API calls for you. For
-#'     information and a list of supported programming languages, see
-#'     [Getting started with the
+#'     data plane and manages [`send_command`][qldbsession_send_command]
+#'     API calls for you. For information and a list of supported
+#'     programming languages, see [Getting started with the
 #'     driver](https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html)
 #'     in the *Amazon QLDB Developer Guide*.
 #' 

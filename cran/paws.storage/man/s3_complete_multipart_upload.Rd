@@ -26,16 +26,15 @@ different account, the request will fail with an HTTP
 Completes a multipart upload by assembling previously uploaded parts.
 
 You first initiate the multipart upload and then upload all parts using
-the
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
-operation. After successfully uploading all relevant parts of an upload,
-you call this operation to complete the upload. Upon receiving this
-request, Amazon S3 concatenates all the parts in ascending order by part
-number to create a new object. In the Complete Multipart Upload request,
-you must provide the parts list. You must ensure that the parts list is
-complete. This operation concatenates the parts that you provide in the
-list. For each part in the list, you must provide the part number and
-the \code{ETag} value, returned after that part was uploaded.
+the \code{\link[=s3_upload_part]{upload_part}} operation. After successfully
+uploading all relevant parts of an upload, you call this operation to
+complete the upload. Upon receiving this request, Amazon S3 concatenates
+all the parts in ascending order by part number to create a new object.
+In the Complete Multipart Upload request, you must provide the parts
+list. You must ensure that the parts list is complete. This operation
+concatenates the parts that you provide in the list. For each part in
+the list, you must provide the part number and the \code{ETag} value,
+returned after that part was uploaded.
 
 Processing of a Complete Multipart Upload request could take several
 minutes to complete. After Amazon S3 begins processing the request, it
@@ -46,15 +45,17 @@ could fail after the initial 200 OK response has been sent, it is
 important that you check the response body to determine whether the
 request succeeded.
 
-Note that if \code{CompleteMultipartUpload} fails, applications should be
-prepared to retry the failed requests. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ErrorBestPractices.html}{Amazon S3 Error Best Practices}.
+Note that if \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}
+fails, applications should be prepared to retry the failed requests. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ErrorBestPractices.html}{Amazon S3 Error Best Practices}.
 
 For more information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html}{Uploading Objects Using Multipart Upload}.
 
 For information about permissions required to use the multipart upload
 API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html}{Multipart Upload API and Permissions}.
 
-\code{CompleteMultipartUpload} has the following special errors:
+\code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}} has the
+following special errors:
 \itemize{
 \item Error code: \code{EntityTooSmall}
 \itemize{
@@ -85,13 +86,14 @@ been aborted or completed.
 }
 }
 
-The following operations are related to \code{CompleteMultipartUpload}:
+The following operations are related to
+\code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html}{AbortMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html}{ListParts}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html}{ListMultipartUploads}
+\item \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}
+\item \code{\link[=s3_upload_part]{upload_part}}
+\item \code{\link[=s3_abort_multipart_upload]{abort_multipart_upload}}
+\item \code{\link[=s3_list_parts]{list_parts}}
+\item \code{\link[=s3_list_multipart_uploads]{list_multipart_uploads}}
 }
 }
 \section{Request syntax}{

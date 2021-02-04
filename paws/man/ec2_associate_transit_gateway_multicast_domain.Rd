@@ -29,7 +29,7 @@ the specified transit gateway multicast domain.
 
 The transit gateway attachment must be in the available state before you
 can add a resource. Use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html}{DescribeTransitGatewayAttachments}
+\code{\link[=ec2_describe_transit_gateway_attachments]{describe_transit_gateway_attachments}}
 to see the state of the attachment.
 }
 \section{Request syntax}{

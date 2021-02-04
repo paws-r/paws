@@ -17,9 +17,8 @@ the private CA resource or the policy cannot be found, this action
 returns a \code{ResourceNotFoundException}.
 
 The policy can be attached or updated with
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_PutPolicy.html}{PutPolicy}
-and removed with
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeletePolicy.html}{DeletePolicy}.
+\code{\link[=acmpca_put_policy]{put_policy}} and removed with
+\code{\link[=acmpca_delete_policy]{delete_policy}}.
 
 \strong{About Policies}
 \itemize{

@@ -9,12 +9,13 @@ transfer_list_security_policies(MaxResults, NextToken)
 }
 \arguments{
 \item{MaxResults}{Specifies the number of security policies to return as a response to the
-\code{ListSecurityPolicies} query.}
+\code{\link[=transfer_list_security_policies]{list_security_policies}} query.}
 
-\item{NextToken}{When additional results are obtained from the \code{ListSecurityPolicies}
-command, a \code{NextToken} parameter is returned in the output. You can then
-pass the \code{NextToken} parameter in a subsequent command to continue
-listing additional security policies.}
+\item{NextToken}{When additional results are obtained from the
+\code{\link[=transfer_list_security_policies]{list_security_policies}} command, a
+\code{NextToken} parameter is returned in the output. You can then pass the
+\code{NextToken} parameter in a subsequent command to continue listing
+additional security policies.}
 }
 \description{
 Lists the security policies that are attached to your file transfer

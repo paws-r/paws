@@ -28,8 +28,10 @@ hosted zone.
 If you want to associate a VPC that was created by using one AWS account
 with a private hosted zone that was created by using a different
 account, the AWS account that created the private hosted zone must first
-submit a \code{CreateVPCAssociationAuthorization} request. Then the account
-that created the VPC must submit an \code{AssociateVPCWithHostedZone}
+submit a
+\code{\link[=route53_create_vpc_association_authorization]{create_vpc_association_authorization}}
+request. Then the account that created the VPC must submit an
+\code{\link[=route53_associate_vpc_with_hosted_zone]{associate_vpc_with_hosted_zone}}
 request.
 }
 \section{Request syntax}{

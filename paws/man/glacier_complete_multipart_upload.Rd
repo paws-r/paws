@@ -38,7 +38,7 @@ archive resource. Using the URI path, you can then access the archive.
 After you upload an archive, you should save the archive ID returned to
 retrieve the archive at a later point. You can also get the vault
 inventory to obtain a list of archive IDs in a vault. For more
-information, see InitiateJob.
+information, see \code{\link[=glacier_initiate_job]{initiate_job}}.
 
 In the request, you must include the computed SHA256 tree hash of the
 entire archive you have uploaded. For information about computing a
@@ -46,9 +46,10 @@ SHA256 tree hash, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev
 On the server side, Glacier also constructs the SHA256 tree hash of the
 assembled archive. If the values match, Glacier saves the archive to the
 vault; otherwise, it returns an error, and the operation fails. The
-ListParts operation returns a list of parts uploaded for a specific
-multipart upload. It includes checksum information for each uploaded
-part that can be used to debug a bad checksum issue.
+\code{\link[=glacier_list_parts]{list_parts}} operation returns a list of parts
+uploaded for a specific multipart upload. It includes checksum
+information for each uploaded part that can be used to debug a bad
+checksum issue.
 
 Additionally, Glacier also checks for any missing content ranges when
 assembling the archive, if missing content ranges are found, Glacier

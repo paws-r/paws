@@ -19,9 +19,9 @@ Gets information about unique problems, such as exceptions or crashes.
 Unique problems are defined as a single instance of an error across a
 run, job, or suite. For example, if a call in your application
 consistently raises an exception
-(\verb{OutOfBoundsException in MyActivity.java:386}), \code{ListUniqueProblems}
-returns a single entry instead of many individual entries for that
-exception.
+(\verb{OutOfBoundsException in MyActivity.java:386}),
+\code{\link[=devicefarm_list_unique_problems]{list_unique_problems}} returns a
+single entry instead of many individual entries for that exception.
 }
 \section{Request syntax}{
 \preformatted{svc$list_unique_problems(

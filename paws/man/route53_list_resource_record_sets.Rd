@@ -56,24 +56,25 @@ record set in the next group of \code{maxitems} resource record sets.}
 \description{
 Lists the resource record sets in a specified hosted zone.
 
-\code{ListResourceRecordSets} returns up to 100 resource record sets at a
-time in ASCII order, beginning at a position specified by the \code{name} and
-\code{type} elements.
+\code{\link[=route53_list_resource_record_sets]{list_resource_record_sets}} returns
+up to 100 resource record sets at a time in ASCII order, beginning at a
+position specified by the \code{name} and \code{type} elements.
 
 \strong{Sort order}
 
-\code{ListResourceRecordSets} sorts results first by DNS name with the labels
-reversed, for example:
+\code{\link[=route53_list_resource_record_sets]{list_resource_record_sets}} sorts
+results first by DNS name with the labels reversed, for example:
 
 \code{com.example.www.}
 
 Note the trailing dot, which can change the sort order when the record
 name contains characters that appear before \code{.} (decimal 46) in the
 ASCII table. These characters include the following:
-\verb{! \\" # $ \% &amp; \\' ( ) * + , -}
+\verb{! \\" # $ \% & \\' ( ) * + , -}
 
-When multiple records have the same DNS name, \code{ListResourceRecordSets}
-sorts results by the record type.
+When multiple records have the same DNS name,
+\code{\link[=route53_list_resource_record_sets]{list_resource_record_sets}} sorts
+results by the record type.
 
 \strong{Specifying where to start listing records}
 
@@ -112,19 +113,22 @@ all Route 53 DNS servers.
 
 To ensure that you get an accurate listing of the resource record sets
 for a hosted zone at a point in time, do not submit a
-\code{ChangeResourceRecordSets} request while you're paging through the
-results of a \code{ListResourceRecordSets} request. If you do, some pages may
-display results without the latest changes while other pages display
-results with the latest changes.
+\code{\link[=route53_change_resource_record_sets]{change_resource_record_sets}}
+request while you're paging through the results of a
+\code{\link[=route53_list_resource_record_sets]{list_resource_record_sets}}
+request. If you do, some pages may display results without the latest
+changes while other pages display results with the latest changes.
 
 \strong{Displaying the next page of results}
 
-If a \code{ListResourceRecordSets} command returns more than one page of
-results, the value of \code{IsTruncated} is \code{true}. To display the next page
-of results, get the values of \code{NextRecordName}, \code{NextRecordType}, and
-\code{NextRecordIdentifier} (if any) from the response. Then submit another
-\code{ListResourceRecordSets} request, and specify those values for
-\code{StartRecordName}, \code{StartRecordType}, and \code{StartRecordIdentifier}.
+If a \code{\link[=route53_list_resource_record_sets]{list_resource_record_sets}}
+command returns more than one page of results, the value of
+\code{IsTruncated} is \code{true}. To display the next page of results, get the
+values of \code{NextRecordName}, \code{NextRecordType}, and \code{NextRecordIdentifier}
+(if any) from the response. Then submit another
+\code{\link[=route53_list_resource_record_sets]{list_resource_record_sets}}
+request, and specify those values for \code{StartRecordName},
+\code{StartRecordType}, and \code{StartRecordIdentifier}.
 }
 }
 \section{Request syntax}{

@@ -31,8 +31,9 @@ language.}
 }
 \description{
 Starts an asynchronous job to detect medication entities and link them
-to the RxNorm ontology. Use the \code{DescribeRxNormInferenceJob} operation
-to track the status of a job.
+to the RxNorm ontology. Use the
+\code{\link[=comprehendmedical_describe_rx_norm_inference_job]{describe_rx_norm_inference_job}}
+operation to track the status of a job.
 }
 \section{Request syntax}{
 \preformatted{svc$start_rx_norm_inference_job(

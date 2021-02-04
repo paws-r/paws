@@ -17,7 +17,8 @@ Route 53 treats \emph{www.example.com} (without a trailing dot) and
 If you're creating a public hosted zone, this is the name you have
 registered with your DNS registrar. If your domain name is registered
 with a registrar other than Route 53, change the name servers for your
-domain to the set of \code{NameServers} that \code{CreateHostedZone} returns in
+domain to the set of \code{NameServers} that
+\code{\link[=route53_create_hosted_zone]{create_hosted_zone}} returns in
 \code{DelegationSet}.}
 
 \item{VPC}{(Private hosted zones only) A complex type that contains information
@@ -25,14 +26,16 @@ about the Amazon VPC that you're associating with this hosted zone.
 
 You can specify only one Amazon VPC when you create a private hosted
 zone. To associate additional Amazon VPCs with the hosted zone, use
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_AssociateVPCWithHostedZone.html}{AssociateVPCWithHostedZone}
+\code{\link[=route53_associate_vpc_with_hosted_zone]{associate_vpc_with_hosted_zone}}
 after you create a hosted zone.}
 
 \item{CallerReference}{[required] A unique string that identifies the request and that allows failed
-\code{CreateHostedZone} requests to be retried without the risk of executing
-the operation twice. You must use a unique \code{CallerReference} string
-every time you submit a \code{CreateHostedZone} request. \code{CallerReference}
-can be any unique string, for example, a date/time stamp.}
+\code{\link[=route53_create_hosted_zone]{create_hosted_zone}} requests to be
+retried without the risk of executing the operation twice. You must use
+a unique \code{CallerReference} string every time you submit a
+\code{\link[=route53_create_hosted_zone]{create_hosted_zone}} request.
+\code{CallerReference} can be any unique string, for example, a date/time
+stamp.}
 
 \item{HostedZoneConfig}{(Optional) A complex type that contains the following optional values:
 \itemize{
@@ -47,7 +50,7 @@ If you don't specify a comment or the \code{PrivateZone} element, omit
 zone, the ID that Amazon Route 53 assigned to the reusable delegation
 set when you created it. For more information about reusable delegation
 sets, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateReusableDelegationSet.html}{CreateReusableDelegationSet}.}
+\code{\link[=route53_create_reusable_delegation_set]{create_reusable_delegation_set}}.}
 }
 \description{
 Creates a new public or private hosted zone. You create records in a
@@ -83,11 +86,11 @@ you must update the name servers with your registrar to make Route
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 
-When you submit a \code{CreateHostedZone} request, the initial status of the
-hosted zone is \code{PENDING}. For public hosted zones, this means that the
-NS and SOA records are not yet available on all Route 53 DNS servers.
-When the NS and SOA records are available, the status of the zone
-changes to \code{INSYNC}.
+When you submit a \code{\link[=route53_create_hosted_zone]{create_hosted_zone}}
+request, the initial status of the hosted zone is \code{PENDING}. For public
+hosted zones, this means that the NS and SOA records are not yet
+available on all Route 53 DNS servers. When the NS and SOA records are
+available, the status of the zone changes to \code{INSYNC}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_hosted_zone(

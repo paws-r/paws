@@ -205,13 +205,16 @@ codedeploy_batch_get_deployment_groups <- function(applicationName, deploymentGr
 #' This method works, but is deprecated
 #'
 #' @description
-#' This method works, but is deprecated. Use `BatchGetDeploymentTargets`
+#' This method works, but is deprecated. Use
+#' [`batch_get_deployment_targets`][codedeploy_batch_get_deployment_targets]
 #' instead.
 #' 
 #' Returns an array of one or more instances associated with a deployment.
 #' This method works with EC2/On-premises and AWS Lambda compute platforms.
-#' The newer `BatchGetDeploymentTargets` works with all compute platforms.
-#' The maximum number of instances that can be returned is 25.
+#' The newer
+#' [`batch_get_deployment_targets`][codedeploy_batch_get_deployment_targets]
+#' works with all compute platforms. The maximum number of instances that
+#' can be returned is 25.
 #'
 #' @usage
 #' codedeploy_batch_get_deployment_instances(deploymentId, instanceIds)
@@ -255,8 +258,9 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #' @description
 #' Returns an array of one or more targets associated with a deployment.
 #' This method works with all compute types and should be used instead of
-#' the deprecated `BatchGetDeploymentInstances`. The maximum number of
-#' targets that can be returned is 25.
+#' the deprecated
+#' [`batch_get_deployment_instances`][codedeploy_batch_get_deployment_instances].
+#' The maximum number of targets that can be returned is 25.
 #' 
 #' The type of targets returned depends on the deployment's compute
 #' platform or deployment method:
@@ -288,8 +292,8 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #' 
 #' -   For deployments that use the Amazon ECS compute platform, the target
 #'     IDs are pairs of Amazon ECS clusters and services specified using
-#'     the format `&lt;clustername&gt;:&lt;servicename&gt;`. Their target
-#'     type is `ecsTarget`.
+#'     the format `<clustername>:<servicename>`. Their target type is
+#'     `ecsTarget`.
 #' 
 #' -   For deployments that are deployed with AWS CloudFormation, the
 #'     target IDs are CloudFormation stack IDs. Their target type is
@@ -797,8 +801,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' @param ecsServices The target Amazon ECS services in the deployment group. This applies
 #' only to deployment groups that use the Amazon ECS compute platform. A
 #' target Amazon ECS service is specified as an Amazon ECS cluster and
-#' service name pair using the format
-#' `&lt;clustername&gt;:&lt;servicename&gt;`.
+#' service name pair using the format `<clustername>:<servicename>`.
 #' @param onPremisesTagSet Information about groups of tags applied to on-premises instances. The
 #' deployment group includes only on-premises instances identified by all
 #' of the tag groups. Cannot be used in the same call as
@@ -1296,9 +1299,10 @@ codedeploy_get_application_revision <- function(applicationName, revision) {
 #' Gets information about a deployment.
 #' 
 #' The `content` property of the `appSpecContent` object in the returned
-#' revision is always null. Use `GetApplicationRevision` and the `sha256`
-#' property of the returned `appSpecContent` object to get the content of
-#' the deployment’s AppSpec file.
+#' revision is always null. Use
+#' [`get_application_revision`][codedeploy_get_application_revision] and
+#' the `sha256` property of the returned `appSpecContent` object to get the
+#' content of the deployment’s AppSpec file.
 #'
 #' @usage
 #' codedeploy_get_deployment(deploymentId)
@@ -1574,7 +1578,8 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
 #'     deployment group.
 #' 
 #' -   `ignore`: List all revisions.
-#' @param nextToken An identifier returned from the previous `ListApplicationRevisions`
+#' @param nextToken An identifier returned from the previous
+#' [`list_application_revisions`][codedeploy_list_application_revisions]
 #' call. It can be used to return the next set of applications in the list.
 #'
 #' @section Request syntax:
@@ -1656,9 +1661,10 @@ codedeploy_list_applications <- function(nextToken = NULL) {
 #' @usage
 #' codedeploy_list_deployment_configs(nextToken)
 #'
-#' @param nextToken An identifier returned from the previous `ListDeploymentConfigs` call.
-#' It can be used to return the next set of deployment configurations in
-#' the list.
+#' @param nextToken An identifier returned from the previous
+#' [`list_deployment_configs`][codedeploy_list_deployment_configs] call. It
+#' can be used to return the next set of deployment configurations in the
+#' list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1734,9 +1740,11 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
 #' works with all compute types
 #'
 #' @description
-#' The newer `BatchGetDeploymentTargets` should be used instead because it
-#' works with all compute types. `ListDeploymentInstances` throws an
-#' exception if it is used with a compute platform other than
+#' The newer
+#' [`batch_get_deployment_targets`][codedeploy_batch_get_deployment_targets]
+#' should be used instead because it works with all compute types.
+#' [`list_deployment_instances`][codedeploy_list_deployment_instances]
+#' throws an exception if it is used with a compute platform other than
 #' EC2/On-premises or AWS Lambda.
 #' 
 #' Lists the instance for a deployment associated with the IAM user or AWS
@@ -1813,9 +1821,9 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
 #'   targetFilters)
 #'
 #' @param deploymentId The unique ID of a deployment.
-#' @param nextToken A token identifier returned from the previous `ListDeploymentTargets`
-#' call. It can be used to return the next set of deployment targets in the
-#' list.
+#' @param nextToken A token identifier returned from the previous
+#' [`list_deployment_targets`][codedeploy_list_deployment_targets] call. It
+#' can be used to return the next set of deployment targets in the list.
 #' @param targetFilters A key used to filter the returned targets. The two valid values are:
 #' 
 #' -   `TargetStatus` - A `TargetStatus` filter string can be `Failed`,
@@ -1950,7 +1958,8 @@ codedeploy_list_deployments <- function(applicationName = NULL, deploymentGroupN
 #' @usage
 #' codedeploy_list_git_hub_account_token_names(nextToken)
 #'
-#' @param nextToken An identifier returned from the previous `ListGitHubAccountTokenNames`
+#' @param nextToken An identifier returned from the previous
+#' [`list_git_hub_account_token_names`][codedeploy_list_git_hub_account_token_names]
 #' call. It can be used to return the next set of names in the list.
 #'
 #' @section Request syntax:
@@ -2052,10 +2061,12 @@ codedeploy_list_on_premises_instances <- function(registrationStatus = NULL, tag
 #' @usage
 #' codedeploy_list_tags_for_resource(ResourceArn, NextToken)
 #'
-#' @param ResourceArn &#91;required&#93; The ARN of a CodeDeploy resource. `ListTagsForResource` returns all the
-#' tags associated with the resource that is identified by the
+#' @param ResourceArn &#91;required&#93; The ARN of a CodeDeploy resource.
+#' [`list_tags_for_resource`][codedeploy_list_tags_for_resource] returns
+#' all the tags associated with the resource that is identified by the
 #' `ResourceArn`.
-#' @param NextToken An identifier returned from the previous `ListTagsForResource` call. It
+#' @param NextToken An identifier returned from the previous
+#' [`list_tags_for_resource`][codedeploy_list_tags_for_resource] call. It
 #' can be used to return the next set of applications in the list.
 #'
 #' @section Request syntax:
@@ -2391,8 +2402,9 @@ codedeploy_stop_deployment <- function(deploymentId, autoRollbackEnabled = NULL)
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of a resource, such as a CodeDeploy application or deployment
 #' group.
-#' @param Tags &#91;required&#93; A list of tags that `TagResource` associates with a resource. The
-#' resource is identified by the `ResourceArn` input parameter.
+#' @param Tags &#91;required&#93; A list of tags that [`tag_resource`][codedeploy_tag_resource] associates
+#' with a resource. The resource is identified by the `ResourceArn` input
+#' parameter.
 #'
 #' @section Request syntax:
 #' ```
@@ -2561,8 +2573,7 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #' @param ecsServices The target Amazon ECS services in the deployment group. This applies
 #' only to deployment groups that use the Amazon ECS compute platform. A
 #' target Amazon ECS service is specified as an Amazon ECS cluster and
-#' service name pair using the format
-#' `&lt;clustername&gt;:&lt;servicename&gt;`.
+#' service name pair using the format `<clustername>:<servicename>`.
 #' @param onPremisesTagSet Information about an on-premises instance tag set. The deployment group
 #' includes only on-premises instances identified by all the tag groups.
 #'

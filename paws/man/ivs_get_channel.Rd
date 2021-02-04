@@ -11,7 +11,7 @@ ivs_get_channel(arn)
 }
 \description{
 Gets the channel configuration for the specified channel ARN. See also
-BatchGetChannel.
+\code{\link[=ivs_batch_get_channel]{batch_get_channel}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_channel(

@@ -8,16 +8,20 @@ the CreateCachediSCSIVolume or CreateStorediSCSIVolume API}
 storagegateway_delete_volume(VolumeARN)
 }
 \arguments{
-\item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
-operation to return a list of gateway volumes.}
+\item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the
+\code{\link[=storagegateway_list_volumes]{list_volumes}} operation to return a list
+of gateway volumes.}
 }
 \description{
 Deletes the specified storage volume that you previously created using
-the CreateCachediSCSIVolume or CreateStorediSCSIVolume API. This
-operation is only supported in the cached volume and stored volume
-types. For stored volume gateways, the local disk that was configured as
-the storage volume is not deleted. You can reuse the local disk to
-create another storage volume.
+the
+\code{\link[=storagegateway_create_cachedi_scsi_volume]{create_cachedi_scsi_volume}}
+or
+\code{\link[=storagegateway_create_storedi_scsi_volume]{create_storedi_scsi_volume}}
+API. This operation is only supported in the cached volume and stored
+volume types. For stored volume gateways, the local disk that was
+configured as the storage volume is not deleted. You can reuse the local
+disk to create another storage volume.
 
 Before you delete a volume, make sure there are no iSCSI connections to
 the volume you are deleting. You should also make sure there is no

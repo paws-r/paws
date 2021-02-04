@@ -11,9 +11,9 @@ waf_list_size_constraint_sets(NextMarker, Limit)
 \code{SizeConstraintSets} than the value of \code{Limit}, AWS WAF returns a
 \code{NextMarker} value in the response that allows you to list another group
 of \code{SizeConstraintSets}. For the second and subsequent
-\code{ListSizeConstraintSets} requests, specify the value of \code{NextMarker}
-from the previous response to get information about another batch of
-\code{SizeConstraintSets}.}
+\code{\link[=waf_list_size_constraint_sets]{list_size_constraint_sets}} requests,
+specify the value of \code{NextMarker} from the previous response to get
+information about another batch of \code{SizeConstraintSets}.}
 
 \item{Limit}{Specifies the number of \code{SizeConstraintSet} objects that you want AWS
 WAF to return for this request. If you have more \code{SizeConstraintSets}

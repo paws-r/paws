@@ -10,9 +10,10 @@ wafregional_list_byte_match_sets(NextMarker, Limit)
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{ByteMatchSets}
 than the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the
 response that allows you to list another group of \code{ByteMatchSets}. For
-the second and subsequent \code{ListByteMatchSets} requests, specify the
-value of \code{NextMarker} from the previous response to get information
-about another batch of \code{ByteMatchSets}.}
+the second and subsequent
+\code{\link[=wafregional_list_byte_match_sets]{list_byte_match_sets}} requests,
+specify the value of \code{NextMarker} from the previous response to get
+information about another batch of \code{ByteMatchSets}.}
 
 \item{Limit}{Specifies the number of \code{ByteMatchSet} objects that you want AWS WAF to
 return for this request. If you have more \code{ByteMatchSets} objects than

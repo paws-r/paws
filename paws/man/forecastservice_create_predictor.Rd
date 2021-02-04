@@ -29,7 +29,8 @@ training. Required if \code{PerformAutoML} is not set to \code{true}.
 The forecast horizon is also called the prediction length.
 
 For example, if you configure a dataset for daily data collection (using
-the \code{DataFrequency} parameter of the CreateDataset operation) and set
+the \code{DataFrequency} parameter of the
+\code{\link[=forecastservice_create_dataset]{create_dataset}} operation) and set
 the forecast horizon to 10, the model returns predictions for 10 days.
 
 The maximum forecast horizon is the lesser of 500 time-steps or 1/3 of
@@ -135,15 +136,19 @@ hyperparameters.
 
 Amazon Forecast uses the algorithm to train a predictor using the latest
 version of the datasets in the specified dataset group. You can then
-generate a forecast using the CreateForecast operation.
+generate a forecast using the
+\code{\link[=forecastservice_create_forecast]{create_forecast}} operation.
 
-To see the evaluation metrics, use the GetAccuracyMetrics operation.
+To see the evaluation metrics, use the
+\code{\link[=forecastservice_get_accuracy_metrics]{get_accuracy_metrics}}
+operation.
 
 You can specify a featurization configuration to fill and aggregate the
 data fields in the \code{TARGET_TIME_SERIES} dataset to improve model
 training. For more information, see FeaturizationConfig.
 
-For RELATED\\_TIME\\_SERIES datasets, \code{CreatePredictor} verifies that the
+For RELATED\\_TIME\\_SERIES datasets,
+\code{\link[=forecastservice_create_predictor]{create_predictor}} verifies that the
 \code{DataFrequency} specified when the dataset was created matches the
 \code{ForecastFrequency}. TARGET\\_TIME\\_SERIES datasets don't have this
 restriction. Amazon Forecast also verifies the delimiter and timestamp
@@ -169,12 +174,13 @@ When AutoML is enabled, the following properties are disallowed:
 \item \code{TrainingParameters}
 }
 
-To get a list of all of your predictors, use the ListPredictors
-operation.
+To get a list of all of your predictors, use the
+\code{\link[=forecastservice_list_predictors]{list_predictors}} operation.
 
 Before you can use the predictor to create a forecast, the \code{Status} of
 the predictor must be \code{ACTIVE}, signifying that training has completed.
-To get the status, use the DescribePredictor operation.
+To get the status, use the
+\code{\link[=forecastservice_describe_predictor]{describe_predictor}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$create_predictor(

@@ -22,21 +22,22 @@ This parameter is optional. If this parameter is omitted, delivery
 streams of all types are returned.}
 
 \item{ExclusiveStartDeliveryStreamName}{The list of delivery streams returned by this call to
-\code{ListDeliveryStreams} will start with the delivery stream whose name
-comes alphabetically immediately after the name you specify in
-\code{ExclusiveStartDeliveryStreamName}.}
+\code{\link[=firehose_list_delivery_streams]{list_delivery_streams}} will start
+with the delivery stream whose name comes alphabetically immediately
+after the name you specify in \code{ExclusiveStartDeliveryStreamName}.}
 }
 \description{
 Lists your delivery streams in alphabetical order of their names.
 
 The number of delivery streams might be too large to return using a
-single call to \code{ListDeliveryStreams}. You can limit the number of
-delivery streams returned, using the \code{Limit} parameter. To determine
-whether there are more delivery streams to list, check the value of
-\code{HasMoreDeliveryStreams} in the output. If there are more delivery
-streams to list, you can request them by calling this operation again
-and setting the \code{ExclusiveStartDeliveryStreamName} parameter to the name
-of the last delivery stream returned in the last call.
+single call to
+\code{\link[=firehose_list_delivery_streams]{list_delivery_streams}}. You can limit
+the number of delivery streams returned, using the \code{Limit} parameter. To
+determine whether there are more delivery streams to list, check the
+value of \code{HasMoreDeliveryStreams} in the output. If there are more
+delivery streams to list, you can request them by calling this operation
+again and setting the \code{ExclusiveStartDeliveryStreamName} parameter to
+the name of the last delivery stream returned in the last call.
 }
 \section{Request syntax}{
 \preformatted{svc$list_delivery_streams(

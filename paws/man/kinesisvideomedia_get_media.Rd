@@ -23,21 +23,24 @@ the request, you identify the stream name or stream Amazon Resource Name
 stream of chunks in order by fragment number.
 
 You must first call the \code{GetDataEndpoint} API to get an endpoint. Then
-send the \code{GetMedia} requests to this endpoint using the \href{https://docs.aws.amazon.com/cli/latest/reference/}{--endpoint-url parameter}.
+send the \code{\link[=kinesisvideomedia_get_media]{get_media}} requests to this
+endpoint using the \href{https://docs.aws.amazon.com/cli/latest/reference/}{--endpoint-url parameter}.
 
 When you put media data (fragments) on a stream, Kinesis Video Streams
 stores each incoming fragment and related metadata in what is called a
 "chunk." For more information, see
 \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_dataplane_PutMedia.html}{PutMedia}.
-The \code{GetMedia} API returns a stream of these chunks starting from the
-chunk that you specify in the request.
+The \code{\link[=kinesisvideomedia_get_media]{get_media}} API returns a stream of
+these chunks starting from the chunk that you specify in the request.
 
-The following limits apply when using the \code{GetMedia} API:
+The following limits apply when using the
+\code{\link[=kinesisvideomedia_get_media]{get_media}} API:
 \itemize{
-\item A client can call \code{GetMedia} up to five times per second per stream.
+\item A client can call \code{\link[=kinesisvideomedia_get_media]{get_media}} up to
+five times per second per stream.
 \item Kinesis Video Streams sends media data at a rate of up to 25
 megabytes per second (or 200 megabits per second) during a
-\code{GetMedia} session.
+\code{\link[=kinesisvideomedia_get_media]{get_media}} session.
 }
 
 If an error is thrown after invoking a Kinesis Video Streams media API,

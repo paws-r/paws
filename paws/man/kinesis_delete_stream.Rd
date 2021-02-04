@@ -10,7 +10,8 @@ kinesis_delete_stream(StreamName, EnforceConsumerDeletion)
 \item{StreamName}{[required] The name of the stream to delete.}
 
 \item{EnforceConsumerDeletion}{If this parameter is unset (\code{null}) or if you set it to \code{false}, and the
-stream has registered consumers, the call to \code{DeleteStream} fails with a
+stream has registered consumers, the call to
+\code{\link[=kinesis_delete_stream]{delete_stream}} fails with a
 \code{ResourceInUseException}.}
 }
 \description{
@@ -20,20 +21,24 @@ the stream. If an application attempts to operate on a deleted stream,
 it receives the exception \code{ResourceNotFoundException}.
 
 If the stream is in the \code{ACTIVE} state, you can delete it. After a
-\code{DeleteStream} request, the specified stream is in the \code{DELETING} state
-until Kinesis Data Streams completes the deletion.
+\code{\link[=kinesis_delete_stream]{delete_stream}} request, the specified stream
+is in the \code{DELETING} state until Kinesis Data Streams completes the
+deletion.
 
 \strong{Note:} Kinesis Data Streams might continue to accept data read and
-write operations, such as PutRecord, PutRecords, and GetRecords, on a
-stream in the \code{DELETING} state until the stream deletion is complete.
+write operations, such as \code{\link[=kinesis_put_record]{put_record}},
+\code{\link[=kinesis_put_records]{put_records}}, and
+\code{\link[=kinesis_get_records]{get_records}}, on a stream in the \code{DELETING}
+state until the stream deletion is complete.
 
 When you delete a stream, any shards in that stream are also deleted,
 and any tags are dissociated from the stream.
 
-You can use the DescribeStream operation to check the state of the
-stream, which is returned in \code{StreamStatus}.
+You can use the \code{\link[=kinesis_describe_stream]{describe_stream}} operation
+to check the state of the stream, which is returned in \code{StreamStatus}.
 
-DeleteStream has a limit of five transactions per second per account.
+\code{\link[=kinesis_delete_stream]{delete_stream}} has a limit of five
+transactions per second per account.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_stream(

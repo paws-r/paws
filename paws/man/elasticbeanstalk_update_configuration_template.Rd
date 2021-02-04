@@ -12,13 +12,15 @@ elasticbeanstalk_update_configuration_template(ApplicationName,
 \item{ApplicationName}{[required] The name of the application associated with the configuration template
 to update.
 
-If no application is found with this name, \code{UpdateConfigurationTemplate}
+If no application is found with this name,
+\code{\link[=elasticbeanstalk_update_configuration_template]{update_configuration_template}}
 returns an \code{InvalidParameterValue} error.}
 
 \item{TemplateName}{[required] The name of the configuration template to update.
 
 If no configuration template is found with this name,
-\code{UpdateConfigurationTemplate} returns an \code{InvalidParameterValue} error.}
+\code{\link[=elasticbeanstalk_update_configuration_template]{update_configuration_template}}
+returns an \code{InvalidParameterValue} error.}
 
 \item{Description}{A new description for the configuration.}
 
@@ -39,7 +41,7 @@ string.
 
 Related Topics
 \itemize{
-\item DescribeConfigurationOptions
+\item \code{\link[=elasticbeanstalk_describe_configuration_options]{describe_configuration_options}}
 }
 }
 \section{Request syntax}{

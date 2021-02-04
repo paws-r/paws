@@ -13,41 +13,46 @@ NULL
 #' 
 #' AWS Cloud9 supports these operations:
 #' 
-#' -   `CreateEnvironmentEC2`: Creates an AWS Cloud9 development
-#'     environment, launches an Amazon EC2 instance, and then connects from
-#'     the instance to the environment.
+#' -   [`create_environment_ec2`][cloud9_create_environment_ec2]: Creates
+#'     an AWS Cloud9 development environment, launches an Amazon EC2
+#'     instance, and then connects from the instance to the environment.
 #' 
-#' -   `CreateEnvironmentMembership`: Adds an environment member to an
+#' -   [`create_environment_membership`][cloud9_create_environment_membership]:
+#'     Adds an environment member to an environment.
+#' 
+#' -   [`delete_environment`][cloud9_delete_environment]: Deletes an
+#'     environment. If an Amazon EC2 instance is connected to the
+#'     environment, also terminates the instance.
+#' 
+#' -   [`delete_environment_membership`][cloud9_delete_environment_membership]:
+#'     Deletes an environment member from an environment.
+#' 
+#' -   [`describe_environment_memberships`][cloud9_describe_environment_memberships]:
+#'     Gets information about environment members for an environment.
+#' 
+#' -   [`describe_environments`][cloud9_describe_environments]: Gets
+#'     information about environments.
+#' 
+#' -   [`describe_environment_status`][cloud9_describe_environment_status]:
+#'     Gets status information for an environment.
+#' 
+#' -   [`list_environments`][cloud9_list_environments]: Gets a list of
+#'     environment identifiers.
+#' 
+#' -   [`list_tags_for_resource`][cloud9_list_tags_for_resource]: Gets the
+#'     tags for an environment.
+#' 
+#' -   [`tag_resource`][cloud9_tag_resource]: Adds tags to an environment.
+#' 
+#' -   [`untag_resource`][cloud9_untag_resource]: Removes tags from an
 #'     environment.
 #' 
-#' -   `DeleteEnvironment`: Deletes an environment. If an Amazon EC2
-#'     instance is connected to the environment, also terminates the
-#'     instance.
+#' -   [`update_environment`][cloud9_update_environment]: Changes the
+#'     settings of an existing environment.
 #' 
-#' -   `DeleteEnvironmentMembership`: Deletes an environment member from an
+#' -   [`update_environment_membership`][cloud9_update_environment_membership]:
+#'     Changes the settings of an existing environment member for an
 #'     environment.
-#' 
-#' -   `DescribeEnvironmentMemberships`: Gets information about environment
-#'     members for an environment.
-#' 
-#' -   `DescribeEnvironments`: Gets information about environments.
-#' 
-#' -   `DescribeEnvironmentStatus`: Gets status information for an
-#'     environment.
-#' 
-#' -   `ListEnvironments`: Gets a list of environment identifiers.
-#' 
-#' -   `ListTagsForResource`: Gets the tags for an environment.
-#' 
-#' -   `TagResource`: Adds tags to an environment.
-#' 
-#' -   `UntagResource`: Removes tags from an environment.
-#' 
-#' -   `UpdateEnvironment`: Changes the settings of an existing
-#'     environment.
-#' 
-#' -   `UpdateEnvironmentMembership`: Changes the settings of an existing
-#'     environment member for an environment.
 #'
 #' @param
 #' config

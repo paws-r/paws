@@ -49,8 +49,9 @@ the package version revision.}
 
 \item{expectedStatus}{The package version’s expected status before it is updated. If
 \code{expectedStatus} is provided, the package version's status is updated
-only if its status at the time \code{UpdatePackageVersionsStatus} is called
-matches \code{expectedStatus}.}
+only if its status at the time
+\code{\link[=codeartifact_update_package_versions_status]{update_package_versions_status}}
+is called matches \code{expectedStatus}.}
 
 \item{targetStatus}{[required] The status you want to change the package version status to.}
 }

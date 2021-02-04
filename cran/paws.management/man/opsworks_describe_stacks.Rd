@@ -8,8 +8,8 @@ opsworks_describe_stacks(StackIds)
 }
 \arguments{
 \item{StackIds}{An array of stack IDs that specify the stacks to be described. If you
-omit this parameter, \code{DescribeStacks} returns a description of every
-stack.}
+omit this parameter, \code{\link[=opsworks_describe_stacks]{describe_stacks}}
+returns a description of every stack.}
 }
 \description{
 Requests a description of one or more stacks.

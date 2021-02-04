@@ -7,16 +7,17 @@ NULL
 #'
 #' @description
 #' Creates a new dataset in an Amazon Lookout for Vision project.
-#' `CreateDataset` can create a training or a test dataset from a valid
-#' dataset source (`DatasetSource`).
+#' [`create_dataset`][lookoutforvision_create_dataset] can create a
+#' training or a test dataset from a valid dataset source
+#' (`DatasetSource`).
 #' 
 #' If you want a single dataset project, specify `train` for the value of
 #' `DatasetType`.
 #' 
 #' To have a project with separate training and test datasets, call
-#' `CreateDataset` twice. On the first call, specify `train` for the value
-#' of `DatasetType`. On the second call, specify `test` for the value of
-#' `DatasetType`. of dataset with
+#' [`create_dataset`][lookoutforvision_create_dataset] twice. On the first
+#' call, specify `train` for the value of `DatasetType`. On the second
+#' call, specify `test` for the value of `DatasetType`. of dataset with
 #'
 #' @usage
 #' lookoutforvision_create_dataset(ProjectName, DatasetType, DatasetSource,
@@ -30,21 +31,27 @@ NULL
 #' 
 #' If you don't specify `DatasetSource`, an empty dataset is created and
 #' the operation synchronously returns. Later, you can add JSON Lines by
-#' calling UpdateDatasetEntries.
+#' calling
+#' [`update_dataset_entries`][lookoutforvision_update_dataset_entries].
 #' 
 #' If you specify a value for `DataSource`, the manifest at the S3 location
-#' is validated and used to create the dataset. The call to `CreateDataset`
-#' is asynchronous and might take a while to complete. To find out the
-#' current status, Check the value of `Status` returned in a call to
-#' DescribeDataset.
+#' is validated and used to create the dataset. The call to
+#' [`create_dataset`][lookoutforvision_create_dataset] is asynchronous and
+#' might take a while to complete. To find out the current status, Check
+#' the value of `Status` returned in a call to
+#' [`describe_dataset`][lookoutforvision_describe_dataset].
 #' @param ClientToken ClientToken is an idempotency token that ensures a call to
-#' `CreateDataset` completes only once. You choose the value to pass. For
-#' example, An issue, such as an network outage, might prevent you from
-#' getting a response from `CreateDataset`. In this case, safely retry your
-#' call to `CreateDataset` by using the same `ClientToken` parameter value.
-#' An error occurs if the other input parameters are not the same as in the
-#' first request. Using a different value for `ClientToken` is considered a
-#' new call to `CreateDataset`. An idempotency token is active for 8 hours.
+#' [`create_dataset`][lookoutforvision_create_dataset] completes only once.
+#' You choose the value to pass. For example, An issue, such as an network
+#' outage, might prevent you from getting a response from
+#' [`create_dataset`][lookoutforvision_create_dataset]. In this case,
+#' safely retry your call to
+#' [`create_dataset`][lookoutforvision_create_dataset] by using the same
+#' `ClientToken` parameter value. An error occurs if the other input
+#' parameters are not the same as in the first request. Using a different
+#' value for `ClientToken` is considered a new call to
+#' [`create_dataset`][lookoutforvision_create_dataset]. An idempotency
+#' token is active for 8 hours.
 #'
 #' @section Request syntax:
 #' ```
@@ -89,12 +96,12 @@ lookoutforvision_create_dataset <- function(ProjectName, DatasetType, DatasetSou
 #'
 #' @description
 #' Creates a new version of a model within an an Amazon Lookout for Vision
-#' project. `CreateModel` is an asynchronous operation in which Amazon
-#' Lookout for Vision trains, tests, and evaluates a new version of a
-#' model.
+#' project. [`create_model`][lookoutforvision_create_model] is an
+#' asynchronous operation in which Amazon Lookout for Vision trains, tests,
+#' and evaluates a new version of a model.
 #' 
 #' To get the current status, check the `Status` field returned in the
-#' response from DescribeModel.
+#' response from [`describe_model`][lookoutforvision_describe_model].
 #' 
 #' If the project has a single dataset, Amazon Lookout for Vision
 #' internally splits the dataset to create a training and a test dataset.
@@ -110,14 +117,17 @@ lookoutforvision_create_dataset <- function(ProjectName, DatasetType, DatasetSou
 #'
 #' @param ProjectName &#91;required&#93; The name of the project in which you want to create a model version.
 #' @param Description A description for the version of the model.
-#' @param ClientToken ClientToken is an idempotency token that ensures a call to `CreateModel`
-#' completes only once. You choose the value to pass. For example, An
-#' issue, such as an network outage, might prevent you from getting a
-#' response from `CreateModel`. In this case, safely retry your call to
-#' `CreateModel` by using the same `ClientToken` parameter value. An error
-#' occurs if the other input parameters are not the same as in the first
-#' request. Using a different value for `ClientToken` is considered a new
-#' call to `CreateModel`. An idempotency token is active for 8 hours.
+#' @param ClientToken ClientToken is an idempotency token that ensures a call to
+#' [`create_model`][lookoutforvision_create_model] completes only once. You
+#' choose the value to pass. For example, An issue, such as an network
+#' outage, might prevent you from getting a response from
+#' [`create_model`][lookoutforvision_create_model]. In this case, safely
+#' retry your call to [`create_model`][lookoutforvision_create_model] by
+#' using the same `ClientToken` parameter value. An error occurs if the
+#' other input parameters are not the same as in the first request. Using a
+#' different value for `ClientToken` is considered a new call to
+#' [`create_model`][lookoutforvision_create_model]. An idempotency token is
+#' active for 8 hours.
 #' @param OutputConfig &#91;required&#93; The location where Amazon Lookout for Vision saves the training results.
 #' @param KmsKeyId The identifier of the AWS Key Management Service (AWS KMS) customer
 #' master key (CMK) to use for encypting the model. If this parameter is
@@ -196,20 +206,25 @@ lookoutforvision_create_model <- function(ProjectName, Description = NULL, Clien
 #'
 #' @description
 #' Creates an empty Amazon Lookout for Vision project. After you create the
-#' project, add a dataset by calling CreateDataset.
+#' project, add a dataset by calling
+#' [`create_dataset`][lookoutforvision_create_dataset].
 #'
 #' @usage
 #' lookoutforvision_create_project(ProjectName, ClientToken)
 #'
 #' @param ProjectName &#91;required&#93; S nsme for the project.
 #' @param ClientToken ClientToken is an idempotency token that ensures a call to
-#' `CreateProject` completes only once. You choose the value to pass. For
-#' example, An issue, such as an network outage, might prevent you from
-#' getting a response from `CreateProject`. In this case, safely retry your
-#' call to `CreateProject` by using the same `ClientToken` parameter value.
-#' An error occurs if the other input parameters are not the same as in the
-#' first request. Using a different value for `ClientToken` is considered a
-#' new call to `CreateProject`. An idempotency token is active for 8 hours.
+#' [`create_project`][lookoutforvision_create_project] completes only once.
+#' You choose the value to pass. For example, An issue, such as an network
+#' outage, might prevent you from getting a response from
+#' [`create_project`][lookoutforvision_create_project]. In this case,
+#' safely retry your call to
+#' [`create_project`][lookoutforvision_create_project] by using the same
+#' `ClientToken` parameter value. An error occurs if the other input
+#' parameters are not the same as in the first request. Using a different
+#' value for `ClientToken` is considered a new call to
+#' [`create_project`][lookoutforvision_create_project]. An idempotency
+#' token is active for 8 hours.
 #'
 #' @section Request syntax:
 #' ```
@@ -260,7 +275,7 @@ lookoutforvision_create_project <- function(ProjectName, ClientToken = NULL) {
 #' 
 #' It might take a while to delete the dataset. To check the current
 #' status, check the `Status` field in the response from a call to
-#' DescribeDataset.
+#' [`describe_dataset`][lookoutforvision_describe_dataset].
 #'
 #' @usage
 #' lookoutforvision_delete_dataset(ProjectName, DatasetType, ClientToken)
@@ -271,13 +286,17 @@ lookoutforvision_create_project <- function(ProjectName, ClientToken = NULL) {
 #' training dataset. Specify `test` to delete the test dataset. To delete
 #' the dataset in a single dataset project, specify `train`.
 #' @param ClientToken ClientToken is an idempotency token that ensures a call to
-#' `DeleteDataset` completes only once. You choose the value to pass. For
-#' example, An issue, such as an network outage, might prevent you from
-#' getting a response from `DeleteDataset`. In this case, safely retry your
-#' call to `DeleteDataset` by using the same `ClientToken` parameter value.
-#' An error occurs if the other input parameters are not the same as in the
-#' first request. Using a different value for `ClientToken` is considered a
-#' new call to `DeleteDataset`. An idempotency token is active for 8 hours.
+#' [`delete_dataset`][lookoutforvision_delete_dataset] completes only once.
+#' You choose the value to pass. For example, An issue, such as an network
+#' outage, might prevent you from getting a response from
+#' [`delete_dataset`][lookoutforvision_delete_dataset]. In this case,
+#' safely retry your call to
+#' [`delete_dataset`][lookoutforvision_delete_dataset] by using the same
+#' `ClientToken` parameter value. An error occurs if the other input
+#' parameters are not the same as in the first request. Using a different
+#' value for `ClientToken` is considered a new call to
+#' [`delete_dataset`][lookoutforvision_delete_dataset]. An idempotency
+#' token is active for 8 hours.
 #'
 #' @section Request syntax:
 #' ```
@@ -312,21 +331,25 @@ lookoutforvision_delete_dataset <- function(ProjectName, DatasetType, ClientToke
 #'
 #' @description
 #' Deletes an Amazon Lookout for Vision model. You can't delete a running
-#' model. To stop a running model, use the StopModel operation.
+#' model. To stop a running model, use the
+#' [`stop_model`][lookoutforvision_stop_model] operation.
 #'
 #' @usage
 #' lookoutforvision_delete_model(ProjectName, ModelVersion, ClientToken)
 #'
 #' @param ProjectName &#91;required&#93; The name of the project that contains the model that you want to delete.
 #' @param ModelVersion &#91;required&#93; The version of the model that you want to delete.
-#' @param ClientToken ClientToken is an idempotency token that ensures a call to `DeleteModel`
-#' completes only once. You choose the value to pass. For example, An
-#' issue, such as an network outage, might prevent you from getting a
-#' response from `DeleteModel`. In this case, safely retry your call to
-#' `DeleteModel` by using the same `ClientToken` parameter value. An error
-#' occurs if the other input parameters are not the same as in the first
-#' request. Using a different value for `ClientToken` is considered a new
-#' call to `DeleteModel`. An idempotency token is active for 8 hours.
+#' @param ClientToken ClientToken is an idempotency token that ensures a call to
+#' [`delete_model`][lookoutforvision_delete_model] completes only once. You
+#' choose the value to pass. For example, An issue, such as an network
+#' outage, might prevent you from getting a response from
+#' [`delete_model`][lookoutforvision_delete_model]. In this case, safely
+#' retry your call to [`delete_model`][lookoutforvision_delete_model] by
+#' using the same `ClientToken` parameter value. An error occurs if the
+#' other input parameters are not the same as in the first request. Using a
+#' different value for `ClientToken` is considered a new call to
+#' [`delete_model`][lookoutforvision_delete_model]. An idempotency token is
+#' active for 8 hours.
 #'
 #' @section Request syntax:
 #' ```
@@ -363,8 +386,8 @@ lookoutforvision_delete_model <- function(ProjectName, ModelVersion, ClientToken
 #' Deletes an Amazon Lookout for Vision project.
 #' 
 #' To delete a project, you must first delete each version of the model
-#' associated with the project. To delete a model use the DeleteModel
-#' operation.
+#' associated with the project. To delete a model use the
+#' [`delete_model`][lookoutforvision_delete_model] operation.
 #' 
 #' The training and test datasets are deleted automatically for you. The
 #' images referenced by the training and test datasets aren't deleted.
@@ -374,13 +397,17 @@ lookoutforvision_delete_model <- function(ProjectName, ModelVersion, ClientToken
 #'
 #' @param ProjectName &#91;required&#93; The name of the project to delete.
 #' @param ClientToken ClientToken is an idempotency token that ensures a call to
-#' `DeleteProject` completes only once. You choose the value to pass. For
-#' example, An issue, such as an network outage, might prevent you from
-#' getting a response from `DeleteProject`. In this case, safely retry your
-#' call to `DeleteProject` by using the same `ClientToken` parameter value.
-#' An error occurs if the other input parameters are not the same as in the
-#' first request. Using a different value for `ClientToken` is considered a
-#' new call to `DeleteProject`. An idempotency token is active for 8 hours.
+#' [`delete_project`][lookoutforvision_delete_project] completes only once.
+#' You choose the value to pass. For example, An issue, such as an network
+#' outage, might prevent you from getting a response from
+#' [`delete_project`][lookoutforvision_delete_project]. In this case,
+#' safely retry your call to
+#' [`delete_project`][lookoutforvision_delete_project] by using the same
+#' `ClientToken` parameter value. An error occurs if the other input
+#' parameters are not the same as in the first request. Using a different
+#' value for `ClientToken` is considered a new call to
+#' [`delete_project`][lookoutforvision_delete_project]. An idempotency
+#' token is active for 8 hours.
 #'
 #' @section Request syntax:
 #' ```
@@ -534,15 +561,18 @@ lookoutforvision_describe_project <- function(ProjectName) {
 #' @description
 #' Detects anomalies in an image that you supply.
 #' 
-#' The response from `DetectAnomalies` includes a boolean prediction that
-#' the image contains one or more anomalies and a confidence value for the
-#' prediction.
+#' The response from
+#' [`detect_anomalies`][lookoutforvision_detect_anomalies] includes a
+#' boolean prediction that the image contains one or more anomalies and a
+#' confidence value for the prediction.
 #' 
-#' Before calling `DetectAnomalies`, you must first start your model with
-#' the StartModel operation. You are charged for the amount of time, in
-#' minutes, that a model runs and for the number of anomaly detection units
-#' that your model uses. If you are not using a model, use the StopModel
-#' operation to stop your model.
+#' Before calling [`detect_anomalies`][lookoutforvision_detect_anomalies],
+#' you must first start your model with the
+#' [`start_model`][lookoutforvision_start_model] operation. You are charged
+#' for the amount of time, in minutes, that a model runs and for the number
+#' of anomaly detection units that your model uses. If you are not using a
+#' model, use the [`stop_model`][lookoutforvision_stop_model] operation to
+#' stop your model.
 #'
 #' @usage
 #' lookoutforvision_detect_anomalies(ProjectName, ModelVersion, Body,
@@ -756,13 +786,13 @@ lookoutforvision_list_projects <- function(NextToken = NULL, MaxResults = NULL) 
 #' @description
 #' Starts the running of the version of an Amazon Lookout for Vision model.
 #' Starting a model takes a while to complete. To check the current state
-#' of the model, use DescribeModel.
+#' of the model, use [`describe_model`][lookoutforvision_describe_model].
 #' 
 #' Once the model is running, you can detect custom labels in new images by
-#' calling DetectAnomalies.
+#' calling [`detect_anomalies`][lookoutforvision_detect_anomalies].
 #' 
 #' You are charged for the amount of time that the model is running. To
-#' stop a running model, call StopModel.
+#' stop a running model, call [`stop_model`][lookoutforvision_stop_model].
 #'
 #' @usage
 #' lookoutforvision_start_model(ProjectName, ModelVersion,
@@ -774,14 +804,17 @@ lookoutforvision_list_projects <- function(NextToken = NULL, MaxResults = NULL) 
 #' represents 1 hour of processing and can support up to 5 Transaction Pers
 #' Second (TPS). Use a higher number to increase the TPS throughput of your
 #' model. You are charged for the number of inference units that you use.
-#' @param ClientToken ClientToken is an idempotency token that ensures a call to `StartModel`
-#' completes only once. You choose the value to pass. For example, An
-#' issue, such as an network outage, might prevent you from getting a
-#' response from `StartModel`. In this case, safely retry your call to
-#' `StartModel` by using the same `ClientToken` parameter value. An error
-#' occurs if the other input parameters are not the same as in the first
-#' request. Using a different value for `ClientToken` is considered a new
-#' call to `StartModel`. An idempotency token is active for 8 hours.
+#' @param ClientToken ClientToken is an idempotency token that ensures a call to
+#' [`start_model`][lookoutforvision_start_model] completes only once. You
+#' choose the value to pass. For example, An issue, such as an network
+#' outage, might prevent you from getting a response from
+#' [`start_model`][lookoutforvision_start_model]. In this case, safely
+#' retry your call to [`start_model`][lookoutforvision_start_model] by
+#' using the same `ClientToken` parameter value. An error occurs if the
+#' other input parameters are not the same as in the first request. Using a
+#' different value for `ClientToken` is considered a new call to
+#' [`start_model`][lookoutforvision_start_model]. An idempotency token is
+#' active for 8 hours.
 #'
 #' @section Request syntax:
 #' ```
@@ -817,21 +850,25 @@ lookoutforvision_start_model <- function(ProjectName, ModelVersion, MinInference
 #'
 #' @description
 #' Stops a running model. The operation might take a while to complete. To
-#' check the current status, call DescribeModel.
+#' check the current status, call
+#' [`describe_model`][lookoutforvision_describe_model].
 #'
 #' @usage
 #' lookoutforvision_stop_model(ProjectName, ModelVersion, ClientToken)
 #'
 #' @param ProjectName &#91;required&#93; The name of the project that contains the model that you want to stop.
 #' @param ModelVersion &#91;required&#93; The version of the model that you want to stop.
-#' @param ClientToken ClientToken is an idempotency token that ensures a call to `StopModel`
-#' completes only once. You choose the value to pass. For example, An
-#' issue, such as an network outage, might prevent you from getting a
-#' response from `StopModel`. In this case, safely retry your call to
-#' `StopModel` by using the same `ClientToken` parameter value. An error
-#' occurs if the other input parameters are not the same as in the first
-#' request. Using a different value for `ClientToken` is considered a new
-#' call to `StopModel`. An idempotency token is active for 8 hours.
+#' @param ClientToken ClientToken is an idempotency token that ensures a call to
+#' [`stop_model`][lookoutforvision_stop_model] completes only once. You
+#' choose the value to pass. For example, An issue, such as an network
+#' outage, might prevent you from getting a response from
+#' [`stop_model`][lookoutforvision_stop_model]. In this case, safely retry
+#' your call to [`stop_model`][lookoutforvision_stop_model] by using the
+#' same `ClientToken` parameter value. An error occurs if the other input
+#' parameters are not the same as in the first request. Using a different
+#' value for `ClientToken` is considered a new call to
+#' [`stop_model`][lookoutforvision_stop_model]. An idempotency token is
+#' active for 8 hours.
 #'
 #' @section Request syntax:
 #' ```
@@ -870,8 +907,8 @@ lookoutforvision_stop_model <- function(ProjectName, ModelVersion, ClientToken =
 #' Lookout for Vision model. The following is an example JSON Line.
 #' 
 #' Updating a dataset might take a while to complete. To check the current
-#' status, call DescribeDataset and check the `Status` field in the
-#' response.
+#' status, call [`describe_dataset`][lookoutforvision_describe_dataset] and
+#' check the `Status` field in the response.
 #'
 #' @usage
 #' lookoutforvision_update_dataset_entries(ProjectName, DatasetType,
@@ -884,14 +921,18 @@ lookoutforvision_stop_model <- function(ProjectName, ModelVersion, ClientToken =
 #' If you have a single dataset project, specify `train`.
 #' @param Changes &#91;required&#93; The entries to add to the dataset.
 #' @param ClientToken ClientToken is an idempotency token that ensures a call to
-#' `UpdateDatasetEntries` completes only once. You choose the value to
-#' pass. For example, An issue, such as an network outage, might prevent
-#' you from getting a response from `UpdateDatasetEntries`. In this case,
-#' safely retry your call to `UpdateDatasetEntries` by using the same
-#' `ClientToken` parameter value. An error occurs if the other input
-#' parameters are not the same as in the first request. Using a different
-#' value for `ClientToken` is considered a new call to
-#' `UpdateDatasetEntries`. An idempotency token is active for 8 hours.
+#' [`update_dataset_entries`][lookoutforvision_update_dataset_entries]
+#' completes only once. You choose the value to pass. For example, An
+#' issue, such as an network outage, might prevent you from getting a
+#' response from
+#' [`update_dataset_entries`][lookoutforvision_update_dataset_entries]. In
+#' this case, safely retry your call to
+#' [`update_dataset_entries`][lookoutforvision_update_dataset_entries] by
+#' using the same `ClientToken` parameter value. An error occurs if the
+#' other input parameters are not the same as in the first request. Using a
+#' different value for `ClientToken` is considered a new call to
+#' [`update_dataset_entries`][lookoutforvision_update_dataset_entries]. An
+#' idempotency token is active for 8 hours.
 #'
 #' @section Request syntax:
 #' ```

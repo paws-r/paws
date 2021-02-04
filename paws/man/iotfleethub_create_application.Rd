@@ -20,7 +20,7 @@ idempotent request is required.}
 with AWS IoT Core.
 
 The name of the role must be in the form
-\verb{AWSIotFleetHub_<i>random_string</i> }.}
+\code{AWSIotFleetHub_random_string }.}
 
 \item{tags}{A set of key/value pairs that you can use to manage the web application
 resource.}

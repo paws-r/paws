@@ -23,12 +23,14 @@ Updates a campaign by either deploying a new solution or changing the
 value of the campaign's \code{minProvisionedTPS} parameter.
 
 To update a campaign, the campaign status must be ACTIVE or CREATE
-FAILED. Check the campaign status using the DescribeCampaign API.
+FAILED. Check the campaign status using the
+\code{\link[=personalize_describe_campaign]{describe_campaign}} API.
 
 You must wait until the \code{status} of the updated campaign is \code{ACTIVE}
 before asking the campaign for recommendations.
 
-For more information on campaigns, see CreateCampaign.
+For more information on campaigns, see
+\code{\link[=personalize_create_campaign]{create_campaign}}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_campaign(

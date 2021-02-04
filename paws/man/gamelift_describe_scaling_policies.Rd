@@ -43,24 +43,29 @@ sequential pages. If successful, set of ScalingPolicy objects is
 returned for the fleet.
 
 A fleet may have all of its scaling policies suspended
-(StopFleetActions). This operation does not affect the status of the
-scaling policies, which remains ACTIVE. To see whether a fleet's scaling
-policies are in force or suspended, call DescribeFleetAttributes and
+(\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}). This operation
+does not affect the status of the scaling policies, which remains
+ACTIVE. To see whether a fleet's scaling policies are in force or
+suspended, call
+\code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}} and
 check the stopped actions.
 \itemize{
-\item DescribeFleetCapacity
-\item UpdateFleetCapacity
-\item DescribeEC2InstanceLimits
+\item \code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}}
+\item \code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}
+\item \code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
 \item Manage scaling policies:
 \itemize{
-\item PutScalingPolicy (auto-scaling)
-\item DescribeScalingPolicies (auto-scaling)
-\item DeleteScalingPolicy (auto-scaling)
+\item \code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}}
+(auto-scaling)
+\item \code{\link[=gamelift_describe_scaling_policies]{describe_scaling_policies}}
+(auto-scaling)
+\item \code{\link[=gamelift_delete_scaling_policy]{delete_scaling_policy}}
+(auto-scaling)
 }
 \item Manage fleet actions:
 \itemize{
-\item StartFleetActions
-\item StopFleetActions
+\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}}
+\item \code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
 }
 }
 }

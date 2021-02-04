@@ -70,8 +70,8 @@ following key name/value pairs:
 \item \verb{Key=Environment,Value=Production}
 }
 
-To add tags to an existing maintenance window, use the AddTagsToResource
-action.}
+To add tags to an existing maintenance window, use the
+\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
 }
 \description{
 Creates a new maintenance window.

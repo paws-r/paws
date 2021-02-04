@@ -7,18 +7,19 @@ NULL
 #'
 #' @description
 #' Associates a new node with the server. For more information about how to
-#' disassociate a node, see DisassociateNode.
+#' disassociate a node, see
+#' [`disassociate_node`][opsworkscm_disassociate_node].
 #' 
 #' On a Chef server: This command is an alternative to `knife bootstrap`.
 #' 
 #' Example (Chef):
-#' `aws opsworks-cm associate-node --server-name <i>MyServer</i> --node-name <i>MyManagedNode</i> --engine-attributes "Name=<i>CHEF_ORGANIZATION</i>,Value=default" "Name=<i>CHEF_NODE_PUBLIC_KEY</i>,Value=<i>public-key-pem</i>"`
+#' `aws opsworks-cm associate-node --server-name MyServer --node-name MyManagedNode --engine-attributes "Name=CHEF_ORGANIZATION,Value=default" "Name=CHEF_NODE_PUBLIC_KEY,Value=public-key-pem"`
 #' 
 #' On a Puppet server, this command is an alternative to the
 #' `puppet cert sign` command that signs a Puppet node CSR.
 #' 
 #' Example (Puppet):
-#' `aws opsworks-cm associate-node --server-name <i>MyServer</i> --node-name <i>MyManagedNode</i> --engine-attributes "Name=<i>PUPPET_NODE_CSR</i>,Value=<i>csr-pem</i>"`
+#' `aws opsworks-cm associate-node --server-name MyServer --node-name MyManagedNode --engine-attributes "Name=PUPPET_NODE_CSR,Value=csr-pem"`
 #' 
 #' A node can can only be associated with servers that are in a `HEALTHY`
 #' state. Otherwise, an `InvalidStateException` is thrown. A
@@ -580,8 +581,10 @@ opsworkscm_describe_account_attributes <- function() {
 #'
 #' @param BackupId Describes a single backup.
 #' @param ServerName Returns backups for the server with the specified ServerName.
-#' @param NextToken This is not currently implemented for `DescribeBackups` requests.
-#' @param MaxResults This is not currently implemented for `DescribeBackups` requests.
+#' @param NextToken This is not currently implemented for
+#' [`describe_backups`][opsworkscm_describe_backups] requests.
+#' @param MaxResults This is not currently implemented for
+#' [`describe_backups`][opsworkscm_describe_backups] requests.
 #'
 #' @section Request syntax:
 #' ```
@@ -632,11 +635,12 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
 #' @param NextToken NextToken is a string that is returned in some command responses. It
 #' indicates that not all entries have been returned, and that you must run
 #' at least one more request to get remaining items. To get remaining
-#' results, call `DescribeEvents` again, and assign the token from the
-#' previous results as the value of the `nextToken` parameter. If there are
-#' no more results, the response object's `nextToken` parameter value is
-#' `null`. Setting a `nextToken` value that was not returned in your
-#' previous results causes an `InvalidNextTokenException` to occur.
+#' results, call [`describe_events`][opsworkscm_describe_events] again, and
+#' assign the token from the previous results as the value of the
+#' `nextToken` parameter. If there are no more results, the response
+#' object's `nextToken` parameter value is `null`. Setting a `nextToken`
+#' value that was not returned in your previous results causes an
+#' `InvalidNextTokenException` to occur.
 #' @param MaxResults To receive a paginated response, use this parameter to specify the
 #' maximum number of results to be returned with a single call. If the
 #' number of available results exceeds this maximum, the response includes
@@ -738,8 +742,10 @@ opsworkscm_describe_node_association_status <- function(NodeAssociationStatusTok
 #' opsworkscm_describe_servers(ServerName, NextToken, MaxResults)
 #'
 #' @param ServerName Describes the server with the specified ServerName.
-#' @param NextToken This is not currently implemented for `DescribeServers` requests.
-#' @param MaxResults This is not currently implemented for `DescribeServers` requests.
+#' @param NextToken This is not currently implemented for
+#' [`describe_servers`][opsworkscm_describe_servers] requests.
+#' @param MaxResults This is not currently implemented for
+#' [`describe_servers`][opsworkscm_describe_servers] requests.
 #'
 #' @section Request syntax:
 #' ```
@@ -778,7 +784,7 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
 #' node from the server's managed nodes. After a node is disassociated, the
 #' node key pair is no longer valid for accessing the configuration
 #' manager's API. For more information about how to associate a node, see
-#' AssociateNode.
+#' [`associate_node`][opsworkscm_associate_node].
 #' 
 #' A node can can only be disassociated from a server that is in a
 #' `HEALTHY` state. Otherwise, an `InvalidStateException` is thrown. A
@@ -930,11 +936,13 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
 #' @param NextToken NextToken is a string that is returned in some command responses. It
 #' indicates that not all entries have been returned, and that you must run
 #' at least one more request to get remaining items. To get remaining
-#' results, call `ListTagsForResource` again, and assign the token from the
-#' previous results as the value of the `nextToken` parameter. If there are
-#' no more results, the response object's `nextToken` parameter value is
-#' `null`. Setting a `nextToken` value that was not returned in your
-#' previous results causes an `InvalidNextTokenException` to occur.
+#' results, call
+#' [`list_tags_for_resource`][opsworkscm_list_tags_for_resource] again, and
+#' assign the token from the previous results as the value of the
+#' `nextToken` parameter. If there are no more results, the response
+#' object's `nextToken` parameter value is `null`. Setting a `nextToken`
+#' value that was not returned in your previous results causes an
+#' `InvalidNextTokenException` to occur.
 #' @param MaxResults To receive a paginated response, use this parameter to specify the
 #' maximum number of results to be returned with a single call. If the
 #' number of available results exceeds this maximum, the response includes
@@ -1062,9 +1070,10 @@ opsworkscm_restore_server <- function(BackupId, ServerName, InstanceType = NULL,
 #' 
 #' -   `CHEF_MAJOR_UPGRADE`: If a Chef Automate server is eligible for
 #'     upgrade to Chef Automate 2, add this engine attribute to a
-#'     `StartMaintenance` request and set the value to `true` to upgrade
-#'     the server to Chef Automate 2. For more information, see [Upgrade an
-#'     AWS OpsWorks for Chef Automate Server to Chef Automate
+#'     [`start_maintenance`][opsworkscm_start_maintenance] request and set
+#'     the value to `true` to upgrade the server to Chef Automate 2. For
+#'     more information, see [Upgrade an AWS OpsWorks for Chef Automate
+#'     Server to Chef Automate
 #'     2](https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html).
 #'
 #' @section Request syntax:

@@ -13,13 +13,16 @@ codedeploy_batch_get_deployment_instances(deploymentId, instanceIds)
 of instance IDs you can specify is 25.}
 }
 \description{
-This method works, but is deprecated. Use \code{BatchGetDeploymentTargets}
+This method works, but is deprecated. Use
+\code{\link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets}}
 instead.
 
 Returns an array of one or more instances associated with a deployment.
 This method works with EC2/On-premises and AWS Lambda compute platforms.
-The newer \code{BatchGetDeploymentTargets} works with all compute platforms.
-The maximum number of instances that can be returned is 25.
+The newer
+\code{\link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets}}
+works with all compute platforms. The maximum number of instances that
+can be returned is 25.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_deployment_instances(

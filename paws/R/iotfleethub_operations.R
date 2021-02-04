@@ -24,7 +24,7 @@ NULL
 #' with AWS IoT Core.
 #' 
 #' The name of the role must be in the form
-#' `AWSIotFleetHub_<i>random_string</i> `.
+#' `AWSIotFleetHub_random_string `.
 #' @param tags A set of key/value pairs that you can use to manage the web application
 #' resource.
 #'

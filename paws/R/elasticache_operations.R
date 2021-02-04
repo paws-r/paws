@@ -262,10 +262,11 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
 #' 
 #' This operation is valid for Redis only.
 #' 
-#' Users or groups that have permissions to use the `CopySnapshot`
-#' operation can create their own Amazon S3 buckets and copy snapshots to
-#' it. To control access to your snapshots, use an IAM policy to control
-#' who has the ability to use the `CopySnapshot` operation. For more
+#' Users or groups that have permissions to use the
+#' [`copy_snapshot`][elasticache_copy_snapshot] operation can create their
+#' own Amazon S3 buckets and copy snapshots to it. To control access to
+#' your snapshots, use an IAM policy to control who has the ability to use
+#' the [`copy_snapshot`][elasticache_copy_snapshot] operation. For more
 #' information about using IAM to control the use of ElastiCache
 #' operations, see [Exporting
 #' Snapshots](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html)
@@ -762,7 +763,7 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 #' newly created CacheParameterGroup you can change the values of specific
 #' parameters. For more information, see:
 #' 
-#' -   [ModifyCacheParameterGroup](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyCacheParameterGroup.html)
+#' -   [`modify_cache_parameter_group`][elasticache_modify_cache_parameter_group]
 #'     in the ElastiCache API Reference.
 #' 
 #' -   [Parameters and Parameter
@@ -821,7 +822,7 @@ elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, Ca
 #' outside of an Amazon Virtual Private Cloud (Amazon VPC). If you are
 #' creating a cluster inside of a VPC, use a cache subnet group instead.
 #' For more information, see
-#' [CreateCacheSubnetGroup](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CreateCacheSubnetGroup.html).
+#' [`create_cache_subnet_group`][elasticache_create_cache_subnet_group].
 #'
 #' @usage
 #' elasticache_create_cache_security_group(CacheSecurityGroupName,
@@ -1205,7 +1206,9 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' replication group.
 #' @param EngineVersion The version number of the cache engine to be used for the clusters in
 #' this replication group. To view the supported cache engine versions, use
-#' the `DescribeCacheEngineVersions` operation.
+#' the
+#' [`describe_cache_engine_versions`][elasticache_describe_cache_engine_versions]
+#' operation.
 #' 
 #' **Important:** You can upgrade to a newer engine version (see [Selecting
 #' a Cache Engine and
@@ -1749,11 +1752,12 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #' Deletes a previously provisioned cluster
 #'
 #' @description
-#' Deletes a previously provisioned cluster. `DeleteCacheCluster` deletes
-#' all associated cache nodes, node endpoints and the cluster itself. When
-#' you receive a successful response from this operation, Amazon
-#' ElastiCache immediately begins deleting the cluster; you cannot cancel
-#' or revert this operation.
+#' Deletes a previously provisioned cluster.
+#' [`delete_cache_cluster`][elasticache_delete_cache_cluster] deletes all
+#' associated cache nodes, node endpoints and the cluster itself. When you
+#' receive a successful response from this operation, Amazon ElastiCache
+#' immediately begins deleting the cluster; you cannot cancel or revert
+#' this operation.
 #' 
 #' This operation is not valid for:
 #' 
@@ -1938,8 +1942,9 @@ elasticache_delete_cache_subnet_group <- function(CacheSubnetGroupName) {
 #' @description
 #' Deleting a Global Datastore is a two-step process:
 #' 
-#' -   First, you must DisassociateGlobalReplicationGroup to remove the
-#'     secondary clusters in the Global Datastore.
+#' -   First, you must
+#'     [`disassociate_global_replication_group`][elasticache_disassociate_global_replication_group]
+#'     to remove the secondary clusters in the Global Datastore.
 #' 
 #' -   Once the Global Datastore contains only the primary cluster, you can
 #'     use DeleteGlobalReplicationGroup API to delete the Global Datastore
@@ -2734,8 +2739,9 @@ elasticache_describe_global_replication_groups <- function(GlobalReplicationGrou
 #'
 #' @description
 #' Returns information about a particular replication group. If no
-#' identifier is specified, `DescribeReplicationGroups` returns information
-#' about all replication groups.
+#' identifier is specified,
+#' [`describe_replication_groups`][elasticache_describe_replication_groups]
+#' returns information about all replication groups.
 #' 
 #' This operation is valid for Redis only.
 #'
@@ -3178,9 +3184,9 @@ elasticache_describe_service_updates <- function(ServiceUpdateName = NULL, Servi
 #'
 #' @description
 #' Returns information about cluster or replication group snapshots. By
-#' default, `DescribeSnapshots` lists all of your snapshots; it can
-#' optionally describe a single snapshot, or just the snapshots associated
-#' with a particular cache cluster.
+#' default, [`describe_snapshots`][elasticache_describe_snapshots] lists
+#' all of your snapshots; it can optionally describe a single snapshot, or
+#' just the snapshots associated with a particular cache cluster.
 #' 
 #' This operation is valid for Redis only.
 #'
@@ -3656,7 +3662,9 @@ elasticache_increase_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #' Lists all available node types that you can scale your Redis cluster's
 #' or replication group's current node type.
 #' 
-#' When you use the `ModifyCacheCluster` or `ModifyReplicationGroup`
+#' When you use the
+#' [`modify_cache_cluster`][elasticache_modify_cache_cluster] or
+#' [`modify_replication_group`][elasticache_modify_replication_group]
 #' operations to scale your cluster or replication group, the value of the
 #' `CacheNodeType` parameter must be one of the node types returned by this
 #' operation.
@@ -3716,8 +3724,9 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
 #' case-sensitive and the value is optional. You can use cost allocation
 #' tags to categorize and track your AWS costs.
 #' 
-#' If the cluster is not in the *available* state, `ListTagsForResource`
-#' returns an error.
+#' If the cluster is not in the *available* state,
+#' [`list_tags_for_resource`][elasticache_list_tags_for_resource] returns
+#' an error.
 #' 
 #' You can have a maximum of 50 cost allocation tags on an ElastiCache
 #' resource. For more information, see [Monitoring Costs with
@@ -3811,8 +3820,9 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' previous pending operation to add more nodes or explicitly cancel the
 #' pending request and retry the new request. To cancel pending operations
 #' to modify the number of cache nodes in a cluster, use the
-#' `ModifyCacheCluster` request and set `NumCacheNodes` equal to the number
-#' of cache nodes currently in the cluster.
+#' [`modify_cache_cluster`][elasticache_modify_cache_cluster] request and
+#' set `NumCacheNodes` equal to the number of cache nodes currently in the
+#' cluster.
 #' @param CacheNodeIdsToRemove A list of cache node IDs to be removed. A node ID is a numeric
 #' identifier (0001, 0002, etc.). This parameter is only valid when
 #' `NumCacheNodes` is less than the existing number of cache nodes. The
@@ -3822,7 +3832,8 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' `NumCacheNodes` in the request.
 #' 
 #' For example: If you have 3 active cache nodes, 7 pending cache nodes,
-#' and the number of cache nodes in this `ModifyCacheCluster` call is 5,
+#' and the number of cache nodes in this
+#' [`modify_cache_cluster`][elasticache_modify_cache_cluster] call is 5,
 #' you must list 2 (7 - 5) cache node IDs to remove.
 #' @param AZMode Specifies whether the new nodes in this Memcached cluster are all
 #' created in a single Availability Zone or created across multiple
@@ -3968,8 +3979,10 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' If `false`, changes to the cluster are applied on the next maintenance
 #' reboot, or the next failure reboot, whichever occurs first.
 #' 
-#' If you perform a `ModifyCacheCluster` before a pending modification is
-#' applied, the pending modification is replaced by the newer modification.
+#' If you perform a
+#' [`modify_cache_cluster`][elasticache_modify_cache_cluster] before a
+#' pending modification is applied, the pending modification is replaced by
+#' the newer modification.
 #' 
 #' Valid values: `true` | `false`
 #' 
@@ -4231,7 +4244,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #'     enabled)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html)
 #'     in the ElastiCache User Guide
 #' 
-#' -   [ModifyReplicationGroupShardConfiguration](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyReplicationGroupShardConfiguration.html)
+#' -   [`modify_replication_group_shard_configuration`][elasticache_modify_replication_group_shard_configuration]
 #'     in the ElastiCache API Reference
 #' 
 #' This operation is valid for Redis only.
@@ -4981,9 +4994,10 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #' replication group (called cluster in the console)
 #'
 #' @description
-#' Represents the input of a `TestFailover` operation which test automatic
-#' failover on a specified node group (called shard in the console) in a
-#' replication group (called cluster in the console).
+#' Represents the input of a [`test_failover`][elasticache_test_failover]
+#' operation which test automatic failover on a specified node group
+#' (called shard in the console) in a replication group (called cluster in
+#' the console).
 #' 
 #' **Note the following**
 #' 
@@ -5005,18 +5019,18 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #'     events, listed here in order of occurrance:
 #' 
 #'     1.  Replication group message:
-#'         `Test Failover API called for node group &lt;node-group-id&gt;`
+#'         `Test Failover API called for node group <node-group-id>`
 #' 
 #'     2.  Cache cluster message:
-#'         `Failover from primary node &lt;primary-node-id&gt; to replica node &lt;node-id&gt; completed`
+#'         `Failover from primary node <primary-node-id> to replica node <node-id> completed`
 #' 
 #'     3.  Replication group message:
-#'         `Failover from primary node &lt;primary-node-id&gt; to replica node &lt;node-id&gt; completed`
+#'         `Failover from primary node <primary-node-id> to replica node <node-id> completed`
 #' 
-#'     4.  Cache cluster message: `Recovering cache nodes &lt;node-id&gt;`
+#'     4.  Cache cluster message: `Recovering cache nodes <node-id>`
 #' 
 #'     5.  Cache cluster message:
-#'         `Finished recovery for cache nodes &lt;node-id&gt;`
+#'         `Finished recovery for cache nodes <node-id>`
 #' 
 #'     For more information see:
 #' 
@@ -5024,8 +5038,8 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #'         Events](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ECEvents.Viewing.html)
 #'         in the *ElastiCache User Guide*
 #' 
-#'     -   [DescribeEvents](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_DescribeEvents.html)
-#'         in the ElastiCache API Reference
+#'     -   [`describe_events`][elasticache_describe_events] in the
+#'         ElastiCache API Reference
 #' 
 #' Also see, [Testing
 #' Multi-AZ](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test)

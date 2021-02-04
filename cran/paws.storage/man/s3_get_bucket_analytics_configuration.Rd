@@ -35,9 +35,9 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketAnalyticsConfiguration.html}{DeleteBucketAnalyticsConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketAnalyticsConfigurations.html}{ListBucketAnalyticsConfigurations}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html}{PutBucketAnalyticsConfiguration}
+\item \code{\link[=s3_delete_bucket_analytics_configuration]{delete_bucket_analytics_configuration}}
+\item \code{\link[=s3_list_bucket_analytics_configurations]{list_bucket_analytics_configurations}}
+\item \code{\link[=s3_put_bucket_analytics_configuration]{put_bucket_analytics_configuration}}
 }
 }
 \section{Request syntax}{

@@ -8,7 +8,9 @@ wafregional_update_rule_group(RuleGroupId, Updates, ChangeToken)
 }
 \arguments{
 \item{RuleGroupId}{[required] The \code{RuleGroupId} of the RuleGroup that you want to update.
-\code{RuleGroupId} is returned by CreateRuleGroup and by ListRuleGroups.}
+\code{RuleGroupId} is returned by
+\code{\link[=wafregional_create_rule_group]{create_rule_group}} and by
+\code{\link[=wafregional_list_rule_groups]{list_rule_groups}}.}
 
 \item{Updates}{[required] An array of \code{RuleGroupUpdate} objects that you want to insert into or
 delete from a RuleGroup.
@@ -21,7 +23,8 @@ You can only insert \code{REGULAR} rules into a rule group.
 \code{ActivatedRule|Action} is used instead of
 \code{ActivatedRule|OverrideAction}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -42,13 +45,14 @@ You can have a maximum of ten rules per rule group.
 To create and configure a \code{RuleGroup}, perform the following steps:
 \enumerate{
 \item Create and update the \code{Rules} that you want to include in the
-\code{RuleGroup}. See CreateRule.
-\item Use \code{GetChangeToken} to get the change token that you provide in the
-\code{ChangeToken} parameter of an UpdateRuleGroup request.
-\item Submit an \code{UpdateRuleGroup} request to add \code{Rules} to the
-\code{RuleGroup}.
+\code{RuleGroup}. See \code{\link[=wafregional_create_rule]{create_rule}}.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=wafregional_update_rule_group]{update_rule_group}} request.
+\item Submit an \code{\link[=wafregional_update_rule_group]{update_rule_group}}
+request to add \code{Rules} to the \code{RuleGroup}.
 \item Create and update a \code{WebACL} that contains the \code{RuleGroup}. See
-CreateWebACL.
+\code{\link[=wafregional_create_web_acl]{create_web_acl}}.
 }
 
 If you want to replace one \code{Rule} with another, you delete the existing

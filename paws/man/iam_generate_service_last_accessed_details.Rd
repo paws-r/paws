@@ -38,32 +38,35 @@ API calls and whether they were successful or denied access. For more
 information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html}{Logging IAM Events with CloudTrail}
 in the \emph{IAM User Guide}.
 
-The \code{GenerateServiceLastAccessedDetails} operation returns a \code{JobId}.
-Use this parameter in the following operations to retrieve the following
-details from your report:
+The
+\code{\link[=iam_generate_service_last_accessed_details]{generate_service_last_accessed_details}}
+operation returns a \code{JobId}. Use this parameter in the following
+operations to retrieve the following details from your report:
 \itemize{
-\item GetServiceLastAccessedDetails – Use this operation for users,
-groups, roles, or policies to list every AWS service that the
-resource could access using permissions policies. For each service,
-the response includes information about the most recent access
-attempt.
+\item \code{\link[=iam_get_service_last_accessed_details]{get_service_last_accessed_details}}
+– Use this operation for users, groups, roles, or policies to list
+every AWS service that the resource could access using permissions
+policies. For each service, the response includes information about
+the most recent access attempt.
 
 The \code{JobId} returned by \code{GenerateServiceLastAccessedDetail} must be
 used by the same role within a session, or by the same user when
 used to call \code{GetServiceLastAccessedDetail}.
-\item GetServiceLastAccessedDetailsWithEntities – Use this operation for
-groups and policies to list information about the associated
-entities (users or roles) that attempted to access a specific AWS
-service.
+\item \code{\link[=iam_get_service_last_accessed_details_with_entities]{get_service_last_accessed_details_with_entities}}
+– Use this operation for groups and policies to list information
+about the associated entities (users or roles) that attempted to
+access a specific AWS service.
 }
 
-To check the status of the \code{GenerateServiceLastAccessedDetails} request,
-use the \code{JobId} parameter in the same operations and test the
+To check the status of the
+\code{\link[=iam_generate_service_last_accessed_details]{generate_service_last_accessed_details}}
+request, use the \code{JobId} parameter in the same operations and test the
 \code{JobStatus} response parameter.
 
 For additional information about the permissions policies that allow an
 identity (user, group, or role) to access specific services, use the
-ListPoliciesGrantingServiceAccess operation.
+\code{\link[=iam_list_policies_granting_service_access]{list_policies_granting_service_access}}
+operation.
 
 Service last accessed data does not use other policy types when
 determining whether a resource could access a service. These other

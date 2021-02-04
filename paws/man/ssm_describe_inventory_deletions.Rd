@@ -8,7 +8,7 @@ ssm_describe_inventory_deletions(DeletionId, NextToken, MaxResults)
 }
 \arguments{
 \item{DeletionId}{Specify the delete inventory ID for which you want information. This ID
-was returned by the \code{DeleteInventory} action.}
+was returned by the \code{\link[=ssm_delete_inventory]{delete_inventory}} action.}
 
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}

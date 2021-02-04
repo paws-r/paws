@@ -11,8 +11,8 @@ lexmodelbuildingservice_get_import(importId)
 \item{importId}{[required] The identifier of the import job information to return.}
 }
 \description{
-Gets information about an import job started with the \code{StartImport}
-operation.
+Gets information about an import job started with the
+\code{\link[=lexmodelbuildingservice_start_import]{start_import}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$get_import(

@@ -87,19 +87,21 @@ the ID of the existing file system.
 For basic use cases, you can use a randomly generated UUID for the
 creation token.
 
-The idempotent operation allows you to retry a \code{CreateFileSystem} call
-without risk of creating an extra file system. This can happen when an
-initial call fails in a way that leaves it uncertain whether or not a
-file system was actually created. An example might be that a transport
-level timeout occurred or your connection was reset. As long as you use
-the same creation token, if the initial call had succeeded in creating a
-file system, the client can learn of its existence from the
+The idempotent operation allows you to retry a
+\code{\link[=efs_create_file_system]{create_file_system}} call without risk of
+creating an extra file system. This can happen when an initial call
+fails in a way that leaves it uncertain whether or not a file system was
+actually created. An example might be that a transport level timeout
+occurred or your connection was reset. As long as you use the same
+creation token, if the initial call had succeeded in creating a file
+system, the client can learn of its existence from the
 \code{FileSystemAlreadyExists} error.
 
-The \code{CreateFileSystem} call returns while the file system's lifecycle
-state is still \code{creating}. You can check the file system creation status
-by calling the DescribeFileSystems operation, which among other things
-returns the file system state.
+The \code{\link[=efs_create_file_system]{create_file_system}} call returns while
+the file system's lifecycle state is still \code{creating}. You can check the
+file system creation status by calling the
+\code{\link[=efs_describe_file_systems]{describe_file_systems}} operation, which
+among other things returns the file system state.
 
 This operation also takes an optional \code{PerformanceMode} parameter that
 you choose for your file system. We recommend \code{generalPurpose}
@@ -112,9 +114,9 @@ file system has been created. For more information, see \href{https://docs.aws.a
 After the file system is fully created, Amazon EFS sets its lifecycle
 state to \code{available}, at which point you can create one or more mount
 targets for the file system in your VPC. For more information, see
-CreateMountTarget. You mount your Amazon EFS file system on an EC2
-instances in your VPC by using the mount target. For more information,
-see \href{https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html}{Amazon EFS: How it Works}.
+\code{\link[=efs_create_mount_target]{create_mount_target}}. You mount your Amazon
+EFS file system on an EC2 instances in your VPC by using the mount
+target. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html}{Amazon EFS: How it Works}.
 
 This operation requires permissions for the
 \code{elasticfilesystem:CreateFileSystem} action.

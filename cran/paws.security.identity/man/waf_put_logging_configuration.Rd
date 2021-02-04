@@ -38,13 +38,15 @@ CloudFront, always create the firehose in US East (N. Virginia).
 Do not create the data firehose using a \verb{Kinesis stream} as your
 source.
 \item Associate that firehose to your web ACL using a
-\code{PutLoggingConfiguration} request.
+\code{\link[=waf_put_logging_configuration]{put_logging_configuration}}
+request.
 }
 
-When you successfully enable logging using a \code{PutLoggingConfiguration}
-request, AWS WAF will create a service linked role with the necessary
-permissions to write logs to the Amazon Kinesis Data Firehose. For more
-information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/logging.html}{Logging Web ACL Traffic Information}
+When you successfully enable logging using a
+\code{\link[=waf_put_logging_configuration]{put_logging_configuration}} request,
+AWS WAF will create a service linked role with the necessary permissions
+to write logs to the Amazon Kinesis Data Firehose. For more information,
+see \href{https://docs.aws.amazon.com/waf/latest/developerguide/logging.html}{Logging Web ACL Traffic Information}
 in the \emph{AWS WAF Developer Guide}.
 }
 \section{Request syntax}{

@@ -72,7 +72,9 @@ app requests permission to access the user's information.}
 that you can use to categorize and manage user pools in different ways,
 such as by purpose, owner, environment, or other criteria.}
 
-\item{AdminCreateUserConfig}{The configuration for \code{AdminCreateUser} requests.}
+\item{AdminCreateUserConfig}{The configuration for
+\code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}}
+requests.}
 
 \item{Schema}{An array of schema attributes for the new user pool. These attributes
 can be standard or custom attributes.}
@@ -88,7 +90,8 @@ see
 \href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UsernameConfigurationType.html}{UsernameConfigurationType}.}
 
 \item{AccountRecoverySetting}{Use this setting to define which verified available method a user can
-use to recover their password when they call \code{ForgotPassword}. It allows
+use to recover their password when they call
+\code{\link[=cognitoidentityprovider_forgot_password]{forgot_password}}. It allows
 you to define a preferred method when a user has more than one method
 available. With this setting, SMS does not qualify for a valid password
 recovery mechanism if the user also has SMS MFA enabled. In the absence

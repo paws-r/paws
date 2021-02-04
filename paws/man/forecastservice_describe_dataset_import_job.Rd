@@ -11,12 +11,13 @@ forecastservice_describe_dataset_import_job(DatasetImportJobArn)
 \item{DatasetImportJobArn}{[required] The Amazon Resource Name (ARN) of the dataset import job.}
 }
 \description{
-Describes a dataset import job created using the CreateDatasetImportJob
+Describes a dataset import job created using the
+\code{\link[=forecastservice_create_dataset_import_job]{create_dataset_import_job}}
 operation.
 
 In addition to listing the parameters provided in the
-\code{CreateDatasetImportJob} request, this operation includes the following
-properties:
+\code{\link[=forecastservice_create_dataset_import_job]{create_dataset_import_job}}
+request, this operation includes the following properties:
 \itemize{
 \item \code{CreationTime}
 \item \code{LastModificationTime}

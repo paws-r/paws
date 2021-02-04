@@ -11,7 +11,8 @@ lambda_get_event_source_mapping(UUID)
 }
 \description{
 Returns details about an event source mapping. You can get the
-identifier of a mapping from the output of ListEventSourceMappings.
+identifier of a mapping from the output of
+\code{\link[=lambda_list_event_source_mappings]{list_event_source_mappings}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_event_source_mapping(

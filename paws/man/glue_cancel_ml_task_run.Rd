@@ -15,8 +15,9 @@ glue_cancel_ml_task_run(TransformId, TaskRunId)
 Cancels (stops) a task run. Machine learning task runs are asynchronous
 tasks that AWS Glue runs on your behalf as part of various machine
 learning workflows. You can cancel a machine learning task run at any
-time by calling \code{CancelMLTaskRun} with a task run's parent transform's
-\code{TransformID} and the task run's \code{TaskRunId}.
+time by calling \code{\link[=glue_cancel_ml_task_run]{cancel_ml_task_run}} with a
+task run's parent transform's \code{TransformID} and the task run's
+\code{TaskRunId}.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_ml_task_run(

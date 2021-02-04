@@ -11,8 +11,8 @@ lightsail_update_distribution(distributionName, origin,
 \arguments{
 \item{distributionName}{[required] The name of the distribution to update.
 
-Use the \code{GetDistributions} action to get a list of distribution names
-that you can specify.}
+Use the \code{\link[=lightsail_get_distributions]{get_distributions}} action to get
+a list of distribution names that you can specify.}
 
 \item{origin}{An object that describes the origin resource for the distribution, such
 as a Lightsail instance or load balancer.

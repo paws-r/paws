@@ -8,8 +8,7 @@ synthetics_delete_canary(Name)
 }
 \arguments{
 \item{Name}{[required] The name of the canary that you want to delete. To find the names of
-your canaries, use
-\href{https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html}{DescribeCanaries}.}
+your canaries, use \code{\link[=synthetics_describe_canaries]{describe_canaries}}.}
 }
 \description{
 Permanently deletes the specified canary.
@@ -19,22 +18,22 @@ not automatically deleted. After you delete a canary that you do not
 intend to use again, you should also delete the following:
 \itemize{
 \item The Lambda functions and layers used by this canary. These have the
-prefix \verb{cwsyn-<i>MyCanaryName</i> }.
+prefix \code{cwsyn-MyCanaryName }.
 \item The CloudWatch alarms created for this canary. These alarms have a
-name of \verb{Synthetics-SharpDrop-Alarm-<i>MyCanaryName</i> }.
+name of \code{Synthetics-SharpDrop-Alarm-MyCanaryName }.
 \item Amazon S3 objects and buckets, such as the canary's artifact
 location.
 \item IAM roles created for the canary. If they were created in the
 console, these roles have the name
-\verb{role/service-role/CloudWatchSyntheticsRole-<i>MyCanaryName</i>}.
+\code{role/service-role/CloudWatchSyntheticsRole-MyCanaryName}.
 \item CloudWatch Logs log groups created for the canary. These logs groups
-have the name \verb{/aws/lambda/cwsyn-<i>MyCanaryName</i> }.
+have the name \verb{/aws/lambda/cwsyn-MyCanaryName }.
 }
 
-Before you delete a canary, you might want to use \code{GetCanary} to display
-the information about this canary. Make note of the information returned
-by this operation so that you can delete these resources after you
-delete the canary.
+Before you delete a canary, you might want to use
+\code{\link[=synthetics_get_canary]{get_canary}} to display the information about
+this canary. Make note of the information returned by this operation so
+that you can delete these resources after you delete the canary.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_canary(

@@ -18,19 +18,23 @@ response. If this field is omitted, tags are not included in the
 response.}
 
 \item{maxResults}{The maximum number of account setting results returned by
-\code{DescribeCapacityProviders} in paginated output. When this parameter is
-used, \code{DescribeCapacityProviders} only returns \code{maxResults} results in a
-single page along with a \code{nextToken} response element. The remaining
-results of the initial request can be seen by sending another
-\code{DescribeCapacityProviders} request with the returned \code{nextToken} value.
-This value can be between 1 and 10. If this parameter is not used, then
-\code{DescribeCapacityProviders} returns up to 10 results and a \code{nextToken}
-value if applicable.}
+\code{\link[=ecs_describe_capacity_providers]{describe_capacity_providers}} in
+paginated output. When this parameter is used,
+\code{\link[=ecs_describe_capacity_providers]{describe_capacity_providers}} only
+returns \code{maxResults} results in a single page along with a \code{nextToken}
+response element. The remaining results of the initial request can be
+seen by sending another
+\code{\link[=ecs_describe_capacity_providers]{describe_capacity_providers}} request
+with the returned \code{nextToken} value. This value can be between 1 and 10.
+If this parameter is not used, then
+\code{\link[=ecs_describe_capacity_providers]{describe_capacity_providers}} returns
+up to 10 results and a \code{nextToken} value if applicable.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{DescribeCapacityProviders} request where \code{maxResults} was used and the
-results exceeded the value of that parameter. Pagination continues from
-the end of the previous results that returned the \code{nextToken} value.
+\code{\link[=ecs_describe_capacity_providers]{describe_capacity_providers}} request
+where \code{maxResults} was used and the results exceeded the value of that
+parameter. Pagination continues from the end of the previous results
+that returned the \code{nextToken} value.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic

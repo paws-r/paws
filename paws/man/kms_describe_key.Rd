@@ -27,8 +27,10 @@ For example:
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To
-get the alias name and alias ARN, use ListAliases.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
+get the alias name and alias ARN, use
+\code{\link[=kms_list_aliases]{list_aliases}}.}
 
 \item{GrantTokens}{A list of grant tokens.
 
@@ -37,7 +39,7 @@ in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \description{
 Provides detailed information about a customer master key (CMK). You can
-run \code{DescribeKey} on a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed CMK}
+run \code{\link[=kms_describe_key]{describe_key}} on a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed CMK}
 or an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{AWS managed CMK}.
 
 This detailed information includes the key ARN, creation date (and
@@ -50,21 +52,27 @@ also provides information that is particularly important to asymmetric
 CMKs, such as the key usage (encryption or signing) and the encryption
 algorithms or signing algorithms that the CMK supports.
 
-\code{DescribeKey} does not return the following information:
+\code{\link[=kms_describe_key]{describe_key}} does not return the following
+information:
 \itemize{
 \item Aliases associated with the CMK. To get this information, use
-ListAliases.
+\code{\link[=kms_list_aliases]{list_aliases}}.
 \item Whether automatic key rotation is enabled on the CMK. To get this
-information, use GetKeyRotationStatus. Also, some key states prevent
-a CMK from being automatically rotated. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotate-keys-how-it-works}{How Automatic Key Rotation Works}
+information, use
+\code{\link[=kms_get_key_rotation_status]{get_key_rotation_status}}. Also, some
+key states prevent a CMK from being automatically rotated. For
+details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotate-keys-how-it-works}{How Automatic Key Rotation Works}
 in \emph{AWS Key Management Service Developer Guide}.
-\item Tags on the CMK. To get this information, use ListResourceTags.
+\item Tags on the CMK. To get this information, use
+\code{\link[=kms_list_resource_tags]{list_resource_tags}}.
 \item Key policies and grants on the CMK. To get this information, use
-GetKeyPolicy and ListGrants.
+\code{\link[=kms_get_key_policy]{get_key_policy}} and
+\code{\link[=kms_list_grants]{list_grants}}.
 }
 
-If you call the \code{DescribeKey} operation on a \emph{predefined AWS alias},
-that is, an AWS alias with no key ID, AWS KMS creates an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{AWS managed CMK}.
+If you call the \code{\link[=kms_describe_key]{describe_key}} operation on a
+\emph{predefined AWS alias}, that is, an AWS alias with no key ID, AWS KMS
+creates an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{AWS managed CMK}.
 Then, it associates the alias with the new CMK, and returns the \code{KeyId}
 and \code{Arn} of the new CMK in the response.
 
@@ -78,13 +86,13 @@ the \code{KeyId} parameter.
 
 \strong{Related operations:}
 \itemize{
-\item GetKeyPolicy
-\item GetKeyRotationStatus
-\item ListAliases
-\item ListGrants
-\item ListKeys
-\item ListResourceTags
-\item ListRetirableGrants
+\item \code{\link[=kms_get_key_policy]{get_key_policy}}
+\item \code{\link[=kms_get_key_rotation_status]{get_key_rotation_status}}
+\item \code{\link[=kms_list_aliases]{list_aliases}}
+\item \code{\link[=kms_list_grants]{list_grants}}
+\item \code{\link[=kms_list_keys]{list_keys}}
+\item \code{\link[=kms_list_resource_tags]{list_resource_tags}}
+\item \code{\link[=kms_list_retirable_grants]{list_retirable_grants}}
 }
 }
 \section{Request syntax}{

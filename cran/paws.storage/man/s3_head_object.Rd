@@ -143,9 +143,9 @@ returns an HTTP status code 404 ("no such key") error.
 an HTTP status code 403 ("access denied") error.
 }
 
-The following operation is related to \code{HeadObject}:
+The following operation is related to \code{\link[=s3_head_object]{head_object}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
+\item \code{\link[=s3_get_object]{get_object}}
 }
 }
 \section{Request syntax}{

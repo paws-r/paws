@@ -16,8 +16,9 @@ run maintenance.
 \itemize{
 \item \code{CHEF_MAJOR_UPGRADE}: If a Chef Automate server is eligible for
 upgrade to Chef Automate 2, add this engine attribute to a
-\code{StartMaintenance} request and set the value to \code{true} to upgrade
-the server to Chef Automate 2. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html}{Upgrade an AWS OpsWorks for Chef Automate Server to Chef Automate 2}.
+\code{\link[=opsworkscm_start_maintenance]{start_maintenance}} request and set
+the value to \code{true} to upgrade the server to Chef Automate 2. For
+more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html}{Upgrade an AWS OpsWorks for Chef Automate Server to Chef Automate 2}.
 }}
 }
 \description{

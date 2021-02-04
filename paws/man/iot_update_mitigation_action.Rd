@@ -8,8 +8,9 @@ iot_update_mitigation_action(actionName, roleArn, actionParams)
 }
 \arguments{
 \item{actionName}{[required] The friendly name for the mitigation action. You cannot change the name
-by using \code{UpdateMitigationAction}. Instead, you must delete and recreate
-the mitigation action with the new name.}
+by using \code{\link[=iot_update_mitigation_action]{update_mitigation_action}}.
+Instead, you must delete and recreate the mitigation action with the new
+name.}
 
 \item{roleArn}{The ARN of the IAM role that is used to apply the mitigation action.}
 

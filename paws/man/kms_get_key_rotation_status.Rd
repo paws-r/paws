@@ -20,7 +20,8 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \description{
 Gets a Boolean value that indicates whether \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material}
@@ -53,8 +54,8 @@ parameter.
 
 \strong{Related operations:}
 \itemize{
-\item DisableKeyRotation
-\item EnableKeyRotation
+\item \code{\link[=kms_disable_key_rotation]{disable_key_rotation}}
+\item \code{\link[=kms_enable_key_rotation]{enable_key_rotation}}
 }
 }
 \section{Request syntax}{

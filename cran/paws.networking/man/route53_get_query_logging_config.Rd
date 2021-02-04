@@ -14,8 +14,8 @@ information about.}
 Gets information about a specified configuration for DNS query logging.
 
 For more information about DNS query logs, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html}{CreateQueryLoggingConfig}
-and \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html}{Logging DNS Queries}.
+\code{\link[=route53_create_query_logging_config]{create_query_logging_config}} and
+\href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html}{Logging DNS Queries}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_query_logging_config(

@@ -224,8 +224,10 @@ dax_create_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetI
 #' @description
 #' Removes one or more nodes from a DAX cluster.
 #' 
-#' You cannot use `DecreaseReplicationFactor` to remove the last node in a
-#' DAX cluster. If you need to do this, use `DeleteCluster` instead.
+#' You cannot use
+#' [`decrease_replication_factor`][dax_decrease_replication_factor] to
+#' remove the last node in a DAX cluster. If you need to do this, use
+#' [`delete_cluster`][dax_delete_cluster] instead.
 #'
 #' @usage
 #' dax_decrease_replication_factor(ClusterName, NewReplicationFactor,
@@ -781,8 +783,8 @@ dax_increase_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #' List all of the tags for a DAX cluster
 #'
 #' @description
-#' List all of the tags for a DAX cluster. You can call `ListTags` up to 10
-#' times per second, per account.
+#' List all of the tags for a DAX cluster. You can call
+#' [`list_tags`][dax_list_tags] up to 10 times per second, per account.
 #'
 #' @usage
 #' dax_list_tags(ResourceName, NextToken)
@@ -827,8 +829,8 @@ dax_list_tags <- function(ResourceName, NextToken = NULL) {
 #' soon as possible. During the reboot, the node status is set to
 #' REBOOTING.
 #' 
-#' `RebootNode` restarts the DAX engine process and does not remove the
-#' contents of the cache.
+#' [`reboot_node`][dax_reboot_node] restarts the DAX engine process and
+#' does not remove the contents of the cache.
 #'
 #' @usage
 #' dax_reboot_node(ClusterName, NodeId)
@@ -867,8 +869,9 @@ dax_reboot_node <- function(ClusterName, NodeId) {
 #' Associates a set of tags with a DAX resource
 #'
 #' @description
-#' Associates a set of tags with a DAX resource. You can call `TagResource`
-#' up to 5 times per second, per account.
+#' Associates a set of tags with a DAX resource. You can call
+#' [`tag_resource`][dax_tag_resource] up to 5 times per second, per
+#' account.
 #'
 #' @usage
 #' dax_tag_resource(ResourceName, Tags)
@@ -913,7 +916,8 @@ dax_tag_resource <- function(ResourceName, Tags) {
 #'
 #' @description
 #' Removes the association of tags from a DAX resource. You can call
-#' `UntagResource` up to 5 times per second, per account.
+#' [`untag_resource`][dax_untag_resource] up to 5 times per second, per
+#' account.
 #'
 #' @usage
 #' dax_untag_resource(ResourceName, TagKeys)

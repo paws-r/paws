@@ -16,9 +16,10 @@ specified endpoint.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Descending}.}
 
-\item{NextToken}{If the result of the previous \code{ListDataQualityJobDefinitions} request
-was truncated, the response includes a \code{NextToken}. To retrieve the next
-set of transform jobs, use the token in the next request.>}
+\item{NextToken}{If the result of the previous
+\code{\link[=sagemaker_list_data_quality_job_definitions]{list_data_quality_job_definitions}}
+request was truncated, the response includes a \code{NextToken}. To retrieve
+the next set of transform jobs, use the token in the next request.>}
 
 \item{MaxResults}{The maximum number of data quality monitoring job definitions to return
 in the response.}

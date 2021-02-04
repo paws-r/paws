@@ -25,9 +25,11 @@ is required if the "frequency" parameter is set to \code{WEEKLY} or
 \code{BIWEEKLY}.}
 
 \item{targetCheckNames}{Which checks are performed during the scheduled audit. Checks must be
-enabled for your account. (Use \code{DescribeAccountAuditConfiguration} to
-see the list of all checks, including those that are enabled or use
-\code{UpdateAccountAuditConfiguration} to select which checks are enabled.)}
+enabled for your account. (Use
+\code{\link[=iot_describe_account_audit_configuration]{describe_account_audit_configuration}}
+to see the list of all checks, including those that are enabled or use
+\code{\link[=iot_update_account_audit_configuration]{update_account_audit_configuration}}
+to select which checks are enabled.)}
 
 \item{scheduledAuditName}{[required] The name of the scheduled audit. (Max. 128 chars)}
 }

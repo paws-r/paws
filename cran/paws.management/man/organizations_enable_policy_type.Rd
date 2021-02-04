@@ -8,7 +8,8 @@ organizations_enable_policy_type(RootId, PolicyType)
 }
 \arguments{
 \item{RootId}{[required] The unique identifier (ID) of the root in which you want to enable a
-policy type. You can get the ID from the ListRoots operation.
+policy type. You can get the ID from the
+\code{\link[=organizations_list_roots]{list_roots}} operation.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a root ID
 string requires "r-" followed by from 4 to 32 lowercase letters or
@@ -27,18 +28,21 @@ following values:
 Enables a policy type in a root. After you enable a policy type in a
 root, you can attach policies of that type to the root, any
 organizational unit (OU), or account in that root. You can undo this by
-using the DisablePolicyType operation.
+using the \code{\link[=organizations_disable_policy_type]{disable_policy_type}}
+operation.
 
 This is an asynchronous request that AWS performs in the background. AWS
-recommends that you first use ListRoots to see the status of policy
-types for a specified root, and then use this operation.
+recommends that you first use \code{\link[=organizations_list_roots]{list_roots}}
+to see the status of policy types for a specified root, and then use
+this operation.
 
 This operation can be called only from the organization's management
 account.
 
 You can enable a policy type in a root only if that policy type is
 available in the organization. To view the status of available policy
-types in the organization, use DescribeOrganization.
+types in the organization, use
+\code{\link[=organizations_describe_organization]{describe_organization}}.
 }
 \section{Request syntax}{
 \preformatted{svc$enable_policy_type(

@@ -28,7 +28,7 @@ attribute name.}
 \item{ValidationData}{The validation data in the request to register a user.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
-\code{SignUp} calls.}
+\code{\link[=cognitoidentityprovider_sign_up]{sign_up}} calls.}
 
 \item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon

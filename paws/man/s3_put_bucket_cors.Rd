@@ -65,8 +65,8 @@ the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketCors.html}{GetBucketCors}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketCors.html}{DeleteBucketCors}
+\item \code{\link[=s3_get_bucket_cors]{get_bucket_cors}}
+\item \code{\link[=s3_delete_bucket_cors]{delete_bucket_cors}}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html}{RESTOPTIONSobject}
 }
 }

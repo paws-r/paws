@@ -20,10 +20,12 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{WrappingAlgorithm}{[required] The algorithm you will use to encrypt the key material before importing
-it with ImportKeyMaterial. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html}{Encrypt the Key Material}
+it with \code{\link[=kms_import_key_material]{import_key_material}}. For more
+information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html}{Encrypt the Key Material}
 in the \emph{AWS Key Management Service Developer Guide}.}
 
 \item{WrappingKeySpec}{[required] The type of wrapping key (public key) to return in the response. Only
@@ -37,7 +39,8 @@ in the \emph{AWS Key Management Service Developer Guide}.
 
 This operation returns a public key and an import token. Use the public
 key to encrypt the symmetric key material. Store the import token to
-send with a subsequent ImportKeyMaterial request.
+send with a subsequent \code{\link[=kms_import_key_material]{import_key_material}}
+request.
 
 You must specify the key ID of the symmetric CMK into which you will
 import key material. This CMK's \code{Origin} must be \code{EXTERNAL}. You must
@@ -48,10 +51,12 @@ account.
 
 To import key material, you must use the public key and import token
 from the same response. These items are valid for 24 hours. The
-expiration date and time appear in the \code{GetParametersForImport}
-response. You cannot use an expired token in an ImportKeyMaterial
-request. If your key and token expire, send another
-\code{GetParametersForImport} request.
+expiration date and time appear in the
+\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} response.
+You cannot use an expired token in an
+\code{\link[=kms_import_key_material]{import_key_material}} request. If your key
+and token expire, send another
+\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} request.
 
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
@@ -66,8 +71,8 @@ a different AWS account.
 
 \strong{Related operations:}
 \itemize{
-\item ImportKeyMaterial
-\item DeleteImportedKeyMaterial
+\item \code{\link[=kms_import_key_material]{import_key_material}}
+\item \code{\link[=kms_delete_imported_key_material]{delete_imported_key_material}}
 }
 }
 \section{Request syntax}{

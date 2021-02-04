@@ -13,16 +13,15 @@ cloudfront_create_distribution(DistributionConfig)
 Creates a new web distribution. You create a CloudFront distribution to
 tell CloudFront where you want content to be delivered from, and the
 details about how to track and manage content delivery. Send a \code{POST}
-request to the
-\verb{/<i>CloudFront API version</i>/distribution}/\verb{distribution ID}
+request to the \verb{/CloudFront API version/distribution}/\verb{distribution ID}
 resource.
 
 When you update a distribution, there are more required fields than when
 you create a distribution. When you update your distribution by using
-\href{https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html}{UpdateDistribution},
-follow the steps included in the documentation to get the current
-configuration and then make your updates. This helps to make sure that
-you include all of the required fields. To view a summary, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html}{Required Fields for Create Distribution and Update Distribution}
+\code{\link[=cloudfront_update_distribution]{update_distribution}}, follow the
+steps included in the documentation to get the current configuration and
+then make your updates. This helps to make sure that you include all of
+the required fields. To view a summary, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html}{Required Fields for Create Distribution and Update Distribution}
 in the \emph{Amazon CloudFront Developer Guide}.
 }
 \section{Request syntax}{

@@ -18,7 +18,9 @@ can use this action to change the IAM instance profile that's associated
 with an instance without having to disassociate the existing IAM
 instance profile first.
 
-Use DescribeIamInstanceProfileAssociations to get the association ID.
+Use
+\code{\link[=ec2_describe_iam_instance_profile_associations]{describe_iam_instance_profile_associations}}
+to get the association ID.
 }
 \section{Request syntax}{
 \preformatted{svc$replace_iam_instance_profile_association(

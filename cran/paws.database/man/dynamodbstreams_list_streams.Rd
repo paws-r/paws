@@ -19,10 +19,12 @@ will evaluate. Use the value that was returned for
 }
 \description{
 Returns an array of stream ARNs associated with the current account and
-endpoint. If the \code{TableName} parameter is present, then \code{ListStreams}
-will return only the streams ARNs for that table.
+endpoint. If the \code{TableName} parameter is present, then
+\code{\link[=dynamodbstreams_list_streams]{list_streams}} will return only the
+streams ARNs for that table.
 
-You can call \code{ListStreams} at a maximum rate of 5 times per second.
+You can call \code{\link[=dynamodbstreams_list_streams]{list_streams}} at a maximum
+rate of 5 times per second.
 }
 \section{Request syntax}{
 \preformatted{svc$list_streams(

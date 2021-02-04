@@ -10,20 +10,24 @@ lookoutforvision_delete_project(ProjectName, ClientToken)
 \item{ProjectName}{[required] The name of the project to delete.}
 
 \item{ClientToken}{ClientToken is an idempotency token that ensures a call to
-\code{DeleteProject} completes only once. You choose the value to pass. For
-example, An issue, such as an network outage, might prevent you from
-getting a response from \code{DeleteProject}. In this case, safely retry your
-call to \code{DeleteProject} by using the same \code{ClientToken} parameter value.
-An error occurs if the other input parameters are not the same as in the
-first request. Using a different value for \code{ClientToken} is considered a
-new call to \code{DeleteProject}. An idempotency token is active for 8 hours.}
+\code{\link[=lookoutforvision_delete_project]{delete_project}} completes only once.
+You choose the value to pass. For example, An issue, such as an network
+outage, might prevent you from getting a response from
+\code{\link[=lookoutforvision_delete_project]{delete_project}}. In this case,
+safely retry your call to
+\code{\link[=lookoutforvision_delete_project]{delete_project}} by using the same
+\code{ClientToken} parameter value. An error occurs if the other input
+parameters are not the same as in the first request. Using a different
+value for \code{ClientToken} is considered a new call to
+\code{\link[=lookoutforvision_delete_project]{delete_project}}. An idempotency
+token is active for 8 hours.}
 }
 \description{
 Deletes an Amazon Lookout for Vision project.
 
 To delete a project, you must first delete each version of the model
-associated with the project. To delete a model use the DeleteModel
-operation.
+associated with the project. To delete a model use the
+\code{\link[=lookoutforvision_delete_model]{delete_model}} operation.
 
 The training and test datasets are deleted automatically for you. The
 images referenced by the training and test datasets aren't deleted.

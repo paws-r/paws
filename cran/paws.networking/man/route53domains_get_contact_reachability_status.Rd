@@ -20,7 +20,8 @@ operation returns information about whether the registrant contact has
 responded.
 
 If you want us to resend the email, use the
-\code{ResendContactReachabilityEmail} operation.
+\code{\link[=route53domains_resend_contact_reachability_email]{resend_contact_reachability_email}}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$get_contact_reachability_status(

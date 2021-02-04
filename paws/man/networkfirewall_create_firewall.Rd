@@ -60,14 +60,20 @@ After you create a firewall, you can provide additional settings, like
 the logging configuration.
 
 To update the settings for a firewall, you use the operations that apply
-to the settings themselves, for example UpdateLoggingConfiguration,
-AssociateSubnets, and UpdateFirewallDeleteProtection.
+to the settings themselves, for example
+\code{\link[=networkfirewall_update_logging_configuration]{update_logging_configuration}},
+\code{\link[=networkfirewall_associate_subnets]{associate_subnets}}, and
+\code{\link[=networkfirewall_update_firewall_delete_protection]{update_firewall_delete_protection}}.
 
 To manage a firewall's tags, use the standard AWS resource tagging
-operations, ListTagsForResource, TagResource, and UntagResource.
+operations,
+\code{\link[=networkfirewall_list_tags_for_resource]{list_tags_for_resource}},
+\code{\link[=networkfirewall_tag_resource]{tag_resource}}, and
+\code{\link[=networkfirewall_untag_resource]{untag_resource}}.
 
-To retrieve information about firewalls, use ListFirewalls and
-DescribeFirewall.
+To retrieve information about firewalls, use
+\code{\link[=networkfirewall_list_firewalls]{list_firewalls}} and
+\code{\link[=networkfirewall_describe_firewall]{describe_firewall}}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_firewall(

@@ -13,7 +13,7 @@ route53resolver_delete_resolver_rule(ResolverRuleId)
 Deletes a Resolver rule. Before you can delete a Resolver rule, you must
 disassociate it from all the VPCs that you associated the Resolver rule
 with. For more information, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverRule.html}{DisassociateResolverRule}.
+\code{\link[=route53resolver_disassociate_resolver_rule]{disassociate_resolver_rule}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_resolver_rule(

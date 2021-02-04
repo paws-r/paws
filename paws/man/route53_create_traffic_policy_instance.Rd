@@ -29,11 +29,13 @@ resource record sets in the specified hosted zone.}
 \description{
 Creates resource record sets in a specified hosted zone based on the
 settings in a specified traffic policy version. In addition,
-\code{CreateTrafficPolicyInstance} associates the resource record sets with a
-specified domain name (such as example.com) or subdomain name (such as
-www.example.com). Amazon Route 53 responds to DNS queries for the domain
-or subdomain name by using the resource record sets that
-\code{CreateTrafficPolicyInstance} created.
+\code{\link[=route53_create_traffic_policy_instance]{create_traffic_policy_instance}}
+associates the resource record sets with a specified domain name (such
+as example.com) or subdomain name (such as www.example.com). Amazon
+Route 53 responds to DNS queries for the domain or subdomain name by
+using the resource record sets that
+\code{\link[=route53_create_traffic_policy_instance]{create_traffic_policy_instance}}
+created.
 }
 \section{Request syntax}{
 \preformatted{svc$create_traffic_policy_instance(

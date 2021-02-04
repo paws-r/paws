@@ -21,8 +21,8 @@ in the \emph{Amazon Elastic Container Registry User Guide}.}
 
 \item{force}{If the policy you are attempting to set on a repository policy would
 prevent you from setting another policy in the future, you must force
-the SetRepositoryPolicy operation. This is intended to prevent
-accidental repository lock outs.}
+the \code{\link[=ecrpublic_set_repository_policy]{set_repository_policy}}
+operation. This is intended to prevent accidental repository lock outs.}
 }
 \description{
 Applies a repository policy to the specified public repository to

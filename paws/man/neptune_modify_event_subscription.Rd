@@ -32,8 +32,10 @@ the \strong{DescribeEventCategories} action.}
 Modifies an existing event notification subscription. Note that you
 can't modify the source identifiers using this call; to change source
 identifiers for a subscription, use the
-AddSourceIdentifierToSubscription and
-RemoveSourceIdentifierFromSubscription calls.
+\code{\link[=neptune_add_source_identifier_to_subscription]{add_source_identifier_to_subscription}}
+and
+\code{\link[=neptune_remove_source_identifier_from_subscription]{remove_source_identifier_from_subscription}}
+calls.
 
 You can see a list of the event categories for a given SourceType by
 using the \strong{DescribeEventCategories} action.

@@ -17,11 +17,13 @@ applied tags. For example,
 \item{NextToken}{NextToken is a string that is returned in some command responses. It
 indicates that not all entries have been returned, and that you must run
 at least one more request to get remaining items. To get remaining
-results, call \code{ListTagsForResource} again, and assign the token from the
-previous results as the value of the \code{nextToken} parameter. If there are
-no more results, the response object's \code{nextToken} parameter value is
-\code{null}. Setting a \code{nextToken} value that was not returned in your
-previous results causes an \code{InvalidNextTokenException} to occur.}
+results, call
+\code{\link[=opsworkscm_list_tags_for_resource]{list_tags_for_resource}} again, and
+assign the token from the previous results as the value of the
+\code{nextToken} parameter. If there are no more results, the response
+object's \code{nextToken} parameter value is \code{null}. Setting a \code{nextToken}
+value that was not returned in your previous results causes an
+\code{InvalidNextTokenException} to occur.}
 
 \item{MaxResults}{To receive a paginated response, use this parameter to specify the
 maximum number of results to be returned with a single call. If the

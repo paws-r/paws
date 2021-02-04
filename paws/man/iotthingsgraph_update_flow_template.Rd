@@ -19,8 +19,8 @@ The ID should be in the following format.
 \item{compatibleNamespaceVersion}{The version of the user's namespace.
 
 If no value is specified, the latest version is used by default. Use the
-\code{GetFlowTemplateRevisions} if you want to find earlier revisions of the
-flow to update.}
+\code{\link[=iotthingsgraph_get_flow_template_revisions]{get_flow_template_revisions}}
+if you want to find earlier revisions of the flow to update.}
 }
 \description{
 Updates the specified workflow. All deployed systems and system

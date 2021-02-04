@@ -18,10 +18,11 @@ for you from the available IPs in the specified subnet.}
 \description{
 Adds IP addresses to an inbound or an outbound Resolver endpoint. If you
 want to add more than one IP address, submit one
-\code{AssociateResolverEndpointIpAddress} request for each IP address.
+\code{\link[=route53resolver_associate_resolver_endpoint_ip_address]{associate_resolver_endpoint_ip_address}}
+request for each IP address.
 
 To remove an IP address from an endpoint, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverEndpointIpAddress.html}{DisassociateResolverEndpointIpAddress}.
+\code{\link[=route53resolver_disassociate_resolver_endpoint_ip_address]{disassociate_resolver_endpoint_ip_address}}.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_resolver_endpoint_ip_address(

@@ -49,8 +49,8 @@ parameters have a value limit of 4 KB. Advanced parameters have a value
 limit of 8 KB.
 
 Parameters can't be referenced or nested in the values of other
-parameters. You can't include \verb{\\\{\\\{\\\}\\\}} or \verb{\\\{\\\{ssm:<i>parameter-name</i>\\\}\\\}}
-in a parameter value.}
+parameters. You can't include \verb{\\\{\\\{\\\}\\\}} or \verb{\\\{\\\{ssm:parameter-name\\\}\\\}} in a
+parameter value.}
 
 \item{Type}{The type of parameter that you want to add to the system.
 
@@ -102,7 +102,7 @@ pairs:
 }
 
 To add tags to an existing Systems Manager parameter, use the
-AddTagsToResource action.}
+\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
 
 \item{Tier}{The parameter tier to assign to a parameter.
 
@@ -132,12 +132,12 @@ it as a new standard parameter.
 
 \strong{Using the Default Tier Configuration}
 
-In \code{PutParameter} requests, you can specify the tier to create the
-parameter in. Whenever you specify a tier in the request, Parameter
-Store creates or updates the parameter according to that request.
-However, if you do not specify a tier in a request, Parameter Store
-assigns the tier based on the current Parameter Store default tier
-configuration.
+In \code{\link[=ssm_put_parameter]{put_parameter}} requests, you can specify the
+tier to create the parameter in. Whenever you specify a tier in the
+request, Parameter Store creates or updates the parameter according to
+that request. However, if you do not specify a tier in a request,
+Parameter Store assigns the tier based on the current Parameter Store
+default tier configuration.
 
 The default tier when you begin using Parameter Store is the
 standard-parameter tier. If you use the advanced-parameter tier, you can

@@ -58,20 +58,27 @@ training.}
 \description{
 Creates a \code{DataSource} from a database hosted on an Amazon Redshift
 cluster. A \code{DataSource} references data that can be used to perform
-either \code{CreateMLModel}, \code{CreateEvaluation}, or \code{CreateBatchPrediction}
+either \code{\link[=machinelearning_create_ml_model]{create_ml_model}},
+\code{\link[=machinelearning_create_evaluation]{create_evaluation}}, or
+\code{\link[=machinelearning_create_batch_prediction]{create_batch_prediction}}
 operations.
 
-\code{CreateDataSourceFromRedshift} is an asynchronous operation. In response
-to \code{CreateDataSourceFromRedshift}, Amazon Machine Learning (Amazon ML)
-immediately returns and sets the \code{DataSource} status to \code{PENDING}. After
-the \code{DataSource} is created and ready for use, Amazon ML sets the
-\code{Status} parameter to \code{COMPLETED}. \code{DataSource} in \code{COMPLETED} or
-\code{PENDING} states can be used to perform only \code{CreateMLModel},
-\code{CreateEvaluation}, or \code{CreateBatchPrediction} operations.
+\code{\link[=machinelearning_create_data_source_from_redshift]{create_data_source_from_redshift}}
+is an asynchronous operation. In response to
+\code{\link[=machinelearning_create_data_source_from_redshift]{create_data_source_from_redshift}},
+Amazon Machine Learning (Amazon ML) immediately returns and sets the
+\code{DataSource} status to \code{PENDING}. After the \code{DataSource} is created and
+ready for use, Amazon ML sets the \code{Status} parameter to \code{COMPLETED}.
+\code{DataSource} in \code{COMPLETED} or \code{PENDING} states can be used to perform
+only \code{\link[=machinelearning_create_ml_model]{create_ml_model}},
+\code{\link[=machinelearning_create_evaluation]{create_evaluation}}, or
+\code{\link[=machinelearning_create_batch_prediction]{create_batch_prediction}}
+operations.
 
 If Amazon ML can't accept the input source, it sets the \code{Status}
 parameter to \code{FAILED} and includes an error message in the \code{Message}
-attribute of the \code{GetDataSource} operation response.
+attribute of the \code{\link[=machinelearning_get_data_source]{get_data_source}}
+operation response.
 
 The observations should be contained in the database hosted on an Amazon
 Redshift cluster and should be specified by a \code{SelectSqlQuery} query.
@@ -89,10 +96,11 @@ provides answers to these questions.
 
 You can't change an existing datasource, but you can copy and modify the
 settings from an existing Amazon Redshift datasource to create a new
-datasource. To do so, call \code{GetDataSource} for an existing datasource
-and copy the values to a \code{CreateDataSource} call. Change the settings
-that you want to change and make sure that all required fields have the
-appropriate values.
+datasource. To do so, call
+\code{\link[=machinelearning_get_data_source]{get_data_source}} for an existing
+datasource and copy the values to a \code{CreateDataSource} call. Change the
+settings that you want to change and make sure that all required fields
+have the appropriate values.
 }
 \section{Request syntax}{
 \preformatted{svc$create_data_source_from_redshift(

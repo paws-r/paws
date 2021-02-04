@@ -11,11 +11,14 @@ lexmodelbuildingservice_delete_slot_type_version(name, version)
 
 \item{version}{[required] The version of the slot type to delete. You cannot delete the \verb{$LATEST}
 version of the slot type. To delete the \verb{$LATEST} version, use the
-DeleteSlotType operation.}
+\code{\link[=lexmodelbuildingservice_delete_slot_type]{delete_slot_type}}
+operation.}
 }
 \description{
 Deletes a specific version of a slot type. To delete all versions of a
-slot type, use the DeleteSlotType operation.
+slot type, use the
+\code{\link[=lexmodelbuildingservice_delete_slot_type]{delete_slot_type}}
+operation.
 
 This operation requires permissions for the \code{lex:DeleteSlotTypeVersion}
 action.

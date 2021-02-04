@@ -15,11 +15,9 @@ previous response in the next request to retrieve the next set of
 results.}
 }
 \description{
-Returns a list of
-\verb{<a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html">DomainSummary</a>}
-objects for all domains owned by the AWS account that makes this call.
-Each returned \code{DomainSummary} object contains information about a
-domain.
+Returns a list of \code{DomainSummary} objects for all domains owned by the
+AWS account that makes this call. Each returned \code{DomainSummary} object
+contains information about a domain.
 }
 \section{Request syntax}{
 \preformatted{svc$list_domains(

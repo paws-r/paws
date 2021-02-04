@@ -17,9 +17,9 @@ in the \emph{AWS Step Functions Developer Guide}.
 A name must \emph{not} contain:
 \itemize{
 \item white space
-\item brackets \verb{&lt; &gt; \\\{ \\\} \\\[ \\\]}
+\item brackets \verb{< > \\\{ \\\} \\\[ \\\]}
 \item wildcard characters \verb{? *}
-\item special characters \verb{\\" # \% \\\\ ^ | ~ \\` $ &amp; , ; : /}
+\item special characters \verb{\\" # \% \\\\ ^ | ~ \\` $ & , ; : /}
 \item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
 }
 
@@ -43,11 +43,12 @@ in the request payload.}
 \description{
 Starts a state machine execution.
 
-\code{StartExecution} is idempotent. If \code{StartExecution} is called with the
-same name and input as a running execution, the call will succeed and
-return the same response as the original request. If the execution is
-closed or if the input is different, it will return a 400
-\code{ExecutionAlreadyExists} error. Names can be reused after 90 days.
+\code{\link[=sfn_start_execution]{start_execution}} is idempotent. If
+\code{\link[=sfn_start_execution]{start_execution}} is called with the same name
+and input as a running execution, the call will succeed and return the
+same response as the original request. If the execution is closed or if
+the input is different, it will return a 400 \code{ExecutionAlreadyExists}
+error. Names can be reused after 90 days.
 }
 \section{Request syntax}{
 \preformatted{svc$start_execution(

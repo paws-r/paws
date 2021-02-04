@@ -47,7 +47,8 @@ Note: It can take up to 5 seconds after the stream is in an \code{ACTIVE}
 status before all records written to the stream are no longer subject to
 encryption. After you disabled encryption, you can verify that
 encryption is not applied by inspecting the API response from
-\code{PutRecord} or \code{PutRecords}.
+\code{\link[=kinesis_put_record]{put_record}} or
+\code{\link[=kinesis_put_records]{put_records}}.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_stream_encryption(

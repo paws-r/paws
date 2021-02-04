@@ -11,9 +11,11 @@ workspaces_describe_workspaces(WorkspaceIds, DirectoryId, UserName,
 \item{WorkspaceIds}{The identifiers of the WorkSpaces. You cannot combine this parameter
 with any other filter.
 
-Because the CreateWorkspaces operation is asynchronous, the identifier
-it returns is not immediately available. If you immediately call
-DescribeWorkspaces with this identifier, no information is returned.}
+Because the \code{\link[=workspaces_create_workspaces]{create_workspaces}}
+operation is asynchronous, the identifier it returns is not immediately
+available. If you immediately call
+\code{\link[=workspaces_describe_workspaces]{describe_workspaces}} with this
+identifier, no information is returned.}
 
 \item{DirectoryId}{The identifier of the directory. In addition, you can optionally specify
 a specific directory user (see \code{UserName}). You cannot combine this

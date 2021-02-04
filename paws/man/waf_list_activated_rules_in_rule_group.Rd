@@ -13,9 +13,10 @@ ActivatedRule objects.}
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{ActivatedRules}
 than the value of \code{Limit}, AWS WAF returns a \code{NextMarker} value in the
 response that allows you to list another group of \code{ActivatedRules}. For
-the second and subsequent \code{ListActivatedRulesInRuleGroup} requests,
-specify the value of \code{NextMarker} from the previous response to get
-information about another batch of \code{ActivatedRules}.}
+the second and subsequent
+\code{\link[=waf_list_activated_rules_in_rule_group]{list_activated_rules_in_rule_group}}
+requests, specify the value of \code{NextMarker} from the previous response
+to get information about another batch of \code{ActivatedRules}.}
 
 \item{Limit}{Specifies the number of \code{ActivatedRules} that you want AWS WAF to return
 for this request. If you have more \code{ActivatedRules} than the number that

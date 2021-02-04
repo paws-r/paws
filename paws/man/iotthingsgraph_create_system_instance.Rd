@@ -40,7 +40,8 @@ This action validates the system instance, prepares the
 deployment-related resources. For Greengrass deployments, it updates the
 Greengrass group that is specified by the \code{greengrassGroupName}
 parameter. It also adds a file to the S3 bucket specified by the
-\code{s3BucketName} parameter. You need to call \code{DeploySystemInstance} after
+\code{s3BucketName} parameter. You need to call
+\code{\link[=iotthingsgraph_deploy_system_instance]{deploy_system_instance}} after
 running this action.
 
 For Greengrass deployments, since this action modifies and adds

@@ -50,9 +50,9 @@ in the \emph{AWS General Reference}
 
 \strong{Related operations}
 \itemize{
-\item TagResource
-\item UntagResource
-\item ListTagsForResource
+\item \code{\link[=gamelift_tag_resource]{tag_resource}}
+\item \code{\link[=gamelift_untag_resource]{untag_resource}}
+\item \code{\link[=gamelift_list_tags_for_resource]{list_tags_for_resource}}
 }
 }
 \section{Request syntax}{

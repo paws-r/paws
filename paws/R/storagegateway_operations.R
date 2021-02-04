@@ -12,7 +12,7 @@ NULL
 #' scheduled snapshots the gateway snapshot schedule window, an activation
 #' key, and a name for your gateway. The activation process also associates
 #' your gateway with your account. For more information, see
-#' UpdateGatewayInformation.
+#' [`update_gateway_information`][storagegateway_update_gateway_information].
 #' 
 #' You must turn on the gateway VM before you can activate your gateway.
 #'
@@ -27,8 +27,8 @@ NULL
 #' you the activation key for your gateway in the query string parameter
 #' `activationKey`. It may also include other activation-related
 #' parameters, however, these are merely defaults -- the arguments you pass
-#' to the `ActivateGateway` API call determine the actual configuration of
-#' your gateway.
+#' to the [`activate_gateway`][storagegateway_activate_gateway] API call
+#' determine the actual configuration of your gateway.
 #' 
 #' For more information, see [Getting activation
 #' key](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html)
@@ -142,7 +142,8 @@ storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayT
 #' @param GatewayARN &#91;required&#93; 
 #' @param DiskIds &#91;required&#93; An array of strings that identify disks that are to be configured as
 #' working storage. Each string has a minimum length of 1 and maximum
-#' length of 300. You can get the disk IDs from the ListLocalDisks API.
+#' length of 300. You can get the disk IDs from the
+#' [`list_local_disks`][storagegateway_list_local_disks] API.
 #'
 #' @section Request syntax:
 #' ```
@@ -284,7 +285,8 @@ storagegateway_add_tags_to_resource <- function(ResourceARN, Tags) {
 #' @param GatewayARN &#91;required&#93; 
 #' @param DiskIds &#91;required&#93; An array of strings that identify disks that are to be configured as
 #' working storage. Each string has a minimum length of 1 and maximum
-#' length of 300. You can get the disk IDs from the ListLocalDisks API.
+#' length of 300. You can get the disk IDs from the
+#' [`list_local_disks`][storagegateway_list_local_disks] API.
 #'
 #' @section Request syntax:
 #' ```
@@ -336,11 +338,12 @@ storagegateway_add_upload_buffer <- function(GatewayARN, DiskIds) {
 #' Configures one or more gateway local disks as working storage for a
 #' gateway. This operation is only supported in the stored volume gateway
 #' type. This operation is deprecated in cached volume API version
-#' 20120630. Use AddUploadBuffer instead.
+#' 20120630. Use [`add_upload_buffer`][storagegateway_add_upload_buffer]
+#' instead.
 #' 
 #' Working storage is also referred to as upload buffer. You can also use
-#' the AddUploadBuffer operation to add upload buffer to a stored volume
-#' gateway.
+#' the [`add_upload_buffer`][storagegateway_add_upload_buffer] operation to
+#' add upload buffer to a stored volume gateway.
 #' 
 #' In the request, you specify the gateway Amazon Resource Name (ARN) to
 #' which you want to add working storage, and one or more disk IDs that you
@@ -352,7 +355,8 @@ storagegateway_add_upload_buffer <- function(GatewayARN, DiskIds) {
 #' @param GatewayARN &#91;required&#93; 
 #' @param DiskIds &#91;required&#93; An array of strings that identify disks that are to be configured as
 #' working storage. Each string has a minimum length of 1 and maximum
-#' length of 300. You can get the disk IDs from the ListLocalDisks API.
+#' length of 300. You can get the disk IDs from the
+#' [`list_local_disks`][storagegateway_list_local_disks] API.
 #'
 #' @section Request syntax:
 #' ```
@@ -486,7 +490,8 @@ storagegateway_assign_tape_pool <- function(TapeARN, PoolId, BypassGovernanceRet
 #' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume to attach to the specified
 #' gateway.
 #' @param NetworkInterfaceId &#91;required&#93; The network interface of the gateway on which to expose the iSCSI
-#' target. Only IPv4 addresses are accepted. Use DescribeGatewayInformation
+#' target. Only IPv4 addresses are accepted. Use
+#' [`describe_gateway_information`][storagegateway_describe_gateway_information]
 #' to get a list of the network interfaces available on a gateway.
 #' 
 #' Valid Values: A valid IP address.
@@ -639,8 +644,8 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' operation is only supported in the cached volume gateway type.
 #' 
 #' Cache storage must be allocated to the gateway before you can create a
-#' cached volume. Use the AddCache operation to add cache storage to a
-#' gateway.
+#' cached volume. Use the [`add_cache`][storagegateway_add_cache] operation
+#' to add cache storage to a gateway.
 #' 
 #' In the request, you must specify the gateway, size of the volume in
 #' bytes, the iSCSI target name, an IP address on which to expose the
@@ -681,7 +686,8 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' point. The `VolumeSizeInBytes` value for this new volume must be equal
 #' to or larger than the size of the existing volume, in bytes.
 #' @param NetworkInterfaceId &#91;required&#93; The network interface of the gateway on which to expose the iSCSI
-#' target. Only IPv4 addresses are accepted. Use DescribeGatewayInformation
+#' target. Only IPv4 addresses are accepted. Use
+#' [`describe_gateway_information`][storagegateway_describe_gateway_information]
 #' to get a list of the network interfaces available on a gateway.
 #' 
 #' Valid Values: A valid IP address.
@@ -1116,14 +1122,15 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' [Editing a snapshot
 #' schedule](https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot).
 #' 
-#' In the `CreateSnapshot` request, you identify the volume by providing
-#' its Amazon Resource Name (ARN). You must also provide description for
-#' the snapshot. When AWS Storage Gateway takes the snapshot of specified
-#' volume, the snapshot and description appears in the AWS Storage Gateway
-#' console. In response, AWS Storage Gateway returns you a snapshot ID. You
-#' can use this snapshot ID to check the snapshot progress or later use it
-#' when you want to create a volume from a snapshot. This operation is only
-#' supported in stored and cached volume gateway type.
+#' In the [`create_snapshot`][storagegateway_create_snapshot] request, you
+#' identify the volume by providing its Amazon Resource Name (ARN). You
+#' must also provide description for the snapshot. When AWS Storage Gateway
+#' takes the snapshot of specified volume, the snapshot and description
+#' appears in the AWS Storage Gateway console. In response, AWS Storage
+#' Gateway returns you a snapshot ID. You can use this snapshot ID to check
+#' the snapshot progress or later use it when you want to create a volume
+#' from a snapshot. This operation is only supported in stored and cached
+#' volume gateway type.
 #' 
 #' To list or delete a snapshot, you must use the Amazon EC2 API. For more
 #' information, see
@@ -1140,8 +1147,9 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' @usage
 #' storagegateway_create_snapshot(VolumeARN, SnapshotDescription, Tags)
 #'
-#' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
-#' operation to return a list of gateway volumes.
+#' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the
+#' [`list_volumes`][storagegateway_list_volumes] operation to return a list
+#' of gateway volumes.
 #' @param SnapshotDescription &#91;required&#93; Textual description of the snapshot that appears in the Amazon EC2
 #' console, Elastic Block Store snapshots panel in the **Description**
 #' field, and in the AWS Storage Gateway snapshot **Details** pane,
@@ -1206,16 +1214,17 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags 
 #' A volume recovery point is a point in time at which all data of the
 #' volume is consistent and from which you can create a snapshot. To get a
 #' list of volume recovery point for cached volume gateway, use
-#' ListVolumeRecoveryPoints.
+#' [`list_volume_recovery_points`][storagegateway_list_volume_recovery_points].
 #' 
-#' In the `CreateSnapshotFromVolumeRecoveryPoint` request, you identify the
-#' volume by providing its Amazon Resource Name (ARN). You must also
-#' provide a description for the snapshot. When the gateway takes a
-#' snapshot of the specified volume, the snapshot and its description
-#' appear in the AWS Storage Gateway console. In response, the gateway
-#' returns you a snapshot ID. You can use this snapshot ID to check the
-#' snapshot progress or later use it when you want to create a volume from
-#' a snapshot.
+#' In the
+#' [`create_snapshot_from_volume_recovery_point`][storagegateway_create_snapshot_from_volume_recovery_point]
+#' request, you identify the volume by providing its Amazon Resource Name
+#' (ARN). You must also provide a description for the snapshot. When the
+#' gateway takes a snapshot of the specified volume, the snapshot and its
+#' description appear in the AWS Storage Gateway console. In response, the
+#' gateway returns you a snapshot ID. You can use this snapshot ID to check
+#' the snapshot progress or later use it when you want to create a volume
+#' from a snapshot.
 #' 
 #' To list or delete a snapshot, you must use the Amazon EC2 API. For more
 #' information, see
@@ -1229,8 +1238,8 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags 
 #'   SnapshotDescription, Tags)
 #'
 #' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-#' DescribeStorediSCSIVolumes operation to return to retrieve the TargetARN
-#' for specified VolumeARN.
+#' [`describe_storedi_scsi_volumes`][storagegateway_describe_storedi_scsi_volumes]
+#' operation to return to retrieve the TargetARN for specified VolumeARN.
 #' @param SnapshotDescription &#91;required&#93; Textual description of the snapshot that appears in the Amazon EC2
 #' console, Elastic Block Store snapshots panel in the **Description**
 #' field, and in the AWS Storage Gateway snapshot **Details** pane,
@@ -1310,8 +1319,7 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param DiskId &#91;required&#93; The unique identifier for the gateway local disk that is configured as a
-#' stored volume. Use
-#' [ListLocalDisks](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_ListLocalDisks.html)
+#' stored volume. Use [`list_local_disks`][storagegateway_list_local_disks]
 #' to list disk IDs for a gateway.
 #' @param SnapshotId The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the
 #' new stored volume. Specify this field if you want to create the iSCSI
@@ -1332,7 +1340,8 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' If you don't specify a value, Storage Gateway uses the value that was
 #' previously used for this volume as the new target name.
 #' @param NetworkInterfaceId &#91;required&#93; The network interface of the gateway on which to expose the iSCSI
-#' target. Only IPv4 addresses are accepted. Use DescribeGatewayInformation
+#' target. Only IPv4 addresses are accepted. Use
+#' [`describe_gateway_information`][storagegateway_describe_gateway_information]
 #' to get a list of the network interfaces available on a gateway.
 #' 
 #' Valid Values: A valid IP address.
@@ -1481,16 +1490,17 @@ storagegateway_create_tape_pool <- function(PoolName, StorageClass, RetentionLoc
 #' tape gateway type.
 #' 
 #' Cache storage must be allocated to the gateway before you can create a
-#' virtual tape. Use the AddCache operation to add cache storage to a
-#' gateway.
+#' virtual tape. Use the [`add_cache`][storagegateway_add_cache] operation
+#' to add cache storage to a gateway.
 #'
 #' @usage
 #' storagegateway_create_tape_with_barcode(GatewayARN, TapeSizeInBytes,
 #'   TapeBarcode, KMSEncrypted, KMSKey, PoolId, Worm, Tags)
 #'
 #' @param GatewayARN &#91;required&#93; The unique Amazon Resource Name (ARN) that represents the gateway to
-#' associate the virtual tape with. Use the ListGateways operation to
-#' return a list of gateways for your account and AWS Region.
+#' associate the virtual tape with. Use the
+#' [`list_gateways`][storagegateway_list_gateways] operation to return a
+#' list of gateways for your account and AWS Region.
 #' @param TapeSizeInBytes &#91;required&#93; The size, in bytes, of the virtual tape that you want to create.
 #' 
 #' The size must be aligned by gigabyte (1024*1024*1024 bytes).
@@ -1580,8 +1590,8 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' gateway type.
 #' 
 #' Cache storage must be allocated to the gateway before you can create
-#' virtual tapes. Use the AddCache operation to add cache storage to a
-#' gateway.
+#' virtual tapes. Use the [`add_cache`][storagegateway_add_cache] operation
+#' to add cache storage to a gateway.
 #'
 #' @usage
 #' storagegateway_create_tapes(GatewayARN, TapeSizeInBytes, ClientToken,
@@ -1589,8 +1599,9 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #'   Tags)
 #'
 #' @param GatewayARN &#91;required&#93; The unique Amazon Resource Name (ARN) that represents the gateway to
-#' associate the virtual tapes with. Use the ListGateways operation to
-#' return a list of gateways for your account and AWS Region.
+#' associate the virtual tapes with. Use the
+#' [`list_gateways`][storagegateway_list_gateways] operation to return a
+#' list of gateways for your account and AWS Region.
 #' @param TapeSizeInBytes &#91;required&#93; The size, in bytes, of the virtual tapes that you want to create.
 #' 
 #' The size must be aligned by gigabyte (1024*1024*1024 bytes).
@@ -1791,8 +1802,8 @@ storagegateway_delete_bandwidth_rate_limit <- function(GatewayARN, BandwidthType
 #' storagegateway_delete_chap_credentials(TargetARN, InitiatorName)
 #'
 #' @param TargetARN &#91;required&#93; The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-#' DescribeStorediSCSIVolumes operation to return to retrieve the TargetARN
-#' for specified VolumeARN.
+#' [`describe_storedi_scsi_volumes`][storagegateway_describe_storedi_scsi_volumes]
+#' operation to return to retrieve the TargetARN for specified VolumeARN.
 #' @param InitiatorName &#91;required&#93; The iSCSI initiator that connects to the target.
 #'
 #' @section Request syntax:
@@ -1951,9 +1962,11 @@ storagegateway_delete_gateway <- function(GatewayARN) {
 #' basis. This API action enables you to delete a snapshot schedule for a
 #' volume. For more information, see [Backing up your
 #' volumes](https://docs.aws.amazon.com/storagegateway/latest/userguide/backing-up-volumes.html).
-#' In the `DeleteSnapshotSchedule` request, you identify the volume by
-#' providing its Amazon Resource Name (ARN). This operation is only
-#' supported in stored and cached volume gateway types.
+#' In the
+#' [`delete_snapshot_schedule`][storagegateway_delete_snapshot_schedule]
+#' request, you identify the volume by providing its Amazon Resource Name
+#' (ARN). This operation is only supported in stored and cached volume
+#' gateway types.
 #' 
 #' To list or delete a snapshot, you must use the Amazon EC2 API. For more
 #' information, go to
@@ -2011,8 +2024,9 @@ storagegateway_delete_snapshot_schedule <- function(VolumeARN) {
 #'   BypassGovernanceRetention)
 #'
 #' @param GatewayARN &#91;required&#93; The unique Amazon Resource Name (ARN) of the gateway that the virtual
-#' tape to delete is associated with. Use the ListGateways operation to
-#' return a list of gateways for your account and AWS Region.
+#' tape to delete is associated with. Use the
+#' [`list_gateways`][storagegateway_list_gateways] operation to return a
+#' list of gateways for your account and AWS Region.
 #' @param TapeARN &#91;required&#93; The Amazon Resource Name (ARN) of the virtual tape to delete.
 #' @param BypassGovernanceRetention Set to `TRUE` to delete an archived tape that belongs to a custom pool
 #' with tape retention lock. Only archived tapes with tape retention lock
@@ -2153,11 +2167,14 @@ storagegateway_delete_tape_pool <- function(PoolARN) {
 #'
 #' @description
 #' Deletes the specified storage volume that you previously created using
-#' the CreateCachediSCSIVolume or CreateStorediSCSIVolume API. This
-#' operation is only supported in the cached volume and stored volume
-#' types. For stored volume gateways, the local disk that was configured as
-#' the storage volume is not deleted. You can reuse the local disk to
-#' create another storage volume.
+#' the
+#' [`create_cachedi_scsi_volume`][storagegateway_create_cachedi_scsi_volume]
+#' or
+#' [`create_storedi_scsi_volume`][storagegateway_create_storedi_scsi_volume]
+#' API. This operation is only supported in the cached volume and stored
+#' volume types. For stored volume gateways, the local disk that was
+#' configured as the storage volume is not deleted. You can reuse the local
+#' disk to create another storage volume.
 #' 
 #' Before you delete a volume, make sure there are no iSCSI connections to
 #' the volume you are deleting. You should also make sure there is no
@@ -2173,8 +2190,9 @@ storagegateway_delete_tape_pool <- function(PoolARN) {
 #' @usage
 #' storagegateway_delete_volume(VolumeARN)
 #'
-#' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
-#' operation to return a list of gateway volumes.
+#' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the
+#' [`list_volumes`][storagegateway_list_volumes] operation to return a list
+#' of gateway volumes.
 #'
 #' @section Request syntax:
 #' ```
@@ -2426,7 +2444,8 @@ storagegateway_describe_cache <- function(GatewayARN) {
 #'
 #' @param VolumeARNs &#91;required&#93; An array of strings where each string represents the Amazon Resource
 #' Name (ARN) of a cached volume. All of the specified cached volumes must
-#' be from the same gateway. Use ListVolumes to get volume ARNs for a
+#' be from the same gateway. Use
+#' [`list_volumes`][storagegateway_list_volumes] to get volume ARNs for a
 #' gateway.
 #'
 #' @section Request syntax:
@@ -2483,8 +2502,8 @@ storagegateway_describe_cachedi_scsi_volumes <- function(VolumeARNs) {
 #' storagegateway_describe_chap_credentials(TargetARN)
 #'
 #' @param TargetARN &#91;required&#93; The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-#' DescribeStorediSCSIVolumes operation to return to retrieve the TargetARN
-#' for specified VolumeARN.
+#' [`describe_storedi_scsi_volumes`][storagegateway_describe_storedi_scsi_volumes]
+#' operation to return to retrieve the TargetARN for specified VolumeARN.
 #'
 #' @section Request syntax:
 #' ```
@@ -2759,8 +2778,9 @@ storagegateway_describe_smb_settings <- function(GatewayARN) {
 #' @usage
 #' storagegateway_describe_snapshot_schedule(VolumeARN)
 #'
-#' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
-#' operation to return a list of gateway volumes.
+#' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the
+#' [`list_volumes`][storagegateway_list_volumes] operation to return a list
+#' of gateway volumes.
 #'
 #' @section Request syntax:
 #' ```
@@ -2812,7 +2832,8 @@ storagegateway_describe_snapshot_schedule <- function(VolumeARN) {
 #'
 #' @param VolumeARNs &#91;required&#93; An array of strings where each string represents the Amazon Resource
 #' Name (ARN) of a stored volume. All of the specified stored volumes must
-#' be from the same gateway. Use ListVolumes to get volume ARNs for a
+#' be from the same gateway. Use
+#' [`list_volumes`][storagegateway_list_volumes] to get volume ARNs for a
 #' gateway.
 #'
 #' @section Request syntax:
@@ -2999,8 +3020,9 @@ storagegateway_describe_tape_recovery_points <- function(GatewayARN, Marker = NU
 #' the virtual tapes you want to describe. If this parameter is not
 #' specified, Tape gateway returns a description of all virtual tapes
 #' associated with the specified gateway.
-#' @param Marker A marker value, obtained in a previous call to `DescribeTapes`. This
-#' marker indicates which page of results to retrieve.
+#' @param Marker A marker value, obtained in a previous call to
+#' [`describe_tapes`][storagegateway_describe_tapes]. This marker indicates
+#' which page of results to retrieve.
 #' 
 #' If not specified, the first page of results is retrieved.
 #' @param Limit Specifies that the number of virtual tapes described be limited to the
@@ -3354,8 +3376,9 @@ storagegateway_disable_gateway <- function(GatewayARN) {
 #' storagegateway_join_domain(GatewayARN, DomainName, OrganizationalUnit,
 #'   DomainControllers, TimeoutInSeconds, UserName, Password)
 #'
-#' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the gateway. Use the `ListGateways`
-#' operation to return a list of gateways for your account and AWS Region.
+#' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the gateway. Use the
+#' [`list_gateways`][storagegateway_list_gateways] operation to return a
+#' list of gateways for your account and AWS Region.
 #' @param DomainName &#91;required&#93; The name of the domain that you want the gateway to join.
 #' @param OrganizationalUnit The organizational unit (OU) is a container in an Active Directory that
 #' can hold users, groups, computers, and other OUs and this parameter
@@ -3363,8 +3386,9 @@ storagegateway_disable_gateway <- function(GatewayARN) {
 #' @param DomainControllers List of IPv4 addresses, NetBIOS names, or host names of your domain
 #' server. If you need to specify the port number include it after the
 #' colon (“:”). For example, `mydc.mydomain.com:389`.
-#' @param TimeoutInSeconds Specifies the time in seconds, in which the `JoinDomain` operation must
-#' complete. The default is 20 seconds.
+#' @param TimeoutInSeconds Specifies the time in seconds, in which the
+#' [`join_domain`][storagegateway_join_domain] operation must complete. The
+#' default is 20 seconds.
 #' @param UserName &#91;required&#93; Sets the user name of user who has permission to add the gateway to the
 #' Active Directory domain. The domain user account should be enabled to
 #' join computers to the domain. For example, you can use the domain
@@ -3797,8 +3821,9 @@ storagegateway_list_tapes <- function(TapeARNs = NULL, Marker = NULL, Limit = NU
 #' @usage
 #' storagegateway_list_volume_initiators(VolumeARN)
 #'
-#' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
-#' operation to return a list of gateway volumes for the gateway.
+#' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the
+#' [`list_volumes`][storagegateway_list_volumes] operation to return a list
+#' of gateway volumes for the gateway.
 #'
 #' @section Request syntax:
 #' ```
@@ -3837,7 +3862,8 @@ storagegateway_list_volume_initiators <- function(VolumeARN) {
 #' point in time at which all data of the volume is consistent and from
 #' which you can create a snapshot or clone a new cached volume from a
 #' source volume. To create a snapshot from a volume recovery point use the
-#' CreateSnapshotFromVolumeRecoveryPoint operation.
+#' [`create_snapshot_from_volume_recovery_point`][storagegateway_create_snapshot_from_volume_recovery_point]
+#' operation.
 #'
 #' @usage
 #' storagegateway_list_volume_recovery_points(GatewayARN)
@@ -3885,8 +3911,11 @@ storagegateway_list_volume_recovery_points <- function(GatewayARN) {
 #' @description
 #' Lists the iSCSI stored volumes of a gateway. Results are sorted by
 #' volume ARN. The response includes only the volume ARNs. If you want
-#' additional volume information, use the DescribeStorediSCSIVolumes or the
-#' DescribeCachediSCSIVolumes API.
+#' additional volume information, use the
+#' [`describe_storedi_scsi_volumes`][storagegateway_describe_storedi_scsi_volumes]
+#' or the
+#' [`describe_cachedi_scsi_volumes`][storagegateway_describe_cachedi_scsi_volumes]
+#' API.
 #' 
 #' The operation supports pagination. By default, the operation returns a
 #' maximum of up to 100 volumes. You can optionally specify the `Limit`
@@ -4018,7 +4047,7 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' refresh-complete notification to determine that the operation has
 #' completed before you check for new files on the gateway file share. You
 #' can subscribe to be notified through an CloudWatch event when your
-#' `RefreshCache` operation completes.
+#' [`refresh_cache`][storagegateway_refresh_cache] operation completes.
 #' 
 #' Throttle limit: This API is asynchronous so the gateway will accept no
 #' more than two refreshes at any time. We recommend using the
@@ -4223,8 +4252,8 @@ storagegateway_reset_cache <- function(GatewayARN) {
 #' @param TapeARN &#91;required&#93; The Amazon Resource Name (ARN) of the virtual tape you want to retrieve
 #' from the virtual tape shelf (VTS).
 #' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the gateway you want to retrieve the
-#' virtual tape to. Use the ListGateways operation to return a list of
-#' gateways for your account and AWS Region.
+#' virtual tape to. Use the [`list_gateways`][storagegateway_list_gateways]
+#' operation to return a list of gateways for your account and AWS Region.
 #' 
 #' You retrieve archived virtual tapes to only one gateway and the gateway
 #' must be a tape gateway.
@@ -4433,19 +4462,23 @@ storagegateway_set_smb_guest_password <- function(GatewayARN, Password) {
 #' down the gateway component in the VM to avoid unpredictable conditions.
 #' 
 #' After the gateway is shutdown, you cannot call any other API except
-#' StartGateway, DescribeGatewayInformation, and ListGateways. For more
-#' information, see ActivateGateway. Your applications cannot read from or
-#' write to the gateway's storage volumes, and there are no snapshots
-#' taken.
+#' [`start_gateway`][storagegateway_start_gateway],
+#' [`describe_gateway_information`][storagegateway_describe_gateway_information],
+#' and [`list_gateways`][storagegateway_list_gateways]. For more
+#' information, see [`activate_gateway`][storagegateway_activate_gateway].
+#' Your applications cannot read from or write to the gateway's storage
+#' volumes, and there are no snapshots taken.
 #' 
 #' When you make a shutdown request, you will get a `200 OK` success
 #' response immediately. However, it might take some time for the gateway
-#' to shut down. You can call the DescribeGatewayInformation API to check
-#' the status. For more information, see ActivateGateway.
+#' to shut down. You can call the
+#' [`describe_gateway_information`][storagegateway_describe_gateway_information]
+#' API to check the status. For more information, see
+#' [`activate_gateway`][storagegateway_activate_gateway].
 #' 
 #' If do not intend to use the gateway again, you must delete the gateway
-#' (using DeleteGateway) to no longer pay software charges associated with
-#' the gateway.
+#' (using [`delete_gateway`][storagegateway_delete_gateway]) to no longer
+#' pay software charges associated with the gateway.
 #'
 #' @usage
 #' storagegateway_shutdown_gateway(GatewayARN)
@@ -4496,7 +4529,9 @@ storagegateway_shutdown_gateway <- function(GatewayARN) {
 #' High Availability monitoring in your host environment. This request only
 #' initiates the test and that a successful response only indicates that
 #' the test was started. It doesn't indicate that the test passed. For the
-#' status of the test, invoke the `DescribeAvailabilityMonitorTest` API.
+#' status of the test, invoke the
+#' [`describe_availability_monitor_test`][storagegateway_describe_availability_monitor_test]
+#' API.
 #' 
 #' Starting this test will cause your gateway to go offline for a brief
 #' period.
@@ -4536,16 +4571,18 @@ storagegateway_start_availability_monitor_test <- function(GatewayARN) {
 #' Starts a gateway that you previously shut down (see ShutdownGateway)
 #'
 #' @description
-#' Starts a gateway that you previously shut down (see ShutdownGateway).
-#' After the gateway starts, you can then make other API calls, your
-#' applications can read from or write to the gateway's storage volumes and
-#' you will be able to take snapshot backups.
+#' Starts a gateway that you previously shut down (see
+#' [`shutdown_gateway`][storagegateway_shutdown_gateway]). After the
+#' gateway starts, you can then make other API calls, your applications can
+#' read from or write to the gateway's storage volumes and you will be able
+#' to take snapshot backups.
 #' 
 #' When you make a request, you will get a 200 OK success response
 #' immediately. However, it might take some time for the gateway to be
-#' ready. You should call DescribeGatewayInformation and check the status
-#' before making any additional API calls. For more information, see
-#' ActivateGateway.
+#' ready. You should call
+#' [`describe_gateway_information`][storagegateway_describe_gateway_information]
+#' and check the status before making any additional API calls. For more
+#' information, see [`activate_gateway`][storagegateway_activate_gateway].
 #' 
 #' To specify which gateway to start, use the Amazon Resource Name (ARN) of
 #' the gateway in your request.
@@ -4789,8 +4826,8 @@ storagegateway_update_bandwidth_rate_limit_schedule <- function(GatewayARN, Band
 #'   SecretToAuthenticateTarget)
 #'
 #' @param TargetARN &#91;required&#93; The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-#' DescribeStorediSCSIVolumes operation to return the TargetARN for
-#' specified VolumeARN.
+#' [`describe_storedi_scsi_volumes`][storagegateway_describe_storedi_scsi_volumes]
+#' operation to return the TargetARN for specified VolumeARN.
 #' @param SecretToAuthenticateInitiator &#91;required&#93; The secret key that the initiator (for example, the Windows client) must
 #' provide to participate in mutual CHAP with the target.
 #' 
@@ -4919,8 +4956,9 @@ storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = 
 #' 
 #' When you make this request, you get a `200 OK` success response
 #' immediately. However, it might take some time for the update to
-#' complete. You can call DescribeGatewayInformation to verify the gateway
-#' is in the `STATE_RUNNING` state.
+#' complete. You can call
+#' [`describe_gateway_information`][storagegateway_describe_gateway_information]
+#' to verify the gateway is in the `STATE_RUNNING` state.
 #' 
 #' A software update forces a system restart of your gateway. You can
 #' minimize the chance of any disruption to your applications by increasing
@@ -5455,8 +5493,9 @@ storagegateway_update_smb_security_strategy <- function(GatewayARN, SMBSecurityS
 #' storagegateway_update_snapshot_schedule(VolumeARN, StartAt,
 #'   RecurrenceInHours, Description, Tags)
 #'
-#' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
-#' operation to return a list of gateway volumes.
+#' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the
+#' [`list_volumes`][storagegateway_list_volumes] operation to return a list
+#' of gateway volumes.
 #' @param StartAt &#91;required&#93; The hour of the day at which the snapshot schedule begins represented as
 #' *hh*, where *hh* is the hour (0 to 23). The hour of the day is in the
 #' time zone of the gateway.

@@ -8,7 +8,9 @@ kms_delete_custom_key_store(CustomKeyStoreId)
 }
 \arguments{
 \item{CustomKeyStoreId}{[required] Enter the ID of the custom key store you want to delete. To find the ID
-of a custom key store, use the DescribeCustomKeyStores operation.}
+of a custom key store, use the
+\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
+operation.}
 }
 \description{
 Deletes a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
@@ -20,22 +22,25 @@ The custom key store that you delete cannot contain any AWS KMS
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{customer master keys (CMKs)}.
 Before deleting the key store, verify that you will never need to use
 any of the CMKs in the key store for any \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}.
-Then, use ScheduleKeyDeletion to delete the AWS KMS customer master keys
-(CMKs) from the key store. When the scheduled waiting period expires,
-the \code{ScheduleKeyDeletion} operation deletes the CMKs. Then it makes a
-best effort to delete the key material from the associated cluster.
-However, you might need to manually \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key}{delete the orphaned key material}
+Then, use \code{\link[=kms_schedule_key_deletion]{schedule_key_deletion}} to delete
+the AWS KMS customer master keys (CMKs) from the key store. When the
+scheduled waiting period expires, the
+\code{\link[=kms_schedule_key_deletion]{schedule_key_deletion}} operation deletes
+the CMKs. Then it makes a best effort to delete the key material from
+the associated cluster. However, you might need to manually \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key}{delete the orphaned key material}
 from the cluster and its backups.
 
-After all CMKs are deleted from AWS KMS, use DisconnectCustomKeyStore to
+After all CMKs are deleted from AWS KMS, use
+\code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}} to
 disconnect the key store from AWS KMS. Then, you can delete the custom
 key store.
 
 Instead of deleting the custom key store, consider using
-DisconnectCustomKeyStore to disconnect it from AWS KMS. While the key
-store is disconnected, you cannot create or use the CMKs in the key
-store. But, you do not need to delete CMKs and you can reconnect a
-disconnected custom key store at any time.
+\code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}} to
+disconnect it from AWS KMS. While the key store is disconnected, you
+cannot create or use the CMKs in the key store. But, you do not need to
+delete CMKs and you can reconnect a disconnected custom key store at any
+time.
 
 If the operation succeeds, it returns a JSON object with no properties.
 
@@ -53,11 +58,11 @@ key store in a different AWS account.
 
 \strong{Related operations:}
 \itemize{
-\item ConnectCustomKeyStore
-\item CreateCustomKeyStore
-\item DescribeCustomKeyStores
-\item DisconnectCustomKeyStore
-\item UpdateCustomKeyStore
+\item \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}}
+\item \code{\link[=kms_create_custom_key_store]{create_custom_key_store}}
+\item \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
+\item \code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}}
+\item \code{\link[=kms_update_custom_key_store]{update_custom_key_store}}
 }
 }
 \section{Request syntax}{

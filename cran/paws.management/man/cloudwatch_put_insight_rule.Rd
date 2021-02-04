@@ -28,7 +28,7 @@ To be able to associate tags with a rule, you must have the
 If you are using this operation to update an existing Contributor
 Insights rule, any tags you specify in this parameter are ignored. To
 change the tags of an existing rule, use
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_TagResource.html}{TagResource}.}
+\code{\link[=cloudwatch_tag_resource]{tag_resource}}.}
 }
 \description{
 Creates a Contributor Insights rule. Rules evaluate log events in a

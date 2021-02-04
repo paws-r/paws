@@ -79,13 +79,13 @@ NULL
 #' operations other than these, such as creating keys and assigning
 #' policies, by using the console.
 #' 
-#' -   Encrypt
+#' -   [`encrypt`][kms_encrypt]
 #' 
-#' -   Decrypt
+#' -   [`decrypt`][kms_decrypt]
 #' 
-#' -   GenerateDataKey
+#' -   [`generate_data_key`][kms_generate_data_key]
 #' 
-#' -   GenerateDataKeyWithoutPlaintext
+#' -   [`generate_data_key_without_plaintext`][kms_generate_data_key_without_plaintext]
 #'
 #' @param
 #' config

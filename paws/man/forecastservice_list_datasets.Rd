@@ -14,10 +14,12 @@ token in the next request. Tokens expire after 24 hours.}
 \item{MaxResults}{The number of items to return in the response.}
 }
 \description{
-Returns a list of datasets created using the CreateDataset operation.
-For each dataset, a summary of its properties, including its Amazon
-Resource Name (ARN), is returned. To retrieve the complete set of
-properties, use the ARN with the DescribeDataset operation.
+Returns a list of datasets created using the
+\code{\link[=forecastservice_create_dataset]{create_dataset}} operation. For each
+dataset, a summary of its properties, including its Amazon Resource Name
+(ARN), is returned. To retrieve the complete set of properties, use the
+ARN with the \code{\link[=forecastservice_describe_dataset]{describe_dataset}}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$list_datasets(

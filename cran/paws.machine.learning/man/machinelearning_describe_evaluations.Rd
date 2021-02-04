@@ -78,8 +78,9 @@ Results are sorted by \code{FilterVariable}.}
 \item{Limit}{The maximum number of \code{Evaluation} to include in the result.}
 }
 \description{
-Returns a list of \code{DescribeEvaluations} that match the search criteria
-in the request.
+Returns a list of
+\code{\link[=machinelearning_describe_evaluations]{describe_evaluations}} that
+match the search criteria in the request.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_evaluations(

@@ -18,9 +18,10 @@ administrator credentials to access the API.}
 }
 \description{
 Aborts the upload of the specified document version that was previously
-initiated by InitiateDocumentVersionUpload. The client should make this
-call only when it no longer intends to upload the document version, or
-fails to do so.
+initiated by
+\code{\link[=workdocs_initiate_document_version_upload]{initiate_document_version_upload}}.
+The client should make this call only when it no longer intends to
+upload the document version, or fails to do so.
 }
 \section{Request syntax}{
 \preformatted{svc$abort_document_version_upload(

@@ -2624,7 +2624,8 @@ databasemigrationservice_describe_replication_task_assessment_results <- functio
 #' 
 #' This operation doesn't return information about individual assessments.
 #' For this information, see the
-#' `DescribeReplicationTaskIndividualAssessments` operation.
+#' [`describe_replication_task_individual_assessments`][databasemigrationservice_describe_replication_task_individual_assessments]
+#' operation.
 #'
 #' @usage
 #' databasemigrationservice_describe_replication_task_assessment_runs(
@@ -3532,8 +3533,9 @@ databasemigrationservice_modify_endpoint <- function(EndpointArn, EndpointIdenti
 #' 
 #' Valid values: replication-instance | replication-task
 #' @param EventCategories A list of event categories for a source type that you want to subscribe
-#' to. Use the `DescribeEventCategories` action to see a list of event
-#' categories.
+#' to. Use the
+#' [`describe_event_categories`][databasemigrationservice_describe_event_categories]
+#' action to see a list of event categories.
 #' @param Enabled A Boolean value; set to **true** to activate the subscription.
 #'
 #' @section Request syntax:
@@ -4307,8 +4309,8 @@ databasemigrationservice_start_replication_task_assessment <- function(Replicati
 #' 
 #' To identify the names of the default individual assessments that AWS DMS
 #' supports for the associated migration task, run the
-#' `DescribeApplicableIndividualAssessments` operation using its own
-#' `ReplicationTaskArn` request parameter.
+#' [`describe_applicable_individual_assessments`][databasemigrationservice_describe_applicable_individual_assessments]
+#' operation using its own `ReplicationTaskArn` request parameter.
 #' @param Exclude Space-separated list of names for specific individual assessments that
 #' you want to exclude. These names come from the default list of
 #' individual assessments that AWS DMS supports for the associated
@@ -4319,8 +4321,8 @@ databasemigrationservice_start_replication_task_assessment <- function(Replicati
 #' 
 #' To identify the names of the default individual assessments that AWS DMS
 #' supports for the associated migration task, run the
-#' `DescribeApplicableIndividualAssessments` operation using its own
-#' `ReplicationTaskArn` request parameter.
+#' [`describe_applicable_individual_assessments`][databasemigrationservice_describe_applicable_individual_assessments]
+#' operation using its own `ReplicationTaskArn` request parameter.
 #'
 #' @section Request syntax:
 #' ```

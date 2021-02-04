@@ -30,10 +30,11 @@ parameter enables the bucket owner (only) to specify that the person
 requesting the download will be charged for the download. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html}{Requester Pays Buckets}.
 
-The following operations are related to \code{PutBucketRequestPayment}:
+The following operations are related to
+\code{\link[=s3_put_bucket_request_payment]{put_bucket_request_payment}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketRequestPayment.html}{GetBucketRequestPayment}
+\item \code{\link[=s3_create_bucket]{create_bucket}}
+\item \code{\link[=s3_get_bucket_request_payment]{get_bucket_request_payment}}
 }
 }
 \section{Request syntax}{

@@ -23,21 +23,21 @@ Sends a request to invite the specified AWS accounts to be member
 accounts in the behavior graph. This operation can only be called by the
 master account for a behavior graph.
 
-\code{CreateMembers} verifies the accounts and then sends invitations to the
-verified accounts.
+\code{\link[=detective_create_members]{create_members}} verifies the accounts and
+then sends invitations to the verified accounts.
 
 The request provides the behavior graph ARN and the list of accounts to
 invite.
 
 The response separates the requested accounts into two lists:
 \itemize{
-\item The accounts that \code{CreateMembers} was able to start the verification
-for. This list includes member accounts that are being verified,
-that have passed verification and are being sent an invitation, and
-that have failed verification.
-\item The accounts that \code{CreateMembers} was unable to process. This list
-includes accounts that were already invited to be member accounts in
-the behavior graph.
+\item The accounts that \code{\link[=detective_create_members]{create_members}} was
+able to start the verification for. This list includes member
+accounts that are being verified, that have passed verification and
+are being sent an invitation, and that have failed verification.
+\item The accounts that \code{\link[=detective_create_members]{create_members}} was
+unable to process. This list includes accounts that were already
+invited to be member accounts in the behavior graph.
 }
 }
 \section{Request syntax}{

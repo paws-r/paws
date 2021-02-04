@@ -16,9 +16,8 @@ alarm state of the composite alarm. The default is \code{TRUE}.}
 from any other state. Each action is specified as an Amazon Resource
 Name (ARN).
 
-Valid Values:
-\verb{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } |
-\verb{arn:aws:ssm:<i>region</i>:<i>account-id</i>:opsitem:<i>severity</i> }}
+Valid Values: \code{arn:aws:sns:region:account-id:sns-topic-name } |
+\code{arn:aws:ssm:region:account-id:opsitem:severity }}
 
 \item{AlarmDescription}{The description for the composite alarm.}
 
@@ -38,12 +37,12 @@ that are to be evaluated.
 
 Functions can include the following:
 \itemize{
-\item \code{ALARM("<i>alarm-name</i> or <i>alarm-ARN</i>")} is TRUE if the
-named alarm is in ALARM state.
-\item \code{OK("<i>alarm-name</i> or <i>alarm-ARN</i>")} is TRUE if the named
-alarm is in OK state.
-\item \code{INSUFFICIENT_DATA("<i>alarm-name</i> or <i>alarm-ARN</i>")} is TRUE
-if the named alarm is in INSUFFICIENT\\_DATA state.
+\item \code{ALARM("alarm-name or alarm-ARN")} is TRUE if the named alarm is in
+ALARM state.
+\item \code{OK("alarm-name or alarm-ARN")} is TRUE if the named alarm is in OK
+state.
+\item \code{INSUFFICIENT_DATA("alarm-name or alarm-ARN")} is TRUE if the named
+alarm is in INSUFFICIENT\\_DATA state.
 \item \code{TRUE} always evaluates to TRUE.
 \item \code{FALSE} always evaluates to FALSE.
 }
@@ -82,15 +81,13 @@ child alarms, TRUE or FALSE statements, and parentheses.}
 \code{INSUFFICIENT_DATA} state from any other state. Each action is specified
 as an Amazon Resource Name (ARN).
 
-Valid Values:
-\verb{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> }}
+Valid Values: \code{arn:aws:sns:region:account-id:sns-topic-name }}
 
 \item{OKActions}{The actions to execute when this alarm transitions to an \code{OK} state from
 any other state. Each action is specified as an Amazon Resource Name
 (ARN).
 
-Valid Values:
-\verb{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> }}
+Valid Values: \code{arn:aws:sns:region:account-id:sns-topic-name }}
 
 \item{Tags}{A list of key-value pairs to associate with the composite alarm. You can
 associate as many as 50 tags with an alarm.

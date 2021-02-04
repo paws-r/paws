@@ -50,11 +50,11 @@ players can be submitted as needed.
 
 \strong{Related operations}
 \itemize{
-\item StartMatchmaking
-\item DescribeMatchmaking
-\item StopMatchmaking
-\item AcceptMatch
-\item StartMatchBackfill
+\item \code{\link[=gamelift_start_matchmaking]{start_matchmaking}}
+\item \code{\link[=gamelift_describe_matchmaking]{describe_matchmaking}}
+\item \code{\link[=gamelift_stop_matchmaking]{stop_matchmaking}}
+\item \code{\link[=gamelift_accept_match]{accept_match}}
+\item \code{\link[=gamelift_start_match_backfill]{start_match_backfill}}
 }
 }
 \section{Request syntax}{

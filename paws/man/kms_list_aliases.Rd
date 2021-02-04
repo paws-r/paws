@@ -10,8 +10,9 @@ kms_list_aliases(KeyId, Limit, Marker)
 \item{KeyId}{Lists only aliases that are associated with the specified CMK. Enter a
 CMK in your AWS account.
 
-This parameter is optional. If you omit it, \code{ListAliases} returns all
-aliases in the account and Region.
+This parameter is optional. If you omit it,
+\code{\link[=kms_list_aliases]{list_aliases}} returns all aliases in the account
+and Region.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
@@ -22,7 +23,8 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{Limit}{Use this parameter to specify the maximum number of items to return.
 When this value is present, AWS KMS does not return more than the
@@ -37,25 +39,25 @@ truncated response you just received.}
 }
 \description{
 Gets a list of aliases in the caller's AWS account and region. For more
-information about aliases, see CreateAlias.
+information about aliases, see \code{\link[=kms_create_alias]{create_alias}}.
 
-By default, the \code{ListAliases} operation returns all aliases in the
-account and region. To get only the aliases associated with a particular
-customer master key (CMK), use the \code{KeyId} parameter.
+By default, the \code{\link[=kms_list_aliases]{list_aliases}} operation returns all
+aliases in the account and region. To get only the aliases associated
+with a particular customer master key (CMK), use the \code{KeyId} parameter.
 
-The \code{ListAliases} response can include aliases that you created and
-associated with your customer managed CMKs, and aliases that AWS created
-and associated with AWS managed CMKs in your account. You can recognize
-AWS aliases because their names have the format
-\verb{aws/&lt;service-name&gt;}, such as \code{aws/dynamodb}.
+The \code{\link[=kms_list_aliases]{list_aliases}} response can include aliases that
+you created and associated with your customer managed CMKs, and aliases
+that AWS created and associated with AWS managed CMKs in your account.
+You can recognize AWS aliases because their names have the format
+\verb{aws/<service-name>}, such as \code{aws/dynamodb}.
 
 The response might also include aliases that have no \code{TargetKeyId}
 field. These are predefined aliases that AWS has created but has not yet
 associated with a CMK. Aliases that AWS creates in your account,
 including predefined aliases, do not count against your \href{https://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit}{AWS KMS aliases quota}.
 
-\strong{Cross-account use}: No. \code{ListAliases} does not return aliases in
-other AWS accounts.
+\strong{Cross-account use}: No. \code{\link[=kms_list_aliases]{list_aliases}} does not
+return aliases in other AWS accounts.
 
 \strong{Required permissions}:
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ListAliases}
@@ -66,9 +68,9 @@ in the \emph{AWS Key Management Service Developer Guide}.
 
 \strong{Related operations:}
 \itemize{
-\item CreateAlias
-\item DeleteAlias
-\item UpdateAlias
+\item \code{\link[=kms_create_alias]{create_alias}}
+\item \code{\link[=kms_delete_alias]{delete_alias}}
+\item \code{\link[=kms_update_alias]{update_alias}}
 }
 }
 \section{Request syntax}{

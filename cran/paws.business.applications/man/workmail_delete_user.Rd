@@ -14,7 +14,8 @@ workmail_delete_user(OrganizationId, UserId)
 \description{
 Deletes a user from Amazon WorkMail and all subsequent systems. Before
 you can delete a user, the user state must be \code{DISABLED}. Use the
-DescribeUser action to confirm the user state.
+\code{\link[=workmail_describe_user]{describe_user}} action to confirm the user
+state.
 
 Deleting a user is permanent and cannot be undone. WorkMail archives
 user mailboxes for 30 days before they are permanently removed.

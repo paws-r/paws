@@ -9,7 +9,8 @@ resourcegroups_search_resources(ResourceQuery, MaxResults, NextToken)
 }
 \arguments{
 \item{ResourceQuery}{[required] The search query, using the same formats that are supported for resource
-group definition. For more information, see CreateGroup.}
+group definition. For more information, see
+\code{\link[=resourcegroups_create_group]{create_group}}.}
 
 \item{MaxResults}{The total number of results that you want included on each page of the
 response. If you do not include this parameter, it defaults to a value

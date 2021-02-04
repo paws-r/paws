@@ -16,8 +16,8 @@ more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acce
 
 Related actions include:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetPublicAccessBlock.html}{GetPublicAccessBlock}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutPublicAccessBlock.html}{PutPublicAccessBlock}
+\item \code{\link[=s3control_get_public_access_block]{get_public_access_block}}
+\item \code{\link[=s3control_put_public_access_block]{put_public_access_block}}
 }
 }
 \section{Request syntax}{

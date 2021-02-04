@@ -31,7 +31,8 @@ in the \emph{AWS Systems Manager User Guide}.}
 running a maintenance window task. If you do not specify a service role
 ARN, Systems Manager uses your account's service-linked role. If no
 service-linked role for Systems Manager exists in your account, it is
-created when you run \code{RegisterTaskWithMaintenanceWindow}.
+created when you run
+\code{\link[=ssm_register_task_with_maintenance_window]{register_task_with_maintenance_window}}.
 
 For more information, see the following topics in the in the \emph{AWS
 Systems Manager User Guide}:
@@ -125,9 +126,11 @@ Step Functions). For more information about running tasks that do not
 specify targets, see see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html}{Registering maintenance window tasks without targets}
 in the \emph{AWS Systems Manager User Guide}.
 
-If the value for a parameter in \code{UpdateMaintenanceWindowTask} is null,
-then the corresponding field is not modified. If you set \code{Replace} to
-true, then all fields required by the RegisterTaskWithMaintenanceWindow
+If the value for a parameter in
+\code{\link[=ssm_update_maintenance_window_task]{update_maintenance_window_task}}
+is null, then the corresponding field is not modified. If you set
+\code{Replace} to true, then all fields required by the
+\code{\link[=ssm_register_task_with_maintenance_window]{register_task_with_maintenance_window}}
 action are required for this request. Optional fields that aren't
 specified are set to null.
 

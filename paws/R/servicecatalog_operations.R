@@ -416,7 +416,8 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
 #' copy a product to the same region or another region.
 #' 
 #' This operation is performed asynchronously. To track the progress of the
-#' operation, use DescribeCopyProductStatus.
+#' operation, use
+#' [`describe_copy_product_status`][servicecatalog_describe_copy_product_status].
 #'
 #' @usage
 #' servicecatalog_copy_product(AcceptLanguage, SourceProductArn,
@@ -701,7 +702,8 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #' If the portfolio share with the specified account or organization node
 #' already exists, this action will have no effect and will not return an
 #' error. To update an existing share, you must use the
-#' ` UpdatePortfolioShare` API instead.
+#' [`update_portfolio_share`][servicecatalog_update_portfolio_share] API
+#' instead.
 #'
 #' @usage
 #' servicecatalog_create_portfolio_share(AcceptLanguage, PortfolioId,
@@ -862,8 +864,9 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' TAINTED.
 #' 
 #' To view the resource changes in the change set, use
-#' DescribeProvisionedProductPlan. To create or modify the provisioned
-#' product, use ExecuteProvisionedProductPlan.
+#' [`describe_provisioned_product_plan`][servicecatalog_describe_provisioned_product_plan].
+#' To create or modify the provisioned product, use
+#' [`execute_provisioned_product_plan`][servicecatalog_execute_provisioned_product_plan].
 #'
 #' @usage
 #' servicecatalog_create_provisioned_product_plan(AcceptLanguage, PlanName,
@@ -883,7 +886,8 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' stack-related events.
 #' @param PathId The path identifier of the product. This value is optional if the
 #' product has a default path, and required if the product has more than
-#' one path. To list the paths for a product, use ListLaunchPaths.
+#' one path. To list the paths for a product, use
+#' [`list_launch_paths`][servicecatalog_list_launch_paths].
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param ProvisionedProductName &#91;required&#93; A user-friendly name for the provisioned product. This value must be
 #' unique for the AWS account and cannot be updated after the product is
@@ -1604,7 +1608,7 @@ servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
 #' 
 #' -   `zh` - Chinese
 #' @param CopyProductToken &#91;required&#93; The token for the copy product operation. This token is returned by
-#' CopyProduct.
+#' [`copy_product`][servicecatalog_copy_product].
 #'
 #' @section Request syntax:
 #' ```
@@ -2110,10 +2114,11 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
 #' If the output contains a TagOption key with an empty list of values,
 #' there is a TagOption conflict for that key. The end user cannot take
 #' action to fix the conflict, and launch is not blocked. In subsequent
-#' calls to ProvisionProduct, do not include conflicted TagOption keys as
-#' tags, or this causes the error "Parameter validation failed: Missing
-#' required parameter in Tags\[*N*\]:*Value*". Tag the provisioned product
-#' with the value `sc-tagoption-conflict-portfolioId-productId`.
+#' calls to [`provision_product`][servicecatalog_provision_product], do not
+#' include conflicted TagOption keys as tags, or this causes the error
+#' "Parameter validation failed: Missing required parameter in
+#' Tags\[*N*\]:*Value*". Tag the provisioned product with the value
+#' `sc-tagoption-conflict-portfolioId-productId`.
 #'
 #' @usage
 #' servicecatalog_describe_provisioning_parameters(AcceptLanguage,
@@ -2136,7 +2141,8 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
 #' but not both.
 #' @param PathId The path identifier of the product. This value is optional if the
 #' product has a default path, and required if the product has more than
-#' one path. To list the paths for a product, use ListLaunchPaths. You must
+#' one path. To list the paths for a product, use
+#' [`list_launch_paths`][servicecatalog_list_launch_paths]. You must
 #' provide the name or ID, but not both.
 #' @param PathName The name of the path. You must provide the name or ID, but not both.
 #'
@@ -2179,15 +2185,18 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
 #' Gets information about the specified request operation.
 #' 
 #' Use this operation after calling a request operation (for example,
-#' ProvisionProduct, TerminateProvisionedProduct, or
-#' UpdateProvisionedProduct).
+#' [`provision_product`][servicecatalog_provision_product],
+#' [`terminate_provisioned_product`][servicecatalog_terminate_provisioned_product],
+#' or
+#' [`update_provisioned_product`][servicecatalog_update_provisioned_product]).
 #' 
 #' If a provisioned product was transferred to a new owner using
-#' UpdateProvisionedProductProperties, the new owner will be able to
-#' describe all past records for that product. The previous owner will no
-#' longer be able to describe the records, but will be able to use
-#' ListRecordHistory to see the product's history from when he was the
-#' owner.
+#' [`update_provisioned_product_properties`][servicecatalog_update_provisioned_product_properties],
+#' the new owner will be able to describe all past records for that
+#' product. The previous owner will no longer be able to describe the
+#' records, but will be able to use
+#' [`list_record_history`][servicecatalog_list_record_history] to see the
+#' product's history from when he was the owner.
 #'
 #' @usage
 #' servicecatalog_describe_record(AcceptLanguage, Id, PageToken, PageSize)
@@ -2383,7 +2392,7 @@ servicecatalog_describe_tag_option <- function(Id) {
 #' in the organization.
 #' 
 #' Note that a delegated administrator is not authorized to invoke
-#' `DisableAWSOrganizationsAccess`.
+#' [`disable_aws_organizations_access`][servicecatalog_disable_aws_organizations_access].
 #'
 #' @usage
 #' servicecatalog_disable_aws_organizations_access()
@@ -2659,7 +2668,7 @@ servicecatalog_disassociate_tag_option_from_resource <- function(ResourceId, Tag
 #' can be in sync with any changes in your AWS Organizations structure.
 #' 
 #' Note that a delegated administrator is not authorized to invoke
-#' `EnableAWSOrganizationsAccess`.
+#' [`enable_aws_organizations_access`][servicecatalog_enable_aws_organizations_access].
 #'
 #' @usage
 #' servicecatalog_enable_aws_organizations_access()
@@ -3954,7 +3963,8 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 #' A provisioned product is a resourced instance of a product. For example,
 #' provisioning a product based on a CloudFormation template launches a
 #' CloudFormation stack and its underlying resources. You can check the
-#' status of this request using DescribeRecord.
+#' status of this request using
+#' [`describe_record`][servicecatalog_describe_record].
 #' 
 #' If the request contains a tag key with an empty list of values, there is
 #' a tag conflict for that key. Do not include conflicted keys as tags, or
@@ -3982,7 +3992,8 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 #' but not both.
 #' @param PathId The path identifier of the product. This value is optional if the
 #' product has a default path, and required if the product has more than
-#' one path. To list the paths for a product, use ListLaunchPaths. You must
+#' one path. To list the paths for a product, use
+#' [`list_launch_paths`][servicecatalog_list_launch_paths]. You must
 #' provide the name or ID, but not both.
 #' @param PathName The name of the path. You must provide the name or ID, but not both.
 #' @param ProvisionedProductName &#91;required&#93; A user-friendly name for the provisioned product. This value must be
@@ -4124,7 +4135,8 @@ servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @description
 #' Lists the provisioned products that are available (not terminated).
 #' 
-#' To use additional filtering, see SearchProvisionedProducts.
+#' To use additional filtering, see
+#' [`search_provisioned_products`][servicecatalog_search_provisioned_products].
 #'
 #' @usage
 #' servicecatalog_scan_provisioned_products(AcceptLanguage,
@@ -4385,7 +4397,8 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
 #' This operation does not delete any records associated with the
 #' provisioned product.
 #' 
-#' You can check the status of this request using DescribeRecord.
+#' You can check the status of this request using
+#' [`describe_record`][servicecatalog_describe_record].
 #'
 #' @usage
 #' servicecatalog_terminate_provisioned_product(ProvisionedProductName,
@@ -4410,10 +4423,11 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
 #' 
 #' -   `zh` - Chinese
 #' @param RetainPhysicalResources When this boolean parameter is set to true, the
-#' `TerminateProvisionedProduct` API deletes the Service Catalog
-#' provisioned product. However, it does not remove the CloudFormation
-#' stack, stack set, or the underlying resources of the deleted provisioned
-#' product. The default value is false.
+#' [`terminate_provisioned_product`][servicecatalog_terminate_provisioned_product]
+#' API deletes the Service Catalog provisioned product. However, it does
+#' not remove the CloudFormation stack, stack set, or the underlying
+#' resources of the deleted provisioned product. The default value is
+#' false.
 #'
 #' @section Request syntax:
 #' ```
@@ -4631,7 +4645,8 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #' Updates the specified portfolio share. You can use this API to enable or
 #' disable TagOptions sharing for an existing portfolio share.
 #' 
-#' The portfolio share cannot be updated if the ` CreatePortfolioShare`
+#' The portfolio share cannot be updated if the
+#' [`create_portfolio_share`][servicecatalog_create_portfolio_share]
 #' operation is `IN_PROGRESS`, as the share is not available to recipient
 #' entities. In this case, you must wait for the portfolio share to be
 #' COMPLETED.
@@ -4641,10 +4656,12 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #' 
 #' If the portfolio is shared to both an external account and an
 #' organization node, and both shares need to be updated, you must invoke
-#' `UpdatePortfolioShare` separately for each share type.
+#' [`update_portfolio_share`][servicecatalog_update_portfolio_share]
+#' separately for each share type.
 #' 
 #' This API cannot be used for removing the portfolio share. You must use
-#' `DeletePortfolioShare` API for that action.
+#' [`delete_portfolio_share`][servicecatalog_delete_portfolio_share] API
+#' for that action.
 #'
 #' @usage
 #' servicecatalog_update_portfolio_share(AcceptLanguage, PortfolioId,
@@ -4784,7 +4801,8 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #' update with no interruption, with some interruption, or replace the
 #' provisioned product entirely.
 #' 
-#' You can check the status of this request using DescribeRecord.
+#' You can check the status of this request using
+#' [`describe_record`][servicecatalog_describe_record].
 #'
 #' @usage
 #' servicecatalog_update_provisioned_product(AcceptLanguage,
@@ -4904,12 +4922,16 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' @param ProvisionedProductProperties &#91;required&#93; A map that contains the provisioned product properties to be updated.
 #' 
 #' The `LAUNCH_ROLE` key accepts role ARNs. This key allows an
-#' administrator to call `UpdateProvisionedProductProperties` to update the
-#' launch role that is associated with a provisioned product. This role is
-#' used when an end user calls a provisioning operation such as
-#' `UpdateProvisionedProduct`, `TerminateProvisionedProduct`, or
-#' `ExecuteProvisionedProductServiceAction`. Only a role ARN is valid. A
-#' user ARN is invalid.
+#' administrator to call
+#' [`update_provisioned_product_properties`][servicecatalog_update_provisioned_product_properties]
+#' to update the launch role that is associated with a provisioned product.
+#' This role is used when an end user calls a provisioning operation such
+#' as
+#' [`update_provisioned_product`][servicecatalog_update_provisioned_product],
+#' [`terminate_provisioned_product`][servicecatalog_terminate_provisioned_product],
+#' or
+#' [`execute_provisioned_product_service_action`][servicecatalog_execute_provisioned_product_service_action].
+#' Only a role ARN is valid. A user ARN is invalid.
 #' 
 #' The `OWNER` key accepts user ARNs and role ARNs. The owner is the user
 #' that has permission to see, update, terminate, and execute service
@@ -4918,10 +4940,13 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' The administrator can change the owner of a provisioned product to
 #' another IAM user within the same account. Both end user owners and
 #' administrators can see ownership history of the provisioned product
-#' using the `ListRecordHistory` API. The new owner can describe all past
-#' records for the provisioned product using the `DescribeRecord` API. The
-#' previous owner can no longer use `DescribeRecord`, but can still see the
-#' product's history from when he was an owner using `ListRecordHistory`.
+#' using the [`list_record_history`][servicecatalog_list_record_history]
+#' API. The new owner can describe all past records for the provisioned
+#' product using the [`describe_record`][servicecatalog_describe_record]
+#' API. The previous owner can no longer use
+#' [`describe_record`][servicecatalog_describe_record], but can still see
+#' the product's history from when he was an owner using
+#' [`list_record_history`][servicecatalog_list_record_history].
 #' 
 #' If a provisioned product ownership is assigned to an end user, they can
 #' see and perform any action through the API or Service Catalog console

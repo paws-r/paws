@@ -65,9 +65,11 @@ opsworks_assign_instance <- function(InstanceId, LayerIds) {
 #' @description
 #' Assigns one of the stack's registered Amazon EBS volumes to a specified
 #' instance. The volume must first be registered with the stack by calling
-#' RegisterVolume. After you register the volume, you must call
-#' UpdateVolume to specify a mount point before calling `AssignVolume`. For
-#' more information, see [Resource
+#' [`register_volume`][opsworks_register_volume]. After you register the
+#' volume, you must call [`update_volume`][opsworks_update_volume] to
+#' specify a mount point before calling
+#' [`assign_volume`][opsworks_assign_volume]. For more information, see
+#' [Resource
 #' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -116,7 +118,8 @@ opsworks_assign_volume <- function(VolumeId, InstanceId = NULL) {
 #' @description
 #' Associates one of the stack's registered Elastic IP addresses with a
 #' specified instance. The address must first be registered with the stack
-#' by calling RegisterElasticIp. For more information, see [Resource
+#' by calling [`register_elastic_ip`][opsworks_register_elastic_ip]. For
+#' more information, see [Resource
 #' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -275,8 +278,9 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' set this parameter to the Amazon Resource Name (ARN) for an existing IAM
 #' role. If you create a stack by using the AWS OpsWorks Stacks console, it
 #' creates the role for you. You can obtain an existing stack's IAM ARN
-#' programmatically by calling DescribePermissions. For more information
-#' about IAM ARNs, see [Using
+#' programmatically by calling
+#' [`describe_permissions`][opsworks_describe_permissions]. For more
+#' information about IAM ARNs, see [Using
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html).
 #' 
 #' You must set this parameter to a valid service role ARN or the action
@@ -438,7 +442,8 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' The default setting is `LATEST`. To specify an agent version, you must
 #' use the complete version number, not the abbreviated number shown on the
 #' console. For a list of available agent version numbers, call
-#' DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
+#' [`describe_agent_versions`][opsworks_describe_agent_versions].
+#' AgentVersion cannot be set to Chef 12.2.
 #' 
 #' You can also specify an agent version when you create or update an
 #' instance, which overrides the stack's default setting.
@@ -768,10 +773,11 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' Systems](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 #' 
 #' The default option is the current Amazon Linux version. If you set this
-#' parameter to `Custom`, you must use the CreateInstance action's AmiId
-#' parameter to specify the custom AMI that you want to use. Block device
-#' mappings are not supported if the value is `Custom`. For more
-#' information about supported operating systems, see [Operating
+#' parameter to `Custom`, you must use the
+#' [`create_instance`][opsworks_create_instance] action's AmiId parameter
+#' to specify the custom AMI that you want to use. Block device mappings
+#' are not supported if the value is `Custom`. For more information about
+#' supported operating systems, see [Operating
 #' Systems](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html)For
 #' more information about how to use custom AMIs with AWS OpsWorks Stacks,
 #' see [Using Custom
@@ -805,7 +811,8 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' @param InstallUpdatesOnBoot Whether to install operating system and package updates when the
 #' instance boots. The default value is `true`. To control when updates are
 #' installed, set this value to `false`. You must then update your
-#' instances manually by using CreateDeployment to run the
+#' instances manually by using
+#' [`create_deployment`][opsworks_create_deployment] to run the
 #' `update_dependencies` stack command or by manually running `yum` (Amazon
 #' Linux) or `apt-get` (Ubuntu) on the instances.
 #' 
@@ -826,7 +833,8 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' The default setting is `INHERIT`. To specify an agent version, you must
 #' use the complete version number, not the abbreviated number shown on the
 #' console. For a list of available agent version numbers, call
-#' DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
+#' [`describe_agent_versions`][opsworks_describe_agent_versions].
+#' AgentVersion cannot be set to Chef 12.2.
 #' @param Tenancy The instance's tenancy option. The default option is no tenancy, or if
 #' the instance is running in a VPC, inherit tenancy settings from the VPC.
 #' The following are valid values for this parameter: `dedicated`,
@@ -973,7 +981,8 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #' @param InstallUpdatesOnBoot Whether to install operating system and package updates when the
 #' instance boots. The default value is `true`. To control when updates are
 #' installed, set this value to `false`. You must then update your
-#' instances manually by using CreateDeployment to run the
+#' instances manually by using
+#' [`create_deployment`][opsworks_create_deployment] to run the
 #' `update_dependencies` stack command or by manually running `yum` (Amazon
 #' Linux) or `apt-get` (Ubuntu) on the instances.
 #' 
@@ -1311,8 +1320,9 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' The default setting is the most recent release of the agent. To specify
 #' an agent version, you must use the complete version number, not the
 #' abbreviated number shown on the console. For a list of available agent
-#' version numbers, call DescribeAgentVersions. AgentVersion cannot be set
-#' to Chef 12.2.
+#' version numbers, call
+#' [`describe_agent_versions`][opsworks_describe_agent_versions].
+#' AgentVersion cannot be set to Chef 12.2.
 #' 
 #' You can also specify an agent version when you create or update an
 #' instance, which overrides the stack's default setting.
@@ -1892,8 +1902,9 @@ opsworks_deregister_volume <- function(VolumeId) {
 #'
 #' @description
 #' Describes the available AWS OpsWorks Stacks agent versions. You must
-#' specify a stack ID or a configuration manager. `DescribeAgentVersions`
-#' returns a list of available agent versions for the specified stack or
+#' specify a stack ID or a configuration manager.
+#' [`describe_agent_versions`][opsworks_describe_agent_versions] returns a
+#' list of available agent versions for the specified stack or
 #' configuration manager.
 #'
 #' @usage
@@ -1949,11 +1960,13 @@ opsworks_describe_agent_versions <- function(StackId = NULL, ConfigurationManage
 #' @usage
 #' opsworks_describe_apps(StackId, AppIds)
 #'
-#' @param StackId The app stack ID. If you use this parameter, `DescribeApps` returns a
-#' description of the apps in the specified stack.
+#' @param StackId The app stack ID. If you use this parameter,
+#' [`describe_apps`][opsworks_describe_apps] returns a description of the
+#' apps in the specified stack.
 #' @param AppIds An array of app IDs for the apps to be described. If you use this
-#' parameter, `DescribeApps` returns a description of the specified apps.
-#' Otherwise, it returns a description of every app.
+#' parameter, [`describe_apps`][opsworks_describe_apps] returns a
+#' description of the specified apps. Otherwise, it returns a description
+#' of every app.
 #'
 #' @section Request syntax:
 #' ```
@@ -2001,15 +2014,16 @@ opsworks_describe_apps <- function(StackId = NULL, AppIds = NULL) {
 #' @usage
 #' opsworks_describe_commands(DeploymentId, InstanceId, CommandIds)
 #'
-#' @param DeploymentId The deployment ID. If you include this parameter, `DescribeCommands`
-#' returns a description of the commands associated with the specified
-#' deployment.
-#' @param InstanceId The instance ID. If you include this parameter, `DescribeCommands`
-#' returns a description of the commands associated with the specified
-#' instance.
+#' @param DeploymentId The deployment ID. If you include this parameter,
+#' [`describe_commands`][opsworks_describe_commands] returns a description
+#' of the commands associated with the specified deployment.
+#' @param InstanceId The instance ID. If you include this parameter,
+#' [`describe_commands`][opsworks_describe_commands] returns a description
+#' of the commands associated with the specified instance.
 #' @param CommandIds An array of command IDs. If you include this parameter,
-#' `DescribeCommands` returns a description of the specified commands.
-#' Otherwise, it returns a description of every command.
+#' [`describe_commands`][opsworks_describe_commands] returns a description
+#' of the specified commands. Otherwise, it returns a description of every
+#' command.
 #'
 #' @section Request syntax:
 #' ```
@@ -2119,14 +2133,15 @@ opsworks_describe_deployments <- function(StackId = NULL, AppId = NULL, Deployme
 #'   MaxResults)
 #'
 #' @param EcsClusterArns A list of ARNs, one for each cluster to be described.
-#' @param StackId A stack ID. `DescribeEcsClusters` returns a description of the cluster
-#' that is registered with the stack.
+#' @param StackId A stack ID. [`describe_ecs_clusters`][opsworks_describe_ecs_clusters]
+#' returns a description of the cluster that is registered with the stack.
 #' @param NextToken If the previous paginated request did not return all of the remaining
 #' results, the response object's`NextToken` parameter value is set to a
-#' token. To retrieve the next set of results, call `DescribeEcsClusters`
-#' again and assign that token to the request object's `NextToken`
-#' parameter. If there are no remaining results, the previous response
-#' object's `NextToken` parameter is set to `null`.
+#' token. To retrieve the next set of results, call
+#' [`describe_ecs_clusters`][opsworks_describe_ecs_clusters] again and
+#' assign that token to the request object's `NextToken` parameter. If
+#' there are no remaining results, the previous response object's
+#' `NextToken` parameter is set to `null`.
 #' @param MaxResults To receive a paginated response, use this parameter to specify the
 #' maximum number of results to be returned with a single call. If the
 #' number of available results exceeds this maximum, the response includes
@@ -2182,16 +2197,18 @@ opsworks_describe_ecs_clusters <- function(EcsClusterArns = NULL, StackId = NULL
 #' @usage
 #' opsworks_describe_elastic_ips(InstanceId, StackId, Ips)
 #'
-#' @param InstanceId The instance ID. If you include this parameter, `DescribeElasticIps`
-#' returns a description of the Elastic IP addresses associated with the
-#' specified instance.
-#' @param StackId A stack ID. If you include this parameter, `DescribeElasticIps` returns
-#' a description of the Elastic IP addresses that are registered with the
+#' @param InstanceId The instance ID. If you include this parameter,
+#' [`describe_elastic_ips`][opsworks_describe_elastic_ips] returns a
+#' description of the Elastic IP addresses associated with the specified
+#' instance.
+#' @param StackId A stack ID. If you include this parameter,
+#' [`describe_elastic_ips`][opsworks_describe_elastic_ips] returns a
+#' description of the Elastic IP addresses that are registered with the
 #' specified stack.
 #' @param Ips An array of Elastic IP addresses to be described. If you include this
-#' parameter, `DescribeElasticIps` returns a description of the specified
-#' Elastic IP addresses. Otherwise, it returns a description of every
-#' Elastic IP address.
+#' parameter, [`describe_elastic_ips`][opsworks_describe_elastic_ips]
+#' returns a description of the specified Elastic IP addresses. Otherwise,
+#' it returns a description of every Elastic IP address.
 #'
 #' @section Request syntax:
 #' ```
@@ -2291,13 +2308,16 @@ opsworks_describe_elastic_load_balancers <- function(StackId = NULL, LayerIds = 
 #' @usage
 #' opsworks_describe_instances(StackId, LayerId, InstanceIds)
 #'
-#' @param StackId A stack ID. If you use this parameter, `DescribeInstances` returns
-#' descriptions of the instances associated with the specified stack.
-#' @param LayerId A layer ID. If you use this parameter, `DescribeInstances` returns
-#' descriptions of the instances associated with the specified layer.
+#' @param StackId A stack ID. If you use this parameter,
+#' [`describe_instances`][opsworks_describe_instances] returns descriptions
+#' of the instances associated with the specified stack.
+#' @param LayerId A layer ID. If you use this parameter,
+#' [`describe_instances`][opsworks_describe_instances] returns descriptions
+#' of the instances associated with the specified layer.
 #' @param InstanceIds An array of instance IDs to be described. If you use this parameter,
-#' `DescribeInstances` returns a description of the specified instances.
-#' Otherwise, it returns a description of every instance.
+#' [`describe_instances`][opsworks_describe_instances] returns a
+#' description of the specified instances. Otherwise, it returns a
+#' description of every instance.
 #'
 #' @section Request syntax:
 #' ```
@@ -2348,8 +2368,8 @@ opsworks_describe_instances <- function(StackId = NULL, LayerId = NULL, Instance
 #'
 #' @param StackId The stack ID.
 #' @param LayerIds An array of layer IDs that specify the layers to be described. If you
-#' omit this parameter, `DescribeLayers` returns a description of every
-#' layer in the specified stack.
+#' omit this parameter, [`describe_layers`][opsworks_describe_layers]
+#' returns a description of every layer in the specified stack.
 #'
 #' @section Request syntax:
 #' ```
@@ -2563,12 +2583,14 @@ opsworks_describe_permissions <- function(IamUserArn = NULL, StackId = NULL) {
 #' @usage
 #' opsworks_describe_raid_arrays(InstanceId, StackId, RaidArrayIds)
 #'
-#' @param InstanceId The instance ID. If you use this parameter, `DescribeRaidArrays` returns
+#' @param InstanceId The instance ID. If you use this parameter,
+#' [`describe_raid_arrays`][opsworks_describe_raid_arrays] returns
 #' descriptions of the RAID arrays associated with the specified instance.
 #' @param StackId The stack ID.
 #' @param RaidArrayIds An array of RAID array IDs. If you use this parameter,
-#' `DescribeRaidArrays` returns descriptions of the specified arrays.
-#' Otherwise, it returns a description of every array.
+#' [`describe_raid_arrays`][opsworks_describe_raid_arrays] returns
+#' descriptions of the specified arrays. Otherwise, it returns a
+#' description of every array.
 #'
 #' @section Request syntax:
 #' ```
@@ -2667,14 +2689,16 @@ opsworks_describe_rds_db_instances <- function(StackId, RdsDbInstanceArns = NULL
 #' @usage
 #' opsworks_describe_service_errors(StackId, InstanceId, ServiceErrorIds)
 #'
-#' @param StackId The stack ID. If you use this parameter, `DescribeServiceErrors` returns
+#' @param StackId The stack ID. If you use this parameter,
+#' [`describe_service_errors`][opsworks_describe_service_errors] returns
 #' descriptions of the errors associated with the specified stack.
-#' @param InstanceId The instance ID. If you use this parameter, `DescribeServiceErrors`
-#' returns descriptions of the errors associated with the specified
-#' instance.
+#' @param InstanceId The instance ID. If you use this parameter,
+#' [`describe_service_errors`][opsworks_describe_service_errors] returns
+#' descriptions of the errors associated with the specified instance.
 #' @param ServiceErrorIds An array of service error IDs. If you use this parameter,
-#' `DescribeServiceErrors` returns descriptions of the specified errors.
-#' Otherwise, it returns a description of every error.
+#' [`describe_service_errors`][opsworks_describe_service_errors] returns
+#' descriptions of the specified errors. Otherwise, it returns a
+#' description of every error.
 #'
 #' @section Request syntax:
 #' ```
@@ -2810,8 +2834,8 @@ opsworks_describe_stack_summary <- function(StackId) {
 #' opsworks_describe_stacks(StackIds)
 #'
 #' @param StackIds An array of stack IDs that specify the stacks to be described. If you
-#' omit this parameter, `DescribeStacks` returns a description of every
-#' stack.
+#' omit this parameter, [`describe_stacks`][opsworks_describe_stacks]
+#' returns a description of every stack.
 #'
 #' @section Request syntax:
 #' ```
@@ -2951,15 +2975,18 @@ opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
 #' @usage
 #' opsworks_describe_volumes(InstanceId, StackId, RaidArrayId, VolumeIds)
 #'
-#' @param InstanceId The instance ID. If you use this parameter, `DescribeVolumes` returns
-#' descriptions of the volumes associated with the specified instance.
+#' @param InstanceId The instance ID. If you use this parameter,
+#' [`describe_volumes`][opsworks_describe_volumes] returns descriptions of
+#' the volumes associated with the specified instance.
 #' @param StackId A stack ID. The action describes the stack's registered Amazon EBS
 #' volumes.
-#' @param RaidArrayId The RAID array ID. If you use this parameter, `DescribeVolumes` returns
-#' descriptions of the volumes associated with the specified RAID array.
-#' @param VolumeIds Am array of volume IDs. If you use this parameter, `DescribeVolumes`
-#' returns descriptions of the specified volumes. Otherwise, it returns a
-#' description of every volume.
+#' @param RaidArrayId The RAID array ID. If you use this parameter,
+#' [`describe_volumes`][opsworks_describe_volumes] returns descriptions of
+#' the volumes associated with the specified RAID array.
+#' @param VolumeIds Am array of volume IDs. If you use this parameter,
+#' [`describe_volumes`][opsworks_describe_volumes] returns descriptions of
+#' the specified volumes. Otherwise, it returns a description of every
+#' volume.
 #'
 #' @section Request syntax:
 #' ```
@@ -3314,8 +3341,9 @@ opsworks_register_ecs_cluster <- function(EcsClusterArn, StackId) {
 #' @description
 #' Registers an Elastic IP address with a specified stack. An address can
 #' be registered with only one stack at a time. If the address is already
-#' registered, you must first deregister it by calling DeregisterElasticIp.
-#' For more information, see [Resource
+#' registered, you must first deregister it by calling
+#' [`deregister_elastic_ip`][opsworks_deregister_elastic_ip]. For more
+#' information, see [Resource
 #' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -3368,17 +3396,18 @@ opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
 #' We do not recommend using this action to register instances. The
 #' complete registration operation includes two tasks: installing the AWS
 #' OpsWorks Stacks agent on the instance, and registering the instance with
-#' the stack. `RegisterInstance` handles only the second step. You should
-#' instead use the AWS CLI `register` command, which performs the entire
-#' registration operation. For more information, see [Registering an
-#' Instance with an AWS OpsWorks Stacks
+#' the stack. [`register_instance`][opsworks_register_instance] handles
+#' only the second step. You should instead use the AWS CLI `register`
+#' command, which performs the entire registration operation. For more
+#' information, see [Registering an Instance with an AWS OpsWorks Stacks
 #' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register.html).
 #' 
 #' Registered instances have the same requirements as instances that are
-#' created by using the CreateInstance API. For example, registered
-#' instances must be running a supported Linux-based operating system, and
-#' they must have a supported instance type. For more information about
-#' requirements for instances that you want to register, see [Preparing the
+#' created by using the [`create_instance`][opsworks_create_instance] API.
+#' For example, registered instances must be running a supported
+#' Linux-based operating system, and they must have a supported instance
+#' type. For more information about requirements for instances that you
+#' want to register, see [Preparing the
 #' Instance](https://docs.aws.amazon.com/opsworks/latest/userguide/).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -3491,8 +3520,9 @@ opsworks_register_rds_db_instance <- function(StackId, RdsDbInstanceArn, DbUser,
 #' @description
 #' Registers an Amazon EBS volume with a specified stack. A volume can be
 #' registered with only one stack at a time. If the volume is already
-#' registered, you must first deregister it by calling DeregisterVolume.
-#' For more information, see [Resource
+#' registered, you must first deregister it by calling
+#' [`deregister_volume`][opsworks_deregister_volume]. For more information,
+#' see [Resource
 #' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -4369,7 +4399,8 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' @param InstallUpdatesOnBoot Whether to install operating system and package updates when the
 #' instance boots. The default value is `true`. To control when updates are
 #' installed, set this value to `false`. You must then update your
-#' instances manually by using CreateDeployment to run the
+#' instances manually by using
+#' [`create_deployment`][opsworks_create_deployment] to run the
 #' `update_dependencies` stack command or by manually running `yum` (Amazon
 #' Linux) or `apt-get` (Ubuntu) on the instances.
 #' 
@@ -4390,7 +4421,7 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' The default setting is `INHERIT`. To specify an agent version, you must
 #' use the complete version number, not the abbreviated number shown on the
 #' console. For a list of available agent version numbers, call
-#' DescribeAgentVersions.
+#' [`describe_agent_versions`][opsworks_describe_agent_versions].
 #' 
 #' AgentVersion cannot be set to Chef 12.2.
 #'
@@ -4492,7 +4523,8 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #' @param InstallUpdatesOnBoot Whether to install operating system and package updates when the
 #' instance boots. The default value is `true`. To control when updates are
 #' installed, set this value to `false`. You must then update your
-#' instances manually by using CreateDeployment to run the
+#' instances manually by using
+#' [`create_deployment`][opsworks_create_deployment] to run the
 #' `update_dependencies` stack command or manually running `yum` (Amazon
 #' Linux) or `apt-get` (Ubuntu) on the instances.
 #' 
@@ -4779,7 +4811,8 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' region. For more information, see [Regions and
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html). If
 #' you also specify a value for `DefaultSubnetId`, the subnet must be in
-#' the same zone. For more information, see CreateStack.
+#' the same zone. For more information, see
+#' [`create_stack`][opsworks_create_stack].
 #' @param DefaultSubnetId The stack's default VPC subnet ID. This parameter is required if you
 #' specify a value for the `VpcId` parameter. All instances are launched
 #' into this subnet unless you specify otherwise when you create the
@@ -4862,7 +4895,8 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' The default setting is `LATEST`. To specify an agent version, you must
 #' use the complete version number, not the abbreviated number shown on the
 #' console. For a list of available agent version numbers, call
-#' DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
+#' [`describe_agent_versions`][opsworks_describe_agent_versions].
+#' AgentVersion cannot be set to Chef 12.2.
 #' 
 #' You can also specify an agent version when you create or update an
 #' instance, which overrides the stack's default setting.

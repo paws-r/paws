@@ -8,8 +8,9 @@ waf_get_byte_match_set(ByteMatchSetId)
 }
 \arguments{
 \item{ByteMatchSetId}{[required] The \code{ByteMatchSetId} of the ByteMatchSet that you want to get.
-\code{ByteMatchSetId} is returned by CreateByteMatchSet and by
-ListByteMatchSets.}
+\code{ByteMatchSetId} is returned by
+\code{\link[=waf_create_byte_match_set]{create_byte_match_set}} and by
+\code{\link[=waf_list_byte_match_sets]{list_byte_match_sets}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

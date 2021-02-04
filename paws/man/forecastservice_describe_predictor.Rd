@@ -11,10 +11,12 @@ forecastservice_describe_predictor(PredictorArn)
 information about.}
 }
 \description{
-Describes a predictor created using the CreatePredictor operation.
+Describes a predictor created using the
+\code{\link[=forecastservice_create_predictor]{create_predictor}} operation.
 
-In addition to listing the properties provided in the \code{CreatePredictor}
-request, this operation lists the following properties:
+In addition to listing the properties provided in the
+\code{\link[=forecastservice_create_predictor]{create_predictor}} request, this
+operation lists the following properties:
 \itemize{
 \item \code{DatasetImportJobArns} - The dataset import jobs used to import
 training data.

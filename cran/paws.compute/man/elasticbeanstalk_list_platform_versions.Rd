@@ -22,8 +22,8 @@ If no \code{NextToken} is specified, the first page is retrieved.}
 \description{
 Lists the platform versions available for your account in an AWS Region.
 Provides summary information about each platform version. Compare to
-DescribePlatformVersion, which provides full details about a single
-platform version.
+\code{\link[=elasticbeanstalk_describe_platform_version]{describe_platform_version}},
+which provides full details about a single platform version.
 
 For definitions of platform version and other platform-related terms,
 see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html}{AWS Elastic Beanstalk Platforms Glossary}.

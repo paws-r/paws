@@ -28,8 +28,8 @@ Valid values: \code{db-instance} | \code{db-cluster} | \code{db-parameter-group}
 that you want to subscribe to. You can see a list of the categories for
 a given source type in
 \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html}{Events}
-in the \emph{Amazon RDS User Guide} or by using the \code{DescribeEventCategories}
-operation.}
+in the \emph{Amazon RDS User Guide} or by using the
+\code{\link[=rds_describe_event_categories]{describe_event_categories}} operation.}
 
 \item{SourceIds}{The list of identifiers of the event sources for which events are
 returned. If not specified, then all sources are included in the

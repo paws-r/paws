@@ -73,8 +73,8 @@ latency of your web services and troubleshoot anomalies by investigating
 load time data, screenshots of the UI, logs, and metrics. You can set up
 a canary to run continuously or just once.
 
-Do not use \code{CreateCanary} to modify an existing canary. Use
-\href{https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_UpdateCanary.html}{UpdateCanary}
+Do not use \code{\link[=synthetics_create_canary]{create_canary}} to modify an
+existing canary. Use \code{\link[=synthetics_update_canary]{update_canary}}
 instead.
 
 To create canaries, you must have the \code{CloudWatchSyntheticsFullAccess}

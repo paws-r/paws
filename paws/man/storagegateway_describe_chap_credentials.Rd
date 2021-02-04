@@ -10,8 +10,8 @@ storagegateway_describe_chap_credentials(TargetARN)
 }
 \arguments{
 \item{TargetARN}{[required] The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-DescribeStorediSCSIVolumes operation to return to retrieve the TargetARN
-for specified VolumeARN.}
+\code{\link[=storagegateway_describe_storedi_scsi_volumes]{describe_storedi_scsi_volumes}}
+operation to return to retrieve the TargetARN for specified VolumeARN.}
 }
 \description{
 Returns an array of Challenge-Handshake Authentication Protocol (CHAP)

@@ -24,9 +24,10 @@ the accumulation of costs. For more information, see
 \href{https://aws.amazon.com/workmail/pricing/}{Pricing}. The equivalent
 console functionality for this operation is \emph{Enable}.
 
-Users can either be created by calling the CreateUser API operation or
-they can be synchronized from your directory. For more information, see
-DeregisterFromWorkMail.
+Users can either be created by calling the
+\code{\link[=workmail_create_user]{create_user}} API operation or they can be
+synchronized from your directory. For more information, see
+\code{\link[=workmail_deregister_from_work_mail]{deregister_from_work_mail}}.
 }
 \section{Request syntax}{
 \preformatted{svc$register_to_work_mail(

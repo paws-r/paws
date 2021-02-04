@@ -36,8 +36,8 @@ Only the \verb{Alarm Name}, \code{ARN}, \code{StateValue}
 (OK/ALARM/INSUFFICIENT\\_DATA), and \code{StateUpdatedTimestamp} information
 are returned by this operation when you use this parameter. To get
 complete information about these alarms, perform another
-\code{DescribeAlarms} operation and specify the parent alarm names in the
-\code{AlarmNames} parameter.}
+\code{\link[=cloudwatch_describe_alarms]{describe_alarms}} operation and specify
+the parent alarm names in the \code{AlarmNames} parameter.}
 
 \item{ParentsOfAlarmName}{If you use this parameter and specify the name of a metric or composite
 alarm, the operation returns information about the "parent" alarms of
@@ -52,8 +52,8 @@ you do so, you receive a validation error.
 
 Only the Alarm Name and ARN are returned by this operation when you use
 this parameter. To get complete information about these alarms, perform
-another \code{DescribeAlarms} operation and specify the parent alarm names in
-the \code{AlarmNames} parameter.}
+another \code{\link[=cloudwatch_describe_alarms]{describe_alarms}} operation and
+specify the parent alarm names in the \code{AlarmNames} parameter.}
 
 \item{StateValue}{Specify this parameter to receive information only about alarms that are
 currently in the state that you specify.}

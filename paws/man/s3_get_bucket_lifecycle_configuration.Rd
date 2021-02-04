@@ -23,7 +23,7 @@ The response describes the new filter element that you can use to
 specify a filter to select a subset of objects to which the rule
 applies. If you are using a previous version of the lifecycle
 configuration, it still works. For the earlier API description, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycle.html}{GetBucketLifecycle}.
+\code{\link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle}}.
 
 Returns the lifecycle configuration information set on the bucket. For
 information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html}{Object Lifecycle Management}.
@@ -34,7 +34,8 @@ permission, by default. The bucket owner can grant this permission to
 others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
 and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
-\code{GetBucketLifecycleConfiguration} has the following special error:
+\code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
+has the following special error:
 \itemize{
 \item Error code: \code{NoSuchLifecycleConfiguration}
 \itemize{
@@ -45,11 +46,11 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 }
 
 The following operations are related to
-\code{GetBucketLifecycleConfiguration}:
+\code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycle.html}{GetBucketLifecycle}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html}{PutBucketLifecycle}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html}{DeleteBucketLifecycle}
+\item \code{\link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle}}
+\item \code{\link[=s3_put_bucket_lifecycle]{put_bucket_lifecycle}}
+\item \code{\link[=s3_delete_bucket_lifecycle]{delete_bucket_lifecycle}}
 }
 }
 \section{Request syntax}{

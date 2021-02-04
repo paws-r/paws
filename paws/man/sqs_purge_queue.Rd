@@ -7,25 +7,27 @@
 sqs_purge_queue(QueueUrl)
 }
 \arguments{
-\item{QueueUrl}{[required] The URL of the queue from which the \code{PurgeQueue} action deletes
-messages.
+\item{QueueUrl}{[required] The URL of the queue from which the \code{\link[=sqs_purge_queue]{purge_queue}}
+action deletes messages.
 
 Queue URLs and names are case-sensitive.}
 }
 \description{
 Deletes the messages in a queue specified by the \code{QueueURL} parameter.
 
-When you use the \code{PurgeQueue} action, you can't retrieve any messages
-deleted from a queue.
+When you use the \code{\link[=sqs_purge_queue]{purge_queue}} action, you can't
+retrieve any messages deleted from a queue.
 
 The message deletion process takes up to 60 seconds. We recommend
 waiting for 60 seconds regardless of your queue's size.
 
-Messages sent to the queue \emph{before} you call \code{PurgeQueue} might be
-received but are deleted within the next minute.
+Messages sent to the queue \emph{before} you call
+\code{\link[=sqs_purge_queue]{purge_queue}} might be received but are deleted
+within the next minute.
 
-Messages sent to the queue \emph{after} you call \code{PurgeQueue} might be
-deleted while the queue is being purged.
+Messages sent to the queue \emph{after} you call
+\code{\link[=sqs_purge_queue]{purge_queue}} might be deleted while the queue is
+being purged.
 }
 \section{Request syntax}{
 \preformatted{svc$purge_queue(

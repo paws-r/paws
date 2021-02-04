@@ -16,7 +16,7 @@ NULL
 #'     APIs](https://docs.aws.amazon.com/general/latest/gr/aws-apis.html).
 #' 
 #'     To access Network Firewall using the REST API endpoint:
-#'     `https://network-firewall.&lt;region&gt;.amazonaws.com `
+#'     `https://network-firewall.<region>.amazonaws.com `
 #' 
 #' -   Alternatively, you can use one of the AWS SDKs to access an API
 #'     that's tailored to the programming language or platform that you're

@@ -67,7 +67,8 @@ elbv2_add_listener_certificates <- function(ListenerArn, Certificates) {
 #' Balancers, Gateway Load Balancers, target groups, listeners, and rules.
 #' 
 #' Each tag consists of a key and an optional value. If a resource already
-#' has a tag with the same key, `AddTags` updates its value.
+#' has a tag with the same key, [`add_tags`][elbv2_add_tags] updates its
+#' value.
 #'
 #' @usage
 #' elbv2_add_tags(ResourceArns, Tags)

@@ -9,7 +9,8 @@ rekognition_get_face_search(JobId, MaxResults, NextToken, SortBy)
 }
 \arguments{
 \item{JobId}{[required] The job identifer for the search request. You get the job identifier
-from an initial call to \code{StartFaceSearch}.}
+from an initial call to
+\code{\link[=rekognition_start_face_search]{start_face_search}}.}
 
 \item{MaxResults}{Maximum number of results to return per paginated call. The largest
 value you can specify is 1000. If you specify a value greater than 1000,
@@ -26,18 +27,23 @@ recognized faces.}
 }
 \description{
 Gets the face search results for Amazon Rekognition Video face search
-started by StartFaceSearch. The search returns faces in a collection
-that match the faces of persons detected in a video. It also includes
-the time(s) that faces are matched in the video.
+started by \code{\link[=rekognition_start_face_search]{start_face_search}}. The
+search returns faces in a collection that match the faces of persons
+detected in a video. It also includes the time(s) that faces are matched
+in the video.
 
 Face search in a video is an asynchronous operation. You start face
-search by calling to StartFaceSearch which returns a job identifier
-(\code{JobId}). When the search operation finishes, Amazon Rekognition Video
-publishes a completion status to the Amazon Simple Notification Service
-topic registered in the initial call to \code{StartFaceSearch}. To get the
-search results, first check that the status value published to the
-Amazon SNS topic is \code{SUCCEEDED}. If so, call \code{GetFaceSearch} and pass
-the job identifier (\code{JobId}) from the initial call to \code{StartFaceSearch}.
+search by calling to
+\code{\link[=rekognition_start_face_search]{start_face_search}} which returns a job
+identifier (\code{JobId}). When the search operation finishes, Amazon
+Rekognition Video publishes a completion status to the Amazon Simple
+Notification Service topic registered in the initial call to
+\code{\link[=rekognition_start_face_search]{start_face_search}}. To get the search
+results, first check that the status value published to the Amazon SNS
+topic is \code{SUCCEEDED}. If so, call
+\code{\link[=rekognition_get_face_search]{get_face_search}} and pass the job
+identifier (\code{JobId}) from the initial call to
+\code{\link[=rekognition_start_face_search]{start_face_search}}.
 
 For more information, see Searching Faces in a Collection in the Amazon
 Rekognition Developer Guide.
@@ -48,11 +54,11 @@ faces in the input collection, person information (facial attributes,
 bounding boxes, and person identifer) for the matched person, and the
 time the person was matched in the video.
 
-\code{GetFaceSearch} only returns the default facial attributes
-(\code{BoundingBox}, \code{Confidence}, \code{Landmarks}, \code{Pose}, and \code{Quality}). The
-other facial attributes listed in the \code{Face} object of the following
-response syntax are not returned. For more information, see FaceDetail
-in the Amazon Rekognition Developer Guide.
+\code{\link[=rekognition_get_face_search]{get_face_search}} only returns the
+default facial attributes (\code{BoundingBox}, \code{Confidence}, \code{Landmarks},
+\code{Pose}, and \code{Quality}). The other facial attributes listed in the \code{Face}
+object of the following response syntax are not returned. For more
+information, see FaceDetail in the Amazon Rekognition Developer Guide.
 
 By default, the \code{Persons} array is sorted by the time, in milliseconds
 from the start of the video, persons are matched. You can also sort by

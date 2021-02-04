@@ -25,8 +25,9 @@ restore to any point in time within \code{EarliestRestorableDateTime} and
 time. You can restore your table to any point in time during the last 35
 days.
 
-You can call \code{DescribeContinuousBackups} at a maximum rate of 10 times
-per second.
+You can call
+\code{\link[=dynamodb_describe_continuous_backups]{describe_continuous_backups}} at
+a maximum rate of 10 times per second.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_continuous_backups(

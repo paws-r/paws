@@ -20,9 +20,10 @@ detected in the document are included in the response (including text
 that isn't related to the value of \code{FeatureTypes}).}
 
 \item{ClientRequestToken}{The idempotent token that you use to identify the start request. If you
-use the same token with multiple \code{StartDocumentAnalysis} requests, the
-same \code{JobId} is returned. Use \code{ClientRequestToken} to prevent the same
-job from being accidentally started more than once. For more
+use the same token with multiple
+\code{\link[=textract_start_document_analysis]{start_document_analysis}} requests,
+the same \code{JobId} is returned. Use \code{ClientRequestToken} to prevent the
+same job from being accidentally started more than once. For more
 information, see \href{https://docs.aws.amazon.com/textract/latest/dg/api-async.html}{Calling Amazon Textract Asynchronous Operations}.}
 
 \item{JobTag}{An identifier that you specify that's included in the completion
@@ -48,19 +49,21 @@ Starts the asynchronous analysis of an input document for relationships
 between detected items such as key-value pairs, tables, and selection
 elements.
 
-\code{StartDocumentAnalysis} can analyze text in documents that are in JPEG,
-PNG, and PDF format. The documents are stored in an Amazon S3 bucket.
-Use DocumentLocation to specify the bucket name and file name of the
-document.
+\code{\link[=textract_start_document_analysis]{start_document_analysis}} can
+analyze text in documents that are in JPEG, PNG, and PDF format. The
+documents are stored in an Amazon S3 bucket. Use DocumentLocation to
+specify the bucket name and file name of the document.
 
-\code{StartDocumentAnalysis} returns a job identifier (\code{JobId}) that you use
-to get the results of the operation. When text analysis is finished,
-Amazon Textract publishes a completion status to the Amazon Simple
-Notification Service (Amazon SNS) topic that you specify in
-\code{NotificationChannel}. To get the results of the text analysis
-operation, first check that the status value published to the Amazon SNS
-topic is \code{SUCCEEDED}. If so, call GetDocumentAnalysis, and pass the job
-identifier (\code{JobId}) from the initial call to \code{StartDocumentAnalysis}.
+\code{\link[=textract_start_document_analysis]{start_document_analysis}} returns a
+job identifier (\code{JobId}) that you use to get the results of the
+operation. When text analysis is finished, Amazon Textract publishes a
+completion status to the Amazon Simple Notification Service (Amazon SNS)
+topic that you specify in \code{NotificationChannel}. To get the results of
+the text analysis operation, first check that the status value published
+to the Amazon SNS topic is \code{SUCCEEDED}. If so, call
+\code{\link[=textract_get_document_analysis]{get_document_analysis}}, and pass the
+job identifier (\code{JobId}) from the initial call to
+\code{\link[=textract_start_document_analysis]{start_document_analysis}}.
 
 For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html}{Document Text Analysis}.
 }

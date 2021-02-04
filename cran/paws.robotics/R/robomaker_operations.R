@@ -276,7 +276,8 @@ robomaker_cancel_world_generation_job <- function(job) {
 #' 
 #' The robot application must have a numbered `applicationVersion` for
 #' consistency reasons. To create a new version, use
-#' `CreateRobotApplicationVersion` or see [Creating a Robot Application
+#' [`create_robot_application_version`][robomaker_create_robot_application_version]
+#' or see [Creating a Robot Application
 #' Version](https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html).
 #' 
 #' After 90 days, deployment jobs expire and will be deleted. They will no
@@ -1674,17 +1675,20 @@ robomaker_get_world_template_body <- function(template = NULL, generationJob = N
 #' `Pending`.
 #' @param nextToken If the previous paginated request did not return all of the remaining
 #' results, the response object's `nextToken` parameter value is set to a
-#' token. To retrieve the next set of results, call `ListDeploymentJobs`
-#' again and assign that token to the request object's `nextToken`
-#' parameter. If there are no remaining results, the previous response
-#' object's NextToken parameter is set to null.
-#' @param maxResults When this parameter is used, `ListDeploymentJobs` only returns
+#' token. To retrieve the next set of results, call
+#' [`list_deployment_jobs`][robomaker_list_deployment_jobs] again and
+#' assign that token to the request object's `nextToken` parameter. If
+#' there are no remaining results, the previous response object's NextToken
+#' parameter is set to null.
+#' @param maxResults When this parameter is used,
+#' [`list_deployment_jobs`][robomaker_list_deployment_jobs] only returns
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
-#' sending another `ListDeploymentJobs` request with the returned
-#' `nextToken` value. This value can be between 1 and 200. If this
-#' parameter is not used, then `ListDeploymentJobs` returns up to 200
-#' results and a `nextToken` value if applicable.
+#' sending another [`list_deployment_jobs`][robomaker_list_deployment_jobs]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 200. If this parameter is not used, then
+#' [`list_deployment_jobs`][robomaker_list_deployment_jobs] returns up to
+#' 200 results and a `nextToken` value if applicable.
 #'
 #' @section Request syntax:
 #' ```
@@ -1733,20 +1737,23 @@ robomaker_list_deployment_jobs <- function(filters = NULL, nextToken = NULL, max
 #'
 #' @param nextToken If the previous paginated request did not return all of the remaining
 #' results, the response object's `nextToken` parameter value is set to a
-#' token. To retrieve the next set of results, call `ListFleets` again and
-#' assign that token to the request object's `nextToken` parameter. If
-#' there are no remaining results, the previous response object's NextToken
-#' parameter is set to null.
+#' token. To retrieve the next set of results, call
+#' [`list_fleets`][robomaker_list_fleets] again and assign that token to
+#' the request object's `nextToken` parameter. If there are no remaining
+#' results, the previous response object's NextToken parameter is set to
+#' null.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults When this parameter is used, `ListFleets` only returns `maxResults`
-#' results in a single page along with a `nextToken` response element. The
-#' remaining results of the initial request can be seen by sending another
-#' `ListFleets` request with the returned `nextToken` value. This value can
-#' be between 1 and 200. If this parameter is not used, then `ListFleets`
-#' returns up to 200 results and a `nextToken` value if applicable.
+#' @param maxResults When this parameter is used, [`list_fleets`][robomaker_list_fleets] only
+#' returns `maxResults` results in a single page along with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another [`list_fleets`][robomaker_list_fleets] request
+#' with the returned `nextToken` value. This value can be between 1 and
+#' 200. If this parameter is not used, then
+#' [`list_fleets`][robomaker_list_fleets] returns up to 200 results and a
+#' `nextToken` value if applicable.
 #' @param filters Optional filters to limit results.
 #' 
 #' The filter name `name` is supported. When filtering, you must use the
@@ -1801,17 +1808,21 @@ robomaker_list_fleets <- function(nextToken = NULL, maxResults = NULL, filters =
 #' @param versionQualifier The version qualifier of the robot application.
 #' @param nextToken If the previous paginated request did not return all of the remaining
 #' results, the response object's `nextToken` parameter value is set to a
-#' token. To retrieve the next set of results, call `ListRobotApplications`
-#' again and assign that token to the request object's `nextToken`
-#' parameter. If there are no remaining results, the previous response
-#' object's NextToken parameter is set to null.
-#' @param maxResults When this parameter is used, `ListRobotApplications` only returns
-#' `maxResults` results in a single page along with a `nextToken` response
-#' element. The remaining results of the initial request can be seen by
-#' sending another `ListRobotApplications` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If this
-#' parameter is not used, then `ListRobotApplications` returns up to 100
-#' results and a `nextToken` value if applicable.
+#' token. To retrieve the next set of results, call
+#' [`list_robot_applications`][robomaker_list_robot_applications] again and
+#' assign that token to the request object's `nextToken` parameter. If
+#' there are no remaining results, the previous response object's NextToken
+#' parameter is set to null.
+#' @param maxResults When this parameter is used,
+#' [`list_robot_applications`][robomaker_list_robot_applications] only
+#' returns `maxResults` results in a single page along with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another
+#' [`list_robot_applications`][robomaker_list_robot_applications] request
+#' with the returned `nextToken` value. This value can be between 1 and
+#' 100. If this parameter is not used, then
+#' [`list_robot_applications`][robomaker_list_robot_applications] returns
+#' up to 100 results and a `nextToken` value if applicable.
 #' @param filters Optional filters to limit results.
 #' 
 #' The filter name `name` is supported. When filtering, you must use the
@@ -1865,16 +1876,19 @@ robomaker_list_robot_applications <- function(versionQualifier = NULL, nextToken
 #'
 #' @param nextToken If the previous paginated request did not return all of the remaining
 #' results, the response object's `nextToken` parameter value is set to a
-#' token. To retrieve the next set of results, call `ListRobots` again and
-#' assign that token to the request object's `nextToken` parameter. If
-#' there are no remaining results, the previous response object's NextToken
-#' parameter is set to null.
-#' @param maxResults When this parameter is used, `ListRobots` only returns `maxResults`
-#' results in a single page along with a `nextToken` response element. The
-#' remaining results of the initial request can be seen by sending another
-#' `ListRobots` request with the returned `nextToken` value. This value can
-#' be between 1 and 200. If this parameter is not used, then `ListRobots`
-#' returns up to 200 results and a `nextToken` value if applicable.
+#' token. To retrieve the next set of results, call
+#' [`list_robots`][robomaker_list_robots] again and assign that token to
+#' the request object's `nextToken` parameter. If there are no remaining
+#' results, the previous response object's NextToken parameter is set to
+#' null.
+#' @param maxResults When this parameter is used, [`list_robots`][robomaker_list_robots] only
+#' returns `maxResults` results in a single page along with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another [`list_robots`][robomaker_list_robots] request
+#' with the returned `nextToken` value. This value can be between 1 and
+#' 200. If this parameter is not used, then
+#' [`list_robots`][robomaker_list_robots] returns up to 200 results and a
+#' `nextToken` value if applicable.
 #' @param filters Optional filters to limit results.
 #' 
 #' The filter names `status` and `fleetName` are supported. When filtering,
@@ -1933,16 +1947,20 @@ robomaker_list_robots <- function(nextToken = NULL, maxResults = NULL, filters =
 #' @param nextToken If the previous paginated request did not return all of the remaining
 #' results, the response object's `nextToken` parameter value is set to a
 #' token. To retrieve the next set of results, call
-#' `ListSimulationApplications` again and assign that token to the request
-#' object's `nextToken` parameter. If there are no remaining results, the
-#' previous response object's NextToken parameter is set to null.
-#' @param maxResults When this parameter is used, `ListSimulationApplications` only returns
-#' `maxResults` results in a single page along with a `nextToken` response
-#' element. The remaining results of the initial request can be seen by
-#' sending another `ListSimulationApplications` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If this
-#' parameter is not used, then `ListSimulationApplications` returns up to
-#' 100 results and a `nextToken` value if applicable.
+#' [`list_simulation_applications`][robomaker_list_simulation_applications]
+#' again and assign that token to the request object's `nextToken`
+#' parameter. If there are no remaining results, the previous response
+#' object's NextToken parameter is set to null.
+#' @param maxResults When this parameter is used,
+#' [`list_simulation_applications`][robomaker_list_simulation_applications]
+#' only returns `maxResults` results in a single page along with a
+#' `nextToken` response element. The remaining results of the initial
+#' request can be seen by sending another
+#' [`list_simulation_applications`][robomaker_list_simulation_applications]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If this parameter is not used, then
+#' [`list_simulation_applications`][robomaker_list_simulation_applications]
+#' returns up to 100 results and a `nextToken` value if applicable.
 #' @param filters Optional list of filters to limit results.
 #' 
 #' The filter name `name` is supported. When filtering, you must use the
@@ -1997,14 +2015,17 @@ robomaker_list_simulation_applications <- function(versionQualifier = NULL, next
 #' @param nextToken If the previous paginated request did not return all of the remaining
 #' results, the response object's `nextToken` parameter value is set to a
 #' token. To retrieve the next set of results, call
-#' `ListSimulationJobBatches` again and assign that token to the request
-#' object's `nextToken` parameter. If there are no remaining results, the
-#' previous response object's NextToken parameter is set to null.
-#' @param maxResults When this parameter is used, `ListSimulationJobBatches` only returns
-#' `maxResults` results in a single page along with a `nextToken` response
-#' element. The remaining results of the initial request can be seen by
-#' sending another `ListSimulationJobBatches` request with the returned
-#' `nextToken` value.
+#' [`list_simulation_job_batches`][robomaker_list_simulation_job_batches]
+#' again and assign that token to the request object's `nextToken`
+#' parameter. If there are no remaining results, the previous response
+#' object's NextToken parameter is set to null.
+#' @param maxResults When this parameter is used,
+#' [`list_simulation_job_batches`][robomaker_list_simulation_job_batches]
+#' only returns `maxResults` results in a single page along with a
+#' `nextToken` response element. The remaining results of the initial
+#' request can be seen by sending another
+#' [`list_simulation_job_batches`][robomaker_list_simulation_job_batches]
+#' request with the returned `nextToken` value.
 #' @param filters Optional filters to limit results.
 #'
 #' @section Request syntax:
@@ -2054,17 +2075,20 @@ robomaker_list_simulation_job_batches <- function(nextToken = NULL, maxResults =
 #'
 #' @param nextToken If the previous paginated request did not return all of the remaining
 #' results, the response object's `nextToken` parameter value is set to a
-#' token. To retrieve the next set of results, call `ListSimulationJobs`
-#' again and assign that token to the request object's `nextToken`
-#' parameter. If there are no remaining results, the previous response
-#' object's NextToken parameter is set to null.
-#' @param maxResults When this parameter is used, `ListSimulationJobs` only returns
+#' token. To retrieve the next set of results, call
+#' [`list_simulation_jobs`][robomaker_list_simulation_jobs] again and
+#' assign that token to the request object's `nextToken` parameter. If
+#' there are no remaining results, the previous response object's NextToken
+#' parameter is set to null.
+#' @param maxResults When this parameter is used,
+#' [`list_simulation_jobs`][robomaker_list_simulation_jobs] only returns
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
-#' sending another `ListSimulationJobs` request with the returned
-#' `nextToken` value. This value can be between 1 and 1000. If this
-#' parameter is not used, then `ListSimulationJobs` returns up to 1000
-#' results and a `nextToken` value if applicable.
+#' sending another [`list_simulation_jobs`][robomaker_list_simulation_jobs]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 1000. If this parameter is not used, then
+#' [`list_simulation_jobs`][robomaker_list_simulation_jobs] returns up to
+#' 1000 results and a `nextToken` value if applicable.
 #' @param filters Optional filters to limit results.
 #' 
 #' The filter names `status` and `simulationApplicationName` and
@@ -2156,17 +2180,21 @@ robomaker_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @param nextToken If the previous paginated request did not return all of the remaining
 #' results, the response object's `nextToken` parameter value is set to a
-#' token. To retrieve the next set of results, call `ListWorldExportJobs`
-#' again and assign that token to the request object's `nextToken`
-#' parameter. If there are no remaining results, the previous response
-#' object's NextToken parameter is set to null.
-#' @param maxResults When this parameter is used, `ListWorldExportJobs` only returns
-#' `maxResults` results in a single page along with a `nextToken` response
-#' element. The remaining results of the initial request can be seen by
-#' sending another `ListWorldExportJobs` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If this
-#' parameter is not used, then `ListWorldExportJobs` returns up to 100
-#' results and a `nextToken` value if applicable.
+#' token. To retrieve the next set of results, call
+#' [`list_world_export_jobs`][robomaker_list_world_export_jobs] again and
+#' assign that token to the request object's `nextToken` parameter. If
+#' there are no remaining results, the previous response object's NextToken
+#' parameter is set to null.
+#' @param maxResults When this parameter is used,
+#' [`list_world_export_jobs`][robomaker_list_world_export_jobs] only
+#' returns `maxResults` results in a single page along with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another
+#' [`list_world_export_jobs`][robomaker_list_world_export_jobs] request
+#' with the returned `nextToken` value. This value can be between 1 and
+#' 100. If this parameter is not used, then
+#' [`list_world_export_jobs`][robomaker_list_world_export_jobs] returns up
+#' to 100 results and a `nextToken` value if applicable.
 #' @param filters Optional filters to limit results. You can use `generationJobId` and
 #' `templateId`.
 #'
@@ -2277,17 +2305,20 @@ robomaker_list_world_generation_jobs <- function(nextToken = NULL, maxResults = 
 #'
 #' @param nextToken If the previous paginated request did not return all of the remaining
 #' results, the response object's `nextToken` parameter value is set to a
-#' token. To retrieve the next set of results, call `ListWorldTemplates`
-#' again and assign that token to the request object's `nextToken`
-#' parameter. If there are no remaining results, the previous response
-#' object's NextToken parameter is set to null.
-#' @param maxResults When this parameter is used, `ListWorldTemplates` only returns
+#' token. To retrieve the next set of results, call
+#' [`list_world_templates`][robomaker_list_world_templates] again and
+#' assign that token to the request object's `nextToken` parameter. If
+#' there are no remaining results, the previous response object's NextToken
+#' parameter is set to null.
+#' @param maxResults When this parameter is used,
+#' [`list_world_templates`][robomaker_list_world_templates] only returns
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
-#' sending another `ListWorldTemplates` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If this
-#' parameter is not used, then `ListWorldTemplates` returns up to 100
-#' results and a `nextToken` value if applicable.
+#' sending another [`list_world_templates`][robomaker_list_world_templates]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If this parameter is not used, then
+#' [`list_world_templates`][robomaker_list_world_templates] returns up to
+#' 100 results and a `nextToken` value if applicable.
 #'
 #' @section Request syntax:
 #' ```
@@ -2327,16 +2358,19 @@ robomaker_list_world_templates <- function(nextToken = NULL, maxResults = NULL) 
 #'
 #' @param nextToken If the previous paginated request did not return all of the remaining
 #' results, the response object's `nextToken` parameter value is set to a
-#' token. To retrieve the next set of results, call `ListWorlds` again and
-#' assign that token to the request object's `nextToken` parameter. If
-#' there are no remaining results, the previous response object's NextToken
-#' parameter is set to null.
-#' @param maxResults When this parameter is used, `ListWorlds` only returns `maxResults`
-#' results in a single page along with a `nextToken` response element. The
-#' remaining results of the initial request can be seen by sending another
-#' `ListWorlds` request with the returned `nextToken` value. This value can
-#' be between 1 and 100. If this parameter is not used, then `ListWorlds`
-#' returns up to 100 results and a `nextToken` value if applicable.
+#' token. To retrieve the next set of results, call
+#' [`list_worlds`][robomaker_list_worlds] again and assign that token to
+#' the request object's `nextToken` parameter. If there are no remaining
+#' results, the previous response object's NextToken parameter is set to
+#' null.
+#' @param maxResults When this parameter is used, [`list_worlds`][robomaker_list_worlds] only
+#' returns `maxResults` results in a single page along with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another [`list_worlds`][robomaker_list_worlds] request
+#' with the returned `nextToken` value. This value can be between 1 and
+#' 100. If this parameter is not used, then
+#' [`list_worlds`][robomaker_list_worlds] returns up to 100 results and a
+#' `nextToken` value if applicable.
 #' @param filters Optional filters to limit results. You can use `status`.
 #'
 #' @section Request syntax:
@@ -2691,7 +2725,7 @@ robomaker_tag_resource <- function(resourceArn, tags) {
 #' 
 #' To remove a tag, specify the tag key. To change the tag value of an
 #' existing tag key, use
-#' [`TagResource`](https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html)
+#' [`tag_resource`](https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html)
 #' .
 #'
 #' @usage

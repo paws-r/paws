@@ -9,8 +9,9 @@ groundstation_list_mission_profiles(maxResults, nextToken)
 \arguments{
 \item{maxResults}{Maximum number of mission profiles returned.}
 
-\item{nextToken}{Next token returned in the request of a previous \code{ListMissionProfiles}
-call. Used to get the next page of results.}
+\item{nextToken}{Next token returned in the request of a previous
+\code{\link[=groundstation_list_mission_profiles]{list_mission_profiles}} call.
+Used to get the next page of results.}
 }
 \description{
 Returns a list of mission profiles.

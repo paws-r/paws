@@ -8,11 +8,12 @@ cloudfront_delete_key_group(Id, IfMatch)
 }
 \arguments{
 \item{Id}{[required] The identifier of the key group that you are deleting. To get the
-identifier, use \code{ListKeyGroups}.}
+identifier, use \code{\link[=cloudfront_list_key_groups]{list_key_groups}}.}
 
 \item{IfMatch}{The version of the key group that you are deleting. The version is the
-key group’s \code{ETag} value. To get the \code{ETag}, use \code{GetKeyGroup} or
-\code{GetKeyGroupConfig}.}
+key group’s \code{ETag} value. To get the \code{ETag}, use
+\code{\link[=cloudfront_get_key_group]{get_key_group}} or
+\code{\link[=cloudfront_get_key_group_config]{get_key_group_config}}.}
 }
 \description{
 Deletes a key group.
@@ -22,8 +23,10 @@ First update your distributions to remove the key group from all cache
 behaviors, then delete the key group.
 
 To delete a key group, you must provide the key group’s identifier and
-version. To get these values, use \code{ListKeyGroups} followed by
-\code{GetKeyGroup} or \code{GetKeyGroupConfig}.
+version. To get these values, use
+\code{\link[=cloudfront_list_key_groups]{list_key_groups}} followed by
+\code{\link[=cloudfront_get_key_group]{get_key_group}} or
+\code{\link[=cloudfront_get_key_group_config]{get_key_group_config}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_key_group(

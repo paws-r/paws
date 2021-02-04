@@ -21,7 +21,7 @@ format of the ARN depends on the resource type.}
 example, \verb{arn:aws:iam::123456789012:role/S3Access}.}
 
 \item{IdempotencyToken}{A customer chosen string that can be used to distinguish between calls
-to \code{StartBackupJob}.}
+to \code{\link[=backup_start_backup_job]{start_backup_job}}.}
 
 \item{StartWindowMinutes}{A value in minutes after a backup is scheduled before a job will be
 canceled if it doesn't start successfully. This value is optional.}

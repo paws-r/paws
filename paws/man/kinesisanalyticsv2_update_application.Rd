@@ -13,7 +13,8 @@ kinesisanalyticsv2_update_application(ApplicationName,
 \item{ApplicationName}{[required] The name of the application to update.}
 
 \item{CurrentApplicationVersionId}{[required] The current application version ID. You can retrieve the application
-version ID using DescribeApplication.}
+version ID using
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.}
 
 \item{ApplicationConfigurationUpdate}{Describes application configuration updates.}
 
@@ -24,7 +25,7 @@ version ID using DescribeApplication.}
 \item{CloudWatchLoggingOptionUpdates}{Describes application Amazon CloudWatch logging option updates. You can
 only update existing CloudWatch logging options with this action. To add
 a new CloudWatch logging option, use
-AddApplicationCloudWatchLoggingOption.}
+\code{\link[=kinesisanalyticsv2_add_application_cloud_watch_logging_option]{add_application_cloud_watch_logging_option}}.}
 }
 \description{
 Updates an existing Kinesis Data Analytics application. Using this

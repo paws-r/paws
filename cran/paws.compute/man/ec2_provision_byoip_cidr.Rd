@@ -36,7 +36,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Provisions an IPv4 or IPv6 address range for use with your AWS resources
 through bring your own IP addresses (BYOIP) and creates a corresponding
 address pool. After the address range is provisioned, it is ready to be
-advertised using AdvertiseByoipCidr.
+advertised using \code{\link[=ec2_advertise_byoip_cidr]{advertise_byoip_cidr}}.
 
 AWS verifies that you own the address range and are authorized to
 advertise it. You must ensure that the address range is registered to
@@ -47,10 +47,11 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 Provisioning an address range is an asynchronous operation, so the call
 returns immediately, but the address range is not ready to use until its
 status changes from \code{pending-provision} to \code{provisioned}. To monitor the
-status of an address range, use DescribeByoipCidrs. To allocate an
-Elastic IP address from your IPv4 address pool, use AllocateAddress with
-either the specific address from the address pool or the ID of the
-address pool.
+status of an address range, use
+\code{\link[=ec2_describe_byoip_cidrs]{describe_byoip_cidrs}}. To allocate an
+Elastic IP address from your IPv4 address pool, use
+\code{\link[=ec2_allocate_address]{allocate_address}} with either the specific
+address from the address pool or the ID of the address pool.
 }
 \section{Request syntax}{
 \preformatted{svc$provision_byoip_cidr(

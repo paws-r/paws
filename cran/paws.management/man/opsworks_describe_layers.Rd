@@ -10,8 +10,8 @@ opsworks_describe_layers(StackId, LayerIds)
 \item{StackId}{The stack ID.}
 
 \item{LayerIds}{An array of layer IDs that specify the layers to be described. If you
-omit this parameter, \code{DescribeLayers} returns a description of every
-layer in the specified stack.}
+omit this parameter, \code{\link[=opsworks_describe_layers]{describe_layers}}
+returns a description of every layer in the specified stack.}
 }
 \description{
 Requests a description of one or more layers in a specified stack.

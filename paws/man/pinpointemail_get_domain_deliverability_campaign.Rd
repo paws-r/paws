@@ -17,7 +17,8 @@ the Amazon Pinpoint console.}
 Retrieve all the deliverability data for a specific campaign. This data
 is available for a campaign only if the campaign sent email by using a
 domain that the Deliverability dashboard is enabled for
-(\code{PutDeliverabilityDashboardOption} operation).
+(\code{\link[=pinpointemail_put_deliverability_dashboard_option]{put_deliverability_dashboard_option}}
+operation).
 }
 \section{Request syntax}{
 \preformatted{svc$get_domain_deliverability_campaign(

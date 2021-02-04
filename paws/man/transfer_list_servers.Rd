@@ -9,12 +9,12 @@ transfer_list_servers(MaxResults, NextToken)
 }
 \arguments{
 \item{MaxResults}{Specifies the number of servers to return as a response to the
-\code{ListServers} query.}
+\code{\link[=transfer_list_servers]{list_servers}} query.}
 
-\item{NextToken}{When additional results are obtained from the \code{ListServers} command, a
-\code{NextToken} parameter is returned in the output. You can then pass the
-\code{NextToken} parameter in a subsequent command to continue listing
-additional servers.}
+\item{NextToken}{When additional results are obtained from the
+\code{\link[=transfer_list_servers]{list_servers}} command, a \code{NextToken} parameter
+is returned in the output. You can then pass the \code{NextToken} parameter
+in a subsequent command to continue listing additional servers.}
 }
 \description{
 Lists the file transfer protocol-enabled servers that are associated

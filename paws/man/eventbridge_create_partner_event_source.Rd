@@ -8,9 +8,8 @@ eventbridge_create_partner_event_source(Name, Account)
 }
 \arguments{
 \item{Name}{[required] The name of the partner event source. This name must be unique and must
-be in the format
-\verb{<i>partner_name</i>/<i>event_namespace</i>/<i>event_name</i>}. The
-AWS account that wants to use this partner event source must create a
+be in the format \code{partner_name/event_namespace/event_name}. The AWS
+account that wants to use this partner event source must create a
 partner event bus with a name that matches the name of the partner event
 source.}
 
@@ -35,7 +34,7 @@ and then process them using AWS Events rules and targets.
 
 Partner event source names follow this format:
 
-\verb{<i>partner_name</i>/<i>event_namespace</i>/<i>event_name</i>}
+\code{partner_name/event_namespace/event_name}
 
 \emph{partner\\_name} is determined during partner registration and identifies
 the partner to AWS customers. \emph{event\\_namespace} is determined by the

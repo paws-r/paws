@@ -14,7 +14,7 @@ about.}
 \description{
 Gets information about an association between a specified Resolver rule
 and a VPC. You associate a Resolver rule and a VPC using
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverRule.html}{AssociateResolverRule}.
+\code{\link[=route53resolver_associate_resolver_rule]{associate_resolver_rule}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_resolver_rule_association(

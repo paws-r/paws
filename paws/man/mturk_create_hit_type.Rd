@@ -44,11 +44,11 @@ Additionally, other actions can be restricted using the \code{ActionsGuarded}
 field on each \code{QualificationRequirement} structure.}
 }
 \description{
-The \code{CreateHITType} operation creates a new HIT type. This operation
-allows you to define a standard set of HIT properties to use when
-creating HITs. If you register a HIT type with values that match an
-existing HIT type, the HIT type ID of the existing type will be
-returned.
+The \code{\link[=mturk_create_hit_type]{create_hit_type}} operation creates a new
+HIT type. This operation allows you to define a standard set of HIT
+properties to use when creating HITs. If you register a HIT type with
+values that match an existing HIT type, the HIT type ID of the existing
+type will be returned.
 }
 \section{Request syntax}{
 \preformatted{svc$create_hit_type(

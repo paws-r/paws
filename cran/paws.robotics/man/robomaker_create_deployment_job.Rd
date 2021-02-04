@@ -25,7 +25,8 @@ Deploys a specific version of a robot application to robots in a fleet.
 
 The robot application must have a numbered \code{applicationVersion} for
 consistency reasons. To create a new version, use
-\code{CreateRobotApplicationVersion} or see \href{https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html}{Creating a Robot Application Version}.
+\code{\link[=robomaker_create_robot_application_version]{create_robot_application_version}}
+or see \href{https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html}{Creating a Robot Application Version}.
 
 After 90 days, deployment jobs expire and will be deleted. They will no
 longer be accessible.

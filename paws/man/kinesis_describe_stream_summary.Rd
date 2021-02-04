@@ -18,8 +18,8 @@ The information returned includes the stream name, Amazon Resource Name
 (ARN), status, record retention period, approximate creation time,
 monitoring, encryption details, and open shard count.
 
-DescribeStreamSummary has a limit of 20 transactions per second per
-account.
+\code{\link[=kinesis_describe_stream_summary]{describe_stream_summary}} has a limit
+of 20 transactions per second per account.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_stream_summary(

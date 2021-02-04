@@ -9,8 +9,9 @@ personalize_list_filters(datasetGroupArn, nextToken, maxResults)
 \arguments{
 \item{datasetGroupArn}{The ARN of the dataset group that contains the filters.}
 
-\item{nextToken}{A token returned from the previous call to \code{ListFilters} for getting the
-next set of filters (if they exist).}
+\item{nextToken}{A token returned from the previous call to
+\code{\link[=personalize_list_filters]{list_filters}} for getting the next set of
+filters (if they exist).}
 
 \item{maxResults}{The maximum number of filters to return.}
 }

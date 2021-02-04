@@ -9,7 +9,8 @@ devicefarm_get_test_grid_session(projectArn, sessionId, sessionArn)
 }
 \arguments{
 \item{projectArn}{The ARN for the project that this session belongs to. See
-CreateTestGridProject and ListTestGridProjects.}
+\code{\link[=devicefarm_create_test_grid_project]{create_test_grid_project}} and
+\code{\link[=devicefarm_list_test_grid_projects]{list_test_grid_projects}}.}
 
 \item{sessionId}{An ID associated with this session.}
 

@@ -9,14 +9,15 @@ acmpca_put_policy(ResourceArn, Policy)
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Number (ARN) of the private CA to associate with the
 policy. The ARN of the CA can be found by calling the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html}{ListCertificateAuthorities}
+\code{\link[=acmpca_list_certificate_authorities]{list_certificate_authorities}}
 action.}
 
 \item{Policy}{[required] The path and filename of a JSON-formatted IAM policy to attach to the
 specified private CA resource. If this policy does not contain all
 required statements or if it includes any statement that is not allowed,
-the \code{PutPolicy} action returns an \code{InvalidPolicyException}. For
-information about IAM policy and statement structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-json}{Overview of JSON Policies}.}
+the \code{\link[=acmpca_put_policy]{put_policy}} action returns an
+\code{InvalidPolicyException}. For information about IAM policy and statement
+structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-json}{Overview of JSON Policies}.}
 }
 \description{
 Attaches a resource-based policy to a private CA.
@@ -24,10 +25,8 @@ Attaches a resource-based policy to a private CA.
 A policy can also be applied by sharing a private CA through AWS
 Resource Access Manager (RAM). For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-ram.html}{Attach a Policy for Cross-Account Access}.
 
-The policy can be displayed with
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetPolicy.html}{GetPolicy}
-and removed with
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeletePolicy.html}{DeletePolicy}.
+The policy can be displayed with \code{\link[=acmpca_get_policy]{get_policy}} and
+removed with \code{\link[=acmpca_delete_policy]{delete_policy}}.
 
 \strong{About Policies}
 \itemize{

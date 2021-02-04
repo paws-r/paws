@@ -96,8 +96,8 @@ the specified contact protocol is not configured in the AWS Region, or
 if notifications are not enabled for the alarm using the
 \code{notificationEnabled} paramater.
 
-Use the \code{CreateContactMethod} action to configure a contact protocol in
-an AWS Region.}
+Use the \code{\link[=lightsail_create_contact_method]{create_contact_method}}
+action to configure a contact protocol in an AWS Region.}
 
 \item{notificationTriggers}{The alarm states that trigger a notification.
 

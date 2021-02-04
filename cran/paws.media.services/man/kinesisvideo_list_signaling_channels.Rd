@@ -12,9 +12,10 @@ kinesisvideo_list_signaling_channels(MaxResults, NextToken,
 500.}
 
 \item{NextToken}{If you specify this parameter, when the result of a
-\code{ListSignalingChannels} operation is truncated, the call returns the
-\code{NextToken} in the response. To get another batch of channels, provide
-this token in your next request.}
+\code{\link[=kinesisvideo_list_signaling_channels]{list_signaling_channels}}
+operation is truncated, the call returns the \code{NextToken} in the
+response. To get another batch of channels, provide this token in your
+next request.}
 
 \item{ChannelNameCondition}{Optional: Returns only the channels that satisfy a specific condition.}
 }

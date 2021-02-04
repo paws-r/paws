@@ -19,20 +19,23 @@ days after the value of the \code{StartDate} parameter.}
 \item{SubscribedDomain}{[required] The domain to obtain deliverability data for.}
 
 \item{NextToken}{A token that’s returned from a previous call to the
-\code{ListDomainDeliverabilityCampaigns} operation. This token indicates the
-position of a campaign in the list of campaigns.}
+\code{\link[=pinpointemail_list_domain_deliverability_campaigns]{list_domain_deliverability_campaigns}}
+operation. This token indicates the position of a campaign in the list
+of campaigns.}
 
 \item{PageSize}{The maximum number of results to include in response to a single call to
-the \code{ListDomainDeliverabilityCampaigns} operation. If the number of
-results is larger than the number that you specify in this parameter,
-the response includes a \code{NextToken} element, which you can use to obtain
-additional results.}
+the
+\code{\link[=pinpointemail_list_domain_deliverability_campaigns]{list_domain_deliverability_campaigns}}
+operation. If the number of results is larger than the number that you
+specify in this parameter, the response includes a \code{NextToken} element,
+which you can use to obtain additional results.}
 }
 \description{
 Retrieve deliverability data for all the campaigns that used a specific
 domain to send email during a specified time range. This data is
 available for a domain only if you enabled the Deliverability dashboard
-(\code{PutDeliverabilityDashboardOption} operation) for the domain.
+(\code{\link[=pinpointemail_put_deliverability_dashboard_option]{put_deliverability_dashboard_option}}
+operation) for the domain.
 }
 \section{Request syntax}{
 \preformatted{svc$list_domain_deliverability_campaigns(

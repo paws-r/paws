@@ -10,8 +10,9 @@ machinelearning_get_data_source(DataSourceId, Verbose)
 \arguments{
 \item{DataSourceId}{[required] The ID assigned to the \code{DataSource} at creation.}
 
-\item{Verbose}{Specifies whether the \code{GetDataSource} operation should return
-\code{DataSourceSchema}.
+\item{Verbose}{Specifies whether the
+\code{\link[=machinelearning_get_data_source]{get_data_source}} operation should
+return \code{DataSourceSchema}.
 
 If true, \code{DataSourceSchema} is returned.
 
@@ -21,9 +22,9 @@ If false, \code{DataSourceSchema} is not returned.}
 Returns a \code{DataSource} that includes metadata and data file information,
 as well as the current status of the \code{DataSource}.
 
-\code{GetDataSource} provides results in normal or verbose format. The
-verbose format adds the schema description and the list of files pointed
-to by the DataSource to the normal format.
+\code{\link[=machinelearning_get_data_source]{get_data_source}} provides results in
+normal or verbose format. The verbose format adds the schema description
+and the list of files pointed to by the DataSource to the normal format.
 }
 \section{Request syntax}{
 \preformatted{svc$get_data_source(

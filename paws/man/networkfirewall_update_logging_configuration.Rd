@@ -24,13 +24,14 @@ omit this setting, Network Firewall disables logging for the firewall.}
 Sets the logging configuration for the specified firewall.
 
 To change the logging configuration, retrieve the LoggingConfiguration
-by calling DescribeLoggingConfiguration, then change it and provide the
-modified object to this update call. You must change the logging
-configuration one LogDestinationConfig at a time inside the retrieved
-LoggingConfiguration object.
+by calling
+\code{\link[=networkfirewall_describe_logging_configuration]{describe_logging_configuration}},
+then change it and provide the modified object to this update call. You
+must change the logging configuration one LogDestinationConfig at a time
+inside the retrieved LoggingConfiguration object.
 
 You can perform only one of the following actions in any call to
-\code{UpdateLoggingConfiguration}:
+\code{\link[=networkfirewall_update_logging_configuration]{update_logging_configuration}}:
 \itemize{
 \item Create a new log destination object by adding a single
 \code{LogDestinationConfig} array element to \code{LogDestinationConfigs}.

@@ -76,9 +76,10 @@ set to \code{STANDALONE}.}
 \item{BackfillMode}{The method that is used to backfill game sessions created with this
 matchmaking configuration. Specify MANUAL when your game manages
 backfill requests manually or does not use the match backfill feature.
-Specify AUTOMATIC to have GameLift create a StartMatchBackfill request
-whenever a game session has one or more open slots. Learn more about
-manual and automatic backfill in \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-backfill.html}{Backfill Existing Games with FlexMatch}.
+Specify AUTOMATIC to have GameLift create a
+\code{\link[=gamelift_start_match_backfill]{start_match_backfill}} request whenever
+a game session has one or more open slots. Learn more about manual and
+automatic backfill in \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-backfill.html}{Backfill Existing Games with FlexMatch}.
 Automatic backfill is not available when \code{FlexMatchMode} is set to
 \code{STANDALONE}.}
 
@@ -105,14 +106,14 @@ and provide the new settings.
 
 \strong{Related operations}
 \itemize{
-\item CreateMatchmakingConfiguration
-\item DescribeMatchmakingConfigurations
-\item UpdateMatchmakingConfiguration
-\item DeleteMatchmakingConfiguration
-\item CreateMatchmakingRuleSet
-\item DescribeMatchmakingRuleSets
-\item ValidateMatchmakingRuleSet
-\item DeleteMatchmakingRuleSet
+\item \code{\link[=gamelift_create_matchmaking_configuration]{create_matchmaking_configuration}}
+\item \code{\link[=gamelift_describe_matchmaking_configurations]{describe_matchmaking_configurations}}
+\item \code{\link[=gamelift_update_matchmaking_configuration]{update_matchmaking_configuration}}
+\item \code{\link[=gamelift_delete_matchmaking_configuration]{delete_matchmaking_configuration}}
+\item \code{\link[=gamelift_create_matchmaking_rule_set]{create_matchmaking_rule_set}}
+\item \code{\link[=gamelift_describe_matchmaking_rule_sets]{describe_matchmaking_rule_sets}}
+\item \code{\link[=gamelift_validate_matchmaking_rule_set]{validate_matchmaking_rule_set}}
+\item \code{\link[=gamelift_delete_matchmaking_rule_set]{delete_matchmaking_rule_set}}
 }
 }
 \section{Request syntax}{

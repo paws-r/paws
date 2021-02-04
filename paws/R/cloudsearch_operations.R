@@ -142,9 +142,9 @@ cloudsearch_define_analysis_scheme <- function(DomainName, AnalysisScheme) {
 #' Configures an Expression for the search domain
 #'
 #' @description
-#' Configures an `<a>Expression</a>` for the search domain. Used to create
-#' new expressions and modify existing ones. If the expression exists, the
-#' new configuration replaces the old one. For more information, see
+#' Configures an `Expression` for the search domain. Used to create new
+#' expressions and modify existing ones. If the expression exists, the new
+#' configuration replaces the old one. For more information, see
 #' [Configuring
 #' Expressions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html)
 #' in the *Amazon CloudSearch Developer Guide*.
@@ -189,13 +189,13 @@ cloudsearch_define_expression <- function(DomainName, Expression) {
 #' Configures an IndexField for the search domain
 #'
 #' @description
-#' Configures an `<a>IndexField</a>` for the search domain. Used to create
-#' new fields and modify existing ones. You must specify the name of the
-#' domain you are configuring and an index field configuration. The index
-#' field configuration specifies a unique name, the index field type, and
-#' the options you want to configure for the field. The options you can
-#' specify depend on the `<a>IndexFieldType</a>`. If the field exists, the
-#' new configuration replaces the old one. For more information, see
+#' Configures an `IndexField` for the search domain. Used to create new
+#' fields and modify existing ones. You must specify the name of the domain
+#' you are configuring and an index field configuration. The index field
+#' configuration specifies a unique name, the index field type, and the
+#' options you want to configure for the field. The options you can specify
+#' depend on the `IndexFieldType`. If the field exists, the new
+#' configuration replaces the old one. For more information, see
 #' [Configuring Index
 #' Fields](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html)
 #' in the *Amazon CloudSearch Developer Guide*.
@@ -458,8 +458,8 @@ cloudsearch_delete_domain <- function(DomainName) {
 #' Removes an Expression from the search domain
 #'
 #' @description
-#' Removes an `<a>Expression</a>` from the search domain. For more
-#' information, see [Configuring
+#' Removes an `Expression` from the search domain. For more information,
+#' see [Configuring
 #' Expressions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html)
 #' in the *Amazon CloudSearch Developer Guide*.
 #'
@@ -467,7 +467,7 @@ cloudsearch_delete_domain <- function(DomainName) {
 #' cloudsearch_delete_expression(DomainName, ExpressionName)
 #'
 #' @param DomainName &#91;required&#93; 
-#' @param ExpressionName &#91;required&#93; The name of the `<a>Expression</a>` to delete.
+#' @param ExpressionName &#91;required&#93; The name of the `Expression` to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -500,8 +500,8 @@ cloudsearch_delete_expression <- function(DomainName, ExpressionName) {
 #' Removes an IndexField from the search domain
 #'
 #' @description
-#' Removes an `<a>IndexField</a>` from the search domain. For more
-#' information, see [Configuring Index
+#' Removes an `IndexField` from the search domain. For more information,
+#' see [Configuring Index
 #' Fields](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html)
 #' in the *Amazon CloudSearch Developer Guide*.
 #'
@@ -732,8 +732,8 @@ cloudsearch_describe_domain_endpoint_options <- function(DomainName, Deployed = 
 #' limited to specific domains. Shows all domains by default. To get the
 #' number of searchable documents in a domain, use the console or submit a
 #' `matchall` request to your domain's search endpoint:
-#' `q=matchall&amp;amp;q.parser=structured&amp;amp;size=0`. For more
-#' information, see [Getting Information about a Search
+#' `q=matchall&amp;q.parser=structured&amp;size=0`. For more information,
+#' see [Getting Information about a Search
 #' Domain](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html)
 #' in the *Amazon CloudSearch Developer Guide*.
 #'
@@ -786,8 +786,9 @@ cloudsearch_describe_domains <- function(DomainNames = NULL) {
 #' cloudsearch_describe_expressions(DomainName, ExpressionNames, Deployed)
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to describe.
-#' @param ExpressionNames Limits the `<a>DescribeExpressions</a>` response to the specified
-#' expressions. If not specified, all expressions are shown.
+#' @param ExpressionNames Limits the [`describe_expressions`][cloudsearch_describe_expressions]
+#' response to the specified expressions. If not specified, all expressions
+#' are shown.
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
 #' pending changes (`false`). Defaults to `false`.
 #'

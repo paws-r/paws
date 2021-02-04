@@ -18,12 +18,15 @@ windows (for example, one hour).}
 For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June
 1, 2020 1:15:02 PM UTC.}
 
-\item{maxResults}{The maximum number of report results returned by \code{ListFindingsReports}
-in paginated output. When this parameter is used, \code{ListFindingsReports}
-only returns \code{maxResults} results in a single page along with a
-\code{nextToken} response element. The remaining results of the initial
-request can be seen by sending another \code{ListFindingsReports} request
-with the returned \code{nextToken} value.}
+\item{maxResults}{The maximum number of report results returned by
+\code{\link[=codeguruprofiler_list_findings_reports]{list_findings_reports}} in
+paginated output. When this parameter is used,
+\code{\link[=codeguruprofiler_list_findings_reports]{list_findings_reports}} only
+returns \code{maxResults} results in a single page along with a \code{nextToken}
+response element. The remaining results of the initial request can be
+seen by sending another
+\code{\link[=codeguruprofiler_list_findings_reports]{list_findings_reports}}
+request with the returned \code{nextToken} value.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
 \code{ListFindingsReportsRequest} request where \code{maxResults} was used and the

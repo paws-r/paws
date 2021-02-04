@@ -10,10 +10,13 @@ codebuild_retry_build_batch(id, idempotencyToken, retryType)
 \item{id}{Specifies the identifier of the batch build to restart.}
 
 \item{idempotencyToken}{A unique, case sensitive identifier you provide to ensure the
-idempotency of the \code{RetryBuildBatch} request. The token is included in
-the \code{RetryBuildBatch} request and is valid for five minutes. If you
-repeat the \code{RetryBuildBatch} request with the same token, but change a
-parameter, AWS CodeBuild returns a parameter mismatch error.}
+idempotency of the \code{\link[=codebuild_retry_build_batch]{retry_build_batch}}
+request. The token is included in the
+\code{\link[=codebuild_retry_build_batch]{retry_build_batch}} request and is valid
+for five minutes. If you repeat the
+\code{\link[=codebuild_retry_build_batch]{retry_build_batch}} request with the same
+token, but change a parameter, AWS CodeBuild returns a parameter
+mismatch error.}
 
 \item{retryType}{Specifies the type of retry to perform.}
 }

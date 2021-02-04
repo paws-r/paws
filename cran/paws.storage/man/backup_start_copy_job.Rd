@@ -25,7 +25,7 @@ backup vault to copy to; for example,
 example, \verb{arn:aws:iam::123456789012:role/S3Access}.}
 
 \item{IdempotencyToken}{A customer chosen string that can be used to distinguish between calls
-to \code{StartCopyJob}.}
+to \code{\link[=backup_start_copy_job]{start_copy_job}}.}
 
 \item{Lifecycle}{}
 }

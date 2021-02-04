@@ -8,8 +8,9 @@ storagegateway_join_domain(GatewayARN, DomainName, OrganizationalUnit,
   DomainControllers, TimeoutInSeconds, UserName, Password)
 }
 \arguments{
-\item{GatewayARN}{[required] The Amazon Resource Name (ARN) of the gateway. Use the \code{ListGateways}
-operation to return a list of gateways for your account and AWS Region.}
+\item{GatewayARN}{[required] The Amazon Resource Name (ARN) of the gateway. Use the
+\code{\link[=storagegateway_list_gateways]{list_gateways}} operation to return a
+list of gateways for your account and AWS Region.}
 
 \item{DomainName}{[required] The name of the domain that you want the gateway to join.}
 
@@ -21,8 +22,9 @@ specifies the OU that the gateway will join within the AD domain.}
 server. If you need to specify the port number include it after the
 colon (“:”). For example, \code{mydc.mydomain.com:389}.}
 
-\item{TimeoutInSeconds}{Specifies the time in seconds, in which the \code{JoinDomain} operation must
-complete. The default is 20 seconds.}
+\item{TimeoutInSeconds}{Specifies the time in seconds, in which the
+\code{\link[=storagegateway_join_domain]{join_domain}} operation must complete. The
+default is 20 seconds.}
 
 \item{UserName}{[required] Sets the user name of user who has permission to add the gateway to the
 Active Directory domain. The domain user account should be enabled to

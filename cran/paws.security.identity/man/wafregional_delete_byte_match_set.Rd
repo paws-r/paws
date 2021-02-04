@@ -8,10 +8,12 @@ wafregional_delete_byte_match_set(ByteMatchSetId, ChangeToken)
 }
 \arguments{
 \item{ByteMatchSetId}{[required] The \code{ByteMatchSetId} of the ByteMatchSet that you want to delete.
-\code{ByteMatchSetId} is returned by CreateByteMatchSet and by
-ListByteMatchSets.}
+\code{ByteMatchSetId} is returned by
+\code{\link[=wafregional_create_byte_match_set]{create_byte_match_set}} and by
+\code{\link[=wafregional_list_byte_match_sets]{list_byte_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -28,15 +30,20 @@ it's still used in any \code{Rules} or if it still includes any
 ByteMatchTuple objects (any filters).
 
 If you just want to remove a \code{ByteMatchSet} from a \code{Rule}, use
-UpdateRule.
+\code{\link[=wafregional_update_rule]{update_rule}}.
 
 To permanently delete a \code{ByteMatchSet}, perform the following steps:
 \enumerate{
 \item Update the \code{ByteMatchSet} to remove filters, if any. For more
-information, see UpdateByteMatchSet.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{DeleteByteMatchSet} request.
-\item Submit a \code{DeleteByteMatchSet} request.
+information, see
+\code{\link[=wafregional_update_byte_match_set]{update_byte_match_set}}.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=wafregional_delete_byte_match_set]{delete_byte_match_set}}
+request.
+\item Submit a
+\code{\link[=wafregional_delete_byte_match_set]{delete_byte_match_set}}
+request.
 }
 }
 \section{Request syntax}{

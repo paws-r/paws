@@ -8,8 +8,10 @@ RemoteWebDriver constructor}
 devicefarm_create_test_grid_url(projectArn, expiresInSeconds)
 }
 \arguments{
-\item{projectArn}{[required] ARN (from CreateTestGridProject or ListTestGridProjects) to associate
-with the short-term URL.}
+\item{projectArn}{[required] ARN (from
+\code{\link[=devicefarm_create_test_grid_project]{create_test_grid_project}} or
+\code{\link[=devicefarm_list_test_grid_projects]{list_test_grid_projects}}) to
+associate with the short-term URL.}
 
 \item{expiresInSeconds}{[required] Lifetime, in seconds, of the URL.}
 }

@@ -11,8 +11,9 @@ codedeploy_tag_resource(ResourceArn, Tags)
 \item{ResourceArn}{[required] The ARN of a resource, such as a CodeDeploy application or deployment
 group.}
 
-\item{Tags}{[required] A list of tags that \code{TagResource} associates with a resource. The
-resource is identified by the \code{ResourceArn} input parameter.}
+\item{Tags}{[required] A list of tags that \code{\link[=codedeploy_tag_resource]{tag_resource}} associates
+with a resource. The resource is identified by the \code{ResourceArn} input
+parameter.}
 }
 \description{
 Associates the list of tags in the input \code{Tags} parameter with the

@@ -96,10 +96,12 @@ created from it. AWS CloudFormation also propagates these tags to
 supported resources that are created in the stacks. A maximum number of
 50 tags can be specified.
 
-If you specify tags as part of a \code{CreateStackSet} action, AWS
+If you specify tags as part of a
+\code{\link[=cloudformation_create_stack_set]{create_stack_set}} action, AWS
 CloudFormation checks to see if you have the required IAM permission to
-tag resources. If you don't, the entire \code{CreateStackSet} action fails
-with an \verb{access denied} error, and the stack set is not created.}
+tag resources. If you don't, the entire
+\code{\link[=cloudformation_create_stack_set]{create_stack_set}} action fails with
+an \verb{access denied} error, and the stack set is not created.}
 
 \item{AdministrationRoleARN}{The Amazon Resource Number (ARN) of the IAM role to use to create this
 stack set.
@@ -134,11 +136,13 @@ Organizations. For more information, see \href{https://docs.aws.amazon.com/AWSCl
 accounts that are added to the target organization or organizational
 unit (OU). Specify only if \code{PermissionModel} is \code{SERVICE_MANAGED}.}
 
-\item{ClientRequestToken}{A unique identifier for this \code{CreateStackSet} request. Specify this
-token if you plan to retry requests so that AWS CloudFormation knows
-that you're not attempting to create another stack set with the same
-name. You might retry \code{CreateStackSet} requests to ensure that AWS
-CloudFormation successfully received them.
+\item{ClientRequestToken}{A unique identifier for this
+\code{\link[=cloudformation_create_stack_set]{create_stack_set}} request. Specify
+this token if you plan to retry requests so that AWS CloudFormation
+knows that you're not attempting to create another stack set with the
+same name. You might retry
+\code{\link[=cloudformation_create_stack_set]{create_stack_set}} requests to ensure
+that AWS CloudFormation successfully received them.
 
 If you don't specify an operation ID, the SDK generates one
 automatically.}

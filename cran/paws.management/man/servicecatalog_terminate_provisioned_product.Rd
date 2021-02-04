@@ -31,10 +31,11 @@ provisioned product even if it cannot delete the underlying resources.}
 }}
 
 \item{RetainPhysicalResources}{When this boolean parameter is set to true, the
-\code{TerminateProvisionedProduct} API deletes the Service Catalog
-provisioned product. However, it does not remove the CloudFormation
-stack, stack set, or the underlying resources of the deleted provisioned
-product. The default value is false.}
+\code{\link[=servicecatalog_terminate_provisioned_product]{terminate_provisioned_product}}
+API deletes the Service Catalog provisioned product. However, it does
+not remove the CloudFormation stack, stack set, or the underlying
+resources of the deleted provisioned product. The default value is
+false.}
 }
 \description{
 Terminates the specified provisioned product.
@@ -42,7 +43,8 @@ Terminates the specified provisioned product.
 This operation does not delete any records associated with the
 provisioned product.
 
-You can check the status of this request using DescribeRecord.
+You can check the status of this request using
+\code{\link[=servicecatalog_describe_record]{describe_record}}.
 }
 \section{Request syntax}{
 \preformatted{svc$terminate_provisioned_product(

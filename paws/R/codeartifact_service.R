@@ -89,67 +89,74 @@ NULL
 #' 
 #' CodeArtifact supports these operations:
 #' 
-#' -   `AssociateExternalConnection`: Adds an existing external connection
-#'     to a repository.
+#' -   [`associate_external_connection`][codeartifact_associate_external_connection]:
+#'     Adds an existing external connection to a repository.
 #' 
-#' -   `CopyPackageVersions`: Copies package versions from one repository
-#'     to another repository in the same domain.
+#' -   [`copy_package_versions`][codeartifact_copy_package_versions]:
+#'     Copies package versions from one repository to another repository in
+#'     the same domain.
 #' 
-#' -   `CreateDomain`: Creates a domain
+#' -   [`create_domain`][codeartifact_create_domain]: Creates a domain
 #' 
-#' -   `CreateRepository`: Creates a CodeArtifact repository in a domain.
+#' -   [`create_repository`][codeartifact_create_repository]: Creates a
+#'     CodeArtifact repository in a domain.
 #' 
-#' -   `DeleteDomain`: Deletes a domain. You cannot delete a domain that
-#'     contains repositories.
+#' -   [`delete_domain`][codeartifact_delete_domain]: Deletes a domain. You
+#'     cannot delete a domain that contains repositories.
 #' 
-#' -   `DeleteDomainPermissionsPolicy`: Deletes the resource policy that is
-#'     set on a domain.
+#' -   [`delete_domain_permissions_policy`][codeartifact_delete_domain_permissions_policy]:
+#'     Deletes the resource policy that is set on a domain.
 #' 
-#' -   `DeletePackageVersions`: Deletes versions of a package. After a
-#'     package has been deleted, it can be republished, but its assets and
-#'     metadata cannot be restored because they have been permanently
+#' -   [`delete_package_versions`][codeartifact_delete_package_versions]:
+#'     Deletes versions of a package. After a package has been deleted, it
+#'     can be republished, but its assets and metadata cannot be restored
+#'     because they have been permanently removed from storage.
+#' 
+#' -   [`delete_repository`][codeartifact_delete_repository]: Deletes a
+#'     repository.
+#' 
+#' -   [`delete_repository_permissions_policy`][codeartifact_delete_repository_permissions_policy]:
+#'     Deletes the resource policy that is set on a repository.
+#' 
+#' -   [`describe_domain`][codeartifact_describe_domain]: Returns a
+#'     `DomainDescription` object that contains information about the
+#'     requested domain.
+#' 
+#' -   [`describe_package_version`][codeartifact_describe_package_version]:
+#'     Returns a ` PackageVersionDescription ` object that contains details
+#'     about a package version.
+#' 
+#' -   [`describe_repository`][codeartifact_describe_repository]: Returns a
+#'     `RepositoryDescription` object that contains detailed information
+#'     about the requested repository.
+#' 
+#' -   [`dispose_package_versions`][codeartifact_dispose_package_versions]:
+#'     Disposes versions of a package. A package version with the status
+#'     `Disposed` cannot be restored because they have been permanently
 #'     removed from storage.
 #' 
-#' -   `DeleteRepository`: Deletes a repository.
+#' -   [`disassociate_external_connection`][codeartifact_disassociate_external_connection]:
+#'     Removes an existing external connection from a repository.
 #' 
-#' -   `DeleteRepositoryPermissionsPolicy`: Deletes the resource policy
-#'     that is set on a repository.
+#' -   [`get_authorization_token`][codeartifact_get_authorization_token]:
+#'     Generates a temporary authorization token for accessing repositories
+#'     in the domain. The token expires the authorization period has
+#'     passed. The default authorization period is 12 hours and can be
+#'     customized to any length with a maximum of 12 hours.
 #' 
-#' -   `DescribeDomain`: Returns a `DomainDescription` object that contains
-#'     information about the requested domain.
+#' -   [`get_domain_permissions_policy`][codeartifact_get_domain_permissions_policy]:
+#'     Returns the policy of a resource that is attached to the specified
+#'     domain.
 #' 
-#' -   `DescribePackageVersion`: Returns a
-#'     ` <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html">PackageVersionDescription</a> `
-#'     object that contains details about a package version.
+#' -   [`get_package_version_asset`][codeartifact_get_package_version_asset]:
+#'     Returns the contents of an asset that is in a package version.
 #' 
-#' -   `DescribeRepository`: Returns a `RepositoryDescription` object that
-#'     contains detailed information about the requested repository.
+#' -   [`get_package_version_readme`][codeartifact_get_package_version_readme]:
+#'     Gets the readme file or descriptive text for a package version.
 #' 
-#' -   `DisposePackageVersions`: Disposes versions of a package. A package
-#'     version with the status `Disposed` cannot be restored because they
-#'     have been permanently removed from storage.
-#' 
-#' -   `DisassociateExternalConnection`: Removes an existing external
-#'     connection from a repository.
-#' 
-#' -   `GetAuthorizationToken`: Generates a temporary authorization token
-#'     for accessing repositories in the domain. The token expires the
-#'     authorization period has passed. The default authorization period is
-#'     12 hours and can be customized to any length with a maximum of 12
-#'     hours.
-#' 
-#' -   `GetDomainPermissionsPolicy`: Returns the policy of a resource that
-#'     is attached to the specified domain.
-#' 
-#' -   `GetPackageVersionAsset`: Returns the contents of an asset that is
-#'     in a package version.
-#' 
-#' -   `GetPackageVersionReadme`: Gets the readme file or descriptive text
-#'     for a package version.
-#' 
-#' -   `GetRepositoryEndpoint`: Returns the endpoint of a repository for a
-#'     specific package format. A repository has one endpoint for each
-#'     package format:
+#' -   [`get_repository_endpoint`][codeartifact_get_repository_endpoint]:
+#'     Returns the endpoint of a repository for a specific package format.
+#'     A repository has one endpoint for each package format:
 #' 
 #'     -   `npm`
 #' 
@@ -159,46 +166,54 @@ NULL
 #' 
 #'     -   `nuget`
 #' 
-#' -   `GetRepositoryPermissionsPolicy`: Returns the resource policy that
-#'     is set on a repository.
+#' -   [`get_repository_permissions_policy`][codeartifact_get_repository_permissions_policy]:
+#'     Returns the resource policy that is set on a repository.
 #' 
-#' -   `ListDomains`: Returns a list of `DomainSummary` objects. Each
-#'     returned `DomainSummary` object contains information about a domain.
+#' -   [`list_domains`][codeartifact_list_domains]: Returns a list of
+#'     `DomainSummary` objects. Each returned `DomainSummary` object
+#'     contains information about a domain.
 #' 
-#' -   `ListPackages`: Lists the packages in a repository.
+#' -   [`list_packages`][codeartifact_list_packages]: Lists the packages in
+#'     a repository.
 #' 
-#' -   `ListPackageVersionAssets`: Lists the assets for a given package
-#'     version.
+#' -   [`list_package_version_assets`][codeartifact_list_package_version_assets]:
+#'     Lists the assets for a given package version.
 #' 
-#' -   `ListPackageVersionDependencies`: Returns a list of the direct
-#'     dependencies for a package version.
+#' -   [`list_package_version_dependencies`][codeartifact_list_package_version_dependencies]:
+#'     Returns a list of the direct dependencies for a package version.
 #' 
-#' -   `ListPackageVersions`: Returns a list of package versions for a
-#'     specified package in a repository.
+#' -   [`list_package_versions`][codeartifact_list_package_versions]:
+#'     Returns a list of package versions for a specified package in a
+#'     repository.
 #' 
-#' -   `ListRepositories`: Returns a list of repositories owned by the AWS
-#'     account that called this method.
+#' -   [`list_repositories`][codeartifact_list_repositories]: Returns a
+#'     list of repositories owned by the AWS account that called this
+#'     method.
 #' 
-#' -   `ListRepositoriesInDomain`: Returns a list of the repositories in a
-#'     domain.
+#' -   [`list_repositories_in_domain`][codeartifact_list_repositories_in_domain]:
+#'     Returns a list of the repositories in a domain.
 #' 
-#' -   `ListTagsForResource`: Returns a list of the tags associated with a
-#'     resource.
+#' -   [`list_tags_for_resource`][codeartifact_list_tags_for_resource]:
+#'     Returns a list of the tags associated with a resource.
 #' 
-#' -   `PutDomainPermissionsPolicy`: Attaches a resource policy to a
-#'     domain.
+#' -   [`put_domain_permissions_policy`][codeartifact_put_domain_permissions_policy]:
+#'     Attaches a resource policy to a domain.
 #' 
-#' -   `PutRepositoryPermissionsPolicy`: Sets the resource policy on a
-#'     repository that specifies permissions to access it.
+#' -   [`put_repository_permissions_policy`][codeartifact_put_repository_permissions_policy]:
+#'     Sets the resource policy on a repository that specifies permissions
+#'     to access it.
 #' 
-#' -   `TagResource`: Adds or updates tags for a resource.
+#' -   [`tag_resource`][codeartifact_tag_resource]: Adds or updates tags
+#'     for a resource.
 #' 
-#' -   `UntagResource`: Removes a tag from a resource.
+#' -   [`untag_resource`][codeartifact_untag_resource]: Removes a tag from
+#'     a resource.
 #' 
-#' -   `UpdatePackageVersionsStatus`: Updates the status of one or more
-#'     versions of a package.
+#' -   [`update_package_versions_status`][codeartifact_update_package_versions_status]:
+#'     Updates the status of one or more versions of a package.
 #' 
-#' -   `UpdateRepository`: Updates the properties of a repository.
+#' -   [`update_repository`][codeartifact_update_repository]: Updates the
+#'     properties of a repository.
 #'
 #' @param
 #' config

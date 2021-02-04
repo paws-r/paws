@@ -114,7 +114,8 @@ don't use it to provide sensitive information.
 }}
 
 \item{AnalyticsMetadata}{The analytics metadata for collecting Amazon Pinpoint metrics for
-\code{AdminInitiateAuth} calls.}
+\code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}
+calls.}
 
 \item{ContextData}{Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon

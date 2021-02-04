@@ -18,7 +18,8 @@ GameServerGroup name or ARN value.}
 game server groups.}
 
 Reinstates activity on a game server group after it has been suspended.
-A game server group might be suspended by theSuspendGameServerGroup
+A game server group might be suspended by
+the\code{\link[=gamelift_suspend_game_server_group]{suspend_game_server_group}}
 operation, or it might be suspended involuntarily due to a configuration
 problem. In the second case, you can manually resume activity on the
 group once the configuration problem has been resolved. Refer to the
@@ -36,14 +37,14 @@ returned showing that the resumed activity is no longer listed in
 
 \strong{Related operations}
 \itemize{
-\item CreateGameServerGroup
-\item ListGameServerGroups
-\item DescribeGameServerGroup
-\item UpdateGameServerGroup
-\item DeleteGameServerGroup
-\item ResumeGameServerGroup
-\item SuspendGameServerGroup
-\item DescribeGameServerInstances
+\item \code{\link[=gamelift_create_game_server_group]{create_game_server_group}}
+\item \code{\link[=gamelift_list_game_server_groups]{list_game_server_groups}}
+\item \code{\link[=gamelift_describe_game_server_group]{describe_game_server_group}}
+\item \code{\link[=gamelift_update_game_server_group]{update_game_server_group}}
+\item \code{\link[=gamelift_delete_game_server_group]{delete_game_server_group}}
+\item \code{\link[=gamelift_resume_game_server_group]{resume_game_server_group}}
+\item \code{\link[=gamelift_suspend_game_server_group]{suspend_game_server_group}}
+\item \code{\link[=gamelift_describe_game_server_instances]{describe_game_server_instances}}
 }
 }
 \section{Request syntax}{

@@ -8,17 +8,17 @@ glue_batch_get_workflows(Names, IncludeGraph)
 }
 \arguments{
 \item{Names}{[required] A list of workflow names, which may be the names returned from the
-\code{ListWorkflows} operation.}
+\code{\link[=glue_list_workflows]{list_workflows}} operation.}
 
 \item{IncludeGraph}{Specifies whether to include a graph when returning the workflow
 resource metadata.}
 }
 \description{
 Returns a list of resource metadata for a given list of workflow names.
-After calling the \code{ListWorkflows} operation, you can call this operation
-to access the data to which you have been granted permissions. This
-operation supports all IAM permissions, including permission conditions
-that uses tags.
+After calling the \code{\link[=glue_list_workflows]{list_workflows}} operation, you
+can call this operation to access the data to which you have been
+granted permissions. This operation supports all IAM permissions,
+including permission conditions that uses tags.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_workflows(

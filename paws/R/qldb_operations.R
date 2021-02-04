@@ -71,9 +71,10 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #' 
 #' If deletion protection is enabled, you must first disable it before you
 #' can delete the ledger using the QLDB API or the AWS Command Line
-#' Interface (AWS CLI). You can disable it by calling the `UpdateLedger`
-#' operation to set the flag to `false`. The QLDB console disables deletion
-#' protection for you when you use it to delete a ledger.
+#' Interface (AWS CLI). You can disable it by calling the
+#' [`update_ledger`][qldb_update_ledger] operation to set the flag to
+#' `false`. The QLDB console disables deletion protection for you when you
+#' use it to delete a ledger.
 #'
 #' @section Request syntax:
 #' ```
@@ -114,9 +115,10 @@ qldb_create_ledger <- function(Name, Tags = NULL, PermissionsMode, DeletionProte
 #' 
 #' If deletion protection is enabled, you must first disable it before you
 #' can delete the ledger using the QLDB API or the AWS Command Line
-#' Interface (AWS CLI). You can disable it by calling the `UpdateLedger`
-#' operation to set the flag to `false`. The QLDB console disables deletion
-#' protection for you when you use it to delete a ledger.
+#' Interface (AWS CLI). You can disable it by calling the
+#' [`update_ledger`][qldb_update_ledger] operation to set the flag to
+#' `false`. The QLDB console disables deletion protection for you when you
+#' use it to delete a ledger.
 #'
 #' @usage
 #' qldb_delete_ledger(Name)
@@ -550,11 +552,13 @@ qldb_get_revision <- function(Name, BlockAddress, DocumentId, DigestTipAddress =
 #' @description
 #' Returns an array of all Amazon QLDB journal stream descriptors for a
 #' given ledger. The output of each stream descriptor includes the same
-#' details that are returned by `DescribeJournalKinesisStream`.
+#' details that are returned by
+#' [`describe_journal_kinesis_stream`][qldb_describe_journal_kinesis_stream].
 #' 
 #' This action returns a maximum of `MaxResults` items. It is paginated so
 #' that you can retrieve all the items by calling
-#' `ListJournalKinesisStreamsForLedger` multiple times.
+#' [`list_journal_kinesis_streams_for_ledger`][qldb_list_journal_kinesis_streams_for_ledger]
+#' multiple times.
 #'
 #' @usage
 #' qldb_list_journal_kinesis_streams_for_ledger(LedgerName, MaxResults,
@@ -562,12 +566,13 @@ qldb_get_revision <- function(Name, BlockAddress, DocumentId, DigestTipAddress =
 #'
 #' @param LedgerName &#91;required&#93; The name of the ledger.
 #' @param MaxResults The maximum number of results to return in a single
-#' `ListJournalKinesisStreamsForLedger` request. (The actual number of
-#' results returned might be fewer.)
+#' [`list_journal_kinesis_streams_for_ledger`][qldb_list_journal_kinesis_streams_for_ledger]
+#' request. (The actual number of results returned might be fewer.)
 #' @param NextToken A pagination token, indicating that you want to retrieve the next page
 #' of results. If you received a value for `NextToken` in the response from
-#' a previous `ListJournalKinesisStreamsForLedger` call, you should use
-#' that value as input here.
+#' a previous
+#' [`list_journal_kinesis_streams_for_ledger`][qldb_list_journal_kinesis_streams_for_ledger]
+#' call, you should use that value as input here.
 #'
 #' @section Request syntax:
 #' ```
@@ -606,8 +611,9 @@ qldb_list_journal_kinesis_streams_for_ledger <- function(LedgerName, MaxResults 
 #' are associated with the current AWS account and Region.
 #' 
 #' This action returns a maximum of `MaxResults` items, and is paginated so
-#' that you can retrieve all the items by calling `ListJournalS3Exports`
-#' multiple times.
+#' that you can retrieve all the items by calling
+#' [`list_journal_s3_exports`][qldb_list_journal_s3_exports] multiple
+#' times.
 #' 
 #' This action does not return any expired export jobs. For more
 #' information, see [Export Job
@@ -618,12 +624,12 @@ qldb_list_journal_kinesis_streams_for_ledger <- function(LedgerName, MaxResults 
 #' qldb_list_journal_s3_exports(MaxResults, NextToken)
 #'
 #' @param MaxResults The maximum number of results to return in a single
-#' `ListJournalS3Exports` request. (The actual number of results returned
-#' might be fewer.)
+#' [`list_journal_s3_exports`][qldb_list_journal_s3_exports] request. (The
+#' actual number of results returned might be fewer.)
 #' @param NextToken A pagination token, indicating that you want to retrieve the next page
 #' of results. If you received a value for `NextToken` in the response from
-#' a previous `ListJournalS3Exports` call, then you should use that value
-#' as input here.
+#' a previous [`list_journal_s3_exports`][qldb_list_journal_s3_exports]
+#' call, then you should use that value as input here.
 #'
 #' @section Request syntax:
 #' ```
@@ -662,7 +668,8 @@ qldb_list_journal_s3_exports <- function(MaxResults = NULL, NextToken = NULL) {
 #' 
 #' This action returns a maximum of `MaxResults` items, and is paginated so
 #' that you can retrieve all the items by calling
-#' `ListJournalS3ExportsForLedger` multiple times.
+#' [`list_journal_s3_exports_for_ledger`][qldb_list_journal_s3_exports_for_ledger]
+#' multiple times.
 #' 
 #' This action does not return any expired export jobs. For more
 #' information, see [Export Job
@@ -674,12 +681,13 @@ qldb_list_journal_s3_exports <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @param Name &#91;required&#93; The name of the ledger.
 #' @param MaxResults The maximum number of results to return in a single
-#' `ListJournalS3ExportsForLedger` request. (The actual number of results
-#' returned might be fewer.)
+#' [`list_journal_s3_exports_for_ledger`][qldb_list_journal_s3_exports_for_ledger]
+#' request. (The actual number of results returned might be fewer.)
 #' @param NextToken A pagination token, indicating that you want to retrieve the next page
 #' of results. If you received a value for `NextToken` in the response from
-#' a previous `ListJournalS3ExportsForLedger` call, then you should use
-#' that value as input here.
+#' a previous
+#' [`list_journal_s3_exports_for_ledger`][qldb_list_journal_s3_exports_for_ledger]
+#' call, then you should use that value as input here.
 #'
 #' @section Request syntax:
 #' ```
@@ -718,17 +726,19 @@ qldb_list_journal_s3_exports_for_ledger <- function(Name, MaxResults = NULL, Nex
 #' current AWS account and Region.
 #' 
 #' This action returns a maximum of 100 items and is paginated so that you
-#' can retrieve all the items by calling `ListLedgers` multiple times.
+#' can retrieve all the items by calling
+#' [`list_ledgers`][qldb_list_ledgers] multiple times.
 #'
 #' @usage
 #' qldb_list_ledgers(MaxResults, NextToken)
 #'
-#' @param MaxResults The maximum number of results to return in a single `ListLedgers`
-#' request. (The actual number of results returned might be fewer.)
+#' @param MaxResults The maximum number of results to return in a single
+#' [`list_ledgers`][qldb_list_ledgers] request. (The actual number of
+#' results returned might be fewer.)
 #' @param NextToken A pagination token, indicating that you want to retrieve the next page
 #' of results. If you received a value for `NextToken` in the response from
-#' a previous `ListLedgers` call, then you should use that value as input
-#' here.
+#' a previous [`list_ledgers`][qldb_list_ledgers] call, then you should use
+#' that value as input here.
 #'
 #' @section Request syntax:
 #' ```
@@ -997,9 +1007,10 @@ qldb_untag_resource <- function(ResourceArn, TagKeys) {
 #' 
 #' If deletion protection is enabled, you must first disable it before you
 #' can delete the ledger using the QLDB API or the AWS Command Line
-#' Interface (AWS CLI). You can disable it by calling the `UpdateLedger`
-#' operation to set the flag to `false`. The QLDB console disables deletion
-#' protection for you when you use it to delete a ledger.
+#' Interface (AWS CLI). You can disable it by calling the
+#' [`update_ledger`][qldb_update_ledger] operation to set the flag to
+#' `false`. The QLDB console disables deletion protection for you when you
+#' use it to delete a ledger.
 #'
 #' @section Request syntax:
 #' ```

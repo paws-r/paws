@@ -285,7 +285,8 @@ appregistry_delete_attribute_group <- function(attributeGroup) {
 #' @description
 #' Disassociates an attribute group from an application to remove the extra
 #' attributes contained in the attribute group from the application's
-#' metadata. This operation reverts `AssociateAttributeGroup`.
+#' metadata. This operation reverts
+#' [`associate_attribute_group`][appregistry_associate_attribute_group].
 #'
 #' @usage
 #' appregistry_disassociate_attribute_group(application, attributeGroup)

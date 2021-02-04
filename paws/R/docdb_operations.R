@@ -253,9 +253,10 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' If you copy an unencrypted cluster snapshot and specify a value for the
 #' `KmsKeyId` parameter, an error is returned.
 #' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for the
-#' `CopyDBClusterSnapshot` API action in the AWS Region that contains the
-#' source cluster snapshot to copy. You must use the `PreSignedUrl`
-#' parameter when copying a cluster snapshot from another AWS Region.
+#' [`copy_db_cluster_snapshot`][docdb_copy_db_cluster_snapshot] API action
+#' in the AWS Region that contains the source cluster snapshot to copy. You
+#' must use the `PreSignedUrl` parameter when copying a cluster snapshot
+#' from another AWS Region.
 #' 
 #' If you are using an AWS SDK tool or the AWS CLI, you can specify
 #' `SourceRegion` (or `--source-region` for the AWS CLI) instead of
@@ -264,9 +265,10 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' that can be executed in the source AWS Region.
 #' 
 #' The presigned URL must be a valid request for the
-#' `CopyDBClusterSnapshot` API action that can be executed in the source
-#' AWS Region that contains the cluster snapshot to be copied. The
-#' presigned URL request must contain the following parameter values:
+#' [`copy_db_cluster_snapshot`][docdb_copy_db_cluster_snapshot] API action
+#' that can be executed in the source AWS Region that contains the cluster
+#' snapshot to be copied. The presigned URL request must contain the
+#' following parameter values:
 #' 
 #' -   `SourceRegion` - The ID of the region that contains the snapshot to
 #'     be copied.
@@ -1077,9 +1079,9 @@ docdb_delete_db_subnet_group <- function(DBSubnetGroupName) {
 #' 
 #' -   Maximum: 100
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeCertificates` request. If this parameter is specified, the
-#' response includes only records beyond the marker, up to the value
-#' specified by `MaxRecords`.
+#' [`describe_certificates`][docdb_describe_certificates] request. If this
+#' parameter is specified, the response includes only records beyond the
+#' marker, up to the value specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1264,11 +1266,12 @@ docdb_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, So
 #' manual DB cluster snapshot.
 #' 
 #' When you share snapshots with other AWS accounts,
-#' `DescribeDBClusterSnapshotAttributes` returns the `restore` attribute
-#' and a list of IDs for the AWS accounts that are authorized to copy or
-#' restore the manual cluster snapshot. If `all` is included in the list of
-#' values for the `restore` attribute, then the manual cluster snapshot is
-#' public and can be copied or restored by all AWS accounts.
+#' [`describe_db_cluster_snapshot_attributes`][docdb_describe_db_cluster_snapshot_attributes]
+#' returns the `restore` attribute and a list of IDs for the AWS accounts
+#' that are authorized to copy or restore the manual cluster snapshot. If
+#' `all` is included in the list of values for the `restore` attribute,
+#' then the manual cluster snapshot is public and can be copied or restored
+#' by all AWS accounts.
 #'
 #' @usage
 #' docdb_describe_db_cluster_snapshot_attributes(
@@ -1529,11 +1532,13 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
 #' @param DefaultOnly Indicates that only the default version of the specified engine or
 #' engine and major version combination is returned.
 #' @param ListSupportedCharacterSets If this parameter is specified and the requested engine supports the
-#' `CharacterSetName` parameter for `CreateDBInstance`, the response
-#' includes a list of supported character sets for each engine version.
+#' `CharacterSetName` parameter for
+#' [`create_db_instance`][docdb_create_db_instance], the response includes
+#' a list of supported character sets for each engine version.
 #' @param ListSupportedTimezones If this parameter is specified and the requested engine supports the
-#' `TimeZone` parameter for `CreateDBInstance`, the response includes a
-#' list of supported time zones for each engine version.
+#' `TimeZone` parameter for
+#' [`create_db_instance`][docdb_create_db_instance], the response includes
+#' a list of supported time zones for each engine version.
 #'
 #' @section Request syntax:
 #' ```

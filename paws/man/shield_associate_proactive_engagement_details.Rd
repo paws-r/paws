@@ -17,8 +17,9 @@ one phone number.
 
 The contacts that you provide here replace any contacts that were
 already defined. If you already have contacts defined and want to use
-them, retrieve the list using \code{DescribeEmergencyContactSettings} and
-then provide it here.}
+them, retrieve the list using
+\code{\link[=shield_describe_emergency_contact_settings]{describe_emergency_contact_settings}}
+and then provide it here.}
 }
 \description{
 Initializes proactive engagement and sets the list of contacts for the
@@ -27,7 +28,8 @@ number in the emergency contact list.
 
 After you have initialized proactive engagement using this call, to
 disable or enable proactive engagement, use the calls
-\code{DisableProactiveEngagement} and \code{EnableProactiveEngagement}.
+\code{\link[=shield_disable_proactive_engagement]{disable_proactive_engagement}}
+and \code{\link[=shield_enable_proactive_engagement]{enable_proactive_engagement}}.
 
 This call defines the list of email addresses and phone numbers that the
 DDoS Response Team (DRT) can use to contact you for escalations to the
@@ -35,8 +37,9 @@ DRT and to initiate proactive customer support.
 
 The contacts that you provide in the request replace any contacts that
 were already defined. If you already have contacts defined and want to
-use them, retrieve the list using \code{DescribeEmergencyContactSettings} and
-then provide it to this call.
+use them, retrieve the list using
+\code{\link[=shield_describe_emergency_contact_settings]{describe_emergency_contact_settings}}
+and then provide it to this call.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_proactive_engagement_details(

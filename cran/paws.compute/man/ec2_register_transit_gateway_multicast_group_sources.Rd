@@ -32,7 +32,7 @@ instances, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-
 in \emph{Amazon VPC Transit Gateways}.
 
 After you add the source, use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html}{SearchTransitGatewayMulticastGroups}
+\code{\link[=ec2_search_transit_gateway_multicast_groups]{search_transit_gateway_multicast_groups}}
 to verify that the source was added to the multicast group.
 }
 \section{Request syntax}{

@@ -17,7 +17,7 @@ you must specify the name and the x-amz-outpost-id as well.
 
 For using this parameter with S3 on Outposts with the AWS SDK and CLI,
 you must specify the ARN of the bucket accessed in the format
-\verb{arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/bucket/&lt;my-bucket-name&gt;}.
+\verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/bucket/<my-bucket-name>}.
 For example, to access the bucket \code{reports} through outpost \code{my-outpost}
 owned by account \code{123456789012} in Region \code{us-west-2}, use the URL
 encoding of
@@ -56,8 +56,8 @@ For more information about object expiration, see \href{https://docs.aws.amazon.
 
 Related actions include:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketLifecycleConfiguration.html}{PutBucketLifecycleConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html}{GetBucketLifecycleConfiguration}
+\item \code{\link[=s3control_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}
+\item \code{\link[=s3control_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
 }
 }
 \section{Request syntax}{

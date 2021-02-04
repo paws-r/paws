@@ -17,8 +17,9 @@ using the AWS CLI or SDK.}
 Deletes an Amazon FSx backup, deleting its contents. After deletion, the
 backup no longer exists, and its data is gone.
 
-The \code{DeleteBackup} call returns instantly. The backup will not show up
-in later \code{DescribeBackups} calls.
+The \code{\link[=fsx_delete_backup]{delete_backup}} call returns instantly. The
+backup will not show up in later
+\code{\link[=fsx_describe_backups]{describe_backups}} calls.
 
 The data in a deleted backup is also deleted and can't be recovered by
 any means.

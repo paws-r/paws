@@ -58,13 +58,13 @@ status to \code{Disposed}. A disposed package version cannot be restored in
 your repository because its assets are deleted.
 
 To view all disposed package versions in a repository, use
-\href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html}{\code{ListPackageVersions}}
+\href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html}{\code{list_package_versions}}
 and set the
 \href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html#API_ListPackageVersions_RequestSyntax}{\code{status}}
 parameter to \code{Disposed}.
 
 To view information about a disposed package version, use
-\href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DescribePackageVersion.html}{\code{DescribePackageVersion}}
+\href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DescribePackageVersion.html}{\code{describe_package_version}}
 ..
 }
 \section{Request syntax}{

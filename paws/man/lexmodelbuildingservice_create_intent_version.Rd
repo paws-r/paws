@@ -26,7 +26,8 @@ last version you created.
 
 You can update only the \verb{$LATEST} version of the intent. You can't
 update the numbered versions that you create with the
-\code{CreateIntentVersion} operation.
+\code{\link[=lexmodelbuildingservice_create_intent_version]{create_intent_version}}
+operation.
 
 When you create a version of an intent, Amazon Lex sets the version to
 \enumerate{

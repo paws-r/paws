@@ -71,8 +71,9 @@ be true.}
 This parameter is used only if the AutoGranted parameter is true.}
 }
 \description{
-The \code{CreateQualificationType} operation creates a new Qualification
-type, which is represented by a \code{QualificationType} data structure.
+The \code{\link[=mturk_create_qualification_type]{create_qualification_type}}
+operation creates a new Qualification type, which is represented by a
+\code{QualificationType} data structure.
 }
 \section{Request syntax}{
 \preformatted{svc$create_qualification_type(

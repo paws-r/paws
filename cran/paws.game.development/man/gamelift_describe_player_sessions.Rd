@@ -55,14 +55,14 @@ PlayerSession object is returned for each session matching the request.
 
 \emph{Available in Amazon GameLift Local.}
 \itemize{
-\item CreatePlayerSession
-\item CreatePlayerSessions
-\item DescribePlayerSessions
+\item \code{\link[=gamelift_create_player_session]{create_player_session}}
+\item \code{\link[=gamelift_create_player_sessions]{create_player_sessions}}
+\item \code{\link[=gamelift_describe_player_sessions]{describe_player_sessions}}
 \item Game session placements
 \itemize{
-\item StartGameSessionPlacement
-\item DescribeGameSessionPlacement
-\item StopGameSessionPlacement
+\item \code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+\item \code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
+\item \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
 }
 }
 }

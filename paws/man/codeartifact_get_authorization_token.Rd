@@ -30,17 +30,20 @@ authorization tokens, see \href{https://docs.aws.amazon.com/codeartifact/latest/
 CodeArtifact authorization tokens are valid for a period of 12 hours
 when created with the \code{login} command. You can call \code{login} periodically
 to refresh the token. When you create an authorization token with the
-\code{GetAuthorizationToken} API, you can set a custom authorization period,
-up to a maximum of 12 hours, with the \code{durationSeconds} parameter.
+\code{\link[=codeartifact_get_authorization_token]{get_authorization_token}} API,
+you can set a custom authorization period, up to a maximum of 12 hours,
+with the \code{durationSeconds} parameter.
 
-The authorization period begins after \code{login} or \code{GetAuthorizationToken}
-is called. If \code{login} or \code{GetAuthorizationToken} is called while
-assuming a role, the token lifetime is independent of the maximum
-session duration of the role. For example, if you call \verb{sts assume-role}
-and specify a session duration of 15 minutes, then generate a
-CodeArtifact authorization token, the token will be valid for the full
-authorization period even though this is longer than the 15-minute
-session duration.
+The authorization period begins after \code{login} or
+\code{\link[=codeartifact_get_authorization_token]{get_authorization_token}} is
+called. If \code{login} or
+\code{\link[=codeartifact_get_authorization_token]{get_authorization_token}} is
+called while assuming a role, the token lifetime is independent of the
+maximum session duration of the role. For example, if you call
+\verb{sts assume-role} and specify a session duration of 15 minutes, then
+generate a CodeArtifact authorization token, the token will be valid for
+the full authorization period even though this is longer than the
+15-minute session duration.
 
 See \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM Roles}
 for more information on controlling session duration.

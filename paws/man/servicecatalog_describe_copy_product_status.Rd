@@ -16,7 +16,7 @@ servicecatalog_describe_copy_product_status(AcceptLanguage,
 }}
 
 \item{CopyProductToken}{[required] The token for the copy product operation. This token is returned by
-CopyProduct.}
+\code{\link[=servicecatalog_copy_product]{copy_product}}.}
 }
 \description{
 Gets the status of the specified copy product operation.

@@ -18,7 +18,9 @@ cluster.
 
 If specifying a capacity provider that uses an Auto Scaling group, the
 capacity provider must already be created. New capacity providers can be
-created with the CreateCapacityProvider API operation.
+created with the
+\code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
+operation.
 
 To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
 \code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
@@ -34,13 +36,16 @@ strategy for the cluster is used.
 A capacity provider strategy consists of one or more capacity providers
 along with the \code{base} and \code{weight} to assign to them. A capacity
 provider must be associated with the cluster to be used in a capacity
-provider strategy. The PutClusterCapacityProviders API is used to
-associate a capacity provider with a cluster. Only capacity providers
-with an \code{ACTIVE} or \code{UPDATING} status can be used.
+provider strategy. The
+\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
+API is used to associate a capacity provider with a cluster. Only
+capacity providers with an \code{ACTIVE} or \code{UPDATING} status can be used.
 
 If specifying a capacity provider that uses an Auto Scaling group, the
 capacity provider must already be created. New capacity providers can be
-created with the CreateCapacityProvider API operation.
+created with the
+\code{\link[=ecs_create_capacity_provider]{create_capacity_provider}} API
+operation.
 
 To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
 \code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
@@ -56,10 +61,11 @@ capacity provider strategy for the cluster. If the specified cluster has
 existing capacity providers associated with it, you must specify all
 existing capacity providers in addition to any new ones you want to add.
 Any existing capacity providers associated with a cluster that are
-omitted from a PutClusterCapacityProviders API call will be
-disassociated with the cluster. You can only disassociate an existing
-capacity provider from a cluster if it's not being used by any existing
-tasks.
+omitted from a
+\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
+API call will be disassociated with the cluster. You can only
+disassociate an existing capacity provider from a cluster if it's not
+being used by any existing tasks.
 
 When creating a service or running a task on a cluster, if no capacity
 provider or launch type is specified, then the cluster's default

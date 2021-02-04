@@ -15,77 +15,96 @@ NULL
 #' 
 #' **Managing workloads:**
 #' 
-#' -   CreateWorkload: Define a new workload.
+#' -   [`create_workload`][wellarchitected_create_workload]: Define a new
+#'     workload.
 #' 
-#' -   ListWorkloads: List workloads.
+#' -   [`list_workloads`][wellarchitected_list_workloads]: List workloads.
 #' 
-#' -   GetWorkload: Get the properties of a workload.
+#' -   [`get_workload`][wellarchitected_get_workload]: Get the properties
+#'     of a workload.
 #' 
-#' -   UpdateWorkload: Update the properties of a workload.
+#' -   [`update_workload`][wellarchitected_update_workload]: Update the
+#'     properties of a workload.
 #' 
-#' -   DeleteWorkload: Delete a workload.
+#' -   [`delete_workload`][wellarchitected_delete_workload]: Delete a
+#'     workload.
 #' 
 #' **Managing milestones:**
 #' 
-#' -   CreateMilestone: Create a milestone.
+#' -   [`create_milestone`][wellarchitected_create_milestone]: Create a
+#'     milestone.
 #' 
-#' -   ListMilestones: List milestones.
+#' -   [`list_milestones`][wellarchitected_list_milestones]: List
+#'     milestones.
 #' 
-#' -   GetMilestone: Get the properties of a milestone.
+#' -   [`get_milestone`][wellarchitected_get_milestone]: Get the properties
+#'     of a milestone.
 #' 
 #' **Managing lenses:**
 #' 
-#' -   ListLenses: List the available lenses.
+#' -   [`list_lenses`][wellarchitected_list_lenses]: List the available
+#'     lenses.
 #' 
-#' -   AssociateLenses: Add one or more lenses to a workload.
+#' -   [`associate_lenses`][wellarchitected_associate_lenses]: Add one or
+#'     more lenses to a workload.
 #' 
-#' -   DisassociateLenses: Remove one or more lenses from a workload.
+#' -   [`disassociate_lenses`][wellarchitected_disassociate_lenses]: Remove
+#'     one or more lenses from a workload.
 #' 
-#' -   ListNotifications: List lens notifications for a workload.
+#' -   [`list_notifications`][wellarchitected_list_notifications]: List
+#'     lens notifications for a workload.
 #' 
-#' -   GetLensVersionDifference: Get the differences between the version of
-#'     a lens used in a workload and the latest version.
+#' -   [`get_lens_version_difference`][wellarchitected_get_lens_version_difference]:
+#'     Get the differences between the version of a lens used in a workload
+#'     and the latest version.
 #' 
-#' -   UpgradeLensReview: Upgrade a workload to use the latest version of a
-#'     lens.
+#' -   [`upgrade_lens_review`][wellarchitected_upgrade_lens_review]:
+#'     Upgrade a workload to use the latest version of a lens.
 #' 
 #' **Managing reviews:**
 #' 
-#' -   ListLensReviews: List reviews associated with a workload.
+#' -   [`list_lens_reviews`][wellarchitected_list_lens_reviews]: List
+#'     reviews associated with a workload.
 #' 
-#' -   GetLensReview: Get pillar and risk data associated with a workload
-#'     review.
+#' -   [`get_lens_review`][wellarchitected_get_lens_review]: Get pillar and
+#'     risk data associated with a workload review.
 #' 
-#' -   GetLensReviewReport: Get the report associated with a workload
-#'     review.
+#' -   [`get_lens_review_report`][wellarchitected_get_lens_review_report]:
+#'     Get the report associated with a workload review.
 #' 
-#' -   UpdateLensReview: Update the notes associated with a workload
-#'     review.
+#' -   [`update_lens_review`][wellarchitected_update_lens_review]: Update
+#'     the notes associated with a workload review.
 #' 
-#' -   ListAnswers: List the questions and answers in a workload review.
+#' -   [`list_answers`][wellarchitected_list_answers]: List the questions
+#'     and answers in a workload review.
 #' 
-#' -   UpdateAnswer: Update the answer to a specific question in a workload
-#'     review.
+#' -   [`update_answer`][wellarchitected_update_answer]: Update the answer
+#'     to a specific question in a workload review.
 #' 
-#' -   ListLensReviewImprovements: List the improvement plan associated
-#'     with a workload review.
+#' -   [`list_lens_review_improvements`][wellarchitected_list_lens_review_improvements]:
+#'     List the improvement plan associated with a workload review.
 #' 
 #' **Managing workload shares:**
 #' 
-#' -   ListWorkloadShares: List the workload shares associated with a
-#'     workload.
+#' -   [`list_workload_shares`][wellarchitected_list_workload_shares]: List
+#'     the workload shares associated with a workload.
 #' 
-#' -   CreateWorkloadShare: Create a workload share.
+#' -   [`create_workload_share`][wellarchitected_create_workload_share]:
+#'     Create a workload share.
 #' 
-#' -   UpdateWorkloadShare: Update a workload share.
+#' -   [`update_workload_share`][wellarchitected_update_workload_share]:
+#'     Update a workload share.
 #' 
-#' -   DeleteWorkloadShare: Delete a workload share.
+#' -   [`delete_workload_share`][wellarchitected_delete_workload_share]:
+#'     Delete a workload share.
 #' 
 #' **Managing workload share invitations:**
 #' 
-#' -   ListShareInvitations: List workload share invitations.
+#' -   [`list_share_invitations`][wellarchitected_list_share_invitations]:
+#'     List workload share invitations.
 #' 
-#' -   UpdateShareInvitation: Update a workload share invitation.
+#' -   [`update_share_invitation`][wellarchitected_update_share_invitation]:
+#'     Update a workload share invitation.
 #' 
 #' For information about the AWS Well-Architected Tool, see the [AWS
 #' Well-Architected Tool User

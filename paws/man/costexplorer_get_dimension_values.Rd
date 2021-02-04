@@ -20,12 +20,15 @@ usage data is retrieved from \code{2017-01-01} up to and including
 \item{Dimension}{[required] The name of the dimension. Each \code{Dimension} is available for a different
 \code{Context}. For more information, see \code{Context}.}
 
-\item{Context}{The context for the call to \code{GetDimensionValues}. This can be
+\item{Context}{The context for the call to
+\code{\link[=costexplorer_get_dimension_values]{get_dimension_values}}. This can be
 \code{RESERVATIONS} or \code{COST_AND_USAGE}. The default value is
 \code{COST_AND_USAGE}. If the context is set to \code{RESERVATIONS}, the resulting
-dimension values can be used in the \code{GetReservationUtilization}
+dimension values can be used in the
+\code{\link[=costexplorer_get_reservation_utilization]{get_reservation_utilization}}
 operation. If the context is set to \code{COST_AND_USAGE}, the resulting
-dimension values can be used in the \code{GetCostAndUsage} operation.
+dimension values can be used in the
+\code{\link[=costexplorer_get_cost_and_usage]{get_cost_and_usage}} operation.
 
 If you set the context to \code{COST_AND_USAGE}, you can use the following
 dimensions for searching:
@@ -51,7 +54,8 @@ usage is related. Examples include On-Demand Instances and Standard
 Reserved Instances.
 \item SERVICE - The AWS service such as Amazon DynamoDB.
 \item USAGE\\_TYPE - The type of usage. An example is
-DataTransfer-In-Bytes. The response for the \code{GetDimensionValues}
+DataTransfer-In-Bytes. The response for the
+\code{\link[=costexplorer_get_dimension_values]{get_dimension_values}}
 operation includes a unit attribute. Examples include GB and Hrs.
 \item USAGE\\_TYPE\\_GROUP - The grouping of common usage types. An example
 is Amazon EC2: CloudWatch – Alarms. The response for this operation

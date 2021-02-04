@@ -40,19 +40,19 @@ you received all the expected data.
 each time specifying the appropriate byte range.
 \item After downloading all the parts of the job output, you have a list
 of eight checksum values. Compute the tree hash of these values to
-find the checksum of the entire output. Using the DescribeJob API,
-obtain job information of the job that provided you the output. The
-response includes the checksum of the entire archive stored in
-Amazon S3 Glacier. You compare this value with the checksum you
-computed to ensure you have downloaded the entire archive content
-with no errors.
+find the checksum of the entire output. Using the
+\code{\link[=glacier_describe_job]{describe_job}} API, obtain job information
+of the job that provided you the output. The response includes the
+checksum of the entire archive stored in Amazon S3 Glacier. You
+compare this value with the checksum you computed to ensure you have
+downloaded the entire archive content with no errors.
 }}
 }
 \description{
 This operation downloads the output of the job you initiated using
-InitiateJob. Depending on the job type you specified when you initiated
-the job, the output will be either the content of an archive or a vault
-inventory.
+\code{\link[=glacier_initiate_job]{initiate_job}}. Depending on the job type you
+specified when you initiated the job, the output will be either the
+content of an archive or a vault inventory.
 
 You can download all the job output or download a portion of the output
 by specifying a byte range. In the case of an archive retrieval job,

@@ -19,7 +19,7 @@ the returned \code{NextToken} value.}
 Describes the servers in your server catalog.
 
 Before you can describe your servers, you must import them using
-ImportServerCatalog.
+\code{\link[=sms_import_server_catalog]{import_server_catalog}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_servers(

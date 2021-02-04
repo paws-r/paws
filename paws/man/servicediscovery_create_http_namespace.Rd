@@ -11,9 +11,10 @@ servicediscovery_create_http_namespace(Name, CreatorRequestId,
 \item{Name}{[required] The name that you want to assign to this namespace.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and that allows failed
-\code{CreateHttpNamespace} requests to be retried without the risk of
-executing the operation twice. \code{CreatorRequestId} can be any unique
-string, for example, a date/time stamp.}
+\code{\link[=servicediscovery_create_http_namespace]{create_http_namespace}}
+requests to be retried without the risk of executing the operation
+twice. \code{CreatorRequestId} can be any unique string, for example, a
+date/time stamp.}
 
 \item{Description}{A description for the namespace.}
 
@@ -24,7 +25,8 @@ length of 256 characters.}
 }
 \description{
 Creates an HTTP namespace. Service instances that you register using an
-HTTP namespace can be discovered using a \code{DiscoverInstances} request but
+HTTP namespace can be discovered using a
+\code{\link[=servicediscovery_discover_instances]{discover_instances}} request but
 can't be discovered using DNS.
 
 For the current quota on the number of namespaces that you can create

@@ -23,22 +23,24 @@ set is 1.}
 Updates capacity settings for a fleet. Use this operation to specify the
 number of EC2 instances (hosts) that you want this fleet to contain.
 Before calling this operation, you may want to call
-DescribeEC2InstanceLimits to get the maximum capacity based on the
-fleet's EC2 instance type.
+\code{\link[=gamelift_describe_ec2_instance_limits]{describe_ec2_instance_limits}}
+to get the maximum capacity based on the fleet's EC2 instance type.
 
 Specify minimum and maximum number of instances. Amazon GameLift will
 not change fleet capacity to values fall outside of this range. This is
-particularly important when using auto-scaling (see PutScalingPolicy) to
-allow capacity to adjust based on player demand while imposing limits on
-automatic adjustments.
+particularly important when using auto-scaling (see
+\code{\link[=gamelift_put_scaling_policy]{put_scaling_policy}}) to allow capacity
+to adjust based on player demand while imposing limits on automatic
+adjustments.
 
 To update fleet capacity, specify the fleet ID and the number of
 instances you want the fleet to host. If successful, Amazon GameLift
 starts or terminates instances so that the fleet's active instance count
 matches the desired instance count. You can view a fleet's current
-capacity information by calling DescribeFleetCapacity. If the desired
-instance count is higher than the instance type's limit, the "Limit
-Exceeded" exception occurs.
+capacity information by calling
+\code{\link[=gamelift_describe_fleet_capacity]{describe_fleet_capacity}}. If the
+desired instance count is higher than the instance type's limit, the
+"Limit Exceeded" exception occurs.
 
 \strong{Learn more}
 
@@ -46,18 +48,19 @@ Exceeded" exception occurs.
 
 \strong{Related operations}
 \itemize{
-\item CreateFleet
-\item ListFleets
-\item DeleteFleet
-\item DescribeFleetAttributes
+\item \code{\link[=gamelift_create_fleet]{create_fleet}}
+\item \code{\link[=gamelift_list_fleets]{list_fleets}}
+\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
+\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
 \item Update fleets:
 \itemize{
-\item UpdateFleetAttributes
-\item UpdateFleetCapacity
-\item UpdateFleetPortSettings
-\item UpdateRuntimeConfiguration
+\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
+\item \code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}
+\item \code{\link[=gamelift_update_fleet_port_settings]{update_fleet_port_settings}}
+\item \code{\link[=gamelift_update_runtime_configuration]{update_runtime_configuration}}
 }
-\item StartFleetActions or StopFleetActions
+\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
 }
 }
 \section{Request syntax}{

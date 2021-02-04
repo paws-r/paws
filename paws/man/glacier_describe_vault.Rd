@@ -26,9 +26,10 @@ vault. The number of archives and their total size are as of the last
 inventory generation. This means that if you add or remove an archive
 from a vault, and then immediately use Describe Vault, the change in
 contents will not be immediately reflected. If you want to retrieve the
-latest inventory of the vault, use InitiateJob. Amazon S3 Glacier
-generates vault inventories approximately daily. For more information,
-see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html}{Downloading a Vault Inventory in Amazon S3 Glacier}.
+latest inventory of the vault, use
+\code{\link[=glacier_initiate_job]{initiate_job}}. Amazon S3 Glacier generates
+vault inventories approximately daily. For more information, see
+\href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html}{Downloading a Vault Inventory in Amazon S3 Glacier}.
 
 An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any

@@ -12,8 +12,8 @@ securityhub_get_enabled_standards(StandardsSubscriptionArns, NextToken,
 retrieve.}
 
 \item{NextToken}{The token that is required for pagination. On your first call to the
-\code{GetEnabledStandards} operation, set the value of this parameter to
-\code{NULL}.
+\code{\link[=securityhub_get_enabled_standards]{get_enabled_standards}} operation,
+set the value of this parameter to \code{NULL}.
 
 For subsequent calls to the operation, to continue listing data, set the
 value of this parameter to the value returned from the previous

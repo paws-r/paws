@@ -37,8 +37,9 @@ Array parameters are not supported.}
 \item{sql}{[required] The SQL statement to run.}
 
 \item{transactionId}{The identifier of a transaction that was started by using the
-\code{BeginTransaction} operation. Specify the transaction ID of the
-transaction that you want to include the SQL statement in.
+\code{\link[=rdsdataservice_begin_transaction]{begin_transaction}} operation.
+Specify the transaction ID of the transaction that you want to include
+the SQL statement in.
 
 If the SQL statement is not part of a transaction, don't set this
 parameter.}

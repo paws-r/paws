@@ -20,7 +20,7 @@ handling. For general information about using the AWS REST APIs, see
 \href{https://docs.aws.amazon.com/general/latest/gr/aws-apis.html}{AWS APIs}.
 
 To access Network Firewall using the REST API endpoint:
-\verb{https://network-firewall.&lt;region&gt;.amazonaws.com }
+\verb{https://network-firewall.<region>.amazonaws.com }
 \item Alternatively, you can use one of the AWS SDKs to access an API
 that's tailored to the programming language or platform that you're
 using. For more information, see \href{https://aws.amazon.com/tools/#SDKs}{AWS SDKs}.

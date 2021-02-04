@@ -27,11 +27,11 @@ state and be unable to host game sessions.
 
 \strong{Related operations}
 \itemize{
-\item CreateScript
-\item ListScripts
-\item DescribeScript
-\item UpdateScript
-\item DeleteScript
+\item \code{\link[=gamelift_create_script]{create_script}}
+\item \code{\link[=gamelift_list_scripts]{list_scripts}}
+\item \code{\link[=gamelift_describe_script]{describe_script}}
+\item \code{\link[=gamelift_update_script]{update_script}}
+\item \code{\link[=gamelift_delete_script]{delete_script}}
 }
 }
 \section{Request syntax}{

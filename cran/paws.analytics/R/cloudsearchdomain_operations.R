@@ -26,11 +26,12 @@ NULL
 #' Data](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html)
 #' in the *Amazon CloudSearch Developer Guide*.
 #' 
-#' The endpoint for submitting `Search` requests is domain-specific. You
-#' submit search requests to a domain's search endpoint. To get the search
-#' endpoint for your domain, use the Amazon CloudSearch configuration
-#' service `DescribeDomains` action. A domain's endpoints are also
-#' displayed on the domain dashboard in the Amazon CloudSearch console.
+#' The endpoint for submitting [`search`][cloudsearchdomain_search]
+#' requests is domain-specific. You submit search requests to a domain's
+#' search endpoint. To get the search endpoint for your domain, use the
+#' Amazon CloudSearch configuration service `DescribeDomains` action. A
+#' domain's endpoints are also displayed on the domain dashboard in the
+#' Amazon CloudSearch console.
 #'
 #' @usage
 #' cloudsearchdomain_search(cursor, expr, facet, filterQuery, highlight,
@@ -143,20 +144,20 @@ NULL
 #'     search term(s) you want to highlight. By default, the first
 #'     occurrence is highlighted.
 #' -   `pre_tag`: specifies the string to prepend to an occurrence of a
-#'     search term. The default for HTML highlights is
-#'     `&amp;lt;em&amp;gt;`. The default for text highlights is `*`.
+#'     search term. The default for HTML highlights is `&lt;em&gt;`. The
+#'     default for text highlights is `*`.
 #' -   `post_tag`: specifies the string to append to an occurrence of a
-#'     search term. The default for HTML highlights is
-#'     `&amp;lt;/em&amp;gt;`. The default for text highlights is `*`.
+#'     search term. The default for HTML highlights is `&lt;/em&gt;`. The
+#'     default for text highlights is `*`.
 #' 
 #' If no highlight options are specified for a field, the returned field
 #' text is treated as HTML and the first match is highlighted with emphasis
-#' tags: `&amp;lt;em&gt;search-term&amp;lt;/em&amp;gt;`.
+#' tags: `&lt;em>search-term&lt;/em&gt;`.
 #' 
 #' For example, the following request retrieves highlights for the `actors`
 #' and `title` fields.
 #' 
-#' `\{ "actors": \{\}, "title": \{"format": "text","max_phrases": 2,"pre_tag": "<b>","post_tag": "</b>"\} \}`
+#' `\{ "actors": \{\}, "title": \{"format": "text","max_phrases": 2,"pre_tag": "","post_tag": ""\} \}`
 #' @param partial Enables partial results to be returned if one or more index partitions
 #' are unavailable. When your search index is partitioned across multiple
 #' search instances, by default Amazon CloudSearch only returns results if
@@ -401,11 +402,12 @@ cloudsearchdomain_search <- function(cursor = NULL, expr = NULL, facet = NULL, f
 #' Suggestions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html)
 #' in the *Amazon CloudSearch Developer Guide*.
 #' 
-#' The endpoint for submitting `Suggest` requests is domain-specific. You
-#' submit suggest requests to a domain's search endpoint. To get the search
-#' endpoint for your domain, use the Amazon CloudSearch configuration
-#' service `DescribeDomains` action. A domain's endpoints are also
-#' displayed on the domain dashboard in the Amazon CloudSearch console.
+#' The endpoint for submitting [`suggest`][cloudsearchdomain_suggest]
+#' requests is domain-specific. You submit suggest requests to a domain's
+#' search endpoint. To get the search endpoint for your domain, use the
+#' Amazon CloudSearch configuration service `DescribeDomains` action. A
+#' domain's endpoints are also displayed on the domain dashboard in the
+#' Amazon CloudSearch console.
 #'
 #' @usage
 #' cloudsearchdomain_suggest(query, suggester, size)
@@ -459,7 +461,8 @@ cloudsearchdomain_suggest <- function(query, suggester, size = NULL) {
 #' the 5 MB limit. Submitting a large volume of single-document batches can
 #' overload a domain's document service.
 #' 
-#' The endpoint for submitting `UploadDocuments` requests is
+#' The endpoint for submitting
+#' [`upload_documents`][cloudsearchdomain_upload_documents] requests is
 #' domain-specific. To get the document endpoint for your domain, use the
 #' Amazon CloudSearch configuration service `DescribeDomains` action. A
 #' domain's endpoints are also displayed on the domain dashboard in the

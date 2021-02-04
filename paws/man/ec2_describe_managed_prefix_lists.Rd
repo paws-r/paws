@@ -32,7 +32,7 @@ value.}
 Describes your managed prefix lists and any AWS-managed prefix lists.
 
 To view the entries for your prefix list, use
-GetManagedPrefixListEntries.
+\code{\link[=ec2_get_managed_prefix_list_entries]{get_managed_prefix_list_entries}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_managed_prefix_lists(

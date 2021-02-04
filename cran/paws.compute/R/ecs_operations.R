@@ -102,14 +102,15 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #' Creates a new Amazon ECS cluster. By default, your account receives a
 #' `default` cluster when you launch your first container instance.
 #' However, you can create your own cluster with a unique name with the
-#' `CreateCluster` action.
+#' [`create_cluster`][ecs_create_cluster] action.
 #' 
-#' When you call the CreateCluster API operation, Amazon ECS attempts to
-#' create the Amazon ECS service-linked role for your account so that
-#' required resources in other AWS services can be managed on your behalf.
-#' However, if the IAM user that makes the call does not have permissions
-#' to create the service-linked role, it is not created. For more
-#' information, see [Using Service-Linked Roles for Amazon
+#' When you call the [`create_cluster`][ecs_create_cluster] API operation,
+#' Amazon ECS attempts to create the Amazon ECS service-linked role for
+#' your account so that required resources in other AWS services can be
+#' managed on your behalf. However, if the IAM user that makes the call
+#' does not have permissions to create the service-linked role, it is not
+#' created. For more information, see [Using Service-Linked Roles for
+#' Amazon
 #' ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
@@ -151,23 +152,26 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #' @param settings The setting to use when creating a cluster. This parameter is used to
 #' enable CloudWatch Container Insights for a cluster. If this value is
 #' specified, it will override the `containerInsights` value set with
-#' PutAccountSetting or PutAccountSettingDefault.
+#' [`put_account_setting`][ecs_put_account_setting] or
+#' [`put_account_setting_default`][ecs_put_account_setting_default].
 #' @param capacityProviders The short name of one or more capacity providers to associate with the
 #' cluster.
 #' 
 #' If specifying a capacity provider that uses an Auto Scaling group, the
 #' capacity provider must already be created and not already associated
 #' with another cluster. New capacity providers can be created with the
-#' CreateCapacityProvider API operation.
+#' [`create_capacity_provider`][ecs_create_capacity_provider] API
+#' operation.
 #' 
 #' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
 #' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
 #' are available to all accounts and only need to be associated with a
 #' cluster to be used.
 #' 
-#' The PutClusterCapacityProviders API operation is used to update the list
-#' of available capacity providers for a cluster after the cluster is
-#' created.
+#' The
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' API operation is used to update the list of available capacity providers
+#' for a cluster after the cluster is created.
 #' @param defaultCapacityProviderStrategy The capacity provider strategy to use by default for the cluster.
 #' 
 #' When creating a service or running a task on a cluster, if no capacity
@@ -177,13 +181,16 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #' A capacity provider strategy consists of one or more capacity providers
 #' along with the `base` and `weight` to assign to them. A capacity
 #' provider must be associated with the cluster to be used in a capacity
-#' provider strategy. The PutClusterCapacityProviders API is used to
-#' associate a capacity provider with a cluster. Only capacity providers
-#' with an `ACTIVE` or `UPDATING` status can be used.
+#' provider strategy. The
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' API is used to associate a capacity provider with a cluster. Only
+#' capacity providers with an `ACTIVE` or `UPDATING` status can be used.
 #' 
 #' If specifying a capacity provider that uses an Auto Scaling group, the
 #' capacity provider must already be created. New capacity providers can be
-#' created with the CreateCapacityProvider API operation.
+#' created with the
+#' [`create_capacity_provider`][ecs_create_capacity_provider] API
+#' operation.
 #' 
 #' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
 #' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
@@ -192,7 +199,8 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #' 
 #' If a default capacity provider strategy is not defined for a cluster
 #' during creation, it can be defined later with the
-#' PutClusterCapacityProviders API operation.
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' API operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -297,10 +305,10 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' 
 #' You can optionally specify a deployment configuration for your service.
 #' The deployment is triggered by changing properties, such as the task
-#' definition or the desired count of a service, with an UpdateService
-#' operation. The default value for a replica service for
-#' `minimumHealthyPercent` is 100%. The default value for a daemon service
-#' for `minimumHealthyPercent` is 0%.
+#' definition or the desired count of a service, with an
+#' [`update_service`][ecs_update_service] operation. The default value for
+#' a replica service for `minimumHealthyPercent` is 100%. The default value
+#' for a daemon service for `minimumHealthyPercent` is 0%.
 #' 
 #' If a service is using the `ECS` deployment controller, the minimum
 #' healthy percent represents a lower limit on the number of tasks in a
@@ -343,8 +351,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' When creating a service that uses the `EXTERNAL` deployment controller,
 #' you can specify only parameters that aren't controlled at the task set
 #' level. The only required parameter is the service name. You control your
-#' services using the CreateTaskSet operation. For more information, see
-#' [Amazon ECS Deployment
+#' services using the [`create_task_set`][ecs_create_task_set] operation.
+#' For more information, see [Amazon ECS Deployment
 #' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
@@ -475,9 +483,10 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' A capacity provider strategy consists of one or more capacity providers
 #' along with the `base` and `weight` to assign to them. A capacity
 #' provider must be associated with the cluster to be used in a capacity
-#' provider strategy. The PutClusterCapacityProviders API is used to
-#' associate a capacity provider with a cluster. Only capacity providers
-#' with an `ACTIVE` or `UPDATING` status can be used.
+#' provider strategy. The
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' API is used to associate a capacity provider with a cluster. Only
+#' capacity providers with an `ACTIVE` or `UPDATING` status can be used.
 #' 
 #' If a `capacityProviderStrategy` is specified, the `launchType` parameter
 #' must be omitted. If no `capacityProviderStrategy` or `launchType` is
@@ -486,16 +495,19 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' 
 #' If specifying a capacity provider that uses an Auto Scaling group, the
 #' capacity provider must already be created. New capacity providers can be
-#' created with the CreateCapacityProvider API operation.
+#' created with the
+#' [`create_capacity_provider`][ecs_create_capacity_provider] API
+#' operation.
 #' 
 #' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
 #' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
 #' are available to all accounts and only need to be associated with a
 #' cluster to be used.
 #' 
-#' The PutClusterCapacityProviders API operation is used to update the list
-#' of available capacity providers for a cluster after the cluster is
-#' created.
+#' The
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' API operation is used to update the list of available capacity providers
+#' for a cluster after the cluster is created.
 #' @param platformVersion The platform version that your tasks in the service are running on. A
 #' platform version is specified only for tasks using the Fargate launch
 #' type. If one isn't specified, the `LATEST` platform version is used by
@@ -617,7 +629,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' service to the tasks in the service. If no value is specified, the tags
 #' are not propagated. Tags can only be propagated to the tasks within the
 #' service during service creation. To add tags to a task after service
-#' creation, use the TagResource API action.
+#' creation, use the [`tag_resource`][ecs_tag_resource] API action.
 #'
 #' @section Request syntax:
 #' ```
@@ -793,9 +805,10 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' A capacity provider strategy consists of one or more capacity providers
 #' along with the `base` and `weight` to assign to them. A capacity
 #' provider must be associated with the cluster to be used in a capacity
-#' provider strategy. The PutClusterCapacityProviders API is used to
-#' associate a capacity provider with a cluster. Only capacity providers
-#' with an `ACTIVE` or `UPDATING` status can be used.
+#' provider strategy. The
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' API is used to associate a capacity provider with a cluster. Only
+#' capacity providers with an `ACTIVE` or `UPDATING` status can be used.
 #' 
 #' If a `capacityProviderStrategy` is specified, the `launchType` parameter
 #' must be omitted. If no `capacityProviderStrategy` or `launchType` is
@@ -804,16 +817,19 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' 
 #' If specifying a capacity provider that uses an Auto Scaling group, the
 #' capacity provider must already be created. New capacity providers can be
-#' created with the CreateCapacityProvider API operation.
+#' created with the
+#' [`create_capacity_provider`][ecs_create_capacity_provider] API
+#' operation.
 #' 
 #' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
 #' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
 #' are available to all accounts and only need to be associated with a
 #' cluster to be used.
 #' 
-#' The PutClusterCapacityProviders API operation is used to update the list
-#' of available capacity providers for a cluster after the cluster is
-#' created.
+#' The
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' API operation is used to update the list of available capacity providers
+#' for a cluster after the cluster is created.
 #' @param platformVersion The platform version that the tasks in the task set should use. A
 #' platform version is specified only for tasks using the Fargate launch
 #' type. If one isn't specified, the `LATEST` platform version is used by
@@ -1055,18 +1071,22 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #' 
 #' The `FARGATE` and `FARGATE_SPOT` capacity providers are reserved and
 #' cannot be deleted. You can disassociate them from a cluster using either
-#' the PutClusterCapacityProviders API or by deleting the cluster.
+#' the
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' API or by deleting the cluster.
 #' 
 #' Prior to a capacity provider being deleted, the capacity provider must
 #' be removed from the capacity provider strategy from all services. The
-#' UpdateService API can be used to remove a capacity provider from a
-#' service's capacity provider strategy. When updating a service, the
-#' `forceNewDeployment` option can be used to ensure that any tasks using
-#' the Amazon EC2 instance capacity provided by the capacity provider are
-#' transitioned to use the capacity from the remaining capacity providers.
-#' Only capacity providers that are not associated with a cluster can be
-#' deleted. To remove a capacity provider from a cluster, you can either
-#' use PutClusterCapacityProviders or delete the cluster.
+#' [`update_service`][ecs_update_service] API can be used to remove a
+#' capacity provider from a service's capacity provider strategy. When
+#' updating a service, the `forceNewDeployment` option can be used to
+#' ensure that any tasks using the Amazon EC2 instance capacity provided by
+#' the capacity provider are transitioned to use the capacity from the
+#' remaining capacity providers. Only capacity providers that are not
+#' associated with a cluster can be deleted. To remove a capacity provider
+#' from a cluster, you can either use
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' or delete the cluster.
 #'
 #' @usage
 #' ecs_delete_capacity_provider(capacityProvider)
@@ -1112,8 +1132,9 @@ ecs_delete_capacity_provider <- function(capacityProvider) {
 #' 
 #' You must deregister all container instances from this cluster before you
 #' may delete it. You can list the container instances in a cluster with
-#' ListContainerInstances and deregister them with
-#' DeregisterContainerInstance.
+#' [`list_container_instances`][ecs_list_container_instances] and
+#' deregister them with
+#' [`deregister_container_instance`][ecs_deregister_container_instance].
 #'
 #' @usage
 #' ecs_delete_cluster(cluster)
@@ -1163,18 +1184,19 @@ ecs_delete_cluster <- function(cluster) {
 #' if you have no running tasks in it and the desired task count is zero.
 #' If the service is actively maintaining tasks, you cannot delete it, and
 #' you must update the service to a desired task count of zero. For more
-#' information, see UpdateService.
+#' information, see [`update_service`][ecs_update_service].
 #' 
 #' When you delete a service, if there are still running tasks that require
 #' cleanup, the service status moves from `ACTIVE` to `DRAINING`, and the
-#' service is no longer visible in the console or in the ListServices API
-#' operation. After all tasks have transitioned to either `STOPPING` or
-#' `STOPPED` status, the service status moves from `DRAINING` to
-#' `INACTIVE`. Services in the `DRAINING` or `INACTIVE` status can still be
-#' viewed with the DescribeServices API operation. However, in the future,
-#' `INACTIVE` services may be cleaned up and purged from Amazon ECS record
-#' keeping, and DescribeServices calls on those services return a
-#' `ServiceNotFoundException` error.
+#' service is no longer visible in the console or in the
+#' [`list_services`][ecs_list_services] API operation. After all tasks have
+#' transitioned to either `STOPPING` or `STOPPED` status, the service
+#' status moves from `DRAINING` to `INACTIVE`. Services in the `DRAINING`
+#' or `INACTIVE` status can still be viewed with the
+#' [`describe_services`][ecs_describe_services] API operation. However, in
+#' the future, `INACTIVE` services may be cleaned up and purged from Amazon
+#' ECS record keeping, and [`describe_services`][ecs_describe_services]
+#' calls on those services return a `ServiceNotFoundException` error.
 #' 
 #' If you attempt to create a new service with the same name as an existing
 #' service in either `ACTIVE` or `DRAINING` status, you receive an error.
@@ -1440,18 +1462,22 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 #' response. If this field is omitted, tags are not included in the
 #' response.
 #' @param maxResults The maximum number of account setting results returned by
-#' `DescribeCapacityProviders` in paginated output. When this parameter is
-#' used, `DescribeCapacityProviders` only returns `maxResults` results in a
-#' single page along with a `nextToken` response element. The remaining
-#' results of the initial request can be seen by sending another
-#' `DescribeCapacityProviders` request with the returned `nextToken` value.
-#' This value can be between 1 and 10. If this parameter is not used, then
-#' `DescribeCapacityProviders` returns up to 10 results and a `nextToken`
-#' value if applicable.
+#' [`describe_capacity_providers`][ecs_describe_capacity_providers] in
+#' paginated output. When this parameter is used,
+#' [`describe_capacity_providers`][ecs_describe_capacity_providers] only
+#' returns `maxResults` results in a single page along with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another
+#' [`describe_capacity_providers`][ecs_describe_capacity_providers] request
+#' with the returned `nextToken` value. This value can be between 1 and 10.
+#' If this parameter is not used, then
+#' [`describe_capacity_providers`][ecs_describe_capacity_providers] returns
+#' up to 10 results and a `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated
-#' `DescribeCapacityProviders` request where `maxResults` was used and the
-#' results exceeded the value of that parameter. Pagination continues from
-#' the end of the previous results that returned the `nextToken` value.
+#' [`describe_capacity_providers`][ecs_describe_capacity_providers] request
+#' where `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
@@ -1950,22 +1976,26 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
 #' `principalArn` are returned. If `false`, the account settings for the
 #' `principalArn` are returned if they are set. Otherwise, no account
 #' settings are returned.
-#' @param nextToken The `nextToken` value returned from a `ListAccountSettings` request
-#' indicating that more results are available to fulfill the request and
-#' further calls will be needed. If `maxResults` was provided, it is
-#' possible the number of results to be fewer than `maxResults`.
+#' @param nextToken The `nextToken` value returned from a
+#' [`list_account_settings`][ecs_list_account_settings] request indicating
+#' that more results are available to fulfill the request and further calls
+#' will be needed. If `maxResults` was provided, it is possible the number
+#' of results to be fewer than `maxResults`.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
 #' @param maxResults The maximum number of account setting results returned by
-#' `ListAccountSettings` in paginated output. When this parameter is used,
-#' `ListAccountSettings` only returns `maxResults` results in a single page
-#' along with a `nextToken` response element. The remaining results of the
-#' initial request can be seen by sending another `ListAccountSettings`
+#' [`list_account_settings`][ecs_list_account_settings] in paginated
+#' output. When this parameter is used,
+#' [`list_account_settings`][ecs_list_account_settings] only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another [`list_account_settings`][ecs_list_account_settings]
 #' request with the returned `nextToken` value. This value can be between 1
-#' and 10. If this parameter is not used, then `ListAccountSettings`
-#' returns up to 10 results and a `nextToken` value if applicable.
+#' and 10. If this parameter is not used, then
+#' [`list_account_settings`][ecs_list_account_settings] returns up to 10
+#' results and a `nextToken` value if applicable.
 #'
 #' @section Request syntax:
 #' ```
@@ -2020,12 +2050,12 @@ ecs_list_account_settings <- function(name = NULL, value = NULL, principalArn = 
 #' @description
 #' Lists the attributes for Amazon ECS resources within a specified target
 #' type and cluster. When you specify a target type and cluster,
-#' `ListAttributes` returns a list of attribute objects, one for each
-#' attribute on each resource. You can filter the list of results to a
-#' single attribute name to only return results that have that name. You
-#' can also filter the results by attribute name and value, for example, to
-#' see which container instances in a cluster are running a Linux AMI
-#' (`ecs.os-type=linux`).
+#' [`list_attributes`][ecs_list_attributes] returns a list of attribute
+#' objects, one for each attribute on each resource. You can filter the
+#' list of results to a single attribute name to only return results that
+#' have that name. You can also filter the results by attribute name and
+#' value, for example, to see which container instances in a cluster are
+#' running a Linux AMI (`ecs.os-type=linux`).
 #'
 #' @usage
 #' ecs_list_attributes(cluster, targetType, attributeName, attributeValue,
@@ -2038,22 +2068,25 @@ ecs_list_account_settings <- function(name = NULL, value = NULL, principalArn = 
 #' @param attributeName The name of the attribute with which to filter the results.
 #' @param attributeValue The value of the attribute with which to filter results. You must also
 #' specify an attribute name to use this parameter.
-#' @param nextToken The `nextToken` value returned from a `ListAttributes` request
-#' indicating that more results are available to fulfill the request and
-#' further calls will be needed. If `maxResults` was provided, it is
-#' possible the number of results to be fewer than `maxResults`.
+#' @param nextToken The `nextToken` value returned from a
+#' [`list_attributes`][ecs_list_attributes] request indicating that more
+#' results are available to fulfill the request and further calls will be
+#' needed. If `maxResults` was provided, it is possible the number of
+#' results to be fewer than `maxResults`.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults The maximum number of cluster results returned by `ListAttributes` in
-#' paginated output. When this parameter is used, `ListAttributes` only
-#' returns `maxResults` results in a single page along with a `nextToken`
-#' response element. The remaining results of the initial request can be
-#' seen by sending another `ListAttributes` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If this
-#' parameter is not used, then `ListAttributes` returns up to 100 results
-#' and a `nextToken` value if applicable.
+#' @param maxResults The maximum number of cluster results returned by
+#' [`list_attributes`][ecs_list_attributes] in paginated output. When this
+#' parameter is used, [`list_attributes`][ecs_list_attributes] only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another [`list_attributes`][ecs_list_attributes] request with
+#' the returned `nextToken` value. This value can be between 1 and 100. If
+#' this parameter is not used, then
+#' [`list_attributes`][ecs_list_attributes] returns up to 100 results and a
+#' `nextToken` value if applicable.
 #'
 #' @section Request syntax:
 #' ```
@@ -2095,22 +2128,24 @@ ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL
 #' @usage
 #' ecs_list_clusters(nextToken, maxResults)
 #'
-#' @param nextToken The `nextToken` value returned from a `ListClusters` request indicating
-#' that more results are available to fulfill the request and further calls
-#' will be needed. If `maxResults` was provided, it is possible the number
-#' of results to be fewer than `maxResults`.
+#' @param nextToken The `nextToken` value returned from a
+#' [`list_clusters`][ecs_list_clusters] request indicating that more
+#' results are available to fulfill the request and further calls will be
+#' needed. If `maxResults` was provided, it is possible the number of
+#' results to be fewer than `maxResults`.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults The maximum number of cluster results returned by `ListClusters` in
-#' paginated output. When this parameter is used, `ListClusters` only
-#' returns `maxResults` results in a single page along with a `nextToken`
-#' response element. The remaining results of the initial request can be
-#' seen by sending another `ListClusters` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If this
-#' parameter is not used, then `ListClusters` returns up to 100 results and
-#' a `nextToken` value if applicable.
+#' @param maxResults The maximum number of cluster results returned by
+#' [`list_clusters`][ecs_list_clusters] in paginated output. When this
+#' parameter is used, [`list_clusters`][ecs_list_clusters] only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another [`list_clusters`][ecs_list_clusters] request with the
+#' returned `nextToken` value. This value can be between 1 and 100. If this
+#' parameter is not used, then [`list_clusters`][ecs_list_clusters] returns
+#' up to 100 results and a `nextToken` value if applicable.
 #'
 #' @section Request syntax:
 #' ```
@@ -2151,9 +2186,10 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @description
 #' Returns a list of container instances in a specified cluster. You can
-#' filter the results of a `ListContainerInstances` operation with cluster
-#' query language statements inside the `filter` parameter. For more
-#' information, see [Cluster Query
+#' filter the results of a
+#' [`list_container_instances`][ecs_list_container_instances] operation
+#' with cluster query language statements inside the `filter` parameter.
+#' For more information, see [Cluster Query
 #' Language](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
@@ -2164,12 +2200,14 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the container instances to list. If you do not specify a cluster,
 #' the default cluster is assumed.
-#' @param filter You can filter the results of a `ListContainerInstances` operation with
-#' cluster query language statements. For more information, see [Cluster
-#' Query
+#' @param filter You can filter the results of a
+#' [`list_container_instances`][ecs_list_container_instances] operation
+#' with cluster query language statements. For more information, see
+#' [Cluster Query
 #' Language](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
-#' @param nextToken The `nextToken` value returned from a `ListContainerInstances` request
+#' @param nextToken The `nextToken` value returned from a
+#' [`list_container_instances`][ecs_list_container_instances] request
 #' indicating that more results are available to fulfill the request and
 #' further calls will be needed. If `maxResults` was provided, it is
 #' possible the number of results to be fewer than `maxResults`.
@@ -2178,19 +2216,23 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
 #' @param maxResults The maximum number of container instance results returned by
-#' `ListContainerInstances` in paginated output. When this parameter is
-#' used, `ListContainerInstances` only returns `maxResults` results in a
-#' single page along with a `nextToken` response element. The remaining
-#' results of the initial request can be seen by sending another
-#' `ListContainerInstances` request with the returned `nextToken` value.
-#' This value can be between 1 and 100. If this parameter is not used, then
-#' `ListContainerInstances` returns up to 100 results and a `nextToken`
-#' value if applicable.
+#' [`list_container_instances`][ecs_list_container_instances] in paginated
+#' output. When this parameter is used,
+#' [`list_container_instances`][ecs_list_container_instances] only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another
+#' [`list_container_instances`][ecs_list_container_instances] request with
+#' the returned `nextToken` value. This value can be between 1 and 100. If
+#' this parameter is not used, then
+#' [`list_container_instances`][ecs_list_container_instances] returns up to
+#' 100 results and a `nextToken` value if applicable.
 #' @param status Filters the container instances by status. For example, if you specify
 #' the `DRAINING` status, the results include only container instances that
-#' have been set to `DRAINING` using UpdateContainerInstancesState. If you
-#' do not specify this parameter, the default is to include container
-#' instances set to all states other than `INACTIVE`.
+#' have been set to `DRAINING` using
+#' [`update_container_instances_state`][ecs_update_container_instances_state].
+#' If you do not specify this parameter, the default is to include
+#' container instances set to all states other than `INACTIVE`.
 #'
 #' @section Request syntax:
 #' ```
@@ -2244,22 +2286,24 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the services to list. If you do not specify a cluster, the default
 #' cluster is assumed.
-#' @param nextToken The `nextToken` value returned from a `ListServices` request indicating
-#' that more results are available to fulfill the request and further calls
-#' will be needed. If `maxResults` was provided, it is possible the number
-#' of results to be fewer than `maxResults`.
+#' @param nextToken The `nextToken` value returned from a
+#' [`list_services`][ecs_list_services] request indicating that more
+#' results are available to fulfill the request and further calls will be
+#' needed. If `maxResults` was provided, it is possible the number of
+#' results to be fewer than `maxResults`.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults The maximum number of service results returned by `ListServices` in
-#' paginated output. When this parameter is used, `ListServices` only
-#' returns `maxResults` results in a single page along with a `nextToken`
-#' response element. The remaining results of the initial request can be
-#' seen by sending another `ListServices` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If this
-#' parameter is not used, then `ListServices` returns up to 10 results and
-#' a `nextToken` value if applicable.
+#' @param maxResults The maximum number of service results returned by
+#' [`list_services`][ecs_list_services] in paginated output. When this
+#' parameter is used, [`list_services`][ecs_list_services] only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another [`list_services`][ecs_list_services] request with the
+#' returned `nextToken` value. This value can be between 1 and 100. If this
+#' parameter is not used, then [`list_services`][ecs_list_services] returns
+#' up to 10 results and a `nextToken` value if applicable.
 #' @param launchType The launch type for the services to list.
 #' @param schedulingStrategy The scheduling strategy for services to list.
 #'
@@ -2367,19 +2411,20 @@ ecs_list_tags_for_resource <- function(resourceArn) {
 #'   maxResults)
 #'
 #' @param familyPrefix The `familyPrefix` is a string that is used to filter the results of
-#' `ListTaskDefinitionFamilies`. If you specify a `familyPrefix`, only task
-#' definition family names that begin with the `familyPrefix` string are
-#' returned.
+#' [`list_task_definition_families`][ecs_list_task_definition_families]. If
+#' you specify a `familyPrefix`, only task definition family names that
+#' begin with the `familyPrefix` string are returned.
 #' @param status The task definition family status with which to filter the
-#' `ListTaskDefinitionFamilies` results. By default, both `ACTIVE` and
-#' `INACTIVE` task definition families are listed. If this parameter is set
-#' to `ACTIVE`, only task definition families that have an `ACTIVE` task
-#' definition revision are returned. If this parameter is set to
-#' `INACTIVE`, only task definition families that do not have any `ACTIVE`
-#' task definition revisions are returned. If you paginate the resulting
-#' output, be sure to keep the `status` value constant in each subsequent
-#' request.
-#' @param nextToken The `nextToken` value returned from a `ListTaskDefinitionFamilies`
+#' [`list_task_definition_families`][ecs_list_task_definition_families]
+#' results. By default, both `ACTIVE` and `INACTIVE` task definition
+#' families are listed. If this parameter is set to `ACTIVE`, only task
+#' definition families that have an `ACTIVE` task definition revision are
+#' returned. If this parameter is set to `INACTIVE`, only task definition
+#' families that do not have any `ACTIVE` task definition revisions are
+#' returned. If you paginate the resulting output, be sure to keep the
+#' `status` value constant in each subsequent request.
+#' @param nextToken The `nextToken` value returned from a
+#' [`list_task_definition_families`][ecs_list_task_definition_families]
 #' request indicating that more results are available to fulfill the
 #' request and further calls will be needed. If `maxResults` was provided,
 #' it is possible the number of results to be fewer than `maxResults`.
@@ -2388,14 +2433,17 @@ ecs_list_tags_for_resource <- function(resourceArn) {
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
 #' @param maxResults The maximum number of task definition family results returned by
-#' `ListTaskDefinitionFamilies` in paginated output. When this parameter is
-#' used, `ListTaskDefinitions` only returns `maxResults` results in a
-#' single page along with a `nextToken` response element. The remaining
-#' results of the initial request can be seen by sending another
-#' `ListTaskDefinitionFamilies` request with the returned `nextToken`
-#' value. This value can be between 1 and 100. If this parameter is not
-#' used, then `ListTaskDefinitionFamilies` returns up to 100 results and a
-#' `nextToken` value if applicable.
+#' [`list_task_definition_families`][ecs_list_task_definition_families] in
+#' paginated output. When this parameter is used,
+#' [`list_task_definitions`][ecs_list_task_definitions] only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another
+#' [`list_task_definition_families`][ecs_list_task_definition_families]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If this parameter is not used, then
+#' [`list_task_definition_families`][ecs_list_task_definition_families]
+#' returns up to 100 results and a `nextToken` value if applicable.
 #'
 #' @section Request syntax:
 #' ```
@@ -2449,15 +2497,17 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
 #' ecs_list_task_definitions(familyPrefix, status, sort, nextToken,
 #'   maxResults)
 #'
-#' @param familyPrefix The full family name with which to filter the `ListTaskDefinitions`
-#' results. Specifying a `familyPrefix` limits the listed task definitions
-#' to task definition revisions that belong to that family.
+#' @param familyPrefix The full family name with which to filter the
+#' [`list_task_definitions`][ecs_list_task_definitions] results. Specifying
+#' a `familyPrefix` limits the listed task definitions to task definition
+#' revisions that belong to that family.
 #' @param status The task definition status with which to filter the
-#' `ListTaskDefinitions` results. By default, only `ACTIVE` task
-#' definitions are listed. By setting this parameter to `INACTIVE`, you can
-#' view task definitions that are `INACTIVE` as long as an active task or
-#' service still references them. If you paginate the resulting output, be
-#' sure to keep the `status` value constant in each subsequent request.
+#' [`list_task_definitions`][ecs_list_task_definitions] results. By
+#' default, only `ACTIVE` task definitions are listed. By setting this
+#' parameter to `INACTIVE`, you can view task definitions that are
+#' `INACTIVE` as long as an active task or service still references them.
+#' If you paginate the resulting output, be sure to keep the `status` value
+#' constant in each subsequent request.
 #' @param sort The order in which to sort the results. Valid values are `ASC` and
 #' `DESC`. By default (`ASC`), task definitions are listed
 #' lexicographically by family name and in ascending numerical order by
@@ -2465,22 +2515,26 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
 #' last. Setting this parameter to `DESC` reverses the sort order on family
 #' name and revision so that the newest task definitions in a family are
 #' listed first.
-#' @param nextToken The `nextToken` value returned from a `ListTaskDefinitions` request
-#' indicating that more results are available to fulfill the request and
-#' further calls will be needed. If `maxResults` was provided, it is
-#' possible the number of results to be fewer than `maxResults`.
+#' @param nextToken The `nextToken` value returned from a
+#' [`list_task_definitions`][ecs_list_task_definitions] request indicating
+#' that more results are available to fulfill the request and further calls
+#' will be needed. If `maxResults` was provided, it is possible the number
+#' of results to be fewer than `maxResults`.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
 #' @param maxResults The maximum number of task definition results returned by
-#' `ListTaskDefinitions` in paginated output. When this parameter is used,
-#' `ListTaskDefinitions` only returns `maxResults` results in a single page
-#' along with a `nextToken` response element. The remaining results of the
-#' initial request can be seen by sending another `ListTaskDefinitions`
+#' [`list_task_definitions`][ecs_list_task_definitions] in paginated
+#' output. When this parameter is used,
+#' [`list_task_definitions`][ecs_list_task_definitions] only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another [`list_task_definitions`][ecs_list_task_definitions]
 #' request with the returned `nextToken` value. This value can be between 1
-#' and 100. If this parameter is not used, then `ListTaskDefinitions`
-#' returns up to 100 results and a `nextToken` value if applicable.
+#' and 100. If this parameter is not used, then
+#' [`list_task_definitions`][ecs_list_task_definitions] returns up to 100
+#' results and a `nextToken` value if applicable.
 #'
 #' @section Request syntax:
 #' ```
@@ -2543,40 +2597,42 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
 #' hosts the tasks to list. If you do not specify a cluster, the default
 #' cluster is assumed.
 #' @param containerInstance The container instance ID or full ARN of the container instance with
-#' which to filter the `ListTasks` results. Specifying a
+#' which to filter the [`list_tasks`][ecs_list_tasks] results. Specifying a
 #' `containerInstance` limits the results to tasks that belong to that
 #' container instance.
-#' @param family The name of the family with which to filter the `ListTasks` results.
-#' Specifying a `family` limits the results to tasks that belong to that
-#' family.
-#' @param nextToken The `nextToken` value returned from a `ListTasks` request indicating
-#' that more results are available to fulfill the request and further calls
-#' will be needed. If `maxResults` was provided, it is possible the number
-#' of results to be fewer than `maxResults`.
+#' @param family The name of the family with which to filter the
+#' [`list_tasks`][ecs_list_tasks] results. Specifying a `family` limits the
+#' results to tasks that belong to that family.
+#' @param nextToken The `nextToken` value returned from a [`list_tasks`][ecs_list_tasks]
+#' request indicating that more results are available to fulfill the
+#' request and further calls will be needed. If `maxResults` was provided,
+#' it is possible the number of results to be fewer than `maxResults`.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults The maximum number of task results returned by `ListTasks` in paginated
-#' output. When this parameter is used, `ListTasks` only returns
-#' `maxResults` results in a single page along with a `nextToken` response
-#' element. The remaining results of the initial request can be seen by
-#' sending another `ListTasks` request with the returned `nextToken` value.
-#' This value can be between 1 and 100. If this parameter is not used, then
-#' `ListTasks` returns up to 100 results and a `nextToken` value if
-#' applicable.
+#' @param maxResults The maximum number of task results returned by
+#' [`list_tasks`][ecs_list_tasks] in paginated output. When this parameter
+#' is used, [`list_tasks`][ecs_list_tasks] only returns `maxResults`
+#' results in a single page along with a `nextToken` response element. The
+#' remaining results of the initial request can be seen by sending another
+#' [`list_tasks`][ecs_list_tasks] request with the returned `nextToken`
+#' value. This value can be between 1 and 100. If this parameter is not
+#' used, then [`list_tasks`][ecs_list_tasks] returns up to 100 results and
+#' a `nextToken` value if applicable.
 #' @param startedBy The `startedBy` value with which to filter the task results. Specifying
 #' a `startedBy` value limits the results to tasks that were started with
 #' that value.
-#' @param serviceName The name of the service with which to filter the `ListTasks` results.
-#' Specifying a `serviceName` limits the results to tasks that belong to
-#' that service.
-#' @param desiredStatus The task desired status with which to filter the `ListTasks` results.
-#' Specifying a `desiredStatus` of `STOPPED` limits the results to tasks
-#' that Amazon ECS has set the desired status to `STOPPED`. This can be
-#' useful for debugging tasks that are not starting properly or have died
-#' or finished. The default status filter is `RUNNING`, which shows tasks
-#' that Amazon ECS has set the desired status to `RUNNING`.
+#' @param serviceName The name of the service with which to filter the
+#' [`list_tasks`][ecs_list_tasks] results. Specifying a `serviceName`
+#' limits the results to tasks that belong to that service.
+#' @param desiredStatus The task desired status with which to filter the
+#' [`list_tasks`][ecs_list_tasks] results. Specifying a `desiredStatus` of
+#' `STOPPED` limits the results to tasks that Amazon ECS has set the
+#' desired status to `STOPPED`. This can be useful for debugging tasks that
+#' are not starting properly or have died or finished. The default status
+#' filter is `RUNNING`, which shows tasks that Amazon ECS has set the
+#' desired status to `RUNNING`.
 #' 
 #' Although you can filter results based on a desired status of `PENDING`,
 #' this does not return any results. Amazon ECS never sets the desired
@@ -2816,7 +2872,7 @@ ecs_put_account_setting_default <- function(name, value) {
 #' Create or update an attribute on an Amazon ECS resource. If the
 #' attribute does not exist, it is created. If the attribute exists, its
 #' value is replaced with the specified value. To delete an attribute, use
-#' DeleteAttributes. For more information, see
+#' [`delete_attributes`][ecs_delete_attributes]. For more information, see
 #' [Attributes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
@@ -2877,10 +2933,11 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #' existing capacity providers associated with it, you must specify all
 #' existing capacity providers in addition to any new ones you want to add.
 #' Any existing capacity providers associated with a cluster that are
-#' omitted from a PutClusterCapacityProviders API call will be
-#' disassociated with the cluster. You can only disassociate an existing
-#' capacity provider from a cluster if it's not being used by any existing
-#' tasks.
+#' omitted from a
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' API call will be disassociated with the cluster. You can only
+#' disassociate an existing capacity provider from a cluster if it's not
+#' being used by any existing tasks.
 #' 
 #' When creating a service or running a task on a cluster, if no capacity
 #' provider or launch type is specified, then the cluster's default
@@ -2900,7 +2957,9 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #' 
 #' If specifying a capacity provider that uses an Auto Scaling group, the
 #' capacity provider must already be created. New capacity providers can be
-#' created with the CreateCapacityProvider API operation.
+#' created with the
+#' [`create_capacity_provider`][ecs_create_capacity_provider] API
+#' operation.
 #' 
 #' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
 #' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
@@ -2915,13 +2974,16 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #' A capacity provider strategy consists of one or more capacity providers
 #' along with the `base` and `weight` to assign to them. A capacity
 #' provider must be associated with the cluster to be used in a capacity
-#' provider strategy. The PutClusterCapacityProviders API is used to
-#' associate a capacity provider with a cluster. Only capacity providers
-#' with an `ACTIVE` or `UPDATING` status can be used.
+#' provider strategy. The
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' API is used to associate a capacity provider with a cluster. Only
+#' capacity providers with an `ACTIVE` or `UPDATING` status can be used.
 #' 
 #' If specifying a capacity provider that uses an Auto Scaling group, the
 #' capacity provider must already be created. New capacity providers can be
-#' created with the CreateCapacityProvider API operation.
+#' created with the
+#' [`create_capacity_provider`][ecs_create_capacity_provider] API
+#' operation.
 #' 
 #' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
 #' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
@@ -3188,8 +3250,8 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' Docker for Windows uses different network modes than Docker for Linux.
 #' When you register a task definition with Windows containers, you must
 #' not specify a network mode. If you use the console to register a task
-#' definition with Windows containers, you must choose the
-#' `&lt;default&gt;` network mode object.
+#' definition with Windows containers, you must choose the `<default>`
+#' network mode object.
 #' 
 #' For more information, see [Network
 #' settings](https://docs.docker.com/engine/reference/run/#network-settings)
@@ -3656,8 +3718,8 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' Alternatively, you can use StartTask to use your own scheduler or place
-#' tasks manually on specific container instances.
+#' Alternatively, you can use [`start_task`][ecs_start_task] to use your
+#' own scheduler or place tasks manually on specific container instances.
 #' 
 #' The Amazon ECS API follows an eventual consistency model, due to the
 #' distributed nature of the system supporting the API. This means that the
@@ -3692,9 +3754,10 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' A capacity provider strategy consists of one or more capacity providers
 #' along with the `base` and `weight` to assign to them. A capacity
 #' provider must be associated with the cluster to be used in a capacity
-#' provider strategy. The PutClusterCapacityProviders API is used to
-#' associate a capacity provider with a cluster. Only capacity providers
-#' with an `ACTIVE` or `UPDATING` status can be used.
+#' provider strategy. The
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' API is used to associate a capacity provider with a cluster. Only
+#' capacity providers with an `ACTIVE` or `UPDATING` status can be used.
 #' 
 #' If a `capacityProviderStrategy` is specified, the `launchType` parameter
 #' must be omitted. If no `capacityProviderStrategy` or `launchType` is
@@ -3703,16 +3766,19 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' 
 #' If specifying a capacity provider that uses an Auto Scaling group, the
 #' capacity provider must already be created. New capacity providers can be
-#' created with the CreateCapacityProvider API operation.
+#' created with the
+#' [`create_capacity_provider`][ecs_create_capacity_provider] API
+#' operation.
 #' 
 #' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
 #' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
 #' are available to all accounts and only need to be associated with a
 #' cluster to be used.
 #' 
-#' The PutClusterCapacityProviders API operation is used to update the list
-#' of available capacity providers for a cluster after the cluster is
-#' created.
+#' The
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' API operation is used to update the list of available capacity providers
+#' for a cluster after the cluster is created.
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster on
 #' which to run your task. If you do not specify a cluster, the default
 #' cluster is assumed.
@@ -3762,7 +3828,8 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' @param propagateTags Specifies whether to propagate the tags from the task definition to the
 #' task. If no value is specified, the tags are not propagated. Tags can
 #' only be propagated to the task during task creation. To add tags to a
-#' task after task creation, use the TagResource API action.
+#' task after task creation, use the [`tag_resource`][ecs_tag_resource] API
+#' action.
 #' 
 #' An error will be received if you specify the `SERVICE` option when
 #' running a task.
@@ -3771,9 +3838,9 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' automatically trigger a task to run a batch process job, you could apply
 #' a unique identifier for that job to your task with the `startedBy`
 #' parameter. You can then identify which tasks belong to that job by
-#' filtering the results of a ListTasks call with the `startedBy` value. Up
-#' to 36 letters (uppercase and lowercase), numbers, hyphens, and
-#' underscores are allowed.
+#' filtering the results of a [`list_tasks`][ecs_list_tasks] call with the
+#' `startedBy` value. Up to 36 letters (uppercase and lowercase), numbers,
+#' hyphens, and underscores are allowed.
 #' 
 #' If a task is started by an Amazon ECS service, then the `startedBy`
 #' parameter contains the deployment ID of the service that starts it.
@@ -3938,8 +4005,8 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' Starts a new task from the specified task definition on the specified
 #' container instance or instances.
 #' 
-#' Alternatively, you can use RunTask to place tasks for you. For more
-#' information, see [Scheduling
+#' Alternatively, you can use [`run_task`][ecs_run_task] to place tasks for
+#' you. For more information, see [Scheduling
 #' Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
@@ -3982,9 +4049,9 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' automatically trigger a task to run a batch process job, you could apply
 #' a unique identifier for that job to your task with the `startedBy`
 #' parameter. You can then identify which tasks belong to that job by
-#' filtering the results of a ListTasks call with the `startedBy` value. Up
-#' to 36 letters (uppercase and lowercase), numbers, hyphens, and
-#' underscores are allowed.
+#' filtering the results of a [`list_tasks`][ecs_list_tasks] call with the
+#' `startedBy` value. Up to 36 letters (uppercase and lowercase), numbers,
+#' hyphens, and underscores are allowed.
 #' 
 #' If a task is started by an Amazon ECS service, then the `startedBy`
 #' parameter contains the deployment ID of the service that starts it.
@@ -4119,12 +4186,12 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 #' @description
 #' Stops a running task. Any tags associated with the task will be deleted.
 #' 
-#' When StopTask is called on a task, the equivalent of `docker stop` is
-#' issued to the containers running in the task. This results in a
-#' `SIGTERM` value and a default 30-second timeout, after which the
-#' `SIGKILL` value is sent and the containers are forcibly stopped. If the
-#' container handles the `SIGTERM` value gracefully and exits within 30
-#' seconds from receiving it, no `SIGKILL` value is sent.
+#' When [`stop_task`][ecs_stop_task] is called on a task, the equivalent of
+#' `docker stop` is issued to the containers running in the task. This
+#' results in a `SIGTERM` value and a default 30-second timeout, after
+#' which the `SIGKILL` value is sent and the containers are forcibly
+#' stopped. If the container handles the `SIGTERM` value gracefully and
+#' exits within 30 seconds from receiving it, no `SIGKILL` value is sent.
 #' 
 #' The default 30-second timeout can be configured on the Amazon ECS
 #' container agent with the `ECS_CONTAINER_STOP_TIMEOUT` variable. For more
@@ -4142,8 +4209,8 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 #' @param reason An optional message specified when a task is stopped. For example, if
 #' you are using a custom scheduler, you can use this parameter to specify
 #' the reason for stopping the task here, and the message appears in
-#' subsequent DescribeTasks API operations on this task. Up to 255
-#' characters are allowed in this message.
+#' subsequent [`describe_tasks`][ecs_describe_tasks] API operations on this
+#' task. Up to 255 characters are allowed in this message.
 #'
 #' @section Request syntax:
 #' ```
@@ -4579,7 +4646,8 @@ ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
 #' @param settings &#91;required&#93; The setting to use by default for a cluster. This parameter is used to
 #' enable CloudWatch Container Insights for a cluster. If this value is
 #' specified, it will override the `containerInsights` value set with
-#' PutAccountSetting or PutAccountSettingDefault.
+#' [`put_account_setting`][ecs_put_account_setting] or
+#' [`put_account_setting_default`][ecs_put_account_setting_default].
 #'
 #' @section Request syntax:
 #' ```
@@ -4624,10 +4692,11 @@ ecs_update_cluster_settings <- function(cluster, settings) {
 #' was launched with the Amazon ECS-optimized AMI or another operating
 #' system.
 #' 
-#' `UpdateContainerAgent` requires the Amazon ECS-optimized AMI or Amazon
-#' Linux with the `ecs-init` service installed and running. For help
-#' updating the Amazon ECS container agent on other operating systems, see
-#' [Manually Updating the Amazon ECS Container
+#' [`update_container_agent`][ecs_update_container_agent] requires the
+#' Amazon ECS-optimized AMI or Amazon Linux with the `ecs-init` service
+#' installed and running. For help updating the Amazon ECS container agent
+#' on other operating systems, see [Manually Updating the Amazon ECS
+#' Container
 #' Agent](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
@@ -4693,7 +4762,7 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #' are stopped and replaced according to the service's deployment
 #' configuration parameters, `minimumHealthyPercent` and `maximumPercent`.
 #' You can change the deployment configuration of your service using
-#' UpdateService.
+#' [`update_service`][ecs_update_service].
 #' 
 #' -   If `minimumHealthyPercent` is below 100%, the scheduler can ignore
 #'     `desiredCount` temporarily during task replacement. For example,
@@ -4720,7 +4789,8 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #' affected. You must wait for them to finish or stop them manually.
 #' 
 #' A container instance has completed draining when it has no more
-#' `RUNNING` tasks. You can verify this using ListTasks.
+#' `RUNNING` tasks. You can verify this using
+#' [`list_tasks`][ecs_list_tasks].
 #' 
 #' When a container instance has been drained, you can set a container
 #' instance to `ACTIVE` status and once it has reached that status the
@@ -4807,7 +4877,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' health check grace period using this API. If the launch type, load
 #' balancer, network configuration, platform version, or task definition
 #' need to be updated, you should create a new task set. For more
-#' information, see CreateTaskSet.
+#' information, see [`create_task_set`][ecs_create_task_set].
 #' 
 #' You can add to or subtract from the number of instantiations of a task
 #' definition in a service by specifying the cluster that the service is
@@ -4850,12 +4920,12 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'     the four older tasks (provided that the cluster resources required
 #'     to do this are available).
 #' 
-#' When UpdateService stops a task during a deployment, the equivalent of
-#' `docker stop` is issued to the containers running in the task. This
-#' results in a `SIGTERM` and a 30-second timeout, after which `SIGKILL` is
-#' sent and the containers are forcibly stopped. If the container handles
-#' the `SIGTERM` gracefully and exits within 30 seconds from receiving it,
-#' no `SIGKILL` is sent.
+#' When [`update_service`][ecs_update_service] stops a task during a
+#' deployment, the equivalent of `docker stop` is issued to the containers
+#' running in the task. This results in a `SIGTERM` and a 30-second
+#' timeout, after which `SIGKILL` is sent and the containers are forcibly
+#' stopped. If the container handles the `SIGTERM` gracefully and exits
+#' within 30 seconds from receiving it, no `SIGKILL` is sent.
 #' 
 #' When the service scheduler launches new tasks, it determines task
 #' placement in your cluster with the following logic:
@@ -4908,9 +4978,9 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' @param taskDefinition The `family` and `revision` (`family:revision`) or full ARN of the task
 #' definition to run in your service. If a `revision` is not specified, the
 #' latest `ACTIVE` revision is used. If you modify the task definition with
-#' `UpdateService`, Amazon ECS spawns a task with the new version of the
-#' task definition and then stops an old task after the new version is
-#' running.
+#' [`update_service`][ecs_update_service], Amazon ECS spawns a task with
+#' the new version of the task definition and then stops an old task after
+#' the new version is running.
 #' @param capacityProviderStrategy The capacity provider strategy to update the service to use.
 #' 
 #' If the service is using the default capacity provider strategy for the
@@ -4923,22 +4993,26 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' A capacity provider strategy consists of one or more capacity providers
 #' along with the `base` and `weight` to assign to them. A capacity
 #' provider must be associated with the cluster to be used in a capacity
-#' provider strategy. The PutClusterCapacityProviders API is used to
-#' associate a capacity provider with a cluster. Only capacity providers
-#' with an `ACTIVE` or `UPDATING` status can be used.
+#' provider strategy. The
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' API is used to associate a capacity provider with a cluster. Only
+#' capacity providers with an `ACTIVE` or `UPDATING` status can be used.
 #' 
 #' If specifying a capacity provider that uses an Auto Scaling group, the
 #' capacity provider must already be created. New capacity providers can be
-#' created with the CreateCapacityProvider API operation.
+#' created with the
+#' [`create_capacity_provider`][ecs_create_capacity_provider] API
+#' operation.
 #' 
 #' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
 #' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
 #' are available to all accounts and only need to be associated with a
 #' cluster to be used.
 #' 
-#' The PutClusterCapacityProviders API operation is used to update the list
-#' of available capacity providers for a cluster after the cluster is
-#' created.
+#' The
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' API operation is used to update the list of available capacity providers
+#' for a cluster after the cluster is created.
 #' @param deploymentConfiguration Optional deployment parameters that control how many tasks run during
 #' the deployment and the ordering of stopping and starting tasks.
 #' @param networkConfiguration 

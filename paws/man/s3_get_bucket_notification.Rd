@@ -15,7 +15,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 No longer used, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html}{GetBucketNotificationConfiguration}.
+\code{\link[=s3_get_bucket_notification_configuration]{get_bucket_notification_configuration}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_notification(

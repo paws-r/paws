@@ -8,9 +8,11 @@ waf_update_rate_based_rule(RuleId, ChangeToken, Updates, RateLimit)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the \code{RateBasedRule} that you want to update. \code{RuleId} is
-returned by \code{CreateRateBasedRule} and by ListRateBasedRules.}
+returned by \code{\link[=waf_create_rate_based_rule]{create_rate_based_rule}} and
+by \code{\link[=waf_list_rate_based_rules]{list_rate_based_rules}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 
 \item{Updates}{[required] An array of \code{RuleUpdate} objects that you want to insert into or delete
 from a RateBasedRule.}

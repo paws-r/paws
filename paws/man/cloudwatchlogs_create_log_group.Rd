@@ -30,7 +30,7 @@ and '\\#' (number sign)
 When you create a log group, by default the log events in the log group
 never expire. To set a retention policy so that events expire and are
 deleted after a specified time, use
-\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutRetentionPolicy.html}{PutRetentionPolicy}.
+\code{\link[=cloudwatchlogs_put_retention_policy]{put_retention_policy}}.
 
 If you associate a AWS Key Management Service (AWS KMS) customer master
 key (CMK) with the log group, ingested data is encrypted using the CMK.

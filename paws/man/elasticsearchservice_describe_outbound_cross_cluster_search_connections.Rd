@@ -10,8 +10,7 @@ elasticsearchservice_describe_outbound_cross_cluster_search_connections(
 }
 \arguments{
 \item{Filters}{A list of filters used to match properties for outbound cross-cluster
-search connection. Available \verb{<a>Filter</a>} names for this operation
-are:
+search connection. Available \code{Filter} names for this operation are:
 \itemize{
 \item cross-cluster-search-connection-id
 \item destination-domain-info.domain-name

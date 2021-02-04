@@ -17,26 +17,28 @@ NULL
 #' Queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-iam-policies.html#write-messages-to-shared-queue)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
-#' -   `AddPermission` generates a policy for you. You can use
-#'     ` <a>SetQueueAttributes</a> ` to upload your policy. For more
-#'     information, see [Using Custom Policies with the Amazon SQS Access
-#'     Policy
+#' -   [`add_permission`][sqs_add_permission] generates a policy for you.
+#'     You can use [`set_queue_attributes`][sqs_set_queue_attributes] to
+#'     upload your policy. For more information, see [Using Custom Policies
+#'     with the Amazon SQS Access Policy
 #'     Language](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies.html)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' -   An Amazon SQS policy can have a maximum of 7 actions.
 #' 
 #' -   To remove the ability to change queue permissions, you must deny
-#'     permission to the `AddPermission`, `RemovePermission`, and
-#'     `SetQueueAttributes` actions in your IAM policy.
+#'     permission to the [`add_permission`][sqs_add_permission],
+#'     [`remove_permission`][sqs_remove_permission], and
+#'     [`set_queue_attributes`][sqs_set_queue_attributes] actions in your
+#'     IAM policy.
 #' 
 #' Some actions take lists of parameters. These lists are specified using
 #' the `param.n` notation. Values of `n` are integers starting from 1. For
 #' example, a parameter list with two elements looks like this:
 #' 
-#' `&amp;AttributeName.1=first`
+#' `&AttributeName.1=first`
 #' 
-#' `&amp;AttributeName.2=second`
+#' `&AttributeName.2=second`
 #' 
 #' Cross-account permissions don't apply to this action. For more
 #' information, see [Grant cross-account permissions to a role and a user
@@ -67,10 +69,14 @@ NULL
 #' Resource](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-overview-of-managing-access.html)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
-#' Specifying `SendMessage`, `DeleteMessage`, or `ChangeMessageVisibility`
-#' for `ActionName.n` also grants permissions for the corresponding batch
-#' versions of those actions: `SendMessageBatch`, `DeleteMessageBatch`, and
-#' `ChangeMessageVisibilityBatch`.
+#' Specifying [`send_message`][sqs_send_message],
+#' [`delete_message`][sqs_delete_message], or
+#' [`change_message_visibility`][sqs_change_message_visibility] for
+#' `ActionName.n` also grants permissions for the corresponding batch
+#' versions of those actions:
+#' [`send_message_batch`][sqs_send_message_batch],
+#' [`delete_message_batch`][sqs_delete_message_batch], and
+#' [`change_message_visibility_batch`][sqs_change_message_visibility_batch].
 #'
 #' @section Request syntax:
 #' ```
@@ -118,8 +124,10 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' For example, you have a message with a visibility timeout of 5 minutes.
-#' After 3 minutes, you call `ChangeMessageVisibility` with a timeout of 10
-#' minutes. You can continue to call `ChangeMessageVisibility` to extend
+#' After 3 minutes, you call
+#' [`change_message_visibility`][sqs_change_message_visibility] with a
+#' timeout of 10 minutes. You can continue to call
+#' [`change_message_visibility`][sqs_change_message_visibility] to extend
 #' the visibility timeout to the maximum allowed time. If you try to extend
 #' the visibility timeout beyond the maximum, your request is rejected.
 #' 
@@ -165,7 +173,8 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
 #' saved in memory for that message. If you don't delete a message after it
 #' is received, the visibility timeout for the message reverts to the
 #' original timeout value (not to the value you set using the
-#' `ChangeMessageVisibility` action) the next time the message is received.
+#' [`change_message_visibility`][sqs_change_message_visibility] action) the
+#' next time the message is received.
 #'
 #' @usage
 #' sqs_change_message_visibility(QueueUrl, ReceiptHandle,
@@ -175,8 +184,8 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
 #' 
 #' Queue URLs and names are case-sensitive.
 #' @param ReceiptHandle &#91;required&#93; The receipt handle associated with the message whose visibility timeout
-#' is changed. This parameter is returned by the ` <a>ReceiveMessage</a> `
-#' action.
+#' is changed. This parameter is returned by the
+#' [`receive_message`][sqs_receive_message] action.
 #' @param VisibilityTimeout &#91;required&#93; The new value for the message's visibility timeout (in seconds). Values
 #' range: `0` to `43200`. Maximum: 12 hours.
 #'
@@ -213,10 +222,12 @@ sqs_change_message_visibility <- function(QueueUrl, ReceiptHandle, VisibilityTim
 #'
 #' @description
 #' Changes the visibility timeout of multiple messages. This is a batch
-#' version of ` <a>ChangeMessageVisibility</a>.` The result of the action
-#' on each message is reported individually in the response. You can send
-#' up to 10 ` <a>ChangeMessageVisibility</a> ` requests with each
-#' `ChangeMessageVisibilityBatch` action.
+#' version of ` ChangeMessageVisibility.` The result of the action on each
+#' message is reported individually in the response. You can send up to 10
+#' [`change_message_visibility`][sqs_change_message_visibility] requests
+#' with each
+#' [`change_message_visibility_batch`][sqs_change_message_visibility_batch]
+#' action.
 #' 
 #' Because the batch request can result in a combination of successful and
 #' unsuccessful actions, you should check for batch errors even when the
@@ -226,9 +237,9 @@ sqs_change_message_visibility <- function(QueueUrl, ReceiptHandle, VisibilityTim
 #' the `param.n` notation. Values of `n` are integers starting from 1. For
 #' example, a parameter list with two elements looks like this:
 #' 
-#' `&amp;AttributeName.1=first`
+#' `&AttributeName.1=first`
 #' 
-#' `&amp;AttributeName.2=second`
+#' `&AttributeName.2=second`
 #'
 #' @usage
 #' sqs_change_message_visibility_batch(QueueUrl, Entries)
@@ -304,24 +315,26 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' After you create a queue, you must wait at least one second after the
 #' queue is created to be able to use the queue.
 #' 
-#' To get the queue URL, use the ` <a>GetQueueUrl</a> ` action.
-#' ` <a>GetQueueUrl</a> ` requires only the `QueueName` parameter. be aware
-#' of existing queue names:
+#' To get the queue URL, use the [`get_queue_url`][sqs_get_queue_url]
+#' action. [`get_queue_url`][sqs_get_queue_url] requires only the
+#' `QueueName` parameter. be aware of existing queue names:
 #' 
 #' -   If you provide the name of an existing queue along with the exact
-#'     names and values of all the queue's attributes, `CreateQueue`
-#'     returns the queue URL for the existing queue.
+#'     names and values of all the queue's attributes,
+#'     [`create_queue`][sqs_create_queue] returns the queue URL for the
+#'     existing queue.
 #' 
 #' -   If the queue name, attribute names, or attribute values don't match
-#'     an existing queue, `CreateQueue` returns an error.
+#'     an existing queue, [`create_queue`][sqs_create_queue] returns an
+#'     error.
 #' 
 #' Some actions take lists of parameters. These lists are specified using
 #' the `param.n` notation. Values of `n` are integers starting from 1. For
 #' example, a parameter list with two elements looks like this:
 #' 
-#' `&amp;AttributeName.1=first`
+#' `&AttributeName.1=first`
 #' 
-#' `&amp;AttributeName.2=second`
+#' `&AttributeName.2=second`
 #' 
 #' Cross-account permissions don't apply to this action. For more
 #' information, see [Grant cross-account permissions to a role and a user
@@ -344,7 +357,8 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' @param Attributes A map of attributes with their corresponding values.
 #' 
 #' The following lists the names, descriptions, and values of the special
-#' request parameters that the `CreateQueue` action uses:
+#' request parameters that the [`create_queue`][sqs_create_queue] action
+#' uses:
 #' 
 #' -   `DelaySeconds` – The length of time, in seconds, for which the
 #'     delivery of all messages in the queue is delayed. Valid values: An
@@ -366,8 +380,9 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'     in the *Amazon IAM User Guide*.
 #' 
 #' -   `ReceiveMessageWaitTimeSeconds` – The length of time, in seconds,
-#'     for which a ` <a>ReceiveMessage</a> ` action waits for a message to
-#'     arrive. Valid values: An integer from 0 to 20 (seconds). Default: 0.
+#'     for which a [`receive_message`][sqs_receive_message] action waits
+#'     for a message to arrive. Valid values: An integer from 0 to 20
+#'     (seconds). Default: 0.
 #' 
 #' -   `RedrivePolicy` – The string that includes the parameters for the
 #'     dead-letter queue functionality of the source queue as a JSON
@@ -405,7 +420,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'     Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 #'     While the alias of the AWS-managed CMK for Amazon SQS is always
 #'     `alias/aws/sqs`, the alias of a custom CMK can, for example, be
-#'     `alias/<i>MyAlias</i> `. For more examples, see
+#'     `alias/MyAlias `. For more examples, see
 #'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
 #'     in the *AWS Key Management Service API Reference*.
 #' 
@@ -590,9 +605,9 @@ sqs_create_queue <- function(QueueName, Attributes = NULL, tags = NULL) {
 #' The `ReceiptHandle` is associated with a *specific instance* of
 #' receiving a message. If you receive a message more than once, the
 #' `ReceiptHandle` is different each time you receive a message. When you
-#' use the `DeleteMessage` action, you must provide the most recently
-#' received `ReceiptHandle` for the message (otherwise, the request
-#' succeeds, but the message might not be deleted).
+#' use the [`delete_message`][sqs_delete_message] action, you must provide
+#' the most recently received `ReceiptHandle` for the message (otherwise,
+#' the request succeeds, but the message might not be deleted).
 #' 
 #' For standard queues, it is possible to receive a message even after you
 #' delete it. This might happen on rare occasions if one of the servers
@@ -642,8 +657,8 @@ sqs_delete_message <- function(QueueUrl, ReceiptHandle) {
 #'
 #' @description
 #' Deletes up to ten messages from the specified queue. This is a batch
-#' version of ` <a>DeleteMessage</a>.` The result of the action on each
-#' message is reported individually in the response.
+#' version of ` DeleteMessage.` The result of the action on each message is
+#' reported individually in the response.
 #' 
 #' Because the batch request can result in a combination of successful and
 #' unsuccessful actions, you should check for batch errors even when the
@@ -653,9 +668,9 @@ sqs_delete_message <- function(QueueUrl, ReceiptHandle) {
 #' the `param.n` notation. Values of `n` are integers starting from 1. For
 #' example, a parameter list with two elements looks like this:
 #' 
-#' `&amp;AttributeName.1=first`
+#' `&AttributeName.1=first`
 #' 
-#' `&amp;AttributeName.2=second`
+#' `&AttributeName.2=second`
 #'
 #' @usage
 #' sqs_delete_message_batch(QueueUrl, Entries)
@@ -705,13 +720,14 @@ sqs_delete_message_batch <- function(QueueUrl, Entries) {
 #' Deletes the queue specified by the `QueueUrl`, regardless of the queue's
 #' contents.
 #' 
-#' Be careful with the `DeleteQueue` action: When you delete a queue, any
-#' messages in the queue are no longer available.
+#' Be careful with the [`delete_queue`][sqs_delete_queue] action: When you
+#' delete a queue, any messages in the queue are no longer available.
 #' 
 #' When you delete a queue, the deletion process takes up to 60 seconds.
 #' Requests you send involving that queue during the 60 seconds might
-#' succeed. For example, a ` <a>SendMessage</a> ` request might succeed,
-#' but after 60 seconds the queue and the message you sent no longer exist.
+#' succeed. For example, a [`send_message`][sqs_send_message] request might
+#' succeed, but after 60 seconds the queue and the message you sent no
+#' longer exist.
 #' 
 #' When you delete a queue, you must wait at least 60 seconds before
 #' creating a queue with the same name.
@@ -821,8 +837,8 @@ sqs_delete_queue <- function(QueueUrl) {
 #' -   `QueueArn` – Returns the Amazon resource name (ARN) of the queue.
 #' 
 #' -   `ReceiveMessageWaitTimeSeconds` – Returns the length of time, in
-#'     seconds, for which the `ReceiveMessage` action waits for a message
-#'     to arrive.
+#'     seconds, for which the [`receive_message`][sqs_receive_message]
+#'     action waits for a message to arrive.
 #' 
 #' -   `RedrivePolicy` – The string that includes the parameters for the
 #'     dead-letter queue functionality of the source queue as a JSON
@@ -963,8 +979,8 @@ sqs_get_queue_attributes <- function(QueueUrl, AttributeNames = NULL) {
 #' `QueueOwnerAWSAccountId` parameter to specify the account ID of the
 #' queue's owner. The queue's owner must grant you permission to access the
 #' queue. For more information about shared queue access, see
-#' ` <a>AddPermission</a> ` or see [Allow Developers to Write Messages to a
-#' Shared
+#' [`add_permission`][sqs_add_permission] or see [Allow Developers to Write
+#' Messages to a Shared
 #' Queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-iam-policies.html#write-messages-to-shared-queue)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
@@ -1013,14 +1029,16 @@ sqs_get_queue_url <- function(QueueName, QueueOwnerAWSAccountId = NULL) {
 #' Returns a list of your queues that have the `RedrivePolicy` queue
 #' attribute configured with a dead-letter queue.
 #' 
-#' The `ListDeadLetterSourceQueues` methods supports pagination. Set
-#' parameter `MaxResults` in the request to specify the maximum number of
-#' results to be returned in the response. If you do not set `MaxResults`,
-#' the response includes a maximum of 1,000 results. If you set
-#' `MaxResults` and there are additional results to display, the response
-#' includes a value for `NextToken`. Use `NextToken` as a parameter in your
-#' next request to `ListDeadLetterSourceQueues` to receive the next page of
-#' results.
+#' The
+#' [`list_dead_letter_source_queues`][sqs_list_dead_letter_source_queues]
+#' methods supports pagination. Set parameter `MaxResults` in the request
+#' to specify the maximum number of results to be returned in the response.
+#' If you do not set `MaxResults`, the response includes a maximum of 1,000
+#' results. If you set `MaxResults` and there are additional results to
+#' display, the response includes a value for `NextToken`. Use `NextToken`
+#' as a parameter in your next request to
+#' [`list_dead_letter_source_queues`][sqs_list_dead_letter_source_queues]
+#' to receive the next page of results.
 #' 
 #' For more information about using dead-letter queues, see [Using Amazon
 #' SQS Dead-Letter
@@ -1179,23 +1197,25 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
 #' @description
 #' Deletes the messages in a queue specified by the `QueueURL` parameter.
 #' 
-#' When you use the `PurgeQueue` action, you can't retrieve any messages
-#' deleted from a queue.
+#' When you use the [`purge_queue`][sqs_purge_queue] action, you can't
+#' retrieve any messages deleted from a queue.
 #' 
 #' The message deletion process takes up to 60 seconds. We recommend
 #' waiting for 60 seconds regardless of your queue's size.
 #' 
-#' Messages sent to the queue *before* you call `PurgeQueue` might be
-#' received but are deleted within the next minute.
+#' Messages sent to the queue *before* you call
+#' [`purge_queue`][sqs_purge_queue] might be received but are deleted
+#' within the next minute.
 #' 
-#' Messages sent to the queue *after* you call `PurgeQueue` might be
-#' deleted while the queue is being purged.
+#' Messages sent to the queue *after* you call
+#' [`purge_queue`][sqs_purge_queue] might be deleted while the queue is
+#' being purged.
 #'
 #' @usage
 #' sqs_purge_queue(QueueUrl)
 #'
-#' @param QueueUrl &#91;required&#93; The URL of the queue from which the `PurgeQueue` action deletes
-#' messages.
+#' @param QueueUrl &#91;required&#93; The URL of the queue from which the [`purge_queue`][sqs_purge_queue]
+#' action deletes messages.
 #' 
 #' Queue URLs and names are case-sensitive.
 #'
@@ -1236,13 +1256,14 @@ sqs_purge_queue <- function(QueueUrl) {
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' Short poll is the default behavior where a weighted random set of
-#' machines is sampled on a `ReceiveMessage` call. Thus, only the messages
-#' on the sampled machines are returned. If the number of messages in the
-#' queue is small (fewer than 1,000), you most likely get fewer messages
-#' than you requested per `ReceiveMessage` call. If the number of messages
+#' machines is sampled on a [`receive_message`][sqs_receive_message] call.
+#' Thus, only the messages on the sampled machines are returned. If the
+#' number of messages in the queue is small (fewer than 1,000), you most
+#' likely get fewer messages than you requested per
+#' [`receive_message`][sqs_receive_message] call. If the number of messages
 #' in the queue is extremely small, you might not receive any messages in a
-#' particular `ReceiveMessage` response. If this happens, repeat the
-#' request.
+#' particular [`receive_message`][sqs_receive_message] response. If this
+#' happens, repeat the request.
 #' 
 #' For each message returned, the response includes the following:
 #' 
@@ -1316,11 +1337,11 @@ sqs_purge_queue <- function(QueueUrl) {
 #'     milliseconds).
 #' 
 #' -   `MessageDeduplicationId` – Returns the value provided by the
-#'     producer that calls the ` <a>SendMessage</a> ` action.
+#'     producer that calls the [`send_message`][sqs_send_message] action.
 #' 
 #' -   `MessageGroupId` – Returns the value provided by the producer that
-#'     calls the ` <a>SendMessage</a> ` action. Messages with the same
-#'     `MessageGroupId` are returned in sequence.
+#'     calls the [`send_message`][sqs_send_message] action. Messages with
+#'     the same `MessageGroupId` are returned in sequence.
 #' 
 #' -   `SequenceNumber` – Returns the value provided by Amazon SQS.
 #' @param MessageAttributeNames The name of the message attribute, where *N* is the index.
@@ -1339,16 +1360,16 @@ sqs_purge_queue <- function(QueueUrl) {
 #' 
 #' -   The name can be up to 256 characters long.
 #' 
-#' When using `ReceiveMessage`, you can send a list of attribute names to
-#' receive, or you can return all of the attributes by specifying `All` or
-#' `.*` in your request. You can also use all message attributes starting
-#' with a prefix, for example `bar.*`.
+#' When using [`receive_message`][sqs_receive_message], you can send a list
+#' of attribute names to receive, or you can return all of the attributes
+#' by specifying `All` or `.*` in your request. You can also use all
+#' message attributes starting with a prefix, for example `bar.*`.
 #' @param MaxNumberOfMessages The maximum number of messages to return. Amazon SQS never returns more
 #' messages than this value (however, fewer messages might be returned).
 #' Valid values: 1 to 10. Default: 1.
 #' @param VisibilityTimeout The duration (in seconds) that the received messages are hidden from
-#' subsequent retrieve requests after being retrieved by a `ReceiveMessage`
-#' request.
+#' subsequent retrieve requests after being retrieved by a
+#' [`receive_message`][sqs_receive_message] request.
 #' @param WaitTimeSeconds The duration (in seconds) for which the call waits for a message to
 #' arrive in the queue before returning. If a message is available, the
 #' call returns sooner than `WaitTimeSeconds`. If no messages are available
@@ -1356,34 +1377,38 @@ sqs_purge_queue <- function(QueueUrl) {
 #' list of messages.
 #' 
 #' To avoid HTTP errors, ensure that the HTTP response timeout for
-#' `ReceiveMessage` requests is longer than the `WaitTimeSeconds`
-#' parameter. For example, with the Java SDK, you can set HTTP transport
-#' settings using the
+#' [`receive_message`][sqs_receive_message] requests is longer than the
+#' `WaitTimeSeconds` parameter. For example, with the Java SDK, you can set
+#' HTTP transport settings using the
 #' [NettyNioAsyncHttpClient](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/nio/netty/NettyNioAsyncHttpClient.html)
 #' for asynchronous clients, or the
 #' [ApacheHttpClient](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/apache/ApacheHttpClient.html)
 #' for synchronous clients.
 #' @param ReceiveRequestAttemptId This parameter applies only to FIFO (first-in-first-out) queues.
 #' 
-#' The token used for deduplication of `ReceiveMessage` calls. If a
-#' networking issue occurs after a `ReceiveMessage` action, and instead of
-#' a response you receive a generic error, it is possible to retry the same
-#' action with an identical `ReceiveRequestAttemptId` to retrieve the same
-#' set of messages, even if their visibility timeout has not yet expired.
+#' The token used for deduplication of
+#' [`receive_message`][sqs_receive_message] calls. If a networking issue
+#' occurs after a [`receive_message`][sqs_receive_message] action, and
+#' instead of a response you receive a generic error, it is possible to
+#' retry the same action with an identical `ReceiveRequestAttemptId` to
+#' retrieve the same set of messages, even if their visibility timeout has
+#' not yet expired.
 #' 
 #' -   You can use `ReceiveRequestAttemptId` only for 5 minutes after a
-#'     `ReceiveMessage` action.
+#'     [`receive_message`][sqs_receive_message] action.
 #' 
-#' -   When you set `FifoQueue`, a caller of the `ReceiveMessage` action
-#'     can provide a `ReceiveRequestAttemptId` explicitly.
+#' -   When you set `FifoQueue`, a caller of the
+#'     [`receive_message`][sqs_receive_message] action can provide a
+#'     `ReceiveRequestAttemptId` explicitly.
 #' 
-#' -   If a caller of the `ReceiveMessage` action doesn't provide a
-#'     `ReceiveRequestAttemptId`, Amazon SQS generates a
+#' -   If a caller of the [`receive_message`][sqs_receive_message] action
+#'     doesn't provide a `ReceiveRequestAttemptId`, Amazon SQS generates a
 #'     `ReceiveRequestAttemptId`.
 #' 
-#' -   It is possible to retry the `ReceiveMessage` action with the same
-#'     `ReceiveRequestAttemptId` if none of the messages have been modified
-#'     (deleted or had their visibility changes).
+#' -   It is possible to retry the [`receive_message`][sqs_receive_message]
+#'     action with the same `ReceiveRequestAttemptId` if none of the
+#'     messages have been modified (deleted or had their visibility
+#'     changes).
 #' 
 #' -   During a visibility timeout, subsequent calls with the same
 #'     `ReceiveRequestAttemptId` return the same messages and receipt
@@ -1392,12 +1417,13 @@ sqs_purge_queue <- function(QueueUrl) {
 #'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
-#'     If a caller of the `ReceiveMessage` action still processes messages
-#'     when the visibility timeout expires and messages become visible,
-#'     another worker consuming from the same queue can receive the same
-#'     messages and therefore process duplicates. Also, if a consumer whose
-#'     message processing time is longer than the visibility timeout tries
-#'     to delete the processed messages, the action fails with an error.
+#'     If a caller of the [`receive_message`][sqs_receive_message] action
+#'     still processes messages when the visibility timeout expires and
+#'     messages become visible, another worker consuming from the same
+#'     queue can receive the same messages and therefore process
+#'     duplicates. Also, if a consumer whose message processing time is
+#'     longer than the visibility timeout tries to delete the processed
+#'     messages, the action fails with an error.
 #' 
 #'     To mitigate this effect, ensure that your application observes a
 #'     safe threshold before the visibility timeout expires and extend the
@@ -1408,15 +1434,15 @@ sqs_purge_queue <- function(QueueUrl) {
 #'     until the visibility timeout expires. You can still receive messages
 #'     with another `MessageGroupId` as long as it is also visible.
 #' 
-#' -   If a caller of `ReceiveMessage` can't track the
-#'     `ReceiveRequestAttemptId`, no retries work until the original
+#' -   If a caller of [`receive_message`][sqs_receive_message] can't track
+#'     the `ReceiveRequestAttemptId`, no retries work until the original
 #'     visibility timeout expires. As a result, delays might occur but the
 #'     messages in the queue remain in a strict order.
 #' 
 #' The maximum length of `ReceiveRequestAttemptId` is 128 characters.
 #' `ReceiveRequestAttemptId` can contain alphanumeric characters (`a-z`,
 #' `A-Z`, `0-9`) and punctuation
-#' (`` !\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~ ``).
+#' (`` !\"#$%&\'()*+,-./:;<=>?@@\\[\\\]^_\`\{|\}~ ``).
 #' 
 #' For best practices of using `ReceiveRequestAttemptId`, see [Using the
 #' ReceiveRequestAttemptId Request
@@ -1476,8 +1502,10 @@ sqs_receive_message <- function(QueueUrl, AttributeNames = NULL, MessageAttribut
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' -   To remove the ability to change queue permissions, you must deny
-#'     permission to the `AddPermission`, `RemovePermission`, and
-#'     `SetQueueAttributes` actions in your IAM policy.
+#'     permission to the [`add_permission`][sqs_add_permission],
+#'     [`remove_permission`][sqs_remove_permission], and
+#'     [`set_queue_attributes`][sqs_set_queue_attributes] actions in your
+#'     IAM policy.
 #'
 #' @usage
 #' sqs_remove_permission(QueueUrl, Label)
@@ -1486,7 +1514,7 @@ sqs_receive_message <- function(QueueUrl, AttributeNames = NULL, MessageAttribut
 #' 
 #' Queue URLs and names are case-sensitive.
 #' @param Label &#91;required&#93; The identification of the permission to remove. This is the label added
-#' using the ` <a>AddPermission</a> ` action.
+#' using the [`add_permission`][sqs_add_permission] action.
 #'
 #' @section Request syntax:
 #' ```
@@ -1621,7 +1649,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' The maximum length of `MessageDeduplicationId` is 128 characters.
 #' `MessageDeduplicationId` can contain alphanumeric characters (`a-z`,
 #' `A-Z`, `0-9`) and punctuation
-#' (`` !\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~ ``).
+#' (`` !\"#$%&\'()*+,-./:;<=>?@@\\[\\\]^_\`\{|\}~ ``).
 #' 
 #' For best practices of using `MessageDeduplicationId`, see [Using the
 #' MessageDeduplicationId
@@ -1640,13 +1668,14 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' -   You must associate a non-empty `MessageGroupId` with a message. If
 #'     you don't provide a `MessageGroupId`, the action fails.
 #' 
-#' -   `ReceiveMessage` might return messages with multiple
-#'     `MessageGroupId` values. For each `MessageGroupId`, the messages are
-#'     sorted by time sent. The caller can't specify a `MessageGroupId`.
+#' -   [`receive_message`][sqs_receive_message] might return messages with
+#'     multiple `MessageGroupId` values. For each `MessageGroupId`, the
+#'     messages are sorted by time sent. The caller can't specify a
+#'     `MessageGroupId`.
 #' 
 #' The length of `MessageGroupId` is 128 characters. Valid values:
 #' alphanumeric characters and punctuation
-#' `` (!\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~) ``.
+#' `` (!\"#$%&\'()*+,-./:;<=>?@@\\[\\\]^_\`\{|\}~) ``.
 #' 
 #' For best practices of using `MessageGroupId`, see [Using the
 #' MessageGroupId
@@ -1717,8 +1746,8 @@ sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, Message
 #'
 #' @description
 #' Delivers up to ten messages to the specified queue. This is a batch
-#' version of ` <a>SendMessage</a>.` For a FIFO queue, multiple messages
-#' within a single batch are enqueued in the order they are sent.
+#' version of ` SendMessage.` For a FIFO queue, multiple messages within a
+#' single batch are enqueued in the order they are sent.
 #' 
 #' The result of sending each message is reported individually in the
 #' response. Because the batch request can result in a combination of
@@ -1746,9 +1775,9 @@ sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, Message
 #' the `param.n` notation. Values of `n` are integers starting from 1. For
 #' example, a parameter list with two elements looks like this:
 #' 
-#' `&amp;AttributeName.1=first`
+#' `&AttributeName.1=first`
 #' 
-#' `&amp;AttributeName.2=second`
+#' `&AttributeName.2=second`
 #'
 #' @usage
 #' sqs_send_message_batch(QueueUrl, Entries)
@@ -1756,7 +1785,7 @@ sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, Message
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue to which batched messages are sent.
 #' 
 #' Queue URLs and names are case-sensitive.
-#' @param Entries &#91;required&#93; A list of ` <a>SendMessageBatchRequestEntry</a> ` items.
+#' @param Entries &#91;required&#93; A list of ` SendMessageBatchRequestEntry ` items.
 #'
 #' @section Request syntax:
 #' ```
@@ -1839,8 +1868,10 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' -   To remove the ability to change queue permissions, you must deny
-#'     permission to the `AddPermission`, `RemovePermission`, and
-#'     `SetQueueAttributes` actions in your IAM policy.
+#'     permission to the [`add_permission`][sqs_add_permission],
+#'     [`remove_permission`][sqs_remove_permission], and
+#'     [`set_queue_attributes`][sqs_set_queue_attributes] actions in your
+#'     IAM policy.
 #'
 #' @usage
 #' sqs_set_queue_attributes(QueueUrl, Attributes)
@@ -1851,7 +1882,8 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' @param Attributes &#91;required&#93; A map of attributes to set.
 #' 
 #' The following lists the names, descriptions, and values of the special
-#' request parameters that the `SetQueueAttributes` action uses:
+#' request parameters that the
+#' [`set_queue_attributes`][sqs_set_queue_attributes] action uses:
 #' 
 #' -   `DelaySeconds` – The length of time, in seconds, for which the
 #'     delivery of all messages in the queue is delayed. Valid values: An
@@ -1873,8 +1905,9 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #'     in the *Amazon IAM User Guide*.
 #' 
 #' -   `ReceiveMessageWaitTimeSeconds` – The length of time, in seconds,
-#'     for which a ` <a>ReceiveMessage</a> ` action waits for a message to
-#'     arrive. Valid values: An integer from 0 to 20 (seconds). Default: 0.
+#'     for which a [`receive_message`][sqs_receive_message] action waits
+#'     for a message to arrive. Valid values: An integer from 0 to 20
+#'     (seconds). Default: 0.
 #' 
 #' -   `RedrivePolicy` – The string that includes the parameters for the
 #'     dead-letter queue functionality of the source queue as a JSON
@@ -1912,7 +1945,7 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #'     Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 #'     While the alias of the AWS-managed CMK for Amazon SQS is always
 #'     `alias/aws/sqs`, the alias of a custom CMK can, for example, be
-#'     `alias/<i>MyAlias</i> `. For more examples, see
+#'     `alias/MyAlias `. For more examples, see
 #'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
 #'     in the *AWS Key Management Service API Reference*.
 #' 

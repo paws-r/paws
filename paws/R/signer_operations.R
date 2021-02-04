@@ -56,9 +56,10 @@ signer_add_profile_permission <- function(profileName, profileVersion = NULL, ac
 #'
 #' @description
 #' Changes the state of an `ACTIVE` signing profile to `CANCELED`. A
-#' canceled profile is still viewable with the `ListSigningProfiles`
-#' operation, but it cannot perform new signing jobs, and is deleted two
-#' years after cancelation.
+#' canceled profile is still viewable with the
+#' [`list_signing_profiles`][signer_list_signing_profiles] operation, but
+#' it cannot perform new signing jobs, and is deleted two years after
+#' cancelation.
 #'
 #' @usage
 #' signer_cancel_signing_profile(profileName)
@@ -96,8 +97,8 @@ signer_cancel_signing_profile <- function(profileName) {
 #'
 #' @description
 #' Returns information about a specific code signing job. You specify the
-#' job by using the `jobId` value that is returned by the StartSigningJob
-#' operation.
+#' job by using the `jobId` value that is returned by the
+#' [`start_signing_job`][signer_start_signing_job] operation.
 #'
 #' @usage
 #' signer_describe_signing_job(jobId)
@@ -252,11 +253,12 @@ signer_list_profile_permissions <- function(profileName, nextToken = NULL) {
 #' Lists all your signing jobs. You can use the `maxResults` parameter to
 #' limit the number of signing jobs that are returned in the response. If
 #' additional jobs remain to be listed, code signing returns a `nextToken`
-#' value. Use this value in subsequent calls to `ListSigningJobs` to fetch
-#' the remaining values. You can continue calling `ListSigningJobs` with
-#' your `maxResults` parameter and with new values that code signing
-#' returns in the `nextToken` parameter until all of your signing jobs have
-#' been returned.
+#' value. Use this value in subsequent calls to
+#' [`list_signing_jobs`][signer_list_signing_jobs] to fetch the remaining
+#' values. You can continue calling
+#' [`list_signing_jobs`][signer_list_signing_jobs] with your `maxResults`
+#' parameter and with new values that code signing returns in the
+#' `nextToken` parameter until all of your signing jobs have been returned.
 #'
 #' @usage
 #' signer_list_signing_jobs(status, platformId, requestedBy, maxResults,
@@ -330,10 +332,11 @@ signer_list_signing_jobs <- function(status = NULL, platformId = NULL, requested
 #' Lists all signing platforms available in code signing that match the
 #' request parameters. If additional jobs remain to be listed, code signing
 #' returns a `nextToken` value. Use this value in subsequent calls to
-#' `ListSigningJobs` to fetch the remaining values. You can continue
-#' calling `ListSigningJobs` with your `maxResults` parameter and with new
-#' values that code signing returns in the `nextToken` parameter until all
-#' of your signing jobs have been returned.
+#' [`list_signing_jobs`][signer_list_signing_jobs] to fetch the remaining
+#' values. You can continue calling
+#' [`list_signing_jobs`][signer_list_signing_jobs] with your `maxResults`
+#' parameter and with new values that code signing returns in the
+#' `nextToken` parameter until all of your signing jobs have been returned.
 #'
 #' @usage
 #' signer_list_signing_platforms(category, partner, target, maxResults,
@@ -386,10 +389,11 @@ signer_list_signing_platforms <- function(category = NULL, partner = NULL, targe
 #' profiles with an `ACTIVE` status unless the `includeCanceled` request
 #' field is set to `true`. If additional jobs remain to be listed, code
 #' signing returns a `nextToken` value. Use this value in subsequent calls
-#' to `ListSigningJobs` to fetch the remaining values. You can continue
-#' calling `ListSigningJobs` with your `maxResults` parameter and with new
-#' values that code signing returns in the `nextToken` parameter until all
-#' of your signing jobs have been returned.
+#' to [`list_signing_jobs`][signer_list_signing_jobs] to fetch the
+#' remaining values. You can continue calling
+#' [`list_signing_jobs`][signer_list_signing_jobs] with your `maxResults`
+#' parameter and with new values that code signing returns in the
+#' `nextToken` parameter until all of your signing jobs have been returned.
 #'
 #' @usage
 #' signer_list_signing_profiles(includeCanceled, maxResults, nextToken,
@@ -688,8 +692,9 @@ signer_revoke_signing_profile <- function(profileName, profileVersion, reason, e
 #'
 #' @description
 #' Initiates a signing job to be performed on the code provided. Signing
-#' jobs are viewable by the `ListSigningJobs` operation for two years after
-#' they are performed. Note the following requirements:
+#' jobs are viewable by the [`list_signing_jobs`][signer_list_signing_jobs]
+#' operation for two years after they are performed. Note the following
+#' requirements:
 #' 
 #' -   You must create an Amazon S3 source bucket. For more information,
 #'     see [Create a
@@ -702,13 +707,15 @@ signer_revoke_signing_profile <- function(profileName, profileVersion, reason, e
 #'     destination bucket to write your signed code.
 #' 
 #' -   You specify the name of the source and destination buckets when
-#'     calling the `StartSigningJob` operation.
+#'     calling the [`start_signing_job`][signer_start_signing_job]
+#'     operation.
 #' 
 #' -   You must also specify a request token that identifies your request
 #'     to code signing.
 #' 
-#' You can call the DescribeSigningJob and the ListSigningJobs actions
-#' after you call `StartSigningJob`.
+#' You can call the [`describe_signing_job`][signer_describe_signing_job]
+#' and the [`list_signing_jobs`][signer_list_signing_jobs] actions after
+#' you call [`start_signing_job`][signer_start_signing_job].
 #' 
 #' For a Java example that shows how to use this action, see
 #' [http://docs.aws.amazon.com/acm/latest/userguide/](https://docs.aws.amazon.com/acm/latest/userguide/)

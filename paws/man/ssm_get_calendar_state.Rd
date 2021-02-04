@@ -18,11 +18,12 @@ format. If you do not add \code{AtTime}, the current time is assumed.}
 }
 \description{
 Gets the state of the AWS Systems Manager Change Calendar at an
-optional, specified time. If you specify a time, \code{GetCalendarState}
-returns the state of the calendar at a specific time, and returns the
-next time that the Change Calendar state will transition. If you do not
-specify a time, \code{GetCalendarState} assumes the current time. Change
-Calendar entries have two possible states: \code{OPEN} or \code{CLOSED}.
+optional, specified time. If you specify a time,
+\code{\link[=ssm_get_calendar_state]{get_calendar_state}} returns the state of the
+calendar at a specific time, and returns the next time that the Change
+Calendar state will transition. If you do not specify a time,
+\code{\link[=ssm_get_calendar_state]{get_calendar_state}} assumes the current time.
+Change Calendar entries have two possible states: \code{OPEN} or \code{CLOSED}.
 
 If you specify more than one calendar in a request, the command returns
 the status of \code{OPEN} only if all calendars in the request are open. If

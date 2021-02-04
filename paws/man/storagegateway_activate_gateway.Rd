@@ -15,8 +15,8 @@ address (port 80). The redirect URL returned in the response provides
 you the activation key for your gateway in the query string parameter
 \code{activationKey}. It may also include other activation-related
 parameters, however, these are merely defaults -- the arguments you pass
-to the \code{ActivateGateway} API call determine the actual configuration of
-your gateway.
+to the \code{\link[=storagegateway_activate_gateway]{activate_gateway}} API call
+determine the actual configuration of your gateway.
 
 For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html}{Getting activation key}
 in the \emph{AWS Storage Gateway User Guide}.}
@@ -69,7 +69,7 @@ you want to use for storing snapshots or tapes, the time zone for
 scheduled snapshots the gateway snapshot schedule window, an activation
 key, and a name for your gateway. The activation process also associates
 your gateway with your account. For more information, see
-UpdateGatewayInformation.
+\code{\link[=storagegateway_update_gateway_information]{update_gateway_information}}.
 
 You must turn on the gateway VM before you can activate your gateway.
 }

@@ -36,12 +36,14 @@ in a DB cluster.
 A DB cluster parameter group is initially created with the default
 parameters for the database engine used by instances in the DB cluster.
 To provide custom values for any of the parameters, you must modify the
-group after creating it using ModifyDBClusterParameterGroup. Once you've
-created a DB cluster parameter group, you need to associate it with your
-DB cluster using ModifyDBCluster. When you associate a new DB cluster
-parameter group with a running DB cluster, you need to reboot the DB
-instances in the DB cluster without failover for the new DB cluster
-parameter group and associated settings to take effect.
+group after creating it using
+\code{\link[=neptune_modify_db_cluster_parameter_group]{modify_db_cluster_parameter_group}}.
+Once you've created a DB cluster parameter group, you need to associate
+it with your DB cluster using
+\code{\link[=neptune_modify_db_cluster]{modify_db_cluster}}. When you associate a
+new DB cluster parameter group with a running DB cluster, you need to
+reboot the DB instances in the DB cluster without failover for the new
+DB cluster parameter group and associated settings to take effect.
 
 After you create a DB cluster parameter group, you should wait at least
 5 minutes before creating your first DB cluster that uses that DB
@@ -52,8 +54,10 @@ especially important for parameters that are critical when creating the
 default database for a DB cluster, such as the character set for the
 default database defined by the \code{character_set_database} parameter. You
 can use the \emph{Parameter Groups} option of the Amazon Neptune console or
-the DescribeDBClusterParameters command to verify that your DB cluster
-parameter group has been created or modified.
+the
+\code{\link[=neptune_describe_db_cluster_parameters]{describe_db_cluster_parameters}}
+command to verify that your DB cluster parameter group has been created
+or modified.
 }
 \section{Request syntax}{
 \preformatted{svc$create_db_cluster_parameter_group(

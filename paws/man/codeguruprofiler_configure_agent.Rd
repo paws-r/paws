@@ -40,8 +40,9 @@ collecting profiling data.}
 }
 \description{
 Used by profiler agents to report their current state and to receive
-remote configuration updates. For example, \code{ConfigureAgent} can be used
-to tell and agent whether to profile or not and for how long to return
+remote configuration updates. For example,
+\code{\link[=codeguruprofiler_configure_agent]{configure_agent}} can be used to
+tell and agent whether to profile or not and for how long to return
 profiling data.
 }
 \section{Request syntax}{

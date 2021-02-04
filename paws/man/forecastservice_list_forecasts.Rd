@@ -35,10 +35,12 @@ specify:
 \verb{"Filters": \\\[ \\\{ "Condition": "IS_NOT", "Key": "Status", "Value": "ACTIVE" \\\} \\\]}}
 }
 \description{
-Returns a list of forecasts created using the CreateForecast operation.
-For each forecast, this operation returns a summary of its properties,
-including its Amazon Resource Name (ARN). To retrieve the complete set
-of properties, specify the ARN with the DescribeForecast operation. You
+Returns a list of forecasts created using the
+\code{\link[=forecastservice_create_forecast]{create_forecast}} operation. For each
+forecast, this operation returns a summary of its properties, including
+its Amazon Resource Name (ARN). To retrieve the complete set of
+properties, specify the ARN with the
+\code{\link[=forecastservice_describe_forecast]{describe_forecast}} operation. You
 can filter the list using an array of Filter objects.
 }
 \section{Request syntax}{

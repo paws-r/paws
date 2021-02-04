@@ -28,9 +28,10 @@ This API reference includes information about API actions and data types
 that you can use to interact with Amazon A2I programmatically. Use this
 guide to:
 \itemize{
-\item Start a human loop with the \code{StartHumanLoop} operation when using
-Amazon A2I with a \emph{custom task type}. To learn more about the
-difference between custom and built-in task types, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-task-types-general.html}{Use Task Types}
+\item Start a human loop with the
+\code{\link[=augmentedairuntime_start_human_loop]{start_human_loop}} operation
+when using Amazon A2I with a \emph{custom task type}. To learn more about
+the difference between custom and built-in task types, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-task-types-general.html}{Use Task Types}
 . To learn how to start a human loop using this API, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-start-human-loop.html#a2i-instructions-starthumanloop}{Create and Start a Human Loop for a Custom Task Type}
 in the Amazon SageMaker Developer Guide.
 \item Manage your human loops. You can list all human loops that you have

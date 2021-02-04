@@ -10,8 +10,9 @@ securityhub_batch_update_findings(FindingIdentifiers, Note, Severity,
   Workflow, RelatedFindings)
 }
 \arguments{
-\item{FindingIdentifiers}{[required] The list of findings to update. \code{BatchUpdateFindings} can be used to
-update up to 100 findings at a time.
+\item{FindingIdentifiers}{[required] The list of findings to update.
+\code{\link[=securityhub_batch_update_findings]{batch_update_findings}} can be used
+to update up to 100 findings at a time.
 
 For each finding, the list provides the finding identifier and the ARN
 of the finding provider.}
@@ -74,11 +75,13 @@ accounts. Master accounts can update findings for their account and
 their member accounts. Member accounts can update findings for their
 account.
 
-Updates from \code{BatchUpdateFindings} do not affect the value of
-\code{UpdatedAt} for a finding.
+Updates from
+\code{\link[=securityhub_batch_update_findings]{batch_update_findings}} do not
+affect the value of \code{UpdatedAt} for a finding.
 
-Master and member accounts can use \code{BatchUpdateFindings} to update the
-following finding fields and objects.
+Master and member accounts can use
+\code{\link[=securityhub_batch_update_findings]{batch_update_findings}} to update
+the following finding fields and objects.
 \itemize{
 \item \code{Confidence}
 \item \code{Criticality}

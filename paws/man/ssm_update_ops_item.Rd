@@ -28,9 +28,10 @@ amzn, ssm, /amazon, /aws, /amzn, /ssm.
 You can choose to make the data searchable by other users in the account
 or you can restrict search access. Searchable data means that all users
 with access to the OpsItem Overview page (as provided by the
-DescribeOpsItems API action) can view and search on the specified data.
-Operational data that is not searchable is only viewable by users who
-have access to the OpsItem (as provided by the GetOpsItem API action).
+\code{\link[=ssm_describe_ops_items]{describe_ops_items}} API action) can view and
+search on the specified data. Operational data that is not searchable is
+only viewable by users who have access to the OpsItem (as provided by
+the \code{\link[=ssm_get_ops_item]{get_ops_item}} API action).
 
 Use the \verb{/aws/resources} key in OperationalData to specify a related
 resource in the request. Use the \verb{/aws/automations} key in

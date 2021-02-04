@@ -19,11 +19,11 @@ indicate that it has been deleted. However, Route 53 never fully deletes
 the traffic policy. Note the following:
 \itemize{
 \item Deleted traffic policies aren't listed if you run
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListTrafficPolicies.html}{ListTrafficPolicies}.
+\code{\link[=route53_list_traffic_policies]{list_traffic_policies}}.
 \item There's no way to get a list of deleted policies.
 \item If you retain the ID of the policy, you can get information about
 the policy, including the traffic policy document, by running
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetTrafficPolicy.html}{GetTrafficPolicy}.
+\code{\link[=route53_get_traffic_policy]{get_traffic_policy}}.
 }
 }
 \section{Request syntax}{

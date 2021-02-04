@@ -8,9 +8,11 @@ wafregional_delete_ip_set(IPSetId, ChangeToken)
 }
 \arguments{
 \item{IPSetId}{[required] The \code{IPSetId} of the IPSet that you want to delete. \code{IPSetId} is
-returned by CreateIPSet and by ListIPSets.}
+returned by \code{\link[=wafregional_create_ip_set]{create_ip_set}} and by
+\code{\link[=wafregional_list_ip_sets]{list_ip_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -25,16 +27,18 @@ regional and global use.
 Permanently deletes an IPSet. You can't delete an \code{IPSet} if it's still
 used in any \code{Rules} or if it still includes any IP addresses.
 
-If you just want to remove an \code{IPSet} from a \code{Rule}, use UpdateRule.
+If you just want to remove an \code{IPSet} from a \code{Rule}, use
+\code{\link[=wafregional_update_rule]{update_rule}}.
 
 To permanently delete an \code{IPSet} from AWS WAF, perform the following
 steps:
 \enumerate{
 \item Update the \code{IPSet} to remove IP address ranges, if any. For more
-information, see UpdateIPSet.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{DeleteIPSet} request.
-\item Submit a \code{DeleteIPSet} request.
+information, see \code{\link[=wafregional_update_ip_set]{update_ip_set}}.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=wafregional_delete_ip_set]{delete_ip_set}} request.
+\item Submit a \code{\link[=wafregional_delete_ip_set]{delete_ip_set}} request.
 }
 }
 \section{Request syntax}{

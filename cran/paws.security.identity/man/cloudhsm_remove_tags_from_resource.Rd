@@ -12,7 +12,8 @@ cloudhsm_remove_tags_from_resource(ResourceArn, TagKeyList)
 \item{TagKeyList}{[required] The tag key or keys to remove.
 
 Specify only the tag key to remove (not the value). To overwrite the
-value for an existing tag, use AddTagsToResource.}
+value for an existing tag, use
+\code{\link[=cloudhsm_add_tags_to_resource]{add_tags_to_resource}}.}
 }
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
@@ -25,7 +26,8 @@ and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS Cl
 Removes one or more tags from the specified AWS CloudHSM resource.
 
 To remove a tag, specify only the tag key to remove (not the value). To
-overwrite the value for an existing tag, use AddTagsToResource.
+overwrite the value for an existing tag, use
+\code{\link[=cloudhsm_add_tags_to_resource]{add_tags_to_resource}}.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_tags_from_resource(

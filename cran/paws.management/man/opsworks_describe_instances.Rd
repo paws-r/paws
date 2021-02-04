@@ -7,15 +7,18 @@
 opsworks_describe_instances(StackId, LayerId, InstanceIds)
 }
 \arguments{
-\item{StackId}{A stack ID. If you use this parameter, \code{DescribeInstances} returns
-descriptions of the instances associated with the specified stack.}
+\item{StackId}{A stack ID. If you use this parameter,
+\code{\link[=opsworks_describe_instances]{describe_instances}} returns descriptions
+of the instances associated with the specified stack.}
 
-\item{LayerId}{A layer ID. If you use this parameter, \code{DescribeInstances} returns
-descriptions of the instances associated with the specified layer.}
+\item{LayerId}{A layer ID. If you use this parameter,
+\code{\link[=opsworks_describe_instances]{describe_instances}} returns descriptions
+of the instances associated with the specified layer.}
 
 \item{InstanceIds}{An array of instance IDs to be described. If you use this parameter,
-\code{DescribeInstances} returns a description of the specified instances.
-Otherwise, it returns a description of every instance.}
+\code{\link[=opsworks_describe_instances]{describe_instances}} returns a
+description of the specified instances. Otherwise, it returns a
+description of every instance.}
 }
 \description{
 Requests a description of a set of instances.

@@ -23,8 +23,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Creates a multicast domain using the specified transit gateway.
 
 The transit gateway must be in the available state before you create a
-domain. Use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGateways.html}{DescribeTransitGateways}
+domain. Use \code{\link[=ec2_describe_transit_gateways]{describe_transit_gateways}}
 to see the state of transit gateway.
 }
 \section{Request syntax}{

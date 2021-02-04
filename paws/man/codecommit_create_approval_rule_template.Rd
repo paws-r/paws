@@ -58,7 +58,7 @@ one or more repositories in your AWS account. When you associate a
 template with a repository, AWS CodeCommit creates an approval rule that
 matches the conditions of the template for all pull requests that meet
 the conditions of the template. For more information, see
-AssociateApprovalRuleTemplateWithRepository.
+\code{\link[=codecommit_associate_approval_rule_template_with_repository]{associate_approval_rule_template_with_repository}}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_approval_rule_template(

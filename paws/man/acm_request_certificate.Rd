@@ -50,9 +50,10 @@ because the total length of the DNS name (63+1+63+1+63+1+62) exceeds
 }}
 
 \item{IdempotencyToken}{Customer chosen string that can be used to distinguish between calls to
-\code{RequestCertificate}. Idempotency tokens time out after one hour.
-Therefore, if you call \code{RequestCertificate} multiple times with the same
-idempotency token within one hour, ACM recognizes that you are
+\code{\link[=acm_request_certificate]{request_certificate}}. Idempotency tokens
+time out after one hour. Therefore, if you call
+\code{\link[=acm_request_certificate]{request_certificate}} multiple times with the
+same idempotency token within one hour, ACM recognizes that you are
 requesting only one certificate and will issue only one. If you change
 the idempotency token for each call, ACM recognizes that you are
 requesting multiple certificates.}

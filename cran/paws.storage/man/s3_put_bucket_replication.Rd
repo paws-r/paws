@@ -75,12 +75,14 @@ AWS KMS-encrypted objects, add the following: \code{SourceSelectionCriteria},
 \code{ReplicaKmsKeyID}. For information about replication configuration, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-config-for-kms-objects.html}{Replicating Objects Created with SSE Using CMKs stored in AWS KMS}.
 
-For information on \code{PutBucketReplication} errors, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ReplicationErrorCodeList}{List of replication-related error codes}
+For information on \code{\link[=s3_put_bucket_replication]{put_bucket_replication}}
+errors, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ReplicationErrorCodeList}{List of replication-related error codes}
 
-The following operations are related to \code{PutBucketReplication}:
+The following operations are related to
+\code{\link[=s3_put_bucket_replication]{put_bucket_replication}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketReplication.html}{GetBucketReplication}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html}{DeleteBucketReplication}
+\item \code{\link[=s3_get_bucket_replication]{get_bucket_replication}}
+\item \code{\link[=s3_delete_bucket_replication]{delete_bucket_replication}}
 }
 }
 \section{Request syntax}{

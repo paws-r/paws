@@ -13,9 +13,9 @@ mturk_update_expiration_for_hit(HITId, ExpireAt)
 \item{ExpireAt}{[required] The date and time at which you want the HIT to expire}
 }
 \description{
-The \code{UpdateExpirationForHIT} operation allows you update the expiration
-time of a HIT. If you update it to a time in the past, the HIT will be
-immediately expired.
+The \code{\link[=mturk_update_expiration_for_hit]{update_expiration_for_hit}}
+operation allows you update the expiration time of a HIT. If you update
+it to a time in the past, the HIT will be immediately expired.
 }
 \section{Request syntax}{
 \preformatted{svc$update_expiration_for_hit(

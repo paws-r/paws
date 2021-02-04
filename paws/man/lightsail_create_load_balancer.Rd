@@ -38,7 +38,8 @@ certificate (e.g., \code{www.example.com}, \code{example.com}, \code{m.example.c
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-Use the \code{TagResource} action to tag a resource after it's created.}
+Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
+resource after it's created.}
 }
 \description{
 Creates a Lightsail load balancer. To learn more about deciding whether
@@ -48,7 +49,8 @@ in your account.
 
 When you create a load balancer, you can specify a unique name and port
 settings. To change additional load balancer settings, use the
-\code{UpdateLoadBalancerAttribute} operation.
+\code{\link[=lightsail_update_load_balancer_attribute]{update_load_balancer_attribute}}
+operation.
 
 The \verb{create load balancer} operation supports tag-based access control
 via request tags. For more information, see the Lightsail Dev Guide.

@@ -8,7 +8,9 @@ organizations_cancel_handshake(HandshakeId)
 }
 \arguments{
 \item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want to cancel. You
-can get the ID from the ListHandshakesForOrganization operation.
+can get the ID from the
+\code{\link[=organizations_list_handshakes_for_organization]{list_handshakes_for_organization}}
+operation.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for handshake
 ID string requires "h-" followed by from 8 to 32 lowercase letters or
@@ -20,8 +22,9 @@ Cancels a handshake. Canceling a handshake sets the handshake state to
 
 This operation can be called only from the account that originated the
 handshake. The recipient of the handshake can't cancel it, but can use
-DeclineHandshake instead. After a handshake is canceled, the recipient
-can no longer respond to that handshake.
+\code{\link[=organizations_decline_handshake]{decline_handshake}} instead. After a
+handshake is canceled, the recipient can no longer respond to that
+handshake.
 
 After you cancel a handshake, it continues to appear in the results of
 relevant APIs for only 30 days. After that, it's deleted.

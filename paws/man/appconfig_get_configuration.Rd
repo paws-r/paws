@@ -21,20 +21,22 @@ configuration ID.}
 enables AppConfig to deploy the configuration in intervals, as defined
 in the deployment strategy.}
 
-\item{ClientConfigurationVersion}{The configuration version returned in the most recent \code{GetConfiguration}
-response.
+\item{ClientConfigurationVersion}{The configuration version returned in the most recent
+\code{\link[=appconfig_get_configuration]{get_configuration}} response.
 
 AWS AppConfig uses the value of the \code{ClientConfigurationVersion}
 parameter to identify the configuration version on your clients. If you
 don’t send \code{ClientConfigurationVersion} with each call to
-\code{GetConfiguration}, your clients receive the current configuration. You
-are charged each time your clients receive a configuration.
+\code{\link[=appconfig_get_configuration]{get_configuration}}, your clients receive
+the current configuration. You are charged each time your clients
+receive a configuration.
 
 To avoid excess charges, we recommend that you include the
 \code{ClientConfigurationVersion} value with every call to
-\code{GetConfiguration}. This value must be saved on your client. Subsequent
-calls to \code{GetConfiguration} must pass this value by using the
-\code{ClientConfigurationVersion} parameter.
+\code{\link[=appconfig_get_configuration]{get_configuration}}. This value must be
+saved on your client. Subsequent calls to
+\code{\link[=appconfig_get_configuration]{get_configuration}} must pass this value
+by using the \code{ClientConfigurationVersion} parameter.
 
 For more information about working with configurations, see \href{https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-retrieving-the-configuration.html}{Retrieving the Configuration}
 in the \emph{AWS AppConfig User Guide}.}
@@ -45,14 +47,16 @@ Receive information about a configuration.
 AWS AppConfig uses the value of the \code{ClientConfigurationVersion}
 parameter to identify the configuration version on your clients. If you
 don’t send \code{ClientConfigurationVersion} with each call to
-\code{GetConfiguration}, your clients receive the current configuration. You
-are charged each time your clients receive a configuration.
+\code{\link[=appconfig_get_configuration]{get_configuration}}, your clients receive
+the current configuration. You are charged each time your clients
+receive a configuration.
 
 To avoid excess charges, we recommend that you include the
 \code{ClientConfigurationVersion} value with every call to
-\code{GetConfiguration}. This value must be saved on your client. Subsequent
-calls to \code{GetConfiguration} must pass this value by using the
-\code{ClientConfigurationVersion} parameter.
+\code{\link[=appconfig_get_configuration]{get_configuration}}. This value must be
+saved on your client. Subsequent calls to
+\code{\link[=appconfig_get_configuration]{get_configuration}} must pass this value
+by using the \code{ClientConfigurationVersion} parameter.
 }
 \section{Request syntax}{
 \preformatted{svc$get_configuration(

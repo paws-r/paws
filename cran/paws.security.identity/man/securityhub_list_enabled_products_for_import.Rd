@@ -9,8 +9,8 @@ securityhub_list_enabled_products_for_import(NextToken, MaxResults)
 }
 \arguments{
 \item{NextToken}{The token that is required for pagination. On your first call to the
-\code{ListEnabledProductsForImport} operation, set the value of this
-parameter to \code{NULL}.
+\code{\link[=securityhub_list_enabled_products_for_import]{list_enabled_products_for_import}}
+operation, set the value of this parameter to \code{NULL}.
 
 For subsequent calls to the operation, to continue listing data, set the
 value of this parameter to the value returned from the previous

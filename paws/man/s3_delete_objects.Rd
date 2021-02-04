@@ -78,13 +78,14 @@ Finally, the Content-MD5 header is required for all Multi-Object Delete
 requests. Amazon S3 uses the header value to ensure that your request
 body has not been altered in transit.
 
-The following operations are related to \code{DeleteObjects}:
+The following operations are related to
+\code{\link[=s3_delete_objects]{delete_objects}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html}{CompleteMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html}{ListParts}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html}{AbortMultipartUpload}
+\item \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}
+\item \code{\link[=s3_upload_part]{upload_part}}
+\item \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}
+\item \code{\link[=s3_list_parts]{list_parts}}
+\item \code{\link[=s3_abort_multipart_upload]{abort_multipart_upload}}
 }
 }
 \section{Request syntax}{

@@ -29,9 +29,11 @@ from a previous call.)}
 Lists the properties of available patches organized by product, product
 family, classification, severity, and other properties of available
 patches. You can use the reported properties in the filters you specify
-in requests for actions such as CreatePatchBaseline,
-UpdatePatchBaseline, DescribeAvailablePatches, and
-DescribePatchBaselines.
+in requests for actions such as
+\code{\link[=ssm_create_patch_baseline]{create_patch_baseline}},
+\code{\link[=ssm_update_patch_baseline]{update_patch_baseline}},
+\code{\link[=ssm_describe_available_patches]{describe_available_patches}}, and
+\code{\link[=ssm_describe_patch_baselines]{describe_patch_baselines}}.
 
 The following section lists the properties that can be used in filters
 for each major operating system type:

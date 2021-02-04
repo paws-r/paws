@@ -11,8 +11,9 @@ sesv2_get_dedicated_ips(PoolName, NextToken, PageSize)
 \item{PoolName}{The name of the IP pool that the dedicated IP address is associated
 with.}
 
-\item{NextToken}{A token returned from a previous call to \code{GetDedicatedIps} to indicate
-the position of the dedicated IP pool in the list of IP pools.}
+\item{NextToken}{A token returned from a previous call to
+\code{\link[=sesv2_get_dedicated_ips]{get_dedicated_ips}} to indicate the position
+of the dedicated IP pool in the list of IP pools.}
 
 \item{PageSize}{The number of results to show in a single call to
 \code{GetDedicatedIpsRequest}. If the number of results is larger than the

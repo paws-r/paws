@@ -20,7 +20,7 @@ NULL
 #' exchanged.
 #' @param TargetReservedNodeOfferingId &#91;required&#93; The unique identifier of the DC2 Reserved Node offering to be used for
 #' the exchange. You can obtain the value for the parameter by calling
-#' GetReservedNodeExchangeOfferings
+#' [`get_reserved_node_exchange_offerings`][redshift_get_reserved_node_exchange_offerings]
 #'
 #' @section Request syntax:
 #' ```
@@ -560,7 +560,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' @param AutomatedSnapshotRetentionPeriod The number of days that automated snapshots are retained. If the value
 #' is 0, automated snapshots are disabled. Even if automated snapshots are
 #' disabled, you can still create manual snapshots when you want with
-#' CreateClusterSnapshot.
+#' [`create_cluster_snapshot`][redshift_create_cluster_snapshot].
 #' 
 #' Default: `1`
 #' 
@@ -730,7 +730,8 @@ redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterTyp
 #' Creating parameter groups is independent of creating clusters. You can
 #' associate a cluster with a parameter group when you create the cluster.
 #' You can also associate an existing cluster with a parameter group after
-#' the cluster is created by using ModifyCluster.
+#' the cluster is created by using
+#' [`modify_cluster`][redshift_modify_cluster].
 #' 
 #' Parameters in the parameter group define specific behavior that applies
 #' to the databases you create on the cluster. For more information about
@@ -759,12 +760,12 @@ redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterTyp
 #' applies. The cluster engine version determines the set of parameters.
 #' 
 #' To get a list of valid parameter group family names, you can call
-#' DescribeClusterParameterGroups. By default, Amazon Redshift returns a
-#' list of all the parameter groups that are owned by your AWS account,
-#' including the default parameter groups for each Amazon Redshift engine
-#' version. The parameter group family names associated with the default
-#' parameter groups provide you the valid values. For example, a valid
-#' family name is "redshift-1.0".
+#' [`describe_cluster_parameter_groups`][redshift_describe_cluster_parameter_groups].
+#' By default, Amazon Redshift returns a list of all the parameter groups
+#' that are owned by your AWS account, including the default parameter
+#' groups for each Amazon Redshift engine version. The parameter group
+#' family names associated with the default parameter groups provide you
+#' the valid values. For example, a valid family name is "redshift-1.0".
 #' @param Description &#91;required&#93; A description of the parameter group.
 #' @param Tags A list of tag instances.
 #'
@@ -1265,7 +1266,8 @@ redshift_create_hsm_configuration <- function(HsmConfigurationIdentifier, Descri
 #' @description
 #' Creates a scheduled action. A scheduled action contains a schedule and
 #' an Amazon Redshift API action. For example, you can create a schedule of
-#' when to run the `ResizeCluster` API operation.
+#' when to run the [`resize_cluster`][redshift_resize_cluster] API
+#' operation.
 #'
 #' @usage
 #' redshift_create_scheduled_action(ScheduledActionName, TargetAction,
@@ -1603,10 +1605,11 @@ redshift_create_usage_limit <- function(ClusterIdentifier, FeatureType, LimitTyp
 #' @description
 #' Deletes a previously provisioned cluster without its final snapshot
 #' being created. A successful response from the web service indicates that
-#' the request was received correctly. Use DescribeClusters to monitor the
-#' status of the deletion. The delete operation cannot be canceled or
-#' reverted once submitted. For more information about managing clusters,
-#' go to [Amazon Redshift
+#' the request was received correctly. Use
+#' [`describe_clusters`][redshift_describe_clusters] to monitor the status
+#' of the deletion. The delete operation cannot be canceled or reverted
+#' once submitted. For more information about managing clusters, go to
+#' [Amazon Redshift
 #' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
@@ -2243,11 +2246,11 @@ redshift_describe_account_attributes <- function(AttributeNames = NULL) {
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point for returning a
 #' set of response records. When the results of a
-#' `DescribeClusterDbRevisions` request exceed the value specified in
-#' `MaxRecords`, Amazon Redshift returns a value in the `marker` field of
-#' the response. You can retrieve the next set of response records by
-#' providing the returned `marker` value in the `marker` parameter and
-#' retrying the request.
+#' [`describe_cluster_db_revisions`][redshift_describe_cluster_db_revisions]
+#' request exceed the value specified in `MaxRecords`, Amazon Redshift
+#' returns a value in the `marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned `marker`
+#' value in the `marker` parameter and retrying the request.
 #' 
 #' Constraints: You can specify either the `ClusterIdentifier` parameter,
 #' or the `marker` parameter, but not both.
@@ -2324,11 +2327,11 @@ redshift_describe_cluster_db_revisions <- function(ClusterIdentifier = NULL, Max
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
-#' DescribeClusterParameterGroups request exceed the value specified in
-#' `MaxRecords`, AWS returns a value in the `Marker` field of the response.
-#' You can retrieve the next set of response records by providing the
-#' returned marker value in the `Marker` parameter and retrying the
-#' request.
+#' [`describe_cluster_parameter_groups`][redshift_describe_cluster_parameter_groups]
+#' request exceed the value specified in `MaxRecords`, AWS returns a value
+#' in the `Marker` field of the response. You can retrieve the next set of
+#' response records by providing the returned marker value in the `Marker`
+#' parameter and retrying the request.
 #' @param TagKeys A tag key or keys for which you want to return all matching cluster
 #' parameter groups that are associated with the specified key or keys. For
 #' example, suppose that you have parameter groups that are tagged with
@@ -2390,8 +2393,9 @@ redshift_describe_cluster_parameter_groups <- function(ParameterGroupName = NULL
 #' 
 #' You can specify *source* filter to retrieve parameters of only specific
 #' type. For example, to retrieve parameters that were modified by a user
-#' action such as from ModifyClusterParameterGroup, you can specify
-#' *source* equal to *user*.
+#' action such as from
+#' [`modify_cluster_parameter_group`][redshift_modify_cluster_parameter_group],
+#' you can specify *source* equal to *user*.
 #' 
 #' For more information about parameters and parameter groups, go to
 #' [Amazon Redshift Parameter
@@ -2420,7 +2424,8 @@ redshift_describe_cluster_parameter_groups <- function(ParameterGroupName = NULL
 #' 
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
-#' of response records. When the results of a DescribeClusterParameters
+#' of response records. When the results of a
+#' [`describe_cluster_parameters`][redshift_describe_cluster_parameters]
 #' request exceed the value specified in `MaxRecords`, AWS returns a value
 #' in the `Marker` field of the response. You can retrieve the next set of
 #' response records by providing the returned marker value in the `Marker`
@@ -2497,7 +2502,8 @@ redshift_describe_cluster_parameters <- function(ParameterGroupName, Source = NU
 #' 
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
-#' of response records. When the results of a DescribeClusterSecurityGroups
+#' of response records. When the results of a
+#' [`describe_cluster_security_groups`][redshift_describe_cluster_security_groups]
 #' request exceed the value specified in `MaxRecords`, AWS returns a value
 #' in the `Marker` field of the response. You can retrieve the next set of
 #' response records by providing the returned marker value in the `Marker`
@@ -2611,7 +2617,8 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
 #' 
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
-#' of response records. When the results of a DescribeClusterSnapshots
+#' of response records. When the results of a
+#' [`describe_cluster_snapshots`][redshift_describe_cluster_snapshots]
 #' request exceed the value specified in `MaxRecords`, AWS returns a value
 #' in the `Marker` field of the response. You can retrieve the next set of
 #' response records by providing the returned marker value in the `Marker`
@@ -2737,7 +2744,8 @@ redshift_describe_cluster_snapshots <- function(ClusterIdentifier = NULL, Snapsh
 #' 
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
-#' of response records. When the results of a DescribeClusterSubnetGroups
+#' of response records. When the results of a
+#' [`describe_cluster_subnet_groups`][redshift_describe_cluster_subnet_groups]
 #' request exceed the value specified in `MaxRecords`, AWS returns a value
 #' in the `Marker` field of the response. You can retrieve the next set of
 #' response records by providing the returned marker value in the `Marker`
@@ -2803,11 +2811,12 @@ redshift_describe_cluster_subnet_groups <- function(ClusterSubnetGroupName = NUL
 #' @param MaintenanceTrackName The name of the maintenance track.
 #' @param MaxRecords An integer value for the maximum number of maintenance tracks to return.
 #' @param Marker An optional parameter that specifies the starting point to return a set
-#' of response records. When the results of a `DescribeClusterTracks`
-#' request exceed the value specified in `MaxRecords`, Amazon Redshift
-#' returns a value in the `Marker` field of the response. You can retrieve
-#' the next set of response records by providing the returned marker value
-#' in the `Marker` parameter and retrying the request.
+#' of response records. When the results of a
+#' [`describe_cluster_tracks`][redshift_describe_cluster_tracks] request
+#' exceed the value specified in `MaxRecords`, Amazon Redshift returns a
+#' value in the `Marker` field of the response. You can retrieve the next
+#' set of response records by providing the returned marker value in the
+#' `Marker` parameter and retrying the request.
 #'
 #' @section Request syntax:
 #' ```
@@ -2875,7 +2884,8 @@ redshift_describe_cluster_tracks <- function(MaintenanceTrackName = NULL, MaxRec
 #' 
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
-#' of response records. When the results of a DescribeClusterVersions
+#' of response records. When the results of a
+#' [`describe_cluster_versions`][redshift_describe_cluster_versions]
 #' request exceed the value specified in `MaxRecords`, AWS returns a value
 #' in the `Marker` field of the response. You can retrieve the next set of
 #' response records by providing the returned marker value in the `Marker`
@@ -2952,11 +2962,12 @@ redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterPar
 #' 
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
-#' of response records. When the results of a DescribeClusters request
-#' exceed the value specified in `MaxRecords`, AWS returns a value in the
-#' `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' of response records. When the results of a
+#' [`describe_clusters`][redshift_describe_clusters] request exceed the
+#' value specified in `MaxRecords`, AWS returns a value in the `Marker`
+#' field of the response. You can retrieve the next set of response records
+#' by providing the returned marker value in the `Marker` parameter and
+#' retrying the request.
 #' 
 #' Constraints: You can specify either the **ClusterIdentifier** parameter
 #' or the **Marker** parameter, but not both.
@@ -3036,11 +3047,11 @@ redshift_describe_clusters <- function(ClusterIdentifier = NULL, MaxRecords = NU
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
-#' DescribeDefaultClusterParameters request exceed the value specified in
-#' `MaxRecords`, AWS returns a value in the `Marker` field of the response.
-#' You can retrieve the next set of response records by providing the
-#' returned marker value in the `Marker` parameter and retrying the
-#' request.
+#' [`describe_default_cluster_parameters`][redshift_describe_default_cluster_parameters]
+#' request exceed the value specified in `MaxRecords`, AWS returns a value
+#' in the `Marker` field of the response. You can retrieve the next set of
+#' response records by providing the returned marker value in the `Marker`
+#' parameter and retrying the request.
 #'
 #' @section Request syntax:
 #' ```
@@ -3281,10 +3292,11 @@ redshift_describe_event_subscriptions <- function(SubscriptionName = NULL, MaxRe
 #' 
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
-#' of response records. When the results of a DescribeEvents request exceed
-#' the value specified in `MaxRecords`, AWS returns a value in the `Marker`
-#' field of the response. You can retrieve the next set of response records
-#' by providing the returned marker value in the `Marker` parameter and
+#' of response records. When the results of a
+#' [`describe_events`][redshift_describe_events] request exceed the value
+#' specified in `MaxRecords`, AWS returns a value in the `Marker` field of
+#' the response. You can retrieve the next set of response records by
+#' providing the returned marker value in the `Marker` parameter and
 #' retrying the request.
 #'
 #' @section Request syntax:
@@ -3359,7 +3371,8 @@ redshift_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL,
 #' 
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
-#' of response records. When the results of a DescribeHsmClientCertificates
+#' of response records. When the results of a
+#' [`describe_hsm_client_certificates`][redshift_describe_hsm_client_certificates]
 #' request exceed the value specified in `MaxRecords`, AWS returns a value
 #' in the `Marker` field of the response. You can retrieve the next set of
 #' response records by providing the returned marker value in the `Marker`
@@ -3449,7 +3462,8 @@ redshift_describe_hsm_client_certificates <- function(HsmClientCertificateIdenti
 #' 
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
-#' of response records. When the results of a DescribeHsmConfigurations
+#' of response records. When the results of a
+#' [`describe_hsm_configurations`][redshift_describe_hsm_configurations]
 #' request exceed the value specified in `MaxRecords`, AWS returns a value
 #' in the `Marker` field of the response. You can retrieve the next set of
 #' response records by providing the returned marker value in the `Marker`
@@ -3573,11 +3587,11 @@ redshift_describe_logging_status <- function(ClusterIdentifier) {
 #' @param Filters A set of name, operator, and value items to filter the results.
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
-#' DescribeNodeConfigurationOptions request exceed the value specified in
-#' `MaxRecords`, AWS returns a value in the `Marker` field of the response.
-#' You can retrieve the next set of response records by providing the
-#' returned marker value in the `Marker` parameter and retrying the
-#' request.
+#' [`describe_node_configuration_options`][redshift_describe_node_configuration_options]
+#' request exceed the value specified in `MaxRecords`, AWS returns a value
+#' in the `Marker` field of the response. You can retrieve the next set of
+#' response records by providing the returned marker value in the `Marker`
+#' parameter and retrying the request.
 #' @param MaxRecords The maximum number of response records to return in each call. If the
 #' number of remaining response records exceeds the specified `MaxRecords`
 #' value, a value is returned in a `marker` field of the response. You can
@@ -3653,7 +3667,7 @@ redshift_describe_node_configuration_options <- function(ActionType, ClusterIden
 #' Default: All versions.
 #' 
 #' Constraints: Must be one of the version returned from
-#' DescribeClusterVersions.
+#' [`describe_cluster_versions`][redshift_describe_cluster_versions].
 #' @param NodeType The node type filter value. Specify this parameter to show only the
 #' available offerings matching the specified node type.
 #' @param MaxRecords The maximum number of response records to return in each call. If the
@@ -3667,11 +3681,11 @@ redshift_describe_node_configuration_options <- function(ActionType, ClusterIden
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
-#' DescribeOrderableClusterOptions request exceed the value specified in
-#' `MaxRecords`, AWS returns a value in the `Marker` field of the response.
-#' You can retrieve the next set of response records by providing the
-#' returned marker value in the `Marker` parameter and retrying the
-#' request.
+#' [`describe_orderable_cluster_options`][redshift_describe_orderable_cluster_options]
+#' request exceed the value specified in `MaxRecords`, AWS returns a value
+#' in the `Marker` field of the response. You can retrieve the next set of
+#' response records by providing the returned marker value in the `Marker`
+#' parameter and retrying the request.
 #'
 #' @section Request syntax:
 #' ```
@@ -3714,8 +3728,9 @@ redshift_describe_orderable_cluster_options <- function(ClusterVersion = NULL, N
 #' recurring costs of reserving the node and duration the node will be
 #' reserved for you. These descriptions help you determine which reserve
 #' node offering you want to purchase. You then use the unique offering ID
-#' in you call to PurchaseReservedNodeOffering to reserve one or more nodes
-#' for your Amazon Redshift cluster.
+#' in you call to
+#' [`purchase_reserved_node_offering`][redshift_purchase_reserved_node_offering]
+#' to reserve one or more nodes for your Amazon Redshift cluster.
 #' 
 #' For more information about reserved node offerings, go to [Purchasing
 #' Reserved
@@ -3737,7 +3752,8 @@ redshift_describe_orderable_cluster_options <- function(ClusterVersion = NULL, N
 #' 
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
-#' of response records. When the results of a DescribeReservedNodeOfferings
+#' of response records. When the results of a
+#' [`describe_reserved_node_offerings`][redshift_describe_reserved_node_offerings]
 #' request exceed the value specified in `MaxRecords`, AWS returns a value
 #' in the `Marker` field of the response. You can retrieve the next set of
 #' response records by providing the returned marker value in the `Marker`
@@ -3791,7 +3807,8 @@ redshift_describe_reserved_node_offerings <- function(ReservedNodeOfferingId = N
 #' 
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
-#' of response records. When the results of a DescribeReservedNodes request
+#' of response records. When the results of a
+#' [`describe_reserved_nodes`][redshift_describe_reserved_nodes] request
 #' exceed the value specified in `MaxRecords`, AWS returns a value in the
 #' `Marker` field of the response. You can retrieve the next set of
 #' response records by providing the returned marker value in the `Marker`
@@ -3836,8 +3853,9 @@ redshift_describe_reserved_nodes <- function(ReservedNodeId = NULL, MaxRecords =
 #' was initiated and completed, the status of the resize remains as
 #' `SUCCEEDED` until the next resize.
 #' 
-#' A resize operation can be requested using ModifyCluster and specifying a
-#' different number or type of nodes for the cluster.
+#' A resize operation can be requested using
+#' [`modify_cluster`][redshift_modify_cluster] and specifying a different
+#' number or type of nodes for the cluster.
 #'
 #' @usage
 #' redshift_describe_resize(ClusterIdentifier)
@@ -3895,7 +3913,8 @@ redshift_describe_resize <- function(ClusterIdentifier) {
 #' disabled scheduled actions.
 #' @param Filters List of scheduled action filters.
 #' @param Marker An optional parameter that specifies the starting point to return a set
-#' of response records. When the results of a DescribeScheduledActions
+#' of response records. When the results of a
+#' [`describe_scheduled_actions`][redshift_describe_scheduled_actions]
 #' request exceed the value specified in `MaxRecords`, AWS returns a value
 #' in the `Marker` field of the response. You can retrieve the next set of
 #' response records by providing the returned marker value in the `Marker`
@@ -4137,12 +4156,14 @@ redshift_describe_storage <- function() {
 #'
 #' @description
 #' Lists the status of one or more table restore requests made using the
-#' RestoreTableFromClusterSnapshot API action. If you don't specify a value
-#' for the `TableRestoreRequestId` parameter, then
-#' `DescribeTableRestoreStatus` returns the status of all table restore
-#' requests ordered by the date and time of the request in ascending order.
-#' Otherwise `DescribeTableRestoreStatus` returns the status of the table
-#' specified by `TableRestoreRequestId`.
+#' [`restore_table_from_cluster_snapshot`][redshift_restore_table_from_cluster_snapshot]
+#' API action. If you don't specify a value for the `TableRestoreRequestId`
+#' parameter, then
+#' [`describe_table_restore_status`][redshift_describe_table_restore_status]
+#' returns the status of all table restore requests ordered by the date and
+#' time of the request in ascending order. Otherwise
+#' [`describe_table_restore_status`][redshift_describe_table_restore_status]
+#' returns the status of the table specified by `TableRestoreRequestId`.
 #'
 #' @usage
 #' redshift_describe_table_restore_status(ClusterIdentifier,
@@ -4151,16 +4172,17 @@ redshift_describe_storage <- function() {
 #' @param ClusterIdentifier The Amazon Redshift cluster that the table is being restored to.
 #' @param TableRestoreRequestId The identifier of the table restore request to return status for. If you
 #' don't specify a `TableRestoreRequestId` value, then
-#' `DescribeTableRestoreStatus` returns the status of all in-progress table
-#' restore requests.
+#' [`describe_table_restore_status`][redshift_describe_table_restore_status]
+#' returns the status of all in-progress table restore requests.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' called a marker is included in the response so that the remaining
 #' results can be retrieved.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeTableRestoreStatus` request. If this parameter is specified,
-#' the response includes only records beyond the marker, up to the value
-#' specified by the `MaxRecords` parameter.
+#' [`describe_table_restore_status`][redshift_describe_table_restore_status]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by the `MaxRecords`
+#' parameter.
 #'
 #' @section Request syntax:
 #' ```
@@ -4199,7 +4221,8 @@ redshift_describe_table_restore_status <- function(ClusterIdentifier = NULL, Tab
 #' specifying an ARN, or you can return all tags for a given type of
 #' resource, such as clusters, snapshots, and so on.
 #' 
-#' The following are limitations for `DescribeTags`:
+#' The following are limitations for
+#' [`describe_tags`][redshift_describe_tags]:
 #' 
 #' -   You cannot specify an ARN and a resource-type value together in the
 #'     same request.
@@ -4353,11 +4376,12 @@ redshift_describe_tags <- function(ResourceName = NULL, ResourceType = NULL, Max
 #' 
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
-#' of response records. When the results of a DescribeUsageLimits request
-#' exceed the value specified in `MaxRecords`, AWS returns a value in the
-#' `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' of response records. When the results of a
+#' [`describe_usage_limits`][redshift_describe_usage_limits] request exceed
+#' the value specified in `MaxRecords`, AWS returns a value in the `Marker`
+#' field of the response. You can retrieve the next set of response records
+#' by providing the returned marker value in the `Marker` parameter and
+#' retrying the request.
 #' @param TagKeys A tag key or keys for which you want to return all matching usage limit
 #' objects that are associated with the specified key or keys. For example,
 #' suppose that you have parameter groups that are tagged with keys called
@@ -4458,9 +4482,10 @@ redshift_disable_logging <- function(ClusterIdentifier) {
 #' region for a specified cluster.
 #' 
 #' If your cluster and its snapshots are encrypted using a customer master
-#' key (CMK) from AWS KMS, use DeleteSnapshotCopyGrant to delete the grant
-#' that grants Amazon Redshift permission to the CMK in the destination
-#' region.
+#' key (CMK) from AWS KMS, use
+#' [`delete_snapshot_copy_grant`][redshift_delete_snapshot_copy_grant] to
+#' delete the grant that grants Amazon Redshift permission to the CMK in
+#' the destination region.
 #'
 #' @usage
 #' redshift_disable_snapshot_copy(ClusterIdentifier)
@@ -4866,8 +4891,8 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' into a read-only mode. After Amazon Redshift provisions a new cluster
 #' based on your resize requirements, there will be outage for a period
 #' while the old cluster is deleted and your connection is switched to the
-#' new cluster. You can use DescribeResize to track the progress of the
-#' resize request.
+#' new cluster. You can use [`describe_resize`][redshift_describe_resize]
+#' to track the progress of the resize request.
 #' 
 #' Valid Values: ` multi-node | single-node `
 #' @param NodeType The new node type of the cluster. If you specify a new node type, you
@@ -4932,7 +4957,7 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #'     (single quote), " (double quote), \\, /, @@, or space.
 #' @param ClusterParameterGroupName The name of the cluster parameter group to apply to this cluster. This
 #' change is applied only after the cluster is rebooted. To reboot a
-#' cluster use RebootCluster.
+#' cluster use [`reboot_cluster`][redshift_reboot_cluster].
 #' 
 #' Default: Uses existing setting.
 #' 
@@ -4941,7 +4966,7 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' @param AutomatedSnapshotRetentionPeriod The number of days that automated snapshots are retained. If the value
 #' is 0, automated snapshots are disabled. Even if automated snapshots are
 #' disabled, you can still create manual snapshots when you want with
-#' CreateClusterSnapshot.
+#' [`create_cluster_snapshot`][redshift_create_cluster_snapshot].
 #' 
 #' If you decrease the automated snapshot retention period from its current
 #' value, existing automated snapshots that fall outside of the new
@@ -5118,7 +5143,9 @@ redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' 
 #' Example: `examplecluster`
 #' @param RevisionTarget &#91;required&#93; The identifier of the database revision. You can retrieve this value
-#' from the response to the DescribeClusterDbRevisions request.
+#' from the response to the
+#' [`describe_cluster_db_revisions`][redshift_describe_cluster_db_revisions]
+#' request.
 #'
 #' @section Request syntax:
 #' ```
@@ -5832,10 +5859,11 @@ redshift_pause_cluster <- function(ClusterIdentifier) {
 #' @description
 #' Allows you to purchase reserved nodes. Amazon Redshift offers a
 #' predefined set of reserved node offerings. You can purchase one or more
-#' of the offerings. You can call the DescribeReservedNodeOfferings API to
-#' obtain the available reserved node offerings. You can call this API by
-#' providing a specific reserved node offering and the number of nodes you
-#' want to reserve.
+#' of the offerings. You can call the
+#' [`describe_reserved_node_offerings`][redshift_describe_reserved_node_offerings]
+#' API to obtain the available reserved node offerings. You can call this
+#' API by providing a specific reserved node offering and the number of
+#' nodes you want to reserve.
 #' 
 #' For more information about reserved node offerings, go to [Purchasing
 #' Reserved
@@ -5886,9 +5914,9 @@ redshift_purchase_reserved_node_offering <- function(ReservedNodeOfferingId, Nod
 #' Reboots a cluster. This action is taken as soon as possible. It results
 #' in a momentary outage to the cluster, during which the cluster status is
 #' set to `rebooting`. A cluster event is created when the reboot is
-#' completed. Any pending cluster modifications (see ModifyCluster) are
-#' applied at this reboot. For more information about managing clusters, go
-#' to [Amazon Redshift
+#' completed. Any pending cluster modifications (see
+#' [`modify_cluster`][redshift_modify_cluster]) are applied at this reboot.
+#' For more information about managing clusters, go to [Amazon Redshift
 #' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
@@ -6078,10 +6106,10 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' original cluster from which the snapshot was created, except that the
 #' new cluster is created with the default cluster security and parameter
 #' groups. After Amazon Redshift creates the cluster, you can use the
-#' ModifyCluster API to associate a different security group and different
-#' parameter group with the restored cluster. If you are using a DS node
-#' type, you can also choose to change to another DS node type of the same
-#' size during restore.
+#' [`modify_cluster`][redshift_modify_cluster] API to associate a different
+#' security group and different parameter group with the restored cluster.
+#' If you are using a DS node type, you can also choose to change to
+#' another DS node type of the same size during restore.
 #' 
 #' If you restore a cluster into a VPC, you must provide a cluster subnet
 #' group where you want the cluster restored.
@@ -6195,7 +6223,7 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' @param AutomatedSnapshotRetentionPeriod The number of days that automated snapshots are retained. If the value
 #' is 0, automated snapshots are disabled. Even if automated snapshots are
 #' disabled, you can still create manual snapshots when you want with
-#' CreateClusterSnapshot.
+#' [`create_cluster_snapshot`][redshift_create_cluster_snapshot].
 #' 
 #' Default: The value selected for the cluster from which the snapshot was
 #' taken.
@@ -6317,16 +6345,20 @@ redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotId
 #' You must create the new table within the Amazon Redshift cluster that
 #' the snapshot was taken from.
 #' 
-#' You cannot use `RestoreTableFromClusterSnapshot` to restore a table with
-#' the same name as an existing table in an Amazon Redshift cluster. That
-#' is, you cannot overwrite an existing table in a cluster with a restored
-#' table. If you want to replace your original table with a new, restored
-#' table, then rename or drop your original table before you call
-#' `RestoreTableFromClusterSnapshot`. When you have renamed your original
-#' table, then you can pass the original name of the table as the
-#' `NewTableName` parameter value in the call to
-#' `RestoreTableFromClusterSnapshot`. This way, you can replace the
-#' original table with the table created from the snapshot.
+#' You cannot use
+#' [`restore_table_from_cluster_snapshot`][redshift_restore_table_from_cluster_snapshot]
+#' to restore a table with the same name as an existing table in an Amazon
+#' Redshift cluster. That is, you cannot overwrite an existing table in a
+#' cluster with a restored table. If you want to replace your original
+#' table with a new, restored table, then rename or drop your original
+#' table before you call
+#' [`restore_table_from_cluster_snapshot`][redshift_restore_table_from_cluster_snapshot].
+#' When you have renamed your original table, then you can pass the
+#' original name of the table as the `NewTableName` parameter value in the
+#' call to
+#' [`restore_table_from_cluster_snapshot`][redshift_restore_table_from_cluster_snapshot].
+#' This way, you can replace the original table with the table created from
+#' the snapshot.
 #'
 #' @usage
 #' redshift_restore_table_from_cluster_snapshot(ClusterIdentifier,
@@ -6423,8 +6455,10 @@ redshift_resume_cluster <- function(ClusterIdentifier) {
 #' @description
 #' Revokes an ingress rule in an Amazon Redshift security group for a
 #' previously authorized IP range or Amazon EC2 security group. To add an
-#' ingress rule, see AuthorizeClusterSecurityGroupIngress. For information
-#' about managing security groups, go to [Amazon Redshift Cluster Security
+#' ingress rule, see
+#' [`authorize_cluster_security_group_ingress`][redshift_authorize_cluster_security_group_ingress].
+#' For information about managing security groups, go to [Amazon Redshift
+#' Cluster Security
 #' Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'

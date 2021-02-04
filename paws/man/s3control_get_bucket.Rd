@@ -16,7 +16,7 @@ you must specify the name and the x-amz-outpost-id as well.
 
 For using this parameter with S3 on Outposts with the AWS SDK and CLI,
 you must specify the ARN of the bucket accessed in the format
-\verb{arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/bucket/&lt;my-bucket-name&gt;}.
+\verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/bucket/<my-bucket-name>}.
 For example, to access the bucket \code{reports} through outpost \code{my-outpost}
 owned by account \code{123456789012} in Region \code{us-west-2}, use the URL
 encoding of
@@ -38,8 +38,8 @@ If you don't have \code{s3-outposts:GetBucket} permissions or you're not
 using an identity that belongs to the bucket owner's account, Amazon S3
 returns a \verb{403 Access Denied} error.
 
-The following actions are related to \code{GetBucket} for Amazon S3 on
-Outposts:
+The following actions are related to
+\code{\link[=s3control_get_bucket]{get_bucket}} for Amazon S3 on Outposts:
 
 All Amazon S3 on Outposts REST API requests for this action require an
 additional parameter of \code{x-amz-outpost-id} to be passed with the request
@@ -51,8 +51,8 @@ derived using the access point ARN, see the
 section.
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html}{CreateBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucket.html}{DeleteBucket}
+\item \code{\link[=s3control_create_bucket]{create_bucket}}
+\item \code{\link[=s3control_delete_bucket]{delete_bucket}}
 }
 }
 \section{Request syntax}{

@@ -14,13 +14,14 @@ Terminates the ML compute instance. Before terminating the instance,
 Amazon SageMaker disconnects the ML storage volume from it. Amazon
 SageMaker preserves the ML storage volume. Amazon SageMaker stops
 charging you for the ML compute instance when you call
-\code{StopNotebookInstance}.
+\code{\link[=sagemaker_stop_notebook_instance]{stop_notebook_instance}}.
 
 To access data on the ML storage volume for a notebook instance that has
-been terminated, call the \code{StartNotebookInstance} API.
-\code{StartNotebookInstance} launches another ML compute instance, configures
-it, and attaches the preserved ML storage volume so you can continue
-your work.
+been terminated, call the
+\code{\link[=sagemaker_start_notebook_instance]{start_notebook_instance}} API.
+\code{\link[=sagemaker_start_notebook_instance]{start_notebook_instance}} launches
+another ML compute instance, configures it, and attaches the preserved
+ML storage volume so you can continue your work.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_notebook_instance(

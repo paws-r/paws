@@ -12,17 +12,19 @@ storagegateway_add_working_storage(GatewayARN, DiskIds)
 
 \item{DiskIds}{[required] An array of strings that identify disks that are to be configured as
 working storage. Each string has a minimum length of 1 and maximum
-length of 300. You can get the disk IDs from the ListLocalDisks API.}
+length of 300. You can get the disk IDs from the
+\code{\link[=storagegateway_list_local_disks]{list_local_disks}} API.}
 }
 \description{
 Configures one or more gateway local disks as working storage for a
 gateway. This operation is only supported in the stored volume gateway
 type. This operation is deprecated in cached volume API version
-20120630. Use AddUploadBuffer instead.
+20120630. Use \code{\link[=storagegateway_add_upload_buffer]{add_upload_buffer}}
+instead.
 
 Working storage is also referred to as upload buffer. You can also use
-the AddUploadBuffer operation to add upload buffer to a stored volume
-gateway.
+the \code{\link[=storagegateway_add_upload_buffer]{add_upload_buffer}} operation to
+add upload buffer to a stored volume gateway.
 
 In the request, you specify the gateway Amazon Resource Name (ARN) to
 which you want to add working storage, and one or more disk IDs that you

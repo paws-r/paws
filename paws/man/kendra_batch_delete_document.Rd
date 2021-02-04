@@ -16,7 +16,8 @@ kendra_batch_delete_document(IndexId, DocumentIdList,
 }
 \description{
 Removes one or more documents from an index. The documents must have
-been added with the BatchPutDocument operation.
+been added with the \code{\link[=kendra_batch_put_document]{batch_put_document}}
+operation.
 
 The documents are deleted asynchronously. You can see the progress of
 the deletion by using AWS CloudWatch. Any error messages releated to the

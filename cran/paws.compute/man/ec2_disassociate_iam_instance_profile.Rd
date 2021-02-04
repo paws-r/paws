@@ -13,7 +13,9 @@ ec2_disassociate_iam_instance_profile(AssociationId)
 Disassociates an IAM instance profile from a running or stopped
 instance.
 
-Use DescribeIamInstanceProfileAssociations to get the association ID.
+Use
+\code{\link[=ec2_describe_iam_instance_profile_associations]{describe_iam_instance_profile_associations}}
+to get the association ID.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_iam_instance_profile(

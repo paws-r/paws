@@ -14,9 +14,10 @@ private DNS namespace, AWS Cloud Map automatically creates an Amazon
 Route 53 private hosted zone that has the same name as the namespace.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and that allows failed
-\code{CreatePrivateDnsNamespace} requests to be retried without the risk of
-executing the operation twice. \code{CreatorRequestId} can be any unique
-string, for example, a date/time stamp.}
+\code{\link[=servicediscovery_create_private_dns_namespace]{create_private_dns_namespace}}
+requests to be retried without the risk of executing the operation
+twice. \code{CreatorRequestId} can be any unique string, for example, a
+date/time stamp.}
 
 \item{Description}{A description for the namespace.}
 

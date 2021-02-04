@@ -21,13 +21,16 @@ Layer (SSL).
 
 Once you create and validate your certificate, you can attach it to your
 load balancer. You can also use this API to rotate the certificates on
-your account. Use the \code{AttachLoadBalancerTlsCertificate} action with the
-non-attached certificate, and it will replace the existing one and
-become the attached certificate.
+your account. Use the
+\code{\link[=lightsail_attach_load_balancer_tls_certificate]{attach_load_balancer_tls_certificate}}
+action with the non-attached certificate, and it will replace the
+existing one and become the attached certificate.
 
-The \code{AttachLoadBalancerTlsCertificate} operation supports tag-based
-access control via resource tags applied to the resource identified by
-\verb{load balancer name}. For more information, see the Lightsail Dev Guide.
+The
+\code{\link[=lightsail_attach_load_balancer_tls_certificate]{attach_load_balancer_tls_certificate}}
+operation supports tag-based access control via resource tags applied to
+the resource identified by \verb{load balancer name}. For more information,
+see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$attach_load_balancer_tls_certificate(

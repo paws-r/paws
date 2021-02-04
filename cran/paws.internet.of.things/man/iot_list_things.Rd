@@ -22,9 +22,10 @@ results.}
 }
 \description{
 Lists your things. Use the \strong{attributeName} and \strong{attributeValue}
-parameters to filter your things. For example, calling \code{ListThings} with
-attributeName=Color and attributeValue=Red retrieves all things in the
-registry that contain an attribute \strong{Color} with the value \strong{Red}.
+parameters to filter your things. For example, calling
+\code{\link[=iot_list_things]{list_things}} with attributeName=Color and
+attributeValue=Red retrieves all things in the registry that contain an
+attribute \strong{Color} with the value \strong{Red}.
 
 You will not be charged for calling this API if an \verb{Access denied} error
 is returned. You will also not be charged if no attributes or pagination

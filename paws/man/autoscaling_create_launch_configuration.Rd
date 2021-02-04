@@ -169,8 +169,9 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 Creates a launch configuration.
 
 If you exceed your maximum limit of launch configurations, the call
-fails. To query this limit, call the DescribeAccountLimits API. For
-information about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling service quotas}
+fails. To query this limit, call the
+\code{\link[=autoscaling_describe_account_limits]{describe_account_limits}} API.
+For information about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling service quotas}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html}{Launch configurations}

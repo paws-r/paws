@@ -21,8 +21,9 @@ default is \code{ENTERPRISE_EDITION}.}
 
 \item{RoleArn}{[required] An AWS Identity and Access Management (IAM) role that gives Amazon
 Kendra permissions to access your Amazon CloudWatch logs and metrics.
-This is also the role used when you use the \code{BatchPutDocument} operation
-to index documents from an Amazon S3 bucket.}
+This is also the role used when you use the
+\code{\link[=kendra_batch_put_document]{batch_put_document}} operation to index
+documents from an Amazon S3 bucket.}
 
 \item{ServerSideEncryptionConfiguration}{The identifier of the AWS KMS customer managed key (CMK) to use to
 encrypt data indexed by Amazon Kendra. Amazon Kendra doesn't support
@@ -31,8 +32,8 @@ asymmetric CMKs.}
 \item{Description}{A description for the index.}
 
 \item{ClientToken}{A token that you provide to identify the request to create an index.
-Multiple calls to the \code{CreateIndex} operation with the same client token
-will create only one index.}
+Multiple calls to the \code{\link[=kendra_create_index]{create_index}} operation
+with the same client token will create only one index.}
 
 \item{Tags}{A list of key-value pairs that identify the index. You can use the tags
 to identify and organize your resources and to control access to

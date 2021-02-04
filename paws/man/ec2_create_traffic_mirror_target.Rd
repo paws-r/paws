@@ -38,7 +38,7 @@ A Traffic Mirror target can be a network interface, or a Network Load
 Balancer.
 
 To use the target in a Traffic Mirror session, use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/}{CreateTrafficMirrorSession}.
+\code{\link[=ec2_create_traffic_mirror_session]{create_traffic_mirror_session}}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_traffic_mirror_target(

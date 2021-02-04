@@ -10,8 +10,8 @@ ses_verify_email_address(EmailAddress)
 \item{EmailAddress}{[required] The email address to be verified.}
 }
 \description{
-Deprecated. Use the \code{VerifyEmailIdentity} operation to verify a new
-email address.
+Deprecated. Use the \code{\link[=ses_verify_email_identity]{verify_email_identity}}
+operation to verify a new email address.
 }
 \section{Request syntax}{
 \preformatted{svc$verify_email_address(

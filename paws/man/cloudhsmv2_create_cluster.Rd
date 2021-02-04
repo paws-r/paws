@@ -15,7 +15,8 @@ is \code{hsm1.medium}.}
 
 \item{SourceBackupId}{The identifier (ID) of the cluster backup to restore. Use this value to
 restore the cluster from a backup instead of creating a new cluster. To
-find the backup ID, use DescribeBackups.}
+find the backup ID, use
+\code{\link[=cloudhsmv2_describe_backups]{describe_backups}}.}
 
 \item{SubnetIds}{[required] The identifiers (IDs) of the subnets where you are creating the cluster.
 You must specify at least one subnet. If you specify multiple subnets,

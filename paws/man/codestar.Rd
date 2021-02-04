@@ -18,40 +18,49 @@ You can use the AWS CodeStar API to work with:
 
 Projects and their resources, by calling the following:
 \itemize{
-\item \code{DeleteProject}, which deletes a project.
-\item \code{DescribeProject}, which lists the attributes of a project.
-\item \code{ListProjects}, which lists all projects associated with your AWS
-account.
-\item \code{ListResources}, which lists the resources associated with a
+\item \code{\link[=codestar_delete_project]{delete_project}}, which deletes a
 project.
-\item \code{ListTagsForProject}, which lists the tags associated with a
+\item \code{\link[=codestar_describe_project]{describe_project}}, which lists the
+attributes of a project.
+\item \code{\link[=codestar_list_projects]{list_projects}}, which lists all projects
+associated with your AWS account.
+\item \code{\link[=codestar_list_resources]{list_resources}}, which lists the
+resources associated with a project.
+\item \code{\link[=codestar_list_tags_for_project]{list_tags_for_project}}, which
+lists the tags associated with a project.
+\item \code{\link[=codestar_tag_project]{tag_project}}, which adds tags to a project.
+\item \code{\link[=codestar_untag_project]{untag_project}}, which removes tags from a
 project.
-\item \code{TagProject}, which adds tags to a project.
-\item \code{UntagProject}, which removes tags from a project.
-\item \code{UpdateProject}, which updates the attributes of a project.
+\item \code{\link[=codestar_update_project]{update_project}}, which updates the
+attributes of a project.
 }
 
 Teams and team members, by calling the following:
 \itemize{
-\item \code{AssociateTeamMember}, which adds an IAM user to the team for a
-project.
-\item \code{DisassociateTeamMember}, which removes an IAM user from the team
-for a project.
-\item \code{ListTeamMembers}, which lists all the IAM users in the team for a
-project, including their roles and attributes.
-\item \code{UpdateTeamMember}, which updates a team member's attributes in a
-project.
+\item \code{\link[=codestar_associate_team_member]{associate_team_member}}, which
+adds an IAM user to the team for a project.
+\item \code{\link[=codestar_disassociate_team_member]{disassociate_team_member}},
+which removes an IAM user from the team for a project.
+\item \code{\link[=codestar_list_team_members]{list_team_members}}, which lists all
+the IAM users in the team for a project, including their roles and
+attributes.
+\item \code{\link[=codestar_update_team_member]{update_team_member}}, which updates a
+team member's attributes in a project.
 }
 
 Users, by calling the following:
 \itemize{
-\item \code{CreateUserProfile}, which creates a user profile that contains data
-associated with the user across all projects.
-\item \code{DeleteUserProfile}, which deletes all user profile information
-across all projects.
-\item \code{DescribeUserProfile}, which describes the profile of a user.
-\item \code{ListUserProfiles}, which lists all user profiles.
-\item \code{UpdateUserProfile}, which updates the profile for a user.
+\item \code{\link[=codestar_create_user_profile]{create_user_profile}}, which creates
+a user profile that contains data associated with the user across
+all projects.
+\item \code{\link[=codestar_delete_user_profile]{delete_user_profile}}, which deletes
+all user profile information across all projects.
+\item \code{\link[=codestar_describe_user_profile]{describe_user_profile}}, which
+describes the profile of a user.
+\item \code{\link[=codestar_list_user_profiles]{list_user_profiles}}, which lists all
+user profiles.
+\item \code{\link[=codestar_update_user_profile]{update_user_profile}}, which updates
+the profile for a user.
 }
 }
 \section{Service syntax}{

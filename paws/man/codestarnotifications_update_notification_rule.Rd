@@ -31,8 +31,9 @@ Updates a notification rule for a resource. You can change the events
 that trigger the notification rule, the status of the rule, and the
 targets that receive the notifications.
 
-To add or remove tags for a notification rule, you must use TagResource
-and UntagResource.
+To add or remove tags for a notification rule, you must use
+\code{\link[=codestarnotifications_tag_resource]{tag_resource}} and
+\code{\link[=codestarnotifications_untag_resource]{untag_resource}}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_notification_rule(

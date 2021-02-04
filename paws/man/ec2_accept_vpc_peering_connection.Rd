@@ -18,8 +18,9 @@ the request.}
 \description{
 Accept a VPC peering connection request. To accept a request, the VPC
 peering connection must be in the \code{pending-acceptance} state, and you
-must be the owner of the peer VPC. Use DescribeVpcPeeringConnections to
-view your outstanding VPC peering connection requests.
+must be the owner of the peer VPC. Use
+\code{\link[=ec2_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
+to view your outstanding VPC peering connection requests.
 
 For an inter-Region VPC peering connection request, you must accept the
 VPC peering connection in the Region of the accepter VPC.

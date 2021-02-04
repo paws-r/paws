@@ -51,9 +51,9 @@ propagated.}
 automatically trigger a task to run a batch process job, you could apply
 a unique identifier for that job to your task with the \code{startedBy}
 parameter. You can then identify which tasks belong to that job by
-filtering the results of a ListTasks call with the \code{startedBy} value. Up
-to 36 letters (uppercase and lowercase), numbers, hyphens, and
-underscores are allowed.
+filtering the results of a \code{\link[=ecs_list_tasks]{list_tasks}} call with the
+\code{startedBy} value. Up to 36 letters (uppercase and lowercase), numbers,
+hyphens, and underscores are allowed.
 
 If a task is started by an Amazon ECS service, then the \code{startedBy}
 parameter contains the deployment ID of the service that starts it.}
@@ -90,8 +90,8 @@ definition to start. If a \code{revision} is not specified, the latest
 Starts a new task from the specified task definition on the specified
 container instance or instances.
 
-Alternatively, you can use RunTask to place tasks for you. For more
-information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html}{Scheduling Tasks}
+Alternatively, you can use \code{\link[=ecs_run_task]{run_task}} to place tasks for
+you. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html}{Scheduling Tasks}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \section{Request syntax}{

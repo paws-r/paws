@@ -38,9 +38,9 @@ You can use this operation to do the following:
 
 You can't use this operation to list all assets. To retrieve summaries
 for all of your assets, use
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_ListAssetModels.html}{ListAssetModels}
-to get all of your asset model IDs. Then, use ListAssets to get all
-assets for each asset model.
+\code{\link[=iotsitewise_list_asset_models]{list_asset_models}} to get all of your
+asset model IDs. Then, use ListAssets to get all assets for each asset
+model.
 }
 \section{Request syntax}{
 \preformatted{svc$list_assets(

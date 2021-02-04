@@ -21,7 +21,7 @@ latitude.
 \item The second position is the Y coordinate, or latitude.
 }
 
-For example, \verb{position=xLongitude&amp;position=yLatitude} .}
+For example, \code{position=xLongitude&position=yLatitude} .}
 }
 \description{
 Reverse geocodes a given coordinate and returns a legible address.

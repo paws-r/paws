@@ -37,10 +37,11 @@ Transcribe Medical determine the sample rate.}
 
 You must set \code{OutputBucketName} for Amazon Transcribe Medical to store
 the transcription results. Your transcript appears in the S3 location
-you specify. When you call the GetMedicalTranscriptionJob, the operation
-returns this location in the \code{TranscriptFileUri} field. The S3 bucket
-must have permissions that allow Amazon Transcribe Medical to put files
-in the bucket. For more information, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.
+you specify. When you call the
+\code{\link[=transcribeservice_get_medical_transcription_job]{get_medical_transcription_job}},
+the operation returns this location in the \code{TranscriptFileUri} field.
+The S3 bucket must have permissions that allow Amazon Transcribe Medical
+to put files in the bucket. For more information, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.
 
 You can specify an AWS Key Management Service (KMS) key to encrypt the
 output of your transcription using the \code{OutputEncryptionKMSKeyId}
@@ -69,8 +70,9 @@ If you specify an output key, you must also specify an S3 bucket in the
 
 \item{OutputEncryptionKMSKeyId}{The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS)
 key used to encrypt the output of the transcription job. The user
-calling the StartMedicalTranscriptionJob operation must have permission
-to use the specified KMS key.
+calling the
+\code{\link[=transcribeservice_start_medical_transcription_job]{start_medical_transcription_job}}
+operation must have permission to use the specified KMS key.
 
 You use either of the following to identify a KMS key in the current
 account:

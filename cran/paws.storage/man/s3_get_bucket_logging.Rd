@@ -18,10 +18,11 @@ different account, the request will fail with an HTTP
 Returns the logging status of a bucket and the permissions users have to
 view and modify that status. To use GET, you must be the bucket owner.
 
-The following operations are related to \code{GetBucketLogging}:
+The following operations are related to
+\code{\link[=s3_get_bucket_logging]{get_bucket_logging}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLogging.html}{PutBucketLogging}
+\item \code{\link[=s3_create_bucket]{create_bucket}}
+\item \code{\link[=s3_put_bucket_logging]{put_bucket_logging}}
 }
 }
 \section{Request syntax}{

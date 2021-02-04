@@ -24,8 +24,8 @@ resources.}
 \item{SourceS3Path}{[required] The thesaurus file Amazon S3 source path.}
 
 \item{ClientToken}{A token that you provide to identify the request to create a thesaurus.
-Multiple calls to the \code{CreateThesaurus} operation with the same client
-token will create only one index.}
+Multiple calls to the \code{\link[=kendra_create_thesaurus]{create_thesaurus}}
+operation with the same client token will create only one index.}
 }
 \description{
 Creates a thesaurus for an index. The thesaurus contains a list of

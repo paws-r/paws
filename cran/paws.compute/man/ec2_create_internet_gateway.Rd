@@ -16,7 +16,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Creates an internet gateway for use with a VPC. After creating the
-internet gateway, you attach it to a VPC using AttachInternetGateway.
+internet gateway, you attach it to a VPC using
+\code{\link[=ec2_attach_internet_gateway]{attach_internet_gateway}}.
 
 For more information about your VPC and internet gateway, see the
 \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Amazon Virtual Private Cloud User Guide}.

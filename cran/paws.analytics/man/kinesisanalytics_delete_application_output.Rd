@@ -12,7 +12,7 @@ kinesisanalytics_delete_application_output(ApplicationName,
 \item{ApplicationName}{[required] Amazon Kinesis Analytics application name.}
 
 \item{CurrentApplicationVersionId}{[required] Amazon Kinesis Analytics application version. You can use the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+\code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation to get the current application version. If the version
 specified is not the current version, the
 \code{ConcurrentModificationException} is returned.}
@@ -20,11 +20,11 @@ specified is not the current version, the
 \item{OutputId}{[required] The ID of the configuration to delete. Each output configuration that is
 added to the application, either when the application is created or
 later using the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationOutput.html}{AddApplicationOutput}
+\code{\link[=kinesisanalytics_add_application_output]{add_application_output}}
 operation, has a unique ID. You need to provide the ID to uniquely
 identify the output configuration that you want to delete from the
 application configuration. You can use the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+\code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation to get the specific \code{OutputId}.}
 }
 \description{

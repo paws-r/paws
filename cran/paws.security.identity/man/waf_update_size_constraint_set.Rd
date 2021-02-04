@@ -9,10 +9,12 @@ waf_update_size_constraint_set(SizeConstraintSetId, ChangeToken,
 }
 \arguments{
 \item{SizeConstraintSetId}{[required] The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to
-update. \code{SizeConstraintSetId} is returned by CreateSizeConstraintSet and
-by ListSizeConstraintSets.}
+update. \code{SizeConstraintSetId} is returned by
+\code{\link[=waf_create_size_constraint_set]{create_size_constraint_set}} and by
+\code{\link[=waf_list_size_constraint_sets]{list_size_constraint_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 
 \item{Updates}{[required] An array of \code{SizeConstraintSetUpdate} objects that you want to insert
 into or delete from a SizeConstraintSet. For more information, see the
@@ -67,12 +69,16 @@ To create and configure a \code{SizeConstraintSet}, perform the following
 steps:
 \enumerate{
 \item Create a \code{SizeConstraintSet.} For more information, see
-CreateSizeConstraintSet.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of an \code{UpdateSizeConstraintSet} request.
-\item Submit an \code{UpdateSizeConstraintSet} request to specify the part of
-the request that you want AWS WAF to inspect (for example, the
-header or the URI) and the value that you want AWS WAF to watch for.
+\code{\link[=waf_create_size_constraint_set]{create_size_constraint_set}}.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=waf_update_size_constraint_set]{update_size_constraint_set}}
+request.
+\item Submit an
+\code{\link[=waf_update_size_constraint_set]{update_size_constraint_set}}
+request to specify the part of the request that you want AWS WAF to
+inspect (for example, the header or the URI) and the value that you
+want AWS WAF to watch for.
 }
 
 For more information about how to use the AWS WAF API to allow or block

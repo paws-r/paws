@@ -30,8 +30,8 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketEncryption.html}{PutBucketEncryption}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html}{GetBucketEncryption}
+\item \code{\link[=s3_put_bucket_encryption]{put_bucket_encryption}}
+\item \code{\link[=s3_get_bucket_encryption]{get_bucket_encryption}}
 }
 }
 \section{Request syntax}{

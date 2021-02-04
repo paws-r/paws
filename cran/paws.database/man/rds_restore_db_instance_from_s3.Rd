@@ -22,7 +22,8 @@ rds_restore_db_instance_from_s3(DBName, DBInstanceIdentifier,
 }
 \arguments{
 \item{DBName}{The name of the database to create when the DB instance is created.
-Follow the naming rules specified in \code{CreateDBInstance}.}
+Follow the naming rules specified in
+\code{\link[=rds_create_db_instance]{create_db_instance}}.}
 
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase
 string.
@@ -37,7 +38,8 @@ Constraints:
 Example: \code{mydbinstance}}
 
 \item{AllocatedStorage}{The amount of storage (in gigabytes) to allocate initially for the DB
-instance. Follow the allocation rules specified in \code{CreateDBInstance}.
+instance. Follow the allocation rules specified in
+\code{\link[=rds_create_db_instance]{create_db_instance}}.
 
 Be sure to allocate enough memory for your new DB instance so that the
 restore operation can succeed. You can also allocate additional memory
@@ -111,7 +113,7 @@ default \code{DBParameterGroup} for the specified DB engine is used.}
 
 \item{BackupRetentionPeriod}{The number of days for which automated backups are retained. Setting
 this parameter to a positive number enables backups. For more
-information, see \code{CreateDBInstance}.}
+information, see \code{\link[=rds_create_db_instance]{create_db_instance}}.}
 
 \item{PreferredBackupWindow}{The time range each day during which automated backups are created if
 automated backups are enabled. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{The Backup Window}
@@ -139,7 +141,8 @@ If the DB instance is a Multi-AZ deployment, you can't set the
 
 \item{EngineVersion}{The version number of the database engine to use. Choose the latest
 minor version of your database engine. For information about engine
-versions, see \code{CreateDBInstance}, or call \code{DescribeDBEngineVersions}.}
+versions, see \code{\link[=rds_create_db_instance]{create_db_instance}}, or call
+\code{\link[=rds_describe_db_engine_versions]{describe_db_engine_versions}}.}
 
 \item{AutoMinorVersionUpgrade}{A value that indicates whether minor engine upgrades are applied
 automatically to the DB instance during the maintenance window. By
@@ -168,7 +171,8 @@ the DB instance doesn't permit it.
 When the DB instance isn't publicly accessible, it is an internal DB
 instance with a DNS name that resolves to a private IP address.
 
-For more information, see CreateDBInstance.}
+For more information, see
+\code{\link[=rds_create_db_instance]{create_db_instance}}.}
 
 \item{Tags}{A list of tags to associate with this DB instance. For more information,
 see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html}{Tagging Amazon RDS Resources}

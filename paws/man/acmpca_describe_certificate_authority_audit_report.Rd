@@ -12,22 +12,19 @@ acmpca_describe_certificate_authority_audit_report(
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of the private CA. This must be of the
 form:
 
-\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
+\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 
 \item{AuditReportId}{[required] The report ID returned by calling the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html}{CreateCertificateAuthorityAuditReport}
+\code{\link[=acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report}}
 action.}
 }
 \description{
 Lists information about a specific audit report created by calling the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html}{CreateCertificateAuthorityAuditReport}
+\code{\link[=acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report}}
 action. Audit information is created every time the certificate
 authority (CA) private key is used. The private key is used when you
-call the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_IssueCertificate.html}{IssueCertificate}
-action or the
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_RevokeCertificate.html}{RevokeCertificate}
-action.
+call the \code{\link[=acmpca_issue_certificate]{issue_certificate}} action or the
+\code{\link[=acmpca_revoke_certificate]{revoke_certificate}} action.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_certificate_authority_audit_report(

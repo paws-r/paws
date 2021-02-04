@@ -16,9 +16,10 @@ parameter value must be greater than 0. The number of items that Amazon
 FSx returns is the minimum of the \code{MaxResults} parameter specified in
 the request and the service's internal maximum number of items per page.}
 
-\item{NextToken}{Opaque pagination token returned from a previous \code{DescribeFileSystems}
-operation (String). If a token present, the action continues the list
-from where the returning call left off.}
+\item{NextToken}{Opaque pagination token returned from a previous
+\code{\link[=fsx_describe_file_systems]{describe_file_systems}} operation (String).
+If a token present, the action continues the list from where the
+returning call left off.}
 }
 \description{
 Returns the description of specific Amazon FSx file systems, if a
@@ -34,9 +35,10 @@ with the \code{NextToken} request parameter set to the value of \code{NextToken}
 from the last response.
 
 This action is used in an iterative process to retrieve a list of your
-file system descriptions. \code{DescribeFileSystems} is called first without
-a \code{NextToken}value. Then the action continues to be called with the
-\code{NextToken} parameter set to the value of the last \code{NextToken} value
+file system descriptions.
+\code{\link[=fsx_describe_file_systems]{describe_file_systems}} is called first
+without a \code{NextToken}value. Then the action continues to be called with
+the \code{NextToken} parameter set to the value of the last \code{NextToken} value
 until a response has no \code{NextToken}.
 
 When using this action, keep the following in mind:
@@ -44,8 +46,9 @@ When using this action, keep the following in mind:
 \item The implementation might return fewer than \code{MaxResults} file system
 descriptions while still including a \code{NextToken} value.
 \item The order of file systems returned in the response of one
-\code{DescribeFileSystems} call and the order of file systems returned
-across the responses of a multicall iteration is unspecified.
+\code{\link[=fsx_describe_file_systems]{describe_file_systems}} call and the
+order of file systems returned across the responses of a multicall
+iteration is unspecified.
 }
 }
 \section{Request syntax}{

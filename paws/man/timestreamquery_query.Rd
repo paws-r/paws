@@ -11,8 +11,8 @@ timestreamquery_query(QueryString, ClientToken, NextToken, MaxRows)
 
 \item{ClientToken}{Unique, case-sensitive string of up to 64 ASCII characters that you
 specify when you make a Query request. Providing a \code{ClientToken} makes
-the call to \code{Query} idempotent, meaning that multiple identical calls
-have the same effect as one single call.
+the call to \code{\link[=timestreamquery_query]{query}} idempotent, meaning that
+multiple identical calls have the same effect as one single call.
 
 Your query request will fail in the following cases:
 \itemize{

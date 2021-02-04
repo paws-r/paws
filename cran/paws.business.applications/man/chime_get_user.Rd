@@ -17,7 +17,8 @@ Retrieves details for the specified user ID, such as primary email
 address, license type, and personal meeting PIN.
 
 To retrieve user details with an email address instead of a user ID, use
-the ListUsers action, and then filter by email address.
+the \code{\link[=chime_list_users]{list_users}} action, and then filter by email
+address.
 }
 \section{Request syntax}{
 \preformatted{svc$get_user(

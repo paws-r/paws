@@ -22,7 +22,8 @@ backups by their backup identifier (ID).
 
 Use the \code{sourceBackupIds} filter to return only the backups created from
 a source backup. The \code{sourceBackupID} of a source backup is returned by
-the CopyBackupToRegion operation.
+the \code{\link[=cloudhsmv2_copy_backup_to_region]{copy_backup_to_region}}
+operation.
 
 Use the \code{clusterIds} filter to return only the backups for the specified
 clusters. Specify clusters by their cluster identifier (ID).
@@ -44,9 +45,10 @@ Gets information about backups of AWS CloudHSM clusters.
 This is a paginated operation, which means that each response might
 contain only a subset of all the backups. When the response contains
 only a subset of backups, it includes a \code{NextToken} value. Use this
-value in a subsequent \code{DescribeBackups} request to get more backups.
-When you receive a response with no \code{NextToken} (or an empty or null
-value), that means there are no more backups to get.
+value in a subsequent \code{\link[=cloudhsmv2_describe_backups]{describe_backups}}
+request to get more backups. When you receive a response with no
+\code{NextToken} (or an empty or null value), that means there are no more
+backups to get.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_backups(

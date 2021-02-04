@@ -28,10 +28,14 @@ values: the name of any action or \code{*}.
 For more information about these actions, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-overview-of-managing-access.html}{Overview of Managing Access Permissions to Your Amazon Simple Queue Service Resource}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
-Specifying \code{SendMessage}, \code{DeleteMessage}, or \code{ChangeMessageVisibility}
-for \code{ActionName.n} also grants permissions for the corresponding batch
-versions of those actions: \code{SendMessageBatch}, \code{DeleteMessageBatch}, and
-\code{ChangeMessageVisibilityBatch}.}
+Specifying \code{\link[=sqs_send_message]{send_message}},
+\code{\link[=sqs_delete_message]{delete_message}}, or
+\code{\link[=sqs_change_message_visibility]{change_message_visibility}} for
+\code{ActionName.n} also grants permissions for the corresponding batch
+versions of those actions:
+\code{\link[=sqs_send_message_batch]{send_message_batch}},
+\code{\link[=sqs_delete_message_batch]{delete_message_batch}}, and
+\code{\link[=sqs_change_message_visibility_batch]{change_message_visibility_batch}}.}
 }
 \description{
 Adds a permission to a queue for a specific
@@ -43,23 +47,25 @@ queue. Only you, the owner of the queue, can grant or deny permissions
 to the queue. For more information about these permissions, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-iam-policies.html#write-messages-to-shared-queue}{Allow Developers to Write Messages to a Shared Queue}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \itemize{
-\item \code{AddPermission} generates a policy for you. You can use
-\verb{<a>SetQueueAttributes</a>} to upload your policy. For more
-information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies.html}{Using Custom Policies with the Amazon SQS Access Policy Language}
+\item \code{\link[=sqs_add_permission]{add_permission}} generates a policy for you.
+You can use \code{\link[=sqs_set_queue_attributes]{set_queue_attributes}} to
+upload your policy. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies.html}{Using Custom Policies with the Amazon SQS Access Policy Language}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \item An Amazon SQS policy can have a maximum of 7 actions.
 \item To remove the ability to change queue permissions, you must deny
-permission to the \code{AddPermission}, \code{RemovePermission}, and
-\code{SetQueueAttributes} actions in your IAM policy.
+permission to the \code{\link[=sqs_add_permission]{add_permission}},
+\code{\link[=sqs_remove_permission]{remove_permission}}, and
+\code{\link[=sqs_set_queue_attributes]{set_queue_attributes}} actions in your
+IAM policy.
 }
 
 Some actions take lists of parameters. These lists are specified using
 the \code{param.n} notation. Values of \code{n} are integers starting from 1. For
 example, a parameter list with two elements looks like this:
 
-\verb{&amp;AttributeName.1=first}
+\verb{&AttributeName.1=first}
 
-\verb{&amp;AttributeName.2=second}
+\verb{&AttributeName.2=second}
 
 Cross-account permissions don't apply to this action. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a user name}

@@ -17,7 +17,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{AcceptanceRequired}{Indicates whether requests from service consumers to create an endpoint
 to your service must be accepted. To accept a request, use
-AcceptVpcEndpointConnections.}
+\code{\link[=ec2_accept_vpc_endpoint_connections]{accept_vpc_endpoint_connections}}.}
 
 \item{PrivateDnsName}{(Interface endpoint configuration) The private DNS name to assign to the
 VPC endpoint service.}

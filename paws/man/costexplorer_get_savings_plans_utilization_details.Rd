@@ -24,7 +24,8 @@ dimensions. You can filter data with the following dimensions:
 \item \code{INSTANCE_TYPE_FAMILY}
 }
 
-\code{GetSavingsPlansUtilizationDetails} uses the same
+\code{\link[=costexplorer_get_savings_plans_utilization_details]{get_savings_plans_utilization_details}}
+uses the same
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}
 object as the other operations, but only \code{AND} is supported among each
 dimension.}
@@ -59,7 +60,8 @@ data for a given time period. This doesn't support granular or grouped
 data (daily/monthly) in response. You can't retrieve data by dates in a
 single response similar to \code{GetSavingsPlanUtilization}, but you have the
 option to make multiple calls to \code{GetSavingsPlanUtilizationDetails} by
-providing individual dates. You can use \code{GetDimensionValues} in
+providing individual dates. You can use
+\code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} in
 \code{SAVINGS_PLANS} to determine the possible dimension values.
 
 \code{GetSavingsPlanUtilizationDetails} internally groups data by

@@ -1010,10 +1010,9 @@ globalaccelerator_deny_custom_routing_traffic <- function(EndpointGroupArn, Endp
 #' deletes the corresponding address pool.
 #' 
 #' Before you can release an address range, you must stop advertising it by
-#' using
-#' [WithdrawByoipCidr](https://docs.aws.amazon.com/global-accelerator/latest/api/)
-#' and you must not have any accelerators that are using static IP
-#' addresses allocated from its address range.
+#' using [`withdraw_byoip_cidr`][globalaccelerator_withdraw_byoip_cidr] and
+#' you must not have any accelerators that are using static IP addresses
+#' allocated from its address range.
 #' 
 #' For more information, see [Bring Your Own IP Addresses
 #' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
@@ -1399,7 +1398,7 @@ globalaccelerator_list_accelerators <- function(MaxResults = NULL, NextToken = N
 #'
 #' @description
 #' Lists the IP address ranges that were specified in calls to
-#' [ProvisionByoipCidr](https://docs.aws.amazon.com/global-accelerator/latest/api/),
+#' [`provision_byoip_cidr`][globalaccelerator_provision_byoip_cidr],
 #' including the current state and a history of state changes.
 #'
 #' @usage

@@ -16,10 +16,9 @@ resource provided by your own application or service, use
 
 \item{Schedule}{The schedule for this action. The following formats are supported:
 \itemize{
-\item At expressions -
-"\verb{at(<i>yyyy</i>-<i>mm</i>-<i>dd</i>T<i>hh</i>:<i>mm</i>:<i>ss</i>)}"
-\item Rate expressions - "\verb{rate(<i>value</i> <i>unit</i>)}"
-\item Cron expressions - "\verb{cron(<i>fields</i>)}"
+\item At expressions - "\code{at(yyyy-mm-ddThh:mm:ss)}"
+\item Rate expressions - "\verb{rate(value unit)}"
+\item Cron expressions - "\code{cron(fields)}"
 }
 
 At expressions are useful for one-time schedules. Specify the time in

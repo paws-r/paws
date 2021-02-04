@@ -13,26 +13,27 @@ either the fleet ID or ARN value.}
 
 \item{VpcPeeringConnectionId}{[required] A unique identifier for a VPC peering connection. This value is included
 in the VpcPeeringConnection object, which can be retrieved by calling
-DescribeVpcPeeringConnections.}
+\code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}.}
 }
 \description{
 Removes a VPC peering connection. To delete the connection, you must
 have a valid authorization for the VPC peering connection that you want
 to delete. You can check for an authorization by calling
-DescribeVpcPeeringAuthorizations or request a new one using
-CreateVpcPeeringAuthorization.
+\code{\link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations}}
+or request a new one using
+\code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}.
 
 Once a valid authorization exists, call this operation from the AWS
 account that is used to manage the Amazon GameLift fleets. Identify the
 connection to delete by the connection ID and fleet ID. If successful,
 the connection is removed.
 \itemize{
-\item CreateVpcPeeringAuthorization
-\item DescribeVpcPeeringAuthorizations
-\item DeleteVpcPeeringAuthorization
-\item CreateVpcPeeringConnection
-\item DescribeVpcPeeringConnections
-\item DeleteVpcPeeringConnection
+\item \code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}
+\item \code{\link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations}}
+\item \code{\link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization}}
+\item \code{\link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection}}
+\item \code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
+\item \code{\link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection}}
 }
 }
 \section{Request syntax}{

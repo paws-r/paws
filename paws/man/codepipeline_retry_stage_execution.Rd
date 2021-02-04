@@ -14,8 +14,8 @@ codepipeline_retry_stage_execution(pipelineName, stageName,
 \item{stageName}{[required] The name of the failed stage to be retried.}
 
 \item{pipelineExecutionId}{[required] The ID of the pipeline execution in the failed stage to be retried. Use
-the GetPipelineState action to retrieve the current pipelineExecutionId
-of the failed stage}
+the \code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}} action to
+retrieve the current pipelineExecutionId of the failed stage}
 
 \item{retryMode}{[required] The scope of the retry attempt. Currently, the only supported value is
 FAILED\\_ACTIONS.}

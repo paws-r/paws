@@ -60,32 +60,42 @@ You must specify the shard iterator type. For example, you can set the
 by a specific sequence number by using the \code{AT_SEQUENCE_NUMBER} shard
 iterator type. Alternatively, the parameter can read right after the
 sequence number by using the \code{AFTER_SEQUENCE_NUMBER} shard iterator
-type, using sequence numbers returned by earlier calls to PutRecord,
-PutRecords, GetRecords, or DescribeStream. In the request, you can
+type, using sequence numbers returned by earlier calls to
+\code{\link[=kinesis_put_record]{put_record}},
+\code{\link[=kinesis_put_records]{put_records}},
+\code{\link[=kinesis_get_records]{get_records}}, or
+\code{\link[=kinesis_describe_stream]{describe_stream}}. In the request, you can
 specify the shard iterator type \code{AT_TIMESTAMP} to read records from an
 arbitrary point in time, \code{TRIM_HORIZON} to cause \code{ShardIterator} to
 point to the last untrimmed record in the shard in the system (the
 oldest data record in the shard), or \code{LATEST} so that you always read
 the most recent data in the shard.
 
-When you read repeatedly from a stream, use a GetShardIterator request
-to get the first shard iterator for use in your first GetRecords request
-and for subsequent reads use the shard iterator returned by the
-GetRecords request in \code{NextShardIterator}. A new shard iterator is
-returned by every GetRecords request in \code{NextShardIterator}, which you
-use in the \code{ShardIterator} parameter of the next GetRecords request.
+When you read repeatedly from a stream, use a
+\code{\link[=kinesis_get_shard_iterator]{get_shard_iterator}} request to get the
+first shard iterator for use in your first
+\code{\link[=kinesis_get_records]{get_records}} request and for subsequent reads
+use the shard iterator returned by the
+\code{\link[=kinesis_get_records]{get_records}} request in \code{NextShardIterator}. A
+new shard iterator is returned by every
+\code{\link[=kinesis_get_records]{get_records}} request in \code{NextShardIterator},
+which you use in the \code{ShardIterator} parameter of the next
+\code{\link[=kinesis_get_records]{get_records}} request.
 
-If a GetShardIterator request is made too often, you receive a
-\code{ProvisionedThroughputExceededException}. For more information about
-throughput limits, see GetRecords, and \href{https://docs.aws.amazon.com/streams/latest/dev/service-sizes-and-limits.html}{Streams Limits}
+If a \code{\link[=kinesis_get_shard_iterator]{get_shard_iterator}} request is made
+too often, you receive a \code{ProvisionedThroughputExceededException}. For
+more information about throughput limits, see
+\code{\link[=kinesis_get_records]{get_records}}, and \href{https://docs.aws.amazon.com/streams/latest/dev/service-sizes-and-limits.html}{Streams Limits}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.
 
-If the shard is closed, GetShardIterator returns a valid iterator for
-the last sequence number of the shard. A shard can be closed as a result
-of using SplitShard or MergeShards.
+If the shard is closed,
+\code{\link[=kinesis_get_shard_iterator]{get_shard_iterator}} returns a valid
+iterator for the last sequence number of the shard. A shard can be
+closed as a result of using \code{\link[=kinesis_split_shard]{split_shard}} or
+\code{\link[=kinesis_merge_shards]{merge_shards}}.
 
-GetShardIterator has a limit of five transactions per second per account
-per open shard.
+\code{\link[=kinesis_get_shard_iterator]{get_shard_iterator}} has a limit of five
+transactions per second per account per open shard.
 }
 \section{Request syntax}{
 \preformatted{svc$get_shard_iterator(

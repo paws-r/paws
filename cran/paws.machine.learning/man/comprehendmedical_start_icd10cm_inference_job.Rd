@@ -31,8 +31,9 @@ language.}
 }
 \description{
 Starts an asynchronous job to detect medical conditions and link them to
-the ICD-10-CM ontology. Use the \code{DescribeICD10CMInferenceJob} operation
-to track the status of a job.
+the ICD-10-CM ontology. Use the
+\code{\link[=comprehendmedical_describe_icd10cm_inference_job]{describe_icd10cm_inference_job}}
+operation to track the status of a job.
 }
 \section{Request syntax}{
 \preformatted{svc$start_icd10cm_inference_job(

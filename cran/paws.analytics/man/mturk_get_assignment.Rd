@@ -11,8 +11,8 @@ mturk_get_assignment(AssignmentId)
 \item{AssignmentId}{[required] The ID of the Assignment to be retrieved.}
 }
 \description{
-The \code{GetAssignment} operation retrieves the details of the specified
-Assignment.
+The \code{\link[=mturk_get_assignment]{get_assignment}} operation retrieves the
+details of the specified Assignment.
 }
 \section{Request syntax}{
 \preformatted{svc$get_assignment(

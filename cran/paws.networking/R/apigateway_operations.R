@@ -265,7 +265,7 @@ apigateway_create_base_path_mapping <- function(domainName, basePath = NULL, res
 #' @param variables A map that defines the stage variables for the Stage resource that is
 #' associated with the new deployment. Variable names can have alphanumeric
 #' and underscore characters, and the values must match
-#' `\\[A-Za-z0-9-._~:/?#&amp;=,\\]+`.
+#' `\\[A-Za-z0-9-._~:/?#&=,\\]+`.
 #' @param canarySettings The input configuration for the canary deployment when the deployment is
 #' a canary release deployment.
 #' @param tracingEnabled Specifies whether active tracing with X-ray is enabled for the Stage.
@@ -514,8 +514,7 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
 #' @param name &#91;required&#93; \[Required\] The name of the model. Must be alphanumeric.
 #' @param description The description of the model.
 #' @param schema The schema for the model. For `application/json` models, this should be
-#' [JSON schema draft
-#' 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
+#' JSON schema draft 4 model.
 #' @param contentType &#91;required&#93; \[Required\] The content-type for the model.
 #'
 #' @section Request syntax:
@@ -748,7 +747,7 @@ apigateway_create_rest_api <- function(name, description = NULL, version = NULL,
 #' @param cacheClusterSize The stage's cache cluster size.
 #' @param variables A map that defines the stage variables for the new Stage resource.
 #' Variable names can have alphanumeric and underscore characters, and the
-#' values must match `\\[A-Za-z0-9-._~:/?#&amp;=,\\]+`.
+#' values must match `\\[A-Za-z0-9-._~:/?#&=,\\]+`.
 #' @param documentationVersion The version of the associated API documentation.
 #' @param canarySettings The canary deployment settings of this stage.
 #' @param tracingEnabled Specifies whether active tracing with X-ray is enabled for the Stage.
@@ -4247,16 +4246,14 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #'     and `\{subdomain\}` is a designated subdomain supported by certain AWS
 #'     service for fast host-name lookup. `action` can be used for an AWS
 #'     service action-based API, using an
-#'     `Action=\{name\}&amp;\{p1\}=\{v1\}&amp;p2=\{v2\}...` query string. The
-#'     ensuing `\{service_api\}` refers to a supported action `\{name\}` plus
-#'     any required input parameters. Alternatively, `path` can be used for
-#'     an AWS service path-based API. The ensuing `service_api` refers to
-#'     the path to an AWS service resource, including the region of the
+#'     `Action=\{name\}&\{p1\}=\{v1\}&p2=\{v2\}...` query string. The ensuing
+#'     `\{service_api\}` refers to a supported action `\{name\}` plus any
+#'     required input parameters. Alternatively, `path` can be used for an
+#'     AWS service path-based API. The ensuing `service_api` refers to the
+#'     path to an AWS service resource, including the region of the
 #'     integrated AWS service, if applicable. For example, for integration
-#'     with the S3 API of
-#'     `<a href="https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html">GetObject</a>`,
-#'     the `uri` can be either
-#'     `arn:aws:apigateway:us-west-2:s3:action/GetObject&amp;Bucket=\{bucket\}&amp;Key=\{key\}`
+#'     with the S3 API of `GetObject`, the `uri` can be either
+#'     `arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket=\{bucket\}&Key=\{key\}`
 #'     or `arn:aws:apigateway:us-west-2:s3:path/\{bucket\}/\{key\}`
 #' @param connectionType The type of the network connection to the integration endpoint. The
 #' valid value is `INTERNET` for connections through the public routable

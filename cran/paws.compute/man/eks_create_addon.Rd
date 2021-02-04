@@ -11,12 +11,12 @@ eks_create_addon(clusterName, addonName, addonVersion,
 \item{clusterName}{[required] The name of the cluster to create the add-on for.}
 
 \item{addonName}{[required] The name of the add-on. The name must match one of the names returned by
-\href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{ListAddons}}
+\href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{list_addons}}
 .}
 
 \item{addonVersion}{The version of the add-on. The version must match one of the versions
 returned by
-\href{https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html}{\code{DescribeAddonVersions}}
+\href{https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html}{\code{describe_addon_versions}}
 .}
 
 \item{serviceAccountRoleArn}{The Amazon Resource Name (ARN) of an existing IAM role to bind to the

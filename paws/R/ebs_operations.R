@@ -72,12 +72,14 @@ ebs_complete_snapshot <- function(SnapshotId, ChangedBlocksCount, Checksum = NUL
 #' @param SnapshotId &#91;required&#93; The ID of the snapshot containing the block from which to get data.
 #' @param BlockIndex &#91;required&#93; The block index of the block from which to get data.
 #' 
-#' Obtain the `BlockIndex` by running the `ListChangedBlocks` or
-#' `ListSnapshotBlocks` operations.
+#' Obtain the `BlockIndex` by running the
+#' [`list_changed_blocks`][ebs_list_changed_blocks] or
+#' [`list_snapshot_blocks`][ebs_list_snapshot_blocks] operations.
 #' @param BlockToken &#91;required&#93; The block token of the block from which to get data.
 #' 
-#' Obtain the `BlockToken` by running the `ListChangedBlocks` or
-#' `ListSnapshotBlocks` operations.
+#' Obtain the `BlockToken` by running the
+#' [`list_changed_blocks`][ebs_list_changed_blocks] or
+#' [`list_snapshot_blocks`][ebs_list_snapshot_blocks] operations.
 #'
 #' @section Request syntax:
 #' ```

@@ -36,7 +36,8 @@ A dataset import job can be in one of the following states:
 FAILED
 }
 
-To get the status of the import job, call DescribeDatasetImportJob,
+To get the status of the import job, call
+\code{\link[=personalize_describe_dataset_import_job]{describe_dataset_import_job}},
 providing the Amazon Resource Name (ARN) of the dataset import job. The
 dataset import is complete when the status shows as ACTIVE. If the
 status shows as CREATE FAILED, the response includes a \code{failureReason}
@@ -47,8 +48,8 @@ before training a model using the dataset.
 
 \strong{Related APIs}
 \itemize{
-\item ListDatasetImportJobs
-\item DescribeDatasetImportJob
+\item \code{\link[=personalize_list_dataset_import_jobs]{list_dataset_import_jobs}}
+\item \code{\link[=personalize_describe_dataset_import_job]{describe_dataset_import_job}}
 }
 }
 \section{Request syntax}{

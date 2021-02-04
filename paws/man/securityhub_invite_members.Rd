@@ -19,8 +19,8 @@ This operation is only used to invite accounts that do not belong to an
 organization. Organization accounts do not receive invitations.
 
 Before you can use this action to invite a member, you must first use
-the \verb{<a>CreateMembers</a>} action to create the member account in
-Security Hub.
+the \code{\link[=securityhub_create_members]{create_members}} action to create the
+member account in Security Hub.
 
 When the account owner enables Security Hub and accepts the invitation
 to become a member account, the master account can view the findings

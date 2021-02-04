@@ -87,10 +87,11 @@ root access for users.}
 Creates an Amazon SageMaker notebook instance. A notebook instance is a
 machine learning (ML) compute instance running on a Jupyter notebook.
 
-In a \code{CreateNotebookInstance} request, specify the type of ML compute
-instance that you want to run. Amazon SageMaker launches the instance,
-installs common libraries that you can use to explore datasets for model
-training, and attaches an ML storage volume to the notebook instance.
+In a \code{\link[=sagemaker_create_notebook_instance]{create_notebook_instance}}
+request, specify the type of ML compute instance that you want to run.
+Amazon SageMaker launches the instance, installs common libraries that
+you can use to explore datasets for model training, and attaches an ML
+storage volume to the notebook instance.
 
 Amazon SageMaker also provides a set of example notebooks. Each notebook
 demonstrates how to use Amazon SageMaker with a specific algorithm or

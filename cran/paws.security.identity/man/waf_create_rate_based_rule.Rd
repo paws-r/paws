@@ -30,9 +30,11 @@ If the number of requests exceeds the \code{RateLimit} and the other
 predicates specified in the rule are also met, AWS WAF triggers the
 action that is specified for this rule.}
 
-\item{ChangeToken}{[required] The \code{ChangeToken} that you used to submit the \code{CreateRateBasedRule}
-request. You can also use this value to query the status of the request.
-For more information, see GetChangeTokenStatus.}
+\item{ChangeToken}{[required] The \code{ChangeToken} that you used to submit the
+\code{\link[=waf_create_rate_based_rule]{create_rate_based_rule}} request. You can
+also use this value to query the status of the request. For more
+information, see
+\code{\link[=waf_get_change_token_status]{get_change_token_status}}.}
 
 \item{Tags}{}
 }
@@ -91,17 +93,23 @@ to your login page without affecting the rest of your site.
 To create and configure a \code{RateBasedRule}, perform the following steps:
 \enumerate{
 \item Create and update the predicates that you want to include in the
-rule. For more information, see CreateByteMatchSet, CreateIPSet, and
-CreateSqlInjectionMatchSet.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{CreateRule} request.
-\item Submit a \code{CreateRateBasedRule} request.
-\item Use \code{GetChangeToken} to get the change token that you provide in the
-\code{ChangeToken} parameter of an UpdateRule request.
-\item Submit an \code{UpdateRateBasedRule} request to specify the predicates
-that you want to include in the rule.
+rule. For more information, see
+\code{\link[=waf_create_byte_match_set]{create_byte_match_set}},
+\code{\link[=waf_create_ip_set]{create_ip_set}}, and
+\code{\link[=waf_create_sql_injection_match_set]{create_sql_injection_match_set}}.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=waf_create_rule]{create_rule}} request.
+\item Submit a \code{\link[=waf_create_rate_based_rule]{create_rate_based_rule}}
+request.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=waf_update_rule]{update_rule}} request.
+\item Submit an \code{\link[=waf_update_rate_based_rule]{update_rate_based_rule}}
+request to specify the predicates that you want to include in the
+rule.
 \item Create and update a \code{WebACL} that contains the \code{RateBasedRule}. For
-more information, see CreateWebACL.
+more information, see \code{\link[=waf_create_web_acl]{create_web_acl}}.
 }
 
 For more information about how to use the AWS WAF API to allow or block

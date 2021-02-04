@@ -51,7 +51,9 @@ Set the capacity of an Aurora Serverless DB cluster to a specific value.
 Aurora Serverless scales seamlessly based on the workload on the DB
 cluster. In some cases, the capacity might not scale fast enough to meet
 a sudden change in workload, such as a large number of new transactions.
-Call \code{ModifyCurrentDBClusterCapacity} to set the capacity explicitly.
+Call
+\code{\link[=rds_modify_current_db_cluster_capacity]{modify_current_db_cluster_capacity}}
+to set the capacity explicitly.
 
 After this call sets the DB cluster capacity, Aurora Serverless can
 automatically scale the DB cluster based on the cooldown period for
@@ -60,10 +62,11 @@ scaling up and the cooldown period for scaling down.
 For more information about Aurora Serverless, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html}{Using Amazon Aurora Serverless}
 in the \emph{Amazon Aurora User Guide}.
 
-If you call \code{ModifyCurrentDBClusterCapacity} with the default
-\code{TimeoutAction}, connections that prevent Aurora Serverless from finding
-a scaling point might be dropped. For more information about scaling
-points, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.auto-scaling}{Autoscaling for Aurora Serverless}
+If you call
+\code{\link[=rds_modify_current_db_cluster_capacity]{modify_current_db_cluster_capacity}}
+with the default \code{TimeoutAction}, connections that prevent Aurora
+Serverless from finding a scaling point might be dropped. For more
+information about scaling points, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.auto-scaling}{Autoscaling for Aurora Serverless}
 in the \emph{Amazon Aurora User Guide}.
 
 This action only applies to Aurora DB clusters.

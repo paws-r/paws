@@ -20,9 +20,9 @@ value.}
 \item{MaxResults}{Limit the number of results returned.}
 }
 \description{
-The \code{ListReviewableHITs} operation retrieves the HITs with Status equal
-to Reviewable or Status equal to Reviewing that belong to the Requester
-calling the operation.
+The \code{\link[=mturk_list_reviewable_hi_ts]{list_reviewable_hi_ts}} operation
+retrieves the HITs with Status equal to Reviewable or Status equal to
+Reviewing that belong to the Requester calling the operation.
 }
 \section{Request syntax}{
 \preformatted{svc$list_reviewable_hi_ts(

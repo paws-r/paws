@@ -12,9 +12,10 @@ rekognition_start_label_detection(Video, ClientRequestToken,
 in an Amazon S3 bucket.}
 
 \item{ClientRequestToken}{Idempotent token used to identify the start request. If you use the same
-token with multiple \code{StartLabelDetection} requests, the same \code{JobId} is
-returned. Use \code{ClientRequestToken} to prevent the same job from being
-accidently started more than once.}
+token with multiple
+\code{\link[=rekognition_start_label_detection]{start_label_detection}} requests,
+the same \code{JobId} is returned. Use \code{ClientRequestToken} to prevent the
+same job from being accidently started more than once.}
 
 \item{MinConfidence}{Specifies the minimum confidence that Amazon Rekognition Video must have
 in order to return a detected label. Confidence represents how certain
@@ -44,16 +45,18 @@ concepts like landscape, evening, and nature; and activities like a
 person getting out of a car or a person skiing.
 
 The video must be stored in an Amazon S3 bucket. Use Video to specify
-the bucket name and the filename of the video. \code{StartLabelDetection}
-returns a job identifier (\code{JobId}) which you use to get the results of
-the operation. When label detection is finished, Amazon Rekognition
-Video publishes a completion status to the Amazon Simple Notification
-Service topic that you specify in \code{NotificationChannel}.
+the bucket name and the filename of the video.
+\code{\link[=rekognition_start_label_detection]{start_label_detection}} returns a
+job identifier (\code{JobId}) which you use to get the results of the
+operation. When label detection is finished, Amazon Rekognition Video
+publishes a completion status to the Amazon Simple Notification Service
+topic that you specify in \code{NotificationChannel}.
 
 To get the results of the label detection operation, first check that
 the status value published to the Amazon SNS topic is \code{SUCCEEDED}. If
-so, call GetLabelDetection and pass the job identifier (\code{JobId}) from
-the initial call to \code{StartLabelDetection}.
+so, call \code{\link[=rekognition_get_label_detection]{get_label_detection}} and
+pass the job identifier (\code{JobId}) from the initial call to
+\code{\link[=rekognition_start_label_detection]{start_label_detection}}.
 }
 \section{Request syntax}{
 \preformatted{svc$start_label_detection(

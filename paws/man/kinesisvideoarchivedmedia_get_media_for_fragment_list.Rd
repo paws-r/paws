@@ -12,23 +12,29 @@ kinesisvideoarchivedmedia_get_media_for_fragment_list(StreamName,
 \item{StreamName}{[required] The name of the stream from which to retrieve fragment media.}
 
 \item{Fragments}{[required] A list of the numbers of fragments for which to retrieve media. You
-retrieve these values with ListFragments.}
+retrieve these values with
+\code{\link[=kinesisvideoarchivedmedia_list_fragments]{list_fragments}}.}
 }
 \description{
 Gets media for a list of fragments (specified by fragment number) from
 the archived data in an Amazon Kinesis video stream.
 
 You must first call the \code{GetDataEndpoint} API to get an endpoint. Then
-send the \code{GetMediaForFragmentList} requests to this endpoint using the
-\href{https://docs.aws.amazon.com/cli/latest/reference/}{--endpoint-url parameter}.
+send the
+\code{\link[=kinesisvideoarchivedmedia_get_media_for_fragment_list]{get_media_for_fragment_list}}
+requests to this endpoint using the \href{https://docs.aws.amazon.com/cli/latest/reference/}{--endpoint-url parameter}.
 
-The following limits apply when using the \code{GetMediaForFragmentList} API:
+The following limits apply when using the
+\code{\link[=kinesisvideoarchivedmedia_get_media_for_fragment_list]{get_media_for_fragment_list}}
+API:
 \itemize{
-\item A client can call \code{GetMediaForFragmentList} up to five times per
-second per stream.
+\item A client can call
+\code{\link[=kinesisvideoarchivedmedia_get_media_for_fragment_list]{get_media_for_fragment_list}}
+up to five times per second per stream.
 \item Kinesis Video Streams sends media data at a rate of up to 25
 megabytes per second (or 200 megabits per second) during a
-\code{GetMediaForFragmentList} session.
+\code{\link[=kinesisvideoarchivedmedia_get_media_for_fragment_list]{get_media_for_fragment_list}}
+session.
 }
 
 If an error is thrown after invoking a Kinesis Video Streams archived

@@ -18,9 +18,9 @@ quicksight_update_theme(AwsAccountId, ThemeId, Name, BaseThemeId,
 from. All themes initially inherit from a default QuickSight theme.}
 
 \item{VersionDescription}{A description of the theme version that you're updating Every time that
-you call \code{UpdateTheme}, you create a new version of the theme. Each
-version of the theme maintains a description of the version in
-\code{VersionDescription}.}
+you call \code{\link[=quicksight_update_theme]{update_theme}}, you create a new
+version of the theme. Each version of the theme maintains a description
+of the version in \code{VersionDescription}.}
 
 \item{Configuration}{The theme configuration, which contains the theme display properties.}
 }

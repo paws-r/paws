@@ -16,8 +16,8 @@ information about.}
 Gets information about a specific traffic policy version.
 
 For information about how of deleting a traffic policy affects the
-response from \code{GetTrafficPolicy}, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html}{DeleteTrafficPolicy}.
+response from \code{\link[=route53_get_traffic_policy]{get_traffic_policy}}, see
+\code{\link[=route53_delete_traffic_policy]{delete_traffic_policy}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_traffic_policy(

@@ -9,11 +9,13 @@ cloudformation_cancel_update_stack(StackName, ClientRequestToken)
 \arguments{
 \item{StackName}{[required] The name or the unique stack ID that is associated with the stack.}
 
-\item{ClientRequestToken}{A unique identifier for this \code{CancelUpdateStack} request. Specify this
-token if you plan to retry requests so that AWS CloudFormation knows
-that you're not attempting to cancel an update on a stack with the same
-name. You might retry \code{CancelUpdateStack} requests to ensure that AWS
-CloudFormation successfully received them.}
+\item{ClientRequestToken}{A unique identifier for this
+\code{\link[=cloudformation_cancel_update_stack]{cancel_update_stack}} request.
+Specify this token if you plan to retry requests so that AWS
+CloudFormation knows that you're not attempting to cancel an update on a
+stack with the same name. You might retry
+\code{\link[=cloudformation_cancel_update_stack]{cancel_update_stack}} requests to
+ensure that AWS CloudFormation successfully received them.}
 }
 \description{
 Cancels an update on the specified stack. If the call completes

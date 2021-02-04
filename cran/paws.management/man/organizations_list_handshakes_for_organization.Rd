@@ -36,7 +36,8 @@ results.}
 }
 \description{
 Lists the handshakes that are associated with the organization that the
-requesting user is part of. The \code{ListHandshakesForOrganization}
+requesting user is part of. The
+\code{\link[=organizations_list_handshakes_for_organization]{list_handshakes_for_organization}}
 operation returns a list of handshake structures. Each structure
 contains details and status about a handshake.
 

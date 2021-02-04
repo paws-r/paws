@@ -11,8 +11,9 @@ codeguruprofiler_remove_permission(actionGroup, profilingGroupName,
 \arguments{
 \item{actionGroup}{[required] Specifies an action group that contains the permissions to remove from a
 profiling group's resource-based policy. One action group is supported,
-\code{agentPermissions}, which grants \code{ConfigureAgent} and \code{PostAgentProfile}
-permissions.}
+\code{agentPermissions}, which grants
+\code{\link[=codeguruprofiler_configure_agent]{configure_agent}} and
+\code{\link[=codeguruprofiler_post_agent_profile]{post_agent_profile}} permissions.}
 
 \item{profilingGroupName}{[required] The name of the profiling group.}
 
@@ -22,12 +23,13 @@ resource-based policy from which you want to remove permissions.}
 \description{
 Removes permissions from a profiling group's resource-based policy that
 are provided using an action group. The one supported action group that
-can be removed is \code{agentPermission} which grants \code{ConfigureAgent} and
-\code{PostAgent} permissions. For more information, see \href{https://docs.aws.amazon.com/codeguru/latest/profiler-ug/resource-based-policies.html}{Resource-based policies in CodeGuru Profiler}
+can be removed is \code{agentPermission} which grants
+\code{\link[=codeguruprofiler_configure_agent]{configure_agent}} and \code{PostAgent}
+permissions. For more information, see \href{https://docs.aws.amazon.com/codeguru/latest/profiler-ug/resource-based-policies.html}{Resource-based policies in CodeGuru Profiler}
 in the \emph{Amazon CodeGuru Profiler User Guide},
-\href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html}{\code{ConfigureAgent}}
+\href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html}{\code{configure_agent}}
 , and
-\href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PostAgentProfile.html}{\code{PostAgentProfile}}
+\href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PostAgentProfile.html}{\code{post_agent_profile}}
 .
 }
 \section{Request syntax}{

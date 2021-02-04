@@ -26,7 +26,9 @@ other information.}
 
 \item{GameServerData}{A set of custom game server properties, formatted as a single string
 value. This data is passed to a game client or service when it requests
-information on game servers using ListGameServers or ClaimGameServer.}
+information on game servers using
+\code{\link[=gamelift_list_game_servers]{list_game_servers}} or
+\code{\link[=gamelift_claim_game_server]{claim_game_server}}.}
 }
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
@@ -43,7 +45,8 @@ To register a game server, identify the game server group and instance
 where the game server is running, and provide a unique identifier for
 the game server. You can also include connection and game server data.
 When a game client or service requests a game server by calling
-ClaimGameServer, this information is returned in the response.
+\code{\link[=gamelift_claim_game_server]{claim_game_server}}, this information is
+returned in the response.
 
 Once a game server is successfully registered, it is put in status
 \code{AVAILABLE}. A request to register a game server may fail if the
@@ -56,12 +59,12 @@ instance balancing or scale-down activity.
 
 \strong{Related operations}
 \itemize{
-\item RegisterGameServer
-\item ListGameServers
-\item ClaimGameServer
-\item DescribeGameServer
-\item UpdateGameServer
-\item DeregisterGameServer
+\item \code{\link[=gamelift_register_game_server]{register_game_server}}
+\item \code{\link[=gamelift_list_game_servers]{list_game_servers}}
+\item \code{\link[=gamelift_claim_game_server]{claim_game_server}}
+\item \code{\link[=gamelift_describe_game_server]{describe_game_server}}
+\item \code{\link[=gamelift_update_game_server]{update_game_server}}
+\item \code{\link[=gamelift_deregister_game_server]{deregister_game_server}}
 }
 }
 \section{Request syntax}{

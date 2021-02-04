@@ -12,9 +12,10 @@ athena_start_query_execution(QueryString, ClientRequestToken,
 
 \item{ClientRequestToken}{A unique case-sensitive string used to ensure the request to create the
 query is idempotent (executes only once). If another
-\code{StartQueryExecution} request is received, the same response is returned
-and another query is not created. If a parameter has changed, for
-example, the \code{QueryString}, an error is returned.
+\code{\link[=athena_start_query_execution]{start_query_execution}} request is
+received, the same response is returned and another query is not
+created. If a parameter has changed, for example, the \code{QueryString}, an
+error is returned.
 
 This token is listed as not required because AWS SDKs (for example the
 AWS SDK for Java) auto-generate the token for users. If you are not
@@ -36,8 +37,9 @@ WorkGroupConfiguration$EnforceWorkGroupConfiguration.}
 \description{
 Runs the SQL query statements contained in the \code{Query}. Requires you to
 have access to the workgroup in which the query ran. Running queries
-against an external catalog requires GetDataCatalog permission to the
-catalog. For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
+against an external catalog requires
+\code{\link[=athena_get_data_catalog]{get_data_catalog}} permission to the catalog.
+For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
 in the \emph{Amazon Athena User Guide}.
 }
 \section{Request syntax}{

@@ -22,7 +22,8 @@ conflicting IP address, the operation fails.
 
 Virtual interfaces associated with a hosted connection cannot be
 associated with a LAG; hosted connections must be migrated along with
-their virtual interfaces using AssociateHostedConnection.
+their virtual interfaces using
+\code{\link[=directconnect_associate_hosted_connection]{associate_hosted_connection}}.
 
 To reassociate a virtual interface to a new connection or LAG, the
 requester must own either the virtual interface itself or the connection

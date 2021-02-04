@@ -9,8 +9,8 @@ iot_get_logging_options()
 \description{
 Gets the logging options.
 
-NOTE: use of this command is not recommended. Use \code{GetV2LoggingOptions}
-instead.
+NOTE: use of this command is not recommended. Use
+\code{\link[=iot_get_v2_logging_options]{get_v2_logging_options}} instead.
 }
 \section{Request syntax}{
 \preformatted{svc$get_logging_options()

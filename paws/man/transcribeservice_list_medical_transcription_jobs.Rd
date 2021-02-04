@@ -18,8 +18,8 @@ Medical returns all transcription jobs ordered by creation date.}
 name contains the specified string.}
 
 \item{NextToken}{If you a receive a truncated result in the previous request of
-\code{ListMedicalTranscriptionJobs}, include \code{NextToken} to fetch the next
-set of jobs.}
+\code{\link[=transcribeservice_list_medical_transcription_jobs]{list_medical_transcription_jobs}},
+include \code{NextToken} to fetch the next set of jobs.}
 
 \item{MaxResults}{The maximum number of medical transcription jobs to return in the
 response. IF there are fewer results in the list, this response contains

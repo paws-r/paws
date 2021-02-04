@@ -20,9 +20,10 @@ time.}
 \item{NameContains}{A string in the model group name. This filter returns only model groups
 whose name contains the specified string.}
 
-\item{NextToken}{If the result of the previous \code{ListModelPackageGroups} request was
-truncated, the response includes a \code{NextToken}. To retrieve the next set
-of model groups, use the token in the next request.}
+\item{NextToken}{If the result of the previous
+\code{\link[=sagemaker_list_model_package_groups]{list_model_package_groups}}
+request was truncated, the response includes a \code{NextToken}. To retrieve
+the next set of model groups, use the token in the next request.}
 
 \item{SortBy}{The field to sort results by. The default is \code{CreationTime}.}
 

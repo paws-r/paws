@@ -11,7 +11,8 @@ cloudwatch_get_metric_widget_image(MetricWidget, OutputFormat)
 \item{MetricWidget}{[required] A JSON string that defines the bitmap graph to be retrieved. The string
 includes the metrics to include in the graph, statistics, annotations,
 title, axis limits, and so on. You can include only one \code{MetricWidget}
-parameter in each \code{GetMetricWidgetImage} call.
+parameter in each
+\code{\link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image}} call.
 
 For more information about the syntax of \code{MetricWidget} see
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Metric-Widget-Structure.html}{GetMetricWidgetImage: Metric Widget Structure and Syntax}.
@@ -26,25 +27,25 @@ The default is \code{png}. If you specify \code{png}, the API returns an HTTP
 response with the content-type set to \code{text/xml}. The image data is in a
 \code{MetricWidgetImage} field. For example:
 
-\verb{ &lt;GetMetricWidgetImageResponse xmlns=&lt;URLstring&gt;&gt;}
+\verb{ <GetMetricWidgetImageResponse xmlns=<URLstring>>}
 
-\verb{ &lt;GetMetricWidgetImageResult&gt;}
+\verb{ <GetMetricWidgetImageResult>}
 
-\verb{ &lt;MetricWidgetImage&gt;}
+\verb{ <MetricWidgetImage>}
 
 \code{ iVBORw0KGgoAAAANSUhEUgAAAlgAAAGQEAYAAAAip...}
 
-\verb{ &lt;/MetricWidgetImage&gt;}
+\verb{ </MetricWidgetImage>}
 
-\verb{ &lt;/GetMetricWidgetImageResult&gt;}
+\verb{ </GetMetricWidgetImageResult>}
 
-\verb{ &lt;ResponseMetadata&gt;}
+\verb{ <ResponseMetadata>}
 
-\verb{ &lt;RequestId&gt;6f0d4192-4d42-11e8-82c1-f539a07e0e3b&lt;/RequestId&gt;}
+\verb{ <RequestId>6f0d4192-4d42-11e8-82c1-f539a07e0e3b</RequestId>}
 
-\verb{ &lt;/ResponseMetadata&gt;}
+\verb{ </ResponseMetadata>}
 
-\verb{&lt;/GetMetricWidgetImageResponse&gt;}
+\verb{</GetMetricWidgetImageResponse>}
 
 The \code{image/png} setting is intended only for custom HTTP requests. For
 most use cases, and all actions using an AWS SDK, you should use \code{png}.
@@ -52,17 +53,20 @@ If you specify \code{image/png}, the HTTP response has a content-type set to
 \code{image/png}, and the body of the response is a PNG image.}
 }
 \description{
-You can use the \code{GetMetricWidgetImage} API to retrieve a snapshot graph
-of one or more Amazon CloudWatch metrics as a bitmap image. You can then
-embed this image into your services and products, such as wiki pages,
-reports, and documents. You could also retrieve images regularly, such
-as every minute, and create your own custom live dashboard.
+You can use the
+\code{\link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image}} API to
+retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a
+bitmap image. You can then embed this image into your services and
+products, such as wiki pages, reports, and documents. You could also
+retrieve images regularly, such as every minute, and create your own
+custom live dashboard.
 
 The graph you retrieve can include all CloudWatch metric graph features,
 including metric math and horizontal and vertical annotations.
 
 There is a limit of 20 transactions per second for this API. Each
-\code{GetMetricWidgetImage} action has the following limits:
+\code{\link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image}} action
+has the following limits:
 \itemize{
 \item As many as 100 metrics in the graph.
 \item Up to 100 KB uncompressed payload.

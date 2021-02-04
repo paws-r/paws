@@ -21,7 +21,7 @@ document that is shared with you from another account.
 For SSM documents that are shared with you from other AWS accounts, you
 must specify the complete SSM document ARN, in the following format:
 
-\verb{arn:<i>partition</i>:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> }
+\code{arn:partition:ssm:region:account-id:document/document-name }
 
 For example:
 
@@ -100,9 +100,10 @@ association execution runs successfully, then the association is
 association is \code{NON-COMPLIANT}.
 
 In \code{MANUAL} mode, you must specify the \code{AssociationId} as a parameter
-for the PutComplianceItems API action. In this case, compliance data is
-not managed by State Manager. It is managed by your direct call to the
-PutComplianceItems API action.
+for the \code{\link[=ssm_put_compliance_items]{put_compliance_items}} API action.
+In this case, compliance data is not managed by State Manager. It is
+managed by your direct call to the
+\code{\link[=ssm_put_compliance_items]{put_compliance_items}} API action.
 
 By default, all associations use \code{AUTO} mode.}
 

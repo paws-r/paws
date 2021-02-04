@@ -17,7 +17,7 @@ value.}
 }
 \description{
 Lists the IP address ranges that were specified in calls to
-\href{https://docs.aws.amazon.com/global-accelerator/latest/api/}{ProvisionByoipCidr},
+\code{\link[=globalaccelerator_provision_byoip_cidr]{provision_byoip_cidr}},
 including the current state and a history of state changes.
 }
 \section{Request syntax}{

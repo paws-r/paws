@@ -14,7 +14,8 @@ xray_batch_get_traces(TraceIds, NextToken)
 \description{
 Retrieves a list of traces specified by ID. Each trace is a collection
 of segment documents that originates from a single request. Use
-\code{GetTraceSummaries} to get a list of trace IDs.
+\code{\link[=xray_get_trace_summaries]{get_trace_summaries}} to get a list of trace
+IDs.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_traces(

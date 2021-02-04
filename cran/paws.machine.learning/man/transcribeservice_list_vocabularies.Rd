@@ -8,7 +8,8 @@ transcribeservice_list_vocabularies(NextToken, MaxResults, StateEquals,
   NameContains)
 }
 \arguments{
-\item{NextToken}{If the result of the previous request to \code{ListVocabularies} was
+\item{NextToken}{If the result of the previous request to
+\code{\link[=transcribeservice_list_vocabularies]{list_vocabularies}} was
 truncated, include the \code{NextToken} to fetch the next set of jobs.}
 
 \item{MaxResults}{The maximum number of vocabularies to return in the response. If there
@@ -20,8 +21,9 @@ field equal to the specified state.}
 
 \item{NameContains}{When specified, the vocabularies returned in the list are limited to
 vocabularies whose name contains the specified string. The search is not
-case sensitive, \code{ListVocabularies} returns both "vocabularyname" and
-"VocabularyName" in the response list.}
+case sensitive,
+\code{\link[=transcribeservice_list_vocabularies]{list_vocabularies}} returns both
+"vocabularyname" and "VocabularyName" in the response list.}
 }
 \description{
 Returns a list of vocabularies that match the specified criteria. If no

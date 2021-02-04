@@ -31,7 +31,8 @@ location over a standard Ethernet fiber-optic cable. One end of the
 cable is connected to your router, the other to an AWS Direct Connect
 router.
 
-To find the locations for your Region, use DescribeLocations.
+To find the locations for your Region, use
+\code{\link[=directconnect_describe_locations]{describe_locations}}.
 
 You can automatically add the new connection to a link aggregation group
 (LAG) by specifying a LAG ID in the request. This ensures that the new

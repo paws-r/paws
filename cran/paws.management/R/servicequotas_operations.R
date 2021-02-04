@@ -602,8 +602,8 @@ servicequotas_list_services <- function(NextToken = NULL, MaxResults = NULL) {
 #' console, or by listing the quotas using the
 #' [list-service-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html)
 #' AWS CLI command or the
-#' [ListServiceQuotas](https://docs.aws.amazon.com/servicequotas/2019-06-24/apireference/API_ListServiceQuotas.html)
-#' AWS API operation.
+#' [`list_service_quotas`][servicequotas_list_service_quotas] AWS API
+#' operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -732,8 +732,8 @@ servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode,
 #' quotas using the
 #' [list-service-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html)
 #' AWS CLI command or the
-#' [ListServiceQuotas](https://docs.aws.amazon.com/servicequotas/2019-06-24/apireference/API_ListServiceQuotas.html)
-#' AWS API operation.
+#' [`list_service_quotas`][servicequotas_list_service_quotas] AWS API
+#' operation.
 #' @param Tags &#91;required&#93; The tags that you want to add to the resource.
 #'
 #' @section Request syntax:
@@ -783,8 +783,8 @@ servicequotas_tag_resource <- function(ResourceARN, Tags) {
 #' or by listing the quotas using the
 #' [list-service-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html)
 #' AWS CLI command or the
-#' [ListServiceQuotas](https://docs.aws.amazon.com/servicequotas/2019-06-24/apireference/API_ListServiceQuotas.html)
-#' AWS API operation.
+#' [`list_service_quotas`][servicequotas_list_service_quotas] AWS API
+#' operation.
 #' @param TagKeys &#91;required&#93; The keys of the tags that you want to remove from the resource.
 #'
 #' @section Request syntax:

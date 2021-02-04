@@ -44,8 +44,9 @@ the request, then the request is ignored.
 \item If a version with this value already exists and that version's
 \code{SecretString} and \code{SecretBinary} values are different from those in
 the request then the request fails because you cannot modify an
-existing version. Instead, use PutSecretValue to create a new
-version.
+existing version. Instead, use
+\code{\link[=secretsmanager_put_secret_value]{put_secret_value}} to create a
+new version.
 }
 
 This value becomes the \code{VersionId} of the new version.}
@@ -110,7 +111,7 @@ double quotes required in the JSON text.}
 \item{Tags}{(Optional) Specifies a list of user-defined tags that are attached to
 the secret. Each tag is a "Key" and "Value" pair of strings. This
 operation only appends tags to the existing list of tags. To remove
-tags, you must use UntagResource.
+tags, you must use \code{\link[=secretsmanager_untag_resource]{untag_resource}}.
 \itemize{
 \item Secrets Manager tag key names are case sensitive. A tag with the key
 "ABC" is a different tag from one with key "abc".
@@ -211,17 +212,20 @@ parameter.
 
 \strong{Related operations}
 \itemize{
-\item To delete a secret, use DeleteSecret.
-\item To modify an existing secret, use UpdateSecret.
-\item To create a new version of a secret, use PutSecretValue.
+\item To delete a secret, use
+\code{\link[=secretsmanager_delete_secret]{delete_secret}}.
+\item To modify an existing secret, use
+\code{\link[=secretsmanager_update_secret]{update_secret}}.
+\item To create a new version of a secret, use
+\code{\link[=secretsmanager_put_secret_value]{put_secret_value}}.
 \item To retrieve the encrypted secure string and secure binary values,
-use GetSecretValue.
-\item To retrieve all other details for a secret, use DescribeSecret. This
-does not include the encrypted secure string and secure binary
-values.
+use \code{\link[=secretsmanager_get_secret_value]{get_secret_value}}.
+\item To retrieve all other details for a secret, use
+\code{\link[=secretsmanager_describe_secret]{describe_secret}}. This does not
+include the encrypted secure string and secure binary values.
 \item To retrieve the list of secret versions associated with the current
-secret, use DescribeSecret and examine the \code{SecretVersionsToStages}
-response value.
+secret, use \code{\link[=secretsmanager_describe_secret]{describe_secret}} and
+examine the \code{SecretVersionsToStages} response value.
 }
 }
 \section{Request syntax}{

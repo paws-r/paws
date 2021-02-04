@@ -46,8 +46,9 @@ Resolver can log queries only for VPCs that are in the same Region as
 the query logging configuration.
 
 To specify which VPCs you want to log queries for, you use
-\code{AssociateResolverQueryLogConfig}. For more information, see
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverQueryLogConfig.html}{AssociateResolverQueryLogConfig}.
+\code{\link[=route53resolver_associate_resolver_query_log_config]{associate_resolver_query_log_config}}.
+For more information, see
+\code{\link[=route53resolver_associate_resolver_query_log_config]{associate_resolver_query_log_config}}.
 
 You can optionally use AWS Resource Access Manager (AWS RAM) to share a
 query logging configuration with other AWS accounts. The other accounts

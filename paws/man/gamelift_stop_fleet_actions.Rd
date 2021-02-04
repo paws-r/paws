@@ -16,13 +16,15 @@ the fleet ID or ARN value.}
 Suspends activity on a fleet. Currently, this operation is used to stop
 a fleet's auto-scaling activity. It is used to temporarily stop
 triggering scaling events. The policies can be retained and auto-scaling
-activity can be restarted using StartFleetActions. You can view a
-fleet's stopped actions using DescribeFleetAttributes.
+activity can be restarted using
+\code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}}. You can view a
+fleet's stopped actions using
+\code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}.
 
 To stop fleet actions, specify the fleet ID and the type of actions to
 suspend. When auto-scaling fleet actions are stopped, Amazon GameLift no
 longer initiates scaling events except in response to manual changes
-using UpdateFleetCapacity.
+using \code{\link[=gamelift_update_fleet_capacity]{update_fleet_capacity}}.
 
 \strong{Learn more}
 
@@ -30,12 +32,13 @@ using UpdateFleetCapacity.
 
 \strong{Related operations}
 \itemize{
-\item CreateFleet
-\item ListFleets
-\item DeleteFleet
-\item DescribeFleetAttributes
-\item UpdateFleetAttributes
-\item StartFleetActions or StopFleetActions
+\item \code{\link[=gamelift_create_fleet]{create_fleet}}
+\item \code{\link[=gamelift_list_fleets]{list_fleets}}
+\item \code{\link[=gamelift_delete_fleet]{delete_fleet}}
+\item \code{\link[=gamelift_describe_fleet_attributes]{describe_fleet_attributes}}
+\item \code{\link[=gamelift_update_fleet_attributes]{update_fleet_attributes}}
+\item \code{\link[=gamelift_start_fleet_actions]{start_fleet_actions}} or
+\code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}
 }
 }
 \section{Request syntax}{

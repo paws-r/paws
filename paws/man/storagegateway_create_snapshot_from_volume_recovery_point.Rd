@@ -9,8 +9,8 @@ storagegateway_create_snapshot_from_volume_recovery_point(VolumeARN,
 }
 \arguments{
 \item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
-DescribeStorediSCSIVolumes operation to return to retrieve the TargetARN
-for specified VolumeARN.}
+\code{\link[=storagegateway_describe_storedi_scsi_volumes]{describe_storedi_scsi_volumes}}
+operation to return to retrieve the TargetARN for specified VolumeARN.}
 
 \item{SnapshotDescription}{[required] Textual description of the snapshot that appears in the Amazon EC2
 console, Elastic Block Store snapshots panel in the \strong{Description}
@@ -32,16 +32,17 @@ operation is only supported in the cached volume gateway type.
 A volume recovery point is a point in time at which all data of the
 volume is consistent and from which you can create a snapshot. To get a
 list of volume recovery point for cached volume gateway, use
-ListVolumeRecoveryPoints.
+\code{\link[=storagegateway_list_volume_recovery_points]{list_volume_recovery_points}}.
 
-In the \code{CreateSnapshotFromVolumeRecoveryPoint} request, you identify the
-volume by providing its Amazon Resource Name (ARN). You must also
-provide a description for the snapshot. When the gateway takes a
-snapshot of the specified volume, the snapshot and its description
-appear in the AWS Storage Gateway console. In response, the gateway
-returns you a snapshot ID. You can use this snapshot ID to check the
-snapshot progress or later use it when you want to create a volume from
-a snapshot.
+In the
+\code{\link[=storagegateway_create_snapshot_from_volume_recovery_point]{create_snapshot_from_volume_recovery_point}}
+request, you identify the volume by providing its Amazon Resource Name
+(ARN). You must also provide a description for the snapshot. When the
+gateway takes a snapshot of the specified volume, the snapshot and its
+description appear in the AWS Storage Gateway console. In response, the
+gateway returns you a snapshot ID. You can use this snapshot ID to check
+the snapshot progress or later use it when you want to create a volume
+from a snapshot.
 
 To list or delete a snapshot, you must use the Amazon EC2 API. For more
 information, see

@@ -15,13 +15,15 @@ Deletes the specified alias.
 
 Because an alias is not a property of a CMK, you can delete and change
 the aliases of a CMK without affecting the CMK. Also, aliases do not
-appear in the response from the DescribeKey operation. To get the
-aliases of all CMKs, use the ListAliases operation.
+appear in the response from the \code{\link[=kms_describe_key]{describe_key}}
+operation. To get the aliases of all CMKs, use the
+\code{\link[=kms_list_aliases]{list_aliases}} operation.
 
 Each CMK can have multiple aliases. To change the alias of a CMK, use
-DeleteAlias to delete the current alias and CreateAlias to create a new
-alias. To associate an existing alias with a different customer master
-key (CMK), call UpdateAlias.
+\code{\link[=kms_delete_alias]{delete_alias}} to delete the current alias and
+\code{\link[=kms_create_alias]{create_alias}} to create a new alias. To associate
+an existing alias with a different customer master key (CMK), call
+\code{\link[=kms_update_alias]{update_alias}}.
 
 \strong{Cross-account use}: No. You cannot perform this operation on an alias
 in a different AWS account.
@@ -39,9 +41,9 @@ in the \emph{AWS Key Management Service Developer Guide}.
 
 \strong{Related operations:}
 \itemize{
-\item CreateAlias
-\item ListAliases
-\item UpdateAlias
+\item \code{\link[=kms_create_alias]{create_alias}}
+\item \code{\link[=kms_list_aliases]{list_aliases}}
+\item \code{\link[=kms_update_alias]{update_alias}}
 }
 }
 \section{Request syntax}{

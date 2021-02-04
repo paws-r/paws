@@ -29,7 +29,8 @@ You can have up to five thousand key pairs per Region.
 
 The key pair returned to you is available only in the Region in which
 you create it. If you prefer, you can create your own key pair using a
-third-party tool and upload it to any Region using ImportKeyPair.
+third-party tool and upload it to any Region using
+\code{\link[=ec2_import_key_pair]{import_key_pair}}.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html}{Key Pairs}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

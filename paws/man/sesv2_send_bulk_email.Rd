@@ -48,9 +48,9 @@ arn:aws:ses:us-east-1:123456789012:identity/example.com, and the
 For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
 
 \item{DefaultEmailTags}{A list of tags, in the form of name/value pairs, to apply to an email
-that you send using the \code{SendEmail} operation. Tags correspond to
-characteristics of the email that you define, so that you can publish
-email sending events.}
+that you send using the \code{\link[=sesv2_send_email]{send_email}} operation. Tags
+correspond to characteristics of the email that you define, so that you
+can publish email sending events.}
 
 \item{DefaultContent}{[required] An object that contains the body of the message. You can specify a
 template message.}

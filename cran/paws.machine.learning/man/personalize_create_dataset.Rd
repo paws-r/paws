@@ -27,7 +27,8 @@ One of the following (case insensitive) values:
 }
 \description{
 Creates an empty dataset and adds it to the specified dataset group. Use
-CreateDatasetImportJob to import your training data to a dataset.
+\code{\link[=personalize_create_dataset_import_job]{create_dataset_import_job}} to
+import your training data to a dataset.
 
 There are three types of datasets:
 \itemize{
@@ -47,14 +48,15 @@ FAILED
 \item DELETE PENDING > DELETE IN\\_PROGRESS
 }
 
-To get the status of the dataset, call DescribeDataset.
+To get the status of the dataset, call
+\code{\link[=personalize_describe_dataset]{describe_dataset}}.
 
 \strong{Related APIs}
 \itemize{
-\item CreateDatasetGroup
-\item ListDatasets
-\item DescribeDataset
-\item DeleteDataset
+\item \code{\link[=personalize_create_dataset_group]{create_dataset_group}}
+\item \code{\link[=personalize_list_datasets]{list_datasets}}
+\item \code{\link[=personalize_describe_dataset]{describe_dataset}}
+\item \code{\link[=personalize_delete_dataset]{delete_dataset}}
 }
 }
 \section{Request syntax}{

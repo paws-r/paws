@@ -12,7 +12,7 @@ acmpca_create_certificate_authority_audit_report(
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of the CA to be audited. This is of the
 form:
 
-\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
+\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 
 \item{S3BucketName}{[required] The name of the S3 bucket that will contain the audit report.}
 
@@ -22,11 +22,9 @@ form:
 \description{
 Creates an audit report that lists every time that your CA private key
 is used. The report is saved in the Amazon S3 bucket that you specify on
-input. The
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_IssueCertificate.html}{IssueCertificate}
-and
-\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_RevokeCertificate.html}{RevokeCertificate}
-actions use the private key.
+input. The \code{\link[=acmpca_issue_certificate]{issue_certificate}} and
+\code{\link[=acmpca_revoke_certificate]{revoke_certificate}} actions use the
+private key.
 
 Both PCA and the IAM principal must have permission to write to the S3
 bucket that you specify. If the IAM principal making the call does not

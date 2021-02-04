@@ -11,18 +11,22 @@ lookoutforvision_stop_model(ProjectName, ModelVersion, ClientToken)
 
 \item{ModelVersion}{[required] The version of the model that you want to stop.}
 
-\item{ClientToken}{ClientToken is an idempotency token that ensures a call to \code{StopModel}
-completes only once. You choose the value to pass. For example, An
-issue, such as an network outage, might prevent you from getting a
-response from \code{StopModel}. In this case, safely retry your call to
-\code{StopModel} by using the same \code{ClientToken} parameter value. An error
-occurs if the other input parameters are not the same as in the first
-request. Using a different value for \code{ClientToken} is considered a new
-call to \code{StopModel}. An idempotency token is active for 8 hours.}
+\item{ClientToken}{ClientToken is an idempotency token that ensures a call to
+\code{\link[=lookoutforvision_stop_model]{stop_model}} completes only once. You
+choose the value to pass. For example, An issue, such as an network
+outage, might prevent you from getting a response from
+\code{\link[=lookoutforvision_stop_model]{stop_model}}. In this case, safely retry
+your call to \code{\link[=lookoutforvision_stop_model]{stop_model}} by using the
+same \code{ClientToken} parameter value. An error occurs if the other input
+parameters are not the same as in the first request. Using a different
+value for \code{ClientToken} is considered a new call to
+\code{\link[=lookoutforvision_stop_model]{stop_model}}. An idempotency token is
+active for 8 hours.}
 }
 \description{
 Stops a running model. The operation might take a while to complete. To
-check the current status, call DescribeModel.
+check the current status, call
+\code{\link[=lookoutforvision_describe_model]{describe_model}}.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_model(

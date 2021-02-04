@@ -34,21 +34,25 @@ Optionally, the requestor can supply the \code{Replace} parameter for each
 individual attribute. Setting this value to \code{true} causes the new
 attribute value to replace the existing attribute value(s). For example,
 if an item has the attributes \verb{\\\{ 'a', '1' \\\}}, \verb{\\\{ 'b', '2'\\\}} and
-\verb{\\\{ 'b', '3' \\\}} and the requestor calls \code{PutAttributes} using the
-attributes \verb{\\\{ 'b', '4' \\\}} with the \code{Replace} parameter set to true, the
-final attributes of the item are changed to \verb{\\\{ 'a', '1' \\\}} and
-\verb{\\\{ 'b', '4' \\\}}, which replaces the previous values of the 'b' attribute
-with the new value.
+\verb{\\\{ 'b', '3' \\\}} and the requestor calls
+\code{\link[=simpledb_put_attributes]{put_attributes}} using the attributes
+\verb{\\\{ 'b', '4' \\\}} with the \code{Replace} parameter set to true, the final
+attributes of the item are changed to \verb{\\\{ 'a', '1' \\\}} and \verb{\\\{ 'b', '4' \\\}},
+which replaces the previous values of the 'b' attribute with the new
+value.
 
-Using \code{PutAttributes} to replace attribute values that do not exist will
-not result in an error response.
+Using \code{\link[=simpledb_put_attributes]{put_attributes}} to replace attribute
+values that do not exist will not result in an error response.
 
 You cannot specify an empty string as an attribute name.
 
 Because Amazon SimpleDB makes multiple copies of client data and uses an
-eventual consistency update model, an immediate GetAttributes or Select
-operation (read) immediately after a PutAttributes or DeleteAttributes
-operation (write) might not return the updated data.
+eventual consistency update model, an immediate
+\code{\link[=simpledb_get_attributes]{get_attributes}} or
+\code{\link[=simpledb_select]{select}} operation (read) immediately after a
+\code{\link[=simpledb_put_attributes]{put_attributes}} or
+\code{\link[=simpledb_delete_attributes]{delete_attributes}} operation (write)
+might not return the updated data.
 
 The following limitations are enforced for this operation:
 \itemize{

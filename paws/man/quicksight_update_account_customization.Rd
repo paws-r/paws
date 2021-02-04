@@ -23,7 +23,8 @@ You can use customizations for your AWS account or, if you specify a
 namespace, for a QuickSight namespace instead. Customizations that apply
 to a namespace override customizations that apply to an AWS account. To
 find out which customizations apply, use the
-\code{DescribeAccountCustomization} API operation.
+\code{\link[=quicksight_describe_account_customization]{describe_account_customization}}
+API operation.
 }
 \section{Request syntax}{
 \preformatted{svc$update_account_customization(

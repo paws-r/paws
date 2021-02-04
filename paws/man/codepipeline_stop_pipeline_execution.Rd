@@ -11,8 +11,8 @@ codepipeline_stop_pipeline_execution(pipelineName, pipelineExecutionId,
 \item{pipelineName}{[required] The name of the pipeline to stop.}
 
 \item{pipelineExecutionId}{[required] The ID of the pipeline execution to be stopped in the current stage. Use
-the \code{GetPipelineState} action to retrieve the current
-pipelineExecutionId.}
+the \code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}} action to
+retrieve the current pipelineExecutionId.}
 
 \item{abandon}{Use this option to stop the pipeline execution by abandoning, rather
 than finishing, in-progress actions.

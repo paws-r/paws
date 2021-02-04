@@ -75,34 +75,38 @@ and you can't use CMKs from one AWS Region in another AWS Region.}
 snapshot to the target DB snapshot. By default, tags are not copied.}
 
 \item{PreSignedUrl}{The URL that contains a Signature Version 4 signed request for the
-\code{CopyDBSnapshot} API action in the source AWS Region that contains the
-source DB snapshot to copy.
+\code{\link[=rds_copy_db_snapshot]{copy_db_snapshot}} API action in the source AWS
+Region that contains the source DB snapshot to copy.
 
 You must specify this parameter when you copy an encrypted DB snapshot
 from another AWS Region by using the Amazon RDS API. Don't specify
 \code{PreSignedUrl} when you are copying an encrypted DB snapshot in the same
 AWS Region.
 
-The presigned URL must be a valid request for the \code{CopyDBSnapshot} API
-action that can be executed in the source AWS Region that contains the
-encrypted DB snapshot to be copied. The presigned URL request must
-contain the following parameter values:
+The presigned URL must be a valid request for the
+\code{\link[=rds_copy_db_snapshot]{copy_db_snapshot}} API action that can be
+executed in the source AWS Region that contains the encrypted DB
+snapshot to be copied. The presigned URL request must contain the
+following parameter values:
 \itemize{
 \item \code{DestinationRegion} - The AWS Region that the encrypted DB snapshot
 is copied to. This AWS Region is the same one where the
-\code{CopyDBSnapshot} action is called that contains this presigned URL.
+\code{\link[=rds_copy_db_snapshot]{copy_db_snapshot}} action is called that
+contains this presigned URL.
 
 For example, if you copy an encrypted DB snapshot from the us-west-2
 AWS Region to the us-east-1 AWS Region, then you call the
-\code{CopyDBSnapshot} action in the us-east-1 AWS Region and provide a
-presigned URL that contains a call to the \code{CopyDBSnapshot} action in
-the us-west-2 AWS Region. For this example, the \code{DestinationRegion}
-in the presigned URL must be set to the us-east-1 AWS Region.
+\code{\link[=rds_copy_db_snapshot]{copy_db_snapshot}} action in the us-east-1
+AWS Region and provide a presigned URL that contains a call to the
+\code{\link[=rds_copy_db_snapshot]{copy_db_snapshot}} action in the us-west-2
+AWS Region. For this example, the \code{DestinationRegion} in the
+presigned URL must be set to the us-east-1 AWS Region.
 \item \code{KmsKeyId} - The AWS KMS key identifier for the customer master key
 (CMK) to use to encrypt the copy of the DB snapshot in the
 destination AWS Region. This is the same identifier for both the
-\code{CopyDBSnapshot} action that is called in the destination AWS
-Region, and the action contained in the presigned URL.
+\code{\link[=rds_copy_db_snapshot]{copy_db_snapshot}} action that is called in
+the destination AWS Region, and the action contained in the
+presigned URL.
 \item \code{SourceDBSnapshotIdentifier} - The DB snapshot identifier for the
 encrypted snapshot to be copied. This identifier must be in the
 Amazon Resource Name (ARN) format for the source AWS Region. For
@@ -146,8 +150,9 @@ Copies the specified DB snapshot. The source DB snapshot must be in the
 \code{available} state.
 
 You can copy a snapshot from one AWS Region to another. In that case,
-the AWS Region where you call the \code{CopyDBSnapshot} action is the
-destination AWS Region for the DB snapshot copy.
+the AWS Region where you call the
+\code{\link[=rds_copy_db_snapshot]{copy_db_snapshot}} action is the destination AWS
+Region for the DB snapshot copy.
 
 For more information about copying snapshots, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBSnapshot}{Copying a DB Snapshot}
 in the \emph{Amazon RDS User Guide.}

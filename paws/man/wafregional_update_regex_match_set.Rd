@@ -9,14 +9,16 @@ wafregional_update_regex_match_set(RegexMatchSetId, Updates,
 }
 \arguments{
 \item{RegexMatchSetId}{[required] The \code{RegexMatchSetId} of the RegexMatchSet that you want to update.
-\code{RegexMatchSetId} is returned by CreateRegexMatchSet and by
-ListRegexMatchSets.}
+\code{RegexMatchSetId} is returned by
+\code{\link[=wafregional_create_regex_match_set]{create_regex_match_set}} and by
+\code{\link[=wafregional_list_regex_match_sets]{list_regex_match_sets}}.}
 
 \item{Updates}{[required] An array of \code{RegexMatchSetUpdate} objects that you want to insert into
 or delete from a RegexMatchSet. For more information, see
 RegexMatchTuple.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -51,13 +53,17 @@ requests.
 To create and configure a \code{RegexMatchSet}, perform the following steps:
 \enumerate{
 \item Create a \code{RegexMatchSet.} For more information, see
-CreateRegexMatchSet.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of an \code{UpdateRegexMatchSet} request.
-\item Submit an \code{UpdateRegexMatchSet} request to specify the part of the
-request that you want AWS WAF to inspect (for example, the header or
-the URI) and the identifier of the \code{RegexPatternSet} that contain
-the regular expression patters you want AWS WAF to watch for.
+\code{\link[=wafregional_create_regex_match_set]{create_regex_match_set}}.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=wafregional_update_regex_match_set]{update_regex_match_set}}
+request.
+\item Submit an
+\code{\link[=wafregional_update_regex_match_set]{update_regex_match_set}}
+request to specify the part of the request that you want AWS WAF to
+inspect (for example, the header or the URI) and the identifier of
+the \code{RegexPatternSet} that contain the regular expression patters
+you want AWS WAF to watch for.
 }
 
 For more information about how to use the AWS WAF API to allow or block

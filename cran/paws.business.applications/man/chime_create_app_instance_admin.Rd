@@ -16,7 +16,7 @@ Promotes an \code{AppInstanceUser} to an \code{AppInstanceAdmin}. The promoted
 user can perform the following actions.
 \itemize{
 \item \code{ChannelModerator} actions across all channels in the app instance.
-\item \code{DeleteChannelMessage} actions.
+\item \code{\link[=chime_delete_channel_message]{delete_channel_message}} actions.
 }
 
 Only an \code{AppInstanceUser} can be promoted to an \code{AppInstanceAdmin} role.

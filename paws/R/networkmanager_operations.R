@@ -718,7 +718,8 @@ networkmanager_deregister_transit_gateway <- function(GlobalNetworkId, TransitGa
 #' Describes one or more global networks. By default, all global networks
 #' are described. To describe the objects in your global network, you must
 #' use the appropriate `Get*` action. For example, to list the transit
-#' gateways in your global network, use GetTransitGatewayRegistrations.
+#' gateways in your global network, use
+#' [`get_transit_gateway_registrations`][networkmanager_get_transit_gateway_registrations].
 #'
 #' @usage
 #' networkmanager_describe_global_networks(GlobalNetworkIds, MaxResults,

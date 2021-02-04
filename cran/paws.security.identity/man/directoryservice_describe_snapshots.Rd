@@ -17,7 +17,8 @@ this member is null or empty, all snapshots are returned using the
 \emph{Limit} and \emph{NextToken} members.}
 
 \item{NextToken}{The \emph{DescribeSnapshotsResult.NextToken} value from a previous call to
-DescribeSnapshots. Pass null if this is the first call.}
+\code{\link[=directoryservice_describe_snapshots]{describe_snapshots}}. Pass null
+if this is the first call.}
 
 \item{Limit}{The maximum number of objects to return.}
 }
@@ -28,7 +29,9 @@ account.
 This operation supports pagination with the use of the \emph{NextToken}
 request and response parameters. If more results are available, the
 \emph{DescribeSnapshots.NextToken} member contains a token that you pass in
-the next call to DescribeSnapshots to retrieve the next set of items.
+the next call to
+\code{\link[=directoryservice_describe_snapshots]{describe_snapshots}} to retrieve
+the next set of items.
 
 You can also specify a maximum number of return results with the \emph{Limit}
 parameter.

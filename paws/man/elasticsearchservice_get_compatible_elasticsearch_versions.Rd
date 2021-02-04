@@ -11,7 +11,7 @@ elasticsearchservice_get_compatible_elasticsearch_versions(DomainName)
 }
 \description{
 Returns a list of upgrade compatible Elastisearch versions. You can
-optionally pass a \verb{<a>DomainName</a>} to get all upgrade compatible
+optionally pass a \code{DomainName} to get all upgrade compatible
 Elasticsearch versions for that specific domain.
 }
 \section{Request syntax}{

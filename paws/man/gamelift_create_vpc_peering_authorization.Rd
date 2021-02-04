@@ -24,8 +24,9 @@ Requests authorization to create or delete a peer connection between the
 VPC for your Amazon GameLift fleet and a virtual private cloud (VPC) in
 your AWS account. VPC peering enables the game servers on your fleet to
 communicate directly with other AWS resources. Once you've received
-authorization, call CreateVpcPeeringConnection to establish the peering
-connection. For more information, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.
+authorization, call
+\code{\link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection}}
+to establish the peering connection. For more information, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.
 
 You can peer with VPCs that are owned by any AWS account you have access
 to, including the account that you use to manage your Amazon GameLift
@@ -47,15 +48,17 @@ to delete the peering connection for, and (2) ID of the AWS account that
 you use to manage Amazon GameLift.
 
 The authorization remains valid for 24 hours unless it is canceled by a
-call to DeleteVpcPeeringAuthorization. You must create or delete the
-peering connection while the authorization is valid.
+call to
+\code{\link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization}}.
+You must create or delete the peering connection while the authorization
+is valid.
 \itemize{
-\item CreateVpcPeeringAuthorization
-\item DescribeVpcPeeringAuthorizations
-\item DeleteVpcPeeringAuthorization
-\item CreateVpcPeeringConnection
-\item DescribeVpcPeeringConnections
-\item DeleteVpcPeeringConnection
+\item \code{\link[=gamelift_create_vpc_peering_authorization]{create_vpc_peering_authorization}}
+\item \code{\link[=gamelift_describe_vpc_peering_authorizations]{describe_vpc_peering_authorizations}}
+\item \code{\link[=gamelift_delete_vpc_peering_authorization]{delete_vpc_peering_authorization}}
+\item \code{\link[=gamelift_create_vpc_peering_connection]{create_vpc_peering_connection}}
+\item \code{\link[=gamelift_describe_vpc_peering_connections]{describe_vpc_peering_connections}}
+\item \code{\link[=gamelift_delete_vpc_peering_connection]{delete_vpc_peering_connection}}
 }
 }
 \section{Request syntax}{

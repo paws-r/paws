@@ -14,7 +14,8 @@ current account are returned.
 An empty list results in an \code{InvalidParameterException} being thrown.}
 
 \item{NextToken}{The \code{DescribeDirectoriesResult.NextToken} value from a previous call to
-DescribeDirectories. Pass null if this is the first call.}
+\code{\link[=directoryservice_describe_directories]{describe_directories}}. Pass
+null if this is the first call.}
 
 \item{Limit}{The maximum number of items to return. If this value is zero, the
 maximum number of items is specified by the limitations of the
@@ -30,8 +31,9 @@ directories that belong to the current account are returned.
 This operation supports pagination with the use of the \code{NextToken}
 request and response parameters. If more results are available, the
 \code{DescribeDirectoriesResult.NextToken} member contains a token that you
-pass in the next call to DescribeDirectories to retrieve the next set of
-items.
+pass in the next call to
+\code{\link[=directoryservice_describe_directories]{describe_directories}} to
+retrieve the next set of items.
 
 You can also specify a maximum number of return results with the \code{Limit}
 parameter.

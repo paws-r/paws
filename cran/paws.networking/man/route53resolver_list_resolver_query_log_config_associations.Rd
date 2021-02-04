@@ -10,34 +10,36 @@ route53resolver_list_resolver_query_log_config_associations(MaxResults,
 }
 \arguments{
 \item{MaxResults}{The maximum number of query logging associations that you want to return
-in the response to a \code{ListResolverQueryLogConfigAssociations} request.
-If you don't specify a value for \code{MaxResults}, Resolver returns up to
-100 query logging associations.}
+in the response to a
+\code{\link[=route53resolver_list_resolver_query_log_config_associations]{list_resolver_query_log_config_associations}}
+request. If you don't specify a value for \code{MaxResults}, Resolver returns
+up to 100 query logging associations.}
 
-\item{NextToken}{For the first \code{ListResolverQueryLogConfigAssociations} request, omit
-this value.
+\item{NextToken}{For the first
+\code{\link[=route53resolver_list_resolver_query_log_config_associations]{list_resolver_query_log_config_associations}}
+request, omit this value.
 
 If there are more than \code{MaxResults} query logging associations that
 match the values that you specify for \code{Filters}, you can submit another
-\code{ListResolverQueryLogConfigAssociations} request to get the next group
-of associations. In the next request, specify the value of \code{NextToken}
-from the previous response.}
+\code{\link[=route53resolver_list_resolver_query_log_config_associations]{list_resolver_query_log_config_associations}}
+request to get the next group of associations. In the next request,
+specify the value of \code{NextToken} from the previous response.}
 
 \item{Filters}{An optional specification to return a subset of query logging
 associations.
 
 If you submit a second or subsequent
-\code{ListResolverQueryLogConfigAssociations} request and specify the
-\code{NextToken} parameter, you must use the same values for \code{Filters}, if
-any, as in the previous request.}
+\code{\link[=route53resolver_list_resolver_query_log_config_associations]{list_resolver_query_log_config_associations}}
+request and specify the \code{NextToken} parameter, you must use the same
+values for \code{Filters}, if any, as in the previous request.}
 
 \item{SortBy}{The element that you want Resolver to sort query logging associations
 by.
 
 If you submit a second or subsequent
-\code{ListResolverQueryLogConfigAssociations} request and specify the
-\code{NextToken} parameter, you must use the same value for \code{SortBy}, if any,
-as in the previous request.
+\code{\link[=route53resolver_list_resolver_query_log_config_associations]{list_resolver_query_log_config_associations}}
+request and specify the \code{NextToken} parameter, you must use the same
+value for \code{SortBy}, if any, as in the previous request.
 
 Valid values include the following elements:
 \itemize{
@@ -80,9 +82,9 @@ was deleted.
 logging associations to be listed in, \code{ASCENDING} or \code{DESCENDING}.
 
 If you submit a second or subsequent
-\code{ListResolverQueryLogConfigAssociations} request and specify the
-\code{NextToken} parameter, you must use the same value for \code{SortOrder}, if
-any, as in the previous request.}
+\code{\link[=route53resolver_list_resolver_query_log_config_associations]{list_resolver_query_log_config_associations}}
+request and specify the \code{NextToken} parameter, you must use the same
+value for \code{SortOrder}, if any, as in the previous request.}
 }
 \description{
 Lists information about associations between Amazon VPCs and query

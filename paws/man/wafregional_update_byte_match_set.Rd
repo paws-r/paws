@@ -8,10 +8,12 @@ wafregional_update_byte_match_set(ByteMatchSetId, ChangeToken, Updates)
 }
 \arguments{
 \item{ByteMatchSetId}{[required] The \code{ByteMatchSetId} of the ByteMatchSet that you want to update.
-\code{ByteMatchSetId} is returned by CreateByteMatchSet and by
-ListByteMatchSets.}
+\code{ByteMatchSetId} is returned by
+\code{\link[=wafregional_create_byte_match_set]{create_byte_match_set}} and by
+\code{\link[=wafregional_list_byte_match_sets]{list_byte_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 
 \item{Updates}{[required] An array of \code{ByteMatchSetUpdate} objects that you want to insert into or
 delete from a ByteMatchSet. For more information, see the applicable
@@ -59,12 +61,16 @@ can then configure AWS WAF to block those requests.
 To create and configure a \code{ByteMatchSet}, perform the following steps:
 \enumerate{
 \item Create a \code{ByteMatchSet.} For more information, see
-CreateByteMatchSet.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of an \code{UpdateByteMatchSet} request.
-\item Submit an \code{UpdateByteMatchSet} request to specify the part of the
-request that you want AWS WAF to inspect (for example, the header or
-the URI) and the value that you want AWS WAF to watch for.
+\code{\link[=wafregional_create_byte_match_set]{create_byte_match_set}}.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=wafregional_update_byte_match_set]{update_byte_match_set}}
+request.
+\item Submit an
+\code{\link[=wafregional_update_byte_match_set]{update_byte_match_set}} request
+to specify the part of the request that you want AWS WAF to inspect
+(for example, the header or the URI) and the value that you want AWS
+WAF to watch for.
 }
 
 For more information about how to use the AWS WAF API to allow or block

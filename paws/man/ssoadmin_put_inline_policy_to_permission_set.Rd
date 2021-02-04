@@ -20,8 +20,9 @@ AWS Service Namespaces in the \emph{AWS General Reference}.}
 Attaches an IAM inline policy to a permission set.
 
 If the permission set is already referenced by one or more account
-assignments, you will need to call \verb{<a>ProvisionPermissionSet</a>}
-after this action to apply the corresponding IAM policy updates to all
+assignments, you will need to call
+\code{\link[=ssoadmin_provision_permission_set]{provision_permission_set}} after
+this action to apply the corresponding IAM policy updates to all
 assigned accounts.
 }
 \section{Request syntax}{

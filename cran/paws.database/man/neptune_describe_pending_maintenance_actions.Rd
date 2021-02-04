@@ -26,9 +26,10 @@ for the DB instances identified by these ARNs.
 }}
 
 \item{Marker}{An optional pagination token provided by a previous
-\code{DescribePendingMaintenanceActions} request. If this parameter is
-specified, the response includes only records beyond the marker, up to a
-number of records specified by \code{MaxRecords}.}
+\code{\link[=neptune_describe_pending_maintenance_actions]{describe_pending_maintenance_actions}}
+request. If this parameter is specified, the response includes only
+records beyond the marker, up to a number of records specified by
+\code{MaxRecords}.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token

@@ -9,7 +9,8 @@ iotthingsgraph_deploy_system_instance(id)
 }
 \arguments{
 \item{id}{The ID of the system instance. This value is returned by the
-\code{CreateSystemInstance} action.
+\code{\link[=iotthingsgraph_create_system_instance]{create_system_instance}}
+action.
 
 The ID should be in the following format.
 
@@ -19,7 +20,7 @@ The ID should be in the following format.
 \strong{Greengrass and Cloud Deployments}
 
 Deploys the system instance to the target specified in
-\code{CreateSystemInstance}.
+\code{\link[=iotthingsgraph_create_system_instance]{create_system_instance}}.
 
 \strong{Greengrass Deployments}
 

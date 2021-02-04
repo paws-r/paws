@@ -42,10 +42,13 @@ To run this command, you must have the following permissions:
 
 \strong{Related operations}
 \itemize{
-\item To attach a resource policy to a secret, use PutResourcePolicy.
+\item To attach a resource policy to a secret, use
+\code{\link[=secretsmanager_put_resource_policy]{put_resource_policy}}.
 \item To retrieve the current resource-based policy that's attached to a
-secret, use GetResourcePolicy.
-\item To list all of the currently available secrets, use ListSecrets.
+secret, use
+\code{\link[=secretsmanager_get_resource_policy]{get_resource_policy}}.
+\item To list all of the currently available secrets, use
+\code{\link[=secretsmanager_list_secrets]{list_secrets}}.
 }
 }
 \section{Request syntax}{

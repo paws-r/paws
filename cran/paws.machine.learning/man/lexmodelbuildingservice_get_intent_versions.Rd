@@ -20,14 +20,15 @@ default is 10.}
 \description{
 Gets information about all of the versions of an intent.
 
-The \code{GetIntentVersions} operation returns an \code{IntentMetadata} object for
-each version of an intent. For example, if an intent has three numbered
-versions, the \code{GetIntentVersions} operation returns four
-\code{IntentMetadata} objects in the response, one for each numbered version
-and one for the \verb{$LATEST} version.
+The \code{\link[=lexmodelbuildingservice_get_intent_versions]{get_intent_versions}}
+operation returns an \code{IntentMetadata} object for each version of an
+intent. For example, if an intent has three numbered versions, the
+\code{\link[=lexmodelbuildingservice_get_intent_versions]{get_intent_versions}}
+operation returns four \code{IntentMetadata} objects in the response, one for
+each numbered version and one for the \verb{$LATEST} version.
 
-The \code{GetIntentVersions} operation always returns at least one version,
-the \verb{$LATEST} version.
+The \code{\link[=lexmodelbuildingservice_get_intent_versions]{get_intent_versions}}
+operation always returns at least one version, the \verb{$LATEST} version.
 
 This operation requires permissions for the \code{lex:GetIntentVersions}
 action.

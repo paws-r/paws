@@ -41,12 +41,12 @@ sequential segments.
 
 \strong{Related operations}
 \itemize{
-\item RegisterGameServer
-\item ListGameServers
-\item ClaimGameServer
-\item DescribeGameServer
-\item UpdateGameServer
-\item DeregisterGameServer
+\item \code{\link[=gamelift_register_game_server]{register_game_server}}
+\item \code{\link[=gamelift_list_game_servers]{list_game_servers}}
+\item \code{\link[=gamelift_claim_game_server]{claim_game_server}}
+\item \code{\link[=gamelift_describe_game_server]{describe_game_server}}
+\item \code{\link[=gamelift_update_game_server]{update_game_server}}
+\item \code{\link[=gamelift_deregister_game_server]{deregister_game_server}}
 }
 }
 \section{Request syntax}{

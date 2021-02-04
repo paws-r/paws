@@ -18,7 +18,9 @@ configuration per page.}
 configurations, use \code{NextToken} to get the second and subsequent pages
 of results.
 
-For the first \code{ListResolverDnssecConfigs} request, omit this value.
+For the first
+\code{\link[=route53resolver_list_resolver_dnssec_configs]{list_resolver_dnssec_configs}}
+request, omit this value.
 
 For the second and subsequent requests, get the value of \code{NextToken}
 from the previous response and specify that value for \code{NextToken} in the

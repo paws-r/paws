@@ -20,7 +20,8 @@ be a base64-encoded string.}
 }
 \description{
 Updates a notebook instance lifecycle configuration created with the
-CreateNotebookInstanceLifecycleConfig API.
+\code{\link[=sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config}}
+API.
 }
 \section{Request syntax}{
 \preformatted{svc$update_notebook_instance_lifecycle_config(

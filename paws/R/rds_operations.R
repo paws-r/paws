@@ -570,22 +570,24 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #' (ARN) of the shared DB cluster snapshot.
 #' 
 #' You can copy an encrypted DB cluster snapshot from another AWS Region.
-#' In that case, the AWS Region where you call the `CopyDBClusterSnapshot`
-#' action is the destination AWS Region for the encrypted DB cluster
-#' snapshot to be copied to. To copy an encrypted DB cluster snapshot from
-#' another AWS Region, you must provide the following values:
+#' In that case, the AWS Region where you call the
+#' [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] action is the
+#' destination AWS Region for the encrypted DB cluster snapshot to be
+#' copied to. To copy an encrypted DB cluster snapshot from another AWS
+#' Region, you must provide the following values:
 #' 
 #' -   `KmsKeyId` - The AWS Key Management System (AWS KMS) key identifier
 #'     for the key to use to encrypt the copy of the DB cluster snapshot in
 #'     the destination AWS Region.
 #' 
 #' -   `PreSignedUrl` - A URL that contains a Signature Version 4 signed
-#'     request for the `CopyDBClusterSnapshot` action to be called in the
-#'     source AWS Region where the DB cluster snapshot is copied from. The
-#'     pre-signed URL must be a valid request for the
-#'     `CopyDBClusterSnapshot` API action that can be executed in the
-#'     source AWS Region that contains the encrypted DB cluster snapshot to
-#'     be copied.
+#'     request for the
+#'     [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] action to
+#'     be called in the source AWS Region where the DB cluster snapshot is
+#'     copied from. The pre-signed URL must be a valid request for the
+#'     [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] API
+#'     action that can be executed in the source AWS Region that contains
+#'     the encrypted DB cluster snapshot to be copied.
 #' 
 #'     The pre-signed URL request must contain the following parameter
 #'     values:
@@ -593,9 +595,10 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #'     -   `KmsKeyId` - The AWS KMS key identifier for the customer master
 #'         key (CMK) to use to encrypt the copy of the DB cluster snapshot
 #'         in the destination AWS Region. This is the same identifier for
-#'         both the `CopyDBClusterSnapshot` action that is called in the
-#'         destination AWS Region, and the action contained in the
-#'         pre-signed URL.
+#'         both the
+#'         [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot]
+#'         action that is called in the destination AWS Region, and the
+#'         action contained in the pre-signed URL.
 #' 
 #'     -   `DestinationRegion` - The name of the AWS Region that the DB
 #'         cluster snapshot is to be created in.
@@ -704,22 +707,25 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #' If you copy an unencrypted DB cluster snapshot and specify a value for
 #' the `KmsKeyId` parameter, an error is returned.
 #' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for the
-#' `CopyDBClusterSnapshot` API action in the AWS Region that contains the
-#' source DB cluster snapshot to copy. The `PreSignedUrl` parameter must be
-#' used when copying an encrypted DB cluster snapshot from another AWS
-#' Region. Don't specify `PreSignedUrl` when you are copying an encrypted
-#' DB cluster snapshot in the same AWS Region.
+#' [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] API action in
+#' the AWS Region that contains the source DB cluster snapshot to copy. The
+#' `PreSignedUrl` parameter must be used when copying an encrypted DB
+#' cluster snapshot from another AWS Region. Don't specify `PreSignedUrl`
+#' when you are copying an encrypted DB cluster snapshot in the same AWS
+#' Region.
 #' 
 #' The pre-signed URL must be a valid request for the
-#' `CopyDBClusterSnapshot` API action that can be executed in the source
-#' AWS Region that contains the encrypted DB cluster snapshot to be copied.
-#' The pre-signed URL request must contain the following parameter values:
+#' [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] API action
+#' that can be executed in the source AWS Region that contains the
+#' encrypted DB cluster snapshot to be copied. The pre-signed URL request
+#' must contain the following parameter values:
 #' 
 #' -   `KmsKeyId` - The AWS KMS key identifier for the customer master key
 #'     (CMK) to use to encrypt the copy of the DB cluster snapshot in the
 #'     destination AWS Region. This is the same identifier for both the
-#'     `CopyDBClusterSnapshot` action that is called in the destination AWS
-#'     Region, and the action contained in the pre-signed URL.
+#'     [`copy_db_cluster_snapshot`][rds_copy_db_cluster_snapshot] action
+#'     that is called in the destination AWS Region, and the action
+#'     contained in the pre-signed URL.
 #' 
 #' -   `DestinationRegion` - The name of the AWS Region that the DB cluster
 #'     snapshot is to be created in.
@@ -870,8 +876,9 @@ rds_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Target
 #' `available` state.
 #' 
 #' You can copy a snapshot from one AWS Region to another. In that case,
-#' the AWS Region where you call the `CopyDBSnapshot` action is the
-#' destination AWS Region for the DB snapshot copy.
+#' the AWS Region where you call the
+#' [`copy_db_snapshot`][rds_copy_db_snapshot] action is the destination AWS
+#' Region for the DB snapshot copy.
 #' 
 #' For more information about copying snapshots, see [Copying a DB
 #' Snapshot](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBSnapshot)
@@ -944,35 +951,39 @@ rds_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Target
 #' @param CopyTags A value that indicates whether to copy all tags from the source DB
 #' snapshot to the target DB snapshot. By default, tags are not copied.
 #' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for the
-#' `CopyDBSnapshot` API action in the source AWS Region that contains the
-#' source DB snapshot to copy.
+#' [`copy_db_snapshot`][rds_copy_db_snapshot] API action in the source AWS
+#' Region that contains the source DB snapshot to copy.
 #' 
 #' You must specify this parameter when you copy an encrypted DB snapshot
 #' from another AWS Region by using the Amazon RDS API. Don't specify
 #' `PreSignedUrl` when you are copying an encrypted DB snapshot in the same
 #' AWS Region.
 #' 
-#' The presigned URL must be a valid request for the `CopyDBSnapshot` API
-#' action that can be executed in the source AWS Region that contains the
-#' encrypted DB snapshot to be copied. The presigned URL request must
-#' contain the following parameter values:
+#' The presigned URL must be a valid request for the
+#' [`copy_db_snapshot`][rds_copy_db_snapshot] API action that can be
+#' executed in the source AWS Region that contains the encrypted DB
+#' snapshot to be copied. The presigned URL request must contain the
+#' following parameter values:
 #' 
 #' -   `DestinationRegion` - The AWS Region that the encrypted DB snapshot
 #'     is copied to. This AWS Region is the same one where the
-#'     `CopyDBSnapshot` action is called that contains this presigned URL.
+#'     [`copy_db_snapshot`][rds_copy_db_snapshot] action is called that
+#'     contains this presigned URL.
 #' 
 #'     For example, if you copy an encrypted DB snapshot from the us-west-2
 #'     AWS Region to the us-east-1 AWS Region, then you call the
-#'     `CopyDBSnapshot` action in the us-east-1 AWS Region and provide a
-#'     presigned URL that contains a call to the `CopyDBSnapshot` action in
-#'     the us-west-2 AWS Region. For this example, the `DestinationRegion`
-#'     in the presigned URL must be set to the us-east-1 AWS Region.
+#'     [`copy_db_snapshot`][rds_copy_db_snapshot] action in the us-east-1
+#'     AWS Region and provide a presigned URL that contains a call to the
+#'     [`copy_db_snapshot`][rds_copy_db_snapshot] action in the us-west-2
+#'     AWS Region. For this example, the `DestinationRegion` in the
+#'     presigned URL must be set to the us-east-1 AWS Region.
 #' 
 #' -   `KmsKeyId` - The AWS KMS key identifier for the customer master key
 #'     (CMK) to use to encrypt the copy of the DB snapshot in the
 #'     destination AWS Region. This is the same identifier for both the
-#'     `CopyDBSnapshot` action that is called in the destination AWS
-#'     Region, and the action contained in the presigned URL.
+#'     [`copy_db_snapshot`][rds_copy_db_snapshot] action that is called in
+#'     the destination AWS Region, and the action contained in the
+#'     presigned URL.
 #' 
 #' -   `SourceDBSnapshotIdentifier` - The DB snapshot identifier for the
 #'     encrypted snapshot to be copied. This identifier must be in the
@@ -1362,22 +1373,24 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 #' valid in the destination AWS Region. This CMK is used to encrypt the
 #' read replica in that AWS Region.
 #' @param PreSignedUrl A URL that contains a Signature Version 4 signed request for the
-#' `CreateDBCluster` action to be called in the source AWS Region where the
-#' DB cluster is replicated from. You only need to specify `PreSignedUrl`
-#' when you are performing cross-region replication from an encrypted DB
-#' cluster.
+#' [`create_db_cluster`][rds_create_db_cluster] action to be called in the
+#' source AWS Region where the DB cluster is replicated from. You only need
+#' to specify `PreSignedUrl` when you are performing cross-region
+#' replication from an encrypted DB cluster.
 #' 
-#' The pre-signed URL must be a valid request for the `CreateDBCluster` API
-#' action that can be executed in the source AWS Region that contains the
-#' encrypted DB cluster to be copied.
+#' The pre-signed URL must be a valid request for the
+#' [`create_db_cluster`][rds_create_db_cluster] API action that can be
+#' executed in the source AWS Region that contains the encrypted DB cluster
+#' to be copied.
 #' 
 #' The pre-signed URL request must contain the following parameter values:
 #' 
 #' -   `KmsKeyId` - The AWS KMS key identifier for the key to use to
 #'     encrypt the copy of the DB cluster in the destination AWS Region.
 #'     This should refer to the same AWS KMS CMK for both the
-#'     `CreateDBCluster` action that is called in the destination AWS
-#'     Region, and the action contained in the pre-signed URL.
+#'     [`create_db_cluster`][rds_create_db_cluster] action that is called
+#'     in the destination AWS Region, and the action contained in the
+#'     pre-signed URL.
 #' 
 #' -   `DestinationRegion` - The name of the AWS Region that Aurora read
 #'     replica will be created in.
@@ -1660,9 +1673,11 @@ rds_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpoin
 #' A DB cluster parameter group is initially created with the default
 #' parameters for the database engine used by instances in the DB cluster.
 #' To provide custom values for any of the parameters, you must modify the
-#' group after creating it using `ModifyDBClusterParameterGroup`. Once
-#' you've created a DB cluster parameter group, you need to associate it
-#' with your DB cluster using `ModifyDBCluster`. When you associate a new
+#' group after creating it using
+#' [`modify_db_cluster_parameter_group`][rds_modify_db_cluster_parameter_group].
+#' Once you've created a DB cluster parameter group, you need to associate
+#' it with your DB cluster using
+#' [`modify_db_cluster`][rds_modify_db_cluster]. When you associate a new
 #' DB cluster parameter group with a running DB cluster, you need to reboot
 #' the DB instances in the DB cluster without failover for the new DB
 #' cluster parameter group and associated settings to take effect.
@@ -1676,8 +1691,9 @@ rds_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpoin
 #' default database for a DB cluster, such as the character set for the
 #' default database defined by the `character_set_database` parameter. You
 #' can use the *Parameter Groups* option of the Amazon RDS console or the
-#' `DescribeDBClusterParameters` action to verify that your DB cluster
-#' parameter group has been created or modified.
+#' [`describe_db_cluster_parameters`][rds_describe_db_cluster_parameters]
+#' action to verify that your DB cluster parameter group has been created
+#' or modified.
 #' 
 #' For more information on Amazon Aurora, see [What Is Amazon
 #' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
@@ -2297,8 +2313,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Multi-AZ deployment.
 #' @param EngineVersion The version number of the database engine to use.
 #' 
-#' For a list of valid engine versions, use the `DescribeDBEngineVersions`
-#' action.
+#' For a list of valid engine versions, use the
+#' [`describe_db_engine_versions`][rds_describe_db_engine_versions] action.
 #' 
 #' The following are the database engines and links to information about
 #' the major and minor versions that are available with Amazon RDS. Not
@@ -2368,7 +2384,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The character set is managed by the DB cluster. For more
-#' information, see `CreateDBCluster`.
+#' information, see [`create_db_cluster`][rds_create_db_cluster].
 #' @param NcharCharacterSetName The name of the NCHAR character set for the Oracle DB instance.
 #' @param PubliclyAccessible A value that indicates whether the DB instance is publicly accessible.
 #' 
@@ -2432,7 +2448,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The AWS KMS key identifier is managed by the DB cluster.
-#' For more information, see `CreateDBCluster`.
+#' For more information, see [`create_db_cluster`][rds_create_db_cluster].
 #' 
 #' If `StorageEncrypted` is enabled, and you do not specify a value for the
 #' `KmsKeyId` parameter, then Amazon RDS uses your default CMK. There is a
@@ -2552,9 +2568,10 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' **Amazon Aurora**
 #' 
 #' Not applicable. You can enable or disable deletion protection for the DB
-#' cluster. For more information, see `CreateDBCluster`. DB instances in a
-#' DB cluster can be deleted even when deletion protection is enabled for
-#' the DB cluster.
+#' cluster. For more information, see
+#' [`create_db_cluster`][rds_create_db_cluster]. DB instances in a DB
+#' cluster can be deleted even when deletion protection is enabled for the
+#' DB cluster.
 #' @param MaxAllocatedStorage The upper limit to which Amazon RDS can automatically scale the storage
 #' of the DB instance.
 #' @param EnableCustomerOwnedIp A value that indicates whether to enable a customer-owned IP address
@@ -2675,8 +2692,9 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' Replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html)
 #' in the *Amazon RDS User Guide*.
 #' 
-#' Amazon Aurora doesn't support this action. Call the `CreateDBInstance`
-#' action to create a DB instance for an Aurora DB cluster.
+#' Amazon Aurora doesn't support this action. Call the
+#' [`create_db_instance`][rds_create_db_instance] action to create a DB
+#' instance for an Aurora DB cluster.
 #' 
 #' All read replica DB instances are created with backups disabled. All
 #' other DB instance attributes (including DB security groups and DB
@@ -2805,7 +2823,8 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' When the DB instance isn't publicly accessible, it is an internal DB
 #' instance with a DNS name that resolves to a private IP address.
 #' 
-#' For more information, see CreateDBInstance.
+#' For more information, see
+#' [`create_db_instance`][rds_create_db_instance].
 #' @param Tags 
 #' @param DBSubnetGroupName Specifies a DB subnet group for the DB instance. The new DB instance is
 #' created in the VPC associated with the DB subnet group. If no DB subnet
@@ -2881,8 +2900,9 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' You can't create an encrypted read replica from an unencrypted DB
 #' instance.
 #' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for the
-#' `CreateDBInstanceReadReplica` API action in the source AWS Region that
-#' contains the source DB instance.
+#' [`create_db_instance_read_replica`][rds_create_db_instance_read_replica]
+#' API action in the source AWS Region that contains the source DB
+#' instance.
 #' 
 #' You must specify this parameter when you create an encrypted read
 #' replica from another AWS Region by using the Amazon RDS API. Don't
@@ -2890,27 +2910,32 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' in the same AWS Region.
 #' 
 #' The presigned URL must be a valid request for the
-#' `CreateDBInstanceReadReplica` API action that can be executed in the
-#' source AWS Region that contains the encrypted source DB instance. The
-#' presigned URL request must contain the following parameter values:
+#' [`create_db_instance_read_replica`][rds_create_db_instance_read_replica]
+#' API action that can be executed in the source AWS Region that contains
+#' the encrypted source DB instance. The presigned URL request must contain
+#' the following parameter values:
 #' 
 #' -   `DestinationRegion` - The AWS Region that the encrypted read replica
 #'     is created in. This AWS Region is the same one where the
-#'     `CreateDBInstanceReadReplica` action is called that contains this
-#'     presigned URL.
+#'     [`create_db_instance_read_replica`][rds_create_db_instance_read_replica]
+#'     action is called that contains this presigned URL.
 #' 
 #'     For example, if you create an encrypted DB instance in the us-west-1
 #'     AWS Region, from a source DB instance in the us-east-2 AWS Region,
-#'     then you call the `CreateDBInstanceReadReplica` action in the
-#'     us-east-1 AWS Region and provide a presigned URL that contains a
-#'     call to the `CreateDBInstanceReadReplica` action in the us-west-2
-#'     AWS Region. For this example, the `DestinationRegion` in the
-#'     presigned URL must be set to the us-east-1 AWS Region.
+#'     then you call the
+#'     [`create_db_instance_read_replica`][rds_create_db_instance_read_replica]
+#'     action in the us-east-1 AWS Region and provide a presigned URL that
+#'     contains a call to the
+#'     [`create_db_instance_read_replica`][rds_create_db_instance_read_replica]
+#'     action in the us-west-2 AWS Region. For this example, the
+#'     `DestinationRegion` in the presigned URL must be set to the
+#'     us-east-1 AWS Region.
 #' 
 #' -   `KmsKeyId` - The AWS KMS key identifier for the key to use to
 #'     encrypt the read replica in the destination AWS Region. This is the
-#'     same identifier for both the `CreateDBInstanceReadReplica` action
-#'     that is called in the destination AWS Region, and the action
+#'     same identifier for both the
+#'     [`create_db_instance_read_replica`][rds_create_db_instance_read_replica]
+#'     action that is called in the destination AWS Region, and the action
 #'     contained in the presigned URL.
 #' 
 #' -   `SourceDBInstanceIdentifier` - The DB instance identifier for the
@@ -3498,8 +3523,8 @@ rds_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' that you want to subscribe to. You can see a list of the categories for
 #' a given source type in
 #' [Events](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
-#' in the *Amazon RDS User Guide* or by using the `DescribeEventCategories`
-#' operation.
+#' in the *Amazon RDS User Guide* or by using the
+#' [`describe_event_categories`][rds_describe_event_categories] operation.
 #' @param SourceIds The list of identifiers of the event sources for which events are
 #' returned. If not specified, then all sources are included in the
 #' response. An identifier must begin with a letter and must contain only
@@ -3973,7 +3998,8 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' The DeleteDBInstance action deletes a previously provisioned DB
 #' instance. When you delete a DB instance, all automated backups for that
 #' instance are deleted and can't be recovered. Manual DB snapshots of the
-#' DB instance to be deleted by `DeleteDBInstance` are not deleted.
+#' DB instance to be deleted by
+#' [`delete_db_instance`][rds_delete_db_instance] are not deleted.
 #' 
 #' If you request a final DB snapshot the status of the Amazon RDS DB
 #' instance is `deleting` until the DB snapshot is created. The API action
@@ -3995,10 +4021,11 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' -   The DB instance is the only instance in the DB cluster.
 #' 
 #' To delete a DB instance in this case, first call the
-#' `PromoteReadReplicaDBCluster` API action to promote the DB cluster so
-#' it's no longer a read replica. After the promotion completes, then call
-#' the `DeleteDBInstance` API action to delete the final instance in the DB
-#' cluster.
+#' [`promote_read_replica_db_cluster`][rds_promote_read_replica_db_cluster]
+#' API action to promote the DB cluster so it's no longer a read replica.
+#' After the promotion completes, then call the
+#' [`delete_db_instance`][rds_delete_db_instance] API action to delete the
+#' final instance in the DB cluster.
 #'
 #' @usage
 #' rds_delete_db_instance(DBInstanceIdentifier, SkipFinalSnapshot,
@@ -4618,9 +4645,9 @@ rds_describe_account_attributes <- function() {
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeCertificates` request. If this parameter is specified, the
-#' response includes only records beyond the marker, up to the value
-#' specified by `MaxRecords`.
+#' [`describe_certificates`][rds_describe_certificates] request. If this
+#' parameter is specified, the response includes only records beyond the
+#' marker, up to the value specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -4686,9 +4713,9 @@ rds_describe_certificates <- function(CertificateIdentifier = NULL, Filters = NU
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeCustomAvailabilityZones` request. If this parameter is
-#' specified, the response includes only records beyond the marker, up to
-#' the value specified by `MaxRecords`.
+#' [`describe_custom_availability_zones`][rds_describe_custom_availability_zones]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -4793,9 +4820,9 @@ rds_describe_custom_availability_zones <- function(CustomAvailabilityZoneId = NU
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeDBClusterBacktracks` request. If this parameter is specified,
-#' the response includes only records beyond the marker, up to the value
-#' specified by `MaxRecords`.
+#' [`describe_db_cluster_backtracks`][rds_describe_db_cluster_backtracks]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -4852,8 +4879,8 @@ rds_describe_db_cluster_backtracks <- function(DBClusterIdentifier, BacktrackIde
 #' a lowercase string.
 #' @param Filters A set of name-value pairs that define which endpoints to include in the
 #' output. The filters are specified as name-value pairs, in the format
-#' `Name=<i>endpoint_type</i>,Values=<i>endpoint_type1</i>,<i>endpoint_type2</i>,...`.
-#' `Name` can be one of: `db-cluster-endpoint-type`,
+#' `Name=endpoint_type,Values=endpoint_type1,endpoint_type2,...`. `Name`
+#' can be one of: `db-cluster-endpoint-type`,
 #' `db-cluster-endpoint-custom-type`, `db-cluster-endpoint-id`,
 #' `db-cluster-endpoint-status`. `Values` for the
 #' ` db-cluster-endpoint-type` filter can be one or more of: `reader`,
@@ -4870,9 +4897,9 @@ rds_describe_db_cluster_backtracks <- function(DBClusterIdentifier, BacktrackIde
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeDBClusterEndpoints` request. If this parameter is specified,
-#' the response includes only records beyond the marker, up to the value
-#' specified by `MaxRecords`.
+#' [`describe_db_cluster_endpoints`][rds_describe_db_cluster_endpoints]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -4946,9 +4973,9 @@ rds_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DBClus
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeDBClusterParameterGroups` request. If this parameter is
-#' specified, the response includes only records beyond the marker, up to
-#' the value specified by `MaxRecords`.
+#' [`describe_db_cluster_parameter_groups`][rds_describe_db_cluster_parameter_groups]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -5023,9 +5050,9 @@ rds_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupName
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeDBClusterParameters` request. If this parameter is specified,
-#' the response includes only records beyond the marker, up to the value
-#' specified by `MaxRecords`.
+#' [`describe_db_cluster_parameters`][rds_describe_db_cluster_parameters]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -5073,15 +5100,18 @@ rds_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, Sour
 #' manual DB cluster snapshot.
 #' 
 #' When sharing snapshots with other AWS accounts,
-#' `DescribeDBClusterSnapshotAttributes` returns the `restore` attribute
-#' and a list of IDs for the AWS accounts that are authorized to copy or
-#' restore the manual DB cluster snapshot. If `all` is included in the list
-#' of values for the `restore` attribute, then the manual DB cluster
-#' snapshot is public and can be copied or restored by all AWS accounts.
+#' [`describe_db_cluster_snapshot_attributes`][rds_describe_db_cluster_snapshot_attributes]
+#' returns the `restore` attribute and a list of IDs for the AWS accounts
+#' that are authorized to copy or restore the manual DB cluster snapshot.
+#' If `all` is included in the list of values for the `restore` attribute,
+#' then the manual DB cluster snapshot is public and can be copied or
+#' restored by all AWS accounts.
 #' 
 #' To add or remove access for an AWS account to copy or restore a manual
 #' DB cluster snapshot, or to make the manual DB cluster snapshot public or
-#' private, use the `ModifyDBClusterSnapshotAttribute` API action.
+#' private, use the
+#' [`modify_db_cluster_snapshot_attribute`][rds_modify_db_cluster_snapshot_attribute]
+#' API action.
 #' 
 #' This action only applies to Aurora DB clusters.
 #'
@@ -5201,9 +5231,9 @@ rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentif
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeDBClusterSnapshots` request. If this parameter is specified,
-#' the response includes only records beyond the marker, up to the value
-#' specified by `MaxRecords`.
+#' [`describe_db_cluster_snapshots`][rds_describe_db_cluster_snapshots]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by `MaxRecords`.
 #' @param IncludeShared A value that indicates whether to include shared manual DB cluster
 #' snapshots from other AWS accounts that this AWS account has been given
 #' permission to copy or restore. By default, these snapshots are not
@@ -5211,13 +5241,15 @@ rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentif
 #' 
 #' You can give an AWS account permission to restore a manual DB cluster
 #' snapshot from another AWS account by the
-#' `ModifyDBClusterSnapshotAttribute` API action.
+#' [`modify_db_cluster_snapshot_attribute`][rds_modify_db_cluster_snapshot_attribute]
+#' API action.
 #' @param IncludePublic A value that indicates whether to include manual DB cluster snapshots
 #' that are public and can be copied or restored by any AWS account. By
 #' default, the public snapshots are not included.
 #' 
 #' You can share a manual DB cluster snapshot as public by using the
-#' ModifyDBClusterSnapshotAttribute API action.
+#' [`modify_db_cluster_snapshot_attribute`][rds_modify_db_cluster_snapshot_attribute]
+#' API action.
 #'
 #' @section Request syntax:
 #' ```
@@ -5299,9 +5331,10 @@ rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClus
 #' Default: 100
 #' 
 #' Constraints: Minimum 20, maximum 100.
-#' @param Marker An optional pagination token provided by a previous `DescribeDBClusters`
-#' request. If this parameter is specified, the response includes only
-#' records beyond the marker, up to the value specified by `MaxRecords`.
+#' @param Marker An optional pagination token provided by a previous
+#' [`describe_db_clusters`][rds_describe_db_clusters] request. If this
+#' parameter is specified, the response includes only records beyond the
+#' marker, up to the value specified by `MaxRecords`.
 #' @param IncludeShared Optional Boolean parameter that specifies whether the output includes
 #' information about clusters shared from other AWS accounts.
 #'
@@ -5379,14 +5412,16 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 #' each engine version.
 #' 
 #' If this parameter is enabled and the requested engine supports the
-#' `CharacterSetName` parameter for `CreateDBInstance`, the response
-#' includes a list of supported character sets for each engine version.
+#' `CharacterSetName` parameter for
+#' [`create_db_instance`][rds_create_db_instance], the response includes a
+#' list of supported character sets for each engine version.
 #' @param ListSupportedTimezones A value that indicates whether to list the supported time zones for each
 #' engine version.
 #' 
 #' If this parameter is enabled and the requested engine supports the
-#' `TimeZone` parameter for `CreateDBInstance`, the response includes a
-#' list of supported time zones for each engine version.
+#' `TimeZone` parameter for [`create_db_instance`][rds_create_db_instance],
+#' the response includes a list of supported time zones for each engine
+#' version.
 #' @param IncludeAll A value that indicates whether to include engine versions that aren't
 #' available in the list. The default is to list only available engine
 #' versions.
@@ -5441,8 +5476,8 @@ rds_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL,
 #' use this operation to find details about automated backups for
 #' previously deleted instances. Current instances with retention periods
 #' greater than zero (0) are returned for both the
-#' `DescribeDBInstanceAutomatedBackups` and `DescribeDBInstances`
-#' operations.
+#' [`describe_db_instance_automated_backups`][rds_describe_db_instance_automated_backups]
+#' and [`describe_db_instances`][rds_describe_db_instances] operations.
 #' 
 #' All parameters are optional.
 #'
@@ -5583,9 +5618,9 @@ rds_describe_db_instance_automated_backups <- function(DbiResourceId = NULL, DBI
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeDBInstances` request. If this parameter is specified, the
-#' response includes only records beyond the marker, up to the value
-#' specified by `MaxRecords`.
+#' [`describe_db_instances`][rds_describe_db_instances] request. If this
+#' parameter is specified, the response includes only records beyond the
+#' marker, up to the value specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -5721,9 +5756,9 @@ rds_describe_db_log_files <- function(DBInstanceIdentifier, FilenameContains = N
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeDBParameterGroups` request. If this parameter is specified, the
-#' response includes only records beyond the marker, up to the value
-#' specified by `MaxRecords`.
+#' [`describe_db_parameter_groups`][rds_describe_db_parameter_groups]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -5791,9 +5826,9 @@ rds_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Filter
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeDBParameters` request. If this parameter is specified, the
-#' response includes only records beyond the marker, up to the value
-#' specified by `MaxRecords`.
+#' [`describe_db_parameters`][rds_describe_db_parameters] request. If this
+#' parameter is specified, the response includes only records beyond the
+#' marker, up to the value specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -6041,9 +6076,9 @@ rds_describe_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, F
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeDBSecurityGroups` request. If this parameter is specified, the
-#' response includes only records beyond the marker, up to the value
-#' specified by `MaxRecords`.
+#' [`describe_db_security_groups`][rds_describe_db_security_groups]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -6090,15 +6125,17 @@ rds_describe_db_security_groups <- function(DBSecurityGroupName = NULL, Filters 
 #' snapshot.
 #' 
 #' When sharing snapshots with other AWS accounts,
-#' `DescribeDBSnapshotAttributes` returns the `restore` attribute and a
-#' list of IDs for the AWS accounts that are authorized to copy or restore
-#' the manual DB snapshot. If `all` is included in the list of values for
-#' the `restore` attribute, then the manual DB snapshot is public and can
-#' be copied or restored by all AWS accounts.
+#' [`describe_db_snapshot_attributes`][rds_describe_db_snapshot_attributes]
+#' returns the `restore` attribute and a list of IDs for the AWS accounts
+#' that are authorized to copy or restore the manual DB snapshot. If `all`
+#' is included in the list of values for the `restore` attribute, then the
+#' manual DB snapshot is public and can be copied or restored by all AWS
+#' accounts.
 #' 
 #' To add or remove access for an AWS account to copy or restore a manual
 #' DB snapshot, or to make the manual DB snapshot public or private, use
-#' the `ModifyDBSnapshotAttribute` API action.
+#' the [`modify_db_snapshot_attribute`][rds_modify_db_snapshot_attribute]
+#' API action.
 #'
 #' @usage
 #' rds_describe_db_snapshot_attributes(DBSnapshotIdentifier)
@@ -6217,23 +6254,24 @@ rds_describe_db_snapshot_attributes <- function(DBSnapshotIdentifier) {
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeDBSnapshots` request. If this parameter is specified, the
-#' response includes only records beyond the marker, up to the value
-#' specified by `MaxRecords`.
+#' [`describe_db_snapshots`][rds_describe_db_snapshots] request. If this
+#' parameter is specified, the response includes only records beyond the
+#' marker, up to the value specified by `MaxRecords`.
 #' @param IncludeShared A value that indicates whether to include shared manual DB cluster
 #' snapshots from other AWS accounts that this AWS account has been given
 #' permission to copy or restore. By default, these snapshots are not
 #' included.
 #' 
 #' You can give an AWS account permission to restore a manual DB snapshot
-#' from another AWS account by using the `ModifyDBSnapshotAttribute` API
+#' from another AWS account by using the
+#' [`modify_db_snapshot_attribute`][rds_modify_db_snapshot_attribute] API
 #' action.
 #' @param IncludePublic A value that indicates whether to include manual DB cluster snapshots
 #' that are public and can be copied or restored by any AWS account. By
 #' default, the public snapshots are not included.
 #' 
 #' You can share a manual DB snapshot as public by using the
-#' ModifyDBSnapshotAttribute API.
+#' [`modify_db_snapshot_attribute`][rds_modify_db_snapshot_attribute] API.
 #' @param DbiResourceId A specific DB resource ID to describe.
 #'
 #' @section Request syntax:
@@ -6371,9 +6409,9 @@ rds_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = NU
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeEngineDefaultClusterParameters` request. If this parameter is
-#' specified, the response includes only records beyond the marker, up to
-#' the value specified by `MaxRecords`.
+#' [`describe_engine_default_cluster_parameters`][rds_describe_engine_default_cluster_parameters]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -6434,9 +6472,9 @@ rds_describe_engine_default_cluster_parameters <- function(DBParameterGroupFamil
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeEngineDefaultParameters` request. If this parameter is
-#' specified, the response includes only records beyond the marker, up to
-#' the value specified by `MaxRecords`.
+#' [`describe_engine_default_parameters`][rds_describe_engine_default_parameters]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -6749,13 +6787,14 @@ rds_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, Star
 #' -   `status` - The status of the export task. Must be lowercase, for
 #'     example, `complete`.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeExportTasks` request. If you specify this parameter, the
-#' response includes only records beyond the marker, up to the value
-#' specified by the `MaxRecords` parameter.
+#' [`describe_export_tasks`][rds_describe_export_tasks] request. If you
+#' specify this parameter, the response includes only records beyond the
+#' marker, up to the value specified by the `MaxRecords` parameter.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified value, a pagination token called a
 #' marker is included in the response. You can use the marker in a later
-#' `DescribeExportTasks` request to retrieve the remaining results.
+#' [`describe_export_tasks`][rds_describe_export_tasks] request to retrieve
+#' the remaining results.
 #' 
 #' Default: 100
 #' 
@@ -6838,9 +6877,9 @@ rds_describe_export_tasks <- function(ExportTaskIdentifier = NULL, SourceArn = N
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeGlobalClusters` request. If this parameter is specified, the
-#' response includes only records beyond the marker, up to the value
-#' specified by `MaxRecords`.
+#' [`describe_global_clusters`][rds_describe_global_clusters] request. If
+#' this parameter is specified, the response includes only records beyond
+#' the marker, up to the value specified by `MaxRecords`.
 #'
 #' @section Request syntax:
 #' ```
@@ -6903,7 +6942,7 @@ rds_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filters
 #'     identifiers.
 #' 
 #'     For more information about the valid engines for installation media,
-#'     see ImportInstallationMedia.
+#'     see [`import_installation_media`][rds_import_installation_media].
 #' @param MaxRecords An optional pagination token provided by a previous
 #' DescribeInstallationMedia request. If this parameter is specified, the
 #' response includes only records beyond the marker, up to the value
@@ -7188,9 +7227,10 @@ rds_describe_orderable_db_instance_options <- function(Engine, EngineVersion = N
 #'     ARNs. The results list will only include pending maintenance actions
 #'     for the DB instances identified by these ARNs.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribePendingMaintenanceActions` request. If this parameter is
-#' specified, the response includes only records beyond the marker, up to a
-#' number of records specified by `MaxRecords`.
+#' [`describe_pending_maintenance_actions`][rds_describe_pending_maintenance_actions]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to a number of records specified by
+#' `MaxRecords`.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' called a marker is included in the response so that you can retrieve the
@@ -7440,9 +7480,9 @@ rds_describe_reserved_db_instances_offerings <- function(ReservedDBInstancesOffe
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #' @param Marker An optional pagination token provided by a previous
-#' `DescribeSourceRegions` request. If this parameter is specified, the
-#' response includes only records beyond the marker, up to the value
-#' specified by `MaxRecords`.
+#' [`describe_source_regions`][rds_describe_source_regions] request. If
+#' this parameter is specified, the response includes only records beyond
+#' the marker, up to the value specified by `MaxRecords`.
 #' @param Filters This parameter isn't currently supported.
 #'
 #' @section Request syntax:
@@ -7486,9 +7526,11 @@ rds_describe_source_regions <- function(RegionName = NULL, MaxRecords = NULL, Ma
 #' modifications you can make to your DB instance
 #'
 #' @description
-#' You can call `DescribeValidDBInstanceModifications` to learn what
-#' modifications you can make to your DB instance. You can use this
-#' information when you call `ModifyDBInstance`.
+#' You can call
+#' [`describe_valid_db_instance_modifications`][rds_describe_valid_db_instance_modifications]
+#' to learn what modifications you can make to your DB instance. You can
+#' use this information when you call
+#' [`modify_db_instance`][rds_modify_db_instance].
 #'
 #' @usage
 #' rds_describe_valid_db_instance_modifications(DBInstanceIdentifier)
@@ -7690,7 +7732,8 @@ rds_failover_db_cluster <- function(DBClusterIdentifier, TargetDBInstanceIdentif
 #' -   `sqlserver-web`
 #' @param EngineVersion &#91;required&#93; The version number of the database engine to use.
 #' 
-#' For a list of valid engine versions, call DescribeDBEngineVersions.
+#' For a list of valid engine versions, call
+#' [`describe_db_engine_versions`][rds_describe_db_engine_versions].
 #' 
 #' The following are the database engines and links to information about
 #' the major and minor versions. The list only includes DB engines that
@@ -7840,7 +7883,8 @@ rds_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' @param CertificateIdentifier The new default certificate identifier to override the current one with.
 #' 
 #' To determine the valid values, use the `describe-certificates` AWS CLI
-#' command or the `DescribeCertificates` API operation.
+#' command or the [`describe_certificates`][rds_describe_certificates] API
+#' operation.
 #' @param RemoveCustomerOverride A value that indicates whether to remove the override for the default
 #' certificate. If the override is removed, the default certificate is the
 #' system default.
@@ -7881,7 +7925,9 @@ rds_modify_certificates <- function(CertificateIdentifier = NULL, RemoveCustomer
 #' Aurora Serverless scales seamlessly based on the workload on the DB
 #' cluster. In some cases, the capacity might not scale fast enough to meet
 #' a sudden change in workload, such as a large number of new transactions.
-#' Call `ModifyCurrentDBClusterCapacity` to set the capacity explicitly.
+#' Call
+#' [`modify_current_db_cluster_capacity`][rds_modify_current_db_cluster_capacity]
+#' to set the capacity explicitly.
 #' 
 #' After this call sets the DB cluster capacity, Aurora Serverless can
 #' automatically scale the DB cluster based on the cooldown period for
@@ -7891,10 +7937,11 @@ rds_modify_certificates <- function(CertificateIdentifier = NULL, RemoveCustomer
 #' Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)
 #' in the *Amazon Aurora User Guide*.
 #' 
-#' If you call `ModifyCurrentDBClusterCapacity` with the default
-#' `TimeoutAction`, connections that prevent Aurora Serverless from finding
-#' a scaling point might be dropped. For more information about scaling
-#' points, see [Autoscaling for Aurora
+#' If you call
+#' [`modify_current_db_cluster_capacity`][rds_modify_current_db_cluster_capacity]
+#' with the default `TimeoutAction`, connections that prevent Aurora
+#' Serverless from finding a scaling point might be dropped. For more
+#' information about scaling points, see [Autoscaling for Aurora
 #' Serverless](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.auto-scaling)
 #' in the *Amazon Aurora User Guide*.
 #' 
@@ -8325,8 +8372,9 @@ rds_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endpoint
 #' database for a DB cluster, such as the character set for the default
 #' database defined by the `character_set_database` parameter. You can use
 #' the *Parameter Groups* option of the Amazon RDS console or the
-#' `DescribeDBClusterParameters` action to verify that your DB cluster
-#' parameter group has been created or modified.
+#' [`describe_db_cluster_parameters`][rds_describe_db_cluster_parameters]
+#' action to verify that your DB cluster parameter group has been created
+#' or modified.
 #' 
 #' If the modified DB cluster parameter group is used by an Aurora
 #' Serverless cluster, Aurora applies the update immediately. The cluster
@@ -8412,8 +8460,10 @@ rds_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName, P
 #' 
 #' To view which AWS accounts have access to copy or restore a manual DB
 #' cluster snapshot, or whether a manual DB cluster snapshot is public or
-#' private, use the DescribeDBClusterSnapshotAttributes API action. The
-#' accounts are returned as values for the `restore` attribute.
+#' private, use the
+#' [`describe_db_cluster_snapshot_attributes`][rds_describe_db_cluster_snapshot_attributes]
+#' API action. The accounts are returned as values for the `restore`
+#' attribute.
 #' 
 #' This action only applies to Aurora DB clusters.
 #'
@@ -8428,7 +8478,8 @@ rds_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName, P
 #' manual DB cluster snapshot, set this value to `restore`.
 #' 
 #' To view the list of attributes available to modify, use the
-#' DescribeDBClusterSnapshotAttributes API action.
+#' [`describe_db_cluster_snapshot_attributes`][rds_describe_db_cluster_snapshot_attributes]
+#' API action.
 #' @param ValuesToAdd A list of DB cluster snapshot attributes to add to the attribute
 #' specified by `AttributeName`.
 #' 
@@ -8488,8 +8539,9 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' Modifies settings for a DB instance. You can change one or more database
 #' configuration parameters by specifying these parameters and the new
 #' values in the request. To learn what modifications you can make to your
-#' DB instance, call `DescribeValidDBInstanceModifications` before you call
-#' `ModifyDBInstance`.
+#' DB instance, call
+#' [`describe_valid_db_instance_modifications`][rds_describe_valid_db_instance_modifications]
+#' before you call [`modify_db_instance`][rds_modify_db_instance].
 #'
 #' @usage
 #' rds_modify_db_instance(DBInstanceIdentifier, AllocatedStorage,
@@ -8522,7 +8574,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' are 10% greater than the current value.
 #' 
 #' For the valid values for allocated storage for each engine, see
-#' `CreateDBInstance`.
+#' [`create_db_instance`][rds_create_db_instance].
 #' @param DBInstanceClass The new compute and memory capacity of the DB instance, for example,
 #' `db.m4.large`. Not all DB instance classes are available in all AWS
 #' Regions, or for all database engines. For the full list of DB instance
@@ -8563,7 +8615,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The associated list of EC2 VPC security groups is
-#' managed by the DB cluster. For more information, see `ModifyDBCluster`.
+#' managed by the DB cluster. For more information, see
+#' [`modify_db_cluster`][rds_modify_db_cluster].
 #' 
 #' Constraints:
 #' 
@@ -8575,8 +8628,9 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' 
 #' If this parameter is disabled, changes to the DB instance are applied
 #' during the next maintenance window. Some parameter changes can cause an
-#' outage and are applied on the next call to RebootDBInstance, or the next
-#' failure reboot. Review the table of parameters in [Modifying a DB
+#' outage and are applied on the next call to
+#' [`reboot_db_instance`][rds_reboot_db_instance], or the next failure
+#' reboot. Review the table of parameters in [Modifying a DB
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
 #' in the *Amazon RDS User Guide.* to see the impact of enabling or
 #' disabling `ApplyImmediately` for each modified parameter and to
@@ -8593,7 +8647,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The password for the master user is managed by the DB
-#' cluster. For more information, see `ModifyDBCluster`.
+#' cluster. For more information, see
+#' [`modify_db_cluster`][rds_modify_db_cluster].
 #' 
 #' Default: Uses existing setting
 #' 
@@ -8646,7 +8701,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The retention period for automated backups is managed by
-#' the DB cluster. For more information, see `ModifyDBCluster`.
+#' the DB cluster. For more information, see
+#' [`modify_db_cluster`][rds_modify_db_cluster].
 #' 
 #' Default: Uses existing setting
 #' 
@@ -8670,7 +8726,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' **Amazon Aurora**
 #' 
 #' Not applicable. The daily time range for creating automated backups is
-#' managed by the DB cluster. For more information, see `ModifyDBCluster`.
+#' managed by the DB cluster. For more information, see
+#' [`modify_db_cluster`][rds_modify_db_cluster].
 #' 
 #' Constraints:
 #' 
@@ -8712,8 +8769,9 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' family for the new engine version must be specified. The new DB
 #' parameter group can be the default for that DB parameter group family.
 #' 
-#' For information about valid engine versions, see `CreateDBInstance`, or
-#' call `DescribeDBEngineVersions`.
+#' For information about valid engine versions, see
+#' [`create_db_instance`][rds_create_db_instance], or call
+#' [`describe_db_engine_versions`][rds_describe_db_engine_versions].
 #' @param AllowMajorVersionUpgrade A value that indicates whether major version upgrades are allowed.
 #' Changing this parameter doesn't result in an outage and the change is
 #' asynchronously applied as soon as possible.
@@ -8834,7 +8892,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' 
 #' Not applicable. Copying tags to snapshots is managed by the DB cluster.
 #' Setting this value for an Aurora DB instance has no effect on the DB
-#' cluster setting. For more information, see `ModifyDBCluster`.
+#' cluster setting. For more information, see
+#' [`modify_db_cluster`][rds_modify_db_cluster].
 #' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
 #' metrics are collected for the DB instance. To disable collecting
 #' Enhanced Monitoring metrics, specify 0. The default is 0.
@@ -9425,8 +9484,9 @@ rds_modify_db_snapshot <- function(DBSnapshotIdentifier, EngineVersion = NULL, O
 #' 
 #' To view which AWS accounts have access to copy or restore a manual DB
 #' snapshot, or whether a manual DB snapshot public or private, use the
-#' DescribeDBSnapshotAttributes API action. The accounts are returned as
-#' values for the `restore` attribute.
+#' [`describe_db_snapshot_attributes`][rds_describe_db_snapshot_attributes]
+#' API action. The accounts are returned as values for the `restore`
+#' attribute.
 #'
 #' @usage
 #' rds_modify_db_snapshot_attribute(DBSnapshotIdentifier, AttributeName,
@@ -9439,7 +9499,8 @@ rds_modify_db_snapshot <- function(DBSnapshotIdentifier, EngineVersion = NULL, O
 #' manual DB snapshot, set this value to `restore`.
 #' 
 #' To view the list of attributes available to modify, use the
-#' DescribeDBSnapshotAttributes API action.
+#' [`describe_db_snapshot_attributes`][rds_describe_db_snapshot_attributes]
+#' API action.
 #' @param ValuesToAdd A list of DB snapshot attributes to add to the attribute specified by
 #' `AttributeName`.
 #' 
@@ -9549,14 +9610,16 @@ rds_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' Modifies an existing RDS event notification subscription. You can't
 #' modify the source identifiers using this call. To change source
 #' identifiers for a subscription, use the
-#' `AddSourceIdentifierToSubscription` and
-#' `RemoveSourceIdentifierFromSubscription` calls.
+#' [`add_source_identifier_to_subscription`][rds_add_source_identifier_to_subscription]
+#' and
+#' [`remove_source_identifier_from_subscription`][rds_remove_source_identifier_from_subscription]
+#' calls.
 #' 
 #' You can see a list of the event categories for a given source type
 #' (`SourceType`) in
 #' [Events](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
-#' in the *Amazon RDS User Guide* or by using the `DescribeEventCategories`
-#' operation.
+#' in the *Amazon RDS User Guide* or by using the
+#' [`describe_event_categories`][rds_describe_event_categories] operation.
 #'
 #' @usage
 #' rds_modify_event_subscription(SubscriptionName, SnsTopicArn, SourceType,
@@ -9577,8 +9640,8 @@ rds_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' want to subscribe to. You can see a list of the categories for a given
 #' source type in
 #' [Events](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
-#' in the *Amazon RDS User Guide* or by using the `DescribeEventCategories`
-#' operation.
+#' in the *Amazon RDS User Guide* or by using the
+#' [`describe_event_categories`][rds_describe_event_categories] operation.
 #' @param Enabled A value that indicates whether to activate the subscription.
 #'
 #' @section Request syntax:
@@ -10316,9 +10379,10 @@ rds_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' 
 #' When resetting the entire group, dynamic parameters are updated
 #' immediately and static parameters are set to `pending-reboot` to take
-#' effect on the next DB instance restart or `RebootDBInstance` request.
-#' You must call `RebootDBInstance` for every DB instance in your DB
-#' cluster that you want the updated static parameter to apply to.
+#' effect on the next DB instance restart or
+#' [`reboot_db_instance`][rds_reboot_db_instance] request. You must call
+#' [`reboot_db_instance`][rds_reboot_db_instance] for every DB instance in
+#' your DB cluster that you want the updated static parameter to apply to.
 #' 
 #' For more information on Amazon Aurora, see [What Is Amazon
 #' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
@@ -10395,7 +10459,7 @@ rds_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, Re
 #' `ResetAllParameters` parameters. When resetting the entire group,
 #' dynamic parameters are updated immediately and static parameters are set
 #' to `pending-reboot` to take effect on the next DB instance restart or
-#' `RebootDBInstance` request.
+#' [`reboot_db_instance`][rds_reboot_db_instance] request.
 #'
 #' @usage
 #' rds_reset_db_parameter_group(DBParameterGroupName, ResetAllParameters,
@@ -10491,11 +10555,13 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' in the *Amazon Aurora User Guide*.
 #' 
 #' This action only restores the DB cluster, not the DB instances for that
-#' DB cluster. You must invoke the `CreateDBInstance` action to create DB
+#' DB cluster. You must invoke the
+#' [`create_db_instance`][rds_create_db_instance] action to create DB
 #' instances for the restored DB cluster, specifying the identifier of the
 #' restored DB cluster in `DBClusterIdentifier`. You can create DB
-#' instances only after the `RestoreDBClusterFromS3` action has completed
-#' and the DB cluster is available.
+#' instances only after the
+#' [`restore_db_cluster_from_s3`][rds_restore_db_cluster_from_s3] action
+#' has completed and the DB cluster is available.
 #' 
 #' For more information on Amazon Aurora, see [What Is Amazon
 #' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
@@ -10791,11 +10857,13 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' is associated with the default security group.
 #' 
 #' This action only restores the DB cluster, not the DB instances for that
-#' DB cluster. You must invoke the `CreateDBInstance` action to create DB
+#' DB cluster. You must invoke the
+#' [`create_db_instance`][rds_create_db_instance] action to create DB
 #' instances for the restored DB cluster, specifying the identifier of the
 #' restored DB cluster in `DBClusterIdentifier`. You can create DB
-#' instances only after the `RestoreDBClusterFromSnapshot` action has
-#' completed and the DB cluster is available.
+#' instances only after the
+#' [`restore_db_cluster_from_snapshot`][rds_restore_db_cluster_from_snapshot]
+#' action has completed and the DB cluster is available.
 #' 
 #' For more information on Amazon Aurora, see [What Is Amazon
 #' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
@@ -11039,11 +11107,13 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' security group.
 #' 
 #' This action only restores the DB cluster, not the DB instances for that
-#' DB cluster. You must invoke the `CreateDBInstance` action to create DB
+#' DB cluster. You must invoke the
+#' [`create_db_instance`][rds_create_db_instance] action to create DB
 #' instances for the restored DB cluster, specifying the identifier of the
 #' restored DB cluster in `DBClusterIdentifier`. You can create DB
-#' instances only after the `RestoreDBClusterToPointInTime` action has
-#' completed and the DB cluster is available.
+#' instances only after the
+#' [`restore_db_cluster_to_point_in_time`][rds_restore_db_cluster_to_point_in_time]
+#' action has completed and the DB cluster is available.
 #' 
 #' For more information on Amazon Aurora, see [What Is Amazon
 #' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
@@ -11284,7 +11354,8 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' `DBSnapshotIdentifier` must be the ARN of the shared DB snapshot.
 #' 
 #' This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-#' Aurora, use `RestoreDBClusterFromSnapshot`.
+#' Aurora, use
+#' [`restore_db_cluster_from_snapshot`][rds_restore_db_cluster_from_snapshot].
 #'
 #' @usage
 #' rds_restore_db_instance_from_db_snapshot(DBInstanceIdentifier,
@@ -11360,7 +11431,8 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' When the DB instance isn't publicly accessible, it is an internal DB
 #' instance with a DNS name that resolves to a private IP address.
 #' 
-#' For more information, see CreateDBInstance.
+#' For more information, see
+#' [`create_db_instance`][rds_create_db_instance].
 #' @param AutoMinorVersionUpgrade A value that indicates whether minor version upgrades are applied
 #' automatically to the DB instance during the maintenance window.
 #' @param LicenseModel License model information for the restored DB instance.
@@ -11606,7 +11678,8 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #'   MaxAllocatedStorage)
 #'
 #' @param DBName The name of the database to create when the DB instance is created.
-#' Follow the naming rules specified in `CreateDBInstance`.
+#' Follow the naming rules specified in
+#' [`create_db_instance`][rds_create_db_instance].
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This parameter is stored as a lowercase
 #' string.
 #' 
@@ -11620,7 +11693,8 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' 
 #' Example: `mydbinstance`
 #' @param AllocatedStorage The amount of storage (in gigabytes) to allocate initially for the DB
-#' instance. Follow the allocation rules specified in `CreateDBInstance`.
+#' instance. Follow the allocation rules specified in
+#' [`create_db_instance`][rds_create_db_instance].
 #' 
 #' Be sure to allocate enough memory for your new DB instance so that the
 #' restore operation can succeed. You can also allocate additional memory
@@ -11692,7 +11766,7 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' default `DBParameterGroup` for the specified DB engine is used.
 #' @param BackupRetentionPeriod The number of days for which automated backups are retained. Setting
 #' this parameter to a positive number enables backups. For more
-#' information, see `CreateDBInstance`.
+#' information, see [`create_db_instance`][rds_create_db_instance].
 #' @param PreferredBackupWindow The time range each day during which automated backups are created if
 #' automated backups are enabled. For more information, see [The Backup
 #' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
@@ -11719,7 +11793,8 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' `AvailabilityZone` parameter.
 #' @param EngineVersion The version number of the database engine to use. Choose the latest
 #' minor version of your database engine. For information about engine
-#' versions, see `CreateDBInstance`, or call `DescribeDBEngineVersions`.
+#' versions, see [`create_db_instance`][rds_create_db_instance], or call
+#' [`describe_db_engine_versions`][rds_describe_db_engine_versions].
 #' @param AutoMinorVersionUpgrade A value that indicates whether minor engine upgrades are applied
 #' automatically to the DB instance during the maintenance window. By
 #' default, minor engine upgrades are not applied automatically.
@@ -11744,7 +11819,8 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' When the DB instance isn't publicly accessible, it is an internal DB
 #' instance with a DNS name that resolves to a private IP address.
 #' 
-#' For more information, see CreateDBInstance.
+#' For more information, see
+#' [`create_db_instance`][rds_create_db_instance].
 #' @param Tags A list of tags to associate with this DB instance. For more information,
 #' see [Tagging Amazon RDS
 #' Resources](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html)
@@ -11948,7 +12024,8 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' mirrored deployment and not a single-AZ deployment.
 #' 
 #' This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-#' Aurora, use `RestoreDBClusterToPointInTime`.
+#' Aurora, use
+#' [`restore_db_cluster_to_point_in_time`][rds_restore_db_cluster_to_point_in_time].
 #'
 #' @usage
 #' rds_restore_db_instance_to_point_in_time(SourceDBInstanceIdentifier,
@@ -12039,7 +12116,8 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' When the DB instance isn't publicly accessible, it is an internal DB
 #' instance with a DNS name that resolves to a private IP address.
 #' 
-#' For more information, see CreateDBInstance.
+#' For more information, see
+#' [`create_db_instance`][rds_create_db_instance].
 #' @param AutoMinorVersionUpgrade A value that indicates whether minor version upgrades are applied
 #' automatically to the DB instance during the maintenance window.
 #' @param LicenseModel License model information for the restored DB instance.
@@ -12436,7 +12514,8 @@ rds_start_db_cluster <- function(DBClusterIdentifier) {
 #' in the *Amazon RDS User Guide.*
 #' 
 #' This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-#' Aurora DB clusters, use `StartDBCluster` instead.
+#' Aurora DB clusters, use [`start_db_cluster`][rds_start_db_cluster]
+#' instead.
 #'
 #' @usage
 #' rds_start_db_instance(DBInstanceIdentifier)
@@ -12630,7 +12709,7 @@ rds_start_export_task <- function(ExportTaskIdentifier, SourceArn, S3BucketName,
 #' @description
 #' Stops a database activity stream that was started using the AWS console,
 #' the `start-activity-stream` AWS CLI command, or the
-#' `StartActivityStream` action.
+#' [`start_activity_stream`][rds_start_activity_stream] action.
 #' 
 #' For more information, see [Database Activity
 #' Streams](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html)
@@ -12733,7 +12812,7 @@ rds_stop_db_cluster <- function(DBClusterIdentifier) {
 #' in the *Amazon RDS User Guide.*
 #' 
 #' This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-#' Aurora clusters, use `StopDBCluster` instead.
+#' Aurora clusters, use [`stop_db_cluster`][rds_stop_db_cluster] instead.
 #'
 #' @usage
 #' rds_stop_db_instance(DBInstanceIdentifier, DBSnapshotIdentifier)

@@ -124,7 +124,7 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
 #'     parameter is optional and defaults to the currently supported
 #'     version.
 #' 
-#'     `metadata-function=<i>lambda_arn</i>, sdk-version=<i>version_number</i> `
+#'     `metadata-function=lambda_arn, sdk-version=version_number `
 #' 
 #' -   For the `LAMBDA` data catalog type, use one of the following sets of
 #'     required parameters, but not both.
@@ -133,13 +133,13 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
 #'         another for reading the actual data, use the following syntax.
 #'         Both parameters are required.
 #' 
-#'         `metadata-function=<i>lambda_arn</i>, record-function=<i>lambda_arn</i> `
+#'         `metadata-function=lambda_arn, record-function=lambda_arn `
 #' 
 #'     -   If you have a composite Lambda function that processes both
 #'         metadata and data, use the following syntax to specify your
 #'         Lambda function.
 #' 
-#'         `function=<i>lambda_arn</i> `
+#'         `function=lambda_arn `
 #' 
 #' -   The `GLUE` type has no parameters.
 #' @param Tags A list of comma separated tags to add to the data catalog that is
@@ -202,10 +202,11 @@ athena_create_data_catalog <- function(Name, Type, Description = NULL, Parameter
 #' @param Database &#91;required&#93; The database to which the query belongs.
 #' @param QueryString &#91;required&#93; The contents of the query with all query statements.
 #' @param ClientRequestToken A unique case-sensitive string used to ensure the request to create the
-#' query is idempotent (executes only once). If another `CreateNamedQuery`
-#' request is received, the same response is returned and another query is
-#' not created. If a parameter has changed, for example, the `QueryString`,
-#' an error is returned.
+#' query is idempotent (executes only once). If another
+#' [`create_named_query`][athena_create_named_query] request is received,
+#' the same response is returned and another query is not created. If a
+#' parameter has changed, for example, the `QueryString`, an error is
+#' returned.
 #' 
 #' This token is listed as not required because AWS SDKs (for example the
 #' AWS SDK for Java) auto-generate the token for users. If you are not
@@ -518,7 +519,8 @@ athena_get_database <- function(CatalogName, DatabaseName) {
 #' @usage
 #' athena_get_named_query(NamedQueryId)
 #'
-#' @param NamedQueryId &#91;required&#93; The unique ID of the query. Use ListNamedQueries to get query IDs.
+#' @param NamedQueryId &#91;required&#93; The unique ID of the query. Use
+#' [`list_named_queries`][athena_list_named_queries] to get query IDs.
 #'
 #' @section Request syntax:
 #' ```
@@ -597,17 +599,20 @@ athena_get_query_execution <- function(QueryExecutionId) {
 #' For more information, see [Query
 #' Results](https://docs.aws.amazon.com/athena/latest/ug/querying.html) in
 #' the *Amazon Athena User Guide*. This request does not execute the query
-#' but returns results. Use StartQueryExecution to run a query.
+#' but returns results. Use
+#' [`start_query_execution`][athena_start_query_execution] to run a query.
 #' 
 #' To stream query results successfully, the IAM principal with permission
-#' to call `GetQueryResults` also must have permissions to the Amazon S3
-#' `GetObject` action for the Athena query results location.
+#' to call [`get_query_results`][athena_get_query_results] also must have
+#' permissions to the Amazon S3 `GetObject` action for the Athena query
+#' results location.
 #' 
 #' IAM principals with permission to the Amazon S3 `GetObject` action for
 #' the query results location are able to retrieve query results from
-#' Amazon S3 even if permission to the `GetQueryResults` action is denied.
-#' To restrict user or role access, ensure that Amazon S3 permissions to
-#' the Athena query location are denied.
+#' Amazon S3 even if permission to the
+#' [`get_query_results`][athena_get_query_results] action is denied. To
+#' restrict user or role access, ensure that Amazon S3 permissions to the
+#' Athena query location are denied.
 #'
 #' @usage
 #' athena_get_query_results(QueryExecutionId, NextToken, MaxResults)
@@ -1066,9 +1071,9 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Runs the SQL query statements contained in the `Query`. Requires you to
 #' have access to the workgroup in which the query ran. Running queries
-#' against an external catalog requires GetDataCatalog permission to the
-#' catalog. For code samples using the AWS SDK for Java, see [Examples and
-#' Code
+#' against an external catalog requires
+#' [`get_data_catalog`][athena_get_data_catalog] permission to the catalog.
+#' For code samples using the AWS SDK for Java, see [Examples and Code
 #' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 #' in the *Amazon Athena User Guide*.
 #'
@@ -1079,9 +1084,10 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param QueryString &#91;required&#93; The SQL query statements to be executed.
 #' @param ClientRequestToken A unique case-sensitive string used to ensure the request to create the
 #' query is idempotent (executes only once). If another
-#' `StartQueryExecution` request is received, the same response is returned
-#' and another query is not created. If a parameter has changed, for
-#' example, the `QueryString`, an error is returned.
+#' [`start_query_execution`][athena_start_query_execution] request is
+#' received, the same response is returned and another query is not
+#' created. If a parameter has changed, for example, the `QueryString`, an
+#' error is returned.
 #' 
 #' This token is listed as not required because AWS SDKs (for example the
 #' AWS SDK for Java) auto-generate the token for users. If you are not
@@ -1303,7 +1309,7 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
 #'     parameter is optional and defaults to the currently supported
 #'     version.
 #' 
-#'     `metadata-function=<i>lambda_arn</i>, sdk-version=<i>version_number</i> `
+#'     `metadata-function=lambda_arn, sdk-version=version_number `
 #' 
 #' -   For the `LAMBDA` data catalog type, use one of the following sets of
 #'     required parameters, but not both.
@@ -1312,13 +1318,13 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
 #'         another for reading the actual data, use the following syntax.
 #'         Both parameters are required.
 #' 
-#'         `metadata-function=<i>lambda_arn</i>, record-function=<i>lambda_arn</i> `
+#'         `metadata-function=lambda_arn, record-function=lambda_arn `
 #' 
 #'     -   If you have a composite Lambda function that processes both
 #'         metadata and data, use the following syntax to specify your
 #'         Lambda function.
 #' 
-#'         `function=<i>lambda_arn</i> `
+#'         `function=lambda_arn `
 #' 
 #' -   The `GLUE` type has no parameters.
 #'

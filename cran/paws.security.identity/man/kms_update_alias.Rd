@@ -29,9 +29,11 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.
 
-To verify that the alias is mapped to the correct CMK, use ListAliases.}
+To verify that the alias is mapped to the correct CMK, use
+\code{\link[=kms_list_aliases]{list_aliases}}.}
 }
 \description{
 Associates an existing AWS KMS alias with a different customer master
@@ -43,17 +45,19 @@ The current and new CMK must be the same type (both symmetric or both
 asymmetric), and they must have the same key usage (\code{ENCRYPT_DECRYPT} or
 \code{SIGN_VERIFY}). This restriction prevents errors in code that uses
 aliases. If you must assign an alias to a different type of CMK, use
-DeleteAlias to delete the old alias and CreateAlias to create a new
-alias.
+\code{\link[=kms_delete_alias]{delete_alias}} to delete the old alias and
+\code{\link[=kms_create_alias]{create_alias}} to create a new alias.
 
-You cannot use \code{UpdateAlias} to change an alias name. To change an alias
-name, use DeleteAlias to delete the old alias and CreateAlias to create
-a new alias.
+You cannot use \code{\link[=kms_update_alias]{update_alias}} to change an alias
+name. To change an alias name, use \code{\link[=kms_delete_alias]{delete_alias}} to
+delete the old alias and \code{\link[=kms_create_alias]{create_alias}} to create a
+new alias.
 
 Because an alias is not a property of a CMK, you can create, update, and
 delete the aliases of a CMK without affecting the CMK. Also, aliases do
-not appear in the response from the DescribeKey operation. To get the
-aliases of all CMKs in the account, use the ListAliases operation.
+not appear in the response from the \code{\link[=kms_describe_key]{describe_key}}
+operation. To get the aliases of all CMKs in the account, use the
+\code{\link[=kms_list_aliases]{list_aliases}} operation.
 
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
@@ -77,9 +81,9 @@ in the \emph{AWS Key Management Service Developer Guide}.
 
 \strong{Related operations:}
 \itemize{
-\item CreateAlias
-\item DeleteAlias
-\item ListAliases
+\item \code{\link[=kms_create_alias]{create_alias}}
+\item \code{\link[=kms_delete_alias]{delete_alias}}
+\item \code{\link[=kms_list_aliases]{list_aliases}}
 }
 }
 \section{Request syntax}{

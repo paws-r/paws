@@ -11,8 +11,8 @@ iot_delete_billing_group(billingGroupName, expectedVersion)
 
 \item{expectedVersion}{The expected version of the billing group. If the version of the billing
 group does not match the expected version specified in the request, the
-\code{DeleteBillingGroup} request is rejected with a
-\code{VersionConflictException}.}
+\code{\link[=iot_delete_billing_group]{delete_billing_group}} request is rejected
+with a \code{VersionConflictException}.}
 }
 \description{
 Deletes the billing group.

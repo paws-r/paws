@@ -13,10 +13,10 @@ codebuild_delete_report_group(arn, deleteReports)
 deleting the report group.
 
 If \code{false}, you must delete any reports in the report group. Use
-\href{https://docs.aws.amazon.com/codebuild/latest/APIReference/API_ListReportsForReportGroup.html}{ListReportsForReportGroup}
+\code{\link[=codebuild_list_reports_for_report_group]{list_reports_for_report_group}}
 to get the reports in a report group. Use
-\href{https://docs.aws.amazon.com/codebuild/latest/APIReference/API_DeleteReport.html}{DeleteReport}
-to delete the reports. If you call \code{DeleteReportGroup} for a report
+\code{\link[=codebuild_delete_report]{delete_report}} to delete the reports. If you
+call \code{\link[=codebuild_delete_report_group]{delete_report_group}} for a report
 group that contains one or more reports, an exception is thrown.}
 }
 \description{

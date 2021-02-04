@@ -8,10 +8,12 @@ wafregional_update_geo_match_set(GeoMatchSetId, ChangeToken, Updates)
 }
 \arguments{
 \item{GeoMatchSetId}{[required] The \code{GeoMatchSetId} of the GeoMatchSet that you want to update.
-\code{GeoMatchSetId} is returned by CreateGeoMatchSet and by
-ListGeoMatchSets.}
+\code{GeoMatchSetId} is returned by
+\code{\link[=wafregional_create_geo_match_set]{create_geo_match_set}} and by
+\code{\link[=wafregional_list_geo_match_sets]{list_geo_match_sets}}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=wafregional_get_change_token]{get_change_token}}.}
 
 \item{Updates}{[required] An array of \code{GeoMatchSetUpdate} objects that you want to insert into or
 delete from an GeoMatchSet. For more information, see the applicable
@@ -49,11 +51,13 @@ GeoMatchConstraint$Value.
 
 To create and configure an \code{GeoMatchSet}, perform the following steps:
 \enumerate{
-\item Submit a CreateGeoMatchSet request.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of an UpdateGeoMatchSet request.
-\item Submit an \code{UpdateGeoMatchSet} request to specify the country that
-you want AWS WAF to watch for.
+\item Submit a \code{\link[=wafregional_create_geo_match_set]{create_geo_match_set}}
+request.
+\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
+change token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=wafregional_update_geo_match_set]{update_geo_match_set}} request.
+\item Submit an \code{\link[=wafregional_update_geo_match_set]{update_geo_match_set}}
+request to specify the country that you want AWS WAF to watch for.
 }
 
 When you update an \code{GeoMatchSet}, you specify the country that you want

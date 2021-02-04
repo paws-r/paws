@@ -48,20 +48,22 @@ Use this API to create a model if you want to use Amazon SageMaker
 hosting services or run a batch transform job.
 
 To host your model, you create an endpoint configuration with the
-\code{CreateEndpointConfig} API, and then create an endpoint with the
-\code{CreateEndpoint} API. Amazon SageMaker then deploys all of the
-containers that you defined for the model in the hosting environment.
+\code{\link[=sagemaker_create_endpoint_config]{create_endpoint_config}} API, and
+then create an endpoint with the
+\code{\link[=sagemaker_create_endpoint]{create_endpoint}} API. Amazon SageMaker
+then deploys all of the containers that you defined for the model in the
+hosting environment.
 
 For an example that calls this method when deploying a model to Amazon
 SageMaker hosting services, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto}{Deploy the Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).}
 
 To run a batch transform using your model, you start a job with the
-\code{CreateTransformJob} API. Amazon SageMaker uses your model and your
-dataset to get inferences which are then saved to a specified S3
-location.
+\code{\link[=sagemaker_create_transform_job]{create_transform_job}} API. Amazon
+SageMaker uses your model and your dataset to get inferences which are
+then saved to a specified S3 location.
 
-In the \code{CreateModel} request, you must define a container with the
-\code{PrimaryContainer} parameter.
+In the \code{\link[=sagemaker_create_model]{create_model}} request, you must define
+a container with the \code{PrimaryContainer} parameter.
 
 In the request, you also provide an IAM role that Amazon SageMaker can
 assume to access model artifacts and docker image for deployment on ML

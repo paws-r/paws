@@ -175,11 +175,12 @@ You can use the \code{ReplicationSourceIdentifier} parameter to create the DB
 cluster as a Read Replica of another DB cluster or Amazon Neptune DB
 instance.
 
-Note that when you create a new cluster using \code{CreateDBCluster}
-directly, deletion protection is disabled by default (when you create a
-new production cluster in the console, deletion protection is enabled by
-default). You can only delete a DB cluster if its \code{DeletionProtection}
-field is set to \code{false}.
+Note that when you create a new cluster using
+\code{\link[=neptune_create_db_cluster]{create_db_cluster}} directly, deletion
+protection is disabled by default (when you create a new production
+cluster in the console, deletion protection is enabled by default). You
+can only delete a DB cluster if its \code{DeletionProtection} field is set to
+\code{false}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_db_cluster(

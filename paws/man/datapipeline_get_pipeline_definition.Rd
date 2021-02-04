@@ -15,8 +15,9 @@ or \code{active} to use the last definition that was activated.}
 }
 \description{
 Gets the definition of the specified pipeline. You can call
-\code{GetPipelineDefinition} to retrieve the pipeline definition that you
-provided using PutPipelineDefinition.
+\code{\link[=datapipeline_get_pipeline_definition]{get_pipeline_definition}} to
+retrieve the pipeline definition that you provided using
+\code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_pipeline_definition(

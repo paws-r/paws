@@ -21,9 +21,9 @@ for either Indian English (en-IN) or Hindi (hi-IN).
 If a bilingual voice is used and no language code is specified, Amazon
 Polly will use the default language of the bilingual voice. The default
 language for any voice is the one returned by the
-\href{https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html}{DescribeVoices}
-operation for the \code{LanguageCode} parameter. For example, if no language
-code is specified, Aditi will use Indian English rather than Hindi.}
+\code{\link[=polly_describe_voices]{describe_voices}} operation for the
+\code{LanguageCode} parameter. For example, if no language code is specified,
+Aditi will use Indian English rather than Hindi.}
 
 \item{LexiconNames}{List of one or more pronunciation lexicon names you want the service to
 apply during synthesis. Lexicons are applied only if the language of the

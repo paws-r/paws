@@ -71,9 +71,9 @@ set the configuration on the bucket.}
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAnalyticsConfiguration.html}{GetBucketAnalyticsConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketAnalyticsConfiguration.html}{DeleteBucketAnalyticsConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketAnalyticsConfigurations.html}{ListBucketAnalyticsConfigurations}
+\item \code{\link[=s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration}}
+\item \code{\link[=s3_delete_bucket_analytics_configuration]{delete_bucket_analytics_configuration}}
+\item \code{\link[=s3_list_bucket_analytics_configurations]{list_bucket_analytics_configurations}}
 }
 }
 \section{Request syntax}{

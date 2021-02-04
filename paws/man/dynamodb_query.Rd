@@ -138,8 +138,9 @@ For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/lates
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{FilterExpression}{A string that contains conditions that DynamoDB applies after the
-\code{Query} operation, but before the data is returned to you. Items that do
-not satisfy the \code{FilterExpression} criteria are not returned.
+\code{\link[=dynamodb_query]{query}} operation, but before the data is returned to
+you. Items that do not satisfy the \code{FilterExpression} criteria are not
+returned.
 
 A \code{FilterExpression} does not allow key attributes. You cannot define a
 filter expression based on a partition key or a sort key.
@@ -152,15 +153,16 @@ For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/lates
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{KeyConditionExpression}{The condition that specifies the key values for items to be retrieved by
-the \code{Query} action.
+the \code{\link[=dynamodb_query]{query}} action.
 
 The condition must perform an equality test on a single partition key
 value.
 
 The condition can optionally perform one of several comparison tests on
-a single sort key value. This allows \code{Query} to retrieve one item with a
-given partition key value and sort key value, or several items that have
-the same partition key value but different sort key values.
+a single sort key value. This allows \code{\link[=dynamodb_query]{query}} to
+retrieve one item with a given partition key value and sort key value,
+or several items that have the same partition key value but different
+sort key values.
 
 The partition key equality test is required, and must be specified in
 the following format:
@@ -178,13 +180,13 @@ Valid comparisons for the sort key condition are as follows:
 \itemize{
 \item \code{sortKeyName} \code{=} \verb{:sortkeyval} - true if the sort key value is
 equal to \verb{:sortkeyval}.
-\item \code{sortKeyName} \verb{&lt;} \verb{:sortkeyval} - true if the sort key value is
-less than \verb{:sortkeyval}.
-\item \code{sortKeyName} \verb{&lt;=} \verb{:sortkeyval} - true if the sort key value is
+\item \code{sortKeyName} \code{<} \verb{:sortkeyval} - true if the sort key value is less
+than \verb{:sortkeyval}.
+\item \code{sortKeyName} \code{<=} \verb{:sortkeyval} - true if the sort key value is
 less than or equal to \verb{:sortkeyval}.
-\item \code{sortKeyName} \verb{&gt;} \verb{:sortkeyval} - true if the sort key value is
+\item \code{sortKeyName} \code{>} \verb{:sortkeyval} - true if the sort key value is
 greater than \verb{:sortkeyval}.
-\item \code{sortKeyName} \verb{&gt;= } \verb{:sortkeyval} - true if the sort key value is
+\item \code{sortKeyName} \verb{>= } \verb{:sortkeyval} - true if the sort key value is
 greater than or equal to \verb{:sortkeyval}.
 \item \code{sortKeyName} \code{BETWEEN} \verb{:sortkeyval1} \code{AND} \verb{:sortkeyval2} - true
 if the sort key value is greater than or equal to \verb{:sortkeyval1},
@@ -279,24 +281,25 @@ For more information on expression attribute values, see \href{https://docs.aws.
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
 \description{
-The \code{Query} operation finds items based on primary key values. You can
-query any table or secondary index that has a composite primary key (a
-partition key and a sort key).
+The \code{\link[=dynamodb_query]{query}} operation finds items based on primary key
+values. You can query any table or secondary index that has a composite
+primary key (a partition key and a sort key).
 
 Use the \code{KeyConditionExpression} parameter to provide a specific value
-for the partition key. The \code{Query} operation will return all of the
-items from the table or index with that partition key value. You can
-optionally narrow the scope of the \code{Query} operation by specifying a
-sort key value and a comparison operator in \code{KeyConditionExpression}. To
-further refine the \code{Query} results, you can optionally provide a
+for the partition key. The \code{\link[=dynamodb_query]{query}} operation will
+return all of the items from the table or index with that partition key
+value. You can optionally narrow the scope of the
+\code{\link[=dynamodb_query]{query}} operation by specifying a sort key value and a
+comparison operator in \code{KeyConditionExpression}. To further refine the
+\code{\link[=dynamodb_query]{query}} results, you can optionally provide a
 \code{FilterExpression}. A \code{FilterExpression} determines which items within
 the results should be returned to you. All of the other results are
 discarded.
 
-A \code{Query} operation always returns a result set. If no matching items
-are found, the result set will be empty. Queries that do not return
-results consume the minimum number of read capacity units for that type
-of read operation.
+A \code{\link[=dynamodb_query]{query}} operation always returns a result set. If no
+matching items are found, the result set will be empty. Queries that do
+not return results consume the minimum number of read capacity units for
+that type of read operation.
 
 DynamoDB calculates the number of read capacity units consumed based on
 item size, not on the amount of data that is returned to an application.
@@ -305,26 +308,27 @@ request all of the attributes (the default behavior) or just some of
 them (using a projection expression). The number will also be the same
 whether or not you use a \code{FilterExpression}.
 
-\code{Query} results are always sorted by the sort key value. If the data
-type of the sort key is Number, the results are returned in numeric
-order; otherwise, the results are returned in order of UTF-8 bytes. By
-default, the sort order is ascending. To reverse the order, set the
-\code{ScanIndexForward} parameter to false.
+\code{\link[=dynamodb_query]{query}} results are always sorted by the sort key
+value. If the data type of the sort key is Number, the results are
+returned in numeric order; otherwise, the results are returned in order
+of UTF-8 bytes. By default, the sort order is ascending. To reverse the
+order, set the \code{ScanIndexForward} parameter to false.
 
-A single \code{Query} operation will read up to the maximum number of items
-set (if using the \code{Limit} parameter) or a maximum of 1 MB of data and
-then apply any filtering to the results using \code{FilterExpression}. If
-\code{LastEvaluatedKey} is present in the response, you will need to paginate
-the result set. For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination}{Paginating the Results}
+A single \code{\link[=dynamodb_query]{query}} operation will read up to the maximum
+number of items set (if using the \code{Limit} parameter) or a maximum of 1
+MB of data and then apply any filtering to the results using
+\code{FilterExpression}. If \code{LastEvaluatedKey} is present in the response,
+you will need to paginate the result set. For more information, see
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination}{Paginating the Results}
 in the \emph{Amazon DynamoDB Developer Guide}.
 
-\code{FilterExpression} is applied after a \code{Query} finishes, but before the
-results are returned. A \code{FilterExpression} cannot contain partition key
-or sort key attributes. You need to specify those attributes in the
-\code{KeyConditionExpression}.
+\code{FilterExpression} is applied after a \code{\link[=dynamodb_query]{query}}
+finishes, but before the results are returned. A \code{FilterExpression}
+cannot contain partition key or sort key attributes. You need to specify
+those attributes in the \code{KeyConditionExpression}.
 
-A \code{Query} operation can return an empty result set and a
-\code{LastEvaluatedKey} if all the items read for the page of results are
+A \code{\link[=dynamodb_query]{query}} operation can return an empty result set and
+a \code{LastEvaluatedKey} if all the items read for the page of results are
 filtered out.
 
 You can query a table, a local secondary index, or a global secondary

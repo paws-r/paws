@@ -26,8 +26,10 @@ Associates a created artifact of an AWS cloud resource, the target
 receiving the migration, with the migration task performed by a
 migration tool. This API has the following traits:
 \itemize{
-\item Migration tools can call the \code{AssociateCreatedArtifact} operation to
-indicate which AWS artifact is associated with a migration task.
+\item Migration tools can call the
+\code{\link[=migrationhub_associate_created_artifact]{associate_created_artifact}}
+operation to indicate which AWS artifact is associated with a
+migration task.
 \item The created artifact name must be provided in ARN (Amazon Resource
 Name) format which will contain information about type and region;
 for example:

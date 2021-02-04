@@ -31,8 +31,9 @@ you use Java, you can use the \code{decode} method of the
 SDKs provide similar functionality.
 
 An IAM group can also have managed policies attached to it. To retrieve
-a managed policy document that is attached to a group, use GetPolicy to
-determine the policy's default version, then use GetPolicyVersion to
+a managed policy document that is attached to a group, use
+\code{\link[=iam_get_policy]{get_policy}} to determine the policy's default
+version, then use \code{\link[=iam_get_policy_version]{get_policy_version}} to
 retrieve the policy document.
 
 For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}

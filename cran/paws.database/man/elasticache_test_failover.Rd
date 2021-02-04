@@ -18,9 +18,10 @@ test automatic failover on up to 5 node groups in any rolling 24-hour
 period.}
 }
 \description{
-Represents the input of a \code{TestFailover} operation which test automatic
-failover on a specified node group (called shard in the console) in a
-replication group (called cluster in the console).
+Represents the input of a \code{\link[=elasticache_test_failover]{test_failover}}
+operation which test automatic failover on a specified node group
+(called shard in the console) in a replication group (called cluster in
+the console).
 
 \strong{Note the following}
 \itemize{
@@ -39,22 +40,22 @@ ElastiCache API. Look for the following automatic failover related
 events, listed here in order of occurrance:
 \enumerate{
 \item Replication group message:
-\verb{Test Failover API called for node group &lt;node-group-id&gt;}
+\verb{Test Failover API called for node group <node-group-id>}
 \item Cache cluster message:
-\verb{Failover from primary node &lt;primary-node-id&gt; to replica node &lt;node-id&gt; completed}
+\verb{Failover from primary node <primary-node-id> to replica node <node-id> completed}
 \item Replication group message:
-\verb{Failover from primary node &lt;primary-node-id&gt; to replica node &lt;node-id&gt; completed}
-\item Cache cluster message: \verb{Recovering cache nodes &lt;node-id&gt;}
+\verb{Failover from primary node <primary-node-id> to replica node <node-id> completed}
+\item Cache cluster message: \verb{Recovering cache nodes <node-id>}
 \item Cache cluster message:
-\verb{Finished recovery for cache nodes &lt;node-id&gt;}
+\verb{Finished recovery for cache nodes <node-id>}
 }
 
 For more information see:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ECEvents.Viewing.html}{Viewing ElastiCache Events}
 in the \emph{ElastiCache User Guide}
-\item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_DescribeEvents.html}{DescribeEvents}
-in the ElastiCache API Reference
+\item \code{\link[=elasticache_describe_events]{describe_events}} in the
+ElastiCache API Reference
 }
 }
 

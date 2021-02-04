@@ -77,17 +77,16 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 This section describes the latest revision of the API. We recommend that
 you use this revised API for application development. For backward
 compatibility, Amazon S3 continues to support the prior version of this
-API,
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html}{ListObjects}.
+API, \code{\link[=s3_list_objects]{list_objects}}.
 
-To get a list of your buckets, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html}{ListBuckets}.
+To get a list of your buckets, see \code{\link[=s3_list_buckets]{list_buckets}}.
 
-The following operations are related to \code{ListObjectsV2}:
+The following operations are related to
+\code{\link[=s3_list_objects_v2]{list_objects_v2}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
+\item \code{\link[=s3_get_object]{get_object}}
+\item \code{\link[=s3_put_object]{put_object}}
+\item \code{\link[=s3_create_bucket]{create_bucket}}
 }
 }
 \section{Request syntax}{

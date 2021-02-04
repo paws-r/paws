@@ -42,7 +42,8 @@ location information, if it exists, for the label on the image
 (\code{Geometry}).
 
 During training model calculates a threshold value that determines if a
-prediction for a label is true. By default, \code{DetectCustomLabels} doesn't
+prediction for a label is true. By default,
+\code{\link[=rekognition_detect_custom_labels]{detect_custom_labels}} doesn't
 return labels whose confidence value is below the model's calculated
 threshold value. To filter labels that are returned, specify a value for
 \code{MinConfidence} that is higher than the model's calculated threshold.

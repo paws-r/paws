@@ -32,8 +32,8 @@ For more information about the object expiration, see \href{https://docs.aws.ama
 
 Related actions include:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html}{PutBucketLifecycleConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html}{GetBucketLifecycleConfiguration}
+\item \code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}
+\item \code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
 }
 }
 \section{Request syntax}{

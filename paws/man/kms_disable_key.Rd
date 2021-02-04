@@ -18,7 +18,8 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \description{
 Sets the state of a customer master key (CMK) to disabled. This change
@@ -39,7 +40,7 @@ a different AWS account.
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:DisableKey}
 (key policy)
 
-\strong{Related operations}: EnableKey
+\strong{Related operations}: \code{\link[=kms_enable_key]{enable_key}}
 }
 \section{Request syntax}{
 \preformatted{svc$disable_key(

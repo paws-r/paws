@@ -9,8 +9,9 @@ groundstation_list_configs(maxResults, nextToken)
 \arguments{
 \item{maxResults}{Maximum number of \code{Configs} returned.}
 
-\item{nextToken}{Next token returned in the request of a previous \code{ListConfigs} call.
-Used to get the next page of results.}
+\item{nextToken}{Next token returned in the request of a previous
+\code{\link[=groundstation_list_configs]{list_configs}} call. Used to get the next
+page of results.}
 }
 \description{
 Returns a list of \code{Config} objects.

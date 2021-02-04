@@ -11,8 +11,9 @@ codestarconnections_list_hosts(MaxResults, NextToken)
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 
-\item{NextToken}{The token that was returned from the previous \code{ListHosts} call, which
-can be used to return the next set of hosts in the list.}
+\item{NextToken}{The token that was returned from the previous
+\code{\link[=codestarconnections_list_hosts]{list_hosts}} call, which can be used
+to return the next set of hosts in the list.}
 }
 \description{
 Lists the hosts associated with your account.

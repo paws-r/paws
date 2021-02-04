@@ -43,14 +43,17 @@ the solution configuration.}
 \description{
 Creates the configuration for training a model. A trained model is known
 as a solution. After the configuration is created, you train the model
-(create a solution) by calling the CreateSolutionVersion operation.
-Every time you call \code{CreateSolutionVersion}, a new version of the
-solution is created.
+(create a solution) by calling the
+\code{\link[=personalize_create_solution_version]{create_solution_version}}
+operation. Every time you call
+\code{\link[=personalize_create_solution_version]{create_solution_version}}, a new
+version of the solution is created.
 
 After creating a solution version, you check its accuracy by calling
-GetSolutionMetrics. When you are satisfied with the version, you deploy
-it using CreateCampaign. The campaign provides recommendations to a
-client through the
+\code{\link[=personalize_get_solution_metrics]{get_solution_metrics}}. When you are
+satisfied with the version, you deploy it using
+\code{\link[=personalize_create_campaign]{create_campaign}}. The campaign provides
+recommendations to a client through the
 \href{https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html}{GetRecommendations}
 API.
 
@@ -71,20 +74,22 @@ FAILED
 \item DELETE PENDING > DELETE IN\\_PROGRESS
 }
 
-To get the status of the solution, call DescribeSolution. Wait until the
-status shows as ACTIVE before calling \code{CreateSolutionVersion}.
+To get the status of the solution, call
+\code{\link[=personalize_describe_solution]{describe_solution}}. Wait until the
+status shows as ACTIVE before calling
+\code{\link[=personalize_create_solution_version]{create_solution_version}}.
 
 \strong{Related APIs}
 \itemize{
-\item ListSolutions
-\item CreateSolutionVersion
-\item DescribeSolution
-\item DeleteSolution
+\item \code{\link[=personalize_list_solutions]{list_solutions}}
+\item \code{\link[=personalize_create_solution_version]{create_solution_version}}
+\item \code{\link[=personalize_describe_solution]{describe_solution}}
+\item \code{\link[=personalize_delete_solution]{delete_solution}}
 }<!-- -->
 
 \itemize{
-\item ListSolutionVersions
-\item DescribeSolutionVersion
+\item \code{\link[=personalize_list_solution_versions]{list_solution_versions}}
+\item \code{\link[=personalize_describe_solution_version]{describe_solution_version}}
 }
 }
 \section{Request syntax}{

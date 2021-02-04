@@ -25,9 +25,10 @@ The owner of a connection provisions a transit virtual interface to be
 owned by the specified AWS account.
 
 After you create a transit virtual interface, it must be confirmed by
-the owner using ConfirmTransitVirtualInterface. Until this step has been
-completed, the transit virtual interface is in the \code{requested} state and
-is not available to handle traffic.
+the owner using
+\code{\link[=directconnect_confirm_transit_virtual_interface]{confirm_transit_virtual_interface}}.
+Until this step has been completed, the transit virtual interface is in
+the \code{requested} state and is not available to handle traffic.
 }
 \section{Request syntax}{
 \preformatted{svc$allocate_transit_virtual_interface(

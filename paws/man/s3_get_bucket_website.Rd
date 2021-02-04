@@ -24,10 +24,11 @@ configuration. However, bucket owners can allow other users to read the
 website configuration by writing a bucket policy granting them the
 \code{S3:GetBucketWebsite} permission.
 
-The following operations are related to \code{DeleteBucketWebsite}:
+The following operations are related to
+\code{\link[=s3_delete_bucket_website]{delete_bucket_website}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketWebsite.html}{DeleteBucketWebsite}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketWebsite.html}{PutBucketWebsite}
+\item \code{\link[=s3_delete_bucket_website]{delete_bucket_website}}
+\item \code{\link[=s3_put_bucket_website]{put_bucket_website}}
 }
 }
 \section{Request syntax}{

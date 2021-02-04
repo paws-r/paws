@@ -46,9 +46,11 @@ NULL
 #'     public or account-specific.
 #' 
 #' -   Use pagination to view all events from the response. For example, if
-#'     you call the `DescribeEventsForOrganization` operation to get all
-#'     events in your organization, you might receive several page results.
-#'     Specify the `nextToken` in the next request to return more results.
+#'     you call the
+#'     [`describe_events_for_organization`][health_describe_events_for_organization]
+#'     operation to get all events in your organization, you might receive
+#'     several page results. Specify the `nextToken` in the next request to
+#'     return more results.
 #'
 #' @param
 #' config

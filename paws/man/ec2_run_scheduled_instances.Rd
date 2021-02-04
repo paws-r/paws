@@ -29,7 +29,8 @@ Zone, network, and platform of the schedule that you purchased.}
 Launches the specified Scheduled Instances.
 
 Before you can launch a Scheduled Instance, you must purchase it and
-obtain an identifier using PurchaseScheduledInstances.
+obtain an identifier using
+\code{\link[=ec2_purchase_scheduled_instances]{purchase_scheduled_instances}}.
 
 You must launch a Scheduled Instance during its scheduled time period.
 You can't stop or reboot a Scheduled Instance, but you can terminate it

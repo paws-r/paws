@@ -9,9 +9,10 @@ sagemaker_list_training_jobs(NextToken, MaxResults, CreationTimeAfter,
   NameContains, StatusEquals, SortBy, SortOrder)
 }
 \arguments{
-\item{NextToken}{If the result of the previous \code{ListTrainingJobs} request was truncated,
-the response includes a \code{NextToken}. To retrieve the next set of
-training jobs, use the token in the next request.}
+\item{NextToken}{If the result of the previous
+\code{\link[=sagemaker_list_training_jobs]{list_training_jobs}} request was
+truncated, the response includes a \code{NextToken}. To retrieve the next set
+of training jobs, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of training jobs to return in the response.}
 

@@ -17,7 +17,8 @@ template).
 
 To see a list of human task user interfaces (work task templates) in
 your account, use . When you delete a worker task template, it no longer
-appears when you call \code{ListHumanTaskUis}.
+appears when you call
+\code{\link[=sagemaker_list_human_task_uis]{list_human_task_uis}}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_human_task_ui(

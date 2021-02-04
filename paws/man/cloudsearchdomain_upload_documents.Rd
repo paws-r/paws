@@ -30,7 +30,8 @@ performance, group add and delete operations in batches that are close
 the 5 MB limit. Submitting a large volume of single-document batches can
 overload a domain's document service.
 
-The endpoint for submitting \code{UploadDocuments} requests is
+The endpoint for submitting
+\code{\link[=cloudsearchdomain_upload_documents]{upload_documents}} requests is
 domain-specific. To get the document endpoint for your domain, use the
 Amazon CloudSearch configuration service \code{DescribeDomains} action. A
 domain's endpoints are also displayed on the domain dashboard in the

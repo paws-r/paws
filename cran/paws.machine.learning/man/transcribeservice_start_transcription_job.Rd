@@ -33,7 +33,8 @@ Transcribe determine the sample rate.}
 \item{OutputBucketName}{The location where the transcription is stored.
 
 If you set the \code{OutputBucketName}, Amazon Transcribe puts the transcript
-in the specified S3 bucket. When you call the GetTranscriptionJob
+in the specified S3 bucket. When you call the
+\code{\link[=transcribeservice_get_transcription_job]{get_transcription_job}}
 operation, the operation returns this location in the
 \code{TranscriptFileUri} field. If you enable content redaction, the redacted
 transcript appears in \code{RedactedTranscriptFileUri}. If you enable content
@@ -74,8 +75,9 @@ If you specify an output key, you must also specify an S3 bucket in the
 
 \item{OutputEncryptionKMSKeyId}{The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS)
 key used to encrypt the output of the transcription job. The user
-calling the \code{StartTranscriptionJob} operation must have permission to
-use the specified KMS key.
+calling the
+\code{\link[=transcribeservice_start_transcription_job]{start_transcription_job}}
+operation must have permission to use the specified KMS key.
 
 You can use either of the following to identify a KMS key in the current
 account:

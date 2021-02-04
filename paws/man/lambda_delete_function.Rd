@@ -31,9 +31,9 @@ the \code{Qualifier} parameter. Otherwise, all versions and aliases are
 deleted.
 
 To delete Lambda event source mappings that invoke a function, use
-DeleteEventSourceMapping. For AWS services and resources that invoke
-your function directly, delete the trigger in the service where you
-originally configured it.
+\code{\link[=lambda_delete_event_source_mapping]{delete_event_source_mapping}}. For
+AWS services and resources that invoke your function directly, delete
+the trigger in the service where you originally configured it.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_function(

@@ -28,9 +28,10 @@ Constraint: Maximum 128 ASCII characters.}
 }
 \description{
 Creates a launch template. A launch template contains the parameters to
-launch an instance. When you launch an instance using RunInstances, you
-can specify a launch template instead of providing the launch parameters
-in the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html}{Launching an instance from a launch template}in
+launch an instance. When you launch an instance using
+\code{\link[=ec2_run_instances]{run_instances}}, you can specify a launch template
+instead of providing the launch parameters in the request. For more
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html}{Launching an instance from a launch template}in
 the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

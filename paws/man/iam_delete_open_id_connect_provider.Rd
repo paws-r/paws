@@ -9,7 +9,9 @@ iam_delete_open_id_connect_provider(OpenIDConnectProviderArn)
 \arguments{
 \item{OpenIDConnectProviderArn}{[required] The Amazon Resource Name (ARN) of the IAM OpenID Connect provider
 resource object to delete. You can get a list of OpenID Connect provider
-resource ARNs by using the ListOpenIDConnectProviders operation.}
+resource ARNs by using the
+\code{\link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers}}
+operation.}
 }
 \description{
 Deletes an OpenID Connect identity provider (IdP) resource object in

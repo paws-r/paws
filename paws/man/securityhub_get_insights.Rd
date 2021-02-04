@@ -8,11 +8,12 @@ securityhub_get_insights(InsightArns, NextToken, MaxResults)
 }
 \arguments{
 \item{InsightArns}{The ARNs of the insights to describe. If you do not provide any insight
-ARNs, then \code{GetInsights} returns all of your custom insights. It does
-not return any managed insights.}
+ARNs, then \code{\link[=securityhub_get_insights]{get_insights}} returns all of
+your custom insights. It does not return any managed insights.}
 
 \item{NextToken}{The token that is required for pagination. On your first call to the
-\code{GetInsights} operation, set the value of this parameter to \code{NULL}.
+\code{\link[=securityhub_get_insights]{get_insights}} operation, set the value of
+this parameter to \code{NULL}.
 
 For subsequent calls to the operation, to continue listing data, set the
 value of this parameter to the value returned from the previous

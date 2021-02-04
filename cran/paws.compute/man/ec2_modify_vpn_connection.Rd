@@ -35,8 +35,10 @@ migration options are available:
 }
 
 Before you perform the migration to the new gateway, you must configure
-the new gateway. Use CreateVpnGateway to create a virtual private
-gateway, or CreateTransitGateway to create a transit gateway.
+the new gateway. Use \code{\link[=ec2_create_vpn_gateway]{create_vpn_gateway}} to
+create a virtual private gateway, or
+\code{\link[=ec2_create_transit_gateway]{create_transit_gateway}} to create a
+transit gateway.
 
 This step is required when you migrate from a virtual private gateway
 with static routes to a transit gateway.
@@ -48,13 +50,15 @@ add back these routes to the transit gateway after the VPN connection
 migration is complete.
 
 After you migrate to the new gateway, you might need to modify your VPC
-route table. Use CreateRoute and DeleteRoute to make the changes
-described in \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/modify-vpn-target.html#step-update-routing}{VPN Gateway Target Modification Required VPC Route Table Updates}
+route table. Use \code{\link[=ec2_create_route]{create_route}} and
+\code{\link[=ec2_delete_route]{delete_route}} to make the changes described in \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/modify-vpn-target.html#step-update-routing}{VPN Gateway Target Modification Required VPC Route Table Updates}
 in the \emph{AWS Site-to-Site VPN User Guide}.
 
 When the new gateway is a transit gateway, modify the transit gateway
 route table to allow traffic between the VPC and the AWS Site-to-Site
-VPN connection. Use CreateTransitGatewayRoute to add the routes.
+VPN connection. Use
+\code{\link[=ec2_create_transit_gateway_route]{create_transit_gateway_route}} to
+add the routes.
 
 If you deleted VPN static routes, you must add the static routes to the
 transit gateway route table.

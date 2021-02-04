@@ -10,13 +10,14 @@ simpledb_delete_domain(DomainName)
 \item{DomainName}{[required] The name of the domain to delete.}
 }
 \description{
-The \code{DeleteDomain} operation deletes a domain. Any items (and their
-attributes) in the domain are deleted as well. The \code{DeleteDomain}
-operation might take 10 or more seconds to complete.
+The \code{\link[=simpledb_delete_domain]{delete_domain}} operation deletes a
+domain. Any items (and their attributes) in the domain are deleted as
+well. The \code{\link[=simpledb_delete_domain]{delete_domain}} operation might take
+10 or more seconds to complete.
 
-Running \code{DeleteDomain} on a domain that does not exist or running the
-function multiple times using the same domain name will not result in an
-error response.
+Running \code{\link[=simpledb_delete_domain]{delete_domain}} on a domain that does
+not exist or running the function multiple times using the same domain
+name will not result in an error response.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_domain(

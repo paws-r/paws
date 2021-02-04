@@ -32,10 +32,10 @@ a different AWS account.
 
 \strong{Related operations:}
 \itemize{
-\item CreateKey
-\item DescribeKey
-\item ListAliases
-\item ListResourceTags
+\item \code{\link[=kms_create_key]{create_key}}
+\item \code{\link[=kms_describe_key]{describe_key}}
+\item \code{\link[=kms_list_aliases]{list_aliases}}
+\item \code{\link[=kms_list_resource_tags]{list_resource_tags}}
 }
 }
 \section{Request syntax}{

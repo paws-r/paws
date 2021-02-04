@@ -11,13 +11,15 @@ ebs_get_snapshot_block(SnapshotId, BlockIndex, BlockToken)
 
 \item{BlockIndex}{[required] The block index of the block from which to get data.
 
-Obtain the \code{BlockIndex} by running the \code{ListChangedBlocks} or
-\code{ListSnapshotBlocks} operations.}
+Obtain the \code{BlockIndex} by running the
+\code{\link[=ebs_list_changed_blocks]{list_changed_blocks}} or
+\code{\link[=ebs_list_snapshot_blocks]{list_snapshot_blocks}} operations.}
 
 \item{BlockToken}{[required] The block token of the block from which to get data.
 
-Obtain the \code{BlockToken} by running the \code{ListChangedBlocks} or
-\code{ListSnapshotBlocks} operations.}
+Obtain the \code{BlockToken} by running the
+\code{\link[=ebs_list_changed_blocks]{list_changed_blocks}} or
+\code{\link[=ebs_list_snapshot_blocks]{list_snapshot_blocks}} operations.}
 }
 \description{
 Returns the data in a block in an Amazon Elastic Block Store snapshot.

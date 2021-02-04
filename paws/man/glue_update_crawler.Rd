@@ -48,7 +48,7 @@ crawler.}
 }
 \description{
 Updates a crawler. If a crawler is running, you must stop it using
-\code{StopCrawler} before updating it.
+\code{\link[=glue_stop_crawler]{stop_crawler}} before updating it.
 }
 \section{Request syntax}{
 \preformatted{svc$update_crawler(

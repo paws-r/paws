@@ -62,15 +62,15 @@ During stack set updates, any parameter values overridden for a stack
 instance are not updated, but retain their overridden value.
 
 You can only override the parameter \emph{values} that are specified in the
-stack set; to add or delete a parameter itself, use \code{UpdateStackSet} to
-update the stack set template. If you add a parameter to a template,
-before you can override the parameter value specified in the stack set
-you must first use
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html}{UpdateStackSet}
-to update all stack instances with the updated template and parameter
-value specified in the stack set. Once a stack instance has been updated
-with the new parameter, you can then override the parameter value using
-\code{UpdateStackInstances}.}
+stack set; to add or delete a parameter itself, use
+\code{\link[=cloudformation_update_stack_set]{update_stack_set}} to update the
+stack set template. If you add a parameter to a template, before you can
+override the parameter value specified in the stack set you must first
+use \code{\link[=cloudformation_update_stack_set]{update_stack_set}} to update all
+stack instances with the updated template and parameter value specified
+in the stack set. Once a stack instance has been updated with the new
+parameter, you can then override the parameter value using
+\code{\link[=cloudformation_update_stack_instances]{update_stack_instances}}.}
 
 \item{OperationPreferences}{Preferences for how AWS CloudFormation performs this stack set
 operation.}
@@ -93,22 +93,21 @@ stack in a specific account and Region.
 
 You can only update stack instances in Regions and accounts where they
 already exist; to create additional stack instances, use
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html}{CreateStackInstances}.
+\code{\link[=cloudformation_create_stack_instances]{create_stack_instances}}.
 
 During stack set updates, any parameters overridden for a stack instance
 are not updated, but retain their overridden value.
 
 You can only update the parameter \emph{values} that are specified in the
 stack set; to add or delete a parameter itself, use
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html}{UpdateStackSet}
-to update the stack set template. If you add a parameter to a template,
-before you can override the parameter value specified in the stack set
-you must first use
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html}{UpdateStackSet}
-to update all stack instances with the updated template and parameter
-value specified in the stack set. Once a stack instance has been updated
-with the new parameter, you can then override the parameter value using
-\code{UpdateStackInstances}.
+\code{\link[=cloudformation_update_stack_set]{update_stack_set}} to update the
+stack set template. If you add a parameter to a template, before you can
+override the parameter value specified in the stack set you must first
+use \code{\link[=cloudformation_update_stack_set]{update_stack_set}} to update all
+stack instances with the updated template and parameter value specified
+in the stack set. Once a stack instance has been updated with the new
+parameter, you can then override the parameter value using
+\code{\link[=cloudformation_update_stack_instances]{update_stack_instances}}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_stack_instances(

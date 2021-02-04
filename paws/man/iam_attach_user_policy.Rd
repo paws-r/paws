@@ -23,7 +23,7 @@ in the \emph{AWS General Reference}.}
 Attaches the specified managed policy to the specified user.
 
 You use this API to attach a \emph{managed} policy to a user. To embed an
-inline policy in a user, use PutUserPolicy.
+inline policy in a user, use \code{\link[=iam_put_user_policy]{put_user_policy}}.
 
 For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.

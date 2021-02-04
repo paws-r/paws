@@ -20,11 +20,12 @@ health check that you want to change the status for.}
 Submits a request to change the health status of a custom health check
 to healthy or unhealthy.
 
-You can use \code{UpdateInstanceCustomHealthStatus} to change the status only
-for custom health checks, which you define using
-\code{HealthCheckCustomConfig} when you create a service. You can't use it to
-change the status for Route 53 health checks, which you define using
-\code{HealthCheckConfig}.
+You can use
+\code{\link[=servicediscovery_update_instance_custom_health_status]{update_instance_custom_health_status}}
+to change the status only for custom health checks, which you define
+using \code{HealthCheckCustomConfig} when you create a service. You can't use
+it to change the status for Route 53 health checks, which you define
+using \code{HealthCheckConfig}.
 
 For more information, see
 \href{https://docs.aws.amazon.com/cloud-map/latest/api/API_HealthCheckCustomConfig.html}{HealthCheckCustomConfig}.

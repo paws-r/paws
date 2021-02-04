@@ -24,19 +24,24 @@ encrypted, check the response elements PutRecordOutput$Encrypted and
 PutRecordBatchOutput$Encrypted, respectively.
 
 To check the encryption state of a delivery stream, use
-DescribeDeliveryStream.
+\code{\link[=firehose_describe_delivery_stream]{describe_delivery_stream}}.
 
 If SSE is enabled using a customer managed CMK and then you invoke
-\code{StopDeliveryStreamEncryption}, Kinesis Data Firehose schedules the
-related KMS grant for retirement and then retires it after it ensures
-that it is finished delivering records to the destination.
+\code{\link[=firehose_stop_delivery_stream_encryption]{stop_delivery_stream_encryption}},
+Kinesis Data Firehose schedules the related KMS grant for retirement and
+then retires it after it ensures that it is finished delivering records
+to the destination.
 
-The \code{StartDeliveryStreamEncryption} and \code{StopDeliveryStreamEncryption}
+The
+\code{\link[=firehose_start_delivery_stream_encryption]{start_delivery_stream_encryption}}
+and
+\code{\link[=firehose_stop_delivery_stream_encryption]{stop_delivery_stream_encryption}}
 operations have a combined limit of 25 calls per delivery stream per 24
 hours. For example, you reach the limit if you call
-\code{StartDeliveryStreamEncryption} 13 times and
-\code{StopDeliveryStreamEncryption} 12 times for the same delivery stream in
-a 24-hour period.
+\code{\link[=firehose_start_delivery_stream_encryption]{start_delivery_stream_encryption}}
+13 times and
+\code{\link[=firehose_stop_delivery_stream_encryption]{stop_delivery_stream_encryption}}
+12 times for the same delivery stream in a 24-hour period.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_delivery_stream_encryption(

@@ -232,8 +232,8 @@ greengrassv2_create_component_version <- function(inlineRecipe = NULL, lambdaFun
 #' 
 #' You can create deployments without names. If you create a deployment
 #' without a name, the AWS IoT Greengrass V2 console shows the deployment
-#' name as `&lt;targetType&gt;:&lt;targetName&gt;`, where `targetType` and
-#' `targetName` are the type and name of the deployment target.
+#' name as `<targetType>:<targetName>`, where `targetType` and `targetName`
+#' are the type and name of the deployment target.
 #' @param components The components to deploy. This is a dictionary, where each key is the
 #' name of a component, and each key's value is the version and
 #' configuration to deploy for that component.
@@ -950,8 +950,8 @@ greengrassv2_list_tags_for_resource <- function(resourceArn) {
 #' This operation identifies components that meet all dependency
 #' requirements for a deployment. If the requirements conflict, then this
 #' operation returns an error and the deployment fails. For example, this
-#' occurs if component `A` requires version `&gt;2.0.0` and component `B`
-#' requires version `&lt;2.0.0` of a component dependency.
+#' occurs if component `A` requires version `>2.0.0` and component `B`
+#' requires version `<2.0.0` of a component dependency.
 #' 
 #' When you specify the component candidates to resolve, AWS IoT Greengrass
 #' compares each component's digest from the core device with the

@@ -32,10 +32,11 @@ Makes a copy of an existing snapshot.
 
 This operation is valid for Redis only.
 
-Users or groups that have permissions to use the \code{CopySnapshot}
-operation can create their own Amazon S3 buckets and copy snapshots to
-it. To control access to your snapshots, use an IAM policy to control
-who has the ability to use the \code{CopySnapshot} operation. For more
+Users or groups that have permissions to use the
+\code{\link[=elasticache_copy_snapshot]{copy_snapshot}} operation can create their
+own Amazon S3 buckets and copy snapshots to it. To control access to
+your snapshots, use an IAM policy to control who has the ability to use
+the \code{\link[=elasticache_copy_snapshot]{copy_snapshot}} operation. For more
 information about using IAM to control the use of ElastiCache
 operations, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html}{Exporting Snapshots}
 and \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.html}{Authentication & Access Control}.

@@ -13,16 +13,16 @@ values are ignored. The response is paginated at 100 per page if you
 have more than 100 tags.}
 
 \item{Marker}{(Optional) An opaque pagination token returned from a previous
-\code{DescribeTags} operation (String). If present, it specifies to continue
-the list from where the previous call left off.}
+\code{\link[=efs_describe_tags]{describe_tags}} operation (String). If present, it
+specifies to continue the list from where the previous call left off.}
 
 \item{FileSystemId}{[required] The ID of the file system whose tag set you want to retrieve.}
 }
 \description{
 Returns the tags associated with a file system. The order of tags
-returned in the response of one \code{DescribeTags} call and the order of
-tags returned across the responses of a multiple-call iteration (when
-using pagination) is unspecified.
+returned in the response of one \code{\link[=efs_describe_tags]{describe_tags}}
+call and the order of tags returned across the responses of a
+multiple-call iteration (when using pagination) is unspecified.
 
 This operation requires permissions for the
 \code{elasticfilesystem:DescribeTags} action.

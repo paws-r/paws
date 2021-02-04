@@ -24,8 +24,10 @@ When you enable Security Hub, you grant to Security Hub the permissions
 necessary to gather findings from other services that are integrated
 with Security Hub.
 
-When you use the \code{EnableSecurityHub} operation to enable Security Hub,
-you also automatically enable the following standards.
+When you use the
+\code{\link[=securityhub_enable_security_hub]{enable_security_hub}} operation to
+enable Security Hub, you also automatically enable the following
+standards.
 \itemize{
 \item CIS AWS Foundations
 \item AWS Foundational Security Best Practices
@@ -38,8 +40,10 @@ To not enable the automatically enabled standards, set
 \code{EnableDefaultStandards} to \code{false}.
 
 After you enable Security Hub, to enable a standard, use the
-\verb{<a>BatchEnableStandards</a>} operation. To disable a standard, use
-the \verb{<a>BatchDisableStandards</a>} operation.
+\code{\link[=securityhub_batch_enable_standards]{batch_enable_standards}}
+operation. To disable a standard, use the
+\code{\link[=securityhub_batch_disable_standards]{batch_disable_standards}}
+operation.
 
 To learn more, see \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html}{Setting Up AWS Security Hub}
 in the \emph{AWS Security Hub User Guide}.

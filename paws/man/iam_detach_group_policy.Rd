@@ -23,8 +23,8 @@ in the \emph{AWS General Reference}.}
 Removes the specified managed policy from the specified IAM group.
 
 A group can also have inline policies embedded with it. To delete an
-inline policy, use the DeleteGroupPolicy API. For information about
-policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+inline policy, use the \code{\link[=iam_delete_group_policy]{delete_group_policy}}
+API. For information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

@@ -24,12 +24,15 @@ stack is considered to have drifted if one or more of its resources have
 drifted. For more information on stack and resource drift, see
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html}{Detecting Unregulated Configuration Changes to Stacks and Resources}.
 
-Use DetectStackDrift to initiate a stack drift detection operation.
-\code{DetectStackDrift} returns a \code{StackDriftDetectionId} you can use to
-monitor the progress of the operation using
-\code{DescribeStackDriftDetectionStatus}. Once the drift detection operation
-has completed, use DescribeStackResourceDrifts to return drift
-information about the stack and its resources.
+Use \code{\link[=cloudformation_detect_stack_drift]{detect_stack_drift}} to
+initiate a stack drift detection operation.
+\code{\link[=cloudformation_detect_stack_drift]{detect_stack_drift}} returns a
+\code{StackDriftDetectionId} you can use to monitor the progress of the
+operation using
+\code{\link[=cloudformation_describe_stack_drift_detection_status]{describe_stack_drift_detection_status}}.
+Once the drift detection operation has completed, use
+\code{\link[=cloudformation_describe_stack_resource_drifts]{describe_stack_resource_drifts}}
+to return drift information about the stack and its resources.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_stack_drift_detection_status(

@@ -349,15 +349,16 @@ chime_batch_delete_phone_number <- function(PhoneNumberIds) {
 #' Users suspended from a `Team` account are disassociated from the
 #' account, but they can continue to use Amazon Chime as free users. To
 #' remove the suspension from suspended `Team` account users, invite them
-#' to the `Team` account again. You can use the InviteUsers action to do
-#' so.
+#' to the `Team` account again. You can use the
+#' [`invite_users`][chime_invite_users] action to do so.
 #' 
 #' Users suspended from an `EnterpriseLWA` account are immediately signed
 #' out of Amazon Chime and can no longer sign in. To remove the suspension
-#' from suspended `EnterpriseLWA` account users, use the BatchUnsuspendUser
-#' action.
+#' from suspended `EnterpriseLWA` account users, use the
+#' [`batch_unsuspend_user`][chime_batch_unsuspend_user] action.
 #' 
-#' To sign out users without suspending them, use the LogoutUser action.
+#' To sign out users without suspending them, use the
+#' [`logout_user`][chime_logout_user] action.
 #'
 #' @usage
 #' chime_batch_suspend_user(AccountId, UserIdList)
@@ -599,8 +600,9 @@ chime_create_account <- function(Name) {
 #'
 #' @description
 #' Creates an Amazon Chime Messaging SDK `AppInstance` under an AWS
-#' Account. Only Messaging SDK customers use this API. `CreateAppInstance`
-#' supports `idempotency` behavior as described in the AWS API Standard.
+#' Account. Only Messaging SDK customers use this API.
+#' [`create_app_instance`][chime_create_app_instance] supports
+#' `idempotency` behavior as described in the AWS API Standard.
 #'
 #' @usage
 #' chime_create_app_instance(Name, Metadata, ClientRequestToken)
@@ -646,7 +648,7 @@ chime_create_app_instance <- function(Name, Metadata = NULL, ClientRequestToken)
 #' 
 #' -   `ChannelModerator` actions across all channels in the app instance.
 #' 
-#' -   `DeleteChannelMessage` actions.
+#' -   [`delete_channel_message`][chime_delete_channel_message] actions.
 #' 
 #' Only an `AppInstanceUser` can be promoted to an `AppInstanceAdmin` role.
 #'
@@ -891,8 +893,9 @@ chime_create_channel <- function(AppInstanceArn, Name, Mode = NULL, Privacy = NU
 #' @description
 #' Permanently bans a member from a channel. Moderators can't add banned
 #' members to a channel. To undo a ban, you first have to
-#' `DeleteChannelBan`, and then `CreateChannelMembership`. Bans are cleaned
-#' up when you delete users or channels.
+#' [`delete_channel_ban`][chime_delete_channel_ban], and then
+#' [`create_channel_membership`][chime_create_channel_membership]. Bans are
+#' cleaned up when you delete users or channels.
 #' 
 #' If you ban a user who is already part of a channel, that user is
 #' automatically kicked from the channel.
@@ -960,8 +963,10 @@ chime_create_channel_ban <- function(ChannelArn, MemberArn) {
 #' @param ChannelArn &#91;required&#93; The ARN of the channel to which you're adding users.
 #' @param MemberArn &#91;required&#93; The ARN of the member you want to add to the channel.
 #' @param Type &#91;required&#93; The membership type of a user, `DEFAULT` or `HIDDEN`. Default members
-#' are always returned as part of `ListChannelMemberships`. Hidden members
-#' are only returned if the type filter in `ListChannelMemberships` equals
+#' are always returned as part of
+#' [`list_channel_memberships`][chime_list_channel_memberships]. Hidden
+#' members are only returned if the type filter in
+#' [`list_channel_memberships`][chime_list_channel_memberships] equals
 #' `HIDDEN`. Otherwise hidden members are not returned. This is only
 #' supported by moderators.
 #'
@@ -1126,8 +1131,9 @@ chime_create_meeting <- function(ClientRequestToken, ExternalMeetingId = NULL, M
 #' Also ensures that the From number belongs to the customer.
 #' 
 #' To play welcome audio or implement an interactive voice response (IVR),
-#' use the `CreateSipMediaApplicationCall` API with the corresponding SIP
-#' media application ID.
+#' use the
+#' [`create_sip_media_application_call`][chime_create_sip_media_application_call]
+#' API with the corresponding SIP media application ID.
 #'
 #' @usage
 #' chime_create_meeting_dial_out(MeetingId, FromPhoneNumber, ToPhoneNumber,
@@ -1762,8 +1768,8 @@ chime_create_voice_connector_group <- function(Name, VoiceConnectorItems = NULL)
 #'
 #' @description
 #' Deletes the specified Amazon Chime account. You must suspend all users
-#' before deleting a `Team` account. You can use the BatchSuspendUser
-#' action to do so.
+#' before deleting a `Team` account. You can use the
+#' [`batch_suspend_user`][chime_batch_suspend_user] action to do so.
 #' 
 #' For `EnterpriseLWA` and `EnterpriseAD` accounts, you must release the
 #' claimed domains for your Amazon Chime account before deletion. As soon
@@ -2126,7 +2132,8 @@ chime_delete_channel_membership <- function(ChannelArn, MemberArn) {
 #' @description
 #' Deletes a channel message. Only admins can perform this action. Deletion
 #' makes messages inaccessible immediately. A background process deletes
-#' any revisions created by `UpdateChannelMessage`.
+#' any revisions created by
+#' [`update_channel_message`][chime_update_channel_message].
 #'
 #' @usage
 #' chime_delete_channel_message(ChannelArn, MessageId)
@@ -4161,7 +4168,8 @@ chime_get_sip_rule <- function(SipRuleId) {
 #' address, license type, and personal meeting PIN.
 #' 
 #' To retrieve user details with an email address instead of a user ID, use
-#' the ListUsers action, and then filter by email address.
+#' the [`list_users`][chime_list_users] action, and then filter by email
+#' address.
 #'
 #' @usage
 #' chime_get_user(AccountId, UserId)
@@ -4991,8 +4999,10 @@ chime_list_channel_bans <- function(ChannelArn, MaxResults = NULL, NextToken = N
 #'
 #' @param ChannelArn &#91;required&#93; The maximum number of channel memberships that you want returned.
 #' @param Type The membership type of a user, `DEFAULT` or `HIDDEN`. Default members
-#' are always returned as part of `ListChannelMemberships`. Hidden members
-#' are only returned if the type filter in `ListChannelMemberships` equals
+#' are always returned as part of
+#' [`list_channel_memberships`][chime_list_channel_memberships]. Hidden
+#' members are only returned if the type filter in
+#' [`list_channel_memberships`][chime_list_channel_memberships] equals
 #' `HIDDEN`. Otherwise hidden members are not returned.
 #' @param MaxResults The maximum number of channel memberships that you want returned.
 #' @param NextToken The token passed by previous API calls until all requested channel

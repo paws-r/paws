@@ -27,14 +27,16 @@ different account, the request will fail with an HTTP
 \description{
 Applies an Amazon S3 bucket policy to an Amazon S3 bucket. If you are
 using an identity other than the root user of the AWS account that owns
-the bucket, the calling identity must have the \code{PutBucketPolicy}
-permissions on the specified bucket and belong to the bucket owner's
-account in order to use this operation.
+the bucket, the calling identity must have the
+\code{\link[=s3_put_bucket_policy]{put_bucket_policy}} permissions on the specified
+bucket and belong to the bucket owner's account in order to use this
+operation.
 
-If you don't have \code{PutBucketPolicy} permissions, Amazon S3 returns a
-\verb{403 Access Denied} error. If you have the correct permissions, but
-you're not using an identity that belongs to the bucket owner's account,
-Amazon S3 returns a \verb{405 Method Not Allowed} error.
+If you don't have \code{\link[=s3_put_bucket_policy]{put_bucket_policy}}
+permissions, Amazon S3 returns a \verb{403 Access Denied} error. If you have
+the correct permissions, but you're not using an identity that belongs
+to the bucket owner's account, Amazon S3 returns a
+\verb{405 Method Not Allowed} error.
 
 As a security precaution, the root user of the AWS account that owns a
 bucket can always use this operation, even if the policy explicitly
@@ -42,10 +44,11 @@ denies the root user the ability to perform this action.
 
 For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html}{Using Bucket Policies and User Policies}.
 
-The following operations are related to \code{PutBucketPolicy}:
+The following operations are related to
+\code{\link[=s3_put_bucket_policy]{put_bucket_policy}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html}{DeleteBucket}
+\item \code{\link[=s3_create_bucket]{create_bucket}}
+\item \code{\link[=s3_delete_bucket]{delete_bucket}}
 }
 }
 \section{Request syntax}{

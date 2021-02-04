@@ -12,9 +12,9 @@ sagemaker_list_app_image_configs(MaxResults, NextToken, NameContains,
 \item{MaxResults}{The maximum number of AppImageConfigs to return in the response. The
 default value is 10.}
 
-\item{NextToken}{If the previous call to \code{ListImages} didn't return the full set of
-AppImageConfigs, the call returns a token for getting the next set of
-AppImageConfigs.}
+\item{NextToken}{If the previous call to \code{\link[=sagemaker_list_images]{list_images}} didn't
+return the full set of AppImageConfigs, the call returns a token for
+getting the next set of AppImageConfigs.}
 
 \item{NameContains}{A filter that returns only AppImageConfigs whose name contains the
 specified string.}

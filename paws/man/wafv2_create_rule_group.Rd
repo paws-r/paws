@@ -29,7 +29,7 @@ Virginia) as follows:
 When you create your own rule group, you define this, and you cannot
 change it after creation. When you add or modify the rules in a rule
 group, AWS WAF enforces this limit. You can check the capacity for a set
-of rules using CheckCapacity.
+of rules using \code{\link[=wafv2_check_capacity]{check_capacity}}.
 
 AWS WAF uses WCUs to calculate and control the operating resources that
 are used to run your rules, rule groups, and web ACLs. AWS WAF

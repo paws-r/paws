@@ -122,8 +122,8 @@ Modifies many of the details of the specified secret. If you include a
 \code{ClientRequestToken} and \emph{either} \code{SecretString} or \code{SecretBinary} then
 it also creates a new version attached to the secret.
 
-To modify the rotation configuration of a secret, use RotateSecret
-instead.
+To modify the rotation configuration of a secret, use
+\code{\link[=secretsmanager_rotate_secret]{rotate_secret}} instead.
 
 The Secrets Manager console uses only the \code{SecretString} parameter and
 therefore limits you to encrypting and storing only a text string. To
@@ -179,11 +179,14 @@ managed CMK for Secrets Manager.
 
 \strong{Related operations}
 \itemize{
-\item To create a new secret, use CreateSecret.
-\item To add only a new version to an existing secret, use PutSecretValue.
-\item To get the details for a secret, use DescribeSecret.
+\item To create a new secret, use
+\code{\link[=secretsmanager_create_secret]{create_secret}}.
+\item To add only a new version to an existing secret, use
+\code{\link[=secretsmanager_put_secret_value]{put_secret_value}}.
+\item To get the details for a secret, use
+\code{\link[=secretsmanager_describe_secret]{describe_secret}}.
 \item To list the versions contained in a secret, use
-ListSecretVersionIds.
+\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}.
 }
 }
 \section{Request syntax}{

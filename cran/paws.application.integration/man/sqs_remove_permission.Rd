@@ -13,7 +13,7 @@ sqs_remove_permission(QueueUrl, Label)
 Queue URLs and names are case-sensitive.}
 
 \item{Label}{[required] The identification of the permission to remove. This is the label added
-using the \verb{<a>AddPermission</a>} action.}
+using the \code{\link[=sqs_add_permission]{add_permission}} action.}
 }
 \description{
 Revokes any permissions in the queue policy that matches the specified
@@ -24,8 +24,10 @@ Revokes any permissions in the queue policy that matches the specified
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a user name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \item To remove the ability to change queue permissions, you must deny
-permission to the \code{AddPermission}, \code{RemovePermission}, and
-\code{SetQueueAttributes} actions in your IAM policy.
+permission to the \code{\link[=sqs_add_permission]{add_permission}},
+\code{\link[=sqs_remove_permission]{remove_permission}}, and
+\code{\link[=sqs_set_queue_attributes]{set_queue_attributes}} actions in your
+IAM policy.
 }
 }
 \section{Request syntax}{

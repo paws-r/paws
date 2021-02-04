@@ -14,8 +14,10 @@ belongs to.
 This operation can be called from any account in the organization.
 
 Even if a policy type is shown as available in the organization, you can
-disable it separately at the root level with DisablePolicyType. Use
-ListRoots to see the status of policy types for a specified root.
+disable it separately at the root level with
+\code{\link[=organizations_disable_policy_type]{disable_policy_type}}. Use
+\code{\link[=organizations_list_roots]{list_roots}} to see the status of policy
+types for a specified root.
 }
 \examples{
 \dontrun{

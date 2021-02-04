@@ -405,9 +405,8 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #' version from your repository and be able to restore it later, set its
 #' status to `Archived`. Archived packages cannot be downloaded from a
 #' repository and don't show up with list package APIs (for example,
-#' ` <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html">ListackageVersions</a> `),
-#' but you can restore them using
-#' ` <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_UpdatePackageVersionsStatus.html">UpdatePackageVersionsStatus</a> `.
+#' ` ListackageVersions `), but you can restore them using
+#' [`update_package_versions_status`][codeartifact_update_package_versions_status].
 #'
 #' @usage
 #' codeartifact_delete_package_versions(domain, domainOwner, repository,
@@ -538,9 +537,11 @@ codeartifact_delete_repository <- function(domain, domainOwner = NULL, repositor
 #' deleted policy are removed. The effect of deleting a resource policy
 #' might not be immediate.
 #' 
-#' Use `DeleteRepositoryPermissionsPolicy` with caution. After a policy is
-#' deleted, AWS users, roles, and accounts lose permissions to perform the
-#' repository actions granted by the deleted policy.
+#' Use
+#' [`delete_repository_permissions_policy`][codeartifact_delete_repository_permissions_policy]
+#' with caution. After a policy is deleted, AWS users, roles, and accounts
+#' lose permissions to perform the repository actions granted by the
+#' deleted policy.
 #'
 #' @usage
 #' codeartifact_delete_repository_permissions_policy(domain, domainOwner,
@@ -805,13 +806,13 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #' your repository because its assets are deleted.
 #' 
 #' To view all disposed package versions in a repository, use
-#' [`ListPackageVersions`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html)
+#' [`list_package_versions`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html)
 #' and set the
 #' [`status`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html#API_ListPackageVersions_RequestSyntax)
 #' parameter to `Disposed`.
 #' 
 #' To view information about a disposed package version, use
-#' [`DescribePackageVersion`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DescribePackageVersion.html)
+#' [`describe_package_version`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DescribePackageVersion.html)
 #' ..
 #'
 #' @usage
@@ -912,17 +913,20 @@ codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, re
 #' CodeArtifact authorization tokens are valid for a period of 12 hours
 #' when created with the `login` command. You can call `login` periodically
 #' to refresh the token. When you create an authorization token with the
-#' `GetAuthorizationToken` API, you can set a custom authorization period,
-#' up to a maximum of 12 hours, with the `durationSeconds` parameter.
+#' [`get_authorization_token`][codeartifact_get_authorization_token] API,
+#' you can set a custom authorization period, up to a maximum of 12 hours,
+#' with the `durationSeconds` parameter.
 #' 
-#' The authorization period begins after `login` or `GetAuthorizationToken`
-#' is called. If `login` or `GetAuthorizationToken` is called while
-#' assuming a role, the token lifetime is independent of the maximum
-#' session duration of the role. For example, if you call `sts assume-role`
-#' and specify a session duration of 15 minutes, then generate a
-#' CodeArtifact authorization token, the token will be valid for the full
-#' authorization period even though this is longer than the 15-minute
-#' session duration.
+#' The authorization period begins after `login` or
+#' [`get_authorization_token`][codeartifact_get_authorization_token] is
+#' called. If `login` or
+#' [`get_authorization_token`][codeartifact_get_authorization_token] is
+#' called while assuming a role, the token lifetime is independent of the
+#' maximum session duration of the role. For example, if you call
+#' `sts assume-role` and specify a session duration of 15 minutes, then
+#' generate a CodeArtifact authorization token, the token will be valid for
+#' the full authorization period even though this is longer than the
+#' 15-minute session duration.
 #' 
 #' See [Using IAM
 #' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)
@@ -1020,8 +1024,10 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 #'
 #' @description
 #' Returns an asset (or file) that is in a package. For example, for a
-#' Maven package version, use `GetPackageVersionAsset` to download a `JAR`
-#' file, a `POM` file, or any other assets in the package version.
+#' Maven package version, use
+#' [`get_package_version_asset`][codeartifact_get_package_version_asset] to
+#' download a `JAR` file, a `POM` file, or any other assets in the package
+#' version.
 #'
 #' @usage
 #' codeartifact_get_package_version_asset(domain, domainOwner, repository,
@@ -1102,8 +1108,8 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #' @description
 #' Gets the readme file or descriptive text for a package version. For
 #' packages that do not contain a readme file, CodeArtifact extracts a
-#' description from a metadata file. For example, from the
-#' `&lt;description&gt;` element in the `pom.xml` file of a Maven package.
+#' description from a metadata file. For example, from the `<description>`
+#' element in the `pom.xml` file of a Maven package.
 #' 
 #' The returned text might contain formatting. For example, it might
 #' contain formatting for Markdown or reStructuredText.
@@ -1287,11 +1293,9 @@ codeartifact_get_repository_permissions_policy <- function(domain, domainOwner =
 #' account that makes this call
 #'
 #' @description
-#' Returns a list of
-#' ` <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html">DomainSummary</a> `
-#' objects for all domains owned by the AWS account that makes this call.
-#' Each returned `DomainSummary` object contains information about a
-#' domain.
+#' Returns a list of ` DomainSummary ` objects for all domains owned by the
+#' AWS account that makes this call. Each returned `DomainSummary` object
+#' contains information about a domain.
 #'
 #' @usage
 #' codeartifact_list_domains(maxResults, nextToken)
@@ -1824,10 +1828,12 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 #' Sets a resource policy on a domain that specifies permissions to access
 #' it.
 #' 
-#' When you call `PutDomainPermissionsPolicy`, the resource policy on the
-#' domain is ignored when evaluting permissions. This ensures that the
-#' owner of a domain cannot lock themselves out of the domain, which would
-#' prevent them from being able to update the resource policy.
+#' When you call
+#' [`put_domain_permissions_policy`][codeartifact_put_domain_permissions_policy],
+#' the resource policy on the domain is ignored when evaluting permissions.
+#' This ensures that the owner of a domain cannot lock themselves out of
+#' the domain, which would prevent them from being able to update the
+#' resource policy.
 #'
 #' @usage
 #' codeartifact_put_domain_permissions_policy(domain, domainOwner,
@@ -1879,10 +1885,12 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' Sets the resource policy on a repository that specifies permissions to
 #' access it.
 #' 
-#' When you call `PutRepositoryPermissionsPolicy`, the resource policy on
-#' the repository is ignored when evaluting permissions. This ensures that
-#' the owner of a repository cannot lock themselves out of the repository,
-#' which would prevent them from being able to update the resource policy.
+#' When you call
+#' [`put_repository_permissions_policy`][codeartifact_put_repository_permissions_policy],
+#' the resource policy on the repository is ignored when evaluting
+#' permissions. This ensures that the owner of a repository cannot lock
+#' themselves out of the repository, which would prevent them from being
+#' able to update the resource policy.
 #'
 #' @usage
 #' codeartifact_put_repository_permissions_policy(domain, domainOwner,
@@ -2064,8 +2072,9 @@ codeartifact_untag_resource <- function(resourceArn, tagKeys) {
 #' the package version revision.
 #' @param expectedStatus The package version’s expected status before it is updated. If
 #' `expectedStatus` is provided, the package version's status is updated
-#' only if its status at the time `UpdatePackageVersionsStatus` is called
-#' matches `expectedStatus`.
+#' only if its status at the time
+#' [`update_package_versions_status`][codeartifact_update_package_versions_status]
+#' is called matches `expectedStatus`.
 #' @param targetStatus &#91;required&#93; The status you want to change the package version status to.
 #'
 #' @section Request syntax:

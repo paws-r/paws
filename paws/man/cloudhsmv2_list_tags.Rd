@@ -8,7 +8,8 @@ cloudhsmv2_list_tags(ResourceId, NextToken, MaxResults)
 }
 \arguments{
 \item{ResourceId}{[required] The cluster identifier (ID) for the cluster whose tags you are getting.
-To find the cluster ID, use DescribeClusters.}
+To find the cluster ID, use
+\code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 
 \item{NextToken}{The \code{NextToken} value that you received in the previous response. Use
 this value to get more tags.}
@@ -23,9 +24,9 @@ Gets a list of tags for the specified AWS CloudHSM cluster.
 This is a paginated operation, which means that each response might
 contain only a subset of all the tags. When the response contains only a
 subset of tags, it includes a \code{NextToken} value. Use this value in a
-subsequent \code{ListTags} request to get more tags. When you receive a
-response with no \code{NextToken} (or an empty or null value), that means
-there are no more tags to get.
+subsequent \code{\link[=cloudhsmv2_list_tags]{list_tags}} request to get more tags.
+When you receive a response with no \code{NextToken} (or an empty or null
+value), that means there are no more tags to get.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags(

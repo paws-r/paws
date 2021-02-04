@@ -7,12 +7,14 @@
 opsworks_describe_apps(StackId, AppIds)
 }
 \arguments{
-\item{StackId}{The app stack ID. If you use this parameter, \code{DescribeApps} returns a
-description of the apps in the specified stack.}
+\item{StackId}{The app stack ID. If you use this parameter,
+\code{\link[=opsworks_describe_apps]{describe_apps}} returns a description of the
+apps in the specified stack.}
 
 \item{AppIds}{An array of app IDs for the apps to be described. If you use this
-parameter, \code{DescribeApps} returns a description of the specified apps.
-Otherwise, it returns a description of every app.}
+parameter, \code{\link[=opsworks_describe_apps]{describe_apps}} returns a
+description of the specified apps. Otherwise, it returns a description
+of every app.}
 }
 \description{
 Requests a description of a specified set of apps.

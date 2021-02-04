@@ -25,7 +25,8 @@ stack-related events.}
 
 \item{PathId}{The path identifier of the product. This value is optional if the
 product has a default path, and required if the product has more than
-one path. To list the paths for a product, use ListLaunchPaths.}
+one path. To list the paths for a product, use
+\code{\link[=servicecatalog_list_launch_paths]{list_launch_paths}}.}
 
 \item{ProductId}{[required] The product identifier.}
 
@@ -58,8 +59,9 @@ existing provisioned product, the product status must be AVAILBLE or
 TAINTED.
 
 To view the resource changes in the change set, use
-DescribeProvisionedProductPlan. To create or modify the provisioned
-product, use ExecuteProvisionedProductPlan.
+\code{\link[=servicecatalog_describe_provisioned_product_plan]{describe_provisioned_product_plan}}.
+To create or modify the provisioned product, use
+\code{\link[=servicecatalog_execute_provisioned_product_plan]{execute_provisioned_product_plan}}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_provisioned_product_plan(

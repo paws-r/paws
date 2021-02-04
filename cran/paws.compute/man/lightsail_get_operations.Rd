@@ -9,17 +9,18 @@ lightsail_get_operations(pageToken)
 \arguments{
 \item{pageToken}{The token to advance to the next page of results from your request.
 
-To get a page token, perform an initial \code{GetOperations} request. If your
-results are paginated, the response will return a next page token that
-you can specify as the page token in a subsequent request.}
+To get a page token, perform an initial
+\code{\link[=lightsail_get_operations]{get_operations}} request. If your results
+are paginated, the response will return a next page token that you can
+specify as the page token in a subsequent request.}
 }
 \description{
 Returns information about all operations.
 
 Results are returned from oldest to newest, up to a maximum of 200.
-Results can be paged by making each subsequent call to \code{GetOperations}
-use the maximum (last) \code{statusChangedAt} value from the previous
-request.
+Results can be paged by making each subsequent call to
+\code{\link[=lightsail_get_operations]{get_operations}} use the maximum (last)
+\code{statusChangedAt} value from the previous request.
 }
 \section{Request syntax}{
 \preformatted{svc$get_operations(

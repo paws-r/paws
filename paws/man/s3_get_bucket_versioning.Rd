@@ -23,11 +23,12 @@ This implementation also returns the MFA Delete status of the versioning
 state. If the MFA Delete status is \code{enabled}, the bucket owner must use
 an authentication device to change the versioning state of the bucket.
 
-The following operations are related to \code{GetBucketVersioning}:
+The following operations are related to
+\code{\link[=s3_get_bucket_versioning]{get_bucket_versioning}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html}{DeleteObject}
+\item \code{\link[=s3_get_object]{get_object}}
+\item \code{\link[=s3_put_object]{put_object}}
+\item \code{\link[=s3_delete_object]{delete_object}}
 }
 }
 \section{Request syntax}{

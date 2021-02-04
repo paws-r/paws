@@ -9,7 +9,9 @@ waf_get_sql_injection_match_set(SqlInjectionMatchSetId)
 \arguments{
 \item{SqlInjectionMatchSetId}{[required] The \code{SqlInjectionMatchSetId} of the SqlInjectionMatchSet that you want
 to get. \code{SqlInjectionMatchSetId} is returned by
-CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.}
+\code{\link[=waf_create_sql_injection_match_set]{create_sql_injection_match_set}}
+and by
+\code{\link[=waf_list_sql_injection_match_sets]{list_sql_injection_match_sets}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

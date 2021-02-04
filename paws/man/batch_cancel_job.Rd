@@ -10,15 +10,16 @@ batch_cancel_job(jobId, reason)
 \item{jobId}{[required] The AWS Batch job ID of the job to cancel.}
 
 \item{reason}{[required] A message to attach to the job that explains the reason for canceling
-it. This message is returned by future DescribeJobs operations on the
-job. This message is also recorded in the AWS Batch activity logs.}
+it. This message is returned by future
+\code{\link[=batch_describe_jobs]{describe_jobs}} operations on the job. This
+message is also recorded in the AWS Batch activity logs.}
 }
 \description{
 Cancels a job in an AWS Batch job queue. Jobs that are in the
 \code{SUBMITTED}, \code{PENDING}, or \code{RUNNABLE} state are canceled. Jobs that have
 progressed to \code{STARTING} or \code{RUNNING} are not canceled (but the API
 operation still succeeds, even if no job is canceled); these jobs must
-be terminated with the TerminateJob operation.
+be terminated with the \code{\link[=batch_terminate_job]{terminate_job}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_job(

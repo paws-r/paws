@@ -33,8 +33,9 @@ There are three valid tag filter names:
 }
 
 Also, all configuration items associated with your user account that
-have tags can be listed if you call \code{DescribeTags} as is without passing
-any parameters.
+have tags can be listed if you call
+\code{\link[=applicationdiscoveryservice_describe_tags]{describe_tags}} as is
+without passing any parameters.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_tags(

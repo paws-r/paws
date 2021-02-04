@@ -17,12 +17,11 @@ appconfig_create_configuration_profile(ApplicationId, Name, Description,
 \item{LocationUri}{[required] A URI to locate the configuration. You can specify a Systems Manager
 (SSM) document, an SSM Parameter Store parameter, or an Amazon S3
 object. For an SSM document, specify either the document name in the
-format \verb{ssm-document://&lt;Document_name&gt;} or the Amazon Resource
-Name (ARN). For a parameter, specify either the parameter name in the
-format \verb{ssm-parameter://&lt;Parameter_name&gt;} or the ARN. For an
-Amazon S3 object, specify the URI in the following format:
-\verb{s3://&lt;bucket&gt;/&lt;objectKey&gt; }. Here is an example:
-s3://my-bucket/my-app/us-east-1/my-config.json}
+format \verb{ssm-document://<Document_name>} or the Amazon Resource Name
+(ARN). For a parameter, specify either the parameter name in the format
+\verb{ssm-parameter://<Parameter_name>} or the ARN. For an Amazon S3 object,
+specify the URI in the following format: \verb{s3://<bucket>/<objectKey> }.
+Here is an example: s3://my-bucket/my-app/us-east-1/my-config.json}
 
 \item{RetrievalRoleArn}{The ARN of an IAM role with permission to access the configuration at
 the specified LocationUri.}

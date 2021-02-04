@@ -11,7 +11,8 @@ waf_create_sql_injection_match_set(Name, ChangeToken)
 creating. You can't change \code{Name} after you create the
 \code{SqlInjectionMatchSet}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -31,14 +32,21 @@ malicious strings.
 To create and configure a \code{SqlInjectionMatchSet}, perform the following
 steps:
 \enumerate{
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{CreateSqlInjectionMatchSet} request.
-\item Submit a \code{CreateSqlInjectionMatchSet} request.
-\item Use \code{GetChangeToken} to get the change token that you provide in the
-\code{ChangeToken} parameter of an UpdateSqlInjectionMatchSet request.
-\item Submit an UpdateSqlInjectionMatchSet request to specify the parts of
-web requests in which you want to allow, block, or count malicious
-SQL code.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=waf_create_sql_injection_match_set]{create_sql_injection_match_set}}
+request.
+\item Submit a
+\code{\link[=waf_create_sql_injection_match_set]{create_sql_injection_match_set}}
+request.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=waf_update_sql_injection_match_set]{update_sql_injection_match_set}}
+request.
+\item Submit an
+\code{\link[=waf_update_sql_injection_match_set]{update_sql_injection_match_set}}
+request to specify the parts of web requests in which you want to
+allow, block, or count malicious SQL code.
 }
 
 For more information about how to use the AWS WAF API to allow or block

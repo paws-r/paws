@@ -8,7 +8,8 @@ wafregional_get_web_acl(WebACLId)
 }
 \arguments{
 \item{WebACLId}{[required] The \code{WebACLId} of the WebACL that you want to get. \code{WebACLId} is
-returned by CreateWebACL and by ListWebACLs.}
+returned by \code{\link[=wafregional_create_web_acl]{create_web_acl}} and by
+\code{\link[=wafregional_list_web_ac_ls]{list_web_ac_ls}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

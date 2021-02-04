@@ -10,7 +10,8 @@ waf_create_regex_match_set(Name, ChangeToken)
 \item{Name}{[required] A friendly name or description of the RegexMatchSet. You can't change
 \code{Name} after you create a \code{RegexMatchSet}.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -22,8 +23,9 @@ in the developer guide.
 With the latest version, AWS WAF has a single set of endpoints for
 regional and global use.
 
-Creates a RegexMatchSet. You then use UpdateRegexMatchSet to identify
-the part of a web request that you want AWS WAF to inspect, such as the
+Creates a RegexMatchSet. You then use
+\code{\link[=waf_update_regex_match_set]{update_regex_match_set}} to identify the
+part of a web request that you want AWS WAF to inspect, such as the
 values of the \code{User-Agent} header or the query string. For example, you
 can create a \code{RegexMatchSet} that contains a \code{RegexMatchTuple} that
 looks for any requests with \code{User-Agent} headers that match a
@@ -32,15 +34,18 @@ configure AWS WAF to reject those requests.
 
 To create and configure a \code{RegexMatchSet}, perform the following steps:
 \enumerate{
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of a \code{CreateRegexMatchSet} request.
-\item Submit a \code{CreateRegexMatchSet} request.
-\item Use \code{GetChangeToken} to get the change token that you provide in the
-\code{ChangeToken} parameter of an \code{UpdateRegexMatchSet} request.
-\item Submit an UpdateRegexMatchSet request to specify the part of the
-request that you want AWS WAF to inspect (for example, the header or
-the URI) and the value, using a \code{RegexPatternSet}, that you want AWS
-WAF to watch for.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of a
+\code{\link[=waf_create_regex_match_set]{create_regex_match_set}} request.
+\item Submit a \code{\link[=waf_create_regex_match_set]{create_regex_match_set}}
+request.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=waf_update_regex_match_set]{update_regex_match_set}} request.
+\item Submit an \code{\link[=waf_update_regex_match_set]{update_regex_match_set}}
+request to specify the part of the request that you want AWS WAF to
+inspect (for example, the header or the URI) and the value, using a
+\code{RegexPatternSet}, that you want AWS WAF to watch for.
 }
 
 For more information about how to use the AWS WAF API to allow or block

@@ -8,7 +8,8 @@ elasticsearchservice_delete_package(PackageID)
 }
 \arguments{
 \item{PackageID}{[required] Internal ID of the package that you want to delete. Use
-\code{DescribePackages} to find this value.}
+\code{\link[=elasticsearchservice_describe_packages]{describe_packages}} to find
+this value.}
 }
 \description{
 Delete the package.

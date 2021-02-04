@@ -83,18 +83,24 @@ An \code{MLModel} is nearly immutable. Users can update only the
 \code{MLModelName} and the \code{ScoreThreshold} in an \code{MLModel} without creating
 a new \code{MLModel}.
 
-\code{CreateMLModel} is an asynchronous operation. In response to
-\code{CreateMLModel}, Amazon Machine Learning (Amazon ML) immediately returns
-and sets the \code{MLModel} status to \code{PENDING}. After the \code{MLModel} has been
-created and ready is for use, Amazon ML sets the status to \code{COMPLETED}.
+\code{\link[=machinelearning_create_ml_model]{create_ml_model}} is an asynchronous
+operation. In response to
+\code{\link[=machinelearning_create_ml_model]{create_ml_model}}, Amazon Machine
+Learning (Amazon ML) immediately returns and sets the \code{MLModel} status
+to \code{PENDING}. After the \code{MLModel} has been created and ready is for use,
+Amazon ML sets the status to \code{COMPLETED}.
 
-You can use the \code{GetMLModel} operation to check the progress of the
-\code{MLModel} during the creation operation.
+You can use the \code{\link[=machinelearning_get_ml_model]{get_ml_model}} operation
+to check the progress of the \code{MLModel} during the creation operation.
 
-\code{CreateMLModel} requires a \code{DataSource} with computed statistics, which
-can be created by setting \code{ComputeStatistics} to \code{true} in
-\code{CreateDataSourceFromRDS}, \code{CreateDataSourceFromS3}, or
-\code{CreateDataSourceFromRedshift} operations.
+\code{\link[=machinelearning_create_ml_model]{create_ml_model}} requires a
+\code{DataSource} with computed statistics, which can be created by setting
+\code{ComputeStatistics} to \code{true} in
+\code{\link[=machinelearning_create_data_source_from_rds]{create_data_source_from_rds}},
+\code{\link[=machinelearning_create_data_source_from_s3]{create_data_source_from_s3}},
+or
+\code{\link[=machinelearning_create_data_source_from_redshift]{create_data_source_from_redshift}}
+operations.
 }
 \section{Request syntax}{
 \preformatted{svc$create_ml_model(

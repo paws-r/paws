@@ -8,13 +8,15 @@ account in the current region}
 pinpointemail_list_configuration_sets(NextToken, PageSize)
 }
 \arguments{
-\item{NextToken}{A token returned from a previous call to \code{ListConfigurationSets} to
+\item{NextToken}{A token returned from a previous call to
+\code{\link[=pinpointemail_list_configuration_sets]{list_configuration_sets}} to
 indicate the position in the list of configuration sets.}
 
 \item{PageSize}{The number of results to show in a single call to
-\code{ListConfigurationSets}. If the number of results is larger than the
-number you specified in this parameter, then the response includes a
-\code{NextToken} element, which you can use to obtain additional results.}
+\code{\link[=pinpointemail_list_configuration_sets]{list_configuration_sets}}. If
+the number of results is larger than the number you specified in this
+parameter, then the response includes a \code{NextToken} element, which you
+can use to obtain additional results.}
 }
 \description{
 List all of the configuration sets associated with your Amazon Pinpoint

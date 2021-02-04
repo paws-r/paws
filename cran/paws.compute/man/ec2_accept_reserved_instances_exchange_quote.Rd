@@ -22,7 +22,9 @@ exchange for your current Convertible Reserved Instances.}
 }
 \description{
 Accepts the Convertible Reserved Instance exchange quote described in
-the GetReservedInstancesExchangeQuote call.
+the
+\code{\link[=ec2_get_reserved_instances_exchange_quote]{get_reserved_instances_exchange_quote}}
+call.
 }
 \section{Request syntax}{
 \preformatted{svc$accept_reserved_instances_exchange_quote(

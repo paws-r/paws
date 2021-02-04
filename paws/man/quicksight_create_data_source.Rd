@@ -19,7 +19,8 @@ account.}
 \item{Type}{[required] The type of the data source. Currently, the supported types for this
 operation are:
 \verb{ATHENA, AURORA, AURORA_POSTGRESQL, MARIADB, MYSQL, POSTGRESQL, PRESTO, REDSHIFT, S3, SNOWFLAKE, SPARK, SQLSERVER, TERADATA}.
-Use \code{ListDataSources} to return a list of all data sources.}
+Use \code{\link[=quicksight_list_data_sources]{list_data_sources}} to return a list
+of all data sources.}
 
 \item{DataSourceParameters}{The parameters that QuickSight uses to connect to your underlying
 source.}

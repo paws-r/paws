@@ -29,7 +29,8 @@ domain). We do not support wildcards (e.g., \verb{*.example.com}).}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-Use the \code{TagResource} action to tag a resource after it's created.}
+Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
+resource after it's created.}
 }
 \description{
 Creates a Lightsail load balancer TLS certificate.
@@ -37,9 +38,11 @@ Creates a Lightsail load balancer TLS certificate.
 TLS is just an updated, more secure version of Secure Socket Layer
 (SSL).
 
-The \code{CreateLoadBalancerTlsCertificate} operation supports tag-based
-access control via resource tags applied to the resource identified by
-\verb{load balancer name}. For more information, see the Lightsail Dev Guide.
+The
+\code{\link[=lightsail_create_load_balancer_tls_certificate]{create_load_balancer_tls_certificate}}
+operation supports tag-based access control via resource tags applied to
+the resource identified by \verb{load balancer name}. For more information,
+see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_load_balancer_tls_certificate(

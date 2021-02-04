@@ -31,10 +31,12 @@ state.
 }
 
 A vault lock is put into the \code{InProgress} state by calling
-InitiateVaultLock. A vault lock is put into the \code{Locked} state by
-calling CompleteVaultLock. You can abort the vault locking process by
-calling AbortVaultLock. For more information about the vault locking
-process, \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
+\code{\link[=glacier_initiate_vault_lock]{initiate_vault_lock}}. A vault lock is
+put into the \code{Locked} state by calling
+\code{\link[=glacier_complete_vault_lock]{complete_vault_lock}}. You can abort the
+vault locking process by calling
+\code{\link[=glacier_abort_vault_lock]{abort_vault_lock}}. For more information
+about the vault locking process, \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
 
 If there is no vault lock policy set on the vault, the operation returns
 a \verb{404 Not found} error. For more information about vault lock policies,

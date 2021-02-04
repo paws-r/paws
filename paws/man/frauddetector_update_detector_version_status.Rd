@@ -16,8 +16,9 @@ frauddetector_update_detector_version_status(detectorId,
 }
 \description{
 Updates the detector version’s status. You can perform the following
-promotions or demotions using \code{UpdateDetectorVersionStatus}: \code{DRAFT} to
-\code{ACTIVE}, \code{ACTIVE} to \code{INACTIVE}, and \code{INACTIVE} to \code{ACTIVE}.
+promotions or demotions using
+\code{\link[=frauddetector_update_detector_version_status]{update_detector_version_status}}:
+\code{DRAFT} to \code{ACTIVE}, \code{ACTIVE} to \code{INACTIVE}, and \code{INACTIVE} to \code{ACTIVE}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_detector_version_status(

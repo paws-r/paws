@@ -35,7 +35,8 @@ receive either a \emph{ResourceNotFoundException} or an
 Disables automatic scheduled rotation and cancels the rotation of a
 secret if currently in progress.
 
-To re-enable scheduled rotation, call RotateSecret with
+To re-enable scheduled rotation, call
+\code{\link[=secretsmanager_rotate_secret]{rotate_secret}} with
 \code{AutomaticallyRotateAfterDays} set to a value greater than 0. This
 immediately rotates your secret and then enables the automatic schedule.
 
@@ -67,12 +68,13 @@ To run this command, you must have the following permissions:
 \strong{Related operations}
 \itemize{
 \item To configure rotation for a secret or to manually trigger a
-rotation, use RotateSecret.
+rotation, use \code{\link[=secretsmanager_rotate_secret]{rotate_secret}}.
 \item To get the rotation configuration details for a secret, use
-DescribeSecret.
-\item To list all of the currently available secrets, use ListSecrets.
+\code{\link[=secretsmanager_describe_secret]{describe_secret}}.
+\item To list all of the currently available secrets, use
+\code{\link[=secretsmanager_list_secrets]{list_secrets}}.
 \item To list all of the versions currently associated with a secret, use
-ListSecretVersionIds.
+\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}.
 }
 }
 \section{Request syntax}{

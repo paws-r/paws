@@ -17,9 +17,9 @@ NULL
 #' 
 #' Related actions include:
 #' 
-#' -   [DeleteEndpoint](https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_DeleteEndpoint.html)
+#' -   [`delete_endpoint`][s3outposts_delete_endpoint]
 #' 
-#' -   [ListEndpoints](https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_ListEndpoints.html)
+#' -   [`list_endpoints`][s3outposts_list_endpoints]
 #'
 #' @usage
 #' s3outposts_create_endpoint(OutpostId, SubnetId, SecurityGroupId)
@@ -70,9 +70,9 @@ s3outposts_create_endpoint <- function(OutpostId, SubnetId, SecurityGroupId) {
 #' 
 #' Related actions include:
 #' 
-#' -   [CreateEndpoint](https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_CreateEndpoint.html)
+#' -   [`create_endpoint`][s3outposts_create_endpoint]
 #' 
-#' -   [ListEndpoints](https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_ListEndpoints.html)
+#' -   [`list_endpoints`][s3outposts_list_endpoints]
 #'
 #' @usage
 #' s3outposts_delete_endpoint(EndpointId, OutpostId)
@@ -121,9 +121,9 @@ s3outposts_delete_endpoint <- function(EndpointId, OutpostId) {
 #' 
 #' Related actions include:
 #' 
-#' -   [CreateEndpoint](https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_CreateEndpoint.html)
+#' -   [`create_endpoint`][s3outposts_create_endpoint]
 #' 
-#' -   [DeleteEndpoint](https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_DeleteEndpoint.html)
+#' -   [`delete_endpoint`][s3outposts_delete_endpoint]
 #'
 #' @usage
 #' s3outposts_list_endpoints(NextToken, MaxResults)

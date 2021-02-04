@@ -21,7 +21,7 @@ none is supplied, the AWS account ID is used by default.}
 Creates or updates table statistics of columns.
 
 The Identity and Access Management (IAM) permission required for this
-operation is \code{UpdateTable}.
+operation is \code{\link[=glue_update_table]{update_table}}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_column_statistics_for_table(

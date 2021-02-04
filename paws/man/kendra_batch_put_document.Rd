@@ -8,10 +8,12 @@ kendra_batch_put_document(IndexId, RoleArn, Documents)
 }
 \arguments{
 \item{IndexId}{[required] The identifier of the index to add the documents to. You need to create
-the index first using the CreateIndex operation.}
+the index first using the \code{\link[=kendra_create_index]{create_index}}
+operation.}
 
 \item{RoleArn}{The Amazon Resource Name (ARN) of a role that is allowed to run the
-\code{BatchPutDocument} operation. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM Roles for Amazon Kendra}.}
+\code{\link[=kendra_batch_put_document]{batch_put_document}} operation. For more
+information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM Roles for Amazon Kendra}.}
 
 \item{Documents}{[required] One or more documents to add to the index.
 
@@ -28,11 +30,11 @@ see \href{https://docs.aws.amazon.com/kendra/latest/dg/quotas.html}{Quotas}.}
 \description{
 Adds one or more documents to an index.
 
-The \code{BatchPutDocument} operation enables you to ingest inline documents
-or a set of documents stored in an Amazon S3 bucket. Use this operation
-to ingest your text and unstructured text into an index, add custom
-attributes to the documents, and to attach an access control list to the
-documents added to the index.
+The \code{\link[=kendra_batch_put_document]{batch_put_document}} operation enables
+you to ingest inline documents or a set of documents stored in an Amazon
+S3 bucket. Use this operation to ingest your text and unstructured text
+into an index, add custom attributes to the documents, and to attach an
+access control list to the documents added to the index.
 
 The documents are indexed asynchronously. You can see the progress of
 the batch using AWS CloudWatch. Any error messages related to processing

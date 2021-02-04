@@ -11,7 +11,7 @@ ec2_create_image(BlockDeviceMappings, Description, DryRun, InstanceId,
 \arguments{
 \item{BlockDeviceMappings}{The block device mappings. This parameter cannot be used to modify the
 encryption status of existing volumes or snapshots. To create an AMI
-with encrypted snapshots, use the CopyImage action.}
+with encrypted snapshots, use the \code{\link[=ec2_copy_image]{copy_image}} action.}
 
 \item{Description}{A description for the new image.}
 
@@ -47,7 +47,7 @@ the snapshots that are created.
 If you specify other values for \code{ResourceType}, the request fails.
 
 To tag an AMI or snapshot after it has been created, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html}{CreateTags}.}
+\code{\link[=ec2_create_tags]{create_tags}}.}
 }
 \description{
 Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that

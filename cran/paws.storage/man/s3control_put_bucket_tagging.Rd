@@ -16,7 +16,7 @@ you must specify the name and the x-amz-outpost-id as well.
 
 For using this parameter with S3 on Outposts with the AWS SDK and CLI,
 you must specify the ARN of the bucket accessed in the format
-\verb{arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/bucket/&lt;my-bucket-name&gt;}.
+\verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/bucket/<my-bucket-name>}.
 For example, to access the bucket \code{reports} through outpost \code{my-outpost}
 owned by account \code{123456789012} in Region \code{us-west-2}, use the URL
 encoding of
@@ -27,8 +27,7 @@ The value must be URL encoded.}
 }
 \description{
 This action puts tags on an Amazon S3 on Outposts bucket. To put tags on
-an S3 bucket, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html}{PutBucketTagging}
+an S3 bucket, see \code{\link[=s3control_put_bucket_tagging]{put_bucket_tagging}}
 in the \emph{Amazon Simple Storage Service API}.
 
 Sets the tags for an Outposts bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
@@ -53,7 +52,8 @@ this permission by default and can grant this permission to others. For
 more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
 and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
-\code{PutBucketTagging} has the following special errors:
+\code{\link[=s3control_put_bucket_tagging]{put_bucket_tagging}} has the following
+special errors:
 \itemize{
 \item Error code: \code{InvalidTagError}
 \itemize{
@@ -87,10 +87,11 @@ derived using the access point ARN, see the
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketTagging.html#API_control_PutBucketTagging_Examples}{Examples}
 section.
 
-The following actions are related to \code{PutBucketTagging}:
+The following actions are related to
+\code{\link[=s3control_put_bucket_tagging]{put_bucket_tagging}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketTagging.html}{GetBucketTagging}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketTagging.html}{DeleteBucketTagging}
+\item \code{\link[=s3control_get_bucket_tagging]{get_bucket_tagging}}
+\item \code{\link[=s3control_delete_bucket_tagging]{delete_bucket_tagging}}
 }
 }
 \section{Request syntax}{

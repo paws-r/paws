@@ -12,7 +12,7 @@ lambda_list_tags(Resource)
 \description{
 Returns a function's
 \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags}.
-You can also view tags with GetFunction.
+You can also view tags with \code{\link[=lambda_get_function]{get_function}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags(

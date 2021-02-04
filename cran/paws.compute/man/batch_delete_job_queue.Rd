@@ -12,12 +12,13 @@ delete.}
 }
 \description{
 Deletes the specified job queue. You must first disable submissions for
-a queue with the UpdateJobQueue operation. All jobs in the queue are
-eventually terminated when you delete a job queue. The jobs are
-terminated at a rate of about 16 jobs each second.
+a queue with the \code{\link[=batch_update_job_queue]{update_job_queue}} operation.
+All jobs in the queue are eventually terminated when you delete a job
+queue. The jobs are terminated at a rate of about 16 jobs each second.
 
 It's not necessary to disassociate compute environments from a queue
-before submitting a \code{DeleteJobQueue} request.
+before submitting a \code{\link[=batch_delete_job_queue]{delete_job_queue}}
+request.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_job_queue(

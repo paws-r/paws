@@ -21,8 +21,9 @@ specified cluster, a \verb{HTTP 404} error is returned. If a resize operation
 was initiated and completed, the status of the resize remains as
 \code{SUCCEEDED} until the next resize.
 
-A resize operation can be requested using ModifyCluster and specifying a
-different number or type of nodes for the cluster.
+A resize operation can be requested using
+\code{\link[=redshift_modify_cluster]{modify_cluster}} and specifying a different
+number or type of nodes for the cluster.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_resize(

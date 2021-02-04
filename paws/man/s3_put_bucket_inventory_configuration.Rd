@@ -74,9 +74,9 @@ to set the configuration on the bucket.
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketInventoryConfiguration.html}{GetBucketInventoryConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketInventoryConfiguration.html}{DeleteBucketInventoryConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html}{ListBucketInventoryConfigurations}
+\item \code{\link[=s3_get_bucket_inventory_configuration]{get_bucket_inventory_configuration}}
+\item \code{\link[=s3_delete_bucket_inventory_configuration]{delete_bucket_inventory_configuration}}
+\item \code{\link[=s3_list_bucket_inventory_configurations]{list_bucket_inventory_configurations}}
 }
 }
 \section{Request syntax}{

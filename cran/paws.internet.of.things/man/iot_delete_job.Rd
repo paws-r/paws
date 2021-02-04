@@ -29,7 +29,7 @@ When you specify a value for this parameter, AWS IoT Core sends jobs
 notifications to MQTT topics that contain the value in the following
 format.
 
-\verb{$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/}
+\verb{$aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/}
 
 The \code{namespaceId} feature is in public preview.}
 }

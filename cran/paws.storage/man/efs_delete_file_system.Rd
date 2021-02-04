@@ -16,13 +16,16 @@ contents of the deleted file system.
 
 You can't delete a file system that is in use. That is, if the file
 system has any mount targets, you must first delete them. For more
-information, see DescribeMountTargets and DeleteMountTarget.
+information, see \code{\link[=efs_describe_mount_targets]{describe_mount_targets}}
+and \code{\link[=efs_delete_mount_target]{delete_mount_target}}.
 
-The \code{DeleteFileSystem} call returns while the file system state is still
-\code{deleting}. You can check the file system deletion status by calling the
-DescribeFileSystems operation, which returns a list of file systems in
-your account. If you pass file system ID or creation token for the
-deleted file system, the DescribeFileSystems returns a
+The \code{\link[=efs_delete_file_system]{delete_file_system}} call returns while
+the file system state is still \code{deleting}. You can check the file system
+deletion status by calling the
+\code{\link[=efs_describe_file_systems]{describe_file_systems}} operation, which
+returns a list of file systems in your account. If you pass file system
+ID or creation token for the deleted file system, the
+\code{\link[=efs_describe_file_systems]{describe_file_systems}} returns a
 \verb{404 FileSystemNotFound} error.
 
 This operation requires permissions for the

@@ -15,13 +15,15 @@ results.}
 \description{
 Lists the platform application objects for the supported push
 notification services, such as APNS and GCM (Firebase Cloud Messaging).
-The results for \code{ListPlatformApplications} are paginated and return a
-limited list of applications, up to 100. If additional records are
-available after the first page results, then a NextToken string will be
-returned. To receive the next page, you call \code{ListPlatformApplications}
-using the NextToken string received from the previous call. When there
-are no more records to return, \code{NextToken} will be null. For more
-information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
+The results for
+\code{\link[=sns_list_platform_applications]{list_platform_applications}} are
+paginated and return a limited list of applications, up to 100. If
+additional records are available after the first page results, then a
+NextToken string will be returned. To receive the next page, you call
+\code{\link[=sns_list_platform_applications]{list_platform_applications}} using the
+NextToken string received from the previous call. When there are no more
+records to return, \code{NextToken} will be null. For more information, see
+\href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
 
 This action is throttled at 15 transactions per second (TPS).
 }

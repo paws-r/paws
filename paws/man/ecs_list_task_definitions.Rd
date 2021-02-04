@@ -8,16 +8,18 @@ ecs_list_task_definitions(familyPrefix, status, sort, nextToken,
   maxResults)
 }
 \arguments{
-\item{familyPrefix}{The full family name with which to filter the \code{ListTaskDefinitions}
-results. Specifying a \code{familyPrefix} limits the listed task definitions
-to task definition revisions that belong to that family.}
+\item{familyPrefix}{The full family name with which to filter the
+\code{\link[=ecs_list_task_definitions]{list_task_definitions}} results. Specifying
+a \code{familyPrefix} limits the listed task definitions to task definition
+revisions that belong to that family.}
 
 \item{status}{The task definition status with which to filter the
-\code{ListTaskDefinitions} results. By default, only \code{ACTIVE} task
-definitions are listed. By setting this parameter to \code{INACTIVE}, you can
-view task definitions that are \code{INACTIVE} as long as an active task or
-service still references them. If you paginate the resulting output, be
-sure to keep the \code{status} value constant in each subsequent request.}
+\code{\link[=ecs_list_task_definitions]{list_task_definitions}} results. By
+default, only \code{ACTIVE} task definitions are listed. By setting this
+parameter to \code{INACTIVE}, you can view task definitions that are
+\code{INACTIVE} as long as an active task or service still references them.
+If you paginate the resulting output, be sure to keep the \code{status} value
+constant in each subsequent request.}
 
 \item{sort}{The order in which to sort the results. Valid values are \code{ASC} and
 \code{DESC}. By default (\code{ASC}), task definitions are listed
@@ -27,23 +29,27 @@ last. Setting this parameter to \code{DESC} reverses the sort order on family
 name and revision so that the newest task definitions in a family are
 listed first.}
 
-\item{nextToken}{The \code{nextToken} value returned from a \code{ListTaskDefinitions} request
-indicating that more results are available to fulfill the request and
-further calls will be needed. If \code{maxResults} was provided, it is
-possible the number of results to be fewer than \code{maxResults}.
+\item{nextToken}{The \code{nextToken} value returned from a
+\code{\link[=ecs_list_task_definitions]{list_task_definitions}} request indicating
+that more results are available to fulfill the request and further calls
+will be needed. If \code{maxResults} was provided, it is possible the number
+of results to be fewer than \code{maxResults}.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
 \item{maxResults}{The maximum number of task definition results returned by
-\code{ListTaskDefinitions} in paginated output. When this parameter is used,
-\code{ListTaskDefinitions} only returns \code{maxResults} results in a single page
-along with a \code{nextToken} response element. The remaining results of the
-initial request can be seen by sending another \code{ListTaskDefinitions}
+\code{\link[=ecs_list_task_definitions]{list_task_definitions}} in paginated
+output. When this parameter is used,
+\code{\link[=ecs_list_task_definitions]{list_task_definitions}} only returns
+\code{maxResults} results in a single page along with a \code{nextToken} response
+element. The remaining results of the initial request can be seen by
+sending another \code{\link[=ecs_list_task_definitions]{list_task_definitions}}
 request with the returned \code{nextToken} value. This value can be between 1
-and 100. If this parameter is not used, then \code{ListTaskDefinitions}
-returns up to 100 results and a \code{nextToken} value if applicable.}
+and 100. If this parameter is not used, then
+\code{\link[=ecs_list_task_definitions]{list_task_definitions}} returns up to 100
+results and a \code{nextToken} value if applicable.}
 }
 \description{
 Returns a list of task definitions that are registered to your account.

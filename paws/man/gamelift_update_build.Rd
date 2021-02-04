@@ -29,11 +29,11 @@ updated metadata is returned.
 
 \strong{Related operations}
 \itemize{
-\item CreateBuild
-\item ListBuilds
-\item DescribeBuild
-\item UpdateBuild
-\item DeleteBuild
+\item \code{\link[=gamelift_create_build]{create_build}}
+\item \code{\link[=gamelift_list_builds]{list_builds}}
+\item \code{\link[=gamelift_describe_build]{describe_build}}
+\item \code{\link[=gamelift_update_build]{update_build}}
+\item \code{\link[=gamelift_delete_build]{delete_build}}
 }
 }
 \section{Request syntax}{

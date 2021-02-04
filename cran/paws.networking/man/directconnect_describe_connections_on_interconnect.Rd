@@ -10,7 +10,9 @@ directconnect_describe_connections_on_interconnect(interconnectId)
 \item{interconnectId}{[required] The ID of the interconnect.}
 }
 \description{
-Deprecated. Use DescribeHostedConnections instead.
+Deprecated. Use
+\code{\link[=directconnect_describe_hosted_connections]{describe_hosted_connections}}
+instead.
 
 Lists the connections that have been provisioned on the specified
 interconnect.

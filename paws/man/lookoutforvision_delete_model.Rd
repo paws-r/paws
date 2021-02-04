@@ -11,18 +11,22 @@ lookoutforvision_delete_model(ProjectName, ModelVersion, ClientToken)
 
 \item{ModelVersion}{[required] The version of the model that you want to delete.}
 
-\item{ClientToken}{ClientToken is an idempotency token that ensures a call to \code{DeleteModel}
-completes only once. You choose the value to pass. For example, An
-issue, such as an network outage, might prevent you from getting a
-response from \code{DeleteModel}. In this case, safely retry your call to
-\code{DeleteModel} by using the same \code{ClientToken} parameter value. An error
-occurs if the other input parameters are not the same as in the first
-request. Using a different value for \code{ClientToken} is considered a new
-call to \code{DeleteModel}. An idempotency token is active for 8 hours.}
+\item{ClientToken}{ClientToken is an idempotency token that ensures a call to
+\code{\link[=lookoutforvision_delete_model]{delete_model}} completes only once. You
+choose the value to pass. For example, An issue, such as an network
+outage, might prevent you from getting a response from
+\code{\link[=lookoutforvision_delete_model]{delete_model}}. In this case, safely
+retry your call to \code{\link[=lookoutforvision_delete_model]{delete_model}} by
+using the same \code{ClientToken} parameter value. An error occurs if the
+other input parameters are not the same as in the first request. Using a
+different value for \code{ClientToken} is considered a new call to
+\code{\link[=lookoutforvision_delete_model]{delete_model}}. An idempotency token is
+active for 8 hours.}
 }
 \description{
 Deletes an Amazon Lookout for Vision model. You can't delete a running
-model. To stop a running model, use the StopModel operation.
+model. To stop a running model, use the
+\code{\link[=lookoutforvision_stop_model]{stop_model}} operation.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_model(

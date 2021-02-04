@@ -99,7 +99,8 @@ elasticsearchservice_add_tags <- function(ARN, TagList) {
 #' elasticsearchservice_associate_package(PackageID, DomainName)
 #'
 #' @param PackageID &#91;required&#93; Internal ID of the package that you want to associate with a domain. Use
-#' `DescribePackages` to find this value.
+#' [`describe_packages`][elasticsearchservice_describe_packages] to find
+#' this value.
 #' @param DomainName &#91;required&#93; Name of the domain that you want to associate the package with.
 #'
 #' @section Request syntax:
@@ -343,10 +344,9 @@ elasticsearchservice_create_elasticsearch_domain <- function(DomainName, Elastic
 #' elasticsearchservice_create_outbound_cross_cluster_search_connection(
 #'   SourceDomainInfo, DestinationDomainInfo, ConnectionAlias)
 #'
-#' @param SourceDomainInfo &#91;required&#93; Specifies the `<a>DomainInformation</a>` for the source Elasticsearch
+#' @param SourceDomainInfo &#91;required&#93; Specifies the `DomainInformation` for the source Elasticsearch domain.
+#' @param DestinationDomainInfo &#91;required&#93; Specifies the `DomainInformation` for the destination Elasticsearch
 #' domain.
-#' @param DestinationDomainInfo &#91;required&#93; Specifies the `<a>DomainInformation</a>` for the destination
-#' Elasticsearch domain.
 #' @param ConnectionAlias &#91;required&#93; Specifies the connection alias that will be used by the customer for
 #' this connection.
 #'
@@ -601,7 +601,8 @@ elasticsearchservice_delete_outbound_cross_cluster_search_connection <- function
 #' elasticsearchservice_delete_package(PackageID)
 #'
 #' @param PackageID &#91;required&#93; Internal ID of the package that you want to delete. Use
-#' `DescribePackages` to find this value.
+#' [`describe_packages`][elasticsearchservice_describe_packages] to find
+#' this value.
 #'
 #' @section Request syntax:
 #' ```
@@ -761,7 +762,7 @@ elasticsearchservice_describe_elasticsearch_domains <- function(DomainNames) {
 #' @description
 #' Describe Elasticsearch Limits for a given InstanceType and
 #' ElasticsearchVersion. When modifying existing Domain, specify the
-#' ` <a>DomainName</a> ` to know what Limits are supported for modifying.
+#' ` DomainName ` to know what Limits are supported for modifying.
 #'
 #' @usage
 #' elasticsearchservice_describe_elasticsearch_instance_type_limits(
@@ -769,10 +770,10 @@ elasticsearchservice_describe_elasticsearch_domains <- function(DomainNames) {
 #'
 #' @param DomainName DomainName represents the name of the Domain that we are trying to
 #' modify. This should be present only if we are querying for Elasticsearch
-#' ` <a>Limits</a> ` for existing domain.
+#' ` Limits ` for existing domain.
 #' @param InstanceType &#91;required&#93; The instance type for an Elasticsearch cluster for which Elasticsearch
-#' ` <a>Limits</a> ` are needed.
-#' @param ElasticsearchVersion &#91;required&#93; Version of Elasticsearch for which ` <a>Limits</a> ` are needed.
+#' ` Limits ` are needed.
+#' @param ElasticsearchVersion &#91;required&#93; Version of Elasticsearch for which ` Limits ` are needed.
 #'
 #' @section Request syntax:
 #' ```
@@ -815,8 +816,7 @@ elasticsearchservice_describe_elasticsearch_instance_type_limits <- function(Dom
 #'   Filters, MaxResults, NextToken)
 #'
 #' @param Filters A list of filters used to match properties for inbound cross-cluster
-#' search connection. Available `<a>Filter</a>` names for this operation
-#' are:
+#' search connection. Available `Filter` names for this operation are:
 #' 
 #' -   cross-cluster-search-connection-id
 #' -   source-domain-info.domain-name
@@ -876,8 +876,7 @@ elasticsearchservice_describe_inbound_cross_cluster_search_connections <- functi
 #'   Filters, MaxResults, NextToken)
 #'
 #' @param Filters A list of filters used to match properties for outbound cross-cluster
-#' search connection. Available `<a>Filter</a>` names for this operation
-#' are:
+#' search connection. Available `Filter` names for this operation are:
 #' 
 #' -   cross-cluster-search-connection-id
 #' -   destination-domain-info.domain-name
@@ -1080,7 +1079,8 @@ elasticsearchservice_describe_reserved_elasticsearch_instances <- function(Reser
 #' elasticsearchservice_dissociate_package(PackageID, DomainName)
 #'
 #' @param PackageID &#91;required&#93; Internal ID of the package that you want to associate with a domain. Use
-#' `DescribePackages` to find this value.
+#' [`describe_packages`][elasticsearchservice_describe_packages] to find
+#' this value.
 #' @param DomainName &#91;required&#93; Name of the domain that you want to associate the package with.
 #'
 #' @section Request syntax:
@@ -1115,7 +1115,7 @@ elasticsearchservice_dissociate_package <- function(PackageID, DomainName) {
 #'
 #' @description
 #' Returns a list of upgrade compatible Elastisearch versions. You can
-#' optionally pass a ` <a>DomainName</a> ` to get all upgrade compatible
+#' optionally pass a ` DomainName ` to get all upgrade compatible
 #' Elasticsearch versions for that specific domain.
 #'
 #' @usage

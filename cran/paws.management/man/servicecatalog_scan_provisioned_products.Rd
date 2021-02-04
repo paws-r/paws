@@ -25,7 +25,8 @@ results, use null.}
 \description{
 Lists the provisioned products that are available (not terminated).
 
-To use additional filtering, see SearchProvisionedProducts.
+To use additional filtering, see
+\code{\link[=servicecatalog_search_provisioned_products]{search_provisioned_products}}.
 }
 \section{Request syntax}{
 \preformatted{svc$scan_provisioned_products(

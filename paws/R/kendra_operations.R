@@ -7,7 +7,8 @@ NULL
 #'
 #' @description
 #' Removes one or more documents from an index. The documents must have
-#' been added with the BatchPutDocument operation.
+#' been added with the [`batch_put_document`][kendra_batch_put_document]
+#' operation.
 #' 
 #' The documents are deleted asynchronously. You can see the progress of
 #' the deletion by using AWS CloudWatch. Any error messages releated to the
@@ -60,11 +61,11 @@ kendra_batch_delete_document <- function(IndexId, DocumentIdList, DataSourceSync
 #' @description
 #' Adds one or more documents to an index.
 #' 
-#' The `BatchPutDocument` operation enables you to ingest inline documents
-#' or a set of documents stored in an Amazon S3 bucket. Use this operation
-#' to ingest your text and unstructured text into an index, add custom
-#' attributes to the documents, and to attach an access control list to the
-#' documents added to the index.
+#' The [`batch_put_document`][kendra_batch_put_document] operation enables
+#' you to ingest inline documents or a set of documents stored in an Amazon
+#' S3 bucket. Use this operation to ingest your text and unstructured text
+#' into an index, add custom attributes to the documents, and to attach an
+#' access control list to the documents added to the index.
 #' 
 #' The documents are indexed asynchronously. You can see the progress of
 #' the batch using AWS CloudWatch. Any error messages related to processing
@@ -74,10 +75,11 @@ kendra_batch_delete_document <- function(IndexId, DocumentIdList, DataSourceSync
 #' kendra_batch_put_document(IndexId, RoleArn, Documents)
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index to add the documents to. You need to create
-#' the index first using the CreateIndex operation.
+#' the index first using the [`create_index`][kendra_create_index]
+#' operation.
 #' @param RoleArn The Amazon Resource Name (ARN) of a role that is allowed to run the
-#' `BatchPutDocument` operation. For more information, see [IAM Roles for
-#' Amazon
+#' [`batch_put_document`][kendra_batch_put_document] operation. For more
+#' information, see [IAM Roles for Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' @param Documents &#91;required&#93; One or more documents to add to the index.
 #' 
@@ -163,9 +165,9 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #' data source. You also specify configuration information such as document
 #' metadata (author, source URI, and so on) and user context information.
 #' 
-#' `CreateDataSource` is a synchronous operation. The operation returns 200
-#' if the data source was successfully created. Otherwise, an exception is
-#' raised.
+#' [`create_data_source`][kendra_create_data_source] is a synchronous
+#' operation. The operation returns 200 if the data source was successfully
+#' created. Otherwise, an exception is raised.
 #'
 #' @usage
 #' kendra_create_data_source(Name, IndexId, Type, Configuration,
@@ -188,7 +190,8 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #' @param Schedule Sets the frequency that Amazon Kendra will check the documents in your
 #' repository and update the index. If you don't set a schedule Amazon
 #' Kendra will not periodically update the index. You can call the
-#' `StartDataSourceSyncJob` operation to update the index.
+#' [`start_data_source_sync_job`][kendra_start_data_source_sync_job]
+#' operation to update the index.
 #' 
 #' You can't specify the `Schedule` parameter when the `Type` parameter is
 #' set to `CUSTOM`. If you do, you receive a `ValidationException`
@@ -206,8 +209,9 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #' tags to identify and organize your resources and to control access to
 #' resources.
 #' @param ClientToken A token that you provide to identify the request to create a data
-#' source. Multiple calls to the `CreateDataSource` operation with the same
-#' client token will create only one data source.
+#' source. Multiple calls to the
+#' [`create_data_source`][kendra_create_data_source] operation with the
+#' same client token will create only one data source.
 #'
 #' @section Request syntax:
 #' ```
@@ -677,15 +681,16 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 #' default is `ENTERPRISE_EDITION`.
 #' @param RoleArn &#91;required&#93; An AWS Identity and Access Management (IAM) role that gives Amazon
 #' Kendra permissions to access your Amazon CloudWatch logs and metrics.
-#' This is also the role used when you use the `BatchPutDocument` operation
-#' to index documents from an Amazon S3 bucket.
+#' This is also the role used when you use the
+#' [`batch_put_document`][kendra_batch_put_document] operation to index
+#' documents from an Amazon S3 bucket.
 #' @param ServerSideEncryptionConfiguration The identifier of the AWS KMS customer managed key (CMK) to use to
 #' encrypt data indexed by Amazon Kendra. Amazon Kendra doesn't support
 #' asymmetric CMKs.
 #' @param Description A description for the index.
 #' @param ClientToken A token that you provide to identify the request to create an index.
-#' Multiple calls to the `CreateIndex` operation with the same client token
-#' will create only one index.
+#' Multiple calls to the [`create_index`][kendra_create_index] operation
+#' with the same client token will create only one index.
 #' @param Tags A list of key-value pairs that identify the index. You can use the tags
 #' to identify and organize your resources and to control access to
 #' resources.
@@ -782,8 +787,8 @@ kendra_create_index <- function(Name, Edition = NULL, RoleArn, ServerSideEncrypt
 #' resources.
 #' @param SourceS3Path &#91;required&#93; The thesaurus file Amazon S3 source path.
 #' @param ClientToken A token that you provide to identify the request to create a thesaurus.
-#' Multiple calls to the `CreateThesaurus` operation with the same client
-#' token will create only one index.
+#' Multiple calls to the [`create_thesaurus`][kendra_create_thesaurus]
+#' operation with the same client token will create only one index.
 #'
 #' @section Request syntax:
 #' ```
@@ -913,8 +918,9 @@ kendra_delete_faq <- function(Id, IndexId) {
 #' @description
 #' Deletes an existing Amazon Kendra index. An exception is not thrown if
 #' the index is already being deleted. While the index is being deleted,
-#' the `Status` field returned by a call to the DescribeIndex operation is
-#' set to `DELETING`.
+#' the `Status` field returned by a call to the
+#' [`describe_index`][kendra_describe_index] operation is set to
+#' `DELETING`.
 #'
 #' @usage
 #' kendra_delete_index(Id)
@@ -1254,8 +1260,8 @@ kendra_list_data_sources <- function(IndexId, NextToken = NULL, MaxResults = NUL
 #' kendra_list_faqs(IndexId, NextToken, MaxResults)
 #'
 #' @param IndexId &#91;required&#93; The index that contains the FAQ lists.
-#' @param NextToken If the result of the previous request to `ListFaqs` was truncated,
-#' include the `NextToken` to fetch the next set of FAQs.
+#' @param NextToken If the result of the previous request to [`list_faqs`][kendra_list_faqs]
+#' was truncated, include the `NextToken` to fetch the next set of FAQs.
 #' @param MaxResults The maximum number of FAQs to return in the response. If there are fewer
 #' results in the list, this response contains only the actual results.
 #'
@@ -1417,8 +1423,8 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #'
 #' @description
 #' Searches an active index. Use this API to search your documents using
-#' query. The `Query` operation enables to do faceted search and to filter
-#' results based on document attributes.
+#' query. The [`query`][kendra_query] operation enables to do faceted
+#' search and to filter results based on document attributes.
 #' 
 #' It also enables you to provide user context that Amazon Kendra uses to
 #' enforce document access control in the search results.

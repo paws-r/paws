@@ -14,8 +14,8 @@ administrator account that is monitoring member accounts.}
 }
 \description{
 Stops GuardDuty monitoring for the specified member accounts. Use the
-\code{StartMonitoringMembers} operation to restart monitoring for those
-accounts.
+\code{\link[=guardduty_start_monitoring_members]{start_monitoring_members}}
+operation to restart monitoring for those accounts.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_monitoring_members(

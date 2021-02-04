@@ -76,7 +76,8 @@ to access AWS.
 
 The trust for the OIDC provider is derived from the IAM provider that
 this operation creates. Therefore, it is best to limit access to the
-CreateOpenIDConnectProvider operation to highly privileged users.
+\code{\link[=iam_create_open_id_connect_provider]{create_open_id_connect_provider}}
+operation to highly privileged users.
 }
 \section{Request syntax}{
 \preformatted{svc$create_open_id_connect_provider(

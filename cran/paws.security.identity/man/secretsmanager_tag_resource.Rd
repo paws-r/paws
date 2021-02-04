@@ -46,7 +46,7 @@ Attaches one or more tags, each consisting of a key name and a value, to
 the specified secret. Tags are part of the secret's overall metadata,
 and are not associated with any specific version of the secret. This
 operation only appends tags to the existing list of tags. To remove
-tags, you must use UntagResource.
+tags, you must use \code{\link[=secretsmanager_untag_resource]{untag_resource}}.
 
 The following basic restrictions apply to tags:
 \itemize{
@@ -80,8 +80,9 @@ To run this command, you must have the following permissions:
 \strong{Related operations}
 \itemize{
 \item To remove one or more tags from the collection attached to a secret,
-use UntagResource.
-\item To view the list of tags attached to a secret, use DescribeSecret.
+use \code{\link[=secretsmanager_untag_resource]{untag_resource}}.
+\item To view the list of tags attached to a secret, use
+\code{\link[=secretsmanager_describe_secret]{describe_secret}}.
 }
 }
 \section{Request syntax}{

@@ -80,10 +80,12 @@ NULL
 #' 
 #' **Chef Versions**
 #' 
-#' When you call CreateStack, CloneStack, or UpdateStack we recommend you
-#' use the `ConfigurationManager` parameter to specify the Chef version.
-#' The recommended and default value for Linux stacks is currently 12.
-#' Windows stacks use Chef 12.2. For more information, see [Chef
+#' When you call [`create_stack`][opsworks_create_stack],
+#' [`clone_stack`][opsworks_clone_stack], or
+#' [`update_stack`][opsworks_update_stack] we recommend you use the
+#' `ConfigurationManager` parameter to specify the Chef version. The
+#' recommended and default value for Linux stacks is currently 12. Windows
+#' stacks use Chef 12.2. For more information, see [Chef
 #' Versions](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-chef11.html).
 #' 
 #' You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We

@@ -140,11 +140,13 @@ cluster, except that the new DB cluster is created with the default DB
 security group.
 
 This action only restores the DB cluster, not the DB instances for that
-DB cluster. You must invoke the CreateDBInstance action to create DB
+DB cluster. You must invoke the
+\code{\link[=neptune_create_db_instance]{create_db_instance}} action to create DB
 instances for the restored DB cluster, specifying the identifier of the
 restored DB cluster in \code{DBClusterIdentifier}. You can create DB
-instances only after the \code{RestoreDBClusterToPointInTime} action has
-completed and the DB cluster is available.
+instances only after the
+\code{\link[=neptune_restore_db_cluster_to_point_in_time]{restore_db_cluster_to_point_in_time}}
+action has completed and the DB cluster is available.
 }
 \section{Request syntax}{
 \preformatted{svc$restore_db_cluster_to_point_in_time(

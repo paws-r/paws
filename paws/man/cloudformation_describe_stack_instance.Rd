@@ -21,7 +21,7 @@ Returns the stack instance that's associated with the specified stack
 set, AWS account, and Region.
 
 For a list of stack instances that are associated with a specific stack
-set, use ListStackInstances.
+set, use \code{\link[=cloudformation_list_stack_instances]{list_stack_instances}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_stack_instance(

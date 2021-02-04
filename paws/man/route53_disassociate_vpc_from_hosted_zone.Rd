@@ -23,9 +23,10 @@ Amazon Route 53 private hosted zone. Note the following:
 \item You can't disassociate the last Amazon VPC from a private hosted
 zone.
 \item You can't convert a private hosted zone into a public hosted zone.
-\item You can submit a \code{DisassociateVPCFromHostedZone} request using
-either the account that created the hosted zone or the account that
-created the Amazon VPC.
+\item You can submit a
+\code{\link[=route53_disassociate_vpc_from_hosted_zone]{disassociate_vpc_from_hosted_zone}}
+request using either the account that created the hosted zone or the
+account that created the Amazon VPC.
 \item Some services, such as AWS Cloud Map and Amazon Elastic File System
 (Amazon EFS) automatically create hosted zones and associate VPCs
 with the hosted zones. A service can create a hosted zone using your
@@ -34,10 +35,11 @@ hosted zone only if the service created the hosted zone using your
 account.
 
 When you run
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListHostedZonesByVPC.html}{DisassociateVPCFromHostedZone},
+\code{\link[=route53_disassociate_vpc_from_hosted_zone]{disassociate_vpc_from_hosted_zone}},
 if the hosted zone has a value for \code{OwningAccount}, you can use
-\code{DisassociateVPCFromHostedZone}. If the hosted zone has a value for
-\code{OwningService}, you can't use \code{DisassociateVPCFromHostedZone}.
+\code{\link[=route53_disassociate_vpc_from_hosted_zone]{disassociate_vpc_from_hosted_zone}}.
+If the hosted zone has a value for \code{OwningService}, you can't use
+\code{\link[=route53_disassociate_vpc_from_hosted_zone]{disassociate_vpc_from_hosted_zone}}.
 }
 }
 \section{Request syntax}{

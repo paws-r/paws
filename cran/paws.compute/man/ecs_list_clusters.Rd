@@ -7,23 +7,25 @@
 ecs_list_clusters(nextToken, maxResults)
 }
 \arguments{
-\item{nextToken}{The \code{nextToken} value returned from a \code{ListClusters} request indicating
-that more results are available to fulfill the request and further calls
-will be needed. If \code{maxResults} was provided, it is possible the number
-of results to be fewer than \code{maxResults}.
+\item{nextToken}{The \code{nextToken} value returned from a
+\code{\link[=ecs_list_clusters]{list_clusters}} request indicating that more
+results are available to fulfill the request and further calls will be
+needed. If \code{maxResults} was provided, it is possible the number of
+results to be fewer than \code{maxResults}.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
-\item{maxResults}{The maximum number of cluster results returned by \code{ListClusters} in
-paginated output. When this parameter is used, \code{ListClusters} only
-returns \code{maxResults} results in a single page along with a \code{nextToken}
-response element. The remaining results of the initial request can be
-seen by sending another \code{ListClusters} request with the returned
-\code{nextToken} value. This value can be between 1 and 100. If this
-parameter is not used, then \code{ListClusters} returns up to 100 results and
-a \code{nextToken} value if applicable.}
+\item{maxResults}{The maximum number of cluster results returned by
+\code{\link[=ecs_list_clusters]{list_clusters}} in paginated output. When this
+parameter is used, \code{\link[=ecs_list_clusters]{list_clusters}} only returns
+\code{maxResults} results in a single page along with a \code{nextToken} response
+element. The remaining results of the initial request can be seen by
+sending another \code{\link[=ecs_list_clusters]{list_clusters}} request with the
+returned \code{nextToken} value. This value can be between 1 and 100. If this
+parameter is not used, then \code{\link[=ecs_list_clusters]{list_clusters}} returns
+up to 100 results and a \code{nextToken} value if applicable.}
 }
 \description{
 Returns a list of existing clusters.

@@ -10,7 +10,7 @@ route53_list_health_checks(Marker, MaxItems)
 \arguments{
 \item{Marker}{If the value of \code{IsTruncated} in the previous response was \code{true}, you
 have more health checks. To get another group, submit another
-\code{ListHealthChecks} request.
+\code{\link[=route53_list_health_checks]{list_health_checks}} request.
 
 For the value of \code{marker}, specify the value of \code{NextMarker} from the
 previous response, which is the ID of the first health check that Amazon
@@ -19,10 +19,11 @@ Route 53 will return if you submit another request.
 If the value of \code{IsTruncated} in the previous response was \code{false},
 there are no more health checks to get.}
 
-\item{MaxItems}{The maximum number of health checks that you want \code{ListHealthChecks} to
-return in response to the current request. Amazon Route 53 returns a
-maximum of 100 items. If you set \code{MaxItems} to a value greater than 100,
-Route 53 returns only the first 100 health checks.}
+\item{MaxItems}{The maximum number of health checks that you want
+\code{\link[=route53_list_health_checks]{list_health_checks}} to return in response
+to the current request. Amazon Route 53 returns a maximum of 100 items.
+If you set \code{MaxItems} to a value greater than 100, Route 53 returns only
+the first 100 health checks.}
 }
 \description{
 Retrieve a list of the health checks that are associated with the

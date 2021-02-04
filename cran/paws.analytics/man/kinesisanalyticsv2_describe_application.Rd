@@ -17,7 +17,8 @@ including the application's job plan.}
 Returns information about a specific Kinesis Data Analytics application.
 
 If you want to retrieve a list of all applications in your account, use
-the ListApplications operation.
+the \code{\link[=kinesisanalyticsv2_list_applications]{list_applications}}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_application(

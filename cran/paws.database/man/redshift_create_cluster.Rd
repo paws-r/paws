@@ -150,7 +150,7 @@ Constraints:
 \item{AutomatedSnapshotRetentionPeriod}{The number of days that automated snapshots are retained. If the value
 is 0, automated snapshots are disabled. Even if automated snapshots are
 disabled, you can still create manual snapshots when you want with
-CreateClusterSnapshot.
+\code{\link[=redshift_create_cluster_snapshot]{create_cluster_snapshot}}.
 
 Default: \code{1}
 

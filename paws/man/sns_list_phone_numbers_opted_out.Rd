@@ -9,20 +9,22 @@ sns_list_phone_numbers_opted_out(nextToken)
 }
 \arguments{
 \item{nextToken}{A \code{NextToken} string is used when you call the
-\code{ListPhoneNumbersOptedOut} action to retrieve additional records that
-are available after the first page of results.}
+\code{\link[=sns_list_phone_numbers_opted_out]{list_phone_numbers_opted_out}}
+action to retrieve additional records that are available after the first
+page of results.}
 }
 \description{
 Returns a list of phone numbers that are opted out, meaning you cannot
 send SMS messages to them.
 
-The results for \code{ListPhoneNumbersOptedOut} are paginated, and each page
-returns up to 100 phone numbers. If additional phone numbers are
-available after the first page of results, then a \code{NextToken} string
-will be returned. To receive the next page, you call
-\code{ListPhoneNumbersOptedOut} again using the \code{NextToken} string received
-from the previous call. When there are no more records to return,
-\code{NextToken} will be null.
+The results for
+\code{\link[=sns_list_phone_numbers_opted_out]{list_phone_numbers_opted_out}} are
+paginated, and each page returns up to 100 phone numbers. If additional
+phone numbers are available after the first page of results, then a
+\code{NextToken} string will be returned. To receive the next page, you call
+\code{\link[=sns_list_phone_numbers_opted_out]{list_phone_numbers_opted_out}} again
+using the \code{NextToken} string received from the previous call. When there
+are no more records to return, \code{NextToken} will be null.
 }
 \section{Request syntax}{
 \preformatted{svc$list_phone_numbers_opted_out(

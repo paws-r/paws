@@ -8,8 +8,9 @@ transcribeservice_list_medical_vocabularies(NextToken, MaxResults,
   StateEquals, NameContains)
 }
 \arguments{
-\item{NextToken}{If the result of your previous request to \code{ListMedicalVocabularies} was
-truncated, include the \code{NextToken} to fetch the next set of
+\item{NextToken}{If the result of your previous request to
+\code{\link[=transcribeservice_list_medical_vocabularies]{list_medical_vocabularies}}
+was truncated, include the \code{NextToken} to fetch the next set of
 vocabularies.}
 
 \item{MaxResults}{The maximum number of vocabularies to return in the response.}
@@ -19,8 +20,9 @@ equal to the specified vocabulary state. Use this field to see which
 vocabularies are ready for your medical transcription jobs.}
 
 \item{NameContains}{Returns vocabularies whose names contain the specified string. The
-search is not case sensitive. \code{ListMedicalVocabularies} returns both
-"\code{vocabularyname}" and "\code{VocabularyName}".}
+search is not case sensitive.
+\code{\link[=transcribeservice_list_medical_vocabularies]{list_medical_vocabularies}}
+returns both "\code{vocabularyname}" and "\code{VocabularyName}".}
 }
 \description{
 Returns a list of vocabularies that match the specified criteria. If you

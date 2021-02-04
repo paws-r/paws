@@ -10,7 +10,7 @@ organizations_disable_aws_service_access(ServicePrincipal)
 \arguments{
 \item{ServicePrincipal}{[required] The service principal name of the AWS service for which you want to
 disable integration with your organization. This is typically in the
-form of a URL, such as \verb{ <i>service-abbreviation</i>.amazonaws.com}.}
+form of a URL, such as \code{ service-abbreviation.amazonaws.com}.}
 }
 \description{
 Disables the integration of an AWS service (the service that is
@@ -30,10 +30,11 @@ only for the integration. How the service cleans up its resources in the
 organization's accounts depends on that service. For more information,
 see the documentation for the other AWS service.
 
-After you perform the \code{DisableAWSServiceAccess} operation, the specified
-service can no longer perform operations in your organization's accounts
-unless the operations are explicitly permitted by the IAM policies that
-are attached to your roles.
+After you perform the
+\code{\link[=organizations_disable_aws_service_access]{disable_aws_service_access}}
+operation, the specified service can no longer perform operations in
+your organization's accounts unless the operations are explicitly
+permitted by the IAM policies that are attached to your roles.
 
 For more information about integrating other services with AWS
 Organizations, including the list of services that work with

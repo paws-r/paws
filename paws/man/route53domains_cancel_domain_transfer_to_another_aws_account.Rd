@@ -14,19 +14,17 @@ another AWS account.}
 \description{
 Cancels the transfer of a domain from the current AWS account to another
 AWS account. You initiate a transfer between AWS accounts using
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html}{TransferDomainToAnotherAwsAccount}.
+\code{\link[=route53domains_transfer_domain_to_another_aws_account]{transfer_domain_to_another_aws_account}}.
 
 You must cancel the transfer before the other AWS account accepts the
 transfer using
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_AcceptDomainTransferFromAnotherAwsAccount.html}{AcceptDomainTransferFromAnotherAwsAccount}.
+\code{\link[=route53domains_accept_domain_transfer_from_another_aws_account]{accept_domain_transfer_from_another_aws_account}}.
 
-Use either
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html}{ListOperations}
-or
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html}{GetOperationDetail}
-to determine whether the operation succeeded.
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html}{GetOperationDetail}
-provides additional information, for example,
+Use either \code{\link[=route53domains_list_operations]{list_operations}} or
+\code{\link[=route53domains_get_operation_detail]{get_operation_detail}} to
+determine whether the operation succeeded.
+\code{\link[=route53domains_get_operation_detail]{get_operation_detail}} provides
+additional information, for example,
 \verb{Domain Transfer from Aws Account 111122223333 has been cancelled}.
 }
 \section{Request syntax}{

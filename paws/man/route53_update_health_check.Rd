@@ -12,22 +12,25 @@ route53_update_health_check(HealthCheckId, HealthCheckVersion,
 }
 \arguments{
 \item{HealthCheckId}{[required] The ID for the health check for which you want detailed information.
-When you created the health check, \code{CreateHealthCheck} returned the ID
-in the response, in the \code{HealthCheckId} element.}
+When you created the health check,
+\code{\link[=route53_create_health_check]{create_health_check}} returned the ID in
+the response, in the \code{HealthCheckId} element.}
 
 \item{HealthCheckVersion}{A sequential counter that Amazon Route 53 sets to \code{1} when you create a
 health check and increments by 1 each time you update settings for the
 health check.
 
-We recommend that you use \code{GetHealthCheck} or \code{ListHealthChecks} to get
-the current value of \code{HealthCheckVersion} for the health check that you
-want to update, and that you include that value in your
-\code{UpdateHealthCheck} request. This prevents Route 53 from overwriting an
-intervening update:
+We recommend that you use \code{\link[=route53_get_health_check]{get_health_check}}
+or \code{\link[=route53_list_health_checks]{list_health_checks}} to get the current
+value of \code{HealthCheckVersion} for the health check that you want to
+update, and that you include that value in your
+\code{\link[=route53_update_health_check]{update_health_check}} request. This
+prevents Route 53 from overwriting an intervening update:
 \itemize{
-\item If the value in the \code{UpdateHealthCheck} request matches the value of
-\code{HealthCheckVersion} in the health check, Route 53 updates the
-health check with the new settings.
+\item If the value in the
+\code{\link[=route53_update_health_check]{update_health_check}} request matches
+the value of \code{HealthCheckVersion} in the health check, Route 53
+updates the health check with the new settings.
 \item If the value of \code{HealthCheckVersion} in the health check is greater,
 the health check was changed after you got the version number. Route
 53 does not update the health check, and it returns a
@@ -91,7 +94,7 @@ Don't specify a value for \code{Port} when you specify a value for \code{Type} o
 checks. The path can be any value for which your endpoint will return an
 HTTP status code of 2xx or 3xx when the endpoint is healthy, for example
 the file /docs/route53-health-check.html. You can also include query
-string parameters, for example, \verb{/welcome.html?language=jp&amp;login=y}.
+string parameters, for example, \verb{/welcome.html?language=jp&login=y}.
 
 Specify this value only if you want to change it.}
 

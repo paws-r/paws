@@ -69,9 +69,10 @@ the account's default AWS managed CMK for Secrets Manager.
 \strong{Related operations}
 \itemize{
 \item To create a new version of the secret with different encrypted
-information, use PutSecretValue.
+information, use
+\code{\link[=secretsmanager_put_secret_value]{put_secret_value}}.
 \item To retrieve the non-encrypted details for the secret, use
-DescribeSecret.
+\code{\link[=secretsmanager_describe_secret]{describe_secret}}.
 }
 }
 \section{Request syntax}{

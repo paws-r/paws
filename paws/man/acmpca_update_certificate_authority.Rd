@@ -12,7 +12,7 @@ acmpca_update_certificate_authority(CertificateAuthorityArn,
 \item{CertificateAuthorityArn}{[required] Amazon Resource Name (ARN) of the private CA that issued the certificate
 to be revoked. This must be of the form:
 
-\verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
+\code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 
 \item{RevocationConfiguration}{Revocation information for your private CA.}
 

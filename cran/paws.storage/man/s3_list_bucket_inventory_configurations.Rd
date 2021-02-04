@@ -42,11 +42,11 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 For information about the Amazon S3 inventory feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html}{Amazon S3 Inventory}
 
 The following operations are related to
-\code{ListBucketInventoryConfigurations}:
+\code{\link[=s3_list_bucket_inventory_configurations]{list_bucket_inventory_configurations}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketInventoryConfiguration.html}{GetBucketInventoryConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketInventoryConfiguration.html}{DeleteBucketInventoryConfiguration}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html}{PutBucketInventoryConfiguration}
+\item \code{\link[=s3_get_bucket_inventory_configuration]{get_bucket_inventory_configuration}}
+\item \code{\link[=s3_delete_bucket_inventory_configuration]{delete_bucket_inventory_configuration}}
+\item \code{\link[=s3_put_bucket_inventory_configuration]{put_bucket_inventory_configuration}}
 }
 }
 \section{Request syntax}{

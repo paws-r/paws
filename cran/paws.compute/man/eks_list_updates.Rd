@@ -14,19 +14,21 @@ eks_list_updates(name, nodegroupName, addonName, nextToken, maxResults)
 
 \item{addonName}{The names of the installed add-ons that have available updates.}
 
-\item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListUpdates}
-request where \code{maxResults} was used and the results exceeded the value
-of that parameter. Pagination continues from the end of the previous
-results that returned the \code{nextToken} value.}
+\item{nextToken}{The \code{nextToken} value returned from a previous paginated
+\code{\link[=eks_list_updates]{list_updates}} request where \code{maxResults} was used
+and the results exceeded the value of that parameter. Pagination
+continues from the end of the previous results that returned the
+\code{nextToken} value.}
 
-\item{maxResults}{The maximum number of update results returned by \code{ListUpdates} in
-paginated output. When you use this parameter, \code{ListUpdates} returns
-only \code{maxResults} results in a single page along with a \code{nextToken}
-response element. You can see the remaining results of the initial
-request by sending another \code{ListUpdates} request with the returned
-\code{nextToken} value. This value can be between 1 and 100. If you don't use
-this parameter, \code{ListUpdates} returns up to 100 results and a
-\code{nextToken} value if applicable.}
+\item{maxResults}{The maximum number of update results returned by
+\code{\link[=eks_list_updates]{list_updates}} in paginated output. When you use
+this parameter, \code{\link[=eks_list_updates]{list_updates}} returns only
+\code{maxResults} results in a single page along with a \code{nextToken} response
+element. You can see the remaining results of the initial request by
+sending another \code{\link[=eks_list_updates]{list_updates}} request with the
+returned \code{nextToken} value. This value can be between 1 and 100. If you
+don't use this parameter, \code{\link[=eks_list_updates]{list_updates}} returns up
+to 100 results and a \code{nextToken} value if applicable.}
 }
 \description{
 Lists the updates associated with an Amazon EKS cluster or managed node

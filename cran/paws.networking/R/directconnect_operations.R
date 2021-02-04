@@ -63,7 +63,9 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
 #' Deprecated
 #'
 #' @description
-#' Deprecated. Use AllocateHostedConnection instead.
+#' Deprecated. Use
+#' [`allocate_hosted_connection`][directconnect_allocate_hosted_connection]
+#' instead.
 #' 
 #' Creates a hosted connection on an interconnect.
 #' 
@@ -193,9 +195,10 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
 #' account.
 #' 
 #' Virtual interfaces created using this action must be confirmed by the
-#' owner using ConfirmPrivateVirtualInterface. Until then, the virtual
-#' interface is in the `Confirming` state and is not available to handle
-#' traffic.
+#' owner using
+#' [`confirm_private_virtual_interface`][directconnect_confirm_private_virtual_interface].
+#' Until then, the virtual interface is in the `Confirming` state and is
+#' not available to handle traffic.
 #'
 #' @usage
 #' directconnect_allocate_private_virtual_interface(connectionId,
@@ -261,9 +264,10 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
 #' virtual interface to be owned by the specified AWS account.
 #' 
 #' Virtual interfaces created using this function must be confirmed by the
-#' owner using ConfirmPublicVirtualInterface. Until this step has been
-#' completed, the virtual interface is in the `confirming` state and is not
-#' available to handle traffic.
+#' owner using
+#' [`confirm_public_virtual_interface`][directconnect_confirm_public_virtual_interface].
+#' Until this step has been completed, the virtual interface is in the
+#' `confirming` state and is not available to handle traffic.
 #' 
 #' When creating an IPv6 public virtual interface, omit the Amazon address
 #' and customer address. IPv6 addresses are automatically assigned from the
@@ -338,9 +342,10 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 #' owned by the specified AWS account.
 #' 
 #' After you create a transit virtual interface, it must be confirmed by
-#' the owner using ConfirmTransitVirtualInterface. Until this step has been
-#' completed, the transit virtual interface is in the `requested` state and
-#' is not available to handle traffic.
+#' the owner using
+#' [`confirm_transit_virtual_interface`][directconnect_confirm_transit_virtual_interface].
+#' Until this step has been completed, the transit virtual interface is in
+#' the `requested` state and is not available to handle traffic.
 #'
 #' @usage
 #' directconnect_allocate_transit_virtual_interface(connectionId,
@@ -510,7 +515,8 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 #' 
 #' Virtual interfaces associated with a hosted connection cannot be
 #' associated with a LAG; hosted connections must be migrated along with
-#' their virtual interfaces using AssociateHostedConnection.
+#' their virtual interfaces using
+#' [`associate_hosted_connection`][directconnect_associate_hosted_connection].
 #' 
 #' To reassociate a virtual interface to a new connection or LAG, the
 #' requester must own either the virtual interface itself or the connection
@@ -803,7 +809,8 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #' cable is connected to your router, the other to an AWS Direct Connect
 #' router.
 #' 
-#' To find the locations for your Region, use DescribeLocations.
+#' To find the locations for your Region, use
+#' [`describe_locations`][directconnect_describe_locations].
 #' 
 #' You can automatically add the new connection to a link aggregation group
 #' (LAG) by specifying a LAG ID in the request. This ensures that the new
@@ -1055,7 +1062,8 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #' endpoint, the request fails and no interconnect is created.
 #' 
 #' For each end customer, the AWS Direct Connect Partner provisions a
-#' connection on their interconnect by calling AllocateHostedConnection.
+#' connection on their interconnect by calling
+#' [`allocate_hosted_connection`][directconnect_allocate_hosted_connection].
 #' The end customer can then connect to AWS resources by creating a virtual
 #' interface on their connection, using the VLAN assigned to them by the
 #' AWS Direct Connect Partner.
@@ -1219,8 +1227,10 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #' support jumbo frames. Updating the connection disrupts network
 #' connectivity for all virtual interfaces associated with the connection
 #' for up to 30 seconds. To check whether your connection supports jumbo
-#' frames, call DescribeConnections. To check whether your virtual
-#' interface supports jumbo frames, call DescribeVirtualInterfaces.
+#' frames, call
+#' [`describe_connections`][directconnect_describe_connections]. To check
+#' whether your virtual interface supports jumbo frames, call
+#' [`describe_virtual_interfaces`][directconnect_describe_virtual_interfaces].
 #'
 #' @usage
 #' directconnect_create_private_virtual_interface(connectionId,
@@ -1358,8 +1368,10 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #' support jumbo frames. Updating the connection disrupts network
 #' connectivity for all virtual interfaces associated with the connection
 #' for up to 30 seconds. To check whether your connection supports jumbo
-#' frames, call DescribeConnections. To check whether your virtual
-#' interface supports jumbo frames, call DescribeVirtualInterfaces.
+#' frames, call
+#' [`describe_connections`][directconnect_describe_connections]. To check
+#' whether your virtual interface supports jumbo frames, call
+#' [`describe_virtual_interfaces`][directconnect_describe_virtual_interfaces].
 #'
 #' @usage
 #' directconnect_create_transit_virtual_interface(connectionId,
@@ -1749,7 +1761,7 @@ directconnect_delete_virtual_interface <- function(virtualInterfaceId) {
 #' Deprecated
 #'
 #' @description
-#' Deprecated. Use DescribeLoa instead.
+#' Deprecated. Use [`describe_loa`][directconnect_describe_loa] instead.
 #' 
 #' Gets the LOA-CFA for a connection.
 #' 
@@ -1841,7 +1853,9 @@ directconnect_describe_connections <- function(connectionId = NULL) {
 #' Deprecated
 #'
 #' @description
-#' Deprecated. Use DescribeHostedConnections instead.
+#' Deprecated. Use
+#' [`describe_hosted_connections`][directconnect_describe_hosted_connections]
+#' instead.
 #' 
 #' Lists the connections that have been provisioned on the specified
 #' interconnect.
@@ -2147,7 +2161,7 @@ directconnect_describe_hosted_connections <- function(connectionId) {
 #' Deprecated
 #'
 #' @description
-#' Deprecated. Use DescribeLoa instead.
+#' Deprecated. Use [`describe_loa`][directconnect_describe_loa] instead.
 #' 
 #' Gets the LOA-CFA for the specified interconnect.
 #' 
@@ -2331,8 +2345,9 @@ directconnect_describe_loa <- function(connectionId, providerName = NULL, loaCon
 #'
 #' @description
 #' Lists the AWS Direct Connect locations in the current AWS Region. These
-#' are the locations that can be selected when calling CreateConnection or
-#' CreateInterconnect.
+#' are the locations that can be selected when calling
+#' [`create_connection`][directconnect_create_connection] or
+#' [`create_interconnect`][directconnect_create_interconnect].
 #'
 #' @usage
 #' directconnect_describe_locations()
@@ -2490,10 +2505,10 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 #' Disassociates a connection from a link aggregation group (LAG). The
 #' connection is interrupted and re-established as a standalone connection
 #' (the connection is not deleted; to delete the connection, use the
-#' DeleteConnection request). If the LAG has associated virtual interfaces
-#' or hosted connections, they remain associated with the LAG. A
-#' disassociated connection owned by an AWS Direct Connect Partner is
-#' automatically converted to an interconnect.
+#' [`delete_connection`][directconnect_delete_connection] request). If the
+#' LAG has associated virtual interfaces or hosted connections, they remain
+#' associated with the LAG. A disassociated connection owned by an AWS
+#' Direct Connect Partner is automatically converted to an interconnect.
 #' 
 #' If disassociating the connection would cause the LAG to fall below its
 #' setting for minimum number of operational connections, the request
@@ -2605,11 +2620,11 @@ directconnect_list_virtual_interface_test_history <- function(testId = NULL, vir
 #' interfaces.
 #' 
 #' You can use
-#' [ListVirtualInterfaceTestHistory](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_ListVirtualInterfaceTestHistory.html)
+#' [`list_virtual_interface_test_history`][directconnect_list_virtual_interface_test_history]
 #' to view the virtual interface test history.
 #' 
 #' If you need to stop the test before the test interval completes, use
-#' [StopBgpFailoverTest](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_StopBgpFailoverTest.html).
+#' [`stop_bgp_failover_test`][directconnect_stop_bgp_failover_test].
 #'
 #' @usage
 #' directconnect_start_bgp_failover_test(virtualInterfaceId, bgpPeers,
@@ -2905,8 +2920,10 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL)
 #' support jumbo frames. Updating the connection disrupts network
 #' connectivity for all virtual interfaces associated with the connection
 #' for up to 30 seconds. To check whether your connection supports jumbo
-#' frames, call DescribeConnections. To check whether your virtual q
-#' interface supports jumbo frames, call DescribeVirtualInterfaces.
+#' frames, call
+#' [`describe_connections`][directconnect_describe_connections]. To check
+#' whether your virtual q interface supports jumbo frames, call
+#' [`describe_virtual_interfaces`][directconnect_describe_virtual_interfaces].
 #'
 #' @usage
 #' directconnect_update_virtual_interface_attributes(virtualInterfaceId,

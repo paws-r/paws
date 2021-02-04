@@ -11,9 +11,10 @@ signer_cancel_signing_profile(profileName)
 }
 \description{
 Changes the state of an \code{ACTIVE} signing profile to \code{CANCELED}. A
-canceled profile is still viewable with the \code{ListSigningProfiles}
-operation, but it cannot perform new signing jobs, and is deleted two
-years after cancelation.
+canceled profile is still viewable with the
+\code{\link[=signer_list_signing_profiles]{list_signing_profiles}} operation, but
+it cannot perform new signing jobs, and is deleted two years after
+cancelation.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_signing_profile(

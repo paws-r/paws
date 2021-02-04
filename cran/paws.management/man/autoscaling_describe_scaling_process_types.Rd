@@ -8,8 +8,9 @@ SuspendProcesses APIs}
 autoscaling_describe_scaling_process_types()
 }
 \description{
-Describes the scaling process types for use with the ResumeProcesses and
-SuspendProcesses APIs.
+Describes the scaling process types for use with the
+\code{\link[=autoscaling_resume_processes]{resume_processes}} and
+\code{\link[=autoscaling_suspend_processes]{suspend_processes}} APIs.
 }
 \examples{
 \dontrun{

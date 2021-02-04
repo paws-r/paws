@@ -21,7 +21,8 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
+To get the key ID and key ARN for a CMK, use
+\href{kms_list_keys}{\code{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{GranteePrincipal}{[required] The principal that is given permission to perform the operations that
 the grant permits.
@@ -33,7 +34,7 @@ examples of the ARN syntax to use for specifying a principal, see \href{https://
 in the Example ARNs section of the \emph{AWS General Reference}.}
 
 \item{RetiringPrincipal}{The principal that is given permission to retire the grant by using
-RetireGrant operation.
+\code{\link[=kms_retire_grant]{retire_grant}} operation.
 
 To specify the principal, use the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
 of an AWS principal. Valid AWS principals include AWS accounts (root),
@@ -51,7 +52,9 @@ in the \strong{AWS Key Management Service Developer Guide} .
 
 Grant constraints are not applied to operations that do not support an
 encryption context, such as cryptographic operations with asymmetric
-CMKs and management operations, such as DescribeKey or RetireGrant.}
+CMKs and management operations, such as
+\code{\link[=kms_describe_key]{describe_key}} or
+\code{\link[=kms_retire_grant]{retire_grant}}.}
 
 \item{GrantTokens}{A list of grant tokens.
 
@@ -61,17 +64,19 @@ in the \emph{AWS Key Management Service Developer Guide}.}
 \item{Name}{A friendly name for the grant. Use this value to prevent the unintended
 creation of duplicate grants when retrying this request.
 
-When this value is absent, all \code{CreateGrant} requests result in a new
-grant with a unique \code{GrantId} even if all the supplied parameters are
-identical. This can result in unintended duplicates when you retry the
-\code{CreateGrant} request.
+When this value is absent, all \code{\link[=kms_create_grant]{create_grant}}
+requests result in a new grant with a unique \code{GrantId} even if all the
+supplied parameters are identical. This can result in unintended
+duplicates when you retry the \code{\link[=kms_create_grant]{create_grant}}
+request.
 
-When this value is present, you can retry a \code{CreateGrant} request with
-identical parameters; if the grant already exists, the original
-\code{GrantId} is returned without creating a new grant. Note that the
-returned grant token is unique with every \code{CreateGrant} request, even
-when a duplicate \code{GrantId} is returned. All grant tokens for the same
-grant ID can be used interchangeably.}
+When this value is present, you can retry a
+\code{\link[=kms_create_grant]{create_grant}} request with identical parameters; if
+the grant already exists, the original \code{GrantId} is returned without
+creating a new grant. Note that the returned grant token is unique with
+every \code{\link[=kms_create_grant]{create_grant}} request, even when a duplicate
+\code{GrantId} is returned. All grant tokens for the same grant ID can be
+used interchangeably.}
 }
 \description{
 Adds a grant to a customer master key (CMK). The grant allows the
@@ -84,14 +89,15 @@ only when the request includes a particular \href{https://docs.aws.amazon.com/km
 use the \code{Constraints} parameter. For details, see GrantConstraints.
 
 You can create grants on symmetric and asymmetric CMKs. However, if the
-grant allows an operation that the CMK does not support, \code{CreateGrant}
-fails with a \code{ValidationException}.
+grant allows an operation that the CMK does not support,
+\code{\link[=kms_create_grant]{create_grant}} fails with a \code{ValidationException}.
 \itemize{
 \item Grants for symmetric CMKs cannot allow operations that are not
-supported for symmetric CMKs, including Sign, Verify, and
-GetPublicKey. (There are limited exceptions to this rule for legacy
-operations, but you should not create a grant for an operation that
-AWS KMS does not support.)
+supported for symmetric CMKs, including \code{\link[=kms_sign]{sign}},
+\href{kms_verify}{\code{verify}}, and \code{\link[=kms_get_public_key]{get_public_key}}.
+(There are limited exceptions to this rule for legacy operations,
+but you should not create a grant for an operation that AWS KMS does
+not support.)
 \item Grants for asymmetric CMKs cannot allow operations that are not
 supported for asymmetric CMKs, including operations that \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKey.html}{generate data keys}
 or \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKeyPair.html}{data key pairs},
@@ -99,9 +105,10 @@ or operations related to \href{https://docs.aws.amazon.com/kms/latest/developerg
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material},
 or CMKs in \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key stores}.
 \item Grants for asymmetric CMKs with a \code{KeyUsage} of \code{ENCRYPT_DECRYPT}
-cannot allow the Sign or Verify operations. Grants for asymmetric
-CMKs with a \code{KeyUsage} of \code{SIGN_VERIFY} cannot allow the Encrypt or
-Decrypt operations.
+cannot allow the \href{kms_sign}{\code{sign}} or \code{\link[=kms_verify]{verify}}
+operations. Grants for asymmetric CMKs with a \code{KeyUsage} of
+\code{SIGN_VERIFY} cannot allow the \code{\link[=kms_encrypt]{encrypt}} or
+\code{\link[=kms_decrypt]{decrypt}} operations.
 \item Grants for asymmetric CMKs cannot include an encryption context
 grant constraint. An encryption context is not supported on
 asymmetric CMKs.
@@ -127,10 +134,10 @@ parameter.
 
 \strong{Related operations:}
 \itemize{
-\item ListGrants
-\item ListRetirableGrants
-\item RetireGrant
-\item RevokeGrant
+\item \code{\link[=kms_list_grants]{list_grants}}
+\item \code{\link[=kms_list_retirable_grants]{list_retirable_grants}}
+\item \code{\link[=kms_retire_grant]{retire_grant}}
+\item \code{\link[=kms_revoke_grant]{revoke_grant}}
 }
 }
 \section{Request syntax}{

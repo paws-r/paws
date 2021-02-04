@@ -22,7 +22,7 @@ information about only the database engines identified by these
 identifiers.
 
 For more information about the valid engines for installation media,
-see ImportInstallationMedia.
+see \code{\link[=rds_import_installation_media]{import_installation_media}}.
 }}
 
 \item{MaxRecords}{An optional pagination token provided by a previous

@@ -15,15 +15,17 @@ NULL
 #'   code, refreshToken, scope, redirectUri)
 #'
 #' @param clientId &#91;required&#93; The unique identifier string for each client. This value should come
-#' from the persisted result of the RegisterClient API.
+#' from the persisted result of the
+#' [`register_client`][ssooidc_register_client] API.
 #' @param clientSecret &#91;required&#93; A secret string generated for the client. This value should come from
-#' the persisted result of the RegisterClient API.
+#' the persisted result of the [`register_client`][ssooidc_register_client]
+#' API.
 #' @param grantType &#91;required&#93; Supports grant types for authorization code, refresh token, and device
 #' code request.
 #' @param deviceCode &#91;required&#93; Used only when calling this API for the device code grant type. This
 #' short-term code is used to identify this authentication attempt. This
 #' should come from an in-memory reference to the result of the
-#' StartDeviceAuthorization API.
+#' [`start_device_authorization`][ssooidc_start_device_authorization] API.
 #' @param code The authorization code received from the authorization service. This
 #' parameter is required to perform an authorization grant request to get
 #' access to a token.
@@ -129,9 +131,10 @@ ssooidc_register_client <- function(clientName, clientType, scopes = NULL) {
 #'
 #' @param clientId &#91;required&#93; The unique identifier string for the client that is registered with AWS
 #' SSO. This value should come from the persisted result of the
-#' RegisterClient API operation.
+#' [`register_client`][ssooidc_register_client] API operation.
 #' @param clientSecret &#91;required&#93; A secret string that is generated for the client. This value should come
-#' from the persisted result of the RegisterClient API operation.
+#' from the persisted result of the
+#' [`register_client`][ssooidc_register_client] API operation.
 #' @param startUrl &#91;required&#93; The URL for the AWS SSO user portal. For more information, see [Using
 #' the User
 #' Portal](https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html)

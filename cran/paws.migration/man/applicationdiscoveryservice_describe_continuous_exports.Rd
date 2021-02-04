@@ -13,11 +13,13 @@ applicationdiscoveryservice_describe_continuous_exports(exportIds,
 \item{maxResults}{A number between 1 and 100 specifying the maximum number of continuous
 export descriptions returned.}
 
-\item{nextToken}{The token from the previous call to \code{DescribeExportTasks}.}
+\item{nextToken}{The token from the previous call to
+\code{\link[=applicationdiscoveryservice_describe_export_tasks]{describe_export_tasks}}.}
 }
 \description{
 Lists exports as specified by ID. All continuous exports associated with
-your user account can be listed if you call \code{DescribeContinuousExports}
+your user account can be listed if you call
+\code{\link[=applicationdiscoveryservice_describe_continuous_exports]{describe_continuous_exports}}
 as is without passing any parameters.
 }
 \section{Request syntax}{

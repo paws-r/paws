@@ -32,34 +32,41 @@ checks.
 The following list describes the AWS Support case management operations:
 \itemize{
 \item \strong{Service names, issue categories, and available severity levels.}
-The DescribeServices and DescribeSeverityLevels operations return
-AWS service names, service codes, service categories, and problem
-severity levels. You use these values when you call the CreateCase
-operation.
+The \code{\link[=support_describe_services]{describe_services}} and
+\code{\link[=support_describe_severity_levels]{describe_severity_levels}}
+operations return AWS service names, service codes, service
+categories, and problem severity levels. You use these values when
+you call the \code{\link[=support_create_case]{create_case}} operation.
 \item \strong{Case creation, case details, and case resolution.} The
-CreateCase, DescribeCases, DescribeAttachment, and ResolveCase
-operations create AWS Support cases, retrieve information about
-cases, and resolve cases.
-\item \strong{Case communication.} The DescribeCommunications,
-AddCommunicationToCase, and AddAttachmentsToSet operations retrieve
-and add communications and attachments to AWS Support cases.
+\code{\link[=support_create_case]{create_case}},
+\code{\link[=support_describe_cases]{describe_cases}},
+\code{\link[=support_describe_attachment]{describe_attachment}}, and
+\code{\link[=support_resolve_case]{resolve_case}} operations create AWS Support
+cases, retrieve information about cases, and resolve cases.
+\item \strong{Case communication.} The
+\code{\link[=support_describe_communications]{describe_communications}},
+\code{\link[=support_add_communication_to_case]{add_communication_to_case}},
+and \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}}
+operations retrieve and add communications and attachments to AWS
+Support cases.
 }
 
 The following list describes the operations available from the AWS
 Support service for Trusted Advisor:
 \itemize{
-\item DescribeTrustedAdvisorChecks returns the list of checks that run
-against your AWS resources.
+\item \code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}}
+returns the list of checks that run against your AWS resources.
 \item Using the \code{checkId} for a specific check returned by
-DescribeTrustedAdvisorChecks, you can call
-DescribeTrustedAdvisorCheckResult to obtain the results for the
-check that you specified.
-\item DescribeTrustedAdvisorCheckSummaries returns summarized results for
-one or more Trusted Advisor checks.
-\item RefreshTrustedAdvisorCheck requests that Trusted Advisor rerun a
-specified check.
-\item DescribeTrustedAdvisorCheckRefreshStatuses reports the refresh
-status of one or more checks.
+\code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}},
+you can call
+\code{\link[=support_describe_trusted_advisor_check_result]{describe_trusted_advisor_check_result}}
+to obtain the results for the check that you specified.
+\item \code{\link[=support_describe_trusted_advisor_check_summaries]{describe_trusted_advisor_check_summaries}}
+returns summarized results for one or more Trusted Advisor checks.
+\item \code{\link[=support_refresh_trusted_advisor_check]{refresh_trusted_advisor_check}}
+requests that Trusted Advisor rerun a specified check.
+\item \code{\link[=support_describe_trusted_advisor_check_refresh_statuses]{describe_trusted_advisor_check_refresh_statuses}}
+reports the refresh status of one or more checks.
 }
 
 For authentication of requests, AWS Support uses \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.

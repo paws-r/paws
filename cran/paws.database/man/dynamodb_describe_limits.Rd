@@ -22,22 +22,28 @@ page in the \emph{Amazon DynamoDB Developer Guide}.
 
 Although you can increase these quotas by filing a case at AWS Support
 Center, obtaining the increase is not instantaneous. The
-\code{DescribeLimits} action lets you write code to compare the capacity you
-are currently using to those quotas imposed by your account so that you
-have enough time to apply for an increase before you hit a quota.
+\code{\link[=dynamodb_describe_limits]{describe_limits}} action lets you write code
+to compare the capacity you are currently using to those quotas imposed
+by your account so that you have enough time to apply for an increase
+before you hit a quota.
 
 For example, you could use one of the AWS SDKs to do the following:
 \enumerate{
-\item Call \code{DescribeLimits} for a particular Region to obtain your current
-account quotas on provisioned capacity there.
+\item Call \code{\link[=dynamodb_describe_limits]{describe_limits}} for a particular
+Region to obtain your current account quotas on provisioned capacity
+there.
 \item Create a variable to hold the aggregate read capacity units
 provisioned for all your tables in that Region, and one to hold the
 aggregate write capacity units. Zero them both.
-\item Call \code{ListTables} to obtain a list of all your DynamoDB tables.
-\item For each table name listed by \code{ListTables}, do the following:
+\item Call \code{\link[=dynamodb_list_tables]{list_tables}} to obtain a list of all
+your DynamoDB tables.
+\item For each table name listed by \code{\link[=dynamodb_list_tables]{list_tables}},
+do the following:
 \itemize{
-\item Call \code{DescribeTable} with the table name.
-\item Use the data returned by \code{DescribeTable} to add the read
+\item Call \code{\link[=dynamodb_describe_table]{describe_table}} with the table
+name.
+\item Use the data returned by
+\code{\link[=dynamodb_describe_table]{describe_table}} to add the read
 capacity units and write capacity units provisioned for the
 table itself to your variables.
 \item If the table has one or more global secondary indexes (GSIs),
@@ -45,8 +51,8 @@ loop over these GSIs and add their provisioned capacity values
 to your variables as well.
 }
 \item Report the account quotas for that Region returned by
-\code{DescribeLimits}, along with the total current provisioned capacity
-levels you have calculated.
+\code{\link[=dynamodb_describe_limits]{describe_limits}}, along with the total
+current provisioned capacity levels you have calculated.
 }
 
 This will let you see whether you are getting close to your
@@ -61,10 +67,12 @@ provisioned capacity extremely rapidly, but the only quota that applies
 is that the aggregate provisioned capacity over all your tables and GSIs
 cannot exceed either of the per-account quotas.
 
-\code{DescribeLimits} should only be called periodically. You can expect
-throttling errors if you call it more than once in a minute.
+\code{\link[=dynamodb_describe_limits]{describe_limits}} should only be called
+periodically. You can expect throttling errors if you call it more than
+once in a minute.
 
-The \code{DescribeLimits} Request element has no content.
+The \code{\link[=dynamodb_describe_limits]{describe_limits}} Request element has no
+content.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_limits()

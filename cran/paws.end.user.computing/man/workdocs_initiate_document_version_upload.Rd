@@ -33,9 +33,10 @@ The client specifies the parent folder ID and name of the document to
 upload. The ID is optionally specified when creating a new version of an
 existing document. This is the first step to upload a document. Next,
 upload the document to the URL returned from the call, and then call
-UpdateDocumentVersion.
+\code{\link[=workdocs_update_document_version]{update_document_version}}.
 
-To cancel the document upload, call AbortDocumentVersionUpload.
+To cancel the document upload, call
+\code{\link[=workdocs_abort_document_version_upload]{abort_document_version_upload}}.
 }
 \section{Request syntax}{
 \preformatted{svc$initiate_document_version_upload(

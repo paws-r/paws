@@ -9,7 +9,9 @@ kinesisanalyticsv2_delete_application(ApplicationName, CreateTimestamp)
 \arguments{
 \item{ApplicationName}{[required] The name of the application to delete.}
 
-\item{CreateTimestamp}{[required] Use the \code{DescribeApplication} operation to get this value.}
+\item{CreateTimestamp}{[required] Use the
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
+operation to get this value.}
 }
 \description{
 Deletes the specified application. Kinesis Data Analytics halts

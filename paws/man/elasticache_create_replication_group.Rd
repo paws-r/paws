@@ -201,7 +201,9 @@ replication group.}
 
 \item{EngineVersion}{The version number of the cache engine to be used for the clusters in
 this replication group. To view the supported cache engine versions, use
-the \code{DescribeCacheEngineVersions} operation.
+the
+\code{\link[=elasticache_describe_cache_engine_versions]{describe_cache_engine_versions}}
+operation.
 
 \strong{Important:} You can upgrade to a newer engine version (see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement}{Selecting a Cache Engine and Version})
 in the \emph{ElastiCache User Guide}, but you cannot downgrade to an earlier

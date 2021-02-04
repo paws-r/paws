@@ -140,8 +140,9 @@ codeguruprofiler_batch_get_frame_metric_data <- function(endTime = NULL, frameMe
 #'
 #' @description
 #' Used by profiler agents to report their current state and to receive
-#' remote configuration updates. For example, `ConfigureAgent` can be used
-#' to tell and agent whether to profile or not and for how long to return
+#' remote configuration updates. For example,
+#' [`configure_agent`][codeguruprofiler_configure_agent] can be used to
+#' tell and agent whether to profile or not and for how long to return
 #' profiling data.
 #'
 #' @usage
@@ -365,17 +366,19 @@ codeguruprofiler_describe_profiling_group <- function(profilingGroupName) {
 #' returned. If set to `False`, analysis data is returned from smaller time
 #' windows (for example, one hour).
 #' @param maxResults The maximum number of results returned by
-#' ` GetFindingsReportAccountSummary` in paginated output. When this
-#' parameter is used, `GetFindingsReportAccountSummary` only returns
-#' `maxResults` results in a single page along with a `nextToken` response
-#' element. The remaining results of the initial request can be seen by
-#' sending another `GetFindingsReportAccountSummary` request with the
-#' returned `nextToken` value.
+#' [`get_findings_report_account_summary`][codeguruprofiler_get_findings_report_account_summary]
+#' in paginated output. When this parameter is used,
+#' [`get_findings_report_account_summary`][codeguruprofiler_get_findings_report_account_summary]
+#' only returns `maxResults` results in a single page along with a
+#' `nextToken` response element. The remaining results of the initial
+#' request can be seen by sending another
+#' [`get_findings_report_account_summary`][codeguruprofiler_get_findings_report_account_summary]
+#' request with the returned `nextToken` value.
 #' @param nextToken The `nextToken` value returned from a previous paginated
-#' `GetFindingsReportAccountSummary` request where `maxResults` was used
-#' and the results exceeded the value of that parameter. Pagination
-#' continues from the end of the previous results that returned the
-#' `nextToken` value.
+#' [`get_findings_report_account_summary`][codeguruprofiler_get_findings_report_account_summary]
+#' request where `maxResults` was used and the results exceeded the value
+#' of that parameter. Pagination continues from the end of the previous
+#' results that returned the `nextToken` value.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
@@ -495,7 +498,7 @@ codeguruprofiler_get_policy <- function(profilingGroupName) {
 #' range. Amazon CodeGuru Profiler collects posted agent profiles for a
 #' profiling group into aggregated profiles.
 #' 
-#'      &lt;note&gt; &lt;p&gt; Because aggregated profiles expire over time &lt;code&gt;GetProfile&lt;/code&gt; is not idempotent. &lt;/p&gt; &lt;/note&gt; &lt;p&gt; Specify the time range for the requested aggregated profile using 1 or 2 of the following parameters: &lt;code&gt;startTime&lt;/code&gt;, &lt;code&gt;endTime&lt;/code&gt;, &lt;code&gt;period&lt;/code&gt;. The maximum time range allowed is 7 days. If you specify all 3 parameters, an exception is thrown. If you specify only &lt;code&gt;period&lt;/code&gt;, the latest aggregated profile is returned. &lt;/p&gt; &lt;p&gt; Aggregated profiles are available with aggregation periods of 5 minutes, 1 hour, and 1 day, aligned to UTC. The aggregation period of an aggregated profile determines how long it is retained. For more information, see &lt;a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AggregatedProfileTime.html"&gt; &lt;code&gt;AggregatedProfileTime&lt;/code&gt; &lt;/a&gt;. The aggregated profile's aggregation period determines how long it is retained by CodeGuru Profiler. &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; If the aggregation period is 5 minutes, the aggregated profile is retained for 15 days. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; If the aggregation period is 1 hour, the aggregated profile is retained for 60 days. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; If the aggregation period is 1 day, the aggregated profile is retained for 3 years. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;There are two use cases for calling &lt;code&gt;GetProfile&lt;/code&gt;.&lt;/p&gt; &lt;ol&gt; &lt;li&gt; &lt;p&gt; If you want to return an aggregated profile that already exists, use &lt;a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ListProfileTimes.html"&gt; &lt;code&gt;ListProfileTimes&lt;/code&gt; &lt;/a&gt; to view the time ranges of existing aggregated profiles. Use them in a &lt;code&gt;GetProfile&lt;/code&gt; request to return a specific, existing aggregated profile. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; If you want to return an aggregated profile for a time range that doesn't align with an existing aggregated profile, then CodeGuru Profiler makes a best effort to combine existing aggregated profiles from the requested time range and return them as one aggregated profile. &lt;/p&gt; &lt;p&gt; If aggregated profiles do not exist for the full time range requested, then aggregated profiles for a smaller time range are returned. For example, if the requested time range is from 00:00 to 00:20, and the existing aggregated profiles are from 00:15 and 00:25, then the aggregated profiles from 00:15 to 00:20 are returned. &lt;/p&gt; &lt;/li&gt; &lt;/ol&gt; 
+#'      <note> <p> Because aggregated profiles expire over time <code>GetProfile</code> is not idempotent. </p> </note> <p> Specify the time range for the requested aggregated profile using 1 or 2 of the following parameters: <code>startTime</code>, <code>endTime</code>, <code>period</code>. The maximum time range allowed is 7 days. If you specify all 3 parameters, an exception is thrown. If you specify only <code>period</code>, the latest aggregated profile is returned. </p> <p> Aggregated profiles are available with aggregation periods of 5 minutes, 1 hour, and 1 day, aligned to UTC. The aggregation period of an aggregated profile determines how long it is retained. For more information, see <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AggregatedProfileTime.html"> <code>AggregatedProfileTime</code> </a>. The aggregated profile's aggregation period determines how long it is retained by CodeGuru Profiler. </p> <ul> <li> <p> If the aggregation period is 5 minutes, the aggregated profile is retained for 15 days. </p> </li> <li> <p> If the aggregation period is 1 hour, the aggregated profile is retained for 60 days. </p> </li> <li> <p> If the aggregation period is 1 day, the aggregated profile is retained for 3 years. </p> </li> </ul> <p>There are two use cases for calling <code>GetProfile</code>.</p> <ol> <li> <p> If you want to return an aggregated profile that already exists, use <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ListProfileTimes.html"> <code>ListProfileTimes</code> </a> to view the time ranges of existing aggregated profiles. Use them in a <code>GetProfile</code> request to return a specific, existing aggregated profile. </p> </li> <li> <p> If you want to return an aggregated profile for a time range that doesn't align with an existing aggregated profile, then CodeGuru Profiler makes a best effort to combine existing aggregated profiles from the requested time range and return them as one aggregated profile. </p> <p> If aggregated profiles do not exist for the full time range requested, then aggregated profiles for a smaller time range are returned. For example, if the requested time range is from 00:00 to 00:20, and the existing aggregated profiles are from 00:15 and 00:25, then the aggregated profiles from 00:15 to 00:20 are returned. </p> </li> </ol> 
 #'
 #' @usage
 #' codeguruprofiler_get_profile(accept, endTime, maxDepth, period,
@@ -505,7 +508,7 @@ codeguruprofiler_get_policy <- function(profilingGroupName) {
 #' `Accept` and `Content-Type` headers of the HTTP request. You can specify
 #' one of the following: or the default .
 #' 
-#'      &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/json&lt;/code&gt; — standard JSON format &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/x-amzn-ion&lt;/code&gt; — the Amazon Ion data format. For more information, see &lt;a href="http://amzn.github.io/ion-docs/"&gt;Amazon Ion&lt;/a&gt;. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; 
+#'      <ul> <li> <p> <code>application/json</code> — standard JSON format </p> </li> <li> <p> <code>application/x-amzn-ion</code> — the Amazon Ion data format. For more information, see <a href="http://amzn.github.io/ion-docs/">Amazon Ion</a>. </p> </li> </ul> 
 #' @param endTime The end time of the requested profile. Specify using the ISO 8601
 #' format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond
 #' past June 1, 2020 1:15:02 PM UTC.
@@ -521,13 +524,13 @@ codeguruprofiler_get_policy <- function(profilingGroupName) {
 #' returned aggregated profile. Specify using the ISO 8601 format. For
 #' example, `P1DT1H1M1S`.
 #' 
-#'      &lt;p&gt; To get the latest aggregated profile, specify only &lt;code&gt;period&lt;/code&gt;. &lt;/p&gt; 
+#'      <p> To get the latest aggregated profile, specify only <code>period</code>. </p> 
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group to get.
 #' @param startTime The start time of the profile to get. Specify using the ISO 8601 format.
 #' For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June
 #' 1, 2020 1:15:02 PM UTC.
 #' 
-#'      &lt;p&gt; If you specify &lt;code&gt;startTime&lt;/code&gt;, then you must also specify &lt;code&gt;period&lt;/code&gt; or &lt;code&gt;endTime&lt;/code&gt;, but not both. &lt;/p&gt; 
+#'      <p> If you specify <code>startTime</code>, then you must also specify <code>period</code> or <code>endTime</code>, but not both. </p> 
 #'
 #' @section Request syntax:
 #' ```
@@ -666,12 +669,15 @@ codeguruprofiler_get_recommendations <- function(endTime, locale = NULL, profili
 #' `startTime` and `endTime`. This is specified using the ISO 8601 format.
 #' For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June
 #' 1, 2020 1:15:02 PM UTC.
-#' @param maxResults The maximum number of report results returned by `ListFindingsReports`
-#' in paginated output. When this parameter is used, `ListFindingsReports`
-#' only returns `maxResults` results in a single page along with a
-#' `nextToken` response element. The remaining results of the initial
-#' request can be seen by sending another `ListFindingsReports` request
-#' with the returned `nextToken` value.
+#' @param maxResults The maximum number of report results returned by
+#' [`list_findings_reports`][codeguruprofiler_list_findings_reports] in
+#' paginated output. When this parameter is used,
+#' [`list_findings_reports`][codeguruprofiler_list_findings_reports] only
+#' returns `maxResults` results in a single page along with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another
+#' [`list_findings_reports`][codeguruprofiler_list_findings_reports]
+#' request with the returned `nextToken` value.
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `ListFindingsReportsRequest` request where `maxResults` was used and the
 #' results exceeded the value of that parameter. Pagination continues from
@@ -737,15 +743,19 @@ codeguruprofiler_list_findings_reports <- function(dailyReportsOnly = NULL, endT
 #'
 #' @param endTime &#91;required&#93; The end time of the time range from which to list the profiles.
 #' @param maxResults The maximum number of profile time results returned by
-#' `ListProfileTimes` in paginated output. When this parameter is used,
-#' `ListProfileTimes` only returns `maxResults` results in a single page
-#' with a `nextToken` response element. The remaining results of the
-#' initial request can be seen by sending another `ListProfileTimes`
-#' request with the returned `nextToken` value.
+#' [`list_profile_times`][codeguruprofiler_list_profile_times] in paginated
+#' output. When this parameter is used,
+#' [`list_profile_times`][codeguruprofiler_list_profile_times] only returns
+#' `maxResults` results in a single page with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another
+#' [`list_profile_times`][codeguruprofiler_list_profile_times] request with
+#' the returned `nextToken` value.
 #' @param nextToken The `nextToken` value returned from a previous paginated
-#' `ListProfileTimes` request where `maxResults` was used and the results
-#' exceeded the value of that parameter. Pagination continues from the end
-#' of the previous results that returned the `nextToken` value.
+#' [`list_profile_times`][codeguruprofiler_list_profile_times] request
+#' where `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
@@ -818,15 +828,19 @@ codeguruprofiler_list_profile_times <- function(endTime, maxResults = NULL, next
 #' objects that contain detailed information about profiling groups is
 #' returned. If `false`, then a list of profiling group names is returned.
 #' @param maxResults The maximum number of profiling groups results returned by
-#' `ListProfilingGroups` in paginated output. When this parameter is used,
-#' `ListProfilingGroups` only returns `maxResults` results in a single page
-#' along with a `nextToken` response element. The remaining results of the
-#' initial request can be seen by sending another `ListProfilingGroups`
+#' [`list_profiling_groups`][codeguruprofiler_list_profiling_groups] in
+#' paginated output. When this parameter is used,
+#' [`list_profiling_groups`][codeguruprofiler_list_profiling_groups] only
+#' returns `maxResults` results in a single page along with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another
+#' [`list_profiling_groups`][codeguruprofiler_list_profiling_groups]
 #' request with the returned `nextToken` value.
 #' @param nextToken The `nextToken` value returned from a previous paginated
-#' `ListProfilingGroups` request where `maxResults` was used and the
-#' results exceeded the value of that parameter. Pagination continues from
-#' the end of the previous results that returned the `nextToken` value.
+#' [`list_profiling_groups`][codeguruprofiler_list_profiling_groups]
+#' request where `maxResults` was used and the results exceeded the value
+#' of that parameter. Pagination continues from the end of the previous
+#' results that returned the `nextToken` value.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
@@ -904,7 +918,7 @@ codeguruprofiler_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Submits profiling data to an aggregated profile of a profiling group. To
 #' get an aggregated profile that is created with this profiling data, use
-#' [`GetProfile`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetProfile.html)
+#' [`get_profile`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetProfile.html)
 #' .
 #'
 #' @usage
@@ -916,7 +930,7 @@ codeguruprofiler_list_tags_for_resource <- function(resourceArn) {
 #' `Accept` and `Content-Type` headers of the HTTP request. You can specify
 #' one of the following: or the default .
 #' 
-#'      &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/json&lt;/code&gt; — standard JSON format &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/x-amzn-ion&lt;/code&gt; — the Amazon Ion data format. For more information, see &lt;a href="http://amzn.github.io/ion-docs/"&gt;Amazon Ion&lt;/a&gt;. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; 
+#'      <ul> <li> <p> <code>application/json</code> — standard JSON format </p> </li> <li> <p> <code>application/x-amzn-ion</code> — the Amazon Ion data format. For more information, see <a href="http://amzn.github.io/ion-docs/">Amazon Ion</a>. </p> </li> </ul> 
 #' @param profileToken Amazon CodeGuru Profiler uses this universally unique identifier (UUID)
 #' to prevent the accidental submission of duplicate profiling data if
 #' there are failures and retries.
@@ -962,7 +976,7 @@ codeguruprofiler_post_agent_profile <- function(agentProfile, contentType, profi
 #' resource-based policy, one is created for it using the permissions in
 #' the action group and the roles and users in the `principals` parameter.
 #' 
-#'      &lt;p&gt; The one supported action group that can be added is &lt;code&gt;agentPermission&lt;/code&gt; which grants &lt;code&gt;ConfigureAgent&lt;/code&gt; and &lt;code&gt;PostAgent&lt;/code&gt; permissions. For more information, see &lt;a href="https://docs.aws.amazon.com/codeguru/latest/profiler-ug/resource-based-policies.html"&gt;Resource-based policies in CodeGuru Profiler&lt;/a&gt; in the &lt;i&gt;Amazon CodeGuru Profiler User Guide&lt;/i&gt;, &lt;a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"&gt; &lt;code&gt;ConfigureAgent&lt;/code&gt; &lt;/a&gt;, and &lt;a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PostAgentProfile.html"&gt; &lt;code&gt;PostAgentProfile&lt;/code&gt; &lt;/a&gt;. &lt;/p&gt; &lt;p&gt; The first time you call &lt;code&gt;PutPermission&lt;/code&gt; on a profiling group, do not specify a &lt;code&gt;revisionId&lt;/code&gt; because it doesn't have a resource-based policy. Subsequent calls must provide a &lt;code&gt;revisionId&lt;/code&gt; to specify which revision of the resource-based policy to add the permissions to. &lt;/p&gt; &lt;p&gt; The response contains the profiling group's JSON-formatted resource policy. &lt;/p&gt; 
+#'      <p> The one supported action group that can be added is <code>agentPermission</code> which grants <code>ConfigureAgent</code> and <code>PostAgent</code> permissions. For more information, see <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-ug/resource-based-policies.html">Resource-based policies in CodeGuru Profiler</a> in the <i>Amazon CodeGuru Profiler User Guide</i>, <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"> <code>ConfigureAgent</code> </a>, and <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PostAgentProfile.html"> <code>PostAgentProfile</code> </a>. </p> <p> The first time you call <code>PutPermission</code> on a profiling group, do not specify a <code>revisionId</code> because it doesn't have a resource-based policy. Subsequent calls must provide a <code>revisionId</code> to specify which revision of the resource-based policy to add the permissions to. </p> <p> The response contains the profiling group's JSON-formatted resource policy. </p> 
 #'
 #' @usage
 #' codeguruprofiler_put_permission(actionGroup, principals,
@@ -971,8 +985,9 @@ codeguruprofiler_post_agent_profile <- function(agentProfile, contentType, profi
 #' @param actionGroup &#91;required&#93; Specifies an action group that contains permissions to add to a
 #' profiling group resource. One action group is supported,
 #' `agentPermissions`, which grants permission to perform actions required
-#' by the profiling agent, `ConfigureAgent` and `PostAgentProfile`
-#' permissions.
+#' by the profiling agent,
+#' [`configure_agent`][codeguruprofiler_configure_agent] and
+#' [`post_agent_profile`][codeguruprofiler_post_agent_profile] permissions.
 #' @param principals &#91;required&#93; A list ARNs for the roles and users you want to grant access to the
 #' profiling group. Wildcards are not are supported in the ARNs.
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group to grant access to.
@@ -1060,14 +1075,15 @@ codeguruprofiler_remove_notification_channel <- function(channelId, profilingGro
 #' @description
 #' Removes permissions from a profiling group's resource-based policy that
 #' are provided using an action group. The one supported action group that
-#' can be removed is `agentPermission` which grants `ConfigureAgent` and
-#' `PostAgent` permissions. For more information, see [Resource-based
-#' policies in CodeGuru
+#' can be removed is `agentPermission` which grants
+#' [`configure_agent`][codeguruprofiler_configure_agent] and `PostAgent`
+#' permissions. For more information, see [Resource-based policies in
+#' CodeGuru
 #' Profiler](https://docs.aws.amazon.com/codeguru/latest/profiler-ug/resource-based-policies.html)
 #' in the *Amazon CodeGuru Profiler User Guide*,
-#' [`ConfigureAgent`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html)
+#' [`configure_agent`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html)
 #' , and
-#' [`PostAgentProfile`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PostAgentProfile.html)
+#' [`post_agent_profile`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PostAgentProfile.html)
 #' .
 #'
 #' @usage
@@ -1076,8 +1092,9 @@ codeguruprofiler_remove_notification_channel <- function(channelId, profilingGro
 #'
 #' @param actionGroup &#91;required&#93; Specifies an action group that contains the permissions to remove from a
 #' profiling group's resource-based policy. One action group is supported,
-#' `agentPermissions`, which grants `ConfigureAgent` and `PostAgentProfile`
-#' permissions.
+#' `agentPermissions`, which grants
+#' [`configure_agent`][codeguruprofiler_configure_agent] and
+#' [`post_agent_profile`][codeguruprofiler_post_agent_profile] permissions.
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group.
 #' @param revisionId &#91;required&#93; A universally unique identifier (UUID) for the revision of the
 #' resource-based policy from which you want to remove permissions.

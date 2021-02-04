@@ -11,8 +11,8 @@ ec2_describe_image_attribute(Attribute, ImageId, DryRun)
 
 \strong{Note}: Depending on your account privileges, the \code{blockDeviceMapping}
 attribute may return a \code{Client.AuthFailure} error. If this happens, use
-DescribeImages to get information about the block device mapping for the
-AMI.}
+\code{\link[=ec2_describe_images]{describe_images}} to get information about the
+block device mapping for the AMI.}
 
 \item{ImageId}{[required] The ID of the AMI.}
 

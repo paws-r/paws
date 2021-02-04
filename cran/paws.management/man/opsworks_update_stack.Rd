@@ -73,7 +73,8 @@ returns a host name based on the current theme.}
 \item{DefaultAvailabilityZone}{The stack's default Availability Zone, which must be in the stack's
 region. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}. If
 you also specify a value for \code{DefaultSubnetId}, the subnet must be in
-the same zone. For more information, see CreateStack.}
+the same zone. For more information, see
+\code{\link[=opsworks_create_stack]{create_stack}}.}
 
 \item{DefaultSubnetId}{The stack's default VPC subnet ID. This parameter is required if you
 specify a value for the \code{VpcId} parameter. All instances are launched
@@ -155,7 +156,8 @@ installs that version on the stack's instances.
 The default setting is \code{LATEST}. To specify an agent version, you must
 use the complete version number, not the abbreviated number shown on the
 console. For a list of available agent version numbers, call
-DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
+\code{\link[=opsworks_describe_agent_versions]{describe_agent_versions}}.
+AgentVersion cannot be set to Chef 12.2.
 
 You can also specify an agent version when you create or update an
 instance, which overrides the stack's default setting.}

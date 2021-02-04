@@ -15,7 +15,7 @@ eks_describe_update(name, updateId, nodegroupName, addonName)
 \item{nodegroupName}{The name of the Amazon EKS node group associated with the update.}
 
 \item{addonName}{The name of the add-on. The name must match one of the names returned by
-\href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{ListAddons}}
+\href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{list_addons}}
 .}
 }
 \description{

@@ -19,10 +19,10 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Related actions include:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html}{CreateJob}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListJobs.html}{ListJobs}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobPriority.html}{UpdateJobPriority}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html}{UpdateJobStatus}
+\item \code{\link[=s3control_create_job]{create_job}}
+\item \code{\link[=s3control_list_jobs]{list_jobs}}
+\item \code{\link[=s3control_update_job_priority]{update_job_priority}}
+\item \code{\link[=s3control_update_job_status]{update_job_status}}
 }
 }
 \section{Request syntax}{

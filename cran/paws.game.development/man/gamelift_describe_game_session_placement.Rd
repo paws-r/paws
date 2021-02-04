@@ -15,17 +15,17 @@ Retrieves properties and current status of a game session placement
 request. To get game session placement details, specify the placement
 ID. If successful, a GameSessionPlacement object is returned.
 \itemize{
-\item CreateGameSession
-\item DescribeGameSessions
-\item DescribeGameSessionDetails
-\item SearchGameSessions
-\item UpdateGameSession
-\item GetGameSessionLogUrl
+\item \code{\link[=gamelift_create_game_session]{create_game_session}}
+\item \code{\link[=gamelift_describe_game_sessions]{describe_game_sessions}}
+\item \code{\link[=gamelift_describe_game_session_details]{describe_game_session_details}}
+\item \code{\link[=gamelift_search_game_sessions]{search_game_sessions}}
+\item \code{\link[=gamelift_update_game_session]{update_game_session}}
+\item \code{\link[=gamelift_get_game_session_log_url]{get_game_session_log_url}}
 \item Game session placements
 \itemize{
-\item StartGameSessionPlacement
-\item DescribeGameSessionPlacement
-\item StopGameSessionPlacement
+\item \code{\link[=gamelift_start_game_session_placement]{start_game_session_placement}}
+\item \code{\link[=gamelift_describe_game_session_placement]{describe_game_session_placement}}
+\item \code{\link[=gamelift_stop_game_session_placement]{stop_game_session_placement}}
 }
 }
 }

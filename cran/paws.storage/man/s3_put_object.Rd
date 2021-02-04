@@ -242,12 +242,12 @@ it stores all of the objects.
 
 For more information about versioning, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/AddingObjectstoVersioningEnabledBuckets.html}{Adding Objects to Versioning Enabled Buckets}.
 For information about returning the versioning state of a bucket, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html}{GetBucketVersioning}.
+\code{\link[=s3_get_bucket_versioning]{get_bucket_versioning}}.
 
 \strong{Related Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html}{CopyObject}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html}{DeleteObject}
+\item \code{\link[=s3_copy_object]{copy_object}}
+\item \code{\link[=s3_delete_object]{delete_object}}
 }
 }
 \section{Request syntax}{

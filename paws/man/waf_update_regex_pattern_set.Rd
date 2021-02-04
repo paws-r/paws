@@ -8,13 +8,15 @@ waf_update_regex_pattern_set(RegexPatternSetId, Updates, ChangeToken)
 }
 \arguments{
 \item{RegexPatternSetId}{[required] The \code{RegexPatternSetId} of the RegexPatternSet that you want to update.
-\code{RegexPatternSetId} is returned by CreateRegexPatternSet and by
-ListRegexPatternSets.}
+\code{RegexPatternSetId} is returned by
+\code{\link[=waf_create_regex_pattern_set]{create_regex_pattern_set}} and by
+\code{\link[=waf_list_regex_pattern_sets]{list_regex_pattern_sets}}.}
 
 \item{Updates}{[required] An array of \code{RegexPatternSetUpdate} objects that you want to insert into
 or delete from a RegexPatternSet.}
 
-\item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
+\item{ChangeToken}{[required] The value returned by the most recent call to
+\code{\link[=waf_get_change_token]{get_change_token}}.}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
@@ -47,11 +49,13 @@ To create and configure a \code{RegexPatternSet}, perform the following
 steps:
 \enumerate{
 \item Create a \code{RegexPatternSet.} For more information, see
-CreateRegexPatternSet.
-\item Use GetChangeToken to get the change token that you provide in the
-\code{ChangeToken} parameter of an \code{UpdateRegexPatternSet} request.
-\item Submit an \code{UpdateRegexPatternSet} request to specify the regular
-expression pattern that you want AWS WAF to watch for.
+\code{\link[=waf_create_regex_pattern_set]{create_regex_pattern_set}}.
+\item Use \code{\link[=waf_get_change_token]{get_change_token}} to get the change
+token that you provide in the \code{ChangeToken} parameter of an
+\code{\link[=waf_update_regex_pattern_set]{update_regex_pattern_set}} request.
+\item Submit an \code{\link[=waf_update_regex_pattern_set]{update_regex_pattern_set}}
+request to specify the regular expression pattern that you want AWS
+WAF to watch for.
 }
 
 For more information about how to use the AWS WAF API to allow or block

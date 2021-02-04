@@ -12,7 +12,8 @@ sns_set_topic_attributes(TopicArn, AttributeName, AttributeValue)
 \item{AttributeName}{[required] A map of attributes with their corresponding values.
 
 The following lists the names, descriptions, and values of the special
-request parameters that the \code{SetTopicAttributes} action uses:
+request parameters that the
+\code{\link[=sns_set_topic_attributes]{set_topic_attributes}} action uses:
 \itemize{
 \item \code{DeliveryPolicy} – The policy that defines how Amazon SNS retries
 failed deliveries to HTTP/S endpoints.
@@ -40,9 +41,7 @@ for FIFO topics.
 \item By default, \code{ContentBasedDeduplication} is set to \code{false}. If
 you create a FIFO topic and this attribute is \code{false}, you must
 specify a value for the \code{MessageDeduplicationId} parameter for
-the
-\href{https://docs.aws.amazon.com/sns/latest/api/API_Publish.html}{Publish}
-action.
+the \code{\link[=sns_publish]{publish}} action.
 \item When you set \code{ContentBasedDeduplication} to \code{true}, Amazon SNS
 uses a SHA-256 hash to generate the \code{MessageDeduplicationId}
 using the body of the message (but not the attributes of the
@@ -50,7 +49,7 @@ message).
 
 (Optional) To override the generated value, you can specify a
 value for the the \code{MessageDeduplicationId} parameter for the
-\code{Publish} action.
+\code{\link[=sns_publish]{publish}} action.
 }
 }}
 

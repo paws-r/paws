@@ -14,7 +14,7 @@ configuration.}
 
 \item{CurrentApplicationVersionId}{[required] Version of the application to which you want to add the output
 configuration. You can use the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+\code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation to get the current application version. If the version
 specified is not the current version, the
 \code{ConcurrentModificationException} is returned.}
@@ -48,7 +48,7 @@ analyze the errors. For more information, see \href{https://docs.aws.amazon.com/
 
 Any configuration update, including adding a streaming source using this
 operation, results in a new version of the application. You can use the
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html}{DescribeApplication}
+\code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation to find the current application version.
 
 For the limits on the number of application inputs and outputs you can

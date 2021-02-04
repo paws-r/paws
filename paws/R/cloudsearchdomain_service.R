@@ -8,12 +8,14 @@ NULL
 #' You use the AmazonCloudSearch2013 API to upload documents to a search
 #' domain and search those documents.
 #' 
-#' The endpoints for submitting `UploadDocuments`, `Search`, and `Suggest`
-#' requests are domain-specific. To get the endpoints for your domain, use
-#' the Amazon CloudSearch configuration service `DescribeDomains` action.
-#' The domain endpoints are also displayed on the domain dashboard in the
-#' Amazon CloudSearch console. You submit suggest requests to the search
-#' endpoint.
+#' The endpoints for submitting
+#' [`upload_documents`][cloudsearchdomain_upload_documents],
+#' [`search`][cloudsearchdomain_search], and
+#' [`suggest`][cloudsearchdomain_suggest] requests are domain-specific. To
+#' get the endpoints for your domain, use the Amazon CloudSearch
+#' configuration service `DescribeDomains` action. The domain endpoints are
+#' also displayed on the domain dashboard in the Amazon CloudSearch
+#' console. You submit suggest requests to the search endpoint.
 #' 
 #' For more information, see the [Amazon CloudSearch Developer
 #' Guide](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/).

@@ -28,7 +28,7 @@ To identify an asset property, you must specify one of the following:
 \item A \code{propertyAlias}, which is a data stream alias (for example,
 \verb{/company/windfarm/3/turbine/7/temperature}). To define an asset
 property's alias, see
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html}{UpdateAssetProperty}.
+\code{\link[=iotsitewise_update_asset_property]{update_asset_property}}.
 }
 }
 \section{Request syntax}{

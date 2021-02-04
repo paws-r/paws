@@ -21,7 +21,7 @@ Transcribe Medical.}
 your custom vocabulary. The URI must be in the same AWS Region as the
 resource that you are calling. The following is the format for a URI:
 
-\verb{https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt;}
+\verb{https://s3.<aws-region>.amazonaws.com/<bucket-name>/<keyprefix>/<objectkey>}
 
 For example:
 
@@ -36,8 +36,9 @@ Medical, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works
 \description{
 Updates a vocabulary with new values that you provide in a different
 text file from the one you used to create the vocabulary. The
-\code{UpdateMedicalVocabulary} operation overwrites all of the existing
-information with the values that you provide in the request.
+\code{\link[=transcribeservice_update_medical_vocabulary]{update_medical_vocabulary}}
+operation overwrites all of the existing information with the values
+that you provide in the request.
 }
 \section{Request syntax}{
 \preformatted{svc$update_medical_vocabulary(

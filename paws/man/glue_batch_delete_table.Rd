@@ -24,10 +24,12 @@ deletes these "orphaned" resources asynchronously in a timely manner, at
 the discretion of the service.
 
 To ensure the immediate deletion of all related resources, before
-calling \code{BatchDeleteTable}, use \code{DeleteTableVersion} or
-\code{BatchDeleteTableVersion}, and \code{DeletePartition} or
-\code{BatchDeletePartition}, to delete any resources that belong to the
-table.
+calling \code{\link[=glue_batch_delete_table]{batch_delete_table}}, use
+\code{\link[=glue_delete_table_version]{delete_table_version}} or
+\code{\link[=glue_batch_delete_table_version]{batch_delete_table_version}}, and
+\code{\link[=glue_delete_partition]{delete_partition}} or
+\code{\link[=glue_batch_delete_partition]{batch_delete_partition}}, to delete any
+resources that belong to the table.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_delete_table(

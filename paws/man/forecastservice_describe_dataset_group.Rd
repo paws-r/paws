@@ -10,12 +10,13 @@ forecastservice_describe_dataset_group(DatasetGroupArn)
 \item{DatasetGroupArn}{[required] The Amazon Resource Name (ARN) of the dataset group.}
 }
 \description{
-Describes a dataset group created using the CreateDatasetGroup
+Describes a dataset group created using the
+\code{\link[=forecastservice_create_dataset_group]{create_dataset_group}}
 operation.
 
 In addition to listing the parameters provided in the
-\code{CreateDatasetGroup} request, this operation includes the following
-properties:
+\code{\link[=forecastservice_create_dataset_group]{create_dataset_group}} request,
+this operation includes the following properties:
 \itemize{
 \item \code{DatasetArns} - The datasets belonging to the group.
 \item \code{CreationTime}

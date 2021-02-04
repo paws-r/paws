@@ -47,20 +47,20 @@ to abort a given multipart upload multiple times in order to completely
 free all storage consumed by all parts.
 
 To verify that all parts have been removed, so you don't get charged for
-the part storage, you should call the
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html}{ListParts}
+the part storage, you should call the \code{\link[=s3_list_parts]{list_parts}}
 operation and ensure that the parts list is empty.
 
 For information about permissions required to use the multipart upload
 API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html}{Multipart Upload API and Permissions}.
 
-The following operations are related to \code{AbortMultipartUpload}:
+The following operations are related to
+\code{\link[=s3_abort_multipart_upload]{abort_multipart_upload}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html}{CompleteMultipartUpload}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html}{ListParts}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html}{ListMultipartUploads}
+\item \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}
+\item \code{\link[=s3_upload_part]{upload_part}}
+\item \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}
+\item \code{\link[=s3_list_parts]{list_parts}}
+\item \code{\link[=s3_list_multipart_uploads]{list_multipart_uploads}}
 }
 }
 \section{Request syntax}{

@@ -31,14 +31,16 @@ Evaluation generates a relevant performance metric, such as BinaryAUC,
 RegressionRMSE or MulticlassAvgFScore based on the corresponding
 \code{MLModelType}: \code{BINARY}, \code{REGRESSION} or \code{MULTICLASS}.
 
-\code{CreateEvaluation} is an asynchronous operation. In response to
-\code{CreateEvaluation}, Amazon Machine Learning (Amazon ML) immediately
-returns and sets the evaluation status to \code{PENDING}. After the
-\code{Evaluation} is created and ready for use, Amazon ML sets the status to
-\code{COMPLETED}.
+\code{\link[=machinelearning_create_evaluation]{create_evaluation}} is an
+asynchronous operation. In response to
+\code{\link[=machinelearning_create_evaluation]{create_evaluation}}, Amazon Machine
+Learning (Amazon ML) immediately returns and sets the evaluation status
+to \code{PENDING}. After the \code{Evaluation} is created and ready for use,
+Amazon ML sets the status to \code{COMPLETED}.
 
-You can use the \code{GetEvaluation} operation to check progress of the
-evaluation during the creation operation.
+You can use the \code{\link[=machinelearning_get_evaluation]{get_evaluation}}
+operation to check progress of the evaluation during the creation
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$create_evaluation(

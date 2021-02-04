@@ -30,9 +30,10 @@ jobs whose name contains the specified string.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Descending}.}
 
-\item{NextToken}{If the result of the previous \code{ListTransformJobs} request was truncated,
-the response includes a \code{NextToken}. To retrieve the next set of
-transform jobs, use the token in the next request.}
+\item{NextToken}{If the result of the previous
+\code{\link[=sagemaker_list_transform_jobs]{list_transform_jobs}} request was
+truncated, the response includes a \code{NextToken}. To retrieve the next set
+of transform jobs, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of transform jobs to return in the response. The
 default value is \code{10}.}

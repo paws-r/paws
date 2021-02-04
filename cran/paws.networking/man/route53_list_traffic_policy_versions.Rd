@@ -12,15 +12,17 @@ route53_list_traffic_policy_versions(Id, TrafficPolicyVersionMarker,
 \item{Id}{[required] Specify the value of \code{Id} of the traffic policy for which you want to
 list all versions.}
 
-\item{TrafficPolicyVersionMarker}{For your first request to \code{ListTrafficPolicyVersions}, don't include the
-\code{TrafficPolicyVersionMarker} parameter.
+\item{TrafficPolicyVersionMarker}{For your first request to
+\code{\link[=route53_list_traffic_policy_versions]{list_traffic_policy_versions}},
+don't include the \code{TrafficPolicyVersionMarker} parameter.
 
 If you have more traffic policy versions than the value of \code{MaxItems},
-\code{ListTrafficPolicyVersions} returns only the first group of \code{MaxItems}
-versions. To get more traffic policy versions, submit another
-\code{ListTrafficPolicyVersions} request. For the value of
-\code{TrafficPolicyVersionMarker}, specify the value of
-\code{TrafficPolicyVersionMarker} in the previous response.}
+\code{\link[=route53_list_traffic_policy_versions]{list_traffic_policy_versions}}
+returns only the first group of \code{MaxItems} versions. To get more traffic
+policy versions, submit another
+\code{\link[=route53_list_traffic_policy_versions]{list_traffic_policy_versions}}
+request. For the value of \code{TrafficPolicyVersionMarker}, specify the
+value of \code{TrafficPolicyVersionMarker} in the previous response.}
 
 \item{MaxItems}{The maximum number of traffic policy versions that you want Amazon Route
 53 to include in the response body for this request. If the specified

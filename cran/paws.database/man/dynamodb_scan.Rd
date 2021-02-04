@@ -97,36 +97,39 @@ operation.
 The data type for \code{ExclusiveStartKey} must be String, Number or Binary.
 No set data types are allowed.
 
-In a parallel scan, a \code{Scan} request that includes \code{ExclusiveStartKey}
-must specify the same segment whose previous \code{Scan} returned the
-corresponding value of \code{LastEvaluatedKey}.}
+In a parallel scan, a \code{\link[=dynamodb_scan]{scan}} request that includes
+\code{ExclusiveStartKey} must specify the same segment whose previous
+\code{\link[=dynamodb_scan]{scan}} returned the corresponding value of
+\code{LastEvaluatedKey}.}
 
 \item{ReturnConsumedCapacity}{}
 
-\item{TotalSegments}{For a parallel \code{Scan} request, \code{TotalSegments} represents the total
-number of segments into which the \code{Scan} operation will be divided. The
-value of \code{TotalSegments} corresponds to the number of application
-workers that will perform the parallel scan. For example, if you want to
-use four application threads to scan a table or an index, specify a
+\item{TotalSegments}{For a parallel \code{\link[=dynamodb_scan]{scan}} request, \code{TotalSegments}
+represents the total number of segments into which the
+\code{\link[=dynamodb_scan]{scan}} operation will be divided. The value of
+\code{TotalSegments} corresponds to the number of application workers that
+will perform the parallel scan. For example, if you want to use four
+application threads to scan a table or an index, specify a
 \code{TotalSegments} value of 4.
 
 The value for \code{TotalSegments} must be greater than or equal to 1, and
 less than or equal to 1000000. If you specify a \code{TotalSegments} value of
-1, the \code{Scan} operation will be sequential rather than parallel.
+1, the \code{\link[=dynamodb_scan]{scan}} operation will be sequential rather than
+parallel.
 
 If you specify \code{TotalSegments}, you must also specify \code{Segment}.}
 
-\item{Segment}{For a parallel \code{Scan} request, \code{Segment} identifies an individual
-segment to be scanned by an application worker.
+\item{Segment}{For a parallel \code{\link[=dynamodb_scan]{scan}} request, \code{Segment} identifies an
+individual segment to be scanned by an application worker.
 
 Segment IDs are zero-based, so the first segment is always 0. For
 example, if you want to use four application threads to scan a table or
 an index, then the first thread specifies a \code{Segment} value of 0, the
 second thread specifies 1, and so on.
 
-The value of \code{LastEvaluatedKey} returned from a parallel \code{Scan} request
-must be used as \code{ExclusiveStartKey} with the same segment ID in a
-subsequent \code{Scan} operation.
+The value of \code{LastEvaluatedKey} returned from a parallel
+\code{\link[=dynamodb_scan]{scan}} request must be used as \code{ExclusiveStartKey} with
+the same segment ID in a subsequent \code{\link[=dynamodb_scan]{scan}} operation.
 
 The value for \code{Segment} must be greater than or equal to 0, and less
 than the value provided for \code{TotalSegments}.
@@ -145,9 +148,10 @@ not appear in the result.
 For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html}{Specifying Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
-\item{FilterExpression}{A string that contains conditions that DynamoDB applies after the \code{Scan}
-operation, but before the data is returned to you. Items that do not
-satisfy the \code{FilterExpression} criteria are not returned.
+\item{FilterExpression}{A string that contains conditions that DynamoDB applies after the
+\code{\link[=dynamodb_scan]{scan}} operation, but before the data is returned to
+you. Items that do not satisfy the \code{FilterExpression} criteria are not
+returned.
 
 A \code{FilterExpression} is applied after the items have already been read;
 the process of filtering does not consume any additional read capacity
@@ -216,12 +220,15 @@ in the \emph{Amazon DynamoDB Developer Guide}.}
 \item{ConsistentRead}{A Boolean value that determines the read consistency model during the
 scan:
 \itemize{
-\item If \code{ConsistentRead} is \code{false}, then the data returned from \code{Scan}
-might not contain the results from other recently completed write
-operations (\code{PutItem}, \code{UpdateItem}, or \code{DeleteItem}).
+\item If \code{ConsistentRead} is \code{false}, then the data returned from
+\code{\link[=dynamodb_scan]{scan}} might not contain the results from other
+recently completed write operations
+(\code{\link[=dynamodb_put_item]{put_item}},
+\code{\link[=dynamodb_update_item]{update_item}}, or
+\code{\link[=dynamodb_delete_item]{delete_item}}).
 \item If \code{ConsistentRead} is \code{true}, then all of the write operations that
-completed before the \code{Scan} began are guaranteed to be contained in
-the \code{Scan} response.
+completed before the \code{\link[=dynamodb_scan]{scan}} began are guaranteed to
+be contained in the \code{\link[=dynamodb_scan]{scan}} response.
 }
 
 The default setting for \code{ConsistentRead} is \code{false}.
@@ -231,9 +238,10 @@ indexes. If you scan a global secondary index with \code{ConsistentRead} set
 to true, you will receive a \code{ValidationException}.}
 }
 \description{
-The \code{Scan} operation returns one or more items and item attributes by
-accessing every item in a table or a secondary index. To have DynamoDB
-return fewer items, you can provide a \code{FilterExpression} operation.
+The \code{\link[=dynamodb_scan]{scan}} operation returns one or more items and item
+attributes by accessing every item in a table or a secondary index. To
+have DynamoDB return fewer items, you can provide a \code{FilterExpression}
+operation.
 
 If the total number of scanned items exceeds the maximum dataset size
 limit of 1 MB, the scan stops and results are returned to the user as a
@@ -241,24 +249,27 @@ limit of 1 MB, the scan stops and results are returned to the user as a
 The results also include the number of items exceeding the limit. A scan
 can result in no table data meeting the filter criteria.
 
-A single \code{Scan} operation reads up to the maximum number of items set
-(if using the \code{Limit} parameter) or a maximum of 1 MB of data and then
-apply any filtering to the results using \code{FilterExpression}. If
-\code{LastEvaluatedKey} is present in the response, you need to paginate the
-result set. For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination}{Paginating the Results}
+A single \code{\link[=dynamodb_scan]{scan}} operation reads up to the maximum
+number of items set (if using the \code{Limit} parameter) or a maximum of 1
+MB of data and then apply any filtering to the results using
+\code{FilterExpression}. If \code{LastEvaluatedKey} is present in the response,
+you need to paginate the result set. For more information, see
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination}{Paginating the Results}
 in the \emph{Amazon DynamoDB Developer Guide}.
 
-\code{Scan} operations proceed sequentially; however, for faster performance
-on a large table or secondary index, applications can request a parallel
-\code{Scan} operation by providing the \code{Segment} and \code{TotalSegments}
-parameters. For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan}{Parallel Scan}
+\code{\link[=dynamodb_scan]{scan}} operations proceed sequentially; however, for
+faster performance on a large table or secondary index, applications can
+request a parallel \code{\link[=dynamodb_scan]{scan}} operation by providing the
+\code{Segment} and \code{TotalSegments} parameters. For more information, see
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan}{Parallel Scan}
 in the \emph{Amazon DynamoDB Developer Guide}.
 
-\code{Scan} uses eventually consistent reads when accessing the data in a
-table; therefore, the result set might not include the changes to data
-in the table immediately before the operation began. If you need a
-consistent copy of the data, as of the time that the \code{Scan} begins, you
-can set the \code{ConsistentRead} parameter to \code{true}.
+\code{\link[=dynamodb_scan]{scan}} uses eventually consistent reads when accessing
+the data in a table; therefore, the result set might not include the
+changes to data in the table immediately before the operation began. If
+you need a consistent copy of the data, as of the time that the
+\code{\link[=dynamodb_scan]{scan}} begins, you can set the \code{ConsistentRead}
+parameter to \code{true}.
 }
 \section{Request syntax}{
 \preformatted{svc$scan(

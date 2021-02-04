@@ -20,9 +20,10 @@ product to import its findings into Security Hub.
 The maximum allowed size for a finding is 240 Kb. An error is returned
 for any finding larger than 240 Kb.
 
-After a finding is created, \code{BatchImportFindings} cannot be used to
-update the following finding fields and objects, which Security Hub
-customers use to manage their investigation workflow.
+After a finding is created,
+\code{\link[=securityhub_batch_import_findings]{batch_import_findings}} cannot be
+used to update the following finding fields and objects, which Security
+Hub customers use to manage their investigation workflow.
 \itemize{
 \item \code{Note}
 \item \code{UserDefinedFields}
@@ -30,11 +31,14 @@ customers use to manage their investigation workflow.
 \item \code{Workflow}
 }
 
-\code{BatchImportFindings} can be used to update the following finding fields
-and objects only if they have not been updated using
-\code{BatchUpdateFindings}. After they are updated using
-\code{BatchUpdateFindings}, these fields cannot be updated using
-\code{BatchImportFindings}.
+\code{\link[=securityhub_batch_import_findings]{batch_import_findings}} can be used
+to update the following finding fields and objects only if they have not
+been updated using
+\code{\link[=securityhub_batch_update_findings]{batch_update_findings}}. After they
+are updated using
+\code{\link[=securityhub_batch_update_findings]{batch_update_findings}}, these
+fields cannot be updated using
+\code{\link[=securityhub_batch_import_findings]{batch_import_findings}}.
 \itemize{
 \item \code{Confidence}
 \item \code{Criticality}

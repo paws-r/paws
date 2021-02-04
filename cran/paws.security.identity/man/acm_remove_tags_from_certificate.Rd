@@ -23,9 +23,11 @@ calling this function, the tag will be removed regardless of value. If
 you specify a value, the tag is removed only if it is associated with
 the specified value.
 
-To add tags to a certificate, use the AddTagsToCertificate action. To
-view all of the tags that have been applied to a specific ACM
-certificate, use the ListTagsForCertificate action.
+To add tags to a certificate, use the
+\code{\link[=acm_add_tags_to_certificate]{add_tags_to_certificate}} action. To view
+all of the tags that have been applied to a specific ACM certificate,
+use the \code{\link[=acm_list_tags_for_certificate]{list_tags_for_certificate}}
+action.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_tags_from_certificate(

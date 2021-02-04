@@ -31,9 +31,10 @@ specified time.}
 
 \item{SortOrder}{The sort order. The default value is \code{Descending}.}
 
-\item{NextToken}{If the previous call to \code{ListAssociations} didn't return the full set of
-associations, the call returns a token for getting the next set of
-associations.}
+\item{NextToken}{If the previous call to
+\code{\link[=sagemaker_list_associations]{list_associations}} didn't return the
+full set of associations, the call returns a token for getting the next
+set of associations.}
 
 \item{MaxResults}{The maximum number of associations to return in the response. The
 default value is 10.}

@@ -93,7 +93,7 @@ after the message is received and deleted.
 The maximum length of \code{MessageDeduplicationId} is 128 characters.
 \code{MessageDeduplicationId} can contain alphanumeric characters (\code{a-z},
 \code{A-Z}, \code{0-9}) and punctuation
-(\verb{!\\"#$\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~}).
+(\verb{!\\"#$\%&\\'()*+,-./:;<=>?@\\\[\\\\\]^_\\`\\\{|\\\}~}).
 
 For best practices of using \code{MessageDeduplicationId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html}{Using the MessageDeduplicationId Property}
 in the \emph{Amazon Simple Queue Service Developer Guide}.}
@@ -110,14 +110,15 @@ queue, but the session data of each user is processed in a FIFO fashion.
 \itemize{
 \item You must associate a non-empty \code{MessageGroupId} with a message. If
 you don't provide a \code{MessageGroupId}, the action fails.
-\item \code{ReceiveMessage} might return messages with multiple
-\code{MessageGroupId} values. For each \code{MessageGroupId}, the messages are
-sorted by time sent. The caller can't specify a \code{MessageGroupId}.
+\item \code{\link[=sqs_receive_message]{receive_message}} might return messages with
+multiple \code{MessageGroupId} values. For each \code{MessageGroupId}, the
+messages are sorted by time sent. The caller can't specify a
+\code{MessageGroupId}.
 }
 
 The length of \code{MessageGroupId} is 128 characters. Valid values:
 alphanumeric characters and punctuation
-\verb{(!\\"#$\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
+\verb{(!\\"#$\%&\\'()*+,-./:;<=>?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
 
 For best practices of using \code{MessageGroupId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html}{Using the MessageGroupId Property}
 in the \emph{Amazon Simple Queue Service Developer Guide}.

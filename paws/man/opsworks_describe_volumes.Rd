@@ -7,18 +7,21 @@
 opsworks_describe_volumes(InstanceId, StackId, RaidArrayId, VolumeIds)
 }
 \arguments{
-\item{InstanceId}{The instance ID. If you use this parameter, \code{DescribeVolumes} returns
-descriptions of the volumes associated with the specified instance.}
+\item{InstanceId}{The instance ID. If you use this parameter,
+\code{\link[=opsworks_describe_volumes]{describe_volumes}} returns descriptions of
+the volumes associated with the specified instance.}
 
 \item{StackId}{A stack ID. The action describes the stack's registered Amazon EBS
 volumes.}
 
-\item{RaidArrayId}{The RAID array ID. If you use this parameter, \code{DescribeVolumes} returns
-descriptions of the volumes associated with the specified RAID array.}
+\item{RaidArrayId}{The RAID array ID. If you use this parameter,
+\code{\link[=opsworks_describe_volumes]{describe_volumes}} returns descriptions of
+the volumes associated with the specified RAID array.}
 
-\item{VolumeIds}{Am array of volume IDs. If you use this parameter, \code{DescribeVolumes}
-returns descriptions of the specified volumes. Otherwise, it returns a
-description of every volume.}
+\item{VolumeIds}{Am array of volume IDs. If you use this parameter,
+\code{\link[=opsworks_describe_volumes]{describe_volumes}} returns descriptions of
+the specified volumes. Otherwise, it returns a description of every
+volume.}
 }
 \description{
 Describes an instance's Amazon EBS volumes.

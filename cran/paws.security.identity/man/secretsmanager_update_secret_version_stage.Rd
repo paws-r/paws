@@ -81,7 +81,8 @@ To run this command, you must have the following permissions:
 \strong{Related operations}
 \itemize{
 \item To get the list of staging labels that are currently associated with
-a version of a secret, use \verb{<a>DescribeSecret</a>} and examine the
+a version of a secret, use
+\code{\link[=secretsmanager_describe_secret]{describe_secret}} and examine the
 \code{SecretVersionsToStages} response value.
 }
 }

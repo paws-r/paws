@@ -204,12 +204,14 @@ The following procedure shows how to use HLS with Kinesis Video Streams:
 \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_GetDataEndpoint.html}{GetDataEndpoint},
 specifying \code{GET_HLS_STREAMING_SESSION_URL} for the \code{APIName}
 parameter.
-\item Retrieve the HLS URL using \code{GetHLSStreamingSessionURL}. Kinesis
-Video Streams creates an HLS streaming session to be used for
-accessing content in a stream using the HLS protocol.
-\code{GetHLSStreamingSessionURL} returns an authenticated URL (that
-includes an encrypted session token) for the session's HLS \emph{master
-playlist} (the root resource needed for streaming with HLS).
+\item Retrieve the HLS URL using
+\code{\link[=kinesisvideoarchivedmedia_get_hls_streaming_session_url]{get_hls_streaming_session_url}}.
+Kinesis Video Streams creates an HLS streaming session to be used
+for accessing content in a stream using the HLS protocol.
+\code{\link[=kinesisvideoarchivedmedia_get_hls_streaming_session_url]{get_hls_streaming_session_url}}
+returns an authenticated URL (that includes an encrypted session
+token) for the session's HLS \emph{master playlist} (the root resource
+needed for streaming with HLS).
 
 Don't share or store this token where an unauthorized entity could
 access it. The token provides access to the content of the stream.

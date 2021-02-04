@@ -44,8 +44,10 @@ Adds or updates an inline policy document that is embedded in the
 specified IAM user.
 
 An IAM user can also have a managed policy attached to it. To attach a
-managed policy to a user, use AttachUserPolicy. To create a new managed
-policy, use CreatePolicy. For information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
+managed policy to a user, use
+\code{\link[=iam_attach_user_policy]{attach_user_policy}}. To create a new managed
+policy, use \code{\link[=iam_create_policy]{create_policy}}. For information about
+policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 
 For information about limits on the number of inline policies that you
@@ -53,8 +55,8 @@ can embed in a user, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/
 in the \emph{IAM User Guide}.
 
 Because policy documents can be large, you should use POST rather than
-GET when calling \code{PutUserPolicy}. For general information about using
-the Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html}{Making Query Requests}
+GET when calling \code{\link[=iam_put_user_policy]{put_user_policy}}. For general
+information about using the Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html}{Making Query Requests}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

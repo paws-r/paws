@@ -21,7 +21,9 @@ The dedicated IP address that you specify must already exist, and must
 be associated with your Amazon Pinpoint account.
 
 The dedicated IP pool you specify must already exist. You can create a
-new pool by using the \code{CreateDedicatedIpPool} operation.
+new pool by using the
+\code{\link[=pinpointemail_create_dedicated_ip_pool]{create_dedicated_ip_pool}}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$put_dedicated_ip_in_pool(

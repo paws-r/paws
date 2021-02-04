@@ -9,7 +9,8 @@ cloudhsmv2_untag_resource(ResourceId, TagKeyList)
 }
 \arguments{
 \item{ResourceId}{[required] The cluster identifier (ID) for the cluster whose tags you are removing.
-To find the cluster ID, use DescribeClusters.}
+To find the cluster ID, use
+\code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 
 \item{TagKeyList}{[required] A list of one or more tag keys for the tags that you are removing.
 Specify only the tag keys, not the tag values.}

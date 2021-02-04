@@ -25,8 +25,8 @@ Outpost.
 
 Related actions include:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_DeleteEndpoint.html}{DeleteEndpoint}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_ListEndpoints.html}{ListEndpoints}
+\item \code{\link[=s3outposts_delete_endpoint]{delete_endpoint}}
+\item \code{\link[=s3outposts_list_endpoints]{list_endpoints}}
 }
 }
 \section{Request syntax}{

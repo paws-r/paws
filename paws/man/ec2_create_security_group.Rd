@@ -57,8 +57,10 @@ default rule that grants instances unrestricted network access to each
 other.
 
 You can add or remove rules from your security groups using
-AuthorizeSecurityGroupIngress, AuthorizeSecurityGroupEgress,
-RevokeSecurityGroupIngress, and RevokeSecurityGroupEgress.
+\code{\link[=ec2_authorize_security_group_ingress]{authorize_security_group_ingress}},
+\code{\link[=ec2_authorize_security_group_egress]{authorize_security_group_egress}},
+\code{\link[=ec2_revoke_security_group_ingress]{revoke_security_group_ingress}},
+and \code{\link[=ec2_revoke_security_group_egress]{revoke_security_group_egress}}.
 
 For more information about VPC security group limits, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html}{Amazon VPC Limits}.
 }
