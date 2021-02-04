@@ -208,7 +208,7 @@ comment <- function(s, char = "#") {
 #' 4. convert html to markdown with Pandoc
 #' 5. escape special characters
 #' 6. fix links within package documentation
-#' 6. finished documentation added to generated R code
+#' 7. finished documentation added to generated R code
 #'
 #' Unmatched quotes are escaped while still in html because it is easier to
 #' identify code snippets as they are all in <code></code> nodes.
@@ -282,7 +282,7 @@ clean_html_code <- function(node, links = c()) {
     parent <- xml2::xml_parent(node)
     if (xml2::xml_name(parent) == "a") {
       xml2::xml_text(node) <- internal_link$r_name
-      return()
+      return(NULL)
     }
 
     # Do add a link if this node is not within a link, or if the link is
@@ -293,7 +293,7 @@ clean_html_code <- function(node, links = c()) {
     xml2::xml_text(code) <- internal_link$r_name
     xml2::xml_add_child(link, code)
     xml2::xml_replace(node, link)
-    return()
+    return(NULL)
   }
 
   # Escape unmatched quotes in code snippets, which are invalid in Rd files.
@@ -327,14 +327,13 @@ clean_html_a <- function(node, links = c()) {
     xml2::xml_text(code) <- internal_link$r_name
     xml2::xml_add_child(link, code)
     xml2::xml_replace(node, link)
-    return()
+    return(NULL)
   }
 
-
   url <- xml2::xml_attr(node, "href")
-  if (length(url) == 0 || is.na(url)) return()
+  if (length(url) == 0 || is.na(url)) return(NULL)
 
-  if (startsWith(url, "mailto:")) return()
+  if (startsWith(url, "mailto:")) return(NULL)
 
   # Add hostname to relative AWS documentation links.
   if (!is.null(url) && grepl("^[a-zA-Z0-9\\-]+/", url)) {
