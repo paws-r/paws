@@ -240,6 +240,7 @@ convert <- function(docs, service = "", links = c()) {
     }
     result <- clean_html(docs, links)
     result <- html_to_markdown(result)
+    result <- clean_markdown(result)
     result <- escape_special_chars(result)
     result <- fix_internal_links(result)
     result
@@ -371,15 +372,15 @@ clean_html_dd <- function(node) {
 
 # Escape special characters % { }, and single \ not followed by another special
 # character. These cause problems in R documentation Rd files.
-# Do not escape \ when followed by:
-#   1. % { } \ ' " ` -- escaped special Rd or LaTeX characters
-#   2. * [ ] -- escaped markdown characters
-#   3. ~ -- ???
 # See https://developer.r-project.org/parseRd.pdf.
 escape_special_chars <- function(text) {
   result <- text
 
   # Single \ -- not following another \ and not preceding a special character
+  # Do not escape \ when followed by:
+  #   1. % { } \ ' " ` -- escaped special Rd or LaTeX characters
+  #   2. * [ ] -- escaped markdown characters
+  #   3. ~ -- ???
   result <- gsub("(?<!\\\\)\\\\(?![\\\\%{}'\"`\\*~\\[\\]])", "\\\\\\\\", result, perl = TRUE)
 
   # Special case: `\`
