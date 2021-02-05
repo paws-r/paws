@@ -235,12 +235,11 @@ convert <- function(docs, service = "", links = c()) {
   if (is.null(docs) || docs == "") return("")
   docs <- trimws(docs)
   cached_expr(list("convert", docs = docs, service = service), {
-    if (grepl("^<", docs)) {
-      html <- clean_html(docs, links)
-      result <- html_to_markdown(html)
-    } else {
-      result <- strsplit(docs, "\n")[[1]]
+    if (!grepl("^<", docs)) {
+      docs <- sprintf("<body>%s</body>", docs)
     }
+    result <- clean_html(docs, links)
+    result <- html_to_markdown(result)
     result <- escape_special_chars(result)
     result <- fix_internal_links(result)
     result
