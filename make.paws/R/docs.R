@@ -233,6 +233,7 @@ comment <- function(s, char = "#") {
 #' @noRd
 convert <- function(docs, service = "", links = c()) {
   if (is.null(docs) || docs == "") return("")
+  docs <- trimws(docs)
   cached_expr(list("convert", docs = docs, service = service), {
     if (grepl("^<", docs)) {
       html <- clean_html(docs, links)
