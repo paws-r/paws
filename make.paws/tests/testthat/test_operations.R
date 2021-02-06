@@ -10,6 +10,9 @@ test_that("make_operation", {
     input = list(
       shape = "InputShape"
     ),
+    output = list(
+      shape = "OutputShape"
+    ),
     documentation = "Foo."
   )
   api <- list(
@@ -28,7 +31,19 @@ test_that("make_operation", {
       ),
       Input1 = list(type = "string"),
       Input2 = list(type = "string"),
-      Input3 = list(type = "integer")
+      Input3 = list(type = "integer"),
+      OutputShape = list(
+        required = list(),
+        members = list(
+          Output1 = list(shape = "Output1"),
+          Output2 = list(shape = "Output2"),
+          Output3 = list(shape = "Output3")
+        ),
+        type = "structure"
+      ),
+      Output1 = list(type = "string"),
+      Output2 = list(type = "string"),
+      Output3 = list(type = "integer")
     )
   )
   a <- make_operation(operation, api)
@@ -53,6 +68,15 @@ test_that("make_operation", {
     #'   Input1 = \"string\",
     #'   Input2 = \"string\",
     #'   Input3 = 123
+    #' )
+    #' ```
+    #'
+    #' @section Response syntax:
+    #' ```
+    #' list(
+    #'   Output1 = \"string\",
+    #'   Output2 = \"string\",
+    #'   Output3 = 123
     #' )
     #' ```
     #'
