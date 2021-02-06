@@ -216,19 +216,16 @@ comment <- function(s, char = "#") {
 #' Likewise, we check the validity of links while in html because it is easy
 #' to find all <a> nodes.
 #'
-#' Special characters % { } \ are escaped after converting to html because
-#' this avoids any changes that would otherwise be made by Pandoc.
-#'
 #' @param docs An HTML string to be converted to Roxygen markdown.
-#' @param links An optional list of operation names, made with `get_links`.
-#'   If any links in the provided document have link text that matches one of
-#'   the operation names, the link will be changed to point to the operation's
-#'   R help topic.
 #' @param service An optional service name which is currently only used to
 #'   distinguish converted text between services in the cache. On rare
 #'   occasions, two services have identical inputs to `convert` but have
 #'   different outputs due to internal links with different targets,
 #'   e.g. "[foo][svc1_foo]" vs "[foo][svc2_foo]".
+#' @param links An optional list of operation names, made with `get_links`.
+#'   If any links in the provided document have link text that matches one of
+#'   the operation names, the link will be changed to point to the operation's
+#'   R help topic.
 #'
 #' @noRd
 convert <- function(docs, service = "", links = c()) {
@@ -241,8 +238,6 @@ convert <- function(docs, service = "", links = c()) {
     result <- clean_html(docs, links)
     result <- html_to_markdown(result)
     result <- clean_markdown(result)
-    result <- escape_special_chars(result)
-    result <- fix_internal_links(result)
     result
   })
 }
@@ -304,7 +299,7 @@ clean_html_code <- function(node, links = c()) {
   # R's Rd generator inserts garbage when it sees some un-escaped brackets
   # within code snippets. To avoid, add escaping backslashes. We need two
   # backslashes instead of one, since Pandoc converts "\[" to "[".
-  text <- mask(text, c("[" = "\\\\[", "]" = "\\\\]"))
+  # text <- mask(text, c("[" = "\\\\[", "]" = "\\\\]"))
 
   # Keep only the text of the code node, and not any children, e.g. <i> nodes.
   code <- xml2::xml_new_root("code")
@@ -370,40 +365,6 @@ clean_html_dd <- function(node) {
   xml2::xml_name(node) <- "p"
 }
 
-# Escape special characters % { }, and single \ not followed by another special
-# character. These cause problems in R documentation Rd files.
-# See https://developer.r-project.org/parseRd.pdf.
-escape_special_chars <- function(text) {
-  result <- text
-
-  # Single \ -- not following another \ and not preceding a special character
-  # Do not escape \ when followed by:
-  #   1. % { } \ ' " ` -- escaped special Rd or LaTeX characters
-  #   2. * [ ] -- escaped markdown characters
-  #   3. ~ -- ???
-  result <- gsub("(?<!\\\\)\\\\(?![\\\\%{}'\"`\\*~\\[\\]])", "\\\\\\\\", result, perl = TRUE)
-
-  # Special case: `\`
-  result <- gsub("`\\`", "`\\\\`", result, fixed = TRUE)
-
-  # Special characters -- not already escaped
-  for (char in c("{", "}")) {
-    result <- gsub(paste0("(?<!\\\\)", char), paste0("\\\\", char), result, perl = TRUE)
-  }
-
-  # Unicode character codes: \\uxxxx to `U+xxxx`
-  result <- gsub("\\\\\\\\u([0-9a-fA-F]{4})", "`U+\\1`", result)
-
-  # Control character codes: e.g. \n to `\\n`
-  result <- gsub("(\\\\)+([a-zA-Z])\\b", "`\\\\\\\\\\2`", result)
-
-  # @ symbol, escaped for Roxygen.
-  # See http://r-pkgs.had.co.nz/man.html#roxygen-comments.
-  result <- gsub("@", "@@", result)
-
-  result
-}
-
 # Escape unmatched characters.
 # R documentation will fail if there are unmatched quotes in code snippets.
 # See https://developer.r-project.org/parseRd.pdf.
@@ -417,6 +378,25 @@ escape_unmatched_quotes <- function(x) {
   result
 }
 
+# Fix misc issues with markdown that are not addressable by Pandoc.
+clean_markdown <- function(markdown) {
+  # Delete HTML comments leftover.
+  keep <- markdown != "<!-- -->"
+  result <- markdown[keep]
+
+  # Unicode character codes: \\uxxxx to `U+xxxx`
+  result <- gsub("\\\\\\\\u([0-9a-fA-F]{4})", "`U+\\1`", result)
+  result
+
+  # @ symbol, escaped for Roxygen.
+  # See http://r-pkgs.had.co.nz/man.html#roxygen-comments.
+  result <- gsub("@", "@@", result)
+
+  result <- fix_internal_links(result)
+
+  return(result)
+}
+
 # Pandoc cannot create reference links (e.g. [foo][help_url]) from HTML. To do
 # that, we search for what look like package reference links, e.g.
 # [foo](help_url), and change them to [foo][help_url].
@@ -424,15 +404,6 @@ fix_internal_links <- function(x) {
   link_text <- "(\\[.+\\])"
   link_url <- "\\(([a-z0-9_]+)\\)"
   result <- gsub(paste0(link_text, link_url), "\\1[\\2]", x)
-  result
-}
-
-# Remove extra lines that break roxygen2.
-# Preserve square brackets by converting to HTML character codes.
-clean_markdown <- function(markdown) {
-  keep <- markdown != "<!-- -->"
-  result <- markdown[keep]
-  result <- mask(result, c("\\[" = "&#91;", "\\]" = "&#93;"))
   result
 }
 
