@@ -207,8 +207,7 @@ comment <- function(s, char = "#") {
 #' 3. check whether links are valid and delete dead links
 #' 4. convert html to markdown with Pandoc
 #' 5. escape special characters
-#' 6. fix links within package documentation
-#' 7. finished documentation added to generated R code
+#' 6. fix within-package links
 #'
 #' Unmatched quotes are escaped while still in html because it is easier to
 #' identify code snippets as they are all in <code></code> nodes.
@@ -255,56 +254,16 @@ clean_html <- function(text, links = c()) {
 clean_html_node <- function(node, links = c()) {
   switch(
     xml2::xml_name(node),
-    code = clean_html_code(node, links),
     a = clean_html_a(node, links),
+    code = clean_html_code(node, links),
     dt = clean_html_dt(node),
-    dd = clean_html_dd(node)
+    dd = clean_html_dd(node),
+    text = clean_html_text(node)
   )
-  for (child in xml2::xml_children(node)) {
-    child <- clean_html_node(child, links)
+  for (child in xml2::xml_contents(node)) {
+    clean_html_node(child, links)
   }
   node
-}
-
-# Clean code elements.
-clean_html_code <- function(node, links = c()) {
-  text <- xml2::xml_text(node)
-
-  # Replace API operation names with links to corresponding R function names.
-  internal_link <- links[[trimws(text)]]
-  if (!is.null(internal_link)) {
-
-    # Don't add a link if this node is already within a link.
-    parent <- xml2::xml_parent(node)
-    if (xml2::xml_name(parent) == "a") {
-      xml2::xml_text(node) <- internal_link$r_name
-      return(NULL)
-    }
-
-    # Do add a link if this node is not within a link, or if the link is
-    # a child of this node.
-    link <- xml2::xml_new_root("a")
-    xml2::xml_attr(link, "href") <- internal_link$internal_r_name
-    code <- xml2::xml_new_root("code")
-    xml2::xml_text(code) <- internal_link$r_name
-    xml2::xml_add_child(link, code)
-    xml2::xml_replace(node, link)
-    return(NULL)
-  }
-
-  # Escape unmatched quotes in code snippets, which are invalid in Rd files.
-  # See https://developer.r-project.org/parseRd.pdf.
-  text <- escape_unmatched_quotes(text)
-
-  # R's Rd generator inserts garbage when it sees some un-escaped brackets
-  # within code snippets. To avoid, add escaping backslashes. We need two
-  # backslashes instead of one, since Pandoc converts "\[" to "[".
-  # text <- mask(text, c("[" = "\\\\[", "]" = "\\\\]"))
-
-  # Keep only the text of the code node, and not any children, e.g. <i> nodes.
-  code <- xml2::xml_new_root("code")
-  xml2::xml_text(code) <- text
-  xml2::xml_replace(node, code)
 }
 
 # Clean link elements.
@@ -355,6 +314,42 @@ clean_html_a <- function(node, links = c()) {
   xml2::xml_attr(node, "href") <- url
 }
 
+# Clean code elements.
+clean_html_code <- function(node, links = c()) {
+  text <- xml2::xml_text(node)
+
+  # Replace API operation names with links to corresponding R function names.
+  internal_link <- links[[trimws(text)]]
+  if (!is.null(internal_link)) {
+
+    # Don't add a link if this node is already within a link.
+    parent <- xml2::xml_parent(node)
+    if (xml2::xml_name(parent) == "a") {
+      xml2::xml_text(node) <- internal_link$r_name
+      return(NULL)
+    }
+
+    # Do add a link if this node is not within a link, or if the link is
+    # a child of this node.
+    link <- xml2::xml_new_root("a")
+    xml2::xml_attr(link, "href") <- internal_link$internal_r_name
+    code <- xml2::xml_new_root("code")
+    xml2::xml_text(code) <- internal_link$r_name
+    xml2::xml_add_child(link, code)
+    xml2::xml_replace(node, link)
+    return(NULL)
+  }
+
+  # Escape unmatched quotes in code snippets, which are invalid in Rd files.
+  # See https://developer.r-project.org/parseRd.pdf.
+  text <- escape_unmatched_quotes(text)
+
+  # Keep only the text of the code node, and not any children, e.g. <i> nodes.
+  code <- xml2::xml_new_root("code")
+  xml2::xml_text(code) <- text
+  xml2::xml_replace(node, code)
+}
+
 # Replace definition title nodes with header nodes.
 clean_html_dt <- function(node) {
   xml2::xml_name(node) <- "h3"
@@ -363,6 +358,12 @@ clean_html_dt <- function(node) {
 # Replace definition list nodes with paragraph nodes.
 clean_html_dd <- function(node) {
   xml2::xml_name(node) <- "p"
+}
+
+clean_html_text <- function(node) {
+  # Mask { and } to avoid problems in Roxygen LaTeX.
+  text <- xml2::xml_text(node)
+  xml2::xml_text(node) <- mask(text, c("{" = "\\{", "}" = "\\}"))
 }
 
 # Escape unmatched characters.
@@ -391,6 +392,9 @@ clean_markdown <- function(markdown) {
   # @ symbol, escaped for Roxygen.
   # See http://r-pkgs.had.co.nz/man.html#roxygen-comments.
   result <- gsub("@", "@@", result)
+
+  # Unmask { and }. Pandoc adds an extra \; when unmasked, this results in \{ and \}.
+  result <- unmask(result, c("{" = "\\{", "}" = "\\}"))
 
   result <- fix_internal_links(result)
 
