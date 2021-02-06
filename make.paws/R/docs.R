@@ -17,6 +17,7 @@ make_docs <- function(operation, api) {
       usage,
       params,
       request,
+      response,
       examples,
       "#' @keywords internal",
       rdname),
@@ -110,10 +111,22 @@ make_doc_request <- function(operation, api) {
 }
 
 # Return a string with a description of the operation's response.
-# TODO: Implement.
 make_doc_response <- function(operation, api) {
-  output <- operation$output
-  "#' @return"
+  func <- sprintf("svc$%s", get_operation_name(operation))
+  shape_name <- operation$output$shape
+  if (!is.null(shape_name)) {
+    shape <- make_shape(list(shape = shape_name), api)
+    args <- add_example_values(shape)
+    masks <- list("\\(" = "&#40;", "\\)" = "&#41;")
+    args <- mask(args, masks)
+    call <- list_to_string(args, quote = FALSE)
+    call <- unmask(clean_example(call), masks)
+    call <- paste("```", call, "```", sep = "\n")
+    accepted_params <- comment(paste(c("@section Response syntax:", call),
+                                     collapse = "\n"), "#'")
+    return(accepted_params)
+  }
+  return("")
 }
 
 # Return a string with an operation example's arguments.
