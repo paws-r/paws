@@ -334,7 +334,7 @@ test_that("make_doc_examples", {
     "#' svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
-    "#'     Qux = \"\\{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[\\{\\\"Sid\\\":\\\"Stmt1\\\",\\\"Effect\\\":...\"",
+    "#'     Qux = \"\\{\"Version\":\"2012-10-17\",\"Statement\":[\\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Action\":\"s3...\"",
     "#'   )",
     "#' )",
     "#' }",
@@ -420,6 +420,10 @@ test_that("convert", {
 
   text <- "<body><p>foo</p><p>bar</p></body>"
   expected <- c("foo", "", "bar")
+  expect_equal(convert(text), expected)
+
+  text <- "<code>foo</foo>"
+  expected <- "`foo`"
   expect_equal(convert(text), expected)
 
   text <- "<body><code>'foo</code></body>"
