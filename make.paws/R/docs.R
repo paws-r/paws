@@ -121,6 +121,7 @@ make_doc_example_args <- function(input) {
   if (length(input) == 0) return("")
   args <- paste(trimws(utils::capture.output(dput(input))), collapse = "")
   result <- gsub("^list\\((.*)\\)$", "\\1", args)
+  result <- gsub('\\\\+"', '"', result) # Delete escapes before quotes.
   return(result)
 }
 
