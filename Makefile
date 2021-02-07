@@ -20,7 +20,8 @@ export R_USER
 
 help:
 	@echo "  build              build the AWS SDK package"
-	@echo "  install            build and install the AWS SDK package"
+	@echo "  rebuild            clear the build cache and build"
+	@echo "  install            build and install the AWS SDK packages"
 	@echo "  common             build and install common functions"
 	@echo "  codegen            build and install the code generator"
 	@echo "  check              run R CMD check on packages"
@@ -32,9 +33,18 @@ help:
 
 build: build-full build-cran
 
+rebuild: clean build
+
 install: build
-	@echo "install the AWS SDK package"
-	@Rscript -e "devtools::install('${OUT_DIR}', upgrade = FALSE, quiet = TRUE)"
+	@echo "install the AWS SDK packages"
+	@for package in ${CRAN_DIR}/*/; do \
+		if [ "$$package" = "${CRAN_DIR}/paws/" ]; then continue; fi; \
+		echo "- $$(basename $$package)"; \
+		Rscript -e "devtools::install('$$package', upgrade = FALSE, quiet = TRUE)"; \
+	done;
+	@echo "- paws"
+	@Rscript -e "devtools::install('${CRAN_DIR}/paws', upgrade = FALSE, quiet = TRUE)";
+	@echo "done"
 
 build-full: codegen
 	@echo "build the AWS SDK package"

@@ -16,7 +16,6 @@ make_sdk <- function(in_dir = "./vendor/aws-sdk-js", out_dir = "./paws",
       cat(paste0(api, "\n"))
       write_sdk_for_api(api, in_dir, out_dir)
     }
-    write_documentation(out_dir)
     return(invisible(TRUE))
   })
 }

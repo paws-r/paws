@@ -135,6 +135,7 @@ make_doc_example_args <- function(input) {
   if (length(input) == 0) return("")
   args <- paste(trimws(utils::capture.output(dput(input))), collapse = "")
   result <- gsub("^list\\((.*)\\)$", "\\1", args)
+  result <- gsub('\\\\+"', '"', result) # Delete escapes before quotes.
   return(result)
 }
 
@@ -221,8 +222,7 @@ comment <- function(s, char = "#") {
 #' 3. check whether links are valid and delete dead links
 #' 4. convert html to markdown with Pandoc
 #' 5. escape special characters
-#' 6. fix links within package documentation
-#' 7. finished documentation added to generated R code
+#' 6. fix within-package links
 #'
 #' Unmatched quotes are escaped while still in html because it is easier to
 #' identify code snippets as they are all in <code></code> nodes.
@@ -230,32 +230,28 @@ comment <- function(s, char = "#") {
 #' Likewise, we check the validity of links while in html because it is easy
 #' to find all <a> nodes.
 #'
-#' Special characters % { } \ are escaped after converting to html because
-#' this avoids any changes that would otherwise be made by Pandoc.
-#'
 #' @param docs An HTML string to be converted to Roxygen markdown.
-#' @param links An optional list of operation names, made with `get_links`.
-#'   If any links in the provided document have link text that matches one of
-#'   the operation names, the link will be changed to point to the operation's
-#'   R help topic.
 #' @param service An optional service name which is currently only used to
 #'   distinguish converted text between services in the cache. On rare
 #'   occasions, two services have identical inputs to `convert` but have
 #'   different outputs due to internal links with different targets,
 #'   e.g. "[foo][svc1_foo]" vs "[foo][svc2_foo]".
+#' @param links An optional list of operation names, made with `get_links`.
+#'   If any links in the provided document have link text that matches one of
+#'   the operation names, the link will be changed to point to the operation's
+#'   R help topic.
 #'
 #' @noRd
 convert <- function(docs, service = "", links = c()) {
   if (is.null(docs) || docs == "") return("")
+  docs <- trimws(docs)
   cached_expr(list("convert", docs = docs, service = service), {
-    if (grepl("^<", docs)) {
-      html <- clean_html(docs, links)
-      result <- html_to_markdown(html)
-    } else {
-      result <- strsplit(docs, "\n")[[1]]
+    if (!grepl("^<", docs)) {
+      docs <- sprintf("<body>%s</body>", docs)
     }
-    result <- escape_special_chars(result)
-    result <- fix_internal_links(result)
+    result <- clean_html(docs, links)
+    result <- html_to_markdown(result)
+    result <- clean_markdown(result)
     result
   })
 }
@@ -273,13 +269,14 @@ clean_html <- function(text, links = c()) {
 clean_html_node <- function(node, links = c()) {
   switch(
     xml2::xml_name(node),
-    code = clean_html_code(node, links),
     a = clean_html_a(node, links),
+    code = clean_html_code(node, links),
     dt = clean_html_dt(node),
-    dd = clean_html_dd(node)
+    dd = clean_html_dd(node),
+    text = clean_html_text(node)
   )
-  for (child in xml2::xml_children(node)) {
-    child <- clean_html_node(child, links)
+  for (child in xml2::xml_contents(node)) {
+    clean_html_node(child, links)
   }
   node
 }
@@ -310,14 +307,10 @@ clean_html_code <- function(node, links = c()) {
     return(NULL)
   }
 
-  # Escape unmatched quotes in code snippets, which are invalid in Rd files.
-  # See https://developer.r-project.org/parseRd.pdf.
-  text <- escape_unmatched_quotes(text)
-
-  # R's Rd generator inserts garbage when it sees some un-escaped brackets
-  # within code snippets. To avoid, add escaping backslashes. We need two
-  # backslashes instead of one, since Pandoc converts "\[" to "[".
-  text <- mask(text, c("[" = "\\\\[", "]" = "\\\\]"))
+  # Escape unmatched quotes and curly braces in code fragments, which are
+  # invalid in Rd files. See https://developer.r-project.org/parseRd.pdf.
+  text <- escape_unmatched_chars(text, c('"', "'", "`"))
+  text <- escape_unmatched_pairs(text, c("{" = "}"))
 
   # Keep only the text of the code node, and not any children, e.g. <i> nodes.
   code <- xml2::xml_new_root("code")
@@ -383,51 +376,61 @@ clean_html_dd <- function(node) {
   xml2::xml_name(node) <- "p"
 }
 
-# Escape special characters % { }, and single \ not followed by another special
-# character. These cause problems in R documentation Rd files.
-# Do not escape \ when followed by:
-#   1. % { } \ ' " ` -- escaped special Rd or LaTeX characters
-#   2. * [ ] -- escaped markdown characters
-#   3. ~ -- ???
-# See https://developer.r-project.org/parseRd.pdf.
-escape_special_chars <- function(text) {
-  result <- text
-
-  # Single \ -- not following another \ and not preceding a special character
-  result <- gsub("(?<!\\\\)\\\\(?![\\\\%{}'\"`\\*~\\[\\]])", "\\\\\\\\", result, perl = TRUE)
-
-  # Special case: `\`
-  result <- gsub("`\\`", "`\\\\`", result, fixed = TRUE)
-
-  # Special characters -- not already escaped
-  for (char in c("{", "}")) {
-    result <- gsub(paste0("(?<!\\\\)", char), paste0("\\\\", char), result, perl = TRUE)
-  }
-
-  # Unicode character codes: \\uxxxx to `U+xxxx`
-  result <- gsub("\\\\\\\\u([0-9a-fA-F]{4})", "`U+\\1`", result)
-
-  # Control character codes: e.g. \n to `\\n`
-  result <- gsub("(\\\\)+([a-zA-Z])\\b", "`\\\\\\\\\\2`", result)
-
-  # @ symbol, escaped for Roxygen.
-  # See http://r-pkgs.had.co.nz/man.html#roxygen-comments.
-  result <- gsub("@", "@@", result)
-
-  result
+clean_html_text <- function(node) {
+  # Mask { and } to avoid problems in Roxygen LaTeX.
+  text <- xml2::xml_text(node)
+  xml2::xml_text(node) <- mask(text, c("{" = "\\{", "}" = "\\}"))
 }
 
 # Escape unmatched characters.
 # R documentation will fail if there are unmatched quotes in code snippets.
 # See https://developer.r-project.org/parseRd.pdf.
-escape_unmatched_quotes <- function(x) {
+escape_unmatched_chars <- function(x, chars) {
   result <- x
-  for (char in c("'", '"', "`")) {
+  for (char in chars) {
     if (stringr::str_count(result, stringr::fixed(char)) %% 2 != 0) {
       result <- gsub(char, paste0("\\", char), result, fixed = TRUE)
     }
   }
   result
+}
+
+escape_unmatched_pairs <- function(x, pairs) {
+  result <- x
+  count <- function(string, char) stringr::str_count(string, stringr::fixed(char))
+  for (i in seq_along(pairs)) {
+    a <- names(pairs)[i]
+    b <- pairs[i]
+    if (count(result, a) != count(result, b)) {
+      result <- gsub(a, paste0("\\", a), result, fixed = TRUE)
+      result <- gsub(b, paste0("\\", b), result, fixed = TRUE)
+    }
+  }
+  result
+}
+
+# Fix misc issues with markdown that are not addressable by Pandoc.
+clean_markdown <- function(markdown) {
+  # Delete HTML comments leftover.
+  keep <- markdown != "<!-- -->"
+  result <- markdown[keep]
+
+  # Unicode character codes: \\uxxxx to `U+xxxx`
+  result <- gsub("\\\\\\\\u([0-9a-fA-F]{4})", "`U+\\1`", result)
+
+  # @ symbol, escaped for Roxygen.
+  # See http://r-pkgs.had.co.nz/man.html#roxygen-comments.
+  result <- gsub("@", "@@", result)
+
+  # Convert \\{ and \\} back to \{ and \}. Pandoc adds an extra \.
+  result <- unmask(result, c("\\{" = "\\\\{", "\\}" = "\\\\}"))
+
+  # Convert \_ to _. Pandoc adds an \.
+  result <- gsub("\\_", "_", result, fixed = TRUE)
+
+  result <- fix_internal_links(result)
+
+  return(result)
 }
 
 # Pandoc cannot create reference links (e.g. [foo][help_url]) from HTML. To do
@@ -437,15 +440,6 @@ fix_internal_links <- function(x) {
   link_text <- "(\\[.+\\])"
   link_url <- "\\(([a-z0-9_]+)\\)"
   result <- gsub(paste0(link_text, link_url), "\\1[\\2]", x)
-  result
-}
-
-# Remove extra lines that break roxygen2.
-# Preserve square brackets by converting to HTML character codes.
-clean_markdown <- function(markdown) {
-  keep <- markdown != "<!-- -->"
-  result <- markdown[keep]
-  result <- mask(result, c("\\[" = "&#91;", "\\]" = "&#93;"))
   result
 }
 
@@ -475,9 +469,12 @@ list_to_string <- function(x, quote = TRUE) {
 
 # Returns the title of an operation (the first sentence of its description).
 get_operation_title <- function(operation) {
-  docs <- paste(html_to_text(operation$documentation), collapse = " ")
-  docs <- gsub(" +", " ", docs)
-  title <- first_sentence(docs)
+  docs <- html_to_text(operation$documentation)
+  blank_line <- which(docs == "")
+  first_paragraph <- ifelse(length(blank_line) >= 1, blank_line[1] - 1, length(docs))
+  paragraph <- paste(docs[1:first_paragraph], collapse = " ")
+  paragraph <- gsub(" +", " ", paragraph)
+  title <- first_sentence(paragraph)
   title <- mask(title, c("[" = "&#91;", "]" = "&#93;"))
   if (length(title) == 0 || title == "") {
     title <- gsub("_", " ", get_operation_name(operation))

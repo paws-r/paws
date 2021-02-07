@@ -20,6 +20,10 @@ test_that("make_doc_title", {
   operation <- list(documentation = "<p>A really long description which is over 80 characters wide and will get cut off by the automatic line wrapping when converted from HTML to Markdown. Here is another sentence.</p>")
   expected <- "#' A really long description which is over 80 characters wide and will get\n#' cut off by the automatic line wrapping when converted from HTML to\n#' Markdown"
   expect_equal(make_doc_title(operation), expected)
+
+  operation <- list(documentation = "<p>foo</p><p>bar</p><p>baz</p>")
+  expected <- "#' foo"
+  expect_equal(make_doc_title(operation), expected)
 })
 
 test_that("make_doc_desc", {
@@ -411,7 +415,7 @@ test_that("make_doc_examples", {
     "#' svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
-    "#'     Qux = \"\\{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[\\{\\\"Sid\\\":\\\"Stmt1\\\",\\\"Effect\\\":...\"",
+    "#'     Qux = \"\\{\"Version\":\"2012-10-17\",\"Statement\":[\\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Action\":\"s3...\"",
     "#'   )",
     "#' )",
     "#' }",
@@ -480,35 +484,6 @@ test_that("make_doc_examples", {
   expect_equal(actual, expected)
 })
 
-test_that("clean_markdown", {
-  text <- ""
-  expect_equal(clean_markdown(text), text)
-
-  text <- "foo"
-  expect_equal(clean_markdown(text), text)
-
-  text <- "\\[foo\\]"
-  expected <- "&#91;foo&#93;"
-  expect_equal(clean_markdown(text), expected)
-
-  text <- "[foo]"
-  expect_equal(clean_markdown(text), text)
-
-  lines <- ""
-  expect_equal(clean_markdown(lines), lines)
-
-  lines <- c("foo", "bar", "baz")
-  expect_equal(clean_markdown(lines), lines)
-
-  lines <- c("foo", "bar", "<!-- -->", "baz")
-  expected <- c("foo", "bar", "baz")
-  expect_equal(clean_markdown(lines), expected)
-
-  lines <- c("\\[foo\\]", "bar", "baz")
-  expected <- c("&#91;foo&#93;", "bar", "baz")
-  expect_equal(clean_markdown(lines), expected)
-})
-
 test_that("convert", {
   text <- NULL
   expected <- ""
@@ -528,11 +503,20 @@ test_that("convert", {
   expected <- c("foo", "", "bar")
   expect_equal(convert(text), expected)
 
-  text <- "`foo`"
-  expect_equal(convert(text), text)
+  text <- "<dt>Description</dt><dd>Definition.</dd>"
+  expected <- c("### Description", "", "Definition.")
+  expect_equal(convert(text), expected)
+
+  text <- "<code>foo</foo>"
+  expected <- "`foo`"
+  expect_equal(convert(text), expected)
 
   text <- "<body><code>'foo</code></body>"
   expected <- "`\\'foo`"
+  expect_equal(convert(text), expected)
+
+  text <- "<body><code>{foo</code></body>"
+  expected <- "`\\{foo`"
   expect_equal(convert(text), expected)
 
   text <- "<body>\\'{</body>"
@@ -551,6 +535,10 @@ test_that("convert", {
   expected <- "*"
   expect_equal(convert(text), expected)
 
+  text <- "<body>foo_bar</body>"
+  expected <- "foo_bar"
+  expect_equal(convert(text), expected)
+
   text <- "<body>foo \\bar { \\u0123 <code>baz'</code></body>"
   expected <- "foo \\\\bar \\{ `U+0123` `baz\\'`"
   expect_equal(convert(text), expected)
@@ -566,10 +554,12 @@ test_that("convert", {
   expected <- c("foo", "", "bar`\\'baz`")
   expect_equal(convert(text), expected)
 
-  text <- "<p>foo \\a \\b</p>"
-  expected <- c("foo `\\\\a` `\\\\b`")
+  text <- "<p><code>{foo</code>}</p>"
+  expected <- "`\\{foo`\\}"
   expect_equal(convert(text), expected)
+})
 
+test_that("check links", {
   text <- "<a href='http://www.example.com'>foo</a>"
   expected <- c("[foo](http://www.example.com/)")
   expect_equal(convert(text), expected)
@@ -605,11 +595,9 @@ test_that("convert", {
   text <- "<a href='https://httpbin.org/anything#foo?bar=baz'>foo</a>"
   expected <- c("[foo](https://httpbin.org/anything#foo?bar=baz)")
   expect_equal(convert(text), expected)
+})
 
-  text <- "<dt>Description</dt><dd>Definition.</dd>"
-  expected <- c("### Description", "", "Definition.")
-  expect_equal(convert(text), expected)
-
+test_that("convert within-package links", {
   text <- "<a>Foo</a>"
   links <- list(Foo = list(r_name = "foo", internal_r_name = "bar_foo"))
   expected <- c("[`foo`][bar_foo]")
@@ -651,32 +639,16 @@ test_that("first_sentence", {
   expect_equal(first_sentence("foo. bar."), "foo")
 })
 
-test_that("escape_unmatched_quotes", {
-  expect_equal(escape_unmatched_quotes("'foo'"), "'foo'")
-  expect_equal(escape_unmatched_quotes("'foo"), "\\'foo")
-  expect_equal(escape_unmatched_quotes("foo'"), "foo\\'")
-  expect_equal(escape_unmatched_quotes("foo"), "foo")
-  expect_equal(escape_unmatched_quotes(""), "")
-})
+test_that("escape_unmatched", {
+  chars <- c('"', "'", "`")
+  expect_equal(escape_unmatched_chars("'foo'", chars), "'foo'")
+  expect_equal(escape_unmatched_chars("'foo", chars), "\\'foo")
+  expect_equal(escape_unmatched_chars("foo'", chars), "foo\\'")
+  expect_equal(escape_unmatched_chars("foo", chars), "foo")
+  expect_equal(escape_unmatched_chars("", chars), "")
 
-test_that("clean_markdown", {
-  text <- ""
-  expect_equal(clean_markdown(text), text)
-
-  text <- "foo"
-  expect_equal(clean_markdown(text), text)
-
-  text <- "\\[foo\\]"
-  expected <- "&#91;foo&#93;"
-  expect_equal(clean_markdown(text), expected)
-
-  text <- "[foo]"
-  expect_equal(clean_markdown(text), text)
-
-  lines <- c("foo", "bar", "baz")
-  expect_equal(clean_markdown(lines), lines)
-
-  lines <- c("foo", "bar", "<!-- -->", "baz")
-  expected <- c("foo", "bar", "baz")
-  expect_equal(clean_markdown(lines), expected)
+  pairs <- c("{" = "}")
+  expect_equal(escape_unmatched_pairs("{foo}", pairs), "{foo}")
+  expect_equal(escape_unmatched_pairs("{foo", pairs), "\\{foo")
+  expect_equal(escape_unmatched_pairs("{{foo}", pairs), "\\{\\{foo\\}")
 })
