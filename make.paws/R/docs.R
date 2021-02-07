@@ -403,7 +403,6 @@ clean_markdown <- function(markdown) {
 
   # Unicode character codes: \\uxxxx to `U+xxxx`
   result <- gsub("\\\\\\\\u([0-9a-fA-F]{4})", "`U+\\1`", result)
-  result
 
   # @ symbol, escaped for Roxygen.
   # See http://r-pkgs.had.co.nz/man.html#roxygen-comments.
