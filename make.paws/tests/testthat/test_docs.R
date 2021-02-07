@@ -132,7 +132,7 @@ test_that("make_doc_request", {
   expect_equal(actual, expected)
 })
 
-test_that("make_doc_response", {
+test_that("make_doc_value", {
   operation <- list(
     name = "operation",
     output = list(
@@ -193,9 +193,10 @@ test_that("make_doc_response", {
     )
   )
 
-  actual <- make_doc_response(operation, api)
+  actual <- make_doc_value(operation, api)
   expected <- paste(
-    "#' @section Response syntax:",
+    "#' @return",
+    "#' A list with the following syntax:",
     "#' ```",
     "#' list(",
     "#'   Foo = \"string\",",

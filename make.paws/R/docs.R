@@ -7,8 +7,8 @@ make_docs <- function(operation, api) {
   description <- make_doc_desc(operation, api)
   usage <- make_doc_usage(operation, api)
   params <- make_doc_params(operation, api)
+  value <- make_doc_value(operation, api)
   request <- make_doc_request(operation, api)
-  response <- make_doc_response(operation, api)
   examples <- make_doc_examples(operation, api)
   rdname <- make_doc_rdname(operation, api)
   docs <- glue::glue_collapse(
@@ -16,8 +16,8 @@ make_docs <- function(operation, api) {
       description,
       usage,
       params,
+      value,
       request,
-      response,
       examples,
       "#' @keywords internal",
       rdname),
@@ -111,7 +111,7 @@ make_doc_request <- function(operation, api) {
 }
 
 # Return a string with a description of the operation's response.
-make_doc_response <- function(operation, api) {
+make_doc_value <- function(operation, api) {
   func <- sprintf("svc$%s", get_operation_name(operation))
   shape_name <- operation$output$shape
   if (!is.null(shape_name)) {
@@ -122,8 +122,9 @@ make_doc_response <- function(operation, api) {
     call <- list_to_string(args, quote = FALSE)
     call <- unmask(clean_example(call), masks)
     call <- paste("```", call, "```", sep = "\n")
-    accepted_params <- comment(paste(c("@section Response syntax:", call),
-                                     collapse = "\n"), "#'")
+    overview <- "A list with the following syntax:"
+    accepted_params <-
+      comment(paste(c("@return", overview, call), collapse = "\n"), "#'")
     return(accepted_params)
   }
   return("")

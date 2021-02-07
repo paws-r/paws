@@ -62,21 +62,22 @@ test_that("make_operation", {
     #' @param Input2
     #' @param Input3
     #'
+    #' @return
+    #' A list with the following syntax:
+    #' ```
+    #' list(
+    #'   Output1 = \"string\",
+    #'   Output2 = \"string\",
+    #'   Output3 = 123
+    #' )
+    #' ```
+    #'
     #' @section Request syntax:
     #' ```
     #' svc$operation(
     #'   Input1 = \"string\",
     #'   Input2 = \"string\",
     #'   Input3 = 123
-    #' )
-    #' ```
-    #'
-    #' @section Response syntax:
-    #' ```
-    #' list(
-    #'   Output1 = \"string\",
-    #'   Output2 = \"string\",
-    #'   Output3 = 123
     #' )
     #' ```
     #'
