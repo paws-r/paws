@@ -123,9 +123,9 @@ make_doc_value <- function(operation, api) {
     call <- unmask(clean_example(call), masks)
     call <- paste("```", call, "```", sep = "\n")
     overview <- "A list with the following syntax:"
-    accepted_params <-
+    response_value <-
       comment(paste(c("@return", overview, call), collapse = "\n"), "#'")
-    return(accepted_params)
+    return(response_value)
   }
   return("")
 }
