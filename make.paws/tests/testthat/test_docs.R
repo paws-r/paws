@@ -400,7 +400,8 @@ test_that("make_doc_examples", {
         input = list(
           "Foo" = "bar",
           "Baz" = list(
-            "Qux" = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Action\":\"s3:*\",\"Resource\":\"*\"}]"
+            "Qux" = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Action\":\"s3:*\",\"Resource\":\"*\"}]",
+            "Quux" = 123
           )
         ),
         description = "A very long string"
@@ -415,7 +416,8 @@ test_that("make_doc_examples", {
     "#' svc$operation(",
     "#'   Foo = \"bar\",",
     "#'   Baz = list(",
-    "#'     Qux = \"\\{\"Version\":\"2012-10-17\",\"Statement\":[\\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Action\":\"s3...\"",
+    "#'     Qux = \"\\{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[\\{\\\"Sid\\\":\\\"Stmt1\\\",\\\"Effect\\\":\\\"Allow\\\",\\\"Acti...\",",
+    "#'     Quux = 123",
     "#'   )",
     "#' )",
     "#' }",
