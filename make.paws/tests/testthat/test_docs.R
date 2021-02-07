@@ -132,6 +132,87 @@ test_that("make_doc_request", {
   expect_equal(actual, expected)
 })
 
+test_that("make_doc_value", {
+  operation <- list(
+    name = "operation",
+    output = list(
+      shape = "OperationShape"
+    )
+  )
+  api <- list(
+    metadata = list(
+      serviceAbbreviation = "api"
+    ),
+    shapes = list(
+      OperationShape = list(
+        type = "structure",
+        members = list(
+          Foo = list(
+            shape = "FooShape"
+          ),
+          Bar = list(
+            shape = "BarShape"
+          )
+        )
+      ),
+      FooShape = list(
+        type = "string"
+      ),
+      BarShape = list(
+        type = "structure",
+        members = list(
+          Baz = list(
+            shape = "BazShape"
+          ),
+          Qux = list(
+            shape = "QuxShape"
+          ),
+          Quux = list(
+            shape = "QuuxShape"
+          ),
+          Quuz = list(
+            shape = "QuuzShape"
+          )
+        )
+      ),
+      BazShape = list(
+        type = "integer"
+      ),
+      QuxShape = list(
+        type = "double"
+      ),
+      QuuxShape = list(
+        type = "boolean"
+      ),
+      QuuzShape = list(
+        type = "enum",
+        enum = list(
+          "a", "b", "c"
+        )
+      )
+    )
+  )
+
+  actual <- make_doc_value(operation, api)
+  expected <- paste(
+    "#' @return",
+    "#' A list with the following syntax:",
+    "#' ```",
+    "#' list(",
+    "#'   Foo = \"string\",",
+    "#'   Bar = list(",
+    "#'     Baz = 123,",
+    "#'     Qux = 123.0,",
+    "#'     Quux = TRUE|FALSE,",
+    "#'     Quuz = \"a\"|\"b\"|\"c\"",
+    "#'   )",
+    "#' )",
+    "#' ```",
+    sep = "\n"
+  )
+  expect_equal(actual, expected)
+})
+
 test_that("make_doc_params", {
   # Operation with no parameters.
   operation <- list()
