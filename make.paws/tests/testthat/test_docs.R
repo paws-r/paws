@@ -426,6 +426,10 @@ test_that("convert", {
   expected <- "`\\'foo`"
   expect_equal(convert(text), expected)
 
+  text <- "<body><code>{foo</code></body>"
+  expected <- "`\\{foo`"
+  expect_equal(convert(text), expected)
+
   text <- "<body>\\'{</body>"
   expected <- "\\\\'\\{"
   expect_equal(convert(text), expected)
@@ -442,6 +446,10 @@ test_that("convert", {
   expected <- "*"
   expect_equal(convert(text), expected)
 
+  text <- "<body>foo_bar</body>"
+  expected <- "foo_bar"
+  expect_equal(convert(text), expected)
+
   text <- "<body>foo \\bar { \\u0123 <code>baz'</code></body>"
   expected <- "foo \\\\bar \\{ `U+0123` `baz\\'`"
   expect_equal(convert(text), expected)
@@ -456,7 +464,9 @@ test_that("convert", {
   text <- "<body><p>foo</p><p>bar<code>'baz</code></p></body>"
   expected <- c("foo", "", "bar`\\'baz`")
   expect_equal(convert(text), expected)
+})
 
+test_that("check links", {
   text <- "<a href='http://www.example.com'>foo</a>"
   expected <- c("[foo](http://www.example.com/)")
   expect_equal(convert(text), expected)
@@ -498,11 +508,11 @@ test_that("convert", {
   expect_equal(convert(text), expected)
 
   text <- "<p><code>{foo</code>}</p>"
-  expected <- "`{foo`\\}"
+  expected <- "`\\{foo`\\}"
   expect_equal(convert(text), expected)
 })
 
-test_that("convert package links", {
+test_that("convert within-package links", {
   text <- "<a>Foo</a>"
   links <- list(Foo = list(r_name = "foo", internal_r_name = "bar_foo"))
   expected <- c("[`foo`][bar_foo]")
@@ -544,10 +554,16 @@ test_that("first_sentence", {
   expect_equal(first_sentence("foo. bar."), "foo")
 })
 
-test_that("escape_unmatched_quotes", {
-  expect_equal(escape_unmatched_quotes("'foo'"), "'foo'")
-  expect_equal(escape_unmatched_quotes("'foo"), "\\'foo")
-  expect_equal(escape_unmatched_quotes("foo'"), "foo\\'")
-  expect_equal(escape_unmatched_quotes("foo"), "foo")
-  expect_equal(escape_unmatched_quotes(""), "")
+test_that("escape_unmatched", {
+  chars <- c('"', "'", "`")
+  expect_equal(escape_unmatched_chars("'foo'", chars), "'foo'")
+  expect_equal(escape_unmatched_chars("'foo", chars), "\\'foo")
+  expect_equal(escape_unmatched_chars("foo'", chars), "foo\\'")
+  expect_equal(escape_unmatched_chars("foo", chars), "foo")
+  expect_equal(escape_unmatched_chars("", chars), "")
+
+  pairs <- c("{" = "}")
+  expect_equal(escape_unmatched_pairs("{foo}", pairs), "{foo}")
+  expect_equal(escape_unmatched_pairs("{foo", pairs), "\\{foo")
+  expect_equal(escape_unmatched_pairs("{{foo}", pairs), "\\{\\{foo\\}")
 })

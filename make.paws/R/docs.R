@@ -340,9 +340,10 @@ clean_html_code <- function(node, links = c()) {
     return(NULL)
   }
 
-  # Escape unmatched quotes in code snippets, which are invalid in Rd files.
-  # See https://developer.r-project.org/parseRd.pdf.
-  text <- escape_unmatched_quotes(text)
+  # Escape unmatched quotes and curly braces in code fragments, which are
+  # invalid in Rd files. See https://developer.r-project.org/parseRd.pdf.
+  text <- escape_unmatched_chars(text, c('"', "'", "`"))
+  text <- escape_unmatched_pairs(text, c("{" = "}"))
 
   # Keep only the text of the code node, and not any children, e.g. <i> nodes.
   code <- xml2::xml_new_root("code")
@@ -369,11 +370,25 @@ clean_html_text <- function(node) {
 # Escape unmatched characters.
 # R documentation will fail if there are unmatched quotes in code snippets.
 # See https://developer.r-project.org/parseRd.pdf.
-escape_unmatched_quotes <- function(x) {
+escape_unmatched_chars <- function(x, chars) {
   result <- x
-  for (char in c("'", '"', "`")) {
+  for (char in chars) {
     if (stringr::str_count(result, stringr::fixed(char)) %% 2 != 0) {
       result <- gsub(char, paste0("\\", char), result, fixed = TRUE)
+    }
+  }
+  result
+}
+
+escape_unmatched_pairs <- function(x, pairs) {
+  result <- x
+  count <- function(string, char) stringr::str_count(string, stringr::fixed(char))
+  for (i in seq_along(pairs)) {
+    a <- names(pairs)[i]
+    b <- pairs[i]
+    if (count(result, a) != count(result, b)) {
+      result <- gsub(a, paste0("\\", a), result, fixed = TRUE)
+      result <- gsub(b, paste0("\\", b), result, fixed = TRUE)
     }
   }
   result
@@ -393,8 +408,11 @@ clean_markdown <- function(markdown) {
   # See http://r-pkgs.had.co.nz/man.html#roxygen-comments.
   result <- gsub("@", "@@", result)
 
-  # Unmask { and }. Pandoc adds an extra \; when unmasked, this results in \{ and \}.
-  result <- unmask(result, c("{" = "\\{", "}" = "\\}"))
+  # Convert \\{ and \\} back to \{ and \}. Pandoc adds an extra \.
+  result <- unmask(result, c("\\{" = "\\\\{", "\\}" = "\\\\}"))
+
+  # Convert \_ to _. Pandoc adds an \.
+  result <- gsub("\\_", "_", result, fixed = TRUE)
 
   result <- fix_internal_links(result)
 
