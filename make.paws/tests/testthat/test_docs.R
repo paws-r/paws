@@ -422,6 +422,10 @@ test_that("convert", {
   expected <- c("foo", "", "bar")
   expect_equal(convert(text), expected)
 
+  text <- "<dt>Description</dt><dd>Definition.</dd>"
+  expected <- c("### Description", "", "Definition.")
+  expect_equal(convert(text), expected)
+
   text <- "<code>foo</foo>"
   expected <- "`foo`"
   expect_equal(convert(text), expected)
@@ -468,6 +472,10 @@ test_that("convert", {
   text <- "<body><p>foo</p><p>bar<code>'baz</code></p></body>"
   expected <- c("foo", "", "bar`\\'baz`")
   expect_equal(convert(text), expected)
+
+  text <- "<p><code>{foo</code>}</p>"
+  expected <- "`\\{foo`\\}"
+  expect_equal(convert(text), expected)
 })
 
 test_that("check links", {
@@ -505,14 +513,6 @@ test_that("check links", {
 
   text <- "<a href='https://httpbin.org/anything#foo?bar=baz'>foo</a>"
   expected <- c("[foo](https://httpbin.org/anything#foo?bar=baz)")
-  expect_equal(convert(text), expected)
-
-  text <- "<dt>Description</dt><dd>Definition.</dd>"
-  expected <- c("### Description", "", "Definition.")
-  expect_equal(convert(text), expected)
-
-  text <- "<p><code>{foo</code>}</p>"
-  expected <- "`\\{foo`\\}"
   expect_equal(convert(text), expected)
 })
 

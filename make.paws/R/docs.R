@@ -267,6 +267,43 @@ clean_html_node <- function(node, links = c()) {
   node
 }
 
+# Clean code elements.
+clean_html_code <- function(node, links = c()) {
+  text <- xml2::xml_text(node)
+
+  # Replace API operation names with links to corresponding R function names.
+  internal_link <- links[[trimws(text)]]
+  if (!is.null(internal_link)) {
+
+    # Don't add a link if this node is already within a link.
+    parent <- xml2::xml_parent(node)
+    if (xml2::xml_name(parent) == "a") {
+      xml2::xml_text(node) <- internal_link$r_name
+      return(NULL)
+    }
+
+    # Do add a link if this node is not within a link, or if the link is
+    # a child of this node.
+    link <- xml2::xml_new_root("a")
+    xml2::xml_attr(link, "href") <- internal_link$internal_r_name
+    code <- xml2::xml_new_root("code")
+    xml2::xml_text(code) <- internal_link$r_name
+    xml2::xml_add_child(link, code)
+    xml2::xml_replace(node, link)
+    return(NULL)
+  }
+
+  # Escape unmatched quotes and curly braces in code fragments, which are
+  # invalid in Rd files. See https://developer.r-project.org/parseRd.pdf.
+  text <- escape_unmatched_chars(text, c('"', "'", "`"))
+  text <- escape_unmatched_pairs(text, c("{" = "}"))
+
+  # Keep only the text of the code node, and not any children, e.g. <i> nodes.
+  code <- xml2::xml_new_root("code")
+  xml2::xml_text(code) <- text
+  xml2::xml_replace(node, code)
+}
+
 # Clean link elements.
 # Use package documentation for links to other operations.
 # Check that external links are valid, and if not replace them with the link text.
@@ -313,43 +350,6 @@ clean_html_a <- function(node, links = c()) {
   }
 
   xml2::xml_attr(node, "href") <- url
-}
-
-# Clean code elements.
-clean_html_code <- function(node, links = c()) {
-  text <- xml2::xml_text(node)
-
-  # Replace API operation names with links to corresponding R function names.
-  internal_link <- links[[trimws(text)]]
-  if (!is.null(internal_link)) {
-
-    # Don't add a link if this node is already within a link.
-    parent <- xml2::xml_parent(node)
-    if (xml2::xml_name(parent) == "a") {
-      xml2::xml_text(node) <- internal_link$r_name
-      return(NULL)
-    }
-
-    # Do add a link if this node is not within a link, or if the link is
-    # a child of this node.
-    link <- xml2::xml_new_root("a")
-    xml2::xml_attr(link, "href") <- internal_link$internal_r_name
-    code <- xml2::xml_new_root("code")
-    xml2::xml_text(code) <- internal_link$r_name
-    xml2::xml_add_child(link, code)
-    xml2::xml_replace(node, link)
-    return(NULL)
-  }
-
-  # Escape unmatched quotes and curly braces in code fragments, which are
-  # invalid in Rd files. See https://developer.r-project.org/parseRd.pdf.
-  text <- escape_unmatched_chars(text, c('"', "'", "`"))
-  text <- escape_unmatched_pairs(text, c("{" = "}"))
-
-  # Keep only the text of the code node, and not any children, e.g. <i> nodes.
-  code <- xml2::xml_new_root("code")
-  xml2::xml_text(code) <- text
-  xml2::xml_replace(node, code)
 }
 
 # Replace definition title nodes with header nodes.
