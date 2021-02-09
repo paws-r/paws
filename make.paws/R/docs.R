@@ -112,22 +112,24 @@ make_doc_request <- function(operation, api) {
 
 # Return a string with a description of the operation's response.
 make_doc_value <- function(operation, api) {
-  func <- sprintf("svc$%s", get_operation_name(operation))
+  section <- function(x) comment(paste(c("@return", x), collapse = "\n"), "#'")
+
   shape_name <- operation$output$shape
-  if (!is.null(shape_name)) {
-    shape <- make_shape(list(shape = shape_name), api)
-    args <- add_example_values(shape)
-    masks <- list("\\(" = "&#40;", "\\)" = "&#41;")
-    args <- mask(args, masks)
-    call <- list_to_string(args, quote = FALSE)
-    call <- unmask(clean_example(call), masks)
-    call <- paste("```", call, "```", sep = "\n")
-    overview <- "A list with the following syntax:"
-    response_value <-
-      comment(paste(c("@return", overview, call), collapse = "\n"), "#'")
-    return(response_value)
+  if (is.null(shape_name)) {
+    return(section("An empty list."))
   }
-  return("")
+  shape <- make_shape(list(shape = shape_name), api)
+  if (length(shape) == 0) {
+    return(section("An empty list."))
+  }
+  args <- add_example_values(shape)
+  masks <- list("\\(" = "&#40;", "\\)" = "&#41;")
+  args <- mask(args, masks)
+  call <- list_to_string(args, quote = FALSE)
+  call <- unmask(clean_example(call), masks)
+  call <- paste("```", call, "```", sep = "\n")
+  overview <- "A list with the following syntax:"
+  return(section(c(overview, call)))
 }
 
 # Return a string with an operation example's arguments.
