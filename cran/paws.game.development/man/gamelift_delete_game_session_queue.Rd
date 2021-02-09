@@ -11,6 +11,10 @@ gamelift_delete_game_session_queue(Name)
 names must be unique within each Region. You can use either the queue ID
 or ARN value.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a game session queue. Once a queue is successfully deleted,
 unfulfilled

@@ -19,6 +19,10 @@ example, 203.0.113.25/16). It must also be specified as available by the
 \code{\link[=workspaces_list_available_management_cidr_ranges]{list_available_management_cidr_ranges}}
 operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Modifies the configuration of Bring Your Own License (BYOL) for the
 specified account.

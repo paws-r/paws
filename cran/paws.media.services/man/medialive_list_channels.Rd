@@ -11,6 +11,171 @@ medialive_list_channels(MaxResults, NextToken)
 
 \item{NextToken}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Channels = list(
+    list(
+      Arn = "string",
+      CdiInputSpecification = list(
+        Resolution = "SD"|"HD"|"FHD"|"UHD"
+      ),
+      ChannelClass = "STANDARD"|"SINGLE_PIPELINE",
+      Destinations = list(
+        list(
+          Id = "string",
+          MediaPackageSettings = list(
+            list(
+              ChannelId = "string"
+            )
+          ),
+          MultiplexSettings = list(
+            MultiplexId = "string",
+            ProgramName = "string"
+          ),
+          Settings = list(
+            list(
+              PasswordParam = "string",
+              StreamName = "string",
+              Url = "string",
+              Username = "string"
+            )
+          )
+        )
+      ),
+      EgressEndpoints = list(
+        list(
+          SourceIp = "string"
+        )
+      ),
+      Id = "string",
+      InputAttachments = list(
+        list(
+          AutomaticInputFailoverSettings = list(
+            ErrorClearTimeMsec = 123,
+            FailoverConditions = list(
+              list(
+                FailoverConditionSettings = list(
+                  AudioSilenceSettings = list(
+                    AudioSelectorName = "string",
+                    AudioSilenceThresholdMsec = 123
+                  ),
+                  InputLossSettings = list(
+                    InputLossThresholdMsec = 123
+                  ),
+                  VideoBlackSettings = list(
+                    BlackDetectThreshold = 123.0,
+                    VideoBlackThresholdMsec = 123
+                  )
+                )
+              )
+            ),
+            InputPreference = "EQUAL_INPUT_PREFERENCE"|"PRIMARY_INPUT_PREFERRED",
+            SecondaryInputId = "string"
+          ),
+          InputAttachmentName = "string",
+          InputId = "string",
+          InputSettings = list(
+            AudioSelectors = list(
+              list(
+                Name = "string",
+                SelectorSettings = list(
+                  AudioLanguageSelection = list(
+                    LanguageCode = "string",
+                    LanguageSelectionPolicy = "LOOSE"|"STRICT"
+                  ),
+                  AudioPidSelection = list(
+                    Pid = 123
+                  ),
+                  AudioTrackSelection = list(
+                    Tracks = list(
+                      list(
+                        Track = 123
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            CaptionSelectors = list(
+              list(
+                LanguageCode = "string",
+                Name = "string",
+                SelectorSettings = list(
+                  AncillarySourceSettings = list(
+                    SourceAncillaryChannelNumber = 123
+                  ),
+                  AribSourceSettings = list(),
+                  DvbSubSourceSettings = list(
+                    Pid = 123
+                  ),
+                  EmbeddedSourceSettings = list(
+                    Convert608To708 = "DISABLED"|"UPCONVERT",
+                    Scte20Detection = "AUTO"|"OFF",
+                    Source608ChannelNumber = 123,
+                    Source608TrackNumber = 123
+                  ),
+                  Scte20SourceSettings = list(
+                    Convert608To708 = "DISABLED"|"UPCONVERT",
+                    Source608ChannelNumber = 123
+                  ),
+                  Scte27SourceSettings = list(
+                    Pid = 123
+                  ),
+                  TeletextSourceSettings = list(
+                    PageNumber = "string"
+                  )
+                )
+              )
+            ),
+            DeblockFilter = "DISABLED"|"ENABLED",
+            DenoiseFilter = "DISABLED"|"ENABLED",
+            FilterStrength = 123,
+            InputFilter = "AUTO"|"DISABLED"|"FORCED",
+            NetworkInputSettings = list(
+              HlsInputSettings = list(
+                Bandwidth = 123,
+                BufferSegments = 123,
+                Retries = 123,
+                RetryInterval = 123
+              ),
+              ServerValidation = "CHECK_CRYPTOGRAPHY_AND_VALIDATE_NAME"|"CHECK_CRYPTOGRAPHY_ONLY"
+            ),
+            Smpte2038DataPreference = "IGNORE"|"PREFER",
+            SourceEndBehavior = "CONTINUE"|"LOOP",
+            VideoSelector = list(
+              ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
+              ColorSpaceUsage = "FALLBACK"|"FORCE",
+              SelectorSettings = list(
+                VideoSelectorPid = list(
+                  Pid = 123
+                ),
+                VideoSelectorProgramId = list(
+                  ProgramId = 123
+                )
+              )
+            )
+          )
+        )
+      ),
+      InputSpecification = list(
+        Codec = "MPEG2"|"AVC"|"HEVC",
+        MaximumBitrate = "MAX_10_MBPS"|"MAX_20_MBPS"|"MAX_50_MBPS",
+        Resolution = "SD"|"HD"|"UHD"
+      ),
+      LogLevel = "ERROR"|"WARNING"|"INFO"|"DEBUG"|"DISABLED",
+      Name = "string",
+      PipelinesRunningCount = 123,
+      RoleArn = "string",
+      State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED"|"UPDATING"|"UPDATE_FAILED",
+      Tags = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Produces list of channels that have been created
 }

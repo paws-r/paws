@@ -9,6 +9,10 @@ robomaker_restart_simulation_job(job)
 \arguments{
 \item{job}{[required] The Amazon Resource Name (ARN) of the simulation job.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Restarts a running simulation job.
 }

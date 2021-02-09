@@ -15,7 +15,7 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this operation with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 When using this API with Amazon S3 on Outposts, you must direct requests
@@ -24,7 +24,7 @@ form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
 When using this operation using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Key}{[required] Object key for which the multipart upload was initiated.}
@@ -42,6 +42,42 @@ higher part numbers will be listed.}
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AbortDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  AbortRuleId = "string",
+  Bucket = "string",
+  Key = "string",
+  UploadId = "string",
+  PartNumberMarker = 123,
+  NextPartNumberMarker = 123,
+  MaxParts = 123,
+  IsTruncated = TRUE|FALSE,
+  Parts = list(
+    list(
+      PartNumber = 123,
+      LastModified = as.POSIXct(
+        "2015-01-01"
+      ),
+      ETag = "string",
+      Size = 123
+    )
+  ),
+  Initiator = list(
+    ID = "string",
+    DisplayName = "string"
+  ),
+  Owner = list(
+    DisplayName = "string",
+    ID = "string"
+  ),
+  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
+  RequestCharged = "requester"
+)
+}
+}
 \description{
 Lists the parts that have been uploaded for a specific multipart upload.
 This operation must include the upload ID, which you obtain by sending
@@ -56,10 +92,10 @@ element. In subsequent \code{\link[=s3_list_parts]{list_parts}} requests you can
 include the part-number-marker query string parameter and set its value
 to the \code{NextPartNumberMarker} field value from the previous response.
 
-For more information on multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html}{Uploading Objects Using Multipart Upload}.
+For more information on multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Uploading Objects Using Multipart Upload}.
 
 For information on permissions required to use the multipart upload API,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html}{Multipart Upload API and Permissions}.
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload API and Permissions}.
 
 The following operations are related to \code{\link[=s3_list_parts]{list_parts}}:
 \itemize{
@@ -90,7 +126,7 @@ The following operations are related to \code{\link[=s3_list_parts]{list_parts}}
 svc$list_parts(
   Bucket = "examplebucket",
   Key = "bigobject",
-  UploadId = "example7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."
+  UploadId = "example7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOm..."
 )
 }
 

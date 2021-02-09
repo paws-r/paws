@@ -9,6 +9,28 @@ cloudhsm_describe_hapg(HapgArn)
 \arguments{
 \item{HapgArn}{[required] The ARN of the high-availability partition group to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HapgArn = "string",
+  HapgSerial = "string",
+  HsmsLastActionFailed = list(
+    "string"
+  ),
+  HsmsPendingDeletion = list(
+    "string"
+  ),
+  HsmsPendingRegistration = list(
+    "string"
+  ),
+  Label = "string",
+  LastModifiedTimestamp = "string",
+  PartitionSerialList = list(
+    "string"
+  ),
+  State = "READY"|"UPDATING"|"DEGRADED"
+)
+}
+}
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
 information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},

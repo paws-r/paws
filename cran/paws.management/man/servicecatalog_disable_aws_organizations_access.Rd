@@ -6,6 +6,10 @@
 \usage{
 servicecatalog_disable_aws_organizations_access()
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disable portfolio sharing through AWS Organizations feature. This
 feature will not delete your current shares but it will prevent you from

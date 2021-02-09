@@ -12,6 +12,10 @@ alexaforbusiness_associate_device_with_network_profile(DeviceArn,
 
 \item{NetworkProfileArn}{[required] The ARN of the network profile to associate with a device.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates a device with the specified network profile.
 }

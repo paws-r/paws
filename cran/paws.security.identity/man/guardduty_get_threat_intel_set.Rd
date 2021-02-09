@@ -12,6 +12,18 @@ with.}
 
 \item{ThreatIntelSetId}{[required] The unique ID of the threatIntelSet that you want to get.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string",
+  Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
+  Location = "string",
+  Status = "INACTIVE"|"ACTIVATING"|"ACTIVE"|"DEACTIVATING"|"ERROR"|"DELETE_PENDING"|"DELETED",
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID.
 }

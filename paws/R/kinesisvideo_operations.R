@@ -24,6 +24,14 @@ NULL
 #' @param Tags A set of tags (key-value pairs) that you want to associate with this
 #' channel.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_signaling_channel(
@@ -124,6 +132,14 @@ kinesisvideo_create_signaling_channel <- function(ChannelName, ChannelType = NUL
 #' @param Tags A list of tags to associate with the specified stream. Each tag is a
 #' key-value pair (the value is optional).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_stream(
@@ -176,6 +192,12 @@ kinesisvideo_create_stream <- function(DeviceName = NULL, StreamName, MediaType 
 #' [`describe_signaling_channel`][kinesisvideo_describe_signaling_channel]
 #' or [`list_signaling_channels`][kinesisvideo_list_signaling_channels] API
 #' operations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -235,6 +257,12 @@ kinesisvideo_delete_signaling_channel <- function(ChannelARN, CurrentVersion = N
 #' If not specified, only the `CreationTime` is checked before deleting the
 #' stream.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_stream(
@@ -276,6 +304,26 @@ kinesisvideo_delete_stream <- function(StreamARN, CurrentVersion = NULL) {
 #' @param ChannelName The name of the signaling channel that you want to describe.
 #' @param ChannelARN The ARN of the signaling channel that you want to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelInfo = list(
+#'     ChannelName = "string",
+#'     ChannelARN = "string",
+#'     ChannelType = "SINGLE_MASTER",
+#'     ChannelStatus = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SingleMasterConfiguration = list(
+#'       MessageTtlSeconds = 123
+#'     ),
+#'     Version = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_signaling_channel(
@@ -315,6 +363,26 @@ kinesisvideo_describe_signaling_channel <- function(ChannelName = NULL, ChannelA
 #'
 #' @param StreamName The name of the stream.
 #' @param StreamARN The Amazon Resource Name (ARN) of the stream.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamInfo = list(
+#'     DeviceName = "string",
+#'     StreamName = "string",
+#'     StreamARN = "string",
+#'     MediaType = "string",
+#'     KmsKeyId = "string",
+#'     Version = "string",
+#'     Status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DataRetentionInHours = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -367,6 +435,14 @@ kinesisvideo_describe_stream <- function(StreamName = NULL, StreamARN = NULL) {
 #' endpoint for. You must specify either this parameter or a `StreamName`
 #' in the request.
 #' @param APIName &#91;required&#93; The name of the API action for which to get an endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataEndpoint = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -426,6 +502,19 @@ kinesisvideo_get_data_endpoint <- function(StreamName = NULL, StreamARN = NULL, 
 #' @param SingleMasterChannelEndpointConfiguration A structure containing the endpoint configuration for the
 #' `SINGLE_MASTER` channel type.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceEndpointList = list(
+#'     list(
+#'       Protocol = "WSS"|"HTTPS",
+#'       ResourceEndpoint = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_signaling_channel_endpoint(
@@ -479,6 +568,29 @@ kinesisvideo_get_signaling_channel_endpoint <- function(ChannelARN, SingleMaster
 #' next request.
 #' @param ChannelNameCondition Optional: Returns only the channels that satisfy a specific condition.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChannelInfoList = list(
+#'     list(
+#'       ChannelName = "string",
+#'       ChannelARN = "string",
+#'       ChannelType = "SINGLE_MASTER",
+#'       ChannelStatus = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SingleMasterConfiguration = list(
+#'         MessageTtlSeconds = 123
+#'       ),
+#'       Version = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_signaling_channels(
@@ -531,6 +643,29 @@ kinesisvideo_list_signaling_channels <- function(MaxResults = NULL, NextToken = 
 #' Currently, you can specify only the prefix of a stream name as a
 #' condition.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamInfoList = list(
+#'     list(
+#'       DeviceName = "string",
+#'       StreamName = "string",
+#'       StreamARN = "string",
+#'       MediaType = "string",
+#'       KmsKeyId = "string",
+#'       Version = "string",
+#'       Status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DataRetentionInHours = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_streams(
@@ -577,6 +712,17 @@ kinesisvideo_list_streams <- function(MaxResults = NULL, NextToken = NULL, Strea
 #' request to fetch the next batch of tags.
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the signaling channel for which you
 #' want to list tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -625,6 +771,17 @@ kinesisvideo_list_tags_for_resource <- function(NextToken = NULL, ResourceARN) {
 #' for.
 #' @param StreamName The name of the stream that you want to list tags for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_stream(
@@ -672,6 +829,12 @@ kinesisvideo_list_tags_for_stream <- function(NextToken = NULL, StreamARN = NULL
 #' want to add tags.
 #' @param Tags &#91;required&#93; A list of tags to associate with the specified signaling channel. Each
 #' tag is a key-value pair.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -733,6 +896,12 @@ kinesisvideo_tag_resource <- function(ResourceARN, Tags) {
 #' @param Tags &#91;required&#93; A list of tags to associate with the specified stream. Each tag is a
 #' key-value pair (the value is optional).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_stream(
@@ -777,6 +946,12 @@ kinesisvideo_tag_stream <- function(StreamARN = NULL, StreamName = NULL, Tags) {
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the signaling channel from which you
 #' want to remove tags.
 #' @param TagKeyList &#91;required&#93; A list of the keys of the tags that you want to remove.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -824,6 +999,12 @@ kinesisvideo_untag_resource <- function(ResourceARN, TagKeyList) {
 #' tags from.
 #' @param StreamName The name of the stream that you want to remove tags from.
 #' @param TagKeyList &#91;required&#93; A list of the keys of the tags that you want to remove.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -901,6 +1082,12 @@ kinesisvideo_untag_stream <- function(StreamARN = NULL, StreamName = NULL, TagKe
 #' current value. The maximum value for this parameter is 87600 (ten
 #' years).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_data_retention(
@@ -952,6 +1139,12 @@ kinesisvideo_update_data_retention <- function(StreamName = NULL, StreamARN = NU
 #' @param CurrentVersion &#91;required&#93; The current version of the signaling channel that you want to update.
 #' @param SingleMasterConfiguration The structure containing the configuration for the `SINGLE_MASTER` type
 #' of the signaling channel that you want to update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1025,6 +1218,12 @@ kinesisvideo_update_signaling_channel <- function(ChannelARN, CurrentVersion, Si
 #' To play video on the console, you must specify the correct video type.
 #' For example, if the video in the stream is H.264, specify `video/h264`
 #' as the `MediaType`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -9,6 +9,23 @@ xray_get_groups(NextToken)
 \arguments{
 \item{NextToken}{Pagination token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Groups = list(
+    list(
+      GroupName = "string",
+      GroupARN = "string",
+      FilterExpression = "string",
+      InsightsConfiguration = list(
+        InsightsEnabled = TRUE|FALSE,
+        NotificationsEnabled = TRUE|FALSE
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves all active group details.
 }

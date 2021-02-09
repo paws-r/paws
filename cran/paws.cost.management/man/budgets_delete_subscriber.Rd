@@ -17,6 +17,10 @@ want to delete.}
 
 \item{Subscriber}{[required] The subscriber that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a subscriber.
 

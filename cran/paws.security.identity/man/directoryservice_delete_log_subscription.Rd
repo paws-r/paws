@@ -9,6 +9,10 @@ directoryservice_delete_log_subscription(DirectoryId)
 \arguments{
 \item{DirectoryId}{[required] Identifier of the directory whose log subscription you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified log subscription.
 }

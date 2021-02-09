@@ -13,8 +13,39 @@ importexport_get_status(JobId, APIVersion)
 
 \item{APIVersion}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string",
+  JobType = "Import"|"Export",
+  LocationCode = "string",
+  LocationMessage = "string",
+  ProgressCode = "string",
+  ProgressMessage = "string",
+  Carrier = "string",
+  TrackingNumber = "string",
+  LogBucket = "string",
+  LogKey = "string",
+  ErrorCount = 123,
+  Signature = "string",
+  SignatureFileContents = "string",
+  CurrentManifest = "string",
+  CreationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  ArtifactList = list(
+    list(
+      Description = "string",
+      URL = "string"
+    )
+  )
+)
+}
+}
 \description{
-This operation returns information about a job, including where the job is in the processing pipeline, the status of the results, and the signature value associated with the job. You can only return information about jobs you own.
+This operation returns information about a job, including where the job
+is in the processing pipeline, the status of the results, and the
+signature value associated with the job. You can only return information
+about jobs you own.
 }
 \section{Request syntax}{
 \preformatted{svc$get_status(

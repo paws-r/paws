@@ -29,6 +29,14 @@ NULL
 #' respectively.
 #' @param batchInferenceJobConfig The configuration details of a batch inference job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   batchInferenceJobArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_batch_inference_job(
@@ -106,10 +114,10 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
 #' 
 #' A campaign can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
 #'     FAILED
 #' 
-#' -   DELETE PENDING &gt; DELETE IN\\_PROGRESS
+#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
 #' 
 #' To get the campaign status, call
 #' [`describe_campaign`][personalize_describe_campaign].
@@ -137,6 +145,14 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
 #' @param minProvisionedTPS &#91;required&#93; Specifies the requested minimum provisioned transactions
 #' (recommendations) per second that Amazon Personalize will support.
 #' @param campaignConfig The configuration details of a campaign.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   campaignArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -193,10 +209,10 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
 #' 
 #' A dataset can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
 #'     FAILED
 #' 
-#' -   DELETE PENDING &gt; DELETE IN\\_PROGRESS
+#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
 #' 
 #' To get the status of the dataset, call
 #' [`describe_dataset`][personalize_describe_dataset].
@@ -229,6 +245,14 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
 #' -   Items
 #' 
 #' -   Users
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datasetArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -280,7 +304,7 @@ personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, dataset
 #' 
 #' A dataset group can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
 #'     FAILED
 #' 
 #' -   DELETE PENDING
@@ -322,6 +346,14 @@ personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, dataset
 #' Supplying an IAM role is only valid when also specifying a KMS key.
 #' @param kmsKeyArn The Amazon Resource Name (ARN) of a KMS key used to encrypt the
 #' datasets.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datasetGroupArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -369,7 +401,7 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' 
 #' A dataset import job can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
 #'     FAILED
 #' 
 #' To get the status of the import job, call
@@ -397,6 +429,14 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' @param dataSource &#91;required&#93; The Amazon S3 bucket that contains the training data to import.
 #' @param roleArn &#91;required&#93; The ARN of the IAM role that has permissions to read from the Amazon S3
 #' data source.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datasetImportJobArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -455,10 +495,10 @@ personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSourc
 #' 
 #' The event tracker can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
 #'     FAILED
 #' 
-#' -   DELETE PENDING &gt; DELETE IN\\_PROGRESS
+#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
 #' 
 #' To get the status of the event tracker, call
 #' [`describe_event_tracker`][personalize_describe_event_tracker].
@@ -480,6 +520,15 @@ personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSourc
 #' @param name &#91;required&#93; The name for the event tracker.
 #' @param datasetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset group that receives the
 #' event data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   eventTrackerArn = "string",
+#'   trackingId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -527,10 +576,18 @@ personalize_create_event_tracker <- function(name, datasetGroupArn) {
 #' 
 #' `EXCLUDE itemId WHERE INTERACTIONS.event_type in ("EVENT_TYPE")`
 #' 
-#' Where "EVENT\\_TYPE" is the type of event to filter out. To filter out
-#' all items with any interactions history, set `"*"` as the EVENT\\_TYPE.
+#' Where "EVENT_TYPE" is the type of event to filter out. To filter out
+#' all items with any interactions history, set `"*"` as the EVENT_TYPE.
 #' For more information, see [Using Filters with Amazon
 #' Personalize](https://docs.aws.amazon.com/personalize/latest/dg/).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   filterArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -586,6 +643,14 @@ personalize_create_filter <- function(name, datasetGroupArn, filterExpression) {
 #' @param name &#91;required&#93; The name for the schema.
 #' @param schema &#91;required&#93; A schema in Avro JSON format.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   schemaArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_schema(
@@ -639,16 +704,16 @@ personalize_create_schema <- function(name, schema) {
 #' transformation. You can specify one of the predefined recipes provided
 #' by Amazon Personalize. Alternatively, you can specify `performAutoML`
 #' and Amazon Personalize will analyze your data and select the optimum
-#' USER\\_PERSONALIZATION recipe for you.
+#' USER_PERSONALIZATION recipe for you.
 #' 
 #' **Status**
 #' 
 #' A solution can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
 #'     FAILED
 #' 
-#' -   DELETE PENDING &gt; DELETE IN\\_PROGRESS
+#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
 #' 
 #' To get the status of the solution, call
 #' [`describe_solution`][personalize_describe_solution]. Wait until the
@@ -665,7 +730,6 @@ personalize_create_schema <- function(name, schema) {
 #' 
 #' -   [`delete_solution`][personalize_delete_solution]
 #' 
-#' <!-- -->
 #' 
 #' -   [`list_solution_versions`][personalize_list_solution_versions]
 #' 
@@ -685,7 +749,7 @@ personalize_create_schema <- function(name, schema) {
 #' `false`. For this case, you must specify `recipeArn`.
 #' 
 #' When set to `true`, Amazon Personalize analyzes your training data and
-#' selects the optimal USER\\_PERSONALIZATION recipe and hyperparameters. In
+#' selects the optimal USER_PERSONALIZATION recipe and hyperparameters. In
 #' this case, you must omit `recipeArn`. Amazon Personalize determines the
 #' optimal recipe by running tests with different values for the
 #' hyperparameters. AutoML lengthens the training process as compared to
@@ -700,6 +764,14 @@ personalize_create_schema <- function(name, schema) {
 #' @param solutionConfig The configuration to use with the solution. When `performAutoML` is set
 #' to true, Amazon Personalize only evaluates the `autoMLConfig` section of
 #' the solution configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   solutionArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -796,7 +868,7 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' 
 #' A solution version can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
 #'     FAILED
 #' 
 #' To get the status of the version, call
@@ -813,7 +885,6 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' 
 #' -   [`describe_solution_version`][personalize_describe_solution_version]
 #' 
-#' <!-- -->
 #' 
 #' -   [`list_solutions`][personalize_list_solutions]
 #' 
@@ -839,6 +910,14 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' solution version created from the input solution using the `FULL` option
 #' and the input solution was trained with the native-recipe-hrnn-coldstart
 #' recipe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   solutionVersionArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -883,6 +962,8 @@ personalize_create_solution_version <- function(solutionArn, trainingMode = NULL
 #'
 #' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_campaign(
@@ -922,6 +1003,8 @@ personalize_delete_campaign <- function(campaignArn) {
 #' personalize_delete_dataset(datasetArn)
 #'
 #' @param datasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset to delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -967,6 +1050,8 @@ personalize_delete_dataset <- function(datasetArn) {
 #'
 #' @param datasetGroupArn &#91;required&#93; The ARN of the dataset group to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_dataset_group(
@@ -1007,6 +1092,8 @@ personalize_delete_dataset_group <- function(datasetGroupArn) {
 #'
 #' @param eventTrackerArn &#91;required&#93; The Amazon Resource Name (ARN) of the event tracker to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_event_tracker(
@@ -1043,6 +1130,8 @@ personalize_delete_event_tracker <- function(eventTrackerArn) {
 #' personalize_delete_filter(filterArn)
 #'
 #' @param filterArn &#91;required&#93; The ARN of the filter to delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1082,6 +1171,8 @@ personalize_delete_filter <- function(filterArn) {
 #' personalize_delete_schema(schemaArn)
 #'
 #' @param schemaArn &#91;required&#93; The Amazon Resource Name (ARN) of the schema to delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1127,6 +1218,8 @@ personalize_delete_schema <- function(schemaArn) {
 #'
 #' @param solutionArn &#91;required&#93; The ARN of the solution to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_solution(
@@ -1163,6 +1256,62 @@ personalize_delete_solution <- function(solutionArn) {
 #' personalize_describe_algorithm(algorithmArn)
 #'
 #' @param algorithmArn &#91;required&#93; The Amazon Resource Name (ARN) of the algorithm to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   algorithm = list(
+#'     name = "string",
+#'     algorithmArn = "string",
+#'     algorithmImage = list(
+#'       name = "string",
+#'       dockerURI = "string"
+#'     ),
+#'     defaultHyperParameters = list(
+#'       "string"
+#'     ),
+#'     defaultHyperParameterRanges = list(
+#'       integerHyperParameterRanges = list(
+#'         list(
+#'           name = "string",
+#'           minValue = 123,
+#'           maxValue = 123,
+#'           isTunable = TRUE|FALSE
+#'         )
+#'       ),
+#'       continuousHyperParameterRanges = list(
+#'         list(
+#'           name = "string",
+#'           minValue = 123.0,
+#'           maxValue = 123.0,
+#'           isTunable = TRUE|FALSE
+#'         )
+#'       ),
+#'       categoricalHyperParameterRanges = list(
+#'         list(
+#'           name = "string",
+#'           values = list(
+#'             "string"
+#'           ),
+#'           isTunable = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     defaultResourceConfig = list(
+#'       "string"
+#'     ),
+#'     trainingInputMode = "string",
+#'     roleArn = "string",
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1205,6 +1354,46 @@ personalize_describe_algorithm <- function(algorithmArn) {
 #'
 #' @param batchInferenceJobArn &#91;required&#93; The ARN of the batch inference job to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   batchInferenceJob = list(
+#'     jobName = "string",
+#'     batchInferenceJobArn = "string",
+#'     filterArn = "string",
+#'     failureReason = "string",
+#'     solutionVersionArn = "string",
+#'     numResults = 123,
+#'     jobInput = list(
+#'       s3DataSource = list(
+#'         path = "string",
+#'         kmsKeyArn = "string"
+#'       )
+#'     ),
+#'     jobOutput = list(
+#'       s3DataDestination = list(
+#'         path = "string",
+#'         kmsKeyArn = "string"
+#'       )
+#'     ),
+#'     batchInferenceJobConfig = list(
+#'       itemExplorationConfig = list(
+#'         "string"
+#'       )
+#'     ),
+#'     roleArn = "string",
+#'     status = "string",
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_batch_inference_job(
@@ -1239,10 +1428,10 @@ personalize_describe_batch_inference_job <- function(batchInferenceJobArn) {
 #' 
 #' A campaign can be in one of the following states:
 #' 
-#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#' -   CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
 #'     FAILED
 #' 
-#' -   DELETE PENDING &gt; DELETE IN\\_PROGRESS
+#' -   DELETE PENDING &gt; DELETE IN_PROGRESS
 #' 
 #' When the `status` is `CREATE FAILED`, the response includes the
 #' `failureReason` key, which describes why.
@@ -1254,6 +1443,49 @@ personalize_describe_batch_inference_job <- function(batchInferenceJobArn) {
 #' personalize_describe_campaign(campaignArn)
 #'
 #' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   campaign = list(
+#'     name = "string",
+#'     campaignArn = "string",
+#'     solutionVersionArn = "string",
+#'     minProvisionedTPS = 123,
+#'     campaignConfig = list(
+#'       itemExplorationConfig = list(
+#'         "string"
+#'       )
+#'     ),
+#'     status = "string",
+#'     failureReason = "string",
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     latestCampaignUpdate = list(
+#'       solutionVersionArn = "string",
+#'       minProvisionedTPS = 123,
+#'       campaignConfig = list(
+#'         itemExplorationConfig = list(
+#'           "string"
+#'         )
+#'       ),
+#'       status = "string",
+#'       failureReason = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1293,6 +1525,27 @@ personalize_describe_campaign <- function(campaignArn) {
 #'
 #' @param datasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataset = list(
+#'     name = "string",
+#'     datasetArn = "string",
+#'     datasetGroupArn = "string",
+#'     datasetType = "string",
+#'     schemaArn = "string",
+#'     status = "string",
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_dataset(
@@ -1330,6 +1583,27 @@ personalize_describe_dataset <- function(datasetArn) {
 #' personalize_describe_dataset_group(datasetGroupArn)
 #'
 #' @param datasetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset group to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datasetGroup = list(
+#'     name = "string",
+#'     datasetGroupArn = "string",
+#'     status = "string",
+#'     roleArn = "string",
+#'     kmsKeyArn = "string",
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     failureReason = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1371,6 +1645,30 @@ personalize_describe_dataset_group <- function(datasetGroupArn) {
 #'
 #' @param datasetImportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset import job to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datasetImportJob = list(
+#'     jobName = "string",
+#'     datasetImportJobArn = "string",
+#'     datasetArn = "string",
+#'     dataSource = list(
+#'       dataLocation = "string"
+#'     ),
+#'     roleArn = "string",
+#'     status = "string",
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     failureReason = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_dataset_import_job(
@@ -1410,6 +1708,27 @@ personalize_describe_dataset_import_job <- function(datasetImportJobArn) {
 #'
 #' @param eventTrackerArn &#91;required&#93; The Amazon Resource Name (ARN) of the event tracker to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   eventTracker = list(
+#'     name = "string",
+#'     eventTrackerArn = "string",
+#'     accountId = "string",
+#'     trackingId = "string",
+#'     datasetGroupArn = "string",
+#'     status = "string",
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_event_tracker(
@@ -1448,6 +1767,27 @@ personalize_describe_event_tracker <- function(eventTrackerArn) {
 #' @param featureTransformationArn &#91;required&#93; The Amazon Resource Name (ARN) of the feature transformation to
 #' describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   featureTransformation = list(
+#'     name = "string",
+#'     featureTransformationArn = "string",
+#'     defaultParameters = list(
+#'       "string"
+#'     ),
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_feature_transformation(
@@ -1484,6 +1824,27 @@ personalize_describe_feature_transformation <- function(featureTransformationArn
 #' personalize_describe_filter(filterArn)
 #'
 #' @param filterArn &#91;required&#93; The ARN of the filter to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   filter = list(
+#'     name = "string",
+#'     filterArn = "string",
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     datasetGroupArn = "string",
+#'     failureReason = "string",
+#'     filterExpression = "string",
+#'     status = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1541,6 +1902,28 @@ personalize_describe_filter <- function(filterArn) {
 #'
 #' @param recipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the recipe to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   recipe = list(
+#'     name = "string",
+#'     recipeArn = "string",
+#'     algorithmArn = "string",
+#'     featureTransformationArn = "string",
+#'     status = "string",
+#'     description = "string",
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     recipeType = "string",
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_recipe(
@@ -1578,6 +1961,24 @@ personalize_describe_recipe <- function(recipeArn) {
 #' personalize_describe_schema(schemaArn)
 #'
 #' @param schemaArn &#91;required&#93; The Amazon Resource Name (ARN) of the schema to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   schema = list(
+#'     name = "string",
+#'     schemaArn = "string",
+#'     schema = "string",
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1617,6 +2018,93 @@ personalize_describe_schema <- function(schemaArn) {
 #'
 #' @param solutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   solution = list(
+#'     name = "string",
+#'     solutionArn = "string",
+#'     performHPO = TRUE|FALSE,
+#'     performAutoML = TRUE|FALSE,
+#'     recipeArn = "string",
+#'     datasetGroupArn = "string",
+#'     eventType = "string",
+#'     solutionConfig = list(
+#'       eventValueThreshold = "string",
+#'       hpoConfig = list(
+#'         hpoObjective = list(
+#'           type = "string",
+#'           metricName = "string",
+#'           metricRegex = "string"
+#'         ),
+#'         hpoResourceConfig = list(
+#'           maxNumberOfTrainingJobs = "string",
+#'           maxParallelTrainingJobs = "string"
+#'         ),
+#'         algorithmHyperParameterRanges = list(
+#'           integerHyperParameterRanges = list(
+#'             list(
+#'               name = "string",
+#'               minValue = 123,
+#'               maxValue = 123
+#'             )
+#'           ),
+#'           continuousHyperParameterRanges = list(
+#'             list(
+#'               name = "string",
+#'               minValue = 123.0,
+#'               maxValue = 123.0
+#'             )
+#'           ),
+#'           categoricalHyperParameterRanges = list(
+#'             list(
+#'               name = "string",
+#'               values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       algorithmHyperParameters = list(
+#'         "string"
+#'       ),
+#'       featureTransformationParameters = list(
+#'         "string"
+#'       ),
+#'       autoMLConfig = list(
+#'         metricName = "string",
+#'         recipeList = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     autoMLResult = list(
+#'       bestRecipeArn = "string"
+#'     ),
+#'     status = "string",
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     latestSolutionVersion = list(
+#'       solutionVersionArn = "string",
+#'       status = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureReason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_solution(
@@ -1655,6 +2143,87 @@ personalize_describe_solution <- function(solutionArn) {
 #'
 #' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   solutionVersion = list(
+#'     solutionVersionArn = "string",
+#'     solutionArn = "string",
+#'     performHPO = TRUE|FALSE,
+#'     performAutoML = TRUE|FALSE,
+#'     recipeArn = "string",
+#'     eventType = "string",
+#'     datasetGroupArn = "string",
+#'     solutionConfig = list(
+#'       eventValueThreshold = "string",
+#'       hpoConfig = list(
+#'         hpoObjective = list(
+#'           type = "string",
+#'           metricName = "string",
+#'           metricRegex = "string"
+#'         ),
+#'         hpoResourceConfig = list(
+#'           maxNumberOfTrainingJobs = "string",
+#'           maxParallelTrainingJobs = "string"
+#'         ),
+#'         algorithmHyperParameterRanges = list(
+#'           integerHyperParameterRanges = list(
+#'             list(
+#'               name = "string",
+#'               minValue = 123,
+#'               maxValue = 123
+#'             )
+#'           ),
+#'           continuousHyperParameterRanges = list(
+#'             list(
+#'               name = "string",
+#'               minValue = 123.0,
+#'               maxValue = 123.0
+#'             )
+#'           ),
+#'           categoricalHyperParameterRanges = list(
+#'             list(
+#'               name = "string",
+#'               values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       algorithmHyperParameters = list(
+#'         "string"
+#'       ),
+#'       featureTransformationParameters = list(
+#'         "string"
+#'       ),
+#'       autoMLConfig = list(
+#'         metricName = "string",
+#'         recipeList = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     trainingHours = 123.0,
+#'     trainingMode = "FULL"|"UPDATE",
+#'     tunedHPOParams = list(
+#'       algorithmHyperParameters = list(
+#'         "string"
+#'       )
+#'     ),
+#'     status = "string",
+#'     failureReason = "string",
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_solution_version(
@@ -1692,6 +2261,17 @@ personalize_describe_solution_version <- function(solutionVersionArn) {
 #'
 #' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution version for which to get
 #' metrics.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   solutionVersionArn = "string",
+#'   metrics = list(
+#'     123.0
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1736,6 +2316,29 @@ personalize_get_solution_metrics <- function(solutionVersionArn) {
 #' @param nextToken The token to request the next page of results.
 #' @param maxResults The maximum number of batch inference job results to return in each
 #' page. The default value is 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   batchInferenceJobs = list(
+#'     list(
+#'       batchInferenceJobArn = "string",
+#'       jobName = "string",
+#'       status = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureReason = "string",
+#'       solutionVersionArn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1786,6 +2389,28 @@ personalize_list_batch_inference_jobs <- function(solutionVersionArn = NULL, nex
 #' of campaigns (if they exist).
 #' @param maxResults The maximum number of campaigns to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   campaigns = list(
+#'     list(
+#'       name = "string",
+#'       campaignArn = "string",
+#'       status = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureReason = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_campaigns(
@@ -1830,6 +2455,28 @@ personalize_list_campaigns <- function(solutionArn = NULL, nextToken = NULL, max
 #' [`list_dataset_groups`][personalize_list_dataset_groups] for getting the
 #' next set of dataset groups (if they exist).
 #' @param maxResults The maximum number of dataset groups to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datasetGroups = list(
+#'     list(
+#'       name = "string",
+#'       datasetGroupArn = "string",
+#'       status = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureReason = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1881,6 +2528,28 @@ personalize_list_dataset_groups <- function(nextToken = NULL, maxResults = NULL)
 #' getting the next set of dataset import jobs (if they exist).
 #' @param maxResults The maximum number of dataset import jobs to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datasetImportJobs = list(
+#'     list(
+#'       datasetImportJobArn = "string",
+#'       jobName = "string",
+#'       status = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureReason = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_dataset_import_jobs(
@@ -1927,6 +2596,28 @@ personalize_list_dataset_import_jobs <- function(datasetArn = NULL, nextToken = 
 #' [`list_dataset_import_jobs`][personalize_list_dataset_import_jobs] for
 #' getting the next set of dataset import jobs (if they exist).
 #' @param maxResults The maximum number of datasets to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datasets = list(
+#'     list(
+#'       name = "string",
+#'       datasetArn = "string",
+#'       datasetType = "string",
+#'       status = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1975,6 +2666,27 @@ personalize_list_datasets <- function(datasetGroupArn = NULL, nextToken = NULL, 
 #' next set of event trackers (if they exist).
 #' @param maxResults The maximum number of event trackers to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   eventTrackers = list(
+#'     list(
+#'       name = "string",
+#'       eventTrackerArn = "string",
+#'       status = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_event_trackers(
@@ -2017,6 +2729,29 @@ personalize_list_event_trackers <- function(datasetGroupArn = NULL, nextToken = 
 #' [`list_filters`][personalize_list_filters] for getting the next set of
 #' filters (if they exist).
 #' @param maxResults The maximum number of filters to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Filters = list(
+#'     list(
+#'       name = "string",
+#'       filterArn = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       datasetGroupArn = "string",
+#'       failureReason = "string",
+#'       status = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2063,6 +2798,27 @@ personalize_list_filters <- function(datasetGroupArn = NULL, nextToken = NULL, m
 #' recipes (if they exist).
 #' @param maxResults The maximum number of recipes to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   recipes = list(
+#'     list(
+#'       name = "string",
+#'       recipeArn = "string",
+#'       status = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_recipes(
@@ -2107,6 +2863,26 @@ personalize_list_recipes <- function(recipeProvider = NULL, nextToken = NULL, ma
 #' [`list_schemas`][personalize_list_schemas] for getting the next set of
 #' schemas (if they exist).
 #' @param maxResults The maximum number of schemas to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   schemas = list(
+#'     list(
+#'       name = "string",
+#'       schemaArn = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2155,6 +2931,27 @@ personalize_list_schemas <- function(nextToken = NULL, maxResults = NULL) {
 #' getting the next set of solution versions (if they exist).
 #' @param maxResults The maximum number of solution versions to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   solutionVersions = list(
+#'     list(
+#'       solutionVersionArn = "string",
+#'       status = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureReason = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_solution_versions(
@@ -2201,6 +2998,27 @@ personalize_list_solution_versions <- function(solutionArn = NULL, nextToken = N
 #' [`list_solutions`][personalize_list_solutions] for getting the next set
 #' of solutions (if they exist).
 #' @param maxResults The maximum number of solutions to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   solutions = list(
+#'     list(
+#'       name = "string",
+#'       solutionArn = "string",
+#'       status = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2257,6 +3075,14 @@ personalize_list_solutions <- function(datasetGroupArn = NULL, nextToken = NULL,
 #' @param minProvisionedTPS Specifies the requested minimum provisioned transactions
 #' (recommendations) per second that Amazon Personalize will support.
 #' @param campaignConfig The configuration details of a campaign.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   campaignArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

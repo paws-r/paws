@@ -18,6 +18,19 @@ results.}
 The operation also returns a NextToken which you can use in a subsequent
 operation to retrieve the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventBuses = list(
+    list(
+      Name = "string",
+      Arn = "string",
+      Policy = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all the event buses in your account, including the default event
 bus, custom event buses, and partner event buses.

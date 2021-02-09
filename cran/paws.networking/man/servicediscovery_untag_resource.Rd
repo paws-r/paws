@@ -12,6 +12,10 @@ tags for.}
 
 \item{TagKeys}{[required] The tag keys to remove from the specified resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes one or more tags from the specified resource.
 }
@@ -30,7 +34,7 @@ Removes one or more tags from the specified resource.
 # This example removes the "Department" and "Project" tags from a
 # resource.
 svc$untag_resource(
-  ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/ns-ylexjili4cdxy3...",
+  ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/ns-ylexjil...",
   TagKeys = list(
     "Project",
     "Department"

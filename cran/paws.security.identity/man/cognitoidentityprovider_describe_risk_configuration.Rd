@@ -12,6 +12,70 @@ cognitoidentityprovider_describe_risk_configuration(UserPoolId,
 
 \item{ClientId}{The app client ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RiskConfiguration = list(
+    UserPoolId = "string",
+    ClientId = "string",
+    CompromisedCredentialsRiskConfiguration = list(
+      EventFilter = list(
+        "SIGN_IN"|"PASSWORD_CHANGE"|"SIGN_UP"
+      ),
+      Actions = list(
+        EventAction = "BLOCK"|"NO_ACTION"
+      )
+    ),
+    AccountTakeoverRiskConfiguration = list(
+      NotifyConfiguration = list(
+        From = "string",
+        ReplyTo = "string",
+        SourceArn = "string",
+        BlockEmail = list(
+          Subject = "string",
+          HtmlBody = "string",
+          TextBody = "string"
+        ),
+        NoActionEmail = list(
+          Subject = "string",
+          HtmlBody = "string",
+          TextBody = "string"
+        ),
+        MfaEmail = list(
+          Subject = "string",
+          HtmlBody = "string",
+          TextBody = "string"
+        )
+      ),
+      Actions = list(
+        LowAction = list(
+          Notify = TRUE|FALSE,
+          EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
+        ),
+        MediumAction = list(
+          Notify = TRUE|FALSE,
+          EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
+        ),
+        HighAction = list(
+          Notify = TRUE|FALSE,
+          EventAction = "BLOCK"|"MFA_IF_CONFIGURED"|"MFA_REQUIRED"|"NO_ACTION"
+        )
+      )
+    ),
+    RiskExceptionConfiguration = list(
+      BlockedIPRangeList = list(
+        "string"
+      ),
+      SkippedIPRangeList = list(
+        "string"
+      )
+    ),
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Describes the risk configuration.
 }

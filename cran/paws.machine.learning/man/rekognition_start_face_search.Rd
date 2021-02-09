@@ -31,6 +31,12 @@ that's published to your Amazon Simple Notification Service topic. For
 example, you can use \code{JobTag} to group related jobs and identify them in
 the completion notification.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string"
+)
+}
+}
 \description{
 Starts the asynchronous search for faces in a collection that match the
 faces of persons detected in a stored video.

@@ -13,6 +13,12 @@ chime_create_app_instance(Name, Metadata, ClientRequestToken)
 
 \item{ClientRequestToken}{[required] The \code{ClientRequestToken} of the app instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppInstanceArn = "string"
+)
+}
+}
 \description{
 Creates an Amazon Chime Messaging SDK \code{AppInstance} under an AWS
 Account. Only Messaging SDK customers use this API.

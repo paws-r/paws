@@ -10,6 +10,17 @@ ses_get_template(TemplateName)
 \arguments{
 \item{TemplateName}{[required] The name of the template you want to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Template = list(
+    TemplateName = "string",
+    SubjectPart = "string",
+    TextPart = "string",
+    HtmlPart = "string"
+  )
+)
+}
+}
 \description{
 Displays the template object (which includes the Subject line, HTML part
 and text part) for the template you specify.

@@ -60,6 +60,37 @@ For more information, see \href{https://docs.aws.amazon.com/cognito/latest/devel
 and \href{https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-listusers-api-examples}{Examples of Using the ListUsers API}
 in the \emph{Amazon Cognito Developer Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Users = list(
+    list(
+      Username = "string",
+      Attributes = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      ),
+      UserCreateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UserLastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Enabled = TRUE|FALSE,
+      UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD",
+      MFAOptions = list(
+        list(
+          DeliveryMedium = "SMS"|"EMAIL",
+          AttributeName = "string"
+        )
+      )
+    )
+  ),
+  PaginationToken = "string"
+)
+}
+}
 \description{
 Lists the users in the Amazon Cognito user pool.
 }

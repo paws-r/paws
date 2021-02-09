@@ -23,6 +23,12 @@ the EC2 Fleet.}
 
 \item{TargetCapacitySpecification}{The size of the EC2 Fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Modifies the specified EC2 Fleet.
 

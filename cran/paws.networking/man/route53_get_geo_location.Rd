@@ -32,6 +32,19 @@ Postal Service website.
 If you specify \code{subdivisioncode}, you must also specify \code{US} for
 \code{CountryCode}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GeoLocationDetails = list(
+    ContinentCode = "string",
+    ContinentName = "string",
+    CountryCode = "string",
+    CountryName = "string",
+    SubdivisionCode = "string",
+    SubdivisionName = "string"
+  )
+)
+}
+}
 \description{
 Gets information about whether a specified geographic location is
 supported for Amazon Route 53 geolocation resource record sets.

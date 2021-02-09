@@ -78,6 +78,22 @@ If you don't specify a list of contexts, Amazon Lex will use the current
 list of contexts for the session. If you specify an empty list, all
 contexts for the session are cleared.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  contentType = "string",
+  intentName = "string",
+  slots = "string",
+  sessionAttributes = "string",
+  message = "string",
+  messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite",
+  dialogState = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Fulfilled"|"ReadyForFulfillment"|"Failed",
+  slotToElicit = "string",
+  audioStream = raw,
+  sessionId = "string",
+  activeContexts = "string"
+)
+}
+}
 \description{
 Creates a new session or modifies an existing session with an Amazon Lex
 bot. Use this operation to enable your application to set the state of

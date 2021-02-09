@@ -31,7 +31,7 @@ This value determines the type of fleet resources that you can use for
 this build. If your game build contains multiple executables, they all
 must run on the same operating system. If an operating system is not
 specified when creating a build, Amazon GameLift uses the default value
-(WINDOWS\\_2012). This value cannot be changed later.}
+(WINDOWS_2012). This value cannot be changed later.}
 
 \item{Tags}{A list of labels to assign to the new build resource. Tags are
 developer-defined key-value pairs. Tagging AWS resources are useful for
@@ -43,6 +43,34 @@ use \code{\link[=gamelift_tag_resource]{tag_resource}},
 \code{\link[=gamelift_list_tags_for_resource]{list_tags_for_resource}} to add,
 remove, and view tags. The maximum tag limit may be lower than stated.
 See the AWS General Reference for actual tagging limits.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Build = list(
+    BuildId = "string",
+    BuildArn = "string",
+    Name = "string",
+    Version = "string",
+    Status = "INITIALIZED"|"READY"|"FAILED",
+    SizeOnDisk = 123,
+    OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  UploadCredentials = list(
+    AccessKeyId = "string",
+    SecretAccessKey = "string",
+    SessionToken = "string"
+  ),
+  StorageLocation = list(
+    Bucket = "string",
+    Key = "string",
+    RoleArn = "string",
+    ObjectVersion = "string"
+  )
+)
+}
 }
 \description{
 Creates a new Amazon GameLift build resource for your game server binary
@@ -71,7 +99,7 @@ and specify a build name and operating system. This operation
 creates a new build resource and also returns an S3 location with
 temporary access credentials. Use the credentials to manually upload
 your build files to the specified S3 location. For more information,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html}{Uploading Objects}
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html}{Uploading Objects}
 in the \emph{Amazon S3 Developer Guide}. Build files can be uploaded to
 the GameLift S3 location once only; that can't be updated.
 }

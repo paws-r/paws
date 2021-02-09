@@ -78,6 +78,13 @@ every \code{\link[=kms_create_grant]{create_grant}} request, even when a duplica
 \code{GrantId} is returned. All grant tokens for the same grant ID can be
 used interchangeably.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GrantToken = "string",
+  GrantId = "string"
+)
+}
+}
 \description{
 Adds a grant to a customer master key (CMK). The grant allows the
 grantee principal to use the CMK when the conditions specified in the

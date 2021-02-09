@@ -9,6 +9,52 @@ configservice_describe_delivery_channel_status(DeliveryChannelNames)
 \arguments{
 \item{DeliveryChannelNames}{A list of delivery channel names.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeliveryChannelsStatus = list(
+    list(
+      name = "string",
+      configSnapshotDeliveryInfo = list(
+        lastStatus = "Success"|"Failure"|"Not_Applicable",
+        lastErrorCode = "string",
+        lastErrorMessage = "string",
+        lastAttemptTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        lastSuccessfulTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        nextDeliveryTime = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      configHistoryDeliveryInfo = list(
+        lastStatus = "Success"|"Failure"|"Not_Applicable",
+        lastErrorCode = "string",
+        lastErrorMessage = "string",
+        lastAttemptTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        lastSuccessfulTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        nextDeliveryTime = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      configStreamDeliveryInfo = list(
+        lastStatus = "Success"|"Failure"|"Not_Applicable",
+        lastErrorCode = "string",
+        lastErrorMessage = "string",
+        lastStatusChangeTime = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the current status of the specified delivery channel. If a
 delivery channel is not specified, this action returns the current

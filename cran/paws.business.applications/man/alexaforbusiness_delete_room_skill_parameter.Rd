@@ -17,6 +17,10 @@ details.}
 
 \item{ParameterKey}{[required] The room skill parameter key for which to remove details.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes room skill parameter details by room, skill, and parameter key
 ID.

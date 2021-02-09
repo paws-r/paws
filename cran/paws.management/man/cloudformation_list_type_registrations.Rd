@@ -38,6 +38,15 @@ assign that token to the request object's \code{NextToken} parameter. If
 there are no remaining results, the previous response object's
 \code{NextToken} parameter is set to \code{null}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RegistrationTokenList = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of registration tokens for the specified type(s).
 }

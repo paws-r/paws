@@ -53,6 +53,12 @@ MB. Fragments are removed from the buffer when either limit is reached.}
 \item{Tags}{A list of tags to associate with the specified stream. Each tag is a
 key-value pair (the value is optional).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StreamARN = "string"
+)
+}
+}
 \description{
 Creates a new Kinesis video stream.
 

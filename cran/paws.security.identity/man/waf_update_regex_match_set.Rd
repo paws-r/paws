@@ -19,6 +19,12 @@ RegexMatchTuple.}
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=waf_get_change_token]{get_change_token}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeToken = "string"
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
@@ -46,8 +52,7 @@ string.
 
 For example, you can create a \code{RegexPatternSet} that matches any
 requests with \code{User-Agent} headers that contain the string
-\verb{B\\\[a@\\\]dB\\\[o0\\\]t}. You can then configure AWS WAF to reject those
-requests.
+\verb{B[a@]dB[o0]t}. You can then configure AWS WAF to reject those requests.
 
 To create and configure a \code{RegexMatchSet}, perform the following steps:
 \enumerate{

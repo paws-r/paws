@@ -9,6 +9,10 @@ workspaces_restore_workspace(WorkspaceId)
 \arguments{
 \item{WorkspaceId}{[required] The identifier of the WorkSpace.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Restores the specified WorkSpace to its last known healthy state.
 

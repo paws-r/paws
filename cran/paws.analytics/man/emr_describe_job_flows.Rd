@@ -16,6 +16,136 @@ emr_describe_job_flows(CreatedAfter, CreatedBefore, JobFlowIds,
 
 \item{JobFlowStates}{Return only job flows whose state is contained in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobFlows = list(
+    list(
+      JobFlowId = "string",
+      Name = "string",
+      LogUri = "string",
+      LogEncryptionKmsKeyId = "string",
+      AmiVersion = "string",
+      ExecutionStatusDetail = list(
+        State = "STARTING"|"BOOTSTRAPPING"|"RUNNING"|"WAITING"|"SHUTTING_DOWN"|"TERMINATED"|"COMPLETED"|"FAILED",
+        CreationDateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        StartDateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        ReadyDateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        EndDateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastStateChangeReason = "string"
+      ),
+      Instances = list(
+        MasterInstanceType = "string",
+        MasterPublicDnsName = "string",
+        MasterInstanceId = "string",
+        SlaveInstanceType = "string",
+        InstanceCount = 123,
+        InstanceGroups = list(
+          list(
+            InstanceGroupId = "string",
+            Name = "string",
+            Market = "ON_DEMAND"|"SPOT",
+            InstanceRole = "MASTER"|"CORE"|"TASK",
+            BidPrice = "string",
+            InstanceType = "string",
+            InstanceRequestCount = 123,
+            InstanceRunningCount = 123,
+            State = "PROVISIONING"|"BOOTSTRAPPING"|"RUNNING"|"RECONFIGURING"|"RESIZING"|"SUSPENDED"|"TERMINATING"|"TERMINATED"|"ARRESTED"|"SHUTTING_DOWN"|"ENDED",
+            LastStateChangeReason = "string",
+            CreationDateTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            StartDateTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            ReadyDateTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            EndDateTime = as.POSIXct(
+              "2015-01-01"
+            )
+          )
+        ),
+        NormalizedInstanceHours = 123,
+        Ec2KeyName = "string",
+        Ec2SubnetId = "string",
+        Placement = list(
+          AvailabilityZone = "string",
+          AvailabilityZones = list(
+            "string"
+          )
+        ),
+        KeepJobFlowAliveWhenNoSteps = TRUE|FALSE,
+        TerminationProtected = TRUE|FALSE,
+        HadoopVersion = "string"
+      ),
+      Steps = list(
+        list(
+          StepConfig = list(
+            Name = "string",
+            ActionOnFailure = "TERMINATE_JOB_FLOW"|"TERMINATE_CLUSTER"|"CANCEL_AND_WAIT"|"CONTINUE",
+            HadoopJarStep = list(
+              Properties = list(
+                list(
+                  Key = "string",
+                  Value = "string"
+                )
+              ),
+              Jar = "string",
+              MainClass = "string",
+              Args = list(
+                "string"
+              )
+            )
+          ),
+          ExecutionStatusDetail = list(
+            State = "PENDING"|"RUNNING"|"CONTINUE"|"COMPLETED"|"CANCELLED"|"FAILED"|"INTERRUPTED",
+            CreationDateTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            StartDateTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            EndDateTime = as.POSIXct(
+              "2015-01-01"
+            ),
+            LastStateChangeReason = "string"
+          )
+        )
+      ),
+      BootstrapActions = list(
+        list(
+          BootstrapActionConfig = list(
+            Name = "string",
+            ScriptBootstrapAction = list(
+              Path = "string",
+              Args = list(
+                "string"
+              )
+            )
+          )
+        )
+      ),
+      SupportedProducts = list(
+        "string"
+      ),
+      VisibleToAllUsers = TRUE|FALSE,
+      JobFlowRole = "string",
+      ServiceRole = "string",
+      AutoScalingRole = "string",
+      ScaleDownBehavior = "TERMINATE_AT_INSTANCE_HOUR"|"TERMINATE_AT_TASK_COMPLETION"
+    )
+  )
+)
+}
+}
 \description{
 This API is no longer supported and will eventually be removed. We
 recommend you use \code{\link[=emr_list_clusters]{list_clusters}},

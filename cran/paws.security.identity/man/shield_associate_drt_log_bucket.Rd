@@ -10,6 +10,10 @@ shield_associate_drt_log_bucket(LogBucket)
 \arguments{
 \item{LogBucket}{[required] The Amazon S3 bucket that contains your AWS WAF logs.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Authorizes the DDoS Response Team (DRT) to access the specified Amazon
 S3 bucket containing your AWS WAF logs. You can associate up to 10

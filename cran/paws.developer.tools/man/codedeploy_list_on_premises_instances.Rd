@@ -23,6 +23,15 @@ instance names returned.}
 call. It can be used to return the next set of on-premises instances in
 the list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  instanceNames = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets a list of names for one or more on-premises instances.
 

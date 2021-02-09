@@ -13,6 +13,28 @@ amplify_delete_job(appId, branchName, jobId)
 
 \item{jobId}{[required] The unique ID for the job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobSummary = list(
+    jobArn = "string",
+    jobId = "string",
+    commitId = "string",
+    commitMessage = "string",
+    commitTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    startTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    status = "PENDING"|"PROVISIONING"|"RUNNING"|"FAILED"|"SUCCEED"|"CANCELLING"|"CANCELLED",
+    endTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    jobType = "RELEASE"|"RETRY"|"MANUAL"|"WEB_HOOK"
+  )
+)
+}
+}
 \description{
 Deletes a job for a branch of an Amplify app.
 }

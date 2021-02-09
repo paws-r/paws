@@ -16,6 +16,15 @@ listing data.}
 \item{maxResults}{You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  rulesPackageArns = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all available Amazon Inspector rules packages.
 }

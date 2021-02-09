@@ -11,14 +11,26 @@ greengrass_create_function_definition_version(AmznClientToken,
 \arguments{
 \item{AmznClientToken}{A client token used to correlate requests and responses.}
 
-\item{DefaultConfig}{The default configuration that applies to all Lambda functions in this function definition version. Individual Lambda functions can override these settings.}
+\item{DefaultConfig}{The default configuration that applies to all Lambda functions in this
+function definition version. Individual Lambda functions can override
+these settings.}
 
 \item{FunctionDefinitionId}{[required] The ID of the Lambda function definition.}
 
 \item{Functions}{A list of Lambda functions in this function definition version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  Version = "string"
+)
+}
+}
 \description{
-Creates a version of a Lambda function definition that has already been defined.
+Creates a version of a Lambda function definition that has already been
+defined.
 }
 \section{Request syntax}{
 \preformatted{svc$create_function_definition_version(

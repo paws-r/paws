@@ -36,6 +36,18 @@ NULL
 #' @param redirectUri The location of the application that will receive the authorization
 #' code. Users authorize the service to send the request to this location.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   accessToken = "string",
+#'   tokenType = "string",
+#'   expiresIn = 123,
+#'   refreshToken = "string",
+#'   idToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_token(
@@ -88,6 +100,19 @@ ssooidc_create_token <- function(clientId, clientSecret, grantType, deviceCode, 
 #' @param scopes The list of scopes that are defined by the client. Upon authorization,
 #' this list is used to restrict permissions when granting an access token.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   clientId = "string",
+#'   clientSecret = "string",
+#'   clientIdIssuedAt = 123,
+#'   clientSecretExpiresAt = 123,
+#'   authorizationEndpoint = "string",
+#'   tokenEndpoint = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_client(
@@ -139,6 +164,19 @@ ssooidc_register_client <- function(clientName, clientType, scopes = NULL) {
 #' the User
 #' Portal](https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html)
 #' in the *AWS Single Sign-On User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deviceCode = "string",
+#'   userCode = "string",
+#'   verificationUri = "string",
+#'   verificationUriComplete = "string",
+#'   expiresIn = 123,
+#'   interval = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -16,8 +16,8 @@ This parameter is optional. If it is not included, it defaults to a
 slash (/). This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
-ASCII character from the ! (\code{U+0021}) through the DEL character
-(\verb{U+007F}), including most punctuation characters, digits, and upper and
+ASCII character from the ! (\verb{\\u0021}) through the DEL character
+(\verb{\\u007F}), including most punctuation characters, digits, and upper and
 lowercased letters.
 
 If you are uploading a server certificate specifically for use with
@@ -30,7 +30,7 @@ value. The name of the certificate cannot contain any spaces.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{CertificateBody}{[required] The contents of the public key certificate in PEM-encoded format.
 
@@ -39,11 +39,11 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
+(\verb{\\u0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+character set (through \verb{\\u00FF})
+\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
+carriage return (\verb{\\u000D})
 }}
 
 \item{PrivateKey}{[required] The contents of the private key in PEM-encoded format.
@@ -53,11 +53,11 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
+(\verb{\\u0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+character set (through \verb{\\u00FF})
+\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
+carriage return (\verb{\\u000D})
 }}
 
 \item{CertificateChain}{The contents of the certificate chain. This is typically a concatenation
@@ -68,12 +68,29 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
+(\verb{\\u0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+character set (through \verb{\\u00FF})
+\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
+carriage return (\verb{\\u000D})
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ServerCertificateMetadata = list(
+    Path = "string",
+    ServerCertificateName = "string",
+    ServerCertificateId = "string",
+    Arn = "string",
+    UploadDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Expiration = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
 }
 \description{
 Uploads a server certificate entity for the AWS account. The server
@@ -120,9 +137,9 @@ in the \emph{IAM User Guide}.
 # The following upload-server-certificate command uploads a server
 # certificate to your AWS account:
 svc$upload_server_certificate(
-  CertificateBody = "-----BEGIN CERTIFICATE-----<a very long certificate text string>-----EN...",
+  CertificateBody = "-----BEGIN CERTIFICATE-----<a very long certificate text string>...",
   Path = "/company/servercerts/",
-  PrivateKey = "-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----END DSA ...",
+  PrivateKey = "-----BEGIN DSA PRIVATE KEY-----<a very long private key string>-----E...",
   ServerCertificateName = "ProdServerCert"
 )
 }

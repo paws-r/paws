@@ -11,7 +11,7 @@ iam_update_login_profile(UserName, Password, PasswordResetRequired)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{Password}{The new password for the specified IAM user.
 
@@ -20,11 +20,11 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
+(\verb{\\u0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+character set (through \verb{\\u00FF})
+\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
+carriage return (\verb{\\u000D})
 }
 
 However, the format can be further restricted by the account

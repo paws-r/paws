@@ -20,6 +20,10 @@ TLS connection can't be established.}
 \item{SendingPoolName}{The name of the dedicated IP pool that you want to associate with the
 configuration set.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associate a configuration set with a dedicated IP pool. You can use
 dedicated IP pools to create groups of dedicated IP addresses for

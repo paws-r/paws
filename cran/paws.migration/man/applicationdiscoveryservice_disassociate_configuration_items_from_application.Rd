@@ -13,6 +13,10 @@ disassociated.}
 
 \item{configurationIds}{[required] Configuration ID of each item to be disassociated from an application.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disassociates one or more configuration items from an application.
 }

@@ -17,6 +17,17 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 \item{TagKeys}{[required] A list of \code{TagKeys} identifying the tags you want removed from the named
 resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Removes the tags identified by the \code{TagKeys} list from the named
 resource.

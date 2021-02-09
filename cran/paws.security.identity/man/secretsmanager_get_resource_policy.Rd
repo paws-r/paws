@@ -31,6 +31,14 @@ If you do include the random suffix added by Secrets Manager, you
 receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string",
+  ResourcePolicy = "string"
+)
+}
+}
 \description{
 Retrieves the JSON text of the resource-based policy document attached
 to the specified secret. The JSON request string input and response

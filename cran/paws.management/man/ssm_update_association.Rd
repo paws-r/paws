@@ -116,6 +116,86 @@ and according to the interval specified.}
 want to run the association. Use this action to update an association in
 multiple Regions and multiple accounts.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociationDescription = list(
+    Name = "string",
+    InstanceId = "string",
+    AssociationVersion = "string",
+    Date = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdateAssociationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Status = list(
+      Date = as.POSIXct(
+        "2015-01-01"
+      ),
+      Name = "Pending"|"Success"|"Failed",
+      Message = "string",
+      AdditionalInfo = "string"
+    ),
+    Overview = list(
+      Status = "string",
+      DetailedStatus = "string",
+      AssociationStatusAggregatedCount = list(
+        123
+      )
+    ),
+    DocumentVersion = "string",
+    AutomationTargetParameterName = "string",
+    Parameters = list(
+      list(
+        "string"
+      )
+    ),
+    AssociationId = "string",
+    Targets = list(
+      list(
+        Key = "string",
+        Values = list(
+          "string"
+        )
+      )
+    ),
+    ScheduleExpression = "string",
+    OutputLocation = list(
+      S3Location = list(
+        OutputS3Region = "string",
+        OutputS3BucketName = "string",
+        OutputS3KeyPrefix = "string"
+      )
+    ),
+    LastExecutionDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastSuccessfulExecutionDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    AssociationName = "string",
+    MaxErrors = "string",
+    MaxConcurrency = "string",
+    ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+    SyncCompliance = "AUTO"|"MANUAL",
+    ApplyOnlyAtCronInterval = TRUE|FALSE,
+    TargetLocations = list(
+      list(
+        Accounts = list(
+          "string"
+        ),
+        Regions = list(
+          "string"
+        ),
+        TargetLocationMaxConcurrency = "string",
+        TargetLocationMaxErrors = "string",
+        ExecutionRoleName = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Updates an association. You can update the association name and version,
 the document version, schedule, parameters, and Amazon S3 output.

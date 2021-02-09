@@ -13,6 +13,98 @@ devicefarm_list_jobs(arn, nextToken)
 operation, which can be used to return the next set of items in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobs = list(
+    list(
+      arn = "string",
+      name = "string",
+      type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+      created = as.POSIXct(
+        "2015-01-01"
+      ),
+      status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+      result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+      started = as.POSIXct(
+        "2015-01-01"
+      ),
+      stopped = as.POSIXct(
+        "2015-01-01"
+      ),
+      counters = list(
+        total = 123,
+        passed = 123,
+        failed = 123,
+        warned = 123,
+        errored = 123,
+        stopped = 123,
+        skipped = 123
+      ),
+      message = "string",
+      device = list(
+        arn = "string",
+        name = "string",
+        manufacturer = "string",
+        model = "string",
+        modelId = "string",
+        formFactor = "PHONE"|"TABLET",
+        platform = "ANDROID"|"IOS",
+        os = "string",
+        cpu = list(
+          frequency = "string",
+          architecture = "string",
+          clock = 123.0
+        ),
+        resolution = list(
+          width = 123,
+          height = 123
+        ),
+        heapSize = 123,
+        memory = 123,
+        image = "string",
+        carrier = "string",
+        radio = "string",
+        remoteAccessEnabled = TRUE|FALSE,
+        remoteDebugEnabled = TRUE|FALSE,
+        fleetType = "string",
+        fleetName = "string",
+        instances = list(
+          list(
+            arn = "string",
+            deviceArn = "string",
+            labels = list(
+              "string"
+            ),
+            status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+            udid = "string",
+            instanceProfile = list(
+              arn = "string",
+              packageCleanup = TRUE|FALSE,
+              excludeAppPackagesFromCleanup = list(
+                "string"
+              ),
+              rebootAfterUse = TRUE|FALSE,
+              name = "string",
+              description = "string"
+            )
+          )
+        ),
+        availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+      ),
+      instanceArn = "string",
+      deviceMinutes = list(
+        total = 123.0,
+        metered = 123.0,
+        unmetered = 123.0
+      ),
+      videoEndpoint = "string",
+      videoCapture = TRUE|FALSE
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets information about jobs for a given test run.
 }

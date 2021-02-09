@@ -15,6 +15,28 @@ apigatewayv2_create_vpc_link(Name, SecurityGroupIds, SubnetIds, Tags)
 
 \item{Tags}{A list of tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  Name = "string",
+  SecurityGroupIds = list(
+    "string"
+  ),
+  SubnetIds = list(
+    "string"
+  ),
+  Tags = list(
+    "string"
+  ),
+  VpcLinkId = "string",
+  VpcLinkStatus = "PENDING"|"AVAILABLE"|"DELETING"|"FAILED"|"INACTIVE",
+  VpcLinkStatusMessage = "string",
+  VpcLinkVersion = "V2"
+)
+}
+}
 \description{
 Creates a VPC link.
 }

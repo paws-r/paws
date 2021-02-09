@@ -33,9 +33,9 @@ NULL
 #' WebSocket APIs.
 #' @param DisableExecuteApiEndpoint Specifies whether clients can invoke your API by using the default
 #' execute-api endpoint. By default, clients can invoke your API with the
-#' default https://\{api\\_id\}.execute-api.\{region\}.amazonaws.com endpoint.
-#' To require that clients use a custom domain name to invoke your API,
-#' disable the default endpoint.
+#' default https://\{api_id\}.execute-api.\{region\}.amazonaws.com
+#' endpoint. To require that clients use a custom domain name to invoke
+#' your API, disable the default endpoint.
 #' @param Name &#91;required&#93; The name of the API.
 #' @param ProtocolType &#91;required&#93; The API protocol.
 #' @param RouteKey This property is part of quick create. If you don't specify a routeKey,
@@ -45,18 +45,64 @@ NULL
 #' the API, and you can update the route keys of additional routes.
 #' Supported only for HTTP APIs.
 #' @param RouteSelectionExpression The route selection expression for the API. For HTTP APIs, the
-#' routeSelectionExpression must be $\{request.method\} $\{request.path\}. If
-#' not provided, this will be the default for HTTP APIs. This property is
-#' required for WebSocket APIs.
+#' routeSelectionExpression must be $\{request.method\}
+#' $\{request.path\}. If not provided, this will be the default for HTTP
+#' APIs. This property is required for WebSocket APIs.
 #' @param Tags The collection of tags. Each tag element is associated with a given
 #' resource.
 #' @param Target This property is part of quick create. Quick create produces an API with
 #' an integration, a default catch-all route, and a default stage which is
 #' configured to automatically deploy changes. For HTTP integrations,
 #' specify a fully qualified URL. For Lambda integrations, specify a
-#' function ARN. The type of the integration will be HTTP\\_PROXY or
-#' AWS\\_PROXY, respectively. Supported only for HTTP APIs.
+#' function ARN. The type of the integration will be HTTP_PROXY or
+#' AWS_PROXY, respectively. Supported only for HTTP APIs.
 #' @param Version A version identifier for the API.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiEndpoint = "string",
+#'   ApiGatewayManaged = TRUE|FALSE,
+#'   ApiId = "string",
+#'   ApiKeySelectionExpression = "string",
+#'   CorsConfiguration = list(
+#'     AllowCredentials = TRUE|FALSE,
+#'     AllowHeaders = list(
+#'       "string"
+#'     ),
+#'     AllowMethods = list(
+#'       "string"
+#'     ),
+#'     AllowOrigins = list(
+#'       "string"
+#'     ),
+#'     ExposeHeaders = list(
+#'       "string"
+#'     ),
+#'     MaxAge = 123
+#'   ),
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   DisableSchemaValidation = TRUE|FALSE,
+#'   DisableExecuteApiEndpoint = TRUE|FALSE,
+#'   ImportInfo = list(
+#'     "string"
+#'   ),
+#'   Name = "string",
+#'   ProtocolType = "WEBSOCKET"|"HTTP",
+#'   RouteSelectionExpression = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   Version = "string",
+#'   Warnings = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -127,6 +173,17 @@ apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, CorsConfig
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param Stage &#91;required&#93; The API stage.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiId = "string",
+#'   ApiMappingId = "string",
+#'   ApiMappingKey = "string",
+#'   Stage = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_api_mapping(
@@ -189,14 +246,15 @@ apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainN
 #' @param AuthorizerUri The authorizer's Uniform Resource Identifier (URI). For REQUEST
 #' authorizers, this must be a well-formed Lambda function URI, for
 #' example,
-#' arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\{account\\_id\}:function:\{lambda\\_function\\_name\}/invocations.
+#' arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\{account_id\}:function:\{lambda_function_name\}/invocations.
 #' In general, the URI has this form:
-#' arn:aws:apigateway:\{region\}:lambda:path/\{service\\_api\} , where \{region\}
-#' is the same as the region hosting the Lambda function, path indicates
-#' that the remaining substring in the URI should be treated as the path to
-#' the resource, including the initial /. For Lambda functions, this is
-#' usually of the form /2015-03-31/functions/\[FunctionARN\]/invocations.
-#' Supported only for REQUEST authorizers.
+#' arn:aws:apigateway:\{region\}:lambda:path/\{service_api\} , where
+#' \{region\} is the same as the region hosting the Lambda function, path
+#' indicates that the remaining substring in the URI should be treated as
+#' the path to the resource, including the initial /. For Lambda functions,
+#' this is usually of the form
+#' /2015-03-31/functions/\[FunctionARN\]/invocations. Supported only for
+#' REQUEST authorizers.
 #' @param EnableSimpleResponses Specifies whether a Lambda authorizer returns a response in a simple
 #' format. By default, a Lambda authorizer must return an IAM policy. If
 #' enabled, the Lambda authorizer can return a boolean value instead of an
@@ -231,6 +289,31 @@ apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainN
 #' @param JwtConfiguration Represents the configuration of a JWT authorizer. Required for the JWT
 #' authorizer type. Supported only for HTTP APIs.
 #' @param Name &#91;required&#93; The name of the authorizer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthorizerCredentialsArn = "string",
+#'   AuthorizerId = "string",
+#'   AuthorizerPayloadFormatVersion = "string",
+#'   AuthorizerResultTtlInSeconds = 123,
+#'   AuthorizerType = "REQUEST"|"JWT",
+#'   AuthorizerUri = "string",
+#'   EnableSimpleResponses = TRUE|FALSE,
+#'   IdentitySource = list(
+#'     "string"
+#'   ),
+#'   IdentityValidationExpression = "string",
+#'   JwtConfiguration = list(
+#'     Audience = list(
+#'       "string"
+#'     ),
+#'     Issuer = "string"
+#'   ),
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -288,6 +371,21 @@ apigatewayv2_create_authorizer <- function(ApiId, AuthorizerCredentialsArn = NUL
 #' @param Description The description for the deployment resource.
 #' @param StageName The name of the Stage resource for the Deployment resource to create.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutoDeployed = TRUE|FALSE,
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DeploymentId = "string",
+#'   DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
+#'   DeploymentStatusMessage = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_deployment(
@@ -330,6 +428,40 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #' @param DomainNameConfigurations The domain name configurations.
 #' @param MutualTlsAuthentication The mutual TLS authentication configuration for a custom domain name.
 #' @param Tags The collection of tags associated with a domain name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiMappingSelectionExpression = "string",
+#'   DomainName = "string",
+#'   DomainNameConfigurations = list(
+#'     list(
+#'       ApiGatewayDomainName = "string",
+#'       CertificateArn = "string",
+#'       CertificateName = "string",
+#'       CertificateUploadDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DomainNameStatus = "AVAILABLE"|"UPDATING",
+#'       DomainNameStatusMessage = "string",
+#'       EndpointType = "REGIONAL"|"EDGE",
+#'       HostedZoneId = "string",
+#'       SecurityPolicy = "TLS_1_0"|"TLS_1_2"
+#'     )
+#'   ),
+#'   MutualTlsAuthentication = list(
+#'     TruststoreUri = "string",
+#'     TruststoreVersion = "string",
+#'     TruststoreWarnings = list(
+#'       "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -398,16 +530,16 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' HTTP APIs.
 #' @param ConnectionType The type of the network connection to the integration endpoint. Specify
 #' INTERNET for connections through the public routable internet or
-#' VPC\\_LINK for private connections between API Gateway and resources in a
+#' VPC_LINK for private connections between API Gateway and resources in a
 #' VPC. The default value is INTERNET.
 #' @param ContentHandlingStrategy Supported only for WebSocket APIs. Specifies how to handle response
 #' payload content type conversions. Supported values are
-#' CONVERT\\_TO\\_BINARY and CONVERT\\_TO\\_TEXT, with the following behaviors:
+#' CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
 #' 
-#' CONVERT\\_TO\\_BINARY: Converts a response payload from a Base64-encoded
+#' CONVERT_TO_BINARY: Converts a response payload from a Base64-encoded
 #' string to the corresponding binary blob.
 #' 
-#' CONVERT\\_TO\\_TEXT: Converts a response payload from a binary blob to a
+#' CONVERT_TO_TEXT: Converts a response payload from a binary blob to a
 #' Base64-encoded string.
 #' 
 #' If this property is not defined, the response payload will be passed
@@ -421,7 +553,7 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' permissions on supported AWS services, specify null.
 #' @param Description The description of the integration.
 #' @param IntegrationMethod Specifies the integration's HTTP method type.
-#' @param IntegrationSubtype Supported only for HTTP API AWS\\_PROXY integrations. Specifies the AWS
+#' @param IntegrationSubtype Supported only for HTTP API AWS_PROXY integrations. Specifies the AWS
 #' service action to invoke. To learn more, see [Integration subtype
 #' reference](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-aws-services-reference.html).
 #' @param IntegrationType &#91;required&#93; The integration type of an integration. One of the following:
@@ -432,7 +564,7 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' integration. With any other AWS service action, this is known as AWS
 #' integration. Supported only for WebSocket APIs.
 #' 
-#' AWS\\_PROXY: for integrating the route or method request with a Lambda
+#' AWS_PROXY: for integrating the route or method request with a Lambda
 #' function or other AWS service action. This integration is also referred
 #' to as a Lambda proxy integration.
 #' 
@@ -440,10 +572,10 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' This integration is also referred to as the HTTP custom integration.
 #' Supported only for WebSocket APIs.
 #' 
-#' HTTP\\_PROXY: for integrating the route or method request with an HTTP
+#' HTTP_PROXY: for integrating the route or method request with an HTTP
 #' endpoint, with the client request passed through as-is. This is also
 #' referred to as HTTP proxy integration. For HTTP API private
-#' integrations, use an HTTP\\_PROXY integration.
+#' integrations, use an HTTP_PROXY integration.
 #' 
 #' MOCK: for integrating the route or method request with API Gateway as a
 #' "loopback" endpoint without invoking any backend. Supported only for
@@ -463,16 +595,16 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' @param PassthroughBehavior Specifies the pass-through behavior for incoming requests based on the
 #' Content-Type header in the request, and the available mapping templates
 #' specified as the requestTemplates property on the Integration resource.
-#' There are three valid values: WHEN\\_NO\\_MATCH, WHEN\\_NO\\_TEMPLATES, and
+#' There are three valid values: WHEN_NO_MATCH, WHEN_NO_TEMPLATES, and
 #' NEVER. Supported only for WebSocket APIs.
 #' 
-#' WHEN\\_NO\\_MATCH passes the request body for unmapped content types
+#' WHEN_NO_MATCH passes the request body for unmapped content types
 #' through to the integration backend without transformation.
 #' 
 #' NEVER rejects unmapped content types with an HTTP 415 Unsupported Media
 #' Type response.
 #' 
-#' WHEN\\_NO\\_TEMPLATES allows pass-through when the integration has no
+#' WHEN_NO_TEMPLATES allows pass-through when the integration has no
 #' content types mapped to templates. However, if there is at least one
 #' content type defined, unmapped content types will be rejected with the
 #' same HTTP 415 Unsupported Media Type response.
@@ -484,13 +616,13 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' request parameter value or static value that must be enclosed within
 #' single quotes and pre-encoded as required by the backend. The method
 #' request parameter value must match the pattern of
-#' method.request.\{location\}.\{name\} , where \{location\} is querystring,
-#' path, or header; and \{name\} must be a valid and unique method request
-#' parameter name.
+#' method.request.\{location\}.\{name\} , where \{location\} is
+#' querystring, path, or header; and \{name\} must be a valid and unique
+#' method request parameter name.
 #' 
 #' For HTTP API integrations with a specified integrationSubtype, request
 #' parameters are a key-value map specifying parameters that are passed to
-#' AWS\\_PROXY integrations. You can provide static values, or map request
+#' AWS_PROXY integrations. You can provide static values, or map request
 #' data, stage variables, or context variables that are evaluated at
 #' runtime. To learn more, see [Working with AWS service integrations for
 #' HTTP
@@ -528,6 +660,43 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' @param TlsConfig The TLS configuration for a private integration. If you specify a TLS
 #' configuration, private integration traffic uses the HTTPS protocol.
 #' Supported only for HTTP APIs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiGatewayManaged = TRUE|FALSE,
+#'   ConnectionId = "string",
+#'   ConnectionType = "INTERNET"|"VPC_LINK",
+#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'   CredentialsArn = "string",
+#'   Description = "string",
+#'   IntegrationId = "string",
+#'   IntegrationMethod = "string",
+#'   IntegrationResponseSelectionExpression = "string",
+#'   IntegrationSubtype = "string",
+#'   IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+#'   IntegrationUri = "string",
+#'   PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
+#'   PayloadFormatVersion = "string",
+#'   RequestParameters = list(
+#'     "string"
+#'   ),
+#'   RequestTemplates = list(
+#'     "string"
+#'   ),
+#'   ResponseParameters = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   TemplateSelectionExpression = "string",
+#'   TimeoutInMillis = 123,
+#'   TlsConfig = list(
+#'     ServerNameToVerify = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -595,13 +764,13 @@ apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ContentHandlingStrategy Specifies how to handle response payload content type conversions.
-#' Supported values are CONVERT\\_TO\\_BINARY and CONVERT\\_TO\\_TEXT, with the
+#' Supported values are CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the
 #' following behaviors:
 #' 
-#' CONVERT\\_TO\\_BINARY: Converts a response payload from a Base64-encoded
+#' CONVERT_TO_BINARY: Converts a response payload from a Base64-encoded
 #' string to the corresponding binary blob.
 #' 
-#' CONVERT\\_TO\\_TEXT: Converts a response payload from a binary blob to a
+#' CONVERT_TO_TEXT: Converts a response payload from a binary blob to a
 #' Base64-encoded string.
 #' 
 #' If this property is not defined, the response payload will be passed
@@ -614,18 +783,35 @@ apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' parameter name and the mapped value is an integration response header
 #' value, a static value enclosed within a pair of single quotes, or a JSON
 #' expression from the integration response body. The mapping key must
-#' match the pattern of method.response.header.\{name\}, where \{name\} is a
-#' valid and unique header name. The mapped non-static value must match the
-#' pattern of integration.response.header.\{name\} or
-#' integration.response.body.\{JSON-expression\}, where \{name\} is a valid and
-#' unique response header name and \{JSON-expression\} is a valid JSON
-#' expression without the $ prefix.
+#' match the pattern of method.response.header.\{name\}, where \{name\}
+#' is a valid and unique header name. The mapped non-static value must
+#' match the pattern of integration.response.header.\{name\} or
+#' integration.response.body.\{JSON-expression\}, where \{name\} is a
+#' valid and unique response header name and \{JSON-expression\} is a
+#' valid JSON expression without the $ prefix.
 #' @param ResponseTemplates The collection of response templates for the integration response as a
 #' string-to-string map of key-value pairs. Response templates are
 #' represented as a key/value map, with a content-type as the key and a
 #' template as the value.
 #' @param TemplateSelectionExpression The template selection expression for the integration response.
 #' Supported only for WebSocket APIs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'   IntegrationResponseId = "string",
+#'   IntegrationResponseKey = "string",
+#'   ResponseParameters = list(
+#'     "string"
+#'   ),
+#'   ResponseTemplates = list(
+#'     "string"
+#'   ),
+#'   TemplateSelectionExpression = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -679,6 +865,18 @@ apigatewayv2_create_integration_response <- function(ApiId, ContentHandlingStrat
 #' @param Schema &#91;required&#93; The schema for the model. For application/json models, this should be
 #' JSON schema draft 4 model.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContentType = "string",
+#'   Description = "string",
+#'   ModelId = "string",
+#'   Name = "string",
+#'   Schema = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_model(
@@ -726,9 +924,9 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
 #' for WebSocket APIs.
 #' @param AuthorizationScopes The authorization scopes supported by this route.
 #' @param AuthorizationType The authorization type for the route. For WebSocket APIs, valid values
-#' are NONE for open access, AWS\\_IAM for using AWS IAM permissions, and
+#' are NONE for open access, AWS_IAM for using AWS IAM permissions, and
 #' CUSTOM for using a Lambda authorizer For HTTP APIs, valid values are
-#' NONE for open access, JWT for using JSON Web Tokens, AWS\\_IAM for using
+#' NONE for open access, JWT for using JSON Web Tokens, AWS_IAM for using
 #' AWS IAM permissions, and CUSTOM for using a Lambda authorizer.
 #' @param AuthorizerId The identifier of the Authorizer resource to be associated with this
 #' route. The authorizer identifier is generated by API Gateway when you
@@ -742,6 +940,34 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
 #' @param RouteResponseSelectionExpression The route response selection expression for the route. Supported only
 #' for WebSocket APIs.
 #' @param Target The target for the route.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiGatewayManaged = TRUE|FALSE,
+#'   ApiKeyRequired = TRUE|FALSE,
+#'   AuthorizationScopes = list(
+#'     "string"
+#'   ),
+#'   AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
+#'   AuthorizerId = "string",
+#'   ModelSelectionExpression = "string",
+#'   OperationName = "string",
+#'   RequestModels = list(
+#'     "string"
+#'   ),
+#'   RequestParameters = list(
+#'     list(
+#'       Required = TRUE|FALSE
+#'     )
+#'   ),
+#'   RouteId = "string",
+#'   RouteKey = "string",
+#'   RouteResponseSelectionExpression = "string",
+#'   Target = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -806,6 +1032,24 @@ apigatewayv2_create_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 #' @param RouteId &#91;required&#93; The route ID.
 #' @param RouteResponseKey &#91;required&#93; The route response key.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelSelectionExpression = "string",
+#'   ResponseModels = list(
+#'     "string"
+#'   ),
+#'   ResponseParameters = list(
+#'     list(
+#'       Required = TRUE|FALSE
+#'     )
+#'   ),
+#'   RouteResponseId = "string",
+#'   RouteResponseKey = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_route_response(
@@ -867,9 +1111,55 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #' @param StageName &#91;required&#93; The name of the stage.
 #' @param StageVariables A map that defines the stage variables for a Stage. Variable names can
 #' have alphanumeric and underscore characters, and the values must match
-#' \[A-Za-z0-9-.\\_~:/?\\#&=,\]+.
+#' \[A-Za-z0-9-._~:/?\#&=,\]+.
 #' @param Tags The collection of tags. Each tag element is associated with a given
 #' resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessLogSettings = list(
+#'     DestinationArn = "string",
+#'     Format = "string"
+#'   ),
+#'   ApiGatewayManaged = TRUE|FALSE,
+#'   AutoDeploy = TRUE|FALSE,
+#'   ClientCertificateId = "string",
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DefaultRouteSettings = list(
+#'     DataTraceEnabled = TRUE|FALSE,
+#'     DetailedMetricsEnabled = TRUE|FALSE,
+#'     LoggingLevel = "ERROR"|"INFO"|"OFF",
+#'     ThrottlingBurstLimit = 123,
+#'     ThrottlingRateLimit = 123.0
+#'   ),
+#'   DeploymentId = "string",
+#'   Description = "string",
+#'   LastDeploymentStatusMessage = "string",
+#'   LastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   RouteSettings = list(
+#'     list(
+#'       DataTraceEnabled = TRUE|FALSE,
+#'       DetailedMetricsEnabled = TRUE|FALSE,
+#'       LoggingLevel = "ERROR"|"INFO"|"OFF",
+#'       ThrottlingBurstLimit = 123,
+#'       ThrottlingRateLimit = 123.0
+#'     )
+#'   ),
+#'   StageName = "string",
+#'   StageVariables = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -942,6 +1232,30 @@ apigatewayv2_create_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeplo
 #' @param SubnetIds &#91;required&#93; A list of subnet IDs to include in the VPC link.
 #' @param Tags A list of tags.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Name = "string",
+#'   SecurityGroupIds = list(
+#'     "string"
+#'   ),
+#'   SubnetIds = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   VpcLinkId = "string",
+#'   VpcLinkStatus = "PENDING"|"AVAILABLE"|"DELETING"|"FAILED"|"INACTIVE",
+#'   VpcLinkStatusMessage = "string",
+#'   VpcLinkVersion = "V2"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_vpc_link(
@@ -991,6 +1305,8 @@ apigatewayv2_create_vpc_link <- function(Name, SecurityGroupIds = NULL, SubnetId
 #' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
 #' hyphens, and underscores. Maximum length is 128 characters.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_access_log_settings(
@@ -1029,6 +1345,8 @@ apigatewayv2_delete_access_log_settings <- function(ApiId, StageName) {
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_api(
@@ -1066,6 +1384,8 @@ apigatewayv2_delete_api <- function(ApiId) {
 #'
 #' @param ApiMappingId &#91;required&#93; The API mapping identifier.
 #' @param DomainName &#91;required&#93; The domain name.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1106,6 +1426,8 @@ apigatewayv2_delete_api_mapping <- function(ApiMappingId, DomainName) {
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param AuthorizerId &#91;required&#93; The authorizer identifier.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_authorizer(
@@ -1143,6 +1465,8 @@ apigatewayv2_delete_authorizer <- function(ApiId, AuthorizerId) {
 #' apigatewayv2_delete_cors_configuration(ApiId)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1182,6 +1506,8 @@ apigatewayv2_delete_cors_configuration <- function(ApiId) {
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param DeploymentId &#91;required&#93; The deployment ID.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_deployment(
@@ -1220,6 +1546,8 @@ apigatewayv2_delete_deployment <- function(ApiId, DeploymentId) {
 #'
 #' @param DomainName &#91;required&#93; The domain name.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_domain_name(
@@ -1257,6 +1585,8 @@ apigatewayv2_delete_domain_name <- function(DomainName) {
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param IntegrationId &#91;required&#93; The integration ID.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1299,6 +1629,8 @@ apigatewayv2_delete_integration <- function(ApiId, IntegrationId) {
 #' @param IntegrationId &#91;required&#93; The integration ID.
 #' @param IntegrationResponseId &#91;required&#93; The integration response ID.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_integration_response(
@@ -1339,6 +1671,8 @@ apigatewayv2_delete_integration_response <- function(ApiId, IntegrationId, Integ
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ModelId &#91;required&#93; The model ID.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_model(
@@ -1377,6 +1711,8 @@ apigatewayv2_delete_model <- function(ApiId, ModelId) {
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RouteId &#91;required&#93; The route ID.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1419,6 +1755,8 @@ apigatewayv2_delete_route <- function(ApiId, RouteId) {
 #' @param RequestParameterKey &#91;required&#93; The route request parameter key.
 #' @param RouteId &#91;required&#93; The route ID.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_route_request_parameter(
@@ -1459,6 +1797,8 @@ apigatewayv2_delete_route_request_parameter <- function(ApiId, RequestParameterK
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RouteId &#91;required&#93; The route ID.
 #' @param RouteResponseId &#91;required&#93; The route response ID.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1502,6 +1842,8 @@ apigatewayv2_delete_route_response <- function(ApiId, RouteId, RouteResponseId) 
 #' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
 #' hyphens, and underscores. Maximum length is 128 characters.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_route_settings(
@@ -1543,6 +1885,8 @@ apigatewayv2_delete_route_settings <- function(ApiId, RouteKey, StageName) {
 #' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
 #' hyphens, and underscores. Maximum length is 128 characters.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_stage(
@@ -1580,6 +1924,12 @@ apigatewayv2_delete_stage <- function(ApiId, StageName) {
 #' apigatewayv2_delete_vpc_link(VpcLinkId)
 #'
 #' @param VpcLinkId &#91;required&#93; The ID of the VPC link.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1631,6 +1981,14 @@ apigatewayv2_delete_vpc_link <- function(VpcLinkId) {
 #' @param StageName The name of the API stage to export. If you don't specify this property,
 #' a representation of the latest API configuration is exported.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   body = raw
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$export_api(
@@ -1677,6 +2035,8 @@ apigatewayv2_export_api <- function(ApiId, ExportVersion = NULL, IncludeExtensio
 #' hyphens, and underscores, or be $default. Maximum length is 128
 #' characters.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reset_authorizers_cache(
@@ -1715,6 +2075,52 @@ apigatewayv2_reset_authorizers_cache <- function(ApiId, StageName) {
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiEndpoint = "string",
+#'   ApiGatewayManaged = TRUE|FALSE,
+#'   ApiId = "string",
+#'   ApiKeySelectionExpression = "string",
+#'   CorsConfiguration = list(
+#'     AllowCredentials = TRUE|FALSE,
+#'     AllowHeaders = list(
+#'       "string"
+#'     ),
+#'     AllowMethods = list(
+#'       "string"
+#'     ),
+#'     AllowOrigins = list(
+#'       "string"
+#'     ),
+#'     ExposeHeaders = list(
+#'       "string"
+#'     ),
+#'     MaxAge = 123
+#'   ),
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   DisableSchemaValidation = TRUE|FALSE,
+#'   DisableExecuteApiEndpoint = TRUE|FALSE,
+#'   ImportInfo = list(
+#'     "string"
+#'   ),
+#'   Name = "string",
+#'   ProtocolType = "WEBSOCKET"|"HTTP",
+#'   RouteSelectionExpression = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   Version = "string",
+#'   Warnings = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_api(
@@ -1752,6 +2158,17 @@ apigatewayv2_get_api <- function(ApiId) {
 #'
 #' @param ApiMappingId &#91;required&#93; The API mapping identifier.
 #' @param DomainName &#91;required&#93; The domain name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiId = "string",
+#'   ApiMappingId = "string",
+#'   ApiMappingKey = "string",
+#'   Stage = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1794,6 +2211,22 @@ apigatewayv2_get_api_mapping <- function(ApiMappingId, DomainName) {
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ApiId = "string",
+#'       ApiMappingId = "string",
+#'       ApiMappingKey = "string",
+#'       Stage = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_api_mappings(
@@ -1835,6 +2268,57 @@ apigatewayv2_get_api_mappings <- function(DomainName, MaxResults = NULL, NextTok
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ApiEndpoint = "string",
+#'       ApiGatewayManaged = TRUE|FALSE,
+#'       ApiId = "string",
+#'       ApiKeySelectionExpression = "string",
+#'       CorsConfiguration = list(
+#'         AllowCredentials = TRUE|FALSE,
+#'         AllowHeaders = list(
+#'           "string"
+#'         ),
+#'         AllowMethods = list(
+#'           "string"
+#'         ),
+#'         AllowOrigins = list(
+#'           "string"
+#'         ),
+#'         ExposeHeaders = list(
+#'           "string"
+#'         ),
+#'         MaxAge = 123
+#'       ),
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       DisableSchemaValidation = TRUE|FALSE,
+#'       DisableExecuteApiEndpoint = TRUE|FALSE,
+#'       ImportInfo = list(
+#'         "string"
+#'       ),
+#'       Name = "string",
+#'       ProtocolType = "WEBSOCKET"|"HTTP",
+#'       RouteSelectionExpression = "string",
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       Version = "string",
+#'       Warnings = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_apis(
@@ -1873,6 +2357,31 @@ apigatewayv2_get_apis <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param AuthorizerId &#91;required&#93; The authorizer identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthorizerCredentialsArn = "string",
+#'   AuthorizerId = "string",
+#'   AuthorizerPayloadFormatVersion = "string",
+#'   AuthorizerResultTtlInSeconds = 123,
+#'   AuthorizerType = "REQUEST"|"JWT",
+#'   AuthorizerUri = "string",
+#'   EnableSimpleResponses = TRUE|FALSE,
+#'   IdentitySource = list(
+#'     "string"
+#'   ),
+#'   IdentityValidationExpression = "string",
+#'   JwtConfiguration = list(
+#'     Audience = list(
+#'       "string"
+#'     ),
+#'     Issuer = "string"
+#'   ),
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1915,6 +2424,36 @@ apigatewayv2_get_authorizer <- function(ApiId, AuthorizerId) {
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       AuthorizerCredentialsArn = "string",
+#'       AuthorizerId = "string",
+#'       AuthorizerPayloadFormatVersion = "string",
+#'       AuthorizerResultTtlInSeconds = 123,
+#'       AuthorizerType = "REQUEST"|"JWT",
+#'       AuthorizerUri = "string",
+#'       EnableSimpleResponses = TRUE|FALSE,
+#'       IdentitySource = list(
+#'         "string"
+#'       ),
+#'       IdentityValidationExpression = "string",
+#'       JwtConfiguration = list(
+#'         Audience = list(
+#'           "string"
+#'         ),
+#'         Issuer = "string"
+#'       ),
+#'       Name = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_authorizers(
@@ -1954,6 +2493,21 @@ apigatewayv2_get_authorizers <- function(ApiId, MaxResults = NULL, NextToken = N
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param DeploymentId &#91;required&#93; The deployment ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutoDeployed = TRUE|FALSE,
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DeploymentId = "string",
+#'   DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
+#'   DeploymentStatusMessage = "string",
+#'   Description = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1996,6 +2550,26 @@ apigatewayv2_get_deployment <- function(ApiId, DeploymentId) {
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       AutoDeployed = TRUE|FALSE,
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeploymentId = "string",
+#'       DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
+#'       DeploymentStatusMessage = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_deployments(
@@ -2034,6 +2608,40 @@ apigatewayv2_get_deployments <- function(ApiId, MaxResults = NULL, NextToken = N
 #' apigatewayv2_get_domain_name(DomainName)
 #'
 #' @param DomainName &#91;required&#93; The domain name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiMappingSelectionExpression = "string",
+#'   DomainName = "string",
+#'   DomainNameConfigurations = list(
+#'     list(
+#'       ApiGatewayDomainName = "string",
+#'       CertificateArn = "string",
+#'       CertificateName = "string",
+#'       CertificateUploadDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DomainNameStatus = "AVAILABLE"|"UPDATING",
+#'       DomainNameStatusMessage = "string",
+#'       EndpointType = "REGIONAL"|"EDGE",
+#'       HostedZoneId = "string",
+#'       SecurityPolicy = "TLS_1_0"|"TLS_1_2"
+#'     )
+#'   ),
+#'   MutualTlsAuthentication = list(
+#'     TruststoreUri = "string",
+#'     TruststoreVersion = "string",
+#'     TruststoreWarnings = list(
+#'       "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2074,6 +2682,45 @@ apigatewayv2_get_domain_name <- function(DomainName) {
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ApiMappingSelectionExpression = "string",
+#'       DomainName = "string",
+#'       DomainNameConfigurations = list(
+#'         list(
+#'           ApiGatewayDomainName = "string",
+#'           CertificateArn = "string",
+#'           CertificateName = "string",
+#'           CertificateUploadDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           DomainNameStatus = "AVAILABLE"|"UPDATING",
+#'           DomainNameStatusMessage = "string",
+#'           EndpointType = "REGIONAL"|"EDGE",
+#'           HostedZoneId = "string",
+#'           SecurityPolicy = "TLS_1_0"|"TLS_1_2"
+#'         )
+#'       ),
+#'       MutualTlsAuthentication = list(
+#'         TruststoreUri = "string",
+#'         TruststoreVersion = "string",
+#'         TruststoreWarnings = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_domain_names(
@@ -2112,6 +2759,43 @@ apigatewayv2_get_domain_names <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param IntegrationId &#91;required&#93; The integration ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiGatewayManaged = TRUE|FALSE,
+#'   ConnectionId = "string",
+#'   ConnectionType = "INTERNET"|"VPC_LINK",
+#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'   CredentialsArn = "string",
+#'   Description = "string",
+#'   IntegrationId = "string",
+#'   IntegrationMethod = "string",
+#'   IntegrationResponseSelectionExpression = "string",
+#'   IntegrationSubtype = "string",
+#'   IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+#'   IntegrationUri = "string",
+#'   PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
+#'   PayloadFormatVersion = "string",
+#'   RequestParameters = list(
+#'     "string"
+#'   ),
+#'   RequestTemplates = list(
+#'     "string"
+#'   ),
+#'   ResponseParameters = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   TemplateSelectionExpression = "string",
+#'   TimeoutInMillis = 123,
+#'   TlsConfig = list(
+#'     ServerNameToVerify = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2153,6 +2837,23 @@ apigatewayv2_get_integration <- function(ApiId, IntegrationId) {
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param IntegrationId &#91;required&#93; The integration ID.
 #' @param IntegrationResponseId &#91;required&#93; The integration response ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'   IntegrationResponseId = "string",
+#'   IntegrationResponseKey = "string",
+#'   ResponseParameters = list(
+#'     "string"
+#'   ),
+#'   ResponseTemplates = list(
+#'     "string"
+#'   ),
+#'   TemplateSelectionExpression = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2198,6 +2899,28 @@ apigatewayv2_get_integration_response <- function(ApiId, IntegrationId, Integrat
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'       IntegrationResponseId = "string",
+#'       IntegrationResponseKey = "string",
+#'       ResponseParameters = list(
+#'         "string"
+#'       ),
+#'       ResponseTemplates = list(
+#'         "string"
+#'       ),
+#'       TemplateSelectionExpression = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_integration_responses(
@@ -2241,6 +2964,48 @@ apigatewayv2_get_integration_responses <- function(ApiId, IntegrationId, MaxResu
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ApiGatewayManaged = TRUE|FALSE,
+#'       ConnectionId = "string",
+#'       ConnectionType = "INTERNET"|"VPC_LINK",
+#'       ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'       CredentialsArn = "string",
+#'       Description = "string",
+#'       IntegrationId = "string",
+#'       IntegrationMethod = "string",
+#'       IntegrationResponseSelectionExpression = "string",
+#'       IntegrationSubtype = "string",
+#'       IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+#'       IntegrationUri = "string",
+#'       PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
+#'       PayloadFormatVersion = "string",
+#'       RequestParameters = list(
+#'         "string"
+#'       ),
+#'       RequestTemplates = list(
+#'         "string"
+#'       ),
+#'       ResponseParameters = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
+#'       TemplateSelectionExpression = "string",
+#'       TimeoutInMillis = 123,
+#'       TlsConfig = list(
+#'         ServerNameToVerify = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_integrations(
@@ -2281,6 +3046,18 @@ apigatewayv2_get_integrations <- function(ApiId, MaxResults = NULL, NextToken = 
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ModelId &#91;required&#93; The model ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContentType = "string",
+#'   Description = "string",
+#'   ModelId = "string",
+#'   Name = "string",
+#'   Schema = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_model(
@@ -2319,6 +3096,14 @@ apigatewayv2_get_model <- function(ApiId, ModelId) {
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ModelId &#91;required&#93; The model ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Value = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2361,6 +3146,23 @@ apigatewayv2_get_model_template <- function(ApiId, ModelId) {
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ContentType = "string",
+#'       Description = "string",
+#'       ModelId = "string",
+#'       Name = "string",
+#'       Schema = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_models(
@@ -2401,6 +3203,34 @@ apigatewayv2_get_models <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RouteId &#91;required&#93; The route ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiGatewayManaged = TRUE|FALSE,
+#'   ApiKeyRequired = TRUE|FALSE,
+#'   AuthorizationScopes = list(
+#'     "string"
+#'   ),
+#'   AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
+#'   AuthorizerId = "string",
+#'   ModelSelectionExpression = "string",
+#'   OperationName = "string",
+#'   RequestModels = list(
+#'     "string"
+#'   ),
+#'   RequestParameters = list(
+#'     list(
+#'       Required = TRUE|FALSE
+#'     )
+#'   ),
+#'   RouteId = "string",
+#'   RouteKey = "string",
+#'   RouteResponseSelectionExpression = "string",
+#'   Target = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_route(
@@ -2440,6 +3270,24 @@ apigatewayv2_get_route <- function(ApiId, RouteId) {
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RouteId &#91;required&#93; The route ID.
 #' @param RouteResponseId &#91;required&#93; The route response ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelSelectionExpression = "string",
+#'   ResponseModels = list(
+#'     "string"
+#'   ),
+#'   ResponseParameters = list(
+#'     list(
+#'       Required = TRUE|FALSE
+#'     )
+#'   ),
+#'   RouteResponseId = "string",
+#'   RouteResponseKey = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2484,6 +3332,29 @@ apigatewayv2_get_route_response <- function(ApiId, RouteId, RouteResponseId) {
 #' element of the collection.
 #' @param RouteId &#91;required&#93; The route ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ModelSelectionExpression = "string",
+#'       ResponseModels = list(
+#'         "string"
+#'       ),
+#'       ResponseParameters = list(
+#'         list(
+#'           Required = TRUE|FALSE
+#'         )
+#'       ),
+#'       RouteResponseId = "string",
+#'       RouteResponseKey = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_route_responses(
@@ -2527,6 +3398,39 @@ apigatewayv2_get_route_responses <- function(ApiId, MaxResults = NULL, NextToken
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ApiGatewayManaged = TRUE|FALSE,
+#'       ApiKeyRequired = TRUE|FALSE,
+#'       AuthorizationScopes = list(
+#'         "string"
+#'       ),
+#'       AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
+#'       AuthorizerId = "string",
+#'       ModelSelectionExpression = "string",
+#'       OperationName = "string",
+#'       RequestModels = list(
+#'         "string"
+#'       ),
+#'       RequestParameters = list(
+#'         list(
+#'           Required = TRUE|FALSE
+#'         )
+#'       ),
+#'       RouteId = "string",
+#'       RouteKey = "string",
+#'       RouteResponseSelectionExpression = "string",
+#'       Target = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_routes(
@@ -2567,6 +3471,52 @@ apigatewayv2_get_routes <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
 #' hyphens, and underscores. Maximum length is 128 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessLogSettings = list(
+#'     DestinationArn = "string",
+#'     Format = "string"
+#'   ),
+#'   ApiGatewayManaged = TRUE|FALSE,
+#'   AutoDeploy = TRUE|FALSE,
+#'   ClientCertificateId = "string",
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DefaultRouteSettings = list(
+#'     DataTraceEnabled = TRUE|FALSE,
+#'     DetailedMetricsEnabled = TRUE|FALSE,
+#'     LoggingLevel = "ERROR"|"INFO"|"OFF",
+#'     ThrottlingBurstLimit = 123,
+#'     ThrottlingRateLimit = 123.0
+#'   ),
+#'   DeploymentId = "string",
+#'   Description = "string",
+#'   LastDeploymentStatusMessage = "string",
+#'   LastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   RouteSettings = list(
+#'     list(
+#'       DataTraceEnabled = TRUE|FALSE,
+#'       DetailedMetricsEnabled = TRUE|FALSE,
+#'       LoggingLevel = "ERROR"|"INFO"|"OFF",
+#'       ThrottlingBurstLimit = 123,
+#'       ThrottlingRateLimit = 123.0
+#'     )
+#'   ),
+#'   StageName = "string",
+#'   StageVariables = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2609,6 +3559,57 @@ apigatewayv2_get_stage <- function(ApiId, StageName) {
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       AccessLogSettings = list(
+#'         DestinationArn = "string",
+#'         Format = "string"
+#'       ),
+#'       ApiGatewayManaged = TRUE|FALSE,
+#'       AutoDeploy = TRUE|FALSE,
+#'       ClientCertificateId = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DefaultRouteSettings = list(
+#'         DataTraceEnabled = TRUE|FALSE,
+#'         DetailedMetricsEnabled = TRUE|FALSE,
+#'         LoggingLevel = "ERROR"|"INFO"|"OFF",
+#'         ThrottlingBurstLimit = 123,
+#'         ThrottlingRateLimit = 123.0
+#'       ),
+#'       DeploymentId = "string",
+#'       Description = "string",
+#'       LastDeploymentStatusMessage = "string",
+#'       LastUpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RouteSettings = list(
+#'         list(
+#'           DataTraceEnabled = TRUE|FALSE,
+#'           DetailedMetricsEnabled = TRUE|FALSE,
+#'           LoggingLevel = "ERROR"|"INFO"|"OFF",
+#'           ThrottlingBurstLimit = 123,
+#'           ThrottlingRateLimit = 123.0
+#'         )
+#'       ),
+#'       StageName = "string",
+#'       StageVariables = list(
+#'         "string"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_stages(
@@ -2648,6 +3649,16 @@ apigatewayv2_get_stages <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #'
 #' @param ResourceArn &#91;required&#93; The resource ARN for the tag.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_tags(
@@ -2684,6 +3695,30 @@ apigatewayv2_get_tags <- function(ResourceArn) {
 #' apigatewayv2_get_vpc_link(VpcLinkId)
 #'
 #' @param VpcLinkId &#91;required&#93; The ID of the VPC link.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Name = "string",
+#'   SecurityGroupIds = list(
+#'     "string"
+#'   ),
+#'   SubnetIds = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   VpcLinkId = "string",
+#'   VpcLinkStatus = "PENDING"|"AVAILABLE"|"DELETING"|"FAILED"|"INACTIVE",
+#'   VpcLinkStatusMessage = "string",
+#'   VpcLinkVersion = "V2"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2723,6 +3758,35 @@ apigatewayv2_get_vpc_link <- function(VpcLinkId) {
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
 #' element of the collection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       VpcLinkId = "string",
+#'       VpcLinkStatus = "PENDING"|"AVAILABLE"|"DELETING"|"FAILED"|"INACTIVE",
+#'       VpcLinkStatusMessage = "string",
+#'       VpcLinkVersion = "V2"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2769,6 +3833,52 @@ apigatewayv2_get_vpc_links <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param FailOnWarnings Specifies whether to rollback the API creation when a warning is
 #' encountered. By default, API creation continues if a warning is
 #' encountered.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiEndpoint = "string",
+#'   ApiGatewayManaged = TRUE|FALSE,
+#'   ApiId = "string",
+#'   ApiKeySelectionExpression = "string",
+#'   CorsConfiguration = list(
+#'     AllowCredentials = TRUE|FALSE,
+#'     AllowHeaders = list(
+#'       "string"
+#'     ),
+#'     AllowMethods = list(
+#'       "string"
+#'     ),
+#'     AllowOrigins = list(
+#'       "string"
+#'     ),
+#'     ExposeHeaders = list(
+#'       "string"
+#'     ),
+#'     MaxAge = 123
+#'   ),
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   DisableSchemaValidation = TRUE|FALSE,
+#'   DisableExecuteApiEndpoint = TRUE|FALSE,
+#'   ImportInfo = list(
+#'     "string"
+#'   ),
+#'   Name = "string",
+#'   ProtocolType = "WEBSOCKET"|"HTTP",
+#'   RouteSelectionExpression = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   Version = "string",
+#'   Warnings = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2818,6 +3928,52 @@ apigatewayv2_import_api <- function(Basepath = NULL, Body, FailOnWarnings = NULL
 #' encountered. By default, API creation continues if a warning is
 #' encountered.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiEndpoint = "string",
+#'   ApiGatewayManaged = TRUE|FALSE,
+#'   ApiId = "string",
+#'   ApiKeySelectionExpression = "string",
+#'   CorsConfiguration = list(
+#'     AllowCredentials = TRUE|FALSE,
+#'     AllowHeaders = list(
+#'       "string"
+#'     ),
+#'     AllowMethods = list(
+#'       "string"
+#'     ),
+#'     AllowOrigins = list(
+#'       "string"
+#'     ),
+#'     ExposeHeaders = list(
+#'       "string"
+#'     ),
+#'     MaxAge = 123
+#'   ),
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   DisableSchemaValidation = TRUE|FALSE,
+#'   DisableExecuteApiEndpoint = TRUE|FALSE,
+#'   ImportInfo = list(
+#'     "string"
+#'   ),
+#'   Name = "string",
+#'   ProtocolType = "WEBSOCKET"|"HTTP",
+#'   RouteSelectionExpression = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   Version = "string",
+#'   Warnings = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reimport_api(
@@ -2860,6 +4016,12 @@ apigatewayv2_reimport_api <- function(ApiId, Basepath = NULL, Body, FailOnWarnin
 #' @param Tags The collection of tags. Each tag element is associated with a given
 #' resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -2900,6 +4062,8 @@ apigatewayv2_tag_resource <- function(ResourceArn, Tags = NULL) {
 #'
 #' @param ResourceArn &#91;required&#93; The resource ARN for the tag.
 #' @param TagKeys &#91;required&#93; The Tag keys to delete
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -2962,25 +4126,71 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' WebSocket APIs.
 #' @param DisableExecuteApiEndpoint Specifies whether clients can invoke your API by using the default
 #' execute-api endpoint. By default, clients can invoke your API with the
-#' default https://\{api\\_id\}.execute-api.\{region\}.amazonaws.com endpoint.
-#' To require that clients use a custom domain name to invoke your API,
-#' disable the default endpoint.
+#' default https://\{api_id\}.execute-api.\{region\}.amazonaws.com
+#' endpoint. To require that clients use a custom domain name to invoke
+#' your API, disable the default endpoint.
 #' @param Name The name of the API.
 #' @param RouteKey This property is part of quick create. If not specified, the route
 #' created using quick create is kept. Otherwise, this value replaces the
 #' route key of the quick create route. Additional routes may still be
 #' added after the API is updated. Supported only for HTTP APIs.
 #' @param RouteSelectionExpression The route selection expression for the API. For HTTP APIs, the
-#' routeSelectionExpression must be $\{request.method\} $\{request.path\}. If
-#' not provided, this will be the default for HTTP APIs. This property is
-#' required for WebSocket APIs.
+#' routeSelectionExpression must be $\{request.method\}
+#' $\{request.path\}. If not provided, this will be the default for HTTP
+#' APIs. This property is required for WebSocket APIs.
 #' @param Target This property is part of quick create. For HTTP integrations, specify a
 #' fully qualified URL. For Lambda integrations, specify a function ARN.
-#' The type of the integration will be HTTP\\_PROXY or AWS\\_PROXY,
+#' The type of the integration will be HTTP_PROXY or AWS_PROXY,
 #' respectively. The value provided updates the integration URI and
 #' integration type. You can update a quick-created target, but you can't
 #' remove it from an API. Supported only for HTTP APIs.
 #' @param Version A version identifier for the API.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiEndpoint = "string",
+#'   ApiGatewayManaged = TRUE|FALSE,
+#'   ApiId = "string",
+#'   ApiKeySelectionExpression = "string",
+#'   CorsConfiguration = list(
+#'     AllowCredentials = TRUE|FALSE,
+#'     AllowHeaders = list(
+#'       "string"
+#'     ),
+#'     AllowMethods = list(
+#'       "string"
+#'     ),
+#'     AllowOrigins = list(
+#'       "string"
+#'     ),
+#'     ExposeHeaders = list(
+#'       "string"
+#'     ),
+#'     MaxAge = 123
+#'   ),
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   DisableSchemaValidation = TRUE|FALSE,
+#'   DisableExecuteApiEndpoint = TRUE|FALSE,
+#'   ImportInfo = list(
+#'     "string"
+#'   ),
+#'   Name = "string",
+#'   ProtocolType = "WEBSOCKET"|"HTTP",
+#'   RouteSelectionExpression = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   Version = "string",
+#'   Warnings = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3050,6 +4260,17 @@ apigatewayv2_update_api <- function(ApiId, ApiKeySelectionExpression = NULL, Cor
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param Stage The API stage.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiId = "string",
+#'   ApiMappingId = "string",
+#'   ApiMappingKey = "string",
+#'   Stage = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_api_mapping(
@@ -3114,14 +4335,15 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
 #' @param AuthorizerUri The authorizer's Uniform Resource Identifier (URI). For REQUEST
 #' authorizers, this must be a well-formed Lambda function URI, for
 #' example,
-#' arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\{account\\_id\}:function:\{lambda\\_function\\_name\}/invocations.
+#' arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\{account_id\}:function:\{lambda_function_name\}/invocations.
 #' In general, the URI has this form:
-#' arn:aws:apigateway:\{region\}:lambda:path/\{service\\_api\} , where \{region\}
-#' is the same as the region hosting the Lambda function, path indicates
-#' that the remaining substring in the URI should be treated as the path to
-#' the resource, including the initial /. For Lambda functions, this is
-#' usually of the form /2015-03-31/functions/\[FunctionARN\]/invocations.
-#' Supported only for REQUEST authorizers.
+#' arn:aws:apigateway:\{region\}:lambda:path/\{service_api\} , where
+#' \{region\} is the same as the region hosting the Lambda function, path
+#' indicates that the remaining substring in the URI should be treated as
+#' the path to the resource, including the initial /. For Lambda functions,
+#' this is usually of the form
+#' /2015-03-31/functions/\[FunctionARN\]/invocations. Supported only for
+#' REQUEST authorizers.
 #' @param EnableSimpleResponses Specifies whether a Lambda authorizer returns a response in a simple
 #' format. By default, a Lambda authorizer must return an IAM policy. If
 #' enabled, the Lambda authorizer can return a boolean value instead of an
@@ -3156,6 +4378,31 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
 #' @param JwtConfiguration Represents the configuration of a JWT authorizer. Required for the JWT
 #' authorizer type. Supported only for HTTP APIs.
 #' @param Name The name of the authorizer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthorizerCredentialsArn = "string",
+#'   AuthorizerId = "string",
+#'   AuthorizerPayloadFormatVersion = "string",
+#'   AuthorizerResultTtlInSeconds = 123,
+#'   AuthorizerType = "REQUEST"|"JWT",
+#'   AuthorizerUri = "string",
+#'   EnableSimpleResponses = TRUE|FALSE,
+#'   IdentitySource = list(
+#'     "string"
+#'   ),
+#'   IdentityValidationExpression = "string",
+#'   JwtConfiguration = list(
+#'     Audience = list(
+#'       "string"
+#'     ),
+#'     Issuer = "string"
+#'   ),
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3214,6 +4461,21 @@ apigatewayv2_update_authorizer <- function(ApiId, AuthorizerCredentialsArn = NUL
 #' @param DeploymentId &#91;required&#93; The deployment ID.
 #' @param Description The description for the deployment resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutoDeployed = TRUE|FALSE,
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DeploymentId = "string",
+#'   DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
+#'   DeploymentStatusMessage = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_deployment(
@@ -3255,6 +4517,40 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param DomainNameConfigurations The domain name configurations.
 #' @param MutualTlsAuthentication The mutual TLS authentication configuration for a custom domain name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiMappingSelectionExpression = "string",
+#'   DomainName = "string",
+#'   DomainNameConfigurations = list(
+#'     list(
+#'       ApiGatewayDomainName = "string",
+#'       CertificateArn = "string",
+#'       CertificateName = "string",
+#'       CertificateUploadDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DomainNameStatus = "AVAILABLE"|"UPDATING",
+#'       DomainNameStatusMessage = "string",
+#'       EndpointType = "REGIONAL"|"EDGE",
+#'       HostedZoneId = "string",
+#'       SecurityPolicy = "TLS_1_0"|"TLS_1_2"
+#'     )
+#'   ),
+#'   MutualTlsAuthentication = list(
+#'     TruststoreUri = "string",
+#'     TruststoreVersion = "string",
+#'     TruststoreWarnings = list(
+#'       "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3320,16 +4616,16 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' HTTP APIs.
 #' @param ConnectionType The type of the network connection to the integration endpoint. Specify
 #' INTERNET for connections through the public routable internet or
-#' VPC\\_LINK for private connections between API Gateway and resources in a
+#' VPC_LINK for private connections between API Gateway and resources in a
 #' VPC. The default value is INTERNET.
 #' @param ContentHandlingStrategy Supported only for WebSocket APIs. Specifies how to handle response
 #' payload content type conversions. Supported values are
-#' CONVERT\\_TO\\_BINARY and CONVERT\\_TO\\_TEXT, with the following behaviors:
+#' CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
 #' 
-#' CONVERT\\_TO\\_BINARY: Converts a response payload from a Base64-encoded
+#' CONVERT_TO_BINARY: Converts a response payload from a Base64-encoded
 #' string to the corresponding binary blob.
 #' 
-#' CONVERT\\_TO\\_TEXT: Converts a response payload from a binary blob to a
+#' CONVERT_TO_TEXT: Converts a response payload from a binary blob to a
 #' Base64-encoded string.
 #' 
 #' If this property is not defined, the response payload will be passed
@@ -3344,7 +4640,7 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' @param Description The description of the integration
 #' @param IntegrationId &#91;required&#93; The integration ID.
 #' @param IntegrationMethod Specifies the integration's HTTP method type.
-#' @param IntegrationSubtype Supported only for HTTP API AWS\\_PROXY integrations. Specifies the AWS
+#' @param IntegrationSubtype Supported only for HTTP API AWS_PROXY integrations. Specifies the AWS
 #' service action to invoke. To learn more, see [Integration subtype
 #' reference](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-aws-services-reference.html).
 #' @param IntegrationType The integration type of an integration. One of the following:
@@ -3355,7 +4651,7 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' integration. With any other AWS service action, this is known as AWS
 #' integration. Supported only for WebSocket APIs.
 #' 
-#' AWS\\_PROXY: for integrating the route or method request with a Lambda
+#' AWS_PROXY: for integrating the route or method request with a Lambda
 #' function or other AWS service action. This integration is also referred
 #' to as a Lambda proxy integration.
 #' 
@@ -3363,10 +4659,10 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' This integration is also referred to as the HTTP custom integration.
 #' Supported only for WebSocket APIs.
 #' 
-#' HTTP\\_PROXY: for integrating the route or method request with an HTTP
+#' HTTP_PROXY: for integrating the route or method request with an HTTP
 #' endpoint, with the client request passed through as-is. This is also
 #' referred to as HTTP proxy integration. For HTTP API private
-#' integrations, use an HTTP\\_PROXY integration.
+#' integrations, use an HTTP_PROXY integration.
 #' 
 #' MOCK: for integrating the route or method request with API Gateway as a
 #' "loopback" endpoint without invoking any backend. Supported only for
@@ -3386,16 +4682,16 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' @param PassthroughBehavior Specifies the pass-through behavior for incoming requests based on the
 #' Content-Type header in the request, and the available mapping templates
 #' specified as the requestTemplates property on the Integration resource.
-#' There are three valid values: WHEN\\_NO\\_MATCH, WHEN\\_NO\\_TEMPLATES, and
+#' There are three valid values: WHEN_NO_MATCH, WHEN_NO_TEMPLATES, and
 #' NEVER. Supported only for WebSocket APIs.
 #' 
-#' WHEN\\_NO\\_MATCH passes the request body for unmapped content types
+#' WHEN_NO_MATCH passes the request body for unmapped content types
 #' through to the integration backend without transformation.
 #' 
 #' NEVER rejects unmapped content types with an HTTP 415 Unsupported Media
 #' Type response.
 #' 
-#' WHEN\\_NO\\_TEMPLATES allows pass-through when the integration has no
+#' WHEN_NO_TEMPLATES allows pass-through when the integration has no
 #' content types mapped to templates. However, if there is at least one
 #' content type defined, unmapped content types will be rejected with the
 #' same HTTP 415 Unsupported Media Type response.
@@ -3407,13 +4703,13 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' request parameter value or static value that must be enclosed within
 #' single quotes and pre-encoded as required by the backend. The method
 #' request parameter value must match the pattern of
-#' method.request.\{location\}.\{name\} , where \{location\} is querystring,
-#' path, or header; and \{name\} must be a valid and unique method request
-#' parameter name.
+#' method.request.\{location\}.\{name\} , where \{location\} is
+#' querystring, path, or header; and \{name\} must be a valid and unique
+#' method request parameter name.
 #' 
 #' For HTTP API integrations with a specified integrationSubtype, request
 #' parameters are a key-value map specifying parameters that are passed to
-#' AWS\\_PROXY integrations. You can provide static values, or map request
+#' AWS_PROXY integrations. You can provide static values, or map request
 #' data, stage variables, or context variables that are evaluated at
 #' runtime. To learn more, see [Working with AWS service integrations for
 #' HTTP
@@ -3450,6 +4746,43 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' @param TlsConfig The TLS configuration for a private integration. If you specify a TLS
 #' configuration, private integration traffic uses the HTTPS protocol.
 #' Supported only for HTTP APIs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiGatewayManaged = TRUE|FALSE,
+#'   ConnectionId = "string",
+#'   ConnectionType = "INTERNET"|"VPC_LINK",
+#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'   CredentialsArn = "string",
+#'   Description = "string",
+#'   IntegrationId = "string",
+#'   IntegrationMethod = "string",
+#'   IntegrationResponseSelectionExpression = "string",
+#'   IntegrationSubtype = "string",
+#'   IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+#'   IntegrationUri = "string",
+#'   PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
+#'   PayloadFormatVersion = "string",
+#'   RequestParameters = list(
+#'     "string"
+#'   ),
+#'   RequestTemplates = list(
+#'     "string"
+#'   ),
+#'   ResponseParameters = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   TemplateSelectionExpression = "string",
+#'   TimeoutInMillis = 123,
+#'   TlsConfig = list(
+#'     ServerNameToVerify = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3519,12 +4852,12 @@ apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ContentHandlingStrategy Supported only for WebSocket APIs. Specifies how to handle response
 #' payload content type conversions. Supported values are
-#' CONVERT\\_TO\\_BINARY and CONVERT\\_TO\\_TEXT, with the following behaviors:
+#' CONVERT_TO_BINARY and CONVERT_TO_TEXT, with the following behaviors:
 #' 
-#' CONVERT\\_TO\\_BINARY: Converts a response payload from a Base64-encoded
+#' CONVERT_TO_BINARY: Converts a response payload from a Base64-encoded
 #' string to the corresponding binary blob.
 #' 
-#' CONVERT\\_TO\\_TEXT: Converts a response payload from a binary blob to a
+#' CONVERT_TO_TEXT: Converts a response payload from a binary blob to a
 #' Base64-encoded string.
 #' 
 #' If this property is not defined, the response payload will be passed
@@ -3541,15 +4874,32 @@ apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' match the pattern of method.response.header.\{name\} , where name is a
 #' valid and unique header name. The mapped non-static value must match the
 #' pattern of integration.response.header.\{name\} or
-#' integration.response.body.\{JSON-expression\} , where \{name\} is a valid
-#' and unique response header name and \{JSON-expression\} is a valid JSON
-#' expression without the $ prefix.
+#' integration.response.body.\{JSON-expression\} , where \{name\} is a
+#' valid and unique response header name and \{JSON-expression\} is a
+#' valid JSON expression without the $ prefix.
 #' @param ResponseTemplates The collection of response templates for the integration response as a
 #' string-to-string map of key-value pairs. Response templates are
 #' represented as a key/value map, with a content-type as the key and a
 #' template as the value.
 #' @param TemplateSelectionExpression The template selection expression for the integration response.
 #' Supported only for WebSocket APIs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'   IntegrationResponseId = "string",
+#'   IntegrationResponseKey = "string",
+#'   ResponseParameters = list(
+#'     "string"
+#'   ),
+#'   ResponseTemplates = list(
+#'     "string"
+#'   ),
+#'   TemplateSelectionExpression = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3606,6 +4956,18 @@ apigatewayv2_update_integration_response <- function(ApiId, ContentHandlingStrat
 #' @param Schema The schema for the model. For application/json models, this should be
 #' JSON schema draft 4 model.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContentType = "string",
+#'   Description = "string",
+#'   ModelId = "string",
+#'   Name = "string",
+#'   Schema = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_model(
@@ -3654,9 +5016,9 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
 #' for WebSocket APIs.
 #' @param AuthorizationScopes The authorization scopes supported by this route.
 #' @param AuthorizationType The authorization type for the route. For WebSocket APIs, valid values
-#' are NONE for open access, AWS\\_IAM for using AWS IAM permissions, and
+#' are NONE for open access, AWS_IAM for using AWS IAM permissions, and
 #' CUSTOM for using a Lambda authorizer For HTTP APIs, valid values are
-#' NONE for open access, JWT for using JSON Web Tokens, AWS\\_IAM for using
+#' NONE for open access, JWT for using JSON Web Tokens, AWS_IAM for using
 #' AWS IAM permissions, and CUSTOM for using a Lambda authorizer.
 #' @param AuthorizerId The identifier of the Authorizer resource to be associated with this
 #' route. The authorizer identifier is generated by API Gateway when you
@@ -3671,6 +5033,34 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
 #' @param RouteResponseSelectionExpression The route response selection expression for the route. Supported only
 #' for WebSocket APIs.
 #' @param Target The target for the route.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiGatewayManaged = TRUE|FALSE,
+#'   ApiKeyRequired = TRUE|FALSE,
+#'   AuthorizationScopes = list(
+#'     "string"
+#'   ),
+#'   AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
+#'   AuthorizerId = "string",
+#'   ModelSelectionExpression = "string",
+#'   OperationName = "string",
+#'   RequestModels = list(
+#'     "string"
+#'   ),
+#'   RequestParameters = list(
+#'     list(
+#'       Required = TRUE|FALSE
+#'     )
+#'   ),
+#'   RouteId = "string",
+#'   RouteKey = "string",
+#'   RouteResponseSelectionExpression = "string",
+#'   Target = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3738,6 +5128,24 @@ apigatewayv2_update_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 #' @param RouteResponseId &#91;required&#93; The route response ID.
 #' @param RouteResponseKey The route response key.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelSelectionExpression = "string",
+#'   ResponseModels = list(
+#'     "string"
+#'   ),
+#'   ResponseParameters = list(
+#'     list(
+#'       Required = TRUE|FALSE
+#'     )
+#'   ),
+#'   RouteResponseId = "string",
+#'   RouteResponseKey = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_route_response(
@@ -3802,7 +5210,53 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 #' characters.
 #' @param StageVariables A map that defines the stage variables for a Stage. Variable names can
 #' have alphanumeric and underscore characters, and the values must match
-#' \[A-Za-z0-9-.\\_~:/?\\#&=,\]+.
+#' \[A-Za-z0-9-._~:/?\#&=,\]+.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessLogSettings = list(
+#'     DestinationArn = "string",
+#'     Format = "string"
+#'   ),
+#'   ApiGatewayManaged = TRUE|FALSE,
+#'   AutoDeploy = TRUE|FALSE,
+#'   ClientCertificateId = "string",
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DefaultRouteSettings = list(
+#'     DataTraceEnabled = TRUE|FALSE,
+#'     DetailedMetricsEnabled = TRUE|FALSE,
+#'     LoggingLevel = "ERROR"|"INFO"|"OFF",
+#'     ThrottlingBurstLimit = 123,
+#'     ThrottlingRateLimit = 123.0
+#'   ),
+#'   DeploymentId = "string",
+#'   Description = "string",
+#'   LastDeploymentStatusMessage = "string",
+#'   LastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   RouteSettings = list(
+#'     list(
+#'       DataTraceEnabled = TRUE|FALSE,
+#'       DetailedMetricsEnabled = TRUE|FALSE,
+#'       LoggingLevel = "ERROR"|"INFO"|"OFF",
+#'       ThrottlingBurstLimit = 123,
+#'       ThrottlingRateLimit = 123.0
+#'     )
+#'   ),
+#'   StageName = "string",
+#'   StageVariables = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3869,6 +5323,30 @@ apigatewayv2_update_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeplo
 #'
 #' @param Name The name of the VPC link.
 #' @param VpcLinkId &#91;required&#93; The ID of the VPC link.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Name = "string",
+#'   SecurityGroupIds = list(
+#'     "string"
+#'   ),
+#'   SubnetIds = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   VpcLinkId = "string",
+#'   VpcLinkStatus = "PENDING"|"AVAILABLE"|"DELETING"|"FAILED"|"INACTIVE",
+#'   VpcLinkStatusMessage = "string",
+#'   VpcLinkVersion = "V2"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

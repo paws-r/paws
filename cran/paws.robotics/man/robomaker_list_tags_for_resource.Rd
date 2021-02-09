@@ -9,6 +9,14 @@ robomaker_list_tags_for_resource(resourceArn)
 \arguments{
 \item{resourceArn}{[required] The AWS RoboMaker Amazon Resource Name (ARN) with tags to be listed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Lists all tags on a AWS RoboMaker resource.
 }

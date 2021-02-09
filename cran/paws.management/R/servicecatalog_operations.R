@@ -34,6 +34,12 @@ NULL
 #' For example,
 #' `aws servicecatalog accept-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_portfolio_share(
@@ -73,6 +79,12 @@ servicecatalog_accept_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @param BudgetName &#91;required&#93; The name of the budget you want to associate.
 #' @param ResourceId &#91;required&#93; The resource identifier. Either a portfolio-id or a product-id.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -121,6 +133,12 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PrincipalARN &#91;required&#93; The ARN of the principal (IAM user, role, or group).
 #' @param PrincipalType &#91;required&#93; The principal type. The supported value is `IAM`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -174,6 +192,12 @@ servicecatalog_associate_principal_with_portfolio <- function(AcceptLanguage = N
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param SourcePortfolioId The identifier of the source portfolio.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_product_with_portfolio(
@@ -225,6 +249,12 @@ servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NUL
 #' 
 #' -   `zh` - Chinese
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_service_action_with_provisioning_artifact(
@@ -268,6 +298,12 @@ servicecatalog_associate_service_action_with_provisioning_artifact <- function(P
 #'
 #' @param ResourceId &#91;required&#93; The resource identifier.
 #' @param TagOptionId &#91;required&#93; The TagOption identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -315,6 +351,22 @@ servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOpt
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedServiceActionAssociations = list(
+#'     list(
+#'       ServiceActionId = "string",
+#'       ProductId = "string",
+#'       ProvisioningArtifactId = "string",
+#'       ErrorCode = "DUPLICATE_RESOURCE"|"INTERNAL_FAILURE"|"LIMIT_EXCEEDED"|"RESOURCE_NOT_FOUND"|"THROTTLING",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -370,6 +422,22 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact <- func
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedServiceActionAssociations = list(
+#'     list(
+#'       ServiceActionId = "string",
+#'       ProductId = "string",
+#'       ProvisioningArtifactId = "string",
+#'       ErrorCode = "DUPLICATE_RESOURCE"|"INTERNAL_FAILURE"|"LIMIT_EXCEEDED"|"RESOURCE_NOT_FOUND"|"THROTTLING",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -445,6 +513,14 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CopyProductToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$copy_product(
@@ -514,11 +590,11 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' 
 #' Specify the `RoleArn` property as follows:
 #' 
-#' `\{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"\}`
+#' `{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}`
 #' 
 #' Specify the `LocalRoleName` property as follows:
 #' 
-#' `\{"LocalRoleName": "SCBasicLaunchRole"\}`
+#' `{"LocalRoleName": "SCBasicLaunchRole"}`
 #' 
 #' If you specify the `LocalRoleName` property, when an account uses the
 #' launch constraint, the IAM role with that name in the account will be
@@ -538,13 +614,13 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' 
 #' Specify the `NotificationArns` property as follows:
 #' 
-#' `\{"NotificationArns" : \\["arn:aws:sns:us-east-1:123456789012:Topic"\\]\}`
+#' `{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}`
 #' 
-#' ### RESOURCE\\_UPDATE
+#' ### RESOURCE_UPDATE
 #' 
 #' Specify the `TagUpdatesOnProvisionedProduct` property as follows:
 #' 
-#' `\{"Version":"2.0","Properties":\{"TagUpdateOnProvisionedProduct":"String"\}\}`
+#' `{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}`
 #' 
 #' The `TagUpdatesOnProvisionedProduct` property accepts a string value of
 #' `ALLOWED` or `NOT_ALLOWED`.
@@ -553,7 +629,7 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' 
 #' Specify the `Parameters` property as follows:
 #' 
-#' `\{"Version": "String", "Properties": \{"AccountList": \\[ "String" \\], "RegionList": \\[ "String" \\], "AdminRole": "String", "ExecutionRole": "String"\}\}`
+#' `{"Version": "String", "Properties": {"AccountList": [ "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole": "String"}}`
 #' 
 #' You cannot have both a `LAUNCH` and a `STACKSET` constraint.
 #' 
@@ -583,6 +659,23 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConstraintDetail = list(
+#'     ConstraintId = "string",
+#'     Type = "string",
+#'     Description = "string",
+#'     Owner = "string",
+#'     ProductId = "string",
+#'     PortfolioId = "string"
+#'   ),
+#'   ConstraintParameters = "string",
+#'   Status = "AVAILABLE"|"CREATING"|"FAILED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -642,6 +735,29 @@ servicecatalog_create_constraint <- function(AcceptLanguage = NULL, PortfolioId,
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PortfolioDetail = list(
+#'     Id = "string",
+#'     ARN = "string",
+#'     DisplayName = "string",
+#'     Description = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ProviderName = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -727,6 +843,14 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #' @param ShareTagOptions Enables or disables `TagOptions ` sharing when creating the portfolio
 #' share. If this flag is not provided, TagOptions sharing is disabled.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PortfolioShareToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_portfolio_share(
@@ -793,13 +917,57 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @param SupportEmail The contact email for product support.
 #' @param SupportUrl The contact URL for product support.
 #' 
-#' `^https?:\\/\\// `/ is the pattern used to validate SupportUrl.
+#' `^https?:\/\// `/ is the pattern used to validate SupportUrl.
 #' @param ProductType &#91;required&#93; The type of product.
 #' @param Tags One or more tags.
 #' @param ProvisioningArtifactParameters &#91;required&#93; The configuration of the provisioning artifact.
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProductViewDetail = list(
+#'     ProductViewSummary = list(
+#'       Id = "string",
+#'       ProductId = "string",
+#'       Name = "string",
+#'       Owner = "string",
+#'       ShortDescription = "string",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'       Distributor = "string",
+#'       HasDefaultPath = TRUE|FALSE,
+#'       SupportEmail = "string",
+#'       SupportDescription = "string",
+#'       SupportUrl = "string"
+#'     ),
+#'     Status = "AVAILABLE"|"CREATING"|"FAILED",
+#'     ProductARN = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   ProvisioningArtifactDetail = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Active = TRUE|FALSE,
+#'     Guidance = "DEFAULT"|"DEPRECATED"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -904,6 +1072,18 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' have a `RESOURCE_UPDATE` constraint with
 #' `TagUpdatesOnProvisionedProduct` set to `ALLOWED` to allow tag updates.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PlanName = "string",
+#'   PlanId = "string",
+#'   ProvisionProductId = "string",
+#'   ProvisionedProductName = "string",
+#'   ProvisioningArtifactId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_provisioned_product_plan(
@@ -986,6 +1166,28 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProvisioningArtifactDetail = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Active = TRUE|FALSE,
+#'     Guidance = "DEFAULT"|"DEPRECATED"
+#'   ),
+#'   Info = list(
+#'     "string"
+#'   ),
+#'   Status = "AVAILABLE"|"CREATING"|"FAILED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_provisioning_artifact(
@@ -1063,8 +1265,8 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' 
 #' The list of parameters in JSON format.
 #' 
-#' For example: `\\[\{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"\}\\]` or
-#' `\\[\{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"\}\\]`.
+#' For example: `[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]` or
+#' `[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]`.
 #' @param Description The self-service action description.
 #' @param AcceptLanguage The language code.
 #' 
@@ -1076,6 +1278,24 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceActionDetail = list(
+#'     ServiceActionSummary = list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       DefinitionType = "SSM_AUTOMATION"
+#'     ),
+#'     Definition = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1121,6 +1341,20 @@ servicecatalog_create_service_action <- function(Name, DefinitionType, Definitio
 #'
 #' @param Key &#91;required&#93; The TagOption key.
 #' @param Value &#91;required&#93; The TagOption value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TagOptionDetail = list(
+#'     Key = "string",
+#'     Value = "string",
+#'     Active = TRUE|FALSE,
+#'     Id = "string",
+#'     Owner = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1168,6 +1402,12 @@ servicecatalog_create_tag_option <- function(Key, Value) {
 #' 
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The identifier of the constraint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1218,6 +1458,12 @@ servicecatalog_delete_constraint <- function(AcceptLanguage = NULL, Id) {
 #' 
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The portfolio identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1274,6 +1520,14 @@ servicecatalog_delete_portfolio <- function(AcceptLanguage = NULL, Id) {
 #' @param AccountId The AWS account ID.
 #' @param OrganizationNode The organization node to whom you are going to stop sharing.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PortfolioShareToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_portfolio_share(
@@ -1329,6 +1583,12 @@ servicecatalog_delete_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The product identifier.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_product(
@@ -1376,6 +1636,12 @@ servicecatalog_delete_product <- function(AcceptLanguage = NULL, Id) {
 #' @param PlanId &#91;required&#93; The plan identifier.
 #' @param IgnoreErrors If set to true, AWS Service Catalog stops managing the specified
 #' provisioned product even if it cannot delete the underlying resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1432,6 +1698,12 @@ servicecatalog_delete_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_provisioning_artifact(
@@ -1478,6 +1750,12 @@ servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' 
 #' -   `zh` - Chinese
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_service_action(
@@ -1518,6 +1796,12 @@ servicecatalog_delete_service_action <- function(Id, AcceptLanguage = NULL) {
 #' servicecatalog_delete_tag_option(Id)
 #'
 #' @param Id &#91;required&#93; The TagOption identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1562,6 +1846,23 @@ servicecatalog_delete_tag_option <- function(Id) {
 #' 
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The identifier of the constraint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConstraintDetail = list(
+#'     ConstraintId = "string",
+#'     Type = "string",
+#'     Description = "string",
+#'     Owner = "string",
+#'     ProductId = "string",
+#'     PortfolioId = "string"
+#'   ),
+#'   ConstraintParameters = "string",
+#'   Status = "AVAILABLE"|"CREATING"|"FAILED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1610,6 +1911,16 @@ servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
 #' @param CopyProductToken &#91;required&#93; The token for the copy product operation. This token is returned by
 #' [`copy_product`][servicecatalog_copy_product].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CopyProductStatus = "SUCCEEDED"|"IN_PROGRESS"|"FAILED",
+#'   TargetProductId = "string",
+#'   StatusDetail = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_copy_product_status(
@@ -1657,6 +1968,43 @@ servicecatalog_describe_copy_product_status <- function(AcceptLanguage = NULL, C
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The portfolio identifier.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PortfolioDetail = list(
+#'     Id = "string",
+#'     ARN = "string",
+#'     DisplayName = "string",
+#'     Description = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ProviderName = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   TagOptions = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string",
+#'       Active = TRUE|FALSE,
+#'       Id = "string",
+#'       Owner = "string"
+#'     )
+#'   ),
+#'   Budgets = list(
+#'     list(
+#'       BudgetName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_portfolio(
@@ -1697,6 +2045,31 @@ servicecatalog_describe_portfolio <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @param PortfolioShareToken &#91;required&#93; The token for the portfolio share operation. This token is returned
 #' either by CreatePortfolioShare or by DeletePortfolioShare.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PortfolioShareToken = "string",
+#'   PortfolioId = "string",
+#'   OrganizationNodeValue = "string",
+#'   Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"ERROR",
+#'   ShareDetails = list(
+#'     SuccessfulShares = list(
+#'       "string"
+#'     ),
+#'     ShareErrors = list(
+#'       list(
+#'         Accounts = list(
+#'           "string"
+#'         ),
+#'         Message = "string",
+#'         Error = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1747,19 +2120,35 @@ servicecatalog_describe_portfolio_share_status <- function(PortfolioShareToken) 
 #' @param Type &#91;required&#93; The type of portfolio share to summarize. This field acts as a filter on
 #' the type of portfolio share, which can be one of the following:
 #' 
-#' 1\\. `ACCOUNT` - Represents an external account to account share.
+#' 1\. `ACCOUNT` - Represents an external account to account share.
 #' 
-#' 2\\. `ORGANIZATION` - Represents a share to an organization. This share
+#' 2\. `ORGANIZATION` - Represents a share to an organization. This share
 #' is available to every account in the organization.
 #' 
-#' 3\\. `ORGANIZATIONAL_UNIT` - Represents a share to an organizational
+#' 3\. `ORGANIZATIONAL_UNIT` - Represents a share to an organizational
 #' unit.
 #' 
-#' 4\\. `ORGANIZATION_MEMBER_ACCOUNT` - Represents a share to an account in
+#' 4\. `ORGANIZATION_MEMBER_ACCOUNT` - Represents a share to an account in
 #' the organization.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextPageToken = "string",
+#'   PortfolioShareDetails = list(
+#'     list(
+#'       PrincipalId = "string",
+#'       Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ORGANIZATION_MEMBER_ACCOUNT",
+#'       Accepted = TRUE|FALSE,
+#'       ShareTagOptions = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1808,6 +2197,48 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
 #' -   `zh` - Chinese
 #' @param Id The product identifier.
 #' @param Name The product name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProductViewSummary = list(
+#'     Id = "string",
+#'     ProductId = "string",
+#'     Name = "string",
+#'     Owner = "string",
+#'     ShortDescription = "string",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'     Distributor = "string",
+#'     HasDefaultPath = TRUE|FALSE,
+#'     SupportEmail = "string",
+#'     SupportDescription = "string",
+#'     SupportUrl = "string"
+#'   ),
+#'   ProvisioningArtifacts = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Guidance = "DEFAULT"|"DEPRECATED"
+#'     )
+#'   ),
+#'   Budgets = list(
+#'     list(
+#'       BudgetName = "string"
+#'     )
+#'   ),
+#'   LaunchPaths = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1866,6 +2297,66 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
 #' both local and shared TagOptions associated with the product. Otherwise
 #' only local TagOptions will be returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProductViewDetail = list(
+#'     ProductViewSummary = list(
+#'       Id = "string",
+#'       ProductId = "string",
+#'       Name = "string",
+#'       Owner = "string",
+#'       ShortDescription = "string",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'       Distributor = "string",
+#'       HasDefaultPath = TRUE|FALSE,
+#'       SupportEmail = "string",
+#'       SupportDescription = "string",
+#'       SupportUrl = "string"
+#'     ),
+#'     Status = "AVAILABLE"|"CREATING"|"FAILED",
+#'     ProductARN = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   ProvisioningArtifactSummaries = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ProvisioningArtifactMetadata = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   TagOptions = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string",
+#'       Active = TRUE|FALSE,
+#'       Id = "string",
+#'       Owner = "string"
+#'     )
+#'   ),
+#'   Budgets = list(
+#'     list(
+#'       BudgetName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_product_as_admin(
@@ -1912,6 +2403,37 @@ servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id =
 #' 
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The product view identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProductViewSummary = list(
+#'     Id = "string",
+#'     ProductId = "string",
+#'     Name = "string",
+#'     Owner = "string",
+#'     ShortDescription = "string",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'     Distributor = "string",
+#'     HasDefaultPath = TRUE|FALSE,
+#'     SupportEmail = "string",
+#'     SupportDescription = "string",
+#'     SupportUrl = "string"
+#'   ),
+#'   ProvisioningArtifacts = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Guidance = "DEFAULT"|"DEPRECATED"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1967,6 +2489,36 @@ servicecatalog_describe_product_view <- function(AcceptLanguage = NULL, Id) {
 #' If you do not provide a name or ID, or you provide both name and ID, an
 #' `InvalidParametersException` will occur.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProvisionedProductDetail = list(
+#'     Name = "string",
+#'     Arn = "string",
+#'     Type = "string",
+#'     Id = "string",
+#'     Status = "AVAILABLE"|"UNDER_CHANGE"|"TAINTED"|"ERROR"|"PLAN_IN_PROGRESS",
+#'     StatusMessage = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     IdempotencyToken = "string",
+#'     LastRecordId = "string",
+#'     LastProvisioningRecordId = "string",
+#'     LastSuccessfulProvisioningRecordId = "string",
+#'     ProductId = "string",
+#'     ProvisioningArtifactId = "string",
+#'     LaunchRoleArn = "string"
+#'   ),
+#'   CloudWatchDashboards = list(
+#'     list(
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_provisioned_product(
@@ -2016,6 +2568,71 @@ servicecatalog_describe_provisioned_product <- function(AcceptLanguage = NULL, I
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProvisionedProductPlanDetails = list(
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PathId = "string",
+#'     ProductId = "string",
+#'     PlanName = "string",
+#'     PlanId = "string",
+#'     ProvisionProductId = "string",
+#'     ProvisionProductName = "string",
+#'     PlanType = "CLOUDFORMATION",
+#'     ProvisioningArtifactId = "string",
+#'     Status = "CREATE_IN_PROGRESS"|"CREATE_SUCCESS"|"CREATE_FAILED"|"EXECUTE_IN_PROGRESS"|"EXECUTE_SUCCESS"|"EXECUTE_FAILED",
+#'     UpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     NotificationArns = list(
+#'       "string"
+#'     ),
+#'     ProvisioningParameters = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string",
+#'         UsePreviousValue = TRUE|FALSE
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     StatusMessage = "string"
+#'   ),
+#'   ResourceChanges = list(
+#'     list(
+#'       Action = "ADD"|"MODIFY"|"REMOVE",
+#'       LogicalResourceId = "string",
+#'       PhysicalResourceId = "string",
+#'       ResourceType = "string",
+#'       Replacement = "TRUE"|"FALSE"|"CONDITIONAL",
+#'       Scope = list(
+#'         "PROPERTIES"|"METADATA"|"CREATIONPOLICY"|"UPDATEPOLICY"|"DELETIONPOLICY"|"TAGS"
+#'       ),
+#'       Details = list(
+#'         list(
+#'           Target = list(
+#'             Attribute = "PROPERTIES"|"METADATA"|"CREATIONPOLICY"|"UPDATEPOLICY"|"DELETIONPOLICY"|"TAGS",
+#'             Name = "string",
+#'             RequiresRecreation = "NEVER"|"CONDITIONALLY"|"ALWAYS"
+#'           ),
+#'           Evaluation = "STATIC"|"DYNAMIC",
+#'           CausingEntity = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2071,6 +2688,28 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #' @param ProvisioningArtifactName The provisioning artifact name.
 #' @param ProductName The product name.
 #' @param Verbose Indicates whether a verbose level of detail is enabled.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProvisioningArtifactDetail = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Active = TRUE|FALSE,
+#'     Guidance = "DEFAULT"|"DEPRECATED"
+#'   ),
+#'   Info = list(
+#'     "string"
+#'   ),
+#'   Status = "AVAILABLE"|"CREATING"|"FAILED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2146,6 +2785,67 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
 #' provide the name or ID, but not both.
 #' @param PathName The name of the path. You must provide the name or ID, but not both.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProvisioningArtifactParameters = list(
+#'     list(
+#'       ParameterKey = "string",
+#'       DefaultValue = "string",
+#'       ParameterType = "string",
+#'       IsNoEcho = TRUE|FALSE,
+#'       Description = "string",
+#'       ParameterConstraints = list(
+#'         AllowedValues = list(
+#'           "string"
+#'         ),
+#'         AllowedPattern = "string",
+#'         ConstraintDescription = "string",
+#'         MaxLength = "string",
+#'         MinLength = "string",
+#'         MaxValue = "string",
+#'         MinValue = "string"
+#'       )
+#'     )
+#'   ),
+#'   ConstraintSummaries = list(
+#'     list(
+#'       Type = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   UsageInstructions = list(
+#'     list(
+#'       Type = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   TagOptions = list(
+#'     list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ProvisioningArtifactPreferences = list(
+#'     StackSetAccounts = list(
+#'       "string"
+#'     ),
+#'     StackSetRegions = list(
+#'       "string"
+#'     )
+#'   ),
+#'   ProvisioningArtifactOutputs = list(
+#'     list(
+#'       Key = "string",
+#'       Description = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_provisioning_parameters(
@@ -2214,6 +2914,51 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecordDetail = list(
+#'     RecordId = "string",
+#'     ProvisionedProductName = "string",
+#'     Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ProvisionedProductType = "string",
+#'     RecordType = "string",
+#'     ProvisionedProductId = "string",
+#'     ProductId = "string",
+#'     ProvisioningArtifactId = "string",
+#'     PathId = "string",
+#'     RecordErrors = list(
+#'       list(
+#'         Code = "string",
+#'         Description = "string"
+#'       )
+#'     ),
+#'     RecordTags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     LaunchRoleArn = "string"
+#'   ),
+#'   RecordOutputs = list(
+#'     list(
+#'       OutputKey = "string",
+#'       OutputValue = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_record(
@@ -2260,6 +3005,24 @@ servicecatalog_describe_record <- function(AcceptLanguage = NULL, Id, PageToken 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceActionDetail = list(
+#'     ServiceActionSummary = list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       DefinitionType = "SSM_AUTOMATION"
+#'     ),
+#'     Definition = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2312,6 +3075,22 @@ servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
 #' 
 #' -   `zh` - Chinese
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceActionParameters = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "string",
+#'       DefaultValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_service_action_execution_parameters(
@@ -2350,6 +3129,20 @@ servicecatalog_describe_service_action_execution_parameters <- function(Provisio
 #' servicecatalog_describe_tag_option(Id)
 #'
 #' @param Id &#91;required&#93; The TagOption identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TagOptionDetail = list(
+#'     Key = "string",
+#'     Value = "string",
+#'     Active = TRUE|FALSE,
+#'     Id = "string",
+#'     Owner = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2397,6 +3190,12 @@ servicecatalog_describe_tag_option <- function(Id) {
 #' @usage
 #' servicecatalog_disable_aws_organizations_access()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_aws_organizations_access()
@@ -2433,6 +3232,12 @@ servicecatalog_disable_aws_organizations_access <- function() {
 #' @param BudgetName &#91;required&#93; The name of the budget you want to disassociate.
 #' @param ResourceId &#91;required&#93; The resource identifier you want to disassociate from. Either a
 #' portfolio-id or a product-id.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2483,6 +3288,12 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PrincipalARN &#91;required&#93; The ARN of the principal (IAM user, role, or group).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_principal_from_portfolio(
@@ -2532,6 +3343,12 @@ servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage 
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2585,6 +3402,12 @@ servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = 
 #' 
 #' -   `zh` - Chinese
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_service_action_from_provisioning_artifact(
@@ -2626,6 +3449,12 @@ servicecatalog_disassociate_service_action_from_provisioning_artifact <- functio
 #'
 #' @param ResourceId &#91;required&#93; The resource identifier.
 #' @param TagOptionId &#91;required&#93; The TagOption identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2672,6 +3501,12 @@ servicecatalog_disassociate_tag_option_from_resource <- function(ResourceId, Tag
 #'
 #' @usage
 #' servicecatalog_enable_aws_organizations_access()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2720,6 +3555,43 @@ servicecatalog_enable_aws_organizations_access <- function() {
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecordDetail = list(
+#'     RecordId = "string",
+#'     ProvisionedProductName = "string",
+#'     Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ProvisionedProductType = "string",
+#'     RecordType = "string",
+#'     ProvisionedProductId = "string",
+#'     ProductId = "string",
+#'     ProvisioningArtifactId = "string",
+#'     PathId = "string",
+#'     RecordErrors = list(
+#'       list(
+#'         Code = "string",
+#'         Description = "string"
+#'       )
+#'     ),
+#'     RecordTags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     LaunchRoleArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2777,6 +3649,43 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #' passed and default values will be used for any special parameters such
 #' as `TARGET`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecordDetail = list(
+#'     RecordId = "string",
+#'     ProvisionedProductName = "string",
+#'     Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ProvisionedProductType = "string",
+#'     RecordType = "string",
+#'     ProvisionedProductId = "string",
+#'     ProductId = "string",
+#'     ProvisioningArtifactId = "string",
+#'     PathId = "string",
+#'     RecordErrors = list(
+#'       list(
+#'         Code = "string",
+#'         Description = "string"
+#'       )
+#'     ),
+#'     RecordTags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     LaunchRoleArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$execute_provisioned_product_service_action(
@@ -2821,6 +3730,14 @@ servicecatalog_execute_provisioned_product_service_action <- function(Provisione
 #'
 #' @usage
 #' servicecatalog_get_aws_organizations_access_status()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessStatus = "ENABLED"|"UNDER_CHANGE"|"DISABLED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2877,6 +3794,21 @@ servicecatalog_get_aws_organizations_access_status <- function() {
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Outputs = list(
+#'     list(
+#'       OutputKey = "string",
+#'       OutputValue = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2960,6 +3892,43 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecordDetail = list(
+#'     RecordId = "string",
+#'     ProvisionedProductName = "string",
+#'     Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ProvisionedProductType = "string",
+#'     RecordType = "string",
+#'     ProvisionedProductId = "string",
+#'     ProductId = "string",
+#'     ProvisioningArtifactId = "string",
+#'     PathId = "string",
+#'     RecordErrors = list(
+#'       list(
+#'         Code = "string",
+#'         Description = "string"
+#'       )
+#'     ),
+#'     RecordTags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     LaunchRoleArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_as_provisioned_product(
@@ -3021,6 +3990,26 @@ servicecatalog_import_as_provisioned_product <- function(AcceptLanguage = NULL, 
 #' 
 #' -   `IMPORTED` - List imported portfolios
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PortfolioDetails = list(
+#'     list(
+#'       Id = "string",
+#'       ARN = "string",
+#'       DisplayName = "string",
+#'       Description = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ProviderName = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_accepted_portfolio_shares(
@@ -3071,6 +4060,19 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Budgets = list(
+#'     list(
+#'       BudgetName = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3123,6 +4125,24 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConstraintDetails = list(
+#'     list(
+#'       ConstraintId = "string",
+#'       Type = "string",
+#'       Description = "string",
+#'       Owner = "string",
+#'       ProductId = "string",
+#'       PortfolioId = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3177,6 +4197,32 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LaunchPathSummaries = list(
+#'     list(
+#'       Id = "string",
+#'       ConstraintSummaries = list(
+#'         list(
+#'           Type = "string",
+#'           Description = "string"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Name = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3243,6 +4289,20 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationNodes = list(
+#'     list(
+#'       Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_organization_portfolio_access(
@@ -3302,6 +4362,17 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountIds = list(
+#'     "string"
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_portfolio_access(
@@ -3351,6 +4422,26 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PortfolioDetails = list(
+#'     list(
+#'       Id = "string",
+#'       ARN = "string",
+#'       DisplayName = "string",
+#'       Description = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ProviderName = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3402,6 +4493,26 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PortfolioDetails = list(
+#'     list(
+#'       Id = "string",
+#'       ARN = "string",
+#'       DisplayName = "string",
+#'       Description = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ProviderName = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_portfolios_for_product(
@@ -3452,6 +4563,20 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Principals = list(
+#'     list(
+#'       PrincipalARN = "string",
+#'       PrincipalType = "IAM"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3507,6 +4632,24 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
 #' results, use null.
 #' @param AccessLevelFilter The access level to use to obtain results. The default is `User`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProvisionedProductPlans = list(
+#'     list(
+#'       PlanName = "string",
+#'       PlanId = "string",
+#'       ProvisionProductId = "string",
+#'       ProvisionProductName = "string",
+#'       PlanType = "CLOUDFORMATION",
+#'       ProvisioningArtifactId = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_provisioned_product_plans(
@@ -3560,6 +4703,27 @@ servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL,
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProvisioningArtifactDetails = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Active = TRUE|FALSE,
+#'       Guidance = "DEFAULT"|"DEPRECATED"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_provisioning_artifacts(
@@ -3610,6 +4774,40 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProvisioningArtifactViews = list(
+#'     list(
+#'       ProductViewSummary = list(
+#'         Id = "string",
+#'         ProductId = "string",
+#'         Name = "string",
+#'         Owner = "string",
+#'         ShortDescription = "string",
+#'         Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'         Distributor = "string",
+#'         HasDefaultPath = TRUE|FALSE,
+#'         SupportEmail = "string",
+#'         SupportDescription = "string",
+#'         SupportUrl = "string"
+#'       ),
+#'       ProvisioningArtifact = list(
+#'         Id = "string",
+#'         Name = "string",
+#'         Description = "string",
+#'         CreatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Guidance = "DEFAULT"|"DEPRECATED"
+#'       )
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3662,6 +4860,46 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecordDetails = list(
+#'     list(
+#'       RecordId = "string",
+#'       ProvisionedProductName = "string",
+#'       Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ProvisionedProductType = "string",
+#'       RecordType = "string",
+#'       ProvisionedProductId = "string",
+#'       ProductId = "string",
+#'       ProvisioningArtifactId = "string",
+#'       PathId = "string",
+#'       RecordErrors = list(
+#'         list(
+#'           Code = "string",
+#'           Description = "string"
+#'         )
+#'       ),
+#'       RecordTags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       LaunchRoleArn = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3719,6 +4957,25 @@ servicecatalog_list_record_history <- function(AcceptLanguage = NULL, AccessLeve
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceDetails = list(
+#'     list(
+#'       Id = "string",
+#'       ARN = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   PageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resources_for_tag_option(
@@ -3767,6 +5024,22 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceActionSummaries = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       DefinitionType = "SSM_AUTOMATION"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3821,6 +5094,22 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceActionSummaries = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       DefinitionType = "SSM_AUTOMATION"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3878,6 +5167,21 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StackInstances = list(
+#'     list(
+#'       Account = "string",
+#'       Region = "string",
+#'       StackInstanceStatus = "CURRENT"|"OUTDATED"|"INOPERABLE"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_stack_instances_for_provisioned_product(
@@ -3921,6 +5225,23 @@ servicecatalog_list_stack_instances_for_provisioned_product <- function(AcceptLa
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TagOptionDetails = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string",
+#'       Active = TRUE|FALSE,
+#'       Id = "string",
+#'       Owner = "string"
+#'     )
+#'   ),
+#'   PageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4007,6 +5328,43 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 #' @param NotificationArns Passed to CloudFormation. The SNS topic ARNs to which to publish
 #' stack-related events.
 #' @param ProvisionToken &#91;required&#93; An idempotency token that uniquely identifies the provisioning request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecordDetail = list(
+#'     RecordId = "string",
+#'     ProvisionedProductName = "string",
+#'     Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ProvisionedProductType = "string",
+#'     RecordType = "string",
+#'     ProvisionedProductId = "string",
+#'     ProductId = "string",
+#'     ProvisioningArtifactId = "string",
+#'     PathId = "string",
+#'     RecordErrors = list(
+#'       list(
+#'         Code = "string",
+#'         Description = "string"
+#'       )
+#'     ),
+#'     RecordTags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     LaunchRoleArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4101,6 +5459,12 @@ servicecatalog_provision_product <- function(AcceptLanguage = NULL, ProductId = 
 #' For example,
 #' `aws servicecatalog reject-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reject_portfolio_share(
@@ -4153,6 +5517,34 @@ servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProvisionedProducts = list(
+#'     list(
+#'       Name = "string",
+#'       Arn = "string",
+#'       Type = "string",
+#'       Id = "string",
+#'       Status = "AVAILABLE"|"UNDER_CHANGE"|"TAINTED"|"ERROR"|"PLAN_IN_PROGRESS",
+#'       StatusMessage = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       IdempotencyToken = "string",
+#'       LastRecordId = "string",
+#'       LastProvisioningRecordId = "string",
+#'       LastSuccessfulProvisioningRecordId = "string",
+#'       ProductId = "string",
+#'       ProvisioningArtifactId = "string",
+#'       LaunchRoleArn = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4210,6 +5602,37 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
 #' @param SortOrder The sort order. If no value is specified, the results are not sorted.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProductViewSummaries = list(
+#'     list(
+#'       Id = "string",
+#'       ProductId = "string",
+#'       Name = "string",
+#'       Owner = "string",
+#'       ShortDescription = "string",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'       Distributor = "string",
+#'       HasDefaultPath = TRUE|FALSE,
+#'       SupportEmail = "string",
+#'       SupportDescription = "string",
+#'       SupportUrl = "string"
+#'     )
+#'   ),
+#'   ProductViewAggregations = list(
+#'     list(
+#'       list(
+#'         Value = "string",
+#'         ApproximateCount = 123
+#'       )
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4274,6 +5697,36 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #' @param ProductSource Access level of the source of the product.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProductViewDetails = list(
+#'     list(
+#'       ProductViewSummary = list(
+#'         Id = "string",
+#'         ProductId = "string",
+#'         Name = "string",
+#'         Owner = "string",
+#'         ShortDescription = "string",
+#'         Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'         Distributor = "string",
+#'         HasDefaultPath = TRUE|FALSE,
+#'         SupportEmail = "string",
+#'         SupportDescription = "string",
+#'         SupportUrl = "string"
+#'       ),
+#'       Status = "AVAILABLE"|"CREATING"|"FAILED",
+#'       ProductARN = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4341,13 +5794,52 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
 #' `lastSuccessfulProvisioningRecordId`, `productName`, and
 #' `provisioningArtifactName`.
 #' 
-#' Example: `"SearchQuery":\\["status:AVAILABLE"\\]`
+#' Example: `"SearchQuery":["status:AVAILABLE"]`
 #' @param SortBy The sort field. If no value is specified, the results are not sorted.
 #' The valid values are `arn`, `id`, `name`, and `lastRecordId`.
 #' @param SortOrder The sort order. If no value is specified, the results are not sorted.
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProvisionedProducts = list(
+#'     list(
+#'       Name = "string",
+#'       Arn = "string",
+#'       Type = "string",
+#'       Id = "string",
+#'       Status = "AVAILABLE"|"UNDER_CHANGE"|"TAINTED"|"ERROR"|"PLAN_IN_PROGRESS",
+#'       StatusMessage = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       IdempotencyToken = "string",
+#'       LastRecordId = "string",
+#'       LastProvisioningRecordId = "string",
+#'       LastSuccessfulProvisioningRecordId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       PhysicalId = "string",
+#'       ProductId = "string",
+#'       ProductName = "string",
+#'       ProvisioningArtifactId = "string",
+#'       ProvisioningArtifactName = "string",
+#'       UserArn = "string",
+#'       UserArnSession = "string"
+#'     )
+#'   ),
+#'   TotalResultsCount = 123,
+#'   NextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4429,6 +5921,43 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
 #' resources of the deleted provisioned product. The default value is
 #' false.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecordDetail = list(
+#'     RecordId = "string",
+#'     ProvisionedProductName = "string",
+#'     Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ProvisionedProductType = "string",
+#'     RecordType = "string",
+#'     ProvisionedProductId = "string",
+#'     ProductId = "string",
+#'     ProvisioningArtifactId = "string",
+#'     PathId = "string",
+#'     RecordErrors = list(
+#'       list(
+#'         Code = "string",
+#'         Description = "string"
+#'       )
+#'     ),
+#'     RecordTags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     LaunchRoleArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$terminate_provisioned_product(
@@ -4489,11 +6018,11 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' 
 #' Specify the `RoleArn` property as follows:
 #' 
-#' `\{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"\}`
+#' `{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}`
 #' 
 #' Specify the `LocalRoleName` property as follows:
 #' 
-#' `\{"LocalRoleName": "SCBasicLaunchRole"\}`
+#' `{"LocalRoleName": "SCBasicLaunchRole"}`
 #' 
 #' If you specify the `LocalRoleName` property, when an account uses the
 #' launch constraint, the IAM role with that name in the account will be
@@ -4513,13 +6042,13 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' 
 #' Specify the `NotificationArns` property as follows:
 #' 
-#' `\{"NotificationArns" : \\["arn:aws:sns:us-east-1:123456789012:Topic"\\]\}`
+#' `{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}`
 #' 
-#' ### RESOURCE\\_UPDATE
+#' ### RESOURCE_UPDATE
 #' 
 #' Specify the `TagUpdatesOnProvisionedProduct` property as follows:
 #' 
-#' `\{"Version":"2.0","Properties":\{"TagUpdateOnProvisionedProduct":"String"\}\}`
+#' `{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}`
 #' 
 #' The `TagUpdatesOnProvisionedProduct` property accepts a string value of
 #' `ALLOWED` or `NOT_ALLOWED`.
@@ -4528,7 +6057,7 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' 
 #' Specify the `Parameters` property as follows:
 #' 
-#' `\{"Version": "String", "Properties": \{"AccountList": \\[ "String" \\], "RegionList": \\[ "String" \\], "AdminRole": "String", "ExecutionRole": "String"\}\}`
+#' `{"Version": "String", "Properties": {"AccountList": [ "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole": "String"}}`
 #' 
 #' You cannot have both a `LAUNCH` and a `STACKSET` constraint.
 #' 
@@ -4543,6 +6072,23 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' Specify the `Rules` property. For more information, see [Template
 #' Constraint
 #' Rules](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConstraintDetail = list(
+#'     ConstraintId = "string",
+#'     Type = "string",
+#'     Description = "string",
+#'     Owner = "string",
+#'     ProductId = "string",
+#'     PortfolioId = "string"
+#'   ),
+#'   ConstraintParameters = "string",
+#'   Status = "AVAILABLE"|"CREATING"|"FAILED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4598,6 +6144,29 @@ servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Descript
 #' @param ProviderName The updated name of the portfolio provider.
 #' @param AddTags The tags to add.
 #' @param RemoveTags The tags to remove.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PortfolioDetail = list(
+#'     Id = "string",
+#'     ARN = "string",
+#'     DisplayName = "string",
+#'     Description = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ProviderName = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4683,6 +6252,15 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #' If this field is not provided, the current state of TagOptions sharing
 #' on the portfolio share will not be modified.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PortfolioShareToken = "string",
+#'   Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"ERROR"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_portfolio_share(
@@ -4744,6 +6322,39 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @param SupportUrl The updated support URL for the product.
 #' @param AddTags The tags to add to the product.
 #' @param RemoveTags The tags to remove from the product.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProductViewDetail = list(
+#'     ProductViewSummary = list(
+#'       Id = "string",
+#'       ProductId = "string",
+#'       Name = "string",
+#'       Owner = "string",
+#'       ShortDescription = "string",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'       Distributor = "string",
+#'       HasDefaultPath = TRUE|FALSE,
+#'       SupportEmail = "string",
+#'       SupportDescription = "string",
+#'       SupportUrl = "string"
+#'     ),
+#'     Status = "AVAILABLE"|"CREATING"|"FAILED",
+#'     ProductARN = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4839,6 +6450,43 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #' allow tag updates.
 #' @param UpdateToken &#91;required&#93; The idempotency token that uniquely identifies the provisioning update
 #' request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecordDetail = list(
+#'     RecordId = "string",
+#'     ProvisionedProductName = "string",
+#'     Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ProvisionedProductType = "string",
+#'     RecordType = "string",
+#'     ProvisionedProductId = "string",
+#'     ProductId = "string",
+#'     ProvisioningArtifactId = "string",
+#'     PathId = "string",
+#'     RecordErrors = list(
+#'       list(
+#'         Code = "string",
+#'         Description = "string"
+#'       )
+#'     ),
+#'     RecordTags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     LaunchRoleArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4957,6 +6605,19 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' @param IdempotencyToken &#91;required&#93; The idempotency token that uniquely identifies the provisioning product
 #' update request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProvisionedProductId = "string",
+#'   ProvisionedProductProperties = list(
+#'     "string"
+#'   ),
+#'   RecordId = "string",
+#'   Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_provisioned_product_properties(
@@ -5029,6 +6690,28 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #' to a provisioned product of a deprecated version but cannot launch new
 #' provisioned products using a deprecated version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProvisioningArtifactDetail = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Active = TRUE|FALSE,
+#'     Guidance = "DEFAULT"|"DEPRECATED"
+#'   ),
+#'   Info = list(
+#'     "string"
+#'   ),
+#'   Status = "AVAILABLE"|"CREATING"|"FAILED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_provisioning_artifact(
@@ -5083,6 +6766,24 @@ servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' 
 #' -   `zh` - Chinese
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceActionDetail = list(
+#'     ServiceActionSummary = list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       DefinitionType = "SSM_AUTOMATION"
+#'     ),
+#'     Definition = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_service_action(
@@ -5127,6 +6828,20 @@ servicecatalog_update_service_action <- function(Id, Name = NULL, Definition = N
 #' @param Id &#91;required&#93; The TagOption identifier.
 #' @param Value The updated value.
 #' @param Active The updated active state.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TagOptionDetail = list(
+#'     Key = "string",
+#'     Value = "string",
+#'     Active = TRUE|FALSE,
+#'     Id = "string",
+#'     Owner = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

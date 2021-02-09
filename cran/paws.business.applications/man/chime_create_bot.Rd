@@ -13,6 +13,26 @@ chime_create_bot(AccountId, DisplayName, Domain)
 
 \item{Domain}{The domain of the Amazon Chime Enterprise account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Bot = list(
+    BotId = "string",
+    UserId = "string",
+    DisplayName = "string",
+    BotType = "ChatBot",
+    Disabled = TRUE|FALSE,
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    BotEmail = "string",
+    SecurityToken = "string"
+  )
+)
+}
+}
 \description{
 Creates a bot for an Amazon Chime Enterprise account.
 }

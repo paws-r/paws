@@ -11,6 +11,10 @@ connect_stop_contact(ContactId, InstanceId)
 
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Ends the specified contact.
 }

@@ -20,6 +20,23 @@ results.}
 
 \item{thingTypeName}{The name of the thing type used to search for things.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  things = list(
+    list(
+      thingName = "string",
+      thingTypeName = "string",
+      thingArn = "string",
+      attributes = list(
+        "string"
+      ),
+      version = 123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists your things. Use the \strong{attributeName} and \strong{attributeValue}
 parameters to filter your things. For example, calling

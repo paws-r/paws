@@ -21,6 +21,13 @@ connect_create_instance(ClientToken, IdentityManagementType,
 
 \item{OutboundCallsEnabled}{[required] Whether your contact center allows outbound calls.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Id = "string",
+  Arn = "string"
+)
+}
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

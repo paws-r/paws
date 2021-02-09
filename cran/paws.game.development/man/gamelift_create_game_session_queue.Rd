@@ -43,6 +43,27 @@ use \code{\link[=gamelift_tag_resource]{tag_resource}},
 remove, and view tags. The maximum tag limit may be lower than stated.
 See the AWS General Reference for actual tagging limits.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GameSessionQueue = list(
+    Name = "string",
+    GameSessionQueueArn = "string",
+    TimeoutInSeconds = 123,
+    PlayerLatencyPolicies = list(
+      list(
+        MaximumIndividualPlayerLatencyMilliseconds = 123,
+        PolicyDurationSeconds = 123
+      )
+    ),
+    Destinations = list(
+      list(
+        DestinationArn = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Establishes a new queue for processing requests to place new game
 sessions. A queue identifies where new game sessions can be hosted -- by

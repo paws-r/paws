@@ -10,6 +10,30 @@ transcribeservice_describe_language_model(ModelName)
 \item{ModelName}{[required] The name of the custom language model you submit to get more
 information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LanguageModel = list(
+    ModelName = "string",
+    CreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LanguageCode = "en-US",
+    BaseModelName = "NarrowBand"|"WideBand",
+    ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED",
+    UpgradeAvailability = TRUE|FALSE,
+    FailureReason = "string",
+    InputDataConfig = list(
+      S3Uri = "string",
+      TuningDataS3Uri = "string",
+      DataAccessRoleArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets information about a single custom language model. Use this
 information to see details about the language model in your AWS account.

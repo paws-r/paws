@@ -9,6 +9,10 @@ robomaker_delete_robot(robot)
 \arguments{
 \item{robot}{[required] The Amazon Resource Name (ARN) of the robot.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a robot.
 }

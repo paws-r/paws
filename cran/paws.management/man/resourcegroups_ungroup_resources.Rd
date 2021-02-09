@@ -12,6 +12,26 @@ resources.}
 
 \item{ResourceArns}{[required] The ARNs of the resources to be removed from the group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Succeeded = list(
+    "string"
+  ),
+  Failed = list(
+    list(
+      ResourceArn = "string",
+      ErrorMessage = "string",
+      ErrorCode = "string"
+    )
+  ),
+  Pending = list(
+    list(
+      ResourceArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Removes the specified resources from the specified group.
 

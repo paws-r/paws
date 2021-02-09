@@ -10,6 +10,12 @@ route53resolver_get_resolver_rule_policy(Arn)
 \item{Arn}{[required] The ID of the Resolver rule that you want to get the Resolver rule
 policy for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResolverRulePolicy = "string"
+)
+}
+}
 \description{
 Gets information about the Resolver rule policy for a specified rule. A
 Resolver rule policy includes the rule that you want to share with

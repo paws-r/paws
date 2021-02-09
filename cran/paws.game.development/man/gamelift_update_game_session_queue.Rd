@@ -33,6 +33,27 @@ requests in the queue. Fleets are identified by either a fleet ARN or a
 fleet alias ARN. Destinations are listed in default preference order.
 When updating this list, provide a complete list of destinations.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GameSessionQueue = list(
+    Name = "string",
+    GameSessionQueueArn = "string",
+    TimeoutInSeconds = 123,
+    PlayerLatencyPolicies = list(
+      list(
+        MaximumIndividualPlayerLatencyMilliseconds = 123,
+        PolicyDurationSeconds = 123
+      )
+    ),
+    Destinations = list(
+      list(
+        DestinationArn = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Updates settings for a game session queue, which determines how new game
 session requests in the queue are processed. To update settings, specify

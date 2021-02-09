@@ -23,6 +23,10 @@ cloudformation_record_handler_progress(BearerToken, OperationStatus,
 
 \item{ClientRequestToken}{Reserved for use by the \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html}{CloudFormation CLI}.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Reports progress of a resource handler to CloudFormation.
 

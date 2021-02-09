@@ -9,6 +9,10 @@ eventbridge_delete_archive(ArchiveName)
 \arguments{
 \item{ArchiveName}{[required] The name of the archive to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified archive.
 }

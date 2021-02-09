@@ -9,6 +9,10 @@ ses_delete_receipt_filter(FilterName)
 \arguments{
 \item{FilterName}{[required] The name of the IP address filter to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified IP address filter.
 

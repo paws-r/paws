@@ -9,6 +9,39 @@ directconnect_describe_connections(connectionId)
 \arguments{
 \item{connectionId}{The ID of the connection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  connections = list(
+    list(
+      ownerAccount = "string",
+      connectionId = "string",
+      connectionName = "string",
+      connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
+      region = "string",
+      location = "string",
+      bandwidth = "string",
+      vlan = 123,
+      partnerName = "string",
+      loaIssueTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lagId = "string",
+      awsDevice = "string",
+      jumboFrameCapable = TRUE|FALSE,
+      awsDeviceV2 = "string",
+      hasLogicalRedundancy = "unknown"|"yes"|"no",
+      tags = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      ),
+      providerName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Displays the specified connection or all connections in this Region.
 }

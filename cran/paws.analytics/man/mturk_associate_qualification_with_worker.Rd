@@ -21,6 +21,10 @@ requests.}
 saying that the qualification was assigned to the Worker. Note: this is
 true by default.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 The
 \code{\link[=mturk_associate_qualification_with_worker]{associate_qualification_with_worker}}

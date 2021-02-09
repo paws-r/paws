@@ -14,6 +14,10 @@ applicationdiscoveryservice_update_application(configurationId, name,
 
 \item{description}{New description of the application to be updated.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates metadata about an application.
 }

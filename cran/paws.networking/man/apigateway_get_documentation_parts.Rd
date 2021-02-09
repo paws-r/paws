@@ -25,6 +25,25 @@ and the maximum value is 500.}
 \code{DOCUMENTED} for retrieving DocumentationPart resources with content and
 \code{UNDOCUMENTED} for DocumentationPart resources without content.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  position = "string",
+  items = list(
+    list(
+      id = "string",
+      location = list(
+        type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
+        path = "string",
+        method = "string",
+        statusCode = "string",
+        name = "string"
+      ),
+      properties = "string"
+    )
+  )
+)
+}
+}
 \description{
 Get documentation parts
 }

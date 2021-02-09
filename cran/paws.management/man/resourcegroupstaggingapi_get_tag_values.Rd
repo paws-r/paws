@@ -16,6 +16,15 @@ additional page of data.}
 \item{Key}{[required] The key for which you want to list all existing values in the specified
 Region for the AWS account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PaginationToken = "string",
+  TagValues = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns all tag values for the specified key in the specified Region for
 the AWS account.

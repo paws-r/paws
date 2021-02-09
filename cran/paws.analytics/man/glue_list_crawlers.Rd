@@ -14,6 +14,15 @@ glue_list_crawlers(MaxResults, NextToken, Tags)
 
 \item{Tags}{Specifies to return only these tagged resources.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CrawlerNames = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the names of all crawler resources in this AWS account, or the
 resources with the specified tag. This operation allows you to see which

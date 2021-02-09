@@ -13,6 +13,10 @@ access control groups, and connection aliases.}
 
 \item{Tags}{[required] The tags. Each WorkSpaces resource can have a maximum of 50 tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates the specified tags for the specified WorkSpaces resource.
 }

@@ -21,6 +21,12 @@ Region.}
 
 \item{Tags}{A list of tags to apply to the context.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContextArn = "string"
+)
+}
+}
 \description{
 Creates a \emph{context}. A context is a lineage tracking entity that
 represents a logical grouping of other tracking or experiment entities.

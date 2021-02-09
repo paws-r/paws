@@ -24,6 +24,19 @@ opsItem.}
 \item{RemoveSNSTopic}{Disassociates the SNS topic from the opsItem created for detected
 problems.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationInfo = list(
+    ResourceGroupName = "string",
+    LifeCycle = "string",
+    OpsItemSNSTopicArn = "string",
+    OpsCenterEnabled = TRUE|FALSE,
+    CWEMonitorEnabled = TRUE|FALSE,
+    Remarks = "string"
+  )
+)
+}
+}
 \description{
 Updates the application.
 }

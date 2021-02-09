@@ -17,6 +17,10 @@ operation to get this value.}
 
 \item{ApplicationUpdate}{[required] Describes application updates.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications. Version 2 of the API supports

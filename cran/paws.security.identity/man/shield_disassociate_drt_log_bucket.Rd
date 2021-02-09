@@ -10,6 +10,10 @@ shield_disassociate_drt_log_bucket(LogBucket)
 \arguments{
 \item{LogBucket}{[required] The Amazon S3 bucket that contains your AWS WAF logs.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the DDoS Response Team's (DRT) access to the specified Amazon S3
 bucket containing your AWS WAF logs.

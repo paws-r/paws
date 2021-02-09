@@ -15,6 +15,10 @@ servers in the application while deleting the application.}
 \item{forceTerminateApp}{Indicates whether to terminate the stack corresponding to the
 application while deleting the application.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified application. Optionally deletes the launched stack
 associated with the application and all AWS SMS replication jobs for

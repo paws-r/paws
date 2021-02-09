@@ -18,6 +18,29 @@ where the typed link resides. For more information, see arns or \href{https://do
 \item{ConsistencyLevel}{The consistency level at which to retrieve the attributes on a typed
 link.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    list(
+      Key = list(
+        SchemaArn = "string",
+        FacetName = "string",
+        Name = "string"
+      ),
+      Value = list(
+        StringValue = "string",
+        BinaryValue = raw,
+        BooleanValue = TRUE|FALSE,
+        NumberValue = "string",
+        DatetimeValue = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves attributes that are associated with a typed link.
 }

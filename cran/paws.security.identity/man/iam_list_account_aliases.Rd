@@ -23,6 +23,16 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccountAliases = list(
+    "string"
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
+}
 \description{
 Lists the account alias associated with the AWS account (Note: you can
 have only one). For information about using an AWS account alias, see

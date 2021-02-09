@@ -14,6 +14,8 @@ NULL
 #'
 #' @param JobId &#91;required&#93; The unique identifier for a job.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_job(
@@ -50,7 +52,7 @@ dataexchange_cancel_job <- function(JobId) {
 #' dataexchange_create_data_set(AssetType, Description, Name, Tags)
 #'
 #' @param AssetType &#91;required&#93; The type of file your data is stored in. Currently, the supported asset
-#' type is S3\\_SNAPSHOT.
+#' type is S3_SNAPSHOT.
 #' @param Description &#91;required&#93; A description for the data set. This value can be up to 16,348
 #' characters long.
 #' @param Name &#91;required&#93; The name of the data set.
@@ -59,6 +61,32 @@ dataexchange_cancel_job <- function(JobId) {
 #' both of which you define. When you use tagging, you can also use
 #' tag-based access control in IAM policies to control access to these data
 #' sets and revisions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   AssetType = "S3_SNAPSHOT",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Origin = "OWNED"|"ENTITLED",
+#'   OriginDetails = list(
+#'     ProductId = "string"
+#'   ),
+#'   SourceId = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -102,6 +130,90 @@ dataexchange_create_data_set <- function(AssetType, Description, Name, Tags = NU
 #'
 #' @param Details &#91;required&#93; The details for the CreateJob request.
 #' @param Type &#91;required&#93; The type of job to be created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Details = list(
+#'     ExportAssetToSignedUrl = list(
+#'       AssetId = "string",
+#'       DataSetId = "string",
+#'       RevisionId = "string",
+#'       SignedUrl = "string",
+#'       SignedUrlExpiresAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     ExportAssetsToS3 = list(
+#'       AssetDestinations = list(
+#'         list(
+#'           AssetId = "string",
+#'           Bucket = "string",
+#'           Key = "string"
+#'         )
+#'       ),
+#'       DataSetId = "string",
+#'       Encryption = list(
+#'         KmsKeyArn = "string",
+#'         Type = "aws:kms"|"AES256"
+#'       ),
+#'       RevisionId = "string"
+#'     ),
+#'     ImportAssetFromSignedUrl = list(
+#'       AssetName = "string",
+#'       DataSetId = "string",
+#'       Md5Hash = "string",
+#'       RevisionId = "string",
+#'       SignedUrl = "string",
+#'       SignedUrlExpiresAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     ImportAssetsFromS3 = list(
+#'       AssetSources = list(
+#'         list(
+#'           Bucket = "string",
+#'           Key = "string"
+#'         )
+#'       ),
+#'       DataSetId = "string",
+#'       RevisionId = "string"
+#'     )
+#'   ),
+#'   Errors = list(
+#'     list(
+#'       Code = "ACCESS_DENIED_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"MALWARE_DETECTED"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"VALIDATION_EXCEPTION"|"MALWARE_SCAN_ENCRYPTED_FILE",
+#'       Details = list(
+#'         ImportAssetFromSignedUrlJobErrorDetails = list(
+#'           AssetName = "string"
+#'         ),
+#'         ImportAssetsFromS3JobErrorDetails = list(
+#'           list(
+#'             Bucket = "string",
+#'             Key = "string"
+#'           )
+#'         )
+#'       ),
+#'       LimitName = "Assets per revision"|"Asset size in GB",
+#'       LimitValue = 123.0,
+#'       Message = "string",
+#'       ResourceId = "string",
+#'       ResourceType = "REVISION"|"ASSET"
+#'     )
+#'   ),
+#'   Id = "string",
+#'   State = "WAITING"|"IN_PROGRESS"|"ERROR"|"COMPLETED"|"CANCELLED"|"TIMED_OUT",
+#'   Type = "IMPORT_ASSETS_FROM_S3"|"IMPORT_ASSET_FROM_SIGNED_URL"|"EXPORT_ASSETS_TO_S3"|"EXPORT_ASSET_TO_SIGNED_URL",
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -184,6 +296,28 @@ dataexchange_create_job <- function(Details, Type) {
 #' tag-based access control in IAM policies to control access to these data
 #' sets and revisions.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Comment = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DataSetId = "string",
+#'   Finalized = TRUE|FALSE,
+#'   Id = "string",
+#'   SourceId = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_revision(
@@ -227,6 +361,8 @@ dataexchange_create_revision <- function(Comment = NULL, DataSetId, Tags = NULL)
 #' @param DataSetId &#91;required&#93; The unique identifier for a data set.
 #' @param RevisionId &#91;required&#93; The unique identifier for a revision.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_asset(
@@ -266,6 +402,8 @@ dataexchange_delete_asset <- function(AssetId, DataSetId, RevisionId) {
 #'
 #' @param DataSetId &#91;required&#93; The unique identifier for a data set.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_data_set(
@@ -303,6 +441,8 @@ dataexchange_delete_data_set <- function(DataSetId) {
 #'
 #' @param DataSetId &#91;required&#93; The unique identifier for a data set.
 #' @param RevisionId &#91;required&#93; The unique identifier for a revision.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -344,6 +484,31 @@ dataexchange_delete_revision <- function(DataSetId, RevisionId) {
 #' @param DataSetId &#91;required&#93; The unique identifier for a data set.
 #' @param RevisionId &#91;required&#93; The unique identifier for a revision.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   AssetDetails = list(
+#'     S3SnapshotAsset = list(
+#'       Size = 123.0
+#'     )
+#'   ),
+#'   AssetType = "S3_SNAPSHOT",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DataSetId = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   RevisionId = "string",
+#'   SourceId = "string",
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_asset(
@@ -383,6 +548,32 @@ dataexchange_get_asset <- function(AssetId, DataSetId, RevisionId) {
 #'
 #' @param DataSetId &#91;required&#93; The unique identifier for a data set.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   AssetType = "S3_SNAPSHOT",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Origin = "OWNED"|"ENTITLED",
+#'   OriginDetails = list(
+#'     ProductId = "string"
+#'   ),
+#'   SourceId = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_data_set(
@@ -419,6 +610,90 @@ dataexchange_get_data_set <- function(DataSetId) {
 #' dataexchange_get_job(JobId)
 #'
 #' @param JobId &#91;required&#93; The unique identifier for a job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Details = list(
+#'     ExportAssetToSignedUrl = list(
+#'       AssetId = "string",
+#'       DataSetId = "string",
+#'       RevisionId = "string",
+#'       SignedUrl = "string",
+#'       SignedUrlExpiresAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     ExportAssetsToS3 = list(
+#'       AssetDestinations = list(
+#'         list(
+#'           AssetId = "string",
+#'           Bucket = "string",
+#'           Key = "string"
+#'         )
+#'       ),
+#'       DataSetId = "string",
+#'       Encryption = list(
+#'         KmsKeyArn = "string",
+#'         Type = "aws:kms"|"AES256"
+#'       ),
+#'       RevisionId = "string"
+#'     ),
+#'     ImportAssetFromSignedUrl = list(
+#'       AssetName = "string",
+#'       DataSetId = "string",
+#'       Md5Hash = "string",
+#'       RevisionId = "string",
+#'       SignedUrl = "string",
+#'       SignedUrlExpiresAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     ImportAssetsFromS3 = list(
+#'       AssetSources = list(
+#'         list(
+#'           Bucket = "string",
+#'           Key = "string"
+#'         )
+#'       ),
+#'       DataSetId = "string",
+#'       RevisionId = "string"
+#'     )
+#'   ),
+#'   Errors = list(
+#'     list(
+#'       Code = "ACCESS_DENIED_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"MALWARE_DETECTED"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"VALIDATION_EXCEPTION"|"MALWARE_SCAN_ENCRYPTED_FILE",
+#'       Details = list(
+#'         ImportAssetFromSignedUrlJobErrorDetails = list(
+#'           AssetName = "string"
+#'         ),
+#'         ImportAssetsFromS3JobErrorDetails = list(
+#'           list(
+#'             Bucket = "string",
+#'             Key = "string"
+#'           )
+#'         )
+#'       ),
+#'       LimitName = "Assets per revision"|"Asset size in GB",
+#'       LimitValue = 123.0,
+#'       Message = "string",
+#'       ResourceId = "string",
+#'       ResourceType = "REVISION"|"ASSET"
+#'     )
+#'   ),
+#'   Id = "string",
+#'   State = "WAITING"|"IN_PROGRESS"|"ERROR"|"COMPLETED"|"CANCELLED"|"TIMED_OUT",
+#'   Type = "IMPORT_ASSETS_FROM_S3"|"IMPORT_ASSET_FROM_SIGNED_URL"|"EXPORT_ASSETS_TO_S3"|"EXPORT_ASSET_TO_SIGNED_URL",
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -457,6 +732,28 @@ dataexchange_get_job <- function(JobId) {
 #'
 #' @param DataSetId &#91;required&#93; The unique identifier for a data set.
 #' @param RevisionId &#91;required&#93; The unique identifier for a revision.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Comment = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DataSetId = "string",
+#'   Finalized = TRUE|FALSE,
+#'   Id = "string",
+#'   SourceId = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -500,6 +797,30 @@ dataexchange_get_revision <- function(DataSetId, RevisionId) {
 #' @param MaxResults The maximum number of results returned by a single call.
 #' @param NextToken The token value retrieved from a previous call to access the next page
 #' of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Revisions = list(
+#'     list(
+#'       Arn = "string",
+#'       Comment = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DataSetId = "string",
+#'       Finalized = TRUE|FALSE,
+#'       Id = "string",
+#'       SourceId = "string",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -547,6 +868,34 @@ dataexchange_list_data_set_revisions <- function(DataSetId, MaxResults = NULL, N
 #' @param Origin A property that defines the data set as OWNED by the account (for
 #' providers) or ENTITLED to the account (for subscribers).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataSets = list(
+#'     list(
+#'       Arn = "string",
+#'       AssetType = "S3_SNAPSHOT",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       Id = "string",
+#'       Name = "string",
+#'       Origin = "OWNED"|"ENTITLED",
+#'       OriginDetails = list(
+#'         ProductId = "string"
+#'       ),
+#'       SourceId = "string",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_data_sets(
@@ -589,6 +938,95 @@ dataexchange_list_data_sets <- function(MaxResults = NULL, NextToken = NULL, Ori
 #' @param NextToken The token value retrieved from a previous call to access the next page
 #' of results.
 #' @param RevisionId The unique identifier for a revision.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Jobs = list(
+#'     list(
+#'       Arn = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Details = list(
+#'         ExportAssetToSignedUrl = list(
+#'           AssetId = "string",
+#'           DataSetId = "string",
+#'           RevisionId = "string",
+#'           SignedUrl = "string",
+#'           SignedUrlExpiresAt = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         ),
+#'         ExportAssetsToS3 = list(
+#'           AssetDestinations = list(
+#'             list(
+#'               AssetId = "string",
+#'               Bucket = "string",
+#'               Key = "string"
+#'             )
+#'           ),
+#'           DataSetId = "string",
+#'           Encryption = list(
+#'             KmsKeyArn = "string",
+#'             Type = "aws:kms"|"AES256"
+#'           ),
+#'           RevisionId = "string"
+#'         ),
+#'         ImportAssetFromSignedUrl = list(
+#'           AssetName = "string",
+#'           DataSetId = "string",
+#'           Md5Hash = "string",
+#'           RevisionId = "string",
+#'           SignedUrl = "string",
+#'           SignedUrlExpiresAt = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         ),
+#'         ImportAssetsFromS3 = list(
+#'           AssetSources = list(
+#'             list(
+#'               Bucket = "string",
+#'               Key = "string"
+#'             )
+#'           ),
+#'           DataSetId = "string",
+#'           RevisionId = "string"
+#'         )
+#'       ),
+#'       Errors = list(
+#'         list(
+#'           Code = "ACCESS_DENIED_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"MALWARE_DETECTED"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"VALIDATION_EXCEPTION"|"MALWARE_SCAN_ENCRYPTED_FILE",
+#'           Details = list(
+#'             ImportAssetFromSignedUrlJobErrorDetails = list(
+#'               AssetName = "string"
+#'             ),
+#'             ImportAssetsFromS3JobErrorDetails = list(
+#'               list(
+#'                 Bucket = "string",
+#'                 Key = "string"
+#'               )
+#'             )
+#'           ),
+#'           LimitName = "Assets per revision"|"Asset size in GB",
+#'           LimitValue = 123.0,
+#'           Message = "string",
+#'           ResourceId = "string",
+#'           ResourceType = "REVISION"|"ASSET"
+#'         )
+#'       ),
+#'       Id = "string",
+#'       State = "WAITING"|"IN_PROGRESS"|"ERROR"|"COMPLETED"|"CANCELLED"|"TIMED_OUT",
+#'       Type = "IMPORT_ASSETS_FROM_S3"|"IMPORT_ASSET_FROM_SIGNED_URL"|"EXPORT_ASSETS_TO_S3"|"EXPORT_ASSET_TO_SIGNED_URL",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -637,6 +1075,36 @@ dataexchange_list_jobs <- function(DataSetId = NULL, MaxResults = NULL, NextToke
 #' of results.
 #' @param RevisionId &#91;required&#93; The unique identifier for a revision.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Assets = list(
+#'     list(
+#'       Arn = "string",
+#'       AssetDetails = list(
+#'         S3SnapshotAsset = list(
+#'           Size = 123.0
+#'         )
+#'       ),
+#'       AssetType = "S3_SNAPSHOT",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DataSetId = "string",
+#'       Id = "string",
+#'       Name = "string",
+#'       RevisionId = "string",
+#'       SourceId = "string",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_revision_assets(
@@ -677,6 +1145,16 @@ dataexchange_list_revision_assets <- function(DataSetId, MaxResults = NULL, Next
 #'
 #' @param ResourceArn &#91;required&#93; An Amazon Resource Name (ARN) that uniquely identifies an AWS resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -713,6 +1191,12 @@ dataexchange_list_tags_for_resource <- function(ResourceArn) {
 #' dataexchange_start_job(JobId)
 #'
 #' @param JobId &#91;required&#93; The unique identifier for a job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -751,6 +1235,8 @@ dataexchange_start_job <- function(JobId) {
 #'
 #' @param ResourceArn &#91;required&#93; An Amazon Resource Name (ARN) that uniquely identifies an AWS resource.
 #' @param Tags &#91;required&#93; A label that consists of a customer-defined key and an optional value.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -792,6 +1278,8 @@ dataexchange_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @param ResourceArn &#91;required&#93; An Amazon Resource Name (ARN) that uniquely identifies an AWS resource.
 #' @param TagKeys &#91;required&#93; The key tags.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -838,6 +1326,31 @@ dataexchange_untag_resource <- function(ResourceArn, TagKeys) {
 #' is used as default target S3 object key.
 #' @param RevisionId &#91;required&#93; The unique identifier for a revision.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   AssetDetails = list(
+#'     S3SnapshotAsset = list(
+#'       Size = 123.0
+#'     )
+#'   ),
+#'   AssetType = "S3_SNAPSHOT",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DataSetId = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   RevisionId = "string",
+#'   SourceId = "string",
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_asset(
@@ -879,6 +1392,29 @@ dataexchange_update_asset <- function(AssetId, DataSetId, Name, RevisionId) {
 #' @param DataSetId &#91;required&#93; The unique identifier for a data set.
 #' @param Description The description for the data set.
 #' @param Name The name of the data set.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   AssetType = "S3_SNAPSHOT",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Origin = "OWNED"|"ENTITLED",
+#'   OriginDetails = list(
+#'     ProductId = "string"
+#'   ),
+#'   SourceId = "string",
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -923,6 +1459,25 @@ dataexchange_update_data_set <- function(DataSetId, Description = NULL, Name = N
 #' assets in the revision are complete. After it's in this read-only state,
 #' you can publish the revision to your products.
 #' @param RevisionId &#91;required&#93; The unique identifier for a revision.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Comment = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DataSetId = "string",
+#'   Finalized = TRUE|FALSE,
+#'   Id = "string",
+#'   SourceId = "string",
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

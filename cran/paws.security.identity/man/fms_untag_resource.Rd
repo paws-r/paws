@@ -13,6 +13,10 @@ applications lists, and protocols lists.}
 
 \item{TagKeys}{[required] The keys of the tags to remove from the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes one or more tags from an AWS resource.
 }

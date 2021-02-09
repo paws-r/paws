@@ -16,6 +16,10 @@ compatibility, this name is entirely lowercase.}
 \item{Name}{[required] The name of the table to be deleted. For Hive compatibility, this name
 is entirely lowercase.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes a table definition from the Data Catalog.
 

@@ -20,6 +20,14 @@ specified, image tags can be overwritten. If \code{IMMUTABLE} is specified,
 all image tags within the repository will be immutable which will
 prevent them from being overwritten.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  repositoryName = "string",
+  imageTagMutability = "MUTABLE"|"IMMUTABLE"
+)
+}
+}
 \description{
 Updates the image tag mutability settings for the specified repository.
 For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html}{Image Tag Mutability}

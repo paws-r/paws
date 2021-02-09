@@ -11,6 +11,10 @@ kinesisanalytics_tag_resource(ResourceARN, Tags)
 
 \item{Tags}{[required] The key-value tags to assign to the application.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds one or more key-value tags to a Kinesis Analytics application. Note
 that the maximum number of application tags includes system tags. The

@@ -13,6 +13,35 @@ the same as the campaign identifier that Amazon Pinpoint assigns to
 campaigns that you create and manage by using the Amazon Pinpoint API or
 the Amazon Pinpoint console.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DomainDeliverabilityCampaign = list(
+    CampaignId = "string",
+    ImageUrl = "string",
+    Subject = "string",
+    FromAddress = "string",
+    SendingIps = list(
+      "string"
+    ),
+    FirstSeenDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastSeenDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    InboxCount = 123,
+    SpamCount = 123,
+    ReadRate = 123.0,
+    DeleteRate = 123.0,
+    ReadDeleteRate = 123.0,
+    ProjectedVolume = 123,
+    Esps = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieve all the deliverability data for a specific campaign. This data
 is available for a campaign only if the campaign sent email by using a

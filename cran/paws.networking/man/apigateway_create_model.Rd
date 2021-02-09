@@ -16,9 +16,19 @@ created.}
 \item{description}{The description of the model.}
 
 \item{schema}{The schema for the model. For \code{application/json} models, this should be
-JSON schema draft 4 model.}
+\href{https://tools.ietf.org/html/draft-zyp-json-schema-04}{JSON schema draft 4} model.}
 
 \item{contentType}{[required] [Required] The content-type for the model.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  description = "string",
+  schema = "string",
+  contentType = "string"
+)
+}
 }
 \description{
 Adds a new Model resource to an existing RestApi resource.

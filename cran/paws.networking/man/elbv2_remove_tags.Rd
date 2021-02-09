@@ -12,6 +12,10 @@ elbv2_remove_tags(ResourceArns, TagKeys)
 
 \item{TagKeys}{[required] The tag keys for the tags to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the specified tags from the specified Elastic Load Balancing
 resources. You can remove the tags for one or more Application Load
@@ -36,7 +40,7 @@ groups, listeners, or rules.
 # balancer.
 svc$remove_tags(
   ResourceArns = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/5..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-bal..."
   ),
   TagKeys = list(
     "project",

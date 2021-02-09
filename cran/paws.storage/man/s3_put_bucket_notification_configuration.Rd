@@ -18,7 +18,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Enables notifications of specified events for a bucket. For more
-information about event notifications, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html}{Configuring Event Notifications}.
+information about event notifications, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html}{Configuring Event Notifications}.
 
 Using this API, you can replace an existing notification configuration.
 The configuration is an XML file that defines the event types that you
@@ -43,7 +43,7 @@ Simple Notification Service (Amazon SNS) or Amazon Simple Queue Service
 permission to publish to it by sending a test notification. In the case
 of AWS Lambda destinations, Amazon S3 verifies that the Lambda function
 permissions grant Amazon S3 permission to invoke the function from the
-Amazon S3 bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html}{Configuring Notifications for Amazon S3 Events}.
+Amazon S3 bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html}{Configuring Notifications for Amazon S3 Events}.
 
 You can disable notifications by adding the empty
 NotificationConfiguration element.

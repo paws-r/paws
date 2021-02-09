@@ -17,6 +17,62 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{50} and the maximum value is \code{100}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LaunchConfigurations = list(
+    list(
+      LaunchConfigurationName = "string",
+      LaunchConfigurationARN = "string",
+      ImageId = "string",
+      KeyName = "string",
+      SecurityGroups = list(
+        "string"
+      ),
+      ClassicLinkVPCId = "string",
+      ClassicLinkVPCSecurityGroups = list(
+        "string"
+      ),
+      UserData = "string",
+      InstanceType = "string",
+      KernelId = "string",
+      RamdiskId = "string",
+      BlockDeviceMappings = list(
+        list(
+          VirtualName = "string",
+          DeviceName = "string",
+          Ebs = list(
+            SnapshotId = "string",
+            VolumeSize = 123,
+            VolumeType = "string",
+            DeleteOnTermination = TRUE|FALSE,
+            Iops = 123,
+            Encrypted = TRUE|FALSE
+          ),
+          NoDevice = TRUE|FALSE
+        )
+      ),
+      InstanceMonitoring = list(
+        Enabled = TRUE|FALSE
+      ),
+      SpotPrice = "string",
+      IamInstanceProfile = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EbsOptimized = TRUE|FALSE,
+      AssociatePublicIpAddress = TRUE|FALSE,
+      PlacementTenancy = "string",
+      MetadataOptions = list(
+        HttpTokens = "optional"|"required",
+        HttpPutResponseHopLimit = 123,
+        HttpEndpoint = "disabled"|"enabled"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more launch configurations.
 }

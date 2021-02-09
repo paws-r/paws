@@ -10,6 +10,10 @@ iot_delete_custom_metric(metricName)
 \arguments{
 \item{metricName}{[required] The name of the custom metric.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Before you can delete a custom metric, you must first remove the custom
 metric from all security profiles it's a part of. The security profile

@@ -114,6 +114,12 @@ can publish email sending events.}
 \item{ConfigurationSetName}{The name of the configuration set to use when you send an email using
 \code{\link[=ses_send_raw_email]{send_raw_email}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MessageId = "string"
+)
+}
+}
 \description{
 Composes an email message and immediately queues it for sending.
 
@@ -225,7 +231,7 @@ svc$send_raw_email(
   Destinations = list(),
   FromArn = "",
   RawMessage = list(
-    Data = "From: sender@example.com\\\\nTo: recipient@example.com\\\\nSubject: Test email (cont..."
+    Data = "From: sender@example.com\\\\nTo: recipient@example.com\\\\nSubject: Test emai..."
   ),
   ReturnPathArn = "",
   Source = "",

@@ -17,6 +17,10 @@ alexaforbusiness_update_gateway(GatewayArn, Name, Description,
 \item{SoftwareVersion}{The updated software version of the gateway. The gateway automatically
 updates its software version during normal operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the details of a gateway. If any optional field is not provided,
 the existing corresponding value is left unmodified.

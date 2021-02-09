@@ -19,6 +19,40 @@ results.}
 
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StorageConfigs = list(
+    list(
+      AssociationId = "string",
+      StorageType = "S3"|"KINESIS_VIDEO_STREAM"|"KINESIS_STREAM"|"KINESIS_FIREHOSE",
+      S3Config = list(
+        BucketName = "string",
+        BucketPrefix = "string",
+        EncryptionConfig = list(
+          EncryptionType = "KMS",
+          KeyId = "string"
+        )
+      ),
+      KinesisVideoStreamConfig = list(
+        Prefix = "string",
+        RetentionPeriodHours = 123,
+        EncryptionConfig = list(
+          EncryptionType = "KMS",
+          KeyId = "string"
+        )
+      ),
+      KinesisStreamConfig = list(
+        StreamArn = "string"
+      ),
+      KinesisFirehoseConfig = list(
+        FirehoseArn = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

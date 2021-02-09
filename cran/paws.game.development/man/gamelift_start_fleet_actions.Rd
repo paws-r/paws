@@ -12,6 +12,10 @@ the fleet ID or ARN value.}
 
 \item{Actions}{[required] List of actions to restart on the fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Resumes activity on a fleet that was suspended with
 \code{\link[=gamelift_stop_fleet_actions]{stop_fleet_actions}}. Currently, this

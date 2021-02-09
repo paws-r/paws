@@ -15,6 +15,12 @@ mobile_export_bundle(bundleId, projectId, platform)
 
 \item{platform}{Developer desktop or target application platform.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  downloadUrl = "string"
+)
+}
+}
 \description{
 Generates customized software development kit (SDK) and or tool packages
 used to integrate mobile web or mobile app clients with backend AWS

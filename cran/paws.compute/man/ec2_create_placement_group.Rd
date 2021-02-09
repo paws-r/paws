@@ -25,6 +25,24 @@ Constraints: Up to 255 ASCII characters}
 
 \item{TagSpecifications}{The tags to apply to the new placement group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PlacementGroup = list(
+    GroupName = "string",
+    State = "pending"|"available"|"deleting"|"deleted",
+    Strategy = "cluster"|"spread"|"partition",
+    PartitionCount = 123,
+    GroupId = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a placement group in which to launch instances. The strategy of
 the placement group determines how the instances are organized within

@@ -20,6 +20,35 @@ expiration date or not. If parameter isn't provided,
 
 \item{maxResults}{The maximum number of results to return at one time. The default is 25.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  suppressions = list(
+    list(
+      checkName = "string",
+      resourceIdentifier = list(
+        deviceCertificateId = "string",
+        caCertificateId = "string",
+        cognitoIdentityPoolId = "string",
+        clientId = "string",
+        policyVersionIdentifier = list(
+          policyName = "string",
+          policyVersionId = "string"
+        ),
+        account = "string",
+        iamRoleArn = "string",
+        roleAliasArn = "string"
+      ),
+      expirationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      suppressIndefinitely = TRUE|FALSE,
+      description = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists your Device Defender audit listings.
 }

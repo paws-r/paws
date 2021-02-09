@@ -27,6 +27,12 @@ and 6 Saturday.}
 as an ordinal number from 1 to 28, where 1 represents the first day of
 the month and 28 represents the last day of the month.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Updates a gateway's weekly maintenance start time information, including
 day and time of the week. The maintenance time is the time in your

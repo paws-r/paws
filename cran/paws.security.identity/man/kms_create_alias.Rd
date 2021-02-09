@@ -11,7 +11,7 @@ kms_create_alias(AliasName, TargetKeyId)
 by a name, such as \code{alias/ExampleAlias}.
 
 The \code{AliasName} value must be string of 1-256 characters. It can contain
-only alphanumeric characters, forward slashes (/), underscores (\\_), and
+only alphanumeric characters, forward slashes (/), underscores (_), and
 dashes (-). The alias name cannot begin with \verb{alias/aws/}. The
 \verb{alias/aws/} prefix is reserved for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{AWS managed CMKs}.}
 

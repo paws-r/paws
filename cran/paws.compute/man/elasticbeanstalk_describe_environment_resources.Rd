@@ -20,6 +20,50 @@ Condition: You must specify either this or an EnvironmentId, or both. If
 you do not specify either, AWS Elastic Beanstalk returns
 \code{MissingRequiredParameter} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EnvironmentResources = list(
+    EnvironmentName = "string",
+    AutoScalingGroups = list(
+      list(
+        Name = "string"
+      )
+    ),
+    Instances = list(
+      list(
+        Id = "string"
+      )
+    ),
+    LaunchConfigurations = list(
+      list(
+        Name = "string"
+      )
+    ),
+    LaunchTemplates = list(
+      list(
+        Id = "string"
+      )
+    ),
+    LoadBalancers = list(
+      list(
+        Name = "string"
+      )
+    ),
+    Triggers = list(
+      list(
+        Name = "string"
+      )
+    ),
+    Queues = list(
+      list(
+        Name = "string",
+        URL = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns AWS resources for this environment.
 }

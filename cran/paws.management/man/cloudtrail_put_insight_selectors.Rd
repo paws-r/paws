@@ -15,6 +15,17 @@ Insights selectors.}
 trail. In this release, only \code{ApiCallRateInsight} is supported as an
 insight type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrailARN = "string",
+  InsightSelectors = list(
+    list(
+      InsightType = "ApiCallRateInsight"
+    )
+  )
+)
+}
+}
 \description{
 Lets you enable Insights event logging by specifying the Insights
 selectors that you want to enable on an existing trail. You also use

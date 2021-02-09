@@ -23,6 +23,16 @@ example,
 \item{CreatorRequestId}{A unique string that identifies the request and allows failed requests
 to be retried without the risk of running the operation twice.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupVaultName = "string",
+  BackupVaultArn = "string",
+  CreationDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Creates a logical container where backups are stored. A
 \code{\link[=backup_create_backup_vault]{create_backup_vault}} request includes a

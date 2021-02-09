@@ -7,6 +7,12 @@ current AWS account}
 \usage{
 route53_get_traffic_policy_instance_count()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficPolicyInstanceCount = 123
+)
+}
+}
 \description{
 Gets the number of traffic policy instances that are associated with the
 current AWS account.

@@ -46,6 +46,53 @@ regardless of the tag value.
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FpgaImages = list(
+    list(
+      FpgaImageId = "string",
+      FpgaImageGlobalId = "string",
+      Name = "string",
+      Description = "string",
+      ShellVersion = "string",
+      PciId = list(
+        DeviceId = "string",
+        VendorId = "string",
+        SubsystemId = "string",
+        SubsystemVendorId = "string"
+      ),
+      State = list(
+        Code = "pending"|"failed"|"available"|"unavailable",
+        Message = "string"
+      ),
+      CreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      OwnerId = "string",
+      OwnerAlias = "string",
+      ProductCodes = list(
+        list(
+          ProductCodeId = "string",
+          ProductCodeType = "devpay"|"marketplace"
+        )
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      Public = TRUE|FALSE,
+      DataRetentionSupport = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the Amazon FPGA Images (AFIs) available to you. These include
 public AFIs, private AFIs that you own, and AFIs owned by other AWS

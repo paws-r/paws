@@ -12,6 +12,14 @@ elb_detach_load_balancer_from_subnets(LoadBalancerName, Subnets)
 
 \item{Subnets}{[required] The IDs of the subnets.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Subnets = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Removes the specified subnets from the set of configured subnets for the
 load balancer.

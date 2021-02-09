@@ -22,6 +22,12 @@ servicecatalog_delete_portfolio_share(AcceptLanguage, PortfolioId,
 
 \item{OrganizationNode}{The organization node to whom you are going to stop sharing.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PortfolioShareToken = "string"
+)
+}
+}
 \description{
 Stops sharing the specified portfolio with the specified account or
 organization node. Shares to an organization node can only be deleted by

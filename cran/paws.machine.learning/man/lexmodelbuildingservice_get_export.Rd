@@ -16,6 +16,18 @@ lexmodelbuildingservice_get_export(name, version, resourceType,
 
 \item{exportType}{[required] The format of the exported data.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  name = "string",
+  version = "string",
+  resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
+  exportType = "ALEXA_SKILLS_KIT"|"LEX",
+  exportStatus = "IN_PROGRESS"|"READY"|"FAILED",
+  failureReason = "string",
+  url = "string"
+)
+}
+}
 \description{
 Exports the contents of a Amazon Lex resource in a specified format.
 }

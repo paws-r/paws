@@ -26,6 +26,10 @@ Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{A
 the end of the Amazon Resource Name (ARN) assigned to the type version
 when it is registered.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes a type or type version from active use in the CloudFormation
 registry. If a type or type version is deregistered, it cannot be used

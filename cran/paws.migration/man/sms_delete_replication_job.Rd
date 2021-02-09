@@ -9,6 +9,10 @@ sms_delete_replication_job(replicationJobId)
 \arguments{
 \item{replicationJobId}{[required] The ID of the replication job.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified replication job.
 

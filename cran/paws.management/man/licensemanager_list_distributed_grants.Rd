@@ -22,6 +22,28 @@ licensemanager_list_distributed_grants(GrantArns, Filters, NextToken,
 
 \item{MaxResults}{Maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Grants = list(
+    list(
+      GrantArn = "string",
+      GrantName = "string",
+      ParentArn = "string",
+      LicenseArn = "string",
+      GranteePrincipalArn = "string",
+      HomeRegion = "string",
+      GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+      StatusReason = "string",
+      Version = "string",
+      GrantedOperations = list(
+        "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the grants distributed for the specified license.
 }

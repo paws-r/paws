@@ -15,6 +15,12 @@ Supplying an IAM role is only valid when also specifying a KMS key.}
 \item{kmsKeyArn}{The Amazon Resource Name (ARN) of a KMS key used to encrypt the
 datasets.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  datasetGroupArn = "string"
+)
+}
+}
 \description{
 Creates an empty dataset group. A dataset group contains related
 datasets that supply data for training a model. A dataset group can
@@ -32,7 +38,7 @@ group.
 
 A dataset group can be in one of the following states:
 \itemize{
-\item CREATE PENDING > CREATE IN\\_PROGRESS > ACTIVE -or- CREATE
+\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
 FAILED
 \item DELETE PENDING
 }

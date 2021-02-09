@@ -14,6 +14,12 @@ rdsdataservice_rollback_transaction(resourceArn, secretArn,
 
 \item{transactionId}{[required] The identifier of the transaction to roll back.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  transactionStatus = "string"
+)
+}
+}
 \description{
 Performs a rollback of a transaction. Rolling back a transaction cancels
 its changes.

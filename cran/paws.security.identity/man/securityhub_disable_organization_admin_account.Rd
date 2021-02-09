@@ -9,6 +9,10 @@ securityhub_disable_organization_admin_account(AdminAccountId)
 \arguments{
 \item{AdminAccountId}{[required] The AWS account identifier of the Security Hub administrator account.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disables a Security Hub administrator account. Can only be called by the
 organization management account.

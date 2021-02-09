@@ -28,6 +28,22 @@ NULL
 #' @param InputDataConfig &#91;required&#93; Contains the data access role and the Amazon S3 prefixes to read the
 #' required input files to create a custom language model.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LanguageCode = "en-US",
+#'   BaseModelName = "NarrowBand"|"WideBand",
+#'   ModelName = "string",
+#'   InputDataConfig = list(
+#'     S3Uri = "string",
+#'     TuningDataS3Uri = "string",
+#'     DataAccessRoleArn = "string"
+#'   ),
+#'   ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_language_model(
@@ -93,11 +109,25 @@ transcribeservice_create_language_model <- function(LanguageCode, BaseModelName,
 #' `https://s3.us-east-1.amazonaws.com/AWSDOC-EXAMPLE-BUCKET/vocab.txt`
 #' 
 #' For more information about Amazon S3 object names, see [Object
-#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
+#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#object-keys)
 #' in the *Amazon S3 Developer Guide*.
 #' 
 #' For more information about custom vocabularies, see [Medical Custom
 #' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary-med).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VocabularyName = "string",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'   VocabularyState = "PENDING"|"READY"|"FAILED",
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   FailureReason = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -150,11 +180,25 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
 #' endpoint that you are calling. The general form is
 #' 
 #' For more information about S3 object names, see [Object
-#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
+#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#object-keys)
 #' in the *Amazon S3 Developer Guide*.
 #' 
 #' For more information about custom vocabularies, see [Custom
 #' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VocabularyName = "string",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'   VocabularyState = "PENDING"|"READY"|"FAILED",
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   FailureReason = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -224,6 +268,18 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' `VocabularyFilterFileUri` parameter, you can't use the `Words`
 #' parameter.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VocabularyFilterName = "string",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_vocabulary_filter(
@@ -265,6 +321,8 @@ transcribeservice_create_vocabulary_filter <- function(VocabularyFilterName, Lan
 #' transcribeservice_delete_language_model(ModelName)
 #'
 #' @param ModelName &#91;required&#93; The name of the model you're choosing to delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -308,6 +366,8 @@ transcribeservice_delete_language_model <- function(ModelName) {
 #' [`delete_medical_transcription_job`][transcribeservice_delete_medical_transcription_job]
 #' object to delete a transcription job.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_medical_transcription_job(
@@ -344,6 +404,8 @@ transcribeservice_delete_medical_transcription_job <- function(MedicalTranscript
 #' transcribeservice_delete_medical_vocabulary(VocabularyName)
 #'
 #' @param VocabularyName &#91;required&#93; The name of the vocabulary that you want to delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -384,6 +446,8 @@ transcribeservice_delete_medical_vocabulary <- function(VocabularyName) {
 #'
 #' @param TranscriptionJobName &#91;required&#93; The name of the transcription job to be deleted.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_transcription_job(
@@ -421,6 +485,8 @@ transcribeservice_delete_transcription_job <- function(TranscriptionJobName) {
 #'
 #' @param VocabularyName &#91;required&#93; The name of the vocabulary to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_vocabulary(
@@ -457,6 +523,8 @@ transcribeservice_delete_vocabulary <- function(VocabularyName) {
 #' transcribeservice_delete_vocabulary_filter(VocabularyFilterName)
 #'
 #' @param VocabularyFilterName &#91;required&#93; The name of the vocabulary filter to remove.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -502,6 +570,32 @@ transcribeservice_delete_vocabulary_filter <- function(VocabularyFilterName) {
 #' @param ModelName &#91;required&#93; The name of the custom language model you submit to get more
 #' information.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LanguageModel = list(
+#'     ModelName = "string",
+#'     CreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LanguageCode = "en-US",
+#'     BaseModelName = "NarrowBand"|"WideBand",
+#'     ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED",
+#'     UpgradeAvailability = TRUE|FALSE,
+#'     FailureReason = "string",
+#'     InputDataConfig = list(
+#'       S3Uri = "string",
+#'       TuningDataS3Uri = "string",
+#'       DataAccessRoleArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_language_model(
@@ -545,6 +639,46 @@ transcribeservice_describe_language_model <- function(ModelName) {
 #'
 #' @param MedicalTranscriptionJobName &#91;required&#93; The name of the medical transcription job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MedicalTranscriptionJob = list(
+#'     MedicalTranscriptionJobName = "string",
+#'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'     MediaSampleRateHertz = 123,
+#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
+#'     Media = list(
+#'       MediaFileUri = "string"
+#'     ),
+#'     Transcript = list(
+#'       TranscriptFileUri = "string"
+#'     ),
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CompletionTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FailureReason = "string",
+#'     Settings = list(
+#'       ShowSpeakerLabels = TRUE|FALSE,
+#'       MaxSpeakerLabels = 123,
+#'       ChannelIdentification = TRUE|FALSE,
+#'       ShowAlternatives = TRUE|FALSE,
+#'       MaxAlternatives = 123,
+#'       VocabularyName = "string"
+#'     ),
+#'     Specialty = "PRIMARYCARE",
+#'     Type = "CONVERSATION"|"DICTATION"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_medical_transcription_job(
@@ -582,6 +716,21 @@ transcribeservice_get_medical_transcription_job <- function(MedicalTranscription
 #'
 #' @param VocabularyName &#91;required&#93; The name of the vocabulary that you want information about. The value is
 #' case sensitive.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VocabularyName = "string",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'   VocabularyState = "PENDING"|"READY"|"FAILED",
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   FailureReason = "string",
+#'   DownloadUri = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -625,6 +774,63 @@ transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
 #'
 #' @param TranscriptionJobName &#91;required&#93; The name of the job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TranscriptionJob = list(
+#'     TranscriptionJobName = "string",
+#'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'     MediaSampleRateHertz = 123,
+#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
+#'     Media = list(
+#'       MediaFileUri = "string"
+#'     ),
+#'     Transcript = list(
+#'       TranscriptFileUri = "string",
+#'       RedactedTranscriptFileUri = "string"
+#'     ),
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CompletionTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FailureReason = "string",
+#'     Settings = list(
+#'       VocabularyName = "string",
+#'       ShowSpeakerLabels = TRUE|FALSE,
+#'       MaxSpeakerLabels = 123,
+#'       ChannelIdentification = TRUE|FALSE,
+#'       ShowAlternatives = TRUE|FALSE,
+#'       MaxAlternatives = 123,
+#'       VocabularyFilterName = "string",
+#'       VocabularyFilterMethod = "remove"|"mask"
+#'     ),
+#'     ModelSettings = list(
+#'       LanguageModelName = "string"
+#'     ),
+#'     JobExecutionSettings = list(
+#'       AllowDeferredExecution = TRUE|FALSE,
+#'       DataAccessRoleArn = "string"
+#'     ),
+#'     ContentRedaction = list(
+#'       RedactionType = "PII",
+#'       RedactionOutput = "redacted"|"redacted_and_unredacted"
+#'     ),
+#'     IdentifyLanguage = TRUE|FALSE,
+#'     LanguageOptions = list(
+#'       "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"
+#'     ),
+#'     IdentifiedLanguageScore = 123.0
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_transcription_job(
@@ -663,6 +869,21 @@ transcribeservice_get_transcription_job <- function(TranscriptionJobName) {
 #' @param VocabularyName &#91;required&#93; The name of the vocabulary to return information about. The name is case
 #' sensitive.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VocabularyName = "string",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'   VocabularyState = "PENDING"|"READY"|"FAILED",
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   FailureReason = "string",
+#'   DownloadUri = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_vocabulary(
@@ -699,6 +920,19 @@ transcribeservice_get_vocabulary <- function(VocabularyName) {
 #' transcribeservice_get_vocabulary_filter(VocabularyFilterName)
 #'
 #' @param VocabularyFilterName &#91;required&#93; The name of the vocabulary filter for which to return information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VocabularyFilterName = "string",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DownloadUri = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -751,6 +985,35 @@ transcribeservice_get_vocabulary_filter <- function(VocabularyFilterName) {
 #' @param MaxResults The maximum number of language models to return in the response. If
 #' there are fewer results in the list, the response contains only the
 #' actual results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Models = list(
+#'     list(
+#'       ModelName = "string",
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LanguageCode = "en-US",
+#'       BaseModelName = "NarrowBand"|"WideBand",
+#'       ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED",
+#'       UpgradeAvailability = TRUE|FALSE,
+#'       FailureReason = "string",
+#'       InputDataConfig = list(
+#'         S3Uri = "string",
+#'         TuningDataS3Uri = "string",
+#'         DataAccessRoleArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -806,6 +1069,35 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
 #' response. IF there are fewer results in the list, this response contains
 #' only the actual results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+#'   NextToken = "string",
+#'   MedicalTranscriptionJobSummaries = list(
+#'     list(
+#'       MedicalTranscriptionJobName = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CompletionTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'       TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+#'       FailureReason = "string",
+#'       OutputLocationType = "CUSTOMER_BUCKET"|"SERVICE_BUCKET",
+#'       Specialty = "PRIMARYCARE",
+#'       Type = "CONVERSATION"|"DICTATION"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_medical_transcription_jobs(
@@ -860,6 +1152,25 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
 #' [`list_medical_vocabularies`][transcribeservice_list_medical_vocabularies]
 #' returns both "`vocabularyname`" and "`VocabularyName`".
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "PENDING"|"READY"|"FAILED",
+#'   NextToken = "string",
+#'   Vocabularies = list(
+#'     list(
+#'       VocabularyName = "string",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       VocabularyState = "PENDING"|"READY"|"FAILED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_medical_vocabularies(
@@ -910,6 +1221,42 @@ transcribeservice_list_medical_vocabularies <- function(NextToken = NULL, MaxRes
 #' was truncated, include the `NextToken` to fetch the next set of jobs.
 #' @param MaxResults The maximum number of jobs to return in the response. If there are fewer
 #' results in the list, this response contains only the actual results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+#'   NextToken = "string",
+#'   TranscriptionJobSummaries = list(
+#'     list(
+#'       TranscriptionJobName = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CompletionTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'       TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+#'       FailureReason = "string",
+#'       OutputLocationType = "CUSTOMER_BUCKET"|"SERVICE_BUCKET",
+#'       ContentRedaction = list(
+#'         RedactionType = "PII",
+#'         RedactionOutput = "redacted"|"redacted_and_unredacted"
+#'       ),
+#'       ModelSettings = list(
+#'         LanguageModelName = "string"
+#'       ),
+#'       IdentifyLanguage = TRUE|FALSE,
+#'       IdentifiedLanguageScore = 123.0
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -965,6 +1312,25 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
 #' [`list_vocabularies`][transcribeservice_list_vocabularies] returns both
 #' "vocabularyname" and "VocabularyName" in the response list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "PENDING"|"READY"|"FAILED",
+#'   NextToken = "string",
+#'   Vocabularies = list(
+#'     list(
+#'       VocabularyName = "string",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       VocabularyState = "PENDING"|"READY"|"FAILED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_vocabularies(
@@ -1013,6 +1379,23 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #' results.
 #' @param NameContains Filters the response so that it only contains vocabulary filters whose
 #' name contains the specified string.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   VocabularyFilters = list(
+#'     list(
+#'       VocabularyFilterName = "string",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1141,6 +1524,46 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' conversations between two or more speakers, e.g., a conversations
 #' between doctors and patients. `DICTATION` refers to single-speaker
 #' dictated speech, e.g., for clinical notes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MedicalTranscriptionJob = list(
+#'     MedicalTranscriptionJobName = "string",
+#'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'     MediaSampleRateHertz = 123,
+#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
+#'     Media = list(
+#'       MediaFileUri = "string"
+#'     ),
+#'     Transcript = list(
+#'       TranscriptFileUri = "string"
+#'     ),
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CompletionTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FailureReason = "string",
+#'     Settings = list(
+#'       ShowSpeakerLabels = TRUE|FALSE,
+#'       MaxSpeakerLabels = 123,
+#'       ChannelIdentification = TRUE|FALSE,
+#'       ShowAlternatives = TRUE|FALSE,
+#'       MaxAlternatives = 123,
+#'       VocabularyName = "string"
+#'     ),
+#'     Specialty = "PRIMARYCARE",
+#'     Type = "CONVERSATION"|"DICTATION"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1300,6 +1723,63 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' collection of audio files. Automatic language identification chooses a
 #' language that best matches the source audio from that list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TranscriptionJob = list(
+#'     TranscriptionJobName = "string",
+#'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'     MediaSampleRateHertz = 123,
+#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
+#'     Media = list(
+#'       MediaFileUri = "string"
+#'     ),
+#'     Transcript = list(
+#'       TranscriptFileUri = "string",
+#'       RedactedTranscriptFileUri = "string"
+#'     ),
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CompletionTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FailureReason = "string",
+#'     Settings = list(
+#'       VocabularyName = "string",
+#'       ShowSpeakerLabels = TRUE|FALSE,
+#'       MaxSpeakerLabels = 123,
+#'       ChannelIdentification = TRUE|FALSE,
+#'       ShowAlternatives = TRUE|FALSE,
+#'       MaxAlternatives = 123,
+#'       VocabularyFilterName = "string",
+#'       VocabularyFilterMethod = "remove"|"mask"
+#'     ),
+#'     ModelSettings = list(
+#'       LanguageModelName = "string"
+#'     ),
+#'     JobExecutionSettings = list(
+#'       AllowDeferredExecution = TRUE|FALSE,
+#'       DataAccessRoleArn = "string"
+#'     ),
+#'     ContentRedaction = list(
+#'       RedactionType = "PII",
+#'       RedactionOutput = "redacted"|"redacted_and_unredacted"
+#'     ),
+#'     IdentifyLanguage = TRUE|FALSE,
+#'     LanguageOptions = list(
+#'       "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"
+#'     ),
+#'     IdentifiedLanguageScore = 123.0
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_transcription_job(
@@ -1392,12 +1872,25 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
 #' `https://s3.us-east-1.amazonaws.com/AWSDOC-EXAMPLE-BUCKET/vocab.txt`
 #' 
 #' For more information about Amazon S3 object names, see [Object
-#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
+#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#object-keys)
 #' in the *Amazon S3 Developer Guide*.
 #' 
 #' For more information about custom vocabularies in Amazon Transcribe
 #' Medical, see [Medical Custom
 #' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VocabularyName = "string",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   VocabularyState = "PENDING"|"READY"|"FAILED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1452,11 +1945,24 @@ transcribeservice_update_medical_vocabulary <- function(VocabularyName, Language
 #' For example:
 #' 
 #' For more information about S3 object names, see [Object
-#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
+#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#object-keys)
 #' in the *Amazon S3 Developer Guide*.
 #' 
 #' For more information about custom vocabularies, see [Custom
 #' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VocabularyName = "string",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   VocabularyState = "PENDING"|"READY"|"FAILED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1520,6 +2026,18 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' If you provide the location of a list of words in the
 #' `VocabularyFilterFileUri` parameter, you can't use the `Words`
 #' parameter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VocabularyFilterName = "string",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

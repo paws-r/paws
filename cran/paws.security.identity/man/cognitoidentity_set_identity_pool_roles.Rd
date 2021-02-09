@@ -17,7 +17,7 @@ be the Role ARN.}
 \item{RoleMappings}{How users for a specific identity provider are to mapped to roles. This
 is a string to RoleMapping object map. The string identifies the
 identity provider, for example, "graph.facebook.com" or
-"cognito-idp-east-1.amazonaws.com/us-east-1\\_abcdefghi:app\\_client\\_id".
+"cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
 
 Up to 25 rules can be specified per identity provider.}
 }

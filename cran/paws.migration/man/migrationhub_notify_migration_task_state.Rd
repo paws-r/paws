@@ -26,6 +26,10 @@ considered stale.}
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place.
 Used to test if the caller has permission to make the call.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Notifies Migration Hub of the current status, progress, or other detail
 regarding a migration task. This API has the following traits:

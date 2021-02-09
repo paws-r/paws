@@ -36,6 +36,25 @@ specified timestamp.}
 
 \item{StatusEquals}{A filter that returns only endpoints with the specified status.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Endpoints = list(
+    list(
+      EndpointName = "string",
+      EndpointArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndpointStatus = "OutOfService"|"Creating"|"Updating"|"SystemUpdating"|"RollingBack"|"InService"|"Deleting"|"Failed"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists endpoints.
 }

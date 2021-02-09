@@ -28,6 +28,24 @@ in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} o
 
 \item{IdentityType}{[required] Specifies whether the identity to fetch is a user or a group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SessionMapping = list(
+    StudioId = "string",
+    IdentityId = "string",
+    IdentityName = "string",
+    IdentityType = "USER"|"GROUP",
+    SessionPolicyArn = "string",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.

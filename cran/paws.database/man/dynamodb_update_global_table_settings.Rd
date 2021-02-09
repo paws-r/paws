@@ -35,6 +35,102 @@ that will be modified.}
 \item{ReplicaSettingsUpdate}{Represents the settings for a global table in a Region that will be
 modified.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GlobalTableName = "string",
+  ReplicaSettings = list(
+    list(
+      RegionName = "string",
+      ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+      ReplicaBillingModeSummary = list(
+        BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
+        LastUpdateToPayPerRequestDateTime = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      ReplicaProvisionedReadCapacityUnits = 123,
+      ReplicaProvisionedReadCapacityAutoScalingSettings = list(
+        MinimumUnits = 123,
+        MaximumUnits = 123,
+        AutoScalingDisabled = TRUE|FALSE,
+        AutoScalingRoleArn = "string",
+        ScalingPolicies = list(
+          list(
+            PolicyName = "string",
+            TargetTrackingScalingPolicyConfiguration = list(
+              DisableScaleIn = TRUE|FALSE,
+              ScaleInCooldown = 123,
+              ScaleOutCooldown = 123,
+              TargetValue = 123.0
+            )
+          )
+        )
+      ),
+      ReplicaProvisionedWriteCapacityUnits = 123,
+      ReplicaProvisionedWriteCapacityAutoScalingSettings = list(
+        MinimumUnits = 123,
+        MaximumUnits = 123,
+        AutoScalingDisabled = TRUE|FALSE,
+        AutoScalingRoleArn = "string",
+        ScalingPolicies = list(
+          list(
+            PolicyName = "string",
+            TargetTrackingScalingPolicyConfiguration = list(
+              DisableScaleIn = TRUE|FALSE,
+              ScaleInCooldown = 123,
+              ScaleOutCooldown = 123,
+              TargetValue = 123.0
+            )
+          )
+        )
+      ),
+      ReplicaGlobalSecondaryIndexSettings = list(
+        list(
+          IndexName = "string",
+          IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
+          ProvisionedReadCapacityUnits = 123,
+          ProvisionedReadCapacityAutoScalingSettings = list(
+            MinimumUnits = 123,
+            MaximumUnits = 123,
+            AutoScalingDisabled = TRUE|FALSE,
+            AutoScalingRoleArn = "string",
+            ScalingPolicies = list(
+              list(
+                PolicyName = "string",
+                TargetTrackingScalingPolicyConfiguration = list(
+                  DisableScaleIn = TRUE|FALSE,
+                  ScaleInCooldown = 123,
+                  ScaleOutCooldown = 123,
+                  TargetValue = 123.0
+                )
+              )
+            )
+          ),
+          ProvisionedWriteCapacityUnits = 123,
+          ProvisionedWriteCapacityAutoScalingSettings = list(
+            MinimumUnits = 123,
+            MaximumUnits = 123,
+            AutoScalingDisabled = TRUE|FALSE,
+            AutoScalingRoleArn = "string",
+            ScalingPolicies = list(
+              list(
+                PolicyName = "string",
+                TargetTrackingScalingPolicyConfiguration = list(
+                  DisableScaleIn = TRUE|FALSE,
+                  ScaleInCooldown = 123,
+                  ScaleOutCooldown = 123,
+                  TargetValue = 123.0
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Updates settings for a global table.
 }

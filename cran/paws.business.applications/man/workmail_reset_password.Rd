@@ -14,6 +14,10 @@ password is reset.}
 
 \item{Password}{[required] The new password for the user.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Allows the administrator to reset the password for a user.
 }

@@ -6,13 +6,59 @@ NULL
 #' Adds outputs to an existing flow
 #'
 #' @description
-#' Adds outputs to an existing flow. You can create up to 50 outputs per flow.
+#' Adds outputs to an existing flow. You can create up to 50 outputs per
+#' flow.
 #'
 #' @usage
 #' mediaconnect_add_flow_outputs(FlowArn, Outputs)
 #'
 #' @param FlowArn &#91;required&#93; The flow that you want to add outputs to.
 #' @param Outputs &#91;required&#93; A list of outputs that you want to add.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FlowArn = "string",
+#'   Outputs = list(
+#'     list(
+#'       DataTransferSubscriberFeePercent = 123,
+#'       Description = "string",
+#'       Destination = "string",
+#'       Encryption = list(
+#'         Algorithm = "aes128"|"aes192"|"aes256",
+#'         ConstantInitializationVector = "string",
+#'         DeviceId = "string",
+#'         KeyType = "speke"|"static-key",
+#'         Region = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SecretArn = "string",
+#'         Url = "string"
+#'       ),
+#'       EntitlementArn = "string",
+#'       MediaLiveInputArn = "string",
+#'       Name = "string",
+#'       OutputArn = "string",
+#'       Port = 123,
+#'       Transport = list(
+#'         CidrAllowList = list(
+#'           "string"
+#'         ),
+#'         MaxBitrate = 123,
+#'         MaxLatency = 123,
+#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'         RemoteId = "string",
+#'         SmoothingLatency = 123,
+#'         StreamId = "string"
+#'       ),
+#'       VpcInterfaceAttachment = list(
+#'         VpcInterfaceName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -82,6 +128,49 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #' @param FlowArn &#91;required&#93; The flow that you want to mutate.
 #' @param Sources &#91;required&#93; A list of sources that you want to add.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FlowArn = "string",
+#'   Sources = list(
+#'     list(
+#'       DataTransferSubscriberFeePercent = 123,
+#'       Decryption = list(
+#'         Algorithm = "aes128"|"aes192"|"aes256",
+#'         ConstantInitializationVector = "string",
+#'         DeviceId = "string",
+#'         KeyType = "speke"|"static-key",
+#'         Region = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SecretArn = "string",
+#'         Url = "string"
+#'       ),
+#'       Description = "string",
+#'       EntitlementArn = "string",
+#'       IngestIp = "string",
+#'       IngestPort = 123,
+#'       Name = "string",
+#'       SourceArn = "string",
+#'       Transport = list(
+#'         CidrAllowList = list(
+#'           "string"
+#'         ),
+#'         MaxBitrate = 123,
+#'         MaxLatency = 123,
+#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'         RemoteId = "string",
+#'         SmoothingLatency = 123,
+#'         StreamId = "string"
+#'       ),
+#'       VpcInterfaceName = "string",
+#'       WhitelistCidr = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_flow_sources(
@@ -145,6 +234,27 @@ mediaconnect_add_flow_sources <- function(FlowArn, Sources) {
 #' @param FlowArn &#91;required&#93; The flow that you want to mutate.
 #' @param VpcInterfaces &#91;required&#93; A list of VPC interfaces that you want to add.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FlowArn = "string",
+#'   VpcInterfaces = list(
+#'     list(
+#'       Name = "string",
+#'       NetworkInterfaceIds = list(
+#'         "string"
+#'       ),
+#'       RoleArn = "string",
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       SubnetId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_flow_vpc_interfaces(
@@ -185,13 +295,15 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #' Creates a new flow
 #'
 #' @description
-#' Creates a new flow. The request must include one source. The request optionally can include outputs (up to 50) and entitlements (up to 50).
+#' Creates a new flow. The request must include one source. The request
+#' optionally can include outputs (up to 50) and entitlements (up to 50).
 #'
 #' @usage
 #' mediaconnect_create_flow(AvailabilityZone, Entitlements, Name, Outputs,
 #'   Source, SourceFailoverConfig, Sources, VpcInterfaces)
 #'
-#' @param AvailabilityZone The Availability Zone that you want to create the flow in. These options are limited to the Availability Zones within the current AWS Region.
+#' @param AvailabilityZone The Availability Zone that you want to create the flow in. These options
+#' are limited to the Availability Zones within the current AWS Region.
 #' @param Entitlements The entitlements that you want to grant on a flow.
 #' @param Name &#91;required&#93; The name of the flow.
 #' @param Outputs The outputs that you want to add to this flow.
@@ -199,6 +311,166 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #' @param SourceFailoverConfig 
 #' @param Sources 
 #' @param VpcInterfaces The VPC interfaces you want on the flow.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Flow = list(
+#'     AvailabilityZone = "string",
+#'     Description = "string",
+#'     EgressIp = "string",
+#'     Entitlements = list(
+#'       list(
+#'         DataTransferSubscriberFeePercent = 123,
+#'         Description = "string",
+#'         Encryption = list(
+#'           Algorithm = "aes128"|"aes192"|"aes256",
+#'           ConstantInitializationVector = "string",
+#'           DeviceId = "string",
+#'           KeyType = "speke"|"static-key",
+#'           Region = "string",
+#'           ResourceId = "string",
+#'           RoleArn = "string",
+#'           SecretArn = "string",
+#'           Url = "string"
+#'         ),
+#'         EntitlementArn = "string",
+#'         EntitlementStatus = "ENABLED"|"DISABLED",
+#'         Name = "string",
+#'         Subscribers = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     FlowArn = "string",
+#'     Name = "string",
+#'     Outputs = list(
+#'       list(
+#'         DataTransferSubscriberFeePercent = 123,
+#'         Description = "string",
+#'         Destination = "string",
+#'         Encryption = list(
+#'           Algorithm = "aes128"|"aes192"|"aes256",
+#'           ConstantInitializationVector = "string",
+#'           DeviceId = "string",
+#'           KeyType = "speke"|"static-key",
+#'           Region = "string",
+#'           ResourceId = "string",
+#'           RoleArn = "string",
+#'           SecretArn = "string",
+#'           Url = "string"
+#'         ),
+#'         EntitlementArn = "string",
+#'         MediaLiveInputArn = "string",
+#'         Name = "string",
+#'         OutputArn = "string",
+#'         Port = 123,
+#'         Transport = list(
+#'           CidrAllowList = list(
+#'             "string"
+#'           ),
+#'           MaxBitrate = 123,
+#'           MaxLatency = 123,
+#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'           RemoteId = "string",
+#'           SmoothingLatency = 123,
+#'           StreamId = "string"
+#'         ),
+#'         VpcInterfaceAttachment = list(
+#'           VpcInterfaceName = "string"
+#'         )
+#'       )
+#'     ),
+#'     Source = list(
+#'       DataTransferSubscriberFeePercent = 123,
+#'       Decryption = list(
+#'         Algorithm = "aes128"|"aes192"|"aes256",
+#'         ConstantInitializationVector = "string",
+#'         DeviceId = "string",
+#'         KeyType = "speke"|"static-key",
+#'         Region = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SecretArn = "string",
+#'         Url = "string"
+#'       ),
+#'       Description = "string",
+#'       EntitlementArn = "string",
+#'       IngestIp = "string",
+#'       IngestPort = 123,
+#'       Name = "string",
+#'       SourceArn = "string",
+#'       Transport = list(
+#'         CidrAllowList = list(
+#'           "string"
+#'         ),
+#'         MaxBitrate = 123,
+#'         MaxLatency = 123,
+#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'         RemoteId = "string",
+#'         SmoothingLatency = 123,
+#'         StreamId = "string"
+#'       ),
+#'       VpcInterfaceName = "string",
+#'       WhitelistCidr = "string"
+#'     ),
+#'     SourceFailoverConfig = list(
+#'       RecoveryWindow = 123,
+#'       State = "ENABLED"|"DISABLED"
+#'     ),
+#'     Sources = list(
+#'       list(
+#'         DataTransferSubscriberFeePercent = 123,
+#'         Decryption = list(
+#'           Algorithm = "aes128"|"aes192"|"aes256",
+#'           ConstantInitializationVector = "string",
+#'           DeviceId = "string",
+#'           KeyType = "speke"|"static-key",
+#'           Region = "string",
+#'           ResourceId = "string",
+#'           RoleArn = "string",
+#'           SecretArn = "string",
+#'           Url = "string"
+#'         ),
+#'         Description = "string",
+#'         EntitlementArn = "string",
+#'         IngestIp = "string",
+#'         IngestPort = 123,
+#'         Name = "string",
+#'         SourceArn = "string",
+#'         Transport = list(
+#'           CidrAllowList = list(
+#'             "string"
+#'           ),
+#'           MaxBitrate = 123,
+#'           MaxLatency = 123,
+#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'           RemoteId = "string",
+#'           SmoothingLatency = 123,
+#'           StreamId = "string"
+#'         ),
+#'         VpcInterfaceName = "string",
+#'         WhitelistCidr = "string"
+#'       )
+#'     ),
+#'     Status = "STANDBY"|"ACTIVE"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"ERROR",
+#'     VpcInterfaces = list(
+#'       list(
+#'         Name = "string",
+#'         NetworkInterfaceIds = list(
+#'           "string"
+#'         ),
+#'         RoleArn = "string",
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         ),
+#'         SubnetId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -352,6 +624,15 @@ mediaconnect_create_flow <- function(AvailabilityZone = NULL, Entitlements = NUL
 #'
 #' @param FlowArn &#91;required&#93; The ARN of the flow that you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FlowArn = "string",
+#'   Status = "STANDBY"|"ACTIVE"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"ERROR"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_flow(
@@ -382,12 +663,179 @@ mediaconnect_delete_flow <- function(FlowArn) {
 #' Displays the details of a flow
 #'
 #' @description
-#' Displays the details of a flow. The response includes the flow ARN, name, and Availability Zone, as well as details about the source, outputs, and entitlements.
+#' Displays the details of a flow. The response includes the flow ARN,
+#' name, and Availability Zone, as well as details about the source,
+#' outputs, and entitlements.
 #'
 #' @usage
 #' mediaconnect_describe_flow(FlowArn)
 #'
 #' @param FlowArn &#91;required&#93; The ARN of the flow that you want to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Flow = list(
+#'     AvailabilityZone = "string",
+#'     Description = "string",
+#'     EgressIp = "string",
+#'     Entitlements = list(
+#'       list(
+#'         DataTransferSubscriberFeePercent = 123,
+#'         Description = "string",
+#'         Encryption = list(
+#'           Algorithm = "aes128"|"aes192"|"aes256",
+#'           ConstantInitializationVector = "string",
+#'           DeviceId = "string",
+#'           KeyType = "speke"|"static-key",
+#'           Region = "string",
+#'           ResourceId = "string",
+#'           RoleArn = "string",
+#'           SecretArn = "string",
+#'           Url = "string"
+#'         ),
+#'         EntitlementArn = "string",
+#'         EntitlementStatus = "ENABLED"|"DISABLED",
+#'         Name = "string",
+#'         Subscribers = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     FlowArn = "string",
+#'     Name = "string",
+#'     Outputs = list(
+#'       list(
+#'         DataTransferSubscriberFeePercent = 123,
+#'         Description = "string",
+#'         Destination = "string",
+#'         Encryption = list(
+#'           Algorithm = "aes128"|"aes192"|"aes256",
+#'           ConstantInitializationVector = "string",
+#'           DeviceId = "string",
+#'           KeyType = "speke"|"static-key",
+#'           Region = "string",
+#'           ResourceId = "string",
+#'           RoleArn = "string",
+#'           SecretArn = "string",
+#'           Url = "string"
+#'         ),
+#'         EntitlementArn = "string",
+#'         MediaLiveInputArn = "string",
+#'         Name = "string",
+#'         OutputArn = "string",
+#'         Port = 123,
+#'         Transport = list(
+#'           CidrAllowList = list(
+#'             "string"
+#'           ),
+#'           MaxBitrate = 123,
+#'           MaxLatency = 123,
+#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'           RemoteId = "string",
+#'           SmoothingLatency = 123,
+#'           StreamId = "string"
+#'         ),
+#'         VpcInterfaceAttachment = list(
+#'           VpcInterfaceName = "string"
+#'         )
+#'       )
+#'     ),
+#'     Source = list(
+#'       DataTransferSubscriberFeePercent = 123,
+#'       Decryption = list(
+#'         Algorithm = "aes128"|"aes192"|"aes256",
+#'         ConstantInitializationVector = "string",
+#'         DeviceId = "string",
+#'         KeyType = "speke"|"static-key",
+#'         Region = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SecretArn = "string",
+#'         Url = "string"
+#'       ),
+#'       Description = "string",
+#'       EntitlementArn = "string",
+#'       IngestIp = "string",
+#'       IngestPort = 123,
+#'       Name = "string",
+#'       SourceArn = "string",
+#'       Transport = list(
+#'         CidrAllowList = list(
+#'           "string"
+#'         ),
+#'         MaxBitrate = 123,
+#'         MaxLatency = 123,
+#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'         RemoteId = "string",
+#'         SmoothingLatency = 123,
+#'         StreamId = "string"
+#'       ),
+#'       VpcInterfaceName = "string",
+#'       WhitelistCidr = "string"
+#'     ),
+#'     SourceFailoverConfig = list(
+#'       RecoveryWindow = 123,
+#'       State = "ENABLED"|"DISABLED"
+#'     ),
+#'     Sources = list(
+#'       list(
+#'         DataTransferSubscriberFeePercent = 123,
+#'         Decryption = list(
+#'           Algorithm = "aes128"|"aes192"|"aes256",
+#'           ConstantInitializationVector = "string",
+#'           DeviceId = "string",
+#'           KeyType = "speke"|"static-key",
+#'           Region = "string",
+#'           ResourceId = "string",
+#'           RoleArn = "string",
+#'           SecretArn = "string",
+#'           Url = "string"
+#'         ),
+#'         Description = "string",
+#'         EntitlementArn = "string",
+#'         IngestIp = "string",
+#'         IngestPort = 123,
+#'         Name = "string",
+#'         SourceArn = "string",
+#'         Transport = list(
+#'           CidrAllowList = list(
+#'             "string"
+#'           ),
+#'           MaxBitrate = 123,
+#'           MaxLatency = 123,
+#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'           RemoteId = "string",
+#'           SmoothingLatency = 123,
+#'           StreamId = "string"
+#'         ),
+#'         VpcInterfaceName = "string",
+#'         WhitelistCidr = "string"
+#'       )
+#'     ),
+#'     Status = "STANDBY"|"ACTIVE"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"ERROR",
+#'     VpcInterfaces = list(
+#'       list(
+#'         Name = "string",
+#'         NetworkInterfaceIds = list(
+#'           "string"
+#'         ),
+#'         RoleArn = "string",
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         ),
+#'         SubnetId = "string"
+#'       )
+#'     )
+#'   ),
+#'   Messages = list(
+#'     Errors = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -419,12 +867,34 @@ mediaconnect_describe_flow <- function(FlowArn) {
 #' Displays the details of an offering
 #'
 #' @description
-#' Displays the details of an offering. The response includes the offering description, duration, outbound bandwidth, price, and Amazon Resource Name (ARN).
+#' Displays the details of an offering. The response includes the offering
+#' description, duration, outbound bandwidth, price, and Amazon Resource
+#' Name (ARN).
 #'
 #' @usage
 #' mediaconnect_describe_offering(OfferingArn)
 #'
 #' @param OfferingArn &#91;required&#93; The Amazon Resource Name (ARN) of the offering.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Offering = list(
+#'     CurrencyCode = "string",
+#'     Duration = 123,
+#'     DurationUnits = "MONTHS",
+#'     OfferingArn = "string",
+#'     OfferingDescription = "string",
+#'     PricePerUnit = "string",
+#'     PriceUnits = "HOURLY",
+#'     ResourceSpecification = list(
+#'       ReservedBitrate = 123,
+#'       ResourceType = "Mbps_Outbound_Bandwidth"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -456,12 +926,40 @@ mediaconnect_describe_offering <- function(OfferingArn) {
 #' Displays the details of a reservation
 #'
 #' @description
-#' Displays the details of a reservation. The response includes the reservation name, state, start date and time, and the details of the offering that make up the rest of the reservation (such as price, duration, and outbound bandwidth).
+#' Displays the details of a reservation. The response includes the
+#' reservation name, state, start date and time, and the details of the
+#' offering that make up the rest of the reservation (such as price,
+#' duration, and outbound bandwidth).
 #'
 #' @usage
 #' mediaconnect_describe_reservation(ReservationArn)
 #'
 #' @param ReservationArn &#91;required&#93; The Amazon Resource Name (ARN) of the reservation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Reservation = list(
+#'     CurrencyCode = "string",
+#'     Duration = 123,
+#'     DurationUnits = "MONTHS",
+#'     End = "string",
+#'     OfferingArn = "string",
+#'     OfferingDescription = "string",
+#'     PricePerUnit = "string",
+#'     PriceUnits = "HOURLY",
+#'     ReservationArn = "string",
+#'     ReservationName = "string",
+#'     ReservationState = "ACTIVE"|"EXPIRED"|"PROCESSING"|"CANCELED",
+#'     ResourceSpecification = list(
+#'       ReservedBitrate = 123,
+#'       ResourceType = "Mbps_Outbound_Bandwidth"
+#'     ),
+#'     Start = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -500,6 +998,37 @@ mediaconnect_describe_reservation <- function(ReservationArn) {
 #'
 #' @param Entitlements &#91;required&#93; The list of entitlements that you want to grant.
 #' @param FlowArn &#91;required&#93; The flow that you want to grant entitlements on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entitlements = list(
+#'     list(
+#'       DataTransferSubscriberFeePercent = 123,
+#'       Description = "string",
+#'       Encryption = list(
+#'         Algorithm = "aes128"|"aes192"|"aes256",
+#'         ConstantInitializationVector = "string",
+#'         DeviceId = "string",
+#'         KeyType = "speke"|"static-key",
+#'         Region = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SecretArn = "string",
+#'         Url = "string"
+#'       ),
+#'       EntitlementArn = "string",
+#'       EntitlementStatus = "ENABLED"|"DISABLED",
+#'       Name = "string",
+#'       Subscribers = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   FlowArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -554,13 +1083,40 @@ mediaconnect_grant_flow_entitlements <- function(Entitlements, FlowArn) {
 #' account
 #'
 #' @description
-#' Displays a list of all entitlements that have been granted to this account. This request returns 20 results per page.
+#' Displays a list of all entitlements that have been granted to this
+#' account. This request returns 20 results per page.
 #'
 #' @usage
 #' mediaconnect_list_entitlements(MaxResults, NextToken)
 #'
-#' @param MaxResults The maximum number of results to return per API request. For example, you submit a ListEntitlements request with MaxResults set at 5. Although 20 items match your request, the service returns no more than the first 5 items. (The service also returns a NextToken value that you can use to fetch the next batch of results.) The service might return fewer results than the MaxResults value. If MaxResults is not included in the request, the service defaults to pagination with a maximum of 20 results per page.
-#' @param NextToken The token that identifies which batch of results that you want to see. For example, you submit a ListEntitlements request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListEntitlements request a second time and specify the NextToken value.
+#' @param MaxResults The maximum number of results to return per API request. For example,
+#' you submit a ListEntitlements request with MaxResults set at 5. Although
+#' 20 items match your request, the service returns no more than the first
+#' 5 items. (The service also returns a NextToken value that you can use to
+#' fetch the next batch of results.) The service might return fewer results
+#' than the MaxResults value. If MaxResults is not included in the request,
+#' the service defaults to pagination with a maximum of 20 results per
+#' page.
+#' @param NextToken The token that identifies which batch of results that you want to see.
+#' For example, you submit a ListEntitlements request with MaxResults set
+#' at 5. The service returns the first batch of results (up to 5) and a
+#' NextToken value. To see the next batch of results, you can submit the
+#' ListEntitlements request a second time and specify the NextToken value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entitlements = list(
+#'     list(
+#'       DataTransferSubscriberFeePercent = 123,
+#'       EntitlementArn = "string",
+#'       EntitlementName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -593,13 +1149,43 @@ mediaconnect_list_entitlements <- function(MaxResults = NULL, NextToken = NULL) 
 #' Displays a list of flows that are associated with this account
 #'
 #' @description
-#' Displays a list of flows that are associated with this account. This request returns a paginated result.
+#' Displays a list of flows that are associated with this account. This
+#' request returns a paginated result.
 #'
 #' @usage
 #' mediaconnect_list_flows(MaxResults, NextToken)
 #'
-#' @param MaxResults The maximum number of results to return per API request. For example, you submit a ListFlows request with MaxResults set at 5. Although 20 items match your request, the service returns no more than the first 5 items. (The service also returns a NextToken value that you can use to fetch the next batch of results.) The service might return fewer results than the MaxResults value. If MaxResults is not included in the request, the service defaults to pagination with a maximum of 10 results per page.
-#' @param NextToken The token that identifies which batch of results that you want to see. For example, you submit a ListFlows request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListFlows request a second time and specify the NextToken value.
+#' @param MaxResults The maximum number of results to return per API request. For example,
+#' you submit a ListFlows request with MaxResults set at 5. Although 20
+#' items match your request, the service returns no more than the first 5
+#' items. (The service also returns a NextToken value that you can use to
+#' fetch the next batch of results.) The service might return fewer results
+#' than the MaxResults value. If MaxResults is not included in the request,
+#' the service defaults to pagination with a maximum of 10 results per
+#' page.
+#' @param NextToken The token that identifies which batch of results that you want to see.
+#' For example, you submit a ListFlows request with MaxResults set at 5.
+#' The service returns the first batch of results (up to 5) and a NextToken
+#' value. To see the next batch of results, you can submit the ListFlows
+#' request a second time and specify the NextToken value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Flows = list(
+#'     list(
+#'       AvailabilityZone = "string",
+#'       Description = "string",
+#'       FlowArn = "string",
+#'       Name = "string",
+#'       SourceType = "OWNED"|"ENTITLED",
+#'       Status = "STANDBY"|"ACTIVE"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"ERROR"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -633,13 +1219,50 @@ mediaconnect_list_flows <- function(MaxResults = NULL, NextToken = NULL) {
 #' the current AWS Region
 #'
 #' @description
-#' Displays a list of all offerings that are available to this account in the current AWS Region. If you have an active reservation (which means you've purchased an offering that has already started and hasn't expired yet), your account isn't eligible for other offerings.
+#' Displays a list of all offerings that are available to this account in
+#' the current AWS Region. If you have an active reservation (which means
+#' you've purchased an offering that has already started and hasn't expired
+#' yet), your account isn't eligible for other offerings.
 #'
 #' @usage
 #' mediaconnect_list_offerings(MaxResults, NextToken)
 #'
-#' @param MaxResults The maximum number of results to return per API request. For example, you submit a ListOfferings request with MaxResults set at 5. Although 20 items match your request, the service returns no more than the first 5 items. (The service also returns a NextToken value that you can use to fetch the next batch of results.) The service might return fewer results than the MaxResults value. If MaxResults is not included in the request, the service defaults to pagination with a maximum of 10 results per page.
-#' @param NextToken The token that identifies which batch of results that you want to see. For example, you submit a ListOfferings request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListOfferings request a second time and specify the NextToken value.
+#' @param MaxResults The maximum number of results to return per API request. For example,
+#' you submit a ListOfferings request with MaxResults set at 5. Although 20
+#' items match your request, the service returns no more than the first 5
+#' items. (The service also returns a NextToken value that you can use to
+#' fetch the next batch of results.) The service might return fewer results
+#' than the MaxResults value. If MaxResults is not included in the request,
+#' the service defaults to pagination with a maximum of 10 results per
+#' page.
+#' @param NextToken The token that identifies which batch of results that you want to see.
+#' For example, you submit a ListOfferings request with MaxResults set at
+#' 5. The service returns the first batch of results (up to 5) and a
+#' NextToken value. To see the next batch of results, you can submit the
+#' ListOfferings request a second time and specify the NextToken value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Offerings = list(
+#'     list(
+#'       CurrencyCode = "string",
+#'       Duration = 123,
+#'       DurationUnits = "MONTHS",
+#'       OfferingArn = "string",
+#'       OfferingDescription = "string",
+#'       PricePerUnit = "string",
+#'       PriceUnits = "HOURLY",
+#'       ResourceSpecification = list(
+#'         ReservedBitrate = 123,
+#'         ResourceType = "Mbps_Outbound_Bandwidth"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -673,13 +1296,54 @@ mediaconnect_list_offerings <- function(MaxResults = NULL, NextToken = NULL) {
 #' account in the current AWS Region
 #'
 #' @description
-#' Displays a list of all reservations that have been purchased by this account in the current AWS Region. This list includes all reservations in all states (such as active and expired).
+#' Displays a list of all reservations that have been purchased by this
+#' account in the current AWS Region. This list includes all reservations
+#' in all states (such as active and expired).
 #'
 #' @usage
 #' mediaconnect_list_reservations(MaxResults, NextToken)
 #'
-#' @param MaxResults The maximum number of results to return per API request. For example, you submit a ListReservations request with MaxResults set at 5. Although 20 items match your request, the service returns no more than the first 5 items. (The service also returns a NextToken value that you can use to fetch the next batch of results.) The service might return fewer results than the MaxResults value. If MaxResults is not included in the request, the service defaults to pagination with a maximum of 10 results per page.
-#' @param NextToken The token that identifies which batch of results that you want to see. For example, you submit a ListReservations request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListOfferings request a second time and specify the NextToken value.
+#' @param MaxResults The maximum number of results to return per API request. For example,
+#' you submit a ListReservations request with MaxResults set at 5. Although
+#' 20 items match your request, the service returns no more than the first
+#' 5 items. (The service also returns a NextToken value that you can use to
+#' fetch the next batch of results.) The service might return fewer results
+#' than the MaxResults value. If MaxResults is not included in the request,
+#' the service defaults to pagination with a maximum of 10 results per
+#' page.
+#' @param NextToken The token that identifies which batch of results that you want to see.
+#' For example, you submit a ListReservations request with MaxResults set
+#' at 5. The service returns the first batch of results (up to 5) and a
+#' NextToken value. To see the next batch of results, you can submit the
+#' ListOfferings request a second time and specify the NextToken value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Reservations = list(
+#'     list(
+#'       CurrencyCode = "string",
+#'       Duration = 123,
+#'       DurationUnits = "MONTHS",
+#'       End = "string",
+#'       OfferingArn = "string",
+#'       OfferingDescription = "string",
+#'       PricePerUnit = "string",
+#'       PriceUnits = "HOURLY",
+#'       ReservationArn = "string",
+#'       ReservationName = "string",
+#'       ReservationState = "ACTIVE"|"EXPIRED"|"PROCESSING"|"CANCELED",
+#'       ResourceSpecification = list(
+#'         ReservedBitrate = 123,
+#'         ResourceType = "Mbps_Outbound_Bandwidth"
+#'       ),
+#'       Start = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -717,7 +1381,18 @@ mediaconnect_list_reservations <- function(MaxResults = NULL, NextToken = NULL) 
 #' @usage
 #' mediaconnect_list_tags_for_resource(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource for which to list the tags.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the AWS Elemental
+#' MediaConnect resource for which to list the tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -749,14 +1424,46 @@ mediaconnect_list_tags_for_resource <- function(ResourceArn) {
 #' Submits a request to purchase an offering
 #'
 #' @description
-#' Submits a request to purchase an offering. If you already have an active reservation, you can't purchase another offering.
+#' Submits a request to purchase an offering. If you already have an active
+#' reservation, you can't purchase another offering.
 #'
 #' @usage
 #' mediaconnect_purchase_offering(OfferingArn, ReservationName, Start)
 #'
 #' @param OfferingArn &#91;required&#93; The Amazon Resource Name (ARN) of the offering.
 #' @param ReservationName &#91;required&#93; The name that you want to use for the reservation.
-#' @param Start &#91;required&#93; The date and time that you want the reservation to begin, in Coordinated Universal Time (UTC). You can specify any date and time between 12:00am on the first day of the current month to the current time on today's date, inclusive. Specify the start in a 24-hour notation. Use the following format: YYYY-MM-DDTHH:mm:SSZ, where T and Z are literal characters. For example, to specify 11:30pm on March 5, 2020, enter 2020-03-05T23:30:00Z.
+#' @param Start &#91;required&#93; The date and time that you want the reservation to begin, in Coordinated
+#' Universal Time (UTC). You can specify any date and time between 12:00am
+#' on the first day of the current month to the current time on today's
+#' date, inclusive. Specify the start in a 24-hour notation. Use the
+#' following format: YYYY-MM-DDTHH:mm:SSZ, where T and Z are literal
+#' characters. For example, to specify 11:30pm on March 5, 2020, enter
+#' 2020-03-05T23:30:00Z.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Reservation = list(
+#'     CurrencyCode = "string",
+#'     Duration = 123,
+#'     DurationUnits = "MONTHS",
+#'     End = "string",
+#'     OfferingArn = "string",
+#'     OfferingDescription = "string",
+#'     PricePerUnit = "string",
+#'     PriceUnits = "HOURLY",
+#'     ReservationArn = "string",
+#'     ReservationName = "string",
+#'     ReservationState = "ACTIVE"|"EXPIRED"|"PROCESSING"|"CANCELED",
+#'     ResourceSpecification = list(
+#'       ReservedBitrate = 123,
+#'       ResourceType = "Mbps_Outbound_Bandwidth"
+#'     ),
+#'     Start = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -790,13 +1497,26 @@ mediaconnect_purchase_offering <- function(OfferingArn, ReservationName, Start) 
 #' Removes an output from an existing flow
 #'
 #' @description
-#' Removes an output from an existing flow. This request can be made only on an output that does not have an entitlement associated with it. If the output has an entitlement, you must revoke the entitlement instead. When an entitlement is revoked from a flow, the service automatically removes the associated output.
+#' Removes an output from an existing flow. This request can be made only
+#' on an output that does not have an entitlement associated with it. If
+#' the output has an entitlement, you must revoke the entitlement instead.
+#' When an entitlement is revoked from a flow, the service automatically
+#' removes the associated output.
 #'
 #' @usage
 #' mediaconnect_remove_flow_output(FlowArn, OutputArn)
 #'
 #' @param FlowArn &#91;required&#93; The flow that you want to remove an output from.
 #' @param OutputArn &#91;required&#93; The ARN of the output that you want to remove.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FlowArn = "string",
+#'   OutputArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -829,13 +1549,23 @@ mediaconnect_remove_flow_output <- function(FlowArn, OutputArn) {
 #' Removes a source from an existing flow
 #'
 #' @description
-#' Removes a source from an existing flow. This request can be made only if there is more than one source on the flow.
+#' Removes a source from an existing flow. This request can be made only if
+#' there is more than one source on the flow.
 #'
 #' @usage
 #' mediaconnect_remove_flow_source(FlowArn, SourceArn)
 #'
 #' @param FlowArn &#91;required&#93; The flow that you want to remove a source from.
 #' @param SourceArn &#91;required&#93; The ARN of the source that you want to remove.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FlowArn = "string",
+#'   SourceArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -868,13 +1598,29 @@ mediaconnect_remove_flow_source <- function(FlowArn, SourceArn) {
 #' Removes a VPC Interface from an existing flow
 #'
 #' @description
-#' Removes a VPC Interface from an existing flow. This request can be made only on a VPC interface that does not have a Source or Output associated with it. If the VPC interface is referenced by a Source or Output, you must first delete or update the Source or Output to no longer reference the VPC interface.
+#' Removes a VPC Interface from an existing flow. This request can be made
+#' only on a VPC interface that does not have a Source or Output associated
+#' with it. If the VPC interface is referenced by a Source or Output, you
+#' must first delete or update the Source or Output to no longer reference
+#' the VPC interface.
 #'
 #' @usage
 #' mediaconnect_remove_flow_vpc_interface(FlowArn, VpcInterfaceName)
 #'
 #' @param FlowArn &#91;required&#93; The flow that you want to remove a VPC interface from.
 #' @param VpcInterfaceName &#91;required&#93; The name of the VPC interface that you want to remove.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FlowArn = "string",
+#'   NonDeletedNetworkInterfaceIds = list(
+#'     "string"
+#'   ),
+#'   VpcInterfaceName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -907,13 +1653,24 @@ mediaconnect_remove_flow_vpc_interface <- function(FlowArn, VpcInterfaceName) {
 #' Revokes an entitlement from a flow
 #'
 #' @description
-#' Revokes an entitlement from a flow. Once an entitlement is revoked, the content becomes unavailable to the subscriber and the associated output is removed.
+#' Revokes an entitlement from a flow. Once an entitlement is revoked, the
+#' content becomes unavailable to the subscriber and the associated output
+#' is removed.
 #'
 #' @usage
 #' mediaconnect_revoke_flow_entitlement(EntitlementArn, FlowArn)
 #'
 #' @param EntitlementArn &#91;required&#93; The ARN of the entitlement that you want to revoke.
 #' @param FlowArn &#91;required&#93; The flow that you want to revoke an entitlement from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EntitlementArn = "string",
+#'   FlowArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -953,6 +1710,15 @@ mediaconnect_revoke_flow_entitlement <- function(EntitlementArn, FlowArn) {
 #'
 #' @param FlowArn &#91;required&#93; The ARN of the flow that you want to start.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FlowArn = "string",
+#'   Status = "STANDBY"|"ACTIVE"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"ERROR"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_flow(
@@ -990,6 +1756,15 @@ mediaconnect_start_flow <- function(FlowArn) {
 #'
 #' @param FlowArn &#91;required&#93; The ARN of the flow that you want to stop.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FlowArn = "string",
+#'   Status = "STANDBY"|"ACTIVE"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"ERROR"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_flow(
@@ -1021,13 +1796,21 @@ mediaconnect_stop_flow <- function(FlowArn) {
 #' resourceArn
 #'
 #' @description
-#' Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well.
+#' Associates the specified tags to a resource with the specified
+#' resourceArn. If existing tags on a resource are not specified in the
+#' request parameters, they are not changed. When a resource is deleted,
+#' the tags associated with that resource are deleted as well.
 #'
 #' @usage
 #' mediaconnect_tag_resource(ResourceArn, Tags)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.
-#' @param Tags &#91;required&#93; A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the AWS Elemental
+#' MediaConnect resource to which to add tags.
+#' @param Tags &#91;required&#93; A map from tag keys to values. Tag keys can have a maximum character
+#' length of 128 characters, and tag values can have a maximum length of
+#' 256 characters.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1067,8 +1850,11 @@ mediaconnect_tag_resource <- function(ResourceArn, Tags) {
 #' @usage
 #' mediaconnect_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the AWS Elemental
+#' MediaConnect resource from which to delete tags.
 #' @param TagKeys &#91;required&#93; The keys of the tags to be removed.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1111,6 +1897,166 @@ mediaconnect_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param FlowArn &#91;required&#93; The flow that you want to update.
 #' @param SourceFailoverConfig 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Flow = list(
+#'     AvailabilityZone = "string",
+#'     Description = "string",
+#'     EgressIp = "string",
+#'     Entitlements = list(
+#'       list(
+#'         DataTransferSubscriberFeePercent = 123,
+#'         Description = "string",
+#'         Encryption = list(
+#'           Algorithm = "aes128"|"aes192"|"aes256",
+#'           ConstantInitializationVector = "string",
+#'           DeviceId = "string",
+#'           KeyType = "speke"|"static-key",
+#'           Region = "string",
+#'           ResourceId = "string",
+#'           RoleArn = "string",
+#'           SecretArn = "string",
+#'           Url = "string"
+#'         ),
+#'         EntitlementArn = "string",
+#'         EntitlementStatus = "ENABLED"|"DISABLED",
+#'         Name = "string",
+#'         Subscribers = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     FlowArn = "string",
+#'     Name = "string",
+#'     Outputs = list(
+#'       list(
+#'         DataTransferSubscriberFeePercent = 123,
+#'         Description = "string",
+#'         Destination = "string",
+#'         Encryption = list(
+#'           Algorithm = "aes128"|"aes192"|"aes256",
+#'           ConstantInitializationVector = "string",
+#'           DeviceId = "string",
+#'           KeyType = "speke"|"static-key",
+#'           Region = "string",
+#'           ResourceId = "string",
+#'           RoleArn = "string",
+#'           SecretArn = "string",
+#'           Url = "string"
+#'         ),
+#'         EntitlementArn = "string",
+#'         MediaLiveInputArn = "string",
+#'         Name = "string",
+#'         OutputArn = "string",
+#'         Port = 123,
+#'         Transport = list(
+#'           CidrAllowList = list(
+#'             "string"
+#'           ),
+#'           MaxBitrate = 123,
+#'           MaxLatency = 123,
+#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'           RemoteId = "string",
+#'           SmoothingLatency = 123,
+#'           StreamId = "string"
+#'         ),
+#'         VpcInterfaceAttachment = list(
+#'           VpcInterfaceName = "string"
+#'         )
+#'       )
+#'     ),
+#'     Source = list(
+#'       DataTransferSubscriberFeePercent = 123,
+#'       Decryption = list(
+#'         Algorithm = "aes128"|"aes192"|"aes256",
+#'         ConstantInitializationVector = "string",
+#'         DeviceId = "string",
+#'         KeyType = "speke"|"static-key",
+#'         Region = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SecretArn = "string",
+#'         Url = "string"
+#'       ),
+#'       Description = "string",
+#'       EntitlementArn = "string",
+#'       IngestIp = "string",
+#'       IngestPort = 123,
+#'       Name = "string",
+#'       SourceArn = "string",
+#'       Transport = list(
+#'         CidrAllowList = list(
+#'           "string"
+#'         ),
+#'         MaxBitrate = 123,
+#'         MaxLatency = 123,
+#'         Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'         RemoteId = "string",
+#'         SmoothingLatency = 123,
+#'         StreamId = "string"
+#'       ),
+#'       VpcInterfaceName = "string",
+#'       WhitelistCidr = "string"
+#'     ),
+#'     SourceFailoverConfig = list(
+#'       RecoveryWindow = 123,
+#'       State = "ENABLED"|"DISABLED"
+#'     ),
+#'     Sources = list(
+#'       list(
+#'         DataTransferSubscriberFeePercent = 123,
+#'         Decryption = list(
+#'           Algorithm = "aes128"|"aes192"|"aes256",
+#'           ConstantInitializationVector = "string",
+#'           DeviceId = "string",
+#'           KeyType = "speke"|"static-key",
+#'           Region = "string",
+#'           ResourceId = "string",
+#'           RoleArn = "string",
+#'           SecretArn = "string",
+#'           Url = "string"
+#'         ),
+#'         Description = "string",
+#'         EntitlementArn = "string",
+#'         IngestIp = "string",
+#'         IngestPort = 123,
+#'         Name = "string",
+#'         SourceArn = "string",
+#'         Transport = list(
+#'           CidrAllowList = list(
+#'             "string"
+#'           ),
+#'           MaxBitrate = 123,
+#'           MaxLatency = 123,
+#'           Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'           RemoteId = "string",
+#'           SmoothingLatency = 123,
+#'           StreamId = "string"
+#'         ),
+#'         VpcInterfaceName = "string",
+#'         WhitelistCidr = "string"
+#'       )
+#'     ),
+#'     Status = "STANDBY"|"ACTIVE"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"ERROR",
+#'     VpcInterfaces = list(
+#'       list(
+#'         Name = "string",
+#'         NetworkInterfaceIds = list(
+#'           "string"
+#'         ),
+#'         RoleArn = "string",
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         ),
+#'         SubnetId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_flow(
@@ -1145,18 +2091,58 @@ mediaconnect_update_flow <- function(FlowArn, SourceFailoverConfig = NULL) {
 #' You can change an entitlement's description, subscribers, and encryption
 #'
 #' @description
-#' You can change an entitlement's description, subscribers, and encryption. If you change the subscribers, the service will remove the outputs that are are used by the subscribers that are removed.
+#' You can change an entitlement's description, subscribers, and
+#' encryption. If you change the subscribers, the service will remove the
+#' outputs that are are used by the subscribers that are removed.
 #'
 #' @usage
 #' mediaconnect_update_flow_entitlement(Description, Encryption,
 #'   EntitlementArn, EntitlementStatus, FlowArn, Subscribers)
 #'
-#' @param Description A description of the entitlement. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the subscriber or end user.
-#' @param Encryption The type of encryption that will be used on the output associated with this entitlement.
+#' @param Description A description of the entitlement. This description appears only on the
+#' AWS Elemental MediaConnect console and will not be seen by the
+#' subscriber or end user.
+#' @param Encryption The type of encryption that will be used on the output associated with
+#' this entitlement.
 #' @param EntitlementArn &#91;required&#93; The ARN of the entitlement that you want to update.
-#' @param EntitlementStatus An indication of whether you want to enable the entitlement to allow access, or disable it to stop streaming content to the subscriber’s flow temporarily. If you don’t specify the entitlementStatus field in your request, MediaConnect leaves the value unchanged.
-#' @param FlowArn &#91;required&#93; The flow that is associated with the entitlement that you want to update.
-#' @param Subscribers The AWS account IDs that you want to share your content with. The receiving accounts (subscribers) will be allowed to create their own flow using your content as the source.
+#' @param EntitlementStatus An indication of whether you want to enable the entitlement to allow
+#' access, or disable it to stop streaming content to the subscriber’s flow
+#' temporarily. If you don’t specify the entitlementStatus field in your
+#' request, MediaConnect leaves the value unchanged.
+#' @param FlowArn &#91;required&#93; The flow that is associated with the entitlement that you want to
+#' update.
+#' @param Subscribers The AWS account IDs that you want to share your content with. The
+#' receiving accounts (subscribers) will be allowed to create their own
+#' flow using your content as the source.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entitlement = list(
+#'     DataTransferSubscriberFeePercent = 123,
+#'     Description = "string",
+#'     Encryption = list(
+#'       Algorithm = "aes128"|"aes192"|"aes256",
+#'       ConstantInitializationVector = "string",
+#'       DeviceId = "string",
+#'       KeyType = "speke"|"static-key",
+#'       Region = "string",
+#'       ResourceId = "string",
+#'       RoleArn = "string",
+#'       SecretArn = "string",
+#'       Url = "string"
+#'     ),
+#'     EntitlementArn = "string",
+#'     EntitlementStatus = "ENABLED"|"DISABLED",
+#'     Name = "string",
+#'     Subscribers = list(
+#'       "string"
+#'     )
+#'   ),
+#'   FlowArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1212,19 +2198,68 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #'   Encryption, FlowArn, MaxLatency, OutputArn, Port, Protocol, RemoteId,
 #'   SmoothingLatency, StreamId, VpcInterfaceAttachment)
 #'
-#' @param CidrAllowList The range of IP addresses that should be allowed to initiate output requests to this flow. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.
-#' @param Description A description of the output. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the end user.
+#' @param CidrAllowList The range of IP addresses that should be allowed to initiate output
+#' requests to this flow. These IP addresses should be in the form of a
+#' Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.
+#' @param Description A description of the output. This description appears only on the AWS
+#' Elemental MediaConnect console and will not be seen by the end user.
 #' @param Destination The IP address where you want to send the output.
-#' @param Encryption The type of key used for the encryption. If no keyType is provided, the service will use the default setting (static-key).
+#' @param Encryption The type of key used for the encryption. If no keyType is provided, the
+#' service will use the default setting (static-key).
 #' @param FlowArn &#91;required&#93; The flow that is associated with the output that you want to update.
 #' @param MaxLatency The maximum latency in milliseconds for Zixi-based streams.
 #' @param OutputArn &#91;required&#93; The ARN of the output that you want to update.
 #' @param Port The port to use when content is distributed to this output.
 #' @param Protocol The protocol to use for the output.
 #' @param RemoteId The remote ID for the Zixi-pull stream.
-#' @param SmoothingLatency The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams.
-#' @param StreamId The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.
+#' @param SmoothingLatency The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC
+#' streams.
+#' @param StreamId The stream ID that you want to use for this transport. This parameter
+#' applies only to Zixi-based streams.
 #' @param VpcInterfaceAttachment The name of the VPC interface attachment to use for this output.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FlowArn = "string",
+#'   Output = list(
+#'     DataTransferSubscriberFeePercent = 123,
+#'     Description = "string",
+#'     Destination = "string",
+#'     Encryption = list(
+#'       Algorithm = "aes128"|"aes192"|"aes256",
+#'       ConstantInitializationVector = "string",
+#'       DeviceId = "string",
+#'       KeyType = "speke"|"static-key",
+#'       Region = "string",
+#'       ResourceId = "string",
+#'       RoleArn = "string",
+#'       SecretArn = "string",
+#'       Url = "string"
+#'     ),
+#'     EntitlementArn = "string",
+#'     MediaLiveInputArn = "string",
+#'     Name = "string",
+#'     OutputArn = "string",
+#'     Port = 123,
+#'     Transport = list(
+#'       CidrAllowList = list(
+#'         "string"
+#'       ),
+#'       MaxBitrate = 123,
+#'       MaxLatency = 123,
+#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'       RemoteId = "string",
+#'       SmoothingLatency = 123,
+#'       StreamId = "string"
+#'     ),
+#'     VpcInterfaceAttachment = list(
+#'       VpcInterfaceName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1290,17 +2325,65 @@ mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = 
 #'   StreamId, VpcInterfaceName, WhitelistCidr)
 #'
 #' @param Decryption The type of encryption used on the content ingested from this source.
-#' @param Description A description for the source. This value is not used or seen outside of the current AWS Elemental MediaConnect account.
-#' @param EntitlementArn The ARN of the entitlement that allows you to subscribe to this flow. The entitlement is set by the flow originator, and the ARN is generated as part of the originator's flow.
+#' @param Description A description for the source. This value is not used or seen outside of
+#' the current AWS Elemental MediaConnect account.
+#' @param EntitlementArn The ARN of the entitlement that allows you to subscribe to this flow.
+#' The entitlement is set by the flow originator, and the ARN is generated
+#' as part of the originator's flow.
 #' @param FlowArn &#91;required&#93; The flow that is associated with the source that you want to update.
 #' @param IngestPort The port that the flow will be listening on for incoming content.
 #' @param MaxBitrate The smoothing max bitrate for RIST, RTP, and RTP-FEC streams.
-#' @param MaxLatency The maximum latency in milliseconds. This parameter applies only to RIST-based and Zixi-based streams.
+#' @param MaxLatency The maximum latency in milliseconds. This parameter applies only to
+#' RIST-based and Zixi-based streams.
 #' @param Protocol The protocol that is used by the source.
 #' @param SourceArn &#91;required&#93; The ARN of the source that you want to update.
-#' @param StreamId The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.
+#' @param StreamId The stream ID that you want to use for this transport. This parameter
+#' applies only to Zixi-based streams.
 #' @param VpcInterfaceName The name of the VPC Interface to configure this Source with.
-#' @param WhitelistCidr The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.
+#' @param WhitelistCidr The range of IP addresses that should be allowed to contribute content
+#' to your source. These IP addresses should be in the form of a Classless
+#' Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FlowArn = "string",
+#'   Source = list(
+#'     DataTransferSubscriberFeePercent = 123,
+#'     Decryption = list(
+#'       Algorithm = "aes128"|"aes192"|"aes256",
+#'       ConstantInitializationVector = "string",
+#'       DeviceId = "string",
+#'       KeyType = "speke"|"static-key",
+#'       Region = "string",
+#'       ResourceId = "string",
+#'       RoleArn = "string",
+#'       SecretArn = "string",
+#'       Url = "string"
+#'     ),
+#'     Description = "string",
+#'     EntitlementArn = "string",
+#'     IngestIp = "string",
+#'     IngestPort = 123,
+#'     Name = "string",
+#'     SourceArn = "string",
+#'     Transport = list(
+#'       CidrAllowList = list(
+#'         "string"
+#'       ),
+#'       MaxBitrate = 123,
+#'       MaxLatency = 123,
+#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'       RemoteId = "string",
+#'       SmoothingLatency = 123,
+#'       StreamId = "string"
+#'     ),
+#'     VpcInterfaceName = "string",
+#'     WhitelistCidr = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -30,7 +30,7 @@ Simple Storage Service API}.
 
 Deletes the Amazon S3 on Outposts bucket. All objects (including all
 object versions and delete markers) in the bucket must be deleted before
-the bucket itself can be deleted. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
+the bucket itself can be deleted. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in \emph{Amazon Simple Storage Service Developer Guide}.
 
 All Amazon S3 on Outposts REST API requests for this action require an

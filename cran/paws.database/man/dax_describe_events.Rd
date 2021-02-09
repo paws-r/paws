@@ -33,6 +33,22 @@ pagination of results from this action. If this parameter is specified,
 the response includes only results beyond the token, up to the value
 specified by \code{MaxResults}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Events = list(
+    list(
+      SourceName = "string",
+      SourceType = "CLUSTER"|"PARAMETER_GROUP"|"SUBNET_GROUP",
+      Message = "string",
+      Date = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns events related to DAX clusters and parameter groups. You can
 obtain events specific to a particular DAX cluster or parameter group by

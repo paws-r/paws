@@ -16,6 +16,28 @@ ram_list_resource_share_permissions(resourceShareArn, nextToken,
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  permissions = list(
+    list(
+      arn = "string",
+      version = "string",
+      defaultVersion = TRUE|FALSE,
+      name = "string",
+      resourceType = "string",
+      status = "string",
+      creationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the AWS RAM permissions that are associated with a resource share.
 }

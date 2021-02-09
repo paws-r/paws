@@ -22,6 +22,18 @@ service's private key. This value must be Base-64-encoded.}
 
 \item{tlsContext}{Specifies a test TLS authorization request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  isAuthenticated = TRUE|FALSE,
+  principalId = "string",
+  policyDocuments = list(
+    "string"
+  ),
+  refreshAfterInSeconds = 123,
+  disconnectAfterInSeconds = 123
+)
+}
+}
 \description{
 Tests a custom authorization behavior by invoking a specified custom
 authorizer. Use this to test and debug the custom authorization behavior

@@ -21,6 +21,20 @@ servicecatalog_describe_service_action_execution_parameters(
 \item \code{zh} - Chinese
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceActionParameters = list(
+    list(
+      Name = "string",
+      Type = "string",
+      DefaultValues = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Finds the default parameters for a specific self-service action on a
 specific provisioned product and returns a map of the results to the

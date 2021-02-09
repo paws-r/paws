@@ -10,6 +10,10 @@ athena_delete_named_query(NamedQueryId)
 \arguments{
 \item{NamedQueryId}{[required] The unique ID of the query to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the named query if you have access to the workgroup in which the
 query was saved.

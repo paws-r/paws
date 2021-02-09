@@ -11,6 +11,10 @@ ssm_deregister_managed_instance(InstanceId)
 \item{InstanceId}{[required] The ID assigned to the managed instance when you registered it using the
 activation process.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the server or virtual machine from the list of registered
 servers. You can reregister the instance again at any time. If you don't

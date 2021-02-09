@@ -54,6 +54,12 @@ one or more labels for each document. In multi-label mode, multiple
 labels for an individual document are separated by a delimiter. The
 default delimiter between labels is a pipe (|).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DocumentClassifierArn = "string"
+)
+}
+}
 \description{
 Creates a new document classifier that you can use to categorize
 documents. To create a classifier, you provide a set of training

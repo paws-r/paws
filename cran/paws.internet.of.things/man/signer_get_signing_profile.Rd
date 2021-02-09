@@ -11,6 +11,48 @@ signer_get_signing_profile(profileName, profileOwner)
 
 \item{profileOwner}{The AWS account ID of the profile owner.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  profileName = "string",
+  profileVersion = "string",
+  profileVersionArn = "string",
+  revocationRecord = list(
+    revocationEffectiveFrom = as.POSIXct(
+      "2015-01-01"
+    ),
+    revokedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    revokedBy = "string"
+  ),
+  signingMaterial = list(
+    certificateArn = "string"
+  ),
+  platformId = "string",
+  platformDisplayName = "string",
+  signatureValidityPeriod = list(
+    value = 123,
+    type = "DAYS"|"MONTHS"|"YEARS"
+  ),
+  overrides = list(
+    signingConfiguration = list(
+      encryptionAlgorithm = "RSA"|"ECDSA",
+      hashAlgorithm = "SHA1"|"SHA256"
+    ),
+    signingImageFormat = "JSON"|"JSONEmbedded"|"JSONDetached"
+  ),
+  signingParameters = list(
+    "string"
+  ),
+  status = "Active"|"Canceled"|"Revoked",
+  statusReason = "string",
+  arn = "string",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns information on a specific signing profile.
 }

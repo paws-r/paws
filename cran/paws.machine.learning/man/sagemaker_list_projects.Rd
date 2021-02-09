@@ -27,6 +27,24 @@ the next set of projects, use the token in the next request.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProjectSummaryList = list(
+    list(
+      ProjectName = "string",
+      ProjectDescription = "string",
+      ProjectArn = "string",
+      ProjectId = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ProjectStatus = "Pending"|"CreateInProgress"|"CreateCompleted"|"CreateFailed"|"DeleteInProgress"|"DeleteFailed"|"DeleteCompleted"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of the projects in an AWS account.
 }

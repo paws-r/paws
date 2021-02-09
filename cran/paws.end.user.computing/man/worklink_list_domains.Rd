@@ -14,6 +14,22 @@ operation. If this value is null, it retrieves the first page.}
 
 \item{MaxResults}{The maximum number of results to be included in the next page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Domains = list(
+    list(
+      DomainName = "string",
+      DisplayName = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      DomainStatus = "PENDING_VALIDATION"|"ASSOCIATING"|"ACTIVE"|"INACTIVE"|"DISASSOCIATING"|"DISASSOCIATED"|"FAILED_TO_ASSOCIATE"|"FAILED_TO_DISASSOCIATE"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of domains associated to a specified fleet.
 }

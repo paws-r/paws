@@ -14,6 +14,10 @@ domain to.}
 
 \item{CustomRedirectDomain}{The domain that you want to use to track open and click events.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Specify a custom domain to use for open and click tracking elements in
 email that you send using Amazon Pinpoint.

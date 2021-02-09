@@ -9,8 +9,13 @@ pinpointsmsvoice_create_configuration_set(ConfigurationSetName)
 \arguments{
 \item{ConfigurationSetName}{The name that you want to give the configuration set.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
-Create a new configuration set. After you create the configuration set, you can add one or more event destinations to it.
+Create a new configuration set. After you create the configuration set,
+you can add one or more event destinations to it.
 }
 \section{Request syntax}{
 \preformatted{svc$create_configuration_set(

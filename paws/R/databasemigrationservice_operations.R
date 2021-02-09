@@ -25,6 +25,12 @@ NULL
 #' replication task.
 #' @param Tags &#91;required&#93; One or more tags to be assigned to the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_tags_to_resource(
@@ -103,6 +109,32 @@ databasemigrationservice_add_tags_to_resource <- function(ResourceArn, Tags) {
 #' -   `undo-opt-in` - Cancel any existing `next-maintenance` opt-in
 #'     requests.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourcePendingMaintenanceActions = list(
+#'     ResourceIdentifier = "string",
+#'     PendingMaintenanceActionDetails = list(
+#'       list(
+#'         Action = "string",
+#'         AutoAppliedAfterDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ForcedApplyDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         OptInStatus = "string",
+#'         CurrentApplyDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Description = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$apply_pending_maintenance_action(
@@ -147,6 +179,32 @@ databasemigrationservice_apply_pending_maintenance_action <- function(Replicatio
 #'
 #' @param ReplicationTaskAssessmentRunArn &#91;required&#93; Amazon Resource Name (ARN) of the premigration assessment run to be
 #' canceled.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationTaskAssessmentRun = list(
+#'     ReplicationTaskAssessmentRunArn = "string",
+#'     ReplicationTaskArn = "string",
+#'     Status = "string",
+#'     ReplicationTaskAssessmentRunCreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssessmentProgress = list(
+#'       IndividualAssessmentCount = 123,
+#'       IndividualAssessmentCompletedCount = 123
+#'     ),
+#'     LastFailureMessage = "string",
+#'     ServiceAccessRoleArn = "string",
+#'     ResultLocationBucket = "string",
+#'     ResultLocationFolder = "string",
+#'     ResultEncryptionMode = "string",
+#'     ResultKmsKeyArn = "string",
+#'     AssessmentRunName = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -256,7 +314,7 @@ databasemigrationservice_cancel_replication_task_assessment_run <- function(Repl
 #' `ServiceAccessRoleArn=string,BucketName=string,CompressionType=string`
 #' 
 #' JSON syntax for these settings is as follows:
-#' `\{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" \} `
+#' `{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } `
 #' @param MongoDbSettings Settings in JSON format for the source MongoDB endpoint. For more
 #' information about the available settings, see [Using MongoDB as a Target
 #' for AWS Database Migration
@@ -337,6 +395,270 @@ databasemigrationservice_cancel_replication_task_assessment_run <- function(Repl
 #' specify a `ResourceIdentifier` value, AWS DMS generates a default
 #' identifier value for the end of `EndpointArn`.
 #' @param DocDbSettings 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Endpoint = list(
+#'     EndpointIdentifier = "string",
+#'     EndpointType = "source"|"target",
+#'     EngineName = "string",
+#'     EngineDisplayName = "string",
+#'     Username = "string",
+#'     ServerName = "string",
+#'     Port = 123,
+#'     DatabaseName = "string",
+#'     ExtraConnectionAttributes = "string",
+#'     Status = "string",
+#'     KmsKeyId = "string",
+#'     EndpointArn = "string",
+#'     CertificateArn = "string",
+#'     SslMode = "none"|"require"|"verify-ca"|"verify-full",
+#'     ServiceAccessRoleArn = "string",
+#'     ExternalTableDefinition = "string",
+#'     ExternalId = "string",
+#'     DynamoDbSettings = list(
+#'       ServiceAccessRoleArn = "string"
+#'     ),
+#'     S3Settings = list(
+#'       ServiceAccessRoleArn = "string",
+#'       ExternalTableDefinition = "string",
+#'       CsvRowDelimiter = "string",
+#'       CsvDelimiter = "string",
+#'       BucketFolder = "string",
+#'       BucketName = "string",
+#'       CompressionType = "none"|"gzip",
+#'       EncryptionMode = "sse-s3"|"sse-kms",
+#'       ServerSideEncryptionKmsKeyId = "string",
+#'       DataFormat = "csv"|"parquet",
+#'       EncodingType = "plain"|"plain-dictionary"|"rle-dictionary",
+#'       DictPageSizeLimit = 123,
+#'       RowGroupLength = 123,
+#'       DataPageSize = 123,
+#'       ParquetVersion = "parquet-1-0"|"parquet-2-0",
+#'       EnableStatistics = TRUE|FALSE,
+#'       IncludeOpForFullLoad = TRUE|FALSE,
+#'       CdcInsertsOnly = TRUE|FALSE,
+#'       TimestampColumnName = "string",
+#'       ParquetTimestampInMillisecond = TRUE|FALSE,
+#'       CdcInsertsAndUpdates = TRUE|FALSE,
+#'       DatePartitionEnabled = TRUE|FALSE,
+#'       DatePartitionSequence = "YYYYMMDD"|"YYYYMMDDHH"|"YYYYMM"|"MMYYYYDD"|"DDMMYYYY",
+#'       DatePartitionDelimiter = "SLASH"|"UNDERSCORE"|"DASH"|"NONE",
+#'       UseCsvNoSupValue = TRUE|FALSE,
+#'       CsvNoSupValue = "string",
+#'       PreserveTransactions = TRUE|FALSE,
+#'       CdcPath = "string"
+#'     ),
+#'     DmsTransferSettings = list(
+#'       ServiceAccessRoleArn = "string",
+#'       BucketName = "string"
+#'     ),
+#'     MongoDbSettings = list(
+#'       Username = "string",
+#'       Password = "string",
+#'       ServerName = "string",
+#'       Port = 123,
+#'       DatabaseName = "string",
+#'       AuthType = "no"|"password",
+#'       AuthMechanism = "default"|"mongodb_cr"|"scram_sha_1",
+#'       NestingLevel = "none"|"one",
+#'       ExtractDocId = "string",
+#'       DocsToInvestigate = "string",
+#'       AuthSource = "string",
+#'       KmsKeyId = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     KinesisSettings = list(
+#'       StreamArn = "string",
+#'       MessageFormat = "json"|"json-unformatted",
+#'       ServiceAccessRoleArn = "string",
+#'       IncludeTransactionDetails = TRUE|FALSE,
+#'       IncludePartitionValue = TRUE|FALSE,
+#'       PartitionIncludeSchemaTable = TRUE|FALSE,
+#'       IncludeTableAlterOperations = TRUE|FALSE,
+#'       IncludeControlDetails = TRUE|FALSE,
+#'       IncludeNullAndEmpty = TRUE|FALSE
+#'     ),
+#'     KafkaSettings = list(
+#'       Broker = "string",
+#'       Topic = "string",
+#'       MessageFormat = "json"|"json-unformatted",
+#'       IncludeTransactionDetails = TRUE|FALSE,
+#'       IncludePartitionValue = TRUE|FALSE,
+#'       PartitionIncludeSchemaTable = TRUE|FALSE,
+#'       IncludeTableAlterOperations = TRUE|FALSE,
+#'       IncludeControlDetails = TRUE|FALSE,
+#'       MessageMaxBytes = 123,
+#'       IncludeNullAndEmpty = TRUE|FALSE
+#'     ),
+#'     ElasticsearchSettings = list(
+#'       ServiceAccessRoleArn = "string",
+#'       EndpointUri = "string",
+#'       FullLoadErrorPercentage = 123,
+#'       ErrorRetryDuration = 123
+#'     ),
+#'     NeptuneSettings = list(
+#'       ServiceAccessRoleArn = "string",
+#'       S3BucketName = "string",
+#'       S3BucketFolder = "string",
+#'       ErrorRetryDuration = 123,
+#'       MaxFileSize = 123,
+#'       MaxRetryCount = 123,
+#'       IamAuthEnabled = TRUE|FALSE
+#'     ),
+#'     RedshiftSettings = list(
+#'       AcceptAnyDate = TRUE|FALSE,
+#'       AfterConnectScript = "string",
+#'       BucketFolder = "string",
+#'       BucketName = "string",
+#'       CaseSensitiveNames = TRUE|FALSE,
+#'       CompUpdate = TRUE|FALSE,
+#'       ConnectionTimeout = 123,
+#'       DatabaseName = "string",
+#'       DateFormat = "string",
+#'       EmptyAsNull = TRUE|FALSE,
+#'       EncryptionMode = "sse-s3"|"sse-kms",
+#'       ExplicitIds = TRUE|FALSE,
+#'       FileTransferUploadStreams = 123,
+#'       LoadTimeout = 123,
+#'       MaxFileSize = 123,
+#'       Password = "string",
+#'       Port = 123,
+#'       RemoveQuotes = TRUE|FALSE,
+#'       ReplaceInvalidChars = "string",
+#'       ReplaceChars = "string",
+#'       ServerName = "string",
+#'       ServiceAccessRoleArn = "string",
+#'       ServerSideEncryptionKmsKeyId = "string",
+#'       TimeFormat = "string",
+#'       TrimBlanks = TRUE|FALSE,
+#'       TruncateColumns = TRUE|FALSE,
+#'       Username = "string",
+#'       WriteBufferSize = 123,
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     PostgreSQLSettings = list(
+#'       AfterConnectScript = "string",
+#'       CaptureDdls = TRUE|FALSE,
+#'       MaxFileSize = 123,
+#'       DatabaseName = "string",
+#'       DdlArtifactsSchema = "string",
+#'       ExecuteTimeout = 123,
+#'       FailTasksOnLobTruncation = TRUE|FALSE,
+#'       Password = "string",
+#'       Port = 123,
+#'       ServerName = "string",
+#'       Username = "string",
+#'       SlotName = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     MySQLSettings = list(
+#'       AfterConnectScript = "string",
+#'       DatabaseName = "string",
+#'       EventsPollInterval = 123,
+#'       TargetDbType = "specific-database"|"multiple-databases",
+#'       MaxFileSize = 123,
+#'       ParallelLoadThreads = 123,
+#'       Password = "string",
+#'       Port = 123,
+#'       ServerName = "string",
+#'       ServerTimezone = "string",
+#'       Username = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     OracleSettings = list(
+#'       AddSupplementalLogging = TRUE|FALSE,
+#'       ArchivedLogDestId = 123,
+#'       AdditionalArchivedLogDestId = 123,
+#'       AllowSelectNestedTables = TRUE|FALSE,
+#'       ParallelAsmReadThreads = 123,
+#'       ReadAheadBlocks = 123,
+#'       AccessAlternateDirectly = TRUE|FALSE,
+#'       UseAlternateFolderForOnline = TRUE|FALSE,
+#'       OraclePathPrefix = "string",
+#'       UsePathPrefix = "string",
+#'       ReplacePathPrefix = TRUE|FALSE,
+#'       EnableHomogenousTablespace = TRUE|FALSE,
+#'       DirectPathNoLog = TRUE|FALSE,
+#'       ArchivedLogsOnly = TRUE|FALSE,
+#'       AsmPassword = "string",
+#'       AsmServer = "string",
+#'       AsmUser = "string",
+#'       CharLengthSemantics = "default"|"char"|"byte",
+#'       DatabaseName = "string",
+#'       DirectPathParallelLoad = TRUE|FALSE,
+#'       FailTasksOnLobTruncation = TRUE|FALSE,
+#'       NumberDatatypeScale = 123,
+#'       Password = "string",
+#'       Port = 123,
+#'       ReadTableSpaceName = TRUE|FALSE,
+#'       RetryInterval = 123,
+#'       SecurityDbEncryption = "string",
+#'       SecurityDbEncryptionName = "string",
+#'       ServerName = "string",
+#'       Username = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string",
+#'       SecretsManagerOracleAsmAccessRoleArn = "string",
+#'       SecretsManagerOracleAsmSecretId = "string"
+#'     ),
+#'     SybaseSettings = list(
+#'       DatabaseName = "string",
+#'       Password = "string",
+#'       Port = 123,
+#'       ServerName = "string",
+#'       Username = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     MicrosoftSQLServerSettings = list(
+#'       Port = 123,
+#'       BcpPacketSize = 123,
+#'       DatabaseName = "string",
+#'       ControlTablesFileGroup = "string",
+#'       Password = "string",
+#'       ReadBackupOnly = TRUE|FALSE,
+#'       SafeguardPolicy = "rely-on-sql-server-replication-agent"|"exclusive-automatic-truncation"|"shared-automatic-truncation",
+#'       ServerName = "string",
+#'       Username = "string",
+#'       UseBcpFullLoad = TRUE|FALSE,
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     IBMDb2Settings = list(
+#'       DatabaseName = "string",
+#'       Password = "string",
+#'       Port = 123,
+#'       ServerName = "string",
+#'       SetDataCaptureChanges = TRUE|FALSE,
+#'       CurrentLsn = "string",
+#'       MaxKBytesPerRead = 123,
+#'       Username = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     DocDbSettings = list(
+#'       Username = "string",
+#'       Password = "string",
+#'       ServerName = "string",
+#'       Port = 123,
+#'       DatabaseName = "string",
+#'       NestingLevel = "none"|"one",
+#'       ExtractDocId = TRUE|FALSE,
+#'       DocsToInvestigate = 123,
+#'       KmsKeyId = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -702,6 +1024,28 @@ databasemigrationservice_create_endpoint <- function(EndpointIdentifier, Endpoin
 #' `false` to create the subscription but not activate it.
 #' @param Tags One or more tags to be assigned to the event subscription.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSubscription = list(
+#'     CustomerAwsId = "string",
+#'     CustSubscriptionId = "string",
+#'     SnsTopicArn = "string",
+#'     Status = "string",
+#'     SubscriptionCreationTime = "string",
+#'     SourceType = "string",
+#'     SourceIdsList = list(
+#'       "string"
+#'     ),
+#'     EventCategoriesList = list(
+#'       "string"
+#'     ),
+#'     Enabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_event_subscription(
@@ -848,6 +1192,70 @@ databasemigrationservice_create_event_subscription <- function(SubscriptionName,
 #' specify a `ResourceIdentifier` value, AWS DMS generates a default
 #' identifier value for the end of `EndpointArn`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationInstance = list(
+#'     ReplicationInstanceIdentifier = "string",
+#'     ReplicationInstanceClass = "string",
+#'     ReplicationInstanceStatus = "string",
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     ReplicationSubnetGroup = list(
+#'       ReplicationSubnetGroupIdentifier = "string",
+#'       ReplicationSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       )
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       ReplicationInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     ReplicationInstanceArn = "string",
+#'     ReplicationInstancePublicIpAddress = "string",
+#'     ReplicationInstancePrivateIpAddress = "string",
+#'     ReplicationInstancePublicIpAddresses = list(
+#'       "string"
+#'     ),
+#'     ReplicationInstancePrivateIpAddresses = list(
+#'       "string"
+#'     ),
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     SecondaryAvailabilityZone = "string",
+#'     FreeUntil = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DnsNameServers = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_replication_instance(
@@ -943,6 +1351,28 @@ databasemigrationservice_create_replication_instance <- function(ReplicationInst
 #' @param ReplicationSubnetGroupDescription &#91;required&#93; The description for the subnet group.
 #' @param SubnetIds &#91;required&#93; One or more subnet IDs to be assigned to the subnet group.
 #' @param Tags One or more tags to be assigned to the subnet group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationSubnetGroup = list(
+#'     ReplicationSubnetGroupIdentifier = "string",
+#'     ReplicationSubnetGroupDescription = "string",
+#'     VpcId = "string",
+#'     SubnetGroupStatus = "string",
+#'     Subnets = list(
+#'       list(
+#'         SubnetIdentifier = "string",
+#'         SubnetAvailabilityZone = list(
+#'           Name = "string"
+#'         ),
+#'         SubnetStatus = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1051,7 +1481,7 @@ databasemigrationservice_create_replication_subnet_group <- function(Replication
 #' Date Example: --cdc-start-position “2018-03-08T12:12:12”
 #' 
 #' Checkpoint Example: --cdc-start-position
-#' "checkpoint:V1\\#27\\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\\#0\\#0\\#*\\#0\\#93"
+#' "checkpoint:V1\#27\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\#0\#0\#*\#0\#93"
 #' 
 #' LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
 #' 
@@ -1066,9 +1496,9 @@ databasemigrationservice_create_replication_subnet_group <- function(Replication
 #' The value can be either server time or commit time.
 #' 
 #' Server time example: --cdc-stop-position
-#' “server\\_time:2018-02-09T12:12:12”
+#' “server_time:2018-02-09T12:12:12”
 #' 
-#' Commit time example: --cdc-stop-position “commit\\_time:
+#' Commit time example: --cdc-stop-position “commit_time:
 #' 2018-02-09T12:12:12 “
 #' @param Tags One or more tags to be assigned to the replication task.
 #' @param TaskData Supplemental information that the task requires to migrate the data for
@@ -1086,6 +1516,60 @@ databasemigrationservice_create_replication_subnet_group <- function(Replication
 #' `arn:aws:dms:eu-west-1:012345678901:rep:Example-App-ARN1`. If you don't
 #' specify a `ResourceIdentifier` value, AWS DMS generates a default
 #' identifier value for the end of `EndpointArn`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationTask = list(
+#'     ReplicationTaskIdentifier = "string",
+#'     SourceEndpointArn = "string",
+#'     TargetEndpointArn = "string",
+#'     ReplicationInstanceArn = "string",
+#'     MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
+#'     TableMappings = "string",
+#'     ReplicationTaskSettings = "string",
+#'     Status = "string",
+#'     LastFailureMessage = "string",
+#'     StopReason = "string",
+#'     ReplicationTaskCreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ReplicationTaskStartDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CdcStartPosition = "string",
+#'     CdcStopPosition = "string",
+#'     RecoveryCheckpoint = "string",
+#'     ReplicationTaskArn = "string",
+#'     ReplicationTaskStats = list(
+#'       FullLoadProgressPercent = 123,
+#'       ElapsedTimeMillis = 123,
+#'       TablesLoaded = 123,
+#'       TablesLoading = 123,
+#'       TablesQueued = 123,
+#'       TablesErrored = 123,
+#'       FreshStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StopDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadFinishDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     TaskData = "string",
+#'     TargetReplicationInstanceArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1119,10 +1603,10 @@ databasemigrationservice_create_replication_subnet_group <- function(Replication
 #' svc$create_replication_task(
 #'   CdcStartTime = "2016-12-14T18:25:43Z",
 #'   MigrationType = "full-load",
-#'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ...",
+#'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ",
 #'   ReplicationTaskIdentifier = "task1",
 #'   ReplicationTaskSettings = "",
-#'   SourceEndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ZW5UAN6P4E77EC7YWHK4RZZ3B...",
+#'   SourceEndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ZW5UAN6P4E77EC7YWHK4RZZ3BE",
 #'   TableMappings = "file://mappingfile.json",
 #'   Tags = list(
 #'     list(
@@ -1130,7 +1614,7 @@ databasemigrationservice_create_replication_subnet_group <- function(Replication
 #'       Value = "24352226"
 #'     )
 #'   ),
-#'   TargetEndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7..."
+#'   TargetEndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E"
 #' )
 #' }
 #'
@@ -1163,6 +1647,31 @@ databasemigrationservice_create_replication_task <- function(ReplicationTaskIden
 #' databasemigrationservice_delete_certificate(CertificateArn)
 #'
 #' @param CertificateArn &#91;required&#93; The Amazon Resource Name (ARN) of the deleted certificate.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Certificate = list(
+#'     CertificateIdentifier = "string",
+#'     CertificateCreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CertificatePem = "string",
+#'     CertificateWallet = raw,
+#'     CertificateArn = "string",
+#'     CertificateOwner = "string",
+#'     ValidFromDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ValidToDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SigningAlgorithm = "string",
+#'     KeyLength = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1212,6 +1721,21 @@ databasemigrationservice_delete_certificate <- function(CertificateArn) {
 #' endpoint.
 #' @param ReplicationInstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the replication instance.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Connection = list(
+#'     ReplicationInstanceArn = "string",
+#'     EndpointArn = "string",
+#'     Status = "string",
+#'     LastFailureMessage = "string",
+#'     EndpointIdentifier = "string",
+#'     ReplicationInstanceIdentifier = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_connection(
@@ -1226,7 +1750,7 @@ databasemigrationservice_delete_certificate <- function(CertificateArn) {
 #' # endpoint.
 #' svc$delete_connection(
 #'   EndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM",
-#'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
+#'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ"
 #' )
 #' }
 #'
@@ -1263,6 +1787,270 @@ databasemigrationservice_delete_connection <- function(EndpointArn, ReplicationI
 #'
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Name (ARN) string that uniquely identifies the
 #' endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Endpoint = list(
+#'     EndpointIdentifier = "string",
+#'     EndpointType = "source"|"target",
+#'     EngineName = "string",
+#'     EngineDisplayName = "string",
+#'     Username = "string",
+#'     ServerName = "string",
+#'     Port = 123,
+#'     DatabaseName = "string",
+#'     ExtraConnectionAttributes = "string",
+#'     Status = "string",
+#'     KmsKeyId = "string",
+#'     EndpointArn = "string",
+#'     CertificateArn = "string",
+#'     SslMode = "none"|"require"|"verify-ca"|"verify-full",
+#'     ServiceAccessRoleArn = "string",
+#'     ExternalTableDefinition = "string",
+#'     ExternalId = "string",
+#'     DynamoDbSettings = list(
+#'       ServiceAccessRoleArn = "string"
+#'     ),
+#'     S3Settings = list(
+#'       ServiceAccessRoleArn = "string",
+#'       ExternalTableDefinition = "string",
+#'       CsvRowDelimiter = "string",
+#'       CsvDelimiter = "string",
+#'       BucketFolder = "string",
+#'       BucketName = "string",
+#'       CompressionType = "none"|"gzip",
+#'       EncryptionMode = "sse-s3"|"sse-kms",
+#'       ServerSideEncryptionKmsKeyId = "string",
+#'       DataFormat = "csv"|"parquet",
+#'       EncodingType = "plain"|"plain-dictionary"|"rle-dictionary",
+#'       DictPageSizeLimit = 123,
+#'       RowGroupLength = 123,
+#'       DataPageSize = 123,
+#'       ParquetVersion = "parquet-1-0"|"parquet-2-0",
+#'       EnableStatistics = TRUE|FALSE,
+#'       IncludeOpForFullLoad = TRUE|FALSE,
+#'       CdcInsertsOnly = TRUE|FALSE,
+#'       TimestampColumnName = "string",
+#'       ParquetTimestampInMillisecond = TRUE|FALSE,
+#'       CdcInsertsAndUpdates = TRUE|FALSE,
+#'       DatePartitionEnabled = TRUE|FALSE,
+#'       DatePartitionSequence = "YYYYMMDD"|"YYYYMMDDHH"|"YYYYMM"|"MMYYYYDD"|"DDMMYYYY",
+#'       DatePartitionDelimiter = "SLASH"|"UNDERSCORE"|"DASH"|"NONE",
+#'       UseCsvNoSupValue = TRUE|FALSE,
+#'       CsvNoSupValue = "string",
+#'       PreserveTransactions = TRUE|FALSE,
+#'       CdcPath = "string"
+#'     ),
+#'     DmsTransferSettings = list(
+#'       ServiceAccessRoleArn = "string",
+#'       BucketName = "string"
+#'     ),
+#'     MongoDbSettings = list(
+#'       Username = "string",
+#'       Password = "string",
+#'       ServerName = "string",
+#'       Port = 123,
+#'       DatabaseName = "string",
+#'       AuthType = "no"|"password",
+#'       AuthMechanism = "default"|"mongodb_cr"|"scram_sha_1",
+#'       NestingLevel = "none"|"one",
+#'       ExtractDocId = "string",
+#'       DocsToInvestigate = "string",
+#'       AuthSource = "string",
+#'       KmsKeyId = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     KinesisSettings = list(
+#'       StreamArn = "string",
+#'       MessageFormat = "json"|"json-unformatted",
+#'       ServiceAccessRoleArn = "string",
+#'       IncludeTransactionDetails = TRUE|FALSE,
+#'       IncludePartitionValue = TRUE|FALSE,
+#'       PartitionIncludeSchemaTable = TRUE|FALSE,
+#'       IncludeTableAlterOperations = TRUE|FALSE,
+#'       IncludeControlDetails = TRUE|FALSE,
+#'       IncludeNullAndEmpty = TRUE|FALSE
+#'     ),
+#'     KafkaSettings = list(
+#'       Broker = "string",
+#'       Topic = "string",
+#'       MessageFormat = "json"|"json-unformatted",
+#'       IncludeTransactionDetails = TRUE|FALSE,
+#'       IncludePartitionValue = TRUE|FALSE,
+#'       PartitionIncludeSchemaTable = TRUE|FALSE,
+#'       IncludeTableAlterOperations = TRUE|FALSE,
+#'       IncludeControlDetails = TRUE|FALSE,
+#'       MessageMaxBytes = 123,
+#'       IncludeNullAndEmpty = TRUE|FALSE
+#'     ),
+#'     ElasticsearchSettings = list(
+#'       ServiceAccessRoleArn = "string",
+#'       EndpointUri = "string",
+#'       FullLoadErrorPercentage = 123,
+#'       ErrorRetryDuration = 123
+#'     ),
+#'     NeptuneSettings = list(
+#'       ServiceAccessRoleArn = "string",
+#'       S3BucketName = "string",
+#'       S3BucketFolder = "string",
+#'       ErrorRetryDuration = 123,
+#'       MaxFileSize = 123,
+#'       MaxRetryCount = 123,
+#'       IamAuthEnabled = TRUE|FALSE
+#'     ),
+#'     RedshiftSettings = list(
+#'       AcceptAnyDate = TRUE|FALSE,
+#'       AfterConnectScript = "string",
+#'       BucketFolder = "string",
+#'       BucketName = "string",
+#'       CaseSensitiveNames = TRUE|FALSE,
+#'       CompUpdate = TRUE|FALSE,
+#'       ConnectionTimeout = 123,
+#'       DatabaseName = "string",
+#'       DateFormat = "string",
+#'       EmptyAsNull = TRUE|FALSE,
+#'       EncryptionMode = "sse-s3"|"sse-kms",
+#'       ExplicitIds = TRUE|FALSE,
+#'       FileTransferUploadStreams = 123,
+#'       LoadTimeout = 123,
+#'       MaxFileSize = 123,
+#'       Password = "string",
+#'       Port = 123,
+#'       RemoveQuotes = TRUE|FALSE,
+#'       ReplaceInvalidChars = "string",
+#'       ReplaceChars = "string",
+#'       ServerName = "string",
+#'       ServiceAccessRoleArn = "string",
+#'       ServerSideEncryptionKmsKeyId = "string",
+#'       TimeFormat = "string",
+#'       TrimBlanks = TRUE|FALSE,
+#'       TruncateColumns = TRUE|FALSE,
+#'       Username = "string",
+#'       WriteBufferSize = 123,
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     PostgreSQLSettings = list(
+#'       AfterConnectScript = "string",
+#'       CaptureDdls = TRUE|FALSE,
+#'       MaxFileSize = 123,
+#'       DatabaseName = "string",
+#'       DdlArtifactsSchema = "string",
+#'       ExecuteTimeout = 123,
+#'       FailTasksOnLobTruncation = TRUE|FALSE,
+#'       Password = "string",
+#'       Port = 123,
+#'       ServerName = "string",
+#'       Username = "string",
+#'       SlotName = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     MySQLSettings = list(
+#'       AfterConnectScript = "string",
+#'       DatabaseName = "string",
+#'       EventsPollInterval = 123,
+#'       TargetDbType = "specific-database"|"multiple-databases",
+#'       MaxFileSize = 123,
+#'       ParallelLoadThreads = 123,
+#'       Password = "string",
+#'       Port = 123,
+#'       ServerName = "string",
+#'       ServerTimezone = "string",
+#'       Username = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     OracleSettings = list(
+#'       AddSupplementalLogging = TRUE|FALSE,
+#'       ArchivedLogDestId = 123,
+#'       AdditionalArchivedLogDestId = 123,
+#'       AllowSelectNestedTables = TRUE|FALSE,
+#'       ParallelAsmReadThreads = 123,
+#'       ReadAheadBlocks = 123,
+#'       AccessAlternateDirectly = TRUE|FALSE,
+#'       UseAlternateFolderForOnline = TRUE|FALSE,
+#'       OraclePathPrefix = "string",
+#'       UsePathPrefix = "string",
+#'       ReplacePathPrefix = TRUE|FALSE,
+#'       EnableHomogenousTablespace = TRUE|FALSE,
+#'       DirectPathNoLog = TRUE|FALSE,
+#'       ArchivedLogsOnly = TRUE|FALSE,
+#'       AsmPassword = "string",
+#'       AsmServer = "string",
+#'       AsmUser = "string",
+#'       CharLengthSemantics = "default"|"char"|"byte",
+#'       DatabaseName = "string",
+#'       DirectPathParallelLoad = TRUE|FALSE,
+#'       FailTasksOnLobTruncation = TRUE|FALSE,
+#'       NumberDatatypeScale = 123,
+#'       Password = "string",
+#'       Port = 123,
+#'       ReadTableSpaceName = TRUE|FALSE,
+#'       RetryInterval = 123,
+#'       SecurityDbEncryption = "string",
+#'       SecurityDbEncryptionName = "string",
+#'       ServerName = "string",
+#'       Username = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string",
+#'       SecretsManagerOracleAsmAccessRoleArn = "string",
+#'       SecretsManagerOracleAsmSecretId = "string"
+#'     ),
+#'     SybaseSettings = list(
+#'       DatabaseName = "string",
+#'       Password = "string",
+#'       Port = 123,
+#'       ServerName = "string",
+#'       Username = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     MicrosoftSQLServerSettings = list(
+#'       Port = 123,
+#'       BcpPacketSize = 123,
+#'       DatabaseName = "string",
+#'       ControlTablesFileGroup = "string",
+#'       Password = "string",
+#'       ReadBackupOnly = TRUE|FALSE,
+#'       SafeguardPolicy = "rely-on-sql-server-replication-agent"|"exclusive-automatic-truncation"|"shared-automatic-truncation",
+#'       ServerName = "string",
+#'       Username = "string",
+#'       UseBcpFullLoad = TRUE|FALSE,
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     IBMDb2Settings = list(
+#'       DatabaseName = "string",
+#'       Password = "string",
+#'       Port = 123,
+#'       ServerName = "string",
+#'       SetDataCaptureChanges = TRUE|FALSE,
+#'       CurrentLsn = "string",
+#'       MaxKBytesPerRead = 123,
+#'       Username = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     DocDbSettings = list(
+#'       Username = "string",
+#'       Password = "string",
+#'       ServerName = "string",
+#'       Port = 123,
+#'       DatabaseName = "string",
+#'       NestingLevel = "none"|"one",
+#'       ExtractDocId = TRUE|FALSE,
+#'       DocsToInvestigate = 123,
+#'       KmsKeyId = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1311,6 +2099,28 @@ databasemigrationservice_delete_endpoint <- function(EndpointArn) {
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the DMS event notification subscription to be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSubscription = list(
+#'     CustomerAwsId = "string",
+#'     CustSubscriptionId = "string",
+#'     SnsTopicArn = "string",
+#'     Status = "string",
+#'     SubscriptionCreationTime = "string",
+#'     SourceType = "string",
+#'     SourceIdsList = list(
+#'       "string"
+#'     ),
+#'     EventCategoriesList = list(
+#'       "string"
+#'     ),
+#'     Enabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_event_subscription(
@@ -1353,6 +2163,70 @@ databasemigrationservice_delete_event_subscription <- function(SubscriptionName)
 #' @param ReplicationInstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the replication instance to be
 #' deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationInstance = list(
+#'     ReplicationInstanceIdentifier = "string",
+#'     ReplicationInstanceClass = "string",
+#'     ReplicationInstanceStatus = "string",
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     ReplicationSubnetGroup = list(
+#'       ReplicationSubnetGroupIdentifier = "string",
+#'       ReplicationSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       )
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       ReplicationInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     ReplicationInstanceArn = "string",
+#'     ReplicationInstancePublicIpAddress = "string",
+#'     ReplicationInstancePrivateIpAddress = "string",
+#'     ReplicationInstancePublicIpAddresses = list(
+#'       "string"
+#'     ),
+#'     ReplicationInstancePrivateIpAddresses = list(
+#'       "string"
+#'     ),
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     SecondaryAvailabilityZone = "string",
+#'     FreeUntil = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DnsNameServers = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_replication_instance(
@@ -1368,7 +2242,7 @@ databasemigrationservice_delete_event_subscription <- function(SubscriptionName)
 #' # 
 #' # 
 #' svc$delete_replication_instance(
-#'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
+#'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ"
 #' )
 #' }
 #'
@@ -1402,6 +2276,12 @@ databasemigrationservice_delete_replication_instance <- function(ReplicationInst
 #'   ReplicationSubnetGroupIdentifier)
 #'
 #' @param ReplicationSubnetGroupIdentifier &#91;required&#93; The subnet group name of the replication instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1447,6 +2327,60 @@ databasemigrationservice_delete_replication_subnet_group <- function(Replication
 #' databasemigrationservice_delete_replication_task(ReplicationTaskArn)
 #'
 #' @param ReplicationTaskArn &#91;required&#93; The Amazon Resource Name (ARN) of the replication task to be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationTask = list(
+#'     ReplicationTaskIdentifier = "string",
+#'     SourceEndpointArn = "string",
+#'     TargetEndpointArn = "string",
+#'     ReplicationInstanceArn = "string",
+#'     MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
+#'     TableMappings = "string",
+#'     ReplicationTaskSettings = "string",
+#'     Status = "string",
+#'     LastFailureMessage = "string",
+#'     StopReason = "string",
+#'     ReplicationTaskCreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ReplicationTaskStartDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CdcStartPosition = "string",
+#'     CdcStopPosition = "string",
+#'     RecoveryCheckpoint = "string",
+#'     ReplicationTaskArn = "string",
+#'     ReplicationTaskStats = list(
+#'       FullLoadProgressPercent = 123,
+#'       ElapsedTimeMillis = 123,
+#'       TablesLoaded = 123,
+#'       TablesLoading = 123,
+#'       TablesQueued = 123,
+#'       TablesErrored = 123,
+#'       FreshStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StopDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadFinishDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     TaskData = "string",
+#'     TargetReplicationInstanceArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1499,6 +2433,32 @@ databasemigrationservice_delete_replication_task <- function(ReplicationTaskArn)
 #' @param ReplicationTaskAssessmentRunArn &#91;required&#93; Amazon Resource Name (ARN) of the premigration assessment run to be
 #' deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationTaskAssessmentRun = list(
+#'     ReplicationTaskAssessmentRunArn = "string",
+#'     ReplicationTaskArn = "string",
+#'     Status = "string",
+#'     ReplicationTaskAssessmentRunCreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssessmentProgress = list(
+#'       IndividualAssessmentCount = 123,
+#'       IndividualAssessmentCompletedCount = 123
+#'     ),
+#'     LastFailureMessage = "string",
+#'     ServiceAccessRoleArn = "string",
+#'     ResultLocationBucket = "string",
+#'     ResultLocationFolder = "string",
+#'     ResultEncryptionMode = "string",
+#'     ResultKmsKeyArn = "string",
+#'     AssessmentRunName = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_replication_task_assessment_run(
@@ -1542,6 +2502,21 @@ databasemigrationservice_delete_replication_task_assessment_run <- function(Repl
 #'
 #' @usage
 #' databasemigrationservice_describe_account_attributes()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountQuotas = list(
+#'     list(
+#'       AccountQuotaName = "string",
+#'       Used = 123,
+#'       Max = 123
+#'     )
+#'   ),
+#'   UniqueAccountIdentifier = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1628,6 +2603,17 @@ databasemigrationservice_describe_account_attributes <- function() {
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IndividualAssessmentNames = list(
+#'     "string"
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_applicable_individual_assessments(
@@ -1681,6 +2667,34 @@ databasemigrationservice_describe_applicable_individual_assessments <- function(
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   Certificates = list(
+#'     list(
+#'       CertificateIdentifier = "string",
+#'       CertificateCreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CertificatePem = "string",
+#'       CertificateWallet = raw,
+#'       CertificateArn = "string",
+#'       CertificateOwner = "string",
+#'       ValidFromDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ValidToDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SigningAlgorithm = "string",
+#'       KeyLength = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1763,6 +2777,24 @@ databasemigrationservice_describe_certificates <- function(Filters = NULL, MaxRe
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   Connections = list(
+#'     list(
+#'       ReplicationInstanceArn = "string",
+#'       EndpointArn = "string",
+#'       Status = "string",
+#'       LastFailureMessage = "string",
+#'       EndpointIdentifier = "string",
+#'       ReplicationInstanceIdentifier = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_connections(
@@ -1842,6 +2874,23 @@ databasemigrationservice_describe_connections <- function(Filters = NULL, MaxRec
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   SupportedEndpointTypes = list(
+#'     list(
+#'       EngineName = "string",
+#'       SupportsCDC = TRUE|FALSE,
+#'       EndpointType = "source"|"target",
+#'       ReplicationInstanceEngineMinimumVersion = "string",
+#'       EngineDisplayName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1923,6 +2972,273 @@ databasemigrationservice_describe_endpoint_types <- function(Filters = NULL, Max
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   Endpoints = list(
+#'     list(
+#'       EndpointIdentifier = "string",
+#'       EndpointType = "source"|"target",
+#'       EngineName = "string",
+#'       EngineDisplayName = "string",
+#'       Username = "string",
+#'       ServerName = "string",
+#'       Port = 123,
+#'       DatabaseName = "string",
+#'       ExtraConnectionAttributes = "string",
+#'       Status = "string",
+#'       KmsKeyId = "string",
+#'       EndpointArn = "string",
+#'       CertificateArn = "string",
+#'       SslMode = "none"|"require"|"verify-ca"|"verify-full",
+#'       ServiceAccessRoleArn = "string",
+#'       ExternalTableDefinition = "string",
+#'       ExternalId = "string",
+#'       DynamoDbSettings = list(
+#'         ServiceAccessRoleArn = "string"
+#'       ),
+#'       S3Settings = list(
+#'         ServiceAccessRoleArn = "string",
+#'         ExternalTableDefinition = "string",
+#'         CsvRowDelimiter = "string",
+#'         CsvDelimiter = "string",
+#'         BucketFolder = "string",
+#'         BucketName = "string",
+#'         CompressionType = "none"|"gzip",
+#'         EncryptionMode = "sse-s3"|"sse-kms",
+#'         ServerSideEncryptionKmsKeyId = "string",
+#'         DataFormat = "csv"|"parquet",
+#'         EncodingType = "plain"|"plain-dictionary"|"rle-dictionary",
+#'         DictPageSizeLimit = 123,
+#'         RowGroupLength = 123,
+#'         DataPageSize = 123,
+#'         ParquetVersion = "parquet-1-0"|"parquet-2-0",
+#'         EnableStatistics = TRUE|FALSE,
+#'         IncludeOpForFullLoad = TRUE|FALSE,
+#'         CdcInsertsOnly = TRUE|FALSE,
+#'         TimestampColumnName = "string",
+#'         ParquetTimestampInMillisecond = TRUE|FALSE,
+#'         CdcInsertsAndUpdates = TRUE|FALSE,
+#'         DatePartitionEnabled = TRUE|FALSE,
+#'         DatePartitionSequence = "YYYYMMDD"|"YYYYMMDDHH"|"YYYYMM"|"MMYYYYDD"|"DDMMYYYY",
+#'         DatePartitionDelimiter = "SLASH"|"UNDERSCORE"|"DASH"|"NONE",
+#'         UseCsvNoSupValue = TRUE|FALSE,
+#'         CsvNoSupValue = "string",
+#'         PreserveTransactions = TRUE|FALSE,
+#'         CdcPath = "string"
+#'       ),
+#'       DmsTransferSettings = list(
+#'         ServiceAccessRoleArn = "string",
+#'         BucketName = "string"
+#'       ),
+#'       MongoDbSettings = list(
+#'         Username = "string",
+#'         Password = "string",
+#'         ServerName = "string",
+#'         Port = 123,
+#'         DatabaseName = "string",
+#'         AuthType = "no"|"password",
+#'         AuthMechanism = "default"|"mongodb_cr"|"scram_sha_1",
+#'         NestingLevel = "none"|"one",
+#'         ExtractDocId = "string",
+#'         DocsToInvestigate = "string",
+#'         AuthSource = "string",
+#'         KmsKeyId = "string",
+#'         SecretsManagerAccessRoleArn = "string",
+#'         SecretsManagerSecretId = "string"
+#'       ),
+#'       KinesisSettings = list(
+#'         StreamArn = "string",
+#'         MessageFormat = "json"|"json-unformatted",
+#'         ServiceAccessRoleArn = "string",
+#'         IncludeTransactionDetails = TRUE|FALSE,
+#'         IncludePartitionValue = TRUE|FALSE,
+#'         PartitionIncludeSchemaTable = TRUE|FALSE,
+#'         IncludeTableAlterOperations = TRUE|FALSE,
+#'         IncludeControlDetails = TRUE|FALSE,
+#'         IncludeNullAndEmpty = TRUE|FALSE
+#'       ),
+#'       KafkaSettings = list(
+#'         Broker = "string",
+#'         Topic = "string",
+#'         MessageFormat = "json"|"json-unformatted",
+#'         IncludeTransactionDetails = TRUE|FALSE,
+#'         IncludePartitionValue = TRUE|FALSE,
+#'         PartitionIncludeSchemaTable = TRUE|FALSE,
+#'         IncludeTableAlterOperations = TRUE|FALSE,
+#'         IncludeControlDetails = TRUE|FALSE,
+#'         MessageMaxBytes = 123,
+#'         IncludeNullAndEmpty = TRUE|FALSE
+#'       ),
+#'       ElasticsearchSettings = list(
+#'         ServiceAccessRoleArn = "string",
+#'         EndpointUri = "string",
+#'         FullLoadErrorPercentage = 123,
+#'         ErrorRetryDuration = 123
+#'       ),
+#'       NeptuneSettings = list(
+#'         ServiceAccessRoleArn = "string",
+#'         S3BucketName = "string",
+#'         S3BucketFolder = "string",
+#'         ErrorRetryDuration = 123,
+#'         MaxFileSize = 123,
+#'         MaxRetryCount = 123,
+#'         IamAuthEnabled = TRUE|FALSE
+#'       ),
+#'       RedshiftSettings = list(
+#'         AcceptAnyDate = TRUE|FALSE,
+#'         AfterConnectScript = "string",
+#'         BucketFolder = "string",
+#'         BucketName = "string",
+#'         CaseSensitiveNames = TRUE|FALSE,
+#'         CompUpdate = TRUE|FALSE,
+#'         ConnectionTimeout = 123,
+#'         DatabaseName = "string",
+#'         DateFormat = "string",
+#'         EmptyAsNull = TRUE|FALSE,
+#'         EncryptionMode = "sse-s3"|"sse-kms",
+#'         ExplicitIds = TRUE|FALSE,
+#'         FileTransferUploadStreams = 123,
+#'         LoadTimeout = 123,
+#'         MaxFileSize = 123,
+#'         Password = "string",
+#'         Port = 123,
+#'         RemoveQuotes = TRUE|FALSE,
+#'         ReplaceInvalidChars = "string",
+#'         ReplaceChars = "string",
+#'         ServerName = "string",
+#'         ServiceAccessRoleArn = "string",
+#'         ServerSideEncryptionKmsKeyId = "string",
+#'         TimeFormat = "string",
+#'         TrimBlanks = TRUE|FALSE,
+#'         TruncateColumns = TRUE|FALSE,
+#'         Username = "string",
+#'         WriteBufferSize = 123,
+#'         SecretsManagerAccessRoleArn = "string",
+#'         SecretsManagerSecretId = "string"
+#'       ),
+#'       PostgreSQLSettings = list(
+#'         AfterConnectScript = "string",
+#'         CaptureDdls = TRUE|FALSE,
+#'         MaxFileSize = 123,
+#'         DatabaseName = "string",
+#'         DdlArtifactsSchema = "string",
+#'         ExecuteTimeout = 123,
+#'         FailTasksOnLobTruncation = TRUE|FALSE,
+#'         Password = "string",
+#'         Port = 123,
+#'         ServerName = "string",
+#'         Username = "string",
+#'         SlotName = "string",
+#'         SecretsManagerAccessRoleArn = "string",
+#'         SecretsManagerSecretId = "string"
+#'       ),
+#'       MySQLSettings = list(
+#'         AfterConnectScript = "string",
+#'         DatabaseName = "string",
+#'         EventsPollInterval = 123,
+#'         TargetDbType = "specific-database"|"multiple-databases",
+#'         MaxFileSize = 123,
+#'         ParallelLoadThreads = 123,
+#'         Password = "string",
+#'         Port = 123,
+#'         ServerName = "string",
+#'         ServerTimezone = "string",
+#'         Username = "string",
+#'         SecretsManagerAccessRoleArn = "string",
+#'         SecretsManagerSecretId = "string"
+#'       ),
+#'       OracleSettings = list(
+#'         AddSupplementalLogging = TRUE|FALSE,
+#'         ArchivedLogDestId = 123,
+#'         AdditionalArchivedLogDestId = 123,
+#'         AllowSelectNestedTables = TRUE|FALSE,
+#'         ParallelAsmReadThreads = 123,
+#'         ReadAheadBlocks = 123,
+#'         AccessAlternateDirectly = TRUE|FALSE,
+#'         UseAlternateFolderForOnline = TRUE|FALSE,
+#'         OraclePathPrefix = "string",
+#'         UsePathPrefix = "string",
+#'         ReplacePathPrefix = TRUE|FALSE,
+#'         EnableHomogenousTablespace = TRUE|FALSE,
+#'         DirectPathNoLog = TRUE|FALSE,
+#'         ArchivedLogsOnly = TRUE|FALSE,
+#'         AsmPassword = "string",
+#'         AsmServer = "string",
+#'         AsmUser = "string",
+#'         CharLengthSemantics = "default"|"char"|"byte",
+#'         DatabaseName = "string",
+#'         DirectPathParallelLoad = TRUE|FALSE,
+#'         FailTasksOnLobTruncation = TRUE|FALSE,
+#'         NumberDatatypeScale = 123,
+#'         Password = "string",
+#'         Port = 123,
+#'         ReadTableSpaceName = TRUE|FALSE,
+#'         RetryInterval = 123,
+#'         SecurityDbEncryption = "string",
+#'         SecurityDbEncryptionName = "string",
+#'         ServerName = "string",
+#'         Username = "string",
+#'         SecretsManagerAccessRoleArn = "string",
+#'         SecretsManagerSecretId = "string",
+#'         SecretsManagerOracleAsmAccessRoleArn = "string",
+#'         SecretsManagerOracleAsmSecretId = "string"
+#'       ),
+#'       SybaseSettings = list(
+#'         DatabaseName = "string",
+#'         Password = "string",
+#'         Port = 123,
+#'         ServerName = "string",
+#'         Username = "string",
+#'         SecretsManagerAccessRoleArn = "string",
+#'         SecretsManagerSecretId = "string"
+#'       ),
+#'       MicrosoftSQLServerSettings = list(
+#'         Port = 123,
+#'         BcpPacketSize = 123,
+#'         DatabaseName = "string",
+#'         ControlTablesFileGroup = "string",
+#'         Password = "string",
+#'         ReadBackupOnly = TRUE|FALSE,
+#'         SafeguardPolicy = "rely-on-sql-server-replication-agent"|"exclusive-automatic-truncation"|"shared-automatic-truncation",
+#'         ServerName = "string",
+#'         Username = "string",
+#'         UseBcpFullLoad = TRUE|FALSE,
+#'         SecretsManagerAccessRoleArn = "string",
+#'         SecretsManagerSecretId = "string"
+#'       ),
+#'       IBMDb2Settings = list(
+#'         DatabaseName = "string",
+#'         Password = "string",
+#'         Port = 123,
+#'         ServerName = "string",
+#'         SetDataCaptureChanges = TRUE|FALSE,
+#'         CurrentLsn = "string",
+#'         MaxKBytesPerRead = 123,
+#'         Username = "string",
+#'         SecretsManagerAccessRoleArn = "string",
+#'         SecretsManagerSecretId = "string"
+#'       ),
+#'       DocDbSettings = list(
+#'         Username = "string",
+#'         Password = "string",
+#'         ServerName = "string",
+#'         Port = 123,
+#'         DatabaseName = "string",
+#'         NestingLevel = "none"|"one",
+#'         ExtractDocId = TRUE|FALSE,
+#'         DocsToInvestigate = 123,
+#'         KmsKeyId = "string",
+#'         SecretsManagerAccessRoleArn = "string",
+#'         SecretsManagerSecretId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_endpoints(
@@ -1996,6 +3312,21 @@ databasemigrationservice_describe_endpoints <- function(Filters = NULL, MaxRecor
 #' Valid values: replication-instance | replication-task
 #' @param Filters Filters applied to the event categories.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventCategoryGroupList = list(
+#'     list(
+#'       SourceType = "string",
+#'       EventCategories = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_event_categories(
@@ -2059,6 +3390,31 @@ databasemigrationservice_describe_event_categories <- function(SourceType = NULL
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   EventSubscriptionsList = list(
+#'     list(
+#'       CustomerAwsId = "string",
+#'       CustSubscriptionId = "string",
+#'       SnsTopicArn = "string",
+#'       Status = "string",
+#'       SubscriptionCreationTime = "string",
+#'       SourceType = "string",
+#'       SourceIdsList = list(
+#'         "string"
+#'       ),
+#'       EventCategoriesList = list(
+#'         "string"
+#'       ),
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2132,6 +3488,27 @@ databasemigrationservice_describe_event_subscriptions <- function(SubscriptionNa
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   Events = list(
+#'     list(
+#'       SourceIdentifier = "string",
+#'       SourceType = "replication-instance",
+#'       Message = "string",
+#'       EventCategories = list(
+#'         "string"
+#'       ),
+#'       Date = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_events(
@@ -2203,6 +3580,29 @@ databasemigrationservice_describe_events <- function(SourceIdentifier = NULL, So
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrderableReplicationInstances = list(
+#'     list(
+#'       EngineVersion = "string",
+#'       ReplicationInstanceClass = "string",
+#'       StorageType = "string",
+#'       MinAllocatedStorage = 123,
+#'       MaxAllocatedStorage = 123,
+#'       DefaultAllocatedStorage = 123,
+#'       IncludedAllocatedStorage = 123,
+#'       AvailabilityZones = list(
+#'         "string"
+#'       ),
+#'       ReleaseStatus = "beta"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_orderable_replication_instances(
@@ -2264,6 +3664,35 @@ databasemigrationservice_describe_orderable_replication_instances <- function(Ma
 #' 
 #' Constraints: Minimum 20, maximum 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PendingMaintenanceActions = list(
+#'     list(
+#'       ResourceIdentifier = "string",
+#'       PendingMaintenanceActionDetails = list(
+#'         list(
+#'           Action = "string",
+#'           AutoAppliedAfterDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ForcedApplyDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           OptInStatus = "string",
+#'           CurrentApplyDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Description = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_pending_maintenance_actions(
@@ -2311,6 +3740,22 @@ databasemigrationservice_describe_pending_maintenance_actions <- function(Replic
 #'
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Name (ARN) string that uniquely identifies the
 #' endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RefreshSchemasStatus = list(
+#'     EndpointArn = "string",
+#'     ReplicationInstanceArn = "string",
+#'     Status = "successful"|"failed"|"refreshing",
+#'     LastRefreshDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastFailureMessage = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2369,6 +3814,22 @@ databasemigrationservice_describe_refresh_schemas_status <- function(EndpointArn
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationInstanceArn = "string",
+#'   ReplicationInstanceTaskLogs = list(
+#'     list(
+#'       ReplicationTaskName = "string",
+#'       ReplicationTaskArn = "string",
+#'       ReplicationInstanceTaskLogSize = 123
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_replication_instance_task_logs(
@@ -2424,6 +3885,73 @@ databasemigrationservice_describe_replication_instance_task_logs <- function(Rep
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   ReplicationInstances = list(
+#'     list(
+#'       ReplicationInstanceIdentifier = "string",
+#'       ReplicationInstanceClass = "string",
+#'       ReplicationInstanceStatus = "string",
+#'       AllocatedStorage = 123,
+#'       InstanceCreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       VpcSecurityGroups = list(
+#'         list(
+#'           VpcSecurityGroupId = "string",
+#'           Status = "string"
+#'         )
+#'       ),
+#'       AvailabilityZone = "string",
+#'       ReplicationSubnetGroup = list(
+#'         ReplicationSubnetGroupIdentifier = "string",
+#'         ReplicationSubnetGroupDescription = "string",
+#'         VpcId = "string",
+#'         SubnetGroupStatus = "string",
+#'         Subnets = list(
+#'           list(
+#'             SubnetIdentifier = "string",
+#'             SubnetAvailabilityZone = list(
+#'               Name = "string"
+#'             ),
+#'             SubnetStatus = "string"
+#'           )
+#'         )
+#'       ),
+#'       PreferredMaintenanceWindow = "string",
+#'       PendingModifiedValues = list(
+#'         ReplicationInstanceClass = "string",
+#'         AllocatedStorage = 123,
+#'         MultiAZ = TRUE|FALSE,
+#'         EngineVersion = "string"
+#'       ),
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string",
+#'       AutoMinorVersionUpgrade = TRUE|FALSE,
+#'       KmsKeyId = "string",
+#'       ReplicationInstanceArn = "string",
+#'       ReplicationInstancePublicIpAddress = "string",
+#'       ReplicationInstancePrivateIpAddress = "string",
+#'       ReplicationInstancePublicIpAddresses = list(
+#'         "string"
+#'       ),
+#'       ReplicationInstancePrivateIpAddresses = list(
+#'         "string"
+#'       ),
+#'       PubliclyAccessible = TRUE|FALSE,
+#'       SecondaryAvailabilityZone = "string",
+#'       FreeUntil = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DnsNameServers = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2502,6 +4030,31 @@ databasemigrationservice_describe_replication_instances <- function(Filters = NU
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   ReplicationSubnetGroups = list(
+#'     list(
+#'       ReplicationSubnetGroupIdentifier = "string",
+#'       ReplicationSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2582,6 +4135,28 @@ databasemigrationservice_describe_replication_subnet_groups <- function(Filters 
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   BucketName = "string",
+#'   ReplicationTaskAssessmentResults = list(
+#'     list(
+#'       ReplicationTaskIdentifier = "string",
+#'       ReplicationTaskArn = "string",
+#'       ReplicationTaskLastAssessmentDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AssessmentStatus = "string",
+#'       AssessmentResultsFile = "string",
+#'       AssessmentResults = "string",
+#'       S3ObjectUrl = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_replication_task_assessment_results(
@@ -2643,6 +4218,35 @@ databasemigrationservice_describe_replication_task_assessment_results <- functio
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   ReplicationTaskAssessmentRuns = list(
+#'     list(
+#'       ReplicationTaskAssessmentRunArn = "string",
+#'       ReplicationTaskArn = "string",
+#'       Status = "string",
+#'       ReplicationTaskAssessmentRunCreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AssessmentProgress = list(
+#'         IndividualAssessmentCount = 123,
+#'         IndividualAssessmentCompletedCount = 123
+#'       ),
+#'       LastFailureMessage = "string",
+#'       ServiceAccessRoleArn = "string",
+#'       ResultLocationBucket = "string",
+#'       ResultLocationFolder = "string",
+#'       ResultEncryptionMode = "string",
+#'       ResultKmsKeyArn = "string",
+#'       AssessmentRunName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2706,6 +4310,25 @@ databasemigrationservice_describe_replication_task_assessment_runs <- function(F
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   ReplicationTaskIndividualAssessments = list(
+#'     list(
+#'       ReplicationTaskIndividualAssessmentArn = "string",
+#'       ReplicationTaskAssessmentRunArn = "string",
+#'       IndividualAssessmentName = "string",
+#'       Status = "string",
+#'       ReplicationTaskIndividualAssessmentStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2772,6 +4395,63 @@ databasemigrationservice_describe_replication_task_individual_assessments <- fun
 #' @param WithoutSettings An option to set to avoid returning information about settings. Use this
 #' to reduce overhead when setting information is too large. To use this
 #' option, choose `true`; otherwise, choose `false` (the default).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   ReplicationTasks = list(
+#'     list(
+#'       ReplicationTaskIdentifier = "string",
+#'       SourceEndpointArn = "string",
+#'       TargetEndpointArn = "string",
+#'       ReplicationInstanceArn = "string",
+#'       MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
+#'       TableMappings = "string",
+#'       ReplicationTaskSettings = "string",
+#'       Status = "string",
+#'       LastFailureMessage = "string",
+#'       StopReason = "string",
+#'       ReplicationTaskCreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ReplicationTaskStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CdcStartPosition = "string",
+#'       CdcStopPosition = "string",
+#'       RecoveryCheckpoint = "string",
+#'       ReplicationTaskArn = "string",
+#'       ReplicationTaskStats = list(
+#'         FullLoadProgressPercent = 123,
+#'         ElapsedTimeMillis = 123,
+#'         TablesLoaded = 123,
+#'         TablesLoading = 123,
+#'         TablesQueued = 123,
+#'         TablesErrored = 123,
+#'         FreshStartDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         StartDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         StopDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         FullLoadStartDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         FullLoadFinishDate = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       TaskData = "string",
+#'       TargetReplicationInstanceArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2852,6 +4532,17 @@ databasemigrationservice_describe_replication_tasks <- function(Filters = NULL, 
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   Schemas = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_schemas(
@@ -2925,6 +4616,44 @@ databasemigrationservice_describe_schemas <- function(EndpointArn, MaxRecords = 
 #' A combination of filters creates an AND condition where each record
 #' matches all specified filters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationTaskArn = "string",
+#'   TableStatistics = list(
+#'     list(
+#'       SchemaName = "string",
+#'       TableName = "string",
+#'       Inserts = 123,
+#'       Deletes = 123,
+#'       Updates = 123,
+#'       Ddls = 123,
+#'       FullLoadRows = 123,
+#'       FullLoadCondtnlChkFailedRows = 123,
+#'       FullLoadErrorRows = 123,
+#'       FullLoadStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadReloaded = TRUE|FALSE,
+#'       LastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TableState = "string",
+#'       ValidationPendingRecords = 123,
+#'       ValidationFailedRecords = 123,
+#'       ValidationSuspendedRecords = 123,
+#'       ValidationState = "string",
+#'       ValidationStateDetails = "string"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_table_statistics(
@@ -2989,6 +4718,31 @@ databasemigrationservice_describe_table_statistics <- function(ReplicationTaskAr
 #' @param CertificateWallet The location of an imported Oracle Wallet certificate for use with SSL.
 #' @param Tags The tags associated with the certificate.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Certificate = list(
+#'     CertificateIdentifier = "string",
+#'     CertificateCreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CertificatePem = "string",
+#'     CertificateWallet = raw,
+#'     CertificateArn = "string",
+#'     CertificateOwner = "string",
+#'     ValidFromDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ValidToDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SigningAlgorithm = "string",
+#'     KeyLength = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_certificate(
@@ -3048,6 +4802,19 @@ databasemigrationservice_import_certificate <- function(CertificateIdentifier, C
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) string that uniquely identifies the AWS
 #' DMS resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3154,7 +4921,7 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #' `ServiceAccessRoleArn=string ,BucketName=string,CompressionType=string`
 #' 
 #' JSON syntax for these settings is as follows:
-#' `\{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" \} `
+#' `{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } `
 #' @param MongoDbSettings Settings in JSON format for the source MongoDB endpoint. For more
 #' information about the available settings, see the configuration
 #' properties section in [Using MongoDB as a Target for AWS Database
@@ -3217,6 +4984,270 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 #' Migration
 #' Service](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.DocumentDB.html)
 #' in the *AWS Database Migration Service User Guide.*
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Endpoint = list(
+#'     EndpointIdentifier = "string",
+#'     EndpointType = "source"|"target",
+#'     EngineName = "string",
+#'     EngineDisplayName = "string",
+#'     Username = "string",
+#'     ServerName = "string",
+#'     Port = 123,
+#'     DatabaseName = "string",
+#'     ExtraConnectionAttributes = "string",
+#'     Status = "string",
+#'     KmsKeyId = "string",
+#'     EndpointArn = "string",
+#'     CertificateArn = "string",
+#'     SslMode = "none"|"require"|"verify-ca"|"verify-full",
+#'     ServiceAccessRoleArn = "string",
+#'     ExternalTableDefinition = "string",
+#'     ExternalId = "string",
+#'     DynamoDbSettings = list(
+#'       ServiceAccessRoleArn = "string"
+#'     ),
+#'     S3Settings = list(
+#'       ServiceAccessRoleArn = "string",
+#'       ExternalTableDefinition = "string",
+#'       CsvRowDelimiter = "string",
+#'       CsvDelimiter = "string",
+#'       BucketFolder = "string",
+#'       BucketName = "string",
+#'       CompressionType = "none"|"gzip",
+#'       EncryptionMode = "sse-s3"|"sse-kms",
+#'       ServerSideEncryptionKmsKeyId = "string",
+#'       DataFormat = "csv"|"parquet",
+#'       EncodingType = "plain"|"plain-dictionary"|"rle-dictionary",
+#'       DictPageSizeLimit = 123,
+#'       RowGroupLength = 123,
+#'       DataPageSize = 123,
+#'       ParquetVersion = "parquet-1-0"|"parquet-2-0",
+#'       EnableStatistics = TRUE|FALSE,
+#'       IncludeOpForFullLoad = TRUE|FALSE,
+#'       CdcInsertsOnly = TRUE|FALSE,
+#'       TimestampColumnName = "string",
+#'       ParquetTimestampInMillisecond = TRUE|FALSE,
+#'       CdcInsertsAndUpdates = TRUE|FALSE,
+#'       DatePartitionEnabled = TRUE|FALSE,
+#'       DatePartitionSequence = "YYYYMMDD"|"YYYYMMDDHH"|"YYYYMM"|"MMYYYYDD"|"DDMMYYYY",
+#'       DatePartitionDelimiter = "SLASH"|"UNDERSCORE"|"DASH"|"NONE",
+#'       UseCsvNoSupValue = TRUE|FALSE,
+#'       CsvNoSupValue = "string",
+#'       PreserveTransactions = TRUE|FALSE,
+#'       CdcPath = "string"
+#'     ),
+#'     DmsTransferSettings = list(
+#'       ServiceAccessRoleArn = "string",
+#'       BucketName = "string"
+#'     ),
+#'     MongoDbSettings = list(
+#'       Username = "string",
+#'       Password = "string",
+#'       ServerName = "string",
+#'       Port = 123,
+#'       DatabaseName = "string",
+#'       AuthType = "no"|"password",
+#'       AuthMechanism = "default"|"mongodb_cr"|"scram_sha_1",
+#'       NestingLevel = "none"|"one",
+#'       ExtractDocId = "string",
+#'       DocsToInvestigate = "string",
+#'       AuthSource = "string",
+#'       KmsKeyId = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     KinesisSettings = list(
+#'       StreamArn = "string",
+#'       MessageFormat = "json"|"json-unformatted",
+#'       ServiceAccessRoleArn = "string",
+#'       IncludeTransactionDetails = TRUE|FALSE,
+#'       IncludePartitionValue = TRUE|FALSE,
+#'       PartitionIncludeSchemaTable = TRUE|FALSE,
+#'       IncludeTableAlterOperations = TRUE|FALSE,
+#'       IncludeControlDetails = TRUE|FALSE,
+#'       IncludeNullAndEmpty = TRUE|FALSE
+#'     ),
+#'     KafkaSettings = list(
+#'       Broker = "string",
+#'       Topic = "string",
+#'       MessageFormat = "json"|"json-unformatted",
+#'       IncludeTransactionDetails = TRUE|FALSE,
+#'       IncludePartitionValue = TRUE|FALSE,
+#'       PartitionIncludeSchemaTable = TRUE|FALSE,
+#'       IncludeTableAlterOperations = TRUE|FALSE,
+#'       IncludeControlDetails = TRUE|FALSE,
+#'       MessageMaxBytes = 123,
+#'       IncludeNullAndEmpty = TRUE|FALSE
+#'     ),
+#'     ElasticsearchSettings = list(
+#'       ServiceAccessRoleArn = "string",
+#'       EndpointUri = "string",
+#'       FullLoadErrorPercentage = 123,
+#'       ErrorRetryDuration = 123
+#'     ),
+#'     NeptuneSettings = list(
+#'       ServiceAccessRoleArn = "string",
+#'       S3BucketName = "string",
+#'       S3BucketFolder = "string",
+#'       ErrorRetryDuration = 123,
+#'       MaxFileSize = 123,
+#'       MaxRetryCount = 123,
+#'       IamAuthEnabled = TRUE|FALSE
+#'     ),
+#'     RedshiftSettings = list(
+#'       AcceptAnyDate = TRUE|FALSE,
+#'       AfterConnectScript = "string",
+#'       BucketFolder = "string",
+#'       BucketName = "string",
+#'       CaseSensitiveNames = TRUE|FALSE,
+#'       CompUpdate = TRUE|FALSE,
+#'       ConnectionTimeout = 123,
+#'       DatabaseName = "string",
+#'       DateFormat = "string",
+#'       EmptyAsNull = TRUE|FALSE,
+#'       EncryptionMode = "sse-s3"|"sse-kms",
+#'       ExplicitIds = TRUE|FALSE,
+#'       FileTransferUploadStreams = 123,
+#'       LoadTimeout = 123,
+#'       MaxFileSize = 123,
+#'       Password = "string",
+#'       Port = 123,
+#'       RemoveQuotes = TRUE|FALSE,
+#'       ReplaceInvalidChars = "string",
+#'       ReplaceChars = "string",
+#'       ServerName = "string",
+#'       ServiceAccessRoleArn = "string",
+#'       ServerSideEncryptionKmsKeyId = "string",
+#'       TimeFormat = "string",
+#'       TrimBlanks = TRUE|FALSE,
+#'       TruncateColumns = TRUE|FALSE,
+#'       Username = "string",
+#'       WriteBufferSize = 123,
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     PostgreSQLSettings = list(
+#'       AfterConnectScript = "string",
+#'       CaptureDdls = TRUE|FALSE,
+#'       MaxFileSize = 123,
+#'       DatabaseName = "string",
+#'       DdlArtifactsSchema = "string",
+#'       ExecuteTimeout = 123,
+#'       FailTasksOnLobTruncation = TRUE|FALSE,
+#'       Password = "string",
+#'       Port = 123,
+#'       ServerName = "string",
+#'       Username = "string",
+#'       SlotName = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     MySQLSettings = list(
+#'       AfterConnectScript = "string",
+#'       DatabaseName = "string",
+#'       EventsPollInterval = 123,
+#'       TargetDbType = "specific-database"|"multiple-databases",
+#'       MaxFileSize = 123,
+#'       ParallelLoadThreads = 123,
+#'       Password = "string",
+#'       Port = 123,
+#'       ServerName = "string",
+#'       ServerTimezone = "string",
+#'       Username = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     OracleSettings = list(
+#'       AddSupplementalLogging = TRUE|FALSE,
+#'       ArchivedLogDestId = 123,
+#'       AdditionalArchivedLogDestId = 123,
+#'       AllowSelectNestedTables = TRUE|FALSE,
+#'       ParallelAsmReadThreads = 123,
+#'       ReadAheadBlocks = 123,
+#'       AccessAlternateDirectly = TRUE|FALSE,
+#'       UseAlternateFolderForOnline = TRUE|FALSE,
+#'       OraclePathPrefix = "string",
+#'       UsePathPrefix = "string",
+#'       ReplacePathPrefix = TRUE|FALSE,
+#'       EnableHomogenousTablespace = TRUE|FALSE,
+#'       DirectPathNoLog = TRUE|FALSE,
+#'       ArchivedLogsOnly = TRUE|FALSE,
+#'       AsmPassword = "string",
+#'       AsmServer = "string",
+#'       AsmUser = "string",
+#'       CharLengthSemantics = "default"|"char"|"byte",
+#'       DatabaseName = "string",
+#'       DirectPathParallelLoad = TRUE|FALSE,
+#'       FailTasksOnLobTruncation = TRUE|FALSE,
+#'       NumberDatatypeScale = 123,
+#'       Password = "string",
+#'       Port = 123,
+#'       ReadTableSpaceName = TRUE|FALSE,
+#'       RetryInterval = 123,
+#'       SecurityDbEncryption = "string",
+#'       SecurityDbEncryptionName = "string",
+#'       ServerName = "string",
+#'       Username = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string",
+#'       SecretsManagerOracleAsmAccessRoleArn = "string",
+#'       SecretsManagerOracleAsmSecretId = "string"
+#'     ),
+#'     SybaseSettings = list(
+#'       DatabaseName = "string",
+#'       Password = "string",
+#'       Port = 123,
+#'       ServerName = "string",
+#'       Username = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     MicrosoftSQLServerSettings = list(
+#'       Port = 123,
+#'       BcpPacketSize = 123,
+#'       DatabaseName = "string",
+#'       ControlTablesFileGroup = "string",
+#'       Password = "string",
+#'       ReadBackupOnly = TRUE|FALSE,
+#'       SafeguardPolicy = "rely-on-sql-server-replication-agent"|"exclusive-automatic-truncation"|"shared-automatic-truncation",
+#'       ServerName = "string",
+#'       Username = "string",
+#'       UseBcpFullLoad = TRUE|FALSE,
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     IBMDb2Settings = list(
+#'       DatabaseName = "string",
+#'       Password = "string",
+#'       Port = 123,
+#'       ServerName = "string",
+#'       SetDataCaptureChanges = TRUE|FALSE,
+#'       CurrentLsn = "string",
+#'       MaxKBytesPerRead = 123,
+#'       Username = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     ),
+#'     DocDbSettings = list(
+#'       Username = "string",
+#'       Password = "string",
+#'       ServerName = "string",
+#'       Port = 123,
+#'       DatabaseName = "string",
+#'       NestingLevel = "none"|"one",
+#'       ExtractDocId = TRUE|FALSE,
+#'       DocsToInvestigate = 123,
+#'       KmsKeyId = "string",
+#'       SecretsManagerAccessRoleArn = "string",
+#'       SecretsManagerSecretId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3538,6 +5569,28 @@ databasemigrationservice_modify_endpoint <- function(EndpointArn, EndpointIdenti
 #' action to see a list of event categories.
 #' @param Enabled A Boolean value; set to **true** to activate the subscription.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSubscription = list(
+#'     CustomerAwsId = "string",
+#'     CustSubscriptionId = "string",
+#'     SnsTopicArn = "string",
+#'     Status = "string",
+#'     SubscriptionCreationTime = "string",
+#'     SourceType = "string",
+#'     SourceIdsList = list(
+#'       "string"
+#'     ),
+#'     EventCategoriesList = list(
+#'       "string"
+#'     ),
+#'     Enabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_event_subscription(
@@ -3648,6 +5701,70 @@ databasemigrationservice_modify_event_subscription <- function(SubscriptionName,
 #' @param ReplicationInstanceIdentifier The replication instance identifier. This parameter is stored as a
 #' lowercase string.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationInstance = list(
+#'     ReplicationInstanceIdentifier = "string",
+#'     ReplicationInstanceClass = "string",
+#'     ReplicationInstanceStatus = "string",
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     ReplicationSubnetGroup = list(
+#'       ReplicationSubnetGroupIdentifier = "string",
+#'       ReplicationSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       )
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       ReplicationInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     ReplicationInstanceArn = "string",
+#'     ReplicationInstancePublicIpAddress = "string",
+#'     ReplicationInstancePrivateIpAddress = "string",
+#'     ReplicationInstancePublicIpAddresses = list(
+#'       "string"
+#'     ),
+#'     ReplicationInstancePrivateIpAddresses = list(
+#'       "string"
+#'     ),
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     SecondaryAvailabilityZone = "string",
+#'     FreeUntil = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DnsNameServers = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_replication_instance(
@@ -3680,7 +5797,7 @@ databasemigrationservice_modify_event_subscription <- function(SubscriptionName,
 #'   EngineVersion = "1.5.0",
 #'   MultiAZ = TRUE,
 #'   PreferredMaintenanceWindow = "sun:06:00-sun:14:00",
-#'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ...",
+#'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ",
 #'   ReplicationInstanceClass = "dms.t2.micro",
 #'   ReplicationInstanceIdentifier = "test-rep-1",
 #'   VpcSecurityGroupIds = list()
@@ -3720,6 +5837,28 @@ databasemigrationservice_modify_replication_instance <- function(ReplicationInst
 #' @param ReplicationSubnetGroupIdentifier &#91;required&#93; The name of the replication instance subnet group.
 #' @param ReplicationSubnetGroupDescription A description for the replication instance subnet group.
 #' @param SubnetIds &#91;required&#93; A list of subnet IDs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationSubnetGroup = list(
+#'     ReplicationSubnetGroupIdentifier = "string",
+#'     ReplicationSubnetGroupDescription = "string",
+#'     VpcId = "string",
+#'     SubnetGroupStatus = "string",
+#'     Subnets = list(
+#'       list(
+#'         SubnetIdentifier = "string",
+#'         SubnetAvailabilityZone = list(
+#'           Name = "string"
+#'         ),
+#'         SubnetStatus = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3812,7 +5951,7 @@ databasemigrationservice_modify_replication_subnet_group <- function(Replication
 #' Date Example: --cdc-start-position “2018-03-08T12:12:12”
 #' 
 #' Checkpoint Example: --cdc-start-position
-#' "checkpoint:V1\\#27\\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\\#0\\#0\\#*\\#0\\#93"
+#' "checkpoint:V1\#27\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\#0\#0\#*\#0\#93"
 #' 
 #' LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
 #' 
@@ -3827,15 +5966,69 @@ databasemigrationservice_modify_replication_subnet_group <- function(Replication
 #' The value can be either server time or commit time.
 #' 
 #' Server time example: --cdc-stop-position
-#' “server\\_time:2018-02-09T12:12:12”
+#' “server_time:2018-02-09T12:12:12”
 #' 
-#' Commit time example: --cdc-stop-position “commit\\_time:
+#' Commit time example: --cdc-stop-position “commit_time:
 #' 2018-02-09T12:12:12 “
 #' @param TaskData Supplemental information that the task requires to migrate the data for
 #' certain source and target endpoints. For more information, see
 #' [Specifying Supplemental Data for Task
 #' Settings](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.TaskData.html)
 #' in the *AWS Database Migration Service User Guide.*
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationTask = list(
+#'     ReplicationTaskIdentifier = "string",
+#'     SourceEndpointArn = "string",
+#'     TargetEndpointArn = "string",
+#'     ReplicationInstanceArn = "string",
+#'     MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
+#'     TableMappings = "string",
+#'     ReplicationTaskSettings = "string",
+#'     Status = "string",
+#'     LastFailureMessage = "string",
+#'     StopReason = "string",
+#'     ReplicationTaskCreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ReplicationTaskStartDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CdcStartPosition = "string",
+#'     CdcStopPosition = "string",
+#'     RecoveryCheckpoint = "string",
+#'     ReplicationTaskArn = "string",
+#'     ReplicationTaskStats = list(
+#'       FullLoadProgressPercent = 123,
+#'       ElapsedTimeMillis = 123,
+#'       TablesLoaded = 123,
+#'       TablesLoading = 123,
+#'       TablesQueued = 123,
+#'       TablesErrored = 123,
+#'       FreshStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StopDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadFinishDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     TaskData = "string",
+#'     TargetReplicationInstanceArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3890,6 +6083,60 @@ databasemigrationservice_modify_replication_task <- function(ReplicationTaskArn,
 #' @param ReplicationTaskArn &#91;required&#93; The Amazon Resource Name (ARN) of the task that you want to move.
 #' @param TargetReplicationInstanceArn &#91;required&#93; The ARN of the replication instance where you want to move the task to.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationTask = list(
+#'     ReplicationTaskIdentifier = "string",
+#'     SourceEndpointArn = "string",
+#'     TargetEndpointArn = "string",
+#'     ReplicationInstanceArn = "string",
+#'     MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
+#'     TableMappings = "string",
+#'     ReplicationTaskSettings = "string",
+#'     Status = "string",
+#'     LastFailureMessage = "string",
+#'     StopReason = "string",
+#'     ReplicationTaskCreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ReplicationTaskStartDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CdcStartPosition = "string",
+#'     CdcStopPosition = "string",
+#'     RecoveryCheckpoint = "string",
+#'     ReplicationTaskArn = "string",
+#'     ReplicationTaskStats = list(
+#'       FullLoadProgressPercent = 123,
+#'       ElapsedTimeMillis = 123,
+#'       TablesLoaded = 123,
+#'       TablesLoading = 123,
+#'       TablesQueued = 123,
+#'       TablesErrored = 123,
+#'       FreshStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StopDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadFinishDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     TaskData = "string",
+#'     TargetReplicationInstanceArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$move_replication_task(
@@ -3933,6 +6180,70 @@ databasemigrationservice_move_replication_task <- function(ReplicationTaskArn, T
 #' failover. (If the instance isn't configured for Multi-AZ, then you can't
 #' specify `true`.)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationInstance = list(
+#'     ReplicationInstanceIdentifier = "string",
+#'     ReplicationInstanceClass = "string",
+#'     ReplicationInstanceStatus = "string",
+#'     AllocatedStorage = 123,
+#'     InstanceCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     VpcSecurityGroups = list(
+#'       list(
+#'         VpcSecurityGroupId = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     AvailabilityZone = "string",
+#'     ReplicationSubnetGroup = list(
+#'       ReplicationSubnetGroupIdentifier = "string",
+#'       ReplicationSubnetGroupDescription = "string",
+#'       VpcId = "string",
+#'       SubnetGroupStatus = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = list(
+#'             Name = "string"
+#'           ),
+#'           SubnetStatus = "string"
+#'         )
+#'       )
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     PendingModifiedValues = list(
+#'       ReplicationInstanceClass = "string",
+#'       AllocatedStorage = 123,
+#'       MultiAZ = TRUE|FALSE,
+#'       EngineVersion = "string"
+#'     ),
+#'     MultiAZ = TRUE|FALSE,
+#'     EngineVersion = "string",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     KmsKeyId = "string",
+#'     ReplicationInstanceArn = "string",
+#'     ReplicationInstancePublicIpAddress = "string",
+#'     ReplicationInstancePrivateIpAddress = "string",
+#'     ReplicationInstancePublicIpAddresses = list(
+#'       "string"
+#'     ),
+#'     ReplicationInstancePrivateIpAddresses = list(
+#'       "string"
+#'     ),
+#'     PubliclyAccessible = TRUE|FALSE,
+#'     SecondaryAvailabilityZone = "string",
+#'     FreeUntil = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DnsNameServers = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reboot_replication_instance(
@@ -3975,6 +6286,22 @@ databasemigrationservice_reboot_replication_instance <- function(ReplicationInst
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Name (ARN) string that uniquely identifies the
 #' endpoint.
 #' @param ReplicationInstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the replication instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RefreshSchemasStatus = list(
+#'     EndpointArn = "string",
+#'     ReplicationInstanceArn = "string",
+#'     Status = "successful"|"failed"|"refreshing",
+#'     LastRefreshDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastFailureMessage = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4035,6 +6362,14 @@ databasemigrationservice_refresh_schemas <- function(EndpointArn, ReplicationIns
 #' 
 #' Default value is data-reload.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationTaskArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reload_tables(
@@ -4085,6 +6420,12 @@ databasemigrationservice_reload_tables <- function(ReplicationTaskArn, TablesToR
 #' @param ResourceArn &#91;required&#93; An AWS DMS resource from which you want to remove tag(s). The value for
 #' this parameter is an Amazon Resource Name (ARN).
 #' @param TagKeys &#91;required&#93; The tag key (name) of the tag to be removed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4155,7 +6496,7 @@ databasemigrationservice_remove_tags_from_resource <- function(ResourceArn, TagK
 #' Date Example: --cdc-start-position “2018-03-08T12:12:12”
 #' 
 #' Checkpoint Example: --cdc-start-position
-#' "checkpoint:V1\\#27\\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\\#0\\#0\\#*\\#0\\#93"
+#' "checkpoint:V1\#27\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\#0\#0\#*\#0\#93"
 #' 
 #' LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
 #' 
@@ -4170,10 +6511,64 @@ databasemigrationservice_remove_tags_from_resource <- function(ResourceArn, TagK
 #' The value can be either server time or commit time.
 #' 
 #' Server time example: --cdc-stop-position
-#' “server\\_time:2018-02-09T12:12:12”
+#' “server_time:2018-02-09T12:12:12”
 #' 
-#' Commit time example: --cdc-stop-position “commit\\_time:
+#' Commit time example: --cdc-stop-position “commit_time:
 #' 2018-02-09T12:12:12 “
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationTask = list(
+#'     ReplicationTaskIdentifier = "string",
+#'     SourceEndpointArn = "string",
+#'     TargetEndpointArn = "string",
+#'     ReplicationInstanceArn = "string",
+#'     MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
+#'     TableMappings = "string",
+#'     ReplicationTaskSettings = "string",
+#'     Status = "string",
+#'     LastFailureMessage = "string",
+#'     StopReason = "string",
+#'     ReplicationTaskCreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ReplicationTaskStartDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CdcStartPosition = "string",
+#'     CdcStopPosition = "string",
+#'     RecoveryCheckpoint = "string",
+#'     ReplicationTaskArn = "string",
+#'     ReplicationTaskStats = list(
+#'       FullLoadProgressPercent = 123,
+#'       ElapsedTimeMillis = 123,
+#'       TablesLoaded = 123,
+#'       TablesLoading = 123,
+#'       TablesQueued = 123,
+#'       TablesErrored = 123,
+#'       FreshStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StopDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadFinishDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     TaskData = "string",
+#'     TargetReplicationInstanceArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4230,6 +6625,60 @@ databasemigrationservice_start_replication_task <- function(ReplicationTaskArn, 
 #'   ReplicationTaskArn)
 #'
 #' @param ReplicationTaskArn &#91;required&#93; The Amazon Resource Name (ARN) of the replication task.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationTask = list(
+#'     ReplicationTaskIdentifier = "string",
+#'     SourceEndpointArn = "string",
+#'     TargetEndpointArn = "string",
+#'     ReplicationInstanceArn = "string",
+#'     MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
+#'     TableMappings = "string",
+#'     ReplicationTaskSettings = "string",
+#'     Status = "string",
+#'     LastFailureMessage = "string",
+#'     StopReason = "string",
+#'     ReplicationTaskCreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ReplicationTaskStartDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CdcStartPosition = "string",
+#'     CdcStopPosition = "string",
+#'     RecoveryCheckpoint = "string",
+#'     ReplicationTaskArn = "string",
+#'     ReplicationTaskStats = list(
+#'       FullLoadProgressPercent = 123,
+#'       ElapsedTimeMillis = 123,
+#'       TablesLoaded = 123,
+#'       TablesLoading = 123,
+#'       TablesQueued = 123,
+#'       TablesErrored = 123,
+#'       FreshStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StopDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadFinishDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     TaskData = "string",
+#'     TargetReplicationInstanceArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4324,6 +6773,32 @@ databasemigrationservice_start_replication_task_assessment <- function(Replicati
 #' [`describe_applicable_individual_assessments`][databasemigrationservice_describe_applicable_individual_assessments]
 #' operation using its own `ReplicationTaskArn` request parameter.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationTaskAssessmentRun = list(
+#'     ReplicationTaskAssessmentRunArn = "string",
+#'     ReplicationTaskArn = "string",
+#'     Status = "string",
+#'     ReplicationTaskAssessmentRunCreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssessmentProgress = list(
+#'       IndividualAssessmentCount = 123,
+#'       IndividualAssessmentCompletedCount = 123
+#'     ),
+#'     LastFailureMessage = "string",
+#'     ServiceAccessRoleArn = "string",
+#'     ResultLocationBucket = "string",
+#'     ResultLocationFolder = "string",
+#'     ResultEncryptionMode = "string",
+#'     ResultKmsKeyArn = "string",
+#'     AssessmentRunName = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_replication_task_assessment_run(
@@ -4373,6 +6848,60 @@ databasemigrationservice_start_replication_task_assessment_run <- function(Repli
 #'
 #' @param ReplicationTaskArn &#91;required&#93; The Amazon Resource Name(ARN) of the replication task to be stopped.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationTask = list(
+#'     ReplicationTaskIdentifier = "string",
+#'     SourceEndpointArn = "string",
+#'     TargetEndpointArn = "string",
+#'     ReplicationInstanceArn = "string",
+#'     MigrationType = "full-load"|"cdc"|"full-load-and-cdc",
+#'     TableMappings = "string",
+#'     ReplicationTaskSettings = "string",
+#'     Status = "string",
+#'     LastFailureMessage = "string",
+#'     StopReason = "string",
+#'     ReplicationTaskCreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ReplicationTaskStartDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CdcStartPosition = "string",
+#'     CdcStopPosition = "string",
+#'     RecoveryCheckpoint = "string",
+#'     ReplicationTaskArn = "string",
+#'     ReplicationTaskStats = list(
+#'       FullLoadProgressPercent = 123,
+#'       ElapsedTimeMillis = 123,
+#'       TablesLoaded = 123,
+#'       TablesLoading = 123,
+#'       TablesQueued = 123,
+#'       TablesErrored = 123,
+#'       FreshStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StopDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FullLoadFinishDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     TaskData = "string",
+#'     TargetReplicationInstanceArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_replication_task(
@@ -4384,7 +6913,7 @@ databasemigrationservice_start_replication_task_assessment_run <- function(Repli
 #' \dontrun{
 #' # Stops the replication task.
 #' svc$stop_replication_task(
-#'   ReplicationTaskArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ..."
+#'   ReplicationTaskArn = "arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E"
 #' )
 #' }
 #'
@@ -4421,6 +6950,21 @@ databasemigrationservice_stop_replication_task <- function(ReplicationTaskArn) {
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Name (ARN) string that uniquely identifies the
 #' endpoint.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Connection = list(
+#'     ReplicationInstanceArn = "string",
+#'     EndpointArn = "string",
+#'     Status = "string",
+#'     LastFailureMessage = "string",
+#'     EndpointIdentifier = "string",
+#'     ReplicationInstanceIdentifier = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$test_connection(
@@ -4434,7 +6978,7 @@ databasemigrationservice_stop_replication_task <- function(ReplicationTaskArn) {
 #' # Tests the connection between the replication instance and the endpoint.
 #' svc$test_connection(
 #'   EndpointArn = "arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM",
-#'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJ..."
+#'   ReplicationInstanceArn = "arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ"
 #' )
 #' }
 #'

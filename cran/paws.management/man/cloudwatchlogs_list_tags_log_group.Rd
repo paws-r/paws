@@ -9,6 +9,14 @@ cloudwatchlogs_list_tags_log_group(logGroupName)
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Lists the tags for the specified log group.
 }

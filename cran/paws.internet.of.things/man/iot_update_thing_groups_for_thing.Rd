@@ -19,6 +19,10 @@ limit is reached. If a thing belongs to 10 thing groups, and one or more
 of those groups are dynamic thing groups, adding a thing to a static
 group removes the thing from the last dynamic group.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the groups to which the thing belongs.
 }

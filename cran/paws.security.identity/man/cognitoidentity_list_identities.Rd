@@ -18,6 +18,27 @@ cognitoidentity_list_identities(IdentityPoolId, MaxResults, NextToken,
 identities. If omitted, the ListIdentities API will include disabled
 identities in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityPoolId = "string",
+  Identities = list(
+    list(
+      IdentityId = "string",
+      Logins = list(
+        "string"
+      ),
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the identities in an identity pool.
 

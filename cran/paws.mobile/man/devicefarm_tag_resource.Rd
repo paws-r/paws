@@ -18,6 +18,10 @@ resources: \code{PROJECT}, \code{RUN}, \code{NETWORK_PROFILE}, \code{INSTANCE_PR
 Tag keys can have a maximum character length of 128 characters. Tag
 values can have a maximum length of 256 characters.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates the specified tags to a resource with the specified
 \code{resourceArn}. If existing tags on a resource are not specified in the

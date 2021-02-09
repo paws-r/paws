@@ -15,6 +15,21 @@ route53_list_tags_for_resource(ResourceType, ResourceId)
 
 \item{ResourceId}{[required] The ID of the resource for which you want to retrieve tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceTagSet = list(
+    ResourceType = "healthcheck"|"hostedzone",
+    ResourceId = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists tags for one health check or hosted zone.
 

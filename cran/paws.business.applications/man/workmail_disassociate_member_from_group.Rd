@@ -14,6 +14,10 @@ workmail_disassociate_member_from_group(OrganizationId, GroupId,
 
 \item{MemberId}{[required] The identifier for the member to be removed to the group.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes a member from a group.
 }

@@ -13,6 +13,25 @@ cloudsearch_describe_service_access_policies(DomainName, Deployed)
 \item{Deployed}{Whether to display the deployed configuration (\code{true}) or include any
 pending changes (\code{false}). Defaults to \code{false}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccessPolicies = list(
+    Options = "string",
+    Status = list(
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateVersion = 123,
+      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+      PendingDeletion = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Gets information about the access policies that control access to the
 domain's document and search endpoints. By default, shows the

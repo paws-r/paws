@@ -133,7 +133,7 @@ NULL
 #' a trust policy that tests for MFA authentication might look like the
 #' following example.
 #' 
-#' `"Condition": \{"Bool": \{"aws:MultiFactorAuthPresent": true\}\}`
+#' `"Condition": {"Bool": {"aws:MultiFactorAuthPresent": true}}`
 #' 
 #' For more information, see [Configuring MFA-Protected API
 #' Access](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_configure-api-require.html)
@@ -329,6 +329,26 @@ NULL
 #' The format for this parameter, as described by its regex pattern, is a
 #' sequence of six numeric digits.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Credentials = list(
+#'     AccessKeyId = "string",
+#'     SecretAccessKey = "string",
+#'     SessionToken = "string",
+#'     Expiration = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   AssumedRoleUser = list(
+#'     AssumedRoleId = "string",
+#'     Arn = "string"
+#'   ),
+#'   PackedPolicySize = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$assume_role(
@@ -361,7 +381,7 @@ NULL
 #' # 
 #' svc$assume_role(
 #'   ExternalId = "123ABC",
-#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
+#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Act...",
 #'   RoleArn = "arn:aws:iam::123456789012:role/demo",
 #'   RoleSessionName = "testAssumeRoleSession",
 #'   Tags = list(
@@ -641,6 +661,31 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' Console](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html)
 #' in the *IAM User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Credentials = list(
+#'     AccessKeyId = "string",
+#'     SecretAccessKey = "string",
+#'     SessionToken = "string",
+#'     Expiration = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   AssumedRoleUser = list(
+#'     AssumedRoleId = "string",
+#'     Arn = "string"
+#'   ),
+#'   PackedPolicySize = 123,
+#'   Subject = "string",
+#'   SubjectType = "string",
+#'   Issuer = "string",
+#'   Audience = "string",
+#'   NameQualifier = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$assume_role_with_saml(
@@ -664,7 +709,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #'   DurationSeconds = 3600L,
 #'   PrincipalArn = "arn:aws:iam::123456789012:saml-provider/SAML-test",
 #'   RoleArn = "arn:aws:iam::123456789012:role/TestSaml",
-#'   SAMLAssertion = "VERYLONGENCODEDASSERTIONEXAMPLExzYW1sOkF1ZGllbmNlPmJsYW5rPC9zYW1sOkF1ZGll..."
+#'   SAMLAssertion = "VERYLONGENCODEDASSERTIONEXAMPLExzYW1sOkF1ZGllbmNlPmJsYW5rPC9zYW1sO..."
 #' )
 #' }
 #'
@@ -969,6 +1014,29 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' Console](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html)
 #' in the *IAM User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Credentials = list(
+#'     AccessKeyId = "string",
+#'     SecretAccessKey = "string",
+#'     SessionToken = "string",
+#'     Expiration = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   SubjectFromWebIdentityToken = "string",
+#'   AssumedRoleUser = list(
+#'     AssumedRoleId = "string",
+#'     Arn = "string"
+#'   ),
+#'   PackedPolicySize = 123,
+#'   Provider = "string",
+#'   Audience = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$assume_role_with_web_identity(
@@ -991,11 +1059,11 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' # 
 #' svc$assume_role_with_web_identity(
 #'   DurationSeconds = 3600L,
-#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
+#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Act...",
 #'   ProviderId = "www.amazon.com",
 #'   RoleArn = "arn:aws:iam::123456789012:role/FederatedWebIdentityRole",
 #'   RoleSessionName = "app1",
-#'   WebIdentityToken = "Atza%7CIQEBLjAsAhRFiXuWpUXuRvQ9PZL3GMFcYevydwIUFAHZwXZXXXXXXXXJnrulxKD..."
+#'   WebIdentityToken = "Atza%7CIQEBLjAsAhRFiXuWpUXuRvQ9PZL3GMFcYevydwIUFAHZwXZXXXXXXXXJ..."
 #' )
 #' }
 #'
@@ -1064,6 +1132,14 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 #' sts_decode_authorization_message(EncodedMessage)
 #'
 #' @param EncodedMessage &#91;required&#93; The encoded message that was returned with the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DecodedMessage = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1139,6 +1215,14 @@ sts_decode_authorization_message <- function(EncodedMessage) {
 #' This parameter allows (through its regex pattern) a string of characters
 #' that can consist of any upper- or lowercase letter or digit.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Account = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_access_key_info(
@@ -1184,6 +1268,16 @@ sts_get_access_key_info <- function(AccessKeyId) {
 #'
 #' @usage
 #' sts_get_caller_identity()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserId = "string",
+#'   Account = "string",
+#'   Arn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1468,6 +1562,26 @@ sts_get_caller_identity <- function() {
 #' `department` are not saved as separate tags, and the session tag passed
 #' in the request takes precedence over the role tag.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Credentials = list(
+#'     AccessKeyId = "string",
+#'     SecretAccessKey = "string",
+#'     SessionToken = "string",
+#'     Expiration = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   FederatedUser = list(
+#'     FederatedUserId = "string",
+#'     Arn = "string"
+#'   ),
+#'   PackedPolicySize = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_federation_token(
@@ -1494,7 +1608,7 @@ sts_get_caller_identity <- function() {
 #' svc$get_federation_token(
 #'   DurationSeconds = 3600L,
 #'   Name = "testFedUserSession",
-#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":...",
+#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Act...",
 #'   Tags = list(
 #'     list(
 #'       Key = "Project",
@@ -1629,6 +1743,21 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 #' 
 #' The format for this parameter, as described by its regex pattern, is a
 #' sequence of six numeric digits.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Credentials = list(
+#'     AccessKeyId = "string",
+#'     SecretAccessKey = "string",
+#'     SessionToken = "string",
+#'     Expiration = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

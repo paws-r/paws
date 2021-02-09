@@ -15,6 +15,45 @@ shards are returned.}
 
 \item{ExclusiveStartShardId}{The shard ID of the shard to start with.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StreamDescription = list(
+    StreamName = "string",
+    StreamARN = "string",
+    StreamStatus = "CREATING"|"DELETING"|"ACTIVE"|"UPDATING",
+    Shards = list(
+      list(
+        ShardId = "string",
+        ParentShardId = "string",
+        AdjacentParentShardId = "string",
+        HashKeyRange = list(
+          StartingHashKey = "string",
+          EndingHashKey = "string"
+        ),
+        SequenceNumberRange = list(
+          StartingSequenceNumber = "string",
+          EndingSequenceNumber = "string"
+        )
+      )
+    ),
+    HasMoreShards = TRUE|FALSE,
+    RetentionPeriodHours = 123,
+    StreamCreationTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    EnhancedMonitoring = list(
+      list(
+        ShardLevelMetrics = list(
+          "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
+        )
+      )
+    ),
+    EncryptionType = "NONE"|"KMS",
+    KeyId = "string"
+  )
+)
+}
+}
 \description{
 Describes the specified Kinesis data stream.
 

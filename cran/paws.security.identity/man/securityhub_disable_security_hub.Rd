@@ -6,6 +6,10 @@
 \usage{
 securityhub_disable_security_hub()
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disables Security Hub in your account only in the current Region. To
 disable Security Hub in all Regions, you must submit one request per

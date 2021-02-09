@@ -13,6 +13,22 @@ NULL
 #'
 #' @param ids &#91;required&#93; The IDs of the builds to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   buildsDeleted = list(
+#'     "string"
+#'   ),
+#'   buildsNotDeleted = list(
+#'     list(
+#'       id = "string",
+#'       statusCode = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_delete_builds(
@@ -52,6 +68,241 @@ codebuild_batch_delete_builds <- function(ids) {
 #'
 #' @param ids &#91;required&#93; An array that contains the batch build identifiers to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   buildBatches = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       currentPhase = "string",
+#'       buildBatchStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'       sourceVersion = "string",
+#'       resolvedSourceVersion = "string",
+#'       projectName = "string",
+#'       phases = list(
+#'         list(
+#'           phaseType = "SUBMITTED"|"DOWNLOAD_BATCHSPEC"|"IN_PROGRESS"|"COMBINE_ARTIFACTS"|"SUCCEEDED"|"FAILED"|"STOPPED",
+#'           phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'           startTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           endTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           durationInSeconds = 123,
+#'           contexts = list(
+#'             list(
+#'               statusCode = "string",
+#'               message = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       source = list(
+#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'         location = "string",
+#'         gitCloneDepth = 123,
+#'         gitSubmodulesConfig = list(
+#'           fetchSubmodules = TRUE|FALSE
+#'         ),
+#'         buildspec = "string",
+#'         auth = list(
+#'           type = "OAUTH",
+#'           resource = "string"
+#'         ),
+#'         reportBuildStatus = TRUE|FALSE,
+#'         buildStatusConfig = list(
+#'           context = "string",
+#'           targetUrl = "string"
+#'         ),
+#'         insecureSsl = TRUE|FALSE,
+#'         sourceIdentifier = "string"
+#'       ),
+#'       secondarySources = list(
+#'         list(
+#'           type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'           location = "string",
+#'           gitCloneDepth = 123,
+#'           gitSubmodulesConfig = list(
+#'             fetchSubmodules = TRUE|FALSE
+#'           ),
+#'           buildspec = "string",
+#'           auth = list(
+#'             type = "OAUTH",
+#'             resource = "string"
+#'           ),
+#'           reportBuildStatus = TRUE|FALSE,
+#'           buildStatusConfig = list(
+#'             context = "string",
+#'             targetUrl = "string"
+#'           ),
+#'           insecureSsl = TRUE|FALSE,
+#'           sourceIdentifier = "string"
+#'         )
+#'       ),
+#'       secondarySourceVersions = list(
+#'         list(
+#'           sourceIdentifier = "string",
+#'           sourceVersion = "string"
+#'         )
+#'       ),
+#'       artifacts = list(
+#'         location = "string",
+#'         sha256sum = "string",
+#'         md5sum = "string",
+#'         overrideArtifactName = TRUE|FALSE,
+#'         encryptionDisabled = TRUE|FALSE,
+#'         artifactIdentifier = "string"
+#'       ),
+#'       secondaryArtifacts = list(
+#'         list(
+#'           location = "string",
+#'           sha256sum = "string",
+#'           md5sum = "string",
+#'           overrideArtifactName = TRUE|FALSE,
+#'           encryptionDisabled = TRUE|FALSE,
+#'           artifactIdentifier = "string"
+#'         )
+#'       ),
+#'       cache = list(
+#'         type = "NO_CACHE"|"S3"|"LOCAL",
+#'         location = "string",
+#'         modes = list(
+#'           "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+#'         )
+#'       ),
+#'       environment = list(
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'         image = "string",
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'         environmentVariables = list(
+#'           list(
+#'             name = "string",
+#'             value = "string",
+#'             type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
+#'           )
+#'         ),
+#'         privilegedMode = TRUE|FALSE,
+#'         certificate = "string",
+#'         registryCredential = list(
+#'           credential = "string",
+#'           credentialProvider = "SECRETS_MANAGER"
+#'         ),
+#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'       ),
+#'       serviceRole = "string",
+#'       logConfig = list(
+#'         cloudWatchLogs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           groupName = "string",
+#'           streamName = "string"
+#'         ),
+#'         s3Logs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           location = "string",
+#'           encryptionDisabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       buildTimeoutInMinutes = 123,
+#'       queuedTimeoutInMinutes = 123,
+#'       complete = TRUE|FALSE,
+#'       initiator = "string",
+#'       vpcConfig = list(
+#'         vpcId = "string",
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       encryptionKey = "string",
+#'       buildBatchNumber = 123,
+#'       fileSystemLocations = list(
+#'         list(
+#'           type = "EFS",
+#'           location = "string",
+#'           mountPoint = "string",
+#'           identifier = "string",
+#'           mountOptions = "string"
+#'         )
+#'       ),
+#'       buildBatchConfig = list(
+#'         serviceRole = "string",
+#'         combineArtifacts = TRUE|FALSE,
+#'         restrictions = list(
+#'           maximumBuildsAllowed = 123,
+#'           computeTypesAllowed = list(
+#'             "string"
+#'           )
+#'         ),
+#'         timeoutInMins = 123
+#'       ),
+#'       buildGroups = list(
+#'         list(
+#'           identifier = "string",
+#'           dependsOn = list(
+#'             "string"
+#'           ),
+#'           ignoreFailure = TRUE|FALSE,
+#'           currentBuildSummary = list(
+#'             arn = "string",
+#'             requestedOn = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'             primaryArtifact = list(
+#'               type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'               location = "string",
+#'               identifier = "string"
+#'             ),
+#'             secondaryArtifacts = list(
+#'               list(
+#'                 type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'                 location = "string",
+#'                 identifier = "string"
+#'               )
+#'             )
+#'           ),
+#'           priorBuildSummaryList = list(
+#'             list(
+#'               arn = "string",
+#'               requestedOn = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'               primaryArtifact = list(
+#'                 type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'                 location = "string",
+#'                 identifier = "string"
+#'               ),
+#'               secondaryArtifacts = list(
+#'                 list(
+#'                   type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'                   location = "string",
+#'                   identifier = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   buildBatchesNotFound = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_get_build_batches(
@@ -90,6 +341,205 @@ codebuild_batch_get_build_batches <- function(ids) {
 #' codebuild_batch_get_builds(ids)
 #'
 #' @param ids &#91;required&#93; The IDs of the builds.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   builds = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       buildNumber = 123,
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       currentPhase = "string",
+#'       buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'       sourceVersion = "string",
+#'       resolvedSourceVersion = "string",
+#'       projectName = "string",
+#'       phases = list(
+#'         list(
+#'           phaseType = "SUBMITTED"|"QUEUED"|"PROVISIONING"|"DOWNLOAD_SOURCE"|"INSTALL"|"PRE_BUILD"|"BUILD"|"POST_BUILD"|"UPLOAD_ARTIFACTS"|"FINALIZING"|"COMPLETED",
+#'           phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'           startTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           endTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           durationInSeconds = 123,
+#'           contexts = list(
+#'             list(
+#'               statusCode = "string",
+#'               message = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       source = list(
+#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'         location = "string",
+#'         gitCloneDepth = 123,
+#'         gitSubmodulesConfig = list(
+#'           fetchSubmodules = TRUE|FALSE
+#'         ),
+#'         buildspec = "string",
+#'         auth = list(
+#'           type = "OAUTH",
+#'           resource = "string"
+#'         ),
+#'         reportBuildStatus = TRUE|FALSE,
+#'         buildStatusConfig = list(
+#'           context = "string",
+#'           targetUrl = "string"
+#'         ),
+#'         insecureSsl = TRUE|FALSE,
+#'         sourceIdentifier = "string"
+#'       ),
+#'       secondarySources = list(
+#'         list(
+#'           type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'           location = "string",
+#'           gitCloneDepth = 123,
+#'           gitSubmodulesConfig = list(
+#'             fetchSubmodules = TRUE|FALSE
+#'           ),
+#'           buildspec = "string",
+#'           auth = list(
+#'             type = "OAUTH",
+#'             resource = "string"
+#'           ),
+#'           reportBuildStatus = TRUE|FALSE,
+#'           buildStatusConfig = list(
+#'             context = "string",
+#'             targetUrl = "string"
+#'           ),
+#'           insecureSsl = TRUE|FALSE,
+#'           sourceIdentifier = "string"
+#'         )
+#'       ),
+#'       secondarySourceVersions = list(
+#'         list(
+#'           sourceIdentifier = "string",
+#'           sourceVersion = "string"
+#'         )
+#'       ),
+#'       artifacts = list(
+#'         location = "string",
+#'         sha256sum = "string",
+#'         md5sum = "string",
+#'         overrideArtifactName = TRUE|FALSE,
+#'         encryptionDisabled = TRUE|FALSE,
+#'         artifactIdentifier = "string"
+#'       ),
+#'       secondaryArtifacts = list(
+#'         list(
+#'           location = "string",
+#'           sha256sum = "string",
+#'           md5sum = "string",
+#'           overrideArtifactName = TRUE|FALSE,
+#'           encryptionDisabled = TRUE|FALSE,
+#'           artifactIdentifier = "string"
+#'         )
+#'       ),
+#'       cache = list(
+#'         type = "NO_CACHE"|"S3"|"LOCAL",
+#'         location = "string",
+#'         modes = list(
+#'           "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+#'         )
+#'       ),
+#'       environment = list(
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'         image = "string",
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'         environmentVariables = list(
+#'           list(
+#'             name = "string",
+#'             value = "string",
+#'             type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
+#'           )
+#'         ),
+#'         privilegedMode = TRUE|FALSE,
+#'         certificate = "string",
+#'         registryCredential = list(
+#'           credential = "string",
+#'           credentialProvider = "SECRETS_MANAGER"
+#'         ),
+#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'       ),
+#'       serviceRole = "string",
+#'       logs = list(
+#'         groupName = "string",
+#'         streamName = "string",
+#'         deepLink = "string",
+#'         s3DeepLink = "string",
+#'         cloudWatchLogsArn = "string",
+#'         s3LogsArn = "string",
+#'         cloudWatchLogs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           groupName = "string",
+#'           streamName = "string"
+#'         ),
+#'         s3Logs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           location = "string",
+#'           encryptionDisabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       timeoutInMinutes = 123,
+#'       queuedTimeoutInMinutes = 123,
+#'       buildComplete = TRUE|FALSE,
+#'       initiator = "string",
+#'       vpcConfig = list(
+#'         vpcId = "string",
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       networkInterface = list(
+#'         subnetId = "string",
+#'         networkInterfaceId = "string"
+#'       ),
+#'       encryptionKey = "string",
+#'       exportedEnvironmentVariables = list(
+#'         list(
+#'           name = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       reportArns = list(
+#'         "string"
+#'       ),
+#'       fileSystemLocations = list(
+#'         list(
+#'           type = "EFS",
+#'           location = "string",
+#'           mountPoint = "string",
+#'           identifier = "string",
+#'           mountOptions = "string"
+#'         )
+#'       ),
+#'       debugSession = list(
+#'         sessionEnabled = TRUE|FALSE,
+#'         sessionTarget = "string"
+#'       ),
+#'       buildBatchArn = "string"
+#'     )
+#'   ),
+#'   buildsNotFound = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -144,6 +594,202 @@ codebuild_batch_get_builds <- function(ids) {
 #' project shared with your AWS account, its ARN must be specified. You
 #' cannot specify a shared project using its name.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   projects = list(
+#'     list(
+#'       name = "string",
+#'       arn = "string",
+#'       description = "string",
+#'       source = list(
+#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'         location = "string",
+#'         gitCloneDepth = 123,
+#'         gitSubmodulesConfig = list(
+#'           fetchSubmodules = TRUE|FALSE
+#'         ),
+#'         buildspec = "string",
+#'         auth = list(
+#'           type = "OAUTH",
+#'           resource = "string"
+#'         ),
+#'         reportBuildStatus = TRUE|FALSE,
+#'         buildStatusConfig = list(
+#'           context = "string",
+#'           targetUrl = "string"
+#'         ),
+#'         insecureSsl = TRUE|FALSE,
+#'         sourceIdentifier = "string"
+#'       ),
+#'       secondarySources = list(
+#'         list(
+#'           type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'           location = "string",
+#'           gitCloneDepth = 123,
+#'           gitSubmodulesConfig = list(
+#'             fetchSubmodules = TRUE|FALSE
+#'           ),
+#'           buildspec = "string",
+#'           auth = list(
+#'             type = "OAUTH",
+#'             resource = "string"
+#'           ),
+#'           reportBuildStatus = TRUE|FALSE,
+#'           buildStatusConfig = list(
+#'             context = "string",
+#'             targetUrl = "string"
+#'           ),
+#'           insecureSsl = TRUE|FALSE,
+#'           sourceIdentifier = "string"
+#'         )
+#'       ),
+#'       sourceVersion = "string",
+#'       secondarySourceVersions = list(
+#'         list(
+#'           sourceIdentifier = "string",
+#'           sourceVersion = "string"
+#'         )
+#'       ),
+#'       artifacts = list(
+#'         type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'         location = "string",
+#'         path = "string",
+#'         namespaceType = "NONE"|"BUILD_ID",
+#'         name = "string",
+#'         packaging = "NONE"|"ZIP",
+#'         overrideArtifactName = TRUE|FALSE,
+#'         encryptionDisabled = TRUE|FALSE,
+#'         artifactIdentifier = "string"
+#'       ),
+#'       secondaryArtifacts = list(
+#'         list(
+#'           type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'           location = "string",
+#'           path = "string",
+#'           namespaceType = "NONE"|"BUILD_ID",
+#'           name = "string",
+#'           packaging = "NONE"|"ZIP",
+#'           overrideArtifactName = TRUE|FALSE,
+#'           encryptionDisabled = TRUE|FALSE,
+#'           artifactIdentifier = "string"
+#'         )
+#'       ),
+#'       cache = list(
+#'         type = "NO_CACHE"|"S3"|"LOCAL",
+#'         location = "string",
+#'         modes = list(
+#'           "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+#'         )
+#'       ),
+#'       environment = list(
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'         image = "string",
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'         environmentVariables = list(
+#'           list(
+#'             name = "string",
+#'             value = "string",
+#'             type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
+#'           )
+#'         ),
+#'         privilegedMode = TRUE|FALSE,
+#'         certificate = "string",
+#'         registryCredential = list(
+#'           credential = "string",
+#'           credentialProvider = "SECRETS_MANAGER"
+#'         ),
+#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'       ),
+#'       serviceRole = "string",
+#'       timeoutInMinutes = 123,
+#'       queuedTimeoutInMinutes = 123,
+#'       encryptionKey = "string",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       webhook = list(
+#'         url = "string",
+#'         payloadUrl = "string",
+#'         secret = "string",
+#'         branchFilter = "string",
+#'         filterGroups = list(
+#'           list(
+#'             list(
+#'               type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
+#'               pattern = "string",
+#'               excludeMatchedPattern = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         buildType = "BUILD"|"BUILD_BATCH",
+#'         lastModifiedSecret = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       vpcConfig = list(
+#'         vpcId = "string",
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       badge = list(
+#'         badgeEnabled = TRUE|FALSE,
+#'         badgeRequestUrl = "string"
+#'       ),
+#'       logsConfig = list(
+#'         cloudWatchLogs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           groupName = "string",
+#'           streamName = "string"
+#'         ),
+#'         s3Logs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           location = "string",
+#'           encryptionDisabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       fileSystemLocations = list(
+#'         list(
+#'           type = "EFS",
+#'           location = "string",
+#'           mountPoint = "string",
+#'           identifier = "string",
+#'           mountOptions = "string"
+#'         )
+#'       ),
+#'       buildBatchConfig = list(
+#'         serviceRole = "string",
+#'         combineArtifacts = TRUE|FALSE,
+#'         restrictions = list(
+#'           maximumBuildsAllowed = 123,
+#'           computeTypesAllowed = list(
+#'             "string"
+#'           )
+#'         ),
+#'         timeoutInMins = 123
+#'       )
+#'     )
+#'   ),
+#'   projectsNotFound = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_get_projects(
@@ -183,6 +829,46 @@ codebuild_batch_get_projects <- function(names) {
 #'
 #' @param reportGroupArns &#91;required&#93; An array of report group ARNs that identify the report groups to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   reportGroups = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       type = "TEST"|"CODE_COVERAGE",
+#'       exportConfig = list(
+#'         exportConfigType = "S3"|"NO_EXPORT",
+#'         s3Destination = list(
+#'           bucket = "string",
+#'           path = "string",
+#'           packaging = "ZIP"|"NONE",
+#'           encryptionKey = "string",
+#'           encryptionDisabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       status = "ACTIVE"|"DELETING"
+#'     )
+#'   ),
+#'   reportGroupsNotFound = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_get_report_groups(
@@ -221,6 +907,58 @@ codebuild_batch_get_report_groups <- function(reportGroupArns) {
 #' codebuild_batch_get_reports(reportArns)
 #'
 #' @param reportArns &#91;required&#93; An array of ARNs that identify the `Report` objects to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   reports = list(
+#'     list(
+#'       arn = "string",
+#'       type = "TEST"|"CODE_COVERAGE",
+#'       name = "string",
+#'       reportGroupArn = "string",
+#'       executionId = "string",
+#'       status = "GENERATING"|"SUCCEEDED"|"FAILED"|"INCOMPLETE"|"DELETING",
+#'       created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       expired = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       exportConfig = list(
+#'         exportConfigType = "S3"|"NO_EXPORT",
+#'         s3Destination = list(
+#'           bucket = "string",
+#'           path = "string",
+#'           packaging = "ZIP"|"NONE",
+#'           encryptionKey = "string",
+#'           encryptionDisabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       truncated = TRUE|FALSE,
+#'       testSummary = list(
+#'         total = 123,
+#'         statusCounts = list(
+#'           123
+#'         ),
+#'         durationInNanoSeconds = 123
+#'       ),
+#'       codeCoverageSummary = list(
+#'         lineCoveragePercentage = 123.0,
+#'         linesCovered = 123,
+#'         linesMissed = 123,
+#'         branchCoveragePercentage = 123.0,
+#'         branchesCovered = 123,
+#'         branchesMissed = 123
+#'       )
+#'     )
+#'   ),
+#'   reportsNotFound = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -332,6 +1070,197 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' file system created using Amazon Elastic File System.
 #' @param buildBatchConfig A ProjectBuildBatchConfig object that defines the batch build options
 #' for the project.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   project = list(
+#'     name = "string",
+#'     arn = "string",
+#'     description = "string",
+#'     source = list(
+#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'       location = "string",
+#'       gitCloneDepth = 123,
+#'       gitSubmodulesConfig = list(
+#'         fetchSubmodules = TRUE|FALSE
+#'       ),
+#'       buildspec = "string",
+#'       auth = list(
+#'         type = "OAUTH",
+#'         resource = "string"
+#'       ),
+#'       reportBuildStatus = TRUE|FALSE,
+#'       buildStatusConfig = list(
+#'         context = "string",
+#'         targetUrl = "string"
+#'       ),
+#'       insecureSsl = TRUE|FALSE,
+#'       sourceIdentifier = "string"
+#'     ),
+#'     secondarySources = list(
+#'       list(
+#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'         location = "string",
+#'         gitCloneDepth = 123,
+#'         gitSubmodulesConfig = list(
+#'           fetchSubmodules = TRUE|FALSE
+#'         ),
+#'         buildspec = "string",
+#'         auth = list(
+#'           type = "OAUTH",
+#'           resource = "string"
+#'         ),
+#'         reportBuildStatus = TRUE|FALSE,
+#'         buildStatusConfig = list(
+#'           context = "string",
+#'           targetUrl = "string"
+#'         ),
+#'         insecureSsl = TRUE|FALSE,
+#'         sourceIdentifier = "string"
+#'       )
+#'     ),
+#'     sourceVersion = "string",
+#'     secondarySourceVersions = list(
+#'       list(
+#'         sourceIdentifier = "string",
+#'         sourceVersion = "string"
+#'       )
+#'     ),
+#'     artifacts = list(
+#'       type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'       location = "string",
+#'       path = "string",
+#'       namespaceType = "NONE"|"BUILD_ID",
+#'       name = "string",
+#'       packaging = "NONE"|"ZIP",
+#'       overrideArtifactName = TRUE|FALSE,
+#'       encryptionDisabled = TRUE|FALSE,
+#'       artifactIdentifier = "string"
+#'     ),
+#'     secondaryArtifacts = list(
+#'       list(
+#'         type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'         location = "string",
+#'         path = "string",
+#'         namespaceType = "NONE"|"BUILD_ID",
+#'         name = "string",
+#'         packaging = "NONE"|"ZIP",
+#'         overrideArtifactName = TRUE|FALSE,
+#'         encryptionDisabled = TRUE|FALSE,
+#'         artifactIdentifier = "string"
+#'       )
+#'     ),
+#'     cache = list(
+#'       type = "NO_CACHE"|"S3"|"LOCAL",
+#'       location = "string",
+#'       modes = list(
+#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+#'       )
+#'     ),
+#'     environment = list(
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       image = "string",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       environmentVariables = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
+#'         )
+#'       ),
+#'       privilegedMode = TRUE|FALSE,
+#'       certificate = "string",
+#'       registryCredential = list(
+#'         credential = "string",
+#'         credentialProvider = "SECRETS_MANAGER"
+#'       ),
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'     ),
+#'     serviceRole = "string",
+#'     timeoutInMinutes = 123,
+#'     queuedTimeoutInMinutes = 123,
+#'     encryptionKey = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModified = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     webhook = list(
+#'       url = "string",
+#'       payloadUrl = "string",
+#'       secret = "string",
+#'       branchFilter = "string",
+#'       filterGroups = list(
+#'         list(
+#'           list(
+#'             type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
+#'             pattern = "string",
+#'             excludeMatchedPattern = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       buildType = "BUILD"|"BUILD_BATCH",
+#'       lastModifiedSecret = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     vpcConfig = list(
+#'       vpcId = "string",
+#'       subnets = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     badge = list(
+#'       badgeEnabled = TRUE|FALSE,
+#'       badgeRequestUrl = "string"
+#'     ),
+#'     logsConfig = list(
+#'       cloudWatchLogs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         groupName = "string",
+#'         streamName = "string"
+#'       ),
+#'       s3Logs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         location = "string",
+#'         encryptionDisabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     fileSystemLocations = list(
+#'       list(
+#'         type = "EFS",
+#'         location = "string",
+#'         mountPoint = "string",
+#'         identifier = "string",
+#'         mountOptions = "string"
+#'       )
+#'     ),
+#'     buildBatchConfig = list(
+#'       serviceRole = "string",
+#'       combineArtifacts = TRUE|FALSE,
+#'       restrictions = list(
+#'         maximumBuildsAllowed = 123,
+#'         computeTypesAllowed = list(
+#'           "string"
+#'         )
+#'       ),
+#'       timeoutInMins = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -529,6 +1458,41 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #' These tags are available for use by AWS services that support AWS
 #' CodeBuild report group tags.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   reportGroup = list(
+#'     arn = "string",
+#'     name = "string",
+#'     type = "TEST"|"CODE_COVERAGE",
+#'     exportConfig = list(
+#'       exportConfigType = "S3"|"NO_EXPORT",
+#'       s3Destination = list(
+#'         bucket = "string",
+#'         path = "string",
+#'         packaging = "ZIP"|"NONE",
+#'         encryptionKey = "string",
+#'         encryptionDisabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModified = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     status = "ACTIVE"|"DELETING"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_report_group(
@@ -614,6 +1578,32 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #' filters must pass.
 #' @param buildType Specifies the type of build this webhook will trigger.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   webhook = list(
+#'     url = "string",
+#'     payloadUrl = "string",
+#'     secret = "string",
+#'     branchFilter = "string",
+#'     filterGroups = list(
+#'       list(
+#'         list(
+#'           type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
+#'           pattern = "string",
+#'           excludeMatchedPattern = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     buildType = "BUILD"|"BUILD_BATCH",
+#'     lastModifiedSecret = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_webhook(
@@ -662,6 +1652,23 @@ codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGro
 #'
 #' @param id &#91;required&#93; The identifier of the batch build to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   statusCode = "string",
+#'   buildsDeleted = list(
+#'     "string"
+#'   ),
+#'   buildsNotDeleted = list(
+#'     list(
+#'       id = "string",
+#'       statusCode = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_build_batch(
@@ -700,6 +1707,12 @@ codebuild_delete_build_batch <- function(id) {
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_project(
@@ -736,6 +1749,12 @@ codebuild_delete_project <- function(name) {
 #' codebuild_delete_report(arn)
 #'
 #' @param arn &#91;required&#93; The ARN of the report to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -784,6 +1803,12 @@ codebuild_delete_report <- function(arn) {
 #' call [`delete_report_group`][codebuild_delete_report_group] for a report
 #' group that contains one or more reports, an exception is thrown.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_report_group(
@@ -821,6 +1846,12 @@ codebuild_delete_report_group <- function(arn, deleteReports = NULL) {
 #' codebuild_delete_resource_policy(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource that is associated with the resource policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -860,6 +1891,14 @@ codebuild_delete_resource_policy <- function(resourceArn) {
 #' codebuild_delete_source_credentials(arn)
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -903,6 +1942,12 @@ codebuild_delete_source_credentials <- function(arn) {
 #' codebuild_delete_webhook(projectName)
 #'
 #' @param projectName &#91;required&#93; The name of the AWS CodeBuild project.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -949,15 +1994,39 @@ codebuild_delete_webhook <- function(projectName) {
 #' @param sortOrder Specifies if the results are sorted in ascending or descending order.
 #' @param sortBy Specifies how the results are sorted. Possible values are:
 #' 
-#' ### FILE\\_PATH
+#' ### FILE_PATH
 #' 
 #' The results are sorted by file path.
 #' 
-#' ### LINE\\_COVERAGE\\_PERCENTAGE
+#' ### LINE_COVERAGE_PERCENTAGE
 #' 
 #' The results are sorted by the percentage of lines that are covered.
 #' @param minLineCoveragePercentage The minimum line coverage percentage to report.
 #' @param maxLineCoveragePercentage The maximum line coverage percentage to report.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   codeCoverages = list(
+#'     list(
+#'       id = "string",
+#'       reportARN = "string",
+#'       filePath = "string",
+#'       lineCoveragePercentage = 123.0,
+#'       linesCovered = 123,
+#'       linesMissed = 123,
+#'       branchCoveragePercentage = 123.0,
+#'       branchesCovered = 123,
+#'       branchesMissed = 123,
+#'       expired = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1013,6 +2082,28 @@ codebuild_describe_code_coverages <- function(reportArn, nextToken = NULL, maxRe
 #' The default value is 100.
 #' @param filter A `TestCaseFilter` object used to filter the returned reports.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   testCases = list(
+#'     list(
+#'       reportArn = "string",
+#'       testRawDataPath = "string",
+#'       prefix = "string",
+#'       name = "string",
+#'       status = "string",
+#'       durationInNanoSeconds = 123,
+#'       message = "string",
+#'       expired = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_test_cases(
@@ -1059,6 +2150,24 @@ codebuild_describe_test_cases <- function(reportArn, nextToken = NULL, maxResult
 #' @param numOfReports 
 #' @param trendField &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   stats = list(
+#'     average = "string",
+#'     max = "string",
+#'     min = "string"
+#'   ),
+#'   rawData = list(
+#'     list(
+#'       reportArn = "string",
+#'       data = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_report_group_trend(
@@ -1097,6 +2206,14 @@ codebuild_get_report_group_trend <- function(reportGroupArn, numOfReports = NULL
 #' codebuild_get_resource_policy(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource that is associated with the resource policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1138,7 +2255,7 @@ codebuild_get_resource_policy <- function(resourceArn) {
 #' codebuild_import_source_credentials(username, token, serverType,
 #'   authType, shouldOverwrite)
 #'
-#' @param username The Bitbucket username when the `authType` is BASIC\\_AUTH. This
+#' @param username The Bitbucket username when the `authType` is BASIC_AUTH. This
 #' parameter is not valid for other types of source providers or
 #' connections.
 #' @param token &#91;required&#93; For GitHub or GitHub Enterprise, this is the personal access token. For
@@ -1151,6 +2268,14 @@ codebuild_get_resource_policy <- function(resourceArn) {
 #' @param shouldOverwrite Set to `false` to prevent overwriting the repository source credentials.
 #' Set to `true` to overwrite the repository source credentials. The
 #' default value is `true`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1192,6 +2317,12 @@ codebuild_import_source_credentials <- function(username = NULL, token, serverTy
 #' codebuild_invalidate_project_cache(projectName)
 #'
 #' @param projectName &#91;required&#93; The name of the AWS CodeBuild build project that the cache is reset for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1241,6 +2372,17 @@ codebuild_invalidate_project_cache <- function(projectName) {
 #' [`list_build_batches`][codebuild_list_build_batches]. This specifies the
 #' next item to return. To return the beginning of the list, exclude this
 #' parameter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ids = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1298,6 +2440,17 @@ codebuild_list_build_batches <- function(filter = NULL, maxResults = NULL, sortO
 #' This specifies the next item to return. To return the beginning of the
 #' list, exclude this parameter.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ids = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_build_batches_for_project(
@@ -1352,6 +2505,17 @@ codebuild_list_build_batches_for_project <- function(projectName = NULL, filter 
 #' items in the list, keep calling this operation with each subsequent next
 #' token that is returned, until no more next tokens are returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ids = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_builds(
@@ -1403,6 +2567,17 @@ codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
 #' items in the list, keep calling this operation with each subsequent next
 #' token that is returned, until no more next tokens are returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ids = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_builds_for_project(
@@ -1439,6 +2614,32 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
 #'
 #' @usage
 #' codebuild_list_curated_environment_images()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   platforms = list(
+#'     list(
+#'       platform = "DEBIAN"|"AMAZON_LINUX"|"UBUNTU"|"WINDOWS_SERVER",
+#'       languages = list(
+#'         list(
+#'           language = "JAVA"|"PYTHON"|"NODE_JS"|"RUBY"|"GOLANG"|"DOCKER"|"ANDROID"|"DOTNET"|"BASE"|"PHP",
+#'           images = list(
+#'             list(
+#'               name = "string",
+#'               description = "string",
+#'               versions = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1502,6 +2703,17 @@ codebuild_list_curated_environment_images <- function() {
 #' items in the list, keep calling this operation with each subsequent next
 #' token that is returned, until no more next tokens are returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   projects = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_projects(
@@ -1561,6 +2773,17 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
 #' `nextToken` to iterate pages in the list of returned `ReportGroup`
 #' objects. The default value is 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   reportGroups = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_report_groups(
@@ -1619,6 +2842,17 @@ codebuild_list_report_groups <- function(sortOrder = NULL, sortBy = NULL, nextTo
 #' The default value is 100.
 #' @param filter A `ReportFilter` object used to filter the returned reports.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   reports = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_reports(
@@ -1674,6 +2908,17 @@ codebuild_list_reports <- function(sortOrder = NULL, nextToken = NULL, maxResult
 #' per response. Use `nextToken` to iterate pages in the list of returned
 #' `Report` objects. The default value is 100.
 #' @param filter A `ReportFilter` object used to filter the returned reports.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   reports = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1740,6 +2985,17 @@ codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = 
 #' this operation with each subsequent next token that is returned, until
 #' no more next tokens are returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   projects = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_shared_projects(
@@ -1804,6 +3060,17 @@ codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxR
 #' `nextToken` to iterate pages in the list of returned `ReportGroup`
 #' objects. The default value is 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   reportGroups = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_shared_report_groups(
@@ -1841,6 +3108,20 @@ codebuild_list_shared_report_groups <- function(sortOrder = NULL, sortBy = NULL,
 #'
 #' @usage
 #' codebuild_list_source_credentials()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   sourceCredentialsInfos = list(
+#'     list(
+#'       arn = "string",
+#'       serverType = "GITHUB"|"BITBUCKET"|"GITHUB_ENTERPRISE",
+#'       authType = "OAUTH"|"BASIC_AUTH"|"PERSONAL_ACCESS_TOKEN"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1883,6 +3164,14 @@ codebuild_list_source_credentials <- function() {
 #' in the *AWS CodeBuild User Guide*.
 #' @param resourceArn &#91;required&#93; The ARN of the `Project` or `ReportGroup` resource you want to associate
 #' with a resource policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1927,6 +3216,200 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' and is valid for five minutes. If you repeat the
 #' [`retry_build`][codebuild_retry_build] request with the same token, but
 #' change a parameter, AWS CodeBuild returns a parameter mismatch error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   build = list(
+#'     id = "string",
+#'     arn = "string",
+#'     buildNumber = 123,
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     currentPhase = "string",
+#'     buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'     sourceVersion = "string",
+#'     resolvedSourceVersion = "string",
+#'     projectName = "string",
+#'     phases = list(
+#'       list(
+#'         phaseType = "SUBMITTED"|"QUEUED"|"PROVISIONING"|"DOWNLOAD_SOURCE"|"INSTALL"|"PRE_BUILD"|"BUILD"|"POST_BUILD"|"UPLOAD_ARTIFACTS"|"FINALIZING"|"COMPLETED",
+#'         phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         durationInSeconds = 123,
+#'         contexts = list(
+#'           list(
+#'             statusCode = "string",
+#'             message = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     source = list(
+#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'       location = "string",
+#'       gitCloneDepth = 123,
+#'       gitSubmodulesConfig = list(
+#'         fetchSubmodules = TRUE|FALSE
+#'       ),
+#'       buildspec = "string",
+#'       auth = list(
+#'         type = "OAUTH",
+#'         resource = "string"
+#'       ),
+#'       reportBuildStatus = TRUE|FALSE,
+#'       buildStatusConfig = list(
+#'         context = "string",
+#'         targetUrl = "string"
+#'       ),
+#'       insecureSsl = TRUE|FALSE,
+#'       sourceIdentifier = "string"
+#'     ),
+#'     secondarySources = list(
+#'       list(
+#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'         location = "string",
+#'         gitCloneDepth = 123,
+#'         gitSubmodulesConfig = list(
+#'           fetchSubmodules = TRUE|FALSE
+#'         ),
+#'         buildspec = "string",
+#'         auth = list(
+#'           type = "OAUTH",
+#'           resource = "string"
+#'         ),
+#'         reportBuildStatus = TRUE|FALSE,
+#'         buildStatusConfig = list(
+#'           context = "string",
+#'           targetUrl = "string"
+#'         ),
+#'         insecureSsl = TRUE|FALSE,
+#'         sourceIdentifier = "string"
+#'       )
+#'     ),
+#'     secondarySourceVersions = list(
+#'       list(
+#'         sourceIdentifier = "string",
+#'         sourceVersion = "string"
+#'       )
+#'     ),
+#'     artifacts = list(
+#'       location = "string",
+#'       sha256sum = "string",
+#'       md5sum = "string",
+#'       overrideArtifactName = TRUE|FALSE,
+#'       encryptionDisabled = TRUE|FALSE,
+#'       artifactIdentifier = "string"
+#'     ),
+#'     secondaryArtifacts = list(
+#'       list(
+#'         location = "string",
+#'         sha256sum = "string",
+#'         md5sum = "string",
+#'         overrideArtifactName = TRUE|FALSE,
+#'         encryptionDisabled = TRUE|FALSE,
+#'         artifactIdentifier = "string"
+#'       )
+#'     ),
+#'     cache = list(
+#'       type = "NO_CACHE"|"S3"|"LOCAL",
+#'       location = "string",
+#'       modes = list(
+#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+#'       )
+#'     ),
+#'     environment = list(
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       image = "string",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       environmentVariables = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
+#'         )
+#'       ),
+#'       privilegedMode = TRUE|FALSE,
+#'       certificate = "string",
+#'       registryCredential = list(
+#'         credential = "string",
+#'         credentialProvider = "SECRETS_MANAGER"
+#'       ),
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'     ),
+#'     serviceRole = "string",
+#'     logs = list(
+#'       groupName = "string",
+#'       streamName = "string",
+#'       deepLink = "string",
+#'       s3DeepLink = "string",
+#'       cloudWatchLogsArn = "string",
+#'       s3LogsArn = "string",
+#'       cloudWatchLogs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         groupName = "string",
+#'         streamName = "string"
+#'       ),
+#'       s3Logs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         location = "string",
+#'         encryptionDisabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     timeoutInMinutes = 123,
+#'     queuedTimeoutInMinutes = 123,
+#'     buildComplete = TRUE|FALSE,
+#'     initiator = "string",
+#'     vpcConfig = list(
+#'       vpcId = "string",
+#'       subnets = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     networkInterface = list(
+#'       subnetId = "string",
+#'       networkInterfaceId = "string"
+#'     ),
+#'     encryptionKey = "string",
+#'     exportedEnvironmentVariables = list(
+#'       list(
+#'         name = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     reportArns = list(
+#'       "string"
+#'     ),
+#'     fileSystemLocations = list(
+#'       list(
+#'         type = "EFS",
+#'         location = "string",
+#'         mountPoint = "string",
+#'         identifier = "string",
+#'         mountOptions = "string"
+#'       )
+#'     ),
+#'     debugSession = list(
+#'       sessionEnabled = TRUE|FALSE,
+#'       sessionTarget = "string"
+#'     ),
+#'     buildBatchArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1975,6 +3458,236 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #' token, but change a parameter, AWS CodeBuild returns a parameter
 #' mismatch error.
 #' @param retryType Specifies the type of retry to perform.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   buildBatch = list(
+#'     id = "string",
+#'     arn = "string",
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     currentPhase = "string",
+#'     buildBatchStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'     sourceVersion = "string",
+#'     resolvedSourceVersion = "string",
+#'     projectName = "string",
+#'     phases = list(
+#'       list(
+#'         phaseType = "SUBMITTED"|"DOWNLOAD_BATCHSPEC"|"IN_PROGRESS"|"COMBINE_ARTIFACTS"|"SUCCEEDED"|"FAILED"|"STOPPED",
+#'         phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         durationInSeconds = 123,
+#'         contexts = list(
+#'           list(
+#'             statusCode = "string",
+#'             message = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     source = list(
+#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'       location = "string",
+#'       gitCloneDepth = 123,
+#'       gitSubmodulesConfig = list(
+#'         fetchSubmodules = TRUE|FALSE
+#'       ),
+#'       buildspec = "string",
+#'       auth = list(
+#'         type = "OAUTH",
+#'         resource = "string"
+#'       ),
+#'       reportBuildStatus = TRUE|FALSE,
+#'       buildStatusConfig = list(
+#'         context = "string",
+#'         targetUrl = "string"
+#'       ),
+#'       insecureSsl = TRUE|FALSE,
+#'       sourceIdentifier = "string"
+#'     ),
+#'     secondarySources = list(
+#'       list(
+#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'         location = "string",
+#'         gitCloneDepth = 123,
+#'         gitSubmodulesConfig = list(
+#'           fetchSubmodules = TRUE|FALSE
+#'         ),
+#'         buildspec = "string",
+#'         auth = list(
+#'           type = "OAUTH",
+#'           resource = "string"
+#'         ),
+#'         reportBuildStatus = TRUE|FALSE,
+#'         buildStatusConfig = list(
+#'           context = "string",
+#'           targetUrl = "string"
+#'         ),
+#'         insecureSsl = TRUE|FALSE,
+#'         sourceIdentifier = "string"
+#'       )
+#'     ),
+#'     secondarySourceVersions = list(
+#'       list(
+#'         sourceIdentifier = "string",
+#'         sourceVersion = "string"
+#'       )
+#'     ),
+#'     artifacts = list(
+#'       location = "string",
+#'       sha256sum = "string",
+#'       md5sum = "string",
+#'       overrideArtifactName = TRUE|FALSE,
+#'       encryptionDisabled = TRUE|FALSE,
+#'       artifactIdentifier = "string"
+#'     ),
+#'     secondaryArtifacts = list(
+#'       list(
+#'         location = "string",
+#'         sha256sum = "string",
+#'         md5sum = "string",
+#'         overrideArtifactName = TRUE|FALSE,
+#'         encryptionDisabled = TRUE|FALSE,
+#'         artifactIdentifier = "string"
+#'       )
+#'     ),
+#'     cache = list(
+#'       type = "NO_CACHE"|"S3"|"LOCAL",
+#'       location = "string",
+#'       modes = list(
+#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+#'       )
+#'     ),
+#'     environment = list(
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       image = "string",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       environmentVariables = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
+#'         )
+#'       ),
+#'       privilegedMode = TRUE|FALSE,
+#'       certificate = "string",
+#'       registryCredential = list(
+#'         credential = "string",
+#'         credentialProvider = "SECRETS_MANAGER"
+#'       ),
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'     ),
+#'     serviceRole = "string",
+#'     logConfig = list(
+#'       cloudWatchLogs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         groupName = "string",
+#'         streamName = "string"
+#'       ),
+#'       s3Logs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         location = "string",
+#'         encryptionDisabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     buildTimeoutInMinutes = 123,
+#'     queuedTimeoutInMinutes = 123,
+#'     complete = TRUE|FALSE,
+#'     initiator = "string",
+#'     vpcConfig = list(
+#'       vpcId = "string",
+#'       subnets = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     encryptionKey = "string",
+#'     buildBatchNumber = 123,
+#'     fileSystemLocations = list(
+#'       list(
+#'         type = "EFS",
+#'         location = "string",
+#'         mountPoint = "string",
+#'         identifier = "string",
+#'         mountOptions = "string"
+#'       )
+#'     ),
+#'     buildBatchConfig = list(
+#'       serviceRole = "string",
+#'       combineArtifacts = TRUE|FALSE,
+#'       restrictions = list(
+#'         maximumBuildsAllowed = 123,
+#'         computeTypesAllowed = list(
+#'           "string"
+#'         )
+#'       ),
+#'       timeoutInMins = 123
+#'     ),
+#'     buildGroups = list(
+#'       list(
+#'         identifier = "string",
+#'         dependsOn = list(
+#'           "string"
+#'         ),
+#'         ignoreFailure = TRUE|FALSE,
+#'         currentBuildSummary = list(
+#'           arn = "string",
+#'           requestedOn = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'           primaryArtifact = list(
+#'             type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'             location = "string",
+#'             identifier = "string"
+#'           ),
+#'           secondaryArtifacts = list(
+#'             list(
+#'               type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'               location = "string",
+#'               identifier = "string"
+#'             )
+#'           )
+#'         ),
+#'         priorBuildSummaryList = list(
+#'           list(
+#'             arn = "string",
+#'             requestedOn = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'             primaryArtifact = list(
+#'               type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'               location = "string",
+#'               identifier = "string"
+#'             ),
+#'             secondaryArtifacts = list(
+#'               list(
+#'                 type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'                 location = "string",
+#'                 identifier = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2152,7 +3865,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' that you modify your ECR repository policy to trust AWS CodeBuild's
 #' service principal.
 #' 
-#' ### SERVICE\\_ROLE
+#' ### SERVICE_ROLE
 #' 
 #' Specifies that AWS CodeBuild uses your build project's service role.
 #' 
@@ -2162,6 +3875,200 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @param debugSessionEnabled Specifies if session debugging is enabled for this build. For more
 #' information, see [Viewing a running build in Session
 #' Manager](https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   build = list(
+#'     id = "string",
+#'     arn = "string",
+#'     buildNumber = 123,
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     currentPhase = "string",
+#'     buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'     sourceVersion = "string",
+#'     resolvedSourceVersion = "string",
+#'     projectName = "string",
+#'     phases = list(
+#'       list(
+#'         phaseType = "SUBMITTED"|"QUEUED"|"PROVISIONING"|"DOWNLOAD_SOURCE"|"INSTALL"|"PRE_BUILD"|"BUILD"|"POST_BUILD"|"UPLOAD_ARTIFACTS"|"FINALIZING"|"COMPLETED",
+#'         phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         durationInSeconds = 123,
+#'         contexts = list(
+#'           list(
+#'             statusCode = "string",
+#'             message = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     source = list(
+#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'       location = "string",
+#'       gitCloneDepth = 123,
+#'       gitSubmodulesConfig = list(
+#'         fetchSubmodules = TRUE|FALSE
+#'       ),
+#'       buildspec = "string",
+#'       auth = list(
+#'         type = "OAUTH",
+#'         resource = "string"
+#'       ),
+#'       reportBuildStatus = TRUE|FALSE,
+#'       buildStatusConfig = list(
+#'         context = "string",
+#'         targetUrl = "string"
+#'       ),
+#'       insecureSsl = TRUE|FALSE,
+#'       sourceIdentifier = "string"
+#'     ),
+#'     secondarySources = list(
+#'       list(
+#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'         location = "string",
+#'         gitCloneDepth = 123,
+#'         gitSubmodulesConfig = list(
+#'           fetchSubmodules = TRUE|FALSE
+#'         ),
+#'         buildspec = "string",
+#'         auth = list(
+#'           type = "OAUTH",
+#'           resource = "string"
+#'         ),
+#'         reportBuildStatus = TRUE|FALSE,
+#'         buildStatusConfig = list(
+#'           context = "string",
+#'           targetUrl = "string"
+#'         ),
+#'         insecureSsl = TRUE|FALSE,
+#'         sourceIdentifier = "string"
+#'       )
+#'     ),
+#'     secondarySourceVersions = list(
+#'       list(
+#'         sourceIdentifier = "string",
+#'         sourceVersion = "string"
+#'       )
+#'     ),
+#'     artifacts = list(
+#'       location = "string",
+#'       sha256sum = "string",
+#'       md5sum = "string",
+#'       overrideArtifactName = TRUE|FALSE,
+#'       encryptionDisabled = TRUE|FALSE,
+#'       artifactIdentifier = "string"
+#'     ),
+#'     secondaryArtifacts = list(
+#'       list(
+#'         location = "string",
+#'         sha256sum = "string",
+#'         md5sum = "string",
+#'         overrideArtifactName = TRUE|FALSE,
+#'         encryptionDisabled = TRUE|FALSE,
+#'         artifactIdentifier = "string"
+#'       )
+#'     ),
+#'     cache = list(
+#'       type = "NO_CACHE"|"S3"|"LOCAL",
+#'       location = "string",
+#'       modes = list(
+#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+#'       )
+#'     ),
+#'     environment = list(
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       image = "string",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       environmentVariables = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
+#'         )
+#'       ),
+#'       privilegedMode = TRUE|FALSE,
+#'       certificate = "string",
+#'       registryCredential = list(
+#'         credential = "string",
+#'         credentialProvider = "SECRETS_MANAGER"
+#'       ),
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'     ),
+#'     serviceRole = "string",
+#'     logs = list(
+#'       groupName = "string",
+#'       streamName = "string",
+#'       deepLink = "string",
+#'       s3DeepLink = "string",
+#'       cloudWatchLogsArn = "string",
+#'       s3LogsArn = "string",
+#'       cloudWatchLogs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         groupName = "string",
+#'         streamName = "string"
+#'       ),
+#'       s3Logs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         location = "string",
+#'         encryptionDisabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     timeoutInMinutes = 123,
+#'     queuedTimeoutInMinutes = 123,
+#'     buildComplete = TRUE|FALSE,
+#'     initiator = "string",
+#'     vpcConfig = list(
+#'       vpcId = "string",
+#'       subnets = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     networkInterface = list(
+#'       subnetId = "string",
+#'       networkInterfaceId = "string"
+#'     ),
+#'     encryptionKey = "string",
+#'     exportedEnvironmentVariables = list(
+#'       list(
+#'         name = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     reportArns = list(
+#'       "string"
+#'     ),
+#'     fileSystemLocations = list(
+#'       list(
+#'         type = "EFS",
+#'         location = "string",
+#'         mountPoint = "string",
+#'         identifier = "string",
+#'         mountOptions = "string"
+#'       )
+#'     ),
+#'     debugSession = list(
+#'       sessionEnabled = TRUE|FALSE,
+#'       sessionTarget = "string"
+#'     ),
+#'     buildBatchArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2448,7 +4355,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' that you modify your ECR repository policy to trust AWS CodeBuild's
 #' service principal.
 #' 
-#' ### SERVICE\\_ROLE
+#' ### SERVICE_ROLE
 #' 
 #' Specifies that AWS CodeBuild uses your build project's service role.
 #' 
@@ -2457,6 +4364,236 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' you must use `CODEBUILD` credentials.
 #' @param buildBatchConfigOverride A `BuildBatchConfigOverride` object that contains batch build
 #' configuration overrides.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   buildBatch = list(
+#'     id = "string",
+#'     arn = "string",
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     currentPhase = "string",
+#'     buildBatchStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'     sourceVersion = "string",
+#'     resolvedSourceVersion = "string",
+#'     projectName = "string",
+#'     phases = list(
+#'       list(
+#'         phaseType = "SUBMITTED"|"DOWNLOAD_BATCHSPEC"|"IN_PROGRESS"|"COMBINE_ARTIFACTS"|"SUCCEEDED"|"FAILED"|"STOPPED",
+#'         phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         durationInSeconds = 123,
+#'         contexts = list(
+#'           list(
+#'             statusCode = "string",
+#'             message = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     source = list(
+#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'       location = "string",
+#'       gitCloneDepth = 123,
+#'       gitSubmodulesConfig = list(
+#'         fetchSubmodules = TRUE|FALSE
+#'       ),
+#'       buildspec = "string",
+#'       auth = list(
+#'         type = "OAUTH",
+#'         resource = "string"
+#'       ),
+#'       reportBuildStatus = TRUE|FALSE,
+#'       buildStatusConfig = list(
+#'         context = "string",
+#'         targetUrl = "string"
+#'       ),
+#'       insecureSsl = TRUE|FALSE,
+#'       sourceIdentifier = "string"
+#'     ),
+#'     secondarySources = list(
+#'       list(
+#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'         location = "string",
+#'         gitCloneDepth = 123,
+#'         gitSubmodulesConfig = list(
+#'           fetchSubmodules = TRUE|FALSE
+#'         ),
+#'         buildspec = "string",
+#'         auth = list(
+#'           type = "OAUTH",
+#'           resource = "string"
+#'         ),
+#'         reportBuildStatus = TRUE|FALSE,
+#'         buildStatusConfig = list(
+#'           context = "string",
+#'           targetUrl = "string"
+#'         ),
+#'         insecureSsl = TRUE|FALSE,
+#'         sourceIdentifier = "string"
+#'       )
+#'     ),
+#'     secondarySourceVersions = list(
+#'       list(
+#'         sourceIdentifier = "string",
+#'         sourceVersion = "string"
+#'       )
+#'     ),
+#'     artifacts = list(
+#'       location = "string",
+#'       sha256sum = "string",
+#'       md5sum = "string",
+#'       overrideArtifactName = TRUE|FALSE,
+#'       encryptionDisabled = TRUE|FALSE,
+#'       artifactIdentifier = "string"
+#'     ),
+#'     secondaryArtifacts = list(
+#'       list(
+#'         location = "string",
+#'         sha256sum = "string",
+#'         md5sum = "string",
+#'         overrideArtifactName = TRUE|FALSE,
+#'         encryptionDisabled = TRUE|FALSE,
+#'         artifactIdentifier = "string"
+#'       )
+#'     ),
+#'     cache = list(
+#'       type = "NO_CACHE"|"S3"|"LOCAL",
+#'       location = "string",
+#'       modes = list(
+#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+#'       )
+#'     ),
+#'     environment = list(
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       image = "string",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       environmentVariables = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
+#'         )
+#'       ),
+#'       privilegedMode = TRUE|FALSE,
+#'       certificate = "string",
+#'       registryCredential = list(
+#'         credential = "string",
+#'         credentialProvider = "SECRETS_MANAGER"
+#'       ),
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'     ),
+#'     serviceRole = "string",
+#'     logConfig = list(
+#'       cloudWatchLogs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         groupName = "string",
+#'         streamName = "string"
+#'       ),
+#'       s3Logs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         location = "string",
+#'         encryptionDisabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     buildTimeoutInMinutes = 123,
+#'     queuedTimeoutInMinutes = 123,
+#'     complete = TRUE|FALSE,
+#'     initiator = "string",
+#'     vpcConfig = list(
+#'       vpcId = "string",
+#'       subnets = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     encryptionKey = "string",
+#'     buildBatchNumber = 123,
+#'     fileSystemLocations = list(
+#'       list(
+#'         type = "EFS",
+#'         location = "string",
+#'         mountPoint = "string",
+#'         identifier = "string",
+#'         mountOptions = "string"
+#'       )
+#'     ),
+#'     buildBatchConfig = list(
+#'       serviceRole = "string",
+#'       combineArtifacts = TRUE|FALSE,
+#'       restrictions = list(
+#'         maximumBuildsAllowed = 123,
+#'         computeTypesAllowed = list(
+#'           "string"
+#'         )
+#'       ),
+#'       timeoutInMins = 123
+#'     ),
+#'     buildGroups = list(
+#'       list(
+#'         identifier = "string",
+#'         dependsOn = list(
+#'           "string"
+#'         ),
+#'         ignoreFailure = TRUE|FALSE,
+#'         currentBuildSummary = list(
+#'           arn = "string",
+#'           requestedOn = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'           primaryArtifact = list(
+#'             type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'             location = "string",
+#'             identifier = "string"
+#'           ),
+#'           secondaryArtifacts = list(
+#'             list(
+#'               type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'               location = "string",
+#'               identifier = "string"
+#'             )
+#'           )
+#'         ),
+#'         priorBuildSummaryList = list(
+#'           list(
+#'             arn = "string",
+#'             requestedOn = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'             primaryArtifact = list(
+#'               type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'               location = "string",
+#'               identifier = "string"
+#'             ),
+#'             secondaryArtifacts = list(
+#'               list(
+#'                 type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'                 location = "string",
+#'                 identifier = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2613,6 +4750,200 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #'
 #' @param id &#91;required&#93; The ID of the build.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   build = list(
+#'     id = "string",
+#'     arn = "string",
+#'     buildNumber = 123,
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     currentPhase = "string",
+#'     buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'     sourceVersion = "string",
+#'     resolvedSourceVersion = "string",
+#'     projectName = "string",
+#'     phases = list(
+#'       list(
+#'         phaseType = "SUBMITTED"|"QUEUED"|"PROVISIONING"|"DOWNLOAD_SOURCE"|"INSTALL"|"PRE_BUILD"|"BUILD"|"POST_BUILD"|"UPLOAD_ARTIFACTS"|"FINALIZING"|"COMPLETED",
+#'         phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         durationInSeconds = 123,
+#'         contexts = list(
+#'           list(
+#'             statusCode = "string",
+#'             message = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     source = list(
+#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'       location = "string",
+#'       gitCloneDepth = 123,
+#'       gitSubmodulesConfig = list(
+#'         fetchSubmodules = TRUE|FALSE
+#'       ),
+#'       buildspec = "string",
+#'       auth = list(
+#'         type = "OAUTH",
+#'         resource = "string"
+#'       ),
+#'       reportBuildStatus = TRUE|FALSE,
+#'       buildStatusConfig = list(
+#'         context = "string",
+#'         targetUrl = "string"
+#'       ),
+#'       insecureSsl = TRUE|FALSE,
+#'       sourceIdentifier = "string"
+#'     ),
+#'     secondarySources = list(
+#'       list(
+#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'         location = "string",
+#'         gitCloneDepth = 123,
+#'         gitSubmodulesConfig = list(
+#'           fetchSubmodules = TRUE|FALSE
+#'         ),
+#'         buildspec = "string",
+#'         auth = list(
+#'           type = "OAUTH",
+#'           resource = "string"
+#'         ),
+#'         reportBuildStatus = TRUE|FALSE,
+#'         buildStatusConfig = list(
+#'           context = "string",
+#'           targetUrl = "string"
+#'         ),
+#'         insecureSsl = TRUE|FALSE,
+#'         sourceIdentifier = "string"
+#'       )
+#'     ),
+#'     secondarySourceVersions = list(
+#'       list(
+#'         sourceIdentifier = "string",
+#'         sourceVersion = "string"
+#'       )
+#'     ),
+#'     artifacts = list(
+#'       location = "string",
+#'       sha256sum = "string",
+#'       md5sum = "string",
+#'       overrideArtifactName = TRUE|FALSE,
+#'       encryptionDisabled = TRUE|FALSE,
+#'       artifactIdentifier = "string"
+#'     ),
+#'     secondaryArtifacts = list(
+#'       list(
+#'         location = "string",
+#'         sha256sum = "string",
+#'         md5sum = "string",
+#'         overrideArtifactName = TRUE|FALSE,
+#'         encryptionDisabled = TRUE|FALSE,
+#'         artifactIdentifier = "string"
+#'       )
+#'     ),
+#'     cache = list(
+#'       type = "NO_CACHE"|"S3"|"LOCAL",
+#'       location = "string",
+#'       modes = list(
+#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+#'       )
+#'     ),
+#'     environment = list(
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       image = "string",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       environmentVariables = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
+#'         )
+#'       ),
+#'       privilegedMode = TRUE|FALSE,
+#'       certificate = "string",
+#'       registryCredential = list(
+#'         credential = "string",
+#'         credentialProvider = "SECRETS_MANAGER"
+#'       ),
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'     ),
+#'     serviceRole = "string",
+#'     logs = list(
+#'       groupName = "string",
+#'       streamName = "string",
+#'       deepLink = "string",
+#'       s3DeepLink = "string",
+#'       cloudWatchLogsArn = "string",
+#'       s3LogsArn = "string",
+#'       cloudWatchLogs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         groupName = "string",
+#'         streamName = "string"
+#'       ),
+#'       s3Logs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         location = "string",
+#'         encryptionDisabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     timeoutInMinutes = 123,
+#'     queuedTimeoutInMinutes = 123,
+#'     buildComplete = TRUE|FALSE,
+#'     initiator = "string",
+#'     vpcConfig = list(
+#'       vpcId = "string",
+#'       subnets = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     networkInterface = list(
+#'       subnetId = "string",
+#'       networkInterfaceId = "string"
+#'     ),
+#'     encryptionKey = "string",
+#'     exportedEnvironmentVariables = list(
+#'       list(
+#'         name = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     reportArns = list(
+#'       "string"
+#'     ),
+#'     fileSystemLocations = list(
+#'       list(
+#'         type = "EFS",
+#'         location = "string",
+#'         mountPoint = "string",
+#'         identifier = "string",
+#'         mountOptions = "string"
+#'       )
+#'     ),
+#'     debugSession = list(
+#'       sessionEnabled = TRUE|FALSE,
+#'       sessionTarget = "string"
+#'     ),
+#'     buildBatchArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_build(
@@ -2649,6 +4980,236 @@ codebuild_stop_build <- function(id) {
 #' codebuild_stop_build_batch(id)
 #'
 #' @param id &#91;required&#93; The identifier of the batch build to stop.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   buildBatch = list(
+#'     id = "string",
+#'     arn = "string",
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     currentPhase = "string",
+#'     buildBatchStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'     sourceVersion = "string",
+#'     resolvedSourceVersion = "string",
+#'     projectName = "string",
+#'     phases = list(
+#'       list(
+#'         phaseType = "SUBMITTED"|"DOWNLOAD_BATCHSPEC"|"IN_PROGRESS"|"COMBINE_ARTIFACTS"|"SUCCEEDED"|"FAILED"|"STOPPED",
+#'         phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         durationInSeconds = 123,
+#'         contexts = list(
+#'           list(
+#'             statusCode = "string",
+#'             message = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     source = list(
+#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'       location = "string",
+#'       gitCloneDepth = 123,
+#'       gitSubmodulesConfig = list(
+#'         fetchSubmodules = TRUE|FALSE
+#'       ),
+#'       buildspec = "string",
+#'       auth = list(
+#'         type = "OAUTH",
+#'         resource = "string"
+#'       ),
+#'       reportBuildStatus = TRUE|FALSE,
+#'       buildStatusConfig = list(
+#'         context = "string",
+#'         targetUrl = "string"
+#'       ),
+#'       insecureSsl = TRUE|FALSE,
+#'       sourceIdentifier = "string"
+#'     ),
+#'     secondarySources = list(
+#'       list(
+#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'         location = "string",
+#'         gitCloneDepth = 123,
+#'         gitSubmodulesConfig = list(
+#'           fetchSubmodules = TRUE|FALSE
+#'         ),
+#'         buildspec = "string",
+#'         auth = list(
+#'           type = "OAUTH",
+#'           resource = "string"
+#'         ),
+#'         reportBuildStatus = TRUE|FALSE,
+#'         buildStatusConfig = list(
+#'           context = "string",
+#'           targetUrl = "string"
+#'         ),
+#'         insecureSsl = TRUE|FALSE,
+#'         sourceIdentifier = "string"
+#'       )
+#'     ),
+#'     secondarySourceVersions = list(
+#'       list(
+#'         sourceIdentifier = "string",
+#'         sourceVersion = "string"
+#'       )
+#'     ),
+#'     artifacts = list(
+#'       location = "string",
+#'       sha256sum = "string",
+#'       md5sum = "string",
+#'       overrideArtifactName = TRUE|FALSE,
+#'       encryptionDisabled = TRUE|FALSE,
+#'       artifactIdentifier = "string"
+#'     ),
+#'     secondaryArtifacts = list(
+#'       list(
+#'         location = "string",
+#'         sha256sum = "string",
+#'         md5sum = "string",
+#'         overrideArtifactName = TRUE|FALSE,
+#'         encryptionDisabled = TRUE|FALSE,
+#'         artifactIdentifier = "string"
+#'       )
+#'     ),
+#'     cache = list(
+#'       type = "NO_CACHE"|"S3"|"LOCAL",
+#'       location = "string",
+#'       modes = list(
+#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+#'       )
+#'     ),
+#'     environment = list(
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       image = "string",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       environmentVariables = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
+#'         )
+#'       ),
+#'       privilegedMode = TRUE|FALSE,
+#'       certificate = "string",
+#'       registryCredential = list(
+#'         credential = "string",
+#'         credentialProvider = "SECRETS_MANAGER"
+#'       ),
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'     ),
+#'     serviceRole = "string",
+#'     logConfig = list(
+#'       cloudWatchLogs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         groupName = "string",
+#'         streamName = "string"
+#'       ),
+#'       s3Logs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         location = "string",
+#'         encryptionDisabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     buildTimeoutInMinutes = 123,
+#'     queuedTimeoutInMinutes = 123,
+#'     complete = TRUE|FALSE,
+#'     initiator = "string",
+#'     vpcConfig = list(
+#'       vpcId = "string",
+#'       subnets = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     encryptionKey = "string",
+#'     buildBatchNumber = 123,
+#'     fileSystemLocations = list(
+#'       list(
+#'         type = "EFS",
+#'         location = "string",
+#'         mountPoint = "string",
+#'         identifier = "string",
+#'         mountOptions = "string"
+#'       )
+#'     ),
+#'     buildBatchConfig = list(
+#'       serviceRole = "string",
+#'       combineArtifacts = TRUE|FALSE,
+#'       restrictions = list(
+#'         maximumBuildsAllowed = 123,
+#'         computeTypesAllowed = list(
+#'           "string"
+#'         )
+#'       ),
+#'       timeoutInMins = 123
+#'     ),
+#'     buildGroups = list(
+#'       list(
+#'         identifier = "string",
+#'         dependsOn = list(
+#'           "string"
+#'         ),
+#'         ignoreFailure = TRUE|FALSE,
+#'         currentBuildSummary = list(
+#'           arn = "string",
+#'           requestedOn = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'           primaryArtifact = list(
+#'             type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'             location = "string",
+#'             identifier = "string"
+#'           ),
+#'           secondaryArtifacts = list(
+#'             list(
+#'               type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'               location = "string",
+#'               identifier = "string"
+#'             )
+#'           )
+#'         ),
+#'         priorBuildSummaryList = list(
+#'           list(
+#'             arn = "string",
+#'             requestedOn = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'             primaryArtifact = list(
+#'               type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'               location = "string",
+#'               identifier = "string"
+#'             ),
+#'             secondaryArtifacts = list(
+#'               list(
+#'                 type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'                 location = "string",
+#'                 identifier = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2763,6 +5324,197 @@ codebuild_stop_build_batch <- function(id) {
 #' `identifier`, `location`, `mountOptions`, `mountPoint`, and `type` of a
 #' file system created using Amazon Elastic File System.
 #' @param buildBatchConfig 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   project = list(
+#'     name = "string",
+#'     arn = "string",
+#'     description = "string",
+#'     source = list(
+#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'       location = "string",
+#'       gitCloneDepth = 123,
+#'       gitSubmodulesConfig = list(
+#'         fetchSubmodules = TRUE|FALSE
+#'       ),
+#'       buildspec = "string",
+#'       auth = list(
+#'         type = "OAUTH",
+#'         resource = "string"
+#'       ),
+#'       reportBuildStatus = TRUE|FALSE,
+#'       buildStatusConfig = list(
+#'         context = "string",
+#'         targetUrl = "string"
+#'       ),
+#'       insecureSsl = TRUE|FALSE,
+#'       sourceIdentifier = "string"
+#'     ),
+#'     secondarySources = list(
+#'       list(
+#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'         location = "string",
+#'         gitCloneDepth = 123,
+#'         gitSubmodulesConfig = list(
+#'           fetchSubmodules = TRUE|FALSE
+#'         ),
+#'         buildspec = "string",
+#'         auth = list(
+#'           type = "OAUTH",
+#'           resource = "string"
+#'         ),
+#'         reportBuildStatus = TRUE|FALSE,
+#'         buildStatusConfig = list(
+#'           context = "string",
+#'           targetUrl = "string"
+#'         ),
+#'         insecureSsl = TRUE|FALSE,
+#'         sourceIdentifier = "string"
+#'       )
+#'     ),
+#'     sourceVersion = "string",
+#'     secondarySourceVersions = list(
+#'       list(
+#'         sourceIdentifier = "string",
+#'         sourceVersion = "string"
+#'       )
+#'     ),
+#'     artifacts = list(
+#'       type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'       location = "string",
+#'       path = "string",
+#'       namespaceType = "NONE"|"BUILD_ID",
+#'       name = "string",
+#'       packaging = "NONE"|"ZIP",
+#'       overrideArtifactName = TRUE|FALSE,
+#'       encryptionDisabled = TRUE|FALSE,
+#'       artifactIdentifier = "string"
+#'     ),
+#'     secondaryArtifacts = list(
+#'       list(
+#'         type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
+#'         location = "string",
+#'         path = "string",
+#'         namespaceType = "NONE"|"BUILD_ID",
+#'         name = "string",
+#'         packaging = "NONE"|"ZIP",
+#'         overrideArtifactName = TRUE|FALSE,
+#'         encryptionDisabled = TRUE|FALSE,
+#'         artifactIdentifier = "string"
+#'       )
+#'     ),
+#'     cache = list(
+#'       type = "NO_CACHE"|"S3"|"LOCAL",
+#'       location = "string",
+#'       modes = list(
+#'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
+#'       )
+#'     ),
+#'     environment = list(
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       image = "string",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       environmentVariables = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
+#'         )
+#'       ),
+#'       privilegedMode = TRUE|FALSE,
+#'       certificate = "string",
+#'       registryCredential = list(
+#'         credential = "string",
+#'         credentialProvider = "SECRETS_MANAGER"
+#'       ),
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'     ),
+#'     serviceRole = "string",
+#'     timeoutInMinutes = 123,
+#'     queuedTimeoutInMinutes = 123,
+#'     encryptionKey = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModified = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     webhook = list(
+#'       url = "string",
+#'       payloadUrl = "string",
+#'       secret = "string",
+#'       branchFilter = "string",
+#'       filterGroups = list(
+#'         list(
+#'           list(
+#'             type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
+#'             pattern = "string",
+#'             excludeMatchedPattern = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       buildType = "BUILD"|"BUILD_BATCH",
+#'       lastModifiedSecret = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     vpcConfig = list(
+#'       vpcId = "string",
+#'       subnets = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     badge = list(
+#'       badgeEnabled = TRUE|FALSE,
+#'       badgeRequestUrl = "string"
+#'     ),
+#'     logsConfig = list(
+#'       cloudWatchLogs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         groupName = "string",
+#'         streamName = "string"
+#'       ),
+#'       s3Logs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         location = "string",
+#'         encryptionDisabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     fileSystemLocations = list(
+#'       list(
+#'         type = "EFS",
+#'         location = "string",
+#'         mountPoint = "string",
+#'         identifier = "string",
+#'         mountOptions = "string"
+#'       )
+#'     ),
+#'     buildBatchConfig = list(
+#'       serviceRole = "string",
+#'       combineArtifacts = TRUE|FALSE,
+#'       restrictions = list(
+#'         maximumBuildsAllowed = 123,
+#'         computeTypesAllowed = list(
+#'           "string"
+#'         )
+#'       ),
+#'       timeoutInMins = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2963,6 +5715,41 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #' These tags are available for use by AWS services that support AWS
 #' CodeBuild report group tags.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   reportGroup = list(
+#'     arn = "string",
+#'     name = "string",
+#'     type = "TEST"|"CODE_COVERAGE",
+#'     exportConfig = list(
+#'       exportConfigType = "S3"|"NO_EXPORT",
+#'       s3Destination = list(
+#'         bucket = "string",
+#'         path = "string",
+#'         packaging = "ZIP"|"NONE",
+#'         encryptionKey = "string",
+#'         encryptionDisabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModified = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     status = "ACTIVE"|"DELETING"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_report_group(
@@ -3031,6 +5818,32 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #' webhook event can trigger a build. A filter group must contain at least
 #' one `EVENT` `WebhookFilter`.
 #' @param buildType Specifies the type of build this webhook will trigger.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   webhook = list(
+#'     url = "string",
+#'     payloadUrl = "string",
+#'     secret = "string",
+#'     branchFilter = "string",
+#'     filterGroups = list(
+#'       list(
+#'         list(
+#'           type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
+#'           pattern = "string",
+#'           excludeMatchedPattern = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     buildType = "BUILD"|"BUILD_BATCH",
+#'     lastModifiedSecret = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

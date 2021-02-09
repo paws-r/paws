@@ -12,6 +12,23 @@ globalaccelerator_advertise_byoip_cidr(Cidr)
 you provisioned. You can't advertise only a portion of the provisioned
 range.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ByoipCidr = list(
+    Cidr = "string",
+    State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
+    Events = list(
+      list(
+        Message = "string",
+        Timestamp = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Advertises an IPv4 address range that is provisioned for use with your
 AWS resources through bring your own IP addresses (BYOIP). It can take a

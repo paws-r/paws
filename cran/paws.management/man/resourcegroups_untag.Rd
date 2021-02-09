@@ -13,6 +13,15 @@ keys.}
 
 \item{Keys}{[required] The keys of the tags to be removed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  Keys = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Deletes tags from a specified resource group.
 

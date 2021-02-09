@@ -10,6 +10,31 @@ chime_get_sip_rule(SipRuleId)
 \arguments{
 \item{SipRuleId}{[required] The SIP rule ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SipRule = list(
+    SipRuleId = "string",
+    Name = "string",
+    Disabled = TRUE|FALSE,
+    TriggerType = "ToPhoneNumber"|"RequestUriHostname",
+    TriggerValue = "string",
+    TargetApplications = list(
+      list(
+        SipMediaApplicationId = "string",
+        Priority = 123,
+        AwsRegion = "string"
+      )
+    ),
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the details of a SIP rule, such as the rule ID, name,
 triggers, and target endpoints.

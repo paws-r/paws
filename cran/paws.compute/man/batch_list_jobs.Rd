@@ -41,6 +41,37 @@ This token should be treated as an opaque identifier that's only used to
 retrieve the next items in a list and not for other programmatic
 purposes.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobSummaryList = list(
+    list(
+      jobArn = "string",
+      jobId = "string",
+      jobName = "string",
+      createdAt = 123,
+      status = "SUBMITTED"|"PENDING"|"RUNNABLE"|"STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED",
+      statusReason = "string",
+      startedAt = 123,
+      stoppedAt = 123,
+      container = list(
+        exitCode = 123,
+        reason = "string"
+      ),
+      arrayProperties = list(
+        size = 123,
+        index = 123
+      ),
+      nodeProperties = list(
+        isMainNode = TRUE|FALSE,
+        numNodes = 123,
+        nodeIndex = 123
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of AWS Batch jobs.
 

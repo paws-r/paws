@@ -14,6 +14,21 @@ NULL
 #' @param Name &#91;required&#93; The name of the recipe to be modified.
 #' @param RecipeVersions &#91;required&#93; An array of version identifiers to be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Errors = list(
+#'     list(
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string",
+#'       RecipeVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_delete_recipe_version(
@@ -56,6 +71,14 @@ gluedatabrew_batch_delete_recipe_version <- function(Name, RecipeVersions) {
 #' @param FormatOptions 
 #' @param Input &#91;required&#93; 
 #' @param Tags Metadata tags to apply to this dataset.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -150,6 +173,14 @@ gluedatabrew_create_dataset <- function(Name, FormatOptions = NULL, Input, Tags 
 #' @param Timeout The job's timeout in minutes. A job that attempts to run longer than
 #' this timeout period ends with a status of `TIMEOUT`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_profile_job(
@@ -209,6 +240,14 @@ gluedatabrew_create_profile_job <- function(DatasetName, EncryptionKeyArn = NULL
 #' (IAM) role to be assumed for this request.
 #' @param Tags Metadata tags to apply to this project.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_project(
@@ -260,6 +299,14 @@ gluedatabrew_create_project <- function(DatasetName, Name, RecipeName, Sample = 
 #' step consists of one recipe action and (optionally) an array of
 #' condition expressions.
 #' @param Tags Metadata tags to apply to this recipe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -347,6 +394,14 @@ gluedatabrew_create_recipe <- function(Description = NULL, Name, Steps, Tags = N
 #' @param Timeout The job's timeout in minutes. A job that attempts to run longer than
 #' this timeout period ends with a status of `TIMEOUT`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_recipe_job(
@@ -419,6 +474,14 @@ gluedatabrew_create_recipe_job <- function(DatasetName = NULL, EncryptionKeyArn 
 #' @param Tags Metadata tags to apply to this schedule.
 #' @param Name &#91;required&#93; A unique name for the schedule.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_schedule(
@@ -463,6 +526,14 @@ gluedatabrew_create_schedule <- function(JobNames = NULL, CronExpression, Tags =
 #'
 #' @param Name &#91;required&#93; The name of the dataset to be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_dataset(
@@ -500,6 +571,14 @@ gluedatabrew_delete_dataset <- function(Name) {
 #' gluedatabrew_delete_job(Name)
 #'
 #' @param Name &#91;required&#93; The name of the job to be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -540,6 +619,14 @@ gluedatabrew_delete_job <- function(Name) {
 #'
 #' @param Name &#91;required&#93; The name of the project to be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_project(
@@ -577,6 +664,15 @@ gluedatabrew_delete_project <- function(Name) {
 #'
 #' @param Name &#91;required&#93; The name of the recipe to be deleted.
 #' @param RecipeVersion &#91;required&#93; The version of the recipe to be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   RecipeVersion = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -618,6 +714,14 @@ gluedatabrew_delete_recipe_version <- function(Name, RecipeVersion) {
 #'
 #' @param Name &#91;required&#93; The name of the schedule to be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_schedule(
@@ -656,6 +760,55 @@ gluedatabrew_delete_schedule <- function(Name) {
 #' gluedatabrew_describe_dataset(Name)
 #'
 #' @param Name &#91;required&#93; The name of the dataset to be described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreatedBy = "string",
+#'   CreateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Name = "string",
+#'   FormatOptions = list(
+#'     Json = list(
+#'       MultiLine = TRUE|FALSE
+#'     ),
+#'     Excel = list(
+#'       SheetNames = list(
+#'         "string"
+#'       ),
+#'       SheetIndexes = list(
+#'         123
+#'       )
+#'     )
+#'   ),
+#'   Input = list(
+#'     S3InputDefinition = list(
+#'       Bucket = "string",
+#'       Key = "string"
+#'     ),
+#'     DataCatalogInputDefinition = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       TableName = "string",
+#'       TempDirectory = list(
+#'         Bucket = "string",
+#'         Key = "string"
+#'       )
+#'     )
+#'   ),
+#'   LastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedBy = "string",
+#'   Source = "S3"|"DATA-CATALOG",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   ResourceArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -696,6 +849,54 @@ gluedatabrew_describe_dataset <- function(Name) {
 #'
 #' @param Name &#91;required&#93; The name of the job to be described.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedBy = "string",
+#'   DatasetName = "string",
+#'   EncryptionKeyArn = "string",
+#'   EncryptionMode = "SSE-KMS"|"SSE-S3",
+#'   Name = "string",
+#'   Type = "PROFILE"|"RECIPE",
+#'   LastModifiedBy = "string",
+#'   LastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LogSubscription = "ENABLE"|"DISABLE",
+#'   MaxCapacity = 123,
+#'   MaxRetries = 123,
+#'   Outputs = list(
+#'     list(
+#'       CompressionFormat = "GZIP"|"LZ4"|"SNAPPY"|"BZIP2"|"DEFLATE"|"LZO"|"BROTLI"|"ZSTD"|"ZLIB",
+#'       Format = "CSV"|"JSON"|"PARQUET"|"GLUEPARQUET"|"AVRO"|"ORC"|"XML",
+#'       PartitionColumns = list(
+#'         "string"
+#'       ),
+#'       Location = list(
+#'         Bucket = "string",
+#'         Key = "string"
+#'       ),
+#'       Overwrite = TRUE|FALSE
+#'     )
+#'   ),
+#'   ProjectName = "string",
+#'   RecipeReference = list(
+#'     Name = "string",
+#'     RecipeVersion = "string"
+#'   ),
+#'   ResourceArn = "string",
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   Timeout = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_job(
@@ -734,6 +935,38 @@ gluedatabrew_describe_job <- function(Name) {
 #' gluedatabrew_describe_project(Name)
 #'
 #' @param Name &#91;required&#93; The name of the project to be described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedBy = "string",
+#'   DatasetName = "string",
+#'   LastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedBy = "string",
+#'   Name = "string",
+#'   RecipeName = "string",
+#'   ResourceArn = "string",
+#'   Sample = list(
+#'     Size = 123,
+#'     Type = "FIRST_N"|"LAST_N"|"RANDOM"
+#'   ),
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   SessionStatus = "ASSIGNED"|"FAILED"|"INITIALIZING"|"PROVISIONING"|"READY"|"RECYCLING"|"ROTATING"|"TERMINATED"|"TERMINATING"|"UPDATING",
+#'   OpenedBy = "string",
+#'   OpenDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -776,6 +1009,50 @@ gluedatabrew_describe_project <- function(Name) {
 #' @param RecipeVersion The recipe version identifier. If this parameter isn't specified, then
 #' the latest published version is returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreatedBy = "string",
+#'   CreateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedBy = "string",
+#'   LastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ProjectName = "string",
+#'   PublishedBy = "string",
+#'   PublishedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   Name = "string",
+#'   Steps = list(
+#'     list(
+#'       Action = list(
+#'         Operation = "string",
+#'         Parameters = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ConditionExpressions = list(
+#'         list(
+#'           Condition = "string",
+#'           Value = "string",
+#'           TargetColumn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   ResourceArn = "string",
+#'   RecipeVersion = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_recipe(
@@ -815,6 +1092,30 @@ gluedatabrew_describe_recipe <- function(Name, RecipeVersion = NULL) {
 #' gluedatabrew_describe_schedule(Name)
 #'
 #' @param Name &#91;required&#93; The name of the schedule to be described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedBy = "string",
+#'   JobNames = list(
+#'     "string"
+#'   ),
+#'   LastModifiedBy = "string",
+#'   LastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ResourceArn = "string",
+#'   CronExpression = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -856,6 +1157,61 @@ gluedatabrew_describe_schedule <- function(Name) {
 #' pagination if a previous request was truncated. To get the next set of
 #' pages, pass in the NextToken value from the response object of the
 #' previous page call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Datasets = list(
+#'     list(
+#'       AccountId = "string",
+#'       CreatedBy = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       FormatOptions = list(
+#'         Json = list(
+#'           MultiLine = TRUE|FALSE
+#'         ),
+#'         Excel = list(
+#'           SheetNames = list(
+#'             "string"
+#'           ),
+#'           SheetIndexes = list(
+#'             123
+#'           )
+#'         )
+#'       ),
+#'       Input = list(
+#'         S3InputDefinition = list(
+#'           Bucket = "string",
+#'           Key = "string"
+#'         ),
+#'         DataCatalogInputDefinition = list(
+#'           CatalogId = "string",
+#'           DatabaseName = "string",
+#'           TableName = "string",
+#'           TempDirectory = list(
+#'             Bucket = "string",
+#'             Key = "string"
+#'           )
+#'         )
+#'       ),
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedBy = "string",
+#'       Source = "S3"|"DATA-CATALOG",
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       ResourceArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -901,6 +1257,52 @@ gluedatabrew_list_datasets <- function(MaxResults = NULL, NextToken = NULL) {
 #' pagination if a previous request was truncated. To get the next set of
 #' pages, pass in the NextToken value from the response object of the
 #' previous page call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobRuns = list(
+#'     list(
+#'       Attempt = 123,
+#'       CompletedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DatasetName = "string",
+#'       ErrorMessage = "string",
+#'       ExecutionTime = 123,
+#'       JobName = "string",
+#'       RunId = "string",
+#'       State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
+#'       LogSubscription = "ENABLE"|"DISABLE",
+#'       LogGroupName = "string",
+#'       Outputs = list(
+#'         list(
+#'           CompressionFormat = "GZIP"|"LZ4"|"SNAPPY"|"BZIP2"|"DEFLATE"|"LZO"|"BROTLI"|"ZSTD"|"ZLIB",
+#'           Format = "CSV"|"JSON"|"PARQUET"|"GLUEPARQUET"|"AVRO"|"ORC"|"XML",
+#'           PartitionColumns = list(
+#'             "string"
+#'           ),
+#'           Location = list(
+#'             Bucket = "string",
+#'             Key = "string"
+#'           ),
+#'           Overwrite = TRUE|FALSE
+#'         )
+#'       ),
+#'       RecipeReference = list(
+#'         Name = "string",
+#'         RecipeVersion = "string"
+#'       ),
+#'       StartedBy = "string",
+#'       StartedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -949,6 +1351,60 @@ gluedatabrew_list_job_runs <- function(Name, MaxResults = NULL, NextToken = NULL
 #' @param ProjectName The name of a project. Using this parameter indicates to return only
 #' those jobs that are associated with the specified project.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Jobs = list(
+#'     list(
+#'       AccountId = "string",
+#'       CreatedBy = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DatasetName = "string",
+#'       EncryptionKeyArn = "string",
+#'       EncryptionMode = "SSE-KMS"|"SSE-S3",
+#'       Name = "string",
+#'       Type = "PROFILE"|"RECIPE",
+#'       LastModifiedBy = "string",
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LogSubscription = "ENABLE"|"DISABLE",
+#'       MaxCapacity = 123,
+#'       MaxRetries = 123,
+#'       Outputs = list(
+#'         list(
+#'           CompressionFormat = "GZIP"|"LZ4"|"SNAPPY"|"BZIP2"|"DEFLATE"|"LZO"|"BROTLI"|"ZSTD"|"ZLIB",
+#'           Format = "CSV"|"JSON"|"PARQUET"|"GLUEPARQUET"|"AVRO"|"ORC"|"XML",
+#'           PartitionColumns = list(
+#'             "string"
+#'           ),
+#'           Location = list(
+#'             Bucket = "string",
+#'             Key = "string"
+#'           ),
+#'           Overwrite = TRUE|FALSE
+#'         )
+#'       ),
+#'       ProjectName = "string",
+#'       RecipeReference = list(
+#'         Name = "string",
+#'         RecipeVersion = "string"
+#'       ),
+#'       ResourceArn = "string",
+#'       RoleArn = "string",
+#'       Timeout = 123,
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_jobs(
@@ -989,6 +1445,43 @@ gluedatabrew_list_jobs <- function(DatasetName = NULL, MaxResults = NULL, NextTo
 #'
 #' @param NextToken A pagination token that can be used in a subsequent request.
 #' @param MaxResults The maximum number of results to return in this request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Projects = list(
+#'     list(
+#'       AccountId = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatedBy = "string",
+#'       DatasetName = "string",
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedBy = "string",
+#'       Name = "string",
+#'       RecipeName = "string",
+#'       ResourceArn = "string",
+#'       Sample = list(
+#'         Size = 123,
+#'         Type = "FIRST_N"|"LAST_N"|"RANDOM"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       RoleArn = "string",
+#'       OpenedBy = "string",
+#'       OpenDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1032,6 +1525,55 @@ gluedatabrew_list_projects <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param NextToken A pagination token that can be used in a subsequent request.
 #' @param Name &#91;required&#93; The name of the recipe for which to return version information.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Recipes = list(
+#'     list(
+#'       CreatedBy = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedBy = "string",
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ProjectName = "string",
+#'       PublishedBy = "string",
+#'       PublishedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       Name = "string",
+#'       ResourceArn = "string",
+#'       Steps = list(
+#'         list(
+#'           Action = list(
+#'             Operation = "string",
+#'             Parameters = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ConditionExpressions = list(
+#'             list(
+#'               Condition = "string",
+#'               Value = "string",
+#'               TargetColumn = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       RecipeVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_recipe_versions(
@@ -1074,6 +1616,55 @@ gluedatabrew_list_recipe_versions <- function(MaxResults = NULL, NextToken = NUL
 #' @param RecipeVersion A version identifier. Using this parameter indicates to return only
 #' those recipes that have this version identifier.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Recipes = list(
+#'     list(
+#'       CreatedBy = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedBy = "string",
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ProjectName = "string",
+#'       PublishedBy = "string",
+#'       PublishedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       Name = "string",
+#'       ResourceArn = "string",
+#'       Steps = list(
+#'         list(
+#'           Action = list(
+#'             Operation = "string",
+#'             Parameters = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ConditionExpressions = list(
+#'             list(
+#'               Condition = "string",
+#'               Value = "string",
+#'               TargetColumn = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       RecipeVersion = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_recipes(
@@ -1115,6 +1706,36 @@ gluedatabrew_list_recipes <- function(MaxResults = NULL, NextToken = NULL, Recip
 #' @param MaxResults The maximum number of results to return in this request.
 #' @param NextToken A pagination token that can be used in a subsequent request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Schedules = list(
+#'     list(
+#'       AccountId = "string",
+#'       CreatedBy = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       JobNames = list(
+#'         "string"
+#'       ),
+#'       LastModifiedBy = "string",
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ResourceArn = "string",
+#'       CronExpression = "string",
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       Name = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_schedules(
@@ -1154,6 +1775,16 @@ gluedatabrew_list_schedules <- function(JobName = NULL, MaxResults = NULL, NextT
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) string that uniquely identifies the
 #' DataBrew resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1195,6 +1826,14 @@ gluedatabrew_list_tags_for_resource <- function(ResourceArn) {
 #' @param Description A description of the recipe to be published, for this version of the
 #' recipe.
 #' @param Name &#91;required&#93; The name of the recipe to be published.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1245,6 +1884,16 @@ gluedatabrew_publish_recipe <- function(Description = NULL, Name) {
 #' @param ClientSessionId A unique identifier for an interactive session that's currently open and
 #' ready for work. The action will be performed on this session.
 #' @param ViewFrame 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Result = "string",
+#'   Name = "string",
+#'   ActionId = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1308,6 +1957,14 @@ gluedatabrew_send_project_session_action <- function(Preview = NULL, Name, Recip
 #'
 #' @param Name &#91;required&#93; The name of the job to be run.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RunId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_job_run(
@@ -1349,6 +2006,15 @@ gluedatabrew_start_job_run <- function(Name) {
 #' @param AssumeControl A value that, if true, enables you to take control of a session, even if
 #' a different client is currently accessing the project.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   ClientSessionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_project_session(
@@ -1387,6 +2053,14 @@ gluedatabrew_start_project_session <- function(Name, AssumeControl = NULL) {
 #'
 #' @param Name &#91;required&#93; The name of the job to be stopped.
 #' @param RunId &#91;required&#93; The ID of the job run to be stopped.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RunId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1431,6 +2105,12 @@ gluedatabrew_stop_job_run <- function(Name, RunId) {
 #' dataset, a job, a project, or a recipe.
 #' @param Tags &#91;required&#93; One or more tags to be assigned to the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1472,6 +2152,12 @@ gluedatabrew_tag_resource <- function(ResourceArn, Tags) {
 #' @param ResourceArn &#91;required&#93; An DataBrew resource from which you want to remove a tag or tags. The
 #' value for this parameter is an Amazon Resource Name (ARN).
 #' @param TagKeys &#91;required&#93; The tag keys (names) of one or more tags to be removed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1516,6 +2202,14 @@ gluedatabrew_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param Name &#91;required&#93; The name of the dataset to be updated.
 #' @param FormatOptions 
 #' @param Input &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1604,6 +2298,14 @@ gluedatabrew_update_dataset <- function(Name, FormatOptions = NULL, Input) {
 #' @param Timeout The job's timeout in minutes. A job that attempts to run longer than
 #' this timeout period ends with a status of `TIMEOUT`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_profile_job(
@@ -1657,6 +2359,17 @@ gluedatabrew_update_profile_job <- function(EncryptionKeyArn = NULL, EncryptionM
 #' request.
 #' @param Name &#91;required&#93; The name of the project to be updated.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_project(
@@ -1703,6 +2416,14 @@ gluedatabrew_update_project <- function(Sample = NULL, RoleArn, Name) {
 #' @param Name &#91;required&#93; The name of the recipe to be updated.
 #' @param Steps One or more steps to be performed by the recipe. Each step consists of
 #' an action, and the conditions under which the action should succeed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1780,6 +2501,14 @@ gluedatabrew_update_recipe <- function(Description = NULL, Name, Steps = NULL) {
 #' @param Timeout The job's timeout in minutes. A job that attempts to run longer than
 #' this timeout period ends with a status of `TIMEOUT`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_recipe_job(
@@ -1842,6 +2571,14 @@ gluedatabrew_update_recipe_job <- function(EncryptionKeyArn = NULL, EncryptionMo
 #' @param CronExpression &#91;required&#93; The date or dates and time or times, in `cron` format, when the jobs are
 #' to be run.
 #' @param Name &#91;required&#93; The name of the schedule to update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

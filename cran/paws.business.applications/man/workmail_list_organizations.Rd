@@ -12,6 +12,21 @@ does not contain any tokens.}
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationSummaries = list(
+    list(
+      OrganizationId = "string",
+      Alias = "string",
+      DefaultMailDomain = "string",
+      ErrorMessage = "string",
+      State = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns summaries of the customer's organizations.
 }

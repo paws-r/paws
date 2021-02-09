@@ -23,6 +23,44 @@ mutually exclusive with \code{FileSystemId}.}
 \item{FileSystemId}{(Optional) If you provide a \code{FileSystemId}, EFS returns all access
 points for that file system; mutually exclusive with \code{AccessPointId}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccessPoints = list(
+    list(
+      ClientToken = "string",
+      Name = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      AccessPointId = "string",
+      AccessPointArn = "string",
+      FileSystemId = "string",
+      PosixUser = list(
+        Uid = 123,
+        Gid = 123,
+        SecondaryGids = list(
+          123
+        )
+      ),
+      RootDirectory = list(
+        Path = "string",
+        CreationInfo = list(
+          OwnerUid = 123,
+          OwnerGid = 123,
+          Permissions = "string"
+        )
+      ),
+      OwnerId = "string",
+      LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns the description of a specific Amazon EFS access point if the
 \code{AccessPointId} is provided. If you provide an EFS \code{FileSystemId}, it

@@ -12,6 +12,10 @@ costandusagereportservice_modify_report_definition(ReportName,
 
 \item{ReportDefinition}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Allows you to programatically update your report preferences.
 }

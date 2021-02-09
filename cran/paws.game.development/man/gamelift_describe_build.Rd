@@ -10,6 +10,23 @@ gamelift_describe_build(BuildId)
 \item{BuildId}{[required] A unique identifier for a build to retrieve properties for. You can use
 either the build ID or ARN value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Build = list(
+    BuildId = "string",
+    BuildArn = "string",
+    Name = "string",
+    Version = "string",
+    Status = "INITIALIZED"|"READY"|"FAILED",
+    SizeOnDisk = 123,
+    OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves properties for a custom game build. To request a build
 resource, specify a build ID. If successful, an object containing the

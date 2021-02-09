@@ -22,6 +22,18 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RegisteredMulticastGroupSources = list(
+    TransitGatewayMulticastDomainId = "string",
+    RegisteredNetworkInterfaceIds = list(
+      "string"
+    ),
+    GroupIpAddress = "string"
+  )
+)
+}
+}
 \description{
 Registers sources (network interfaces) with the specified transit
 gateway multicast group.

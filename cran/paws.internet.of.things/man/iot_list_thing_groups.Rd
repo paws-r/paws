@@ -22,6 +22,18 @@ prefix.}
 
 \item{recursive}{If true, return child groups as well.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  thingGroups = list(
+    list(
+      groupName = "string",
+      groupArn = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 List the thing groups in your account.
 }

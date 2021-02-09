@@ -22,6 +22,16 @@ want to retrieve.}
 
 \item{MaxResults}{The maximum number of results to return in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FormatVersion = "string",
+  PriceList = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of all products that match the filter criteria.
 }

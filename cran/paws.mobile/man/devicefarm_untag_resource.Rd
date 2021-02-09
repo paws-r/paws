@@ -15,6 +15,10 @@ resources: \code{PROJECT}, \code{RUN}, \code{NETWORK_PROFILE}, \code{INSTANCE_PR
 
 \item{TagKeys}{[required] The keys of the tags to be removed.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified tags from a resource.
 }

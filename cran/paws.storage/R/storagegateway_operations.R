@@ -68,8 +68,16 @@ NULL
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers that
 #' can be represented in UTF-8 format, and the following special
-#' characters: + - = . \\_ : / @@. The maximum length of a tag's key is 128
+#' characters: + - = . _ : / @@. The maximum length of a tag's key is 128
 #' characters, and the maximum length for a tag's value is 256 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -145,6 +153,14 @@ storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayT
 #' length of 300. You can get the disk IDs from the
 #' [`list_local_disks`][storagegateway_list_local_disks] API.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_cache(
@@ -217,8 +233,16 @@ storagegateway_add_cache <- function(GatewayARN, DiskIds) {
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' = . _ : / @@. The maximum length of a tag's key is 128 characters, and
 #' the maximum length for a tag's value is 256.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -287,6 +311,14 @@ storagegateway_add_tags_to_resource <- function(ResourceARN, Tags) {
 #' working storage. Each string has a minimum length of 1 and maximum
 #' length of 300. You can get the disk IDs from the
 #' [`list_local_disks`][storagegateway_list_local_disks] API.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -357,6 +389,14 @@ storagegateway_add_upload_buffer <- function(GatewayARN, DiskIds) {
 #' working storage. Each string has a minimum length of 1 and maximum
 #' length of 300. You can get the disk IDs from the
 #' [`list_local_disks`][storagegateway_list_local_disks] API.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -434,6 +474,14 @@ storagegateway_add_working_storage <- function(GatewayARN, DiskIds) {
 #' 
 #' Valid values: `TRUE` | `FALSE`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TapeARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$assign_tape_pool(
@@ -499,6 +547,15 @@ storagegateway_assign_tape_pool <- function(TapeARN, PoolId, BypassGovernanceRet
 #' local disk used to create the volume. This value is only required when
 #' you are attaching a stored volume.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumeARN = "string",
+#'   TargetARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$attach_volume(
@@ -544,6 +601,14 @@ storagegateway_attach_volume <- function(GatewayARN, TargetName = NULL, VolumeAR
 #' @param GatewayARN &#91;required&#93; 
 #' @param TapeARN &#91;required&#93; The Amazon Resource Name (ARN) of the virtual tape you want to cancel
 #' archiving for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TapeARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -598,6 +663,14 @@ storagegateway_cancel_archival <- function(GatewayARN, TapeARN) {
 #' @param GatewayARN &#91;required&#93; 
 #' @param TapeARN &#91;required&#93; The Amazon Resource Name (ARN) of the virtual tape you want to cancel
 #' retrieval for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TapeARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -707,8 +780,17 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers that
 #' you can represent in UTF-8 format, and the following special characters:
-#' + - = . \\_ : / @@. The maximum length of a tag's key is 128 characters,
+#' + - = . _ : / @@. The maximum length of a tag's key is 128 characters,
 #' and the maximum length for a tag's value is 256 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumeARN = "string",
+#'   TargetARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -854,7 +936,7 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' = . _ : / @@. The maximum length of a tag's key is 128 characters, and
 #' the maximum length for a tag's value is 256.
 #' @param FileShareName The name of the file share. Optional.
 #' 
@@ -862,6 +944,14 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' `LocationARN`.
 #' @param CacheAttributes Refresh cache information.
 #' @param NotificationPolicy The notification policy of the file share.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileShareARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1009,19 +1099,19 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' @param AdminUserList A list of users or groups in the Active Directory that will be granted
 #' administrator privileges on the file share. These users can do all file
 #' operations as the super-user. Acceptable formats include:
-#' `DOMAIN\\User1`, `user1`, `@@group1`, and `@@DOMAIN\\group1`.
+#' `DOMAIN\User1`, `user1`, `@@group1`, and `@@DOMAIN\group1`.
 #' 
 #' Use this option very carefully, because any user in this list can do
 #' anything they like on the file share, regardless of file permissions.
 #' @param ValidUserList A list of users or groups in the Active Directory that are allowed to
 #' access the file share. A group must be prefixed with the @@ character.
-#' Acceptable formats include: `DOMAIN\\User1`, `user1`, `@@group1`, and
-#' `@@DOMAIN\\group1`. Can only be set if Authentication is set to
+#' Acceptable formats include: `DOMAIN\User1`, `user1`, `@@group1`, and
+#' `@@DOMAIN\group1`. Can only be set if Authentication is set to
 #' `ActiveDirectory`.
 #' @param InvalidUserList A list of users or groups in the Active Directory that are not allowed
 #' to access the file share. A group must be prefixed with the @@ character.
-#' Acceptable formats include: `DOMAIN\\User1`, `user1`, `@@group1`, and
-#' `@@DOMAIN\\group1`. Can only be set if Authentication is set to
+#' Acceptable formats include: `DOMAIN\User1`, `user1`, `@@group1`, and
+#' `@@DOMAIN\group1`. Can only be set if Authentication is set to
 #' `ActiveDirectory`.
 #' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for the audit logs.
 #' @param Authentication The authentication method that users use to access the file share. The
@@ -1037,7 +1127,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' = . _ : / @@. The maximum length of a tag's key is 128 characters, and
 #' the maximum length for a tag's value is 256.
 #' @param FileShareName The name of the file share. Optional.
 #' 
@@ -1045,6 +1135,14 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' `LocationARN`.
 #' @param CacheAttributes Refresh cache information.
 #' @param NotificationPolicy The notification policy of the file share.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileShareARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1159,8 +1257,17 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' = . _ : / @@. The maximum length of a tag's key is 128 characters, and
 #' the maximum length for a tag's value is 256.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumeARN = "string",
+#'   SnapshotId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1181,7 +1288,7 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' # Initiates an ad-hoc snapshot of a gateway volume.
 #' svc$create_snapshot(
 #'   SnapshotDescription = "My root volume snapshot as of 10/03/2017",
-#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
+#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
 #' )
 #' }
 #'
@@ -1249,8 +1356,18 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags 
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' = . _ : / @@. The maximum length of a tag's key is 128 characters, and
 #' the maximum length for a tag's value is 256.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SnapshotId = "string",
+#'   VolumeARN = "string",
+#'   VolumeRecoveryPointTime = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1271,7 +1388,7 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags 
 #' # Initiates a snapshot of a gateway from a volume recovery point.
 #' svc$create_snapshot_from_volume_recovery_point(
 #'   SnapshotDescription = "My root volume snapshot as of 2017-06-30T10:10:10.000Z",
-#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
+#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
 #' )
 #' }
 #'
@@ -1358,8 +1475,18 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' = . _ : / @@. The maximum length of a tag's key is 128 characters, and
 #' the maximum length for a tag's value is 256.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumeARN = "string",
+#'   VolumeSizeInBytes = 123,
+#'   TargetARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1441,8 +1568,16 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' = . _ : / @@. The maximum length of a tag's key is 128 characters, and
 #' the maximum length for a tag's value is 256.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PoolARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1530,8 +1665,16 @@ storagegateway_create_tape_pool <- function(PoolName, StorageClass, RetentionLoc
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' = . _ : / @@. The maximum length of a tag's key is 128 characters, and
 #' the maximum length for a tag's value is 256.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TapeARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1638,8 +1781,18 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' = . _ : / @@. The maximum length of a tag's key is 128 characters, and
 #' the maximum length for a tag's value is 256.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TapeARNs = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1706,6 +1859,14 @@ storagegateway_create_tapes <- function(GatewayARN, TapeSizeInBytes, ClientToken
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_automatic_tape_creation_policy(
@@ -1751,6 +1912,14 @@ storagegateway_delete_automatic_tape_creation_policy <- function(GatewayARN) {
 #' rate limit to delete.
 #' 
 #' Valid Values: `UPLOAD` | `DOWNLOAD` | `ALL`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1806,6 +1975,15 @@ storagegateway_delete_bandwidth_rate_limit <- function(GatewayARN, BandwidthType
 #' operation to return to retrieve the TargetARN for specified VolumeARN.
 #' @param InitiatorName &#91;required&#93; The iSCSI initiator that connects to the target.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TargetARN = "string",
+#'   InitiatorName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_chap_credentials(
@@ -1820,7 +1998,7 @@ storagegateway_delete_bandwidth_rate_limit <- function(GatewayARN, BandwidthType
 #' # for a specified iSCSI target and initiator pair.
 #' svc$delete_chap_credentials(
 #'   InitiatorName = "iqn.1991-05.com.microsoft:computername.domain.example.com",
-#'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn..."
+#'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/tar..."
 #' )
 #' }
 #'
@@ -1861,6 +2039,14 @@ storagegateway_delete_chap_credentials <- function(TargetARN, InitiatorName) {
 #' `FORCE_DELETING` status.
 #' 
 #' Valid Values: `true` | `false`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileShareARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1916,6 +2102,14 @@ storagegateway_delete_file_share <- function(FileShareARN, ForceDelete = NULL) {
 #' storagegateway_delete_gateway(GatewayARN)
 #'
 #' @param GatewayARN &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1978,6 +2172,14 @@ storagegateway_delete_gateway <- function(GatewayARN) {
 #'
 #' @param VolumeARN &#91;required&#93; The volume which snapshot schedule to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumeARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_snapshot_schedule(
@@ -1989,7 +2191,7 @@ storagegateway_delete_gateway <- function(GatewayARN) {
 #' \dontrun{
 #' # This action enables you to delete a snapshot schedule for a volume.
 #' svc$delete_snapshot_schedule(
-#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
+#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
 #' )
 #' }
 #'
@@ -2032,6 +2234,14 @@ storagegateway_delete_snapshot_schedule <- function(VolumeARN) {
 #' with tape retention lock. Only archived tapes with tape retention lock
 #' set to `governance` can be deleted. Archived tapes with tape retention
 #' lock set to `compliance` can't be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TapeARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2087,6 +2297,14 @@ storagegateway_delete_tape <- function(GatewayARN, TapeARN, BypassGovernanceRete
 #' set to `governance` can be deleted. Archived tapes with tape retention
 #' lock set to `compliance` can't be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TapeARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_tape_archive(
@@ -2134,6 +2352,14 @@ storagegateway_delete_tape_archive <- function(TapeARN, BypassGovernanceRetentio
 #' storagegateway_delete_tape_pool(PoolARN)
 #'
 #' @param PoolARN &#91;required&#93; The Amazon Resource Name (ARN) of the custom tape pool to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PoolARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2194,6 +2420,14 @@ storagegateway_delete_tape_pool <- function(PoolARN) {
 #' [`list_volumes`][storagegateway_list_volumes] operation to return a list
 #' of gateway volumes.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumeARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_volume(
@@ -2206,7 +2440,7 @@ storagegateway_delete_tape_pool <- function(PoolARN) {
 #' # Deletes the specified gateway volume that you previously created using
 #' # the CreateCachediSCSIVolume or CreateStorediSCSIVolume API.
 #' svc$delete_volume(
-#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
+#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
 #' )
 #' }
 #'
@@ -2242,6 +2476,18 @@ storagegateway_delete_volume <- function(VolumeARN) {
 #' storagegateway_describe_availability_monitor_test(GatewayARN)
 #'
 #' @param GatewayARN &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   Status = "COMPLETE"|"FAILED"|"PENDING",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2288,6 +2534,16 @@ storagegateway_describe_availability_monitor_test <- function(GatewayARN) {
 #' storagegateway_describe_bandwidth_rate_limit(GatewayARN)
 #'
 #' @param GatewayARN &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   AverageUploadRateLimitInBitsPerSec = 123,
+#'   AverageDownloadRateLimitInBitsPerSec = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2353,6 +2609,27 @@ storagegateway_describe_bandwidth_rate_limit <- function(GatewayARN) {
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   BandwidthRateLimitIntervals = list(
+#'     list(
+#'       StartHourOfDay = 123,
+#'       StartMinuteOfHour = 123,
+#'       EndHourOfDay = 123,
+#'       EndMinuteOfHour = 123,
+#'       DaysOfWeek = list(
+#'         123
+#'       ),
+#'       AverageUploadRateLimitInBitsPerSec = 123,
+#'       AverageDownloadRateLimitInBitsPerSec = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_bandwidth_rate_limit_schedule(
@@ -2393,6 +2670,22 @@ storagegateway_describe_bandwidth_rate_limit_schedule <- function(GatewayARN) {
 #' storagegateway_describe_cache(GatewayARN)
 #'
 #' @param GatewayARN &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   DiskIds = list(
+#'     "string"
+#'   ),
+#'   CacheAllocatedInBytes = 123,
+#'   CacheUsedPercentage = 123.0,
+#'   CacheDirtyPercentage = 123.0,
+#'   CacheHitPercentage = 123.0,
+#'   CacheMissPercentage = 123.0
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2447,6 +2740,38 @@ storagegateway_describe_cache <- function(GatewayARN) {
 #' be from the same gateway. Use
 #' [`list_volumes`][storagegateway_list_volumes] to get volume ARNs for a
 #' gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CachediSCSIVolumes = list(
+#'     list(
+#'       VolumeARN = "string",
+#'       VolumeId = "string",
+#'       VolumeType = "string",
+#'       VolumeStatus = "string",
+#'       VolumeAttachmentStatus = "string",
+#'       VolumeSizeInBytes = 123,
+#'       VolumeProgress = 123.0,
+#'       SourceSnapshotId = "string",
+#'       VolumeiSCSIAttributes = list(
+#'         TargetARN = "string",
+#'         NetworkInterfaceId = "string",
+#'         NetworkInterfacePort = 123,
+#'         LunNumber = 123,
+#'         ChapEnabled = TRUE|FALSE
+#'       ),
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       VolumeUsedInBytes = 123,
+#'       KMSKey = "string",
+#'       TargetName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2505,6 +2830,21 @@ storagegateway_describe_cachedi_scsi_volumes <- function(VolumeARNs) {
 #' [`describe_storedi_scsi_volumes`][storagegateway_describe_storedi_scsi_volumes]
 #' operation to return to retrieve the TargetARN for specified VolumeARN.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChapCredentials = list(
+#'     list(
+#'       TargetARN = "string",
+#'       SecretToAuthenticateInitiator = "string",
+#'       InitiatorName = "string",
+#'       SecretToAuthenticateTarget = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_chap_credentials(
@@ -2518,7 +2858,7 @@ storagegateway_describe_cachedi_scsi_volumes <- function(VolumeARNs) {
 #' # credentials information for a specified iSCSI target, one for each
 #' # target-initiator pair.
 #' svc$describe_chap_credentials(
-#'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn..."
+#'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/tar..."
 #' )
 #' }
 #'
@@ -2556,6 +2896,42 @@ storagegateway_describe_chap_credentials <- function(TargetARN) {
 #' storagegateway_describe_gateway_information(GatewayARN)
 #'
 #' @param GatewayARN &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   GatewayId = "string",
+#'   GatewayName = "string",
+#'   GatewayTimezone = "string",
+#'   GatewayState = "string",
+#'   GatewayNetworkInterfaces = list(
+#'     list(
+#'       Ipv4Address = "string",
+#'       MacAddress = "string",
+#'       Ipv6Address = "string"
+#'     )
+#'   ),
+#'   GatewayType = "string",
+#'   NextUpdateAvailabilityDate = "string",
+#'   LastSoftwareUpdate = "string",
+#'   Ec2InstanceId = "string",
+#'   Ec2InstanceRegion = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   VPCEndpoint = "string",
+#'   CloudWatchLogGroupARN = "string",
+#'   HostEnvironment = "VMWARE"|"HYPER-V"|"EC2"|"KVM"|"OTHER",
+#'   EndpointType = "string",
+#'   SoftwareUpdatesEndDate = "string",
+#'   DeprecationDate = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2607,6 +2983,19 @@ storagegateway_describe_gateway_information <- function(GatewayARN) {
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   HourOfDay = 123,
+#'   MinuteOfHour = 123,
+#'   DayOfWeek = 123,
+#'   DayOfMonth = 123,
+#'   Timezone = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_maintenance_start_time(
@@ -2656,6 +3045,52 @@ storagegateway_describe_maintenance_start_time <- function(GatewayARN) {
 #' @param FileShareARNList &#91;required&#93; An array containing the Amazon Resource Name (ARN) of each file share to
 #' be described.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NFSFileShareInfoList = list(
+#'     list(
+#'       NFSFileShareDefaults = list(
+#'         FileMode = "string",
+#'         DirectoryMode = "string",
+#'         GroupId = 123,
+#'         OwnerId = 123
+#'       ),
+#'       FileShareARN = "string",
+#'       FileShareId = "string",
+#'       FileShareStatus = "string",
+#'       GatewayARN = "string",
+#'       KMSEncrypted = TRUE|FALSE,
+#'       KMSKey = "string",
+#'       Path = "string",
+#'       Role = "string",
+#'       LocationARN = "string",
+#'       DefaultStorageClass = "string",
+#'       ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
+#'       ClientList = list(
+#'         "string"
+#'       ),
+#'       Squash = "string",
+#'       ReadOnly = TRUE|FALSE,
+#'       GuessMIMETypeEnabled = TRUE|FALSE,
+#'       RequesterPays = TRUE|FALSE,
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       FileShareName = "string",
+#'       CacheAttributes = list(
+#'         CacheStaleTimeoutInSeconds = 123
+#'       ),
+#'       NotificationPolicy = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_nfs_file_shares(
@@ -2699,6 +3134,56 @@ storagegateway_describe_nfs_file_shares <- function(FileShareARNList) {
 #' @param FileShareARNList &#91;required&#93; An array containing the Amazon Resource Name (ARN) of each file share to
 #' be described.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SMBFileShareInfoList = list(
+#'     list(
+#'       FileShareARN = "string",
+#'       FileShareId = "string",
+#'       FileShareStatus = "string",
+#'       GatewayARN = "string",
+#'       KMSEncrypted = TRUE|FALSE,
+#'       KMSKey = "string",
+#'       Path = "string",
+#'       Role = "string",
+#'       LocationARN = "string",
+#'       DefaultStorageClass = "string",
+#'       ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
+#'       ReadOnly = TRUE|FALSE,
+#'       GuessMIMETypeEnabled = TRUE|FALSE,
+#'       RequesterPays = TRUE|FALSE,
+#'       SMBACLEnabled = TRUE|FALSE,
+#'       AccessBasedEnumeration = TRUE|FALSE,
+#'       AdminUserList = list(
+#'         "string"
+#'       ),
+#'       ValidUserList = list(
+#'         "string"
+#'       ),
+#'       InvalidUserList = list(
+#'         "string"
+#'       ),
+#'       AuditDestinationARN = "string",
+#'       Authentication = "string",
+#'       CaseSensitivity = "ClientSpecified"|"CaseSensitive",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       FileShareName = "string",
+#'       CacheAttributes = list(
+#'         CacheStaleTimeoutInSeconds = 123
+#'       ),
+#'       NotificationPolicy = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_smb_file_shares(
@@ -2739,6 +3224,19 @@ storagegateway_describe_smb_file_shares <- function(FileShareARNList) {
 #' storagegateway_describe_smb_settings(GatewayARN)
 #'
 #' @param GatewayARN &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   DomainName = "string",
+#'   ActiveDirectoryStatus = "ACCESS_DENIED"|"DETACHED"|"JOINED"|"JOINING"|"NETWORK_ERROR"|"TIMEOUT"|"UNKNOWN_ERROR",
+#'   SMBGuestPasswordSet = TRUE|FALSE,
+#'   SMBSecurityStrategy = "ClientSpecified"|"MandatorySigning"|"MandatoryEncryption",
+#'   FileSharesVisible = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2782,6 +3280,24 @@ storagegateway_describe_smb_settings <- function(GatewayARN) {
 #' [`list_volumes`][storagegateway_list_volumes] operation to return a list
 #' of gateway volumes.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumeARN = "string",
+#'   StartAt = 123,
+#'   RecurrenceInHours = 123,
+#'   Description = "string",
+#'   Timezone = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_snapshot_schedule(
@@ -2794,7 +3310,7 @@ storagegateway_describe_smb_settings <- function(GatewayARN) {
 #' # Describes the snapshot schedule for the specified gateway volume
 #' # including intervals at which snapshots are automatically initiated.
 #' svc$describe_snapshot_schedule(
-#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
+#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
 #' )
 #' }
 #'
@@ -2835,6 +3351,40 @@ storagegateway_describe_snapshot_schedule <- function(VolumeARN) {
 #' be from the same gateway. Use
 #' [`list_volumes`][storagegateway_list_volumes] to get volume ARNs for a
 #' gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StorediSCSIVolumes = list(
+#'     list(
+#'       VolumeARN = "string",
+#'       VolumeId = "string",
+#'       VolumeType = "string",
+#'       VolumeStatus = "string",
+#'       VolumeAttachmentStatus = "string",
+#'       VolumeSizeInBytes = 123,
+#'       VolumeProgress = 123.0,
+#'       VolumeDiskId = "string",
+#'       SourceSnapshotId = "string",
+#'       PreservedExistingData = TRUE|FALSE,
+#'       VolumeiSCSIAttributes = list(
+#'         TargetARN = "string",
+#'         NetworkInterfaceId = "string",
+#'         NetworkInterfacePort = 123,
+#'         LunNumber = 123,
+#'         ChapEnabled = TRUE|FALSE
+#'       ),
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       VolumeUsedInBytes = 123,
+#'       KMSKey = "string",
+#'       TargetName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2896,6 +3446,39 @@ storagegateway_describe_storedi_scsi_volumes <- function(VolumeARNs) {
 #' describing virtual tapes.
 #' @param Limit Specifies that the number of virtual tapes described be limited to the
 #' specified number.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TapeArchives = list(
+#'     list(
+#'       TapeARN = "string",
+#'       TapeBarcode = "string",
+#'       TapeCreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TapeSizeInBytes = 123,
+#'       CompletionTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RetrievedTo = "string",
+#'       TapeStatus = "string",
+#'       TapeUsedInBytes = 123,
+#'       KMSKey = "string",
+#'       PoolId = "string",
+#'       Worm = TRUE|FALSE,
+#'       RetentionStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PoolEntryDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2962,6 +3545,25 @@ storagegateway_describe_tape_archives <- function(TapeARNs = NULL, Marker = NULL
 #' describing the virtual tape recovery points.
 #' @param Limit Specifies that the number of virtual tape recovery points that are
 #' described be limited to the specified number.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   TapeRecoveryPointInfos = list(
+#'     list(
+#'       TapeARN = "string",
+#'       TapeRecoveryPointTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TapeSizeInBytes = 123,
+#'       TapeStatus = "string"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3030,6 +3632,37 @@ storagegateway_describe_tape_recovery_points <- function(GatewayARN, Marker = NU
 #' 
 #' Amazon Web Services may impose its own limit, if this field is not set.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tapes = list(
+#'     list(
+#'       TapeARN = "string",
+#'       TapeBarcode = "string",
+#'       TapeCreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TapeSizeInBytes = 123,
+#'       TapeStatus = "string",
+#'       VTLDevice = "string",
+#'       Progress = 123.0,
+#'       TapeUsedInBytes = 123,
+#'       KMSKey = "string",
+#'       PoolId = "string",
+#'       Worm = TRUE|FALSE,
+#'       RetentionStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PoolEntryDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_tapes(
@@ -3093,6 +3726,19 @@ storagegateway_describe_tapes <- function(GatewayARN, TapeARNs = NULL, Marker = 
 #' storagegateway_describe_upload_buffer(GatewayARN)
 #'
 #' @param GatewayARN &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   DiskIds = list(
+#'     "string"
+#'   ),
+#'   UploadBufferUsedInBytes = 123,
+#'   UploadBufferAllocatedInBytes = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3162,6 +3808,29 @@ storagegateway_describe_upload_buffer <- function(GatewayARN) {
 #' @param Limit Specifies that the number of VTL devices described be limited to the
 #' specified number.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   VTLDevices = list(
+#'     list(
+#'       VTLDeviceARN = "string",
+#'       VTLDeviceType = "string",
+#'       VTLDeviceVendor = "string",
+#'       VTLDeviceProductIdentifier = "string",
+#'       DeviceiSCSIAttributes = list(
+#'         TargetARN = "string",
+#'         NetworkInterfaceId = "string",
+#'         NetworkInterfacePort = 123,
+#'         ChapEnabled = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_vtl_devices(
@@ -3226,6 +3895,19 @@ storagegateway_describe_vtl_devices <- function(GatewayARN, VTLDeviceARNs = NULL
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   DiskIds = list(
+#'     "string"
+#'   ),
+#'   WorkingStorageUsedInBytes = 123,
+#'   WorkingStorageAllocatedInBytes = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_working_storage(
@@ -3285,6 +3967,14 @@ storagegateway_describe_working_storage <- function(GatewayARN) {
 #' 
 #' Valid Values: `true` | `false`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumeARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detach_volume(
@@ -3329,6 +4019,14 @@ storagegateway_detach_volume <- function(VolumeARN, ForceDetach = NULL) {
 #' storagegateway_disable_gateway(GatewayARN)
 #'
 #' @param GatewayARN &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3397,6 +4095,15 @@ storagegateway_disable_gateway <- function(GatewayARN) {
 #' @param Password &#91;required&#93; Sets the password of the user who has permission to add the gateway to
 #' the Active Directory domain.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   ActiveDirectoryStatus = "ACCESS_DENIED"|"DETACHED"|"JOINED"|"JOINING"|"NETWORK_ERROR"|"TIMEOUT"|"UNKNOWN_ERROR"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$join_domain(
@@ -3446,6 +4153,27 @@ storagegateway_join_domain <- function(GatewayARN, DomainName, OrganizationalUni
 #'
 #' @param GatewayARN 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutomaticTapeCreationPolicyInfos = list(
+#'     list(
+#'       AutomaticTapeCreationRules = list(
+#'         list(
+#'           TapeBarcodePrefix = "string",
+#'           PoolId = "string",
+#'           TapeSizeInBytes = 123,
+#'           MinimumNumTapes = 123,
+#'           Worm = TRUE|FALSE
+#'         )
+#'       ),
+#'       GatewayARN = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_automatic_tape_creation_policies(
@@ -3492,6 +4220,24 @@ storagegateway_list_automatic_tape_creation_policies <- function(GatewayARN = NU
 #' @param Marker Opaque pagination token returned from a previous ListFileShares
 #' operation. If present, `Marker` specifies where to continue the list
 #' from after a previous call to ListFileShares. Optional.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   NextMarker = "string",
+#'   FileShareInfoList = list(
+#'     list(
+#'       FileShareType = "NFS"|"SMB",
+#'       FileShareARN = "string",
+#'       FileShareId = "string",
+#'       FileShareStatus = "string",
+#'       GatewayARN = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3546,6 +4292,25 @@ storagegateway_list_file_shares <- function(GatewayARN = NULL, Limit = NULL, Mar
 #' returned list of gateways.
 #' @param Limit Specifies that the list of gateways returned be limited to the specified
 #' number of items.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Gateways = list(
+#'     list(
+#'       GatewayId = "string",
+#'       GatewayARN = "string",
+#'       GatewayType = "string",
+#'       GatewayOperationalState = "string",
+#'       GatewayName = "string",
+#'       Ec2InstanceId = "string",
+#'       Ec2InstanceRegion = "string"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3605,6 +4370,28 @@ storagegateway_list_gateways <- function(Marker = NULL, Limit = NULL) {
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   Disks = list(
+#'     list(
+#'       DiskId = "string",
+#'       DiskPath = "string",
+#'       DiskNode = "string",
+#'       DiskStatus = "string",
+#'       DiskSizeInBytes = 123,
+#'       DiskAllocationType = "string",
+#'       DiskAllocationResource = "string",
+#'       DiskAttributeList = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_local_disks(
@@ -3657,6 +4444,21 @@ storagegateway_list_local_disks <- function(GatewayARN) {
 #' the list of tags.
 #' @param Limit Specifies that the list of tags returned be limited to the specified
 #' number of items.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceARN = "string",
+#'   Marker = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3722,6 +4524,24 @@ storagegateway_list_tags_for_resource <- function(ResourceARN, Marker = NULL, Li
 #' @param Limit An optional number limit for the tape pools in the list returned by this
 #' call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PoolInfos = list(
+#'     list(
+#'       PoolARN = "string",
+#'       PoolName = "string",
+#'       StorageClass = "DEEP_ARCHIVE"|"GLACIER",
+#'       RetentionLockType = "COMPLIANCE"|"GOVERNANCE"|"NONE",
+#'       RetentionLockTimeInDays = 123,
+#'       PoolStatus = "ACTIVE"|"DELETED"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tape_pools(
@@ -3779,6 +4599,30 @@ storagegateway_list_tape_pools <- function(PoolARNs = NULL, Marker = NULL, Limit
 #' @param Limit An optional number limit for the tapes in the list returned by this
 #' call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TapeInfos = list(
+#'     list(
+#'       TapeARN = "string",
+#'       TapeBarcode = "string",
+#'       TapeSizeInBytes = 123,
+#'       TapeStatus = "string",
+#'       GatewayARN = "string",
+#'       PoolId = "string",
+#'       RetentionStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PoolEntryDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tapes(
@@ -3825,6 +4669,16 @@ storagegateway_list_tapes <- function(TapeARNs = NULL, Marker = NULL, Limit = NU
 #' [`list_volumes`][storagegateway_list_volumes] operation to return a list
 #' of gateway volumes for the gateway.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Initiators = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_volume_initiators(
@@ -3869,6 +4723,22 @@ storagegateway_list_volume_initiators <- function(VolumeARN) {
 #' storagegateway_list_volume_recovery_points(GatewayARN)
 #'
 #' @param GatewayARN &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   VolumeRecoveryPointInfos = list(
+#'     list(
+#'       VolumeARN = "string",
+#'       VolumeSizeInBytes = 123,
+#'       VolumeUsageInBytes = 123,
+#'       VolumeRecoveryPointTime = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3935,6 +4805,26 @@ storagegateway_list_volume_recovery_points <- function(GatewayARN) {
 #' @param Limit Specifies that the list of volumes returned be limited to the specified
 #' number of items.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   Marker = "string",
+#'   VolumeInfos = list(
+#'     list(
+#'       VolumeARN = "string",
+#'       VolumeId = "string",
+#'       GatewayARN = "string",
+#'       GatewayId = "string",
+#'       VolumeType = "string",
+#'       VolumeSizeInBytes = 123,
+#'       VolumeAttachmentStatus = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_volumes(
@@ -4000,6 +4890,15 @@ storagegateway_list_volumes <- function(GatewayARN = NULL, Marker = NULL, Limit 
 #' storagegateway_notify_when_uploaded(FileShareARN)
 #'
 #' @param FileShareARN &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileShareARN = "string",
+#'   NotificationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4083,6 +4982,15 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' 
 #' Valid Values: `true` | `false`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileShareARN = "string",
+#'   NotificationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$refresh_cache(
@@ -4127,6 +5035,14 @@ storagegateway_refresh_cache <- function(FileShareARN, FolderList = NULL, Recurs
 #' tags from.
 #' @param TagKeys &#91;required&#93; The keys of the tags you want to remove from the specified resource. A
 #' tag is composed of a key-value pair.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4195,6 +5111,14 @@ storagegateway_remove_tags_from_resource <- function(ResourceARN, TagKeys) {
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reset_cache(
@@ -4258,6 +5182,14 @@ storagegateway_reset_cache <- function(GatewayARN) {
 #' You retrieve archived virtual tapes to only one gateway and the gateway
 #' must be a tape gateway.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TapeARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$retrieve_tape_archive(
@@ -4318,6 +5250,14 @@ storagegateway_retrieve_tape_archive <- function(TapeARN, GatewayARN) {
 #' retrieve the recovery point.
 #' @param GatewayARN &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TapeARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$retrieve_tape_recovery_point(
@@ -4370,6 +5310,14 @@ storagegateway_retrieve_tape_recovery_point <- function(TapeARN, GatewayARN) {
 #' @param GatewayARN &#91;required&#93; 
 #' @param LocalConsolePassword &#91;required&#93; The password you want to set for your VM local console.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_local_console_password(
@@ -4420,6 +5368,14 @@ storagegateway_set_local_console_password <- function(GatewayARN, LocalConsolePa
 #' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the file gateway the SMB file share is
 #' associated with.
 #' @param Password &#91;required&#93; The password that you want to set for your SMB server.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4485,6 +5441,14 @@ storagegateway_set_smb_guest_password <- function(GatewayARN, Password) {
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$shutdown_gateway(
@@ -4541,6 +5505,14 @@ storagegateway_shutdown_gateway <- function(GatewayARN) {
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_availability_monitor_test(
@@ -4591,6 +5563,14 @@ storagegateway_start_availability_monitor_test <- function(GatewayARN) {
 #' storagegateway_start_gateway(GatewayARN)
 #'
 #' @param GatewayARN &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4646,6 +5626,14 @@ storagegateway_start_gateway <- function(GatewayARN) {
 #' creation rules. The rules determine when and how to automatically create
 #' new tapes.
 #' @param GatewayARN &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4709,6 +5697,14 @@ storagegateway_update_automatic_tape_creation_policy <- function(AutomaticTapeCr
 #' @param AverageUploadRateLimitInBitsPerSec The average upload bandwidth rate limit in bits per second.
 #' @param AverageDownloadRateLimitInBitsPerSec The average download bandwidth rate limit in bits per second.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_bandwidth_rate_limit(
@@ -4767,6 +5763,14 @@ storagegateway_update_bandwidth_rate_limit <- function(GatewayARN, AverageUpload
 #' @param BandwidthRateLimitIntervals &#91;required&#93; An array containing bandwidth rate limit schedule intervals for a
 #' gateway. When no bandwidth rate limit intervals have been scheduled, the
 #' array is empty.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4840,6 +5844,15 @@ storagegateway_update_bandwidth_rate_limit_schedule <- function(GatewayARN, Band
 #' 
 #' The secret key must be between 12 and 16 bytes when encoded in UTF-8.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TargetARN = "string",
+#'   InitiatorName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_chap_credentials(
@@ -4858,7 +5871,7 @@ storagegateway_update_bandwidth_rate_limit_schedule <- function(GatewayARN, Band
 #'   InitiatorName = "iqn.1991-05.com.microsoft:computername.domain.example.com",
 #'   SecretToAuthenticateInitiator = "111111111111",
 #'   SecretToAuthenticateTarget = "222222222222",
-#'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn..."
+#'   TargetARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/tar..."
 #' )
 #' }
 #'
@@ -4906,6 +5919,15 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
 #' 
 #' For more information, see [What is Amazon CloudWatch
 #' Logs?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string",
+#'   GatewayName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4975,6 +5997,14 @@ storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = 
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_gateway_software_now(
@@ -5036,6 +6066,14 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
 #' @param DayOfMonth The day of the month component of the maintenance start time represented
 #' as an ordinal number from 1 to 28, where 1 represents the first day of
 #' the month and 28 represents the last day of the month.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5163,6 +6201,14 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 #' `LocationARN`.
 #' @param CacheAttributes Refresh cache information.
 #' @param NotificationPolicy The notification policy of the file share.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileShareARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5293,18 +6339,18 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' read access.
 #' @param AdminUserList A list of users or groups in the Active Directory that have
 #' administrator rights to the file share. A group must be prefixed with
-#' the @@ character. Acceptable formats include: `DOMAIN\\User1`, `user1`,
-#' `@@group1`, and `@@DOMAIN\\group1`. Can only be set if Authentication is
+#' the @@ character. Acceptable formats include: `DOMAIN\User1`, `user1`,
+#' `@@group1`, and `@@DOMAIN\group1`. Can only be set if Authentication is
 #' set to `ActiveDirectory`.
 #' @param ValidUserList A list of users or groups in the Active Directory that are allowed to
 #' access the file share. A group must be prefixed with the @@ character.
-#' Acceptable formats include: `DOMAIN\\User1`, `user1`, `@@group1`, and
-#' `@@DOMAIN\\group1`. Can only be set if Authentication is set to
+#' Acceptable formats include: `DOMAIN\User1`, `user1`, `@@group1`, and
+#' `@@DOMAIN\group1`. Can only be set if Authentication is set to
 #' `ActiveDirectory`.
 #' @param InvalidUserList A list of users or groups in the Active Directory that are not allowed
 #' to access the file share. A group must be prefixed with the @@ character.
-#' Acceptable formats include: `DOMAIN\\User1`, `user1`, `@@group1`, and
-#' `@@DOMAIN\\group1`. Can only be set if Authentication is set to
+#' Acceptable formats include: `DOMAIN\User1`, `user1`, `@@group1`, and
+#' `@@DOMAIN\group1`. Can only be set if Authentication is set to
 #' `ActiveDirectory`.
 #' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for the audit logs.
 #' @param CaseSensitivity The case of an object name in an Amazon S3 bucket. For
@@ -5317,6 +6363,14 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' `LocationARN`.
 #' @param CacheAttributes Refresh cache information.
 #' @param NotificationPolicy The notification policy of the file share.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileShareARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5384,6 +6438,14 @@ storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' @param GatewayARN &#91;required&#93; 
 #' @param FileSharesVisible &#91;required&#93; The shares on this gateway appear when listing shares.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_smb_file_share_visibility(
@@ -5444,6 +6506,14 @@ storagegateway_update_smb_file_share_visibility <- function(GatewayARN, FileShar
 #' is highly recommended for environments that handle sensitive data. This
 #' option works with SMB clients on Microsoft Windows 8, Windows Server
 #' 2012 or newer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5507,8 +6577,16 @@ storagegateway_update_smb_security_strategy <- function(GatewayARN, SMBSecurityS
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' = . _ : / @@. The maximum length of a tag's key is 128 characters, and
 #' the maximum length for a tag's value is 256.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumeARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5533,7 +6611,7 @@ storagegateway_update_smb_security_strategy <- function(GatewayARN, SMBSecurityS
 #'   Description = "Hourly snapshot",
 #'   RecurrenceInHours = 1L,
 #'   StartAt = 0L,
-#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol..."
+#'   VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/vol..."
 #' )
 #' }
 #'
@@ -5574,6 +6652,14 @@ storagegateway_update_snapshot_schedule <- function(VolumeARN, StartAt, Recurren
 #' 
 #' Valid Values: `STK-L700` | `AWS-Gateway-VTL` | `IBM-03584L32-0402`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VTLDeviceARN = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_vtl_device_type(
@@ -5588,7 +6674,7 @@ storagegateway_update_snapshot_schedule <- function(VolumeARN, StartAt, Recurren
 #' # is activated.
 #' svc$update_vtl_device_type(
 #'   DeviceType = "Medium Changer",
-#'   VTLDeviceARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B/device/..."
+#'   VTLDeviceARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B/..."
 #' )
 #' }
 #'

@@ -14,6 +14,18 @@ serverlessapplicationrepository_create_cloud_formation_template(
 
 \url{https://semver.org/}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationId = "string",
+  CreationTime = "string",
+  ExpirationTime = "string",
+  SemanticVersion = "string",
+  Status = "PREPARING"|"ACTIVE"|"EXPIRED",
+  TemplateId = "string",
+  TemplateUrl = "string"
+)
+}
+}
 \description{
 Creates an AWS CloudFormation template.
 }

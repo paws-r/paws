@@ -13,6 +13,10 @@ alexaforbusiness_disassociate_skill_group_from_room(SkillGroupArn,
 \item{RoomArn}{The ARN of the room from which the skill group is to be disassociated.
 Required.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disassociates a skill group from a specified room. This disables all
 skills in the skill group on all devices in the room.

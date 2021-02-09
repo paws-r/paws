@@ -21,6 +21,10 @@ servicecatalog_associate_product_with_portfolio(AcceptLanguage,
 
 \item{SourcePortfolioId}{The identifier of the source portfolio.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates the specified product with the specified portfolio.
 

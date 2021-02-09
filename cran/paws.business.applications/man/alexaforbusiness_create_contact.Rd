@@ -28,6 +28,12 @@ number type and multiple numbers.}
 \item{ClientRequestToken}{A unique, user-specified identifier for this request that ensures
 idempotency.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContactArn = "string"
+)
+}
+}
 \description{
 Creates a contact with the specified details.
 }

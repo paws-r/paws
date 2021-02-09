@@ -23,6 +23,21 @@ To start at the beginning of the result set, do not specify a value.
 This parameter is ignored when the request specifies one or a list of
 fleet IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FleetUtilization = list(
+    list(
+      FleetId = "string",
+      ActiveServerProcessCount = 123,
+      ActiveGameSessionCount = 123,
+      CurrentPlayerSessionCount = 123,
+      MaximumPlayerSessionCount = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves utilization statistics for one or more fleets. These
 statistics provide insight into how available hosting resources are

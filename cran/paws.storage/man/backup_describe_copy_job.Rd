@@ -9,6 +9,37 @@ backup_describe_copy_job(CopyJobId)
 \arguments{
 \item{CopyJobId}{[required] Uniquely identifies a copy job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CopyJob = list(
+    AccountId = "string",
+    CopyJobId = "string",
+    SourceBackupVaultArn = "string",
+    SourceRecoveryPointArn = "string",
+    DestinationBackupVaultArn = "string",
+    DestinationRecoveryPointArn = "string",
+    ResourceArn = "string",
+    CreationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    CompletionDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    State = "CREATED"|"RUNNING"|"COMPLETED"|"FAILED",
+    StatusMessage = "string",
+    BackupSizeInBytes = 123,
+    IamRoleArn = "string",
+    CreatedBy = list(
+      BackupPlanId = "string",
+      BackupPlanArn = "string",
+      BackupPlanVersion = "string",
+      BackupRuleId = "string"
+    ),
+    ResourceType = "string"
+  )
+)
+}
+}
 \description{
 Returns metadata associated with creating a copy of a resource.
 }

@@ -40,6 +40,19 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationalUnits = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Name = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the organizational units (OUs) in a parent organizational unit or
 root.

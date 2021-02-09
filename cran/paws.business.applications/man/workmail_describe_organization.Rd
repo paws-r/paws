@@ -10,6 +10,22 @@ workmail_describe_organization(OrganizationId)
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization to be described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationId = "string",
+  Alias = "string",
+  State = "string",
+  DirectoryId = "string",
+  DirectoryType = "string",
+  DefaultMailDomain = "string",
+  CompletedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  ErrorMessage = "string",
+  ARN = "string"
+)
+}
+}
 \description{
 Provides more information regarding a given organization based on its
 identifier.

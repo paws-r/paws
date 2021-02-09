@@ -11,6 +11,10 @@ alexaforbusiness_delete_skill_authorization(SkillId, RoomArn)
 
 \item{RoomArn}{The room that the skill is authorized for.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Unlinks a third-party account from a skill.
 }

@@ -9,8 +9,173 @@ mediaconnect_describe_flow(FlowArn)
 \arguments{
 \item{FlowArn}{[required] The ARN of the flow that you want to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Flow = list(
+    AvailabilityZone = "string",
+    Description = "string",
+    EgressIp = "string",
+    Entitlements = list(
+      list(
+        DataTransferSubscriberFeePercent = 123,
+        Description = "string",
+        Encryption = list(
+          Algorithm = "aes128"|"aes192"|"aes256",
+          ConstantInitializationVector = "string",
+          DeviceId = "string",
+          KeyType = "speke"|"static-key",
+          Region = "string",
+          ResourceId = "string",
+          RoleArn = "string",
+          SecretArn = "string",
+          Url = "string"
+        ),
+        EntitlementArn = "string",
+        EntitlementStatus = "ENABLED"|"DISABLED",
+        Name = "string",
+        Subscribers = list(
+          "string"
+        )
+      )
+    ),
+    FlowArn = "string",
+    Name = "string",
+    Outputs = list(
+      list(
+        DataTransferSubscriberFeePercent = 123,
+        Description = "string",
+        Destination = "string",
+        Encryption = list(
+          Algorithm = "aes128"|"aes192"|"aes256",
+          ConstantInitializationVector = "string",
+          DeviceId = "string",
+          KeyType = "speke"|"static-key",
+          Region = "string",
+          ResourceId = "string",
+          RoleArn = "string",
+          SecretArn = "string",
+          Url = "string"
+        ),
+        EntitlementArn = "string",
+        MediaLiveInputArn = "string",
+        Name = "string",
+        OutputArn = "string",
+        Port = 123,
+        Transport = list(
+          CidrAllowList = list(
+            "string"
+          ),
+          MaxBitrate = 123,
+          MaxLatency = 123,
+          Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+          RemoteId = "string",
+          SmoothingLatency = 123,
+          StreamId = "string"
+        ),
+        VpcInterfaceAttachment = list(
+          VpcInterfaceName = "string"
+        )
+      )
+    ),
+    Source = list(
+      DataTransferSubscriberFeePercent = 123,
+      Decryption = list(
+        Algorithm = "aes128"|"aes192"|"aes256",
+        ConstantInitializationVector = "string",
+        DeviceId = "string",
+        KeyType = "speke"|"static-key",
+        Region = "string",
+        ResourceId = "string",
+        RoleArn = "string",
+        SecretArn = "string",
+        Url = "string"
+      ),
+      Description = "string",
+      EntitlementArn = "string",
+      IngestIp = "string",
+      IngestPort = 123,
+      Name = "string",
+      SourceArn = "string",
+      Transport = list(
+        CidrAllowList = list(
+          "string"
+        ),
+        MaxBitrate = 123,
+        MaxLatency = 123,
+        Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+        RemoteId = "string",
+        SmoothingLatency = 123,
+        StreamId = "string"
+      ),
+      VpcInterfaceName = "string",
+      WhitelistCidr = "string"
+    ),
+    SourceFailoverConfig = list(
+      RecoveryWindow = 123,
+      State = "ENABLED"|"DISABLED"
+    ),
+    Sources = list(
+      list(
+        DataTransferSubscriberFeePercent = 123,
+        Decryption = list(
+          Algorithm = "aes128"|"aes192"|"aes256",
+          ConstantInitializationVector = "string",
+          DeviceId = "string",
+          KeyType = "speke"|"static-key",
+          Region = "string",
+          ResourceId = "string",
+          RoleArn = "string",
+          SecretArn = "string",
+          Url = "string"
+        ),
+        Description = "string",
+        EntitlementArn = "string",
+        IngestIp = "string",
+        IngestPort = 123,
+        Name = "string",
+        SourceArn = "string",
+        Transport = list(
+          CidrAllowList = list(
+            "string"
+          ),
+          MaxBitrate = 123,
+          MaxLatency = 123,
+          Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+          RemoteId = "string",
+          SmoothingLatency = 123,
+          StreamId = "string"
+        ),
+        VpcInterfaceName = "string",
+        WhitelistCidr = "string"
+      )
+    ),
+    Status = "STANDBY"|"ACTIVE"|"UPDATING"|"DELETING"|"STARTING"|"STOPPING"|"ERROR",
+    VpcInterfaces = list(
+      list(
+        Name = "string",
+        NetworkInterfaceIds = list(
+          "string"
+        ),
+        RoleArn = "string",
+        SecurityGroupIds = list(
+          "string"
+        ),
+        SubnetId = "string"
+      )
+    )
+  ),
+  Messages = list(
+    Errors = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
-Displays the details of a flow. The response includes the flow ARN, name, and Availability Zone, as well as details about the source, outputs, and entitlements.
+Displays the details of a flow. The response includes the flow ARN,
+name, and Availability Zone, as well as details about the source,
+outputs, and entitlements.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_flow(

@@ -18,6 +18,39 @@ results.}
 specify null or 50. The call also returns a token that you can specify
 in a subsequent call to get the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ComplianceSummaryItems = list(
+    list(
+      ComplianceType = "string",
+      CompliantSummary = list(
+        CompliantCount = 123,
+        SeveritySummary = list(
+          CriticalCount = 123,
+          HighCount = 123,
+          MediumCount = 123,
+          LowCount = 123,
+          InformationalCount = 123,
+          UnspecifiedCount = 123
+        )
+      ),
+      NonCompliantSummary = list(
+        NonCompliantCount = 123,
+        SeveritySummary = list(
+          CriticalCount = 123,
+          HighCount = 123,
+          MediumCount = 123,
+          LowCount = 123,
+          InformationalCount = 123,
+          UnspecifiedCount = 123
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a summary count of compliant and non-compliant resources for a
 compliance type. For example, this call can return State Manager

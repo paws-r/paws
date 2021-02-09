@@ -14,6 +14,10 @@ whenever the security profile is updated. If you specify a value that is
 different from the actual version, a \code{VersionConflictException} is
 thrown.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a Device Defender security profile.
 }

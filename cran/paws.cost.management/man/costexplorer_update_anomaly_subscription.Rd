@@ -21,6 +21,12 @@ notifications.}
 
 \item{SubscriptionName}{The subscription's new name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SubscriptionArn = "string"
+)
+}
+}
 \description{
 Updates an existing cost anomaly monitor subscription.
 }

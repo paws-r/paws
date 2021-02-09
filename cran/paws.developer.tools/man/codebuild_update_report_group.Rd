@@ -21,6 +21,39 @@ group.
 These tags are available for use by AWS services that support AWS
 CodeBuild report group tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  reportGroup = list(
+    arn = "string",
+    name = "string",
+    type = "TEST"|"CODE_COVERAGE",
+    exportConfig = list(
+      exportConfigType = "S3"|"NO_EXPORT",
+      s3Destination = list(
+        bucket = "string",
+        path = "string",
+        packaging = "ZIP"|"NONE",
+        encryptionKey = "string",
+        encryptionDisabled = TRUE|FALSE
+      )
+    ),
+    created = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastModified = as.POSIXct(
+      "2015-01-01"
+    ),
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    ),
+    status = "ACTIVE"|"DELETING"
+  )
+)
+}
+}
 \description{
 Updates a report group.
 }

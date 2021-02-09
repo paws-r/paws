@@ -9,8 +9,39 @@ medialive_start_multiplex(MultiplexId)
 \arguments{
 \item{MultiplexId}{[required] The ID of the multiplex.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  AvailabilityZones = list(
+    "string"
+  ),
+  Destinations = list(
+    list(
+      MediaConnectSettings = list(
+        EntitlementArn = "string"
+      )
+    )
+  ),
+  Id = "string",
+  MultiplexSettings = list(
+    MaximumVideoBufferDelayMilliseconds = 123,
+    TransportStreamBitrate = 123,
+    TransportStreamId = 123,
+    TransportStreamReservedBitrate = 123
+  ),
+  Name = "string",
+  PipelinesRunningCount = 123,
+  ProgramCount = 123,
+  State = "CREATING"|"CREATE_FAILED"|"IDLE"|"STARTING"|"RUNNING"|"RECOVERING"|"STOPPING"|"DELETING"|"DELETED",
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
-Start (run) the multiplex. Starting the multiplex does not start the channels. You must explicitly start each channel.
+Start (run) the multiplex. Starting the multiplex does not start the
+channels. You must explicitly start each channel.
 }
 \section{Request syntax}{
 \preformatted{svc$start_multiplex(

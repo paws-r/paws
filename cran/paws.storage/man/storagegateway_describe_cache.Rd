@@ -9,6 +9,20 @@ storagegateway_describe_cache(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string",
+  DiskIds = list(
+    "string"
+  ),
+  CacheAllocatedInBytes = 123,
+  CacheUsedPercentage = 123.0,
+  CacheDirtyPercentage = 123.0,
+  CacheHitPercentage = 123.0,
+  CacheMissPercentage = 123.0
+)
+}
+}
 \description{
 Returns information about the cache of a gateway. This operation is only
 supported in the cached volume, tape, and file gateway types.

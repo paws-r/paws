@@ -36,6 +36,49 @@ value is 10.}
 the full set of components, the call returns a token for getting the
 next set of components.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrialComponentSummaries = list(
+    list(
+      TrialComponentName = "string",
+      TrialComponentArn = "string",
+      DisplayName = "string",
+      TrialComponentSource = list(
+        SourceArn = "string",
+        SourceType = "string"
+      ),
+      Status = list(
+        PrimaryStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+        Message = "string"
+      ),
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreatedBy = list(
+        UserProfileArn = "string",
+        UserProfileName = "string",
+        DomainId = "string"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedBy = list(
+        UserProfileArn = "string",
+        UserProfileName = "string",
+        DomainId = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the trial components in your account. You can sort the list by
 trial component name or creation time. You can filter the list to show

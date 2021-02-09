@@ -13,6 +13,12 @@ cloudformation_update_termination_protection(
 \item{StackName}{[required] The name or unique ID of the stack for which you want to set termination
 protection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StackId = "string"
+)
+}
+}
 \description{
 Updates termination protection for the specified stack. If a user
 attempts to delete a stack with termination protection enabled, the

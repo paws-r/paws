@@ -12,6 +12,12 @@ sagemaker_update_app_image_config(AppImageConfigName,
 
 \item{KernelGatewayImageConfig}{The new KernelGateway app to run on the image.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppImageConfigArn = "string"
+)
+}
+}
 \description{
 Updates the properties of an AppImageConfig.
 }

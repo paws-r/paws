@@ -15,6 +15,22 @@ specify a project ARN.}
 operation, which can be used to return the next set of items in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  projects = list(
+    list(
+      arn = "string",
+      name = "string",
+      defaultJobTimeoutMinutes = 123,
+      created = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets information about projects.
 }
@@ -31,7 +47,7 @@ Gets information about projects.
 # The following example returns information about the specified project in
 # Device Farm.
 svc$list_projects(
-  arn = "arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41a7-bf94-12345EXAM...",
+  arn = "arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41a7-bf94-12...",
   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 )
 }

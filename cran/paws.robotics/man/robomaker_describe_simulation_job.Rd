@@ -9,6 +9,118 @@ robomaker_describe_simulation_job(job)
 \arguments{
 \item{job}{[required] The Amazon Resource Name (ARN) of the simulation job to be described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  name = "string",
+  status = "Pending"|"Preparing"|"Running"|"Restarting"|"Completed"|"Failed"|"RunningFailed"|"Terminating"|"Terminated"|"Canceled",
+  lastStartedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastUpdatedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  failureBehavior = "Fail"|"Continue",
+  failureCode = "InternalServiceError"|"RobotApplicationCrash"|"SimulationApplicationCrash"|"BadPermissionsRobotApplication"|"BadPermissionsSimulationApplication"|"BadPermissionsS3Object"|"BadPermissionsS3Output"|"BadPermissionsCloudwatchLogs"|"SubnetIpLimitExceeded"|"ENILimitExceeded"|"BadPermissionsUserCredentials"|"InvalidBundleRobotApplication"|"InvalidBundleSimulationApplication"|"InvalidS3Resource"|"LimitExceeded"|"MismatchedEtag"|"RobotApplicationVersionMismatchedEtag"|"SimulationApplicationVersionMismatchedEtag"|"ResourceNotFound"|"RequestThrottled"|"BatchTimedOut"|"BatchCanceled"|"InvalidInput"|"WrongRegionS3Bucket"|"WrongRegionS3Output"|"WrongRegionRobotApplication"|"WrongRegionSimulationApplication",
+  failureReason = "string",
+  clientRequestToken = "string",
+  outputLocation = list(
+    s3Bucket = "string",
+    s3Prefix = "string"
+  ),
+  loggingConfig = list(
+    recordAllRosTopics = TRUE|FALSE
+  ),
+  maxJobDurationInSeconds = 123,
+  simulationTimeMillis = 123,
+  iamRole = "string",
+  robotApplications = list(
+    list(
+      application = "string",
+      applicationVersion = "string",
+      launchConfig = list(
+        packageName = "string",
+        launchFile = "string",
+        environmentVariables = list(
+          "string"
+        ),
+        portForwardingConfig = list(
+          portMappings = list(
+            list(
+              jobPort = 123,
+              applicationPort = 123,
+              enableOnPublicIp = TRUE|FALSE
+            )
+          )
+        ),
+        streamUI = TRUE|FALSE
+      )
+    )
+  ),
+  simulationApplications = list(
+    list(
+      application = "string",
+      applicationVersion = "string",
+      launchConfig = list(
+        packageName = "string",
+        launchFile = "string",
+        environmentVariables = list(
+          "string"
+        ),
+        portForwardingConfig = list(
+          portMappings = list(
+            list(
+              jobPort = 123,
+              applicationPort = 123,
+              enableOnPublicIp = TRUE|FALSE
+            )
+          )
+        ),
+        streamUI = TRUE|FALSE
+      ),
+      worldConfigs = list(
+        list(
+          world = "string"
+        )
+      )
+    )
+  ),
+  dataSources = list(
+    list(
+      name = "string",
+      s3Bucket = "string",
+      s3Keys = list(
+        list(
+          s3Key = "string",
+          etag = "string"
+        )
+      )
+    )
+  ),
+  tags = list(
+    "string"
+  ),
+  vpcConfig = list(
+    subnets = list(
+      "string"
+    ),
+    securityGroups = list(
+      "string"
+    ),
+    vpcId = "string",
+    assignPublicIp = TRUE|FALSE
+  ),
+  networkInterface = list(
+    networkInterfaceId = "string",
+    privateIpAddress = "string",
+    publicIpAddress = "string"
+  ),
+  compute = list(
+    simulationUnitLimit = 123
+  )
+)
+}
+}
 \description{
 Describes a simulation job.
 }

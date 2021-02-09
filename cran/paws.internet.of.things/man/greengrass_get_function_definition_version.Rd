@@ -12,12 +12,74 @@ greengrass_get_function_definition_version(FunctionDefinitionId,
 \arguments{
 \item{FunctionDefinitionId}{[required] The ID of the Lambda function definition.}
 
-\item{FunctionDefinitionVersionId}{[required] The ID of the function definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListFunctionDefinitionVersions'' requests. If the version is the last one that was associated with a function definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.}
+\item{FunctionDefinitionVersionId}{[required] The ID of the function definition version. This value maps to the
+''Version'' property of the corresponding ''VersionInformation'' object,
+which is returned by ''ListFunctionDefinitionVersions'' requests. If the
+version is the last one that was associated with a function definition,
+the value also maps to the ''LatestVersion'' property of the
+corresponding ''DefinitionInformation'' object.}
 
-\item{NextToken}{The token for the next set of results, or ''null'' if there are no additional results.}
+\item{NextToken}{The token for the next set of results, or ''null'' if there are no
+additional results.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Definition = list(
+    DefaultConfig = list(
+      Execution = list(
+        IsolationMode = "GreengrassContainer"|"NoContainer",
+        RunAs = list(
+          Gid = 123,
+          Uid = 123
+        )
+      )
+    ),
+    Functions = list(
+      list(
+        FunctionArn = "string",
+        FunctionConfiguration = list(
+          EncodingType = "binary"|"json",
+          Environment = list(
+            AccessSysfs = TRUE|FALSE,
+            Execution = list(
+              IsolationMode = "GreengrassContainer"|"NoContainer",
+              RunAs = list(
+                Gid = 123,
+                Uid = 123
+              )
+            ),
+            ResourceAccessPolicies = list(
+              list(
+                Permission = "ro"|"rw",
+                ResourceId = "string"
+              )
+            ),
+            Variables = list(
+              "string"
+            )
+          ),
+          ExecArgs = "string",
+          Executable = "string",
+          MemorySize = 123,
+          Pinned = TRUE|FALSE,
+          Timeout = 123
+        ),
+        Id = "string"
+      )
+    )
+  ),
+  Id = "string",
+  NextToken = "string",
+  Version = "string"
+)
+}
 }
 \description{
-Retrieves information about a Lambda function definition version, including which Lambda functions are included in the version and their configurations.
+Retrieves information about a Lambda function definition version,
+including which Lambda functions are included in the version and their
+configurations.
 }
 \section{Request syntax}{
 \preformatted{svc$get_function_definition_version(

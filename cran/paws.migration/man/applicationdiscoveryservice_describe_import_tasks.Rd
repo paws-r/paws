@@ -19,6 +19,35 @@ to 100.}
 
 \item{nextToken}{The token to request a specific page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  nextToken = "string",
+  tasks = list(
+    list(
+      importTaskId = "string",
+      clientRequestToken = "string",
+      name = "string",
+      importUrl = "string",
+      status = "IMPORT_IN_PROGRESS"|"IMPORT_COMPLETE"|"IMPORT_COMPLETE_WITH_ERRORS"|"IMPORT_FAILED"|"IMPORT_FAILED_SERVER_LIMIT_EXCEEDED"|"IMPORT_FAILED_RECORD_LIMIT_EXCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"DELETE_FAILED_LIMIT_EXCEEDED"|"INTERNAL_ERROR",
+      importRequestTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      importCompletionTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      importDeletedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      serverImportSuccess = 123,
+      serverImportFailure = 123,
+      applicationImportSuccess = 123,
+      applicationImportFailure = 123,
+      errorsAndFailedEntriesZip = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns an array of import tasks for your account, including status
 information, times, IDs, the Amazon S3 Object URL for the import file,

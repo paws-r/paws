@@ -11,6 +11,10 @@ guardduty_delete_ip_set(DetectorId, IpSetId)
 
 \item{IpSetId}{[required] The unique ID of the IPSet to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the IPSet specified by the \code{ipSetId}. IPSets are called trusted
 IP lists in the console user interface.

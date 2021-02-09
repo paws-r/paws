@@ -15,6 +15,10 @@ operation.}
 \item{Reason}{A text message explaining why the request was rejected, to be shown to
 the Worker who made the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 The \code{\link[=mturk_reject_qualification_request]{reject_qualification_request}}
 operation rejects a user's request for a Qualification.

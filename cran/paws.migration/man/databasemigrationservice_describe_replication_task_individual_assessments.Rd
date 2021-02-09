@@ -24,6 +24,23 @@ results can be retrieved.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ReplicationTaskIndividualAssessments = list(
+    list(
+      ReplicationTaskIndividualAssessmentArn = "string",
+      ReplicationTaskAssessmentRunArn = "string",
+      IndividualAssessmentName = "string",
+      Status = "string",
+      ReplicationTaskIndividualAssessmentStartDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a paginated list of individual assessments based on filter
 settings.

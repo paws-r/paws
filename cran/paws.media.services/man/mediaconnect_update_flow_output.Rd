@@ -9,13 +9,17 @@ mediaconnect_update_flow_output(CidrAllowList, Description, Destination,
   SmoothingLatency, StreamId, VpcInterfaceAttachment)
 }
 \arguments{
-\item{CidrAllowList}{The range of IP addresses that should be allowed to initiate output requests to this flow. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.}
+\item{CidrAllowList}{The range of IP addresses that should be allowed to initiate output
+requests to this flow. These IP addresses should be in the form of a
+Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.}
 
-\item{Description}{A description of the output. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the end user.}
+\item{Description}{A description of the output. This description appears only on the AWS
+Elemental MediaConnect console and will not be seen by the end user.}
 
 \item{Destination}{The IP address where you want to send the output.}
 
-\item{Encryption}{The type of key used for the encryption. If no keyType is provided, the service will use the default setting (static-key).}
+\item{Encryption}{The type of key used for the encryption. If no keyType is provided, the
+service will use the default setting (static-key).}
 
 \item{FlowArn}{[required] The flow that is associated with the output that you want to update.}
 
@@ -29,11 +33,54 @@ mediaconnect_update_flow_output(CidrAllowList, Description, Destination,
 
 \item{RemoteId}{The remote ID for the Zixi-pull stream.}
 
-\item{SmoothingLatency}{The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams.}
+\item{SmoothingLatency}{The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC
+streams.}
 
-\item{StreamId}{The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.}
+\item{StreamId}{The stream ID that you want to use for this transport. This parameter
+applies only to Zixi-based streams.}
 
 \item{VpcInterfaceAttachment}{The name of the VPC interface attachment to use for this output.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  FlowArn = "string",
+  Output = list(
+    DataTransferSubscriberFeePercent = 123,
+    Description = "string",
+    Destination = "string",
+    Encryption = list(
+      Algorithm = "aes128"|"aes192"|"aes256",
+      ConstantInitializationVector = "string",
+      DeviceId = "string",
+      KeyType = "speke"|"static-key",
+      Region = "string",
+      ResourceId = "string",
+      RoleArn = "string",
+      SecretArn = "string",
+      Url = "string"
+    ),
+    EntitlementArn = "string",
+    MediaLiveInputArn = "string",
+    Name = "string",
+    OutputArn = "string",
+    Port = 123,
+    Transport = list(
+      CidrAllowList = list(
+        "string"
+      ),
+      MaxBitrate = 123,
+      MaxLatency = 123,
+      Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+      RemoteId = "string",
+      SmoothingLatency = 123,
+      StreamId = "string"
+    ),
+    VpcInterfaceAttachment = list(
+      VpcInterfaceName = "string"
+    )
+  )
+)
+}
 }
 \description{
 Updates an existing flow output.

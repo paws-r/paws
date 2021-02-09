@@ -11,6 +11,10 @@ greengrass_update_group(GroupId, Name)
 
 \item{Name}{The name of the definition.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a group.
 }

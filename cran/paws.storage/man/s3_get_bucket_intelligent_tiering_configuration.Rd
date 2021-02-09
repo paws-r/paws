@@ -12,6 +12,37 @@ or retrieve.}
 
 \item{Id}{[required] The ID used to identify the S3 Intelligent-Tiering configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IntelligentTieringConfiguration = list(
+    Id = "string",
+    Filter = list(
+      Prefix = "string",
+      Tag = list(
+        Key = "string",
+        Value = "string"
+      ),
+      And = list(
+        Prefix = "string",
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      )
+    ),
+    Status = "Enabled"|"Disabled",
+    Tierings = list(
+      list(
+        Days = 123,
+        AccessTier = "ARCHIVE_ACCESS"|"DEEP_ARCHIVE_ACCESS"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets the S3 Intelligent-Tiering configuration from the specified bucket.
 
@@ -29,7 +60,7 @@ frequent access tier rates in the S3 Intelligent-Tiering storage class.
 
 If you delete an object before the end of the 30-day minimum storage
 duration period, you are charged for 30 days. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access}{Storage class for automatically optimizing frequently and infrequently accessed objects}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html#sc-dynamic-data-access}{Storage class for automatically optimizing frequently and infrequently accessed objects}.
 
 Operations related to
 \code{\link[=s3_get_bucket_intelligent_tiering_configuration]{get_bucket_intelligent_tiering_configuration}}

@@ -13,13 +13,31 @@ a \code{Rule} after you create it.}
 \item{MetricName}{[required] A friendly name or description for the metrics for this \code{Rule}. The name
 can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum
 length 128 and minimum length one. It can't contain whitespace or metric
-names reserved for AWS WAF, including "All" and "Default\\_Action." You
+names reserved for AWS WAF, including "All" and "Default_Action." You
 can't change the name of the metric after you create the \code{Rule}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 
 \item{Tags}{}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Rule = list(
+    RuleId = "string",
+    Name = "string",
+    MetricName = "string",
+    Predicates = list(
+      list(
+        Negated = TRUE|FALSE,
+        Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
+        DataId = "string"
+      )
+    )
+  ),
+  ChangeToken = "string"
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

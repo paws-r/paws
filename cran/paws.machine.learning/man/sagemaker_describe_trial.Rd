@@ -9,6 +9,41 @@ sagemaker_describe_trial(TrialName)
 \arguments{
 \item{TrialName}{[required] The name of the trial to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrialName = "string",
+  TrialArn = "string",
+  DisplayName = "string",
+  ExperimentName = "string",
+  Source = list(
+    SourceArn = "string",
+    SourceType = "string"
+  ),
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  CreatedBy = list(
+    UserProfileArn = "string",
+    UserProfileName = "string",
+    DomainId = "string"
+  ),
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastModifiedBy = list(
+    UserProfileArn = "string",
+    UserProfileName = "string",
+    DomainId = "string"
+  ),
+  MetadataProperties = list(
+    CommitId = "string",
+    Repository = "string",
+    GeneratedBy = "string",
+    ProjectId = "string"
+  )
+)
+}
+}
 \description{
 Provides a list of a trial's properties.
 }

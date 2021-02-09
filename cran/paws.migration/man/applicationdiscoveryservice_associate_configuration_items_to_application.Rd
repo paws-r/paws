@@ -13,6 +13,10 @@ associated.}
 
 \item{configurationIds}{[required] The ID of each configuration item to be associated with an application.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates one or more configuration items with an application.
 }

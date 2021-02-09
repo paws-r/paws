@@ -11,6 +11,10 @@ directoryservice_remove_tags_from_resource(ResourceId, TagKeys)
 
 \item{TagKeys}{[required] The tag key (name) of the tag to be removed.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes tags from a directory.
 }

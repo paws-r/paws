@@ -21,6 +21,15 @@ For subsequent calls to the action, fill nextToken in the request with
 the value of NextToken from the previous response to continue listing
 data.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ThreatIntelSetIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the ThreatIntelSets of the GuardDuty service specified by the
 detector ID. If you use this operation from a member account, the

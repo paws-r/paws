@@ -8,6 +8,10 @@ support}
 \usage{
 shield_disable_proactive_engagement()
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes authorization from the DDoS Response Team (DRT) to notify
 contacts about escalations to the DRT and to initiate proactive customer

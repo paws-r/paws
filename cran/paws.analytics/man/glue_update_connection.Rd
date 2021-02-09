@@ -14,6 +14,10 @@ provided, the AWS account ID is used by default.}
 
 \item{ConnectionInput}{[required] A \code{ConnectionInput} object that redefines the connection in question.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a connection definition in the Data Catalog.
 }

@@ -16,6 +16,12 @@ the labels.}
 
 \item{ReplaceAllLabels}{Indicates whether to overwrite your existing labels.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TaskRunId = "string"
+)
+}
+}
 \description{
 Enables you to provide additional labels (examples of truth) to be used
 to teach the machine learning transform and improve its quality. This

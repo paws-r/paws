@@ -26,6 +26,33 @@ results. Use the token returned with the previous call to this
 operation. To start at the beginning of the result set, do not specify a
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GameServers = list(
+    list(
+      GameServerGroupName = "string",
+      GameServerGroupArn = "string",
+      GameServerId = "string",
+      InstanceId = "string",
+      ConnectionInfo = "string",
+      GameServerData = "string",
+      ClaimStatus = "CLAIMED",
+      UtilizationStatus = "AVAILABLE"|"UTILIZED",
+      RegistrationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastClaimTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastHealthCheckTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}

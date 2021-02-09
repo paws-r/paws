@@ -30,6 +30,32 @@ recommend that you use a meaningful name for each import task.}
 If you're using the AWS CLI, this URL is structured as follows:
 \verb{s3://BucketName/ImportFileName.CSV}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  task = list(
+    importTaskId = "string",
+    clientRequestToken = "string",
+    name = "string",
+    importUrl = "string",
+    status = "IMPORT_IN_PROGRESS"|"IMPORT_COMPLETE"|"IMPORT_COMPLETE_WITH_ERRORS"|"IMPORT_FAILED"|"IMPORT_FAILED_SERVER_LIMIT_EXCEEDED"|"IMPORT_FAILED_RECORD_LIMIT_EXCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"DELETE_FAILED_LIMIT_EXCEEDED"|"INTERNAL_ERROR",
+    importRequestTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    importCompletionTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    importDeletedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    serverImportSuccess = 123,
+    serverImportFailure = 123,
+    applicationImportSuccess = 123,
+    applicationImportFailure = 123,
+    errorsAndFailedEntriesZip = "string"
+  )
+)
+}
+}
 \description{
 Starts an import task, which allows you to import details of your
 on-premises environment directly into AWS Migration Hub without having

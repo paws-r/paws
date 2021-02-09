@@ -13,6 +13,39 @@ elasticache_rebalance_slots_in_global_replication_group(
 
 \item{ApplyImmediately}{[required] If \code{True}, redistribution is applied immediately.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GlobalReplicationGroup = list(
+    GlobalReplicationGroupId = "string",
+    GlobalReplicationGroupDescription = "string",
+    Status = "string",
+    CacheNodeType = "string",
+    Engine = "string",
+    EngineVersion = "string",
+    Members = list(
+      list(
+        ReplicationGroupId = "string",
+        ReplicationGroupRegion = "string",
+        Role = "string",
+        AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
+        Status = "string"
+      )
+    ),
+    ClusterEnabled = TRUE|FALSE,
+    GlobalNodeGroups = list(
+      list(
+        GlobalNodeGroupId = "string",
+        Slots = "string"
+      )
+    ),
+    AuthTokenEnabled = TRUE|FALSE,
+    TransitEncryptionEnabled = TRUE|FALSE,
+    AtRestEncryptionEnabled = TRUE|FALSE,
+    ARN = "string"
+  )
+)
+}
+}
 \description{
 Redistribute slots to ensure uniform distribution across existing shards
 in the cluster.

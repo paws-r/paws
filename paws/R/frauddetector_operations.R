@@ -14,6 +14,20 @@ NULL
 #' @param variableEntries &#91;required&#93; The list of variables for the batch create variable request.
 #' @param tags A collection of key and value pairs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   errors = list(
+#'     list(
+#'       name = "string",
+#'       code = 123,
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_create_variable(
@@ -65,6 +79,33 @@ frauddetector_batch_create_variable <- function(variableEntries, tags = NULL) {
 #' frauddetector_batch_get_variable(names)
 #'
 #' @param names &#91;required&#93; The list of variable names to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   variables = list(
+#'     list(
+#'       name = "string",
+#'       dataType = "STRING"|"INTEGER"|"FLOAT"|"BOOLEAN",
+#'       dataSource = "EVENT"|"MODEL_SCORE"|"EXTERNAL_MODEL_SCORE",
+#'       defaultValue = "string",
+#'       description = "string",
+#'       variableType = "string",
+#'       lastUpdatedTime = "string",
+#'       createdTime = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   errors = list(
+#'     list(
+#'       name = "string",
+#'       code = 123,
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -124,6 +165,16 @@ frauddetector_batch_get_variable <- function(names) {
 #' 
 #' The default behavior is `FIRST_MATCHED`.
 #' @param tags A collection of key and value pairs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   detectorId = "string",
+#'   detectorVersionId = "string",
+#'   status = "DRAFT"|"ACTIVE"|"INACTIVE"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -193,6 +244,12 @@ frauddetector_create_detector_version <- function(detectorId, description = NULL
 #' @param eventTypeName &#91;required&#93; The name of the event type.
 #' @param tags A collection of key and value pairs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_model(
@@ -247,6 +304,17 @@ frauddetector_create_model <- function(modelId, modelType, description = NULL, e
 #' @param externalEventsDetail Details for the external events data used for model version training.
 #' Required if `trainingDataSource` is `EXTERNAL_EVENTS`.
 #' @param tags A collection of key and value pairs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   modelId = "string",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelVersionNumber = "string",
+#'   status = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -316,6 +384,18 @@ frauddetector_create_model_version <- function(modelId, modelType, trainingDataS
 #' @param outcomes &#91;required&#93; The outcome or outcomes returned when the rule expression matches.
 #' @param tags A collection of key and value pairs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   rule = list(
+#'     detectorId = "string",
+#'     ruleId = "string",
+#'     ruleVersion = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_rule(
@@ -377,6 +457,12 @@ frauddetector_create_rule <- function(ruleId, detectorId, description = NULL, ex
 #' `AUTH_CODE | AVS | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY | BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN | CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL | FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER | PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 | SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE | SHIPPING_STATE | SHIPPING_ZIP | USERAGENT`
 #' @param tags A collection of key and value pairs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_variable(
@@ -429,6 +515,12 @@ frauddetector_create_variable <- function(name, dataType, dataSource, defaultVal
 #'
 #' @param detectorId &#91;required&#93; The ID of the detector to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_detector(
@@ -471,6 +563,12 @@ frauddetector_delete_detector <- function(detectorId) {
 #'
 #' @param detectorId &#91;required&#93; The ID of the parent detector for the detector version to delete.
 #' @param detectorVersionId &#91;required&#93; The ID of the detector version to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -516,6 +614,12 @@ frauddetector_delete_detector_version <- function(detectorId, detectorVersionId)
 #'
 #' @param name &#91;required&#93; The name of the entity type to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_entity_type(
@@ -557,6 +661,12 @@ frauddetector_delete_entity_type <- function(name) {
 #'
 #' @param eventId &#91;required&#93; The ID of the event to delete.
 #' @param eventTypeName &#91;required&#93; The name of the event type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -602,6 +712,12 @@ frauddetector_delete_event <- function(eventId, eventTypeName) {
 #'
 #' @param name &#91;required&#93; The name of the event type to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_event_type(
@@ -642,6 +758,12 @@ frauddetector_delete_event_type <- function(name) {
 #' frauddetector_delete_external_model(modelEndpoint)
 #'
 #' @param modelEndpoint &#91;required&#93; The endpoint of the Amazon Sagemaker model to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -690,6 +812,12 @@ frauddetector_delete_external_model <- function(modelEndpoint) {
 #'
 #' @param name &#91;required&#93; The name of the label to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_label(
@@ -734,6 +862,12 @@ frauddetector_delete_label <- function(name) {
 #'
 #' @param modelId &#91;required&#93; The model ID of the model to delete.
 #' @param modelType &#91;required&#93; The model type of the model to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -783,6 +917,12 @@ frauddetector_delete_model <- function(modelId, modelType) {
 #' @param modelType &#91;required&#93; The model type of the model version to delete.
 #' @param modelVersionNumber &#91;required&#93; The model version number of the model version to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_model_version(
@@ -828,6 +968,12 @@ frauddetector_delete_model_version <- function(modelId, modelType, modelVersionN
 #'
 #' @param name &#91;required&#93; The name of the outcome to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_outcome(
@@ -869,6 +1015,12 @@ frauddetector_delete_outcome <- function(name) {
 #' frauddetector_delete_rule(rule)
 #'
 #' @param rule &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -922,6 +1074,12 @@ frauddetector_delete_rule <- function(rule) {
 #'
 #' @param name &#91;required&#93; The name of the variable to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_variable(
@@ -960,6 +1118,24 @@ frauddetector_delete_variable <- function(name) {
 #' @param detectorId &#91;required&#93; The detector ID.
 #' @param nextToken The next token from the previous response.
 #' @param maxResults The maximum number of results to return for the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   detectorId = "string",
+#'   detectorVersionSummaries = list(
+#'     list(
+#'       detectorVersionId = "string",
+#'       status = "DRAFT"|"ACTIVE"|"INACTIVE",
+#'       description = "string",
+#'       lastUpdatedTime = "string"
+#'     )
+#'   ),
+#'   nextToken = "string",
+#'   arn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1008,6 +1184,73 @@ frauddetector_describe_detector <- function(detectorId, nextToken = NULL, maxRes
 #' @param nextToken The next token from the previous results.
 #' @param maxResults The maximum number of results to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   modelVersionDetails = list(
+#'     list(
+#'       modelId = "string",
+#'       modelType = "ONLINE_FRAUD_INSIGHTS",
+#'       modelVersionNumber = "string",
+#'       status = "string",
+#'       trainingDataSource = "EXTERNAL_EVENTS",
+#'       trainingDataSchema = list(
+#'         modelVariables = list(
+#'           "string"
+#'         ),
+#'         labelSchema = list(
+#'           labelMapper = list(
+#'             list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       externalEventsDetail = list(
+#'         dataLocation = "string",
+#'         dataAccessRoleArn = "string"
+#'       ),
+#'       trainingResult = list(
+#'         dataValidationMetrics = list(
+#'           fileLevelMessages = list(
+#'             list(
+#'               title = "string",
+#'               content = "string",
+#'               type = "string"
+#'             )
+#'           ),
+#'           fieldLevelMessages = list(
+#'             list(
+#'               fieldName = "string",
+#'               identifier = "string",
+#'               title = "string",
+#'               content = "string",
+#'               type = "string"
+#'             )
+#'           )
+#'         ),
+#'         trainingMetrics = list(
+#'           auc = 123.0,
+#'           metricDataPoints = list(
+#'             list(
+#'               fpr = 123.0,
+#'               precision = 123.0,
+#'               tpr = 123.0,
+#'               threshold = 123.0
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       lastUpdatedTime = "string",
+#'       createdTime = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_model_versions(
@@ -1049,6 +1292,39 @@ frauddetector_describe_model_versions <- function(modelId = NULL, modelVersionNu
 #'
 #' @param detectorId &#91;required&#93; The detector ID.
 #' @param detectorVersionId &#91;required&#93; The detector version ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   detectorId = "string",
+#'   detectorVersionId = "string",
+#'   description = "string",
+#'   externalModelEndpoints = list(
+#'     "string"
+#'   ),
+#'   modelVersions = list(
+#'     list(
+#'       modelId = "string",
+#'       modelType = "ONLINE_FRAUD_INSIGHTS",
+#'       modelVersionNumber = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   rules = list(
+#'     list(
+#'       detectorId = "string",
+#'       ruleId = "string",
+#'       ruleVersion = "string"
+#'     )
+#'   ),
+#'   status = "DRAFT"|"ACTIVE"|"INACTIVE",
+#'   lastUpdatedTime = "string",
+#'   createdTime = "string",
+#'   ruleExecutionMode = "ALL_MATCHED"|"FIRST_MATCHED",
+#'   arn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1096,6 +1372,24 @@ frauddetector_get_detector_version <- function(detectorId, detectorVersionId) {
 #' @param nextToken The next token for the subsequent request.
 #' @param maxResults The maximum number of objects to return for the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   detectors = list(
+#'     list(
+#'       detectorId = "string",
+#'       description = "string",
+#'       eventTypeName = "string",
+#'       lastUpdatedTime = "string",
+#'       createdTime = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_detectors(
@@ -1142,6 +1436,23 @@ frauddetector_get_detectors <- function(detectorId = NULL, nextToken = NULL, max
 #' @param name The name.
 #' @param nextToken The next token for the subsequent request.
 #' @param maxResults The maximum number of objects to return for the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   entityTypes = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       lastUpdatedTime = "string",
+#'       createdTime = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1196,6 +1507,34 @@ frauddetector_get_entity_types <- function(name = NULL, nextToken = NULL, maxRes
 #' to represent data elements and their corresponding values for the event
 #' you are sending for evaluation.
 #' @param externalModelEndpointDataBlobs The Amazon SageMaker model endpoint input data blobs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   modelScores = list(
+#'     list(
+#'       modelVersion = list(
+#'         modelId = "string",
+#'         modelType = "ONLINE_FRAUD_INSIGHTS",
+#'         modelVersionNumber = "string",
+#'         arn = "string"
+#'       ),
+#'       scores = list(
+#'         123.0
+#'       )
+#'     )
+#'   ),
+#'   ruleResults = list(
+#'     list(
+#'       ruleId = "string",
+#'       outcomes = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1261,6 +1600,32 @@ frauddetector_get_event_prediction <- function(detectorId, detectorVersionId = N
 #' @param nextToken The next token for the subsequent request.
 #' @param maxResults The maximum number of objects to return for the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   eventTypes = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       eventVariables = list(
+#'         "string"
+#'       ),
+#'       labels = list(
+#'         "string"
+#'       ),
+#'       entityTypes = list(
+#'         "string"
+#'       ),
+#'       lastUpdatedTime = "string",
+#'       createdTime = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_event_types(
@@ -1309,6 +1674,41 @@ frauddetector_get_event_types <- function(name = NULL, nextToken = NULL, maxResu
 #' @param nextToken The next page token for the request.
 #' @param maxResults The maximum number of objects to return for the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   externalModels = list(
+#'     list(
+#'       modelEndpoint = "string",
+#'       modelSource = "SAGEMAKER",
+#'       invokeModelEndpointRoleArn = "string",
+#'       inputConfiguration = list(
+#'         eventTypeName = "string",
+#'         format = "TEXT_CSV"|"APPLICATION_JSON",
+#'         useEventVariables = TRUE|FALSE,
+#'         jsonInputTemplate = "string",
+#'         csvInputTemplate = "string"
+#'       ),
+#'       outputConfiguration = list(
+#'         format = "TEXT_CSV"|"APPLICATION_JSONLINES",
+#'         jsonKeyToVariableMap = list(
+#'           "string"
+#'         ),
+#'         csvIndexToVariableMap = list(
+#'           "string"
+#'         )
+#'       ),
+#'       modelEndpointStatus = "ASSOCIATED"|"DISSOCIATED",
+#'       lastUpdatedTime = "string",
+#'       createdTime = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_external_models(
@@ -1352,6 +1752,16 @@ frauddetector_get_external_models <- function(modelEndpoint = NULL, nextToken = 
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   kmsKey = list(
+#'     kmsEncryptionKeyArn = "string"
+#'   )
+#' )
+#' ```
+#'
 
 #'
 #' @keywords internal
@@ -1390,6 +1800,23 @@ frauddetector_get_kms_encryption_key <- function() {
 #' @param name The name of the label or labels to get.
 #' @param nextToken The next token for the subsequent request.
 #' @param maxResults The maximum number of objects to return for the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   labels = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       lastUpdatedTime = "string",
+#'       createdTime = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1431,6 +1858,35 @@ frauddetector_get_labels <- function(name = NULL, nextToken = NULL, maxResults =
 #' @param modelId &#91;required&#93; The model ID.
 #' @param modelType &#91;required&#93; The model type.
 #' @param modelVersionNumber &#91;required&#93; The model version number.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   modelId = "string",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelVersionNumber = "string",
+#'   trainingDataSource = "EXTERNAL_EVENTS",
+#'   trainingDataSchema = list(
+#'     modelVariables = list(
+#'       "string"
+#'     ),
+#'     labelSchema = list(
+#'       labelMapper = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   externalEventsDetail = list(
+#'     dataLocation = "string",
+#'     dataAccessRoleArn = "string"
+#'   ),
+#'   status = "string",
+#'   arn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1483,6 +1939,25 @@ frauddetector_get_model_version <- function(modelId, modelType, modelVersionNumb
 #' @param nextToken The next token for the subsequent request.
 #' @param maxResults The maximum number of objects to return for the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   models = list(
+#'     list(
+#'       modelId = "string",
+#'       modelType = "ONLINE_FRAUD_INSIGHTS",
+#'       description = "string",
+#'       eventTypeName = "string",
+#'       createdTime = "string",
+#'       lastUpdatedTime = "string",
+#'       arn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_models(
@@ -1529,6 +2004,23 @@ frauddetector_get_models <- function(modelId = NULL, modelType = NULL, nextToken
 #' @param name The name of the outcome or outcomes to get.
 #' @param nextToken The next page token for the request.
 #' @param maxResults The maximum number of objects to return for the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   outcomes = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       lastUpdatedTime = "string",
+#'       createdTime = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1584,6 +2076,30 @@ frauddetector_get_outcomes <- function(name = NULL, nextToken = NULL, maxResults
 #' @param nextToken The next page token.
 #' @param maxResults The maximum number of rules to return for the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ruleDetails = list(
+#'     list(
+#'       ruleId = "string",
+#'       description = "string",
+#'       detectorId = "string",
+#'       ruleVersion = "string",
+#'       expression = "string",
+#'       language = "DETECTORPL",
+#'       outcomes = list(
+#'         "string"
+#'       ),
+#'       lastUpdatedTime = "string",
+#'       createdTime = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_rules(
@@ -1632,6 +2148,27 @@ frauddetector_get_rules <- function(ruleId = NULL, detectorId, ruleVersion = NUL
 #' @param nextToken The next page token of the get variable request.
 #' @param maxResults The max size per page determined for the get variable request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   variables = list(
+#'     list(
+#'       name = "string",
+#'       dataType = "STRING"|"INTEGER"|"FLOAT"|"BOOLEAN",
+#'       dataSource = "EVENT"|"MODEL_SCORE"|"EXTERNAL_MODEL_SCORE",
+#'       defaultValue = "string",
+#'       description = "string",
+#'       variableType = "string",
+#'       lastUpdatedTime = "string",
+#'       createdTime = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_variables(
@@ -1676,6 +2213,20 @@ frauddetector_get_variables <- function(name = NULL, nextToken = NULL, maxResult
 #' @param nextToken The next token from the previous results.
 #' @param maxResults The maximum number of objects to return for the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -1717,6 +2268,12 @@ frauddetector_list_tags_for_resource <- function(resourceARN, nextToken = NULL, 
 #' @param description The description of the detector.
 #' @param eventTypeName &#91;required&#93; The name of the event type.
 #' @param tags A collection of key and value pairs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1768,6 +2325,12 @@ frauddetector_put_detector <- function(detectorId, description = NULL, eventType
 #' @param name &#91;required&#93; The name of the entity type.
 #' @param description The description.
 #' @param tags A collection of key and value pairs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1825,6 +2388,12 @@ frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL)
 #' @param entityTypes &#91;required&#93; The entity type for the event type. Example entity types: customer,
 #' merchant, account.
 #' @param tags A collection of key and value pairs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1888,6 +2457,12 @@ frauddetector_put_event_type <- function(name, description = NULL, eventVariable
 #' @param outputConfiguration &#91;required&#93; The model endpoint output configuration.
 #' @param modelEndpointStatus &#91;required&#93; The model endpoint’s status in Amazon Fraud Detector.
 #' @param tags A collection of key and value pairs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1953,6 +2528,12 @@ frauddetector_put_external_model <- function(modelEndpoint, modelSource, invokeM
 #'
 #' @param kmsEncryptionKeyArn &#91;required&#93; The KMS encryption key ARN.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_kms_encryption_key(
@@ -1993,6 +2574,12 @@ frauddetector_put_kms_encryption_key <- function(kmsEncryptionKeyArn) {
 #' @param name &#91;required&#93; The label name.
 #' @param description The label description.
 #' @param tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2040,6 +2627,12 @@ frauddetector_put_label <- function(name, description = NULL, tags = NULL) {
 #' @param description The outcome description.
 #' @param tags A collection of key and value pairs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_outcome(
@@ -2085,6 +2678,12 @@ frauddetector_put_outcome <- function(name, description = NULL, tags = NULL) {
 #' @param resourceARN &#91;required&#93; The resource ARN.
 #' @param tags &#91;required&#93; The tags to assign to the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -2128,6 +2727,12 @@ frauddetector_tag_resource <- function(resourceARN, tags) {
 #'
 #' @param resourceARN &#91;required&#93; The ARN of the resource from which to remove the tag.
 #' @param tagKeys &#91;required&#93; The resource ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2188,6 +2793,12 @@ frauddetector_untag_resource <- function(resourceARN, tagKeys) {
 #' the rule mode at the detector version level, when it is in draft status.
 #' 
 #' The default behavior is `FIRST_MATCHED`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2251,6 +2862,12 @@ frauddetector_update_detector_version <- function(detectorId, detectorVersionId,
 #' @param detectorVersionId &#91;required&#93; The detector version ID.
 #' @param description &#91;required&#93; The description.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_detector_version_metadata(
@@ -2296,6 +2913,12 @@ frauddetector_update_detector_version_metadata <- function(detectorId, detectorV
 #' @param detectorVersionId &#91;required&#93; The detector version ID.
 #' @param status &#91;required&#93; The new status.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_detector_version_status(
@@ -2337,6 +2960,12 @@ frauddetector_update_detector_version_status <- function(detectorId, detectorVer
 #' @param modelId &#91;required&#93; The model ID.
 #' @param modelType &#91;required&#93; The model type.
 #' @param description The new model description.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2386,6 +3015,17 @@ frauddetector_update_model <- function(modelId, modelType, description = NULL) {
 #' @param majorVersionNumber &#91;required&#93; The major version number.
 #' @param externalEventsDetail The event details.
 #' @param tags A collection of key and value pairs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   modelId = "string",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelVersionNumber = "string",
+#'   status = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2446,6 +3086,12 @@ frauddetector_update_model_version <- function(modelId, modelType, majorVersionN
 #' @param modelVersionNumber &#91;required&#93; The model version number.
 #' @param status &#91;required&#93; The model version status.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_model_version_status(
@@ -2486,6 +3132,12 @@ frauddetector_update_model_version_status <- function(modelId, modelType, modelV
 #'
 #' @param rule &#91;required&#93; The rule to update.
 #' @param description &#91;required&#93; The rule description.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2535,6 +3187,18 @@ frauddetector_update_rule_metadata <- function(rule, description) {
 #' @param language &#91;required&#93; The language.
 #' @param outcomes &#91;required&#93; The outcomes.
 #' @param tags The tags to assign to the rule version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   rule = list(
+#'     detectorId = "string",
+#'     ruleId = "string",
+#'     ruleVersion = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2593,6 +3257,12 @@ frauddetector_update_rule_version <- function(rule, description = NULL, expressi
 #' @param description The new description.
 #' @param variableType The variable type. For more information see [Variable
 #' types](https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

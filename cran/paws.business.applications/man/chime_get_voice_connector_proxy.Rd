@@ -10,6 +10,19 @@ chime_get_voice_connector_proxy(VoiceConnectorId)
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime voice connector ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Proxy = list(
+    DefaultSessionExpiryMinutes = 123,
+    Disabled = TRUE|FALSE,
+    FallBackPhoneNumber = "string",
+    PhoneNumberCountries = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets the proxy configuration details for the specified Amazon Chime
 Voice Connector.

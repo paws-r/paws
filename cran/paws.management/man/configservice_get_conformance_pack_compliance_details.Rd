@@ -19,6 +19,35 @@ do no specify a number, AWS Config uses the default. The default is 100.}
 \item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
 request the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConformancePackName = "string",
+  ConformancePackRuleEvaluationResults = list(
+    list(
+      ComplianceType = "COMPLIANT"|"NON_COMPLIANT",
+      EvaluationResultIdentifier = list(
+        EvaluationResultQualifier = list(
+          ConfigRuleName = "string",
+          ResourceType = "string",
+          ResourceId = "string"
+        ),
+        OrderingTimestamp = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      ConfigRuleInvokedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ResultRecordedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Annotation = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns compliance details of a conformance pack for all AWS resources
 that are monitered by conformance pack.

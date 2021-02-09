@@ -19,6 +19,15 @@ previous page call.}
 workgroup is not specified, a list of available query execution IDs for
 the queries in the primary workgroup is returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  QueryExecutionIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Provides a list of available query execution IDs for the queries in the
 specified workgroup. If a workgroup is not specified, returns a list of

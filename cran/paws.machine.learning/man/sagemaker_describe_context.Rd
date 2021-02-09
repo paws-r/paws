@@ -9,6 +9,39 @@ sagemaker_describe_context(ContextName)
 \arguments{
 \item{ContextName}{[required] The name of the context to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContextName = "string",
+  ContextArn = "string",
+  Source = list(
+    SourceUri = "string",
+    SourceType = "string",
+    SourceId = "string"
+  ),
+  ContextType = "string",
+  Description = "string",
+  Properties = list(
+    "string"
+  ),
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  CreatedBy = list(
+    UserProfileArn = "string",
+    UserProfileName = "string",
+    DomainId = "string"
+  ),
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastModifiedBy = list(
+    UserProfileArn = "string",
+    UserProfileName = "string",
+    DomainId = "string"
+  )
+)
+}
+}
 \description{
 Describes a context.
 }

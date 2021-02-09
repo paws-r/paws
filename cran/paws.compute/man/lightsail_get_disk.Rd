@@ -9,6 +9,47 @@ lightsail_get_disk(diskName)
 \arguments{
 \item{diskName}{[required] The name of the disk (e.g., \code{my-disk}).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  disk = list(
+    name = "string",
+    arn = "string",
+    supportCode = "string",
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    location = list(
+      availabilityZone = "string",
+      regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
+    ),
+    resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    ),
+    addOns = list(
+      list(
+        name = "string",
+        status = "string",
+        snapshotTimeOfDay = "string",
+        nextSnapshotTimeOfDay = "string"
+      )
+    ),
+    sizeInGb = 123,
+    isSystemDisk = TRUE|FALSE,
+    iops = 123,
+    path = "string",
+    state = "pending"|"error"|"available"|"in-use"|"unknown",
+    attachedTo = "string",
+    isAttached = TRUE|FALSE,
+    attachmentState = "string",
+    gbInUse = 123
+  )
+)
+}
+}
 \description{
 Returns information about a specific block storage disk.
 }

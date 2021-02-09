@@ -17,6 +17,35 @@ following languages supported by Amazon Comprehend: German ("de"),
 English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
 Portuguese ("pt"). All documents must be in the same language.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResultList = list(
+    list(
+      Index = 123,
+      SyntaxTokens = list(
+        list(
+          TokenId = 123,
+          Text = "string",
+          BeginOffset = 123,
+          EndOffset = 123,
+          PartOfSpeech = list(
+            Tag = "ADJ"|"ADP"|"ADV"|"AUX"|"CONJ"|"CCONJ"|"DET"|"INTJ"|"NOUN"|"NUM"|"O"|"PART"|"PRON"|"PROPN"|"PUNCT"|"SCONJ"|"SYM"|"VERB",
+            Score = 123.0
+          )
+        )
+      )
+    )
+  ),
+  ErrorList = list(
+    list(
+      Index = 123,
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Inspects the text of a batch of documents for the syntax and part of
 speech of the words in the document and returns information about them.

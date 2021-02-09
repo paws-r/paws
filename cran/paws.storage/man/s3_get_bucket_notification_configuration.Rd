@@ -13,6 +13,68 @@ s3_get_bucket_notification_configuration(Bucket, ExpectedBucketOwner)
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TopicConfigurations = list(
+    list(
+      Id = "string",
+      TopicArn = "string",
+      Events = list(
+        "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"
+      ),
+      Filter = list(
+        Key = list(
+          FilterRules = list(
+            list(
+              Name = "prefix"|"suffix",
+              Value = "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  QueueConfigurations = list(
+    list(
+      Id = "string",
+      QueueArn = "string",
+      Events = list(
+        "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"
+      ),
+      Filter = list(
+        Key = list(
+          FilterRules = list(
+            list(
+              Name = "prefix"|"suffix",
+              Value = "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  LambdaFunctionConfigurations = list(
+    list(
+      Id = "string",
+      LambdaFunctionArn = "string",
+      Events = list(
+        "s3:ReducedRedundancyLostObject"|"s3:ObjectCreated:*"|"s3:ObjectCreated:Put"|"s3:ObjectCreated:Post"|"s3:ObjectCreated:Copy"|"s3:ObjectCreated:CompleteMultipartUpload"|"s3:ObjectRemoved:*"|"s3:ObjectRemoved:Delete"|"s3:ObjectRemoved:DeleteMarkerCreated"|"s3:ObjectRestore:*"|"s3:ObjectRestore:Post"|"s3:ObjectRestore:Completed"|"s3:Replication:*"|"s3:Replication:OperationFailedReplication"|"s3:Replication:OperationNotTracked"|"s3:Replication:OperationMissedThreshold"|"s3:Replication:OperationReplicatedAfterThreshold"
+      ),
+      Filter = list(
+        Key = list(
+          FilterRules = list(
+            list(
+              Name = "prefix"|"suffix",
+              Value = "string"
+            )
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the notification configuration of a bucket.
 
@@ -25,8 +87,8 @@ policy to grant permission to other users to read this configuration
 with the \code{s3:GetBucketNotification} permission.
 
 For more information about setting and reading the notification
-configuration on a bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html}{Setting Up Notification of Bucket Events}.
-For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html}{Using Bucket Policies}.
+configuration on a bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html}{Setting Up Notification of Bucket Events}.
+For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies}.
 
 The following operation is related to
 \code{\link[=s3_get_bucket_notification]{get_bucket_notification}}:

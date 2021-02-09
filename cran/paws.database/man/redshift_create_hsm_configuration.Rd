@@ -29,6 +29,23 @@ server.pem.}
 
 \item{Tags}{A list of tag instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HsmConfiguration = list(
+    HsmConfigurationIdentifier = "string",
+    Description = "string",
+    HsmIpAddress = "string",
+    HsmPartitionName = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates an HSM configuration that contains the information required by
 an Amazon Redshift cluster to store and use database encryption keys in

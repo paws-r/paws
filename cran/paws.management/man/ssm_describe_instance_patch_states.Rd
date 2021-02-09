@@ -15,6 +15,41 @@ from a previous call.)}
 
 \item{MaxResults}{The maximum number of instances to return (per page).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstancePatchStates = list(
+    list(
+      InstanceId = "string",
+      PatchGroup = "string",
+      BaselineId = "string",
+      SnapshotId = "string",
+      InstallOverrideList = "string",
+      OwnerInformation = "string",
+      InstalledCount = 123,
+      InstalledOtherCount = 123,
+      InstalledPendingRebootCount = 123,
+      InstalledRejectedCount = 123,
+      MissingCount = 123,
+      FailedCount = 123,
+      UnreportedNotApplicableCount = 123,
+      NotApplicableCount = 123,
+      OperationStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      OperationEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Operation = "Scan"|"Install",
+      LastNoRebootInstallOperationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      RebootOption = "RebootIfNeeded"|"NoReboot"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the high-level patch state of one or more instances.
 }

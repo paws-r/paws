@@ -14,6 +14,25 @@ setting the Multi-AZ option to true. Similarly, you can turn off the
 Multi-AZ option to downgrade the domain to a single Availability Zone by
 setting the Multi-AZ option to \code{false}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AvailabilityOptions = list(
+    Options = TRUE|FALSE,
+    Status = list(
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateVersion = 123,
+      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+      PendingDeletion = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Configures the availability options for a domain. Enabling the Multi-AZ
 option expands an Amazon CloudSearch domain to an additional

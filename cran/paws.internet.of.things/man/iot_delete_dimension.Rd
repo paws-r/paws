@@ -9,6 +9,10 @@ iot_delete_dimension(name)
 \arguments{
 \item{name}{[required] The unique identifier for the dimension that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the specified dimension from your AWS account.
 }

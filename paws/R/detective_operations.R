@@ -23,6 +23,8 @@ NULL
 #' 
 #' The member account status in the behavior graph must be `INVITED`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_invitation(
@@ -82,6 +84,14 @@ detective_accept_invitation <- function(GraphArn) {
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GraphArn = "string"
+#' )
+#' ```
+#'
 
 #'
 #' @keywords internal
@@ -140,6 +150,39 @@ detective_create_graph <- function() {
 #' behavior graph. For each invited account, the account list contains the
 #' account identifier and the AWS account root user email address.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Members = list(
+#'     list(
+#'       AccountId = "string",
+#'       EmailAddress = "string",
+#'       GraphArn = "string",
+#'       MasterId = "string",
+#'       Status = "INVITED"|"VERIFICATION_IN_PROGRESS"|"VERIFICATION_FAILED"|"ENABLED"|"ACCEPTED_BUT_DISABLED",
+#'       DisabledReason = "VOLUME_TOO_HIGH"|"VOLUME_UNKNOWN",
+#'       InvitedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PercentOfGraphUtilization = 123.0,
+#'       PercentOfGraphUtilizationUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Reason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_members(
@@ -189,6 +232,8 @@ detective_create_members <- function(GraphArn, Message = NULL, Accounts) {
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph to disable.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_graph(
@@ -233,6 +278,22 @@ detective_delete_graph <- function(GraphArn) {
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph to delete members from.
 #' @param AccountIds &#91;required&#93; The list of AWS account identifiers for the member accounts to delete
 #' from the behavior graph.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountIds = list(
+#'     "string"
+#'   ),
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Reason = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -279,6 +340,8 @@ detective_delete_members <- function(GraphArn, AccountIds) {
 #' The member account's member status in the behavior graph must be
 #' `ENABLED`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_membership(
@@ -323,6 +386,39 @@ detective_disassociate_membership <- function(GraphArn) {
 #' You cannot use [`get_members`][detective_get_members] to retrieve
 #' information about member accounts that were removed from the behavior
 #' graph.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MemberDetails = list(
+#'     list(
+#'       AccountId = "string",
+#'       EmailAddress = "string",
+#'       GraphArn = "string",
+#'       MasterId = "string",
+#'       Status = "INVITED"|"VERIFICATION_IN_PROGRESS"|"VERIFICATION_FAILED"|"ENABLED"|"ACCEPTED_BUT_DISABLED",
+#'       DisabledReason = "VOLUME_TOO_HIGH"|"VOLUME_UNKNOWN",
+#'       InvitedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PercentOfGraphUtilization = 123.0,
+#'       PercentOfGraphUtilizationUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   UnprocessedAccounts = list(
+#'     list(
+#'       AccountId = "string",
+#'       Reason = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -373,6 +469,22 @@ detective_get_members <- function(GraphArn, AccountIds) {
 #' @param MaxResults The maximum number of graphs to return at a time. The total must be less
 #' than the overall limit on the number of results to return, which is
 #' currently 200.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GraphList = list(
+#'     list(
+#'       Arn = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -427,6 +539,34 @@ detective_list_graphs <- function(NextToken = NULL, MaxResults = NULL) {
 #' response. The total must be less than the overall limit on the number of
 #' results to return, which is currently 200.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Invitations = list(
+#'     list(
+#'       AccountId = "string",
+#'       EmailAddress = "string",
+#'       GraphArn = "string",
+#'       MasterId = "string",
+#'       Status = "INVITED"|"VERIFICATION_IN_PROGRESS"|"VERIFICATION_FAILED"|"ENABLED"|"ACCEPTED_BUT_DISABLED",
+#'       DisabledReason = "VOLUME_TOO_HIGH"|"VOLUME_UNKNOWN",
+#'       InvitedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PercentOfGraphUtilization = 123.0,
+#'       PercentOfGraphUtilizationUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_invitations(
@@ -473,6 +613,34 @@ detective_list_invitations <- function(NextToken = NULL, MaxResults = NULL) {
 #' total must be less than the overall limit on the number of results to
 #' return, which is currently 200.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MemberDetails = list(
+#'     list(
+#'       AccountId = "string",
+#'       EmailAddress = "string",
+#'       GraphArn = "string",
+#'       MasterId = "string",
+#'       Status = "INVITED"|"VERIFICATION_IN_PROGRESS"|"VERIFICATION_FAILED"|"ENABLED"|"ACCEPTED_BUT_DISABLED",
+#'       DisabledReason = "VOLUME_TOO_HIGH"|"VOLUME_UNKNOWN",
+#'       InvitedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PercentOfGraphUtilization = 123.0,
+#'       PercentOfGraphUtilizationUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_members(
@@ -516,6 +684,8 @@ detective_list_members <- function(GraphArn, NextToken = NULL, MaxResults = NULL
 #' 
 #' The member account's current member status in the behavior graph must be
 #' `INVITED`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -567,6 +737,8 @@ detective_reject_invitation <- function(GraphArn) {
 #' 
 #' The account must be an invited member account with a status of
 #' `ACCEPTED_BUT_DISABLED`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```

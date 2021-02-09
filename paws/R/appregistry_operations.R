@@ -19,6 +19,15 @@ NULL
 #' @param attributeGroup &#91;required&#93; The name or ID of the attribute group that holds the attributes to
 #' describe the application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   applicationArn = "string",
+#'   attributeGroupArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_attribute_group(
@@ -60,6 +69,15 @@ appregistry_associate_attribute_group <- function(application, attributeGroup) {
 #' @param resourceType &#91;required&#93; The type of resource of which the application will be associated.
 #' @param resource &#91;required&#93; The name or ID of the resource of which the application will be
 #' associated.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   applicationArn = "string",
+#'   resourceArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -109,6 +127,28 @@ appregistry_associate_resource <- function(application, resourceType, resource) 
 #' the same parameters, the retry succeeds without performing any further
 #' actions. If you retry a successful request using the same client token,
 #' but one or more of the parameters are different, the retry fails.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   application = list(
+#'     id = "string",
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -165,6 +205,28 @@ appregistry_create_application <- function(name, description = NULL, tags = NULL
 #' actions. If you retry a successful request using the same client token,
 #' but one or more of the parameters are different, the retry fails.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attributeGroup = list(
+#'     id = "string",
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_attribute_group(
@@ -211,6 +273,25 @@ appregistry_create_attribute_group <- function(name, description = NULL, attribu
 #'
 #' @param application &#91;required&#93; The name or ID of the application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   application = list(
+#'     id = "string",
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_application(
@@ -250,6 +331,25 @@ appregistry_delete_application <- function(application) {
 #'
 #' @param attributeGroup &#91;required&#93; The name or ID of the attribute group that holds the attributes to
 #' describe the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attributeGroup = list(
+#'     id = "string",
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -295,6 +395,15 @@ appregistry_delete_attribute_group <- function(attributeGroup) {
 #' @param attributeGroup &#91;required&#93; The name or ID of the attribute group that holds the attributes to
 #' describe the application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   applicationArn = "string",
+#'   attributeGroupArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_attribute_group(
@@ -335,6 +444,15 @@ appregistry_disassociate_attribute_group <- function(application, attributeGroup
 #' @param application &#91;required&#93; The name or ID of the application.
 #' @param resourceType &#91;required&#93; The type of the resource that is being disassociated.
 #' @param resource &#91;required&#93; The name or ID of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   applicationArn = "string",
+#'   resourceArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -381,6 +499,27 @@ appregistry_disassociate_resource <- function(application, resourceType, resourc
 #'
 #' @param application &#91;required&#93; The name or ID of the application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   arn = "string",
+#'   name = "string",
+#'   description = "string",
+#'   creationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   associatedResourceCount = 123,
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_application(
@@ -419,6 +558,27 @@ appregistry_get_application <- function(application) {
 #'
 #' @param attributeGroup &#91;required&#93; The name or ID of the attribute group that holds the attributes to
 #' describe the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   arn = "string",
+#'   name = "string",
+#'   description = "string",
+#'   attributes = "string",
+#'   creationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -459,6 +619,28 @@ appregistry_get_attribute_group <- function(attributeGroup) {
 #' call.
 #' @param maxResults The upper bound of the number of results to return (cannot exceed 25).
 #' If this parameter is omitted, it defaults to 25. This value is optional.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   applications = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -505,6 +687,17 @@ appregistry_list_applications <- function(nextToken = NULL, maxResults = NULL) {
 #' @param maxResults The upper bound of the number of results to return (cannot exceed 25).
 #' If this parameter is omitted, it defaults to 25. This value is optional.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attributeGroups = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_associated_attribute_groups(
@@ -550,6 +743,20 @@ appregistry_list_associated_attribute_groups <- function(application, nextToken 
 #' @param maxResults The upper bound of the number of results to return (cannot exceed 25).
 #' If this parameter is omitted, it defaults to 25. This value is optional.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resources = list(
+#'     list(
+#'       name = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_associated_resources(
@@ -593,6 +800,28 @@ appregistry_list_associated_resources <- function(application, nextToken = NULL,
 #' @param maxResults The upper bound of the number of results to return (cannot exceed 25).
 #' If this parameter is omitted, it defaults to 25. This value is optional.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attributeGroups = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_attribute_groups(
@@ -630,6 +859,16 @@ appregistry_list_attribute_groups <- function(nextToken = NULL, maxResults = NUL
 #' appregistry_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon resource name (ARN) that specifies the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -674,6 +913,16 @@ appregistry_list_tags_for_resource <- function(resourceArn) {
 #' @param resource &#91;required&#93; An entity you can work with and specify with a name or ID. Examples
 #' include an Amazon EC2 instance, an AWS CloudFormation stack, or an
 #' Amazon S3 bucket.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   applicationArn = "string",
+#'   resourceArn = "string",
+#'   actionTaken = "START_SYNC"|"NO_ACTION"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -720,6 +969,12 @@ appregistry_sync_resource <- function(resourceType, resource) {
 #' @param resourceArn &#91;required&#93; The Amazon resource name (ARN) that specifies the resource.
 #' @param tags &#91;required&#93; The new or modified tags for the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -763,6 +1018,12 @@ appregistry_tag_resource <- function(resourceArn, tags) {
 #' @param resourceArn &#91;required&#93; The Amazon resource name (ARN) that specifies the resource.
 #' @param tagKeys &#91;required&#93; A list of the tag keys to remove from the specified resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -805,6 +1066,28 @@ appregistry_untag_resource <- function(resourceArn, tagKeys) {
 #' @param name The new name of the application. The name must be unique in the region
 #' in which you are updating the application.
 #' @param description The new description of the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   application = list(
+#'     id = "string",
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -851,6 +1134,28 @@ appregistry_update_application <- function(application, name = NULL, description
 #' @param description The description of the attribute group that the user provides.
 #' @param attributes A JSON string in the form of nested key-value pairs that represent the
 #' attributes in the group and describes an application and its components.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attributeGroup = list(
+#'     id = "string",
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

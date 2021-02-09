@@ -9,6 +9,10 @@ iot_cancel_detect_mitigation_actions_task(taskId)
 \arguments{
 \item{taskId}{[required] The unique identifier of the task.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Cancels a Device Defender ML Detect mitigation action.
 }

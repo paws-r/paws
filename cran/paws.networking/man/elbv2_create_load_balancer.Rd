@@ -88,6 +88,49 @@ IPv4 and IPv6 addresses). Internal load balancers must use \code{ipv4}.}
 \item{CustomerOwnedIpv4Pool}{[Application Load Balancers on Outposts] The ID of the customer-owned
 address pool (CoIP pool).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LoadBalancers = list(
+    list(
+      LoadBalancerArn = "string",
+      DNSName = "string",
+      CanonicalHostedZoneId = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LoadBalancerName = "string",
+      Scheme = "internet-facing"|"internal",
+      VpcId = "string",
+      State = list(
+        Code = "active"|"provisioning"|"active_impaired"|"failed",
+        Reason = "string"
+      ),
+      Type = "application"|"network"|"gateway",
+      AvailabilityZones = list(
+        list(
+          ZoneName = "string",
+          SubnetId = "string",
+          OutpostId = "string",
+          LoadBalancerAddresses = list(
+            list(
+              IpAddress = "string",
+              AllocationId = "string",
+              PrivateIPv4Address = "string",
+              IPv6Address = "string"
+            )
+          )
+        )
+      ),
+      SecurityGroups = list(
+        "string"
+      ),
+      IpAddressType = "ipv4"|"dualstack",
+      CustomerOwnedIpv4Pool = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates an Application Load Balancer, Network Load Balancer, or Gateway
 Load Balancer.

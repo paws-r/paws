@@ -14,8 +14,24 @@ medialive_list_input_device_transfers(MaxResults, NextToken,
 
 \item{TransferType}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InputDeviceTransfers = list(
+    list(
+      Id = "string",
+      Message = "string",
+      TargetCustomerId = "string",
+      TransferType = "OUTGOING"|"INCOMING"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
-List input devices that are currently being transferred. List input devices that you are transferring from your AWS account or input devices that another AWS account is transferring to you.
+List input devices that are currently being transferred. List input
+devices that you are transferring from your AWS account or input devices
+that another AWS account is transferring to you.
 }
 \section{Request syntax}{
 \preformatted{svc$list_input_device_transfers(

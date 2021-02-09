@@ -21,6 +21,22 @@ launch parameters, and the number of processes to run concurrently on
 each instance. A CreateFleet request must include a runtime
 configuration with at least one server process configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RuntimeConfiguration = list(
+    ServerProcesses = list(
+      list(
+        LaunchPath = "string",
+        Parameters = "string",
+        ConcurrentExecutions = 123
+      )
+    ),
+    MaxConcurrentGameSessionActivations = 123,
+    GameSessionActivationTimeoutSeconds = 123
+  )
+)
+}
+}
 \description{
 Updates the current runtime configuration for the specified fleet, which
 tells Amazon GameLift how to launch server processes on instances in the

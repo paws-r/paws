@@ -16,6 +16,10 @@ can include one or multiple player IDs.}
 
 \item{AcceptanceType}{[required] Player response to the proposed match.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Registers a player's acceptance or rejection of a proposed FlexMatch
 match. A matchmaking configuration may require player acceptance; if so,

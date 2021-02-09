@@ -30,6 +30,10 @@ The action specified in \code{BehaviorOnMXFailure} is taken when the custom
 MAIL FROM domain setup is in the \code{Pending}, \code{Failed}, and
 \code{TemporaryFailure} states.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Enables or disables the custom MAIL FROM domain setup for a verified
 identity (an email address or a domain).

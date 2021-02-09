@@ -61,6 +61,10 @@ purpose.
 don't use it to provide sensitive information.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Allows a user to enter a confirmation code to reset a forgotten
 password.

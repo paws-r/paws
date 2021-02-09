@@ -10,6 +10,28 @@ mediastore_get_cors_policy(ContainerName)
 \arguments{
 \item{ContainerName}{[required] The name of the container that the policy is assigned to.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CorsPolicy = list(
+    list(
+      AllowedOrigins = list(
+        "string"
+      ),
+      AllowedMethods = list(
+        "PUT"|"GET"|"DELETE"|"HEAD"
+      ),
+      AllowedHeaders = list(
+        "string"
+      ),
+      MaxAgeSeconds = 123,
+      ExposeHeaders = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the cross-origin resource sharing (CORS) configuration
 information that is set for the container.

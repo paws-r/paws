@@ -15,6 +15,26 @@ iot_get_behavior_model_training_summaries(securityProfileName,
 
 \item{nextToken}{The token for the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  summaries = list(
+    list(
+      securityProfileName = "string",
+      behaviorName = "string",
+      trainingDataCollectionStartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      modelStatus = "PENDING_BUILD"|"ACTIVE"|"EXPIRED",
+      datapointsCollectionPercentage = 123.0,
+      lastModelRefreshDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a Device Defender's ML Detect Security Profile training model's
 status.

@@ -17,6 +17,28 @@ existing pipeline definition.}
 
 \item{parameterValues}{The parameter values used with the pipeline.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  validationErrors = list(
+    list(
+      id = "string",
+      errors = list(
+        "string"
+      )
+    )
+  ),
+  validationWarnings = list(
+    list(
+      id = "string",
+      warnings = list(
+        "string"
+      )
+    )
+  ),
+  errored = TRUE|FALSE
+)
+}
+}
 \description{
 Adds tasks, schedules, and preconditions to the specified pipeline. You
 can use

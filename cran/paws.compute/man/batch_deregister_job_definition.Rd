@@ -10,6 +10,10 @@ batch_deregister_job_definition(jobDefinition)
 \item{jobDefinition}{[required] The name and revision (\code{name:revision}) or full Amazon Resource Name
 (ARN) of the job definition to deregister.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deregisters an AWS Batch job definition. Job definitions are permanently
 deleted after 180 days.

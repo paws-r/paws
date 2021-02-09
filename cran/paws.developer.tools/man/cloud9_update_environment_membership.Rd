@@ -22,6 +22,20 @@ associate with this environment member. Available values include:
 \item \code{read-write}: Has read-write access to the environment.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  membership = list(
+    permissions = "owner"|"read-write"|"read-only",
+    userId = "string",
+    userArn = "string",
+    environmentId = "string",
+    lastAccess = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Changes the settings of an existing environment member for an AWS Cloud9
 development environment.

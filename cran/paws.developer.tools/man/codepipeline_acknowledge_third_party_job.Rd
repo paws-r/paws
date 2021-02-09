@@ -19,6 +19,12 @@ request.}
 verify that the calling entity is allowed access to the job and its
 details.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  status = "Created"|"Queued"|"Dispatched"|"InProgress"|"TimedOut"|"Succeeded"|"Failed"
+)
+}
+}
 \description{
 Confirms a job worker has received the specified job. Used for partner
 actions only.

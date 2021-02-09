@@ -25,6 +25,34 @@ a destination (that is, a Kinesis data stream, a Kinesis Data Firehose
 delivery stream, or an AWS Lambda function), and record the formation to
 use when writing to the destination.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationARN = "string",
+  ApplicationVersionId = 123,
+  OutputDescriptions = list(
+    list(
+      OutputId = "string",
+      Name = "string",
+      KinesisStreamsOutputDescription = list(
+        ResourceARN = "string",
+        RoleARN = "string"
+      ),
+      KinesisFirehoseOutputDescription = list(
+        ResourceARN = "string",
+        RoleARN = "string"
+      ),
+      LambdaOutputDescription = list(
+        ResourceARN = "string",
+        RoleARN = "string"
+      ),
+      DestinationSchema = list(
+        RecordFormatType = "JSON"|"CSV"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Adds an external destination to your SQL-based Kinesis Data Analytics
 application.

@@ -11,6 +11,21 @@ greengrass_get_deployment_status(DeploymentId, GroupId)
 
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeploymentStatus = "string",
+  DeploymentType = "NewDeployment"|"Redeployment"|"ResetDeployment"|"ForceResetDeployment",
+  ErrorDetails = list(
+    list(
+      DetailedErrorCode = "string",
+      DetailedErrorMessage = "string"
+    )
+  ),
+  ErrorMessage = "string",
+  UpdatedAt = "string"
+)
+}
+}
 \description{
 Returns the status of a deployment.
 }

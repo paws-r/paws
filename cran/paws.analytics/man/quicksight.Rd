@@ -48,7 +48,7 @@ Amazon QuickSight.
 \link[=quicksight_create_group]{create_group} \tab Creates an Amazon QuickSight group\cr
 \link[=quicksight_create_group_membership]{create_group_membership} \tab Adds an Amazon QuickSight user to an Amazon QuickSight group\cr
 \link[=quicksight_create_iam_policy_assignment]{create_iam_policy_assignment} \tab Creates an assignment with one specified IAM policy, identified by its Amazon Resource Name (ARN)\cr
-\link[=quicksight_create_ingestion]{create_ingestion} \tab Creates and starts a new SPICE ingestion on a dataset Any ingestions operating on tagged datasets inherit the same tags automatically for use in access control\cr
+\link[=quicksight_create_ingestion]{create_ingestion} \tab Creates and starts a new SPICE ingestion on a dataset\cr
 \link[=quicksight_create_namespace]{create_namespace} \tab (Enterprise edition only) Creates a new namespace for you to use with Amazon QuickSight\cr
 \link[=quicksight_create_template]{create_template} \tab Creates a template from an existing QuickSight analysis or template\cr
 \link[=quicksight_create_template_alias]{create_template_alias} \tab Creates a template alias for a template\cr

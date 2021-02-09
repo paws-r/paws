@@ -22,6 +22,43 @@ you receive a response with truncated results, use this parameter in a
 subsequent request. Set it to the value of \code{nextToken} from the response
 that you just received.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  platforms = list(
+    list(
+      platformId = "string",
+      displayName = "string",
+      partner = "string",
+      target = "string",
+      category = "AWSIoT",
+      signingConfiguration = list(
+        encryptionAlgorithmOptions = list(
+          allowedValues = list(
+            "RSA"|"ECDSA"
+          ),
+          defaultValue = "RSA"|"ECDSA"
+        ),
+        hashAlgorithmOptions = list(
+          allowedValues = list(
+            "SHA1"|"SHA256"
+          ),
+          defaultValue = "SHA1"|"SHA256"
+        )
+      ),
+      signingImageFormat = list(
+        supportedFormats = list(
+          "JSON"|"JSONEmbedded"|"JSONDetached"
+        ),
+        defaultFormat = "JSON"|"JSONEmbedded"|"JSONDetached"
+      ),
+      maxSizeInMB = 123,
+      revocationSupported = TRUE|FALSE
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all signing platforms available in code signing that match the
 request parameters. If additional jobs remain to be listed, code signing

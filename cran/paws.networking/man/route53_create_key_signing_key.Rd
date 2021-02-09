@@ -26,7 +26,7 @@ Enabled
 
 \subsection{Key spec}{
 
-ECC\\_NIST\\_P256
+ECC_NIST_P256
 }
 
 \subsection{Key usage}{
@@ -57,6 +57,42 @@ must be unique for each key signing key in the same hosted zone.}
 
 \item{Status}{[required] A string specifying the initial status of the key signing key (KSK). You
 can set the value to \code{ACTIVE} or \code{INACTIVE}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeInfo = list(
+    Id = "string",
+    Status = "PENDING"|"INSYNC",
+    SubmittedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    Comment = "string"
+  ),
+  KeySigningKey = list(
+    Name = "string",
+    KmsArn = "string",
+    Flag = 123,
+    SigningAlgorithmMnemonic = "string",
+    SigningAlgorithmType = 123,
+    DigestAlgorithmMnemonic = "string",
+    DigestAlgorithmType = 123,
+    KeyTag = 123,
+    DigestValue = "string",
+    PublicKey = "string",
+    DSRecord = "string",
+    DNSKEYRecord = "string",
+    Status = "string",
+    StatusMessage = "string",
+    CreatedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  Location = "string"
+)
+}
 }
 \description{
 Creates a new key signing key (KSK) associated with a hosted zone. You

@@ -11,6 +11,10 @@ elb_create_load_balancer_listeners(LoadBalancerName, Listeners)
 
 \item{Listeners}{[required] The listeners.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates one or more listeners for the specified load balancer. If a
 listener with the specified port does not already exist, it is created;

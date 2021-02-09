@@ -15,6 +15,15 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{InstanceFamily}{[required] The instance family.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceFamilyCreditSpecification = list(
+    InstanceFamily = "t2"|"t3"|"t3a"|"t4g",
+    CpuCredits = "string"
+  )
+)
+}
+}
 \description{
 Describes the default credit option for CPU usage of a burstable
 performance instance family.

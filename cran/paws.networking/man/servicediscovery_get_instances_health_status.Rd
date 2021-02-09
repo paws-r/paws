@@ -37,6 +37,15 @@ can submit another
 request to get the next group of results. Specify the value of
 \code{NextToken} from the previous response in the next request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = list(
+    "HEALTHY"|"UNHEALTHY"|"UNKNOWN"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets the current health status (\code{Healthy}, \code{Unhealthy}, or \code{Unknown}) of
 one or more instances that are associated with a specified service.

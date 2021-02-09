@@ -12,6 +12,10 @@ update.}
 
 \item{NewBudget}{[required] The budget that you want to update your budget to.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a budget. You can change every part of a budget except for the
 \code{budgetName} and the \code{calculatedSpend}. When you modify a budget, the

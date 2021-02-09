@@ -38,6 +38,24 @@ from a previous call.)}
 \item{limit}{The maximum number of items returned. If you don't specify a value, the
 default is up to 50 items.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  logStreams = list(
+    list(
+      logStreamName = "string",
+      creationTime = 123,
+      firstEventTimestamp = 123,
+      lastEventTimestamp = 123,
+      lastIngestionTime = 123,
+      uploadSequenceToken = "string",
+      arn = "string",
+      storedBytes = 123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the log streams for the specified log group. You can list all the
 log streams or filter the results by prefix. You can also control how

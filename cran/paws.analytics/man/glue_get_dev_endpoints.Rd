@@ -11,6 +11,51 @@ glue_get_dev_endpoints(MaxResults, NextToken)
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DevEndpoints = list(
+    list(
+      EndpointName = "string",
+      RoleArn = "string",
+      SecurityGroupIds = list(
+        "string"
+      ),
+      SubnetId = "string",
+      YarnEndpointAddress = "string",
+      PrivateAddress = "string",
+      ZeppelinRemoteSparkInterpreterPort = 123,
+      PublicAddress = "string",
+      Status = "string",
+      WorkerType = "Standard"|"G.1X"|"G.2X",
+      GlueVersion = "string",
+      NumberOfWorkers = 123,
+      NumberOfNodes = 123,
+      AvailabilityZone = "string",
+      VpcId = "string",
+      ExtraPythonLibsS3Path = "string",
+      ExtraJarsS3Path = "string",
+      FailureReason = "string",
+      LastUpdateStatus = "string",
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      PublicKey = "string",
+      PublicKeys = list(
+        "string"
+      ),
+      SecurityConfiguration = "string",
+      Arguments = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves all the development endpoints in this AWS account.
 

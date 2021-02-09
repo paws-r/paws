@@ -26,6 +26,22 @@ Tags are strings in the format \code{key=value}.
 These user-defined tags are added in addition to the AWS-added lifecycle
 tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Policies = list(
+    list(
+      PolicyId = "string",
+      Description = "string",
+      State = "ENABLED"|"DISABLED"|"ERROR",
+      Tags = list(
+        "string"
+      ),
+      PolicyType = "EBS_SNAPSHOT_MANAGEMENT"|"IMAGE_MANAGEMENT"|"EVENT_BASED_POLICY"
+    )
+  )
+)
+}
+}
 \description{
 Gets summary information about all or the specified data lifecycle
 policies.

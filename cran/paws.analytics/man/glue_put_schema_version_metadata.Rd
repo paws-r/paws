@@ -16,6 +16,19 @@ glue_put_schema_version_metadata(SchemaId, SchemaVersionNumber,
 
 \item{MetadataKeyValue}{[required] The metadata key's corresponding value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaArn = "string",
+  SchemaName = "string",
+  RegistryName = "string",
+  LatestVersion = TRUE|FALSE,
+  VersionNumber = 123,
+  SchemaVersionId = "string",
+  MetadataKey = "string",
+  MetadataValue = "string"
+)
+}
+}
 \description{
 Puts the metadata key value pair for a specified schema version ID. A
 maximum of 10 key value pairs will be allowed per schema version. They

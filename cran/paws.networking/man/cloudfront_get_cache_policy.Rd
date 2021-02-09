@@ -2,8 +2,7 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_get_cache_policy}
 \alias{cloudfront_get_cache_policy}
-\title{Gets a cache policy, including the following metadata: - The policy’s
-identifier}
+\title{Gets a cache policy, including the following metadata:}
 \usage{
 cloudfront_get_cache_policy(Id)
 }
@@ -14,6 +13,56 @@ identifier using \code{\link[=cloudfront_list_distributions]{list_distributions}
 or \code{\link[=cloudfront_get_distribution]{get_distribution}}. If the cache
 policy is not attached to a cache behavior, you can get the identifier
 using \code{\link[=cloudfront_list_cache_policies]{list_cache_policies}}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  CachePolicy = list(
+    Id = "string",
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    CachePolicyConfig = list(
+      Comment = "string",
+      Name = "string",
+      DefaultTTL = 123,
+      MaxTTL = 123,
+      MinTTL = 123,
+      ParametersInCacheKeyAndForwardedToOrigin = list(
+        EnableAcceptEncodingGzip = TRUE|FALSE,
+        EnableAcceptEncodingBrotli = TRUE|FALSE,
+        HeadersConfig = list(
+          HeaderBehavior = "none"|"whitelist",
+          Headers = list(
+            Quantity = 123,
+            Items = list(
+              "string"
+            )
+          )
+        ),
+        CookiesConfig = list(
+          CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
+          Cookies = list(
+            Quantity = 123,
+            Items = list(
+              "string"
+            )
+          )
+        ),
+        QueryStringsConfig = list(
+          QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
+          QueryStrings = list(
+            Quantity = 123,
+            Items = list(
+              "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  ETag = "string"
+)
+}
 }
 \description{
 Gets a cache policy, including the following metadata:

@@ -12,6 +12,10 @@ alexaforbusiness_untag_resource(Arn, TagKeys)
 \item{TagKeys}{[required] The tags to be removed from the specified resource. Do not provide
 system tags. Required.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes metadata tags from a specified resource.
 }

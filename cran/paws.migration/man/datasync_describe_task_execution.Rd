@@ -9,6 +9,59 @@ datasync_describe_task_execution(TaskExecutionArn)
 \arguments{
 \item{TaskExecutionArn}{[required] The Amazon Resource Name (ARN) of the task that is being executed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TaskExecutionArn = "string",
+  Status = "QUEUED"|"LAUNCHING"|"PREPARING"|"TRANSFERRING"|"VERIFYING"|"SUCCESS"|"ERROR",
+  Options = list(
+    VerifyMode = "POINT_IN_TIME_CONSISTENT"|"ONLY_FILES_TRANSFERRED"|"NONE",
+    OverwriteMode = "ALWAYS"|"NEVER",
+    Atime = "NONE"|"BEST_EFFORT",
+    Mtime = "NONE"|"PRESERVE",
+    Uid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
+    Gid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
+    PreserveDeletedFiles = "PRESERVE"|"REMOVE",
+    PreserveDevices = "NONE"|"PRESERVE",
+    PosixPermissions = "NONE"|"PRESERVE",
+    BytesPerSecond = 123,
+    TaskQueueing = "ENABLED"|"DISABLED",
+    LogLevel = "OFF"|"BASIC"|"TRANSFER",
+    TransferMode = "CHANGED"|"ALL"
+  ),
+  Excludes = list(
+    list(
+      FilterType = "SIMPLE_PATTERN",
+      Value = "string"
+    )
+  ),
+  Includes = list(
+    list(
+      FilterType = "SIMPLE_PATTERN",
+      Value = "string"
+    )
+  ),
+  StartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  EstimatedFilesToTransfer = 123,
+  EstimatedBytesToTransfer = 123,
+  FilesTransferred = 123,
+  BytesWritten = 123,
+  BytesTransferred = 123,
+  Result = list(
+    PrepareDuration = 123,
+    PrepareStatus = "PENDING"|"SUCCESS"|"ERROR",
+    TotalDuration = 123,
+    TransferDuration = 123,
+    TransferStatus = "PENDING"|"SUCCESS"|"ERROR",
+    VerifyDuration = 123,
+    VerifyStatus = "PENDING"|"SUCCESS"|"ERROR",
+    ErrorCode = "string",
+    ErrorDetail = "string"
+  )
+)
+}
+}
 \description{
 Returns detailed metadata about a task that is being executed.
 }

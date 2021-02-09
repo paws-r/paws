@@ -3,8 +3,7 @@
 \name{glacier_get_vault_lock}
 \alias{glacier_get_vault_lock}
 \title{This operation retrieves the following attributes from the lock-policy
-subresource set on the specified vault: - The vault lock policy set on
-the vault}
+subresource set on the specified vault:}
 \usage{
 glacier_get_vault_lock(accountId, vaultName)
 }
@@ -16,6 +15,15 @@ associated with the credentials used to sign the request. If you use an
 account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = "string",
+  State = "string",
+  ExpirationDate = "string",
+  CreationDate = "string"
+)
+}
 }
 \description{
 This operation retrieves the following attributes from the \code{lock-policy}

@@ -14,6 +14,17 @@ expires at the end of this period, the user will no longer be able to
 use the credentials to log in. If the user is logged in at the time, he
 or she automatically will be logged out.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TemporaryCredential = list(
+    Username = "string",
+    Password = "string",
+    ValidForInMinutes = 123,
+    InstanceId = "string"
+  )
+)
+}
+}
 \description{
 This action can be used only with Windows stacks.
 

@@ -12,6 +12,10 @@ tags.}
 
 \item{TagsToRemove}{[required] Tags to remove from this resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes tags from a resource.
 }

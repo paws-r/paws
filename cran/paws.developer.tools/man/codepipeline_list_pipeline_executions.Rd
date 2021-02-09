@@ -21,6 +21,39 @@ on pipeline execution start times. Default value is 100.}
 call, which can be used to return the next set of pipeline executions in
 the list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  pipelineExecutionSummaries = list(
+    list(
+      pipelineExecutionId = "string",
+      status = "Cancelled"|"InProgress"|"Stopped"|"Stopping"|"Succeeded"|"Superseded"|"Failed",
+      startTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      sourceRevisions = list(
+        list(
+          actionName = "string",
+          revisionId = "string",
+          revisionSummary = "string",
+          revisionUrl = "string"
+        )
+      ),
+      trigger = list(
+        triggerType = "CreatePipeline"|"StartPipelineExecution"|"PollForSourceChanges"|"Webhook"|"CloudWatchEvent"|"PutActionRevision",
+        triggerDetail = "string"
+      ),
+      stopTrigger = list(
+        reason = "string"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets a summary of the most recent executions for a pipeline.
 }

@@ -18,6 +18,15 @@ apigatewayv2_update_api_mapping(ApiId, ApiMappingId, ApiMappingKey,
 
 \item{Stage}{The API stage.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApiId = "string",
+  ApiMappingId = "string",
+  ApiMappingKey = "string",
+  Stage = "string"
+)
+}
+}
 \description{
 The API mapping.
 }

@@ -13,6 +13,24 @@ Queue URLs and names are case-sensitive.}
 
 \item{Entries}{[required] A list of receipt handles for the messages to be deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Successful = list(
+    list(
+      Id = "string"
+    )
+  ),
+  Failed = list(
+    list(
+      Id = "string",
+      SenderFault = TRUE|FALSE,
+      Code = "string",
+      Message = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes up to ten messages from the specified queue. This is a batch
 version of \code{ DeleteMessage.} The result of the action on each message is

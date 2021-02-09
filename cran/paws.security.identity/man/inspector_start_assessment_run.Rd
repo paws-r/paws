@@ -15,6 +15,12 @@ to start.}
 for the assessment template whose ARN is used to start the assessment
 run.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  assessmentRunArn = "string"
+)
+}
+}
 \description{
 Starts the assessment run specified by the ARN of the assessment
 template. For this API to function properly, you must not exceed the
@@ -35,7 +41,7 @@ limit of running up to 500 concurrent agents per AWS account.
 # limit of running up to 500 concurrent agents per AWS account.
 svc$start_assessment_run(
   assessmentRunName = "examplerun",
-  assessmentTemplateArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/templa..."
+  assessmentTemplateArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX..."
 )
 }
 

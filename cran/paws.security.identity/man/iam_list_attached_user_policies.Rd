@@ -12,7 +12,7 @@ for.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{PathPrefix}{The path prefix for filtering the results. This parameter is optional.
 If it is not included, it defaults to a slash (/), listing all policies.
@@ -20,8 +20,8 @@ If it is not included, it defaults to a slash (/), listing all policies.
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
-ASCII character from the ! (\code{U+0021}) through the DEL character
-(\verb{U+007F}), including most punctuation characters, digits, and upper and
+ASCII character from the ! (\verb{\\u0021}) through the DEL character
+(\verb{\\u007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{Marker}{Use this parameter only when paginating results and only after you
@@ -38,6 +38,19 @@ If you do not include this parameter, the number of items defaults to
 results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AttachedPolicies = list(
+    list(
+      PolicyName = "string",
+      PolicyArn = "string"
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
 }
 \description{
 Lists all managed policies that are attached to the specified IAM user.

@@ -16,6 +16,75 @@ one filter at a time.}
 \item{MaxResults}{The maximum number of results to return in each page. The default is
 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DocumentClassifierPropertiesList = list(
+    list(
+      DocumentClassifierArn = "string",
+      LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+      Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
+      Message = "string",
+      SubmitTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TrainingStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TrainingEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      InputDataConfig = list(
+        DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
+        S3Uri = "string",
+        LabelDelimiter = "string",
+        AugmentedManifests = list(
+          list(
+            S3Uri = "string",
+            AttributeNames = list(
+              "string"
+            )
+          )
+        )
+      ),
+      OutputDataConfig = list(
+        S3Uri = "string",
+        KmsKeyId = "string"
+      ),
+      ClassifierMetadata = list(
+        NumberOfLabels = 123,
+        NumberOfTrainedDocuments = 123,
+        NumberOfTestDocuments = 123,
+        EvaluationMetrics = list(
+          Accuracy = 123.0,
+          Precision = 123.0,
+          Recall = 123.0,
+          F1Score = 123.0,
+          MicroPrecision = 123.0,
+          MicroRecall = 123.0,
+          MicroF1Score = 123.0,
+          HammingLoss = 123.0
+        )
+      ),
+      DataAccessRoleArn = "string",
+      VolumeKmsKeyId = "string",
+      VpcConfig = list(
+        SecurityGroupIds = list(
+          "string"
+        ),
+        Subnets = list(
+          "string"
+        )
+      ),
+      Mode = "MULTI_CLASS"|"MULTI_LABEL"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of the document classifiers that you have created.
 }

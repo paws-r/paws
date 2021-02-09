@@ -16,6 +16,15 @@ NULL
 #' from.
 #' @param DeviceFleetName &#91;required&#93; The name of the fleet that the device belongs to.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeviceRegistration = "string",
+#'   CacheTTL = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_device_registration(
@@ -61,6 +70,8 @@ sagemakeredgemanager_get_device_registration <- function(DeviceName, DeviceFleet
 #' @param AgentVersion &#91;required&#93; Returns the version of the agent.
 #' @param DeviceName &#91;required&#93; The unique name of the device.
 #' @param DeviceFleetName &#91;required&#93; The name of the fleet that the device belongs to.
+#'
+
 #'
 #' @section Request syntax:
 #' ```

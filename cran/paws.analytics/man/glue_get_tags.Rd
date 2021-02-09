@@ -10,6 +10,14 @@ glue_get_tags(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource for which to retrieve
 tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves a list of tags associated with a resource.
 }

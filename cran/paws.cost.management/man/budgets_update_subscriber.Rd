@@ -19,6 +19,10 @@ want to update.}
 
 \item{NewSubscriber}{[required] The updated subscriber that is associated with a budget notification.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a subscriber.
 }

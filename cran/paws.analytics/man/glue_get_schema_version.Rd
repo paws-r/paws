@@ -24,6 +24,18 @@ provided.}
 
 \item{SchemaVersionNumber}{The version number of the schema.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaVersionId = "string",
+  SchemaDefinition = "string",
+  DataFormat = "AVRO",
+  SchemaArn = "string",
+  VersionNumber = 123,
+  Status = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING",
+  CreatedTime = "string"
+)
+}
+}
 \description{
 Get the specified schema by its unique ID assigned when a version of the
 schema is created or registered. Schema versions in Deleted status will

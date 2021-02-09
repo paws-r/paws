@@ -25,6 +25,79 @@ next set of results.}
 \item{ReverseOrder}{A boolean that indicates whether to list step executions in reverse
 order by start time. The default value is false.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StepExecutions = list(
+    list(
+      StepName = "string",
+      Action = "string",
+      TimeoutSeconds = 123,
+      OnFailure = "string",
+      MaxAttempts = 123,
+      ExecutionStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ExecutionEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      StepStatus = "Pending"|"InProgress"|"Waiting"|"Success"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"PendingApproval"|"Approved"|"Rejected"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"CompletedWithSuccess"|"CompletedWithFailure",
+      ResponseCode = "string",
+      Inputs = list(
+        "string"
+      ),
+      Outputs = list(
+        list(
+          "string"
+        )
+      ),
+      Response = "string",
+      FailureMessage = "string",
+      FailureDetails = list(
+        FailureStage = "string",
+        FailureType = "string",
+        Details = list(
+          list(
+            "string"
+          )
+        )
+      ),
+      StepExecutionId = "string",
+      OverriddenParameters = list(
+        list(
+          "string"
+        )
+      ),
+      IsEnd = TRUE|FALSE,
+      NextStep = "string",
+      IsCritical = TRUE|FALSE,
+      ValidNextSteps = list(
+        "string"
+      ),
+      Targets = list(
+        list(
+          Key = "string",
+          Values = list(
+            "string"
+          )
+        )
+      ),
+      TargetLocation = list(
+        Accounts = list(
+          "string"
+        ),
+        Regions = list(
+          "string"
+        ),
+        TargetLocationMaxConcurrency = "string",
+        TargetLocationMaxErrors = "string",
+        ExecutionRoleName = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Information about all active and terminated step executions in an
 Automation workflow.

@@ -29,6 +29,55 @@ be associated with.}
 
 \item{Tags}{Tags to assign to the option group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OptionGroup = list(
+    OptionGroupName = "string",
+    OptionGroupDescription = "string",
+    EngineName = "string",
+    MajorEngineVersion = "string",
+    Options = list(
+      list(
+        OptionName = "string",
+        OptionDescription = "string",
+        Persistent = TRUE|FALSE,
+        Permanent = TRUE|FALSE,
+        Port = 123,
+        OptionVersion = "string",
+        OptionSettings = list(
+          list(
+            Name = "string",
+            Value = "string",
+            DefaultValue = "string",
+            Description = "string",
+            ApplyType = "string",
+            DataType = "string",
+            AllowedValues = "string",
+            IsModifiable = TRUE|FALSE,
+            IsCollection = TRUE|FALSE
+          )
+        ),
+        DBSecurityGroupMemberships = list(
+          list(
+            DBSecurityGroupName = "string",
+            Status = "string"
+          )
+        ),
+        VpcSecurityGroupMemberships = list(
+          list(
+            VpcSecurityGroupId = "string",
+            Status = "string"
+          )
+        )
+      )
+    ),
+    AllowsVpcAndNonVpcInstanceMemberships = TRUE|FALSE,
+    VpcId = "string",
+    OptionGroupArn = "string"
+  )
+)
+}
+}
 \description{
 Creates a new option group. You can create up to 20 option groups.
 }

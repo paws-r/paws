@@ -22,6 +22,10 @@ and updating the model. You can specify as many as 10 time ranges.
 
 The configuration can also include the time zone to use for the metric.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates an anomaly detection model for a CloudWatch metric. You can use
 the model to display a band of expected normal values when the metric is

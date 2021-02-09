@@ -9,6 +9,10 @@ robomaker_cancel_deployment_job(job)
 \arguments{
 \item{job}{[required] The deployment job ARN to cancel.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Cancels the specified deployment job.
 }

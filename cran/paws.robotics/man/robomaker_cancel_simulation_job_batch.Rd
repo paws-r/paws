@@ -9,6 +9,10 @@ robomaker_cancel_simulation_job_batch(batch)
 \arguments{
 \item{batch}{[required] The id of the batch to cancel.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Cancels a simulation job batch. When you cancel a simulation job batch,
 you are also cancelling all of the active simulation jobs created as

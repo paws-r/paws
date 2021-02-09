@@ -11,6 +11,16 @@ apigatewayv2_get_model(ApiId, ModelId)
 
 \item{ModelId}{[required] The model ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContentType = "string",
+  Description = "string",
+  ModelId = "string",
+  Name = "string",
+  Schema = "string"
+)
+}
+}
 \description{
 Gets a Model.
 }

@@ -9,6 +9,12 @@ storagegateway_update_gateway_software_now(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Updates the gateway virtual machine (VM) software. The request
 immediately triggers the software update.

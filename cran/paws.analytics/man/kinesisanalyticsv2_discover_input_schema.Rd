@@ -25,6 +25,44 @@ object.}
 \item{InputProcessingConfiguration}{The InputProcessingConfiguration to use to preprocess the records before
 discovering the schema of the records.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InputSchema = list(
+    RecordFormat = list(
+      RecordFormatType = "JSON"|"CSV",
+      MappingParameters = list(
+        JSONMappingParameters = list(
+          RecordRowPath = "string"
+        ),
+        CSVMappingParameters = list(
+          RecordRowDelimiter = "string",
+          RecordColumnDelimiter = "string"
+        )
+      )
+    ),
+    RecordEncoding = "string",
+    RecordColumns = list(
+      list(
+        Name = "string",
+        Mapping = "string",
+        SqlType = "string"
+      )
+    )
+  ),
+  ParsedInputRecords = list(
+    list(
+      "string"
+    )
+  ),
+  ProcessedInputRecords = list(
+    "string"
+  ),
+  RawInputRecords = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Infers a schema for a SQL-based Kinesis Data Analytics application by
 evaluating sample records on the specified streaming source (Kinesis

@@ -10,6 +10,13 @@ opsworks_get_hostname_suggestion(LayerId)
 \arguments{
 \item{LayerId}{[required] The layer ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LayerId = "string",
+  Hostname = "string"
+)
+}
+}
 \description{
 Gets a generated host name for the specified layer, based on the current
 host name theme.

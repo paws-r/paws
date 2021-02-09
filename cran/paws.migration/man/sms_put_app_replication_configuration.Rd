@@ -14,6 +14,10 @@ sms_put_app_replication_configuration(appId,
 \item{serverGroupReplicationConfigurations}{Information about the replication configurations for server groups in
 the application.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates or updates the replication configuration for the specified
 application.

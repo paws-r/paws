@@ -22,6 +22,8 @@ NULL
 #' @param EventTime &#91;required&#93; Timestamp indicating when the deletion event occurred. `EventTime` can
 #' be used to query data at a certain point in time.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_record(
@@ -67,6 +69,19 @@ sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordI
 #' identifies the record in the `FeatureGroup`.
 #' @param FeatureNames List of names of Features to be retrieved. If not specified, the latest
 #' value for all the Features are returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Record = list(
+#'     list(
+#'       FeatureName = "string",
+#'       ValueAsString = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -124,6 +139,8 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
 #' 
 #' -   Use [`put_record`][sagemakerfeaturestoreruntime_put_record] to
 #'     update feature values.
+#'
+
 #'
 #' @section Request syntax:
 #' ```

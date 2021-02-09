@@ -29,6 +29,53 @@ files that Amazon FSx processed that meet the criteria specified by the
 
 \item{Tags}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DataRepositoryTask = list(
+    TaskId = "string",
+    Lifecycle = "PENDING"|"EXECUTING"|"FAILED"|"SUCCEEDED"|"CANCELED"|"CANCELING",
+    Type = "EXPORT_TO_REPOSITORY",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ResourceARN = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    FileSystemId = "string",
+    Paths = list(
+      "string"
+    ),
+    FailureDetails = list(
+      Message = "string"
+    ),
+    Status = list(
+      TotalCount = 123,
+      SucceededCount = 123,
+      FailedCount = 123,
+      LastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    Report = list(
+      Enabled = TRUE|FALSE,
+      Path = "string",
+      Format = "REPORT_CSV_20191124",
+      Scope = "FAILED_FILES_ONLY"
+    )
+  )
+)
+}
+}
 \description{
 Creates an Amazon FSx for Lustre data repository task. You use data
 repository tasks to perform bulk operations between your Amazon FSx file

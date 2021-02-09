@@ -6,6 +6,10 @@
 \usage{
 iot_clear_default_authorizer()
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Clears the default authorizer.
 }

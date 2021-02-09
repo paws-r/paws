@@ -13,6 +13,10 @@ route53domains_update_tags_for_domain(DomainName, TagsToUpdate)
 specify a key that already exists, the corresponding value will be
 replaced.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 This operation adds or updates tags for a specified domain.
 

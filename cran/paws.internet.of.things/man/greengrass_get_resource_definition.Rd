@@ -10,8 +10,24 @@ greengrass_get_resource_definition(ResourceDefinitionId)
 \arguments{
 \item{ResourceDefinitionId}{[required] The ID of the resource definition.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  LastUpdatedTimestamp = "string",
+  LatestVersion = "string",
+  LatestVersionArn = "string",
+  Name = "string",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
-Retrieves information about a resource definition, including its creation time and latest version.
+Retrieves information about a resource definition, including its
+creation time and latest version.
 }
 \section{Request syntax}{
 \preformatted{svc$get_resource_definition(

@@ -21,6 +21,42 @@ the value specified by \code{MaxRecords}.}
 
 \item{ShowMemberInfo}{Returns the list of members that comprise the Global Datastore.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  GlobalReplicationGroups = list(
+    list(
+      GlobalReplicationGroupId = "string",
+      GlobalReplicationGroupDescription = "string",
+      Status = "string",
+      CacheNodeType = "string",
+      Engine = "string",
+      EngineVersion = "string",
+      Members = list(
+        list(
+          ReplicationGroupId = "string",
+          ReplicationGroupRegion = "string",
+          Role = "string",
+          AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
+          Status = "string"
+        )
+      ),
+      ClusterEnabled = TRUE|FALSE,
+      GlobalNodeGroups = list(
+        list(
+          GlobalNodeGroupId = "string",
+          Slots = "string"
+        )
+      ),
+      AuthTokenEnabled = TRUE|FALSE,
+      TransitEncryptionEnabled = TRUE|FALSE,
+      AtRestEncryptionEnabled = TRUE|FALSE,
+      ARN = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about a particular global replication group. If no
 identifier is specified, returns information about all Global

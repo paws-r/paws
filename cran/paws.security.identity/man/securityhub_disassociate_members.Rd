@@ -11,6 +11,10 @@ securityhub_disassociate_members(AccountIds)
 \item{AccountIds}{[required] The account IDs of the member accounts to disassociate from the master
 account.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disassociates the specified member accounts from the associated master
 account.

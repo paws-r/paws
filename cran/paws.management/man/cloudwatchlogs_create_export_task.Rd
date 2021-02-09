@@ -30,6 +30,12 @@ the same AWS region.}
 \item{destinationPrefix}{The prefix used as the start of the key for every object exported. If
 you don't specify a value, the default is \code{exportedlogs}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  taskId = "string"
+)
+}
+}
 \description{
 Creates an export task, which allows you to efficiently export data from
 a log group to an Amazon S3 bucket. When you perform a

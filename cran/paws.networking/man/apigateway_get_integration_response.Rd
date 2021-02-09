@@ -17,6 +17,20 @@ identifier.}
 
 \item{statusCode}{[required] [Required] Specifies a get integration response request's status code.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  statusCode = "string",
+  selectionPattern = "string",
+  responseParameters = list(
+    "string"
+  ),
+  responseTemplates = list(
+    "string"
+  ),
+  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+)
+}
+}
 \description{
 Represents a get integration response.
 }

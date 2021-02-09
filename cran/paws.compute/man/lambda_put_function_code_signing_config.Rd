@@ -23,6 +23,13 @@ lambda_put_function_code_signing_config(CodeSigningConfigArn,
 The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CodeSigningConfigArn = "string",
+  FunctionName = "string"
+)
+}
+}
 \description{
 Update the code signing configuration for the function. Changes to the
 code signing configuration take effect the next time a user tries to

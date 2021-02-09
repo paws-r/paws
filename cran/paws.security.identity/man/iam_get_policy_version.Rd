@@ -21,6 +21,19 @@ that consists of the lowercase letter 'v' followed by one or two digits,
 and optionally followed by a period '.' and a string of letters and
 digits.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyVersion = list(
+    Document = "string",
+    VersionId = "string",
+    IsDefaultVersion = TRUE|FALSE,
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves information about the specified version of the specified
 managed policy, including the policy document.

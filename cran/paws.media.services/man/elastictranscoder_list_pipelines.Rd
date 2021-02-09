@@ -16,6 +16,56 @@ order, enter \code{false}.}
 \code{pageToken} in subsequent \code{GET} requests to get each successive page of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Pipelines = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Name = "string",
+      Status = "string",
+      InputBucket = "string",
+      OutputBucket = "string",
+      Role = "string",
+      AwsKmsKeyArn = "string",
+      Notifications = list(
+        Progressing = "string",
+        Completed = "string",
+        Warning = "string",
+        Error = "string"
+      ),
+      ContentConfig = list(
+        Bucket = "string",
+        StorageClass = "string",
+        Permissions = list(
+          list(
+            GranteeType = "string",
+            Grantee = "string",
+            Access = list(
+              "string"
+            )
+          )
+        )
+      ),
+      ThumbnailConfig = list(
+        Bucket = "string",
+        StorageClass = "string",
+        Permissions = list(
+          list(
+            GranteeType = "string",
+            Grantee = "string",
+            Access = list(
+              "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 The ListPipelines operation gets a list of the pipelines associated with
 the current AWS account.

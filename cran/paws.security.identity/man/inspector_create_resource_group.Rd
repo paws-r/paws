@@ -14,6 +14,12 @@ inspector_create_resource_group(resourceGroupTags)
 
 For example,'[\{"key":"Name","values":["TestEC2Instance"]\}]'.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resourceGroupArn = "string"
+)
+}
+}
 \description{
 Creates a resource group using the specified set of tags (key and value
 pairs) that are used to select the EC2 instances to be included in an

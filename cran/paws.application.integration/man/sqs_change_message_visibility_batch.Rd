@@ -14,6 +14,24 @@ Queue URLs and names are case-sensitive.}
 \item{Entries}{[required] A list of receipt handles of the messages for which the visibility
 timeout must be changed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Successful = list(
+    list(
+      Id = "string"
+    )
+  ),
+  Failed = list(
+    list(
+      Id = "string",
+      SenderFault = TRUE|FALSE,
+      Code = "string",
+      Message = "string"
+    )
+  )
+)
+}
+}
 \description{
 Changes the visibility timeout of multiple messages. This is a batch
 version of \code{ ChangeMessageVisibility.} The result of the action on each

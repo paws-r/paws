@@ -26,6 +26,30 @@ maintenance window for the resource.
 requests.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourcePendingMaintenanceActions = list(
+    ResourceIdentifier = "string",
+    PendingMaintenanceActionDetails = list(
+      list(
+        Action = "string",
+        AutoAppliedAfterDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        ForcedApplyDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        OptInStatus = "string",
+        CurrentApplyDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        Description = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Applies a pending maintenance action to a resource (for example, to a
 replication instance).

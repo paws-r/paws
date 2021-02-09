@@ -6,8 +6,15 @@
 \usage{
 greengrass_disassociate_service_role_from_account()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DisassociatedAt = "string"
+)
+}
+}
 \description{
-Disassociates the service role from your account. Without a service role, deployments will not work.
+Disassociates the service role from your account. Without a service
+role, deployments will not work.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_service_role_from_account()

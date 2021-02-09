@@ -9,6 +9,10 @@ athena_stop_query_execution(QueryExecutionId)
 \arguments{
 \item{QueryExecutionId}{[required] The unique ID of the query execution to stop.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Stops a query execution. Requires you to have access to the workgroup in
 which the query ran.

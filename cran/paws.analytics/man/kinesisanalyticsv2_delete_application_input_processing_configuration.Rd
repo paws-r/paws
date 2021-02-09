@@ -22,6 +22,13 @@ application by using the
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
 operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationARN = "string",
+  ApplicationVersionId = 123
+)
+}
+}
 \description{
 Deletes an InputProcessingConfiguration from an input.
 }

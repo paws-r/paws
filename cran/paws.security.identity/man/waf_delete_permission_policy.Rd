@@ -12,6 +12,10 @@ delete the policy.
 
 The user making the request must be the owner of the RuleGroup.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

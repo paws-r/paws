@@ -23,6 +23,21 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  CacheParameterGroups = list(
+    list(
+      CacheParameterGroupName = "string",
+      CacheParameterGroupFamily = "string",
+      Description = "string",
+      IsGlobal = TRUE|FALSE,
+      ARN = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of cache parameter group descriptions. If a cache
 parameter group name is specified, the list contains only the

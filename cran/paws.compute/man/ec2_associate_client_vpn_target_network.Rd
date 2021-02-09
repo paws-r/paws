@@ -20,6 +20,16 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociationId = "string",
+  Status = list(
+    Code = "associating"|"associated"|"association-failed"|"disassociating"|"disassociated",
+    Message = "string"
+  )
+)
+}
+}
 \description{
 Associates a target network with a Client VPN endpoint. A target network
 is a subnet in a VPC. You can associate multiple subnets from the same

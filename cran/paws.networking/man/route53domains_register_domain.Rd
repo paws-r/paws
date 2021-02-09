@@ -85,6 +85,12 @@ technical contact.
 
 Default: \code{true}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 This operation registers a domain. Domains are registered either by
 Amazon Registrar (for .com, .net, and .org domains) or by our registrar

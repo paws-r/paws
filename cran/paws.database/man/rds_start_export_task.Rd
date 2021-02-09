@@ -55,6 +55,34 @@ database schema. This format is valid only for RDS for PostgreSQL
 and Aurora PostgreSQL.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ExportTaskIdentifier = "string",
+  SourceArn = "string",
+  ExportOnly = list(
+    "string"
+  ),
+  SnapshotTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  TaskStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  TaskEndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  S3Bucket = "string",
+  S3Prefix = "string",
+  IamRoleArn = "string",
+  KmsKeyId = "string",
+  Status = "string",
+  PercentProgress = 123,
+  TotalExtractedDataInGB = 123,
+  FailureCause = "string",
+  WarningMessage = "string"
+)
+}
+}
 \description{
 Starts an export of a snapshot to Amazon S3. The provided IAM role must
 have access to the S3 bucket.

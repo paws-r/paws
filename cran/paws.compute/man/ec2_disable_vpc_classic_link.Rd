@@ -14,6 +14,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcId}{[required] The ID of the VPC.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC
 that has EC2-Classic instances linked to it.

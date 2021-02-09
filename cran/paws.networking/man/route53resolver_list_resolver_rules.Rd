@@ -30,6 +30,36 @@ If you submit a second or subsequent
 specify the \code{NextToken} parameter, you must use the same values for
 \code{Filters}, if any, as in the previous request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  MaxResults = 123,
+  ResolverRules = list(
+    list(
+      Id = "string",
+      CreatorRequestId = "string",
+      Arn = "string",
+      DomainName = "string",
+      Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
+      StatusMessage = "string",
+      RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+      Name = "string",
+      TargetIps = list(
+        list(
+          Ip = "string",
+          Port = 123
+        )
+      ),
+      ResolverEndpointId = "string",
+      OwnerId = "string",
+      ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+      CreationTime = "string",
+      ModificationTime = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the Resolver rules that were created using the current AWS
 account.

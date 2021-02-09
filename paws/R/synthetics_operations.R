@@ -89,6 +89,67 @@ NULL
 #' use them to scope user permissions, by granting a user permission to
 #' access or change only the resources that have certain tag values.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Canary = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Code = list(
+#'       SourceLocationArn = "string",
+#'       Handler = "string"
+#'     ),
+#'     ExecutionRoleArn = "string",
+#'     Schedule = list(
+#'       Expression = "string",
+#'       DurationInSeconds = 123
+#'     ),
+#'     RunConfig = list(
+#'       TimeoutInSeconds = 123,
+#'       MemoryInMB = 123,
+#'       ActiveTracing = TRUE|FALSE
+#'     ),
+#'     SuccessRetentionPeriodInDays = 123,
+#'     FailureRetentionPeriodInDays = 123,
+#'     Status = list(
+#'       State = "CREATING"|"READY"|"STARTING"|"RUNNING"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR"|"DELETING",
+#'       StateReason = "string",
+#'       StateReasonCode = "INVALID_PERMISSIONS"
+#'     ),
+#'     Timeline = list(
+#'       Created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastStarted = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastStopped = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     ArtifactS3Location = "string",
+#'     EngineArn = "string",
+#'     RuntimeVersion = "string",
+#'     VpcConfig = list(
+#'       VpcId = "string",
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_canary(
@@ -187,6 +248,12 @@ synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRo
 #' @param Name &#91;required&#93; The name of the canary that you want to delete. To find the names of
 #' your canaries, use [`describe_canaries`][synthetics_describe_canaries].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_canary(
@@ -237,6 +304,70 @@ synthetics_delete_canary <- function(Name) {
 #' you use the [`describe_canaries`][synthetics_describe_canaries]
 #' operation. If you omit this parameter, the default of 100 is used.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Canaries = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Code = list(
+#'         SourceLocationArn = "string",
+#'         Handler = "string"
+#'       ),
+#'       ExecutionRoleArn = "string",
+#'       Schedule = list(
+#'         Expression = "string",
+#'         DurationInSeconds = 123
+#'       ),
+#'       RunConfig = list(
+#'         TimeoutInSeconds = 123,
+#'         MemoryInMB = 123,
+#'         ActiveTracing = TRUE|FALSE
+#'       ),
+#'       SuccessRetentionPeriodInDays = 123,
+#'       FailureRetentionPeriodInDays = 123,
+#'       Status = list(
+#'         State = "CREATING"|"READY"|"STARTING"|"RUNNING"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR"|"DELETING",
+#'         StateReason = "string",
+#'         StateReasonCode = "INVALID_PERMISSIONS"
+#'       ),
+#'       Timeline = list(
+#'         Created = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastModified = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastStarted = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastStopped = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       ArtifactS3Location = "string",
+#'       EngineArn = "string",
+#'       RuntimeVersion = "string",
+#'       VpcConfig = list(
+#'         VpcId = "string",
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_canaries(
@@ -282,6 +413,37 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param MaxResults Specify this parameter to limit how many runs are returned each time you
 #' use the `DescribeLastRun` operation. If you omit this parameter, the
 #' default of 100 is used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CanariesLastRun = list(
+#'     list(
+#'       CanaryName = "string",
+#'       LastRun = list(
+#'         Id = "string",
+#'         Name = "string",
+#'         Status = list(
+#'           State = "RUNNING"|"PASSED"|"FAILED",
+#'           StateReason = "string",
+#'           StateReasonCode = "CANARY_FAILURE"|"EXECUTION_FAILURE"
+#'         ),
+#'         Timeline = list(
+#'           Started = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Completed = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         ),
+#'         ArtifactS3Location = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -330,6 +492,26 @@ synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults =
 #' [`describe_runtime_versions`][synthetics_describe_runtime_versions]
 #' operation. If you omit this parameter, the default of 100 is used.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuntimeVersions = list(
+#'     list(
+#'       VersionName = "string",
+#'       Description = "string",
+#'       ReleaseDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeprecationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_runtime_versions(
@@ -369,6 +551,67 @@ synthetics_describe_runtime_versions <- function(NextToken = NULL, MaxResults = 
 #' synthetics_get_canary(Name)
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want details for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Canary = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Code = list(
+#'       SourceLocationArn = "string",
+#'       Handler = "string"
+#'     ),
+#'     ExecutionRoleArn = "string",
+#'     Schedule = list(
+#'       Expression = "string",
+#'       DurationInSeconds = 123
+#'     ),
+#'     RunConfig = list(
+#'       TimeoutInSeconds = 123,
+#'       MemoryInMB = 123,
+#'       ActiveTracing = TRUE|FALSE
+#'     ),
+#'     SuccessRetentionPeriodInDays = 123,
+#'     FailureRetentionPeriodInDays = 123,
+#'     Status = list(
+#'       State = "CREATING"|"READY"|"STARTING"|"RUNNING"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR"|"DELETING",
+#'       StateReason = "string",
+#'       StateReasonCode = "INVALID_PERMISSIONS"
+#'     ),
+#'     Timeline = list(
+#'       Created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastStarted = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastStopped = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     ArtifactS3Location = "string",
+#'     EngineArn = "string",
+#'     RuntimeVersion = "string",
+#'     VpcConfig = list(
+#'       VpcId = "string",
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -414,6 +657,34 @@ synthetics_get_canary <- function(Name) {
 #' use the [`get_canary_runs`][synthetics_get_canary_runs] operation. If
 #' you omit this parameter, the default of 100 is used.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CanaryRuns = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Status = list(
+#'         State = "RUNNING"|"PASSED"|"FAILED",
+#'         StateReason = "string",
+#'         StateReasonCode = "CANARY_FAILURE"|"EXECUTION_FAILURE"
+#'       ),
+#'       Timeline = list(
+#'         Started = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Completed = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       ArtifactS3Location = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_canary_runs(
@@ -456,6 +727,16 @@ synthetics_get_canary_runs <- function(Name, NextToken = NULL, MaxResults = NULL
 #' The ARN format of a canary is
 #' `arn:aws:synthetics:Region:account-id:canary:canary-name `.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -496,6 +777,12 @@ synthetics_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to run. To find canary names, use
 #' [`describe_canaries`][synthetics_describe_canaries].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -542,6 +829,12 @@ synthetics_start_canary <- function(Name) {
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to stop. To find the names of your
 #' canaries, use [`describe_canaries`][synthetics_describe_canaries].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -600,6 +893,12 @@ synthetics_stop_canary <- function(Name) {
 #' `arn:aws:synthetics:Region:account-id:canary:canary-name `.
 #' @param Tags &#91;required&#93; The list of key-value pairs to associate with the canary.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -643,6 +942,12 @@ synthetics_tag_resource <- function(ResourceArn, Tags) {
 #' The ARN format of a canary is
 #' `arn:aws:synthetics:Region:account-id:canary:canary-name `.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -728,6 +1033,12 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' information about the subnet and security groups of the VPC endpoint.
 #' For more information, see [Running a Canary in a
 #' VPC](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_VPC.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

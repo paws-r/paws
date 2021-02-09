@@ -18,6 +18,42 @@ ram_get_resource_share_invitations(resourceShareInvitationArns,
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resourceShareInvitations = list(
+    list(
+      resourceShareInvitationArn = "string",
+      resourceShareName = "string",
+      resourceShareArn = "string",
+      senderAccountId = "string",
+      receiverAccountId = "string",
+      invitationTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      status = "PENDING"|"ACCEPTED"|"REJECTED"|"EXPIRED",
+      resourceShareAssociations = list(
+        list(
+          resourceShareArn = "string",
+          resourceShareName = "string",
+          associatedEntity = "string",
+          associationType = "PRINCIPAL"|"RESOURCE",
+          status = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
+          statusMessage = "string",
+          creationTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          lastUpdatedTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          external = TRUE|FALSE
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets the invitations for resource sharing that you've received.
 }

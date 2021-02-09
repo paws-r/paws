@@ -11,6 +11,23 @@ iot_get_policy_version(policyName, policyVersionId)
 
 \item{policyVersionId}{[required] The policy version ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  policyArn = "string",
+  policyName = "string",
+  policyDocument = "string",
+  policyVersionId = "string",
+  isDefaultVersion = TRUE|FALSE,
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastModifiedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  generationId = "string"
+)
+}
+}
 \description{
 Gets information about the specified policy version.
 }

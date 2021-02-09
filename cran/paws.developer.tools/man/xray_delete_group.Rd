@@ -11,6 +11,10 @@ xray_delete_group(GroupName, GroupARN)
 
 \item{GroupARN}{The ARN of the group that was generated on creation.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a group resource.
 }

@@ -29,6 +29,41 @@ length of 256 characters.}
 
 \item{virtualServiceName}{[required] The name to use for the virtual service.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  virtualService = list(
+    meshName = "string",
+    metadata = list(
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      meshOwner = "string",
+      resourceOwner = "string",
+      uid = "string",
+      version = 123
+    ),
+    spec = list(
+      provider = list(
+        virtualNode = list(
+          virtualNodeName = "string"
+        ),
+        virtualRouter = list(
+          virtualRouterName = "string"
+        )
+      )
+    ),
+    status = list(
+      status = "ACTIVE"|"INACTIVE"|"DELETED"
+    ),
+    virtualServiceName = "string"
+  )
+)
+}
+}
 \description{
 Creates a virtual service within a service mesh.
 

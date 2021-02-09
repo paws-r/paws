@@ -6,6 +6,13 @@
 \usage{
 kinesis_describe_limits()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ShardLimit = 123,
+  OpenShardCount = 123
+)
+}
+}
 \description{
 Describes the shard limits and usage for the account.
 

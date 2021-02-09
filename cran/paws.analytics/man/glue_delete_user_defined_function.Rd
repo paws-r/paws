@@ -14,6 +14,10 @@ If none is supplied, the AWS account ID is used by default.}
 
 \item{FunctionName}{[required] The name of the function definition to be deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes an existing function definition from the Data Catalog.
 }

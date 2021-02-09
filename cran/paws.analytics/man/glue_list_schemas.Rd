@@ -15,6 +15,23 @@ supplied, this will be defaulted to 25 per page.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Schemas = list(
+    list(
+      RegistryName = "string",
+      SchemaName = "string",
+      SchemaArn = "string",
+      Description = "string",
+      SchemaStatus = "AVAILABLE"|"PENDING"|"DELETING",
+      CreatedTime = "string",
+      UpdatedTime = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of schemas with minimal details. Schemas in Deleting
 status will not be included in the results. Empty results will be

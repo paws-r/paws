@@ -16,6 +16,63 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociationVersions = list(
+    list(
+      AssociationId = "string",
+      AssociationVersion = "string",
+      CreatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Name = "string",
+      DocumentVersion = "string",
+      Parameters = list(
+        list(
+          "string"
+        )
+      ),
+      Targets = list(
+        list(
+          Key = "string",
+          Values = list(
+            "string"
+          )
+        )
+      ),
+      ScheduleExpression = "string",
+      OutputLocation = list(
+        S3Location = list(
+          OutputS3Region = "string",
+          OutputS3BucketName = "string",
+          OutputS3KeyPrefix = "string"
+        )
+      ),
+      AssociationName = "string",
+      MaxErrors = "string",
+      MaxConcurrency = "string",
+      ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+      SyncCompliance = "AUTO"|"MANUAL",
+      ApplyOnlyAtCronInterval = TRUE|FALSE,
+      TargetLocations = list(
+        list(
+          Accounts = list(
+            "string"
+          ),
+          Regions = list(
+            "string"
+          ),
+          TargetLocationMaxConcurrency = "string",
+          TargetLocationMaxErrors = "string",
+          ExecutionRoleName = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves all versions of an association for a specific association ID.
 }

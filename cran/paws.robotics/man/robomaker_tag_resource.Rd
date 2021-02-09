@@ -13,6 +13,10 @@ tagging.}
 \item{tags}{[required] A map that contains tag keys and tag values that are attached to the
 resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds or edits tags for a AWS RoboMaker resource.
 

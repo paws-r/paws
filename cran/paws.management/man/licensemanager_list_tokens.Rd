@@ -18,6 +18,27 @@ licensemanager_list_tokens(TokenIds, Filters, NextToken, MaxResults)
 
 \item{MaxResults}{Maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tokens = list(
+    list(
+      TokenId = "string",
+      TokenType = "string",
+      LicenseArn = "string",
+      ExpirationTime = "string",
+      TokenProperties = list(
+        "string"
+      ),
+      RoleArns = list(
+        "string"
+      ),
+      Status = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists your tokens.
 }

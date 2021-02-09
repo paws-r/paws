@@ -11,6 +11,24 @@ dynamodb_create_backup(TableName, BackupName)
 
 \item{BackupName}{[required] Specified name for the backup.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupDetails = list(
+    BackupArn = "string",
+    BackupName = "string",
+    BackupSizeBytes = 123,
+    BackupStatus = "CREATING"|"DELETED"|"AVAILABLE",
+    BackupType = "USER"|"SYSTEM"|"AWS_BACKUP",
+    BackupCreationDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    BackupExpiryDateTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates a backup for an existing table.
 

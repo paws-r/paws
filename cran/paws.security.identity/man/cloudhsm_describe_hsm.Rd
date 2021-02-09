@@ -13,6 +13,34 @@ must be specified.}
 \item{HsmSerialNumber}{The serial number of the HSM. Either the \code{HsmArn} or the
 \code{HsmSerialNumber} parameter must be specified.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HsmArn = "string",
+  Status = "PENDING"|"RUNNING"|"UPDATING"|"SUSPENDED"|"TERMINATING"|"TERMINATED"|"DEGRADED",
+  StatusDetails = "string",
+  AvailabilityZone = "string",
+  EniId = "string",
+  EniIp = "string",
+  SubscriptionType = "PRODUCTION",
+  SubscriptionStartDate = "string",
+  SubscriptionEndDate = "string",
+  VpcId = "string",
+  SubnetId = "string",
+  IamRoleArn = "string",
+  SerialNumber = "string",
+  VendorName = "string",
+  HsmType = "string",
+  SoftwareVersion = "string",
+  SshPublicKey = "string",
+  SshKeyLastUpdated = "string",
+  ServerCertUri = "string",
+  ServerCertLastUpdated = "string",
+  Partitions = list(
+    "string"
+  )
+)
+}
+}
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
 information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},

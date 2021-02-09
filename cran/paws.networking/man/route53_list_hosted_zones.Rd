@@ -29,6 +29,31 @@ of \code{IsTruncated} in the response is \code{true}, and the value of
 hosted zones that are associated with a reusable delegation set, specify
 the ID of that reusable delegation set.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HostedZones = list(
+    list(
+      Id = "string",
+      Name = "string",
+      CallerReference = "string",
+      Config = list(
+        Comment = "string",
+        PrivateZone = TRUE|FALSE
+      ),
+      ResourceRecordSetCount = 123,
+      LinkedService = list(
+        ServicePrincipal = "string",
+        Description = "string"
+      )
+    )
+  ),
+  Marker = "string",
+  IsTruncated = TRUE|FALSE,
+  NextMarker = "string",
+  MaxItems = "string"
+)
+}
+}
 \description{
 Retrieves a list of the public and private hosted zones that are
 associated with the current AWS account. The response includes a

@@ -32,6 +32,20 @@ NULL
 #' @param DeviceId &#91;required&#93; The ID of the device.
 #' @param LinkId The ID of the link.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CustomerGatewayAssociation = list(
+#'     CustomerGatewayArn = "string",
+#'     GlobalNetworkId = "string",
+#'     DeviceId = "string",
+#'     LinkId = "string",
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_customer_gateway(
@@ -75,6 +89,19 @@ networkmanager_associate_customer_gateway <- function(CustomerGatewayArn, Global
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param DeviceId &#91;required&#93; The ID of the device.
 #' @param LinkId &#91;required&#93; The ID of the link.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LinkAssociation = list(
+#'     GlobalNetworkId = "string",
+#'     DeviceId = "string",
+#'     LinkId = "string",
+#'     LinkAssociationState = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -128,6 +155,20 @@ networkmanager_associate_link <- function(GlobalNetworkId, DeviceId, LinkId) {
 #' @param DeviceId &#91;required&#93; The ID of the device.
 #' @param LinkId The ID of the link.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayConnectPeerAssociation = list(
+#'     TransitGatewayConnectPeerArn = "string",
+#'     GlobalNetworkId = "string",
+#'     DeviceId = "string",
+#'     LinkId = "string",
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_transit_gateway_connect_peer(
@@ -179,6 +220,33 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 #' 
 #' Length Constraints: Maximum length of 256 characters.
 #' @param Tags The tags to apply to the resource during creation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Connection = list(
+#'     ConnectionId = "string",
+#'     ConnectionArn = "string",
+#'     GlobalNetworkId = "string",
+#'     DeviceId = "string",
+#'     ConnectedDeviceId = "string",
+#'     LinkId = "string",
+#'     ConnectedLinkId = "string",
+#'     Description = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -248,6 +316,43 @@ networkmanager_create_connection <- function(GlobalNetworkId, DeviceId, Connecte
 #' @param SiteId The ID of the site.
 #' @param Tags The tags to apply to the resource during creation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Device = list(
+#'     DeviceId = "string",
+#'     DeviceArn = "string",
+#'     GlobalNetworkId = "string",
+#'     AWSLocation = list(
+#'       Zone = "string",
+#'       SubnetArn = "string"
+#'     ),
+#'     Description = "string",
+#'     Type = "string",
+#'     Vendor = "string",
+#'     Model = "string",
+#'     SerialNumber = "string",
+#'     Location = list(
+#'       Address = "string",
+#'       Latitude = "string",
+#'       Longitude = "string"
+#'     ),
+#'     SiteId = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_device(
@@ -309,6 +414,28 @@ networkmanager_create_device <- function(GlobalNetworkId, AWSLocation = NULL, De
 #' Length Constraints: Maximum length of 256 characters.
 #' @param Tags The tags to apply to the resource during creation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GlobalNetwork = list(
+#'     GlobalNetworkId = "string",
+#'     GlobalNetworkArn = "string",
+#'     Description = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_global_network(
@@ -368,6 +495,36 @@ networkmanager_create_global_network <- function(Description = NULL, Tags = NULL
 #' Length Constraints: Maximum length of 128 characters.
 #' @param SiteId &#91;required&#93; The ID of the site.
 #' @param Tags The tags to apply to the resource during creation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Link = list(
+#'     LinkId = "string",
+#'     LinkArn = "string",
+#'     GlobalNetworkId = "string",
+#'     SiteId = "string",
+#'     Description = "string",
+#'     Type = "string",
+#'     Bandwidth = list(
+#'       UploadSpeed = 123,
+#'       DownloadSpeed = 123
+#'     ),
+#'     Provider = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -433,6 +590,34 @@ networkmanager_create_link <- function(GlobalNetworkId, Description = NULL, Type
 #' -   `Longitude`: The longitude of the site.
 #' @param Tags The tags to apply to the resource during creation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Site = list(
+#'     SiteId = "string",
+#'     SiteArn = "string",
+#'     GlobalNetworkId = "string",
+#'     Description = "string",
+#'     Location = list(
+#'       Address = "string",
+#'       Latitude = "string",
+#'       Longitude = "string"
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_site(
@@ -483,6 +668,33 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param ConnectionId &#91;required&#93; The ID of the connection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Connection = list(
+#'     ConnectionId = "string",
+#'     ConnectionArn = "string",
+#'     GlobalNetworkId = "string",
+#'     DeviceId = "string",
+#'     ConnectedDeviceId = "string",
+#'     LinkId = "string",
+#'     ConnectedLinkId = "string",
+#'     Description = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_connection(
@@ -522,6 +734,43 @@ networkmanager_delete_connection <- function(GlobalNetworkId, ConnectionId) {
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param DeviceId &#91;required&#93; The ID of the device.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Device = list(
+#'     DeviceId = "string",
+#'     DeviceArn = "string",
+#'     GlobalNetworkId = "string",
+#'     AWSLocation = list(
+#'       Zone = "string",
+#'       SubnetArn = "string"
+#'     ),
+#'     Description = "string",
+#'     Type = "string",
+#'     Vendor = "string",
+#'     Model = "string",
+#'     SerialNumber = "string",
+#'     Location = list(
+#'       Address = "string",
+#'       Latitude = "string",
+#'       Longitude = "string"
+#'     ),
+#'     SiteId = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -563,6 +812,28 @@ networkmanager_delete_device <- function(GlobalNetworkId, DeviceId) {
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GlobalNetwork = list(
+#'     GlobalNetworkId = "string",
+#'     GlobalNetworkArn = "string",
+#'     Description = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_global_network(
@@ -601,6 +872,36 @@ networkmanager_delete_global_network <- function(GlobalNetworkId) {
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param LinkId &#91;required&#93; The ID of the link.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Link = list(
+#'     LinkId = "string",
+#'     LinkArn = "string",
+#'     GlobalNetworkId = "string",
+#'     SiteId = "string",
+#'     Description = "string",
+#'     Type = "string",
+#'     Bandwidth = list(
+#'       UploadSpeed = 123,
+#'       DownloadSpeed = 123
+#'     ),
+#'     Provider = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -641,6 +942,34 @@ networkmanager_delete_link <- function(GlobalNetworkId, LinkId) {
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param SiteId &#91;required&#93; The ID of the site.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Site = list(
+#'     SiteId = "string",
+#'     SiteArn = "string",
+#'     GlobalNetworkId = "string",
+#'     Description = "string",
+#'     Location = list(
+#'       Address = "string",
+#'       Latitude = "string",
+#'       Longitude = "string"
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -683,6 +1012,21 @@ networkmanager_delete_site <- function(GlobalNetworkId, SiteId) {
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param TransitGatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the transit gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayRegistration = list(
+#'     GlobalNetworkId = "string",
+#'     TransitGatewayArn = "string",
+#'     State = list(
+#'       Code = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"|"FAILED",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -729,6 +1073,31 @@ networkmanager_deregister_transit_gateway <- function(GlobalNetworkId, TransitGa
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken The token for the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GlobalNetworks = list(
+#'     list(
+#'       GlobalNetworkId = "string",
+#'       GlobalNetworkArn = "string",
+#'       Description = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_global_networks(
@@ -774,6 +1143,20 @@ networkmanager_describe_global_networks <- function(GlobalNetworkIds = NULL, Max
 #' information, see [Resources Defined by Amazon
 #' EC2](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html#amazonec2-resources-for-iam-policies).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CustomerGatewayAssociation = list(
+#'     CustomerGatewayArn = "string",
+#'     GlobalNetworkId = "string",
+#'     DeviceId = "string",
+#'     LinkId = "string",
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_customer_gateway(
@@ -815,6 +1198,19 @@ networkmanager_disassociate_customer_gateway <- function(GlobalNetworkId, Custom
 #' @param DeviceId &#91;required&#93; The ID of the device.
 #' @param LinkId &#91;required&#93; The ID of the link.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LinkAssociation = list(
+#'     GlobalNetworkId = "string",
+#'     DeviceId = "string",
+#'     LinkId = "string",
+#'     LinkAssociationState = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_link(
@@ -855,6 +1251,20 @@ networkmanager_disassociate_link <- function(GlobalNetworkId, DeviceId, LinkId) 
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param TransitGatewayConnectPeerArn &#91;required&#93; The Amazon Resource Name (ARN) of the transit gateway Connect peer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayConnectPeerAssociation = list(
+#'     TransitGatewayConnectPeerArn = "string",
+#'     GlobalNetworkId = "string",
+#'     DeviceId = "string",
+#'     LinkId = "string",
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -900,6 +1310,36 @@ networkmanager_disassociate_transit_gateway_connect_peer <- function(GlobalNetwo
 #' @param DeviceId The ID of the device.
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Connections = list(
+#'     list(
+#'       ConnectionId = "string",
+#'       ConnectionArn = "string",
+#'       GlobalNetworkId = "string",
+#'       DeviceId = "string",
+#'       ConnectedDeviceId = "string",
+#'       LinkId = "string",
+#'       ConnectedLinkId = "string",
+#'       Description = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -953,6 +1393,23 @@ networkmanager_get_connections <- function(GlobalNetworkId, ConnectionIds = NULL
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken The token for the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CustomerGatewayAssociations = list(
+#'     list(
+#'       CustomerGatewayArn = "string",
+#'       GlobalNetworkId = "string",
+#'       DeviceId = "string",
+#'       LinkId = "string",
+#'       State = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_customer_gateway_associations(
@@ -999,6 +1456,46 @@ networkmanager_get_customer_gateway_associations <- function(GlobalNetworkId, Cu
 #' @param SiteId The ID of the site.
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Devices = list(
+#'     list(
+#'       DeviceId = "string",
+#'       DeviceArn = "string",
+#'       GlobalNetworkId = "string",
+#'       AWSLocation = list(
+#'         Zone = "string",
+#'         SubnetArn = "string"
+#'       ),
+#'       Description = "string",
+#'       Type = "string",
+#'       Vendor = "string",
+#'       Model = "string",
+#'       SerialNumber = "string",
+#'       Location = list(
+#'         Address = "string",
+#'         Latitude = "string",
+#'         Longitude = "string"
+#'       ),
+#'       SiteId = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1048,6 +1545,22 @@ networkmanager_get_devices <- function(GlobalNetworkId, DeviceIds = NULL, SiteId
 #' @param LinkId The ID of the link.
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LinkAssociations = list(
+#'     list(
+#'       GlobalNetworkId = "string",
+#'       DeviceId = "string",
+#'       LinkId = "string",
+#'       LinkAssociationState = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1101,6 +1614,39 @@ networkmanager_get_link_associations <- function(GlobalNetworkId, DeviceId = NUL
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken The token for the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Links = list(
+#'     list(
+#'       LinkId = "string",
+#'       LinkArn = "string",
+#'       GlobalNetworkId = "string",
+#'       SiteId = "string",
+#'       Description = "string",
+#'       Type = "string",
+#'       Bandwidth = list(
+#'         UploadSpeed = 123,
+#'         DownloadSpeed = 123
+#'       ),
+#'       Provider = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_links(
@@ -1150,6 +1696,37 @@ networkmanager_get_links <- function(GlobalNetworkId, LinkIds = NULL, SiteId = N
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken The token for the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Sites = list(
+#'     list(
+#'       SiteId = "string",
+#'       SiteArn = "string",
+#'       GlobalNetworkId = "string",
+#'       Description = "string",
+#'       Location = list(
+#'         Address = "string",
+#'         Latitude = "string",
+#'         Longitude = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_sites(
@@ -1197,6 +1774,23 @@ networkmanager_get_sites <- function(GlobalNetworkId, SiteIds = NULL, MaxResults
 #' @param TransitGatewayConnectPeerArns One or more transit gateway Connect peer Amazon Resource Names (ARNs).
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayConnectPeerAssociations = list(
+#'     list(
+#'       TransitGatewayConnectPeerArn = "string",
+#'       GlobalNetworkId = "string",
+#'       DeviceId = "string",
+#'       LinkId = "string",
+#'       State = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1247,6 +1841,24 @@ networkmanager_get_transit_gateway_connect_peer_associations <- function(GlobalN
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken The token for the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayRegistrations = list(
+#'     list(
+#'       GlobalNetworkId = "string",
+#'       TransitGatewayArn = "string",
+#'       State = list(
+#'         Code = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"|"FAILED",
+#'         Message = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_transit_gateway_registrations(
@@ -1288,6 +1900,19 @@ networkmanager_get_transit_gateway_registrations <- function(GlobalNetworkId, Tr
 #' networkmanager_list_tags_for_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1333,6 +1958,21 @@ networkmanager_list_tags_for_resource <- function(ResourceArn) {
 #' information, see [Resources Defined by Amazon
 #' EC2](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html#amazonec2-resources-for-iam-policies).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayRegistration = list(
+#'     GlobalNetworkId = "string",
+#'     TransitGatewayArn = "string",
+#'     State = list(
+#'       Code = "PENDING"|"AVAILABLE"|"DELETING"|"DELETED"|"FAILED",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_transit_gateway(
@@ -1371,6 +2011,12 @@ networkmanager_register_transit_gateway <- function(GlobalNetworkId, TransitGate
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param Tags &#91;required&#93; The tags to apply to the specified resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1415,6 +2061,12 @@ networkmanager_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; The tag keys to remove from the specified resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1463,6 +2115,33 @@ networkmanager_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param Description A description of the connection.
 #' 
 #' Length Constraints: Maximum length of 256 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Connection = list(
+#'     ConnectionId = "string",
+#'     ConnectionArn = "string",
+#'     GlobalNetworkId = "string",
+#'     DeviceId = "string",
+#'     ConnectedDeviceId = "string",
+#'     LinkId = "string",
+#'     ConnectedLinkId = "string",
+#'     Description = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1524,6 +2203,43 @@ networkmanager_update_connection <- function(GlobalNetworkId, ConnectionId, Link
 #' @param Location 
 #' @param SiteId The ID of the site.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Device = list(
+#'     DeviceId = "string",
+#'     DeviceArn = "string",
+#'     GlobalNetworkId = "string",
+#'     AWSLocation = list(
+#'       Zone = "string",
+#'       SubnetArn = "string"
+#'     ),
+#'     Description = "string",
+#'     Type = "string",
+#'     Vendor = "string",
+#'     Model = "string",
+#'     SerialNumber = "string",
+#'     Location = list(
+#'       Address = "string",
+#'       Latitude = "string",
+#'       Longitude = "string"
+#'     ),
+#'     SiteId = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_device(
@@ -1581,6 +2297,28 @@ networkmanager_update_device <- function(GlobalNetworkId, DeviceId, AWSLocation 
 #' 
 #' Length Constraints: Maximum length of 256 characters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GlobalNetwork = list(
+#'     GlobalNetworkId = "string",
+#'     GlobalNetworkArn = "string",
+#'     Description = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_global_network(
@@ -1631,6 +2369,36 @@ networkmanager_update_global_network <- function(GlobalNetworkId, Description = 
 #' @param Provider The provider of the link.
 #' 
 #' Length Constraints: Maximum length of 128 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Link = list(
+#'     LinkId = "string",
+#'     LinkArn = "string",
+#'     GlobalNetworkId = "string",
+#'     SiteId = "string",
+#'     Description = "string",
+#'     Type = "string",
+#'     Bandwidth = list(
+#'       UploadSpeed = 123,
+#'       DownloadSpeed = 123
+#'     ),
+#'     Provider = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1689,6 +2457,34 @@ networkmanager_update_link <- function(GlobalNetworkId, LinkId, Description = NU
 #' -   `Latitude`: The latitude of the site.
 #' 
 #' -   `Longitude`: The longitude of the site.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Site = list(
+#'     SiteId = "string",
+#'     SiteArn = "string",
+#'     GlobalNetworkId = "string",
+#'     Description = "string",
+#'     Location = list(
+#'       Address = "string",
+#'       Latitude = "string",
+#'       Longitude = "string"
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING"|"AVAILABLE"|"DELETING"|"UPDATING",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

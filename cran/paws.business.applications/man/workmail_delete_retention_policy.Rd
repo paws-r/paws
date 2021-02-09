@@ -11,6 +11,10 @@ workmail_delete_retention_policy(OrganizationId, Id)
 
 \item{Id}{[required] The retention policy ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified retention policy from the specified organization.
 }

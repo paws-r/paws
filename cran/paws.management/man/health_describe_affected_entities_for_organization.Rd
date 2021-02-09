@@ -24,6 +24,36 @@ returned, the response does not contain a pagination token value.}
 \item{maxResults}{The maximum number of items to return in one batch, between 10 and 100,
 inclusive.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  entities = list(
+    list(
+      entityArn = "string",
+      eventArn = "string",
+      entityValue = "string",
+      entityUrl = "string",
+      awsAccountId = "string",
+      lastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      statusCode = "IMPAIRED"|"UNIMPAIRED"|"UNKNOWN",
+      tags = list(
+        "string"
+      )
+    )
+  ),
+  failedSet = list(
+    list(
+      awsAccountId = "string",
+      eventArn = "string",
+      errorName = "string",
+      errorMessage = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of entities that have been affected by one or more events
 for one or more accounts in your organization in AWS Organizations,

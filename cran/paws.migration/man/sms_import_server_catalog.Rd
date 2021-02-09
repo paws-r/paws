@@ -6,6 +6,10 @@
 \usage{
 sms_import_server_catalog()
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Gathers a complete list of on-premises servers. Connectors must be
 installed and monitoring all servers to import.

@@ -13,10 +13,21 @@ greengrass_create_connector_definition_version(AmznClientToken,
 
 \item{ConnectorDefinitionId}{[required] The ID of the connector definition.}
 
-\item{Connectors}{A list of references to connectors in this version, with their corresponding configuration settings.}
+\item{Connectors}{A list of references to connectors in this version, with their
+corresponding configuration settings.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  Version = "string"
+)
+}
 }
 \description{
-Creates a version of a connector definition which has already been defined.
+Creates a version of a connector definition which has already been
+defined.
 }
 \section{Request syntax}{
 \preformatted{svc$create_connector_definition_version(

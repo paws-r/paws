@@ -14,6 +14,14 @@ default registry is assumed.}
 \item{repositoryName}{[required] The name of the repository that is associated with the repository policy
 to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  repositoryName = "string",
+  policyText = "string"
+)
+}
+}
 \description{
 Deletes the repository policy associated with the specified repository.
 }

@@ -11,6 +11,10 @@ ses_update_receipt_rule(RuleSetName, Rule)
 
 \item{Rule}{[required] A data structure that contains the updated receipt rule information.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a receipt rule.
 

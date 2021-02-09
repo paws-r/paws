@@ -28,6 +28,12 @@ NULL
 #' IAM role ARN. Note: To write application messages to CloudWatch, the IAM
 #' role that is used must have the `PutLogEvents` policy action enabled.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_application_cloud_watch_logging_option(
@@ -98,6 +104,12 @@ kinesisanalytics_add_application_cloud_watch_logging_option <- function(Applicat
 #' @param Input &#91;required&#93; The
 #' [Input](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_Input.html)
 #' to add.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -207,6 +219,12 @@ kinesisanalytics_add_application_input <- function(ApplicationName, CurrentAppli
 #' [InputProcessingConfiguration](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html)
 #' to add to the application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_application_input_processing_configuration(
@@ -298,6 +316,12 @@ kinesisanalytics_add_application_input_processing_configuration <- function(Appl
 #' Firehose delivery stream, or an AWS Lambda function), and record the
 #' formation to use when writing to the destination.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_application_output(
@@ -388,6 +412,12 @@ kinesisanalytics_add_application_output <- function(ApplicationName, CurrentAppl
 #' must also provide an IAM role with the necessary permissions that Amazon
 #' Kinesis Analytics can assume to read the object from your S3 bucket on
 #' your behalf.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -555,6 +585,18 @@ kinesisanalytics_add_application_reference_data_source <- function(ApplicationNa
 #' user-defined application tags is 50. For more information, see [Using
 #' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationSummary = list(
+#'     ApplicationName = "string",
+#'     ApplicationARN = "string",
+#'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_application(
@@ -685,6 +727,12 @@ kinesisanalytics_create_application <- function(ApplicationName, ApplicationDesc
 #' [`describe_application`][kinesisanalytics_describe_application]
 #' operation to get this value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_application(
@@ -740,6 +788,12 @@ kinesisanalytics_delete_application <- function(ApplicationName, CreateTimestamp
 #' [`describe_application`][kinesisanalytics_describe_application]
 #' operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_application_cloud_watch_logging_option(
@@ -793,6 +847,12 @@ kinesisanalytics_delete_application_cloud_watch_logging_option <- function(Appli
 #' application by using the
 #' [`describe_application`][kinesisanalytics_describe_application]
 #' operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -860,6 +920,12 @@ kinesisanalytics_delete_application_input_processing_configuration <- function(A
 #' [`describe_application`][kinesisanalytics_describe_application]
 #' operation to get the specific `OutputId`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_application_output(
@@ -926,6 +992,12 @@ kinesisanalytics_delete_application_output <- function(ApplicationName, CurrentA
 #' [`describe_application`][kinesisanalytics_describe_application]
 #' operation to get the reference ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_application_reference_data_source(
@@ -980,6 +1052,139 @@ kinesisanalytics_delete_application_reference_data_source <- function(Applicatio
 #' kinesisanalytics_describe_application(ApplicationName)
 #'
 #' @param ApplicationName &#91;required&#93; Name of the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationDetail = list(
+#'     ApplicationName = "string",
+#'     ApplicationDescription = "string",
+#'     ApplicationARN = "string",
+#'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING",
+#'     CreateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdateTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InputDescriptions = list(
+#'       list(
+#'         InputId = "string",
+#'         NamePrefix = "string",
+#'         InAppStreamNames = list(
+#'           "string"
+#'         ),
+#'         InputProcessingConfigurationDescription = list(
+#'           InputLambdaProcessorDescription = list(
+#'             ResourceARN = "string",
+#'             RoleARN = "string"
+#'           )
+#'         ),
+#'         KinesisStreamsInputDescription = list(
+#'           ResourceARN = "string",
+#'           RoleARN = "string"
+#'         ),
+#'         KinesisFirehoseInputDescription = list(
+#'           ResourceARN = "string",
+#'           RoleARN = "string"
+#'         ),
+#'         InputSchema = list(
+#'           RecordFormat = list(
+#'             RecordFormatType = "JSON"|"CSV",
+#'             MappingParameters = list(
+#'               JSONMappingParameters = list(
+#'                 RecordRowPath = "string"
+#'               ),
+#'               CSVMappingParameters = list(
+#'                 RecordRowDelimiter = "string",
+#'                 RecordColumnDelimiter = "string"
+#'               )
+#'             )
+#'           ),
+#'           RecordEncoding = "string",
+#'           RecordColumns = list(
+#'             list(
+#'               Name = "string",
+#'               Mapping = "string",
+#'               SqlType = "string"
+#'             )
+#'           )
+#'         ),
+#'         InputParallelism = list(
+#'           Count = 123
+#'         ),
+#'         InputStartingPositionConfiguration = list(
+#'           InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
+#'         )
+#'       )
+#'     ),
+#'     OutputDescriptions = list(
+#'       list(
+#'         OutputId = "string",
+#'         Name = "string",
+#'         KinesisStreamsOutputDescription = list(
+#'           ResourceARN = "string",
+#'           RoleARN = "string"
+#'         ),
+#'         KinesisFirehoseOutputDescription = list(
+#'           ResourceARN = "string",
+#'           RoleARN = "string"
+#'         ),
+#'         LambdaOutputDescription = list(
+#'           ResourceARN = "string",
+#'           RoleARN = "string"
+#'         ),
+#'         DestinationSchema = list(
+#'           RecordFormatType = "JSON"|"CSV"
+#'         )
+#'       )
+#'     ),
+#'     ReferenceDataSourceDescriptions = list(
+#'       list(
+#'         ReferenceId = "string",
+#'         TableName = "string",
+#'         S3ReferenceDataSourceDescription = list(
+#'           BucketARN = "string",
+#'           FileKey = "string",
+#'           ReferenceRoleARN = "string"
+#'         ),
+#'         ReferenceSchema = list(
+#'           RecordFormat = list(
+#'             RecordFormatType = "JSON"|"CSV",
+#'             MappingParameters = list(
+#'               JSONMappingParameters = list(
+#'                 RecordRowPath = "string"
+#'               ),
+#'               CSVMappingParameters = list(
+#'                 RecordRowDelimiter = "string",
+#'                 RecordColumnDelimiter = "string"
+#'               )
+#'             )
+#'           ),
+#'           RecordEncoding = "string",
+#'           RecordColumns = list(
+#'             list(
+#'               Name = "string",
+#'               Mapping = "string",
+#'               SqlType = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CloudWatchLoggingOptionDescriptions = list(
+#'       list(
+#'         CloudWatchLoggingOptionId = "string",
+#'         LogStreamARN = "string",
+#'         RoleARN = "string"
+#'       )
+#'     ),
+#'     ApplicationCode = "string",
+#'     ApplicationVersionId = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1050,6 +1255,46 @@ kinesisanalytics_describe_application <- function(ApplicationName) {
 #' [InputProcessingConfiguration](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html)
 #' to use to preprocess the records before discovering the schema of the
 #' records.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InputSchema = list(
+#'     RecordFormat = list(
+#'       RecordFormatType = "JSON"|"CSV",
+#'       MappingParameters = list(
+#'         JSONMappingParameters = list(
+#'           RecordRowPath = "string"
+#'         ),
+#'         CSVMappingParameters = list(
+#'           RecordRowDelimiter = "string",
+#'           RecordColumnDelimiter = "string"
+#'         )
+#'       )
+#'     ),
+#'     RecordEncoding = "string",
+#'     RecordColumns = list(
+#'       list(
+#'         Name = "string",
+#'         Mapping = "string",
+#'         SqlType = "string"
+#'       )
+#'     )
+#'   ),
+#'   ParsedInputRecords = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   ProcessedInputRecords = list(
+#'     "string"
+#'   ),
+#'   RawInputRecords = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1125,6 +1370,21 @@ kinesisanalytics_discover_input_schema <- function(ResourceARN = NULL, RoleARN =
 #' request. However, in subsequent requests, you add the last application
 #' name from the previous response to get the next page of applications.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationSummaries = list(
+#'     list(
+#'       ApplicationName = "string",
+#'       ApplicationARN = "string",
+#'       ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"
+#'     )
+#'   ),
+#'   HasMoreApplications = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_applications(
@@ -1164,6 +1424,19 @@ kinesisanalytics_list_applications <- function(Limit = NULL, ExclusiveStartAppli
 #' kinesisanalytics_list_tags_for_resource(ResourceARN)
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the application for which to retrieve tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1229,6 +1502,12 @@ kinesisanalytics_list_tags_for_resource <- function(ResourceARN) {
 #' associated with the input. You can also specify where in the streaming
 #' source you want Amazon Kinesis Analytics to start reading.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_application(
@@ -1289,6 +1568,12 @@ kinesisanalytics_start_application <- function(ApplicationName, InputConfigurati
 #'
 #' @param ApplicationName &#91;required&#93; Name of the running application to stop.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_application(
@@ -1330,6 +1615,12 @@ kinesisanalytics_stop_application <- function(ApplicationName) {
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the application to assign the tags.
 #' @param Tags &#91;required&#93; The key-value tags to assign to the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1377,6 +1668,12 @@ kinesisanalytics_tag_resource <- function(ResourceARN, Tags) {
 #' @param ResourceARN &#91;required&#93; The ARN of the Kinesis Analytics application from which to remove the
 #' tags.
 #' @param TagKeys &#91;required&#93; A list of keys of tags to remove from the specified application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1436,6 +1733,12 @@ kinesisanalytics_untag_resource <- function(ResourceARN, TagKeys) {
 #' [`describe_application`][kinesisanalytics_describe_application]
 #' operation to get this value.
 #' @param ApplicationUpdate &#91;required&#93; Describes application updates.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

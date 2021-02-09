@@ -15,8 +15,8 @@ ssm_update_maintenance_window_task(WindowId, WindowTaskId, Targets,
 \item{WindowTaskId}{[required] The task ID to modify.}
 
 \item{Targets}{The targets (either instances or tags) to modify. Instances are
-specified using Key=instanceids,Values=instanceID\\_1,instanceID\\_2. Tags
-are specified using Key=tag\\_name,Values=tag\\_value.
+specified using Key=instanceids,Values=instanceID_1,instanceID_2. Tags
+are specified using Key=tag_name,Values=tag_value.
 
 One or more targets must be specified for maintenance window Run
 Command-type tasks. Depending on the task, targets are optional for
@@ -106,11 +106,90 @@ MaintenanceWindowTaskInvocationParameters.}
 RegisterTaskWithMaintenanceWindow action are also required for this API
 request. Optional fields that are not specified are set to null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WindowId = "string",
+  WindowTaskId = "string",
+  Targets = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  TaskArn = "string",
+  ServiceRoleArn = "string",
+  TaskParameters = list(
+    list(
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  TaskInvocationParameters = list(
+    RunCommand = list(
+      Comment = "string",
+      CloudWatchOutputConfig = list(
+        CloudWatchLogGroupName = "string",
+        CloudWatchOutputEnabled = TRUE|FALSE
+      ),
+      DocumentHash = "string",
+      DocumentHashType = "Sha256"|"Sha1",
+      DocumentVersion = "string",
+      NotificationConfig = list(
+        NotificationArn = "string",
+        NotificationEvents = list(
+          "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
+        ),
+        NotificationType = "Command"|"Invocation"
+      ),
+      OutputS3BucketName = "string",
+      OutputS3KeyPrefix = "string",
+      Parameters = list(
+        list(
+          "string"
+        )
+      ),
+      ServiceRoleArn = "string",
+      TimeoutSeconds = 123
+    ),
+    Automation = list(
+      DocumentVersion = "string",
+      Parameters = list(
+        list(
+          "string"
+        )
+      )
+    ),
+    StepFunctions = list(
+      Input = "string",
+      Name = "string"
+    ),
+    Lambda = list(
+      ClientContext = "string",
+      Qualifier = "string",
+      Payload = raw
+    )
+  ),
+  Priority = 123,
+  MaxConcurrency = "string",
+  MaxErrors = "string",
+  LoggingInfo = list(
+    S3BucketName = "string",
+    S3KeyPrefix = "string",
+    S3Region = "string"
+  ),
+  Name = "string",
+  Description = "string"
+)
+}
+}
 \description{
 Modifies a task assigned to a maintenance window. You can't change the
 task type, but you can change the following values:
 \itemize{
-\item TaskARN. For example, you can change a RUN\\_COMMAND task from
+\item TaskARN. For example, you can change a RUN_COMMAND task from
 AWS-RunPowerShellScript to AWS-RunShellScript.
 \item ServiceRoleArn
 \item TaskInvocationParameters

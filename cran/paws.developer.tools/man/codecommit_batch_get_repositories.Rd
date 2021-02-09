@@ -12,6 +12,32 @@ codecommit_batch_get_repositories(repositoryNames)
 The length constraint limit is for each string in the array. The array
 itself can be empty.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  repositories = list(
+    list(
+      accountId = "string",
+      repositoryId = "string",
+      repositoryName = "string",
+      repositoryDescription = "string",
+      defaultBranch = "string",
+      lastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      creationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      cloneUrlHttp = "string",
+      cloneUrlSsh = "string",
+      Arn = "string"
+    )
+  ),
+  repositoriesNotFound = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns information about one or more repositories.
 

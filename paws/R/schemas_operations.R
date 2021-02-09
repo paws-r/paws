@@ -15,6 +15,21 @@ NULL
 #' @param SourceArn &#91;required&#93; The ARN of the event bus.
 #' @param Tags Tags associated with the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   DiscovererArn = "string",
+#'   DiscovererId = "string",
+#'   SourceArn = "string",
+#'   State = "STARTED"|"STOPPED",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_discoverer(
@@ -57,6 +72,19 @@ schemas_create_discoverer <- function(Description = NULL, SourceArn, Tags = NULL
 #' @param Description A description of the registry to be created.
 #' @param RegistryName &#91;required&#93; The name of the registry.
 #' @param Tags Tags to associate with the registry.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   RegistryArn = "string",
+#'   RegistryName = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -107,6 +135,27 @@ schemas_create_registry <- function(Description = NULL, RegistryName, Tags = NUL
 #' @param Tags Tags associated with the schema.
 #' @param Type &#91;required&#93; The type of schema.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SchemaArn = "string",
+#'   SchemaName = "string",
+#'   SchemaVersion = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   Type = "string",
+#'   VersionCreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_schema(
@@ -151,6 +200,8 @@ schemas_create_schema <- function(Content, Description = NULL, RegistryName, Sch
 #'
 #' @param DiscovererId &#91;required&#93; The ID of the discoverer.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_discoverer(
@@ -187,6 +238,8 @@ schemas_delete_discoverer <- function(DiscovererId) {
 #' schemas_delete_registry(RegistryName)
 #'
 #' @param RegistryName &#91;required&#93; The name of the registry.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -225,6 +278,8 @@ schemas_delete_registry <- function(RegistryName) {
 #'
 #' @param RegistryName The name of the registry.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_resource_policy(
@@ -262,6 +317,8 @@ schemas_delete_resource_policy <- function(RegistryName = NULL) {
 #'
 #' @param RegistryName &#91;required&#93; The name of the registry.
 #' @param SchemaName &#91;required&#93; The name of the schema.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -302,6 +359,8 @@ schemas_delete_schema <- function(RegistryName, SchemaName) {
 #' @param RegistryName &#91;required&#93; The name of the registry.
 #' @param SchemaName &#91;required&#93; The name of the schema.
 #' @param SchemaVersion &#91;required&#93; The version number of the schema
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -346,6 +405,21 @@ schemas_delete_schema_version <- function(RegistryName, SchemaName, SchemaVersio
 #' @param SchemaName &#91;required&#93; The name of the schema.
 #' @param SchemaVersion Specifying this limits the results to only this schema version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SchemaVersion = "string",
+#'   Status = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_code_binding(
@@ -386,6 +460,21 @@ schemas_describe_code_binding <- function(Language, RegistryName, SchemaName, Sc
 #'
 #' @param DiscovererId &#91;required&#93; The ID of the discoverer.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   DiscovererArn = "string",
+#'   DiscovererId = "string",
+#'   SourceArn = "string",
+#'   State = "STARTED"|"STOPPED",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_discoverer(
@@ -422,6 +511,19 @@ schemas_describe_discoverer <- function(DiscovererId) {
 #' schemas_describe_registry(RegistryName)
 #'
 #' @param RegistryName &#91;required&#93; The name of the registry.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   RegistryArn = "string",
+#'   RegistryName = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -461,6 +563,28 @@ schemas_describe_registry <- function(RegistryName) {
 #' @param RegistryName &#91;required&#93; The name of the registry.
 #' @param SchemaName &#91;required&#93; The name of the schema.
 #' @param SchemaVersion Specifying this limits the results to only this schema version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Content = "string",
+#'   Description = "string",
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SchemaArn = "string",
+#'   SchemaName = "string",
+#'   SchemaVersion = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   Type = "string",
+#'   VersionCreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -503,6 +627,18 @@ schemas_describe_schema <- function(RegistryName, SchemaName, SchemaVersion = NU
 #' @param SchemaName &#91;required&#93; The name of the schema.
 #' @param SchemaVersion Specifying this limits the results to only this schema version.
 #' @param Type &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Content = "string",
+#'   SchemaArn = "string",
+#'   SchemaName = "string",
+#'   SchemaVersion = "string",
+#'   Type = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -548,6 +684,14 @@ schemas_export_schema <- function(RegistryName, SchemaName, SchemaVersion = NULL
 #' @param SchemaName &#91;required&#93; The name of the schema.
 #' @param SchemaVersion Specifying this limits the results to only this schema version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Body = raw
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_code_binding_source(
@@ -591,6 +735,14 @@ schemas_get_code_binding_source <- function(Language, RegistryName, SchemaName, 
 #' single type of event and has a maximum size of 10 events.
 #' @param Type &#91;required&#93; The type of event.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Content = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_discovered_schema(
@@ -630,6 +782,15 @@ schemas_get_discovered_schema <- function(Events, Type) {
 #' schemas_get_resource_policy(RegistryName)
 #'
 #' @param RegistryName The name of the registry.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string",
+#'   RevisionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -675,6 +836,25 @@ schemas_get_resource_policy <- function(RegistryName = NULL) {
 #' hours, and cannot be shared with other accounts.
 #' @param SourceArnPrefix Specifying this limits the results to only those ARNs that start with
 #' the specified prefix.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Discoverers = list(
+#'     list(
+#'       DiscovererArn = "string",
+#'       DiscovererId = "string",
+#'       SourceArn = "string",
+#'       State = "STARTED"|"STOPPED",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -723,6 +903,23 @@ schemas_list_discoverers <- function(DiscovererIdPrefix = NULL, Limit = NULL, Ne
 #' @param Scope Can be set to Local or AWS to limit responses to your custom registries,
 #' or the ones provided by AWS.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Registries = list(
+#'     list(
+#'       RegistryArn = "string",
+#'       RegistryName = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_registries(
@@ -767,6 +964,22 @@ schemas_list_registries <- function(Limit = NULL, NextToken = NULL, RegistryName
 #' hours, and cannot be shared with other accounts.
 #' @param RegistryName &#91;required&#93; The name of the registry.
 #' @param SchemaName &#91;required&#93; The name of the schema.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   SchemaVersions = list(
+#'     list(
+#'       SchemaArn = "string",
+#'       SchemaName = "string",
+#'       SchemaVersion = "string",
+#'       Type = "OpenApi3"|"JSONSchemaDraft4"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -814,6 +1027,27 @@ schemas_list_schema_versions <- function(Limit = NULL, NextToken = NULL, Registr
 #' @param SchemaNamePrefix Specifying this limits the results to only those schema names that start
 #' with the specified prefix.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Schemas = list(
+#'     list(
+#'       LastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SchemaArn = "string",
+#'       SchemaName = "string",
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       VersionCount = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_schemas(
@@ -853,6 +1087,16 @@ schemas_list_schemas <- function(Limit = NULL, NextToken = NULL, RegistryName, S
 #' schemas_list_tags_for_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -895,6 +1139,21 @@ schemas_list_tags_for_resource <- function(ResourceArn) {
 #' @param SchemaName &#91;required&#93; The name of the schema.
 #' @param SchemaVersion Specifying this limits the results to only this schema version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SchemaVersion = "string",
+#'   Status = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_code_binding(
@@ -936,6 +1195,15 @@ schemas_put_code_binding <- function(Language, RegistryName, SchemaName, SchemaV
 #' @param Policy &#91;required&#93; The resource-based policy.
 #' @param RegistryName The name of the registry.
 #' @param RevisionId The revision ID of the policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string",
+#'   RevisionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -982,6 +1250,30 @@ schemas_put_resource_policy <- function(Policy, RegistryName = NULL, RevisionId 
 #' hours, and cannot be shared with other accounts.
 #' @param RegistryName &#91;required&#93; The name of the registry.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Schemas = list(
+#'     list(
+#'       RegistryName = "string",
+#'       SchemaArn = "string",
+#'       SchemaName = "string",
+#'       SchemaVersions = list(
+#'         list(
+#'           CreatedDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           SchemaVersion = "string",
+#'           Type = "OpenApi3"|"JSONSchemaDraft4"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$search_schemas(
@@ -1022,6 +1314,15 @@ schemas_search_schemas <- function(Keywords, Limit = NULL, NextToken = NULL, Reg
 #'
 #' @param DiscovererId &#91;required&#93; The ID of the discoverer.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DiscovererId = "string",
+#'   State = "STARTED"|"STOPPED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_discoverer(
@@ -1058,6 +1359,15 @@ schemas_start_discoverer <- function(DiscovererId) {
 #' schemas_stop_discoverer(DiscovererId)
 #'
 #' @param DiscovererId &#91;required&#93; The ID of the discoverer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DiscovererId = "string",
+#'   State = "STARTED"|"STOPPED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1096,6 +1406,8 @@ schemas_stop_discoverer <- function(DiscovererId) {
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource.
 #' @param Tags &#91;required&#93; Tags associated with the resource.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1138,6 +1450,8 @@ schemas_tag_resource <- function(ResourceArn, Tags) {
 #' @param ResourceArn &#91;required&#93; The ARN of the resource.
 #' @param TagKeys &#91;required&#93; Keys of key-value pairs.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -1179,6 +1493,21 @@ schemas_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param Description The description of the discoverer to update.
 #' @param DiscovererId &#91;required&#93; The ID of the discoverer.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   DiscovererArn = "string",
+#'   DiscovererId = "string",
+#'   SourceArn = "string",
+#'   State = "STARTED"|"STOPPED",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_discoverer(
@@ -1218,6 +1547,19 @@ schemas_update_discoverer <- function(Description = NULL, DiscovererId) {
 #' @param Description The description of the registry to update.
 #' @param RegistryName &#91;required&#93; The name of the registry.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   RegistryArn = "string",
+#'   RegistryName = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_registry(
@@ -1246,8 +1588,7 @@ schemas_update_registry <- function(Description = NULL, RegistryName) {
 }
 .schemas$operations$update_registry <- schemas_update_registry
 
-#' Updates the schema definition Inactive schemas will be deleted after two
-#' years
+#' Updates the schema definition
 #'
 #' @description
 #' Updates the schema definition
@@ -1264,6 +1605,27 @@ schemas_update_registry <- function(Description = NULL, RegistryName) {
 #' @param RegistryName &#91;required&#93; The name of the registry.
 #' @param SchemaName &#91;required&#93; The name of the schema.
 #' @param Type The schema type for the events schema.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SchemaArn = "string",
+#'   SchemaName = "string",
+#'   SchemaVersion = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   Type = "string",
+#'   VersionCreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

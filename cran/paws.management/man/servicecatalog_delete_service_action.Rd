@@ -16,6 +16,10 @@ servicecatalog_delete_service_action(Id, AcceptLanguage)
 \item \code{zh} - Chinese
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a self-service action.
 }

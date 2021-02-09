@@ -30,7 +30,7 @@ NULL
 #' 
 #' Minimum length=1. Maximum length=127. Maximum number of labels: 10
 #' 
-#' Pattern: "^\[a-zA-Z0-9+\\\\-\\_:\\\\/@@\]+$";
+#' Pattern: "^\[a-zA-Z0-9+\\\\-_:\\\\/@@\]+$";
 #' @param LicenseBody A local text file that contains the license of the app that matches the
 #' spdxLicenseID value of your application. The file has the format
 #' file://&lt;path&gt;/&lt;filename&gt;.
@@ -86,6 +86,60 @@ NULL
 #' 
 #' You can specify only one of templateBody and templateUrl; otherwise an
 #' error results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   Author = "string",
+#'   CreationTime = "string",
+#'   Description = "string",
+#'   HomePageUrl = "string",
+#'   IsVerifiedAuthor = TRUE|FALSE,
+#'   Labels = list(
+#'     "string"
+#'   ),
+#'   LicenseUrl = "string",
+#'   Name = "string",
+#'   ReadmeUrl = "string",
+#'   SpdxLicenseId = "string",
+#'   VerifiedAuthorUrl = "string",
+#'   Version = list(
+#'     ApplicationId = "string",
+#'     CreationTime = "string",
+#'     ParameterDefinitions = list(
+#'       list(
+#'         AllowedPattern = "string",
+#'         AllowedValues = list(
+#'           "string"
+#'         ),
+#'         ConstraintDescription = "string",
+#'         DefaultValue = "string",
+#'         Description = "string",
+#'         MaxLength = 123,
+#'         MaxValue = 123,
+#'         MinLength = 123,
+#'         MinValue = 123,
+#'         Name = "string",
+#'         NoEcho = TRUE|FALSE,
+#'         ReferencedByResources = list(
+#'           "string"
+#'         ),
+#'         Type = "string"
+#'       )
+#'     ),
+#'     RequiredCapabilities = list(
+#'       "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"|"CAPABILITY_RESOURCE_POLICY"
+#'     ),
+#'     ResourcesSupported = TRUE|FALSE,
+#'     SemanticVersion = "string",
+#'     SourceCodeArchiveUrl = "string",
+#'     SourceCodeUrl = "string",
+#'     TemplateUrl = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -151,6 +205,44 @@ serverlessapplicationrepository_create_application <- function(Author, Descripti
 #' @param TemplateBody The raw packaged AWS SAM template of your application.
 #' @param TemplateUrl A link to the packaged AWS SAM template of your application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   CreationTime = "string",
+#'   ParameterDefinitions = list(
+#'     list(
+#'       AllowedPattern = "string",
+#'       AllowedValues = list(
+#'         "string"
+#'       ),
+#'       ConstraintDescription = "string",
+#'       DefaultValue = "string",
+#'       Description = "string",
+#'       MaxLength = 123,
+#'       MaxValue = 123,
+#'       MinLength = 123,
+#'       MinValue = 123,
+#'       Name = "string",
+#'       NoEcho = TRUE|FALSE,
+#'       ReferencedByResources = list(
+#'         "string"
+#'       ),
+#'       Type = "string"
+#'     )
+#'   ),
+#'   RequiredCapabilities = list(
+#'     "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"|"CAPABILITY_RESOURCE_POLICY"
+#'   ),
+#'   ResourcesSupported = TRUE|FALSE,
+#'   SemanticVersion = "string",
+#'   SourceCodeArchiveUrl = "string",
+#'   SourceCodeUrl = "string",
+#'   TemplateUrl = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_application_version(
@@ -202,23 +294,23 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' must explicitly acknowledge their capabilities by specifying this
 #' parameter.
 #' 
-#' The only valid values are CAPABILITY\\_IAM, CAPABILITY\\_NAMED\\_IAM,
-#' CAPABILITY\\_RESOURCE\\_POLICY, and CAPABILITY\\_AUTO\\_EXPAND.
+#' The only valid values are CAPABILITY_IAM, CAPABILITY_NAMED_IAM,
+#' CAPABILITY_RESOURCE_POLICY, and CAPABILITY_AUTO_EXPAND.
 #' 
-#' The following resources require you to specify CAPABILITY\\_IAM or
-#' CAPABILITY\\_NAMED\\_IAM:
+#' The following resources require you to specify CAPABILITY_IAM or
+#' CAPABILITY_NAMED_IAM:
 #' [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html),
 #' [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html),
 #' [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html),
 #' and
 #' [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html).
 #' If the application contains IAM resources, you can specify either
-#' CAPABILITY\\_IAM or CAPABILITY\\_NAMED\\_IAM. If the application contains
+#' CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains
 #' IAM resources with custom names, you must specify
-#' CAPABILITY\\_NAMED\\_IAM.
+#' CAPABILITY_NAMED_IAM.
 #' 
 #' The following resources require you to specify
-#' CAPABILITY\\_RESOURCE\\_POLICY:
+#' CAPABILITY_RESOURCE_POLICY:
 #' [AWS::Lambda::Permission](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html),
 #' [AWS::IAM:Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html),
 #' [AWS::ApplicationAutoScaling::ScalingPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html),
@@ -228,7 +320,7 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' [AWS::SNS:TopicPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html).
 #' 
 #' Applications that contain one or more nested applications require you to
-#' specify CAPABILITY\\_AUTO\\_EXPAND.
+#' specify CAPABILITY_AUTO_EXPAND.
 #' 
 #' If your application template contains any of the above resources, we
 #' recommend that you review all permissions associated with the
@@ -274,6 +366,17 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' 
 #' Pattern:
 #' \[0-9a-fA-F\]\{8\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{12\}
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   ChangeSetId = "string",
+#'   SemanticVersion = "string",
+#'   StackId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -352,6 +455,20 @@ serverlessapplicationrepository_create_cloud_formation_change_set <- function(Ap
 #' 
 #' <https://semver.org/>
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   CreationTime = "string",
+#'   ExpirationTime = "string",
+#'   SemanticVersion = "string",
+#'   Status = "PREPARING"|"ACTIVE"|"EXPIRED",
+#'   TemplateId = "string",
+#'   TemplateUrl = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_cloud_formation_template(
@@ -389,6 +506,8 @@ serverlessapplicationrepository_create_cloud_formation_template <- function(Appl
 #' serverlessapplicationrepository_delete_application(ApplicationId)
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -429,6 +548,60 @@ serverlessapplicationrepository_delete_application <- function(ApplicationId) {
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param SemanticVersion The semantic version of the application to get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   Author = "string",
+#'   CreationTime = "string",
+#'   Description = "string",
+#'   HomePageUrl = "string",
+#'   IsVerifiedAuthor = TRUE|FALSE,
+#'   Labels = list(
+#'     "string"
+#'   ),
+#'   LicenseUrl = "string",
+#'   Name = "string",
+#'   ReadmeUrl = "string",
+#'   SpdxLicenseId = "string",
+#'   VerifiedAuthorUrl = "string",
+#'   Version = list(
+#'     ApplicationId = "string",
+#'     CreationTime = "string",
+#'     ParameterDefinitions = list(
+#'       list(
+#'         AllowedPattern = "string",
+#'         AllowedValues = list(
+#'           "string"
+#'         ),
+#'         ConstraintDescription = "string",
+#'         DefaultValue = "string",
+#'         Description = "string",
+#'         MaxLength = 123,
+#'         MaxValue = 123,
+#'         MinLength = 123,
+#'         MinValue = 123,
+#'         Name = "string",
+#'         NoEcho = TRUE|FALSE,
+#'         ReferencedByResources = list(
+#'           "string"
+#'         ),
+#'         Type = "string"
+#'       )
+#'     ),
+#'     RequiredCapabilities = list(
+#'       "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"|"CAPABILITY_RESOURCE_POLICY"
+#'     ),
+#'     ResourcesSupported = TRUE|FALSE,
+#'     SemanticVersion = "string",
+#'     SourceCodeArchiveUrl = "string",
+#'     SourceCodeUrl = "string",
+#'     TemplateUrl = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_application(
@@ -466,6 +639,27 @@ serverlessapplicationrepository_get_application <- function(ApplicationId, Seman
 #' serverlessapplicationrepository_get_application_policy(ApplicationId)
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Statements = list(
+#'     list(
+#'       Actions = list(
+#'         "string"
+#'       ),
+#'       PrincipalOrgIDs = list(
+#'         "string"
+#'       ),
+#'       Principals = list(
+#'         "string"
+#'       ),
+#'       StatementId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -509,6 +703,20 @@ serverlessapplicationrepository_get_application_policy <- function(ApplicationId
 #' Pattern:
 #' \[0-9a-fA-F\]\{8\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{12\}
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   CreationTime = "string",
+#'   ExpirationTime = "string",
+#'   SemanticVersion = "string",
+#'   Status = "PREPARING"|"ACTIVE"|"EXPIRED",
+#'   TemplateId = "string",
+#'   TemplateUrl = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_cloud_formation_template(
@@ -550,6 +758,20 @@ serverlessapplicationrepository_get_cloud_formation_template <- function(Applica
 #' @param MaxItems The total number of items to return.
 #' @param NextToken A token to specify where to start paginating.
 #' @param SemanticVersion The semantic version of the application to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Dependencies = list(
+#'     list(
+#'       ApplicationId = "string",
+#'       SemanticVersion = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -594,6 +816,22 @@ serverlessapplicationrepository_list_application_dependencies <- function(Applic
 #' @param MaxItems The total number of items to return.
 #' @param NextToken A token to specify where to start paginating.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Versions = list(
+#'     list(
+#'       ApplicationId = "string",
+#'       CreationTime = "string",
+#'       SemanticVersion = "string",
+#'       SourceCodeUrl = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_application_versions(
@@ -633,6 +871,28 @@ serverlessapplicationrepository_list_application_versions <- function(Applicatio
 #'
 #' @param MaxItems The total number of items to return.
 #' @param NextToken A token to specify where to start paginating.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Applications = list(
+#'     list(
+#'       ApplicationId = "string",
+#'       Author = "string",
+#'       CreationTime = "string",
+#'       Description = "string",
+#'       HomePageUrl = "string",
+#'       Labels = list(
+#'         "string"
+#'       ),
+#'       Name = "string",
+#'       SpdxLicenseId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -676,6 +936,27 @@ serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, N
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param Statements &#91;required&#93; An array of policy statements applied to the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Statements = list(
+#'     list(
+#'       Actions = list(
+#'         "string"
+#'       ),
+#'       PrincipalOrgIDs = list(
+#'         "string"
+#'       ),
+#'       Principals = list(
+#'         "string"
+#'       ),
+#'       StatementId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -733,6 +1014,8 @@ serverlessapplicationrepository_put_application_policy <- function(ApplicationId
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param OrganizationId &#91;required&#93; The AWS Organization ID to unshare the application from.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$unshare_application(
@@ -785,7 +1068,7 @@ serverlessapplicationrepository_unshare_application <- function(ApplicationId, O
 #' 
 #' Minimum length=1. Maximum length=127. Maximum number of labels: 10
 #' 
-#' Pattern: "^\[a-zA-Z0-9+\\\\-\\_:\\\\/@@\]+$";
+#' Pattern: "^\[a-zA-Z0-9+\\\\-_:\\\\/@@\]+$";
 #' @param ReadmeBody A text readme file in Markdown language that contains a more detailed
 #' description of the application and how it works.
 #' 
@@ -794,6 +1077,60 @@ serverlessapplicationrepository_unshare_application <- function(ApplicationId, O
 #' detailed description of the application and how it works.
 #' 
 #' Maximum size 5 MB
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   Author = "string",
+#'   CreationTime = "string",
+#'   Description = "string",
+#'   HomePageUrl = "string",
+#'   IsVerifiedAuthor = TRUE|FALSE,
+#'   Labels = list(
+#'     "string"
+#'   ),
+#'   LicenseUrl = "string",
+#'   Name = "string",
+#'   ReadmeUrl = "string",
+#'   SpdxLicenseId = "string",
+#'   VerifiedAuthorUrl = "string",
+#'   Version = list(
+#'     ApplicationId = "string",
+#'     CreationTime = "string",
+#'     ParameterDefinitions = list(
+#'       list(
+#'         AllowedPattern = "string",
+#'         AllowedValues = list(
+#'           "string"
+#'         ),
+#'         ConstraintDescription = "string",
+#'         DefaultValue = "string",
+#'         Description = "string",
+#'         MaxLength = 123,
+#'         MaxValue = 123,
+#'         MinLength = 123,
+#'         MinValue = 123,
+#'         Name = "string",
+#'         NoEcho = TRUE|FALSE,
+#'         ReferencedByResources = list(
+#'           "string"
+#'         ),
+#'         Type = "string"
+#'       )
+#'     ),
+#'     RequiredCapabilities = list(
+#'       "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"|"CAPABILITY_RESOURCE_POLICY"
+#'     ),
+#'     ResourcesSupported = TRUE|FALSE,
+#'     SemanticVersion = "string",
+#'     SourceCodeArchiveUrl = "string",
+#'     SourceCodeUrl = "string",
+#'     TemplateUrl = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

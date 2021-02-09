@@ -11,6 +11,20 @@ lightsail_get_container_images(serviceName)
 \item{serviceName}{[required] The name of the container service for which to return registered
 container images.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  containerImages = list(
+    list(
+      image = "string",
+      digest = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the container images that are registered to your Amazon
 Lightsail container service.

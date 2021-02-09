@@ -13,6 +13,20 @@ chime_put_voice_connector_streaming_configuration(VoiceConnectorId,
 
 \item{StreamingConfiguration}{[required] The streaming configuration details to add.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StreamingConfiguration = list(
+    DataRetentionInHours = 123,
+    Disabled = TRUE|FALSE,
+    StreamingNotificationTargets = list(
+      list(
+        NotificationTarget = "EventBridge"|"SNS"|"SQS"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Adds a streaming configuration for the specified Amazon Chime Voice
 Connector. The streaming configuration specifies whether media streaming

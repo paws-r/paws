@@ -15,7 +15,13 @@ contains the credentials used to access the repository. The secret must
 have a staging label of \code{AWSCURRENT} and must be in the following
 format:
 
-\verb{\\\{"username": UserName, "password": Password\\\}}}
+\verb{\{"username": UserName, "password": Password\}}}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  CodeRepositoryArn = "string"
+)
+}
 }
 \description{
 Updates the specified Git repository with the specified values.

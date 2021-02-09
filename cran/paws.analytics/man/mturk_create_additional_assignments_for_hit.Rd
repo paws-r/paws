@@ -21,6 +21,10 @@ system from a previous call using the same \code{UniqueRequestToken},
 subsequent calls will return an error with a message containing the
 request ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 The
 \code{\link[=mturk_create_additional_assignments_for_hit]{create_additional_assignments_for_hit}}

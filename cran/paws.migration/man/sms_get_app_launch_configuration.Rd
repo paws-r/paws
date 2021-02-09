@@ -10,6 +10,59 @@ sms_get_app_launch_configuration(appId)
 \arguments{
 \item{appId}{The ID of the application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  appId = "string",
+  roleName = "string",
+  autoLaunch = TRUE|FALSE,
+  serverGroupLaunchConfigurations = list(
+    list(
+      serverGroupId = "string",
+      launchOrder = 123,
+      serverLaunchConfigurations = list(
+        list(
+          server = list(
+            serverId = "string",
+            serverType = "VIRTUAL_MACHINE",
+            vmServer = list(
+              vmServerAddress = list(
+                vmManagerId = "string",
+                vmId = "string"
+              ),
+              vmName = "string",
+              vmManagerName = "string",
+              vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+              vmPath = "string"
+            ),
+            replicationJobId = "string",
+            replicationJobTerminated = TRUE|FALSE
+          ),
+          logicalId = "string",
+          vpc = "string",
+          subnet = "string",
+          securityGroup = "string",
+          ec2KeyName = "string",
+          userData = list(
+            s3Location = list(
+              bucket = "string",
+              key = "string"
+            )
+          ),
+          instanceType = "string",
+          associatePublicIpAddress = TRUE|FALSE,
+          iamInstanceProfileName = "string",
+          configureScript = list(
+            bucket = "string",
+            key = "string"
+          ),
+          configureScriptType = "SHELL_SCRIPT"|"POWERSHELL_SCRIPT"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the application launch configuration associated with the
 specified application.

@@ -14,6 +14,29 @@ gamelift_create_player_session(GameSessionId, PlayerId, PlayerData)
 \item{PlayerData}{Developer-defined information related to a player. Amazon GameLift does
 not use this data, so it can be formatted as needed for use in the game.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PlayerSession = list(
+    PlayerSessionId = "string",
+    PlayerId = "string",
+    GameSessionId = "string",
+    FleetId = "string",
+    FleetArn = "string",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    TerminationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Status = "RESERVED"|"ACTIVE"|"COMPLETED"|"TIMEDOUT",
+    IpAddress = "string",
+    DnsName = "string",
+    Port = 123,
+    PlayerData = "string"
+  )
+)
+}
+}
 \description{
 Reserves an open player slot in an active game session. Before a player
 can be added, a game session must have an \code{ACTIVE} status, have a

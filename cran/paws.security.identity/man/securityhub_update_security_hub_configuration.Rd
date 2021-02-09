@@ -14,6 +14,10 @@ By default, this is set to \code{true}, and new controls are enabled
 automatically. To not automatically enable new controls, set this to
 \code{false}.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates configuration options for Security Hub.
 }

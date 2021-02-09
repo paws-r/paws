@@ -17,6 +17,79 @@ with a queryable property, you must supply that property as a key in the
 map. Only jobs whose action configuration matches the mapped value are
 returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobs = list(
+    list(
+      id = "string",
+      data = list(
+        actionTypeId = list(
+          category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+          owner = "AWS"|"ThirdParty"|"Custom",
+          provider = "string",
+          version = "string"
+        ),
+        actionConfiguration = list(
+          configuration = list(
+            "string"
+          )
+        ),
+        pipelineContext = list(
+          pipelineName = "string",
+          stage = list(
+            name = "string"
+          ),
+          action = list(
+            name = "string",
+            actionExecutionId = "string"
+          ),
+          pipelineArn = "string",
+          pipelineExecutionId = "string"
+        ),
+        inputArtifacts = list(
+          list(
+            name = "string",
+            revision = "string",
+            location = list(
+              type = "S3",
+              s3Location = list(
+                bucketName = "string",
+                objectKey = "string"
+              )
+            )
+          )
+        ),
+        outputArtifacts = list(
+          list(
+            name = "string",
+            revision = "string",
+            location = list(
+              type = "S3",
+              s3Location = list(
+                bucketName = "string",
+                objectKey = "string"
+              )
+            )
+          )
+        ),
+        artifactCredentials = list(
+          accessKeyId = "string",
+          secretAccessKey = "string",
+          sessionToken = "string"
+        ),
+        continuationToken = "string",
+        encryptionKey = list(
+          id = "string",
+          type = "KMS"
+        )
+      ),
+      nonce = "string",
+      accountId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about any jobs for AWS CodePipeline to act on.
 \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}} is valid only for action

@@ -10,6 +10,10 @@ snowball_cancel_job(JobId)
 \item{JobId}{[required] The 39-character job ID for the job that you want to cancel, for example
 \verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Cancels the specified job. You can only cancel a job before its
 \code{JobState} value changes to \code{PreparingAppliance}. Requesting the

@@ -9,6 +9,25 @@ storagegateway_describe_bandwidth_rate_limit_schedule(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string",
+  BandwidthRateLimitIntervals = list(
+    list(
+      StartHourOfDay = 123,
+      StartMinuteOfHour = 123,
+      EndHourOfDay = 123,
+      EndMinuteOfHour = 123,
+      DaysOfWeek = list(
+        123
+      ),
+      AverageUploadRateLimitInBitsPerSec = 123,
+      AverageDownloadRateLimitInBitsPerSec = 123
+    )
+  )
+)
+}
+}
 \description{
 Returns information about the bandwidth rate limit schedule of a
 gateway. By default, gateways do not have bandwidth rate limit

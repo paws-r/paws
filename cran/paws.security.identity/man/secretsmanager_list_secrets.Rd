@@ -28,6 +28,52 @@ In a subsequent call, set it to the value of the previous call
 
 \item{SortOrder}{Lists secrets in the requested order.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SecretList = list(
+    list(
+      ARN = "string",
+      Name = "string",
+      Description = "string",
+      KmsKeyId = "string",
+      RotationEnabled = TRUE|FALSE,
+      RotationLambdaARN = "string",
+      RotationRules = list(
+        AutomaticallyAfterDays = 123
+      ),
+      LastRotatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastChangedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastAccessedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DeletedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      SecretVersionsToStages = list(
+        list(
+          "string"
+        )
+      ),
+      OwningService = "string",
+      CreatedDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all of the secrets that are stored by Secrets Manager in the AWS
 account. To list the versions currently stored for a specific secret,

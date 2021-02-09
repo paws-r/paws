@@ -9,6 +9,18 @@ workspaces_reboot_workspaces(RebootWorkspaceRequests)
 \arguments{
 \item{RebootWorkspaceRequests}{[required] The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedRequests = list(
+    list(
+      WorkspaceId = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Reboots the specified WorkSpaces.
 

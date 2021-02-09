@@ -16,6 +16,15 @@ iot_update_stream(streamId, description, files, roleArn)
 \item{roleArn}{An IAM role that allows the IoT service principal assumes to access your
 S3 files.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  streamId = "string",
+  streamArn = "string",
+  description = "string",
+  streamVersion = 123
+)
+}
+}
 \description{
 Updates an existing stream. The stream version will be incremented by
 one.

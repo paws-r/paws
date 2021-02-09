@@ -9,6 +9,12 @@ glue_delete_job(JobName)
 \arguments{
 \item{JobName}{[required] The name of the job definition to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobName = "string"
+)
+}
+}
 \description{
 Deletes a specified job definition. If the job definition is not found,
 no exception is thrown.

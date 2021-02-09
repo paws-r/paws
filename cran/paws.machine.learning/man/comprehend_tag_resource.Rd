@@ -14,6 +14,10 @@ to which you want to associate the tags.}
 can be a maximum of 50 tags (both existing and pending) associated with
 a specific resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates a specific tag with an Amazon Comprehend resource. A tag is a
 key-value pair that adds as a metadata to a resource used by Amazon

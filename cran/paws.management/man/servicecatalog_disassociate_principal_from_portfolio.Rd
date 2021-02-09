@@ -20,6 +20,10 @@ servicecatalog_disassociate_principal_from_portfolio(AcceptLanguage,
 
 \item{PrincipalARN}{[required] The ARN of the principal (IAM user, role, or group).}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disassociates a previously associated principal ARN from a specified
 portfolio.

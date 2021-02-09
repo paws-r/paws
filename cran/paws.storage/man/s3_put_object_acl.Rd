@@ -10,7 +10,7 @@ s3_put_object_acl(ACL, AccessControlPolicy, Bucket, ContentMD5,
   Key, RequestPayer, VersionId, ExpectedBucketOwner)
 }
 \arguments{
-\item{ACL}{The canned ACL to apply to the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL}{Canned ACL}.}
+\item{ACL}{The canned ACL to apply to the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL}{Canned ACL}.}
 
 \item{AccessControlPolicy}{Contains the elements that set the ACL permissions for an object per
 grantee.}
@@ -23,7 +23,7 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this operation with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. This header must be
@@ -60,7 +60,7 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this operation with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 When using this API with Amazon S3 on Outposts, you must direct requests
@@ -69,7 +69,7 @@ form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
 When using this operation using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{RequestPayer}{}
@@ -80,11 +80,17 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RequestCharged = "requester"
+)
+}
+}
 \description{
 Uses the \code{acl} subresource to set the access control list (ACL)
 permissions for a new or existing object in an S3 bucket. You must have
 \code{WRITE_ACP} permission to set the ACL of an object. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions}{What permissions can I grant?}
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#permissions}{What permissions can I grant?}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 This action is not supported by Amazon S3 on Outposts.
@@ -93,7 +99,7 @@ Depending on your application needs, you can choose to set the ACL on an
 object using either the request body or the headers. For example, if you
 have an existing application that updates a bucket ACL using the request
 body, you can continue to use that approach. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Access Control List (ACL) Overview}
 in the \emph{Amazon S3 Developer Guide}.
 
 \strong{Access Permissions}
@@ -105,7 +111,7 @@ supports a set of predefined ACLs, known as canned ACLs. Each canned
 ACL has a predefined set of grantees and permissions. Specify the
 canned ACL name as the value of \code{x-amz-ac}l. If you use this header,
 you cannot use other access control-specific headers in your
-request. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL}{Canned ACL}.
+request. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL}{Canned ACL}.
 \item Specify access permissions explicitly with the \code{x-amz-grant-read},
 \code{x-amz-grant-read-acp}, \code{x-amz-grant-write-acp}, and
 \code{x-amz-grant-full-control} headers. When using these headers, you
@@ -113,7 +119,7 @@ specify explicit access permissions and grantees (AWS accounts or
 Amazon S3 groups) who will receive the permission. If you use these
 ACL-specific headers, you cannot use \code{x-amz-acl} header to set a
 canned ACL. These parameters map to the set of permissions that
-Amazon S3 supports in an ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}.
+Amazon S3 supports in an ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Access Control List (ACL) Overview}.
 
 You specify each grantee as a type=value pair, where the type is one
 of the following:

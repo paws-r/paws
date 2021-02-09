@@ -20,6 +20,12 @@ Default: 1}
 \item{CurrentExpiryYear}{[required] The year when the registration for the domain is set to expire. This
 value must match the current expiration date for the domain.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 This operation renews a domain for the specified number of years. The
 cost of renewing your domain is billed to your AWS account.

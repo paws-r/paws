@@ -57,7 +57,7 @@ NULL
 #' howitworks-datasets-groups.
 #' @param DatasetType &#91;required&#93; The dataset type. Valid values depend on the chosen `Domain`.
 #' @param DataFrequency The frequency of data collection. This parameter is required for
-#' RELATED\\_TIME\\_SERIES datasets.
+#' RELATED_TIME_SERIES datasets.
 #' 
 #' Valid intervals are Y (Year), M (Month), W (Week), D (Day), H (Hour),
 #' 30min (30 minutes), 15min (15 minutes), 10min (10 minutes), 5min (5
@@ -89,7 +89,7 @@ NULL
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
@@ -100,6 +100,14 @@ NULL
 #'     then Forecast considers it to be a user tag and will count against
 #'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
 #'     count against your tags per resource limit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -207,7 +215,7 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
@@ -218,6 +226,14 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #'     then Forecast considers it to be a user tag and will count against
 #'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
 #'     count against your tags per resource limit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetGroupArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -326,7 +342,9 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' for datasets with all timestamps within a single time zone, or if all
 #' timestamps are normalized to a single time zone.
 #' 
-#' Refer to the Joda-Time API for a complete list of valid time zone names.
+#' Refer to the [Joda-Time
+#' API](http://joda-time.sourceforge.net/timezones.html) for a complete
+#' list of valid time zone names.
 #' @param UseGeolocationForTimeZone Automatically derive time zone information from the geolocation
 #' attribute. This option is ideal for datasets that contain timestamps in
 #' multiple time zones and those timestamps are expressed in local time.
@@ -334,10 +352,10 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' be formatted in one of two ways:
 #' 
 #' -   `LAT_LONG` - the latitude and longitude in decimal format (Example:
-#'     47.61\\_-122.33).
+#'     47.61_-122.33).
 #' 
 #' -   `CC_POSTALCODE` (US Only) - the country code (US), followed by the
-#'     5-digit ZIP code (Example: US\\_98121).
+#'     5-digit ZIP code (Example: US_98121).
 #' @param Tags The optional metadata that you apply to the dataset import job to help
 #' you categorize and organize them. Each tag consists of a key and an
 #' optional value, both of which you define.
@@ -357,7 +375,7 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
@@ -368,6 +386,14 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #'     then Forecast considers it to be a user tag and will count against
 #'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
 #'     count against your tags per resource limit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetImportJobArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -457,7 +483,7 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #' include `0.01 to 0.99` (increments of .01 only) and `mean`. The mean
 #' forecast is different from the median (0.50) when the distribution is
 #' not symmetric (for example, Beta and Negative Binomial). The default
-#' value is `\\["0.1", "0.5", "0.9"\\]`.
+#' value is `["0.1", "0.5", "0.9"]`.
 #' @param Tags The optional metadata that you apply to the forecast to help you
 #' categorize and organize them. Each tag consists of a key and an optional
 #' value, both of which you define.
@@ -477,7 +503,7 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
@@ -488,6 +514,14 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #'     then Forecast considers it to be a user tag and will count against
 #'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
 #'     count against your tags per resource limit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ForecastArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -535,7 +569,7 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #' Amazon Simple Storage Service (Amazon S3) bucket. The forecast file name
 #' will match the following conventions:
 #' 
-#' &lt;ForecastExportJobName&gt;\\_&lt;ExportTimestamp&gt;\\_&lt;PartNumber&gt;
+#' &lt;ForecastExportJobName&gt;_&lt;ExportTimestamp&gt;_&lt;PartNumber&gt;
 #' 
 #' where the &lt;ExportTimestamp&gt; component is in Java SimpleDateFormat
 #' (yyyy-MM-ddTHH-mm-ssZ).
@@ -588,7 +622,7 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
@@ -599,6 +633,14 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #'     then Forecast considers it to be a user tag and will count against
 #'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
 #'     count against your tags per resource limit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ForecastExportJobArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -664,10 +706,10 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' data fields in the `TARGET_TIME_SERIES` dataset to improve model
 #' training. For more information, see FeaturizationConfig.
 #' 
-#' For RELATED\\_TIME\\_SERIES datasets,
+#' For RELATED_TIME_SERIES datasets,
 #' [`create_predictor`][forecastservice_create_predictor] verifies that the
 #' `DataFrequency` specified when the dataset was created matches the
-#' `ForecastFrequency`. TARGET\\_TIME\\_SERIES datasets don't have this
+#' `ForecastFrequency`. TARGET_TIME_SERIES datasets don't have this
 #' restriction. Amazon Forecast also verifies the delimiter and timestamp
 #' format. For more information, see howitworks-datasets-groups.
 #' 
@@ -733,13 +775,13 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' the forecast horizon to 10, the model returns predictions for 10 days.
 #' 
 #' The maximum forecast horizon is the lesser of 500 time-steps or 1/3 of
-#' the TARGET\\_TIME\\_SERIES dataset length.
+#' the TARGET_TIME_SERIES dataset length.
 #' @param ForecastTypes Specifies the forecast types used to train a predictor. You can specify
 #' up to five forecast types. Forecast types can be quantiles from 0.01 to
 #' 0.99, by increments of 0.01 or higher. You can also specify the mean
 #' forecast with `mean`.
 #' 
-#' The default value is `\\["0.10", "0.50", "0.9"\\]`.
+#' The default value is `["0.10", "0.50", "0.9"]`.
 #' @param PerformAutoML Whether to perform AutoML. When Amazon Forecast performs AutoML, it
 #' evaluates the algorithms it provides and chooses the best algorithm and
 #' configuration for your training dataset.
@@ -808,7 +850,7 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
@@ -819,6 +861,14 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #'     then Forecast considers it to be a user tag and will count against
 #'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
 #'     count against your tags per resource limit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PredictorArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -975,7 +1025,7 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 #' -   Maximum value length: 256 Unicode characters in UTF-8.
 #' 
 #' -   Accepted characters: all letters and numbers, spaces representable
-#'     in UTF-8, and + - = . \\_ : / @@. If your tagging schema is used
+#'     in UTF-8, and + - = . _ : / @@. If your tagging schema is used
 #'     across other services and resources, the character restrictions of
 #'     those services also apply.
 #' 
@@ -985,6 +1035,14 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 #'     be a user tag and will count against the limit of 50 tags. Tags with
 #'     only the key prefix of `aws` do not count against your tags per
 #'     resource limit. You cannot edit or delete tag keys with this prefix.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PredictorBacktestExportJobArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1046,6 +1104,8 @@ forecastservice_create_predictor_backtest_export_job <- function(PredictorBackte
 #'
 #' @param DatasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_dataset(
@@ -1091,6 +1151,8 @@ forecastservice_delete_dataset <- function(DatasetArn) {
 #'
 #' @param DatasetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset group to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_dataset_group(
@@ -1133,6 +1195,8 @@ forecastservice_delete_dataset_group <- function(DatasetGroupArn) {
 #' forecastservice_delete_dataset_import_job(DatasetImportJobArn)
 #'
 #' @param DatasetImportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset import job to delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1178,6 +1242,8 @@ forecastservice_delete_dataset_import_job <- function(DatasetImportJobArn) {
 #'
 #' @param ForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the forecast to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_forecast(
@@ -1221,6 +1287,8 @@ forecastservice_delete_forecast <- function(ForecastArn) {
 #'
 #' @param ForecastExportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the forecast export job to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_forecast_export_job(
@@ -1262,6 +1330,8 @@ forecastservice_delete_forecast_export_job <- function(ForecastExportJobArn) {
 #'
 #' @param PredictorArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_predictor(
@@ -1300,6 +1370,8 @@ forecastservice_delete_predictor <- function(PredictorArn) {
 #'
 #' @param PredictorBacktestExportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor backtest export job to
 #' delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1349,6 +1421,37 @@ forecastservice_delete_predictor_backtest_export_job <- function(PredictorBackte
 #' forecastservice_describe_dataset(DatasetArn)
 #'
 #' @param DatasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetArn = "string",
+#'   DatasetName = "string",
+#'   Domain = "RETAIL"|"CUSTOM"|"INVENTORY_PLANNING"|"EC2_CAPACITY"|"WORK_FORCE"|"WEB_TRAFFIC"|"METRICS",
+#'   DatasetType = "TARGET_TIME_SERIES"|"RELATED_TIME_SERIES"|"ITEM_METADATA",
+#'   DataFrequency = "string",
+#'   Schema = list(
+#'     Attributes = list(
+#'       list(
+#'         AttributeName = "string",
+#'         AttributeType = "string"|"integer"|"float"|"timestamp"|"geolocation"
+#'       )
+#'     )
+#'   ),
+#'   EncryptionConfig = list(
+#'     RoleArn = "string",
+#'     KMSKeyArn = "string"
+#'   ),
+#'   Status = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1400,6 +1503,26 @@ forecastservice_describe_dataset <- function(DatasetArn) {
 #' forecastservice_describe_dataset_group(DatasetGroupArn)
 #'
 #' @param DatasetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetGroupName = "string",
+#'   DatasetGroupArn = "string",
+#'   DatasetArns = list(
+#'     "string"
+#'   ),
+#'   Domain = "RETAIL"|"CUSTOM"|"INVENTORY_PLANNING"|"EC2_CAPACITY"|"WORK_FORCE"|"WEB_TRAFFIC"|"METRICS",
+#'   Status = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1457,6 +1580,48 @@ forecastservice_describe_dataset_group <- function(DatasetGroupArn) {
 #'
 #' @param DatasetImportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset import job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetImportJobName = "string",
+#'   DatasetImportJobArn = "string",
+#'   DatasetArn = "string",
+#'   TimestampFormat = "string",
+#'   TimeZone = "string",
+#'   UseGeolocationForTimeZone = TRUE|FALSE,
+#'   GeolocationFormat = "string",
+#'   DataSource = list(
+#'     S3Config = list(
+#'       Path = "string",
+#'       RoleArn = "string",
+#'       KMSKeyArn = "string"
+#'     )
+#'   ),
+#'   FieldStatistics = list(
+#'     list(
+#'       Count = 123,
+#'       CountDistinct = 123,
+#'       CountNull = 123,
+#'       CountNan = 123,
+#'       Min = "string",
+#'       Max = "string",
+#'       Avg = 123.0,
+#'       Stddev = 123.0
+#'     )
+#'   ),
+#'   DataSize = 123.0,
+#'   Status = "string",
+#'   Message = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_dataset_import_job(
@@ -1510,6 +1675,28 @@ forecastservice_describe_dataset_import_job <- function(DatasetImportJobArn) {
 #'
 #' @param ForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the forecast.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ForecastArn = "string",
+#'   ForecastName = "string",
+#'   ForecastTypes = list(
+#'     "string"
+#'   ),
+#'   PredictorArn = "string",
+#'   DatasetGroupArn = "string",
+#'   Status = "string",
+#'   Message = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_forecast(
@@ -1561,6 +1748,31 @@ forecastservice_describe_forecast <- function(ForecastArn) {
 #' forecastservice_describe_forecast_export_job(ForecastExportJobArn)
 #'
 #' @param ForecastExportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the forecast export job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ForecastExportJobArn = "string",
+#'   ForecastExportJobName = "string",
+#'   ForecastArn = "string",
+#'   Destination = list(
+#'     S3Config = list(
+#'       Path = "string",
+#'       RoleArn = "string",
+#'       KMSKeyArn = "string"
+#'     )
+#'   ),
+#'   Message = "string",
+#'   Status = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1619,6 +1831,122 @@ forecastservice_describe_forecast_export_job <- function(ForecastExportJobArn) {
 #' @param PredictorArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor that you want
 #' information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PredictorArn = "string",
+#'   PredictorName = "string",
+#'   AlgorithmArn = "string",
+#'   ForecastHorizon = 123,
+#'   ForecastTypes = list(
+#'     "string"
+#'   ),
+#'   PerformAutoML = TRUE|FALSE,
+#'   PerformHPO = TRUE|FALSE,
+#'   TrainingParameters = list(
+#'     "string"
+#'   ),
+#'   EvaluationParameters = list(
+#'     NumberOfBacktestWindows = 123,
+#'     BackTestWindowOffset = 123
+#'   ),
+#'   HPOConfig = list(
+#'     ParameterRanges = list(
+#'       CategoricalParameterRanges = list(
+#'         list(
+#'           Name = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ContinuousParameterRanges = list(
+#'         list(
+#'           Name = "string",
+#'           MaxValue = 123.0,
+#'           MinValue = 123.0,
+#'           ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
+#'         )
+#'       ),
+#'       IntegerParameterRanges = list(
+#'         list(
+#'           Name = "string",
+#'           MaxValue = 123,
+#'           MinValue = 123,
+#'           ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   InputDataConfig = list(
+#'     DatasetGroupArn = "string",
+#'     SupplementaryFeatures = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   FeaturizationConfig = list(
+#'     ForecastFrequency = "string",
+#'     ForecastDimensions = list(
+#'       "string"
+#'     ),
+#'     Featurizations = list(
+#'       list(
+#'         AttributeName = "string",
+#'         FeaturizationPipeline = list(
+#'           list(
+#'             FeaturizationMethodName = "filling",
+#'             FeaturizationMethodParameters = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   EncryptionConfig = list(
+#'     RoleArn = "string",
+#'     KMSKeyArn = "string"
+#'   ),
+#'   PredictorExecutionDetails = list(
+#'     PredictorExecutions = list(
+#'       list(
+#'         AlgorithmArn = "string",
+#'         TestWindows = list(
+#'           list(
+#'             TestWindowStart = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             TestWindowEnd = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Status = "string",
+#'             Message = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   DatasetImportJobArns = list(
+#'     "string"
+#'   ),
+#'   AutoMLAlgorithmArns = list(
+#'     "string"
+#'   ),
+#'   Status = "string",
+#'   Message = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_predictor(
@@ -1671,6 +1999,31 @@ forecastservice_describe_predictor <- function(PredictorArn) {
 #'   PredictorBacktestExportJobArn)
 #'
 #' @param PredictorBacktestExportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor backtest export job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PredictorBacktestExportJobArn = "string",
+#'   PredictorBacktestExportJobName = "string",
+#'   PredictorArn = "string",
+#'   Destination = list(
+#'     S3Config = list(
+#'       Path = "string",
+#'       RoleArn = "string",
+#'       KMSKeyArn = "string"
+#'     )
+#'   ),
+#'   Message = "string",
+#'   Status = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1733,6 +2086,46 @@ forecastservice_describe_predictor_backtest_export_job <- function(PredictorBack
 #'
 #' @param PredictorArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor to get metrics for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PredictorEvaluationResults = list(
+#'     list(
+#'       AlgorithmArn = "string",
+#'       TestWindows = list(
+#'         list(
+#'           TestWindowStart = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           TestWindowEnd = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ItemCount = 123,
+#'           EvaluationType = "SUMMARY"|"COMPUTED",
+#'           Metrics = list(
+#'             RMSE = 123.0,
+#'             WeightedQuantileLosses = list(
+#'               list(
+#'                 Quantile = 123.0,
+#'                 LossValue = 123.0
+#'               )
+#'             ),
+#'             ErrorMetrics = list(
+#'               list(
+#'                 ForecastType = "string",
+#'                 WAPE = 123.0,
+#'                 RMSE = 123.0
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_accuracy_metrics(
@@ -1780,6 +2173,26 @@ forecastservice_get_accuracy_metrics <- function(PredictorArn) {
 #' includes a `NextToken`. To retrieve the next set of results, use the
 #' token in the next request. Tokens expire after 24 hours.
 #' @param MaxResults The number of items to return in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetGroups = list(
+#'     list(
+#'       DatasetGroupArn = "string",
+#'       DatasetGroupName = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1849,7 +2262,36 @@ forecastservice_list_dataset_groups <- function(NextToken = NULL, MaxResults = N
 #' For example, to list all dataset import jobs whose status is ACTIVE, you
 #' specify the following filter:
 #' 
-#' `"Filters": \\[ \{ "Condition": "IS", "Key": "Status", "Value": "ACTIVE" \} \\]`
+#' `"Filters": [ { "Condition": "IS", "Key": "Status", "Value": "ACTIVE" } ]`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetImportJobs = list(
+#'     list(
+#'       DatasetImportJobArn = "string",
+#'       DatasetImportJobName = "string",
+#'       DataSource = list(
+#'         S3Config = list(
+#'           Path = "string",
+#'           RoleArn = "string",
+#'           KMSKeyArn = "string"
+#'         )
+#'       ),
+#'       Status = "string",
+#'       Message = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1903,6 +2345,28 @@ forecastservice_list_dataset_import_jobs <- function(NextToken = NULL, MaxResult
 #' includes a `NextToken`. To retrieve the next set of results, use the
 #' token in the next request. Tokens expire after 24 hours.
 #' @param MaxResults The number of items to return in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Datasets = list(
+#'     list(
+#'       DatasetArn = "string",
+#'       DatasetName = "string",
+#'       DatasetType = "TARGET_TIME_SERIES"|"RELATED_TIME_SERIES"|"ITEM_METADATA",
+#'       Domain = "RETAIL"|"CUSTOM"|"INVENTORY_PLANNING"|"EC2_CAPACITY"|"WORK_FORCE"|"WEB_TRAFFIC"|"METRICS",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1973,7 +2437,36 @@ forecastservice_list_datasets <- function(NextToken = NULL, MaxResults = NULL) {
 #' For example, to list all jobs that export a forecast named
 #' *electricityforecast*, specify the following filter:
 #' 
-#' `"Filters": \\[ \{ "Condition": "IS", "Key": "ForecastArn", "Value": "arn:aws:forecast:us-west-2:<acct-id>:forecast/electricityforecast" \} \\]`
+#' `"Filters": [ { "Condition": "IS", "Key": "ForecastArn", "Value": "arn:aws:forecast:us-west-2:<acct-id>:forecast/electricityforecast" } ]`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ForecastExportJobs = list(
+#'     list(
+#'       ForecastExportJobArn = "string",
+#'       ForecastExportJobName = "string",
+#'       Destination = list(
+#'         S3Config = list(
+#'           Path = "string",
+#'           RoleArn = "string",
+#'           KMSKeyArn = "string"
+#'         )
+#'       ),
+#'       Status = "string",
+#'       Message = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2048,7 +2541,31 @@ forecastservice_list_forecast_export_jobs <- function(NextToken = NULL, MaxResul
 #' For example, to list all forecasts whose status is not ACTIVE, you would
 #' specify:
 #' 
-#' `"Filters": \\[ \{ "Condition": "IS_NOT", "Key": "Status", "Value": "ACTIVE" \} \\]`
+#' `"Filters": [ { "Condition": "IS_NOT", "Key": "Status", "Value": "ACTIVE" } ]`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Forecasts = list(
+#'     list(
+#'       ForecastArn = "string",
+#'       ForecastName = "string",
+#'       PredictorArn = "string",
+#'       DatasetGroupArn = "string",
+#'       Status = "string",
+#'       Message = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2125,6 +2642,35 @@ forecastservice_list_forecasts <- function(NextToken = NULL, MaxResults = NULL, 
 #' 
 #' -   `Value` - The value to match.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PredictorBacktestExportJobs = list(
+#'     list(
+#'       PredictorBacktestExportJobArn = "string",
+#'       PredictorBacktestExportJobName = "string",
+#'       Destination = list(
+#'         S3Config = list(
+#'           Path = "string",
+#'           RoleArn = "string",
+#'           KMSKeyArn = "string"
+#'         )
+#'       ),
+#'       Status = "string",
+#'       Message = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_predictor_backtest_export_jobs(
@@ -2198,7 +2744,30 @@ forecastservice_list_predictor_backtest_export_jobs <- function(NextToken = NULL
 #' For example, to list all predictors whose status is ACTIVE, you would
 #' specify:
 #' 
-#' `"Filters": \\[ \{ "Condition": "IS", "Key": "Status", "Value": "ACTIVE" \} \\]`
+#' `"Filters": [ { "Condition": "IS", "Key": "Status", "Value": "ACTIVE" } ]`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Predictors = list(
+#'     list(
+#'       PredictorArn = "string",
+#'       PredictorName = "string",
+#'       DatasetGroupArn = "string",
+#'       Status = "string",
+#'       Message = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2247,6 +2816,19 @@ forecastservice_list_predictors <- function(NextToken = NULL, MaxResults = NULL,
 #' list the tags. Currently, the supported resources are Forecast dataset
 #' groups, datasets, dataset import jobs, predictors, forecasts, and
 #' forecast export jobs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2308,7 +2890,7 @@ forecastservice_list_tags_for_resource <- function(ResourceArn) {
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
@@ -2319,6 +2901,12 @@ forecastservice_list_tags_for_resource <- function(ResourceArn) {
 #'     then Forecast considers it to be a user tag and will count against
 #'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
 #'     count against your tags per resource limit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2367,6 +2955,12 @@ forecastservice_tag_resource <- function(ResourceArn, Tags) {
 #' forecast exports.
 #' @param TagKeys &#91;required&#93; The keys of the tags to be removed.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -2413,6 +3007,12 @@ forecastservice_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param DatasetGroupArn &#91;required&#93; The ARN of the dataset group.
 #' @param DatasetArns &#91;required&#93; An array of the Amazon Resource Names (ARNs) of the datasets to add to
 #' the dataset group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

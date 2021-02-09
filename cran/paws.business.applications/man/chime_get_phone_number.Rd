@@ -10,6 +10,46 @@ chime_get_phone_number(PhoneNumberId)
 \arguments{
 \item{PhoneNumberId}{[required] The phone number ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PhoneNumber = list(
+    PhoneNumberId = "string",
+    E164PhoneNumber = "string",
+    Type = "Local"|"TollFree",
+    ProductType = "BusinessCalling"|"VoiceConnector",
+    Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
+    Capabilities = list(
+      InboundCall = TRUE|FALSE,
+      OutboundCall = TRUE|FALSE,
+      InboundSMS = TRUE|FALSE,
+      OutboundSMS = TRUE|FALSE,
+      InboundMMS = TRUE|FALSE,
+      OutboundMMS = TRUE|FALSE
+    ),
+    Associations = list(
+      list(
+        Value = "string",
+        Name = "AccountId"|"UserId"|"VoiceConnectorId"|"VoiceConnectorGroupId"|"SipRuleId",
+        AssociatedTimestamp = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    ),
+    CallingName = "string",
+    CallingNameStatus = "Unassigned"|"UpdateInProgress"|"UpdateSucceeded"|"UpdateFailed",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    DeletionTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves details for the specified phone number ID, such as
 associations, capabilities, and product type.

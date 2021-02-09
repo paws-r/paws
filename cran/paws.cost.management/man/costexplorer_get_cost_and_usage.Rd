@@ -57,6 +57,54 @@ Valid values are \code{AZ}, \code{INSTANCE_TYPE}, \code{LEGAL_ENTITY_NAME},
 when the response from a previous call has more results than the maximum
 page size.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextPageToken = "string",
+  GroupDefinitions = list(
+    list(
+      Type = "DIMENSION"|"TAG"|"COST_CATEGORY",
+      Key = "string"
+    )
+  ),
+  ResultsByTime = list(
+    list(
+      TimePeriod = list(
+        Start = "string",
+        End = "string"
+      ),
+      Total = list(
+        list(
+          Amount = "string",
+          Unit = "string"
+        )
+      ),
+      Groups = list(
+        list(
+          Keys = list(
+            "string"
+          ),
+          Metrics = list(
+            list(
+              Amount = "string",
+              Unit = "string"
+            )
+          )
+        )
+      ),
+      Estimated = TRUE|FALSE
+    )
+  ),
+  DimensionValueAttributes = list(
+    list(
+      Value = "string",
+      Attributes = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves cost and usage metrics for your account. You can specify which
 cost and usage-related metric, such as \code{BlendedCosts} or

@@ -28,8 +28,8 @@ values from the user using prompts defined in the slots. For more
 information, see how-it-works.}
 
 \item{sampleUtterances}{An array of utterances (strings) that a user might say to signal the
-intent. For example, "I want \{PizzaSize\} pizza", "Order \{Quantity\}
-\{PizzaSize\} pizzas".
+intent. For example, "I want \{PizzaSize\} pizza", "Order
+\{Quantity\} \{PizzaSize\} pizzas".
 
 In each utterance, a slot name is enclosed in curly braces.}
 
@@ -134,6 +134,141 @@ user.}
 
 \item{outputContexts}{An array of \code{OutputContext} objects that lists the contexts that the
 intent activates when the intent is fulfilled.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  name = "string",
+  description = "string",
+  slots = list(
+    list(
+      name = "string",
+      description = "string",
+      slotConstraint = "Required"|"Optional",
+      slotType = "string",
+      slotTypeVersion = "string",
+      valueElicitationPrompt = list(
+        messages = list(
+          list(
+            contentType = "PlainText"|"SSML"|"CustomPayload",
+            content = "string",
+            groupNumber = 123
+          )
+        ),
+        maxAttempts = 123,
+        responseCard = "string"
+      ),
+      priority = 123,
+      sampleUtterances = list(
+        "string"
+      ),
+      responseCard = "string",
+      obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION",
+      defaultValueSpec = list(
+        defaultValueList = list(
+          list(
+            defaultValue = "string"
+          )
+        )
+      )
+    )
+  ),
+  sampleUtterances = list(
+    "string"
+  ),
+  confirmationPrompt = list(
+    messages = list(
+      list(
+        contentType = "PlainText"|"SSML"|"CustomPayload",
+        content = "string",
+        groupNumber = 123
+      )
+    ),
+    maxAttempts = 123,
+    responseCard = "string"
+  ),
+  rejectionStatement = list(
+    messages = list(
+      list(
+        contentType = "PlainText"|"SSML"|"CustomPayload",
+        content = "string",
+        groupNumber = 123
+      )
+    ),
+    responseCard = "string"
+  ),
+  followUpPrompt = list(
+    prompt = list(
+      messages = list(
+        list(
+          contentType = "PlainText"|"SSML"|"CustomPayload",
+          content = "string",
+          groupNumber = 123
+        )
+      ),
+      maxAttempts = 123,
+      responseCard = "string"
+    ),
+    rejectionStatement = list(
+      messages = list(
+        list(
+          contentType = "PlainText"|"SSML"|"CustomPayload",
+          content = "string",
+          groupNumber = 123
+        )
+      ),
+      responseCard = "string"
+    )
+  ),
+  conclusionStatement = list(
+    messages = list(
+      list(
+        contentType = "PlainText"|"SSML"|"CustomPayload",
+        content = "string",
+        groupNumber = 123
+      )
+    ),
+    responseCard = "string"
+  ),
+  dialogCodeHook = list(
+    uri = "string",
+    messageVersion = "string"
+  ),
+  fulfillmentActivity = list(
+    type = "ReturnIntent"|"CodeHook",
+    codeHook = list(
+      uri = "string",
+      messageVersion = "string"
+    )
+  ),
+  parentIntentSignature = "string",
+  lastUpdatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  version = "string",
+  checksum = "string",
+  createVersion = TRUE|FALSE,
+  kendraConfiguration = list(
+    kendraIndex = "string",
+    queryFilterString = "string",
+    role = "string"
+  ),
+  inputContexts = list(
+    list(
+      name = "string"
+    )
+  ),
+  outputContexts = list(
+    list(
+      name = "string",
+      timeToLiveInSeconds = 123,
+      turnsToLive = 123
+    )
+  )
+)
+}
 }
 \description{
 Creates an intent or replaces an existing intent.
@@ -319,11 +454,11 @@ svc$put_intent(
   conclusionStatement = list(
     messages = list(
       list(
-        content = "All right, I ordered  you a \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce...",
+        content = "All right, I ordered  you a {Crust} crust {Type} pizza with {Sauce} sauce.",
         contentType = "PlainText"
       ),
       list(
-        content = "OK, your \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce is on the way.",
+        content = "OK, your {Crust} crust {Type} pizza with {Sauce} sauce is on the way.",
         contentType = "PlainText"
       )
     ),
@@ -333,7 +468,7 @@ svc$put_intent(
     maxAttempts = 1L,
     messages = list(
       list(
-        content = "Should I order  your \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce?",
+        content = "Should I order  your {Crust} crust {Type} pizza with {Sauce} sauce?",
         contentType = "PlainText"
       )
     )
@@ -356,9 +491,9 @@ svc$put_intent(
   ),
   sampleUtterances = list(
     "Order me a pizza.",
-    "Order me a \{Type\} pizza.",
-    "I want a \{Crust\} crust \{Type\} pizza",
-    "I want a \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce."
+    "Order me a {Type} pizza.",
+    "I want a {Crust} crust {Type} pizza",
+    "I want a {Crust} crust {Type} pizza with {Sauce} sauce."
   ),
   slots = list(
     list(
@@ -366,9 +501,9 @@ svc$put_intent(
       description = "The type of pizza to order.",
       priority = 1L,
       sampleUtterances = list(
-        "Get me a \{Type\} pizza.",
-        "A \{Type\} pizza please.",
-        "I'd like a \{Type\} pizza."
+        "Get me a {Type} pizza.",
+        "A {Type} pizza please.",
+        "I'd like a {Type} pizza."
       ),
       slotConstraint = "Required",
       slotType = "DocPizzaType",
@@ -396,8 +531,8 @@ svc$put_intent(
       description = "The type of pizza crust to order.",
       priority = 2L,
       sampleUtterances = list(
-        "Make it a \{Crust\} crust.",
-        "I'd like a \{Crust\} crust."
+        "Make it a {Crust} crust.",
+        "I'd like a {Crust} crust."
       ),
       slotConstraint = "Required",
       slotType = "DocPizzaCrustType",
@@ -421,8 +556,8 @@ svc$put_intent(
       description = "The type of sauce to use on the pizza.",
       priority = 3L,
       sampleUtterances = list(
-        "Make it \{Sauce\} sauce.",
-        "I'd like \{Sauce\} sauce."
+        "Make it {Sauce} sauce.",
+        "I'd like {Sauce} sauce."
       ),
       slotConstraint = "Required",
       slotType = "DocPizzaSauceType",

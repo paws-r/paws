@@ -18,6 +18,17 @@ NULL
 #' exists, an exception occurs. If you omit this value, AWS SDKs will
 #' automatically generate a unique client request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Sidewalk = list(
+#'     AmazonId = "string",
+#'     AppServerPrivateKey = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_aws_account_with_partner_account(
@@ -60,6 +71,12 @@ iotwireless_associate_aws_account_with_partner_account <- function(Sidewalk, Cli
 #' @param Id &#91;required&#93; The ID of the resource to update.
 #' @param ThingArn &#91;required&#93; The ARN of the thing to associate with the wireless device.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_wireless_device_with_thing(
@@ -100,6 +117,14 @@ iotwireless_associate_wireless_device_with_thing <- function(Id, ThingArn) {
 #' @param Id &#91;required&#93; The ID of the resource to update.
 #' @param IotCertificateId &#91;required&#93; The ID of the certificate to associate with the wireless gateway.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IotCertificateId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_wireless_gateway_with_certificate(
@@ -138,6 +163,12 @@ iotwireless_associate_wireless_gateway_with_certificate <- function(Id, IotCerti
 #'
 #' @param Id &#91;required&#93; The ID of the resource to update.
 #' @param ThingArn &#91;required&#93; The ARN of the thing to associate with the wireless gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -187,6 +218,15 @@ iotwireless_associate_wireless_gateway_with_thing <- function(Id, ThingArn) {
 #' create a new resource with the same token as a resource that already
 #' exists, an exception occurs. If you omit this value, AWS SDKs will
 #' automatically generate a unique client request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -243,6 +283,15 @@ iotwireless_create_destination <- function(Name, ExpressionType, Expression, Des
 #' create a new resource with the same token as a resource that already
 #' exists, an exception occurs. If you omit this value, AWS SDKs will
 #' automatically generate a unique client request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Id = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -319,6 +368,15 @@ iotwireless_create_device_profile <- function(Name = NULL, LoRaWAN = NULL, Tags 
 #' exists, an exception occurs. If you omit this value, AWS SDKs will
 #' automatically generate a unique client request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Id = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_service_profile(
@@ -375,6 +433,15 @@ iotwireless_create_service_profile <- function(Name = NULL, LoRaWAN = NULL, Tags
 #' automatically generate a unique client request.
 #' @param LoRaWAN The device configuration information to use to create the wireless
 #' device.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Id = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -457,6 +524,15 @@ iotwireless_create_wireless_device <- function(Type, Name = NULL, Description = 
 #' exists, an exception occurs. If you omit this value, AWS SDKs will
 #' automatically generate a unique client request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Id = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_wireless_gateway(
@@ -508,6 +584,15 @@ iotwireless_create_wireless_gateway <- function(Name = NULL, Description = NULL,
 #' @param Id &#91;required&#93; The ID of the resource to update.
 #' @param WirelessGatewayTaskDefinitionId &#91;required&#93; The ID of the WirelessGatewayTaskDefinition.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WirelessGatewayTaskDefinitionId = "string",
+#'   Status = "PENDING"|"IN_PROGRESS"|"FIRST_RETRY"|"SECOND_RETRY"|"COMPLETED"|"FAILED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_wireless_gateway_task(
@@ -555,6 +640,14 @@ iotwireless_create_wireless_gateway_task <- function(Id, WirelessGatewayTaskDefi
 #' create a new resource with the same token as a resource that already
 #' exists, an exception occurs. If you omit this value, AWS SDKs will
 #' automatically generate a unique client request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -613,6 +706,12 @@ iotwireless_create_wireless_gateway_task_definition <- function(AutoCreateTasks,
 #'
 #' @param Name &#91;required&#93; The name of the resource to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_destination(
@@ -649,6 +748,12 @@ iotwireless_delete_destination <- function(Name) {
 #' iotwireless_delete_device_profile(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the resource to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -687,6 +792,12 @@ iotwireless_delete_device_profile <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The ID of the resource to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_service_profile(
@@ -723,6 +834,12 @@ iotwireless_delete_service_profile <- function(Id) {
 #' iotwireless_delete_wireless_device(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the resource to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -761,6 +878,12 @@ iotwireless_delete_wireless_device <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The ID of the resource to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_wireless_gateway(
@@ -797,6 +920,12 @@ iotwireless_delete_wireless_gateway <- function(Id) {
 #' iotwireless_delete_wireless_gateway_task(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the resource to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -835,6 +964,12 @@ iotwireless_delete_wireless_gateway_task <- function(Id) {
 #' iotwireless_delete_wireless_gateway_task_definition(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the resource to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -877,6 +1012,12 @@ iotwireless_delete_wireless_gateway_task_definition <- function(Id) {
 #' @param PartnerAccountId &#91;required&#93; The partner account ID to disassociate from the AWS account.
 #' @param PartnerType &#91;required&#93; The partner type.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_aws_account_from_partner_account(
@@ -914,6 +1055,12 @@ iotwireless_disassociate_aws_account_from_partner_account <- function(PartnerAcc
 #' iotwireless_disassociate_wireless_device_from_thing(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the resource to update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -954,6 +1101,12 @@ iotwireless_disassociate_wireless_device_from_thing <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The ID of the resource to update.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_wireless_gateway_from_certificate(
@@ -990,6 +1143,12 @@ iotwireless_disassociate_wireless_gateway_from_certificate <- function(Id) {
 #' iotwireless_disassociate_wireless_gateway_from_thing(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the resource to update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1028,6 +1187,19 @@ iotwireless_disassociate_wireless_gateway_from_thing <- function(Id) {
 #'
 #' @param Name &#91;required&#93; The name of the resource to get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Name = "string",
+#'   Expression = "string",
+#'   ExpressionType = "RuleName",
+#'   Description = "string",
+#'   RoleArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_destination(
@@ -1064,6 +1236,39 @@ iotwireless_get_destination <- function(Name) {
 #' iotwireless_get_device_profile(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the resource to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Name = "string",
+#'   Id = "string",
+#'   LoRaWAN = list(
+#'     SupportsClassB = TRUE|FALSE,
+#'     ClassBTimeout = 123,
+#'     PingSlotPeriod = 123,
+#'     PingSlotDr = 123,
+#'     PingSlotFreq = 123,
+#'     SupportsClassC = TRUE|FALSE,
+#'     ClassCTimeout = 123,
+#'     MacVersion = "string",
+#'     RegParamsRevision = "string",
+#'     RxDelay1 = 123,
+#'     RxDrOffset1 = 123,
+#'     RxDataRate2 = 123,
+#'     RxFreq2 = 123,
+#'     FactoryPresetFreqsList = list(
+#'       123
+#'     ),
+#'     MaxEirp = 123,
+#'     MaxDutyCycle = 123,
+#'     RfRegion = "string",
+#'     SupportsJoin = TRUE|FALSE,
+#'     Supports32BitFCnt = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1103,6 +1308,18 @@ iotwireless_get_device_profile <- function(Id) {
 #'
 #' @param PartnerAccountId &#91;required&#93; The partner account ID to disassociate from the AWS account.
 #' @param PartnerType &#91;required&#93; The partner type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Sidewalk = list(
+#'     AmazonId = "string",
+#'     Fingerprint = "string"
+#'   ),
+#'   AccountLinked = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1146,6 +1363,16 @@ iotwireless_get_partner_account <- function(PartnerAccountId, PartnerType) {
 #' `CUPS` for the Configuration and Update Server endpoint, or `LNS` for
 #' the LoRaWAN Network Server endpoint.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceType = "CUPS"|"LNS",
+#'   ServiceEndpoint = "string",
+#'   ServerTrust = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_service_endpoint(
@@ -1182,6 +1409,37 @@ iotwireless_get_service_endpoint <- function(ServiceType = NULL) {
 #' iotwireless_get_service_profile(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the resource to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Name = "string",
+#'   Id = "string",
+#'   LoRaWAN = list(
+#'     UlRate = 123,
+#'     UlBucketSize = 123,
+#'     UlRatePolicy = "string",
+#'     DlRate = 123,
+#'     DlBucketSize = 123,
+#'     DlRatePolicy = "string",
+#'     AddGwMetadata = TRUE|FALSE,
+#'     DevStatusReqFreq = 123,
+#'     ReportDevStatusBattery = TRUE|FALSE,
+#'     ReportDevStatusMargin = TRUE|FALSE,
+#'     DrMin = 123,
+#'     DrMax = 123,
+#'     ChannelMask = "string",
+#'     PrAllowed = TRUE|FALSE,
+#'     HrAllowed = TRUE|FALSE,
+#'     RaAllowed = TRUE|FALSE,
+#'     NwkGeoLoc = TRUE|FALSE,
+#'     TargetPer = 123,
+#'     MinGwDiversity = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1221,6 +1479,51 @@ iotwireless_get_service_profile <- function(Id) {
 #' @param Identifier &#91;required&#93; The identifier of the wireless device to get.
 #' @param IdentifierType &#91;required&#93; The type of identifier used in `identifier`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Type = "Sidewalk"|"LoRaWAN",
+#'   Name = "string",
+#'   Description = "string",
+#'   DestinationName = "string",
+#'   Id = "string",
+#'   Arn = "string",
+#'   ThingName = "string",
+#'   ThingArn = "string",
+#'   LoRaWAN = list(
+#'     DevEui = "string",
+#'     DeviceProfileId = "string",
+#'     ServiceProfileId = "string",
+#'     OtaaV1_1 = list(
+#'       AppKey = "string",
+#'       NwkKey = "string",
+#'       JoinEui = "string"
+#'     ),
+#'     OtaaV1_0_x = list(
+#'       AppKey = "string",
+#'       AppEui = "string"
+#'     ),
+#'     AbpV1_1 = list(
+#'       DevAddr = "string",
+#'       SessionKeys = list(
+#'         FNwkSIntKey = "string",
+#'         SNwkSIntKey = "string",
+#'         NwkSEncKey = "string",
+#'         AppSKey = "string"
+#'       )
+#'     ),
+#'     AbpV1_0_x = list(
+#'       DevAddr = "string",
+#'       SessionKeys = list(
+#'         NwkSKey = "string",
+#'         AppSKey = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_wireless_device(
@@ -1259,6 +1562,29 @@ iotwireless_get_wireless_device <- function(Identifier, IdentifierType) {
 #'
 #' @param WirelessDeviceId &#91;required&#93; The ID of the wireless device for which to get the data.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WirelessDeviceId = "string",
+#'   LastUplinkReceivedAt = "string",
+#'   LoRaWAN = list(
+#'     DevEui = "string",
+#'     FPort = 123,
+#'     DataRate = 123,
+#'     Frequency = 123,
+#'     Timestamp = "string",
+#'     Gateways = list(
+#'       list(
+#'         GatewayEui = "string",
+#'         Snr = 123.0,
+#'         Rssi = 123.0
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_wireless_device_statistics(
@@ -1296,6 +1622,23 @@ iotwireless_get_wireless_device_statistics <- function(WirelessDeviceId) {
 #'
 #' @param Identifier &#91;required&#93; The identifier of the wireless gateway to get.
 #' @param IdentifierType &#91;required&#93; The type of identifier used in `identifier`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Id = "string",
+#'   Description = "string",
+#'   LoRaWAN = list(
+#'     GatewayEui = "string",
+#'     RfRegion = "string"
+#'   ),
+#'   Arn = "string",
+#'   ThingName = "string",
+#'   ThingArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1337,6 +1680,14 @@ iotwireless_get_wireless_gateway <- function(Identifier, IdentifierType) {
 #'
 #' @param Id &#91;required&#93; The ID of the resource to get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IotCertificateId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_wireless_gateway_certificate(
@@ -1375,6 +1726,20 @@ iotwireless_get_wireless_gateway_certificate <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The ID of the resource to get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoRaWAN = list(
+#'     CurrentVersion = list(
+#'       PackageVersion = "string",
+#'       Model = "string",
+#'       Station = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_wireless_gateway_firmware_information(
@@ -1411,6 +1776,15 @@ iotwireless_get_wireless_gateway_firmware_information <- function(Id) {
 #' iotwireless_get_wireless_gateway_statistics(WirelessGatewayId)
 #'
 #' @param WirelessGatewayId &#91;required&#93; The ID of the wireless gateway for which to get the data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WirelessGatewayId = "string",
+#'   LastUplinkReceivedAt = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1449,6 +1823,18 @@ iotwireless_get_wireless_gateway_statistics <- function(WirelessGatewayId) {
 #'
 #' @param Id &#91;required&#93; The ID of the resource to get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WirelessGatewayId = "string",
+#'   WirelessGatewayTaskDefinitionId = "string",
+#'   LastUplinkReceivedAt = "string",
+#'   TaskCreatedAt = "string",
+#'   Status = "PENDING"|"IN_PROGRESS"|"FIRST_RETRY"|"SECOND_RETRY"|"COMPLETED"|"FAILED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_wireless_gateway_task(
@@ -1485,6 +1871,33 @@ iotwireless_get_wireless_gateway_task <- function(Id) {
 #' iotwireless_get_wireless_gateway_task_definition(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the resource to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutoCreateTasks = TRUE|FALSE,
+#'   Name = "string",
+#'   Update = list(
+#'     UpdateDataSource = "string",
+#'     UpdateDataRole = "string",
+#'     LoRaWAN = list(
+#'       UpdateSignature = "string",
+#'       SigKeyCrc = 123,
+#'       CurrentVersion = list(
+#'         PackageVersion = "string",
+#'         Model = "string",
+#'         Station = "string"
+#'       ),
+#'       UpdateVersion = list(
+#'         PackageVersion = "string",
+#'         Model = "string",
+#'         Station = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1525,6 +1938,24 @@ iotwireless_get_wireless_gateway_task_definition <- function(Id) {
 #' @param NextToken To retrieve the next set of results, the `nextToken` value from a
 #' previous response; otherwise **null** to receive the first set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   DestinationList = list(
+#'     list(
+#'       Arn = "string",
+#'       Name = "string",
+#'       ExpressionType = "RuleName",
+#'       Expression = "string",
+#'       Description = "string",
+#'       RoleArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1567,6 +1998,21 @@ iotwireless_list_destinations <- function(MaxResults = NULL, NextToken = NULL) {
 #' results.
 #' @param MaxResults The maximum number of results to return in this operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   DeviceProfileList = list(
+#'     list(
+#'       Arn = "string",
+#'       Name = "string",
+#'       Id = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_device_profiles(
@@ -1607,6 +2053,20 @@ iotwireless_list_device_profiles <- function(NextToken = NULL, MaxResults = NULL
 #' previous response; otherwise **null** to receive the first set of
 #' results.
 #' @param MaxResults The maximum number of results to return in this operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Sidewalk = list(
+#'     list(
+#'       AmazonId = "string",
+#'       Fingerprint = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1649,6 +2109,21 @@ iotwireless_list_partner_accounts <- function(NextToken = NULL, MaxResults = NUL
 #' results.
 #' @param MaxResults The maximum number of results to return in this operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   ServiceProfileList = list(
+#'     list(
+#'       Arn = "string",
+#'       Name = "string",
+#'       Id = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_service_profiles(
@@ -1686,6 +2161,19 @@ iotwireless_list_service_profiles <- function(NextToken = NULL, MaxResults = NUL
 #' iotwireless_list_tags_for_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource for which to list tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1733,6 +2221,30 @@ iotwireless_list_tags_for_resource <- function(ResourceArn) {
 #' profile.
 #' @param WirelessDeviceType A filter to list only the wireless devices that use this wireless device
 #' type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   WirelessDeviceList = list(
+#'     list(
+#'       Arn = "string",
+#'       Id = "string",
+#'       Type = "Sidewalk"|"LoRaWAN",
+#'       Name = "string",
+#'       DestinationName = "string",
+#'       LastUplinkReceivedAt = "string",
+#'       LoRaWAN = list(
+#'         DevEui = "string"
+#'       ),
+#'       Sidewalk = list(
+#'         AmazonId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1784,6 +2296,31 @@ iotwireless_list_wireless_devices <- function(MaxResults = NULL, NextToken = NUL
 #' @param TaskDefinitionType A filter to list only the wireless gateway task definitions that use
 #' this task definition type.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   TaskDefinitions = list(
+#'     list(
+#'       Id = "string",
+#'       LoRaWAN = list(
+#'         CurrentVersion = list(
+#'           PackageVersion = "string",
+#'           Model = "string",
+#'           Station = "string"
+#'         ),
+#'         UpdateVersion = list(
+#'           PackageVersion = "string",
+#'           Model = "string",
+#'           Station = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_wireless_gateway_task_definitions(
@@ -1825,6 +2362,27 @@ iotwireless_list_wireless_gateway_task_definitions <- function(MaxResults = NULL
 #' previous response; otherwise **null** to receive the first set of
 #' results.
 #' @param MaxResults The maximum number of results to return in this operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   WirelessGatewayList = list(
+#'     list(
+#'       Arn = "string",
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       LoRaWAN = list(
+#'         GatewayEui = "string",
+#'         RfRegion = "string"
+#'       ),
+#'       LastUplinkReceivedAt = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1869,6 +2427,14 @@ iotwireless_list_wireless_gateways <- function(NextToken = NULL, MaxResults = NU
 #' for (TM) transparent mode.
 #' @param PayloadData &#91;required&#93; The message payload to send.
 #' @param WirelessMetadata Metadata about the message request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1919,6 +2485,12 @@ iotwireless_send_data_to_wireless_device <- function(Id, TransmitMode, PayloadDa
 #' @param Tags &#91;required&#93; Adds to or modifies the tags of the given resource. Tags are metadata
 #' that can be used to manage a resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1964,6 +2536,14 @@ iotwireless_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @param Id &#91;required&#93; The ID of the wireless device to test.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Result = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$test_wireless_device(
@@ -2001,6 +2581,12 @@ iotwireless_test_wireless_device <- function(Id) {
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource to remove tags from.
 #' @param TagKeys &#91;required&#93; A list of the keys of the tags to remove from the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2047,6 +2633,12 @@ iotwireless_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param Description A new description of the resource.
 #' @param RoleArn The ARN of the IAM Role that authorizes the destination.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_destination(
@@ -2090,6 +2682,12 @@ iotwireless_update_destination <- function(Name, ExpressionType = NULL, Expressi
 #' @param Sidewalk &#91;required&#93; The Sidewalk account credentials.
 #' @param PartnerAccountId &#91;required&#93; The ID of the partner account to update.
 #' @param PartnerType &#91;required&#93; The partner type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2137,6 +2735,12 @@ iotwireless_update_partner_account <- function(Sidewalk, PartnerAccountId, Partn
 #' @param Description A new description of the resource.
 #' @param LoRaWAN The updated wireless device's configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_wireless_device(
@@ -2182,6 +2786,12 @@ iotwireless_update_wireless_device <- function(Id, DestinationName = NULL, Name 
 #' @param Id &#91;required&#93; The ID of the resource to update.
 #' @param Name The new name of the resource.
 #' @param Description A new description of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

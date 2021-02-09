@@ -21,6 +21,37 @@ such as a developer portal.}
 \item{includeValues}{A boolean flag to specify whether (\code{true}) or not (\code{false}) the result
 contains key values.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  warnings = list(
+    "string"
+  ),
+  position = "string",
+  items = list(
+    list(
+      id = "string",
+      value = "string",
+      name = "string",
+      customerId = "string",
+      description = "string",
+      enabled = TRUE|FALSE,
+      createdDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      stageKeys = list(
+        "string"
+      ),
+      tags = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets information about the current ApiKeys resource.
 }

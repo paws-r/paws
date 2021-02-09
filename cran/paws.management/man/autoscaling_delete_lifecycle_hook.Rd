@@ -12,6 +12,10 @@ autoscaling_delete_lifecycle_hook(LifecycleHookName,
 
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified lifecycle hook.
 

@@ -9,6 +9,76 @@ lightsail_get_instance_snapshot(instanceSnapshotName)
 \arguments{
 \item{instanceSnapshotName}{[required] The name of the snapshot for which you are requesting information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  instanceSnapshot = list(
+    name = "string",
+    arn = "string",
+    supportCode = "string",
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    location = list(
+      availabilityZone = "string",
+      regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
+    ),
+    resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    ),
+    state = "pending"|"error"|"available",
+    progress = "string",
+    fromAttachedDisks = list(
+      list(
+        name = "string",
+        arn = "string",
+        supportCode = "string",
+        createdAt = as.POSIXct(
+          "2015-01-01"
+        ),
+        location = list(
+          availabilityZone = "string",
+          regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
+        ),
+        resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
+        tags = list(
+          list(
+            key = "string",
+            value = "string"
+          )
+        ),
+        addOns = list(
+          list(
+            name = "string",
+            status = "string",
+            snapshotTimeOfDay = "string",
+            nextSnapshotTimeOfDay = "string"
+          )
+        ),
+        sizeInGb = 123,
+        isSystemDisk = TRUE|FALSE,
+        iops = 123,
+        path = "string",
+        state = "pending"|"error"|"available"|"in-use"|"unknown",
+        attachedTo = "string",
+        isAttached = TRUE|FALSE,
+        attachmentState = "string",
+        gbInUse = 123
+      )
+    ),
+    fromInstanceName = "string",
+    fromInstanceArn = "string",
+    fromBlueprintId = "string",
+    fromBundleId = "string",
+    isFromAutoSnapshot = TRUE|FALSE,
+    sizeInGb = 123
+  )
+)
+}
+}
 \description{
 Returns information about a specific instance snapshot.
 }

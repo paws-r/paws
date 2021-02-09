@@ -93,6 +93,51 @@ Valid values: \code{Windows} | \code{Linux}}
 
 \item{TagSpecifications}{The tags to apply to the image being imported.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Architecture = "string",
+  Description = "string",
+  Encrypted = TRUE|FALSE,
+  Hypervisor = "string",
+  ImageId = "string",
+  ImportTaskId = "string",
+  KmsKeyId = "string",
+  LicenseType = "string",
+  Platform = "string",
+  Progress = "string",
+  SnapshotDetails = list(
+    list(
+      Description = "string",
+      DeviceName = "string",
+      DiskImageSize = 123.0,
+      Format = "string",
+      Progress = "string",
+      SnapshotId = "string",
+      Status = "string",
+      StatusMessage = "string",
+      Url = "string",
+      UserBucket = list(
+        S3Bucket = "string",
+        S3Key = "string"
+      )
+    )
+  ),
+  Status = "string",
+  StatusMessage = "string",
+  LicenseSpecifications = list(
+    list(
+      LicenseConfigurationArn = "string"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Import single or multi-volume disk images or EBS snapshots into an
 Amazon Machine Image (AMI). For more information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html}{Importing a VM as an Image Using VM Import/Export}

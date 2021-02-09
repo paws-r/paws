@@ -15,6 +15,19 @@ events.}
 \item{roleArn}{[required] The ARN of an IAM role that grants CloudWatch Logs permissions to call
 the Amazon Kinesis \code{PutRecord} operation on the destination stream.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  destination = list(
+    destinationName = "string",
+    targetArn = "string",
+    roleArn = "string",
+    accessPolicy = "string",
+    arn = "string",
+    creationTime = 123
+  )
+)
+}
+}
 \description{
 Creates or updates a destination. This operation is used only to create
 destinations for cross-account subscriptions.

@@ -45,6 +45,12 @@ resource. The value can be an empty string. This value helps you manage,
 filter, and search for your resources. We recommend that you create a
 name tag for your location.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LocationArn = "string"
+)
+}
+}
 \description{
 Creates an endpoint for an Amazon EFS file system.
 }

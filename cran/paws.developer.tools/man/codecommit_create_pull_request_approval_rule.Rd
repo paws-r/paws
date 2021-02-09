@@ -26,26 +26,48 @@ and a resource. It can be used for both IAM users and federated
 access users whose name matches the provided resource name. This is
 a very powerful option that offers a great deal of flexibility. For
 example, if you specify the AWS account \emph{123456789012} and
-\emph{Mary\\_Major}, all of the following would be counted as approvals
+\emph{Mary_Major}, all of the following would be counted as approvals
 coming from that user:
 \itemize{
 \item An IAM user in the account
-(arn:aws:iam::\emph{123456789012}:user/\emph{Mary\\_Major})
-\item A federated user identified in IAM as Mary\\_Major
-(arn:aws:sts::\emph{123456789012}:federated-user/\emph{Mary\\_Major})
+(arn:aws:iam::\emph{123456789012}:user/\emph{Mary_Major})
+\item A federated user identified in IAM as Mary_Major
+(arn:aws:sts::\emph{123456789012}:federated-user/\emph{Mary_Major})
 }
 
 This option does not recognize an active session of someone assuming
 the role of CodeCommitReview with a role session name of
-\emph{Mary\\_Major}
-(arn:aws:sts::\emph{123456789012}:assumed-role/CodeCommitReview/\emph{Mary\\_Major})
-unless you include a wildcard (*Mary\\_Major).
+\emph{Mary_Major}
+(arn:aws:sts::\emph{123456789012}:assumed-role/CodeCommitReview/\emph{Mary_Major})
+unless you include a wildcard (*Mary_Major).
 \item \strong{Fully qualified ARN}: This option allows you to specify the fully
 qualified Amazon Resource Name (ARN) of the IAM user or role.
 }
 
 For more information about IAM ARNs, wildcards, and formats, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
 in the \emph{IAM User Guide}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  approvalRule = list(
+    approvalRuleId = "string",
+    approvalRuleName = "string",
+    approvalRuleContent = "string",
+    ruleContentSha256 = "string",
+    lastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastModifiedUser = "string",
+    originApprovalRuleTemplate = list(
+      approvalRuleTemplateId = "string",
+      approvalRuleTemplateName = "string"
+    )
+  )
+)
+}
 }
 \description{
 Creates an approval rule for a pull request.

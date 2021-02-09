@@ -16,6 +16,13 @@ ssm_deregister_target_from_maintenance_window(WindowId, WindowTargetId,
 target is being referenced, the system returns an error and does not
 deregister the target from the maintenance window.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WindowId = "string",
+  WindowTargetId = "string"
+)
+}
+}
 \description{
 Removes a target from a maintenance window.
 }

@@ -13,6 +13,10 @@ remove tags. For example,
 
 \item{TagKeys}{[required] The keys of tags that you want to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes specified tags from an AWS OpsWorks-CM server or backup.
 }

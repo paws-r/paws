@@ -18,6 +18,41 @@ list.}
 
 \item{maxResults}{The maximum number of results you want the request to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resolvers = list(
+    list(
+      typeName = "string",
+      fieldName = "string",
+      dataSourceName = "string",
+      resolverArn = "string",
+      requestMappingTemplate = "string",
+      responseMappingTemplate = "string",
+      kind = "UNIT"|"PIPELINE",
+      pipelineConfig = list(
+        functions = list(
+          "string"
+        )
+      ),
+      syncConfig = list(
+        conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+        conflictDetection = "VERSION"|"NONE",
+        lambdaConflictHandlerConfig = list(
+          lambdaConflictHandlerArn = "string"
+        )
+      ),
+      cachingConfig = list(
+        ttl = 123,
+        cachingKeys = list(
+          "string"
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 List the resolvers that are associated with a specific function.
 }

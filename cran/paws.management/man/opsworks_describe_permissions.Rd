@@ -12,6 +12,20 @@ information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/Use
 
 \item{StackId}{The stack ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Permissions = list(
+    list(
+      StackId = "string",
+      IamUserArn = "string",
+      AllowSsh = TRUE|FALSE,
+      AllowSudo = TRUE|FALSE,
+      Level = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the permissions for a specified stack.
 

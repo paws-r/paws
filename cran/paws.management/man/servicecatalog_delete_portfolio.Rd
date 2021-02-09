@@ -16,6 +16,10 @@ servicecatalog_delete_portfolio(AcceptLanguage, Id)
 
 \item{Id}{[required] The portfolio identifier.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified portfolio.
 

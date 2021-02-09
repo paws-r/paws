@@ -12,6 +12,10 @@ to delete.}
 
 \item{DestinationId}{[required] The ID of the publishing destination to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the publishing definition with the specified \code{destinationId}.
 }

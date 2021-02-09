@@ -12,7 +12,7 @@ iam_delete_login_profile(UserName)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 }
 \description{
 Deletes the password for the specified IAM user, which terminates the

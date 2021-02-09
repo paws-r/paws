@@ -18,6 +18,80 @@ update.}
 
 \item{scale}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  taskSet = list(
+    id = "string",
+    taskSetArn = "string",
+    serviceArn = "string",
+    clusterArn = "string",
+    startedBy = "string",
+    externalId = "string",
+    status = "string",
+    taskDefinition = "string",
+    computedDesiredCount = 123,
+    pendingCount = 123,
+    runningCount = 123,
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    updatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    launchType = "EC2"|"FARGATE",
+    capacityProviderStrategy = list(
+      list(
+        capacityProvider = "string",
+        weight = 123,
+        base = 123
+      )
+    ),
+    platformVersion = "string",
+    networkConfiguration = list(
+      awsvpcConfiguration = list(
+        subnets = list(
+          "string"
+        ),
+        securityGroups = list(
+          "string"
+        ),
+        assignPublicIp = "ENABLED"|"DISABLED"
+      )
+    ),
+    loadBalancers = list(
+      list(
+        targetGroupArn = "string",
+        loadBalancerName = "string",
+        containerName = "string",
+        containerPort = 123
+      )
+    ),
+    serviceRegistries = list(
+      list(
+        registryArn = "string",
+        port = 123,
+        containerName = "string",
+        containerPort = 123
+      )
+    ),
+    scale = list(
+      value = 123.0,
+      unit = "PERCENT"
+    ),
+    stabilityStatus = "STEADY_STATE"|"STABILIZING",
+    stabilityStatusAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Modifies a task set. This is used when a service uses the \code{EXTERNAL}
 deployment controller type. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS Deployment Types}

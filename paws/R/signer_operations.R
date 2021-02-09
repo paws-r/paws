@@ -20,6 +20,14 @@ NULL
 #' @param revisionId A unique identifier for the current profile revision.
 #' @param statementId &#91;required&#93; A unique identifier for the cross-account permission statement.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   revisionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_profile_permission(
@@ -66,6 +74,8 @@ signer_add_profile_permission <- function(profileName, profileVersion = NULL, ac
 #'
 #' @param profileName &#91;required&#93; The name of the signing profile to be canceled.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_signing_profile(
@@ -105,6 +115,65 @@ signer_cancel_signing_profile <- function(profileName) {
 #'
 #' @param jobId &#91;required&#93; The ID of the signing job on input.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobId = "string",
+#'   source = list(
+#'     s3 = list(
+#'       bucketName = "string",
+#'       key = "string",
+#'       version = "string"
+#'     )
+#'   ),
+#'   signingMaterial = list(
+#'     certificateArn = "string"
+#'   ),
+#'   platformId = "string",
+#'   platformDisplayName = "string",
+#'   profileName = "string",
+#'   profileVersion = "string",
+#'   overrides = list(
+#'     signingConfiguration = list(
+#'       encryptionAlgorithm = "RSA"|"ECDSA",
+#'       hashAlgorithm = "SHA1"|"SHA256"
+#'     ),
+#'     signingImageFormat = "JSON"|"JSONEmbedded"|"JSONDetached"
+#'   ),
+#'   signingParameters = list(
+#'     "string"
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   completedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   signatureExpiresAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   requestedBy = "string",
+#'   status = "InProgress"|"Failed"|"Succeeded",
+#'   statusReason = "string",
+#'   revocationRecord = list(
+#'     reason = "string",
+#'     revokedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     revokedBy = "string"
+#'   ),
+#'   signedObject = list(
+#'     s3 = list(
+#'       bucketName = "string",
+#'       key = "string"
+#'     )
+#'   ),
+#'   jobOwner = "string",
+#'   jobInvoker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_signing_job(
@@ -141,6 +210,40 @@ signer_describe_signing_job <- function(jobId) {
 #' signer_get_signing_platform(platformId)
 #'
 #' @param platformId &#91;required&#93; The ID of the target signing platform.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   platformId = "string",
+#'   displayName = "string",
+#'   partner = "string",
+#'   target = "string",
+#'   category = "AWSIoT",
+#'   signingConfiguration = list(
+#'     encryptionAlgorithmOptions = list(
+#'       allowedValues = list(
+#'         "RSA"|"ECDSA"
+#'       ),
+#'       defaultValue = "RSA"|"ECDSA"
+#'     ),
+#'     hashAlgorithmOptions = list(
+#'       allowedValues = list(
+#'         "SHA1"|"SHA256"
+#'       ),
+#'       defaultValue = "SHA1"|"SHA256"
+#'     )
+#'   ),
+#'   signingImageFormat = list(
+#'     supportedFormats = list(
+#'       "JSON"|"JSONEmbedded"|"JSONDetached"
+#'     ),
+#'     defaultFormat = "JSON"|"JSONEmbedded"|"JSONDetached"
+#'   ),
+#'   maxSizeInMB = 123,
+#'   revocationSupported = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -180,6 +283,50 @@ signer_get_signing_platform <- function(platformId) {
 #' @param profileName &#91;required&#93; The name of the target signing profile.
 #' @param profileOwner The AWS account ID of the profile owner.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   profileName = "string",
+#'   profileVersion = "string",
+#'   profileVersionArn = "string",
+#'   revocationRecord = list(
+#'     revocationEffectiveFrom = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     revokedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     revokedBy = "string"
+#'   ),
+#'   signingMaterial = list(
+#'     certificateArn = "string"
+#'   ),
+#'   platformId = "string",
+#'   platformDisplayName = "string",
+#'   signatureValidityPeriod = list(
+#'     value = 123,
+#'     type = "DAYS"|"MONTHS"|"YEARS"
+#'   ),
+#'   overrides = list(
+#'     signingConfiguration = list(
+#'       encryptionAlgorithm = "RSA"|"ECDSA",
+#'       hashAlgorithm = "SHA1"|"SHA256"
+#'     ),
+#'     signingImageFormat = "JSON"|"JSONEmbedded"|"JSONDetached"
+#'   ),
+#'   signingParameters = list(
+#'     "string"
+#'   ),
+#'   status = "Active"|"Canceled"|"Revoked",
+#'   statusReason = "string",
+#'   arn = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_signing_profile(
@@ -218,6 +365,24 @@ signer_get_signing_profile <- function(profileName, profileOwner = NULL) {
 #'
 #' @param profileName &#91;required&#93; Name of the signing profile containing the cross-account permissions.
 #' @param nextToken String for specifying the next set of paginated results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   revisionId = "string",
+#'   policySizeBytes = 123,
+#'   permissions = list(
+#'     list(
+#'       action = "string",
+#'       principal = "string",
+#'       statementId = "string",
+#'       profileVersion = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -286,6 +451,49 @@ signer_list_profile_permissions <- function(profileName, nextToken = NULL) {
 #' @param jobInvoker Filters results to return only signing jobs initiated by a specified IAM
 #' entity.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobs = list(
+#'     list(
+#'       jobId = "string",
+#'       source = list(
+#'         s3 = list(
+#'           bucketName = "string",
+#'           key = "string",
+#'           version = "string"
+#'         )
+#'       ),
+#'       signedObject = list(
+#'         s3 = list(
+#'           bucketName = "string",
+#'           key = "string"
+#'         )
+#'       ),
+#'       signingMaterial = list(
+#'         certificateArn = "string"
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "InProgress"|"Failed"|"Succeeded",
+#'       isRevoked = TRUE|FALSE,
+#'       profileName = "string",
+#'       profileVersion = "string",
+#'       platformId = "string",
+#'       platformDisplayName = "string",
+#'       signatureExpiresAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       jobOwner = "string",
+#'       jobInvoker = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_signing_jobs(
@@ -351,6 +559,45 @@ signer_list_signing_jobs <- function(status = NULL, platformId = NULL, requested
 #' subsequent request. Set it to the value of `nextToken` from the response
 #' that you just received.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   platforms = list(
+#'     list(
+#'       platformId = "string",
+#'       displayName = "string",
+#'       partner = "string",
+#'       target = "string",
+#'       category = "AWSIoT",
+#'       signingConfiguration = list(
+#'         encryptionAlgorithmOptions = list(
+#'           allowedValues = list(
+#'             "RSA"|"ECDSA"
+#'           ),
+#'           defaultValue = "RSA"|"ECDSA"
+#'         ),
+#'         hashAlgorithmOptions = list(
+#'           allowedValues = list(
+#'             "SHA1"|"SHA256"
+#'           ),
+#'           defaultValue = "SHA1"|"SHA256"
+#'         )
+#'       ),
+#'       signingImageFormat = list(
+#'         supportedFormats = list(
+#'           "JSON"|"JSONEmbedded"|"JSONDetached"
+#'         ),
+#'         defaultFormat = "JSON"|"JSONEmbedded"|"JSONDetached"
+#'       ),
+#'       maxSizeInMB = 123,
+#'       revocationSupported = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_signing_platforms(
@@ -410,6 +657,38 @@ signer_list_signing_platforms <- function(category = NULL, partner = NULL, targe
 #' @param statuses Filters results to return only signing jobs with statuses in the
 #' specified list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   profiles = list(
+#'     list(
+#'       profileName = "string",
+#'       profileVersion = "string",
+#'       profileVersionArn = "string",
+#'       signingMaterial = list(
+#'         certificateArn = "string"
+#'       ),
+#'       signatureValidityPeriod = list(
+#'         value = 123,
+#'         type = "DAYS"|"MONTHS"|"YEARS"
+#'       ),
+#'       platformId = "string",
+#'       platformDisplayName = "string",
+#'       signingParameters = list(
+#'         "string"
+#'       ),
+#'       status = "Active"|"Canceled"|"Revoked",
+#'       arn = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_signing_profiles(
@@ -452,6 +731,16 @@ signer_list_signing_profiles <- function(includeCanceled = NULL, maxResults = NU
 #' signer_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the signing profile.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -504,6 +793,16 @@ signer_list_tags_for_resource <- function(resourceArn) {
 #' @param signingParameters Map of key-value pairs for signing. These can include any information
 #' that you want to use during signing.
 #' @param tags Tags to be associated with the signing profile that is being created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   profileVersion = "string",
+#'   profileVersionArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -567,6 +866,14 @@ signer_put_signing_profile <- function(profileName, signingMaterial = NULL, sign
 #' permissions.
 #' @param statementId &#91;required&#93; A unique identifier for the cross-account permissions statement.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   revisionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$remove_profile_permission(
@@ -608,6 +915,8 @@ signer_remove_profile_permission <- function(profileName, revisionId, statementI
 #' @param jobId &#91;required&#93; ID of the signing job to be revoked.
 #' @param jobOwner AWS account ID of the job owner.
 #' @param reason &#91;required&#93; The reason for revoking the signing job.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -656,6 +965,8 @@ signer_revoke_signature <- function(jobId, jobOwner = NULL, reason) {
 #' effective. Signatures generated using the signing profile after this
 #' timestamp are not trusted.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$revoke_signing_profile(
@@ -698,7 +1009,7 @@ signer_revoke_signing_profile <- function(profileName, profileVersion, reason, e
 #' 
 #' -   You must create an Amazon S3 source bucket. For more information,
 #'     see [Create a
-#'     Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
+#'     Bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html)
 #'     in the *Amazon S3 Getting Started Guide*.
 #' 
 #' -   Your S3 source bucket must be version enabled.
@@ -732,6 +1043,15 @@ signer_revoke_signing_profile <- function(profileName, profileVersion, reason, e
 #' @param clientRequestToken &#91;required&#93; String that identifies the signing request. All calls after the first
 #' that use this token return the same response as the first call.
 #' @param profileOwner The AWS account ID of the signing profile owner.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobId = "string",
+#'   jobOwner = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -789,6 +1109,12 @@ signer_start_signing_job <- function(source, destination, profileName, clientReq
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the signing profile.
 #' @param tags &#91;required&#93; One or more tags to be associated with the signing profile.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -830,6 +1156,12 @@ signer_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the signing profile.
 #' @param tagKeys &#91;required&#93; A list of tag keys to be removed from the signing profile.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

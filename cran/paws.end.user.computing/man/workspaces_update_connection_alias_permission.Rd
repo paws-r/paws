@@ -16,6 +16,10 @@ permissions for.}
 \item{ConnectionAliasPermission}{[required] Indicates whether to share or unshare the connection alias with the
 specified AWS account.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Shares or unshares a connection alias with one account by specifying
 whether that account has permission to associate the connection alias

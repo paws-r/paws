@@ -37,6 +37,33 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PendingMaintenanceActions = list(
+    list(
+      ResourceIdentifier = "string",
+      PendingMaintenanceActionDetails = list(
+        list(
+          Action = "string",
+          AutoAppliedAfterDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          ForcedApplyDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          OptInStatus = "string",
+          CurrentApplyDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          Description = "string"
+        )
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a list of resources (for example, instances) that have at least
 one pending maintenance action.

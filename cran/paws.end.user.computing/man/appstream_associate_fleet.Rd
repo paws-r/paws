@@ -11,6 +11,10 @@ appstream_associate_fleet(FleetName, StackName)
 
 \item{StackName}{[required] The name of the stack.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates the specified fleet with the specified stack.
 }

@@ -15,6 +15,39 @@ emr_list_clusters(CreatedAfter, CreatedBefore, ClusterStates, Marker)
 
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Clusters = list(
+    list(
+      Id = "string",
+      Name = "string",
+      Status = list(
+        State = "STARTING"|"BOOTSTRAPPING"|"RUNNING"|"WAITING"|"TERMINATING"|"TERMINATED"|"TERMINATED_WITH_ERRORS",
+        StateChangeReason = list(
+          Code = "INTERNAL_ERROR"|"VALIDATION_ERROR"|"INSTANCE_FAILURE"|"INSTANCE_FLEET_TIMEOUT"|"BOOTSTRAP_FAILURE"|"USER_REQUEST"|"STEP_FAILURE"|"ALL_STEPS_COMPLETED",
+          Message = "string"
+        ),
+        Timeline = list(
+          CreationDateTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          ReadyDateTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          EndDateTime = as.POSIXct(
+            "2015-01-01"
+          )
+        )
+      ),
+      NormalizedInstanceHours = 123,
+      ClusterArn = "string",
+      OutpostArn = "string"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Provides the status of all clusters visible to this AWS account. Allows
 you to filter the list of clusters based on certain criteria; for

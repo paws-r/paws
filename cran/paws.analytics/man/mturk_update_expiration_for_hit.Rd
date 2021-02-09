@@ -12,6 +12,10 @@ mturk_update_expiration_for_hit(HITId, ExpireAt)
 
 \item{ExpireAt}{[required] The date and time at which you want the HIT to expire}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 The \code{\link[=mturk_update_expiration_for_hit]{update_expiration_for_hit}}
 operation allows you update the expiration time of a HIT. If you update

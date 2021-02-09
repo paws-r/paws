@@ -13,6 +13,10 @@ chime_disassociate_signin_delegate_groups_from_account(AccountId,
 
 \item{GroupNames}{[required] The sign-in delegate group names.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disassociates the specified sign-in delegate groups from the specified
 Amazon Chime account.

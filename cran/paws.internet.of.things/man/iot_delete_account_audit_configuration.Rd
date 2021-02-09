@@ -10,6 +10,10 @@ iot_delete_account_audit_configuration(deleteScheduledAudits)
 \arguments{
 \item{deleteScheduledAudits}{If true, all scheduled audits are deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Restores the default settings for Device Defender audits for this
 account. Any configuration data you entered is deleted and all audit

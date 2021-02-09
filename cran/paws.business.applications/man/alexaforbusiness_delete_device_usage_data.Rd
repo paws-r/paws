@@ -13,6 +13,10 @@ alexaforbusiness_delete_device_usage_data(DeviceArn, DeviceUsageType)
 
 \item{DeviceUsageType}{[required] The type of usage data to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 When this action is called for a specified shared device, it allows
 authorized users to delete the device's entire previous history of voice

@@ -10,7 +10,7 @@ apigateway_tag_resource(resourceArn, tags)
 \item{resourceArn}{[required] [Required] The ARN of a resource that can be tagged.}
 
 \item{tags}{[required] [Required] The key-value map of strings. The valid character set is
-[a-zA-Z+-=.\\_:/]. The tag key can be up to 128 characters and must not
+[a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
 \description{

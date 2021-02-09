@@ -6,6 +6,13 @@
 \usage{
 greengrass_get_service_role_for_account()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociatedAt = "string",
+  RoleArn = "string"
+)
+}
+}
 \description{
 Retrieves the service role that is attached to your account.
 }

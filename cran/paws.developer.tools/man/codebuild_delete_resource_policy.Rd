@@ -9,6 +9,10 @@ codebuild_delete_resource_policy(resourceArn)
 \arguments{
 \item{resourceArn}{[required] The ARN of the resource that is associated with the resource policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a resource policy that is identified by its resource ARN.
 }

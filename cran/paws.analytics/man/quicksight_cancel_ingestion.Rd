@@ -13,6 +13,15 @@ quicksight_cancel_ingestion(AwsAccountId, DataSetId, IngestionId)
 
 \item{IngestionId}{[required] An ID for the ingestion.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  IngestionId = "string",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Cancels an ongoing ingestion of data into SPICE.
 }

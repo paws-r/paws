@@ -13,6 +13,10 @@ chime_associate_signin_delegate_groups_with_account(AccountId,
 
 \item{SigninDelegateGroups}{[required] The sign-in delegate groups.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates the specified sign-in delegate groups with the specified
 Amazon Chime account.

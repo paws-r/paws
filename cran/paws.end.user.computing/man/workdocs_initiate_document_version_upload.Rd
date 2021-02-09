@@ -26,6 +26,59 @@ administrator credentials to access the API.}
 
 \item{ParentFolderId}{[required] The ID of the parent folder.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Metadata = list(
+    Id = "string",
+    CreatorId = "string",
+    ParentFolderId = "string",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ModifiedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    LatestVersionMetadata = list(
+      Id = "string",
+      Name = "string",
+      ContentType = "string",
+      Size = 123,
+      Signature = "string",
+      Status = "INITIALIZED"|"ACTIVE",
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ModifiedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ContentCreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ContentModifiedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreatorId = "string",
+      Thumbnail = list(
+        "string"
+      ),
+      Source = list(
+        "string"
+      )
+    ),
+    ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+    Labels = list(
+      "string"
+    )
+  ),
+  UploadMetadata = list(
+    UploadUrl = "string",
+    SignedHeaders = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates a new document object and version object.
 

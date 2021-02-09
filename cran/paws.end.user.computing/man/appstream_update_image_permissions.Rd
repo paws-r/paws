@@ -15,6 +15,10 @@ update image permissions.}
 
 \item{ImagePermissions}{[required] The permissions for the image.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds or updates permissions for the specified private image.
 }

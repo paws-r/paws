@@ -23,6 +23,10 @@ Connector service account is not changed.}
 This is only used for AD Connector directories. For more information,
 see the \emph{UserName} parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Enables single sign-on for a directory. Single sign-on allows users in
 your directory to access certain AWS services from a computer joined to

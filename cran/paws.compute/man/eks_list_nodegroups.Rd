@@ -28,6 +28,15 @@ used and the results exceeded the value of that parameter. Pagination
 continues from the end of the previous results that returned the
 \code{nextToken} value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  nodegroups = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the Amazon EKS managed node groups associated with the specified
 cluster in your AWS account in the specified Region. Self-managed node

@@ -26,6 +26,10 @@ You can send a request to
 to see the recommended configuration for a component. For the complete
 format of the component configuration file, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/component-config.html}{Component Configuration}.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the monitoring configurations for the component. The
 configuration input parameter is an escaped JSON of the configuration

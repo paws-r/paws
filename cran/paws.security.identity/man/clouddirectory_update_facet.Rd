@@ -2,7 +2,7 @@
 % Please edit documentation in R/clouddirectory_operations.R
 \name{clouddirectory_update_facet}
 \alias{clouddirectory_update_facet}
-\title{Does the following: 1}
+\title{Does the following:}
 \usage{
 clouddirectory_update_facet(SchemaArn, Name, AttributeUpdates,
   ObjectType)
@@ -19,6 +19,10 @@ update operation to perform.}
 
 \item{ObjectType}{The object type that is associated with the facet. See
 CreateFacetRequest$ObjectType for more details.}
+}
+\value{
+A list with the following syntax:\preformatted{list()
+}
 }
 \description{
 Does the following:

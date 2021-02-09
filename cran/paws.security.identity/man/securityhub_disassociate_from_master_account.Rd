@@ -7,6 +7,10 @@ associated master account}
 \usage{
 securityhub_disassociate_from_master_account()
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disassociates the current Security Hub member account from the
 associated master account.

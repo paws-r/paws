@@ -20,6 +20,14 @@ options.}
 
 \item{tracingConfiguration}{Selects whether AWS X-Ray tracing is enabled.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  updateDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Updates an existing state machine by modifying its \code{definition},
 \code{roleArn}, or \code{loggingConfiguration}. Running executions will continue

@@ -29,6 +29,24 @@ time.}
 
 \item{SortOrder}{What direction to sort in.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeviceFleetSummaries = list(
+    list(
+      DeviceFleetArn = "string",
+      DeviceFleetName = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of devices in the fleet.
 }

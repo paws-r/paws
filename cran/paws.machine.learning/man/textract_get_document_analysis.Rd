@@ -22,6 +22,66 @@ to retrieve), Amazon Textract returns a pagination token in the
 response. You can use this pagination token to retrieve the next set of
 blocks.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DocumentMetadata = list(
+    Pages = 123
+  ),
+  JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"PARTIAL_SUCCESS",
+  NextToken = "string",
+  Blocks = list(
+    list(
+      BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT",
+      Confidence = 123.0,
+      Text = "string",
+      TextType = "HANDWRITING"|"PRINTED",
+      RowIndex = 123,
+      ColumnIndex = 123,
+      RowSpan = 123,
+      ColumnSpan = 123,
+      Geometry = list(
+        BoundingBox = list(
+          Width = 123.0,
+          Height = 123.0,
+          Left = 123.0,
+          Top = 123.0
+        ),
+        Polygon = list(
+          list(
+            X = 123.0,
+            Y = 123.0
+          )
+        )
+      ),
+      Id = "string",
+      Relationships = list(
+        list(
+          Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES",
+          Ids = list(
+            "string"
+          )
+        )
+      ),
+      EntityTypes = list(
+        "KEY"|"VALUE"
+      ),
+      SelectionStatus = "SELECTED"|"NOT_SELECTED",
+      Page = 123
+    )
+  ),
+  Warnings = list(
+    list(
+      ErrorCode = "string",
+      Pages = list(
+        123
+      )
+    )
+  ),
+  StatusMessage = "string",
+  AnalyzeDocumentModelVersion = "string"
+)
+}
+}
 \description{
 Gets the results for an Amazon Textract asynchronous operation that
 analyzes text in a document.
@@ -60,7 +120,7 @@ relationship with the value of the
 
 Selection elements such as check boxes and option buttons (radio
 buttons) can be detected in form data and in tables. A
-SELECTION\\_ELEMENT \code{Block} object contains information about a selection
+SELECTION_ELEMENT \code{Block} object contains information about a selection
 element, including the selection status.
 
 Use the \code{MaxResults} parameter to limit the number of blocks that are

@@ -18,6 +18,18 @@ region in your account.}
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RetentionConfigurations = list(
+    list(
+      Name = "string",
+      RetentionPeriodInDays = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns the details of one or more retention configurations. If the
 retention configuration name is not specified, this action returns the

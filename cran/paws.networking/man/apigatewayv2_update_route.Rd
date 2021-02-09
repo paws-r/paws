@@ -18,9 +18,9 @@ for WebSocket APIs.}
 \item{AuthorizationScopes}{The authorization scopes supported by this route.}
 
 \item{AuthorizationType}{The authorization type for the route. For WebSocket APIs, valid values
-are NONE for open access, AWS\\_IAM for using AWS IAM permissions, and
+are NONE for open access, AWS_IAM for using AWS IAM permissions, and
 CUSTOM for using a Lambda authorizer For HTTP APIs, valid values are
-NONE for open access, JWT for using JSON Web Tokens, AWS\\_IAM for using
+NONE for open access, JWT for using JSON Web Tokens, AWS_IAM for using
 AWS IAM permissions, and CUSTOM for using a Lambda authorizer.}
 
 \item{AuthorizerId}{The identifier of the Authorizer resource to be associated with this
@@ -44,6 +44,32 @@ WebSocket APIs.}
 for WebSocket APIs.}
 
 \item{Target}{The target for the route.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ApiGatewayManaged = TRUE|FALSE,
+  ApiKeyRequired = TRUE|FALSE,
+  AuthorizationScopes = list(
+    "string"
+  ),
+  AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
+  AuthorizerId = "string",
+  ModelSelectionExpression = "string",
+  OperationName = "string",
+  RequestModels = list(
+    "string"
+  ),
+  RequestParameters = list(
+    list(
+      Required = TRUE|FALSE
+    )
+  ),
+  RouteId = "string",
+  RouteKey = "string",
+  RouteResponseSelectionExpression = "string",
+  Target = "string"
+)
+}
 }
 \description{
 Updates a Route.

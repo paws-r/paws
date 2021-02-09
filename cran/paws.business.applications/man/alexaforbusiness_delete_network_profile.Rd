@@ -9,6 +9,10 @@ alexaforbusiness_delete_network_profile(NetworkProfileArn)
 \arguments{
 \item{NetworkProfileArn}{[required] The ARN of the network profile associated with a device.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a network profile by the network profile ARN.
 }

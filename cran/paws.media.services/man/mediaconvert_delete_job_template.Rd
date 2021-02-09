@@ -9,6 +9,10 @@ mediaconvert_delete_job_template(Name)
 \arguments{
 \item{Name}{[required] The name of the job template to be deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Permanently delete a job template you have created.
 }

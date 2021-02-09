@@ -29,6 +29,23 @@ the next set of model groups, use the token in the next request.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ModelPackageGroupSummaryList = list(
+    list(
+      ModelPackageGroupName = "string",
+      ModelPackageGroupArn = "string",
+      ModelPackageGroupDescription = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ModelPackageGroupStatus = "Pending"|"InProgress"|"Completed"|"Failed"|"Deleting"|"DeleteFailed"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of the model groups in your AWS account.
 }

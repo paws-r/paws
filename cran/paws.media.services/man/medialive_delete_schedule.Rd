@@ -9,6 +9,10 @@ medialive_delete_schedule(ChannelId)
 \arguments{
 \item{ChannelId}{[required] Id of the channel whose schedule is being deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Delete all schedule actions on a channel.
 }

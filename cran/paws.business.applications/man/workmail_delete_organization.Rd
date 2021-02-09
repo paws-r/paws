@@ -16,6 +16,13 @@ workmail_delete_organization(ClientToken, OrganizationId,
 \item{DeleteDirectory}{[required] If true, deletes the AWS Directory Service directory associated with the
 organization.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationId = "string",
+  State = "string"
+)
+}
+}
 \description{
 Deletes an Amazon WorkMail organization and all underlying AWS resources
 managed by Amazon WorkMail as part of the organization. You can choose

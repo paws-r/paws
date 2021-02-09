@@ -19,6 +19,21 @@ and \code{Scheduled}.}
 
 \item{nextToken}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  queries = list(
+    list(
+      queryId = "string",
+      queryString = "string",
+      status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled",
+      createTime = 123,
+      logGroupName = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of CloudWatch Logs Insights queries that are scheduled,
 executing, or have been executed recently in this account. You can

@@ -12,6 +12,10 @@ alexaforbusiness_disassociate_contact_from_address_book(ContactArn,
 
 \item{AddressBookArn}{[required] The ARN of the address from which to disassociate the contact.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disassociates a contact from a given address book.
 }

@@ -11,6 +11,15 @@ quicksight_restore_analysis(AwsAccountId, AnalysisId)
 
 \item{AnalysisId}{[required] The ID of the analysis that you're restoring.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = 123,
+  Arn = "string",
+  AnalysisId = "string",
+  RequestId = "string"
+)
+}
+}
 \description{
 Restores an analysis.
 }

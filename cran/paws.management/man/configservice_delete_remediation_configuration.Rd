@@ -13,6 +13,10 @@ configuration.}
 
 \item{ResourceType}{The type of a resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the remediation configuration.
 }

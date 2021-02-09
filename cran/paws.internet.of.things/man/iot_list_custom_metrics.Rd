@@ -11,6 +11,15 @@ iot_list_custom_metrics(nextToken, maxResults)
 
 \item{maxResults}{The maximum number of results to return at one time. The default is 25.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  metricNames = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists your Device Defender detect custom metrics.
 }

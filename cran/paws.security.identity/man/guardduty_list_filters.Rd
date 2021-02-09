@@ -18,6 +18,15 @@ this parameter to null on your first call to the list action. For
 subsequent calls to the action, fill nextToken in the request with the
 value of NextToken from the previous response to continue listing data.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FilterNames = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a paginated list of the current filters.
 }

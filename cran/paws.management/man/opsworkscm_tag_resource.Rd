@@ -28,6 +28,10 @@ value.
 server or backup.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
 Puppet Enterprise server, or to server backups.

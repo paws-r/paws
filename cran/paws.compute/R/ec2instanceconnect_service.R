@@ -41,7 +41,7 @@ NULL
 #'   AvailabilityZone = "us-west-2a",
 #'   InstanceId = "i-abcd1234",
 #'   InstanceOSUser = "ec2-user",
-#'   SSHPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3FlHqj2eqCdrGHuA6dRjfZXQ4HX5lXEIRHa..."
+#'   SSHPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3FlHqj2eqCdrGHuA6dRjfZXQ4HX5..."
 #' )
 #' }
 #'

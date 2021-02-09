@@ -13,6 +13,12 @@ iotdataplane_update_thing_shadow(thingName, shadowName, payload)
 
 \item{payload}{[required] The state information, in JSON format.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  payload = raw
+)
+}
+}
 \description{
 Updates the shadow for the specified thing.
 

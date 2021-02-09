@@ -60,6 +60,51 @@ Default: Describes all your network ACLs.}
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NetworkAcls = list(
+    list(
+      Associations = list(
+        list(
+          NetworkAclAssociationId = "string",
+          NetworkAclId = "string",
+          SubnetId = "string"
+        )
+      ),
+      Entries = list(
+        list(
+          CidrBlock = "string",
+          Egress = TRUE|FALSE,
+          IcmpTypeCode = list(
+            Code = 123,
+            Type = 123
+          ),
+          Ipv6CidrBlock = "string",
+          PortRange = list(
+            From = 123,
+            To = 123
+          ),
+          Protocol = "string",
+          RuleAction = "allow"|"deny",
+          RuleNumber = 123
+        )
+      ),
+      IsDefault = TRUE|FALSE,
+      NetworkAclId = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      VpcId = "string",
+      OwnerId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more of your network ACLs.
 

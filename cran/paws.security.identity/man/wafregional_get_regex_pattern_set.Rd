@@ -12,6 +12,18 @@ wafregional_get_regex_pattern_set(RegexPatternSetId)
 \code{\link[=wafregional_create_regex_pattern_set]{create_regex_pattern_set}} and
 by \code{\link[=wafregional_list_regex_pattern_sets]{list_regex_pattern_sets}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RegexPatternSet = list(
+    RegexPatternSetId = "string",
+    Name = "string",
+    RegexPatternStrings = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

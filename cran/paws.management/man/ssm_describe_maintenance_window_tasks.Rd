@@ -21,6 +21,46 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tasks = list(
+    list(
+      WindowId = "string",
+      WindowTaskId = "string",
+      TaskArn = "string",
+      Type = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
+      Targets = list(
+        list(
+          Key = "string",
+          Values = list(
+            "string"
+          )
+        )
+      ),
+      TaskParameters = list(
+        list(
+          Values = list(
+            "string"
+          )
+        )
+      ),
+      Priority = 123,
+      LoggingInfo = list(
+        S3BucketName = "string",
+        S3KeyPrefix = "string",
+        S3Region = "string"
+      ),
+      ServiceRoleArn = "string",
+      MaxConcurrency = "string",
+      MaxErrors = "string",
+      Name = "string",
+      Description = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the tasks in a maintenance window.
 

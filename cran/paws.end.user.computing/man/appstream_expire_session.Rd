@@ -9,6 +9,10 @@ appstream_expire_session(SessionId)
 \arguments{
 \item{SessionId}{[required] The identifier of the streaming session.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Immediately stops the specified streaming session.
 }

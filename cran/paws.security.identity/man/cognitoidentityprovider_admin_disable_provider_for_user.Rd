@@ -13,6 +13,10 @@ cognitoidentityprovider_admin_disable_provider_for_user(UserPoolId,
 
 \item{User}{[required] The user to be disabled.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disables the user from signing in with the specified external (SAML or
 social) identity provider. If the user to disable is a Cognito User

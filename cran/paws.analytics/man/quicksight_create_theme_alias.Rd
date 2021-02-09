@@ -19,6 +19,18 @@ are reserved by Amazon QuickSight.}
 
 \item{ThemeVersionNumber}{[required] The version number of the theme.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ThemeAlias = list(
+    Arn = "string",
+    AliasName = "string",
+    ThemeVersionNumber = 123
+  ),
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Creates a theme alias for a theme.
 }

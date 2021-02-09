@@ -11,6 +11,21 @@ iot_list_scheduled_audits(nextToken, maxResults)
 
 \item{maxResults}{The maximum number of results to return at one time. The default is 25.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  scheduledAudits = list(
+    list(
+      scheduledAuditName = "string",
+      scheduledAuditArn = "string",
+      frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
+      dayOfMonth = "string",
+      dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all of your scheduled audits.
 }

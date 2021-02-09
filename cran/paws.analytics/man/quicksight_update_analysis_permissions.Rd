@@ -21,6 +21,23 @@ add them to.}
 \item{RevokePermissions}{A structure that describes the permissions to remove and the principal
 to remove them from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AnalysisArn = "string",
+  AnalysisId = "string",
+  Permissions = list(
+    list(
+      Principal = "string",
+      Actions = list(
+        "string"
+      )
+    )
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Updates the read and write permissions for an analysis.
 }

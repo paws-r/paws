@@ -18,6 +18,28 @@ workspaces_describe_connection_aliases(AliasIds, ResourceId, Limit,
 \item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated,
 provide this token to receive the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConnectionAliases = list(
+    list(
+      ConnectionString = "string",
+      AliasId = "string",
+      State = "CREATING"|"CREATED"|"DELETING",
+      OwnerAccountId = "string",
+      Associations = list(
+        list(
+          AssociationStatus = "NOT_ASSOCIATED"|"ASSOCIATED_WITH_OWNER_ACCOUNT"|"ASSOCIATED_WITH_SHARED_ACCOUNT"|"PENDING_ASSOCIATION"|"PENDING_DISASSOCIATION",
+          AssociatedAccountId = "string",
+          ResourceId = "string",
+          ConnectionIdentifier = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list that describes the connection aliases used for
 cross-Region redirection. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.

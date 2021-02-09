@@ -14,6 +14,20 @@ apigatewayv2_get_api_mappings(DomainName, MaxResults, NextToken)
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Items = list(
+    list(
+      ApiId = "string",
+      ApiMappingId = "string",
+      ApiMappingKey = "string",
+      Stage = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets API mappings.
 }

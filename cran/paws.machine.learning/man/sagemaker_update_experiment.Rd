@@ -14,6 +14,12 @@ unique. If \code{DisplayName} isn't specified, \code{ExperimentName} is displaye
 
 \item{Description}{The description of the experiment.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ExperimentArn = "string"
+)
+}
+}
 \description{
 Adds, updates, or removes the description of an experiment. Updates the
 display name of an experiment.

@@ -11,7 +11,7 @@ secretsmanager_create_secret(Name, ClientRequestToken, Description,
 \item{Name}{[required] Specifies the friendly name of the new secret.
 
 The secret name must be ASCII letters, digits, or the following
-characters : /\\_+=.@-
+characters : /_+=.@-
 
 Do not end your secret name with a hyphen followed by six characters. If
 you do so, you risk confusion and unexpected results when searching for
@@ -102,7 +102,7 @@ format a JSON parameter for the various command line tool environments,
 see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For example:
 
-\verb{\\\{"username":"bob","password":"abc123xyz456"\\\}}
+\verb{\{"username":"bob","password":"abc123xyz456"\}}
 
 If your command-line tool or SDK requires quotation marks around the
 parameter, you should use single quotes to avoid confusion with the
@@ -127,7 +127,7 @@ how to format a JSON parameter for the various command line tool
 environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For example:
 
-\verb{\\\[\\\{"Key":"CostCenter","Value":"12345"\\\},\\\{"Key":"environment","Value":"production"\\\}\\\]}
+\verb{[\{"Key":"CostCenter","Value":"12345"\},\{"Key":"environment","Value":"production"\}]}
 
 If your command-line tool or SDK requires quotation marks around the
 parameter, you should use single quotes to avoid confusion with the
@@ -147,8 +147,16 @@ your tags per secret limit.
 resources, remember other services might have restrictions on
 allowed characters. Generally allowed characters: letters, spaces,
 and numbers representable in UTF-8, plus the following special
-characters: + - = . \\_ : / @.
+characters: + - = . _ : / @.
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string",
+  VersionId = "string"
+)
+}
 }
 \description{
 Creates a new secret. A secret in Secrets Manager consists of both the
@@ -255,7 +263,7 @@ svc$create_secret(
   ClientRequestToken = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
   Description = "My test database secret created with the CLI",
   Name = "MyTestDatabaseSecret",
-  SecretString = "\{\"username\":\"david\",\"password\":\"BnQw!XDWgaEeT9XGTT29\"\}"
+  SecretString = "{"username":"david","password":"BnQw!XDWgaEeT9XGTT29"}"
 )
 }
 

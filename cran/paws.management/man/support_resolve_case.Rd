@@ -11,6 +11,13 @@ support_resolve_case(caseId)
 is an alphanumeric string formatted as shown in this example:
 case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  initialCaseStatus = "string",
+  finalCaseStatus = "string"
+)
+}
+}
 \description{
 Resolves a support case. This operation takes a \code{caseId} and returns the
 initial and final state of the case.

@@ -30,7 +30,7 @@ an S3 bucket tags, see
 \emph{Amazon Simple Storage Service API}.
 
 Deletes the tags from the Outposts bucket. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in \emph{Amazon Simple Storage Service Developer Guide}.
 
 To use this operation, you must have permission to perform the

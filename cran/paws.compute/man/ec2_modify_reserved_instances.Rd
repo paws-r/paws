@@ -16,6 +16,12 @@ modification request. For more information, see \href{https://docs.aws.amazon.co
 
 \item{TargetConfigurations}{[required] The configuration settings for the Reserved Instances to modify.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReservedInstancesModificationId = "string"
+)
+}
+}
 \description{
 Modifies the Availability Zone, instance count, instance type, or
 network platform (EC2-Classic or EC2-VPC) of your Reserved Instances.

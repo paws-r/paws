@@ -11,6 +11,14 @@ glue_cancel_ml_task_run(TransformId, TaskRunId)
 
 \item{TaskRunId}{[required] A unique identifier for the task run.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransformId = "string",
+  TaskRunId = "string",
+  Status = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT"
+)
+}
+}
 \description{
 Cancels (stops) a task run. Machine learning task runs are asynchronous
 tasks that AWS Glue runs on your behalf as part of various machine

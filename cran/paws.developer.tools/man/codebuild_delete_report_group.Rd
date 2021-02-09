@@ -19,6 +19,10 @@ to get the reports in a report group. Use
 call \code{\link[=codebuild_delete_report_group]{delete_report_group}} for a report
 group that contains one or more reports, an exception is thrown.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a report group. Before you delete a report group, you must
 delete its reports.

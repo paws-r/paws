@@ -16,6 +16,16 @@ apigateway_create_documentation_version(restApiId, documentationVersion,
 
 \item{description}{A description about the new documentation snapshot.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  version = "string",
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  description = "string"
+)
+}
+}
 \description{
 Create documentation version
 }

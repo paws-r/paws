@@ -12,7 +12,10 @@ greengrass_tag_resource(ResourceArn, tags)
 \item{tags}{}
 }
 \description{
-Adds tags to a Greengrass resource. Valid resources are 'Group', 'ConnectorDefinition', 'CoreDefinition', 'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition', 'SubscriptionDefinition', 'ResourceDefinition', and 'BulkDeployment'.
+Adds tags to a Greengrass resource. Valid resources are 'Group',
+'ConnectorDefinition', 'CoreDefinition', 'DeviceDefinition',
+'FunctionDefinition', 'LoggerDefinition', 'SubscriptionDefinition',
+'ResourceDefinition', and 'BulkDeployment'.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

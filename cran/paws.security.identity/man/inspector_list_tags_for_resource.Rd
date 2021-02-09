@@ -10,6 +10,17 @@ inspector_list_tags_for_resource(resourceArn)
 \item{resourceArn}{[required] The ARN that specifies the assessment template whose tags you want to
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists all tags associated with an assessment template.
 }
@@ -24,7 +35,7 @@ Lists all tags associated with an assessment template.
 \dontrun{
 # Lists all tags associated with an assessment template.
 svc$list_tags_for_resource(
-  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-gcwFl..."
+  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/..."
 )
 }
 

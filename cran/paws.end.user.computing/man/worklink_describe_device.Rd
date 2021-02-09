@@ -11,6 +11,24 @@ worklink_describe_device(FleetArn, DeviceId)
 
 \item{DeviceId}{[required] A unique identifier for a registered user's device.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = "ACTIVE"|"SIGNED_OUT",
+  Model = "string",
+  Manufacturer = "string",
+  OperatingSystem = "string",
+  OperatingSystemVersion = "string",
+  PatchLevel = "string",
+  FirstAccessedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastAccessedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  Username = "string"
+)
+}
+}
 \description{
 Provides information about a user's device.
 }

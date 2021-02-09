@@ -6,6 +6,14 @@
 \usage{
 backup_get_supported_resource_types()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceTypes = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns the AWS resource types supported by AWS Backup.
 }

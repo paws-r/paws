@@ -16,6 +16,29 @@ chime_list_room_memberships(AccountId, RoomId, MaxResults, NextToken)
 
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RoomMemberships = list(
+    list(
+      RoomId = "string",
+      Member = list(
+        MemberId = "string",
+        MemberType = "User"|"Bot"|"Webhook",
+        Email = "string",
+        FullName = "string",
+        AccountId = "string"
+      ),
+      Role = "Administrator"|"Member",
+      InvitedBy = "string",
+      UpdatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the membership details for the specified room in an Amazon Chime
 Enterprise account, such as the members' IDs, email addresses, and

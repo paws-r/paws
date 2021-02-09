@@ -34,6 +34,26 @@ up to 100 results and a \code{nextToken} value if applicable.}
 The filter name \code{name} is supported. When filtering, you must use the
 complete value of the filtered item. You can use up to three filters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  robotApplicationSummaries = list(
+    list(
+      name = "string",
+      arn = "string",
+      version = "string",
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      robotSoftwareSuite = list(
+        name = "ROS"|"ROS2",
+        version = "Kinetic"|"Melodic"|"Dashing"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of robot application. You can optionally provide filters
 to retrieve specific robot applications.

@@ -30,6 +30,14 @@ NULL
 #' @param ChecksumAggregationMethod The aggregation method used to generate the checksum. Currently, the
 #' only supported aggregation method is `LINEAR`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "completed"|"pending"|"error"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$complete_snapshot(
@@ -80,6 +88,17 @@ ebs_complete_snapshot <- function(SnapshotId, ChangedBlocksCount, Checksum = NUL
 #' Obtain the `BlockToken` by running the
 #' [`list_changed_blocks`][ebs_list_changed_blocks] or
 #' [`list_snapshot_blocks`][ebs_list_snapshot_blocks] operations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataLength = 123,
+#'   BlockData = raw,
+#'   Checksum = "string",
+#'   ChecksumAlgorithm = "SHA256"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -137,6 +156,26 @@ ebs_get_snapshot_block <- function(SnapshotId, BlockIndex, BlockToken) {
 #' The list in the response will start from this block index or the next
 #' valid block index in the snapshots.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangedBlocks = list(
+#'     list(
+#'       BlockIndex = 123,
+#'       FirstBlockToken = "string",
+#'       SecondBlockToken = "string"
+#'     )
+#'   ),
+#'   ExpiryTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   VolumeSize = 123,
+#'   BlockSize = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_changed_blocks(
@@ -185,6 +224,25 @@ ebs_list_changed_blocks <- function(FirstSnapshotId = NULL, SecondSnapshotId, Ne
 #' @param StartingBlockIndex The block index from which the list should start. The list in the
 #' response will start from this block index or the next valid block index
 #' in the snapshot.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Blocks = list(
+#'     list(
+#'       BlockIndex = 123,
+#'       BlockToken = "string"
+#'     )
+#'   ),
+#'   ExpiryTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   VolumeSize = 123,
+#'   BlockSize = 123,
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -258,6 +316,15 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
 #' supported.
 #' @param ChecksumAlgorithm &#91;required&#93; The algorithm used to generate the checksum. Currently, the only
 #' supported algorithm is `SHA256`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Checksum = "string",
+#'   ChecksumAlgorithm = "SHA256"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -367,6 +434,30 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
 #' -   The snapshot is not completed after writing the last block of data.
 #' 
 #' If no value is specified, the timeout defaults to `60` minutes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   SnapshotId = "string",
+#'   OwnerId = "string",
+#'   Status = "completed"|"pending"|"error",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   VolumeSize = 123,
+#'   BlockSize = 123,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ParentSnapshotId = "string",
+#'   KmsKeyArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

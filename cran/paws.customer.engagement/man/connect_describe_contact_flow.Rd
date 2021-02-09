@@ -11,6 +11,22 @@ connect_describe_contact_flow(InstanceId, ContactFlowId)
 
 \item{ContactFlowId}{[required] The identifier of the contact flow.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContactFlow = list(
+    Arn = "string",
+    Id = "string",
+    Name = "string",
+    Type = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER",
+    Description = "string",
+    Content = "string",
+    Tags = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the specified contact flow.
 

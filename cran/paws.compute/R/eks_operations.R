@@ -48,6 +48,41 @@ NULL
 #' organization. Each tag consists of a key and an optional value, both of
 #' which you define.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   addon = list(
+#'     addonName = "string",
+#'     clusterName = "string",
+#'     status = "CREATING"|"ACTIVE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETE_FAILED"|"DEGRADED",
+#'     addonVersion = "string",
+#'     health = list(
+#'       issues = list(
+#'         list(
+#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'           message = "string",
+#'           resourceIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     addonArn = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     modifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     serviceAccountRoleArn = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_addon(
@@ -174,6 +209,75 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' which you define.
 #' @param encryptionConfig The encryption configuration for the cluster.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cluster = list(
+#'     name = "string",
+#'     arn = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     version = "string",
+#'     endpoint = "string",
+#'     roleArn = "string",
+#'     resourcesVpcConfig = list(
+#'       subnetIds = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       ),
+#'       clusterSecurityGroupId = "string",
+#'       vpcId = "string",
+#'       endpointPublicAccess = TRUE|FALSE,
+#'       endpointPrivateAccess = TRUE|FALSE,
+#'       publicAccessCidrs = list(
+#'         "string"
+#'       )
+#'     ),
+#'     kubernetesNetworkConfig = list(
+#'       serviceIpv4Cidr = "string"
+#'     ),
+#'     logging = list(
+#'       clusterLogging = list(
+#'         list(
+#'           types = list(
+#'             "api"|"audit"|"authenticator"|"controllerManager"|"scheduler"
+#'           ),
+#'           enabled = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     identity = list(
+#'       oidc = list(
+#'         issuer = "string"
+#'       )
+#'     ),
+#'     status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED"|"UPDATING",
+#'     certificateAuthority = list(
+#'       data = "string"
+#'     ),
+#'     clientRequestToken = "string",
+#'     platformVersion = "string",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     encryptionConfig = list(
+#'       list(
+#'         resources = list(
+#'           "string"
+#'         ),
+#'         provider = list(
+#'           keyArn = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_cluster(
@@ -239,7 +343,7 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'       "subnet-e7e761ac"
 #'     )
 #'   ),
-#'   roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonEKS-J7ON..."
+#'   roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonE..."
 #' )
 #' }
 #'
@@ -332,6 +436,37 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 #' optional value, both of which you define. Fargate profile tags do not
 #' propagate to any other resources associated with the Fargate profile,
 #' such as the pods that are scheduled with it.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   fargateProfile = list(
+#'     fargateProfileName = "string",
+#'     fargateProfileArn = "string",
+#'     clusterName = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     podExecutionRoleArn = "string",
+#'     subnets = list(
+#'       "string"
+#'     ),
+#'     selectors = list(
+#'       list(
+#'         namespace = "string",
+#'         labels = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     status = "CREATING"|"ACTIVE"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -502,6 +637,78 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the Amazon EKS User Guide.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nodegroup = list(
+#'     nodegroupName = "string",
+#'     nodegroupArn = "string",
+#'     clusterName = "string",
+#'     version = "string",
+#'     releaseVersion = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     modifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"|"DEGRADED",
+#'     capacityType = "ON_DEMAND"|"SPOT",
+#'     scalingConfig = list(
+#'       minSize = 123,
+#'       maxSize = 123,
+#'       desiredSize = 123
+#'     ),
+#'     instanceTypes = list(
+#'       "string"
+#'     ),
+#'     subnets = list(
+#'       "string"
+#'     ),
+#'     remoteAccess = list(
+#'       ec2SshKey = "string",
+#'       sourceSecurityGroups = list(
+#'         "string"
+#'       )
+#'     ),
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
+#'     nodeRole = "string",
+#'     labels = list(
+#'       "string"
+#'     ),
+#'     resources = list(
+#'       autoScalingGroups = list(
+#'         list(
+#'           name = "string"
+#'         )
+#'       ),
+#'       remoteAccessSecurityGroup = "string"
+#'     ),
+#'     diskSize = 123,
+#'     health = list(
+#'       issues = list(
+#'         list(
+#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable",
+#'           message = "string",
+#'           resourceIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     launchTemplate = list(
+#'       name = "string",
+#'       version = "string",
+#'       id = "string"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_nodegroup(
@@ -582,6 +789,41 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   addon = list(
+#'     addonName = "string",
+#'     clusterName = "string",
+#'     status = "CREATING"|"ACTIVE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETE_FAILED"|"DEGRADED",
+#'     addonVersion = "string",
+#'     health = list(
+#'       issues = list(
+#'         list(
+#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'           message = "string",
+#'           resourceIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     addonArn = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     modifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     serviceAccountRoleArn = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_addon(
@@ -632,6 +874,75 @@ eks_delete_addon <- function(clusterName, addonName) {
 #' eks_delete_cluster(name)
 #'
 #' @param name &#91;required&#93; The name of the cluster to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cluster = list(
+#'     name = "string",
+#'     arn = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     version = "string",
+#'     endpoint = "string",
+#'     roleArn = "string",
+#'     resourcesVpcConfig = list(
+#'       subnetIds = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       ),
+#'       clusterSecurityGroupId = "string",
+#'       vpcId = "string",
+#'       endpointPublicAccess = TRUE|FALSE,
+#'       endpointPrivateAccess = TRUE|FALSE,
+#'       publicAccessCidrs = list(
+#'         "string"
+#'       )
+#'     ),
+#'     kubernetesNetworkConfig = list(
+#'       serviceIpv4Cidr = "string"
+#'     ),
+#'     logging = list(
+#'       clusterLogging = list(
+#'         list(
+#'           types = list(
+#'             "api"|"audit"|"authenticator"|"controllerManager"|"scheduler"
+#'           ),
+#'           enabled = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     identity = list(
+#'       oidc = list(
+#'         issuer = "string"
+#'       )
+#'     ),
+#'     status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED"|"UPDATING",
+#'     certificateAuthority = list(
+#'       data = "string"
+#'     ),
+#'     clientRequestToken = "string",
+#'     platformVersion = "string",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     encryptionConfig = list(
+#'       list(
+#'         resources = list(
+#'           "string"
+#'         ),
+#'         provider = list(
+#'           keyArn = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -691,6 +1002,37 @@ eks_delete_cluster <- function(name) {
 #' to delete.
 #' @param fargateProfileName &#91;required&#93; The name of the Fargate profile to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   fargateProfile = list(
+#'     fargateProfileName = "string",
+#'     fargateProfileArn = "string",
+#'     clusterName = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     podExecutionRoleArn = "string",
+#'     subnets = list(
+#'       "string"
+#'     ),
+#'     selectors = list(
+#'       list(
+#'         namespace = "string",
+#'         labels = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     status = "CREATING"|"ACTIVE"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_fargate_profile(
@@ -730,6 +1072,78 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that is associated with your node
 #' group.
 #' @param nodegroupName &#91;required&#93; The name of the node group to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nodegroup = list(
+#'     nodegroupName = "string",
+#'     nodegroupArn = "string",
+#'     clusterName = "string",
+#'     version = "string",
+#'     releaseVersion = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     modifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"|"DEGRADED",
+#'     capacityType = "ON_DEMAND"|"SPOT",
+#'     scalingConfig = list(
+#'       minSize = 123,
+#'       maxSize = 123,
+#'       desiredSize = 123
+#'     ),
+#'     instanceTypes = list(
+#'       "string"
+#'     ),
+#'     subnets = list(
+#'       "string"
+#'     ),
+#'     remoteAccess = list(
+#'       ec2SshKey = "string",
+#'       sourceSecurityGroups = list(
+#'         "string"
+#'       )
+#'     ),
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
+#'     nodeRole = "string",
+#'     labels = list(
+#'       "string"
+#'     ),
+#'     resources = list(
+#'       autoScalingGroups = list(
+#'         list(
+#'           name = "string"
+#'         )
+#'       ),
+#'       remoteAccessSecurityGroup = "string"
+#'     ),
+#'     diskSize = 123,
+#'     health = list(
+#'       issues = list(
+#'         list(
+#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable",
+#'           message = "string",
+#'           resourceIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     launchTemplate = list(
+#'       name = "string",
+#'       version = "string",
+#'       id = "string"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -771,6 +1185,41 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
 #' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   addon = list(
+#'     addonName = "string",
+#'     clusterName = "string",
+#'     status = "CREATING"|"ACTIVE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETE_FAILED"|"DEGRADED",
+#'     addonVersion = "string",
+#'     health = list(
+#'       issues = list(
+#'         list(
+#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'           message = "string",
+#'           resourceIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     addonArn = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     modifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     serviceAccountRoleArn = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -823,6 +1272,37 @@ eks_describe_addon <- function(clusterName, addonName) {
 #' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   addons = list(
+#'     list(
+#'       addonName = "string",
+#'       type = "string",
+#'       addonVersions = list(
+#'         list(
+#'           addonVersion = "string",
+#'           architecture = list(
+#'             "string"
+#'           ),
+#'           compatibilities = list(
+#'             list(
+#'               clusterVersion = "string",
+#'               platformVersions = list(
+#'                 "string"
+#'               ),
+#'               defaultVersion = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_addon_versions(
@@ -872,6 +1352,75 @@ eks_describe_addon_versions <- function(kubernetesVersion = NULL, maxResults = N
 #'
 #' @param name &#91;required&#93; The name of the cluster to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cluster = list(
+#'     name = "string",
+#'     arn = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     version = "string",
+#'     endpoint = "string",
+#'     roleArn = "string",
+#'     resourcesVpcConfig = list(
+#'       subnetIds = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       ),
+#'       clusterSecurityGroupId = "string",
+#'       vpcId = "string",
+#'       endpointPublicAccess = TRUE|FALSE,
+#'       endpointPrivateAccess = TRUE|FALSE,
+#'       publicAccessCidrs = list(
+#'         "string"
+#'       )
+#'     ),
+#'     kubernetesNetworkConfig = list(
+#'       serviceIpv4Cidr = "string"
+#'     ),
+#'     logging = list(
+#'       clusterLogging = list(
+#'         list(
+#'           types = list(
+#'             "api"|"audit"|"authenticator"|"controllerManager"|"scheduler"
+#'           ),
+#'           enabled = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     identity = list(
+#'       oidc = list(
+#'         issuer = "string"
+#'       )
+#'     ),
+#'     status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED"|"UPDATING",
+#'     certificateAuthority = list(
+#'       data = "string"
+#'     ),
+#'     clientRequestToken = "string",
+#'     platformVersion = "string",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     encryptionConfig = list(
+#'       list(
+#'         resources = list(
+#'           "string"
+#'         ),
+#'         provider = list(
+#'           keyArn = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_cluster(
@@ -919,6 +1468,37 @@ eks_describe_cluster <- function(name) {
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the Fargate profile.
 #' @param fargateProfileName &#91;required&#93; The name of the Fargate profile to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   fargateProfile = list(
+#'     fargateProfileName = "string",
+#'     fargateProfileArn = "string",
+#'     clusterName = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     podExecutionRoleArn = "string",
+#'     subnets = list(
+#'       "string"
+#'     ),
+#'     selectors = list(
+#'       list(
+#'         namespace = "string",
+#'         labels = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     status = "CREATING"|"ACTIVE"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_fargate_profile(
@@ -957,6 +1537,78 @@ eks_describe_fargate_profile <- function(clusterName, fargateProfileName) {
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the node group.
 #' @param nodegroupName &#91;required&#93; The name of the node group to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nodegroup = list(
+#'     nodegroupName = "string",
+#'     nodegroupArn = "string",
+#'     clusterName = "string",
+#'     version = "string",
+#'     releaseVersion = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     modifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"|"DEGRADED",
+#'     capacityType = "ON_DEMAND"|"SPOT",
+#'     scalingConfig = list(
+#'       minSize = 123,
+#'       maxSize = 123,
+#'       desiredSize = 123
+#'     ),
+#'     instanceTypes = list(
+#'       "string"
+#'     ),
+#'     subnets = list(
+#'       "string"
+#'     ),
+#'     remoteAccess = list(
+#'       ec2SshKey = "string",
+#'       sourceSecurityGroups = list(
+#'         "string"
+#'       )
+#'     ),
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
+#'     nodeRole = "string",
+#'     labels = list(
+#'       "string"
+#'     ),
+#'     resources = list(
+#'       autoScalingGroups = list(
+#'         list(
+#'           name = "string"
+#'         )
+#'       ),
+#'       remoteAccessSecurityGroup = "string"
+#'     ),
+#'     diskSize = 123,
+#'     health = list(
+#'       issues = list(
+#'         list(
+#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable",
+#'           message = "string",
+#'           resourceIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     launchTemplate = list(
+#'       name = "string",
+#'       version = "string",
+#'       id = "string"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1006,6 +1658,36 @@ eks_describe_nodegroup <- function(clusterName, nodegroupName) {
 #' @param addonName The name of the add-on. The name must match one of the names returned by
 #' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   update = list(
+#'     id = "string",
+#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+#'     params = list(
+#'       list(
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     errors = list(
+#'       list(
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'         errorMessage = "string",
+#'         resourceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1062,6 +1744,17 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   addons = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1120,6 +1813,17 @@ eks_list_addons <- function(clusterName, maxResults = NULL, nextToken = NULL) {
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   clusters = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1185,6 +1889,17 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   fargateProfileNames = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_fargate_profiles(
@@ -1243,6 +1958,17 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
 #' continues from the end of the previous results that returned the
 #' `nextToken` value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nodegroups = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_nodegroups(
@@ -1283,6 +2009,16 @@ eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
 #' list the tags. Currently, the supported resources are Amazon EKS
 #' clusters and managed node groups.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1347,6 +2083,17 @@ eks_list_tags_for_resource <- function(resourceArn) {
 #' don't use this parameter, [`list_updates`][eks_list_updates] returns up
 #' to 100 results and a `nextToken` value if applicable.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   updateIds = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_updates(
@@ -1399,6 +2146,12 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, nextT
 #' node groups.
 #' @param tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1441,6 +2194,12 @@ eks_tag_resource <- function(resourceArn, tags) {
 #' tags. Currently, the supported resources are Amazon EKS clusters and
 #' managed node groups.
 #' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1506,6 +2265,36 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #' of the add-on to the cluster.
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   update = list(
+#'     id = "string",
+#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+#'     params = list(
+#'       list(
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     errors = list(
+#'       list(
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'         errorMessage = "string",
+#'         resourceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1592,6 +2381,36 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   update = list(
+#'     id = "string",
+#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+#'     params = list(
+#'       list(
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     errors = list(
+#'       list(
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'         errorMessage = "string",
+#'         resourceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_cluster_config(
@@ -1669,6 +2488,36 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   update = list(
+#'     id = "string",
+#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+#'     params = list(
+#'       list(
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     errors = list(
+#'       list(
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'         errorMessage = "string",
+#'         resourceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_cluster_version(
@@ -1721,6 +2570,36 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
 #' update.
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   update = list(
+#'     id = "string",
+#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+#'     params = list(
+#'       list(
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     errors = list(
+#'       list(
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'         errorMessage = "string",
+#'         resourceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1834,6 +2713,36 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' terminate the old node whether or not any pods are running on the node.
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   update = list(
+#'     id = "string",
+#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+#'     params = list(
+#'       list(
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     errors = list(
+#'       list(
+#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+#'         errorMessage = "string",
+#'         resourceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

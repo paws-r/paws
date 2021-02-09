@@ -9,6 +9,18 @@ configservice_get_stored_query(QueryName)
 \arguments{
 \item{QueryName}{[required] The name of the query.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StoredQuery = list(
+    QueryId = "string",
+    QueryArn = "string",
+    QueryName = "string",
+    Description = "string",
+    Expression = "string"
+  )
+)
+}
+}
 \description{
 Returns the details of a specific stored query.
 }

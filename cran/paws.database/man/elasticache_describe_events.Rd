@@ -40,6 +40,22 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  Events = list(
+    list(
+      SourceIdentifier = "string",
+      SourceType = "cache-cluster"|"cache-parameter-group"|"cache-security-group"|"cache-subnet-group"|"replication-group"|"user"|"user-group",
+      Message = "string",
+      Date = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns events related to clusters, cache security groups, and cache
 parameter groups. You can obtain events specific to a particular

@@ -16,6 +16,48 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{TagSpecifications}{The tags to assign to the network ACL.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NetworkAcl = list(
+    Associations = list(
+      list(
+        NetworkAclAssociationId = "string",
+        NetworkAclId = "string",
+        SubnetId = "string"
+      )
+    ),
+    Entries = list(
+      list(
+        CidrBlock = "string",
+        Egress = TRUE|FALSE,
+        IcmpTypeCode = list(
+          Code = 123,
+          Type = 123
+        ),
+        Ipv6CidrBlock = "string",
+        PortRange = list(
+          From = 123,
+          To = 123
+        ),
+        Protocol = "string",
+        RuleAction = "allow"|"deny",
+        RuleNumber = 123
+      )
+    ),
+    IsDefault = TRUE|FALSE,
+    NetworkAclId = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    VpcId = "string",
+    OwnerId = "string"
+  )
+)
+}
+}
 \description{
 Creates a network ACL in a VPC. Network ACLs provide an optional layer
 of security (in addition to security groups) for the instances in your

@@ -16,6 +16,26 @@ medialive_batch_delete(ChannelIds, InputIds, InputSecurityGroupIds,
 
 \item{MultiplexIds}{List of multiplex IDs}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Failed = list(
+    list(
+      Arn = "string",
+      Code = "string",
+      Id = "string",
+      Message = "string"
+    )
+  ),
+  Successful = list(
+    list(
+      Arn = "string",
+      Id = "string",
+      State = "string"
+    )
+  )
+)
+}
+}
 \description{
 Starts delete of resources.
 }

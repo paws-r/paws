@@ -15,6 +15,33 @@ chime_create_user(AccountId, Username, Email, UserType)
 
 \item{UserType}{The user type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  User = list(
+    UserId = "string",
+    AccountId = "string",
+    PrimaryEmail = "string",
+    PrimaryProvisionedNumber = "string",
+    DisplayName = "string",
+    LicenseType = "Basic"|"Plus"|"Pro"|"ProTrial",
+    UserType = "PrivateUser"|"SharedDevice",
+    UserRegistrationStatus = "Unregistered"|"Registered"|"Suspended",
+    UserInvitationStatus = "Pending"|"Accepted"|"Failed",
+    RegisteredOn = as.POSIXct(
+      "2015-01-01"
+    ),
+    InvitedOn = as.POSIXct(
+      "2015-01-01"
+    ),
+    AlexaForBusinessMetadata = list(
+      IsAlexaForBusinessEnabled = TRUE|FALSE,
+      AlexaForBusinessRoomArn = "string"
+    ),
+    PersonalPIN = "string"
+  )
+)
+}
+}
 \description{
 Creates a user under the specified Amazon Chime account.
 }

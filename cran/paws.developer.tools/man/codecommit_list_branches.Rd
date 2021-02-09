@@ -11,6 +11,15 @@ codecommit_list_branches(repositoryName, nextToken)
 
 \item{nextToken}{An enumeration token that allows the operation to batch the results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  branches = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets information about one or more branches in a repository.
 }

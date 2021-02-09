@@ -14,6 +14,24 @@ cognitoidentityprovider_list_identity_providers(UserPoolId, MaxResults,
 
 \item{NextToken}{A pagination token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Providers = list(
+    list(
+      ProviderName = "string",
+      ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
+      LastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists information about all identity providers for a user pool.
 }

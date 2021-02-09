@@ -9,6 +9,41 @@ sagemaker_get_device_fleet_report(DeviceFleetName)
 \arguments{
 \item{DeviceFleetName}{[required] The name of the fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeviceFleetArn = "string",
+  DeviceFleetName = "string",
+  OutputConfig = list(
+    S3OutputLocation = "string",
+    KmsKeyId = "string"
+  ),
+  Description = "string",
+  ReportGenerated = as.POSIXct(
+    "2015-01-01"
+  ),
+  DeviceStats = list(
+    ConnectedDeviceCount = 123,
+    RegisteredDeviceCount = 123
+  ),
+  AgentVersions = list(
+    list(
+      Version = "string",
+      AgentCount = 123
+    )
+  ),
+  ModelStats = list(
+    list(
+      ModelName = "string",
+      ModelVersion = "string",
+      OfflineDeviceCount = 123,
+      ConnectedDeviceCount = 123,
+      ActiveDeviceCount = 123,
+      SamplingDeviceCount = 123
+    )
+  )
+)
+}
+}
 \description{
 Describes a fleet.
 }

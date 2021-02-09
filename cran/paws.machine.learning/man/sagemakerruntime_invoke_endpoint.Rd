@@ -57,6 +57,15 @@ testing, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-test
 data capture on the endpoint. For information about data capture, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html}{Capture Data}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Body = raw,
+  ContentType = "string",
+  InvokedProductionVariant = "string",
+  CustomAttributes = "string"
+)
+}
+}
 \description{
 After you deploy a model into production using Amazon SageMaker hosting
 services, your client applications use this API to get inferences from

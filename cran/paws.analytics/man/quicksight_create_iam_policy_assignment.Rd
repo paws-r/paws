@@ -33,6 +33,22 @@ to.}
 
 \item{Namespace}{[required] The namespace that contains the assignment.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssignmentName = "string",
+  AssignmentId = "string",
+  AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
+  PolicyArn = "string",
+  Identities = list(
+    list(
+      "string"
+    )
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Creates an assignment with one specified IAM policy, identified by its
 Amazon Resource Name (ARN). This policy assignment is attached to the

@@ -36,6 +36,65 @@ provide the name or ID, but not both.}
 
 \item{PathName}{The name of the path. You must provide the name or ID, but not both.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProvisioningArtifactParameters = list(
+    list(
+      ParameterKey = "string",
+      DefaultValue = "string",
+      ParameterType = "string",
+      IsNoEcho = TRUE|FALSE,
+      Description = "string",
+      ParameterConstraints = list(
+        AllowedValues = list(
+          "string"
+        ),
+        AllowedPattern = "string",
+        ConstraintDescription = "string",
+        MaxLength = "string",
+        MinLength = "string",
+        MaxValue = "string",
+        MinValue = "string"
+      )
+    )
+  ),
+  ConstraintSummaries = list(
+    list(
+      Type = "string",
+      Description = "string"
+    )
+  ),
+  UsageInstructions = list(
+    list(
+      Type = "string",
+      Value = "string"
+    )
+  ),
+  TagOptions = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ProvisioningArtifactPreferences = list(
+    StackSetAccounts = list(
+      "string"
+    ),
+    StackSetRegions = list(
+      "string"
+    )
+  ),
+  ProvisioningArtifactOutputs = list(
+    list(
+      Key = "string",
+      Description = "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets information about the configuration required to provision the
 specified product using the specified provisioning artifact.

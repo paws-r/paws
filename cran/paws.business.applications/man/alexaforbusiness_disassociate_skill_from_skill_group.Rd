@@ -12,6 +12,10 @@ alexaforbusiness_disassociate_skill_from_skill_group(SkillGroupArn,
 
 \item{SkillId}{[required] The ARN of a skill group to associate to a skill.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disassociates a skill from a skill group.
 }

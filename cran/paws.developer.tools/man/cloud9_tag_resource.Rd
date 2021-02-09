@@ -12,6 +12,10 @@ to add tags to.}
 
 \item{Tags}{[required] The list of tags to add to the given AWS Cloud9 development environment.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds tags to an AWS Cloud9 development environment.
 

@@ -16,6 +16,42 @@ only set one filter at a time.}
 
 \item{MaxResults}{Identifies the next page of results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ComprehendMedicalAsyncJobPropertiesList = list(
+    list(
+      JobId = "string",
+      JobName = "string",
+      JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+      Message = "string",
+      SubmitTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ExpirationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      InputDataConfig = list(
+        S3Bucket = "string",
+        S3Key = "string"
+      ),
+      OutputDataConfig = list(
+        S3Bucket = "string",
+        S3Key = "string"
+      ),
+      LanguageCode = "en",
+      DataAccessRoleArn = "string",
+      ManifestFilePath = "string",
+      KMSKey = "string",
+      ModelVersion = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of InferRxNorm jobs that you have submitted.
 }

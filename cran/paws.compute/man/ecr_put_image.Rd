@@ -26,6 +26,21 @@ Initiative (OCI) formats.}
 
 \item{imageDigest}{The image digest of the image manifest corresponding to the image.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  image = list(
+    registryId = "string",
+    repositoryName = "string",
+    imageId = list(
+      imageDigest = "string",
+      imageTag = "string"
+    ),
+    imageManifest = "string",
+    imageManifestMediaType = "string"
+  )
+)
+}
+}
 \description{
 Creates or updates the image manifest and tags associated with an image.
 

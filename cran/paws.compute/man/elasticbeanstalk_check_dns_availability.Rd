@@ -9,6 +9,13 @@ elasticbeanstalk_check_dns_availability(CNAMEPrefix)
 \arguments{
 \item{CNAMEPrefix}{[required] The prefix used when this CNAME is reserved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Available = TRUE|FALSE,
+  FullyQualifiedCNAME = "string"
+)
+}
+}
 \description{
 Checks if the specified CNAME is available.
 }

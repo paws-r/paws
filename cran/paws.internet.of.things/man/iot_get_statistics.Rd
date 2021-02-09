@@ -18,6 +18,21 @@ get the count of all indexed things in your AWS account.}
 
 \item{queryVersion}{The version of the query used to search.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  statistics = list(
+    count = 123,
+    average = 123.0,
+    sum = 123.0,
+    minimum = 123.0,
+    maximum = 123.0,
+    sumOfSquares = 123.0,
+    variance = 123.0,
+    stdDeviation = 123.0
+  )
+)
+}
+}
 \description{
 Returns the count, average, sum, minimum, maximum, sum of squares,
 variance, and standard deviation for the specified aggregated field. If

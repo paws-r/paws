@@ -11,6 +11,17 @@ ecs_list_tags_for_resource(resourceArn)
 list the tags. Currently, the supported resources are Amazon ECS tasks,
 services, task definitions, clusters, and container instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
+}
+}
 \description{
 List the tags for an Amazon ECS resource.
 }

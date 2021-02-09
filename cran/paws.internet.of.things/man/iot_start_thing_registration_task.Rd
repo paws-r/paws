@@ -18,6 +18,12 @@ provision one device (thing).}
 
 \item{roleArn}{[required] The IAM role ARN that grants permission the input file.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  taskId = "string"
+)
+}
+}
 \description{
 Creates a bulk thing provisioning task.
 }

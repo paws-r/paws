@@ -18,6 +18,10 @@ according to the notification specification. You must specify either the
 Notification parameter or the Active parameter for the call to
 UpdateNotificationSettings to succeed.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 The \code{\link[=mturk_update_notification_settings]{update_notification_settings}}
 operation creates, updates, disables or re-enables notifications for a

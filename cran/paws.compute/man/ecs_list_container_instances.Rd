@@ -48,6 +48,15 @@ have been set to \code{DRAINING} using
 If you do not specify this parameter, the default is to include
 container instances set to all states other than \code{INACTIVE}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  containerInstanceArns = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of container instances in a specified cluster. You can
 filter the results of a

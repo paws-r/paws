@@ -9,6 +9,12 @@ directoryservice_delete_directory(DirectoryId)
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DirectoryId = "string"
+)
+}
+}
 \description{
 Deletes an AWS Directory Service directory.
 

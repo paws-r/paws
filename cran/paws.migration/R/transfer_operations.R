@@ -38,15 +38,15 @@ NULL
 #' Certificates with the following cryptographic algorithms and key sizes
 #' are supported:
 #' 
-#' -   2048-bit RSA (RSA\\_2048)
+#' -   2048-bit RSA (RSA_2048)
 #' 
-#' -   4096-bit RSA (RSA\\_4096)
+#' -   4096-bit RSA (RSA_4096)
 #' 
-#' -   Elliptic Prime Curve 256 bit (EC\\_prime256v1)
+#' -   Elliptic Prime Curve 256 bit (EC_prime256v1)
 #' 
-#' -   Elliptic Prime Curve 384 bit (EC\\_secp384r1)
+#' -   Elliptic Prime Curve 384 bit (EC_secp384r1)
 #' 
-#' -   Elliptic Prime Curve 521 bit (EC\\_secp521r1)
+#' -   Elliptic Prime Curve 521 bit (EC_secp521r1)
 #' 
 #' The certificate must be a valid SSL/TLS X.509 version 3 certificate with
 #' FQDN or IP address specified and information about the issuer.
@@ -116,6 +116,14 @@ NULL
 #' @param SecurityPolicyName Specifies the name of the security policy that is attached to the
 #' server.
 #' @param Tags Key-value pairs that can be used to group and search for servers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServerId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -212,7 +220,7 @@ transfer_create_server <- function(Certificate = NULL, Domain = NULL, EndpointDe
 #' is. You will need to also make sure that your IAM role provides access
 #' to paths in `Target`. The following is an example.
 #' 
-#' `'\\[ "/bucket2/documentation", \{ "Entry": "your-personal-report.pdf", "Target": "/bucket3/customized-reports/$\{transfer:UserName\}.pdf" \} \\]'`
+#' `'[ "/bucket2/documentation", { "Entry": "your-personal-report.pdf", "Target": "/bucket3/customized-reports/${transfer:UserName}.pdf" } ]'`
 #' 
 #' In most cases, you can use this value instead of the scope-down policy
 #' to lock your user down to the designated home directory ("chroot"). To
@@ -230,8 +238,8 @@ transfer_create_server <- function(Certificate = NULL, Domain = NULL, EndpointDe
 #' @param Policy A scope-down policy for your user so you can use the same IAM role
 #' across multiple users. This policy scopes down user access to portions
 #' of their Amazon S3 bucket. Variables that you can use inside this policy
-#' include `$\{Transfer:UserName\}`, `$\{Transfer:HomeDirectory\}`, and
-#' `$\{Transfer:HomeBucket\}`.
+#' include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and
+#' `${Transfer:HomeBucket}`.
 #' 
 #' For scope-down policies, AWS Transfer Family stores the policy as a JSON
 #' blob, instead of the Amazon Resource Name (ARN) of the policy. You save
@@ -259,8 +267,17 @@ transfer_create_server <- function(Certificate = NULL, Domain = NULL, EndpointDe
 #' @param UserName &#91;required&#93; A unique string that identifies a user and is associated with a as
 #' specified by the `ServerId`. This user name must be a minimum of 3 and a
 #' maximum of 100 characters long. The following are valid characters: a-z,
-#' A-Z, 0-9, underscore '\\_', hyphen '-', period '.', and at sign '@@'. The
+#' A-Z, 0-9, underscore '_', hyphen '-', period '.', and at sign '@@'. The
 #' user name can't start with a hyphen, period, or at sign.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServerId = "string",
+#'   UserName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -326,6 +343,8 @@ transfer_create_user <- function(HomeDirectory = NULL, HomeDirectoryType = NULL,
 #'
 #' @param ServerId &#91;required&#93; A unique system-assigned identifier for a server instance.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_server(
@@ -368,6 +387,8 @@ transfer_delete_server <- function(ServerId) {
 #' @param SshPublicKeyId &#91;required&#93; A unique identifier used to reference your user's specific SSH key.
 #' @param UserName &#91;required&#93; A unique string that identifies a user whose public key is being
 #' deleted.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -417,6 +438,8 @@ transfer_delete_ssh_public_key <- function(ServerId, SshPublicKeyId, UserName) {
 #' @param UserName &#91;required&#93; A unique string that identifies a user that is being deleted from a
 #' server.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_user(
@@ -461,6 +484,29 @@ transfer_delete_user <- function(ServerId, UserName) {
 #' @param SecurityPolicyName &#91;required&#93; Specifies the name of the security policy that is attached to the
 #' server.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecurityPolicy = list(
+#'     Fips = TRUE|FALSE,
+#'     SecurityPolicyName = "string",
+#'     SshCiphers = list(
+#'       "string"
+#'     ),
+#'     SshKexs = list(
+#'       "string"
+#'     ),
+#'     SshMacs = list(
+#'       "string"
+#'     ),
+#'     TlsCiphers = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_security_policy(
@@ -503,6 +549,52 @@ transfer_describe_security_policy <- function(SecurityPolicyName) {
 #' transfer_describe_server(ServerId)
 #'
 #' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Server = list(
+#'     Arn = "string",
+#'     Certificate = "string",
+#'     Domain = "S3"|"EFS",
+#'     EndpointDetails = list(
+#'       AddressAllocationIds = list(
+#'         "string"
+#'       ),
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       VpcEndpointId = "string",
+#'       VpcId = "string",
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     EndpointType = "PUBLIC"|"VPC"|"VPC_ENDPOINT",
+#'     HostKeyFingerprint = "string",
+#'     IdentityProviderDetails = list(
+#'       Url = "string",
+#'       InvocationRole = "string"
+#'     ),
+#'     IdentityProviderType = "SERVICE_MANAGED"|"API_GATEWAY",
+#'     LoggingRole = "string",
+#'     Protocols = list(
+#'       "SFTP"|"FTP"|"FTPS"
+#'     ),
+#'     SecurityPolicyName = "string",
+#'     ServerId = "string",
+#'     State = "OFFLINE"|"ONLINE"|"STARTING"|"STOPPING"|"START_FAILED"|"STOP_FAILED",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     UserCount = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -549,6 +641,50 @@ transfer_describe_server <- function(ServerId) {
 #' @param UserName &#91;required&#93; The name of the user assigned to one or more servers. User names are
 #' part of the sign-in credentials to use the AWS Transfer Family service
 #' and perform file transfer tasks.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServerId = "string",
+#'   User = list(
+#'     Arn = "string",
+#'     HomeDirectory = "string",
+#'     HomeDirectoryMappings = list(
+#'       list(
+#'         Entry = "string",
+#'         Target = "string"
+#'       )
+#'     ),
+#'     HomeDirectoryType = "PATH"|"LOGICAL",
+#'     Policy = "string",
+#'     PosixProfile = list(
+#'       Uid = 123,
+#'       Gid = 123,
+#'       SecondaryGids = list(
+#'         123
+#'       )
+#'     ),
+#'     Role = "string",
+#'     SshPublicKeys = list(
+#'       list(
+#'         DateImported = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         SshPublicKeyBody = "string",
+#'         SshPublicKeyId = "string"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     UserName = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -597,6 +733,16 @@ transfer_describe_user <- function(ServerId, UserName) {
 #' @param SshPublicKeyBody &#91;required&#93; The public key portion of an SSH key pair.
 #' @param UserName &#91;required&#93; The name of the user account that is assigned to one or more servers.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServerId = "string",
+#'   SshPublicKeyId = "string",
+#'   UserName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_ssh_public_key(
@@ -644,6 +790,17 @@ transfer_import_ssh_public_key <- function(ServerId, SshPublicKeyBody, UserName)
 #' `NextToken` parameter in a subsequent command to continue listing
 #' additional security policies.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   SecurityPolicyNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_security_policies(
@@ -688,6 +845,26 @@ transfer_list_security_policies <- function(MaxResults = NULL, NextToken = NULL)
 #' [`list_servers`][transfer_list_servers] command, a `NextToken` parameter
 #' is returned in the output. You can then pass the `NextToken` parameter
 #' in a subsequent command to continue listing additional servers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Servers = list(
+#'     list(
+#'       Arn = "string",
+#'       Domain = "S3"|"EFS",
+#'       IdentityProviderType = "SERVICE_MANAGED"|"API_GATEWAY",
+#'       EndpointType = "PUBLIC"|"VPC"|"VPC_ENDPOINT",
+#'       LoggingRole = "string",
+#'       ServerId = "string",
+#'       State = "OFFLINE"|"ONLINE"|"STARTING"|"STOPPING"|"START_FAILED"|"STOP_FAILED",
+#'       UserCount = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -738,6 +915,21 @@ transfer_list_servers <- function(MaxResults = NULL, NextToken = NULL) {
 #' subsequent command to the `NextToken` parameter to continue listing
 #' additional tags.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   NextToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -786,6 +978,25 @@ transfer_list_tags_for_resource <- function(Arn, MaxResults = NULL, NextToken = 
 #' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server that has users assigned
 #' to it.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   ServerId = "string",
+#'   Users = list(
+#'     list(
+#'       Arn = "string",
+#'       HomeDirectory = "string",
+#'       HomeDirectoryType = "PATH"|"LOGICAL",
+#'       Role = "string",
+#'       SshPublicKeyCount = 123,
+#'       UserName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_users(
@@ -833,6 +1044,8 @@ transfer_list_users <- function(MaxResults = NULL, NextToken = NULL, ServerId) {
 #' transfer_start_server(ServerId)
 #'
 #' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server that you start.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -885,6 +1098,8 @@ transfer_start_server <- function(ServerId) {
 #'
 #' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server that you stopped.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_server(
@@ -930,6 +1145,8 @@ transfer_stop_server <- function(ServerId) {
 #' @param Tags &#91;required&#93; Key-value pairs assigned to ARNs that you can use to group and search
 #' for resources by type. You can attach this metadata to user accounts for
 #' any purpose.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -994,6 +1211,17 @@ transfer_tag_resource <- function(Arn, Tags) {
 #' @param UserName &#91;required&#93; The name of the user account to be tested.
 #' @param UserPassword The password of the user account to be tested.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Response = "string",
+#'   StatusCode = 123,
+#'   Message = "string",
+#'   Url = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$test_identity_provider(
@@ -1044,6 +1272,8 @@ transfer_test_identity_provider <- function(ServerId, ServerProtocol = NULL, Sou
 #' @param TagKeys &#91;required&#93; TagKeys are key-value pairs assigned to ARNs that can be used to group
 #' and search for resources by type. This metadata can be attached to
 #' resources for any purpose.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1110,15 +1340,15 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #' Certificates with the following cryptographic algorithms and key sizes
 #' are supported:
 #' 
-#' -   2048-bit RSA (RSA\\_2048)
+#' -   2048-bit RSA (RSA_2048)
 #' 
-#' -   4096-bit RSA (RSA\\_4096)
+#' -   4096-bit RSA (RSA_4096)
 #' 
-#' -   Elliptic Prime Curve 256 bit (EC\\_prime256v1)
+#' -   Elliptic Prime Curve 256 bit (EC_prime256v1)
 #' 
-#' -   Elliptic Prime Curve 384 bit (EC\\_secp384r1)
+#' -   Elliptic Prime Curve 384 bit (EC_secp384r1)
 #' 
-#' -   Elliptic Prime Curve 521 bit (EC\\_secp521r1)
+#' -   Elliptic Prime Curve 521 bit (EC_secp521r1)
 #' 
 #' The certificate must be a valid SSL/TLS X.509 version 3 certificate with
 #' FQDN or IP address specified and information about the issuer.
@@ -1180,6 +1410,14 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #' server.
 #' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server instance that the user
 #' account is assigned to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServerId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1265,7 +1503,7 @@ transfer_update_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #' is. You will need to also make sure that your IAM role provides access
 #' to paths in `Target`. The following is an example.
 #' 
-#' `'\\[ "/bucket2/documentation", \{ "Entry": "your-personal-report.pdf", "Target": "/bucket3/customized-reports/$\{transfer:UserName\}.pdf" \} \\]'`
+#' `'[ "/bucket2/documentation", { "Entry": "your-personal-report.pdf", "Target": "/bucket3/customized-reports/${transfer:UserName}.pdf" } ]'`
 #' 
 #' In most cases, you can use this value instead of the scope-down policy
 #' to lock your user down to the designated home directory ("chroot"). To
@@ -1283,8 +1521,8 @@ transfer_update_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #' @param Policy Allows you to supply a scope-down policy for your user so you can use
 #' the same IAM role across multiple users. The policy scopes down user
 #' access to portions of your Amazon S3 bucket. Variables you can use
-#' inside this policy include `$\{Transfer:UserName\}`,
-#' `$\{Transfer:HomeDirectory\}`, and `$\{Transfer:HomeBucket\}`.
+#' inside this policy include `${Transfer:UserName}`,
+#' `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`.
 #' 
 #' For scope-down policies, AWS Transfer Family stores the policy as a JSON
 #' blob, instead of the Amazon Resource Name (ARN) of the policy. You save
@@ -1308,9 +1546,18 @@ transfer_update_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #' @param UserName &#91;required&#93; A unique string that identifies a user and is associated with a server
 #' as specified by the `ServerId`. This user name must be a minimum of 3
 #' and a maximum of 100 characters long. The following are valid
-#' characters: a-z, A-Z, 0-9, underscore '\\_', hyphen '-', period '.', and
+#' characters: a-z, A-Z, 0-9, underscore '_', hyphen '-', period '.', and
 #' at sign '@@'. The user name can't start with a hyphen, period, or at
 #' sign.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServerId = "string",
+#'   UserName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -24,6 +24,28 @@ QuickSight.
 QuickSight.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ThemeSummaryList = list(
+    list(
+      Arn = "string",
+      Name = "string",
+      ThemeId = "string",
+      LatestVersionNumber = 123,
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Lists all the themes in the current AWS account.
 }

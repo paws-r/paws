@@ -13,6 +13,19 @@ devicefarm_create_project(name, defaultJobTimeoutMinutes)
 runs in this project use the specified execution timeout value unless
 overridden when scheduling a run.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  project = list(
+    arn = "string",
+    name = "string",
+    defaultJobTimeoutMinutes = 123,
+    created = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates a project.
 }

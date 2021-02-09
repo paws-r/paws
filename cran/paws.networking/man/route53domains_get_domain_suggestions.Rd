@@ -37,6 +37,17 @@ names without checking whether they're available to be registered. To
 determine whether the domain is available, you can call
 \code{checkDomainAvailability} for each suggestion.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SuggestionsList = list(
+    list(
+      DomainName = "string",
+      Availability = "string"
+    )
+  )
+)
+}
+}
 \description{
 The GetDomainSuggestions operation returns a list of suggested domain
 names.

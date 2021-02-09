@@ -17,6 +17,10 @@ associated with the first interaction with the contact center.}
 
 \item{VoiceRecordingConfiguration}{[required] Who is being recorded.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 This API starts recording the contact when the agent joins the call.
 StartContactRecording is a one-time action. For example, if you use

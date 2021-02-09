@@ -9,6 +9,12 @@ autoscaling_cancel_instance_refresh(AutoScalingGroupName)
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceRefreshId = "string"
+)
+}
+}
 \description{
 Cancels an instance refresh operation in progress. Cancellation does not
 roll back any replacements that have already been completed, but it

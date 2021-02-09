@@ -33,6 +33,29 @@ filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Ipv6Pools = list(
+    list(
+      PoolId = "string",
+      Description = "string",
+      PoolCidrBlocks = list(
+        list(
+          Cidr = "string"
+        )
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes your IPv6 address pools.
 }

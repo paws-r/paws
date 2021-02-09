@@ -13,6 +13,10 @@ tag.}
 \item{tags}{[required] A list of tag keys to add to the resource. If a tag key already exists,
 the existing value is replaced with the new value.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds the specified tags to the specified resource. If a tag key already
 exists, the existing value is replaced with the new value.

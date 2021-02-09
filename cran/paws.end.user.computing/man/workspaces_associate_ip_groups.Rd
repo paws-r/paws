@@ -12,6 +12,10 @@ workspaces_associate_ip_groups(DirectoryId, GroupIds)
 
 \item{GroupIds}{[required] The identifiers of one or more IP access control groups.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates the specified IP access control group with the specified
 directory.

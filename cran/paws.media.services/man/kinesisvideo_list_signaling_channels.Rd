@@ -19,6 +19,27 @@ next request.}
 
 \item{ChannelNameCondition}{Optional: Returns only the channels that satisfy a specific condition.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelInfoList = list(
+    list(
+      ChannelName = "string",
+      ChannelARN = "string",
+      ChannelType = "SINGLE_MASTER",
+      ChannelStatus = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      SingleMasterConfiguration = list(
+        MessageTtlSeconds = 123
+      ),
+      Version = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns an array of \code{ChannelInfo} objects. Each object describes a
 signaling channel. To retrieve only those channels that satisfy a

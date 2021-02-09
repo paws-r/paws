@@ -17,6 +17,18 @@ response. The default value is 100.}
 \item{NextToken}{You can use \code{NextToken} in a subsequent request to fetch the next page
 of access point descriptions if the response payload was paginated.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all tags for a top-level EFS resource. You must provide the ID of
 the resource that you want to retrieve the tags for.

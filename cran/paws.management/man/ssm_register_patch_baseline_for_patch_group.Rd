@@ -12,6 +12,13 @@ ssm_register_patch_baseline_for_patch_group(BaselineId, PatchGroup)
 \item{PatchGroup}{[required] The name of the patch group that should be registered with the patch
 baseline.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BaselineId = "string",
+  PatchGroup = "string"
+)
+}
+}
 \description{
 Registers a patch baseline for a patch group.
 }

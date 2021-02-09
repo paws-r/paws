@@ -115,6 +115,12 @@ of memory, 128 GB disk), and provides 1 executor per worker. We
 recommend this worker type for memory-intensive jobs.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string"
+)
+}
+}
 \description{
 Creates a new job definition.
 }

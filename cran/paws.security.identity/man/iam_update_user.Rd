@@ -12,7 +12,7 @@ this is the original user name.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{NewPath}{New path for the IAM user. Include this parameter only if you're
 changing the user's path.
@@ -20,8 +20,8 @@ changing the user's path.
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
-ASCII character from the ! (\code{U+0021}) through the DEL character
-(\verb{U+007F}), including most punctuation characters, digits, and upper and
+ASCII character from the ! (\verb{\\u0021}) through the DEL character
+(\verb{\\u007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{NewUserName}{New name for the user. Include this parameter only if you're changing

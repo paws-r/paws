@@ -23,6 +23,41 @@ existing data.}
 
 \item{virtualRouterName}{[required] The name of the virtual router to update.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  virtualRouter = list(
+    meshName = "string",
+    metadata = list(
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      meshOwner = "string",
+      resourceOwner = "string",
+      uid = "string",
+      version = 123
+    ),
+    spec = list(
+      listeners = list(
+        list(
+          portMapping = list(
+            port = 123,
+            protocol = "http"|"tcp"|"http2"|"grpc"
+          )
+        )
+      )
+    ),
+    status = list(
+      status = "ACTIVE"|"INACTIVE"|"DELETED"
+    ),
+    virtualRouterName = "string"
+  )
+)
+}
+}
 \description{
 Updates an existing virtual router in a specified service mesh.
 }

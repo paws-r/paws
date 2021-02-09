@@ -16,6 +16,17 @@ appsync_update_api_key(apiId, id, description, expires)
 \item{expires}{The time from update time after which the API key expires. The date is
 represented as seconds since the epoch. For more information, see .}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  apiKey = list(
+    id = "string",
+    description = "string",
+    expires = 123,
+    deletes = 123
+  )
+)
+}
+}
 \description{
 Updates an API key. The key can be updated while it is not deleted.
 }

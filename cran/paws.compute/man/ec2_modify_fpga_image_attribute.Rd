@@ -37,6 +37,28 @@ attribute.}
 
 \item{Name}{A name for the AFI.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FpgaImageAttribute = list(
+    FpgaImageId = "string",
+    Name = "string",
+    Description = "string",
+    LoadPermissions = list(
+      list(
+        UserId = "string",
+        Group = "all"
+      )
+    ),
+    ProductCodes = list(
+      list(
+        ProductCodeId = "string",
+        ProductCodeType = "devpay"|"marketplace"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Modifies the specified attribute of the specified Amazon FPGA Image
 (AFI).

@@ -26,6 +26,13 @@ is 4 GB (4096 MB).}
 \item{partSize}{The size of each part except the last, in bytes. The last part can be
 smaller than this part size.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  location = "string",
+  uploadId = "string"
+)
+}
+}
 \description{
 This operation initiates a multipart upload. Amazon S3 Glacier creates a
 multipart upload resource and returns its ID in the response. The

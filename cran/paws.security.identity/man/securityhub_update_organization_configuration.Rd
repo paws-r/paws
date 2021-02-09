@@ -16,6 +16,10 @@ automatically.
 To automatically enable Security Hub for new accounts, set this to
 \code{true}.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Used to update the configuration related to Organizations. Can only be
 called from a Security Hub administrator account.

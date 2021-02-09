@@ -9,6 +9,33 @@ glue_get_security_configuration(Name)
 \arguments{
 \item{Name}{[required] The name of the security configuration to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SecurityConfiguration = list(
+    Name = "string",
+    CreatedTimeStamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    EncryptionConfiguration = list(
+      S3Encryption = list(
+        list(
+          S3EncryptionMode = "DISABLED"|"SSE-KMS"|"SSE-S3",
+          KmsKeyArn = "string"
+        )
+      ),
+      CloudWatchEncryption = list(
+        CloudWatchEncryptionMode = "DISABLED"|"SSE-KMS",
+        KmsKeyArn = "string"
+      ),
+      JobBookmarksEncryption = list(
+        JobBookmarksEncryptionMode = "DISABLED"|"CSE-KMS",
+        KmsKeyArn = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves a specified security configuration.
 }

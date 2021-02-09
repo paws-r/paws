@@ -27,6 +27,27 @@ This token should be treated as an opaque identifier that is used only
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  meshes = list(
+    list(
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      meshName = "string",
+      meshOwner = "string",
+      resourceOwner = "string",
+      version = 123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of existing service meshes.
 }

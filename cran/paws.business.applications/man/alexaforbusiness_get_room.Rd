@@ -9,6 +9,18 @@ alexaforbusiness_get_room(RoomArn)
 \arguments{
 \item{RoomArn}{The ARN of the room for which to request details. Required.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Room = list(
+    RoomArn = "string",
+    RoomName = "string",
+    Description = "string",
+    ProviderCalendarId = "string",
+    ProfileArn = "string"
+  )
+)
+}
+}
 \description{
 Gets room details by room ARN.
 }

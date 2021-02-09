@@ -70,6 +70,28 @@ be true.}
 \item{AutoGrantedValue}{The Qualification value to use for automatically granted Qualifications.
 This parameter is used only if the AutoGranted parameter is true.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  QualificationType = list(
+    QualificationTypeId = "string",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Name = "string",
+    Description = "string",
+    Keywords = "string",
+    QualificationTypeStatus = "Active"|"Inactive",
+    Test = "string",
+    TestDurationInSeconds = 123,
+    AnswerKey = "string",
+    RetryDelayInSeconds = 123,
+    IsRequestable = TRUE|FALSE,
+    AutoGranted = TRUE|FALSE,
+    AutoGrantedValue = 123
+  )
+)
+}
+}
 \description{
 The \code{\link[=mturk_create_qualification_type]{create_qualification_type}}
 operation creates a new Qualification type, which is represented by a

@@ -20,6 +20,14 @@ provided.
 \item{SchemaDefinition}{[required] The schema definition using the \code{DataFormat} setting for the
 \code{SchemaName}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaVersionId = "string",
+  VersionNumber = 123,
+  Status = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING"
+)
+}
+}
 \description{
 Adds a new version to the existing schema. Returns an error if new
 version of schema does not meet the compatibility requirements of the

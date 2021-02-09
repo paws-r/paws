@@ -10,6 +10,10 @@ costexplorer_delete_anomaly_monitor(MonitorArn)
 \item{MonitorArn}{[required] The unique identifier of the cost anomaly monitor that you want to
 delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a cost anomaly monitor.
 }

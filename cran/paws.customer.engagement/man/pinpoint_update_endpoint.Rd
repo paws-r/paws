@@ -15,6 +15,15 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{EndpointRequest}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MessageBody = list(
+    Message = "string",
+    RequestID = "string"
+  )
+)
+}
+}
 \description{
 Creates a new endpoint for an application or updates the settings and
 attributes of an existing endpoint for an application. You can also use

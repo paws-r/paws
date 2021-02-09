@@ -23,6 +23,21 @@ specified by \code{MaxResults}.}
 results exist than the specified \code{MaxResults} value, a token is included
 in the response so that the remaining results can be retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SkillSummaries = list(
+    list(
+      SkillId = "string",
+      SkillName = "string",
+      SupportsLinking = TRUE|FALSE,
+      EnablementType = "ENABLED"|"PENDING",
+      SkillType = "PUBLIC"|"PRIVATE"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all enabled skills in a specific skill group.
 }

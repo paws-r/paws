@@ -25,7 +25,7 @@ Creates a new lifecycle configuration for the Outposts bucket or
 replaces an existing lifecycle configuration. Outposts buckets only
 support lifecycle configurations that delete/expire objects after a
 certain period of time and abort incomplete multipart uploads. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Managing Lifecycle Permissions for Amazon S3 on Outposts}.
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Managing Lifecycle Permissions for Amazon S3 on Outposts}.
 
 All Amazon S3 on Outposts REST API requests for this action require an
 additional parameter of \code{x-amz-outpost-id} to be passed with the request

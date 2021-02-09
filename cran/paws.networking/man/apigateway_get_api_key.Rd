@@ -12,6 +12,29 @@ apigateway_get_api_key(apiKey, includeValue)
 \item{includeValue}{A boolean flag to specify whether (\code{true}) or not (\code{false}) the result
 contains the key value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  value = "string",
+  name = "string",
+  customerId = "string",
+  description = "string",
+  enabled = TRUE|FALSE,
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastUpdatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  stageKeys = list(
+    "string"
+  ),
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets information about the current ApiKey resource.
 }

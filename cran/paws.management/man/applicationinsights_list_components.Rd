@@ -17,6 +17,27 @@ value.}
 
 \item{NextToken}{The token to request the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationComponentList = list(
+    list(
+      ComponentName = "string",
+      ComponentRemarks = "string",
+      ResourceType = "string",
+      OsType = "WINDOWS"|"LINUX",
+      Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
+      Monitor = TRUE|FALSE,
+      DetectedWorkload = list(
+        list(
+          "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the auto-grouped, standalone, and custom components of the
 application.

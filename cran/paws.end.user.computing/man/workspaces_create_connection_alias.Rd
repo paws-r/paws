@@ -19,6 +19,12 @@ account.}
 
 \item{Tags}{The tags to associate with the connection alias.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AliasId = "string"
+)
+}
+}
 \description{
 Creates the specified connection alias for use with cross-Region
 redirection. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.

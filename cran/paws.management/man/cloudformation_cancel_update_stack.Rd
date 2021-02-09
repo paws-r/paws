@@ -22,7 +22,7 @@ Cancels an update on the specified stack. If the call completes
 successfully, the stack rolls back the update and reverts to the
 previous stack configuration.
 
-You can cancel only stacks that are in the UPDATE\\_IN\\_PROGRESS state.
+You can cancel only stacks that are in the UPDATE_IN_PROGRESS state.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_update_stack(

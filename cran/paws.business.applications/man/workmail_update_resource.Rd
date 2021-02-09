@@ -17,6 +17,10 @@ is updated.}
 
 \item{BookingOptions}{The resource's booking options to be updated.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates data for the resource. To have the latest information, it must
 be preceded by a \code{\link[=workmail_describe_resource]{describe_resource}} call.

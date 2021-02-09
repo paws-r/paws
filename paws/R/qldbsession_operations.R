@@ -45,6 +45,82 @@ NULL
 #' @param ExecuteStatement Command to execute a statement in the specified transaction.
 #' @param FetchPage Command to fetch a page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StartSession = list(
+#'     SessionToken = "string",
+#'     TimingInformation = list(
+#'       ProcessingTimeMilliseconds = 123
+#'     )
+#'   ),
+#'   StartTransaction = list(
+#'     TransactionId = "string",
+#'     TimingInformation = list(
+#'       ProcessingTimeMilliseconds = 123
+#'     )
+#'   ),
+#'   EndSession = list(
+#'     TimingInformation = list(
+#'       ProcessingTimeMilliseconds = 123
+#'     )
+#'   ),
+#'   CommitTransaction = list(
+#'     TransactionId = "string",
+#'     CommitDigest = raw,
+#'     TimingInformation = list(
+#'       ProcessingTimeMilliseconds = 123
+#'     ),
+#'     ConsumedIOs = list(
+#'       ReadIOs = 123,
+#'       WriteIOs = 123
+#'     )
+#'   ),
+#'   AbortTransaction = list(
+#'     TimingInformation = list(
+#'       ProcessingTimeMilliseconds = 123
+#'     )
+#'   ),
+#'   ExecuteStatement = list(
+#'     FirstPage = list(
+#'       Values = list(
+#'         list(
+#'           IonBinary = raw,
+#'           IonText = "string"
+#'         )
+#'       ),
+#'       NextPageToken = "string"
+#'     ),
+#'     TimingInformation = list(
+#'       ProcessingTimeMilliseconds = 123
+#'     ),
+#'     ConsumedIOs = list(
+#'       ReadIOs = 123,
+#'       WriteIOs = 123
+#'     )
+#'   ),
+#'   FetchPage = list(
+#'     Page = list(
+#'       Values = list(
+#'         list(
+#'           IonBinary = raw,
+#'           IonText = "string"
+#'         )
+#'       ),
+#'       NextPageToken = "string"
+#'     ),
+#'     TimingInformation = list(
+#'       ProcessingTimeMilliseconds = 123
+#'     ),
+#'     ConsumedIOs = list(
+#'       ReadIOs = 123,
+#'       WriteIOs = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_command(

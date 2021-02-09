@@ -20,6 +20,18 @@ for this request. If you have more \code{WebACL} objects than the number that
 you specify for \code{Limit}, the response includes a \code{NextMarker} value that
 you can use to get another batch of \code{WebACL} objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextMarker = "string",
+  WebACLs = list(
+    list(
+      WebACLId = "string",
+      Name = "string"
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

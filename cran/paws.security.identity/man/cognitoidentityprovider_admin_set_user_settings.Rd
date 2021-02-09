@@ -16,6 +16,10 @@ options for.}
 \item{MFAOptions}{[required] You can use this parameter only to set an SMS configuration that uses
 SMS for delivery.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 \emph{This action is no longer supported.} You can use it to configure only
 SMS MFA. You can't use it to configure TOTP software token MFA. To

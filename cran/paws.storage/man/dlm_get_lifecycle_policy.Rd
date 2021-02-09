@@ -9,6 +9,132 @@ dlm_get_lifecycle_policy(PolicyId)
 \arguments{
 \item{PolicyId}{[required] The identifier of the lifecycle policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = list(
+    PolicyId = "string",
+    Description = "string",
+    State = "ENABLED"|"DISABLED"|"ERROR",
+    StatusMessage = "string",
+    ExecutionRoleArn = "string",
+    DateCreated = as.POSIXct(
+      "2015-01-01"
+    ),
+    DateModified = as.POSIXct(
+      "2015-01-01"
+    ),
+    PolicyDetails = list(
+      PolicyType = "EBS_SNAPSHOT_MANAGEMENT"|"IMAGE_MANAGEMENT"|"EVENT_BASED_POLICY",
+      ResourceTypes = list(
+        "VOLUME"|"INSTANCE"
+      ),
+      TargetTags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      Schedules = list(
+        list(
+          Name = "string",
+          CopyTags = TRUE|FALSE,
+          TagsToAdd = list(
+            list(
+              Key = "string",
+              Value = "string"
+            )
+          ),
+          VariableTags = list(
+            list(
+              Key = "string",
+              Value = "string"
+            )
+          ),
+          CreateRule = list(
+            Interval = 123,
+            IntervalUnit = "HOURS",
+            Times = list(
+              "string"
+            ),
+            CronExpression = "string"
+          ),
+          RetainRule = list(
+            Count = 123,
+            Interval = 123,
+            IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+          ),
+          FastRestoreRule = list(
+            Count = 123,
+            Interval = 123,
+            IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS",
+            AvailabilityZones = list(
+              "string"
+            )
+          ),
+          CrossRegionCopyRules = list(
+            list(
+              TargetRegion = "string",
+              Encrypted = TRUE|FALSE,
+              CmkArn = "string",
+              CopyTags = TRUE|FALSE,
+              RetainRule = list(
+                Interval = 123,
+                IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+              )
+            )
+          ),
+          ShareRules = list(
+            list(
+              TargetAccounts = list(
+                "string"
+              ),
+              UnshareInterval = 123,
+              UnshareIntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+            )
+          )
+        )
+      ),
+      Parameters = list(
+        ExcludeBootVolume = TRUE|FALSE,
+        NoReboot = TRUE|FALSE
+      ),
+      EventSource = list(
+        Type = "MANAGED_CWE",
+        Parameters = list(
+          EventType = "shareSnapshot",
+          SnapshotOwner = list(
+            "string"
+          ),
+          DescriptionRegex = "string"
+        )
+      ),
+      Actions = list(
+        list(
+          Name = "string",
+          CrossRegionCopy = list(
+            list(
+              Target = "string",
+              EncryptionConfiguration = list(
+                Encrypted = TRUE|FALSE,
+                CmkArn = "string"
+              ),
+              RetainRule = list(
+                Interval = 123,
+                IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+              )
+            )
+          )
+        )
+      )
+    ),
+    Tags = list(
+      "string"
+    ),
+    PolicyArn = "string"
+  )
+)
+}
+}
 \description{
 Gets detailed information about the specified lifecycle policy.
 }

@@ -17,6 +17,27 @@ assumed.}
 format of the \code{imageIds} reference is \code{imageTag=tag} or
 \code{imageDigest=digest}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  imageIds = list(
+    list(
+      imageDigest = "string",
+      imageTag = "string"
+    )
+  ),
+  failures = list(
+    list(
+      imageId = list(
+        imageDigest = "string",
+        imageTag = "string"
+      ),
+      failureCode = "InvalidImageDigest"|"InvalidImageTag"|"ImageTagDoesNotMatchDigest"|"ImageNotFound"|"MissingDigestAndTag"|"ImageReferencedByManifestList"|"KmsError",
+      failureReason = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes a list of specified images within a repository. Images are
 specified with either an \code{imageTag} or \code{imageDigest}.

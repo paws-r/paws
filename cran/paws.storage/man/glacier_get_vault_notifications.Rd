@@ -16,6 +16,17 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  vaultNotificationConfig = list(
+    SNSTopic = "string",
+    Events = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 This operation retrieves the \code{notification-configuration} subresource of
 the specified vault.

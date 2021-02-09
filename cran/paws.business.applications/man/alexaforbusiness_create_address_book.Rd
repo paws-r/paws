@@ -15,6 +15,12 @@ alexaforbusiness_create_address_book(Name, Description,
 \item{ClientRequestToken}{A unique, user-specified identifier for the request that ensures
 idempotency.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AddressBookArn = "string"
+)
+}
+}
 \description{
 Creates an address book with the specified details.
 }

@@ -34,6 +34,59 @@ NULL
 #' The product code should be the same as the one used during the
 #' publishing of a new product.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Results = list(
+#'     list(
+#'       UsageRecord = list(
+#'         Timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         CustomerIdentifier = "string",
+#'         Dimension = "string",
+#'         Quantity = 123,
+#'         UsageAllocations = list(
+#'           list(
+#'             AllocatedUsageQuantity = 123,
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       MeteringRecordId = "string",
+#'       Status = "Success"|"CustomerNotSubscribed"|"DuplicateRecord"
+#'     )
+#'   ),
+#'   UnprocessedRecords = list(
+#'     list(
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CustomerIdentifier = "string",
+#'       Dimension = "string",
+#'       Quantity = 123,
+#'       UsageAllocations = list(
+#'         list(
+#'           AllocatedUsageQuantity = 123,
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_meter_usage(
@@ -118,6 +171,14 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' of the MeterUsage request, and each UsageAllocation must have a unique
 #' set of tags (include no tags).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MeteringRecordId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$meter_usage(
@@ -194,7 +255,7 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
 #'     For example, if a customer has a 10 node Amazon ECS or Amazon EKS
 #'     cluster and a service configured as a Daemon Set, then Amazon ECS or
 #'     Amazon EKS will launch a task on all 10 cluster nodes and the
-#'     customer will be charged: (10 * hourly\\_rate). Metering for
+#'     customer will be charged: (10 * hourly_rate). Metering for
 #'     software use is automatically handled by the AWS Marketplace
 #'     Metering Control Plane -- your software is not required to perform
 #'     any metering specific actions, other than call RegisterUsage once
@@ -213,6 +274,17 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
 #' @param PublicKeyVersion &#91;required&#93; Public Key Version provided by AWS Marketplace
 #' @param Nonce (Optional) To scope down the registration to a specific running software
 #' instance and guard against replay attacks.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PublicKeyRotationTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Signature = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -259,6 +331,15 @@ marketplacemetering_register_usage <- function(ProductCode, PublicKeyVersion, No
 #' @param RegistrationToken &#91;required&#93; When a buyer visits your website during the registration process, the
 #' buyer submits a registration token through the browser. The registration
 #' token is resolved to obtain a CustomerIdentifier and product code.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CustomerIdentifier = "string",
+#'   ProductCode = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

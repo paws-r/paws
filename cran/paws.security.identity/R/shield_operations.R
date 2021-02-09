@@ -23,6 +23,12 @@ NULL
 #'
 #' @param LogBucket &#91;required&#93; The Amazon S3 bucket that contains your AWS WAF logs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_drt_log_bucket(
@@ -102,6 +108,12 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' this role. For more information see Attaching and Detaching IAM
 #' Policies.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_drt_role(
@@ -152,6 +164,12 @@ shield_associate_drt_role <- function(RoleArn) {
 #' check association to.
 #' @param HealthCheckArn &#91;required&#93; The Amazon Resource Name (ARN) of the health check to associate with the
 #' protection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -219,6 +237,12 @@ shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' them, retrieve the list using
 #' [`describe_emergency_contact_settings`][shield_describe_emergency_contact_settings]
 #' and then provide it here.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -295,6 +319,14 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' -   For an Elastic IP address:
 #'     `arn:aws:ec2:region:account-id:eip-allocation/allocation-id `
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProtectionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_protection(
@@ -366,6 +398,12 @@ shield_create_protection <- function(Name, ResourceArn) {
 #' protection group. You must set this when you set `Pattern` to
 #' `ARBITRARY` and you must not set it for any other `Pattern` setting.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_protection_group(
@@ -412,6 +450,12 @@ shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 #' @usage
 #' shield_create_subscription()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_subscription()
@@ -446,6 +490,12 @@ shield_create_subscription <- function() {
 #' shield_delete_protection(ProtectionId)
 #'
 #' @param ProtectionId &#91;required&#93; The unique identifier (ID) for the Protection object to be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -486,6 +536,12 @@ shield_delete_protection <- function(ProtectionId) {
 #' protection group in lists and to manage the protection group, for
 #' example to update, delete, or describe it.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_protection_group(
@@ -523,6 +579,12 @@ shield_delete_protection_group <- function(ProtectionGroupId) {
 #' @usage
 #' shield_delete_subscription()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_subscription()
@@ -557,6 +619,83 @@ shield_delete_subscription <- function() {
 #' shield_describe_attack(AttackId)
 #'
 #' @param AttackId &#91;required&#93; The unique identifier (ID) for the attack that to be described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attack = list(
+#'     AttackId = "string",
+#'     ResourceArn = "string",
+#'     SubResources = list(
+#'       list(
+#'         Type = "IP"|"URL",
+#'         Id = "string",
+#'         AttackVectors = list(
+#'           list(
+#'             VectorType = "string",
+#'             VectorCounters = list(
+#'               list(
+#'                 Name = "string",
+#'                 Max = 123.0,
+#'                 Average = 123.0,
+#'                 Sum = 123.0,
+#'                 N = 123,
+#'                 Unit = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Counters = list(
+#'           list(
+#'             Name = "string",
+#'             Max = 123.0,
+#'             Average = 123.0,
+#'             Sum = 123.0,
+#'             N = 123,
+#'             Unit = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AttackCounters = list(
+#'       list(
+#'         Name = "string",
+#'         Max = 123.0,
+#'         Average = 123.0,
+#'         Sum = 123.0,
+#'         N = 123,
+#'         Unit = "string"
+#'       )
+#'     ),
+#'     AttackProperties = list(
+#'       list(
+#'         AttackLayer = "NETWORK"|"APPLICATION",
+#'         AttackPropertyIdentifier = "DESTINATION_URL"|"REFERRER"|"SOURCE_ASN"|"SOURCE_COUNTRY"|"SOURCE_IP_ADDRESS"|"SOURCE_USER_AGENT"|"WORDPRESS_PINGBACK_REFLECTOR"|"WORDPRESS_PINGBACK_SOURCE",
+#'         TopContributors = list(
+#'           list(
+#'             Name = "string",
+#'             Value = 123
+#'           )
+#'         ),
+#'         Unit = "BITS"|"BYTES"|"PACKETS"|"REQUESTS",
+#'         Total = 123
+#'       )
+#'     ),
+#'     Mitigations = list(
+#'       list(
+#'         MitigationName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -608,6 +747,37 @@ shield_describe_attack <- function(AttackId) {
 #' @usage
 #' shield_describe_attack_statistics()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TimeRange = list(
+#'     FromInclusive = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ToExclusive = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   DataItems = list(
+#'     list(
+#'       AttackVolume = list(
+#'         BitsPerSecond = list(
+#'           Max = 123.0
+#'         ),
+#'         PacketsPerSecond = list(
+#'           Max = 123.0
+#'         ),
+#'         RequestsPerSecond = list(
+#'           Max = 123.0
+#'         )
+#'       ),
+#'       AttackCount = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_attack_statistics()
@@ -645,6 +815,17 @@ shield_describe_attack_statistics <- function() {
 #' @usage
 #' shield_describe_drt_access()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RoleArn = "string",
+#'   LogBucketList = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_drt_access()
@@ -681,6 +862,20 @@ shield_describe_drt_access <- function() {
 #'
 #' @usage
 #' shield_describe_emergency_contact_settings()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EmergencyContactList = list(
+#'     list(
+#'       EmailAddress = "string",
+#'       PhoneNumber = "string",
+#'       ContactNotes = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -724,6 +919,21 @@ shield_describe_emergency_contact_settings <- function() {
 #' [`describe_protection`][shield_describe_protection] request you must
 #' provide either the `ResourceArn` or the `ProtectionID`, but not both.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Protection = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     ResourceArn = "string",
+#'     HealthCheckIds = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_protection(
@@ -764,6 +974,22 @@ shield_describe_protection <- function(ProtectionId = NULL, ResourceArn = NULL) 
 #' protection group in lists and to manage the protection group, for
 #' example to update, delete, or describe it.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProtectionGroup = list(
+#'     ProtectionGroupId = "string",
+#'     Aggregation = "SUM"|"MEAN"|"MAX",
+#'     Pattern = "ALL"|"ARBITRARY"|"BY_RESOURCE_TYPE",
+#'     ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
+#'     Members = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_protection_group(
@@ -801,6 +1027,48 @@ shield_describe_protection_group <- function(ProtectionGroupId) {
 #' @usage
 #' shield_describe_subscription()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Subscription = list(
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TimeCommitmentInSeconds = 123,
+#'     AutoRenew = "ENABLED"|"DISABLED",
+#'     Limits = list(
+#'       list(
+#'         Type = "string",
+#'         Max = 123
+#'       )
+#'     ),
+#'     ProactiveEngagementStatus = "ENABLED"|"DISABLED"|"PENDING",
+#'     SubscriptionLimits = list(
+#'       ProtectionLimits = list(
+#'         ProtectedResourceTypeLimits = list(
+#'           list(
+#'             Type = "string",
+#'             Max = 123
+#'           )
+#'         )
+#'       ),
+#'       ProtectionGroupLimits = list(
+#'         MaxProtectionGroups = 123,
+#'         PatternTypeLimits = list(
+#'           ArbitraryPatternLimits = list(
+#'             MaxMembers = 123
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_subscription()
@@ -837,6 +1105,12 @@ shield_describe_subscription <- function() {
 #'
 #' @usage
 #' shield_disable_proactive_engagement()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -887,6 +1161,12 @@ shield_disable_proactive_engagement <- function() {
 #'
 #' @param LogBucket &#91;required&#93; The Amazon S3 bucket that contains your AWS WAF logs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_drt_log_bucket(
@@ -931,6 +1211,12 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
 #'
 #' @usage
 #' shield_disassociate_drt_role()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -981,6 +1267,12 @@ shield_disassociate_drt_role <- function() {
 #' @param HealthCheckArn &#91;required&#93; The Amazon Resource Name (ARN) of the health check that is associated
 #' with the protection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_health_check(
@@ -1021,6 +1313,12 @@ shield_disassociate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' @usage
 #' shield_enable_proactive_engagement()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_proactive_engagement()
@@ -1053,6 +1351,14 @@ shield_enable_proactive_engagement <- function() {
 #'
 #' @usage
 #' shield_get_subscription_state()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SubscriptionState = "ACTIVE"|"INACTIVE"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1115,6 +1421,31 @@ shield_get_subscription_state <- function() {
 #' If there are more objects to return, Shield Advanced returns a value in
 #' `NextToken` that you can use in your next request, to get the next batch
 #' of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AttackSummaries = list(
+#'     list(
+#'       AttackId = "string",
+#'       ResourceArn = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AttackVectors = list(
+#'         list(
+#'           VectorType = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1184,6 +1515,25 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
 #' `NextToken` that you can use in your next request, to get the next batch
 #' of objects.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProtectionGroups = list(
+#'     list(
+#'       ProtectionGroupId = "string",
+#'       Aggregation = "SUM"|"MEAN"|"MAX",
+#'       Pattern = "ALL"|"ARBITRARY"|"BY_RESOURCE_TYPE",
+#'       ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
+#'       Members = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_protection_groups(
@@ -1232,6 +1582,24 @@ shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' If there are more objects to return, Shield Advanced returns a value in
 #' `NextToken` that you can use in your next request, to get the next batch
 #' of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Protections = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       ResourceArn = "string",
+#'       HealthCheckIds = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1286,6 +1654,17 @@ shield_list_protections <- function(NextToken = NULL, MaxResults = NULL) {
 #' `NextToken` that you can use in your next request, to get the next batch
 #' of objects.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArns = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resources_in_protection_group(
@@ -1335,6 +1714,12 @@ shield_list_resources_in_protection_group <- function(ProtectionGroupId, NextTok
 #' 
 #' If you have proactive engagement enabled, the contact list must include
 #' at least one phone number.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1411,6 +1796,12 @@ shield_update_emergency_contact_settings <- function(EmergencyContactList = NULL
 #' protection group. You must set this when you set `Pattern` to
 #' `ARBITRARY` and you must not set it for any other `Pattern` setting.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_protection_group(
@@ -1460,6 +1851,12 @@ shield_update_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 #' request. If the [`update_subscription`][shield_update_subscription]
 #' request does not included a value for `AutoRenew`, the existing value
 #' for `AutoRenew` remains unchanged.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

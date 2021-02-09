@@ -12,6 +12,10 @@ attached.}
 
 \item{ManagedScalingPolicy}{[required] Specifies the constraints for the managed scaling policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates or updates a managed scaling policy for an Amazon EMR cluster.
 The managed scaling policy defines the limits for resources, such as EC2

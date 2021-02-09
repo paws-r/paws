@@ -16,6 +16,30 @@ export descriptions returned.}
 \item{nextToken}{The token from the previous call to
 \code{\link[=applicationdiscoveryservice_describe_export_tasks]{describe_export_tasks}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  descriptions = list(
+    list(
+      exportId = "string",
+      status = "START_IN_PROGRESS"|"START_FAILED"|"ACTIVE"|"ERROR"|"STOP_IN_PROGRESS"|"STOP_FAILED"|"INACTIVE",
+      statusDetail = "string",
+      s3Bucket = "string",
+      startTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      stopTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      dataSource = "AGENT",
+      schemaStorageConfig = list(
+        "string"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists exports as specified by ID. All continuous exports associated with
 your user account can be listed if you call

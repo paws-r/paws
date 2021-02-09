@@ -9,6 +9,21 @@ greengrass_get_device_definition(DeviceDefinitionId)
 \arguments{
 \item{DeviceDefinitionId}{[required] The ID of the device definition.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  LastUpdatedTimestamp = "string",
+  LatestVersion = "string",
+  LatestVersionArn = "string",
+  Name = "string",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Retrieves information about a device definition.
 }

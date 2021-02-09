@@ -9,6 +9,74 @@ iot_describe_detect_mitigation_actions_task(taskId)
 \arguments{
 \item{taskId}{[required] The unique identifier of the task.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  taskSummary = list(
+    taskId = "string",
+    taskStatus = "IN_PROGRESS"|"SUCCESSFUL"|"FAILED"|"CANCELED",
+    taskStartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    taskEndTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    target = list(
+      violationIds = list(
+        "string"
+      ),
+      securityProfileName = "string",
+      behaviorName = "string"
+    ),
+    violationEventOccurrenceRange = list(
+      startTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      endTime = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    onlyActiveViolationsIncluded = TRUE|FALSE,
+    suppressedAlertsIncluded = TRUE|FALSE,
+    actionsDefinition = list(
+      list(
+        name = "string",
+        id = "string",
+        roleArn = "string",
+        actionParams = list(
+          updateDeviceCertificateParams = list(
+            action = "DEACTIVATE"
+          ),
+          updateCACertificateParams = list(
+            action = "DEACTIVATE"
+          ),
+          addThingsToThingGroupParams = list(
+            thingGroupNames = list(
+              "string"
+            ),
+            overrideDynamicGroups = TRUE|FALSE
+          ),
+          replaceDefaultPolicyVersionParams = list(
+            templateName = "BLANK_POLICY"
+          ),
+          enableIoTLoggingParams = list(
+            roleArnForLogging = "string",
+            logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
+          ),
+          publishFindingToSnsParams = list(
+            topicArn = "string"
+          )
+        )
+      )
+    ),
+    taskStatistics = list(
+      actionsExecuted = 123,
+      actionsSkipped = 123,
+      actionsFailed = 123
+    )
+  )
+)
+}
+}
 \description{
 Gets information about a Device Defender ML Detect mitigation action.
 }

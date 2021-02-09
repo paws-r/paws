@@ -8,7 +8,18 @@ NULL
 #' the specified SNS topic once the data is available
 #'
 #' @description
-#' Given a data set type and data set publication date, asynchronously publishes the requested data set to the specified S3 bucket and notifies the specified SNS topic once the data is available. Returns a unique request identifier that can be used to correlate requests with notifications from the SNS topic. Data sets will be published in comma-separated values (CSV) format with the file name \{data_set_type\}_YYYY-MM-DD.csv. If a file with the same name already exists (e.g. if the same data set is requested twice), the original file will be overwritten by the new file. Requires a Role with an attached permissions policy providing Allow permissions for the following actions: s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
+#' Given a data set type and data set publication date, asynchronously
+#' publishes the requested data set to the specified S3 bucket and notifies
+#' the specified SNS topic once the data is available. Returns a unique
+#' request identifier that can be used to correlate requests with
+#' notifications from the SNS topic. Data sets will be published in
+#' comma-separated values (CSV) format with the file name
+#' \{data_set_type\}_YYYY-MM-DD.csv. If a file with the same name
+#' already exists (e.g. if the same data set is requested twice), the
+#' original file will be overwritten by the new file. Requires a Role with
+#' an attached permissions policy providing Allow permissions for the
+#' following actions: s3:PutObject, s3:GetBucketLocation,
+#' sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 #'
 #' @usage
 #' marketplacecommerceanalytics_generate_data_set(dataSetType,
@@ -17,125 +28,151 @@ NULL
 #'
 #' @param dataSetType &#91;required&#93; The desired data set type.
 #' 
-#' -   **customer\\_subscriber\\_hourly\\_monthly\\_subscriptions**
+#' -   **customer_subscriber_hourly_monthly_subscriptions**
 #' 
 #'     From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **customer\\_subscriber\\_annual\\_subscriptions**
+#' -   **customer_subscriber_annual_subscriptions**
 #' 
 #'     From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **daily\\_business\\_usage\\_by\\_instance\\_type**
+#' -   **daily_business_usage_by_instance_type**
 #' 
 #'     From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **daily\\_business\\_fees**
+#' -   **daily_business_fees**
 #' 
 #'     From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **daily\\_business\\_free\\_trial\\_conversions**
+#' -   **daily_business_free_trial_conversions**
 #' 
 #'     From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **daily\\_business\\_new\\_instances**
+#' -   **daily_business_new_instances**
 #' 
 #'     From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **daily\\_business\\_new\\_product\\_subscribers**
+#' -   **daily_business_new_product_subscribers**
 #' 
 #'     From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **daily\\_business\\_canceled\\_product\\_subscribers**
+#' -   **daily_business_canceled_product_subscribers**
 #' 
 #'     From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **monthly\\_revenue\\_billing\\_and\\_revenue\\_data**
+#' -   **monthly_revenue_billing_and_revenue_data**
 #' 
 #'     From 2017-09-15 to present: Available monthly on the 15th day of the
 #'     month by 24:00 UTC. Data includes metered transactions (e.g. hourly)
 #'     from one month prior.
 #' 
-#' -   **monthly\\_revenue\\_annual\\_subscriptions**
+#' -   **monthly_revenue_annual_subscriptions**
 #' 
 #'     From 2017-09-15 to present: Available monthly on the 15th day of the
 #'     month by 24:00 UTC. Data includes up-front software charges (e.g.
 #'     annual) from one month prior.
 #' 
-#' -   **monthly\\_revenue\\_field\\_demonstration\\_usage**
+#' -   **monthly_revenue_field_demonstration_usage**
 #' 
 #'     From 2018-03-15 to present: Available monthly on the 15th day of the
 #'     month by 24:00 UTC.
 #' 
-#' -   **monthly\\_revenue\\_flexible\\_payment\\_schedule**
+#' -   **monthly_revenue_flexible_payment_schedule**
 #' 
 #'     From 2018-11-15 to present: Available monthly on the 15th day of the
 #'     month by 24:00 UTC.
 #' 
-#' -   **disbursed\\_amount\\_by\\_product**
+#' -   **disbursed_amount_by_product**
 #' 
 #'     From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 #' 
-#' -   **disbursed\\_amount\\_by\\_instance\\_hours**
+#' -   **disbursed_amount_by_instance_hours**
 #' 
 #'     From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 #' 
-#' -   **disbursed\\_amount\\_by\\_customer\\_geo**
+#' -   **disbursed_amount_by_customer_geo**
 #' 
 #'     From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 #' 
-#' -   **disbursed\\_amount\\_by\\_age\\_of\\_uncollected\\_funds**
+#' -   **disbursed_amount_by_age_of_uncollected_funds**
 #' 
 #'     From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 #' 
-#' -   **disbursed\\_amount\\_by\\_age\\_of\\_disbursed\\_funds**
+#' -   **disbursed_amount_by_age_of_disbursed_funds**
 #' 
 #'     From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 #' 
-#' -   **disbursed\\_amount\\_by\\_age\\_of\\_past\\_due\\_funds**
+#' -   **disbursed_amount_by_age_of_past_due_funds**
 #' 
 #'     From 2018-04-07 to present: Available every 30 days by 24:00 UTC.
 #' 
-#' -   **disbursed\\_amount\\_by\\_uncollected\\_funds\\_breakdown**
+#' -   **disbursed_amount_by_uncollected_funds_breakdown**
 #' 
 #'     From 2019-10-04 to present: Available every 30 days by 24:00 UTC.
 #' 
-#' -   **sales\\_compensation\\_billed\\_revenue**
+#' -   **sales_compensation_billed_revenue**
 #' 
 #'     From 2017-09-15 to present: Available monthly on the 15th day of the
 #'     month by 24:00 UTC. Data includes metered transactions (e.g. hourly)
 #'     from one month prior, and up-front software charges (e.g. annual)
 #'     from one month prior.
 #' 
-#' -   **us\\_sales\\_and\\_use\\_tax\\_records**
+#' -   **us_sales_and_use_tax_records**
 #' 
 #'     From 2017-09-15 to present: Available monthly on the 15th day of the
 #'     month by 24:00 UTC.
 #' 
-#' -   **disbursed\\_amount\\_by\\_product\\_with\\_uncollected\\_funds**
+#' -   **disbursed_amount_by_product_with_uncollected_funds**
 #' 
 #'     This data set is deprecated. Download related reports from AMMP
 #'     instead!
 #' 
-#' -   **customer\\_profile\\_by\\_industry**
+#' -   **customer_profile_by_industry**
 #' 
 #'     This data set is deprecated. Download related reports from AMMP
 #'     instead!
 #' 
-#' -   **customer\\_profile\\_by\\_revenue**
+#' -   **customer_profile_by_revenue**
 #' 
 #'     This data set is deprecated. Download related reports from AMMP
 #'     instead!
 #' 
-#' -   **customer\\_profile\\_by\\_geography**
+#' -   **customer_profile_by_geography**
 #' 
 #'     This data set is deprecated. Download related reports from AMMP
 #'     instead!
-#' @param dataSetPublicationDate &#91;required&#93; The date a data set was published. For daily data sets, provide a date with day-level granularity for the desired day. For monthly data sets except those with prefix disbursed_amount, provide a date with month-level granularity for the desired month (the day value will be ignored). For data sets with prefix disbursed_amount, provide a date with day-level granularity for the desired day. For these data sets we will look backwards in time over the range of 31 days until the first data set is found (the latest one).
-#' @param roleNameArn &#91;required&#93; The Amazon Resource Name (ARN) of the Role with an attached permissions policy to interact with the provided AWS services.
+#' @param dataSetPublicationDate &#91;required&#93; The date a data set was published. For daily data sets, provide a date
+#' with day-level granularity for the desired day. For monthly data sets
+#' except those with prefix disbursed_amount, provide a date with
+#' month-level granularity for the desired month (the day value will be
+#' ignored). For data sets with prefix disbursed_amount, provide a date
+#' with day-level granularity for the desired day. For these data sets we
+#' will look backwards in time over the range of 31 days until the first
+#' data set is found (the latest one).
+#' @param roleNameArn &#91;required&#93; The Amazon Resource Name (ARN) of the Role with an attached permissions
+#' policy to interact with the provided AWS services.
 #' @param destinationS3BucketName &#91;required&#93; The name (friendly name, not ARN) of the destination S3 bucket.
-#' @param destinationS3Prefix (Optional) The desired S3 prefix for the published data set, similar to a directory path in standard file systems. For example, if given the bucket name "mybucket" and the prefix "myprefix/mydatasets", the output file "outputfile" would be published to "s3://mybucket/myprefix/mydatasets/outputfile". If the prefix directory structure does not exist, it will be created. If no prefix is provided, the data set will be published to the S3 bucket root.
-#' @param snsTopicArn &#91;required&#93; Amazon Resource Name (ARN) for the SNS Topic that will be notified when the data set has been published or if an error has occurred.
-#' @param customerDefinedValues (Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS notification message and the data set metadata file. These key-value pairs can be used to correlated responses with tracking information from other systems.
+#' @param destinationS3Prefix (Optional) The desired S3 prefix for the published data set, similar to
+#' a directory path in standard file systems. For example, if given the
+#' bucket name "mybucket" and the prefix "myprefix/mydatasets", the output
+#' file "outputfile" would be published to
+#' "s3://mybucket/myprefix/mydatasets/outputfile". If the prefix directory
+#' structure does not exist, it will be created. If no prefix is provided,
+#' the data set will be published to the S3 bucket root.
+#' @param snsTopicArn &#91;required&#93; Amazon Resource Name (ARN) for the SNS Topic that will be notified when
+#' the data set has been published or if an error has occurred.
+#' @param customerDefinedValues (Optional) Key-value pairs which will be returned, unmodified, in the
+#' Amazon SNS notification message and the data set metadata file. These
+#' key-value pairs can be used to correlated responses with tracking
+#' information from other systems.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataSetRequestId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -179,7 +216,18 @@ marketplacecommerceanalytics_generate_data_set <- function(dataSetType, dataSetP
 #' the specified SNS topic once the data is available
 #'
 #' @description
-#' Given a data set type and a from date, asynchronously publishes the requested customer support data to the specified S3 bucket and notifies the specified SNS topic once the data is available. Returns a unique request identifier that can be used to correlate requests with notifications from the SNS topic. Data sets will be published in comma-separated values (CSV) format with the file name \{data_set_type\}_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file with the same name already exists (e.g. if the same data set is requested twice), the original file will be overwritten by the new file. Requires a Role with an attached permissions policy providing Allow permissions for the following actions: s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
+#' Given a data set type and a from date, asynchronously publishes the
+#' requested customer support data to the specified S3 bucket and notifies
+#' the specified SNS topic once the data is available. Returns a unique
+#' request identifier that can be used to correlate requests with
+#' notifications from the SNS topic. Data sets will be published in
+#' comma-separated values (CSV) format with the file name
+#' \{data_set_type\}_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file with the
+#' same name already exists (e.g. if the same data set is requested twice),
+#' the original file will be overwritten by the new file. Requires a Role
+#' with an attached permissions policy providing Allow permissions for the
+#' following actions: s3:PutObject, s3:GetBucketLocation,
+#' sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 #'
 #' @usage
 #' marketplacecommerceanalytics_start_support_data_export(dataSetType,
@@ -187,26 +235,45 @@ marketplacecommerceanalytics_generate_data_set <- function(dataSetType, dataSetP
 #'   snsTopicArn, customerDefinedValues)
 #'
 #' @param dataSetType &#91;required&#93; Specifies the data set type to be written to the output csv file. The
-#' data set types customer\\_support\\_contacts\\_data and
-#' test\\_customer\\_support\\_contacts\\_data both result in a csv file
+#' data set types customer_support_contacts_data and
+#' test_customer_support_contacts_data both result in a csv file
 #' containing the following fields: Product Id, Product Code, Customer
 #' Guid, Subscription Guid, Subscription Start Date, Organization, AWS
 #' Account Id, Given Name, Surname, Telephone Number, Email, Title, Country
 #' Code, ZIP Code, Operation Type, and Operation Time.
 #' 
-#' -   *customer\\_support\\_contacts\\_data* Customer support contact data.
+#' -   *customer_support_contacts_data* Customer support contact data.
 #'     The data set will contain all changes (Creates, Updates, and
 #'     Deletes) to customer support contact data from the date specified in
-#'     the from\\_date parameter.
-#' -   *test\\_customer\\_support\\_contacts\\_data* An example data set
+#'     the from_date parameter.
+#' -   *test_customer_support_contacts_data* An example data set
 #'     containing static test data in the same format as
-#'     customer\\_support\\_contacts\\_data
-#' @param fromDate &#91;required&#93; The start date from which to retrieve the data set in UTC. This parameter only affects the customer_support_contacts_data data set type.
-#' @param roleNameArn &#91;required&#93; The Amazon Resource Name (ARN) of the Role with an attached permissions policy to interact with the provided AWS services.
+#'     customer_support_contacts_data
+#' @param fromDate &#91;required&#93; The start date from which to retrieve the data set in UTC. This
+#' parameter only affects the customer_support_contacts_data data set
+#' type.
+#' @param roleNameArn &#91;required&#93; The Amazon Resource Name (ARN) of the Role with an attached permissions
+#' policy to interact with the provided AWS services.
 #' @param destinationS3BucketName &#91;required&#93; The name (friendly name, not ARN) of the destination S3 bucket.
-#' @param destinationS3Prefix (Optional) The desired S3 prefix for the published data set, similar to a directory path in standard file systems. For example, if given the bucket name "mybucket" and the prefix "myprefix/mydatasets", the output file "outputfile" would be published to "s3://mybucket/myprefix/mydatasets/outputfile". If the prefix directory structure does not exist, it will be created. If no prefix is provided, the data set will be published to the S3 bucket root.
-#' @param snsTopicArn &#91;required&#93; Amazon Resource Name (ARN) for the SNS Topic that will be notified when the data set has been published or if an error has occurred.
-#' @param customerDefinedValues (Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS notification message and the data set metadata file.
+#' @param destinationS3Prefix (Optional) The desired S3 prefix for the published data set, similar to
+#' a directory path in standard file systems. For example, if given the
+#' bucket name "mybucket" and the prefix "myprefix/mydatasets", the output
+#' file "outputfile" would be published to
+#' "s3://mybucket/myprefix/mydatasets/outputfile". If the prefix directory
+#' structure does not exist, it will be created. If no prefix is provided,
+#' the data set will be published to the S3 bucket root.
+#' @param snsTopicArn &#91;required&#93; Amazon Resource Name (ARN) for the SNS Topic that will be notified when
+#' the data set has been published or if an error has occurred.
+#' @param customerDefinedValues (Optional) Key-value pairs which will be returned, unmodified, in the
+#' Amazon SNS notification message and the data set metadata file.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataSetRequestId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

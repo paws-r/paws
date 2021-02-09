@@ -11,6 +11,10 @@ alexaforbusiness_associate_skill_group_with_room(SkillGroupArn, RoomArn)
 
 \item{RoomArn}{The ARN of the room with which to associate the skill group. Required.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates a skill group with a given room. This enables all skills in
 the associated skill group on all devices in the room.

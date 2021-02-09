@@ -19,6 +19,25 @@ The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a create
 account request ID string requires "car-" followed by from 8 to 32
 lowercase letters or digits.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CreateAccountStatus = list(
+    Id = "string",
+    AccountName = "string",
+    State = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+    RequestedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    CompletedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    AccountId = "string",
+    GovCloudAccountId = "string",
+    FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"
+  )
+)
+}
+}
 \description{
 Retrieves the current status of an asynchronous request to create an
 account.

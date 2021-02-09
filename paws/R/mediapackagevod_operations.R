@@ -19,6 +19,29 @@ NULL
 #' @param SourceRoleArn &#91;required&#93; The IAM role ARN used to access the source S3 bucket.
 #' @param Tags 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreatedAt = "string",
+#'   EgressEndpoints = list(
+#'     list(
+#'       PackagingConfigurationId = "string",
+#'       Url = "string"
+#'     )
+#'   ),
+#'   Id = "string",
+#'   PackagingGroupId = "string",
+#'   ResourceId = "string",
+#'   SourceArn = "string",
+#'   SourceRoleArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_asset(
@@ -69,6 +92,125 @@ mediapackagevod_create_asset <- function(Id, PackagingGroupId, ResourceId = NULL
 #' @param MssPackage 
 #' @param PackagingGroupId &#91;required&#93; The ID of a PackagingGroup.
 #' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CmafPackage = list(
+#'     Encryption = list(
+#'       SpekeKeyProvider = list(
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     HlsManifests = list(
+#'       list(
+#'         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+#'         IncludeIframeOnlyStream = TRUE|FALSE,
+#'         ManifestName = "string",
+#'         ProgramDateTimeIntervalSeconds = 123,
+#'         RepeatExtXKey = TRUE|FALSE,
+#'         StreamSelection = list(
+#'           MaxVideoBitsPerSecond = 123,
+#'           MinVideoBitsPerSecond = 123,
+#'           StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'         )
+#'       )
+#'     ),
+#'     SegmentDurationSeconds = 123
+#'   ),
+#'   DashPackage = list(
+#'     DashManifests = list(
+#'       list(
+#'         ManifestLayout = "FULL"|"COMPACT",
+#'         ManifestName = "string",
+#'         MinBufferTimeSeconds = 123,
+#'         Profile = "NONE"|"HBBTV_1_5",
+#'         StreamSelection = list(
+#'           MaxVideoBitsPerSecond = 123,
+#'           MinVideoBitsPerSecond = 123,
+#'           StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'         )
+#'       )
+#'     ),
+#'     Encryption = list(
+#'       SpekeKeyProvider = list(
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     PeriodTriggers = list(
+#'       "ADS"
+#'     ),
+#'     SegmentDurationSeconds = 123,
+#'     SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE"|"NUMBER_WITH_DURATION"
+#'   ),
+#'   HlsPackage = list(
+#'     Encryption = list(
+#'       ConstantInitializationVector = "string",
+#'       EncryptionMethod = "AES_128"|"SAMPLE_AES",
+#'       SpekeKeyProvider = list(
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     HlsManifests = list(
+#'       list(
+#'         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+#'         IncludeIframeOnlyStream = TRUE|FALSE,
+#'         ManifestName = "string",
+#'         ProgramDateTimeIntervalSeconds = 123,
+#'         RepeatExtXKey = TRUE|FALSE,
+#'         StreamSelection = list(
+#'           MaxVideoBitsPerSecond = 123,
+#'           MinVideoBitsPerSecond = 123,
+#'           StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'         )
+#'       )
+#'     ),
+#'     SegmentDurationSeconds = 123,
+#'     UseAudioRenditionGroup = TRUE|FALSE
+#'   ),
+#'   Id = "string",
+#'   MssPackage = list(
+#'     Encryption = list(
+#'       SpekeKeyProvider = list(
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     MssManifests = list(
+#'       list(
+#'         ManifestName = "string",
+#'         StreamSelection = list(
+#'           MaxVideoBitsPerSecond = 123,
+#'           MinVideoBitsPerSecond = 123,
+#'           StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'         )
+#'       )
+#'     ),
+#'     SegmentDurationSeconds = 123
+#'   ),
+#'   PackagingGroupId = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -219,6 +361,23 @@ mediapackagevod_create_packaging_configuration <- function(CmafPackage = NULL, D
 #' @param Id &#91;required&#93; The ID of the PackagingGroup.
 #' @param Tags 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Authorization = list(
+#'     CdnIdentifierSecret = "string",
+#'     SecretsRoleArn = "string"
+#'   ),
+#'   DomainName = "string",
+#'   Id = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_packaging_group(
@@ -263,6 +422,12 @@ mediapackagevod_create_packaging_group <- function(Authorization = NULL, Id, Tag
 #'
 #' @param Id &#91;required&#93; The ID of the MediaPackage VOD Asset resource to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_asset(
@@ -298,7 +463,14 @@ mediapackagevod_delete_asset <- function(Id) {
 #' @usage
 #' mediapackagevod_delete_packaging_configuration(Id)
 #'
-#' @param Id &#91;required&#93; The ID of the MediaPackage VOD PackagingConfiguration resource to delete.
+#' @param Id &#91;required&#93; The ID of the MediaPackage VOD PackagingConfiguration resource to
+#' delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -337,6 +509,12 @@ mediapackagevod_delete_packaging_configuration <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The ID of the MediaPackage VOD PackagingGroup resource to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_packaging_group(
@@ -374,6 +552,29 @@ mediapackagevod_delete_packaging_group <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The ID of an MediaPackage VOD Asset resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CreatedAt = "string",
+#'   EgressEndpoints = list(
+#'     list(
+#'       PackagingConfigurationId = "string",
+#'       Url = "string"
+#'     )
+#'   ),
+#'   Id = "string",
+#'   PackagingGroupId = "string",
+#'   ResourceId = "string",
+#'   SourceArn = "string",
+#'   SourceRoleArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_asset(
@@ -405,12 +606,132 @@ mediapackagevod_describe_asset <- function(Id) {
 #' resource
 #'
 #' @description
-#' Returns a description of a MediaPackage VOD PackagingConfiguration resource.
+#' Returns a description of a MediaPackage VOD PackagingConfiguration
+#' resource.
 #'
 #' @usage
 #' mediapackagevod_describe_packaging_configuration(Id)
 #'
 #' @param Id &#91;required&#93; The ID of a MediaPackage VOD PackagingConfiguration resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   CmafPackage = list(
+#'     Encryption = list(
+#'       SpekeKeyProvider = list(
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     HlsManifests = list(
+#'       list(
+#'         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+#'         IncludeIframeOnlyStream = TRUE|FALSE,
+#'         ManifestName = "string",
+#'         ProgramDateTimeIntervalSeconds = 123,
+#'         RepeatExtXKey = TRUE|FALSE,
+#'         StreamSelection = list(
+#'           MaxVideoBitsPerSecond = 123,
+#'           MinVideoBitsPerSecond = 123,
+#'           StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'         )
+#'       )
+#'     ),
+#'     SegmentDurationSeconds = 123
+#'   ),
+#'   DashPackage = list(
+#'     DashManifests = list(
+#'       list(
+#'         ManifestLayout = "FULL"|"COMPACT",
+#'         ManifestName = "string",
+#'         MinBufferTimeSeconds = 123,
+#'         Profile = "NONE"|"HBBTV_1_5",
+#'         StreamSelection = list(
+#'           MaxVideoBitsPerSecond = 123,
+#'           MinVideoBitsPerSecond = 123,
+#'           StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'         )
+#'       )
+#'     ),
+#'     Encryption = list(
+#'       SpekeKeyProvider = list(
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     PeriodTriggers = list(
+#'       "ADS"
+#'     ),
+#'     SegmentDurationSeconds = 123,
+#'     SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE"|"NUMBER_WITH_DURATION"
+#'   ),
+#'   HlsPackage = list(
+#'     Encryption = list(
+#'       ConstantInitializationVector = "string",
+#'       EncryptionMethod = "AES_128"|"SAMPLE_AES",
+#'       SpekeKeyProvider = list(
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     HlsManifests = list(
+#'       list(
+#'         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+#'         IncludeIframeOnlyStream = TRUE|FALSE,
+#'         ManifestName = "string",
+#'         ProgramDateTimeIntervalSeconds = 123,
+#'         RepeatExtXKey = TRUE|FALSE,
+#'         StreamSelection = list(
+#'           MaxVideoBitsPerSecond = 123,
+#'           MinVideoBitsPerSecond = 123,
+#'           StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'         )
+#'       )
+#'     ),
+#'     SegmentDurationSeconds = 123,
+#'     UseAudioRenditionGroup = TRUE|FALSE
+#'   ),
+#'   Id = "string",
+#'   MssPackage = list(
+#'     Encryption = list(
+#'       SpekeKeyProvider = list(
+#'         RoleArn = "string",
+#'         SystemIds = list(
+#'           "string"
+#'         ),
+#'         Url = "string"
+#'       )
+#'     ),
+#'     MssManifests = list(
+#'       list(
+#'         ManifestName = "string",
+#'         StreamSelection = list(
+#'           MaxVideoBitsPerSecond = 123,
+#'           MinVideoBitsPerSecond = 123,
+#'           StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'         )
+#'       )
+#'     ),
+#'     SegmentDurationSeconds = 123
+#'   ),
+#'   PackagingGroupId = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -448,6 +769,23 @@ mediapackagevod_describe_packaging_configuration <- function(Id) {
 #' mediapackagevod_describe_packaging_group(Id)
 #'
 #' @param Id &#91;required&#93; The ID of a MediaPackage VOD PackagingGroup resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Authorization = list(
+#'     CdnIdentifierSecret = "string",
+#'     SecretsRoleArn = "string"
+#'   ),
+#'   DomainName = "string",
+#'   Id = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -488,6 +826,28 @@ mediapackagevod_describe_packaging_group <- function(Id) {
 #' @param NextToken A token used to resume pagination from the end of a previous request.
 #' @param PackagingGroupId Returns Assets associated with the specified PackagingGroup.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Assets = list(
+#'     list(
+#'       Arn = "string",
+#'       CreatedAt = "string",
+#'       Id = "string",
+#'       PackagingGroupId = "string",
+#'       ResourceId = "string",
+#'       SourceArn = "string",
+#'       SourceRoleArn = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_assets(
@@ -521,7 +881,8 @@ mediapackagevod_list_assets <- function(MaxResults = NULL, NextToken = NULL, Pac
 #' resources
 #'
 #' @description
-#' Returns a collection of MediaPackage VOD PackagingConfiguration resources.
+#' Returns a collection of MediaPackage VOD PackagingConfiguration
+#' resources.
 #'
 #' @usage
 #' mediapackagevod_list_packaging_configurations(MaxResults, NextToken,
@@ -529,7 +890,132 @@ mediapackagevod_list_assets <- function(MaxResults = NULL, NextToken = NULL, Pac
 #'
 #' @param MaxResults Upper bound on number of records to return.
 #' @param NextToken A token used to resume pagination from the end of a previous request.
-#' @param PackagingGroupId Returns MediaPackage VOD PackagingConfigurations associated with the specified PackagingGroup.
+#' @param PackagingGroupId Returns MediaPackage VOD PackagingConfigurations associated with the
+#' specified PackagingGroup.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   PackagingConfigurations = list(
+#'     list(
+#'       Arn = "string",
+#'       CmafPackage = list(
+#'         Encryption = list(
+#'           SpekeKeyProvider = list(
+#'             RoleArn = "string",
+#'             SystemIds = list(
+#'               "string"
+#'             ),
+#'             Url = "string"
+#'           )
+#'         ),
+#'         HlsManifests = list(
+#'           list(
+#'             AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+#'             IncludeIframeOnlyStream = TRUE|FALSE,
+#'             ManifestName = "string",
+#'             ProgramDateTimeIntervalSeconds = 123,
+#'             RepeatExtXKey = TRUE|FALSE,
+#'             StreamSelection = list(
+#'               MaxVideoBitsPerSecond = 123,
+#'               MinVideoBitsPerSecond = 123,
+#'               StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'             )
+#'           )
+#'         ),
+#'         SegmentDurationSeconds = 123
+#'       ),
+#'       DashPackage = list(
+#'         DashManifests = list(
+#'           list(
+#'             ManifestLayout = "FULL"|"COMPACT",
+#'             ManifestName = "string",
+#'             MinBufferTimeSeconds = 123,
+#'             Profile = "NONE"|"HBBTV_1_5",
+#'             StreamSelection = list(
+#'               MaxVideoBitsPerSecond = 123,
+#'               MinVideoBitsPerSecond = 123,
+#'               StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'             )
+#'           )
+#'         ),
+#'         Encryption = list(
+#'           SpekeKeyProvider = list(
+#'             RoleArn = "string",
+#'             SystemIds = list(
+#'               "string"
+#'             ),
+#'             Url = "string"
+#'           )
+#'         ),
+#'         PeriodTriggers = list(
+#'           "ADS"
+#'         ),
+#'         SegmentDurationSeconds = 123,
+#'         SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE"|"NUMBER_WITH_DURATION"
+#'       ),
+#'       HlsPackage = list(
+#'         Encryption = list(
+#'           ConstantInitializationVector = "string",
+#'           EncryptionMethod = "AES_128"|"SAMPLE_AES",
+#'           SpekeKeyProvider = list(
+#'             RoleArn = "string",
+#'             SystemIds = list(
+#'               "string"
+#'             ),
+#'             Url = "string"
+#'           )
+#'         ),
+#'         HlsManifests = list(
+#'           list(
+#'             AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+#'             IncludeIframeOnlyStream = TRUE|FALSE,
+#'             ManifestName = "string",
+#'             ProgramDateTimeIntervalSeconds = 123,
+#'             RepeatExtXKey = TRUE|FALSE,
+#'             StreamSelection = list(
+#'               MaxVideoBitsPerSecond = 123,
+#'               MinVideoBitsPerSecond = 123,
+#'               StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'             )
+#'           )
+#'         ),
+#'         SegmentDurationSeconds = 123,
+#'         UseAudioRenditionGroup = TRUE|FALSE
+#'       ),
+#'       Id = "string",
+#'       MssPackage = list(
+#'         Encryption = list(
+#'           SpekeKeyProvider = list(
+#'             RoleArn = "string",
+#'             SystemIds = list(
+#'               "string"
+#'             ),
+#'             Url = "string"
+#'           )
+#'         ),
+#'         MssManifests = list(
+#'           list(
+#'             ManifestName = "string",
+#'             StreamSelection = list(
+#'               MaxVideoBitsPerSecond = 123,
+#'               MinVideoBitsPerSecond = 123,
+#'               StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+#'             )
+#'           )
+#'         ),
+#'         SegmentDurationSeconds = 123
+#'       ),
+#'       PackagingGroupId = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -571,6 +1057,28 @@ mediapackagevod_list_packaging_configurations <- function(MaxResults = NULL, Nex
 #' @param MaxResults Upper bound on number of records to return.
 #' @param NextToken A token used to resume pagination from the end of a previous request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   PackagingGroups = list(
+#'     list(
+#'       Arn = "string",
+#'       Authorization = list(
+#'         CdnIdentifierSecret = "string",
+#'         SecretsRoleArn = "string"
+#'       ),
+#'       DomainName = "string",
+#'       Id = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_packaging_groups(
@@ -607,7 +1115,18 @@ mediapackagevod_list_packaging_groups <- function(MaxResults = NULL, NextToken =
 #' @usage
 #' mediapackagevod_list_tags_for_resource(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource. You can get this from the response to any request to the resource.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource. You can get this from
+#' the response to any request to the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -639,13 +1158,17 @@ mediapackagevod_list_tags_for_resource <- function(ResourceArn) {
 #' Adds tags to the specified resource
 #'
 #' @description
-#' Adds tags to the specified resource. You can specify one or more tags to add.
+#' Adds tags to the specified resource. You can specify one or more tags to
+#' add.
 #'
 #' @usage
 #' mediapackagevod_tag_resource(ResourceArn, Tags)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource. You can get this from the response to any request to the resource.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource. You can get this from
+#' the response to any request to the resource.
 #' @param Tags &#91;required&#93; A collection of tags associated with a resource
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -680,13 +1203,17 @@ mediapackagevod_tag_resource <- function(ResourceArn, Tags) {
 #' Removes tags from the specified resource
 #'
 #' @description
-#' Removes tags from the specified resource. You can specify one or more tags to remove.
+#' Removes tags from the specified resource. You can specify one or more
+#' tags to remove.
 #'
 #' @usage
 #' mediapackagevod_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource. You can get this from the response to any request to the resource.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource. You can get this from
+#' the response to any request to the resource.
 #' @param TagKeys &#91;required&#93; A comma-separated list of the tag keys to remove from the resource.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -721,13 +1248,31 @@ mediapackagevod_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates a specific packaging group
 #'
 #' @description
-#' Updates a specific packaging group. You can't change the id attribute or any other system-generated attributes.
+#' Updates a specific packaging group. You can't change the id attribute or
+#' any other system-generated attributes.
 #'
 #' @usage
 #' mediapackagevod_update_packaging_group(Authorization, Id)
 #'
 #' @param Authorization 
 #' @param Id &#91;required&#93; The ID of a MediaPackage VOD PackagingGroup resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Authorization = list(
+#'     CdnIdentifierSecret = "string",
+#'     SecretsRoleArn = "string"
+#'   ),
+#'   DomainName = "string",
+#'   Id = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

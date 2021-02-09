@@ -13,6 +13,210 @@ kinesisanalyticsv2_describe_application(ApplicationName,
 \item{IncludeAdditionalDetails}{Displays verbose information about a Kinesis Data Analytics application,
 including the application's job plan.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationDetail = list(
+    ApplicationARN = "string",
+    ApplicationDescription = "string",
+    ApplicationName = "string",
+    RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"FLINK-1_11",
+    ServiceExecutionRole = "string",
+    ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING",
+    ApplicationVersionId = 123,
+    CreateTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdateTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ApplicationConfigurationDescription = list(
+      SqlApplicationConfigurationDescription = list(
+        InputDescriptions = list(
+          list(
+            InputId = "string",
+            NamePrefix = "string",
+            InAppStreamNames = list(
+              "string"
+            ),
+            InputProcessingConfigurationDescription = list(
+              InputLambdaProcessorDescription = list(
+                ResourceARN = "string",
+                RoleARN = "string"
+              )
+            ),
+            KinesisStreamsInputDescription = list(
+              ResourceARN = "string",
+              RoleARN = "string"
+            ),
+            KinesisFirehoseInputDescription = list(
+              ResourceARN = "string",
+              RoleARN = "string"
+            ),
+            InputSchema = list(
+              RecordFormat = list(
+                RecordFormatType = "JSON"|"CSV",
+                MappingParameters = list(
+                  JSONMappingParameters = list(
+                    RecordRowPath = "string"
+                  ),
+                  CSVMappingParameters = list(
+                    RecordRowDelimiter = "string",
+                    RecordColumnDelimiter = "string"
+                  )
+                )
+              ),
+              RecordEncoding = "string",
+              RecordColumns = list(
+                list(
+                  Name = "string",
+                  Mapping = "string",
+                  SqlType = "string"
+                )
+              )
+            ),
+            InputParallelism = list(
+              Count = 123
+            ),
+            InputStartingPositionConfiguration = list(
+              InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
+            )
+          )
+        ),
+        OutputDescriptions = list(
+          list(
+            OutputId = "string",
+            Name = "string",
+            KinesisStreamsOutputDescription = list(
+              ResourceARN = "string",
+              RoleARN = "string"
+            ),
+            KinesisFirehoseOutputDescription = list(
+              ResourceARN = "string",
+              RoleARN = "string"
+            ),
+            LambdaOutputDescription = list(
+              ResourceARN = "string",
+              RoleARN = "string"
+            ),
+            DestinationSchema = list(
+              RecordFormatType = "JSON"|"CSV"
+            )
+          )
+        ),
+        ReferenceDataSourceDescriptions = list(
+          list(
+            ReferenceId = "string",
+            TableName = "string",
+            S3ReferenceDataSourceDescription = list(
+              BucketARN = "string",
+              FileKey = "string",
+              ReferenceRoleARN = "string"
+            ),
+            ReferenceSchema = list(
+              RecordFormat = list(
+                RecordFormatType = "JSON"|"CSV",
+                MappingParameters = list(
+                  JSONMappingParameters = list(
+                    RecordRowPath = "string"
+                  ),
+                  CSVMappingParameters = list(
+                    RecordRowDelimiter = "string",
+                    RecordColumnDelimiter = "string"
+                  )
+                )
+              ),
+              RecordEncoding = "string",
+              RecordColumns = list(
+                list(
+                  Name = "string",
+                  Mapping = "string",
+                  SqlType = "string"
+                )
+              )
+            )
+          )
+        )
+      ),
+      ApplicationCodeConfigurationDescription = list(
+        CodeContentType = "PLAINTEXT"|"ZIPFILE",
+        CodeContentDescription = list(
+          TextContent = "string",
+          CodeMD5 = "string",
+          CodeSize = 123,
+          S3ApplicationCodeLocationDescription = list(
+            BucketARN = "string",
+            FileKey = "string",
+            ObjectVersion = "string"
+          )
+        )
+      ),
+      RunConfigurationDescription = list(
+        ApplicationRestoreConfigurationDescription = list(
+          ApplicationRestoreType = "SKIP_RESTORE_FROM_SNAPSHOT"|"RESTORE_FROM_LATEST_SNAPSHOT"|"RESTORE_FROM_CUSTOM_SNAPSHOT",
+          SnapshotName = "string"
+        ),
+        FlinkRunConfigurationDescription = list(
+          AllowNonRestoredState = TRUE|FALSE
+        )
+      ),
+      FlinkApplicationConfigurationDescription = list(
+        CheckpointConfigurationDescription = list(
+          ConfigurationType = "DEFAULT"|"CUSTOM",
+          CheckpointingEnabled = TRUE|FALSE,
+          CheckpointInterval = 123,
+          MinPauseBetweenCheckpoints = 123
+        ),
+        MonitoringConfigurationDescription = list(
+          ConfigurationType = "DEFAULT"|"CUSTOM",
+          MetricsLevel = "APPLICATION"|"TASK"|"OPERATOR"|"PARALLELISM",
+          LogLevel = "INFO"|"WARN"|"ERROR"|"DEBUG"
+        ),
+        ParallelismConfigurationDescription = list(
+          ConfigurationType = "DEFAULT"|"CUSTOM",
+          Parallelism = 123,
+          ParallelismPerKPU = 123,
+          CurrentParallelism = 123,
+          AutoScalingEnabled = TRUE|FALSE
+        ),
+        JobPlanDescription = "string"
+      ),
+      EnvironmentPropertyDescriptions = list(
+        PropertyGroupDescriptions = list(
+          list(
+            PropertyGroupId = "string",
+            PropertyMap = list(
+              "string"
+            )
+          )
+        )
+      ),
+      ApplicationSnapshotConfigurationDescription = list(
+        SnapshotsEnabled = TRUE|FALSE
+      ),
+      VpcConfigurationDescriptions = list(
+        list(
+          VpcConfigurationId = "string",
+          VpcId = "string",
+          SubnetIds = list(
+            "string"
+          ),
+          SecurityGroupIds = list(
+            "string"
+          )
+        )
+      )
+    ),
+    CloudWatchLoggingOptionDescriptions = list(
+      list(
+        CloudWatchLoggingOptionId = "string",
+        LogStreamARN = "string",
+        RoleARN = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns information about a specific Kinesis Data Analytics application.
 

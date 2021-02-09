@@ -17,6 +17,28 @@ To get a page token, perform an initial
 are paginated, the response will return a next page token that you can
 specify as the page token in a subsequent request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  blueprints = list(
+    list(
+      blueprintId = "string",
+      name = "string",
+      group = "string",
+      type = "os"|"app",
+      description = "string",
+      isActive = TRUE|FALSE,
+      minPower = 123,
+      version = "string",
+      versionCode = "string",
+      productUrl = "string",
+      licenseUrl = "string",
+      platform = "LINUX_UNIX"|"WINDOWS"
+    )
+  ),
+  nextPageToken = "string"
+)
+}
+}
 \description{
 Returns the list of available instance images, or \emph{blueprints}. You can
 use a blueprint to create a new instance already running a specific

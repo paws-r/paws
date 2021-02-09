@@ -9,6 +9,12 @@ glue_start_ml_evaluation_task_run(TransformId)
 \arguments{
 \item{TransformId}{[required] The unique identifier of the machine learning transform.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TaskRunId = "string"
+)
+}
+}
 \description{
 Starts a task to estimate the quality of the transform.
 

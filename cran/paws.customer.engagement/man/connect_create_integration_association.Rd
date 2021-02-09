@@ -21,6 +21,13 @@ connect_create_integration_association(InstanceId, IntegrationType,
 
 \item{SourceType}{[required] The type of the data source.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IntegrationAssociationId = "string",
+  IntegrationAssociationArn = "string"
+)
+}
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

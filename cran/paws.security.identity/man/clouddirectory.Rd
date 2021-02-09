@@ -99,7 +99,7 @@ Directory features, see \href{https://aws.amazon.com/directoryservice/}{AWS Dire
 \link[=clouddirectory_remove_facet_from_object]{remove_facet_from_object} \tab Removes the specified facet from the specified object\cr
 \link[=clouddirectory_tag_resource]{tag_resource} \tab An API operation for adding tags to a resource\cr
 \link[=clouddirectory_untag_resource]{untag_resource} \tab An API operation for removing tags from a resource\cr
-\link[=clouddirectory_update_facet]{update_facet} \tab Does the following: 1\cr
+\link[=clouddirectory_update_facet]{update_facet} \tab Does the following:\cr
 \link[=clouddirectory_update_link_attributes]{update_link_attributes} \tab Updates a given typed link’s attributes\cr
 \link[=clouddirectory_update_object_attributes]{update_object_attributes} \tab Updates a given object's attributes\cr
 \link[=clouddirectory_update_schema]{update_schema} \tab Updates the schema name with a new name\cr

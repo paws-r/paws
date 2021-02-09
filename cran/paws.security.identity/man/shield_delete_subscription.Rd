@@ -6,6 +6,10 @@
 \usage{
 shield_delete_subscription()
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes AWS Shield Advanced from an account. AWS Shield Advanced
 requires a 1-year subscription commitment. You cannot delete a

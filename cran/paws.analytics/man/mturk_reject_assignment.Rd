@@ -14,6 +14,10 @@ created by the Requester.}
 \item{RequesterFeedback}{[required] A message for the Worker, which the Worker can see in the Status section
 of the web site.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 The \code{\link[=mturk_reject_assignment]{reject_assignment}} operation rejects the
 results of a completed assignment.

@@ -13,6 +13,18 @@ default is maximum. If you specify 0, AWS Config uses the default.}
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PendingAggregationRequests = list(
+    list(
+      RequesterAccountId = "string",
+      RequesterAwsRegion = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of all pending aggregation requests.
 }

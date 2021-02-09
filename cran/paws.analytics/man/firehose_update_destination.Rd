@@ -35,6 +35,10 @@ configuration.}
 
 \item{HttpEndpointDestinationUpdate}{Describes an update to the specified HTTP endpoint destination.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the specified destination of the specified delivery stream.
 

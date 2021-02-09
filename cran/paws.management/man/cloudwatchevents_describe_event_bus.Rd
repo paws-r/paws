@@ -10,6 +10,14 @@ cloudwatchevents_describe_event_bus(Name)
 \item{Name}{The name or ARN of the event bus to show details for. If you omit this,
 the default event bus is displayed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string",
+  Arn = "string",
+  Policy = "string"
+)
+}
+}
 \description{
 Displays details about an event bus in your account. This can include
 the external AWS accounts that are permitted to write events to your

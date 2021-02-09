@@ -26,7 +26,7 @@ assessment run.
 # Deletes the assessment run that is specified by the ARN of the
 # assessment run.
 svc$delete_assessment_run(
-  assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-..."
+  assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/temp..."
 )
 }
 

@@ -14,11 +14,17 @@ letters, numbers, underscores, hyphens, and periods, and must be between
 1 and 256 characters long.}
 
 \item{Platform}{[required] The following platforms are supported: ADM (Amazon Device Messaging),
-APNS (Apple Push Notification Service), APNS\\_SANDBOX, and GCM (Firebase
+APNS (Apple Push Notification Service), APNS_SANDBOX, and GCM (Firebase
 Cloud Messaging).}
 
 \item{Attributes}{[required] For a list of attributes, see
 \code{\link[=sns_set_platform_application_attributes]{set_platform_application_attributes}}}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  PlatformApplicationArn = "string"
+)
+}
 }
 \description{
 Creates a platform application object for one of the supported push

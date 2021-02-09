@@ -10,6 +10,10 @@ guardduty_delete_detector(DetectorId)
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes an Amazon GuardDuty detector that is specified by the detector
 ID.

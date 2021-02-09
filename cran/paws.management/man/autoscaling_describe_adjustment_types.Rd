@@ -7,6 +7,16 @@ scaling policies}
 \usage{
 autoscaling_describe_adjustment_types()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AdjustmentTypes = list(
+    list(
+      AdjustmentType = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the available adjustment types for Amazon EC2 Auto Scaling
 scaling policies. These settings apply to step scaling policies and

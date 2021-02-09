@@ -9,6 +9,10 @@ directoryservice_restore_from_snapshot(SnapshotId)
 \arguments{
 \item{SnapshotId}{[required] The identifier of the snapshot to restore from.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Restores a directory using an existing directory snapshot.
 

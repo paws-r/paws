@@ -68,6 +68,27 @@ finding.}
 
 \item{RelatedFindings}{A list of findings that are related to the updated findings.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProcessedFindings = list(
+    list(
+      Id = "string",
+      ProductArn = "string"
+    )
+  ),
+  UnprocessedFindings = list(
+    list(
+      FindingIdentifier = list(
+        Id = "string",
+        ProductArn = "string"
+      ),
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Used by Security Hub customers to update information about their
 investigation into a finding. Requested by master accounts or member

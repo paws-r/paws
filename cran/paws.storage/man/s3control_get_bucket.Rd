@@ -23,8 +23,18 @@ encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/bucket/reports}.
 The value must be URL encoded.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Bucket = "string",
+  PublicAccessBlockEnabled = TRUE|FALSE,
+  CreationDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
-Gets an Amazon S3 on Outposts bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
+Gets an Amazon S3 on Outposts bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 If you are using an identity other than the root user of the AWS account

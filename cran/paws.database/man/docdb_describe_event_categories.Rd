@@ -15,6 +15,19 @@ Valid values: \code{db-instance}, \code{db-parameter-group}, \code{db-security-g
 
 \item{Filters}{This parameter is not currently supported.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventCategoriesMapList = list(
+    list(
+      SourceType = "string",
+      EventCategories = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Displays a list of categories for all event source types, or, if
 specified, for a specified source type.

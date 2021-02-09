@@ -6,6 +6,12 @@
 \usage{
 ram_enable_sharing_with_aws_organization()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  returnValue = TRUE|FALSE
+)
+}
+}
 \description{
 Enables resource sharing within your AWS Organization.
 

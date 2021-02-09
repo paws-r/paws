@@ -21,10 +21,40 @@ The following restrictions apply to tags:
 \item Maximum tag key length: 128 Unicode characters
 \item Maximum tag value length: 256 Unicode characters
 \item Valid values for key and value: a-z, A-Z, 0-9, space, and the
-following characters: \\_ . : / = + - and @
+following characters: _ . : / = + - and @
 \item Tag keys and values are case sensitive.
 \item Don't use \verb{aws:} as a prefix for keys; it's reserved for AWS use.
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  SamplingRuleRecord = list(
+    SamplingRule = list(
+      RuleName = "string",
+      RuleARN = "string",
+      ResourceARN = "string",
+      Priority = 123,
+      FixedRate = 123.0,
+      ReservoirSize = 123,
+      ServiceName = "string",
+      ServiceType = "string",
+      Host = "string",
+      HTTPMethod = "string",
+      URLPath = "string",
+      Version = 123,
+      Attributes = list(
+        "string"
+      )
+    ),
+    CreatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    ModifiedAt = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
 }
 \description{
 Creates a rule to control sampling behavior for instrumented

@@ -7,17 +7,54 @@
 kafka_list_nodes(ClusterArn, MaxResults, NextToken)
 }
 \arguments{
-\item{ClusterArn}{[required]
-<p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>}
+\item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
 
-\item{MaxResults}{<p>The maximum number of results to return in the response. If there are more results, the response includes a NextToken parameter.</p>}
+\item{MaxResults}{The maximum number of results to return in the response. If there are
+more results, the response includes a NextToken parameter.}
 
-\item{NextToken}{<p>The paginated results marker. When the result of the operation is truncated, the call returns NextToken in the response. 
-To get the next batch, provide this token in your next request.</p>}
+\item{NextToken}{The paginated results marker. When the result of the operation is
+truncated, the call returns NextToken in the response. To get the next
+batch, provide this token in your next request.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  NodeInfoList = list(
+    list(
+      AddedToClusterTime = "string",
+      BrokerNodeInfo = list(
+        AttachedENIId = "string",
+        BrokerId = 123.0,
+        ClientSubnet = "string",
+        ClientVpcIpAddress = "string",
+        CurrentBrokerSoftwareInfo = list(
+          ConfigurationArn = "string",
+          ConfigurationRevision = 123,
+          KafkaVersion = "string"
+        ),
+        Endpoints = list(
+          "string"
+        )
+      ),
+      InstanceType = "string",
+      NodeARN = "string",
+      NodeType = "BROKER",
+      ZookeeperNodeInfo = list(
+        AttachedENIId = "string",
+        ClientVpcIpAddress = "string",
+        Endpoints = list(
+          "string"
+        ),
+        ZookeeperId = 123.0,
+        ZookeeperVersion = "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
-\preformatted{        <p>Returns a list of the broker nodes in the cluster.</p>
-}
+Returns a list of the broker nodes in the cluster.
 }
 \section{Request syntax}{
 \preformatted{svc$list_nodes(

@@ -15,6 +15,38 @@ cloudfront_update_field_level_encryption_profile(
 \item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the
 profile identity to update. For example: \code{E2QWRUHAPOMQZL}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FieldLevelEncryptionProfile = list(
+    Id = "string",
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    FieldLevelEncryptionProfileConfig = list(
+      Name = "string",
+      CallerReference = "string",
+      Comment = "string",
+      EncryptionEntities = list(
+        Quantity = 123,
+        Items = list(
+          list(
+            PublicKeyId = "string",
+            ProviderId = "string",
+            FieldPatterns = list(
+              Quantity = 123,
+              Items = list(
+                "string"
+              )
+            )
+          )
+        )
+      )
+    )
+  ),
+  ETag = "string"
+)
+}
+}
 \description{
 Update a field-level encryption profile.
 }

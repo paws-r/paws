@@ -17,6 +17,26 @@ of campaigns (if they exist).}
 
 \item{maxResults}{The maximum number of campaigns to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  campaigns = list(
+    list(
+      name = "string",
+      campaignArn = "string",
+      status = "string",
+      creationDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      failureReason = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of campaigns that use the given solution. When a solution
 is not specified, all the campaigns associated with the account are

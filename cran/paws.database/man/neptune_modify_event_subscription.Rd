@@ -28,6 +28,27 @@ the \strong{DescribeEventCategories} action.}
 
 \item{Enabled}{A Boolean value; set to \strong{true} to activate the subscription.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventSubscription = list(
+    CustomerAwsId = "string",
+    CustSubscriptionId = "string",
+    SnsTopicArn = "string",
+    Status = "string",
+    SubscriptionCreationTime = "string",
+    SourceType = "string",
+    SourceIdsList = list(
+      "string"
+    ),
+    EventCategoriesList = list(
+      "string"
+    ),
+    Enabled = TRUE|FALSE,
+    EventSubscriptionArn = "string"
+  )
+)
+}
+}
 \description{
 Modifies an existing event notification subscription. Note that you
 can't modify the source identifiers using this call; to change source

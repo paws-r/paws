@@ -8,9 +8,20 @@ Key ID}
 simpledb_list_domains(MaxNumberOfDomains, NextToken)
 }
 \arguments{
-\item{MaxNumberOfDomains}{The maximum number of domain names you want returned. The range is 1 to 100. The default setting is 100.}
+\item{MaxNumberOfDomains}{The maximum number of domain names you want returned. The range is 1 to
+100. The default setting is 100.}
 
-\item{NextToken}{A string informing Amazon SimpleDB where to start the next list of domain names.}
+\item{NextToken}{A string informing Amazon SimpleDB where to start the next list of
+domain names.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  DomainNames = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 The \code{\link[=simpledb_list_domains]{list_domains}} operation lists all domains

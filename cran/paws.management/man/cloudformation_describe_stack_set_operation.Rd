@@ -12,6 +12,55 @@ operation.}
 
 \item{OperationId}{[required] The unique ID of the stack set operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StackSetOperation = list(
+    OperationId = "string",
+    StackSetId = "string",
+    Action = "CREATE"|"UPDATE"|"DELETE"|"DETECT_DRIFT",
+    Status = "RUNNING"|"SUCCEEDED"|"FAILED"|"STOPPING"|"STOPPED"|"QUEUED",
+    OperationPreferences = list(
+      RegionOrder = list(
+        "string"
+      ),
+      FailureToleranceCount = 123,
+      FailureTolerancePercentage = 123,
+      MaxConcurrentCount = 123,
+      MaxConcurrentPercentage = 123
+    ),
+    RetainStacks = TRUE|FALSE,
+    AdministrationRoleARN = "string",
+    ExecutionRoleName = "string",
+    CreationTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    DeploymentTargets = list(
+      Accounts = list(
+        "string"
+      ),
+      OrganizationalUnitIds = list(
+        "string"
+      )
+    ),
+    StackSetDriftDetectionDetails = list(
+      DriftStatus = "DRIFTED"|"IN_SYNC"|"NOT_CHECKED",
+      DriftDetectionStatus = "COMPLETED"|"FAILED"|"PARTIAL_SUCCESS"|"IN_PROGRESS"|"STOPPED",
+      LastDriftCheckTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      TotalStackInstancesCount = 123,
+      DriftedStackInstancesCount = 123,
+      InSyncStackInstancesCount = 123,
+      InProgressStackInstancesCount = 123,
+      FailedStackInstancesCount = 123
+    )
+  )
+)
+}
+}
 \description{
 Returns the description of the specified stack set operation.
 }

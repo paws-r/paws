@@ -38,8 +38,7 @@ This parameter to the API requires a JSON text string argument. For
 information on how to format a JSON parameter for the various command
 line tool environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For the AWS CLI, you can also use the
-syntax:
-\verb{--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"\\\[,…\\\]}}
+syntax: \verb{--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"[,…]}}
 }
 \description{
 Attaches one or more tags, each consisting of a key name and a value, to
@@ -62,7 +61,7 @@ your tags per secret limit.
 resources, remember other services might have restrictions on
 allowed characters. Generally allowed characters: letters, spaces,
 and numbers representable in UTF-8, plus the following special
-characters: + - = . \\_ : / @.
+characters: + - = . _ : / @.
 }
 
 If you use tags as part of your security strategy, then adding or

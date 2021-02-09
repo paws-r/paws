@@ -34,6 +34,23 @@ type only, omit this parameter and specify \strong{InstanceType} instead. You
 cannot specify \strong{InstanceFamily} and \strong{InstanceType} in the same
 request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Successful = list(
+    "string"
+  ),
+  Unsuccessful = list(
+    list(
+      Error = list(
+        Code = "string",
+        Message = "string"
+      ),
+      ResourceId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Modify the auto-placement setting of a Dedicated Host. When
 auto-placement is enabled, any instances that you launch with a tenancy

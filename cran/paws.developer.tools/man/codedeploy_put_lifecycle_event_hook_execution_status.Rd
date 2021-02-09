@@ -17,6 +17,12 @@ lifecycle hook is specified in the \code{hooks} section of the AppSpec file.}
 \item{status}{The result of a Lambda function that validates a deployment lifecycle
 event (\code{Succeeded} or \code{Failed}).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  lifecycleEventHookExecutionId = "string"
+)
+}
+}
 \description{
 Sets the result of a Lambda validation function. The function validates
 lifecycle hooks during a deployment that uses the AWS Lambda or Amazon

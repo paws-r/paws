@@ -10,6 +10,31 @@ support_describe_trusted_advisor_check_summaries(checkIds)
 \arguments{
 \item{checkIds}{[required] The IDs of the Trusted Advisor checks.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  summaries = list(
+    list(
+      checkId = "string",
+      timestamp = "string",
+      status = "string",
+      hasFlaggedResources = TRUE|FALSE,
+      resourcesSummary = list(
+        resourcesProcessed = 123,
+        resourcesFlagged = 123,
+        resourcesIgnored = 123,
+        resourcesSuppressed = 123
+      ),
+      categorySpecificSummary = list(
+        costOptimizing = list(
+          estimatedMonthlySavings = 123.0,
+          estimatedPercentMonthlySavings = 123.0
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the results for the AWS Trusted Advisor check summaries for the
 check IDs that you specified. You can get the check IDs by calling the

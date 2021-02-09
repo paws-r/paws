@@ -9,6 +9,14 @@ iot_describe_index(indexName)
 \arguments{
 \item{indexName}{[required] The index name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  indexName = "string",
+  indexStatus = "ACTIVE"|"BUILDING"|"REBUILDING",
+  schema = "string"
+)
+}
+}
 \description{
 Describes a search index.
 }

@@ -21,6 +21,12 @@ idempotency.}
 
 \item{Tags}{The tags for the user.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserArn = "string"
+)
+}
+}
 \description{
 Creates a user.
 }

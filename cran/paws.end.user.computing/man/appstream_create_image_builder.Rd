@@ -65,7 +65,7 @@ builder. To assume a role, the image builder calls the AWS Security
 Token Service (STS) \code{AssumeRole} API operation and passes the ARN of the
 role to use. The operation creates a new session with temporary
 credentials. AppStream 2.0 retrieves the temporary credentials and
-creates the \strong{appstream\\_machine\\_role} credential profile on the
+creates the \strong{appstream_machine_role} credential profile on the
 instance.
 
 For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html}{Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances}
@@ -86,7 +86,7 @@ specify a value, Environment=.
 Generally allowed characters are: letters, numbers, and spaces
 representable in UTF-8, and the following special characters:
 
-\\_ . : / = + \\ - @
+_ . : / = + \\ - @
 
 If you do not specify a value, the value is set to an empty string.
 
@@ -96,6 +96,62 @@ in the \emph{Amazon AppStream 2.0 Administration Guide}.}
 \item{AccessEndpoints}{The list of interface VPC endpoint (interface endpoint) objects.
 Administrators can connect to the image builder only through the
 specified endpoints.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ImageBuilder = list(
+    Name = "string",
+    Arn = "string",
+    ImageArn = "string",
+    Description = "string",
+    DisplayName = "string",
+    VpcConfig = list(
+      SubnetIds = list(
+        "string"
+      ),
+      SecurityGroupIds = list(
+        "string"
+      )
+    ),
+    InstanceType = "string",
+    Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
+    IamRoleArn = "string",
+    State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED",
+    StateChangeReason = list(
+      Code = "INTERNAL_ERROR"|"IMAGE_UNAVAILABLE",
+      Message = "string"
+    ),
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EnableDefaultInternetAccess = TRUE|FALSE,
+    DomainJoinInfo = list(
+      DirectoryName = "string",
+      OrganizationalUnitDistinguishedName = "string"
+    ),
+    NetworkAccessConfiguration = list(
+      EniPrivateIpAddress = "string",
+      EniId = "string"
+    ),
+    ImageBuilderErrors = list(
+      list(
+        ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
+        ErrorMessage = "string",
+        ErrorTimestamp = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    ),
+    AppstreamAgentVersion = "string",
+    AccessEndpoints = list(
+      list(
+        EndpointType = "STREAMING",
+        VpceId = "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Creates an image builder. An image builder is a virtual machine that is

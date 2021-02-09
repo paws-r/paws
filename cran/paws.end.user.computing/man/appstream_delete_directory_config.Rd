@@ -9,6 +9,10 @@ appstream_delete_directory_config(DirectoryName)
 \arguments{
 \item{DirectoryName}{[required] The name of the directory configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified Directory Config object from AppStream 2.0. This
 object includes the information required to join streaming instances to

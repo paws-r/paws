@@ -37,9 +37,6 @@ to use tags to control access, see \href{https://docs.aws.amazon.com/IAM/latest/
 in the \emph{IAM User Guide}.
 \item \strong{Cost allocation} - Use tags to help track which individuals and
 teams are using which AWS resources.
-}<!-- -->
-
-\itemize{
 \item Make sure that you have no invalid tags and that you do not exceed
 the allowed number of tags per role. In either case, the entire
 request fails and \emph{no} tags are added to the role.

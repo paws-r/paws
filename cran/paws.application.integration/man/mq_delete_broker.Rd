@@ -9,6 +9,12 @@ mq_delete_broker(BrokerId)
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BrokerId = "string"
+)
+}
+}
 \description{
 Deletes a broker. Note: This API is asynchronous.
 }

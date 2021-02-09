@@ -14,26 +14,81 @@ medialive_create_input(Destinations, InputDevices, InputSecurityGroups,
 
 \item{InputSecurityGroups}{A list of security groups referenced by IDs to attach to the input.}
 
-\item{MediaConnectFlows}{A list of the MediaConnect Flows that you want to use in this input. You can specify as few as one
-Flow and presently, as many as two. The only requirement is when you have more than one is that each Flow is in a
-separate Availability Zone as this ensures your EML input is redundant to AZ issues.}
+\item{MediaConnectFlows}{A list of the MediaConnect Flows that you want to use in this input. You
+can specify as few as one Flow and presently, as many as two. The only
+requirement is when you have more than one is that each Flow is in a
+separate Availability Zone as this ensures your EML input is redundant
+to AZ issues.}
 
 \item{Name}{Name of the input.}
 
 \item{RequestId}{Unique identifier of the request to ensure the request is handled
 exactly once in case of retries.}
 
-\item{RoleArn}{The Amazon Resource Name (ARN) of the role this input assumes during and after creation.}
+\item{RoleArn}{The Amazon Resource Name (ARN) of the role this input assumes during and
+after creation.}
 
 \item{Sources}{The source URLs for a PULL-type input. Every PULL type input needs
-exactly two source URLs for redundancy.
-Only specify sources for PULL type Inputs. Leave Destinations empty.}
+exactly two source URLs for redundancy. Only specify sources for PULL
+type Inputs. Leave Destinations empty.}
 
 \item{Tags}{A collection of key-value pairs.}
 
 \item{Type}{}
 
 \item{Vpc}{}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Input = list(
+    Arn = "string",
+    AttachedChannels = list(
+      "string"
+    ),
+    Destinations = list(
+      list(
+        Ip = "string",
+        Port = "string",
+        Url = "string",
+        Vpc = list(
+          AvailabilityZone = "string",
+          NetworkInterfaceId = "string"
+        )
+      )
+    ),
+    Id = "string",
+    InputClass = "STANDARD"|"SINGLE_PIPELINE",
+    InputDevices = list(
+      list(
+        Id = "string"
+      )
+    ),
+    InputSourceType = "STATIC"|"DYNAMIC",
+    MediaConnectFlows = list(
+      list(
+        FlowArn = "string"
+      )
+    ),
+    Name = "string",
+    RoleArn = "string",
+    SecurityGroups = list(
+      "string"
+    ),
+    Sources = list(
+      list(
+        PasswordParam = "string",
+        Url = "string",
+        Username = "string"
+      )
+    ),
+    State = "CREATING"|"DETACHED"|"ATTACHED"|"DELETING"|"DELETED",
+    Tags = list(
+      "string"
+    ),
+    Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT"|"INPUT_DEVICE"|"AWS_CDI"
+  )
+)
+}
 }
 \description{
 Create an input

@@ -17,6 +17,24 @@ case sensitive.}
 \item{botAlias}{[required] An alias pointing to the specific version of the Amazon Lex bot to which
 this association is being made.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  name = "string",
+  description = "string",
+  botAlias = "string",
+  botName = "string",
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  type = "Facebook"|"Slack"|"Twilio-Sms"|"Kik",
+  botConfiguration = list(
+    "string"
+  ),
+  status = "IN_PROGRESS"|"CREATED"|"FAILED",
+  failureReason = "string"
+)
+}
+}
 \description{
 Returns information about the association between an Amazon Lex bot and
 a messaging platform.

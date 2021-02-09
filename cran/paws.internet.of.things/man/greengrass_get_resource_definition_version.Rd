@@ -11,10 +11,72 @@ greengrass_get_resource_definition_version(ResourceDefinitionId,
 \arguments{
 \item{ResourceDefinitionId}{[required] The ID of the resource definition.}
 
-\item{ResourceDefinitionVersionId}{[required] The ID of the resource definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListResourceDefinitionVersions'' requests. If the version is the last one that was associated with a resource definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.}
+\item{ResourceDefinitionVersionId}{[required] The ID of the resource definition version. This value maps to the
+''Version'' property of the corresponding ''VersionInformation'' object,
+which is returned by ''ListResourceDefinitionVersions'' requests. If the
+version is the last one that was associated with a resource definition,
+the value also maps to the ''LatestVersion'' property of the
+corresponding ''DefinitionInformation'' object.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Definition = list(
+    Resources = list(
+      list(
+        Id = "string",
+        Name = "string",
+        ResourceDataContainer = list(
+          LocalDeviceResourceData = list(
+            GroupOwnerSetting = list(
+              AutoAddGroupOwner = TRUE|FALSE,
+              GroupOwner = "string"
+            ),
+            SourcePath = "string"
+          ),
+          LocalVolumeResourceData = list(
+            DestinationPath = "string",
+            GroupOwnerSetting = list(
+              AutoAddGroupOwner = TRUE|FALSE,
+              GroupOwner = "string"
+            ),
+            SourcePath = "string"
+          ),
+          S3MachineLearningModelResourceData = list(
+            DestinationPath = "string",
+            OwnerSetting = list(
+              GroupOwner = "string",
+              GroupPermission = "ro"|"rw"
+            ),
+            S3Uri = "string"
+          ),
+          SageMakerMachineLearningModelResourceData = list(
+            DestinationPath = "string",
+            OwnerSetting = list(
+              GroupOwner = "string",
+              GroupPermission = "ro"|"rw"
+            ),
+            SageMakerJobArn = "string"
+          ),
+          SecretsManagerSecretResourceData = list(
+            ARN = "string",
+            AdditionalStagingLabelsToDownload = list(
+              "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  Id = "string",
+  Version = "string"
+)
+}
 }
 \description{
-Retrieves information about a resource definition version, including which resources are included in the version.
+Retrieves information about a resource definition version, including
+which resources are included in the version.
 }
 \section{Request syntax}{
 \preformatted{svc$get_resource_definition_version(

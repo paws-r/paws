@@ -18,6 +18,10 @@ be unique within an account.}
 
 \item{Subscriber}{[required] The subscriber that you want to associate with a budget notification.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates a subscriber. You must create the associated budget and
 notification before you create the subscriber.

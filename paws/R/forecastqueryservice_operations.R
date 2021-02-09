@@ -41,7 +41,7 @@ NULL
 #' example, to get the forecast for `client_21` in the electricity usage
 #' dataset, specify the following:
 #' 
-#' `\{"item_id" : "client_21"\}`
+#' `{"item_id" : "client_21"}`
 #' 
 #' To get the full forecast, use the
 #' [CreateForecastExportJob](https://docs.aws.amazon.com/en_us/forecast/latest/dg/API_CreateForecastExportJob.html)
@@ -49,6 +49,23 @@ NULL
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of results, use the
 #' token in the next request. Tokens expire after 24 hours.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Forecast = list(
+#'     Predictions = list(
+#'       list(
+#'         list(
+#'           Timestamp = "string",
+#'           Value = 123.0
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

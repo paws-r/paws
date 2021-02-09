@@ -23,6 +23,23 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransitGatewayPrefixListReference = list(
+    TransitGatewayRouteTableId = "string",
+    PrefixListId = "string",
+    PrefixListOwnerId = "string",
+    State = "pending"|"available"|"modifying"|"deleting",
+    Blackhole = TRUE|FALSE,
+    TransitGatewayAttachment = list(
+      TransitGatewayAttachmentId = "string",
+      ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+      ResourceId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Modifies a reference (route) to a prefix list in a specified transit
 gateway route table.

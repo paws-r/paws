@@ -15,6 +15,10 @@ organization.}
 
 \item{DataSources}{Describes which data sources will be updated.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the delegated administrator account with the values provided.
 }

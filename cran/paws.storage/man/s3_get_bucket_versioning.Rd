@@ -13,6 +13,13 @@ s3_get_bucket_versioning(Bucket, ExpectedBucketOwner)
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = "Enabled"|"Suspended",
+  MFADelete = "Enabled"|"Disabled"
+)
+}
+}
 \description{
 Returns the versioning state of a bucket.
 

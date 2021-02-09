@@ -13,6 +13,13 @@ cognitoidentityprovider_associate_software_token(AccessToken, Session)
 to the service. This allows authentication of the user as part of the
 MFA setup process.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SecretCode = "string",
+  Session = "string"
+)
+}
+}
 \description{
 Returns a unique generated shared secret key code for the user account.
 The request takes an access token or a session string, but not both.

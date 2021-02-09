@@ -12,6 +12,14 @@ dynamodb_enable_kinesis_streaming_destination(TableName, StreamArn)
 
 \item{StreamArn}{[required] The ARN for a Kinesis data stream.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TableName = "string",
+  StreamArn = "string",
+  DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED"
+)
+}
+}
 \description{
 Starts table data replication to the specified Kinesis data stream at a
 timestamp chosen during the enable workflow. If this operation doesn't

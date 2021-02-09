@@ -28,6 +28,57 @@ they must meet the following criteria:
 
 \item{TagList}{Tags to apply to the CloudHSM cluster during creation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Cluster = list(
+    BackupPolicy = "DEFAULT",
+    BackupRetentionPolicy = list(
+      Type = "DAYS",
+      Value = "string"
+    ),
+    ClusterId = "string",
+    CreateTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    Hsms = list(
+      list(
+        AvailabilityZone = "string",
+        ClusterId = "string",
+        SubnetId = "string",
+        EniId = "string",
+        EniIp = "string",
+        HsmId = "string",
+        State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
+        StateMessage = "string"
+      )
+    ),
+    HsmType = "string",
+    PreCoPassword = "string",
+    SecurityGroup = "string",
+    SourceBackupId = "string",
+    State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+    StateMessage = "string",
+    SubnetMapping = list(
+      "string"
+    ),
+    VpcId = "string",
+    Certificates = list(
+      ClusterCsr = "string",
+      HsmCertificate = "string",
+      AwsHardwareCertificate = "string",
+      ManufacturerHardwareCertificate = "string",
+      ClusterCertificate = "string"
+    ),
+    TagList = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a new AWS CloudHSM cluster.
 }

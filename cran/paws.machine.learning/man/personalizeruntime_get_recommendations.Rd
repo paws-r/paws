@@ -45,17 +45,29 @@ recommendations.
 
 For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/filter.html}{Filtering Recommendations}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  itemList = list(
+    list(
+      itemId = "string",
+      score = 123.0
+    )
+  ),
+  recommendationId = "string"
+)
+}
+}
 \description{
 Returns a list of recommended items. The required input depends on the
 recipe type used to create the solution backing the campaign, as
 follows:
 \itemize{
-\item RELATED\\_ITEMS - \code{itemId} required, \code{userId} not used
-\item USER\\_PERSONALIZATION - \code{itemId} optional, \code{userId} required
+\item RELATED_ITEMS - \code{itemId} required, \code{userId} not used
+\item USER_PERSONALIZATION - \code{itemId} optional, \code{userId} required
 }
 
 Campaigns that are backed by a solution created using a recipe of type
-PERSONALIZED\\_RANKING use the API.
+PERSONALIZED_RANKING use the API.
 }
 \section{Request syntax}{
 \preformatted{svc$get_recommendations(

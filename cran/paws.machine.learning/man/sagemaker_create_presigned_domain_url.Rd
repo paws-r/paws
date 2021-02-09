@@ -14,6 +14,12 @@ sagemaker_create_presigned_domain_url(DomainId, UserProfileName,
 
 \item{SessionExpirationDurationInSeconds}{The session expiration duration in seconds.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AuthorizedUrl = "string"
+)
+}
+}
 \description{
 Creates a URL for a specified UserProfile in a Domain. When accessed in
 a web browser, the user will be automatically signed in to Amazon

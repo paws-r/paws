@@ -21,6 +21,10 @@ Data Firehose keeps retrying the delete operation.
 
 The default value is false.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a delivery stream and its data.
 

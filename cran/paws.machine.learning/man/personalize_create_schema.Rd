@@ -11,6 +11,12 @@ personalize_create_schema(name, schema)
 
 \item{schema}{[required] A schema in Avro JSON format.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  schemaArn = "string"
+)
+}
+}
 \description{
 Creates an Amazon Personalize schema from the specified schema string.
 The schema you create must be in Avro JSON format.

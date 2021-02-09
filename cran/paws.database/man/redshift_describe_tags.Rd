@@ -57,6 +57,22 @@ example, suppose that you have resources tagged with values called
 request, Amazon Redshift returns a response with all resources that have
 either or both of these tag values associated with them.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TaggedResources = list(
+    list(
+      Tag = list(
+        Key = "string",
+        Value = "string"
+      ),
+      ResourceName = "string",
+      ResourceType = "string"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a list of tags. You can return tags from a specific resource by
 specifying an ARN, or you can return all tags for a given type of

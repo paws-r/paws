@@ -17,6 +17,50 @@ lowercase letters, numbers, and hyphens.}
 for example,
 \verb{arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RecoveryPointArn = "string",
+  BackupVaultName = "string",
+  BackupVaultArn = "string",
+  SourceBackupVaultArn = "string",
+  ResourceArn = "string",
+  ResourceType = "string",
+  CreatedBy = list(
+    BackupPlanId = "string",
+    BackupPlanArn = "string",
+    BackupPlanVersion = "string",
+    BackupRuleId = "string"
+  ),
+  IamRoleArn = "string",
+  Status = "COMPLETED"|"PARTIAL"|"DELETING"|"EXPIRED",
+  CreationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  CompletionDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  BackupSizeInBytes = 123,
+  CalculatedLifecycle = list(
+    MoveToColdStorageAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    DeleteAt = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  Lifecycle = list(
+    MoveToColdStorageAfterDays = 123,
+    DeleteAfterDays = 123
+  ),
+  EncryptionKeyArn = "string",
+  IsEncrypted = TRUE|FALSE,
+  StorageClass = "WARM"|"COLD"|"DELETED",
+  LastRestoreTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns metadata associated with a recovery point, including ID, status,
 encryption, and lifecycle.

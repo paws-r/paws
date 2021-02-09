@@ -19,6 +19,37 @@ the typed link.}
 
 \item{Attributes}{[required] A set of attributes that are associated with the typed link.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TypedLinkSpecifier = list(
+    TypedLinkFacet = list(
+      SchemaArn = "string",
+      TypedLinkName = "string"
+    ),
+    SourceObjectReference = list(
+      Selector = "string"
+    ),
+    TargetObjectReference = list(
+      Selector = "string"
+    ),
+    IdentityAttributeValues = list(
+      list(
+        AttributeName = "string",
+        Value = list(
+          StringValue = "string",
+          BinaryValue = raw,
+          BooleanValue = TRUE|FALSE,
+          NumberValue = "string",
+          DatetimeValue = as.POSIXct(
+            "2015-01-01"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Attaches a typed link to a specified source and target object. For more
 information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.

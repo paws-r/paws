@@ -9,6 +9,16 @@ alexaforbusiness_get_gateway_group(GatewayGroupArn)
 \arguments{
 \item{GatewayGroupArn}{[required] The ARN of the gateway group to get.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayGroup = list(
+    Arn = "string",
+    Name = "string",
+    Description = "string"
+  )
+)
+}
+}
 \description{
 Retrieves the details of a gateway group.
 }

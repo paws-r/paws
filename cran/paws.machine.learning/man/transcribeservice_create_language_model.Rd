@@ -25,6 +25,20 @@ sample rate that is less than 16 kHz, choose \code{Narrowband}.}
 \item{InputDataConfig}{[required] Contains the data access role and the Amazon S3 prefixes to read the
 required input files to create a custom language model.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LanguageCode = "en-US",
+  BaseModelName = "NarrowBand"|"WideBand",
+  ModelName = "string",
+  InputDataConfig = list(
+    S3Uri = "string",
+    TuningDataS3Uri = "string",
+    DataAccessRoleArn = "string"
+  ),
+  ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED"
+)
+}
+}
 \description{
 Creates a new custom language model. Use Amazon S3 prefixes to provide
 the location of your input files. The time it takes to create your model

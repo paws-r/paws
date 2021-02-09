@@ -13,6 +13,18 @@ the results cannot be returned in one response.}
 \item{maxResults}{The maximum amount of data that can be contained in a single set of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  projects = list(
+    list(
+      projectId = "string",
+      projectArn = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all projects in AWS CodeStar associated with your AWS account.
 }

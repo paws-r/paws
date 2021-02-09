@@ -6,6 +6,33 @@
 \usage{
 applicationdiscoveryservice_get_discovery_summary()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  servers = 123,
+  applications = 123,
+  serversMappedToApplications = 123,
+  serversMappedtoTags = 123,
+  agentSummary = list(
+    activeAgents = 123,
+    healthyAgents = 123,
+    blackListedAgents = 123,
+    shutdownAgents = 123,
+    unhealthyAgents = 123,
+    totalAgents = 123,
+    unknownAgents = 123
+  ),
+  connectorSummary = list(
+    activeConnectors = 123,
+    healthyConnectors = 123,
+    blackListedConnectors = 123,
+    shutdownConnectors = 123,
+    unhealthyConnectors = 123,
+    totalConnectors = 123,
+    unknownConnectors = 123
+  )
+)
+}
+}
 \description{
 Retrieves a short summary of discovered assets.
 

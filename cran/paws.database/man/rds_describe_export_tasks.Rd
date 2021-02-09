@@ -42,6 +42,39 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ExportTasks = list(
+    list(
+      ExportTaskIdentifier = "string",
+      SourceArn = "string",
+      ExportOnly = list(
+        "string"
+      ),
+      SnapshotTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TaskStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TaskEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      S3Bucket = "string",
+      S3Prefix = "string",
+      IamRoleArn = "string",
+      KmsKeyId = "string",
+      Status = "string",
+      PercentProgress = 123,
+      TotalExtractedDataInGB = 123,
+      FailureCause = "string",
+      WarningMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about a snapshot export to Amazon S3. This API
 operation supports pagination.

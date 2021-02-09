@@ -18,6 +18,16 @@ apigatewayv2_create_model(ApiId, ContentType, Description, Name, Schema)
 \item{Schema}{[required] The schema for the model. For application/json models, this should be
 JSON schema draft 4 model.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContentType = "string",
+  Description = "string",
+  ModelId = "string",
+  Name = "string",
+  Schema = "string"
+)
+}
+}
 \description{
 Creates a Model for an API.
 }

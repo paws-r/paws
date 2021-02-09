@@ -20,6 +20,27 @@ Maximum value: 180 minutes (3 hours).
 
 Default: 180 minutes (3 hours).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  virtualInterfaceTest = list(
+    testId = "string",
+    virtualInterfaceId = "string",
+    bgpPeers = list(
+      "string"
+    ),
+    status = "string",
+    ownerAccount = "string",
+    testDurationInMinutes = 123,
+    startTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    endTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Starts the virtual interface failover test that verifies your
 configuration meets your resiliency requirements by placing the BGP

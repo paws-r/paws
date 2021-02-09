@@ -13,6 +13,10 @@ appsync_delete_resolver(apiId, typeName, fieldName)
 
 \item{fieldName}{[required] The resolver field name.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a \code{Resolver} object.
 }

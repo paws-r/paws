@@ -12,7 +12,24 @@ the type and value to make it easy to remember what it does.}
 
 \item{stringValues}{[required] Specifies the value or list of values for the dimension. For
 \code{TOPIC_FILTER} dimensions, this is a pattern used to match the MQTT
-topic (for example, "admin/\\#").}
+topic (for example, "admin/\#").}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  name = "string",
+  arn = "string",
+  type = "TOPIC_FILTER",
+  stringValues = list(
+    "string"
+  ),
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastModifiedDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
 }
 \description{
 Updates the definition for a dimension. You cannot change the type of a

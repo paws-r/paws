@@ -16,6 +16,19 @@ attributes per request. For custom attributes, specify the attribute
 name and target ID, but do not specify the value. If you specify the
 target ID using the short form, you must also specify the target type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  attributes = list(
+    list(
+      name = "string",
+      value = "string",
+      targetType = "container-instance",
+      targetId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes one or more custom attributes from an Amazon ECS resource.
 }

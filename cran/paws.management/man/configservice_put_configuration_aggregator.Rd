@@ -17,6 +17,40 @@ configservice_put_configuration_aggregator(ConfigurationAggregatorName,
 
 \item{Tags}{An array of tag object.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConfigurationAggregator = list(
+    ConfigurationAggregatorName = "string",
+    ConfigurationAggregatorArn = "string",
+    AccountAggregationSources = list(
+      list(
+        AccountIds = list(
+          "string"
+        ),
+        AllAwsRegions = TRUE|FALSE,
+        AwsRegions = list(
+          "string"
+        )
+      )
+    ),
+    OrganizationAggregationSource = list(
+      RoleArn = "string",
+      AwsRegions = list(
+        "string"
+      ),
+      AllAwsRegions = TRUE|FALSE
+    ),
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreatedBy = "string"
+  )
+)
+}
+}
 \description{
 Creates and updates the configuration aggregator with the selected
 source accounts and regions. The source account can be individual

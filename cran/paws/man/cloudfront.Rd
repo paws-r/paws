@@ -61,7 +61,7 @@ features, see the \emph{Amazon CloudFront Developer Guide}.
 \link[=cloudfront_delete_public_key]{delete_public_key} \tab Remove a public key you previously added to CloudFront\cr
 \link[=cloudfront_delete_realtime_log_config]{delete_realtime_log_config} \tab Deletes a real-time log configuration\cr
 \link[=cloudfront_delete_streaming_distribution]{delete_streaming_distribution} \tab Delete a streaming distribution\cr
-\link[=cloudfront_get_cache_policy]{get_cache_policy} \tab Gets a cache policy, including the following metadata: - The policy’s identifier\cr
+\link[=cloudfront_get_cache_policy]{get_cache_policy} \tab Gets a cache policy, including the following metadata:\cr
 \link[=cloudfront_get_cache_policy_config]{get_cache_policy_config} \tab Gets a cache policy configuration\cr
 \link[=cloudfront_get_cloud_front_origin_access_identity]{get_cloud_front_origin_access_identity} \tab Get the information about an origin access identity\cr
 \link[=cloudfront_get_cloud_front_origin_access_identity_config]{get_cloud_front_origin_access_identity_config} \tab Get the configuration information about an origin access identity\cr
@@ -75,7 +75,7 @@ features, see the \emph{Amazon CloudFront Developer Guide}.
 \link[=cloudfront_get_key_group]{get_key_group} \tab Gets a key group, including the date and time when the key group was last modified\cr
 \link[=cloudfront_get_key_group_config]{get_key_group_config} \tab Gets a key group configuration\cr
 \link[=cloudfront_get_monitoring_subscription]{get_monitoring_subscription} \tab Gets information about whether additional CloudWatch metrics are enabled for the specified CloudFront distribution\cr
-\link[=cloudfront_get_origin_request_policy]{get_origin_request_policy} \tab Gets an origin request policy, including the following metadata: - The policy’s identifier\cr
+\link[=cloudfront_get_origin_request_policy]{get_origin_request_policy} \tab Gets an origin request policy, including the following metadata:\cr
 \link[=cloudfront_get_origin_request_policy_config]{get_origin_request_policy_config} \tab Gets an origin request policy configuration\cr
 \link[=cloudfront_get_public_key]{get_public_key} \tab Gets a public key\cr
 \link[=cloudfront_get_public_key_config]{get_public_key_config} \tab Gets a public key configuration\cr

@@ -10,6 +10,10 @@ alexaforbusiness_approve_skill(SkillId)
 \arguments{
 \item{SkillId}{[required] The unique identifier of the skill.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates a skill with the organization under the customer's AWS
 account. If a skill is private, the user implicitly accepts access to

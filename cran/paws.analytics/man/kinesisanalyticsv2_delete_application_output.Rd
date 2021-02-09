@@ -27,6 +27,13 @@ application configuration. You can use the
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
 operation to get the specific \code{OutputId}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationARN = "string",
+  ApplicationVersionId = 123
+)
+}
+}
 \description{
 Deletes the output destination configuration from your SQL-based Kinesis
 Data Analytics application's configuration. Kinesis Data Analytics will

@@ -52,6 +52,12 @@ Block (SMB) location.}
 location. The value can be an empty string. We recommend using tags to
 name your resources.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LocationArn = "string"
+)
+}
+}
 \description{
 Defines a file system on a Server Message Block (SMB) server that can be
 read from or written to.

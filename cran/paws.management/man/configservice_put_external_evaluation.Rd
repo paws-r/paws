@@ -12,6 +12,10 @@ configservice_put_external_evaluation(ConfigRuleName,
 
 \item{ExternalEvaluation}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Put external evaluation
 }

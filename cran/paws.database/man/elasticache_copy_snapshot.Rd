@@ -27,6 +27,68 @@ in the \emph{Amazon ElastiCache User Guide}.}
 
 \item{KmsKeyId}{The ID of the KMS key used to encrypt the target snapshot.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Snapshot = list(
+    SnapshotName = "string",
+    ReplicationGroupId = "string",
+    ReplicationGroupDescription = "string",
+    CacheClusterId = "string",
+    SnapshotStatus = "string",
+    SnapshotSource = "string",
+    CacheNodeType = "string",
+    Engine = "string",
+    EngineVersion = "string",
+    NumCacheNodes = 123,
+    PreferredAvailabilityZone = "string",
+    PreferredOutpostArn = "string",
+    CacheClusterCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    PreferredMaintenanceWindow = "string",
+    TopicArn = "string",
+    Port = 123,
+    CacheParameterGroupName = "string",
+    CacheSubnetGroupName = "string",
+    VpcId = "string",
+    AutoMinorVersionUpgrade = TRUE|FALSE,
+    SnapshotRetentionLimit = 123,
+    SnapshotWindow = "string",
+    NumNodeGroups = 123,
+    AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
+    NodeSnapshots = list(
+      list(
+        CacheClusterId = "string",
+        NodeGroupId = "string",
+        CacheNodeId = "string",
+        NodeGroupConfiguration = list(
+          NodeGroupId = "string",
+          Slots = "string",
+          ReplicaCount = 123,
+          PrimaryAvailabilityZone = "string",
+          ReplicaAvailabilityZones = list(
+            "string"
+          ),
+          PrimaryOutpostArn = "string",
+          ReplicaOutpostArns = list(
+            "string"
+          )
+        ),
+        CacheSize = "string",
+        CacheNodeCreateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        SnapshotCreateTime = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    ),
+    KmsKeyId = "string",
+    ARN = "string"
+  )
+)
+}
+}
 \description{
 Makes a copy of an existing snapshot.
 
@@ -84,7 +146,7 @@ permissions \%s on the S3 Bucket.
 \strong{Solution:} Add Upload/Delete permissions on the bucket. For more
 information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
 in the ElastiCache User Guide.
-\item \strong{Error Message:} ElastiCache has not been granted READ\\_ACP
+\item \strong{Error Message:} ElastiCache has not been granted READ_ACP
 permissions \%s on the S3 Bucket.
 
 \strong{Solution:} Add View Permissions on the bucket. For more

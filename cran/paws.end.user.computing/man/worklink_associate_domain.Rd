@@ -17,6 +17,10 @@ worklink_associate_domain(FleetArn, DomainName, DisplayName,
 \item{AcmCertificateArn}{[required] The ARN of an issued ACM certificate that is valid for the domain being
 associated.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Specifies a domain to be associated to Amazon WorkLink.
 }

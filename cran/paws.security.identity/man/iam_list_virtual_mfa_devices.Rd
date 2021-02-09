@@ -27,6 +27,45 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VirtualMFADevices = list(
+    list(
+      SerialNumber = "string",
+      Base32StringSeed = raw,
+      QRCodePNG = raw,
+      User = list(
+        Path = "string",
+        UserName = "string",
+        UserId = "string",
+        Arn = "string",
+        CreateDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        PasswordLastUsed = as.POSIXct(
+          "2015-01-01"
+        ),
+        PermissionsBoundary = list(
+          PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+          PermissionsBoundaryArn = "string"
+        ),
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        )
+      ),
+      EnableDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
+}
 \description{
 Lists the virtual MFA devices defined in the AWS account by assignment
 status. If you do not specify an assignment status, the operation

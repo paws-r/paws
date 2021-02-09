@@ -10,6 +10,10 @@ alexaforbusiness_disassociate_skill_from_users(SkillId)
 \arguments{
 \item{SkillId}{[required] The private skill ID you want to make unavailable for enrolled users.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Makes a private skill unavailable for enrolled users and prevents them
 from enabling it on their devices.

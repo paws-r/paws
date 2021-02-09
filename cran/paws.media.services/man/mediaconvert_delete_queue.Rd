@@ -9,6 +9,10 @@ mediaconvert_delete_queue(Name)
 \arguments{
 \item{Name}{[required] The name of the queue that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Permanently delete a queue you have created.
 }

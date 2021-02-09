@@ -15,6 +15,37 @@ cloudsearch_describe_analysis_schemes(DomainName, AnalysisSchemeNames,
 \item{Deployed}{Whether to display the deployed configuration (\code{true}) or include any
 pending changes (\code{false}). Defaults to \code{false}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AnalysisSchemes = list(
+    list(
+      Options = list(
+        AnalysisSchemeName = "string",
+        AnalysisSchemeLanguage = "ar"|"bg"|"ca"|"cs"|"da"|"de"|"el"|"en"|"es"|"eu"|"fa"|"fi"|"fr"|"ga"|"gl"|"he"|"hi"|"hu"|"hy"|"id"|"it"|"ja"|"ko"|"lv"|"mul"|"nl"|"no"|"pt"|"ro"|"ru"|"sv"|"th"|"tr"|"zh-Hans"|"zh-Hant",
+        AnalysisOptions = list(
+          Synonyms = "string",
+          Stopwords = "string",
+          StemmingDictionary = "string",
+          JapaneseTokenizationDictionary = "string",
+          AlgorithmicStemming = "none"|"minimal"|"light"|"full"
+        )
+      ),
+      Status = list(
+        CreationDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        UpdateDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        UpdateVersion = 123,
+        State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+        PendingDeletion = TRUE|FALSE
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets the analysis schemes configured for a domain. An analysis scheme
 defines language-specific text processing options for a \code{text} field.

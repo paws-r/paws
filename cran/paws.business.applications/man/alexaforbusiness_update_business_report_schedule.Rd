@@ -22,6 +22,10 @@ of individual files).}
 
 \item{Recurrence}{The recurrence of the reports.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the configuration of the report delivery schedule with the
 specified schedule ARN.

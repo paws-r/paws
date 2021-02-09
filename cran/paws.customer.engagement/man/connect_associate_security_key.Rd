@@ -12,6 +12,12 @@ connect_associate_security_key(InstanceId, Key)
 
 \item{Key}{[required] A valid security key in PEM format.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociationId = "string"
+)
+}
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

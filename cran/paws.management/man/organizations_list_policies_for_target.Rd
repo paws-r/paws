@@ -27,10 +27,10 @@ dash and from 8 to 32 additional lowercase letters or digits.
 \item{Filter}{[required] The type of policy that you want to include in the returned list. You
 must specify one of the following values:
 \itemize{
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE\\_CONTROL\\_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES_OPT_OUT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE_CONTROL_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG_POLICY}
 }}
 
 \item{NextToken}{The parameter for receiving additional results if you receive a
@@ -49,6 +49,22 @@ results. Note that Organizations might return fewer results than the
 maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Policies = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Name = "string",
+      Description = "string",
+      Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+      AwsManaged = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Lists the policies that are directly attached to the specified target

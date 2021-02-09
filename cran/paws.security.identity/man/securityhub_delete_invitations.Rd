@@ -10,6 +10,17 @@ securityhub_delete_invitations(AccountIds)
 \arguments{
 \item{AccountIds}{[required] The list of the account IDs that sent the invitations to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      ProcessingResult = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes invitations received by the AWS account to become a member
 account.

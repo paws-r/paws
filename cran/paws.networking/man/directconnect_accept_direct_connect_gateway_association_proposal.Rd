@@ -23,6 +23,32 @@ gateway.
 For information about how to set the prefixes, see \href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes}{Allowed Prefixes}
 in the \emph{AWS Direct Connect User Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  directConnectGatewayAssociation = list(
+    directConnectGatewayId = "string",
+    directConnectGatewayOwnerAccount = "string",
+    associationState = "associating"|"associated"|"disassociating"|"disassociated"|"updating",
+    stateChangeError = "string",
+    associatedGateway = list(
+      id = "string",
+      type = "virtualPrivateGateway"|"transitGateway",
+      ownerAccount = "string",
+      region = "string"
+    ),
+    associationId = "string",
+    allowedPrefixesToDirectConnectGateway = list(
+      list(
+        cidr = "string"
+      )
+    ),
+    virtualGatewayId = "string",
+    virtualGatewayRegion = "string",
+    virtualGatewayOwnerAccount = "string"
+  )
+)
+}
+}
 \description{
 Accepts a proposal request to attach a virtual private gateway or
 transit gateway to a Direct Connect gateway.

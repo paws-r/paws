@@ -15,6 +15,27 @@ filters (if they exist).}
 
 \item{maxResults}{The maximum number of filters to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Filters = list(
+    list(
+      name = "string",
+      filterArn = "string",
+      creationDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      datasetGroupArn = "string",
+      failureReason = "string",
+      status = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all filters that belong to a given dataset group.
 }

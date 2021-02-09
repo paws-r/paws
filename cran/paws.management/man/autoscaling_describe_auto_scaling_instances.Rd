@@ -18,6 +18,30 @@ is \code{50} and the maximum value is \code{50}.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AutoScalingInstances = list(
+    list(
+      InstanceId = "string",
+      InstanceType = "string",
+      AutoScalingGroupName = "string",
+      AvailabilityZone = "string",
+      LifecycleState = "string",
+      HealthStatus = "string",
+      LaunchConfigurationName = "string",
+      LaunchTemplate = list(
+        LaunchTemplateId = "string",
+        LaunchTemplateName = "string",
+        Version = "string"
+      ),
+      ProtectedFromScaleIn = TRUE|FALSE,
+      WeightedCapacity = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more Auto Scaling instances.
 }

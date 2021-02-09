@@ -11,6 +11,25 @@ mediaconnect_add_flow_vpc_interfaces(FlowArn, VpcInterfaces)
 
 \item{VpcInterfaces}{[required] A list of VPC interfaces that you want to add.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FlowArn = "string",
+  VpcInterfaces = list(
+    list(
+      Name = "string",
+      NetworkInterfaceIds = list(
+        "string"
+      ),
+      RoleArn = "string",
+      SecurityGroupIds = list(
+        "string"
+      ),
+      SubnetId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Adds VPC interfaces to flow
 }

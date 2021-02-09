@@ -23,6 +23,8 @@ NULL
 #' event-record-api.
 #' @param eventList &#91;required&#93; A list of event data from the session.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_events(
@@ -81,6 +83,8 @@ personalizeevents_put_events <- function(trackingId, userId = NULL, sessionId, e
 #' item or items to.
 #' @param items &#91;required&#93; A list of item data.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_items(
@@ -126,6 +130,8 @@ personalizeevents_put_items <- function(datasetArn, items) {
 #' @param datasetArn &#91;required&#93; The Amazon Resource Number (ARN) of the Users dataset you are adding the
 #' user or users to.
 #' @param users &#91;required&#93; A list of user data.
+#'
+
 #'
 #' @section Request syntax:
 #' ```

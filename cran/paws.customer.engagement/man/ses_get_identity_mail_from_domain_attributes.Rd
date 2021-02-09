@@ -10,6 +10,18 @@ ses_get_identity_mail_from_domain_attributes(Identities)
 \arguments{
 \item{Identities}{[required] A list of one or more identities.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MailFromDomainAttributes = list(
+    list(
+      MailFromDomain = "string",
+      MailFromDomainStatus = "Pending"|"Success"|"Failed"|"TemporaryFailure",
+      BehaviorOnMXFailure = "UseDefaultValue"|"RejectMessage"
+    )
+  )
+)
+}
+}
 \description{
 Returns the custom MAIL FROM attributes for a list of identities (email
 addresses : domains).

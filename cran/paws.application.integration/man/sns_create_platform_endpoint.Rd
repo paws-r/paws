@@ -26,6 +26,12 @@ use this data. The data must be in UTF-8 format and less than 2KB.}
 \item{Attributes}{For a list of attributes, see
 \code{\link[=sns_set_endpoint_attributes]{set_endpoint_attributes}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointArn = "string"
+)
+}
+}
 \description{
 Creates an endpoint for a device and mobile app on one of the supported
 push notification services, such as GCM (Firebase Cloud Messaging) and

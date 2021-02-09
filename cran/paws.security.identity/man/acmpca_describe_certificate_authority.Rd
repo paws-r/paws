@@ -14,6 +14,114 @@ This must be of the form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CertificateAuthority = list(
+    Arn = "string",
+    OwnerAccount = "string",
+    CreatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastStateChangeAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    Type = "ROOT"|"SUBORDINATE",
+    Serial = "string",
+    Status = "CREATING"|"PENDING_CERTIFICATE"|"ACTIVE"|"DELETED"|"DISABLED"|"EXPIRED"|"FAILED",
+    NotBefore = as.POSIXct(
+      "2015-01-01"
+    ),
+    NotAfter = as.POSIXct(
+      "2015-01-01"
+    ),
+    FailureReason = "REQUEST_TIMED_OUT"|"UNSUPPORTED_ALGORITHM"|"OTHER",
+    CertificateAuthorityConfiguration = list(
+      KeyAlgorithm = "RSA_2048"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1",
+      SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
+      Subject = list(
+        Country = "string",
+        Organization = "string",
+        OrganizationalUnit = "string",
+        DistinguishedNameQualifier = "string",
+        State = "string",
+        CommonName = "string",
+        SerialNumber = "string",
+        Locality = "string",
+        Title = "string",
+        Surname = "string",
+        GivenName = "string",
+        Initials = "string",
+        Pseudonym = "string",
+        GenerationQualifier = "string"
+      ),
+      CsrExtensions = list(
+        KeyUsage = list(
+          DigitalSignature = TRUE|FALSE,
+          NonRepudiation = TRUE|FALSE,
+          KeyEncipherment = TRUE|FALSE,
+          DataEncipherment = TRUE|FALSE,
+          KeyAgreement = TRUE|FALSE,
+          KeyCertSign = TRUE|FALSE,
+          CRLSign = TRUE|FALSE,
+          EncipherOnly = TRUE|FALSE,
+          DecipherOnly = TRUE|FALSE
+        ),
+        SubjectInformationAccess = list(
+          list(
+            AccessMethod = list(
+              CustomObjectIdentifier = "string",
+              AccessMethodType = "CA_REPOSITORY"|"RESOURCE_PKI_MANIFEST"|"RESOURCE_PKI_NOTIFY"
+            ),
+            AccessLocation = list(
+              OtherName = list(
+                TypeId = "string",
+                Value = "string"
+              ),
+              Rfc822Name = "string",
+              DnsName = "string",
+              DirectoryName = list(
+                Country = "string",
+                Organization = "string",
+                OrganizationalUnit = "string",
+                DistinguishedNameQualifier = "string",
+                State = "string",
+                CommonName = "string",
+                SerialNumber = "string",
+                Locality = "string",
+                Title = "string",
+                Surname = "string",
+                GivenName = "string",
+                Initials = "string",
+                Pseudonym = "string",
+                GenerationQualifier = "string"
+              ),
+              EdiPartyName = list(
+                PartyName = "string",
+                NameAssigner = "string"
+              ),
+              UniformResourceIdentifier = "string",
+              IpAddress = "string",
+              RegisteredId = "string"
+            )
+          )
+        )
+      )
+    ),
+    RevocationConfiguration = list(
+      CrlConfiguration = list(
+        Enabled = TRUE|FALSE,
+        ExpirationInDays = 123,
+        CustomCname = "string",
+        S3BucketName = "string"
+      )
+    ),
+    RestorableUntil = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Lists information about your private certificate authority (CA) or one
 that has been shared with you. You specify the private CA on input by

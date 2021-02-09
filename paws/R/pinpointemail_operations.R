@@ -31,6 +31,12 @@ NULL
 #' @param Tags An array of objects that define the tags (keys and values) that you want
 #' to associate with the configuration set.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_configuration_set(
@@ -103,6 +109,12 @@ pinpointemail_create_configuration_set <- function(ConfigurationSetName, Trackin
 #' set.
 #' @param EventDestination &#91;required&#93; An object that defines the event destination.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_configuration_set_event_destination(
@@ -172,6 +184,12 @@ pinpointemail_create_configuration_set_event_destination <- function(Configurati
 #' @param Tags An object that defines the tags (keys and values) that you want to
 #' associate with the pool.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_dedicated_ip_pool(
@@ -231,6 +249,15 @@ pinpointemail_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
 #' predictive inbox placement test.
 #' @param Tags An array of objects that define the tags (keys and values) that you want
 #' to associate with the predictive inbox placement test.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReportId = "string",
+#'   DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -319,6 +346,22 @@ pinpointemail_create_deliverability_test_report <- function(ReportName = NULL, F
 #' @param Tags An array of objects that define the tags (keys and values) that you want
 #' to associate with the email identity.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
+#'   VerifiedForSendingStatus = TRUE|FALSE,
+#'   DkimAttributes = list(
+#'     SigningEnabled = TRUE|FALSE,
+#'     Status = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE"|"NOT_STARTED",
+#'     Tokens = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_email_identity(
@@ -368,6 +411,12 @@ pinpointemail_create_email_identity <- function(EmailIdentity, Tags = NULL) {
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_configuration_set(
@@ -415,6 +464,12 @@ pinpointemail_delete_configuration_set <- function(ConfigurationSetName) {
 #' that you want to delete.
 #' @param EventDestinationName &#91;required&#93; The name of the event destination that you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_configuration_set_event_destination(
@@ -452,6 +507,12 @@ pinpointemail_delete_configuration_set_event_destination <- function(Configurati
 #' pinpointemail_delete_dedicated_ip_pool(PoolName)
 #'
 #' @param PoolName &#91;required&#93; The name of the dedicated IP pool that you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -494,6 +555,12 @@ pinpointemail_delete_dedicated_ip_pool <- function(PoolName) {
 #' @param EmailIdentity &#91;required&#93; The identity (that is, the email address or domain) that you want to
 #' delete from your Amazon Pinpoint account.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_email_identity(
@@ -530,6 +597,22 @@ pinpointemail_delete_email_identity <- function(EmailIdentity) {
 #'
 #' @usage
 #' pinpointemail_get_account()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SendQuota = list(
+#'     Max24HourSend = 123.0,
+#'     MaxSendRate = 123.0,
+#'     SentLast24Hours = 123.0
+#'   ),
+#'   SendingEnabled = TRUE|FALSE,
+#'   DedicatedIpAutoWarmupEnabled = TRUE|FALSE,
+#'   EnforcementStatus = "string",
+#'   ProductionAccessEnabled = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -569,6 +652,24 @@ pinpointemail_get_account <- function() {
 #' @param BlacklistItemNames &#91;required&#93; A list of IP addresses that you want to retrieve blacklist information
 #' about. You can only specify the dedicated IP addresses that you use to
 #' send email using Amazon Pinpoint or Amazon SES.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BlacklistReport = list(
+#'     list(
+#'       list(
+#'         RblName = "string",
+#'         ListingTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Description = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -620,6 +721,36 @@ pinpointemail_get_blacklist_reports <- function(BlacklistItemNames) {
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to obtain more
 #' information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationSetName = "string",
+#'   TrackingOptions = list(
+#'     CustomRedirectDomain = "string"
+#'   ),
+#'   DeliveryOptions = list(
+#'     TlsPolicy = "REQUIRE"|"OPTIONAL",
+#'     SendingPoolName = "string"
+#'   ),
+#'   ReputationOptions = list(
+#'     ReputationMetricsEnabled = TRUE|FALSE,
+#'     LastFreshStart = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   SendingOptions = list(
+#'     SendingEnabled = TRUE|FALSE
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_configuration_set(
@@ -667,6 +798,41 @@ pinpointemail_get_configuration_set <- function(ConfigurationSetName) {
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that contains the event destination.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventDestinations = list(
+#'     list(
+#'       Name = "string",
+#'       Enabled = TRUE|FALSE,
+#'       MatchingEventTypes = list(
+#'         "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"
+#'       ),
+#'       KinesisFirehoseDestination = list(
+#'         IamRoleArn = "string",
+#'         DeliveryStreamArn = "string"
+#'       ),
+#'       CloudWatchDestination = list(
+#'         DimensionConfigurations = list(
+#'           list(
+#'             DimensionName = "string",
+#'             DimensionValueSource = "MESSAGE_TAG"|"EMAIL_HEADER"|"LINK_TAG",
+#'             DefaultDimensionValue = "string"
+#'           )
+#'         )
+#'       ),
+#'       SnsDestination = list(
+#'         TopicArn = "string"
+#'       ),
+#'       PinpointDestination = list(
+#'         ApplicationArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_configuration_set_event_destinations(
@@ -709,6 +875,19 @@ pinpointemail_get_configuration_set_event_destinations <- function(Configuration
 #' @param Ip &#91;required&#93; The IP address that you want to obtain more information about. The value
 #' you specify has to be a dedicated IP address that's assocaited with your
 #' Amazon Pinpoint account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DedicatedIp = list(
+#'     Ip = "string",
+#'     WarmupStatus = "IN_PROGRESS"|"DONE",
+#'     WarmupPercentage = 123,
+#'     PoolName = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -756,6 +935,22 @@ pinpointemail_get_dedicated_ip <- function(Ip) {
 #' `GetDedicatedIpsRequest`. If the number of results is larger than the
 #' number you specified in this parameter, then the response includes a
 #' `NextToken` element, which you can use to obtain additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DedicatedIps = list(
+#'     list(
+#'       Ip = "string",
+#'       WarmupStatus = "IN_PROGRESS"|"DONE",
+#'       WarmupPercentage = 123,
+#'       PoolName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -806,6 +1001,46 @@ pinpointemail_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, P
 #' @usage
 #' pinpointemail_get_deliverability_dashboard_options()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DashboardEnabled = TRUE|FALSE,
+#'   SubscriptionExpiryDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   AccountStatus = "ACTIVE"|"PENDING_EXPIRATION"|"DISABLED",
+#'   ActiveSubscribedDomains = list(
+#'     list(
+#'       Domain = "string",
+#'       SubscriptionStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InboxPlacementTrackingOption = list(
+#'         Global = TRUE|FALSE,
+#'         TrackedIsps = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   PendingExpirationSubscribedDomains = list(
+#'     list(
+#'       Domain = "string",
+#'       SubscriptionStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InboxPlacementTrackingOption = list(
+#'         Global = TRUE|FALSE,
+#'         TrackedIsps = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_deliverability_dashboard_options()
@@ -840,6 +1075,49 @@ pinpointemail_get_deliverability_dashboard_options <- function() {
 #' pinpointemail_get_deliverability_test_report(ReportId)
 #'
 #' @param ReportId &#91;required&#93; A unique string that identifies the predictive inbox placement test.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeliverabilityTestReport = list(
+#'     ReportId = "string",
+#'     ReportName = "string",
+#'     Subject = "string",
+#'     FromEmailAddress = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
+#'   ),
+#'   OverallPlacement = list(
+#'     InboxPercentage = 123.0,
+#'     SpamPercentage = 123.0,
+#'     MissingPercentage = 123.0,
+#'     SpfPercentage = 123.0,
+#'     DkimPercentage = 123.0
+#'   ),
+#'   IspPlacements = list(
+#'     list(
+#'       IspName = "string",
+#'       PlacementStatistics = list(
+#'         InboxPercentage = 123.0,
+#'         SpamPercentage = 123.0,
+#'         MissingPercentage = 123.0,
+#'         SpfPercentage = 123.0,
+#'         DkimPercentage = 123.0
+#'       )
+#'     )
+#'   ),
+#'   Message = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -886,6 +1164,37 @@ pinpointemail_get_deliverability_test_report <- function(ReportId) {
 #' campaigns that you create and manage by using the Amazon Pinpoint API or
 #' the Amazon Pinpoint console.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainDeliverabilityCampaign = list(
+#'     CampaignId = "string",
+#'     ImageUrl = "string",
+#'     Subject = "string",
+#'     FromAddress = "string",
+#'     SendingIps = list(
+#'       "string"
+#'     ),
+#'     FirstSeenDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastSeenDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InboxCount = 123,
+#'     SpamCount = 123,
+#'     ReadRate = 123.0,
+#'     DeleteRate = 123.0,
+#'     ReadDeleteRate = 123.0,
+#'     ProjectedVolume = 123,
+#'     Esps = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_domain_deliverability_campaign(
@@ -929,6 +1238,53 @@ pinpointemail_get_domain_deliverability_campaign <- function(CampaignId) {
 #' @param EndDate &#91;required&#93; The last day (in Unix time) that you want to obtain domain
 #' deliverability metrics for. The `EndDate` that you specify has to be
 #' less than or equal to 30 days after the `StartDate`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OverallVolume = list(
+#'     VolumeStatistics = list(
+#'       InboxRawCount = 123,
+#'       SpamRawCount = 123,
+#'       ProjectedInbox = 123,
+#'       ProjectedSpam = 123
+#'     ),
+#'     ReadRatePercent = 123.0,
+#'     DomainIspPlacements = list(
+#'       list(
+#'         IspName = "string",
+#'         InboxRawCount = 123,
+#'         SpamRawCount = 123,
+#'         InboxPercentage = 123.0,
+#'         SpamPercentage = 123.0
+#'       )
+#'     )
+#'   ),
+#'   DailyVolumes = list(
+#'     list(
+#'       StartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       VolumeStatistics = list(
+#'         InboxRawCount = 123,
+#'         SpamRawCount = 123,
+#'         ProjectedInbox = 123,
+#'         ProjectedSpam = 123
+#'       ),
+#'       DomainIspPlacements = list(
+#'         list(
+#'           IspName = "string",
+#'           InboxRawCount = 123,
+#'           SpamRawCount = 123,
+#'           InboxPercentage = 123.0,
+#'           SpamPercentage = 123.0
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -976,6 +1332,34 @@ pinpointemail_get_domain_statistics_report <- function(Domain, StartDate, EndDat
 #' pinpointemail_get_email_identity(EmailIdentity)
 #'
 #' @param EmailIdentity &#91;required&#93; The email identity that you want to retrieve details for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
+#'   FeedbackForwardingStatus = TRUE|FALSE,
+#'   VerifiedForSendingStatus = TRUE|FALSE,
+#'   DkimAttributes = list(
+#'     SigningEnabled = TRUE|FALSE,
+#'     Status = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE"|"NOT_STARTED",
+#'     Tokens = list(
+#'       "string"
+#'     )
+#'   ),
+#'   MailFromAttributes = list(
+#'     MailFromDomain = "string",
+#'     MailFromDomainStatus = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE",
+#'     BehaviorOnMxFailure = "USE_DEFAULT_VALUE"|"REJECT_MESSAGE"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1029,6 +1413,17 @@ pinpointemail_get_email_identity <- function(EmailIdentity) {
 #' parameter, then the response includes a `NextToken` element, which you
 #' can use to obtain additional results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationSets = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_configuration_sets(
@@ -1075,6 +1470,17 @@ pinpointemail_list_configuration_sets <- function(NextToken = NULL, PageSize = N
 #' the number of results is larger than the number you specified in this
 #' parameter, then the response includes a `NextToken` element, which you
 #' can use to obtain additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DedicatedIpPools = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1129,6 +1535,26 @@ pinpointemail_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = N
 #' 
 #' The value you specify has to be at least 0, and can be no more than
 #' 1000.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeliverabilityTestReports = list(
+#'     list(
+#'       ReportId = "string",
+#'       ReportName = "string",
+#'       Subject = "string",
+#'       FromEmailAddress = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1189,6 +1615,40 @@ pinpointemail_list_deliverability_test_reports <- function(NextToken = NULL, Pag
 #' specify in this parameter, the response includes a `NextToken` element,
 #' which you can use to obtain additional results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainDeliverabilityCampaigns = list(
+#'     list(
+#'       CampaignId = "string",
+#'       ImageUrl = "string",
+#'       Subject = "string",
+#'       FromAddress = "string",
+#'       SendingIps = list(
+#'         "string"
+#'       ),
+#'       FirstSeenDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastSeenDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InboxCount = 123,
+#'       SpamCount = 123,
+#'       ReadRate = 123.0,
+#'       DeleteRate = 123.0,
+#'       ReadDeleteRate = 123.0,
+#'       ProjectedVolume = 123,
+#'       Esps = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_domain_deliverability_campaigns(
@@ -1248,6 +1708,21 @@ pinpointemail_list_domain_deliverability_campaigns <- function(StartDate, EndDat
 #' The value you specify has to be at least 0, and can be no more than
 #' 1000.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EmailIdentities = list(
+#'     list(
+#'       IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
+#'       IdentityName = "string",
+#'       SendingEnabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_email_identities(
@@ -1293,6 +1768,19 @@ pinpointemail_list_email_identities <- function(NextToken = NULL, PageSize = NUL
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to retrieve
 #' tag information for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -1336,6 +1824,12 @@ pinpointemail_list_tags_for_resource <- function(ResourceArn) {
 #' current AWS Region. Set to `true` to enable the automatic warm-up
 #' feature, or set to `false` to disable it.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_account_dedicated_ip_warmup_attributes(
@@ -1376,6 +1870,12 @@ pinpointemail_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupE
 #' 
 #' If AWS paused your account's ability to send email, you can't use this
 #' operation to resume your account's ability to send email.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1425,6 +1925,12 @@ pinpointemail_put_account_sending_attributes <- function(SendingEnabled = NULL) 
 #' @param SendingPoolName The name of the dedicated IP pool that you want to associate with the
 #' configuration set.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_configuration_set_delivery_options(
@@ -1471,6 +1977,12 @@ pinpointemail_put_configuration_set_delivery_options <- function(ConfigurationSe
 #' configuration set. If `false`, tracking of reputation metrics is
 #' disabled for the configuration set.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_configuration_set_reputation_options(
@@ -1515,6 +2027,12 @@ pinpointemail_put_configuration_set_reputation_options <- function(Configuration
 #' @param SendingEnabled If `true`, email sending is enabled for the configuration set. If
 #' `false`, email sending is disabled for the configuration set.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_configuration_set_sending_options(
@@ -1557,6 +2075,12 @@ pinpointemail_put_configuration_set_sending_options <- function(ConfigurationSet
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to add a custom tracking
 #' domain to.
 #' @param CustomRedirectDomain The domain that you want to use to track open and click events.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1608,6 +2132,12 @@ pinpointemail_put_configuration_set_tracking_options <- function(ConfigurationSe
 #' @param DestinationPoolName &#91;required&#93; The name of the IP pool that you want to add the dedicated IP address
 #' to. You have to specify an IP pool that already exists.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_dedicated_ip_in_pool(
@@ -1648,6 +2178,12 @@ pinpointemail_put_dedicated_ip_in_pool <- function(Ip, DestinationPoolName) {
 #' for.
 #' @param WarmupPercentage &#91;required&#93; The warm-up percentage that you want to associate with the dedicated IP
 #' address.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1701,6 +2237,12 @@ pinpointemail_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentag
 #' Pinpoint account. To enable the dashboard, set this value to `true`.
 #' @param SubscribedDomains An array of objects, one for each verified domain that you use to send
 #' email and enabled the Deliverability dashboard for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1759,6 +2301,12 @@ pinpointemail_put_deliverability_dashboard_option <- function(DashboardEnabled, 
 #' sends from the identity are DKIM-signed. When you set this value to
 #' `false`, then the messages that Amazon Pinpoint sends from the identity
 #' aren't DKIM-signed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1828,6 +2376,12 @@ pinpointemail_put_email_identity_dkim_attributes <- function(EmailIdentity, Sign
 #' email notification when these events occur (even if this setting is
 #' disabled).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_email_identity_feedback_attributes(
@@ -1887,6 +2441,12 @@ pinpointemail_put_email_identity_feedback_attributes <- function(EmailIdentity, 
 #' 
 #' These behaviors are taken when the custom MAIL FROM domain configuration
 #' is in the `Pending`, `Failed`, and `TemporaryFailure` states.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1953,6 +2513,14 @@ pinpointemail_put_email_identity_mail_from_attributes <- function(EmailIdentity,
 #' define, so that you can publish email sending events.
 #' @param ConfigurationSetName The name of the configuration set that you want to use when sending the
 #' email.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2052,6 +2620,12 @@ pinpointemail_send_email <- function(FromEmailAddress = NULL, Destination, Reply
 #' maximum length of a tag key is 128 characters. The maximum length of a
 #' tag value is 256 characters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -2104,6 +2678,12 @@ pinpointemail_tag_resource <- function(ResourceArn, Tags) {
 #' an ampersand. For example:
 #' `/v1/email/tags?ResourceArn=ResourceArn&TagKeys=Key1&TagKeys=Key2`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -2155,6 +2735,12 @@ pinpointemail_untag_resource <- function(ResourceArn, TagKeys) {
 #' that you want to modify.
 #' @param EventDestinationName &#91;required&#93; The name of the event destination that you want to modify.
 #' @param EventDestination &#91;required&#93; An object that defines the event destination.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

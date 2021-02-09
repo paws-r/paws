@@ -12,6 +12,27 @@ chime_create_voice_connector_group(Name, VoiceConnectorItems)
 
 \item{VoiceConnectorItems}{The Amazon Chime Voice Connectors to route inbound calls to.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VoiceConnectorGroup = list(
+    VoiceConnectorGroupId = "string",
+    Name = "string",
+    VoiceConnectorItems = list(
+      list(
+        VoiceConnectorId = "string",
+        Priority = 123
+      )
+    ),
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates an Amazon Chime Voice Connector group under the administrator's
 AWS account. You can associate Amazon Chime Voice Connectors with the

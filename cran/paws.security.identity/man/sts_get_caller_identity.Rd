@@ -7,6 +7,14 @@ call the operation}
 \usage{
 sts_get_caller_identity()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserId = "string",
+  Account = "string",
+  Arn = "string"
+)
+}
+}
 \description{
 Returns details about the IAM user or role whose credentials are used to
 call the operation.

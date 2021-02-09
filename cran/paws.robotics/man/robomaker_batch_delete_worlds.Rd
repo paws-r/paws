@@ -10,6 +10,14 @@ robomaker_batch_delete_worlds(worlds)
 \item{worlds}{[required] A list of Amazon Resource Names (arns) that correspond to worlds to
 delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  unprocessedWorlds = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Deletes one or more worlds in a batch operation.
 }

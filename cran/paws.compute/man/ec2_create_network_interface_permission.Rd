@@ -22,6 +22,22 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InterfacePermission = list(
+    NetworkInterfacePermissionId = "string",
+    NetworkInterfaceId = "string",
+    AwsAccountId = "string",
+    AwsService = "string",
+    Permission = "INSTANCE-ATTACH"|"EIP-ASSOCIATE",
+    PermissionState = list(
+      State = "pending"|"granted"|"revoking"|"revoked",
+      StatusMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Grants an AWS-authorized account permission to attach the specified
 network interface to an instance in their account.

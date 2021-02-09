@@ -17,6 +17,20 @@ action.}
 action to retrieve additional records that are available after the first
 page results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Endpoints = list(
+    list(
+      EndpointArn = "string",
+      Attributes = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the endpoints and endpoint attributes for devices in a supported
 push notification service, such as GCM (Firebase Cloud Messaging) and

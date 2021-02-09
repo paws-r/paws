@@ -11,6 +11,29 @@ apigatewayv2_get_authorizer(ApiId, AuthorizerId)
 
 \item{AuthorizerId}{[required] The authorizer identifier.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AuthorizerCredentialsArn = "string",
+  AuthorizerId = "string",
+  AuthorizerPayloadFormatVersion = "string",
+  AuthorizerResultTtlInSeconds = 123,
+  AuthorizerType = "REQUEST"|"JWT",
+  AuthorizerUri = "string",
+  EnableSimpleResponses = TRUE|FALSE,
+  IdentitySource = list(
+    "string"
+  ),
+  IdentityValidationExpression = "string",
+  JwtConfiguration = list(
+    Audience = list(
+      "string"
+    ),
+    Issuer = "string"
+  ),
+  Name = "string"
+)
+}
+}
 \description{
 Gets an Authorizer.
 }

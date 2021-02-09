@@ -16,6 +16,32 @@ cognitoidentityprovider_admin_list_devices(UserPoolId, Username, Limit,
 
 \item{PaginationToken}{The pagination token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Devices = list(
+    list(
+      DeviceKey = "string",
+      DeviceAttributes = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      ),
+      DeviceCreateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DeviceLastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DeviceLastAuthenticatedDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  PaginationToken = "string"
+)
+}
+}
 \description{
 Lists devices, as an administrator.
 

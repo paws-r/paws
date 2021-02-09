@@ -30,6 +30,33 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NextToken}{The token for the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NetworkInsightsPaths = list(
+    list(
+      NetworkInsightsPathId = "string",
+      NetworkInsightsPathArn = "string",
+      CreatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Source = "string",
+      Destination = "string",
+      SourceIp = "string",
+      DestinationIp = "string",
+      Protocol = "tcp"|"udp",
+      DestinationPort = 123,
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more of your paths.
 }

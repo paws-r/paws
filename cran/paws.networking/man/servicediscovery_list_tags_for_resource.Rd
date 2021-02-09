@@ -10,6 +10,17 @@ servicediscovery_list_tags_for_resource(ResourceARN)
 \item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource that you want to retrieve
 tags for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists tags for the specified resource.
 }
@@ -24,7 +35,7 @@ Lists tags for the specified resource.
 \dontrun{
 # This example lists the tags of a resource.
 svc$list_tags_for_resource(
-  ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/ns-ylexjili4cdxy3..."
+  ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/ns-ylexjili4cdxy3xm"
 )
 }
 

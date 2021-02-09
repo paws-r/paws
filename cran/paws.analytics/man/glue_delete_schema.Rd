@@ -11,6 +11,14 @@ glue_delete_schema(SchemaId)
 \item{SchemaId}{[required] This is a wrapper structure that may contain the schema name and Amazon
 Resource Name (ARN).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaArn = "string",
+  SchemaName = "string",
+  Status = "AVAILABLE"|"PENDING"|"DELETING"
+)
+}
+}
 \description{
 Deletes the entire schema set, including the schema set and all of its
 versions. To get the status of the delete operation, you can call

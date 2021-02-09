@@ -18,6 +18,18 @@ can specify the latest version of the template by providing the keyword
 \verb{$LATEST} in the \code{AliasName} parameter. The keyword \verb{$PUBLISHED} doesn't
 apply to templates.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TemplateAlias = list(
+    AliasName = "string",
+    Arn = "string",
+    TemplateVersionNumber = 123
+  ),
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Describes the template alias for a template.
 }

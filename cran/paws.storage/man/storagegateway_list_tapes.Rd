@@ -16,6 +16,28 @@ of tapes.}
 \item{Limit}{An optional number limit for the tapes in the list returned by this
 call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TapeInfos = list(
+    list(
+      TapeARN = "string",
+      TapeBarcode = "string",
+      TapeSizeInBytes = 123,
+      TapeStatus = "string",
+      GatewayARN = "string",
+      PoolId = "string",
+      RetentionStartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      PoolEntryDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Lists virtual tapes in your virtual tape library (VTL) and your virtual
 tape shelf (VTS). You specify the tapes to list by specifying one or

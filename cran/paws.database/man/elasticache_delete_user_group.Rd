@@ -9,6 +9,29 @@ elasticache_delete_user_group(UserGroupId)
 \arguments{
 \item{UserGroupId}{[required] The ID of the user group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserGroupId = "string",
+  Status = "string",
+  Engine = "string",
+  UserIds = list(
+    "string"
+  ),
+  PendingChanges = list(
+    UserIdsToRemove = list(
+      "string"
+    ),
+    UserIdsToAdd = list(
+      "string"
+    )
+  ),
+  ReplicationGroups = list(
+    "string"
+  ),
+  ARN = "string"
+)
+}
+}
 \description{
 For Redis engine version 6.x onwards: Deletes a ser group. The user
 group must first be disassociated from the replcation group before it

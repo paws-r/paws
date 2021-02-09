@@ -12,6 +12,10 @@ sns_tag_resource(ResourceArn, Tags)
 \item{Tags}{[required] The tags to be added to the specified topic. A tag consists of a
 required key and an optional value.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Add tags to the specified Amazon SNS topic. For an overview, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html}{Amazon SNS Tags} in
 the \emph{Amazon SNS Developer Guide}.

@@ -28,6 +28,8 @@ NULL
 #' @param InstanceIds The IDs of the instances. You can specify up to 20 instances.
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$attach_instances(
@@ -106,6 +108,12 @@ autoscaling_attach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' [DescribeTargetGroups](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeTargetGroups.html)
 #' API operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$attach_load_balancer_target_groups(
@@ -123,7 +131,7 @@ autoscaling_attach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' svc$attach_load_balancer_target_groups(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   TargetGroupARNs = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d..."
 #'   )
 #' )
 #' }
@@ -178,6 +186,12 @@ autoscaling_attach_load_balancer_target_groups <- function(AutoScalingGroupName,
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param LoadBalancerNames &#91;required&#93; The names of the load balancers. You can specify up to 10 load
 #' balancers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -236,6 +250,20 @@ autoscaling_attach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
 #' @param ScheduledActionNames &#91;required&#93; The names of the scheduled actions to delete. The maximum number allowed
 #' is 50.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedScheduledActions = list(
+#'     list(
+#'       ScheduledActionName = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_delete_scheduled_action(
@@ -280,6 +308,20 @@ autoscaling_batch_delete_scheduled_action <- function(AutoScalingGroupName, Sche
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ScheduledUpdateGroupActions &#91;required&#93; One or more scheduled actions. The maximum number allowed is 50.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedScheduledUpdateGroupActions = list(
+#'     list(
+#'       ScheduledActionName = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -338,6 +380,14 @@ autoscaling_batch_put_scheduled_update_group_action <- function(AutoScalingGroup
 #' autoscaling_cancel_instance_refresh(AutoScalingGroupName)
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceRefreshId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -420,6 +470,12 @@ autoscaling_cancel_instance_refresh <- function(AutoScalingGroupName) {
 #' @param LifecycleActionResult &#91;required&#93; The action for the group to take. This parameter can be either
 #' `CONTINUE` or `ABANDON`.
 #' @param InstanceId The ID of the instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -668,6 +724,8 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' lifetime](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_auto_scaling_group(
@@ -779,7 +837,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'   MaxSize = 3L,
 #'   MinSize = 1L,
 #'   TargetGroupARNs = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d..."
 #'   ),
 #'   VPCZoneIdentifier = "subnet-057fa0918fEXAMPLE, subnet-610acd08EXAMPLE"
 #' )
@@ -1004,6 +1062,8 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' Options](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html#launch-configurations-imds)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_launch_configuration(
@@ -1105,6 +1165,8 @@ autoscaling_create_launch_configuration <- function(LaunchConfigurationName, Ima
 #'
 #' @param Tags &#91;required&#93; One or more tags.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_or_update_tags(
@@ -1195,6 +1257,8 @@ autoscaling_create_or_update_tags <- function(Tags) {
 #' terminated. This parameter also deletes any lifecycle actions associated
 #' with the group.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_auto_scaling_group(
@@ -1252,6 +1316,8 @@ autoscaling_delete_auto_scaling_group <- function(AutoScalingGroupName, ForceDel
 #'
 #' @param LaunchConfigurationName &#91;required&#93; The name of the launch configuration.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_launch_configuration(
@@ -1303,6 +1369,12 @@ autoscaling_delete_launch_configuration <- function(LaunchConfigurationName) {
 #' @param LifecycleHookName &#91;required&#93; The name of the lifecycle hook.
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_lifecycle_hook(
@@ -1352,6 +1424,8 @@ autoscaling_delete_lifecycle_hook <- function(LifecycleHookName, AutoScalingGrou
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param TopicARN &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Simple Notification Service
 #' (Amazon SNS) topic.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1410,6 +1484,8 @@ autoscaling_delete_notification_configuration <- function(AutoScalingGroupName, 
 #' @param AutoScalingGroupName The name of the Auto Scaling group.
 #' @param PolicyName &#91;required&#93; The name or Amazon Resource Name (ARN) of the policy.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_policy(
@@ -1459,6 +1535,8 @@ autoscaling_delete_policy <- function(AutoScalingGroupName = NULL, PolicyName) {
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ScheduledActionName &#91;required&#93; The name of the action to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_scheduled_action(
@@ -1506,6 +1584,8 @@ autoscaling_delete_scheduled_action <- function(AutoScalingGroupName, ScheduledA
 #' autoscaling_delete_tags(Tags)
 #'
 #' @param Tags &#91;required&#93; One or more tags.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1575,6 +1655,17 @@ autoscaling_delete_tags <- function(Tags) {
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MaxNumberOfAutoScalingGroups = 123,
+#'   MaxNumberOfLaunchConfigurations = 123,
+#'   NumberOfAutoScalingGroups = 123,
+#'   NumberOfLaunchConfigurations = 123
+#' )
+#' ```
+#'
 
 #'
 #' @examples
@@ -1625,6 +1716,18 @@ autoscaling_describe_account_limits <- function() {
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AdjustmentTypes = list(
+#'     list(
+#'       AdjustmentType = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 
 #'
 #' @examples
@@ -1671,6 +1774,120 @@ autoscaling_describe_adjustment_types <- function() {
 #' from a previous call.)
 #' @param MaxRecords The maximum number of items to return with this call. The default value
 #' is `50` and the maximum value is `100`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutoScalingGroups = list(
+#'     list(
+#'       AutoScalingGroupName = "string",
+#'       AutoScalingGroupARN = "string",
+#'       LaunchConfigurationName = "string",
+#'       LaunchTemplate = list(
+#'         LaunchTemplateId = "string",
+#'         LaunchTemplateName = "string",
+#'         Version = "string"
+#'       ),
+#'       MixedInstancesPolicy = list(
+#'         LaunchTemplate = list(
+#'           LaunchTemplateSpecification = list(
+#'             LaunchTemplateId = "string",
+#'             LaunchTemplateName = "string",
+#'             Version = "string"
+#'           ),
+#'           Overrides = list(
+#'             list(
+#'               InstanceType = "string",
+#'               WeightedCapacity = "string",
+#'               LaunchTemplateSpecification = list(
+#'                 LaunchTemplateId = "string",
+#'                 LaunchTemplateName = "string",
+#'                 Version = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         InstancesDistribution = list(
+#'           OnDemandAllocationStrategy = "string",
+#'           OnDemandBaseCapacity = 123,
+#'           OnDemandPercentageAboveBaseCapacity = 123,
+#'           SpotAllocationStrategy = "string",
+#'           SpotInstancePools = 123,
+#'           SpotMaxPrice = "string"
+#'         )
+#'       ),
+#'       MinSize = 123,
+#'       MaxSize = 123,
+#'       DesiredCapacity = 123,
+#'       DefaultCooldown = 123,
+#'       AvailabilityZones = list(
+#'         "string"
+#'       ),
+#'       LoadBalancerNames = list(
+#'         "string"
+#'       ),
+#'       TargetGroupARNs = list(
+#'         "string"
+#'       ),
+#'       HealthCheckType = "string",
+#'       HealthCheckGracePeriod = 123,
+#'       Instances = list(
+#'         list(
+#'           InstanceId = "string",
+#'           InstanceType = "string",
+#'           AvailabilityZone = "string",
+#'           LifecycleState = "Pending"|"Pending:Wait"|"Pending:Proceed"|"Quarantined"|"InService"|"Terminating"|"Terminating:Wait"|"Terminating:Proceed"|"Terminated"|"Detaching"|"Detached"|"EnteringStandby"|"Standby",
+#'           HealthStatus = "string",
+#'           LaunchConfigurationName = "string",
+#'           LaunchTemplate = list(
+#'             LaunchTemplateId = "string",
+#'             LaunchTemplateName = "string",
+#'             Version = "string"
+#'           ),
+#'           ProtectedFromScaleIn = TRUE|FALSE,
+#'           WeightedCapacity = "string"
+#'         )
+#'       ),
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SuspendedProcesses = list(
+#'         list(
+#'           ProcessName = "string",
+#'           SuspensionReason = "string"
+#'         )
+#'       ),
+#'       PlacementGroup = "string",
+#'       VPCZoneIdentifier = "string",
+#'       EnabledMetrics = list(
+#'         list(
+#'           Metric = "string",
+#'           Granularity = "string"
+#'         )
+#'       ),
+#'       Status = "string",
+#'       Tags = list(
+#'         list(
+#'           ResourceId = "string",
+#'           ResourceType = "string",
+#'           Key = "string",
+#'           Value = "string",
+#'           PropagateAtLaunch = TRUE|FALSE
+#'         )
+#'       ),
+#'       TerminationPolicies = list(
+#'         "string"
+#'       ),
+#'       NewInstancesProtectedFromScaleIn = TRUE|FALSE,
+#'       ServiceLinkedRoleARN = "string",
+#'       MaxInstanceLifetime = 123,
+#'       CapacityRebalance = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1730,6 +1947,32 @@ autoscaling_describe_auto_scaling_groups <- function(AutoScalingGroupNames = NUL
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutoScalingInstances = list(
+#'     list(
+#'       InstanceId = "string",
+#'       InstanceType = "string",
+#'       AutoScalingGroupName = "string",
+#'       AvailabilityZone = "string",
+#'       LifecycleState = "string",
+#'       HealthStatus = "string",
+#'       LaunchConfigurationName = "string",
+#'       LaunchTemplate = list(
+#'         LaunchTemplateId = "string",
+#'         LaunchTemplateName = "string",
+#'         Version = "string"
+#'       ),
+#'       ProtectedFromScaleIn = TRUE|FALSE,
+#'       WeightedCapacity = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_auto_scaling_instances(
@@ -1782,6 +2025,16 @@ autoscaling_describe_auto_scaling_instances <- function(InstanceIds = NULL, MaxR
 #' autoscaling_describe_auto_scaling_notification_types()
 #'
 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutoScalingNotificationTypes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 
 #'
@@ -1850,6 +2103,30 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #' @param MaxRecords The maximum number of items to return with this call. The default value
 #' is `50` and the maximum value is `100`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceRefreshes = list(
+#'     list(
+#'       InstanceRefreshId = "string",
+#'       AutoScalingGroupName = "string",
+#'       Status = "Pending"|"InProgress"|"Successful"|"Failed"|"Cancelling"|"Cancelled",
+#'       StatusReason = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PercentageComplete = 123,
+#'       InstancesToUpdate = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_instance_refreshes(
@@ -1907,6 +2184,64 @@ autoscaling_describe_instance_refreshes <- function(AutoScalingGroupName, Instan
 #' @param MaxRecords The maximum number of items to return with this call. The default value
 #' is `50` and the maximum value is `100`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LaunchConfigurations = list(
+#'     list(
+#'       LaunchConfigurationName = "string",
+#'       LaunchConfigurationARN = "string",
+#'       ImageId = "string",
+#'       KeyName = "string",
+#'       SecurityGroups = list(
+#'         "string"
+#'       ),
+#'       ClassicLinkVPCId = "string",
+#'       ClassicLinkVPCSecurityGroups = list(
+#'         "string"
+#'       ),
+#'       UserData = "string",
+#'       InstanceType = "string",
+#'       KernelId = "string",
+#'       RamdiskId = "string",
+#'       BlockDeviceMappings = list(
+#'         list(
+#'           VirtualName = "string",
+#'           DeviceName = "string",
+#'           Ebs = list(
+#'             SnapshotId = "string",
+#'             VolumeSize = 123,
+#'             VolumeType = "string",
+#'             DeleteOnTermination = TRUE|FALSE,
+#'             Iops = 123,
+#'             Encrypted = TRUE|FALSE
+#'           ),
+#'           NoDevice = TRUE|FALSE
+#'         )
+#'       ),
+#'       InstanceMonitoring = list(
+#'         Enabled = TRUE|FALSE
+#'       ),
+#'       SpotPrice = "string",
+#'       IamInstanceProfile = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EbsOptimized = TRUE|FALSE,
+#'       AssociatePublicIpAddress = TRUE|FALSE,
+#'       PlacementTenancy = "string",
+#'       MetadataOptions = list(
+#'         HttpTokens = "optional"|"required",
+#'         HttpPutResponseHopLimit = 123,
+#'         HttpEndpoint = "disabled"|"enabled"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_launch_configurations(
@@ -1955,14 +2290,24 @@ autoscaling_describe_launch_configurations <- function(LaunchConfigurationNames 
 #' 
 #' The following hook types are supported:
 #' 
-#' -   autoscaling:EC2\\_INSTANCE\\_LAUNCHING
+#' -   autoscaling:EC2_INSTANCE_LAUNCHING
 #' 
-#' -   autoscaling:EC2\\_INSTANCE\\_TERMINATING
+#' -   autoscaling:EC2_INSTANCE_TERMINATING
 #'
 #' @usage
 #' autoscaling_describe_lifecycle_hook_types()
 #'
 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LifecycleHookTypes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 
 #'
@@ -2004,6 +2349,26 @@ autoscaling_describe_lifecycle_hook_types <- function() {
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param LifecycleHookNames The names of one or more lifecycle hooks. If you omit this parameter,
 #' all lifecycle hooks are described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LifecycleHooks = list(
+#'     list(
+#'       LifecycleHookName = "string",
+#'       AutoScalingGroupName = "string",
+#'       LifecycleTransition = "string",
+#'       NotificationTargetARN = "string",
+#'       RoleARN = "string",
+#'       NotificationMetadata = "string",
+#'       HeartbeatTimeout = 123,
+#'       GlobalTimeout = 123,
+#'       DefaultResult = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2058,6 +2423,20 @@ autoscaling_describe_lifecycle_hooks <- function(AutoScalingGroupName, Lifecycle
 #' from a previous call.)
 #' @param MaxRecords The maximum number of items to return with this call. The default value
 #' is `100` and the maximum value is `100`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoadBalancerTargetGroups = list(
+#'     list(
+#'       LoadBalancerTargetGroupARN = "string",
+#'       State = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2118,6 +2497,20 @@ autoscaling_describe_load_balancer_target_groups <- function(AutoScalingGroupNam
 #' @param MaxRecords The maximum number of items to return with this call. The default value
 #' is `100` and the maximum value is `100`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoadBalancers = list(
+#'     list(
+#'       LoadBalancerName = "string",
+#'       State = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_load_balancers(
@@ -2171,6 +2564,23 @@ autoscaling_describe_load_balancers <- function(AutoScalingGroupName, NextToken 
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Metrics = list(
+#'     list(
+#'       Metric = "string"
+#'     )
+#'   ),
+#'   Granularities = list(
+#'     list(
+#'       Granularity = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 
 #'
 #' @examples
@@ -2215,6 +2625,21 @@ autoscaling_describe_metric_collection_types <- function() {
 #' from a previous call.)
 #' @param MaxRecords The maximum number of items to return with this call. The default value
 #' is `50` and the maximum value is `100`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotificationConfigurations = list(
+#'     list(
+#'       AutoScalingGroupName = "string",
+#'       TopicARN = "string",
+#'       NotificationType = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2278,6 +2703,63 @@ autoscaling_describe_notification_configurations <- function(AutoScalingGroupNam
 #' from a previous call.)
 #' @param MaxRecords The maximum number of items to be returned with each call. The default
 #' value is `50` and the maximum value is `100`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScalingPolicies = list(
+#'     list(
+#'       AutoScalingGroupName = "string",
+#'       PolicyName = "string",
+#'       PolicyARN = "string",
+#'       PolicyType = "string",
+#'       AdjustmentType = "string",
+#'       MinAdjustmentStep = 123,
+#'       MinAdjustmentMagnitude = 123,
+#'       ScalingAdjustment = 123,
+#'       Cooldown = 123,
+#'       StepAdjustments = list(
+#'         list(
+#'           MetricIntervalLowerBound = 123.0,
+#'           MetricIntervalUpperBound = 123.0,
+#'           ScalingAdjustment = 123
+#'         )
+#'       ),
+#'       MetricAggregationType = "string",
+#'       EstimatedInstanceWarmup = 123,
+#'       Alarms = list(
+#'         list(
+#'           AlarmName = "string",
+#'           AlarmARN = "string"
+#'         )
+#'       ),
+#'       TargetTrackingConfiguration = list(
+#'         PredefinedMetricSpecification = list(
+#'           PredefinedMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"ALBRequestCountPerTarget",
+#'           ResourceLabel = "string"
+#'         ),
+#'         CustomizedMetricSpecification = list(
+#'           MetricName = "string",
+#'           Namespace = "string",
+#'           Dimensions = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+#'           Unit = "string"
+#'         ),
+#'         TargetValue = 123.0,
+#'         DisableScaleIn = TRUE|FALSE
+#'       ),
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2345,6 +2827,32 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Activities = list(
+#'     list(
+#'       ActivityId = "string",
+#'       AutoScalingGroupName = "string",
+#'       Description = "string",
+#'       Cause = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+#'       StatusMessage = "string",
+#'       Progress = 123,
+#'       Details = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_scaling_activities(
@@ -2398,6 +2906,18 @@ autoscaling_describe_scaling_activities <- function(ActivityIds = NULL, AutoScal
 #' autoscaling_describe_scaling_process_types()
 #'
 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Processes = list(
+#'     list(
+#'       ProcessName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 
 #'
@@ -2454,6 +2974,34 @@ autoscaling_describe_scaling_process_types <- function() {
 #' from a previous call.)
 #' @param MaxRecords The maximum number of items to return with this call. The default value
 #' is `50` and the maximum value is `100`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScheduledUpdateGroupActions = list(
+#'     list(
+#'       AutoScalingGroupName = "string",
+#'       ScheduledActionName = "string",
+#'       ScheduledActionARN = "string",
+#'       Time = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Recurrence = "string",
+#'       MinSize = 123,
+#'       MaxSize = 123,
+#'       DesiredCapacity = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2530,6 +3078,23 @@ autoscaling_describe_scheduled_actions <- function(AutoScalingGroupName = NULL, 
 #' @param MaxRecords The maximum number of items to return with this call. The default value
 #' is `50` and the maximum value is `100`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       ResourceId = "string",
+#'       ResourceType = "string",
+#'       Key = "string",
+#'       Value = "string",
+#'       PropagateAtLaunch = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_tags(
@@ -2596,6 +3161,16 @@ autoscaling_describe_tags <- function(Filters = NULL, NextToken = NULL, MaxRecor
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TerminationPolicyTypes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 
 #'
 #' @examples
@@ -2653,6 +3228,31 @@ autoscaling_describe_termination_policy_types <- function() {
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ShouldDecrementDesiredCapacity &#91;required&#93; Indicates whether the Auto Scaling group decrements the desired capacity
 #' value by the number of instances detached.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Activities = list(
+#'     list(
+#'       ActivityId = "string",
+#'       AutoScalingGroupName = "string",
+#'       Description = "string",
+#'       Cause = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+#'       StatusMessage = "string",
+#'       Progress = 123,
+#'       Details = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2712,6 +3312,12 @@ autoscaling_detach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' @param TargetGroupARNs &#91;required&#93; The Amazon Resource Names (ARN) of the target groups. You can specify up
 #' to 10 target groups.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detach_load_balancer_target_groups(
@@ -2729,7 +3335,7 @@ autoscaling_detach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' svc$detach_load_balancer_target_groups(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
 #'   TargetGroupARNs = list(
-#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
+#'     "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d..."
 #'   )
 #' )
 #' }
@@ -2780,6 +3386,12 @@ autoscaling_detach_load_balancer_target_groups <- function(AutoScalingGroupName,
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param LoadBalancerNames &#91;required&#93; The names of the load balancers. You can specify up to 10 load
 #' balancers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2861,6 +3473,8 @@ autoscaling_detach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
 #' -   `GroupTotalCapacity`
 #' 
 #' If you omit this parameter, all metrics are disabled.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -2954,6 +3568,8 @@ autoscaling_disable_metrics_collection <- function(AutoScalingGroupName, Metrics
 #' @param Granularity &#91;required&#93; The granularity to associate with the metrics to collect. The only valid
 #' value is `1Minute`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_metrics_collection(
@@ -3022,6 +3638,31 @@ autoscaling_enable_metrics_collection <- function(AutoScalingGroupName, Metrics 
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ShouldDecrementDesiredCapacity &#91;required&#93; Indicates whether to decrement the desired capacity of the Auto Scaling
 #' group by the number of instances moved to `Standby` mode.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Activities = list(
+#'     list(
+#'       ActivityId = "string",
+#'       AutoScalingGroupName = "string",
+#'       Description = "string",
+#'       Cause = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+#'       StatusMessage = "string",
+#'       Progress = 123,
+#'       Details = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3101,6 +3742,8 @@ autoscaling_enter_standby <- function(InstanceIds = NULL, AutoScalingGroupName, 
 #' Required if the policy type is `StepScaling` and not supported
 #' otherwise.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$execute_policy(
@@ -3161,6 +3804,31 @@ autoscaling_execute_policy <- function(AutoScalingGroupName = NULL, PolicyName, 
 #'
 #' @param InstanceIds The IDs of the instances. You can specify up to 20 instances.
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Activities = list(
+#'     list(
+#'       ActivityId = "string",
+#'       AutoScalingGroupName = "string",
+#'       Description = "string",
+#'       Cause = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+#'       StatusMessage = "string",
+#'       Progress = 123,
+#'       Details = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3261,9 +3929,9 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
 #' @param LifecycleTransition The instance state to which you want to attach the lifecycle hook. The
 #' valid values are:
 #' 
-#' -   autoscaling:EC2\\_INSTANCE\\_LAUNCHING
+#' -   autoscaling:EC2_INSTANCE_LAUNCHING
 #' 
-#' -   autoscaling:EC2\\_INSTANCE\\_TERMINATING
+#' -   autoscaling:EC2_INSTANCE_TERMINATING
 #' 
 #' Required for new lifecycle hooks, but optional when updating existing
 #' hooks.
@@ -3300,6 +3968,12 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
 #' @param DefaultResult Defines the action the Auto Scaling group should take when the lifecycle
 #' hook timeout elapses or if an unexpected failure occurs. This parameter
 #' can be either `CONTINUE` or `ABANDON`. The default value is `ABANDON`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3376,6 +4050,8 @@ autoscaling_put_lifecycle_hook <- function(LifecycleHookName, AutoScalingGroupNa
 #' notification types supported by Amazon EC2 Auto Scaling, call the
 #' [`describe_auto_scaling_notification_types`][autoscaling_describe_auto_scaling_notification_types]
 #' API.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -3534,6 +4210,20 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enable-disable-scaling-policy.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyARN = "string",
+#'   Alarms = list(
+#'     list(
+#'       AlarmName = "string",
+#'       AlarmARN = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_scaling_policy(
@@ -3589,7 +4279,7 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #'   TargetTrackingConfiguration = list(
 #'     PredefinedMetricSpecification = list(
 #'       PredefinedMetricType = "ALBRequestCountPerTarget",
-#'       ResourceLabel = "app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targetgroup/EC2Co-Defa..."
+#'       ResourceLabel = "app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targetgroup/EC2..."
 #'     ),
 #'     TargetValue = 1000
 #'   )
@@ -3649,7 +4339,7 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 #' Scaling does not perform the action after this time.
 #' @param Recurrence The recurring schedule for this action, in Unix cron syntax format. This
 #' format consists of five fields separated by white spaces: \[Minute\]
-#' \[Hour\] \[Day\\_of\\_Month\] \[Month\\_of\\_Year\] \[Day\\_of\\_Week\]. The
+#' \[Hour\] \[Day_of_Month\] \[Month_of_Year\] \[Day_of_Week\]. The
 #' value must be in quotes (for example, `"30 0 1 1,6,12 *"`). For more
 #' information about this format, see [Crontab](http://crontab.org/).
 #' 
@@ -3661,6 +4351,8 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 #' after the scheduled action runs and the capacity it attempts to
 #' maintain. It can scale beyond this capacity if you add more scaling
 #' conditions.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -3764,6 +4456,12 @@ autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, 
 #' hook.
 #' @param InstanceId The ID of the instance.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$record_lifecycle_action_heartbeat(
@@ -3842,6 +4540,8 @@ autoscaling_record_lifecycle_action_heartbeat <- function(LifecycleHookName, Aut
 #' 
 #' If you omit this parameter, all processes are specified.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$resume_processes(
@@ -3910,6 +4610,8 @@ autoscaling_resume_processes <- function(AutoScalingGroupName, ScalingProcesses 
 #' Scaling group to its new capacity. By default, Amazon EC2 Auto Scaling
 #' does not honor the cooldown period during manual scaling activities.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_desired_capacity(
@@ -3977,6 +4679,8 @@ autoscaling_set_desired_capacity <- function(AutoScalingGroupName, DesiredCapaci
 #' [`create_auto_scaling_group`][autoscaling_create_auto_scaling_group] in
 #' the *Amazon EC2 Auto Scaling API Reference*.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_instance_health(
@@ -4037,6 +4741,12 @@ autoscaling_set_instance_health <- function(InstanceId, HealthStatus, ShouldResp
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ProtectedFromScaleIn &#91;required&#93; Indicates whether the instance is protected from termination by Amazon
 #' EC2 Auto Scaling when scaling in.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4137,6 +4847,14 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' [RefreshPreferences](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_RefreshPreferences.html)
 #' in the *Amazon EC2 Auto Scaling API Reference*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceRefreshId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_instance_refresh(
@@ -4224,6 +4942,8 @@ autoscaling_start_instance_refresh <- function(AutoScalingGroupName, Strategy = 
 #' 
 #' If you omit this parameter, all processes are specified.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$suspend_processes(
@@ -4298,6 +5018,29 @@ autoscaling_suspend_processes <- function(AutoScalingGroupName, ScalingProcesses
 #' @param InstanceId &#91;required&#93; The ID of the instance.
 #' @param ShouldDecrementDesiredCapacity &#91;required&#93; Indicates whether terminating the instance also decrements the size of
 #' the Auto Scaling group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Activity = list(
+#'     ActivityId = "string",
+#'     AutoScalingGroupName = "string",
+#'     Description = "string",
+#'     Cause = "string",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+#'     StatusMessage = "string",
+#'     Progress = 123,
+#'     Details = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4486,6 +5229,8 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' [Amazon EC2 Auto Scaling Capacity
 #' Rebalancing](https://docs.aws.amazon.com/autoscaling/ec2/userguide/capacity-rebalance.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
+#'
+
 #'
 #' @section Request syntax:
 #' ```

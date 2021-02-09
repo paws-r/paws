@@ -11,6 +11,10 @@ glue_stop_workflow_run(Name, RunId)
 
 \item{RunId}{[required] The ID of the workflow run to stop.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Stops the execution of the specified workflow run.
 }

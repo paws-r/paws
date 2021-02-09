@@ -84,6 +84,14 @@ organize your resources. Each tag consists of a key and an optional
 value. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
 in \emph{AWS General Reference}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobArn = "string",
+  jobName = "string",
+  jobId = "string"
+)
+}
+}
 \description{
 Submits an AWS Batch job from a job definition. Parameters specified
 during \code{\link[=batch_submit_job]{submit_job}} override parameters defined in

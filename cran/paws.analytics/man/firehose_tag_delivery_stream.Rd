@@ -11,6 +11,10 @@ firehose_tag_delivery_stream(DeliveryStreamName, Tags)
 
 \item{Tags}{[required] A set of key-value pairs to use to create the tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds or updates tags for the specified delivery stream. A tag is a
 key-value pair that you can define and assign to AWS resources. If you

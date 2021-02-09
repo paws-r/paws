@@ -12,6 +12,10 @@ chime_logout_user(AccountId, UserId)
 
 \item{UserId}{[required] The user ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Logs out the specified user from all of the devices they are currently
 logged into.

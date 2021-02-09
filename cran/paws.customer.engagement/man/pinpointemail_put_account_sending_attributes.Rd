@@ -13,6 +13,10 @@ to enable email sending, or set to \code{false} to disable email sending.
 If AWS paused your account's ability to send email, you can't use this
 operation to resume your account's ability to send email.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Enable or disable the ability of your account to send email.
 }

@@ -11,6 +11,32 @@ cloudsearch_delete_suggester(DomainName, SuggesterName)
 
 \item{SuggesterName}{[required] Specifies the name of the suggester you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Suggester = list(
+    Options = list(
+      SuggesterName = "string",
+      DocumentSuggesterOptions = list(
+        SourceField = "string",
+        FuzzyMatching = "none"|"low"|"high",
+        SortExpression = "string"
+      )
+    ),
+    Status = list(
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateVersion = 123,
+      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+      PendingDeletion = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Deletes a suggester. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions}
 in the \emph{Amazon CloudSearch Developer Guide}.

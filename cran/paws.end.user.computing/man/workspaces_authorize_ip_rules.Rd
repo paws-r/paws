@@ -11,6 +11,10 @@ workspaces_authorize_ip_rules(GroupId, UserRules)
 
 \item{UserRules}{[required] The rules to add to the group.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds one or more rules to the specified IP access control group.
 

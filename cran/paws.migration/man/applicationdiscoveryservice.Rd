@@ -28,9 +28,6 @@ on-premises infrastructure assessment.
 dependencies, only agent-based discovery collects that
 information.
 }
-}<!-- -->
-
-\itemize{
 \item \strong{Agent-based discovery} collects a richer set of data than
 agentless discovery by using the AWS Application Discovery Agent,
 which you install on one or more hosts in your data center.
@@ -42,9 +39,6 @@ information, resource utilization, and network dependencies.
 transit to the Application Discovery Service database in the
 cloud.
 }
-}<!-- -->
-
-\itemize{
 \item \strong{AWS Partner Network (APN) solutions} integrate with Application
 Discovery Service, enabling you to import details of your
 on-premises environment directly into Migration Hub without using

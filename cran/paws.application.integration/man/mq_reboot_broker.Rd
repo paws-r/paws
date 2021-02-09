@@ -9,6 +9,10 @@ mq_reboot_broker(BrokerId)
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Reboots a broker. Note: This API is asynchronous.
 }

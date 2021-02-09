@@ -17,6 +17,29 @@ elasticsearchservice_update_package(PackageID, PackageSource,
 \item{CommitMessage}{An info message for the new version which will be shown as part of
 \code{GetPackageVersionHistoryResponse}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PackageDetails = list(
+    PackageID = "string",
+    PackageName = "string",
+    PackageType = "TXT-DICTIONARY",
+    PackageDescription = "string",
+    PackageStatus = "COPYING"|"COPY_FAILED"|"VALIDATING"|"VALIDATION_FAILED"|"AVAILABLE"|"DELETING"|"DELETED"|"DELETE_FAILED",
+    CreatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    AvailablePackageVersion = "string",
+    ErrorDetails = list(
+      ErrorType = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates a package for use with Amazon ES domains.
 }

@@ -17,6 +17,48 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{PurchaseRequests}{[required] The purchase requests.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScheduledInstanceSet = list(
+    list(
+      AvailabilityZone = "string",
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      HourlyPrice = "string",
+      InstanceCount = 123,
+      InstanceType = "string",
+      NetworkPlatform = "string",
+      NextSlotStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Platform = "string",
+      PreviousSlotEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Recurrence = list(
+        Frequency = "string",
+        Interval = 123,
+        OccurrenceDaySet = list(
+          123
+        ),
+        OccurrenceRelativeToEnd = TRUE|FALSE,
+        OccurrenceUnit = "string"
+      ),
+      ScheduledInstanceId = "string",
+      SlotDurationInHours = 123,
+      TermEndDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      TermStartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      TotalScheduledInstanceHours = 123
+    )
+  )
+)
+}
+}
 \description{
 Purchases the Scheduled Instances with the specified schedule.
 

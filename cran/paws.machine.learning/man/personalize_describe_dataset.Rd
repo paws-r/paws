@@ -9,6 +9,25 @@ personalize_describe_dataset(datasetArn)
 \arguments{
 \item{datasetArn}{[required] The Amazon Resource Name (ARN) of the dataset to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  dataset = list(
+    name = "string",
+    datasetArn = "string",
+    datasetGroupArn = "string",
+    datasetType = "string",
+    schemaArn = "string",
+    status = "string",
+    creationDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedDateTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Describes the given dataset. For more information on datasets, see
 \code{\link[=personalize_create_dataset]{create_dataset}}.

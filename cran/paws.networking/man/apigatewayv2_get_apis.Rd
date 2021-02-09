@@ -12,6 +12,55 @@ apigatewayv2_get_apis(MaxResults, NextToken)
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Items = list(
+    list(
+      ApiEndpoint = "string",
+      ApiGatewayManaged = TRUE|FALSE,
+      ApiId = "string",
+      ApiKeySelectionExpression = "string",
+      CorsConfiguration = list(
+        AllowCredentials = TRUE|FALSE,
+        AllowHeaders = list(
+          "string"
+        ),
+        AllowMethods = list(
+          "string"
+        ),
+        AllowOrigins = list(
+          "string"
+        ),
+        ExposeHeaders = list(
+          "string"
+        ),
+        MaxAge = 123
+      ),
+      CreatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Description = "string",
+      DisableSchemaValidation = TRUE|FALSE,
+      DisableExecuteApiEndpoint = TRUE|FALSE,
+      ImportInfo = list(
+        "string"
+      ),
+      Name = "string",
+      ProtocolType = "WEBSOCKET"|"HTTP",
+      RouteSelectionExpression = "string",
+      Tags = list(
+        "string"
+      ),
+      Version = "string",
+      Warnings = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a collection of Api resources.
 }

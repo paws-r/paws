@@ -14,6 +14,42 @@ or retrieve.}
 \item{ContinuationToken}{The ContinuationToken that represents a placeholder from where this
 request should begin.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IsTruncated = TRUE|FALSE,
+  ContinuationToken = "string",
+  NextContinuationToken = "string",
+  IntelligentTieringConfigurationList = list(
+    list(
+      Id = "string",
+      Filter = list(
+        Prefix = "string",
+        Tag = list(
+          Key = "string",
+          Value = "string"
+        ),
+        And = list(
+          Prefix = "string",
+          Tags = list(
+            list(
+              Key = "string",
+              Value = "string"
+            )
+          )
+        )
+      ),
+      Status = "Enabled"|"Disabled",
+      Tierings = list(
+        list(
+          Days = 123,
+          AccessTier = "ARCHIVE_ACCESS"|"DEEP_ARCHIVE_ACCESS"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists the S3 Intelligent-Tiering configuration from the specified
 bucket.
@@ -32,7 +68,7 @@ frequent access tier rates in the S3 Intelligent-Tiering storage class.
 
 If you delete an object before the end of the 30-day minimum storage
 duration period, you are charged for 30 days. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access}{Storage class for automatically optimizing frequently and infrequently accessed objects}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html#sc-dynamic-data-access}{Storage class for automatically optimizing frequently and infrequently accessed objects}.
 
 Operations related to
 \code{\link[=s3_list_bucket_intelligent_tiering_configurations]{list_bucket_intelligent_tiering_configurations}}

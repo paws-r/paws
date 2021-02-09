@@ -13,6 +13,10 @@ Users' email addresses are case-sensitive.}
 
 \item{AuthenticationType}{[required] The authentication type for the user. You must specify USERPOOL.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disables the specified user in the user pool. Users can't sign in to
 AppStream 2.0 until they are re-enabled. This action does not delete the

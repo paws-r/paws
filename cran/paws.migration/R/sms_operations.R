@@ -22,6 +22,76 @@ NULL
 #' @param serverGroups The server groups to include in the application.
 #' @param tags The tags to be associated with the application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   appSummary = list(
+#'     appId = "string",
+#'     importedAppId = "string",
+#'     name = "string",
+#'     description = "string",
+#'     status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"DELETED"|"DELETE_FAILED",
+#'     statusMessage = "string",
+#'     replicationConfigurationStatus = "NOT_CONFIGURED"|"CONFIGURED",
+#'     replicationStatus = "READY_FOR_CONFIGURATION"|"CONFIGURATION_IN_PROGRESS"|"CONFIGURATION_INVALID"|"READY_FOR_REPLICATION"|"VALIDATION_IN_PROGRESS"|"REPLICATION_PENDING"|"REPLICATION_IN_PROGRESS"|"REPLICATED"|"PARTIALLY_REPLICATED"|"DELTA_REPLICATION_IN_PROGRESS"|"DELTA_REPLICATED"|"DELTA_REPLICATION_FAILED"|"REPLICATION_FAILED"|"REPLICATION_STOPPING"|"REPLICATION_STOP_FAILED"|"REPLICATION_STOPPED",
+#'     replicationStatusMessage = "string",
+#'     latestReplicationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     launchConfigurationStatus = "NOT_CONFIGURED"|"CONFIGURED",
+#'     launchStatus = "READY_FOR_CONFIGURATION"|"CONFIGURATION_IN_PROGRESS"|"CONFIGURATION_INVALID"|"READY_FOR_LAUNCH"|"VALIDATION_IN_PROGRESS"|"LAUNCH_PENDING"|"LAUNCH_IN_PROGRESS"|"LAUNCHED"|"PARTIALLY_LAUNCHED"|"DELTA_LAUNCH_IN_PROGRESS"|"DELTA_LAUNCH_FAILED"|"LAUNCH_FAILED"|"TERMINATE_IN_PROGRESS"|"TERMINATE_FAILED"|"TERMINATED",
+#'     launchStatusMessage = "string",
+#'     launchDetails = list(
+#'       latestLaunchTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stackName = "string",
+#'       stackId = "string"
+#'     ),
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModified = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     roleName = "string",
+#'     totalServerGroups = 123,
+#'     totalServers = 123
+#'   ),
+#'   serverGroups = list(
+#'     list(
+#'       serverGroupId = "string",
+#'       name = "string",
+#'       serverList = list(
+#'         list(
+#'           serverId = "string",
+#'           serverType = "VIRTUAL_MACHINE",
+#'           vmServer = list(
+#'             vmServerAddress = list(
+#'               vmManagerId = "string",
+#'               vmId = "string"
+#'             ),
+#'             vmName = "string",
+#'             vmManagerName = "string",
+#'             vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'             vmPath = "string"
+#'           ),
+#'           replicationJobId = "string",
+#'           replicationJobTerminated = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_app(
@@ -119,6 +189,14 @@ sms_create_app <- function(name = NULL, description = NULL, roleName = NULL, cli
 #' If encrypted is *true* but a KMS key ID is not specified, the customer's
 #' default KMS key for Amazon EBS is used.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   replicationJobId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_replication_job(
@@ -173,6 +251,12 @@ sms_create_replication_job <- function(serverId, seedReplicationTime, frequency 
 #' @param forceTerminateApp Indicates whether to terminate the stack corresponding to the
 #' application while deleting the application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_app(
@@ -212,6 +296,12 @@ sms_delete_app <- function(appId = NULL, forceStopAppReplication = NULL, forceTe
 #'
 #' @param appId The ID of the application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_app_launch_configuration(
@@ -249,6 +339,12 @@ sms_delete_app_launch_configuration <- function(appId = NULL) {
 #'
 #' @param appId The ID of the application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_app_replication_configuration(
@@ -285,6 +381,12 @@ sms_delete_app_replication_configuration <- function(appId = NULL) {
 #' sms_delete_app_validation_configuration(appId)
 #'
 #' @param appId &#91;required&#93; The ID of the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -327,6 +429,12 @@ sms_delete_app_validation_configuration <- function(appId) {
 #'
 #' @param replicationJobId &#91;required&#93; The ID of the replication job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_replication_job(
@@ -361,6 +469,12 @@ sms_delete_replication_job <- function(replicationJobId) {
 #'
 #' @usage
 #' sms_delete_server_catalog()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -399,6 +513,12 @@ sms_delete_server_catalog <- function() {
 #' sms_disassociate_connector(connectorId)
 #'
 #' @param connectorId &#91;required&#93; The ID of the connector.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -439,6 +559,17 @@ sms_disassociate_connector <- function(connectorId) {
 #'
 #' @param appId The ID of the application associated with the change set.
 #' @param changesetFormat The format for the change set.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   s3Location = list(
+#'     bucket = "string",
+#'     key = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -484,6 +615,17 @@ sms_generate_change_set <- function(appId = NULL, changesetFormat = NULL) {
 #' template.
 #' @param templateFormat The format for generating the AWS CloudFormation template.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   s3Location = list(
+#'     bucket = "string",
+#'     key = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$generate_template(
@@ -521,6 +663,76 @@ sms_generate_template <- function(appId = NULL, templateFormat = NULL) {
 #' sms_get_app(appId)
 #'
 #' @param appId The ID of the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   appSummary = list(
+#'     appId = "string",
+#'     importedAppId = "string",
+#'     name = "string",
+#'     description = "string",
+#'     status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"DELETED"|"DELETE_FAILED",
+#'     statusMessage = "string",
+#'     replicationConfigurationStatus = "NOT_CONFIGURED"|"CONFIGURED",
+#'     replicationStatus = "READY_FOR_CONFIGURATION"|"CONFIGURATION_IN_PROGRESS"|"CONFIGURATION_INVALID"|"READY_FOR_REPLICATION"|"VALIDATION_IN_PROGRESS"|"REPLICATION_PENDING"|"REPLICATION_IN_PROGRESS"|"REPLICATED"|"PARTIALLY_REPLICATED"|"DELTA_REPLICATION_IN_PROGRESS"|"DELTA_REPLICATED"|"DELTA_REPLICATION_FAILED"|"REPLICATION_FAILED"|"REPLICATION_STOPPING"|"REPLICATION_STOP_FAILED"|"REPLICATION_STOPPED",
+#'     replicationStatusMessage = "string",
+#'     latestReplicationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     launchConfigurationStatus = "NOT_CONFIGURED"|"CONFIGURED",
+#'     launchStatus = "READY_FOR_CONFIGURATION"|"CONFIGURATION_IN_PROGRESS"|"CONFIGURATION_INVALID"|"READY_FOR_LAUNCH"|"VALIDATION_IN_PROGRESS"|"LAUNCH_PENDING"|"LAUNCH_IN_PROGRESS"|"LAUNCHED"|"PARTIALLY_LAUNCHED"|"DELTA_LAUNCH_IN_PROGRESS"|"DELTA_LAUNCH_FAILED"|"LAUNCH_FAILED"|"TERMINATE_IN_PROGRESS"|"TERMINATE_FAILED"|"TERMINATED",
+#'     launchStatusMessage = "string",
+#'     launchDetails = list(
+#'       latestLaunchTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stackName = "string",
+#'       stackId = "string"
+#'     ),
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModified = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     roleName = "string",
+#'     totalServerGroups = 123,
+#'     totalServers = 123
+#'   ),
+#'   serverGroups = list(
+#'     list(
+#'       serverGroupId = "string",
+#'       name = "string",
+#'       serverList = list(
+#'         list(
+#'           serverId = "string",
+#'           serverType = "VIRTUAL_MACHINE",
+#'           vmServer = list(
+#'             vmServerAddress = list(
+#'               vmManagerId = "string",
+#'               vmId = "string"
+#'             ),
+#'             vmName = "string",
+#'             vmManagerName = "string",
+#'             vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'             vmPath = "string"
+#'           ),
+#'           replicationJobId = "string",
+#'           replicationJobTerminated = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -561,6 +773,61 @@ sms_get_app <- function(appId = NULL) {
 #'
 #' @param appId The ID of the application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   appId = "string",
+#'   roleName = "string",
+#'   autoLaunch = TRUE|FALSE,
+#'   serverGroupLaunchConfigurations = list(
+#'     list(
+#'       serverGroupId = "string",
+#'       launchOrder = 123,
+#'       serverLaunchConfigurations = list(
+#'         list(
+#'           server = list(
+#'             serverId = "string",
+#'             serverType = "VIRTUAL_MACHINE",
+#'             vmServer = list(
+#'               vmServerAddress = list(
+#'                 vmManagerId = "string",
+#'                 vmId = "string"
+#'               ),
+#'               vmName = "string",
+#'               vmManagerName = "string",
+#'               vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'               vmPath = "string"
+#'             ),
+#'             replicationJobId = "string",
+#'             replicationJobTerminated = TRUE|FALSE
+#'           ),
+#'           logicalId = "string",
+#'           vpc = "string",
+#'           subnet = "string",
+#'           securityGroup = "string",
+#'           ec2KeyName = "string",
+#'           userData = list(
+#'             s3Location = list(
+#'               bucket = "string",
+#'               key = "string"
+#'             )
+#'           ),
+#'           instanceType = "string",
+#'           associatePublicIpAddress = TRUE|FALSE,
+#'           iamInstanceProfileName = "string",
+#'           configureScript = list(
+#'             bucket = "string",
+#'             key = "string"
+#'           ),
+#'           configureScriptType = "SHELL_SCRIPT"|"POWERSHELL_SCRIPT"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_app_launch_configuration(
@@ -599,6 +866,49 @@ sms_get_app_launch_configuration <- function(appId = NULL) {
 #' sms_get_app_replication_configuration(appId)
 #'
 #' @param appId The ID of the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   serverGroupReplicationConfigurations = list(
+#'     list(
+#'       serverGroupId = "string",
+#'       serverReplicationConfigurations = list(
+#'         list(
+#'           server = list(
+#'             serverId = "string",
+#'             serverType = "VIRTUAL_MACHINE",
+#'             vmServer = list(
+#'               vmServerAddress = list(
+#'                 vmManagerId = "string",
+#'                 vmId = "string"
+#'               ),
+#'               vmName = "string",
+#'               vmManagerName = "string",
+#'               vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'               vmPath = "string"
+#'             ),
+#'             replicationJobId = "string",
+#'             replicationJobTerminated = TRUE|FALSE
+#'           ),
+#'           serverReplicationParameters = list(
+#'             seedTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             frequency = 123,
+#'             runOnce = TRUE|FALSE,
+#'             licenseType = "AWS"|"BYOL",
+#'             numberOfRecentAmisToKeep = 123,
+#'             encrypted = TRUE|FALSE,
+#'             kmsKeyId = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -639,6 +949,70 @@ sms_get_app_replication_configuration <- function(appId = NULL) {
 #'
 #' @param appId &#91;required&#93; The ID of the application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   appValidationConfigurations = list(
+#'     list(
+#'       validationId = "string",
+#'       name = "string",
+#'       appValidationStrategy = "SSM",
+#'       ssmValidationParameters = list(
+#'         source = list(
+#'           s3Location = list(
+#'             bucket = "string",
+#'             key = "string"
+#'           )
+#'         ),
+#'         instanceId = "string",
+#'         scriptType = "SHELL_SCRIPT"|"POWERSHELL_SCRIPT",
+#'         command = "string",
+#'         executionTimeoutSeconds = 123,
+#'         outputS3BucketName = "string"
+#'       )
+#'     )
+#'   ),
+#'   serverGroupValidationConfigurations = list(
+#'     list(
+#'       serverGroupId = "string",
+#'       serverValidationConfigurations = list(
+#'         list(
+#'           server = list(
+#'             serverId = "string",
+#'             serverType = "VIRTUAL_MACHINE",
+#'             vmServer = list(
+#'               vmServerAddress = list(
+#'                 vmManagerId = "string",
+#'                 vmId = "string"
+#'               ),
+#'               vmName = "string",
+#'               vmManagerName = "string",
+#'               vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'               vmPath = "string"
+#'             ),
+#'             replicationJobId = "string",
+#'             replicationJobTerminated = TRUE|FALSE
+#'           ),
+#'           validationId = "string",
+#'           name = "string",
+#'           serverValidationStrategy = "USERDATA",
+#'           userDataValidationParameters = list(
+#'             source = list(
+#'               s3Location = list(
+#'                 bucket = "string",
+#'                 key = "string"
+#'               )
+#'             ),
+#'             scriptType = "SHELL_SCRIPT"|"POWERSHELL_SCRIPT"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_app_validation_configuration(
@@ -675,6 +1049,50 @@ sms_get_app_validation_configuration <- function(appId) {
 #' sms_get_app_validation_output(appId)
 #'
 #' @param appId &#91;required&#93; The ID of the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   validationOutputList = list(
+#'     list(
+#'       validationId = "string",
+#'       name = "string",
+#'       status = "READY_FOR_VALIDATION"|"PENDING"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'       statusMessage = "string",
+#'       latestValidationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       appValidationOutput = list(
+#'         ssmOutput = list(
+#'           s3Location = list(
+#'             bucket = "string",
+#'             key = "string"
+#'           )
+#'         )
+#'       ),
+#'       serverValidationOutput = list(
+#'         server = list(
+#'           serverId = "string",
+#'           serverType = "VIRTUAL_MACHINE",
+#'           vmServer = list(
+#'             vmServerAddress = list(
+#'               vmManagerId = "string",
+#'               vmId = "string"
+#'             ),
+#'             vmName = "string",
+#'             vmManagerName = "string",
+#'             vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'             vmPath = "string"
+#'           ),
+#'           replicationJobId = "string",
+#'           replicationJobTerminated = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -715,6 +1133,32 @@ sms_get_app_validation_output <- function(appId) {
 #' @param maxResults The maximum number of results to return in a single call. The default
 #' value is 50. To retrieve the remaining results, make another call with
 #' the returned `NextToken` value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectorList = list(
+#'     list(
+#'       connectorId = "string",
+#'       version = "string",
+#'       status = "HEALTHY"|"UNHEALTHY",
+#'       capabilityList = list(
+#'         "VSPHERE"|"SCVMM"|"HYPERV-MANAGER"|"SNAPSHOT_BATCHING"|"SMS_OPTIMIZED"
+#'       ),
+#'       vmManagerName = "string",
+#'       vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'       vmManagerId = "string",
+#'       ipAddress = "string",
+#'       macAddress = "string",
+#'       associatedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -758,6 +1202,70 @@ sms_get_connectors <- function(nextToken = NULL, maxResults = NULL) {
 #' value is 50. To retrieve the remaining results, make another call with
 #' the returned `NextToken` value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   replicationJobList = list(
+#'     list(
+#'       replicationJobId = "string",
+#'       serverId = "string",
+#'       serverType = "VIRTUAL_MACHINE",
+#'       vmServer = list(
+#'         vmServerAddress = list(
+#'           vmManagerId = "string",
+#'           vmId = "string"
+#'         ),
+#'         vmName = "string",
+#'         vmManagerName = "string",
+#'         vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'         vmPath = "string"
+#'       ),
+#'       seedReplicationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       frequency = 123,
+#'       runOnce = TRUE|FALSE,
+#'       nextReplicationRunStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       licenseType = "AWS"|"BYOL",
+#'       roleName = "string",
+#'       latestAmiId = "string",
+#'       state = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED"|"COMPLETED"|"PAUSED_ON_FAILURE"|"FAILING",
+#'       statusMessage = "string",
+#'       description = "string",
+#'       numberOfRecentAmisToKeep = 123,
+#'       encrypted = TRUE|FALSE,
+#'       kmsKeyId = "string",
+#'       replicationRunList = list(
+#'         list(
+#'           replicationRunId = "string",
+#'           state = "PENDING"|"MISSED"|"ACTIVE"|"FAILED"|"COMPLETED"|"DELETING"|"DELETED",
+#'           type = "ON_DEMAND"|"AUTOMATIC",
+#'           stageDetails = list(
+#'             stage = "string",
+#'             stageProgress = "string"
+#'           ),
+#'           statusMessage = "string",
+#'           amiId = "string",
+#'           scheduledStartTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           completedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           description = "string",
+#'           encrypted = TRUE|FALSE,
+#'           kmsKeyId = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_replication_jobs(
@@ -800,6 +1308,90 @@ sms_get_replication_jobs <- function(replicationJobId = NULL, nextToken = NULL, 
 #' @param maxResults The maximum number of results to return in a single call. The default
 #' value is 50. To retrieve the remaining results, make another call with
 #' the returned `NextToken` value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   replicationJob = list(
+#'     replicationJobId = "string",
+#'     serverId = "string",
+#'     serverType = "VIRTUAL_MACHINE",
+#'     vmServer = list(
+#'       vmServerAddress = list(
+#'         vmManagerId = "string",
+#'         vmId = "string"
+#'       ),
+#'       vmName = "string",
+#'       vmManagerName = "string",
+#'       vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'       vmPath = "string"
+#'     ),
+#'     seedReplicationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     frequency = 123,
+#'     runOnce = TRUE|FALSE,
+#'     nextReplicationRunStartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     licenseType = "AWS"|"BYOL",
+#'     roleName = "string",
+#'     latestAmiId = "string",
+#'     state = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED"|"COMPLETED"|"PAUSED_ON_FAILURE"|"FAILING",
+#'     statusMessage = "string",
+#'     description = "string",
+#'     numberOfRecentAmisToKeep = 123,
+#'     encrypted = TRUE|FALSE,
+#'     kmsKeyId = "string",
+#'     replicationRunList = list(
+#'       list(
+#'         replicationRunId = "string",
+#'         state = "PENDING"|"MISSED"|"ACTIVE"|"FAILED"|"COMPLETED"|"DELETING"|"DELETED",
+#'         type = "ON_DEMAND"|"AUTOMATIC",
+#'         stageDetails = list(
+#'           stage = "string",
+#'           stageProgress = "string"
+#'         ),
+#'         statusMessage = "string",
+#'         amiId = "string",
+#'         scheduledStartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         completedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         description = "string",
+#'         encrypted = TRUE|FALSE,
+#'         kmsKeyId = "string"
+#'       )
+#'     )
+#'   ),
+#'   replicationRunList = list(
+#'     list(
+#'       replicationRunId = "string",
+#'       state = "PENDING"|"MISSED"|"ACTIVE"|"FAILED"|"COMPLETED"|"DELETING"|"DELETED",
+#'       type = "ON_DEMAND"|"AUTOMATIC",
+#'       stageDetails = list(
+#'         stage = "string",
+#'         stageProgress = "string"
+#'       ),
+#'       statusMessage = "string",
+#'       amiId = "string",
+#'       scheduledStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       completedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       description = "string",
+#'       encrypted = TRUE|FALSE,
+#'       kmsKeyId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -846,6 +1438,36 @@ sms_get_replication_runs <- function(replicationJobId, nextToken = NULL, maxResu
 #' value is 50. To retrieve the remaining results, make another call with
 #' the returned `NextToken` value.
 #' @param vmServerAddressList The server addresses.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   lastModifiedOn = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   serverCatalogStatus = "NOT_IMPORTED"|"IMPORTING"|"AVAILABLE"|"DELETED"|"EXPIRED",
+#'   serverList = list(
+#'     list(
+#'       serverId = "string",
+#'       serverType = "VIRTUAL_MACHINE",
+#'       vmServer = list(
+#'         vmServerAddress = list(
+#'           vmManagerId = "string",
+#'           vmId = "string"
+#'         ),
+#'         vmName = "string",
+#'         vmManagerName = "string",
+#'         vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'         vmPath = "string"
+#'       ),
+#'       replicationJobId = "string",
+#'       replicationJobTerminated = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -895,6 +1517,12 @@ sms_get_servers <- function(nextToken = NULL, maxResults = NULL, vmServerAddress
 #' policy](https://docs.aws.amazon.com/migrationhub/latest/ug/new-customer-setup.html#sms-managed)
 #' described in the *AWS Migration Hub User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_app_catalog(
@@ -934,6 +1562,12 @@ sms_import_app_catalog <- function(roleName = NULL) {
 #' @usage
 #' sms_import_server_catalog()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_server_catalog()
@@ -968,6 +1602,12 @@ sms_import_server_catalog <- function() {
 #' sms_launch_app(appId)
 #'
 #' @param appId The ID of the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1009,6 +1649,49 @@ sms_launch_app <- function(appId = NULL) {
 #' @param maxResults The maximum number of results to return in a single call. The default
 #' value is 100. To retrieve the remaining results, make another call with
 #' the returned `NextToken` value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   apps = list(
+#'     list(
+#'       appId = "string",
+#'       importedAppId = "string",
+#'       name = "string",
+#'       description = "string",
+#'       status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"DELETED"|"DELETE_FAILED",
+#'       statusMessage = "string",
+#'       replicationConfigurationStatus = "NOT_CONFIGURED"|"CONFIGURED",
+#'       replicationStatus = "READY_FOR_CONFIGURATION"|"CONFIGURATION_IN_PROGRESS"|"CONFIGURATION_INVALID"|"READY_FOR_REPLICATION"|"VALIDATION_IN_PROGRESS"|"REPLICATION_PENDING"|"REPLICATION_IN_PROGRESS"|"REPLICATED"|"PARTIALLY_REPLICATED"|"DELTA_REPLICATION_IN_PROGRESS"|"DELTA_REPLICATED"|"DELTA_REPLICATION_FAILED"|"REPLICATION_FAILED"|"REPLICATION_STOPPING"|"REPLICATION_STOP_FAILED"|"REPLICATION_STOPPED",
+#'       replicationStatusMessage = "string",
+#'       latestReplicationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       launchConfigurationStatus = "NOT_CONFIGURED"|"CONFIGURED",
+#'       launchStatus = "READY_FOR_CONFIGURATION"|"CONFIGURATION_IN_PROGRESS"|"CONFIGURATION_INVALID"|"READY_FOR_LAUNCH"|"VALIDATION_IN_PROGRESS"|"LAUNCH_PENDING"|"LAUNCH_IN_PROGRESS"|"LAUNCHED"|"PARTIALLY_LAUNCHED"|"DELTA_LAUNCH_IN_PROGRESS"|"DELTA_LAUNCH_FAILED"|"LAUNCH_FAILED"|"TERMINATE_IN_PROGRESS"|"TERMINATE_FAILED"|"TERMINATED",
+#'       launchStatusMessage = "string",
+#'       launchDetails = list(
+#'         latestLaunchTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         stackName = "string",
+#'         stackId = "string"
+#'       ),
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       roleName = "string",
+#'       totalServerGroups = 123,
+#'       totalServers = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1053,6 +1736,12 @@ sms_list_apps <- function(appIds = NULL, nextToken = NULL, maxResults = NULL) {
 #'
 #' @param appId &#91;required&#93; The ID of the application.
 #' @param notificationContext The notification information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1104,6 +1793,12 @@ sms_notify_app_validation_output <- function(appId, notificationContext = NULL) 
 #' after replication is complete.
 #' @param serverGroupLaunchConfigurations Information about the launch configurations for server groups in the
 #' application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1194,6 +1889,12 @@ sms_put_app_launch_configuration <- function(appId = NULL, roleName = NULL, auto
 #' @param serverGroupReplicationConfigurations Information about the replication configurations for server groups in
 #' the application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_app_replication_configuration(
@@ -1271,6 +1972,12 @@ sms_put_app_replication_configuration <- function(appId = NULL, serverGroupRepli
 #' @param appId &#91;required&#93; The ID of the application.
 #' @param appValidationConfigurations The configuration for application validation.
 #' @param serverGroupValidationConfigurations The configuration for instance validation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1368,6 +2075,12 @@ sms_put_app_validation_configuration <- function(appId, appValidationConfigurati
 #'
 #' @param appId The ID of the application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_app_replication(
@@ -1405,6 +2118,12 @@ sms_start_app_replication <- function(appId = NULL) {
 #'
 #' @param appId &#91;required&#93; The ID of the application.
 #' @param description The description of the replication run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1450,6 +2169,14 @@ sms_start_on_demand_app_replication <- function(appId, description = NULL) {
 #' @param replicationJobId &#91;required&#93; The ID of the replication job.
 #' @param description The description of the replication run.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   replicationRunId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_on_demand_replication_run(
@@ -1490,6 +2217,12 @@ sms_start_on_demand_replication_run <- function(replicationJobId, description = 
 #'
 #' @param appId The ID of the application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_app_replication(
@@ -1526,6 +2259,12 @@ sms_stop_app_replication <- function(appId = NULL) {
 #' sms_terminate_app(appId)
 #'
 #' @param appId The ID of the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1568,6 +2307,76 @@ sms_terminate_app <- function(appId = NULL) {
 #' @param roleName The name of the service role in the customer's account used by AWS SMS.
 #' @param serverGroups The server groups in the application to update.
 #' @param tags The tags to associate with the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   appSummary = list(
+#'     appId = "string",
+#'     importedAppId = "string",
+#'     name = "string",
+#'     description = "string",
+#'     status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"DELETED"|"DELETE_FAILED",
+#'     statusMessage = "string",
+#'     replicationConfigurationStatus = "NOT_CONFIGURED"|"CONFIGURED",
+#'     replicationStatus = "READY_FOR_CONFIGURATION"|"CONFIGURATION_IN_PROGRESS"|"CONFIGURATION_INVALID"|"READY_FOR_REPLICATION"|"VALIDATION_IN_PROGRESS"|"REPLICATION_PENDING"|"REPLICATION_IN_PROGRESS"|"REPLICATED"|"PARTIALLY_REPLICATED"|"DELTA_REPLICATION_IN_PROGRESS"|"DELTA_REPLICATED"|"DELTA_REPLICATION_FAILED"|"REPLICATION_FAILED"|"REPLICATION_STOPPING"|"REPLICATION_STOP_FAILED"|"REPLICATION_STOPPED",
+#'     replicationStatusMessage = "string",
+#'     latestReplicationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     launchConfigurationStatus = "NOT_CONFIGURED"|"CONFIGURED",
+#'     launchStatus = "READY_FOR_CONFIGURATION"|"CONFIGURATION_IN_PROGRESS"|"CONFIGURATION_INVALID"|"READY_FOR_LAUNCH"|"VALIDATION_IN_PROGRESS"|"LAUNCH_PENDING"|"LAUNCH_IN_PROGRESS"|"LAUNCHED"|"PARTIALLY_LAUNCHED"|"DELTA_LAUNCH_IN_PROGRESS"|"DELTA_LAUNCH_FAILED"|"LAUNCH_FAILED"|"TERMINATE_IN_PROGRESS"|"TERMINATE_FAILED"|"TERMINATED",
+#'     launchStatusMessage = "string",
+#'     launchDetails = list(
+#'       latestLaunchTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stackName = "string",
+#'       stackId = "string"
+#'     ),
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModified = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     roleName = "string",
+#'     totalServerGroups = 123,
+#'     totalServers = 123
+#'   ),
+#'   serverGroups = list(
+#'     list(
+#'       serverGroupId = "string",
+#'       name = "string",
+#'       serverList = list(
+#'         list(
+#'           serverId = "string",
+#'           serverType = "VIRTUAL_MACHINE",
+#'           vmServer = list(
+#'             vmServerAddress = list(
+#'               vmManagerId = "string",
+#'               vmId = "string"
+#'             ),
+#'             vmName = "string",
+#'             vmManagerName = "string",
+#'             vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'             vmPath = "string"
+#'           ),
+#'           replicationJobId = "string",
+#'           replicationJobTerminated = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1663,6 +2472,12 @@ sms_update_app <- function(appId = NULL, name = NULL, description = NULL, roleNa
 #' 
 #' If encrypted is enabled but a KMS key ID is not specified, the
 #' customer's default KMS key for Amazon EBS is used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

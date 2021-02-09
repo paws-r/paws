@@ -31,6 +31,10 @@ To play video on the console, you must specify the correct video type.
 For example, if the video in the stream is H.264, specify \code{video/h264}
 as the \code{MediaType}.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates stream metadata, such as the device name and media type.
 

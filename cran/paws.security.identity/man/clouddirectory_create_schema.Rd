@@ -10,6 +10,12 @@ clouddirectory_create_schema(Name)
 \item{Name}{[required] The name that is associated with the schema. This is unique to each
 account and in each region.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaArn = "string"
+)
+}
+}
 \description{
 Creates a new schema in a development state. A schema can exist in three
 phases:

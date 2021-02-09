@@ -9,6 +9,10 @@ glue_delete_classifier(Name)
 \arguments{
 \item{Name}{[required] Name of the classifier to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes a classifier from the Data Catalog.
 }

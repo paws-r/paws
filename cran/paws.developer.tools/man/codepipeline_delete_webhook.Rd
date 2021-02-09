@@ -9,6 +9,10 @@ codepipeline_delete_webhook(name)
 \arguments{
 \item{name}{[required] The name of the webhook you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a previously created webhook by name. Deleting the webhook stops
 AWS CodePipeline from starting a pipeline every time an external event

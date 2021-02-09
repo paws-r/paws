@@ -13,6 +13,10 @@ applications lists, and protocols lists.}
 
 \item{TagList}{[required] The tags to add to the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds one or more tags to an AWS resource.
 }

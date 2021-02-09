@@ -14,6 +14,10 @@ information.}
 \item{RadiusSettings}{[required] A RadiusSettings object that contains information about the RADIUS
 server.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the Remote Authentication Dial In User Service (RADIUS) server
 information for an AD Connector or Microsoft AD directory.

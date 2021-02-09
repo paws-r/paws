@@ -27,6 +27,14 @@ NULL
 #' infrastructure without exposing it to the public internet.
 #' @param connectorProfileConfig &#91;required&#93; Defines the connector-specific configuration and credentials.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectorProfileArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_connector_profile(
@@ -210,7 +218,7 @@ appflow_create_connector_profile <- function(connectorProfileName, kmsArn = NULL
 #'   sourceFlowConfig, destinationFlowConfigList, tasks, tags)
 #'
 #' @param flowName &#91;required&#93; The specified name of the flow. Spaces are not allowed. Use underscores
-#' (\\_) or hyphens (-) only.
+#' (_) or hyphens (-) only.
 #' @param description A description of the flow you want to create.
 #' @param kmsArn The ARN (Amazon Resource Name) of the Key Management Service (KMS) key
 #' you provide for encryption. This is required if you do not want to use
@@ -224,6 +232,15 @@ appflow_create_connector_profile <- function(connectorProfileName, kmsArn = NULL
 #' @param tasks &#91;required&#93; A list of tasks that Amazon AppFlow performs while transferring the data
 #' in the flow run.
 #' @param tags The tags used to organize, track, or control access for your flow.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   flowArn = "string",
+#'   flowStatus = "Active"|"Deprecated"|"Deleted"|"Draft"|"Errored"|"Suspended"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -444,6 +461,12 @@ appflow_create_flow <- function(flowName, description = NULL, kmsArn = NULL, tri
 #' @param forceDelete Indicates whether Amazon AppFlow should delete the profile, even if it
 #' is currently in use in one or more flows.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_connector_profile(
@@ -483,9 +506,15 @@ appflow_delete_connector_profile <- function(connectorProfileName, forceDelete =
 #' appflow_delete_flow(flowName, forceDelete)
 #'
 #' @param flowName &#91;required&#93; The specified name of the flow. Spaces are not allowed. Use underscores
-#' (\\_) or hyphens (-) only.
+#' (_) or hyphens (-) only.
 #' @param forceDelete Indicates whether Amazon AppFlow should delete the flow, even if it is
 #' currently in use.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -531,6 +560,44 @@ appflow_delete_flow <- function(flowName, forceDelete = NULL) {
 #' on.
 #' @param connectorProfileName The name of the connector profile. The name is unique for each
 #' `ConnectorProfile` in the AWS account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectorEntityFields = list(
+#'     list(
+#'       identifier = "string",
+#'       label = "string",
+#'       supportedFieldTypeDetails = list(
+#'         v1 = list(
+#'           fieldType = "string",
+#'           filterOperators = list(
+#'             "PROJECTION"|"LESS_THAN"|"GREATER_THAN"|"CONTAINS"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"NOT_EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP"
+#'           ),
+#'           supportedValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       description = "string",
+#'       sourceProperties = list(
+#'         isRetrievable = TRUE|FALSE,
+#'         isQueryable = TRUE|FALSE
+#'       ),
+#'       destinationProperties = list(
+#'         isCreatable = TRUE|FALSE,
+#'         isNullable = TRUE|FALSE,
+#'         isUpsertable = TRUE|FALSE,
+#'         isUpdatable = TRUE|FALSE,
+#'         supportedWriteOperations = list(
+#'           "INSERT"|"UPSERT"|"UPDATE"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -585,6 +652,78 @@ appflow_describe_connector_entity <- function(connectorEntityName, connectorType
 #' operations).
 #' @param nextToken The pagination token for the next page of data.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectorProfileDetails = list(
+#'     list(
+#'       connectorProfileArn = "string",
+#'       connectorProfileName = "string",
+#'       connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'       connectionMode = "Public"|"Private",
+#'       credentialsArn = "string",
+#'       connectorProfileProperties = list(
+#'         Amplitude = list(),
+#'         Datadog = list(
+#'           instanceUrl = "string"
+#'         ),
+#'         Dynatrace = list(
+#'           instanceUrl = "string"
+#'         ),
+#'         GoogleAnalytics = list(),
+#'         InforNexus = list(
+#'           instanceUrl = "string"
+#'         ),
+#'         Marketo = list(
+#'           instanceUrl = "string"
+#'         ),
+#'         Redshift = list(
+#'           databaseUrl = "string",
+#'           bucketName = "string",
+#'           bucketPrefix = "string",
+#'           roleArn = "string"
+#'         ),
+#'         Salesforce = list(
+#'           instanceUrl = "string",
+#'           isSandboxEnvironment = TRUE|FALSE
+#'         ),
+#'         ServiceNow = list(
+#'           instanceUrl = "string"
+#'         ),
+#'         Singular = list(),
+#'         Slack = list(
+#'           instanceUrl = "string"
+#'         ),
+#'         Snowflake = list(
+#'           warehouse = "string",
+#'           stage = "string",
+#'           bucketName = "string",
+#'           bucketPrefix = "string",
+#'           privateLinkServiceName = "string",
+#'           accountName = "string",
+#'           region = "string"
+#'         ),
+#'         Trendmicro = list(),
+#'         Veeva = list(
+#'           instanceUrl = "string"
+#'         ),
+#'         Zendesk = list(
+#'           instanceUrl = "string"
+#'         )
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_connector_profiles(
@@ -635,6 +774,71 @@ appflow_describe_connector_profiles <- function(connectorProfileNames = NULL, co
 #' @param connectorTypes The type of connector, such as Salesforce, Amplitude, and so on.
 #' @param nextToken The pagination token for the next page of data.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectorConfigurations = list(
+#'     list(
+#'       canUseAsSource = TRUE|FALSE,
+#'       canUseAsDestination = TRUE|FALSE,
+#'       supportedDestinationConnectors = list(
+#'         "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver"
+#'       ),
+#'       supportedSchedulingFrequencies = list(
+#'         "BYMINUTE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"ONCE"
+#'       ),
+#'       isPrivateLinkEnabled = TRUE|FALSE,
+#'       isPrivateLinkEndpointUrlRequired = TRUE|FALSE,
+#'       supportedTriggerTypes = list(
+#'         "Scheduled"|"Event"|"OnDemand"
+#'       ),
+#'       connectorMetadata = list(
+#'         Amplitude = list(),
+#'         Datadog = list(),
+#'         Dynatrace = list(),
+#'         GoogleAnalytics = list(
+#'           oAuthScopes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         InforNexus = list(),
+#'         Marketo = list(),
+#'         Redshift = list(),
+#'         S3 = list(),
+#'         Salesforce = list(
+#'           oAuthScopes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         ServiceNow = list(),
+#'         Singular = list(),
+#'         Slack = list(
+#'           oAuthScopes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Snowflake = list(
+#'           supportedRegions = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Trendmicro = list(),
+#'         Veeva = list(),
+#'         Zendesk = list(
+#'           oAuthScopes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         EventBridge = list(),
+#'         Upsolver = list()
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_connectors(
@@ -674,7 +878,212 @@ appflow_describe_connectors <- function(connectorTypes = NULL, nextToken = NULL)
 #' appflow_describe_flow(flowName)
 #'
 #' @param flowName &#91;required&#93; The specified name of the flow. Spaces are not allowed. Use underscores
-#' (\\_) or hyphens (-) only.
+#' (_) or hyphens (-) only.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   flowArn = "string",
+#'   description = "string",
+#'   flowName = "string",
+#'   kmsArn = "string",
+#'   flowStatus = "Active"|"Deprecated"|"Deleted"|"Draft"|"Errored"|"Suspended",
+#'   flowStatusMessage = "string",
+#'   sourceFlowConfig = list(
+#'     connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'     connectorProfileName = "string",
+#'     sourceConnectorProperties = list(
+#'       Amplitude = list(
+#'         object = "string"
+#'       ),
+#'       Datadog = list(
+#'         object = "string"
+#'       ),
+#'       Dynatrace = list(
+#'         object = "string"
+#'       ),
+#'       GoogleAnalytics = list(
+#'         object = "string"
+#'       ),
+#'       InforNexus = list(
+#'         object = "string"
+#'       ),
+#'       Marketo = list(
+#'         object = "string"
+#'       ),
+#'       S3 = list(
+#'         bucketName = "string",
+#'         bucketPrefix = "string"
+#'       ),
+#'       Salesforce = list(
+#'         object = "string",
+#'         enableDynamicFieldUpdate = TRUE|FALSE,
+#'         includeDeletedRecords = TRUE|FALSE
+#'       ),
+#'       ServiceNow = list(
+#'         object = "string"
+#'       ),
+#'       Singular = list(
+#'         object = "string"
+#'       ),
+#'       Slack = list(
+#'         object = "string"
+#'       ),
+#'       Trendmicro = list(
+#'         object = "string"
+#'       ),
+#'       Veeva = list(
+#'         object = "string"
+#'       ),
+#'       Zendesk = list(
+#'         object = "string"
+#'       )
+#'     ),
+#'     incrementalPullConfig = list(
+#'       datetimeTypeFieldName = "string"
+#'     )
+#'   ),
+#'   destinationFlowConfigList = list(
+#'     list(
+#'       connectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'       connectorProfileName = "string",
+#'       destinationConnectorProperties = list(
+#'         Redshift = list(
+#'           object = "string",
+#'           intermediateBucketName = "string",
+#'           bucketPrefix = "string",
+#'           errorHandlingConfig = list(
+#'             failOnFirstDestinationError = TRUE|FALSE,
+#'             bucketPrefix = "string",
+#'             bucketName = "string"
+#'           )
+#'         ),
+#'         S3 = list(
+#'           bucketName = "string",
+#'           bucketPrefix = "string",
+#'           s3OutputFormatConfig = list(
+#'             fileType = "CSV"|"JSON"|"PARQUET",
+#'             prefixConfig = list(
+#'               prefixType = "FILENAME"|"PATH"|"PATH_AND_FILENAME",
+#'               prefixFormat = "YEAR"|"MONTH"|"DAY"|"HOUR"|"MINUTE"
+#'             ),
+#'             aggregationConfig = list(
+#'               aggregationType = "None"|"SingleFile"
+#'             )
+#'           )
+#'         ),
+#'         Salesforce = list(
+#'           object = "string",
+#'           idFieldNames = list(
+#'             "string"
+#'           ),
+#'           errorHandlingConfig = list(
+#'             failOnFirstDestinationError = TRUE|FALSE,
+#'             bucketPrefix = "string",
+#'             bucketName = "string"
+#'           ),
+#'           writeOperationType = "INSERT"|"UPSERT"|"UPDATE"
+#'         ),
+#'         Snowflake = list(
+#'           object = "string",
+#'           intermediateBucketName = "string",
+#'           bucketPrefix = "string",
+#'           errorHandlingConfig = list(
+#'             failOnFirstDestinationError = TRUE|FALSE,
+#'             bucketPrefix = "string",
+#'             bucketName = "string"
+#'           )
+#'         ),
+#'         EventBridge = list(
+#'           object = "string",
+#'           errorHandlingConfig = list(
+#'             failOnFirstDestinationError = TRUE|FALSE,
+#'             bucketPrefix = "string",
+#'             bucketName = "string"
+#'           )
+#'         ),
+#'         Upsolver = list(
+#'           bucketName = "string",
+#'           bucketPrefix = "string",
+#'           s3OutputFormatConfig = list(
+#'             fileType = "CSV"|"JSON"|"PARQUET",
+#'             prefixConfig = list(
+#'               prefixType = "FILENAME"|"PATH"|"PATH_AND_FILENAME",
+#'               prefixFormat = "YEAR"|"MONTH"|"DAY"|"HOUR"|"MINUTE"
+#'             ),
+#'             aggregationConfig = list(
+#'               aggregationType = "None"|"SingleFile"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   lastRunExecutionDetails = list(
+#'     mostRecentExecutionMessage = "string",
+#'     mostRecentExecutionTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     mostRecentExecutionStatus = "InProgress"|"Successful"|"Error"
+#'   ),
+#'   triggerConfig = list(
+#'     triggerType = "Scheduled"|"Event"|"OnDemand",
+#'     triggerProperties = list(
+#'       Scheduled = list(
+#'         scheduleExpression = "string",
+#'         dataPullMode = "Incremental"|"Complete",
+#'         scheduleStartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         scheduleEndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         timezone = "string"
+#'       )
+#'     )
+#'   ),
+#'   tasks = list(
+#'     list(
+#'       sourceFields = list(
+#'         "string"
+#'       ),
+#'       connectorOperator = list(
+#'         Amplitude = "BETWEEN",
+#'         Datadog = "PROJECTION"|"BETWEEN"|"EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'         Dynatrace = "PROJECTION"|"BETWEEN"|"EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'         GoogleAnalytics = "PROJECTION"|"BETWEEN",
+#'         InforNexus = "PROJECTION"|"BETWEEN"|"EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'         Marketo = "PROJECTION"|"LESS_THAN"|"GREATER_THAN"|"BETWEEN"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'         S3 = "PROJECTION"|"LESS_THAN"|"GREATER_THAN"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"NOT_EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'         Salesforce = "PROJECTION"|"LESS_THAN"|"CONTAINS"|"GREATER_THAN"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"NOT_EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'         ServiceNow = "PROJECTION"|"CONTAINS"|"LESS_THAN"|"GREATER_THAN"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"NOT_EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'         Singular = "PROJECTION"|"EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'         Slack = "PROJECTION"|"LESS_THAN"|"GREATER_THAN"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'         Trendmicro = "PROJECTION"|"EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'         Veeva = "PROJECTION"|"LESS_THAN"|"GREATER_THAN"|"CONTAINS"|"BETWEEN"|"LESS_THAN_OR_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"EQUAL_TO"|"NOT_EQUAL_TO"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP",
+#'         Zendesk = "PROJECTION"|"GREATER_THAN"|"ADDITION"|"MULTIPLICATION"|"DIVISION"|"SUBTRACTION"|"MASK_ALL"|"MASK_FIRST_N"|"MASK_LAST_N"|"VALIDATE_NON_NULL"|"VALIDATE_NON_ZERO"|"VALIDATE_NON_NEGATIVE"|"VALIDATE_NUMERIC"|"NO_OP"
+#'       ),
+#'       destinationField = "string",
+#'       taskType = "Arithmetic"|"Filter"|"Map"|"Mask"|"Merge"|"Truncate"|"Validate",
+#'       taskProperties = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   lastUpdatedBy = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -712,11 +1121,40 @@ appflow_describe_flow <- function(flowName) {
 #' appflow_describe_flow_execution_records(flowName, maxResults, nextToken)
 #'
 #' @param flowName &#91;required&#93; The specified name of the flow. Spaces are not allowed. Use underscores
-#' (\\_) or hyphens (-) only.
+#' (_) or hyphens (-) only.
 #' @param maxResults Specifies the maximum number of items that should be returned in the
 #' result set. The default for `maxResults` is 20 (for all paginated API
 #' operations).
 #' @param nextToken The pagination token for the next page of data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   flowExecutions = list(
+#'     list(
+#'       executionId = "string",
+#'       executionStatus = "InProgress"|"Successful"|"Error",
+#'       executionResult = list(
+#'         errorInfo = list(
+#'           putFailuresCount = 123,
+#'           executionMessage = "string"
+#'         ),
+#'         bytesProcessed = 123,
+#'         bytesWritten = 123,
+#'         recordsProcessed = 123
+#'       ),
+#'       startedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -770,6 +1208,22 @@ appflow_describe_flow_execution_records <- function(flowName, maxResults = NULL,
 #' at different roots, this initial request returns the list of roots.
 #' Otherwise, this request returns all entities supported by the provider.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectorEntityMap = list(
+#'     list(
+#'       list(
+#'         name = "string",
+#'         label = "string",
+#'         hasNestedEntities = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_connector_entities(
@@ -811,6 +1265,43 @@ appflow_list_connector_entities <- function(connectorProfileName = NULL, connect
 #' result set.
 #' @param nextToken The pagination token for next page of data.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   flows = list(
+#'     list(
+#'       flowArn = "string",
+#'       description = "string",
+#'       flowName = "string",
+#'       flowStatus = "Active"|"Deprecated"|"Deleted"|"Draft"|"Errored"|"Suspended",
+#'       sourceConnectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'       destinationConnectorType = "Salesforce"|"Singular"|"Slack"|"Redshift"|"S3"|"Marketo"|"Googleanalytics"|"Zendesk"|"Servicenow"|"Datadog"|"Trendmicro"|"Snowflake"|"Dynatrace"|"Infornexus"|"Amplitude"|"Veeva"|"EventBridge"|"Upsolver",
+#'       triggerType = "Scheduled"|"Event"|"OnDemand",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdBy = "string",
+#'       lastUpdatedBy = "string",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       lastRunExecutionDetails = list(
+#'         mostRecentExecutionMessage = "string",
+#'         mostRecentExecutionTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         mostRecentExecutionStatus = "InProgress"|"Successful"|"Error"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_flows(
@@ -848,6 +1339,16 @@ appflow_list_flows <- function(maxResults = NULL, nextToken = NULL) {
 #' appflow_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the specified flow.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -887,7 +1388,17 @@ appflow_list_tags_for_resource <- function(resourceArn) {
 #' appflow_start_flow(flowName)
 #'
 #' @param flowName &#91;required&#93; The specified name of the flow. Spaces are not allowed. Use underscores
-#' (\\_) or hyphens (-) only.
+#' (_) or hyphens (-) only.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   flowArn = "string",
+#'   flowStatus = "Active"|"Deprecated"|"Deleted"|"Draft"|"Errored"|"Suspended",
+#'   executionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -927,7 +1438,16 @@ appflow_start_flow <- function(flowName) {
 #' appflow_stop_flow(flowName)
 #'
 #' @param flowName &#91;required&#93; The specified name of the flow. Spaces are not allowed. Use underscores
-#' (\\_) or hyphens (-) only.
+#' (_) or hyphens (-) only.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   flowArn = "string",
+#'   flowStatus = "Active"|"Deprecated"|"Deleted"|"Draft"|"Errored"|"Suspended"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -966,6 +1486,12 @@ appflow_stop_flow <- function(flowName) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the flow that you want to tag.
 #' @param tags &#91;required&#93; The tags used to organize, track, or control access for your flow.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1008,6 +1534,12 @@ appflow_tag_resource <- function(resourceArn, tags) {
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the flow that you want to untag.
 #' @param tagKeys &#91;required&#93; The tag keys associated with the tag that you want to remove from your
 #' flow.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1052,6 +1584,14 @@ appflow_untag_resource <- function(resourceArn, tagKeys) {
 #' `ConnectorProfile` in the AWS Account.
 #' @param connectionMode &#91;required&#93; Indicates the connection mode and if it is public or private.
 #' @param connectorProfileConfig &#91;required&#93; Defines the connector-specific profile configuration and credentials.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectorProfileArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1229,7 +1769,7 @@ appflow_update_connector_profile <- function(connectorProfileName, connectionMod
 #'   sourceFlowConfig, destinationFlowConfigList, tasks)
 #'
 #' @param flowName &#91;required&#93; The specified name of the flow. Spaces are not allowed. Use underscores
-#' (\\_) or hyphens (-) only.
+#' (_) or hyphens (-) only.
 #' @param description A description of the flow.
 #' @param triggerConfig &#91;required&#93; The trigger settings that determine how and when the flow runs.
 #' @param sourceFlowConfig 
@@ -1237,6 +1777,14 @@ appflow_update_connector_profile <- function(connectorProfileName, connectionMod
 #' destination connector.
 #' @param tasks &#91;required&#93; A list of tasks that Amazon AppFlow performs while transferring the data
 #' in the flow run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   flowStatus = "Active"|"Deprecated"|"Deleted"|"Draft"|"Errored"|"Suspended"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

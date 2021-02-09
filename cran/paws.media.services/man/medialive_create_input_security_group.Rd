@@ -11,6 +11,27 @@ medialive_create_input_security_group(Tags, WhitelistRules)
 
 \item{WhitelistRules}{List of IPv4 CIDR addresses to whitelist}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SecurityGroup = list(
+    Arn = "string",
+    Id = "string",
+    Inputs = list(
+      "string"
+    ),
+    State = "IDLE"|"IN_USE"|"UPDATING"|"DELETED",
+    Tags = list(
+      "string"
+    ),
+    WhitelistRules = list(
+      list(
+        Cidr = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a Input Security Group
 }

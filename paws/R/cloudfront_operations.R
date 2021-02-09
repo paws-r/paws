@@ -36,6 +36,59 @@ NULL
 #'
 #' @param CachePolicyConfig &#91;required&#93; A cache policy configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CachePolicy = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CachePolicyConfig = list(
+#'       Comment = "string",
+#'       Name = "string",
+#'       DefaultTTL = 123,
+#'       MaxTTL = 123,
+#'       MinTTL = 123,
+#'       ParametersInCacheKeyAndForwardedToOrigin = list(
+#'         EnableAcceptEncodingGzip = TRUE|FALSE,
+#'         EnableAcceptEncodingBrotli = TRUE|FALSE,
+#'         HeadersConfig = list(
+#'           HeaderBehavior = "none"|"whitelist",
+#'           Headers = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         CookiesConfig = list(
+#'           CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
+#'           Cookies = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         QueryStringsConfig = list(
+#'           QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
+#'           QueryStrings = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_cache_policy(
@@ -117,6 +170,23 @@ cloudfront_create_cache_policy <- function(CachePolicyConfig) {
 #'
 #' @param CloudFrontOriginAccessIdentityConfig &#91;required&#93; The current configuration information for the identity.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CloudFrontOriginAccessIdentity = list(
+#'     Id = "string",
+#'     S3CanonicalUserId = "string",
+#'     CloudFrontOriginAccessIdentityConfig = list(
+#'       CallerReference = "string",
+#'       Comment = "string"
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_cloud_front_origin_access_identity(
@@ -170,6 +240,329 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' cloudfront_create_distribution(DistributionConfig)
 #'
 #' @param DistributionConfig &#91;required&#93; The distribution's configuration information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Distribution = list(
+#'     Id = "string",
+#'     ARN = "string",
+#'     Status = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InProgressInvalidationBatches = 123,
+#'     DomainName = "string",
+#'     ActiveTrustedSigners = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           AwsAccountNumber = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ActiveTrustedKeyGroups = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           KeyGroupId = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     DistributionConfig = list(
+#'       CallerReference = "string",
+#'       Aliases = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DefaultRootObject = "string",
+#'       Origins = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Id = "string",
+#'             DomainName = "string",
+#'             OriginPath = "string",
+#'             CustomHeaders = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   HeaderName = "string",
+#'                   HeaderValue = "string"
+#'                 )
+#'               )
+#'             ),
+#'             S3OriginConfig = list(
+#'               OriginAccessIdentity = "string"
+#'             ),
+#'             CustomOriginConfig = list(
+#'               HTTPPort = 123,
+#'               HTTPSPort = 123,
+#'               OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'               OriginSslProtocols = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'                 )
+#'               ),
+#'               OriginReadTimeout = 123,
+#'               OriginKeepaliveTimeout = 123
+#'             ),
+#'             ConnectionAttempts = 123,
+#'             ConnectionTimeout = 123,
+#'             OriginShield = list(
+#'               Enabled = TRUE|FALSE,
+#'               OriginShieldRegion = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       OriginGroups = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Id = "string",
+#'             FailoverCriteria = list(
+#'               StatusCodes = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   123
+#'                 )
+#'               )
+#'             ),
+#'             Members = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   OriginId = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DefaultCacheBehavior = list(
+#'         TargetOriginId = "string",
+#'         TrustedSigners = list(
+#'           Enabled = TRUE|FALSE,
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         TrustedKeyGroups = list(
+#'           Enabled = TRUE|FALSE,
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'         AllowedMethods = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'           ),
+#'           CachedMethods = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'             )
+#'           )
+#'         ),
+#'         SmoothStreaming = TRUE|FALSE,
+#'         Compress = TRUE|FALSE,
+#'         LambdaFunctionAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               LambdaFunctionARN = "string",
+#'               EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'               IncludeBody = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         FieldLevelEncryptionId = "string",
+#'         RealtimeLogConfigArn = "string",
+#'         CachePolicyId = "string",
+#'         OriginRequestPolicyId = "string",
+#'         ForwardedValues = list(
+#'           QueryString = TRUE|FALSE,
+#'           Cookies = list(
+#'             Forward = "none"|"whitelist"|"all",
+#'             WhitelistedNames = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           Headers = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           QueryStringCacheKeys = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         MinTTL = 123,
+#'         DefaultTTL = 123,
+#'         MaxTTL = 123
+#'       ),
+#'       CacheBehaviors = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             PathPattern = "string",
+#'             TargetOriginId = "string",
+#'             TrustedSigners = list(
+#'               Enabled = TRUE|FALSE,
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             TrustedKeyGroups = list(
+#'               Enabled = TRUE|FALSE,
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'             AllowedMethods = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'               ),
+#'               CachedMethods = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                 )
+#'               )
+#'             ),
+#'             SmoothStreaming = TRUE|FALSE,
+#'             Compress = TRUE|FALSE,
+#'             LambdaFunctionAssociations = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   LambdaFunctionARN = "string",
+#'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                   IncludeBody = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             FieldLevelEncryptionId = "string",
+#'             RealtimeLogConfigArn = "string",
+#'             CachePolicyId = "string",
+#'             OriginRequestPolicyId = "string",
+#'             ForwardedValues = list(
+#'               QueryString = TRUE|FALSE,
+#'               Cookies = list(
+#'                 Forward = "none"|"whitelist"|"all",
+#'                 WhitelistedNames = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Headers = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               QueryStringCacheKeys = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             MinTTL = 123,
+#'             DefaultTTL = 123,
+#'             MaxTTL = 123
+#'           )
+#'         )
+#'       ),
+#'       CustomErrorResponses = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             ErrorCode = 123,
+#'             ResponsePagePath = "string",
+#'             ResponseCode = "string",
+#'             ErrorCachingMinTTL = 123
+#'           )
+#'         )
+#'       ),
+#'       Comment = "string",
+#'       Logging = list(
+#'         Enabled = TRUE|FALSE,
+#'         IncludeCookies = TRUE|FALSE,
+#'         Bucket = "string",
+#'         Prefix = "string"
+#'       ),
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       Enabled = TRUE|FALSE,
+#'       ViewerCertificate = list(
+#'         CloudFrontDefaultCertificate = TRUE|FALSE,
+#'         IAMCertificateId = "string",
+#'         ACMCertificateArn = "string",
+#'         SSLSupportMethod = "sni-only"|"vip"|"static-ip",
+#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019",
+#'         Certificate = "string",
+#'         CertificateSource = "cloudfront"|"iam"|"acm"
+#'       ),
+#'       Restrictions = list(
+#'         GeoRestriction = list(
+#'           RestrictionType = "blacklist"|"whitelist"|"none",
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       WebACLId = "string",
+#'       HttpVersion = "http1.1"|"http2",
+#'       IsIPV6Enabled = TRUE|FALSE
+#'     ),
+#'     AliasICPRecordals = list(
+#'       list(
+#'         CNAME = "string",
+#'         ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
+#'       )
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -474,6 +867,329 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #' cloudfront_create_distribution_with_tags(DistributionConfigWithTags)
 #'
 #' @param DistributionConfigWithTags &#91;required&#93; The distribution's configuration information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Distribution = list(
+#'     Id = "string",
+#'     ARN = "string",
+#'     Status = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InProgressInvalidationBatches = 123,
+#'     DomainName = "string",
+#'     ActiveTrustedSigners = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           AwsAccountNumber = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ActiveTrustedKeyGroups = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           KeyGroupId = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     DistributionConfig = list(
+#'       CallerReference = "string",
+#'       Aliases = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DefaultRootObject = "string",
+#'       Origins = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Id = "string",
+#'             DomainName = "string",
+#'             OriginPath = "string",
+#'             CustomHeaders = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   HeaderName = "string",
+#'                   HeaderValue = "string"
+#'                 )
+#'               )
+#'             ),
+#'             S3OriginConfig = list(
+#'               OriginAccessIdentity = "string"
+#'             ),
+#'             CustomOriginConfig = list(
+#'               HTTPPort = 123,
+#'               HTTPSPort = 123,
+#'               OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'               OriginSslProtocols = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'                 )
+#'               ),
+#'               OriginReadTimeout = 123,
+#'               OriginKeepaliveTimeout = 123
+#'             ),
+#'             ConnectionAttempts = 123,
+#'             ConnectionTimeout = 123,
+#'             OriginShield = list(
+#'               Enabled = TRUE|FALSE,
+#'               OriginShieldRegion = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       OriginGroups = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Id = "string",
+#'             FailoverCriteria = list(
+#'               StatusCodes = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   123
+#'                 )
+#'               )
+#'             ),
+#'             Members = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   OriginId = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DefaultCacheBehavior = list(
+#'         TargetOriginId = "string",
+#'         TrustedSigners = list(
+#'           Enabled = TRUE|FALSE,
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         TrustedKeyGroups = list(
+#'           Enabled = TRUE|FALSE,
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'         AllowedMethods = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'           ),
+#'           CachedMethods = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'             )
+#'           )
+#'         ),
+#'         SmoothStreaming = TRUE|FALSE,
+#'         Compress = TRUE|FALSE,
+#'         LambdaFunctionAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               LambdaFunctionARN = "string",
+#'               EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'               IncludeBody = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         FieldLevelEncryptionId = "string",
+#'         RealtimeLogConfigArn = "string",
+#'         CachePolicyId = "string",
+#'         OriginRequestPolicyId = "string",
+#'         ForwardedValues = list(
+#'           QueryString = TRUE|FALSE,
+#'           Cookies = list(
+#'             Forward = "none"|"whitelist"|"all",
+#'             WhitelistedNames = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           Headers = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           QueryStringCacheKeys = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         MinTTL = 123,
+#'         DefaultTTL = 123,
+#'         MaxTTL = 123
+#'       ),
+#'       CacheBehaviors = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             PathPattern = "string",
+#'             TargetOriginId = "string",
+#'             TrustedSigners = list(
+#'               Enabled = TRUE|FALSE,
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             TrustedKeyGroups = list(
+#'               Enabled = TRUE|FALSE,
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'             AllowedMethods = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'               ),
+#'               CachedMethods = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                 )
+#'               )
+#'             ),
+#'             SmoothStreaming = TRUE|FALSE,
+#'             Compress = TRUE|FALSE,
+#'             LambdaFunctionAssociations = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   LambdaFunctionARN = "string",
+#'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                   IncludeBody = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             FieldLevelEncryptionId = "string",
+#'             RealtimeLogConfigArn = "string",
+#'             CachePolicyId = "string",
+#'             OriginRequestPolicyId = "string",
+#'             ForwardedValues = list(
+#'               QueryString = TRUE|FALSE,
+#'               Cookies = list(
+#'                 Forward = "none"|"whitelist"|"all",
+#'                 WhitelistedNames = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Headers = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               QueryStringCacheKeys = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             MinTTL = 123,
+#'             DefaultTTL = 123,
+#'             MaxTTL = 123
+#'           )
+#'         )
+#'       ),
+#'       CustomErrorResponses = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             ErrorCode = 123,
+#'             ResponsePagePath = "string",
+#'             ResponseCode = "string",
+#'             ErrorCachingMinTTL = 123
+#'           )
+#'         )
+#'       ),
+#'       Comment = "string",
+#'       Logging = list(
+#'         Enabled = TRUE|FALSE,
+#'         IncludeCookies = TRUE|FALSE,
+#'         Bucket = "string",
+#'         Prefix = "string"
+#'       ),
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       Enabled = TRUE|FALSE,
+#'       ViewerCertificate = list(
+#'         CloudFrontDefaultCertificate = TRUE|FALSE,
+#'         IAMCertificateId = "string",
+#'         ACMCertificateArn = "string",
+#'         SSLSupportMethod = "sni-only"|"vip"|"static-ip",
+#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019",
+#'         Certificate = "string",
+#'         CertificateSource = "cloudfront"|"iam"|"acm"
+#'       ),
+#'       Restrictions = list(
+#'         GeoRestriction = list(
+#'           RestrictionType = "blacklist"|"whitelist"|"none",
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       WebACLId = "string",
+#'       HttpVersion = "http1.1"|"http2",
+#'       IsIPV6Enabled = TRUE|FALSE
+#'     ),
+#'     AliasICPRecordals = list(
+#'       list(
+#'         CNAME = "string",
+#'         ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
+#'       )
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -790,6 +1506,50 @@ cloudfront_create_distribution_with_tags <- function(DistributionConfigWithTags)
 #'
 #' @param FieldLevelEncryptionConfig &#91;required&#93; The request to create a new field-level encryption configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FieldLevelEncryption = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FieldLevelEncryptionConfig = list(
+#'       CallerReference = "string",
+#'       Comment = "string",
+#'       QueryArgProfileConfig = list(
+#'         ForwardWhenQueryArgProfileIsUnknown = TRUE|FALSE,
+#'         QueryArgProfiles = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               QueryArg = "string",
+#'               ProfileId = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ContentTypeProfileConfig = list(
+#'         ForwardWhenContentTypeIsUnknown = TRUE|FALSE,
+#'         ContentTypeProfiles = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Format = "URLEncoded",
+#'               ProfileId = "string",
+#'               ContentType = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_field_level_encryption_config(
@@ -856,6 +1616,41 @@ cloudfront_create_field_level_encryption_config <- function(FieldLevelEncryption
 #'
 #' @param FieldLevelEncryptionProfileConfig &#91;required&#93; The request to create a field-level encryption profile.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FieldLevelEncryptionProfile = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FieldLevelEncryptionProfileConfig = list(
+#'       Name = "string",
+#'       CallerReference = "string",
+#'       Comment = "string",
+#'       EncryptionEntities = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             PublicKeyId = "string",
+#'             ProviderId = "string",
+#'             FieldPatterns = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_field_level_encryption_profile(
@@ -912,6 +1707,30 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #'
 #' @param DistributionId &#91;required&#93; The distribution's id.
 #' @param InvalidationBatch &#91;required&#93; The batch information for the invalidation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Location = "string",
+#'   Invalidation = list(
+#'     Id = "string",
+#'     Status = "string",
+#'     CreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InvalidationBatch = list(
+#'       Paths = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       CallerReference = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -974,6 +1793,28 @@ cloudfront_create_invalidation <- function(DistributionId, InvalidationBatch) {
 #'
 #' @param KeyGroupConfig &#91;required&#93; A key group configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyGroup = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     KeyGroupConfig = list(
+#'       Name = "string",
+#'       Items = list(
+#'         "string"
+#'       ),
+#'       Comment = "string"
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_key_group(
@@ -1026,6 +1867,18 @@ cloudfront_create_key_group <- function(KeyGroupConfig) {
 #' @param MonitoringSubscription &#91;required&#93; A monitoring subscription. This structure contains information about
 #' whether additional CloudWatch metrics are enabled for a given CloudFront
 #' distribution.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MonitoringSubscription = list(
+#'     RealtimeMetricsSubscriptionConfig = list(
+#'       RealtimeMetricsSubscriptionStatus = "Enabled"|"Disabled"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1094,6 +1947,52 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
 #' cloudfront_create_origin_request_policy(OriginRequestPolicyConfig)
 #'
 #' @param OriginRequestPolicyConfig &#91;required&#93; An origin request policy configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OriginRequestPolicy = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     OriginRequestPolicyConfig = list(
+#'       Comment = "string",
+#'       Name = "string",
+#'       HeadersConfig = list(
+#'         HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+#'         Headers = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       CookiesConfig = list(
+#'         CookieBehavior = "none"|"whitelist"|"all",
+#'         Cookies = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       QueryStringsConfig = list(
+#'         QueryStringBehavior = "none"|"whitelist"|"all",
+#'         QueryStrings = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1167,6 +2066,27 @@ cloudfront_create_origin_request_policy <- function(OriginRequestPolicyConfig) {
 #'
 #' @param PublicKeyConfig &#91;required&#93; A CloudFront public key configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PublicKey = list(
+#'     Id = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PublicKeyConfig = list(
+#'       CallerReference = "string",
+#'       Name = "string",
+#'       EncodedKey = "string",
+#'       Comment = "string"
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_public_key(
@@ -1229,6 +2149,30 @@ cloudfront_create_public_key <- function(PublicKeyConfig) {
 #' in the real-time log data. You must provide an integer between 1 and
 #' 100, inclusive.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RealtimeLogConfig = list(
+#'     ARN = "string",
+#'     Name = "string",
+#'     SamplingRate = 123,
+#'     EndPoints = list(
+#'       list(
+#'         StreamType = "string",
+#'         KinesisStreamConfig = list(
+#'           RoleARN = "string",
+#'           StreamARN = "string"
+#'         )
+#'       )
+#'     ),
+#'     Fields = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_realtime_log_config(
@@ -1282,6 +2226,67 @@ cloudfront_create_realtime_log_config <- function(EndPoints, Fields, Name, Sampl
 #' cloudfront_create_streaming_distribution(StreamingDistributionConfig)
 #'
 #' @param StreamingDistributionConfig &#91;required&#93; The streaming distribution's configuration information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamingDistribution = list(
+#'     Id = "string",
+#'     ARN = "string",
+#'     Status = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DomainName = "string",
+#'     ActiveTrustedSigners = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           AwsAccountNumber = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     StreamingDistributionConfig = list(
+#'       CallerReference = "string",
+#'       S3Origin = list(
+#'         DomainName = "string",
+#'         OriginAccessIdentity = "string"
+#'       ),
+#'       Aliases = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Comment = "string",
+#'       Logging = list(
+#'         Enabled = TRUE|FALSE,
+#'         Bucket = "string",
+#'         Prefix = "string"
+#'       ),
+#'       TrustedSigners = list(
+#'         Enabled = TRUE|FALSE,
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1351,6 +2356,67 @@ cloudfront_create_streaming_distribution <- function(StreamingDistributionConfig
 #'   StreamingDistributionConfigWithTags)
 #'
 #' @param StreamingDistributionConfigWithTags &#91;required&#93; The streaming distribution's configuration information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamingDistribution = list(
+#'     Id = "string",
+#'     ARN = "string",
+#'     Status = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DomainName = "string",
+#'     ActiveTrustedSigners = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           AwsAccountNumber = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     StreamingDistributionConfig = list(
+#'       CallerReference = "string",
+#'       S3Origin = list(
+#'         DomainName = "string",
+#'         OriginAccessIdentity = "string"
+#'       ),
+#'       Aliases = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Comment = "string",
+#'       Logging = list(
+#'         Enabled = TRUE|FALSE,
+#'         Bucket = "string",
+#'         Prefix = "string"
+#'       ),
+#'       TrustedSigners = list(
+#'         Enabled = TRUE|FALSE,
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1442,6 +2508,8 @@ cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistribu
 #' [`get_cache_policy`][cloudfront_get_cache_policy], or
 #' [`get_cache_policy_config`][cloudfront_get_cache_policy_config].
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_cache_policy(
@@ -1481,6 +2549,8 @@ cloudfront_delete_cache_policy <- function(Id, IfMatch = NULL) {
 #' @param Id &#91;required&#93; The origin access identity's ID.
 #' @param IfMatch The value of the `ETag` header you received from a previous `GET` or
 #' `PUT` request. For example: `E2QWRUHAPOMQZL`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1522,6 +2592,8 @@ cloudfront_delete_cloud_front_origin_access_identity <- function(Id, IfMatch = N
 #' @param IfMatch The value of the `ETag` header that you received when you disabled the
 #' distribution. For example: `E2QWRUHAPOMQZL`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_distribution(
@@ -1562,6 +2634,8 @@ cloudfront_delete_distribution <- function(Id, IfMatch = NULL) {
 #' @param IfMatch The value of the `ETag` header that you received when retrieving the
 #' configuration identity to delete. For example: `E2QWRUHAPOMQZL`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_field_level_encryption_config(
@@ -1601,6 +2675,8 @@ cloudfront_delete_field_level_encryption_config <- function(Id, IfMatch = NULL) 
 #' @param Id &#91;required&#93; Request the ID of the profile you want to delete from CloudFront.
 #' @param IfMatch The value of the `ETag` header that you received when retrieving the
 #' profile to delete. For example: `E2QWRUHAPOMQZL`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1655,6 +2731,8 @@ cloudfront_delete_field_level_encryption_profile <- function(Id, IfMatch = NULL)
 #' [`get_key_group`][cloudfront_get_key_group] or
 #' [`get_key_group_config`][cloudfront_get_key_group_config].
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_key_group(
@@ -1694,6 +2772,12 @@ cloudfront_delete_key_group <- function(Id, IfMatch = NULL) {
 #' cloudfront_delete_monitoring_subscription(DistributionId)
 #'
 #' @param DistributionId &#91;required&#93; The ID of the distribution that you are disabling metrics for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1749,6 +2833,8 @@ cloudfront_delete_monitoring_subscription <- function(DistributionId) {
 #' [`get_origin_request_policy`][cloudfront_get_origin_request_policy], or
 #' [`get_origin_request_policy_config`][cloudfront_get_origin_request_policy_config].
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_origin_request_policy(
@@ -1788,6 +2874,8 @@ cloudfront_delete_origin_request_policy <- function(Id, IfMatch = NULL) {
 #' @param Id &#91;required&#93; The ID of the public key you want to remove from CloudFront.
 #' @param IfMatch The value of the `ETag` header that you received when retrieving the
 #' public key identity to delete. For example: `E2QWRUHAPOMQZL`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1838,6 +2926,8 @@ cloudfront_delete_public_key <- function(Id, IfMatch = NULL) {
 #' @param Name The name of the real-time log configuration to delete.
 #' @param ARN The Amazon Resource Name (ARN) of the real-time log configuration to
 #' delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1918,6 +3008,8 @@ cloudfront_delete_realtime_log_config <- function(Name = NULL, ARN = NULL) {
 #' @param IfMatch The value of the `ETag` header that you received when you disabled the
 #' streaming distribution. For example: `E2QWRUHAPOMQZL`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_streaming_distribution(
@@ -1946,8 +3038,7 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 }
 .cloudfront$operations$delete_streaming_distribution <- cloudfront_delete_streaming_distribution
 
-#' Gets a cache policy, including the following metadata: - The policy’s
-#' identifier
+#' Gets a cache policy, including the following metadata:
 #'
 #' @description
 #' Gets a cache policy, including the following metadata:
@@ -1973,6 +3064,58 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 #' or [`get_distribution`][cloudfront_get_distribution]. If the cache
 #' policy is not attached to a cache behavior, you can get the identifier
 #' using [`list_cache_policies`][cloudfront_list_cache_policies].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CachePolicy = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CachePolicyConfig = list(
+#'       Comment = "string",
+#'       Name = "string",
+#'       DefaultTTL = 123,
+#'       MaxTTL = 123,
+#'       MinTTL = 123,
+#'       ParametersInCacheKeyAndForwardedToOrigin = list(
+#'         EnableAcceptEncodingGzip = TRUE|FALSE,
+#'         EnableAcceptEncodingBrotli = TRUE|FALSE,
+#'         HeadersConfig = list(
+#'           HeaderBehavior = "none"|"whitelist",
+#'           Headers = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         CookiesConfig = list(
+#'           CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
+#'           Cookies = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         QueryStringsConfig = list(
+#'           QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
+#'           QueryStrings = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2024,6 +3167,52 @@ cloudfront_get_cache_policy <- function(Id) {
 #' policy is not attached to a cache behavior, you can get the identifier
 #' using [`list_cache_policies`][cloudfront_list_cache_policies].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CachePolicyConfig = list(
+#'     Comment = "string",
+#'     Name = "string",
+#'     DefaultTTL = 123,
+#'     MaxTTL = 123,
+#'     MinTTL = 123,
+#'     ParametersInCacheKeyAndForwardedToOrigin = list(
+#'       EnableAcceptEncodingGzip = TRUE|FALSE,
+#'       EnableAcceptEncodingBrotli = TRUE|FALSE,
+#'       HeadersConfig = list(
+#'         HeaderBehavior = "none"|"whitelist",
+#'         Headers = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       CookiesConfig = list(
+#'         CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
+#'         Cookies = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       QueryStringsConfig = list(
+#'         QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
+#'         QueryStrings = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_cache_policy_config(
@@ -2061,6 +3250,22 @@ cloudfront_get_cache_policy_config <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The identity's ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CloudFrontOriginAccessIdentity = list(
+#'     Id = "string",
+#'     S3CanonicalUserId = "string",
+#'     CloudFrontOriginAccessIdentityConfig = list(
+#'       CallerReference = "string",
+#'       Comment = "string"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_cloud_front_origin_access_identity(
@@ -2097,6 +3302,18 @@ cloudfront_get_cloud_front_origin_access_identity <- function(Id) {
 #' cloudfront_get_cloud_front_origin_access_identity_config(Id)
 #'
 #' @param Id &#91;required&#93; The identity's ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CloudFrontOriginAccessIdentityConfig = list(
+#'     CallerReference = "string",
+#'     Comment = "string"
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2136,6 +3353,328 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
 #' @param Id &#91;required&#93; The distribution's ID. If the ID is empty, an empty distribution
 #' configuration is returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Distribution = list(
+#'     Id = "string",
+#'     ARN = "string",
+#'     Status = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InProgressInvalidationBatches = 123,
+#'     DomainName = "string",
+#'     ActiveTrustedSigners = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           AwsAccountNumber = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ActiveTrustedKeyGroups = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           KeyGroupId = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     DistributionConfig = list(
+#'       CallerReference = "string",
+#'       Aliases = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DefaultRootObject = "string",
+#'       Origins = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Id = "string",
+#'             DomainName = "string",
+#'             OriginPath = "string",
+#'             CustomHeaders = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   HeaderName = "string",
+#'                   HeaderValue = "string"
+#'                 )
+#'               )
+#'             ),
+#'             S3OriginConfig = list(
+#'               OriginAccessIdentity = "string"
+#'             ),
+#'             CustomOriginConfig = list(
+#'               HTTPPort = 123,
+#'               HTTPSPort = 123,
+#'               OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'               OriginSslProtocols = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'                 )
+#'               ),
+#'               OriginReadTimeout = 123,
+#'               OriginKeepaliveTimeout = 123
+#'             ),
+#'             ConnectionAttempts = 123,
+#'             ConnectionTimeout = 123,
+#'             OriginShield = list(
+#'               Enabled = TRUE|FALSE,
+#'               OriginShieldRegion = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       OriginGroups = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Id = "string",
+#'             FailoverCriteria = list(
+#'               StatusCodes = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   123
+#'                 )
+#'               )
+#'             ),
+#'             Members = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   OriginId = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DefaultCacheBehavior = list(
+#'         TargetOriginId = "string",
+#'         TrustedSigners = list(
+#'           Enabled = TRUE|FALSE,
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         TrustedKeyGroups = list(
+#'           Enabled = TRUE|FALSE,
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'         AllowedMethods = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'           ),
+#'           CachedMethods = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'             )
+#'           )
+#'         ),
+#'         SmoothStreaming = TRUE|FALSE,
+#'         Compress = TRUE|FALSE,
+#'         LambdaFunctionAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               LambdaFunctionARN = "string",
+#'               EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'               IncludeBody = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         FieldLevelEncryptionId = "string",
+#'         RealtimeLogConfigArn = "string",
+#'         CachePolicyId = "string",
+#'         OriginRequestPolicyId = "string",
+#'         ForwardedValues = list(
+#'           QueryString = TRUE|FALSE,
+#'           Cookies = list(
+#'             Forward = "none"|"whitelist"|"all",
+#'             WhitelistedNames = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           Headers = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           QueryStringCacheKeys = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         MinTTL = 123,
+#'         DefaultTTL = 123,
+#'         MaxTTL = 123
+#'       ),
+#'       CacheBehaviors = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             PathPattern = "string",
+#'             TargetOriginId = "string",
+#'             TrustedSigners = list(
+#'               Enabled = TRUE|FALSE,
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             TrustedKeyGroups = list(
+#'               Enabled = TRUE|FALSE,
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'             AllowedMethods = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'               ),
+#'               CachedMethods = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                 )
+#'               )
+#'             ),
+#'             SmoothStreaming = TRUE|FALSE,
+#'             Compress = TRUE|FALSE,
+#'             LambdaFunctionAssociations = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   LambdaFunctionARN = "string",
+#'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                   IncludeBody = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             FieldLevelEncryptionId = "string",
+#'             RealtimeLogConfigArn = "string",
+#'             CachePolicyId = "string",
+#'             OriginRequestPolicyId = "string",
+#'             ForwardedValues = list(
+#'               QueryString = TRUE|FALSE,
+#'               Cookies = list(
+#'                 Forward = "none"|"whitelist"|"all",
+#'                 WhitelistedNames = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Headers = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               QueryStringCacheKeys = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             MinTTL = 123,
+#'             DefaultTTL = 123,
+#'             MaxTTL = 123
+#'           )
+#'         )
+#'       ),
+#'       CustomErrorResponses = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             ErrorCode = 123,
+#'             ResponsePagePath = "string",
+#'             ResponseCode = "string",
+#'             ErrorCachingMinTTL = 123
+#'           )
+#'         )
+#'       ),
+#'       Comment = "string",
+#'       Logging = list(
+#'         Enabled = TRUE|FALSE,
+#'         IncludeCookies = TRUE|FALSE,
+#'         Bucket = "string",
+#'         Prefix = "string"
+#'       ),
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       Enabled = TRUE|FALSE,
+#'       ViewerCertificate = list(
+#'         CloudFrontDefaultCertificate = TRUE|FALSE,
+#'         IAMCertificateId = "string",
+#'         ACMCertificateArn = "string",
+#'         SSLSupportMethod = "sni-only"|"vip"|"static-ip",
+#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019",
+#'         Certificate = "string",
+#'         CertificateSource = "cloudfront"|"iam"|"acm"
+#'       ),
+#'       Restrictions = list(
+#'         GeoRestriction = list(
+#'           RestrictionType = "blacklist"|"whitelist"|"none",
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       WebACLId = "string",
+#'       HttpVersion = "http1.1"|"http2",
+#'       IsIPV6Enabled = TRUE|FALSE
+#'     ),
+#'     AliasICPRecordals = list(
+#'       list(
+#'         CNAME = "string",
+#'         ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_distribution(
@@ -2174,6 +3713,282 @@ cloudfront_get_distribution <- function(Id) {
 #' @param Id &#91;required&#93; The distribution's ID. If the ID is empty, an empty distribution
 #' configuration is returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionConfig = list(
+#'     CallerReference = "string",
+#'     Aliases = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         "string"
+#'       )
+#'     ),
+#'     DefaultRootObject = "string",
+#'     Origins = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           Id = "string",
+#'           DomainName = "string",
+#'           OriginPath = "string",
+#'           CustomHeaders = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 HeaderName = "string",
+#'                 HeaderValue = "string"
+#'               )
+#'             )
+#'           ),
+#'           S3OriginConfig = list(
+#'             OriginAccessIdentity = "string"
+#'           ),
+#'           CustomOriginConfig = list(
+#'             HTTPPort = 123,
+#'             HTTPSPort = 123,
+#'             OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'             OriginSslProtocols = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'               )
+#'             ),
+#'             OriginReadTimeout = 123,
+#'             OriginKeepaliveTimeout = 123
+#'           ),
+#'           ConnectionAttempts = 123,
+#'           ConnectionTimeout = 123,
+#'           OriginShield = list(
+#'             Enabled = TRUE|FALSE,
+#'             OriginShieldRegion = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     OriginGroups = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           Id = "string",
+#'           FailoverCriteria = list(
+#'             StatusCodes = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 123
+#'               )
+#'             )
+#'           ),
+#'           Members = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 OriginId = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     DefaultCacheBehavior = list(
+#'       TargetOriginId = "string",
+#'       TrustedSigners = list(
+#'         Enabled = TRUE|FALSE,
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       TrustedKeyGroups = list(
+#'         Enabled = TRUE|FALSE,
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'       AllowedMethods = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'         ),
+#'         CachedMethods = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'           )
+#'         )
+#'       ),
+#'       SmoothStreaming = TRUE|FALSE,
+#'       Compress = TRUE|FALSE,
+#'       LambdaFunctionAssociations = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             LambdaFunctionARN = "string",
+#'             EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'             IncludeBody = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       FieldLevelEncryptionId = "string",
+#'       RealtimeLogConfigArn = "string",
+#'       CachePolicyId = "string",
+#'       OriginRequestPolicyId = "string",
+#'       ForwardedValues = list(
+#'         QueryString = TRUE|FALSE,
+#'         Cookies = list(
+#'           Forward = "none"|"whitelist"|"all",
+#'           WhitelistedNames = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         Headers = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         QueryStringCacheKeys = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       MinTTL = 123,
+#'       DefaultTTL = 123,
+#'       MaxTTL = 123
+#'     ),
+#'     CacheBehaviors = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           PathPattern = "string",
+#'           TargetOriginId = "string",
+#'           TrustedSigners = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           TrustedKeyGroups = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'           AllowedMethods = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'             ),
+#'             CachedMethods = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'               )
+#'             )
+#'           ),
+#'           SmoothStreaming = TRUE|FALSE,
+#'           Compress = TRUE|FALSE,
+#'           LambdaFunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 LambdaFunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                 IncludeBody = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           FieldLevelEncryptionId = "string",
+#'           RealtimeLogConfigArn = "string",
+#'           CachePolicyId = "string",
+#'           OriginRequestPolicyId = "string",
+#'           ForwardedValues = list(
+#'             QueryString = TRUE|FALSE,
+#'             Cookies = list(
+#'               Forward = "none"|"whitelist"|"all",
+#'               WhitelistedNames = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             Headers = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             QueryStringCacheKeys = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           MinTTL = 123,
+#'           DefaultTTL = 123,
+#'           MaxTTL = 123
+#'         )
+#'       )
+#'     ),
+#'     CustomErrorResponses = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           ErrorCode = 123,
+#'           ResponsePagePath = "string",
+#'           ResponseCode = "string",
+#'           ErrorCachingMinTTL = 123
+#'         )
+#'       )
+#'     ),
+#'     Comment = "string",
+#'     Logging = list(
+#'       Enabled = TRUE|FALSE,
+#'       IncludeCookies = TRUE|FALSE,
+#'       Bucket = "string",
+#'       Prefix = "string"
+#'     ),
+#'     PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'     Enabled = TRUE|FALSE,
+#'     ViewerCertificate = list(
+#'       CloudFrontDefaultCertificate = TRUE|FALSE,
+#'       IAMCertificateId = "string",
+#'       ACMCertificateArn = "string",
+#'       SSLSupportMethod = "sni-only"|"vip"|"static-ip",
+#'       MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019",
+#'       Certificate = "string",
+#'       CertificateSource = "cloudfront"|"iam"|"acm"
+#'     ),
+#'     Restrictions = list(
+#'       GeoRestriction = list(
+#'         RestrictionType = "blacklist"|"whitelist"|"none",
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     WebACLId = "string",
+#'     HttpVersion = "http1.1"|"http2",
+#'     IsIPV6Enabled = TRUE|FALSE
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_distribution_config(
@@ -2210,6 +4025,49 @@ cloudfront_get_distribution_config <- function(Id) {
 #' cloudfront_get_field_level_encryption(Id)
 #'
 #' @param Id &#91;required&#93; Request the ID for the field-level encryption configuration information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FieldLevelEncryption = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FieldLevelEncryptionConfig = list(
+#'       CallerReference = "string",
+#'       Comment = "string",
+#'       QueryArgProfileConfig = list(
+#'         ForwardWhenQueryArgProfileIsUnknown = TRUE|FALSE,
+#'         QueryArgProfiles = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               QueryArg = "string",
+#'               ProfileId = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ContentTypeProfileConfig = list(
+#'         ForwardWhenContentTypeIsUnknown = TRUE|FALSE,
+#'         ContentTypeProfiles = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Format = "URLEncoded",
+#'               ProfileId = "string",
+#'               ContentType = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2248,6 +4106,43 @@ cloudfront_get_field_level_encryption <- function(Id) {
 #'
 #' @param Id &#91;required&#93; Request the ID for the field-level encryption configuration information.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FieldLevelEncryptionConfig = list(
+#'     CallerReference = "string",
+#'     Comment = "string",
+#'     QueryArgProfileConfig = list(
+#'       ForwardWhenQueryArgProfileIsUnknown = TRUE|FALSE,
+#'       QueryArgProfiles = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             QueryArg = "string",
+#'             ProfileId = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ContentTypeProfileConfig = list(
+#'       ForwardWhenContentTypeIsUnknown = TRUE|FALSE,
+#'       ContentTypeProfiles = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Format = "URLEncoded",
+#'             ProfileId = "string",
+#'             ContentType = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_field_level_encryption_config(
@@ -2284,6 +4179,40 @@ cloudfront_get_field_level_encryption_config <- function(Id) {
 #' cloudfront_get_field_level_encryption_profile(Id)
 #'
 #' @param Id &#91;required&#93; Get the ID for the field-level encryption profile information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FieldLevelEncryptionProfile = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FieldLevelEncryptionProfileConfig = list(
+#'       Name = "string",
+#'       CallerReference = "string",
+#'       Comment = "string",
+#'       EncryptionEntities = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             PublicKeyId = "string",
+#'             ProviderId = "string",
+#'             FieldPatterns = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2323,6 +4252,34 @@ cloudfront_get_field_level_encryption_profile <- function(Id) {
 #' @param Id &#91;required&#93; Get the ID for the field-level encryption profile configuration
 #' information.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FieldLevelEncryptionProfileConfig = list(
+#'     Name = "string",
+#'     CallerReference = "string",
+#'     Comment = "string",
+#'     EncryptionEntities = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           PublicKeyId = "string",
+#'           ProviderId = "string",
+#'           FieldPatterns = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_field_level_encryption_profile_config(
@@ -2361,6 +4318,29 @@ cloudfront_get_field_level_encryption_profile_config <- function(Id) {
 #' @param DistributionId &#91;required&#93; The distribution's ID.
 #' @param Id &#91;required&#93; The identifier for the invalidation request, for example,
 #' `IDFDVBD632BHDS5`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Invalidation = list(
+#'     Id = "string",
+#'     Status = "string",
+#'     CreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InvalidationBatch = list(
+#'       Paths = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       CallerReference = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2411,6 +4391,27 @@ cloudfront_get_invalidation <- function(DistributionId, Id) {
 #' @param Id &#91;required&#93; The identifier of the key group that you are getting. To get the
 #' identifier, use [`list_key_groups`][cloudfront_list_key_groups].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyGroup = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     KeyGroupConfig = list(
+#'       Name = "string",
+#'       Items = list(
+#'         "string"
+#'       ),
+#'       Comment = "string"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_key_group(
@@ -2457,6 +4458,21 @@ cloudfront_get_key_group <- function(Id) {
 #' @param Id &#91;required&#93; The identifier of the key group whose configuration you are getting. To
 #' get the identifier, use [`list_key_groups`][cloudfront_list_key_groups].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyGroupConfig = list(
+#'     Name = "string",
+#'     Items = list(
+#'       "string"
+#'     ),
+#'     Comment = "string"
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_key_group_config(
@@ -2496,6 +4512,18 @@ cloudfront_get_key_group_config <- function(Id) {
 #'
 #' @param DistributionId &#91;required&#93; The ID of the distribution that you are getting metrics information for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MonitoringSubscription = list(
+#'     RealtimeMetricsSubscriptionConfig = list(
+#'       RealtimeMetricsSubscriptionStatus = "Enabled"|"Disabled"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_monitoring_subscription(
@@ -2523,8 +4551,7 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
 }
 .cloudfront$operations$get_monitoring_subscription <- cloudfront_get_monitoring_subscription
 
-#' Gets an origin request policy, including the following metadata: - The
-#' policy’s identifier
+#' Gets an origin request policy, including the following metadata:
 #'
 #' @description
 #' Gets an origin request policy, including the following metadata:
@@ -2553,6 +4580,51 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
 #' policy is not attached to a cache behavior, you can get the identifier
 #' using
 #' [`list_origin_request_policies`][cloudfront_list_origin_request_policies].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OriginRequestPolicy = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     OriginRequestPolicyConfig = list(
+#'       Comment = "string",
+#'       Name = "string",
+#'       HeadersConfig = list(
+#'         HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+#'         Headers = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       CookiesConfig = list(
+#'         CookieBehavior = "none"|"whitelist"|"all",
+#'         Cookies = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       QueryStringsConfig = list(
+#'         QueryStringBehavior = "none"|"whitelist"|"all",
+#'         QueryStrings = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2607,6 +4679,45 @@ cloudfront_get_origin_request_policy <- function(Id) {
 #' using
 #' [`list_origin_request_policies`][cloudfront_list_origin_request_policies].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OriginRequestPolicyConfig = list(
+#'     Comment = "string",
+#'     Name = "string",
+#'     HeadersConfig = list(
+#'       HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+#'       Headers = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     CookiesConfig = list(
+#'       CookieBehavior = "none"|"whitelist"|"all",
+#'       Cookies = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     QueryStringsConfig = list(
+#'       QueryStringBehavior = "none"|"whitelist"|"all",
+#'       QueryStrings = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_origin_request_policy_config(
@@ -2644,6 +4755,26 @@ cloudfront_get_origin_request_policy_config <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The identifier of the public key you are getting.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PublicKey = list(
+#'     Id = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PublicKeyConfig = list(
+#'       CallerReference = "string",
+#'       Name = "string",
+#'       EncodedKey = "string",
+#'       Comment = "string"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_public_key(
@@ -2680,6 +4811,20 @@ cloudfront_get_public_key <- function(Id) {
 #' cloudfront_get_public_key_config(Id)
 #'
 #' @param Id &#91;required&#93; The identifier of the public key whose configuration you are getting.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PublicKeyConfig = list(
+#'     CallerReference = "string",
+#'     Name = "string",
+#'     EncodedKey = "string",
+#'     Comment = "string"
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2725,6 +4870,30 @@ cloudfront_get_public_key_config <- function(Id) {
 #' @param ARN The Amazon Resource Name (ARN) of the real-time log configuration to
 #' get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RealtimeLogConfig = list(
+#'     ARN = "string",
+#'     Name = "string",
+#'     SamplingRate = 123,
+#'     EndPoints = list(
+#'       list(
+#'         StreamType = "string",
+#'         KinesisStreamConfig = list(
+#'           RoleARN = "string",
+#'           StreamARN = "string"
+#'         )
+#'       )
+#'     ),
+#'     Fields = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_realtime_log_config(
@@ -2765,6 +4934,66 @@ cloudfront_get_realtime_log_config <- function(Name = NULL, ARN = NULL) {
 #'
 #' @param Id &#91;required&#93; The streaming distribution's ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamingDistribution = list(
+#'     Id = "string",
+#'     ARN = "string",
+#'     Status = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DomainName = "string",
+#'     ActiveTrustedSigners = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           AwsAccountNumber = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     StreamingDistributionConfig = list(
+#'       CallerReference = "string",
+#'       S3Origin = list(
+#'         DomainName = "string",
+#'         OriginAccessIdentity = "string"
+#'       ),
+#'       Aliases = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Comment = "string",
+#'       Logging = list(
+#'         Enabled = TRUE|FALSE,
+#'         Bucket = "string",
+#'         Prefix = "string"
+#'       ),
+#'       TrustedSigners = list(
+#'         Enabled = TRUE|FALSE,
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_streaming_distribution(
@@ -2801,6 +5030,42 @@ cloudfront_get_streaming_distribution <- function(Id) {
 #' cloudfront_get_streaming_distribution_config(Id)
 #'
 #' @param Id &#91;required&#93; The streaming distribution's ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamingDistributionConfig = list(
+#'     CallerReference = "string",
+#'     S3Origin = list(
+#'       DomainName = "string",
+#'       OriginAccessIdentity = "string"
+#'     ),
+#'     Aliases = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         "string"
+#'       )
+#'     ),
+#'     Comment = "string",
+#'     Logging = list(
+#'       Enabled = TRUE|FALSE,
+#'       Bucket = "string",
+#'       Prefix = "string"
+#'     ),
+#'     TrustedSigners = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         "string"
+#'       )
+#'     ),
+#'     PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'     Enabled = TRUE|FALSE
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2861,6 +5126,67 @@ cloudfront_get_streaming_distribution_config <- function(Id) {
 #' response.
 #' @param MaxItems The maximum number of cache policies that you want in the response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CachePolicyList = list(
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Type = "managed"|"custom",
+#'         CachePolicy = list(
+#'           Id = "string",
+#'           LastModifiedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           CachePolicyConfig = list(
+#'             Comment = "string",
+#'             Name = "string",
+#'             DefaultTTL = 123,
+#'             MaxTTL = 123,
+#'             MinTTL = 123,
+#'             ParametersInCacheKeyAndForwardedToOrigin = list(
+#'               EnableAcceptEncodingGzip = TRUE|FALSE,
+#'               EnableAcceptEncodingBrotli = TRUE|FALSE,
+#'               HeadersConfig = list(
+#'                 HeaderBehavior = "none"|"whitelist",
+#'                 Headers = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               CookiesConfig = list(
+#'                 CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
+#'                 Cookies = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               QueryStringsConfig = list(
+#'                 QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
+#'                 QueryStrings = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_cache_policies(
@@ -2906,6 +5232,27 @@ cloudfront_list_cache_policies <- function(Type = NULL, Marker = NULL, MaxItems 
 #' @param MaxItems The maximum number of origin access identities you want in the response
 #' body.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CloudFrontOriginAccessIdentityList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         S3CanonicalUserId = "string",
+#'         Comment = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_cloud_front_origin_access_identities(
@@ -2948,6 +5295,295 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
 #' `Marker` to the value of the `NextMarker` from the current page's
 #' response (which is also the ID of the last distribution on that page).
 #' @param MaxItems The maximum number of distributions you want in the response body.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         ARN = "string",
+#'         Status = "string",
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         DomainName = "string",
+#'         Aliases = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Origins = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Id = "string",
+#'               DomainName = "string",
+#'               OriginPath = "string",
+#'               CustomHeaders = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     HeaderName = "string",
+#'                     HeaderValue = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               S3OriginConfig = list(
+#'                 OriginAccessIdentity = "string"
+#'               ),
+#'               CustomOriginConfig = list(
+#'                 HTTPPort = 123,
+#'                 HTTPSPort = 123,
+#'                 OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'                 OriginSslProtocols = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'                   )
+#'                 ),
+#'                 OriginReadTimeout = 123,
+#'                 OriginKeepaliveTimeout = 123
+#'               ),
+#'               ConnectionAttempts = 123,
+#'               ConnectionTimeout = 123,
+#'               OriginShield = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 OriginShieldRegion = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         OriginGroups = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Id = "string",
+#'               FailoverCriteria = list(
+#'                 StatusCodes = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     123
+#'                   )
+#'                 )
+#'               ),
+#'               Members = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     OriginId = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         DefaultCacheBehavior = list(
+#'           TargetOriginId = "string",
+#'           TrustedSigners = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           TrustedKeyGroups = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'           AllowedMethods = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'             ),
+#'             CachedMethods = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'               )
+#'             )
+#'           ),
+#'           SmoothStreaming = TRUE|FALSE,
+#'           Compress = TRUE|FALSE,
+#'           LambdaFunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 LambdaFunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                 IncludeBody = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           FieldLevelEncryptionId = "string",
+#'           RealtimeLogConfigArn = "string",
+#'           CachePolicyId = "string",
+#'           OriginRequestPolicyId = "string",
+#'           ForwardedValues = list(
+#'             QueryString = TRUE|FALSE,
+#'             Cookies = list(
+#'               Forward = "none"|"whitelist"|"all",
+#'               WhitelistedNames = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             Headers = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             QueryStringCacheKeys = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           MinTTL = 123,
+#'           DefaultTTL = 123,
+#'           MaxTTL = 123
+#'         ),
+#'         CacheBehaviors = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               PathPattern = "string",
+#'               TargetOriginId = "string",
+#'               TrustedSigners = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               TrustedKeyGroups = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'               AllowedMethods = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                 ),
+#'                 CachedMethods = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                   )
+#'                 )
+#'               ),
+#'               SmoothStreaming = TRUE|FALSE,
+#'               Compress = TRUE|FALSE,
+#'               LambdaFunctionAssociations = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     LambdaFunctionARN = "string",
+#'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                     IncludeBody = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               FieldLevelEncryptionId = "string",
+#'               RealtimeLogConfigArn = "string",
+#'               CachePolicyId = "string",
+#'               OriginRequestPolicyId = "string",
+#'               ForwardedValues = list(
+#'                 QueryString = TRUE|FALSE,
+#'                 Cookies = list(
+#'                   Forward = "none"|"whitelist"|"all",
+#'                   WhitelistedNames = list(
+#'                     Quantity = 123,
+#'                     Items = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Headers = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 QueryStringCacheKeys = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               MinTTL = 123,
+#'               DefaultTTL = 123,
+#'               MaxTTL = 123
+#'             )
+#'           )
+#'         ),
+#'         CustomErrorResponses = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               ErrorCode = 123,
+#'               ResponsePagePath = "string",
+#'               ResponseCode = "string",
+#'               ErrorCachingMinTTL = 123
+#'             )
+#'           )
+#'         ),
+#'         Comment = "string",
+#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'         Enabled = TRUE|FALSE,
+#'         ViewerCertificate = list(
+#'           CloudFrontDefaultCertificate = TRUE|FALSE,
+#'           IAMCertificateId = "string",
+#'           ACMCertificateArn = "string",
+#'           SSLSupportMethod = "sni-only"|"vip"|"static-ip",
+#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019",
+#'           Certificate = "string",
+#'           CertificateSource = "cloudfront"|"iam"|"acm"
+#'         ),
+#'         Restrictions = list(
+#'           GeoRestriction = list(
+#'             RestrictionType = "blacklist"|"whitelist"|"none",
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         WebACLId = "string",
+#'         HttpVersion = "http1.1"|"http2",
+#'         IsIPV6Enabled = TRUE|FALSE,
+#'         AliasICPRecordals = list(
+#'           list(
+#'             CNAME = "string",
+#'             ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3004,6 +5640,23 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #' @param CachePolicyId &#91;required&#93; The ID of the cache policy whose associated distribution IDs you want to
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionIdList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_distributions_by_cache_policy_id(
@@ -3058,6 +5711,23 @@ cloudfront_list_distributions_by_cache_policy_id <- function(Marker = NULL, MaxI
 #' @param MaxItems The maximum number of distribution IDs that you want in the response.
 #' @param KeyGroupId &#91;required&#93; The ID of the key group whose associated distribution IDs you are
 #' listing.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionIdList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3114,6 +5784,23 @@ cloudfront_list_distributions_by_key_group <- function(Marker = NULL, MaxItems =
 #' @param MaxItems The maximum number of distribution IDs that you want in the response.
 #' @param OriginRequestPolicyId &#91;required&#93; The ID of the origin request policy whose associated distribution IDs
 #' you want to list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionIdList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3178,6 +5865,295 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #' @param RealtimeLogConfigArn The Amazon Resource Name (ARN) of the real-time log configuration whose
 #' associated distributions you want to list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         ARN = "string",
+#'         Status = "string",
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         DomainName = "string",
+#'         Aliases = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Origins = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Id = "string",
+#'               DomainName = "string",
+#'               OriginPath = "string",
+#'               CustomHeaders = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     HeaderName = "string",
+#'                     HeaderValue = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               S3OriginConfig = list(
+#'                 OriginAccessIdentity = "string"
+#'               ),
+#'               CustomOriginConfig = list(
+#'                 HTTPPort = 123,
+#'                 HTTPSPort = 123,
+#'                 OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'                 OriginSslProtocols = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'                   )
+#'                 ),
+#'                 OriginReadTimeout = 123,
+#'                 OriginKeepaliveTimeout = 123
+#'               ),
+#'               ConnectionAttempts = 123,
+#'               ConnectionTimeout = 123,
+#'               OriginShield = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 OriginShieldRegion = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         OriginGroups = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Id = "string",
+#'               FailoverCriteria = list(
+#'                 StatusCodes = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     123
+#'                   )
+#'                 )
+#'               ),
+#'               Members = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     OriginId = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         DefaultCacheBehavior = list(
+#'           TargetOriginId = "string",
+#'           TrustedSigners = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           TrustedKeyGroups = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'           AllowedMethods = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'             ),
+#'             CachedMethods = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'               )
+#'             )
+#'           ),
+#'           SmoothStreaming = TRUE|FALSE,
+#'           Compress = TRUE|FALSE,
+#'           LambdaFunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 LambdaFunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                 IncludeBody = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           FieldLevelEncryptionId = "string",
+#'           RealtimeLogConfigArn = "string",
+#'           CachePolicyId = "string",
+#'           OriginRequestPolicyId = "string",
+#'           ForwardedValues = list(
+#'             QueryString = TRUE|FALSE,
+#'             Cookies = list(
+#'               Forward = "none"|"whitelist"|"all",
+#'               WhitelistedNames = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             Headers = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             QueryStringCacheKeys = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           MinTTL = 123,
+#'           DefaultTTL = 123,
+#'           MaxTTL = 123
+#'         ),
+#'         CacheBehaviors = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               PathPattern = "string",
+#'               TargetOriginId = "string",
+#'               TrustedSigners = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               TrustedKeyGroups = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'               AllowedMethods = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                 ),
+#'                 CachedMethods = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                   )
+#'                 )
+#'               ),
+#'               SmoothStreaming = TRUE|FALSE,
+#'               Compress = TRUE|FALSE,
+#'               LambdaFunctionAssociations = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     LambdaFunctionARN = "string",
+#'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                     IncludeBody = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               FieldLevelEncryptionId = "string",
+#'               RealtimeLogConfigArn = "string",
+#'               CachePolicyId = "string",
+#'               OriginRequestPolicyId = "string",
+#'               ForwardedValues = list(
+#'                 QueryString = TRUE|FALSE,
+#'                 Cookies = list(
+#'                   Forward = "none"|"whitelist"|"all",
+#'                   WhitelistedNames = list(
+#'                     Quantity = 123,
+#'                     Items = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Headers = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 QueryStringCacheKeys = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               MinTTL = 123,
+#'               DefaultTTL = 123,
+#'               MaxTTL = 123
+#'             )
+#'           )
+#'         ),
+#'         CustomErrorResponses = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               ErrorCode = 123,
+#'               ResponsePagePath = "string",
+#'               ResponseCode = "string",
+#'               ErrorCachingMinTTL = 123
+#'             )
+#'           )
+#'         ),
+#'         Comment = "string",
+#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'         Enabled = TRUE|FALSE,
+#'         ViewerCertificate = list(
+#'           CloudFrontDefaultCertificate = TRUE|FALSE,
+#'           IAMCertificateId = "string",
+#'           ACMCertificateArn = "string",
+#'           SSLSupportMethod = "sni-only"|"vip"|"static-ip",
+#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019",
+#'           Certificate = "string",
+#'           CertificateSource = "cloudfront"|"iam"|"acm"
+#'         ),
+#'         Restrictions = list(
+#'           GeoRestriction = list(
+#'             RestrictionType = "blacklist"|"whitelist"|"none",
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         WebACLId = "string",
+#'         HttpVersion = "http1.1"|"http2",
+#'         IsIPV6Enabled = TRUE|FALSE,
+#'         AliasICPRecordals = list(
+#'           list(
+#'             CNAME = "string",
+#'             ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_distributions_by_realtime_log_config(
@@ -3230,6 +6206,295 @@ cloudfront_list_distributions_by_realtime_log_config <- function(Marker = NULL, 
 #' distributions. If you specify "null" for the ID, the request returns a
 #' list of the distributions that aren't associated with a web ACL.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         ARN = "string",
+#'         Status = "string",
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         DomainName = "string",
+#'         Aliases = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Origins = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Id = "string",
+#'               DomainName = "string",
+#'               OriginPath = "string",
+#'               CustomHeaders = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     HeaderName = "string",
+#'                     HeaderValue = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               S3OriginConfig = list(
+#'                 OriginAccessIdentity = "string"
+#'               ),
+#'               CustomOriginConfig = list(
+#'                 HTTPPort = 123,
+#'                 HTTPSPort = 123,
+#'                 OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'                 OriginSslProtocols = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'                   )
+#'                 ),
+#'                 OriginReadTimeout = 123,
+#'                 OriginKeepaliveTimeout = 123
+#'               ),
+#'               ConnectionAttempts = 123,
+#'               ConnectionTimeout = 123,
+#'               OriginShield = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 OriginShieldRegion = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         OriginGroups = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Id = "string",
+#'               FailoverCriteria = list(
+#'                 StatusCodes = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     123
+#'                   )
+#'                 )
+#'               ),
+#'               Members = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     OriginId = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         DefaultCacheBehavior = list(
+#'           TargetOriginId = "string",
+#'           TrustedSigners = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           TrustedKeyGroups = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'           AllowedMethods = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'             ),
+#'             CachedMethods = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'               )
+#'             )
+#'           ),
+#'           SmoothStreaming = TRUE|FALSE,
+#'           Compress = TRUE|FALSE,
+#'           LambdaFunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 LambdaFunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                 IncludeBody = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           FieldLevelEncryptionId = "string",
+#'           RealtimeLogConfigArn = "string",
+#'           CachePolicyId = "string",
+#'           OriginRequestPolicyId = "string",
+#'           ForwardedValues = list(
+#'             QueryString = TRUE|FALSE,
+#'             Cookies = list(
+#'               Forward = "none"|"whitelist"|"all",
+#'               WhitelistedNames = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             Headers = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             QueryStringCacheKeys = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           MinTTL = 123,
+#'           DefaultTTL = 123,
+#'           MaxTTL = 123
+#'         ),
+#'         CacheBehaviors = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               PathPattern = "string",
+#'               TargetOriginId = "string",
+#'               TrustedSigners = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               TrustedKeyGroups = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'               AllowedMethods = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                 ),
+#'                 CachedMethods = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                   )
+#'                 )
+#'               ),
+#'               SmoothStreaming = TRUE|FALSE,
+#'               Compress = TRUE|FALSE,
+#'               LambdaFunctionAssociations = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     LambdaFunctionARN = "string",
+#'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                     IncludeBody = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               FieldLevelEncryptionId = "string",
+#'               RealtimeLogConfigArn = "string",
+#'               CachePolicyId = "string",
+#'               OriginRequestPolicyId = "string",
+#'               ForwardedValues = list(
+#'                 QueryString = TRUE|FALSE,
+#'                 Cookies = list(
+#'                   Forward = "none"|"whitelist"|"all",
+#'                   WhitelistedNames = list(
+#'                     Quantity = 123,
+#'                     Items = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Headers = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 QueryStringCacheKeys = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               MinTTL = 123,
+#'               DefaultTTL = 123,
+#'               MaxTTL = 123
+#'             )
+#'           )
+#'         ),
+#'         CustomErrorResponses = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               ErrorCode = 123,
+#'               ResponsePagePath = "string",
+#'               ResponseCode = "string",
+#'               ErrorCachingMinTTL = 123
+#'             )
+#'           )
+#'         ),
+#'         Comment = "string",
+#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'         Enabled = TRUE|FALSE,
+#'         ViewerCertificate = list(
+#'           CloudFrontDefaultCertificate = TRUE|FALSE,
+#'           IAMCertificateId = "string",
+#'           ACMCertificateArn = "string",
+#'           SSLSupportMethod = "sni-only"|"vip"|"static-ip",
+#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019",
+#'           Certificate = "string",
+#'           CertificateSource = "cloudfront"|"iam"|"acm"
+#'         ),
+#'         Restrictions = list(
+#'           GeoRestriction = list(
+#'             RestrictionType = "blacklist"|"whitelist"|"none",
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         WebACLId = "string",
+#'         HttpVersion = "http1.1"|"http2",
+#'         IsIPV6Enabled = TRUE|FALSE,
+#'         AliasICPRecordals = list(
+#'           list(
+#'             CNAME = "string",
+#'             ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_distributions_by_web_acl_id(
@@ -3277,6 +6542,52 @@ cloudfront_list_distributions_by_web_acl_id <- function(Marker = NULL, MaxItems 
 #' @param MaxItems The maximum number of field-level encryption configurations you want in
 #' the response body.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FieldLevelEncryptionList = list(
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Comment = "string",
+#'         QueryArgProfileConfig = list(
+#'           ForwardWhenQueryArgProfileIsUnknown = TRUE|FALSE,
+#'           QueryArgProfiles = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 QueryArg = "string",
+#'                 ProfileId = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         ContentTypeProfileConfig = list(
+#'           ForwardWhenContentTypeIsUnknown = TRUE|FALSE,
+#'           ContentTypeProfiles = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 Format = "URLEncoded",
+#'                 ProfileId = "string",
+#'                 ContentType = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_field_level_encryption_configs(
@@ -3322,6 +6633,43 @@ cloudfront_list_field_level_encryption_configs <- function(Marker = NULL, MaxIte
 #' also the ID of the last profile on that page).
 #' @param MaxItems The maximum number of field-level encryption profiles you want in the
 #' response body.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FieldLevelEncryptionProfileList = list(
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Name = "string",
+#'         EncryptionEntities = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               PublicKeyId = "string",
+#'               ProviderId = "string",
+#'               FieldPatterns = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Comment = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3369,6 +6717,29 @@ cloudfront_list_field_level_encryption_profiles <- function(Marker = NULL, MaxIt
 #' the ID of the last invalidation batch on that page.
 #' @param MaxItems The maximum number of invalidation batches that you want in the response
 #' body.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InvalidationList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         CreateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3420,6 +6791,35 @@ cloudfront_list_invalidations <- function(DistributionId, Marker = NULL, MaxItem
 #' field’s value to the value of `NextMarker` from the current page’s
 #' response.
 #' @param MaxItems The maximum number of key groups that you want in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyGroupList = list(
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         KeyGroup = list(
+#'           Id = "string",
+#'           LastModifiedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           KeyGroupConfig = list(
+#'             Name = "string",
+#'             Items = list(
+#'               "string"
+#'             ),
+#'             Comment = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3482,6 +6882,60 @@ cloudfront_list_key_groups <- function(Marker = NULL, MaxItems = NULL) {
 #' @param MaxItems The maximum number of origin request policies that you want in the
 #' response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OriginRequestPolicyList = list(
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Type = "managed"|"custom",
+#'         OriginRequestPolicy = list(
+#'           Id = "string",
+#'           LastModifiedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           OriginRequestPolicyConfig = list(
+#'             Comment = "string",
+#'             Name = "string",
+#'             HeadersConfig = list(
+#'               HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+#'               Headers = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             CookiesConfig = list(
+#'               CookieBehavior = "none"|"whitelist"|"all",
+#'               Cookies = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             QueryStringsConfig = list(
+#'               QueryStringBehavior = "none"|"whitelist"|"all",
+#'               QueryStrings = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_origin_request_policies(
@@ -3526,6 +6980,29 @@ cloudfront_list_origin_request_policies <- function(Type = NULL, Marker = NULL, 
 #' the value of the `NextMarker` from the current page's response (which is
 #' also the ID of the last public key on that page).
 #' @param MaxItems The maximum number of public keys you want in the response body.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PublicKeyList = list(
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         Name = "string",
+#'         CreatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EncodedKey = "string",
+#'         Comment = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3578,6 +7055,38 @@ cloudfront_list_public_keys <- function(Marker = NULL, MaxItems = NULL) {
 #' get the next page of the list, set this field’s value to the value of
 #' `NextMarker` from the current page’s response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RealtimeLogConfigs = list(
+#'     MaxItems = 123,
+#'     Items = list(
+#'       list(
+#'         ARN = "string",
+#'         Name = "string",
+#'         SamplingRate = 123,
+#'         EndPoints = list(
+#'           list(
+#'             StreamType = "string",
+#'             KinesisStreamConfig = list(
+#'               RoleARN = "string",
+#'               StreamARN = "string"
+#'             )
+#'           )
+#'         ),
+#'         Fields = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     IsTruncated = TRUE|FALSE,
+#'     Marker = "string",
+#'     NextMarker = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_realtime_log_configs(
@@ -3617,6 +7126,51 @@ cloudfront_list_realtime_log_configs <- function(MaxItems = NULL, Marker = NULL)
 #' @param Marker The value that you provided for the `Marker` request parameter.
 #' @param MaxItems The value that you provided for the `MaxItems` request parameter.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamingDistributionList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         ARN = "string",
+#'         Status = "string",
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         DomainName = "string",
+#'         S3Origin = list(
+#'           DomainName = "string",
+#'           OriginAccessIdentity = "string"
+#'         ),
+#'         Aliases = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         TrustedSigners = list(
+#'           Enabled = TRUE|FALSE,
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Comment = "string",
+#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'         Enabled = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_streaming_distributions(
@@ -3655,6 +7209,21 @@ cloudfront_list_streaming_distributions <- function(Marker = NULL, MaxItems = NU
 #'
 #' @param Resource &#91;required&#93; An ARN of a CloudFront resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     Items = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -3692,6 +7261,8 @@ cloudfront_list_tags_for_resource <- function(Resource) {
 #'
 #' @param Resource &#91;required&#93; An ARN of a CloudFront resource.
 #' @param Tags &#91;required&#93; A complex type that contains zero or more `Tag` elements.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -3738,6 +7309,8 @@ cloudfront_tag_resource <- function(Resource, Tags) {
 #'
 #' @param Resource &#91;required&#93; An ARN of a CloudFront resource.
 #' @param TagKeys &#91;required&#93; A complex type that contains zero or more `Tag` key elements.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -3801,6 +7374,58 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 #' @param IfMatch The version of the cache policy that you are updating. The version is
 #' returned in the cache policy’s `ETag` field in the response to
 #' [`get_cache_policy_config`][cloudfront_get_cache_policy_config].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CachePolicy = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CachePolicyConfig = list(
+#'       Comment = "string",
+#'       Name = "string",
+#'       DefaultTTL = 123,
+#'       MaxTTL = 123,
+#'       MinTTL = 123,
+#'       ParametersInCacheKeyAndForwardedToOrigin = list(
+#'         EnableAcceptEncodingGzip = TRUE|FALSE,
+#'         EnableAcceptEncodingBrotli = TRUE|FALSE,
+#'         HeadersConfig = list(
+#'           HeaderBehavior = "none"|"whitelist",
+#'           Headers = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         CookiesConfig = list(
+#'           CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
+#'           Cookies = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         QueryStringsConfig = list(
+#'           QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
+#'           QueryStrings = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3881,6 +7506,22 @@ cloudfront_update_cache_policy <- function(CachePolicyConfig, Id, IfMatch = NULL
 #' @param Id &#91;required&#93; The identity's id.
 #' @param IfMatch The value of the `ETag` header that you received when retrieving the
 #' identity's configuration. For example: `E2QWRUHAPOMQZL`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CloudFrontOriginAccessIdentity = list(
+#'     Id = "string",
+#'     S3CanonicalUserId = "string",
+#'     CloudFrontOriginAccessIdentityConfig = list(
+#'       CallerReference = "string",
+#'       Comment = "string"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4001,6 +7642,328 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' @param Id &#91;required&#93; The distribution's id.
 #' @param IfMatch The value of the `ETag` header that you received when retrieving the
 #' distribution's configuration. For example: `E2QWRUHAPOMQZL`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Distribution = list(
+#'     Id = "string",
+#'     ARN = "string",
+#'     Status = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InProgressInvalidationBatches = 123,
+#'     DomainName = "string",
+#'     ActiveTrustedSigners = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           AwsAccountNumber = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ActiveTrustedKeyGroups = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           KeyGroupId = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     DistributionConfig = list(
+#'       CallerReference = "string",
+#'       Aliases = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DefaultRootObject = "string",
+#'       Origins = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Id = "string",
+#'             DomainName = "string",
+#'             OriginPath = "string",
+#'             CustomHeaders = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   HeaderName = "string",
+#'                   HeaderValue = "string"
+#'                 )
+#'               )
+#'             ),
+#'             S3OriginConfig = list(
+#'               OriginAccessIdentity = "string"
+#'             ),
+#'             CustomOriginConfig = list(
+#'               HTTPPort = 123,
+#'               HTTPSPort = 123,
+#'               OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'               OriginSslProtocols = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'                 )
+#'               ),
+#'               OriginReadTimeout = 123,
+#'               OriginKeepaliveTimeout = 123
+#'             ),
+#'             ConnectionAttempts = 123,
+#'             ConnectionTimeout = 123,
+#'             OriginShield = list(
+#'               Enabled = TRUE|FALSE,
+#'               OriginShieldRegion = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       OriginGroups = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Id = "string",
+#'             FailoverCriteria = list(
+#'               StatusCodes = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   123
+#'                 )
+#'               )
+#'             ),
+#'             Members = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   OriginId = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DefaultCacheBehavior = list(
+#'         TargetOriginId = "string",
+#'         TrustedSigners = list(
+#'           Enabled = TRUE|FALSE,
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         TrustedKeyGroups = list(
+#'           Enabled = TRUE|FALSE,
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'         AllowedMethods = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'           ),
+#'           CachedMethods = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'             )
+#'           )
+#'         ),
+#'         SmoothStreaming = TRUE|FALSE,
+#'         Compress = TRUE|FALSE,
+#'         LambdaFunctionAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               LambdaFunctionARN = "string",
+#'               EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'               IncludeBody = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         FieldLevelEncryptionId = "string",
+#'         RealtimeLogConfigArn = "string",
+#'         CachePolicyId = "string",
+#'         OriginRequestPolicyId = "string",
+#'         ForwardedValues = list(
+#'           QueryString = TRUE|FALSE,
+#'           Cookies = list(
+#'             Forward = "none"|"whitelist"|"all",
+#'             WhitelistedNames = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           Headers = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           QueryStringCacheKeys = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         MinTTL = 123,
+#'         DefaultTTL = 123,
+#'         MaxTTL = 123
+#'       ),
+#'       CacheBehaviors = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             PathPattern = "string",
+#'             TargetOriginId = "string",
+#'             TrustedSigners = list(
+#'               Enabled = TRUE|FALSE,
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             TrustedKeyGroups = list(
+#'               Enabled = TRUE|FALSE,
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'             AllowedMethods = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'               ),
+#'               CachedMethods = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                 )
+#'               )
+#'             ),
+#'             SmoothStreaming = TRUE|FALSE,
+#'             Compress = TRUE|FALSE,
+#'             LambdaFunctionAssociations = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   LambdaFunctionARN = "string",
+#'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                   IncludeBody = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             FieldLevelEncryptionId = "string",
+#'             RealtimeLogConfigArn = "string",
+#'             CachePolicyId = "string",
+#'             OriginRequestPolicyId = "string",
+#'             ForwardedValues = list(
+#'               QueryString = TRUE|FALSE,
+#'               Cookies = list(
+#'                 Forward = "none"|"whitelist"|"all",
+#'                 WhitelistedNames = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Headers = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               QueryStringCacheKeys = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             MinTTL = 123,
+#'             DefaultTTL = 123,
+#'             MaxTTL = 123
+#'           )
+#'         )
+#'       ),
+#'       CustomErrorResponses = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             ErrorCode = 123,
+#'             ResponsePagePath = "string",
+#'             ResponseCode = "string",
+#'             ErrorCachingMinTTL = 123
+#'           )
+#'         )
+#'       ),
+#'       Comment = "string",
+#'       Logging = list(
+#'         Enabled = TRUE|FALSE,
+#'         IncludeCookies = TRUE|FALSE,
+#'         Bucket = "string",
+#'         Prefix = "string"
+#'       ),
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       Enabled = TRUE|FALSE,
+#'       ViewerCertificate = list(
+#'         CloudFrontDefaultCertificate = TRUE|FALSE,
+#'         IAMCertificateId = "string",
+#'         ACMCertificateArn = "string",
+#'         SSLSupportMethod = "sni-only"|"vip"|"static-ip",
+#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019",
+#'         Certificate = "string",
+#'         CertificateSource = "cloudfront"|"iam"|"acm"
+#'       ),
+#'       Restrictions = list(
+#'         GeoRestriction = list(
+#'           RestrictionType = "blacklist"|"whitelist"|"none",
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       WebACLId = "string",
+#'       HttpVersion = "http1.1"|"http2",
+#'       IsIPV6Enabled = TRUE|FALSE
+#'     ),
+#'     AliasICPRecordals = list(
+#'       list(
+#'         CNAME = "string",
+#'         ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4312,6 +8275,49 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
 #' @param IfMatch The value of the `ETag` header that you received when retrieving the
 #' configuration identity to update. For example: `E2QWRUHAPOMQZL`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FieldLevelEncryption = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FieldLevelEncryptionConfig = list(
+#'       CallerReference = "string",
+#'       Comment = "string",
+#'       QueryArgProfileConfig = list(
+#'         ForwardWhenQueryArgProfileIsUnknown = TRUE|FALSE,
+#'         QueryArgProfiles = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               QueryArg = "string",
+#'               ProfileId = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ContentTypeProfileConfig = list(
+#'         ForwardWhenContentTypeIsUnknown = TRUE|FALSE,
+#'         ContentTypeProfiles = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Format = "URLEncoded",
+#'               ProfileId = "string",
+#'               ContentType = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_field_level_encryption_config(
@@ -4382,6 +8388,40 @@ cloudfront_update_field_level_encryption_config <- function(FieldLevelEncryption
 #' @param Id &#91;required&#93; The ID of the field-level encryption profile request.
 #' @param IfMatch The value of the `ETag` header that you received when retrieving the
 #' profile identity to update. For example: `E2QWRUHAPOMQZL`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FieldLevelEncryptionProfile = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FieldLevelEncryptionProfileConfig = list(
+#'       Name = "string",
+#'       CallerReference = "string",
+#'       Comment = "string",
+#'       EncryptionEntities = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             PublicKeyId = "string",
+#'             ProviderId = "string",
+#'             FieldPatterns = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4459,6 +8499,27 @@ cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptio
 #' @param IfMatch The version of the key group that you are updating. The version is the
 #' key group’s `ETag` value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyGroup = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     KeyGroupConfig = list(
+#'       Name = "string",
+#'       Items = list(
+#'         "string"
+#'       ),
+#'       Comment = "string"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_key_group(
@@ -4529,6 +8590,51 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 #' version is returned in the origin request policy’s `ETag` field in the
 #' response to
 #' [`get_origin_request_policy_config`][cloudfront_get_origin_request_policy_config].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OriginRequestPolicy = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     OriginRequestPolicyConfig = list(
+#'       Comment = "string",
+#'       Name = "string",
+#'       HeadersConfig = list(
+#'         HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+#'         Headers = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       CookiesConfig = list(
+#'         CookieBehavior = "none"|"whitelist"|"all",
+#'         Cookies = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       QueryStringsConfig = list(
+#'         QueryStringBehavior = "none"|"whitelist"|"all",
+#'         QueryStrings = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4602,6 +8708,26 @@ cloudfront_update_origin_request_policy <- function(OriginRequestPolicyConfig, I
 #' @param Id &#91;required&#93; The identifier of the public key that you are updating.
 #' @param IfMatch The value of the `ETag` header that you received when retrieving the
 #' public key to update. For example: `E2QWRUHAPOMQZL`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PublicKey = list(
+#'     Id = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PublicKeyConfig = list(
+#'       CallerReference = "string",
+#'       Name = "string",
+#'       EncodedKey = "string",
+#'       Comment = "string"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4678,6 +8804,30 @@ cloudfront_update_public_key <- function(PublicKeyConfig, Id, IfMatch = NULL) {
 #' in the real-time log data. You must provide an integer between 1 and
 #' 100, inclusive.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RealtimeLogConfig = list(
+#'     ARN = "string",
+#'     Name = "string",
+#'     SamplingRate = 123,
+#'     EndPoints = list(
+#'       list(
+#'         StreamType = "string",
+#'         KinesisStreamConfig = list(
+#'           RoleARN = "string",
+#'           StreamARN = "string"
+#'         )
+#'       )
+#'     ),
+#'     Fields = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_realtime_log_config(
@@ -4732,6 +8882,66 @@ cloudfront_update_realtime_log_config <- function(EndPoints = NULL, Fields = NUL
 #' @param Id &#91;required&#93; The streaming distribution's id.
 #' @param IfMatch The value of the `ETag` header that you received when retrieving the
 #' streaming distribution's configuration. For example: `E2QWRUHAPOMQZL`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamingDistribution = list(
+#'     Id = "string",
+#'     ARN = "string",
+#'     Status = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DomainName = "string",
+#'     ActiveTrustedSigners = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           AwsAccountNumber = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     StreamingDistributionConfig = list(
+#'       CallerReference = "string",
+#'       S3Origin = list(
+#'         DomainName = "string",
+#'         OriginAccessIdentity = "string"
+#'       ),
+#'       Aliases = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Comment = "string",
+#'       Logging = list(
+#'         Enabled = TRUE|FALSE,
+#'         Bucket = "string",
+#'         Prefix = "string"
+#'       ),
+#'       TrustedSigners = list(
+#'         Enabled = TRUE|FALSE,
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

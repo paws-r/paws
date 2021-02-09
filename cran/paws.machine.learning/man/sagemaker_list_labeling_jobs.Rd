@@ -38,6 +38,55 @@ jobs whose name contains the specified string.}
 
 \item{StatusEquals}{A filter that retrieves only labeling jobs with a specific status.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LabelingJobSummaryList = list(
+    list(
+      LabelingJobName = "string",
+      LabelingJobArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LabelingJobStatus = "Initializing"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+      LabelCounters = list(
+        TotalLabeled = 123,
+        HumanLabeled = 123,
+        MachineLabeled = 123,
+        FailedNonRetryableError = 123,
+        Unlabeled = 123
+      ),
+      WorkteamArn = "string",
+      PreHumanTaskLambdaArn = "string",
+      AnnotationConsolidationLambdaArn = "string",
+      FailureReason = "string",
+      LabelingJobOutput = list(
+        OutputDatasetS3Uri = "string",
+        FinalActiveLearningModelArn = "string"
+      ),
+      InputConfig = list(
+        DataSource = list(
+          S3DataSource = list(
+            ManifestS3Uri = "string"
+          ),
+          SnsDataSource = list(
+            SnsTopicArn = "string"
+          )
+        ),
+        DataAttributes = list(
+          ContentClassifiers = list(
+            "FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"
+          )
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of labeling jobs.
 }

@@ -33,6 +33,10 @@ On the first call to
 \code{\link[=iot_update_account_audit_configuration]{update_account_audit_configuration}},
 this parameter is required and must specify at least one enabled check.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Configures or reconfigures the Device Defender audit settings for this
 account. Settings include how audit notifications are sent and which

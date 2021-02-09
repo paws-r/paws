@@ -28,6 +28,33 @@ idempotency—that is, the uniqueness—of the request.}
 For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html}{Tagging in AWS Global Accelerator}
 in the \emph{AWS Global Accelerator Developer Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Accelerator = list(
+    AcceleratorArn = "string",
+    Name = "string",
+    IpAddressType = "IPV4",
+    Enabled = TRUE|FALSE,
+    IpSets = list(
+      list(
+        IpFamily = "string",
+        IpAddresses = list(
+          "string"
+        )
+      )
+    ),
+    DnsName = "string",
+    Status = "DEPLOYED"|"IN_PROGRESS",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Create a custom routing accelerator. A custom routing accelerator
 directs traffic to one of possibly thousands of Amazon EC2 instance

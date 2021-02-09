@@ -28,6 +28,110 @@ create.
 Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
 resource after it's created.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  certificate = list(
+    certificateArn = "string",
+    certificateName = "string",
+    domainName = "string",
+    certificateDetail = list(
+      arn = "string",
+      name = "string",
+      domainName = "string",
+      status = "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED",
+      serialNumber = "string",
+      subjectAlternativeNames = list(
+        "string"
+      ),
+      domainValidationRecords = list(
+        list(
+          domainName = "string",
+          resourceRecord = list(
+            name = "string",
+            type = "string",
+            value = "string"
+          )
+        )
+      ),
+      requestFailureReason = "string",
+      inUseResourceCount = 123,
+      keyAlgorithm = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      issuedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      issuerCA = "string",
+      notBefore = as.POSIXct(
+        "2015-01-01"
+      ),
+      notAfter = as.POSIXct(
+        "2015-01-01"
+      ),
+      eligibleToRenew = "string",
+      renewalSummary = list(
+        domainValidationRecords = list(
+          list(
+            domainName = "string",
+            resourceRecord = list(
+              name = "string",
+              type = "string",
+              value = "string"
+            )
+          )
+        ),
+        renewalStatus = "PendingAutoRenewal"|"PendingValidation"|"Success"|"Failed",
+        renewalStatusReason = "string",
+        updatedAt = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      revokedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      revocationReason = "string",
+      tags = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      ),
+      supportCode = "string"
+    ),
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    )
+  ),
+  operations = list(
+    list(
+      id = "string",
+      resourceName = "string",
+      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      location = list(
+        availabilityZone = "string",
+        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
+      ),
+      isTerminal = TRUE|FALSE,
+      operationDetails = "string",
+      operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
+      status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
+      statusChangedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      errorCode = "string",
+      errorDetails = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates an SSL/TLS certificate for a Amazon Lightsail content delivery
 network (CDN) distribution.

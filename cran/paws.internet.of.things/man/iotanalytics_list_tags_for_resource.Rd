@@ -9,6 +9,17 @@ iotanalytics_list_tags_for_resource(resourceArn)
 \arguments{
 \item{resourceArn}{[required] The ARN of the resource whose tags you want to list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the tags (metadata) that you have assigned to the resource.
 }

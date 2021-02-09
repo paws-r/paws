@@ -11,6 +11,43 @@ fms_put_policy(Policy, TagList)
 
 \item{TagList}{The tags to add to the AWS resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = list(
+    PolicyId = "string",
+    PolicyName = "string",
+    PolicyUpdateToken = "string",
+    SecurityServicePolicyData = list(
+      Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
+      ManagedServiceData = "string"
+    ),
+    ResourceType = "string",
+    ResourceTypeList = list(
+      "string"
+    ),
+    ResourceTags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    ExcludeResourceTags = TRUE|FALSE,
+    RemediationEnabled = TRUE|FALSE,
+    IncludeMap = list(
+      list(
+        "string"
+      )
+    ),
+    ExcludeMap = list(
+      list(
+        "string"
+      )
+    )
+  ),
+  PolicyArn = "string"
+)
+}
+}
 \description{
 Creates an AWS Firewall Manager policy.
 

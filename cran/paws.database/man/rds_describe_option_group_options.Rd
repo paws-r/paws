@@ -29,6 +29,57 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OptionGroupOptions = list(
+    list(
+      Name = "string",
+      Description = "string",
+      EngineName = "string",
+      MajorEngineVersion = "string",
+      MinimumRequiredMinorEngineVersion = "string",
+      PortRequired = TRUE|FALSE,
+      DefaultPort = 123,
+      OptionsDependedOn = list(
+        "string"
+      ),
+      OptionsConflictsWith = list(
+        "string"
+      ),
+      Persistent = TRUE|FALSE,
+      Permanent = TRUE|FALSE,
+      RequiresAutoMinorEngineVersionUpgrade = TRUE|FALSE,
+      VpcOnly = TRUE|FALSE,
+      SupportsOptionVersionDowngrade = TRUE|FALSE,
+      OptionGroupOptionSettings = list(
+        list(
+          SettingName = "string",
+          SettingDescription = "string",
+          DefaultValue = "string",
+          ApplyType = "string",
+          AllowedValues = "string",
+          IsModifiable = TRUE|FALSE,
+          IsRequired = TRUE|FALSE,
+          MinimumEngineVersionPerAllowedValue = list(
+            list(
+              AllowedValue = "string",
+              MinimumEngineVersion = "string"
+            )
+          )
+        )
+      ),
+      OptionGroupOptionVersions = list(
+        list(
+          Version = "string",
+          IsDefault = TRUE|FALSE
+        )
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Describes all available options.
 }

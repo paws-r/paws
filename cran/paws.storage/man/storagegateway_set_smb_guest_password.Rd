@@ -12,6 +12,12 @@ associated with.}
 
 \item{Password}{[required] The password that you want to set for your SMB server.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Sets the password for the guest user \code{smbguest}. The \code{smbguest} user is
 the user when the authentication method for the file share is set to

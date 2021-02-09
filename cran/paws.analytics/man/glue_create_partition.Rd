@@ -18,6 +18,10 @@ created.}
 
 \item{PartitionInput}{[required] A \code{PartitionInput} structure defining the partition to be created.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates a new partition.
 }

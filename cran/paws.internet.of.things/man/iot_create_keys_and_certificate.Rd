@@ -9,6 +9,18 @@ iot_create_keys_and_certificate(setAsActive)
 \arguments{
 \item{setAsActive}{Specifies whether the certificate is active.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  certificateArn = "string",
+  certificateId = "string",
+  certificatePem = "string",
+  keyPair = list(
+    PublicKey = "string",
+    PrivateKey = "string"
+  )
+)
+}
+}
 \description{
 Creates a 2048-bit RSA key pair and issues an X.509 certificate using
 the issued public key. You can also call

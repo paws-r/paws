@@ -14,6 +14,30 @@ administrator credentials to access the API.}
 
 \item{ParentFolderId}{[required] The ID of the parent folder.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Metadata = list(
+    Id = "string",
+    Name = "string",
+    CreatorId = "string",
+    ParentFolderId = "string",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ModifiedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+    Signature = "string",
+    Labels = list(
+      "string"
+    ),
+    Size = 123,
+    LatestVersionSize = 123
+  )
+)
+}
+}
 \description{
 Creates a folder with the specified name and parent folder.
 }

@@ -18,24 +18,38 @@ NULL
 #' The field names of message payloads (data) that you send to AWS IoT
 #' Analytics:
 #' 
-#' -   Must contain only alphanumeric characters and undescores (\\_). No
+#' -   Must contain only alphanumeric characters and undescores (_). No
 #'     other special characters are allowed.
 #' 
-#' -   Must begin with an alphabetic character or single underscore (\\_).
+#' -   Must begin with an alphabetic character or single underscore (_).
 #' 
 #' -   Cannot contain hyphens (-).
 #' 
 #' -   In regular expression terms:
-#'     "^\[A-Za-z\\_\](\[A-Za-z0-9\]*|\[A-Za-z0-9\]\[A-Za-z0-9\\_\]*)$".
+#'     "^\[A-Za-z_\](\[A-Za-z0-9\]*|\[A-Za-z0-9\]\[A-Za-z0-9_\]*)$".
 #' 
 #' -   Cannot be more than 255 characters.
 #' 
 #' -   Are case insensitive. (Fields named foo and FOO in the same payload
 #'     are considered duplicates.)
 #' 
-#' For example, \{"temp\\_01": 29\} or \{"\\_temp\\_01": 29\} are valid, but
-#' \{"temp-01": 29\}, \{"01\\_temp": 29\} or \{"\\_\\_temp\\_01": 29\} are invalid in
-#' message payloads.
+#' For example, \{"temp_01": 29\} or \{"_temp_01": 29\} are valid,
+#' but \{"temp-01": 29\}, \{"01_temp": 29\} or \{"__temp_01":
+#' 29\} are invalid in message payloads.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   batchPutMessageErrorEntries = list(
+#'     list(
+#'       messageId = "string",
+#'       errorCode = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -81,6 +95,12 @@ iotanalytics_batch_put_message <- function(channelName, messages) {
 #' @param pipelineName &#91;required&#93; The name of pipeline for which data reprocessing is canceled.
 #' @param reprocessingId &#91;required&#93; The ID of the reprocessing task (returned by
 #' [`start_pipeline_reprocessing`][iotanalytics_start_pipeline_reprocessing]).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -129,6 +149,19 @@ iotanalytics_cancel_pipeline_reprocessing <- function(pipelineName, reprocessing
 #' @param retentionPeriod How long, in days, message data is kept for the channel. When
 #' `customerManagedS3` storage is selected, this parameter is ignored.
 #' @param tags Metadata which can be used to manage the channel.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   channelName = "string",
+#'   channelArn = "string",
+#'   retentionPeriod = list(
+#'     unlimited = TRUE|FALSE,
+#'     numberOfDays = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -218,6 +251,19 @@ iotanalytics_create_channel <- function(channelName, channelStorage = NULL, rete
 #' data arrives late. To specify `lateDataRules`, the dataset must use a
 #' [DeltaTimer](https://docs.aws.amazon.com/iotanalytics/latest/APIReference/API_DeltaTime.html)
 #' filter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datasetName = "string",
+#'   datasetArn = "string",
+#'   retentionPeriod = list(
+#'     unlimited = TRUE|FALSE,
+#'     numberOfDays = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -353,6 +399,14 @@ iotanalytics_create_dataset <- function(datasetName, actions, triggers = NULL, c
 #' [DeltaTimer](https://docs.aws.amazon.com/iotanalytics/latest/APIReference/API_DeltaTime.html)
 #' filter.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   versionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_dataset_content(
@@ -405,6 +459,19 @@ iotanalytics_create_dataset_content <- function(datasetName, versionId = NULL) {
 #' The default file format is JSON. You can specify only one format.
 #' 
 #' You can't change the file format after you create the data store.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datastoreName = "string",
+#'   datastoreArn = "string",
+#'   retentionPeriod = list(
+#'     unlimited = TRUE|FALSE,
+#'     numberOfDays = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -487,8 +554,17 @@ iotanalytics_create_datastore <- function(datastoreName, datastoreStorage = NULL
 #' `channel` and a `datastore` activity. Each entry in the list must
 #' contain only one activity. For example:
 #' 
-#' `pipelineActivities = \\[ \{ "channel": \{ ... \} \}, \{ "lambda": \{ ... \} \}, ... \\]`
+#' `pipelineActivities = [ { "channel": { ... } }, { "lambda": { ... } }, ... ]`
 #' @param tags Metadata which can be used to manage the pipeline.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelineName = "string",
+#'   pipelineArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -598,6 +674,8 @@ iotanalytics_create_pipeline <- function(pipelineName, pipelineActivities, tags 
 #'
 #' @param channelName &#91;required&#93; The name of the channel to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_channel(
@@ -638,6 +716,8 @@ iotanalytics_delete_channel <- function(channelName) {
 #'
 #' @param datasetName &#91;required&#93; The name of the data set to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_dataset(
@@ -675,9 +755,11 @@ iotanalytics_delete_dataset <- function(datasetName) {
 #'
 #' @param datasetName &#91;required&#93; The name of the dataset whose content is deleted.
 #' @param versionId The version of the dataset whose content is deleted. You can also use
-#' the strings "$LATEST" or "$LATEST\\_SUCCEEDED" to delete the latest or
+#' the strings "$LATEST" or "$LATEST_SUCCEEDED" to delete the latest or
 #' latest successfully completed data set. If not specified,
-#' "$LATEST\\_SUCCEEDED" is the default.
+#' "$LATEST_SUCCEEDED" is the default.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -717,6 +799,8 @@ iotanalytics_delete_dataset_content <- function(datasetName, versionId = NULL) {
 #'
 #' @param datastoreName &#91;required&#93; The name of the data store to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_datastore(
@@ -753,6 +837,8 @@ iotanalytics_delete_datastore <- function(datastoreName) {
 #' iotanalytics_delete_pipeline(pipelineName)
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline to delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -794,6 +880,47 @@ iotanalytics_delete_pipeline <- function(pipelineName) {
 #' included in the response. This feature cannot be used with a channel
 #' whose S3 storage is customer-managed.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   channel = list(
+#'     name = "string",
+#'     storage = list(
+#'       serviceManagedS3 = list(),
+#'       customerManagedS3 = list(
+#'         bucket = "string",
+#'         keyPrefix = "string",
+#'         roleArn = "string"
+#'       )
+#'     ),
+#'     arn = "string",
+#'     status = "CREATING"|"ACTIVE"|"DELETING",
+#'     retentionPeriod = list(
+#'       unlimited = TRUE|FALSE,
+#'       numberOfDays = 123
+#'     ),
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastMessageArrivalTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   statistics = list(
+#'     size = list(
+#'       estimatedSizeInBytes = 123.0,
+#'       estimatedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_channel(
@@ -831,6 +958,109 @@ iotanalytics_describe_channel <- function(channelName, includeStatistics = NULL)
 #' iotanalytics_describe_dataset(datasetName)
 #'
 #' @param datasetName &#91;required&#93; The name of the data set whose information is retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataset = list(
+#'     name = "string",
+#'     arn = "string",
+#'     actions = list(
+#'       list(
+#'         actionName = "string",
+#'         queryAction = list(
+#'           sqlQuery = "string",
+#'           filters = list(
+#'             list(
+#'               deltaTime = list(
+#'                 offsetSeconds = 123,
+#'                 timeExpression = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         containerAction = list(
+#'           image = "string",
+#'           executionRoleArn = "string",
+#'           resourceConfiguration = list(
+#'             computeType = "ACU_1"|"ACU_2",
+#'             volumeSizeInGB = 123
+#'           ),
+#'           variables = list(
+#'             list(
+#'               name = "string",
+#'               stringValue = "string",
+#'               doubleValue = 123.0,
+#'               datasetContentVersionValue = list(
+#'                 datasetName = "string"
+#'               ),
+#'               outputFileUriValue = list(
+#'                 fileName = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     triggers = list(
+#'       list(
+#'         schedule = list(
+#'           expression = "string"
+#'         ),
+#'         dataset = list(
+#'           name = "string"
+#'         )
+#'       )
+#'     ),
+#'     contentDeliveryRules = list(
+#'       list(
+#'         entryName = "string",
+#'         destination = list(
+#'           iotEventsDestinationConfiguration = list(
+#'             inputName = "string",
+#'             roleArn = "string"
+#'           ),
+#'           s3DestinationConfiguration = list(
+#'             bucket = "string",
+#'             key = "string",
+#'             glueConfiguration = list(
+#'               tableName = "string",
+#'               databaseName = "string"
+#'             ),
+#'             roleArn = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     status = "CREATING"|"ACTIVE"|"DELETING",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     retentionPeriod = list(
+#'       unlimited = TRUE|FALSE,
+#'       numberOfDays = 123
+#'     ),
+#'     versioningConfiguration = list(
+#'       unlimited = TRUE|FALSE,
+#'       maxVersions = 123
+#'     ),
+#'     lateDataRules = list(
+#'       list(
+#'         ruleName = "string",
+#'         ruleConfiguration = list(
+#'           deltaTimeSessionWindowConfiguration = list(
+#'             timeoutInMinutes = 123
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -872,6 +1102,60 @@ iotanalytics_describe_dataset <- function(datasetName) {
 #' included in the response. This feature cannot be used with a data store
 #' whose S3 storage is customer-managed.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datastore = list(
+#'     name = "string",
+#'     storage = list(
+#'       serviceManagedS3 = list(),
+#'       customerManagedS3 = list(
+#'         bucket = "string",
+#'         keyPrefix = "string",
+#'         roleArn = "string"
+#'       )
+#'     ),
+#'     arn = "string",
+#'     status = "CREATING"|"ACTIVE"|"DELETING",
+#'     retentionPeriod = list(
+#'       unlimited = TRUE|FALSE,
+#'       numberOfDays = 123
+#'     ),
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastMessageArrivalTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     fileFormatConfiguration = list(
+#'       jsonConfiguration = list(),
+#'       parquetConfiguration = list(
+#'         schemaDefinition = list(
+#'           columns = list(
+#'             list(
+#'               name = "string",
+#'               type = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   statistics = list(
+#'     size = list(
+#'       estimatedSizeInBytes = 123.0,
+#'       estimatedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_datastore(
@@ -908,6 +1192,18 @@ iotanalytics_describe_datastore <- function(datastoreName, includeStatistics = N
 #' @usage
 #' iotanalytics_describe_logging_options()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   loggingOptions = list(
+#'     roleArn = "string",
+#'     level = "ERROR",
+#'     enabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_logging_options()
@@ -942,6 +1238,97 @@ iotanalytics_describe_logging_options <- function() {
 #' iotanalytics_describe_pipeline(pipelineName)
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline whose information is retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipeline = list(
+#'     name = "string",
+#'     arn = "string",
+#'     activities = list(
+#'       list(
+#'         channel = list(
+#'           name = "string",
+#'           channelName = "string",
+#'           next = "string"
+#'         ),
+#'         lambda = list(
+#'           name = "string",
+#'           lambdaName = "string",
+#'           batchSize = 123,
+#'           next = "string"
+#'         ),
+#'         datastore = list(
+#'           name = "string",
+#'           datastoreName = "string"
+#'         ),
+#'         addAttributes = list(
+#'           name = "string",
+#'           attributes = list(
+#'             "string"
+#'           ),
+#'           next = "string"
+#'         ),
+#'         removeAttributes = list(
+#'           name = "string",
+#'           attributes = list(
+#'             "string"
+#'           ),
+#'           next = "string"
+#'         ),
+#'         selectAttributes = list(
+#'           name = "string",
+#'           attributes = list(
+#'             "string"
+#'           ),
+#'           next = "string"
+#'         ),
+#'         filter = list(
+#'           name = "string",
+#'           filter = "string",
+#'           next = "string"
+#'         ),
+#'         math = list(
+#'           name = "string",
+#'           attribute = "string",
+#'           math = "string",
+#'           next = "string"
+#'         ),
+#'         deviceRegistryEnrich = list(
+#'           name = "string",
+#'           attribute = "string",
+#'           thingName = "string",
+#'           roleArn = "string",
+#'           next = "string"
+#'         ),
+#'         deviceShadowEnrich = list(
+#'           name = "string",
+#'           attribute = "string",
+#'           thingName = "string",
+#'           roleArn = "string",
+#'           next = "string"
+#'         )
+#'       )
+#'     ),
+#'     reprocessingSummaries = list(
+#'       list(
+#'         id = "string",
+#'         status = "RUNNING"|"SUCCEEDED"|"CANCELLED"|"FAILED",
+#'         creationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -980,9 +1367,29 @@ iotanalytics_describe_pipeline <- function(pipelineName) {
 #'
 #' @param datasetName &#91;required&#93; The name of the data set whose contents are retrieved.
 #' @param versionId The version of the data set whose contents are retrieved. You can also
-#' use the strings "$LATEST" or "$LATEST\\_SUCCEEDED" to retrieve the
+#' use the strings "$LATEST" or "$LATEST_SUCCEEDED" to retrieve the
 #' contents of the latest or latest successfully completed data set. If not
-#' specified, "$LATEST\\_SUCCEEDED" is the default.
+#' specified, "$LATEST_SUCCEEDED" is the default.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   entries = list(
+#'     list(
+#'       entryName = "string",
+#'       dataURI = "string"
+#'     )
+#'   ),
+#'   timestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   status = list(
+#'     state = "CREATING"|"SUCCEEDED"|"FAILED",
+#'     reason = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1024,6 +1431,37 @@ iotanalytics_get_dataset_content <- function(datasetName, versionId = NULL) {
 #' @param maxResults The maximum number of results to return in this request.
 #' 
 #' The default value is 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   channelSummaries = list(
+#'     list(
+#'       channelName = "string",
+#'       channelStorage = list(
+#'         serviceManagedS3 = list(),
+#'         customerManagedS3 = list(
+#'           bucket = "string",
+#'           keyPrefix = "string",
+#'           roleArn = "string"
+#'         )
+#'       ),
+#'       status = "CREATING"|"ACTIVE"|"DELETING",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastMessageArrivalTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1073,6 +1511,32 @@ iotanalytics_list_channels <- function(nextToken = NULL, maxResults = NULL) {
 #' scheduled before the given time. See the field `triggers.schedule` in
 #' the [`create_dataset`][iotanalytics_create_dataset] request. (timestamp)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datasetContentSummaries = list(
+#'     list(
+#'       version = "string",
+#'       status = list(
+#'         state = "CREATING"|"SUCCEEDED"|"FAILED",
+#'         reason = "string"
+#'       ),
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       scheduleTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       completionTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_dataset_contents(
@@ -1121,6 +1585,42 @@ iotanalytics_list_dataset_contents <- function(datasetName, nextToken = NULL, ma
 #' 
 #' The default value is 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datasetSummaries = list(
+#'     list(
+#'       datasetName = "string",
+#'       status = "CREATING"|"ACTIVE"|"DELETING",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       triggers = list(
+#'         list(
+#'           schedule = list(
+#'             expression = "string"
+#'           ),
+#'           dataset = list(
+#'             name = "string"
+#'           )
+#'         )
+#'       ),
+#'       actions = list(
+#'         list(
+#'           actionName = "string",
+#'           actionType = "QUERY"|"CONTAINER"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_datasets(
@@ -1161,6 +1661,38 @@ iotanalytics_list_datasets <- function(nextToken = NULL, maxResults = NULL) {
 #' @param maxResults The maximum number of results to return in this request.
 #' 
 #' The default value is 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   datastoreSummaries = list(
+#'     list(
+#'       datastoreName = "string",
+#'       datastoreStorage = list(
+#'         serviceManagedS3 = list(),
+#'         customerManagedS3 = list(
+#'           bucket = "string",
+#'           keyPrefix = "string",
+#'           roleArn = "string"
+#'         )
+#'       ),
+#'       status = "CREATING"|"ACTIVE"|"DELETING",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastMessageArrivalTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       fileFormatType = "JSON"|"PARQUET"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1203,6 +1735,34 @@ iotanalytics_list_datastores <- function(nextToken = NULL, maxResults = NULL) {
 #' 
 #' The default value is 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelineSummaries = list(
+#'     list(
+#'       pipelineName = "string",
+#'       reprocessingSummaries = list(
+#'         list(
+#'           id = "string",
+#'           status = "RUNNING"|"SUCCEEDED"|"CANCELLED"|"FAILED",
+#'           creationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_pipelines(
@@ -1240,6 +1800,19 @@ iotanalytics_list_pipelines <- function(nextToken = NULL, maxResults = NULL) {
 #' iotanalytics_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource whose tags you want to list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1283,6 +1856,8 @@ iotanalytics_list_tags_for_resource <- function(resourceArn) {
 #' iotanalytics_put_logging_options(loggingOptions)
 #'
 #' @param loggingOptions &#91;required&#93; The new values of the AWS IoT Analytics logging options.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1332,6 +1907,17 @@ iotanalytics_put_logging_options <- function(loggingOptions) {
 #' short-running Lambda functions (those with a timeout of less than 30
 #' seconds or less) can be used.
 #' @param payloads &#91;required&#93; The sample message payloads on which the pipeline activity is run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   payloads = list(
+#'     raw
+#'   ),
+#'   logResult = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1442,6 +2028,16 @@ iotanalytics_run_pipeline_activity <- function(pipelineActivity, payloads) {
 #' @param startTime The start of the time window from which sample messages are retrieved.
 #' @param endTime The end of the time window from which sample messages are retrieved.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   payloads = list(
+#'     raw
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$sample_channel_data(
@@ -1500,6 +2096,14 @@ iotanalytics_sample_channel_data <- function(channelName, maxMessages = NULL, st
 #' If you use the `channelMessages` object, you must not specify a value
 #' for `startTime` and `endTime`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   reprocessingId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_pipeline_reprocessing(
@@ -1550,6 +2154,12 @@ iotanalytics_start_pipeline_reprocessing <- function(pipelineName, startTime = N
 #' @param resourceArn &#91;required&#93; The ARN of the resource whose tags you want to modify.
 #' @param tags &#91;required&#93; The new or modified tags for the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1593,6 +2203,12 @@ iotanalytics_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource whose tags you want to remove.
 #' @param tagKeys &#91;required&#93; The keys of those tags which you want to remove.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1641,6 +2257,8 @@ iotanalytics_untag_resource <- function(resourceArn, tagKeys) {
 #' @param retentionPeriod How long, in days, message data is kept for the channel. The retention
 #' period cannot be updated if the channel's S3 storage is
 #' customer-managed.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1709,6 +2327,8 @@ iotanalytics_update_channel <- function(channelName, channelStorage = NULL, rete
 #' data arrives late. To specify `lateDataRules`, the dataset must use a
 #' [DeltaTimer](https://docs.aws.amazon.com/iotanalytics/latest/APIReference/API_DeltaTime.html)
 #' filter.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1847,6 +2467,8 @@ iotanalytics_update_dataset <- function(datasetName, actions, triggers = NULL, c
 #' 
 #' You can't change the file format after you create the data store.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_datastore(
@@ -1920,7 +2542,9 @@ iotanalytics_update_datastore <- function(datastoreName, retentionPeriod = NULL,
 #' `channel` and a `datastore` activity. Each entry in the list must
 #' contain only one activity. For example:
 #' 
-#' `pipelineActivities = \\[ \{ "channel": \{ ... \} \}, \{ "lambda": \{ ... \} \}, ... \\]`
+#' `pipelineActivities = [ { "channel": { ... } }, { "lambda": { ... } }, ... ]`
+#'
+
 #'
 #' @section Request syntax:
 #' ```

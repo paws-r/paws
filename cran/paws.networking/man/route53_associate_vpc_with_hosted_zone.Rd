@@ -18,6 +18,19 @@ associate with a private hosted zone.}
 
 \item{Comment}{\emph{Optional:} A comment about the association request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeInfo = list(
+    Id = "string",
+    Status = "PENDING"|"INSYNC",
+    SubmittedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    Comment = "string"
+  )
+)
+}
+}
 \description{
 Associates an Amazon VPC with a private hosted zone.
 

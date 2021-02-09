@@ -50,6 +50,50 @@ includes a list of supported character sets for each engine version.}
 \code{\link[=neptune_create_db_instance]{create_db_instance}}, the response
 includes a list of supported time zones for each engine version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  DBEngineVersions = list(
+    list(
+      Engine = "string",
+      EngineVersion = "string",
+      DBParameterGroupFamily = "string",
+      DBEngineDescription = "string",
+      DBEngineVersionDescription = "string",
+      DefaultCharacterSet = list(
+        CharacterSetName = "string",
+        CharacterSetDescription = "string"
+      ),
+      SupportedCharacterSets = list(
+        list(
+          CharacterSetName = "string",
+          CharacterSetDescription = "string"
+        )
+      ),
+      ValidUpgradeTarget = list(
+        list(
+          Engine = "string",
+          EngineVersion = "string",
+          Description = "string",
+          AutoUpgrade = TRUE|FALSE,
+          IsMajorVersionUpgrade = TRUE|FALSE
+        )
+      ),
+      SupportedTimezones = list(
+        list(
+          TimezoneName = "string"
+        )
+      ),
+      ExportableLogTypes = list(
+        "string"
+      ),
+      SupportsLogExportsToCloudwatchLogs = TRUE|FALSE,
+      SupportsReadReplica = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of the available DB engines.
 }

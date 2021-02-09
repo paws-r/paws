@@ -13,7 +13,10 @@ simpledb_put_attributes(DomainName, ItemName, Attributes, Expected)
 
 \item{Attributes}{[required] The list of attributes.}
 
-\item{Expected}{The update condition which, if specified, determines whether the specified attributes will be updated or not. The update condition must be satisfied in order for this request to be processed and the attributes to be updated.}
+\item{Expected}{The update condition which, if specified, determines whether the
+specified attributes will be updated or not. The update condition must
+be satisfied in order for this request to be processed and the
+attributes to be updated.}
 }
 \description{
 The PutAttributes operation creates or replaces attributes in an item.
@@ -25,19 +28,19 @@ specifies the first attribute by the parameters \code{Attribute.0.Name} and
 
 Attributes are uniquely identified in an item by their name/value
 combination. For example, a single item can have the attributes
-\verb{\\\{ "first_name", "first_value" \\\}} and
-\verb{\\\{ \\"first_name\\", second_value\\" \\\}}. However, it cannot have two
+\verb{\{ "first_name", "first_value" \}} and
+\verb{\{ \\"first_name\\", second_value\\" \}}. However, it cannot have two
 attribute instances where both the \code{Attribute.X.Name} and
 \code{Attribute.X.Value} are the same.
 
 Optionally, the requestor can supply the \code{Replace} parameter for each
 individual attribute. Setting this value to \code{true} causes the new
 attribute value to replace the existing attribute value(s). For example,
-if an item has the attributes \verb{\\\{ 'a', '1' \\\}}, \verb{\\\{ 'b', '2'\\\}} and
-\verb{\\\{ 'b', '3' \\\}} and the requestor calls
+if an item has the attributes \verb{\{ 'a', '1' \}}, \verb{\{ 'b', '2'\}} and
+\verb{\{ 'b', '3' \}} and the requestor calls
 \code{\link[=simpledb_put_attributes]{put_attributes}} using the attributes
-\verb{\\\{ 'b', '4' \\\}} with the \code{Replace} parameter set to true, the final
-attributes of the item are changed to \verb{\\\{ 'a', '1' \\\}} and \verb{\\\{ 'b', '4' \\\}},
+\verb{\{ 'b', '4' \}} with the \code{Replace} parameter set to true, the final
+attributes of the item are changed to \verb{\{ 'a', '1' \}} and \verb{\{ 'b', '4' \}},
 which replaces the previous values of the 'b' attribute with the new
 value.
 

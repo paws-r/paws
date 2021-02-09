@@ -28,6 +28,37 @@ single request.}
 
 \item{Tags}{A list of tag instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterSubnetGroup = list(
+    ClusterSubnetGroupName = "string",
+    Description = "string",
+    VpcId = "string",
+    SubnetGroupStatus = "string",
+    Subnets = list(
+      list(
+        SubnetIdentifier = "string",
+        SubnetAvailabilityZone = list(
+          Name = "string",
+          SupportedPlatforms = list(
+            list(
+              Name = "string"
+            )
+          )
+        ),
+        SubnetStatus = "string"
+      )
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a new Amazon Redshift subnet group. You must provide a list of
 one or more subnets in your existing Amazon Virtual Private Cloud

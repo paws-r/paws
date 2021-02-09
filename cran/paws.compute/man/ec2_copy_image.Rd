@@ -57,6 +57,12 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ImageId = "string"
+)
+}
+}
 \description{
 Initiates the copy of an AMI from the specified source Region to the
 current Region. You specify the destination Region by using its endpoint

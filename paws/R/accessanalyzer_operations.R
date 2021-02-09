@@ -17,6 +17,8 @@ NULL
 #' @param clientToken A client token.
 #' @param ruleName &#91;required&#93; The name of the rule to apply.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$apply_archive_rule(
@@ -63,6 +65,14 @@ accessanalyzer_apply_archive_rule <- function(analyzerArn, clientToken = NULL, r
 #' @param tags The tags to apply to the analyzer.
 #' @param type &#91;required&#93; The type of analyzer to create. Only ACCOUNT analyzers are supported.
 #' You can create only one analyzer per account per Region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -131,6 +141,8 @@ accessanalyzer_create_analyzer <- function(analyzerName, archiveRules = NULL, cl
 #' @param filter &#91;required&#93; The criteria for the rule.
 #' @param ruleName &#91;required&#93; The name of the rule to create.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_archive_rule(
@@ -188,6 +200,8 @@ accessanalyzer_create_archive_rule <- function(analyzerName, clientToken = NULL,
 #' @param analyzerName &#91;required&#93; The name of the analyzer to delete.
 #' @param clientToken A client token.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_analyzer(
@@ -229,6 +243,8 @@ accessanalyzer_delete_analyzer <- function(analyzerName, clientToken = NULL) {
 #' @param clientToken A client token.
 #' @param ruleName &#91;required&#93; The name of the rule to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_archive_rule(
@@ -269,6 +285,36 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, clientToken = NULL,
 #' @param analyzerArn &#91;required&#93; The ARN of the analyzer to retrieve information from.
 #' @param resourceArn &#91;required&#93; The ARN of the resource to retrieve information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resource = list(
+#'     actions = list(
+#'       "string"
+#'     ),
+#'     analyzedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     error = "string",
+#'     isPublic = TRUE|FALSE,
+#'     resourceArn = "string",
+#'     resourceOwnerAccount = "string",
+#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key",
+#'     sharedVia = list(
+#'       "string"
+#'     ),
+#'     status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_analyzed_resource(
@@ -306,6 +352,32 @@ accessanalyzer_get_analyzed_resource <- function(analyzerArn, resourceArn) {
 #' accessanalyzer_get_analyzer(analyzerName)
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   analyzer = list(
+#'     arn = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastResourceAnalyzed = "string",
+#'     lastResourceAnalyzedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     name = "string",
+#'     status = "ACTIVE"|"CREATING"|"DISABLED"|"FAILED",
+#'     statusReason = list(
+#'       code = "AWS_SERVICE_ACCESS_DISABLED"|"DELEGATED_ADMINISTRATOR_DEREGISTERED"|"ORGANIZATION_DELETED"|"SERVICE_LINKED_ROLE_CREATION_FAILED"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     type = "ACCOUNT"|"ORGANIZATION"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -350,6 +422,36 @@ accessanalyzer_get_analyzer <- function(analyzerName) {
 #' @param analyzerName &#91;required&#93; The name of the analyzer to retrieve rules from.
 #' @param ruleName &#91;required&#93; The name of the rule to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   archiveRule = list(
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     filter = list(
+#'       list(
+#'         contains = list(
+#'           "string"
+#'         ),
+#'         eq = list(
+#'           "string"
+#'         ),
+#'         exists = TRUE|FALSE,
+#'         neq = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ruleName = "string",
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_archive_rule(
@@ -388,6 +490,48 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
 #'
 #' @param analyzerArn &#91;required&#93; The ARN of the analyzer that generated the finding.
 #' @param id &#91;required&#93; The ID of the finding to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   finding = list(
+#'     action = list(
+#'       "string"
+#'     ),
+#'     analyzedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     condition = list(
+#'       "string"
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     error = "string",
+#'     id = "string",
+#'     isPublic = TRUE|FALSE,
+#'     principal = list(
+#'       "string"
+#'     ),
+#'     resource = "string",
+#'     resourceOwnerAccount = "string",
+#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key",
+#'     sources = list(
+#'       list(
+#'         detail = list(
+#'           accessPointArn = "string"
+#'         ),
+#'         type = "POLICY"|"BUCKET_ACL"|"S3_ACCESS_POINT"
+#'       )
+#'     ),
+#'     status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -433,6 +577,21 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #' @param nextToken A token used for pagination of results returned.
 #' @param resourceType The type of resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   analyzedResources = list(
+#'     list(
+#'       resourceArn = "string",
+#'       resourceOwnerAccount = "string",
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_analyzed_resources(
@@ -475,6 +634,35 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, maxResults = NUL
 #' @param nextToken A token used for pagination of results returned.
 #' @param type The type of analyzer.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   analyzers = list(
+#'     list(
+#'       arn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastResourceAnalyzed = "string",
+#'       lastResourceAnalyzedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       name = "string",
+#'       status = "ACTIVE"|"CREATING"|"DISABLED"|"FAILED",
+#'       statusReason = list(
+#'         code = "AWS_SERVICE_ACCESS_DISABLED"|"DELEGATED_ADMINISTRATOR_DEREGISTERED"|"ORGANIZATION_DELETED"|"SERVICE_LINKED_ROLE_CREATION_FAILED"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       type = "ACCOUNT"|"ORGANIZATION"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_analyzers(
@@ -515,6 +703,39 @@ accessanalyzer_list_analyzers <- function(maxResults = NULL, nextToken = NULL, t
 #' @param analyzerName &#91;required&#93; The name of the analyzer to retrieve rules from.
 #' @param maxResults The maximum number of results to return in the request.
 #' @param nextToken A token used for pagination of results returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   archiveRules = list(
+#'     list(
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       filter = list(
+#'         list(
+#'           contains = list(
+#'             "string"
+#'           ),
+#'           eq = list(
+#'             "string"
+#'           ),
+#'           exists = TRUE|FALSE,
+#'           neq = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ruleName = "string",
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -564,6 +785,51 @@ accessanalyzer_list_archive_rules <- function(analyzerName, maxResults = NULL, n
 #' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
 #' @param sort The sort order for the findings returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   findings = list(
+#'     list(
+#'       action = list(
+#'         "string"
+#'       ),
+#'       analyzedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       condition = list(
+#'         "string"
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       error = "string",
+#'       id = "string",
+#'       isPublic = TRUE|FALSE,
+#'       principal = list(
+#'         "string"
+#'       ),
+#'       resource = "string",
+#'       resourceOwnerAccount = "string",
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key",
+#'       sources = list(
+#'         list(
+#'           detail = list(
+#'             accessPointArn = "string"
+#'           ),
+#'           type = "POLICY"|"BUCKET_ACL"|"S3_ACCESS_POINT"
+#'         )
+#'       ),
+#'       status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -622,6 +888,16 @@ accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, maxResults 
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to retrieve tags from.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -663,6 +939,8 @@ accessanalyzer_list_tags_for_resource <- function(resourceArn) {
 #' specified resource.
 #' @param resourceArn &#91;required&#93; The ARN of the resource to scan.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_resource_scan(
@@ -701,6 +979,12 @@ accessanalyzer_start_resource_scan <- function(analyzerArn, resourceArn) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to add the tag to.
 #' @param tags &#91;required&#93; The tags to add to the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -742,6 +1026,12 @@ accessanalyzer_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to remove the tag from.
 #' @param tagKeys &#91;required&#93; The key for the tag to add.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -787,6 +1077,8 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
 #' @param filter &#91;required&#93; A filter to match for the rules to update. Only rules that match the
 #' filter are updated.
 #' @param ruleName &#91;required&#93; The name of the rule to update.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -847,6 +1139,8 @@ accessanalyzer_update_archive_rule <- function(analyzerName, clientToken = NULL,
 #' @param status &#91;required&#93; The state represents the action to take to update the finding Status.
 #' Use `ARCHIVE` to change an Active finding to an Archived finding. Use
 #' `ACTIVE` to change an Archived finding to an Active finding.
+#'
+
 #'
 #' @section Request syntax:
 #' ```

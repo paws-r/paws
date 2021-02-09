@@ -26,6 +26,30 @@ returned.}
 
 \item{nextToken}{The token for the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  virtualInterfaceTestHistory = list(
+    list(
+      testId = "string",
+      virtualInterfaceId = "string",
+      bgpPeers = list(
+        "string"
+      ),
+      status = "string",
+      ownerAccount = "string",
+      testDurationInMinutes = 123,
+      startTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      endTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the virtual interface failover test history.
 }

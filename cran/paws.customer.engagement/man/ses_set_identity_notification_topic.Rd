@@ -26,6 +26,10 @@ SNS topic.}
 is omitted from the request or a null value is passed, \code{SnsTopic} is
 cleared and publishing is disabled.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Sets an Amazon Simple Notification Service (Amazon SNS) topic to use
 when delivering notifications. When you use this operation, you specify

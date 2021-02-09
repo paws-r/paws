@@ -11,6 +11,17 @@ health_describe_entity_aggregates(eventArns)
 \item{eventArns}{A list of event ARNs (unique identifiers). For example:
 \verb{"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  entityAggregates = list(
+    list(
+      eventArn = "string",
+      count = 123
+    )
+  )
+)
+}
+}
 \description{
 Returns the number of entities that are affected by each of the
 specified events. If no events are specified, the counts of all affected

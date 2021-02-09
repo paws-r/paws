@@ -12,6 +12,10 @@ delete.}
 
 \item{BudgetName}{[required] The name of the budget that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a budget. You can delete your budget at any time.
 

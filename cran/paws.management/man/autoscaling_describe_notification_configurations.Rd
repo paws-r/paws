@@ -17,6 +17,19 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{50} and the maximum value is \code{100}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NotificationConfigurations = list(
+    list(
+      AutoScalingGroupName = "string",
+      TopicARN = "string",
+      NotificationType = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the notification actions associated with the specified Auto
 Scaling group.

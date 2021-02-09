@@ -16,6 +16,29 @@ For this request, you can specify an AWS resource type such as
 \verb{AWS::EC2::Instance}. You can specify that the resource type is an AWS
 account by specifying \verb{AWS::::Account}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ComplianceSummariesByResourceType = list(
+    list(
+      ResourceType = "string",
+      ComplianceSummary = list(
+        CompliantResourceCount = list(
+          CappedCount = 123,
+          CapExceeded = TRUE|FALSE
+        ),
+        NonCompliantResourceCount = list(
+          CappedCount = 123,
+          CapExceeded = TRUE|FALSE
+        ),
+        ComplianceSummaryTimestamp = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the number of resources that are compliant and the number that
 are noncompliant. You can specify one or more resource types to get

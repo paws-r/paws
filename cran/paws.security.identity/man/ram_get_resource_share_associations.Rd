@@ -29,6 +29,29 @@ is \code{RESOURCE}.}
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resourceShareAssociations = list(
+    list(
+      resourceShareArn = "string",
+      resourceShareName = "string",
+      associatedEntity = "string",
+      associationType = "PRINCIPAL"|"RESOURCE",
+      status = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
+      statusMessage = "string",
+      creationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      external = TRUE|FALSE
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets the resources or principals for the resource shares that you own.
 }

@@ -7,7 +7,9 @@
 simpledb_create_domain(DomainName)
 }
 \arguments{
-\item{DomainName}{[required] The name of the domain to create. The name can range between 3 and 255 characters and can contain the following characters: a-z, A-Z, 0-9, '_', '-', and '.'.}
+\item{DomainName}{[required] The name of the domain to create. The name can range between 3 and 255
+characters and can contain the following characters: a-z, A-Z, 0-9,
+'_', '-', and '.'.}
 }
 \description{
 The \code{\link[=simpledb_create_domain]{create_domain}} operation creates a new

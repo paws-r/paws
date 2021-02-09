@@ -33,6 +33,38 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BundleTasks = list(
+    list(
+      BundleId = "string",
+      BundleTaskError = list(
+        Code = "string",
+        Message = "string"
+      ),
+      InstanceId = "string",
+      Progress = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      State = "pending"|"waiting-for-shutdown"|"bundling"|"storing"|"cancelling"|"complete"|"failed",
+      Storage = list(
+        S3 = list(
+          AWSAccessKeyId = "string",
+          Bucket = "string",
+          Prefix = "string",
+          UploadPolicy = raw,
+          UploadPolicySignature = "string"
+        )
+      ),
+      UpdateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the specified bundle tasks or all of your bundle tasks.
 

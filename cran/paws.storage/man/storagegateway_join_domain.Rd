@@ -35,6 +35,13 @@ computers to the domain.}
 \item{Password}{[required] Sets the password of the user who has permission to add the gateway to
 the Active Directory domain.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string",
+  ActiveDirectoryStatus = "ACCESS_DENIED"|"DETACHED"|"JOINED"|"JOINING"|"NETWORK_ERROR"|"TIMEOUT"|"UNKNOWN_ERROR"
+)
+}
+}
 \description{
 Adds a file gateway to an Active Directory domain. This operation is
 only supported for file gateways that support the SMB file protocol.

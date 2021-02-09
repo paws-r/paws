@@ -17,6 +17,41 @@ mturk_list_assignments_for_hit(HITId, NextToken, MaxResults,
 
 \item{AssignmentStatuses}{The status of the assignments to return: Submitted | Approved | Rejected}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  NumResults = 123,
+  Assignments = list(
+    list(
+      AssignmentId = "string",
+      WorkerId = "string",
+      HITId = "string",
+      AssignmentStatus = "Submitted"|"Approved"|"Rejected",
+      AutoApprovalTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      AcceptTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      SubmitTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ApprovalTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      RejectionTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Deadline = as.POSIXct(
+        "2015-01-01"
+      ),
+      Answer = "string",
+      RequesterFeedback = "string"
+    )
+  )
+)
+}
+}
 \description{
 The \code{\link[=mturk_list_assignments_for_hit]{list_assignments_for_hit}}
 operation retrieves completed assignments for a HIT. You can use this

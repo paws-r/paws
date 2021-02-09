@@ -28,6 +28,12 @@ RemoteDomainName.}
 
 \item{SelectiveAuth}{Optional parameter to enable selective authentication for the trust.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrustId = "string"
+)
+}
+}
 \description{
 AWS Directory Service for Microsoft Active Directory allows you to
 configure trust relationships. For example, you can establish a trust

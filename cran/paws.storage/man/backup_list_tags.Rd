@@ -20,6 +20,15 @@ pointed to by the next token.}
 
 \item{MaxResults}{The maximum number of items to be returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a list of key-value pairs assigned to a target recovery point,
 backup plan, or backup vault.

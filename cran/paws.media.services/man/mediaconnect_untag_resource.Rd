@@ -7,7 +7,8 @@
 mediaconnect_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource from which to delete tags.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that identifies the AWS Elemental
+MediaConnect resource from which to delete tags.}
 
 \item{TagKeys}{[required] The keys of the tags to be removed.}
 }

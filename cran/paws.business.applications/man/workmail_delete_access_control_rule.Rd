@@ -11,6 +11,10 @@ workmail_delete_access_control_rule(OrganizationId, Name)
 
 \item{Name}{[required] The name of the access control rule.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes an access control rule for the specified WorkMail organization.
 }

@@ -15,6 +15,19 @@ You can either specify an AWS account ID or optionally a single '\code{-}'
 associated with the credentials used to sign the request. If you specify
 your account ID, do not include any hyphens ('-') in the ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = list(
+    Rules = list(
+      list(
+        Strategy = "string",
+        BytesPerHour = 123
+      )
+    )
+  )
+)
+}
+}
 \description{
 This operation returns the current data retrieval policy for the account
 and region specified in the GET request. For more information about data

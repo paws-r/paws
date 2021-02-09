@@ -57,7 +57,15 @@ you specify.
 
 This parameter is required only for asymmetric CMKs. The default value,
 \code{SYMMETRIC_DEFAULT}, is the algorithm used for symmetric CMKs. If you
-are using an asymmetric CMK, we recommend RSAES\\_OAEP\\_SHA\\_256.}
+are using an asymmetric CMK, we recommend RSAES_OAEP_SHA_256.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  CiphertextBlob = raw,
+  KeyId = "string",
+  EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
+)
+}
 }
 \description{
 Encrypts plaintext into ciphertext by using a customer master key (CMK).

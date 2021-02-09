@@ -20,6 +20,10 @@ hook.}
 
 \item{InstanceId}{The ID of the instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Records a heartbeat for the lifecycle action associated with the
 specified token or instance. This extends the timeout by the length of

@@ -39,6 +39,43 @@ specify images with \code{imageIds}.}
 \item{filter}{The filter key and value with which to filter your
 \code{\link[=ecr_describe_images]{describe_images}} results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  imageDetails = list(
+    list(
+      registryId = "string",
+      repositoryName = "string",
+      imageDigest = "string",
+      imageTags = list(
+        "string"
+      ),
+      imageSizeInBytes = 123,
+      imagePushedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      imageScanStatus = list(
+        status = "IN_PROGRESS"|"COMPLETE"|"FAILED",
+        description = "string"
+      ),
+      imageScanFindingsSummary = list(
+        imageScanCompletedAt = as.POSIXct(
+          "2015-01-01"
+        ),
+        vulnerabilitySourceUpdatedAt = as.POSIXct(
+          "2015-01-01"
+        ),
+        findingSeverityCounts = list(
+          123
+        )
+      ),
+      imageManifestMediaType = "string",
+      artifactMediaType = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns metadata about the images in a repository.
 

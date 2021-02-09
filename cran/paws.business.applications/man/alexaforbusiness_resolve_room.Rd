@@ -12,6 +12,19 @@ alexaforbusiness_resolve_room(UserId, SkillId)
 
 \item{SkillId}{[required] The ARN of the skill that was requested. Required.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RoomArn = "string",
+  RoomName = "string",
+  RoomSkillParameters = list(
+    list(
+      ParameterKey = "string",
+      ParameterValue = "string"
+    )
+  )
+)
+}
+}
 \description{
 Determines the details for the room from which a skill request was
 invoked. This operation is used by skill developers.

@@ -14,6 +14,18 @@ datasync_list_tags_for_resource(ResourceArn, MaxResults, NextToken)
 \item{NextToken}{An opaque string that indicates the position at which to begin the next
 list of locations.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns all the tags associated with a specified resource.
 }

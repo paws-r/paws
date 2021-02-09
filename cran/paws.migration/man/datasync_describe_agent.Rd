@@ -10,6 +10,31 @@ datasync_describe_agent(AgentArn)
 \arguments{
 \item{AgentArn}{[required] The Amazon Resource Name (ARN) of the agent to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AgentArn = "string",
+  Name = "string",
+  Status = "ONLINE"|"OFFLINE",
+  LastConnectionTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  EndpointType = "PUBLIC"|"PRIVATE_LINK"|"FIPS",
+  PrivateLinkConfig = list(
+    VpcEndpointId = "string",
+    PrivateLinkEndpoint = "string",
+    SubnetArns = list(
+      "string"
+    ),
+    SecurityGroupArns = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns metadata such as the name, the network interfaces, and the
 status (that is, whether the agent is running or not) for an agent. To

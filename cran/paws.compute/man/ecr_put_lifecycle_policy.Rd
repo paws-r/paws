@@ -16,6 +16,14 @@ assumed.}
 
 \item{lifecyclePolicyText}{[required] The JSON repository policy text to apply to the repository.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  repositoryName = "string",
+  lifecyclePolicyText = "string"
+)
+}
+}
 \description{
 Creates or updates the lifecycle policy for the specified repository.
 For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html}{Lifecycle Policy Template}.

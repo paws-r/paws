@@ -11,6 +11,12 @@ acmpca_get_policy(ResourceArn)
 policy retrieved. You can find the CA's ARN by calling the
 ListCertificateAuthorities action.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = "string"
+)
+}
+}
 \description{
 Retrieves the resource-based policy attached to a private CA. If either
 the private CA resource or the policy cannot be found, this action

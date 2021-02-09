@@ -11,7 +11,7 @@ ssm_remove_tags_from_resource(ResourceType, ResourceId, TagKeys)
 
 The ManagedInstance type for this API action is only for on-premises
 managed instances. Specify the name of the managed instance in the
-following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.}
+following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.}
 
 \item{ResourceId}{[required] The ID of the resource from which you want to remove tags. For example:
 
@@ -25,9 +25,13 @@ For the Document and Parameter values, use the name of the resource.
 
 The ManagedInstance type for this API action is only for on-premises
 managed instances. Specify the name of the managed instance in the
-following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.}
+following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.}
 
 \item{TagKeys}{[required] Tag keys that you want to remove from the specified resource.}
+}
+\value{
+A list with the following syntax:\preformatted{list()
+}
 }
 \description{
 Removes tag keys from the specified resource.

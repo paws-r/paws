@@ -43,6 +43,25 @@ percent.}
 \item{downlinkLossPercent}{Proportion of received packets that fail to arrive from 0 to 100
 percent.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  networkProfile = list(
+    arn = "string",
+    name = "string",
+    description = "string",
+    type = "CURATED"|"PRIVATE",
+    uplinkBandwidthBits = 123,
+    downlinkBandwidthBits = 123,
+    uplinkDelayMs = 123,
+    downlinkDelayMs = 123,
+    uplinkJitterMs = 123,
+    downlinkJitterMs = 123,
+    uplinkLossPercent = 123,
+    downlinkLossPercent = 123
+  )
+)
+}
+}
 \description{
 Creates a network profile.
 }

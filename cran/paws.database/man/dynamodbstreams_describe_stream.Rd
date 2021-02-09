@@ -17,6 +17,38 @@ dynamodbstreams_describe_stream(StreamArn, Limit, ExclusiveStartShardId)
 the value that was returned for \code{LastEvaluatedShardId} in the previous
 operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StreamDescription = list(
+    StreamArn = "string",
+    StreamLabel = "string",
+    StreamStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED",
+    StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY",
+    CreationRequestDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    TableName = "string",
+    KeySchema = list(
+      list(
+        AttributeName = "string",
+        KeyType = "HASH"|"RANGE"
+      )
+    ),
+    Shards = list(
+      list(
+        ShardId = "string",
+        SequenceNumberRange = list(
+          StartingSequenceNumber = "string",
+          EndingSequenceNumber = "string"
+        ),
+        ParentShardId = "string"
+      )
+    ),
+    LastEvaluatedShardId = "string"
+  )
+)
+}
+}
 \description{
 Returns information about a stream, including the current status of the
 stream, its Amazon Resource Name (ARN), the composition of its shards,
@@ -45,7 +77,7 @@ longer receive more data.
 \dontrun{
 # The following example describes a stream with a given stream ARN.
 svc$describe_stream(
-  StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T20:51:1..."
+  StreamArn = "arn:aws:dynamodb:us-west-2:111122223333:table/Forum/stream/2015-05-20T..."
 )
 }
 

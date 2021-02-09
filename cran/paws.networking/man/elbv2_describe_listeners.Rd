@@ -19,6 +19,90 @@ previous call.)}
 
 \item{PageSize}{The maximum number of results to return with this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Listeners = list(
+    list(
+      ListenerArn = "string",
+      LoadBalancerArn = "string",
+      Port = 123,
+      Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+      Certificates = list(
+        list(
+          CertificateArn = "string",
+          IsDefault = TRUE|FALSE
+        )
+      ),
+      SslPolicy = "string",
+      DefaultActions = list(
+        list(
+          Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+          TargetGroupArn = "string",
+          AuthenticateOidcConfig = list(
+            Issuer = "string",
+            AuthorizationEndpoint = "string",
+            TokenEndpoint = "string",
+            UserInfoEndpoint = "string",
+            ClientId = "string",
+            ClientSecret = "string",
+            SessionCookieName = "string",
+            Scope = "string",
+            SessionTimeout = 123,
+            AuthenticationRequestExtraParams = list(
+              "string"
+            ),
+            OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
+            UseExistingClientSecret = TRUE|FALSE
+          ),
+          AuthenticateCognitoConfig = list(
+            UserPoolArn = "string",
+            UserPoolClientId = "string",
+            UserPoolDomain = "string",
+            SessionCookieName = "string",
+            Scope = "string",
+            SessionTimeout = 123,
+            AuthenticationRequestExtraParams = list(
+              "string"
+            ),
+            OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+          ),
+          Order = 123,
+          RedirectConfig = list(
+            Protocol = "string",
+            Port = "string",
+            Host = "string",
+            Path = "string",
+            Query = "string",
+            StatusCode = "HTTP_301"|"HTTP_302"
+          ),
+          FixedResponseConfig = list(
+            MessageBody = "string",
+            StatusCode = "string",
+            ContentType = "string"
+          ),
+          ForwardConfig = list(
+            TargetGroups = list(
+              list(
+                TargetGroupArn = "string",
+                Weight = 123
+              )
+            ),
+            TargetGroupStickinessConfig = list(
+              Enabled = TRUE|FALSE,
+              DurationSeconds = 123
+            )
+          )
+        )
+      ),
+      AlpnPolicy = list(
+        "string"
+      )
+    )
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 Describes the specified listeners or the listeners for the specified
 Application Load Balancer, Network Load Balancer, or Gateway Load
@@ -42,7 +126,7 @@ listeners.
 # This example describes the specified listener.
 svc$describe_listeners(
   ListenerArns = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balancer/50dc6..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-balance..."
   )
 )
 }

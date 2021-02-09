@@ -18,6 +18,10 @@ rds_deregister_db_proxy_targets(DBProxyName, TargetGroupName,
 
 \item{DBClusterIdentifiers}{One or more DB cluster identifiers.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Remove the association between one or more \code{DBProxyTarget} data
 structures and a \code{DBProxyTargetGroup}.

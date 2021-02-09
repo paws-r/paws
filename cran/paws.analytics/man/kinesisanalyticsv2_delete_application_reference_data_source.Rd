@@ -24,6 +24,13 @@ Kinesis Data Analytics assigns an ID. You can use the
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
 operation to get the reference ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationARN = "string",
+  ApplicationVersionId = 123
+)
+}
+}
 \description{
 Deletes a reference data source configuration from the specified
 SQL-based Kinesis Data Analytics application's configuration.

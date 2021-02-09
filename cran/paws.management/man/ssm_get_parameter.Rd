@@ -12,6 +12,24 @@ ssm_get_parameter(Name, WithDecryption)
 \item{WithDecryption}{Return decrypted values for secure string parameters. This flag is
 ignored for String and StringList parameter types.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Parameter = list(
+    Name = "string",
+    Type = "String"|"StringList"|"SecureString",
+    Value = "string",
+    Version = 123,
+    Selector = "string",
+    SourceResult = "string",
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    ARN = "string",
+    DataType = "string"
+  )
+)
+}
+}
 \description{
 Get information about a parameter by using the parameter name. Don't
 confuse this API action with the \code{\link[=ssm_get_parameters]{get_parameters}}

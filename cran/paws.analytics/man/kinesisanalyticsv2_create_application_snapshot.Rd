@@ -12,6 +12,10 @@ kinesisanalyticsv2_create_application_snapshot(ApplicationName,
 
 \item{SnapshotName}{[required] An identifier for the application snapshot.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates a snapshot of the application's state data.
 }

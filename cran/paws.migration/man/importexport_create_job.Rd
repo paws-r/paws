@@ -19,8 +19,29 @@ importexport_create_job(JobType, Manifest, ManifestAddendum,
 
 \item{APIVersion}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string",
+  JobType = "Import"|"Export",
+  Signature = "string",
+  SignatureFileContents = "string",
+  WarningMessage = "string",
+  ArtifactList = list(
+    list(
+      Description = "string",
+      URL = "string"
+    )
+  )
+)
+}
+}
 \description{
-This operation initiates the process of scheduling an upload or download of your data. You include in the request a manifest that describes the data transfer specifics. The response to the request includes a job ID, which you can use in other operations, a signature that you use to identify your storage device, and the address where you should ship your storage device.
+This operation initiates the process of scheduling an upload or download
+of your data. You include in the request a manifest that describes the
+data transfer specifics. The response to the request includes a job ID,
+which you can use in other operations, a signature that you use to
+identify your storage device, and the address where you should ship your
+storage device.
 }
 \section{Request syntax}{
 \preformatted{svc$create_job(

@@ -10,6 +10,10 @@ batch_delete_compute_environment(computeEnvironment)
 \item{computeEnvironment}{[required] The name or Amazon Resource Name (ARN) of the compute environment to
 delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes an AWS Batch compute environment.
 

@@ -20,6 +20,19 @@ NULL
 #' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
 #' in the *AWS SSO OIDC API Reference Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   roleCredentials = list(
+#'     accessKeyId = "string",
+#'     secretAccessKey = "string",
+#'     sessionToken = "string",
+#'     expiration = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_role_credentials(
@@ -65,6 +78,20 @@ sso_get_role_credentials <- function(roleName, accountId, accessToken) {
 #' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
 #' in the *AWS SSO OIDC API Reference Guide*.
 #' @param accountId &#91;required&#93; The identifier for the AWS account that is assigned to the user.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   roleList = list(
+#'     list(
+#'       roleName = "string",
+#'       accountId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -117,6 +144,21 @@ sso_list_account_roles <- function(nextToken = NULL, maxResults = NULL, accessTo
 #' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
 #' in the *AWS SSO OIDC API Reference Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   accountList = list(
+#'     list(
+#'       accountId = "string",
+#'       accountName = "string",
+#'       emailAddress = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_accounts(
@@ -160,6 +202,8 @@ sso_list_accounts <- function(nextToken = NULL, maxResults = NULL, accessToken) 
 #' see
 #' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
 #' in the *AWS SSO OIDC API Reference Guide*.
+#'
+
 #'
 #' @section Request syntax:
 #' ```

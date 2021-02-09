@@ -11,6 +11,10 @@ dlm_tag_resource(ResourceArn, Tags)
 
 \item{Tags}{[required] One or more tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds the specified tags to the specified resource.
 }

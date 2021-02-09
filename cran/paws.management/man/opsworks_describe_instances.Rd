@@ -20,6 +20,77 @@ of the instances associated with the specified layer.}
 description of the specified instances. Otherwise, it returns a
 description of every instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Instances = list(
+    list(
+      AgentVersion = "string",
+      AmiId = "string",
+      Architecture = "x86_64"|"i386",
+      Arn = "string",
+      AutoScalingType = "load"|"timer",
+      AvailabilityZone = "string",
+      BlockDeviceMappings = list(
+        list(
+          DeviceName = "string",
+          NoDevice = "string",
+          VirtualName = "string",
+          Ebs = list(
+            SnapshotId = "string",
+            Iops = 123,
+            VolumeSize = 123,
+            VolumeType = "gp2"|"io1"|"standard",
+            DeleteOnTermination = TRUE|FALSE
+          )
+        )
+      ),
+      CreatedAt = "string",
+      EbsOptimized = TRUE|FALSE,
+      Ec2InstanceId = "string",
+      EcsClusterArn = "string",
+      EcsContainerInstanceArn = "string",
+      ElasticIp = "string",
+      Hostname = "string",
+      InfrastructureClass = "string",
+      InstallUpdatesOnBoot = TRUE|FALSE,
+      InstanceId = "string",
+      InstanceProfileArn = "string",
+      InstanceType = "string",
+      LastServiceErrorId = "string",
+      LayerIds = list(
+        "string"
+      ),
+      Os = "string",
+      Platform = "string",
+      PrivateDns = "string",
+      PrivateIp = "string",
+      PublicDns = "string",
+      PublicIp = "string",
+      RegisteredBy = "string",
+      ReportedAgentVersion = "string",
+      ReportedOs = list(
+        Family = "string",
+        Name = "string",
+        Version = "string"
+      ),
+      RootDeviceType = "ebs"|"instance-store",
+      RootDeviceVolumeId = "string",
+      SecurityGroupIds = list(
+        "string"
+      ),
+      SshHostDsaKeyFingerprint = "string",
+      SshHostRsaKeyFingerprint = "string",
+      SshKeyName = "string",
+      StackId = "string",
+      Status = "string",
+      SubnetId = "string",
+      Tenancy = "string",
+      VirtualizationType = "paravirtual"|"hvm"
+    )
+  )
+)
+}
+}
 \description{
 Requests a description of a set of instances.
 

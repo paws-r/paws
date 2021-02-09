@@ -11,6 +11,10 @@ licensemanager_check_in_license(LicenseConsumptionToken, Beneficiary)
 
 \item{Beneficiary}{License beneficiary.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Checks in the specified license. Check in a license when it is no longer
 in use.

@@ -40,6 +40,10 @@ This value can be any of the following:
 If encrypted is enabled but a KMS key ID is not specified, the
 customer's default KMS key for Amazon EBS is used.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the specified settings for the specified replication job.
 }

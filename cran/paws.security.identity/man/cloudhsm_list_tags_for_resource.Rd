@@ -9,6 +9,17 @@ cloudhsm_list_tags_for_resource(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the AWS CloudHSM resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
 information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},

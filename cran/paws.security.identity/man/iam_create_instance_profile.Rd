@@ -11,7 +11,7 @@ iam_create_instance_profile(InstanceProfileName, Path)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{Path}{The path to the instance profile. For more information about paths, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
@@ -23,9 +23,53 @@ slash (/).
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
-ASCII character from the ! (\code{U+0021}) through the DEL character
-(\verb{U+007F}), including most punctuation characters, digits, and upper and
+ASCII character from the ! (\verb{\\u0021}) through the DEL character
+(\verb{\\u007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceProfile = list(
+    Path = "string",
+    InstanceProfileName = "string",
+    InstanceProfileId = "string",
+    Arn = "string",
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Roles = list(
+      list(
+        Path = "string",
+        RoleName = "string",
+        RoleId = "string",
+        Arn = "string",
+        CreateDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        AssumeRolePolicyDocument = "string",
+        Description = "string",
+        MaxSessionDuration = 123,
+        PermissionsBoundary = list(
+          PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+          PermissionsBoundaryArn = "string"
+        ),
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        ),
+        RoleLastUsed = list(
+          LastUsedDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          Region = "string"
+        )
+      )
+    )
+  )
+)
+}
 }
 \description{
 Creates a new instance profile. For information about instance profiles,

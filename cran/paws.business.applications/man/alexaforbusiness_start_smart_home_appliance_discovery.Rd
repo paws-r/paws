@@ -10,6 +10,10 @@ alexaforbusiness_start_smart_home_appliance_discovery(RoomArn)
 \arguments{
 \item{RoomArn}{[required] The room where smart home appliance discovery was initiated.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Initiates the discovery of any smart home appliances associated with the
 room.

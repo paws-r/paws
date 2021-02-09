@@ -11,6 +11,10 @@ appsync_tag_resource(resourceArn, tags)
 
 \item{tags}{[required] A \code{TagMap} object.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Tags a resource with user-supplied tags.
 }

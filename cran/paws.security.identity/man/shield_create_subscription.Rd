@@ -6,6 +6,10 @@
 \usage{
 shield_create_subscription()
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Activates AWS Shield Advanced for an account.
 

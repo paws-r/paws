@@ -40,6 +40,36 @@ must specify \code{StackName}.
 
 Default: There is no default value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StackResources = list(
+    list(
+      StackName = "string",
+      StackId = "string",
+      LogicalResourceId = "string",
+      PhysicalResourceId = "string",
+      ResourceType = "string",
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE",
+      ResourceStatusReason = "string",
+      Description = "string",
+      DriftInformation = list(
+        StackResourceDriftStatus = "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED",
+        LastCheckTimestamp = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      ModuleInfo = list(
+        TypeHierarchy = "string",
+        LogicalIdHierarchy = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns AWS resource descriptions for running and deleted stacks. If
 \code{StackName} is specified, all the associated resources that are part of

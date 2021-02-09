@@ -14,6 +14,10 @@ tags for.}
 required. You can set the value of a tag to an empty string, but you
 can't set the value of a tag to null.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds one or more tags to the specified resource.
 }
@@ -34,7 +38,7 @@ Adds one or more tags to the specified resource.
 \dontrun{
 # This example adds "Department" and "Project" tags to a resource.
 svc$tag_resource(
-  ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/ns-ylexjili4cdxy3...",
+  ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/ns-ylexjil...",
   Tags = list(
     list(
       Key = "Department",

@@ -18,7 +18,7 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this operation with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 When using this API with Amazon S3 on Outposts, you must direct requests
@@ -27,7 +27,7 @@ form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
 When using this operation using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{ContentLength}{Size of the body in bytes. This parameter is useful when the size of the
@@ -65,6 +65,18 @@ that the encryption key was transmitted without error.}
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServerSideEncryption = "AES256"|"aws:kms",
+  ETag = "string",
+  SSECustomerAlgorithm = "string",
+  SSECustomerKeyMD5 = "string",
+  SSEKMSKeyId = "string",
+  BucketKeyEnabled = TRUE|FALSE,
+  RequestCharged = "requester"
+)
+}
+}
 \description{
 Uploads a part in a multipart upload.
 
@@ -101,11 +113,11 @@ stop getting charged for storage of the uploaded parts. Only after you
 either complete or abort multipart upload, Amazon S3 frees up the parts
 storage and stops charging you for the parts storage.
 
-For more information on multipart uploads, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html}{Multipart Upload Overview}
+For more information on multipart uploads, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload Overview}
 in the \emph{Amazon Simple Storage Service Developer Guide} .
 
 For information on the permissions required to use the multipart upload
-API, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html}{Multipart Upload API and Permissions}
+API, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload API and Permissions}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 You can optionally request server-side encryption where Amazon S3
@@ -116,7 +128,7 @@ If you choose to provide your own encryption key, the request headers
 you provide in the request must match the headers you used in the
 request to initiate the upload by using
 \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}. For more
-information, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html}{Using Server-Side Encryption}
+information, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html}{Using Server-Side Encryption}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Server-side encryption is supported by the S3 Multipart Upload actions.
@@ -186,7 +198,7 @@ svc$upload_part(
   Bucket = "examplebucket",
   Key = "examplelargeobject",
   PartNumber = "1",
-  UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."
+  UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOm..."
 )
 }
 

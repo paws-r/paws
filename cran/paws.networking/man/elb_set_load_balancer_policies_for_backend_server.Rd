@@ -16,6 +16,10 @@ elb_set_load_balancer_policies_for_backend_server(LoadBalancerName,
 \item{PolicyNames}{[required] The names of the policies. If the list is empty, then all current
 polices are removed from the EC2 instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Replaces the set of policies associated with the specified port on which
 the EC2 instance is listening with a new set of policies. At this time,

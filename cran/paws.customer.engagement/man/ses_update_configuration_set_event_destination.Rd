@@ -14,6 +14,10 @@ that you want to update.}
 \item{EventDestination}{[required] The event destination object that you want to apply to the specified
 configuration set.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the event destination of a configuration set. Event destinations
 are associated with configuration sets, which enable you to publish

@@ -10,6 +10,10 @@ codepipeline_deregister_webhook_with_third_party(webhookName)
 \arguments{
 \item{webhookName}{The name of the webhook you want to deregister.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the connection between the webhook that was created by
 CodePipeline and the external tool with events to be detected. Currently

@@ -13,6 +13,19 @@ apigatewayv2_create_deployment(ApiId, Description, StageName)
 
 \item{StageName}{The name of the Stage resource for the Deployment resource to create.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AutoDeployed = TRUE|FALSE,
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  DeploymentId = "string",
+  DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
+  DeploymentStatusMessage = "string",
+  Description = "string"
+)
+}
+}
 \description{
 Creates a Deployment for an API.
 }

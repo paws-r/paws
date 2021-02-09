@@ -13,6 +13,42 @@ s3_get_bucket_lifecycle(Bucket, ExpectedBucketOwner)
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Rules = list(
+    list(
+      Expiration = list(
+        Date = as.POSIXct(
+          "2015-01-01"
+        ),
+        Days = 123,
+        ExpiredObjectDeleteMarker = TRUE|FALSE
+      ),
+      ID = "string",
+      Prefix = "string",
+      Status = "Enabled"|"Disabled",
+      Transition = list(
+        Date = as.POSIXct(
+          "2015-01-01"
+        ),
+        Days = 123,
+        StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
+      ),
+      NoncurrentVersionTransition = list(
+        NoncurrentDays = 123,
+        StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
+      ),
+      NoncurrentVersionExpiration = list(
+        NoncurrentDays = 123
+      ),
+      AbortIncompleteMultipartUpload = list(
+        DaysAfterInitiation = 123
+      )
+    )
+  )
+)
+}
+}
 \description{
 For an updated version of this API, see
 \code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}.
@@ -21,13 +57,13 @@ should see the updated version of this topic. This topic is provided for
 backward compatibility.
 
 Returns the lifecycle configuration information set on the bucket. For
-information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html}{Object Lifecycle Management}.
+information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Object Lifecycle Management}.
 
 To use this operation, you must have permission to perform the
 \code{s3:GetLifecycleConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to
-others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
 \code{\link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle}} has the following
 special error:

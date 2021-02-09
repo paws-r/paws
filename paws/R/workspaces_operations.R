@@ -23,6 +23,14 @@ NULL
 #' @param AliasId &#91;required&#93; The identifier of the connection alias.
 #' @param ResourceId &#91;required&#93; The identifier of the directory to associate the connection alias with.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionIdentifier = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_connection_alias(
@@ -63,6 +71,12 @@ workspaces_associate_connection_alias <- function(AliasId, ResourceId) {
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param GroupIds &#91;required&#93; The identifiers of one or more IP access control groups.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -107,6 +121,12 @@ workspaces_associate_ip_groups <- function(DirectoryId, GroupIds) {
 #'
 #' @param GroupId &#91;required&#93; The identifier of the group.
 #' @param UserRules &#91;required&#93; The rules to add to the group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -174,6 +194,14 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 #' @param SourceRegion &#91;required&#93; The identifier of the source Region.
 #' @param Tags The tags for the image.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$copy_workspace_image(
@@ -231,6 +259,14 @@ workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImag
 #' original account. The connection string is globally reserved for your
 #' account.
 #' @param Tags The tags to associate with the connection alias.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AliasId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -292,6 +328,14 @@ workspaces_create_connection_alias <- function(ConnectionString, Tags = NULL) {
 #' @param UserRules The rules to add to the group.
 #' @param Tags The tags. Each WorkSpaces resource can have a maximum of 50 tags.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_ip_group(
@@ -345,6 +389,12 @@ workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = 
 #' access control groups, and connection aliases.
 #' @param Tags &#91;required&#93; The tags. Each WorkSpaces resource can have a maximum of 50 tags.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_tags(
@@ -390,6 +440,70 @@ workspaces_create_tags <- function(ResourceId, Tags) {
 #' workspaces_create_workspaces(Workspaces)
 #'
 #' @param Workspaces &#91;required&#93; The WorkSpaces to create. You can specify up to 25 WorkSpaces.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedRequests = list(
+#'     list(
+#'       WorkspaceRequest = list(
+#'         DirectoryId = "string",
+#'         UserName = "string",
+#'         BundleId = "string",
+#'         VolumeEncryptionKey = "string",
+#'         UserVolumeEncryptionEnabled = TRUE|FALSE,
+#'         RootVolumeEncryptionEnabled = TRUE|FALSE,
+#'         WorkspaceProperties = list(
+#'           RunningMode = "AUTO_STOP"|"ALWAYS_ON",
+#'           RunningModeAutoStopTimeoutInMinutes = 123,
+#'           RootVolumeSizeGib = 123,
+#'           UserVolumeSizeGib = 123,
+#'           ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       ),
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   ),
+#'   PendingRequests = list(
+#'     list(
+#'       WorkspaceId = "string",
+#'       DirectoryId = "string",
+#'       UserName = "string",
+#'       IpAddress = "string",
+#'       State = "PENDING"|"AVAILABLE"|"IMPAIRED"|"UNHEALTHY"|"REBOOTING"|"STARTING"|"REBUILDING"|"RESTORING"|"MAINTENANCE"|"ADMIN_MAINTENANCE"|"TERMINATING"|"TERMINATED"|"SUSPENDED"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR",
+#'       BundleId = "string",
+#'       SubnetId = "string",
+#'       ErrorMessage = "string",
+#'       ErrorCode = "string",
+#'       ComputerName = "string",
+#'       VolumeEncryptionKey = "string",
+#'       UserVolumeEncryptionEnabled = TRUE|FALSE,
+#'       RootVolumeEncryptionEnabled = TRUE|FALSE,
+#'       WorkspaceProperties = list(
+#'         RunningMode = "AUTO_STOP"|"ALWAYS_ON",
+#'         RunningModeAutoStopTimeoutInMinutes = 123,
+#'         RootVolumeSizeGib = 123,
+#'         UserVolumeSizeGib = 123,
+#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+#'       ),
+#'       ModificationStates = list(
+#'         list(
+#'           Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE",
+#'           State = "UPDATE_INITIATED"|"UPDATE_IN_PROGRESS"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -465,6 +579,12 @@ workspaces_create_workspaces <- function(Workspaces) {
 #'
 #' @param AliasId &#91;required&#93; The identifier of the connection alias to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_connection_alias(
@@ -505,6 +625,12 @@ workspaces_delete_connection_alias <- function(AliasId) {
 #'
 #' @param GroupId &#91;required&#93; The identifier of the IP access control group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_ip_group(
@@ -544,6 +670,12 @@ workspaces_delete_ip_group <- function(GroupId) {
 #' are WorkSpaces, registered directories, images, custom bundles, IP
 #' access control groups, and connection aliases.
 #' @param TagKeys &#91;required&#93; The tag keys.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -586,6 +718,12 @@ workspaces_delete_tags <- function(ResourceId, TagKeys) {
 #' workspaces_delete_workspace_image(ImageId)
 #'
 #' @param ImageId &#91;required&#93; The identifier of the image.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -642,6 +780,12 @@ workspaces_delete_workspace_image <- function(ImageId) {
 #' this directory, you must remove them before you deregister the
 #' directory, or you will receive an OperationNotSupportedException error.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_workspace_directory(
@@ -678,6 +822,15 @@ workspaces_deregister_workspace_directory <- function(DirectoryId) {
 #'
 #' @usage
 #' workspaces_describe_account()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DedicatedTenancySupport = "ENABLED"|"DISABLED",
+#'   DedicatedTenancyManagementCidrRange = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -717,6 +870,26 @@ workspaces_describe_account <- function() {
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountModifications = list(
+#'     list(
+#'       ModificationState = "PENDING"|"COMPLETED"|"FAILED",
+#'       DedicatedTenancySupport = "ENABLED"|"DISABLED",
+#'       DedicatedTenancyManagementCidrRange = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_account_modifications(
@@ -755,6 +928,21 @@ workspaces_describe_account_modifications <- function(NextToken = NULL) {
 #' workspaces_describe_client_properties(ResourceIds)
 #'
 #' @param ResourceIds &#91;required&#93; The resource identifier, in the form of directory IDs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientPropertiesList = list(
+#'     list(
+#'       ResourceId = "string",
+#'       ClientProperties = list(
+#'         ReconnectEnabled = "ENABLED"|"DISABLED"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -802,6 +990,21 @@ workspaces_describe_client_properties <- function(ResourceIds) {
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #' @param MaxResults The maximum number of results to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AliasId = "string",
+#'   ConnectionAliasPermissions = list(
+#'     list(
+#'       SharedAccountId = "string",
+#'       AllowAssociation = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -851,6 +1054,30 @@ workspaces_describe_connection_alias_permissions <- function(AliasId, NextToken 
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionAliases = list(
+#'     list(
+#'       ConnectionString = "string",
+#'       AliasId = "string",
+#'       State = "CREATING"|"CREATED"|"DELETING",
+#'       OwnerAccountId = "string",
+#'       Associations = list(
+#'         list(
+#'           AssociationStatus = "NOT_ASSOCIATED"|"ASSOCIATED_WITH_OWNER_ACCOUNT"|"ASSOCIATED_WITH_SHARED_ACCOUNT"|"PENDING_ASSOCIATION"|"PENDING_DISASSOCIATION",
+#'           AssociatedAccountId = "string",
+#'           ResourceId = "string",
+#'           ConnectionIdentifier = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_connection_aliases(
@@ -896,6 +1123,27 @@ workspaces_describe_connection_aliases <- function(AliasIds = NULL, ResourceId =
 #' provide this token to receive the next set of results.
 #' @param MaxResults The maximum number of items to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Result = list(
+#'     list(
+#'       groupId = "string",
+#'       groupName = "string",
+#'       groupDesc = "string",
+#'       userRules = list(
+#'         list(
+#'           ipRule = "string",
+#'           ruleDesc = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_ip_groups(
@@ -938,6 +1186,19 @@ workspaces_describe_ip_groups <- function(GroupIds = NULL, NextToken = NULL, Max
 #' @param ResourceId &#91;required&#93; The identifier of the WorkSpaces resource. The supported resource types
 #' are WorkSpaces, registered directories, images, custom bundles, IP
 #' access control groups, and connection aliases.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -987,6 +1248,35 @@ workspaces_describe_tags <- function(ResourceId) {
 #' @param NextToken The token for the next set of results. (You received this token from a
 #' previous call.)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Bundles = list(
+#'     list(
+#'       BundleId = "string",
+#'       Name = "string",
+#'       Owner = "string",
+#'       Description = "string",
+#'       ImageId = "string",
+#'       RootStorage = list(
+#'         Capacity = "string"
+#'       ),
+#'       UserStorage = list(
+#'         Capacity = "string"
+#'       ),
+#'       ComputeType = list(
+#'         Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_workspace_bundles(
@@ -1035,6 +1325,61 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Directories = list(
+#'     list(
+#'       DirectoryId = "string",
+#'       Alias = "string",
+#'       DirectoryName = "string",
+#'       RegistrationCode = "string",
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       DnsIpAddresses = list(
+#'         "string"
+#'       ),
+#'       CustomerUserName = "string",
+#'       IamRoleId = "string",
+#'       DirectoryType = "SIMPLE_AD"|"AD_CONNECTOR",
+#'       WorkspaceSecurityGroupId = "string",
+#'       State = "REGISTERING"|"REGISTERED"|"DEREGISTERING"|"DEREGISTERED"|"ERROR",
+#'       WorkspaceCreationProperties = list(
+#'         EnableWorkDocs = TRUE|FALSE,
+#'         EnableInternetAccess = TRUE|FALSE,
+#'         DefaultOu = "string",
+#'         CustomSecurityGroupId = "string",
+#'         UserEnabledAsLocalAdministrator = TRUE|FALSE,
+#'         EnableMaintenanceMode = TRUE|FALSE
+#'       ),
+#'       ipGroupIds = list(
+#'         "string"
+#'       ),
+#'       WorkspaceAccessProperties = list(
+#'         DeviceTypeWindows = "ALLOW"|"DENY",
+#'         DeviceTypeOsx = "ALLOW"|"DENY",
+#'         DeviceTypeWeb = "ALLOW"|"DENY",
+#'         DeviceTypeIos = "ALLOW"|"DENY",
+#'         DeviceTypeAndroid = "ALLOW"|"DENY",
+#'         DeviceTypeChromeOs = "ALLOW"|"DENY",
+#'         DeviceTypeZeroClient = "ALLOW"|"DENY"
+#'       ),
+#'       Tenancy = "DEDICATED"|"SHARED",
+#'       SelfservicePermissions = list(
+#'         RestartWorkspace = "ENABLED"|"DISABLED",
+#'         IncreaseVolumeSize = "ENABLED"|"DISABLED",
+#'         ChangeComputeType = "ENABLED"|"DISABLED",
+#'         SwitchRunningMode = "ENABLED"|"DISABLED",
+#'         RebuildWorkspace = "ENABLED"|"DISABLED"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_workspace_directories(
@@ -1081,6 +1426,20 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #' @param MaxResults The maximum number of items to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageId = "string",
+#'   ImagePermissions = list(
+#'     list(
+#'       SharedAccountId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1129,6 +1488,32 @@ workspaces_describe_workspace_image_permissions <- function(ImageId, NextToken =
 #' provide this token to receive the next set of results.
 #' @param MaxResults The maximum number of items to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Images = list(
+#'     list(
+#'       ImageId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       OperatingSystem = list(
+#'         Type = "WINDOWS"|"LINUX"
+#'       ),
+#'       State = "AVAILABLE"|"PENDING"|"ERROR",
+#'       RequiredTenancy = "DEFAULT"|"DEDICATED",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string",
+#'       Created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OwnerAccountId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_workspace_images(
@@ -1170,6 +1555,27 @@ workspaces_describe_workspace_images <- function(ImageIds = NULL, ImageType = NU
 #' workspaces_describe_workspace_snapshots(WorkspaceId)
 #'
 #' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RebuildSnapshots = list(
+#'     list(
+#'       SnapshotTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   RestoreSnapshots = list(
+#'     list(
+#'       SnapshotTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1230,6 +1636,44 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Workspaces = list(
+#'     list(
+#'       WorkspaceId = "string",
+#'       DirectoryId = "string",
+#'       UserName = "string",
+#'       IpAddress = "string",
+#'       State = "PENDING"|"AVAILABLE"|"IMPAIRED"|"UNHEALTHY"|"REBOOTING"|"STARTING"|"REBUILDING"|"RESTORING"|"MAINTENANCE"|"ADMIN_MAINTENANCE"|"TERMINATING"|"TERMINATED"|"SUSPENDED"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR",
+#'       BundleId = "string",
+#'       SubnetId = "string",
+#'       ErrorMessage = "string",
+#'       ErrorCode = "string",
+#'       ComputerName = "string",
+#'       VolumeEncryptionKey = "string",
+#'       UserVolumeEncryptionEnabled = TRUE|FALSE,
+#'       RootVolumeEncryptionEnabled = TRUE|FALSE,
+#'       WorkspaceProperties = list(
+#'         RunningMode = "AUTO_STOP"|"ALWAYS_ON",
+#'         RunningModeAutoStopTimeoutInMinutes = 123,
+#'         RootVolumeSizeGib = 123,
+#'         UserVolumeSizeGib = 123,
+#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
+#'       ),
+#'       ModificationStates = list(
+#'         list(
+#'           Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE",
+#'           State = "UPDATE_INITIATED"|"UPDATE_IN_PROGRESS"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_workspaces(
@@ -1276,6 +1720,26 @@ workspaces_describe_workspaces <- function(WorkspaceIds = NULL, DirectoryId = NU
 #' @param WorkspaceIds The identifiers of the WorkSpaces. You can specify up to 25 WorkSpaces.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkspacesConnectionStatus = list(
+#'     list(
+#'       WorkspaceId = "string",
+#'       ConnectionState = "CONNECTED"|"DISCONNECTED"|"UNKNOWN",
+#'       ConnectionStateCheckTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastKnownUserConnectionTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1326,6 +1790,12 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
 #'
 #' @param AliasId &#91;required&#93; The identifier of the connection alias to disassociate.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_connection_alias(
@@ -1365,6 +1835,12 @@ workspaces_disassociate_connection_alias <- function(AliasId) {
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param GroupIds &#91;required&#93; The identifiers of one or more IP access control groups.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1431,6 +1907,14 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 #' 
 #' Although this parameter is an array, only one item is allowed at this
 #' time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1500,6 +1984,17 @@ workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, Imag
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ManagementCidrRanges = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_available_management_cidr_ranges(
@@ -1539,9 +2034,9 @@ workspaces_list_available_management_cidr_ranges <- function(ManagementCidrRange
 #' The migration process recreates the WorkSpace by using a new root volume
 #' from the target bundle image and the user volume from the last available
 #' snapshot of the original WorkSpace. During migration, the original
-#' `D:\\Users%USERNAME%` user profile folder is renamed to
-#' `D:\\Users%USERNAME%MMddyyTHHmmss%.NotMigrated`. A new
-#' `D:\\Users%USERNAME%\` folder is generated by the new OS. Certain files
+#' `D:\Users%USERNAME%` user profile folder is renamed to
+#' `D:\Users%USERNAME%MMddyyTHHmmss%.NotMigrated`. A new
+#' `D:\Users%USERNAME%\` folder is generated by the new OS. Certain files
 #' in the old user profile are moved to the new user profile.
 #' 
 #' For available migration scenarios, details about what happens during
@@ -1553,6 +2048,15 @@ workspaces_list_available_management_cidr_ranges <- function(ManagementCidrRange
 #'
 #' @param SourceWorkspaceId &#91;required&#93; The identifier of the WorkSpace to migrate from.
 #' @param BundleId &#91;required&#93; The identifier of the target bundle type to migrate the WorkSpace to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SourceWorkspaceId = "string",
+#'   TargetWorkspaceId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1602,6 +2106,12 @@ workspaces_migrate_workspace <- function(SourceWorkspaceId, BundleId) {
 #' [`list_available_management_cidr_ranges`][workspaces_list_available_management_cidr_ranges]
 #' operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_account(
@@ -1640,6 +2150,12 @@ workspaces_modify_account <- function(DedicatedTenancySupport = NULL, DedicatedT
 #'
 #' @param ResourceId &#91;required&#93; The resource identifiers, in the form of directory IDs.
 #' @param ClientProperties &#91;required&#93; Information about the Amazon WorkSpaces client.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1686,6 +2202,12 @@ workspaces_modify_client_properties <- function(ResourceId, ClientProperties) {
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the directory.
 #' @param SelfservicePermissions &#91;required&#93; The permissions to enable or disable self-service capabilities.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1736,6 +2258,12 @@ workspaces_modify_selfservice_permissions <- function(ResourceId, SelfservicePer
 #' @param ResourceId &#91;required&#93; The identifier of the directory.
 #' @param WorkspaceAccessProperties &#91;required&#93; The device types and operating systems to enable or disable for access.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_workspace_access_properties(
@@ -1784,6 +2312,12 @@ workspaces_modify_workspace_access_properties <- function(ResourceId, WorkspaceA
 #' @param ResourceId &#91;required&#93; The identifier of the directory.
 #' @param WorkspaceCreationProperties &#91;required&#93; The default properties for creating WorkSpaces.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_workspace_creation_properties(
@@ -1831,6 +2365,12 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #'
 #' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
 #' @param WorkspaceProperties &#91;required&#93; The properties of the WorkSpace.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1883,6 +2423,12 @@ workspaces_modify_workspace_properties <- function(WorkspaceId, WorkspacePropert
 #' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
 #' @param WorkspaceState &#91;required&#93; The WorkSpace state.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_workspace_state(
@@ -1926,6 +2472,20 @@ workspaces_modify_workspace_state <- function(WorkspaceId, WorkspaceState) {
 #' workspaces_reboot_workspaces(RebootWorkspaceRequests)
 #'
 #' @param RebootWorkspaceRequests &#91;required&#93; The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedRequests = list(
+#'     list(
+#'       WorkspaceId = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1978,6 +2538,20 @@ workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
 #'
 #' @param RebuildWorkspaceRequests &#91;required&#93; The WorkSpace to rebuild. You can specify a single WorkSpace.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedRequests = list(
+#'     list(
+#'       WorkspaceId = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$rebuild_workspaces(
@@ -2015,8 +2589,8 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' Registers the specified directory. This operation is asynchronous and
 #' returns before the WorkSpace directory is registered. If this is the
 #' first time you are registering a directory, you will need to create the
-#' workspaces\\_DefaultRole role before you can register a directory. For
-#' more information, see [Creating the workspaces\\_DefaultRole
+#' workspaces_DefaultRole role before you can register a directory. For
+#' more information, see [Creating the workspaces_DefaultRole
 #' Role](https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role).
 #'
 #' @usage
@@ -2047,6 +2621,12 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' images, see [Bring Your Own Windows Desktop
 #' Images](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
 #' @param Tags The tags associated with the directory.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2107,6 +2687,12 @@ workspaces_register_workspace_directory <- function(DirectoryId, SubnetIds = NUL
 #'
 #' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$restore_workspace(
@@ -2144,6 +2730,12 @@ workspaces_restore_workspace <- function(WorkspaceId) {
 #'
 #' @param GroupId &#91;required&#93; The identifier of the group.
 #' @param UserRules &#91;required&#93; The rules to remove from the group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2188,6 +2780,20 @@ workspaces_revoke_ip_rules <- function(GroupId, UserRules) {
 #'
 #' @param StartWorkspaceRequests &#91;required&#93; The WorkSpaces to start. You can specify up to 25 WorkSpaces.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedRequests = list(
+#'     list(
+#'       WorkspaceId = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_workspaces(
@@ -2231,6 +2837,20 @@ workspaces_start_workspaces <- function(StartWorkspaceRequests) {
 #' workspaces_stop_workspaces(StopWorkspaceRequests)
 #'
 #' @param StopWorkspaceRequests &#91;required&#93; The WorkSpaces to stop. You can specify up to 25 WorkSpaces.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedRequests = list(
+#'     list(
+#'       WorkspaceId = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2302,6 +2922,20 @@ workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
 #'
 #' @param TerminateWorkspaceRequests &#91;required&#93; The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedRequests = list(
+#'     list(
+#'       WorkspaceId = "string",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$terminate_workspaces(
@@ -2367,6 +3001,12 @@ workspaces_terminate_workspaces <- function(TerminateWorkspaceRequests) {
 #' @param ConnectionAliasPermission &#91;required&#93; Indicates whether to share or unshare the connection alias with the
 #' specified AWS account.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_connection_alias_permission(
@@ -2410,6 +3050,12 @@ workspaces_update_connection_alias_permission <- function(AliasId, ConnectionAli
 #'
 #' @param GroupId &#91;required&#93; The identifier of the group.
 #' @param UserRules &#91;required&#93; One or more rules.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2486,6 +3132,12 @@ workspaces_update_rules_of_ip_group <- function(GroupId, UserRules) {
 #' 
 #' Before sharing the image, confirm that you are sharing to the correct
 #' AWS account ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

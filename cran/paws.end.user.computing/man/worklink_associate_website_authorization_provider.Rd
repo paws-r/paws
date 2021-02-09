@@ -15,6 +15,12 @@ worklink_associate_website_authorization_provider(FleetArn,
 \item{DomainName}{The domain name of the authorization provider. This applies only to
 SAML-based authorization providers.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AuthorizationProviderId = "string"
+)
+}
+}
 \description{
 Associates a website authorization provider with a specified fleet. This
 is used to authorize users against associated websites in the company

@@ -40,6 +40,51 @@ can be between 5 and 1,000; if \code{MaxResults} is given a value larger than
 
 \item{NextToken}{The token to retrieve the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceConfigurations = list(
+    list(
+      ServiceType = list(
+        list(
+          ServiceType = "Interface"|"Gateway"|"GatewayLoadBalancer"
+        )
+      ),
+      ServiceId = "string",
+      ServiceName = "string",
+      ServiceState = "Pending"|"Available"|"Deleting"|"Deleted"|"Failed",
+      AvailabilityZones = list(
+        "string"
+      ),
+      AcceptanceRequired = TRUE|FALSE,
+      ManagesVpcEndpoints = TRUE|FALSE,
+      NetworkLoadBalancerArns = list(
+        "string"
+      ),
+      GatewayLoadBalancerArns = list(
+        "string"
+      ),
+      BaseEndpointDnsNames = list(
+        "string"
+      ),
+      PrivateDnsName = "string",
+      PrivateDnsNameConfiguration = list(
+        State = "pendingVerification"|"verified"|"failed",
+        Type = "string",
+        Value = "string",
+        Name = "string"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the VPC endpoint service configurations in your account (your
 services).

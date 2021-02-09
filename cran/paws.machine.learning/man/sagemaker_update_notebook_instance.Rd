@@ -81,6 +81,10 @@ If you set this to \code{Disabled}, users don't have root access on the
 notebook instance, but lifecycle configuration scripts still run with
 root permissions.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a notebook instance. NotebookInstance updates include upgrading
 or downgrading the ML compute instance used for your notebook instance

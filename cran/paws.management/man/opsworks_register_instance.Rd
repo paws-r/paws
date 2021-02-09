@@ -24,6 +24,12 @@ between the instance and the service.}
 
 \item{InstanceIdentity}{An InstanceIdentity object that contains the instance's identity.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceId = "string"
+)
+}
+}
 \description{
 Registers instances that were created outside of AWS OpsWorks Stacks
 with a specified stack.

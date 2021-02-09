@@ -56,6 +56,12 @@ raised while running tasks for these targets in this maintenance window.}
 
 \item{ClientToken}{User-provided idempotency token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WindowTargetId = "string"
+)
+}
+}
 \description{
 Registers a target with a maintenance window.
 }

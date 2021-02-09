@@ -10,6 +10,19 @@ cloudfront_get_key_group_config(Id)
 \item{Id}{[required] The identifier of the key group whose configuration you are getting. To
 get the identifier, use \code{\link[=cloudfront_list_key_groups]{list_key_groups}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyGroupConfig = list(
+    Name = "string",
+    Items = list(
+      "string"
+    ),
+    Comment = "string"
+  ),
+  ETag = "string"
+)
+}
+}
 \description{
 Gets a key group configuration.
 

@@ -12,6 +12,52 @@ ses_describe_configuration_set(ConfigurationSetName,
 
 \item{ConfigurationSetAttributeNames}{A list of configuration set attributes to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConfigurationSet = list(
+    Name = "string"
+  ),
+  EventDestinations = list(
+    list(
+      Name = "string",
+      Enabled = TRUE|FALSE,
+      MatchingEventTypes = list(
+        "send"|"reject"|"bounce"|"complaint"|"delivery"|"open"|"click"|"renderingFailure"
+      ),
+      KinesisFirehoseDestination = list(
+        IAMRoleARN = "string",
+        DeliveryStreamARN = "string"
+      ),
+      CloudWatchDestination = list(
+        DimensionConfigurations = list(
+          list(
+            DimensionName = "string",
+            DimensionValueSource = "messageTag"|"emailHeader"|"linkTag",
+            DefaultDimensionValue = "string"
+          )
+        )
+      ),
+      SNSDestination = list(
+        TopicARN = "string"
+      )
+    )
+  ),
+  TrackingOptions = list(
+    CustomRedirectDomain = "string"
+  ),
+  DeliveryOptions = list(
+    TlsPolicy = "Require"|"Optional"
+  ),
+  ReputationOptions = list(
+    SendingEnabled = TRUE|FALSE,
+    ReputationMetricsEnabled = TRUE|FALSE,
+    LastFreshStart = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Returns the details of the specified configuration set. For information
 about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.

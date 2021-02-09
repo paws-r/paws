@@ -9,6 +9,20 @@ ssm_describe_patch_group_state(PatchGroup)
 \arguments{
 \item{PatchGroup}{[required] The name of the patch group whose patch snapshot should be retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Instances = 123,
+  InstancesWithInstalledPatches = 123,
+  InstancesWithInstalledOtherPatches = 123,
+  InstancesWithInstalledPendingRebootPatches = 123,
+  InstancesWithInstalledRejectedPatches = 123,
+  InstancesWithMissingPatches = 123,
+  InstancesWithFailedPatches = 123,
+  InstancesWithNotApplicablePatches = 123,
+  InstancesWithUnreportedNotApplicablePatches = 123
+)
+}
+}
 \description{
 Returns high-level aggregated patch compliance state for a patch group.
 }

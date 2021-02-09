@@ -25,6 +25,12 @@ You can use the immediate value with dynamic parameters only. You can
 use the pending-reboot value for both dynamic and static parameters, and
 changes are applied when you reboot the DB instance without failover.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBParameterGroupName = "string"
+)
+}
+}
 \description{
 Modifies the parameters of a DB parameter group. To modify more than one
 parameter, submit a list of the following: \code{ParameterName},

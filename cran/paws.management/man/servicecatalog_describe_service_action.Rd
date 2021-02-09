@@ -16,6 +16,22 @@ servicecatalog_describe_service_action(Id, AcceptLanguage)
 \item \code{zh} - Chinese
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceActionDetail = list(
+    ServiceActionSummary = list(
+      Id = "string",
+      Name = "string",
+      Description = "string",
+      DefinitionType = "SSM_AUTOMATION"
+    ),
+    Definition = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes a self-service action.
 }

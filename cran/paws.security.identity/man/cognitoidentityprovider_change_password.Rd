@@ -14,6 +14,10 @@ cognitoidentityprovider_change_password(PreviousPassword,
 
 \item{AccessToken}{[required] The access token.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Changes the password for a specified user in a user pool.
 }

@@ -14,6 +14,24 @@ apigatewayv2_get_deployments(ApiId, MaxResults, NextToken)
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Items = list(
+    list(
+      AutoDeployed = TRUE|FALSE,
+      CreatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      DeploymentId = "string",
+      DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
+      DeploymentStatusMessage = "string",
+      Description = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets the Deployments for an API.
 }

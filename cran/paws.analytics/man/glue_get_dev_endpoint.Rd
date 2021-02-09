@@ -9,6 +9,48 @@ glue_get_dev_endpoint(EndpointName)
 \arguments{
 \item{EndpointName}{[required] Name of the \code{DevEndpoint} to retrieve information for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DevEndpoint = list(
+    EndpointName = "string",
+    RoleArn = "string",
+    SecurityGroupIds = list(
+      "string"
+    ),
+    SubnetId = "string",
+    YarnEndpointAddress = "string",
+    PrivateAddress = "string",
+    ZeppelinRemoteSparkInterpreterPort = 123,
+    PublicAddress = "string",
+    Status = "string",
+    WorkerType = "Standard"|"G.1X"|"G.2X",
+    GlueVersion = "string",
+    NumberOfWorkers = 123,
+    NumberOfNodes = 123,
+    AvailabilityZone = "string",
+    VpcId = "string",
+    ExtraPythonLibsS3Path = "string",
+    ExtraJarsS3Path = "string",
+    FailureReason = "string",
+    LastUpdateStatus = "string",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastModifiedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    PublicKey = "string",
+    PublicKeys = list(
+      "string"
+    ),
+    SecurityConfiguration = "string",
+    Arguments = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves information about a specified development endpoint.
 

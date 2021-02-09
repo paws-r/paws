@@ -19,8 +19,8 @@ identify a commit (for example, a branch name or a full commit ID).}
 identify a commit (for example, a branch name or a full commit ID).}
 
 \item{conflictDetailLevel}{The level of conflict detail to use. If unspecified, the default
-FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-file has differences in both branches. If LINE\\_LEVEL is specified, a
+FILE_LEVEL is used, which returns a not-mergeable result if the same
+file has differences in both branches. If LINE_LEVEL is specified, a
 conflict is considered not mergeable if the same file in both branches
 has differences on the same line.}
 
@@ -28,6 +28,15 @@ has differences on the same line.}
 attempt automatically merging two versions of a file. The default is
 NONE, which requires any conflicts to be resolved manually before the
 merge operation is successful.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  sourceCommitId = "string",
+  destinationCommitId = "string",
+  baseCommitId = "string",
+  mergedCommitId = "string"
+)
+}
 }
 \description{
 Returns information about a specified merge commit.

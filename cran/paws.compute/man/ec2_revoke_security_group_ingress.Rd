@@ -52,6 +52,48 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE,
+  UnknownIpPermissions = list(
+    list(
+      FromPort = 123,
+      IpProtocol = "string",
+      IpRanges = list(
+        list(
+          CidrIp = "string",
+          Description = "string"
+        )
+      ),
+      Ipv6Ranges = list(
+        list(
+          CidrIpv6 = "string",
+          Description = "string"
+        )
+      ),
+      PrefixListIds = list(
+        list(
+          Description = "string",
+          PrefixListId = "string"
+        )
+      ),
+      ToPort = 123,
+      UserIdGroupPairs = list(
+        list(
+          Description = "string",
+          GroupId = "string",
+          GroupName = "string",
+          PeeringStatus = "string",
+          UserId = "string",
+          VpcId = "string",
+          VpcPeeringConnectionId = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Removes the specified ingress rules from a security group. To remove a
 rule, the values that you specify (for example, ports) must match the

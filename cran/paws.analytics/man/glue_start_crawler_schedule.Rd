@@ -11,6 +11,10 @@ glue_start_crawler_schedule(CrawlerName)
 \arguments{
 \item{CrawlerName}{[required] Name of the crawler to schedule.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Changes the schedule state of the specified crawler to \code{SCHEDULED},
 unless the crawler is already running or the schedule state is already

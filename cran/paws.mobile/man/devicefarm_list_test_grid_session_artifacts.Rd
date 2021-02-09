@@ -16,6 +16,19 @@ devicefarm_list_test_grid_session_artifacts(sessionArn, type, maxResult,
 
 \item{nextToken}{Pagination token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  artifacts = list(
+    list(
+      filename = "string",
+      type = "UNKNOWN"|"VIDEO"|"SELENIUM_LOG",
+      url = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of artifacts created during the session.
 }

@@ -19,6 +19,38 @@ previous call.)}
 
 \item{PageSize}{The maximum number of results to return with this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TargetGroups = list(
+    list(
+      TargetGroupArn = "string",
+      TargetGroupName = "string",
+      Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+      Port = 123,
+      VpcId = "string",
+      HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+      HealthCheckPort = "string",
+      HealthCheckEnabled = TRUE|FALSE,
+      HealthCheckIntervalSeconds = 123,
+      HealthCheckTimeoutSeconds = 123,
+      HealthyThresholdCount = 123,
+      UnhealthyThresholdCount = 123,
+      HealthCheckPath = "string",
+      Matcher = list(
+        HttpCode = "string",
+        GrpcCode = "string"
+      ),
+      LoadBalancerArns = list(
+        "string"
+      ),
+      TargetType = "instance"|"ip"|"lambda",
+      ProtocolVersion = "string"
+    )
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 Describes the specified target groups or all of your target groups. By
 default, all target groups are described. Alternatively, you can specify
@@ -46,7 +78,7 @@ more target groups.
 # This example describes the specified target group.
 svc$describe_target_groups(
   TargetGroupArns = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d..."
   )
 )
 }

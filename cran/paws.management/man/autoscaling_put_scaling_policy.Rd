@@ -109,6 +109,18 @@ Required if the policy type is \code{TargetTrackingScaling}.}
 is enabled. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enable-disable-scaling-policy.html}{Disabling a scaling policy for an Auto Scaling group}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyARN = "string",
+  Alarms = list(
+    list(
+      AlarmName = "string",
+      AlarmARN = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates or updates a scaling policy for an Auto Scaling group.
 
@@ -172,7 +184,7 @@ svc$put_scaling_policy(
   TargetTrackingConfiguration = list(
     PredefinedMetricSpecification = list(
       PredefinedMetricType = "ALBRequestCountPerTarget",
-      ResourceLabel = "app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targetgroup/EC2Co-Defa..."
+      ResourceLabel = "app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targetgroup/EC2..."
     ),
     TargetValue = 1000
   )

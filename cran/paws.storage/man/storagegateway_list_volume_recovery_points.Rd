@@ -9,6 +9,20 @@ storagegateway_list_volume_recovery_points(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string",
+  VolumeRecoveryPointInfos = list(
+    list(
+      VolumeARN = "string",
+      VolumeSizeInBytes = 123,
+      VolumeUsageInBytes = 123,
+      VolumeRecoveryPointTime = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the recovery points for a specified gateway. This operation is
 only supported in the cached volume gateway type.

@@ -11,6 +11,18 @@ mediastoredata_describe_object(Path)
 container. Format: <folder name>/<folder name>/<file
 name>}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ETag = "string",
+  ContentType = "string",
+  ContentLength = 123,
+  CacheControl = "string",
+  LastModified = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Gets the headers for an object at the specified path.
 }

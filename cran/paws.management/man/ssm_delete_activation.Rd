@@ -9,6 +9,10 @@ ssm_delete_activation(ActivationId)
 \arguments{
 \item{ActivationId}{[required] The ID of the activation that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes an activation. You are not required to delete an activation. If
 you delete an activation, you can no longer use it to register

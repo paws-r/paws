@@ -9,6 +9,17 @@ applicationdiscoveryservice_stop_continuous_export(exportId)
 \arguments{
 \item{exportId}{[required] The unique ID assigned to this export.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  startTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  stopTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Stop the continuous flow of agent's discovered data into Amazon Athena.
 }

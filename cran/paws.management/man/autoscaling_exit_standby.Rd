@@ -11,6 +11,29 @@ autoscaling_exit_standby(InstanceIds, AutoScalingGroupName)
 
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Activities = list(
+    list(
+      ActivityId = "string",
+      AutoScalingGroupName = "string",
+      Description = "string",
+      Cause = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+      StatusMessage = "string",
+      Progress = 123,
+      Details = "string"
+    )
+  )
+)
+}
+}
 \description{
 Moves the specified instances out of the standby state.
 

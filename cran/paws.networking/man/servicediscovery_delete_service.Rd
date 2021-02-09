@@ -9,6 +9,10 @@ servicediscovery_delete_service(Id)
 \arguments{
 \item{Id}{[required] The ID of the service that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a specified service. If the service still contains one or more
 registered instances, the request fails.

@@ -37,6 +37,12 @@ limited preview audience.)}
 
 \item{Tags}{The tags for the profile.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProfileArn = "string"
+)
+}
+}
 \description{
 Creates a new room profile with the specified details.
 }

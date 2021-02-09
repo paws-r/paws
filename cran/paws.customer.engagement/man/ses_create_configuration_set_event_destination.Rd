@@ -14,6 +14,10 @@ associated with.}
 \item{EventDestination}{[required] An object that describes the AWS service that email sending event
 information will be published to.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates a configuration set event destination.
 

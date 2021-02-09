@@ -6,6 +6,14 @@
 \usage{
 iot_get_v2_logging_options()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  roleArn = "string",
+  defaultLogLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED",
+  disableAllLogs = TRUE|FALSE
+)
+}
+}
 \description{
 Gets the fine grained logging options.
 }

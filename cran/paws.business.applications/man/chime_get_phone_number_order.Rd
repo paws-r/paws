@@ -10,6 +10,28 @@ chime_get_phone_number_order(PhoneNumberOrderId)
 \arguments{
 \item{PhoneNumberOrderId}{[required] The ID for the phone number order.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PhoneNumberOrder = list(
+    PhoneNumberOrderId = "string",
+    ProductType = "BusinessCalling"|"VoiceConnector",
+    Status = "Processing"|"Successful"|"Failed"|"Partial",
+    OrderedPhoneNumbers = list(
+      list(
+        E164PhoneNumber = "string",
+        Status = "Processing"|"Acquired"|"Failed"
+      )
+    ),
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves details for the specified phone number order, such as order
 creation timestamp, phone numbers in E.164 format, product type, and

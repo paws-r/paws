@@ -13,6 +13,14 @@ NULL
 #'
 #' @param contactId &#91;required&#93; UUID of a contact.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   contactId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_contact(
@@ -53,6 +61,16 @@ groundstation_cancel_contact <- function(contactId) {
 #' @param configData &#91;required&#93; Parameters of a `Config`.
 #' @param name &#91;required&#93; Name of a `Config`.
 #' @param tags Tags assigned to a `Config`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configArn = "string",
+#'   configId = "string",
+#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -163,6 +181,14 @@ groundstation_create_config <- function(configData, name, tags = NULL) {
 #' @param endpointDetails &#91;required&#93; Endpoint details of each endpoint in the dataflow endpoint group.
 #' @param tags Tags of a dataflow endpoint group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataflowEndpointGroupId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_dataflow_endpoint_group(
@@ -240,6 +266,14 @@ groundstation_create_dataflow_endpoint_group <- function(endpointDetails, tags =
 #' @param tags Tags assigned to a mission profile.
 #' @param trackingConfigArn &#91;required&#93; ARN of a tracking `Config`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   missionProfileId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_mission_profile(
@@ -290,6 +324,16 @@ groundstation_create_mission_profile <- function(contactPostPassDurationSeconds 
 #' @param configId &#91;required&#93; UUID of a `Config`.
 #' @param configType &#91;required&#93; Type of a `Config`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configArn = "string",
+#'   configId = "string",
+#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_config(
@@ -328,6 +372,14 @@ groundstation_delete_config <- function(configId, configType) {
 #'
 #' @param dataflowEndpointGroupId &#91;required&#93; UUID of a dataflow endpoint group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataflowEndpointGroupId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_dataflow_endpoint_group(
@@ -365,6 +417,14 @@ groundstation_delete_dataflow_endpoint_group <- function(dataflowEndpointGroupId
 #'
 #' @param missionProfileId &#91;required&#93; UUID of a mission profile.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   missionProfileId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_mission_profile(
@@ -401,6 +461,104 @@ groundstation_delete_mission_profile <- function(missionProfileId) {
 #' groundstation_describe_contact(contactId)
 #'
 #' @param contactId &#91;required&#93; UUID of a contact.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   contactId = "string",
+#'   contactStatus = "AVAILABLE"|"AWS_CANCELLED"|"AWS_FAILED"|"CANCELLED"|"CANCELLING"|"COMPLETED"|"FAILED"|"FAILED_TO_SCHEDULE"|"PASS"|"POSTPASS"|"PREPASS"|"SCHEDULED"|"SCHEDULING",
+#'   dataflowList = list(
+#'     list(
+#'       destination = list(
+#'         configDetails = list(
+#'           antennaDemodDecodeDetails = list(
+#'             outputNode = "string"
+#'           ),
+#'           endpointDetails = list(
+#'             endpoint = list(
+#'               address = list(
+#'                 name = "string",
+#'                 port = 123
+#'               ),
+#'               mtu = 123,
+#'               name = "string",
+#'               status = "created"|"creating"|"deleted"|"deleting"|"failed"
+#'             ),
+#'             securityDetails = list(
+#'               roleArn = "string",
+#'               securityGroupIds = list(
+#'                 "string"
+#'               ),
+#'               subnetIds = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         configId = "string",
+#'         configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo",
+#'         dataflowDestinationRegion = "string"
+#'       ),
+#'       errorMessage = "string",
+#'       source = list(
+#'         configDetails = list(
+#'           antennaDemodDecodeDetails = list(
+#'             outputNode = "string"
+#'           ),
+#'           endpointDetails = list(
+#'             endpoint = list(
+#'               address = list(
+#'                 name = "string",
+#'                 port = 123
+#'               ),
+#'               mtu = 123,
+#'               name = "string",
+#'               status = "created"|"creating"|"deleted"|"deleting"|"failed"
+#'             ),
+#'             securityDetails = list(
+#'               roleArn = "string",
+#'               securityGroupIds = list(
+#'                 "string"
+#'               ),
+#'               subnetIds = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         configId = "string",
+#'         configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo",
+#'         dataflowSourceRegion = "string"
+#'       )
+#'     )
+#'   ),
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   errorMessage = "string",
+#'   groundStation = "string",
+#'   maximumElevation = list(
+#'     unit = "DEGREE_ANGLE"|"RADIAN",
+#'     value = 123.0
+#'   ),
+#'   missionProfileArn = "string",
+#'   postPassEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   prePassStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   region = "string",
+#'   satelliteArn = "string",
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -442,6 +600,79 @@ groundstation_describe_contact <- function(contactId) {
 #' @param configId &#91;required&#93; UUID of a `Config`.
 #' @param configType &#91;required&#93; Type of a `Config`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configArn = "string",
+#'   configData = list(
+#'     antennaDownlinkConfig = list(
+#'       spectrumConfig = list(
+#'         bandwidth = list(
+#'           units = "GHz"|"MHz"|"kHz",
+#'           value = 123.0
+#'         ),
+#'         centerFrequency = list(
+#'           units = "GHz"|"MHz"|"kHz",
+#'           value = 123.0
+#'         ),
+#'         polarization = "LEFT_HAND"|"NONE"|"RIGHT_HAND"
+#'       )
+#'     ),
+#'     antennaDownlinkDemodDecodeConfig = list(
+#'       decodeConfig = list(
+#'         unvalidatedJSON = "string"
+#'       ),
+#'       demodulationConfig = list(
+#'         unvalidatedJSON = "string"
+#'       ),
+#'       spectrumConfig = list(
+#'         bandwidth = list(
+#'           units = "GHz"|"MHz"|"kHz",
+#'           value = 123.0
+#'         ),
+#'         centerFrequency = list(
+#'           units = "GHz"|"MHz"|"kHz",
+#'           value = 123.0
+#'         ),
+#'         polarization = "LEFT_HAND"|"NONE"|"RIGHT_HAND"
+#'       )
+#'     ),
+#'     antennaUplinkConfig = list(
+#'       spectrumConfig = list(
+#'         centerFrequency = list(
+#'           units = "GHz"|"MHz"|"kHz",
+#'           value = 123.0
+#'         ),
+#'         polarization = "LEFT_HAND"|"NONE"|"RIGHT_HAND"
+#'       ),
+#'       targetEirp = list(
+#'         units = "dBW",
+#'         value = 123.0
+#'       ),
+#'       transmitDisabled = TRUE|FALSE
+#'     ),
+#'     dataflowEndpointConfig = list(
+#'       dataflowEndpointName = "string",
+#'       dataflowEndpointRegion = "string"
+#'     ),
+#'     trackingConfig = list(
+#'       autotrack = "PREFERRED"|"REMOVED"|"REQUIRED"
+#'     ),
+#'     uplinkEchoConfig = list(
+#'       antennaUplinkConfigArn = "string",
+#'       enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   configId = "string",
+#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo",
+#'   name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_config(
@@ -479,6 +710,40 @@ groundstation_get_config <- function(configId, configType) {
 #' groundstation_get_dataflow_endpoint_group(dataflowEndpointGroupId)
 #'
 #' @param dataflowEndpointGroupId &#91;required&#93; UUID of a dataflow endpoint group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataflowEndpointGroupArn = "string",
+#'   dataflowEndpointGroupId = "string",
+#'   endpointsDetails = list(
+#'     list(
+#'       endpoint = list(
+#'         address = list(
+#'           name = "string",
+#'           port = 123
+#'         ),
+#'         mtu = 123,
+#'         name = "string",
+#'         status = "created"|"creating"|"deleted"|"deleting"|"failed"
+#'       ),
+#'       securityDetails = list(
+#'         roleArn = "string",
+#'         securityGroupIds = list(
+#'           "string"
+#'         ),
+#'         subnetIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -518,6 +783,18 @@ groundstation_get_dataflow_endpoint_group <- function(dataflowEndpointGroupId) {
 #' @param month &#91;required&#93; The month being requested, with a value of 1-12.
 #' @param year &#91;required&#93; The year being requested, in the format of YYYY.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   estimatedMinutesRemaining = 123,
+#'   isReservedMinutesCustomer = TRUE|FALSE,
+#'   totalReservedMinuteAllocation = 123,
+#'   totalScheduledMinutes = 123,
+#'   upcomingMinutesScheduled = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_minute_usage(
@@ -556,6 +833,29 @@ groundstation_get_minute_usage <- function(month, year) {
 #'
 #' @param missionProfileId &#91;required&#93; UUID of a mission profile.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   contactPostPassDurationSeconds = 123,
+#'   contactPrePassDurationSeconds = 123,
+#'   dataflowEdges = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   minimumViableContactDurationSeconds = 123,
+#'   missionProfileArn = "string",
+#'   missionProfileId = "string",
+#'   name = "string",
+#'   region = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   trackingConfigArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_mission_profile(
@@ -592,6 +892,19 @@ groundstation_get_mission_profile <- function(missionProfileId) {
 #' groundstation_get_satellite(satelliteId)
 #'
 #' @param satelliteId &#91;required&#93; UUID of a satellite.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   groundStations = list(
+#'     "string"
+#'   ),
+#'   noradSatelliteID = 123,
+#'   satelliteArn = "string",
+#'   satelliteId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -632,6 +945,22 @@ groundstation_get_satellite <- function(satelliteId) {
 #' @param nextToken Next token returned in the request of a previous
 #' [`list_configs`][groundstation_list_configs] call. Used to get the next
 #' page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configList = list(
+#'     list(
+#'       configArn = "string",
+#'       configId = "string",
+#'       configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo",
+#'       name = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -683,6 +1012,44 @@ groundstation_list_configs <- function(maxResults = NULL, nextToken = NULL) {
 #' @param satelliteArn ARN of a satellite.
 #' @param startTime &#91;required&#93; Start time of a contact.
 #' @param statusList &#91;required&#93; Status of a contact reservation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   contactList = list(
+#'     list(
+#'       contactId = "string",
+#'       contactStatus = "AVAILABLE"|"AWS_CANCELLED"|"AWS_FAILED"|"CANCELLED"|"CANCELLING"|"COMPLETED"|"FAILED"|"FAILED_TO_SCHEDULE"|"PASS"|"POSTPASS"|"PREPASS"|"SCHEDULED"|"SCHEDULING",
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       errorMessage = "string",
+#'       groundStation = "string",
+#'       maximumElevation = list(
+#'         unit = "DEGREE_ANGLE"|"RADIAN",
+#'         value = 123.0
+#'       ),
+#'       missionProfileArn = "string",
+#'       postPassEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       prePassStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       region = "string",
+#'       satelliteArn = "string",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -737,6 +1104,20 @@ groundstation_list_contacts <- function(endTime, groundStation = NULL, maxResult
 #' [`list_dataflow_endpoint_groups`][groundstation_list_dataflow_endpoint_groups]
 #' call. Used to get the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataflowEndpointGroupList = list(
+#'     list(
+#'       dataflowEndpointGroupArn = "string",
+#'       dataflowEndpointGroupId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_dataflow_endpoint_groups(
@@ -777,6 +1158,21 @@ groundstation_list_dataflow_endpoint_groups <- function(maxResults = NULL, nextT
 #' @param nextToken Next token that can be supplied in the next call to get the next page of
 #' ground stations.
 #' @param satelliteId Satellite ID to retrieve on-boarded ground stations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   groundStationList = list(
+#'     list(
+#'       groundStationId = "string",
+#'       groundStationName = "string",
+#'       region = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -820,6 +1216,22 @@ groundstation_list_ground_stations <- function(maxResults = NULL, nextToken = NU
 #' [`list_mission_profiles`][groundstation_list_mission_profiles] call.
 #' Used to get the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   missionProfileList = list(
+#'     list(
+#'       missionProfileArn = "string",
+#'       missionProfileId = "string",
+#'       name = "string",
+#'       region = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_mission_profiles(
@@ -860,6 +1272,24 @@ groundstation_list_mission_profiles <- function(maxResults = NULL, nextToken = N
 #' @param nextToken Next token that can be supplied in the next call to get the next page of
 #' satellites.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   satellites = list(
+#'     list(
+#'       groundStations = list(
+#'         "string"
+#'       ),
+#'       noradSatelliteID = 123,
+#'       satelliteArn = "string",
+#'       satelliteId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_satellites(
@@ -897,6 +1327,16 @@ groundstation_list_satellites <- function(maxResults = NULL, nextToken = NULL) {
 #' groundstation_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; ARN of a resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -940,6 +1380,14 @@ groundstation_list_tags_for_resource <- function(resourceArn) {
 #' @param satelliteArn &#91;required&#93; ARN of a satellite
 #' @param startTime &#91;required&#93; Start time of a contact.
 #' @param tags Tags assigned to a contact.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   contactId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -990,6 +1438,12 @@ groundstation_reserve_contact <- function(endTime, groundStation, missionProfile
 #' @param resourceArn &#91;required&#93; ARN of a resource tag.
 #' @param tags &#91;required&#93; Tags assigned to a resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1030,6 +1484,12 @@ groundstation_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; ARN of a resource.
 #' @param tagKeys &#91;required&#93; Keys of a resource tag.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1076,6 +1536,16 @@ groundstation_untag_resource <- function(resourceArn, tagKeys) {
 #' @param configId &#91;required&#93; UUID of a `Config`.
 #' @param configType &#91;required&#93; Type of a `Config`.
 #' @param name &#91;required&#93; Name of a `Config`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configArn = "string",
+#'   configId = "string",
+#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1191,6 +1661,14 @@ groundstation_update_config <- function(configData, configId, configType, name) 
 #' @param missionProfileId &#91;required&#93; UUID of a mission profile.
 #' @param name Name of a mission profile.
 #' @param trackingConfigArn ARN of a tracking `Config`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   missionProfileId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

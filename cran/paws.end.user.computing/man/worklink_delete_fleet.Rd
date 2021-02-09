@@ -9,6 +9,10 @@ worklink_delete_fleet(FleetArn)
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a fleet. Prevents users from accessing previously associated
 websites.

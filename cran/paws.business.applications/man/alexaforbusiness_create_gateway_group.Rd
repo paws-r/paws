@@ -15,6 +15,12 @@ alexaforbusiness_create_gateway_group(Name, Description,
 \item{ClientRequestToken}{[required] A unique, user-specified identifier for the request that ensures
 idempotency.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayGroupArn = "string"
+)
+}
+}
 \description{
 Creates a gateway group with the specified details.
 }

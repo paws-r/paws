@@ -12,6 +12,10 @@ attach the policy.}
 
 \item{Policy}{[required] The policy to attach to the specified RuleGroup.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

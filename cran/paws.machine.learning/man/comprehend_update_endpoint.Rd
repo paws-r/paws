@@ -13,6 +13,10 @@ comprehend_update_endpoint(EndpointArn, DesiredInferenceUnits)
 endpoint. Each inference unit represents of a throughput of 100
 characters per second.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates information about the specified endpoint.
 }

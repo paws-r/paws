@@ -38,6 +38,101 @@ response object.}
 \item{NextPageToken}{The pagination token that indicates the next set of results that you
 want to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Metadata = list(
+    RecommendationId = "string",
+    GenerationTimestamp = "string"
+  ),
+  Recommendations = list(
+    list(
+      AccountScope = "PAYER"|"LINKED",
+      LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS",
+      TermInYears = "ONE_YEAR"|"THREE_YEARS",
+      PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
+      ServiceSpecification = list(
+        EC2Specification = list(
+          OfferingClass = "STANDARD"|"CONVERTIBLE"
+        )
+      ),
+      RecommendationDetails = list(
+        list(
+          AccountId = "string",
+          InstanceDetails = list(
+            EC2InstanceDetails = list(
+              Family = "string",
+              InstanceType = "string",
+              Region = "string",
+              AvailabilityZone = "string",
+              Platform = "string",
+              Tenancy = "string",
+              CurrentGeneration = TRUE|FALSE,
+              SizeFlexEligible = TRUE|FALSE
+            ),
+            RDSInstanceDetails = list(
+              Family = "string",
+              InstanceType = "string",
+              Region = "string",
+              DatabaseEngine = "string",
+              DatabaseEdition = "string",
+              DeploymentOption = "string",
+              LicenseModel = "string",
+              CurrentGeneration = TRUE|FALSE,
+              SizeFlexEligible = TRUE|FALSE
+            ),
+            RedshiftInstanceDetails = list(
+              Family = "string",
+              NodeType = "string",
+              Region = "string",
+              CurrentGeneration = TRUE|FALSE,
+              SizeFlexEligible = TRUE|FALSE
+            ),
+            ElastiCacheInstanceDetails = list(
+              Family = "string",
+              NodeType = "string",
+              Region = "string",
+              ProductDescription = "string",
+              CurrentGeneration = TRUE|FALSE,
+              SizeFlexEligible = TRUE|FALSE
+            ),
+            ESInstanceDetails = list(
+              InstanceClass = "string",
+              InstanceSize = "string",
+              Region = "string",
+              CurrentGeneration = TRUE|FALSE,
+              SizeFlexEligible = TRUE|FALSE
+            )
+          ),
+          RecommendedNumberOfInstancesToPurchase = "string",
+          RecommendedNormalizedUnitsToPurchase = "string",
+          MinimumNumberOfInstancesUsedPerHour = "string",
+          MinimumNormalizedUnitsUsedPerHour = "string",
+          MaximumNumberOfInstancesUsedPerHour = "string",
+          MaximumNormalizedUnitsUsedPerHour = "string",
+          AverageNumberOfInstancesUsedPerHour = "string",
+          AverageNormalizedUnitsUsedPerHour = "string",
+          AverageUtilization = "string",
+          EstimatedBreakEvenInMonths = "string",
+          CurrencyCode = "string",
+          EstimatedMonthlySavingsAmount = "string",
+          EstimatedMonthlySavingsPercentage = "string",
+          EstimatedMonthlyOnDemandCost = "string",
+          EstimatedReservationCostForLookbackPeriod = "string",
+          UpfrontCost = "string",
+          RecurringStandardMonthlyCost = "string"
+        )
+      ),
+      RecommendationSummary = list(
+        TotalEstimatedMonthlySavingsAmount = "string",
+        TotalEstimatedMonthlySavingsPercentage = "string",
+        CurrencyCode = "string"
+      )
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Gets recommendations for which reservations to purchase. These
 recommendations could help you reduce your costs. Reservations provide a

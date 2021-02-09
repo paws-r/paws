@@ -24,10 +24,10 @@ the bucket.
 To use this operation, you must have permissions to perform the
 \code{s3:PutInventoryConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to
-others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
-For information about the Amazon S3 inventory feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html}{Amazon S3 Inventory}.
+For information about the Amazon S3 inventory feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html}{Amazon S3 Inventory}.
 
 Operations related to
 \code{\link[=s3_delete_bucket_inventory_configuration]{delete_bucket_inventory_configuration}}

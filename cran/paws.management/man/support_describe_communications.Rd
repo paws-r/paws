@@ -23,6 +23,26 @@ creation.}
 
 \item{maxResults}{The maximum number of results to return before paginating.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  communications = list(
+    list(
+      caseId = "string",
+      body = "string",
+      submittedBy = "string",
+      timeCreated = "string",
+      attachmentSet = list(
+        list(
+          attachmentId = "string",
+          fileName = "string"
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns communications and attachments for one or more support cases.
 Use the \code{afterTime} and \code{beforeTime} parameters to filter by date. You

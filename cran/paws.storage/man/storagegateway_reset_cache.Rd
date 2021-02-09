@@ -10,6 +10,12 @@ storagegateway_reset_cache(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Resets all cache disks that have encountered an error and makes the
 disks available for reconfiguration as cache storage. If your cache disk

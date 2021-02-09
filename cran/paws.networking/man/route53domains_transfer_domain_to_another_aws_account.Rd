@@ -14,6 +14,13 @@ account to another account.}
 \item{AccountId}{[required] The account ID of the AWS account that you want to transfer the domain
 to, for example, \code{111122223333}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string",
+  Password = "string"
+)
+}
+}
 \description{
 Transfers a domain from the current AWS account to another AWS account.
 Note the following:

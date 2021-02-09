@@ -11,10 +11,14 @@ s3control_delete_job_tagging(AccountId, JobId)
 
 \item{JobId}{[required] The ID for the S3 Batch Operations job whose tags you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the entire tag set from the specified S3 Batch Operations job.
 To use this operation, you must have permission to perform the
-\code{s3:DeleteJobTagging} action. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags}
+\code{s3:DeleteJobTagging} action. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Related actions include:

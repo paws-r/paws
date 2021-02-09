@@ -34,6 +34,24 @@ is not set in users' tokens.
 
 The default \code{Precedence} value is null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Group = list(
+    GroupName = "string",
+    UserPoolId = "string",
+    Description = "string",
+    RoleArn = "string",
+    Precedence = 123,
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreationDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates a new group in the specified user pool.
 

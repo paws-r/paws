@@ -35,6 +35,31 @@ replication of an organization trail in member accounts. If you do not
 include shadow trails, organization trails in a member account and
 region replication trails will not be returned. The default is true.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  trailList = list(
+    list(
+      Name = "string",
+      S3BucketName = "string",
+      S3KeyPrefix = "string",
+      SnsTopicName = "string",
+      SnsTopicARN = "string",
+      IncludeGlobalServiceEvents = TRUE|FALSE,
+      IsMultiRegionTrail = TRUE|FALSE,
+      HomeRegion = "string",
+      TrailARN = "string",
+      LogFileValidationEnabled = TRUE|FALSE,
+      CloudWatchLogsLogGroupArn = "string",
+      CloudWatchLogsRoleArn = "string",
+      KmsKeyId = "string",
+      HasCustomEventSelectors = TRUE|FALSE,
+      HasInsightSelectors = TRUE|FALSE,
+      IsOrganizationTrail = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Retrieves settings for one or more trails associated with the current
 region for your account.

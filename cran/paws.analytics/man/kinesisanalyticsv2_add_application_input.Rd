@@ -18,6 +18,64 @@ operation to find the current application version.}
 
 \item{Input}{[required] The Input to add.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationARN = "string",
+  ApplicationVersionId = 123,
+  InputDescriptions = list(
+    list(
+      InputId = "string",
+      NamePrefix = "string",
+      InAppStreamNames = list(
+        "string"
+      ),
+      InputProcessingConfigurationDescription = list(
+        InputLambdaProcessorDescription = list(
+          ResourceARN = "string",
+          RoleARN = "string"
+        )
+      ),
+      KinesisStreamsInputDescription = list(
+        ResourceARN = "string",
+        RoleARN = "string"
+      ),
+      KinesisFirehoseInputDescription = list(
+        ResourceARN = "string",
+        RoleARN = "string"
+      ),
+      InputSchema = list(
+        RecordFormat = list(
+          RecordFormatType = "JSON"|"CSV",
+          MappingParameters = list(
+            JSONMappingParameters = list(
+              RecordRowPath = "string"
+            ),
+            CSVMappingParameters = list(
+              RecordRowDelimiter = "string",
+              RecordColumnDelimiter = "string"
+            )
+          )
+        ),
+        RecordEncoding = "string",
+        RecordColumns = list(
+          list(
+            Name = "string",
+            Mapping = "string",
+            SqlType = "string"
+          )
+        )
+      ),
+      InputParallelism = list(
+        Count = 123
+      ),
+      InputStartingPositionConfiguration = list(
+        InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Adds a streaming source to your SQL-based Kinesis Data Analytics
 application.

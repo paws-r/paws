@@ -41,6 +41,13 @@ in the \emph{AWS CLI User Guide}.}
 \item{BlockPublicPolicy}{Makes an optional API call to Zelkova to validate the Resource Policy to
 prevent broad access to your secret.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string"
+)
+}
+}
 \description{
 Attaches the contents of the specified resource-based permission policy
 to a secret. A resource-based policy is optional. Alternatively, you can
@@ -85,7 +92,7 @@ To run this command, you must have the following permissions:
 # The following example shows how to add a resource-based policy to a
 # secret.
 svc$put_resource_policy(
-  ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",...",
+  ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",\n\"P...",
   SecretId = "MyTestDatabaseSecret"
 )
 }

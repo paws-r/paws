@@ -16,6 +16,10 @@ attribute name.}
 
 \item{AccessToken}{[required] The access token used in the request to delete user attributes.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the attributes for a user.
 }

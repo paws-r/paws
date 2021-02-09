@@ -9,6 +9,10 @@ iot_cancel_audit_mitigation_actions_task(taskId)
 \arguments{
 \item{taskId}{[required] The unique identifier for the task that you want to cancel.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Cancels a mitigation action task that is in progress. If the task is not
 in progress, an InvalidRequestException occurs.

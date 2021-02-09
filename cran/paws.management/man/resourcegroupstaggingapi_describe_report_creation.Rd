@@ -6,6 +6,14 @@
 \usage{
 resourcegroupstaggingapi_describe_report_creation()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = "string",
+  S3Location = "string",
+  ErrorMessage = "string"
+)
+}
+}
 \description{
 Describes the status of the
 \code{\link[=resourcegroupstaggingapi_start_report_creation]{start_report_creation}}

@@ -10,6 +10,10 @@ comprehend_stop_training_entity_recognizer(EntityRecognizerArn)
 \item{EntityRecognizerArn}{[required] The Amazon Resource Name (ARN) that identifies the entity recognizer
 currently being trained.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Stops an entity recognizer training job while in progress.
 

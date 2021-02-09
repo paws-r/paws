@@ -24,6 +24,10 @@ created the lifecycle hook.}
 
 \item{InstanceId}{The ID of the instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Completes the lifecycle action for the specified token or instance with
 the specified result.

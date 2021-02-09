@@ -22,10 +22,21 @@ endpoint that you are calling. The general form is
 
 For example:
 
-For more information about S3 object names, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys}{Object Keys}
+For more information about S3 object names, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html#object-keys}{Object Keys}
 in the \emph{Amazon S3 Developer Guide}.
 
 For more information about custom vocabularies, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary}{Custom Vocabularies}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  VocabularyName = "string",
+  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  VocabularyState = "PENDING"|"READY"|"FAILED"
+)
+}
 }
 \description{
 Updates an existing vocabulary with new values. The

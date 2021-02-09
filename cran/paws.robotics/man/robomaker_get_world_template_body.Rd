@@ -11,6 +11,12 @@ robomaker_get_world_template_body(template, generationJob)
 
 \item{generationJob}{The Amazon Resource Name (arn) of the world generator job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  templateBody = "string"
+)
+}
+}
 \description{
 Gets the world template body.
 }

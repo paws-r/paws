@@ -11,6 +11,10 @@ shield_delete_protection_group(ProtectionGroupId)
 protection group in lists and to manage the protection group, for
 example to update, delete, or describe it.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the specified protection group.
 }

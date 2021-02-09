@@ -27,6 +27,12 @@ Do not use \code{CognitoConfig} if you specify values for \code{OidcConfig}.}
 and organize our workforce. Each tag consists of a key and a value, both
 of which you define.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WorkforceArn = "string"
+)
+}
+}
 \description{
 Use this operation to create a workforce. This operation will return an
 error if a workforce already exists in the AWS Region that you specify.

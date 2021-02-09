@@ -49,6 +49,16 @@ and AWS Code Signing resources to create an OTA update job.}
 
 \item{tags}{Metadata which can be used to manage updates.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  otaUpdateId = "string",
+  awsIotJobId = "string",
+  otaUpdateArn = "string",
+  awsIotJobArn = "string",
+  otaUpdateStatus = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"
+)
+}
+}
 \description{
 Creates an AWS IoT OTAUpdate on a target group of things or groups.
 }

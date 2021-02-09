@@ -18,6 +18,28 @@ pipeline.}
 
 \item{parameterValues}{The parameter values used with the pipeline.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  validationErrors = list(
+    list(
+      id = "string",
+      errors = list(
+        "string"
+      )
+    )
+  ),
+  validationWarnings = list(
+    list(
+      id = "string",
+      warnings = list(
+        "string"
+      )
+    )
+  ),
+  errored = TRUE|FALSE
+)
+}
+}
 \description{
 Validates the specified pipeline definition to ensure that it is well
 formed and can be run without error.

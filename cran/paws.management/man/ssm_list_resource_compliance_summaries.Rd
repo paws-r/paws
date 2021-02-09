@@ -17,6 +17,50 @@ results.}
 returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceComplianceSummaryItems = list(
+    list(
+      ComplianceType = "string",
+      ResourceType = "string",
+      ResourceId = "string",
+      Status = "COMPLIANT"|"NON_COMPLIANT",
+      OverallSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+      ExecutionSummary = list(
+        ExecutionTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        ExecutionId = "string",
+        ExecutionType = "string"
+      ),
+      CompliantSummary = list(
+        CompliantCount = 123,
+        SeveritySummary = list(
+          CriticalCount = 123,
+          HighCount = 123,
+          MediumCount = 123,
+          LowCount = 123,
+          InformationalCount = 123,
+          UnspecifiedCount = 123
+        )
+      ),
+      NonCompliantSummary = list(
+        NonCompliantCount = 123,
+        SeveritySummary = list(
+          CriticalCount = 123,
+          HighCount = 123,
+          MediumCount = 123,
+          LowCount = 123,
+          InformationalCount = 123,
+          UnspecifiedCount = 123
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a resource-level summary count. The summary includes information
 about compliant and non-compliant statuses and detailed compliance-item

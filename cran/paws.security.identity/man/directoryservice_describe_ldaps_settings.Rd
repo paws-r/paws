@@ -17,6 +17,21 @@ is supported.}
 
 \item{Limit}{Specifies the number of items that should be displayed on one page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LDAPSSettingsInfo = list(
+    list(
+      LDAPSStatus = "Enabling"|"Enabled"|"EnableFailed"|"Disabled",
+      LDAPSStatusReason = "string",
+      LastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the status of LDAP security for the specified directory.
 }

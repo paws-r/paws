@@ -12,13 +12,21 @@ iam_get_role_policy(RoleName, PolicyName)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{PolicyName}{[required] The name of the policy document to get.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  RoleName = "string",
+  PolicyName = "string",
+  PolicyDocument = "string"
+)
+}
 }
 \description{
 Retrieves the specified inline policy document that is embedded with the

@@ -9,6 +9,18 @@ workspaces_start_workspaces(StartWorkspaceRequests)
 \arguments{
 \item{StartWorkspaceRequests}{[required] The WorkSpaces to start. You can specify up to 25 WorkSpaces.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedRequests = list(
+    list(
+      WorkspaceId = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Starts the specified WorkSpaces.
 

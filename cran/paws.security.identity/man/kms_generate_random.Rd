@@ -15,6 +15,12 @@ To find the ID of a custom key store, use the
 \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
 operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Plaintext = raw
+)
+}
+}
 \description{
 Returns a random byte string that is cryptographically secure.
 

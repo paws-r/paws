@@ -20,6 +20,15 @@ transforms.}
 
 \item{Tags}{Specifies to return only these tagged resources.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransformIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a sortable, filterable list of existing AWS Glue machine
 learning transforms in this AWS account, or the resources with the

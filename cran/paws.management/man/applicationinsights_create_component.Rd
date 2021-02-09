@@ -15,6 +15,10 @@ applicationinsights_create_component(ResourceGroupName, ComponentName,
 
 \item{ResourceList}{[required] The list of resource ARNs that belong to the component.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates a custom component by grouping similar standalone instances to
 monitor.

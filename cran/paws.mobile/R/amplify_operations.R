@@ -43,6 +43,75 @@ NULL
 #' @param autoBranchCreationPatterns The automated branch creation glob patterns for an Amplify app.
 #' @param autoBranchCreationConfig The automated branch creation configuration for an Amplify app.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   app = list(
+#'     appId = "string",
+#'     appArn = "string",
+#'     name = "string",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     description = "string",
+#'     repository = "string",
+#'     platform = "WEB",
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     iamServiceRoleArn = "string",
+#'     environmentVariables = list(
+#'       "string"
+#'     ),
+#'     defaultDomain = "string",
+#'     enableBranchAutoBuild = TRUE|FALSE,
+#'     enableBranchAutoDeletion = TRUE|FALSE,
+#'     enableBasicAuth = TRUE|FALSE,
+#'     basicAuthCredentials = "string",
+#'     customRules = list(
+#'       list(
+#'         source = "string",
+#'         target = "string",
+#'         status = "string",
+#'         condition = "string"
+#'       )
+#'     ),
+#'     productionBranch = list(
+#'       lastDeployTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "string",
+#'       thumbnailUrl = "string",
+#'       branchName = "string"
+#'     ),
+#'     buildSpec = "string",
+#'     customHeaders = "string",
+#'     enableAutoBranchCreation = TRUE|FALSE,
+#'     autoBranchCreationPatterns = list(
+#'       "string"
+#'     ),
+#'     autoBranchCreationConfig = list(
+#'       stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
+#'       framework = "string",
+#'       enableAutoBuild = TRUE|FALSE,
+#'       environmentVariables = list(
+#'         "string"
+#'       ),
+#'       basicAuthCredentials = "string",
+#'       enableBasicAuth = TRUE|FALSE,
+#'       enablePerformanceMode = TRUE|FALSE,
+#'       buildSpec = "string",
+#'       enablePullRequestPreview = TRUE|FALSE,
+#'       pullRequestEnvironmentName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_app(
@@ -128,6 +197,25 @@ amplify_create_app <- function(name, description = NULL, repository = NULL, plat
 #' @param stackName The AWS CloudFormation stack name of a backend environment.
 #' @param deploymentArtifacts The name of deployment artifacts.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   backendEnvironment = list(
+#'     backendEnvironmentArn = "string",
+#'     environmentName = "string",
+#'     stackName = "string",
+#'     deploymentArtifacts = "string",
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_backend_environment(
@@ -196,6 +284,54 @@ amplify_create_backend_environment <- function(appId, environmentName, stackName
 #' @param backendEnvironmentArn The Amazon Resource Name (ARN) for a backend environment that is part of
 #' an Amplify app.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   branch = list(
+#'     branchArn = "string",
+#'     branchName = "string",
+#'     description = "string",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
+#'     displayName = "string",
+#'     enableNotification = TRUE|FALSE,
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     environmentVariables = list(
+#'       "string"
+#'     ),
+#'     enableAutoBuild = TRUE|FALSE,
+#'     customDomains = list(
+#'       "string"
+#'     ),
+#'     framework = "string",
+#'     activeJobId = "string",
+#'     totalNumberOfJobs = "string",
+#'     enableBasicAuth = TRUE|FALSE,
+#'     enablePerformanceMode = TRUE|FALSE,
+#'     thumbnailUrl = "string",
+#'     basicAuthCredentials = "string",
+#'     buildSpec = "string",
+#'     ttl = "string",
+#'     associatedResources = list(
+#'       "string"
+#'     ),
+#'     enablePullRequestPreview = TRUE|FALSE,
+#'     pullRequestEnvironmentName = "string",
+#'     destinationBranch = "string",
+#'     sourceBranch = "string",
+#'     backendEnvironmentArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_branch(
@@ -260,6 +396,18 @@ amplify_create_branch <- function(appId, branchName, description = NULL, stage =
 #' will generate a unique upload URL per file. Otherwise, the service will
 #' only generate a single upload URL for the zipped files.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobId = "string",
+#'   fileUploadUrls = list(
+#'     "string"
+#'   ),
+#'   zipUploadUrl = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_deployment(
@@ -309,6 +457,35 @@ amplify_create_deployment <- function(appId, branchName, fileMap = NULL) {
 #' @param autoSubDomainCreationPatterns Sets the branch patterns for automatic subdomain creation.
 #' @param autoSubDomainIAMRole The required AWS Identity and Access Management (IAM) service role for
 #' the Amazon Resource Name (ARN) for automatically creating subdomains.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainAssociation = list(
+#'     domainAssociationArn = "string",
+#'     domainName = "string",
+#'     enableAutoSubDomain = TRUE|FALSE,
+#'     autoSubDomainCreationPatterns = list(
+#'       "string"
+#'     ),
+#'     autoSubDomainIAMRole = "string",
+#'     domainStatus = "PENDING_VERIFICATION"|"IN_PROGRESS"|"AVAILABLE"|"PENDING_DEPLOYMENT"|"FAILED"|"CREATING"|"REQUESTING_CERTIFICATE"|"UPDATING",
+#'     statusReason = "string",
+#'     certificateVerificationDNSRecord = "string",
+#'     subDomains = list(
+#'       list(
+#'         subDomainSetting = list(
+#'           prefix = "string",
+#'           branchName = "string"
+#'         ),
+#'         verified = TRUE|FALSE,
+#'         dnsRecord = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -361,6 +538,26 @@ amplify_create_domain_association <- function(appId, domainName, enableAutoSubDo
 #' @param branchName &#91;required&#93; The name for a branch that is part of an Amplify app.
 #' @param description The description for a webhook.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   webhook = list(
+#'     webhookArn = "string",
+#'     webhookId = "string",
+#'     webhookUrl = "string",
+#'     branchName = "string",
+#'     description = "string",
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_webhook(
@@ -400,6 +597,75 @@ amplify_create_webhook <- function(appId, branchName, description = NULL) {
 #'
 #' @param appId &#91;required&#93; The unique ID for an Amplify app.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   app = list(
+#'     appId = "string",
+#'     appArn = "string",
+#'     name = "string",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     description = "string",
+#'     repository = "string",
+#'     platform = "WEB",
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     iamServiceRoleArn = "string",
+#'     environmentVariables = list(
+#'       "string"
+#'     ),
+#'     defaultDomain = "string",
+#'     enableBranchAutoBuild = TRUE|FALSE,
+#'     enableBranchAutoDeletion = TRUE|FALSE,
+#'     enableBasicAuth = TRUE|FALSE,
+#'     basicAuthCredentials = "string",
+#'     customRules = list(
+#'       list(
+#'         source = "string",
+#'         target = "string",
+#'         status = "string",
+#'         condition = "string"
+#'       )
+#'     ),
+#'     productionBranch = list(
+#'       lastDeployTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "string",
+#'       thumbnailUrl = "string",
+#'       branchName = "string"
+#'     ),
+#'     buildSpec = "string",
+#'     customHeaders = "string",
+#'     enableAutoBranchCreation = TRUE|FALSE,
+#'     autoBranchCreationPatterns = list(
+#'       "string"
+#'     ),
+#'     autoBranchCreationConfig = list(
+#'       stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
+#'       framework = "string",
+#'       enableAutoBuild = TRUE|FALSE,
+#'       environmentVariables = list(
+#'         "string"
+#'       ),
+#'       basicAuthCredentials = "string",
+#'       enableBasicAuth = TRUE|FALSE,
+#'       enablePerformanceMode = TRUE|FALSE,
+#'       buildSpec = "string",
+#'       enablePullRequestPreview = TRUE|FALSE,
+#'       pullRequestEnvironmentName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_app(
@@ -437,6 +703,25 @@ amplify_delete_app <- function(appId) {
 #'
 #' @param appId &#91;required&#93; The unique ID of an Amplify app.
 #' @param environmentName &#91;required&#93; The name of a backend environment of an Amplify app.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   backendEnvironment = list(
+#'     backendEnvironmentArn = "string",
+#'     environmentName = "string",
+#'     stackName = "string",
+#'     deploymentArtifacts = "string",
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -477,6 +762,54 @@ amplify_delete_backend_environment <- function(appId, environmentName) {
 #' @param appId &#91;required&#93; The unique ID for an Amplify app.
 #' @param branchName &#91;required&#93; The name for the branch.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   branch = list(
+#'     branchArn = "string",
+#'     branchName = "string",
+#'     description = "string",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
+#'     displayName = "string",
+#'     enableNotification = TRUE|FALSE,
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     environmentVariables = list(
+#'       "string"
+#'     ),
+#'     enableAutoBuild = TRUE|FALSE,
+#'     customDomains = list(
+#'       "string"
+#'     ),
+#'     framework = "string",
+#'     activeJobId = "string",
+#'     totalNumberOfJobs = "string",
+#'     enableBasicAuth = TRUE|FALSE,
+#'     enablePerformanceMode = TRUE|FALSE,
+#'     thumbnailUrl = "string",
+#'     basicAuthCredentials = "string",
+#'     buildSpec = "string",
+#'     ttl = "string",
+#'     associatedResources = list(
+#'       "string"
+#'     ),
+#'     enablePullRequestPreview = TRUE|FALSE,
+#'     pullRequestEnvironmentName = "string",
+#'     destinationBranch = "string",
+#'     sourceBranch = "string",
+#'     backendEnvironmentArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_branch(
@@ -515,6 +848,35 @@ amplify_delete_branch <- function(appId, branchName) {
 #'
 #' @param appId &#91;required&#93; The unique id for an Amplify app.
 #' @param domainName &#91;required&#93; The name of the domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainAssociation = list(
+#'     domainAssociationArn = "string",
+#'     domainName = "string",
+#'     enableAutoSubDomain = TRUE|FALSE,
+#'     autoSubDomainCreationPatterns = list(
+#'       "string"
+#'     ),
+#'     autoSubDomainIAMRole = "string",
+#'     domainStatus = "PENDING_VERIFICATION"|"IN_PROGRESS"|"AVAILABLE"|"PENDING_DEPLOYMENT"|"FAILED"|"CREATING"|"REQUESTING_CERTIFICATE"|"UPDATING",
+#'     statusReason = "string",
+#'     certificateVerificationDNSRecord = "string",
+#'     subDomains = list(
+#'       list(
+#'         subDomainSetting = list(
+#'           prefix = "string",
+#'           branchName = "string"
+#'         ),
+#'         verified = TRUE|FALSE,
+#'         dnsRecord = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -556,6 +918,30 @@ amplify_delete_domain_association <- function(appId, domainName) {
 #' @param branchName &#91;required&#93; The name for the branch, for the job.
 #' @param jobId &#91;required&#93; The unique ID for the job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobSummary = list(
+#'     jobArn = "string",
+#'     jobId = "string",
+#'     commitId = "string",
+#'     commitMessage = "string",
+#'     commitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"PROVISIONING"|"RUNNING"|"FAILED"|"SUCCEED"|"CANCELLING"|"CANCELLED",
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     jobType = "RELEASE"|"RETRY"|"MANUAL"|"WEB_HOOK"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_job(
@@ -594,6 +980,26 @@ amplify_delete_job <- function(appId, branchName, jobId) {
 #' amplify_delete_webhook(webhookId)
 #'
 #' @param webhookId &#91;required&#93; The unique ID for a webhook.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   webhook = list(
+#'     webhookArn = "string",
+#'     webhookId = "string",
+#'     webhookUrl = "string",
+#'     branchName = "string",
+#'     description = "string",
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -639,6 +1045,14 @@ amplify_delete_webhook <- function(webhookId) {
 #' @param domainName &#91;required&#93; The name of the domain.
 #' @param appId &#91;required&#93; The unique ID for an Amplify app.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   logUrl = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$generate_access_logs(
@@ -683,6 +1097,75 @@ amplify_generate_access_logs <- function(startTime = NULL, endTime = NULL, domai
 #'
 #' @param appId &#91;required&#93; The unique ID for an Amplify app.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   app = list(
+#'     appId = "string",
+#'     appArn = "string",
+#'     name = "string",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     description = "string",
+#'     repository = "string",
+#'     platform = "WEB",
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     iamServiceRoleArn = "string",
+#'     environmentVariables = list(
+#'       "string"
+#'     ),
+#'     defaultDomain = "string",
+#'     enableBranchAutoBuild = TRUE|FALSE,
+#'     enableBranchAutoDeletion = TRUE|FALSE,
+#'     enableBasicAuth = TRUE|FALSE,
+#'     basicAuthCredentials = "string",
+#'     customRules = list(
+#'       list(
+#'         source = "string",
+#'         target = "string",
+#'         status = "string",
+#'         condition = "string"
+#'       )
+#'     ),
+#'     productionBranch = list(
+#'       lastDeployTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "string",
+#'       thumbnailUrl = "string",
+#'       branchName = "string"
+#'     ),
+#'     buildSpec = "string",
+#'     customHeaders = "string",
+#'     enableAutoBranchCreation = TRUE|FALSE,
+#'     autoBranchCreationPatterns = list(
+#'       "string"
+#'     ),
+#'     autoBranchCreationConfig = list(
+#'       stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
+#'       framework = "string",
+#'       enableAutoBuild = TRUE|FALSE,
+#'       environmentVariables = list(
+#'         "string"
+#'       ),
+#'       basicAuthCredentials = "string",
+#'       enableBasicAuth = TRUE|FALSE,
+#'       enablePerformanceMode = TRUE|FALSE,
+#'       buildSpec = "string",
+#'       enablePullRequestPreview = TRUE|FALSE,
+#'       pullRequestEnvironmentName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_app(
@@ -719,6 +1202,15 @@ amplify_get_app <- function(appId) {
 #' amplify_get_artifact_url(artifactId)
 #'
 #' @param artifactId &#91;required&#93; The unique ID for an artifact.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   artifactId = "string",
+#'   artifactUrl = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -757,6 +1249,25 @@ amplify_get_artifact_url <- function(artifactId) {
 #'
 #' @param appId &#91;required&#93; The unique id for an Amplify app.
 #' @param environmentName &#91;required&#93; The name for the backend environment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   backendEnvironment = list(
+#'     backendEnvironmentArn = "string",
+#'     environmentName = "string",
+#'     stackName = "string",
+#'     deploymentArtifacts = "string",
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -797,6 +1308,54 @@ amplify_get_backend_environment <- function(appId, environmentName) {
 #' @param appId &#91;required&#93; The unique ID for an Amplify app.
 #' @param branchName &#91;required&#93; The name for the branch.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   branch = list(
+#'     branchArn = "string",
+#'     branchName = "string",
+#'     description = "string",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
+#'     displayName = "string",
+#'     enableNotification = TRUE|FALSE,
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     environmentVariables = list(
+#'       "string"
+#'     ),
+#'     enableAutoBuild = TRUE|FALSE,
+#'     customDomains = list(
+#'       "string"
+#'     ),
+#'     framework = "string",
+#'     activeJobId = "string",
+#'     totalNumberOfJobs = "string",
+#'     enableBasicAuth = TRUE|FALSE,
+#'     enablePerformanceMode = TRUE|FALSE,
+#'     thumbnailUrl = "string",
+#'     basicAuthCredentials = "string",
+#'     buildSpec = "string",
+#'     ttl = "string",
+#'     associatedResources = list(
+#'       "string"
+#'     ),
+#'     enablePullRequestPreview = TRUE|FALSE,
+#'     pullRequestEnvironmentName = "string",
+#'     destinationBranch = "string",
+#'     sourceBranch = "string",
+#'     backendEnvironmentArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_branch(
@@ -835,6 +1394,35 @@ amplify_get_branch <- function(appId, branchName) {
 #'
 #' @param appId &#91;required&#93; The unique id for an Amplify app.
 #' @param domainName &#91;required&#93; The name of the domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainAssociation = list(
+#'     domainAssociationArn = "string",
+#'     domainName = "string",
+#'     enableAutoSubDomain = TRUE|FALSE,
+#'     autoSubDomainCreationPatterns = list(
+#'       "string"
+#'     ),
+#'     autoSubDomainIAMRole = "string",
+#'     domainStatus = "PENDING_VERIFICATION"|"IN_PROGRESS"|"AVAILABLE"|"PENDING_DEPLOYMENT"|"FAILED"|"CREATING"|"REQUESTING_CERTIFICATE"|"UPDATING",
+#'     statusReason = "string",
+#'     certificateVerificationDNSRecord = "string",
+#'     subDomains = list(
+#'       list(
+#'         subDomainSetting = list(
+#'           prefix = "string",
+#'           branchName = "string"
+#'         ),
+#'         verified = TRUE|FALSE,
+#'         dnsRecord = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -875,6 +1463,53 @@ amplify_get_domain_association <- function(appId, domainName) {
 #' @param appId &#91;required&#93; The unique ID for an Amplify app.
 #' @param branchName &#91;required&#93; The branch name for the job.
 #' @param jobId &#91;required&#93; The unique ID for the job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   job = list(
+#'     summary = list(
+#'       jobArn = "string",
+#'       jobId = "string",
+#'       commitId = "string",
+#'       commitMessage = "string",
+#'       commitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "PENDING"|"PROVISIONING"|"RUNNING"|"FAILED"|"SUCCEED"|"CANCELLING"|"CANCELLED",
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       jobType = "RELEASE"|"RETRY"|"MANUAL"|"WEB_HOOK"
+#'     ),
+#'     steps = list(
+#'       list(
+#'         stepName = "string",
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         status = "PENDING"|"PROVISIONING"|"RUNNING"|"FAILED"|"SUCCEED"|"CANCELLING"|"CANCELLED",
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         logUrl = "string",
+#'         artifactsUrl = "string",
+#'         testArtifactsUrl = "string",
+#'         testConfigUrl = "string",
+#'         screenshots = list(
+#'           "string"
+#'         ),
+#'         statusReason = "string",
+#'         context = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -917,6 +1552,26 @@ amplify_get_job <- function(appId, branchName, jobId) {
 #'
 #' @param webhookId &#91;required&#93; The unique ID for a webhook.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   webhook = list(
+#'     webhookArn = "string",
+#'     webhookId = "string",
+#'     webhookUrl = "string",
+#'     branchName = "string",
+#'     description = "string",
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_webhook(
@@ -955,6 +1610,78 @@ amplify_get_webhook <- function(webhookId) {
 #' @param nextToken A pagination token. If non-null, the pagination token is returned in a
 #' result. Pass its value in another request to retrieve more entries.
 #' @param maxResults The maximum number of records to list in a single response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   apps = list(
+#'     list(
+#'       appId = "string",
+#'       appArn = "string",
+#'       name = "string",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       description = "string",
+#'       repository = "string",
+#'       platform = "WEB",
+#'       createTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       iamServiceRoleArn = "string",
+#'       environmentVariables = list(
+#'         "string"
+#'       ),
+#'       defaultDomain = "string",
+#'       enableBranchAutoBuild = TRUE|FALSE,
+#'       enableBranchAutoDeletion = TRUE|FALSE,
+#'       enableBasicAuth = TRUE|FALSE,
+#'       basicAuthCredentials = "string",
+#'       customRules = list(
+#'         list(
+#'           source = "string",
+#'           target = "string",
+#'           status = "string",
+#'           condition = "string"
+#'         )
+#'       ),
+#'       productionBranch = list(
+#'         lastDeployTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         status = "string",
+#'         thumbnailUrl = "string",
+#'         branchName = "string"
+#'       ),
+#'       buildSpec = "string",
+#'       customHeaders = "string",
+#'       enableAutoBranchCreation = TRUE|FALSE,
+#'       autoBranchCreationPatterns = list(
+#'         "string"
+#'       ),
+#'       autoBranchCreationConfig = list(
+#'         stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
+#'         framework = "string",
+#'         enableAutoBuild = TRUE|FALSE,
+#'         environmentVariables = list(
+#'           "string"
+#'         ),
+#'         basicAuthCredentials = "string",
+#'         enableBasicAuth = TRUE|FALSE,
+#'         enablePerformanceMode = TRUE|FALSE,
+#'         buildSpec = "string",
+#'         enablePullRequestPreview = TRUE|FALSE,
+#'         pullRequestEnvironmentName = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -999,6 +1726,20 @@ amplify_list_apps <- function(nextToken = NULL, maxResults = NULL) {
 #' If a non-null pagination token is returned in a result, pass its value
 #' in here to list more artifacts.
 #' @param maxResults The maximum number of records to list in a single response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   artifacts = list(
+#'     list(
+#'       artifactFileName = "string",
+#'       artifactId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1047,6 +1788,28 @@ amplify_list_artifacts <- function(appId, branchName, jobId, nextToken = NULL, m
 #' pass its value in here to list more backend environments.
 #' @param maxResults The maximum number of records to list in a single response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   backendEnvironments = list(
+#'     list(
+#'       backendEnvironmentArn = "string",
+#'       environmentName = "string",
+#'       stackName = "string",
+#'       deploymentArtifacts = "string",
+#'       createTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_backend_environments(
@@ -1091,6 +1854,57 @@ amplify_list_backend_environments <- function(appId, environmentName = NULL, nex
 #' value in here to list more branches.
 #' @param maxResults The maximum number of records to list in a single response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   branches = list(
+#'     list(
+#'       branchArn = "string",
+#'       branchName = "string",
+#'       description = "string",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
+#'       displayName = "string",
+#'       enableNotification = TRUE|FALSE,
+#'       createTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       environmentVariables = list(
+#'         "string"
+#'       ),
+#'       enableAutoBuild = TRUE|FALSE,
+#'       customDomains = list(
+#'         "string"
+#'       ),
+#'       framework = "string",
+#'       activeJobId = "string",
+#'       totalNumberOfJobs = "string",
+#'       enableBasicAuth = TRUE|FALSE,
+#'       enablePerformanceMode = TRUE|FALSE,
+#'       thumbnailUrl = "string",
+#'       basicAuthCredentials = "string",
+#'       buildSpec = "string",
+#'       ttl = "string",
+#'       associatedResources = list(
+#'         "string"
+#'       ),
+#'       enablePullRequestPreview = TRUE|FALSE,
+#'       pullRequestEnvironmentName = "string",
+#'       destinationBranch = "string",
+#'       sourceBranch = "string",
+#'       backendEnvironmentArn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_branches(
@@ -1133,6 +1947,38 @@ amplify_list_branches <- function(appId, nextToken = NULL, maxResults = NULL) {
 #' non-null, a pagination token is returned in a result. Pass its value in
 #' here to list more projects.
 #' @param maxResults The maximum number of records to list in a single response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainAssociations = list(
+#'     list(
+#'       domainAssociationArn = "string",
+#'       domainName = "string",
+#'       enableAutoSubDomain = TRUE|FALSE,
+#'       autoSubDomainCreationPatterns = list(
+#'         "string"
+#'       ),
+#'       autoSubDomainIAMRole = "string",
+#'       domainStatus = "PENDING_VERIFICATION"|"IN_PROGRESS"|"AVAILABLE"|"PENDING_DEPLOYMENT"|"FAILED"|"CREATING"|"REQUESTING_CERTIFICATE"|"UPDATING",
+#'       statusReason = "string",
+#'       certificateVerificationDNSRecord = "string",
+#'       subDomains = list(
+#'         list(
+#'           subDomainSetting = list(
+#'             prefix = "string",
+#'             branchName = "string"
+#'           ),
+#'           verified = TRUE|FALSE,
+#'           dnsRecord = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1178,6 +2024,33 @@ amplify_list_domain_associations <- function(appId, nextToken = NULL, maxResults
 #' in here to list more steps.
 #' @param maxResults The maximum number of records to list in a single response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobSummaries = list(
+#'     list(
+#'       jobArn = "string",
+#'       jobId = "string",
+#'       commitId = "string",
+#'       commitMessage = "string",
+#'       commitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "PENDING"|"PROVISIONING"|"RUNNING"|"FAILED"|"SUCCEED"|"CANCELLING"|"CANCELLED",
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       jobType = "RELEASE"|"RETRY"|"MANUAL"|"WEB_HOOK"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_jobs(
@@ -1217,6 +2090,16 @@ amplify_list_jobs <- function(appId, branchName, nextToken = NULL, maxResults = 
 #' amplify_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) to use to list tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1258,6 +2141,29 @@ amplify_list_tags_for_resource <- function(resourceArn) {
 #' start. If non-null,the pagination token is returned in a result. Pass
 #' its value in here to list more webhooks.
 #' @param maxResults The maximum number of records to list in a single response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   webhooks = list(
+#'     list(
+#'       webhookArn = "string",
+#'       webhookId = "string",
+#'       webhookUrl = "string",
+#'       branchName = "string",
+#'       description = "string",
+#'       createTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1304,6 +2210,30 @@ amplify_list_webhooks <- function(appId, nextToken = NULL, maxResults = NULL) {
 #' @param sourceUrl The source URL for this deployment, used when calling start deployment
 #' without create deployment. The source URL can be any HTTP GET URL that
 #' is publicly accessible and downloads a single .zip file.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobSummary = list(
+#'     jobArn = "string",
+#'     jobId = "string",
+#'     commitId = "string",
+#'     commitMessage = "string",
+#'     commitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"PROVISIONING"|"RUNNING"|"FAILED"|"SUCCEED"|"CANCELLING"|"CANCELLED",
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     jobType = "RELEASE"|"RETRY"|"MANUAL"|"WEB_HOOK"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1358,6 +2288,30 @@ amplify_start_deployment <- function(appId, branchName, jobId = NULL, sourceUrl 
 #' @param commitMessage The commit message from a third-party repository provider for the job.
 #' @param commitTime The commit date and time for the job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobSummary = list(
+#'     jobArn = "string",
+#'     jobId = "string",
+#'     commitId = "string",
+#'     commitMessage = "string",
+#'     commitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"PROVISIONING"|"RUNNING"|"FAILED"|"SUCCEED"|"CANCELLING"|"CANCELLED",
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     jobType = "RELEASE"|"RETRY"|"MANUAL"|"WEB_HOOK"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_job(
@@ -1406,6 +2360,30 @@ amplify_start_job <- function(appId, branchName, jobId = NULL, jobType, jobReaso
 #' @param branchName &#91;required&#93; The name for the branch, for the job.
 #' @param jobId &#91;required&#93; The unique id for the job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobSummary = list(
+#'     jobArn = "string",
+#'     jobId = "string",
+#'     commitId = "string",
+#'     commitMessage = "string",
+#'     commitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"PROVISIONING"|"RUNNING"|"FAILED"|"SUCCEED"|"CANCELLING"|"CANCELLED",
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     jobType = "RELEASE"|"RETRY"|"MANUAL"|"WEB_HOOK"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_job(
@@ -1445,6 +2423,12 @@ amplify_stop_job <- function(appId, branchName, jobId) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) to use to tag a resource.
 #' @param tags &#91;required&#93; The tags used to tag the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1486,6 +2470,12 @@ amplify_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) to use to untag a resource.
 #' @param tagKeys &#91;required&#93; The tag keys to use to untag a resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1556,6 +2546,75 @@ amplify_untag_resource <- function(resourceArn, tagKeys) {
 #' @param accessToken The personal access token for a third-party source control system for an
 #' Amplify app. The token is used to create webhook and a read-only deploy
 #' key. The token is not stored.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   app = list(
+#'     appId = "string",
+#'     appArn = "string",
+#'     name = "string",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     description = "string",
+#'     repository = "string",
+#'     platform = "WEB",
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     iamServiceRoleArn = "string",
+#'     environmentVariables = list(
+#'       "string"
+#'     ),
+#'     defaultDomain = "string",
+#'     enableBranchAutoBuild = TRUE|FALSE,
+#'     enableBranchAutoDeletion = TRUE|FALSE,
+#'     enableBasicAuth = TRUE|FALSE,
+#'     basicAuthCredentials = "string",
+#'     customRules = list(
+#'       list(
+#'         source = "string",
+#'         target = "string",
+#'         status = "string",
+#'         condition = "string"
+#'       )
+#'     ),
+#'     productionBranch = list(
+#'       lastDeployTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "string",
+#'       thumbnailUrl = "string",
+#'       branchName = "string"
+#'     ),
+#'     buildSpec = "string",
+#'     customHeaders = "string",
+#'     enableAutoBranchCreation = TRUE|FALSE,
+#'     autoBranchCreationPatterns = list(
+#'       "string"
+#'     ),
+#'     autoBranchCreationConfig = list(
+#'       stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
+#'       framework = "string",
+#'       enableAutoBuild = TRUE|FALSE,
+#'       environmentVariables = list(
+#'         "string"
+#'       ),
+#'       basicAuthCredentials = "string",
+#'       enableBasicAuth = TRUE|FALSE,
+#'       enablePerformanceMode = TRUE|FALSE,
+#'       buildSpec = "string",
+#'       enablePullRequestPreview = TRUE|FALSE,
+#'       pullRequestEnvironmentName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1663,6 +2722,54 @@ amplify_update_app <- function(appId, name = NULL, description = NULL, platform 
 #' @param backendEnvironmentArn The Amazon Resource Name (ARN) for a backend environment that is part of
 #' an Amplify app.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   branch = list(
+#'     branchArn = "string",
+#'     branchName = "string",
+#'     description = "string",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
+#'     displayName = "string",
+#'     enableNotification = TRUE|FALSE,
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     environmentVariables = list(
+#'       "string"
+#'     ),
+#'     enableAutoBuild = TRUE|FALSE,
+#'     customDomains = list(
+#'       "string"
+#'     ),
+#'     framework = "string",
+#'     activeJobId = "string",
+#'     totalNumberOfJobs = "string",
+#'     enableBasicAuth = TRUE|FALSE,
+#'     enablePerformanceMode = TRUE|FALSE,
+#'     thumbnailUrl = "string",
+#'     basicAuthCredentials = "string",
+#'     buildSpec = "string",
+#'     ttl = "string",
+#'     associatedResources = list(
+#'       "string"
+#'     ),
+#'     enablePullRequestPreview = TRUE|FALSE,
+#'     pullRequestEnvironmentName = "string",
+#'     destinationBranch = "string",
+#'     sourceBranch = "string",
+#'     backendEnvironmentArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_branch(
@@ -1726,6 +2833,35 @@ amplify_update_branch <- function(appId, branchName, description = NULL, framewo
 #' @param autoSubDomainIAMRole The required AWS Identity and Access Management (IAM) service role for
 #' the Amazon Resource Name (ARN) for automatically creating subdomains.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainAssociation = list(
+#'     domainAssociationArn = "string",
+#'     domainName = "string",
+#'     enableAutoSubDomain = TRUE|FALSE,
+#'     autoSubDomainCreationPatterns = list(
+#'       "string"
+#'     ),
+#'     autoSubDomainIAMRole = "string",
+#'     domainStatus = "PENDING_VERIFICATION"|"IN_PROGRESS"|"AVAILABLE"|"PENDING_DEPLOYMENT"|"FAILED"|"CREATING"|"REQUESTING_CERTIFICATE"|"UPDATING",
+#'     statusReason = "string",
+#'     certificateVerificationDNSRecord = "string",
+#'     subDomains = list(
+#'       list(
+#'         subDomainSetting = list(
+#'           prefix = "string",
+#'           branchName = "string"
+#'         ),
+#'         verified = TRUE|FALSE,
+#'         dnsRecord = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_domain_association(
@@ -1776,6 +2912,26 @@ amplify_update_domain_association <- function(appId, domainName, enableAutoSubDo
 #' @param webhookId &#91;required&#93; The unique ID for a webhook.
 #' @param branchName The name for a branch that is part of an Amplify app.
 #' @param description The description for a webhook.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   webhook = list(
+#'     webhookArn = "string",
+#'     webhookId = "string",
+#'     webhookUrl = "string",
+#'     branchName = "string",
+#'     description = "string",
+#'     createTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

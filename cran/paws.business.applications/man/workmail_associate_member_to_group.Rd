@@ -13,6 +13,10 @@ workmail_associate_member_to_group(OrganizationId, GroupId, MemberId)
 
 \item{MemberId}{[required] The member (user or group) to associate to the group.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds a member (user or group) to the group's set.
 }

@@ -14,6 +14,19 @@ alexaforbusiness_list_smart_home_appliances(RoomArn, MaxResults,
 
 \item{NextToken}{The tokens used for pagination.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SmartHomeAppliances = list(
+    list(
+      FriendlyName = "string",
+      Description = "string",
+      ManufacturerName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all of the smart home appliances associated with a room.
 }

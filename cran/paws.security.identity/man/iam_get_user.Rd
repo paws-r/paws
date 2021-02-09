@@ -13,7 +13,34 @@ iam_get_user(UserName)
 This parameter is optional. If it is not included, it defaults to the
 user making the request. This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  User = list(
+    Path = "string",
+    UserName = "string",
+    UserId = "string",
+    Arn = "string",
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    PasswordLastUsed = as.POSIXct(
+      "2015-01-01"
+    ),
+    PermissionsBoundary = list(
+      PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+      PermissionsBoundaryArn = "string"
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Retrieves information about the specified IAM user, including the user's

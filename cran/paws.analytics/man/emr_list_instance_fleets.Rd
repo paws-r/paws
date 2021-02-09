@@ -11,6 +11,80 @@ emr_list_instance_fleets(ClusterId, Marker)
 
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceFleets = list(
+    list(
+      Id = "string",
+      Name = "string",
+      Status = list(
+        State = "PROVISIONING"|"BOOTSTRAPPING"|"RUNNING"|"RESIZING"|"SUSPENDED"|"TERMINATING"|"TERMINATED",
+        StateChangeReason = list(
+          Code = "INTERNAL_ERROR"|"VALIDATION_ERROR"|"INSTANCE_FAILURE"|"CLUSTER_TERMINATED",
+          Message = "string"
+        ),
+        Timeline = list(
+          CreationDateTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          ReadyDateTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          EndDateTime = as.POSIXct(
+            "2015-01-01"
+          )
+        )
+      ),
+      InstanceFleetType = "MASTER"|"CORE"|"TASK",
+      TargetOnDemandCapacity = 123,
+      TargetSpotCapacity = 123,
+      ProvisionedOnDemandCapacity = 123,
+      ProvisionedSpotCapacity = 123,
+      InstanceTypeSpecifications = list(
+        list(
+          InstanceType = "string",
+          WeightedCapacity = 123,
+          BidPrice = "string",
+          BidPriceAsPercentageOfOnDemandPrice = 123.0,
+          Configurations = list(
+            list(
+              Classification = "string",
+              Configurations = list(),
+              Properties = list(
+                "string"
+              )
+            )
+          ),
+          EbsBlockDevices = list(
+            list(
+              VolumeSpecification = list(
+                VolumeType = "string",
+                Iops = 123,
+                SizeInGB = 123
+              ),
+              Device = "string"
+            )
+          ),
+          EbsOptimized = TRUE|FALSE
+        )
+      ),
+      LaunchSpecifications = list(
+        SpotSpecification = list(
+          TimeoutDurationMinutes = 123,
+          TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
+          BlockDurationMinutes = 123,
+          AllocationStrategy = "capacity-optimized"
+        ),
+        OnDemandSpecification = list(
+          AllocationStrategy = "lowest-price"
+        )
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Lists all available details about the instance fleets in a cluster.
 

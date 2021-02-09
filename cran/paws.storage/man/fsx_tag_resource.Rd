@@ -13,6 +13,10 @@ to tag.}
 \item{Tags}{[required] A list of tags for the resource. If a tag with a given key already
 exists, the value is replaced by the one specified in this parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Tags an Amazon FSx resource.
 }

@@ -17,6 +17,16 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{RouteTableId}{[required] The ID of the new route table to associate with the subnet.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NewAssociationId = "string",
+  AssociationState = list(
+    State = "associating"|"associated"|"disassociating"|"disassociated"|"failed",
+    StatusMessage = "string"
+  )
+)
+}
+}
 \description{
 Changes the route table associated with a given subnet, internet
 gateway, or virtual private gateway in a VPC. After the operation

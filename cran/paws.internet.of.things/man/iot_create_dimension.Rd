@@ -15,7 +15,7 @@ the type and value to make it easy to remember what it does.}
 
 \item{stringValues}{[required] Specifies the value or list of values for the dimension. For
 \code{TOPIC_FILTER} dimensions, this is a pattern used to match the MQTT
-topic (for example, "admin/\\#").}
+topic (for example, "admin/\#").}
 
 \item{tags}{Metadata that can be used to manage the dimension.}
 
@@ -23,6 +23,13 @@ topic (for example, "admin/\\#").}
 create a new dimension with the same token as a dimension that already
 exists, an exception occurs. If you omit this value, AWS SDKs will
 automatically generate a unique client request.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  name = "string",
+  arn = "string"
+)
+}
 }
 \description{
 Create a dimension that you can use to limit the scope of a metric used

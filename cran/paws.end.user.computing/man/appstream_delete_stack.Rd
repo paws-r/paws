@@ -9,6 +9,10 @@ appstream_delete_stack(Name)
 \arguments{
 \item{Name}{[required] The name of the stack.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified stack. After the stack is deleted, the application
 streaming environment provided by the stack is no longer available to

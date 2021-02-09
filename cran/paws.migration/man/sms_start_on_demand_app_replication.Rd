@@ -11,6 +11,10 @@ sms_start_on_demand_app_replication(appId, description)
 
 \item{description}{The description of the replication run.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Starts an on-demand replication run for the specified application.
 }

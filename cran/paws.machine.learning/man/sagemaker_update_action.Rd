@@ -18,6 +18,12 @@ sagemaker_update_action(ActionName, Description, Status, Properties,
 
 \item{PropertiesToRemove}{A list of properties to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ActionArn = "string"
+)
+}
+}
 \description{
 Updates an action.
 }

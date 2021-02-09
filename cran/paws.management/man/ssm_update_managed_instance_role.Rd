@@ -12,6 +12,10 @@ ssm_update_managed_instance_role(InstanceId, IamRole)
 
 \item{IamRole}{[required] The IAM role you want to assign or change.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Changes the Amazon Identity and Access Management (IAM) role that is
 assigned to the on-premises instance or virtual machines (VM). IAM roles

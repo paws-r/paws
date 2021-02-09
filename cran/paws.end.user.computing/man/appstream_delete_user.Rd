@@ -13,6 +13,10 @@ Users' email addresses are case-sensitive.}
 
 \item{AuthenticationType}{[required] The authentication type for the user. You must specify USERPOOL.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a user from the user pool.
 }

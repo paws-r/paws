@@ -25,7 +25,7 @@ have only one value.
 resources, remember that other services may have restrictions on
 allowed characters. Generally allowed characters are: letters,
 numbers, and spaces representable in UTF-8, and the following
-characters: + - = . \\_ : / @.
+characters: + - = . _ : / @.
 \item Tag keys and values are case-sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
 such as a prefix for either keys or values as it is reserved for AWS
@@ -33,6 +33,10 @@ use. You cannot edit or delete tag keys or values with this prefix.
 Tags with this prefix do not count against your tags per resource
 limit.
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list()
+}
 }
 \description{
 Associates the specified tags to a resource with the specified

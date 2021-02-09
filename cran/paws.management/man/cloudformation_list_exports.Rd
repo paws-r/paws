@@ -12,6 +12,19 @@ cloudformation_list_exports(NextToken)
 response output) that identifies the next page of exported output values
 that you asked to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Exports = list(
+    list(
+      ExportingStackId = "string",
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all exported output values in the account and Region in which you
 call this action. Use this action to see the exported output values that

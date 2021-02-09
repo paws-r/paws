@@ -19,6 +19,10 @@ suppression to adhere to.}
 
 \item{description}{The description of the audit suppression.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a Device Defender audit suppression.
 }

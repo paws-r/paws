@@ -12,6 +12,17 @@ elbv2_modify_load_balancer_attributes(LoadBalancerArn, Attributes)
 
 \item{Attributes}{[required] The load balancer attributes.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Modifies the specified attributes of the specified Application Load
 Balancer, Network Load Balancer, or Gateway Load Balancer.
@@ -44,7 +55,7 @@ svc$modify_load_balancer_attributes(
       Value = "true"
     )
   ),
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer..."
 )
 
 # This example changes the idle timeout value for the specified load
@@ -56,7 +67,7 @@ svc$modify_load_balancer_attributes(
       Value = "30"
     )
   ),
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer..."
 )
 
 # This example enables access logs for the specified load balancer. Note
@@ -78,7 +89,7 @@ svc$modify_load_balancer_attributes(
       Value = "myapp"
     )
   ),
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my..."
+  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer..."
 )
 }
 

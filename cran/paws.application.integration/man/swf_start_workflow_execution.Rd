@@ -21,7 +21,7 @@ within the same domain.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{\\u0000-\\u001f} | \verb{\\u007f-\\u009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{workflowType}{[required] The type of the workflow to start.}
@@ -37,7 +37,7 @@ time then a fault is returned.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{\\u0000-\\u001f} | \verb{\\u007f-\\u009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{taskPriority}{The task priority to use for this workflow execution. This overrides any
@@ -122,6 +122,12 @@ Lambda task fails. This results in a \code{ScheduleLambdaFunctionFailed}
 history event. For more information, see
 \url{https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html}
 in the \emph{Amazon SWF Developer Guide}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  runId = "string"
+)
+}
 }
 \description{
 Starts an execution of the workflow type in the specified domain using

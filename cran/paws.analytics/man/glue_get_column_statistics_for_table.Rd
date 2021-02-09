@@ -17,6 +17,82 @@ none is supplied, the AWS account ID is used by default.}
 
 \item{ColumnNames}{[required] A list of the column names.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ColumnStatisticsList = list(
+    list(
+      ColumnName = "string",
+      ColumnType = "string",
+      AnalyzedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      StatisticsData = list(
+        Type = "BOOLEAN"|"DATE"|"DECIMAL"|"DOUBLE"|"LONG"|"STRING"|"BINARY",
+        BooleanColumnStatisticsData = list(
+          NumberOfTrues = 123,
+          NumberOfFalses = 123,
+          NumberOfNulls = 123
+        ),
+        DateColumnStatisticsData = list(
+          MinimumValue = as.POSIXct(
+            "2015-01-01"
+          ),
+          MaximumValue = as.POSIXct(
+            "2015-01-01"
+          ),
+          NumberOfNulls = 123,
+          NumberOfDistinctValues = 123
+        ),
+        DecimalColumnStatisticsData = list(
+          MinimumValue = list(
+            UnscaledValue = raw,
+            Scale = 123
+          ),
+          MaximumValue = list(
+            UnscaledValue = raw,
+            Scale = 123
+          ),
+          NumberOfNulls = 123,
+          NumberOfDistinctValues = 123
+        ),
+        DoubleColumnStatisticsData = list(
+          MinimumValue = 123.0,
+          MaximumValue = 123.0,
+          NumberOfNulls = 123,
+          NumberOfDistinctValues = 123
+        ),
+        LongColumnStatisticsData = list(
+          MinimumValue = 123,
+          MaximumValue = 123,
+          NumberOfNulls = 123,
+          NumberOfDistinctValues = 123
+        ),
+        StringColumnStatisticsData = list(
+          MaximumLength = 123,
+          AverageLength = 123.0,
+          NumberOfNulls = 123,
+          NumberOfDistinctValues = 123
+        ),
+        BinaryColumnStatisticsData = list(
+          MaximumLength = 123,
+          AverageLength = 123.0,
+          NumberOfNulls = 123
+        )
+      )
+    )
+  ),
+  Errors = list(
+    list(
+      ColumnName = "string",
+      Error = list(
+        ErrorCode = "string",
+        ErrorMessage = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves table statistics of columns.
 

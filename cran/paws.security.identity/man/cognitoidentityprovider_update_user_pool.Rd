@@ -68,6 +68,10 @@ recovery mechanism if the user also has SMS MFA enabled. In the absence
 of this setting, Cognito uses the legacy behavior to determine the
 recovery method where SMS is preferred over email.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the specified user pool with the specified attributes. You can
 get a list of the current user pool settings using

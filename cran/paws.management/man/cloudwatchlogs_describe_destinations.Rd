@@ -17,6 +17,22 @@ from a previous call.)}
 \item{limit}{The maximum number of items returned. If you don't specify a value, the
 default is up to 50 items.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  destinations = list(
+    list(
+      destinationName = "string",
+      targetArn = "string",
+      roleArn = "string",
+      accessPolicy = "string",
+      arn = "string",
+      creationTime = 123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all your destinations. The results are ASCII-sorted by destination
 name.

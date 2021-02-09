@@ -32,6 +32,17 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{PoolTagSpecifications}{The tags to apply to the address pool.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ByoipCidr = list(
+    Cidr = "string",
+    Description = "string",
+    StatusMessage = "string",
+    State = "advertised"|"deprovisioned"|"failed-deprovision"|"failed-provision"|"pending-deprovision"|"pending-provision"|"provisioned"|"provisioned-not-publicly-advertisable"
+  )
+)
+}
+}
 \description{
 Provisions an IPv4 or IPv6 address range for use with your AWS resources
 through bring your own IP addresses (BYOIP) and creates a corresponding

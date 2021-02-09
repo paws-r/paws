@@ -29,6 +29,14 @@ Currently \code{application/json} and \code{application/yaml} are supported for
 \code{exportType} of\code{oas30} and \code{swagger}. This should be specified in the
 \code{Accept} header for direct API requests.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  contentType = "string",
+  contentDisposition = "string",
+  body = raw
+)
+}
+}
 \description{
 Exports a deployed version of a RestApi in a specified format.
 }

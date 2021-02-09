@@ -22,6 +22,68 @@ from a prior call.)}
 
 \item{VpcId}{[required] The ID of the VPC.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  StaleSecurityGroupSet = list(
+    list(
+      Description = "string",
+      GroupId = "string",
+      GroupName = "string",
+      StaleIpPermissions = list(
+        list(
+          FromPort = 123,
+          IpProtocol = "string",
+          IpRanges = list(
+            "string"
+          ),
+          PrefixListIds = list(
+            "string"
+          ),
+          ToPort = 123,
+          UserIdGroupPairs = list(
+            list(
+              Description = "string",
+              GroupId = "string",
+              GroupName = "string",
+              PeeringStatus = "string",
+              UserId = "string",
+              VpcId = "string",
+              VpcPeeringConnectionId = "string"
+            )
+          )
+        )
+      ),
+      StaleIpPermissionsEgress = list(
+        list(
+          FromPort = 123,
+          IpProtocol = "string",
+          IpRanges = list(
+            "string"
+          ),
+          PrefixListIds = list(
+            "string"
+          ),
+          ToPort = 123,
+          UserIdGroupPairs = list(
+            list(
+              Description = "string",
+              GroupId = "string",
+              GroupName = "string",
+              PeeringStatus = "string",
+              UserId = "string",
+              VpcId = "string",
+              VpcPeeringConnectionId = "string"
+            )
+          )
+        )
+      ),
+      VpcId = "string"
+    )
+  )
+)
+}
+}
 \description{
 [VPC only] Describes the stale security group rules for security
 groups in a specified VPC. Rules are stale when they reference a deleted

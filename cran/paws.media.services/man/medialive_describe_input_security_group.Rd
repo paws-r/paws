@@ -9,6 +9,25 @@ medialive_describe_input_security_group(InputSecurityGroupId)
 \arguments{
 \item{InputSecurityGroupId}{[required] The id of the Input Security Group to describe}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  Id = "string",
+  Inputs = list(
+    "string"
+  ),
+  State = "IDLE"|"IN_USE"|"UPDATING"|"DELETED",
+  Tags = list(
+    "string"
+  ),
+  WhitelistRules = list(
+    list(
+      Cidr = "string"
+    )
+  )
+)
+}
+}
 \description{
 Produces a summary of an Input Security Group
 }

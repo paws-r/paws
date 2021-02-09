@@ -15,6 +15,15 @@ updating.}
 
 \item{VersionNumber}{[required] The version number of the dashboard.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DashboardId = "string",
+  DashboardArn = "string",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Updates the published version of a dashboard.
 }

@@ -11,7 +11,7 @@ cloudwatch_put_dashboard(DashboardName, DashboardBody)
 \item{DashboardName}{[required] The name of the dashboard. If a dashboard with this name already exists,
 this call modifies that dashboard, replacing its current contents.
 Otherwise, a new dashboard is created. The maximum length is 255, and
-valid characters are A-Z, a-z, 0-9, "-", and "\\_". This parameter is
+valid characters are A-Z, a-z, 0-9, "-", and "_". This parameter is
 required.}
 
 \item{DashboardBody}{[required] The detailed information about the dashboard in JSON format, including
@@ -19,6 +19,17 @@ the widgets to include and their location on the dashboard. This
 parameter is required.
 
 For more information about the syntax, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html}{Dashboard Body Structure and Syntax}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  DashboardValidationMessages = list(
+    list(
+      DataPath = "string",
+      Message = "string"
+    )
+  )
+)
+}
 }
 \description{
 Creates a dashboard if it does not already exist, or updates an existing

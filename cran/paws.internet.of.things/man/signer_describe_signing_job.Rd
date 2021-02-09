@@ -9,6 +9,63 @@ signer_describe_signing_job(jobId)
 \arguments{
 \item{jobId}{[required] The ID of the signing job on input.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobId = "string",
+  source = list(
+    s3 = list(
+      bucketName = "string",
+      key = "string",
+      version = "string"
+    )
+  ),
+  signingMaterial = list(
+    certificateArn = "string"
+  ),
+  platformId = "string",
+  platformDisplayName = "string",
+  profileName = "string",
+  profileVersion = "string",
+  overrides = list(
+    signingConfiguration = list(
+      encryptionAlgorithm = "RSA"|"ECDSA",
+      hashAlgorithm = "SHA1"|"SHA256"
+    ),
+    signingImageFormat = "JSON"|"JSONEmbedded"|"JSONDetached"
+  ),
+  signingParameters = list(
+    "string"
+  ),
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  completedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  signatureExpiresAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  requestedBy = "string",
+  status = "InProgress"|"Failed"|"Succeeded",
+  statusReason = "string",
+  revocationRecord = list(
+    reason = "string",
+    revokedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    revokedBy = "string"
+  ),
+  signedObject = list(
+    s3 = list(
+      bucketName = "string",
+      key = "string"
+    )
+  ),
+  jobOwner = "string",
+  jobInvoker = "string"
+)
+}
+}
 \description{
 Returns information about a specific code signing job. You specify the
 job by using the \code{jobId} value that is returned by the

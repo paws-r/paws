@@ -14,6 +14,40 @@ trail ARN is:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IsLogging = TRUE|FALSE,
+  LatestDeliveryError = "string",
+  LatestNotificationError = "string",
+  LatestDeliveryTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LatestNotificationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  StartLoggingTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  StopLoggingTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LatestCloudWatchLogsDeliveryError = "string",
+  LatestCloudWatchLogsDeliveryTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LatestDigestDeliveryTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LatestDigestDeliveryError = "string",
+  LatestDeliveryAttemptTime = "string",
+  LatestNotificationAttemptTime = "string",
+  LatestNotificationAttemptSucceeded = "string",
+  LatestDeliveryAttemptSucceeded = "string",
+  TimeLoggingStarted = "string",
+  TimeLoggingStopped = "string"
+)
+}
+}
 \description{
 Returns a JSON-formatted list of information about the specified trail.
 Fields include information on delivery errors, Amazon SNS and Amazon S3

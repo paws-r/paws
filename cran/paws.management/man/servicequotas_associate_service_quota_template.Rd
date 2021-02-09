@@ -6,6 +6,10 @@
 \usage{
 servicequotas_associate_service_quota_template()
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates your quota request template with your organization. When a
 new account is created in your organization, the quota increase requests

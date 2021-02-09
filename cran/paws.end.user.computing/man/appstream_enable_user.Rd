@@ -16,6 +16,10 @@ not exist" error message displays.}
 
 \item{AuthenticationType}{[required] The authentication type for the user. You must specify USERPOOL.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Enables a user in the user pool. After being enabled, users can sign in
 to AppStream 2.0 and open applications from the stacks to which they are

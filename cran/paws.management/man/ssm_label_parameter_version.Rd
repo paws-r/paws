@@ -16,6 +16,15 @@ to the latest version.}
 
 \item{Labels}{[required] One or more labels to attach to the specified parameter version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InvalidLabels = list(
+    "string"
+  ),
+  ParameterVersion = 123
+)
+}
+}
 \description{
 A parameter label is a user-defined alias to help you manage different
 versions of a parameter. When you modify a parameter, Systems Manager
@@ -37,7 +46,7 @@ parameter label, then you must move it to a different version of a
 parameter.
 \item A label can have a maximum of 100 characters.
 \item Labels can contain letters (case sensitive), numbers, periods (.),
-hyphens (-), or underscores (\\_).
+hyphens (-), or underscores (_).
 \item Labels can't begin with a number, "aws," or "ssm" (not case
 sensitive). If a label fails to meet these requirements, then the
 label is not associated with a parameter and the system displays it

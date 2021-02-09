@@ -31,6 +31,23 @@ was returned in the previous response.}
 
 Default: 20}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextPageMarker = "string",
+  BillingRecords = list(
+    list(
+      DomainName = "string",
+      Operation = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
+      InvoiceId = "string",
+      BillDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Price = 123.0
+    )
+  )
+)
+}
+}
 \description{
 Returns all the domain-related billing records for the current AWS
 account for a specified period

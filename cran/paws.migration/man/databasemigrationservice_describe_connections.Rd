@@ -26,6 +26,22 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  Connections = list(
+    list(
+      ReplicationInstanceArn = "string",
+      EndpointArn = "string",
+      Status = "string",
+      LastFailureMessage = "string",
+      EndpointIdentifier = "string",
+      ReplicationInstanceIdentifier = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the status of the connections that have been made between the
 replication instance and an endpoint. Connections are created when you

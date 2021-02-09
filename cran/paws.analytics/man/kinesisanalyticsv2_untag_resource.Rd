@@ -12,6 +12,10 @@ the tags.}
 
 \item{TagKeys}{[required] A list of keys of tags to remove from the specified application.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes one or more tags from a Kinesis Data Analytics application. For
 more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html}{Using Tagging}.

@@ -18,6 +18,16 @@ One of \code{SchemaArn} or \code{SchemaName} has to be provided.
 
 \item{SchemaDefinition}{[required] The definition of the schema for which schema details are required.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaVersionId = "string",
+  SchemaArn = "string",
+  DataFormat = "AVRO",
+  Status = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING",
+  CreatedTime = "string"
+)
+}
+}
 \description{
 Retrieves a schema by the \code{SchemaDefinition}. The schema definition is
 sent to the Schema Registry, canonicalized, and hashed. If the hash is

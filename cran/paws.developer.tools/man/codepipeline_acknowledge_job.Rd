@@ -16,6 +16,12 @@ that the job is being worked on by only one job worker. Get this number
 from the response of the \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}}
 request that returned this job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  status = "Created"|"Queued"|"Dispatched"|"InProgress"|"TimedOut"|"Succeeded"|"Failed"
+)
+}
+}
 \description{
 Returns information about a specified job and whether that job has been
 received by the job worker. Used for custom actions only.

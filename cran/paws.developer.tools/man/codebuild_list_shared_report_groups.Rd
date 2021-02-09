@@ -35,6 +35,15 @@ no more next tokens are returned.}
 \code{nextToken} to iterate pages in the list of returned \code{ReportGroup}
 objects. The default value is 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  nextToken = "string",
+  reportGroups = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets a list of report groups that are shared with other AWS accounts or
 users.

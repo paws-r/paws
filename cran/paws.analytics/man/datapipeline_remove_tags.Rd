@@ -11,6 +11,10 @@ datapipeline_remove_tags(pipelineId, tagKeys)
 
 \item{tagKeys}{[required] The keys of the tags to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes existing tags from the specified pipeline.
 }

@@ -10,6 +10,10 @@ securityhub_enable_organization_admin_account(AdminAccountId)
 \item{AdminAccountId}{[required] The AWS account identifier of the account to designate as the Security
 Hub administrator account.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Designates the Security Hub administrator account for an organization.
 Can only be called by the organization management account.

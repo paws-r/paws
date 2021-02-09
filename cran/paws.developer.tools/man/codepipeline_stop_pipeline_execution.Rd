@@ -22,6 +22,12 @@ This option can lead to failed or out-of-sequence tasks.}
 \item{reason}{Use this option to enter comments, such as the reason the pipeline was
 stopped.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  pipelineExecutionId = "string"
+)
+}
+}
 \description{
 Stops the specified pipeline execution. You choose to either stop the
 pipeline execution by completing in-progress actions without starting

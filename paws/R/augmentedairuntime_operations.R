@@ -13,6 +13,12 @@ NULL
 #'
 #' @param HumanLoopName &#91;required&#93; The name of the human loop that you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_human_loop(
@@ -49,6 +55,25 @@ augmentedairuntime_delete_human_loop <- function(HumanLoopName) {
 #' augmentedairuntime_describe_human_loop(HumanLoopName)
 #'
 #' @param HumanLoopName &#91;required&#93; The name of the human loop that you want information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   FailureReason = "string",
+#'   FailureCode = "string",
+#'   HumanLoopStatus = "InProgress"|"Failed"|"Completed"|"Stopped"|"Stopping",
+#'   HumanLoopName = "string",
+#'   HumanLoopArn = "string",
+#'   FlowDefinitionArn = "string",
+#'   HumanLoopOutput = list(
+#'     OutputS3Uri = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -99,6 +124,25 @@ augmentedairuntime_describe_human_loop <- function(HumanLoopName) {
 #' items is more than the value specified in `MaxResults`, then a
 #' `NextToken` is returned in the output. You can use this token to display
 #' the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HumanLoopSummaries = list(
+#'     list(
+#'       HumanLoopName = "string",
+#'       HumanLoopStatus = "InProgress"|"Failed"|"Completed"|"Stopped"|"Stopping",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FailureReason = "string",
+#'       FlowDefinitionArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -155,6 +199,14 @@ augmentedairuntime_list_human_loops <- function(CreationTimeAfter = NULL, Creati
 #' your data is free of personally identifiable information and/or free of
 #' adult content.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HumanLoopArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_human_loop(
@@ -200,6 +252,12 @@ augmentedairuntime_start_human_loop <- function(HumanLoopName, FlowDefinitionArn
 #' augmentedairuntime_stop_human_loop(HumanLoopName)
 #'
 #' @param HumanLoopName &#91;required&#93; The name of the human loop that you want to stop.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

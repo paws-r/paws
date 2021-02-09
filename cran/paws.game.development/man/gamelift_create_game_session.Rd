@@ -53,6 +53,40 @@ deleted.}
 value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GameSession = list(
+    GameSessionId = "string",
+    Name = "string",
+    FleetId = "string",
+    FleetArn = "string",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    TerminationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    CurrentPlayerSessionCount = 123,
+    MaximumPlayerSessionCount = 123,
+    Status = "ACTIVE"|"ACTIVATING"|"TERMINATED"|"TERMINATING"|"ERROR",
+    StatusReason = "INTERRUPTED",
+    GameProperties = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    IpAddress = "string",
+    DnsName = "string",
+    Port = 123,
+    PlayerSessionCreationPolicy = "ACCEPT_ALL"|"DENY_ALL",
+    CreatorId = "string",
+    GameSessionData = "string",
+    MatchmakerData = "string"
+  )
+)
+}
+}
 \description{
 Creates a multiplayer game session for players. This operation creates a
 game session record and assigns an available server process in the

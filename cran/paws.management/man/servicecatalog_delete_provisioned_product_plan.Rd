@@ -20,6 +20,10 @@ servicecatalog_delete_provisioned_product_plan(AcceptLanguage, PlanId,
 \item{IgnoreErrors}{If set to true, AWS Service Catalog stops managing the specified
 provisioned product even if it cannot delete the underlying resources.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified plan.
 }

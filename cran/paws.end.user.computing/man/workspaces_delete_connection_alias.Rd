@@ -9,6 +9,10 @@ workspaces_delete_connection_alias(AliasId)
 \arguments{
 \item{AliasId}{[required] The identifier of the connection alias to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified connection alias. For more information, see
 \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.

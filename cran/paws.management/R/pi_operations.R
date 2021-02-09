@@ -91,6 +91,38 @@ NULL
 #' parameter is specified, the response includes only records beyond the
 #' token, up to the value specified by `MaxRecords`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AlignedStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   AlignedEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   PartitionKeys = list(
+#'     list(
+#'       Dimensions = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Keys = list(
+#'     list(
+#'       Dimensions = list(
+#'         "string"
+#'       ),
+#'       Total = 123.0,
+#'       Partitions = list(
+#'         123.0
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_dimension_keys(
@@ -205,6 +237,39 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #' @param NextToken An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' token, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AlignedStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   AlignedEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Identifier = "string",
+#'   MetricList = list(
+#'     list(
+#'       Key = list(
+#'         Metric = "string",
+#'         Dimensions = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DataPoints = list(
+#'         list(
+#'           Timestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Value = 123.0
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -12,6 +12,22 @@ support_describe_trusted_advisor_checks(language)
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  checks = list(
+    list(
+      id = "string",
+      name = "string",
+      description = "string",
+      category = "string",
+      metadata = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns information about all available AWS Trusted Advisor checks,
 including the name, ID, category, description, and metadata. You must

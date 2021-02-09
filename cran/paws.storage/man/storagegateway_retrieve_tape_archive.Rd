@@ -18,6 +18,12 @@ operation to return a list of gateways for your account and AWS Region.
 You retrieve archived virtual tapes to only one gateway and the gateway
 must be a tape gateway.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TapeARN = "string"
+)
+}
+}
 \description{
 Retrieves an archived virtual tape from the virtual tape shelf (VTS) to
 a tape gateway. Virtual tapes archived in the VTS are not associated

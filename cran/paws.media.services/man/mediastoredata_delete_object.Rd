@@ -11,6 +11,10 @@ mediastoredata_delete_object(Path)
 container. Format: <folder name>/<folder name>/<file
 name>}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes an object at the specified path.
 }

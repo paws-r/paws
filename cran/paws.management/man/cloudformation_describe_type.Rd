@@ -30,6 +30,34 @@ If you specify a \code{VersionId},
 about that specific type version. Otherwise, it returns information
 about the default type version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  Type = "RESOURCE"|"MODULE",
+  TypeName = "string",
+  DefaultVersionId = "string",
+  IsDefaultVersion = TRUE|FALSE,
+  Description = "string",
+  Schema = "string",
+  ProvisioningType = "NON_PROVISIONABLE"|"IMMUTABLE"|"FULLY_MUTABLE",
+  DeprecatedStatus = "LIVE"|"DEPRECATED",
+  LoggingConfig = list(
+    LogRoleArn = "string",
+    LogGroupName = "string"
+  ),
+  ExecutionRoleArn = "string",
+  Visibility = "PUBLIC"|"PRIVATE",
+  SourceUrl = "string",
+  DocumentationUrl = "string",
+  LastUpdated = as.POSIXct(
+    "2015-01-01"
+  ),
+  TimeCreated = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns detailed information about a type that has been registered.
 

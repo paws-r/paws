@@ -11,6 +11,10 @@ directoryservice_remove_region(DirectoryId)
 \item{DirectoryId}{[required] The identifier of the directory for which you want to remove Region
 replication.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Stops all replication and removes the domain controllers from the
 specified Region. You cannot remove the primary Region with this

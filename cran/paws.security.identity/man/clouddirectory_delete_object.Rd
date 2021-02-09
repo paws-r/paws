@@ -12,6 +12,10 @@ where the object resides. For more information, see arns.}
 
 \item{ObjectReference}{[required] A reference that identifies the object.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes an object and its associated attributes. Only objects with no
 children and no parents can be deleted. The maximum number of attributes

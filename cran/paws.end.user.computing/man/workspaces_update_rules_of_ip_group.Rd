@@ -12,6 +12,10 @@ workspaces_update_rules_of_ip_group(GroupId, UserRules)
 
 \item{UserRules}{[required] One or more rules.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Replaces the current rules of the specified IP access control group with
 the specified rules.

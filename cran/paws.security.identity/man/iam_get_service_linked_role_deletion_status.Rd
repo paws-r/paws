@@ -12,6 +12,23 @@ iam_get_service_linked_role_deletion_status(DeletionTaskId)
 in the format
 \verb{task/aws-service-role/<service-principal-name>/<role-name>/<task-uuid>}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = "SUCCEEDED"|"IN_PROGRESS"|"FAILED"|"NOT_STARTED",
+  Reason = list(
+    Reason = "string",
+    RoleUsageList = list(
+      list(
+        Region = "string",
+        Resources = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the status of your service-linked role deletion. After you use
 the \code{\link[=iam_delete_service_linked_role]{delete_service_linked_role}} API

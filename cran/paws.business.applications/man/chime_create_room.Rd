@@ -13,6 +13,23 @@ chime_create_room(AccountId, Name, ClientRequestToken)
 
 \item{ClientRequestToken}{The idempotency token for the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Room = list(
+    RoomId = "string",
+    Name = "string",
+    AccountId = "string",
+    CreatedBy = "string",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates a chat room for the specified Amazon Chime Enterprise account.
 }

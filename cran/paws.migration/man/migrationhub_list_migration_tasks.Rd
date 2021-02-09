@@ -16,6 +16,24 @@ using the returned token in \code{NextToken}.}
 
 \item{ResourceName}{Filter migration tasks by discovered resource name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  MigrationTaskSummaryList = list(
+    list(
+      ProgressUpdateStream = "string",
+      MigrationTaskName = "string",
+      Status = "NOT_STARTED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+      ProgressPercent = 123,
+      StatusDetail = "string",
+      UpdateDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists all, or filtered by resource name, migration tasks associated with
 the user account making this call. This API has the following traits:

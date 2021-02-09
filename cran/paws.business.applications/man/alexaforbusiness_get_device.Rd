@@ -9,6 +9,40 @@ alexaforbusiness_get_device(DeviceArn)
 \arguments{
 \item{DeviceArn}{The ARN of the device for which to request details. Required.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Device = list(
+    DeviceArn = "string",
+    DeviceSerialNumber = "string",
+    DeviceType = "string",
+    DeviceName = "string",
+    SoftwareVersion = "string",
+    MacAddress = "string",
+    RoomArn = "string",
+    DeviceStatus = "READY"|"PENDING"|"WAS_OFFLINE"|"DEREGISTERED"|"FAILED",
+    DeviceStatusInfo = list(
+      DeviceStatusDetails = list(
+        list(
+          Feature = "BLUETOOTH"|"VOLUME"|"NOTIFICATIONS"|"LISTS"|"SKILLS"|"NETWORK_PROFILE"|"SETTINGS"|"ALL",
+          Code = "DEVICE_SOFTWARE_UPDATE_NEEDED"|"DEVICE_WAS_OFFLINE"|"CREDENTIALS_ACCESS_FAILURE"|"TLS_VERSION_MISMATCH"|"ASSOCIATION_REJECTION"|"AUTHENTICATION_FAILURE"|"DHCP_FAILURE"|"INTERNET_UNAVAILABLE"|"DNS_FAILURE"|"UNKNOWN_FAILURE"|"CERTIFICATE_ISSUING_LIMIT_EXCEEDED"|"INVALID_CERTIFICATE_AUTHORITY"|"NETWORK_PROFILE_NOT_FOUND"|"INVALID_PASSWORD_STATE"|"PASSWORD_NOT_FOUND"|"PASSWORD_MANAGER_ACCESS_DENIED"|"CERTIFICATE_AUTHORITY_ACCESS_DENIED"
+        )
+      ),
+      ConnectionStatus = "ONLINE"|"OFFLINE",
+      ConnectionStatusUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    NetworkProfileInfo = list(
+      NetworkProfileArn = "string",
+      CertificateArn = "string",
+      CertificateExpirationTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets the details of a device by device ARN.
 }

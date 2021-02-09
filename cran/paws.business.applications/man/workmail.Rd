@@ -21,17 +21,8 @@ your data is stored.
 The WorkMail API is designed for the following scenarios:
 \itemize{
 \item Listing and describing organizations
-}<!-- -->
-
-\itemize{
 \item Managing users
-}<!-- -->
-
-\itemize{
 \item Managing groups
-}<!-- -->
-
-\itemize{
 \item Managing resources
 }
 

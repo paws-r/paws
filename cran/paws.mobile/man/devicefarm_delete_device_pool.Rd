@@ -10,6 +10,10 @@ devicefarm_delete_device_pool(arn)
 \item{arn}{[required] Represents the Amazon Resource Name (ARN) of the Device Farm device pool
 to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a device pool given the pool ARN. Does not allow deletion of
 curated pools owned by the system.

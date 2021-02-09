@@ -10,6 +10,27 @@ connect_describe_instance(InstanceId)
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Instance = list(
+    Id = "string",
+    Arn = "string",
+    IdentityManagementType = "SAML"|"CONNECT_MANAGED"|"EXISTING_DIRECTORY",
+    InstanceAlias = "string",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ServiceRole = "string",
+    InstanceStatus = "CREATION_IN_PROGRESS"|"ACTIVE"|"CREATION_FAILED",
+    StatusReason = list(
+      Message = "string"
+    ),
+    InboundCallsEnabled = TRUE|FALSE,
+    OutboundCallsEnabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

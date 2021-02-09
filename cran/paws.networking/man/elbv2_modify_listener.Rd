@@ -15,8 +15,8 @@ specify a port for a Gateway Load Balancer.}
 
 \item{Protocol}{The protocol for connections from clients to the load balancer.
 Application Load Balancers support the HTTP and HTTPS protocols. Network
-Load Balancers support the TCP, TLS, UDP, and TCP\\_UDP protocols. You
-can’t change the protocol to UDP or TCP\\_UDP if dual-stack mode is
+Load Balancers support the TCP, TLS, UDP, and TCP_UDP protocols. You
+can’t change the protocol to UDP or TCP_UDP if dual-stack mode is
 enabled. You cannot specify a protocol for a Gateway Load Balancer.}
 
 \item{SslPolicy}{[HTTPS and TLS listeners] The security policy that defines which
@@ -45,6 +45,89 @@ possible values:
 
 For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies}{ALPN policies}
 in the \emph{Network Load Balancers Guide}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Listeners = list(
+    list(
+      ListenerArn = "string",
+      LoadBalancerArn = "string",
+      Port = 123,
+      Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+      Certificates = list(
+        list(
+          CertificateArn = "string",
+          IsDefault = TRUE|FALSE
+        )
+      ),
+      SslPolicy = "string",
+      DefaultActions = list(
+        list(
+          Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+          TargetGroupArn = "string",
+          AuthenticateOidcConfig = list(
+            Issuer = "string",
+            AuthorizationEndpoint = "string",
+            TokenEndpoint = "string",
+            UserInfoEndpoint = "string",
+            ClientId = "string",
+            ClientSecret = "string",
+            SessionCookieName = "string",
+            Scope = "string",
+            SessionTimeout = 123,
+            AuthenticationRequestExtraParams = list(
+              "string"
+            ),
+            OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
+            UseExistingClientSecret = TRUE|FALSE
+          ),
+          AuthenticateCognitoConfig = list(
+            UserPoolArn = "string",
+            UserPoolClientId = "string",
+            UserPoolDomain = "string",
+            SessionCookieName = "string",
+            Scope = "string",
+            SessionTimeout = 123,
+            AuthenticationRequestExtraParams = list(
+              "string"
+            ),
+            OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+          ),
+          Order = 123,
+          RedirectConfig = list(
+            Protocol = "string",
+            Port = "string",
+            Host = "string",
+            Path = "string",
+            Query = "string",
+            StatusCode = "HTTP_301"|"HTTP_302"
+          ),
+          FixedResponseConfig = list(
+            MessageBody = "string",
+            StatusCode = "string",
+            ContentType = "string"
+          ),
+          ForwardConfig = list(
+            TargetGroups = list(
+              list(
+                TargetGroupArn = "string",
+                Weight = 123
+              )
+            ),
+            TargetGroupStickinessConfig = list(
+              Enabled = TRUE|FALSE,
+              DurationSeconds = 123
+            )
+          )
+        )
+      ),
+      AlpnPolicy = list(
+        "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Replaces the specified properties of the specified listener. Any
@@ -144,11 +227,11 @@ action, specify a list with the current actions plus the new action.
 svc$modify_listener(
   DefaultActions = list(
     list(
-      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-n...",
+      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgro...",
       Type = "forward"
     )
   ),
-  ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-ba..."
+  ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-..."
 )
 
 # This example changes the server certificate for the specified HTTPS
@@ -159,7 +242,7 @@ svc$modify_listener(
       CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-new-server-cert"
     )
   ),
-  ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-ba..."
+  ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-..."
 )
 }
 

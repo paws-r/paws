@@ -59,6 +59,65 @@ version.}
 available in the list. The default is to list only available engine
 versions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  DBEngineVersions = list(
+    list(
+      Engine = "string",
+      EngineVersion = "string",
+      DBParameterGroupFamily = "string",
+      DBEngineDescription = "string",
+      DBEngineVersionDescription = "string",
+      DefaultCharacterSet = list(
+        CharacterSetName = "string",
+        CharacterSetDescription = "string"
+      ),
+      SupportedCharacterSets = list(
+        list(
+          CharacterSetName = "string",
+          CharacterSetDescription = "string"
+        )
+      ),
+      SupportedNcharCharacterSets = list(
+        list(
+          CharacterSetName = "string",
+          CharacterSetDescription = "string"
+        )
+      ),
+      ValidUpgradeTarget = list(
+        list(
+          Engine = "string",
+          EngineVersion = "string",
+          Description = "string",
+          AutoUpgrade = TRUE|FALSE,
+          IsMajorVersionUpgrade = TRUE|FALSE
+        )
+      ),
+      SupportedTimezones = list(
+        list(
+          TimezoneName = "string"
+        )
+      ),
+      ExportableLogTypes = list(
+        "string"
+      ),
+      SupportsLogExportsToCloudwatchLogs = TRUE|FALSE,
+      SupportsReadReplica = TRUE|FALSE,
+      SupportedEngineModes = list(
+        "string"
+      ),
+      SupportedFeatureNames = list(
+        "string"
+      ),
+      Status = "string",
+      SupportsParallelQuery = TRUE|FALSE,
+      SupportsGlobalDatabases = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of the available DB engines.
 }

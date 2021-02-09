@@ -21,6 +21,22 @@ apigateway_get_usage(usagePlanId, keyId, startDate, endDate, position,
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  usagePlanId = "string",
+  startDate = "string",
+  endDate = "string",
+  position = "string",
+  items = list(
+    list(
+      list(
+        123
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets the usage data of a usage plan in a specified time interval.
 }

@@ -30,6 +30,26 @@ fleets for this build.
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Builds = list(
+    list(
+      BuildId = "string",
+      BuildArn = "string",
+      Name = "string",
+      Version = "string",
+      Status = "INITIALIZED"|"READY"|"FAILED",
+      SizeOnDisk = 123,
+      OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves build resources for all builds associated with the AWS account
 in use. You can limit results to builds that are in a specific status by

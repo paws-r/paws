@@ -21,6 +21,24 @@ it in your next request to receive the next set of results.}
 
 \item{UserProfileNameEquals}{A parameter to search by user profile name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Apps = list(
+    list(
+      DomainId = "string",
+      UserProfileName = "string",
+      AppType = "JupyterServer"|"KernelGateway"|"TensorBoard",
+      AppName = "string",
+      Status = "Deleted"|"Deleting"|"Failed"|"InService"|"Pending",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists apps.
 }

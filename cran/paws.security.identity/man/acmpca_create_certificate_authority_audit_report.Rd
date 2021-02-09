@@ -19,6 +19,13 @@ form:
 \item{AuditReportResponseFormat}{[required] The format in which to create the report. This can be either \strong{JSON} or
 \strong{CSV}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AuditReportId = "string",
+  S3Key = "string"
+)
+}
+}
 \description{
 Creates an audit report that lists every time that your CA private key
 is used. The report is saved in the Amazon S3 bucket that you specify on

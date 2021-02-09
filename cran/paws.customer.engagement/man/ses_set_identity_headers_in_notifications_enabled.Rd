@@ -25,6 +25,10 @@ notifications.
 This value can only be set when \code{NotificationType} is already set to use
 a particular Amazon SNS topic.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Given an identity (an email address or a domain), sets whether Amazon
 SES includes the original email headers in the Amazon Simple

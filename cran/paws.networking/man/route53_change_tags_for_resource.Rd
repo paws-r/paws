@@ -27,6 +27,10 @@ You can add a maximum of 10 tags to a health check or a hosted zone.}
 from the specified health check or hosted zone. You can specify up to 10
 keys.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds, edits, or deletes tags for a health check or a hosted zone.
 

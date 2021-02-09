@@ -12,6 +12,10 @@ to.}
 
 \item{Tags}{[required] The tags to be added to a resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds tags to a resource.
 }

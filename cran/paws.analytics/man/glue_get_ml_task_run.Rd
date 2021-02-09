@@ -11,6 +11,44 @@ glue_get_ml_task_run(TransformId, TaskRunId)
 
 \item{TaskRunId}{[required] The unique identifier of the task run.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransformId = "string",
+  TaskRunId = "string",
+  Status = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
+  LogGroupName = "string",
+  Properties = list(
+    TaskType = "EVALUATION"|"LABELING_SET_GENERATION"|"IMPORT_LABELS"|"EXPORT_LABELS"|"FIND_MATCHES",
+    ImportLabelsTaskRunProperties = list(
+      InputS3Path = "string",
+      Replace = TRUE|FALSE
+    ),
+    ExportLabelsTaskRunProperties = list(
+      OutputS3Path = "string"
+    ),
+    LabelingSetGenerationTaskRunProperties = list(
+      OutputS3Path = "string"
+    ),
+    FindMatchesTaskRunProperties = list(
+      JobId = "string",
+      JobName = "string",
+      JobRunId = "string"
+    )
+  ),
+  ErrorString = "string",
+  StartedOn = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastModifiedOn = as.POSIXct(
+    "2015-01-01"
+  ),
+  CompletedOn = as.POSIXct(
+    "2015-01-01"
+  ),
+  ExecutionTime = 123
+)
+}
+}
 \description{
 Gets details for a specific task run on a machine learning transform.
 Machine learning task runs are asynchronous tasks that AWS Glue runs on

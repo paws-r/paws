@@ -12,6 +12,25 @@ returned by
 \code{\link[=wafregional_create_rate_based_rule]{create_rate_based_rule}} and by
 \code{\link[=wafregional_list_rate_based_rules]{list_rate_based_rules}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Rule = list(
+    RuleId = "string",
+    Name = "string",
+    MetricName = "string",
+    MatchPredicates = list(
+      list(
+        Negated = TRUE|FALSE,
+        Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
+        DataId = "string"
+      )
+    ),
+    RateKey = "IP",
+    RateLimit = 123
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

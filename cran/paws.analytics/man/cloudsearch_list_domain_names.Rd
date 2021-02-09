@@ -6,6 +6,14 @@
 \usage{
 cloudsearch_list_domain_names()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DomainNames = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Lists all search domains owned by an account.
 }

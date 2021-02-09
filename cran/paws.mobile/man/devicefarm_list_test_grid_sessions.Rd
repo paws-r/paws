@@ -25,6 +25,26 @@ devicefarm_list_test_grid_sessions(projectArn, status,
 
 \item{nextToken}{Pagination token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  testGridSessions = list(
+    list(
+      arn = "string",
+      status = "ACTIVE"|"CLOSED"|"ERRORED",
+      created = as.POSIXct(
+        "2015-01-01"
+      ),
+      ended = as.POSIXct(
+        "2015-01-01"
+      ),
+      billingMinutes = 123.0,
+      seleniumProperties = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of sessions for a TestGridProject.
 }

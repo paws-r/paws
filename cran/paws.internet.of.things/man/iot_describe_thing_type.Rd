@@ -9,6 +9,29 @@ iot_describe_thing_type(thingTypeName)
 \arguments{
 \item{thingTypeName}{[required] The name of the thing type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  thingTypeName = "string",
+  thingTypeId = "string",
+  thingTypeArn = "string",
+  thingTypeProperties = list(
+    thingTypeDescription = "string",
+    searchableAttributes = list(
+      "string"
+    )
+  ),
+  thingTypeMetadata = list(
+    deprecated = TRUE|FALSE,
+    deprecationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Gets information about the specified thing type.
 }

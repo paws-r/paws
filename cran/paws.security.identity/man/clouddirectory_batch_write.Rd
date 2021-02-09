@@ -12,6 +12,71 @@ For more information, see arns.}
 
 \item{Operations}{[required] A list of operations that are part of the batch.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Responses = list(
+    list(
+      CreateObject = list(
+        ObjectIdentifier = "string"
+      ),
+      AttachObject = list(
+        attachedObjectIdentifier = "string"
+      ),
+      DetachObject = list(
+        detachedObjectIdentifier = "string"
+      ),
+      UpdateObjectAttributes = list(
+        ObjectIdentifier = "string"
+      ),
+      DeleteObject = list(),
+      AddFacetToObject = list(),
+      RemoveFacetFromObject = list(),
+      AttachPolicy = list(),
+      DetachPolicy = list(),
+      CreateIndex = list(
+        ObjectIdentifier = "string"
+      ),
+      AttachToIndex = list(
+        AttachedObjectIdentifier = "string"
+      ),
+      DetachFromIndex = list(
+        DetachedObjectIdentifier = "string"
+      ),
+      AttachTypedLink = list(
+        TypedLinkSpecifier = list(
+          TypedLinkFacet = list(
+            SchemaArn = "string",
+            TypedLinkName = "string"
+          ),
+          SourceObjectReference = list(
+            Selector = "string"
+          ),
+          TargetObjectReference = list(
+            Selector = "string"
+          ),
+          IdentityAttributeValues = list(
+            list(
+              AttributeName = "string",
+              Value = list(
+                StringValue = "string",
+                BinaryValue = raw,
+                BooleanValue = TRUE|FALSE,
+                NumberValue = "string",
+                DatetimeValue = as.POSIXct(
+                  "2015-01-01"
+                )
+              )
+            )
+          )
+        )
+      ),
+      DetachTypedLink = list(),
+      UpdateLinkAttributes = list()
+    )
+  )
+)
+}
+}
 \description{
 Performs all the write operations in a batch. Either all the operations
 succeed or none.

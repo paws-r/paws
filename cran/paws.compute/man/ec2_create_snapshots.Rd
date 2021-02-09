@@ -23,6 +23,32 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{CopyTagsFromSource}{Copies the tags from the specified volume to corresponding snapshot.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Snapshots = list(
+    list(
+      Description = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      Encrypted = TRUE|FALSE,
+      VolumeId = "string",
+      State = "pending"|"completed"|"error",
+      VolumeSize = 123,
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Progress = "string",
+      OwnerId = "string",
+      SnapshotId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates crash-consistent snapshots of multiple EBS volumes and stores
 the data in S3. Volumes are chosen by specifying an instance. Any

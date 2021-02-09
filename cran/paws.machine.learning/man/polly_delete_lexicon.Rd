@@ -10,6 +10,10 @@ polly_delete_lexicon(Name)
 \item{Name}{[required] The name of the lexicon to delete. Must be an existing lexicon in the
 region.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified pronunciation lexicon stored in an AWS Region. A
 lexicon which has been deleted is not available for speech synthesis,

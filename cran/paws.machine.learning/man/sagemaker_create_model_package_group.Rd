@@ -16,6 +16,12 @@ sagemaker_create_model_package_group(ModelPackageGroupName,
 information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
 in the \emph{AWS General Reference Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ModelPackageGroupArn = "string"
+)
+}
+}
 \description{
 Creates a model group. A model group contains a group of model versions.
 }

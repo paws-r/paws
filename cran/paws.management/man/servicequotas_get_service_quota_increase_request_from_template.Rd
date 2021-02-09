@@ -15,6 +15,21 @@ servicequotas_get_service_quota_increase_request_from_template(
 
 \item{AwsRegion}{[required] The AWS Region.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceQuotaIncreaseRequestInTemplate = list(
+    ServiceCode = "string",
+    ServiceName = "string",
+    QuotaCode = "string",
+    QuotaName = "string",
+    DesiredValue = 123.0,
+    AwsRegion = "string",
+    Unit = "string",
+    GlobalQuota = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Retrieves information about the specified quota increase request in your
 quota request template.

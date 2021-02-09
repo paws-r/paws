@@ -16,6 +16,22 @@ exception configuration.}
 current request. AWS Config adds exception for each resource key. For
 example, AWS Config adds 3 exceptions for 3 resource keys.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedBatches = list(
+    list(
+      FailureMessage = "string",
+      FailedItems = list(
+        list(
+          ResourceType = "string",
+          ResourceId = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deletes one or more remediation exceptions mentioned in the resource
 keys.

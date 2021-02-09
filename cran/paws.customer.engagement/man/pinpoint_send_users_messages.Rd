@@ -12,6 +12,27 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{SendUsersMessageRequest}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SendUsersMessageResponse = list(
+    ApplicationId = "string",
+    RequestId = "string",
+    Result = list(
+      list(
+        list(
+          Address = "string",
+          DeliveryStatus = "SUCCESSFUL"|"THROTTLED"|"TEMPORARY_FAILURE"|"PERMANENT_FAILURE"|"UNKNOWN_FAILURE"|"OPT_OUT"|"DUPLICATE",
+          MessageId = "string",
+          StatusCode = 123,
+          StatusMessage = "string",
+          UpdatedToken = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates and sends a message to a list of users.
 }

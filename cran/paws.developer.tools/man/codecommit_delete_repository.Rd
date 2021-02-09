@@ -9,6 +9,12 @@ codecommit_delete_repository(repositoryName)
 \arguments{
 \item{repositoryName}{[required] The name of the repository to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  repositoryId = "string"
+)
+}
+}
 \description{
 Deletes a repository. If a specified repository was already deleted, a
 null repository ID is returned.

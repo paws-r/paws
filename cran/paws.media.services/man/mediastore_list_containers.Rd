@@ -15,6 +15,24 @@ are more containers to list.}
 \item{MaxResults}{Enter the maximum number of containers in the response. Use from 1 to
 255 characters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Containers = list(
+    list(
+      Endpoint = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ARN = "string",
+      Name = "string",
+      Status = "ACTIVE"|"CREATING"|"DELETING",
+      AccessLoggingEnabled = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the properties of all containers in AWS Elemental MediaStore.
 

@@ -23,6 +23,24 @@ custom AZ receives the network traffic.
 
 Specify this parameter only if \code{ExistingVpnId} isn't specified.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CustomAvailabilityZone = list(
+    CustomAvailabilityZoneId = "string",
+    CustomAvailabilityZoneName = "string",
+    CustomAvailabilityZoneStatus = "string",
+    VpnDetails = list(
+      VpnId = "string",
+      VpnTunnelOriginatorIP = "string",
+      VpnGatewayIp = "string",
+      VpnPSK = "string",
+      VpnName = "string",
+      VpnState = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates a custom Availability Zone (AZ).
 

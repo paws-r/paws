@@ -9,6 +9,10 @@ datasync_cancel_task_execution(TaskExecutionArn)
 \arguments{
 \item{TaskExecutionArn}{[required] The Amazon Resource Name (ARN) of the task execution to cancel.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Cancels execution of a task.
 

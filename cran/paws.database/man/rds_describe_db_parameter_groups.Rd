@@ -32,6 +32,20 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  DBParameterGroups = list(
+    list(
+      DBParameterGroupName = "string",
+      DBParameterGroupFamily = "string",
+      Description = "string",
+      DBParameterGroupArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of \code{DBParameterGroup} descriptions. If a
 \code{DBParameterGroupName} is specified, the list will contain only the

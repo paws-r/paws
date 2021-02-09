@@ -17,6 +17,24 @@ pointed to by the next token.}
 
 \item{MaxResults}{The maximum number of items to be returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  BackupSelectionsList = list(
+    list(
+      SelectionId = "string",
+      SelectionName = "string",
+      BackupPlanId = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreatorRequestId = "string",
+      IamRoleArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns an array containing metadata of the resources associated with
 the target backup plan.

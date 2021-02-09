@@ -14,6 +14,21 @@ apigatewayv2_get_models(ApiId, MaxResults, NextToken)
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Items = list(
+    list(
+      ContentType = "string",
+      Description = "string",
+      ModelId = "string",
+      Name = "string",
+      Schema = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets the Models for an API.
 }

@@ -50,6 +50,14 @@ NULL
 #' -   `PUPPET_NODE_CSR`: A PEM-formatted certificate-signing request (CSR)
 #'     that is created by the node.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NodeAssociationStatusToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_node(
@@ -127,6 +135,45 @@ opsworkscm_associate_node <- function(ServerName, NodeName, EngineAttributes) {
 #' 
 #' -   A maximum of 50 user-applied tags is allowed for tag-supported AWS
 #'     OpsWorks-CM resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Backup = list(
+#'     BackupArn = "string",
+#'     BackupId = "string",
+#'     BackupType = "AUTOMATED"|"MANUAL",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     Engine = "string",
+#'     EngineModel = "string",
+#'     EngineVersion = "string",
+#'     InstanceProfileArn = "string",
+#'     InstanceType = "string",
+#'     KeyPair = "string",
+#'     PreferredBackupWindow = "string",
+#'     PreferredMaintenanceWindow = "string",
+#'     S3DataSize = 123,
+#'     S3DataUrl = "string",
+#'     S3LogUrl = "string",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     ServerName = "string",
+#'     ServiceRoleArn = "string",
+#'     Status = "IN_PROGRESS"|"OK"|"FAILED"|"DELETING",
+#'     StatusDescription = "string",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     ToolsVersion = "string",
+#'     UserArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -257,16 +304,16 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' 
 #' -   `CHEF_AUTOMATE_PIVOTAL_KEY`: A base64-encoded RSA public key. The
 #'     corresponding private key is required to access the Chef API. When
-#'     no CHEF\\_AUTOMATE\\_PIVOTAL\\_KEY is set, a private key is generated
+#'     no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated
 #'     and returned in the response.
 #' 
 #' -   `CHEF_AUTOMATE_ADMIN_PASSWORD`: The password for the administrative
 #'     user in the Chef Automate web-based dashboard. The password length
 #'     is a minimum of eight characters, and a maximum of 32. The password
 #'     can contain letters, numbers, and special characters
-#'     (!/@@\\#$%^&+=\\_). The password must contain at least one lower case
+#'     (!/@@\#$%^&+=_). The password must contain at least one lower case
 #'     letter, one upper case letter, one number, and one special
-#'     character. When no CHEF\\_AUTOMATE\\_ADMIN\\_PASSWORD is set, one is
+#'     character. When no CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is
 #'     generated and returned in the response.
 #' 
 #' **Attributes accepted in a Puppet createServer request:**
@@ -280,7 +327,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #'     r10k remote opens TCP port 8170.
 #' 
 #' -   `PUPPET_R10K_PRIVATE_KEY`: If you are using a private Git
-#'     repository, add PUPPET\\_R10K\\_PRIVATE\\_KEY to specify a PEM-encoded
+#'     repository, add PUPPET_R10K_PRIVATE_KEY to specify a PEM-encoded
 #'     private SSH key.
 #' @param BackupRetentionCount The number of automated backups that you want to keep. Whenever a new
 #' backup is created, AWS OpsWorks CM deletes the oldest backups if this
@@ -373,6 +420,50 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' @param BackupId If you specify this field, AWS OpsWorks CM creates the server by using
 #' the backup represented by BackupId.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Server = list(
+#'     AssociatePublicIpAddress = TRUE|FALSE,
+#'     BackupRetentionCount = 123,
+#'     ServerName = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CloudFormationStackArn = "string",
+#'     CustomDomain = "string",
+#'     DisableAutomatedBackup = TRUE|FALSE,
+#'     Endpoint = "string",
+#'     Engine = "string",
+#'     EngineModel = "string",
+#'     EngineAttributes = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     EngineVersion = "string",
+#'     InstanceProfileArn = "string",
+#'     InstanceType = "string",
+#'     KeyPair = "string",
+#'     MaintenanceStatus = "SUCCESS"|"FAILED",
+#'     PreferredMaintenanceWindow = "string",
+#'     PreferredBackupWindow = "string",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     ServiceRoleArn = "string",
+#'     Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
+#'     StatusReason = "string",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     ServerArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_server(
@@ -452,6 +543,12 @@ opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, CustomDoma
 #' list of backup IDs. Backup IDs are in the format
 #' `ServerName-yyyyMMddHHmmssSSS`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_backup(
@@ -501,6 +598,12 @@ opsworkscm_delete_backup <- function(BackupId) {
 #'
 #' @param ServerName &#91;required&#93; The ID of the server to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_server(
@@ -537,6 +640,20 @@ opsworkscm_delete_server <- function(ServerName) {
 #'
 #' @usage
 #' opsworkscm_describe_account_attributes()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attributes = list(
+#'     list(
+#'       Name = "string",
+#'       Maximum = 123,
+#'       Used = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -585,6 +702,48 @@ opsworkscm_describe_account_attributes <- function() {
 #' [`describe_backups`][opsworkscm_describe_backups] requests.
 #' @param MaxResults This is not currently implemented for
 #' [`describe_backups`][opsworkscm_describe_backups] requests.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Backups = list(
+#'     list(
+#'       BackupArn = "string",
+#'       BackupId = "string",
+#'       BackupType = "AUTOMATED"|"MANUAL",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       Engine = "string",
+#'       EngineModel = "string",
+#'       EngineVersion = "string",
+#'       InstanceProfileArn = "string",
+#'       InstanceType = "string",
+#'       KeyPair = "string",
+#'       PreferredBackupWindow = "string",
+#'       PreferredMaintenanceWindow = "string",
+#'       S3DataSize = 123,
+#'       S3DataUrl = "string",
+#'       S3LogUrl = "string",
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       ServerName = "string",
+#'       ServiceRoleArn = "string",
+#'       Status = "IN_PROGRESS"|"OK"|"FAILED"|"DELETING",
+#'       StatusDescription = "string",
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       ToolsVersion = "string",
+#'       UserArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -647,6 +806,24 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
 #' a `NextToken` value that you can assign to the `NextToken` request
 #' parameter to get the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServerEvents = list(
+#'     list(
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ServerName = "string",
+#'       Message = "string",
+#'       LogUrl = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_events(
@@ -695,6 +872,20 @@ opsworkscm_describe_events <- function(ServerName, NextToken = NULL, MaxResults 
 #' @param NodeAssociationStatusToken &#91;required&#93; The token returned in either the AssociateNodeResponse or the
 #' DisassociateNodeResponse.
 #' @param ServerName &#91;required&#93; The name of the server from which to disassociate the node.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NodeAssociationStatus = "SUCCESS"|"FAILED"|"IN_PROGRESS",
+#'   EngineAttributes = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -746,6 +937,53 @@ opsworkscm_describe_node_association_status <- function(NodeAssociationStatusTok
 #' [`describe_servers`][opsworkscm_describe_servers] requests.
 #' @param MaxResults This is not currently implemented for
 #' [`describe_servers`][opsworkscm_describe_servers] requests.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Servers = list(
+#'     list(
+#'       AssociatePublicIpAddress = TRUE|FALSE,
+#'       BackupRetentionCount = 123,
+#'       ServerName = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CloudFormationStackArn = "string",
+#'       CustomDomain = "string",
+#'       DisableAutomatedBackup = TRUE|FALSE,
+#'       Endpoint = "string",
+#'       Engine = "string",
+#'       EngineModel = "string",
+#'       EngineAttributes = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       EngineVersion = "string",
+#'       InstanceProfileArn = "string",
+#'       InstanceType = "string",
+#'       KeyPair = "string",
+#'       MaintenanceStatus = "SUCCESS"|"FAILED",
+#'       PreferredMaintenanceWindow = "string",
+#'       PreferredBackupWindow = "string",
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       ServiceRoleArn = "string",
+#'       Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
+#'       StatusReason = "string",
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       ServerArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -805,6 +1043,14 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
 #' -   `CHEF_ORGANIZATION`: The Chef organization with which the node was
 #'     associated. By default only one organization named `default` can
 #'     exist.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NodeAssociationStatusToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -883,6 +1129,18 @@ opsworkscm_disassociate_node <- function(ServerName, NodeName, EngineAttributes 
 #'     empty, OpsWorks for Chef Automate uses the most current version. In
 #'     Puppet, this parameter is ignored.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EngineAttribute = list(
+#'     Name = "string",
+#'     Value = "string"
+#'   ),
+#'   ServerName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$export_server_engine_attribute(
@@ -949,6 +1207,20 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
 #' a `NextToken` value that you can assign to the `NextToken` request
 #' parameter to get the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -1008,12 +1280,18 @@ opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, Max
 #' @param BackupId &#91;required&#93; The ID of the backup that you want to use to restore a server.
 #' @param ServerName &#91;required&#93; The name of the server that you want to restore.
 #' @param InstanceType The type of instance to restore. Valid values must be specified in the
-#' following format: `^(\\[cm\\]\\[34\\]|t2).*` For example, `m5.large`.
-#' Valid values are `m5.large`, `r5.xlarge`, and `r5.2xlarge`. If you do
-#' not specify this parameter, RestoreServer uses the instance type from
-#' the specified backup.
+#' following format: `^([cm][34]|t2).*` For example, `m5.large`. Valid
+#' values are `m5.large`, `r5.xlarge`, and `r5.2xlarge`. If you do not
+#' specify this parameter, RestoreServer uses the instance type from the
+#' specified backup.
 #' @param KeyPair The name of the key pair to set on the new EC2 instance. This can be
 #' helpful if the administrator no longer has the SSH key.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1075,6 +1353,50 @@ opsworkscm_restore_server <- function(BackupId, ServerName, InstanceType = NULL,
 #'     more information, see [Upgrade an AWS OpsWorks for Chef Automate
 #'     Server to Chef Automate
 #'     2](https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Server = list(
+#'     AssociatePublicIpAddress = TRUE|FALSE,
+#'     BackupRetentionCount = 123,
+#'     ServerName = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CloudFormationStackArn = "string",
+#'     CustomDomain = "string",
+#'     DisableAutomatedBackup = TRUE|FALSE,
+#'     Endpoint = "string",
+#'     Engine = "string",
+#'     EngineModel = "string",
+#'     EngineAttributes = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     EngineVersion = "string",
+#'     InstanceProfileArn = "string",
+#'     InstanceType = "string",
+#'     KeyPair = "string",
+#'     MaintenanceStatus = "SUCCESS"|"FAILED",
+#'     PreferredMaintenanceWindow = "string",
+#'     PreferredBackupWindow = "string",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     ServiceRoleArn = "string",
+#'     Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
+#'     StatusReason = "string",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     ServerArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1141,6 +1463,12 @@ opsworkscm_start_maintenance <- function(ServerName, EngineAttributes = NULL) {
 #' -   A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM
 #'     server or backup.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1186,6 +1514,12 @@ opsworkscm_tag_resource <- function(ResourceArn, Tags) {
 #' remove tags. For example,
 #' `arn:aws:opsworks-cm:us-west-2:123456789012:server/test-owcm-server/EXAMPLE-66b0-4196-8274-d1a2bEXAMPLE`.
 #' @param TagKeys &#91;required&#93; The keys of tags that you want to remove.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1234,6 +1568,50 @@ opsworkscm_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param ServerName &#91;required&#93; The name of the server to update.
 #' @param PreferredMaintenanceWindow 
 #' @param PreferredBackupWindow 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Server = list(
+#'     AssociatePublicIpAddress = TRUE|FALSE,
+#'     BackupRetentionCount = 123,
+#'     ServerName = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CloudFormationStackArn = "string",
+#'     CustomDomain = "string",
+#'     DisableAutomatedBackup = TRUE|FALSE,
+#'     Endpoint = "string",
+#'     Engine = "string",
+#'     EngineModel = "string",
+#'     EngineAttributes = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     EngineVersion = "string",
+#'     InstanceProfileArn = "string",
+#'     InstanceType = "string",
+#'     KeyPair = "string",
+#'     MaintenanceStatus = "SUCCESS"|"FAILED",
+#'     PreferredMaintenanceWindow = "string",
+#'     PreferredBackupWindow = "string",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     ServiceRoleArn = "string",
+#'     Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
+#'     StatusReason = "string",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     ServerArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1290,6 +1668,50 @@ opsworkscm_update_server <- function(DisableAutomatedBackup = NULL, BackupRetent
 #' @param ServerName &#91;required&#93; The name of the server to update.
 #' @param AttributeName &#91;required&#93; The name of the engine attribute to update.
 #' @param AttributeValue The value to set for the attribute.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Server = list(
+#'     AssociatePublicIpAddress = TRUE|FALSE,
+#'     BackupRetentionCount = 123,
+#'     ServerName = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CloudFormationStackArn = "string",
+#'     CustomDomain = "string",
+#'     DisableAutomatedBackup = TRUE|FALSE,
+#'     Endpoint = "string",
+#'     Engine = "string",
+#'     EngineModel = "string",
+#'     EngineAttributes = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     EngineVersion = "string",
+#'     InstanceProfileArn = "string",
+#'     InstanceType = "string",
+#'     KeyPair = "string",
+#'     MaintenanceStatus = "SUCCESS"|"FAILED",
+#'     PreferredMaintenanceWindow = "string",
+#'     PreferredBackupWindow = "string",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     ServiceRoleArn = "string",
+#'     Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
+#'     StatusReason = "string",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     ServerArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

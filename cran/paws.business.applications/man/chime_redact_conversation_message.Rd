@@ -14,6 +14,10 @@ chime_redact_conversation_message(AccountId, ConversationId, MessageId)
 
 \item{MessageId}{[required] The message ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Redacts the specified message from the specified Amazon Chime
 conversation.

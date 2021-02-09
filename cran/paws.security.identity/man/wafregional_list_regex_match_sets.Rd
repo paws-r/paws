@@ -20,6 +20,18 @@ return for this request. If you have more \code{RegexMatchSet} objects than
 the number you specify for \code{Limit}, the response includes a \code{NextMarker}
 value that you can use to get another batch of \code{RegexMatchSet} objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextMarker = "string",
+  RegexMatchSets = list(
+    list(
+      RegexMatchSetId = "string",
+      Name = "string"
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

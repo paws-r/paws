@@ -24,6 +24,12 @@ the function name, it is limited to 64 characters in length.}
 
 \item{ReservedConcurrentExecutions}{[required] The number of simultaneous executions to reserve for the function.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReservedConcurrentExecutions = 123
+)
+}
+}
 \description{
 Sets the maximum number of simultaneous executions for a function, and
 reserves capacity for that concurrency level.

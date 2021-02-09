@@ -20,6 +20,8 @@ NULL
 #' contains the certificate ID.)
 #' @param setAsActive Specifies whether the certificate is active.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_certificate_transfer(
@@ -61,6 +63,12 @@ iot_accept_certificate_transfer <- function(certificateId, setAsActive = NULL) {
 #' @param billingGroupArn The ARN of the billing group.
 #' @param thingName The name of the thing to be added to the billing group.
 #' @param thingArn The ARN of the thing to be added to the billing group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -110,6 +118,12 @@ iot_add_thing_to_billing_group <- function(billingGroupName = NULL, billingGroup
 #' of those groups are dynamic thing groups, adding a thing to a static
 #' group removes the thing from the last dynamic group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_thing_to_thing_group(
@@ -150,7 +164,7 @@ iot_add_thing_to_thing_group <- function(thingGroupName = NULL, thingGroupArn = 
 #' -   The job must have been created with the `targetSelection` field set
 #'     to "CONTINUOUS".
 #' 
-#' -   The job status must currently be "IN\\_PROGRESS".
+#' -   The job status must currently be "IN_PROGRESS".
 #' 
 #' -   The total number of targets associated with a job must not
 #'     exceed 100.
@@ -171,6 +185,16 @@ iot_add_thing_to_thing_group <- function(thingGroupName = NULL, thingGroupArn = 
 #' `$aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/`
 #' 
 #' The `namespaceId` feature is in public preview.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobArn = "string",
+#'   jobId = "string",
+#'   description = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -217,6 +241,8 @@ iot_associate_targets_with_job <- function(targets, jobId, comment = NULL, names
 #' [identity](https://docs.aws.amazon.com/iot/latest/developerguide/security-iam.html)
 #' to which the policy is attached.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$attach_policy(
@@ -262,6 +288,8 @@ iot_attach_policy <- function(policyName, target) {
 #' @param principal &#91;required&#93; The principal, which can be a certificate ARN (as returned from the
 #' CreateCertificate operation) or an Amazon Cognito ID.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$attach_principal_policy(
@@ -306,6 +334,12 @@ iot_attach_principal_policy <- function(policyName, principal) {
 #' @param securityProfileTargetArn &#91;required&#93; The ARN of the target (thing group) to which the security profile is
 #' attached.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$attach_security_profile(
@@ -348,6 +382,12 @@ iot_attach_security_profile <- function(securityProfileName, securityProfileTarg
 #' @param principal &#91;required&#93; The principal, which can be a certificate ARN (as returned from the
 #' CreateCertificate operation) or an Amazon Cognito ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$attach_thing_principal(
@@ -387,6 +427,12 @@ iot_attach_thing_principal <- function(thingName, principal) {
 #'
 #' @param taskId &#91;required&#93; The unique identifier for the task that you want to cancel.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_audit_mitigation_actions_task(
@@ -425,7 +471,13 @@ iot_cancel_audit_mitigation_actions_task <- function(taskId) {
 #' iot_cancel_audit_task(taskId)
 #'
 #' @param taskId &#91;required&#93; The ID of the audit you want to cancel. You can only cancel an audit
-#' that is "IN\\_PROGRESS".
+#' that is "IN_PROGRESS".
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -467,13 +519,15 @@ iot_cancel_audit_task <- function(taskId) {
 #' accepted the transfer, the transfer cannot be cancelled.
 #' 
 #' After a certificate transfer is cancelled, the status of the certificate
-#' changes from PENDING\\_TRANSFER to INACTIVE.
+#' changes from PENDING_TRANSFER to INACTIVE.
 #'
 #' @usage
 #' iot_cancel_certificate_transfer(certificateId)
 #'
 #' @param certificateId &#91;required&#93; The ID of the certificate. (The last part of the certificate ARN
 #' contains the certificate ID.)
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -511,6 +565,12 @@ iot_cancel_certificate_transfer <- function(certificateId) {
 #' iot_cancel_detect_mitigation_actions_task(taskId)
 #'
 #' @param taskId &#91;required&#93; The unique identifier of the task.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -550,14 +610,24 @@ iot_cancel_detect_mitigation_actions_task <- function(taskId) {
 #' @param jobId &#91;required&#93; The unique identifier you assigned to this job when it was created.
 #' @param reasonCode (Optional)A reason code string that explains why the job was canceled.
 #' @param comment An optional comment string describing why the job was canceled.
-#' @param force (Optional) If `true` job executions with status "IN\\_PROGRESS" and
+#' @param force (Optional) If `true` job executions with status "IN_PROGRESS" and
 #' "QUEUED" are canceled, otherwise only job executions with status
 #' "QUEUED" are canceled. The default is `false`.
 #' 
-#' Canceling a job which is "IN\\_PROGRESS", will cause a device which is
+#' Canceling a job which is "IN_PROGRESS", will cause a device which is
 #' executing the job to be unable to update the job execution status. Use
 #' caution and ensure that each device executing a job which is canceled is
 #' able to recover to a valid state.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobArn = "string",
+#'   jobId = "string",
+#'   description = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -601,13 +671,13 @@ iot_cancel_job <- function(jobId, reasonCode = NULL, comment = NULL, force = NUL
 #' @param jobId &#91;required&#93; The ID of the job to be canceled.
 #' @param thingName &#91;required&#93; The name of the thing whose execution of the job will be canceled.
 #' @param force (Optional) If `true` the job execution will be canceled if it has status
-#' IN\\_PROGRESS or QUEUED, otherwise the job execution will be canceled
+#' IN_PROGRESS or QUEUED, otherwise the job execution will be canceled
 #' only if it has status QUEUED. If you attempt to cancel a job execution
-#' that is IN\\_PROGRESS, and you do not set `force` to `true`, then an
+#' that is IN_PROGRESS, and you do not set `force` to `true`, then an
 #' `InvalidStateTransitionException` will be thrown. The default is
 #' `false`.
 #' 
-#' Canceling a job execution which is "IN\\_PROGRESS", will cause the device
+#' Canceling a job execution which is "IN_PROGRESS", will cause the device
 #' to be unable to update the job execution status. Use caution and ensure
 #' that the device is able to recover to a valid state.
 #' @param expectedVersion (Optional) The expected current version of the job execution. Each time
@@ -620,6 +690,8 @@ iot_cancel_job <- function(jobId, reasonCode = NULL, comment = NULL, force = NUL
 #' @param statusDetails A collection of name/value pairs that describe the status of the job
 #' execution. If not specified, the statusDetails are unchanged. You can
 #' specify at most 10 name/value pairs.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -662,6 +734,12 @@ iot_cancel_job_execution <- function(jobId, thingName, force = NULL, expectedVer
 #' @usage
 #' iot_clear_default_authorizer()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$clear_default_authorizer()
@@ -702,6 +780,12 @@ iot_clear_default_authorizer <- function() {
 #'
 #' @param confirmationToken &#91;required&#93; The token used to confirm ownership or access to the topic rule
 #' confirmation URL.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -745,6 +829,12 @@ iot_confirm_topic_rule_destination <- function(confirmationToken) {
 #' @param suppressIndefinitely Indicates whether a suppression should exist indefinitely or not.
 #' @param description The description of the audit suppression.
 #' @param clientRequestToken &#91;required&#93; The epoch timestamp in seconds at which this suppression expires.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -820,6 +910,15 @@ iot_create_audit_suppression <- function(checkName, resourceIdentifier, expirati
 #' @param signingDisabled Specifies whether AWS IoT validates the token signature in an
 #' authorization request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   authorizerName = "string",
+#'   authorizerArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_authorizer(
@@ -871,6 +970,16 @@ iot_create_authorizer <- function(authorizerName, authorizerFunctionArn, tokenKe
 #' @param billingGroupName &#91;required&#93; The name you wish to give to the billing group.
 #' @param billingGroupProperties The properties of the billing group.
 #' @param tags Metadata which can be used to manage the billing group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   billingGroupName = "string",
+#'   billingGroupArn = "string",
+#'   billingGroupId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -931,8 +1040,9 @@ iot_create_billing_group <- function(billingGroupName, billingGroupProperties = 
 #' 
 #' On Linux and OS X, the command is:
 #' 
-#' $ ls my-csr-directory/ | xargs -I \{\} aws iot create-certificate-from-csr
-#' --certificate-signing-request file://my-csr-directory/\{\}
+#' $ ls my-csr-directory/ | xargs -I \{\} aws iot
+#' create-certificate-from-csr --certificate-signing-request
+#' file://my-csr-directory/\{\}
 #' 
 #' This command lists all of the CSRs in my-csr-directory and pipes each
 #' CSR file name to the aws iot create-certificate-from-csr AWS CLI command
@@ -949,7 +1059,7 @@ iot_create_billing_group <- function(billingGroupName, billingGroupProperties = 
 #' in my-csr-directory is:
 #' 
 #' &gt; ls -Name my-csr-directory | %\{aws iot create-certificate-from-csr
-#' --certificate-signing-request file://my-csr-directory/$\\_\}
+#' --certificate-signing-request file://my-csr-directory/$_\}
 #' 
 #' On a Windows command prompt, the command to create certificates for all
 #' CSRs in my-csr-directory is:
@@ -962,6 +1072,16 @@ iot_create_billing_group <- function(billingGroupName, billingGroupProperties = 
 #'
 #' @param certificateSigningRequest &#91;required&#93; The certificate signing request (CSR).
 #' @param setAsActive Specifies whether the certificate is active.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   certificateArn = "string",
+#'   certificateId = "string",
+#'   certificatePem = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1015,6 +1135,15 @@ iot_create_certificate_from_csr <- function(certificateSigningRequest, setAsActi
 #' to create a new custom metric that already exists with a different
 #' token, an exception occurs. If you omit this value, AWS SDKs will
 #' automatically generate a unique client request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   metricName = "string",
+#'   metricArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1070,12 +1199,21 @@ iot_create_custom_metric <- function(metricName, displayName = NULL, metricType,
 #' @param type &#91;required&#93; Specifies the type of dimension. Supported types: `TOPIC_FILTER.`
 #' @param stringValues &#91;required&#93; Specifies the value or list of values for the dimension. For
 #' `TOPIC_FILTER` dimensions, this is a pattern used to match the MQTT
-#' topic (for example, "admin/\\#").
+#' topic (for example, "admin/\#").
 #' @param tags Metadata that can be used to manage the dimension.
 #' @param clientRequestToken &#91;required&#93; Each dimension must have a unique client request token. If you try to
 #' create a new dimension with the same token as a dimension that already
 #' exists, an exception occurs. If you omit this value, AWS SDKs will
 #' automatically generate a unique client request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   arn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1151,6 +1289,15 @@ iot_create_dimension <- function(name, type, stringValues, tags = NULL, clientRe
 #' For the cli-input-json file use format: "tags":
 #' "key1=value1&key2=value2..."
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainConfigurationName = "string",
+#'   domainConfigurationArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_domain_configuration(
@@ -1207,7 +1354,7 @@ iot_create_domain_configuration <- function(domainConfigurationName, domainName 
 #' @param thingGroupProperties The dynamic thing group properties.
 #' @param indexName The dynamic thing group index name.
 #' 
-#' Currently one index is supported: "AWS\\_Things".
+#' Currently one index is supported: "AWS_Things".
 #' @param queryString &#91;required&#93; The dynamic thing group search query string.
 #' 
 #' See [Query
@@ -1218,6 +1365,19 @@ iot_create_domain_configuration <- function(domainConfigurationName, domainName 
 #' Currently one query version is supported: "2017-09-30". If not
 #' specified, the query version defaults to this value.
 #' @param tags Metadata which can be used to manage the dynamic thing group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   thingGroupName = "string",
+#'   thingGroupArn = "string",
+#'   thingGroupId = "string",
+#'   indexName = "string",
+#'   queryString = "string",
+#'   queryVersion = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1275,7 +1435,7 @@ iot_create_dynamic_thing_group <- function(thingGroupName, thingGroupProperties 
 #'   abortConfig, timeoutConfig, tags, namespaceId)
 #'
 #' @param jobId &#91;required&#93; A job identifier which must be unique for your AWS account. We recommend
-#' using a UUID. Alpha-numeric characters, "-" and "\\_" are valid for use
+#' using a UUID. Alpha-numeric characters, "-" and "_" are valid for use
 #' here.
 #' @param targets &#91;required&#93; A list of things and thing groups to which the job should be sent.
 #' @param documentSource An S3 link to the job document.
@@ -1286,7 +1446,7 @@ iot_create_dynamic_thing_group <- function(thingGroupName, thingGroupProperties 
 #' 
 #' The placeholder link is of the following form:
 #' 
-#' `$\{aws:iot:s3-presigned-url:https://s3.amazonaws.com/bucket/key\}`
+#' `${aws:iot:s3-presigned-url:https://s3.amazonaws.com/bucket/key}`
 #' 
 #' where *bucket* is your bucket name and *key* is the object in the bucket
 #' to which you are linking.
@@ -1315,6 +1475,16 @@ iot_create_dynamic_thing_group <- function(thingGroupName, thingGroupProperties 
 #' `$aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/`
 #' 
 #' The `namespaceId` feature is in public preview.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobArn = "string",
+#'   jobId = "string",
+#'   description = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1402,6 +1572,20 @@ iot_create_job <- function(jobId, targets, documentSource = NULL, document = NUL
 #'
 #' @param setAsActive Specifies whether the certificate is active.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   certificateArn = "string",
+#'   certificateId = "string",
+#'   certificatePem = "string",
+#'   keyPair = list(
+#'     PublicKey = "string",
+#'     PrivateKey = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_keys_and_certificate(
@@ -1448,6 +1632,15 @@ iot_create_keys_and_certificate <- function(setAsActive = NULL) {
 #' @param roleArn &#91;required&#93; The ARN of the IAM role that is used to apply the mitigation action.
 #' @param actionParams &#91;required&#93; Defines the type of action and the parameters for that action.
 #' @param tags Metadata that can be used to manage the mitigation action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   actionArn = "string",
+#'   actionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1544,6 +1737,18 @@ iot_create_mitigation_action <- function(actionName, roleArn, actionParams, tags
 #' and AWS Code Signing resources to create an OTA update job.
 #' @param additionalParameters A list of additional OTA update parameters which are name-value pairs.
 #' @param tags Metadata which can be used to manage updates.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   otaUpdateId = "string",
+#'   awsIotJobId = "string",
+#'   otaUpdateArn = "string",
+#'   awsIotJobArn = "string",
+#'   otaUpdateStatus = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1692,6 +1897,17 @@ iot_create_ota_update <- function(otaUpdateId, description = NULL, targets, prot
 #' For the cli-input-json file use format: "tags":
 #' "key1=value1&key2=value2..."
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyName = "string",
+#'   policyArn = "string",
+#'   policyDocument = "string",
+#'   policyVersionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_policy(
@@ -1750,6 +1966,17 @@ iot_create_policy <- function(policyName, policyDocument, tags = NULL) {
 #' (that is, the version that is in effect for the certificates to which
 #' the policy is attached).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   policyDocument = "string",
+#'   policyVersionId = "string",
+#'   isDefaultVersion = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_policy_version(
@@ -1788,6 +2015,22 @@ iot_create_policy_version <- function(policyName, policyDocument, setAsDefault =
 #' iot_create_provisioning_claim(templateName)
 #'
 #' @param templateName &#91;required&#93; The name of the provisioning template to use.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   certificateId = "string",
+#'   certificatePem = "string",
+#'   keyPair = list(
+#'     PublicKey = "string",
+#'     PrivateKey = "string"
+#'   ),
+#'   expiration = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1841,6 +2084,16 @@ iot_create_provisioning_claim <- function(templateName) {
 #' 
 #' For the cli-input-json file use format: "tags":
 #' "key1=value1&key2=value2..."
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   templateArn = "string",
+#'   templateName = "string",
+#'   defaultVersionId = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1896,6 +2149,17 @@ iot_create_provisioning_template <- function(templateName, description = NULL, t
 #' @param templateBody &#91;required&#93; The JSON formatted contents of the fleet provisioning template.
 #' @param setAsDefault Sets a fleet provision template version as the default version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   templateArn = "string",
+#'   templateName = "string",
+#'   versionId = 123,
+#'   isDefaultVersion = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_provisioning_template_version(
@@ -1947,6 +2211,15 @@ iot_create_provisioning_template_version <- function(templateName, templateBody,
 #' 
 #' For the cli-input-json file use format: "tags":
 #' "key1=value1&key2=value2..."
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   roleAlias = "string",
+#'   roleAliasArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2011,6 +2284,14 @@ iot_create_role_alias <- function(roleAlias, roleArn, credentialDurationSeconds 
 #' to select which checks are enabled.)
 #' @param scheduledAuditName &#91;required&#93; The name you want to give to the scheduled audit. (Max. 128 chars)
 #' @param tags Metadata that can be used to manage the scheduled audit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scheduledAuditArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2080,6 +2361,15 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #' also retained for any metric specified here. Can be used with custom
 #' metrics; cannot be used with dimensions.
 #' @param tags Metadata that can be used to manage the security profile.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   securityProfileName = "string",
+#'   securityProfileArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2191,6 +2481,17 @@ iot_create_security_profile <- function(securityProfileName, securityProfileDesc
 #' S3 files.
 #' @param tags Metadata which can be used to manage streams.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   streamId = "string",
+#'   streamArn = "string",
+#'   description = "string",
+#'   streamVersion = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_stream(
@@ -2261,8 +2562,18 @@ iot_create_stream <- function(streamId, description = NULL, files, roleArn, tags
 #' @param attributePayload The attribute payload, which consists of up to three name/value pairs in
 #' a JSON document. For example:
 #' 
-#' `\{\"attributes\":\{\"string1\":\"string2\"\}\}`
+#' `{\"attributes\":{\"string1\":\"string2\"}}`
 #' @param billingGroupName The name of the billing group the thing will be added to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   thingName = "string",
+#'   thingArn = "string",
+#'   thingId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2316,6 +2627,16 @@ iot_create_thing <- function(thingName, thingTypeName = NULL, attributePayload =
 #' @param parentGroupName The name of the parent thing group.
 #' @param thingGroupProperties The thing group properties.
 #' @param tags Metadata which can be used to manage the thing group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   thingGroupName = "string",
+#'   thingGroupArn = "string",
+#'   thingGroupId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2373,6 +2694,16 @@ iot_create_thing_group <- function(thingGroupName, parentGroupName = NULL, thing
 #' information about the new thing type including a description, and a list
 #' of searchable thing attribute names.
 #' @param tags Metadata which can be used to manage the thing type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   thingTypeName = "string",
+#'   thingTypeArn = "string",
+#'   thingTypeId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2434,6 +2765,8 @@ iot_create_thing_type <- function(thingTypeName, thingTypeProperties = NULL, tag
 #' 
 #' For the cli-input-json file use format: "tags":
 #' "key1=value1&key2=value2..."
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -2818,6 +3151,37 @@ iot_create_topic_rule <- function(ruleName, topicRulePayload, tags = NULL) {
 #'
 #' @param destinationConfiguration &#91;required&#93; The topic rule destination configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   topicRuleDestination = list(
+#'     arn = "string",
+#'     status = "ENABLED"|"IN_PROGRESS"|"DISABLED"|"ERROR"|"DELETING",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     statusReason = "string",
+#'     httpUrlProperties = list(
+#'       confirmationUrl = "string"
+#'     ),
+#'     vpcProperties = list(
+#'       subnetIds = list(
+#'         "string"
+#'       ),
+#'       securityGroups = list(
+#'         "string"
+#'       ),
+#'       vpcId = "string",
+#'       roleArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_topic_rule_destination(
@@ -2872,6 +3236,12 @@ iot_create_topic_rule_destination <- function(destinationConfiguration) {
 #'
 #' @param deleteScheduledAudits If true, all scheduled audits are deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_account_audit_configuration(
@@ -2909,6 +3279,12 @@ iot_delete_account_audit_configuration <- function(deleteScheduledAudits = NULL)
 #'
 #' @param checkName &#91;required&#93; 
 #' @param resourceIdentifier &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2960,6 +3336,12 @@ iot_delete_audit_suppression <- function(checkName, resourceIdentifier) {
 #'
 #' @param authorizerName &#91;required&#93; The name of the authorizer to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_authorizer(
@@ -3001,6 +3383,12 @@ iot_delete_authorizer <- function(authorizerName) {
 #' [`delete_billing_group`][iot_delete_billing_group] request is rejected
 #' with a `VersionConflictException`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_billing_group(
@@ -3039,6 +3427,12 @@ iot_delete_billing_group <- function(billingGroupName, expectedVersion = NULL) {
 #'
 #' @param certificateId &#91;required&#93; The ID of the certificate to delete. (The last part of the certificate
 #' ARN contains the certificate ID.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3087,6 +3481,8 @@ iot_delete_ca_certificate <- function(certificateId) {
 #' @param forceDelete Forces the deletion of a certificate if it is inactive and is not
 #' attached to an IoT thing.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_certificate(
@@ -3132,6 +3528,12 @@ iot_delete_certificate <- function(certificateId, forceDelete = NULL) {
 #'
 #' @param metricName &#91;required&#93; The name of the custom metric.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_custom_metric(
@@ -3168,6 +3570,12 @@ iot_delete_custom_metric <- function(metricName) {
 #' iot_delete_dimension(name)
 #'
 #' @param name &#91;required&#93; The unique identifier for the dimension that you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3209,6 +3617,12 @@ iot_delete_dimension <- function(name) {
 #'
 #' @param domainConfigurationName &#91;required&#93; The name of the domain configuration to be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_domain_configuration(
@@ -3247,6 +3661,12 @@ iot_delete_domain_configuration <- function(domainConfigurationName) {
 #' @param thingGroupName &#91;required&#93; The name of the dynamic thing group to delete.
 #' @param expectedVersion The expected version of the dynamic thing group to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_dynamic_thing_group(
@@ -3283,10 +3703,10 @@ iot_delete_dynamic_thing_group <- function(thingGroupName, expectedVersion = NUL
 #' Deleting a job may take time, depending on the number of job executions
 #' created for the job and various other factors. While the job is being
 #' deleted, the status of the job will be shown as
-#' "DELETION\\_IN\\_PROGRESS". Attempting to delete or cancel a job whose
-#' status is already "DELETION\\_IN\\_PROGRESS" will result in an error.
+#' "DELETION_IN_PROGRESS". Attempting to delete or cancel a job whose
+#' status is already "DELETION_IN_PROGRESS" will result in an error.
 #' 
-#' Only 10 jobs may have status "DELETION\\_IN\\_PROGRESS" at the same time,
+#' Only 10 jobs may have status "DELETION_IN_PROGRESS" at the same time,
 #' or a LimitExceededException will occur.
 #'
 #' @usage
@@ -3297,12 +3717,12 @@ iot_delete_dynamic_thing_group <- function(thingGroupName, expectedVersion = NUL
 #' After a job deletion is completed, you may reuse this jobId when you
 #' create a new job. However, this is not recommended, and you must ensure
 #' that your devices are not using the jobId to refer to the deleted job.
-#' @param force (Optional) When true, you can delete a job which is "IN\\_PROGRESS".
+#' @param force (Optional) When true, you can delete a job which is "IN_PROGRESS".
 #' Otherwise, you can only delete a job which is in a terminal state
 #' ("COMPLETED" or "CANCELED") or an exception will occur. The default is
 #' false.
 #' 
-#' Deleting a job which is "IN\\_PROGRESS", will cause a device which is
+#' Deleting a job which is "IN_PROGRESS", will cause a device which is
 #' executing the job to be unable to access job information or update the
 #' job execution status. Use caution and ensure that each device executing
 #' a job which is deleted is able to recover to a valid state.
@@ -3315,6 +3735,8 @@ iot_delete_dynamic_thing_group <- function(thingGroupName, expectedVersion = NUL
 #' `$aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/`
 #' 
 #' The `namespaceId` feature is in public preview.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -3363,11 +3785,11 @@ iot_delete_job <- function(jobId, force = NULL, namespaceId = NULL) {
 #' Note that once a job execution is deleted, the `executionNumber` may be
 #' reused by IoT, so be sure you get and use the correct value here.
 #' @param force (Optional) When true, you can delete a job execution which is
-#' "IN\\_PROGRESS". Otherwise, you can only delete a job execution which is
+#' "IN_PROGRESS". Otherwise, you can only delete a job execution which is
 #' in a terminal state ("SUCCEEDED", "FAILED", "REJECTED", "REMOVED" or
 #' "CANCELED") or an exception will occur. The default is false.
 #' 
-#' Deleting a job execution which is "IN\\_PROGRESS", will cause the device
+#' Deleting a job execution which is "IN_PROGRESS", will cause the device
 #' to be unable to access job information or update the job execution
 #' status. Use caution and ensure that the device is able to recover to a
 #' valid state.
@@ -3380,6 +3802,8 @@ iot_delete_job <- function(jobId, force = NULL, namespaceId = NULL) {
 #' `$aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/`
 #' 
 #' The `namespaceId` feature is in public preview.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -3422,6 +3846,12 @@ iot_delete_job_execution <- function(jobId, thingName, executionNumber, force = 
 #'
 #' @param actionName &#91;required&#93; The name of the mitigation action that you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_mitigation_action(
@@ -3462,6 +3892,12 @@ iot_delete_mitigation_action <- function(actionName) {
 #' when the OTA update is deleted.
 #' @param forceDeleteAWSJob Specifies if the AWS Job associated with the OTA update should be
 #' deleted when the OTA update is deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3513,6 +3949,8 @@ iot_delete_ota_update <- function(otaUpdateId, deleteStream = NULL, forceDeleteA
 #'
 #' @param policyName &#91;required&#93; The name of the policy to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_policy(
@@ -3555,6 +3993,8 @@ iot_delete_policy <- function(policyName) {
 #' @param policyName &#91;required&#93; The name of the policy.
 #' @param policyVersionId &#91;required&#93; The policy version ID.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_policy_version(
@@ -3592,6 +4032,12 @@ iot_delete_policy_version <- function(policyName, policyVersionId) {
 #' iot_delete_provisioning_template(templateName)
 #'
 #' @param templateName &#91;required&#93; The name of the fleet provision template to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3631,6 +4077,12 @@ iot_delete_provisioning_template <- function(templateName) {
 #' @param templateName &#91;required&#93; The name of the fleet provisioning template version to delete.
 #' @param versionId &#91;required&#93; The fleet provisioning template version ID to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_provisioning_template_version(
@@ -3667,6 +4119,12 @@ iot_delete_provisioning_template_version <- function(templateName, versionId) {
 #' @usage
 #' iot_delete_registration_code()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_registration_code()
@@ -3701,6 +4159,12 @@ iot_delete_registration_code <- function() {
 #' iot_delete_role_alias(roleAlias)
 #'
 #' @param roleAlias &#91;required&#93; The role alias to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3738,6 +4202,12 @@ iot_delete_role_alias <- function(roleAlias) {
 #' iot_delete_scheduled_audit(scheduledAuditName)
 #'
 #' @param scheduledAuditName &#91;required&#93; The name of the scheduled audit you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3780,6 +4250,12 @@ iot_delete_scheduled_audit <- function(scheduledAuditName) {
 #' different from the actual version, a `VersionConflictException` is
 #' thrown.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_security_profile(
@@ -3817,6 +4293,12 @@ iot_delete_security_profile <- function(securityProfileName, expectedVersion = N
 #' iot_delete_stream(streamId)
 #'
 #' @param streamId &#91;required&#93; The stream ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3860,6 +4342,12 @@ iot_delete_stream <- function(streamId) {
 #' specified in the request, the [`delete_thing`][iot_delete_thing] request
 #' is rejected with a `VersionConflictException`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_thing(
@@ -3898,6 +4386,12 @@ iot_delete_thing <- function(thingName, expectedVersion = NULL) {
 #'
 #' @param thingGroupName &#91;required&#93; The name of the thing group to delete.
 #' @param expectedVersion The expected version of the thing group to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3943,6 +4437,12 @@ iot_delete_thing_group <- function(thingGroupName, expectedVersion = NULL) {
 #'
 #' @param thingTypeName &#91;required&#93; The name of the thing type.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_thing_type(
@@ -3980,6 +4480,8 @@ iot_delete_thing_type <- function(thingTypeName) {
 #'
 #' @param ruleName &#91;required&#93; The name of the rule.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_topic_rule(
@@ -4016,6 +4518,12 @@ iot_delete_topic_rule <- function(ruleName) {
 #' iot_delete_topic_rule_destination(arn)
 #'
 #' @param arn &#91;required&#93; The ARN of the topic rule destination to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4055,6 +4563,8 @@ iot_delete_topic_rule_destination <- function(arn) {
 #' @param targetType &#91;required&#93; The type of resource for which you are configuring logging. Must be
 #' `THING_Group`.
 #' @param targetName &#91;required&#93; The name of the resource for which you are configuring logging.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -4098,6 +4608,12 @@ iot_delete_v2_logging_level <- function(targetType, targetName) {
 #' type will not be deprecated anymore and you can associate it with
 #' things.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deprecate_thing_type(
@@ -4137,6 +4653,26 @@ iot_deprecate_thing_type <- function(thingTypeName, undoDeprecate = NULL) {
 #' @usage
 #' iot_describe_account_audit_configuration()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   roleArn = "string",
+#'   auditNotificationTargetConfigurations = list(
+#'     list(
+#'       targetArn = "string",
+#'       roleArn = "string",
+#'       enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   auditCheckConfigurations = list(
+#'     list(
+#'       enabled = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_account_audit_configuration()
@@ -4174,6 +4710,68 @@ iot_describe_account_audit_configuration <- function() {
 #'
 #' @param findingId &#91;required&#93; A unique identifier for a single audit finding. You can use this
 #' identifier to apply mitigation actions to the finding.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   finding = list(
+#'     findingId = "string",
+#'     taskId = "string",
+#'     checkName = "string",
+#'     taskStartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     findingTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW",
+#'     nonCompliantResource = list(
+#'       resourceType = "DEVICE_CERTIFICATE"|"CA_CERTIFICATE"|"IOT_POLICY"|"COGNITO_IDENTITY_POOL"|"CLIENT_ID"|"ACCOUNT_SETTINGS"|"ROLE_ALIAS"|"IAM_ROLE",
+#'       resourceIdentifier = list(
+#'         deviceCertificateId = "string",
+#'         caCertificateId = "string",
+#'         cognitoIdentityPoolId = "string",
+#'         clientId = "string",
+#'         policyVersionIdentifier = list(
+#'           policyName = "string",
+#'           policyVersionId = "string"
+#'         ),
+#'         account = "string",
+#'         iamRoleArn = "string",
+#'         roleAliasArn = "string"
+#'       ),
+#'       additionalInfo = list(
+#'         "string"
+#'       )
+#'     ),
+#'     relatedResources = list(
+#'       list(
+#'         resourceType = "DEVICE_CERTIFICATE"|"CA_CERTIFICATE"|"IOT_POLICY"|"COGNITO_IDENTITY_POOL"|"CLIENT_ID"|"ACCOUNT_SETTINGS"|"ROLE_ALIAS"|"IAM_ROLE",
+#'         resourceIdentifier = list(
+#'           deviceCertificateId = "string",
+#'           caCertificateId = "string",
+#'           cognitoIdentityPoolId = "string",
+#'           clientId = "string",
+#'           policyVersionIdentifier = list(
+#'             policyName = "string",
+#'             policyVersionId = "string"
+#'           ),
+#'           account = "string",
+#'           iamRoleArn = "string",
+#'           roleAliasArn = "string"
+#'         ),
+#'         additionalInfo = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     reasonForNonCompliance = "string",
+#'     reasonForNonComplianceCode = "string",
+#'     isSuppressed = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4216,6 +4814,76 @@ iot_describe_audit_finding <- function(findingId) {
 #'
 #' @param taskId &#91;required&#93; The unique identifier for the audit mitigation task.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED",
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   taskStatistics = list(
+#'     list(
+#'       totalFindingsCount = 123,
+#'       failedFindingsCount = 123,
+#'       succeededFindingsCount = 123,
+#'       skippedFindingsCount = 123,
+#'       canceledFindingsCount = 123
+#'     )
+#'   ),
+#'   target = list(
+#'     auditTaskId = "string",
+#'     findingIds = list(
+#'       "string"
+#'     ),
+#'     auditCheckToReasonCodeFilter = list(
+#'       list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   auditCheckToActionsMapping = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   actionsDefinition = list(
+#'     list(
+#'       name = "string",
+#'       id = "string",
+#'       roleArn = "string",
+#'       actionParams = list(
+#'         updateDeviceCertificateParams = list(
+#'           action = "DEACTIVATE"
+#'         ),
+#'         updateCACertificateParams = list(
+#'           action = "DEACTIVATE"
+#'         ),
+#'         addThingsToThingGroupParams = list(
+#'           thingGroupNames = list(
+#'             "string"
+#'           ),
+#'           overrideDynamicGroups = TRUE|FALSE
+#'         ),
+#'         replaceDefaultPolicyVersionParams = list(
+#'           templateName = "BLANK_POLICY"
+#'         ),
+#'         enableIoTLoggingParams = list(
+#'           roleArnForLogging = "string",
+#'           logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
+#'         ),
+#'         publishFindingToSnsParams = list(
+#'           topicArn = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_audit_mitigation_actions_task(
@@ -4253,6 +4921,32 @@ iot_describe_audit_mitigation_actions_task <- function(taskId) {
 #'
 #' @param checkName &#91;required&#93; 
 #' @param resourceIdentifier &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   checkName = "string",
+#'   resourceIdentifier = list(
+#'     deviceCertificateId = "string",
+#'     caCertificateId = "string",
+#'     cognitoIdentityPoolId = "string",
+#'     clientId = "string",
+#'     policyVersionIdentifier = list(
+#'       policyName = "string",
+#'       policyVersionId = "string"
+#'     ),
+#'     account = "string",
+#'     iamRoleArn = "string",
+#'     roleAliasArn = "string"
+#'   ),
+#'   expirationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   suppressIndefinitely = TRUE|FALSE,
+#'   description = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4304,6 +4998,39 @@ iot_describe_audit_suppression <- function(checkName, resourceIdentifier) {
 #'
 #' @param taskId &#91;required&#93; The ID of the audit whose information you want to get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED",
+#'   taskType = "ON_DEMAND_AUDIT_TASK"|"SCHEDULED_AUDIT_TASK",
+#'   taskStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   taskStatistics = list(
+#'     totalChecks = 123,
+#'     inProgressChecks = 123,
+#'     waitingForDataCollectionChecks = 123,
+#'     compliantChecks = 123,
+#'     nonCompliantChecks = 123,
+#'     failedChecks = 123,
+#'     canceledChecks = 123
+#'   ),
+#'   scheduledAuditName = "string",
+#'   auditDetails = list(
+#'     list(
+#'       checkRunStatus = "IN_PROGRESS"|"WAITING_FOR_DATA_COLLECTION"|"CANCELED"|"COMPLETED_COMPLIANT"|"COMPLETED_NON_COMPLIANT"|"FAILED",
+#'       checkCompliant = TRUE|FALSE,
+#'       totalResourcesCount = 123,
+#'       nonCompliantResourcesCount = 123,
+#'       suppressedNonCompliantResourcesCount = 123,
+#'       errorCode = "string",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_audit_task(
@@ -4340,6 +5067,30 @@ iot_describe_audit_task <- function(taskId) {
 #' iot_describe_authorizer(authorizerName)
 #'
 #' @param authorizerName &#91;required&#93; The name of the authorizer to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   authorizerDescription = list(
+#'     authorizerName = "string",
+#'     authorizerArn = "string",
+#'     authorizerFunctionArn = "string",
+#'     tokenKeyName = "string",
+#'     tokenSigningPublicKeys = list(
+#'       "string"
+#'     ),
+#'     status = "ACTIVE"|"INACTIVE",
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     signingDisabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4378,6 +5129,25 @@ iot_describe_authorizer <- function(authorizerName) {
 #'
 #' @param billingGroupName &#91;required&#93; The name of the billing group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   billingGroupName = "string",
+#'   billingGroupId = "string",
+#'   billingGroupArn = "string",
+#'   version = 123,
+#'   billingGroupProperties = list(
+#'     billingGroupDescription = "string"
+#'   ),
+#'   billingGroupMetadata = list(
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_billing_group(
@@ -4414,6 +5184,41 @@ iot_describe_billing_group <- function(billingGroupName) {
 #' iot_describe_ca_certificate(certificateId)
 #'
 #' @param certificateId &#91;required&#93; The CA certificate identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   certificateDescription = list(
+#'     certificateArn = "string",
+#'     certificateId = "string",
+#'     status = "ACTIVE"|"INACTIVE",
+#'     certificatePem = "string",
+#'     ownedBy = "string",
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     autoRegistrationStatus = "ENABLE"|"DISABLE",
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     customerVersion = 123,
+#'     generationId = "string",
+#'     validity = list(
+#'       notBefore = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       notAfter = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   registrationConfig = list(
+#'     templateBody = "string",
+#'     roleArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4453,6 +5258,52 @@ iot_describe_ca_certificate <- function(certificateId) {
 #' @param certificateId &#91;required&#93; The ID of the certificate. (The last part of the certificate ARN
 #' contains the certificate ID.)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   certificateDescription = list(
+#'     certificateArn = "string",
+#'     certificateId = "string",
+#'     caCertificateId = "string",
+#'     status = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION",
+#'     certificatePem = "string",
+#'     ownedBy = "string",
+#'     previousOwnedBy = "string",
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     customerVersion = 123,
+#'     transferData = list(
+#'       transferMessage = "string",
+#'       rejectReason = "string",
+#'       transferDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       acceptDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       rejectDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     generationId = "string",
+#'     validity = list(
+#'       notBefore = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       notAfter = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     certificateMode = "DEFAULT"|"SNI_ONLY"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_certificate(
@@ -4490,6 +5341,23 @@ iot_describe_certificate <- function(certificateId) {
 #'
 #' @param metricName &#91;required&#93; The name of the custom metric.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   metricName = "string",
+#'   metricArn = "string",
+#'   metricType = "string-list"|"ip-address-list"|"number-list"|"number",
+#'   displayName = "string",
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_custom_metric(
@@ -4525,6 +5393,30 @@ iot_describe_custom_metric <- function(metricName) {
 #' @usage
 #' iot_describe_default_authorizer()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   authorizerDescription = list(
+#'     authorizerName = "string",
+#'     authorizerArn = "string",
+#'     authorizerFunctionArn = "string",
+#'     tokenKeyName = "string",
+#'     tokenSigningPublicKeys = list(
+#'       "string"
+#'     ),
+#'     status = "ACTIVE"|"INACTIVE",
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     signingDisabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_default_authorizer()
@@ -4559,6 +5451,76 @@ iot_describe_default_authorizer <- function() {
 #' iot_describe_detect_mitigation_actions_task(taskId)
 #'
 #' @param taskId &#91;required&#93; The unique identifier of the task.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskSummary = list(
+#'     taskId = "string",
+#'     taskStatus = "IN_PROGRESS"|"SUCCESSFUL"|"FAILED"|"CANCELED",
+#'     taskStartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     taskEndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     target = list(
+#'       violationIds = list(
+#'         "string"
+#'       ),
+#'       securityProfileName = "string",
+#'       behaviorName = "string"
+#'     ),
+#'     violationEventOccurrenceRange = list(
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     onlyActiveViolationsIncluded = TRUE|FALSE,
+#'     suppressedAlertsIncluded = TRUE|FALSE,
+#'     actionsDefinition = list(
+#'       list(
+#'         name = "string",
+#'         id = "string",
+#'         roleArn = "string",
+#'         actionParams = list(
+#'           updateDeviceCertificateParams = list(
+#'             action = "DEACTIVATE"
+#'           ),
+#'           updateCACertificateParams = list(
+#'             action = "DEACTIVATE"
+#'           ),
+#'           addThingsToThingGroupParams = list(
+#'             thingGroupNames = list(
+#'               "string"
+#'             ),
+#'             overrideDynamicGroups = TRUE|FALSE
+#'           ),
+#'           replaceDefaultPolicyVersionParams = list(
+#'             templateName = "BLANK_POLICY"
+#'           ),
+#'           enableIoTLoggingParams = list(
+#'             roleArnForLogging = "string",
+#'             logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
+#'           ),
+#'           publishFindingToSnsParams = list(
+#'             topicArn = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     taskStatistics = list(
+#'       actionsExecuted = 123,
+#'       actionsSkipped = 123,
+#'       actionsFailed = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4596,6 +5558,25 @@ iot_describe_detect_mitigation_actions_task <- function(taskId) {
 #' iot_describe_dimension(name)
 #'
 #' @param name &#91;required&#93; The unique identifier for the dimension.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   arn = "string",
+#'   type = "TOPIC_FILTER",
+#'   stringValues = list(
+#'     "string"
+#'   ),
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4637,6 +5618,33 @@ iot_describe_dimension <- function(name) {
 #'
 #' @param domainConfigurationName &#91;required&#93; The name of the domain configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainConfigurationName = "string",
+#'   domainConfigurationArn = "string",
+#'   domainName = "string",
+#'   serverCertificates = list(
+#'     list(
+#'       serverCertificateArn = "string",
+#'       serverCertificateStatus = "INVALID"|"VALID",
+#'       serverCertificateStatusDetail = "string"
+#'     )
+#'   ),
+#'   authorizerConfig = list(
+#'     defaultAuthorizerName = "string",
+#'     allowAuthorizerOverride = TRUE|FALSE
+#'   ),
+#'   domainConfigurationStatus = "ENABLED"|"DISABLED",
+#'   serviceType = "DATA"|"CREDENTIAL_PROVIDER"|"JOBS",
+#'   domainType = "ENDPOINT"|"AWS_MANAGED"|"CUSTOMER_MANAGED",
+#'   lastStatusChangeDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_domain_configuration(
@@ -4676,22 +5684,27 @@ iot_describe_domain_configuration <- function(domainConfigurationName) {
 #' 
 #' -   `iot:Data` - Returns a VeriSign signed data endpoint.
 #' 
-#' <!-- -->
 #' 
 #' -   `iot:Data-ATS` - Returns an ATS signed data endpoint.
 #' 
-#' <!-- -->
 #' 
 #' -   `iot:CredentialProvider` - Returns an AWS IoT credentials provider
 #'     API endpoint.
 #' 
-#' <!-- -->
 #' 
 #' -   `iot:Jobs` - Returns an AWS IoT device management Jobs API endpoint.
 #' 
 #' We strongly recommend that customers use the newer `iot:Data-ATS`
 #' endpoint type to avoid issues related to the widespread distrust of
 #' Symantec certificate authorities.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   endpointAddress = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4728,6 +5741,24 @@ iot_describe_endpoint <- function(endpointType = NULL) {
 #' @usage
 #' iot_describe_event_configurations()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   eventConfigurations = list(
+#'     list(
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_event_configurations()
@@ -4762,6 +5793,16 @@ iot_describe_event_configurations <- function() {
 #' iot_describe_index(indexName)
 #'
 #' @param indexName &#91;required&#93; The index name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   indexName = "string",
+#'   indexStatus = "ACTIVE"|"BUILDING"|"REBUILDING",
+#'   schema = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4799,6 +5840,78 @@ iot_describe_index <- function(indexName) {
 #' iot_describe_job(jobId)
 #'
 #' @param jobId &#91;required&#93; The unique identifier you assigned to this job when it was created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   documentSource = "string",
+#'   job = list(
+#'     jobArn = "string",
+#'     jobId = "string",
+#'     targetSelection = "CONTINUOUS"|"SNAPSHOT",
+#'     status = "IN_PROGRESS"|"CANCELED"|"COMPLETED"|"DELETION_IN_PROGRESS",
+#'     forceCanceled = TRUE|FALSE,
+#'     reasonCode = "string",
+#'     comment = "string",
+#'     targets = list(
+#'       "string"
+#'     ),
+#'     description = "string",
+#'     presignedUrlConfig = list(
+#'       roleArn = "string",
+#'       expiresInSec = 123
+#'     ),
+#'     jobExecutionsRolloutConfig = list(
+#'       maximumPerMinute = 123,
+#'       exponentialRate = list(
+#'         baseRatePerMinute = 123,
+#'         incrementFactor = 123.0,
+#'         rateIncreaseCriteria = list(
+#'           numberOfNotifiedThings = 123,
+#'           numberOfSucceededThings = 123
+#'         )
+#'       )
+#'     ),
+#'     abortConfig = list(
+#'       criteriaList = list(
+#'         list(
+#'           failureType = "FAILED"|"REJECTED"|"TIMED_OUT"|"ALL",
+#'           action = "CANCEL",
+#'           thresholdPercentage = 123.0,
+#'           minNumberOfExecutedThings = 123
+#'         )
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     completedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     jobProcessDetails = list(
+#'       processingTargets = list(
+#'         "string"
+#'       ),
+#'       numberOfCanceledThings = 123,
+#'       numberOfSucceededThings = 123,
+#'       numberOfFailedThings = 123,
+#'       numberOfRejectedThings = 123,
+#'       numberOfQueuedThings = 123,
+#'       numberOfInProgressThings = 123,
+#'       numberOfRemovedThings = 123,
+#'       numberOfTimedOutThings = 123
+#'     ),
+#'     timeoutConfig = list(
+#'       inProgressTimeoutInMinutes = 123
+#'     ),
+#'     namespaceId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4840,6 +5953,36 @@ iot_describe_job <- function(jobId) {
 #' @param executionNumber A string (consisting of the digits "0" through "9" which is used to
 #' specify a particular job execution on a particular device.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   execution = list(
+#'     jobId = "string",
+#'     status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+#'     forceCanceled = TRUE|FALSE,
+#'     statusDetails = list(
+#'       detailsMap = list(
+#'         "string"
+#'       )
+#'     ),
+#'     thingArn = "string",
+#'     queuedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     startedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     executionNumber = 123,
+#'     versionNumber = 123,
+#'     approximateSecondsBeforeTimedOut = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_job_execution(
@@ -4879,6 +6022,48 @@ iot_describe_job_execution <- function(jobId, thingName, executionNumber = NULL)
 #'
 #' @param actionName &#91;required&#93; The friendly name that uniquely identifies the mitigation action.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   actionName = "string",
+#'   actionType = "UPDATE_DEVICE_CERTIFICATE"|"UPDATE_CA_CERTIFICATE"|"ADD_THINGS_TO_THING_GROUP"|"REPLACE_DEFAULT_POLICY_VERSION"|"ENABLE_IOT_LOGGING"|"PUBLISH_FINDING_TO_SNS",
+#'   actionArn = "string",
+#'   actionId = "string",
+#'   roleArn = "string",
+#'   actionParams = list(
+#'     updateDeviceCertificateParams = list(
+#'       action = "DEACTIVATE"
+#'     ),
+#'     updateCACertificateParams = list(
+#'       action = "DEACTIVATE"
+#'     ),
+#'     addThingsToThingGroupParams = list(
+#'       thingGroupNames = list(
+#'         "string"
+#'       ),
+#'       overrideDynamicGroups = TRUE|FALSE
+#'     ),
+#'     replaceDefaultPolicyVersionParams = list(
+#'       templateName = "BLANK_POLICY"
+#'     ),
+#'     enableIoTLoggingParams = list(
+#'       roleArnForLogging = "string",
+#'       logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
+#'     ),
+#'     publishFindingToSnsParams = list(
+#'       topicArn = "string"
+#'     )
+#'   ),
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_mitigation_action(
@@ -4915,6 +6100,30 @@ iot_describe_mitigation_action <- function(actionName) {
 #' iot_describe_provisioning_template(templateName)
 #'
 #' @param templateName &#91;required&#93; The name of the fleet provisioning template.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   templateArn = "string",
+#'   templateName = "string",
+#'   description = "string",
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   defaultVersionId = 123,
+#'   templateBody = "string",
+#'   enabled = TRUE|FALSE,
+#'   provisioningRoleArn = "string",
+#'   preProvisioningHook = list(
+#'     payloadVersion = "string",
+#'     targetArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4954,6 +6163,19 @@ iot_describe_provisioning_template <- function(templateName) {
 #' @param templateName &#91;required&#93; The template name.
 #' @param versionId &#91;required&#93; The fleet provisioning template version ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   versionId = 123,
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   templateBody = "string",
+#'   isDefaultVersion = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_provisioning_template_version(
@@ -4992,6 +6214,26 @@ iot_describe_provisioning_template_version <- function(templateName, versionId) 
 #'
 #' @param roleAlias &#91;required&#93; The role alias to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   roleAliasDescription = list(
+#'     roleAlias = "string",
+#'     roleAliasArn = "string",
+#'     roleArn = "string",
+#'     owner = "string",
+#'     credentialDurationSeconds = 123,
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_role_alias(
@@ -5028,6 +6270,21 @@ iot_describe_role_alias <- function(roleAlias) {
 #' iot_describe_scheduled_audit(scheduledAuditName)
 #'
 #' @param scheduledAuditName &#91;required&#93; The name of the scheduled audit whose information you want to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
+#'   dayOfMonth = "string",
+#'   dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT",
+#'   targetCheckNames = list(
+#'     "string"
+#'   ),
+#'   scheduledAuditName = "string",
+#'   scheduledAuditArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5066,6 +6323,80 @@ iot_describe_scheduled_audit <- function(scheduledAuditName) {
 #'
 #' @param securityProfileName &#91;required&#93; The name of the security profile whose information you want to get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   securityProfileName = "string",
+#'   securityProfileArn = "string",
+#'   securityProfileDescription = "string",
+#'   behaviors = list(
+#'     list(
+#'       name = "string",
+#'       metric = "string",
+#'       metricDimension = list(
+#'         dimensionName = "string",
+#'         operator = "IN"|"NOT_IN"
+#'       ),
+#'       criteria = list(
+#'         comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set"|"in-set"|"not-in-set",
+#'         value = list(
+#'           count = 123,
+#'           cidrs = list(
+#'             "string"
+#'           ),
+#'           ports = list(
+#'             123
+#'           ),
+#'           number = 123.0,
+#'           numbers = list(
+#'             123.0
+#'           ),
+#'           strings = list(
+#'             "string"
+#'           )
+#'         ),
+#'         durationSeconds = 123,
+#'         consecutiveDatapointsToAlarm = 123,
+#'         consecutiveDatapointsToClear = 123,
+#'         statisticalThreshold = list(
+#'           statistic = "string"
+#'         ),
+#'         mlDetectionConfig = list(
+#'           confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
+#'         )
+#'       ),
+#'       suppressAlerts = TRUE|FALSE
+#'     )
+#'   ),
+#'   alertTargets = list(
+#'     list(
+#'       alertTargetArn = "string",
+#'       roleArn = "string"
+#'     )
+#'   ),
+#'   additionalMetricsToRetain = list(
+#'     "string"
+#'   ),
+#'   additionalMetricsToRetainV2 = list(
+#'     list(
+#'       metric = "string",
+#'       metricDimension = list(
+#'         dimensionName = "string",
+#'         operator = "IN"|"NOT_IN"
+#'       )
+#'     )
+#'   ),
+#'   version = 123,
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_security_profile(
@@ -5102,6 +6433,36 @@ iot_describe_security_profile <- function(securityProfileName) {
 #' iot_describe_stream(streamId)
 #'
 #' @param streamId &#91;required&#93; The stream ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   streamInfo = list(
+#'     streamId = "string",
+#'     streamArn = "string",
+#'     streamVersion = 123,
+#'     description = "string",
+#'     files = list(
+#'       list(
+#'         fileId = 123,
+#'         s3Location = list(
+#'           bucket = "string",
+#'           key = "string",
+#'           version = "string"
+#'         )
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     roleArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5140,6 +6501,23 @@ iot_describe_stream <- function(streamId) {
 #'
 #' @param thingName &#91;required&#93; The name of the thing.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   defaultClientId = "string",
+#'   thingName = "string",
+#'   thingId = "string",
+#'   thingArn = "string",
+#'   thingTypeName = "string",
+#'   attributes = list(
+#'     "string"
+#'   ),
+#'   version = 123,
+#'   billingGroupName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_thing(
@@ -5176,6 +6554,42 @@ iot_describe_thing <- function(thingName) {
 #' iot_describe_thing_group(thingGroupName)
 #'
 #' @param thingGroupName &#91;required&#93; The name of the thing group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   thingGroupName = "string",
+#'   thingGroupId = "string",
+#'   thingGroupArn = "string",
+#'   version = 123,
+#'   thingGroupProperties = list(
+#'     thingGroupDescription = "string",
+#'     attributePayload = list(
+#'       attributes = list(
+#'         "string"
+#'       ),
+#'       merge = TRUE|FALSE
+#'     )
+#'   ),
+#'   thingGroupMetadata = list(
+#'     parentGroupName = "string",
+#'     rootToParentThingGroups = list(
+#'       list(
+#'         groupName = "string",
+#'         groupArn = "string"
+#'       )
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   indexName = "string",
+#'   queryString = "string",
+#'   queryVersion = "string",
+#'   status = "ACTIVE"|"BUILDING"|"REBUILDING"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5214,6 +6628,29 @@ iot_describe_thing_group <- function(thingGroupName) {
 #'
 #' @param taskId &#91;required&#93; The task ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskId = "string",
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   templateBody = "string",
+#'   inputFileBucket = "string",
+#'   inputFileKey = "string",
+#'   roleArn = "string",
+#'   status = "InProgress"|"Completed"|"Failed"|"Cancelled"|"Cancelling",
+#'   message = "string",
+#'   successCount = 123,
+#'   failureCount = 123,
+#'   percentageProgress = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_thing_registration_task(
@@ -5250,6 +6687,31 @@ iot_describe_thing_registration_task <- function(taskId) {
 #' iot_describe_thing_type(thingTypeName)
 #'
 #' @param thingTypeName &#91;required&#93; The name of the thing type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   thingTypeName = "string",
+#'   thingTypeId = "string",
+#'   thingTypeArn = "string",
+#'   thingTypeProperties = list(
+#'     thingTypeDescription = "string",
+#'     searchableAttributes = list(
+#'       "string"
+#'     )
+#'   ),
+#'   thingTypeMetadata = list(
+#'     deprecated = TRUE|FALSE,
+#'     deprecationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5288,6 +6750,8 @@ iot_describe_thing_type <- function(thingTypeName) {
 #'
 #' @param policyName &#91;required&#93; The policy to detach.
 #' @param target &#91;required&#93; The target from which the policy will be detached.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -5336,6 +6800,8 @@ iot_detach_policy <- function(policyName, target) {
 #' (arn:aws:iot:*region*:*accountId*:thinggroup/*groupName*) and CognitoId
 #' (*region*:*id*).
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detach_principal_policy(
@@ -5377,6 +6843,12 @@ iot_detach_principal_policy <- function(policyName, principal) {
 #'
 #' @param securityProfileName &#91;required&#93; The security profile that is detached.
 #' @param securityProfileTargetArn &#91;required&#93; The ARN of the thing group from which the security profile is detached.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5424,6 +6896,12 @@ iot_detach_security_profile <- function(securityProfileName, securityProfileTarg
 #' certificate. If the principal is an Amazon Cognito identity, this value
 #' must be the ID of the Amazon Cognito identity.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detach_thing_principal(
@@ -5462,6 +6940,8 @@ iot_detach_thing_principal <- function(thingName, principal) {
 #'
 #' @param ruleName &#91;required&#93; The name of the rule to disable.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_topic_rule(
@@ -5498,6 +6978,8 @@ iot_disable_topic_rule <- function(ruleName) {
 #' iot_enable_topic_rule(ruleName)
 #'
 #' @param ruleName &#91;required&#93; The name of the topic rule to enable.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -5541,6 +7023,28 @@ iot_enable_topic_rule <- function(ruleName) {
 #' @param maxResults The maximum number of results to return at one time. The default is 25.
 #' @param nextToken The token for the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summaries = list(
+#'     list(
+#'       securityProfileName = "string",
+#'       behaviorName = "string",
+#'       trainingDataCollectionStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       modelStatus = "PENDING_BUILD"|"ACTIVE"|"EXPIRED",
+#'       datapointsCollectionPercentage = 123.0,
+#'       lastModelRefreshDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_behavior_model_training_summaries(
@@ -5583,6 +7087,14 @@ iot_get_behavior_model_training_summaries <- function(securityProfileName = NULL
 #' @param queryString &#91;required&#93; The search query.
 #' @param aggregationField The field to aggregate.
 #' @param queryVersion The query version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cardinality = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5633,6 +7145,20 @@ iot_get_cardinality <- function(indexName = NULL, queryString, aggregationField 
 #' @param cognitoIdentityPoolId The Cognito identity pool ID.
 #' @param thingName The thing name.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   effectivePolicies = list(
+#'     list(
+#'       policyName = "string",
+#'       policyArn = "string",
+#'       policyDocument = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_effective_policies(
@@ -5670,6 +7196,44 @@ iot_get_effective_policies <- function(principal = NULL, cognitoIdentityPoolId =
 #' @usage
 #' iot_get_indexing_configuration()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   thingIndexingConfiguration = list(
+#'     thingIndexingMode = "OFF"|"REGISTRY"|"REGISTRY_AND_SHADOW",
+#'     thingConnectivityIndexingMode = "OFF"|"STATUS",
+#'     managedFields = list(
+#'       list(
+#'         name = "string",
+#'         type = "Number"|"String"|"Boolean"
+#'       )
+#'     ),
+#'     customFields = list(
+#'       list(
+#'         name = "string",
+#'         type = "Number"|"String"|"Boolean"
+#'       )
+#'     )
+#'   ),
+#'   thingGroupIndexingConfiguration = list(
+#'     thingGroupIndexingMode = "OFF"|"ON",
+#'     managedFields = list(
+#'       list(
+#'         name = "string",
+#'         type = "Number"|"String"|"Boolean"
+#'       )
+#'     ),
+#'     customFields = list(
+#'       list(
+#'         name = "string",
+#'         type = "Number"|"String"|"Boolean"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_indexing_configuration()
@@ -5704,6 +7268,14 @@ iot_get_indexing_configuration <- function() {
 #' iot_get_job_document(jobId)
 #'
 #' @param jobId &#91;required&#93; The unique identifier you assigned to this job when it was created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   document = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5743,6 +7315,15 @@ iot_get_job_document <- function(jobId) {
 #' @usage
 #' iot_get_logging_options()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   roleArn = "string",
+#'   logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_logging_options()
@@ -5777,6 +7358,104 @@ iot_get_logging_options <- function() {
 #' iot_get_ota_update(otaUpdateId)
 #'
 #' @param otaUpdateId &#91;required&#93; The OTA update ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   otaUpdateInfo = list(
+#'     otaUpdateId = "string",
+#'     otaUpdateArn = "string",
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     description = "string",
+#'     targets = list(
+#'       "string"
+#'     ),
+#'     protocols = list(
+#'       "MQTT"|"HTTP"
+#'     ),
+#'     awsJobExecutionsRolloutConfig = list(
+#'       maximumPerMinute = 123,
+#'       exponentialRate = list(
+#'         baseRatePerMinute = 123,
+#'         incrementFactor = 123.0,
+#'         rateIncreaseCriteria = list(
+#'           numberOfNotifiedThings = 123,
+#'           numberOfSucceededThings = 123
+#'         )
+#'       )
+#'     ),
+#'     awsJobPresignedUrlConfig = list(
+#'       expiresInSec = 123
+#'     ),
+#'     targetSelection = "CONTINUOUS"|"SNAPSHOT",
+#'     otaUpdateFiles = list(
+#'       list(
+#'         fileName = "string",
+#'         fileType = 123,
+#'         fileVersion = "string",
+#'         fileLocation = list(
+#'           stream = list(
+#'             streamId = "string",
+#'             fileId = 123
+#'           ),
+#'           s3Location = list(
+#'             bucket = "string",
+#'             key = "string",
+#'             version = "string"
+#'           )
+#'         ),
+#'         codeSigning = list(
+#'           awsSignerJobId = "string",
+#'           startSigningJobParameter = list(
+#'             signingProfileParameter = list(
+#'               certificateArn = "string",
+#'               platform = "string",
+#'               certificatePathOnDevice = "string"
+#'             ),
+#'             signingProfileName = "string",
+#'             destination = list(
+#'               s3Destination = list(
+#'                 bucket = "string",
+#'                 prefix = "string"
+#'               )
+#'             )
+#'           ),
+#'           customCodeSigning = list(
+#'             signature = list(
+#'               inlineDocument = raw
+#'             ),
+#'             certificateChain = list(
+#'               certificateName = "string",
+#'               inlineDocument = "string"
+#'             ),
+#'             hashAlgorithm = "string",
+#'             signatureAlgorithm = "string"
+#'           )
+#'         ),
+#'         attributes = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     otaUpdateStatus = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED",
+#'     awsIotJobId = "string",
+#'     awsIotJobArn = "string",
+#'     errorInfo = list(
+#'       code = "string",
+#'       message = "string"
+#'     ),
+#'     additionalParameters = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5831,6 +7510,19 @@ iot_get_ota_update <- function(otaUpdateId) {
 #' @param queryVersion The query version.
 #' @param percents The percentile groups returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   percentiles = list(
+#'     list(
+#'       percent = 123.0,
+#'       value = 123.0
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_percentiles(
@@ -5876,6 +7568,24 @@ iot_get_percentiles <- function(indexName = NULL, queryString, aggregationField 
 #'
 #' @param policyName &#91;required&#93; The name of the policy.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyName = "string",
+#'   policyArn = "string",
+#'   policyDocument = "string",
+#'   defaultVersionId = "string",
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   generationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_policy(
@@ -5914,6 +7624,25 @@ iot_get_policy <- function(policyName) {
 #' @param policyName &#91;required&#93; The name of the policy.
 #' @param policyVersionId &#91;required&#93; The policy version ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyArn = "string",
+#'   policyName = "string",
+#'   policyDocument = "string",
+#'   policyVersionId = "string",
+#'   isDefaultVersion = TRUE|FALSE,
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   generationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_policy_version(
@@ -5949,6 +7678,14 @@ iot_get_policy_version <- function(policyName, policyVersionId) {
 #'
 #' @usage
 #' iot_get_registration_code()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   registrationCode = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5994,6 +7731,23 @@ iot_get_registration_code <- function() {
 #' @param aggregationField The aggregation field name.
 #' @param queryVersion The version of the query used to search.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   statistics = list(
+#'     count = 123,
+#'     average = 123.0,
+#'     sum = 123.0,
+#'     minimum = 123.0,
+#'     maximum = 123.0,
+#'     sumOfSquares = 123.0,
+#'     variance = 123.0,
+#'     stdDeviation = 123.0
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_statistics(
@@ -6034,6 +7788,362 @@ iot_get_statistics <- function(indexName = NULL, queryString, aggregationField =
 #'
 #' @param ruleName &#91;required&#93; The name of the rule.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ruleArn = "string",
+#'   rule = list(
+#'     ruleName = "string",
+#'     sql = "string",
+#'     description = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     actions = list(
+#'       list(
+#'         dynamoDB = list(
+#'           tableName = "string",
+#'           roleArn = "string",
+#'           operation = "string",
+#'           hashKeyField = "string",
+#'           hashKeyValue = "string",
+#'           hashKeyType = "STRING"|"NUMBER",
+#'           rangeKeyField = "string",
+#'           rangeKeyValue = "string",
+#'           rangeKeyType = "STRING"|"NUMBER",
+#'           payloadField = "string"
+#'         ),
+#'         dynamoDBv2 = list(
+#'           roleArn = "string",
+#'           putItem = list(
+#'             tableName = "string"
+#'           )
+#'         ),
+#'         lambda = list(
+#'           functionArn = "string"
+#'         ),
+#'         sns = list(
+#'           targetArn = "string",
+#'           roleArn = "string",
+#'           messageFormat = "RAW"|"JSON"
+#'         ),
+#'         sqs = list(
+#'           roleArn = "string",
+#'           queueUrl = "string",
+#'           useBase64 = TRUE|FALSE
+#'         ),
+#'         kinesis = list(
+#'           roleArn = "string",
+#'           streamName = "string",
+#'           partitionKey = "string"
+#'         ),
+#'         republish = list(
+#'           roleArn = "string",
+#'           topic = "string",
+#'           qos = 123
+#'         ),
+#'         s3 = list(
+#'           roleArn = "string",
+#'           bucketName = "string",
+#'           key = "string",
+#'           cannedAcl = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"log-delivery-write"
+#'         ),
+#'         firehose = list(
+#'           roleArn = "string",
+#'           deliveryStreamName = "string",
+#'           separator = "string",
+#'           batchMode = TRUE|FALSE
+#'         ),
+#'         cloudwatchMetric = list(
+#'           roleArn = "string",
+#'           metricNamespace = "string",
+#'           metricName = "string",
+#'           metricValue = "string",
+#'           metricUnit = "string",
+#'           metricTimestamp = "string"
+#'         ),
+#'         cloudwatchAlarm = list(
+#'           roleArn = "string",
+#'           alarmName = "string",
+#'           stateReason = "string",
+#'           stateValue = "string"
+#'         ),
+#'         cloudwatchLogs = list(
+#'           roleArn = "string",
+#'           logGroupName = "string"
+#'         ),
+#'         elasticsearch = list(
+#'           roleArn = "string",
+#'           endpoint = "string",
+#'           index = "string",
+#'           type = "string",
+#'           id = "string"
+#'         ),
+#'         salesforce = list(
+#'           token = "string",
+#'           url = "string"
+#'         ),
+#'         iotAnalytics = list(
+#'           channelArn = "string",
+#'           channelName = "string",
+#'           batchMode = TRUE|FALSE,
+#'           roleArn = "string"
+#'         ),
+#'         iotEvents = list(
+#'           inputName = "string",
+#'           messageId = "string",
+#'           batchMode = TRUE|FALSE,
+#'           roleArn = "string"
+#'         ),
+#'         iotSiteWise = list(
+#'           putAssetPropertyValueEntries = list(
+#'             list(
+#'               entryId = "string",
+#'               assetId = "string",
+#'               propertyId = "string",
+#'               propertyAlias = "string",
+#'               propertyValues = list(
+#'                 list(
+#'                   value = list(
+#'                     stringValue = "string",
+#'                     integerValue = "string",
+#'                     doubleValue = "string",
+#'                     booleanValue = "string"
+#'                   ),
+#'                   timestamp = list(
+#'                     timeInSeconds = "string",
+#'                     offsetInNanos = "string"
+#'                   ),
+#'                   quality = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           roleArn = "string"
+#'         ),
+#'         stepFunctions = list(
+#'           executionNamePrefix = "string",
+#'           stateMachineName = "string",
+#'           roleArn = "string"
+#'         ),
+#'         timestream = list(
+#'           roleArn = "string",
+#'           databaseName = "string",
+#'           tableName = "string",
+#'           dimensions = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           ),
+#'           timestamp = list(
+#'             value = "string",
+#'             unit = "string"
+#'           )
+#'         ),
+#'         http = list(
+#'           url = "string",
+#'           confirmationUrl = "string",
+#'           headers = list(
+#'             list(
+#'               key = "string",
+#'               value = "string"
+#'             )
+#'           ),
+#'           auth = list(
+#'             sigv4 = list(
+#'               signingRegion = "string",
+#'               serviceName = "string",
+#'               roleArn = "string"
+#'             )
+#'           )
+#'         ),
+#'         kafka = list(
+#'           destinationArn = "string",
+#'           topic = "string",
+#'           key = "string",
+#'           partition = "string",
+#'           clientProperties = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ruleDisabled = TRUE|FALSE,
+#'     awsIotSqlVersion = "string",
+#'     errorAction = list(
+#'       dynamoDB = list(
+#'         tableName = "string",
+#'         roleArn = "string",
+#'         operation = "string",
+#'         hashKeyField = "string",
+#'         hashKeyValue = "string",
+#'         hashKeyType = "STRING"|"NUMBER",
+#'         rangeKeyField = "string",
+#'         rangeKeyValue = "string",
+#'         rangeKeyType = "STRING"|"NUMBER",
+#'         payloadField = "string"
+#'       ),
+#'       dynamoDBv2 = list(
+#'         roleArn = "string",
+#'         putItem = list(
+#'           tableName = "string"
+#'         )
+#'       ),
+#'       lambda = list(
+#'         functionArn = "string"
+#'       ),
+#'       sns = list(
+#'         targetArn = "string",
+#'         roleArn = "string",
+#'         messageFormat = "RAW"|"JSON"
+#'       ),
+#'       sqs = list(
+#'         roleArn = "string",
+#'         queueUrl = "string",
+#'         useBase64 = TRUE|FALSE
+#'       ),
+#'       kinesis = list(
+#'         roleArn = "string",
+#'         streamName = "string",
+#'         partitionKey = "string"
+#'       ),
+#'       republish = list(
+#'         roleArn = "string",
+#'         topic = "string",
+#'         qos = 123
+#'       ),
+#'       s3 = list(
+#'         roleArn = "string",
+#'         bucketName = "string",
+#'         key = "string",
+#'         cannedAcl = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"log-delivery-write"
+#'       ),
+#'       firehose = list(
+#'         roleArn = "string",
+#'         deliveryStreamName = "string",
+#'         separator = "string",
+#'         batchMode = TRUE|FALSE
+#'       ),
+#'       cloudwatchMetric = list(
+#'         roleArn = "string",
+#'         metricNamespace = "string",
+#'         metricName = "string",
+#'         metricValue = "string",
+#'         metricUnit = "string",
+#'         metricTimestamp = "string"
+#'       ),
+#'       cloudwatchAlarm = list(
+#'         roleArn = "string",
+#'         alarmName = "string",
+#'         stateReason = "string",
+#'         stateValue = "string"
+#'       ),
+#'       cloudwatchLogs = list(
+#'         roleArn = "string",
+#'         logGroupName = "string"
+#'       ),
+#'       elasticsearch = list(
+#'         roleArn = "string",
+#'         endpoint = "string",
+#'         index = "string",
+#'         type = "string",
+#'         id = "string"
+#'       ),
+#'       salesforce = list(
+#'         token = "string",
+#'         url = "string"
+#'       ),
+#'       iotAnalytics = list(
+#'         channelArn = "string",
+#'         channelName = "string",
+#'         batchMode = TRUE|FALSE,
+#'         roleArn = "string"
+#'       ),
+#'       iotEvents = list(
+#'         inputName = "string",
+#'         messageId = "string",
+#'         batchMode = TRUE|FALSE,
+#'         roleArn = "string"
+#'       ),
+#'       iotSiteWise = list(
+#'         putAssetPropertyValueEntries = list(
+#'           list(
+#'             entryId = "string",
+#'             assetId = "string",
+#'             propertyId = "string",
+#'             propertyAlias = "string",
+#'             propertyValues = list(
+#'               list(
+#'                 value = list(
+#'                   stringValue = "string",
+#'                   integerValue = "string",
+#'                   doubleValue = "string",
+#'                   booleanValue = "string"
+#'                 ),
+#'                 timestamp = list(
+#'                   timeInSeconds = "string",
+#'                   offsetInNanos = "string"
+#'                 ),
+#'                 quality = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         roleArn = "string"
+#'       ),
+#'       stepFunctions = list(
+#'         executionNamePrefix = "string",
+#'         stateMachineName = "string",
+#'         roleArn = "string"
+#'       ),
+#'       timestream = list(
+#'         roleArn = "string",
+#'         databaseName = "string",
+#'         tableName = "string",
+#'         dimensions = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         timestamp = list(
+#'           value = "string",
+#'           unit = "string"
+#'         )
+#'       ),
+#'       http = list(
+#'         url = "string",
+#'         confirmationUrl = "string",
+#'         headers = list(
+#'           list(
+#'             key = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         auth = list(
+#'           sigv4 = list(
+#'             signingRegion = "string",
+#'             serviceName = "string",
+#'             roleArn = "string"
+#'           )
+#'         )
+#'       ),
+#'       kafka = list(
+#'         destinationArn = "string",
+#'         topic = "string",
+#'         key = "string",
+#'         partition = "string",
+#'         clientProperties = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_topic_rule(
@@ -6071,6 +8181,37 @@ iot_get_topic_rule <- function(ruleName) {
 #'
 #' @param arn &#91;required&#93; The ARN of the topic rule destination.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   topicRuleDestination = list(
+#'     arn = "string",
+#'     status = "ENABLED"|"IN_PROGRESS"|"DISABLED"|"ERROR"|"DELETING",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     statusReason = "string",
+#'     httpUrlProperties = list(
+#'       confirmationUrl = "string"
+#'     ),
+#'     vpcProperties = list(
+#'       subnetIds = list(
+#'         "string"
+#'       ),
+#'       securityGroups = list(
+#'         "string"
+#'       ),
+#'       vpcId = "string",
+#'       roleArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_topic_rule_destination(
@@ -6105,6 +8246,16 @@ iot_get_topic_rule_destination <- function(arn) {
 #'
 #' @usage
 #' iot_get_v2_logging_options()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   roleArn = "string",
+#'   defaultLogLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED",
+#'   disableAllLogs = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6148,6 +8299,83 @@ iot_get_v2_logging_options <- function() {
 #' @param listSuppressedAlerts A list of all suppressed alerts.
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   activeViolations = list(
+#'     list(
+#'       violationId = "string",
+#'       thingName = "string",
+#'       securityProfileName = "string",
+#'       behavior = list(
+#'         name = "string",
+#'         metric = "string",
+#'         metricDimension = list(
+#'           dimensionName = "string",
+#'           operator = "IN"|"NOT_IN"
+#'         ),
+#'         criteria = list(
+#'           comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set"|"in-set"|"not-in-set",
+#'           value = list(
+#'             count = 123,
+#'             cidrs = list(
+#'               "string"
+#'             ),
+#'             ports = list(
+#'               123
+#'             ),
+#'             number = 123.0,
+#'             numbers = list(
+#'               123.0
+#'             ),
+#'             strings = list(
+#'               "string"
+#'             )
+#'           ),
+#'           durationSeconds = 123,
+#'           consecutiveDatapointsToAlarm = 123,
+#'           consecutiveDatapointsToClear = 123,
+#'           statisticalThreshold = list(
+#'             statistic = "string"
+#'           ),
+#'           mlDetectionConfig = list(
+#'             confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
+#'           )
+#'         ),
+#'         suppressAlerts = TRUE|FALSE
+#'       ),
+#'       lastViolationValue = list(
+#'         count = 123,
+#'         cidrs = list(
+#'           "string"
+#'         ),
+#'         ports = list(
+#'           123
+#'         ),
+#'         number = 123.0,
+#'         numbers = list(
+#'           123.0
+#'         ),
+#'         strings = list(
+#'           "string"
+#'         )
+#'       ),
+#'       violationEventAdditionalInfo = list(
+#'         confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
+#'       ),
+#'       lastViolationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       violationStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6197,6 +8425,20 @@ iot_list_active_violations <- function(thingName = NULL, securityProfileName = N
 #' @param recursive When true, recursively list attached policies.
 #' @param marker The token to retrieve the next set of results.
 #' @param pageSize The maximum number of results to be returned per request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policies = list(
+#'     list(
+#'       policyName = "string",
+#'       policyArn = "string"
+#'     )
+#'   ),
+#'   nextMarker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6256,6 +8498,71 @@ iot_list_attached_policies <- function(target, recursive = NULL, marker = NULL, 
 #' unsuppressed findings should be listed. If this parameter isn't
 #' provided, the response will list both suppressed and unsuppressed
 #' findings.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   findings = list(
+#'     list(
+#'       findingId = "string",
+#'       taskId = "string",
+#'       checkName = "string",
+#'       taskStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       findingTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW",
+#'       nonCompliantResource = list(
+#'         resourceType = "DEVICE_CERTIFICATE"|"CA_CERTIFICATE"|"IOT_POLICY"|"COGNITO_IDENTITY_POOL"|"CLIENT_ID"|"ACCOUNT_SETTINGS"|"ROLE_ALIAS"|"IAM_ROLE",
+#'         resourceIdentifier = list(
+#'           deviceCertificateId = "string",
+#'           caCertificateId = "string",
+#'           cognitoIdentityPoolId = "string",
+#'           clientId = "string",
+#'           policyVersionIdentifier = list(
+#'             policyName = "string",
+#'             policyVersionId = "string"
+#'           ),
+#'           account = "string",
+#'           iamRoleArn = "string",
+#'           roleAliasArn = "string"
+#'         ),
+#'         additionalInfo = list(
+#'           "string"
+#'         )
+#'       ),
+#'       relatedResources = list(
+#'         list(
+#'           resourceType = "DEVICE_CERTIFICATE"|"CA_CERTIFICATE"|"IOT_POLICY"|"COGNITO_IDENTITY_POOL"|"CLIENT_ID"|"ACCOUNT_SETTINGS"|"ROLE_ALIAS"|"IAM_ROLE",
+#'           resourceIdentifier = list(
+#'             deviceCertificateId = "string",
+#'             caCertificateId = "string",
+#'             cognitoIdentityPoolId = "string",
+#'             clientId = "string",
+#'             policyVersionIdentifier = list(
+#'               policyName = "string",
+#'               policyVersionId = "string"
+#'             ),
+#'             account = "string",
+#'             iamRoleArn = "string",
+#'             roleAliasArn = "string"
+#'           ),
+#'           additionalInfo = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       reasonForNonCompliance = "string",
+#'       reasonForNonComplianceCode = "string",
+#'       isSuppressed = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6324,6 +8631,31 @@ iot_list_audit_findings <- function(taskId = NULL, checkName = NULL, resourceIde
 #' @param maxResults The maximum number of results to return at one time. The default is 25.
 #' @param nextToken The token for the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   actionsExecutions = list(
+#'     list(
+#'       taskId = "string",
+#'       findingId = "string",
+#'       actionName = "string",
+#'       actionId = "string",
+#'       status = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED"|"SKIPPED"|"PENDING",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       errorCode = "string",
+#'       message = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_audit_mitigation_actions_executions(
@@ -6379,6 +8711,23 @@ iot_list_audit_mitigation_actions_executions <- function(taskId, actionStatus = 
 #' @param endTime &#91;required&#93; Specify this filter to limit results to tasks that were completed or
 #' canceled on or before a specific date and time.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tasks = list(
+#'     list(
+#'       taskId = "string",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       taskStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_audit_mitigation_actions_tasks(
@@ -6432,6 +8781,37 @@ iot_list_audit_mitigation_actions_tasks <- function(auditTaskId = NULL, findingI
 #' `ascendingOrder=true`.
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time. The default is 25.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   suppressions = list(
+#'     list(
+#'       checkName = "string",
+#'       resourceIdentifier = list(
+#'         deviceCertificateId = "string",
+#'         caCertificateId = "string",
+#'         cognitoIdentityPoolId = "string",
+#'         clientId = "string",
+#'         policyVersionIdentifier = list(
+#'           policyName = "string",
+#'           policyVersionId = "string"
+#'         ),
+#'         account = "string",
+#'         iamRoleArn = "string",
+#'         roleAliasArn = "string"
+#'       ),
+#'       expirationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       suppressIndefinitely = TRUE|FALSE,
+#'       description = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6492,12 +8872,27 @@ iot_list_audit_suppressions <- function(checkName = NULL, resourceIdentifier = N
 #' retained results in an "InvalidRequestException".
 #' @param endTime &#91;required&#93; The end of the time period.
 #' @param taskType A filter to limit the output to the specified type of audit: can be one
-#' of "ON\\_DEMAND\\_AUDIT\\_TASK" or "SCHEDULED\\_\\_AUDIT\\_TASK".
+#' of "ON_DEMAND_AUDIT_TASK" or "SCHEDULED__AUDIT_TASK".
 #' @param taskStatus A filter to limit the output to audits with the specified completion
-#' status: can be one of "IN\\_PROGRESS", "COMPLETED", "FAILED", or
+#' status: can be one of "IN_PROGRESS", "COMPLETED", "FAILED", or
 #' "CANCELED".
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time. The default is 25.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tasks = list(
+#'     list(
+#'       taskId = "string",
+#'       taskStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED",
+#'       taskType = "ON_DEMAND_AUDIT_TASK"|"SCHEDULED_AUDIT_TASK"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6548,6 +8943,20 @@ iot_list_audit_tasks <- function(startTime, endTime, taskType = NULL, taskStatus
 #' @param ascendingOrder Return the list of authorizers in ascending alphabetical order.
 #' @param status The status of the list authorizers request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   authorizers = list(
+#'     list(
+#'       authorizerName = "string",
+#'       authorizerArn = "string"
+#'     )
+#'   ),
+#'   nextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_authorizers(
@@ -6592,6 +9001,20 @@ iot_list_authorizers <- function(pageSize = NULL, marker = NULL, ascendingOrder 
 #' @param maxResults The maximum number of results to return per request.
 #' @param namePrefixFilter Limit the results to billing groups whose names have the given prefix.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   billingGroups = list(
+#'     list(
+#'       groupName = "string",
+#'       groupArn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_billing_groups(
@@ -6635,6 +9058,24 @@ iot_list_billing_groups <- function(nextToken = NULL, maxResults = NULL, namePre
 #' @param pageSize The result page size.
 #' @param marker The marker for the next set of results.
 #' @param ascendingOrder Determines the order of the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   certificates = list(
+#'     list(
+#'       certificateArn = "string",
+#'       certificateId = "string",
+#'       status = "ACTIVE"|"INACTIVE",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextMarker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6681,6 +9122,25 @@ iot_list_ca_certificates <- function(pageSize = NULL, marker = NULL, ascendingOr
 #' @param ascendingOrder Specifies the order for results. If True, the results are returned in
 #' ascending order, based on the creation date.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   certificates = list(
+#'     list(
+#'       certificateArn = "string",
+#'       certificateId = "string",
+#'       status = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION",
+#'       certificateMode = "DEFAULT"|"SNI_ONLY",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_certificates(
@@ -6726,6 +9186,25 @@ iot_list_certificates <- function(pageSize = NULL, marker = NULL, ascendingOrder
 #' @param ascendingOrder Specifies the order for results. If True, the results are returned in
 #' ascending order, based on the creation date.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   certificates = list(
+#'     list(
+#'       certificateArn = "string",
+#'       certificateId = "string",
+#'       status = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION",
+#'       certificateMode = "DEFAULT"|"SNI_ONLY",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_certificates_by_ca(
@@ -6766,6 +9245,17 @@ iot_list_certificates_by_ca <- function(caCertificateId, pageSize = NULL, marker
 #'
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time. The default is 25.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   metricNames = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6816,6 +9306,31 @@ iot_list_custom_metrics <- function(nextToken = NULL, maxResults = NULL) {
 #' executions are returned.
 #' @param maxResults The maximum number of results to return at one time. The default is 25.
 #' @param nextToken The token for the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   actionsExecutions = list(
+#'     list(
+#'       taskId = "string",
+#'       violationId = "string",
+#'       actionName = "string",
+#'       thingName = "string",
+#'       executionStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       executionEndDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "IN_PROGRESS"|"SUCCESSFUL"|"FAILED"|"SKIPPED",
+#'       errorCode = "string",
+#'       message = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6871,6 +9386,79 @@ iot_list_detect_mitigation_actions_executions <- function(taskId = NULL, violati
 #' @param endTime &#91;required&#93; The end of the time period for which ML Detect mitigation actions tasks
 #' are returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tasks = list(
+#'     list(
+#'       taskId = "string",
+#'       taskStatus = "IN_PROGRESS"|"SUCCESSFUL"|"FAILED"|"CANCELED",
+#'       taskStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       taskEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       target = list(
+#'         violationIds = list(
+#'           "string"
+#'         ),
+#'         securityProfileName = "string",
+#'         behaviorName = "string"
+#'       ),
+#'       violationEventOccurrenceRange = list(
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       onlyActiveViolationsIncluded = TRUE|FALSE,
+#'       suppressedAlertsIncluded = TRUE|FALSE,
+#'       actionsDefinition = list(
+#'         list(
+#'           name = "string",
+#'           id = "string",
+#'           roleArn = "string",
+#'           actionParams = list(
+#'             updateDeviceCertificateParams = list(
+#'               action = "DEACTIVATE"
+#'             ),
+#'             updateCACertificateParams = list(
+#'               action = "DEACTIVATE"
+#'             ),
+#'             addThingsToThingGroupParams = list(
+#'               thingGroupNames = list(
+#'                 "string"
+#'               ),
+#'               overrideDynamicGroups = TRUE|FALSE
+#'             ),
+#'             replaceDefaultPolicyVersionParams = list(
+#'               templateName = "BLANK_POLICY"
+#'             ),
+#'             enableIoTLoggingParams = list(
+#'               roleArnForLogging = "string",
+#'               logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
+#'             ),
+#'             publishFindingToSnsParams = list(
+#'               topicArn = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       taskStatistics = list(
+#'         actionsExecuted = 123,
+#'         actionsSkipped = 123,
+#'         actionsFailed = 123
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_detect_mitigation_actions_tasks(
@@ -6916,6 +9504,17 @@ iot_list_detect_mitigation_actions_tasks <- function(maxResults = NULL, nextToke
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to retrieve at one time.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dimensionNames = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_dimensions(
@@ -6960,6 +9559,21 @@ iot_list_dimensions <- function(nextToken = NULL, maxResults = NULL) {
 #' @param pageSize The result page size.
 #' @param serviceType The type of service delivered by the endpoint.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainConfigurations = list(
+#'     list(
+#'       domainConfigurationName = "string",
+#'       domainConfigurationArn = "string",
+#'       serviceType = "DATA"|"CREDENTIAL_PROVIDER"|"JOBS"
+#'     )
+#'   ),
+#'   nextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_domain_configurations(
@@ -7001,6 +9615,17 @@ iot_list_domain_configurations <- function(marker = NULL, pageSize = NULL, servi
 #' additional results.
 #' @param maxResults The maximum number of results to return at one time.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   indexNames = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_indices(
@@ -7041,6 +9666,32 @@ iot_list_indices <- function(nextToken = NULL, maxResults = NULL) {
 #' @param status The status of the job.
 #' @param maxResults The maximum number of results to be returned per request.
 #' @param nextToken The token to retrieve the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   executionSummaries = list(
+#'     list(
+#'       thingArn = "string",
+#'       jobExecutionSummary = list(
+#'         status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+#'         queuedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         startedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         executionNumber = 123
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7095,6 +9746,32 @@ iot_list_job_executions_for_job <- function(jobId, status = NULL, maxResults = N
 #' The `namespaceId` feature is in public preview.
 #' @param maxResults The maximum number of results to be returned per request.
 #' @param nextToken The token to retrieve the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   executionSummaries = list(
+#'     list(
+#'       jobId = "string",
+#'       jobExecutionSummary = list(
+#'         status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+#'         queuedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         startedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         executionNumber = 123
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7158,6 +9835,32 @@ iot_list_job_executions_for_thing <- function(thingName, status = NULL, namespac
 #' 
 #' The `namespaceId` feature is in public preview.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobs = list(
+#'     list(
+#'       jobArn = "string",
+#'       jobId = "string",
+#'       thingGroupId = "string",
+#'       targetSelection = "CONTINUOUS"|"SNAPSHOT",
+#'       status = "IN_PROGRESS"|"CANCELED"|"COMPLETED"|"DELETION_IN_PROGRESS",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       completedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_jobs(
@@ -7206,6 +9909,23 @@ iot_list_jobs <- function(status = NULL, targetSelection = NULL, maxResults = NU
 #' @param maxResults The maximum number of results to return at one time. The default is 25.
 #' @param nextToken The token for the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   actionIdentifiers = list(
+#'     list(
+#'       actionName = "string",
+#'       actionArn = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_mitigation_actions(
@@ -7246,6 +9966,23 @@ iot_list_mitigation_actions <- function(actionType = NULL, maxResults = NULL, ne
 #' @param maxResults The maximum number of results to return at one time.
 #' @param nextToken A token used to retrieve the next set of results.
 #' @param otaUpdateStatus The OTA update job status.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   otaUpdates = list(
+#'     list(
+#'       otaUpdateId = "string",
+#'       otaUpdateArn = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7289,6 +10026,28 @@ iot_list_ota_updates <- function(maxResults = NULL, nextToken = NULL, otaUpdateS
 #' @param ascendingOrder Specifies the order for results. If True, the results are returned in
 #' ascending order, based on the creation date.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   outgoingCertificates = list(
+#'     list(
+#'       certificateArn = "string",
+#'       certificateId = "string",
+#'       transferredTo = "string",
+#'       transferDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       transferMessage = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_outgoing_certificates(
@@ -7330,6 +10089,20 @@ iot_list_outgoing_certificates <- function(pageSize = NULL, marker = NULL, ascen
 #' @param pageSize The result page size.
 #' @param ascendingOrder Specifies the order for results. If true, the results are returned in
 #' ascending creation order.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policies = list(
+#'     list(
+#'       policyName = "string",
+#'       policyArn = "string"
+#'     )
+#'   ),
+#'   nextMarker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7377,6 +10150,17 @@ iot_list_policies <- function(marker = NULL, pageSize = NULL, ascendingOrder = N
 #' @param ascendingOrder Specifies the order for results. If true, the results are returned in
 #' ascending creation order.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   principals = list(
+#'     "string"
+#'   ),
+#'   nextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_policy_principals(
@@ -7418,6 +10202,22 @@ iot_list_policy_principals <- function(policyName, marker = NULL, pageSize = NUL
 #' iot_list_policy_versions(policyName)
 #'
 #' @param policyName &#91;required&#93; The policy name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policyVersions = list(
+#'     list(
+#'       versionId = "string",
+#'       isDefaultVersion = TRUE|FALSE,
+#'       createDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7468,6 +10268,20 @@ iot_list_policy_versions <- function(policyName) {
 #' @param ascendingOrder Specifies the order for results. If true, results are returned in
 #' ascending creation order.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policies = list(
+#'     list(
+#'       policyName = "string",
+#'       policyArn = "string"
+#'     )
+#'   ),
+#'   nextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_principal_policies(
@@ -7514,6 +10328,17 @@ iot_list_principal_policies <- function(principal, marker = NULL, pageSize = NUL
 #' @param maxResults The maximum number of results to return in this operation.
 #' @param principal &#91;required&#93; The principal.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   things = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_principal_things(
@@ -7556,6 +10381,23 @@ iot_list_principal_things <- function(nextToken = NULL, maxResults = NULL, princ
 #' @param maxResults The maximum number of results to return at one time.
 #' @param nextToken A token to retrieve the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   versions = list(
+#'     list(
+#'       versionId = 123,
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       isDefaultVersion = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_provisioning_template_versions(
@@ -7595,6 +10437,28 @@ iot_list_provisioning_template_versions <- function(templateName, maxResults = N
 #'
 #' @param maxResults The maximum number of results to return at one time.
 #' @param nextToken A token to retrieve the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   templates = list(
+#'     list(
+#'       templateArn = "string",
+#'       templateName = "string",
+#'       description = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7636,6 +10500,17 @@ iot_list_provisioning_templates <- function(maxResults = NULL, nextToken = NULL)
 #' @param marker A marker used to get the next set of results.
 #' @param ascendingOrder Return the list of role aliases in ascending alphabetical order.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   roleAliases = list(
+#'     "string"
+#'   ),
+#'   nextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_role_aliases(
@@ -7675,6 +10550,23 @@ iot_list_role_aliases <- function(pageSize = NULL, marker = NULL, ascendingOrder
 #'
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time. The default is 25.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scheduledAudits = list(
+#'     list(
+#'       scheduledAuditName = "string",
+#'       scheduledAuditArn = "string",
+#'       frequency = "DAILY"|"WEEKLY"|"BIWEEKLY"|"MONTHLY",
+#'       dayOfMonth = "string",
+#'       dayOfWeek = "SUN"|"MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7721,6 +10613,20 @@ iot_list_scheduled_audits <- function(nextToken = NULL, maxResults = NULL) {
 #' @param dimensionName A filter to limit results to the security profiles that use the defined
 #' dimension. Cannot be used with `metricName`
 #' @param metricName The name of the custom metric. Cannot be used with `dimensionName`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   securityProfileIdentifiers = list(
+#'     list(
+#'       name = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7769,6 +10675,25 @@ iot_list_security_profiles <- function(nextToken = NULL, maxResults = NULL, dime
 #' @param securityProfileTargetArn &#91;required&#93; The ARN of the target (thing group) whose attached security profiles you
 #' want to get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   securityProfileTargetMappings = list(
+#'     list(
+#'       securityProfileIdentifier = list(
+#'         name = "string",
+#'         arn = "string"
+#'       ),
+#'       target = list(
+#'         arn = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_security_profiles_for_target(
@@ -7810,6 +10735,22 @@ iot_list_security_profiles_for_target <- function(nextToken = NULL, maxResults =
 #' @param maxResults The maximum number of results to return at a time.
 #' @param nextToken A token used to get the next set of results.
 #' @param ascendingOrder Set to true to return the list of streams in ascending order.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   streams = list(
+#'     list(
+#'       streamId = "string",
+#'       streamArn = "string",
+#'       streamVersion = 123,
+#'       description = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7853,6 +10794,20 @@ iot_list_streams <- function(maxResults = NULL, nextToken = NULL, ascendingOrder
 #' previous response; otherwise **null** to receive the first set of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -7892,6 +10847,17 @@ iot_list_tags_for_resource <- function(resourceArn, nextToken = NULL) {
 #' @param policyName &#91;required&#93; The policy name.
 #' @param marker A marker used to get the next set of results.
 #' @param pageSize The maximum number of results to return at one time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   targets = list(
+#'     "string"
+#'   ),
+#'   nextMarker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7936,6 +10902,19 @@ iot_list_targets_for_policy <- function(policyName, marker = NULL, pageSize = NU
 #' @param securityProfileName &#91;required&#93; The security profile.
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   securityProfileTargets = list(
+#'     list(
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7985,6 +10964,20 @@ iot_list_targets_for_security_profile <- function(securityProfileName, nextToken
 #' prefix.
 #' @param recursive If true, return child groups as well.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   thingGroups = list(
+#'     list(
+#'       groupName = "string",
+#'       groupArn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_thing_groups(
@@ -8029,6 +11022,20 @@ iot_list_thing_groups <- function(nextToken = NULL, maxResults = NULL, parentGro
 #' previous response; otherwise **null** to receive the first set of
 #' results.
 #' @param maxResults The maximum number of results to return at one time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   thingGroups = list(
+#'     list(
+#'       groupName = "string",
+#'       groupArn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8075,6 +11082,17 @@ iot_list_thing_groups_for_thing <- function(thingName, nextToken = NULL, maxResu
 #' @param maxResults The maximum number of results to return in this operation.
 #' @param thingName &#91;required&#93; The name of the thing.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   principals = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_thing_principals(
@@ -8120,6 +11138,18 @@ iot_list_thing_principals <- function(nextToken = NULL, maxResults = NULL, thing
 #' results.
 #' @param maxResults The maximum number of results to return per request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceLinks = list(
+#'     "string"
+#'   ),
+#'   reportType = "ERRORS"|"RESULTS",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_thing_registration_task_reports(
@@ -8164,6 +11194,17 @@ iot_list_thing_registration_task_reports <- function(taskId, reportType, nextTok
 #' @param maxResults The maximum number of results to return at one time.
 #' @param status The status of the bulk thing provisioning task.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskIds = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_thing_registration_tasks(
@@ -8206,6 +11247,35 @@ iot_list_thing_registration_tasks <- function(nextToken = NULL, maxResults = NUL
 #' results.
 #' @param maxResults The maximum number of results to return in this operation.
 #' @param thingTypeName The name of the thing type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   thingTypes = list(
+#'     list(
+#'       thingTypeName = "string",
+#'       thingTypeArn = "string",
+#'       thingTypeProperties = list(
+#'         thingTypeDescription = "string",
+#'         searchableAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       thingTypeMetadata = list(
+#'         deprecated = TRUE|FALSE,
+#'         deprecationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         creationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8262,6 +11332,25 @@ iot_list_thing_types <- function(nextToken = NULL, maxResults = NULL, thingTypeN
 #' @param attributeValue The attribute value used to search for things.
 #' @param thingTypeName The name of the thing type used to search for things.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   things = list(
+#'     list(
+#'       thingName = "string",
+#'       thingTypeName = "string",
+#'       thingArn = "string",
+#'       attributes = list(
+#'         "string"
+#'       ),
+#'       version = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_things(
@@ -8307,6 +11396,17 @@ iot_list_things <- function(nextToken = NULL, maxResults = NULL, attributeName =
 #' previous response; otherwise **null** to receive the first set of
 #' results.
 #' @param maxResults The maximum number of results to return per request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   things = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8354,6 +11454,17 @@ iot_list_things_in_billing_group <- function(billingGroupName, nextToken = NULL,
 #' results.
 #' @param maxResults The maximum number of results to return at one time.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   things = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_things_in_thing_group(
@@ -8397,6 +11508,40 @@ iot_list_things_in_thing_group <- function(thingGroupName, recursive = NULL, nex
 #' previous response; otherwise **null** to receive the first set of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   destinationSummaries = list(
+#'     list(
+#'       arn = "string",
+#'       status = "ENABLED"|"IN_PROGRESS"|"DISABLED"|"ERROR"|"DELETING",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       statusReason = "string",
+#'       httpUrlSummary = list(
+#'         confirmationUrl = "string"
+#'       ),
+#'       vpcDestinationSummary = list(
+#'         subnetIds = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         ),
+#'         vpcId = "string",
+#'         roleArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_topic_rule_destinations(
@@ -8439,6 +11584,25 @@ iot_list_topic_rule_destinations <- function(maxResults = NULL, nextToken = NULL
 #' previous response; otherwise **null** to receive the first set of
 #' results.
 #' @param ruleDisabled Specifies whether the rule is disabled.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   rules = list(
+#'     list(
+#'       ruleArn = "string",
+#'       ruleName = "string",
+#'       topicPattern = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ruleDisabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8484,6 +11648,23 @@ iot_list_topic_rules <- function(topic = NULL, maxResults = NULL, nextToken = NU
 #' previous response; otherwise **null** to receive the first set of
 #' results.
 #' @param maxResults The maximum number of results to return at one time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   logTargetConfigurations = list(
+#'     list(
+#'       logTarget = list(
+#'         targetType = "DEFAULT"|"THING_GROUP",
+#'         targetName = "string"
+#'       ),
+#'       logLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8537,6 +11718,81 @@ iot_list_v2_logging_levels <- function(targetType = NULL, nextToken = NULL, maxR
 #' @param listSuppressedAlerts A list of all suppressed alerts.
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   violationEvents = list(
+#'     list(
+#'       violationId = "string",
+#'       thingName = "string",
+#'       securityProfileName = "string",
+#'       behavior = list(
+#'         name = "string",
+#'         metric = "string",
+#'         metricDimension = list(
+#'           dimensionName = "string",
+#'           operator = "IN"|"NOT_IN"
+#'         ),
+#'         criteria = list(
+#'           comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set"|"in-set"|"not-in-set",
+#'           value = list(
+#'             count = 123,
+#'             cidrs = list(
+#'               "string"
+#'             ),
+#'             ports = list(
+#'               123
+#'             ),
+#'             number = 123.0,
+#'             numbers = list(
+#'               123.0
+#'             ),
+#'             strings = list(
+#'               "string"
+#'             )
+#'           ),
+#'           durationSeconds = 123,
+#'           consecutiveDatapointsToAlarm = 123,
+#'           consecutiveDatapointsToClear = 123,
+#'           statisticalThreshold = list(
+#'             statistic = "string"
+#'           ),
+#'           mlDetectionConfig = list(
+#'             confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
+#'           )
+#'         ),
+#'         suppressAlerts = TRUE|FALSE
+#'       ),
+#'       metricValue = list(
+#'         count = 123,
+#'         cidrs = list(
+#'           "string"
+#'         ),
+#'         ports = list(
+#'           123
+#'         ),
+#'         number = 123.0,
+#'         numbers = list(
+#'           123.0
+#'         ),
+#'         strings = list(
+#'           "string"
+#'         )
+#'       ),
+#'       violationEventAdditionalInfo = list(
+#'         confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
+#'       ),
+#'       violationEventType = "in-alarm"|"alarm-cleared"|"alarm-invalidated",
+#'       violationEventTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8607,6 +11863,15 @@ iot_list_violation_events <- function(startTime, endTime, thingName = NULL, secu
 #' For the cli-input-json file use format: "tags":
 #' "key1=value1&key2=value2..."
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   certificateArn = "string",
+#'   certificateId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_ca_certificate(
@@ -8664,6 +11929,15 @@ iot_register_ca_certificate <- function(caCertificate, verificationCertificate, 
 #' @param setAsActive A boolean value that specifies if the certificate is set to active.
 #' @param status The status of the register certificate request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   certificateArn = "string",
+#'   certificateId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_certificate(
@@ -8704,6 +11978,15 @@ iot_register_certificate <- function(certificatePem, caCertificatePem = NULL, se
 #'
 #' @param certificatePem &#91;required&#93; The certificate data, in PEM format.
 #' @param status The status of the register certificate request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   certificateArn = "string",
+#'   certificateId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8753,6 +12036,17 @@ iot_register_certificate_without_ca <- function(certificatePem, status = NULL) {
 #' Templates](https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html)
 #' for more information.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   certificatePem = "string",
+#'   resourceArns = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_thing(
@@ -8788,7 +12082,7 @@ iot_register_thing <- function(templateBody, parameters = NULL) {
 #' @description
 #' Rejects a pending certificate transfer. After AWS IoT rejects a
 #' certificate transfer, the certificate status changes from
-#' **PENDING\\_TRANSFER** to **INACTIVE**.
+#' **PENDING_TRANSFER** to **INACTIVE**.
 #' 
 #' To check for pending certificate transfers, call
 #' [`list_certificates`][iot_list_certificates] to enumerate your
@@ -8804,6 +12098,8 @@ iot_register_thing <- function(templateBody, parameters = NULL) {
 #' @param certificateId &#91;required&#93; The ID of the certificate. (The last part of the certificate ARN
 #' contains the certificate ID.)
 #' @param rejectReason The reason the certificate transfer was rejected.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -8846,6 +12142,12 @@ iot_reject_certificate_transfer <- function(certificateId, rejectReason = NULL) 
 #' @param billingGroupArn The ARN of the billing group.
 #' @param thingName The name of the thing to be removed from the billing group.
 #' @param thingArn The ARN of the thing to be removed from the billing group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8895,6 +12197,12 @@ iot_remove_thing_from_billing_group <- function(billingGroupName = NULL, billing
 #' @param thingName The name of the thing to remove from the group.
 #' @param thingArn The ARN of the thing to remove from the group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$remove_thing_from_thing_group(
@@ -8938,6 +12246,8 @@ iot_remove_thing_from_thing_group <- function(thingGroupName = NULL, thingGroupA
 #'
 #' @param ruleName &#91;required&#93; The name of the rule.
 #' @param topicRulePayload &#91;required&#93; The rule payload.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -9326,6 +12636,45 @@ iot_replace_topic_rule <- function(ruleName, topicRulePayload) {
 #' @param maxResults The maximum number of results to return at one time.
 #' @param queryVersion The query version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   things = list(
+#'     list(
+#'       thingName = "string",
+#'       thingId = "string",
+#'       thingTypeName = "string",
+#'       thingGroupNames = list(
+#'         "string"
+#'       ),
+#'       attributes = list(
+#'         "string"
+#'       ),
+#'       shadow = "string",
+#'       connectivity = list(
+#'         connected = TRUE|FALSE,
+#'         timestamp = 123
+#'       )
+#'     )
+#'   ),
+#'   thingGroups = list(
+#'     list(
+#'       thingGroupName = "string",
+#'       thingGroupId = "string",
+#'       thingGroupDescription = "string",
+#'       attributes = list(
+#'         "string"
+#'       ),
+#'       parentGroupNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$search_index(
@@ -9367,6 +12716,15 @@ iot_search_index <- function(indexName = NULL, queryString, nextToken = NULL, ma
 #' iot_set_default_authorizer(authorizerName)
 #'
 #' @param authorizerName &#91;required&#93; The authorizer name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   authorizerName = "string",
+#'   authorizerArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9410,6 +12768,8 @@ iot_set_default_authorizer <- function(authorizerName) {
 #' @param policyName &#91;required&#93; The policy name.
 #' @param policyVersionId &#91;required&#93; The policy version ID.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_default_policy_version(
@@ -9451,6 +12811,8 @@ iot_set_default_policy_version <- function(policyName, policyVersionId) {
 #'
 #' @param loggingOptionsPayload &#91;required&#93; The logging options payload.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_logging_options(
@@ -9491,6 +12853,8 @@ iot_set_logging_options <- function(loggingOptionsPayload) {
 #'
 #' @param logTarget &#91;required&#93; The log target.
 #' @param logLevel &#91;required&#93; The log level.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -9534,6 +12898,8 @@ iot_set_v2_logging_level <- function(logTarget, logLevel) {
 #' @param roleArn The ARN of the role that allows IoT to write to Cloudwatch logs.
 #' @param defaultLogLevel The default logging level.
 #' @param disableAllLogs If true all logs are disabled. The default is false.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -9586,6 +12952,14 @@ iot_set_v2_logging_options <- function(roleArn = NULL, defaultLogLevel = NULL, d
 #' you try to start a new task with the same token as a task that already
 #' exists, an exception occurs. If you omit this value, a unique client
 #' request token is generated automatically.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9653,6 +13027,14 @@ iot_start_audit_mitigation_actions_task <- function(taskId, target, auditCheckTo
 #' exists, an exception occurs. If you omit this value, AWS SDKs will
 #' automatically generate a unique client request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_detect_mitigation_actions_task(
@@ -9716,6 +13098,14 @@ iot_start_detect_mitigation_actions_task <- function(taskId, target, actions, vi
 #' [`update_account_audit_configuration`][iot_update_account_audit_configuration]
 #' to select which checks are enabled.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_on_demand_audit_task(
@@ -9761,6 +13151,14 @@ iot_start_on_demand_audit_task <- function(targetCheckNames) {
 #' provision one device (thing).
 #' @param roleArn &#91;required&#93; The IAM role ARN that grants permission the input file.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_thing_registration_task(
@@ -9801,6 +13199,12 @@ iot_start_thing_registration_task <- function(templateBody, inputFileBucket, inp
 #'
 #' @param taskId &#91;required&#93; The bulk thing provisioning task ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_thing_registration_task(
@@ -9839,6 +13243,12 @@ iot_stop_thing_registration_task <- function(taskId) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #' @param tags &#91;required&#93; The new or modified tags for the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9898,6 +13308,53 @@ iot_tag_resource <- function(resourceArn, tags) {
 #' treated as if they are attached to the principal being authorized.
 #' @param policyNamesToSkip When testing custom authorization, the policies specified here are
 #' treated as if they are not attached to the principal being authorized.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   authResults = list(
+#'     list(
+#'       authInfo = list(
+#'         actionType = "PUBLISH"|"SUBSCRIBE"|"RECEIVE"|"CONNECT",
+#'         resources = list(
+#'           "string"
+#'         )
+#'       ),
+#'       allowed = list(
+#'         policies = list(
+#'           list(
+#'             policyName = "string",
+#'             policyArn = "string"
+#'           )
+#'         )
+#'       ),
+#'       denied = list(
+#'         implicitDeny = list(
+#'           policies = list(
+#'             list(
+#'               policyName = "string",
+#'               policyArn = "string"
+#'             )
+#'           )
+#'         ),
+#'         explicitDeny = list(
+#'           policies = list(
+#'             list(
+#'               policyName = "string",
+#'               policyArn = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       authDecision = "ALLOWED"|"EXPLICIT_DENY"|"IMPLICIT_DENY",
+#'       missingContextValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9961,6 +13418,20 @@ iot_test_authorization <- function(principal = NULL, cognitoIdentityPoolId = NUL
 #' @param httpContext Specifies a test HTTP authorization request.
 #' @param mqttContext Specifies a test MQTT authorization request.
 #' @param tlsContext Specifies a test TLS authorization request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   isAuthenticated = TRUE|FALSE,
+#'   principalId = "string",
+#'   policyDocuments = list(
+#'     "string"
+#'   ),
+#'   refreshAfterInSeconds = 123,
+#'   disconnectAfterInSeconds = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10030,6 +13501,14 @@ iot_test_invoke_authorizer <- function(authorizerName, token = NULL, tokenSignat
 #' @param targetAwsAccount &#91;required&#93; The AWS account.
 #' @param transferMessage The transfer message.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   transferredCertificateArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$transfer_certificate(
@@ -10069,6 +13548,12 @@ iot_transfer_certificate <- function(certificateId, targetAwsAccount, transferMe
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #' @param tagKeys &#91;required&#93; A list of the keys of the tags to be removed from the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10134,6 +13619,12 @@ iot_untag_resource <- function(resourceArn, tagKeys) {
 #' [`update_account_audit_configuration`][iot_update_account_audit_configuration],
 #' this parameter is required and must specify at least one enabled check.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_account_audit_configuration(
@@ -10188,6 +13679,12 @@ iot_update_account_audit_configuration <- function(roleArn = NULL, auditNotifica
 #' suppression to adhere to.
 #' @param suppressIndefinitely Indicates whether a suppression should exist indefinitely or not.
 #' @param description The description of the audit suppression.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10249,6 +13746,15 @@ iot_update_audit_suppression <- function(checkName, resourceIdentifier, expirati
 #' @param tokenSigningPublicKeys The public keys used to verify the token signature.
 #' @param status The status of the update authorizer request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   authorizerName = "string",
+#'   authorizerArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_authorizer(
@@ -10298,6 +13804,14 @@ iot_update_authorizer <- function(authorizerName, authorizerFunctionArn = NULL, 
 #' [`update_billing_group`][iot_update_billing_group] request is rejected
 #' with a `VersionConflictException`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   version = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_billing_group(
@@ -10341,12 +13855,14 @@ iot_update_billing_group <- function(billingGroupName, billingGroupProperties, e
 #' @param certificateId &#91;required&#93; The CA certificate identifier.
 #' @param newStatus The updated status of the CA certificate.
 #' 
-#' **Note:** The status value REGISTER\\_INACTIVE is deprecated and should
+#' **Note:** The status value REGISTER_INACTIVE is deprecated and should
 #' not be used.
 #' @param newAutoRegistrationStatus The new value for the auto registration status. Valid values are:
 #' "ENABLE" or "DISABLE".
 #' @param registrationConfig Information about the registration configuration.
 #' @param removeAutoRegistration If true, removes auto registration.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -10403,13 +13919,15 @@ iot_update_ca_certificate <- function(certificateId, newStatus = NULL, newAutoRe
 #' contains the certificate ID.)
 #' @param newStatus &#91;required&#93; The new status.
 #' 
-#' **Note:** Setting the status to PENDING\\_TRANSFER or PENDING\\_ACTIVATION
-#' will result in an exception being thrown. PENDING\\_TRANSFER and
-#' PENDING\\_ACTIVATION are statuses used internally by AWS IoT. They are
+#' **Note:** Setting the status to PENDING_TRANSFER or PENDING_ACTIVATION
+#' will result in an exception being thrown. PENDING_TRANSFER and
+#' PENDING_ACTIVATION are statuses used internally by AWS IoT. They are
 #' not intended for developer use.
 #' 
-#' **Note:** The status value REGISTER\\_INACTIVE is deprecated and should
+#' **Note:** The status value REGISTER_INACTIVE is deprecated and should
 #' not be used.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -10452,6 +13970,23 @@ iot_update_certificate <- function(certificateId, newStatus) {
 #' it doesn't have to be unique. Don't use this name as the metric
 #' identifier in the device metric report. Can be updated.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   metricName = "string",
+#'   metricArn = "string",
+#'   metricType = "string-list"|"ip-address-list"|"number-list"|"number",
+#'   displayName = "string",
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_custom_metric(
@@ -10493,7 +14028,26 @@ iot_update_custom_metric <- function(metricName, displayName) {
 #' the type and value to make it easy to remember what it does.
 #' @param stringValues &#91;required&#93; Specifies the value or list of values for the dimension. For
 #' `TOPIC_FILTER` dimensions, this is a pattern used to match the MQTT
-#' topic (for example, "admin/\\#").
+#' topic (for example, "admin/\#").
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   arn = "string",
+#'   type = "TOPIC_FILTER",
+#'   stringValues = list(
+#'     "string"
+#'   ),
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10543,6 +14097,15 @@ iot_update_dimension <- function(name, stringValues) {
 #' @param domainConfigurationStatus The status to which the domain configuration should be updated.
 #' @param removeAuthorizerConfig Removes the authorization configuration from a domain.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainConfigurationName = "string",
+#'   domainConfigurationArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_domain_configuration(
@@ -10590,12 +14153,20 @@ iot_update_domain_configuration <- function(domainConfigurationName, authorizerC
 #' @param expectedVersion The expected version of the dynamic thing group to update.
 #' @param indexName The dynamic thing group index to update.
 #' 
-#' Currently one index is supported: 'AWS\\_Things'.
+#' Currently one index is supported: 'AWS_Things'.
 #' @param queryString The dynamic thing group search query string to update.
 #' @param queryVersion The dynamic thing group query version to update.
 #' 
 #' Currently one query version is supported: "2017-09-30". If not
 #' specified, the query version defaults to this value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   version = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10647,6 +14218,12 @@ iot_update_dynamic_thing_group <- function(thingGroupName, thingGroupProperties,
 #'
 #' @param eventConfigurations The new event configuration values.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_event_configurations(
@@ -10689,6 +14266,12 @@ iot_update_event_configurations <- function(eventConfigurations = NULL) {
 #'
 #' @param thingIndexingConfiguration Thing indexing configuration.
 #' @param thingGroupIndexingConfiguration Thing group indexing configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10776,6 +14359,8 @@ iot_update_indexing_configuration <- function(thingIndexingConfiguration = NULL,
 #' 
 #' The `namespaceId` feature is in public preview.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_job(
@@ -10848,6 +14433,15 @@ iot_update_job <- function(jobId, description = NULL, presignedUrlConfig = NULL,
 #' @param roleArn The ARN of the IAM role that is used to apply the mitigation action.
 #' @param actionParams Defines the type of action and the parameters for that action.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   actionArn = "string",
+#'   actionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_mitigation_action(
@@ -10919,6 +14513,12 @@ iot_update_mitigation_action <- function(actionName, roleArn = NULL, actionParam
 #' @param preProvisioningHook Updates the pre-provisioning hook template.
 #' @param removePreProvisioningHook Removes pre-provisioning hook template.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_provisioning_template(
@@ -10966,6 +14566,15 @@ iot_update_provisioning_template <- function(templateName, description = NULL, e
 #' @param roleAlias &#91;required&#93; The role alias to update.
 #' @param roleArn The role ARN.
 #' @param credentialDurationSeconds The number of seconds the credential will be valid.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   roleAlias = "string",
+#'   roleAliasArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11026,6 +14635,14 @@ iot_update_role_alias <- function(roleAlias, roleArn = NULL, credentialDurationS
 #' [`update_account_audit_configuration`][iot_update_account_audit_configuration]
 #' to select which checks are enabled.)
 #' @param scheduledAuditName &#91;required&#93; The name of the scheduled audit. (Max. 128 chars)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scheduledAuditArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11100,6 +14717,80 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #' whenever the security profile is updated. If you specify a value that is
 #' different from the actual version, a `VersionConflictException` is
 #' thrown.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   securityProfileName = "string",
+#'   securityProfileArn = "string",
+#'   securityProfileDescription = "string",
+#'   behaviors = list(
+#'     list(
+#'       name = "string",
+#'       metric = "string",
+#'       metricDimension = list(
+#'         dimensionName = "string",
+#'         operator = "IN"|"NOT_IN"
+#'       ),
+#'       criteria = list(
+#'         comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set"|"in-set"|"not-in-set",
+#'         value = list(
+#'           count = 123,
+#'           cidrs = list(
+#'             "string"
+#'           ),
+#'           ports = list(
+#'             123
+#'           ),
+#'           number = 123.0,
+#'           numbers = list(
+#'             123.0
+#'           ),
+#'           strings = list(
+#'             "string"
+#'           )
+#'         ),
+#'         durationSeconds = 123,
+#'         consecutiveDatapointsToAlarm = 123,
+#'         consecutiveDatapointsToClear = 123,
+#'         statisticalThreshold = list(
+#'           statistic = "string"
+#'         ),
+#'         mlDetectionConfig = list(
+#'           confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
+#'         )
+#'       ),
+#'       suppressAlerts = TRUE|FALSE
+#'     )
+#'   ),
+#'   alertTargets = list(
+#'     list(
+#'       alertTargetArn = "string",
+#'       roleArn = "string"
+#'     )
+#'   ),
+#'   additionalMetricsToRetain = list(
+#'     "string"
+#'   ),
+#'   additionalMetricsToRetainV2 = list(
+#'     list(
+#'       metric = "string",
+#'       metricDimension = list(
+#'         dimensionName = "string",
+#'         operator = "IN"|"NOT_IN"
+#'       )
+#'     )
+#'   ),
+#'   version = 123,
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11205,6 +14896,17 @@ iot_update_security_profile <- function(securityProfileName, securityProfileDesc
 #' @param roleArn An IAM role that allows the IoT service principal assumes to access your
 #' S3 files.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   streamId = "string",
+#'   streamArn = "string",
+#'   description = "string",
+#'   streamVersion = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_stream(
@@ -11261,7 +14963,7 @@ iot_update_stream <- function(streamId, description = NULL, files = NULL, roleAr
 #' @param attributePayload A list of thing attributes, a JSON string containing name-value pairs.
 #' For example:
 #' 
-#' `\{\"attributes\":\{\"name1\":\"value2\"\}\}`
+#' `{\"attributes\":{\"name1\":\"value2\"}}`
 #' 
 #' This data is used to add new attributes or update existing attributes.
 #' @param expectedVersion The expected version of the thing record in the registry. If the version
@@ -11270,6 +14972,12 @@ iot_update_stream <- function(streamId, description = NULL, files = NULL, roleAr
 #' is rejected with a `VersionConflictException`.
 #' @param removeThingType Remove a thing type association. If **true**, the association is
 #' removed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11320,6 +15028,14 @@ iot_update_thing <- function(thingName, thingTypeName = NULL, attributePayload =
 #' @param thingGroupProperties &#91;required&#93; The thing group properties.
 #' @param expectedVersion The expected version of the thing group. If this does not match the
 #' version of the thing group being updated, the update will fail.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   version = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11375,6 +15091,12 @@ iot_update_thing_group <- function(thingGroupName, thingGroupProperties, expecte
 #' of those groups are dynamic thing groups, adding a thing to a static
 #' group removes the thing from the last dynamic group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_thing_groups_for_thing(
@@ -11421,7 +15143,7 @@ iot_update_thing_groups_for_thing <- function(thingName = NULL, thingGroupsToAdd
 #' @param arn &#91;required&#93; The ARN of the topic rule destination.
 #' @param status &#91;required&#93; The status of the topic rule destination. Valid values are:
 #' 
-#' ### IN\\_PROGRESS
+#' ### IN_PROGRESS
 #' 
 #' A topic rule destination was created but has not been confirmed. You can
 #' set `status` to `IN_PROGRESS` by calling
@@ -11455,6 +15177,12 @@ iot_update_thing_groups_for_thing <- function(thingName = NULL, thingGroupsToAdd
 #' [`update_topic_rule_destination`][iot_update_topic_rule_destination]
 #' causes a new confirmation challenge to be sent to your confirmation
 #' endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11494,6 +15222,19 @@ iot_update_topic_rule_destination <- function(arn, status) {
 #'
 #' @param behaviors &#91;required&#93; Specifies the behaviors that, when violated by a device (thing), cause
 #' an alert.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   valid = TRUE|FALSE,
+#'   validationErrors = list(
+#'     list(
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

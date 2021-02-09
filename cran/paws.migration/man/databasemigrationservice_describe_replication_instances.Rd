@@ -27,6 +27,71 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ReplicationInstances = list(
+    list(
+      ReplicationInstanceIdentifier = "string",
+      ReplicationInstanceClass = "string",
+      ReplicationInstanceStatus = "string",
+      AllocatedStorage = 123,
+      InstanceCreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      VpcSecurityGroups = list(
+        list(
+          VpcSecurityGroupId = "string",
+          Status = "string"
+        )
+      ),
+      AvailabilityZone = "string",
+      ReplicationSubnetGroup = list(
+        ReplicationSubnetGroupIdentifier = "string",
+        ReplicationSubnetGroupDescription = "string",
+        VpcId = "string",
+        SubnetGroupStatus = "string",
+        Subnets = list(
+          list(
+            SubnetIdentifier = "string",
+            SubnetAvailabilityZone = list(
+              Name = "string"
+            ),
+            SubnetStatus = "string"
+          )
+        )
+      ),
+      PreferredMaintenanceWindow = "string",
+      PendingModifiedValues = list(
+        ReplicationInstanceClass = "string",
+        AllocatedStorage = 123,
+        MultiAZ = TRUE|FALSE,
+        EngineVersion = "string"
+      ),
+      MultiAZ = TRUE|FALSE,
+      EngineVersion = "string",
+      AutoMinorVersionUpgrade = TRUE|FALSE,
+      KmsKeyId = "string",
+      ReplicationInstanceArn = "string",
+      ReplicationInstancePublicIpAddress = "string",
+      ReplicationInstancePrivateIpAddress = "string",
+      ReplicationInstancePublicIpAddresses = list(
+        "string"
+      ),
+      ReplicationInstancePrivateIpAddresses = list(
+        "string"
+      ),
+      PubliclyAccessible = TRUE|FALSE,
+      SecondaryAvailabilityZone = "string",
+      FreeUntil = as.POSIXct(
+        "2015-01-01"
+      ),
+      DnsNameServers = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about replication instances for your account in the
 current region.

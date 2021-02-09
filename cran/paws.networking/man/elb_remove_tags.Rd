@@ -12,6 +12,10 @@ balancer name.}
 
 \item{Tags}{[required] The list of tag keys to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes one or more tags from the specified load balancer.
 }

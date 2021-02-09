@@ -18,6 +18,12 @@ personalize_update_campaign(campaignArn, solutionVersionArn,
 
 \item{campaignConfig}{The configuration details of a campaign.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  campaignArn = "string"
+)
+}
+}
 \description{
 Updates a campaign by either deploying a new solution or changing the
 value of the campaign's \code{minProvisionedTPS} parameter.

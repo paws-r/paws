@@ -28,6 +28,29 @@ NULL
 #' @param evaluationMethod Information about the order in which events are evaluated and how
 #' actions are executed.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   detectorModelConfiguration = list(
+#'     detectorModelName = "string",
+#'     detectorModelVersion = "string",
+#'     detectorModelDescription = "string",
+#'     detectorModelArn = "string",
+#'     roleArn = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "ACTIVE"|"ACTIVATING"|"INACTIVE"|"DEPRECATED"|"DRAFT"|"PAUSED"|"FAILED",
+#'     key = "string",
+#'     evaluationMethod = "BATCH"|"SERIAL"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_detector_model(
@@ -534,6 +557,25 @@ iotevents_create_detector_model <- function(detectorModelName, detectorModelDefi
 #' @param inputDefinition &#91;required&#93; The definition of the input.
 #' @param tags Metadata that can be used to manage the input.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   inputConfiguration = list(
+#'     inputName = "string",
+#'     inputDescription = "string",
+#'     inputArn = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_input(
@@ -586,6 +628,12 @@ iotevents_create_input <- function(inputName, inputDescription = NULL, inputDefi
 #'
 #' @param detectorModelName &#91;required&#93; The name of the detector model to be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_detector_model(
@@ -622,6 +670,12 @@ iotevents_delete_detector_model <- function(detectorModelName) {
 #' iotevents_delete_input(inputName)
 #'
 #' @param inputName &#91;required&#93; The name of the input to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -663,6 +717,486 @@ iotevents_delete_input <- function(inputName) {
 #' @param detectorModelName &#91;required&#93; The name of the detector model.
 #' @param detectorModelVersion The version of the detector model.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   detectorModel = list(
+#'     detectorModelDefinition = list(
+#'       states = list(
+#'         list(
+#'           stateName = "string",
+#'           onInput = list(
+#'             events = list(
+#'               list(
+#'                 eventName = "string",
+#'                 condition = "string",
+#'                 actions = list(
+#'                   list(
+#'                     setVariable = list(
+#'                       variableName = "string",
+#'                       value = "string"
+#'                     ),
+#'                     sns = list(
+#'                       targetArn = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     iotTopicPublish = list(
+#'                       mqttTopic = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     setTimer = list(
+#'                       timerName = "string",
+#'                       seconds = 123,
+#'                       durationExpression = "string"
+#'                     ),
+#'                     clearTimer = list(
+#'                       timerName = "string"
+#'                     ),
+#'                     resetTimer = list(
+#'                       timerName = "string"
+#'                     ),
+#'                     lambda = list(
+#'                       functionArn = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     iotEvents = list(
+#'                       inputName = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     sqs = list(
+#'                       queueUrl = "string",
+#'                       useBase64 = TRUE|FALSE,
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     firehose = list(
+#'                       deliveryStreamName = "string",
+#'                       separator = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     dynamoDB = list(
+#'                       hashKeyType = "string",
+#'                       hashKeyField = "string",
+#'                       hashKeyValue = "string",
+#'                       rangeKeyType = "string",
+#'                       rangeKeyField = "string",
+#'                       rangeKeyValue = "string",
+#'                       operation = "string",
+#'                       payloadField = "string",
+#'                       tableName = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     dynamoDBv2 = list(
+#'                       tableName = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     iotSiteWise = list(
+#'                       entryId = "string",
+#'                       assetId = "string",
+#'                       propertyId = "string",
+#'                       propertyAlias = "string",
+#'                       propertyValue = list(
+#'                         value = list(
+#'                           stringValue = "string",
+#'                           integerValue = "string",
+#'                           doubleValue = "string",
+#'                           booleanValue = "string"
+#'                         ),
+#'                         timestamp = list(
+#'                           timeInSeconds = "string",
+#'                           offsetInNanos = "string"
+#'                         ),
+#'                         quality = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             transitionEvents = list(
+#'               list(
+#'                 eventName = "string",
+#'                 condition = "string",
+#'                 actions = list(
+#'                   list(
+#'                     setVariable = list(
+#'                       variableName = "string",
+#'                       value = "string"
+#'                     ),
+#'                     sns = list(
+#'                       targetArn = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     iotTopicPublish = list(
+#'                       mqttTopic = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     setTimer = list(
+#'                       timerName = "string",
+#'                       seconds = 123,
+#'                       durationExpression = "string"
+#'                     ),
+#'                     clearTimer = list(
+#'                       timerName = "string"
+#'                     ),
+#'                     resetTimer = list(
+#'                       timerName = "string"
+#'                     ),
+#'                     lambda = list(
+#'                       functionArn = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     iotEvents = list(
+#'                       inputName = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     sqs = list(
+#'                       queueUrl = "string",
+#'                       useBase64 = TRUE|FALSE,
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     firehose = list(
+#'                       deliveryStreamName = "string",
+#'                       separator = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     dynamoDB = list(
+#'                       hashKeyType = "string",
+#'                       hashKeyField = "string",
+#'                       hashKeyValue = "string",
+#'                       rangeKeyType = "string",
+#'                       rangeKeyField = "string",
+#'                       rangeKeyValue = "string",
+#'                       operation = "string",
+#'                       payloadField = "string",
+#'                       tableName = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     dynamoDBv2 = list(
+#'                       tableName = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     iotSiteWise = list(
+#'                       entryId = "string",
+#'                       assetId = "string",
+#'                       propertyId = "string",
+#'                       propertyAlias = "string",
+#'                       propertyValue = list(
+#'                         value = list(
+#'                           stringValue = "string",
+#'                           integerValue = "string",
+#'                           doubleValue = "string",
+#'                           booleanValue = "string"
+#'                         ),
+#'                         timestamp = list(
+#'                           timeInSeconds = "string",
+#'                           offsetInNanos = "string"
+#'                         ),
+#'                         quality = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 nextState = "string"
+#'               )
+#'             )
+#'           ),
+#'           onEnter = list(
+#'             events = list(
+#'               list(
+#'                 eventName = "string",
+#'                 condition = "string",
+#'                 actions = list(
+#'                   list(
+#'                     setVariable = list(
+#'                       variableName = "string",
+#'                       value = "string"
+#'                     ),
+#'                     sns = list(
+#'                       targetArn = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     iotTopicPublish = list(
+#'                       mqttTopic = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     setTimer = list(
+#'                       timerName = "string",
+#'                       seconds = 123,
+#'                       durationExpression = "string"
+#'                     ),
+#'                     clearTimer = list(
+#'                       timerName = "string"
+#'                     ),
+#'                     resetTimer = list(
+#'                       timerName = "string"
+#'                     ),
+#'                     lambda = list(
+#'                       functionArn = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     iotEvents = list(
+#'                       inputName = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     sqs = list(
+#'                       queueUrl = "string",
+#'                       useBase64 = TRUE|FALSE,
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     firehose = list(
+#'                       deliveryStreamName = "string",
+#'                       separator = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     dynamoDB = list(
+#'                       hashKeyType = "string",
+#'                       hashKeyField = "string",
+#'                       hashKeyValue = "string",
+#'                       rangeKeyType = "string",
+#'                       rangeKeyField = "string",
+#'                       rangeKeyValue = "string",
+#'                       operation = "string",
+#'                       payloadField = "string",
+#'                       tableName = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     dynamoDBv2 = list(
+#'                       tableName = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     iotSiteWise = list(
+#'                       entryId = "string",
+#'                       assetId = "string",
+#'                       propertyId = "string",
+#'                       propertyAlias = "string",
+#'                       propertyValue = list(
+#'                         value = list(
+#'                           stringValue = "string",
+#'                           integerValue = "string",
+#'                           doubleValue = "string",
+#'                           booleanValue = "string"
+#'                         ),
+#'                         timestamp = list(
+#'                           timeInSeconds = "string",
+#'                           offsetInNanos = "string"
+#'                         ),
+#'                         quality = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           onExit = list(
+#'             events = list(
+#'               list(
+#'                 eventName = "string",
+#'                 condition = "string",
+#'                 actions = list(
+#'                   list(
+#'                     setVariable = list(
+#'                       variableName = "string",
+#'                       value = "string"
+#'                     ),
+#'                     sns = list(
+#'                       targetArn = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     iotTopicPublish = list(
+#'                       mqttTopic = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     setTimer = list(
+#'                       timerName = "string",
+#'                       seconds = 123,
+#'                       durationExpression = "string"
+#'                     ),
+#'                     clearTimer = list(
+#'                       timerName = "string"
+#'                     ),
+#'                     resetTimer = list(
+#'                       timerName = "string"
+#'                     ),
+#'                     lambda = list(
+#'                       functionArn = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     iotEvents = list(
+#'                       inputName = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     sqs = list(
+#'                       queueUrl = "string",
+#'                       useBase64 = TRUE|FALSE,
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     firehose = list(
+#'                       deliveryStreamName = "string",
+#'                       separator = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     dynamoDB = list(
+#'                       hashKeyType = "string",
+#'                       hashKeyField = "string",
+#'                       hashKeyValue = "string",
+#'                       rangeKeyType = "string",
+#'                       rangeKeyField = "string",
+#'                       rangeKeyValue = "string",
+#'                       operation = "string",
+#'                       payloadField = "string",
+#'                       tableName = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     dynamoDBv2 = list(
+#'                       tableName = "string",
+#'                       payload = list(
+#'                         contentExpression = "string",
+#'                         type = "STRING"|"JSON"
+#'                       )
+#'                     ),
+#'                     iotSiteWise = list(
+#'                       entryId = "string",
+#'                       assetId = "string",
+#'                       propertyId = "string",
+#'                       propertyAlias = "string",
+#'                       propertyValue = list(
+#'                         value = list(
+#'                           stringValue = "string",
+#'                           integerValue = "string",
+#'                           doubleValue = "string",
+#'                           booleanValue = "string"
+#'                         ),
+#'                         timestamp = list(
+#'                           timeInSeconds = "string",
+#'                           offsetInNanos = "string"
+#'                         ),
+#'                         quality = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       initialStateName = "string"
+#'     ),
+#'     detectorModelConfiguration = list(
+#'       detectorModelName = "string",
+#'       detectorModelVersion = "string",
+#'       detectorModelDescription = "string",
+#'       detectorModelArn = "string",
+#'       roleArn = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "ACTIVE"|"ACTIVATING"|"INACTIVE"|"DEPRECATED"|"DRAFT"|"PAUSED"|"FAILED",
+#'       key = "string",
+#'       evaluationMethod = "BATCH"|"SERIAL"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_detector_model(
@@ -701,6 +1235,34 @@ iotevents_describe_detector_model <- function(detectorModelName, detectorModelVe
 #'
 #' @param inputName &#91;required&#93; The name of the input.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   input = list(
+#'     inputConfiguration = list(
+#'       inputName = "string",
+#'       inputDescription = "string",
+#'       inputArn = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"
+#'     ),
+#'     inputDefinition = list(
+#'       attributes = list(
+#'         list(
+#'           jsonPath = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_input(
@@ -735,6 +1297,24 @@ iotevents_describe_input <- function(inputName) {
 #'
 #' @usage
 #' iotevents_describe_logging_options()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   loggingOptions = list(
+#'     roleArn = "string",
+#'     level = "ERROR"|"INFO"|"DEBUG",
+#'     enabled = TRUE|FALSE,
+#'     detectorDebugOptions = list(
+#'       list(
+#'         detectorModelName = "string",
+#'         keyValue = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -774,6 +1354,30 @@ iotevents_describe_logging_options <- function() {
 #' @param detectorModelName &#91;required&#93; The name of the detector model whose versions are returned.
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   detectorModelVersionSummaries = list(
+#'     list(
+#'       detectorModelName = "string",
+#'       detectorModelVersion = "string",
+#'       detectorModelArn = "string",
+#'       roleArn = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "ACTIVE"|"ACTIVATING"|"INACTIVE"|"DEPRECATED"|"DRAFT"|"PAUSED"|"FAILED",
+#'       evaluationMethod = "BATCH"|"SERIAL"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -816,6 +1420,23 @@ iotevents_list_detector_model_versions <- function(detectorModelName, nextToken 
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   detectorModelSummaries = list(
+#'     list(
+#'       detectorModelName = "string",
+#'       detectorModelDescription = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_detector_models(
@@ -855,6 +1476,28 @@ iotevents_list_detector_models <- function(nextToken = NULL, maxResults = NULL) 
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   inputSummaries = list(
+#'     list(
+#'       inputName = "string",
+#'       inputDescription = "string",
+#'       inputArn = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_inputs(
@@ -892,6 +1535,19 @@ iotevents_list_inputs <- function(nextToken = NULL, maxResults = NULL) {
 #' iotevents_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -935,6 +1591,8 @@ iotevents_list_tags_for_resource <- function(resourceArn) {
 #' iotevents_put_logging_options(loggingOptions)
 #'
 #' @param loggingOptions &#91;required&#93; The new values of the AWS IoT Events logging options.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -985,6 +1643,12 @@ iotevents_put_logging_options <- function(loggingOptions) {
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #' @param tags &#91;required&#93; The new or modified tags for the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1028,6 +1692,12 @@ iotevents_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #' @param tagKeys &#91;required&#93; A list of the keys of the tags to be removed from the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1077,6 +1747,29 @@ iotevents_untag_resource <- function(resourceArn, tagKeys) {
 #' its operations.
 #' @param evaluationMethod Information about the order in which events are evaluated and how
 #' actions are executed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   detectorModelConfiguration = list(
+#'     detectorModelName = "string",
+#'     detectorModelVersion = "string",
+#'     detectorModelDescription = "string",
+#'     detectorModelArn = "string",
+#'     roleArn = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "ACTIVE"|"ACTIVATING"|"INACTIVE"|"DEPRECATED"|"DRAFT"|"PAUSED"|"FAILED",
+#'     key = "string",
+#'     evaluationMethod = "BATCH"|"SERIAL"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1574,6 +2267,25 @@ iotevents_update_detector_model <- function(detectorModelName, detectorModelDefi
 #' @param inputName &#91;required&#93; The name of the input you want to update.
 #' @param inputDescription A brief description of the input.
 #' @param inputDefinition &#91;required&#93; The definition of the input.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   inputConfiguration = list(
+#'     inputName = "string",
+#'     inputDescription = "string",
+#'     inputArn = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

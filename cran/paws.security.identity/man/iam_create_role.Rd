@@ -17,8 +17,8 @@ slash (/).
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
-ASCII character from the ! (\code{U+0021}) through the DEL character
-(\verb{U+007F}), including most punctuation characters, digits, and upper and
+ASCII character from the ! (\verb{\\u0021}) through the DEL character
+(\verb{\\u007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{RoleName}{[required] The name of the role to create.
@@ -40,11 +40,11 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
+(\verb{\\u0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+character set (through \verb{\\u00FF})
+\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
+carriage return (\verb{\\u000D})
 }
 
 Upon success, the response includes the same trust policy in JSON
@@ -79,6 +79,39 @@ in the \emph{IAM User Guide}.
 If any one of the tags is invalid or if you exceed the allowed number of
 tags per role, then the entire request fails and the role is not
 created.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Role = list(
+    Path = "string",
+    RoleName = "string",
+    RoleId = "string",
+    Arn = "string",
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    AssumeRolePolicyDocument = "string",
+    Description = "string",
+    MaxSessionDuration = 123,
+    PermissionsBoundary = list(
+      PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+      PermissionsBoundaryArn = "string"
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    RoleLastUsed = list(
+      LastUsedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Region = "string"
+    )
+  )
+)
+}
 }
 \description{
 Creates a new role for your AWS account. For more information about

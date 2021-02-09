@@ -14,6 +14,12 @@ ssm_update_ops_metadata(OpsMetadataArn, MetadataToUpdate, KeysToDelete)
 
 \item{KeysToDelete}{The metadata keys to delete from the OpsMetadata object.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OpsMetadataArn = "string"
+)
+}
+}
 \description{
 Systems Manager calls this API action when you edit OpsMetadata in
 Application Manager.

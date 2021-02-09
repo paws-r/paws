@@ -26,6 +26,15 @@ If there are more objects to return, Shield Advanced returns a value in
 \code{NextToken} that you can use in your next request, to get the next batch
 of objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceArns = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the resources that are included in the protection group.
 }

@@ -11,6 +11,20 @@ xray_get_group(GroupName, GroupARN)
 
 \item{GroupARN}{The ARN of the group that was generated on creation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Group = list(
+    GroupName = "string",
+    GroupARN = "string",
+    FilterExpression = "string",
+    InsightsConfiguration = list(
+      InsightsEnabled = TRUE|FALSE,
+      NotificationsEnabled = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Retrieves group resource details.
 }

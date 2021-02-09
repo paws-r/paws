@@ -22,6 +22,117 @@ lowercase.}
 
 \item{MaxResults}{The maximum number of table versions to return in one response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TableVersions = list(
+    list(
+      Table = list(
+        Name = "string",
+        DatabaseName = "string",
+        Description = "string",
+        Owner = "string",
+        CreateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        UpdateTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastAccessTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        LastAnalyzedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        Retention = 123,
+        StorageDescriptor = list(
+          Columns = list(
+            list(
+              Name = "string",
+              Type = "string",
+              Comment = "string",
+              Parameters = list(
+                "string"
+              )
+            )
+          ),
+          Location = "string",
+          InputFormat = "string",
+          OutputFormat = "string",
+          Compressed = TRUE|FALSE,
+          NumberOfBuckets = 123,
+          SerdeInfo = list(
+            Name = "string",
+            SerializationLibrary = "string",
+            Parameters = list(
+              "string"
+            )
+          ),
+          BucketColumns = list(
+            "string"
+          ),
+          SortColumns = list(
+            list(
+              Column = "string",
+              SortOrder = 123
+            )
+          ),
+          Parameters = list(
+            "string"
+          ),
+          SkewedInfo = list(
+            SkewedColumnNames = list(
+              "string"
+            ),
+            SkewedColumnValues = list(
+              "string"
+            ),
+            SkewedColumnValueLocationMaps = list(
+              "string"
+            )
+          ),
+          StoredAsSubDirectories = TRUE|FALSE,
+          SchemaReference = list(
+            SchemaId = list(
+              SchemaArn = "string",
+              SchemaName = "string",
+              RegistryName = "string"
+            ),
+            SchemaVersionId = "string",
+            SchemaVersionNumber = 123
+          )
+        ),
+        PartitionKeys = list(
+          list(
+            Name = "string",
+            Type = "string",
+            Comment = "string",
+            Parameters = list(
+              "string"
+            )
+          )
+        ),
+        ViewOriginalText = "string",
+        ViewExpandedText = "string",
+        TableType = "string",
+        Parameters = list(
+          "string"
+        ),
+        CreatedBy = "string",
+        IsRegisteredWithLakeFormation = TRUE|FALSE,
+        TargetTable = list(
+          CatalogId = "string",
+          DatabaseName = "string",
+          Name = "string"
+        ),
+        CatalogId = "string"
+      ),
+      VersionId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list of strings that identify available versions of a
 specified table.

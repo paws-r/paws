@@ -10,6 +10,10 @@ cloudfront_delete_monitoring_subscription(DistributionId)
 \arguments{
 \item{DistributionId}{[required] The ID of the distribution that you are disabling metrics for.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disables additional CloudWatch metrics for the specified CloudFront
 distribution.

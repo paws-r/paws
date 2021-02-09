@@ -20,7 +20,17 @@ NULL
 #' @usage
 #' cognitosync_bulk_publish(IdentityPoolId)
 #'
-#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityPoolId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -63,9 +73,34 @@ cognitosync_bulk_publish <- function(IdentityPoolId) {
 #' @usage
 #' cognitosync_delete_dataset(IdentityPoolId, IdentityId, DatasetName)
 #'
-#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
-#' @param IdentityId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
-#' @param DatasetName &#91;required&#93; A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
+#' @param IdentityId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
+#' @param DatasetName &#91;required&#93; A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9,
+#' '_' (underscore), '-' (dash), and '.' (dot).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Dataset = list(
+#'     IdentityId = "string",
+#'     DatasetName = "string",
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedBy = "string",
+#'     DataStorage = 123,
+#'     NumRecords = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -111,9 +146,34 @@ cognitosync_delete_dataset <- function(IdentityPoolId, IdentityId, DatasetName) 
 #' @usage
 #' cognitosync_describe_dataset(IdentityPoolId, IdentityId, DatasetName)
 #'
-#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
-#' @param IdentityId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
-#' @param DatasetName &#91;required&#93; A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
+#' @param IdentityId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
+#' @param DatasetName &#91;required&#93; A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9,
+#' '_' (underscore), '-' (dash), and '.' (dot).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Dataset = list(
+#'     IdentityId = "string",
+#'     DatasetName = "string",
+#'     CreationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedBy = "string",
+#'     DataStorage = 123,
+#'     NumRecords = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -158,7 +218,24 @@ cognitosync_describe_dataset <- function(IdentityPoolId, IdentityId, DatasetName
 #' @usage
 #' cognitosync_describe_identity_pool_usage(IdentityPoolId)
 #'
-#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityPoolUsage = list(
+#'     IdentityPoolId = "string",
+#'     SyncSessionsCount = 123,
+#'     DataStorage = 123,
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -200,8 +277,28 @@ cognitosync_describe_identity_pool_usage <- function(IdentityPoolId) {
 #' @usage
 #' cognitosync_describe_identity_usage(IdentityPoolId, IdentityId)
 #'
-#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
-#' @param IdentityId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
+#' @param IdentityId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityUsage = list(
+#'     IdentityId = "string",
+#'     IdentityPoolId = "string",
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DatasetCount = 123,
+#'     DataStorage = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -243,7 +340,25 @@ cognitosync_describe_identity_usage <- function(IdentityPoolId, IdentityId) {
 #' @usage
 #' cognitosync_get_bulk_publish_details(IdentityPoolId)
 #'
-#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityPoolId = "string",
+#'   BulkPublishStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   BulkPublishCompleteTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   BulkPublishStatus = "NOT_STARTED"|"IN_PROGRESS"|"FAILED"|"SUCCEEDED",
+#'   FailureMessage = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -288,6 +403,16 @@ cognitosync_get_bulk_publish_details <- function(IdentityPoolId) {
 #'
 #' @param IdentityPoolId &#91;required&#93; The Cognito Identity Pool ID for the request
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Events = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_cognito_events(
@@ -331,6 +456,25 @@ cognitosync_get_cognito_events <- function(IdentityPoolId) {
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 #' Cognito. This is the ID of the pool for which to return a configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityPoolId = "string",
+#'   PushSync = list(
+#'     ApplicationArns = list(
+#'       "string"
+#'     ),
+#'     RoleArn = "string"
+#'   ),
+#'   CognitoStreams = list(
+#'     StreamName = "string",
+#'     RoleArn = "string",
+#'     StreamingStatus = "ENABLED"|"DISABLED"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_identity_pool_configuration(
@@ -373,10 +517,38 @@ cognitosync_get_identity_pool_configuration <- function(IdentityPoolId) {
 #' cognitosync_list_datasets(IdentityPoolId, IdentityId, NextToken,
 #'   MaxResults)
 #'
-#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
-#' @param IdentityId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
+#' @param IdentityId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
 #' @param NextToken A pagination token for obtaining the next page of results.
 #' @param MaxResults The maximum number of results to be returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Datasets = list(
+#'     list(
+#'       IdentityId = "string",
+#'       DatasetName = "string",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedBy = "string",
+#'       DataStorage = 123,
+#'       NumRecords = 123
+#'     )
+#'   ),
+#'   Count = 123,
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -423,6 +595,26 @@ cognitosync_list_datasets <- function(IdentityPoolId, IdentityId, NextToken = NU
 #' @param NextToken A pagination token for obtaining the next page of results.
 #' @param MaxResults The maximum number of results to be returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityPoolUsages = list(
+#'     list(
+#'       IdentityPoolId = "string",
+#'       SyncSessionsCount = 123,
+#'       DataStorage = 123,
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   Count = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_identity_pool_usage(
@@ -468,13 +660,49 @@ cognitosync_list_identity_pool_usage <- function(NextToken = NULL, MaxResults = 
 #' cognitosync_list_records(IdentityPoolId, IdentityId, DatasetName,
 #'   LastSyncCount, NextToken, MaxResults, SyncSessionToken)
 #'
-#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
-#' @param IdentityId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
-#' @param DatasetName &#91;required&#93; A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
+#' @param IdentityId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
+#' @param DatasetName &#91;required&#93; A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9,
+#' '_' (underscore), '-' (dash), and '.' (dot).
 #' @param LastSyncCount The last server sync count for this record.
 #' @param NextToken A pagination token for obtaining the next page of results.
 #' @param MaxResults The maximum number of results to be returned.
 #' @param SyncSessionToken A token containing a session ID, identity ID, and expiration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Records = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string",
+#'       SyncCount = 123,
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedBy = "string",
+#'       DeviceLastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   Count = 123,
+#'   DatasetSyncCount = 123,
+#'   LastModifiedBy = "string",
+#'   MergedDatasetNames = list(
+#'     "string"
+#'   ),
+#'   DatasetExists = TRUE|FALSE,
+#'   DatasetDeletedAfterRequestedSyncCount = TRUE|FALSE,
+#'   SyncSessionToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -524,8 +752,16 @@ cognitosync_list_records <- function(IdentityPoolId, IdentityId, DatasetName, La
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 #' Cognito. Here, the ID of the pool that the identity belongs to.
 #' @param IdentityId &#91;required&#93; The unique ID for this identity.
-#' @param Platform &#91;required&#93; The SNS platform type (e.g. GCM, SDM, APNS, APNS\\_SANDBOX).
+#' @param Platform &#91;required&#93; The SNS platform type (e.g. GCM, SDM, APNS, APNS_SANDBOX).
 #' @param Token &#91;required&#93; The push token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeviceId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -575,6 +811,8 @@ cognitosync_register_device <- function(IdentityPoolId, IdentityId, Platform, To
 #' @param IdentityPoolId &#91;required&#93; The Cognito Identity Pool to use when configuring Cognito Events
 #' @param Events &#91;required&#93; The events to configure
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_cognito_events(
@@ -623,6 +861,25 @@ cognitosync_set_cognito_events <- function(IdentityPoolId, Events) {
 #' Cognito. This is the ID of the pool to modify.
 #' @param PushSync Options to apply to this identity pool for push synchronization.
 #' @param CognitoStreams Options to apply to this identity pool for Amazon Cognito streams.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityPoolId = "string",
+#'   PushSync = list(
+#'     ApplicationArns = list(
+#'       "string"
+#'     ),
+#'     RoleArn = "string"
+#'   ),
+#'   CognitoStreams = list(
+#'     StreamName = "string",
+#'     RoleArn = "string",
+#'     StreamingStatus = "ENABLED"|"DISABLED"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -683,6 +940,12 @@ cognitosync_set_identity_pool_configuration <- function(IdentityPoolId, PushSync
 #' @param DatasetName &#91;required&#93; The name of the dataset to subcribe to.
 #' @param DeviceId &#91;required&#93; The unique ID generated for this device by Cognito.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$subscribe_to_dataset(
@@ -733,6 +996,12 @@ cognitosync_subscribe_to_dataset <- function(IdentityPoolId, IdentityId, Dataset
 #' @param IdentityId &#91;required&#93; Unique ID for this identity.
 #' @param DatasetName &#91;required&#93; The name of the dataset from which to unsubcribe.
 #' @param DeviceId &#91;required&#93; The unique ID generated for this device by Cognito.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -791,13 +1060,42 @@ cognitosync_unsubscribe_from_dataset <- function(IdentityPoolId, IdentityId, Dat
 #' cognitosync_update_records(IdentityPoolId, IdentityId, DatasetName,
 #'   DeviceId, RecordPatches, SyncSessionToken, ClientContext)
 #'
-#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
-#' @param IdentityId &#91;required&#93; A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
-#' @param DatasetName &#91;required&#93; A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+#' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
+#' @param IdentityId &#91;required&#93; A name-spaced GUID (for example,
+#' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+#' Cognito. GUID generation is unique within a region.
+#' @param DatasetName &#91;required&#93; A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9,
+#' '_' (underscore), '-' (dash), and '.' (dot).
 #' @param DeviceId The unique ID generated for this device by Cognito.
 #' @param RecordPatches A list of patch operations.
-#' @param SyncSessionToken &#91;required&#93; The SyncSessionToken returned by a previous call to ListRecords for this dataset and identity.
-#' @param ClientContext Intended to supply a device ID that will populate the lastModifiedBy field referenced in other methods. The ClientContext field is not yet implemented.
+#' @param SyncSessionToken &#91;required&#93; The SyncSessionToken returned by a previous call to ListRecords for this
+#' dataset and identity.
+#' @param ClientContext Intended to supply a device ID that will populate the lastModifiedBy
+#' field referenced in other methods. The ClientContext field is not yet
+#' implemented.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Records = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string",
+#'       SyncCount = 123,
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedBy = "string",
+#'       DeviceLastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

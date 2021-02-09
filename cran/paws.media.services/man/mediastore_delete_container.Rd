@@ -9,6 +9,10 @@ mediastore_delete_container(ContainerName)
 \arguments{
 \item{ContainerName}{[required] The name of the container to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified container. Before you make a
 \code{\link[=mediastore_delete_container]{delete_container}} request, delete any

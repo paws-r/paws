@@ -13,6 +13,22 @@ supplied, this will be defaulted to 25 per page.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Registries = list(
+    list(
+      RegistryName = "string",
+      RegistryArn = "string",
+      Description = "string",
+      Status = "AVAILABLE"|"DELETING",
+      CreatedTime = "string",
+      UpdatedTime = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of registries that you have created, with minimal
 registry information. Registries in the \code{Deleting} status will not be

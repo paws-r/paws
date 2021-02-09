@@ -52,6 +52,32 @@ DNS queries to the IP addresses that you specify in \code{TargetIps}.}
 \item{Tags}{A list of the tag keys and values that you want to associate with the
 endpoint.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResolverRule = list(
+    Id = "string",
+    CreatorRequestId = "string",
+    Arn = "string",
+    DomainName = "string",
+    Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
+    StatusMessage = "string",
+    RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+    Name = "string",
+    TargetIps = list(
+      list(
+        Ip = "string",
+        Port = 123
+      )
+    ),
+    ResolverEndpointId = "string",
+    OwnerId = "string",
+    ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+    CreationTime = "string",
+    ModificationTime = "string"
+  )
+)
+}
+}
 \description{
 For DNS queries that originate in your VPCs, specifies which Resolver
 endpoint the queries pass through, one domain name that you want to

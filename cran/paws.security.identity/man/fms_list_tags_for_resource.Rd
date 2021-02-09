@@ -11,6 +11,17 @@ fms_list_tags_for_resource(ResourceArn)
 AWS Firewall Manager resources that support tagging are policies,
 applications lists, and protocols lists.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the list of tags for the specified AWS resource.
 }

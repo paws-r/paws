@@ -14,16 +14,46 @@ sfn_start_sync_execution(stateMachineArn, name, input, traceHeader)
 \item{input}{The string that contains the JSON input data for the execution, for
 example:
 
-\verb{"input": "\\\{\\"first_name\\" : \\"test\\"\\\}"}
+\verb{"input": "\{\\"first_name\\" : \\"test\\"\}"}
 
 If you don't include any JSON input data, you still must include the two
-braces, for example: \code{"input": "\\{\\}"}
+braces, for example: \code{"input": "{}"}
 
 Length constraints apply to the payload size, and are expressed as bytes
 in UTF-8 encoding.}
 
 \item{traceHeader}{Passes the AWS X-Ray trace header. The trace header can also be passed
 in the request payload.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  executionArn = "string",
+  stateMachineArn = "string",
+  name = "string",
+  startDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  stopDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  status = "SUCCEEDED"|"FAILED"|"TIMED_OUT",
+  error = "string",
+  cause = "string",
+  input = "string",
+  inputDetails = list(
+    included = TRUE|FALSE
+  ),
+  output = "string",
+  outputDetails = list(
+    included = TRUE|FALSE
+  ),
+  traceHeader = "string",
+  billingDetails = list(
+    billedMemoryUsedInMB = 123,
+    billedDurationInMilliseconds = 123
+  )
+)
+}
 }
 \description{
 Starts a Synchronous Express state machine execution.

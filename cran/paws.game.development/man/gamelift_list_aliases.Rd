@@ -31,6 +31,31 @@ need to be unique.}
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Aliases = list(
+    list(
+      AliasId = "string",
+      Name = "string",
+      AliasArn = "string",
+      Description = "string",
+      RoutingStrategy = list(
+        Type = "SIMPLE"|"TERMINAL",
+        FleetId = "string",
+        Message = "string"
+      ),
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves all aliases for this AWS account. You can filter the result
 set by alias name and/or routing strategy type. Use the pagination

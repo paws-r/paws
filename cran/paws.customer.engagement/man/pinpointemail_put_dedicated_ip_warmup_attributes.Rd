@@ -13,6 +13,10 @@ for.}
 \item{WarmupPercentage}{[required] The warm-up percentage that you want to associate with the dedicated IP
 address.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Put dedicated ip warmup attributes
 }

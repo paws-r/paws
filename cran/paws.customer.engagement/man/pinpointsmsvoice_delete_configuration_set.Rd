@@ -9,6 +9,10 @@ pinpointsmsvoice_delete_configuration_set(ConfigurationSetName)
 \arguments{
 \item{ConfigurationSetName}{[required] ConfigurationSetName}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes an existing configuration set.
 }

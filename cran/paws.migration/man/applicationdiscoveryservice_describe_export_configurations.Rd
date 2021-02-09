@@ -15,6 +15,30 @@ export descriptions returned.}
 
 \item{nextToken}{The token from the previous call to describe-export-tasks.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  exportsInfo = list(
+    list(
+      exportId = "string",
+      exportStatus = "FAILED"|"SUCCEEDED"|"IN_PROGRESS",
+      statusMessage = "string",
+      configurationsDownloadUrl = "string",
+      exportRequestTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      isTruncated = TRUE|FALSE,
+      requestedStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      requestedEndTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 \code{\link[=applicationdiscoveryservice_describe_export_configurations]{describe_export_configurations}}
 is deprecated. Use

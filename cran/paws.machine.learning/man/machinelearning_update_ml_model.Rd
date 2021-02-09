@@ -19,6 +19,12 @@ positive result from the \code{MLModel}, such as \code{true}. Output values less
 than the \code{ScoreThreshold} receive a negative response from the
 \code{MLModel}, such as \code{false}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MLModelId = "string"
+)
+}
+}
 \description{
 Updates the \code{MLModelName} and the \code{ScoreThreshold} of an \code{MLModel}.
 

@@ -13,6 +13,17 @@ guardduty_update_member_detectors(DetectorId, AccountIds, DataSources)
 
 \item{DataSources}{Describes which data sources will be updated.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      Result = "string"
+    )
+  )
+)
+}
+}
 \description{
 Contains information on member accounts to be updated.
 }

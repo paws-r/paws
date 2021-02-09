@@ -9,6 +9,29 @@ alexaforbusiness_get_conference_provider(ConferenceProviderArn)
 \arguments{
 \item{ConferenceProviderArn}{[required] The ARN of the newly created conference provider.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConferenceProvider = list(
+    Arn = "string",
+    Name = "string",
+    Type = "CHIME"|"BLUEJEANS"|"FUZE"|"GOOGLE_HANGOUTS"|"POLYCOM"|"RINGCENTRAL"|"SKYPE_FOR_BUSINESS"|"WEBEX"|"ZOOM"|"CUSTOM",
+    IPDialIn = list(
+      Endpoint = "string",
+      CommsProtocol = "SIP"|"SIPS"|"H323"
+    ),
+    PSTNDialIn = list(
+      CountryCode = "string",
+      PhoneNumber = "string",
+      OneClickIdDelay = "string",
+      OneClickPinDelay = "string"
+    ),
+    MeetingSetting = list(
+      RequirePin = "YES"|"NO"|"OPTIONAL"
+    )
+  )
+)
+}
+}
 \description{
 Gets details about a specific conference provider.
 }

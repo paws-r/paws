@@ -32,6 +32,26 @@ specified number of items, but it might return fewer.}
 with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CustomKeyStores = list(
+    list(
+      CustomKeyStoreId = "string",
+      CustomKeyStoreName = "string",
+      CloudHsmClusterId = "string",
+      TrustAnchorCertificate = "string",
+      ConnectionState = "CONNECTED"|"CONNECTING"|"FAILED"|"DISCONNECTED"|"DISCONNECTING",
+      ConnectionErrorCode = "INVALID_CREDENTIALS"|"CLUSTER_NOT_FOUND"|"NETWORK_ERRORS"|"INTERNAL_ERROR"|"INSUFFICIENT_CLOUDHSM_HSMS"|"USER_LOCKED_OUT"|"USER_NOT_FOUND"|"USER_LOGGED_IN"|"SUBNET_NOT_FOUND",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextMarker = "string",
+  Truncated = TRUE|FALSE
+)
+}
+}
 \description{
 Gets information about \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key stores}
 in the account and region.

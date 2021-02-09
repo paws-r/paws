@@ -14,6 +14,10 @@ chime_associate_phone_number_with_user(AccountId, UserId,
 
 \item{E164PhoneNumber}{[required] The phone number, in E.164 format.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates a phone number with the specified Amazon Chime user.
 }

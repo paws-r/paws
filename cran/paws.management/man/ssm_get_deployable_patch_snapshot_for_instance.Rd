@@ -12,6 +12,15 @@ be retrieved.}
 
 \item{SnapshotId}{[required] The user-defined snapshot ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceId = "string",
+  SnapshotId = "string",
+  SnapshotDownloadUrl = "string",
+  Product = "string"
+)
+}
+}
 \description{
 Retrieves the current snapshot for the patch baseline the instance uses.
 This API is primarily used by the AWS-RunPatchBaseline Systems Manager

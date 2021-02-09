@@ -67,6 +67,12 @@ value for the the \code{MessageDeduplicationId} parameter for the
 To be able to tag a topic on creation, you must have the
 \code{sns:CreateTopic} and \code{sns:TagResource} permissions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TopicArn = "string"
+)
+}
+}
 \description{
 Creates a topic to which notifications can be published. Users can
 create at most 100,000 standard topics (at most 1,000 FIFO topics). For

@@ -13,6 +13,15 @@ NULL
 #'
 #' @param Name &#91;required&#93; Create a CLI token request for a MWAA environment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CliToken = "string",
+#'   WebServerHostname = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_cli_token(
@@ -115,6 +124,14 @@ mwaa_create_cli_token <- function(Name) {
 #' @param WeeklyMaintenanceWindowStart The day and time you want MWAA to start weekly maintenance updates on
 #' your environment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_environment(
@@ -203,6 +220,15 @@ mwaa_create_environment <- function(AirflowConfigurationOptions = NULL, AirflowV
 #'
 #' @param Name &#91;required&#93; Create an Airflow Web UI login token request for a MWAA environment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WebServerHostname = "string",
+#'   WebToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_web_login_token(
@@ -240,6 +266,12 @@ mwaa_create_web_login_token <- function(Name) {
 #'
 #' @param Name &#91;required&#93; The name of the environment to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_environment(
@@ -276,6 +308,87 @@ mwaa_delete_environment <- function(Name) {
 #' mwaa_get_environment(Name)
 #'
 #' @param Name &#91;required&#93; The name of the environment to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Environment = list(
+#'     AirflowConfigurationOptions = list(
+#'       "string"
+#'     ),
+#'     AirflowVersion = "string",
+#'     Arn = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DagS3Path = "string",
+#'     EnvironmentClass = "string",
+#'     ExecutionRoleArn = "string",
+#'     KmsKey = "string",
+#'     LastUpdate = list(
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Error = list(
+#'         ErrorCode = "string",
+#'         ErrorMessage = "string"
+#'       ),
+#'       Status = "SUCCESS"|"PENDING"|"FAILED"
+#'     ),
+#'     LoggingConfiguration = list(
+#'       DagProcessingLogs = list(
+#'         CloudWatchLogGroupArn = "string",
+#'         Enabled = TRUE|FALSE,
+#'         LogLevel = "CRITICAL"|"ERROR"|"WARNING"|"INFO"|"DEBUG"
+#'       ),
+#'       SchedulerLogs = list(
+#'         CloudWatchLogGroupArn = "string",
+#'         Enabled = TRUE|FALSE,
+#'         LogLevel = "CRITICAL"|"ERROR"|"WARNING"|"INFO"|"DEBUG"
+#'       ),
+#'       TaskLogs = list(
+#'         CloudWatchLogGroupArn = "string",
+#'         Enabled = TRUE|FALSE,
+#'         LogLevel = "CRITICAL"|"ERROR"|"WARNING"|"INFO"|"DEBUG"
+#'       ),
+#'       WebserverLogs = list(
+#'         CloudWatchLogGroupArn = "string",
+#'         Enabled = TRUE|FALSE,
+#'         LogLevel = "CRITICAL"|"ERROR"|"WARNING"|"INFO"|"DEBUG"
+#'       ),
+#'       WorkerLogs = list(
+#'         CloudWatchLogGroupArn = "string",
+#'         Enabled = TRUE|FALSE,
+#'         LogLevel = "CRITICAL"|"ERROR"|"WARNING"|"INFO"|"DEBUG"
+#'       )
+#'     ),
+#'     MaxWorkers = 123,
+#'     Name = "string",
+#'     NetworkConfiguration = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       SubnetIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     PluginsS3ObjectVersion = "string",
+#'     PluginsS3Path = "string",
+#'     RequirementsS3ObjectVersion = "string",
+#'     RequirementsS3Path = "string",
+#'     ServiceRoleArn = "string",
+#'     SourceBucketArn = "string",
+#'     Status = "CREATING"|"CREATE_FAILED"|"AVAILABLE"|"UPDATING"|"DELETING"|"DELETED",
+#'     Tags = list(
+#'       "string"
+#'     ),
+#'     WebserverAccessMode = "PRIVATE_ONLY"|"PUBLIC_ONLY",
+#'     WebserverUrl = "string",
+#'     WeeklyMaintenanceWindowStart = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -315,6 +428,17 @@ mwaa_get_environment <- function(Name) {
 #' @param MaxResults The maximum results when listing MWAA environments.
 #' @param NextToken The Next Token when listing MWAA environments.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Environments = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_environments(
@@ -352,6 +476,16 @@ mwaa_list_environments <- function(MaxResults = NULL, NextToken = NULL) {
 #' mwaa_list_tags_for_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the MWAA environment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -391,6 +525,12 @@ mwaa_list_tags_for_resource <- function(ResourceArn) {
 #' @param EnvironmentName &#91;required&#93; Publishes environment metric data to Amazon CloudWatch.
 #' @param MetricData &#91;required&#93; Publishes metric data points to Amazon CloudWatch. CloudWatch associates
 #' the data points with the specified metrica.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -452,6 +592,12 @@ mwaa_publish_metrics <- function(EnvironmentName, MetricData) {
 #' @param ResourceArn &#91;required&#93; The tag resource ARN of the MWAA environments.
 #' @param Tags &#91;required&#93; The tag resource tag of the MWAA environments.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -492,6 +638,12 @@ mwaa_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @param ResourceArn &#91;required&#93; The tag resource ARN of the MWAA environments.
 #' @param tagKeys &#91;required&#93; The tag resource key of the MWAA environments.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -555,6 +707,14 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #' @param WebserverAccessMode The Webserver Access Mode to update of your Amazon MWAA environment.
 #' @param WeeklyMaintenanceWindowStart The Weekly Maintenance Window Start to update of your Amazon MWAA
 #' environment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

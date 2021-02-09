@@ -14,12 +14,24 @@ retrieve.}
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OwnershipControls = list(
+    Rules = list(
+      list(
+        ObjectOwnership = "BucketOwnerPreferred"|"ObjectWriter"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves \code{OwnershipControls} for an Amazon S3 bucket. To use this
 operation, you must have the \code{s3:GetBucketOwnershipControls} permission.
-For more information about Amazon S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
+For more information about Amazon S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
 
-For information about Amazon S3 Object Ownership, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/about-object-ownership.html}{Using Object Ownership}.
+For information about Amazon S3 Object Ownership, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html}{Using Object Ownership}.
 
 The following operations are related to
 \code{\link[=s3_get_bucket_ownership_controls]{get_bucket_ownership_controls}}:

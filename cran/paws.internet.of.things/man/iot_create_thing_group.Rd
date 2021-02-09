@@ -16,6 +16,14 @@ iot_create_thing_group(thingGroupName, parentGroupName,
 
 \item{tags}{Metadata which can be used to manage the thing group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  thingGroupName = "string",
+  thingGroupArn = "string",
+  thingGroupId = "string"
+)
+}
+}
 \description{
 Create a thing group.
 

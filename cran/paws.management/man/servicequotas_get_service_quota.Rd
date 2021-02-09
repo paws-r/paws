@@ -11,6 +11,38 @@ servicequotas_get_service_quota(ServiceCode, QuotaCode)
 
 \item{QuotaCode}{[required] The quota identifier.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Quota = list(
+    ServiceCode = "string",
+    ServiceName = "string",
+    QuotaArn = "string",
+    QuotaCode = "string",
+    QuotaName = "string",
+    Value = 123.0,
+    Unit = "string",
+    Adjustable = TRUE|FALSE,
+    GlobalQuota = TRUE|FALSE,
+    UsageMetric = list(
+      MetricNamespace = "string",
+      MetricName = "string",
+      MetricDimensions = list(
+        "string"
+      ),
+      MetricStatisticRecommendation = "string"
+    ),
+    Period = list(
+      PeriodValue = 123,
+      PeriodUnit = "MICROSECOND"|"MILLISECOND"|"SECOND"|"MINUTE"|"HOUR"|"DAY"|"WEEK"
+    ),
+    ErrorReason = list(
+      ErrorCode = "DEPENDENCY_ACCESS_DENIED_ERROR"|"DEPENDENCY_THROTTLING_ERROR"|"DEPENDENCY_SERVICE_ERROR"|"SERVICE_QUOTA_NOT_AVAILABLE_ERROR",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the applied quota value for the specified quota. For some
 quotas, only the default values are available. If the applied quota

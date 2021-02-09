@@ -12,7 +12,7 @@ guardduty_create_filter(DetectorId, Name, Description, Action, Rank,
 to create a filter for.}
 
 \item{Name}{[required] The name of the filter. Minimum length of 3. Maximum length of 64. Valid
-characters include alphanumeric characters, dot (.), underscore (\\_),
+characters include alphanumeric characters, dot (.), underscore (_),
 and dash (-). Spaces are not allowed.}
 
 \item{Description}{The description of the filter.}
@@ -92,6 +92,12 @@ milliseconds.
 \item{ClientToken}{The idempotency token for the create request.}
 
 \item{Tags}{The tags to be added to a new filter resource.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string"
+)
+}
 }
 \description{
 Creates a filter using the specified finding criteria.

@@ -19,9 +19,16 @@ The list can be 2-25 \code{PipelineActivity} objects and must contain both a
 \code{channel} and a \code{datastore} activity. Each entry in the list must
 contain only one activity. For example:
 
-\verb{pipelineActivities = \\\[ \\\{ "channel": \\\{ ... \\\} \\\}, \\\{ "lambda": \\\{ ... \\\} \\\}, ... \\\]}}
+\verb{pipelineActivities = [ \{ "channel": \{ ... \} \}, \{ "lambda": \{ ... \} \}, ... ]}}
 
 \item{tags}{Metadata which can be used to manage the pipeline.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  pipelineName = "string",
+  pipelineArn = "string"
+)
+}
 }
 \description{
 Creates a pipeline. A pipeline consumes messages from a channel and

@@ -11,6 +11,15 @@ ec2_unassign_ipv_6_addresses(Ipv6Addresses, NetworkInterfaceId)
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NetworkInterfaceId = "string",
+  UnassignedIpv6Addresses = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Unassigns one or more IPv6 addresses from a network interface.
 }

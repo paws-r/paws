@@ -7,16 +7,115 @@
 kafka_list_clusters(ClusterNameFilter, MaxResults, NextToken)
 }
 \arguments{
-\item{ClusterNameFilter}{<p>Specify a prefix of the name of the clusters that you want to list. The service lists all the clusters whose names start with this prefix.</p>}
+\item{ClusterNameFilter}{Specify a prefix of the name of the clusters that you want to list. The
+service lists all the clusters whose names start with this prefix.}
 
-\item{MaxResults}{<p>The maximum number of results to return in the response. If there are more results, the response includes a NextToken parameter.</p>}
+\item{MaxResults}{The maximum number of results to return in the response. If there are
+more results, the response includes a NextToken parameter.}
 
-\item{NextToken}{<p>The paginated results marker. When the result of the operation is truncated, the call returns NextToken in the response. 
-To get the next batch, provide this token in your next request.</p>}
+\item{NextToken}{The paginated results marker. When the result of the operation is
+truncated, the call returns NextToken in the response. To get the next
+batch, provide this token in your next request.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterInfoList = list(
+    list(
+      ActiveOperationArn = "string",
+      BrokerNodeGroupInfo = list(
+        BrokerAZDistribution = "DEFAULT",
+        ClientSubnets = list(
+          "string"
+        ),
+        InstanceType = "string",
+        SecurityGroups = list(
+          "string"
+        ),
+        StorageInfo = list(
+          EbsStorageInfo = list(
+            VolumeSize = 123
+          )
+        )
+      ),
+      ClientAuthentication = list(
+        Sasl = list(
+          Scram = list(
+            Enabled = TRUE|FALSE
+          )
+        ),
+        Tls = list(
+          CertificateAuthorityArnList = list(
+            "string"
+          )
+        )
+      ),
+      ClusterArn = "string",
+      ClusterName = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CurrentBrokerSoftwareInfo = list(
+        ConfigurationArn = "string",
+        ConfigurationRevision = 123,
+        KafkaVersion = "string"
+      ),
+      CurrentVersion = "string",
+      EncryptionInfo = list(
+        EncryptionAtRest = list(
+          DataVolumeKMSKeyId = "string"
+        ),
+        EncryptionInTransit = list(
+          ClientBroker = "TLS"|"TLS_PLAINTEXT"|"PLAINTEXT",
+          InCluster = TRUE|FALSE
+        )
+      ),
+      EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER"|"PER_TOPIC_PER_PARTITION",
+      OpenMonitoring = list(
+        Prometheus = list(
+          JmxExporter = list(
+            EnabledInBroker = TRUE|FALSE
+          ),
+          NodeExporter = list(
+            EnabledInBroker = TRUE|FALSE
+          )
+        )
+      ),
+      LoggingInfo = list(
+        BrokerLogs = list(
+          CloudWatchLogs = list(
+            Enabled = TRUE|FALSE,
+            LogGroup = "string"
+          ),
+          Firehose = list(
+            DeliveryStream = "string",
+            Enabled = TRUE|FALSE
+          ),
+          S3 = list(
+            Bucket = "string",
+            Enabled = TRUE|FALSE,
+            Prefix = "string"
+          )
+        )
+      ),
+      NumberOfBrokerNodes = 123,
+      State = "ACTIVE"|"CREATING"|"DELETING"|"FAILED"|"HEALING"|"MAINTENANCE"|"REBOOTING_BROKER"|"UPDATING",
+      StateInfo = list(
+        Code = "string",
+        Message = "string"
+      ),
+      Tags = list(
+        "string"
+      ),
+      ZookeeperConnectString = "string",
+      ZookeeperConnectStringTls = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
-\preformatted{        <p>Returns a list of all the MSK clusters in the current Region.</p>
-}
+Returns a list of all the MSK clusters in the current Region.
 }
 \section{Request syntax}{
 \preformatted{svc$list_clusters(

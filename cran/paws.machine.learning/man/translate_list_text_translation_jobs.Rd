@@ -16,6 +16,49 @@ set one filter at a time.}
 \item{MaxResults}{The maximum number of results to return in each page. The default value
 is 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TextTranslationJobPropertiesList = list(
+    list(
+      JobId = "string",
+      JobName = "string",
+      JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERROR"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+      JobDetails = list(
+        TranslatedDocumentsCount = 123,
+        DocumentsWithErrorsCount = 123,
+        InputDocumentsCount = 123
+      ),
+      SourceLanguageCode = "string",
+      TargetLanguageCodes = list(
+        "string"
+      ),
+      TerminologyNames = list(
+        "string"
+      ),
+      ParallelDataNames = list(
+        "string"
+      ),
+      Message = "string",
+      SubmittedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      InputDataConfig = list(
+        S3Uri = "string",
+        ContentType = "string"
+      ),
+      OutputDataConfig = list(
+        S3Uri = "string"
+      ),
+      DataAccessRoleArn = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of the batch translation jobs that you have submitted.
 }

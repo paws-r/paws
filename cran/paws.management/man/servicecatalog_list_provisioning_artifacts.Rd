@@ -17,6 +17,25 @@ servicecatalog_list_provisioning_artifacts(AcceptLanguage, ProductId)
 
 \item{ProductId}{[required] The product identifier.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProvisioningArtifactDetails = list(
+    list(
+      Id = "string",
+      Name = "string",
+      Description = "string",
+      Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Active = TRUE|FALSE,
+      Guidance = "DEFAULT"|"DEPRECATED"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Lists all provisioning artifacts (also known as versions) for the
 specified product.

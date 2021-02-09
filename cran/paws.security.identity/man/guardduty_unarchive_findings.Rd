@@ -11,6 +11,10 @@ guardduty_unarchive_findings(DetectorId, FindingIds)
 
 \item{FindingIds}{[required] The IDs of the findings to unarchive.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Unarchives GuardDuty findings specified by the \code{findingIds}.
 }

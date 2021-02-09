@@ -15,6 +15,10 @@ reposition.}
 \item{After}{The name of the receipt rule after which to place the specified receipt
 rule.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Sets the position of the specified receipt rule in the receipt rule set.
 

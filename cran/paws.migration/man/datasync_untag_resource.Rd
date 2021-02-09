@@ -11,6 +11,10 @@ datasync_untag_resource(ResourceArn, Keys)
 
 \item{Keys}{[required] The keys in the key-value pair in the tag to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes a tag from an AWS resource.
 }

@@ -11,6 +11,26 @@ pinpoint_get_channels(ApplicationId)
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelsResponse = list(
+    Channels = list(
+      list(
+        ApplicationId = "string",
+        CreationDate = "string",
+        Enabled = TRUE|FALSE,
+        HasCredential = TRUE|FALSE,
+        Id = "string",
+        IsArchived = TRUE|FALSE,
+        LastModifiedBy = "string",
+        LastModifiedDate = "string",
+        Version = 123
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves information about the history and status of each channel for
 an application.

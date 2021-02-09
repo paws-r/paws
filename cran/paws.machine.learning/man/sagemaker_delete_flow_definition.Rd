@@ -9,6 +9,10 @@ sagemaker_delete_flow_definition(FlowDefinitionName)
 \arguments{
 \item{FlowDefinitionName}{[required] The name of the flow definition you are deleting.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified flow definition.
 }

@@ -18,6 +18,15 @@ IPv6 addresses.}
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssignedIpv6Addresses = list(
+    "string"
+  ),
+  NetworkInterfaceId = "string"
+)
+}
+}
 \description{
 Assigns one or more IPv6 addresses to the specified network interface.
 You can specify one or more specific IPv6 addresses, or you can specify

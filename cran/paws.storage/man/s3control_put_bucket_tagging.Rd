@@ -30,7 +30,7 @@ This action puts tags on an Amazon S3 on Outposts bucket. To put tags on
 an S3 bucket, see \code{\link[=s3control_put_bucket_tagging]{put_bucket_tagging}}
 in the \emph{Amazon Simple Storage Service API}.
 
-Sets the tags for an Outposts bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
+Sets the tags for an Outposts bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Use tags to organize your AWS bill to reflect your own cost structure.
@@ -44,13 +44,13 @@ of that application across several services. For more information, see
 
 Within a bucket, if you add a tag that has the same key as an existing
 tag, the new value overwrites the old value. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/CostAllocTagging.html}{Using Cost Allocation in Amazon S3 Bucket Tags}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/CostAllocTagging.html}{Using Cost Allocation in Amazon S3 Bucket Tags}.
 
 To use this operation, you must have permissions to perform the
 \code{s3-outposts:PutBucketTagging} action. The Outposts bucket owner has
 this permission by default and can grant this permission to others. For
-more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
 \code{\link[=s3control_put_bucket_tagging]{put_bucket_tagging}} has the following
 special errors:

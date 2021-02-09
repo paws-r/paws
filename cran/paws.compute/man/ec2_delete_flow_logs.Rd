@@ -16,6 +16,20 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 Constraint: Maximum of 1000 flow log IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Unsuccessful = list(
+    list(
+      Error = list(
+        Code = "string",
+        Message = "string"
+      ),
+      ResourceId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes one or more flow logs.
 }

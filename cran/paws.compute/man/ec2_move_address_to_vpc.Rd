@@ -15,6 +15,13 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{PublicIp}{[required] The Elastic IP address.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AllocationId = "string",
+  Status = "MoveInProgress"|"InVpc"|"InClassic"
+)
+}
+}
 \description{
 Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC
 platform. The Elastic IP address must be allocated to your account for

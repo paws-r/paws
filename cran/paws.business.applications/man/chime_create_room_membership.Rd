@@ -15,6 +15,26 @@ chime_create_room_membership(AccountId, RoomId, MemberId, Role)
 
 \item{Role}{The role of the member.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RoomMembership = list(
+    RoomId = "string",
+    Member = list(
+      MemberId = "string",
+      MemberType = "User"|"Bot"|"Webhook",
+      Email = "string",
+      FullName = "string",
+      AccountId = "string"
+    ),
+    Role = "Administrator"|"Member",
+    InvitedBy = "string",
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Adds a member to a chat room in an Amazon Chime Enterprise account. A
 member can be either a user or a bot. The member role designates whether

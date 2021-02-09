@@ -14,6 +14,10 @@ cognitoidentityprovider_update_device_status(AccessToken, DeviceKey,
 
 \item{DeviceRememberedStatus}{The status of whether a device is remembered.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the device status.
 }

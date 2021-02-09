@@ -28,7 +28,7 @@ Sets the request payment configuration for a bucket. By default, the
 bucket owner pays for downloads from the bucket. This configuration
 parameter enables the bucket owner (only) to specify that the person
 requesting the download will be charged for the download. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html}{Requester Pays Buckets}.
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html}{Requester Pays Buckets}.
 
 The following operations are related to
 \code{\link[=s3_put_bucket_request_payment]{put_bucket_request_payment}}:

@@ -27,6 +27,51 @@ treated as if they are attached to the principal being authorized.}
 \item{policyNamesToSkip}{When testing custom authorization, the policies specified here are
 treated as if they are not attached to the principal being authorized.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  authResults = list(
+    list(
+      authInfo = list(
+        actionType = "PUBLISH"|"SUBSCRIBE"|"RECEIVE"|"CONNECT",
+        resources = list(
+          "string"
+        )
+      ),
+      allowed = list(
+        policies = list(
+          list(
+            policyName = "string",
+            policyArn = "string"
+          )
+        )
+      ),
+      denied = list(
+        implicitDeny = list(
+          policies = list(
+            list(
+              policyName = "string",
+              policyArn = "string"
+            )
+          )
+        ),
+        explicitDeny = list(
+          policies = list(
+            list(
+              policyName = "string",
+              policyArn = "string"
+            )
+          )
+        )
+      ),
+      authDecision = "ALLOWED"|"EXPLICIT_DENY"|"IMPLICIT_DENY",
+      missingContextValues = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Tests if a specified principal is authorized to perform an AWS IoT
 action on a specified resource. Use this to test and debug the

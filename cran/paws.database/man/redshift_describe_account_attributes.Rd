@@ -9,6 +9,21 @@ redshift_describe_account_attributes(AttributeNames)
 \arguments{
 \item{AttributeNames}{A list of attribute names.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccountAttributes = list(
+    list(
+      AttributeName = "string",
+      AttributeValues = list(
+        list(
+          AttributeValue = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of attributes attached to an account
 }

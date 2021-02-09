@@ -9,6 +9,10 @@ datasync_delete_location(LocationArn)
 \arguments{
 \item{LocationArn}{[required] The Amazon Resource Name (ARN) of the location to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the configuration of a location used by AWS DataSync.
 }

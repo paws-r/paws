@@ -9,8 +9,37 @@ mediapackage_rotate_channel_credentials(Id)
 \arguments{
 \item{Id}{[required] The ID of the channel to update.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  Description = "string",
+  EgressAccessLogs = list(
+    LogGroupName = "string"
+  ),
+  HlsIngest = list(
+    IngestEndpoints = list(
+      list(
+        Id = "string",
+        Password = "string",
+        Url = "string",
+        Username = "string"
+      )
+    )
+  ),
+  Id = "string",
+  IngressAccessLogs = list(
+    LogGroupName = "string"
+  ),
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
-Changes the Channel's first IngestEndpoint's username and password. WARNING - This API is deprecated. Please use RotateIngestEndpointCredentials instead
+Changes the Channel's first IngestEndpoint's username and password.
+WARNING - This API is deprecated. Please use
+RotateIngestEndpointCredentials instead
 }
 \section{Request syntax}{
 \preformatted{svc$rotate_channel_credentials(

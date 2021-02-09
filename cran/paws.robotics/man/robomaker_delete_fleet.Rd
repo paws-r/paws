@@ -9,6 +9,10 @@ robomaker_delete_fleet(fleet)
 \arguments{
 \item{fleet}{[required] The Amazon Resource Name (ARN) of the fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a fleet.
 }

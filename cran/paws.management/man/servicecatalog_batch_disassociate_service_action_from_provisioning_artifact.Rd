@@ -19,6 +19,20 @@ ID, and the Provisioning Artifact ID.}
 \item \code{zh} - Chinese
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedServiceActionAssociations = list(
+    list(
+      ServiceActionId = "string",
+      ProductId = "string",
+      ProvisioningArtifactId = "string",
+      ErrorCode = "DUPLICATE_RESOURCE"|"INTERNAL_FAILURE"|"LIMIT_EXCEEDED"|"RESOURCE_NOT_FOUND"|"THROTTLING",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Disassociates a batch of self-service actions from the specified
 provisioning artifact.

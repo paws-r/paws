@@ -21,6 +21,12 @@ If \code{DisplayName} isn't specified, \code{TrialName} is displayed.}
 \item{Tags}{A list of tags to associate with the trial. You can use
 \code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrialArn = "string"
+)
+}
+}
 \description{
 Creates an Amazon SageMaker \emph{trial}. A trial is a set of steps called
 \emph{trial components} that produce a machine learning model. A trial is

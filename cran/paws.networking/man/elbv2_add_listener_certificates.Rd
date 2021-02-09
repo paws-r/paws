@@ -13,6 +13,17 @@ elbv2_add_listener_certificates(ListenerArn, Certificates)
 \item{Certificates}{[required] The certificate to add. You can specify one certificate per call. Set
 \code{CertificateArn} to the certificate ARN but do not set \code{IsDefault}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Certificates = list(
+    list(
+      CertificateArn = "string",
+      IsDefault = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Adds the specified SSL server certificate to the certificate list for
 the specified HTTPS or TLS listener.

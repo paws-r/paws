@@ -11,6 +11,14 @@ iot1clickprojects_get_devices_in_placement(projectName, placementName)
 
 \item{placementName}{[required] The name of the placement to get the devices from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  devices = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns an object enumerating the devices in a placement.
 }

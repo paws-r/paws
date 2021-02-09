@@ -12,7 +12,7 @@ s3_put_bucket_encryption(Bucket, ContentMD5,
 \item{Bucket}{[required] Specifies default encryption for a bucket using server-side encryption
 with Amazon S3-managed keys (SSE-S3) or customer master keys stored in
 AWS KMS (SSE-KMS). For information about the Amazon S3 default
-encryption feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}
+encryption feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the server-side encryption
@@ -35,9 +35,9 @@ Default encryption for a bucket can use server-side encryption with
 Amazon S3-managed keys (SSE-S3) or AWS KMS customer master keys
 (SSE-KMS). If you specify default encryption using SSE-KMS, you can also
 configure Amazon S3 Bucket Key. For information about default
-encryption, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html}{Amazon S3 default bucket encryption}
+encryption, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 default bucket encryption}
 in the \emph{Amazon Simple Storage Service Developer Guide}. For more
-information about S3 Bucket Keys, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html}{Amazon S3 Bucket Keys}
+information about S3 Bucket Keys, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html}{Amazon S3 Bucket Keys}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 This operation requires AWS Signature Version 4. For more information,
@@ -46,8 +46,8 @@ see Authenticating Requests (AWS Signature Version 4).
 To use this operation, you must have permissions to perform the
 \code{s3:PutEncryptionConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to
-others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
 in the Amazon Simple Storage Service Developer Guide.
 
 \strong{Related Resources}

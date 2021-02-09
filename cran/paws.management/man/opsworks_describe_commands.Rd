@@ -20,6 +20,25 @@ of the commands associated with the specified instance.}
 of the specified commands. Otherwise, it returns a description of every
 command.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Commands = list(
+    list(
+      CommandId = "string",
+      InstanceId = "string",
+      DeploymentId = "string",
+      CreatedAt = "string",
+      AcknowledgedAt = "string",
+      CompletedAt = "string",
+      Status = "string",
+      ExitCode = 123,
+      LogUrl = "string",
+      Type = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the results of specified commands.
 

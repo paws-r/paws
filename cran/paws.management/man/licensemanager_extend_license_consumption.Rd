@@ -14,6 +14,13 @@ licensemanager_extend_license_consumption(LicenseConsumptionToken,
 actually making the request. Provides an error response if you do not
 have the required permissions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LicenseConsumptionToken = "string",
+  Expiration = "string"
+)
+}
+}
 \description{
 Extends the expiration date for license consumption.
 }

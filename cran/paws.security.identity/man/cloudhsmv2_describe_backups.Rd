@@ -39,6 +39,38 @@ retention policy defined at the cluster.}
 \item{SortAscending}{Designates whether or not to sort the return backups by ascending
 chronological order of generation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Backups = list(
+    list(
+      BackupId = "string",
+      BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
+      ClusterId = "string",
+      CreateTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      CopyTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      NeverExpires = TRUE|FALSE,
+      SourceRegion = "string",
+      SourceBackup = "string",
+      SourceCluster = "string",
+      DeleteTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      TagList = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets information about backups of AWS CloudHSM clusters.
 

@@ -12,6 +12,26 @@ inspector_describe_rules_packages(rulesPackageArns, locale)
 
 \item{locale}{The locale that you want to translate a rules package description into.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  rulesPackages = list(
+    list(
+      arn = "string",
+      name = "string",
+      version = "string",
+      provider = "string",
+      description = "string"
+    )
+  ),
+  failedItems = list(
+    list(
+      failureCode = "INVALID_ARN"|"DUPLICATE_ARN"|"ITEM_DOES_NOT_EXIST"|"ACCESS_DENIED"|"LIMIT_EXCEEDED"|"INTERNAL_ERROR",
+      retryable = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Describes the rules packages that are specified by the ARNs of the rules
 packages.

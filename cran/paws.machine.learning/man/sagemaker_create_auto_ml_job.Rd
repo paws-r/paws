@@ -38,11 +38,17 @@ settings.}
 \item{Tags}{Each tag consists of a key and an optional value. Tag keys must be
 unique per resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AutoMLJobArn = "string"
+)
+}
+}
 \description{
 Creates an Autopilot job.
 
 Find the best performing model after you run an Autopilot job by calling
-. Deploy that model by following the steps described in \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html}{Step 6.1: Deploy the Model to Amazon SageMaker Hosting Services}.
+. Deploy that model by following the steps described in \href{https://docs.aws.amazon.com/sagemaker/latest/dg/}{Step 6.1: Deploy the Model to Amazon SageMaker Hosting Services}.
 
 For information about how to use Autopilot, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html}{Automate Model Development with Amazon SageMaker Autopilot}.
 }

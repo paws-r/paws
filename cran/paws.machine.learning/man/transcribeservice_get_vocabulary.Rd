@@ -10,6 +10,19 @@ transcribeservice_get_vocabulary(VocabularyName)
 \item{VocabularyName}{[required] The name of the vocabulary to return information about. The name is case
 sensitive.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VocabularyName = "string",
+  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
+  VocabularyState = "PENDING"|"READY"|"FAILED",
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  FailureReason = "string",
+  DownloadUri = "string"
+)
+}
+}
 \description{
 Gets information about a vocabulary.
 }

@@ -18,6 +18,18 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Association = list(
+    TransitGatewayRouteTableId = "string",
+    TransitGatewayAttachmentId = "string",
+    ResourceId = "string",
+    ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+    State = "associating"|"associated"|"disassociating"|"disassociated"
+  )
+)
+}
+}
 \description{
 Associates the specified attachment with the specified transit gateway
 route table. You can associate only one route table with an attachment.

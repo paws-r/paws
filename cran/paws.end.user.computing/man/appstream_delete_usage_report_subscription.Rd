@@ -6,6 +6,10 @@
 \usage{
 appstream_delete_usage_report_subscription()
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disables usage report generation.
 }

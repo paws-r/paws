@@ -9,6 +9,18 @@ workspaces_rebuild_workspaces(RebuildWorkspaceRequests)
 \arguments{
 \item{RebuildWorkspaceRequests}{[required] The WorkSpace to rebuild. You can specify a single WorkSpace.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedRequests = list(
+    list(
+      WorkspaceId = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Rebuilds the specified WorkSpace.
 

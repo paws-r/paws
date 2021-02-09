@@ -17,6 +17,23 @@ need to be unique.}
 \item{Version}{Version information that is associated with a build or script. Version
 strings do not need to be unique.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Build = list(
+    BuildId = "string",
+    BuildArn = "string",
+    Name = "string",
+    Version = "string",
+    Status = "INITIALIZED"|"READY"|"FAILED",
+    SizeOnDisk = 123,
+    OperatingSystem = "WINDOWS_2012"|"AMAZON_LINUX"|"AMAZON_LINUX_2",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Updates metadata in a build resource, including the build name and
 version. To update the metadata, specify the build ID to update and

@@ -20,6 +20,27 @@ example, AWS Config adds 3 exceptions for 3 resource keys.}
 
 \item{ExpirationTime}{The exception is automatically deleted after the expiration date.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedBatches = list(
+    list(
+      FailureMessage = "string",
+      FailedItems = list(
+        list(
+          ConfigRuleName = "string",
+          ResourceType = "string",
+          ResourceId = "string",
+          Message = "string",
+          ExpirationTime = as.POSIXct(
+            "2015-01-01"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 A remediation exception is when a specific resource is no longer
 considered for auto-remediation. This API adds a new exception or

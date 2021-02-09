@@ -9,6 +9,14 @@ rekognition_create_collection(CollectionId)
 \arguments{
 \item{CollectionId}{[required] ID for the collection that you are creating.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StatusCode = 123,
+  CollectionArn = "string",
+  FaceModelVersion = "string"
+)
+}
+}
 \description{
 Creates a collection in an AWS Region. You can add faces to the
 collection using the \code{\link[=rekognition_index_faces]{index_faces}} operation.

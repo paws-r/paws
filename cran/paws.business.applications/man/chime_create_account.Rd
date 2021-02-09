@@ -9,6 +9,29 @@ chime_create_account(Name)
 \arguments{
 \item{Name}{[required] The name of the Amazon Chime account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Account = list(
+    AwsAccountId = "string",
+    AccountId = "string",
+    Name = "string",
+    AccountType = "Team"|"EnterpriseDirectory"|"EnterpriseLWA"|"EnterpriseOIDC",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    DefaultLicense = "Basic"|"Plus"|"Pro"|"ProTrial",
+    SupportedLicenses = list(
+      "Basic"|"Plus"|"Pro"|"ProTrial"
+    ),
+    SigninDelegateGroups = list(
+      list(
+        GroupName = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates an Amazon Chime account under the administrator's AWS account.
 Only \code{Team} account types are currently supported for this action. For

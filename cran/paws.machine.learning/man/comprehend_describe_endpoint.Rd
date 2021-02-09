@@ -9,6 +9,25 @@ comprehend_describe_endpoint(EndpointArn)
 \arguments{
 \item{EndpointArn}{[required] The Amazon Resource Number (ARN) of the endpoint being described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointProperties = list(
+    EndpointArn = "string",
+    Status = "CREATING"|"DELETING"|"FAILED"|"IN_SERVICE"|"UPDATING",
+    Message = "string",
+    ModelArn = "string",
+    DesiredInferenceUnits = 123,
+    CurrentInferenceUnits = 123,
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Gets the properties associated with a specific endpoint. Use this
 operation to get the status of an endpoint.

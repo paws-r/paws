@@ -26,6 +26,25 @@ number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Summaries = list(
+    list(
+      Account = "string",
+      Region = "string",
+      Status = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED",
+      StatusReason = "string",
+      AccountGateResult = list(
+        Status = "SUCCEEDED"|"FAILED"|"SKIPPED",
+        StatusReason = "string"
+      ),
+      OrganizationalUnitId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns summary information about the results of a stack set operation.
 }

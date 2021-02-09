@@ -29,7 +29,7 @@ who can view and modify the logging parameters. All logs are saved to
 buckets in the same AWS Region as the source bucket. To set the logging
 status of a bucket, you must be the bucket owner.
 
-The bucket owner is automatically granted FULL\\_CONTROL to all logs. You
+The bucket owner is automatically granted FULL_CONTROL to all logs. You
 use the \code{Grantee} request element to grant access to other people. The
 \code{Permissions} request element specifies the kind of access the grantee
 has to the logs.
@@ -61,7 +61,7 @@ request element:
 
 \verb{<BucketLoggingStatus xmlns="http://doc.s3.amazonaws.com/2006-03-01" />}
 
-For more information about server access logging, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html}{Server Access Logging}.
+For more information about server access logging, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerLogs.html}{Server Access Logging}.
 
 For more information about creating a bucket, see
 \code{\link[=s3_create_bucket]{create_bucket}}. For more information about

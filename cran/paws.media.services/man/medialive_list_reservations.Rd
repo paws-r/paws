@@ -29,6 +29,45 @@ medialive_list_reservations(ChannelClass, Codec, MaxResults,
 
 \item{VideoQuality}{Filter by video quality, 'STANDARD', 'ENHANCED', or 'PREMIUM'}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Reservations = list(
+    list(
+      Arn = "string",
+      Count = 123,
+      CurrencyCode = "string",
+      Duration = 123,
+      DurationUnits = "MONTHS",
+      End = "string",
+      FixedPrice = 123.0,
+      Name = "string",
+      OfferingDescription = "string",
+      OfferingId = "string",
+      OfferingType = "NO_UPFRONT",
+      Region = "string",
+      ReservationId = "string",
+      ResourceSpecification = list(
+        ChannelClass = "STANDARD"|"SINGLE_PIPELINE",
+        Codec = "MPEG2"|"AVC"|"HEVC"|"AUDIO"|"LINK",
+        MaximumBitrate = "MAX_10_MBPS"|"MAX_20_MBPS"|"MAX_50_MBPS",
+        MaximumFramerate = "MAX_30_FPS"|"MAX_60_FPS",
+        Resolution = "SD"|"HD"|"FHD"|"UHD",
+        ResourceType = "INPUT"|"OUTPUT"|"MULTIPLEX"|"CHANNEL",
+        SpecialFeature = "ADVANCED_AUDIO"|"AUDIO_NORMALIZATION",
+        VideoQuality = "STANDARD"|"ENHANCED"|"PREMIUM"
+      ),
+      Start = "string",
+      State = "ACTIVE"|"EXPIRED"|"CANCELED"|"DELETED",
+      Tags = list(
+        "string"
+      ),
+      UsagePrice = 123.0
+    )
+  )
+)
+}
+}
 \description{
 List purchased reservations.
 }

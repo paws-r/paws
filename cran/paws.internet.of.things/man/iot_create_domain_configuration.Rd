@@ -38,6 +38,13 @@ For the CLI command-line parameter use format: &&tags
 For the cli-input-json file use format: "tags":
 "key1=value1&key2=value2..."}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  domainConfigurationName = "string",
+  domainConfigurationArn = "string"
+)
+}
+}
 \description{
 Creates a domain configuration.
 

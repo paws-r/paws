@@ -13,6 +13,10 @@ access control groups, and connection aliases.}
 
 \item{TagKeys}{[required] The tag keys.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified tags from the specified WorkSpaces resource.
 }

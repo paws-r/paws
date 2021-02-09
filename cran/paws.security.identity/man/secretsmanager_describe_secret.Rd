@@ -30,6 +30,47 @@ If you do include the random suffix added by Secrets Manager, you
 receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string",
+  Description = "string",
+  KmsKeyId = "string",
+  RotationEnabled = TRUE|FALSE,
+  RotationLambdaARN = "string",
+  RotationRules = list(
+    AutomaticallyAfterDays = 123
+  ),
+  LastRotatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastChangedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastAccessedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  DeletedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  VersionIdsToStages = list(
+    list(
+      "string"
+    )
+  ),
+  OwningService = "string",
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Retrieves the details of a secret. It does not include the encrypted
 fields. Secrets Manager only returns fields populated with a value in

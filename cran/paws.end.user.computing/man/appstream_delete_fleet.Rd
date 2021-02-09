@@ -9,6 +9,10 @@ appstream_delete_fleet(Name)
 \arguments{
 \item{Name}{[required] The name of the fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified fleet.
 }

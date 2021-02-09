@@ -9,6 +9,13 @@ greengrass_get_associated_role(GroupId)
 \arguments{
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociatedAt = "string",
+  RoleArn = "string"
+)
+}
+}
 \description{
 Retrieves the role associated with a particular group.
 }

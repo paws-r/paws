@@ -12,6 +12,15 @@ clouddirectory_create_directory(Name, SchemaArn)
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) of the published schema that will be
 copied into the data Directory. For more information, see arns.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DirectoryArn = "string",
+  Name = "string",
+  ObjectIdentifier = "string",
+  AppliedSchemaArn = "string"
+)
+}
+}
 \description{
 Creates a Directory by copying the published schema into the directory.
 A directory cannot be created without a schema.

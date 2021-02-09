@@ -51,6 +51,15 @@ and 100. If this parameter is not used, then
 \code{\link[=ecs_list_task_definitions]{list_task_definitions}} returns up to 100
 results and a \code{nextToken} value if applicable.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  taskDefinitionArns = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of task definitions that are registered to your account.
 You can filter the results by family name with the \code{familyPrefix}

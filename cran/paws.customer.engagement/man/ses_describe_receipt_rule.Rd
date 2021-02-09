@@ -11,6 +11,58 @@ ses_describe_receipt_rule(RuleSetName, RuleName)
 
 \item{RuleName}{[required] The name of the receipt rule.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Rule = list(
+    Name = "string",
+    Enabled = TRUE|FALSE,
+    TlsPolicy = "Require"|"Optional",
+    Recipients = list(
+      "string"
+    ),
+    Actions = list(
+      list(
+        S3Action = list(
+          TopicArn = "string",
+          BucketName = "string",
+          ObjectKeyPrefix = "string",
+          KmsKeyArn = "string"
+        ),
+        BounceAction = list(
+          TopicArn = "string",
+          SmtpReplyCode = "string",
+          StatusCode = "string",
+          Message = "string",
+          Sender = "string"
+        ),
+        WorkmailAction = list(
+          TopicArn = "string",
+          OrganizationArn = "string"
+        ),
+        LambdaAction = list(
+          TopicArn = "string",
+          FunctionArn = "string",
+          InvocationType = "Event"|"RequestResponse"
+        ),
+        StopAction = list(
+          Scope = "RuleSet",
+          TopicArn = "string"
+        ),
+        AddHeaderAction = list(
+          HeaderName = "string",
+          HeaderValue = "string"
+        ),
+        SNSAction = list(
+          TopicArn = "string",
+          Encoding = "UTF-8"|"Base64"
+        )
+      )
+    ),
+    ScanEnabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Returns the details of the specified receipt rule.
 

@@ -12,6 +12,27 @@ pinpoint_get_recommender_configuration(RecommenderId)
 identifier is displayed as the \strong{Recommender ID} on the Amazon Pinpoint
 console.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RecommenderConfigurationResponse = list(
+    Attributes = list(
+      "string"
+    ),
+    CreationDate = "string",
+    Description = "string",
+    Id = "string",
+    LastModifiedDate = "string",
+    Name = "string",
+    RecommendationProviderIdType = "string",
+    RecommendationProviderRoleArn = "string",
+    RecommendationProviderUri = "string",
+    RecommendationTransformerUri = "string",
+    RecommendationsDisplayName = "string",
+    RecommendationsPerMessage = 123
+  )
+)
+}
+}
 \description{
 Retrieves information about an Amazon Pinpoint configuration for a
 recommender model.

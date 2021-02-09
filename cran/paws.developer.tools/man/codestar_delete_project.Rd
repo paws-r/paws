@@ -19,6 +19,13 @@ resources. This option will delete all AWS resources for the project
 (except for any buckets in Amazon S3) as well as deleting the project
 itself. Recommended for most use cases.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  stackId = "string",
+  projectArn = "string"
+)
+}
+}
 \description{
 Deletes a project, including project resources. Does not delete users
 associated with the project, but does delete the IAM roles that allowed

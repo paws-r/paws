@@ -16,6 +16,20 @@ For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aw
 \item{ConsumerARN}{The ARN returned by Kinesis Data Streams when you registered the
 consumer.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConsumerDescription = list(
+    ConsumerName = "string",
+    ConsumerARN = "string",
+    ConsumerStatus = "CREATING"|"DELETING"|"ACTIVE",
+    ConsumerCreationTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    StreamARN = "string"
+  )
+)
+}
+}
 \description{
 To get the description of a registered consumer, provide the ARN of the
 consumer. Alternatively, you can provide the ARN of the data stream and

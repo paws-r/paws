@@ -14,6 +14,10 @@ check association to.}
 \item{HealthCheckArn}{[required] The Amazon Resource Name (ARN) of the health check to associate with the
 protection.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds health-based detection to the Shield Advanced protection for a
 resource. Shield Advanced health-based detection uses the health of your

@@ -13,6 +13,10 @@ provided, the AWS account ID is used by default.}
 \item{Name}{[required] The name of the database to delete. For Hive compatibility, this must be
 all lowercase.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes a specified database from a Data Catalog.
 

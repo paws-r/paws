@@ -25,6 +25,25 @@ aggregation based on the \code{PlatformName}, \code{PlatformType}, and
 
 \item{SubType}{Returns the sub-type schema for a specified inventory type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Schemas = list(
+    list(
+      TypeName = "string",
+      Version = "string",
+      Attributes = list(
+        list(
+          Name = "string",
+          DataType = "string"|"number"
+        )
+      ),
+      DisplayName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Return a list of inventory type names for the account, or return a list
 of attribute names for a specific Inventory item type.

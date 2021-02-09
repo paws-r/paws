@@ -16,6 +16,37 @@ redshift_modify_cluster_subnet_group(ClusterSubnetGroupName,
 \item{SubnetIds}{[required] An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a
 single request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterSubnetGroup = list(
+    ClusterSubnetGroupName = "string",
+    Description = "string",
+    VpcId = "string",
+    SubnetGroupStatus = "string",
+    Subnets = list(
+      list(
+        SubnetIdentifier = "string",
+        SubnetAvailabilityZone = list(
+          Name = "string",
+          SupportedPlatforms = list(
+            list(
+              Name = "string"
+            )
+          )
+        ),
+        SubnetStatus = "string"
+      )
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Modifies a cluster subnet group to include the specified list of VPC
 subnets. The operation replaces the existing list of subnets with the

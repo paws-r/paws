@@ -7,6 +7,28 @@ with the calling AWS account}
 \usage{
 elasticbeanstalk_describe_account_attributes()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceQuotas = list(
+    ApplicationQuota = list(
+      Maximum = 123
+    ),
+    ApplicationVersionQuota = list(
+      Maximum = 123
+    ),
+    EnvironmentQuota = list(
+      Maximum = 123
+    ),
+    ConfigurationTemplateQuota = list(
+      Maximum = 123
+    ),
+    CustomPlatformQuota = list(
+      Maximum = 123
+    )
+  )
+)
+}
+}
 \description{
 Returns attributes related to AWS Elastic Beanstalk that are associated
 with the calling AWS account.

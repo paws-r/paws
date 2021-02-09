@@ -16,6 +16,10 @@ iot_remove_thing_from_billing_group(billingGroupName, billingGroupArn,
 
 \item{thingArn}{The ARN of the thing to be removed from the billing group.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the given thing from the billing group.
 }

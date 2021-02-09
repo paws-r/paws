@@ -12,6 +12,19 @@ are identified by names that are unique to the account used to create
 them and the AWS Region where they are created. They consist of
 lowercase letters, numbers, and hyphens.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupVaultName = "string",
+  BackupVaultArn = "string",
+  EncryptionKeyArn = "string",
+  CreationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  CreatorRequestId = "string",
+  NumberOfRecoveryPoints = 123
+)
+}
+}
 \description{
 Returns metadata about a backup vault specified by its name.
 }

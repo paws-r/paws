@@ -11,6 +11,10 @@ configservice_start_config_rules_evaluation(ConfigRuleNames)
 \item{ConfigRuleNames}{The list of names of AWS Config rules that you want to run evaluations
 for.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Runs an on-demand evaluation for the specified AWS Config rules against
 the last known configuration state of the resources. Use

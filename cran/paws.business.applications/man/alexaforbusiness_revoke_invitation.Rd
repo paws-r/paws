@@ -12,6 +12,10 @@ Required.}
 
 \item{EnrollmentId}{The ARN of the enrollment invitation to revoke. Required.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Revokes an invitation and invalidates the enrollment URL.
 }

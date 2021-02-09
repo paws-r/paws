@@ -16,6 +16,42 @@ NULL
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceShareInvitation = list(
+#'     resourceShareInvitationArn = "string",
+#'     resourceShareName = "string",
+#'     resourceShareArn = "string",
+#'     senderAccountId = "string",
+#'     receiverAccountId = "string",
+#'     invitationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"ACCEPTED"|"REJECTED"|"EXPIRED",
+#'     resourceShareAssociations = list(
+#'       list(
+#'         resourceShareArn = "string",
+#'         resourceShareName = "string",
+#'         associatedEntity = "string",
+#'         associationType = "PRINCIPAL"|"RESOURCE",
+#'         status = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
+#'         statusMessage = "string",
+#'         creationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         external = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_resource_share_invitation(
@@ -60,6 +96,31 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' @param principals The principals.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceShareAssociations = list(
+#'     list(
+#'       resourceShareArn = "string",
+#'       resourceShareName = "string",
+#'       associatedEntity = "string",
+#'       associationType = "PRINCIPAL"|"RESOURCE",
+#'       status = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
+#'       statusMessage = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       external = TRUE|FALSE
+#'     )
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -112,6 +173,15 @@ ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, 
 #' permission.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   returnValue = TRUE|FALSE,
+#'   clientToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -166,6 +236,35 @@ ram_associate_resource_share_permission <- function(resourceShareArn, permission
 #' @param permissionArns The ARNs of the permissions to associate with the resource share. If you
 #' do not specify an ARN for the permission, AWS RAM automatically attaches
 #' the default version of the permission for each resource type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceShare = list(
+#'     resourceShareArn = "string",
+#'     name = "string",
+#'     owningAccountId = "string",
+#'     allowExternalPrincipals = TRUE|FALSE,
+#'     status = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED",
+#'     statusMessage = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD"
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -223,6 +322,15 @@ ram_create_resource_share <- function(name, resourceArns = NULL, principals = NU
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   returnValue = TRUE|FALSE,
+#'   clientToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_resource_share(
@@ -267,6 +375,31 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 #' @param principals The principals.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceShareAssociations = list(
+#'     list(
+#'       resourceShareArn = "string",
+#'       resourceShareName = "string",
+#'       associatedEntity = "string",
+#'       associationType = "PRINCIPAL"|"RESOURCE",
+#'       status = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
+#'       statusMessage = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       external = TRUE|FALSE
+#'     )
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -316,6 +449,15 @@ ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NUL
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   returnValue = TRUE|FALSE,
+#'   clientToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_resource_share_permission(
@@ -355,6 +497,14 @@ ram_disassociate_resource_share_permission <- function(resourceShareArn, permiss
 #' @usage
 #' ram_enable_sharing_with_aws_organization()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   returnValue = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_sharing_with_aws_organization()
@@ -390,6 +540,27 @@ ram_enable_sharing_with_aws_organization <- function() {
 #'
 #' @param permissionArn &#91;required&#93; The ARN of the permission.
 #' @param permissionVersion The identifier for the version of the permission.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   permission = list(
+#'     arn = "string",
+#'     version = "string",
+#'     defaultVersion = TRUE|FALSE,
+#'     name = "string",
+#'     resourceType = "string",
+#'     permission = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -436,6 +607,17 @@ ram_get_permission <- function(permissionArn, permissionVersion = NULL) {
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policies = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -493,6 +675,31 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceShareAssociations = list(
+#'     list(
+#'       resourceShareArn = "string",
+#'       resourceShareName = "string",
+#'       associatedEntity = "string",
+#'       associationType = "PRINCIPAL"|"RESOURCE",
+#'       status = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
+#'       statusMessage = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       external = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_resource_share_associations(
@@ -543,6 +750,44 @@ ram_get_resource_share_associations <- function(associationType, resourceShareAr
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceShareInvitations = list(
+#'     list(
+#'       resourceShareInvitationArn = "string",
+#'       resourceShareName = "string",
+#'       resourceShareArn = "string",
+#'       senderAccountId = "string",
+#'       receiverAccountId = "string",
+#'       invitationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "PENDING"|"ACCEPTED"|"REJECTED"|"EXPIRED",
+#'       resourceShareAssociations = list(
+#'         list(
+#'           resourceShareArn = "string",
+#'           resourceShareName = "string",
+#'           associatedEntity = "string",
+#'           associationType = "PRINCIPAL"|"RESOURCE",
+#'           status = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
+#'           statusMessage = "string",
+#'           creationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lastUpdatedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           external = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -598,6 +843,37 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceShares = list(
+#'     list(
+#'       resourceShareArn = "string",
+#'       name = "string",
+#'       owningAccountId = "string",
+#'       allowExternalPrincipals = TRUE|FALSE,
+#'       status = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED",
+#'       statusMessage = "string",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -658,6 +934,30 @@ ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatu
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resources = list(
+#'     list(
+#'       arn = "string",
+#'       type = "string",
+#'       resourceShareArn = "string",
+#'       resourceGroupArn = "string",
+#'       status = "AVAILABLE"|"ZONAL_RESOURCE_INACCESSIBLE"|"LIMIT_EXCEEDED"|"UNAVAILABLE"|"PENDING",
+#'       statusMessage = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_pending_invitation_resources(
@@ -702,6 +1002,30 @@ ram_list_pending_invitation_resources <- function(resourceShareInvitationArn, ne
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   permissions = list(
+#'     list(
+#'       arn = "string",
+#'       version = "string",
+#'       defaultVersion = TRUE|FALSE,
+#'       name = "string",
+#'       resourceType = "string",
+#'       status = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -760,6 +1084,27 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   principals = list(
+#'     list(
+#'       id = "string",
+#'       resourceShareArn = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       external = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_principals(
@@ -812,6 +1157,30 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   permissions = list(
+#'     list(
+#'       arn = "string",
+#'       version = "string",
+#'       defaultVersion = TRUE|FALSE,
+#'       name = "string",
+#'       resourceType = "string",
+#'       status = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resource_share_permissions(
@@ -853,6 +1222,20 @@ ram_list_resource_share_permissions <- function(resourceShareArn, nextToken = NU
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceTypes = list(
+#'     list(
+#'       resourceType = "string",
+#'       serviceName = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -909,6 +1292,30 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL) {
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resources = list(
+#'     list(
+#'       arn = "string",
+#'       type = "string",
+#'       resourceShareArn = "string",
+#'       resourceGroupArn = "string",
+#'       status = "AVAILABLE"|"ZONAL_RESOURCE_INACCESSIBLE"|"LIMIT_EXCEEDED"|"UNAVAILABLE"|"PENDING",
+#'       statusMessage = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -968,6 +1375,14 @@ ram_list_resources <- function(resourceOwner, principal = NULL, resourceType = N
 #'
 #' @param resourceShareArn &#91;required&#93; The ARN of the resource share to promote.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   returnValue = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$promote_resource_share_created_from_policy(
@@ -1008,6 +1423,42 @@ ram_promote_resource_share_created_from_policy <- function(resourceShareArn) {
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceShareInvitation = list(
+#'     resourceShareInvitationArn = "string",
+#'     resourceShareName = "string",
+#'     resourceShareArn = "string",
+#'     senderAccountId = "string",
+#'     receiverAccountId = "string",
+#'     invitationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"ACCEPTED"|"REJECTED"|"EXPIRED",
+#'     resourceShareAssociations = list(
+#'       list(
+#'         resourceShareArn = "string",
+#'         resourceShareName = "string",
+#'         associatedEntity = "string",
+#'         associationType = "PRINCIPAL"|"RESOURCE",
+#'         status = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
+#'         statusMessage = "string",
+#'         creationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         external = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reject_resource_share_invitation(
@@ -1046,6 +1497,12 @@ ram_reject_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #'
 #' @param resourceShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource share.
 #' @param tags &#91;required&#93; One or more tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1093,6 +1550,12 @@ ram_tag_resource <- function(resourceShareArn, tags) {
 #' @param resourceShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource share.
 #' @param tagKeys &#91;required&#93; The tag keys of the tags to remove.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -1138,6 +1601,35 @@ ram_untag_resource <- function(resourceShareArn, tagKeys) {
 #' associated with a resource share.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceShare = list(
+#'     resourceShareArn = "string",
+#'     name = "string",
+#'     owningAccountId = "string",
+#'     allowExternalPrincipals = TRUE|FALSE,
+#'     status = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED",
+#'     statusMessage = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD"
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

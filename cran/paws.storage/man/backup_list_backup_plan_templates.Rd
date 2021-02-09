@@ -15,6 +15,18 @@ pointed to by the next token.}
 
 \item{MaxResults}{The maximum number of items to be returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  BackupPlanTemplatesList = list(
+    list(
+      BackupPlanTemplateId = "string",
+      BackupPlanTemplateName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns metadata of your saved backup plan templates, including the
 template ID, name, and the creation and deletion dates.

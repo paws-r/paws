@@ -14,6 +14,12 @@ sagemaker_update_pipeline_execution(PipelineExecutionArn,
 
 \item{PipelineExecutionDisplayName}{The display name of the pipeline execution.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PipelineExecutionArn = "string"
+)
+}
+}
 \description{
 Updates a pipeline execution.
 }

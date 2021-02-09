@@ -21,6 +21,12 @@ VPC.}
 
 \item{VpcId}{[required] The ID of a ClassicLink-enabled VPC.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Links an EC2-Classic instance to a ClassicLink-enabled VPC through one
 or more of the VPC's security groups. You cannot link an EC2-Classic

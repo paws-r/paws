@@ -19,6 +19,16 @@ configuration setting.}
 determines whether images are scanned for known vulnerabilities after
 being pushed to the repository.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  repositoryName = "string",
+  imageScanningConfiguration = list(
+    scanOnPush = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Updates the image scanning configuration for the specified repository.
 }

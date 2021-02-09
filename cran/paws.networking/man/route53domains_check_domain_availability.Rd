@@ -29,6 +29,12 @@ For more information, see \href{https://docs.aws.amazon.com/Route53/latest/Devel
 
 \item{IdnLangCode}{Reserved for future use.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Availability = "AVAILABLE"|"AVAILABLE_RESERVED"|"AVAILABLE_PREORDER"|"UNAVAILABLE"|"UNAVAILABLE_PREMIUM"|"UNAVAILABLE_RESTRICTED"|"RESERVED"|"DONT_KNOW"
+)
+}
+}
 \description{
 This operation checks the availability of one domain name. Note that if
 the availability status of a domain is pending, you must submit another

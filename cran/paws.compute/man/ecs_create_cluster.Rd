@@ -27,7 +27,7 @@ have only one value.
 resources, remember that other services may have restrictions on
 allowed characters. Generally allowed characters are: letters,
 numbers, and spaces representable in UTF-8, and the following
-characters: + - = . \\_ : / @.
+characters: + - = . _ : / @.
 \item Tag keys and values are case-sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
 such as a prefix for either keys or values as it is reserved for AWS
@@ -90,6 +90,62 @@ If a default capacity provider strategy is not defined for a cluster
 during creation, it can be defined later with the
 \code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
 API operation.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  cluster = list(
+    clusterArn = "string",
+    clusterName = "string",
+    status = "string",
+    registeredContainerInstancesCount = 123,
+    runningTasksCount = 123,
+    pendingTasksCount = 123,
+    activeServicesCount = 123,
+    statistics = list(
+      list(
+        name = "string",
+        value = "string"
+      )
+    ),
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    ),
+    settings = list(
+      list(
+        name = "containerInsights",
+        value = "string"
+      )
+    ),
+    capacityProviders = list(
+      "string"
+    ),
+    defaultCapacityProviderStrategy = list(
+      list(
+        capacityProvider = "string",
+        weight = 123,
+        base = 123
+      )
+    ),
+    attachments = list(
+      list(
+        id = "string",
+        type = "string",
+        status = "string",
+        details = list(
+          list(
+            name = "string",
+            value = "string"
+          )
+        )
+      )
+    ),
+    attachmentsStatus = "string"
+  )
+)
+}
 }
 \description{
 Creates a new Amazon ECS cluster. By default, your account receives a

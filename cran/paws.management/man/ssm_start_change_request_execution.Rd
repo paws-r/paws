@@ -47,6 +47,12 @@ following key-value pairs:
 \item \verb{Key=Region,Value=us-east-2}
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AutomationExecutionId = "string"
+)
+}
+}
 \description{
 Creates a change request for Change Manager. The runbooks (Automation
 documents) specified in the change request run only after all required

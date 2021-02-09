@@ -32,6 +32,28 @@ Valid values: \code{codebuild:Project} | \code{codebuild:ReportGroup} |
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resources = list(
+    list(
+      arn = "string",
+      type = "string",
+      resourceShareArn = "string",
+      resourceGroupArn = "string",
+      status = "AVAILABLE"|"ZONAL_RESOURCE_INACCESSIBLE"|"LIMIT_EXCEEDED"|"UNAVAILABLE"|"PENDING",
+      statusMessage = "string",
+      creationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the resources that you added to a resource shares or the resources
 that are shared with you.

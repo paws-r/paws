@@ -13,6 +13,10 @@ attributes.}
 
 \item{CustomAttributes}{[required] An array of custom attributes, such as Mutable and Name.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds additional user attributes to the user pool schema.
 }

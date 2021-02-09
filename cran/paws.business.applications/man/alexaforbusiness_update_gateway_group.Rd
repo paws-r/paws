@@ -14,6 +14,10 @@ alexaforbusiness_update_gateway_group(GatewayGroupArn, Name,
 
 \item{Description}{The updated description of the gateway group.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the details of a gateway group. If any optional field is not
 provided, the existing corresponding value is left unmodified.

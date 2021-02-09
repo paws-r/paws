@@ -27,7 +27,7 @@ NULL
 #' 
 #' Selection elements such as check boxes and option buttons (radio
 #' buttons) can be detected in form data and in tables. A
-#' SELECTION\\_ELEMENT `Block` object contains information about a selection
+#' SELECTION_ELEMENT `Block` object contains information about a selection
 #' element, including the selection status.
 #' 
 #' You can choose which type of analysis to perform by specifying the
@@ -59,6 +59,64 @@ NULL
 #' that isn't related to the value of `FeatureTypes`).
 #' @param HumanLoopConfig Sets the configuration for the human in the loop workflow for analyzing
 #' documents.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentMetadata = list(
+#'     Pages = 123
+#'   ),
+#'   Blocks = list(
+#'     list(
+#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT",
+#'       Confidence = 123.0,
+#'       Text = "string",
+#'       TextType = "HANDWRITING"|"PRINTED",
+#'       RowIndex = 123,
+#'       ColumnIndex = 123,
+#'       RowSpan = 123,
+#'       ColumnSpan = 123,
+#'       Geometry = list(
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         Polygon = list(
+#'           list(
+#'             X = 123.0,
+#'             Y = 123.0
+#'           )
+#'         )
+#'       ),
+#'       Id = "string",
+#'       Relationships = list(
+#'         list(
+#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES",
+#'           Ids = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       EntityTypes = list(
+#'         "KEY"|"VALUE"
+#'       ),
+#'       SelectionStatus = "SELECTED"|"NOT_SELECTED",
+#'       Page = 123
+#'     )
+#'   ),
+#'   HumanLoopActivationOutput = list(
+#'     HumanLoopArn = "string",
+#'     HumanLoopActivationReasons = list(
+#'       "string"
+#'     ),
+#'     HumanLoopActivationConditionsEvaluationResults = "string"
+#'   ),
+#'   AnalyzeDocumentModelVersion = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -138,6 +196,57 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 #' If you're using an AWS SDK to call Amazon Textract, you might not need
 #' to base64-encode image bytes that are passed using the `Bytes` field.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentMetadata = list(
+#'     Pages = 123
+#'   ),
+#'   Blocks = list(
+#'     list(
+#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT",
+#'       Confidence = 123.0,
+#'       Text = "string",
+#'       TextType = "HANDWRITING"|"PRINTED",
+#'       RowIndex = 123,
+#'       ColumnIndex = 123,
+#'       RowSpan = 123,
+#'       ColumnSpan = 123,
+#'       Geometry = list(
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         Polygon = list(
+#'           list(
+#'             X = 123.0,
+#'             Y = 123.0
+#'           )
+#'         )
+#'       ),
+#'       Id = "string",
+#'       Relationships = list(
+#'         list(
+#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES",
+#'           Ids = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       EntityTypes = list(
+#'         "KEY"|"VALUE"
+#'       ),
+#'       SelectionStatus = "SELECTED"|"NOT_SELECTED",
+#'       Page = 123
+#'     )
+#'   ),
+#'   DetectDocumentTextModelVersion = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detect_document_text(
@@ -214,7 +323,7 @@ textract_detect_document_text <- function(Document) {
 #' 
 #' Selection elements such as check boxes and option buttons (radio
 #' buttons) can be detected in form data and in tables. A
-#' SELECTION\\_ELEMENT `Block` object contains information about a selection
+#' SELECTION_ELEMENT `Block` object contains information about a selection
 #' element, including the selection status.
 #' 
 #' Use the `MaxResults` parameter to limit the number of blocks that are
@@ -243,6 +352,68 @@ textract_detect_document_text <- function(Document) {
 #' to retrieve), Amazon Textract returns a pagination token in the
 #' response. You can use this pagination token to retrieve the next set of
 #' blocks.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentMetadata = list(
+#'     Pages = 123
+#'   ),
+#'   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"PARTIAL_SUCCESS",
+#'   NextToken = "string",
+#'   Blocks = list(
+#'     list(
+#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT",
+#'       Confidence = 123.0,
+#'       Text = "string",
+#'       TextType = "HANDWRITING"|"PRINTED",
+#'       RowIndex = 123,
+#'       ColumnIndex = 123,
+#'       RowSpan = 123,
+#'       ColumnSpan = 123,
+#'       Geometry = list(
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         Polygon = list(
+#'           list(
+#'             X = 123.0,
+#'             Y = 123.0
+#'           )
+#'         )
+#'       ),
+#'       Id = "string",
+#'       Relationships = list(
+#'         list(
+#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES",
+#'           Ids = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       EntityTypes = list(
+#'         "KEY"|"VALUE"
+#'       ),
+#'       SelectionStatus = "SELECTED"|"NOT_SELECTED",
+#'       Page = 123
+#'     )
+#'   ),
+#'   Warnings = list(
+#'     list(
+#'       ErrorCode = "string",
+#'       Pages = list(
+#'         123
+#'       )
+#'     )
+#'   ),
+#'   StatusMessage = "string",
+#'   AnalyzeDocumentModelVersion = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -333,6 +504,68 @@ textract_get_document_analysis <- function(JobId, MaxResults = NULL, NextToken =
 #' response. You can use this pagination token to retrieve the next set of
 #' blocks.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentMetadata = list(
+#'     Pages = 123
+#'   ),
+#'   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"PARTIAL_SUCCESS",
+#'   NextToken = "string",
+#'   Blocks = list(
+#'     list(
+#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT",
+#'       Confidence = 123.0,
+#'       Text = "string",
+#'       TextType = "HANDWRITING"|"PRINTED",
+#'       RowIndex = 123,
+#'       ColumnIndex = 123,
+#'       RowSpan = 123,
+#'       ColumnSpan = 123,
+#'       Geometry = list(
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         Polygon = list(
+#'           list(
+#'             X = 123.0,
+#'             Y = 123.0
+#'           )
+#'         )
+#'       ),
+#'       Id = "string",
+#'       Relationships = list(
+#'         list(
+#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES",
+#'           Ids = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       EntityTypes = list(
+#'         "KEY"|"VALUE"
+#'       ),
+#'       SelectionStatus = "SELECTED"|"NOT_SELECTED",
+#'       Page = 123
+#'     )
+#'   ),
+#'   Warnings = list(
+#'     list(
+#'       ErrorCode = "string",
+#'       Pages = list(
+#'         123
+#'       )
+#'     )
+#'   ),
+#'   StatusMessage = "string",
+#'   DetectDocumentTextModelVersion = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_document_text_detection(
@@ -422,6 +655,14 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #' be used for server-side encryption of the objects in the customer
 #' bucket. When this parameter is not enabled, the result will be encrypted
 #' server side,using SSE-S3.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -521,6 +762,14 @@ textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, Cli
 #' be used for server-side encryption of the objects in the customer
 #' bucket. When this parameter is not enabled, the result will be encrypted
 #' server side,using SSE-S3.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

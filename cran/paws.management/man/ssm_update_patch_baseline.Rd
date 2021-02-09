@@ -39,7 +39,7 @@ in the \emph{AWS Systems Manager User Guide}.}
 \item{RejectedPatchesAction}{The action for Patch Manager to take on patches included in the
 RejectedPackages list.
 \itemize{
-\item \strong{ALLOW\\_AS\\_DEPENDENCY}: A package in the Rejected patches list is
+\item \strong{ALLOW_AS_DEPENDENCY}: A package in the Rejected patches list is
 installed only if it is a dependency of another package. It is
 considered compliant with the patch baseline, and its status is
 reported as \emph{InstalledOther}. This is the default action if no
@@ -60,6 +60,69 @@ instances only.}
 \item{Replace}{If True, then all fields that are required by the CreatePatchBaseline
 action are also required for this API request. Optional fields that are
 not specified are set to null.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  BaselineId = "string",
+  Name = "string",
+  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
+  GlobalFilters = list(
+    PatchFilters = list(
+      list(
+        Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
+        Values = list(
+          "string"
+        )
+      )
+    )
+  ),
+  ApprovalRules = list(
+    PatchRules = list(
+      list(
+        PatchFilterGroup = list(
+          PatchFilters = list(
+            list(
+              Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
+              Values = list(
+                "string"
+              )
+            )
+          )
+        ),
+        ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+        ApproveAfterDays = 123,
+        ApproveUntilDate = "string",
+        EnableNonSecurity = TRUE|FALSE
+      )
+    )
+  ),
+  ApprovedPatches = list(
+    "string"
+  ),
+  ApprovedPatchesComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+  ApprovedPatchesEnableNonSecurity = TRUE|FALSE,
+  RejectedPatches = list(
+    "string"
+  ),
+  RejectedPatchesAction = "ALLOW_AS_DEPENDENCY"|"BLOCK",
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  ModifiedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  Description = "string",
+  Sources = list(
+    list(
+      Name = "string",
+      Products = list(
+        "string"
+      ),
+      Configuration = "string"
+    )
+  )
+)
+}
 }
 \description{
 Modifies an existing patch baseline. Fields not specified in the request

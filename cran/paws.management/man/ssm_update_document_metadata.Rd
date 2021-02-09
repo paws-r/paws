@@ -14,6 +14,10 @@ ssm_update_document_metadata(Name, DocumentVersion, DocumentReviews)
 
 \item{DocumentReviews}{[required] The document review details to update.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates information related to approval reviews for a specific version
 of a document.

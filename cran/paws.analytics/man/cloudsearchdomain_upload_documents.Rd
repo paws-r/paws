@@ -16,6 +16,19 @@ two document batch formats:
 \item application/xml
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  status = "string",
+  adds = 123,
+  deletes = 123,
+  warnings = list(
+    list(
+      message = "string"
+    )
+  )
+)
+}
+}
 \description{
 Posts a batch of documents to a search domain for indexing. A document
 batch is a collection of add and delete operations that represent the

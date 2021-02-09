@@ -20,6 +20,18 @@ using the returned token in \code{NextToken}.}
 
 \item{MaxResults}{Maximum number of results to be returned per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  CreatedArtifactList = list(
+    list(
+      Name = "string",
+      Description = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the created artifacts attached to a given migration task in an
 update stream. This API has the following traits:

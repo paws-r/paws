@@ -14,6 +14,33 @@ requesting. This parameter is case-sensitive.
 By default, resize operations for all clusters defined for an AWS
 account are returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TargetNodeType = "string",
+  TargetNumberOfNodes = 123,
+  TargetClusterType = "string",
+  Status = "string",
+  ImportTablesCompleted = list(
+    "string"
+  ),
+  ImportTablesInProgress = list(
+    "string"
+  ),
+  ImportTablesNotStarted = list(
+    "string"
+  ),
+  AvgResizeRateInMegaBytesPerSecond = 123.0,
+  TotalResizeDataInMegaBytes = 123,
+  ProgressInMegaBytes = 123,
+  ElapsedTimeInSeconds = 123,
+  EstimatedTimeToCompletionInSeconds = 123,
+  ResizeType = "string",
+  Message = "string",
+  TargetEncryptionType = "string",
+  DataTransferProgressPercent = 123.0
+)
+}
+}
 \description{
 Returns information about the last resize operation for the specified
 cluster. If no resize operation has ever been initiated for the

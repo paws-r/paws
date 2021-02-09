@@ -14,6 +14,23 @@ apigateway_update_authorizer(restApiId, authorizerId, patchOperations)
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
+  providerARNs = list(
+    "string"
+  ),
+  authType = "string",
+  authorizerUri = "string",
+  authorizerCredentials = "string",
+  identitySource = "string",
+  identityValidationExpression = "string",
+  authorizerResultTtlInSeconds = 123
+)
+}
+}
 \description{
 Updates an existing Authorizer resource.<div class="seeAlso">
 

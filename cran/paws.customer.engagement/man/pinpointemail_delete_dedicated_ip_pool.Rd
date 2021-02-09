@@ -9,6 +9,10 @@ pinpointemail_delete_dedicated_ip_pool(PoolName)
 \arguments{
 \item{PoolName}{[required] The name of the dedicated IP pool that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Delete a dedicated IP pool.
 }

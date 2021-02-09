@@ -30,6 +30,10 @@ Insights rule, any tags you specify in this parameter are ignored. To
 change the tags of an existing rule, use
 \code{\link[=cloudwatch_tag_resource]{tag_resource}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates a Contributor Insights rule. Rules evaluate log events in a
 CloudWatch Logs log group, enabling you to find contributor data for the

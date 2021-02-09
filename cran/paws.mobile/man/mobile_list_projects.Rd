@@ -13,6 +13,18 @@ mobile_list_projects(maxResults, nextToken)
 non-null pagination token is returned in a result, then pass its value
 in here in another request to list more projects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  projects = list(
+    list(
+      name = "string",
+      projectId = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists projects in AWS Mobile Hub.
 }

@@ -18,6 +18,16 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociationId = "string",
+  Status = list(
+    Code = "associating"|"associated"|"association-failed"|"disassociating"|"disassociated",
+    Message = "string"
+  )
+)
+}
+}
 \description{
 Disassociates a target network from the specified Client VPN endpoint.
 When you disassociate the last target network from a Client VPN, the

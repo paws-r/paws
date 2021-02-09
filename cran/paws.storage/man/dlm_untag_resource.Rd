@@ -11,6 +11,10 @@ dlm_untag_resource(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] The tag keys.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the specified tags from the specified resource.
 }

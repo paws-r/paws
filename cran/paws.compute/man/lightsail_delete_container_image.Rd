@@ -23,6 +23,10 @@ example, \verb{:container-service-1.mystaticwebsite.1}. Container images
 sourced from a public registry like Docker Hub don't start with a colon.
 For example, \code{nginx:latest} or \code{nginx}.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a container image that is registered to your Amazon Lightsail
 container service.

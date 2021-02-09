@@ -31,8 +31,33 @@ NULL
 #' @param customerId An AWS Marketplace customer identifier , when integrating with the AWS
 #' SaaS Marketplace.
 #' @param tags The key-value map of strings. The valid character set is
-#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   value = "string",
+#'   name = "string",
+#'   customerId = "string",
+#'   description = "string",
+#'   enabled = TRUE|FALSE,
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   stageKeys = list(
+#'     "string"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -101,21 +126,21 @@ apigateway_create_api_key <- function(name = NULL, description = NULL, enabled =
 #' pool.
 #' @param providerARNs A list of the Amazon Cognito user pool ARNs for the `COGNITO_USER_POOLS`
 #' authorizer. Each element is of this format:
-#' `arn:aws:cognito-idp:\{region\}:\{account_id\}:userpool/\{user_pool_id\}`. For
+#' `arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}`. For
 #' a `TOKEN` or `REQUEST` authorizer, this is not defined.
 #' @param authType Optional customer-defined field, used in OpenAPI imports and exports
 #' without functional impact.
 #' @param authorizerUri Specifies the authorizer's Uniform Resource Identifier (URI). For
 #' `TOKEN` or `REQUEST` authorizers, this must be a well-formed Lambda
 #' function URI, for example,
-#' `arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\{account_id\}:function:\{lambda_function_name\}/invocations`.
+#' `arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations`.
 #' In general, the URI has this form
-#' `arn:aws:apigateway:\{region\}:lambda:path/\{service_api\}`, where
-#' `\{region\}` is the same as the region hosting the Lambda function, `path`
+#' `arn:aws:apigateway:{region}:lambda:path/{service_api}`, where
+#' `{region}` is the same as the region hosting the Lambda function, `path`
 #' indicates that the remaining substring in the URI should be treated as
 #' the path to the resource, including the initial `/`. For Lambda
 #' functions, this is usually of the form
-#' `/2015-03-31/functions/\\[FunctionARN\\]/invocations`.
+#' `/2015-03-31/functions/[FunctionARN]/invocations`.
 #' @param authorizerCredentials Specifies the required credentials as an IAM role for API Gateway to
 #' invoke the authorizer. To specify an IAM role for API Gateway to assume,
 #' use the role's Amazon Resource Name (ARN). To use resource-based
@@ -154,6 +179,25 @@ apigateway_create_api_key <- function(name = NULL, description = NULL, enabled =
 #' authorization caching is disabled. If it is greater than 0, API Gateway
 #' will cache authorizer responses. If this field is not set, the default
 #' value is 300. The maximum value is 3600, or 1 hour.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
+#'   providerARNs = list(
+#'     "string"
+#'   ),
+#'   authType = "string",
+#'   authorizerUri = "string",
+#'   authorizerCredentials = "string",
+#'   identitySource = "string",
+#'   identityValidationExpression = "string",
+#'   authorizerResultTtlInSeconds = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -212,6 +256,16 @@ apigateway_create_authorizer <- function(restApiId, name, type, providerARNs = N
 #' Specify '(none)' if you want callers to explicitly specify the stage
 #' name after any base path name.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   basePath = "string",
+#'   restApiId = "string",
+#'   stage = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_base_path_mapping(
@@ -265,10 +319,30 @@ apigateway_create_base_path_mapping <- function(domainName, basePath = NULL, res
 #' @param variables A map that defines the stage variables for the Stage resource that is
 #' associated with the new deployment. Variable names can have alphanumeric
 #' and underscore characters, and the values must match
-#' `\\[A-Za-z0-9-._~:/?#&=,\\]+`.
+#' `[A-Za-z0-9-._~:/?#&=,]+`.
 #' @param canarySettings The input configuration for the canary deployment when the deployment is
 #' a canary release deployment.
 #' @param tracingEnabled Specifies whether active tracing with X-ray is enabled for the Stage.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   description = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   apiSummary = list(
+#'     list(
+#'       list(
+#'         authorizationType = "string",
+#'         apiKeyRequired = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -328,6 +402,22 @@ apigateway_create_deployment <- function(restApiId, stageName = NULL, stageDescr
 #' entity. Enclosed key-value pairs are API-specific, but only
 #' OpenAPI-compliant key-value pairs can be exported and, hence, published.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   location = list(
+#'     type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
+#'     path = "string",
+#'     method = "string",
+#'     statusCode = "string",
+#'     name = "string"
+#'   ),
+#'   properties = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_documentation_part(
@@ -376,6 +466,18 @@ apigateway_create_documentation_part <- function(restApiId, location, properties
 #' @param documentationVersion &#91;required&#93; \[Required\] The version identifier of the new snapshot.
 #' @param stageName The stage name to be associated with the new documentation snapshot.
 #' @param description A description about the new documentation snapshot.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   version = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   description = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -444,11 +546,51 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' @param endpointConfiguration The endpoint configuration of this DomainName showing the endpoint types
 #' of the domain name.
 #' @param tags The key-value map of strings. The valid character set is
-#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
 #' @param securityPolicy The Transport Layer Security (TLS) version + cipher suite for this
 #' DomainName. The valid values are `TLS_1_0` and `TLS_1_2`.
 #' @param mutualTlsAuthentication 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainName = "string",
+#'   certificateName = "string",
+#'   certificateArn = "string",
+#'   certificateUploadDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   regionalDomainName = "string",
+#'   regionalHostedZoneId = "string",
+#'   regionalCertificateName = "string",
+#'   regionalCertificateArn = "string",
+#'   distributionDomainName = "string",
+#'   distributionHostedZoneId = "string",
+#'   endpointConfiguration = list(
+#'     types = list(
+#'       "REGIONAL"|"EDGE"|"PRIVATE"
+#'     ),
+#'     vpcEndpointIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING",
+#'   domainNameStatusMessage = "string",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   mutualTlsAuthentication = list(
+#'     truststoreUri = "string",
+#'     truststoreVersion = "string",
+#'     truststoreWarnings = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -514,8 +656,21 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
 #' @param name &#91;required&#93; \[Required\] The name of the model. Must be alphanumeric.
 #' @param description The description of the model.
 #' @param schema The schema for the model. For `application/json` models, this should be
-#' JSON schema draft 4 model.
+#' [JSON schema draft
+#' 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model.
 #' @param contentType &#91;required&#93; \[Required\] The content-type for the model.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   schema = "string",
+#'   contentType = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -564,6 +719,17 @@ apigateway_create_model <- function(restApiId, name, description = NULL, schema 
 #' @param validateRequestParameters A Boolean flag to indicate whether to validate request parameters,
 #' `true`, or not `false`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   validateRequestBody = TRUE|FALSE,
+#'   validateRequestParameters = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_request_validator(
@@ -605,6 +771,84 @@ apigateway_create_request_validator <- function(restApiId, name = NULL, validate
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param parentId &#91;required&#93; \[Required\] The parent resource's identifier.
 #' @param pathPart &#91;required&#93; The last path segment for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   parentId = "string",
+#'   pathPart = "string",
+#'   path = "string",
+#'   resourceMethods = list(
+#'     list(
+#'       httpMethod = "string",
+#'       authorizationType = "string",
+#'       authorizerId = "string",
+#'       apiKeyRequired = TRUE|FALSE,
+#'       requestValidatorId = "string",
+#'       operationName = "string",
+#'       requestParameters = list(
+#'         TRUE|FALSE
+#'       ),
+#'       requestModels = list(
+#'         "string"
+#'       ),
+#'       methodResponses = list(
+#'         list(
+#'           statusCode = "string",
+#'           responseParameters = list(
+#'             TRUE|FALSE
+#'           ),
+#'           responseModels = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       methodIntegration = list(
+#'         type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+#'         httpMethod = "string",
+#'         uri = "string",
+#'         connectionType = "INTERNET"|"VPC_LINK",
+#'         connectionId = "string",
+#'         credentials = "string",
+#'         requestParameters = list(
+#'           "string"
+#'         ),
+#'         requestTemplates = list(
+#'           "string"
+#'         ),
+#'         passthroughBehavior = "string",
+#'         contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'         timeoutInMillis = 123,
+#'         cacheNamespace = "string",
+#'         cacheKeyParameters = list(
+#'           "string"
+#'         ),
+#'         integrationResponses = list(
+#'           list(
+#'             statusCode = "string",
+#'             selectionPattern = "string",
+#'             responseParameters = list(
+#'               "string"
+#'             ),
+#'             responseTemplates = list(
+#'               "string"
+#'             ),
+#'             contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+#'           )
+#'         ),
+#'         tlsConfig = list(
+#'           insecureSkipVerification = TRUE|FALSE
+#'         )
+#'       ),
+#'       authorizationScopes = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -666,15 +910,51 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #'     a custom authorizer.
 #' @param endpointConfiguration The endpoint configuration of this RestApi showing the endpoint types of
 #' the API.
-#' @param policy A stringified JSON policy document that applies to this RestApi regardless of the caller and <a>Method</a> configuration.
+#' @param policy A stringified JSON policy document that applies to this RestApi
+#' regardless of the caller and Method configuration.
 #' @param tags The key-value map of strings. The valid character set is
-#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
 #' @param disableExecuteApiEndpoint Specifies whether clients can invoke your API by using the default
 #' `execute-api` endpoint. By default, clients can invoke your API with the
-#' default https://\{api\\_id\}.execute-api.\{region\}.amazonaws.com endpoint.
-#' To require that clients use a custom domain name to invoke your API,
-#' disable the default endpoint.
+#' default https://\{api_id\}.execute-api.\{region\}.amazonaws.com
+#' endpoint. To require that clients use a custom domain name to invoke
+#' your API, disable the default endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   version = "string",
+#'   warnings = list(
+#'     "string"
+#'   ),
+#'   binaryMediaTypes = list(
+#'     "string"
+#'   ),
+#'   minimumCompressionSize = 123,
+#'   apiKeySource = "HEADER"|"AUTHORIZER",
+#'   endpointConfiguration = list(
+#'     types = list(
+#'       "REGIONAL"|"EDGE"|"PRIVATE"
+#'     ),
+#'     vpcEndpointIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   policy = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   disableExecuteApiEndpoint = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -747,13 +1027,68 @@ apigateway_create_rest_api <- function(name, description = NULL, version = NULL,
 #' @param cacheClusterSize The stage's cache cluster size.
 #' @param variables A map that defines the stage variables for the new Stage resource.
 #' Variable names can have alphanumeric and underscore characters, and the
-#' values must match `\\[A-Za-z0-9-._~:/?#&=,\\]+`.
+#' values must match `[A-Za-z0-9-._~:/?#&=,]+`.
 #' @param documentationVersion The version of the associated API documentation.
 #' @param canarySettings The canary deployment settings of this stage.
 #' @param tracingEnabled Specifies whether active tracing with X-ray is enabled for the Stage.
 #' @param tags The key-value map of strings. The valid character set is
-#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deploymentId = "string",
+#'   clientCertificateId = "string",
+#'   stageName = "string",
+#'   description = "string",
+#'   cacheClusterEnabled = TRUE|FALSE,
+#'   cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
+#'   cacheClusterStatus = "CREATE_IN_PROGRESS"|"AVAILABLE"|"DELETE_IN_PROGRESS"|"NOT_AVAILABLE"|"FLUSH_IN_PROGRESS",
+#'   methodSettings = list(
+#'     list(
+#'       metricsEnabled = TRUE|FALSE,
+#'       loggingLevel = "string",
+#'       dataTraceEnabled = TRUE|FALSE,
+#'       throttlingBurstLimit = 123,
+#'       throttlingRateLimit = 123.0,
+#'       cachingEnabled = TRUE|FALSE,
+#'       cacheTtlInSeconds = 123,
+#'       cacheDataEncrypted = TRUE|FALSE,
+#'       requireAuthorizationForCacheControl = TRUE|FALSE,
+#'       unauthorizedCacheControlHeaderStrategy = "FAIL_WITH_403"|"SUCCEED_WITH_RESPONSE_HEADER"|"SUCCEED_WITHOUT_RESPONSE_HEADER"
+#'     )
+#'   ),
+#'   variables = list(
+#'     "string"
+#'   ),
+#'   documentationVersion = "string",
+#'   accessLogSettings = list(
+#'     format = "string",
+#'     destinationArn = "string"
+#'   ),
+#'   canarySettings = list(
+#'     percentTraffic = 123.0,
+#'     deploymentId = "string",
+#'     stageVariableOverrides = list(
+#'       "string"
+#'     ),
+#'     useStageCache = TRUE|FALSE
+#'   ),
+#'   tracingEnabled = TRUE|FALSE,
+#'   webAclArn = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -820,8 +1155,43 @@ apigateway_create_stage <- function(restApiId, stageName, deploymentId, descript
 #' @param throttle The throttling limits of the usage plan.
 #' @param quota The quota of the usage plan.
 #' @param tags The key-value map of strings. The valid character set is
-#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   apiStages = list(
+#'     list(
+#'       apiId = "string",
+#'       stage = "string",
+#'       throttle = list(
+#'         list(
+#'           burstLimit = 123,
+#'           rateLimit = 123.0
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   throttle = list(
+#'     burstLimit = 123,
+#'     rateLimit = 123.0
+#'   ),
+#'   quota = list(
+#'     limit = 123,
+#'     offset = 123,
+#'     period = "DAY"|"WEEK"|"MONTH"
+#'   ),
+#'   productCode = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -890,6 +1260,17 @@ apigateway_create_usage_plan <- function(name, description = NULL, apiStages = N
 #' customer.
 #' @param keyType &#91;required&#93; \[Required\] The type of a UsagePlanKey resource for a plan customer.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   type = "string",
+#'   value = "string",
+#'   name = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_usage_plan_key(
@@ -938,8 +1319,26 @@ apigateway_create_usage_plan_key <- function(usagePlanId, keyId, keyType) {
 #' the VPC link. The network load balancer must be owned by the same AWS
 #' account of the API owner.
 #' @param tags The key-value map of strings. The valid character set is
-#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   targetArns = list(
+#'     "string"
+#'   ),
+#'   status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
+#'   statusMessage = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -984,6 +1383,8 @@ apigateway_create_vpc_link <- function(name, description = NULL, targetArns, tag
 #' apigateway_delete_api_key(apiKey)
 #'
 #' @param apiKey &#91;required&#93; \[Required\] The identifier of the ApiKey resource to be deleted.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1030,6 +1431,8 @@ apigateway_delete_api_key <- function(apiKey) {
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param authorizerId &#91;required&#93; \[Required\] The identifier of the Authorizer resource.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_authorizer(
@@ -1072,6 +1475,8 @@ apigateway_delete_authorizer <- function(restApiId, authorizerId) {
 #' 
 #' To specify an empty base path, set this parameter to `'(none)'`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_base_path_mapping(
@@ -1110,6 +1515,8 @@ apigateway_delete_base_path_mapping <- function(domainName, basePath) {
 #'
 #' @param clientCertificateId &#91;required&#93; \[Required\] The identifier of the ClientCertificate resource to be
 #' deleted.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1150,6 +1557,8 @@ apigateway_delete_client_certificate <- function(clientCertificateId) {
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param deploymentId &#91;required&#93; \[Required\] The identifier of the Deployment resource to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_deployment(
@@ -1188,6 +1597,8 @@ apigateway_delete_deployment <- function(restApiId, deploymentId) {
 #'
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param documentationPartId &#91;required&#93; \[Required\] The identifier of the to-be-deleted documentation part.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1229,6 +1640,8 @@ apigateway_delete_documentation_part <- function(restApiId, documentationPartId)
 #' @param documentationVersion &#91;required&#93; \[Required\] The version identifier of a to-be-deleted documentation
 #' snapshot.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_documentation_version(
@@ -1266,6 +1679,8 @@ apigateway_delete_documentation_version <- function(restApiId, documentationVers
 #' apigateway_delete_domain_name(domainName)
 #'
 #' @param domainName &#91;required&#93; \[Required\] The name of the DomainName resource to be deleted.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1309,26 +1724,28 @@ apigateway_delete_domain_name <- function(domainName) {
 #' 
 #' The response type of the associated GatewayResponse. Valid values are
 #' 
-#' -   ACCESS\\_DENIED
-#' -   API\\_CONFIGURATION\\_ERROR
-#' -   AUTHORIZER\\_FAILURE
-#' -   AUTHORIZER\\_CONFIGURATION\\_ERROR
-#' -   BAD\\_REQUEST\\_PARAMETERS
-#' -   BAD\\_REQUEST\\_BODY
-#' -   DEFAULT\\_4XX
-#' -   DEFAULT\\_5XX
-#' -   EXPIRED\\_TOKEN
-#' -   INVALID\\_SIGNATURE
-#' -   INTEGRATION\\_FAILURE
-#' -   INTEGRATION\\_TIMEOUT
-#' -   INVALID\\_API\\_KEY
-#' -   MISSING\\_AUTHENTICATION\\_TOKEN
-#' -   QUOTA\\_EXCEEDED
-#' -   REQUEST\\_TOO\\_LARGE
-#' -   RESOURCE\\_NOT\\_FOUND
+#' -   ACCESS_DENIED
+#' -   API_CONFIGURATION_ERROR
+#' -   AUTHORIZER_FAILURE
+#' -   AUTHORIZER_CONFIGURATION_ERROR
+#' -   BAD_REQUEST_PARAMETERS
+#' -   BAD_REQUEST_BODY
+#' -   DEFAULT_4XX
+#' -   DEFAULT_5XX
+#' -   EXPIRED_TOKEN
+#' -   INVALID_SIGNATURE
+#' -   INTEGRATION_FAILURE
+#' -   INTEGRATION_TIMEOUT
+#' -   INVALID_API_KEY
+#' -   MISSING_AUTHENTICATION_TOKEN
+#' -   QUOTA_EXCEEDED
+#' -   REQUEST_TOO_LARGE
+#' -   RESOURCE_NOT_FOUND
 #' -   THROTTLED
 #' -   UNAUTHORIZED
-#' -   UNSUPPORTED\\_MEDIA\\_TYPE
+#' -   UNSUPPORTED_MEDIA_TYPE
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1370,6 +1787,8 @@ apigateway_delete_gateway_response <- function(restApiId, responseType) {
 #' @param resourceId &#91;required&#93; \[Required\] Specifies a delete integration request's resource
 #' identifier.
 #' @param httpMethod &#91;required&#93; \[Required\] Specifies a delete integration request's HTTP method.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1417,6 +1836,8 @@ apigateway_delete_integration <- function(restApiId, resourceId, httpMethod) {
 #' @param statusCode &#91;required&#93; \[Required\] Specifies a delete integration response request's status
 #' code.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_integration_response(
@@ -1458,6 +1879,8 @@ apigateway_delete_integration_response <- function(restApiId, resourceId, httpMe
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; \[Required\] The Resource identifier for the Method resource.
 #' @param httpMethod &#91;required&#93; \[Required\] The HTTP verb of the Method resource.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1502,6 +1925,8 @@ apigateway_delete_method <- function(restApiId, resourceId, httpMethod) {
 #' @param httpMethod &#91;required&#93; \[Required\] The HTTP verb of the Method resource.
 #' @param statusCode &#91;required&#93; \[Required\] The status code identifier for the MethodResponse resource.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_method_response(
@@ -1543,6 +1968,8 @@ apigateway_delete_method_response <- function(restApiId, resourceId, httpMethod,
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param modelName &#91;required&#93; \[Required\] The name of the model to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_model(
@@ -1581,6 +2008,8 @@ apigateway_delete_model <- function(restApiId, modelName) {
 #'
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param requestValidatorId &#91;required&#93; \[Required\] The identifier of the RequestValidator to be deleted.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1621,6 +2050,8 @@ apigateway_delete_request_validator <- function(restApiId, requestValidatorId) {
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; \[Required\] The identifier of the Resource resource.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_resource(
@@ -1658,6 +2089,8 @@ apigateway_delete_resource <- function(restApiId, resourceId) {
 #' apigateway_delete_rest_api(restApiId)
 #'
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1697,6 +2130,8 @@ apigateway_delete_rest_api <- function(restApiId) {
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param stageName &#91;required&#93; \[Required\] The name of the Stage resource to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_stage(
@@ -1734,6 +2169,8 @@ apigateway_delete_stage <- function(restApiId, stageName) {
 #' apigateway_delete_usage_plan(usagePlanId)
 #'
 #' @param usagePlanId &#91;required&#93; \[Required\] The Id of the to-be-deleted usage plan.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1777,6 +2214,8 @@ apigateway_delete_usage_plan <- function(usagePlanId) {
 #' plan customer.
 #' @param keyId &#91;required&#93; \[Required\] The Id of the UsagePlanKey resource to be deleted.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_usage_plan_key(
@@ -1816,6 +2255,8 @@ apigateway_delete_usage_plan_key <- function(usagePlanId, keyId) {
 #' @param vpcLinkId &#91;required&#93; \[Required\] The identifier of the VpcLink. It is used in an Integration
 #' to reference this VpcLink.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_vpc_link(
@@ -1853,6 +2294,8 @@ apigateway_delete_vpc_link <- function(vpcLinkId) {
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param stageName &#91;required&#93; The name of the stage to flush.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1893,6 +2336,8 @@ apigateway_flush_stage_authorizers_cache <- function(restApiId, stageName) {
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param stageName &#91;required&#93; \[Required\] The name of the stage to flush its cache.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$flush_stage_cache(
@@ -1931,8 +2376,27 @@ apigateway_flush_stage_cache <- function(restApiId, stageName) {
 #'
 #' @param description The description of the ClientCertificate.
 #' @param tags The key-value map of strings. The valid character set is
-#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   clientCertificateId = "string",
+#'   description = "string",
+#'   pemEncodedCertificate = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   expirationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1972,6 +2436,22 @@ apigateway_generate_client_certificate <- function(description = NULL, tags = NU
 #' @usage
 #' apigateway_get_account()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cloudwatchRoleArn = "string",
+#'   throttleSettings = list(
+#'     burstLimit = 123,
+#'     rateLimit = 123.0
+#'   ),
+#'   features = list(
+#'     "string"
+#'   ),
+#'   apiKeyVersion = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_account()
@@ -2008,6 +2488,31 @@ apigateway_get_account <- function() {
 #' @param apiKey &#91;required&#93; \[Required\] The identifier of the ApiKey resource.
 #' @param includeValue A boolean flag to specify whether (`true`) or not (`false`) the result
 #' contains the key value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   value = "string",
+#'   name = "string",
+#'   customerId = "string",
+#'   description = "string",
+#'   enabled = TRUE|FALSE,
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   stageKeys = list(
+#'     "string"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2054,6 +2559,39 @@ apigateway_get_api_key <- function(apiKey, includeValue = NULL) {
 #' such as a developer portal.
 #' @param includeValues A boolean flag to specify whether (`true`) or not (`false`) the result
 #' contains key values.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   warnings = list(
+#'     "string"
+#'   ),
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       value = "string",
+#'       name = "string",
+#'       customerId = "string",
+#'       description = "string",
+#'       enabled = TRUE|FALSE,
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stageKeys = list(
+#'         "string"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2104,6 +2642,25 @@ apigateway_get_api_keys <- function(position = NULL, limit = NULL, nameQuery = N
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param authorizerId &#91;required&#93; \[Required\] The identifier of the Authorizer resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
+#'   providerARNs = list(
+#'     "string"
+#'   ),
+#'   authType = "string",
+#'   authorizerUri = "string",
+#'   authorizerCredentials = "string",
+#'   identitySource = "string",
+#'   identityValidationExpression = "string",
+#'   authorizerResultTtlInSeconds = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_authorizer(
@@ -2152,6 +2709,30 @@ apigateway_get_authorizer <- function(restApiId, authorizerId) {
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
+#'       providerARNs = list(
+#'         "string"
+#'       ),
+#'       authType = "string",
+#'       authorizerUri = "string",
+#'       authorizerCredentials = "string",
+#'       identitySource = "string",
+#'       identityValidationExpression = "string",
+#'       authorizerResultTtlInSeconds = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_authorizers(
@@ -2196,6 +2777,16 @@ apigateway_get_authorizers <- function(restApiId, position = NULL, limit = NULL)
 #' of the mappings across a single API. Specify '(none)' if you do not want
 #' callers to specify any base path name after the domain name.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   basePath = "string",
+#'   restApiId = "string",
+#'   stage = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_base_path_mapping(
@@ -2237,6 +2828,21 @@ apigateway_get_base_path_mapping <- function(domainName, basePath) {
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       basePath = "string",
+#'       restApiId = "string",
+#'       stage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_base_path_mappings(
@@ -2277,6 +2883,25 @@ apigateway_get_base_path_mappings <- function(domainName, position = NULL, limit
 #' @param clientCertificateId &#91;required&#93; \[Required\] The identifier of the ClientCertificate resource to be
 #' described.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   clientCertificateId = "string",
+#'   description = "string",
+#'   pemEncodedCertificate = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   expirationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_client_certificate(
@@ -2315,6 +2940,30 @@ apigateway_get_client_certificate <- function(clientCertificateId) {
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       clientCertificateId = "string",
+#'       description = "string",
+#'       pemEncodedCertificate = "string",
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       expirationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2358,13 +3007,33 @@ apigateway_get_client_certificates <- function(position = NULL, limit = NULL) {
 #' @param embed A query parameter to retrieve the specified embedded resources of the
 #' returned Deployment resource in the response. In a REST API call, this
 #' `embed` parameter value is a list of comma-separated strings, as in
-#' `GET /restapis/\{restapi_id\}/deployments/\{deployment_id\}?embed=var1,var2`.
+#' `GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=var1,var2`.
 #' The SDK and other platform-dependent libraries might use a different
 #' format for the list. Currently, this request supports only retrieval of
 #' the embedded API summary this way. Hence, the parameter value must be a
 #' single-valued list containing only the `"apisummary"` string. For
 #' example,
-#' `GET /restapis/\{restapi_id\}/deployments/\{deployment_id\}?embed=apisummary`.
+#' `GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=apisummary`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   description = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   apiSummary = list(
+#'     list(
+#'       list(
+#'         authorizationType = "string",
+#'         apiKeyRequired = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2410,6 +3079,31 @@ apigateway_get_deployment <- function(restApiId, deploymentId, embed = NULL) {
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       description = "string",
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       apiSummary = list(
+#'         list(
+#'           list(
+#'             authorizationType = "string",
+#'             apiKeyRequired = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_deployments(
@@ -2449,6 +3143,22 @@ apigateway_get_deployments <- function(restApiId, position = NULL, limit = NULL)
 #'
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param documentationPartId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   location = list(
+#'     type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
+#'     path = "string",
+#'     method = "string",
+#'     statusCode = "string",
+#'     name = "string"
+#'   ),
+#'   properties = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2498,6 +3208,27 @@ apigateway_get_documentation_part <- function(restApiId, documentationPartId) {
 #' `DOCUMENTED` for retrieving DocumentationPart resources with content and
 #' `UNDOCUMENTED` for DocumentationPart resources without content.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       location = list(
+#'         type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
+#'         path = "string",
+#'         method = "string",
+#'         statusCode = "string",
+#'         name = "string"
+#'       ),
+#'       properties = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_documentation_parts(
@@ -2543,6 +3274,18 @@ apigateway_get_documentation_parts <- function(restApiId, type = NULL, nameQuery
 #' @param documentationVersion &#91;required&#93; \[Required\] The version identifier of the to-be-retrieved documentation
 #' snapshot.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   version = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   description = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_documentation_version(
@@ -2583,6 +3326,23 @@ apigateway_get_documentation_version <- function(restApiId, documentationVersion
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       version = "string",
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       description = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2625,6 +3385,46 @@ apigateway_get_documentation_versions <- function(restApiId, position = NULL, li
 #'
 #' @param domainName &#91;required&#93; \[Required\] The name of the DomainName resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainName = "string",
+#'   certificateName = "string",
+#'   certificateArn = "string",
+#'   certificateUploadDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   regionalDomainName = "string",
+#'   regionalHostedZoneId = "string",
+#'   regionalCertificateName = "string",
+#'   regionalCertificateArn = "string",
+#'   distributionDomainName = "string",
+#'   distributionHostedZoneId = "string",
+#'   endpointConfiguration = list(
+#'     types = list(
+#'       "REGIONAL"|"EDGE"|"PRIVATE"
+#'     ),
+#'     vpcEndpointIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING",
+#'   domainNameStatusMessage = "string",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   mutualTlsAuthentication = list(
+#'     truststoreUri = "string",
+#'     truststoreVersion = "string",
+#'     truststoreWarnings = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_domain_name(
@@ -2663,6 +3463,51 @@ apigateway_get_domain_name <- function(domainName) {
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       domainName = "string",
+#'       certificateName = "string",
+#'       certificateArn = "string",
+#'       certificateUploadDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       regionalDomainName = "string",
+#'       regionalHostedZoneId = "string",
+#'       regionalCertificateName = "string",
+#'       regionalCertificateArn = "string",
+#'       distributionDomainName = "string",
+#'       distributionHostedZoneId = "string",
+#'       endpointConfiguration = list(
+#'         types = list(
+#'           "REGIONAL"|"EDGE"|"PRIVATE"
+#'         ),
+#'         vpcEndpointIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING",
+#'       domainNameStatusMessage = "string",
+#'       securityPolicy = "TLS_1_0"|"TLS_1_2",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       mutualTlsAuthentication = list(
+#'         truststoreUri = "string",
+#'         truststoreVersion = "string",
+#'         truststoreWarnings = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2718,6 +3563,16 @@ apigateway_get_domain_names <- function(position = NULL, limit = NULL) {
 #' `exportType` of`oas30` and `swagger`. This should be specified in the
 #' `Accept` header for direct API requests.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   contentType = "string",
+#'   contentDisposition = "string",
+#'   body = raw
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_export(
@@ -2765,26 +3620,42 @@ apigateway_get_export <- function(restApiId, stageName, exportType, parameters =
 #' 
 #' The response type of the associated GatewayResponse. Valid values are
 #' 
-#' -   ACCESS\\_DENIED
-#' -   API\\_CONFIGURATION\\_ERROR
-#' -   AUTHORIZER\\_FAILURE
-#' -   AUTHORIZER\\_CONFIGURATION\\_ERROR
-#' -   BAD\\_REQUEST\\_PARAMETERS
-#' -   BAD\\_REQUEST\\_BODY
-#' -   DEFAULT\\_4XX
-#' -   DEFAULT\\_5XX
-#' -   EXPIRED\\_TOKEN
-#' -   INVALID\\_SIGNATURE
-#' -   INTEGRATION\\_FAILURE
-#' -   INTEGRATION\\_TIMEOUT
-#' -   INVALID\\_API\\_KEY
-#' -   MISSING\\_AUTHENTICATION\\_TOKEN
-#' -   QUOTA\\_EXCEEDED
-#' -   REQUEST\\_TOO\\_LARGE
-#' -   RESOURCE\\_NOT\\_FOUND
+#' -   ACCESS_DENIED
+#' -   API_CONFIGURATION_ERROR
+#' -   AUTHORIZER_FAILURE
+#' -   AUTHORIZER_CONFIGURATION_ERROR
+#' -   BAD_REQUEST_PARAMETERS
+#' -   BAD_REQUEST_BODY
+#' -   DEFAULT_4XX
+#' -   DEFAULT_5XX
+#' -   EXPIRED_TOKEN
+#' -   INVALID_SIGNATURE
+#' -   INTEGRATION_FAILURE
+#' -   INTEGRATION_TIMEOUT
+#' -   INVALID_API_KEY
+#' -   MISSING_AUTHENTICATION_TOKEN
+#' -   QUOTA_EXCEEDED
+#' -   REQUEST_TOO_LARGE
+#' -   RESOURCE_NOT_FOUND
 #' -   THROTTLED
 #' -   UNAUTHORIZED
-#' -   UNSUPPORTED\\_MEDIA\\_TYPE
+#' -   UNSUPPORTED_MEDIA_TYPE
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
+#'   statusCode = "string",
+#'   responseParameters = list(
+#'     "string"
+#'   ),
+#'   responseTemplates = list(
+#'     "string"
+#'   ),
+#'   defaultResponse = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2833,6 +3704,27 @@ apigateway_get_gateway_response <- function(restApiId, responseType) {
 #' and the maximum value is 500. The GatewayResponses collection does not
 #' support pagination and the limit does not apply here.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
+#'       statusCode = "string",
+#'       responseParameters = list(
+#'         "string"
+#'       ),
+#'       responseTemplates = list(
+#'         "string"
+#'       ),
+#'       defaultResponse = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_gateway_responses(
@@ -2873,6 +3765,48 @@ apigateway_get_gateway_responses <- function(restApiId, position = NULL, limit =
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; \[Required\] Specifies a get integration request's resource identifier
 #' @param httpMethod &#91;required&#93; \[Required\] Specifies a get integration request's HTTP method.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+#'   httpMethod = "string",
+#'   uri = "string",
+#'   connectionType = "INTERNET"|"VPC_LINK",
+#'   connectionId = "string",
+#'   credentials = "string",
+#'   requestParameters = list(
+#'     "string"
+#'   ),
+#'   requestTemplates = list(
+#'     "string"
+#'   ),
+#'   passthroughBehavior = "string",
+#'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'   timeoutInMillis = 123,
+#'   cacheNamespace = "string",
+#'   cacheKeyParameters = list(
+#'     "string"
+#'   ),
+#'   integrationResponses = list(
+#'     list(
+#'       statusCode = "string",
+#'       selectionPattern = "string",
+#'       responseParameters = list(
+#'         "string"
+#'       ),
+#'       responseTemplates = list(
+#'         "string"
+#'       ),
+#'       contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+#'     )
+#'   ),
+#'   tlsConfig = list(
+#'     insecureSkipVerification = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2918,6 +3852,22 @@ apigateway_get_integration <- function(restApiId, resourceId, httpMethod) {
 #' @param httpMethod &#91;required&#93; \[Required\] Specifies a get integration response request's HTTP method.
 #' @param statusCode &#91;required&#93; \[Required\] Specifies a get integration response request's status code.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   statusCode = "string",
+#'   selectionPattern = "string",
+#'   responseParameters = list(
+#'     "string"
+#'   ),
+#'   responseTemplates = list(
+#'     "string"
+#'   ),
+#'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_integration_response(
@@ -2959,6 +3909,76 @@ apigateway_get_integration_response <- function(restApiId, resourceId, httpMetho
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; \[Required\] The Resource identifier for the Method resource.
 #' @param httpMethod &#91;required&#93; \[Required\] Specifies the method request's HTTP method type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   httpMethod = "string",
+#'   authorizationType = "string",
+#'   authorizerId = "string",
+#'   apiKeyRequired = TRUE|FALSE,
+#'   requestValidatorId = "string",
+#'   operationName = "string",
+#'   requestParameters = list(
+#'     TRUE|FALSE
+#'   ),
+#'   requestModels = list(
+#'     "string"
+#'   ),
+#'   methodResponses = list(
+#'     list(
+#'       statusCode = "string",
+#'       responseParameters = list(
+#'         TRUE|FALSE
+#'       ),
+#'       responseModels = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   methodIntegration = list(
+#'     type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+#'     httpMethod = "string",
+#'     uri = "string",
+#'     connectionType = "INTERNET"|"VPC_LINK",
+#'     connectionId = "string",
+#'     credentials = "string",
+#'     requestParameters = list(
+#'       "string"
+#'     ),
+#'     requestTemplates = list(
+#'       "string"
+#'     ),
+#'     passthroughBehavior = "string",
+#'     contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'     timeoutInMillis = 123,
+#'     cacheNamespace = "string",
+#'     cacheKeyParameters = list(
+#'       "string"
+#'     ),
+#'     integrationResponses = list(
+#'       list(
+#'         statusCode = "string",
+#'         selectionPattern = "string",
+#'         responseParameters = list(
+#'           "string"
+#'         ),
+#'         responseTemplates = list(
+#'           "string"
+#'         ),
+#'         contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+#'       )
+#'     ),
+#'     tlsConfig = list(
+#'       insecureSkipVerification = TRUE|FALSE
+#'     )
+#'   ),
+#'   authorizationScopes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3002,6 +4022,20 @@ apigateway_get_method <- function(restApiId, resourceId, httpMethod) {
 #' @param resourceId &#91;required&#93; \[Required\] The Resource identifier for the MethodResponse resource.
 #' @param httpMethod &#91;required&#93; \[Required\] The HTTP verb of the Method resource.
 #' @param statusCode &#91;required&#93; \[Required\] The status code for the MethodResponse resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   statusCode = "string",
+#'   responseParameters = list(
+#'     TRUE|FALSE
+#'   ),
+#'   responseModels = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3047,6 +4081,18 @@ apigateway_get_method_response <- function(restApiId, resourceId, httpMethod, st
 #' model references and returns a flattened model schema or not (`false`)
 #' The default is `false`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   schema = "string",
+#'   contentType = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_model(
@@ -3089,6 +4135,14 @@ apigateway_get_model <- function(restApiId, modelName, flatten = NULL) {
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param modelName &#91;required&#93; \[Required\] The name of the model for which to generate a template.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   value = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_model_template(
@@ -3130,6 +4184,23 @@ apigateway_get_model_template <- function(restApiId, modelName) {
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       description = "string",
+#'       schema = "string",
+#'       contentType = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_models(
@@ -3169,6 +4240,17 @@ apigateway_get_models <- function(restApiId, position = NULL, limit = NULL) {
 #'
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param requestValidatorId &#91;required&#93; \[Required\] The identifier of the RequestValidator to be retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   validateRequestBody = TRUE|FALSE,
+#'   validateRequestParameters = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3210,6 +4292,22 @@ apigateway_get_request_validator <- function(restApiId, requestValidatorId) {
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       validateRequestBody = TRUE|FALSE,
+#'       validateRequestParameters = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3256,7 +4354,85 @@ apigateway_get_request_validators <- function(restApiId, position = NULL, limit 
 #' supports only retrieval of the embedded Method resources this way. The
 #' query parameter value must be a single-valued list and contain the
 #' `"methods"` string. For example,
-#' `GET /restapis/\{restapi_id\}/resources/\{resource_id\}?embed=methods`.
+#' `GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   parentId = "string",
+#'   pathPart = "string",
+#'   path = "string",
+#'   resourceMethods = list(
+#'     list(
+#'       httpMethod = "string",
+#'       authorizationType = "string",
+#'       authorizerId = "string",
+#'       apiKeyRequired = TRUE|FALSE,
+#'       requestValidatorId = "string",
+#'       operationName = "string",
+#'       requestParameters = list(
+#'         TRUE|FALSE
+#'       ),
+#'       requestModels = list(
+#'         "string"
+#'       ),
+#'       methodResponses = list(
+#'         list(
+#'           statusCode = "string",
+#'           responseParameters = list(
+#'             TRUE|FALSE
+#'           ),
+#'           responseModels = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       methodIntegration = list(
+#'         type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+#'         httpMethod = "string",
+#'         uri = "string",
+#'         connectionType = "INTERNET"|"VPC_LINK",
+#'         connectionId = "string",
+#'         credentials = "string",
+#'         requestParameters = list(
+#'           "string"
+#'         ),
+#'         requestTemplates = list(
+#'           "string"
+#'         ),
+#'         passthroughBehavior = "string",
+#'         contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'         timeoutInMillis = 123,
+#'         cacheNamespace = "string",
+#'         cacheKeyParameters = list(
+#'           "string"
+#'         ),
+#'         integrationResponses = list(
+#'           list(
+#'             statusCode = "string",
+#'             selectionPattern = "string",
+#'             responseParameters = list(
+#'               "string"
+#'             ),
+#'             responseTemplates = list(
+#'               "string"
+#'             ),
+#'             contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+#'           )
+#'         ),
+#'         tlsConfig = list(
+#'           insecureSkipVerification = TRUE|FALSE
+#'         )
+#'       ),
+#'       authorizationScopes = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3307,7 +4483,90 @@ apigateway_get_resource <- function(restApiId, resourceId, embed = NULL) {
 #' supports only retrieval of the embedded Method resources this way. The
 #' query parameter value must be a single-valued list and contain the
 #' `"methods"` string. For example,
-#' `GET /restapis/\{restapi_id\}/resources?embed=methods`.
+#' `GET /restapis/{restapi_id}/resources?embed=methods`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       parentId = "string",
+#'       pathPart = "string",
+#'       path = "string",
+#'       resourceMethods = list(
+#'         list(
+#'           httpMethod = "string",
+#'           authorizationType = "string",
+#'           authorizerId = "string",
+#'           apiKeyRequired = TRUE|FALSE,
+#'           requestValidatorId = "string",
+#'           operationName = "string",
+#'           requestParameters = list(
+#'             TRUE|FALSE
+#'           ),
+#'           requestModels = list(
+#'             "string"
+#'           ),
+#'           methodResponses = list(
+#'             list(
+#'               statusCode = "string",
+#'               responseParameters = list(
+#'                 TRUE|FALSE
+#'               ),
+#'               responseModels = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           methodIntegration = list(
+#'             type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+#'             httpMethod = "string",
+#'             uri = "string",
+#'             connectionType = "INTERNET"|"VPC_LINK",
+#'             connectionId = "string",
+#'             credentials = "string",
+#'             requestParameters = list(
+#'               "string"
+#'             ),
+#'             requestTemplates = list(
+#'               "string"
+#'             ),
+#'             passthroughBehavior = "string",
+#'             contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'             timeoutInMillis = 123,
+#'             cacheNamespace = "string",
+#'             cacheKeyParameters = list(
+#'               "string"
+#'             ),
+#'             integrationResponses = list(
+#'               list(
+#'                 statusCode = "string",
+#'                 selectionPattern = "string",
+#'                 responseParameters = list(
+#'                   "string"
+#'                 ),
+#'                 responseTemplates = list(
+#'                   "string"
+#'                 ),
+#'                 contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+#'               )
+#'             ),
+#'             tlsConfig = list(
+#'               insecureSkipVerification = TRUE|FALSE
+#'             )
+#'           ),
+#'           authorizationScopes = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3351,6 +4610,41 @@ apigateway_get_resources <- function(restApiId, position = NULL, limit = NULL, e
 #'
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   version = "string",
+#'   warnings = list(
+#'     "string"
+#'   ),
+#'   binaryMediaTypes = list(
+#'     "string"
+#'   ),
+#'   minimumCompressionSize = 123,
+#'   apiKeySource = "HEADER"|"AUTHORIZER",
+#'   endpointConfiguration = list(
+#'     types = list(
+#'       "REGIONAL"|"EDGE"|"PRIVATE"
+#'     ),
+#'     vpcEndpointIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   policy = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   disableExecuteApiEndpoint = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_rest_api(
@@ -3389,6 +4683,46 @@ apigateway_get_rest_api <- function(restApiId) {
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       description = "string",
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       version = "string",
+#'       warnings = list(
+#'         "string"
+#'       ),
+#'       binaryMediaTypes = list(
+#'         "string"
+#'       ),
+#'       minimumCompressionSize = 123,
+#'       apiKeySource = "HEADER"|"AUTHORIZER",
+#'       endpointConfiguration = list(
+#'         types = list(
+#'           "REGIONAL"|"EDGE"|"PRIVATE"
+#'         ),
+#'         vpcEndpointIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       policy = "string",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       disableExecuteApiEndpoint = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3438,6 +4772,16 @@ apigateway_get_rest_apis <- function(position = NULL, limit = NULL) {
 #' `invokerPackage` are required. For `sdkType` of `java`, parameters named
 #' `serviceName` and `javaPackageName` are required.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   contentType = "string",
+#'   contentDisposition = "string",
+#'   body = raw
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_sdk(
@@ -3480,6 +4824,25 @@ apigateway_get_sdk <- function(restApiId, stageName, sdkType, parameters = NULL)
 #'
 #' @param id &#91;required&#93; \[Required\] The identifier of the queried SdkType instance.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   friendlyName = "string",
+#'   description = "string",
+#'   configurationProperties = list(
+#'     list(
+#'       name = "string",
+#'       friendlyName = "string",
+#'       description = "string",
+#'       required = TRUE|FALSE,
+#'       defaultValue = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_sdk_type(
@@ -3518,6 +4881,30 @@ apigateway_get_sdk_type <- function(id) {
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       friendlyName = "string",
+#'       description = "string",
+#'       configurationProperties = list(
+#'         list(
+#'           name = "string",
+#'           friendlyName = "string",
+#'           description = "string",
+#'           required = TRUE|FALSE,
+#'           defaultValue = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3558,6 +4945,61 @@ apigateway_get_sdk_types <- function(position = NULL, limit = NULL) {
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param stageName &#91;required&#93; \[Required\] The name of the Stage resource to get information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deploymentId = "string",
+#'   clientCertificateId = "string",
+#'   stageName = "string",
+#'   description = "string",
+#'   cacheClusterEnabled = TRUE|FALSE,
+#'   cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
+#'   cacheClusterStatus = "CREATE_IN_PROGRESS"|"AVAILABLE"|"DELETE_IN_PROGRESS"|"NOT_AVAILABLE"|"FLUSH_IN_PROGRESS",
+#'   methodSettings = list(
+#'     list(
+#'       metricsEnabled = TRUE|FALSE,
+#'       loggingLevel = "string",
+#'       dataTraceEnabled = TRUE|FALSE,
+#'       throttlingBurstLimit = 123,
+#'       throttlingRateLimit = 123.0,
+#'       cachingEnabled = TRUE|FALSE,
+#'       cacheTtlInSeconds = 123,
+#'       cacheDataEncrypted = TRUE|FALSE,
+#'       requireAuthorizationForCacheControl = TRUE|FALSE,
+#'       unauthorizedCacheControlHeaderStrategy = "FAIL_WITH_403"|"SUCCEED_WITH_RESPONSE_HEADER"|"SUCCEED_WITHOUT_RESPONSE_HEADER"
+#'     )
+#'   ),
+#'   variables = list(
+#'     "string"
+#'   ),
+#'   documentationVersion = "string",
+#'   accessLogSettings = list(
+#'     format = "string",
+#'     destinationArn = "string"
+#'   ),
+#'   canarySettings = list(
+#'     percentTraffic = 123.0,
+#'     deploymentId = "string",
+#'     stageVariableOverrides = list(
+#'       "string"
+#'     ),
+#'     useStageCache = TRUE|FALSE
+#'   ),
+#'   tracingEnabled = TRUE|FALSE,
+#'   webAclArn = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_stage(
@@ -3596,6 +5038,65 @@ apigateway_get_stage <- function(restApiId, stageName) {
 #'
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param deploymentId The stages' deployment identifiers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   item = list(
+#'     list(
+#'       deploymentId = "string",
+#'       clientCertificateId = "string",
+#'       stageName = "string",
+#'       description = "string",
+#'       cacheClusterEnabled = TRUE|FALSE,
+#'       cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
+#'       cacheClusterStatus = "CREATE_IN_PROGRESS"|"AVAILABLE"|"DELETE_IN_PROGRESS"|"NOT_AVAILABLE"|"FLUSH_IN_PROGRESS",
+#'       methodSettings = list(
+#'         list(
+#'           metricsEnabled = TRUE|FALSE,
+#'           loggingLevel = "string",
+#'           dataTraceEnabled = TRUE|FALSE,
+#'           throttlingBurstLimit = 123,
+#'           throttlingRateLimit = 123.0,
+#'           cachingEnabled = TRUE|FALSE,
+#'           cacheTtlInSeconds = 123,
+#'           cacheDataEncrypted = TRUE|FALSE,
+#'           requireAuthorizationForCacheControl = TRUE|FALSE,
+#'           unauthorizedCacheControlHeaderStrategy = "FAIL_WITH_403"|"SUCCEED_WITH_RESPONSE_HEADER"|"SUCCEED_WITHOUT_RESPONSE_HEADER"
+#'         )
+#'       ),
+#'       variables = list(
+#'         "string"
+#'       ),
+#'       documentationVersion = "string",
+#'       accessLogSettings = list(
+#'         format = "string",
+#'         destinationArn = "string"
+#'       ),
+#'       canarySettings = list(
+#'         percentTraffic = 123.0,
+#'         deploymentId = "string",
+#'         stageVariableOverrides = list(
+#'           "string"
+#'         ),
+#'         useStageCache = TRUE|FALSE
+#'       ),
+#'       tracingEnabled = TRUE|FALSE,
+#'       webAclArn = "string",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3638,6 +5139,16 @@ apigateway_get_stages <- function(restApiId, deploymentId = NULL) {
 #' result set.
 #' @param limit (Not currently supported) The maximum number of returned results per
 #' page. The default value is 25 and the maximum value is 500.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3685,6 +5196,24 @@ apigateway_get_tags <- function(resourceArn, position = NULL, limit = NULL) {
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   usagePlanId = "string",
+#'   startDate = "string",
+#'   endDate = "string",
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       list(
+#'         123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_usage(
@@ -3727,6 +5256,41 @@ apigateway_get_usage <- function(usagePlanId, keyId = NULL, startDate, endDate, 
 #'
 #' @param usagePlanId &#91;required&#93; \[Required\] The identifier of the UsagePlan resource to be retrieved.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   apiStages = list(
+#'     list(
+#'       apiId = "string",
+#'       stage = "string",
+#'       throttle = list(
+#'         list(
+#'           burstLimit = 123,
+#'           rateLimit = 123.0
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   throttle = list(
+#'     burstLimit = 123,
+#'     rateLimit = 123.0
+#'   ),
+#'   quota = list(
+#'     limit = 123,
+#'     offset = 123,
+#'     period = "DAY"|"WEEK"|"MONTH"
+#'   ),
+#'   productCode = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_usage_plan(
@@ -3767,6 +5331,17 @@ apigateway_get_usage_plan <- function(usagePlanId) {
 #' plan customer.
 #' @param keyId &#91;required&#93; \[Required\] The key Id of the to-be-retrieved UsagePlanKey resource
 #' representing a plan customer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   type = "string",
+#'   value = "string",
+#'   name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3815,6 +5390,22 @@ apigateway_get_usage_plan_key <- function(usagePlanId, keyId) {
 #' @param nameQuery A query parameter specifying the name of the to-be-returned usage plan
 #' keys.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       type = "string",
+#'       value = "string",
+#'       name = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_usage_plan_keys(
@@ -3858,6 +5449,46 @@ apigateway_get_usage_plan_keys <- function(usagePlanId, position = NULL, limit =
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       description = "string",
+#'       apiStages = list(
+#'         list(
+#'           apiId = "string",
+#'           stage = "string",
+#'           throttle = list(
+#'             list(
+#'               burstLimit = 123,
+#'               rateLimit = 123.0
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       throttle = list(
+#'         burstLimit = 123,
+#'         rateLimit = 123.0
+#'       ),
+#'       quota = list(
+#'         limit = 123,
+#'         offset = 123,
+#'         period = "DAY"|"WEEK"|"MONTH"
+#'       ),
+#'       productCode = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_usage_plans(
@@ -3897,6 +5528,24 @@ apigateway_get_usage_plans <- function(position = NULL, keyId = NULL, limit = NU
 #'
 #' @param vpcLinkId &#91;required&#93; \[Required\] The identifier of the VpcLink. It is used in an Integration
 #' to reference this VpcLink.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   targetArns = list(
+#'     "string"
+#'   ),
+#'   status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
+#'   statusMessage = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3938,6 +5587,29 @@ apigateway_get_vpc_link <- function(vpcLinkId) {
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       description = "string",
+#'       targetArns = list(
+#'         "string"
+#'       ),
+#'       status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
+#'       statusMessage = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3982,6 +5654,19 @@ apigateway_get_vpc_links <- function(position = NULL, limit = NULL) {
 #' Currently, only the `csv` format is supported.
 #' @param failOnWarnings A query parameter to indicate whether to rollback ApiKey importation
 #' (`true`) or not (`false`) when error is encountered.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ids = list(
+#'     "string"
+#'   ),
+#'   warnings = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4031,6 +5716,19 @@ apigateway_import_api_keys <- function(body, format, failOnWarnings = NULL) {
 #' @param body &#91;required&#93; \[Required\] Raw byte array representing the to-be-imported
 #' documentation parts. To import from an OpenAPI file, this is a JSON
 #' object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ids = list(
+#'     "string"
+#'   ),
+#'   warnings = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4103,6 +5801,41 @@ apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOn
 #' Currently, only OpenAPI definition JSON/YAML files are supported. The
 #' maximum size of the API definition file is 6MB.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   version = "string",
+#'   warnings = list(
+#'     "string"
+#'   ),
+#'   binaryMediaTypes = list(
+#'     "string"
+#'   ),
+#'   minimumCompressionSize = 123,
+#'   apiKeySource = "HEADER"|"AUTHORIZER",
+#'   endpointConfiguration = list(
+#'     types = list(
+#'       "REGIONAL"|"EDGE"|"PRIVATE"
+#'     ),
+#'     vpcEndpointIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   policy = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   disableExecuteApiEndpoint = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_rest_api(
@@ -4150,31 +5883,47 @@ apigateway_import_rest_api <- function(failOnWarnings = NULL, parameters = NULL,
 #' 
 #' The response type of the associated GatewayResponse. Valid values are
 #' 
-#' -   ACCESS\\_DENIED
-#' -   API\\_CONFIGURATION\\_ERROR
-#' -   AUTHORIZER\\_FAILURE
-#' -   AUTHORIZER\\_CONFIGURATION\\_ERROR
-#' -   BAD\\_REQUEST\\_PARAMETERS
-#' -   BAD\\_REQUEST\\_BODY
-#' -   DEFAULT\\_4XX
-#' -   DEFAULT\\_5XX
-#' -   EXPIRED\\_TOKEN
-#' -   INVALID\\_SIGNATURE
-#' -   INTEGRATION\\_FAILURE
-#' -   INTEGRATION\\_TIMEOUT
-#' -   INVALID\\_API\\_KEY
-#' -   MISSING\\_AUTHENTICATION\\_TOKEN
-#' -   QUOTA\\_EXCEEDED
-#' -   REQUEST\\_TOO\\_LARGE
-#' -   RESOURCE\\_NOT\\_FOUND
+#' -   ACCESS_DENIED
+#' -   API_CONFIGURATION_ERROR
+#' -   AUTHORIZER_FAILURE
+#' -   AUTHORIZER_CONFIGURATION_ERROR
+#' -   BAD_REQUEST_PARAMETERS
+#' -   BAD_REQUEST_BODY
+#' -   DEFAULT_4XX
+#' -   DEFAULT_5XX
+#' -   EXPIRED_TOKEN
+#' -   INVALID_SIGNATURE
+#' -   INTEGRATION_FAILURE
+#' -   INTEGRATION_TIMEOUT
+#' -   INVALID_API_KEY
+#' -   MISSING_AUTHENTICATION_TOKEN
+#' -   QUOTA_EXCEEDED
+#' -   REQUEST_TOO_LARGE
+#' -   RESOURCE_NOT_FOUND
 #' -   THROTTLED
 #' -   UNAUTHORIZED
-#' -   UNSUPPORTED\\_MEDIA\\_TYPE
-#' @param statusCode The HTTP status code of the <a>GatewayResponse</a>.
+#' -   UNSUPPORTED_MEDIA_TYPE
+#' @param statusCode The HTTP status code of the GatewayResponse.
 #' @param responseParameters Response parameters (paths, query strings and headers) of the
 #' GatewayResponse as a string-to-string map of key-value pairs.
 #' @param responseTemplates Response templates of the GatewayResponse as a string-to-string map of
 #' key-value pairs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
+#'   statusCode = "string",
+#'   responseParameters = list(
+#'     "string"
+#'   ),
+#'   responseTemplates = list(
+#'     "string"
+#'   ),
+#'   defaultResponse = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4240,21 +5989,21 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #'     routing.
 #' 
 #' -   For `AWS` or `AWS_PROXY` integrations, the URI is of the form
-#'     `arn:aws:apigateway:\{region\}:\{subdomain.service|service\}:path|action/\{service_api\}`.
-#'     Here, `\{Region\}` is the API Gateway region (e.g., `us-east-1`);
-#'     `\{service\}` is the name of the integrated AWS service (e.g., `s3`);
-#'     and `\{subdomain\}` is a designated subdomain supported by certain AWS
+#'     `arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}`.
+#'     Here, `{Region}` is the API Gateway region (e.g., `us-east-1`);
+#'     `{service}` is the name of the integrated AWS service (e.g., `s3`);
+#'     and `{subdomain}` is a designated subdomain supported by certain AWS
 #'     service for fast host-name lookup. `action` can be used for an AWS
 #'     service action-based API, using an
-#'     `Action=\{name\}&\{p1\}=\{v1\}&p2=\{v2\}...` query string. The ensuing
-#'     `\{service_api\}` refers to a supported action `\{name\}` plus any
+#'     `Action={name}&{p1}={v1}&p2={v2}...` query string. The ensuing
+#'     `{service_api}` refers to a supported action `{name}` plus any
 #'     required input parameters. Alternatively, `path` can be used for an
 #'     AWS service path-based API. The ensuing `service_api` refers to the
 #'     path to an AWS service resource, including the region of the
 #'     integrated AWS service, if applicable. For example, for integration
 #'     with the S3 API of `GetObject`, the `uri` can be either
-#'     `arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket=\{bucket\}&Key=\{key\}`
-#'     or `arn:aws:apigateway:us-west-2:s3:path/\{bucket\}/\{key\}`
+#'     `arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}`
+#'     or `arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}`
 #' @param connectionType The type of the network connection to the integration endpoint. The
 #' valid value is `INTERNET` for connections through the public routable
 #' internet or `VPC_LINK` for private connections between API Gateway and a
@@ -4269,7 +6018,7 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' parameter name and the associated value is a method request parameter
 #' value or static value that must be enclosed within single quotes and
 #' pre-encoded as required by the back end. The method request parameter
-#' value must match the pattern of `method.request.\{location\}.\{name\}`,
+#' value must match the pattern of `method.request.{location}.{name}`,
 #' where `location` is `querystring`, `path`, or `header` and `name` must
 #' be a valid and unique method request parameter name.
 #' @param requestTemplates Represents a map of Velocity templates that are applied on the request
@@ -4316,6 +6065,48 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' @param timeoutInMillis Custom timeout between 50 and 29,000 milliseconds. The default value is
 #' 29,000 milliseconds or 29 seconds.
 #' @param tlsConfig 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+#'   httpMethod = "string",
+#'   uri = "string",
+#'   connectionType = "INTERNET"|"VPC_LINK",
+#'   connectionId = "string",
+#'   credentials = "string",
+#'   requestParameters = list(
+#'     "string"
+#'   ),
+#'   requestTemplates = list(
+#'     "string"
+#'   ),
+#'   passthroughBehavior = "string",
+#'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'   timeoutInMillis = 123,
+#'   cacheNamespace = "string",
+#'   cacheKeyParameters = list(
+#'     "string"
+#'   ),
+#'   integrationResponses = list(
+#'     list(
+#'       statusCode = "string",
+#'       selectionPattern = "string",
+#'       responseParameters = list(
+#'         "string"
+#'       ),
+#'       responseTemplates = list(
+#'         "string"
+#'       ),
+#'       contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+#'     )
+#'   ),
+#'   tlsConfig = list(
+#'     insecureSkipVerification = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4390,10 +6181,10 @@ apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, 
 #' parameter name and the mapped value is an integration response header
 #' value, a static value enclosed within a pair of single quotes, or a JSON
 #' expression from the integration response body. The mapping key must
-#' match the pattern of `method.response.header.\{name\}`, where `name` is a
+#' match the pattern of `method.response.header.{name}`, where `name` is a
 #' valid and unique header name. The mapped non-static value must match the
-#' pattern of `integration.response.header.\{name\}` or
-#' `integration.response.body.\{JSON-expression\}`, where `name` must be a
+#' pattern of `integration.response.header.{name}` or
+#' `integration.response.body.{JSON-expression}`, where `name` must be a
 #' valid and unique response header name and `JSON-expression` a valid JSON
 #' expression without the `$` prefix.
 #' @param responseTemplates Specifies a put integration response's templates.
@@ -4410,6 +6201,22 @@ apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, 
 #' If this property is not defined, the response payload will be passed
 #' through from the integration response to the method response without
 #' modification.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   statusCode = "string",
+#'   selectionPattern = "string",
+#'   responseParameters = list(
+#'     "string"
+#'   ),
+#'   responseTemplates = list(
+#'     "string"
+#'   ),
+#'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4468,7 +6275,7 @@ apigateway_put_integration_response <- function(restApiId, resourceId, httpMetho
 #' using a custom authorizer, or `COGNITO_USER_POOLS` for using a Cognito
 #' user pool.
 #' @param authorizerId Specifies the identifier of an Authorizer to use on this Method, if the
-#' type is CUSTOM or COGNITO\\_USER\\_POOLS. The authorizer identifier is
+#' type is CUSTOM or COGNITO_USER_POOLS. The authorizer identifier is
 #' generated by API Gateway when you created the authorizer.
 #' @param apiKeyRequired Specifies whether the method required a valid ApiKey.
 #' @param operationName A human-friendly operation identifier for the method. For example, you
@@ -4477,7 +6284,7 @@ apigateway_put_integration_response <- function(restApiId, resourceId, httpMetho
 #' @param requestParameters A key-value map defining required or optional method request parameters
 #' that can be accepted by API Gateway. A key defines a method request
 #' parameter name matching the pattern of
-#' `method.request.\{location\}.\{name\}`, where `location` is `querystring`,
+#' `method.request.{location}.{name}`, where `location` is `querystring`,
 #' `path`, or `header` and `name` is a valid and unique parameter name. The
 #' value associated with the key is a Boolean flag indicating whether the
 #' parameter is required (`true`) or optional (`false`). The method request
@@ -4495,6 +6302,76 @@ apigateway_put_integration_response <- function(restApiId, resourceId, httpMetho
 #' claimed scope in the access token. Otherwise, the invocation is not
 #' authorized. When the method scope is configured, the client must provide
 #' an access token instead of an identity token for authorization purposes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   httpMethod = "string",
+#'   authorizationType = "string",
+#'   authorizerId = "string",
+#'   apiKeyRequired = TRUE|FALSE,
+#'   requestValidatorId = "string",
+#'   operationName = "string",
+#'   requestParameters = list(
+#'     TRUE|FALSE
+#'   ),
+#'   requestModels = list(
+#'     "string"
+#'   ),
+#'   methodResponses = list(
+#'     list(
+#'       statusCode = "string",
+#'       responseParameters = list(
+#'         TRUE|FALSE
+#'       ),
+#'       responseModels = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   methodIntegration = list(
+#'     type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+#'     httpMethod = "string",
+#'     uri = "string",
+#'     connectionType = "INTERNET"|"VPC_LINK",
+#'     connectionId = "string",
+#'     credentials = "string",
+#'     requestParameters = list(
+#'       "string"
+#'     ),
+#'     requestTemplates = list(
+#'       "string"
+#'     ),
+#'     passthroughBehavior = "string",
+#'     contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'     timeoutInMillis = 123,
+#'     cacheNamespace = "string",
+#'     cacheKeyParameters = list(
+#'       "string"
+#'     ),
+#'     integrationResponses = list(
+#'       list(
+#'         statusCode = "string",
+#'         selectionPattern = "string",
+#'         responseParameters = list(
+#'           "string"
+#'         ),
+#'         responseTemplates = list(
+#'           "string"
+#'         ),
+#'         contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+#'       )
+#'     ),
+#'     tlsConfig = list(
+#'       insecureSkipVerification = TRUE|FALSE
+#'     )
+#'   ),
+#'   authorizationScopes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4557,17 +6434,31 @@ apigateway_put_method <- function(restApiId, resourceId, httpMethod, authorizati
 #' header name and the associated value is a Boolean flag indicating
 #' whether the method response parameter is required or not. The method
 #' response header names must match the pattern of
-#' `method.response.header.\{name\}`, where `name` is a valid and unique
+#' `method.response.header.{name}`, where `name` is a valid and unique
 #' header name. The response parameter names defined here are available in
 #' the integration response to be mapped from an integration response
-#' header expressed in `integration.response.header.\{name\}`, a static value
+#' header expressed in `integration.response.header.{name}`, a static value
 #' enclosed within a pair of single quotes (e.g., `'application/json'`), or
 #' a JSON expression from the back-end response payload in the form of
-#' `integration.response.body.\{JSON-expression\}`, where `JSON-expression`
+#' `integration.response.body.{JSON-expression}`, where `JSON-expression`
 #' is a valid JSON expression without the `$` prefix.)
 #' @param responseModels Specifies the Model resources used for the response's content type.
 #' Response models are represented as a key/value map, with a content type
 #' as the key and a Model name as the value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   statusCode = "string",
+#'   responseParameters = list(
+#'     TRUE|FALSE
+#'   ),
+#'   responseModels = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4632,6 +6523,41 @@ apigateway_put_method_response <- function(restApiId, resourceId, httpMethod, st
 #' Currently, only OpenAPI definition JSON/YAML files are supported. The
 #' maximum size of the API definition file is 6MB.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   version = "string",
+#'   warnings = list(
+#'     "string"
+#'   ),
+#'   binaryMediaTypes = list(
+#'     "string"
+#'   ),
+#'   minimumCompressionSize = 123,
+#'   apiKeySource = "HEADER"|"AUTHORIZER",
+#'   endpointConfiguration = list(
+#'     types = list(
+#'       "REGIONAL"|"EDGE"|"PRIVATE"
+#'     ),
+#'     vpcEndpointIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   policy = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   disableExecuteApiEndpoint = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_rest_api(
@@ -4675,8 +6601,10 @@ apigateway_put_rest_api <- function(restApiId, mode = NULL, failOnWarnings = NUL
 #'
 #' @param resourceArn &#91;required&#93; \[Required\] The ARN of a resource that can be tagged.
 #' @param tags &#91;required&#93; \[Required\] The key-value map of strings. The valid character set is
-#' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
+#' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -4745,6 +6673,26 @@ apigateway_tag_resource <- function(resourceArn, tags) {
 #' @param stageVariables A key-value map of stage variables to simulate an invocation on a
 #' deployed Stage.
 #' @param additionalContext \[Optional\] A key-value map of additional context variables.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   clientStatus = 123,
+#'   log = "string",
+#'   latency = 123,
+#'   principalId = "string",
+#'   policy = "string",
+#'   authorization = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   claims = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4818,6 +6766,25 @@ apigateway_test_invoke_authorizer <- function(restApiId, authorizerId, headers =
 #' @param stageVariables A key-value map of stage variables to simulate an invocation on a
 #' deployed Stage.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = 123,
+#'   body = "string",
+#'   headers = list(
+#'     "string"
+#'   ),
+#'   multiValueHeaders = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   log = "string",
+#'   latency = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$test_invoke_method(
@@ -4872,6 +6839,8 @@ apigateway_test_invoke_method <- function(restApiId, resourceId, httpMethod, pat
 #' @param resourceArn &#91;required&#93; \[Required\] The ARN of a resource that can be tagged.
 #' @param tagKeys &#91;required&#93; \[Required\] The Tag keys to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -4912,6 +6881,22 @@ apigateway_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cloudwatchRoleArn = "string",
+#'   throttleSettings = list(
+#'     burstLimit = 123,
+#'     rateLimit = 123.0
+#'   ),
+#'   features = list(
+#'     "string"
+#'   ),
+#'   apiKeyVersion = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4958,6 +6943,31 @@ apigateway_update_account <- function(patchOperations = NULL) {
 #' @param apiKey &#91;required&#93; \[Required\] The identifier of the ApiKey resource to be updated.
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   value = "string",
+#'   name = "string",
+#'   customerId = "string",
+#'   description = "string",
+#'   enabled = TRUE|FALSE,
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   stageKeys = list(
+#'     "string"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5014,6 +7024,25 @@ apigateway_update_api_key <- function(apiKey, patchOperations = NULL) {
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
+#'   providerARNs = list(
+#'     "string"
+#'   ),
+#'   authType = "string",
+#'   authorizerUri = "string",
+#'   authorizerCredentials = "string",
+#'   identitySource = "string",
+#'   identityValidationExpression = "string",
+#'   authorizerResultTtlInSeconds = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_authorizer(
@@ -5066,6 +7095,16 @@ apigateway_update_authorizer <- function(restApiId, authorizerId, patchOperation
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   basePath = "string",
+#'   restApiId = "string",
+#'   stage = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_base_path_mapping(
@@ -5116,6 +7155,25 @@ apigateway_update_base_path_mapping <- function(domainName, basePath, patchOpera
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   clientCertificateId = "string",
+#'   description = "string",
+#'   pemEncodedCertificate = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   expirationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_client_certificate(
@@ -5164,6 +7222,26 @@ apigateway_update_client_certificate <- function(clientCertificateId, patchOpera
 #' information about.
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   description = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   apiSummary = list(
+#'     list(
+#'       list(
+#'         authorizationType = "string",
+#'         apiKeyRequired = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5214,6 +7292,22 @@ apigateway_update_deployment <- function(restApiId, deploymentId, patchOperation
 #' @param documentationPartId &#91;required&#93; \[Required\] The identifier of the to-be-updated documentation part.
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   location = list(
+#'     type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
+#'     path = "string",
+#'     method = "string",
+#'     statusCode = "string",
+#'     name = "string"
+#'   ),
+#'   properties = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5266,6 +7360,18 @@ apigateway_update_documentation_part <- function(restApiId, documentationPartId,
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   version = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   description = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_documentation_version(
@@ -5313,6 +7419,46 @@ apigateway_update_documentation_version <- function(restApiId, documentationVers
 #' @param domainName &#91;required&#93; \[Required\] The name of the DomainName resource to be changed.
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainName = "string",
+#'   certificateName = "string",
+#'   certificateArn = "string",
+#'   certificateUploadDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   regionalDomainName = "string",
+#'   regionalHostedZoneId = "string",
+#'   regionalCertificateName = "string",
+#'   regionalCertificateArn = "string",
+#'   distributionDomainName = "string",
+#'   distributionHostedZoneId = "string",
+#'   endpointConfiguration = list(
+#'     types = list(
+#'       "REGIONAL"|"EDGE"|"PRIVATE"
+#'     ),
+#'     vpcEndpointIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   domainNameStatus = "AVAILABLE"|"UPDATING"|"PENDING",
+#'   domainNameStatusMessage = "string",
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   mutualTlsAuthentication = list(
+#'     truststoreUri = "string",
+#'     truststoreVersion = "string",
+#'     truststoreWarnings = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5365,28 +7511,44 @@ apigateway_update_domain_name <- function(domainName, patchOperations = NULL) {
 #' 
 #' The response type of the associated GatewayResponse. Valid values are
 #' 
-#' -   ACCESS\\_DENIED
-#' -   API\\_CONFIGURATION\\_ERROR
-#' -   AUTHORIZER\\_FAILURE
-#' -   AUTHORIZER\\_CONFIGURATION\\_ERROR
-#' -   BAD\\_REQUEST\\_PARAMETERS
-#' -   BAD\\_REQUEST\\_BODY
-#' -   DEFAULT\\_4XX
-#' -   DEFAULT\\_5XX
-#' -   EXPIRED\\_TOKEN
-#' -   INVALID\\_SIGNATURE
-#' -   INTEGRATION\\_FAILURE
-#' -   INTEGRATION\\_TIMEOUT
-#' -   INVALID\\_API\\_KEY
-#' -   MISSING\\_AUTHENTICATION\\_TOKEN
-#' -   QUOTA\\_EXCEEDED
-#' -   REQUEST\\_TOO\\_LARGE
-#' -   RESOURCE\\_NOT\\_FOUND
+#' -   ACCESS_DENIED
+#' -   API_CONFIGURATION_ERROR
+#' -   AUTHORIZER_FAILURE
+#' -   AUTHORIZER_CONFIGURATION_ERROR
+#' -   BAD_REQUEST_PARAMETERS
+#' -   BAD_REQUEST_BODY
+#' -   DEFAULT_4XX
+#' -   DEFAULT_5XX
+#' -   EXPIRED_TOKEN
+#' -   INVALID_SIGNATURE
+#' -   INTEGRATION_FAILURE
+#' -   INTEGRATION_TIMEOUT
+#' -   INVALID_API_KEY
+#' -   MISSING_AUTHENTICATION_TOKEN
+#' -   QUOTA_EXCEEDED
+#' -   REQUEST_TOO_LARGE
+#' -   RESOURCE_NOT_FOUND
 #' -   THROTTLED
 #' -   UNAUTHORIZED
-#' -   UNSUPPORTED\\_MEDIA\\_TYPE
+#' -   UNSUPPORTED_MEDIA_TYPE
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   responseType = "DEFAULT_4XX"|"DEFAULT_5XX"|"RESOURCE_NOT_FOUND"|"UNAUTHORIZED"|"INVALID_API_KEY"|"ACCESS_DENIED"|"AUTHORIZER_FAILURE"|"AUTHORIZER_CONFIGURATION_ERROR"|"INVALID_SIGNATURE"|"EXPIRED_TOKEN"|"MISSING_AUTHENTICATION_TOKEN"|"INTEGRATION_FAILURE"|"INTEGRATION_TIMEOUT"|"API_CONFIGURATION_ERROR"|"UNSUPPORTED_MEDIA_TYPE"|"BAD_REQUEST_PARAMETERS"|"BAD_REQUEST_BODY"|"REQUEST_TOO_LARGE"|"THROTTLED"|"QUOTA_EXCEEDED",
+#'   statusCode = "string",
+#'   responseParameters = list(
+#'     "string"
+#'   ),
+#'   responseTemplates = list(
+#'     "string"
+#'   ),
+#'   defaultResponse = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5439,6 +7601,48 @@ apigateway_update_gateway_response <- function(restApiId, responseType, patchOpe
 #' @param httpMethod &#91;required&#93; \[Required\] Represents an update integration request's HTTP method.
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+#'   httpMethod = "string",
+#'   uri = "string",
+#'   connectionType = "INTERNET"|"VPC_LINK",
+#'   connectionId = "string",
+#'   credentials = "string",
+#'   requestParameters = list(
+#'     "string"
+#'   ),
+#'   requestTemplates = list(
+#'     "string"
+#'   ),
+#'   passthroughBehavior = "string",
+#'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'   timeoutInMillis = 123,
+#'   cacheNamespace = "string",
+#'   cacheKeyParameters = list(
+#'     "string"
+#'   ),
+#'   integrationResponses = list(
+#'     list(
+#'       statusCode = "string",
+#'       selectionPattern = "string",
+#'       responseParameters = list(
+#'         "string"
+#'       ),
+#'       responseTemplates = list(
+#'         "string"
+#'       ),
+#'       contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+#'     )
+#'   ),
+#'   tlsConfig = list(
+#'     insecureSkipVerification = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5496,6 +7700,22 @@ apigateway_update_integration <- function(restApiId, resourceId, httpMethod, pat
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   statusCode = "string",
+#'   selectionPattern = "string",
+#'   responseParameters = list(
+#'     "string"
+#'   ),
+#'   responseTemplates = list(
+#'     "string"
+#'   ),
+#'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_integration_response(
@@ -5548,6 +7768,76 @@ apigateway_update_integration_response <- function(restApiId, resourceId, httpMe
 #' @param httpMethod &#91;required&#93; \[Required\] The HTTP verb of the Method resource.
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   httpMethod = "string",
+#'   authorizationType = "string",
+#'   authorizerId = "string",
+#'   apiKeyRequired = TRUE|FALSE,
+#'   requestValidatorId = "string",
+#'   operationName = "string",
+#'   requestParameters = list(
+#'     TRUE|FALSE
+#'   ),
+#'   requestModels = list(
+#'     "string"
+#'   ),
+#'   methodResponses = list(
+#'     list(
+#'       statusCode = "string",
+#'       responseParameters = list(
+#'         TRUE|FALSE
+#'       ),
+#'       responseModels = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   methodIntegration = list(
+#'     type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+#'     httpMethod = "string",
+#'     uri = "string",
+#'     connectionType = "INTERNET"|"VPC_LINK",
+#'     connectionId = "string",
+#'     credentials = "string",
+#'     requestParameters = list(
+#'       "string"
+#'     ),
+#'     requestTemplates = list(
+#'       "string"
+#'     ),
+#'     passthroughBehavior = "string",
+#'     contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'     timeoutInMillis = 123,
+#'     cacheNamespace = "string",
+#'     cacheKeyParameters = list(
+#'       "string"
+#'     ),
+#'     integrationResponses = list(
+#'       list(
+#'         statusCode = "string",
+#'         selectionPattern = "string",
+#'         responseParameters = list(
+#'           "string"
+#'         ),
+#'         responseTemplates = list(
+#'           "string"
+#'         ),
+#'         contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+#'       )
+#'     ),
+#'     tlsConfig = list(
+#'       insecureSkipVerification = TRUE|FALSE
+#'     )
+#'   ),
+#'   authorizationScopes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5602,6 +7892,20 @@ apigateway_update_method <- function(restApiId, resourceId, httpMethod, patchOpe
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   statusCode = "string",
+#'   responseParameters = list(
+#'     TRUE|FALSE
+#'   ),
+#'   responseModels = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_method_response(
@@ -5653,6 +7957,18 @@ apigateway_update_method_response <- function(restApiId, resourceId, httpMethod,
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   schema = "string",
+#'   contentType = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_model(
@@ -5703,6 +8019,17 @@ apigateway_update_model <- function(restApiId, modelName, patchOperations = NULL
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   validateRequestBody = TRUE|FALSE,
+#'   validateRequestParameters = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_request_validator(
@@ -5752,6 +8079,84 @@ apigateway_update_request_validator <- function(restApiId, requestValidatorId, p
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   parentId = "string",
+#'   pathPart = "string",
+#'   path = "string",
+#'   resourceMethods = list(
+#'     list(
+#'       httpMethod = "string",
+#'       authorizationType = "string",
+#'       authorizerId = "string",
+#'       apiKeyRequired = TRUE|FALSE,
+#'       requestValidatorId = "string",
+#'       operationName = "string",
+#'       requestParameters = list(
+#'         TRUE|FALSE
+#'       ),
+#'       requestModels = list(
+#'         "string"
+#'       ),
+#'       methodResponses = list(
+#'         list(
+#'           statusCode = "string",
+#'           responseParameters = list(
+#'             TRUE|FALSE
+#'           ),
+#'           responseModels = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       methodIntegration = list(
+#'         type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
+#'         httpMethod = "string",
+#'         uri = "string",
+#'         connectionType = "INTERNET"|"VPC_LINK",
+#'         connectionId = "string",
+#'         credentials = "string",
+#'         requestParameters = list(
+#'           "string"
+#'         ),
+#'         requestTemplates = list(
+#'           "string"
+#'         ),
+#'         passthroughBehavior = "string",
+#'         contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+#'         timeoutInMillis = 123,
+#'         cacheNamespace = "string",
+#'         cacheKeyParameters = list(
+#'           "string"
+#'         ),
+#'         integrationResponses = list(
+#'           list(
+#'             statusCode = "string",
+#'             selectionPattern = "string",
+#'             responseParameters = list(
+#'               "string"
+#'             ),
+#'             responseTemplates = list(
+#'               "string"
+#'             ),
+#'             contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
+#'           )
+#'         ),
+#'         tlsConfig = list(
+#'           insecureSkipVerification = TRUE|FALSE
+#'         )
+#'       ),
+#'       authorizationScopes = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_resource(
@@ -5800,6 +8205,41 @@ apigateway_update_resource <- function(restApiId, resourceId, patchOperations = 
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   version = "string",
+#'   warnings = list(
+#'     "string"
+#'   ),
+#'   binaryMediaTypes = list(
+#'     "string"
+#'   ),
+#'   minimumCompressionSize = 123,
+#'   apiKeySource = "HEADER"|"AUTHORIZER",
+#'   endpointConfiguration = list(
+#'     types = list(
+#'       "REGIONAL"|"EDGE"|"PRIVATE"
+#'     ),
+#'     vpcEndpointIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   policy = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   disableExecuteApiEndpoint = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_rest_api(
@@ -5847,6 +8287,61 @@ apigateway_update_rest_api <- function(restApiId, patchOperations = NULL) {
 #' @param stageName &#91;required&#93; \[Required\] The name of the Stage resource to change information about.
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deploymentId = "string",
+#'   clientCertificateId = "string",
+#'   stageName = "string",
+#'   description = "string",
+#'   cacheClusterEnabled = TRUE|FALSE,
+#'   cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
+#'   cacheClusterStatus = "CREATE_IN_PROGRESS"|"AVAILABLE"|"DELETE_IN_PROGRESS"|"NOT_AVAILABLE"|"FLUSH_IN_PROGRESS",
+#'   methodSettings = list(
+#'     list(
+#'       metricsEnabled = TRUE|FALSE,
+#'       loggingLevel = "string",
+#'       dataTraceEnabled = TRUE|FALSE,
+#'       throttlingBurstLimit = 123,
+#'       throttlingRateLimit = 123.0,
+#'       cachingEnabled = TRUE|FALSE,
+#'       cacheTtlInSeconds = 123,
+#'       cacheDataEncrypted = TRUE|FALSE,
+#'       requireAuthorizationForCacheControl = TRUE|FALSE,
+#'       unauthorizedCacheControlHeaderStrategy = "FAIL_WITH_403"|"SUCCEED_WITH_RESPONSE_HEADER"|"SUCCEED_WITHOUT_RESPONSE_HEADER"
+#'     )
+#'   ),
+#'   variables = list(
+#'     "string"
+#'   ),
+#'   documentationVersion = "string",
+#'   accessLogSettings = list(
+#'     format = "string",
+#'     destinationArn = "string"
+#'   ),
+#'   canarySettings = list(
+#'     percentTraffic = 123.0,
+#'     deploymentId = "string",
+#'     stageVariableOverrides = list(
+#'       "string"
+#'     ),
+#'     useStageCache = TRUE|FALSE
+#'   ),
+#'   tracingEnabled = TRUE|FALSE,
+#'   webAclArn = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5900,6 +8395,24 @@ apigateway_update_stage <- function(restApiId, stageName, patchOperations = NULL
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   usagePlanId = "string",
+#'   startDate = "string",
+#'   endDate = "string",
+#'   position = "string",
+#'   items = list(
+#'     list(
+#'       list(
+#'         123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_usage(
@@ -5948,6 +8461,41 @@ apigateway_update_usage <- function(usagePlanId, keyId, patchOperations = NULL) 
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   apiStages = list(
+#'     list(
+#'       apiId = "string",
+#'       stage = "string",
+#'       throttle = list(
+#'         list(
+#'           burstLimit = 123,
+#'           rateLimit = 123.0
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   throttle = list(
+#'     burstLimit = 123,
+#'     rateLimit = 123.0
+#'   ),
+#'   quota = list(
+#'     limit = 123,
+#'     offset = 123,
+#'     period = "DAY"|"WEEK"|"MONTH"
+#'   ),
+#'   productCode = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_usage_plan(
@@ -5995,6 +8543,24 @@ apigateway_update_usage_plan <- function(usagePlanId, patchOperations = NULL) {
 #' to reference this VpcLink.
 #' @param patchOperations A list of update operations to be applied to the specified resource and
 #' in the order specified in this list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   targetArns = list(
+#'     "string"
+#'   ),
+#'   status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
+#'   statusMessage = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -15,6 +15,36 @@ here to list more projects.}
 
 \item{maxResults}{The maximum number of records to list in a single response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  domainAssociations = list(
+    list(
+      domainAssociationArn = "string",
+      domainName = "string",
+      enableAutoSubDomain = TRUE|FALSE,
+      autoSubDomainCreationPatterns = list(
+        "string"
+      ),
+      autoSubDomainIAMRole = "string",
+      domainStatus = "PENDING_VERIFICATION"|"IN_PROGRESS"|"AVAILABLE"|"PENDING_DEPLOYMENT"|"FAILED"|"CREATING"|"REQUESTING_CERTIFICATE"|"UPDATING",
+      statusReason = "string",
+      certificateVerificationDNSRecord = "string",
+      subDomains = list(
+        list(
+          subDomainSetting = list(
+            prefix = "string",
+            branchName = "string"
+          ),
+          verified = TRUE|FALSE,
+          dnsRecord = "string"
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns the domain associations for an Amplify app.
 }

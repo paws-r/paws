@@ -34,6 +34,53 @@ details about the syntax of service configurations, see \href{https://docs.aws.a
 A resource group can contain either a \code{Configuration} or a
 \code{ResourceQuery}, but not both.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Group = list(
+    GroupArn = "string",
+    Name = "string",
+    Description = "string"
+  ),
+  ResourceQuery = list(
+    Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
+    Query = "string"
+  ),
+  Tags = list(
+    "string"
+  ),
+  GroupConfiguration = list(
+    Configuration = list(
+      list(
+        Type = "string",
+        Parameters = list(
+          list(
+            Name = "string",
+            Values = list(
+              "string"
+            )
+          )
+        )
+      )
+    ),
+    ProposedConfiguration = list(
+      list(
+        Type = "string",
+        Parameters = list(
+          list(
+            Name = "string",
+            Values = list(
+              "string"
+            )
+          )
+        )
+      )
+    ),
+    Status = "UPDATING"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+    FailureReason = "string"
+  )
+)
+}
+}
 \description{
 Creates a resource group with the specified name and description. You
 can optionally include a resource query, or a service configuration. For

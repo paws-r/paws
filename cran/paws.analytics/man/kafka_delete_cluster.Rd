@@ -8,14 +8,20 @@ the request}
 kafka_delete_cluster(ClusterArn, CurrentVersion)
 }
 \arguments{
-\item{ClusterArn}{[required]
-<p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>}
+\item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
 
-\item{CurrentVersion}{<p>The current version of the MSK cluster.</p>}
+\item{CurrentVersion}{The current version of the MSK cluster.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterArn = "string",
+  State = "ACTIVE"|"CREATING"|"DELETING"|"FAILED"|"HEALING"|"MAINTENANCE"|"REBOOTING_BROKER"|"UPDATING"
+)
+}
 }
 \description{
-\preformatted{        <p>Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request.</p>
-}
+Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in
+the request.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_cluster(

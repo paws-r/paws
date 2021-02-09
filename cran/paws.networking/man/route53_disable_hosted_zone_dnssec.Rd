@@ -9,6 +9,19 @@ route53_disable_hosted_zone_dnssec(HostedZoneId)
 \arguments{
 \item{HostedZoneId}{[required] A unique string used to identify a hosted zone.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeInfo = list(
+    Id = "string",
+    Status = "PENDING"|"INSYNC",
+    SubmittedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    Comment = "string"
+  )
+)
+}
+}
 \description{
 Disables DNSSEC signing in a specific hosted zone. This action does not
 deactivate any key signing keys (KSKs) that are active in the hosted

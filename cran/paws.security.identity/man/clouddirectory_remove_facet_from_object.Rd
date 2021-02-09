@@ -14,6 +14,10 @@ clouddirectory_remove_facet_from_object(DirectoryArn, SchemaFacet,
 
 \item{ObjectReference}{[required] A reference to the object to remove the facet from.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the specified facet from the specified object.
 }

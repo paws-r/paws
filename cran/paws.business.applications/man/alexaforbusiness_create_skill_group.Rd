@@ -17,6 +17,12 @@ idempotency.}
 
 \item{Tags}{The tags for the skill group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SkillGroupArn = "string"
+)
+}
+}
 \description{
 Creates a skill group with a specified name and description.
 }

@@ -9,6 +9,26 @@ databasemigrationservice_delete_event_subscription(SubscriptionName)
 \arguments{
 \item{SubscriptionName}{[required] The name of the DMS event notification subscription to be deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventSubscription = list(
+    CustomerAwsId = "string",
+    CustSubscriptionId = "string",
+    SnsTopicArn = "string",
+    Status = "string",
+    SubscriptionCreationTime = "string",
+    SourceType = "string",
+    SourceIdsList = list(
+      "string"
+    ),
+    EventCategoriesList = list(
+      "string"
+    ),
+    Enabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Deletes an AWS DMS event subscription.
 }

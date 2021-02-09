@@ -7,7 +7,12 @@
 medialive_reject_input_device_transfer(InputDeviceId)
 }
 \arguments{
-\item{InputDeviceId}{[required] The unique ID of the input device to reject. For example, hd-123456789abcdef.}
+\item{InputDeviceId}{[required] The unique ID of the input device to reject. For example,
+hd-123456789abcdef.}
+}
+\value{
+A list with the following syntax:\preformatted{list()
+}
 }
 \description{
 Reject the transfer of the specified input device to your AWS account.

@@ -33,6 +33,28 @@ of the request. For more information, see \href{https://docs.aws.amazon.com/AWSE
 
 Constraints: Up to 255 UTF-8 characters in length.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PrefixList = list(
+    PrefixListId = "string",
+    AddressFamily = "string",
+    State = "create-in-progress"|"create-complete"|"create-failed"|"modify-in-progress"|"modify-complete"|"modify-failed"|"restore-in-progress"|"restore-complete"|"restore-failed"|"delete-in-progress"|"delete-complete"|"delete-failed",
+    StateMessage = "string",
+    PrefixListArn = "string",
+    PrefixListName = "string",
+    MaxEntries = 123,
+    Version = 123,
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    OwnerId = "string"
+  )
+)
+}
+}
 \description{
 Creates a managed prefix list. You can specify one or more entries for
 the prefix list. Each entry consists of a CIDR block and an optional

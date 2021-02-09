@@ -11,6 +11,10 @@ workspaces_deregister_workspace_directory(DirectoryId)
 this directory, you must remove them before you deregister the
 directory, or you will receive an OperationNotSupportedException error.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deregisters the specified directory. This operation is asynchronous and
 returns before the WorkSpace directory is deregistered. If any

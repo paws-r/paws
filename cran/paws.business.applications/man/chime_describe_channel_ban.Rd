@@ -11,6 +11,25 @@ chime_describe_channel_ban(ChannelArn, MemberArn)
 
 \item{MemberArn}{[required] The ARN of the member being banned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelBan = list(
+    Member = list(
+      Arn = "string",
+      Name = "string"
+    ),
+    ChannelArn = "string",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreatedBy = list(
+      Arn = "string",
+      Name = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns the full details of a channel ban.
 }

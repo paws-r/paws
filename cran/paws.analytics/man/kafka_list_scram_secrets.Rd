@@ -8,16 +8,24 @@ cluster}
 kafka_list_scram_secrets(ClusterArn, MaxResults, NextToken)
 }
 \arguments{
-\item{ClusterArn}{[required]
-<p>The arn of the cluster.</p>}
+\item{ClusterArn}{[required] The arn of the cluster.}
 
-\item{MaxResults}{<p>The maxResults of the query.</p>}
+\item{MaxResults}{The maxResults of the query.}
 
-\item{NextToken}{<p>The nextToken of the query.</p>}
+\item{NextToken}{The nextToken of the query.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  SecretArnList = list(
+    "string"
+  )
+)
+}
 }
 \description{
-\preformatted{        <p>Returns a list of the Scram Secrets associated with an Amazon MSK cluster.</p>
-}
+Returns a list of the Scram Secrets associated with an Amazon MSK
+cluster.
 }
 \section{Request syntax}{
 \preformatted{svc$list_scram_secrets(

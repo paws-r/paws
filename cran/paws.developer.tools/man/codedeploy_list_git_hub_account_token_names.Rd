@@ -11,6 +11,15 @@ codedeploy_list_git_hub_account_token_names(nextToken)
 \code{\link[=codedeploy_list_git_hub_account_token_names]{list_git_hub_account_token_names}}
 call. It can be used to return the next set of names in the list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tokenNameList = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the names of stored connections to GitHub accounts.
 }

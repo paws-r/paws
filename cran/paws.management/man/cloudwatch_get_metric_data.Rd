@@ -71,6 +71,39 @@ paginates when the \code{MaxDatapoints} limit is reached.}
 \item{MaxDatapoints}{The maximum number of data points the request should return before
 paginating. If you omit this, the default of 100,800 is used.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MetricDataResults = list(
+    list(
+      Id = "string",
+      Label = "string",
+      Timestamps = list(
+        as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      Values = list(
+        123.0
+      ),
+      StatusCode = "Complete"|"InternalError"|"PartialData",
+      Messages = list(
+        list(
+          Code = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string",
+  Messages = list(
+    list(
+      Code = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 You can use the \code{\link[=cloudwatch_get_metric_data]{get_metric_data}} API to
 retrieve as many as 500 different metrics in a single request, with a

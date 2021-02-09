@@ -10,6 +10,14 @@ cloudsearch_index_documents(DomainName)
 \arguments{
 \item{DomainName}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FieldNames = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Tells the search domain to start indexing its documents using the latest
 indexing options. This operation must be invoked to activate options

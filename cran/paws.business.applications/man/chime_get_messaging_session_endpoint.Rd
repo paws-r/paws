@@ -6,6 +6,14 @@
 \usage{
 chime_get_messaging_session_endpoint()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Endpoint = list(
+    Url = "string"
+  )
+)
+}
+}
 \description{
 The endpoint for the messaging session.
 }

@@ -12,6 +12,10 @@ entity exists.}
 
 \item{EntityId}{[required] The identifier for the member (user or group) to be updated.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Mark a user, group, or resource as no longer used in Amazon WorkMail.
 This action disassociates the mailbox and schedules it for clean-up.

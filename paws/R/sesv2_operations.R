@@ -31,6 +31,12 @@ NULL
 #' to associate with the configuration set.
 #' @param SuppressionOptions 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_configuration_set(
@@ -107,6 +113,12 @@ sesv2_create_configuration_set <- function(ConfigurationSetName, TrackingOptions
 #' set.
 #' @param EventDestination &#91;required&#93; An object that defines the event destination.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_configuration_set_event_destination(
@@ -178,6 +190,12 @@ sesv2_create_configuration_set_event_destination <- function(ConfigurationSetNam
 #' contact list topics.
 #' @param AttributesData The attribute data attached to a contact.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_contact(
@@ -227,6 +245,12 @@ sesv2_create_contact <- function(ContactListName, EmailAddress, TopicPreferences
 #' have multiple topics.
 #' @param Description A description of what the contact list is about.
 #' @param Tags The tags associated with a contact list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -301,6 +325,12 @@ sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' @param FailureRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
 #' or her address is not successfully verified.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_custom_verification_email_template(
@@ -348,6 +378,12 @@ sesv2_create_custom_verification_email_template <- function(TemplateName, FromEm
 #' @param PoolName &#91;required&#93; The name of the dedicated IP pool.
 #' @param Tags An object that defines the tags (keys and values) that you want to
 #' associate with the pool.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -408,6 +444,15 @@ sesv2_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
 #' predictive inbox placement test.
 #' @param Tags An array of objects that define the tags (keys and values) that you want
 #' to associate with the predictive inbox placement test.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReportId = "string",
+#'   DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -514,6 +559,23 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #' You can only specify this object if the email identity is a domain, as
 #' opposed to an address.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
+#'   VerifiedForSendingStatus = TRUE|FALSE,
+#'   DkimAttributes = list(
+#'     SigningEnabled = TRUE|FALSE,
+#'     Status = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE"|"NOT_STARTED",
+#'     Tokens = list(
+#'       "string"
+#'     ),
+#'     SigningAttributesOrigin = "AWS_SES"|"EXTERNAL"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_email_identity(
@@ -582,6 +644,12 @@ sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningA
 #' the [Amazon SES Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_email_identity_policy(
@@ -628,6 +696,12 @@ sesv2_create_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
 #' @param TemplateContent &#91;required&#93; The content of the email template, composed of a subject line, an HTML
 #' part, and a text-only part.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_email_template(
@@ -670,6 +744,14 @@ sesv2_create_email_template <- function(TemplateName, TemplateContent) {
 #'
 #' @param ImportDestination &#91;required&#93; The destination for the import job.
 #' @param ImportDataSource &#91;required&#93; The data source for the import job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -726,6 +808,12 @@ sesv2_create_import_job <- function(ImportDestination, ImportDataSource) {
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_configuration_set(
@@ -773,6 +861,12 @@ sesv2_delete_configuration_set <- function(ConfigurationSetName) {
 #' that you want to delete.
 #' @param EventDestinationName &#91;required&#93; The name of the event destination that you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_configuration_set_event_destination(
@@ -812,6 +906,12 @@ sesv2_delete_configuration_set_event_destination <- function(ConfigurationSetNam
 #' @param ContactListName &#91;required&#93; The name of the contact list from which the contact should be removed.
 #' @param EmailAddress &#91;required&#93; The contact's email address.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_contact(
@@ -849,6 +949,12 @@ sesv2_delete_contact <- function(ContactListName, EmailAddress) {
 #' sesv2_delete_contact_list(ContactListName)
 #'
 #' @param ContactListName &#91;required&#93; The name of the contact list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -894,6 +1000,12 @@ sesv2_delete_contact_list <- function(ContactListName) {
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template that you want to
 #' delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_custom_verification_email_template(
@@ -930,6 +1042,12 @@ sesv2_delete_custom_verification_email_template <- function(TemplateName) {
 #' sesv2_delete_dedicated_ip_pool(PoolName)
 #'
 #' @param PoolName &#91;required&#93; The name of the dedicated IP pool that you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -969,6 +1087,12 @@ sesv2_delete_dedicated_ip_pool <- function(PoolName) {
 #'
 #' @param EmailIdentity &#91;required&#93; The identity (that is, the email address or domain) that you want to
 #' delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1024,6 +1148,12 @@ sesv2_delete_email_identity <- function(EmailIdentity) {
 #' The policy name cannot exceed 64 characters and can only include
 #' alphanumeric characters, dashes, and underscores.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_email_identity_policy(
@@ -1064,6 +1194,12 @@ sesv2_delete_email_identity_policy <- function(EmailIdentity, PolicyName) {
 #'
 #' @param TemplateName &#91;required&#93; The name of the template to be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_email_template(
@@ -1102,6 +1238,12 @@ sesv2_delete_email_template <- function(TemplateName) {
 #' @param EmailAddress &#91;required&#93; The suppressed email destination to remove from the account suppression
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_suppressed_destination(
@@ -1138,6 +1280,40 @@ sesv2_delete_suppressed_destination <- function(EmailAddress) {
 #'
 #' @usage
 #' sesv2_get_account()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DedicatedIpAutoWarmupEnabled = TRUE|FALSE,
+#'   EnforcementStatus = "string",
+#'   ProductionAccessEnabled = TRUE|FALSE,
+#'   SendQuota = list(
+#'     Max24HourSend = 123.0,
+#'     MaxSendRate = 123.0,
+#'     SentLast24Hours = 123.0
+#'   ),
+#'   SendingEnabled = TRUE|FALSE,
+#'   SuppressionAttributes = list(
+#'     SuppressedReasons = list(
+#'       "BOUNCE"|"COMPLAINT"
+#'     )
+#'   ),
+#'   Details = list(
+#'     MailType = "MARKETING"|"TRANSACTIONAL",
+#'     WebsiteURL = "string",
+#'     ContactLanguage = "EN"|"JA",
+#'     UseCaseDescription = "string",
+#'     AdditionalContactEmailAddresses = list(
+#'       "string"
+#'     ),
+#'     ReviewDetails = list(
+#'       Status = "PENDING"|"FAILED"|"GRANTED"|"DENIED",
+#'       CaseId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1177,6 +1353,24 @@ sesv2_get_account <- function() {
 #' @param BlacklistItemNames &#91;required&#93; A list of IP addresses that you want to retrieve blacklist information
 #' about. You can only specify the dedicated IP addresses that you use to
 #' send email using Amazon SES or Amazon Pinpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BlacklistReport = list(
+#'     list(
+#'       list(
+#'         RblName = "string",
+#'         ListingTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Description = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1228,6 +1422,41 @@ sesv2_get_blacklist_reports <- function(BlacklistItemNames) {
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to obtain more
 #' information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationSetName = "string",
+#'   TrackingOptions = list(
+#'     CustomRedirectDomain = "string"
+#'   ),
+#'   DeliveryOptions = list(
+#'     TlsPolicy = "REQUIRE"|"OPTIONAL",
+#'     SendingPoolName = "string"
+#'   ),
+#'   ReputationOptions = list(
+#'     ReputationMetricsEnabled = TRUE|FALSE,
+#'     LastFreshStart = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   SendingOptions = list(
+#'     SendingEnabled = TRUE|FALSE
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   SuppressionOptions = list(
+#'     SuppressedReasons = list(
+#'       "BOUNCE"|"COMPLAINT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_configuration_set(
@@ -1274,6 +1503,41 @@ sesv2_get_configuration_set <- function(ConfigurationSetName) {
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that contains the event destination.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventDestinations = list(
+#'     list(
+#'       Name = "string",
+#'       Enabled = TRUE|FALSE,
+#'       MatchingEventTypes = list(
+#'         "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"|"DELIVERY_DELAY"|"SUBSCRIPTION"
+#'       ),
+#'       KinesisFirehoseDestination = list(
+#'         IamRoleArn = "string",
+#'         DeliveryStreamArn = "string"
+#'       ),
+#'       CloudWatchDestination = list(
+#'         DimensionConfigurations = list(
+#'           list(
+#'             DimensionName = "string",
+#'             DimensionValueSource = "MESSAGE_TAG"|"EMAIL_HEADER"|"LINK_TAG",
+#'             DefaultDimensionValue = "string"
+#'           )
+#'         )
+#'       ),
+#'       SnsDestination = list(
+#'         TopicArn = "string"
+#'       ),
+#'       PinpointDestination = list(
+#'         ApplicationArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_configuration_set_event_destinations(
@@ -1311,6 +1575,35 @@ sesv2_get_configuration_set_event_destinations <- function(ConfigurationSetName)
 #'
 #' @param ContactListName &#91;required&#93; The name of the contact list to which the contact belongs.
 #' @param EmailAddress &#91;required&#93; The contact's email addres.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContactListName = "string",
+#'   EmailAddress = "string",
+#'   TopicPreferences = list(
+#'     list(
+#'       TopicName = "string",
+#'       SubscriptionStatus = "OPT_IN"|"OPT_OUT"
+#'     )
+#'   ),
+#'   TopicDefaultPreferences = list(
+#'     list(
+#'       TopicName = "string",
+#'       SubscriptionStatus = "OPT_IN"|"OPT_OUT"
+#'     )
+#'   ),
+#'   UnsubscribeAll = TRUE|FALSE,
+#'   AttributesData = "string",
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1350,6 +1643,35 @@ sesv2_get_contact <- function(ContactListName, EmailAddress) {
 #' sesv2_get_contact_list(ContactListName)
 #'
 #' @param ContactListName &#91;required&#93; The name of the contact list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContactListName = "string",
+#'   Topics = list(
+#'     list(
+#'       TopicName = "string",
+#'       DisplayName = "string",
+#'       Description = "string",
+#'       DefaultSubscriptionStatus = "OPT_IN"|"OPT_OUT"
+#'     )
+#'   ),
+#'   Description = "string",
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1398,6 +1720,19 @@ sesv2_get_contact_list <- function(ContactListName) {
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template that you want to
 #' retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TemplateName = "string",
+#'   FromEmailAddress = "string",
+#'   TemplateSubject = "string",
+#'   TemplateContent = "string",
+#'   SuccessRedirectionURL = "string",
+#'   FailureRedirectionURL = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_custom_verification_email_template(
@@ -1440,6 +1775,19 @@ sesv2_get_custom_verification_email_template <- function(TemplateName) {
 #' @param Ip &#91;required&#93; The IP address that you want to obtain more information about. The value
 #' you specify has to be a dedicated IP address that's assocaited with your
 #' AWS account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DedicatedIp = list(
+#'     Ip = "string",
+#'     WarmupStatus = "IN_PROGRESS"|"DONE",
+#'     WarmupPercentage = 123,
+#'     PoolName = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1487,6 +1835,22 @@ sesv2_get_dedicated_ip <- function(Ip) {
 #' `GetDedicatedIpsRequest`. If the number of results is larger than the
 #' number you specified in this parameter, then the response includes a
 #' `NextToken` element, which you can use to obtain additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DedicatedIps = list(
+#'     list(
+#'       Ip = "string",
+#'       WarmupStatus = "IN_PROGRESS"|"DONE",
+#'       WarmupPercentage = 123,
+#'       PoolName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1536,6 +1900,46 @@ sesv2_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, PageSize 
 #' @usage
 #' sesv2_get_deliverability_dashboard_options()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DashboardEnabled = TRUE|FALSE,
+#'   SubscriptionExpiryDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   AccountStatus = "ACTIVE"|"PENDING_EXPIRATION"|"DISABLED",
+#'   ActiveSubscribedDomains = list(
+#'     list(
+#'       Domain = "string",
+#'       SubscriptionStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InboxPlacementTrackingOption = list(
+#'         Global = TRUE|FALSE,
+#'         TrackedIsps = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   PendingExpirationSubscribedDomains = list(
+#'     list(
+#'       Domain = "string",
+#'       SubscriptionStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InboxPlacementTrackingOption = list(
+#'         Global = TRUE|FALSE,
+#'         TrackedIsps = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_deliverability_dashboard_options()
@@ -1570,6 +1974,49 @@ sesv2_get_deliverability_dashboard_options <- function() {
 #' sesv2_get_deliverability_test_report(ReportId)
 #'
 #' @param ReportId &#91;required&#93; A unique string that identifies the predictive inbox placement test.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeliverabilityTestReport = list(
+#'     ReportId = "string",
+#'     ReportName = "string",
+#'     Subject = "string",
+#'     FromEmailAddress = "string",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
+#'   ),
+#'   OverallPlacement = list(
+#'     InboxPercentage = 123.0,
+#'     SpamPercentage = 123.0,
+#'     MissingPercentage = 123.0,
+#'     SpfPercentage = 123.0,
+#'     DkimPercentage = 123.0
+#'   ),
+#'   IspPlacements = list(
+#'     list(
+#'       IspName = "string",
+#'       PlacementStatistics = list(
+#'         InboxPercentage = 123.0,
+#'         SpamPercentage = 123.0,
+#'         MissingPercentage = 123.0,
+#'         SpfPercentage = 123.0,
+#'         DkimPercentage = 123.0
+#'       )
+#'     )
+#'   ),
+#'   Message = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1610,6 +2057,37 @@ sesv2_get_deliverability_test_report <- function(ReportId) {
 #'
 #' @param CampaignId &#91;required&#93; The unique identifier for the campaign. The Deliverability dashboard
 #' automatically generates and assigns this identifier to a campaign.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainDeliverabilityCampaign = list(
+#'     CampaignId = "string",
+#'     ImageUrl = "string",
+#'     Subject = "string",
+#'     FromAddress = "string",
+#'     SendingIps = list(
+#'       "string"
+#'     ),
+#'     FirstSeenDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastSeenDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InboxCount = 123,
+#'     SpamCount = 123,
+#'     ReadRate = 123.0,
+#'     DeleteRate = 123.0,
+#'     ReadDeleteRate = 123.0,
+#'     ProjectedVolume = 123,
+#'     Esps = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1654,6 +2132,53 @@ sesv2_get_domain_deliverability_campaign <- function(CampaignId) {
 #' @param EndDate &#91;required&#93; The last day (in Unix time) that you want to obtain domain
 #' deliverability metrics for. The `EndDate` that you specify has to be
 #' less than or equal to 30 days after the `StartDate`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OverallVolume = list(
+#'     VolumeStatistics = list(
+#'       InboxRawCount = 123,
+#'       SpamRawCount = 123,
+#'       ProjectedInbox = 123,
+#'       ProjectedSpam = 123
+#'     ),
+#'     ReadRatePercent = 123.0,
+#'     DomainIspPlacements = list(
+#'       list(
+#'         IspName = "string",
+#'         InboxRawCount = 123,
+#'         SpamRawCount = 123,
+#'         InboxPercentage = 123.0,
+#'         SpamPercentage = 123.0
+#'       )
+#'     )
+#'   ),
+#'   DailyVolumes = list(
+#'     list(
+#'       StartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       VolumeStatistics = list(
+#'         InboxRawCount = 123,
+#'         SpamRawCount = 123,
+#'         ProjectedInbox = 123,
+#'         ProjectedSpam = 123
+#'       ),
+#'       DomainIspPlacements = list(
+#'         list(
+#'           IspName = "string",
+#'           InboxRawCount = 123,
+#'           SpamRawCount = 123,
+#'           InboxPercentage = 123.0,
+#'           SpamPercentage = 123.0
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1701,6 +2226,38 @@ sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
 #' sesv2_get_email_identity(EmailIdentity)
 #'
 #' @param EmailIdentity &#91;required&#93; The email identity that you want to retrieve details for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
+#'   FeedbackForwardingStatus = TRUE|FALSE,
+#'   VerifiedForSendingStatus = TRUE|FALSE,
+#'   DkimAttributes = list(
+#'     SigningEnabled = TRUE|FALSE,
+#'     Status = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE"|"NOT_STARTED",
+#'     Tokens = list(
+#'       "string"
+#'     ),
+#'     SigningAttributesOrigin = "AWS_SES"|"EXTERNAL"
+#'   ),
+#'   MailFromAttributes = list(
+#'     MailFromDomain = "string",
+#'     MailFromDomainStatus = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE",
+#'     BehaviorOnMxFailure = "USE_DEFAULT_VALUE"|"REJECT_MESSAGE"
+#'   ),
+#'   Policies = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1753,6 +2310,16 @@ sesv2_get_email_identity <- function(EmailIdentity) {
 #'
 #' @param EmailIdentity &#91;required&#93; The email identity that you want to retrieve policies for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policies = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_email_identity_policies(
@@ -1794,6 +2361,19 @@ sesv2_get_email_identity_policies <- function(EmailIdentity) {
 #'
 #' @param TemplateName &#91;required&#93; The name of the template you want to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TemplateName = "string",
+#'   TemplateContent = list(
+#'     Subject = "string",
+#'     Text = "string",
+#'     Html = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_email_template(
@@ -1830,6 +2410,40 @@ sesv2_get_email_template <- function(TemplateName) {
 #' sesv2_get_import_job(JobId)
 #'
 #' @param JobId &#91;required&#93; The ID of the import job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   ImportDestination = list(
+#'     SuppressionListDestination = list(
+#'       SuppressionListImportAction = "DELETE"|"PUT"
+#'     ),
+#'     ContactListDestination = list(
+#'       ContactListName = "string",
+#'       ContactListImportAction = "DELETE"|"PUT"
+#'     )
+#'   ),
+#'   ImportDataSource = list(
+#'     S3Url = "string",
+#'     DataFormat = "CSV"|"JSON"
+#'   ),
+#'   FailureInfo = list(
+#'     FailedRecordsS3Url = "string",
+#'     ErrorMessage = "string"
+#'   ),
+#'   JobStatus = "CREATED"|"PROCESSING"|"COMPLETED"|"FAILED",
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CompletedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ProcessedRecordsCount = 123,
+#'   FailedRecordsCount = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1869,6 +2483,24 @@ sesv2_get_import_job <- function(JobId) {
 #' sesv2_get_suppressed_destination(EmailAddress)
 #'
 #' @param EmailAddress &#91;required&#93; The email address that's on the account suppression list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SuppressedDestination = list(
+#'     EmailAddress = "string",
+#'     Reason = "BOUNCE"|"COMPLAINT",
+#'     LastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Attributes = list(
+#'       MessageId = "string",
+#'       FeedbackId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1922,6 +2554,17 @@ sesv2_get_suppressed_destination <- function(EmailAddress) {
 #' parameter, then the response includes a `NextToken` element, which you
 #' can use to obtain additional results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationSets = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_configuration_sets(
@@ -1966,6 +2609,22 @@ sesv2_list_configuration_sets <- function(NextToken = NULL, PageSize = NULL) {
 #' available to be listed. Use the token provided in the Response to use in
 #' the subsequent call to ListContactLists with the same parameters to
 #' retrieve the next page of contact lists.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContactLists = list(
+#'     list(
+#'       ContactListName = "string",
+#'       LastUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2015,6 +2674,35 @@ sesv2_list_contact_lists <- function(PageSize = NULL, NextToken = NULL) {
 #' available to be listed. Use the token provided in the Response to use in
 #' the subsequent call to ListContacts with the same parameters to retrieve
 #' the next page of contacts.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Contacts = list(
+#'     list(
+#'       EmailAddress = "string",
+#'       TopicPreferences = list(
+#'         list(
+#'           TopicName = "string",
+#'           SubscriptionStatus = "OPT_IN"|"OPT_OUT"
+#'         )
+#'       ),
+#'       TopicDefaultPreferences = list(
+#'         list(
+#'           TopicName = "string",
+#'           SubscriptionStatus = "OPT_IN"|"OPT_OUT"
+#'         )
+#'       ),
+#'       UnsubscribeAll = TRUE|FALSE,
+#'       LastUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2081,6 +2769,23 @@ sesv2_list_contacts <- function(ContactListName, Filter = NULL, PageSize = NULL,
 #' 
 #' The value you specify has to be at least 1, and can be no more than 50.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CustomVerificationEmailTemplates = list(
+#'     list(
+#'       TemplateName = "string",
+#'       FromEmailAddress = "string",
+#'       TemplateSubject = "string",
+#'       SuccessRedirectionURL = "string",
+#'       FailureRedirectionURL = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_custom_verification_email_templates(
@@ -2127,6 +2832,17 @@ sesv2_list_custom_verification_email_templates <- function(NextToken = NULL, Pag
 #' number of results is larger than the number you specified in this
 #' parameter, then the response includes a `NextToken` element, which you
 #' can use to obtain additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DedicatedIpPools = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2181,6 +2897,26 @@ sesv2_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = NULL) {
 #' 
 #' The value you specify has to be at least 0, and can be no more than
 #' 1000.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeliverabilityTestReports = list(
+#'     list(
+#'       ReportId = "string",
+#'       ReportName = "string",
+#'       Subject = "string",
+#'       FromEmailAddress = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2239,6 +2975,40 @@ sesv2_list_deliverability_test_reports <- function(NextToken = NULL, PageSize = 
 #' operation. If the number of results is larger than the number that you
 #' specify in this parameter, the response includes a `NextToken` element,
 #' which you can use to obtain additional results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainDeliverabilityCampaigns = list(
+#'     list(
+#'       CampaignId = "string",
+#'       ImageUrl = "string",
+#'       Subject = "string",
+#'       FromAddress = "string",
+#'       SendingIps = list(
+#'         "string"
+#'       ),
+#'       FirstSeenDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastSeenDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InboxCount = 123,
+#'       SpamCount = 123,
+#'       ReadRate = 123.0,
+#'       DeleteRate = 123.0,
+#'       ReadDeleteRate = 123.0,
+#'       ProjectedVolume = 123,
+#'       Esps = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2300,6 +3070,21 @@ sesv2_list_domain_deliverability_campaigns <- function(StartDate, EndDate, Subsc
 #' The value you specify has to be at least 0, and can be no more than
 #' 1000.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EmailIdentities = list(
+#'     list(
+#'       IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
+#'       IdentityName = "string",
+#'       SendingEnabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_email_identities(
@@ -2351,6 +3136,22 @@ sesv2_list_email_identities <- function(NextToken = NULL, PageSize = NULL) {
 #' 
 #' The value you specify has to be at least 1, and can be no more than 10.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TemplatesMetadata = list(
+#'     list(
+#'       TemplateName = "string",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_email_templates(
@@ -2398,6 +3199,32 @@ sesv2_list_email_templates <- function(NextToken = NULL, PageSize = NULL) {
 #' limit, the `NextToken` element is sent in the response. Use the
 #' `NextToken` value in subsequent requests to retrieve additional
 #' addresses.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImportJobs = list(
+#'     list(
+#'       JobId = "string",
+#'       ImportDestination = list(
+#'         SuppressionListDestination = list(
+#'           SuppressionListImportAction = "DELETE"|"PUT"
+#'         ),
+#'         ContactListDestination = list(
+#'           ContactListName = "string",
+#'           ContactListImportAction = "DELETE"|"PUT"
+#'         )
+#'       ),
+#'       JobStatus = "CREATED"|"PROCESSING"|"COMPLETED"|"FAILED",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2455,6 +3282,23 @@ sesv2_list_import_jobs <- function(ImportDestinationType = NULL, NextToken = NUL
 #' parameter, then the response includes a `NextToken` element, which you
 #' can use to obtain additional results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SuppressedDestinationSummaries = list(
+#'     list(
+#'       EmailAddress = "string",
+#'       Reason = "BOUNCE"|"COMPLAINT",
+#'       LastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_suppressed_destinations(
@@ -2509,6 +3353,19 @@ sesv2_list_suppressed_destinations <- function(Reasons = NULL, StartDate = NULL,
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to retrieve
 #' tag information for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -2550,6 +3407,12 @@ sesv2_list_tags_for_resource <- function(ResourceArn) {
 #' addresses that are associated with your Amazon SES account in the
 #' current AWS Region. Set to `true` to enable the automatic warm-up
 #' feature, or set to `false` to disable it.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2609,6 +3472,12 @@ sesv2_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupEnabled =
 #' The sending quota and maximum sending rate for your account vary based
 #' on your specific use case.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_account_details(
@@ -2657,6 +3526,12 @@ sesv2_put_account_details <- function(MailType, WebsiteURL, ContactLanguage = NU
 #' If AWS paused your account's ability to send email, you can't use this
 #' operation to resume your account's ability to send email.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_account_sending_attributes(
@@ -2703,6 +3578,12 @@ sesv2_put_account_sending_attributes <- function(SendingEnabled = NULL) {
 #' -   `BOUNCE` – Amazon SES adds an email address to the suppression list
 #'     for your account when a message sent to that address results in a
 #'     hard bounce.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2754,6 +3635,12 @@ sesv2_put_account_suppression_attributes <- function(SuppressedReasons = NULL) {
 #' @param SendingPoolName The name of the dedicated IP pool that you want to associate with the
 #' configuration set.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_configuration_set_delivery_options(
@@ -2800,6 +3687,12 @@ sesv2_put_configuration_set_delivery_options <- function(ConfigurationSetName, T
 #' configuration set. If `false`, tracking of reputation metrics is
 #' disabled for the configuration set.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_configuration_set_reputation_options(
@@ -2843,6 +3736,12 @@ sesv2_put_configuration_set_reputation_options <- function(ConfigurationSetName,
 #' email sending for.
 #' @param SendingEnabled If `true`, email sending is enabled for the configuration set. If
 #' `false`, email sending is disabled for the configuration set.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2896,6 +3795,12 @@ sesv2_put_configuration_set_sending_options <- function(ConfigurationSetName, Se
 #'     for your account when a message sent to that address results in a
 #'     hard bounce.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_configuration_set_suppression_options(
@@ -2940,6 +3845,12 @@ sesv2_put_configuration_set_suppression_options <- function(ConfigurationSetName
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to add a custom tracking
 #' domain to.
 #' @param CustomRedirectDomain The domain that you want to use to track open and click events.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2990,6 +3901,12 @@ sesv2_put_configuration_set_tracking_options <- function(ConfigurationSetName, C
 #' @param DestinationPoolName &#91;required&#93; The name of the IP pool that you want to add the dedicated IP address
 #' to. You have to specify an IP pool that already exists.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_dedicated_ip_in_pool(
@@ -3030,6 +3947,12 @@ sesv2_put_dedicated_ip_in_pool <- function(Ip, DestinationPoolName) {
 #' for.
 #' @param WarmupPercentage &#91;required&#93; The warm-up percentage that you want to associate with the dedicated IP
 #' address.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3081,6 +4004,12 @@ sesv2_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentage) {
 #' dashboard, set this value to `true`.
 #' @param SubscribedDomains An array of objects, one for each verified domain that you use to send
 #' email and enabled the Deliverability dashboard for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3137,6 +4066,12 @@ sesv2_put_deliverability_dashboard_option <- function(DashboardEnabled, Subscrib
 #' When you set this value `true`, then the messages that are sent from the
 #' identity are signed using DKIM. If you set this value to `false`, your
 #' messages are sent without DKIM signing.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3202,6 +4137,17 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
 #' that you want to use to configure DKIM for the identity. This object is
 #' only required if you want to configure Bring Your Own DKIM (BYODKIM) for
 #' the identity.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DkimStatus = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE"|"NOT_STARTED",
+#'   DkimTokens = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3270,6 +4216,12 @@ sesv2_put_email_identity_dkim_signing_attributes <- function(EmailIdentity, Sign
 #' receive an email notification when these events occur (even if this
 #' setting is disabled).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_email_identity_feedback_attributes(
@@ -3330,6 +4282,12 @@ sesv2_put_email_identity_feedback_attributes <- function(EmailIdentity, EmailFor
 #' These behaviors are taken when the custom MAIL FROM domain configuration
 #' is in the `Pending`, `Failed`, and `TemporaryFailure` states.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_email_identity_mail_from_attributes(
@@ -3371,6 +4329,12 @@ sesv2_put_email_identity_mail_from_attributes <- function(EmailIdentity, MailFro
 #' account.
 #' @param Reason &#91;required&#93; The factors that should cause the email address to be added to the
 #' suppression list for your account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3456,6 +4420,20 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' @param BulkEmailEntries &#91;required&#93; The list of bulk email entry objects.
 #' @param ConfigurationSetName The name of the configuration set that you want to use when sending the
 #' email.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BulkEmailEntryResults = list(
+#'     list(
+#'       Status = "SUCCESS"|"MESSAGE_REJECTED"|"MAIL_FROM_DOMAIN_NOT_VERIFIED"|"CONFIGURATION_SET_NOT_FOUND"|"TEMPLATE_NOT_FOUND"|"ACCOUNT_SUSPENDED"|"ACCOUNT_THROTTLED"|"ACCOUNT_DAILY_QUOTA_EXCEEDED"|"INVALID_SENDING_POOL_NAME"|"ACCOUNT_SENDING_PAUSED"|"CONFIGURATION_SET_SENDING_PAUSED"|"INVALID_PARAMETER"|"TRANSIENT_FAILURE"|"FAILED",
+#'       Error = "string",
+#'       MessageId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3555,6 +4533,14 @@ sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdent
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template to use when sending
 #' the verification email.
 #' @param ConfigurationSetName Name of a configuration set to use when sending the verification email.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3663,6 +4649,14 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' @param ListManagementOptions An object used to specify a list or topic to which an email belongs,
 #' which will be used when a contact chooses to unsubscribe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_email(
@@ -3768,6 +4762,12 @@ sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityAr
 #' maximum length of a tag key is 128 characters. The maximum length of a
 #' tag value is 256 characters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -3818,6 +4818,14 @@ sesv2_tag_resource <- function(ResourceArn, Tags) {
 #' a JSON object, typically consisting of key-value pairs in which the keys
 #' correspond to replacement tags in the email template.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RenderedTemplate = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$test_render_email_template(
@@ -3864,6 +4872,12 @@ sesv2_test_render_email_template <- function(TemplateName, TemplateData) {
 #' parameter and argument for each additional tag to remove, separated by
 #' an ampersand. For example:
 #' `/v2/email/tags?ResourceArn=ResourceArn&TagKeys=Key1&TagKeys=Key2`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3916,6 +4930,12 @@ sesv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' that you want to modify.
 #' @param EventDestinationName &#91;required&#93; The name of the event destination that you want to modify.
 #' @param EventDestination &#91;required&#93; An object that defines the event destination.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3988,6 +5008,12 @@ sesv2_update_configuration_set_event_destination <- function(ConfigurationSetNam
 #' contact list topics.
 #' @param AttributesData The attribute data attached to a contact.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_contact(
@@ -4037,6 +5063,12 @@ sesv2_update_contact <- function(ContactListName, EmailAddress, TopicPreferences
 #' @param Topics An interest group, theme, or label within a list. A contact list can
 #' have multiple topics.
 #' @param Description A description of what the contact list is about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4106,6 +5138,12 @@ sesv2_update_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' @param FailureRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
 #' or her address is not successfully verified.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_custom_verification_email_template(
@@ -4170,6 +5208,12 @@ sesv2_update_custom_verification_email_template <- function(TemplateName, FromEm
 #' the [Amazon SES Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_email_identity_policy(
@@ -4215,6 +5259,12 @@ sesv2_update_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
 #' @param TemplateName &#91;required&#93; The name of the template you want to update.
 #' @param TemplateContent &#91;required&#93; The content of the email template, composed of a subject line, an HTML
 #' part, and a text-only part.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

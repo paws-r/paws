@@ -33,6 +33,69 @@ unsuppressed findings should be listed. If this parameter isn't
 provided, the response will list both suppressed and unsuppressed
 findings.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  findings = list(
+    list(
+      findingId = "string",
+      taskId = "string",
+      checkName = "string",
+      taskStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      findingTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW",
+      nonCompliantResource = list(
+        resourceType = "DEVICE_CERTIFICATE"|"CA_CERTIFICATE"|"IOT_POLICY"|"COGNITO_IDENTITY_POOL"|"CLIENT_ID"|"ACCOUNT_SETTINGS"|"ROLE_ALIAS"|"IAM_ROLE",
+        resourceIdentifier = list(
+          deviceCertificateId = "string",
+          caCertificateId = "string",
+          cognitoIdentityPoolId = "string",
+          clientId = "string",
+          policyVersionIdentifier = list(
+            policyName = "string",
+            policyVersionId = "string"
+          ),
+          account = "string",
+          iamRoleArn = "string",
+          roleAliasArn = "string"
+        ),
+        additionalInfo = list(
+          "string"
+        )
+      ),
+      relatedResources = list(
+        list(
+          resourceType = "DEVICE_CERTIFICATE"|"CA_CERTIFICATE"|"IOT_POLICY"|"COGNITO_IDENTITY_POOL"|"CLIENT_ID"|"ACCOUNT_SETTINGS"|"ROLE_ALIAS"|"IAM_ROLE",
+          resourceIdentifier = list(
+            deviceCertificateId = "string",
+            caCertificateId = "string",
+            cognitoIdentityPoolId = "string",
+            clientId = "string",
+            policyVersionIdentifier = list(
+              policyName = "string",
+              policyVersionId = "string"
+            ),
+            account = "string",
+            iamRoleArn = "string",
+            roleAliasArn = "string"
+          ),
+          additionalInfo = list(
+            "string"
+          )
+        )
+      ),
+      reasonForNonCompliance = "string",
+      reasonForNonComplianceCode = "string",
+      isSuppressed = TRUE|FALSE
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the findings (results) of a Device Defender audit or of the audits
 performed during a specified time period. (Findings are retained for 90

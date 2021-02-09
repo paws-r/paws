@@ -18,6 +18,42 @@ journey metrics.}
 \item{Token}{The NextToken string that specifies which page of results to return in a
 paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ImportJobsResponse = list(
+    Item = list(
+      list(
+        ApplicationId = "string",
+        CompletedPieces = 123,
+        CompletionDate = "string",
+        CreationDate = "string",
+        Definition = list(
+          DefineSegment = TRUE|FALSE,
+          ExternalId = "string",
+          Format = "CSV"|"JSON",
+          RegisterEndpoints = TRUE|FALSE,
+          RoleArn = "string",
+          S3Url = "string",
+          SegmentId = "string",
+          SegmentName = "string"
+        ),
+        FailedPieces = 123,
+        Failures = list(
+          "string"
+        ),
+        Id = "string",
+        JobStatus = "CREATED"|"PREPARING_FOR_INITIALIZATION"|"INITIALIZING"|"PROCESSING"|"PENDING_JOB"|"COMPLETING"|"COMPLETED"|"FAILING"|"FAILED",
+        TotalFailures = 123,
+        TotalPieces = 123,
+        TotalProcessed = 123,
+        Type = "string"
+      )
+    ),
+    NextToken = "string"
+  )
+)
+}
+}
 \description{
 Retrieves information about the status and settings of all the import
 jobs for an application.

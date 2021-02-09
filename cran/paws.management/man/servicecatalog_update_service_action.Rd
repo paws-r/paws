@@ -23,6 +23,22 @@ servicecatalog_update_service_action(Id, Name, Definition, Description,
 \item \code{zh} - Chinese
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceActionDetail = list(
+    ServiceActionSummary = list(
+      Id = "string",
+      Name = "string",
+      Description = "string",
+      DefinitionType = "SSM_AUTOMATION"
+    ),
+    Definition = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates a self-service action.
 }

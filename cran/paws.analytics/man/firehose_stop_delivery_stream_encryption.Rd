@@ -10,6 +10,10 @@ firehose_stop_delivery_stream_encryption(DeliveryStreamName)
 \item{DeliveryStreamName}{[required] The name of the delivery stream for which you want to disable
 server-side encryption (SSE).}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disables server-side encryption (SSE) for the delivery stream.
 

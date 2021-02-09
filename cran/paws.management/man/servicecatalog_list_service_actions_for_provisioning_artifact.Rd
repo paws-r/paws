@@ -26,6 +26,20 @@ results, use null.}
 \item \code{zh} - Chinese
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceActionSummaries = list(
+    list(
+      Id = "string",
+      Name = "string",
+      Description = "string",
+      DefinitionType = "SSM_AUTOMATION"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Returns a paginated list of self-service actions associated with the
 specified Product ID and Provisioning Artifact ID.

@@ -13,6 +13,10 @@ codestar_update_project(id, name, description)
 
 \item{description}{The description of the project, if any.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a project in AWS CodeStar.
 }

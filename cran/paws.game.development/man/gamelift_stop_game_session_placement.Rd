@@ -9,6 +9,51 @@ gamelift_stop_game_session_placement(PlacementId)
 \arguments{
 \item{PlacementId}{[required] A unique identifier for a game session placement to cancel.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GameSessionPlacement = list(
+    PlacementId = "string",
+    GameSessionQueueName = "string",
+    Status = "PENDING"|"FULFILLED"|"CANCELLED"|"TIMED_OUT"|"FAILED",
+    GameProperties = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    MaximumPlayerSessionCount = 123,
+    GameSessionName = "string",
+    GameSessionId = "string",
+    GameSessionArn = "string",
+    GameSessionRegion = "string",
+    PlayerLatencies = list(
+      list(
+        PlayerId = "string",
+        RegionIdentifier = "string",
+        LatencyInMilliseconds = 123.0
+      )
+    ),
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    IpAddress = "string",
+    DnsName = "string",
+    Port = 123,
+    PlacedPlayerSessions = list(
+      list(
+        PlayerId = "string",
+        PlayerSessionId = "string"
+      )
+    ),
+    GameSessionData = "string",
+    MatchmakerData = "string"
+  )
+)
+}
+}
 \description{
 Cancels a game session placement that is in \code{PENDING} status. To stop a
 placement, provide the placement ID values. If successful, the placement

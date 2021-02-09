@@ -36,6 +36,13 @@ All compute environments that are associated with a job queue must share
 the same architecture. AWS Batch doesn't support mixing compute
 environment architecture types in a single job queue.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobQueueName = "string",
+  jobQueueArn = "string"
+)
+}
+}
 \description{
 Updates a job queue.
 }

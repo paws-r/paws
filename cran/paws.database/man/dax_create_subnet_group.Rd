@@ -13,6 +13,22 @@ dax_create_subnet_group(SubnetGroupName, Description, SubnetIds)
 
 \item{SubnetIds}{[required] A list of VPC subnet IDs for the subnet group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SubnetGroup = list(
+    SubnetGroupName = "string",
+    Description = "string",
+    VpcId = "string",
+    Subnets = list(
+      list(
+        SubnetIdentifier = "string",
+        SubnetAvailabilityZone = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a new subnet group.
 }

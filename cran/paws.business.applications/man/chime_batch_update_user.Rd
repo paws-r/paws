@@ -12,6 +12,18 @@ chime_batch_update_user(AccountId, UpdateUserRequestItems)
 
 \item{UpdateUserRequestItems}{[required] The request containing the user IDs and details to update.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserErrors = list(
+    list(
+      UserId = "string",
+      ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates user details within the UpdateUserRequestItem object for up to
 20 users for the specified Amazon Chime account. Currently, only

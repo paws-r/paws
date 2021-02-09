@@ -24,14 +24,58 @@ CodeDeploy.}
 
 You can refer to a name in the configuration properties of the custom
 action within the URL templates by following the format of
-\{Config:name\}, as long as the configuration property is both required
-and not secret. For more information, see \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-create-custom-action.html}{Create a Custom Action for a Pipeline}.}
+\{Config:name\}, as long as the configuration property is both
+required and not secret. For more information, see \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-create-custom-action.html}{Create a Custom Action for a Pipeline}.}
 
 \item{inputArtifactDetails}{[required] The details of the input artifact for the action, such as its commit ID.}
 
 \item{outputArtifactDetails}{[required] The details of the output artifact of the action, such as its commit ID.}
 
 \item{tags}{The tags for the custom action.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  actionType = list(
+    id = list(
+      category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+      owner = "AWS"|"ThirdParty"|"Custom",
+      provider = "string",
+      version = "string"
+    ),
+    settings = list(
+      thirdPartyConfigurationUrl = "string",
+      entityUrlTemplate = "string",
+      executionUrlTemplate = "string",
+      revisionUrlTemplate = "string"
+    ),
+    actionConfigurationProperties = list(
+      list(
+        name = "string",
+        required = TRUE|FALSE,
+        key = TRUE|FALSE,
+        secret = TRUE|FALSE,
+        queryable = TRUE|FALSE,
+        description = "string",
+        type = "String"|"Number"|"Boolean"
+      )
+    ),
+    inputArtifactDetails = list(
+      minimumCount = 123,
+      maximumCount = 123
+    ),
+    outputArtifactDetails = list(
+      minimumCount = 123,
+      maximumCount = 123
+    )
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
+}
 }
 \description{
 Creates a new custom action that can be used in all pipelines associated

@@ -18,6 +18,27 @@ template ID or launch template name in the request.}
 \item{LaunchTemplateName}{The name of the launch template. You must specify either the launch
 template ID or launch template name in the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LaunchTemplate = list(
+    LaunchTemplateId = "string",
+    LaunchTemplateName = "string",
+    CreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreatedBy = "string",
+    DefaultVersionNumber = 123,
+    LatestVersionNumber = 123,
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deletes a launch template. Deleting a launch template deletes all of its
 versions.

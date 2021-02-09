@@ -9,6 +9,95 @@ iotanalytics_describe_pipeline(pipelineName)
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline whose information is retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  pipeline = list(
+    name = "string",
+    arn = "string",
+    activities = list(
+      list(
+        channel = list(
+          name = "string",
+          channelName = "string",
+          next = "string"
+        ),
+        lambda = list(
+          name = "string",
+          lambdaName = "string",
+          batchSize = 123,
+          next = "string"
+        ),
+        datastore = list(
+          name = "string",
+          datastoreName = "string"
+        ),
+        addAttributes = list(
+          name = "string",
+          attributes = list(
+            "string"
+          ),
+          next = "string"
+        ),
+        removeAttributes = list(
+          name = "string",
+          attributes = list(
+            "string"
+          ),
+          next = "string"
+        ),
+        selectAttributes = list(
+          name = "string",
+          attributes = list(
+            "string"
+          ),
+          next = "string"
+        ),
+        filter = list(
+          name = "string",
+          filter = "string",
+          next = "string"
+        ),
+        math = list(
+          name = "string",
+          attribute = "string",
+          math = "string",
+          next = "string"
+        ),
+        deviceRegistryEnrich = list(
+          name = "string",
+          attribute = "string",
+          thingName = "string",
+          roleArn = "string",
+          next = "string"
+        ),
+        deviceShadowEnrich = list(
+          name = "string",
+          attribute = "string",
+          thingName = "string",
+          roleArn = "string",
+          next = "string"
+        )
+      )
+    ),
+    reprocessingSummaries = list(
+      list(
+        id = "string",
+        status = "RUNNING"|"SUCCEEDED"|"CANCELLED"|"FAILED",
+        creationTime = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    ),
+    creationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdateTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves information about a pipeline.
 }

@@ -11,6 +11,10 @@ worklink_sign_out_user(FleetArn, Username)
 
 \item{Username}{[required] The name of the user.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Signs the user out from all of their devices. The user can sign in again
 if they have valid credentials.

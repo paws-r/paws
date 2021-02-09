@@ -15,6 +15,15 @@ results.}
 
 \item{status}{The status of the bulk thing provisioning task.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  taskIds = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 List bulk thing provisioning tasks.
 }

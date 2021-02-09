@@ -22,6 +22,20 @@ pagination token in the next request.}
 \item{maxResults}{The maximum number of slot types to return in the response. The default
 is 10.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  slotTypes = list(
+    list(
+      signature = "string",
+      supportedLocales = list(
+        "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets a list of built-in slot types that meet the specified criteria.
 

@@ -14,6 +14,10 @@ connect_stop_contact_recording(InstanceId, ContactId, InitialContactId)
 \item{InitialContactId}{[required] The identifier of the contact. This is the identifier of the contact
 associated with the first interaction with the contact center.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 When a contact is being recorded, this API stops recording the call.
 StopContactRecording is a one-time action. If you use

@@ -10,6 +10,28 @@ lightsail_get_auto_snapshots(resourceName)
 \item{resourceName}{[required] The name of the source instance or disk from which to get automatic
 snapshot information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  resourceName = "string",
+  resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
+  autoSnapshots = list(
+    list(
+      date = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      status = "Success"|"Failed"|"InProgress"|"NotFound",
+      fromAttachedDisks = list(
+        list(
+          path = "string",
+          sizeInGb = 123
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the available automatic snapshots for an instance or disk. For
 more information, see the Lightsail Dev Guide.

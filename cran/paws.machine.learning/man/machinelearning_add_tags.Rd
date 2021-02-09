@@ -15,6 +15,13 @@ value of null.}
 
 \item{ResourceType}{[required] The type of the ML object to tag.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceId = "string",
+  ResourceType = "BatchPrediction"|"DataSource"|"Evaluation"|"MLModel"
+)
+}
+}
 \description{
 Adds one or more tags to an object, up to a limit of 10. Each tag
 consists of a key and an optional value. If you add a tag using a key

@@ -22,6 +22,15 @@ approximate number.}
 of an object is reflected in a subsequent read operation of that same
 object.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AttachedPolicyIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns policies attached to an object in pagination fashion.
 }

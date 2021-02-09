@@ -17,6 +17,10 @@ GetActivityTaskOutput$taskToken.}
 
 \item{cause}{A more detailed explanation of the cause of the failure.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Used by activity workers and task states using the
 \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback}

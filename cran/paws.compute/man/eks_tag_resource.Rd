@@ -14,6 +14,10 @@ node groups.}
 
 \item{tags}{[required] The tags to add to the resource. A tag is an array of key-value pairs.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates the specified tags to a resource with the specified
 \code{resourceArn}. If existing tags on a resource are not specified in the

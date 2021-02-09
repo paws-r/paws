@@ -22,6 +22,10 @@ none is provided, the AWS account ID is used by default.}
 The \code{Values} property can't be changed. If you want to change the
 partition key values for a partition, delete and recreate the partition.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a partition.
 }

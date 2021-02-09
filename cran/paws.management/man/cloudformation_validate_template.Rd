@@ -23,6 +23,27 @@ in the AWS CloudFormation User Guide.
 Conditional: You must pass \code{TemplateURL} or \code{TemplateBody}. If both are
 passed, only \code{TemplateBody} is used.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Parameters = list(
+    list(
+      ParameterKey = "string",
+      DefaultValue = "string",
+      NoEcho = TRUE|FALSE,
+      Description = "string"
+    )
+  ),
+  Description = "string",
+  Capabilities = list(
+    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
+  ),
+  CapabilitiesReason = "string",
+  DeclaredTransforms = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Validates a specified template. AWS CloudFormation first checks if the
 template is valid JSON. If it isn't, AWS CloudFormation checks if the

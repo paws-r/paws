@@ -49,6 +49,10 @@ purpose.
 don't use it to provide sensitive information.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the specified user's attributes, including developer attributes,
 as an administrator. Works on any user.

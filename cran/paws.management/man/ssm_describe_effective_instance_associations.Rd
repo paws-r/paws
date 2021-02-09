@@ -17,6 +17,20 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Associations = list(
+    list(
+      AssociationId = "string",
+      InstanceId = "string",
+      Content = "string",
+      AssociationVersion = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 All associations for the instance(s).
 }

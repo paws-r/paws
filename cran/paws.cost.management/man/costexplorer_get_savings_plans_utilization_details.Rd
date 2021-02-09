@@ -54,6 +54,56 @@ The following values are supported for \code{Key}:
 
 Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SavingsPlansUtilizationDetails = list(
+    list(
+      SavingsPlanArn = "string",
+      Attributes = list(
+        "string"
+      ),
+      Utilization = list(
+        TotalCommitment = "string",
+        UsedCommitment = "string",
+        UnusedCommitment = "string",
+        UtilizationPercentage = "string"
+      ),
+      Savings = list(
+        NetSavings = "string",
+        OnDemandCostEquivalent = "string"
+      ),
+      AmortizedCommitment = list(
+        AmortizedRecurringCommitment = "string",
+        AmortizedUpfrontCommitment = "string",
+        TotalAmortizedCommitment = "string"
+      )
+    )
+  ),
+  Total = list(
+    Utilization = list(
+      TotalCommitment = "string",
+      UsedCommitment = "string",
+      UnusedCommitment = "string",
+      UtilizationPercentage = "string"
+    ),
+    Savings = list(
+      NetSavings = "string",
+      OnDemandCostEquivalent = "string"
+    ),
+    AmortizedCommitment = list(
+      AmortizedRecurringCommitment = "string",
+      AmortizedUpfrontCommitment = "string",
+      TotalAmortizedCommitment = "string"
+    )
+  ),
+  TimePeriod = list(
+    Start = "string",
+    End = "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves attribute data along with aggregate utilization and savings
 data for a given time period. This doesn't support granular or grouped

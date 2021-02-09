@@ -41,6 +41,57 @@ under CommonPrefixes.}
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IsTruncated = TRUE|FALSE,
+  KeyMarker = "string",
+  VersionIdMarker = "string",
+  NextKeyMarker = "string",
+  NextVersionIdMarker = "string",
+  Versions = list(
+    list(
+      ETag = "string",
+      Size = 123,
+      StorageClass = "STANDARD",
+      Key = "string",
+      VersionId = "string",
+      IsLatest = TRUE|FALSE,
+      LastModified = as.POSIXct(
+        "2015-01-01"
+      ),
+      Owner = list(
+        DisplayName = "string",
+        ID = "string"
+      )
+    )
+  ),
+  DeleteMarkers = list(
+    list(
+      Owner = list(
+        DisplayName = "string",
+        ID = "string"
+      ),
+      Key = "string",
+      VersionId = "string",
+      IsLatest = TRUE|FALSE,
+      LastModified = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  Name = "string",
+  Prefix = "string",
+  Delimiter = "string",
+  MaxKeys = 123,
+  CommonPrefixes = list(
+    list(
+      Prefix = "string"
+    )
+  ),
+  EncodingType = "url"
+)
+}
+}
 \description{
 Returns metadata about all versions of the objects in a bucket. You can
 also use request parameters as selection criteria to return metadata

@@ -16,6 +16,16 @@ efs_put_lifecycle_configuration(FileSystemId, LifecyclePolicies)
 lifecycle management when to transition files from the Standard storage
 class to the Infrequent Access storage class.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LifecyclePolicies = list(
+    list(
+      TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
+    )
+  )
+)
+}
+}
 \description{
 Enables lifecycle management by creating a new \code{LifecycleConfiguration}
 object. A \code{LifecycleConfiguration} object defines when files in an

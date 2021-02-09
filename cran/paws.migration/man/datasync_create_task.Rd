@@ -41,6 +41,12 @@ For more information, see task-scheduling.}
 \item{Tags}{The key-value pair that represents the tag that you want to add to the
 resource. The value can be an empty string.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TaskArn = "string"
+)
+}
+}
 \description{
 Creates a task. A task is a set of two locations (source and
 destination) and a set of Options that you use to control the behavior

@@ -11,6 +11,18 @@ devicefarm_list_offering_promotions(nextToken)
 operation, which can be used to return the next set of items in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  offeringPromotions = list(
+    list(
+      id = "string",
+      description = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of offering promotions. Each offering promotion record
 contains the ID and description of the promotion. The API returns a

@@ -20,6 +20,23 @@ page. The default is 25. If you specify 0, AWS Config uses the default.}
 \item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
 request the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RemediationExceptions = list(
+    list(
+      ConfigRuleName = "string",
+      ResourceType = "string",
+      ResourceId = "string",
+      Message = "string",
+      ExpirationTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns the details of one or more remediation exceptions. A detailed
 view of a remediation exception for a set of resources that includes an

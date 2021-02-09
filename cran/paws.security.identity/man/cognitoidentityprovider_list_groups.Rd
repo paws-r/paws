@@ -15,6 +15,27 @@ cognitoidentityprovider_list_groups(UserPoolId, Limit, NextToken)
 operation, which can be used to return the next set of items in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Groups = list(
+    list(
+      GroupName = "string",
+      UserPoolId = "string",
+      Description = "string",
+      RoleArn = "string",
+      Precedence = 123,
+      LastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the groups associated with a user pool.
 

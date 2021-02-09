@@ -21,6 +21,48 @@ response.}
 
 \item{SortOrder}{The field by which to sort results. The default is \code{CreatedTime}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PipelineExecutionSteps = list(
+    list(
+      StepName = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      StepStatus = "Starting"|"Executing"|"Stopping"|"Stopped"|"Failed"|"Succeeded",
+      CacheHitResult = list(
+        SourcePipelineExecutionArn = "string"
+      ),
+      FailureReason = "string",
+      Metadata = list(
+        TrainingJob = list(
+          Arn = "string"
+        ),
+        ProcessingJob = list(
+          Arn = "string"
+        ),
+        TransformJob = list(
+          Arn = "string"
+        ),
+        Model = list(
+          Arn = "string"
+        ),
+        RegisterModel = list(
+          Arn = "string"
+        ),
+        Condition = list(
+          Outcome = "True"|"False"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of \code{PipeLineExecutionStep} objects.
 }

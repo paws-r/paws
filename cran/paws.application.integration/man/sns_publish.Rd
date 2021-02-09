@@ -101,7 +101,7 @@ Valid value: \code{json}}
 \item{MessageDeduplicationId}{This parameter applies only to FIFO (first-in-first-out) topics. The
 \code{MessageDeduplicationId} can contain up to 128 alphanumeric characters
 (a-z, A-Z, 0-9) and punctuation
-\verb{(!\\"#$\%&\\'()*+,-./:;<=>?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
+\verb{(!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~)}.
 
 Every message must have a unique \code{MessageDeduplicationId}, which is a
 token used for deduplication of sent messages. If a message with a
@@ -111,18 +111,28 @@ deduplication interval is treated as a duplicate.
 
 If the topic has \code{ContentBasedDeduplication} set, the system generates a
 \code{MessageDeduplicationId} based on the contents of the message. Your
-\code{MessageDeduplicationId} overrides the generated one.}
+\code{MessageDeduplicationId} overrides the generated one.
+
+[]: R:\%5C}
 
 \item{MessageGroupId}{This parameter applies only to FIFO (first-in-first-out) topics. The
 \code{MessageGroupId} can contain up to 128 alphanumeric characters (a-z,
-A-Z, 0-9) and punctuation
-\verb{(!\\"#$\%&\\'()*+,-./:;<=>?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
+A-Z, 0-9) and punctuation \verb{(!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~)}.
 
 The \code{MessageGroupId} is a tag that specifies that a message belongs to a
 specific message group. Messages that belong to the same message group
 are processed in a FIFO manner (however, messages in different message
 groups might be processed out of order). Every message must include a
-\code{MessageGroupId}.}
+\code{MessageGroupId}.
+
+[]: R:\%5C}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  MessageId = "string",
+  SequenceNumber = "string"
+)
+}
 }
 \description{
 Sends a message to an Amazon SNS topic, a text message (SMS message)

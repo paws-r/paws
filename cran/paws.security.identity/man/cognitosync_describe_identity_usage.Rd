@@ -8,9 +8,27 @@ data usage}
 cognitosync_describe_identity_usage(IdentityPoolId, IdentityId)
 }
 \arguments{
-\item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityPoolId}{[required] A name-spaced GUID (for example,
+us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.}
 
-\item{IdentityId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityId}{[required] A name-spaced GUID (for example,
+us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityUsage = list(
+    IdentityId = "string",
+    IdentityPoolId = "string",
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    DatasetCount = 123,
+    DataStorage = 123
+  )
+)
+}
 }
 \description{
 Gets usage information for an identity, including number of datasets and

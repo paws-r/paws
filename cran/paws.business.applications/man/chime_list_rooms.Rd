@@ -15,6 +15,26 @@ chime_list_rooms(AccountId, MemberId, MaxResults, NextToken)
 
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Rooms = list(
+    list(
+      RoomId = "string",
+      Name = "string",
+      AccountId = "string",
+      CreatedBy = "string",
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the room details for the specified Amazon Chime Enterprise
 account. Optionally, filter the results by a member ID (user ID or bot

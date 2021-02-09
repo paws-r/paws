@@ -12,6 +12,10 @@ more information, see arns.}
 
 \item{Name}{[required] The name of the facet to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a given Facet. All attributes and Rules that are associated with
 the facet will be deleted. Only development schema facets are allowed

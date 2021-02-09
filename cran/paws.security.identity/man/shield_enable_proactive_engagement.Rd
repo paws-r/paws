@@ -8,6 +8,10 @@ support}
 \usage{
 shield_enable_proactive_engagement()
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Authorizes the DDoS Response Team (DRT) to use email and phone to notify
 contacts about escalations to the DRT and to initiate proactive customer

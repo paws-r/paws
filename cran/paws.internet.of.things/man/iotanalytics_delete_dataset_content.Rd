@@ -10,9 +10,9 @@ iotanalytics_delete_dataset_content(datasetName, versionId)
 \item{datasetName}{[required] The name of the dataset whose content is deleted.}
 
 \item{versionId}{The version of the dataset whose content is deleted. You can also use
-the strings "$LATEST" or "$LATEST\\_SUCCEEDED" to delete the latest or
+the strings "$LATEST" or "$LATEST_SUCCEEDED" to delete the latest or
 latest successfully completed data set. If not specified,
-"$LATEST\\_SUCCEEDED" is the default.}
+"$LATEST_SUCCEEDED" is the default.}
 }
 \description{
 Deletes the content of the specified dataset.

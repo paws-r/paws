@@ -12,6 +12,10 @@ being updated.}
 
 \item{Options}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates execution of a task.
 

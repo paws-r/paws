@@ -14,6 +14,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcId}{[required] The ID of the VPC.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Enables a VPC for ClassicLink. You can then link EC2-Classic instances
 to your ClassicLink-enabled VPC to allow communication over private IP

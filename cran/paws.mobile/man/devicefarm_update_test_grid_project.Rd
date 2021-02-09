@@ -13,6 +13,19 @@ devicefarm_update_test_grid_project(projectArn, name, description)
 
 \item{description}{Human-readable description for the project.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  testGridProject = list(
+    arn = "string",
+    name = "string",
+    description = "string",
+    created = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Change details of a project.
 }

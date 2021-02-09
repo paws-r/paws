@@ -11,6 +11,10 @@ amplify_tag_resource(resourceArn, tags)
 
 \item{tags}{[required] The tags used to tag the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Tags the resource with a tag key and value.
 }

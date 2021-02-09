@@ -15,6 +15,32 @@ journey metrics.}
 \item{Token}{The NextToken string that specifies which page of results to return in a
 paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ListRecommenderConfigurationsResponse = list(
+    Item = list(
+      list(
+        Attributes = list(
+          "string"
+        ),
+        CreationDate = "string",
+        Description = "string",
+        Id = "string",
+        LastModifiedDate = "string",
+        Name = "string",
+        RecommendationProviderIdType = "string",
+        RecommendationProviderRoleArn = "string",
+        RecommendationProviderUri = "string",
+        RecommendationTransformerUri = "string",
+        RecommendationsDisplayName = "string",
+        RecommendationsPerMessage = 123
+      )
+    ),
+    NextToken = "string"
+  )
+)
+}
+}
 \description{
 Retrieves information about all the recommender model configurations
 that are associated with your Amazon Pinpoint account.

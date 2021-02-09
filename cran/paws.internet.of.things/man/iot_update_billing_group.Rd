@@ -17,6 +17,12 @@ group does not match the expected version specified in the request, the
 \code{\link[=iot_update_billing_group]{update_billing_group}} request is rejected
 with a \code{VersionConflictException}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  version = 123
+)
+}
+}
 \description{
 Updates information about the billing group.
 }

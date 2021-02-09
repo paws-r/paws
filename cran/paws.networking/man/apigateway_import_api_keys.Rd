@@ -16,6 +16,17 @@ Currently, only the \code{csv} format is supported.}
 \item{failOnWarnings}{A query parameter to indicate whether to rollback ApiKey importation
 (\code{true}) or not (\code{false}) when error is encountered.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ids = list(
+    "string"
+  ),
+  warnings = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Import API keys from an external source, such as a CSV-formatted file.
 }

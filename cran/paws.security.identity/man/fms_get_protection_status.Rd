@@ -37,6 +37,15 @@ return for this request. If you have more objects than the number that
 you specify for \code{MaxResults}, the response includes a \code{NextToken} value
 that you can use to get another batch of objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AdminAccountId = "string",
+  ServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
+  Data = "string",
+  NextToken = "string"
+)
+}
+}
 \description{
 If you created a Shield Advanced policy, returns policy-level attack
 summary information in the event of a potential DDoS attack. Other

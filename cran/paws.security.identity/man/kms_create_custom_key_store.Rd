@@ -32,6 +32,12 @@ sensitive.
 This parameter tells AWS KMS the \code{kmsuser} account password; it does not
 change the password in the AWS CloudHSM cluster.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CustomKeyStoreId = "string"
+)
+}
+}
 \description{
 Creates a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
 that is associated with an \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html}{AWS CloudHSM cluster}

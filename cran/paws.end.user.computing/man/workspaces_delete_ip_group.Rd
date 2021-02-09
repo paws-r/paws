@@ -9,6 +9,10 @@ workspaces_delete_ip_group(GroupId)
 \arguments{
 \item{GroupId}{[required] The identifier of the IP access control group.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified IP access control group.
 

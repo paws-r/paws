@@ -9,6 +9,10 @@ sms_terminate_app(appId)
 \arguments{
 \item{appId}{The ID of the application.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Terminates the stack for the specified application.
 }

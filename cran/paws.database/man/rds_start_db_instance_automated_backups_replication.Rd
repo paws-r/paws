@@ -26,6 +26,52 @@ request for the StartDBInstanceAutomatedBackupsReplication API action
 that can be executed in the AWS Region that contains the source DB
 instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBInstanceAutomatedBackup = list(
+    DBInstanceArn = "string",
+    DbiResourceId = "string",
+    Region = "string",
+    DBInstanceIdentifier = "string",
+    RestoreWindow = list(
+      EarliestTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LatestTime = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    AllocatedStorage = 123,
+    Status = "string",
+    Port = 123,
+    AvailabilityZone = "string",
+    VpcId = "string",
+    InstanceCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    MasterUsername = "string",
+    Engine = "string",
+    EngineVersion = "string",
+    LicenseModel = "string",
+    Iops = 123,
+    OptionGroupName = "string",
+    TdeCredentialArn = "string",
+    Encrypted = TRUE|FALSE,
+    StorageType = "string",
+    KmsKeyId = "string",
+    Timezone = "string",
+    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+    BackupRetentionPeriod = 123,
+    DBInstanceAutomatedBackupsArn = "string",
+    DBInstanceAutomatedBackupsReplications = list(
+      list(
+        DBInstanceAutomatedBackupsArn = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Enables replication of automated backups to a different AWS Region.
 

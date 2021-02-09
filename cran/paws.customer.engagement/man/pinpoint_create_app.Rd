@@ -9,8 +9,21 @@ pinpoint_create_app(CreateApplicationRequest)
 \arguments{
 \item{CreateApplicationRequest}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationResponse = list(
+    Arn = "string",
+    Id = "string",
+    Name = "string",
+    tags = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
-<p>Creates an application.</p>
+Creates an application.
 }
 \section{Request syntax}{
 \preformatted{svc$create_app(

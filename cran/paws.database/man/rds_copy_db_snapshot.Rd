@@ -145,6 +145,56 @@ Example: \code{rds-caz-aiqhTgQv}.}
 
 \item{SourceRegion}{The ID of the region that contains the snapshot to be copied.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBSnapshot = list(
+    DBSnapshotIdentifier = "string",
+    DBInstanceIdentifier = "string",
+    SnapshotCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Engine = "string",
+    AllocatedStorage = 123,
+    Status = "string",
+    Port = 123,
+    AvailabilityZone = "string",
+    VpcId = "string",
+    InstanceCreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    MasterUsername = "string",
+    EngineVersion = "string",
+    LicenseModel = "string",
+    SnapshotType = "string",
+    Iops = 123,
+    OptionGroupName = "string",
+    PercentProgress = 123,
+    SourceRegion = "string",
+    SourceDBSnapshotIdentifier = "string",
+    StorageType = "string",
+    TdeCredentialArn = "string",
+    Encrypted = TRUE|FALSE,
+    KmsKeyId = "string",
+    DBSnapshotArn = "string",
+    Timezone = "string",
+    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+    ProcessorFeatures = list(
+      list(
+        Name = "string",
+        Value = "string"
+      )
+    ),
+    DbiResourceId = "string",
+    TagList = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Copies the specified DB snapshot. The source DB snapshot must be in the
 \code{available} state.

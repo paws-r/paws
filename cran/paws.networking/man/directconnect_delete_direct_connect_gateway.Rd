@@ -9,6 +9,19 @@ directconnect_delete_direct_connect_gateway(directConnectGatewayId)
 \arguments{
 \item{directConnectGatewayId}{[required] The ID of the Direct Connect gateway.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  directConnectGateway = list(
+    directConnectGatewayId = "string",
+    directConnectGatewayName = "string",
+    amazonSideAsn = 123,
+    ownerAccount = "string",
+    directConnectGatewayState = "pending"|"available"|"deleting"|"deleted",
+    stateChangeError = "string"
+  )
+)
+}
+}
 \description{
 Deletes the specified Direct Connect gateway. You must first delete all
 virtual interfaces that are attached to the Direct Connect gateway and

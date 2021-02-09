@@ -16,6 +16,10 @@ designated as automatically enabled. If you do not provide a value for
 automatically enabled standards, set \code{EnableDefaultStandards} to
 \code{false}.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Enables Security Hub for your account in the current Region or the
 Region you specify in the request.

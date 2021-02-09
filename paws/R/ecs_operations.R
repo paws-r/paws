@@ -42,7 +42,7 @@ NULL
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -51,6 +51,37 @@ NULL
 #'     use. You cannot edit or delete tag keys or values with this prefix.
 #'     Tags with this prefix do not count against your tags per resource
 #'     limit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   capacityProvider = list(
+#'     capacityProviderArn = "string",
+#'     name = "string",
+#'     status = "ACTIVE"|"INACTIVE",
+#'     autoScalingGroupProvider = list(
+#'       autoScalingGroupArn = "string",
+#'       managedScaling = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         targetCapacity = 123,
+#'         minimumScalingStepSize = 123,
+#'         maximumScalingStepSize = 123,
+#'         instanceWarmupPeriod = 123
+#'       ),
+#'       managedTerminationProtection = "ENABLED"|"DISABLED"
+#'     ),
+#'     updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+#'     updateStatusReason = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -140,7 +171,7 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -201,6 +232,64 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #' during creation, it can be defined later with the
 #' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
 #' API operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cluster = list(
+#'     clusterArn = "string",
+#'     clusterName = "string",
+#'     status = "string",
+#'     registeredContainerInstancesCount = 123,
+#'     runningTasksCount = 123,
+#'     pendingTasksCount = 123,
+#'     activeServicesCount = 123,
+#'     statistics = list(
+#'       list(
+#'         name = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     settings = list(
+#'       list(
+#'         name = "containerInsights",
+#'         value = "string"
+#'       )
+#'     ),
+#'     capacityProviders = list(
+#'       "string"
+#'     ),
+#'     defaultCapacityProviderStrategy = list(
+#'       list(
+#'         capacityProvider = "string",
+#'         weight = 123,
+#'         base = 123
+#'       )
+#'     ),
+#'     attachments = list(
+#'       list(
+#'         id = "string",
+#'         type = "string",
+#'         status = "string",
+#'         details = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     attachmentsStatus = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -612,7 +701,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -630,6 +719,216 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' are not propagated. Tags can only be propagated to the tasks within the
 #' service during service creation. To add tags to a task after service
 #' creation, use the [`tag_resource`][ecs_tag_resource] API action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   service = list(
+#'     serviceArn = "string",
+#'     serviceName = "string",
+#'     clusterArn = "string",
+#'     loadBalancers = list(
+#'       list(
+#'         targetGroupArn = "string",
+#'         loadBalancerName = "string",
+#'         containerName = "string",
+#'         containerPort = 123
+#'       )
+#'     ),
+#'     serviceRegistries = list(
+#'       list(
+#'         registryArn = "string",
+#'         port = 123,
+#'         containerName = "string",
+#'         containerPort = 123
+#'       )
+#'     ),
+#'     status = "string",
+#'     desiredCount = 123,
+#'     runningCount = 123,
+#'     pendingCount = 123,
+#'     launchType = "EC2"|"FARGATE",
+#'     capacityProviderStrategy = list(
+#'       list(
+#'         capacityProvider = "string",
+#'         weight = 123,
+#'         base = 123
+#'       )
+#'     ),
+#'     platformVersion = "string",
+#'     taskDefinition = "string",
+#'     deploymentConfiguration = list(
+#'       deploymentCircuitBreaker = list(
+#'         enable = TRUE|FALSE,
+#'         rollback = TRUE|FALSE
+#'       ),
+#'       maximumPercent = 123,
+#'       minimumHealthyPercent = 123
+#'     ),
+#'     taskSets = list(
+#'       list(
+#'         id = "string",
+#'         taskSetArn = "string",
+#'         serviceArn = "string",
+#'         clusterArn = "string",
+#'         startedBy = "string",
+#'         externalId = "string",
+#'         status = "string",
+#'         taskDefinition = "string",
+#'         computedDesiredCount = 123,
+#'         pendingCount = 123,
+#'         runningCount = 123,
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         updatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         launchType = "EC2"|"FARGATE",
+#'         capacityProviderStrategy = list(
+#'           list(
+#'             capacityProvider = "string",
+#'             weight = 123,
+#'             base = 123
+#'           )
+#'         ),
+#'         platformVersion = "string",
+#'         networkConfiguration = list(
+#'           awsvpcConfiguration = list(
+#'             subnets = list(
+#'               "string"
+#'             ),
+#'             securityGroups = list(
+#'               "string"
+#'             ),
+#'             assignPublicIp = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         loadBalancers = list(
+#'           list(
+#'             targetGroupArn = "string",
+#'             loadBalancerName = "string",
+#'             containerName = "string",
+#'             containerPort = 123
+#'           )
+#'         ),
+#'         serviceRegistries = list(
+#'           list(
+#'             registryArn = "string",
+#'             port = 123,
+#'             containerName = "string",
+#'             containerPort = 123
+#'           )
+#'         ),
+#'         scale = list(
+#'           value = 123.0,
+#'           unit = "PERCENT"
+#'         ),
+#'         stabilityStatus = "STEADY_STATE"|"STABILIZING",
+#'         stabilityStatusAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         tags = list(
+#'           list(
+#'             key = "string",
+#'             value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     deployments = list(
+#'       list(
+#'         id = "string",
+#'         status = "string",
+#'         taskDefinition = "string",
+#'         desiredCount = 123,
+#'         pendingCount = 123,
+#'         runningCount = 123,
+#'         failedTasks = 123,
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         updatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         capacityProviderStrategy = list(
+#'           list(
+#'             capacityProvider = "string",
+#'             weight = 123,
+#'             base = 123
+#'           )
+#'         ),
+#'         launchType = "EC2"|"FARGATE",
+#'         platformVersion = "string",
+#'         networkConfiguration = list(
+#'           awsvpcConfiguration = list(
+#'             subnets = list(
+#'               "string"
+#'             ),
+#'             securityGroups = list(
+#'               "string"
+#'             ),
+#'             assignPublicIp = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         rolloutState = "COMPLETED"|"FAILED"|"IN_PROGRESS",
+#'         rolloutStateReason = "string"
+#'       )
+#'     ),
+#'     roleArn = "string",
+#'     events = list(
+#'       list(
+#'         id = "string",
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         message = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     placementConstraints = list(
+#'       list(
+#'         type = "distinctInstance"|"memberOf",
+#'         expression = "string"
+#'       )
+#'     ),
+#'     placementStrategy = list(
+#'       list(
+#'         type = "random"|"spread"|"binpack",
+#'         field = "string"
+#'       )
+#'     ),
+#'     networkConfiguration = list(
+#'       awsvpcConfiguration = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         ),
+#'         assignPublicIp = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     healthCheckGracePeriodSeconds = 123,
+#'     schedulingStrategy = "REPLICA"|"DAEMON",
+#'     deploymentController = list(
+#'       type = "ECS"|"CODE_DEPLOY"|"EXTERNAL"
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdBy = "string",
+#'     enableECSManagedTags = TRUE|FALSE,
+#'     propagateTags = "TASK_DEFINITION"|"SERVICE"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -857,7 +1156,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -866,6 +1165,82 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #'     use. You cannot edit or delete tag keys or values with this prefix.
 #'     Tags with this prefix do not count against your tags per resource
 #'     limit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskSet = list(
+#'     id = "string",
+#'     taskSetArn = "string",
+#'     serviceArn = "string",
+#'     clusterArn = "string",
+#'     startedBy = "string",
+#'     externalId = "string",
+#'     status = "string",
+#'     taskDefinition = "string",
+#'     computedDesiredCount = 123,
+#'     pendingCount = 123,
+#'     runningCount = 123,
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     launchType = "EC2"|"FARGATE",
+#'     capacityProviderStrategy = list(
+#'       list(
+#'         capacityProvider = "string",
+#'         weight = 123,
+#'         base = 123
+#'       )
+#'     ),
+#'     platformVersion = "string",
+#'     networkConfiguration = list(
+#'       awsvpcConfiguration = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         ),
+#'         assignPublicIp = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     loadBalancers = list(
+#'       list(
+#'         targetGroupArn = "string",
+#'         loadBalancerName = "string",
+#'         containerName = "string",
+#'         containerPort = 123
+#'       )
+#'     ),
+#'     serviceRegistries = list(
+#'       list(
+#'         registryArn = "string",
+#'         port = 123,
+#'         containerName = "string",
+#'         containerPort = 123
+#'       )
+#'     ),
+#'     scale = list(
+#'       value = 123.0,
+#'       unit = "PERCENT"
+#'     ),
+#'     stabilityStatus = "STEADY_STATE"|"STABILIZING",
+#'     stabilityStatusAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -968,6 +1343,18 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' IAM user or role explicitly overrides these settings. If this field is
 #' omitted, the setting is changed only for the authenticated user.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   setting = list(
+#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
+#'     value = "string",
+#'     principalArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_account_setting(
@@ -1028,6 +1415,21 @@ ecs_delete_account_setting <- function(name, principalArn = NULL) {
 #' attributes per request. For custom attributes, specify the attribute
 #' name and target ID, but do not specify the value. If you specify the
 #' target ID using the short form, you must also specify the target type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attributes = list(
+#'     list(
+#'       name = "string",
+#'       value = "string",
+#'       targetType = "container-instance",
+#'       targetId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1094,6 +1496,37 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #' @param capacityProvider &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the capacity
 #' provider to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   capacityProvider = list(
+#'     capacityProviderArn = "string",
+#'     name = "string",
+#'     status = "ACTIVE"|"INACTIVE",
+#'     autoScalingGroupProvider = list(
+#'       autoScalingGroupArn = "string",
+#'       managedScaling = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         targetCapacity = 123,
+#'         minimumScalingStepSize = 123,
+#'         maximumScalingStepSize = 123,
+#'         instanceWarmupPeriod = 123
+#'       ),
+#'       managedTerminationProtection = "ENABLED"|"DISABLED"
+#'     ),
+#'     updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+#'     updateStatusReason = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_capacity_provider(
@@ -1141,6 +1574,64 @@ ecs_delete_capacity_provider <- function(capacityProvider) {
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster to
 #' delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cluster = list(
+#'     clusterArn = "string",
+#'     clusterName = "string",
+#'     status = "string",
+#'     registeredContainerInstancesCount = 123,
+#'     runningTasksCount = 123,
+#'     pendingTasksCount = 123,
+#'     activeServicesCount = 123,
+#'     statistics = list(
+#'       list(
+#'         name = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     settings = list(
+#'       list(
+#'         name = "containerInsights",
+#'         value = "string"
+#'       )
+#'     ),
+#'     capacityProviders = list(
+#'       "string"
+#'     ),
+#'     defaultCapacityProviderStrategy = list(
+#'       list(
+#'         capacityProvider = "string",
+#'         weight = 123,
+#'         base = 123
+#'       )
+#'     ),
+#'     attachments = list(
+#'       list(
+#'         id = "string",
+#'         type = "string",
+#'         status = "string",
+#'         details = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     attachmentsStatus = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1212,6 +1703,216 @@ ecs_delete_cluster <- function(cluster) {
 #' down to zero tasks. It is only necessary to use this if the service is
 #' using the `REPLICA` scheduling strategy.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   service = list(
+#'     serviceArn = "string",
+#'     serviceName = "string",
+#'     clusterArn = "string",
+#'     loadBalancers = list(
+#'       list(
+#'         targetGroupArn = "string",
+#'         loadBalancerName = "string",
+#'         containerName = "string",
+#'         containerPort = 123
+#'       )
+#'     ),
+#'     serviceRegistries = list(
+#'       list(
+#'         registryArn = "string",
+#'         port = 123,
+#'         containerName = "string",
+#'         containerPort = 123
+#'       )
+#'     ),
+#'     status = "string",
+#'     desiredCount = 123,
+#'     runningCount = 123,
+#'     pendingCount = 123,
+#'     launchType = "EC2"|"FARGATE",
+#'     capacityProviderStrategy = list(
+#'       list(
+#'         capacityProvider = "string",
+#'         weight = 123,
+#'         base = 123
+#'       )
+#'     ),
+#'     platformVersion = "string",
+#'     taskDefinition = "string",
+#'     deploymentConfiguration = list(
+#'       deploymentCircuitBreaker = list(
+#'         enable = TRUE|FALSE,
+#'         rollback = TRUE|FALSE
+#'       ),
+#'       maximumPercent = 123,
+#'       minimumHealthyPercent = 123
+#'     ),
+#'     taskSets = list(
+#'       list(
+#'         id = "string",
+#'         taskSetArn = "string",
+#'         serviceArn = "string",
+#'         clusterArn = "string",
+#'         startedBy = "string",
+#'         externalId = "string",
+#'         status = "string",
+#'         taskDefinition = "string",
+#'         computedDesiredCount = 123,
+#'         pendingCount = 123,
+#'         runningCount = 123,
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         updatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         launchType = "EC2"|"FARGATE",
+#'         capacityProviderStrategy = list(
+#'           list(
+#'             capacityProvider = "string",
+#'             weight = 123,
+#'             base = 123
+#'           )
+#'         ),
+#'         platformVersion = "string",
+#'         networkConfiguration = list(
+#'           awsvpcConfiguration = list(
+#'             subnets = list(
+#'               "string"
+#'             ),
+#'             securityGroups = list(
+#'               "string"
+#'             ),
+#'             assignPublicIp = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         loadBalancers = list(
+#'           list(
+#'             targetGroupArn = "string",
+#'             loadBalancerName = "string",
+#'             containerName = "string",
+#'             containerPort = 123
+#'           )
+#'         ),
+#'         serviceRegistries = list(
+#'           list(
+#'             registryArn = "string",
+#'             port = 123,
+#'             containerName = "string",
+#'             containerPort = 123
+#'           )
+#'         ),
+#'         scale = list(
+#'           value = 123.0,
+#'           unit = "PERCENT"
+#'         ),
+#'         stabilityStatus = "STEADY_STATE"|"STABILIZING",
+#'         stabilityStatusAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         tags = list(
+#'           list(
+#'             key = "string",
+#'             value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     deployments = list(
+#'       list(
+#'         id = "string",
+#'         status = "string",
+#'         taskDefinition = "string",
+#'         desiredCount = 123,
+#'         pendingCount = 123,
+#'         runningCount = 123,
+#'         failedTasks = 123,
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         updatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         capacityProviderStrategy = list(
+#'           list(
+#'             capacityProvider = "string",
+#'             weight = 123,
+#'             base = 123
+#'           )
+#'         ),
+#'         launchType = "EC2"|"FARGATE",
+#'         platformVersion = "string",
+#'         networkConfiguration = list(
+#'           awsvpcConfiguration = list(
+#'             subnets = list(
+#'               "string"
+#'             ),
+#'             securityGroups = list(
+#'               "string"
+#'             ),
+#'             assignPublicIp = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         rolloutState = "COMPLETED"|"FAILED"|"IN_PROGRESS",
+#'         rolloutStateReason = "string"
+#'       )
+#'     ),
+#'     roleArn = "string",
+#'     events = list(
+#'       list(
+#'         id = "string",
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         message = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     placementConstraints = list(
+#'       list(
+#'         type = "distinctInstance"|"memberOf",
+#'         expression = "string"
+#'       )
+#'     ),
+#'     placementStrategy = list(
+#'       list(
+#'         type = "random"|"spread"|"binpack",
+#'         field = "string"
+#'       )
+#'     ),
+#'     networkConfiguration = list(
+#'       awsvpcConfiguration = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         ),
+#'         assignPublicIp = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     healthCheckGracePeriodSeconds = 123,
+#'     schedulingStrategy = "REPLICA"|"DAEMON",
+#'     deploymentController = list(
+#'       type = "ECS"|"CODE_DEPLOY"|"EXTERNAL"
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdBy = "string",
+#'     enableECSManagedTags = TRUE|FALSE,
+#'     propagateTags = "TASK_DEFINITION"|"SERVICE"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_service(
@@ -1270,6 +1971,82 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
 #' delete.
 #' @param force If `true`, this allows you to delete a task set even if it hasn't been
 #' scaled down to zero.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskSet = list(
+#'     id = "string",
+#'     taskSetArn = "string",
+#'     serviceArn = "string",
+#'     clusterArn = "string",
+#'     startedBy = "string",
+#'     externalId = "string",
+#'     status = "string",
+#'     taskDefinition = "string",
+#'     computedDesiredCount = 123,
+#'     pendingCount = 123,
+#'     runningCount = 123,
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     launchType = "EC2"|"FARGATE",
+#'     capacityProviderStrategy = list(
+#'       list(
+#'         capacityProvider = "string",
+#'         weight = 123,
+#'         base = 123
+#'       )
+#'     ),
+#'     platformVersion = "string",
+#'     networkConfiguration = list(
+#'       awsvpcConfiguration = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         ),
+#'         assignPublicIp = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     loadBalancers = list(
+#'       list(
+#'         targetGroupArn = "string",
+#'         loadBalancerName = "string",
+#'         containerName = "string",
+#'         containerPort = 123
+#'       )
+#'     ),
+#'     serviceRegistries = list(
+#'       list(
+#'         registryArn = "string",
+#'         port = 123,
+#'         containerName = "string",
+#'         containerPort = 123
+#'       )
+#'     ),
+#'     scale = list(
+#'       value = 123.0,
+#'       unit = "PERCENT"
+#'     ),
+#'     stabilityStatus = "STEADY_STATE"|"STABILIZING",
+#'     stabilityStatusAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1348,6 +2125,84 @@ ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
 #' deregistered. They begin connection draining according to the settings
 #' on the load balancer or target group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   containerInstance = list(
+#'     containerInstanceArn = "string",
+#'     ec2InstanceId = "string",
+#'     capacityProviderName = "string",
+#'     version = 123,
+#'     versionInfo = list(
+#'       agentVersion = "string",
+#'       agentHash = "string",
+#'       dockerVersion = "string"
+#'     ),
+#'     remainingResources = list(
+#'       list(
+#'         name = "string",
+#'         type = "string",
+#'         doubleValue = 123.0,
+#'         longValue = 123,
+#'         integerValue = 123,
+#'         stringSetValue = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     registeredResources = list(
+#'       list(
+#'         name = "string",
+#'         type = "string",
+#'         doubleValue = 123.0,
+#'         longValue = 123,
+#'         integerValue = 123,
+#'         stringSetValue = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     status = "string",
+#'     statusReason = "string",
+#'     agentConnected = TRUE|FALSE,
+#'     runningTasksCount = 123,
+#'     pendingTasksCount = 123,
+#'     agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
+#'     attributes = list(
+#'       list(
+#'         name = "string",
+#'         value = "string",
+#'         targetType = "container-instance",
+#'         targetId = "string"
+#'       )
+#'     ),
+#'     registeredAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     attachments = list(
+#'       list(
+#'         id = "string",
+#'         type = "string",
+#'         status = "string",
+#'         details = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_container_instance(
@@ -1418,6 +2273,271 @@ ecs_deregister_container_instance <- function(cluster = NULL, containerInstance,
 #' Name (ARN) of the task definition to deregister. You must specify a
 #' `revision`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskDefinition = list(
+#'     taskDefinitionArn = "string",
+#'     containerDefinitions = list(
+#'       list(
+#'         name = "string",
+#'         image = "string",
+#'         repositoryCredentials = list(
+#'           credentialsParameter = "string"
+#'         ),
+#'         cpu = 123,
+#'         memory = 123,
+#'         memoryReservation = 123,
+#'         links = list(
+#'           "string"
+#'         ),
+#'         portMappings = list(
+#'           list(
+#'             containerPort = 123,
+#'             hostPort = 123,
+#'             protocol = "tcp"|"udp"
+#'           )
+#'         ),
+#'         essential = TRUE|FALSE,
+#'         entryPoint = list(
+#'           "string"
+#'         ),
+#'         command = list(
+#'           "string"
+#'         ),
+#'         environment = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         environmentFiles = list(
+#'           list(
+#'             value = "string",
+#'             type = "s3"
+#'           )
+#'         ),
+#'         mountPoints = list(
+#'           list(
+#'             sourceVolume = "string",
+#'             containerPath = "string",
+#'             readOnly = TRUE|FALSE
+#'           )
+#'         ),
+#'         volumesFrom = list(
+#'           list(
+#'             sourceContainer = "string",
+#'             readOnly = TRUE|FALSE
+#'           )
+#'         ),
+#'         linuxParameters = list(
+#'           capabilities = list(
+#'             add = list(
+#'               "string"
+#'             ),
+#'             drop = list(
+#'               "string"
+#'             )
+#'           ),
+#'           devices = list(
+#'             list(
+#'               hostPath = "string",
+#'               containerPath = "string",
+#'               permissions = list(
+#'                 "read"|"write"|"mknod"
+#'               )
+#'             )
+#'           ),
+#'           initProcessEnabled = TRUE|FALSE,
+#'           sharedMemorySize = 123,
+#'           tmpfs = list(
+#'             list(
+#'               containerPath = "string",
+#'               size = 123,
+#'               mountOptions = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           maxSwap = 123,
+#'           swappiness = 123
+#'         ),
+#'         secrets = list(
+#'           list(
+#'             name = "string",
+#'             valueFrom = "string"
+#'           )
+#'         ),
+#'         dependsOn = list(
+#'           list(
+#'             containerName = "string",
+#'             condition = "START"|"COMPLETE"|"SUCCESS"|"HEALTHY"
+#'           )
+#'         ),
+#'         startTimeout = 123,
+#'         stopTimeout = 123,
+#'         hostname = "string",
+#'         user = "string",
+#'         workingDirectory = "string",
+#'         disableNetworking = TRUE|FALSE,
+#'         privileged = TRUE|FALSE,
+#'         readonlyRootFilesystem = TRUE|FALSE,
+#'         dnsServers = list(
+#'           "string"
+#'         ),
+#'         dnsSearchDomains = list(
+#'           "string"
+#'         ),
+#'         extraHosts = list(
+#'           list(
+#'             hostname = "string",
+#'             ipAddress = "string"
+#'           )
+#'         ),
+#'         dockerSecurityOptions = list(
+#'           "string"
+#'         ),
+#'         interactive = TRUE|FALSE,
+#'         pseudoTerminal = TRUE|FALSE,
+#'         dockerLabels = list(
+#'           "string"
+#'         ),
+#'         ulimits = list(
+#'           list(
+#'             name = "core"|"cpu"|"data"|"fsize"|"locks"|"memlock"|"msgqueue"|"nice"|"nofile"|"nproc"|"rss"|"rtprio"|"rttime"|"sigpending"|"stack",
+#'             softLimit = 123,
+#'             hardLimit = 123
+#'           )
+#'         ),
+#'         logConfiguration = list(
+#'           logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk"|"awsfirelens",
+#'           options = list(
+#'             "string"
+#'           ),
+#'           secretOptions = list(
+#'             list(
+#'               name = "string",
+#'               valueFrom = "string"
+#'             )
+#'           )
+#'         ),
+#'         healthCheck = list(
+#'           command = list(
+#'             "string"
+#'           ),
+#'           interval = 123,
+#'           timeout = 123,
+#'           retries = 123,
+#'           startPeriod = 123
+#'         ),
+#'         systemControls = list(
+#'           list(
+#'             namespace = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         resourceRequirements = list(
+#'           list(
+#'             value = "string",
+#'             type = "GPU"|"InferenceAccelerator"
+#'           )
+#'         ),
+#'         firelensConfiguration = list(
+#'           type = "fluentd"|"fluentbit",
+#'           options = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     family = "string",
+#'     taskRoleArn = "string",
+#'     executionRoleArn = "string",
+#'     networkMode = "bridge"|"host"|"awsvpc"|"none",
+#'     revision = 123,
+#'     volumes = list(
+#'       list(
+#'         name = "string",
+#'         host = list(
+#'           sourcePath = "string"
+#'         ),
+#'         dockerVolumeConfiguration = list(
+#'           scope = "task"|"shared",
+#'           autoprovision = TRUE|FALSE,
+#'           driver = "string",
+#'           driverOpts = list(
+#'             "string"
+#'           ),
+#'           labels = list(
+#'             "string"
+#'           )
+#'         ),
+#'         efsVolumeConfiguration = list(
+#'           fileSystemId = "string",
+#'           rootDirectory = "string",
+#'           transitEncryption = "ENABLED"|"DISABLED",
+#'           transitEncryptionPort = 123,
+#'           authorizationConfig = list(
+#'             accessPointId = "string",
+#'             iam = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         fsxWindowsFileServerVolumeConfiguration = list(
+#'           fileSystemId = "string",
+#'           rootDirectory = "string",
+#'           authorizationConfig = list(
+#'             credentialsParameter = "string",
+#'             domain = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     status = "ACTIVE"|"INACTIVE",
+#'     requiresAttributes = list(
+#'       list(
+#'         name = "string",
+#'         value = "string",
+#'         targetType = "container-instance",
+#'         targetId = "string"
+#'       )
+#'     ),
+#'     placementConstraints = list(
+#'       list(
+#'         type = "memberOf",
+#'         expression = "string"
+#'       )
+#'     ),
+#'     compatibilities = list(
+#'       "EC2"|"FARGATE"
+#'     ),
+#'     requiresCompatibilities = list(
+#'       "EC2"|"FARGATE"
+#'     ),
+#'     cpu = "string",
+#'     memory = "string",
+#'     inferenceAccelerators = list(
+#'       list(
+#'         deviceName = "string",
+#'         deviceType = "string"
+#'       )
+#'     ),
+#'     pidMode = "host"|"task",
+#'     ipcMode = "host"|"task"|"none",
+#'     proxyConfiguration = list(
+#'       type = "APPMESH",
+#'       containerName = "string",
+#'       properties = list(
+#'         list(
+#'           name = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_task_definition(
@@ -1482,6 +2602,47 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   capacityProviders = list(
+#'     list(
+#'       capacityProviderArn = "string",
+#'       name = "string",
+#'       status = "ACTIVE"|"INACTIVE",
+#'       autoScalingGroupProvider = list(
+#'         autoScalingGroupArn = "string",
+#'         managedScaling = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           targetCapacity = 123,
+#'           minimumScalingStepSize = 123,
+#'           maximumScalingStepSize = 123,
+#'           instanceWarmupPeriod = 123
+#'         ),
+#'         managedTerminationProtection = "ENABLED"|"DISABLED"
+#'       ),
+#'       updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+#'       updateStatusReason = "string",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   failures = list(
+#'     list(
+#'       arn = "string",
+#'       reason = "string",
+#'       detail = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1559,6 +2720,73 @@ ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = 
 #' If `TAGS` is specified, the metadata tags associated with the cluster
 #' are included.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   clusters = list(
+#'     list(
+#'       clusterArn = "string",
+#'       clusterName = "string",
+#'       status = "string",
+#'       registeredContainerInstancesCount = 123,
+#'       runningTasksCount = 123,
+#'       pendingTasksCount = 123,
+#'       activeServicesCount = 123,
+#'       statistics = list(
+#'         list(
+#'           name = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       settings = list(
+#'         list(
+#'           name = "containerInsights",
+#'           value = "string"
+#'         )
+#'       ),
+#'       capacityProviders = list(
+#'         "string"
+#'       ),
+#'       defaultCapacityProviderStrategy = list(
+#'         list(
+#'           capacityProvider = "string",
+#'           weight = 123,
+#'           base = 123
+#'         )
+#'       ),
+#'       attachments = list(
+#'         list(
+#'           id = "string",
+#'           type = "string",
+#'           status = "string",
+#'           details = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       attachmentsStatus = "string"
+#'     )
+#'   ),
+#'   failures = list(
+#'     list(
+#'       arn = "string",
+#'       reason = "string",
+#'       detail = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_clusters(
@@ -1622,6 +2850,93 @@ ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
 #' @param include Specifies whether you want to see the resource tags for the container
 #' instance. If `TAGS` is specified, the tags are included in the response.
 #' If this field is omitted, tags are not included in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   containerInstances = list(
+#'     list(
+#'       containerInstanceArn = "string",
+#'       ec2InstanceId = "string",
+#'       capacityProviderName = "string",
+#'       version = 123,
+#'       versionInfo = list(
+#'         agentVersion = "string",
+#'         agentHash = "string",
+#'         dockerVersion = "string"
+#'       ),
+#'       remainingResources = list(
+#'         list(
+#'           name = "string",
+#'           type = "string",
+#'           doubleValue = 123.0,
+#'           longValue = 123,
+#'           integerValue = 123,
+#'           stringSetValue = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       registeredResources = list(
+#'         list(
+#'           name = "string",
+#'           type = "string",
+#'           doubleValue = 123.0,
+#'           longValue = 123,
+#'           integerValue = 123,
+#'           stringSetValue = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       status = "string",
+#'       statusReason = "string",
+#'       agentConnected = TRUE|FALSE,
+#'       runningTasksCount = 123,
+#'       pendingTasksCount = 123,
+#'       agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
+#'       attributes = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           targetType = "container-instance",
+#'           targetId = "string"
+#'         )
+#'       ),
+#'       registeredAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       attachments = list(
+#'         list(
+#'           id = "string",
+#'           type = "string",
+#'           status = "string",
+#'           details = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   failures = list(
+#'     list(
+#'       arn = "string",
+#'       reason = "string",
+#'       detail = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1688,6 +3003,225 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #' `TAGS` is specified, the tags are included in the response. If this
 #' field is omitted, tags are not included in the response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   services = list(
+#'     list(
+#'       serviceArn = "string",
+#'       serviceName = "string",
+#'       clusterArn = "string",
+#'       loadBalancers = list(
+#'         list(
+#'           targetGroupArn = "string",
+#'           loadBalancerName = "string",
+#'           containerName = "string",
+#'           containerPort = 123
+#'         )
+#'       ),
+#'       serviceRegistries = list(
+#'         list(
+#'           registryArn = "string",
+#'           port = 123,
+#'           containerName = "string",
+#'           containerPort = 123
+#'         )
+#'       ),
+#'       status = "string",
+#'       desiredCount = 123,
+#'       runningCount = 123,
+#'       pendingCount = 123,
+#'       launchType = "EC2"|"FARGATE",
+#'       capacityProviderStrategy = list(
+#'         list(
+#'           capacityProvider = "string",
+#'           weight = 123,
+#'           base = 123
+#'         )
+#'       ),
+#'       platformVersion = "string",
+#'       taskDefinition = "string",
+#'       deploymentConfiguration = list(
+#'         deploymentCircuitBreaker = list(
+#'           enable = TRUE|FALSE,
+#'           rollback = TRUE|FALSE
+#'         ),
+#'         maximumPercent = 123,
+#'         minimumHealthyPercent = 123
+#'       ),
+#'       taskSets = list(
+#'         list(
+#'           id = "string",
+#'           taskSetArn = "string",
+#'           serviceArn = "string",
+#'           clusterArn = "string",
+#'           startedBy = "string",
+#'           externalId = "string",
+#'           status = "string",
+#'           taskDefinition = "string",
+#'           computedDesiredCount = 123,
+#'           pendingCount = 123,
+#'           runningCount = 123,
+#'           createdAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           updatedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           launchType = "EC2"|"FARGATE",
+#'           capacityProviderStrategy = list(
+#'             list(
+#'               capacityProvider = "string",
+#'               weight = 123,
+#'               base = 123
+#'             )
+#'           ),
+#'           platformVersion = "string",
+#'           networkConfiguration = list(
+#'             awsvpcConfiguration = list(
+#'               subnets = list(
+#'                 "string"
+#'               ),
+#'               securityGroups = list(
+#'                 "string"
+#'               ),
+#'               assignPublicIp = "ENABLED"|"DISABLED"
+#'             )
+#'           ),
+#'           loadBalancers = list(
+#'             list(
+#'               targetGroupArn = "string",
+#'               loadBalancerName = "string",
+#'               containerName = "string",
+#'               containerPort = 123
+#'             )
+#'           ),
+#'           serviceRegistries = list(
+#'             list(
+#'               registryArn = "string",
+#'               port = 123,
+#'               containerName = "string",
+#'               containerPort = 123
+#'             )
+#'           ),
+#'           scale = list(
+#'             value = 123.0,
+#'             unit = "PERCENT"
+#'           ),
+#'           stabilityStatus = "STEADY_STATE"|"STABILIZING",
+#'           stabilityStatusAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           tags = list(
+#'             list(
+#'               key = "string",
+#'               value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       deployments = list(
+#'         list(
+#'           id = "string",
+#'           status = "string",
+#'           taskDefinition = "string",
+#'           desiredCount = 123,
+#'           pendingCount = 123,
+#'           runningCount = 123,
+#'           failedTasks = 123,
+#'           createdAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           updatedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           capacityProviderStrategy = list(
+#'             list(
+#'               capacityProvider = "string",
+#'               weight = 123,
+#'               base = 123
+#'             )
+#'           ),
+#'           launchType = "EC2"|"FARGATE",
+#'           platformVersion = "string",
+#'           networkConfiguration = list(
+#'             awsvpcConfiguration = list(
+#'               subnets = list(
+#'                 "string"
+#'               ),
+#'               securityGroups = list(
+#'                 "string"
+#'               ),
+#'               assignPublicIp = "ENABLED"|"DISABLED"
+#'             )
+#'           ),
+#'           rolloutState = "COMPLETED"|"FAILED"|"IN_PROGRESS",
+#'           rolloutStateReason = "string"
+#'         )
+#'       ),
+#'       roleArn = "string",
+#'       events = list(
+#'         list(
+#'           id = "string",
+#'           createdAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           message = "string"
+#'         )
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       placementConstraints = list(
+#'         list(
+#'           type = "distinctInstance"|"memberOf",
+#'           expression = "string"
+#'         )
+#'       ),
+#'       placementStrategy = list(
+#'         list(
+#'           type = "random"|"spread"|"binpack",
+#'           field = "string"
+#'         )
+#'       ),
+#'       networkConfiguration = list(
+#'         awsvpcConfiguration = list(
+#'           subnets = list(
+#'             "string"
+#'           ),
+#'           securityGroups = list(
+#'             "string"
+#'           ),
+#'           assignPublicIp = "ENABLED"|"DISABLED"
+#'         )
+#'       ),
+#'       healthCheckGracePeriodSeconds = 123,
+#'       schedulingStrategy = "REPLICA"|"DAEMON",
+#'       deploymentController = list(
+#'         type = "ECS"|"CODE_DEPLOY"|"EXTERNAL"
+#'       ),
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       createdBy = "string",
+#'       enableECSManagedTags = TRUE|FALSE,
+#'       propagateTags = "TASK_DEFINITION"|"SERVICE"
+#'     )
+#'   ),
+#'   failures = list(
+#'     list(
+#'       arn = "string",
+#'       reason = "string",
+#'       detail = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_services(
@@ -1752,6 +3286,277 @@ ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
 #' `TAGS` is specified, the tags are included in the response. If this
 #' field is omitted, tags are not included in the response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskDefinition = list(
+#'     taskDefinitionArn = "string",
+#'     containerDefinitions = list(
+#'       list(
+#'         name = "string",
+#'         image = "string",
+#'         repositoryCredentials = list(
+#'           credentialsParameter = "string"
+#'         ),
+#'         cpu = 123,
+#'         memory = 123,
+#'         memoryReservation = 123,
+#'         links = list(
+#'           "string"
+#'         ),
+#'         portMappings = list(
+#'           list(
+#'             containerPort = 123,
+#'             hostPort = 123,
+#'             protocol = "tcp"|"udp"
+#'           )
+#'         ),
+#'         essential = TRUE|FALSE,
+#'         entryPoint = list(
+#'           "string"
+#'         ),
+#'         command = list(
+#'           "string"
+#'         ),
+#'         environment = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         environmentFiles = list(
+#'           list(
+#'             value = "string",
+#'             type = "s3"
+#'           )
+#'         ),
+#'         mountPoints = list(
+#'           list(
+#'             sourceVolume = "string",
+#'             containerPath = "string",
+#'             readOnly = TRUE|FALSE
+#'           )
+#'         ),
+#'         volumesFrom = list(
+#'           list(
+#'             sourceContainer = "string",
+#'             readOnly = TRUE|FALSE
+#'           )
+#'         ),
+#'         linuxParameters = list(
+#'           capabilities = list(
+#'             add = list(
+#'               "string"
+#'             ),
+#'             drop = list(
+#'               "string"
+#'             )
+#'           ),
+#'           devices = list(
+#'             list(
+#'               hostPath = "string",
+#'               containerPath = "string",
+#'               permissions = list(
+#'                 "read"|"write"|"mknod"
+#'               )
+#'             )
+#'           ),
+#'           initProcessEnabled = TRUE|FALSE,
+#'           sharedMemorySize = 123,
+#'           tmpfs = list(
+#'             list(
+#'               containerPath = "string",
+#'               size = 123,
+#'               mountOptions = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           maxSwap = 123,
+#'           swappiness = 123
+#'         ),
+#'         secrets = list(
+#'           list(
+#'             name = "string",
+#'             valueFrom = "string"
+#'           )
+#'         ),
+#'         dependsOn = list(
+#'           list(
+#'             containerName = "string",
+#'             condition = "START"|"COMPLETE"|"SUCCESS"|"HEALTHY"
+#'           )
+#'         ),
+#'         startTimeout = 123,
+#'         stopTimeout = 123,
+#'         hostname = "string",
+#'         user = "string",
+#'         workingDirectory = "string",
+#'         disableNetworking = TRUE|FALSE,
+#'         privileged = TRUE|FALSE,
+#'         readonlyRootFilesystem = TRUE|FALSE,
+#'         dnsServers = list(
+#'           "string"
+#'         ),
+#'         dnsSearchDomains = list(
+#'           "string"
+#'         ),
+#'         extraHosts = list(
+#'           list(
+#'             hostname = "string",
+#'             ipAddress = "string"
+#'           )
+#'         ),
+#'         dockerSecurityOptions = list(
+#'           "string"
+#'         ),
+#'         interactive = TRUE|FALSE,
+#'         pseudoTerminal = TRUE|FALSE,
+#'         dockerLabels = list(
+#'           "string"
+#'         ),
+#'         ulimits = list(
+#'           list(
+#'             name = "core"|"cpu"|"data"|"fsize"|"locks"|"memlock"|"msgqueue"|"nice"|"nofile"|"nproc"|"rss"|"rtprio"|"rttime"|"sigpending"|"stack",
+#'             softLimit = 123,
+#'             hardLimit = 123
+#'           )
+#'         ),
+#'         logConfiguration = list(
+#'           logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk"|"awsfirelens",
+#'           options = list(
+#'             "string"
+#'           ),
+#'           secretOptions = list(
+#'             list(
+#'               name = "string",
+#'               valueFrom = "string"
+#'             )
+#'           )
+#'         ),
+#'         healthCheck = list(
+#'           command = list(
+#'             "string"
+#'           ),
+#'           interval = 123,
+#'           timeout = 123,
+#'           retries = 123,
+#'           startPeriod = 123
+#'         ),
+#'         systemControls = list(
+#'           list(
+#'             namespace = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         resourceRequirements = list(
+#'           list(
+#'             value = "string",
+#'             type = "GPU"|"InferenceAccelerator"
+#'           )
+#'         ),
+#'         firelensConfiguration = list(
+#'           type = "fluentd"|"fluentbit",
+#'           options = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     family = "string",
+#'     taskRoleArn = "string",
+#'     executionRoleArn = "string",
+#'     networkMode = "bridge"|"host"|"awsvpc"|"none",
+#'     revision = 123,
+#'     volumes = list(
+#'       list(
+#'         name = "string",
+#'         host = list(
+#'           sourcePath = "string"
+#'         ),
+#'         dockerVolumeConfiguration = list(
+#'           scope = "task"|"shared",
+#'           autoprovision = TRUE|FALSE,
+#'           driver = "string",
+#'           driverOpts = list(
+#'             "string"
+#'           ),
+#'           labels = list(
+#'             "string"
+#'           )
+#'         ),
+#'         efsVolumeConfiguration = list(
+#'           fileSystemId = "string",
+#'           rootDirectory = "string",
+#'           transitEncryption = "ENABLED"|"DISABLED",
+#'           transitEncryptionPort = 123,
+#'           authorizationConfig = list(
+#'             accessPointId = "string",
+#'             iam = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         fsxWindowsFileServerVolumeConfiguration = list(
+#'           fileSystemId = "string",
+#'           rootDirectory = "string",
+#'           authorizationConfig = list(
+#'             credentialsParameter = "string",
+#'             domain = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     status = "ACTIVE"|"INACTIVE",
+#'     requiresAttributes = list(
+#'       list(
+#'         name = "string",
+#'         value = "string",
+#'         targetType = "container-instance",
+#'         targetId = "string"
+#'       )
+#'     ),
+#'     placementConstraints = list(
+#'       list(
+#'         type = "memberOf",
+#'         expression = "string"
+#'       )
+#'     ),
+#'     compatibilities = list(
+#'       "EC2"|"FARGATE"
+#'     ),
+#'     requiresCompatibilities = list(
+#'       "EC2"|"FARGATE"
+#'     ),
+#'     cpu = "string",
+#'     memory = "string",
+#'     inferenceAccelerators = list(
+#'       list(
+#'         deviceName = "string",
+#'         deviceType = "string"
+#'       )
+#'     ),
+#'     pidMode = "host"|"task",
+#'     ipcMode = "host"|"task"|"none",
+#'     proxyConfiguration = list(
+#'       type = "APPMESH",
+#'       containerName = "string",
+#'       properties = list(
+#'         list(
+#'           name = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_task_definition(
@@ -1811,6 +3616,91 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #' is specified, the tags are included in the response. If this field is
 #' omitted, tags are not included in the response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskSets = list(
+#'     list(
+#'       id = "string",
+#'       taskSetArn = "string",
+#'       serviceArn = "string",
+#'       clusterArn = "string",
+#'       startedBy = "string",
+#'       externalId = "string",
+#'       status = "string",
+#'       taskDefinition = "string",
+#'       computedDesiredCount = 123,
+#'       pendingCount = 123,
+#'       runningCount = 123,
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       launchType = "EC2"|"FARGATE",
+#'       capacityProviderStrategy = list(
+#'         list(
+#'           capacityProvider = "string",
+#'           weight = 123,
+#'           base = 123
+#'         )
+#'       ),
+#'       platformVersion = "string",
+#'       networkConfiguration = list(
+#'         awsvpcConfiguration = list(
+#'           subnets = list(
+#'             "string"
+#'           ),
+#'           securityGroups = list(
+#'             "string"
+#'           ),
+#'           assignPublicIp = "ENABLED"|"DISABLED"
+#'         )
+#'       ),
+#'       loadBalancers = list(
+#'         list(
+#'           targetGroupArn = "string",
+#'           loadBalancerName = "string",
+#'           containerName = "string",
+#'           containerPort = 123
+#'         )
+#'       ),
+#'       serviceRegistries = list(
+#'         list(
+#'           registryArn = "string",
+#'           port = 123,
+#'           containerName = "string",
+#'           containerPort = 123
+#'         )
+#'       ),
+#'       scale = list(
+#'         value = 123.0,
+#'         unit = "PERCENT"
+#'       ),
+#'       stabilityStatus = "STEADY_STATE"|"STABILIZING",
+#'       stabilityStatusAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   failures = list(
+#'     list(
+#'       arn = "string",
+#'       reason = "string",
+#'       detail = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_task_sets(
@@ -1862,6 +3752,176 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
 #' @param include Specifies whether you want to see the resource tags for the task. If
 #' `TAGS` is specified, the tags are included in the response. If this
 #' field is omitted, tags are not included in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tasks = list(
+#'     list(
+#'       attachments = list(
+#'         list(
+#'           id = "string",
+#'           type = "string",
+#'           status = "string",
+#'           details = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       attributes = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           targetType = "container-instance",
+#'           targetId = "string"
+#'         )
+#'       ),
+#'       availabilityZone = "string",
+#'       capacityProviderName = "string",
+#'       clusterArn = "string",
+#'       connectivity = "CONNECTED"|"DISCONNECTED",
+#'       connectivityAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       containerInstanceArn = "string",
+#'       containers = list(
+#'         list(
+#'           containerArn = "string",
+#'           taskArn = "string",
+#'           name = "string",
+#'           image = "string",
+#'           imageDigest = "string",
+#'           runtimeId = "string",
+#'           lastStatus = "string",
+#'           exitCode = 123,
+#'           reason = "string",
+#'           networkBindings = list(
+#'             list(
+#'               bindIP = "string",
+#'               containerPort = 123,
+#'               hostPort = 123,
+#'               protocol = "tcp"|"udp"
+#'             )
+#'           ),
+#'           networkInterfaces = list(
+#'             list(
+#'               attachmentId = "string",
+#'               privateIpv4Address = "string",
+#'               ipv6Address = "string"
+#'             )
+#'           ),
+#'           healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
+#'           cpu = "string",
+#'           memory = "string",
+#'           memoryReservation = "string",
+#'           gpuIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       cpu = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       desiredStatus = "string",
+#'       executionStoppedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       group = "string",
+#'       healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
+#'       inferenceAccelerators = list(
+#'         list(
+#'           deviceName = "string",
+#'           deviceType = "string"
+#'         )
+#'       ),
+#'       lastStatus = "string",
+#'       launchType = "EC2"|"FARGATE",
+#'       memory = "string",
+#'       overrides = list(
+#'         containerOverrides = list(
+#'           list(
+#'             name = "string",
+#'             command = list(
+#'               "string"
+#'             ),
+#'             environment = list(
+#'               list(
+#'                 name = "string",
+#'                 value = "string"
+#'               )
+#'             ),
+#'             environmentFiles = list(
+#'               list(
+#'                 value = "string",
+#'                 type = "s3"
+#'               )
+#'             ),
+#'             cpu = 123,
+#'             memory = 123,
+#'             memoryReservation = 123,
+#'             resourceRequirements = list(
+#'               list(
+#'                 value = "string",
+#'                 type = "GPU"|"InferenceAccelerator"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         cpu = "string",
+#'         inferenceAcceleratorOverrides = list(
+#'           list(
+#'             deviceName = "string",
+#'             deviceType = "string"
+#'           )
+#'         ),
+#'         executionRoleArn = "string",
+#'         memory = "string",
+#'         taskRoleArn = "string"
+#'       ),
+#'       platformVersion = "string",
+#'       pullStartedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       pullStoppedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       startedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       startedBy = "string",
+#'       stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated",
+#'       stoppedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stoppedReason = "string",
+#'       stoppingAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       taskArn = "string",
+#'       taskDefinitionArn = "string",
+#'       version = 123
+#'     )
+#'   ),
+#'   failures = list(
+#'     list(
+#'       arn = "string",
+#'       reason = "string",
+#'       detail = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1927,6 +3987,15 @@ ecs_describe_tasks <- function(cluster = NULL, tasks, include = NULL) {
 #' `arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID`.
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to
 #' which the container instance belongs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   endpoint = "string",
+#'   telemetryEndpoint = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1996,6 +4065,21 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
 #' and 10. If this parameter is not used, then
 #' [`list_account_settings`][ecs_list_account_settings] returns up to 10
 #' results and a `nextToken` value if applicable.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   settings = list(
+#'     list(
+#'       name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
+#'       value = "string",
+#'       principalArn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2088,6 +4172,22 @@ ecs_list_account_settings <- function(name = NULL, value = NULL, principalArn = 
 #' [`list_attributes`][ecs_list_attributes] returns up to 100 results and a
 #' `nextToken` value if applicable.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attributes = list(
+#'     list(
+#'       name = "string",
+#'       value = "string",
+#'       targetType = "container-instance",
+#'       targetId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_attributes(
@@ -2146,6 +4246,17 @@ ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL
 #' returned `nextToken` value. This value can be between 1 and 100. If this
 #' parameter is not used, then [`list_clusters`][ecs_list_clusters] returns
 #' up to 100 results and a `nextToken` value if applicable.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   clusterArns = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2234,6 +4345,17 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 #' If you do not specify this parameter, the default is to include
 #' container instances set to all states other than `INACTIVE`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   containerInstanceArns = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_container_instances(
@@ -2307,6 +4429,17 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
 #' @param launchType The launch type for the services to list.
 #' @param schedulingStrategy The scheduling strategy for services to list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   serviceArns = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_services(
@@ -2356,6 +4489,19 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
 #' list the tags. Currently, the supported resources are Amazon ECS tasks,
 #' services, task definitions, clusters, and container instances.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2444,6 +4590,17 @@ ecs_list_tags_for_resource <- function(resourceArn) {
 #' and 100. If this parameter is not used, then
 #' [`list_task_definition_families`][ecs_list_task_definition_families]
 #' returns up to 100 results and a `nextToken` value if applicable.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   families = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2535,6 +4692,17 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
 #' and 100. If this parameter is not used, then
 #' [`list_task_definitions`][ecs_list_task_definitions] returns up to 100
 #' results and a `nextToken` value if applicable.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskDefinitionArns = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2639,6 +4807,17 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
 #' status of a task to that value (only a task's `lastStatus` may have a
 #' value of `PENDING`).
 #' @param launchType The launch type for services to list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskArns = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2751,6 +4930,18 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' IAM user or role explicitly overrides these settings. If this field is
 #' omitted, the setting is changed only for the authenticated user.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   setting = list(
+#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
+#'     value = "string",
+#'     principalArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_account_setting(
@@ -2826,6 +5017,18 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
 #' values are `enabled` and `disabled`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   setting = list(
+#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
+#'     value = "string",
+#'     principalArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_account_setting_default(
@@ -2886,6 +5089,21 @@ ecs_put_account_setting_default <- function(name, value) {
 #' custom attributes per resource. You can specify up to 10 attributes in a
 #' single call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attributes = list(
+#'     list(
+#'       name = "string",
+#'       value = "string",
+#'       targetType = "container-instance",
+#'       targetId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_attributes(
@@ -2943,7 +5161,7 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #' provider or launch type is specified, then the cluster's default
 #' capacity provider strategy is used. It is recommended to define a
 #' default capacity provider strategy for your cluster, however you may
-#' specify an empty array (`\\[\\]`) to bypass defining a default strategy.
+#' specify an empty array (`[]`) to bypass defining a default strategy.
 #'
 #' @usage
 #' ecs_put_cluster_capacity_providers(cluster, capacityProviders,
@@ -2989,6 +5207,64 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
 #' are available to all accounts and only need to be associated with a
 #' cluster to be used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cluster = list(
+#'     clusterArn = "string",
+#'     clusterName = "string",
+#'     status = "string",
+#'     registeredContainerInstancesCount = 123,
+#'     runningTasksCount = 123,
+#'     pendingTasksCount = 123,
+#'     activeServicesCount = 123,
+#'     statistics = list(
+#'       list(
+#'         name = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     settings = list(
+#'       list(
+#'         name = "containerInsights",
+#'         value = "string"
+#'       )
+#'     ),
+#'     capacityProviders = list(
+#'       "string"
+#'     ),
+#'     defaultCapacityProviderStrategy = list(
+#'       list(
+#'         capacityProvider = "string",
+#'         weight = 123,
+#'         base = 123
+#'       )
+#'     ),
+#'     attachments = list(
+#'       list(
+#'         id = "string",
+#'         type = "string",
+#'         status = "string",
+#'         details = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     attachmentsStatus = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3079,7 +5355,7 @@ ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defau
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -3088,6 +5364,84 @@ ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defau
 #'     use. You cannot edit or delete tag keys or values with this prefix.
 #'     Tags with this prefix do not count against your tags per resource
 #'     limit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   containerInstance = list(
+#'     containerInstanceArn = "string",
+#'     ec2InstanceId = "string",
+#'     capacityProviderName = "string",
+#'     version = 123,
+#'     versionInfo = list(
+#'       agentVersion = "string",
+#'       agentHash = "string",
+#'       dockerVersion = "string"
+#'     ),
+#'     remainingResources = list(
+#'       list(
+#'         name = "string",
+#'         type = "string",
+#'         doubleValue = 123.0,
+#'         longValue = 123,
+#'         integerValue = 123,
+#'         stringSetValue = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     registeredResources = list(
+#'       list(
+#'         name = "string",
+#'         type = "string",
+#'         doubleValue = 123.0,
+#'         longValue = 123,
+#'         integerValue = 123,
+#'         stringSetValue = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     status = "string",
+#'     statusReason = "string",
+#'     agentConnected = TRUE|FALSE,
+#'     runningTasksCount = 123,
+#'     pendingTasksCount = 123,
+#'     agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
+#'     attributes = list(
+#'       list(
+#'         name = "string",
+#'         value = "string",
+#'         targetType = "container-instance",
+#'         targetId = "string"
+#'       )
+#'     ),
+#'     registeredAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     attachments = list(
+#'       list(
+#'         id = "string",
+#'         type = "string",
+#'         status = "string",
+#'         details = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3348,7 +5702,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -3409,6 +5763,277 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' @param proxyConfiguration 
 #' @param inferenceAccelerators The Elastic Inference accelerators to use for the containers in the
 #' task.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskDefinition = list(
+#'     taskDefinitionArn = "string",
+#'     containerDefinitions = list(
+#'       list(
+#'         name = "string",
+#'         image = "string",
+#'         repositoryCredentials = list(
+#'           credentialsParameter = "string"
+#'         ),
+#'         cpu = 123,
+#'         memory = 123,
+#'         memoryReservation = 123,
+#'         links = list(
+#'           "string"
+#'         ),
+#'         portMappings = list(
+#'           list(
+#'             containerPort = 123,
+#'             hostPort = 123,
+#'             protocol = "tcp"|"udp"
+#'           )
+#'         ),
+#'         essential = TRUE|FALSE,
+#'         entryPoint = list(
+#'           "string"
+#'         ),
+#'         command = list(
+#'           "string"
+#'         ),
+#'         environment = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         environmentFiles = list(
+#'           list(
+#'             value = "string",
+#'             type = "s3"
+#'           )
+#'         ),
+#'         mountPoints = list(
+#'           list(
+#'             sourceVolume = "string",
+#'             containerPath = "string",
+#'             readOnly = TRUE|FALSE
+#'           )
+#'         ),
+#'         volumesFrom = list(
+#'           list(
+#'             sourceContainer = "string",
+#'             readOnly = TRUE|FALSE
+#'           )
+#'         ),
+#'         linuxParameters = list(
+#'           capabilities = list(
+#'             add = list(
+#'               "string"
+#'             ),
+#'             drop = list(
+#'               "string"
+#'             )
+#'           ),
+#'           devices = list(
+#'             list(
+#'               hostPath = "string",
+#'               containerPath = "string",
+#'               permissions = list(
+#'                 "read"|"write"|"mknod"
+#'               )
+#'             )
+#'           ),
+#'           initProcessEnabled = TRUE|FALSE,
+#'           sharedMemorySize = 123,
+#'           tmpfs = list(
+#'             list(
+#'               containerPath = "string",
+#'               size = 123,
+#'               mountOptions = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           maxSwap = 123,
+#'           swappiness = 123
+#'         ),
+#'         secrets = list(
+#'           list(
+#'             name = "string",
+#'             valueFrom = "string"
+#'           )
+#'         ),
+#'         dependsOn = list(
+#'           list(
+#'             containerName = "string",
+#'             condition = "START"|"COMPLETE"|"SUCCESS"|"HEALTHY"
+#'           )
+#'         ),
+#'         startTimeout = 123,
+#'         stopTimeout = 123,
+#'         hostname = "string",
+#'         user = "string",
+#'         workingDirectory = "string",
+#'         disableNetworking = TRUE|FALSE,
+#'         privileged = TRUE|FALSE,
+#'         readonlyRootFilesystem = TRUE|FALSE,
+#'         dnsServers = list(
+#'           "string"
+#'         ),
+#'         dnsSearchDomains = list(
+#'           "string"
+#'         ),
+#'         extraHosts = list(
+#'           list(
+#'             hostname = "string",
+#'             ipAddress = "string"
+#'           )
+#'         ),
+#'         dockerSecurityOptions = list(
+#'           "string"
+#'         ),
+#'         interactive = TRUE|FALSE,
+#'         pseudoTerminal = TRUE|FALSE,
+#'         dockerLabels = list(
+#'           "string"
+#'         ),
+#'         ulimits = list(
+#'           list(
+#'             name = "core"|"cpu"|"data"|"fsize"|"locks"|"memlock"|"msgqueue"|"nice"|"nofile"|"nproc"|"rss"|"rtprio"|"rttime"|"sigpending"|"stack",
+#'             softLimit = 123,
+#'             hardLimit = 123
+#'           )
+#'         ),
+#'         logConfiguration = list(
+#'           logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk"|"awsfirelens",
+#'           options = list(
+#'             "string"
+#'           ),
+#'           secretOptions = list(
+#'             list(
+#'               name = "string",
+#'               valueFrom = "string"
+#'             )
+#'           )
+#'         ),
+#'         healthCheck = list(
+#'           command = list(
+#'             "string"
+#'           ),
+#'           interval = 123,
+#'           timeout = 123,
+#'           retries = 123,
+#'           startPeriod = 123
+#'         ),
+#'         systemControls = list(
+#'           list(
+#'             namespace = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         resourceRequirements = list(
+#'           list(
+#'             value = "string",
+#'             type = "GPU"|"InferenceAccelerator"
+#'           )
+#'         ),
+#'         firelensConfiguration = list(
+#'           type = "fluentd"|"fluentbit",
+#'           options = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     family = "string",
+#'     taskRoleArn = "string",
+#'     executionRoleArn = "string",
+#'     networkMode = "bridge"|"host"|"awsvpc"|"none",
+#'     revision = 123,
+#'     volumes = list(
+#'       list(
+#'         name = "string",
+#'         host = list(
+#'           sourcePath = "string"
+#'         ),
+#'         dockerVolumeConfiguration = list(
+#'           scope = "task"|"shared",
+#'           autoprovision = TRUE|FALSE,
+#'           driver = "string",
+#'           driverOpts = list(
+#'             "string"
+#'           ),
+#'           labels = list(
+#'             "string"
+#'           )
+#'         ),
+#'         efsVolumeConfiguration = list(
+#'           fileSystemId = "string",
+#'           rootDirectory = "string",
+#'           transitEncryption = "ENABLED"|"DISABLED",
+#'           transitEncryptionPort = 123,
+#'           authorizationConfig = list(
+#'             accessPointId = "string",
+#'             iam = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         fsxWindowsFileServerVolumeConfiguration = list(
+#'           fileSystemId = "string",
+#'           rootDirectory = "string",
+#'           authorizationConfig = list(
+#'             credentialsParameter = "string",
+#'             domain = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     status = "ACTIVE"|"INACTIVE",
+#'     requiresAttributes = list(
+#'       list(
+#'         name = "string",
+#'         value = "string",
+#'         targetType = "container-instance",
+#'         targetId = "string"
+#'       )
+#'     ),
+#'     placementConstraints = list(
+#'       list(
+#'         type = "memberOf",
+#'         expression = "string"
+#'       )
+#'     ),
+#'     compatibilities = list(
+#'       "EC2"|"FARGATE"
+#'     ),
+#'     requiresCompatibilities = list(
+#'       "EC2"|"FARGATE"
+#'     ),
+#'     cpu = "string",
+#'     memory = "string",
+#'     inferenceAccelerators = list(
+#'       list(
+#'         deviceName = "string",
+#'         deviceType = "string"
+#'       )
+#'     ),
+#'     pidMode = "host"|"task",
+#'     ipcMode = "host"|"task"|"none",
+#'     proxyConfiguration = list(
+#'       type = "APPMESH",
+#'       containerName = "string",
+#'       properties = list(
+#'         list(
+#'           name = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3863,7 +6488,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -3875,6 +6500,176 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' @param taskDefinition &#91;required&#93; The `family` and `revision` (`family:revision`) or full ARN of the task
 #' definition to run. If a `revision` is not specified, the latest `ACTIVE`
 #' revision is used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tasks = list(
+#'     list(
+#'       attachments = list(
+#'         list(
+#'           id = "string",
+#'           type = "string",
+#'           status = "string",
+#'           details = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       attributes = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           targetType = "container-instance",
+#'           targetId = "string"
+#'         )
+#'       ),
+#'       availabilityZone = "string",
+#'       capacityProviderName = "string",
+#'       clusterArn = "string",
+#'       connectivity = "CONNECTED"|"DISCONNECTED",
+#'       connectivityAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       containerInstanceArn = "string",
+#'       containers = list(
+#'         list(
+#'           containerArn = "string",
+#'           taskArn = "string",
+#'           name = "string",
+#'           image = "string",
+#'           imageDigest = "string",
+#'           runtimeId = "string",
+#'           lastStatus = "string",
+#'           exitCode = 123,
+#'           reason = "string",
+#'           networkBindings = list(
+#'             list(
+#'               bindIP = "string",
+#'               containerPort = 123,
+#'               hostPort = 123,
+#'               protocol = "tcp"|"udp"
+#'             )
+#'           ),
+#'           networkInterfaces = list(
+#'             list(
+#'               attachmentId = "string",
+#'               privateIpv4Address = "string",
+#'               ipv6Address = "string"
+#'             )
+#'           ),
+#'           healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
+#'           cpu = "string",
+#'           memory = "string",
+#'           memoryReservation = "string",
+#'           gpuIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       cpu = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       desiredStatus = "string",
+#'       executionStoppedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       group = "string",
+#'       healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
+#'       inferenceAccelerators = list(
+#'         list(
+#'           deviceName = "string",
+#'           deviceType = "string"
+#'         )
+#'       ),
+#'       lastStatus = "string",
+#'       launchType = "EC2"|"FARGATE",
+#'       memory = "string",
+#'       overrides = list(
+#'         containerOverrides = list(
+#'           list(
+#'             name = "string",
+#'             command = list(
+#'               "string"
+#'             ),
+#'             environment = list(
+#'               list(
+#'                 name = "string",
+#'                 value = "string"
+#'               )
+#'             ),
+#'             environmentFiles = list(
+#'               list(
+#'                 value = "string",
+#'                 type = "s3"
+#'               )
+#'             ),
+#'             cpu = 123,
+#'             memory = 123,
+#'             memoryReservation = 123,
+#'             resourceRequirements = list(
+#'               list(
+#'                 value = "string",
+#'                 type = "GPU"|"InferenceAccelerator"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         cpu = "string",
+#'         inferenceAcceleratorOverrides = list(
+#'           list(
+#'             deviceName = "string",
+#'             deviceType = "string"
+#'           )
+#'         ),
+#'         executionRoleArn = "string",
+#'         memory = "string",
+#'         taskRoleArn = "string"
+#'       ),
+#'       platformVersion = "string",
+#'       pullStartedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       pullStoppedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       startedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       startedBy = "string",
+#'       stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated",
+#'       stoppedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stoppedReason = "string",
+#'       stoppingAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       taskArn = "string",
+#'       taskDefinitionArn = "string",
+#'       version = 123
+#'     )
+#'   ),
+#'   failures = list(
+#'     list(
+#'       arn = "string",
+#'       reason = "string",
+#'       detail = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4074,7 +6869,7 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -4086,6 +6881,176 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' @param taskDefinition &#91;required&#93; The `family` and `revision` (`family:revision`) or full ARN of the task
 #' definition to start. If a `revision` is not specified, the latest
 #' `ACTIVE` revision is used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tasks = list(
+#'     list(
+#'       attachments = list(
+#'         list(
+#'           id = "string",
+#'           type = "string",
+#'           status = "string",
+#'           details = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       attributes = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           targetType = "container-instance",
+#'           targetId = "string"
+#'         )
+#'       ),
+#'       availabilityZone = "string",
+#'       capacityProviderName = "string",
+#'       clusterArn = "string",
+#'       connectivity = "CONNECTED"|"DISCONNECTED",
+#'       connectivityAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       containerInstanceArn = "string",
+#'       containers = list(
+#'         list(
+#'           containerArn = "string",
+#'           taskArn = "string",
+#'           name = "string",
+#'           image = "string",
+#'           imageDigest = "string",
+#'           runtimeId = "string",
+#'           lastStatus = "string",
+#'           exitCode = 123,
+#'           reason = "string",
+#'           networkBindings = list(
+#'             list(
+#'               bindIP = "string",
+#'               containerPort = 123,
+#'               hostPort = 123,
+#'               protocol = "tcp"|"udp"
+#'             )
+#'           ),
+#'           networkInterfaces = list(
+#'             list(
+#'               attachmentId = "string",
+#'               privateIpv4Address = "string",
+#'               ipv6Address = "string"
+#'             )
+#'           ),
+#'           healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
+#'           cpu = "string",
+#'           memory = "string",
+#'           memoryReservation = "string",
+#'           gpuIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       cpu = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       desiredStatus = "string",
+#'       executionStoppedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       group = "string",
+#'       healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
+#'       inferenceAccelerators = list(
+#'         list(
+#'           deviceName = "string",
+#'           deviceType = "string"
+#'         )
+#'       ),
+#'       lastStatus = "string",
+#'       launchType = "EC2"|"FARGATE",
+#'       memory = "string",
+#'       overrides = list(
+#'         containerOverrides = list(
+#'           list(
+#'             name = "string",
+#'             command = list(
+#'               "string"
+#'             ),
+#'             environment = list(
+#'               list(
+#'                 name = "string",
+#'                 value = "string"
+#'               )
+#'             ),
+#'             environmentFiles = list(
+#'               list(
+#'                 value = "string",
+#'                 type = "s3"
+#'               )
+#'             ),
+#'             cpu = 123,
+#'             memory = 123,
+#'             memoryReservation = 123,
+#'             resourceRequirements = list(
+#'               list(
+#'                 value = "string",
+#'                 type = "GPU"|"InferenceAccelerator"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         cpu = "string",
+#'         inferenceAcceleratorOverrides = list(
+#'           list(
+#'             deviceName = "string",
+#'             deviceType = "string"
+#'           )
+#'         ),
+#'         executionRoleArn = "string",
+#'         memory = "string",
+#'         taskRoleArn = "string"
+#'       ),
+#'       platformVersion = "string",
+#'       pullStartedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       pullStoppedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       startedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       startedBy = "string",
+#'       stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated",
+#'       stoppedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stoppedReason = "string",
+#'       stoppingAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       taskArn = "string",
+#'       taskDefinitionArn = "string",
+#'       version = 123
+#'     )
+#'   ),
+#'   failures = list(
+#'     list(
+#'       arn = "string",
+#'       reason = "string",
+#'       detail = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4212,6 +7177,167 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 #' subsequent [`describe_tasks`][ecs_describe_tasks] API operations on this
 #' task. Up to 255 characters are allowed in this message.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   task = list(
+#'     attachments = list(
+#'       list(
+#'         id = "string",
+#'         type = "string",
+#'         status = "string",
+#'         details = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     attributes = list(
+#'       list(
+#'         name = "string",
+#'         value = "string",
+#'         targetType = "container-instance",
+#'         targetId = "string"
+#'       )
+#'     ),
+#'     availabilityZone = "string",
+#'     capacityProviderName = "string",
+#'     clusterArn = "string",
+#'     connectivity = "CONNECTED"|"DISCONNECTED",
+#'     connectivityAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     containerInstanceArn = "string",
+#'     containers = list(
+#'       list(
+#'         containerArn = "string",
+#'         taskArn = "string",
+#'         name = "string",
+#'         image = "string",
+#'         imageDigest = "string",
+#'         runtimeId = "string",
+#'         lastStatus = "string",
+#'         exitCode = 123,
+#'         reason = "string",
+#'         networkBindings = list(
+#'           list(
+#'             bindIP = "string",
+#'             containerPort = 123,
+#'             hostPort = 123,
+#'             protocol = "tcp"|"udp"
+#'           )
+#'         ),
+#'         networkInterfaces = list(
+#'           list(
+#'             attachmentId = "string",
+#'             privateIpv4Address = "string",
+#'             ipv6Address = "string"
+#'           )
+#'         ),
+#'         healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
+#'         cpu = "string",
+#'         memory = "string",
+#'         memoryReservation = "string",
+#'         gpuIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     cpu = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     desiredStatus = "string",
+#'     executionStoppedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     group = "string",
+#'     healthStatus = "HEALTHY"|"UNHEALTHY"|"UNKNOWN",
+#'     inferenceAccelerators = list(
+#'       list(
+#'         deviceName = "string",
+#'         deviceType = "string"
+#'       )
+#'     ),
+#'     lastStatus = "string",
+#'     launchType = "EC2"|"FARGATE",
+#'     memory = "string",
+#'     overrides = list(
+#'       containerOverrides = list(
+#'         list(
+#'           name = "string",
+#'           command = list(
+#'             "string"
+#'           ),
+#'           environment = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           ),
+#'           environmentFiles = list(
+#'             list(
+#'               value = "string",
+#'               type = "s3"
+#'             )
+#'           ),
+#'           cpu = 123,
+#'           memory = 123,
+#'           memoryReservation = 123,
+#'           resourceRequirements = list(
+#'             list(
+#'               value = "string",
+#'               type = "GPU"|"InferenceAccelerator"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       cpu = "string",
+#'       inferenceAcceleratorOverrides = list(
+#'         list(
+#'           deviceName = "string",
+#'           deviceType = "string"
+#'         )
+#'       ),
+#'       executionRoleArn = "string",
+#'       memory = "string",
+#'       taskRoleArn = "string"
+#'     ),
+#'     platformVersion = "string",
+#'     pullStartedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     pullStoppedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     startedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     startedBy = "string",
+#'     stopCode = "TaskFailedToStart"|"EssentialContainerExited"|"UserInitiated",
+#'     stoppedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     stoppedReason = "string",
+#'     stoppingAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     taskArn = "string",
+#'     taskDefinitionArn = "string",
+#'     version = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_task(
@@ -4256,6 +7382,14 @@ ecs_stop_task <- function(cluster = NULL, task, reason = NULL) {
 #' @param cluster The short name or full ARN of the cluster that hosts the container
 #' instance the attachment belongs to.
 #' @param attachments &#91;required&#93; Any attachments associated with the state change request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   acknowledgment = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4312,6 +7446,14 @@ ecs_submit_attachment_state_changes <- function(cluster = NULL, attachments) {
 #' @param exitCode The exit code returned for the state change request.
 #' @param reason The reason for the state change request.
 #' @param networkBindings The network bindings of the container.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   acknowledgment = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4377,6 +7519,14 @@ ecs_submit_container_state_change <- function(cluster = NULL, task = NULL, conta
 #' @param pullStartedAt The Unix timestamp for when the container image pull began.
 #' @param pullStoppedAt The Unix timestamp for when the container image pull completed.
 #' @param executionStoppedAt The Unix timestamp for when the task execution stopped.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   acknowledgment = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4473,7 +7623,7 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
 #'     resources, remember that other services may have restrictions on
 #'     allowed characters. Generally allowed characters are: letters,
 #'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . \\_ : / @@.
+#'     characters: + - = . _ : / @@.
 #' 
 #' -   Tag keys and values are case-sensitive.
 #' 
@@ -4482,6 +7632,12 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
 #'     use. You cannot edit or delete tag keys or values with this prefix.
 #'     Tags with this prefix do not count against your tags per resource
 #'     limit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4544,6 +7700,12 @@ ecs_tag_resource <- function(resourceArn, tags) {
 #' instances.
 #' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -4597,6 +7759,37 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 #' group capacity provider.
 #' @param autoScalingGroupProvider &#91;required&#93; The name of the capacity provider to update.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   capacityProvider = list(
+#'     capacityProviderArn = "string",
+#'     name = "string",
+#'     status = "ACTIVE"|"INACTIVE",
+#'     autoScalingGroupProvider = list(
+#'       autoScalingGroupArn = "string",
+#'       managedScaling = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         targetCapacity = 123,
+#'         minimumScalingStepSize = 123,
+#'         maximumScalingStepSize = 123,
+#'         instanceWarmupPeriod = 123
+#'       ),
+#'       managedTerminationProtection = "ENABLED"|"DISABLED"
+#'     ),
+#'     updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+#'     updateStatusReason = "string",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_capacity_provider(
@@ -4648,6 +7841,64 @@ ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
 #' specified, it will override the `containerInsights` value set with
 #' [`put_account_setting`][ecs_put_account_setting] or
 #' [`put_account_setting_default`][ecs_put_account_setting_default].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cluster = list(
+#'     clusterArn = "string",
+#'     clusterName = "string",
+#'     status = "string",
+#'     registeredContainerInstancesCount = 123,
+#'     runningTasksCount = 123,
+#'     pendingTasksCount = 123,
+#'     activeServicesCount = 123,
+#'     statistics = list(
+#'       list(
+#'         name = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     settings = list(
+#'       list(
+#'         name = "containerInsights",
+#'         value = "string"
+#'       )
+#'     ),
+#'     capacityProviders = list(
+#'       "string"
+#'     ),
+#'     defaultCapacityProviderStrategy = list(
+#'       list(
+#'         capacityProvider = "string",
+#'         weight = 123,
+#'         base = 123
+#'       )
+#'     ),
+#'     attachments = list(
+#'       list(
+#'         id = "string",
+#'         type = "string",
+#'         status = "string",
+#'         details = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     attachmentsStatus = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4708,6 +7959,84 @@ ecs_update_cluster_settings <- function(cluster, settings) {
 #' the default cluster is assumed.
 #' @param containerInstance &#91;required&#93; The container instance ID or full ARN entries for the container instance
 #' on which you would like to update the Amazon ECS container agent.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   containerInstance = list(
+#'     containerInstanceArn = "string",
+#'     ec2InstanceId = "string",
+#'     capacityProviderName = "string",
+#'     version = 123,
+#'     versionInfo = list(
+#'       agentVersion = "string",
+#'       agentHash = "string",
+#'       dockerVersion = "string"
+#'     ),
+#'     remainingResources = list(
+#'       list(
+#'         name = "string",
+#'         type = "string",
+#'         doubleValue = 123.0,
+#'         longValue = 123,
+#'         integerValue = 123,
+#'         stringSetValue = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     registeredResources = list(
+#'       list(
+#'         name = "string",
+#'         type = "string",
+#'         doubleValue = 123.0,
+#'         longValue = 123,
+#'         integerValue = 123,
+#'         stringSetValue = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     status = "string",
+#'     statusReason = "string",
+#'     agentConnected = TRUE|FALSE,
+#'     runningTasksCount = 123,
+#'     pendingTasksCount = 123,
+#'     agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
+#'     attributes = list(
+#'       list(
+#'         name = "string",
+#'         value = "string",
+#'         targetType = "container-instance",
+#'         targetId = "string"
+#'       )
+#'     ),
+#'     registeredAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     attachments = list(
+#'       list(
+#'         id = "string",
+#'         type = "string",
+#'         status = "string",
+#'         details = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4811,6 +8140,93 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #' in `REGISTERING`, `DEREGISTERING`, or `REGISTRATION_FAILED` state you
 #' can describe the container instance but will be unable to update the
 #' container instance state.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   containerInstances = list(
+#'     list(
+#'       containerInstanceArn = "string",
+#'       ec2InstanceId = "string",
+#'       capacityProviderName = "string",
+#'       version = 123,
+#'       versionInfo = list(
+#'         agentVersion = "string",
+#'         agentHash = "string",
+#'         dockerVersion = "string"
+#'       ),
+#'       remainingResources = list(
+#'         list(
+#'           name = "string",
+#'           type = "string",
+#'           doubleValue = 123.0,
+#'           longValue = 123,
+#'           integerValue = 123,
+#'           stringSetValue = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       registeredResources = list(
+#'         list(
+#'           name = "string",
+#'           type = "string",
+#'           doubleValue = 123.0,
+#'           longValue = 123,
+#'           integerValue = 123,
+#'           stringSetValue = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       status = "string",
+#'       statusReason = "string",
+#'       agentConnected = TRUE|FALSE,
+#'       runningTasksCount = 123,
+#'       pendingTasksCount = 123,
+#'       agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
+#'       attributes = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           targetType = "container-instance",
+#'           targetId = "string"
+#'         )
+#'       ),
+#'       registeredAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       attachments = list(
+#'         list(
+#'           id = "string",
+#'           type = "string",
+#'           status = "string",
+#'           details = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   failures = list(
+#'     list(
+#'       arn = "string",
+#'       reason = "string",
+#'       detail = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5056,6 +8472,216 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' ECS service scheduler from marking tasks as unhealthy and stopping them
 #' before they have time to come up.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   service = list(
+#'     serviceArn = "string",
+#'     serviceName = "string",
+#'     clusterArn = "string",
+#'     loadBalancers = list(
+#'       list(
+#'         targetGroupArn = "string",
+#'         loadBalancerName = "string",
+#'         containerName = "string",
+#'         containerPort = 123
+#'       )
+#'     ),
+#'     serviceRegistries = list(
+#'       list(
+#'         registryArn = "string",
+#'         port = 123,
+#'         containerName = "string",
+#'         containerPort = 123
+#'       )
+#'     ),
+#'     status = "string",
+#'     desiredCount = 123,
+#'     runningCount = 123,
+#'     pendingCount = 123,
+#'     launchType = "EC2"|"FARGATE",
+#'     capacityProviderStrategy = list(
+#'       list(
+#'         capacityProvider = "string",
+#'         weight = 123,
+#'         base = 123
+#'       )
+#'     ),
+#'     platformVersion = "string",
+#'     taskDefinition = "string",
+#'     deploymentConfiguration = list(
+#'       deploymentCircuitBreaker = list(
+#'         enable = TRUE|FALSE,
+#'         rollback = TRUE|FALSE
+#'       ),
+#'       maximumPercent = 123,
+#'       minimumHealthyPercent = 123
+#'     ),
+#'     taskSets = list(
+#'       list(
+#'         id = "string",
+#'         taskSetArn = "string",
+#'         serviceArn = "string",
+#'         clusterArn = "string",
+#'         startedBy = "string",
+#'         externalId = "string",
+#'         status = "string",
+#'         taskDefinition = "string",
+#'         computedDesiredCount = 123,
+#'         pendingCount = 123,
+#'         runningCount = 123,
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         updatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         launchType = "EC2"|"FARGATE",
+#'         capacityProviderStrategy = list(
+#'           list(
+#'             capacityProvider = "string",
+#'             weight = 123,
+#'             base = 123
+#'           )
+#'         ),
+#'         platformVersion = "string",
+#'         networkConfiguration = list(
+#'           awsvpcConfiguration = list(
+#'             subnets = list(
+#'               "string"
+#'             ),
+#'             securityGroups = list(
+#'               "string"
+#'             ),
+#'             assignPublicIp = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         loadBalancers = list(
+#'           list(
+#'             targetGroupArn = "string",
+#'             loadBalancerName = "string",
+#'             containerName = "string",
+#'             containerPort = 123
+#'           )
+#'         ),
+#'         serviceRegistries = list(
+#'           list(
+#'             registryArn = "string",
+#'             port = 123,
+#'             containerName = "string",
+#'             containerPort = 123
+#'           )
+#'         ),
+#'         scale = list(
+#'           value = 123.0,
+#'           unit = "PERCENT"
+#'         ),
+#'         stabilityStatus = "STEADY_STATE"|"STABILIZING",
+#'         stabilityStatusAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         tags = list(
+#'           list(
+#'             key = "string",
+#'             value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     deployments = list(
+#'       list(
+#'         id = "string",
+#'         status = "string",
+#'         taskDefinition = "string",
+#'         desiredCount = 123,
+#'         pendingCount = 123,
+#'         runningCount = 123,
+#'         failedTasks = 123,
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         updatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         capacityProviderStrategy = list(
+#'           list(
+#'             capacityProvider = "string",
+#'             weight = 123,
+#'             base = 123
+#'           )
+#'         ),
+#'         launchType = "EC2"|"FARGATE",
+#'         platformVersion = "string",
+#'         networkConfiguration = list(
+#'           awsvpcConfiguration = list(
+#'             subnets = list(
+#'               "string"
+#'             ),
+#'             securityGroups = list(
+#'               "string"
+#'             ),
+#'             assignPublicIp = "ENABLED"|"DISABLED"
+#'           )
+#'         ),
+#'         rolloutState = "COMPLETED"|"FAILED"|"IN_PROGRESS",
+#'         rolloutStateReason = "string"
+#'       )
+#'     ),
+#'     roleArn = "string",
+#'     events = list(
+#'       list(
+#'         id = "string",
+#'         createdAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         message = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     placementConstraints = list(
+#'       list(
+#'         type = "distinctInstance"|"memberOf",
+#'         expression = "string"
+#'       )
+#'     ),
+#'     placementStrategy = list(
+#'       list(
+#'         type = "random"|"spread"|"binpack",
+#'         field = "string"
+#'       )
+#'     ),
+#'     networkConfiguration = list(
+#'       awsvpcConfiguration = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         ),
+#'         assignPublicIp = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     healthCheckGracePeriodSeconds = 123,
+#'     schedulingStrategy = "REPLICA"|"DAEMON",
+#'     deploymentController = list(
+#'       type = "ECS"|"CODE_DEPLOY"|"EXTERNAL"
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdBy = "string",
+#'     enableECSManagedTags = TRUE|FALSE,
+#'     propagateTags = "TASK_DEFINITION"|"SERVICE"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_service(
@@ -5165,6 +8791,82 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
 #' @param primaryTaskSet &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the task set to set
 #' as the primary task set in the deployment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskSet = list(
+#'     id = "string",
+#'     taskSetArn = "string",
+#'     serviceArn = "string",
+#'     clusterArn = "string",
+#'     startedBy = "string",
+#'     externalId = "string",
+#'     status = "string",
+#'     taskDefinition = "string",
+#'     computedDesiredCount = 123,
+#'     pendingCount = 123,
+#'     runningCount = 123,
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     launchType = "EC2"|"FARGATE",
+#'     capacityProviderStrategy = list(
+#'       list(
+#'         capacityProvider = "string",
+#'         weight = 123,
+#'         base = 123
+#'       )
+#'     ),
+#'     platformVersion = "string",
+#'     networkConfiguration = list(
+#'       awsvpcConfiguration = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         ),
+#'         assignPublicIp = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     loadBalancers = list(
+#'       list(
+#'         targetGroupArn = "string",
+#'         loadBalancerName = "string",
+#'         containerName = "string",
+#'         containerPort = 123
+#'       )
+#'     ),
+#'     serviceRegistries = list(
+#'       list(
+#'         registryArn = "string",
+#'         port = 123,
+#'         containerName = "string",
+#'         containerPort = 123
+#'       )
+#'     ),
+#'     scale = list(
+#'       value = 123.0,
+#'       unit = "PERCENT"
+#'     ),
+#'     stabilityStatus = "STEADY_STATE"|"STABILIZING",
+#'     stabilityStatusAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_service_primary_task_set(
@@ -5213,6 +8915,82 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
 #' @param taskSet &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the task set to
 #' update.
 #' @param scale &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskSet = list(
+#'     id = "string",
+#'     taskSetArn = "string",
+#'     serviceArn = "string",
+#'     clusterArn = "string",
+#'     startedBy = "string",
+#'     externalId = "string",
+#'     status = "string",
+#'     taskDefinition = "string",
+#'     computedDesiredCount = 123,
+#'     pendingCount = 123,
+#'     runningCount = 123,
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     launchType = "EC2"|"FARGATE",
+#'     capacityProviderStrategy = list(
+#'       list(
+#'         capacityProvider = "string",
+#'         weight = 123,
+#'         base = 123
+#'       )
+#'     ),
+#'     platformVersion = "string",
+#'     networkConfiguration = list(
+#'       awsvpcConfiguration = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         ),
+#'         assignPublicIp = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     loadBalancers = list(
+#'       list(
+#'         targetGroupArn = "string",
+#'         loadBalancerName = "string",
+#'         containerName = "string",
+#'         containerPort = 123
+#'       )
+#'     ),
+#'     serviceRegistries = list(
+#'       list(
+#'         registryArn = "string",
+#'         port = 123,
+#'         containerName = "string",
+#'         containerPort = 123
+#'       )
+#'     ),
+#'     scale = list(
+#'       value = 123.0,
+#'       unit = "PERCENT"
+#'     ),
+#'     stabilityStatus = "STEADY_STATE"|"STABILIZING",
+#'     stabilityStatusAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

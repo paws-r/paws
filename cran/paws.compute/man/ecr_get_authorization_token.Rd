@@ -11,6 +11,20 @@ ecr_get_authorization_token(registryIds)
 which to get AuthorizationData objects. If you do not specify a
 registry, the default registry is assumed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  authorizationData = list(
+    list(
+      authorizationToken = "string",
+      expiresAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      proxyEndpoint = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves an authorization token. An authorization token represents your
 IAM authentication credentials and can be used to access any Amazon ECR

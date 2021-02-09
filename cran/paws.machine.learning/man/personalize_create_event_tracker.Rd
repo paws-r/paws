@@ -13,6 +13,13 @@ personalize_create_event_tracker(name, datasetGroupArn)
 \item{datasetGroupArn}{[required] The Amazon Resource Name (ARN) of the dataset group that receives the
 event data.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  eventTrackerArn = "string",
+  trackingId = "string"
+)
+}
+}
 \description{
 Creates an event tracker that you use when sending event data to the
 specified dataset group using the
@@ -35,9 +42,9 @@ identifies the customer and authorizes the customer to send the data.
 
 The event tracker can be in one of the following states:
 \itemize{
-\item CREATE PENDING > CREATE IN\\_PROGRESS > ACTIVE -or- CREATE
+\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
 FAILED
-\item DELETE PENDING > DELETE IN\\_PROGRESS
+\item DELETE PENDING > DELETE IN_PROGRESS
 }
 
 To get the status of the event tracker, call

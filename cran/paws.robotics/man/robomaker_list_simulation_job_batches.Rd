@@ -25,6 +25,27 @@ request with the returned \code{nextToken} value.}
 
 \item{filters}{Optional filters to limit results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  simulationJobBatchSummaries = list(
+    list(
+      arn = "string",
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      status = "Pending"|"InProgress"|"Failed"|"Completed"|"Canceled"|"Canceling"|"Completing"|"TimingOut"|"TimedOut",
+      failedRequestCount = 123,
+      pendingRequestCount = 123,
+      createdRequestCount = 123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list simulation job batches. You can optionally provide
 filters to retrieve specific simulation batch jobs.

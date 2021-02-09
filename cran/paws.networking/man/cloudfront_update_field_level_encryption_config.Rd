@@ -15,6 +15,47 @@ cloudfront_update_field_level_encryption_config(
 \item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the
 configuration identity to update. For example: \code{E2QWRUHAPOMQZL}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FieldLevelEncryption = list(
+    Id = "string",
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    FieldLevelEncryptionConfig = list(
+      CallerReference = "string",
+      Comment = "string",
+      QueryArgProfileConfig = list(
+        ForwardWhenQueryArgProfileIsUnknown = TRUE|FALSE,
+        QueryArgProfiles = list(
+          Quantity = 123,
+          Items = list(
+            list(
+              QueryArg = "string",
+              ProfileId = "string"
+            )
+          )
+        )
+      ),
+      ContentTypeProfileConfig = list(
+        ForwardWhenContentTypeIsUnknown = TRUE|FALSE,
+        ContentTypeProfiles = list(
+          Quantity = 123,
+          Items = list(
+            list(
+              Format = "URLEncoded",
+              ProfileId = "string",
+              ContentType = "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  ETag = "string"
+)
+}
+}
 \description{
 Update a field-level encryption configuration.
 }

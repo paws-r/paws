@@ -21,6 +21,12 @@ support case.}
 to the case. Create the set by calling
 \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  result = TRUE|FALSE
+)
+}
+}
 \description{
 Adds additional customer communication to an AWS Support case. Use the
 \code{caseId} parameter to identify the case to which to add communication.

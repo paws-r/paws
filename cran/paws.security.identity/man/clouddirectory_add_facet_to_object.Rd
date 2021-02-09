@@ -18,6 +18,10 @@ SchemaFacet for details.}
 
 \item{ObjectReference}{[required] A reference to the object you are adding the specified facet to.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds a new Facet to an object. An object can have more than one facet
 applied on it.

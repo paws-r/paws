@@ -17,6 +17,18 @@ Chime Voice Connector and removes any previously existing associations.
 If false, does not associate any phone numbers that have previously
 existing associations.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PhoneNumberErrors = list(
+    list(
+      PhoneNumberId = "string",
+      ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Associates phone numbers with the specified Amazon Chime Voice
 Connector.

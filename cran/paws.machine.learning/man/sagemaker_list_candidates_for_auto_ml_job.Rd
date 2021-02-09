@@ -23,6 +23,50 @@ sagemaker_list_candidates_for_auto_ml_job(AutoMLJobName, StatusEquals,
 \item{NextToken}{If the previous response was truncated, you receive this token. Use it
 in your next request to receive the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Candidates = list(
+    list(
+      CandidateName = "string",
+      FinalAutoMLJobObjectiveMetric = list(
+        Type = "Maximize"|"Minimize",
+        MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC",
+        Value = 123.0
+      ),
+      ObjectiveStatus = "Succeeded"|"Pending"|"Failed",
+      CandidateSteps = list(
+        list(
+          CandidateStepType = "AWS::SageMaker::TrainingJob"|"AWS::SageMaker::TransformJob"|"AWS::SageMaker::ProcessingJob",
+          CandidateStepArn = "string",
+          CandidateStepName = "string"
+        )
+      ),
+      CandidateStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
+      InferenceContainers = list(
+        list(
+          Image = "string",
+          ModelDataUrl = "string",
+          Environment = list(
+            "string"
+          )
+        )
+      ),
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      FailureReason = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List the Candidates created for the job.
 }

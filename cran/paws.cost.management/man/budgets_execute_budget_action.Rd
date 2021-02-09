@@ -16,6 +16,15 @@ budgets_execute_budget_action(AccountId, BudgetName, ActionId,
 
 \item{ExecutionType}{[required] The type of execution.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccountId = "string",
+  BudgetName = "string",
+  ActionId = "string",
+  ExecutionType = "APPROVE_BUDGET_ACTION"|"RETRY_BUDGET_ACTION"|"REVERSE_BUDGET_ACTION"|"RESET_BUDGET_ACTION"
+)
+}
+}
 \description{
 Executes a budget action.
 }

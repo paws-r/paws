@@ -12,6 +12,12 @@ cloudhsm_create_luna_client(Label, Certificate)
 \item{Certificate}{[required] The contents of a Base64-Encoded X.509 v3 certificate to be installed on
 the HSMs used by this client.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClientArn = "string"
+)
+}
+}
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
 information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},

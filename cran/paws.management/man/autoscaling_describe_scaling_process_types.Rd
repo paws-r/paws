@@ -7,6 +7,16 @@ SuspendProcesses APIs}
 \usage{
 autoscaling_describe_scaling_process_types()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Processes = list(
+    list(
+      ProcessName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the scaling process types for use with the
 \code{\link[=autoscaling_resume_processes]{resume_processes}} and

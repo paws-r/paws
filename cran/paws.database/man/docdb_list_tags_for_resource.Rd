@@ -12,6 +12,17 @@ Amazon Resource Name (ARN).}
 
 \item{Filters}{This parameter is not currently supported.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists all tags on an Amazon DocumentDB resource.
 }

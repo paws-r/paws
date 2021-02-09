@@ -12,6 +12,10 @@ workspaces_disassociate_ip_groups(DirectoryId, GroupIds)
 
 \item{GroupIds}{[required] The identifiers of one or more IP access control groups.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disassociates the specified IP access control group from the specified
 directory.

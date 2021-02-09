@@ -12,6 +12,79 @@ pipeline.}
 
 \item{tags}{The tags for the pipeline.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  pipeline = list(
+    name = "string",
+    roleArn = "string",
+    artifactStore = list(
+      type = "S3",
+      location = "string",
+      encryptionKey = list(
+        id = "string",
+        type = "KMS"
+      )
+    ),
+    artifactStores = list(
+      list(
+        type = "S3",
+        location = "string",
+        encryptionKey = list(
+          id = "string",
+          type = "KMS"
+        )
+      )
+    ),
+    stages = list(
+      list(
+        name = "string",
+        blockers = list(
+          list(
+            name = "string",
+            type = "Schedule"
+          )
+        ),
+        actions = list(
+          list(
+            name = "string",
+            actionTypeId = list(
+              category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+              owner = "AWS"|"ThirdParty"|"Custom",
+              provider = "string",
+              version = "string"
+            ),
+            runOrder = 123,
+            configuration = list(
+              "string"
+            ),
+            outputArtifacts = list(
+              list(
+                name = "string"
+              )
+            ),
+            inputArtifacts = list(
+              list(
+                name = "string"
+              )
+            ),
+            roleArn = "string",
+            region = "string",
+            namespace = "string"
+          )
+        )
+      )
+    ),
+    version = 123
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates a pipeline.
 

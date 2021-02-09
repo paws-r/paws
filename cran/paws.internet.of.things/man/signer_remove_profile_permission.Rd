@@ -15,6 +15,12 @@ permissions.}
 
 \item{statementId}{[required] A unique identifier for the cross-account permissions statement.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  revisionId = "string"
+)
+}
+}
 \description{
 Removes cross-account permissions from a signing profile.
 }

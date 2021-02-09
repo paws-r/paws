@@ -26,7 +26,7 @@ the URL encoding of
 The value must be URL encoded.}
 
 \item{Policy}{[required] The policy that you want to apply to the specified access point. For
-more information about access point policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html}{Managing data access with Amazon S3 Access Points}
+more information about access point policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing data access with Amazon S3 Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 }
 \description{

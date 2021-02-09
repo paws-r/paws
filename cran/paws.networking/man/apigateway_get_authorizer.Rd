@@ -11,6 +11,23 @@ apigateway_get_authorizer(restApiId, authorizerId)
 
 \item{authorizerId}{[required] [Required] The identifier of the Authorizer resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  name = "string",
+  type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
+  providerARNs = list(
+    "string"
+  ),
+  authType = "string",
+  authorizerUri = "string",
+  authorizerCredentials = "string",
+  identitySource = "string",
+  identityValidationExpression = "string",
+  authorizerResultTtlInSeconds = 123
+)
+}
+}
 \description{
 Describe an existing Authorizer resource.<div class="seeAlso">
 

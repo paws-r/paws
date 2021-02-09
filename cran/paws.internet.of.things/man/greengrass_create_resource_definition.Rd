@@ -17,8 +17,23 @@ greengrass_create_resource_definition(AmznClientToken, InitialVersion,
 
 \item{tags}{Tag(s) to add to the new resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  LastUpdatedTimestamp = "string",
+  LatestVersion = "string",
+  LatestVersionArn = "string",
+  Name = "string"
+)
+}
+}
 \description{
-Creates a resource definition which contains a list of resources to be used in a group. You can create an initial version of the definition by providing a list of resources now, or use ''CreateResourceDefinitionVersion'' later.
+Creates a resource definition which contains a list of resources to be
+used in a group. You can create an initial version of the definition by
+providing a list of resources now, or use
+''CreateResourceDefinitionVersion'' later.
 }
 \section{Request syntax}{
 \preformatted{svc$create_resource_definition(

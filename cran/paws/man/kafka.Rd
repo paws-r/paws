@@ -10,7 +10,7 @@ kafka(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-Managed Streaming for Kafka
+The operations for managing an Amazon MSK cluster.
 }
 \section{Service syntax}{
 \preformatted{svc <- kafka(

@@ -11,6 +11,10 @@ cognitoidentityprovider_admin_enable_user(UserPoolId, Username)
 
 \item{Username}{[required] The user name of the user you wish to enable.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Enables the specified user as an administrator. Works on any user.
 

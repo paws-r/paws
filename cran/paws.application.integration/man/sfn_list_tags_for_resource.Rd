@@ -10,6 +10,17 @@ sfn_list_tags_for_resource(resourceArn)
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) for the Step Functions state machine or
 activity.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
+)
+}
+}
 \description{
 List tags for a given resource.
 

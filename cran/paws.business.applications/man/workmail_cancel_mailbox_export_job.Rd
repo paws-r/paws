@@ -13,6 +13,10 @@ workmail_cancel_mailbox_export_job(ClientToken, JobId, OrganizationId)
 
 \item{OrganizationId}{[required] The organization ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Cancels a mailbox export job.
 

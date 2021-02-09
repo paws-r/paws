@@ -22,6 +22,21 @@ project owner allows the user remote access to project resources, this
 public key will be used along with the user's private key for SSH
 access.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  userArn = "string",
+  displayName = "string",
+  emailAddress = "string",
+  sshPublicKey = "string",
+  createdTimestamp = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastModifiedTimestamp = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Updates a user's profile in AWS CodeStar. The user profile is not
 project-specific. Information in the user profile is displayed wherever

@@ -32,6 +32,12 @@ template.}
 
 \item{ConformancePackInputParameters}{A list of \code{ConformancePackInputParameter} objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConformancePackArn = "string"
+)
+}
+}
 \description{
 Creates or updates a conformance pack. A conformance pack is a
 collection of AWS Config rules that can be easily deployed in an account

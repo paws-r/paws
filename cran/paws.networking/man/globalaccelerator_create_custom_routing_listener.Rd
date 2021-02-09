@@ -21,6 +21,20 @@ Separately, you set port ranges for endpoints. For more information, see
 \item{IdempotencyToken}{[required] A unique, case-sensitive identifier that you provide to ensure the
 idempotency—that is, the uniqueness—of the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Listener = list(
+    ListenerArn = "string",
+    PortRanges = list(
+      list(
+        FromPort = 123,
+        ToPort = 123
+      )
+    )
+  )
+)
+}
+}
 \description{
 Create a listener to process inbound connections from clients to a
 custom routing accelerator. Connections arrive to assigned static IP

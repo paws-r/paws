@@ -11,6 +11,10 @@ directoryservice_add_tags_to_resource(ResourceId, Tags)
 
 \item{Tags}{[required] The tags to be assigned to the directory.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds or overwrites one or more tags for the specified directory. Each
 directory can have a maximum of 50 tags. Each tag consists of a key and

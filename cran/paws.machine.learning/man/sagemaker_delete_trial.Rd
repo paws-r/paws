@@ -9,6 +9,12 @@ sagemaker_delete_trial(TrialName)
 \arguments{
 \item{TrialName}{[required] The name of the trial to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrialArn = "string"
+)
+}
+}
 \description{
 Deletes the specified trial. All trial components that make up the trial
 must be deleted first. Use the

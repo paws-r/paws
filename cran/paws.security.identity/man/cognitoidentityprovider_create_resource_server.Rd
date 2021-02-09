@@ -19,6 +19,22 @@ be an HTTPS endpoint where the resource server is located. For example,
 \item{Scopes}{A list of scopes. Each scope is map, where the keys are \code{name} and
 \code{description}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceServer = list(
+    UserPoolId = "string",
+    Identifier = "string",
+    Name = "string",
+    Scopes = list(
+      list(
+        ScopeName = "string",
+        ScopeDescription = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a new OAuth2.0 resource server and defines custom scopes in it.
 }

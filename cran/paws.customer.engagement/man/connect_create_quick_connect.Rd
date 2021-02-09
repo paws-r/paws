@@ -19,6 +19,13 @@ connect_create_quick_connect(InstanceId, Name, Description,
 
 \item{Tags}{One or more tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  QuickConnectARN = "string",
+  QuickConnectId = "string"
+)
+}
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

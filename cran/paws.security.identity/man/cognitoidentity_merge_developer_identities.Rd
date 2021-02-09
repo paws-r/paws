@@ -20,9 +20,15 @@ cognitoidentity_merge_developer_identities(SourceUserIdentifier,
 This name acts as a placeholder that allows your backend and the Cognito
 service to communicate about the developer provider. For the
 \code{DeveloperProviderName}, you can use letters as well as period (.),
-underscore (\\_), and dash (-).}
+underscore (_), and dash (-).}
 
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityId = "string"
+)
+}
 }
 \description{
 Merges two users having different \code{IdentityId}s, existing in the same

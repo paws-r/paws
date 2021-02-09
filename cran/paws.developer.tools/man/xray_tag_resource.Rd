@@ -20,11 +20,15 @@ The following restrictions apply to tags:
 \item Maximum tag key length: 128 Unicode characters
 \item Maximum tag value length: 256 Unicode characters
 \item Valid values for key and value: a-z, A-Z, 0-9, space, and the
-following characters: \\_ . : / = + - and @
+following characters: _ . : / = + - and @
 \item Tag keys and values are case sensitive.
 \item Don't use \verb{aws:} as a prefix for keys; it's reserved for AWS use.
 You cannot edit or delete system tags.
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list()
+}
 }
 \description{
 Applies tags to an existing AWS X-Ray group or sampling rule.

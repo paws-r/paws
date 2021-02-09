@@ -13,6 +13,18 @@ iot_list_tags_for_resource(resourceArn, nextToken)
 previous response; otherwise \strong{null} to receive the first set of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the tags (metadata) you have assigned to the resource.
 }

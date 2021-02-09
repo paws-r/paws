@@ -25,6 +25,24 @@ and 100. If this parameter is not used, then
 \code{\link[=robomaker_list_world_templates]{list_world_templates}} returns up to
 100 results and a \code{nextToken} value if applicable.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  templateSummaries = list(
+    list(
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      name = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists world templates.
 }

@@ -61,6 +61,26 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  Events = list(
+    list(
+      SourceIdentifier = "string",
+      SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot",
+      Message = "string",
+      EventCategories = list(
+        "string"
+      ),
+      Date = as.POSIXct(
+        "2015-01-01"
+      ),
+      SourceArn = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns events related to DB instances, DB security groups, DB
 snapshots, and DB parameter groups for the past 14 days. Events specific

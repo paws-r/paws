@@ -17,6 +17,17 @@ fsx_disassociate_file_system_aliases(ClientRequestToken, FileSystemId,
 \item{Aliases}{[required] An array of one or more DNS alias names to disassociate, or remove, from
 the file system.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Aliases = list(
+    list(
+      Name = "string",
+      Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+    )
+  )
+)
+}
+}
 \description{
 Use this action to disassociate, or remove, one or more Domain Name
 Service (DNS) aliases from an Amazon FSx for Windows File Server file

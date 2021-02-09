@@ -35,6 +35,27 @@ of versions.}
 
 \item{SortOrder}{The sort order. The default value is \code{DESCENDING}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ImageVersions = list(
+    list(
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      FailureReason = "string",
+      ImageArn = "string",
+      ImageVersionArn = "string",
+      ImageVersionStatus = "CREATING"|"CREATED"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED",
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Version = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the versions of a specified image and their properties. The list
 can be filtered by creation time or modified time.

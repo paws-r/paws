@@ -10,6 +10,14 @@ chime_get_voice_connector_logging_configuration(VoiceConnectorId)
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LoggingConfiguration = list(
+    EnableSIPLogs = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Retrieves the logging configuration details for the specified Amazon
 Chime Voice Connector. Shows whether SIP message logs are enabled for

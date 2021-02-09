@@ -16,6 +16,16 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CertificateRevocationList = "string",
+  Status = list(
+    Code = "pending"|"active",
+    Message = "string"
+  )
+)
+}
+}
 \description{
 Downloads the client certificate revocation list for the specified
 Client VPN endpoint.

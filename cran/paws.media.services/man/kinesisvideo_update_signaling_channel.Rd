@@ -16,6 +16,10 @@ update.}
 \item{SingleMasterConfiguration}{The structure containing the configuration for the \code{SINGLE_MASTER} type
 of the signaling channel that you want to update.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the existing signaling channel. This is an asynchronous
 operation and takes time to complete.

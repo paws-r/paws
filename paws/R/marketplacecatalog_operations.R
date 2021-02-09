@@ -20,6 +20,15 @@ NULL
 #' [`start_change_set`][marketplacecatalog_start_change_set] request that
 #' you want to cancel.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeSetId = "string",
+#'   ChangeSetArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_change_set(
@@ -62,6 +71,37 @@ marketplacecatalog_cancel_change_set <- function(Catalog, ChangeSetId) {
 #' [`start_change_set`][marketplacecatalog_start_change_set] request that
 #' you want to describe the details for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeSetId = "string",
+#'   ChangeSetArn = "string",
+#'   ChangeSetName = "string",
+#'   StartTime = "string",
+#'   EndTime = "string",
+#'   Status = "PREPARING"|"APPLYING"|"SUCCEEDED"|"CANCELLED"|"FAILED",
+#'   FailureCode = "CLIENT_ERROR"|"SERVER_FAULT",
+#'   FailureDescription = "string",
+#'   ChangeSet = list(
+#'     list(
+#'       ChangeType = "string",
+#'       Entity = list(
+#'         Type = "string",
+#'         Identifier = "string"
+#'       ),
+#'       Details = "string",
+#'       ErrorDetailList = list(
+#'         list(
+#'           ErrorCode = "string",
+#'           ErrorMessage = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_change_set(
@@ -101,6 +141,18 @@ marketplacecatalog_describe_change_set <- function(Catalog, ChangeSetId) {
 #' @param Catalog &#91;required&#93; Required. The catalog related to the request. Fixed value:
 #' `AWSMarketplace`
 #' @param EntityId &#91;required&#93; Required. The unique ID of the entity to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EntityType = "string",
+#'   EntityIdentifier = "string",
+#'   EntityArn = "string",
+#'   LastModifiedDate = "string",
+#'   Details = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -154,6 +206,28 @@ marketplacecatalog_describe_entity <- function(Catalog, EntityId) {
 #' default, this value is 20.
 #' @param NextToken The token value retrieved from a previous call to access the next page
 #' of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeSetSummaryList = list(
+#'     list(
+#'       ChangeSetId = "string",
+#'       ChangeSetArn = "string",
+#'       ChangeSetName = "string",
+#'       StartTime = "string",
+#'       EndTime = "string",
+#'       Status = "PREPARING"|"APPLYING"|"SUCCEEDED"|"CANCELLED"|"FAILED",
+#'       EntityIdList = list(
+#'         "string"
+#'       ),
+#'       FailureCode = "CLIENT_ERROR"|"SERVER_FAULT"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -214,6 +288,24 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' results.
 #' @param MaxResults Specifies the upper limit of the elements on a single page. If a value
 #' isn't provided, the default value is 20.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EntitySummaryList = list(
+#'     list(
+#'       Name = "string",
+#'       EntityType = "string",
+#'       EntityId = "string",
+#'       EntityArn = "string",
+#'       LastModifiedDate = "string",
+#'       Visibility = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -282,6 +374,15 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
 #' @param ChangeSetName Optional case sensitive string of up to 100 ASCII characters. The change
 #' set name can be used to filter the list of change sets.
 #' @param ClientRequestToken A unique token to identify the request to ensure idempotency.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeSetId = "string",
+#'   ChangeSetArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -12,6 +12,10 @@ ssm_stop_automation_execution(AutomationExecutionId, Type)
 \item{Type}{The stop request type. Valid types include the following: Cancel and
 Complete. The default type is Cancel.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Stop an Automation that is currently running.
 }

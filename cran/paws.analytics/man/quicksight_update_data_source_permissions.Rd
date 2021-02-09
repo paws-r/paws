@@ -19,6 +19,15 @@ source.}
 \item{RevokePermissions}{A list of resource permissions that you want to revoke on the data
 source.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DataSourceArn = "string",
+  DataSourceId = "string",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Updates the permissions to a data source.
 }

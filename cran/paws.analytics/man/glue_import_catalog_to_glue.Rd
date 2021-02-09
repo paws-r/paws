@@ -10,6 +10,10 @@ glue_import_catalog_to_glue(CatalogId)
 \item{CatalogId}{The ID of the catalog to import. Currently, this should be the AWS
 account ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Imports an existing Amazon Athena Data Catalog to AWS Glue
 }

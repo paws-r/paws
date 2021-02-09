@@ -14,6 +14,31 @@ licensemanager_list_failures_for_license_configuration_operations(
 
 \item{NextToken}{Token for the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LicenseOperationFailureList = list(
+    list(
+      ResourceArn = "string",
+      ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+      ErrorMessage = "string",
+      FailureTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      OperationName = "string",
+      ResourceOwnerId = "string",
+      OperationRequestedBy = "string",
+      MetadataList = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the license configuration operations that failed.
 }

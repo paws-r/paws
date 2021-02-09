@@ -58,6 +58,72 @@ If you don't specify a list of contexts, Amazon Lex will use the current
 list of contexts for the session. If you specify an empty list, all
 contexts for the session are cleared.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  intentName = "string",
+  nluIntentConfidence = list(
+    score = 123.0
+  ),
+  alternativeIntents = list(
+    list(
+      intentName = "string",
+      nluIntentConfidence = list(
+        score = 123.0
+      ),
+      slots = list(
+        "string"
+      )
+    )
+  ),
+  slots = list(
+    "string"
+  ),
+  sessionAttributes = list(
+    "string"
+  ),
+  message = "string",
+  sentimentResponse = list(
+    sentimentLabel = "string",
+    sentimentScore = "string"
+  ),
+  messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite",
+  dialogState = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Fulfilled"|"ReadyForFulfillment"|"Failed",
+  slotToElicit = "string",
+  responseCard = list(
+    version = "string",
+    contentType = "application/vnd.amazonaws.card.generic",
+    genericAttachments = list(
+      list(
+        title = "string",
+        subTitle = "string",
+        attachmentLinkUrl = "string",
+        imageUrl = "string",
+        buttons = list(
+          list(
+            text = "string",
+            value = "string"
+          )
+        )
+      )
+    )
+  ),
+  sessionId = "string",
+  botVersion = "string",
+  activeContexts = list(
+    list(
+      name = "string",
+      timeToLive = list(
+        timeToLiveInSeconds = 123,
+        turnsToLive = 123
+      ),
+      parameters = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Sends user input to Amazon Lex. Client applications can use this API to
 send requests to Amazon Lex at runtime. Amazon Lex then interprets the

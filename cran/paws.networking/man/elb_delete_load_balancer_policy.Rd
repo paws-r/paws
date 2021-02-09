@@ -11,6 +11,10 @@ elb_delete_load_balancer_policy(LoadBalancerName, PolicyName)
 
 \item{PolicyName}{[required] The name of the policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified policy from the specified load balancer. This
 policy must not be enabled for any listeners.

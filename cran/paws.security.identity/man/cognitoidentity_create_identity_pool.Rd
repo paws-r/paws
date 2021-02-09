@@ -41,6 +41,35 @@ identity pool.}
 to identity pools to categorize and manage them in different ways, such
 as by purpose, owner, environment, or other criteria.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityPoolId = "string",
+  IdentityPoolName = "string",
+  AllowUnauthenticatedIdentities = TRUE|FALSE,
+  AllowClassicFlow = TRUE|FALSE,
+  SupportedLoginProviders = list(
+    "string"
+  ),
+  DeveloperProviderName = "string",
+  OpenIdConnectProviderARNs = list(
+    "string"
+  ),
+  CognitoIdentityProviders = list(
+    list(
+      ProviderName = "string",
+      ClientId = "string",
+      ServerSideTokenCheck = TRUE|FALSE
+    )
+  ),
+  SamlProviderARNs = list(
+    "string"
+  ),
+  IdentityPoolTags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Creates a new identity pool. The identity pool is a store of user
 identity information that is specific to your AWS account. The keys for

@@ -11,6 +11,10 @@ codepipeline_tag_resource(resourceArn, tags)
 
 \item{tags}{[required] The tags you want to modify or add to the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds to or modifies the tags of the given resource. Tags are metadata
 that can be used to manage a resource.

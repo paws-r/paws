@@ -79,6 +79,12 @@ user guide. The ARN must have the following form:
 
 \item{Tags}{One or more resource tags to associate with the certificate.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CertificateArn = "string"
+)
+}
+}
 \description{
 Requests an ACM certificate for use with other AWS services. To request
 an ACM certificate, you must specify a fully qualified domain name

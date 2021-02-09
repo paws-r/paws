@@ -35,6 +35,13 @@ Valid Values: A valid IP address.}
 local disk used to create the volume. This value is only required when
 you are attaching a stored volume.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VolumeARN = "string",
+  TargetARN = "string"
+)
+}
+}
 \description{
 Connects a volume to an iSCSI connection and then attaches the volume to
 the specified gateway. Detaching and attaching a volume enables you to

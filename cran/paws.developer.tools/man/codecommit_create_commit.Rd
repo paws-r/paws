@@ -36,6 +36,34 @@ commits.}
 
 \item{setFileModes}{The file modes to update for files in this commit.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  commitId = "string",
+  treeId = "string",
+  filesAdded = list(
+    list(
+      absolutePath = "string",
+      blobId = "string",
+      fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+    )
+  ),
+  filesUpdated = list(
+    list(
+      absolutePath = "string",
+      blobId = "string",
+      fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+    )
+  ),
+  filesDeleted = list(
+    list(
+      absolutePath = "string",
+      blobId = "string",
+      fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+    )
+  )
+)
+}
+}
 \description{
 Creates a commit for a repository on the tip of a specified branch.
 }

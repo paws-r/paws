@@ -22,6 +22,20 @@ NULL
 #' @param DocumentIdList &#91;required&#93; One or more identifiers for documents to delete from the index.
 #' @param DataSourceSyncJobMetricTarget 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedDocuments = list(
+#'     list(
+#'       Id = "string",
+#'       ErrorCode = "InternalError"|"InvalidRequest",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_delete_document(
@@ -93,6 +107,20 @@ kendra_batch_delete_document <- function(IndexId, DocumentIdList, DataSourceSync
 #' 
 #' For more information about file size and transaction per second quotas,
 #' see [Quotas](https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedDocuments = list(
+#'     list(
+#'       Id = "string",
+#'       ErrorCode = "InternalError"|"InvalidRequest",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -212,6 +240,14 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #' source. Multiple calls to the
 #' [`create_data_source`][kendra_create_data_source] operation with the
 #' same client token will create only one data source.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -613,6 +649,14 @@ kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL,
 #' Multiple calls to the `CreateFaqRequest` operation with the same client
 #' token will create only one FAQ.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_faq(
@@ -697,17 +741,25 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 #' @param UserTokenConfigurations The user token configuration.
 #' @param UserContextPolicy The user context policy.
 #' 
-#' ### ATTRIBUTE\\_FILTER
+#' ### ATTRIBUTE_FILTER
 #' 
 #' All indexed content is searchable and displayable for all users. If
 #' there is an access control list, it is ignored. You can filter on user
 #' and group attributes.
 #' 
-#' ### USER\\_TOKEN
+#' ### USER_TOKEN
 #' 
 #' Enables SSO and token-based user access control. All documents with no
 #' access control and all documents accessible to the user will be
 #' searchable and displayable.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -790,6 +842,14 @@ kendra_create_index <- function(Name, Edition = NULL, RoleArn, ServerSideEncrypt
 #' Multiple calls to the [`create_thesaurus`][kendra_create_thesaurus]
 #' operation with the same client token will create only one index.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_thesaurus(
@@ -846,6 +906,8 @@ kendra_create_thesaurus <- function(IndexId, Name, Description = NULL, RoleArn, 
 #' @param Id &#91;required&#93; The unique identifier of the data source to delete.
 #' @param IndexId &#91;required&#93; The unique identifier of the index associated with the data source.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_data_source(
@@ -884,6 +946,8 @@ kendra_delete_data_source <- function(Id, IndexId) {
 #'
 #' @param Id &#91;required&#93; The identifier of the FAQ to remove.
 #' @param IndexId &#91;required&#93; The index to remove the FAQ from.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -927,6 +991,8 @@ kendra_delete_faq <- function(Id, IndexId) {
 #'
 #' @param Id &#91;required&#93; The identifier of the index to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_index(
@@ -964,6 +1030,8 @@ kendra_delete_index <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The identifier of the thesaurus to delete.
 #' @param IndexId &#91;required&#93; The identifier of the index associated with the thesaurus to delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1004,6 +1072,355 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
 #' @param Id &#91;required&#93; The unique identifier of the data source to describe.
 #' @param IndexId &#91;required&#93; The identifier of the index that contains the data source.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   IndexId = "string",
+#'   Name = "string",
+#'   Type = "S3"|"SHAREPOINT"|"DATABASE"|"SALESFORCE"|"ONEDRIVE"|"SERVICENOW"|"CUSTOM"|"CONFLUENCE"|"GOOGLEDRIVE",
+#'   Configuration = list(
+#'     S3Configuration = list(
+#'       BucketName = "string",
+#'       InclusionPrefixes = list(
+#'         "string"
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       DocumentsMetadataConfiguration = list(
+#'         S3Prefix = "string"
+#'       ),
+#'       AccessControlListConfiguration = list(
+#'         KeyPath = "string"
+#'       )
+#'     ),
+#'     SharePointConfiguration = list(
+#'       SharePointVersion = "SHAREPOINT_ONLINE",
+#'       Urls = list(
+#'         "string"
+#'       ),
+#'       SecretArn = "string",
+#'       CrawlAttachments = TRUE|FALSE,
+#'       UseChangeLog = TRUE|FALSE,
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       FieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       DocumentTitleFieldName = "string",
+#'       DisableLocalGroups = TRUE|FALSE
+#'     ),
+#'     DatabaseConfiguration = list(
+#'       DatabaseEngineType = "RDS_AURORA_MYSQL"|"RDS_AURORA_POSTGRESQL"|"RDS_MYSQL"|"RDS_POSTGRESQL",
+#'       ConnectionConfiguration = list(
+#'         DatabaseHost = "string",
+#'         DatabasePort = 123,
+#'         DatabaseName = "string",
+#'         TableName = "string",
+#'         SecretArn = "string"
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ColumnConfiguration = list(
+#'         DocumentIdColumnName = "string",
+#'         DocumentDataColumnName = "string",
+#'         DocumentTitleColumnName = "string",
+#'         FieldMappings = list(
+#'           list(
+#'             DataSourceFieldName = "string",
+#'             DateFieldFormat = "string",
+#'             IndexFieldName = "string"
+#'           )
+#'         ),
+#'         ChangeDetectingColumns = list(
+#'           "string"
+#'         )
+#'       ),
+#'       AclConfiguration = list(
+#'         AllowedGroupsColumnName = "string"
+#'       ),
+#'       SqlConfiguration = list(
+#'         QueryIdentifiersEnclosingOption = "DOUBLE_QUOTES"|"NONE"
+#'       )
+#'     ),
+#'     SalesforceConfiguration = list(
+#'       ServerUrl = "string",
+#'       SecretArn = "string",
+#'       StandardObjectConfigurations = list(
+#'         list(
+#'           Name = "ACCOUNT"|"CAMPAIGN"|"CASE"|"CONTACT"|"CONTRACT"|"DOCUMENT"|"GROUP"|"IDEA"|"LEAD"|"OPPORTUNITY"|"PARTNER"|"PRICEBOOK"|"PRODUCT"|"PROFILE"|"SOLUTION"|"TASK"|"USER",
+#'           DocumentDataFieldName = "string",
+#'           DocumentTitleFieldName = "string",
+#'           FieldMappings = list(
+#'             list(
+#'               DataSourceFieldName = "string",
+#'               DateFieldFormat = "string",
+#'               IndexFieldName = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       KnowledgeArticleConfiguration = list(
+#'         IncludedStates = list(
+#'           "DRAFT"|"PUBLISHED"|"ARCHIVED"
+#'         ),
+#'         StandardKnowledgeArticleTypeConfiguration = list(
+#'           DocumentDataFieldName = "string",
+#'           DocumentTitleFieldName = "string",
+#'           FieldMappings = list(
+#'             list(
+#'               DataSourceFieldName = "string",
+#'               DateFieldFormat = "string",
+#'               IndexFieldName = "string"
+#'             )
+#'           )
+#'         ),
+#'         CustomKnowledgeArticleTypeConfigurations = list(
+#'           list(
+#'             Name = "string",
+#'             DocumentDataFieldName = "string",
+#'             DocumentTitleFieldName = "string",
+#'             FieldMappings = list(
+#'               list(
+#'                 DataSourceFieldName = "string",
+#'                 DateFieldFormat = "string",
+#'                 IndexFieldName = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ChatterFeedConfiguration = list(
+#'         DocumentDataFieldName = "string",
+#'         DocumentTitleFieldName = "string",
+#'         FieldMappings = list(
+#'           list(
+#'             DataSourceFieldName = "string",
+#'             DateFieldFormat = "string",
+#'             IndexFieldName = "string"
+#'           )
+#'         ),
+#'         IncludeFilterTypes = list(
+#'           "ACTIVE_USER"|"STANDARD_USER"
+#'         )
+#'       ),
+#'       CrawlAttachments = TRUE|FALSE,
+#'       StandardObjectAttachmentConfiguration = list(
+#'         DocumentTitleFieldName = "string",
+#'         FieldMappings = list(
+#'           list(
+#'             DataSourceFieldName = "string",
+#'             DateFieldFormat = "string",
+#'             IndexFieldName = "string"
+#'           )
+#'         )
+#'       ),
+#'       IncludeAttachmentFilePatterns = list(
+#'         "string"
+#'       ),
+#'       ExcludeAttachmentFilePatterns = list(
+#'         "string"
+#'       )
+#'     ),
+#'     OneDriveConfiguration = list(
+#'       TenantDomain = "string",
+#'       SecretArn = "string",
+#'       OneDriveUsers = list(
+#'         OneDriveUserList = list(
+#'           "string"
+#'         ),
+#'         OneDriveUserS3Path = list(
+#'           Bucket = "string",
+#'           Key = "string"
+#'         )
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       FieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       DisableLocalGroups = TRUE|FALSE
+#'     ),
+#'     ServiceNowConfiguration = list(
+#'       HostUrl = "string",
+#'       SecretArn = "string",
+#'       ServiceNowBuildVersion = "LONDON"|"OTHERS",
+#'       KnowledgeArticleConfiguration = list(
+#'         CrawlAttachments = TRUE|FALSE,
+#'         IncludeAttachmentFilePatterns = list(
+#'           "string"
+#'         ),
+#'         ExcludeAttachmentFilePatterns = list(
+#'           "string"
+#'         ),
+#'         DocumentDataFieldName = "string",
+#'         DocumentTitleFieldName = "string",
+#'         FieldMappings = list(
+#'           list(
+#'             DataSourceFieldName = "string",
+#'             DateFieldFormat = "string",
+#'             IndexFieldName = "string"
+#'           )
+#'         )
+#'       ),
+#'       ServiceCatalogConfiguration = list(
+#'         CrawlAttachments = TRUE|FALSE,
+#'         IncludeAttachmentFilePatterns = list(
+#'           "string"
+#'         ),
+#'         ExcludeAttachmentFilePatterns = list(
+#'           "string"
+#'         ),
+#'         DocumentDataFieldName = "string",
+#'         DocumentTitleFieldName = "string",
+#'         FieldMappings = list(
+#'           list(
+#'             DataSourceFieldName = "string",
+#'             DateFieldFormat = "string",
+#'             IndexFieldName = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ConfluenceConfiguration = list(
+#'       ServerUrl = "string",
+#'       SecretArn = "string",
+#'       Version = "CLOUD"|"SERVER",
+#'       SpaceConfiguration = list(
+#'         CrawlPersonalSpaces = TRUE|FALSE,
+#'         CrawlArchivedSpaces = TRUE|FALSE,
+#'         IncludeSpaces = list(
+#'           "string"
+#'         ),
+#'         ExcludeSpaces = list(
+#'           "string"
+#'         ),
+#'         SpaceFieldMappings = list(
+#'           list(
+#'             DataSourceFieldName = "DISPLAY_URL"|"ITEM_TYPE"|"SPACE_KEY"|"URL",
+#'             DateFieldFormat = "string",
+#'             IndexFieldName = "string"
+#'           )
+#'         )
+#'       ),
+#'       PageConfiguration = list(
+#'         PageFieldMappings = list(
+#'           list(
+#'             DataSourceFieldName = "AUTHOR"|"CONTENT_STATUS"|"CREATED_DATE"|"DISPLAY_URL"|"ITEM_TYPE"|"LABELS"|"MODIFIED_DATE"|"PARENT_ID"|"SPACE_KEY"|"SPACE_NAME"|"URL"|"VERSION",
+#'             DateFieldFormat = "string",
+#'             IndexFieldName = "string"
+#'           )
+#'         )
+#'       ),
+#'       BlogConfiguration = list(
+#'         BlogFieldMappings = list(
+#'           list(
+#'             DataSourceFieldName = "AUTHOR"|"DISPLAY_URL"|"ITEM_TYPE"|"LABELS"|"PUBLISH_DATE"|"SPACE_KEY"|"SPACE_NAME"|"URL"|"VERSION",
+#'             DateFieldFormat = "string",
+#'             IndexFieldName = "string"
+#'           )
+#'         )
+#'       ),
+#'       AttachmentConfiguration = list(
+#'         CrawlAttachments = TRUE|FALSE,
+#'         AttachmentFieldMappings = list(
+#'           list(
+#'             DataSourceFieldName = "AUTHOR"|"CONTENT_TYPE"|"CREATED_DATE"|"DISPLAY_URL"|"FILE_SIZE"|"ITEM_TYPE"|"PARENT_ID"|"SPACE_KEY"|"SPACE_NAME"|"URL"|"VERSION",
+#'             DateFieldFormat = "string",
+#'             IndexFieldName = "string"
+#'           )
+#'         )
+#'       ),
+#'       VpcConfiguration = list(
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       )
+#'     ),
+#'     GoogleDriveConfiguration = list(
+#'       SecretArn = "string",
+#'       InclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       ExclusionPatterns = list(
+#'         "string"
+#'       ),
+#'       FieldMappings = list(
+#'         list(
+#'           DataSourceFieldName = "string",
+#'           DateFieldFormat = "string",
+#'           IndexFieldName = "string"
+#'         )
+#'       ),
+#'       ExcludeMimeTypes = list(
+#'         "string"
+#'       ),
+#'       ExcludeUserAccounts = list(
+#'         "string"
+#'       ),
+#'       ExcludeSharedDrives = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   Status = "CREATING"|"DELETING"|"FAILED"|"UPDATING"|"ACTIVE",
+#'   Schedule = "string",
+#'   RoleArn = "string",
+#'   ErrorMessage = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_data_source(
@@ -1043,6 +1460,31 @@ kendra_describe_data_source <- function(Id, IndexId) {
 #' @param Id &#91;required&#93; The unique identifier of the FAQ.
 #' @param IndexId &#91;required&#93; The identifier of the index that contains the FAQ.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   IndexId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   S3Path = list(
+#'     Bucket = "string",
+#'     Key = "string"
+#'   ),
+#'   Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
+#'   RoleArn = "string",
+#'   ErrorMessage = "string",
+#'   FileFormat = "CSV"|"CSV_WITH_HEADER"|"JSON"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_faq(
@@ -1081,6 +1523,81 @@ kendra_describe_faq <- function(Id, IndexId) {
 #'
 #' @param Id &#91;required&#93; The name of the index to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Id = "string",
+#'   Edition = "DEVELOPER_EDITION"|"ENTERPRISE_EDITION",
+#'   RoleArn = "string",
+#'   ServerSideEncryptionConfiguration = list(
+#'     KmsKeyId = "string"
+#'   ),
+#'   Status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED"|"UPDATING"|"SYSTEM_UPDATING",
+#'   Description = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DocumentMetadataConfigurations = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "STRING_VALUE"|"STRING_LIST_VALUE"|"LONG_VALUE"|"DATE_VALUE",
+#'       Relevance = list(
+#'         Freshness = TRUE|FALSE,
+#'         Importance = 123,
+#'         Duration = "string",
+#'         RankOrder = "ASCENDING"|"DESCENDING",
+#'         ValueImportanceMap = list(
+#'           123
+#'         )
+#'       ),
+#'       Search = list(
+#'         Facetable = TRUE|FALSE,
+#'         Searchable = TRUE|FALSE,
+#'         Displayable = TRUE|FALSE,
+#'         Sortable = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   IndexStatistics = list(
+#'     FaqStatistics = list(
+#'       IndexedQuestionAnswersCount = 123
+#'     ),
+#'     TextDocumentStatistics = list(
+#'       IndexedTextDocumentsCount = 123,
+#'       IndexedTextBytes = 123
+#'     )
+#'   ),
+#'   ErrorMessage = "string",
+#'   CapacityUnits = list(
+#'     StorageCapacityUnits = 123,
+#'     QueryCapacityUnits = 123
+#'   ),
+#'   UserTokenConfigurations = list(
+#'     list(
+#'       JwtTokenTypeConfiguration = list(
+#'         KeyLocation = "URL"|"SECRET_MANAGER",
+#'         URL = "string",
+#'         SecretManagerArn = "string",
+#'         UserNameAttributeField = "string",
+#'         GroupAttributeField = "string",
+#'         Issuer = "string",
+#'         ClaimRegex = "string"
+#'       ),
+#'       JsonTokenTypeConfiguration = list(
+#'         UserNameAttributeField = "string",
+#'         GroupAttributeField = "string"
+#'       )
+#'     )
+#'   ),
+#'   UserContextPolicy = "ATTRIBUTE_FILTER"|"USER_TOKEN"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_index(
@@ -1118,6 +1635,33 @@ kendra_describe_index <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The identifier of the thesaurus to describe.
 #' @param IndexId &#91;required&#93; The identifier of the index associated with the thesaurus to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   IndexId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   Status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"ACTIVE_BUT_UPDATE_FAILED"|"FAILED",
+#'   ErrorMessage = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   RoleArn = "string",
+#'   SourceS3Path = list(
+#'     Bucket = "string",
+#'     Key = "string"
+#'   ),
+#'   FileSizeBytes = 123,
+#'   TermCount = 123,
+#'   SynonymRuleCount = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1167,6 +1711,36 @@ kendra_describe_thesaurus <- function(Id, IndexId) {
 #' limited to jobs between the specified dates.
 #' @param StatusFilter When specified, only returns synchronization jobs with the `Status`
 #' field equal to the specified status.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   History = list(
+#'     list(
+#'       ExecutionId = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "FAILED"|"SUCCEEDED"|"SYNCING"|"INCOMPLETE"|"STOPPING"|"ABORTED"|"SYNCING_INDEXING",
+#'       ErrorMessage = "string",
+#'       ErrorCode = "InternalError"|"InvalidRequest",
+#'       DataSourceErrorCode = "string",
+#'       Metrics = list(
+#'         DocumentsAdded = "string",
+#'         DocumentsModified = "string",
+#'         DocumentsDeleted = "string",
+#'         DocumentsFailed = "string",
+#'         DocumentsScanned = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1222,6 +1796,28 @@ kendra_list_data_source_sync_jobs <- function(Id, IndexId, NextToken = NULL, Max
 #' (`DataSourceSummaryItems`).
 #' @param MaxResults The maximum number of data sources to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SummaryItems = list(
+#'     list(
+#'       Name = "string",
+#'       Id = "string",
+#'       Type = "S3"|"SHAREPOINT"|"DATABASE"|"SALESFORCE"|"ONEDRIVE"|"SERVICENOW"|"CUSTOM"|"CONFLUENCE"|"GOOGLEDRIVE",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "CREATING"|"DELETING"|"FAILED"|"UPDATING"|"ACTIVE"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_data_sources(
@@ -1264,6 +1860,28 @@ kendra_list_data_sources <- function(IndexId, NextToken = NULL, MaxResults = NUL
 #' was truncated, include the `NextToken` to fetch the next set of FAQs.
 #' @param MaxResults The maximum number of FAQs to return in the response. If there are fewer
 #' results in the list, this response contains only the actual results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   FaqSummaryItems = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FileFormat = "CSV"|"CSV_WITH_HEADER"|"JSON"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1308,6 +1926,28 @@ kendra_list_faqs <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #' (`DataSourceSummaryItems`).
 #' @param MaxResults The maximum number of data sources to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IndexConfigurationSummaryItems = list(
+#'     list(
+#'       Name = "string",
+#'       Id = "string",
+#'       Edition = "DEVELOPER_EDITION"|"ENTERPRISE_EDITION",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED"|"UPDATING"|"SYSTEM_UPDATING"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_indices(
@@ -1347,6 +1987,19 @@ kendra_list_indices <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, or data source to get
 #' a list of tags for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1389,6 +2042,27 @@ kendra_list_tags_for_resource <- function(ResourceARN) {
 #' can use this pagination token to retrieve the next set of thesauri
 #' (`ThesaurusSummaryItems`).
 #' @param MaxResults The maximum number of thesauri to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   ThesaurusSummaryItems = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Status = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING"|"ACTIVE_BUT_UPDATE_FAILED"|"FAILED",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1484,6 +2158,104 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #' @param VisitorId Provides an identifier for a specific user. The `VisitorId` should be a
 #' unique identifier, such as a GUID. Don't use personally identifiable
 #' information, such as the user's email address, as the `VisitorId`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QueryId = "string",
+#'   ResultItems = list(
+#'     list(
+#'       Id = "string",
+#'       Type = "DOCUMENT"|"QUESTION_ANSWER"|"ANSWER",
+#'       AdditionalAttributes = list(
+#'         list(
+#'           Key = "string",
+#'           ValueType = "TEXT_WITH_HIGHLIGHTS_VALUE",
+#'           Value = list(
+#'             TextWithHighlightsValue = list(
+#'               Text = "string",
+#'               Highlights = list(
+#'                 list(
+#'                   BeginOffset = 123,
+#'                   EndOffset = 123,
+#'                   TopAnswer = TRUE|FALSE,
+#'                   Type = "STANDARD"|"THESAURUS_SYNONYM"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DocumentId = "string",
+#'       DocumentTitle = list(
+#'         Text = "string",
+#'         Highlights = list(
+#'           list(
+#'             BeginOffset = 123,
+#'             EndOffset = 123,
+#'             TopAnswer = TRUE|FALSE,
+#'             Type = "STANDARD"|"THESAURUS_SYNONYM"
+#'           )
+#'         )
+#'       ),
+#'       DocumentExcerpt = list(
+#'         Text = "string",
+#'         Highlights = list(
+#'           list(
+#'             BeginOffset = 123,
+#'             EndOffset = 123,
+#'             TopAnswer = TRUE|FALSE,
+#'             Type = "STANDARD"|"THESAURUS_SYNONYM"
+#'           )
+#'         )
+#'       ),
+#'       DocumentURI = "string",
+#'       DocumentAttributes = list(
+#'         list(
+#'           Key = "string",
+#'           Value = list(
+#'             StringValue = "string",
+#'             StringListValue = list(
+#'               "string"
+#'             ),
+#'             LongValue = 123,
+#'             DateValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ScoreAttributes = list(
+#'         ScoreConfidence = "VERY_HIGH"|"HIGH"|"MEDIUM"|"LOW"
+#'       ),
+#'       FeedbackToken = "string"
+#'     )
+#'   ),
+#'   FacetResults = list(
+#'     list(
+#'       DocumentAttributeKey = "string",
+#'       DocumentAttributeValueType = "STRING_VALUE"|"STRING_LIST_VALUE"|"LONG_VALUE"|"DATE_VALUE",
+#'       DocumentAttributeValueCountPairs = list(
+#'         list(
+#'           DocumentAttributeValue = list(
+#'             StringValue = "string",
+#'             StringListValue = list(
+#'               "string"
+#'             ),
+#'             LongValue = 123,
+#'             DateValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           ),
+#'           Count = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   TotalNumberOfResults = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1645,6 +2417,14 @@ kendra_query <- function(IndexId, QueryText, AttributeFilter = NULL, Facets = NU
 #' @param Id &#91;required&#93; The identifier of the data source to synchronize.
 #' @param IndexId &#91;required&#93; The identifier of the index that contains the data source.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExecutionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_data_source_sync_job(
@@ -1685,6 +2465,8 @@ kendra_start_data_source_sync_job <- function(Id, IndexId) {
 #' @param Id &#91;required&#93; The identifier of the data source for which to stop the synchronization
 #' jobs.
 #' @param IndexId &#91;required&#93; The identifier of the index that contains the data source.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1732,6 +2514,8 @@ kendra_stop_data_source_sync_job <- function(Id, IndexId) {
 #' the user.
 #' @param RelevanceFeedbackItems Provides Amazon Kendra with relevant or not relevant feedback for
 #' whether a particular item was relevant to the search.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1790,6 +2574,12 @@ kendra_submit_feedback <- function(IndexId, QueryId, ClickFeedbackItems = NULL, 
 #' @param Tags &#91;required&#93; A list of tag keys to add to the index, FAQ, or data source. If a tag
 #' already exists, the existing value is replaced with the new value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1835,6 +2625,12 @@ kendra_tag_resource <- function(ResourceARN, Tags) {
 #' remove the tag from.
 #' @param TagKeys &#91;required&#93; A list of tag keys to remove from the index, FAQ, or data source. If a
 #' tag key does not exist on the resource, it is ignored.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1885,6 +2681,8 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 #' @param Schedule The new update schedule for the data source.
 #' @param RoleArn The Amazon Resource Name (ARN) of the new role to use when the data
 #' source is accessing resources on your behalf.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -2270,6 +3068,8 @@ kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = 
 #' @param UserTokenConfigurations The user token configuration.
 #' @param UserContextPolicy The user user token context policy.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_index(
@@ -2358,6 +3158,8 @@ kendra_update_index <- function(Id, Name = NULL, RoleArn = NULL, Description = N
 #' @param Description The updated description of the thesaurus.
 #' @param RoleArn The updated role ARN of the thesaurus.
 #' @param SourceS3Path 
+#'
+
 #'
 #' @section Request syntax:
 #' ```

@@ -9,6 +9,10 @@ elb_delete_load_balancer(LoadBalancerName)
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified load balancer.
 

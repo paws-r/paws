@@ -15,6 +15,12 @@ NULL
 #' container. Format: &lt;folder name&gt;/&lt;folder name&gt;/&lt;file
 #' name&gt;
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_object(
@@ -53,6 +59,20 @@ mediastoredata_delete_object <- function(Path) {
 #' @param Path &#91;required&#93; The path (including the file name) where the object is stored in the
 #' container. Format: &lt;folder name&gt;/&lt;folder name&gt;/&lt;file
 #' name&gt;
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ETag = "string",
+#'   ContentType = "string",
+#'   ContentLength = 123,
+#'   CacheControl = "string",
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -96,7 +116,7 @@ mediastoredata_describe_object <- function(Path) {
 #' name&gt;
 #' 
 #' For example, to upload the file `mlaw.avi` to the folder path
-#' `premium\\canada` in the container `movies`, enter the path
+#' `premium\canada` in the container `movies`, enter the path
 #' `premium/canada/mlaw.avi`.
 #' 
 #' Do not include the container name in this path.
@@ -123,6 +143,23 @@ mediastoredata_describe_object <- function(Path) {
 #' <http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35>. AWS
 #' Elemental MediaStore ignores this header for partially uploaded objects
 #' that have streaming upload availability.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Body = raw,
+#'   CacheControl = "string",
+#'   ContentRange = "string",
+#'   ContentLength = 123,
+#'   ContentType = "string",
+#'   ETag = "string",
+#'   LastModified = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   StatusCode = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -184,6 +221,26 @@ mediastoredata_get_object <- function(Path, Range = NULL) {
 #' 
 #' Tokens expire after 15 minutes.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "OBJECT"|"FOLDER",
+#'       ETag = "string",
+#'       LastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ContentType = "string",
+#'       ContentLength = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_items(
@@ -230,7 +287,7 @@ mediastoredata_list_items <- function(Path = NULL, MaxResults = NULL, NextToken 
 #' name&gt;
 #' 
 #' For example, to upload the file `mlaw.avi` to the folder path
-#' `premium\\canada` in the container `movies`, enter the path
+#' `premium\canada` in the container `movies`, enter the path
 #' `premium/canada/mlaw.avi`.
 #' 
 #' Do not include the container name in this path.
@@ -271,6 +328,16 @@ mediastoredata_list_items <- function(Path = NULL, MaxResults = NULL, NextToken 
 #' 
 #' To use this header, you must also set the HTTP `Transfer-Encoding`
 #' header to `chunked`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContentSHA256 = "string",
+#'   ETag = "string",
+#'   StorageClass = "TEMPORAL"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

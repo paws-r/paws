@@ -13,6 +13,17 @@ pinpointemail_get_dedicated_ip(Ip)
 you specify has to be a dedicated IP address that's assocaited with your
 Amazon Pinpoint account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DedicatedIp = list(
+    Ip = "string",
+    WarmupStatus = "IN_PROGRESS"|"DONE",
+    WarmupPercentage = 123,
+    PoolName = "string"
+  )
+)
+}
+}
 \description{
 Get information about a dedicated IP address, including the name of the
 dedicated IP pool that it's associated with, as well information about

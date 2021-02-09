@@ -11,6 +11,10 @@ route53domains_delete_tags_for_domain(DomainName, TagsToDelete)
 
 \item{TagsToDelete}{[required] A list of tag keys to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 This operation deletes the specified tags for a domain.
 

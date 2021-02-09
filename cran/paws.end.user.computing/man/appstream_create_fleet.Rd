@@ -55,14 +55,14 @@ instance types are available:
 }}
 
 \item{FleetType}{The fleet type.
-\subsection{ALWAYS\\_ON}{
+\subsection{ALWAYS_ON}{
 
 Provides users with instant-on access to their apps. You are charged for
 all running instances in your fleet, even if no users are streaming
 apps.
 }
 
-\subsection{ON\\_DEMAND}{
+\subsection{ON_DEMAND}{
 
 Provide users with access to applications after they connect, which
 takes one to two minutes. You are charged for instance streaming when
@@ -108,7 +108,7 @@ If you do not specify a value, the value is set to an empty string.
 Generally allowed characters are: letters, numbers, and spaces
 representable in UTF-8, and the following special characters:
 
-\\_ . : / = + \\ - @
+_ . : / = + \\ - @
 
 For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}
 in the \emph{Amazon AppStream 2.0 Administration Guide}.}
@@ -143,7 +143,7 @@ assume a role, a fleet instance calls the AWS Security Token Service
 (STS) \code{AssumeRole} API operation and passes the ARN of the role to use.
 The operation creates a new session with temporary credentials.
 AppStream 2.0 retrieves the temporary credentials and creates the
-\strong{appstream\\_machine\\_role} credential profile on the instance.
+\strong{appstream_machine_role} credential profile on the instance.
 
 For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html}{Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances}
 in the \emph{Amazon AppStream 2.0 Administration Guide}.}
@@ -154,6 +154,55 @@ applications opened by users display. When \code{DESKTOP} is specified, the
 standard desktop that is provided by the operating system displays.
 
 The default value is \code{APP}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Fleet = list(
+    Arn = "string",
+    Name = "string",
+    DisplayName = "string",
+    Description = "string",
+    ImageName = "string",
+    ImageArn = "string",
+    InstanceType = "string",
+    FleetType = "ALWAYS_ON"|"ON_DEMAND",
+    ComputeCapacityStatus = list(
+      Desired = 123,
+      Running = 123,
+      InUse = 123,
+      Available = 123
+    ),
+    MaxUserDurationInSeconds = 123,
+    DisconnectTimeoutInSeconds = 123,
+    State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED",
+    VpcConfig = list(
+      SubnetIds = list(
+        "string"
+      ),
+      SecurityGroupIds = list(
+        "string"
+      )
+    ),
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    FleetErrors = list(
+      list(
+        ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
+        ErrorMessage = "string"
+      )
+    ),
+    EnableDefaultInternetAccess = TRUE|FALSE,
+    DomainJoinInfo = list(
+      DirectoryName = "string",
+      OrganizationalUnitDistinguishedName = "string"
+    ),
+    IdleDisconnectTimeoutInSeconds = 123,
+    IamRoleArn = "string",
+    StreamView = "APP"|"DESKTOP"
+  )
+)
+}
 }
 \description{
 Creates a fleet. A fleet consists of streaming instances that run a

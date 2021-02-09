@@ -20,6 +20,53 @@ administrator credentials to access the API.}
 \item{Marker}{The marker for the next set of results. This marker was received from a
 previous call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Comments = list(
+    list(
+      CommentId = "string",
+      ParentId = "string",
+      ThreadId = "string",
+      Text = "string",
+      Contributor = list(
+        Id = "string",
+        Username = "string",
+        EmailAddress = "string",
+        GivenName = "string",
+        Surname = "string",
+        OrganizationId = "string",
+        RootFolderId = "string",
+        RecycleBinFolderId = "string",
+        Status = "ACTIVE"|"INACTIVE"|"PENDING",
+        Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
+        CreatedTimestamp = as.POSIXct(
+          "2015-01-01"
+        ),
+        ModifiedTimestamp = as.POSIXct(
+          "2015-01-01"
+        ),
+        TimeZoneId = "string",
+        Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
+        Storage = list(
+          StorageUtilizedInBytes = 123,
+          StorageRule = list(
+            StorageAllocatedInBytes = 123,
+            StorageType = "UNLIMITED"|"QUOTA"
+          )
+        )
+      ),
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = "DRAFT"|"PUBLISHED"|"DELETED",
+      Visibility = "PUBLIC"|"PRIVATE",
+      RecipientId = "string"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 List all the comments for the specified document version.
 }

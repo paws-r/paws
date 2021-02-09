@@ -16,6 +16,21 @@ NULL
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
 #' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeInfo = list(
+#'     Id = "string",
+#'     Status = "PENDING"|"INSYNC",
+#'     SubmittedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Comment = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$activate_key_signing_key(
@@ -73,6 +88,21 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
 #' @param VPC &#91;required&#93; A complex type that contains information about the VPC that you want to
 #' associate with a private hosted zone.
 #' @param Comment *Optional:* A comment about the association request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeInfo = list(
+#'     Id = "string",
+#'     Status = "PENDING"|"INSYNC",
+#'     SubmittedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Comment = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -228,6 +258,21 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' you want to change.
 #' @param ChangeBatch &#91;required&#93; A complex type that contains an optional comment and the `Changes`
 #' element.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeInfo = list(
+#'     Id = "string",
+#'     Status = "PENDING"|"INSYNC",
+#'     SubmittedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Comment = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -789,6 +834,12 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
 #' from the specified health check or hosted zone. You can specify up to 10
 #' keys.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$change_tags_for_resource(
@@ -916,6 +967,64 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 #'     request with a unique `CallerReference` but settings identical to an
 #'     existing health check, Route 53 creates the health check.
 #' @param HealthCheckConfig &#91;required&#93; A complex type that contains settings for a new health check.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HealthCheck = list(
+#'     Id = "string",
+#'     CallerReference = "string",
+#'     LinkedService = list(
+#'       ServicePrincipal = "string",
+#'       Description = "string"
+#'     ),
+#'     HealthCheckConfig = list(
+#'       IPAddress = "string",
+#'       Port = 123,
+#'       Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
+#'       ResourcePath = "string",
+#'       FullyQualifiedDomainName = "string",
+#'       SearchString = "string",
+#'       RequestInterval = 123,
+#'       FailureThreshold = 123,
+#'       MeasureLatency = TRUE|FALSE,
+#'       Inverted = TRUE|FALSE,
+#'       Disabled = TRUE|FALSE,
+#'       HealthThreshold = 123,
+#'       ChildHealthChecks = list(
+#'         "string"
+#'       ),
+#'       EnableSNI = TRUE|FALSE,
+#'       Regions = list(
+#'         "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
+#'       ),
+#'       AlarmIdentifier = list(
+#'         Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
+#'         Name = "string"
+#'       ),
+#'       InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
+#'     ),
+#'     HealthCheckVersion = 123,
+#'     CloudWatchAlarmConfiguration = list(
+#'       EvaluationPeriods = 123,
+#'       Threshold = 123.0,
+#'       ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
+#'       Period = 123,
+#'       MetricName = "string",
+#'       Namespace = "string",
+#'       Statistic = "Average"|"Sum"|"SampleCount"|"Maximum"|"Minimum",
+#'       Dimensions = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Location = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1061,6 +1170,47 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' sets, see
 #' [`create_reusable_delegation_set`][route53_create_reusable_delegation_set].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HostedZone = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     CallerReference = "string",
+#'     Config = list(
+#'       Comment = "string",
+#'       PrivateZone = TRUE|FALSE
+#'     ),
+#'     ResourceRecordSetCount = 123,
+#'     LinkedService = list(
+#'       ServicePrincipal = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   ChangeInfo = list(
+#'     Id = "string",
+#'     Status = "PENDING"|"INSYNC",
+#'     SubmittedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Comment = "string"
+#'   ),
+#'   DelegationSet = list(
+#'     Id = "string",
+#'     CallerReference = "string",
+#'     NameServers = list(
+#'       "string"
+#'     )
+#'   ),
+#'   VPC = list(
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
+#'     VPCId = "string"
+#'   ),
+#'   Location = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_hosted_zone(
@@ -1124,7 +1274,7 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #' 
 #' ### Key spec
 #' 
-#' ECC\\_NIST\\_P256
+#' ECC_NIST_P256
 #' 
 #' ### Key usage
 #' 
@@ -1152,6 +1302,44 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #' must be unique for each key signing key in the same hosted zone.
 #' @param Status &#91;required&#93; A string specifying the initial status of the key signing key (KSK). You
 #' can set the value to `ACTIVE` or `INACTIVE`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeInfo = list(
+#'     Id = "string",
+#'     Status = "PENDING"|"INSYNC",
+#'     SubmittedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Comment = "string"
+#'   ),
+#'   KeySigningKey = list(
+#'     Name = "string",
+#'     KmsArn = "string",
+#'     Flag = 123,
+#'     SigningAlgorithmMnemonic = "string",
+#'     SigningAlgorithmType = 123,
+#'     DigestAlgorithmMnemonic = "string",
+#'     DigestAlgorithmType = 123,
+#'     KeyTag = 123,
+#'     DigestValue = "string",
+#'     PublicKey = "string",
+#'     DSRecord = "string",
+#'     DNSKEYRecord = "string",
+#'     Status = "string",
+#'     StatusMessage = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Location = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1313,13 +1501,26 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' @param CloudWatchLogsLogGroupArn &#91;required&#93; The Amazon Resource Name (ARN) for the log group that you want to Amazon
 #' Route 53 to send query logs to. This is the format of the ARN:
 #' 
-#' arn:aws:logs:*region*:*account-id*:log-group:*log\\_group\\_name*
+#' arn:aws:logs:*region*:*account-id*:log-group:*log_group_name*
 #' 
 #' To get the ARN for a log group, you can use the CloudWatch console, the
 #' [DescribeLogGroups](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html)
 #' API action, the
 #' [describe-log-groups](https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html)
 #' command, or the applicable command in one of the AWS SDKs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QueryLoggingConfig = list(
+#'     Id = "string",
+#'     HostedZoneId = "string",
+#'     CloudWatchLogsLogGroupArn = "string"
+#'   ),
+#'   Location = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1421,6 +1622,21 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
 #' @param HostedZoneId If you want to mark the delegation set for an existing hosted zone as
 #' reusable, the ID for that hosted zone.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DelegationSet = list(
+#'     Id = "string",
+#'     CallerReference = "string",
+#'     NameServers = list(
+#'       "string"
+#'     )
+#'   ),
+#'   Location = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_reusable_delegation_set(
@@ -1466,6 +1682,22 @@ route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId
 #' Format](https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html).
 #' @param Comment (Optional) Any comments that you want to include about the traffic
 #' policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficPolicy = list(
+#'     Id = "string",
+#'     Version = 123,
+#'     Name = "string",
+#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'     Document = "string",
+#'     Comment = "string"
+#'   ),
+#'   Location = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1527,6 +1759,25 @@ route53_create_traffic_policy <- function(Name, Document, Comment = NULL) {
 #' @param TrafficPolicyVersion &#91;required&#93; The version of the traffic policy that you want to use to create
 #' resource record sets in the specified hosted zone.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficPolicyInstance = list(
+#'     Id = "string",
+#'     HostedZoneId = "string",
+#'     Name = "string",
+#'     TTL = 123,
+#'     State = "string",
+#'     Message = "string",
+#'     TrafficPolicyId = "string",
+#'     TrafficPolicyVersion = 123,
+#'     TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+#'   ),
+#'   Location = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_traffic_policy_instance(
@@ -1582,6 +1833,22 @@ route53_create_traffic_policy_instance <- function(HostedZoneId, Name, TTL, Traf
 #' @param Comment The comment that you specified in the
 #' [`create_traffic_policy_version`][route53_create_traffic_policy_version]
 #' request, if any.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficPolicy = list(
+#'     Id = "string",
+#'     Version = 123,
+#'     Name = "string",
+#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'     Document = "string",
+#'     Comment = "string"
+#'   ),
+#'   Location = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1640,6 +1907,18 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
 #' @param VPC &#91;required&#93; A complex type that contains the VPC ID and region for the VPC that you
 #' want to authorize associating with your hosted zone.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HostedZoneId = "string",
+#'   VPC = list(
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
+#'     VPCId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_vpc_association_authorization(
@@ -1683,6 +1962,21 @@ route53_create_vpc_association_authorization <- function(HostedZoneId, VPC) {
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
 #' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeInfo = list(
+#'     Id = "string",
+#'     Status = "PENDING"|"INSYNC",
+#'     SubmittedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Comment = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1738,6 +2032,12 @@ route53_deactivate_key_signing_key <- function(HostedZoneId, Name) {
 #' route53_delete_health_check(HealthCheckId)
 #'
 #' @param HealthCheckId &#91;required&#93; The ID of the health check that you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1827,6 +2127,21 @@ route53_delete_health_check <- function(HealthCheckId) {
 #'
 #' @param Id &#91;required&#93; The ID of the hosted zone you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeInfo = list(
+#'     Id = "string",
+#'     Status = "PENDING"|"INSYNC",
+#'     SubmittedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Comment = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_hosted_zone(
@@ -1866,6 +2181,21 @@ route53_delete_hosted_zone <- function(Id) {
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
 #' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeInfo = list(
+#'     Id = "string",
+#'     Status = "PENDING"|"INSYNC",
+#'     SubmittedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Comment = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1910,6 +2240,12 @@ route53_delete_key_signing_key <- function(HostedZoneId, Name) {
 #' route53_delete_query_logging_config(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the configuration that you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1956,6 +2292,12 @@ route53_delete_query_logging_config <- function(Id) {
 #' route53_delete_reusable_delegation_set(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the reusable delegation set that you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2008,6 +2350,12 @@ route53_delete_reusable_delegation_set <- function(Id) {
 #' @param Id &#91;required&#93; The ID of the traffic policy that you want to delete.
 #' @param Version &#91;required&#93; The version number of the traffic policy that you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_traffic_policy(
@@ -2054,6 +2402,12 @@ route53_delete_traffic_policy <- function(Id, Version) {
 #' When you delete a traffic policy instance, Amazon Route 53 also deletes
 #' all of the resource record sets that were created when you created the
 #' traffic policy instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2113,6 +2467,12 @@ route53_delete_traffic_policy_instance <- function(Id) {
 #' AWS account with a hosted zone that was created with a different AWS
 #' account, a complex type that includes the ID and region of the VPC.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_vpc_association_authorization(
@@ -2155,6 +2515,21 @@ route53_delete_vpc_association_authorization <- function(HostedZoneId, VPC) {
 #' route53_disable_hosted_zone_dnssec(HostedZoneId)
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeInfo = list(
+#'     Id = "string",
+#'     Status = "PENDING"|"INSYNC",
+#'     SubmittedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Comment = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2223,6 +2598,21 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' disassociating from the specified hosted zone.
 #' @param Comment *Optional:* A comment about the disassociation request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeInfo = list(
+#'     Id = "string",
+#'     Status = "PENDING"|"INSYNC",
+#'     SubmittedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Comment = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_vpc_from_hosted_zone(
@@ -2264,6 +2654,21 @@ route53_disassociate_vpc_from_hosted_zone <- function(HostedZoneId, VPC, Comment
 #' route53_enable_hosted_zone_dnssec(HostedZoneId)
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeInfo = list(
+#'     Id = "string",
+#'     Status = "PENDING"|"INSYNC",
+#'     SubmittedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Comment = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2314,23 +2719,35 @@ route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
 #'
 #' @param Type &#91;required&#93; The limit that you want to get. Valid values include the following:
 #' 
-#' -   **MAX\\_HEALTH\\_CHECKS\\_BY\\_OWNER**: The maximum number of health
+#' -   **MAX_HEALTH_CHECKS_BY_OWNER**: The maximum number of health
 #'     checks that you can create using the current account.
 #' 
-#' -   **MAX\\_HOSTED\\_ZONES\\_BY\\_OWNER**: The maximum number of hosted
+#' -   **MAX_HOSTED_ZONES_BY_OWNER**: The maximum number of hosted
 #'     zones that you can create using the current account.
 #' 
-#' -   **MAX\\_REUSABLE\\_DELEGATION\\_SETS\\_BY\\_OWNER**: The maximum number
+#' -   **MAX_REUSABLE_DELEGATION_SETS_BY_OWNER**: The maximum number
 #'     of reusable delegation sets that you can create using the current
 #'     account.
 #' 
-#' -   **MAX\\_TRAFFIC\\_POLICIES\\_BY\\_OWNER**: The maximum number of traffic
+#' -   **MAX_TRAFFIC_POLICIES_BY_OWNER**: The maximum number of traffic
 #'     policies that you can create using the current account.
 #' 
-#' -   **MAX\\_TRAFFIC\\_POLICY\\_INSTANCES\\_BY\\_OWNER**: The maximum number
+#' -   **MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER**: The maximum number
 #'     of traffic policy instances that you can create using the current
 #'     account. (Traffic policy instances are referred to as traffic flow
 #'     policy records in the Amazon Route 53 console.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Limit = list(
+#'     Type = "MAX_HEALTH_CHECKS_BY_OWNER"|"MAX_HOSTED_ZONES_BY_OWNER"|"MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER"|"MAX_REUSABLE_DELEGATION_SETS_BY_OWNER"|"MAX_TRAFFIC_POLICIES_BY_OWNER",
+#'     Value = 123
+#'   ),
+#'   Count = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2380,6 +2797,21 @@ route53_get_account_limit <- function(Type) {
 #' [`change_resource_record_sets`][route53_change_resource_record_sets]
 #' returned in the `Id` element when you submitted the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ChangeInfo = list(
+#'     Id = "string",
+#'     Status = "PENDING"|"INSYNC",
+#'     SubmittedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Comment = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_change(
@@ -2421,6 +2853,16 @@ route53_get_change <- function(Id) {
 #' @usage
 #' route53_get_checker_ip_ranges()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CheckerIpRanges = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_checker_ip_ranges()
@@ -2459,6 +2901,41 @@ route53_get_checker_ip_ranges <- function() {
 #' route53_get_dnssec(HostedZoneId)
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = list(
+#'     ServeSignature = "string",
+#'     StatusMessage = "string"
+#'   ),
+#'   KeySigningKeys = list(
+#'     list(
+#'       Name = "string",
+#'       KmsArn = "string",
+#'       Flag = 123,
+#'       SigningAlgorithmMnemonic = "string",
+#'       SigningAlgorithmType = 123,
+#'       DigestAlgorithmMnemonic = "string",
+#'       DigestAlgorithmType = 123,
+#'       KeyTag = 123,
+#'       DigestValue = "string",
+#'       PublicKey = "string",
+#'       DSRecord = "string",
+#'       DNSKEYRecord = "string",
+#'       Status = "string",
+#'       StatusMessage = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2540,6 +3017,21 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' If you specify `subdivisioncode`, you must also specify `US` for
 #' `CountryCode`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GeoLocationDetails = list(
+#'     ContinentCode = "string",
+#'     ContinentName = "string",
+#'     CountryCode = "string",
+#'     CountryName = "string",
+#'     SubdivisionCode = "string",
+#'     SubdivisionName = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_geo_location(
@@ -2582,6 +3074,63 @@ route53_get_geo_location <- function(ContinentCode = NULL, CountryCode = NULL, S
 #' this value to specify which health check to use. The value can be up to
 #' 64 characters long.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HealthCheck = list(
+#'     Id = "string",
+#'     CallerReference = "string",
+#'     LinkedService = list(
+#'       ServicePrincipal = "string",
+#'       Description = "string"
+#'     ),
+#'     HealthCheckConfig = list(
+#'       IPAddress = "string",
+#'       Port = 123,
+#'       Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
+#'       ResourcePath = "string",
+#'       FullyQualifiedDomainName = "string",
+#'       SearchString = "string",
+#'       RequestInterval = 123,
+#'       FailureThreshold = 123,
+#'       MeasureLatency = TRUE|FALSE,
+#'       Inverted = TRUE|FALSE,
+#'       Disabled = TRUE|FALSE,
+#'       HealthThreshold = 123,
+#'       ChildHealthChecks = list(
+#'         "string"
+#'       ),
+#'       EnableSNI = TRUE|FALSE,
+#'       Regions = list(
+#'         "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
+#'       ),
+#'       AlarmIdentifier = list(
+#'         Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
+#'         Name = "string"
+#'       ),
+#'       InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
+#'     ),
+#'     HealthCheckVersion = 123,
+#'     CloudWatchAlarmConfiguration = list(
+#'       EvaluationPeriods = 123,
+#'       Threshold = 123.0,
+#'       ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
+#'       Period = 123,
+#'       MetricName = "string",
+#'       Namespace = "string",
+#'       Statistic = "Average"|"Sum"|"SampleCount"|"Maximum"|"Minimum",
+#'       Dimensions = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_health_check(
@@ -2618,6 +3167,14 @@ route53_get_health_check <- function(HealthCheckId) {
 #'
 #' @usage
 #' route53_get_health_check_count()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HealthCheckCount = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2662,6 +3219,25 @@ route53_get_health_check_count <- function() {
 #' console. You can't use
 #' [`get_health_check_last_failure_reason`][route53_get_health_check_last_failure_reason]
 #' for a calculated health check.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HealthCheckObservations = list(
+#'     list(
+#'       Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1",
+#'       IPAddress = "string",
+#'       StatusReport = list(
+#'         Status = "string",
+#'         CheckedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2708,6 +3284,25 @@ route53_get_health_check_last_failure_reason <- function(HealthCheckId) {
 #' [`get_health_check_status`][route53_get_health_check_status] to get the
 #' status of a calculated health check.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HealthCheckObservations = list(
+#'     list(
+#'       Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1",
+#'       IPAddress = "string",
+#'       StatusReport = list(
+#'         Status = "string",
+#'         CheckedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_health_check_status(
@@ -2746,6 +3341,40 @@ route53_get_health_check_status <- function(HealthCheckId) {
 #' route53_get_hosted_zone(Id)
 #'
 #' @param Id &#91;required&#93; The ID of the hosted zone that you want to get information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HostedZone = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     CallerReference = "string",
+#'     Config = list(
+#'       Comment = "string",
+#'       PrivateZone = TRUE|FALSE
+#'     ),
+#'     ResourceRecordSetCount = 123,
+#'     LinkedService = list(
+#'       ServicePrincipal = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   DelegationSet = list(
+#'     Id = "string",
+#'     CallerReference = "string",
+#'     NameServers = list(
+#'       "string"
+#'     )
+#'   ),
+#'   VPCs = list(
+#'     list(
+#'       VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
+#'       VPCId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2793,6 +3422,14 @@ route53_get_hosted_zone <- function(Id) {
 #' @usage
 #' route53_get_hosted_zone_count()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HostedZoneCount = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_hosted_zone_count()
@@ -2835,12 +3472,24 @@ route53_get_hosted_zone_count <- function() {
 #'
 #' @param Type &#91;required&#93; The limit that you want to get. Valid values include the following:
 #' 
-#' -   **MAX\\_RRSETS\\_BY\\_ZONE**: The maximum number of records that you
+#' -   **MAX_RRSETS_BY_ZONE**: The maximum number of records that you
 #'     can create in the specified hosted zone.
 #' 
-#' -   **MAX\\_VPCS\\_ASSOCIATED\\_BY\\_ZONE**: The maximum number of Amazon
+#' -   **MAX_VPCS_ASSOCIATED_BY_ZONE**: The maximum number of Amazon
 #'     VPCs that you can associate with the specified private hosted zone.
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that you want to get a limit for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Limit = list(
+#'     Type = "MAX_RRSETS_BY_ZONE"|"MAX_VPCS_ASSOCIATED_BY_ZONE",
+#'     Value = 123
+#'   ),
+#'   Count = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2886,6 +3535,18 @@ route53_get_hosted_zone_limit <- function(Type, HostedZoneId) {
 #' @param Id &#91;required&#93; The ID of the configuration for DNS query logging that you want to get
 #' information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QueryLoggingConfig = list(
+#'     Id = "string",
+#'     HostedZoneId = "string",
+#'     CloudWatchLogsLogGroupArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_query_logging_config(
@@ -2925,6 +3586,20 @@ route53_get_query_logging_config <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The ID of the reusable delegation set that you want to get a list of
 #' name servers for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DelegationSet = list(
+#'     Id = "string",
+#'     CallerReference = "string",
+#'     NameServers = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2973,6 +3648,18 @@ route53_get_reusable_delegation_set <- function(Id) {
 #' delegation set.
 #' @param DelegationSetId &#91;required&#93; The ID of the delegation set that you want to get the limit for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Limit = list(
+#'     Type = "MAX_ZONES_BY_REUSABLE_DELEGATION_SET",
+#'     Value = 123
+#'   ),
+#'   Count = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_reusable_delegation_set_limit(
@@ -3016,6 +3703,21 @@ route53_get_reusable_delegation_set_limit <- function(Type, DelegationSetId) {
 #' @param Id &#91;required&#93; The ID of the traffic policy that you want to get information about.
 #' @param Version &#91;required&#93; The version number of the traffic policy that you want to get
 #' information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficPolicy = list(
+#'     Id = "string",
+#'     Version = 123,
+#'     Name = "string",
+#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'     Document = "string",
+#'     Comment = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3067,6 +3769,24 @@ route53_get_traffic_policy <- function(Id, Version) {
 #' @param Id &#91;required&#93; The ID of the traffic policy instance that you want to get information
 #' about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficPolicyInstance = list(
+#'     Id = "string",
+#'     HostedZoneId = "string",
+#'     Name = "string",
+#'     TTL = 123,
+#'     State = "string",
+#'     Message = "string",
+#'     TrafficPolicyId = "string",
+#'     TrafficPolicyVersion = 123,
+#'     TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_traffic_policy_instance(
@@ -3103,6 +3823,14 @@ route53_get_traffic_policy_instance <- function(Id) {
 #'
 #' @usage
 #' route53_get_traffic_policy_instance_count()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficPolicyInstanceCount = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3175,6 +3903,28 @@ route53_get_traffic_policy_instance_count <- function() {
 #' remain to be listed, then the value of the `IsTruncated` element in the
 #' response is `true`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GeoLocationDetailsList = list(
+#'     list(
+#'       ContinentCode = "string",
+#'       ContinentName = "string",
+#'       CountryCode = "string",
+#'       CountryName = "string",
+#'       SubdivisionCode = "string",
+#'       SubdivisionName = "string"
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   NextContinentCode = "string",
+#'   NextCountryCode = "string",
+#'   NextSubdivisionCode = "string",
+#'   MaxItems = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_geo_locations(
@@ -3230,6 +3980,69 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
 #' to the current request. Amazon Route 53 returns a maximum of 100 items.
 #' If you set `MaxItems` to a value greater than 100, Route 53 returns only
 #' the first 100 health checks.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HealthChecks = list(
+#'     list(
+#'       Id = "string",
+#'       CallerReference = "string",
+#'       LinkedService = list(
+#'         ServicePrincipal = "string",
+#'         Description = "string"
+#'       ),
+#'       HealthCheckConfig = list(
+#'         IPAddress = "string",
+#'         Port = 123,
+#'         Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
+#'         ResourcePath = "string",
+#'         FullyQualifiedDomainName = "string",
+#'         SearchString = "string",
+#'         RequestInterval = 123,
+#'         FailureThreshold = 123,
+#'         MeasureLatency = TRUE|FALSE,
+#'         Inverted = TRUE|FALSE,
+#'         Disabled = TRUE|FALSE,
+#'         HealthThreshold = 123,
+#'         ChildHealthChecks = list(
+#'           "string"
+#'         ),
+#'         EnableSNI = TRUE|FALSE,
+#'         Regions = list(
+#'           "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
+#'         ),
+#'         AlarmIdentifier = list(
+#'           Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
+#'           Name = "string"
+#'         ),
+#'         InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
+#'       ),
+#'       HealthCheckVersion = 123,
+#'       CloudWatchAlarmConfiguration = list(
+#'         EvaluationPeriods = 123,
+#'         Threshold = 123.0,
+#'         ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
+#'         Period = 123,
+#'         MetricName = "string",
+#'         Namespace = "string",
+#'         Statistic = "Average"|"Sum"|"SampleCount"|"Maximum"|"Minimum",
+#'         Dimensions = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string",
+#'   IsTruncated = TRUE|FALSE,
+#'   NextMarker = "string",
+#'   MaxItems = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3293,6 +4106,33 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
 #' hosted zones that are associated with a reusable delegation set, specify
 #' the ID of that reusable delegation set.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HostedZones = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       CallerReference = "string",
+#'       Config = list(
+#'         Comment = "string",
+#'         PrivateZone = TRUE|FALSE
+#'       ),
+#'       ResourceRecordSetCount = 123,
+#'       LinkedService = list(
+#'         ServicePrincipal = "string",
+#'         Description = "string"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string",
+#'   IsTruncated = TRUE|FALSE,
+#'   NextMarker = "string",
+#'   MaxItems = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_hosted_zones(
@@ -3346,7 +4186,7 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name]
 #' alphabetizes it as:
 #' 
-#' `com.ex\\344mple.`
+#' `com.ex\344mple.`
 #' 
 #' The labels are reversed and alphabetized using the escaped value. For
 #' more information about valid domain name formats, including
@@ -3412,6 +4252,35 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' the value of the `IsTruncated` element in the response is true, and the
 #' values of `NextDNSName` and `NextHostedZoneId` specify the first hosted
 #' zone in the next group of `maxitems` hosted zones.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HostedZones = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       CallerReference = "string",
+#'       Config = list(
+#'         Comment = "string",
+#'         PrivateZone = TRUE|FALSE
+#'       ),
+#'       ResourceRecordSetCount = 123,
+#'       LinkedService = list(
+#'         ServicePrincipal = "string",
+#'         Description = "string"
+#'       )
+#'     )
+#'   ),
+#'   DNSName = "string",
+#'   HostedZoneId = "string",
+#'   IsTruncated = TRUE|FALSE,
+#'   NextDNSName = "string",
+#'   NextHostedZoneId = "string",
+#'   MaxItems = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3483,6 +4352,25 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #' 
 #' If the previous response didn't include a `NextToken` element, there are
 #' no more hosted zones to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HostedZoneSummaries = list(
+#'     list(
+#'       HostedZoneId = "string",
+#'       Name = "string",
+#'       Owner = list(
+#'         OwningAccount = "string",
+#'         OwningService = "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxItems = "string",
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3560,6 +4448,21 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 #' 
 #' If you don't specify a value for `MaxResults`, Route 53 returns up to
 #' 100 configurations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QueryLoggingConfigs = list(
+#'     list(
+#'       Id = "string",
+#'       HostedZoneId = "string",
+#'       CloudWatchLogsLogGroupArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3717,6 +4620,47 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #' `NextRecordType` elements in the response identify the first resource
 #' record set in the next group of `maxitems` resource record sets.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceRecordSets = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'       SetIdentifier = "string",
+#'       Weight = 123,
+#'       Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"me-south-1"|"ap-south-1"|"af-south-1"|"eu-south-1",
+#'       GeoLocation = list(
+#'         ContinentCode = "string",
+#'         CountryCode = "string",
+#'         SubdivisionCode = "string"
+#'       ),
+#'       Failover = "PRIMARY"|"SECONDARY",
+#'       MultiValueAnswer = TRUE|FALSE,
+#'       TTL = 123,
+#'       ResourceRecords = list(
+#'         list(
+#'           Value = "string"
+#'         )
+#'       ),
+#'       AliasTarget = list(
+#'         HostedZoneId = "string",
+#'         DNSName = "string",
+#'         EvaluateTargetHealth = TRUE|FALSE
+#'       ),
+#'       HealthCheckId = "string",
+#'       TrafficPolicyInstanceId = "string"
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   NextRecordName = "string",
+#'   NextRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   NextRecordIdentifier = "string",
+#'   MaxItems = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resource_record_sets(
@@ -3773,6 +4717,26 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
 #' return in the response to this request. If you specify a value greater
 #' than 100, Route 53 returns only the first 100 reusable delegation sets.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DelegationSets = list(
+#'     list(
+#'       Id = "string",
+#'       CallerReference = "string",
+#'       NameServers = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string",
+#'   IsTruncated = TRUE|FALSE,
+#'   NextMarker = "string",
+#'   MaxItems = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_reusable_delegation_sets(
@@ -3820,6 +4784,23 @@ route53_list_reusable_delegation_sets <- function(Marker = NULL, MaxItems = NULL
 #' 
 #' -   The resource type for hosted zones is `hostedzone`.
 #' @param ResourceId &#91;required&#93; The ID of the resource for which you want to retrieve tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceTagSet = list(
+#'     ResourceType = "healthcheck"|"hostedzone",
+#'     ResourceId = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3869,6 +4850,25 @@ route53_list_tags_for_resource <- function(ResourceType, ResourceId) {
 #' -   The resource type for hosted zones is `hostedzone`.
 #' @param ResourceIds &#91;required&#93; A complex type that contains the ResourceId element for each resource
 #' for which you want to get a list of tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceTagSets = list(
+#'     list(
+#'       ResourceType = "healthcheck"|"hostedzone",
+#'       ResourceId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3932,6 +4932,25 @@ route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
 #' is `true`, and the value of `TrafficPolicyIdMarker` is the ID of the
 #' first traffic policy that Route 53 will return if you submit another
 #' request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficPolicySummaries = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'       LatestVersion = 123,
+#'       TrafficPolicyCount = 123
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   TrafficPolicyIdMarker = "string",
+#'   MaxItems = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4025,6 +5044,31 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
 #' `TrafficPolicyInstanceTypeMarker` represent the first traffic policy
 #' instance in the next group of `MaxItems` traffic policy instances.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficPolicyInstances = list(
+#'     list(
+#'       Id = "string",
+#'       HostedZoneId = "string",
+#'       Name = "string",
+#'       TTL = 123,
+#'       State = "string",
+#'       Message = "string",
+#'       TrafficPolicyId = "string",
+#'       TrafficPolicyVersion = 123,
+#'       TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+#'     )
+#'   ),
+#'   HostedZoneIdMarker = "string",
+#'   TrafficPolicyInstanceNameMarker = "string",
+#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   IsTruncated = TRUE|FALSE,
+#'   MaxItems = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_traffic_policy_instances(
@@ -4110,6 +5154,30 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
 #' `TrafficPolicyInstanceNameMarker`, and `TrafficPolicyInstanceTypeMarker`
 #' represent the first traffic policy instance that Amazon Route 53 will
 #' return if you submit another request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficPolicyInstances = list(
+#'     list(
+#'       Id = "string",
+#'       HostedZoneId = "string",
+#'       Name = "string",
+#'       TTL = 123,
+#'       State = "string",
+#'       Message = "string",
+#'       TrafficPolicyId = "string",
+#'       TrafficPolicyVersion = 123,
+#'       TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+#'     )
+#'   ),
+#'   TrafficPolicyInstanceNameMarker = "string",
+#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   IsTruncated = TRUE|FALSE,
+#'   MaxItems = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4218,6 +5286,31 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
 #' represent the first traffic policy instance that Amazon Route 53 will
 #' return if you submit another request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficPolicyInstances = list(
+#'     list(
+#'       Id = "string",
+#'       HostedZoneId = "string",
+#'       Name = "string",
+#'       TTL = 123,
+#'       State = "string",
+#'       Message = "string",
+#'       TrafficPolicyId = "string",
+#'       TrafficPolicyVersion = 123,
+#'       TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+#'     )
+#'   ),
+#'   HostedZoneIdMarker = "string",
+#'   TrafficPolicyInstanceNameMarker = "string",
+#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   IsTruncated = TRUE|FALSE,
+#'   MaxItems = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_traffic_policy_instances_by_policy(
@@ -4284,6 +5377,26 @@ route53_list_traffic_policy_instances_by_policy <- function(TrafficPolicyId, Tra
 #' `TrafficPolicyVersionMarker` element is the ID of the first version that
 #' Route 53 will return if you submit another request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficPolicies = list(
+#'     list(
+#'       Id = "string",
+#'       Version = 123,
+#'       Name = "string",
+#'       Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'       Document = "string",
+#'       Comment = "string"
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE,
+#'   TrafficPolicyVersionMarker = "string",
+#'   MaxItems = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_traffic_policy_versions(
@@ -4342,6 +5455,21 @@ route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker 
 #' @param MaxResults *Optional*: An integer that specifies the maximum number of VPCs that
 #' you want Amazon Route 53 to return. If you don't specify a value for
 #' `MaxResults`, Route 53 returns up to 50 VPCs per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HostedZoneId = "string",
+#'   NextToken = "string",
+#'   VPCs = list(
+#'     list(
+#'       VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
+#'       VPCId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4411,6 +5539,21 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' -   **IPv4**: Specify a value between 0 and 32
 #' 
 #' -   **IPv6**: Specify a value between 0 and 128
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Nameserver = "string",
+#'   RecordName = "string",
+#'   RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   RecordData = list(
+#'     "string"
+#'   ),
+#'   ResponseCode = "string",
+#'   Protocol = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4731,6 +5874,63 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #'     [ResourcePath](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ResourcePath)
 #'     to null.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HealthCheck = list(
+#'     Id = "string",
+#'     CallerReference = "string",
+#'     LinkedService = list(
+#'       ServicePrincipal = "string",
+#'       Description = "string"
+#'     ),
+#'     HealthCheckConfig = list(
+#'       IPAddress = "string",
+#'       Port = 123,
+#'       Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
+#'       ResourcePath = "string",
+#'       FullyQualifiedDomainName = "string",
+#'       SearchString = "string",
+#'       RequestInterval = 123,
+#'       FailureThreshold = 123,
+#'       MeasureLatency = TRUE|FALSE,
+#'       Inverted = TRUE|FALSE,
+#'       Disabled = TRUE|FALSE,
+#'       HealthThreshold = 123,
+#'       ChildHealthChecks = list(
+#'         "string"
+#'       ),
+#'       EnableSNI = TRUE|FALSE,
+#'       Regions = list(
+#'         "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
+#'       ),
+#'       AlarmIdentifier = list(
+#'         Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
+#'         Name = "string"
+#'       ),
+#'       InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
+#'     ),
+#'     HealthCheckVersion = 123,
+#'     CloudWatchAlarmConfiguration = list(
+#'       EvaluationPeriods = 123,
+#'       Threshold = 123.0,
+#'       ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
+#'       Period = 123,
+#'       MetricName = "string",
+#'       Namespace = "string",
+#'       Statistic = "Average"|"Sum"|"SampleCount"|"Maximum"|"Minimum",
+#'       Dimensions = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_health_check(
@@ -4796,6 +5996,27 @@ route53_update_health_check <- function(HealthCheckId, HealthCheckVersion = NULL
 #' `Comment`, Amazon Route 53 deletes the existing value of the `Comment`
 #' element, if any.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HostedZone = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     CallerReference = "string",
+#'     Config = list(
+#'       Comment = "string",
+#'       PrivateZone = TRUE|FALSE
+#'     ),
+#'     ResourceRecordSetCount = 123,
+#'     LinkedService = list(
+#'       ServicePrincipal = "string",
+#'       Description = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_hosted_zone_comment(
@@ -4837,6 +6058,21 @@ route53_update_hosted_zone_comment <- function(Id, Comment = NULL) {
 #' @param Version &#91;required&#93; The value of `Version` for the traffic policy that you want to update
 #' the comment for.
 #' @param Comment &#91;required&#93; The new comment for the specified traffic policy and version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficPolicy = list(
+#'     Id = "string",
+#'     Version = 123,
+#'     Name = "string",
+#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'     Document = "string",
+#'     Comment = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4903,6 +6139,24 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
 #' @param TrafficPolicyVersion &#91;required&#93; The version of the traffic policy that you want Amazon Route 53 to use
 #' to update resource record sets for the specified traffic policy
 #' instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficPolicyInstance = list(
+#'     Id = "string",
+#'     HostedZoneId = "string",
+#'     Name = "string",
+#'     TTL = 123,
+#'     State = "string",
+#'     Message = "string",
+#'     TrafficPolicyId = "string",
+#'     TrafficPolicyVersion = 123,
+#'     TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

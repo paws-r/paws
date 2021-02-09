@@ -25,6 +25,25 @@ NULL
 #' for more info.
 #' @param Tags A list of key-value pairs to label the table.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Database = list(
+#'     Arn = "string",
+#'     DatabaseName = "string",
+#'     TableCount = 123,
+#'     KmsKeyId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_database(
@@ -83,6 +102,29 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #' memory store and the magnetic store.
 #' @param Tags A list of key-value pairs to label the table.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Table = list(
+#'     Arn = "string",
+#'     TableName = "string",
+#'     DatabaseName = "string",
+#'     TableStatus = "ACTIVE"|"DELETING",
+#'     RetentionProperties = list(
+#'       MemoryStoreRetentionPeriodInHours = 123,
+#'       MagneticStoreRetentionPeriodInDays = 123
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_table(
@@ -140,6 +182,8 @@ timestreamwrite_create_table <- function(DatabaseName, TableName, RetentionPrope
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database to be deleted.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_database(
@@ -183,6 +227,8 @@ timestreamwrite_delete_database <- function(DatabaseName) {
 #'
 #' @param DatabaseName &#91;required&#93; The name of the database where the Timestream database is to be deleted.
 #' @param TableName &#91;required&#93; The name of the Timestream table to be deleted.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -228,6 +274,25 @@ timestreamwrite_delete_table <- function(DatabaseName, TableName) {
 #' timestreamwrite_describe_database(DatabaseName)
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Database = list(
+#'     Arn = "string",
+#'     DatabaseName = "string",
+#'     TableCount = 123,
+#'     KmsKeyId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -280,6 +345,19 @@ timestreamwrite_describe_database <- function(DatabaseName) {
 #' @usage
 #' timestreamwrite_describe_endpoints()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Endpoints = list(
+#'     list(
+#'       Address = "string",
+#'       CachePeriodInMinutes = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_endpoints()
@@ -320,6 +398,29 @@ timestreamwrite_describe_endpoints <- function() {
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #' @param TableName &#91;required&#93; The name of the Timestream table.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Table = list(
+#'     Arn = "string",
+#'     TableName = "string",
+#'     DatabaseName = "string",
+#'     TableStatus = "ACTIVE"|"DELETING",
+#'     RetentionProperties = list(
+#'       MemoryStoreRetentionPeriodInHours = 123,
+#'       MagneticStoreRetentionPeriodInDays = 123
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -367,6 +468,28 @@ timestreamwrite_describe_table <- function(DatabaseName, TableName) {
 #' provided in the output. To resume pagination, provide the NextToken
 #' value as argument of a subsequent API invocation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Databases = list(
+#'     list(
+#'       Arn = "string",
+#'       DatabaseName = "string",
+#'       TableCount = 123,
+#'       KmsKeyId = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_databases(
@@ -413,6 +536,32 @@ timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) 
 #' provided in the output. To resume pagination, provide the NextToken
 #' value as argument of a subsequent API invocation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tables = list(
+#'     list(
+#'       Arn = "string",
+#'       TableName = "string",
+#'       DatabaseName = "string",
+#'       TableStatus = "ACTIVE"|"DELETING",
+#'       RetentionProperties = list(
+#'         MemoryStoreRetentionPeriodInHours = 123,
+#'         MagneticStoreRetentionPeriodInDays = 123
+#'       ),
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tables(
@@ -452,6 +601,19 @@ timestreamwrite_list_tables <- function(DatabaseName = NULL, NextToken = NULL, M
 #'
 #' @param ResourceARN &#91;required&#93; The Timestream resource with tags to be listed. This value is an Amazon
 #' Resource Name (ARN).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -493,6 +655,12 @@ timestreamwrite_list_tags_for_resource <- function(ResourceARN) {
 #' @param ResourceARN &#91;required&#93; Identifies the Timestream resource to which tags should be added. This
 #' value is an Amazon Resource Name (ARN).
 #' @param Tags &#91;required&#93; The tags to be assigned to the Timestream resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -539,6 +707,12 @@ timestreamwrite_tag_resource <- function(ResourceARN, Tags) {
 #' is an Amazon Resource Name (ARN).
 #' @param TagKeys &#91;required&#93; A list of tags keys. Existing tags of the resource whose keys are
 #' members of this list will be removed from the Timestream resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -599,6 +773,25 @@ timestreamwrite_untag_resource <- function(ResourceARN, TagKeys) {
 #' 
 #' -   Alias ARN: `arn:aws:kms:us-east-1:111122223333:alias/ExampleAlias`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Database = list(
+#'     Arn = "string",
+#'     DatabaseName = "string",
+#'     TableCount = 123,
+#'     KmsKeyId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_database(
@@ -651,6 +844,29 @@ timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #' @param TableName &#91;required&#93; The name of the Timesream table.
 #' @param RetentionProperties &#91;required&#93; The retention duration of the memory store and the magnetic store.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Table = list(
+#'     Arn = "string",
+#'     TableName = "string",
+#'     DatabaseName = "string",
+#'     TableStatus = "ACTIVE"|"DELETING",
+#'     RetentionProperties = list(
+#'       MemoryStoreRetentionPeriodInHours = 123,
+#'       MagneticStoreRetentionPeriodInDays = 123
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -717,6 +933,8 @@ timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionPrope
 #' Timestream.
 #' @param Records &#91;required&#93; An array of records containing the unique dimension and measure
 #' attributes for each time series data point.
+#'
+
 #'
 #' @section Request syntax:
 #' ```

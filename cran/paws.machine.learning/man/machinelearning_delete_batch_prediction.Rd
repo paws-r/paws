@@ -9,6 +9,12 @@ machinelearning_delete_batch_prediction(BatchPredictionId)
 \arguments{
 \item{BatchPredictionId}{[required] A user-supplied ID that uniquely identifies the \code{BatchPrediction}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BatchPredictionId = "string"
+)
+}
+}
 \description{
 Assigns the DELETED status to a \code{BatchPrediction}, rendering it
 unusable.

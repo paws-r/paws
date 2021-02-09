@@ -12,6 +12,10 @@ the fleet ID or ARN value.}
 
 \item{Actions}{[required] List of actions to suspend on the fleet.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Suspends activity on a fleet. Currently, this operation is used to stop
 a fleet's auto-scaling activity. It is used to temporarily stop

@@ -9,6 +9,12 @@ snowball_create_address(Address)
 \arguments{
 \item{Address}{[required] The address that you want the Snow device shipped to.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AddressId = "string"
+)
+}
+}
 \description{
 Creates an address for a Snow device to be shipped to. In most regions,
 addresses are validated at the time of creation. The address you provide

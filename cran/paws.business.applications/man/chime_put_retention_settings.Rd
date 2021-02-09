@@ -12,6 +12,22 @@ chime_put_retention_settings(AccountId, RetentionSettings)
 
 \item{RetentionSettings}{[required] The retention settings.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RetentionSettings = list(
+    RoomRetentionSettings = list(
+      RetentionDays = 123
+    ),
+    ConversationRetentionSettings = list(
+      RetentionDays = 123
+    )
+  ),
+  InitiateDeletionTimestamp = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Puts retention settings for the specified Amazon Chime Enterprise
 account. We recommend using AWS CloudTrail to monitor usage of this API

@@ -32,6 +32,16 @@ in the AWS Organizations User Guide.
 If any one of the tags is invalid or if you exceed the allowed number of
 tags for an OU, then the entire request fails and the OU is not created.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationalUnit = list(
+    Id = "string",
+    Arn = "string",
+    Name = "string"
+  )
+)
+}
+}
 \description{
 Creates an organizational unit (OU) within a root or parent OU. An OU is
 a container for accounts that enables you to organize your accounts to

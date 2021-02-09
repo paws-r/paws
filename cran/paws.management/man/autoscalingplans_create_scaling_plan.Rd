@@ -24,6 +24,12 @@ For more information, see
 \href{https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html}{ScalingInstruction}
 in the \emph{AWS Auto Scaling API Reference}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScalingPlanVersion = 123
+)
+}
+}
 \description{
 Creates a scaling plan.
 }

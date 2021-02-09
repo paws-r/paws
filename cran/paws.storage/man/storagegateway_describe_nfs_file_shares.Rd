@@ -11,6 +11,50 @@ storagegateway_describe_nfs_file_shares(FileShareARNList)
 \item{FileShareARNList}{[required] An array containing the Amazon Resource Name (ARN) of each file share to
 be described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NFSFileShareInfoList = list(
+    list(
+      NFSFileShareDefaults = list(
+        FileMode = "string",
+        DirectoryMode = "string",
+        GroupId = 123,
+        OwnerId = 123
+      ),
+      FileShareARN = "string",
+      FileShareId = "string",
+      FileShareStatus = "string",
+      GatewayARN = "string",
+      KMSEncrypted = TRUE|FALSE,
+      KMSKey = "string",
+      Path = "string",
+      Role = "string",
+      LocationARN = "string",
+      DefaultStorageClass = "string",
+      ObjectACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"aws-exec-read",
+      ClientList = list(
+        "string"
+      ),
+      Squash = "string",
+      ReadOnly = TRUE|FALSE,
+      GuessMIMETypeEnabled = TRUE|FALSE,
+      RequesterPays = TRUE|FALSE,
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      FileShareName = "string",
+      CacheAttributes = list(
+        CacheStaleTimeoutInSeconds = 123
+      ),
+      NotificationPolicy = "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets a description for one or more Network File System (NFS) file shares
 from a file gateway. This operation is only supported for file gateways.

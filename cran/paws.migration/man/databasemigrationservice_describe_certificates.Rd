@@ -22,6 +22,32 @@ Default: 10}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  Certificates = list(
+    list(
+      CertificateIdentifier = "string",
+      CertificateCreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      CertificatePem = "string",
+      CertificateWallet = raw,
+      CertificateArn = "string",
+      CertificateOwner = "string",
+      ValidFromDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      ValidToDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      SigningAlgorithm = "string",
+      KeyLength = 123
+    )
+  )
+)
+}
+}
 \description{
 Provides a description of the certificate.
 }

@@ -15,6 +15,25 @@ of solutions (if they exist).}
 
 \item{maxResults}{The maximum number of solutions to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  solutions = list(
+    list(
+      name = "string",
+      solutionArn = "string",
+      status = "string",
+      creationDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of solutions that use the given dataset group. When a
 dataset group is not specified, all the solutions associated with the

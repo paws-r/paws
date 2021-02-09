@@ -47,6 +47,32 @@ definitions.}
 \item{MonitoringTypeEquals}{A filter that returns only the monitoring job runs of the specified
 monitoring type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MonitoringExecutionSummaries = list(
+    list(
+      MonitoringScheduleName = "string",
+      ScheduledTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      MonitoringExecutionStatus = "Pending"|"Completed"|"CompletedWithViolations"|"InProgress"|"Failed"|"Stopping"|"Stopped",
+      ProcessingJobArn = "string",
+      EndpointName = "string",
+      FailureReason = "string",
+      MonitoringJobDefinitionName = "string",
+      MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns list of all monitoring job executions.
 }

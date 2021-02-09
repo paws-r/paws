@@ -17,6 +17,30 @@ NULL
 #' @param TraceIds &#91;required&#93; Specify the trace IDs of requests for which to retrieve segments.
 #' @param NextToken Pagination token.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Traces = list(
+#'     list(
+#'       Id = "string",
+#'       Duration = 123.0,
+#'       LimitExceeded = TRUE|FALSE,
+#'       Segments = list(
+#'         list(
+#'           Id = "string",
+#'           Document = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   UnprocessedTraceIds = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_get_traces(
@@ -82,11 +106,27 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
 #' -   Maximum tag value length: 256 Unicode characters
 #' 
 #' -   Valid values for key and value: a-z, A-Z, 0-9, space, and the
-#'     following characters: \\_ . : / = + - and @@
+#'     following characters: _ . : / = + - and @@
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
 #' -   Don't use `aws:` as a prefix for keys; it's reserved for AWS use.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Group = list(
+#'     GroupName = "string",
+#'     GroupARN = "string",
+#'     FilterExpression = "string",
+#'     InsightsConfiguration = list(
+#'       InsightsEnabled = TRUE|FALSE,
+#'       NotificationsEnabled = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -159,11 +199,43 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
 #' -   Maximum tag value length: 256 Unicode characters
 #' 
 #' -   Valid values for key and value: a-z, A-Z, 0-9, space, and the
-#'     following characters: \\_ . : / = + - and @@
+#'     following characters: _ . : / = + - and @@
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
 #' -   Don't use `aws:` as a prefix for keys; it's reserved for AWS use.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SamplingRuleRecord = list(
+#'     SamplingRule = list(
+#'       RuleName = "string",
+#'       RuleARN = "string",
+#'       ResourceARN = "string",
+#'       Priority = 123,
+#'       FixedRate = 123.0,
+#'       ReservoirSize = 123,
+#'       ServiceName = "string",
+#'       ServiceType = "string",
+#'       Host = "string",
+#'       HTTPMethod = "string",
+#'       URLPath = "string",
+#'       Version = 123,
+#'       Attributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ModifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -225,6 +297,12 @@ xray_create_sampling_rule <- function(SamplingRule, Tags = NULL) {
 #' @param GroupName The case-sensitive name of the group.
 #' @param GroupARN The ARN of the group that was generated on creation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_group(
@@ -266,6 +344,38 @@ xray_delete_group <- function(GroupName = NULL, GroupARN = NULL) {
 #' @param RuleARN The ARN of the sampling rule. Specify a rule by either name or ARN, but
 #' not both.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SamplingRuleRecord = list(
+#'     SamplingRule = list(
+#'       RuleName = "string",
+#'       RuleARN = "string",
+#'       ResourceARN = "string",
+#'       Priority = 123,
+#'       FixedRate = 123.0,
+#'       ReservoirSize = 123,
+#'       ServiceName = "string",
+#'       ServiceType = "string",
+#'       Host = "string",
+#'       HTTPMethod = "string",
+#'       URLPath = "string",
+#'       Version = 123,
+#'       Attributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ModifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_sampling_rule(
@@ -302,6 +412,18 @@ xray_delete_sampling_rule <- function(RuleName = NULL, RuleARN = NULL) {
 #' @usage
 #' xray_get_encryption_config()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EncryptionConfig = list(
+#'     KeyId = "string",
+#'     Status = "UPDATING"|"ACTIVE",
+#'     Type = "NONE"|"KMS"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_encryption_config()
@@ -337,6 +459,22 @@ xray_get_encryption_config <- function() {
 #'
 #' @param GroupName The case-sensitive name of the group.
 #' @param GroupARN The ARN of the group that was generated on creation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Group = list(
+#'     GroupName = "string",
+#'     GroupARN = "string",
+#'     FilterExpression = "string",
+#'     InsightsConfiguration = list(
+#'       InsightsEnabled = TRUE|FALSE,
+#'       NotificationsEnabled = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -375,6 +513,25 @@ xray_get_group <- function(GroupName = NULL, GroupARN = NULL) {
 #' xray_get_groups(NextToken)
 #'
 #' @param NextToken Pagination token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Groups = list(
+#'     list(
+#'       GroupName = "string",
+#'       GroupARN = "string",
+#'       FilterExpression = "string",
+#'       InsightsConfiguration = list(
+#'         InsightsEnabled = TRUE|FALSE,
+#'         NotificationsEnabled = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -416,6 +573,59 @@ xray_get_groups <- function(NextToken = NULL) {
 #'
 #' @param InsightId &#91;required&#93; The insight's unique identifier. Use the GetInsightSummaries action to
 #' retrieve an InsightId.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Insight = list(
+#'     InsightId = "string",
+#'     GroupARN = "string",
+#'     GroupName = "string",
+#'     RootCauseServiceId = list(
+#'       Name = "string",
+#'       Names = list(
+#'         "string"
+#'       ),
+#'       AccountId = "string",
+#'       Type = "string"
+#'     ),
+#'     Categories = list(
+#'       "FAULT"
+#'     ),
+#'     State = "ACTIVE"|"CLOSED",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Summary = "string",
+#'     ClientRequestImpactStatistics = list(
+#'       FaultCount = 123,
+#'       OkCount = 123,
+#'       TotalCount = 123
+#'     ),
+#'     RootCauseServiceRequestImpactStatistics = list(
+#'       FaultCount = 123,
+#'       OkCount = 123,
+#'       TotalCount = 123
+#'     ),
+#'     TopAnomalousServices = list(
+#'       list(
+#'         ServiceId = list(
+#'           Name = "string",
+#'           Names = list(
+#'             "string"
+#'           ),
+#'           AccountId = "string",
+#'           Type = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -460,6 +670,44 @@ xray_get_insight <- function(InsightId) {
 #' @param MaxResults Used to retrieve at most the specified value of events.
 #' @param NextToken Specify the pagination token returned by a previous request to retrieve
 #' the next page of events.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InsightEvents = list(
+#'     list(
+#'       Summary = "string",
+#'       EventTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ClientRequestImpactStatistics = list(
+#'         FaultCount = 123,
+#'         OkCount = 123,
+#'         TotalCount = 123
+#'       ),
+#'       RootCauseServiceRequestImpactStatistics = list(
+#'         FaultCount = 123,
+#'         OkCount = 123,
+#'         TotalCount = 123
+#'       ),
+#'       TopAnomalousServices = list(
+#'         list(
+#'           ServiceId = list(
+#'             Name = "string",
+#'             Names = list(
+#'               "string"
+#'             ),
+#'             AccountId = "string",
+#'             Type = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -510,6 +758,43 @@ xray_get_insight_events <- function(InsightId, MaxResults = NULL, NextToken = NU
 #' time and end time can't be more than six hours.
 #' @param NextToken Specify the pagination token returned by a previous request to retrieve
 #' the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InsightId = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ServiceGraphStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ServiceGraphEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Services = list(
+#'     list(
+#'       ReferenceId = 123,
+#'       Type = "string",
+#'       Name = "string",
+#'       Names = list(
+#'         "string"
+#'       ),
+#'       AccountId = "string",
+#'       Edges = list(
+#'         list(
+#'           ReferenceId = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -567,6 +852,65 @@ xray_get_insight_impact_graph <- function(InsightId, StartTime, EndTime, NextTok
 #' @param MaxResults The maximum number of results to display.
 #' @param NextToken Pagination token.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InsightSummaries = list(
+#'     list(
+#'       InsightId = "string",
+#'       GroupARN = "string",
+#'       GroupName = "string",
+#'       RootCauseServiceId = list(
+#'         Name = "string",
+#'         Names = list(
+#'           "string"
+#'         ),
+#'         AccountId = "string",
+#'         Type = "string"
+#'       ),
+#'       Categories = list(
+#'         "FAULT"
+#'       ),
+#'       State = "ACTIVE"|"CLOSED",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Summary = "string",
+#'       ClientRequestImpactStatistics = list(
+#'         FaultCount = 123,
+#'         OkCount = 123,
+#'         TotalCount = 123
+#'       ),
+#'       RootCauseServiceRequestImpactStatistics = list(
+#'         FaultCount = 123,
+#'         OkCount = 123,
+#'         TotalCount = 123
+#'       ),
+#'       TopAnomalousServices = list(
+#'         list(
+#'           ServiceId = list(
+#'             Name = "string",
+#'             Names = list(
+#'               "string"
+#'             ),
+#'             AccountId = "string",
+#'             Type = "string"
+#'           )
+#'         )
+#'       ),
+#'       LastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_insight_summaries(
@@ -616,6 +960,41 @@ xray_get_insight_summaries <- function(States = NULL, GroupARN = NULL, GroupName
 #'
 #' @param NextToken Pagination token.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SamplingRuleRecords = list(
+#'     list(
+#'       SamplingRule = list(
+#'         RuleName = "string",
+#'         RuleARN = "string",
+#'         ResourceARN = "string",
+#'         Priority = 123,
+#'         FixedRate = 123.0,
+#'         ReservoirSize = 123,
+#'         ServiceName = "string",
+#'         ServiceType = "string",
+#'         Host = "string",
+#'         HTTPMethod = "string",
+#'         URLPath = "string",
+#'         Version = 123,
+#'         Attributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ModifiedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_sampling_rules(
@@ -655,6 +1034,25 @@ xray_get_sampling_rules <- function(NextToken = NULL) {
 #'
 #' @param NextToken Pagination token.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SamplingStatisticSummaries = list(
+#'     list(
+#'       RuleName = "string",
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RequestCount = 123,
+#'       BorrowCount = 123,
+#'       SampledCount = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_sampling_statistic_summaries(
@@ -693,6 +1091,34 @@ xray_get_sampling_statistic_summaries <- function(NextToken = NULL) {
 #' xray_get_sampling_targets(SamplingStatisticsDocuments)
 #'
 #' @param SamplingStatisticsDocuments &#91;required&#93; Information about rules that the service is using to sample requests.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SamplingTargetDocuments = list(
+#'     list(
+#'       RuleName = "string",
+#'       FixedRate = 123.0,
+#'       ReservoirQuota = 123,
+#'       ReservoirQuotaTTL = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Interval = 123
+#'     )
+#'   ),
+#'   LastRuleModification = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UnprocessedStatistics = list(
+#'     list(
+#'       RuleName = "string",
+#'       ErrorCode = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -755,6 +1181,106 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
 #' generate a graph.
 #' @param NextToken Pagination token.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Services = list(
+#'     list(
+#'       ReferenceId = 123,
+#'       Name = "string",
+#'       Names = list(
+#'         "string"
+#'       ),
+#'       Root = TRUE|FALSE,
+#'       AccountId = "string",
+#'       Type = "string",
+#'       State = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Edges = list(
+#'         list(
+#'           ReferenceId = 123,
+#'           StartTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           EndTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           SummaryStatistics = list(
+#'             OkCount = 123,
+#'             ErrorStatistics = list(
+#'               ThrottleCount = 123,
+#'               OtherCount = 123,
+#'               TotalCount = 123
+#'             ),
+#'             FaultStatistics = list(
+#'               OtherCount = 123,
+#'               TotalCount = 123
+#'             ),
+#'             TotalCount = 123,
+#'             TotalResponseTime = 123.0
+#'           ),
+#'           ResponseTimeHistogram = list(
+#'             list(
+#'               Value = 123.0,
+#'               Count = 123
+#'             )
+#'           ),
+#'           Aliases = list(
+#'             list(
+#'               Name = "string",
+#'               Names = list(
+#'                 "string"
+#'               ),
+#'               Type = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       SummaryStatistics = list(
+#'         OkCount = 123,
+#'         ErrorStatistics = list(
+#'           ThrottleCount = 123,
+#'           OtherCount = 123,
+#'           TotalCount = 123
+#'         ),
+#'         FaultStatistics = list(
+#'           OtherCount = 123,
+#'           TotalCount = 123
+#'         ),
+#'         TotalCount = 123,
+#'         TotalResponseTime = 123.0
+#'       ),
+#'       DurationHistogram = list(
+#'         list(
+#'           Value = 123.0,
+#'           Count = 123
+#'         )
+#'       ),
+#'       ResponseTimeHistogram = list(
+#'         list(
+#'           Value = 123.0,
+#'           Count = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ContainsOldGroupVersions = TRUE|FALSE,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_service_graph(
@@ -815,6 +1341,60 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
 #' requests require the EntitySelectorExpression ID be provided.
 #' @param NextToken Pagination token.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TimeSeriesServiceStatistics = list(
+#'     list(
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EdgeSummaryStatistics = list(
+#'         OkCount = 123,
+#'         ErrorStatistics = list(
+#'           ThrottleCount = 123,
+#'           OtherCount = 123,
+#'           TotalCount = 123
+#'         ),
+#'         FaultStatistics = list(
+#'           OtherCount = 123,
+#'           TotalCount = 123
+#'         ),
+#'         TotalCount = 123,
+#'         TotalResponseTime = 123.0
+#'       ),
+#'       ServiceSummaryStatistics = list(
+#'         OkCount = 123,
+#'         ErrorStatistics = list(
+#'           ThrottleCount = 123,
+#'           OtherCount = 123,
+#'           TotalCount = 123
+#'         ),
+#'         FaultStatistics = list(
+#'           OtherCount = 123,
+#'           TotalCount = 123
+#'         ),
+#'         TotalCount = 123,
+#'         TotalResponseTime = 123.0
+#'       ),
+#'       ServiceForecastStatistics = list(
+#'         FaultCountHigh = 123,
+#'         FaultCountLow = 123
+#'       ),
+#'       ResponseTimeHistogram = list(
+#'         list(
+#'           Value = 123.0,
+#'           Count = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ContainsOldGroupVersions = TRUE|FALSE,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_time_series_service_statistics(
@@ -863,6 +1443,99 @@ xray_get_time_series_service_statistics <- function(StartTime, EndTime, GroupNam
 #'
 #' @param TraceIds &#91;required&#93; Trace IDs of requests for which to generate a service graph.
 #' @param NextToken Pagination token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Services = list(
+#'     list(
+#'       ReferenceId = 123,
+#'       Name = "string",
+#'       Names = list(
+#'         "string"
+#'       ),
+#'       Root = TRUE|FALSE,
+#'       AccountId = "string",
+#'       Type = "string",
+#'       State = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Edges = list(
+#'         list(
+#'           ReferenceId = 123,
+#'           StartTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           EndTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           SummaryStatistics = list(
+#'             OkCount = 123,
+#'             ErrorStatistics = list(
+#'               ThrottleCount = 123,
+#'               OtherCount = 123,
+#'               TotalCount = 123
+#'             ),
+#'             FaultStatistics = list(
+#'               OtherCount = 123,
+#'               TotalCount = 123
+#'             ),
+#'             TotalCount = 123,
+#'             TotalResponseTime = 123.0
+#'           ),
+#'           ResponseTimeHistogram = list(
+#'             list(
+#'               Value = 123.0,
+#'               Count = 123
+#'             )
+#'           ),
+#'           Aliases = list(
+#'             list(
+#'               Name = "string",
+#'               Names = list(
+#'                 "string"
+#'               ),
+#'               Type = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       SummaryStatistics = list(
+#'         OkCount = 123,
+#'         ErrorStatistics = list(
+#'           ThrottleCount = 123,
+#'           OtherCount = 123,
+#'           TotalCount = 123
+#'         ),
+#'         FaultStatistics = list(
+#'           OtherCount = 123,
+#'           TotalCount = 123
+#'         ),
+#'         TotalCount = 123,
+#'         TotalResponseTime = 123.0
+#'       ),
+#'       DurationHistogram = list(
+#'         list(
+#'           Value = 123.0,
+#'           Count = 123
+#'         )
+#'       ),
+#'       ResponseTimeHistogram = list(
+#'         list(
+#'           Value = 123.0,
+#'           Count = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -935,6 +1608,188 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #' @param NextToken Specify the pagination token returned by a previous request to retrieve
 #' the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TraceSummaries = list(
+#'     list(
+#'       Id = "string",
+#'       Duration = 123.0,
+#'       ResponseTime = 123.0,
+#'       HasFault = TRUE|FALSE,
+#'       HasError = TRUE|FALSE,
+#'       HasThrottle = TRUE|FALSE,
+#'       IsPartial = TRUE|FALSE,
+#'       Http = list(
+#'         HttpURL = "string",
+#'         HttpStatus = 123,
+#'         HttpMethod = "string",
+#'         UserAgent = "string",
+#'         ClientIp = "string"
+#'       ),
+#'       Annotations = list(
+#'         list(
+#'           list(
+#'             AnnotationValue = list(
+#'               NumberValue = 123.0,
+#'               BooleanValue = TRUE|FALSE,
+#'               StringValue = "string"
+#'             ),
+#'             ServiceIds = list(
+#'               list(
+#'                 Name = "string",
+#'                 Names = list(
+#'                   "string"
+#'                 ),
+#'                 AccountId = "string",
+#'                 Type = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Users = list(
+#'         list(
+#'           UserName = "string",
+#'           ServiceIds = list(
+#'             list(
+#'               Name = "string",
+#'               Names = list(
+#'                 "string"
+#'               ),
+#'               AccountId = "string",
+#'               Type = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ServiceIds = list(
+#'         list(
+#'           Name = "string",
+#'           Names = list(
+#'             "string"
+#'           ),
+#'           AccountId = "string",
+#'           Type = "string"
+#'         )
+#'       ),
+#'       ResourceARNs = list(
+#'         list(
+#'           ARN = "string"
+#'         )
+#'       ),
+#'       InstanceIds = list(
+#'         list(
+#'           Id = "string"
+#'         )
+#'       ),
+#'       AvailabilityZones = list(
+#'         list(
+#'           Name = "string"
+#'         )
+#'       ),
+#'       EntryPoint = list(
+#'         Name = "string",
+#'         Names = list(
+#'           "string"
+#'         ),
+#'         AccountId = "string",
+#'         Type = "string"
+#'       ),
+#'       FaultRootCauses = list(
+#'         list(
+#'           Services = list(
+#'             list(
+#'               Name = "string",
+#'               Names = list(
+#'                 "string"
+#'               ),
+#'               Type = "string",
+#'               AccountId = "string",
+#'               EntityPath = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Exceptions = list(
+#'                     list(
+#'                       Name = "string",
+#'                       Message = "string"
+#'                     )
+#'                   ),
+#'                   Remote = TRUE|FALSE
+#'                 )
+#'               ),
+#'               Inferred = TRUE|FALSE
+#'             )
+#'           ),
+#'           ClientImpacting = TRUE|FALSE
+#'         )
+#'       ),
+#'       ErrorRootCauses = list(
+#'         list(
+#'           Services = list(
+#'             list(
+#'               Name = "string",
+#'               Names = list(
+#'                 "string"
+#'               ),
+#'               Type = "string",
+#'               AccountId = "string",
+#'               EntityPath = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Exceptions = list(
+#'                     list(
+#'                       Name = "string",
+#'                       Message = "string"
+#'                     )
+#'                   ),
+#'                   Remote = TRUE|FALSE
+#'                 )
+#'               ),
+#'               Inferred = TRUE|FALSE
+#'             )
+#'           ),
+#'           ClientImpacting = TRUE|FALSE
+#'         )
+#'       ),
+#'       ResponseTimeRootCauses = list(
+#'         list(
+#'           Services = list(
+#'             list(
+#'               Name = "string",
+#'               Names = list(
+#'                 "string"
+#'               ),
+#'               Type = "string",
+#'               AccountId = "string",
+#'               EntityPath = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Coverage = 123.0,
+#'                   Remote = TRUE|FALSE
+#'                 )
+#'               ),
+#'               Inferred = TRUE|FALSE
+#'             )
+#'           ),
+#'           ClientImpacting = TRUE|FALSE
+#'         )
+#'       ),
+#'       Revision = 123,
+#'       MatchedEventTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   ApproximateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TracesProcessedCount = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_trace_summaries(
@@ -990,6 +1845,20 @@ xray_get_trace_summaries <- function(StartTime, EndTime, TimeRangeType = NULL, S
 #' `NextToken` value returned with the current page of results as the value
 #' of this parameter to get the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -1043,6 +1912,18 @@ xray_list_tags_for_resource <- function(ResourceARN, NextToken = NULL) {
 #' @param Type &#91;required&#93; The type of encryption. Set to `KMS` to use your own key for encryption.
 #' Set to `NONE` for default encryption.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EncryptionConfig = list(
+#'     KeyId = "string",
+#'     Status = "UPDATING"|"ACTIVE",
+#'     Type = "NONE"|"KMS"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_encryption_config(
@@ -1084,6 +1965,12 @@ xray_put_encryption_config <- function(KeyId = NULL, Type) {
 #' @param EC2InstanceId 
 #' @param Hostname 
 #' @param ResourceARN 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1192,6 +2079,20 @@ xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, H
 #' @param TraceSegmentDocuments &#91;required&#93; A string containing a JSON document defining one or more segments or
 #' subsegments.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UnprocessedTraceSegments = list(
+#'     list(
+#'       Id = "string",
+#'       ErrorCode = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_trace_segments(
@@ -1245,12 +2146,18 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
 #' -   Maximum tag value length: 256 Unicode characters
 #' 
 #' -   Valid values for key and value: a-z, A-Z, 0-9, space, and the
-#'     following characters: \\_ . : / = + - and @@
+#'     following characters: _ . : / = + - and @@
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
 #' -   Don't use `aws:` as a prefix for keys; it's reserved for AWS use.
 #'     You cannot edit or delete system tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1297,6 +2204,12 @@ xray_tag_resource <- function(ResourceARN, Tags) {
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Number (ARN) of an X-Ray group or sampling rule.
 #' @param TagKeys &#91;required&#93; Keys for one or more tags that you want to remove from an X-Ray group or
 #' sampling rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1350,6 +2263,22 @@ xray_untag_resource <- function(ResourceARN, TagKeys) {
 #'     insights notifications for the group. Notifications can only be
 #'     enabled on a group with InsightsEnabled set to true.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Group = list(
+#'     GroupName = "string",
+#'     GroupARN = "string",
+#'     FilterExpression = "string",
+#'     InsightsConfiguration = list(
+#'       InsightsEnabled = TRUE|FALSE,
+#'       NotificationsEnabled = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_group(
@@ -1392,6 +2321,38 @@ xray_update_group <- function(GroupName = NULL, GroupARN = NULL, FilterExpressio
 #' xray_update_sampling_rule(SamplingRuleUpdate)
 #'
 #' @param SamplingRuleUpdate &#91;required&#93; The rule and fields to change.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SamplingRuleRecord = list(
+#'     SamplingRule = list(
+#'       RuleName = "string",
+#'       RuleARN = "string",
+#'       ResourceARN = "string",
+#'       Priority = 123,
+#'       FixedRate = 123.0,
+#'       ReservoirSize = 123,
+#'       ServiceName = "string",
+#'       ServiceType = "string",
+#'       Host = "string",
+#'       HTTPMethod = "string",
+#'       URLPath = "string",
+#'       Version = 123,
+#'       Attributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ModifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -9,6 +9,85 @@ personalize_describe_solution_version(solutionVersionArn)
 \arguments{
 \item{solutionVersionArn}{[required] The Amazon Resource Name (ARN) of the solution version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  solutionVersion = list(
+    solutionVersionArn = "string",
+    solutionArn = "string",
+    performHPO = TRUE|FALSE,
+    performAutoML = TRUE|FALSE,
+    recipeArn = "string",
+    eventType = "string",
+    datasetGroupArn = "string",
+    solutionConfig = list(
+      eventValueThreshold = "string",
+      hpoConfig = list(
+        hpoObjective = list(
+          type = "string",
+          metricName = "string",
+          metricRegex = "string"
+        ),
+        hpoResourceConfig = list(
+          maxNumberOfTrainingJobs = "string",
+          maxParallelTrainingJobs = "string"
+        ),
+        algorithmHyperParameterRanges = list(
+          integerHyperParameterRanges = list(
+            list(
+              name = "string",
+              minValue = 123,
+              maxValue = 123
+            )
+          ),
+          continuousHyperParameterRanges = list(
+            list(
+              name = "string",
+              minValue = 123.0,
+              maxValue = 123.0
+            )
+          ),
+          categoricalHyperParameterRanges = list(
+            list(
+              name = "string",
+              values = list(
+                "string"
+              )
+            )
+          )
+        )
+      ),
+      algorithmHyperParameters = list(
+        "string"
+      ),
+      featureTransformationParameters = list(
+        "string"
+      ),
+      autoMLConfig = list(
+        metricName = "string",
+        recipeList = list(
+          "string"
+        )
+      )
+    ),
+    trainingHours = 123.0,
+    trainingMode = "FULL"|"UPDATE",
+    tunedHPOParams = list(
+      algorithmHyperParameters = list(
+        "string"
+      )
+    ),
+    status = "string",
+    failureReason = "string",
+    creationDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastUpdatedDateTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Describes a specific version of a solution. For more information on
 solutions, see \code{\link[=personalize_create_solution]{create_solution}}.

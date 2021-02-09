@@ -18,6 +18,17 @@ translate_update_parallel_data(Name, Description, ParallelDataConfig,
 \item{ClientToken}{[required] A unique identifier for the request. This token is automatically
 generated when you use Amazon Translate through an AWS SDK.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string",
+  Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
+  LatestUpdateAttemptStatus = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
+  LatestUpdateAttemptAt = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Updates a previously created parallel data resource by importing a new
 input file from Amazon S3.

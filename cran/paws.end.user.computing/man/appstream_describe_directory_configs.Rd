@@ -16,6 +16,27 @@ appstream_describe_directory_configs(DirectoryNames, MaxResults,
 \item{NextToken}{The pagination token to use to retrieve the next page of results for
 this operation. If this value is null, it retrieves the first page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DirectoryConfigs = list(
+    list(
+      DirectoryName = "string",
+      OrganizationalUnitDistinguishedNames = list(
+        "string"
+      ),
+      ServiceAccountCredentials = list(
+        AccountName = "string",
+        AccountPassword = "string"
+      ),
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list that describes one or more specified Directory Config
 objects for AppStream 2.0, if the names for these objects are provided.

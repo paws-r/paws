@@ -74,6 +74,37 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Snapshots = list(
+    list(
+      DataEncryptionKeyId = "string",
+      Description = "string",
+      Encrypted = TRUE|FALSE,
+      KmsKeyId = "string",
+      OwnerId = "string",
+      Progress = "string",
+      SnapshotId = "string",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      State = "pending"|"completed"|"error",
+      StateMessage = "string",
+      VolumeId = "string",
+      VolumeSize = 123,
+      OwnerAlias = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the specified EBS snapshots available to you or all of the EBS
 snapshots available to you.

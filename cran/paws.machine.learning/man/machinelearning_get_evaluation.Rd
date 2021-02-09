@@ -12,6 +12,38 @@ machinelearning_get_evaluation(EvaluationId)
 is recorded and cataloged. The ID provides the means to access the
 information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EvaluationId = "string",
+  MLModelId = "string",
+  EvaluationDataSourceId = "string",
+  InputDataLocationS3 = "string",
+  CreatedByIamUser = "string",
+  CreatedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastUpdatedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  Name = "string",
+  Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
+  PerformanceMetrics = list(
+    Properties = list(
+      "string"
+    )
+  ),
+  LogUri = "string",
+  Message = "string",
+  ComputeTime = 123,
+  FinishedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  StartedAt = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns an \code{Evaluation} that includes metadata as well as the current
 status of the \code{Evaluation}.

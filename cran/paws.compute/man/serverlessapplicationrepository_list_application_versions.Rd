@@ -14,6 +14,20 @@ serverlessapplicationrepository_list_application_versions(ApplicationId,
 
 \item{NextToken}{A token to specify where to start paginating.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Versions = list(
+    list(
+      ApplicationId = "string",
+      CreationTime = "string",
+      SemanticVersion = "string",
+      SourceCodeUrl = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists versions for the specified application.
 }

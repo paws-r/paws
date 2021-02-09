@@ -13,6 +13,19 @@ chime_list_attendees(MeetingId, NextToken, MaxResults)
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attendees = list(
+    list(
+      ExternalUserId = "string",
+      AttendeeId = "string",
+      JoinToken = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the attendees for the specified Amazon Chime SDK meeting. For more
 information about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in

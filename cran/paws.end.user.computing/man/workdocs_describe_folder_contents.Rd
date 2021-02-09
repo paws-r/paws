@@ -28,6 +28,77 @@ previous call.}
 \item{Include}{The contents to include. Specify "INITIALIZED" to include initialized
 documents.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Folders = list(
+    list(
+      Id = "string",
+      Name = "string",
+      CreatorId = "string",
+      ParentFolderId = "string",
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ModifiedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+      Signature = "string",
+      Labels = list(
+        "string"
+      ),
+      Size = 123,
+      LatestVersionSize = 123
+    )
+  ),
+  Documents = list(
+    list(
+      Id = "string",
+      CreatorId = "string",
+      ParentFolderId = "string",
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ModifiedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      LatestVersionMetadata = list(
+        Id = "string",
+        Name = "string",
+        ContentType = "string",
+        Size = 123,
+        Signature = "string",
+        Status = "INITIALIZED"|"ACTIVE",
+        CreatedTimestamp = as.POSIXct(
+          "2015-01-01"
+        ),
+        ModifiedTimestamp = as.POSIXct(
+          "2015-01-01"
+        ),
+        ContentCreatedTimestamp = as.POSIXct(
+          "2015-01-01"
+        ),
+        ContentModifiedTimestamp = as.POSIXct(
+          "2015-01-01"
+        ),
+        CreatorId = "string",
+        Thumbnail = list(
+          "string"
+        ),
+        Source = list(
+          "string"
+        )
+      ),
+      ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+      Labels = list(
+        "string"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Describes the contents of the specified folder, including its documents
 and subfolders.

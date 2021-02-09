@@ -11,14 +11,27 @@ organizations_describe_effective_policy(PolicyType, TargetId)
 \item{PolicyType}{[required] The type of policy that you want information about. You can specify one
 of the following values:
 \itemize{
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES_OPT_OUT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG_POLICY}
 }}
 
 \item{TargetId}{When you're signed in as the management account, specify the ID of the
 account that you want details about. Specifying an organization root or
 organizational unit (OU) as the target is not supported.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  EffectivePolicy = list(
+    PolicyContent = "string",
+    LastUpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    TargetId = "string",
+    PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"
+  )
+)
+}
 }
 \description{
 Returns the contents of the effective policy for specified policy type

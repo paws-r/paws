@@ -15,6 +15,10 @@ autoscaling_attach_load_balancers(AutoScalingGroupName,
 \item{LoadBalancerNames}{[required] The names of the load balancers. You can specify up to 10 load
 balancers.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 To attach an Application Load Balancer, Network Load Balancer, or
 Gateway Load Balancer, use the

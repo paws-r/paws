@@ -32,6 +32,24 @@ Examples:
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Mappings = list(
+    list(
+      PatchGroup = "string",
+      BaselineIdentity = list(
+        BaselineId = "string",
+        BaselineName = "string",
+        OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
+        BaselineDescription = "string",
+        DefaultBaseline = TRUE|FALSE
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all patch groups that have been registered with patch baselines.
 }

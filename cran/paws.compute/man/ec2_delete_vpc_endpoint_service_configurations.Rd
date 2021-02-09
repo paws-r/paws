@@ -14,6 +14,20 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ServiceIds}{[required] The IDs of one or more services.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Unsuccessful = list(
+    list(
+      Error = list(
+        Code = "string",
+        Message = "string"
+      ),
+      ResourceId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes one or more VPC endpoint service configurations in your account.
 Before you delete the endpoint service configuration, you must reject

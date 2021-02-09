@@ -10,6 +10,10 @@ sms_stop_app_replication(appId)
 \arguments{
 \item{appId}{The ID of the application.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Stops replicating the specified application by deleting the replication
 job for each server in the application.

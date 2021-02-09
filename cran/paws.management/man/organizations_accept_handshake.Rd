@@ -14,6 +14,36 @@ The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for handshake
 ID string requires "h-" followed by from 8 to 32 lowercase letters or
 digits.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Handshake = list(
+    Id = "string",
+    Arn = "string",
+    Parties = list(
+      list(
+        Id = "string",
+        Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+      )
+    ),
+    State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
+    RequestedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ExpirationTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
+    Resources = list(
+      list(
+        Value = "string",
+        Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
+        Resources = list()
+      )
+    )
+  )
+)
+}
+}
 \description{
 Sends a response to the originator of a handshake agreeing to the action
 proposed by the handshake request.

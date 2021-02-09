@@ -16,6 +16,16 @@ NULL
 #' @usage
 #' resourcegroupstaggingapi_describe_report_creation()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "string",
+#'   S3Location = "string",
+#'   ErrorMessage = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_report_creation()
@@ -67,10 +77,10 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' count of returned noncompliant resources includes only resources in the
 #' specified Regions.
 #' @param ResourceTypeFilters The constraints on the resources that you want returned. The format of
-#' each resource type is `service\\[:resourceType\\]`. For example,
-#' specifying a resource type of `ec2` returns all Amazon EC2 resources
-#' (which includes EC2 instances). Specifying a resource type of
-#' `ec2:instance` returns only EC2 instances.
+#' each resource type is `service[:resourceType]`. For example, specifying
+#' a resource type of `ec2` returns all Amazon EC2 resources (which
+#' includes EC2 instances). Specifying a resource type of `ec2:instance`
+#' returns only EC2 instances.
 #' 
 #' The string for each service name and resource type is the same as that
 #' embedded in a resource's Amazon Resource Name (ARN). Consult the *AWS
@@ -99,6 +109,24 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' value empty for your initial request. If the response includes a
 #' `PaginationToken`, use that string for this value to request an
 #' additional page of data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SummaryList = list(
+#'     list(
+#'       LastUpdated = "string",
+#'       TargetId = "string",
+#'       TargetIdType = "ACCOUNT"|"OU"|"ROOT",
+#'       Region = "string",
+#'       ResourceType = "string",
+#'       NonCompliantResources = 123
+#'     )
+#'   ),
+#'   PaginationToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -188,7 +216,7 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' -   If you *don't* specify a TagFilter, the response includes all
 #'     resources that were ever associated with tags. Resources that
 #'     currently don't have associated tags are shown with an empty tag
-#'     set, like this: `"Tags": \\[\\]`.
+#'     set, like this: `"Tags": []`.
 #' 
 #' -   If you specify more than one filter in a single request, the
 #'     response returns only those resources that satisfy all specified
@@ -201,8 +229,9 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' -   If you don't specify any values for a key, the response returns
 #'     resources that are tagged with that key irrespective of the value.
 #' 
-#'     For example, for filters: filter1 = \{key1, \{value1\}\}, filter2 =
-#'     \{key2, \{value2,value3,value4\}\} , filter3 = \{key3\}:
+#'     For example, for filters: filter1 = \{key1, \{value1\}\},
+#'     filter2 = \{key2, \{value2,value3,value4\}\} , filter3 =
+#'     \{key3\}:
 #' 
 #'     -   GetResources( \{filter1\} ) returns resources tagged with
 #'         key1=value1
@@ -210,8 +239,8 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #'     -   GetResources( \{filter2\} ) returns resources tagged with
 #'         key2=value2 or key2=value3 or key2=value4
 #' 
-#'     -   GetResources( \{filter3\} ) returns resources tagged with any tag
-#'         containing key3 as its tag key, irrespective of its value
+#'     -   GetResources( \{filter3\} ) returns resources tagged with any
+#'         tag containing key3 as its tag key, irrespective of its value
 #' 
 #'     -   GetResources( \{filter1,filter2,filter3\} ) returns resources
 #'         tagged with ( key1=value1) and ( key2=value2 or key2=value3 or
@@ -240,10 +269,10 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' You can set `TagsPerPage` to a minimum of 100 items and the maximum of
 #' 500 items.
 #' @param ResourceTypeFilters The constraints on the resources that you want returned. The format of
-#' each resource type is `service\\[:resourceType\\]`. For example,
-#' specifying a resource type of `ec2` returns all Amazon EC2 resources
-#' (which includes EC2 instances). Specifying a resource type of
-#' `ec2:instance` returns only EC2 instances.
+#' each resource type is `service[:resourceType]`. For example, specifying
+#' a resource type of `ec2` returns all Amazon EC2 resources (which
+#' includes EC2 instances). Specifying a resource type of `ec2:instance`
+#' returns only EC2 instances.
 #' 
 #' The string for each service name and resource type is the same as that
 #' embedded in a resource's Amazon Resource Name (ARN). Consult the *AWS
@@ -271,6 +300,34 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' 
 #' You can use this parameter only if the `IncludeComplianceDetails`
 #' parameter is also set to `true`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PaginationToken = "string",
+#'   ResourceTagMappingList = list(
+#'     list(
+#'       ResourceARN = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ComplianceDetails = list(
+#'         NoncompliantKeys = list(
+#'           "string"
+#'         ),
+#'         KeysWithNoncompliantValues = list(
+#'           "string"
+#'         ),
+#'         ComplianceStatus = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -327,6 +384,17 @@ resourcegroupstaggingapi_get_resources <- function(PaginationToken = NULL, TagFi
 #' `PaginationToken`, use that string for this value to request an
 #' additional page of data.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PaginationToken = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_tag_keys(
@@ -370,6 +438,17 @@ resourcegroupstaggingapi_get_tag_keys <- function(PaginationToken = NULL) {
 #' additional page of data.
 #' @param Key &#91;required&#93; The key for which you want to list all existing values in the specified
 #' Region for the AWS account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PaginationToken = "string",
+#'   TagValues = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -425,6 +504,12 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
 #' 
 #' For more information on S3 bucket requirements, including an example
 #' bucket policy, see the example S3 bucket policy on this page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -491,6 +576,20 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' @param Tags &#91;required&#93; The tags that you want to add to the specified resources. A tag consists
 #' of a key and a value that you define.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedResourcesMap = list(
+#'     list(
+#'       StatusCode = 123,
+#'       ErrorCode = "InternalServiceException"|"InvalidParameterException",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resources(
@@ -549,6 +648,20 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #' in the *AWS General Reference*.
 #' @param TagKeys &#91;required&#93; A list of the tag keys that you want to remove from the specified
 #' resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedResourcesMap = list(
+#'     list(
+#'       StatusCode = 123,
+#'       ErrorCode = "InternalServiceException"|"InvalidParameterException",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

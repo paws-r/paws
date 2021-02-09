@@ -7,6 +7,25 @@ belongs to}
 \usage{
 organizations_describe_organization()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Organization = list(
+    Id = "string",
+    Arn = "string",
+    FeatureSet = "ALL"|"CONSOLIDATED_BILLING",
+    MasterAccountArn = "string",
+    MasterAccountId = "string",
+    MasterAccountEmail = "string",
+    AvailablePolicyTypes = list(
+      list(
+        Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+        Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves information about the organization that the user's account
 belongs to.

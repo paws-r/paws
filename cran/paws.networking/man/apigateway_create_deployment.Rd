@@ -27,12 +27,30 @@ input, if a cache cluster is enabled.}
 \item{variables}{A map that defines the stage variables for the Stage resource that is
 associated with the new deployment. Variable names can have alphanumeric
 and underscore characters, and the values must match
-\verb{\\\[A-Za-z0-9-._~:/?#&=,\\\]+}.}
+\verb{[A-Za-z0-9-._~:/?#&=,]+}.}
 
 \item{canarySettings}{The input configuration for the canary deployment when the deployment is
 a canary release deployment.}
 
 \item{tracingEnabled}{Specifies whether active tracing with X-ray is enabled for the Stage.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  description = "string",
+  createdDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  apiSummary = list(
+    list(
+      list(
+        authorizationType = "string",
+        apiKeyRequired = TRUE|FALSE
+      )
+    )
+  )
+)
+}
 }
 \description{
 Creates a Deployment resource, which makes a specified RestApi callable

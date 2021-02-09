@@ -120,6 +120,27 @@ If you don't specify a list of contexts, Amazon Lex will use the current
 list of contexts for the session. If you specify an empty list, all
 contexts for the session are cleared.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  contentType = "string",
+  intentName = "string",
+  nluIntentConfidence = "string",
+  alternativeIntents = "string",
+  slots = "string",
+  sessionAttributes = "string",
+  sentimentResponse = "string",
+  message = "string",
+  messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite",
+  dialogState = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Fulfilled"|"ReadyForFulfillment"|"Failed",
+  slotToElicit = "string",
+  inputTranscript = "string",
+  audioStream = raw,
+  botVersion = "string",
+  sessionId = "string",
+  activeContexts = "string"
+)
+}
+}
 \description{
 Sends user input (text or speech) to Amazon Lex. Clients use this API to
 send text and audio requests to Amazon Lex at runtime. Amazon Lex

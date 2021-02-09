@@ -2,9 +2,7 @@
 % Please edit documentation in R/lexmodelbuildingservice_operations.R
 \name{lexmodelbuildingservice_get_bots}
 \alias{lexmodelbuildingservice_get_bots}
-\title{Returns bot information as follows: - If you provide the nameContains
-field, the response includes information for the $LATEST version of all
-bots whose name contains the specified string}
+\title{Returns bot information as follows:}
 \usage{
 lexmodelbuildingservice_get_bots(nextToken, maxResults, nameContains)
 }
@@ -20,6 +18,26 @@ will return. The default is 10.}
 \item{nameContains}{Substring to match in bot names. A bot will be returned if any part of
 its name matches the substring. For example, "xyz" matches both "xyzabc"
 and "abcxyz."}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  bots = list(
+    list(
+      name = "string",
+      description = "string",
+      status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
+      lastUpdatedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      createdDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      version = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
 }
 \description{
 Returns bot information as follows:

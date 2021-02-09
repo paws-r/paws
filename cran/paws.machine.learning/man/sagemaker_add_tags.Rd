@@ -14,6 +14,17 @@ sagemaker_add_tags(ResourceArn, Tags)
 resources in different ways, for example, by purpose, owner, or
 environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Adds or overwrites one or more tags for the specified Amazon SageMaker
 resource. You can add tags to notebook instances, training jobs,

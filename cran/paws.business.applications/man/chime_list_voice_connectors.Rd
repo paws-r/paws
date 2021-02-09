@@ -12,6 +12,27 @@ chime_list_voice_connectors(NextToken, MaxResults)
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VoiceConnectors = list(
+    list(
+      VoiceConnectorId = "string",
+      AwsRegion = "us-east-1"|"us-west-2",
+      Name = "string",
+      OutboundHostName = "string",
+      RequireEncryption = TRUE|FALSE,
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the Amazon Chime Voice Connectors for the administrator's AWS
 account.

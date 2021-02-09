@@ -9,6 +9,53 @@ datasync_describe_task(TaskArn)
 \arguments{
 \item{TaskArn}{[required] The Amazon Resource Name (ARN) of the task to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TaskArn = "string",
+  Status = "AVAILABLE"|"CREATING"|"QUEUED"|"RUNNING"|"UNAVAILABLE",
+  Name = "string",
+  CurrentTaskExecutionArn = "string",
+  SourceLocationArn = "string",
+  DestinationLocationArn = "string",
+  CloudWatchLogGroupArn = "string",
+  SourceNetworkInterfaceArns = list(
+    "string"
+  ),
+  DestinationNetworkInterfaceArns = list(
+    "string"
+  ),
+  Options = list(
+    VerifyMode = "POINT_IN_TIME_CONSISTENT"|"ONLY_FILES_TRANSFERRED"|"NONE",
+    OverwriteMode = "ALWAYS"|"NEVER",
+    Atime = "NONE"|"BEST_EFFORT",
+    Mtime = "NONE"|"PRESERVE",
+    Uid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
+    Gid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
+    PreserveDeletedFiles = "PRESERVE"|"REMOVE",
+    PreserveDevices = "NONE"|"PRESERVE",
+    PosixPermissions = "NONE"|"PRESERVE",
+    BytesPerSecond = 123,
+    TaskQueueing = "ENABLED"|"DISABLED",
+    LogLevel = "OFF"|"BASIC"|"TRANSFER",
+    TransferMode = "CHANGED"|"ALL"
+  ),
+  Excludes = list(
+    list(
+      FilterType = "SIMPLE_PATTERN",
+      Value = "string"
+    )
+  ),
+  Schedule = list(
+    ScheduleExpression = "string"
+  ),
+  ErrorCode = "string",
+  ErrorDetail = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns metadata about a task.
 }

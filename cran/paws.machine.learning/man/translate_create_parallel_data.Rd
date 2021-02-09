@@ -21,6 +21,13 @@ must assign a name that is unique in the account and region.}
 \item{ClientToken}{[required] A unique identifier for the request. This token is automatically
 generated when you use Amazon Translate through an AWS SDK.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string",
+  Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED"
+)
+}
+}
 \description{
 Creates a parallel data resource in Amazon Translate by importing an
 input file from Amazon S3. Parallel data files contain examples of

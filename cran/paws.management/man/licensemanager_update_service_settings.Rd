@@ -18,6 +18,10 @@ Manager alerts.}
 
 \item{EnableCrossAccountsDiscovery}{Activates cross-account discovery.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates License Manager settings for the current Region.
 }

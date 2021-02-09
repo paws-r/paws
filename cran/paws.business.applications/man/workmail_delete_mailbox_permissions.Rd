@@ -15,6 +15,10 @@ group) exists.}
 \item{GranteeId}{[required] The identifier of the member (user or group) for which to delete granted
 permissions.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes permissions granted to a member (user or group).
 }

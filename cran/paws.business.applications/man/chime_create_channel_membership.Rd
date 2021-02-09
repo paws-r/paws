@@ -19,6 +19,16 @@ members are only returned if the type filter in
 \code{HIDDEN}. Otherwise hidden members are not returned. This is only
 supported by moderators.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelArn = "string",
+  Member = list(
+    Arn = "string",
+    Name = "string"
+  )
+)
+}
+}
 \description{
 Adds a user to a channel. The \code{InvitedBy} response field is derived from
 the request header. A channel member can:

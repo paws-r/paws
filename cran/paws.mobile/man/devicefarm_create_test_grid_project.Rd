@@ -11,6 +11,19 @@ devicefarm_create_test_grid_project(name, description)
 
 \item{description}{Human-readable description of the project.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  testGridProject = list(
+    arn = "string",
+    name = "string",
+    description = "string",
+    created = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates a Selenium testing project. Projects are used to track
 TestGridSession instances.

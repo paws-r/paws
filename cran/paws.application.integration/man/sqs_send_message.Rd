@@ -93,10 +93,15 @@ after the message is received and deleted.
 The maximum length of \code{MessageDeduplicationId} is 128 characters.
 \code{MessageDeduplicationId} can contain alphanumeric characters (\code{a-z},
 \code{A-Z}, \code{0-9}) and punctuation
-(\verb{!\\"#$\%&\\'()*+,-./:;<=>?@\\\[\\\\\]^_\\`\\\{|\\\}~}).
+(\verb{!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~}).
 
 For best practices of using \code{MessageDeduplicationId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html}{Using the MessageDeduplicationId Property}
-in the \emph{Amazon Simple Queue Service Developer Guide}.}
+in the \emph{Amazon Simple Queue Service Developer Guide}.
+
+[]: R:\%5C
+[Using the
+MessageDeduplicationId
+Property]: R:Using\%20the\%0AMessageDeduplicationId\%0AProperty}
 
 \item{MessageGroupId}{This parameter applies only to FIFO (first-in-first-out) queues.
 
@@ -118,13 +123,28 @@ messages are sorted by time sent. The caller can't specify a
 
 The length of \code{MessageGroupId} is 128 characters. Valid values:
 alphanumeric characters and punctuation
-\verb{(!\\"#$\%&\\'()*+,-./:;<=>?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
+\verb{(!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~)}.
 
 For best practices of using \code{MessageGroupId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html}{Using the MessageGroupId Property}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
 \code{MessageGroupId} is required for FIFO queues. You can't use it for
-Standard queues.}
+Standard queues.
+
+[]: R:\%5C
+[Using the
+MessageGroupId
+Property]: R:Using\%20the\%0AMessageGroupId\%0AProperty}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  MD5OfMessageBody = "string",
+  MD5OfMessageAttributes = "string",
+  MD5OfMessageSystemAttributes = "string",
+  MessageId = "string",
+  SequenceNumber = "string"
+)
+}
 }
 \description{
 Delivers a message to the specified queue.

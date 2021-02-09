@@ -23,6 +23,8 @@ NULL
 #' @param approvalRuleTemplateName &#91;required&#93; The name for the approval rule template.
 #' @param repositoryName &#91;required&#93; The name of the repository that you want to associate with the template.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_approval_rule_template_with_repository(
@@ -68,6 +70,23 @@ codecommit_associate_approval_rule_template_with_repository <- function(approval
 #' 
 #' The length constraint limit is for each string in the array. The array
 #' itself can be empty.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   associatedRepositoryNames = list(
+#'     "string"
+#'   ),
+#'   errors = list(
+#'     list(
+#'       repositoryName = "string",
+#'       errorCode = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -126,8 +145,8 @@ codecommit_batch_associate_approval_rule_template_with_repositories <- function(
 #' @param filePaths The path of the target files used to describe the conflicts. If not
 #' specified, the default is all conflict files.
 #' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
-#' FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-#' file has differences in both branches. If LINE\\_LEVEL is specified, a
+#' FILE_LEVEL is used, which returns a not-mergeable result if the same
+#' file has differences in both branches. If LINE_LEVEL is specified, a
 #' conflict is considered not mergeable if the same file in both branches
 #' has differences on the same line.
 #' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
@@ -136,6 +155,79 @@ codecommit_batch_associate_approval_rule_template_with_repositories <- function(
 #' merge operation is successful.
 #' @param nextToken An enumeration token that, when provided in a request, returns the next
 #' batch of the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   conflicts = list(
+#'     list(
+#'       conflictMetadata = list(
+#'         filePath = "string",
+#'         fileSizes = list(
+#'           source = 123,
+#'           destination = 123,
+#'           base = 123
+#'         ),
+#'         fileModes = list(
+#'           source = "EXECUTABLE"|"NORMAL"|"SYMLINK",
+#'           destination = "EXECUTABLE"|"NORMAL"|"SYMLINK",
+#'           base = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'         ),
+#'         objectTypes = list(
+#'           source = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
+#'           destination = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
+#'           base = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK"
+#'         ),
+#'         numberOfConflicts = 123,
+#'         isBinaryFile = list(
+#'           source = TRUE|FALSE,
+#'           destination = TRUE|FALSE,
+#'           base = TRUE|FALSE
+#'         ),
+#'         contentConflict = TRUE|FALSE,
+#'         fileModeConflict = TRUE|FALSE,
+#'         objectTypeConflict = TRUE|FALSE,
+#'         mergeOperations = list(
+#'           source = "A"|"M"|"D",
+#'           destination = "A"|"M"|"D"
+#'         )
+#'       ),
+#'       mergeHunks = list(
+#'         list(
+#'           isConflict = TRUE|FALSE,
+#'           source = list(
+#'             startLine = 123,
+#'             endLine = 123,
+#'             hunkContent = "string"
+#'           ),
+#'           destination = list(
+#'             startLine = 123,
+#'             endLine = 123,
+#'             hunkContent = "string"
+#'           ),
+#'           base = list(
+#'             startLine = 123,
+#'             endLine = 123,
+#'             hunkContent = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string",
+#'   errors = list(
+#'     list(
+#'       filePath = "string",
+#'       exceptionName = "string",
+#'       message = "string"
+#'     )
+#'   ),
+#'   destinationCommitId = "string",
+#'   sourceCommitId = "string",
+#'   baseCommitId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -194,6 +286,23 @@ codecommit_batch_describe_merge_conflicts <- function(repositoryName, destinatio
 #' The length constraint limit is for each string in the array. The array
 #' itself can be empty.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   disassociatedRepositoryNames = list(
+#'     "string"
+#'   ),
+#'   errors = list(
+#'     list(
+#'       repositoryName = "string",
+#'       errorCode = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_disassociate_approval_rule_template_from_repositories(
@@ -239,6 +348,41 @@ codecommit_batch_disassociate_approval_rule_template_from_repositories <- functi
 #' You must supply the full SHA IDs of each commit. You cannot use
 #' shortened SHA IDs.
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the commits.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commits = list(
+#'     list(
+#'       commitId = "string",
+#'       treeId = "string",
+#'       parents = list(
+#'         "string"
+#'       ),
+#'       message = "string",
+#'       author = list(
+#'         name = "string",
+#'         email = "string",
+#'         date = "string"
+#'       ),
+#'       committer = list(
+#'         name = "string",
+#'         email = "string",
+#'         date = "string"
+#'       ),
+#'       additionalData = "string"
+#'     )
+#'   ),
+#'   errors = list(
+#'     list(
+#'       commitId = "string",
+#'       errorCode = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -289,6 +433,34 @@ codecommit_batch_get_commits <- function(commitIds, repositoryName) {
 #' 
 #' The length constraint limit is for each string in the array. The array
 #' itself can be empty.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositories = list(
+#'     list(
+#'       accountId = "string",
+#'       repositoryId = "string",
+#'       repositoryName = "string",
+#'       repositoryDescription = "string",
+#'       defaultBranch = "string",
+#'       lastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       cloneUrlHttp = "string",
+#'       cloneUrlSsh = "string",
+#'       Arn = "string"
+#'     )
+#'   ),
+#'   repositoriesNotFound = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -351,20 +523,20 @@ codecommit_batch_get_repositories <- function(repositoryNames) {
 #'     access users whose name matches the provided resource name. This is
 #'     a very powerful option that offers a great deal of flexibility. For
 #'     example, if you specify the AWS account *123456789012* and
-#'     *Mary\\_Major*, all of the following are counted as approvals coming
+#'     *Mary_Major*, all of the following are counted as approvals coming
 #'     from that user:
 #' 
 #'     -   An IAM user in the account
-#'         (arn:aws:iam::*123456789012*:user/*Mary\\_Major*)
+#'         (arn:aws:iam::*123456789012*:user/*Mary_Major*)
 #' 
-#'     -   A federated user identified in IAM as Mary\\_Major
-#'         (arn:aws:sts::*123456789012*:federated-user/*Mary\\_Major*)
+#'     -   A federated user identified in IAM as Mary_Major
+#'         (arn:aws:sts::*123456789012*:federated-user/*Mary_Major*)
 #' 
 #'     This option does not recognize an active session of someone assuming
 #'     the role of CodeCommitReview with a role session name of
-#'     *Mary\\_Major*
-#'     (arn:aws:sts::*123456789012*:assumed-role/CodeCommitReview/*Mary\\_Major*)
-#'     unless you include a wildcard (*Mary\\_Major).
+#'     *Mary_Major*
+#'     (arn:aws:sts::*123456789012*:assumed-role/CodeCommitReview/*Mary_Major*)
+#'     unless you include a wildcard (*Mary_Major).
 #' 
 #' -   **Fully qualified ARN**: This option allows you to specify the fully
 #'     qualified Amazon Resource Name (ARN) of the IAM user or role.
@@ -375,6 +547,27 @@ codecommit_batch_get_repositories <- function(repositoryNames) {
 #' @param approvalRuleTemplateDescription The description of the approval rule template. Consider providing a
 #' description that explains what this template does and when it might be
 #' appropriate to associate it with repositories.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   approvalRuleTemplate = list(
+#'     approvalRuleTemplateId = "string",
+#'     approvalRuleTemplateName = "string",
+#'     approvalRuleTemplateDescription = "string",
+#'     approvalRuleTemplateContent = "string",
+#'     ruleContentSha256 = "string",
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedUser = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -419,6 +612,8 @@ codecommit_create_approval_rule_template <- function(approvalRuleTemplateName, a
 #' @param repositoryName &#91;required&#93; The name of the repository in which you want to create the new branch.
 #' @param branchName &#91;required&#93; The name of the new branch to create.
 #' @param commitId &#91;required&#93; The ID of the commit to point the new branch to.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -476,6 +671,36 @@ codecommit_create_branch <- function(repositoryName, branchName, commitId) {
 #' @param deleteFiles The files to delete in this commit. These files still exist in earlier
 #' commits.
 #' @param setFileModes The file modes to update for files in this commit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commitId = "string",
+#'   treeId = "string",
+#'   filesAdded = list(
+#'     list(
+#'       absolutePath = "string",
+#'       blobId = "string",
+#'       fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'     )
+#'   ),
+#'   filesUpdated = list(
+#'     list(
+#'       absolutePath = "string",
+#'       blobId = "string",
+#'       fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'     )
+#'   ),
+#'   filesDeleted = list(
+#'     list(
+#'       absolutePath = "string",
+#'       blobId = "string",
+#'       fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -557,6 +782,63 @@ codecommit_create_commit <- function(repositoryName, branchName, parentCommitId 
 #' The AWS SDKs prepopulate client request tokens. If you are using an AWS
 #' SDK, an idempotency token is created for you.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pullRequest = list(
+#'     pullRequestId = "string",
+#'     title = "string",
+#'     description = "string",
+#'     lastActivityDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     pullRequestStatus = "OPEN"|"CLOSED",
+#'     authorArn = "string",
+#'     pullRequestTargets = list(
+#'       list(
+#'         repositoryName = "string",
+#'         sourceReference = "string",
+#'         destinationReference = "string",
+#'         destinationCommit = "string",
+#'         sourceCommit = "string",
+#'         mergeBase = "string",
+#'         mergeMetadata = list(
+#'           isMerged = TRUE|FALSE,
+#'           mergedBy = "string",
+#'           mergeCommitId = "string",
+#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
+#'         )
+#'       )
+#'     ),
+#'     clientRequestToken = "string",
+#'     revisionId = "string",
+#'     approvalRules = list(
+#'       list(
+#'         approvalRuleId = "string",
+#'         approvalRuleName = "string",
+#'         approvalRuleContent = "string",
+#'         ruleContentSha256 = "string",
+#'         lastModifiedDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         creationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastModifiedUser = "string",
+#'         originApprovalRuleTemplate = list(
+#'           approvalRuleTemplateId = "string",
+#'           approvalRuleTemplateName = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_pull_request(
@@ -618,20 +900,20 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
 #'     access users whose name matches the provided resource name. This is
 #'     a very powerful option that offers a great deal of flexibility. For
 #'     example, if you specify the AWS account *123456789012* and
-#'     *Mary\\_Major*, all of the following would be counted as approvals
+#'     *Mary_Major*, all of the following would be counted as approvals
 #'     coming from that user:
 #' 
 #'     -   An IAM user in the account
-#'         (arn:aws:iam::*123456789012*:user/*Mary\\_Major*)
+#'         (arn:aws:iam::*123456789012*:user/*Mary_Major*)
 #' 
-#'     -   A federated user identified in IAM as Mary\\_Major
-#'         (arn:aws:sts::*123456789012*:federated-user/*Mary\\_Major*)
+#'     -   A federated user identified in IAM as Mary_Major
+#'         (arn:aws:sts::*123456789012*:federated-user/*Mary_Major*)
 #' 
 #'     This option does not recognize an active session of someone assuming
 #'     the role of CodeCommitReview with a role session name of
-#'     *Mary\\_Major*
-#'     (arn:aws:sts::*123456789012*:assumed-role/CodeCommitReview/*Mary\\_Major*)
-#'     unless you include a wildcard (*Mary\\_Major).
+#'     *Mary_Major*
+#'     (arn:aws:sts::*123456789012*:assumed-role/CodeCommitReview/*Mary_Major*)
+#'     unless you include a wildcard (*Mary_Major).
 #' 
 #' -   **Fully qualified ARN**: This option allows you to specify the fully
 #'     qualified Amazon Resource Name (ARN) of the IAM user or role.
@@ -639,6 +921,30 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
 #' For more information about IAM ARNs, wildcards, and formats, see [IAM
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 #' in the *IAM User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   approvalRule = list(
+#'     approvalRuleId = "string",
+#'     approvalRuleName = "string",
+#'     approvalRuleContent = "string",
+#'     ruleContentSha256 = "string",
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedUser = "string",
+#'     originApprovalRuleTemplate = list(
+#'       approvalRuleTemplateId = "string",
+#'       approvalRuleTemplateName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -695,6 +1001,29 @@ codecommit_create_pull_request_approval_rule <- function(pullRequestId, approval
 #' any application that uses this API to display the repository description
 #' on a webpage.
 #' @param tags One or more tag key-value pairs to use when tagging this repository.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositoryMetadata = list(
+#'     accountId = "string",
+#'     repositoryId = "string",
+#'     repositoryName = "string",
+#'     repositoryDescription = "string",
+#'     defaultBranch = "string",
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     cloneUrlHttp = "string",
+#'     cloneUrlSsh = "string",
+#'     Arn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -755,8 +1084,8 @@ codecommit_create_repository <- function(repositoryName, repositoryDescription =
 #' identify a commit (for example, a branch name or a full commit ID).
 #' @param mergeOption &#91;required&#93; The merge option or strategy you want to use to merge the code.
 #' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
-#' FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-#' file has differences in both branches. If LINE\\_LEVEL is specified, a
+#' FILE_LEVEL is used, which returns a not-mergeable result if the same
+#' file has differences in both branches. If LINE_LEVEL is specified, a
 #' conflict is considered not mergeable if the same file in both branches
 #' has differences on the same line.
 #' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
@@ -773,6 +1102,15 @@ codecommit_create_repository <- function(repositoryName, repositoryDescription =
 #' false.
 #' @param conflictResolution If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 #' use when resolving conflicts during a merge.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commitId = "string",
+#'   treeId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -843,6 +1181,14 @@ codecommit_create_unreferenced_merge_commit <- function(repositoryName, sourceCo
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the approval rule template to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   approvalRuleTemplateId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_approval_rule_template(
@@ -882,6 +1228,17 @@ codecommit_delete_approval_rule_template <- function(approvalRuleTemplateName) {
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the branch to be deleted.
 #' @param branchName &#91;required&#93; The name of the branch to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deletedBranch = list(
+#'     branchName = "string",
+#'     commitId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -925,6 +1282,33 @@ codecommit_delete_branch <- function(repositoryName, branchName) {
 #' [`get_comments_for_compared_commit`][codecommit_get_comments_for_compared_commit]
 #' or
 #' [`get_comments_for_pull_request`][codecommit_get_comments_for_pull_request].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   comment = list(
+#'     commentId = "string",
+#'     content = "string",
+#'     inReplyTo = "string",
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     authorArn = "string",
+#'     deleted = TRUE|FALSE,
+#'     clientRequestToken = "string",
+#'     callerReactions = list(
+#'       "string"
+#'     ),
+#'     reactionCounts = list(
+#'       123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -989,6 +1373,17 @@ codecommit_delete_comment_content <- function(commentId) {
 #' @param email The email address for the commit that deletes the file. If no email
 #' address is specified, the email address is left blank.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commitId = "string",
+#'   blobId = "string",
+#'   treeId = "string",
+#'   filePath = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_file(
@@ -1041,6 +1436,14 @@ codecommit_delete_file <- function(repositoryName, branchName, filePath, parentC
 #' rule you want to delete.
 #' @param approvalRuleName &#91;required&#93; The name of the approval rule you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   approvalRuleId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_pull_request_approval_rule(
@@ -1084,6 +1487,14 @@ codecommit_delete_pull_request_approval_rule <- function(pullRequestId, approval
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositoryId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_repository(
@@ -1119,7 +1530,7 @@ codecommit_delete_repository <- function(repositoryName) {
 #' Returns information about one or more merge conflicts in the attempted
 #' merge of two commit specifiers using the squash or three-way merge
 #' strategy. If the merge option for the attempted merge is specified as
-#' FAST\\_FORWARD\\_MERGE, an exception is thrown.
+#' FAST_FORWARD_MERGE, an exception is thrown.
 #'
 #' @usage
 #' codecommit_describe_merge_conflicts(repositoryName,
@@ -1137,8 +1548,8 @@ codecommit_delete_repository <- function(repositoryName) {
 #' @param maxMergeHunks The maximum number of merge hunks to include in the output.
 #' @param filePath &#91;required&#93; The path of the target files used to describe the conflicts.
 #' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
-#' FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-#' file has differences in both branches. If LINE\\_LEVEL is specified, a
+#' FILE_LEVEL is used, which returns a not-mergeable result if the same
+#' file has differences in both branches. If LINE_LEVEL is specified, a
 #' conflict is considered not mergeable if the same file in both branches
 #' has differences on the same line.
 #' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
@@ -1147,6 +1558,68 @@ codecommit_delete_repository <- function(repositoryName) {
 #' merge operation is successful.
 #' @param nextToken An enumeration token that, when provided in a request, returns the next
 #' batch of the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   conflictMetadata = list(
+#'     filePath = "string",
+#'     fileSizes = list(
+#'       source = 123,
+#'       destination = 123,
+#'       base = 123
+#'     ),
+#'     fileModes = list(
+#'       source = "EXECUTABLE"|"NORMAL"|"SYMLINK",
+#'       destination = "EXECUTABLE"|"NORMAL"|"SYMLINK",
+#'       base = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'     ),
+#'     objectTypes = list(
+#'       source = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
+#'       destination = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
+#'       base = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK"
+#'     ),
+#'     numberOfConflicts = 123,
+#'     isBinaryFile = list(
+#'       source = TRUE|FALSE,
+#'       destination = TRUE|FALSE,
+#'       base = TRUE|FALSE
+#'     ),
+#'     contentConflict = TRUE|FALSE,
+#'     fileModeConflict = TRUE|FALSE,
+#'     objectTypeConflict = TRUE|FALSE,
+#'     mergeOperations = list(
+#'       source = "A"|"M"|"D",
+#'       destination = "A"|"M"|"D"
+#'     )
+#'   ),
+#'   mergeHunks = list(
+#'     list(
+#'       isConflict = TRUE|FALSE,
+#'       source = list(
+#'         startLine = 123,
+#'         endLine = 123,
+#'         hunkContent = "string"
+#'       ),
+#'       destination = list(
+#'         startLine = 123,
+#'         endLine = 123,
+#'         hunkContent = "string"
+#'       ),
+#'       base = list(
+#'         startLine = 123,
+#'         endLine = 123,
+#'         hunkContent = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string",
+#'   destinationCommitId = "string",
+#'   sourceCommitId = "string",
+#'   baseCommitId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1205,6 +1678,62 @@ codecommit_describe_merge_conflicts <- function(repositoryName, destinationCommi
 #' results. The default is 100 events, which is also the maximum number of
 #' events that can be returned in a result.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pullRequestEvents = list(
+#'     list(
+#'       pullRequestId = "string",
+#'       eventDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       pullRequestEventType = "PULL_REQUEST_CREATED"|"PULL_REQUEST_STATUS_CHANGED"|"PULL_REQUEST_SOURCE_REFERENCE_UPDATED"|"PULL_REQUEST_MERGE_STATE_CHANGED"|"PULL_REQUEST_APPROVAL_RULE_CREATED"|"PULL_REQUEST_APPROVAL_RULE_UPDATED"|"PULL_REQUEST_APPROVAL_RULE_DELETED"|"PULL_REQUEST_APPROVAL_RULE_OVERRIDDEN"|"PULL_REQUEST_APPROVAL_STATE_CHANGED",
+#'       actorArn = "string",
+#'       pullRequestCreatedEventMetadata = list(
+#'         repositoryName = "string",
+#'         sourceCommitId = "string",
+#'         destinationCommitId = "string",
+#'         mergeBase = "string"
+#'       ),
+#'       pullRequestStatusChangedEventMetadata = list(
+#'         pullRequestStatus = "OPEN"|"CLOSED"
+#'       ),
+#'       pullRequestSourceReferenceUpdatedEventMetadata = list(
+#'         repositoryName = "string",
+#'         beforeCommitId = "string",
+#'         afterCommitId = "string",
+#'         mergeBase = "string"
+#'       ),
+#'       pullRequestMergedStateChangedEventMetadata = list(
+#'         repositoryName = "string",
+#'         destinationReference = "string",
+#'         mergeMetadata = list(
+#'           isMerged = TRUE|FALSE,
+#'           mergedBy = "string",
+#'           mergeCommitId = "string",
+#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
+#'         )
+#'       ),
+#'       approvalRuleEventMetadata = list(
+#'         approvalRuleName = "string",
+#'         approvalRuleId = "string",
+#'         approvalRuleContent = "string"
+#'       ),
+#'       approvalStateChangedEventMetadata = list(
+#'         revisionId = "string",
+#'         approvalStatus = "APPROVE"|"REVOKE"
+#'       ),
+#'       approvalRuleOverriddenEventMetadata = list(
+#'         revisionId = "string",
+#'         overrideStatus = "OVERRIDE"|"REVOKE"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_pull_request_events(
@@ -1255,6 +1784,8 @@ codecommit_describe_pull_request_events <- function(pullRequestId, pullRequestEv
 #' repository.
 #' @param repositoryName &#91;required&#93; The name of the repository you want to disassociate from the template.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_approval_rule_template_from_repository(
@@ -1299,6 +1830,23 @@ codecommit_disassociate_approval_rule_template_from_repository <- function(appro
 #' most recent revision ID for a pull request, use
 #' [`get_pull_request`][codecommit_get_pull_request].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   evaluation = list(
+#'     approved = TRUE|FALSE,
+#'     overridden = TRUE|FALSE,
+#'     approvalRulesSatisfied = list(
+#'       "string"
+#'     ),
+#'     approvalRulesNotSatisfied = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$evaluate_pull_request_approval_rules(
@@ -1337,6 +1885,27 @@ codecommit_evaluate_pull_request_approval_rules <- function(pullRequestId, revis
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the approval rule template for which you want to get
 #' information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   approvalRuleTemplate = list(
+#'     approvalRuleTemplateId = "string",
+#'     approvalRuleTemplateName = "string",
+#'     approvalRuleTemplateDescription = "string",
+#'     approvalRuleTemplateContent = "string",
+#'     ruleContentSha256 = "string",
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedUser = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1377,6 +1946,14 @@ codecommit_get_approval_rule_template <- function(approvalRuleTemplateName) {
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the blob.
 #' @param blobId &#91;required&#93; The ID of the blob, which is its SHA-1 pointer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   content = raw
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1419,6 +1996,17 @@ codecommit_get_blob <- function(repositoryName, blobId) {
 #' @param repositoryName The name of the repository that contains the branch for which you want
 #' to retrieve information.
 #' @param branchName The name of the branch for which you want to retrieve information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   branch = list(
+#'     branchName = "string",
+#'     commitId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1467,6 +2055,33 @@ codecommit_get_branch <- function(repositoryName = NULL, branchName = NULL) {
 #' or
 #' [`get_comments_for_pull_request`][codecommit_get_comments_for_pull_request].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   comment = list(
+#'     commentId = "string",
+#'     content = "string",
+#'     inReplyTo = "string",
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     authorArn = "string",
+#'     deleted = TRUE|FALSE,
+#'     clientRequestToken = "string",
+#'     callerReactions = list(
+#'       "string"
+#'     ),
+#'     reactionCounts = list(
+#'       123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_comment(
@@ -1511,6 +2126,27 @@ codecommit_get_comment <- function(commentId) {
 #' batch of the results.
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
 #' results. The default is the same as the allowed maximum, 1,000.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   reactionsForComment = list(
+#'     list(
+#'       reaction = list(
+#'         emoji = "string",
+#'         shortCode = "string",
+#'         unicode = "string"
+#'       ),
+#'       reactionUsers = list(
+#'         "string"
+#'       ),
+#'       reactionsFromDeletedUsersCount = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1566,6 +2202,50 @@ codecommit_get_comment_reactions <- function(commentId, reactionUserArn = NULL, 
 #' batch of the results.
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
 #' results. The default is 100 comments, but you can configure up to 500.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commentsForComparedCommitData = list(
+#'     list(
+#'       repositoryName = "string",
+#'       beforeCommitId = "string",
+#'       afterCommitId = "string",
+#'       beforeBlobId = "string",
+#'       afterBlobId = "string",
+#'       location = list(
+#'         filePath = "string",
+#'         filePosition = 123,
+#'         relativeFileVersion = "BEFORE"|"AFTER"
+#'       ),
+#'       comments = list(
+#'         list(
+#'           commentId = "string",
+#'           content = "string",
+#'           inReplyTo = "string",
+#'           creationDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lastModifiedDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           authorArn = "string",
+#'           deleted = TRUE|FALSE,
+#'           clientRequestToken = "string",
+#'           callerReactions = list(
+#'             "string"
+#'           ),
+#'           reactionCounts = list(
+#'             123
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1624,6 +2304,51 @@ codecommit_get_comments_for_compared_commit <- function(repositoryName, beforeCo
 #' results. The default is 100 comments. You can return up to 500 comments
 #' with a single request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commentsForPullRequestData = list(
+#'     list(
+#'       pullRequestId = "string",
+#'       repositoryName = "string",
+#'       beforeCommitId = "string",
+#'       afterCommitId = "string",
+#'       beforeBlobId = "string",
+#'       afterBlobId = "string",
+#'       location = list(
+#'         filePath = "string",
+#'         filePosition = 123,
+#'         relativeFileVersion = "BEFORE"|"AFTER"
+#'       ),
+#'       comments = list(
+#'         list(
+#'           commentId = "string",
+#'           content = "string",
+#'           inReplyTo = "string",
+#'           creationDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lastModifiedDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           authorArn = "string",
+#'           deleted = TRUE|FALSE,
+#'           clientRequestToken = "string",
+#'           callerReactions = list(
+#'             "string"
+#'           ),
+#'           reactionCounts = list(
+#'             123
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_comments_for_pull_request(
@@ -1668,6 +2393,32 @@ codecommit_get_comments_for_pull_request <- function(pullRequestId, repositoryNa
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository to which the commit was made.
 #' @param commitId &#91;required&#93; The commit ID. Commit IDs are the full SHA ID of the commit.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commit = list(
+#'     commitId = "string",
+#'     treeId = "string",
+#'     parents = list(
+#'       "string"
+#'     ),
+#'     message = "string",
+#'     author = list(
+#'       name = "string",
+#'       email = "string",
+#'       date = "string"
+#'     ),
+#'     committer = list(
+#'       name = "string",
+#'       email = "string",
+#'       date = "string"
+#'     ),
+#'     additionalData = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1731,6 +2482,29 @@ codecommit_get_commit <- function(repositoryName, commitId) {
 #' @param NextToken An enumeration token that, when provided in a request, returns the next
 #' batch of the results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   differences = list(
+#'     list(
+#'       beforeBlob = list(
+#'         blobId = "string",
+#'         path = "string",
+#'         mode = "string"
+#'       ),
+#'       afterBlob = list(
+#'         blobId = "string",
+#'         path = "string",
+#'         mode = "string"
+#'       ),
+#'       changeType = "A"|"M"|"D"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_differences(
@@ -1783,6 +2557,19 @@ codecommit_get_differences <- function(repositoryName, beforeCommitSpecifier = N
 #' extension of the file. For example, /examples/file.md is the fully
 #' qualified path to a file named file.md in a folder named examples.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commitId = "string",
+#'   blobId = "string",
+#'   filePath = "string",
+#'   fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK",
+#'   fileSize = 123,
+#'   fileContent = raw
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_file(
@@ -1831,6 +2618,46 @@ codecommit_get_file <- function(repositoryName, commitSpecifier = NULL, filePath
 #' path to a folder named examples that was created off of the root
 #' directory (/) of a repository.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commitId = "string",
+#'   folderPath = "string",
+#'   treeId = "string",
+#'   subFolders = list(
+#'     list(
+#'       treeId = "string",
+#'       absolutePath = "string",
+#'       relativePath = "string"
+#'     )
+#'   ),
+#'   files = list(
+#'     list(
+#'       blobId = "string",
+#'       absolutePath = "string",
+#'       relativePath = "string",
+#'       fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'     )
+#'   ),
+#'   symbolicLinks = list(
+#'     list(
+#'       blobId = "string",
+#'       absolutePath = "string",
+#'       relativePath = "string",
+#'       fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'     )
+#'   ),
+#'   subModules = list(
+#'     list(
+#'       commitId = "string",
+#'       absolutePath = "string",
+#'       relativePath = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_folder(
@@ -1877,14 +2704,25 @@ codecommit_get_folder <- function(repositoryName, commitSpecifier = NULL, folder
 #' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
 #' identify a commit (for example, a branch name or a full commit ID).
 #' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
-#' FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-#' file has differences in both branches. If LINE\\_LEVEL is specified, a
+#' FILE_LEVEL is used, which returns a not-mergeable result if the same
+#' file has differences in both branches. If LINE_LEVEL is specified, a
 #' conflict is considered not mergeable if the same file in both branches
 #' has differences on the same line.
 #' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
 #' attempt automatically merging two versions of a file. The default is
 #' NONE, which requires any conflicts to be resolved manually before the
 #' merge operation is successful.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   sourceCommitId = "string",
+#'   destinationCommitId = "string",
+#'   baseCommitId = "string",
+#'   mergedCommitId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1937,8 +2775,8 @@ codecommit_get_merge_commit <- function(repositoryName, sourceCommitSpecifier, d
 #' identify a commit (for example, a branch name or a full commit ID).
 #' @param mergeOption &#91;required&#93; The merge option or strategy you want to use to merge the code.
 #' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
-#' FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-#' file has differences in both branches. If LINE\\_LEVEL is specified, a
+#' FILE_LEVEL is used, which returns a not-mergeable result if the same
+#' file has differences in both branches. If LINE_LEVEL is specified, a
 #' conflict is considered not mergeable if the same file in both branches
 #' has differences on the same line.
 #' @param maxConflictFiles The maximum number of files to include in the output.
@@ -1948,6 +2786,51 @@ codecommit_get_merge_commit <- function(repositoryName, sourceCommitSpecifier, d
 #' merge operation is successful.
 #' @param nextToken An enumeration token that, when provided in a request, returns the next
 #' batch of the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   mergeable = TRUE|FALSE,
+#'   destinationCommitId = "string",
+#'   sourceCommitId = "string",
+#'   baseCommitId = "string",
+#'   conflictMetadataList = list(
+#'     list(
+#'       filePath = "string",
+#'       fileSizes = list(
+#'         source = 123,
+#'         destination = 123,
+#'         base = 123
+#'       ),
+#'       fileModes = list(
+#'         source = "EXECUTABLE"|"NORMAL"|"SYMLINK",
+#'         destination = "EXECUTABLE"|"NORMAL"|"SYMLINK",
+#'         base = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+#'       ),
+#'       objectTypes = list(
+#'         source = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
+#'         destination = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
+#'         base = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK"
+#'       ),
+#'       numberOfConflicts = 123,
+#'       isBinaryFile = list(
+#'         source = TRUE|FALSE,
+#'         destination = TRUE|FALSE,
+#'         base = TRUE|FALSE
+#'       ),
+#'       contentConflict = TRUE|FALSE,
+#'       fileModeConflict = TRUE|FALSE,
+#'       objectTypeConflict = TRUE|FALSE,
+#'       mergeOperations = list(
+#'         source = "A"|"M"|"D",
+#'         destination = "A"|"M"|"D"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2003,14 +2886,27 @@ codecommit_get_merge_conflicts <- function(repositoryName, destinationCommitSpec
 #' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
 #' identify a commit (for example, a branch name or a full commit ID).
 #' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
-#' FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-#' file has differences in both branches. If LINE\\_LEVEL is specified, a
+#' FILE_LEVEL is used, which returns a not-mergeable result if the same
+#' file has differences in both branches. If LINE_LEVEL is specified, a
 #' conflict is considered not mergeable if the same file in both branches
 #' has differences on the same line.
 #' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
 #' attempt automatically merging two versions of a file. The default is
 #' NONE, which requires any conflicts to be resolved manually before the
 #' merge operation is successful.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   mergeOptions = list(
+#'     "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
+#'   ),
+#'   sourceCommitId = "string",
+#'   destinationCommitId = "string",
+#'   baseCommitId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2054,6 +2950,63 @@ codecommit_get_merge_options <- function(repositoryName, sourceCommitSpecifier, 
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pullRequest = list(
+#'     pullRequestId = "string",
+#'     title = "string",
+#'     description = "string",
+#'     lastActivityDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     pullRequestStatus = "OPEN"|"CLOSED",
+#'     authorArn = "string",
+#'     pullRequestTargets = list(
+#'       list(
+#'         repositoryName = "string",
+#'         sourceReference = "string",
+#'         destinationReference = "string",
+#'         destinationCommit = "string",
+#'         sourceCommit = "string",
+#'         mergeBase = "string",
+#'         mergeMetadata = list(
+#'           isMerged = TRUE|FALSE,
+#'           mergedBy = "string",
+#'           mergeCommitId = "string",
+#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
+#'         )
+#'       )
+#'     ),
+#'     clientRequestToken = "string",
+#'     revisionId = "string",
+#'     approvalRules = list(
+#'       list(
+#'         approvalRuleId = "string",
+#'         approvalRuleName = "string",
+#'         approvalRuleContent = "string",
+#'         ruleContentSha256 = "string",
+#'         lastModifiedDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         creationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastModifiedUser = "string",
+#'         originApprovalRuleTemplate = list(
+#'           approvalRuleTemplateId = "string",
+#'           approvalRuleTemplateName = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_pull_request(
@@ -2093,6 +3046,19 @@ codecommit_get_pull_request <- function(pullRequestId) {
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID for the pull request.
 #' @param revisionId &#91;required&#93; The system-generated ID for the pull request revision.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   approvals = list(
+#'     list(
+#'       userArn = "string",
+#'       approvalState = "APPROVE"|"REVOKE"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2142,6 +3108,15 @@ codecommit_get_pull_request_approval_states <- function(pullRequestId, revisionI
 #' retrieve the most recent revision ID, use
 #' [`get_pull_request`][codecommit_get_pull_request].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   overridden = TRUE|FALSE,
+#'   overrider = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_pull_request_override_state(
@@ -2187,6 +3162,29 @@ codecommit_get_pull_request_override_state <- function(pullRequestId, revisionId
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository to get information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositoryMetadata = list(
+#'     accountId = "string",
+#'     repositoryId = "string",
+#'     repositoryName = "string",
+#'     repositoryDescription = "string",
+#'     defaultBranch = "string",
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     cloneUrlHttp = "string",
+#'     cloneUrlSsh = "string",
+#'     Arn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_repository(
@@ -2223,6 +3221,27 @@ codecommit_get_repository <- function(repositoryName) {
 #' codecommit_get_repository_triggers(repositoryName)
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository for which the trigger is configured.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configurationId = "string",
+#'   triggers = list(
+#'     list(
+#'       name = "string",
+#'       destinationArn = "string",
+#'       customData = "string",
+#'       branches = list(
+#'         "string"
+#'       ),
+#'       events = list(
+#'         "all"|"updateReference"|"createReference"|"deleteReference"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2266,6 +3285,17 @@ codecommit_get_repository_triggers <- function(repositoryName) {
 #' batch of the results.
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   approvalRuleTemplateNames = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2313,6 +3343,17 @@ codecommit_list_approval_rule_templates <- function(nextToken = NULL, maxResults
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   approvalRuleTemplateNames = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_associated_approval_rule_templates_for_repository(
@@ -2352,6 +3393,17 @@ codecommit_list_associated_approval_rule_templates_for_repository <- function(re
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the branches.
 #' @param nextToken An enumeration token that allows the operation to batch the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   branches = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2402,6 +3454,17 @@ codecommit_list_branches <- function(repositoryName, nextToken = NULL) {
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pullRequestIds = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_pull_requests(
@@ -2447,6 +3510,20 @@ codecommit_list_pull_requests <- function(repositoryName, authorArn = NULL, pull
 #' 1,000 records is retrieved.
 #' @param sortBy The criteria used to sort the results of a list repositories operation.
 #' @param order The order in which to sort the results of a list repositories operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositories = list(
+#'     list(
+#'       repositoryName = "string",
+#'       repositoryId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2495,6 +3572,17 @@ codecommit_list_repositories <- function(nextToken = NULL, sortBy = NULL, order 
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositoryNames = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_repositories_for_approval_rule_template(
@@ -2542,6 +3630,17 @@ codecommit_list_repositories_for_approval_rule_template <- function(approvalRule
 #' @param nextToken An enumeration token that, when provided in a request, returns the next
 #' batch of the results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -2585,6 +3684,15 @@ codecommit_list_tags_for_resource <- function(resourceArn, nextToken = NULL) {
 #' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
 #' identify a commit (for example, a branch name or a full commit ID).
 #' @param targetBranch The branch where the merge is applied.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commitId = "string",
+#'   treeId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2634,8 +3742,8 @@ codecommit_merge_branches_by_fast_forward <- function(repositoryName, sourceComm
 #' identify a commit (for example, a branch name or a full commit ID).
 #' @param targetBranch The branch where the merge is applied.
 #' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
-#' FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-#' file has differences in both branches. If LINE\\_LEVEL is specified, a
+#' FILE_LEVEL is used, which returns a not-mergeable result if the same
+#' file has differences in both branches. If LINE_LEVEL is specified, a
 #' conflict is considered not mergeable if the same file in both branches
 #' has differences on the same line.
 #' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
@@ -2653,6 +3761,15 @@ codecommit_merge_branches_by_fast_forward <- function(repositoryName, sourceComm
 #' false.
 #' @param conflictResolution If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 #' use when resolving conflicts during a merge.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commitId = "string",
+#'   treeId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2729,8 +3846,8 @@ codecommit_merge_branches_by_squash <- function(repositoryName, sourceCommitSpec
 #' identify a commit (for example, a branch name or a full commit ID).
 #' @param targetBranch The branch where the merge is applied.
 #' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
-#' FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-#' file has differences in both branches. If LINE\\_LEVEL is specified, a
+#' FILE_LEVEL is used, which returns a not-mergeable result if the same
+#' file has differences in both branches. If LINE_LEVEL is specified, a
 #' conflict is considered not mergeable if the same file in both branches
 #' has differences on the same line.
 #' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
@@ -2747,6 +3864,15 @@ codecommit_merge_branches_by_squash <- function(repositoryName, sourceCommitSpec
 #' file is created for empty folders. The default is false.
 #' @param conflictResolution If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 #' use when resolving conflicts during a merge.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commitId = "string",
+#'   treeId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2827,6 +3953,63 @@ codecommit_merge_branches_by_three_way <- function(repositoryName, sourceCommitS
 #' current commit ID of the tip of the source branch does not match this
 #' commit ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pullRequest = list(
+#'     pullRequestId = "string",
+#'     title = "string",
+#'     description = "string",
+#'     lastActivityDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     pullRequestStatus = "OPEN"|"CLOSED",
+#'     authorArn = "string",
+#'     pullRequestTargets = list(
+#'       list(
+#'         repositoryName = "string",
+#'         sourceReference = "string",
+#'         destinationReference = "string",
+#'         destinationCommit = "string",
+#'         sourceCommit = "string",
+#'         mergeBase = "string",
+#'         mergeMetadata = list(
+#'           isMerged = TRUE|FALSE,
+#'           mergedBy = "string",
+#'           mergeCommitId = "string",
+#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
+#'         )
+#'       )
+#'     ),
+#'     clientRequestToken = "string",
+#'     revisionId = "string",
+#'     approvalRules = list(
+#'       list(
+#'         approvalRuleId = "string",
+#'         approvalRuleName = "string",
+#'         approvalRuleContent = "string",
+#'         ruleContentSha256 = "string",
+#'         lastModifiedDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         creationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastModifiedUser = "string",
+#'         originApprovalRuleTemplate = list(
+#'           approvalRuleTemplateId = "string",
+#'           approvalRuleTemplateName = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$merge_pull_request_by_fast_forward(
@@ -2879,8 +4062,8 @@ codecommit_merge_pull_request_by_fast_forward <- function(pullRequestId, reposit
 #' current commit ID of the tip of the source branch does not match this
 #' commit ID.
 #' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
-#' FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-#' file has differences in both branches. If LINE\\_LEVEL is specified, a
+#' FILE_LEVEL is used, which returns a not-mergeable result if the same
+#' file has differences in both branches. If LINE_LEVEL is specified, a
 #' conflict is considered not mergeable if the same file in both branches
 #' has differences on the same line.
 #' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
@@ -2897,6 +4080,63 @@ codecommit_merge_pull_request_by_fast_forward <- function(pullRequestId, reposit
 #' file is created for empty folders. The default is false.
 #' @param conflictResolution If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 #' use when resolving conflicts during a merge.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pullRequest = list(
+#'     pullRequestId = "string",
+#'     title = "string",
+#'     description = "string",
+#'     lastActivityDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     pullRequestStatus = "OPEN"|"CLOSED",
+#'     authorArn = "string",
+#'     pullRequestTargets = list(
+#'       list(
+#'         repositoryName = "string",
+#'         sourceReference = "string",
+#'         destinationReference = "string",
+#'         destinationCommit = "string",
+#'         sourceCommit = "string",
+#'         mergeBase = "string",
+#'         mergeMetadata = list(
+#'           isMerged = TRUE|FALSE,
+#'           mergedBy = "string",
+#'           mergeCommitId = "string",
+#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
+#'         )
+#'       )
+#'     ),
+#'     clientRequestToken = "string",
+#'     revisionId = "string",
+#'     approvalRules = list(
+#'       list(
+#'         approvalRuleId = "string",
+#'         approvalRuleName = "string",
+#'         approvalRuleContent = "string",
+#'         ruleContentSha256 = "string",
+#'         lastModifiedDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         creationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastModifiedUser = "string",
+#'         originApprovalRuleTemplate = list(
+#'           approvalRuleTemplateId = "string",
+#'           approvalRuleTemplateName = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2978,8 +4218,8 @@ codecommit_merge_pull_request_by_squash <- function(pullRequestId, repositoryNam
 #' current commit ID of the tip of the source branch does not match this
 #' commit ID.
 #' @param conflictDetailLevel The level of conflict detail to use. If unspecified, the default
-#' FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-#' file has differences in both branches. If LINE\\_LEVEL is specified, a
+#' FILE_LEVEL is used, which returns a not-mergeable result if the same
+#' file has differences in both branches. If LINE_LEVEL is specified, a
 #' conflict is considered not mergeable if the same file in both branches
 #' has differences on the same line.
 #' @param conflictResolutionStrategy Specifies which branch to use when resolving conflicts, or whether to
@@ -2996,6 +4236,63 @@ codecommit_merge_pull_request_by_squash <- function(pullRequestId, repositoryNam
 #' file is created for empty folders. The default is false.
 #' @param conflictResolution If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 #' use when resolving conflicts during a merge.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pullRequest = list(
+#'     pullRequestId = "string",
+#'     title = "string",
+#'     description = "string",
+#'     lastActivityDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     pullRequestStatus = "OPEN"|"CLOSED",
+#'     authorArn = "string",
+#'     pullRequestTargets = list(
+#'       list(
+#'         repositoryName = "string",
+#'         sourceReference = "string",
+#'         destinationReference = "string",
+#'         destinationCommit = "string",
+#'         sourceCommit = "string",
+#'         mergeBase = "string",
+#'         mergeMetadata = list(
+#'           isMerged = TRUE|FALSE,
+#'           mergedBy = "string",
+#'           mergeCommitId = "string",
+#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
+#'         )
+#'       )
+#'     ),
+#'     clientRequestToken = "string",
+#'     revisionId = "string",
+#'     approvalRules = list(
+#'       list(
+#'         approvalRuleId = "string",
+#'         approvalRuleName = "string",
+#'         approvalRuleContent = "string",
+#'         ruleContentSha256 = "string",
+#'         lastModifiedDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         creationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastModifiedUser = "string",
+#'         originApprovalRuleTemplate = list(
+#'           approvalRuleTemplateId = "string",
+#'           approvalRuleTemplateName = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3074,6 +4371,8 @@ codecommit_merge_pull_request_by_three_way <- function(pullRequestId, repository
 #' request (OVERRIDE) or revoke a previous override and apply approval rule
 #' requirements (REVOKE). REVOKE status is not stored.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$override_pull_request_approval_rules(
@@ -3126,6 +4425,43 @@ codecommit_override_pull_request_approval_rules <- function(pullRequestId, revis
 #' parameter. If a request is received with the same parameters and a token
 #' is included, the request returns information about the initial request
 #' that used that token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositoryName = "string",
+#'   beforeCommitId = "string",
+#'   afterCommitId = "string",
+#'   beforeBlobId = "string",
+#'   afterBlobId = "string",
+#'   location = list(
+#'     filePath = "string",
+#'     filePosition = 123,
+#'     relativeFileVersion = "BEFORE"|"AFTER"
+#'   ),
+#'   comment = list(
+#'     commentId = "string",
+#'     content = "string",
+#'     inReplyTo = "string",
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     authorArn = "string",
+#'     deleted = TRUE|FALSE,
+#'     clientRequestToken = "string",
+#'     callerReactions = list(
+#'       "string"
+#'     ),
+#'     reactionCounts = list(
+#'       123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3192,6 +4528,44 @@ codecommit_post_comment_for_compared_commit <- function(repositoryName, beforeCo
 #' is included, the request returns information about the initial request
 #' that used that token.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositoryName = "string",
+#'   pullRequestId = "string",
+#'   beforeCommitId = "string",
+#'   afterCommitId = "string",
+#'   beforeBlobId = "string",
+#'   afterBlobId = "string",
+#'   location = list(
+#'     filePath = "string",
+#'     filePosition = 123,
+#'     relativeFileVersion = "BEFORE"|"AFTER"
+#'   ),
+#'   comment = list(
+#'     commentId = "string",
+#'     content = "string",
+#'     inReplyTo = "string",
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     authorArn = "string",
+#'     deleted = TRUE|FALSE,
+#'     clientRequestToken = "string",
+#'     callerReactions = list(
+#'       "string"
+#'     ),
+#'     reactionCounts = list(
+#'       123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$post_comment_for_pull_request(
@@ -3251,6 +4625,33 @@ codecommit_post_comment_for_pull_request <- function(pullRequestId, repositoryNa
 #' that used that token.
 #' @param content &#91;required&#93; The contents of your reply to a comment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   comment = list(
+#'     commentId = "string",
+#'     content = "string",
+#'     inReplyTo = "string",
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     authorArn = "string",
+#'     deleted = TRUE|FALSE,
+#'     clientRequestToken = "string",
+#'     callerReactions = list(
+#'       "string"
+#'     ),
+#'     reactionCounts = list(
+#'       123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$post_comment_reply(
@@ -3298,6 +4699,8 @@ codecommit_post_comment_reply <- function(inReplyTo, clientRequestToken = NULL, 
 #' none. For information about emoji reaction values supported in AWS
 #' CodeCommit, see the [AWS CodeCommit User
 #' Guide](https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-commit-comment.html#emoji-reaction-table).
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -3364,6 +4767,16 @@ codecommit_put_comment_reaction <- function(commentId, reactionValue) {
 #' useful.
 #' @param email An email address for the person adding or updating the file.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commitId = "string",
+#'   blobId = "string",
+#'   treeId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_file(
@@ -3411,6 +4824,14 @@ codecommit_put_file <- function(repositoryName, branchName, fileContent, filePat
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to create or update the
 #' trigger.
 #' @param triggers &#91;required&#93; The JSON block of configuration information for each trigger.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configurationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3467,6 +4888,8 @@ codecommit_put_repository_triggers <- function(repositoryName, triggers) {
 #' or update tags.
 #' @param tags &#91;required&#93; The key-value pair to use when tagging this repository.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -3511,6 +4934,22 @@ codecommit_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository in which to test the triggers.
 #' @param triggers &#91;required&#93; The list of triggers to test.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   successfulExecutions = list(
+#'     "string"
+#'   ),
+#'   failedExecutions = list(
+#'     list(
+#'       trigger = "string",
+#'       failureMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3567,6 +5006,8 @@ codecommit_test_repository_triggers <- function(repositoryName, triggers) {
 #' remove tags.
 #' @param tagKeys &#91;required&#93; The tag key for each tag that you want to remove from the resource.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -3616,6 +5057,27 @@ codecommit_untag_resource <- function(resourceArn, tagKeys) {
 #' retrieve this information by using
 #' [`get_pull_request`][codecommit_get_pull_request].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   approvalRuleTemplate = list(
+#'     approvalRuleTemplateId = "string",
+#'     approvalRuleTemplateName = "string",
+#'     approvalRuleTemplateDescription = "string",
+#'     approvalRuleTemplateContent = "string",
+#'     ruleContentSha256 = "string",
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedUser = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_approval_rule_template_content(
@@ -3657,6 +5119,27 @@ codecommit_update_approval_rule_template_content <- function(approvalRuleTemplat
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the template for which you want to update the description.
 #' @param approvalRuleTemplateDescription &#91;required&#93; The updated description of the approval rule template.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   approvalRuleTemplate = list(
+#'     approvalRuleTemplateId = "string",
+#'     approvalRuleTemplateName = "string",
+#'     approvalRuleTemplateDescription = "string",
+#'     approvalRuleTemplateContent = "string",
+#'     ruleContentSha256 = "string",
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedUser = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_approval_rule_template_description(
@@ -3696,6 +5179,27 @@ codecommit_update_approval_rule_template_description <- function(approvalRuleTem
 #'
 #' @param oldApprovalRuleTemplateName &#91;required&#93; The current name of the approval rule template.
 #' @param newApprovalRuleTemplateName &#91;required&#93; The new name you want to apply to the approval rule template.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   approvalRuleTemplate = list(
+#'     approvalRuleTemplateId = "string",
+#'     approvalRuleTemplateName = "string",
+#'     approvalRuleTemplateDescription = "string",
+#'     approvalRuleTemplateContent = "string",
+#'     ruleContentSha256 = "string",
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedUser = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3740,6 +5244,33 @@ codecommit_update_approval_rule_template_name <- function(oldApprovalRuleTemplat
 #' [`get_comments_for_pull_request`][codecommit_get_comments_for_pull_request].
 #' @param content &#91;required&#93; The updated content to replace the existing content of the comment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   comment = list(
+#'     commentId = "string",
+#'     content = "string",
+#'     inReplyTo = "string",
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     authorArn = "string",
+#'     deleted = TRUE|FALSE,
+#'     clientRequestToken = "string",
+#'     callerReactions = list(
+#'       "string"
+#'     ),
+#'     reactionCounts = list(
+#'       123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_comment(
@@ -3782,6 +5313,8 @@ codecommit_update_comment <- function(commentId, content) {
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository to set or change the default branch for.
 #' @param defaultBranchName &#91;required&#93; The name of the branch to set as the default.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -3838,20 +5371,20 @@ codecommit_update_default_branch <- function(repositoryName, defaultBranchName) 
 #'     access users whose name matches the provided resource name. This is
 #'     a very powerful option that offers a great deal of flexibility. For
 #'     example, if you specify the AWS account *123456789012* and
-#'     *Mary\\_Major*, all of the following are counted as approvals coming
+#'     *Mary_Major*, all of the following are counted as approvals coming
 #'     from that user:
 #' 
 #'     -   An IAM user in the account
-#'         (arn:aws:iam::*123456789012*:user/*Mary\\_Major*)
+#'         (arn:aws:iam::*123456789012*:user/*Mary_Major*)
 #' 
-#'     -   A federated user identified in IAM as Mary\\_Major
-#'         (arn:aws:sts::*123456789012*:federated-user/*Mary\\_Major*)
+#'     -   A federated user identified in IAM as Mary_Major
+#'         (arn:aws:sts::*123456789012*:federated-user/*Mary_Major*)
 #' 
 #'     This option does not recognize an active session of someone assuming
 #'     the role of CodeCommitReview with a role session name of
-#'     *Mary\\_Major*
-#'     (arn:aws:sts::*123456789012*:assumed-role/CodeCommitReview/*Mary\\_Major*)
-#'     unless you include a wildcard (*Mary\\_Major).
+#'     *Mary_Major*
+#'     (arn:aws:sts::*123456789012*:assumed-role/CodeCommitReview/*Mary_Major*)
+#'     unless you include a wildcard (*Mary_Major).
 #' 
 #' -   **Fully qualified ARN**: This option allows you to specify the fully
 #'     qualified Amazon Resource Name (ARN) of the IAM user or role.
@@ -3859,6 +5392,30 @@ codecommit_update_default_branch <- function(repositoryName, defaultBranchName) 
 #' For more information about IAM ARNs, wildcards, and formats, see [IAM
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 #' in the *IAM User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   approvalRule = list(
+#'     approvalRuleId = "string",
+#'     approvalRuleName = "string",
+#'     approvalRuleContent = "string",
+#'     ruleContentSha256 = "string",
+#'     lastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedUser = "string",
+#'     originApprovalRuleTemplate = list(
+#'       approvalRuleTemplateId = "string",
+#'       approvalRuleTemplateName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3904,6 +5461,8 @@ codecommit_update_pull_request_approval_rule_content <- function(pullRequestId, 
 #' @param revisionId &#91;required&#93; The system-generated ID of the revision.
 #' @param approvalState &#91;required&#93; The approval state to associate with the user on the pull request.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_pull_request_approval_state(
@@ -3945,6 +5504,63 @@ codecommit_update_pull_request_approval_state <- function(pullRequestId, revisio
 #' [`list_pull_requests`][codecommit_list_pull_requests].
 #' @param description &#91;required&#93; The updated content of the description for the pull request. This
 #' content replaces the existing description.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pullRequest = list(
+#'     pullRequestId = "string",
+#'     title = "string",
+#'     description = "string",
+#'     lastActivityDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     pullRequestStatus = "OPEN"|"CLOSED",
+#'     authorArn = "string",
+#'     pullRequestTargets = list(
+#'       list(
+#'         repositoryName = "string",
+#'         sourceReference = "string",
+#'         destinationReference = "string",
+#'         destinationCommit = "string",
+#'         sourceCommit = "string",
+#'         mergeBase = "string",
+#'         mergeMetadata = list(
+#'           isMerged = TRUE|FALSE,
+#'           mergedBy = "string",
+#'           mergeCommitId = "string",
+#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
+#'         )
+#'       )
+#'     ),
+#'     clientRequestToken = "string",
+#'     revisionId = "string",
+#'     approvalRules = list(
+#'       list(
+#'         approvalRuleId = "string",
+#'         approvalRuleName = "string",
+#'         approvalRuleContent = "string",
+#'         ruleContentSha256 = "string",
+#'         lastModifiedDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         creationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastModifiedUser = "string",
+#'         originApprovalRuleTemplate = list(
+#'           approvalRuleTemplateId = "string",
+#'           approvalRuleTemplateName = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3988,6 +5604,63 @@ codecommit_update_pull_request_description <- function(pullRequestId, descriptio
 #' the status from `OPEN` to `OPEN`, `OPEN` to `CLOSED` or from `CLOSED` to
 #' `CLOSED`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pullRequest = list(
+#'     pullRequestId = "string",
+#'     title = "string",
+#'     description = "string",
+#'     lastActivityDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     pullRequestStatus = "OPEN"|"CLOSED",
+#'     authorArn = "string",
+#'     pullRequestTargets = list(
+#'       list(
+#'         repositoryName = "string",
+#'         sourceReference = "string",
+#'         destinationReference = "string",
+#'         destinationCommit = "string",
+#'         sourceCommit = "string",
+#'         mergeBase = "string",
+#'         mergeMetadata = list(
+#'           isMerged = TRUE|FALSE,
+#'           mergedBy = "string",
+#'           mergeCommitId = "string",
+#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
+#'         )
+#'       )
+#'     ),
+#'     clientRequestToken = "string",
+#'     revisionId = "string",
+#'     approvalRules = list(
+#'       list(
+#'         approvalRuleId = "string",
+#'         approvalRuleName = "string",
+#'         approvalRuleContent = "string",
+#'         ruleContentSha256 = "string",
+#'         lastModifiedDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         creationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastModifiedUser = "string",
+#'         originApprovalRuleTemplate = list(
+#'           approvalRuleTemplateId = "string",
+#'           approvalRuleTemplateName = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_pull_request_status(
@@ -4027,6 +5700,63 @@ codecommit_update_pull_request_status <- function(pullRequestId, pullRequestStat
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
 #' @param title &#91;required&#93; The updated title of the pull request. This replaces the existing title.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pullRequest = list(
+#'     pullRequestId = "string",
+#'     title = "string",
+#'     description = "string",
+#'     lastActivityDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     pullRequestStatus = "OPEN"|"CLOSED",
+#'     authorArn = "string",
+#'     pullRequestTargets = list(
+#'       list(
+#'         repositoryName = "string",
+#'         sourceReference = "string",
+#'         destinationReference = "string",
+#'         destinationCommit = "string",
+#'         sourceCommit = "string",
+#'         mergeBase = "string",
+#'         mergeMetadata = list(
+#'           isMerged = TRUE|FALSE,
+#'           mergedBy = "string",
+#'           mergeCommitId = "string",
+#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
+#'         )
+#'       )
+#'     ),
+#'     clientRequestToken = "string",
+#'     revisionId = "string",
+#'     approvalRules = list(
+#'       list(
+#'         approvalRuleId = "string",
+#'         approvalRuleName = "string",
+#'         approvalRuleContent = "string",
+#'         ruleContentSha256 = "string",
+#'         lastModifiedDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         creationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastModifiedUser = "string",
+#'         originApprovalRuleTemplate = list(
+#'           approvalRuleTemplateId = "string",
+#'           approvalRuleTemplateName = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4077,6 +5807,8 @@ codecommit_update_pull_request_title <- function(pullRequestId, title) {
 #' @param repositoryDescription The new comment or description for the specified repository. Repository
 #' descriptions are limited to 1,000 characters.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_repository_description(
@@ -4121,6 +5853,8 @@ codecommit_update_repository_description <- function(repositoryName, repositoryD
 #'
 #' @param oldName &#91;required&#93; The current name of the repository.
 #' @param newName &#91;required&#93; The new name for the repository.
+#'
+
 #'
 #' @section Request syntax:
 #' ```

@@ -28,6 +28,21 @@ used.}
 
 \item{Tags}{A list of tag instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SnapshotCopyGrant = list(
+    SnapshotCopyGrantName = "string",
+    KmsKeyId = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a snapshot copy grant that permits Amazon Redshift to use a
 customer master key (CMK) from AWS Key Management Service (AWS KMS) to

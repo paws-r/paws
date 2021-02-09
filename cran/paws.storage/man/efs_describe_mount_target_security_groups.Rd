@@ -9,6 +9,14 @@ efs_describe_mount_target_security_groups(MountTargetId)
 \arguments{
 \item{MountTargetId}{[required] The ID of the mount target whose security groups you want to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SecurityGroups = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns the security groups currently in effect for a mount target. This
 operation requires that the network interface of the mount target has

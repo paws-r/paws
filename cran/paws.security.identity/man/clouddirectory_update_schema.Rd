@@ -12,6 +12,12 @@ information, see arns.}
 
 \item{Name}{[required] The name of the schema.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaArn = "string"
+)
+}
+}
 \description{
 Updates the schema name with a new name. Only development schema names
 can be updated.

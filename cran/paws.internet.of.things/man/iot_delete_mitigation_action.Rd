@@ -9,6 +9,10 @@ iot_delete_mitigation_action(actionName)
 \arguments{
 \item{actionName}{[required] The name of the mitigation action that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a defined mitigation action from your AWS account.
 }

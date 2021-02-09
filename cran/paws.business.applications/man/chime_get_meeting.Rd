@@ -9,6 +9,25 @@ chime_get_meeting(MeetingId)
 \arguments{
 \item{MeetingId}{[required] The Amazon Chime SDK meeting ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Meeting = list(
+    MeetingId = "string",
+    ExternalMeetingId = "string",
+    MediaPlacement = list(
+      AudioHostUrl = "string",
+      AudioFallbackUrl = "string",
+      ScreenDataUrl = "string",
+      ScreenSharingUrl = "string",
+      ScreenViewingUrl = "string",
+      SignalingUrl = "string",
+      TurnControlUrl = "string"
+    ),
+    MediaRegion = "string"
+  )
+)
+}
+}
 \description{
 Gets the Amazon Chime SDK meeting details for the specified meeting ID.
 For more information about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in

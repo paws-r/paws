@@ -27,6 +27,27 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Targets = list(
+    list(
+      TargetArn = "string",
+      Endpoint = "string",
+      TrackedClusterId = "string",
+      RdsResourceId = "string",
+      Port = 123,
+      Type = "RDS_INSTANCE"|"RDS_SERVERLESS_ENDPOINT"|"TRACKED_CLUSTER",
+      TargetHealth = list(
+        State = "REGISTERING"|"AVAILABLE"|"UNAVAILABLE",
+        Reason = "UNREACHABLE"|"CONNECTION_FAILED"|"AUTH_FAILURE"|"PENDING_PROXY_CAPACITY",
+        Description = "string"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns information about \code{DBProxyTarget} objects. This API supports
 pagination.

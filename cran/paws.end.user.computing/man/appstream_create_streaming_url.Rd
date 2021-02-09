@@ -23,6 +23,15 @@ value between 1 and 604800 seconds. The default is 60 seconds.}
 \item{SessionContext}{The session context. For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/managing-stacks-fleets.html#managing-stacks-fleets-parameters}{Session Context}
 in the \emph{Amazon AppStream 2.0 Administration Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StreamingURL = "string",
+  Expires = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Creates a temporary URL to start an AppStream 2.0 streaming session for
 the specified user. A streaming URL enables application streaming to be

@@ -18,6 +18,12 @@ Region.}
 
 \item{Tags}{The tags to add to the resource. A tag is a key-value pair.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FleetArn = "string"
+)
+}
+}
 \description{
 Creates a fleet. A fleet consists of resources and the configuration
 that delivers associated websites to authorized users who download and

@@ -10,6 +10,10 @@ ses_verify_email_identity(EmailAddress)
 \arguments{
 \item{EmailAddress}{[required] The email address to be verified.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds an email address to the list of identities for your Amazon SES
 account in the current AWS region and attempts to verify it. As a result

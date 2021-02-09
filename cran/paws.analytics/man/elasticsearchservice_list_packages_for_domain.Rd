@@ -16,6 +16,30 @@ elasticsearchservice_list_packages_for_domain(DomainName, MaxResults,
 non-null NextToken value. If provided, returns results for the next
 page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DomainPackageDetailsList = list(
+    list(
+      PackageID = "string",
+      PackageName = "string",
+      PackageType = "TXT-DICTIONARY",
+      LastUpdated = as.POSIXct(
+        "2015-01-01"
+      ),
+      DomainName = "string",
+      DomainPackageStatus = "ASSOCIATING"|"ASSOCIATION_FAILED"|"ACTIVE"|"DISSOCIATING"|"DISSOCIATION_FAILED",
+      PackageVersion = "string",
+      ReferencePath = "string",
+      ErrorDetails = list(
+        ErrorType = "string",
+        ErrorMessage = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all packages associated with the Amazon ES domain.
 }

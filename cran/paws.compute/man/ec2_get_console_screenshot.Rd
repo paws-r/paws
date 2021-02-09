@@ -18,6 +18,13 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{WakeUp}{When set to \code{true}, acts as keystroke input and wakes up an instance
 that's in standby or "sleep" mode.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ImageData = "string",
+  InstanceId = "string"
+)
+}
+}
 \description{
 Retrieve a JPG-format screenshot of a running instance to help with
 troubleshooting.

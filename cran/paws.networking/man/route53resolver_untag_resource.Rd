@@ -21,6 +21,10 @@ tags from. To get the ARN for a resource, use the applicable \code{Get} or
 
 \item{TagKeys}{[required] The tags that you want to remove to the specified resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes one or more tags from a specified resource.
 }

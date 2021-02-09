@@ -14,11 +14,28 @@ assumes the user whose credentials are used to call the operation.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{ServiceName}{Filters the returned results to only those for the specified AWS
 service. If not specified, then AWS returns service-specific credentials
 for all services.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceSpecificCredentials = list(
+    list(
+      UserName = "string",
+      Status = "Active"|"Inactive",
+      ServiceUserName = "string",
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      ServiceSpecificCredentialId = "string",
+      ServiceName = "string"
+    )
+  )
+)
+}
 }
 \description{
 Returns information about the service-specific credentials associated

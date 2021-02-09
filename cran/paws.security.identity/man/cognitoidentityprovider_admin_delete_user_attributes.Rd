@@ -20,6 +20,10 @@ delete.
 For custom attributes, you must prepend the \verb{custom:} prefix to the
 attribute name.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the user attributes in a user pool as an administrator. Works on
 any user.

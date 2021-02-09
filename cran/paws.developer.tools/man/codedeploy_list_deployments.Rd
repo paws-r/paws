@@ -42,6 +42,15 @@ deployments.}
 \item{nextToken}{An identifier returned from the previous list deployments call. It can
 be used to return the next set of deployments in the list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  deployments = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the deployments in a deployment group for an application
 registered with the IAM user or AWS account.

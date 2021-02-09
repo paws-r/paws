@@ -15,7 +15,7 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this operation with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 When using this API with Amazon S3 on Outposts, you must direct requests
@@ -24,7 +24,7 @@ form
 \emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
 When using this operation using S3 on Outposts through the AWS SDKs, you
 provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Delimiter}{Character you use to group keys.
@@ -69,6 +69,44 @@ they have an upload ID lexicographically greater than the specified
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Bucket = "string",
+  KeyMarker = "string",
+  UploadIdMarker = "string",
+  NextKeyMarker = "string",
+  Prefix = "string",
+  Delimiter = "string",
+  NextUploadIdMarker = "string",
+  MaxUploads = 123,
+  IsTruncated = TRUE|FALSE,
+  Uploads = list(
+    list(
+      UploadId = "string",
+      Key = "string",
+      Initiated = as.POSIXct(
+        "2015-01-01"
+      ),
+      StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
+      Owner = list(
+        DisplayName = "string",
+        ID = "string"
+      ),
+      Initiator = list(
+        ID = "string",
+        DisplayName = "string"
+      )
+    )
+  ),
+  CommonPrefixes = list(
+    list(
+      Prefix = "string"
+    )
+  ),
+  EncodingType = "url"
+)
+}
+}
 \description{
 This operation lists in-progress multipart uploads. An in-progress
 multipart upload is a multipart upload that has been initiated using the
@@ -90,10 +128,10 @@ uploads in the response are first sorted by key. Additionally, uploads
 are sorted in ascending order within each key by the upload initiation
 time.
 
-For more information on multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html}{Uploading Objects Using Multipart Upload}.
+For more information on multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Uploading Objects Using Multipart Upload}.
 
 For information on permissions required to use the multipart upload API,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html}{Multipart Upload API and Permissions}.
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload API and Permissions}.
 
 The following operations are related to
 \code{\link[=s3_list_multipart_uploads]{list_multipart_uploads}}:

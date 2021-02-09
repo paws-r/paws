@@ -29,6 +29,16 @@ when connecting to your underlying source.}
 \item{SslProperties}{Secure Socket Layer (SSL) properties that apply when QuickSight connects
 to your underlying source.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  DataSourceId = "string",
+  UpdateStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Updates a data source.
 }

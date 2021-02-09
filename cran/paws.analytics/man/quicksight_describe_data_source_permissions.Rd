@@ -12,6 +12,23 @@ quicksight_describe_data_source_permissions(AwsAccountId, DataSourceId)
 \item{DataSourceId}{[required] The ID of the data source. This ID is unique per AWS Region for each AWS
 account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DataSourceArn = "string",
+  DataSourceId = "string",
+  Permissions = list(
+    list(
+      Principal = "string",
+      Actions = list(
+        "string"
+      )
+    )
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Describes the resource permissions for a data source.
 }

@@ -10,6 +10,10 @@ dlm_delete_lifecycle_policy(PolicyId)
 \arguments{
 \item{PolicyId}{[required] The identifier of the lifecycle policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified lifecycle policy and halts the automated
 operations that the policy specified.

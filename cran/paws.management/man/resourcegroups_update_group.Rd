@@ -15,6 +15,16 @@ resourcegroups_update_group(GroupName, Group, Description)
 Descriptions can contain letters, numbers, hyphens, underscores,
 periods, and spaces.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Group = list(
+    GroupArn = "string",
+    Name = "string",
+    Description = "string"
+  )
+)
+}
+}
 \description{
 Updates the description for an existing group. You cannot update the
 name of a resource group.

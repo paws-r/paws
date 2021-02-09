@@ -9,11 +9,16 @@ simpledb_delete_attributes(DomainName, ItemName, Attributes, Expected)
 \arguments{
 \item{DomainName}{[required] The name of the domain in which to perform the operation.}
 
-\item{ItemName}{[required] The name of the item. Similar to rows on a spreadsheet, items represent individual objects that contain one or more value-attribute pairs.}
+\item{ItemName}{[required] The name of the item. Similar to rows on a spreadsheet, items represent
+individual objects that contain one or more value-attribute pairs.}
 
-\item{Attributes}{A list of Attributes. Similar to columns on a spreadsheet, attributes represent categories of data that can be assigned to items.}
+\item{Attributes}{A list of Attributes. Similar to columns on a spreadsheet, attributes
+represent categories of data that can be assigned to items.}
 
-\item{Expected}{The update condition which, if specified, determines whether the specified attributes will be deleted or not. The update condition must be satisfied in order for this request to be processed and the attributes to be deleted.}
+\item{Expected}{The update condition which, if specified, determines whether the
+specified attributes will be deleted or not. The update condition must
+be satisfied in order for this request to be processed and the
+attributes to be deleted.}
 }
 \description{
 Deletes one or more attributes associated with an item. If all

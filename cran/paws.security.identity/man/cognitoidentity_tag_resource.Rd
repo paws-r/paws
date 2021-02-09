@@ -12,6 +12,10 @@ to.}
 
 \item{Tags}{[required] The tags to assign to the identity pool.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Assigns a set of tags to an Amazon Cognito identity pool. A tag is a
 label that you can use to categorize and manage identity pools in

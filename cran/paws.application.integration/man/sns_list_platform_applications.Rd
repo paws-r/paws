@@ -12,6 +12,20 @@ sns_list_platform_applications(NextToken)
 retrieve additional records that are available after the first page
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PlatformApplications = list(
+    list(
+      PlatformApplicationArn = "string",
+      Attributes = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the platform application objects for the supported push
 notification services, such as APNS and GCM (Firebase Cloud Messaging).

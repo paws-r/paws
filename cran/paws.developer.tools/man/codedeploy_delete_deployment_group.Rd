@@ -12,6 +12,17 @@ or AWS account.}
 
 \item{deploymentGroupName}{[required] The name of a deployment group for the specified application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  hooksNotCleanedUp = list(
+    list(
+      name = "string",
+      hook = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes a deployment group.
 }

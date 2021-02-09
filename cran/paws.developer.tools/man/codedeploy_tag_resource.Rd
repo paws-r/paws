@@ -15,6 +15,10 @@ group.}
 with a resource. The resource is identified by the \code{ResourceArn} input
 parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates the list of tags in the input \code{Tags} parameter with the
 resource identified by the \code{ResourceArn} input parameter.

@@ -7,11 +7,34 @@
 cognitosync_delete_dataset(IdentityPoolId, IdentityId, DatasetName)
 }
 \arguments{
-\item{IdentityPoolId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityPoolId}{[required] A name-spaced GUID (for example,
+us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.}
 
-\item{IdentityId}{[required] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.}
+\item{IdentityId}{[required] A name-spaced GUID (for example,
+us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
+Cognito. GUID generation is unique within a region.}
 
-\item{DatasetName}{[required] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).}
+\item{DatasetName}{[required] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9,
+'_' (underscore), '-' (dash), and '.' (dot).}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Dataset = list(
+    IdentityId = "string",
+    DatasetName = "string",
+    CreationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastModifiedBy = "string",
+    DataStorage = 123,
+    NumRecords = 123
+  )
+)
+}
 }
 \description{
 Deletes the specific dataset. The dataset will be deleted permanently,

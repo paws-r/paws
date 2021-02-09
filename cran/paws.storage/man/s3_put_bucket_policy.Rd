@@ -42,7 +42,7 @@ As a security precaution, the root user of the AWS account that owns a
 bucket can always use this operation, even if the policy explicitly
 denies the root user the ability to perform this action.
 
-For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html}{Using Bucket Policies and User Policies}.
+For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies and User Policies}.
 
 The following operations are related to
 \code{\link[=s3_put_bucket_policy]{put_bucket_policy}}:
@@ -67,7 +67,7 @@ The following operations are related to
 # The following example sets a permission policy on a bucket.
 svc$put_bucket_policy(
   Bucket = "examplebucket",
-  Policy = "\{\"Version\": \"2012-10-17\", \"Statement\": [\{ \"Sid\": \"id-1\",\"Effect\": ..."
+  Policy = "\{"Version": "2012-10-17", "Statement": [\{ "Sid": "id-1","Effect": "Allow"..."
 )
 }
 

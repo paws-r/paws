@@ -18,6 +18,15 @@ results.}
 
 \item{Limit}{The maximum number of results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RuleNames = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the rules for the specified target. You can see which of the rules
 in Amazon EventBridge can invoke a specific target in your account.

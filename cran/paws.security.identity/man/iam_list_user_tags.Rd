@@ -29,6 +29,19 @@ that case, the \code{IsTruncated} response element returns \code{true}, and
 \code{Marker} contains a value to include in the subsequent call that tells
 the service where to continue from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
+}
 \description{
 Lists the tags that are attached to the specified user. The returned
 list of tags is sorted by tag key. For more information about tagging,

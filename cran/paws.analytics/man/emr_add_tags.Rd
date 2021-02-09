@@ -15,6 +15,10 @@ instances. Tags are user-defined key-value pairs that consist of a
 required key string with a maximum of 128 characters, and an optional
 value string with a maximum of 256 characters.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds tags to an Amazon EMR resource. Tags make it easier to associate
 clusters in various ways, such as grouping clusters to track your Amazon

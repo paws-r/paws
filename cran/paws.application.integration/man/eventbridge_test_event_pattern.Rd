@@ -12,6 +12,12 @@ in the \emph{Amazon EventBridge User Guide}.}
 
 \item{Event}{[required] The event, in JSON format, to test against the event pattern.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Result = TRUE|FALSE
+)
+}
+}
 \description{
 Tests whether the specified event pattern matches the provided event.
 

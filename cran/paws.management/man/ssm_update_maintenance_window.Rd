@@ -17,7 +17,7 @@ ssm_update_maintenance_window(WindowId, Name, Description, StartDate,
 
 \item{StartDate}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
-"America/Los\\_Angeles", "UTC", or "Asia/Seoul". For more information,
+"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
 see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the
 IANA website.}
 
@@ -30,7 +30,7 @@ expression.}
 
 \item{ScheduleTimezone}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
-"America/Los\\_Angeles", "UTC", or "Asia/Seoul". For more information,
+"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
 see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the
 IANA website.}
 
@@ -58,6 +58,23 @@ tasks can be defined for those targets.}
 \item{Replace}{If True, then all fields that are required by the
 CreateMaintenanceWindow action are also required for this API request.
 Optional fields that are not specified are set to null.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  WindowId = "string",
+  Name = "string",
+  Description = "string",
+  StartDate = "string",
+  EndDate = "string",
+  Schedule = "string",
+  ScheduleTimezone = "string",
+  ScheduleOffset = 123,
+  Duration = 123,
+  Cutoff = 123,
+  AllowUnassociatedTargets = TRUE|FALSE,
+  Enabled = TRUE|FALSE
+)
+}
 }
 \description{
 Updates an existing maintenance window. Only specified parameters are

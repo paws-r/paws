@@ -16,6 +16,10 @@ replication task.}
 
 \item{Tags}{[required] One or more tags to be assigned to the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds metadata tags to an AWS DMS resource, including replication
 instance, endpoint, security group, and migration task. These tags can

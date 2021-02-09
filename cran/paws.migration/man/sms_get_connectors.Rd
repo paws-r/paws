@@ -13,6 +13,30 @@ sms_get_connectors(nextToken, maxResults)
 value is 50. To retrieve the remaining results, make another call with
 the returned \code{NextToken} value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  connectorList = list(
+    list(
+      connectorId = "string",
+      version = "string",
+      status = "HEALTHY"|"UNHEALTHY",
+      capabilityList = list(
+        "VSPHERE"|"SCVMM"|"HYPERV-MANAGER"|"SNAPSHOT_BATCHING"|"SMS_OPTIMIZED"
+      ),
+      vmManagerName = "string",
+      vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+      vmManagerId = "string",
+      ipAddress = "string",
+      macAddress = "string",
+      associatedOn = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Describes the connectors registered with the AWS SMS.
 }

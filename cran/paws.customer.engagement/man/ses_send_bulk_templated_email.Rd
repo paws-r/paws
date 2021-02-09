@@ -95,6 +95,18 @@ template.}
 \code{Destination} will receive the same version of the email. You can
 specify up to 50 \code{Destination} objects within a \code{Destinations} array.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = list(
+    list(
+      Status = "Success"|"MessageRejected"|"MailFromDomainNotVerified"|"ConfigurationSetDoesNotExist"|"TemplateDoesNotExist"|"AccountSuspended"|"AccountThrottled"|"AccountDailyQuotaExceeded"|"InvalidSendingPoolName"|"AccountSendingPaused"|"ConfigurationSetSendingPaused"|"InvalidParameterValue"|"TransientFailure"|"Failed",
+      Error = "string",
+      MessageId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Composes an email message to multiple destinations. The message body is
 created using an email template.

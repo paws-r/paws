@@ -10,6 +10,10 @@ sms_start_app_replication(appId)
 \arguments{
 \item{appId}{The ID of the application.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Starts replicating the specified application by creating replication
 jobs for each server in the application.

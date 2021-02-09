@@ -11,6 +11,30 @@ inspector_describe_assessment_targets(assessmentTargetArns)
 \item{assessmentTargetArns}{[required] The ARNs that specifies the assessment targets that you want to
 describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  assessmentTargets = list(
+    list(
+      arn = "string",
+      name = "string",
+      resourceGroupArn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      updatedAt = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  failedItems = list(
+    list(
+      failureCode = "INVALID_ARN"|"DUPLICATE_ARN"|"ITEM_DOES_NOT_EXIST"|"ACCESS_DENIED"|"LIMIT_EXCEEDED"|"INTERNAL_ERROR",
+      retryable = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Describes the assessment targets that are specified by the ARNs of the
 assessment targets.

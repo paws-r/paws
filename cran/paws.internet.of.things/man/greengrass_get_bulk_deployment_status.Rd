@@ -9,6 +9,28 @@ greengrass_get_bulk_deployment_status(BulkDeploymentId)
 \arguments{
 \item{BulkDeploymentId}{[required] The ID of the bulk deployment.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BulkDeploymentMetrics = list(
+    InvalidInputRecords = 123,
+    RecordsProcessed = 123,
+    RetryAttempts = 123
+  ),
+  BulkDeploymentStatus = "Initializing"|"Running"|"Completed"|"Stopping"|"Stopped"|"Failed",
+  CreatedAt = "string",
+  ErrorDetails = list(
+    list(
+      DetailedErrorCode = "string",
+      DetailedErrorMessage = "string"
+    )
+  ),
+  ErrorMessage = "string",
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns the status of a bulk deployment.
 }

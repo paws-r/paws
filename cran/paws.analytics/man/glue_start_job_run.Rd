@@ -81,6 +81,12 @@ a job runs.
 The maximum number of workers you can define are 299 for \code{G.1X}, and 149
 for \code{G.2X}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobRunId = "string"
+)
+}
+}
 \description{
 Starts a job run using a job definition.
 }

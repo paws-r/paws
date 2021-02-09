@@ -26,6 +26,10 @@ must also provide an IAM role with the necessary permissions that Amazon
 Kinesis Analytics can assume to read the object from your S3 bucket on
 your behalf.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications. Version 2 of the API supports

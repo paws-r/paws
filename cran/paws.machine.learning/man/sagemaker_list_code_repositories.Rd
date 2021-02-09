@@ -34,6 +34,29 @@ repositories, use the token in the next request.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CodeRepositorySummaryList = list(
+    list(
+      CodeRepositoryName = "string",
+      CodeRepositoryArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      GitConfig = list(
+        RepositoryUrl = "string",
+        Branch = "string",
+        SecretArn = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of the Git repositories in your account.
 }

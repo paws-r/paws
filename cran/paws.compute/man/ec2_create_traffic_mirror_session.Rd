@@ -33,8 +33,9 @@ matching filter is the one that mirrors the packets.
 Valid values are 1-32766.}
 
 \item{VirtualNetworkId}{The VXLAN ID for the Traffic Mirror session. For more information about
-the VXLAN protocol, see RFC 7348. If you do not specify a
-\code{VirtualNetworkId}, an account-wide unique id is chosen at random.}
+the VXLAN protocol, see \href{https://tools.ietf.org/html/rfc7348}{RFC 7348}.
+If you do not specify a \code{VirtualNetworkId}, an account-wide unique id is
+chosen at random.}
 
 \item{Description}{The description of the Traffic Mirror session.}
 
@@ -47,6 +48,29 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficMirrorSession = list(
+    TrafficMirrorSessionId = "string",
+    TrafficMirrorTargetId = "string",
+    TrafficMirrorFilterId = "string",
+    NetworkInterfaceId = "string",
+    OwnerId = "string",
+    PacketLength = 123,
+    SessionNumber = 123,
+    VirtualNetworkId = 123,
+    Description = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  ),
+  ClientToken = "string"
+)
+}
 }
 \description{
 Creates a Traffic Mirror session.

@@ -20,6 +20,29 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransitGatewayConnect = list(
+    TransitGatewayAttachmentId = "string",
+    TransportTransitGatewayAttachmentId = "string",
+    TransitGatewayId = "string",
+    State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Options = list(
+      Protocol = "gre"
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a Connect attachment from a specified transit gateway
 attachment. A Connect attachment is a GRE-based tunnel attachment that

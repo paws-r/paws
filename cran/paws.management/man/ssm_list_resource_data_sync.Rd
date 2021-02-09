@@ -19,6 +19,58 @@ results.}
 returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceDataSyncItems = list(
+    list(
+      SyncName = "string",
+      SyncType = "string",
+      SyncSource = list(
+        SourceType = "string",
+        AwsOrganizationsSource = list(
+          OrganizationSourceType = "string",
+          OrganizationalUnits = list(
+            list(
+              OrganizationalUnitId = "string"
+            )
+          )
+        ),
+        SourceRegions = list(
+          "string"
+        ),
+        IncludeFutureRegions = TRUE|FALSE,
+        State = "string"
+      ),
+      S3Destination = list(
+        BucketName = "string",
+        Prefix = "string",
+        SyncFormat = "JsonSerDe",
+        Region = "string",
+        AWSKMSKeyARN = "string",
+        DestinationDataSharing = list(
+          DestinationDataSharingType = "string"
+        )
+      ),
+      LastSyncTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastSuccessfulSyncTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      SyncLastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastStatus = "Successful"|"Failed"|"InProgress",
+      SyncCreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastSyncStatusMessage = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists your resource data sync configurations. Includes information about
 the last time a sync attempted to start, the last sync status, and the

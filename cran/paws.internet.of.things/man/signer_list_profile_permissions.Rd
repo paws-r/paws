@@ -11,6 +11,22 @@ signer_list_profile_permissions(profileName, nextToken)
 
 \item{nextToken}{String for specifying the next set of paginated results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  revisionId = "string",
+  policySizeBytes = 123,
+  permissions = list(
+    list(
+      action = "string",
+      principal = "string",
+      statementId = "string",
+      profileVersion = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the cross-account permissions associated with a signing profile.
 }

@@ -9,6 +9,42 @@ workmail_list_access_control_rules(OrganizationId)
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Rules = list(
+    list(
+      Name = "string",
+      Effect = "ALLOW"|"DENY",
+      Description = "string",
+      IpRanges = list(
+        "string"
+      ),
+      NotIpRanges = list(
+        "string"
+      ),
+      Actions = list(
+        "string"
+      ),
+      NotActions = list(
+        "string"
+      ),
+      UserIds = list(
+        "string"
+      ),
+      NotUserIds = list(
+        "string"
+      ),
+      DateCreated = as.POSIXct(
+        "2015-01-01"
+      ),
+      DateModified = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists the access control rules for the specified organization.
 }

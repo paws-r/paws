@@ -9,6 +9,12 @@ sagemaker_delete_context(ContextName)
 \arguments{
 \item{ContextName}{[required] The name of the context to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContextArn = "string"
+)
+}
+}
 \description{
 Deletes an context.
 }

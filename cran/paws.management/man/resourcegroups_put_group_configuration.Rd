@@ -21,6 +21,10 @@ For information about the syntax of a service configuration, see
 A resource group can contain either a \code{Configuration} or a
 \code{ResourceQuery}, but not both.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Attaches a service configuration to the specified group. This occurs
 asynchronously, and can take time to complete. You can use

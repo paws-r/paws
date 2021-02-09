@@ -12,6 +12,12 @@ workmail_create_group(OrganizationId, Name)
 
 \item{Name}{[required] The name of the group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GroupId = "string"
+)
+}
+}
 \description{
 Creates a group that can be used in Amazon WorkMail by calling the
 \code{\link[=workmail_register_to_work_mail]{register_to_work_mail}} operation.

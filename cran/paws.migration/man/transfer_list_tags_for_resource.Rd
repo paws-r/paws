@@ -21,6 +21,19 @@ server, user, or role.}
 subsequent command to the \code{NextToken} parameter to continue listing
 additional tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  NextToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists all of the tags associated with the Amazon Resource Number (ARN)
 you specify. The resource can be a user, server, or role.

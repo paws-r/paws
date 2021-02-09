@@ -14,6 +14,23 @@ support_describe_services(serviceCodeList, language)
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  services = list(
+    list(
+      code = "string",
+      name = "string",
+      categories = list(
+        list(
+          code = "string",
+          name = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the current list of AWS services and a list of service
 categories for each service. You then use service names and categories

@@ -11,6 +11,10 @@ iotanalytics_untag_resource(resourceArn, tagKeys)
 
 \item{tagKeys}{[required] The keys of those tags which you want to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the given tags (metadata) from the resource.
 }

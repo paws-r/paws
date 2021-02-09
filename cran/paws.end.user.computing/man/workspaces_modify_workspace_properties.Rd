@@ -11,6 +11,10 @@ workspaces_modify_workspace_properties(WorkspaceId, WorkspaceProperties)
 
 \item{WorkspaceProperties}{[required] The properties of the WorkSpace.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Modifies the specified WorkSpace properties. For important information
 about how to modify the size of the root and user volumes, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/modify-workspaces.html}{Modify a WorkSpace}.

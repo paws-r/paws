@@ -46,6 +46,10 @@ see \href{https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}
 \item{CrawlerSecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used by this
 crawler.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a crawler. If a crawler is running, you must stop it using
 \code{\link[=glue_stop_crawler]{stop_crawler}} before updating it.

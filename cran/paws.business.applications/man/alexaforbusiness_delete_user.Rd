@@ -11,6 +11,10 @@ alexaforbusiness_delete_user(UserArn, EnrollmentId)
 
 \item{EnrollmentId}{[required] The ARN of the user's enrollment in the organization. Required.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a specified user by user ARN and enrollment ARN.
 }

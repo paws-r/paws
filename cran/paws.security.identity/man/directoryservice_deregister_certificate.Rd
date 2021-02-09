@@ -12,6 +12,10 @@ directoryservice_deregister_certificate(DirectoryId, CertificateId)
 
 \item{CertificateId}{[required] The identifier of the certificate.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes from the system the certificate that was registered for secure
 LDAP or client certificate authentication.

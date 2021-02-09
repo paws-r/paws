@@ -9,6 +9,24 @@ mediapackage_describe_harvest_job(Id)
 \arguments{
 \item{Id}{[required] The ID of the HarvestJob.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  ChannelId = "string",
+  CreatedAt = "string",
+  EndTime = "string",
+  Id = "string",
+  OriginEndpointId = "string",
+  S3Destination = list(
+    BucketName = "string",
+    ManifestKey = "string",
+    RoleArn = "string"
+  ),
+  StartTime = "string",
+  Status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+)
+}
+}
 \description{
 Gets details about an existing HarvestJob.
 }

@@ -18,6 +18,12 @@ chime_create_app_instance_user(AppInstanceArn, AppInstanceUserId, Name,
 
 \item{ClientRequestToken}{[required] The token assigned to the user requesting an app instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppInstanceUserArn = "string"
+)
+}
+}
 \description{
 Creates a user under an Amazon Chime \code{AppInstance}. The request consists
 of a unique \code{appInstanceUserId} and \code{Name} for that user.

@@ -73,6 +73,50 @@ Pagination continues from the end of the previous results that returned
 the \code{NextToken} value. This value is \code{null} when there are no more
 results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Volumes = list(
+    list(
+      Attachments = list(
+        list(
+          AttachTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          Device = "string",
+          InstanceId = "string",
+          State = "attaching"|"attached"|"detaching"|"detached"|"busy",
+          VolumeId = "string",
+          DeleteOnTermination = TRUE|FALSE
+        )
+      ),
+      AvailabilityZone = "string",
+      CreateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Encrypted = TRUE|FALSE,
+      KmsKeyId = "string",
+      OutpostArn = "string",
+      Size = 123,
+      SnapshotId = "string",
+      State = "creating"|"available"|"in-use"|"deleting"|"deleted"|"error",
+      VolumeId = "string",
+      Iops = 123,
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+      FastRestored = TRUE|FALSE,
+      MultiAttachEnabled = TRUE|FALSE,
+      Throughput = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the specified EBS volumes or all of your EBS volumes.
 

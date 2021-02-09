@@ -12,6 +12,12 @@ directoryservice_create_snapshot(DirectoryId, Name)
 
 \item{Name}{The descriptive name to apply to the snapshot.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SnapshotId = "string"
+)
+}
+}
 \description{
 Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS
 cloud.

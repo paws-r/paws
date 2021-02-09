@@ -12,7 +12,51 @@ iam_get_instance_profile(InstanceProfileName)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceProfile = list(
+    Path = "string",
+    InstanceProfileName = "string",
+    InstanceProfileId = "string",
+    Arn = "string",
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Roles = list(
+      list(
+        Path = "string",
+        RoleName = "string",
+        RoleId = "string",
+        Arn = "string",
+        CreateDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        AssumeRolePolicyDocument = "string",
+        Description = "string",
+        MaxSessionDuration = 123,
+        PermissionsBoundary = list(
+          PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+          PermissionsBoundaryArn = "string"
+        ),
+        Tags = list(
+          list(
+            Key = "string",
+            Value = "string"
+          )
+        ),
+        RoleLastUsed = list(
+          LastUsedDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          Region = "string"
+        )
+      )
+    )
+  )
+)
+}
 }
 \description{
 Retrieves information about the specified instance profile, including

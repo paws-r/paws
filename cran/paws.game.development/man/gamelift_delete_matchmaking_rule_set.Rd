@@ -11,6 +11,10 @@ gamelift_delete_matchmaking_rule_set(Name)
 rule set name is different from the optional "name" field in the rule
 set body.) You can use either the rule set name or ARN value.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes an existing matchmaking rule set. To delete the rule set,
 provide the rule set name. Rule sets cannot be deleted if they are

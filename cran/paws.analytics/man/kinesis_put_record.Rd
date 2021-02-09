@@ -35,6 +35,14 @@ record \emph{n-1} (as returned in the result when putting record \emph{n-1}). If
 this parameter is not set, records are coarsely ordered based on arrival
 time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ShardId = "string",
+  SequenceNumber = "string",
+  EncryptionType = "NONE"|"KMS"
+)
+}
+}
 \description{
 Writes a single data record into an Amazon Kinesis data stream. Call
 \code{\link[=kinesis_put_record]{put_record}} to send data into the stream for

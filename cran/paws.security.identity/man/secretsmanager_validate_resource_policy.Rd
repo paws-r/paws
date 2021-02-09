@@ -33,6 +33,18 @@ receive either a \emph{ResourceNotFoundException} or an
 
 \item{ResourcePolicy}{[required] Identifies the Resource Policy attached to the secret.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyValidationPassed = TRUE|FALSE,
+  ValidationErrors = list(
+    list(
+      CheckName = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Validates the JSON text of the resource-based policy document attached
 to the specified secret. The JSON request string input and response
@@ -53,7 +65,7 @@ resource-based policy is optional.
 # The following example shows how to validate a resource-based policy to a
 # secret.
 svc$validate_resource_policy(
-  ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",...",
+  ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",\n\"P...",
   SecretId = "MyTestDatabaseSecret"
 )
 }

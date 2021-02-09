@@ -37,6 +37,27 @@ results.}
 \item{NextToken}{An enumeration token that, when provided in a request, returns the next
 batch of the results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  differences = list(
+    list(
+      beforeBlob = list(
+        blobId = "string",
+        path = "string",
+        mode = "string"
+      ),
+      afterBlob = list(
+        blobId = "string",
+        path = "string",
+        mode = "string"
+      ),
+      changeType = "A"|"M"|"D"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns information about the differences in a valid commit specifier
 (such as a branch, tag, HEAD, commit ID, or other fully qualified

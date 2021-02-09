@@ -18,6 +18,26 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DashboardVersionSummaryList = list(
+    list(
+      Arn = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      VersionNumber = 123,
+      Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
+      SourceEntityArn = "string",
+      Description = "string"
+    )
+  ),
+  NextToken = "string",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Lists all the versions of the dashboards in the QuickSight subscription.
 }

@@ -14,6 +14,10 @@ When you delete a traffic policy instance, Amazon Route 53 also deletes
 all of the resource record sets that were created when you created the
 traffic policy instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a traffic policy instance and all of the resource record sets
 that Amazon Route 53 created when you created the instance.

@@ -126,7 +126,7 @@ NULL
 #'  \link[=kms_create_custom_key_store]{create_custom_key_store} \tab Creates a custom key store that is associated with an AWS CloudHSM cluster that you own and manage\cr
 #'  \link[=kms_create_grant]{create_grant} \tab Adds a grant to a customer master key (CMK)\cr
 #'  \link[=kms_create_key]{create_key} \tab Creates a unique customer managed customer master key (CMK) in your AWS account and Region\cr
-#'  \link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext that was encrypted by a AWS KMS customer master key (CMK) using any of the following operations: - Encrypt - GenerateDataKey - GenerateDataKeyPair - GenerateDataKeyWithoutPlaintext - GenerateDataKeyPairWithoutPlaintext You can use this operation to decrypt ciphertext that was encrypted under a symmetric or asymmetric CMK\cr
+#'  \link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext that was encrypted by a AWS KMS customer master key (CMK) using any of the following operations:\cr
 #'  \link[=kms_delete_alias]{delete_alias} \tab Deletes the specified alias\cr
 #'  \link[=kms_delete_custom_key_store]{delete_custom_key_store} \tab Deletes a custom key store\cr
 #'  \link[=kms_delete_imported_key_material]{delete_imported_key_material} \tab Deletes key material that you previously imported\cr

@@ -9,6 +9,10 @@ robomaker_delete_world_template(template)
 \arguments{
 \item{template}{[required] The Amazon Resource Name (arn) of the world template you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a world template.
 }

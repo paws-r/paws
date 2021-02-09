@@ -9,6 +9,83 @@ sagemaker_describe_trial_component(TrialComponentName)
 \arguments{
 \item{TrialComponentName}{[required] The name of the trial component to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrialComponentName = "string",
+  TrialComponentArn = "string",
+  DisplayName = "string",
+  Source = list(
+    SourceArn = "string",
+    SourceType = "string"
+  ),
+  Status = list(
+    PrimaryStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+    Message = "string"
+  ),
+  StartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  EndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  CreatedBy = list(
+    UserProfileArn = "string",
+    UserProfileName = "string",
+    DomainId = "string"
+  ),
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastModifiedBy = list(
+    UserProfileArn = "string",
+    UserProfileName = "string",
+    DomainId = "string"
+  ),
+  Parameters = list(
+    list(
+      StringValue = "string",
+      NumberValue = 123.0
+    )
+  ),
+  InputArtifacts = list(
+    list(
+      MediaType = "string",
+      Value = "string"
+    )
+  ),
+  OutputArtifacts = list(
+    list(
+      MediaType = "string",
+      Value = "string"
+    )
+  ),
+  MetadataProperties = list(
+    CommitId = "string",
+    Repository = "string",
+    GeneratedBy = "string",
+    ProjectId = "string"
+  ),
+  Metrics = list(
+    list(
+      MetricName = "string",
+      SourceArn = "string",
+      TimeStamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      Max = 123.0,
+      Min = 123.0,
+      Last = 123.0,
+      Count = 123,
+      Avg = 123.0,
+      StdDev = 123.0
+    )
+  )
+)
+}
+}
 \description{
 Provides a list of a trials component's properties.
 }

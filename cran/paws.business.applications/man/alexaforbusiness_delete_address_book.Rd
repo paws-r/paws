@@ -9,6 +9,10 @@ alexaforbusiness_delete_address_book(AddressBookArn)
 \arguments{
 \item{AddressBookArn}{[required] The ARN of the address book to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes an address book by the address book ARN.
 }

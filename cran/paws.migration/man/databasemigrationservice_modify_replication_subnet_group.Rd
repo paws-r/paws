@@ -15,6 +15,26 @@ databasemigrationservice_modify_replication_subnet_group(
 
 \item{SubnetIds}{[required] A list of subnet IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplicationSubnetGroup = list(
+    ReplicationSubnetGroupIdentifier = "string",
+    ReplicationSubnetGroupDescription = "string",
+    VpcId = "string",
+    SubnetGroupStatus = "string",
+    Subnets = list(
+      list(
+        SubnetIdentifier = "string",
+        SubnetAvailabilityZone = list(
+          Name = "string"
+        ),
+        SubnetStatus = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Modifies the settings for the specified replication subnet group.
 }

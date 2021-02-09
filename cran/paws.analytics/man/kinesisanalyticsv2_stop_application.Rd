@@ -25,6 +25,10 @@ application.
 The application must be in the \code{STARTING}, \code{UPDATING}, \code{STOPPING},
 \code{AUTOSCALING}, or \code{RUNNING} status.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Stops the application from processing data. You can stop an application
 only if it is in the running status, unless you set the \code{Force}

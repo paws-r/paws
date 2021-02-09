@@ -14,6 +14,10 @@ you want to delete.}
 
 \item{Notification}{[required] The notification that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a notification.
 

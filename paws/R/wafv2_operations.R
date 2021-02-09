@@ -41,6 +41,12 @@ NULL
 #' -   For an AppSync GraphQL API:
 #'     `arn:aws:appsync:region:account-id:apis/GraphQLApiId `
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_web_acl(
@@ -107,6 +113,14 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Rules &#91;required&#93; An array of Rule that you're configuring to use in a rule group or web
 #' ACL.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Capacity = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -387,6 +401,20 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #' Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 #' @param Tags An array of key:value pairs to associate with the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Summary = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     Description = "string",
+#'     LockToken = "string",
+#'     ARN = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_ip_set(
@@ -460,6 +488,20 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 #' change the description of a set after you create it.
 #' @param RegularExpressionList &#91;required&#93; Array of regular expression strings.
 #' @param Tags An array of key:value pairs to associate with the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Summary = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     Description = "string",
+#'     LockToken = "string",
+#'     ARN = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -559,6 +601,20 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
 #' @param Tags An array of key:value pairs to associate with the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Summary = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     Description = "string",
+#'     LockToken = "string",
+#'     ARN = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -839,6 +895,20 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' collection.
 #' @param Tags An array of key:value pairs to associate with the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Summary = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     Description = "string",
+#'     LockToken = "string",
+#'     ARN = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_web_acl(
@@ -1094,6 +1164,14 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
 #' `WAFOptimisticLockException`. If this happens, perform another get, and
 #' use the new token returned by that operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextWebACLLockToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_firewall_manager_rule_groups(
@@ -1161,6 +1239,12 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
 #' `WAFOptimisticLockException`. If this happens, perform another get, and
 #' use the new token returned by that operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_ip_set(
@@ -1208,6 +1292,12 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL from which you want to
 #' delete the LoggingConfiguration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_logging_configuration(
@@ -1249,6 +1339,12 @@ wafv2_delete_logging_configuration <- function(ResourceArn) {
 #' delete the policy.
 #' 
 #' You must be the owner of the rule group to perform this operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1315,6 +1411,12 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
 #' last retrieved it. If a change has been made, the update fails with a
 #' `WAFOptimisticLockException`. If this happens, perform another get, and
 #' use the new token returned by that operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1384,6 +1486,12 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 #' last retrieved it. If a change has been made, the update fails with a
 #' `WAFOptimisticLockException`. If this happens, perform another get, and
 #' use the new token returned by that operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1457,6 +1565,12 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #' `WAFOptimisticLockException`. If this happens, perform another get, and
 #' use the new token returned by that operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_web_acl(
@@ -1517,6 +1631,24 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Capacity = 123,
+#'   Rules = list(
+#'     list(
+#'       Name = "string",
+#'       Action = list(
+#'         Block = list(),
+#'         Allow = list(),
+#'         Count = list()
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1583,6 +1715,12 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope) {
 #' -   For an AppSync GraphQL API:
 #'     `arn:aws:appsync:region:account-id:apis/GraphQLApiId `
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_web_acl(
@@ -1641,6 +1779,24 @@ wafv2_disassociate_web_acl <- function(ResourceArn) {
 #' create and list commands. You provide it to operations like update and
 #' delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IPSet = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     ARN = "string",
+#'     Description = "string",
+#'     IPAddressVersion = "IPV4"|"IPV6",
+#'     Addresses = list(
+#'       "string"
+#'     )
+#'   ),
+#'   LockToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_ip_set(
@@ -1687,6 +1843,35 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL for which you want to get
 #' the LoggingConfiguration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoggingConfiguration = list(
+#'     ResourceArn = "string",
+#'     LogDestinationConfigs = list(
+#'       "string"
+#'     ),
+#'     RedactedFields = list(
+#'       list(
+#'         SingleHeader = list(
+#'           Name = "string"
+#'         ),
+#'         SingleQueryArgument = list(
+#'           Name = "string"
+#'         ),
+#'         AllQueryArguments = list(),
+#'         UriPath = list(),
+#'         QueryString = list(),
+#'         Body = list(),
+#'         Method = list()
+#'       )
+#'     ),
+#'     ManagedByFirewallManager = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_logging_configuration(
@@ -1726,6 +1911,14 @@ wafv2_get_logging_configuration <- function(ResourceArn) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule group for which you want to
 #' get the policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1790,6 +1983,25 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 #' update and delete.
 #' @param RuleName &#91;required&#93; The name of the rate-based rule to get the keys for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ManagedKeysIPV4 = list(
+#'     IPAddressVersion = "IPV4"|"IPV6",
+#'     Addresses = list(
+#'       "string"
+#'     )
+#'   ),
+#'   ManagedKeysIPV6 = list(
+#'     IPAddressVersion = "IPV4"|"IPV6",
+#'     Addresses = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_rate_based_statement_managed_keys(
@@ -1851,6 +2063,25 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
 #' create and list commands. You provide it to operations like update and
 #' delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegexPatternSet = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     ARN = "string",
+#'     Description = "string",
+#'     RegularExpressionList = list(
+#'       list(
+#'         RegexString = "string"
+#'       )
+#'     )
+#'   ),
+#'   LockToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_regex_pattern_set(
@@ -1910,6 +2141,214 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #' @param Id &#91;required&#93; A unique identifier for the rule group. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleGroup = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     Capacity = 123,
+#'     ARN = "string",
+#'     Description = "string",
+#'     Rules = list(
+#'       list(
+#'         Name = "string",
+#'         Priority = 123,
+#'         Statement = list(
+#'           ByteMatchStatement = list(
+#'             SearchString = raw,
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             ),
+#'             PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+#'           ),
+#'           SqliMatchStatement = list(
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             )
+#'           ),
+#'           XssMatchStatement = list(
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             )
+#'           ),
+#'           SizeConstraintStatement = list(
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+#'             Size = 123,
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             )
+#'           ),
+#'           GeoMatchStatement = list(
+#'             CountryCodes = list(
+#'               "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'             ),
+#'             ForwardedIPConfig = list(
+#'               HeaderName = "string",
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             )
+#'           ),
+#'           RuleGroupReferenceStatement = list(
+#'             ARN = "string",
+#'             ExcludedRules = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           ),
+#'           IPSetReferenceStatement = list(
+#'             ARN = "string",
+#'             IPSetForwardedIPConfig = list(
+#'               HeaderName = "string",
+#'               FallbackBehavior = "MATCH"|"NO_MATCH",
+#'               Position = "FIRST"|"LAST"|"ANY"
+#'             )
+#'           ),
+#'           RegexPatternSetReferenceStatement = list(
+#'             ARN = "string",
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             )
+#'           ),
+#'           RateBasedStatement = list(
+#'             Limit = 123,
+#'             AggregateKeyType = "IP"|"FORWARDED_IP",
+#'             ScopeDownStatement = list(),
+#'             ForwardedIPConfig = list(
+#'               HeaderName = "string",
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             )
+#'           ),
+#'           AndStatement = list(
+#'             Statements = list(
+#'               list()
+#'             )
+#'           ),
+#'           OrStatement = list(
+#'             Statements = list(
+#'               list()
+#'             )
+#'           ),
+#'           NotStatement = list(
+#'             Statement = list()
+#'           ),
+#'           ManagedRuleGroupStatement = list(
+#'             VendorName = "string",
+#'             Name = "string",
+#'             ExcludedRules = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Action = list(
+#'           Block = list(),
+#'           Allow = list(),
+#'           Count = list()
+#'         ),
+#'         OverrideAction = list(
+#'           Count = list(),
+#'           None = list()
+#'         ),
+#'         VisibilityConfig = list(
+#'           SampledRequestsEnabled = TRUE|FALSE,
+#'           CloudWatchMetricsEnabled = TRUE|FALSE,
+#'           MetricName = "string"
+#'         )
+#'       )
+#'     ),
+#'     VisibilityConfig = list(
+#'       SampledRequestsEnabled = TRUE|FALSE,
+#'       CloudWatchMetricsEnabled = TRUE|FALSE,
+#'       MetricName = "string"
+#'     )
+#'   ),
+#'   LockToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1994,6 +2433,45 @@ wafv2_get_rule_group <- function(Name, Scope, Id) {
 #' `MaxItems`, [`get_sampled_requests`][wafv2_get_sampled_requests] returns
 #' information about all of them.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SampledRequests = list(
+#'     list(
+#'       Request = list(
+#'         ClientIP = "string",
+#'         Country = "string",
+#'         URI = "string",
+#'         Method = "string",
+#'         HTTPVersion = "string",
+#'         Headers = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       ),
+#'       Weight = 123,
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Action = "string",
+#'       RuleNameWithinRuleGroup = "string"
+#'     )
+#'   ),
+#'   PopulationSize = 123,
+#'   TimeWindow = list(
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_sampled_requests(
@@ -2063,6 +2541,287 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WebACL = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     ARN = "string",
+#'     DefaultAction = list(
+#'       Block = list(),
+#'       Allow = list()
+#'     ),
+#'     Description = "string",
+#'     Rules = list(
+#'       list(
+#'         Name = "string",
+#'         Priority = 123,
+#'         Statement = list(
+#'           ByteMatchStatement = list(
+#'             SearchString = raw,
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             ),
+#'             PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+#'           ),
+#'           SqliMatchStatement = list(
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             )
+#'           ),
+#'           XssMatchStatement = list(
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             )
+#'           ),
+#'           SizeConstraintStatement = list(
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+#'             Size = 123,
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             )
+#'           ),
+#'           GeoMatchStatement = list(
+#'             CountryCodes = list(
+#'               "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'             ),
+#'             ForwardedIPConfig = list(
+#'               HeaderName = "string",
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             )
+#'           ),
+#'           RuleGroupReferenceStatement = list(
+#'             ARN = "string",
+#'             ExcludedRules = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           ),
+#'           IPSetReferenceStatement = list(
+#'             ARN = "string",
+#'             IPSetForwardedIPConfig = list(
+#'               HeaderName = "string",
+#'               FallbackBehavior = "MATCH"|"NO_MATCH",
+#'               Position = "FIRST"|"LAST"|"ANY"
+#'             )
+#'           ),
+#'           RegexPatternSetReferenceStatement = list(
+#'             ARN = "string",
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             )
+#'           ),
+#'           RateBasedStatement = list(
+#'             Limit = 123,
+#'             AggregateKeyType = "IP"|"FORWARDED_IP",
+#'             ScopeDownStatement = list(),
+#'             ForwardedIPConfig = list(
+#'               HeaderName = "string",
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             )
+#'           ),
+#'           AndStatement = list(
+#'             Statements = list(
+#'               list()
+#'             )
+#'           ),
+#'           OrStatement = list(
+#'             Statements = list(
+#'               list()
+#'             )
+#'           ),
+#'           NotStatement = list(
+#'             Statement = list()
+#'           ),
+#'           ManagedRuleGroupStatement = list(
+#'             VendorName = "string",
+#'             Name = "string",
+#'             ExcludedRules = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Action = list(
+#'           Block = list(),
+#'           Allow = list(),
+#'           Count = list()
+#'         ),
+#'         OverrideAction = list(
+#'           Count = list(),
+#'           None = list()
+#'         ),
+#'         VisibilityConfig = list(
+#'           SampledRequestsEnabled = TRUE|FALSE,
+#'           CloudWatchMetricsEnabled = TRUE|FALSE,
+#'           MetricName = "string"
+#'         )
+#'       )
+#'     ),
+#'     VisibilityConfig = list(
+#'       SampledRequestsEnabled = TRUE|FALSE,
+#'       CloudWatchMetricsEnabled = TRUE|FALSE,
+#'       MetricName = "string"
+#'     ),
+#'     Capacity = 123,
+#'     PreProcessFirewallManagerRuleGroups = list(
+#'       list(
+#'         Name = "string",
+#'         Priority = 123,
+#'         FirewallManagerStatement = list(
+#'           ManagedRuleGroupStatement = list(
+#'             VendorName = "string",
+#'             Name = "string",
+#'             ExcludedRules = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           ),
+#'           RuleGroupReferenceStatement = list(
+#'             ARN = "string",
+#'             ExcludedRules = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         OverrideAction = list(
+#'           Count = list(),
+#'           None = list()
+#'         ),
+#'         VisibilityConfig = list(
+#'           SampledRequestsEnabled = TRUE|FALSE,
+#'           CloudWatchMetricsEnabled = TRUE|FALSE,
+#'           MetricName = "string"
+#'         )
+#'       )
+#'     ),
+#'     PostProcessFirewallManagerRuleGroups = list(
+#'       list(
+#'         Name = "string",
+#'         Priority = 123,
+#'         FirewallManagerStatement = list(
+#'           ManagedRuleGroupStatement = list(
+#'             VendorName = "string",
+#'             Name = "string",
+#'             ExcludedRules = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           ),
+#'           RuleGroupReferenceStatement = list(
+#'             ARN = "string",
+#'             ExcludedRules = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         OverrideAction = list(
+#'           Count = list(),
+#'           None = list()
+#'         ),
+#'         VisibilityConfig = list(
+#'           SampledRequestsEnabled = TRUE|FALSE,
+#'           CloudWatchMetricsEnabled = TRUE|FALSE,
+#'           MetricName = "string"
+#'         )
+#'       )
+#'     ),
+#'     ManagedByFirewallManager = TRUE|FALSE
+#'   ),
+#'   LockToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_web_acl(
@@ -2107,6 +2866,286 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #' wafv2_get_web_acl_for_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WebACL = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     ARN = "string",
+#'     DefaultAction = list(
+#'       Block = list(),
+#'       Allow = list()
+#'     ),
+#'     Description = "string",
+#'     Rules = list(
+#'       list(
+#'         Name = "string",
+#'         Priority = 123,
+#'         Statement = list(
+#'           ByteMatchStatement = list(
+#'             SearchString = raw,
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             ),
+#'             PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+#'           ),
+#'           SqliMatchStatement = list(
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             )
+#'           ),
+#'           XssMatchStatement = list(
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             )
+#'           ),
+#'           SizeConstraintStatement = list(
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+#'             Size = 123,
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             )
+#'           ),
+#'           GeoMatchStatement = list(
+#'             CountryCodes = list(
+#'               "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'             ),
+#'             ForwardedIPConfig = list(
+#'               HeaderName = "string",
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             )
+#'           ),
+#'           RuleGroupReferenceStatement = list(
+#'             ARN = "string",
+#'             ExcludedRules = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           ),
+#'           IPSetReferenceStatement = list(
+#'             ARN = "string",
+#'             IPSetForwardedIPConfig = list(
+#'               HeaderName = "string",
+#'               FallbackBehavior = "MATCH"|"NO_MATCH",
+#'               Position = "FIRST"|"LAST"|"ANY"
+#'             )
+#'           ),
+#'           RegexPatternSetReferenceStatement = list(
+#'             ARN = "string",
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(),
+#'               Method = list()
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               )
+#'             )
+#'           ),
+#'           RateBasedStatement = list(
+#'             Limit = 123,
+#'             AggregateKeyType = "IP"|"FORWARDED_IP",
+#'             ScopeDownStatement = list(),
+#'             ForwardedIPConfig = list(
+#'               HeaderName = "string",
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             )
+#'           ),
+#'           AndStatement = list(
+#'             Statements = list(
+#'               list()
+#'             )
+#'           ),
+#'           OrStatement = list(
+#'             Statements = list(
+#'               list()
+#'             )
+#'           ),
+#'           NotStatement = list(
+#'             Statement = list()
+#'           ),
+#'           ManagedRuleGroupStatement = list(
+#'             VendorName = "string",
+#'             Name = "string",
+#'             ExcludedRules = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Action = list(
+#'           Block = list(),
+#'           Allow = list(),
+#'           Count = list()
+#'         ),
+#'         OverrideAction = list(
+#'           Count = list(),
+#'           None = list()
+#'         ),
+#'         VisibilityConfig = list(
+#'           SampledRequestsEnabled = TRUE|FALSE,
+#'           CloudWatchMetricsEnabled = TRUE|FALSE,
+#'           MetricName = "string"
+#'         )
+#'       )
+#'     ),
+#'     VisibilityConfig = list(
+#'       SampledRequestsEnabled = TRUE|FALSE,
+#'       CloudWatchMetricsEnabled = TRUE|FALSE,
+#'       MetricName = "string"
+#'     ),
+#'     Capacity = 123,
+#'     PreProcessFirewallManagerRuleGroups = list(
+#'       list(
+#'         Name = "string",
+#'         Priority = 123,
+#'         FirewallManagerStatement = list(
+#'           ManagedRuleGroupStatement = list(
+#'             VendorName = "string",
+#'             Name = "string",
+#'             ExcludedRules = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           ),
+#'           RuleGroupReferenceStatement = list(
+#'             ARN = "string",
+#'             ExcludedRules = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         OverrideAction = list(
+#'           Count = list(),
+#'           None = list()
+#'         ),
+#'         VisibilityConfig = list(
+#'           SampledRequestsEnabled = TRUE|FALSE,
+#'           CloudWatchMetricsEnabled = TRUE|FALSE,
+#'           MetricName = "string"
+#'         )
+#'       )
+#'     ),
+#'     PostProcessFirewallManagerRuleGroups = list(
+#'       list(
+#'         Name = "string",
+#'         Priority = 123,
+#'         FirewallManagerStatement = list(
+#'           ManagedRuleGroupStatement = list(
+#'             VendorName = "string",
+#'             Name = "string",
+#'             ExcludedRules = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           ),
+#'           RuleGroupReferenceStatement = list(
+#'             ARN = "string",
+#'             ExcludedRules = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         OverrideAction = list(
+#'           Count = list(),
+#'           None = list()
+#'         ),
+#'         VisibilityConfig = list(
+#'           SampledRequestsEnabled = TRUE|FALSE,
+#'           CloudWatchMetricsEnabled = TRUE|FALSE,
+#'           MetricName = "string"
+#'         )
+#'       )
+#'     ),
+#'     ManagedByFirewallManager = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2171,6 +3210,21 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 #' request. If more objects are available, in the response, AWS WAF
 #' provides a `NextMarker` value that you can use in a subsequent call to
 #' get the next batch of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   ManagedRuleGroups = list(
+#'     list(
+#'       VendorName = "string",
+#'       Name = "string",
+#'       Description = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2237,6 +3291,23 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
 #' provides a `NextMarker` value that you can use in a subsequent call to
 #' get the next batch of objects.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   IPSets = list(
+#'     list(
+#'       Name = "string",
+#'       Id = "string",
+#'       Description = "string",
+#'       LockToken = "string",
+#'       ARN = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_ip_sets(
@@ -2300,6 +3371,38 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' request. If more objects are available, in the response, AWS WAF
 #' provides a `NextMarker` value that you can use in a subsequent call to
 #' get the next batch of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoggingConfigurations = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       LogDestinationConfigs = list(
+#'         "string"
+#'       ),
+#'       RedactedFields = list(
+#'         list(
+#'           SingleHeader = list(
+#'             Name = "string"
+#'           ),
+#'           SingleQueryArgument = list(
+#'             Name = "string"
+#'           ),
+#'           AllQueryArguments = list(),
+#'           UriPath = list(),
+#'           QueryString = list(),
+#'           Body = list(),
+#'           Method = list()
+#'         )
+#'       ),
+#'       ManagedByFirewallManager = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2366,6 +3469,23 @@ wafv2_list_logging_configurations <- function(Scope = NULL, NextMarker = NULL, L
 #' provides a `NextMarker` value that you can use in a subsequent call to
 #' get the next batch of objects.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   RegexPatternSets = list(
+#'     list(
+#'       Name = "string",
+#'       Id = "string",
+#'       Description = "string",
+#'       LockToken = "string",
+#'       ARN = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_regex_pattern_sets(
@@ -2416,6 +3536,16 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 #' @param ResourceType Used for web ACLs that are scoped for regional applications. A regional
 #' application can be an Application Load Balancer (ALB), an API Gateway
 #' REST API, or an AppSync GraphQL API.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArns = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2481,6 +3611,23 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
 #' provides a `NextMarker` value that you can use in a subsequent call to
 #' get the next batch of objects.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   RuleGroups = list(
+#'     list(
+#'       Name = "string",
+#'       Id = "string",
+#'       Description = "string",
+#'       LockToken = "string",
+#'       ARN = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_rule_groups(
@@ -2543,6 +3690,23 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' provides a `NextMarker` value that you can use in a subsequent call to
 #' get the next batch of objects.
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   TagInfoForResource = list(
+#'     ResourceARN = "string",
+#'     TagList = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2608,6 +3772,23 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
 #' request. If more objects are available, in the response, AWS WAF
 #' provides a `NextMarker` value that you can use in a subsequent call to
 #' get the next batch of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   WebACLs = list(
+#'     list(
+#'       Name = "string",
+#'       Id = "string",
+#'       Description = "string",
+#'       LockToken = "string",
+#'       ARN = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2681,6 +3862,35 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' wafv2_put_logging_configuration(LoggingConfiguration)
 #'
 #' @param LoggingConfiguration &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoggingConfiguration = list(
+#'     ResourceArn = "string",
+#'     LogDestinationConfigs = list(
+#'       "string"
+#'     ),
+#'     RedactedFields = list(
+#'       list(
+#'         SingleHeader = list(
+#'           Name = "string"
+#'         ),
+#'         SingleQueryArgument = list(
+#'           Name = "string"
+#'         ),
+#'         AllQueryArguments = list(),
+#'         UriPath = list(),
+#'         QueryString = list(),
+#'         Body = list(),
+#'         Method = list()
+#'       )
+#'     ),
+#'     ManagedByFirewallManager = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2774,6 +3984,12 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 #' For more information, see [IAM
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_permission_policy(
@@ -2826,6 +4042,12 @@ wafv2_put_permission_policy <- function(ResourceArn, Policy) {
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param Tags &#91;required&#93; An array of key:value pairs to associate with the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2880,6 +4102,12 @@ wafv2_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; An array of keys identifying the tags to disassociate from the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2979,6 +4207,14 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' `WAFOptimisticLockException`. If this happens, perform another get, and
 #' use the new token returned by that operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextLockToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_ip_set(
@@ -3055,6 +4291,14 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 #' last retrieved it. If a change has been made, the update fails with a
 #' `WAFOptimisticLockException`. If this happens, perform another get, and
 #' use the new token returned by that operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextLockToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3145,6 +4389,14 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' last retrieved it. If a change has been made, the update fails with a
 #' `WAFOptimisticLockException`. If this happens, perform another get, and
 #' use the new token returned by that operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextLockToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3429,6 +4681,14 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' last retrieved it. If a change has been made, the update fails with a
 #' `WAFOptimisticLockException`. If this happens, perform another get, and
 #' use the new token returned by that operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextLockToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

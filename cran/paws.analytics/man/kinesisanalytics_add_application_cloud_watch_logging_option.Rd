@@ -17,6 +17,10 @@ kinesisanalytics_add_application_cloud_watch_logging_option(
 IAM role ARN. Note: To write application messages to CloudWatch, the IAM
 role that is used must have the \code{PutLogEvents} policy action enabled.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications. Version 2 of the API supports

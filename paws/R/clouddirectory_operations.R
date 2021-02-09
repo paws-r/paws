@@ -20,6 +20,12 @@ NULL
 #' @param ObjectAttributeList Attributes on the facet that you are adding to the object.
 #' @param ObjectReference &#91;required&#93; A reference to the object you are adding the specified facet to.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_facet_to_object(
@@ -88,6 +94,15 @@ clouddirectory_add_facet_to_object <- function(DirectoryArn, SchemaFacet, Object
 #' @param DirectoryArn &#91;required&#93; The Amazon Resource Name (ARN) that is associated with the Directory
 #' into which the schema is copied. For more information, see arns.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppliedSchemaArn = "string",
+#'   DirectoryArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$apply_schema(
@@ -135,6 +150,14 @@ clouddirectory_apply_schema <- function(PublishedSchemaArn, DirectoryArn) {
 #' @param ParentReference &#91;required&#93; The parent object reference.
 #' @param ChildReference &#91;required&#93; The child object reference to be attached to the object.
 #' @param LinkName &#91;required&#93; The link name with which the child object is attached to the parent.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AttachedObjectIdentifier = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -186,6 +209,12 @@ clouddirectory_attach_object <- function(DirectoryArn, ParentReference, ChildRef
 #' @param ObjectReference &#91;required&#93; The reference that identifies the object to which the policy will be
 #' attached.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$attach_policy(
@@ -232,6 +261,14 @@ clouddirectory_attach_policy <- function(DirectoryArn, PolicyReference, ObjectRe
 #' index exist.
 #' @param IndexReference &#91;required&#93; A reference to the index that you are attaching the object to.
 #' @param TargetReference &#91;required&#93; A reference to the object that you are attaching to the index.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AttachedObjectIdentifier = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -283,6 +320,39 @@ clouddirectory_attach_to_index <- function(DirectoryArn, IndexReference, TargetR
 #' @param TargetObjectReference &#91;required&#93; Identifies the target object that the typed link will attach to.
 #' @param TypedLinkFacet &#91;required&#93; Identifies the typed link facet that is associated with the typed link.
 #' @param Attributes &#91;required&#93; A set of attributes that are associated with the typed link.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TypedLinkSpecifier = list(
+#'     TypedLinkFacet = list(
+#'       SchemaArn = "string",
+#'       TypedLinkName = "string"
+#'     ),
+#'     SourceObjectReference = list(
+#'       Selector = "string"
+#'     ),
+#'     TargetObjectReference = list(
+#'       Selector = "string"
+#'     ),
+#'     IdentityAttributeValues = list(
+#'       list(
+#'         AttributeName = "string",
+#'         Value = list(
+#'           StringValue = "string",
+#'           BinaryValue = raw,
+#'           BooleanValue = TRUE|FALSE,
+#'           NumberValue = "string",
+#'           DatetimeValue = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -349,6 +419,260 @@ clouddirectory_attach_typed_link <- function(DirectoryArn, SourceObjectReference
 #' @param ConsistencyLevel Represents the manner and timing in which the successful write or update
 #' of an object is reflected in a subsequent read operation of that same
 #' object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Responses = list(
+#'     list(
+#'       SuccessfulResponse = list(
+#'         ListObjectAttributes = list(
+#'           Attributes = list(
+#'             list(
+#'               Key = list(
+#'                 SchemaArn = "string",
+#'                 FacetName = "string",
+#'                 Name = "string"
+#'               ),
+#'               Value = list(
+#'                 StringValue = "string",
+#'                 BinaryValue = raw,
+#'                 BooleanValue = TRUE|FALSE,
+#'                 NumberValue = "string",
+#'                 DatetimeValue = as.POSIXct(
+#'                   "2015-01-01"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           NextToken = "string"
+#'         ),
+#'         ListObjectChildren = list(
+#'           Children = list(
+#'             "string"
+#'           ),
+#'           NextToken = "string"
+#'         ),
+#'         GetObjectInformation = list(
+#'           SchemaFacets = list(
+#'             list(
+#'               SchemaArn = "string",
+#'               FacetName = "string"
+#'             )
+#'           ),
+#'           ObjectIdentifier = "string"
+#'         ),
+#'         GetObjectAttributes = list(
+#'           Attributes = list(
+#'             list(
+#'               Key = list(
+#'                 SchemaArn = "string",
+#'                 FacetName = "string",
+#'                 Name = "string"
+#'               ),
+#'               Value = list(
+#'                 StringValue = "string",
+#'                 BinaryValue = raw,
+#'                 BooleanValue = TRUE|FALSE,
+#'                 NumberValue = "string",
+#'                 DatetimeValue = as.POSIXct(
+#'                   "2015-01-01"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         ListAttachedIndices = list(
+#'           IndexAttachments = list(
+#'             list(
+#'               IndexedAttributes = list(
+#'                 list(
+#'                   Key = list(
+#'                     SchemaArn = "string",
+#'                     FacetName = "string",
+#'                     Name = "string"
+#'                   ),
+#'                   Value = list(
+#'                     StringValue = "string",
+#'                     BinaryValue = raw,
+#'                     BooleanValue = TRUE|FALSE,
+#'                     NumberValue = "string",
+#'                     DatetimeValue = as.POSIXct(
+#'                       "2015-01-01"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               ObjectIdentifier = "string"
+#'             )
+#'           ),
+#'           NextToken = "string"
+#'         ),
+#'         ListObjectParentPaths = list(
+#'           PathToObjectIdentifiersList = list(
+#'             list(
+#'               Path = "string",
+#'               ObjectIdentifiers = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           NextToken = "string"
+#'         ),
+#'         ListObjectPolicies = list(
+#'           AttachedPolicyIds = list(
+#'             "string"
+#'           ),
+#'           NextToken = "string"
+#'         ),
+#'         ListPolicyAttachments = list(
+#'           ObjectIdentifiers = list(
+#'             "string"
+#'           ),
+#'           NextToken = "string"
+#'         ),
+#'         LookupPolicy = list(
+#'           PolicyToPathList = list(
+#'             list(
+#'               Path = "string",
+#'               Policies = list(
+#'                 list(
+#'                   PolicyId = "string",
+#'                   ObjectIdentifier = "string",
+#'                   PolicyType = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           NextToken = "string"
+#'         ),
+#'         ListIndex = list(
+#'           IndexAttachments = list(
+#'             list(
+#'               IndexedAttributes = list(
+#'                 list(
+#'                   Key = list(
+#'                     SchemaArn = "string",
+#'                     FacetName = "string",
+#'                     Name = "string"
+#'                   ),
+#'                   Value = list(
+#'                     StringValue = "string",
+#'                     BinaryValue = raw,
+#'                     BooleanValue = TRUE|FALSE,
+#'                     NumberValue = "string",
+#'                     DatetimeValue = as.POSIXct(
+#'                       "2015-01-01"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               ObjectIdentifier = "string"
+#'             )
+#'           ),
+#'           NextToken = "string"
+#'         ),
+#'         ListOutgoingTypedLinks = list(
+#'           TypedLinkSpecifiers = list(
+#'             list(
+#'               TypedLinkFacet = list(
+#'                 SchemaArn = "string",
+#'                 TypedLinkName = "string"
+#'               ),
+#'               SourceObjectReference = list(
+#'                 Selector = "string"
+#'               ),
+#'               TargetObjectReference = list(
+#'                 Selector = "string"
+#'               ),
+#'               IdentityAttributeValues = list(
+#'                 list(
+#'                   AttributeName = "string",
+#'                   Value = list(
+#'                     StringValue = "string",
+#'                     BinaryValue = raw,
+#'                     BooleanValue = TRUE|FALSE,
+#'                     NumberValue = "string",
+#'                     DatetimeValue = as.POSIXct(
+#'                       "2015-01-01"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           NextToken = "string"
+#'         ),
+#'         ListIncomingTypedLinks = list(
+#'           LinkSpecifiers = list(
+#'             list(
+#'               TypedLinkFacet = list(
+#'                 SchemaArn = "string",
+#'                 TypedLinkName = "string"
+#'               ),
+#'               SourceObjectReference = list(
+#'                 Selector = "string"
+#'               ),
+#'               TargetObjectReference = list(
+#'                 Selector = "string"
+#'               ),
+#'               IdentityAttributeValues = list(
+#'                 list(
+#'                   AttributeName = "string",
+#'                   Value = list(
+#'                     StringValue = "string",
+#'                     BinaryValue = raw,
+#'                     BooleanValue = TRUE|FALSE,
+#'                     NumberValue = "string",
+#'                     DatetimeValue = as.POSIXct(
+#'                       "2015-01-01"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           NextToken = "string"
+#'         ),
+#'         GetLinkAttributes = list(
+#'           Attributes = list(
+#'             list(
+#'               Key = list(
+#'                 SchemaArn = "string",
+#'                 FacetName = "string",
+#'                 Name = "string"
+#'               ),
+#'               Value = list(
+#'                 StringValue = "string",
+#'                 BinaryValue = raw,
+#'                 BooleanValue = TRUE|FALSE,
+#'                 NumberValue = "string",
+#'                 DatetimeValue = as.POSIXct(
+#'                   "2015-01-01"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         ListObjectParents = list(
+#'           ParentLinks = list(
+#'             list(
+#'               ObjectIdentifier = "string",
+#'               LinkName = "string"
+#'             )
+#'           ),
+#'           NextToken = "string"
+#'         )
+#'       ),
+#'       ExceptionResponse = list(
+#'         Type = "ValidationException"|"InvalidArnException"|"ResourceNotFoundException"|"InvalidNextTokenException"|"AccessDeniedException"|"NotNodeException"|"FacetValidationException"|"CannotListParentOfRootException"|"NotIndexException"|"NotPolicyException"|"DirectoryNotEnabledException"|"LimitExceededException"|"InternalServiceException",
+#'         Message = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -616,6 +940,73 @@ clouddirectory_batch_read <- function(DirectoryArn, Operations, ConsistencyLevel
 #' @param DirectoryArn &#91;required&#93; The Amazon Resource Name (ARN) that is associated with the Directory.
 #' For more information, see arns.
 #' @param Operations &#91;required&#93; A list of operations that are part of the batch.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Responses = list(
+#'     list(
+#'       CreateObject = list(
+#'         ObjectIdentifier = "string"
+#'       ),
+#'       AttachObject = list(
+#'         attachedObjectIdentifier = "string"
+#'       ),
+#'       DetachObject = list(
+#'         detachedObjectIdentifier = "string"
+#'       ),
+#'       UpdateObjectAttributes = list(
+#'         ObjectIdentifier = "string"
+#'       ),
+#'       DeleteObject = list(),
+#'       AddFacetToObject = list(),
+#'       RemoveFacetFromObject = list(),
+#'       AttachPolicy = list(),
+#'       DetachPolicy = list(),
+#'       CreateIndex = list(
+#'         ObjectIdentifier = "string"
+#'       ),
+#'       AttachToIndex = list(
+#'         AttachedObjectIdentifier = "string"
+#'       ),
+#'       DetachFromIndex = list(
+#'         DetachedObjectIdentifier = "string"
+#'       ),
+#'       AttachTypedLink = list(
+#'         TypedLinkSpecifier = list(
+#'           TypedLinkFacet = list(
+#'             SchemaArn = "string",
+#'             TypedLinkName = "string"
+#'           ),
+#'           SourceObjectReference = list(
+#'             Selector = "string"
+#'           ),
+#'           TargetObjectReference = list(
+#'             Selector = "string"
+#'           ),
+#'           IdentityAttributeValues = list(
+#'             list(
+#'               AttributeName = "string",
+#'               Value = list(
+#'                 StringValue = "string",
+#'                 BinaryValue = raw,
+#'                 BooleanValue = TRUE|FALSE,
+#'                 NumberValue = "string",
+#'                 DatetimeValue = as.POSIXct(
+#'                   "2015-01-01"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DetachTypedLink = list(),
+#'       UpdateLinkAttributes = list()
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -930,6 +1321,17 @@ clouddirectory_batch_write <- function(DirectoryArn, Operations) {
 #' @param SchemaArn &#91;required&#93; The Amazon Resource Name (ARN) of the published schema that will be
 #' copied into the data Directory. For more information, see arns.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryArn = "string",
+#'   Name = "string",
+#'   ObjectIdentifier = "string",
+#'   AppliedSchemaArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_directory(
@@ -977,23 +1379,26 @@ clouddirectory_create_directory <- function(Name, SchemaArn) {
 #' 
 #' -   Node: Can have multiple children but one parent.
 #' 
-#' <!-- -->
 #' 
 #' -   Leaf node: Cannot have children but can have multiple parents.
 #' 
-#' <!-- -->
 #' 
 #' -   Policy: Allows you to store a policy document and policy type. For
 #'     more information, see
 #'     [Policies](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies).
 #' 
-#' <!-- -->
 #' 
 #' -   Index: Can be created with the Index API.
 #' @param FacetStyle There are two different styles that you can define on any given facet,
 #' `Static` and `Dynamic`. For static facets, all attributes must be
 #' defined in the schema. For dynamic facets, attributes can be defined
 #' during data plane operations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1075,6 +1480,14 @@ clouddirectory_create_facet <- function(SchemaArn, Name, Attributes = NULL, Obje
 #' @param ParentReference A reference to the parent object that contains the index object.
 #' @param LinkName The name of the link between the parent object and the index object.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ObjectIdentifier = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_index(
@@ -1136,6 +1549,14 @@ clouddirectory_create_index <- function(DirectoryArn, OrderedIndexedAttributeLis
 #' @param ParentReference If specified, the parent reference to which this object will be
 #' attached.
 #' @param LinkName The name of link that is used to attach this object to a parent.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ObjectIdentifier = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1216,6 +1637,14 @@ clouddirectory_create_object <- function(DirectoryArn, SchemaFacets, ObjectAttri
 #' @param Name &#91;required&#93; The name that is associated with the schema. This is unique to each
 #' account and in each region.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SchemaArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_schema(
@@ -1255,6 +1684,12 @@ clouddirectory_create_schema <- function(Name) {
 #' @param SchemaArn &#91;required&#93; The Amazon Resource Name (ARN) that is associated with the schema. For
 #' more information, see arns.
 #' @param Facet &#91;required&#93; Facet structure that is associated with the typed link facet.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1326,6 +1761,14 @@ clouddirectory_create_typed_link_facet <- function(SchemaArn, Facet) {
 #'
 #' @param DirectoryArn &#91;required&#93; The ARN of the directory to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_directory(
@@ -1366,6 +1809,12 @@ clouddirectory_delete_directory <- function(DirectoryArn) {
 #' @param SchemaArn &#91;required&#93; The Amazon Resource Name (ARN) that is associated with the Facet. For
 #' more information, see arns.
 #' @param Name &#91;required&#93; The name of the facet to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1411,6 +1860,12 @@ clouddirectory_delete_facet <- function(SchemaArn, Name) {
 #' where the object resides. For more information, see arns.
 #' @param ObjectReference &#91;required&#93; A reference that identifies the object.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_object(
@@ -1453,6 +1908,14 @@ clouddirectory_delete_object <- function(DirectoryArn, ObjectReference) {
 #' @param SchemaArn &#91;required&#93; The Amazon Resource Name (ARN) of the development schema. For more
 #' information, see arns.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SchemaArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_schema(
@@ -1492,6 +1955,12 @@ clouddirectory_delete_schema <- function(SchemaArn) {
 #' @param SchemaArn &#91;required&#93; The Amazon Resource Name (ARN) that is associated with the schema. For
 #' more information, see arns.
 #' @param Name &#91;required&#93; The unique name of the typed link facet.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1534,6 +2003,14 @@ clouddirectory_delete_typed_link_facet <- function(SchemaArn, Name) {
 #' exist in.
 #' @param IndexReference &#91;required&#93; A reference to the index object.
 #' @param TargetReference &#91;required&#93; A reference to the object being detached from the index.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DetachedObjectIdentifier = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1583,6 +2060,14 @@ clouddirectory_detach_from_index <- function(DirectoryArn, IndexReference, Targe
 #' is detached.
 #' @param LinkName &#91;required&#93; The link name associated with the object that needs to be detached.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DetachedObjectIdentifier = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detach_object(
@@ -1628,6 +2113,12 @@ clouddirectory_detach_object <- function(DirectoryArn, ParentReference, LinkName
 #' @param PolicyReference &#91;required&#93; Reference that identifies the policy object.
 #' @param ObjectReference &#91;required&#93; Reference that identifies the object whose policy object will be
 #' detached.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1675,6 +2166,8 @@ clouddirectory_detach_policy <- function(DirectoryArn, PolicyReference, ObjectRe
 #' @param DirectoryArn &#91;required&#93; The Amazon Resource Name (ARN) of the directory where you want to detach
 #' the typed link.
 #' @param TypedLinkSpecifier &#91;required&#93; Used to accept a typed link specifier as input.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1741,6 +2234,14 @@ clouddirectory_detach_typed_link <- function(DirectoryArn, TypedLinkSpecifier) {
 #'
 #' @param DirectoryArn &#91;required&#93; The ARN of the directory to disable.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_directory(
@@ -1778,6 +2279,14 @@ clouddirectory_disable_directory <- function(DirectoryArn) {
 #' clouddirectory_enable_directory(DirectoryArn)
 #'
 #' @param DirectoryArn &#91;required&#93; The ARN of the directory to enable.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectoryArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1818,6 +2327,14 @@ clouddirectory_enable_directory <- function(DirectoryArn) {
 #'
 #' @param SchemaArn &#91;required&#93; The ARN of the applied schema.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AppliedSchemaArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_applied_schema_version(
@@ -1854,6 +2371,21 @@ clouddirectory_get_applied_schema_version <- function(SchemaArn) {
 #' clouddirectory_get_directory(DirectoryArn)
 #'
 #' @param DirectoryArn &#91;required&#93; The ARN of the directory.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Directory = list(
+#'     Name = "string",
+#'     DirectoryArn = "string",
+#'     State = "ENABLED"|"DISABLED"|"DELETED",
+#'     CreationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1896,6 +2428,18 @@ clouddirectory_get_directory <- function(DirectoryArn) {
 #' @param SchemaArn &#91;required&#93; The Amazon Resource Name (ARN) that is associated with the Facet. For
 #' more information, see arns.
 #' @param Name &#91;required&#93; The name of the facet to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Facet = list(
+#'     Name = "string",
+#'     ObjectType = "NODE"|"LEAF_NODE"|"POLICY"|"INDEX",
+#'     FacetStyle = "STATIC"|"DYNAMIC"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1941,6 +2485,31 @@ clouddirectory_get_facet <- function(SchemaArn, Name) {
 #' @param AttributeNames &#91;required&#93; A list of attribute names whose values will be retrieved.
 #' @param ConsistencyLevel The consistency level at which to retrieve the attributes on a typed
 #' link.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attributes = list(
+#'     list(
+#'       Key = list(
+#'         SchemaArn = "string",
+#'         FacetName = "string",
+#'         Name = "string"
+#'       ),
+#'       Value = list(
+#'         StringValue = "string",
+#'         BinaryValue = raw,
+#'         BooleanValue = TRUE|FALSE,
+#'         NumberValue = "string",
+#'         DatetimeValue = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2016,6 +2585,31 @@ clouddirectory_get_link_attributes <- function(DirectoryArn, TypedLinkSpecifier,
 #' SchemaFacet for details.
 #' @param AttributeNames &#91;required&#93; List of attribute names whose values will be retrieved.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attributes = list(
+#'     list(
+#'       Key = list(
+#'         SchemaArn = "string",
+#'         FacetName = "string",
+#'         Name = "string"
+#'       ),
+#'       Value = list(
+#'         StringValue = "string",
+#'         BinaryValue = raw,
+#'         BooleanValue = TRUE|FALSE,
+#'         NumberValue = "string",
+#'         DatetimeValue = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_object_attributes(
@@ -2067,6 +2661,20 @@ clouddirectory_get_object_attributes <- function(DirectoryArn, ObjectReference, 
 #' @param ObjectReference &#91;required&#93; A reference to the object.
 #' @param ConsistencyLevel The consistency level at which to retrieve the object information.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SchemaFacets = list(
+#'     list(
+#'       SchemaArn = "string",
+#'       FacetName = "string"
+#'     )
+#'   ),
+#'   ObjectIdentifier = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_object_information(
@@ -2110,6 +2718,15 @@ clouddirectory_get_object_information <- function(DirectoryArn, ObjectReference,
 #'
 #' @param SchemaArn &#91;required&#93; The ARN of the schema to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Document = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_schema_as_json(
@@ -2150,6 +2767,16 @@ clouddirectory_get_schema_as_json <- function(SchemaArn) {
 #' @param SchemaArn &#91;required&#93; The Amazon Resource Name (ARN) that is associated with the schema. For
 #' more information, see arns.
 #' @param Name &#91;required&#93; The unique name of the typed link facet.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityAttributeOrder = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2197,6 +2824,17 @@ clouddirectory_get_typed_link_facet_information <- function(SchemaArn, Name) {
 #' @param NextToken The pagination token.
 #' @param MaxResults The maximum number of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SchemaArns = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_applied_schema_arns(
@@ -2241,6 +2879,37 @@ clouddirectory_list_applied_schema_arns <- function(DirectoryArn, SchemaArn = NU
 #' @param NextToken The pagination token.
 #' @param MaxResults The maximum number of results to retrieve.
 #' @param ConsistencyLevel The consistency level to use for this operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IndexAttachments = list(
+#'     list(
+#'       IndexedAttributes = list(
+#'         list(
+#'           Key = list(
+#'             SchemaArn = "string",
+#'             FacetName = "string",
+#'             Name = "string"
+#'           ),
+#'           Value = list(
+#'             StringValue = "string",
+#'             BinaryValue = raw,
+#'             BooleanValue = TRUE|FALSE,
+#'             NumberValue = "string",
+#'             DatetimeValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ObjectIdentifier = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2288,6 +2957,17 @@ clouddirectory_list_attached_indices <- function(DirectoryArn, TargetReference, 
 #' @param NextToken The pagination token.
 #' @param MaxResults The maximum number of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SchemaArns = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_development_schema_arns(
@@ -2328,6 +3008,24 @@ clouddirectory_list_development_schema_arns <- function(NextToken = NULL, MaxRes
 #' @param MaxResults The maximum number of results to retrieve.
 #' @param state The state of the directories in the list. Can be either Enabled,
 #' Disabled, or Deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Directories = list(
+#'     list(
+#'       Name = "string",
+#'       DirectoryArn = "string",
+#'       State = "ENABLED"|"DISABLED"|"DELETED",
+#'       CreationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2372,6 +3070,45 @@ clouddirectory_list_directories <- function(NextToken = NULL, MaxResults = NULL,
 #' @param NextToken The pagination token.
 #' @param MaxResults The maximum number of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attributes = list(
+#'     list(
+#'       Name = "string",
+#'       AttributeDefinition = list(
+#'         Type = "STRING"|"BINARY"|"BOOLEAN"|"NUMBER"|"DATETIME"|"VARIANT",
+#'         DefaultValue = list(
+#'           StringValue = "string",
+#'           BinaryValue = raw,
+#'           BooleanValue = TRUE|FALSE,
+#'           NumberValue = "string",
+#'           DatetimeValue = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         ),
+#'         IsImmutable = TRUE|FALSE,
+#'         Rules = list(
+#'           list(
+#'             Type = "BINARY_LENGTH"|"NUMBER_COMPARISON"|"STRING_FROM_SET"|"STRING_LENGTH",
+#'             Parameters = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       AttributeReference = list(
+#'         TargetFacetName = "string",
+#'         TargetAttributeName = "string"
+#'       ),
+#'       RequiredBehavior = "REQUIRED_ALWAYS"|"NOT_REQUIRED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_facet_attributes(
@@ -2413,6 +3150,17 @@ clouddirectory_list_facet_attributes <- function(SchemaArn, Name, NextToken = NU
 #' @param SchemaArn &#91;required&#93; The Amazon Resource Name (ARN) to retrieve facet names from.
 #' @param NextToken The pagination token.
 #' @param MaxResults The maximum number of results to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FacetNames = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2469,6 +3217,42 @@ clouddirectory_list_facet_names <- function(SchemaArn, NextToken = NULL, MaxResu
 #' @param NextToken The pagination token.
 #' @param MaxResults The maximum number of results to retrieve.
 #' @param ConsistencyLevel The consistency level to execute the request at.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LinkSpecifiers = list(
+#'     list(
+#'       TypedLinkFacet = list(
+#'         SchemaArn = "string",
+#'         TypedLinkName = "string"
+#'       ),
+#'       SourceObjectReference = list(
+#'         Selector = "string"
+#'       ),
+#'       TargetObjectReference = list(
+#'         Selector = "string"
+#'       ),
+#'       IdentityAttributeValues = list(
+#'         list(
+#'           AttributeName = "string",
+#'           Value = list(
+#'             StringValue = "string",
+#'             BinaryValue = raw,
+#'             BooleanValue = TRUE|FALSE,
+#'             NumberValue = "string",
+#'             DatetimeValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2553,6 +3337,37 @@ clouddirectory_list_incoming_typed_links <- function(DirectoryArn, ObjectReferen
 #' @param NextToken The pagination token.
 #' @param ConsistencyLevel The consistency level to execute the request at.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IndexAttachments = list(
+#'     list(
+#'       IndexedAttributes = list(
+#'         list(
+#'           Key = list(
+#'             SchemaArn = "string",
+#'             FacetName = "string",
+#'             Name = "string"
+#'           ),
+#'           Value = list(
+#'             StringValue = "string",
+#'             BinaryValue = raw,
+#'             BooleanValue = TRUE|FALSE,
+#'             NumberValue = "string",
+#'             DatetimeValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ObjectIdentifier = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_index(
@@ -2633,6 +3448,17 @@ clouddirectory_list_index <- function(DirectoryArn, RangesOnIndexedValues = NULL
 #' @param NextToken The pagination token.
 #' @param MaxResults The maximum number of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SchemaArns = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_managed_schema_arns(
@@ -2683,6 +3509,32 @@ clouddirectory_list_managed_schema_arns <- function(SchemaArn = NULL, NextToken 
 #' object.
 #' @param FacetFilter Used to filter the list of object attributes that are associated with a
 #' certain facet.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attributes = list(
+#'     list(
+#'       Key = list(
+#'         SchemaArn = "string",
+#'         FacetName = "string",
+#'         Name = "string"
+#'       ),
+#'       Value = list(
+#'         StringValue = "string",
+#'         BinaryValue = raw,
+#'         BooleanValue = TRUE|FALSE,
+#'         NumberValue = "string",
+#'         DatetimeValue = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2742,6 +3594,17 @@ clouddirectory_list_object_attributes <- function(DirectoryArn, ObjectReference,
 #' @param ConsistencyLevel Represents the manner and timing in which the successful write or update
 #' of an object is reflected in a subsequent read operation of that same
 #' object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Children = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2803,6 +3666,22 @@ clouddirectory_list_object_children <- function(DirectoryArn, ObjectReference, N
 #' @param MaxResults The maximum number of items to be retrieved in a single call. This is an
 #' approximate number.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PathToObjectIdentifiersList = list(
+#'     list(
+#'       Path = "string",
+#'       ObjectIdentifiers = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_object_parent_paths(
@@ -2859,6 +3738,23 @@ clouddirectory_list_object_parent_paths <- function(DirectoryArn, ObjectReferenc
 #' @param IncludeAllLinksToEachParent When set to True, returns all ListObjectParentsResponse$ParentLinks.
 #' There could be multiple links between a parent-child pair.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Parents = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string",
+#'   ParentLinks = list(
+#'     list(
+#'       ObjectIdentifier = "string",
+#'       LinkName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_object_parents(
@@ -2911,6 +3807,17 @@ clouddirectory_list_object_parents <- function(DirectoryArn, ObjectReference, Ne
 #' @param ConsistencyLevel Represents the manner and timing in which the successful write or update
 #' of an object is reflected in a subsequent read operation of that same
 #' object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AttachedPolicyIds = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2971,6 +3878,42 @@ clouddirectory_list_object_policies <- function(DirectoryArn, ObjectReference, N
 #' @param NextToken The pagination token.
 #' @param MaxResults The maximum number of results to retrieve.
 #' @param ConsistencyLevel The consistency level to execute the request at.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TypedLinkSpecifiers = list(
+#'     list(
+#'       TypedLinkFacet = list(
+#'         SchemaArn = "string",
+#'         TypedLinkName = "string"
+#'       ),
+#'       SourceObjectReference = list(
+#'         Selector = "string"
+#'       ),
+#'       TargetObjectReference = list(
+#'         Selector = "string"
+#'       ),
+#'       IdentityAttributeValues = list(
+#'         list(
+#'           AttributeName = "string",
+#'           Value = list(
+#'             StringValue = "string",
+#'             BinaryValue = raw,
+#'             BooleanValue = TRUE|FALSE,
+#'             NumberValue = "string",
+#'             DatetimeValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3056,6 +3999,17 @@ clouddirectory_list_outgoing_typed_links <- function(DirectoryArn, ObjectReferen
 #' of an object is reflected in a subsequent read operation of that same
 #' object.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ObjectIdentifiers = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_policy_attachments(
@@ -3107,6 +4061,17 @@ clouddirectory_list_policy_attachments <- function(DirectoryArn, PolicyReference
 #' @param NextToken The pagination token.
 #' @param MaxResults The maximum number of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SchemaArns = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_published_schema_arns(
@@ -3153,6 +4118,20 @@ clouddirectory_list_published_schema_arns <- function(SchemaArn = NULL, NextToke
 #' not supported for tagging.
 #' @param MaxResults The `MaxResults` parameter sets the maximum number of results returned
 #' in a single page. This is for future use and is not supported currently.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3201,6 +4180,39 @@ clouddirectory_list_tags_for_resource <- function(ResourceArn, NextToken = NULL,
 #' @param NextToken The pagination token.
 #' @param MaxResults The maximum number of results to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attributes = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "STRING"|"BINARY"|"BOOLEAN"|"NUMBER"|"DATETIME"|"VARIANT",
+#'       DefaultValue = list(
+#'         StringValue = "string",
+#'         BinaryValue = raw,
+#'         BooleanValue = TRUE|FALSE,
+#'         NumberValue = "string",
+#'         DatetimeValue = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       IsImmutable = TRUE|FALSE,
+#'       Rules = list(
+#'         list(
+#'           Type = "BINARY_LENGTH"|"NUMBER_COMPARISON"|"STRING_FROM_SET"|"STRING_LENGTH",
+#'           Parameters = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       RequiredBehavior = "REQUIRED_ALWAYS"|"NOT_REQUIRED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_typed_link_facet_attributes(
@@ -3247,6 +4259,17 @@ clouddirectory_list_typed_link_facet_attributes <- function(SchemaArn, Name, Nex
 #' more information, see arns.
 #' @param NextToken The pagination token.
 #' @param MaxResults The maximum number of results to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FacetNames = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3301,6 +4324,26 @@ clouddirectory_list_typed_link_facet_names <- function(SchemaArn, NextToken = NU
 #' @param MaxResults The maximum number of items to be retrieved in a single call. This is an
 #' approximate number.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyToPathList = list(
+#'     list(
+#'       Path = "string",
+#'       Policies = list(
+#'         list(
+#'           PolicyId = "string",
+#'           ObjectIdentifier = "string",
+#'           PolicyType = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$lookup_policy(
@@ -3354,6 +4397,14 @@ clouddirectory_lookup_policy <- function(DirectoryArn, ObjectReference, NextToke
 #' @param Name The new name under which the schema will be published. If this is not
 #' provided, the development schema is considered.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PublishedSchemaArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$publish_schema(
@@ -3398,6 +4449,14 @@ clouddirectory_publish_schema <- function(DevelopmentSchemaArn, Version, MinorVe
 #' @param SchemaArn &#91;required&#93; The ARN of the schema to update.
 #' @param Document &#91;required&#93; The replacement JSON schema.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_schema_from_json(
@@ -3438,6 +4497,12 @@ clouddirectory_put_schema_from_json <- function(SchemaArn, Document) {
 #' @param DirectoryArn &#91;required&#93; The ARN of the directory in which the object resides.
 #' @param SchemaFacet &#91;required&#93; The facet to remove. See SchemaFacet for details.
 #' @param ObjectReference &#91;required&#93; A reference to the object to remove the facet from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3485,6 +4550,12 @@ clouddirectory_remove_facet_from_object <- function(DirectoryArn, SchemaFacet, O
 #' supported for directories.
 #' @param Tags &#91;required&#93; A list of tag key-value pairs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -3530,6 +4601,12 @@ clouddirectory_tag_resource <- function(ResourceArn, Tags) {
 #' supported for directories.
 #' @param TagKeys &#91;required&#93; Keys of the tag that need to be removed from the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -3560,7 +4637,7 @@ clouddirectory_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .clouddirectory$operations$untag_resource <- clouddirectory_untag_resource
 
-#' Does the following: 1
+#' Does the following:
 #'
 #' @description
 #' Does the following:
@@ -3583,6 +4660,12 @@ clouddirectory_untag_resource <- function(ResourceArn, TagKeys) {
 #' update operation to perform.
 #' @param ObjectType The object type that is associated with the facet. See
 #' CreateFacetRequest$ObjectType for more details.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3664,6 +4747,12 @@ clouddirectory_update_facet <- function(SchemaArn, Name, AttributeUpdates = NULL
 #' Links](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 #' @param TypedLinkSpecifier &#91;required&#93; Allows a typed link specifier to be accepted as input.
 #' @param AttributeUpdates &#91;required&#93; The attributes update structure.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3753,6 +4842,14 @@ clouddirectory_update_link_attributes <- function(DirectoryArn, TypedLinkSpecifi
 #' @param ObjectReference &#91;required&#93; The reference that identifies the object.
 #' @param AttributeUpdates &#91;required&#93; The attributes update structure.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ObjectIdentifier = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_object_attributes(
@@ -3817,6 +4914,14 @@ clouddirectory_update_object_attributes <- function(DirectoryArn, ObjectReferenc
 #' information, see arns.
 #' @param Name &#91;required&#93; The name of the schema.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SchemaArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_schema(
@@ -3869,6 +4974,12 @@ clouddirectory_update_schema <- function(SchemaArn, Name) {
 #' are supplied to any API calls. For more information about identity
 #' attributes, see [Typed
 #' Links](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3952,6 +5063,15 @@ clouddirectory_update_typed_link_facet <- function(SchemaArn, Name, AttributeUpd
 #' thrown else the call would succeed but no changes will be saved. This
 #' parameter is optional.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpgradedSchemaArn = "string",
+#'   DirectoryArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$upgrade_applied_schema(
@@ -4001,6 +5121,14 @@ clouddirectory_upgrade_applied_schema <- function(PublishedSchemaArn, DirectoryA
 #' upgraded. If schema compatibility fails, an exception would be thrown
 #' else the call would succeed. This parameter is optional and defaults to
 #' false.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpgradedSchemaArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

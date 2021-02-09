@@ -16,6 +16,14 @@ the state.}
 information, in \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO 8601}
 format. If you do not add \code{AtTime}, the current time is assumed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  State = "OPEN"|"CLOSED",
+  AtTime = "string",
+  NextTransitionTime = "string"
+)
+}
+}
 \description{
 Gets the state of the AWS Systems Manager Change Calendar at an
 optional, specified time. If you specify a time,

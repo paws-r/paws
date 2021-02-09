@@ -12,6 +12,24 @@ cognitoidentityprovider_get_ui_customization(UserPoolId, ClientId)
 
 \item{ClientId}{The client ID for the client app.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UICustomization = list(
+    UserPoolId = "string",
+    ClientId = "string",
+    ImageUrl = "string",
+    CSS = "string",
+    CSSVersion = "string",
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreationDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Gets the UI Customization information for a particular app client's app
 UI, if there is something set. If nothing is set for the particular

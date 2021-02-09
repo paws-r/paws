@@ -10,6 +10,10 @@ glue_delete_crawler(Name)
 \arguments{
 \item{Name}{[required] The name of the crawler to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes a specified crawler from the AWS Glue Data Catalog, unless the
 crawler state is \code{RUNNING}.

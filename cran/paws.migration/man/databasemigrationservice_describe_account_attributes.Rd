@@ -6,6 +6,19 @@
 \usage{
 databasemigrationservice_describe_account_attributes()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccountQuotas = list(
+    list(
+      AccountQuotaName = "string",
+      Used = 123,
+      Max = 123
+    )
+  ),
+  UniqueAccountIdentifier = "string"
+)
+}
+}
 \description{
 Lists all of the AWS DMS attributes for a customer account. These
 attributes include AWS DMS quotas for the account and a unique account

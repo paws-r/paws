@@ -12,6 +12,10 @@ athena_untag_resource(ResourceARN, TagKeys)
 \item{TagKeys}{[required] A comma-separated list of one or more tag keys whose tags are to be
 removed from the specified resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes one or more tags from a data catalog or workgroup resource.
 }

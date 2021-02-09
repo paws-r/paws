@@ -88,6 +88,70 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Images = list(
+    list(
+      Architecture = "i386"|"x86_64"|"arm64",
+      CreationDate = "string",
+      ImageId = "string",
+      ImageLocation = "string",
+      ImageType = "machine"|"kernel"|"ramdisk",
+      Public = TRUE|FALSE,
+      KernelId = "string",
+      OwnerId = "string",
+      Platform = "Windows",
+      PlatformDetails = "string",
+      UsageOperation = "string",
+      ProductCodes = list(
+        list(
+          ProductCodeId = "string",
+          ProductCodeType = "devpay"|"marketplace"
+        )
+      ),
+      RamdiskId = "string",
+      State = "pending"|"available"|"invalid"|"deregistered"|"transient"|"failed"|"error",
+      BlockDeviceMappings = list(
+        list(
+          DeviceName = "string",
+          VirtualName = "string",
+          Ebs = list(
+            DeleteOnTermination = TRUE|FALSE,
+            Iops = 123,
+            SnapshotId = "string",
+            VolumeSize = 123,
+            VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+            KmsKeyId = "string",
+            Throughput = 123,
+            Encrypted = TRUE|FALSE
+          ),
+          NoDevice = "string"
+        )
+      ),
+      Description = "string",
+      EnaSupport = TRUE|FALSE,
+      Hypervisor = "ovm"|"xen",
+      ImageOwnerAlias = "string",
+      Name = "string",
+      RootDeviceName = "string",
+      RootDeviceType = "ebs"|"instance-store",
+      SriovNetSupport = "string",
+      StateReason = list(
+        Code = "string",
+        Message = "string"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      VirtualizationType = "hvm"|"paravirtual"
+    )
+  )
+)
+}
+}
 \description{
 Describes the specified images (AMIs, AKIs, and ARIs) available to you
 or all of the images available to you.

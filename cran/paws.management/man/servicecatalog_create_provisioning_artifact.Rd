@@ -24,6 +24,26 @@ servicecatalog_create_provisioning_artifact(AcceptLanguage, ProductId,
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProvisioningArtifactDetail = list(
+    Id = "string",
+    Name = "string",
+    Description = "string",
+    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Active = TRUE|FALSE,
+    Guidance = "DEFAULT"|"DEPRECATED"
+  ),
+  Info = list(
+    "string"
+  ),
+  Status = "AVAILABLE"|"CREATING"|"FAILED"
+)
+}
+}
 \description{
 Creates a provisioning artifact (also known as a version) for the
 specified product.

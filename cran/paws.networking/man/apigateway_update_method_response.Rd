@@ -19,6 +19,18 @@ apigateway_update_method_response(restApiId, resourceId, httpMethod,
 \item{patchOperations}{A list of update operations to be applied to the specified resource and
 in the order specified in this list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  statusCode = "string",
+  responseParameters = list(
+    TRUE|FALSE
+  ),
+  responseModels = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Updates an existing MethodResponse resource.
 }

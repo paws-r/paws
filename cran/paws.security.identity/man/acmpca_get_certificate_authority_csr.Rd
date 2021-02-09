@@ -14,6 +14,12 @@ action. This must be of the form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Csr = "string"
+)
+}
+}
 \description{
 Retrieves the certificate signing request (CSR) for your private
 certificate authority (CA). The CSR is created when you call the

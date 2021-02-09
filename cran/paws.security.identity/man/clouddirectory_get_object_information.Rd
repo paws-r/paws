@@ -14,6 +14,18 @@ clouddirectory_get_object_information(DirectoryArn, ObjectReference,
 
 \item{ConsistencyLevel}{The consistency level at which to retrieve the object information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SchemaFacets = list(
+    list(
+      SchemaArn = "string",
+      FacetName = "string"
+    )
+  ),
+  ObjectIdentifier = "string"
+)
+}
+}
 \description{
 Retrieves metadata about an object.
 }

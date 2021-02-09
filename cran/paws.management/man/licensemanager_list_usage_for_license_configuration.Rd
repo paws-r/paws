@@ -27,6 +27,24 @@ are \code{EQUALS} | \code{NOT_EQUALS}.
 Logical operators are \code{EQUALS} | \code{NOT_EQUALS}.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LicenseConfigurationUsageList = list(
+    list(
+      ResourceArn = "string",
+      ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+      ResourceStatus = "string",
+      ResourceOwnerId = "string",
+      AssociationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ConsumedLicenses = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all license usage records for a license configuration, displaying
 license consumption details by resource at a selected point in time. Use

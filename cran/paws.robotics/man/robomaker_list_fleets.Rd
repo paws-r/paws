@@ -33,6 +33,26 @@ with the returned \code{nextToken} value. This value can be between 1 and
 The filter name \code{name} is supported. When filtering, you must use the
 complete value of the filtered item. You can use up to three filters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  fleetDetails = list(
+    list(
+      name = "string",
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastDeploymentStatus = "Pending"|"Preparing"|"InProgress"|"Failed"|"Succeeded"|"Canceled",
+      lastDeploymentJob = "string",
+      lastDeploymentTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of fleets. You can optionally provide filters to retrieve
 specific fleets.

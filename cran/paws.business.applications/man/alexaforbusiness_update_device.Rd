@@ -11,6 +11,10 @@ alexaforbusiness_update_device(DeviceArn, DeviceName)
 
 \item{DeviceName}{The updated device name. Required.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the device name by device ARN.
 }

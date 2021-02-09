@@ -22,6 +22,49 @@ chime_list_phone_numbers(Status, ProductType, FilterName, FilterValue,
 
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PhoneNumbers = list(
+    list(
+      PhoneNumberId = "string",
+      E164PhoneNumber = "string",
+      Type = "Local"|"TollFree",
+      ProductType = "BusinessCalling"|"VoiceConnector",
+      Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
+      Capabilities = list(
+        InboundCall = TRUE|FALSE,
+        OutboundCall = TRUE|FALSE,
+        InboundSMS = TRUE|FALSE,
+        OutboundSMS = TRUE|FALSE,
+        InboundMMS = TRUE|FALSE,
+        OutboundMMS = TRUE|FALSE
+      ),
+      Associations = list(
+        list(
+          Value = "string",
+          Name = "AccountId"|"UserId"|"VoiceConnectorId"|"VoiceConnectorGroupId"|"SipRuleId",
+          AssociatedTimestamp = as.POSIXct(
+            "2015-01-01"
+          )
+        )
+      ),
+      CallingName = "string",
+      CallingNameStatus = "Unassigned"|"UpdateInProgress"|"UpdateSucceeded"|"UpdateFailed",
+      CreatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdatedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      DeletionTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the phone numbers for the specified Amazon Chime account, Amazon
 Chime user, Amazon Chime Voice Connector, or Amazon Chime Voice

@@ -9,6 +9,14 @@ amplify_list_tags_for_resource(resourceArn)
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) to use to list tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Returns a list of tags for a specified Amazon Resource Name (ARN).
 }

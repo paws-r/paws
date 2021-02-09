@@ -22,6 +22,12 @@ doesn't occur within this time, the announcement is not delivered.}
 \item{ClientRequestToken}{[required] The unique, user-specified identifier for the request that ensures
 idempotency.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AnnouncementArn = "string"
+)
+}
+}
 \description{
 Triggers an asynchronous flow to send text, SSML, or audio announcements
 to rooms that are identified by a search or filter.

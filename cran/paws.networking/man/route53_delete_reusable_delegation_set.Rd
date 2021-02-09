@@ -9,6 +9,10 @@ route53_delete_reusable_delegation_set(Id)
 \arguments{
 \item{Id}{[required] The ID of the reusable delegation set that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a reusable delegation set.
 

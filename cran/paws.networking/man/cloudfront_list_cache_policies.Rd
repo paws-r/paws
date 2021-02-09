@@ -23,6 +23,65 @@ response.}
 
 \item{MaxItems}{The maximum number of cache policies that you want in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CachePolicyList = list(
+    NextMarker = "string",
+    MaxItems = 123,
+    Quantity = 123,
+    Items = list(
+      list(
+        Type = "managed"|"custom",
+        CachePolicy = list(
+          Id = "string",
+          LastModifiedTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          CachePolicyConfig = list(
+            Comment = "string",
+            Name = "string",
+            DefaultTTL = 123,
+            MaxTTL = 123,
+            MinTTL = 123,
+            ParametersInCacheKeyAndForwardedToOrigin = list(
+              EnableAcceptEncodingGzip = TRUE|FALSE,
+              EnableAcceptEncodingBrotli = TRUE|FALSE,
+              HeadersConfig = list(
+                HeaderBehavior = "none"|"whitelist",
+                Headers = list(
+                  Quantity = 123,
+                  Items = list(
+                    "string"
+                  )
+                )
+              ),
+              CookiesConfig = list(
+                CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
+                Cookies = list(
+                  Quantity = 123,
+                  Items = list(
+                    "string"
+                  )
+                )
+              ),
+              QueryStringsConfig = list(
+                QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
+                QueryStrings = list(
+                  Quantity = 123,
+                  Items = list(
+                    "string"
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets a list of cache policies.
 

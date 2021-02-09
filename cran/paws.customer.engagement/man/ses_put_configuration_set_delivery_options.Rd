@@ -14,6 +14,10 @@ options for.}
 \item{DeliveryOptions}{Specifies whether messages that use the configuration set are required
 to use Transport Layer Security (TLS).}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds or updates the delivery options for a configuration set.
 }

@@ -25,6 +25,21 @@ NULL
 #' associated tag value (`Value`). The maximum length of a tag key is 128
 #' characters. The maximum length of a tag value is 256 characters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationInfo = list(
+#'     ResourceGroupName = "string",
+#'     LifeCycle = "string",
+#'     OpsItemSNSTopicArn = "string",
+#'     OpsCenterEnabled = TRUE|FALSE,
+#'     CWEMonitorEnabled = TRUE|FALSE,
+#'     Remarks = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_application(
@@ -75,6 +90,12 @@ applicationinsights_create_application <- function(ResourceGroupName, OpsCenterE
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param ResourceList &#91;required&#93; The list of resource ARNs that belong to the component.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -133,6 +154,20 @@ applicationinsights_create_component <- function(ResourceGroupName, ComponentNam
 #' values less than `1` or greater than `1,000,000` are reserved for
 #' AWS-provided patterns.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LogPattern = list(
+#'     PatternSetName = "string",
+#'     PatternName = "string",
+#'     Pattern = "string",
+#'     Rank = 123
+#'   ),
+#'   ResourceGroupName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_log_pattern(
@@ -175,6 +210,12 @@ applicationinsights_create_log_pattern <- function(ResourceGroupName, PatternSet
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_application(
@@ -214,6 +255,12 @@ applicationinsights_delete_application <- function(ResourceGroupName) {
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -256,6 +303,12 @@ applicationinsights_delete_component <- function(ResourceGroupName, ComponentNam
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
 #' @param PatternName &#91;required&#93; The name of the log pattern.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_log_pattern(
@@ -294,6 +347,21 @@ applicationinsights_delete_log_pattern <- function(ResourceGroupName, PatternSet
 #' applicationinsights_describe_application(ResourceGroupName)
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationInfo = list(
+#'     ResourceGroupName = "string",
+#'     LifeCycle = "string",
+#'     OpsItemSNSTopicArn = "string",
+#'     OpsCenterEnabled = TRUE|FALSE,
+#'     CWEMonitorEnabled = TRUE|FALSE,
+#'     Remarks = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -335,6 +403,29 @@ applicationinsights_describe_application <- function(ResourceGroupName) {
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationComponent = list(
+#'     ComponentName = "string",
+#'     ComponentRemarks = "string",
+#'     ResourceType = "string",
+#'     OsType = "WINDOWS"|"LINUX",
+#'     Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
+#'     Monitor = TRUE|FALSE,
+#'     DetectedWorkload = list(
+#'       list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ResourceList = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_component(
@@ -374,6 +465,16 @@ applicationinsights_describe_component <- function(ResourceGroupName, ComponentN
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Monitor = TRUE|FALSE,
+#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
+#'   ComponentConfiguration = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -418,6 +519,14 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #' `DOT_NET_CORE`, `DOT_NET_WORKER`, `DOT_NET_WEB`, `SQL_SERVER`, and
 #' `DEFAULT`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ComponentConfiguration = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_component_configuration_recommendation(
@@ -460,6 +569,20 @@ applicationinsights_describe_component_configuration_recommendation <- function(
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
 #' @param PatternName &#91;required&#93; The name of the log pattern.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceGroupName = "string",
+#'   LogPattern = list(
+#'     PatternSetName = "string",
+#'     PatternName = "string",
+#'     Pattern = "string",
+#'     Rank = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_log_pattern(
@@ -499,6 +622,66 @@ applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternS
 #'
 #' @param ObservationId &#91;required&#93; The ID of the observation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Observation = list(
+#'     Id = "string",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SourceType = "string",
+#'     SourceARN = "string",
+#'     LogGroup = "string",
+#'     LineTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LogText = "string",
+#'     LogFilter = "ERROR"|"WARN"|"INFO",
+#'     MetricNamespace = "string",
+#'     MetricName = "string",
+#'     Unit = "string",
+#'     Value = 123.0,
+#'     CloudWatchEventId = "string",
+#'     CloudWatchEventSource = "EC2"|"CODE_DEPLOY"|"HEALTH"|"RDS",
+#'     CloudWatchEventDetailType = "string",
+#'     HealthEventArn = "string",
+#'     HealthService = "string",
+#'     HealthEventTypeCode = "string",
+#'     HealthEventTypeCategory = "string",
+#'     HealthEventDescription = "string",
+#'     CodeDeployDeploymentId = "string",
+#'     CodeDeployDeploymentGroup = "string",
+#'     CodeDeployState = "string",
+#'     CodeDeployApplication = "string",
+#'     CodeDeployInstanceGroupId = "string",
+#'     Ec2State = "string",
+#'     RdsEventCategories = "string",
+#'     RdsEventMessage = "string",
+#'     S3EventName = "string",
+#'     StatesExecutionArn = "string",
+#'     StatesArn = "string",
+#'     StatesStatus = "string",
+#'     StatesInput = "string",
+#'     EbsEvent = "string",
+#'     EbsResult = "string",
+#'     EbsCause = "string",
+#'     EbsRequestId = "string",
+#'     XRayFaultPercent = 123,
+#'     XRayThrottlePercent = 123,
+#'     XRayErrorPercent = 123,
+#'     XRayRequestCount = 123,
+#'     XRayRequestAverageLatency = 123,
+#'     XRayNodeName = "string",
+#'     XRayNodeType = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_observation(
@@ -536,6 +719,31 @@ applicationinsights_describe_observation <- function(ObservationId) {
 #'
 #' @param ProblemId &#91;required&#93; The ID of the problem.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Problem = list(
+#'     Id = "string",
+#'     Title = "string",
+#'     Insights = "string",
+#'     Status = "IGNORE"|"RESOLVED"|"PENDING",
+#'     AffectedResource = "string",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SeverityLevel = "Low"|"Medium"|"High",
+#'     ResourceGroupName = "string",
+#'     Feedback = list(
+#'       "NOT_SPECIFIED"|"USEFUL"|"NOT_USEFUL"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_problem(
@@ -572,6 +780,70 @@ applicationinsights_describe_problem <- function(ProblemId) {
 #' applicationinsights_describe_problem_observations(ProblemId)
 #'
 #' @param ProblemId &#91;required&#93; The ID of the problem.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RelatedObservations = list(
+#'     ObservationList = list(
+#'       list(
+#'         Id = "string",
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         SourceType = "string",
+#'         SourceARN = "string",
+#'         LogGroup = "string",
+#'         LineTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LogText = "string",
+#'         LogFilter = "ERROR"|"WARN"|"INFO",
+#'         MetricNamespace = "string",
+#'         MetricName = "string",
+#'         Unit = "string",
+#'         Value = 123.0,
+#'         CloudWatchEventId = "string",
+#'         CloudWatchEventSource = "EC2"|"CODE_DEPLOY"|"HEALTH"|"RDS",
+#'         CloudWatchEventDetailType = "string",
+#'         HealthEventArn = "string",
+#'         HealthService = "string",
+#'         HealthEventTypeCode = "string",
+#'         HealthEventTypeCategory = "string",
+#'         HealthEventDescription = "string",
+#'         CodeDeployDeploymentId = "string",
+#'         CodeDeployDeploymentGroup = "string",
+#'         CodeDeployState = "string",
+#'         CodeDeployApplication = "string",
+#'         CodeDeployInstanceGroupId = "string",
+#'         Ec2State = "string",
+#'         RdsEventCategories = "string",
+#'         RdsEventMessage = "string",
+#'         S3EventName = "string",
+#'         StatesExecutionArn = "string",
+#'         StatesArn = "string",
+#'         StatesStatus = "string",
+#'         StatesInput = "string",
+#'         EbsEvent = "string",
+#'         EbsResult = "string",
+#'         EbsCause = "string",
+#'         EbsRequestId = "string",
+#'         XRayFaultPercent = 123,
+#'         XRayThrottlePercent = 123,
+#'         XRayErrorPercent = 123,
+#'         XRayRequestCount = 123,
+#'         XRayRequestAverageLatency = 123,
+#'         XRayNodeName = "string",
+#'         XRayNodeType = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -612,6 +884,24 @@ applicationinsights_describe_problem_observations <- function(ProblemId) {
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationInfoList = list(
+#'     list(
+#'       ResourceGroupName = "string",
+#'       LifeCycle = "string",
+#'       OpsItemSNSTopicArn = "string",
+#'       OpsCenterEnabled = TRUE|FALSE,
+#'       CWEMonitorEnabled = TRUE|FALSE,
+#'       Remarks = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -657,6 +947,29 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationComponentList = list(
+#'     list(
+#'       ComponentName = "string",
+#'       ComponentRemarks = "string",
+#'       ResourceType = "string",
+#'       OsType = "WINDOWS"|"LINUX",
+#'       Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
+#'       Monitor = TRUE|FALSE,
+#'       DetectedWorkload = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -731,6 +1044,26 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #' results that returned the `NextToken` value. This value is `null` when
 #' there are no more results to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventList = list(
+#'     list(
+#'       MonitoredResourceARN = "string",
+#'       EventStatus = "INFO"|"WARN"|"ERROR",
+#'       EventResourceType = "CLOUDWATCH_ALARM"|"CLOUDWATCH_LOG"|"CLOUDFORMATION"|"SSM_ASSOCIATION",
+#'       EventTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EventDetail = "string",
+#'       EventResourceName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_configuration_history(
@@ -782,6 +1115,18 @@ applicationinsights_list_configuration_history <- function(ResourceGroupName = N
 #' value.
 #' @param NextToken The token to request the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceGroupName = "string",
+#'   LogPatternSets = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_log_pattern_sets(
@@ -826,6 +1171,23 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceGroupName = "string",
+#'   LogPatterns = list(
+#'     list(
+#'       PatternSetName = "string",
+#'       PatternName = "string",
+#'       Pattern = "string",
+#'       Rank = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -876,6 +1238,34 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProblemList = list(
+#'     list(
+#'       Id = "string",
+#'       Title = "string",
+#'       Insights = "string",
+#'       Status = "IGNORE"|"RESOLVED"|"PENDING",
+#'       AffectedResource = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SeverityLevel = "Low"|"Medium"|"High",
+#'       ResourceGroupName = "string",
+#'       Feedback = list(
+#'         "NOT_SPECIFIED"|"USEFUL"|"NOT_USEFUL"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -929,6 +1319,19 @@ applicationinsights_list_problems <- function(ResourceGroupName = NULL, StartTim
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to
 #' retrieve tag information for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -979,6 +1382,12 @@ applicationinsights_list_tags_for_resource <- function(ResourceARN) {
 #' required tag key (`Key`) and an associated tag value (`Value`). The
 #' maximum length of a tag key is 128 characters. The maximum length of a
 #' tag value is 256 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1031,6 +1440,12 @@ applicationinsights_tag_resource <- function(ResourceARN, Tags) {
 #' parameter and argument for each additional tag to remove, separated by
 #' an ampersand.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -1082,6 +1497,21 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #' @param RemoveSNSTopic Disassociates the SNS topic from the opsItem created for detected
 #' problems.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationInfo = list(
+#'     ResourceGroupName = "string",
+#'     LifeCycle = "string",
+#'     OpsItemSNSTopicArn = "string",
+#'     OpsCenterEnabled = TRUE|FALSE,
+#'     CWEMonitorEnabled = TRUE|FALSE,
+#'     Remarks = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_application(
@@ -1128,6 +1558,12 @@ applicationinsights_update_application <- function(ResourceGroupName, OpsCenterE
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param NewComponentName The new name of the component.
 #' @param ResourceList The list of resource ARNs that belong to the component.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1189,6 +1625,12 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #' format of the component configuration file, see [Component
 #' Configuration](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/component-config.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_component_configuration(
@@ -1245,6 +1687,20 @@ applicationinsights_update_component_configuration <- function(ResourceGroupName
 #' rank. And a `High` severity pattern translates to a `250,000` rank. Rank
 #' values less than `1` or greater than `1,000,000` are reserved for
 #' AWS-provided patterns.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceGroupName = "string",
+#'   LogPattern = list(
+#'     PatternSetName = "string",
+#'     PatternName = "string",
+#'     Pattern = "string",
+#'     Rank = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -16,6 +16,60 @@ page size.}
 
 \item{MaxResults}{The number of entries a paginated response contains.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AnomalyMonitors = list(
+    list(
+      MonitorArn = "string",
+      MonitorName = "string",
+      CreationDate = "string",
+      LastUpdatedDate = "string",
+      LastEvaluatedDate = "string",
+      MonitorType = "DIMENSIONAL"|"CUSTOM",
+      MonitorDimension = "SERVICE",
+      MonitorSpecification = list(
+        Or = list(
+          list()
+        ),
+        And = list(
+          list()
+        ),
+        Not = list(),
+        Dimensions = list(
+          Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
+          Values = list(
+            "string"
+          ),
+          MatchOptions = list(
+            "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+          )
+        ),
+        Tags = list(
+          Key = "string",
+          Values = list(
+            "string"
+          ),
+          MatchOptions = list(
+            "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+          )
+        ),
+        CostCategories = list(
+          Key = "string",
+          Values = list(
+            "string"
+          ),
+          MatchOptions = list(
+            "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+          )
+        )
+      ),
+      DimensionalValueCount = 123
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Retrieves the cost anomaly monitor definitions for your account. You can
 filter using a list of cost anomaly monitor Amazon Resource Names

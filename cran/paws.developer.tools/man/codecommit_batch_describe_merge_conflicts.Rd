@@ -31,8 +31,8 @@ identify a commit (for example, a branch name or a full commit ID).}
 specified, the default is all conflict files.}
 
 \item{conflictDetailLevel}{The level of conflict detail to use. If unspecified, the default
-FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-file has differences in both branches. If LINE\\_LEVEL is specified, a
+FILE_LEVEL is used, which returns a not-mergeable result if the same
+file has differences in both branches. If LINE_LEVEL is specified, a
 conflict is considered not mergeable if the same file in both branches
 has differences on the same line.}
 
@@ -43,6 +43,77 @@ merge operation is successful.}
 
 \item{nextToken}{An enumeration token that, when provided in a request, returns the next
 batch of the results.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  conflicts = list(
+    list(
+      conflictMetadata = list(
+        filePath = "string",
+        fileSizes = list(
+          source = 123,
+          destination = 123,
+          base = 123
+        ),
+        fileModes = list(
+          source = "EXECUTABLE"|"NORMAL"|"SYMLINK",
+          destination = "EXECUTABLE"|"NORMAL"|"SYMLINK",
+          base = "EXECUTABLE"|"NORMAL"|"SYMLINK"
+        ),
+        objectTypes = list(
+          source = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
+          destination = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
+          base = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK"
+        ),
+        numberOfConflicts = 123,
+        isBinaryFile = list(
+          source = TRUE|FALSE,
+          destination = TRUE|FALSE,
+          base = TRUE|FALSE
+        ),
+        contentConflict = TRUE|FALSE,
+        fileModeConflict = TRUE|FALSE,
+        objectTypeConflict = TRUE|FALSE,
+        mergeOperations = list(
+          source = "A"|"M"|"D",
+          destination = "A"|"M"|"D"
+        )
+      ),
+      mergeHunks = list(
+        list(
+          isConflict = TRUE|FALSE,
+          source = list(
+            startLine = 123,
+            endLine = 123,
+            hunkContent = "string"
+          ),
+          destination = list(
+            startLine = 123,
+            endLine = 123,
+            hunkContent = "string"
+          ),
+          base = list(
+            startLine = 123,
+            endLine = 123,
+            hunkContent = "string"
+          )
+        )
+      )
+    )
+  ),
+  nextToken = "string",
+  errors = list(
+    list(
+      filePath = "string",
+      exceptionName = "string",
+      message = "string"
+    )
+  ),
+  destinationCommitId = "string",
+  sourceCommitId = "string",
+  baseCommitId = "string"
+)
+}
 }
 \description{
 Returns information about one or more merge conflicts in the attempted

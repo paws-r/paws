@@ -33,6 +33,53 @@ notify when Elastic Transcoder encounters an error condition. This
 is the ARN that Amazon SNS returned when you created the topic.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Pipeline = list(
+    Id = "string",
+    Arn = "string",
+    Name = "string",
+    Status = "string",
+    InputBucket = "string",
+    OutputBucket = "string",
+    Role = "string",
+    AwsKmsKeyArn = "string",
+    Notifications = list(
+      Progressing = "string",
+      Completed = "string",
+      Warning = "string",
+      Error = "string"
+    ),
+    ContentConfig = list(
+      Bucket = "string",
+      StorageClass = "string",
+      Permissions = list(
+        list(
+          GranteeType = "string",
+          Grantee = "string",
+          Access = list(
+            "string"
+          )
+        )
+      )
+    ),
+    ThumbnailConfig = list(
+      Bucket = "string",
+      StorageClass = "string",
+      Permissions = list(
+        list(
+          GranteeType = "string",
+          Grantee = "string",
+          Access = list(
+            "string"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 With the UpdatePipelineNotifications operation, you can update Amazon
 Simple Notification Service (Amazon SNS) notifications for a pipeline.

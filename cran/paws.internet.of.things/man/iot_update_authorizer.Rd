@@ -18,6 +18,13 @@ iot_update_authorizer(authorizerName, authorizerFunctionArn,
 
 \item{status}{The status of the update authorizer request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  authorizerName = "string",
+  authorizerArn = "string"
+)
+}
+}
 \description{
 Updates an authorizer.
 }

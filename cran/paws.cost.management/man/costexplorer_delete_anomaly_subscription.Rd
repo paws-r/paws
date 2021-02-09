@@ -10,6 +10,10 @@ costexplorer_delete_anomaly_subscription(SubscriptionArn)
 \item{SubscriptionArn}{[required] The unique identifier of the cost anomaly subscription that you want to
 delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a cost anomaly subscription.
 }

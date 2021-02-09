@@ -43,6 +43,10 @@ Lambda function.
 \item The \code{GLUE} type has no parameters.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the data catalog that has the specified name.
 }

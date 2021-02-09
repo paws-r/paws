@@ -9,9 +9,25 @@ mq_list_users(BrokerId, MaxResults, NextToken)
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
 
-\item{MaxResults}{The maximum number of ActiveMQ users that can be returned per page (20 by default). This value must be an integer from 5 to 100.}
+\item{MaxResults}{The maximum number of ActiveMQ users that can be returned per page (20
+by default). This value must be an integer from 5 to 100.}
 
-\item{NextToken}{The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.}
+\item{NextToken}{The token that specifies the next page of results Amazon MQ should
+return. To request the first page, leave nextToken empty.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  BrokerId = "string",
+  MaxResults = 123,
+  NextToken = "string",
+  Users = list(
+    list(
+      PendingChange = "CREATE"|"UPDATE"|"DELETE",
+      Username = "string"
+    )
+  )
+)
+}
 }
 \description{
 Returns a list of all ActiveMQ users.

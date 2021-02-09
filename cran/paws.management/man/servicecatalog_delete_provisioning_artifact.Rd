@@ -20,6 +20,10 @@ servicecatalog_delete_provisioning_artifact(AcceptLanguage, ProductId,
 
 \item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified provisioning artifact (also known as a version)
 for the specified product.

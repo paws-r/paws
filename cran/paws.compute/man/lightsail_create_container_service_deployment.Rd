@@ -16,6 +16,108 @@ launched on the container service.}
 \item{publicEndpoint}{An object that describes the settings of the public endpoint for the
 container service.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  containerService = list(
+    containerServiceName = "string",
+    arn = "string",
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    location = list(
+      availabilityZone = "string",
+      regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
+    ),
+    resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    ),
+    power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
+    powerId = "string",
+    state = "PENDING"|"READY"|"RUNNING"|"UPDATING"|"DELETING"|"DISABLED",
+    scale = 123,
+    currentDeployment = list(
+      version = 123,
+      state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
+      containers = list(
+        list(
+          image = "string",
+          command = list(
+            "string"
+          ),
+          environment = list(
+            "string"
+          ),
+          ports = list(
+            "HTTP"|"HTTPS"|"TCP"|"UDP"
+          )
+        )
+      ),
+      publicEndpoint = list(
+        containerName = "string",
+        containerPort = 123,
+        healthCheck = list(
+          healthyThreshold = 123,
+          unhealthyThreshold = 123,
+          timeoutSeconds = 123,
+          intervalSeconds = 123,
+          path = "string",
+          successCodes = "string"
+        )
+      ),
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    nextDeployment = list(
+      version = 123,
+      state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
+      containers = list(
+        list(
+          image = "string",
+          command = list(
+            "string"
+          ),
+          environment = list(
+            "string"
+          ),
+          ports = list(
+            "HTTP"|"HTTPS"|"TCP"|"UDP"
+          )
+        )
+      ),
+      publicEndpoint = list(
+        containerName = "string",
+        containerPort = 123,
+        healthCheck = list(
+          healthyThreshold = 123,
+          unhealthyThreshold = 123,
+          timeoutSeconds = 123,
+          intervalSeconds = 123,
+          path = "string",
+          successCodes = "string"
+        )
+      ),
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    isDisabled = TRUE|FALSE,
+    principalArn = "string",
+    privateDomainName = "string",
+    publicDomainNames = list(
+      list(
+        "string"
+      )
+    ),
+    url = "string"
+  )
+)
+}
+}
 \description{
 Creates a deployment for your Amazon Lightsail container service.
 

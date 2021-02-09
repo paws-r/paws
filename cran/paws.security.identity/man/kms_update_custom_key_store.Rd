@@ -35,6 +35,10 @@ certificate of a cluster, use the
 \href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html}{DescribeClusters}
 operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Changes the properties of a custom key store. Use the \code{CustomKeyStoreId}
 parameter to identify the custom key store you want to edit. Use the

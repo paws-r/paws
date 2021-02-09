@@ -20,6 +20,12 @@ unique. If you don't specify \code{DisplayName}, the value in
 \item{Tags}{A list of tags to associate with the experiment. You can use
 \code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ExperimentArn = "string"
+)
+}
+}
 \description{
 Creates an SageMaker \emph{experiment}. An experiment is a collection of
 \emph{trials} that are observed, compared and evaluated as a group. A trial

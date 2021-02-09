@@ -24,6 +24,20 @@ NULL
 #' @param HostArn The Amazon Resource Name (ARN) of the host associated with the
 #' connection to be created.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_connection(
@@ -89,6 +103,14 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
 #' configured and the infrastructure to be represented by the host must
 #' already be connected to the VPC.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HostArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_host(
@@ -140,6 +162,12 @@ codestarconnections_create_host <- function(Name, ProviderType, ProviderEndpoint
 #' 
 #' The ARN is never reused if the connection is deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_connection(
@@ -173,13 +201,19 @@ codestarconnections_delete_connection <- function(ConnectionArn) {
 #' The host to be deleted. Before you delete a host, all connections
 #' associated to the host must be deleted.
 #' 
-#' A host cannot be deleted if it is in the VPC\\_CONFIG\\_INITIALIZING or
-#' VPC\\_CONFIG\\_DELETING state.
+#' A host cannot be deleted if it is in the VPC_CONFIG_INITIALIZING or
+#' VPC_CONFIG_DELETING state.
 #'
 #' @usage
 #' codestarconnections_delete_host(HostArn)
 #'
 #' @param HostArn &#91;required&#93; The Amazon Resource Name (ARN) of the host to be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -220,6 +254,21 @@ codestarconnections_delete_host <- function(HostArn) {
 #'
 #' @param ConnectionArn &#91;required&#93; The Amazon Resource Name (ARN) of a connection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Connection = list(
+#'     ConnectionName = "string",
+#'     ConnectionArn = "string",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
+#'     OwnerAccountId = "string",
+#'     ConnectionStatus = "PENDING"|"AVAILABLE"|"ERROR",
+#'     HostArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_connection(
@@ -258,6 +307,27 @@ codestarconnections_get_connection <- function(ConnectionArn) {
 #' codestarconnections_get_host(HostArn)
 #'
 #' @param HostArn &#91;required&#93; The Amazon Resource Name (ARN) of the requested host.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Status = "string",
+#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
+#'   ProviderEndpoint = "string",
+#'   VpcConfiguration = list(
+#'     VpcId = "string",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     TlsCertificate = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -306,6 +376,24 @@ codestarconnections_get_host <- function(HostArn) {
 #' [`list_connections`][codestarconnections_list_connections] call, which
 #' can be used to return the next set of connections in the list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Connections = list(
+#'     list(
+#'       ConnectionName = "string",
+#'       ConnectionArn = "string",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
+#'       OwnerAccountId = "string",
+#'       ConnectionStatus = "PENDING"|"AVAILABLE"|"ERROR",
+#'       HostArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_connections(
@@ -351,6 +439,34 @@ codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, Host
 #' [`list_hosts`][codestarconnections_list_hosts] call, which can be used
 #' to return the next set of hosts in the list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Hosts = list(
+#'     list(
+#'       Name = "string",
+#'       HostArn = "string",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
+#'       ProviderEndpoint = "string",
+#'       VpcConfiguration = list(
+#'         VpcId = "string",
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         ),
+#'         TlsCertificate = "string"
+#'       ),
+#'       Status = "string",
+#'       StatusMessage = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_hosts(
@@ -392,6 +508,19 @@ codestarconnections_list_hosts <- function(MaxResults = NULL, NextToken = NULL) 
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which you want to get
 #' information about tags, if any.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -431,6 +560,12 @@ codestarconnections_list_tags_for_resource <- function(ResourceArn) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which you want to add
 #' or update tags.
 #' @param Tags &#91;required&#93; The tags you want to modify or add to the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -476,6 +611,12 @@ codestarconnections_tag_resource <- function(ResourceArn, Tags) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove tags from.
 #' @param TagKeys &#91;required&#93; The list of keys for the tags to be removed from the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -520,6 +661,12 @@ codestarconnections_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param VpcConfiguration The VPC configuration of the host to be updated. A VPC must be
 #' configured and the infrastructure to be represented by the host must
 #' already be connected to the VPC.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

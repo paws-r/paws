@@ -17,11 +17,24 @@ You can add these to an AWS account and a QuickSight namespace.
 
 For example, you can add a default theme by setting
 \code{AccountCustomization} to the midnight theme:
-\verb{"AccountCustomization": \\\{ "DefaultTheme": "arn:aws:quicksight::aws:theme/MIDNIGHT" \\\}}.
+\code{"AccountCustomization": { "DefaultTheme": "arn:aws:quicksight::aws:theme/MIDNIGHT" }}.
 Or, you can add a custom theme by specifying
-\verb{"AccountCustomization": \\\{ "DefaultTheme": "arn:aws:quicksight:us-west-2:111122223333:theme/bdb844d0-0fe9-4d9d-b520-0fe602d93639" \\\}}.}
+\code{"AccountCustomization": { "DefaultTheme": "arn:aws:quicksight:us-west-2:111122223333:theme/bdb844d0-0fe9-4d9d-b520-0fe602d93639" }}.}
 
 \item{Tags}{A list of the tags that you want to attach to this resource.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  AwsAccountId = "string",
+  Namespace = "string",
+  AccountCustomization = list(
+    DefaultTheme = "string"
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
 }
 \description{
 Creates Amazon QuickSight customizations the current AWS Region.

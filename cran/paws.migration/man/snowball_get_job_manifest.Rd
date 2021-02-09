@@ -11,6 +11,12 @@ snowball_get_job_manifest(JobId)
 \item{JobId}{[required] The ID for a job that you want to get the manifest file for, for example
 \verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ManifestURI = "string"
+)
+}
+}
 \description{
 Returns a link to an Amazon S3 presigned URL for the manifest file
 associated with the specified \code{JobId} value. You can access the manifest

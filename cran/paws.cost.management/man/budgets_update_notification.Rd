@@ -17,6 +17,10 @@ you want to update.}
 
 \item{NewNotification}{[required] The updated notification to be associated with a budget.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a notification.
 }

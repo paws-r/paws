@@ -23,6 +23,56 @@ values: \code{active}, \code{completed}, \code{deleting}, or \code{deleted}.}
 
 \item{NextToken}{A token that indicates the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ImportImageTasks = list(
+    list(
+      Architecture = "string",
+      Description = "string",
+      Encrypted = TRUE|FALSE,
+      Hypervisor = "string",
+      ImageId = "string",
+      ImportTaskId = "string",
+      KmsKeyId = "string",
+      LicenseType = "string",
+      Platform = "string",
+      Progress = "string",
+      SnapshotDetails = list(
+        list(
+          Description = "string",
+          DeviceName = "string",
+          DiskImageSize = 123.0,
+          Format = "string",
+          Progress = "string",
+          SnapshotId = "string",
+          Status = "string",
+          StatusMessage = "string",
+          Url = "string",
+          UserBucket = list(
+            S3Bucket = "string",
+            S3Key = "string"
+          )
+        )
+      ),
+      Status = "string",
+      StatusMessage = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      LicenseSpecifications = list(
+        list(
+          LicenseConfigurationArn = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Displays details about an import virtual machine or import snapshot
 tasks that are already created.

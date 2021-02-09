@@ -12,6 +12,10 @@ xray_untag_resource(ResourceARN, TagKeys)
 \item{TagKeys}{[required] Keys for one or more tags that you want to remove from an X-Ray group or
 sampling rule.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes tags from an AWS X-Ray group or sampling rule. You cannot edit
 or delete system tags (those with an \verb{aws:} prefix).

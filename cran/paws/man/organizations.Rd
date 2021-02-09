@@ -37,7 +37,7 @@ AWS Organizations
 \link[=organizations_attach_policy]{attach_policy} \tab Attaches a policy to a root, an organizational unit (OU), or an individual account\cr
 \link[=organizations_cancel_handshake]{cancel_handshake} \tab Cancels a handshake\cr
 \link[=organizations_create_account]{create_account} \tab Creates an AWS account that is automatically a member of the organization whose credentials made the request\cr
-\link[=organizations_create_gov_cloud_account]{create_gov_cloud_account} \tab This action is available if all of the following are true: - You're authorized to create accounts in the AWS GovCloud (US) Region\cr
+\link[=organizations_create_gov_cloud_account]{create_gov_cloud_account} \tab This action is available if all of the following are true:\cr
 \link[=organizations_create_organization]{create_organization} \tab Creates an AWS organization\cr
 \link[=organizations_create_organizational_unit]{create_organizational_unit} \tab Creates an organizational unit (OU) within a root or parent OU\cr
 \link[=organizations_create_policy]{create_policy} \tab Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual AWS account\cr

@@ -12,6 +12,27 @@ elasticbeanstalk_update_application_resource_lifecycle(ApplicationName,
 
 \item{ResourceLifecycleConfig}{[required] The lifecycle configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationName = "string",
+  ResourceLifecycleConfig = list(
+    ServiceRole = "string",
+    VersionLifecycleConfig = list(
+      MaxCountRule = list(
+        Enabled = TRUE|FALSE,
+        MaxCount = 123,
+        DeleteSourceFromS3 = TRUE|FALSE
+      ),
+      MaxAgeRule = list(
+        Enabled = TRUE|FALSE,
+        MaxAgeInDays = 123,
+        DeleteSourceFromS3 = TRUE|FALSE
+      )
+    )
+  )
+)
+}
+}
 \description{
 Modifies lifecycle settings for an application.
 }

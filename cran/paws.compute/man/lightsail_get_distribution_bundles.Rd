@@ -7,6 +7,20 @@ content delivery network (CDN) distributions}
 \usage{
 lightsail_get_distribution_bundles()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  bundles = list(
+    list(
+      bundleId = "string",
+      name = "string",
+      price = 123.0,
+      transferPerMonthInGb = 123,
+      isActive = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Returns the list bundles that can be applied to you Amazon Lightsail
 content delivery network (CDN) distributions.

@@ -14,6 +14,10 @@ workmail_associate_delegate_to_resource(OrganizationId, ResourceId,
 
 \item{EntityId}{[required] The member (user or group) to associate to the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds a member (user or group) to the resource's set of delegates.
 }

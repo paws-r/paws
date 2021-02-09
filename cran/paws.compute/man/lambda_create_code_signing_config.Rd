@@ -15,6 +15,25 @@ lambda_create_code_signing_config(Description, AllowedPublishers,
 \item{CodeSigningPolicies}{The code signing policies define the actions to take if the validation
 checks fail.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CodeSigningConfig = list(
+    CodeSigningConfigId = "string",
+    CodeSigningConfigArn = "string",
+    Description = "string",
+    AllowedPublishers = list(
+      SigningProfileVersionArns = list(
+        "string"
+      )
+    ),
+    CodeSigningPolicies = list(
+      UntrustedArtifactOnDeployment = "Warn"|"Enforce"
+    ),
+    LastModified = "string"
+  )
+)
+}
+}
 \description{
 Creates a code signing configuration. A \href{https://docs.aws.amazon.com/lambda/latest/dg/}{code signing configuration} defines a
 list of allowed signing profiles and defines the code-signing validation

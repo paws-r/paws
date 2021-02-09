@@ -23,6 +23,12 @@ from an IPSet. For more information, see the applicable data types:
 
 You can insert a maximum of 1000 addresses in a single request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChangeToken = "string"
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

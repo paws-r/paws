@@ -19,9 +19,9 @@ must not begin or end with a hyphen.}
 
 \item{Protocol}{The protocol to use for routing traffic to the targets. For Application
 Load Balancers, the supported protocols are HTTP and HTTPS. For Network
-Load Balancers, the supported protocols are TCP, TLS, UDP, or TCP\\_UDP.
-For Gateway Load Balancers, the supported protocol is GENEVE. A TCP\\_UDP
-listener must be associated with a TCP\\_UDP target group. If the target
+Load Balancers, the supported protocols are TCP, TLS, UDP, or TCP_UDP.
+For Gateway Load Balancers, the supported protocol is GENEVE. A TCP_UDP
+listener must be associated with a TCP_UDP target group. If the target
 is a Lambda function, this parameter does not apply.}
 
 \item{ProtocolVersion}{[HTTP/HTTPS protocol] The protocol version. Specify \code{GRPC} to send
@@ -42,11 +42,11 @@ parameter is required.}
 targets. For Application Load Balancers, the default is HTTP. For
 Network Load Balancers and Gateway Load Balancers, the default is TCP.
 The TCP protocol is not supported for health checks if the protocol of
-the target group is HTTP or HTTPS. The GENEVE, TLS, UDP, and TCP\\_UDP
+the target group is HTTP or HTTPS. The GENEVE, TLS, UDP, and TCP_UDP
 protocols are not supported for health checks.}
 
 \item{HealthCheckPort}{The port the load balancer uses when performing health checks on
-targets. If the protocol is HTTP, HTTPS, TCP, TLS, UDP, or TCP\\_UDP, the
+targets. If the protocol is HTTP, HTTPS, TCP, TLS, UDP, or TCP_UDP, the
 default is \code{traffic-port}, which is the port on which each target
 receives traffic from the load balancer. If the protocol is GENEVE, the
 default is port 80.}
@@ -108,6 +108,37 @@ specify publicly routable IP addresses.
 }}
 
 \item{Tags}{The tags to assign to the target group.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  TargetGroups = list(
+    list(
+      TargetGroupArn = "string",
+      TargetGroupName = "string",
+      Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+      Port = 123,
+      VpcId = "string",
+      HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+      HealthCheckPort = "string",
+      HealthCheckEnabled = TRUE|FALSE,
+      HealthCheckIntervalSeconds = 123,
+      HealthCheckTimeoutSeconds = 123,
+      HealthyThresholdCount = 123,
+      UnhealthyThresholdCount = 123,
+      HealthCheckPath = "string",
+      Matcher = list(
+        HttpCode = "string",
+        GrpcCode = "string"
+      ),
+      LoadBalancerArns = list(
+        "string"
+      ),
+      TargetType = "instance"|"ip"|"lambda",
+      ProtocolVersion = "string"
+    )
+  )
+)
+}
 }
 \description{
 Creates a target group.

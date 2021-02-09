@@ -17,6 +17,31 @@ all your conformance packs.}
 \item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
 request the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConformancePackDetails = list(
+    list(
+      ConformancePackName = "string",
+      ConformancePackArn = "string",
+      ConformancePackId = "string",
+      DeliveryS3Bucket = "string",
+      DeliveryS3KeyPrefix = "string",
+      ConformancePackInputParameters = list(
+        list(
+          ParameterName = "string",
+          ParameterValue = "string"
+        )
+      ),
+      LastUpdateRequestedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreatedBy = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of one or more conformance packs.
 }

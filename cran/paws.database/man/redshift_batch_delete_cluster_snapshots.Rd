@@ -9,6 +9,22 @@ redshift_batch_delete_cluster_snapshots(Identifiers)
 \arguments{
 \item{Identifiers}{[required] A list of identifiers for the snapshots that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Resources = list(
+    "string"
+  ),
+  Errors = list(
+    list(
+      SnapshotIdentifier = "string",
+      SnapshotClusterIdentifier = "string",
+      FailureCode = "string",
+      FailureReason = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes a set of cluster snapshots.
 }

@@ -37,6 +37,29 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Parameters = list(
+    list(
+      ParameterName = "string",
+      ParameterValue = "string",
+      Description = "string",
+      Source = "string",
+      ApplyType = "string",
+      DataType = "string",
+      AllowedValues = "string",
+      IsModifiable = TRUE|FALSE,
+      MinimumEngineVersion = "string",
+      ApplyMethod = "immediate"|"pending-reboot",
+      SupportedEngineModes = list(
+        "string"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns the detailed parameter list for a particular DB parameter group.
 }

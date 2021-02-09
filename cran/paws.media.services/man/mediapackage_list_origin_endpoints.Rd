@@ -7,11 +7,163 @@
 mediapackage_list_origin_endpoints(ChannelId, MaxResults, NextToken)
 }
 \arguments{
-\item{ChannelId}{When specified, the request will return only OriginEndpoints associated with the given Channel ID.}
+\item{ChannelId}{When specified, the request will return only OriginEndpoints associated
+with the given Channel ID.}
 
 \item{MaxResults}{The upper bound on the number of records to return.}
 
 \item{NextToken}{A token used to resume pagination from the end of a previous request.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  OriginEndpoints = list(
+    list(
+      Arn = "string",
+      Authorization = list(
+        CdnIdentifierSecret = "string",
+        SecretsRoleArn = "string"
+      ),
+      ChannelId = "string",
+      CmafPackage = list(
+        Encryption = list(
+          KeyRotationIntervalSeconds = 123,
+          SpekeKeyProvider = list(
+            CertificateArn = "string",
+            ResourceId = "string",
+            RoleArn = "string",
+            SystemIds = list(
+              "string"
+            ),
+            Url = "string"
+          )
+        ),
+        HlsManifests = list(
+          list(
+            AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
+            Id = "string",
+            IncludeIframeOnlyStream = TRUE|FALSE,
+            ManifestName = "string",
+            PlaylistType = "NONE"|"EVENT"|"VOD",
+            PlaylistWindowSeconds = 123,
+            ProgramDateTimeIntervalSeconds = 123,
+            Url = "string"
+          )
+        ),
+        SegmentDurationSeconds = 123,
+        SegmentPrefix = "string",
+        StreamSelection = list(
+          MaxVideoBitsPerSecond = 123,
+          MinVideoBitsPerSecond = 123,
+          StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+        )
+      ),
+      DashPackage = list(
+        AdTriggers = list(
+          "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+        ),
+        AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
+        Encryption = list(
+          KeyRotationIntervalSeconds = 123,
+          SpekeKeyProvider = list(
+            CertificateArn = "string",
+            ResourceId = "string",
+            RoleArn = "string",
+            SystemIds = list(
+              "string"
+            ),
+            Url = "string"
+          )
+        ),
+        ManifestLayout = "FULL"|"COMPACT",
+        ManifestWindowSeconds = 123,
+        MinBufferTimeSeconds = 123,
+        MinUpdatePeriodSeconds = 123,
+        PeriodTriggers = list(
+          "ADS"
+        ),
+        Profile = "NONE"|"HBBTV_1_5",
+        SegmentDurationSeconds = 123,
+        SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE"|"NUMBER_WITH_DURATION",
+        StreamSelection = list(
+          MaxVideoBitsPerSecond = 123,
+          MinVideoBitsPerSecond = 123,
+          StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+        ),
+        SuggestedPresentationDelaySeconds = 123,
+        UtcTiming = "NONE"|"HTTP-HEAD"|"HTTP-ISO",
+        UtcTimingUri = "string"
+      ),
+      Description = "string",
+      HlsPackage = list(
+        AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
+        AdTriggers = list(
+          "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
+        ),
+        AdsOnDeliveryRestrictions = "NONE"|"RESTRICTED"|"UNRESTRICTED"|"BOTH",
+        Encryption = list(
+          ConstantInitializationVector = "string",
+          EncryptionMethod = "AES_128"|"SAMPLE_AES",
+          KeyRotationIntervalSeconds = 123,
+          RepeatExtXKey = TRUE|FALSE,
+          SpekeKeyProvider = list(
+            CertificateArn = "string",
+            ResourceId = "string",
+            RoleArn = "string",
+            SystemIds = list(
+              "string"
+            ),
+            Url = "string"
+          )
+        ),
+        IncludeIframeOnlyStream = TRUE|FALSE,
+        PlaylistType = "NONE"|"EVENT"|"VOD",
+        PlaylistWindowSeconds = 123,
+        ProgramDateTimeIntervalSeconds = 123,
+        SegmentDurationSeconds = 123,
+        StreamSelection = list(
+          MaxVideoBitsPerSecond = 123,
+          MinVideoBitsPerSecond = 123,
+          StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+        ),
+        UseAudioRenditionGroup = TRUE|FALSE
+      ),
+      Id = "string",
+      ManifestName = "string",
+      MssPackage = list(
+        Encryption = list(
+          SpekeKeyProvider = list(
+            CertificateArn = "string",
+            ResourceId = "string",
+            RoleArn = "string",
+            SystemIds = list(
+              "string"
+            ),
+            Url = "string"
+          )
+        ),
+        ManifestWindowSeconds = 123,
+        SegmentDurationSeconds = 123,
+        StreamSelection = list(
+          MaxVideoBitsPerSecond = 123,
+          MinVideoBitsPerSecond = 123,
+          StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
+        )
+      ),
+      Origination = "ALLOW"|"DENY",
+      StartoverWindowSeconds = 123,
+      Tags = list(
+        "string"
+      ),
+      TimeDelaySeconds = 123,
+      Url = "string",
+      Whitelist = list(
+        "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Returns a collection of OriginEndpoint records.

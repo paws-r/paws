@@ -20,6 +20,35 @@ results.}
 
 \item{Limit}{The maximum number of replays to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Replays = list(
+    list(
+      ReplayName = "string",
+      EventSourceArn = "string",
+      State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
+      StateReason = "string",
+      EventStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EventEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EventLastReplayedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ReplayStartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ReplayEndTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists your replays. You can either list all the replays or you can
 provide a prefix to match to the replay names. Filter parameters are

@@ -16,6 +16,10 @@ compatibility, this is folded to lowercase.}
 \item{DatabaseInput}{[required] A \code{DatabaseInput} object specifying the new definition of the metadata
 database in the catalog.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates an existing database definition in a Data Catalog.
 }

@@ -14,6 +14,10 @@ it. This message is returned by future
 \code{\link[=batch_describe_jobs]{describe_jobs}} operations on the job. This
 message is also recorded in the AWS Batch activity logs.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Cancels a job in an AWS Batch job queue. Jobs that are in the
 \code{SUBMITTED}, \code{PENDING}, or \code{RUNNABLE} state are canceled. Jobs that have

@@ -14,6 +14,23 @@ licensemanager_list_associations_for_license_configuration(
 
 \item{NextToken}{Token for the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LicenseConfigurationAssociations = list(
+    list(
+      ResourceArn = "string",
+      ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+      ResourceOwnerId = "string",
+      AssociationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      AmiAssociationScope = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the resource associations for the specified license configuration.
 

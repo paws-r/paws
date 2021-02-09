@@ -10,6 +10,10 @@ mediastore_delete_cors_policy(ContainerName)
 \arguments{
 \item{ContainerName}{[required] The name of the container to remove the policy from.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the cross-origin resource sharing (CORS) configuration
 information that is set for the container.

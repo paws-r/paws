@@ -9,6 +9,14 @@ cloudwatch_get_dashboard(DashboardName)
 \arguments{
 \item{DashboardName}{[required] The name of the dashboard to be described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DashboardArn = "string",
+  DashboardBody = "string",
+  DashboardName = "string"
+)
+}
+}
 \description{
 Displays the details of the dashboard that you specify.
 

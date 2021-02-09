@@ -27,13 +27,24 @@ version compatible with that DB parameter group family.
 To list all of the available parameter group families, use the following
 command:
 
-\verb{aws rds describe-db-engine-versions --query "DBEngineVersions\\\[\\\].DBParameterGroupFamily"}
+\verb{aws rds describe-db-engine-versions --query "DBEngineVersions[].DBParameterGroupFamily"}
 
 The output contains duplicates.}
 
 \item{Description}{[required] The description for the DB parameter group.}
 
 \item{Tags}{Tags to assign to the DB parameter group.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  DBParameterGroup = list(
+    DBParameterGroupName = "string",
+    DBParameterGroupFamily = "string",
+    Description = "string",
+    DBParameterGroupArn = "string"
+  )
+)
+}
 }
 \description{
 Creates a new DB parameter group.

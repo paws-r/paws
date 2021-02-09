@@ -11,6 +11,14 @@ iot_create_certificate_from_csr(certificateSigningRequest, setAsActive)
 
 \item{setAsActive}{Specifies whether the certificate is active.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  certificateArn = "string",
+  certificateId = "string",
+  certificatePem = "string"
+)
+}
+}
 \description{
 Creates an X.509 certificate using the specified certificate signing
 request.
@@ -32,8 +40,9 @@ my-csr-directory:
 
 On Linux and OS X, the command is:
 
-$ ls my-csr-directory/ | xargs -I \{\} aws iot create-certificate-from-csr
---certificate-signing-request file://my-csr-directory/\{\}
+$ ls my-csr-directory/ | xargs -I \{\} aws iot
+create-certificate-from-csr --certificate-signing-request
+file://my-csr-directory/\{\}
 
 This command lists all of the CSRs in my-csr-directory and pipes each
 CSR file name to the aws iot create-certificate-from-csr AWS CLI command
@@ -50,7 +59,7 @@ On Windows PowerShell, the command to create certificates for all CSRs
 in my-csr-directory is:
 
 > ls -Name my-csr-directory | \%\{aws iot create-certificate-from-csr
---certificate-signing-request file://my-csr-directory/$\\_\}
+--certificate-signing-request file://my-csr-directory/$_\}
 
 On a Windows command prompt, the command to create certificates for all
 CSRs in my-csr-directory is:

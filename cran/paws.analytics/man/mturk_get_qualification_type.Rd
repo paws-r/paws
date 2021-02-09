@@ -10,6 +10,28 @@ mturk_get_qualification_type(QualificationTypeId)
 \arguments{
 \item{QualificationTypeId}{[required] The ID of the QualificationType.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  QualificationType = list(
+    QualificationTypeId = "string",
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Name = "string",
+    Description = "string",
+    Keywords = "string",
+    QualificationTypeStatus = "Active"|"Inactive",
+    Test = "string",
+    TestDurationInSeconds = 123,
+    AnswerKey = "string",
+    RetryDelayInSeconds = 123,
+    IsRequestable = TRUE|FALSE,
+    AutoGranted = TRUE|FALSE,
+    AutoGrantedValue = 123
+  )
+)
+}
+}
 \description{
 The \code{\link[=mturk_get_qualification_type]{get_qualification_type}}operation
 retrieves information about a Qualification type using its ID.

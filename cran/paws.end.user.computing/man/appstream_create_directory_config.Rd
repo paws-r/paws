@@ -17,6 +17,24 @@ accounts.}
 \item{ServiceAccountCredentials}{The credentials for the service account used by the fleet or image
 builder to connect to the directory.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DirectoryConfig = list(
+    DirectoryName = "string",
+    OrganizationalUnitDistinguishedNames = list(
+      "string"
+    ),
+    ServiceAccountCredentials = list(
+      AccountName = "string",
+      AccountPassword = "string"
+    ),
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates a Directory Config object in AppStream 2.0. This object includes
 the configuration information required to join fleets and image builders

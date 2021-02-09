@@ -15,6 +15,12 @@ iot_update_thing_group(thingGroupName, thingGroupProperties,
 \item{expectedVersion}{The expected version of the thing group. If this does not match the
 version of the thing group being updated, the update will fail.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  version = 123
+)
+}
+}
 \description{
 Update a thing group.
 }

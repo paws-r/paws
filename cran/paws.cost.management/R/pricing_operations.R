@@ -30,6 +30,23 @@ NULL
 #' want to retrieve.
 #' @param MaxResults The maximum number of results that you want returned in the response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Services = list(
+#'     list(
+#'       ServiceCode = "string",
+#'       AttributeNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   FormatVersion = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_services(
@@ -92,6 +109,19 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
 #' want to retrieve.
 #' @param MaxResults The maximum number of results to return in response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AttributeValues = list(
+#'     list(
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_attribute_values(
@@ -151,6 +181,18 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #' @param NextToken The pagination token that indicates the next set of results that you
 #' want to retrieve.
 #' @param MaxResults The maximum number of results to return in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FormatVersion = "string",
+#'   PriceList = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -28,6 +28,23 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcIds}{One or more VPCs for which you want to describe the ClassicLink status.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Vpcs = list(
+    list(
+      ClassicLinkEnabled = TRUE|FALSE,
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      VpcId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the ClassicLink status of one or more VPCs.
 }

@@ -7,12 +7,18 @@
 kafka_delete_configuration(Arn)
 }
 \arguments{
-\item{Arn}{[required]
-<p>The Amazon Resource Name (ARN) that uniquely identifies an MSK configuration.</p>}
+\item{Arn}{[required] The Amazon Resource Name (ARN) that uniquely identifies an MSK
+configuration.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  State = "ACTIVE"|"DELETING"|"DELETE_FAILED"
+)
+}
 }
 \description{
-\preformatted{        <p>Deletes an MSK Configuration.</p>
-}
+Deletes an MSK Configuration.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_configuration(

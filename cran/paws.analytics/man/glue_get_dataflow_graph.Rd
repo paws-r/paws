@@ -9,6 +9,32 @@ glue_get_dataflow_graph(PythonScript)
 \arguments{
 \item{PythonScript}{The Python script to transform.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DagNodes = list(
+    list(
+      Id = "string",
+      NodeType = "string",
+      Args = list(
+        list(
+          Name = "string",
+          Value = "string",
+          Param = TRUE|FALSE
+        )
+      ),
+      LineNumber = 123
+    )
+  ),
+  DagEdges = list(
+    list(
+      Source = "string",
+      Target = "string",
+      TargetParameter = "string"
+    )
+  )
+)
+}
+}
 \description{
 Transforms a Python script into a directed acyclic graph (DAG).
 }

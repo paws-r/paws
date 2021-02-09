@@ -21,6 +21,35 @@ index during a request. For more information, see \href{https://docs.aws.amazon.
 
 \item{ConsistencyLevel}{The consistency level to execute the request at.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IndexAttachments = list(
+    list(
+      IndexedAttributes = list(
+        list(
+          Key = list(
+            SchemaArn = "string",
+            FacetName = "string",
+            Name = "string"
+          ),
+          Value = list(
+            StringValue = "string",
+            BinaryValue = raw,
+            BooleanValue = TRUE|FALSE,
+            NumberValue = "string",
+            DatetimeValue = as.POSIXct(
+              "2015-01-01"
+            )
+          )
+        )
+      ),
+      ObjectIdentifier = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists objects attached to the specified index.
 }

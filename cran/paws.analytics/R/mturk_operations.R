@@ -26,6 +26,12 @@ NULL
 #' the presence or absence of the Qualification as the basis for a HIT
 #' requirement.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_qualification_request(
@@ -91,6 +97,12 @@ mturk_accept_qualification_request <- function(QualificationRequestId, IntegerVa
 #' of the web site.
 #' @param OverrideRejection A flag indicating that an assignment should be approved even if it was
 #' previously rejected. Defaults to `False`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -161,6 +173,12 @@ mturk_approve_assignment <- function(AssignmentId, RequesterFeedback = NULL, Ove
 #' saying that the qualification was assigned to the Worker. Note: this is
 #' true by default.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_qualification_with_worker(
@@ -227,6 +245,12 @@ mturk_associate_qualification_with_worker <- function(QualificationTypeId, Worke
 #' system from a previous call using the same `UniqueRequestToken`,
 #' subsequent calls will return an error with a message containing the
 #' request ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -373,6 +397,56 @@ mturk_create_additional_assignments_for_hit <- function(HITId, NumberOfAdditiona
 #' with values using the HITLayoutParameter structure. For more
 #' information, see HITLayout.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HIT = list(
+#'     HITId = "string",
+#'     HITTypeId = "string",
+#'     HITGroupId = "string",
+#'     HITLayoutId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Title = "string",
+#'     Description = "string",
+#'     Question = "string",
+#'     Keywords = "string",
+#'     HITStatus = "Assignable"|"Unassignable"|"Reviewable"|"Reviewing"|"Disposed",
+#'     MaxAssignments = 123,
+#'     Reward = "string",
+#'     AutoApprovalDelayInSeconds = 123,
+#'     Expiration = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssignmentDurationInSeconds = 123,
+#'     RequesterAnnotation = "string",
+#'     QualificationRequirements = list(
+#'       list(
+#'         QualificationTypeId = "string",
+#'         Comparator = "LessThan"|"LessThanOrEqualTo"|"GreaterThan"|"GreaterThanOrEqualTo"|"EqualTo"|"NotEqualTo"|"Exists"|"DoesNotExist"|"In"|"NotIn",
+#'         IntegerValues = list(
+#'           123
+#'         ),
+#'         LocaleValues = list(
+#'           list(
+#'             Country = "string",
+#'             Subdivision = "string"
+#'           )
+#'         ),
+#'         RequiredToPreview = TRUE|FALSE,
+#'         ActionsGuarded = "Accept"|"PreviewAndAccept"|"DiscoverPreviewAndAccept"
+#'       )
+#'     ),
+#'     HITReviewStatus = "NotReviewed"|"MarkedForReview"|"ReviewedAppropriate"|"ReviewedInappropriate",
+#'     NumberOfAssignmentsPending = 123,
+#'     NumberOfAssignmentsAvailable = 123,
+#'     NumberOfAssignmentsCompleted = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_hit(
@@ -514,6 +588,14 @@ mturk_create_hit <- function(MaxAssignments = NULL, AutoApprovalDelayInSeconds =
 #' Additionally, other actions can be restricted using the `ActionsGuarded`
 #' field on each `QualificationRequirement` structure.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HITTypeId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_hit_type(
@@ -644,6 +726,56 @@ mturk_create_hit_type <- function(AutoApprovalDelayInSeconds = NULL, AssignmentD
 #' @param HITLayoutParameters If the HITLayoutId is provided, any placeholder values must be filled in
 #' with values using the HITLayoutParameter structure. For more
 #' information, see HITLayout.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HIT = list(
+#'     HITId = "string",
+#'     HITTypeId = "string",
+#'     HITGroupId = "string",
+#'     HITLayoutId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Title = "string",
+#'     Description = "string",
+#'     Question = "string",
+#'     Keywords = "string",
+#'     HITStatus = "Assignable"|"Unassignable"|"Reviewable"|"Reviewing"|"Disposed",
+#'     MaxAssignments = 123,
+#'     Reward = "string",
+#'     AutoApprovalDelayInSeconds = 123,
+#'     Expiration = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssignmentDurationInSeconds = 123,
+#'     RequesterAnnotation = "string",
+#'     QualificationRequirements = list(
+#'       list(
+#'         QualificationTypeId = "string",
+#'         Comparator = "LessThan"|"LessThanOrEqualTo"|"GreaterThan"|"GreaterThanOrEqualTo"|"EqualTo"|"NotEqualTo"|"Exists"|"DoesNotExist"|"In"|"NotIn",
+#'         IntegerValues = list(
+#'           123
+#'         ),
+#'         LocaleValues = list(
+#'           list(
+#'             Country = "string",
+#'             Subdivision = "string"
+#'           )
+#'         ),
+#'         RequiredToPreview = TRUE|FALSE,
+#'         ActionsGuarded = "Accept"|"PreviewAndAccept"|"DiscoverPreviewAndAccept"
+#'       )
+#'     ),
+#'     HITReviewStatus = "NotReviewed"|"MarkedForReview"|"ReviewedAppropriate"|"ReviewedInappropriate",
+#'     NumberOfAssignmentsPending = 123,
+#'     NumberOfAssignmentsAvailable = 123,
+#'     NumberOfAssignmentsCompleted = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -786,6 +918,30 @@ mturk_create_hit_with_hit_type <- function(HITTypeId, MaxAssignments = NULL, Lif
 #' @param AutoGrantedValue The Qualification value to use for automatically granted Qualifications.
 #' This parameter is used only if the AutoGranted parameter is true.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QualificationType = list(
+#'     QualificationTypeId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Name = "string",
+#'     Description = "string",
+#'     Keywords = "string",
+#'     QualificationTypeStatus = "Active"|"Inactive",
+#'     Test = "string",
+#'     TestDurationInSeconds = 123,
+#'     AnswerKey = "string",
+#'     RetryDelayInSeconds = 123,
+#'     IsRequestable = TRUE|FALSE,
+#'     AutoGranted = TRUE|FALSE,
+#'     AutoGrantedValue = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_qualification_type(
@@ -838,6 +994,12 @@ mturk_create_qualification_type <- function(Name, Keywords = NULL, Description, 
 #' @param Reason &#91;required&#93; A message explaining the reason for blocking the Worker. This parameter
 #' enables you to keep track of your Workers. The Worker does not see this
 #' message.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -898,6 +1060,12 @@ mturk_create_worker_block <- function(WorkerId, Reason) {
 #'
 #' @param HITId &#91;required&#93; The ID of the HIT to be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_hit(
@@ -950,6 +1118,12 @@ mturk_delete_hit <- function(HITId) {
 #'
 #' @param QualificationTypeId &#91;required&#93; The ID of the QualificationType to dispose.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_qualification_type(
@@ -995,6 +1169,12 @@ mturk_delete_qualification_type <- function(QualificationTypeId) {
 #' @param WorkerId &#91;required&#93; The ID of the Worker to unblock.
 #' @param Reason A message that explains the reason for unblocking the Worker. The Worker
 #' does not see this message.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1044,6 +1224,12 @@ mturk_delete_worker_block <- function(WorkerId, Reason = NULL) {
 #' @param Reason A text message that explains why the Qualification was revoked. The user
 #' who had the Qualification sees this message.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_qualification_from_worker(
@@ -1083,6 +1269,15 @@ mturk_disassociate_qualification_from_worker <- function(WorkerId, Qualification
 #' @usage
 #' mturk_get_account_balance()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AvailableBalance = "string",
+#'   OnHoldBalance = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_account_balance()
@@ -1119,6 +1314,82 @@ mturk_get_account_balance <- function() {
 #' mturk_get_assignment(AssignmentId)
 #'
 #' @param AssignmentId &#91;required&#93; The ID of the Assignment to be retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Assignment = list(
+#'     AssignmentId = "string",
+#'     WorkerId = "string",
+#'     HITId = "string",
+#'     AssignmentStatus = "Submitted"|"Approved"|"Rejected",
+#'     AutoApprovalTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AcceptTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SubmitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ApprovalTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     RejectionTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Deadline = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Answer = "string",
+#'     RequesterFeedback = "string"
+#'   ),
+#'   HIT = list(
+#'     HITId = "string",
+#'     HITTypeId = "string",
+#'     HITGroupId = "string",
+#'     HITLayoutId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Title = "string",
+#'     Description = "string",
+#'     Question = "string",
+#'     Keywords = "string",
+#'     HITStatus = "Assignable"|"Unassignable"|"Reviewable"|"Reviewing"|"Disposed",
+#'     MaxAssignments = 123,
+#'     Reward = "string",
+#'     AutoApprovalDelayInSeconds = 123,
+#'     Expiration = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssignmentDurationInSeconds = 123,
+#'     RequesterAnnotation = "string",
+#'     QualificationRequirements = list(
+#'       list(
+#'         QualificationTypeId = "string",
+#'         Comparator = "LessThan"|"LessThanOrEqualTo"|"GreaterThan"|"GreaterThanOrEqualTo"|"EqualTo"|"NotEqualTo"|"Exists"|"DoesNotExist"|"In"|"NotIn",
+#'         IntegerValues = list(
+#'           123
+#'         ),
+#'         LocaleValues = list(
+#'           list(
+#'             Country = "string",
+#'             Subdivision = "string"
+#'           )
+#'         ),
+#'         RequiredToPreview = TRUE|FALSE,
+#'         ActionsGuarded = "Accept"|"PreviewAndAccept"|"DiscoverPreviewAndAccept"
+#'       )
+#'     ),
+#'     HITReviewStatus = "NotReviewed"|"MarkedForReview"|"ReviewedAppropriate"|"ReviewedInappropriate",
+#'     NumberOfAssignmentsPending = 123,
+#'     NumberOfAssignmentsAvailable = 123,
+#'     NumberOfAssignmentsCompleted = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1171,6 +1442,14 @@ mturk_get_assignment <- function(AssignmentId) {
 #' @param QuestionIdentifier &#91;required&#93; The identifier of the question with a FileUploadAnswer, as specified in
 #' the QuestionForm of the HIT.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileUploadURL = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_file_upload_url(
@@ -1209,6 +1488,56 @@ mturk_get_file_upload_url <- function(AssignmentId, QuestionIdentifier) {
 #' mturk_get_hit(HITId)
 #'
 #' @param HITId &#91;required&#93; The ID of the HIT to be retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HIT = list(
+#'     HITId = "string",
+#'     HITTypeId = "string",
+#'     HITGroupId = "string",
+#'     HITLayoutId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Title = "string",
+#'     Description = "string",
+#'     Question = "string",
+#'     Keywords = "string",
+#'     HITStatus = "Assignable"|"Unassignable"|"Reviewable"|"Reviewing"|"Disposed",
+#'     MaxAssignments = 123,
+#'     Reward = "string",
+#'     AutoApprovalDelayInSeconds = 123,
+#'     Expiration = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssignmentDurationInSeconds = 123,
+#'     RequesterAnnotation = "string",
+#'     QualificationRequirements = list(
+#'       list(
+#'         QualificationTypeId = "string",
+#'         Comparator = "LessThan"|"LessThanOrEqualTo"|"GreaterThan"|"GreaterThanOrEqualTo"|"EqualTo"|"NotEqualTo"|"Exists"|"DoesNotExist"|"In"|"NotIn",
+#'         IntegerValues = list(
+#'           123
+#'         ),
+#'         LocaleValues = list(
+#'           list(
+#'             Country = "string",
+#'             Subdivision = "string"
+#'           )
+#'         ),
+#'         RequiredToPreview = TRUE|FALSE,
+#'         ActionsGuarded = "Accept"|"PreviewAndAccept"|"DiscoverPreviewAndAccept"
+#'       )
+#'     ),
+#'     HITReviewStatus = "NotReviewed"|"MarkedForReview"|"ReviewedAppropriate"|"ReviewedInappropriate",
+#'     NumberOfAssignmentsPending = 123,
+#'     NumberOfAssignmentsAvailable = 123,
+#'     NumberOfAssignmentsCompleted = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1258,6 +1587,26 @@ mturk_get_hit <- function(HITId) {
 #' @param QualificationTypeId &#91;required&#93; The ID of the QualificationType.
 #' @param WorkerId &#91;required&#93; The ID of the Worker whose Qualification is being updated.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Qualification = list(
+#'     QualificationTypeId = "string",
+#'     WorkerId = "string",
+#'     GrantTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     IntegerValue = 123,
+#'     LocaleValue = list(
+#'       Country = "string",
+#'       Subdivision = "string"
+#'     ),
+#'     Status = "Granted"|"Revoked"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_qualification_score(
@@ -1297,6 +1646,30 @@ mturk_get_qualification_score <- function(QualificationTypeId, WorkerId) {
 #' mturk_get_qualification_type(QualificationTypeId)
 #'
 #' @param QualificationTypeId &#91;required&#93; The ID of the QualificationType.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QualificationType = list(
+#'     QualificationTypeId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Name = "string",
+#'     Description = "string",
+#'     Keywords = "string",
+#'     QualificationTypeStatus = "Active"|"Inactive",
+#'     Test = "string",
+#'     TestDurationInSeconds = 123,
+#'     AnswerKey = "string",
+#'     RetryDelayInSeconds = 123,
+#'     IsRequestable = TRUE|FALSE,
+#'     AutoGranted = TRUE|FALSE,
+#'     AutoGrantedValue = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1361,6 +1734,43 @@ mturk_get_qualification_type <- function(QualificationTypeId) {
 #' @param MaxResults 
 #' @param AssignmentStatuses The status of the assignments to return: Submitted | Approved | Rejected
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   NumResults = 123,
+#'   Assignments = list(
+#'     list(
+#'       AssignmentId = "string",
+#'       WorkerId = "string",
+#'       HITId = "string",
+#'       AssignmentStatus = "Submitted"|"Approved"|"Rejected",
+#'       AutoApprovalTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AcceptTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ApprovalTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RejectionTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Deadline = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Answer = "string",
+#'       RequesterFeedback = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_assignments_for_hit(
@@ -1415,6 +1825,26 @@ mturk_list_assignments_for_hit <- function(HITId, NextToken = NULL, MaxResults =
 #' @param NextToken Pagination token
 #' @param MaxResults 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NumResults = 123,
+#'   NextToken = "string",
+#'   BonusPayments = list(
+#'     list(
+#'       WorkerId = "string",
+#'       BonusAmount = "string",
+#'       AssignmentId = "string",
+#'       Reason = "string",
+#'       GrantTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_bonus_payments(
@@ -1458,6 +1888,60 @@ mturk_list_bonus_payments <- function(HITId = NULL, AssignmentId = NULL, NextTok
 #'
 #' @param NextToken Pagination token
 #' @param MaxResults 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   NumResults = 123,
+#'   HITs = list(
+#'     list(
+#'       HITId = "string",
+#'       HITTypeId = "string",
+#'       HITGroupId = "string",
+#'       HITLayoutId = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Title = "string",
+#'       Description = "string",
+#'       Question = "string",
+#'       Keywords = "string",
+#'       HITStatus = "Assignable"|"Unassignable"|"Reviewable"|"Reviewing"|"Disposed",
+#'       MaxAssignments = 123,
+#'       Reward = "string",
+#'       AutoApprovalDelayInSeconds = 123,
+#'       Expiration = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AssignmentDurationInSeconds = 123,
+#'       RequesterAnnotation = "string",
+#'       QualificationRequirements = list(
+#'         list(
+#'           QualificationTypeId = "string",
+#'           Comparator = "LessThan"|"LessThanOrEqualTo"|"GreaterThan"|"GreaterThanOrEqualTo"|"EqualTo"|"NotEqualTo"|"Exists"|"DoesNotExist"|"In"|"NotIn",
+#'           IntegerValues = list(
+#'             123
+#'           ),
+#'           LocaleValues = list(
+#'             list(
+#'               Country = "string",
+#'               Subdivision = "string"
+#'             )
+#'           ),
+#'           RequiredToPreview = TRUE|FALSE,
+#'           ActionsGuarded = "Accept"|"PreviewAndAccept"|"DiscoverPreviewAndAccept"
+#'         )
+#'       ),
+#'       HITReviewStatus = "NotReviewed"|"MarkedForReview"|"ReviewedAppropriate"|"ReviewedInappropriate",
+#'       NumberOfAssignmentsPending = 123,
+#'       NumberOfAssignmentsAvailable = 123,
+#'       NumberOfAssignmentsCompleted = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1507,6 +1991,60 @@ mturk_list_hi_ts <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param NextToken Pagination Token
 #' @param MaxResults Limit the number of results returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   NumResults = 123,
+#'   HITs = list(
+#'     list(
+#'       HITId = "string",
+#'       HITTypeId = "string",
+#'       HITGroupId = "string",
+#'       HITLayoutId = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Title = "string",
+#'       Description = "string",
+#'       Question = "string",
+#'       Keywords = "string",
+#'       HITStatus = "Assignable"|"Unassignable"|"Reviewable"|"Reviewing"|"Disposed",
+#'       MaxAssignments = 123,
+#'       Reward = "string",
+#'       AutoApprovalDelayInSeconds = 123,
+#'       Expiration = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AssignmentDurationInSeconds = 123,
+#'       RequesterAnnotation = "string",
+#'       QualificationRequirements = list(
+#'         list(
+#'           QualificationTypeId = "string",
+#'           Comparator = "LessThan"|"LessThanOrEqualTo"|"GreaterThan"|"GreaterThanOrEqualTo"|"EqualTo"|"NotEqualTo"|"Exists"|"DoesNotExist"|"In"|"NotIn",
+#'           IntegerValues = list(
+#'             123
+#'           ),
+#'           LocaleValues = list(
+#'             list(
+#'               Country = "string",
+#'               Subdivision = "string"
+#'             )
+#'           ),
+#'           RequiredToPreview = TRUE|FALSE,
+#'           ActionsGuarded = "Accept"|"PreviewAndAccept"|"DiscoverPreviewAndAccept"
+#'         )
+#'       ),
+#'       HITReviewStatus = "NotReviewed"|"MarkedForReview"|"ReviewedAppropriate"|"ReviewedInappropriate",
+#'       NumberOfAssignmentsPending = 123,
+#'       NumberOfAssignmentsAvailable = 123,
+#'       NumberOfAssignmentsCompleted = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_hi_ts_for_qualification_type(
@@ -1553,6 +2091,27 @@ mturk_list_hi_ts_for_qualification_type <- function(QualificationTypeId, NextTok
 #' @param QualificationTypeId The ID of the QualificationType.
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NumResults = 123,
+#'   NextToken = "string",
+#'   QualificationRequests = list(
+#'     list(
+#'       QualificationRequestId = "string",
+#'       QualificationTypeId = "string",
+#'       WorkerId = "string",
+#'       Test = "string",
+#'       Answer = "string",
+#'       SubmitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1607,6 +2166,34 @@ mturk_list_qualification_requests <- function(QualificationTypeId = NULL, NextTo
 #' returned. If false, the operation returns all Qualification types.
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NumResults = 123,
+#'   NextToken = "string",
+#'   QualificationTypes = list(
+#'     list(
+#'       QualificationTypeId = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       Description = "string",
+#'       Keywords = "string",
+#'       QualificationTypeStatus = "Active"|"Inactive",
+#'       Test = "string",
+#'       TestDurationInSeconds = 123,
+#'       AnswerKey = "string",
+#'       RetryDelayInSeconds = 123,
+#'       IsRequestable = TRUE|FALSE,
+#'       AutoGranted = TRUE|FALSE,
+#'       AutoGrantedValue = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1668,6 +2255,105 @@ mturk_list_qualification_types <- function(Query = NULL, MustBeRequestable, Must
 #' @param NextToken Pagination token
 #' @param MaxResults Limit the number of results returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HITId = "string",
+#'   AssignmentReviewPolicy = list(
+#'     PolicyName = "string",
+#'     Parameters = list(
+#'       list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         MapEntries = list(
+#'           list(
+#'             Key = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   HITReviewPolicy = list(
+#'     PolicyName = "string",
+#'     Parameters = list(
+#'       list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         MapEntries = list(
+#'           list(
+#'             Key = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   AssignmentReviewReport = list(
+#'     ReviewResults = list(
+#'       list(
+#'         ActionId = "string",
+#'         SubjectId = "string",
+#'         SubjectType = "string",
+#'         QuestionId = "string",
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     ReviewActions = list(
+#'       list(
+#'         ActionId = "string",
+#'         ActionName = "string",
+#'         TargetId = "string",
+#'         TargetType = "string",
+#'         Status = "Intended"|"Succeeded"|"Failed"|"Cancelled",
+#'         CompleteTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Result = "string",
+#'         ErrorCode = "string"
+#'       )
+#'     )
+#'   ),
+#'   HITReviewReport = list(
+#'     ReviewResults = list(
+#'       list(
+#'         ActionId = "string",
+#'         SubjectId = "string",
+#'         SubjectType = "string",
+#'         QuestionId = "string",
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     ReviewActions = list(
+#'       list(
+#'         ActionId = "string",
+#'         ActionName = "string",
+#'         TargetId = "string",
+#'         TargetType = "string",
+#'         Status = "Intended"|"Succeeded"|"Failed"|"Cancelled",
+#'         CompleteTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Result = "string",
+#'         ErrorCode = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_review_policy_results_for_hit(
@@ -1721,6 +2407,60 @@ mturk_list_review_policy_results_for_hit <- function(HITId, PolicyLevels = NULL,
 #' @param NextToken Pagination Token
 #' @param MaxResults Limit the number of results returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   NumResults = 123,
+#'   HITs = list(
+#'     list(
+#'       HITId = "string",
+#'       HITTypeId = "string",
+#'       HITGroupId = "string",
+#'       HITLayoutId = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Title = "string",
+#'       Description = "string",
+#'       Question = "string",
+#'       Keywords = "string",
+#'       HITStatus = "Assignable"|"Unassignable"|"Reviewable"|"Reviewing"|"Disposed",
+#'       MaxAssignments = 123,
+#'       Reward = "string",
+#'       AutoApprovalDelayInSeconds = 123,
+#'       Expiration = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AssignmentDurationInSeconds = 123,
+#'       RequesterAnnotation = "string",
+#'       QualificationRequirements = list(
+#'         list(
+#'           QualificationTypeId = "string",
+#'           Comparator = "LessThan"|"LessThanOrEqualTo"|"GreaterThan"|"GreaterThanOrEqualTo"|"EqualTo"|"NotEqualTo"|"Exists"|"DoesNotExist"|"In"|"NotIn",
+#'           IntegerValues = list(
+#'             123
+#'           ),
+#'           LocaleValues = list(
+#'             list(
+#'               Country = "string",
+#'               Subdivision = "string"
+#'             )
+#'           ),
+#'           RequiredToPreview = TRUE|FALSE,
+#'           ActionsGuarded = "Accept"|"PreviewAndAccept"|"DiscoverPreviewAndAccept"
+#'         )
+#'       ),
+#'       HITReviewStatus = "NotReviewed"|"MarkedForReview"|"ReviewedAppropriate"|"ReviewedInappropriate",
+#'       NumberOfAssignmentsPending = 123,
+#'       NumberOfAssignmentsAvailable = 123,
+#'       NumberOfAssignmentsCompleted = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_reviewable_hi_ts(
@@ -1763,6 +2503,21 @@ mturk_list_reviewable_hi_ts <- function(HITTypeId = NULL, Status = NULL, NextTok
 #'
 #' @param NextToken Pagination token
 #' @param MaxResults 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   NumResults = 123,
+#'   WorkerBlocks = list(
+#'     list(
+#'       WorkerId = "string",
+#'       Reason = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1809,6 +2564,30 @@ mturk_list_worker_blocks <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param Status The status of the Qualifications to return. Can be `Granted | Revoked`.
 #' @param NextToken Pagination Token
 #' @param MaxResults Limit the number of results returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   NumResults = 123,
+#'   Qualifications = list(
+#'     list(
+#'       QualificationTypeId = "string",
+#'       WorkerId = "string",
+#'       GrantTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       IntegerValue = 123,
+#'       LocaleValue = list(
+#'         Country = "string",
+#'         Subdivision = "string"
+#'       ),
+#'       Status = "Granted"|"Revoked"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1860,6 +2639,20 @@ mturk_list_workers_with_qualification_type <- function(QualificationTypeId, Stat
 #' characters
 #' @param WorkerIds &#91;required&#93; A list of Worker IDs you wish to notify. You can notify upto 100 Workers
 #' at a time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotifyWorkersFailureStatuses = list(
+#'     list(
+#'       NotifyWorkersFailureCode = "SoftFailure"|"HardFailure",
+#'       NotifyWorkersFailureMessage = "string",
+#'       WorkerId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1916,6 +2709,12 @@ mturk_notify_workers <- function(Subject, MessageText, WorkerIds) {
 #' @param RequesterFeedback &#91;required&#93; A message for the Worker, which the Worker can see in the Status section
 #' of the web site.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reject_assignment(
@@ -1962,6 +2761,12 @@ mturk_reject_assignment <- function(AssignmentId, RequesterFeedback) {
 #' operation.
 #' @param Reason A text message explaining why the request was rejected, to be shown to
 #' the Worker who made the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2024,6 +2829,12 @@ mturk_reject_qualification_request <- function(QualificationRequestId, Reason = 
 #' a previous call using the same UniqueRequestToken, subsequent calls will
 #' return an error with a message containing the request ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_bonus(
@@ -2079,6 +2890,12 @@ mturk_send_bonus <- function(WorkerId, BonusAmount, AssignmentId, Reason, Unique
 #' does not include the event type. The notification specification does not
 #' filter out the test event.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_test_event_notification(
@@ -2127,6 +2944,12 @@ mturk_send_test_event_notification <- function(Notification, TestEventType) {
 #'
 #' @param HITId &#91;required&#93; The HIT to update.
 #' @param ExpireAt &#91;required&#93; The date and time at which you want the HIT to expire
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2178,6 +3001,12 @@ mturk_update_expiration_for_hit <- function(HITId, ExpireAt) {
 #' -   Setting this to true will only transition a HIT from `Reviewing` to
 #'     `Reviewable`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_hit_review_status(
@@ -2221,6 +3050,12 @@ mturk_update_hit_review_status <- function(HITId, Revert = NULL) {
 #'
 #' @param HITId &#91;required&#93; The HIT to update.
 #' @param HITTypeId &#91;required&#93; The ID of the new HIT type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2277,6 +3112,12 @@ mturk_update_hit_type_of_hit <- function(HITId, HITTypeId) {
 #' according to the notification specification. You must specify either the
 #' Notification parameter or the Active parameter for the call to
 #' UpdateNotificationSettings to succeed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2392,6 +3233,30 @@ mturk_update_notification_settings <- function(HITTypeId, Notification = NULL, A
 #' be true.
 #' @param AutoGrantedValue The Qualification value to use for automatically granted Qualifications.
 #' This parameter is used only if the AutoGranted parameter is true.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QualificationType = list(
+#'     QualificationTypeId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Name = "string",
+#'     Description = "string",
+#'     Keywords = "string",
+#'     QualificationTypeStatus = "Active"|"Inactive",
+#'     Test = "string",
+#'     TestDurationInSeconds = 123,
+#'     AnswerKey = "string",
+#'     RetryDelayInSeconds = 123,
+#'     IsRequestable = TRUE|FALSE,
+#'     AutoGranted = TRUE|FALSE,
+#'     AutoGrantedValue = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

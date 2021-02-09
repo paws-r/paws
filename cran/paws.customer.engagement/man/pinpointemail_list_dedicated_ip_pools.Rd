@@ -18,6 +18,15 @@ the number of results is larger than the number you specified in this
 parameter, then the response includes a \code{NextToken} element, which you
 can use to obtain additional results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DedicatedIpPools = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List all of the dedicated IP pools that exist in your Amazon Pinpoint
 account in the current AWS Region.

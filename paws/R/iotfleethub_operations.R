@@ -28,6 +28,15 @@ NULL
 #' @param tags A set of key/value pairs that you can use to manage the web application
 #' resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   applicationId = "string",
+#'   applicationArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_application(
@@ -77,6 +86,12 @@ iotfleethub_create_application <- function(applicationName, applicationDescripti
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_application(
@@ -120,6 +135,27 @@ iotfleethub_delete_application <- function(applicationId, clientToken = NULL) {
 #'
 #' @param applicationId &#91;required&#93; The unique Id of the web application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   applicationId = "string",
+#'   applicationArn = "string",
+#'   applicationName = "string",
+#'   applicationDescription = "string",
+#'   applicationUrl = "string",
+#'   applicationState = "CREATING"|"DELETING"|"ACTIVE"|"CREATE_FAILED"|"DELETE_FAILED",
+#'   applicationCreationDate = 123,
+#'   applicationLastUpdateDate = 123,
+#'   roleArn = "string",
+#'   ssoClientId = "string",
+#'   errorMessage = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_application(
@@ -162,6 +198,25 @@ iotfleethub_describe_application <- function(applicationId) {
 #'
 #' @param nextToken A token used to get the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   applicationSummaries = list(
+#'     list(
+#'       applicationId = "string",
+#'       applicationName = "string",
+#'       applicationDescription = "string",
+#'       applicationUrl = "string",
+#'       applicationCreationDate = 123,
+#'       applicationLastUpdateDate = 123,
+#'       applicationState = "CREATING"|"DELETING"|"ACTIVE"|"CREATE_FAILED"|"DELETE_FAILED"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_applications(
@@ -201,6 +256,16 @@ iotfleethub_list_applications <- function(nextToken = NULL) {
 #' iotfleethub_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -243,6 +308,12 @@ iotfleethub_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #' @param tags &#91;required&#93; The new or modified tags for the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -287,6 +358,12 @@ iotfleethub_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #' @param tagKeys &#91;required&#93; A list of the keys of the tags to be removed from the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -338,6 +415,12 @@ iotfleethub_untag_resource <- function(resourceArn, tagKeys) {
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

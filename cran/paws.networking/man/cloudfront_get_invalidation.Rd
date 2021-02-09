@@ -12,6 +12,27 @@ cloudfront_get_invalidation(DistributionId, Id)
 \item{Id}{[required] The identifier for the invalidation request, for example,
 \code{IDFDVBD632BHDS5}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Invalidation = list(
+    Id = "string",
+    Status = "string",
+    CreateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    InvalidationBatch = list(
+      Paths = list(
+        Quantity = 123,
+        Items = list(
+          "string"
+        )
+      ),
+      CallerReference = "string"
+    )
+  )
+)
+}
+}
 \description{
 Get the information about an invalidation.
 }

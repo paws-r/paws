@@ -14,7 +14,7 @@ the user whose credentials are used to call the operation.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{ServiceSpecificCredentialId}{[required] The unique identifier of the service-specific credential. You can get
 this value by calling

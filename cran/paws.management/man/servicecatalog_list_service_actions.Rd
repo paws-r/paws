@@ -19,6 +19,20 @@ servicecatalog_list_service_actions(AcceptLanguage, PageSize, PageToken)
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceActionSummaries = list(
+    list(
+      Id = "string",
+      Name = "string",
+      Description = "string",
+      DefinitionType = "SSM_AUTOMATION"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Lists all self-service actions.
 }

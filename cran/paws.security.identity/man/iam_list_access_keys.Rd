@@ -12,7 +12,7 @@ iam_list_access_keys(UserName, Marker, MaxItems)
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{Marker}{Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to
@@ -28,6 +28,23 @@ If you do not include this parameter, the number of items defaults to
 results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AccessKeyMetadata = list(
+    list(
+      UserName = "string",
+      AccessKeyId = "string",
+      Status = "Active"|"Inactive",
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
 }
 \description{
 Returns information about the access key IDs associated with the

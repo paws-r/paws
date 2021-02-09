@@ -11,6 +11,24 @@ iot1clickprojects_describe_placement(placementName, projectName)
 
 \item{projectName}{[required] The project containing the placement to be described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  placement = list(
+    projectName = "string",
+    placementName = "string",
+    attributes = list(
+      "string"
+    ),
+    createdDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    updatedDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Describes a placement in a project.
 }

@@ -9,6 +9,12 @@ comprehendmedical_stop_icd10cm_inference_job(JobId)
 \arguments{
 \item{JobId}{[required] The identifier of the job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string"
+)
+}
+}
 \description{
 Stops an InferICD10CM inference job in progress.
 }

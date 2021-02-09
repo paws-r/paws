@@ -26,6 +26,10 @@ provide a value for \code{SyncSource}. The default value is
 \item{SyncSource}{Specify information about the data sources to synchronize. This
 parameter is required if the \code{SyncType} value is SyncFromSource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 A resource data sync helps you view data from multiple sources in a
 single location. Systems Manager offers two types of resource data sync:

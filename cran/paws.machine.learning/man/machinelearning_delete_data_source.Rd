@@ -9,6 +9,12 @@ machinelearning_delete_data_source(DataSourceId)
 \arguments{
 \item{DataSourceId}{[required] A user-supplied ID that uniquely identifies the \code{DataSource}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DataSourceId = "string"
+)
+}
+}
 \description{
 Assigns the DELETED status to a \code{DataSource}, rendering it unusable.
 

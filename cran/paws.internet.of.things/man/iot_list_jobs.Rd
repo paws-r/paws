@@ -36,6 +36,30 @@ format.
 
 The \code{namespaceId} feature is in public preview.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobs = list(
+    list(
+      jobArn = "string",
+      jobId = "string",
+      thingGroupId = "string",
+      targetSelection = "CONTINUOUS"|"SNAPSHOT",
+      status = "IN_PROGRESS"|"CANCELED"|"COMPLETED"|"DELETION_IN_PROGRESS",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      completedAt = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists jobs.
 }

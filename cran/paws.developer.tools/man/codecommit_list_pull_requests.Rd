@@ -23,6 +23,15 @@ batch of the results.}
 \item{maxResults}{A non-zero, non-negative integer used to limit the number of returned
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  pullRequestIds = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of pull requests for a specified repository. The return
 list can be refined by pull request status or pull request author ARN.

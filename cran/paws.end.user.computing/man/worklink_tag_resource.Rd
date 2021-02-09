@@ -12,6 +12,10 @@ worklink_tag_resource(ResourceArn, Tags)
 
 \item{Tags}{[required] The tags to add to the resource. A tag is a key-value pair.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds or overwrites one or more tags for the specified resource, such as
 a fleet. Each tag consists of a key and an optional value. If a resource

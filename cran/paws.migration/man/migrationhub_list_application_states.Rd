@@ -17,6 +17,21 @@ using the returned token in \code{NextToken}.}
 
 \item{MaxResults}{Maximum number of results to be returned per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationStateList = list(
+    list(
+      ApplicationId = "string",
+      ApplicationStatus = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED",
+      LastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all the migration statuses for your applications. If you use the
 optional \code{ApplicationIds} parameter, only the migration statuses for

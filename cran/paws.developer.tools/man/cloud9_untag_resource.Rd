@@ -13,6 +13,10 @@ to remove tags from.}
 \item{TagKeys}{[required] The tag names of the tags to remove from the given AWS Cloud9
 development environment.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes tags from an AWS Cloud9 development environment.
 }

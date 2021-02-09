@@ -34,6 +34,30 @@ Where \code{BackupType} can be:
 \item \code{ALL} - All types of on-demand backups (USER and SYSTEM).
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupSummaries = list(
+    list(
+      TableName = "string",
+      TableId = "string",
+      TableArn = "string",
+      BackupArn = "string",
+      BackupName = "string",
+      BackupCreationDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      BackupExpiryDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      BackupStatus = "CREATING"|"DELETED"|"AVAILABLE",
+      BackupType = "USER"|"SYSTEM"|"AWS_BACKUP",
+      BackupSizeBytes = 123
+    )
+  ),
+  LastEvaluatedBackupArn = "string"
+)
+}
+}
 \description{
 List backups associated with an AWS account. To list backups for a given
 table, specify \code{TableName}. \code{\link[=dynamodb_list_backups]{list_backups}}

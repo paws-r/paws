@@ -13,6 +13,10 @@ worklink_update_device_policy_configuration(FleetArn,
 \item{DeviceCaCertificate}{The certificate chain, including intermediate certificates and the root
 certificate authority certificate used to issue device certificates.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the device policy configuration for the fleet.
 }

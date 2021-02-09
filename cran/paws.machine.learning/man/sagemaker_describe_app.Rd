@@ -15,6 +15,32 @@ sagemaker_describe_app(DomainId, UserProfileName, AppType, AppName)
 
 \item{AppName}{[required] The name of the app.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppArn = "string",
+  AppType = "JupyterServer"|"KernelGateway"|"TensorBoard",
+  AppName = "string",
+  DomainId = "string",
+  UserProfileName = "string",
+  Status = "Deleted"|"Deleting"|"Failed"|"InService"|"Pending",
+  LastHealthCheckTimestamp = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastUserActivityTimestamp = as.POSIXct(
+    "2015-01-01"
+  ),
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  FailureReason = "string",
+  ResourceSpec = list(
+    SageMakerImageArn = "string",
+    SageMakerImageVersionArn = "string",
+    InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
+  )
+)
+}
+}
 \description{
 Describes the app.
 }

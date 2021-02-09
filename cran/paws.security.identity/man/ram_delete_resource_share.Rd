@@ -12,6 +12,13 @@ ram_delete_resource_share(resourceShareArn, clientToken)
 \item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  returnValue = TRUE|FALSE,
+  clientToken = "string"
+)
+}
+}
 \description{
 Deletes the specified resource share.
 }

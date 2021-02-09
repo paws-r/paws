@@ -13,6 +13,25 @@ backup_update_backup_plan(BackupPlanId, BackupPlan)
 \item{BackupPlan}{[required] Specifies the body of a backup plan. Includes a \code{BackupPlanName} and one
 or more sets of \code{Rules}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupPlanId = "string",
+  BackupPlanArn = "string",
+  CreationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  VersionId = "string",
+  AdvancedBackupSettings = list(
+    list(
+      ResourceType = "string",
+      BackupOptions = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Updates an existing backup plan identified by its \code{backupPlanId} with
 the input document in JSON format. The new version is uniquely

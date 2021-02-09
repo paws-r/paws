@@ -17,6 +17,10 @@ workgroup.}
 
 \item{State}{The workgroup state that will be updated for the given workgroup.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the workgroup with the specified name. The workgroup's name
 cannot be changed.

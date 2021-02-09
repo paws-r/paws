@@ -7,6 +7,14 @@ ip-ranges}
 \usage{
 route53_get_checker_ip_ranges()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CheckerIpRanges = list(
+    "string"
+  )
+)
+}
+}
 \description{
 \code{\link[=route53_get_checker_ip_ranges]{get_checker_ip_ranges}} still works,
 but we recommend that you download ip-ranges.json, which includes IP

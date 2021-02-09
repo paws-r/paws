@@ -9,6 +9,64 @@ applicationinsights_describe_observation(ObservationId)
 \arguments{
 \item{ObservationId}{[required] The ID of the observation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Observation = list(
+    Id = "string",
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    SourceType = "string",
+    SourceARN = "string",
+    LogGroup = "string",
+    LineTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LogText = "string",
+    LogFilter = "ERROR"|"WARN"|"INFO",
+    MetricNamespace = "string",
+    MetricName = "string",
+    Unit = "string",
+    Value = 123.0,
+    CloudWatchEventId = "string",
+    CloudWatchEventSource = "EC2"|"CODE_DEPLOY"|"HEALTH"|"RDS",
+    CloudWatchEventDetailType = "string",
+    HealthEventArn = "string",
+    HealthService = "string",
+    HealthEventTypeCode = "string",
+    HealthEventTypeCategory = "string",
+    HealthEventDescription = "string",
+    CodeDeployDeploymentId = "string",
+    CodeDeployDeploymentGroup = "string",
+    CodeDeployState = "string",
+    CodeDeployApplication = "string",
+    CodeDeployInstanceGroupId = "string",
+    Ec2State = "string",
+    RdsEventCategories = "string",
+    RdsEventMessage = "string",
+    S3EventName = "string",
+    StatesExecutionArn = "string",
+    StatesArn = "string",
+    StatesStatus = "string",
+    StatesInput = "string",
+    EbsEvent = "string",
+    EbsResult = "string",
+    EbsCause = "string",
+    EbsRequestId = "string",
+    XRayFaultPercent = 123,
+    XRayThrottlePercent = 123,
+    XRayErrorPercent = 123,
+    XRayRequestCount = 123,
+    XRayRequestAverageLatency = 123,
+    XRayNodeName = "string",
+    XRayNodeType = "string"
+  )
+)
+}
+}
 \description{
 Describes an anomaly or error with the application.
 }

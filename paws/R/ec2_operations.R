@@ -25,6 +25,14 @@ NULL
 #' @param TargetConfigurations The configuration of the target Convertible Reserved Instance to
 #' exchange for your current Convertible Reserved Instances.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExchangeId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_reserved_instances_exchange_quote(
@@ -82,6 +90,26 @@ ec2_accept_reserved_instances_exchange_quote <- function(DryRun = NULL, Reserved
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Associations = list(
+#'     TransitGatewayMulticastDomainId = "string",
+#'     TransitGatewayAttachmentId = "string",
+#'     ResourceId = "string",
+#'     ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'     ResourceOwnerId = "string",
+#'     Subnets = list(
+#'       list(
+#'         SubnetId = "string",
+#'         State = "pendingAcceptance"|"associating"|"associated"|"disassociating"|"disassociated"|"rejected"|"failed"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_transit_gateway_multicast_domain_associations(
@@ -129,6 +157,40 @@ ec2_accept_transit_gateway_multicast_domain_associations <- function(TransitGate
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayPeeringAttachment = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     RequesterTgwInfo = list(
+#'       TransitGatewayId = "string",
+#'       OwnerId = "string",
+#'       Region = "string"
+#'     ),
+#'     AccepterTgwInfo = list(
+#'       TransitGatewayId = "string",
+#'       OwnerId = "string",
+#'       Region = "string"
+#'     ),
+#'     Status = list(
+#'       Code = "string",
+#'       Message = "string"
+#'     ),
+#'     State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -179,6 +241,37 @@ ec2_accept_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayVpcAttachment = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     TransitGatewayId = "string",
+#'     VpcId = "string",
+#'     VpcOwnerId = "string",
+#'     State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Options = list(
+#'       DnsSupport = "enable"|"disable",
+#'       Ipv6Support = "enable"|"disable",
+#'       ApplianceModeSupport = "enable"|"disable"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_transit_gateway_vpc_attachment(
@@ -223,6 +316,22 @@ ec2_accept_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ServiceId &#91;required&#93; The ID of the VPC endpoint service.
 #' @param VpcEndpointIds &#91;required&#93; The IDs of one or more interface VPC endpoints.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Unsuccessful = list(
+#'     list(
+#'       Error = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       ResourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -276,6 +385,71 @@ ec2_accept_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEnd
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param VpcPeeringConnectionId The ID of the VPC peering connection. You must specify this parameter in
 #' the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcPeeringConnection = list(
+#'     AccepterVpcInfo = list(
+#'       CidrBlock = "string",
+#'       Ipv6CidrBlockSet = list(
+#'         list(
+#'           Ipv6CidrBlock = "string"
+#'         )
+#'       ),
+#'       CidrBlockSet = list(
+#'         list(
+#'           CidrBlock = "string"
+#'         )
+#'       ),
+#'       OwnerId = "string",
+#'       PeeringOptions = list(
+#'         AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+#'         AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+#'         AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+#'       ),
+#'       VpcId = "string",
+#'       Region = "string"
+#'     ),
+#'     ExpirationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     RequesterVpcInfo = list(
+#'       CidrBlock = "string",
+#'       Ipv6CidrBlockSet = list(
+#'         list(
+#'           Ipv6CidrBlock = "string"
+#'         )
+#'       ),
+#'       CidrBlockSet = list(
+#'         list(
+#'           CidrBlock = "string"
+#'         )
+#'       ),
+#'       OwnerId = "string",
+#'       PeeringOptions = list(
+#'         AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+#'         AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+#'         AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+#'       ),
+#'       VpcId = "string",
+#'       Region = "string"
+#'     ),
+#'     Status = list(
+#'       Code = "initiating-request"|"pending-acceptance"|"active"|"deleted"|"rejected"|"failed"|"expired"|"provisioning"|"deleting",
+#'       Message = "string"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     VpcPeeringConnectionId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -337,6 +511,19 @@ ec2_accept_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ByoipCidr = list(
+#'     Cidr = "string",
+#'     Description = "string",
+#'     StatusMessage = "string",
+#'     State = "advertised"|"deprovisioned"|"failed-deprovision"|"failed-provision"|"pending-deprovision"|"pending-provision"|"provisioned"|"provisioned-not-publicly-advertisable"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -435,6 +622,21 @@ ec2_advertise_byoip_cidr <- function(Cidr, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param TagSpecifications The tags to assign to the Elastic IP address.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PublicIp = "string",
+#'   AllocationId = "string",
+#'   PublicIpv4Pool = "string",
+#'   NetworkBorderGroup = "string",
+#'   Domain = "vpc"|"standard",
+#'   CustomerOwnedIp = "string",
+#'   CustomerOwnedIpv4Pool = "string",
+#'   CarrierIp = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -542,6 +744,16 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
 #' 
 #' Default: `off`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HostIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$allocate_hosts(
@@ -608,6 +820,16 @@ ec2_allocate_hosts <- function(AutoPlacement = NULL, AvailabilityZone, ClientTok
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecurityGroupIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$apply_security_groups_to_client_vpn_target_network(
@@ -667,6 +889,17 @@ ec2_apply_security_groups_to_client_vpn_target_network <- function(ClientVpnEndp
 #' interface. You can't use this option if you're specifying a number of
 #' IPv6 addresses.
 #' @param NetworkInterfaceId &#91;required&#93; The ID of the network interface.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssignedIpv6Addresses = list(
+#'     "string"
+#'   ),
+#'   NetworkInterfaceId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -746,6 +979,19 @@ ec2_assign_ipv_6_addresses <- function(Ipv6AddressCount = NULL, Ipv6Addresses = 
 #' @param SecondaryPrivateIpAddressCount The number of secondary IP addresses to assign to the network interface.
 #' You can't specify this parameter when also specifying private IP
 #' addresses.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkInterfaceId = "string",
+#'   AssignedPrivateIpAddresses = list(
+#'     list(
+#'       PrivateIpAddress = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -872,6 +1118,14 @@ ec2_assign_private_ip_addresses <- function(AllowReassignment = NULL, NetworkInt
 #' with the Elastic IP address. If no private IP address is specified, the
 #' Elastic IP address is associated with the primary private IP address.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_address(
@@ -959,6 +1213,18 @@ ec2_associate_address <- function(AllocationId = NULL, InstanceId = NULL, Public
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociationId = "string",
+#'   Status = list(
+#'     Code = "associating"|"associated"|"association-failed"|"disassociating"|"disassociated",
+#'     Message = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_client_vpn_target_network(
@@ -1017,6 +1283,8 @@ ec2_associate_client_vpn_target_network <- function(ClientVpnEndpointId, SubnetI
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1102,6 +1370,16 @@ ec2_associate_dhcp_options <- function(DhcpOptionsId, VpcId, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CertificateS3BucketName = "string",
+#'   CertificateS3ObjectKey = "string",
+#'   EncryptionKmsKeyId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_enclave_certificate_iam_role(
@@ -1143,6 +1421,25 @@ ec2_associate_enclave_certificate_iam_role <- function(CertificateArn = NULL, Ro
 #'
 #' @param IamInstanceProfile &#91;required&#93; The IAM instance profile.
 #' @param InstanceId &#91;required&#93; The ID of the instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IamInstanceProfileAssociation = list(
+#'     AssociationId = "string",
+#'     InstanceId = "string",
+#'     IamInstanceProfile = list(
+#'       Arn = "string",
+#'       Id = "string"
+#'     ),
+#'     State = "associating"|"associated"|"disassociating"|"disassociated",
+#'     Timestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1213,6 +1510,18 @@ ec2_associate_iam_instance_profile <- function(IamInstanceProfile, InstanceId) {
 #' @param SubnetId The ID of the subnet.
 #' @param GatewayId The ID of the internet gateway or virtual private gateway.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociationId = "string",
+#'   AssociationState = list(
+#'     State = "associating"|"associated"|"disassociating"|"disassociated"|"failed",
+#'     StatusMessage = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_route_table(
@@ -1266,6 +1575,22 @@ ec2_associate_route_table <- function(DryRun = NULL, RouteTableId, SubnetId = NU
 #' @param Ipv6CidrBlock &#91;required&#93; The IPv6 CIDR block for your subnet. The subnet must have a /64 prefix
 #' length.
 #' @param SubnetId &#91;required&#93; The ID of your subnet.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Ipv6CidrBlockAssociation = list(
+#'     AssociationId = "string",
+#'     Ipv6CidrBlock = "string",
+#'     Ipv6CidrBlockState = list(
+#'       State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'       StatusMessage = "string"
+#'     )
+#'   ),
+#'   SubnetId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1322,6 +1647,26 @@ ec2_associate_subnet_cidr_block <- function(Ipv6CidrBlock, SubnetId) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Associations = list(
+#'     TransitGatewayMulticastDomainId = "string",
+#'     TransitGatewayAttachmentId = "string",
+#'     ResourceId = "string",
+#'     ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'     ResourceOwnerId = "string",
+#'     Subnets = list(
+#'       list(
+#'         SubnetId = "string",
+#'         State = "pendingAcceptance"|"associating"|"associated"|"disassociating"|"disassociated"|"rejected"|"failed"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_transit_gateway_multicast_domain(
@@ -1371,6 +1716,20 @@ ec2_associate_transit_gateway_multicast_domain <- function(TransitGatewayMultica
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Association = list(
+#'     TransitGatewayRouteTableId = "string",
+#'     TransitGatewayAttachmentId = "string",
+#'     ResourceId = "string",
+#'     ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'     State = "associating"|"associated"|"disassociating"|"disassociated"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1442,6 +1801,32 @@ ec2_associate_transit_gateway_route_table <- function(TransitGatewayRouteTableId
 #' 
 #' To let Amazon choose the IPv6 CIDR block for you, omit this parameter.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Ipv6CidrBlockAssociation = list(
+#'     AssociationId = "string",
+#'     Ipv6CidrBlock = "string",
+#'     Ipv6CidrBlockState = list(
+#'       State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'       StatusMessage = "string"
+#'     ),
+#'     NetworkBorderGroup = "string",
+#'     Ipv6Pool = "string"
+#'   ),
+#'   CidrBlockAssociation = list(
+#'     AssociationId = "string",
+#'     CidrBlock = "string",
+#'     CidrBlockState = list(
+#'       State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'       StatusMessage = "string"
+#'     )
+#'   ),
+#'   VpcId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_vpc_cidr_block(
@@ -1505,6 +1890,14 @@ ec2_associate_vpc_cidr_block <- function(AmazonProvidedIpv6CidrBlock = NULL, Cid
 #' VPC.
 #' @param VpcId &#91;required&#93; The ID of a ClassicLink-enabled VPC.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$attach_classic_link_vpc(
@@ -1556,6 +1949,8 @@ ec2_attach_classic_link_vpc <- function(DryRun = NULL, Groups, InstanceId, VpcId
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param InternetGatewayId &#91;required&#93; The ID of the internet gateway.
 #' @param VpcId &#91;required&#93; The ID of the VPC.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1615,6 +2010,15 @@ ec2_attach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 #' @param NetworkCardIndex The index of the network card. Some instance types support multiple
 #' network cards. The primary network interface must be assigned to network
 #' card index 0. The default is network card index 0.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AttachmentId = "string",
+#'   NetworkCardIndex = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1703,6 +2107,21 @@ ec2_attach_network_interface <- function(DeviceIndex, DryRun = NULL, InstanceId,
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AttachTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Device = "string",
+#'   InstanceId = "string",
+#'   State = "attaching"|"attached"|"detaching"|"detached"|"busy",
+#'   VolumeId = "string",
+#'   DeleteOnTermination = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$attach_volume(
@@ -1764,6 +2183,17 @@ ec2_attach_volume <- function(Device, InstanceId, VolumeId, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcAttachment = list(
+#'     State = "attaching"|"attached"|"detaching"|"detached",
+#'     VpcId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$attach_vpn_gateway(
@@ -1822,6 +2252,17 @@ ec2_attach_vpn_gateway <- function(VpcId, VpnGatewayId, DryRun = NULL) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = list(
+#'     Code = "authorizing"|"active"|"failed"|"revoking",
+#'     Message = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1899,6 +2340,8 @@ ec2_authorize_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkC
 #' security group.
 #' @param SourceSecurityGroupOwnerId Not supported. Use a set of IP permissions to specify a destination
 #' security group.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -2088,6 +2531,8 @@ ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermis
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$authorize_security_group_ingress(
@@ -2252,6 +2697,38 @@ ec2_authorize_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL,
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BundleTask = list(
+#'     BundleId = "string",
+#'     BundleTaskError = list(
+#'       Code = "string",
+#'       Message = "string"
+#'     ),
+#'     InstanceId = "string",
+#'     Progress = "string",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "pending"|"waiting-for-shutdown"|"bundling"|"storing"|"cancelling"|"complete"|"failed",
+#'     Storage = list(
+#'       S3 = list(
+#'         AWSAccessKeyId = "string",
+#'         Bucket = "string",
+#'         Prefix = "string",
+#'         UploadPolicy = raw,
+#'         UploadPolicySignature = "string"
+#'       )
+#'     ),
+#'     UpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$bundle_instance(
@@ -2305,6 +2782,38 @@ ec2_bundle_instance <- function(InstanceId, Storage, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BundleTask = list(
+#'     BundleId = "string",
+#'     BundleTaskError = list(
+#'       Code = "string",
+#'       Message = "string"
+#'     ),
+#'     InstanceId = "string",
+#'     Progress = "string",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "pending"|"waiting-for-shutdown"|"bundling"|"storing"|"cancelling"|"complete"|"failed",
+#'     Storage = list(
+#'       S3 = list(
+#'         AWSAccessKeyId = "string",
+#'         Bucket = "string",
+#'         Prefix = "string",
+#'         UploadPolicy = raw,
+#'         UploadPolicySignature = "string"
+#'       )
+#'     ),
+#'     UpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_bundle_task(
@@ -2356,6 +2865,14 @@ ec2_cancel_bundle_task <- function(BundleId, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_capacity_reservation(
@@ -2406,6 +2923,8 @@ ec2_cancel_capacity_reservation <- function(CapacityReservationId, DryRun = NULL
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ReasonMessage The reason for canceling the conversion task.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_conversion_task(
@@ -2449,6 +2968,8 @@ ec2_cancel_conversion_task <- function(ConversionTaskId, DryRun = NULL, ReasonMe
 #' @param ExportTaskId &#91;required&#93; The ID of the export task. This is the ID returned by
 #' [`create_instance_export_task`][ec2_create_instance_export_task].
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_export_task(
@@ -2490,6 +3011,16 @@ ec2_cancel_export_task <- function(ExportTaskId) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ImportTaskId The ID of the import image or import snapshot task to be canceled.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImportTaskId = "string",
+#'   PreviousState = "string",
+#'   State = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2535,6 +3066,48 @@ ec2_cancel_import_task <- function(CancelReason = NULL, DryRun = NULL, ImportTas
 #' ec2_cancel_reserved_instances_listing(ReservedInstancesListingId)
 #'
 #' @param ReservedInstancesListingId &#91;required&#93; The ID of the Reserved Instance listing.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReservedInstancesListings = list(
+#'     list(
+#'       ClientToken = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InstanceCounts = list(
+#'         list(
+#'           InstanceCount = 123,
+#'           State = "available"|"sold"|"cancelled"|"pending"
+#'         )
+#'       ),
+#'       PriceSchedules = list(
+#'         list(
+#'           Active = TRUE|FALSE,
+#'           CurrencyCode = "USD",
+#'           Price = 123.0,
+#'           Term = 123
+#'         )
+#'       ),
+#'       ReservedInstancesId = "string",
+#'       ReservedInstancesListingId = "string",
+#'       Status = "active"|"pending"|"cancelled"|"closed",
+#'       StatusMessage = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2587,6 +3160,29 @@ ec2_cancel_reserved_instances_listing <- function(ReservedInstancesListingId) {
 #' @param SpotFleetRequestIds &#91;required&#93; The IDs of the Spot Fleet requests.
 #' @param TerminateInstances &#91;required&#93; Indicates whether to terminate instances for a Spot Fleet request if it
 #' is canceled successfully.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SuccessfulFleetRequests = list(
+#'     list(
+#'       CurrentSpotFleetRequestState = "submitted"|"active"|"cancelled"|"failed"|"cancelled_running"|"cancelled_terminating"|"modifying",
+#'       PreviousSpotFleetRequestState = "submitted"|"active"|"cancelled"|"failed"|"cancelled_running"|"cancelled_terminating"|"modifying",
+#'       SpotFleetRequestId = "string"
+#'     )
+#'   ),
+#'   UnsuccessfulFleetRequests = list(
+#'     list(
+#'       Error = list(
+#'         Code = "fleetRequestIdDoesNotExist"|"fleetRequestIdMalformed"|"fleetRequestNotInCancellableState"|"unexpectedError",
+#'         Message = "string"
+#'       ),
+#'       SpotFleetRequestId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2657,6 +3253,19 @@ ec2_cancel_spot_fleet_requests <- function(DryRun = NULL, SpotFleetRequestIds, T
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param SpotInstanceRequestIds &#91;required&#93; One or more Spot Instance request IDs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CancelledSpotInstanceRequests = list(
+#'     list(
+#'       SpotInstanceRequestId = "string",
+#'       State = "active"|"open"|"closed"|"cancelled"|"completed"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_spot_instance_requests(
@@ -2714,6 +3323,15 @@ ec2_cancel_spot_instance_requests <- function(DryRun = NULL, SpotInstanceRequest
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OwnerId = "string",
+#'   Return = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2774,6 +3392,14 @@ ec2_confirm_product_instance <- function(InstanceId, ProductCode, DryRun = NULL)
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensuring
 #' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FpgaImageId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2873,6 +3499,14 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3008,6 +3642,20 @@ ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = N
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SnapshotId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3175,6 +3823,42 @@ ec2_copy_snapshot <- function(Description = NULL, DestinationRegion = NULL, Encr
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CapacityReservation = list(
+#'     CapacityReservationId = "string",
+#'     OwnerId = "string",
+#'     CapacityReservationArn = "string",
+#'     AvailabilityZoneId = "string",
+#'     InstanceType = "string",
+#'     InstancePlatform = "Linux/UNIX"|"Red Hat Enterprise Linux"|"SUSE Linux"|"Windows"|"Windows with SQL Server"|"Windows with SQL Server Enterprise"|"Windows with SQL Server Standard"|"Windows with SQL Server Web"|"Linux with SQL Server Standard"|"Linux with SQL Server Web"|"Linux with SQL Server Enterprise",
+#'     AvailabilityZone = "string",
+#'     Tenancy = "default"|"dedicated",
+#'     TotalInstanceCount = 123,
+#'     AvailableInstanceCount = 123,
+#'     EbsOptimized = TRUE|FALSE,
+#'     EphemeralStorage = TRUE|FALSE,
+#'     State = "active"|"expired"|"cancelled"|"pending"|"failed",
+#'     EndDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndDateType = "unlimited"|"limited",
+#'     InstanceMatchCriteria = "open"|"targeted",
+#'     CreateDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_capacity_reservation(
@@ -3248,6 +3932,25 @@ ec2_create_capacity_reservation <- function(ClientToken = NULL, InstanceType, In
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [How to Ensure
 #' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CarrierGateway = list(
+#'     CarrierGatewayId = "string",
+#'     VpcId = "string",
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     OwnerId = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3370,6 +4073,19 @@ ec2_create_carrier_gateway <- function(VpcId, TagSpecifications = NULL, DryRun =
 #' @param ClientConnectOptions The options for managing connection authorization for new client
 #' connections.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientVpnEndpointId = "string",
+#'   Status = list(
+#'     Code = "pending-associate"|"available"|"deleting"|"deleted",
+#'     Message = "string"
+#'   ),
+#'   DnsName = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_client_vpn_endpoint(
@@ -3487,6 +4203,17 @@ ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = list(
+#'     Code = "creating"|"active"|"failed"|"deleting",
+#'     Message = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_client_vpn_route(
@@ -3575,6 +4302,28 @@ ec2_create_client_vpn_route <- function(ClientVpnEndpointId, DestinationCidrBloc
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CustomerGateway = list(
+#'     BgpAsn = "string",
+#'     CustomerGatewayId = "string",
+#'     IpAddress = "string",
+#'     CertificateArn = "string",
+#'     State = "string",
+#'     Type = "string",
+#'     DeviceName = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_customer_gateway(
@@ -3649,6 +4398,46 @@ ec2_create_customer_gateway <- function(BgpAsn, PublicIp = NULL, CertificateArn 
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Subnet = list(
+#'     AvailabilityZone = "string",
+#'     AvailabilityZoneId = "string",
+#'     AvailableIpAddressCount = 123,
+#'     CidrBlock = "string",
+#'     DefaultForAz = TRUE|FALSE,
+#'     MapPublicIpOnLaunch = TRUE|FALSE,
+#'     MapCustomerOwnedIpOnLaunch = TRUE|FALSE,
+#'     CustomerOwnedIpv4Pool = "string",
+#'     State = "pending"|"available",
+#'     SubnetId = "string",
+#'     VpcId = "string",
+#'     OwnerId = "string",
+#'     AssignIpv6AddressOnCreation = TRUE|FALSE,
+#'     Ipv6CidrBlockAssociationSet = list(
+#'       list(
+#'         AssociationId = "string",
+#'         Ipv6CidrBlock = "string",
+#'         Ipv6CidrBlockState = list(
+#'           State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'           StatusMessage = "string"
+#'         )
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     SubnetArn = "string",
+#'     OutpostArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_default_subnet(
@@ -3704,6 +4493,50 @@ ec2_create_default_subnet <- function(AvailabilityZone, DryRun = NULL) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Vpc = list(
+#'     CidrBlock = "string",
+#'     DhcpOptionsId = "string",
+#'     State = "pending"|"available",
+#'     VpcId = "string",
+#'     OwnerId = "string",
+#'     InstanceTenancy = "default"|"dedicated"|"host",
+#'     Ipv6CidrBlockAssociationSet = list(
+#'       list(
+#'         AssociationId = "string",
+#'         Ipv6CidrBlock = "string",
+#'         Ipv6CidrBlockState = list(
+#'           State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'           StatusMessage = "string"
+#'         ),
+#'         NetworkBorderGroup = "string",
+#'         Ipv6Pool = "string"
+#'       )
+#'     ),
+#'     CidrBlockAssociationSet = list(
+#'       list(
+#'         AssociationId = "string",
+#'         CidrBlock = "string",
+#'         CidrBlockState = list(
+#'           State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'           StatusMessage = "string"
+#'         )
+#'       )
+#'     ),
+#'     IsDefault = TRUE|FALSE,
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3792,6 +4625,33 @@ ec2_create_default_vpc <- function(DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DhcpOptions = list(
+#'     DhcpConfigurations = list(
+#'       list(
+#'         Key = "string",
+#'         Values = list(
+#'           list(
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     DhcpOptionsId = "string",
+#'     OwnerId = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_dhcp_options(
@@ -3876,6 +4736,29 @@ ec2_create_dhcp_options <- function(DhcpConfigurations, TagSpecifications = NULL
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param VpcId &#91;required&#93; The ID of the VPC for which to create the egress-only internet gateway.
 #' @param TagSpecifications The tags to assign to the egress-only internet gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientToken = "string",
+#'   EgressOnlyInternetGateway = list(
+#'     Attachments = list(
+#'       list(
+#'         State = "attaching"|"attached"|"detaching"|"detached",
+#'         VpcId = "string"
+#'       )
+#'     ),
+#'     EgressOnlyInternetGatewayId = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3984,6 +4867,67 @@ ec2_create_egress_only_internet_gateway <- function(ClientToken = NULL, DryRun =
 #' template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template).
 #' For information about tagging after launch, see [Tagging your
 #' resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FleetId = "string",
+#'   Errors = list(
+#'     list(
+#'       LaunchTemplateAndOverrides = list(
+#'         LaunchTemplateSpecification = list(
+#'           LaunchTemplateId = "string",
+#'           LaunchTemplateName = "string",
+#'           Version = "string"
+#'         ),
+#'         Overrides = list(
+#'           InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'           MaxPrice = "string",
+#'           SubnetId = "string",
+#'           AvailabilityZone = "string",
+#'           WeightedCapacity = 123.0,
+#'           Priority = 123.0,
+#'           Placement = list(
+#'             GroupName = "string"
+#'           )
+#'         )
+#'       ),
+#'       Lifecycle = "spot"|"on-demand",
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   ),
+#'   Instances = list(
+#'     list(
+#'       LaunchTemplateAndOverrides = list(
+#'         LaunchTemplateSpecification = list(
+#'           LaunchTemplateId = "string",
+#'           LaunchTemplateName = "string",
+#'           Version = "string"
+#'         ),
+#'         Overrides = list(
+#'           InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'           MaxPrice = "string",
+#'           SubnetId = "string",
+#'           AvailabilityZone = "string",
+#'           WeightedCapacity = 123.0,
+#'           Priority = 123.0,
+#'           Placement = list(
+#'             GroupName = "string"
+#'           )
+#'         )
+#'       ),
+#'       Lifecycle = "spot"|"on-demand",
+#'       InstanceIds = list(
+#'         "string"
+#'       ),
+#'       InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'       Platform = "Windows"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4182,7 +5126,7 @@ ec2_create_fleet <- function(DryRun = NULL, ClientToken = NULL, SpotOptions = NU
 #' format. If you specify this parameter, you must specify at least one
 #' field.
 #' 
-#' Specify the fields using the `$\{field-id\}` format, separated by spaces.
+#' Specify the fields using the `${field-id}` format, separated by spaces.
 #' For the AWS CLI, use single quotation marks (' ') to surround the
 #' parameter value.
 #' @param TagSpecifications The tags to apply to the flow logs.
@@ -4196,6 +5140,26 @@ ec2_create_fleet <- function(DryRun = NULL, ClientToken = NULL, SpotOptions = NU
 #' value that you specify.
 #' 
 #' Default: 600
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientToken = "string",
+#'   FlowLogIds = list(
+#'     "string"
+#'   ),
+#'   Unsuccessful = list(
+#'     list(
+#'       Error = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       ResourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4280,6 +5244,15 @@ ec2_create_flow_logs <- function(DryRun = NULL, ClientToken = NULL, DeliverLogsP
 #' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param TagSpecifications The tags to apply to the FPGA image during creation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FpgaImageId = "string",
+#'   FpgaImageGlobalId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_fpga_image(
@@ -4363,7 +5336,7 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
 #' 
 #' Constraints: 3-128 alphanumeric characters, parentheses (()), square
 #' brackets (\[\]), spaces ( ), periods (.), slashes (/), dashes (-),
-#' single quotes ('), at-signs (@@), or underscores(\\_)
+#' single quotes ('), at-signs (@@), or underscores(_)
 #' @param NoReboot By default, Amazon EC2 attempts to shut down and reboot the instance
 #' before creating the image. If the `No Reboot` option is set, Amazon EC2
 #' doesn't shut down the instance before creating the image. When this
@@ -4383,6 +5356,14 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
 #' 
 #' To tag an AMI or snapshot after it has been created, see
 #' [`create_tags`][ec2_create_tags].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4490,6 +5471,35 @@ ec2_create_image <- function(BlockDeviceMappings = NULL, Description = NULL, Dry
 #' @param TargetEnvironment &#91;required&#93; The target virtualization environment.
 #' @param TagSpecifications The tags to apply to the instance export task during creation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExportTask = list(
+#'     Description = "string",
+#'     ExportTaskId = "string",
+#'     ExportToS3Task = list(
+#'       ContainerFormat = "ova",
+#'       DiskImageFormat = "VMDK"|"RAW"|"VHD",
+#'       S3Bucket = "string",
+#'       S3Key = "string"
+#'     ),
+#'     InstanceExportDetails = list(
+#'       InstanceId = "string",
+#'       TargetEnvironment = "citrix"|"vmware"|"microsoft"
+#'     ),
+#'     State = "active"|"cancelling"|"cancelled"|"completed",
+#'     StatusMessage = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_instance_export_task(
@@ -4556,6 +5566,29 @@ ec2_create_instance_export_task <- function(Description = NULL, ExportToS3Task, 
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InternetGateway = list(
+#'     Attachments = list(
+#'       list(
+#'         State = "attaching"|"attached"|"detaching"|"detached",
+#'         VpcId = "string"
+#'       )
+#'     ),
+#'     InternetGatewayId = "string",
+#'     OwnerId = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_internet_gateway(
@@ -4605,7 +5638,7 @@ ec2_create_internet_gateway <- function(TagSpecifications = NULL, DryRun = NULL)
 #' @description
 #' Creates a 2048-bit RSA key pair with the specified name. Amazon EC2
 #' stores the public key and displays the private key for you to save to a
-#' file. The private key is returned as an unencrypted PEM encoded PKCS\\#1
+#' file. The private key is returned as an unencrypted PEM encoded PKCS\#1
 #' private key. If a key with the specified name already exists, Amazon EC2
 #' returns an error.
 #' 
@@ -4631,6 +5664,23 @@ ec2_create_internet_gateway <- function(TagSpecifications = NULL, DryRun = NULL)
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param TagSpecifications The tags to apply to the new key pair.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyFingerprint = "string",
+#'   KeyMaterial = "string",
+#'   KeyName = "string",
+#'   KeyPairId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4707,6 +5757,37 @@ ec2_create_key_pair <- function(KeyName, DryRun = NULL, TagSpecifications = NULL
 #' @param VersionDescription A description for the first version of the launch template.
 #' @param LaunchTemplateData &#91;required&#93; The information for the launch template.
 #' @param TagSpecifications The tags to apply to the launch template during creation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LaunchTemplate = list(
+#'     LaunchTemplateId = "string",
+#'     LaunchTemplateName = "string",
+#'     CreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedBy = "string",
+#'     DefaultVersionNumber = 123,
+#'     LatestVersionNumber = 123,
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   Warning = list(
+#'     Errors = list(
+#'       list(
+#'         Code = "string",
+#'         Message = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4968,6 +6049,178 @@ ec2_create_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' @param VersionDescription A description for the version of the launch template.
 #' @param LaunchTemplateData &#91;required&#93; The information for the launch template.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LaunchTemplateVersion = list(
+#'     LaunchTemplateId = "string",
+#'     LaunchTemplateName = "string",
+#'     VersionNumber = 123,
+#'     VersionDescription = "string",
+#'     CreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedBy = "string",
+#'     DefaultVersion = TRUE|FALSE,
+#'     LaunchTemplateData = list(
+#'       KernelId = "string",
+#'       EbsOptimized = TRUE|FALSE,
+#'       IamInstanceProfile = list(
+#'         Arn = "string",
+#'         Name = "string"
+#'       ),
+#'       BlockDeviceMappings = list(
+#'         list(
+#'           DeviceName = "string",
+#'           VirtualName = "string",
+#'           Ebs = list(
+#'             Encrypted = TRUE|FALSE,
+#'             DeleteOnTermination = TRUE|FALSE,
+#'             Iops = 123,
+#'             KmsKeyId = "string",
+#'             SnapshotId = "string",
+#'             VolumeSize = 123,
+#'             VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'             Throughput = 123
+#'           ),
+#'           NoDevice = "string"
+#'         )
+#'       ),
+#'       NetworkInterfaces = list(
+#'         list(
+#'           AssociateCarrierIpAddress = TRUE|FALSE,
+#'           AssociatePublicIpAddress = TRUE|FALSE,
+#'           DeleteOnTermination = TRUE|FALSE,
+#'           Description = "string",
+#'           DeviceIndex = 123,
+#'           Groups = list(
+#'             "string"
+#'           ),
+#'           InterfaceType = "string",
+#'           Ipv6AddressCount = 123,
+#'           Ipv6Addresses = list(
+#'             list(
+#'               Ipv6Address = "string"
+#'             )
+#'           ),
+#'           NetworkInterfaceId = "string",
+#'           PrivateIpAddress = "string",
+#'           PrivateIpAddresses = list(
+#'             list(
+#'               Primary = TRUE|FALSE,
+#'               PrivateIpAddress = "string"
+#'             )
+#'           ),
+#'           SecondaryPrivateIpAddressCount = 123,
+#'           SubnetId = "string",
+#'           NetworkCardIndex = 123
+#'         )
+#'       ),
+#'       ImageId = "string",
+#'       InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'       KeyName = "string",
+#'       Monitoring = list(
+#'         Enabled = TRUE|FALSE
+#'       ),
+#'       Placement = list(
+#'         AvailabilityZone = "string",
+#'         Affinity = "string",
+#'         GroupName = "string",
+#'         HostId = "string",
+#'         Tenancy = "default"|"dedicated"|"host",
+#'         SpreadDomain = "string",
+#'         HostResourceGroupArn = "string",
+#'         PartitionNumber = 123
+#'       ),
+#'       RamDiskId = "string",
+#'       DisableApiTermination = TRUE|FALSE,
+#'       InstanceInitiatedShutdownBehavior = "stop"|"terminate",
+#'       UserData = "string",
+#'       TagSpecifications = list(
+#'         list(
+#'           ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ElasticGpuSpecifications = list(
+#'         list(
+#'           Type = "string"
+#'         )
+#'       ),
+#'       ElasticInferenceAccelerators = list(
+#'         list(
+#'           Type = "string",
+#'           Count = 123
+#'         )
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       SecurityGroups = list(
+#'         "string"
+#'       ),
+#'       InstanceMarketOptions = list(
+#'         MarketType = "spot",
+#'         SpotOptions = list(
+#'           MaxPrice = "string",
+#'           SpotInstanceType = "one-time"|"persistent",
+#'           BlockDurationMinutes = 123,
+#'           ValidUntil = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           InstanceInterruptionBehavior = "hibernate"|"stop"|"terminate"
+#'         )
+#'       ),
+#'       CreditSpecification = list(
+#'         CpuCredits = "string"
+#'       ),
+#'       CpuOptions = list(
+#'         CoreCount = 123,
+#'         ThreadsPerCore = 123
+#'       ),
+#'       CapacityReservationSpecification = list(
+#'         CapacityReservationPreference = "open"|"none",
+#'         CapacityReservationTarget = list(
+#'           CapacityReservationId = "string",
+#'           CapacityReservationResourceGroupArn = "string"
+#'         )
+#'       ),
+#'       LicenseSpecifications = list(
+#'         list(
+#'           LicenseConfigurationArn = "string"
+#'         )
+#'       ),
+#'       HibernationOptions = list(
+#'         Configured = TRUE|FALSE
+#'       ),
+#'       MetadataOptions = list(
+#'         State = "pending"|"applied",
+#'         HttpTokens = "optional"|"required",
+#'         HttpPutResponseHopLimit = 123,
+#'         HttpEndpoint = "disabled"|"enabled"
+#'       ),
+#'       EnclaveOptions = list(
+#'         Enabled = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   Warning = list(
+#'     Errors = list(
+#'       list(
+#'         Code = "string",
+#'         Message = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_launch_template_version(
@@ -5177,6 +6430,22 @@ ec2_create_launch_template_version <- function(DryRun = NULL, ClientToken = NULL
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Route = list(
+#'     DestinationCidrBlock = "string",
+#'     LocalGatewayVirtualInterfaceGroupId = "string",
+#'     Type = "static"|"propagated",
+#'     State = "pending"|"active"|"blackhole"|"deleting"|"deleted",
+#'     LocalGatewayRouteTableId = "string",
+#'     LocalGatewayRouteTableArn = "string",
+#'     OwnerId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_local_gateway_route(
@@ -5225,6 +6494,28 @@ ec2_create_local_gateway_route <- function(DestinationCidrBlock, LocalGatewayRou
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocalGatewayRouteTableVpcAssociation = list(
+#'     LocalGatewayRouteTableVpcAssociationId = "string",
+#'     LocalGatewayRouteTableId = "string",
+#'     LocalGatewayRouteTableArn = "string",
+#'     LocalGatewayId = "string",
+#'     VpcId = "string",
+#'     OwnerId = "string",
+#'     State = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5299,6 +6590,30 @@ ec2_create_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
 #' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' 
 #' Constraints: Up to 255 UTF-8 characters in length.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PrefixList = list(
+#'     PrefixListId = "string",
+#'     AddressFamily = "string",
+#'     State = "create-in-progress"|"create-complete"|"create-failed"|"modify-in-progress"|"modify-complete"|"modify-failed"|"restore-in-progress"|"restore-complete"|"restore-failed"|"delete-in-progress"|"delete-complete"|"delete-failed",
+#'     StateMessage = "string",
+#'     PrefixListArn = "string",
+#'     PrefixListName = "string",
+#'     MaxEntries = 123,
+#'     Version = 123,
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     OwnerId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5379,6 +6694,53 @@ ec2_create_managed_prefix_list <- function(DryRun = NULL, PrefixListName, Entrie
 #' @param SubnetId &#91;required&#93; The subnet in which to create the NAT gateway.
 #' @param TagSpecifications The tags to assign to the NAT gateway.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientToken = "string",
+#'   NatGateway = list(
+#'     CreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeleteTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FailureCode = "string",
+#'     FailureMessage = "string",
+#'     NatGatewayAddresses = list(
+#'       list(
+#'         AllocationId = "string",
+#'         NetworkInterfaceId = "string",
+#'         PrivateIp = "string",
+#'         PublicIp = "string"
+#'       )
+#'     ),
+#'     NatGatewayId = "string",
+#'     ProvisionedBandwidth = list(
+#'       ProvisionTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Provisioned = "string",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Requested = "string",
+#'       Status = "string"
+#'     ),
+#'     State = "pending"|"failed"|"available"|"deleting"|"deleted",
+#'     SubnetId = "string",
+#'     VpcId = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_nat_gateway(
@@ -5451,6 +6813,50 @@ ec2_create_nat_gateway <- function(AllocationId, ClientToken = NULL, DryRun = NU
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param VpcId &#91;required&#93; The ID of the VPC.
 #' @param TagSpecifications The tags to assign to the network ACL.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkAcl = list(
+#'     Associations = list(
+#'       list(
+#'         NetworkAclAssociationId = "string",
+#'         NetworkAclId = "string",
+#'         SubnetId = "string"
+#'       )
+#'     ),
+#'     Entries = list(
+#'       list(
+#'         CidrBlock = "string",
+#'         Egress = TRUE|FALSE,
+#'         IcmpTypeCode = list(
+#'           Code = 123,
+#'           Type = 123
+#'         ),
+#'         Ipv6CidrBlock = "string",
+#'         PortRange = list(
+#'           From = 123,
+#'           To = 123
+#'         ),
+#'         Protocol = "string",
+#'         RuleAction = "allow"|"deny",
+#'         RuleNumber = 123
+#'       )
+#'     ),
+#'     IsDefault = TRUE|FALSE,
+#'     NetworkAclId = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     VpcId = "string",
+#'     OwnerId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5560,6 +6966,8 @@ ec2_create_network_acl <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 #' Constraints: Positive integer from 1 to 32766. The range 32767 to 65535
 #' is reserved for internal use.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_network_acl_entry(
@@ -5650,6 +7058,32 @@ ec2_create_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egress
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [How to Ensure
 #' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkInsightsPath = list(
+#'     NetworkInsightsPathId = "string",
+#'     NetworkInsightsPathArn = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Source = "string",
+#'     Destination = "string",
+#'     SourceIp = "string",
+#'     DestinationIp = "string",
+#'     Protocol = "tcp"|"udp",
+#'     DestinationPort = 123,
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5749,6 +7183,84 @@ ec2_create_network_insights_path <- function(SourceIp = NULL, DestinationIp = NU
 #' @param SubnetId &#91;required&#93; The ID of the subnet to associate with the network interface.
 #' @param TagSpecifications The tags to apply to the new network interface.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkInterface = list(
+#'     Association = list(
+#'       AllocationId = "string",
+#'       AssociationId = "string",
+#'       IpOwnerId = "string",
+#'       PublicDnsName = "string",
+#'       PublicIp = "string",
+#'       CustomerOwnedIp = "string",
+#'       CarrierIp = "string"
+#'     ),
+#'     Attachment = list(
+#'       AttachTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AttachmentId = "string",
+#'       DeleteOnTermination = TRUE|FALSE,
+#'       DeviceIndex = 123,
+#'       NetworkCardIndex = 123,
+#'       InstanceId = "string",
+#'       InstanceOwnerId = "string",
+#'       Status = "attaching"|"attached"|"detaching"|"detached"
+#'     ),
+#'     AvailabilityZone = "string",
+#'     Description = "string",
+#'     Groups = list(
+#'       list(
+#'         GroupName = "string",
+#'         GroupId = "string"
+#'       )
+#'     ),
+#'     InterfaceType = "interface"|"natGateway"|"efa",
+#'     Ipv6Addresses = list(
+#'       list(
+#'         Ipv6Address = "string"
+#'       )
+#'     ),
+#'     MacAddress = "string",
+#'     NetworkInterfaceId = "string",
+#'     OutpostArn = "string",
+#'     OwnerId = "string",
+#'     PrivateDnsName = "string",
+#'     PrivateIpAddress = "string",
+#'     PrivateIpAddresses = list(
+#'       list(
+#'         Association = list(
+#'           AllocationId = "string",
+#'           AssociationId = "string",
+#'           IpOwnerId = "string",
+#'           PublicDnsName = "string",
+#'           PublicIp = "string",
+#'           CustomerOwnedIp = "string",
+#'           CarrierIp = "string"
+#'         ),
+#'         Primary = TRUE|FALSE,
+#'         PrivateDnsName = "string",
+#'         PrivateIpAddress = "string"
+#'       )
+#'     ),
+#'     RequesterId = "string",
+#'     RequesterManaged = TRUE|FALSE,
+#'     SourceDestCheck = TRUE|FALSE,
+#'     Status = "available"|"associated"|"attaching"|"in-use"|"detaching",
+#'     SubnetId = "string",
+#'     TagSet = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     VpcId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_network_interface(
@@ -5843,6 +7355,24 @@ ec2_create_network_interface <- function(Description = NULL, DryRun = NULL, Grou
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InterfacePermission = list(
+#'     NetworkInterfacePermissionId = "string",
+#'     NetworkInterfaceId = "string",
+#'     AwsAccountId = "string",
+#'     AwsService = "string",
+#'     Permission = "INSTANCE-ATTACH"|"EIP-ASSOCIATE",
+#'     PermissionState = list(
+#'       State = "pending"|"granted"|"revoking"|"revoked",
+#'       StatusMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_network_interface_permission(
@@ -5908,6 +7438,26 @@ ec2_create_network_interface_permission <- function(NetworkInterfaceId, AwsAccou
 #' @param PartitionCount The number of partitions. Valid only when **Strategy** is set to
 #' `partition`.
 #' @param TagSpecifications The tags to apply to the new placement group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PlacementGroup = list(
+#'     GroupName = "string",
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     Strategy = "cluster"|"spread"|"partition",
+#'     PartitionCount = 123,
+#'     GroupId = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6009,6 +7559,48 @@ ec2_create_placement_group <- function(DryRun = NULL, GroupName = NULL, Strategy
 #' month remaining in the Reserved Instance term.
 #' @param ReservedInstancesId &#91;required&#93; The ID of the active Standard Reserved Instance.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReservedInstancesListings = list(
+#'     list(
+#'       ClientToken = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InstanceCounts = list(
+#'         list(
+#'           InstanceCount = 123,
+#'           State = "available"|"sold"|"cancelled"|"pending"
+#'         )
+#'       ),
+#'       PriceSchedules = list(
+#'         list(
+#'           Active = TRUE|FALSE,
+#'           CurrencyCode = "USD",
+#'           Price = 123.0,
+#'           Term = 123
+#'         )
+#'       ),
+#'       ReservedInstancesId = "string",
+#'       ReservedInstancesListingId = "string",
+#'       Status = "active"|"pending"|"cancelled"|"closed",
+#'       StatusMessage = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_reserved_instances_listing(
@@ -6108,6 +7700,14 @@ ec2_create_reserved_instances_listing <- function(ClientToken, InstanceCount, Pr
 #' @param RouteTableId &#91;required&#93; The ID of the route table for the route.
 #' @param VpcPeeringConnectionId The ID of a VPC peering connection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_route(
@@ -6180,6 +7780,61 @@ ec2_create_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param VpcId &#91;required&#93; The ID of the VPC.
 #' @param TagSpecifications The tags to assign to the route table.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RouteTable = list(
+#'     Associations = list(
+#'       list(
+#'         Main = TRUE|FALSE,
+#'         RouteTableAssociationId = "string",
+#'         RouteTableId = "string",
+#'         SubnetId = "string",
+#'         GatewayId = "string",
+#'         AssociationState = list(
+#'           State = "associating"|"associated"|"disassociating"|"disassociated"|"failed",
+#'           StatusMessage = "string"
+#'         )
+#'       )
+#'     ),
+#'     PropagatingVgws = list(
+#'       list(
+#'         GatewayId = "string"
+#'       )
+#'     ),
+#'     RouteTableId = "string",
+#'     Routes = list(
+#'       list(
+#'         DestinationCidrBlock = "string",
+#'         DestinationIpv6CidrBlock = "string",
+#'         DestinationPrefixListId = "string",
+#'         EgressOnlyInternetGatewayId = "string",
+#'         GatewayId = "string",
+#'         InstanceId = "string",
+#'         InstanceOwnerId = "string",
+#'         NatGatewayId = "string",
+#'         TransitGatewayId = "string",
+#'         LocalGatewayId = "string",
+#'         CarrierGatewayId = "string",
+#'         NetworkInterfaceId = "string",
+#'         Origin = "CreateRouteTable"|"CreateRoute"|"EnableVgwRoutePropagation",
+#'         State = "active"|"blackhole",
+#'         VpcPeeringConnectionId = "string"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     VpcId = "string",
+#'     OwnerId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6275,7 +7930,7 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 #' Constraints for EC2-Classic: ASCII characters
 #' 
 #' Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-#' .\\_-:/()\\#,@@\[\]+=&;\{\}!$*
+#' ._-:/()\#,@@\[\]+=&;\{\}!$*
 #' @param GroupName &#91;required&#93; The name of the security group.
 #' 
 #' Constraints: Up to 255 characters in length. Cannot start with `sg-`.
@@ -6283,13 +7938,27 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 #' Constraints for EC2-Classic: ASCII characters
 #' 
 #' Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-#' .\\_-:/()\\#,@@\[\]+=&;\{\}!$*
+#' ._-:/()\#,@@\[\]+=&;\{\}!$*
 #' @param VpcId \[EC2-VPC\] The ID of the VPC. Required for EC2-VPC.
 #' @param TagSpecifications The tags to assign to the security group.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6393,6 +8062,34 @@ ec2_create_security_group <- function(Description, GroupName, VpcId = NULL, TagS
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataEncryptionKeyId = "string",
+#'   Description = "string",
+#'   Encrypted = TRUE|FALSE,
+#'   KmsKeyId = "string",
+#'   OwnerId = "string",
+#'   Progress = "string",
+#'   SnapshotId = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   State = "pending"|"completed"|"error",
+#'   StateMessage = "string",
+#'   VolumeId = "string",
+#'   VolumeSize = 123,
+#'   OwnerAlias = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_snapshot(
@@ -6468,6 +8165,34 @@ ec2_create_snapshot <- function(Description = NULL, VolumeId, TagSpecifications 
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param CopyTagsFromSource Copies the tags from the specified volume to corresponding snapshot.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Snapshots = list(
+#'     list(
+#'       Description = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Encrypted = TRUE|FALSE,
+#'       VolumeId = "string",
+#'       State = "pending"|"completed"|"error",
+#'       VolumeSize = 123,
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Progress = "string",
+#'       OwnerId = "string",
+#'       SnapshotId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_snapshots(
@@ -6528,13 +8253,30 @@ ec2_create_snapshots <- function(Description = NULL, InstanceSpecification, TagS
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket in which to store the Spot Instance
 #' data feed. For more information about bucket names, see [Rules for
 #' bucket
-#' naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules)
+#' naming](https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html#bucketnamingrules)
 #' in the *Amazon S3 Developer Guide*.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Prefix The prefix for the data feed file names.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SpotDatafeedSubscription = list(
+#'     Bucket = "string",
+#'     Fault = list(
+#'       Code = "string",
+#'       Message = "string"
+#'     ),
+#'     OwnerId = "string",
+#'     Prefix = "string",
+#'     State = "Active"|"Inactive"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6636,6 +8378,46 @@ ec2_create_spot_datafeed_subscription <- function(Bucket, DryRun = NULL, Prefix 
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Subnet = list(
+#'     AvailabilityZone = "string",
+#'     AvailabilityZoneId = "string",
+#'     AvailableIpAddressCount = 123,
+#'     CidrBlock = "string",
+#'     DefaultForAz = TRUE|FALSE,
+#'     MapPublicIpOnLaunch = TRUE|FALSE,
+#'     MapCustomerOwnedIpOnLaunch = TRUE|FALSE,
+#'     CustomerOwnedIpv4Pool = "string",
+#'     State = "pending"|"available",
+#'     SubnetId = "string",
+#'     VpcId = "string",
+#'     OwnerId = "string",
+#'     AssignIpv6AddressOnCreation = TRUE|FALSE,
+#'     Ipv6CidrBlockAssociationSet = list(
+#'       list(
+#'         AssociationId = "string",
+#'         Ipv6CidrBlock = "string",
+#'         Ipv6CidrBlockState = list(
+#'           State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'           StatusMessage = "string"
+#'         )
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     SubnetArn = "string",
+#'     OutpostArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_subnet(
@@ -6725,6 +8507,8 @@ ec2_create_subnet <- function(TagSpecifications = NULL, AvailabilityZone = NULL,
 #' tag to have a value, specify the parameter with no value, and we set the
 #' value to an empty string.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_tags(
@@ -6807,6 +8591,69 @@ ec2_create_tags <- function(DryRun = NULL, Resources, Tags) {
 #' idempotency of the request. For more information, see [How to Ensure
 #' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficMirrorFilter = list(
+#'     TrafficMirrorFilterId = "string",
+#'     IngressFilterRules = list(
+#'       list(
+#'         TrafficMirrorFilterRuleId = "string",
+#'         TrafficMirrorFilterId = "string",
+#'         TrafficDirection = "ingress"|"egress",
+#'         RuleNumber = 123,
+#'         RuleAction = "accept"|"reject",
+#'         Protocol = 123,
+#'         DestinationPortRange = list(
+#'           FromPort = 123,
+#'           ToPort = 123
+#'         ),
+#'         SourcePortRange = list(
+#'           FromPort = 123,
+#'           ToPort = 123
+#'         ),
+#'         DestinationCidrBlock = "string",
+#'         SourceCidrBlock = "string",
+#'         Description = "string"
+#'       )
+#'     ),
+#'     EgressFilterRules = list(
+#'       list(
+#'         TrafficMirrorFilterRuleId = "string",
+#'         TrafficMirrorFilterId = "string",
+#'         TrafficDirection = "ingress"|"egress",
+#'         RuleNumber = 123,
+#'         RuleAction = "accept"|"reject",
+#'         Protocol = 123,
+#'         DestinationPortRange = list(
+#'           FromPort = 123,
+#'           ToPort = 123
+#'         ),
+#'         SourcePortRange = list(
+#'           FromPort = 123,
+#'           ToPort = 123
+#'         ),
+#'         DestinationCidrBlock = "string",
+#'         SourceCidrBlock = "string",
+#'         Description = "string"
+#'       )
+#'     ),
+#'     NetworkServices = list(
+#'       "amazon-dns"
+#'     ),
+#'     Description = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_traffic_mirror_filter(
@@ -6886,6 +8733,33 @@ ec2_create_traffic_mirror_filter <- function(Description = NULL, TagSpecificatio
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [How to Ensure
 #' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficMirrorFilterRule = list(
+#'     TrafficMirrorFilterRuleId = "string",
+#'     TrafficMirrorFilterId = "string",
+#'     TrafficDirection = "ingress"|"egress",
+#'     RuleNumber = 123,
+#'     RuleAction = "accept"|"reject",
+#'     Protocol = 123,
+#'     DestinationPortRange = list(
+#'       FromPort = 123,
+#'       ToPort = 123
+#'     ),
+#'     SourcePortRange = list(
+#'       FromPort = 123,
+#'       ToPort = 123
+#'     ),
+#'     DestinationCidrBlock = "string",
+#'     SourceCidrBlock = "string",
+#'     Description = "string"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6973,8 +8847,9 @@ ec2_create_traffic_mirror_filter_rule <- function(TrafficMirrorFilterId, Traffic
 #' 
 #' Valid values are 1-32766.
 #' @param VirtualNetworkId The VXLAN ID for the Traffic Mirror session. For more information about
-#' the VXLAN protocol, see RFC 7348. If you do not specify a
-#' `VirtualNetworkId`, an account-wide unique id is chosen at random.
+#' the VXLAN protocol, see [RFC 7348](https://tools.ietf.org/html/rfc7348).
+#' If you do not specify a `VirtualNetworkId`, an account-wide unique id is
+#' chosen at random.
 #' @param Description The description of the Traffic Mirror session.
 #' @param TagSpecifications The tags to assign to a Traffic Mirror session.
 #' @param DryRun Checks whether you have the required permissions for the action, without
@@ -6984,6 +8859,31 @@ ec2_create_traffic_mirror_filter_rule <- function(TrafficMirrorFilterId, Traffic
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [How to Ensure
 #' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficMirrorSession = list(
+#'     TrafficMirrorSessionId = "string",
+#'     TrafficMirrorTargetId = "string",
+#'     TrafficMirrorFilterId = "string",
+#'     NetworkInterfaceId = "string",
+#'     OwnerId = "string",
+#'     PacketLength = 123,
+#'     SessionNumber = 123,
+#'     VirtualNetworkId = 123,
+#'     Description = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7064,6 +8964,28 @@ ec2_create_traffic_mirror_session <- function(NetworkInterfaceId, TrafficMirrorT
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [How to Ensure
 #' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficMirrorTarget = list(
+#'     TrafficMirrorTargetId = "string",
+#'     NetworkInterfaceId = "string",
+#'     NetworkLoadBalancerArn = "string",
+#'     Type = "network-interface"|"network-load-balancer",
+#'     Description = "string",
+#'     OwnerId = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7151,6 +9073,43 @@ ec2_create_traffic_mirror_target <- function(NetworkInterfaceId = NULL, NetworkL
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGateway = list(
+#'     TransitGatewayId = "string",
+#'     TransitGatewayArn = "string",
+#'     State = "pending"|"available"|"modifying"|"deleting"|"deleted",
+#'     OwnerId = "string",
+#'     Description = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Options = list(
+#'       AmazonSideAsn = 123,
+#'       TransitGatewayCidrBlocks = list(
+#'         "string"
+#'       ),
+#'       AutoAcceptSharedAttachments = "enable"|"disable",
+#'       DefaultRouteTableAssociation = "enable"|"disable",
+#'       AssociationDefaultRouteTableId = "string",
+#'       DefaultRouteTablePropagation = "enable"|"disable",
+#'       PropagationDefaultRouteTableId = "string",
+#'       VpnEcmpSupport = "enable"|"disable",
+#'       DnsSupport = "enable"|"disable",
+#'       MulticastSupport = "enable"|"disable"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_transit_gateway(
@@ -7225,6 +9184,31 @@ ec2_create_transit_gateway <- function(Description = NULL, Options = NULL, TagSp
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayConnect = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     TransportTransitGatewayAttachmentId = "string",
+#'     TransitGatewayId = "string",
+#'     State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Options = list(
+#'       Protocol = "gre"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7306,6 +9290,44 @@ ec2_create_transit_gateway_connect <- function(TransportTransitGatewayAttachment
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayConnectPeer = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     TransitGatewayConnectPeerId = "string",
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ConnectPeerConfiguration = list(
+#'       TransitGatewayAddress = "string",
+#'       PeerAddress = "string",
+#'       InsideCidrBlocks = list(
+#'         "string"
+#'       ),
+#'       Protocol = "gre",
+#'       BgpConfigurations = list(
+#'         list(
+#'           TransitGatewayAsn = 123,
+#'           PeerAsn = 123,
+#'           TransitGatewayAddress = "string",
+#'           PeerAddress = "string",
+#'           BgpStatus = "up"|"down"
+#'         )
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_transit_gateway_connect_peer(
@@ -7373,6 +9395,34 @@ ec2_create_transit_gateway_connect_peer <- function(TransitGatewayAttachmentId, 
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayMulticastDomain = list(
+#'     TransitGatewayMulticastDomainId = "string",
+#'     TransitGatewayId = "string",
+#'     TransitGatewayMulticastDomainArn = "string",
+#'     OwnerId = "string",
+#'     Options = list(
+#'       Igmpv2Support = "enable"|"disable",
+#'       StaticSourcesSupport = "enable"|"disable",
+#'       AutoAcceptSharedAssociations = "enable"|"disable"
+#'     ),
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7446,6 +9496,40 @@ ec2_create_transit_gateway_multicast_domain <- function(TransitGatewayId, Option
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayPeeringAttachment = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     RequesterTgwInfo = list(
+#'       TransitGatewayId = "string",
+#'       OwnerId = "string",
+#'       Region = "string"
+#'     ),
+#'     AccepterTgwInfo = list(
+#'       TransitGatewayId = "string",
+#'       OwnerId = "string",
+#'       Region = "string"
+#'     ),
+#'     Status = list(
+#'       Code = "string",
+#'       Message = "string"
+#'     ),
+#'     State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_transit_gateway_peering_attachment(
@@ -7509,6 +9593,25 @@ ec2_create_transit_gateway_peering_attachment <- function(TransitGatewayId, Peer
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayPrefixListReference = list(
+#'     TransitGatewayRouteTableId = "string",
+#'     PrefixListId = "string",
+#'     PrefixListOwnerId = "string",
+#'     State = "pending"|"available"|"modifying"|"deleting",
+#'     Blackhole = TRUE|FALSE,
+#'     TransitGatewayAttachment = list(
+#'       TransitGatewayAttachmentId = "string",
+#'       ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'       ResourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_transit_gateway_prefix_list_reference(
@@ -7560,6 +9663,26 @@ ec2_create_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Route = list(
+#'     DestinationCidrBlock = "string",
+#'     PrefixListId = "string",
+#'     TransitGatewayAttachments = list(
+#'       list(
+#'         ResourceId = "string",
+#'         TransitGatewayAttachmentId = "string",
+#'         ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering"
+#'       )
+#'     ),
+#'     Type = "static"|"propagated",
+#'     State = "pending"|"active"|"blackhole"|"deleting"|"deleted"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_transit_gateway_route(
@@ -7606,6 +9729,29 @@ ec2_create_transit_gateway_route <- function(DestinationCidrBlock, TransitGatewa
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayRouteTable = list(
+#'     TransitGatewayRouteTableId = "string",
+#'     TransitGatewayId = "string",
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     DefaultAssociationRouteTable = TRUE|FALSE,
+#'     DefaultPropagationRouteTable = TRUE|FALSE,
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7674,6 +9820,37 @@ ec2_create_transit_gateway_route_table <- function(TransitGatewayId, TagSpecific
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayVpcAttachment = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     TransitGatewayId = "string",
+#'     VpcId = "string",
+#'     VpcOwnerId = "string",
+#'     State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Options = list(
+#'       DnsSupport = "enable"|"disable",
+#'       Ipv6Support = "enable"|"disable",
+#'       ApplianceModeSupport = "enable"|"disable"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7862,6 +10039,47 @@ ec2_create_transit_gateway_vpc_attachment <- function(TransitGatewayId, VpcId, S
 #' 
 #' Valid Range: Minimum value of 125. Maximum value of 1000.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attachments = list(
+#'     list(
+#'       AttachTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Device = "string",
+#'       InstanceId = "string",
+#'       State = "attaching"|"attached"|"detaching"|"detached"|"busy",
+#'       VolumeId = "string",
+#'       DeleteOnTermination = TRUE|FALSE
+#'     )
+#'   ),
+#'   AvailabilityZone = "string",
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Encrypted = TRUE|FALSE,
+#'   KmsKeyId = "string",
+#'   OutpostArn = "string",
+#'   Size = 123,
+#'   SnapshotId = "string",
+#'   State = "creating"|"available"|"in-use"|"deleting"|"deleted"|"error",
+#'   VolumeId = "string",
+#'   Iops = 123,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'   FastRestored = TRUE|FALSE,
+#'   MultiAttachEnabled = TRUE|FALSE,
+#'   Throughput = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_volume(
@@ -7999,6 +10217,50 @@ ec2_create_volume <- function(AvailabilityZone, Encrypted = NULL, Iops = NULL, K
 #' parameter.
 #' @param TagSpecifications The tags to assign to the VPC.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Vpc = list(
+#'     CidrBlock = "string",
+#'     DhcpOptionsId = "string",
+#'     State = "pending"|"available",
+#'     VpcId = "string",
+#'     OwnerId = "string",
+#'     InstanceTenancy = "default"|"dedicated"|"host",
+#'     Ipv6CidrBlockAssociationSet = list(
+#'       list(
+#'         AssociationId = "string",
+#'         Ipv6CidrBlock = "string",
+#'         Ipv6CidrBlockState = list(
+#'           State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'           StatusMessage = "string"
+#'         ),
+#'         NetworkBorderGroup = "string",
+#'         Ipv6Pool = "string"
+#'       )
+#'     ),
+#'     CidrBlockAssociationSet = list(
+#'       list(
+#'         AssociationId = "string",
+#'         CidrBlock = "string",
+#'         CidrBlockState = list(
+#'           State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'           StatusMessage = "string"
+#'         )
+#'       )
+#'     ),
+#'     IsDefault = TRUE|FALSE,
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_vpc(
@@ -8126,6 +10388,59 @@ ec2_create_vpc <- function(CidrBlock, AmazonProvidedIpv6CidrBlock = NULL, Ipv6Po
 #' Default: `true`
 #' @param TagSpecifications The tags to associate with the endpoint.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcEndpoint = list(
+#'     VpcEndpointId = "string",
+#'     VpcEndpointType = "Interface"|"Gateway"|"GatewayLoadBalancer",
+#'     VpcId = "string",
+#'     ServiceName = "string",
+#'     State = "PendingAcceptance"|"Pending"|"Available"|"Deleting"|"Deleted"|"Rejected"|"Failed"|"Expired",
+#'     PolicyDocument = "string",
+#'     RouteTableIds = list(
+#'       "string"
+#'     ),
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     Groups = list(
+#'       list(
+#'         GroupId = "string",
+#'         GroupName = "string"
+#'       )
+#'     ),
+#'     PrivateDnsEnabled = TRUE|FALSE,
+#'     RequesterManaged = TRUE|FALSE,
+#'     NetworkInterfaceIds = list(
+#'       "string"
+#'     ),
+#'     DnsEntries = list(
+#'       list(
+#'         DnsName = "string",
+#'         HostedZoneId = "string"
+#'       )
+#'     ),
+#'     CreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     OwnerId = "string",
+#'     LastError = list(
+#'       Message = "string",
+#'       Code = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_vpc_endpoint(
@@ -8208,6 +10523,25 @@ ec2_create_vpc_endpoint <- function(DryRun = NULL, VpcEndpointType = NULL, VpcId
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [How to Ensure
 #' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionNotification = list(
+#'     ConnectionNotificationId = "string",
+#'     ServiceId = "string",
+#'     VpcEndpointId = "string",
+#'     ConnectionNotificationType = "Topic",
+#'     ConnectionNotificationArn = "string",
+#'     ConnectionEvents = list(
+#'       "string"
+#'     ),
+#'     ConnectionNotificationState = "Enabled"|"Disabled"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8294,6 +10628,51 @@ ec2_create_vpc_endpoint_connection_notification <- function(DryRun = NULL, Servi
 #' idempotency of the request. For more information, see [How to Ensure
 #' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param TagSpecifications The tags to associate with the service.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceConfiguration = list(
+#'     ServiceType = list(
+#'       list(
+#'         ServiceType = "Interface"|"Gateway"|"GatewayLoadBalancer"
+#'       )
+#'     ),
+#'     ServiceId = "string",
+#'     ServiceName = "string",
+#'     ServiceState = "Pending"|"Available"|"Deleting"|"Deleted"|"Failed",
+#'     AvailabilityZones = list(
+#'       "string"
+#'     ),
+#'     AcceptanceRequired = TRUE|FALSE,
+#'     ManagesVpcEndpoints = TRUE|FALSE,
+#'     NetworkLoadBalancerArns = list(
+#'       "string"
+#'     ),
+#'     GatewayLoadBalancerArns = list(
+#'       "string"
+#'     ),
+#'     BaseEndpointDnsNames = list(
+#'       "string"
+#'     ),
+#'     PrivateDnsName = "string",
+#'     PrivateDnsNameConfiguration = list(
+#'       State = "pendingVerification"|"verified"|"failed",
+#'       Type = "string",
+#'       Value = "string",
+#'       Name = "string"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8386,6 +10765,71 @@ ec2_create_vpc_endpoint_service_configuration <- function(DryRun = NULL, Accepta
 #' Default: The Region in which you make the request.
 #' @param TagSpecifications The tags to assign to the peering connection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcPeeringConnection = list(
+#'     AccepterVpcInfo = list(
+#'       CidrBlock = "string",
+#'       Ipv6CidrBlockSet = list(
+#'         list(
+#'           Ipv6CidrBlock = "string"
+#'         )
+#'       ),
+#'       CidrBlockSet = list(
+#'         list(
+#'           CidrBlock = "string"
+#'         )
+#'       ),
+#'       OwnerId = "string",
+#'       PeeringOptions = list(
+#'         AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+#'         AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+#'         AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+#'       ),
+#'       VpcId = "string",
+#'       Region = "string"
+#'     ),
+#'     ExpirationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     RequesterVpcInfo = list(
+#'       CidrBlock = "string",
+#'       Ipv6CidrBlockSet = list(
+#'         list(
+#'           Ipv6CidrBlock = "string"
+#'         )
+#'       ),
+#'       CidrBlockSet = list(
+#'         list(
+#'           CidrBlock = "string"
+#'         )
+#'       ),
+#'       OwnerId = "string",
+#'       PeeringOptions = list(
+#'         AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+#'         AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+#'         AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+#'       ),
+#'       VpcId = "string",
+#'       Region = "string"
+#'     ),
+#'     Status = list(
+#'       Code = "initiating-request"|"pending-acceptance"|"active"|"deleted"|"rejected"|"failed"|"expired"|"provisioning"|"deleting",
+#'       Message = "string"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     VpcPeeringConnectionId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_vpc_peering_connection(
@@ -8470,6 +10914,108 @@ ec2_create_vpc_peering_connection <- function(DryRun = NULL, PeerOwnerId = NULL,
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Options The options for the VPN connection.
 #' @param TagSpecifications The tags to apply to the VPN connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpnConnection = list(
+#'     CustomerGatewayConfiguration = "string",
+#'     CustomerGatewayId = "string",
+#'     Category = "string",
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     Type = "ipsec.1",
+#'     VpnConnectionId = "string",
+#'     VpnGatewayId = "string",
+#'     TransitGatewayId = "string",
+#'     Options = list(
+#'       EnableAcceleration = TRUE|FALSE,
+#'       StaticRoutesOnly = TRUE|FALSE,
+#'       LocalIpv4NetworkCidr = "string",
+#'       RemoteIpv4NetworkCidr = "string",
+#'       LocalIpv6NetworkCidr = "string",
+#'       RemoteIpv6NetworkCidr = "string",
+#'       TunnelInsideIpVersion = "ipv4"|"ipv6",
+#'       TunnelOptions = list(
+#'         list(
+#'           OutsideIpAddress = "string",
+#'           TunnelInsideCidr = "string",
+#'           TunnelInsideIpv6Cidr = "string",
+#'           PreSharedKey = "string",
+#'           Phase1LifetimeSeconds = 123,
+#'           Phase2LifetimeSeconds = 123,
+#'           RekeyMarginTimeSeconds = 123,
+#'           RekeyFuzzPercentage = 123,
+#'           ReplayWindowSize = 123,
+#'           DpdTimeoutSeconds = 123,
+#'           DpdTimeoutAction = "string",
+#'           Phase1EncryptionAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase2EncryptionAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase1IntegrityAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase2IntegrityAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase1DHGroupNumbers = list(
+#'             list(
+#'               Value = 123
+#'             )
+#'           ),
+#'           Phase2DHGroupNumbers = list(
+#'             list(
+#'               Value = 123
+#'             )
+#'           ),
+#'           IkeVersions = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           StartupAction = "string"
+#'         )
+#'       )
+#'     ),
+#'     Routes = list(
+#'       list(
+#'         DestinationCidrBlock = "string",
+#'         Source = "Static",
+#'         State = "pending"|"available"|"deleting"|"deleted"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     VgwTelemetry = list(
+#'       list(
+#'         AcceptedRouteCount = 123,
+#'         LastStatusChange = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         OutsideIpAddress = "string",
+#'         Status = "UP"|"DOWN",
+#'         StatusMessage = "string",
+#'         CertificateArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8591,6 +11137,8 @@ ec2_create_vpn_connection <- function(CustomerGatewayId, Type, VpnGatewayId = NU
 #' @param DestinationCidrBlock &#91;required&#93; The CIDR block associated with the local subnet of the customer network.
 #' @param VpnConnectionId &#91;required&#93; The ID of the VPN connection.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_vpn_connection_route(
@@ -8647,6 +11195,32 @@ ec2_create_vpn_connection_route <- function(DestinationCidrBlock, VpnConnectionI
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpnGateway = list(
+#'     AvailabilityZone = "string",
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     Type = "ipsec.1",
+#'     VpcAttachments = list(
+#'       list(
+#'         State = "attaching"|"attached"|"detaching"|"detached",
+#'         VpcId = "string"
+#'       )
+#'     ),
+#'     VpnGatewayId = "string",
+#'     AmazonSideAsn = 123,
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8707,6 +11281,25 @@ ec2_create_vpn_gateway <- function(AvailabilityZone = NULL, Type, TagSpecificati
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CarrierGateway = list(
+#'     CarrierGatewayId = "string",
+#'     VpcId = "string",
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     OwnerId = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_carrier_gateway(
@@ -8749,6 +11342,17 @@ ec2_delete_carrier_gateway <- function(CarrierGatewayId, DryRun = NULL) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = list(
+#'     Code = "pending-associate"|"available"|"deleting"|"deleted",
+#'     Message = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8799,6 +11403,17 @@ ec2_delete_client_vpn_endpoint <- function(ClientVpnEndpointId, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = list(
+#'     Code = "creating"|"active"|"failed"|"deleting",
+#'     Message = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_client_vpn_route(
@@ -8843,6 +11458,8 @@ ec2_delete_client_vpn_route <- function(ClientVpnEndpointId, TargetVpcSubnetId =
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -8897,6 +11514,8 @@ ec2_delete_customer_gateway <- function(CustomerGatewayId, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_dhcp_options(
@@ -8947,6 +11566,14 @@ ec2_delete_dhcp_options <- function(DhcpOptionsId, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param EgressOnlyInternetGatewayId &#91;required&#93; The ID of the egress-only internet gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReturnCode = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9025,6 +11652,29 @@ ec2_delete_egress_only_internet_gateway <- function(DryRun = NULL, EgressOnlyInt
 #' For `instant` fleets, you cannot specify `NoTerminateInstances`. A
 #' deleted `instant` fleet with running instances is not supported.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SuccessfulFleetDeletions = list(
+#'     list(
+#'       CurrentFleetState = "submitted"|"active"|"deleted"|"failed"|"deleted_running"|"deleted_terminating"|"modifying",
+#'       PreviousFleetState = "submitted"|"active"|"deleted"|"failed"|"deleted_running"|"deleted_terminating"|"modifying",
+#'       FleetId = "string"
+#'     )
+#'   ),
+#'   UnsuccessfulFleetDeletions = list(
+#'     list(
+#'       Error = list(
+#'         Code = "fleetIdDoesNotExist"|"fleetIdMalformed"|"fleetNotInDeletableState"|"unexpectedError",
+#'         Message = "string"
+#'       ),
+#'       FleetId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_fleets(
@@ -9072,6 +11722,22 @@ ec2_delete_fleets <- function(DryRun = NULL, FleetIds, TerminateInstances) {
 #' 
 #' Constraint: Maximum of 1000 flow log IDs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Unsuccessful = list(
+#'     list(
+#'       Error = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       ResourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_flow_logs(
@@ -9116,6 +11782,14 @@ ec2_delete_flow_logs <- function(DryRun = NULL, FlowLogIds) {
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param FpgaImageId &#91;required&#93; The ID of the AFI.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_fpga_image(
@@ -9158,6 +11832,8 @@ ec2_delete_fpga_image <- function(DryRun = NULL, FpgaImageId) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param InternetGatewayId &#91;required&#93; The ID of the internet gateway.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -9211,6 +11887,8 @@ ec2_delete_internet_gateway <- function(DryRun = NULL, InternetGatewayId) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -9266,6 +11944,29 @@ ec2_delete_key_pair <- function(KeyName = NULL, KeyPairId = NULL, DryRun = NULL)
 #' template ID or launch template name in the request.
 #' @param LaunchTemplateName The name of the launch template. You must specify either the launch
 #' template ID or launch template name in the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LaunchTemplate = list(
+#'     LaunchTemplateId = "string",
+#'     LaunchTemplateName = "string",
+#'     CreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedBy = "string",
+#'     DefaultVersionNumber = 123,
+#'     LatestVersionNumber = 123,
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9326,6 +12027,31 @@ ec2_delete_launch_template <- function(DryRun = NULL, LaunchTemplateId = NULL, L
 #' @param LaunchTemplateName The name of the launch template. You must specify either the launch
 #' template ID or launch template name in the request.
 #' @param Versions &#91;required&#93; The version numbers of one or more launch template versions to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SuccessfullyDeletedLaunchTemplateVersions = list(
+#'     list(
+#'       LaunchTemplateId = "string",
+#'       LaunchTemplateName = "string",
+#'       VersionNumber = 123
+#'     )
+#'   ),
+#'   UnsuccessfullyDeletedLaunchTemplateVersions = list(
+#'     list(
+#'       LaunchTemplateId = "string",
+#'       LaunchTemplateName = "string",
+#'       VersionNumber = 123,
+#'       ResponseError = list(
+#'         Code = "launchTemplateIdDoesNotExist"|"launchTemplateIdMalformed"|"launchTemplateNameDoesNotExist"|"launchTemplateNameMalformed"|"launchTemplateVersionDoesNotExist"|"unexpectedError",
+#'         Message = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9388,6 +12114,22 @@ ec2_delete_launch_template_versions <- function(DryRun = NULL, LaunchTemplateId 
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Route = list(
+#'     DestinationCidrBlock = "string",
+#'     LocalGatewayVirtualInterfaceGroupId = "string",
+#'     Type = "static"|"propagated",
+#'     State = "pending"|"active"|"blackhole"|"deleting"|"deleted",
+#'     LocalGatewayRouteTableId = "string",
+#'     LocalGatewayRouteTableArn = "string",
+#'     OwnerId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_local_gateway_route(
@@ -9434,6 +12176,28 @@ ec2_delete_local_gateway_route <- function(DestinationCidrBlock, LocalGatewayRou
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocalGatewayRouteTableVpcAssociation = list(
+#'     LocalGatewayRouteTableVpcAssociationId = "string",
+#'     LocalGatewayRouteTableId = "string",
+#'     LocalGatewayRouteTableArn = "string",
+#'     LocalGatewayId = "string",
+#'     VpcId = "string",
+#'     OwnerId = "string",
+#'     State = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_local_gateway_route_table_vpc_association(
@@ -9476,6 +12240,30 @@ ec2_delete_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param PrefixListId &#91;required&#93; The ID of the prefix list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PrefixList = list(
+#'     PrefixListId = "string",
+#'     AddressFamily = "string",
+#'     State = "create-in-progress"|"create-complete"|"create-failed"|"modify-in-progress"|"modify-complete"|"modify-failed"|"restore-in-progress"|"restore-complete"|"restore-failed"|"delete-in-progress"|"delete-complete"|"delete-failed",
+#'     StateMessage = "string",
+#'     PrefixListArn = "string",
+#'     PrefixListName = "string",
+#'     MaxEntries = 123,
+#'     Version = 123,
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     OwnerId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9521,6 +12309,14 @@ ec2_delete_managed_prefix_list <- function(DryRun = NULL, PrefixListId) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param NatGatewayId &#91;required&#93; The ID of the NAT gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NatGatewayId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9572,6 +12368,8 @@ ec2_delete_nat_gateway <- function(DryRun = NULL, NatGatewayId) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param NetworkAclId &#91;required&#93; The ID of the network ACL.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -9626,6 +12424,8 @@ ec2_delete_network_acl <- function(DryRun = NULL, NetworkAclId) {
 #' @param Egress &#91;required&#93; Indicates whether the rule is an egress rule.
 #' @param NetworkAclId &#91;required&#93; The ID of the network ACL.
 #' @param RuleNumber &#91;required&#93; The rule number of the entry to delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -9682,6 +12482,14 @@ ec2_delete_network_acl_entry <- function(DryRun = NULL, Egress, NetworkAclId, Ru
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param NetworkInsightsAnalysisId &#91;required&#93; The ID of the network insights analysis.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkInsightsAnalysisId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_network_insights_analysis(
@@ -9723,6 +12531,14 @@ ec2_delete_network_insights_analysis <- function(DryRun = NULL, NetworkInsightsA
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param NetworkInsightsPathId &#91;required&#93; The ID of the path.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkInsightsPathId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9766,6 +12582,8 @@ ec2_delete_network_insights_path <- function(DryRun = NULL, NetworkInsightsPathI
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param NetworkInterfaceId &#91;required&#93; The ID of the network interface.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -9823,6 +12641,14 @@ ec2_delete_network_interface <- function(DryRun = NULL, NetworkInterfaceId) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_network_interface_permission(
@@ -9869,6 +12695,8 @@ ec2_delete_network_interface_permission <- function(NetworkInterfacePermissionId
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param GroupName &#91;required&#93; The name of the placement group.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -9921,6 +12749,27 @@ ec2_delete_placement_group <- function(DryRun = NULL, GroupName) {
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ReservedInstancesIds &#91;required&#93; The IDs of the Reserved Instances.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SuccessfulQueuedPurchaseDeletions = list(
+#'     list(
+#'       ReservedInstancesId = "string"
+#'     )
+#'   ),
+#'   FailedQueuedPurchaseDeletions = list(
+#'     list(
+#'       Error = list(
+#'         Code = "reserved-instances-id-invalid"|"reserved-instances-not-in-queued-state"|"unexpected-error",
+#'         Message = "string"
+#'       ),
+#'       ReservedInstancesId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_queued_reserved_instances(
@@ -9970,6 +12819,8 @@ ec2_delete_queued_reserved_instances <- function(DryRun = NULL, ReservedInstance
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param RouteTableId &#91;required&#93; The ID of the route table.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -10027,6 +12878,8 @@ ec2_delete_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param RouteTableId &#91;required&#93; The ID of the route table.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_route_table(
@@ -10083,6 +12936,8 @@ ec2_delete_route_table <- function(DryRun = NULL, RouteTableId) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -10151,6 +13006,8 @@ ec2_delete_security_group <- function(GroupId = NULL, GroupName = NULL, DryRun =
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_snapshot(
@@ -10202,6 +13059,8 @@ ec2_delete_snapshot <- function(SnapshotId, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_spot_datafeed_subscription(
@@ -10249,6 +13108,8 @@ ec2_delete_spot_datafeed_subscription <- function(DryRun = NULL) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -10316,6 +13177,8 @@ ec2_delete_subnet <- function(SubnetId, DryRun = NULL) {
 #' If you omit this parameter, we delete all user-defined tags for the
 #' specified resources. We do not delete AWS-generated tags (tags that have
 #' the `aws:` prefix).
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -10386,6 +13249,14 @@ ec2_delete_tags <- function(DryRun = NULL, Resources, Tags = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficMirrorFilterId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_traffic_mirror_filter(
@@ -10428,6 +13299,14 @@ ec2_delete_traffic_mirror_filter <- function(TrafficMirrorFilterId, DryRun = NUL
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficMirrorFilterRuleId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_traffic_mirror_filter_rule(
@@ -10469,6 +13348,14 @@ ec2_delete_traffic_mirror_filter_rule <- function(TrafficMirrorFilterRuleId, Dry
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficMirrorSessionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10515,6 +13402,14 @@ ec2_delete_traffic_mirror_session <- function(TrafficMirrorSessionId, DryRun = N
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficMirrorTargetId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_traffic_mirror_target(
@@ -10556,6 +13451,43 @@ ec2_delete_traffic_mirror_target <- function(TrafficMirrorTargetId, DryRun = NUL
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGateway = list(
+#'     TransitGatewayId = "string",
+#'     TransitGatewayArn = "string",
+#'     State = "pending"|"available"|"modifying"|"deleting"|"deleted",
+#'     OwnerId = "string",
+#'     Description = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Options = list(
+#'       AmazonSideAsn = 123,
+#'       TransitGatewayCidrBlocks = list(
+#'         "string"
+#'       ),
+#'       AutoAcceptSharedAttachments = "enable"|"disable",
+#'       DefaultRouteTableAssociation = "enable"|"disable",
+#'       AssociationDefaultRouteTableId = "string",
+#'       DefaultRouteTablePropagation = "enable"|"disable",
+#'       PropagationDefaultRouteTableId = "string",
+#'       VpnEcmpSupport = "enable"|"disable",
+#'       DnsSupport = "enable"|"disable",
+#'       MulticastSupport = "enable"|"disable"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10600,6 +13532,31 @@ ec2_delete_transit_gateway <- function(TransitGatewayId, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayConnect = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     TransportTransitGatewayAttachmentId = "string",
+#'     TransitGatewayId = "string",
+#'     State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Options = list(
+#'       Protocol = "gre"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_transit_gateway_connect(
@@ -10642,6 +13599,44 @@ ec2_delete_transit_gateway_connect <- function(TransitGatewayAttachmentId, DryRu
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayConnectPeer = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     TransitGatewayConnectPeerId = "string",
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ConnectPeerConfiguration = list(
+#'       TransitGatewayAddress = "string",
+#'       PeerAddress = "string",
+#'       InsideCidrBlocks = list(
+#'         "string"
+#'       ),
+#'       Protocol = "gre",
+#'       BgpConfigurations = list(
+#'         list(
+#'           TransitGatewayAsn = 123,
+#'           PeerAsn = 123,
+#'           TransitGatewayAddress = "string",
+#'           PeerAddress = "string",
+#'           BgpStatus = "up"|"down"
+#'         )
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10686,6 +13681,34 @@ ec2_delete_transit_gateway_connect_peer <- function(TransitGatewayConnectPeerId,
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayMulticastDomain = list(
+#'     TransitGatewayMulticastDomainId = "string",
+#'     TransitGatewayId = "string",
+#'     TransitGatewayMulticastDomainArn = "string",
+#'     OwnerId = "string",
+#'     Options = list(
+#'       Igmpv2Support = "enable"|"disable",
+#'       StaticSourcesSupport = "enable"|"disable",
+#'       AutoAcceptSharedAssociations = "enable"|"disable"
+#'     ),
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_transit_gateway_multicast_domain(
@@ -10728,6 +13751,40 @@ ec2_delete_transit_gateway_multicast_domain <- function(TransitGatewayMulticastD
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayPeeringAttachment = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     RequesterTgwInfo = list(
+#'       TransitGatewayId = "string",
+#'       OwnerId = "string",
+#'       Region = "string"
+#'     ),
+#'     AccepterTgwInfo = list(
+#'       TransitGatewayId = "string",
+#'       OwnerId = "string",
+#'       Region = "string"
+#'     ),
+#'     Status = list(
+#'       Code = "string",
+#'       Message = "string"
+#'     ),
+#'     State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10774,6 +13831,25 @@ ec2_delete_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayPrefixListReference = list(
+#'     TransitGatewayRouteTableId = "string",
+#'     PrefixListId = "string",
+#'     PrefixListOwnerId = "string",
+#'     State = "pending"|"available"|"modifying"|"deleting",
+#'     Blackhole = TRUE|FALSE,
+#'     TransitGatewayAttachment = list(
+#'       TransitGatewayAttachmentId = "string",
+#'       ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'       ResourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10823,6 +13899,26 @@ ec2_delete_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Route = list(
+#'     DestinationCidrBlock = "string",
+#'     PrefixListId = "string",
+#'     TransitGatewayAttachments = list(
+#'       list(
+#'         ResourceId = "string",
+#'         TransitGatewayAttachmentId = "string",
+#'         ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering"
+#'       )
+#'     ),
+#'     Type = "static"|"propagated",
+#'     State = "pending"|"active"|"blackhole"|"deleting"|"deleted"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_transit_gateway_route(
@@ -10869,6 +13965,29 @@ ec2_delete_transit_gateway_route <- function(TransitGatewayRouteTableId, Destina
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayRouteTable = list(
+#'     TransitGatewayRouteTableId = "string",
+#'     TransitGatewayId = "string",
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     DefaultAssociationRouteTable = TRUE|FALSE,
+#'     DefaultPropagationRouteTable = TRUE|FALSE,
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_transit_gateway_route_table(
@@ -10911,6 +14030,37 @@ ec2_delete_transit_gateway_route_table <- function(TransitGatewayRouteTableId, D
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayVpcAttachment = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     TransitGatewayId = "string",
+#'     VpcId = "string",
+#'     VpcOwnerId = "string",
+#'     State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Options = list(
+#'       DnsSupport = "enable"|"disable",
+#'       Ipv6Support = "enable"|"disable",
+#'       ApplianceModeSupport = "enable"|"disable"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -10960,6 +14110,8 @@ ec2_delete_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -11018,6 +14170,8 @@ ec2_delete_volume <- function(VolumeId, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_vpc(
@@ -11069,6 +14223,22 @@ ec2_delete_vpc <- function(VpcId, DryRun = NULL) {
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ConnectionNotificationIds &#91;required&#93; One or more notification IDs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Unsuccessful = list(
+#'     list(
+#'       Error = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       ResourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_vpc_endpoint_connection_notifications(
@@ -11115,6 +14285,22 @@ ec2_delete_vpc_endpoint_connection_notifications <- function(DryRun = NULL, Conn
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ServiceIds &#91;required&#93; The IDs of one or more services.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Unsuccessful = list(
+#'     list(
+#'       Error = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       ResourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11165,6 +14351,22 @@ ec2_delete_vpc_endpoint_service_configurations <- function(DryRun = NULL, Servic
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param VpcEndpointIds &#91;required&#93; One or more VPC endpoint IDs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Unsuccessful = list(
+#'     list(
+#'       Error = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       ResourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_vpc_endpoints(
@@ -11212,6 +14414,14 @@ ec2_delete_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param VpcPeeringConnectionId &#91;required&#93; The ID of the VPC peering connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11269,6 +14479,8 @@ ec2_delete_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_vpn_connection(
@@ -11311,6 +14523,8 @@ ec2_delete_vpn_connection <- function(VpnConnectionId, DryRun = NULL) {
 #'
 #' @param DestinationCidrBlock &#91;required&#93; The CIDR block associated with the local subnet of the customer network.
 #' @param VpnConnectionId &#91;required&#93; The ID of the VPN connection.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -11356,6 +14570,8 @@ ec2_delete_vpn_connection_route <- function(DestinationCidrBlock, VpnConnectionI
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -11408,6 +14624,19 @@ ec2_delete_vpn_gateway <- function(VpnGatewayId, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ByoipCidr = list(
+#'     Cidr = "string",
+#'     Description = "string",
+#'     StatusMessage = "string",
+#'     State = "advertised"|"deprovisioned"|"failed-deprovision"|"failed-provision"|"pending-deprovision"|"pending-provision"|"provisioned"|"provisioned-not-publicly-advertisable"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deprovision_byoip_cidr(
@@ -11459,6 +14688,8 @@ ec2_deprovision_byoip_cidr <- function(Cidr, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_image(
@@ -11505,6 +14736,19 @@ ec2_deregister_image <- function(ImageId, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param InstanceTagAttribute Information about the tag keys to deregister.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceTagAttribute = list(
+#'     InstanceTagKeys = list(
+#'       "string"
+#'     ),
+#'     IncludeAllTagsOfInstance = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11559,6 +14803,20 @@ ec2_deregister_instance_event_notification_attributes <- function(DryRun = NULL,
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeregisteredMulticastGroupMembers = list(
+#'     TransitGatewayMulticastDomainId = "string",
+#'     DeregisteredNetworkInterfaceIds = list(
+#'       "string"
+#'     ),
+#'     GroupIpAddress = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_transit_gateway_multicast_group_members(
@@ -11610,6 +14868,20 @@ ec2_deregister_transit_gateway_multicast_group_members <- function(TransitGatewa
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeregisteredMulticastGroupSources = list(
+#'     TransitGatewayMulticastDomainId = "string",
+#'     DeregisteredNetworkInterfaceIds = list(
+#'       "string"
+#'     ),
+#'     GroupIpAddress = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11678,6 +14950,23 @@ ec2_deregister_transit_gateway_multicast_group_sources <- function(TransitGatewa
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountAttributes = list(
+#'     list(
+#'       AttributeName = "string",
+#'       AttributeValues = list(
+#'         list(
+#'           AttributeValue = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11780,6 +15069,36 @@ ec2_describe_account_attributes <- function(AttributeNames = NULL, DryRun = NULL
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Addresses = list(
+#'     list(
+#'       InstanceId = "string",
+#'       PublicIp = "string",
+#'       AllocationId = "string",
+#'       AssociationId = "string",
+#'       Domain = "vpc"|"standard",
+#'       NetworkInterfaceId = "string",
+#'       NetworkInterfaceOwnerId = "string",
+#'       PrivateIpAddress = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       PublicIpv4Pool = "string",
+#'       NetworkBorderGroup = "string",
+#'       CustomerOwnedIp = "string",
+#'       CustomerOwnedIpv4Pool = "string",
+#'       CarrierIp = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -11885,6 +15204,23 @@ ec2_describe_addresses <- function(Filters = NULL, PublicIps = NULL, AllocationI
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UseLongIdsAggregated = TRUE|FALSE,
+#'   Statuses = list(
+#'     list(
+#'       Deadline = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Resource = "string",
+#'       UseLongIds = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_aggregate_id_format(
@@ -11980,6 +15316,32 @@ ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AvailabilityZones = list(
+#'     list(
+#'       State = "available"|"information"|"impaired"|"unavailable",
+#'       OptInStatus = "opt-in-not-required"|"opted-in"|"not-opted-in",
+#'       Messages = list(
+#'         list(
+#'           Message = "string"
+#'         )
+#'       ),
+#'       RegionName = "string",
+#'       ZoneName = "string",
+#'       ZoneId = "string",
+#'       GroupName = "string",
+#'       NetworkBorderGroup = "string",
+#'       ZoneType = "string",
+#'       ParentZoneName = "string",
+#'       ParentZoneId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_availability_zones(
@@ -12074,6 +15436,40 @@ ec2_describe_availability_zones <- function(Filters = NULL, ZoneNames = NULL, Zo
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BundleTasks = list(
+#'     list(
+#'       BundleId = "string",
+#'       BundleTaskError = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       InstanceId = "string",
+#'       Progress = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "pending"|"waiting-for-shutdown"|"bundling"|"storing"|"cancelling"|"complete"|"failed",
+#'       Storage = list(
+#'         S3 = list(
+#'           AWSAccessKeyId = "string",
+#'           Bucket = "string",
+#'           Prefix = "string",
+#'           UploadPolicy = raw,
+#'           UploadPolicySignature = "string"
+#'         )
+#'       ),
+#'       UpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_bundle_tasks(
@@ -12135,6 +15531,22 @@ ec2_describe_bundle_tasks <- function(BundleIds = NULL, Filters = NULL, DryRun =
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ByoipCidrs = list(
+#'     list(
+#'       Cidr = "string",
+#'       Description = "string",
+#'       StatusMessage = "string",
+#'       State = "advertised"|"deprovisioned"|"failed-deprovision"|"failed-provision"|"pending-deprovision"|"pending-provision"|"provisioned"|"provisioned-not-publicly-advertisable"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -12265,6 +15677,45 @@ ec2_describe_byoip_cidrs <- function(DryRun = NULL, MaxResults, NextToken = NULL
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   CapacityReservations = list(
+#'     list(
+#'       CapacityReservationId = "string",
+#'       OwnerId = "string",
+#'       CapacityReservationArn = "string",
+#'       AvailabilityZoneId = "string",
+#'       InstanceType = "string",
+#'       InstancePlatform = "Linux/UNIX"|"Red Hat Enterprise Linux"|"SUSE Linux"|"Windows"|"Windows with SQL Server"|"Windows with SQL Server Enterprise"|"Windows with SQL Server Standard"|"Windows with SQL Server Web"|"Linux with SQL Server Standard"|"Linux with SQL Server Web"|"Linux with SQL Server Enterprise",
+#'       AvailabilityZone = "string",
+#'       Tenancy = "default"|"dedicated",
+#'       TotalInstanceCount = 123,
+#'       AvailableInstanceCount = 123,
+#'       EbsOptimized = TRUE|FALSE,
+#'       EphemeralStorage = TRUE|FALSE,
+#'       State = "active"|"expired"|"cancelled"|"pending"|"failed",
+#'       EndDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndDateType = "unlimited"|"limited",
+#'       InstanceMatchCriteria = "open"|"targeted",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_capacity_reservations(
@@ -12343,6 +15794,28 @@ ec2_describe_capacity_reservations <- function(CapacityReservationIds = NULL, Ne
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CarrierGateways = list(
+#'     list(
+#'       CarrierGatewayId = "string",
+#'       VpcId = "string",
+#'       State = "pending"|"available"|"deleting"|"deleted",
+#'       OwnerId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -12430,6 +15903,32 @@ ec2_describe_carrier_gateways <- function(CarrierGatewayIds = NULL, Filters = NU
 #' items.
 #' @param NextToken The token for the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Instances = list(
+#'     list(
+#'       Groups = list(
+#'         list(
+#'           GroupName = "string",
+#'           GroupId = "string"
+#'         )
+#'       ),
+#'       InstanceId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       VpcId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_classic_link_instances(
@@ -12498,6 +15997,27 @@ ec2_describe_classic_link_instances <- function(Filters = NULL, DryRun = NULL, I
 #' page. The remaining results can be seen by sending another request with
 #' the nextToken value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthorizationRules = list(
+#'     list(
+#'       ClientVpnEndpointId = "string",
+#'       Description = "string",
+#'       GroupId = "string",
+#'       AccessAll = TRUE|FALSE,
+#'       DestinationCidr = "string",
+#'       Status = list(
+#'         Code = "authorizing"|"active"|"failed"|"revoking",
+#'         Message = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_client_vpn_authorization_rules(
@@ -12565,6 +16085,37 @@ ec2_describe_client_vpn_authorization_rules <- function(ClientVpnEndpointId, Dry
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Connections = list(
+#'     list(
+#'       ClientVpnEndpointId = "string",
+#'       Timestamp = "string",
+#'       ConnectionId = "string",
+#'       Username = "string",
+#'       ConnectionEstablishedTime = "string",
+#'       IngressBytes = "string",
+#'       EgressBytes = "string",
+#'       IngressPackets = "string",
+#'       EgressPackets = "string",
+#'       ClientIp = "string",
+#'       CommonName = "string",
+#'       Status = list(
+#'         Code = "active"|"failed-to-terminate"|"terminating"|"terminated",
+#'         Message = "string"
+#'       ),
+#'       ConnectionEndTime = "string",
+#'       PostureComplianceStatuses = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_client_vpn_connections(
@@ -12626,6 +16177,81 @@ ec2_describe_client_vpn_connections <- function(ClientVpnEndpointId, Filters = N
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientVpnEndpoints = list(
+#'     list(
+#'       ClientVpnEndpointId = "string",
+#'       Description = "string",
+#'       Status = list(
+#'         Code = "pending-associate"|"available"|"deleting"|"deleted",
+#'         Message = "string"
+#'       ),
+#'       CreationTime = "string",
+#'       DeletionTime = "string",
+#'       DnsName = "string",
+#'       ClientCidrBlock = "string",
+#'       DnsServers = list(
+#'         "string"
+#'       ),
+#'       SplitTunnel = TRUE|FALSE,
+#'       VpnProtocol = "openvpn",
+#'       TransportProtocol = "tcp"|"udp",
+#'       VpnPort = 123,
+#'       AssociatedTargetNetworks = list(
+#'         list(
+#'           NetworkId = "string",
+#'           NetworkType = "vpc"
+#'         )
+#'       ),
+#'       ServerCertificateArn = "string",
+#'       AuthenticationOptions = list(
+#'         list(
+#'           Type = "certificate-authentication"|"directory-service-authentication"|"federated-authentication",
+#'           ActiveDirectory = list(
+#'             DirectoryId = "string"
+#'           ),
+#'           MutualAuthentication = list(
+#'             ClientRootCertificateChain = "string"
+#'           ),
+#'           FederatedAuthentication = list(
+#'             SamlProviderArn = "string",
+#'             SelfServiceSamlProviderArn = "string"
+#'           )
+#'         )
+#'       ),
+#'       ConnectionLogOptions = list(
+#'         Enabled = TRUE|FALSE,
+#'         CloudwatchLogGroup = "string",
+#'         CloudwatchLogStream = "string"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       VpcId = "string",
+#'       SelfServicePortalUrl = "string",
+#'       ClientConnectOptions = list(
+#'         Enabled = TRUE|FALSE,
+#'         LambdaFunctionArn = "string",
+#'         Status = list(
+#'           Code = "applying"|"applied",
+#'           Message = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -12695,6 +16321,28 @@ ec2_describe_client_vpn_endpoints <- function(ClientVpnEndpointIds = NULL, MaxRe
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Routes = list(
+#'     list(
+#'       ClientVpnEndpointId = "string",
+#'       DestinationCidr = "string",
+#'       TargetSubnet = "string",
+#'       Type = "string",
+#'       Origin = "string",
+#'       Status = list(
+#'         Code = "creating"|"active"|"failed"|"deleting",
+#'         Message = "string"
+#'       ),
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_client_vpn_routes(
@@ -12763,6 +16411,29 @@ ec2_describe_client_vpn_routes <- function(ClientVpnEndpointId, Filters = NULL, 
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientVpnTargetNetworks = list(
+#'     list(
+#'       AssociationId = "string",
+#'       VpcId = "string",
+#'       TargetNetworkId = "string",
+#'       ClientVpnEndpointId = "string",
+#'       Status = list(
+#'         Code = "associating"|"associated"|"association-failed"|"disassociating"|"disassociated",
+#'         Message = "string"
+#'       ),
+#'       SecurityGroups = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_client_vpn_target_networks(
@@ -12819,7 +16490,6 @@ ec2_describe_client_vpn_target_networks <- function(ClientVpnEndpointId, Associa
 #' 
 #' -   `coip-pool.pool-id`
 #' 
-#' <!-- -->
 #' 
 #' -   `coip-pool.local-gateway-route-table-id`
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
@@ -12830,6 +16500,30 @@ ec2_describe_client_vpn_target_networks <- function(ClientVpnEndpointId, Associa
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoipPools = list(
+#'     list(
+#'       PoolId = "string",
+#'       PoolCidrs = list(
+#'         "string"
+#'       ),
+#'       LocalGatewayRouteTableId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       PoolArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -12890,6 +16584,66 @@ ec2_describe_coip_pools <- function(PoolIds = NULL, Filters = NULL, MaxResults =
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConversionTasks = list(
+#'     list(
+#'       ConversionTaskId = "string",
+#'       ExpirationTime = "string",
+#'       ImportInstance = list(
+#'         Description = "string",
+#'         InstanceId = "string",
+#'         Platform = "Windows",
+#'         Volumes = list(
+#'           list(
+#'             AvailabilityZone = "string",
+#'             BytesConverted = 123,
+#'             Description = "string",
+#'             Image = list(
+#'               Checksum = "string",
+#'               Format = "VMDK"|"RAW"|"VHD",
+#'               ImportManifestUrl = "string",
+#'               Size = 123
+#'             ),
+#'             Status = "string",
+#'             StatusMessage = "string",
+#'             Volume = list(
+#'               Id = "string",
+#'               Size = 123
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ImportVolume = list(
+#'         AvailabilityZone = "string",
+#'         BytesConverted = 123,
+#'         Description = "string",
+#'         Image = list(
+#'           Checksum = "string",
+#'           Format = "VMDK"|"RAW"|"VHD",
+#'           ImportManifestUrl = "string",
+#'           Size = 123
+#'         ),
+#'         Volume = list(
+#'           Id = "string",
+#'           Size = 123
+#'         )
+#'       ),
+#'       State = "active"|"cancelling"|"cancelled"|"completed",
+#'       StatusMessage = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -12965,6 +16719,30 @@ ec2_describe_conversion_tasks <- function(ConversionTaskIds = NULL, DryRun = NUL
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CustomerGateways = list(
+#'     list(
+#'       BgpAsn = "string",
+#'       CustomerGatewayId = "string",
+#'       IpAddress = "string",
+#'       CertificateArn = "string",
+#'       State = "string",
+#'       Type = "string",
+#'       DeviceName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -13059,6 +16837,36 @@ ec2_describe_customer_gateways <- function(CustomerGatewayIds = NULL, Filters = 
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DhcpOptions = list(
+#'     list(
+#'       DhcpConfigurations = list(
+#'         list(
+#'           Key = "string",
+#'           Values = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DhcpOptionsId = "string",
+#'       OwnerId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_dhcp_options(
@@ -13139,6 +16947,31 @@ ec2_describe_dhcp_options <- function(DhcpOptionsIds = NULL, Filters = NULL, Dry
 #'     filter to find all resources assigned a tag with a specific key,
 #'     regardless of the tag value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EgressOnlyInternetGateways = list(
+#'     list(
+#'       Attachments = list(
+#'         list(
+#'           State = "attaching"|"attached"|"detaching"|"detached",
+#'           VpcId = "string"
+#'         )
+#'       ),
+#'       EgressOnlyInternetGatewayId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_egress_only_internet_gateways(
@@ -13218,6 +17051,33 @@ ec2_describe_egress_only_internet_gateways <- function(DryRun = NULL, EgressOnly
 #' value. This value can be between 5 and 1000.
 #' @param NextToken The token to request the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ElasticGpuSet = list(
+#'     list(
+#'       ElasticGpuId = "string",
+#'       AvailabilityZone = "string",
+#'       ElasticGpuType = "string",
+#'       ElasticGpuHealth = list(
+#'         Status = "OK"|"IMPAIRED"
+#'       ),
+#'       ElasticGpuState = "ATTACHED",
+#'       InstanceId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_elastic_gpus(
@@ -13279,6 +17139,34 @@ ec2_describe_elastic_gpus <- function(ElasticGpuIds = NULL, DryRun = NULL, Filte
 #' @param MaxResults The maximum number of results to return in a single call.
 #' @param NextToken A token that indicates the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExportImageTasks = list(
+#'     list(
+#'       Description = "string",
+#'       ExportImageTaskId = "string",
+#'       ImageId = "string",
+#'       Progress = "string",
+#'       S3ExportLocation = list(
+#'         S3Bucket = "string",
+#'         S3Prefix = "string"
+#'       ),
+#'       Status = "string",
+#'       StatusMessage = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_export_image_tasks(
@@ -13331,6 +17219,37 @@ ec2_describe_export_image_tasks <- function(DryRun = NULL, Filters = NULL, Expor
 #'
 #' @param ExportTaskIds The export task IDs.
 #' @param Filters the filters for the export tasks.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExportTasks = list(
+#'     list(
+#'       Description = "string",
+#'       ExportTaskId = "string",
+#'       ExportToS3Task = list(
+#'         ContainerFormat = "ova",
+#'         DiskImageFormat = "VMDK"|"RAW"|"VHD",
+#'         S3Bucket = "string",
+#'         S3Key = "string"
+#'       ),
+#'       InstanceExportDetails = list(
+#'         InstanceId = "string",
+#'         TargetEnvironment = "citrix"|"vmware"|"microsoft"
+#'       ),
+#'       State = "active"|"cancelling"|"cancelled"|"completed",
+#'       StatusMessage = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -13397,6 +17316,39 @@ ec2_describe_export_tasks <- function(ExportTaskIds = NULL, Filters = NULL) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FastSnapshotRestores = list(
+#'     list(
+#'       SnapshotId = "string",
+#'       AvailabilityZone = "string",
+#'       State = "enabling"|"optimizing"|"enabled"|"disabling"|"disabled",
+#'       StateTransitionReason = "string",
+#'       OwnerId = "string",
+#'       OwnerAlias = "string",
+#'       EnablingTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OptimizingTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EnabledTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DisablingTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DisabledTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -13465,6 +17417,34 @@ ec2_describe_fast_snapshot_restores <- function(Filters = NULL, MaxResults = NUL
 #' @param StartTime &#91;required&#93; The start date and time for the events, in UTC format (for example,
 #' *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HistoryRecords = list(
+#'     list(
+#'       EventInformation = list(
+#'         EventDescription = "string",
+#'         EventSubType = "string",
+#'         InstanceId = "string"
+#'       ),
+#'       EventType = "instance-change"|"fleet-change"|"service-error",
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   LastEvaluatedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NextToken = "string",
+#'   FleetId = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_fleet_history(
@@ -13521,6 +17501,23 @@ ec2_describe_fleet_history <- function(DryRun = NULL, EventType = NULL, MaxResul
 #' @param Filters The filters.
 #' 
 #' -   `instance-type` - The instance type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ActiveInstances = list(
+#'     list(
+#'       InstanceId = "string",
+#'       InstanceType = "string",
+#'       SpotInstanceRequestId = "string",
+#'       InstanceHealth = "healthy"|"unhealthy"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   FleetId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -13595,6 +17592,148 @@ ec2_describe_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, NextT
 #'     replace unhealthy instances (`true` | `false`).
 #' 
 #' -   `type` - The type of request (`instant` | `request` | `maintain`).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Fleets = list(
+#'     list(
+#'       ActivityStatus = "error"|"pending_fulfillment"|"pending_termination"|"fulfilled",
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FleetId = "string",
+#'       FleetState = "submitted"|"active"|"deleted"|"failed"|"deleted_running"|"deleted_terminating"|"modifying",
+#'       ClientToken = "string",
+#'       ExcessCapacityTerminationPolicy = "no-termination"|"termination",
+#'       FulfilledCapacity = 123.0,
+#'       FulfilledOnDemandCapacity = 123.0,
+#'       LaunchTemplateConfigs = list(
+#'         list(
+#'           LaunchTemplateSpecification = list(
+#'             LaunchTemplateId = "string",
+#'             LaunchTemplateName = "string",
+#'             Version = "string"
+#'           ),
+#'           Overrides = list(
+#'             list(
+#'               InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'               MaxPrice = "string",
+#'               SubnetId = "string",
+#'               AvailabilityZone = "string",
+#'               WeightedCapacity = 123.0,
+#'               Priority = 123.0,
+#'               Placement = list(
+#'                 GroupName = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       TargetCapacitySpecification = list(
+#'         TotalTargetCapacity = 123,
+#'         OnDemandTargetCapacity = 123,
+#'         SpotTargetCapacity = 123,
+#'         DefaultTargetCapacityType = "spot"|"on-demand"
+#'       ),
+#'       TerminateInstancesWithExpiration = TRUE|FALSE,
+#'       Type = "request"|"maintain"|"instant",
+#'       ValidFrom = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ValidUntil = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ReplaceUnhealthyInstances = TRUE|FALSE,
+#'       SpotOptions = list(
+#'         AllocationStrategy = "lowest-price"|"diversified"|"capacity-optimized",
+#'         MaintenanceStrategies = list(
+#'           CapacityRebalance = list(
+#'             ReplacementStrategy = "launch"
+#'           )
+#'         ),
+#'         InstanceInterruptionBehavior = "hibernate"|"stop"|"terminate",
+#'         InstancePoolsToUseCount = 123,
+#'         SingleInstanceType = TRUE|FALSE,
+#'         SingleAvailabilityZone = TRUE|FALSE,
+#'         MinTargetCapacity = 123,
+#'         MaxTotalPrice = "string"
+#'       ),
+#'       OnDemandOptions = list(
+#'         AllocationStrategy = "lowest-price"|"prioritized",
+#'         CapacityReservationOptions = list(
+#'           UsageStrategy = "use-capacity-reservations-first"
+#'         ),
+#'         SingleInstanceType = TRUE|FALSE,
+#'         SingleAvailabilityZone = TRUE|FALSE,
+#'         MinTargetCapacity = 123,
+#'         MaxTotalPrice = "string"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Errors = list(
+#'         list(
+#'           LaunchTemplateAndOverrides = list(
+#'             LaunchTemplateSpecification = list(
+#'               LaunchTemplateId = "string",
+#'               LaunchTemplateName = "string",
+#'               Version = "string"
+#'             ),
+#'             Overrides = list(
+#'               InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'               MaxPrice = "string",
+#'               SubnetId = "string",
+#'               AvailabilityZone = "string",
+#'               WeightedCapacity = 123.0,
+#'               Priority = 123.0,
+#'               Placement = list(
+#'                 GroupName = "string"
+#'               )
+#'             )
+#'           ),
+#'           Lifecycle = "spot"|"on-demand",
+#'           ErrorCode = "string",
+#'           ErrorMessage = "string"
+#'         )
+#'       ),
+#'       Instances = list(
+#'         list(
+#'           LaunchTemplateAndOverrides = list(
+#'             LaunchTemplateSpecification = list(
+#'               LaunchTemplateId = "string",
+#'               LaunchTemplateName = "string",
+#'               Version = "string"
+#'             ),
+#'             Overrides = list(
+#'               InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'               MaxPrice = "string",
+#'               SubnetId = "string",
+#'               AvailabilityZone = "string",
+#'               WeightedCapacity = 123.0,
+#'               Priority = 123.0,
+#'               Placement = list(
+#'                 GroupName = "string"
+#'               )
+#'             )
+#'           ),
+#'           Lifecycle = "spot"|"on-demand",
+#'           InstanceIds = list(
+#'             "string"
+#'           ),
+#'           InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'           Platform = "Windows"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -13685,6 +17824,39 @@ ec2_describe_fleets <- function(DryRun = NULL, MaxResults = NULL, NextToken = NU
 #' value.
 #' @param NextToken The token for the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FlowLogs = list(
+#'     list(
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeliverLogsErrorMessage = "string",
+#'       DeliverLogsPermissionArn = "string",
+#'       DeliverLogsStatus = "string",
+#'       FlowLogId = "string",
+#'       FlowLogStatus = "string",
+#'       LogGroupName = "string",
+#'       ResourceId = "string",
+#'       TrafficType = "ACCEPT"|"REJECT"|"ALL",
+#'       LogDestinationType = "cloud-watch-logs"|"s3",
+#'       LogDestination = "string",
+#'       LogFormat = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       MaxAggregationInterval = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_flow_logs(
@@ -13741,6 +17913,30 @@ ec2_describe_flow_logs <- function(DryRun = NULL, Filter = NULL, FlowLogIds = NU
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param FpgaImageId &#91;required&#93; The ID of the AFI.
 #' @param Attribute &#91;required&#93; The AFI attribute.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FpgaImageAttribute = list(
+#'     FpgaImageId = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     LoadPermissions = list(
+#'       list(
+#'         UserId = "string",
+#'         Group = "all"
+#'       )
+#'     ),
+#'     ProductCodes = list(
+#'       list(
+#'         ProductCodeId = "string",
+#'         ProductCodeType = "devpay"|"marketplace"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -13823,6 +18019,55 @@ ec2_describe_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attrib
 #' -   `update-time` - The time of the most recent update.
 #' @param NextToken The token to retrieve the next page of results.
 #' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FpgaImages = list(
+#'     list(
+#'       FpgaImageId = "string",
+#'       FpgaImageGlobalId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       ShellVersion = "string",
+#'       PciId = list(
+#'         DeviceId = "string",
+#'         VendorId = "string",
+#'         SubsystemId = "string",
+#'         SubsystemVendorId = "string"
+#'       ),
+#'       State = list(
+#'         Code = "pending"|"failed"|"available"|"unavailable",
+#'         Message = "string"
+#'       ),
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OwnerId = "string",
+#'       OwnerAlias = "string",
+#'       ProductCodes = list(
+#'         list(
+#'           ProductCodeId = "string",
+#'           ProductCodeType = "devpay"|"marketplace"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Public = TRUE|FALSE,
+#'       DataRetentionSupport = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -13910,6 +18155,25 @@ ec2_describe_fpga_images <- function(DryRun = NULL, FpgaImageIds = NULL, Owners 
 #' @param NextToken The token to use to retrieve the next page of results.
 #' @param OfferingId The ID of the reservation offering.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   OfferingSet = list(
+#'     list(
+#'       CurrencyCode = "USD",
+#'       Duration = 123,
+#'       HourlyPrice = "string",
+#'       InstanceFamily = "string",
+#'       OfferingId = "string",
+#'       PaymentOption = "AllUpfront"|"PartialUpfront"|"NoUpfront",
+#'       UpfrontPrice = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_host_reservation_offerings(
@@ -13985,6 +18249,43 @@ ec2_describe_host_reservation_offerings <- function(Filter = NULL, MaxDuration =
 #' the returned `nextToken` value. This value can be between 5 and 500. If
 #' `maxResults` is given a larger value than 500, you receive an error.
 #' @param NextToken The token to use to retrieve the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HostReservationSet = list(
+#'     list(
+#'       Count = 123,
+#'       CurrencyCode = "USD",
+#'       Duration = 123,
+#'       End = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       HostIdSet = list(
+#'         "string"
+#'       ),
+#'       HostReservationId = "string",
+#'       HourlyPrice = "string",
+#'       InstanceFamily = "string",
+#'       OfferingId = "string",
+#'       PaymentOption = "AllUpfront"|"PartialUpfront"|"NoUpfront",
+#'       Start = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "payment-pending"|"payment-failed"|"active"|"retired",
+#'       UpfrontPrice = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -14072,6 +18373,65 @@ ec2_describe_host_reservations <- function(Filter = NULL, HostReservationIdSet =
 #' request.
 #' @param NextToken The token to use to retrieve the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Hosts = list(
+#'     list(
+#'       AutoPlacement = "on"|"off",
+#'       AvailabilityZone = "string",
+#'       AvailableCapacity = list(
+#'         AvailableInstanceCapacity = list(
+#'           list(
+#'             AvailableCapacity = 123,
+#'             InstanceType = "string",
+#'             TotalCapacity = 123
+#'           )
+#'         ),
+#'         AvailableVCpus = 123
+#'       ),
+#'       ClientToken = "string",
+#'       HostId = "string",
+#'       HostProperties = list(
+#'         Cores = 123,
+#'         InstanceType = "string",
+#'         InstanceFamily = "string",
+#'         Sockets = 123,
+#'         TotalVCpus = 123
+#'       ),
+#'       HostReservationId = "string",
+#'       Instances = list(
+#'         list(
+#'           InstanceId = "string",
+#'           InstanceType = "string",
+#'           OwnerId = "string"
+#'         )
+#'       ),
+#'       State = "available"|"under-assessment"|"permanent-failure"|"released"|"released-permanent-failure"|"pending",
+#'       AllocationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ReleaseTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       HostRecovery = "on"|"off",
+#'       AllowsMultipleInstanceTypes = "on"|"off",
+#'       OwnerId = "string",
+#'       AvailabilityZoneId = "string",
+#'       MemberOfServiceLinkedResourceGroup = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_hosts(
@@ -14131,6 +18491,28 @@ ec2_describe_hosts <- function(Filter = NULL, HostIds = NULL, MaxResults = NULL,
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IamInstanceProfileAssociations = list(
+#'     list(
+#'       AssociationId = "string",
+#'       InstanceId = "string",
+#'       IamInstanceProfile = list(
+#'         Arn = "string",
+#'         Id = "string"
+#'       ),
+#'       State = "associating"|"associated"|"disassociating"|"disassociated",
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -14225,6 +18607,22 @@ ec2_describe_iam_instance_profile_associations <- function(AssociationIds = NULL
 #' `vpc-cidr-block-association` | `vpc-endpoint` | `vpc-peering-connection`
 #' | `vpn-connection` | `vpn-gateway`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Statuses = list(
+#'     list(
+#'       Deadline = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Resource = "string",
+#'       UseLongIds = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_id_format(
@@ -14295,6 +18693,22 @@ ec2_describe_id_format <- function(Resource = NULL) {
 #' `vpc-cidr-block-association` | `vpc-endpoint` | `vpc-peering-connection`
 #' | `vpn-connection` | `vpn-gateway`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Statuses = list(
+#'     list(
+#'       Deadline = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Resource = "string",
+#'       UseLongIds = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_identity_id_format(
@@ -14343,6 +18757,55 @@ ec2_describe_identity_id_format <- function(PrincipalArn, Resource = NULL) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BlockDeviceMappings = list(
+#'     list(
+#'       DeviceName = "string",
+#'       VirtualName = "string",
+#'       Ebs = list(
+#'         DeleteOnTermination = TRUE|FALSE,
+#'         Iops = 123,
+#'         SnapshotId = "string",
+#'         VolumeSize = 123,
+#'         VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'         KmsKeyId = "string",
+#'         Throughput = 123,
+#'         Encrypted = TRUE|FALSE
+#'       ),
+#'       NoDevice = "string"
+#'     )
+#'   ),
+#'   ImageId = "string",
+#'   LaunchPermissions = list(
+#'     list(
+#'       Group = "all",
+#'       UserId = "string"
+#'     )
+#'   ),
+#'   ProductCodes = list(
+#'     list(
+#'       ProductCodeId = "string",
+#'       ProductCodeType = "devpay"|"marketplace"
+#'     )
+#'   ),
+#'   Description = list(
+#'     Value = "string"
+#'   ),
+#'   KernelId = list(
+#'     Value = "string"
+#'   ),
+#'   RamdiskId = list(
+#'     Value = "string"
+#'   ),
+#'   SriovNetSupport = list(
+#'     Value = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -14506,6 +18969,72 @@ ec2_describe_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Images = list(
+#'     list(
+#'       Architecture = "i386"|"x86_64"|"arm64",
+#'       CreationDate = "string",
+#'       ImageId = "string",
+#'       ImageLocation = "string",
+#'       ImageType = "machine"|"kernel"|"ramdisk",
+#'       Public = TRUE|FALSE,
+#'       KernelId = "string",
+#'       OwnerId = "string",
+#'       Platform = "Windows",
+#'       PlatformDetails = "string",
+#'       UsageOperation = "string",
+#'       ProductCodes = list(
+#'         list(
+#'           ProductCodeId = "string",
+#'           ProductCodeType = "devpay"|"marketplace"
+#'         )
+#'       ),
+#'       RamdiskId = "string",
+#'       State = "pending"|"available"|"invalid"|"deregistered"|"transient"|"failed"|"error",
+#'       BlockDeviceMappings = list(
+#'         list(
+#'           DeviceName = "string",
+#'           VirtualName = "string",
+#'           Ebs = list(
+#'             DeleteOnTermination = TRUE|FALSE,
+#'             Iops = 123,
+#'             SnapshotId = "string",
+#'             VolumeSize = 123,
+#'             VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'             KmsKeyId = "string",
+#'             Throughput = 123,
+#'             Encrypted = TRUE|FALSE
+#'           ),
+#'           NoDevice = "string"
+#'         )
+#'       ),
+#'       Description = "string",
+#'       EnaSupport = TRUE|FALSE,
+#'       Hypervisor = "ovm"|"xen",
+#'       ImageOwnerAlias = "string",
+#'       Name = "string",
+#'       RootDeviceName = "string",
+#'       RootDeviceType = "ebs"|"instance-store",
+#'       SriovNetSupport = "string",
+#'       StateReason = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       VirtualizationType = "hvm"|"paravirtual"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_images(
@@ -14581,6 +19110,58 @@ ec2_describe_images <- function(ExecutableUsers = NULL, Filters = NULL, ImageIds
 #' @param MaxResults The maximum number of results to return in a single call.
 #' @param NextToken A token that indicates the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImportImageTasks = list(
+#'     list(
+#'       Architecture = "string",
+#'       Description = "string",
+#'       Encrypted = TRUE|FALSE,
+#'       Hypervisor = "string",
+#'       ImageId = "string",
+#'       ImportTaskId = "string",
+#'       KmsKeyId = "string",
+#'       LicenseType = "string",
+#'       Platform = "string",
+#'       Progress = "string",
+#'       SnapshotDetails = list(
+#'         list(
+#'           Description = "string",
+#'           DeviceName = "string",
+#'           DiskImageSize = 123.0,
+#'           Format = "string",
+#'           Progress = "string",
+#'           SnapshotId = "string",
+#'           Status = "string",
+#'           StatusMessage = "string",
+#'           Url = "string",
+#'           UserBucket = list(
+#'             S3Bucket = "string",
+#'             S3Key = "string"
+#'           )
+#'         )
+#'       ),
+#'       Status = "string",
+#'       StatusMessage = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       LicenseSpecifications = list(
+#'         list(
+#'           LicenseConfigurationArn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_import_image_tasks(
@@ -14640,6 +19221,42 @@ ec2_describe_import_image_tasks <- function(DryRun = NULL, Filters = NULL, Impor
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken A token that indicates the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImportSnapshotTasks = list(
+#'     list(
+#'       Description = "string",
+#'       ImportTaskId = "string",
+#'       SnapshotTaskDetail = list(
+#'         Description = "string",
+#'         DiskImageSize = 123.0,
+#'         Encrypted = TRUE|FALSE,
+#'         Format = "string",
+#'         KmsKeyId = "string",
+#'         Progress = "string",
+#'         SnapshotId = "string",
+#'         Status = "string",
+#'         StatusMessage = "string",
+#'         Url = "string",
+#'         UserBucket = list(
+#'           S3Bucket = "string",
+#'           S3Key = "string"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -14702,6 +19319,75 @@ ec2_describe_import_snapshot_tasks <- function(DryRun = NULL, Filters = NULL, Im
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param InstanceId &#91;required&#93; The ID of the instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Groups = list(
+#'     list(
+#'       GroupName = "string",
+#'       GroupId = "string"
+#'     )
+#'   ),
+#'   BlockDeviceMappings = list(
+#'     list(
+#'       DeviceName = "string",
+#'       Ebs = list(
+#'         AttachTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         DeleteOnTermination = TRUE|FALSE,
+#'         Status = "attaching"|"attached"|"detaching"|"detached",
+#'         VolumeId = "string"
+#'       )
+#'     )
+#'   ),
+#'   DisableApiTermination = list(
+#'     Value = TRUE|FALSE
+#'   ),
+#'   EnaSupport = list(
+#'     Value = TRUE|FALSE
+#'   ),
+#'   EnclaveOptions = list(
+#'     Enabled = TRUE|FALSE
+#'   ),
+#'   EbsOptimized = list(
+#'     Value = TRUE|FALSE
+#'   ),
+#'   InstanceId = "string",
+#'   InstanceInitiatedShutdownBehavior = list(
+#'     Value = "string"
+#'   ),
+#'   InstanceType = list(
+#'     Value = "string"
+#'   ),
+#'   KernelId = list(
+#'     Value = "string"
+#'   ),
+#'   ProductCodes = list(
+#'     list(
+#'       ProductCodeId = "string",
+#'       ProductCodeType = "devpay"|"marketplace"
+#'     )
+#'   ),
+#'   RamdiskId = list(
+#'     Value = "string"
+#'   ),
+#'   RootDeviceName = list(
+#'     Value = "string"
+#'   ),
+#'   SourceDestCheck = list(
+#'     Value = TRUE|FALSE
+#'   ),
+#'   SriovNetSupport = list(
+#'     Value = "string"
+#'   ),
+#'   UserData = list(
+#'     Value = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -14812,6 +19498,20 @@ ec2_describe_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId
 #' parameter and the instance IDs parameter in the same call.
 #' @param NextToken The token to retrieve the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceCreditSpecifications = list(
+#'     list(
+#'       InstanceId = "string",
+#'       CpuCredits = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_instance_credit_specifications(
@@ -14866,6 +19566,19 @@ ec2_describe_instance_credit_specifications <- function(DryRun = NULL, Filters =
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceTagAttribute = list(
+#'     InstanceTagKeys = list(
+#'       "string"
+#'     ),
+#'     IncludeAllTagsOfInstance = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -14994,6 +19707,65 @@ ec2_describe_instance_event_notification_attributes <- function(DryRun = NULL) {
 #' 
 #' Default: `false`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceStatuses = list(
+#'     list(
+#'       AvailabilityZone = "string",
+#'       OutpostArn = "string",
+#'       Events = list(
+#'         list(
+#'           InstanceEventId = "string",
+#'           Code = "instance-reboot"|"system-reboot"|"system-maintenance"|"instance-retirement"|"instance-stop",
+#'           Description = "string",
+#'           NotAfter = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           NotBefore = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           NotBeforeDeadline = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       InstanceId = "string",
+#'       InstanceState = list(
+#'         Code = 123,
+#'         Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+#'       ),
+#'       InstanceStatus = list(
+#'         Details = list(
+#'           list(
+#'             ImpairedSince = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Name = "reachability",
+#'             Status = "passed"|"failed"|"insufficient-data"|"initializing"
+#'           )
+#'         ),
+#'         Status = "ok"|"impaired"|"insufficient-data"|"not-applicable"|"initializing"
+#'       ),
+#'       SystemStatus = list(
+#'         Details = list(
+#'           list(
+#'             ImpairedSince = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Name = "reachability",
+#'             Status = "passed"|"failed"|"insufficient-data"|"initializing"
+#'           )
+#'         ),
+#'         Status = "ok"|"impaired"|"insufficient-data"|"not-applicable"|"initializing"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_instance_status(
@@ -15073,6 +19845,21 @@ ec2_describe_instance_status <- function(Filters = NULL, InstanceIds = NULL, Max
 #' page. The remaining results can be seen by sending another request with
 #' the next token value.
 #' @param NextToken The token to retrieve the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceTypeOfferings = list(
+#'     list(
+#'       InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'       LocationType = "region"|"availability-zone"|"availability-zone-id",
+#'       Location = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -15266,6 +20053,139 @@ ec2_describe_instance_type_offerings <- function(DryRun = NULL, LocationType = N
 #' page. The remaining results can be seen by sending another request with
 #' the next token value.
 #' @param NextToken The token to retrieve the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceTypes = list(
+#'     list(
+#'       InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'       CurrentGeneration = TRUE|FALSE,
+#'       FreeTierEligible = TRUE|FALSE,
+#'       SupportedUsageClasses = list(
+#'         "spot"|"on-demand"
+#'       ),
+#'       SupportedRootDeviceTypes = list(
+#'         "ebs"|"instance-store"
+#'       ),
+#'       SupportedVirtualizationTypes = list(
+#'         "hvm"|"paravirtual"
+#'       ),
+#'       BareMetal = TRUE|FALSE,
+#'       Hypervisor = "nitro"|"xen",
+#'       ProcessorInfo = list(
+#'         SupportedArchitectures = list(
+#'           "i386"|"x86_64"|"arm64"
+#'         ),
+#'         SustainedClockSpeedInGhz = 123.0
+#'       ),
+#'       VCpuInfo = list(
+#'         DefaultVCpus = 123,
+#'         DefaultCores = 123,
+#'         DefaultThreadsPerCore = 123,
+#'         ValidCores = list(
+#'           123
+#'         ),
+#'         ValidThreadsPerCore = list(
+#'           123
+#'         )
+#'       ),
+#'       MemoryInfo = list(
+#'         SizeInMiB = 123
+#'       ),
+#'       InstanceStorageSupported = TRUE|FALSE,
+#'       InstanceStorageInfo = list(
+#'         TotalSizeInGB = 123,
+#'         Disks = list(
+#'           list(
+#'             SizeInGB = 123,
+#'             Count = 123,
+#'             Type = "hdd"|"ssd"
+#'           )
+#'         ),
+#'         NvmeSupport = "unsupported"|"supported"|"required"
+#'       ),
+#'       EbsInfo = list(
+#'         EbsOptimizedSupport = "unsupported"|"supported"|"default",
+#'         EncryptionSupport = "unsupported"|"supported",
+#'         EbsOptimizedInfo = list(
+#'           BaselineBandwidthInMbps = 123,
+#'           BaselineThroughputInMBps = 123.0,
+#'           BaselineIops = 123,
+#'           MaximumBandwidthInMbps = 123,
+#'           MaximumThroughputInMBps = 123.0,
+#'           MaximumIops = 123
+#'         ),
+#'         NvmeSupport = "unsupported"|"supported"|"required"
+#'       ),
+#'       NetworkInfo = list(
+#'         NetworkPerformance = "string",
+#'         MaximumNetworkInterfaces = 123,
+#'         MaximumNetworkCards = 123,
+#'         DefaultNetworkCardIndex = 123,
+#'         NetworkCards = list(
+#'           list(
+#'             NetworkCardIndex = 123,
+#'             NetworkPerformance = "string",
+#'             MaximumNetworkInterfaces = 123
+#'           )
+#'         ),
+#'         Ipv4AddressesPerInterface = 123,
+#'         Ipv6AddressesPerInterface = 123,
+#'         Ipv6Supported = TRUE|FALSE,
+#'         EnaSupport = "unsupported"|"supported"|"required",
+#'         EfaSupported = TRUE|FALSE
+#'       ),
+#'       GpuInfo = list(
+#'         Gpus = list(
+#'           list(
+#'             Name = "string",
+#'             Manufacturer = "string",
+#'             Count = 123,
+#'             MemoryInfo = list(
+#'               SizeInMiB = 123
+#'             )
+#'           )
+#'         ),
+#'         TotalGpuMemoryInMiB = 123
+#'       ),
+#'       FpgaInfo = list(
+#'         Fpgas = list(
+#'           list(
+#'             Name = "string",
+#'             Manufacturer = "string",
+#'             Count = 123,
+#'             MemoryInfo = list(
+#'               SizeInMiB = 123
+#'             )
+#'           )
+#'         ),
+#'         TotalFpgaMemoryInMiB = 123
+#'       ),
+#'       PlacementGroupInfo = list(
+#'         SupportedStrategies = list(
+#'           "cluster"|"partition"|"spread"
+#'         )
+#'       ),
+#'       InferenceAcceleratorInfo = list(
+#'         Accelerators = list(
+#'           list(
+#'             Count = 123,
+#'             Name = "string",
+#'             Manufacturer = "string"
+#'           )
+#'         )
+#'       ),
+#'       HibernationSupported = TRUE|FALSE,
+#'       BurstablePerformanceSupported = TRUE|FALSE,
+#'       DedicatedHostsSupported = TRUE|FALSE,
+#'       AutoRecoverySupported = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -15623,6 +20543,220 @@ ec2_describe_instance_types <- function(DryRun = NULL, InstanceTypes = NULL, Fil
 #' parameter and the instance IDs parameter in the same call.
 #' @param NextToken The token to request the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Reservations = list(
+#'     list(
+#'       Groups = list(
+#'         list(
+#'           GroupName = "string",
+#'           GroupId = "string"
+#'         )
+#'       ),
+#'       Instances = list(
+#'         list(
+#'           AmiLaunchIndex = 123,
+#'           ImageId = "string",
+#'           InstanceId = "string",
+#'           InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'           KernelId = "string",
+#'           KeyName = "string",
+#'           LaunchTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Monitoring = list(
+#'             State = "disabled"|"disabling"|"enabled"|"pending"
+#'           ),
+#'           Placement = list(
+#'             AvailabilityZone = "string",
+#'             Affinity = "string",
+#'             GroupName = "string",
+#'             PartitionNumber = 123,
+#'             HostId = "string",
+#'             Tenancy = "default"|"dedicated"|"host",
+#'             SpreadDomain = "string",
+#'             HostResourceGroupArn = "string"
+#'           ),
+#'           Platform = "Windows",
+#'           PrivateDnsName = "string",
+#'           PrivateIpAddress = "string",
+#'           ProductCodes = list(
+#'             list(
+#'               ProductCodeId = "string",
+#'               ProductCodeType = "devpay"|"marketplace"
+#'             )
+#'           ),
+#'           PublicDnsName = "string",
+#'           PublicIpAddress = "string",
+#'           RamdiskId = "string",
+#'           State = list(
+#'             Code = 123,
+#'             Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+#'           ),
+#'           StateTransitionReason = "string",
+#'           SubnetId = "string",
+#'           VpcId = "string",
+#'           Architecture = "i386"|"x86_64"|"arm64",
+#'           BlockDeviceMappings = list(
+#'             list(
+#'               DeviceName = "string",
+#'               Ebs = list(
+#'                 AttachTime = as.POSIXct(
+#'                   "2015-01-01"
+#'                 ),
+#'                 DeleteOnTermination = TRUE|FALSE,
+#'                 Status = "attaching"|"attached"|"detaching"|"detached",
+#'                 VolumeId = "string"
+#'               )
+#'             )
+#'           ),
+#'           ClientToken = "string",
+#'           EbsOptimized = TRUE|FALSE,
+#'           EnaSupport = TRUE|FALSE,
+#'           Hypervisor = "ovm"|"xen",
+#'           IamInstanceProfile = list(
+#'             Arn = "string",
+#'             Id = "string"
+#'           ),
+#'           InstanceLifecycle = "spot"|"scheduled",
+#'           ElasticGpuAssociations = list(
+#'             list(
+#'               ElasticGpuId = "string",
+#'               ElasticGpuAssociationId = "string",
+#'               ElasticGpuAssociationState = "string",
+#'               ElasticGpuAssociationTime = "string"
+#'             )
+#'           ),
+#'           ElasticInferenceAcceleratorAssociations = list(
+#'             list(
+#'               ElasticInferenceAcceleratorArn = "string",
+#'               ElasticInferenceAcceleratorAssociationId = "string",
+#'               ElasticInferenceAcceleratorAssociationState = "string",
+#'               ElasticInferenceAcceleratorAssociationTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               )
+#'             )
+#'           ),
+#'           NetworkInterfaces = list(
+#'             list(
+#'               Association = list(
+#'                 CarrierIp = "string",
+#'                 IpOwnerId = "string",
+#'                 PublicDnsName = "string",
+#'                 PublicIp = "string"
+#'               ),
+#'               Attachment = list(
+#'                 AttachTime = as.POSIXct(
+#'                   "2015-01-01"
+#'                 ),
+#'                 AttachmentId = "string",
+#'                 DeleteOnTermination = TRUE|FALSE,
+#'                 DeviceIndex = 123,
+#'                 Status = "attaching"|"attached"|"detaching"|"detached",
+#'                 NetworkCardIndex = 123
+#'               ),
+#'               Description = "string",
+#'               Groups = list(
+#'                 list(
+#'                   GroupName = "string",
+#'                   GroupId = "string"
+#'                 )
+#'               ),
+#'               Ipv6Addresses = list(
+#'                 list(
+#'                   Ipv6Address = "string"
+#'                 )
+#'               ),
+#'               MacAddress = "string",
+#'               NetworkInterfaceId = "string",
+#'               OwnerId = "string",
+#'               PrivateDnsName = "string",
+#'               PrivateIpAddress = "string",
+#'               PrivateIpAddresses = list(
+#'                 list(
+#'                   Association = list(
+#'                     CarrierIp = "string",
+#'                     IpOwnerId = "string",
+#'                     PublicDnsName = "string",
+#'                     PublicIp = "string"
+#'                   ),
+#'                   Primary = TRUE|FALSE,
+#'                   PrivateDnsName = "string",
+#'                   PrivateIpAddress = "string"
+#'                 )
+#'               ),
+#'               SourceDestCheck = TRUE|FALSE,
+#'               Status = "available"|"associated"|"attaching"|"in-use"|"detaching",
+#'               SubnetId = "string",
+#'               VpcId = "string",
+#'               InterfaceType = "string"
+#'             )
+#'           ),
+#'           OutpostArn = "string",
+#'           RootDeviceName = "string",
+#'           RootDeviceType = "ebs"|"instance-store",
+#'           SecurityGroups = list(
+#'             list(
+#'               GroupName = "string",
+#'               GroupId = "string"
+#'             )
+#'           ),
+#'           SourceDestCheck = TRUE|FALSE,
+#'           SpotInstanceRequestId = "string",
+#'           SriovNetSupport = "string",
+#'           StateReason = list(
+#'             Code = "string",
+#'             Message = "string"
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           VirtualizationType = "hvm"|"paravirtual",
+#'           CpuOptions = list(
+#'             CoreCount = 123,
+#'             ThreadsPerCore = 123
+#'           ),
+#'           CapacityReservationId = "string",
+#'           CapacityReservationSpecification = list(
+#'             CapacityReservationPreference = "open"|"none",
+#'             CapacityReservationTarget = list(
+#'               CapacityReservationId = "string",
+#'               CapacityReservationResourceGroupArn = "string"
+#'             )
+#'           ),
+#'           HibernationOptions = list(
+#'             Configured = TRUE|FALSE
+#'           ),
+#'           Licenses = list(
+#'             list(
+#'               LicenseConfigurationArn = "string"
+#'             )
+#'           ),
+#'           MetadataOptions = list(
+#'             State = "pending"|"applied",
+#'             HttpTokens = "optional"|"required",
+#'             HttpPutResponseHopLimit = 123,
+#'             HttpEndpoint = "disabled"|"enabled"
+#'           ),
+#'           EnclaveOptions = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       OwnerId = "string",
+#'       RequesterId = "string",
+#'       ReservationId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_instances(
@@ -15740,6 +20874,32 @@ ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = 
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InternetGateways = list(
+#'     list(
+#'       Attachments = list(
+#'         list(
+#'           State = "attaching"|"attached"|"detaching"|"detached",
+#'           VpcId = "string"
+#'         )
+#'       ),
+#'       InternetGatewayId = "string",
+#'       OwnerId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_internet_gateways(
@@ -15825,6 +20985,31 @@ ec2_describe_internet_gateways <- function(Filters = NULL, DryRun = NULL, Intern
 #'     filter to find all resources assigned a tag with a specific key,
 #'     regardless of the tag value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Ipv6Pools = list(
+#'     list(
+#'       PoolId = "string",
+#'       Description = "string",
+#'       PoolCidrBlocks = list(
+#'         list(
+#'           Cidr = "string"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_ipv_6_pools(
@@ -15902,6 +21087,26 @@ ec2_describe_ipv_6_pools <- function(PoolIds = NULL, NextToken = NULL, MaxResult
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyPairs = list(
+#'     list(
+#'       KeyPairId = "string",
+#'       KeyFingerprint = "string",
+#'       KeyName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -16019,6 +21224,173 @@ ec2_describe_key_pairs <- function(Filters = NULL, KeyNames = NULL, KeyPairIds =
 #' 
 #' -   `ram-disk-id` - The RAM disk ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LaunchTemplateVersions = list(
+#'     list(
+#'       LaunchTemplateId = "string",
+#'       LaunchTemplateName = "string",
+#'       VersionNumber = 123,
+#'       VersionDescription = "string",
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatedBy = "string",
+#'       DefaultVersion = TRUE|FALSE,
+#'       LaunchTemplateData = list(
+#'         KernelId = "string",
+#'         EbsOptimized = TRUE|FALSE,
+#'         IamInstanceProfile = list(
+#'           Arn = "string",
+#'           Name = "string"
+#'         ),
+#'         BlockDeviceMappings = list(
+#'           list(
+#'             DeviceName = "string",
+#'             VirtualName = "string",
+#'             Ebs = list(
+#'               Encrypted = TRUE|FALSE,
+#'               DeleteOnTermination = TRUE|FALSE,
+#'               Iops = 123,
+#'               KmsKeyId = "string",
+#'               SnapshotId = "string",
+#'               VolumeSize = 123,
+#'               VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'               Throughput = 123
+#'             ),
+#'             NoDevice = "string"
+#'           )
+#'         ),
+#'         NetworkInterfaces = list(
+#'           list(
+#'             AssociateCarrierIpAddress = TRUE|FALSE,
+#'             AssociatePublicIpAddress = TRUE|FALSE,
+#'             DeleteOnTermination = TRUE|FALSE,
+#'             Description = "string",
+#'             DeviceIndex = 123,
+#'             Groups = list(
+#'               "string"
+#'             ),
+#'             InterfaceType = "string",
+#'             Ipv6AddressCount = 123,
+#'             Ipv6Addresses = list(
+#'               list(
+#'                 Ipv6Address = "string"
+#'               )
+#'             ),
+#'             NetworkInterfaceId = "string",
+#'             PrivateIpAddress = "string",
+#'             PrivateIpAddresses = list(
+#'               list(
+#'                 Primary = TRUE|FALSE,
+#'                 PrivateIpAddress = "string"
+#'               )
+#'             ),
+#'             SecondaryPrivateIpAddressCount = 123,
+#'             SubnetId = "string",
+#'             NetworkCardIndex = 123
+#'           )
+#'         ),
+#'         ImageId = "string",
+#'         InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'         KeyName = "string",
+#'         Monitoring = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
+#'         Placement = list(
+#'           AvailabilityZone = "string",
+#'           Affinity = "string",
+#'           GroupName = "string",
+#'           HostId = "string",
+#'           Tenancy = "default"|"dedicated"|"host",
+#'           SpreadDomain = "string",
+#'           HostResourceGroupArn = "string",
+#'           PartitionNumber = 123
+#'         ),
+#'         RamDiskId = "string",
+#'         DisableApiTermination = TRUE|FALSE,
+#'         InstanceInitiatedShutdownBehavior = "stop"|"terminate",
+#'         UserData = "string",
+#'         TagSpecifications = list(
+#'           list(
+#'             ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         ElasticGpuSpecifications = list(
+#'           list(
+#'             Type = "string"
+#'           )
+#'         ),
+#'         ElasticInferenceAccelerators = list(
+#'           list(
+#'             Type = "string",
+#'             Count = 123
+#'           )
+#'         ),
+#'         SecurityGroupIds = list(
+#'           "string"
+#'         ),
+#'         SecurityGroups = list(
+#'           "string"
+#'         ),
+#'         InstanceMarketOptions = list(
+#'           MarketType = "spot",
+#'           SpotOptions = list(
+#'             MaxPrice = "string",
+#'             SpotInstanceType = "one-time"|"persistent",
+#'             BlockDurationMinutes = 123,
+#'             ValidUntil = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             InstanceInterruptionBehavior = "hibernate"|"stop"|"terminate"
+#'           )
+#'         ),
+#'         CreditSpecification = list(
+#'           CpuCredits = "string"
+#'         ),
+#'         CpuOptions = list(
+#'           CoreCount = 123,
+#'           ThreadsPerCore = 123
+#'         ),
+#'         CapacityReservationSpecification = list(
+#'           CapacityReservationPreference = "open"|"none",
+#'           CapacityReservationTarget = list(
+#'             CapacityReservationId = "string",
+#'             CapacityReservationResourceGroupArn = "string"
+#'           )
+#'         ),
+#'         LicenseSpecifications = list(
+#'           list(
+#'             LicenseConfigurationArn = "string"
+#'           )
+#'         ),
+#'         HibernationOptions = list(
+#'           Configured = TRUE|FALSE
+#'         ),
+#'         MetadataOptions = list(
+#'           State = "pending"|"applied",
+#'           HttpTokens = "optional"|"required",
+#'           HttpPutResponseHopLimit = 123,
+#'           HttpEndpoint = "disabled"|"enabled"
+#'         ),
+#'         EnclaveOptions = list(
+#'           Enabled = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_launch_template_versions(
@@ -16105,6 +21477,32 @@ ec2_describe_launch_template_versions <- function(DryRun = NULL, LaunchTemplateI
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
 #' value. This value can be between 1 and 200.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LaunchTemplates = list(
+#'     list(
+#'       LaunchTemplateId = "string",
+#'       LaunchTemplateName = "string",
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatedBy = "string",
+#'       DefaultVersionNumber = 123,
+#'       LatestVersionNumber = 123,
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -16195,6 +21593,31 @@ ec2_describe_launch_templates <- function(DryRun = NULL, LaunchTemplateIds = NUL
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocalGatewayRouteTableVirtualInterfaceGroupAssociations = list(
+#'     list(
+#'       LocalGatewayRouteTableVirtualInterfaceGroupAssociationId = "string",
+#'       LocalGatewayVirtualInterfaceGroupId = "string",
+#'       LocalGatewayId = "string",
+#'       LocalGatewayRouteTableId = "string",
+#'       LocalGatewayRouteTableArn = "string",
+#'       OwnerId = "string",
+#'       State = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_local_gateway_route_table_virtual_interface_group_associations(
@@ -16270,6 +21693,31 @@ ec2_describe_local_gateway_route_table_virtual_interface_group_associations <- f
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocalGatewayRouteTableVpcAssociations = list(
+#'     list(
+#'       LocalGatewayRouteTableVpcAssociationId = "string",
+#'       LocalGatewayRouteTableId = "string",
+#'       LocalGatewayRouteTableArn = "string",
+#'       LocalGatewayId = "string",
+#'       VpcId = "string",
+#'       OwnerId = "string",
+#'       State = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_local_gateway_route_table_vpc_associations(
@@ -16341,6 +21789,30 @@ ec2_describe_local_gateway_route_table_vpc_associations <- function(LocalGateway
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocalGatewayRouteTables = list(
+#'     list(
+#'       LocalGatewayRouteTableId = "string",
+#'       LocalGatewayRouteTableArn = "string",
+#'       LocalGatewayId = "string",
+#'       OutpostArn = "string",
+#'       OwnerId = "string",
+#'       State = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_local_gateway_route_tables(
@@ -16410,6 +21882,30 @@ ec2_describe_local_gateway_route_tables <- function(LocalGatewayRouteTableIds = 
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocalGatewayVirtualInterfaceGroups = list(
+#'     list(
+#'       LocalGatewayVirtualInterfaceGroupId = "string",
+#'       LocalGatewayVirtualInterfaceIds = list(
+#'         "string"
+#'       ),
+#'       LocalGatewayId = "string",
+#'       OwnerId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_local_gateway_virtual_interface_groups(
@@ -16469,6 +21965,32 @@ ec2_describe_local_gateway_virtual_interface_groups <- function(LocalGatewayVirt
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocalGatewayVirtualInterfaces = list(
+#'     list(
+#'       LocalGatewayVirtualInterfaceId = "string",
+#'       LocalGatewayId = "string",
+#'       Vlan = 123,
+#'       LocalAddress = "string",
+#'       PeerAddress = "string",
+#'       LocalBgpAsn = 123,
+#'       PeerBgpAsn = 123,
+#'       OwnerId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -16546,6 +22068,28 @@ ec2_describe_local_gateway_virtual_interfaces <- function(LocalGatewayVirtualInt
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LocalGateways = list(
+#'     list(
+#'       LocalGatewayId = "string",
+#'       OutpostArn = "string",
+#'       OwnerId = "string",
+#'       State = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_local_gateways(
@@ -16614,6 +22158,33 @@ ec2_describe_local_gateways <- function(LocalGatewayIds = NULL, Filters = NULL, 
 #' value.
 #' @param NextToken The token for the next page of results.
 #' @param PrefixListIds One or more prefix list IDs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   PrefixLists = list(
+#'     list(
+#'       PrefixListId = "string",
+#'       AddressFamily = "string",
+#'       State = "create-in-progress"|"create-complete"|"create-failed"|"modify-in-progress"|"modify-complete"|"modify-failed"|"restore-in-progress"|"restore-complete"|"restore-failed"|"delete-in-progress"|"delete-complete"|"delete-failed",
+#'       StateMessage = "string",
+#'       PrefixListArn = "string",
+#'       PrefixListName = "string",
+#'       MaxEntries = 123,
+#'       Version = 123,
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       OwnerId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -16685,6 +22256,20 @@ ec2_describe_managed_prefix_lists <- function(DryRun = NULL, Filters = NULL, Max
 #' Default: If no value is provided, the default is 1000.
 #' @param NextToken The token for the next page of results.
 #' @param PublicIps One or more Elastic IP addresses.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MovingAddressStatuses = list(
+#'     list(
+#'       MoveStatus = "movingToVpc"|"restoringToClassic",
+#'       PublicIp = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -16770,6 +22355,55 @@ ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResu
 #' value.
 #' @param NatGatewayIds One or more NAT gateway IDs.
 #' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NatGateways = list(
+#'     list(
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeleteTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FailureCode = "string",
+#'       FailureMessage = "string",
+#'       NatGatewayAddresses = list(
+#'         list(
+#'           AllocationId = "string",
+#'           NetworkInterfaceId = "string",
+#'           PrivateIp = "string",
+#'           PublicIp = "string"
+#'         )
+#'       ),
+#'       NatGatewayId = "string",
+#'       ProvisionedBandwidth = list(
+#'         ProvisionTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Provisioned = "string",
+#'         RequestTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Requested = "string",
+#'         Status = "string"
+#'       ),
+#'       State = "pending"|"failed"|"available"|"deleting"|"deleted",
+#'       SubnetId = "string",
+#'       VpcId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -16903,6 +22537,53 @@ ec2_describe_nat_gateways <- function(DryRun = NULL, Filter = NULL, MaxResults =
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkAcls = list(
+#'     list(
+#'       Associations = list(
+#'         list(
+#'           NetworkAclAssociationId = "string",
+#'           NetworkAclId = "string",
+#'           SubnetId = "string"
+#'         )
+#'       ),
+#'       Entries = list(
+#'         list(
+#'           CidrBlock = "string",
+#'           Egress = TRUE|FALSE,
+#'           IcmpTypeCode = list(
+#'             Code = 123,
+#'             Type = 123
+#'           ),
+#'           Ipv6CidrBlock = "string",
+#'           PortRange = list(
+#'             From = 123,
+#'             To = 123
+#'           ),
+#'           Protocol = "string",
+#'           RuleAction = "allow"|"deny",
+#'           RuleNumber = 123
+#'         )
+#'       ),
+#'       IsDefault = TRUE|FALSE,
+#'       NetworkAclId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       VpcId = "string",
+#'       OwnerId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_network_acls(
@@ -16983,6 +22664,427 @@ ec2_describe_network_acls <- function(Filters = NULL, DryRun = NULL, NetworkAclI
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param NextToken The token for the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkInsightsAnalyses = list(
+#'     list(
+#'       NetworkInsightsAnalysisId = "string",
+#'       NetworkInsightsAnalysisArn = "string",
+#'       NetworkInsightsPathId = "string",
+#'       FilterInArns = list(
+#'         "string"
+#'       ),
+#'       StartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "running"|"succeeded"|"failed",
+#'       StatusMessage = "string",
+#'       NetworkPathFound = TRUE|FALSE,
+#'       ForwardPathComponents = list(
+#'         list(
+#'           SequenceNumber = 123,
+#'           AclRule = list(
+#'             Cidr = "string",
+#'             Egress = TRUE|FALSE,
+#'             PortRange = list(
+#'               From = 123,
+#'               To = 123
+#'             ),
+#'             Protocol = "string",
+#'             RuleAction = "string",
+#'             RuleNumber = 123
+#'           ),
+#'           Component = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           DestinationVpc = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           OutboundHeader = list(
+#'             DestinationAddresses = list(
+#'               "string"
+#'             ),
+#'             DestinationPortRanges = list(
+#'               list(
+#'                 From = 123,
+#'                 To = 123
+#'               )
+#'             ),
+#'             Protocol = "string",
+#'             SourceAddresses = list(
+#'               "string"
+#'             ),
+#'             SourcePortRanges = list(
+#'               list(
+#'                 From = 123,
+#'                 To = 123
+#'               )
+#'             )
+#'           ),
+#'           InboundHeader = list(
+#'             DestinationAddresses = list(
+#'               "string"
+#'             ),
+#'             DestinationPortRanges = list(
+#'               list(
+#'                 From = 123,
+#'                 To = 123
+#'               )
+#'             ),
+#'             Protocol = "string",
+#'             SourceAddresses = list(
+#'               "string"
+#'             ),
+#'             SourcePortRanges = list(
+#'               list(
+#'                 From = 123,
+#'                 To = 123
+#'               )
+#'             )
+#'           ),
+#'           RouteTableRoute = list(
+#'             DestinationCidr = "string",
+#'             DestinationPrefixListId = "string",
+#'             EgressOnlyInternetGatewayId = "string",
+#'             GatewayId = "string",
+#'             InstanceId = "string",
+#'             NatGatewayId = "string",
+#'             NetworkInterfaceId = "string",
+#'             Origin = "string",
+#'             TransitGatewayId = "string",
+#'             VpcPeeringConnectionId = "string"
+#'           ),
+#'           SecurityGroupRule = list(
+#'             Cidr = "string",
+#'             Direction = "string",
+#'             SecurityGroupId = "string",
+#'             PortRange = list(
+#'               From = 123,
+#'               To = 123
+#'             ),
+#'             PrefixListId = "string",
+#'             Protocol = "string"
+#'           ),
+#'           SourceVpc = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           Subnet = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           Vpc = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           )
+#'         )
+#'       ),
+#'       ReturnPathComponents = list(
+#'         list(
+#'           SequenceNumber = 123,
+#'           AclRule = list(
+#'             Cidr = "string",
+#'             Egress = TRUE|FALSE,
+#'             PortRange = list(
+#'               From = 123,
+#'               To = 123
+#'             ),
+#'             Protocol = "string",
+#'             RuleAction = "string",
+#'             RuleNumber = 123
+#'           ),
+#'           Component = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           DestinationVpc = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           OutboundHeader = list(
+#'             DestinationAddresses = list(
+#'               "string"
+#'             ),
+#'             DestinationPortRanges = list(
+#'               list(
+#'                 From = 123,
+#'                 To = 123
+#'               )
+#'             ),
+#'             Protocol = "string",
+#'             SourceAddresses = list(
+#'               "string"
+#'             ),
+#'             SourcePortRanges = list(
+#'               list(
+#'                 From = 123,
+#'                 To = 123
+#'               )
+#'             )
+#'           ),
+#'           InboundHeader = list(
+#'             DestinationAddresses = list(
+#'               "string"
+#'             ),
+#'             DestinationPortRanges = list(
+#'               list(
+#'                 From = 123,
+#'                 To = 123
+#'               )
+#'             ),
+#'             Protocol = "string",
+#'             SourceAddresses = list(
+#'               "string"
+#'             ),
+#'             SourcePortRanges = list(
+#'               list(
+#'                 From = 123,
+#'                 To = 123
+#'               )
+#'             )
+#'           ),
+#'           RouteTableRoute = list(
+#'             DestinationCidr = "string",
+#'             DestinationPrefixListId = "string",
+#'             EgressOnlyInternetGatewayId = "string",
+#'             GatewayId = "string",
+#'             InstanceId = "string",
+#'             NatGatewayId = "string",
+#'             NetworkInterfaceId = "string",
+#'             Origin = "string",
+#'             TransitGatewayId = "string",
+#'             VpcPeeringConnectionId = "string"
+#'           ),
+#'           SecurityGroupRule = list(
+#'             Cidr = "string",
+#'             Direction = "string",
+#'             SecurityGroupId = "string",
+#'             PortRange = list(
+#'               From = 123,
+#'               To = 123
+#'             ),
+#'             PrefixListId = "string",
+#'             Protocol = "string"
+#'           ),
+#'           SourceVpc = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           Subnet = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           Vpc = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           )
+#'         )
+#'       ),
+#'       Explanations = list(
+#'         list(
+#'           Acl = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           AclRule = list(
+#'             Cidr = "string",
+#'             Egress = TRUE|FALSE,
+#'             PortRange = list(
+#'               From = 123,
+#'               To = 123
+#'             ),
+#'             Protocol = "string",
+#'             RuleAction = "string",
+#'             RuleNumber = 123
+#'           ),
+#'           Address = "string",
+#'           Addresses = list(
+#'             "string"
+#'           ),
+#'           AttachedTo = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           AvailabilityZones = list(
+#'             "string"
+#'           ),
+#'           Cidrs = list(
+#'             "string"
+#'           ),
+#'           Component = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           CustomerGateway = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           Destination = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           DestinationVpc = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           Direction = "string",
+#'           ExplanationCode = "string",
+#'           IngressRouteTable = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           InternetGateway = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           LoadBalancerArn = "string",
+#'           ClassicLoadBalancerListener = list(
+#'             LoadBalancerPort = 123,
+#'             InstancePort = 123
+#'           ),
+#'           LoadBalancerListenerPort = 123,
+#'           LoadBalancerTarget = list(
+#'             Address = "string",
+#'             AvailabilityZone = "string",
+#'             Instance = list(
+#'               Id = "string",
+#'               Arn = "string"
+#'             ),
+#'             Port = 123
+#'           ),
+#'           LoadBalancerTargetGroup = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           LoadBalancerTargetGroups = list(
+#'             list(
+#'               Id = "string",
+#'               Arn = "string"
+#'             )
+#'           ),
+#'           LoadBalancerTargetPort = 123,
+#'           ElasticLoadBalancerListener = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           MissingComponent = "string",
+#'           NatGateway = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           NetworkInterface = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           PacketField = "string",
+#'           VpcPeeringConnection = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           Port = 123,
+#'           PortRanges = list(
+#'             list(
+#'               From = 123,
+#'               To = 123
+#'             )
+#'           ),
+#'           PrefixList = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           Protocols = list(
+#'             "string"
+#'           ),
+#'           RouteTableRoute = list(
+#'             DestinationCidr = "string",
+#'             DestinationPrefixListId = "string",
+#'             EgressOnlyInternetGatewayId = "string",
+#'             GatewayId = "string",
+#'             InstanceId = "string",
+#'             NatGatewayId = "string",
+#'             NetworkInterfaceId = "string",
+#'             Origin = "string",
+#'             TransitGatewayId = "string",
+#'             VpcPeeringConnectionId = "string"
+#'           ),
+#'           RouteTable = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           SecurityGroup = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           SecurityGroupRule = list(
+#'             Cidr = "string",
+#'             Direction = "string",
+#'             SecurityGroupId = "string",
+#'             PortRange = list(
+#'               From = 123,
+#'               To = 123
+#'             ),
+#'             PrefixListId = "string",
+#'             Protocol = "string"
+#'           ),
+#'           SecurityGroups = list(
+#'             list(
+#'               Id = "string",
+#'               Arn = "string"
+#'             )
+#'           ),
+#'           SourceVpc = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           State = "string",
+#'           Subnet = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           SubnetRouteTable = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           Vpc = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           VpcEndpoint = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           VpnConnection = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           VpnGateway = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           )
+#'         )
+#'       ),
+#'       AlternatePathHints = list(
+#'         list(
+#'           ComponentId = "string",
+#'           ComponentArn = "string"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_network_insights_analyses(
@@ -17060,6 +23162,35 @@ ec2_describe_network_insights_analyses <- function(NetworkInsightsAnalysisIds = 
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param NextToken The token for the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkInsightsPaths = list(
+#'     list(
+#'       NetworkInsightsPathId = "string",
+#'       NetworkInsightsPathArn = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Source = "string",
+#'       Destination = "string",
+#'       SourceIp = "string",
+#'       DestinationIp = "string",
+#'       Protocol = "tcp"|"udp",
+#'       DestinationPort = 123,
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_network_insights_paths(
@@ -17116,6 +23247,38 @@ ec2_describe_network_insights_paths <- function(NetworkInsightsPathIds = NULL, F
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param NetworkInterfaceId &#91;required&#93; The ID of the network interface.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attachment = list(
+#'     AttachTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AttachmentId = "string",
+#'     DeleteOnTermination = TRUE|FALSE,
+#'     DeviceIndex = 123,
+#'     NetworkCardIndex = 123,
+#'     InstanceId = "string",
+#'     InstanceOwnerId = "string",
+#'     Status = "attaching"|"attached"|"detaching"|"detached"
+#'   ),
+#'   Description = list(
+#'     Value = "string"
+#'   ),
+#'   Groups = list(
+#'     list(
+#'       GroupName = "string",
+#'       GroupId = "string"
+#'     )
+#'   ),
+#'   NetworkInterfaceId = "string",
+#'   SourceDestCheck = list(
+#'     Value = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -17206,6 +23369,27 @@ ec2_describe_network_interface_attribute <- function(Attribute = NULL, DryRun = 
 #' the remaining results, make another call with the returned `NextToken`
 #' value. If this parameter is not specified, up to 50 results are returned
 #' by default.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkInterfacePermissions = list(
+#'     list(
+#'       NetworkInterfacePermissionId = "string",
+#'       NetworkInterfaceId = "string",
+#'       AwsAccountId = "string",
+#'       AwsService = "string",
+#'       Permission = "INSTANCE-ATTACH"|"EIP-ASSOCIATE",
+#'       PermissionState = list(
+#'         State = "pending"|"granted"|"revoking"|"revoked",
+#'         StatusMessage = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -17376,6 +23560,87 @@ ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissio
 #' next set of results. You cannot specify this parameter and the network
 #' interface IDs parameter in the same request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkInterfaces = list(
+#'     list(
+#'       Association = list(
+#'         AllocationId = "string",
+#'         AssociationId = "string",
+#'         IpOwnerId = "string",
+#'         PublicDnsName = "string",
+#'         PublicIp = "string",
+#'         CustomerOwnedIp = "string",
+#'         CarrierIp = "string"
+#'       ),
+#'       Attachment = list(
+#'         AttachTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         AttachmentId = "string",
+#'         DeleteOnTermination = TRUE|FALSE,
+#'         DeviceIndex = 123,
+#'         NetworkCardIndex = 123,
+#'         InstanceId = "string",
+#'         InstanceOwnerId = "string",
+#'         Status = "attaching"|"attached"|"detaching"|"detached"
+#'       ),
+#'       AvailabilityZone = "string",
+#'       Description = "string",
+#'       Groups = list(
+#'         list(
+#'           GroupName = "string",
+#'           GroupId = "string"
+#'         )
+#'       ),
+#'       InterfaceType = "interface"|"natGateway"|"efa",
+#'       Ipv6Addresses = list(
+#'         list(
+#'           Ipv6Address = "string"
+#'         )
+#'       ),
+#'       MacAddress = "string",
+#'       NetworkInterfaceId = "string",
+#'       OutpostArn = "string",
+#'       OwnerId = "string",
+#'       PrivateDnsName = "string",
+#'       PrivateIpAddress = "string",
+#'       PrivateIpAddresses = list(
+#'         list(
+#'           Association = list(
+#'             AllocationId = "string",
+#'             AssociationId = "string",
+#'             IpOwnerId = "string",
+#'             PublicDnsName = "string",
+#'             PublicIp = "string",
+#'             CustomerOwnedIp = "string",
+#'             CarrierIp = "string"
+#'           ),
+#'           Primary = TRUE|FALSE,
+#'           PrivateDnsName = "string",
+#'           PrivateIpAddress = "string"
+#'         )
+#'       ),
+#'       RequesterId = "string",
+#'       RequesterManaged = TRUE|FALSE,
+#'       SourceDestCheck = TRUE|FALSE,
+#'       Status = "available"|"associated"|"attaching"|"in-use"|"detaching",
+#'       SubnetId = "string",
+#'       TagSet = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       VpcId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_network_interfaces(
@@ -17466,6 +23731,28 @@ ec2_describe_network_interfaces <- function(Filters = NULL, DryRun = NULL, Netwo
 #' specified.
 #' @param GroupIds The IDs of the placement groups.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PlacementGroups = list(
+#'     list(
+#'       GroupName = "string",
+#'       State = "pending"|"available"|"deleting"|"deleted",
+#'       Strategy = "cluster"|"spread"|"partition",
+#'       PartitionCount = 123,
+#'       GroupId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_placement_groups(
@@ -17538,6 +23825,23 @@ ec2_describe_placement_groups <- function(Filters = NULL, DryRun = NULL, GroupNa
 #' value.
 #' @param NextToken The token for the next page of results.
 #' @param PrefixListIds One or more prefix list IDs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   PrefixLists = list(
+#'     list(
+#'       Cidrs = list(
+#'         "string"
+#'       ),
+#'       PrefixListId = "string",
+#'       PrefixListName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -17627,6 +23931,28 @@ ec2_describe_prefix_lists <- function(DryRun = NULL, Filters = NULL, MaxResults 
 #' value.
 #' @param NextToken The token to request the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Principals = list(
+#'     list(
+#'       Arn = "string",
+#'       Statuses = list(
+#'         list(
+#'           Deadline = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Resource = "string",
+#'           UseLongIds = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_principal_id_format(
@@ -17683,6 +24009,37 @@ ec2_describe_principal_id_format <- function(DryRun = NULL, Resources = NULL, Ma
 #' -   `tag-key` - The key of a tag assigned to the resource. Use this
 #'     filter to find all resources assigned a tag with a specific key,
 #'     regardless of the tag value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PublicIpv4Pools = list(
+#'     list(
+#'       PoolId = "string",
+#'       Description = "string",
+#'       PoolAddressRanges = list(
+#'         list(
+#'           FirstAddress = "string",
+#'           LastAddress = "string",
+#'           AddressCount = 123,
+#'           AvailableAddressCount = 123
+#'         )
+#'       ),
+#'       TotalAddressCount = 123,
+#'       TotalAvailableAddressCount = 123,
+#'       NetworkBorderGroup = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -17756,6 +24113,20 @@ ec2_describe_public_ipv_4_pools <- function(PoolIds = NULL, NextToken = NULL, Ma
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param AllRegions Indicates whether to display all Regions, including Regions that are
 #' disabled for your account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Regions = list(
+#'     list(
+#'       Endpoint = "string",
+#'       RegionName = "string",
+#'       OptInStatus = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -17882,6 +24253,49 @@ ec2_describe_regions <- function(Filters = NULL, RegionNames = NULL, DryRun = NU
 #' the 2011-11-01 API version, you only have access to the
 #' `Medium Utilization` Reserved Instance offering type.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReservedInstances = list(
+#'     list(
+#'       AvailabilityZone = "string",
+#'       Duration = 123,
+#'       End = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FixedPrice = 123.0,
+#'       InstanceCount = 123,
+#'       InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'       ProductDescription = "Linux/UNIX"|"Linux/UNIX (Amazon VPC)"|"Windows"|"Windows (Amazon VPC)",
+#'       ReservedInstancesId = "string",
+#'       Start = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "payment-pending"|"active"|"payment-failed"|"retired"|"queued"|"queued-deleted",
+#'       UsagePrice = 123.0,
+#'       CurrencyCode = "USD",
+#'       InstanceTenancy = "default"|"dedicated"|"host",
+#'       OfferingClass = "standard"|"convertible",
+#'       OfferingType = "Heavy Utilization"|"Medium Utilization"|"Light Utilization"|"No Upfront"|"Partial Upfront"|"All Upfront",
+#'       RecurringCharges = list(
+#'         list(
+#'           Amount = 123.0,
+#'           Frequency = "Hourly"
+#'         )
+#'       ),
+#'       Scope = "Availability Zone"|"Region",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_reserved_instances(
@@ -17968,6 +24382,48 @@ ec2_describe_reserved_instances <- function(Filters = NULL, OfferingClass = NULL
 #' -   `status-message` - The reason for the status.
 #' @param ReservedInstancesId One or more Reserved Instance IDs.
 #' @param ReservedInstancesListingId One or more Reserved Instance listing IDs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReservedInstancesListings = list(
+#'     list(
+#'       ClientToken = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InstanceCounts = list(
+#'         list(
+#'           InstanceCount = 123,
+#'           State = "available"|"sold"|"cancelled"|"pending"
+#'         )
+#'       ),
+#'       PriceSchedules = list(
+#'         list(
+#'           Active = TRUE|FALSE,
+#'           CurrencyCode = "USD",
+#'           Price = 123.0,
+#'           Term = 123
+#'         )
+#'       ),
+#'       ReservedInstancesId = "string",
+#'       ReservedInstancesListingId = "string",
+#'       Status = "active"|"pending"|"cancelled"|"closed",
+#'       StatusMessage = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -18060,6 +24516,48 @@ ec2_describe_reserved_instances_listings <- function(Filters = NULL, ReservedIns
 #'     updated.
 #' @param ReservedInstancesModificationIds IDs for the submitted modification request.
 #' @param NextToken The token to retrieve the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   ReservedInstancesModifications = list(
+#'     list(
+#'       ClientToken = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EffectiveDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ModificationResults = list(
+#'         list(
+#'           ReservedInstancesId = "string",
+#'           TargetConfiguration = list(
+#'             AvailabilityZone = "string",
+#'             InstanceCount = 123,
+#'             InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'             Platform = "string",
+#'             Scope = "Availability Zone"|"Region"
+#'           )
+#'         )
+#'       ),
+#'       ReservedInstancesIds = list(
+#'         list(
+#'           ReservedInstancesId = "string"
+#'         )
+#'       ),
+#'       ReservedInstancesModificationId = "string",
+#'       Status = "string",
+#'       StatusMessage = "string",
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -18208,6 +24706,43 @@ ec2_describe_reserved_instances_modifications <- function(Filters = NULL, Reserv
 #' @param OfferingType The Reserved Instance offering type. If you are using tools that predate
 #' the 2011-11-01 API version, you only have access to the
 #' `Medium Utilization` Reserved Instance offering type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReservedInstancesOfferings = list(
+#'     list(
+#'       AvailabilityZone = "string",
+#'       Duration = 123,
+#'       FixedPrice = 123.0,
+#'       InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'       ProductDescription = "Linux/UNIX"|"Linux/UNIX (Amazon VPC)"|"Windows"|"Windows (Amazon VPC)",
+#'       ReservedInstancesOfferingId = "string",
+#'       UsagePrice = 123.0,
+#'       CurrencyCode = "USD",
+#'       InstanceTenancy = "default"|"dedicated"|"host",
+#'       Marketplace = TRUE|FALSE,
+#'       OfferingClass = "standard"|"convertible",
+#'       OfferingType = "Heavy Utilization"|"Medium Utilization"|"Light Utilization"|"No Upfront"|"Partial Upfront"|"All Upfront",
+#'       PricingDetails = list(
+#'         list(
+#'           Count = 123,
+#'           Price = 123.0
+#'         )
+#'       ),
+#'       RecurringCharges = list(
+#'         list(
+#'           Amount = 123.0,
+#'           Frequency = "Hourly"
+#'         )
+#'       ),
+#'       Scope = "Availability Zone"|"Region"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -18358,6 +24893,64 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RouteTables = list(
+#'     list(
+#'       Associations = list(
+#'         list(
+#'           Main = TRUE|FALSE,
+#'           RouteTableAssociationId = "string",
+#'           RouteTableId = "string",
+#'           SubnetId = "string",
+#'           GatewayId = "string",
+#'           AssociationState = list(
+#'             State = "associating"|"associated"|"disassociating"|"disassociated"|"failed",
+#'             StatusMessage = "string"
+#'           )
+#'         )
+#'       ),
+#'       PropagatingVgws = list(
+#'         list(
+#'           GatewayId = "string"
+#'         )
+#'       ),
+#'       RouteTableId = "string",
+#'       Routes = list(
+#'         list(
+#'           DestinationCidrBlock = "string",
+#'           DestinationIpv6CidrBlock = "string",
+#'           DestinationPrefixListId = "string",
+#'           EgressOnlyInternetGatewayId = "string",
+#'           GatewayId = "string",
+#'           InstanceId = "string",
+#'           InstanceOwnerId = "string",
+#'           NatGatewayId = "string",
+#'           TransitGatewayId = "string",
+#'           LocalGatewayId = "string",
+#'           CarrierGatewayId = "string",
+#'           NetworkInterfaceId = "string",
+#'           Origin = "CreateRouteTable"|"CreateRoute"|"EnableVgwRoutePropagation",
+#'           State = "active"|"blackhole",
+#'           VpcPeeringConnectionId = "string"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       VpcId = "string",
+#'       OwnerId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_route_tables(
@@ -18456,6 +25049,41 @@ ec2_describe_route_tables <- function(Filters = NULL, DryRun = NULL, RouteTableI
 #' schedule is 100 hours.
 #' @param NextToken The token for the next set of results.
 #' @param Recurrence &#91;required&#93; The schedule recurrence.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   ScheduledInstanceAvailabilitySet = list(
+#'     list(
+#'       AvailabilityZone = "string",
+#'       AvailableInstanceCount = 123,
+#'       FirstSlotStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       HourlyPrice = "string",
+#'       InstanceType = "string",
+#'       MaxTermDurationInDays = 123,
+#'       MinTermDurationInDays = 123,
+#'       NetworkPlatform = "string",
+#'       Platform = "string",
+#'       PurchaseToken = "string",
+#'       Recurrence = list(
+#'         Frequency = "string",
+#'         Interval = 123,
+#'         OccurrenceDaySet = list(
+#'           123
+#'         ),
+#'         OccurrenceRelativeToEnd = TRUE|FALSE,
+#'         OccurrenceUnit = "string"
+#'       ),
+#'       SlotDurationInHours = 123,
+#'       TotalScheduledInstanceHours = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -18567,6 +25195,51 @@ ec2_describe_scheduled_instance_availability <- function(DryRun = NULL, Filters 
 #' @param ScheduledInstanceIds The Scheduled Instance IDs.
 #' @param SlotStartTimeRange The time period for the first schedule to start.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   ScheduledInstanceSet = list(
+#'     list(
+#'       AvailabilityZone = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       HourlyPrice = "string",
+#'       InstanceCount = 123,
+#'       InstanceType = "string",
+#'       NetworkPlatform = "string",
+#'       NextSlotStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Platform = "string",
+#'       PreviousSlotEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Recurrence = list(
+#'         Frequency = "string",
+#'         Interval = 123,
+#'         OccurrenceDaySet = list(
+#'           123
+#'         ),
+#'         OccurrenceRelativeToEnd = TRUE|FALSE,
+#'         OccurrenceUnit = "string"
+#'       ),
+#'       ScheduledInstanceId = "string",
+#'       SlotDurationInHours = 123,
+#'       TermEndDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TermStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TotalScheduledInstanceHours = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_scheduled_instances(
@@ -18642,6 +25315,20 @@ ec2_describe_scheduled_instances <- function(DryRun = NULL, Filters = NULL, MaxR
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param GroupId &#91;required&#93; The IDs of the security groups in your account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecurityGroupReferenceSet = list(
+#'     list(
+#'       GroupId = "string",
+#'       ReferencingVpcId = "string",
+#'       VpcPeeringConnectionId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -18800,6 +25487,101 @@ ec2_describe_security_group_references <- function(DryRun = NULL, GroupId) {
 #' `NextToken` value. This value can be between 5 and 1000. If this
 #' parameter is not specified, then all results are returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecurityGroups = list(
+#'     list(
+#'       Description = "string",
+#'       GroupName = "string",
+#'       IpPermissions = list(
+#'         list(
+#'           FromPort = 123,
+#'           IpProtocol = "string",
+#'           IpRanges = list(
+#'             list(
+#'               CidrIp = "string",
+#'               Description = "string"
+#'             )
+#'           ),
+#'           Ipv6Ranges = list(
+#'             list(
+#'               CidrIpv6 = "string",
+#'               Description = "string"
+#'             )
+#'           ),
+#'           PrefixListIds = list(
+#'             list(
+#'               Description = "string",
+#'               PrefixListId = "string"
+#'             )
+#'           ),
+#'           ToPort = 123,
+#'           UserIdGroupPairs = list(
+#'             list(
+#'               Description = "string",
+#'               GroupId = "string",
+#'               GroupName = "string",
+#'               PeeringStatus = "string",
+#'               UserId = "string",
+#'               VpcId = "string",
+#'               VpcPeeringConnectionId = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       OwnerId = "string",
+#'       GroupId = "string",
+#'       IpPermissionsEgress = list(
+#'         list(
+#'           FromPort = 123,
+#'           IpProtocol = "string",
+#'           IpRanges = list(
+#'             list(
+#'               CidrIp = "string",
+#'               Description = "string"
+#'             )
+#'           ),
+#'           Ipv6Ranges = list(
+#'             list(
+#'               CidrIpv6 = "string",
+#'               Description = "string"
+#'             )
+#'           ),
+#'           PrefixListIds = list(
+#'             list(
+#'               Description = "string",
+#'               PrefixListId = "string"
+#'             )
+#'           ),
+#'           ToPort = 123,
+#'           UserIdGroupPairs = list(
+#'             list(
+#'               Description = "string",
+#'               GroupId = "string",
+#'               GroupName = "string",
+#'               PeeringStatus = "string",
+#'               UserId = "string",
+#'               VpcId = "string",
+#'               VpcPeeringConnectionId = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       VpcId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_security_groups(
@@ -18885,6 +25667,26 @@ ec2_describe_security_groups <- function(Filters = NULL, GroupIds = NULL, GroupN
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateVolumePermissions = list(
+#'     list(
+#'       Group = "all",
+#'       UserId = "string"
+#'     )
+#'   ),
+#'   ProductCodes = list(
+#'     list(
+#'       ProductCodeId = "string",
+#'       ProductCodeType = "devpay"|"marketplace"
+#'     )
+#'   ),
+#'   SnapshotId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -19057,6 +25859,39 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Snapshots = list(
+#'     list(
+#'       DataEncryptionKeyId = "string",
+#'       Description = "string",
+#'       Encrypted = TRUE|FALSE,
+#'       KmsKeyId = "string",
+#'       OwnerId = "string",
+#'       Progress = "string",
+#'       SnapshotId = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "pending"|"completed"|"error",
+#'       StateMessage = "string",
+#'       VolumeId = "string",
+#'       VolumeSize = 123,
+#'       OwnerAlias = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_snapshots(
@@ -19146,6 +25981,23 @@ ec2_describe_snapshots <- function(Filters = NULL, MaxResults = NULL, NextToken 
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SpotDatafeedSubscription = list(
+#'     Bucket = "string",
+#'     Fault = list(
+#'       Code = "string",
+#'       Message = "string"
+#'     ),
+#'     OwnerId = "string",
+#'     Prefix = "string",
+#'     State = "Active"|"Inactive"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_spot_datafeed_subscription(
@@ -19199,6 +26051,23 @@ ec2_describe_spot_datafeed_subscription <- function(DryRun = NULL) {
 #' value.
 #' @param NextToken The token for the next set of results.
 #' @param SpotFleetRequestId &#91;required&#93; The ID of the Spot Fleet request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ActiveInstances = list(
+#'     list(
+#'       InstanceId = "string",
+#'       InstanceType = "string",
+#'       SpotInstanceRequestId = "string",
+#'       InstanceHealth = "healthy"|"unhealthy"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   SpotFleetRequestId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -19269,6 +26138,34 @@ ec2_describe_spot_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, 
 #' @param StartTime &#91;required&#93; The starting date and time for the events, in UTC format (for example,
 #' *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HistoryRecords = list(
+#'     list(
+#'       EventInformation = list(
+#'         EventDescription = "string",
+#'         EventSubType = "string",
+#'         InstanceId = "string"
+#'       ),
+#'       EventType = "instanceChange"|"fleetRequestChange"|"error"|"information",
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   LastEvaluatedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NextToken = "string",
+#'   SpotFleetRequestId = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_spot_fleet_request_history(
@@ -19335,6 +26232,197 @@ ec2_describe_spot_fleet_request_history <- function(DryRun = NULL, EventType = N
 #' value.
 #' @param NextToken The token for the next set of results.
 #' @param SpotFleetRequestIds The IDs of the Spot Fleet requests.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   SpotFleetRequestConfigs = list(
+#'     list(
+#'       ActivityStatus = "error"|"pending_fulfillment"|"pending_termination"|"fulfilled",
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SpotFleetRequestConfig = list(
+#'         AllocationStrategy = "lowestPrice"|"diversified"|"capacityOptimized",
+#'         OnDemandAllocationStrategy = "lowestPrice"|"prioritized",
+#'         SpotMaintenanceStrategies = list(
+#'           CapacityRebalance = list(
+#'             ReplacementStrategy = "launch"
+#'           )
+#'         ),
+#'         ClientToken = "string",
+#'         ExcessCapacityTerminationPolicy = "noTermination"|"default",
+#'         FulfilledCapacity = 123.0,
+#'         OnDemandFulfilledCapacity = 123.0,
+#'         IamFleetRole = "string",
+#'         LaunchSpecifications = list(
+#'           list(
+#'             SecurityGroups = list(
+#'               list(
+#'                 GroupName = "string",
+#'                 GroupId = "string"
+#'               )
+#'             ),
+#'             AddressingType = "string",
+#'             BlockDeviceMappings = list(
+#'               list(
+#'                 DeviceName = "string",
+#'                 VirtualName = "string",
+#'                 Ebs = list(
+#'                   DeleteOnTermination = TRUE|FALSE,
+#'                   Iops = 123,
+#'                   SnapshotId = "string",
+#'                   VolumeSize = 123,
+#'                   VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'                   KmsKeyId = "string",
+#'                   Throughput = 123,
+#'                   Encrypted = TRUE|FALSE
+#'                 ),
+#'                 NoDevice = "string"
+#'               )
+#'             ),
+#'             EbsOptimized = TRUE|FALSE,
+#'             IamInstanceProfile = list(
+#'               Arn = "string",
+#'               Name = "string"
+#'             ),
+#'             ImageId = "string",
+#'             InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'             KernelId = "string",
+#'             KeyName = "string",
+#'             Monitoring = list(
+#'               Enabled = TRUE|FALSE
+#'             ),
+#'             NetworkInterfaces = list(
+#'               list(
+#'                 AssociatePublicIpAddress = TRUE|FALSE,
+#'                 DeleteOnTermination = TRUE|FALSE,
+#'                 Description = "string",
+#'                 DeviceIndex = 123,
+#'                 Groups = list(
+#'                   "string"
+#'                 ),
+#'                 Ipv6AddressCount = 123,
+#'                 Ipv6Addresses = list(
+#'                   list(
+#'                     Ipv6Address = "string"
+#'                   )
+#'                 ),
+#'                 NetworkInterfaceId = "string",
+#'                 PrivateIpAddress = "string",
+#'                 PrivateIpAddresses = list(
+#'                   list(
+#'                     Primary = TRUE|FALSE,
+#'                     PrivateIpAddress = "string"
+#'                   )
+#'                 ),
+#'                 SecondaryPrivateIpAddressCount = 123,
+#'                 SubnetId = "string",
+#'                 AssociateCarrierIpAddress = TRUE|FALSE,
+#'                 InterfaceType = "string",
+#'                 NetworkCardIndex = 123
+#'               )
+#'             ),
+#'             Placement = list(
+#'               AvailabilityZone = "string",
+#'               GroupName = "string",
+#'               Tenancy = "default"|"dedicated"|"host"
+#'             ),
+#'             RamdiskId = "string",
+#'             SpotPrice = "string",
+#'             SubnetId = "string",
+#'             UserData = "string",
+#'             WeightedCapacity = 123.0,
+#'             TagSpecifications = list(
+#'               list(
+#'                 ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+#'                 Tags = list(
+#'                   list(
+#'                     Key = "string",
+#'                     Value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         LaunchTemplateConfigs = list(
+#'           list(
+#'             LaunchTemplateSpecification = list(
+#'               LaunchTemplateId = "string",
+#'               LaunchTemplateName = "string",
+#'               Version = "string"
+#'             ),
+#'             Overrides = list(
+#'               list(
+#'                 InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'                 SpotPrice = "string",
+#'                 SubnetId = "string",
+#'                 AvailabilityZone = "string",
+#'                 WeightedCapacity = 123.0,
+#'                 Priority = 123.0
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         SpotPrice = "string",
+#'         TargetCapacity = 123,
+#'         OnDemandTargetCapacity = 123,
+#'         OnDemandMaxTotalPrice = "string",
+#'         SpotMaxTotalPrice = "string",
+#'         TerminateInstancesWithExpiration = TRUE|FALSE,
+#'         Type = "request"|"maintain"|"instant",
+#'         ValidFrom = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ValidUntil = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ReplaceUnhealthyInstances = TRUE|FALSE,
+#'         InstanceInterruptionBehavior = "hibernate"|"stop"|"terminate",
+#'         LoadBalancersConfig = list(
+#'           ClassicLoadBalancersConfig = list(
+#'             ClassicLoadBalancers = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           ),
+#'           TargetGroupsConfig = list(
+#'             TargetGroups = list(
+#'               list(
+#'                 Arn = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         InstancePoolsToUseCount = 123,
+#'         TagSpecifications = list(
+#'           list(
+#'             ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+#'             Tags = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       SpotFleetRequestId = "string",
+#'       SpotFleetRequestState = "submitted"|"active"|"cancelled"|"failed"|"cancelled_running"|"cancelled_terminating"|"modifying",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -19535,6 +26623,132 @@ ec2_describe_spot_fleet_requests <- function(DryRun = NULL, MaxResults = NULL, N
 #' value between 5 and 1000. To retrieve the remaining results, make
 #' another call with the returned `NextToken` value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SpotInstanceRequests = list(
+#'     list(
+#'       ActualBlockHourlyPrice = "string",
+#'       AvailabilityZoneGroup = "string",
+#'       BlockDurationMinutes = 123,
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Fault = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       InstanceId = "string",
+#'       LaunchGroup = "string",
+#'       LaunchSpecification = list(
+#'         UserData = "string",
+#'         SecurityGroups = list(
+#'           list(
+#'             GroupName = "string",
+#'             GroupId = "string"
+#'           )
+#'         ),
+#'         AddressingType = "string",
+#'         BlockDeviceMappings = list(
+#'           list(
+#'             DeviceName = "string",
+#'             VirtualName = "string",
+#'             Ebs = list(
+#'               DeleteOnTermination = TRUE|FALSE,
+#'               Iops = 123,
+#'               SnapshotId = "string",
+#'               VolumeSize = 123,
+#'               VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'               KmsKeyId = "string",
+#'               Throughput = 123,
+#'               Encrypted = TRUE|FALSE
+#'             ),
+#'             NoDevice = "string"
+#'           )
+#'         ),
+#'         EbsOptimized = TRUE|FALSE,
+#'         IamInstanceProfile = list(
+#'           Arn = "string",
+#'           Name = "string"
+#'         ),
+#'         ImageId = "string",
+#'         InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'         KernelId = "string",
+#'         KeyName = "string",
+#'         NetworkInterfaces = list(
+#'           list(
+#'             AssociatePublicIpAddress = TRUE|FALSE,
+#'             DeleteOnTermination = TRUE|FALSE,
+#'             Description = "string",
+#'             DeviceIndex = 123,
+#'             Groups = list(
+#'               "string"
+#'             ),
+#'             Ipv6AddressCount = 123,
+#'             Ipv6Addresses = list(
+#'               list(
+#'                 Ipv6Address = "string"
+#'               )
+#'             ),
+#'             NetworkInterfaceId = "string",
+#'             PrivateIpAddress = "string",
+#'             PrivateIpAddresses = list(
+#'               list(
+#'                 Primary = TRUE|FALSE,
+#'                 PrivateIpAddress = "string"
+#'               )
+#'             ),
+#'             SecondaryPrivateIpAddressCount = 123,
+#'             SubnetId = "string",
+#'             AssociateCarrierIpAddress = TRUE|FALSE,
+#'             InterfaceType = "string",
+#'             NetworkCardIndex = 123
+#'           )
+#'         ),
+#'         Placement = list(
+#'           AvailabilityZone = "string",
+#'           GroupName = "string",
+#'           Tenancy = "default"|"dedicated"|"host"
+#'         ),
+#'         RamdiskId = "string",
+#'         SubnetId = "string",
+#'         Monitoring = list(
+#'           Enabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       LaunchedAvailabilityZone = "string",
+#'       ProductDescription = "Linux/UNIX"|"Linux/UNIX (Amazon VPC)"|"Windows"|"Windows (Amazon VPC)",
+#'       SpotInstanceRequestId = "string",
+#'       SpotPrice = "string",
+#'       State = "open"|"active"|"closed"|"cancelled"|"failed",
+#'       Status = list(
+#'         Code = "string",
+#'         Message = "string",
+#'         UpdateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Type = "one-time"|"persistent",
+#'       ValidFrom = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ValidUntil = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InstanceInterruptionBehavior = "hibernate"|"stop"|"terminate"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_spot_instance_requests(
@@ -19643,6 +26857,25 @@ ec2_describe_spot_instance_requests <- function(Filters = NULL, DryRun = NULL, S
 #' retrieving the price history data, in UTC format (for example,
 #' *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   SpotPriceHistory = list(
+#'     list(
+#'       AvailabilityZone = "string",
+#'       InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'       ProductDescription = "Linux/UNIX"|"Linux/UNIX (Amazon VPC)"|"Windows"|"Windows (Amazon VPC)",
+#'       SpotPrice = "string",
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_spot_price_history(
@@ -19731,6 +26964,70 @@ ec2_describe_spot_price_history <- function(Filters = NULL, AvailabilityZone = N
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a prior call.)
 #' @param VpcId &#91;required&#93; The ID of the VPC.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   StaleSecurityGroupSet = list(
+#'     list(
+#'       Description = "string",
+#'       GroupId = "string",
+#'       GroupName = "string",
+#'       StaleIpPermissions = list(
+#'         list(
+#'           FromPort = 123,
+#'           IpProtocol = "string",
+#'           IpRanges = list(
+#'             "string"
+#'           ),
+#'           PrefixListIds = list(
+#'             "string"
+#'           ),
+#'           ToPort = 123,
+#'           UserIdGroupPairs = list(
+#'             list(
+#'               Description = "string",
+#'               GroupId = "string",
+#'               GroupName = "string",
+#'               PeeringStatus = "string",
+#'               UserId = "string",
+#'               VpcId = "string",
+#'               VpcPeeringConnectionId = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       StaleIpPermissionsEgress = list(
+#'         list(
+#'           FromPort = 123,
+#'           IpProtocol = "string",
+#'           IpRanges = list(
+#'             "string"
+#'           ),
+#'           PrefixListIds = list(
+#'             "string"
+#'           ),
+#'           ToPort = 123,
+#'           UserIdGroupPairs = list(
+#'             list(
+#'               Description = "string",
+#'               GroupId = "string",
+#'               GroupName = "string",
+#'               PeeringStatus = "string",
+#'               UserId = "string",
+#'               VpcId = "string",
+#'               VpcPeeringConnectionId = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       VpcId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -19834,6 +27131,49 @@ ec2_describe_stale_security_groups <- function(DryRun = NULL, MaxResults = NULL,
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Subnets = list(
+#'     list(
+#'       AvailabilityZone = "string",
+#'       AvailabilityZoneId = "string",
+#'       AvailableIpAddressCount = 123,
+#'       CidrBlock = "string",
+#'       DefaultForAz = TRUE|FALSE,
+#'       MapPublicIpOnLaunch = TRUE|FALSE,
+#'       MapCustomerOwnedIpOnLaunch = TRUE|FALSE,
+#'       CustomerOwnedIpv4Pool = "string",
+#'       State = "pending"|"available",
+#'       SubnetId = "string",
+#'       VpcId = "string",
+#'       OwnerId = "string",
+#'       AssignIpv6AddressOnCreation = TRUE|FALSE,
+#'       Ipv6CidrBlockAssociationSet = list(
+#'         list(
+#'           AssociationId = "string",
+#'           Ipv6CidrBlock = "string",
+#'           Ipv6CidrBlockState = list(
+#'             State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'             StatusMessage = "string"
+#'           )
+#'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       SubnetArn = "string",
+#'       OutpostArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_subnets(
@@ -19931,6 +27271,22 @@ ec2_describe_subnets <- function(Filters = NULL, SubnetIds = NULL, DryRun = NULL
 #' call with the returned `NextToken` value.
 #' @param NextToken The token to retrieve the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       ResourceId = "string",
+#'       ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_tags(
@@ -20006,6 +27362,71 @@ ec2_describe_tags <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, 
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficMirrorFilters = list(
+#'     list(
+#'       TrafficMirrorFilterId = "string",
+#'       IngressFilterRules = list(
+#'         list(
+#'           TrafficMirrorFilterRuleId = "string",
+#'           TrafficMirrorFilterId = "string",
+#'           TrafficDirection = "ingress"|"egress",
+#'           RuleNumber = 123,
+#'           RuleAction = "accept"|"reject",
+#'           Protocol = 123,
+#'           DestinationPortRange = list(
+#'             FromPort = 123,
+#'             ToPort = 123
+#'           ),
+#'           SourcePortRange = list(
+#'             FromPort = 123,
+#'             ToPort = 123
+#'           ),
+#'           DestinationCidrBlock = "string",
+#'           SourceCidrBlock = "string",
+#'           Description = "string"
+#'         )
+#'       ),
+#'       EgressFilterRules = list(
+#'         list(
+#'           TrafficMirrorFilterRuleId = "string",
+#'           TrafficMirrorFilterId = "string",
+#'           TrafficDirection = "ingress"|"egress",
+#'           RuleNumber = 123,
+#'           RuleAction = "accept"|"reject",
+#'           Protocol = 123,
+#'           DestinationPortRange = list(
+#'             FromPort = 123,
+#'             ToPort = 123
+#'           ),
+#'           SourcePortRange = list(
+#'             FromPort = 123,
+#'             ToPort = 123
+#'           ),
+#'           DestinationCidrBlock = "string",
+#'           SourceCidrBlock = "string",
+#'           Description = "string"
+#'         )
+#'       ),
+#'       NetworkServices = list(
+#'         "amazon-dns"
+#'       ),
+#'       Description = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -20090,6 +27511,33 @@ ec2_describe_traffic_mirror_filters <- function(TrafficMirrorFilterIds = NULL, D
 #' value.
 #' @param NextToken The token for the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficMirrorSessions = list(
+#'     list(
+#'       TrafficMirrorSessionId = "string",
+#'       TrafficMirrorTargetId = "string",
+#'       TrafficMirrorFilterId = "string",
+#'       NetworkInterfaceId = "string",
+#'       OwnerId = "string",
+#'       PacketLength = 123,
+#'       SessionNumber = 123,
+#'       VirtualNetworkId = 123,
+#'       Description = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_traffic_mirror_sessions(
@@ -20162,6 +27610,30 @@ ec2_describe_traffic_mirror_sessions <- function(TrafficMirrorSessionIds = NULL,
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficMirrorTargets = list(
+#'     list(
+#'       TrafficMirrorTargetId = "string",
+#'       NetworkInterfaceId = "string",
+#'       NetworkLoadBalancerArn = "string",
+#'       Type = "network-interface"|"network-load-balancer",
+#'       Description = "string",
+#'       OwnerId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -20252,6 +27724,38 @@ ec2_describe_traffic_mirror_targets <- function(TrafficMirrorTargetIds = NULL, D
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayAttachments = list(
+#'     list(
+#'       TransitGatewayAttachmentId = "string",
+#'       TransitGatewayId = "string",
+#'       TransitGatewayOwnerId = "string",
+#'       ResourceOwnerId = "string",
+#'       ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'       ResourceId = "string",
+#'       State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'       Association = list(
+#'         TransitGatewayRouteTableId = "string",
+#'         State = "associating"|"associated"|"disassociating"|"disassociated"
+#'       ),
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_transit_gateway_attachments(
@@ -20318,6 +27822,47 @@ ec2_describe_transit_gateway_attachments <- function(TransitGatewayAttachmentIds
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayConnectPeers = list(
+#'     list(
+#'       TransitGatewayAttachmentId = "string",
+#'       TransitGatewayConnectPeerId = "string",
+#'       State = "pending"|"available"|"deleting"|"deleted",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ConnectPeerConfiguration = list(
+#'         TransitGatewayAddress = "string",
+#'         PeerAddress = "string",
+#'         InsideCidrBlocks = list(
+#'           "string"
+#'         ),
+#'         Protocol = "gre",
+#'         BgpConfigurations = list(
+#'           list(
+#'             TransitGatewayAsn = 123,
+#'             PeerAsn = 123,
+#'             TransitGatewayAddress = "string",
+#'             PeerAddress = "string",
+#'             BgpStatus = "up"|"down"
+#'           )
+#'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -20393,6 +27938,34 @@ ec2_describe_transit_gateway_connect_peers <- function(TransitGatewayConnectPeer
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayConnects = list(
+#'     list(
+#'       TransitGatewayAttachmentId = "string",
+#'       TransportTransitGatewayAttachmentId = "string",
+#'       TransitGatewayId = "string",
+#'       State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Options = list(
+#'         Protocol = "gre"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_transit_gateway_connects(
@@ -20461,6 +28034,37 @@ ec2_describe_transit_gateway_connects <- function(TransitGatewayAttachmentIds = 
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayMulticastDomains = list(
+#'     list(
+#'       TransitGatewayMulticastDomainId = "string",
+#'       TransitGatewayId = "string",
+#'       TransitGatewayMulticastDomainArn = "string",
+#'       OwnerId = "string",
+#'       Options = list(
+#'         Igmpv2Support = "enable"|"disable",
+#'         StaticSourcesSupport = "enable"|"disable",
+#'         AutoAcceptSharedAssociations = "enable"|"disable"
+#'       ),
+#'       State = "pending"|"available"|"deleting"|"deleted",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -20547,6 +28151,43 @@ ec2_describe_transit_gateway_multicast_domains <- function(TransitGatewayMultica
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayPeeringAttachments = list(
+#'     list(
+#'       TransitGatewayAttachmentId = "string",
+#'       RequesterTgwInfo = list(
+#'         TransitGatewayId = "string",
+#'         OwnerId = "string",
+#'         Region = "string"
+#'       ),
+#'       AccepterTgwInfo = list(
+#'         TransitGatewayId = "string",
+#'         OwnerId = "string",
+#'         Region = "string"
+#'       ),
+#'       Status = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_transit_gateway_peering_attachments(
@@ -20625,6 +28266,32 @@ ec2_describe_transit_gateway_peering_attachments <- function(TransitGatewayAttac
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayRouteTables = list(
+#'     list(
+#'       TransitGatewayRouteTableId = "string",
+#'       TransitGatewayId = "string",
+#'       State = "pending"|"available"|"deleting"|"deleted",
+#'       DefaultAssociationRouteTable = TRUE|FALSE,
+#'       DefaultPropagationRouteTable = TRUE|FALSE,
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_transit_gateway_route_tables(
@@ -20696,6 +28363,40 @@ ec2_describe_transit_gateway_route_tables <- function(TransitGatewayRouteTableId
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayVpcAttachments = list(
+#'     list(
+#'       TransitGatewayAttachmentId = "string",
+#'       TransitGatewayId = "string",
+#'       VpcId = "string",
+#'       VpcOwnerId = "string",
+#'       State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Options = list(
+#'         DnsSupport = "enable"|"disable",
+#'         Ipv6Support = "enable"|"disable",
+#'         ApplianceModeSupport = "enable"|"disable"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -20793,6 +28494,46 @@ ec2_describe_transit_gateway_vpc_attachments <- function(TransitGatewayAttachmen
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGateways = list(
+#'     list(
+#'       TransitGatewayId = "string",
+#'       TransitGatewayArn = "string",
+#'       State = "pending"|"available"|"modifying"|"deleting"|"deleted",
+#'       OwnerId = "string",
+#'       Description = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Options = list(
+#'         AmazonSideAsn = 123,
+#'         TransitGatewayCidrBlocks = list(
+#'           "string"
+#'         ),
+#'         AutoAcceptSharedAttachments = "enable"|"disable",
+#'         DefaultRouteTableAssociation = "enable"|"disable",
+#'         AssociationDefaultRouteTableId = "string",
+#'         DefaultRouteTablePropagation = "enable"|"disable",
+#'         PropagationDefaultRouteTableId = "string",
+#'         VpnEcmpSupport = "enable"|"disable",
+#'         DnsSupport = "enable"|"disable",
+#'         MulticastSupport = "enable"|"disable"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_transit_gateways(
@@ -20852,6 +28593,23 @@ ec2_describe_transit_gateways <- function(TransitGatewayIds = NULL, Filters = NU
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutoEnableIO = list(
+#'     Value = TRUE|FALSE
+#'   ),
+#'   ProductCodes = list(
+#'     list(
+#'       ProductCodeId = "string",
+#'       ProductCodeType = "devpay"|"marketplace"
+#'     )
+#'   ),
+#'   VolumeId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -20997,6 +28755,58 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   VolumeStatuses = list(
+#'     list(
+#'       Actions = list(
+#'         list(
+#'           Code = "string",
+#'           Description = "string",
+#'           EventId = "string",
+#'           EventType = "string"
+#'         )
+#'       ),
+#'       AvailabilityZone = "string",
+#'       OutpostArn = "string",
+#'       Events = list(
+#'         list(
+#'           Description = "string",
+#'           EventId = "string",
+#'           EventType = "string",
+#'           NotAfter = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           NotBefore = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           InstanceId = "string"
+#'         )
+#'       ),
+#'       VolumeId = "string",
+#'       VolumeStatus = list(
+#'         Details = list(
+#'           list(
+#'             Name = "io-enabled"|"io-performance",
+#'             Status = "string"
+#'           )
+#'         ),
+#'         Status = "ok"|"impaired"|"insufficient-data"
+#'       ),
+#'       AttachmentStatuses = list(
+#'         list(
+#'           IoPerformance = "string",
+#'           InstanceId = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -21159,6 +28969,52 @@ ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' the `NextToken` value. This value is `null` when there are no more
 #' results to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Volumes = list(
+#'     list(
+#'       Attachments = list(
+#'         list(
+#'           AttachTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Device = "string",
+#'           InstanceId = "string",
+#'           State = "attaching"|"attached"|"detaching"|"detached"|"busy",
+#'           VolumeId = "string",
+#'           DeleteOnTermination = TRUE|FALSE
+#'         )
+#'       ),
+#'       AvailabilityZone = "string",
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Encrypted = TRUE|FALSE,
+#'       KmsKeyId = "string",
+#'       OutpostArn = "string",
+#'       Size = 123,
+#'       SnapshotId = "string",
+#'       State = "creating"|"available"|"in-use"|"deleting"|"deleted"|"error",
+#'       VolumeId = "string",
+#'       Iops = 123,
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'       FastRestored = TRUE|FALSE,
+#'       MultiAttachEnabled = TRUE|FALSE,
+#'       Throughput = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_volumes(
@@ -21285,6 +29141,38 @@ ec2_describe_volumes <- function(Filters = NULL, VolumeIds = NULL, DryRun = NULL
 #' @param MaxResults The maximum number of results (up to a limit of 500) to be returned in a
 #' paginated request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumesModifications = list(
+#'     list(
+#'       VolumeId = "string",
+#'       ModificationState = "modifying"|"optimizing"|"completed"|"failed",
+#'       StatusMessage = "string",
+#'       TargetSize = 123,
+#'       TargetIops = 123,
+#'       TargetVolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'       TargetThroughput = 123,
+#'       TargetMultiAttachEnabled = TRUE|FALSE,
+#'       OriginalSize = 123,
+#'       OriginalIops = 123,
+#'       OriginalVolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'       OriginalThroughput = 123,
+#'       OriginalMultiAttachEnabled = TRUE|FALSE,
+#'       Progress = 123,
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_volumes_modifications(
@@ -21340,6 +29228,20 @@ ec2_describe_volumes_modifications <- function(DryRun = NULL, VolumeIds = NULL, 
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcId = "string",
+#'   EnableDnsHostnames = list(
+#'     Value = TRUE|FALSE
+#'   ),
+#'   EnableDnsSupport = list(
+#'     Value = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -21419,6 +29321,25 @@ ec2_describe_vpc_attribute <- function(Attribute, VpcId, DryRun = NULL) {
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param VpcIds One or more VPCs for which you want to describe the ClassicLink status.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Vpcs = list(
+#'     list(
+#'       ClassicLinkEnabled = TRUE|FALSE,
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       VpcId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_vpc_classic_link(
@@ -21477,6 +29398,20 @@ ec2_describe_vpc_classic_link <- function(Filters = NULL, DryRun = NULL, VpcIds 
 #' value.
 #' @param NextToken The token for the next page of results.
 #' @param VpcIds One or more VPC IDs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Vpcs = list(
+#'     list(
+#'       ClassicLinkDnsSupported = TRUE|FALSE,
+#'       VpcId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -21544,6 +29479,27 @@ ec2_describe_vpc_classic_link_dns_support <- function(MaxResults = NULL, NextTok
 #' the remaining results, make another request with the returned
 #' `NextToken` value.
 #' @param NextToken The token to request the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionNotificationSet = list(
+#'     list(
+#'       ConnectionNotificationId = "string",
+#'       ServiceId = "string",
+#'       VpcEndpointId = "string",
+#'       ConnectionNotificationType = "Topic",
+#'       ConnectionNotificationArn = "string",
+#'       ConnectionEvents = list(
+#'         "string"
+#'       ),
+#'       ConnectionNotificationState = "Enabled"|"Disabled"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -21616,6 +29572,37 @@ ec2_describe_vpc_endpoint_connection_notifications <- function(DryRun = NULL, Co
 #' can be between 5 and 1,000; if `MaxResults` is given a value larger than
 #' 1,000, only 1,000 results are returned.
 #' @param NextToken The token to retrieve the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcEndpointConnections = list(
+#'     list(
+#'       ServiceId = "string",
+#'       VpcEndpointId = "string",
+#'       VpcEndpointOwner = "string",
+#'       VpcEndpointState = "PendingAcceptance"|"Pending"|"Available"|"Deleting"|"Deleted"|"Rejected"|"Failed"|"Expired",
+#'       CreationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DnsEntries = list(
+#'         list(
+#'           DnsName = "string",
+#'           HostedZoneId = "string"
+#'         )
+#'       ),
+#'       NetworkLoadBalancerArns = list(
+#'         "string"
+#'       ),
+#'       GatewayLoadBalancerArns = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -21695,6 +29682,53 @@ ec2_describe_vpc_endpoint_connections <- function(DryRun = NULL, Filters = NULL,
 #' 1,000, only 1,000 results are returned.
 #' @param NextToken The token to retrieve the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceConfigurations = list(
+#'     list(
+#'       ServiceType = list(
+#'         list(
+#'           ServiceType = "Interface"|"Gateway"|"GatewayLoadBalancer"
+#'         )
+#'       ),
+#'       ServiceId = "string",
+#'       ServiceName = "string",
+#'       ServiceState = "Pending"|"Available"|"Deleting"|"Deleted"|"Failed",
+#'       AvailabilityZones = list(
+#'         "string"
+#'       ),
+#'       AcceptanceRequired = TRUE|FALSE,
+#'       ManagesVpcEndpoints = TRUE|FALSE,
+#'       NetworkLoadBalancerArns = list(
+#'         "string"
+#'       ),
+#'       GatewayLoadBalancerArns = list(
+#'         "string"
+#'       ),
+#'       BaseEndpointDnsNames = list(
+#'         "string"
+#'       ),
+#'       PrivateDnsName = "string",
+#'       PrivateDnsNameConfiguration = list(
+#'         State = "pendingVerification"|"verified"|"failed",
+#'         Type = "string",
+#'         Value = "string",
+#'         Name = "string"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_vpc_endpoint_service_configurations(
@@ -21763,6 +29797,20 @@ ec2_describe_vpc_endpoint_service_configurations <- function(DryRun = NULL, Serv
 #' can be between 5 and 1,000; if `MaxResults` is given a value larger than
 #' 1,000, only 1,000 results are returned.
 #' @param NextToken The token to retrieve the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AllowedPrincipals = list(
+#'     list(
+#'       PrincipalType = "All"|"Service"|"OrganizationUnit"|"Account"|"User"|"Role",
+#'       Principal = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -21845,6 +29893,51 @@ ec2_describe_vpc_endpoint_service_permissions <- function(DryRun = NULL, Service
 #' items.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a prior call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceNames = list(
+#'     "string"
+#'   ),
+#'   ServiceDetails = list(
+#'     list(
+#'       ServiceName = "string",
+#'       ServiceId = "string",
+#'       ServiceType = list(
+#'         list(
+#'           ServiceType = "Interface"|"Gateway"|"GatewayLoadBalancer"
+#'         )
+#'       ),
+#'       AvailabilityZones = list(
+#'         "string"
+#'       ),
+#'       Owner = "string",
+#'       BaseEndpointDnsNames = list(
+#'         "string"
+#'       ),
+#'       PrivateDnsName = "string",
+#'       PrivateDnsNames = list(
+#'         list(
+#'           PrivateDnsName = "string"
+#'         )
+#'       ),
+#'       VpcEndpointPolicySupported = TRUE|FALSE,
+#'       AcceptanceRequired = TRUE|FALSE,
+#'       ManagesVpcEndpoints = TRUE|FALSE,
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       PrivateDnsNameVerificationState = "pendingVerification"|"verified"|"failed"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -21932,6 +30025,61 @@ ec2_describe_vpc_endpoint_services <- function(DryRun = NULL, ServiceNames = NUL
 #' items.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a prior call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcEndpoints = list(
+#'     list(
+#'       VpcEndpointId = "string",
+#'       VpcEndpointType = "Interface"|"Gateway"|"GatewayLoadBalancer",
+#'       VpcId = "string",
+#'       ServiceName = "string",
+#'       State = "PendingAcceptance"|"Pending"|"Available"|"Deleting"|"Deleted"|"Rejected"|"Failed"|"Expired",
+#'       PolicyDocument = "string",
+#'       RouteTableIds = list(
+#'         "string"
+#'       ),
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       Groups = list(
+#'         list(
+#'           GroupId = "string",
+#'           GroupName = "string"
+#'         )
+#'       ),
+#'       PrivateDnsEnabled = TRUE|FALSE,
+#'       RequesterManaged = TRUE|FALSE,
+#'       NetworkInterfaceIds = list(
+#'         "string"
+#'       ),
+#'       DnsEntries = list(
+#'         list(
+#'           DnsName = "string",
+#'           HostedZoneId = "string"
+#'         )
+#'       ),
+#'       CreationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       OwnerId = "string",
+#'       LastError = list(
+#'         Message = "string",
+#'         Code = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -22032,6 +30180,74 @@ ec2_describe_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds = NULL, Fil
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcPeeringConnections = list(
+#'     list(
+#'       AccepterVpcInfo = list(
+#'         CidrBlock = "string",
+#'         Ipv6CidrBlockSet = list(
+#'           list(
+#'             Ipv6CidrBlock = "string"
+#'           )
+#'         ),
+#'         CidrBlockSet = list(
+#'           list(
+#'             CidrBlock = "string"
+#'           )
+#'         ),
+#'         OwnerId = "string",
+#'         PeeringOptions = list(
+#'           AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+#'           AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+#'           AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+#'         ),
+#'         VpcId = "string",
+#'         Region = "string"
+#'       ),
+#'       ExpirationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RequesterVpcInfo = list(
+#'         CidrBlock = "string",
+#'         Ipv6CidrBlockSet = list(
+#'           list(
+#'             Ipv6CidrBlock = "string"
+#'           )
+#'         ),
+#'         CidrBlockSet = list(
+#'           list(
+#'             CidrBlock = "string"
+#'           )
+#'         ),
+#'         OwnerId = "string",
+#'         PeeringOptions = list(
+#'           AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+#'           AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+#'           AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+#'         ),
+#'         VpcId = "string",
+#'         Region = "string"
+#'       ),
+#'       Status = list(
+#'         Code = "initiating-request"|"pending-acceptance"|"active"|"deleted"|"rejected"|"failed"|"expired"|"provisioning"|"deleting",
+#'         Message = "string"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       VpcPeeringConnectionId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -22139,6 +30355,53 @@ ec2_describe_vpc_peering_connections <- function(Filters = NULL, DryRun = NULL, 
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Vpcs = list(
+#'     list(
+#'       CidrBlock = "string",
+#'       DhcpOptionsId = "string",
+#'       State = "pending"|"available",
+#'       VpcId = "string",
+#'       OwnerId = "string",
+#'       InstanceTenancy = "default"|"dedicated"|"host",
+#'       Ipv6CidrBlockAssociationSet = list(
+#'         list(
+#'           AssociationId = "string",
+#'           Ipv6CidrBlock = "string",
+#'           Ipv6CidrBlockState = list(
+#'             State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'             StatusMessage = "string"
+#'           ),
+#'           NetworkBorderGroup = "string",
+#'           Ipv6Pool = "string"
+#'         )
+#'       ),
+#'       CidrBlockAssociationSet = list(
+#'         list(
+#'           AssociationId = "string",
+#'           CidrBlock = "string",
+#'           CidrBlockState = list(
+#'             State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'             StatusMessage = "string"
+#'           )
+#'         )
+#'       ),
+#'       IsDefault = TRUE|FALSE,
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -22251,6 +30514,110 @@ ec2_describe_vpcs <- function(Filters = NULL, VpcIds = NULL, DryRun = NULL, Next
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpnConnections = list(
+#'     list(
+#'       CustomerGatewayConfiguration = "string",
+#'       CustomerGatewayId = "string",
+#'       Category = "string",
+#'       State = "pending"|"available"|"deleting"|"deleted",
+#'       Type = "ipsec.1",
+#'       VpnConnectionId = "string",
+#'       VpnGatewayId = "string",
+#'       TransitGatewayId = "string",
+#'       Options = list(
+#'         EnableAcceleration = TRUE|FALSE,
+#'         StaticRoutesOnly = TRUE|FALSE,
+#'         LocalIpv4NetworkCidr = "string",
+#'         RemoteIpv4NetworkCidr = "string",
+#'         LocalIpv6NetworkCidr = "string",
+#'         RemoteIpv6NetworkCidr = "string",
+#'         TunnelInsideIpVersion = "ipv4"|"ipv6",
+#'         TunnelOptions = list(
+#'           list(
+#'             OutsideIpAddress = "string",
+#'             TunnelInsideCidr = "string",
+#'             TunnelInsideIpv6Cidr = "string",
+#'             PreSharedKey = "string",
+#'             Phase1LifetimeSeconds = 123,
+#'             Phase2LifetimeSeconds = 123,
+#'             RekeyMarginTimeSeconds = 123,
+#'             RekeyFuzzPercentage = 123,
+#'             ReplayWindowSize = 123,
+#'             DpdTimeoutSeconds = 123,
+#'             DpdTimeoutAction = "string",
+#'             Phase1EncryptionAlgorithms = list(
+#'               list(
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             Phase2EncryptionAlgorithms = list(
+#'               list(
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             Phase1IntegrityAlgorithms = list(
+#'               list(
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             Phase2IntegrityAlgorithms = list(
+#'               list(
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             Phase1DHGroupNumbers = list(
+#'               list(
+#'                 Value = 123
+#'               )
+#'             ),
+#'             Phase2DHGroupNumbers = list(
+#'               list(
+#'                 Value = 123
+#'               )
+#'             ),
+#'             IkeVersions = list(
+#'               list(
+#'                 Value = "string"
+#'               )
+#'             ),
+#'             StartupAction = "string"
+#'           )
+#'         )
+#'       ),
+#'       Routes = list(
+#'         list(
+#'           DestinationCidrBlock = "string",
+#'           Source = "Static",
+#'           State = "pending"|"available"|"deleting"|"deleted"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       VgwTelemetry = list(
+#'         list(
+#'           AcceptedRouteCount = 123,
+#'           LastStatusChange = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           OutsideIpAddress = "string",
+#'           Status = "UP"|"DOWN",
+#'           StatusMessage = "string",
+#'           CertificateArn = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_vpn_connections(
@@ -22340,6 +30707,34 @@ ec2_describe_vpn_connections <- function(Filters = NULL, VpnConnectionIds = NULL
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpnGateways = list(
+#'     list(
+#'       AvailabilityZone = "string",
+#'       State = "pending"|"available"|"deleting"|"deleted",
+#'       Type = "ipsec.1",
+#'       VpcAttachments = list(
+#'         list(
+#'           State = "attaching"|"attached"|"detaching"|"detached",
+#'           VpcId = "string"
+#'         )
+#'       ),
+#'       VpnGatewayId = "string",
+#'       AmazonSideAsn = 123,
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_vpn_gateways(
@@ -22396,6 +30791,14 @@ ec2_describe_vpn_gateways <- function(Filters = NULL, VpnGatewayIds = NULL, DryR
 #' @param InstanceId &#91;required&#93; The ID of the instance to unlink from the VPC.
 #' @param VpcId &#91;required&#93; The ID of the VPC to which the instance is linked.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detach_classic_link_vpc(
@@ -22442,6 +30845,8 @@ ec2_detach_classic_link_vpc <- function(DryRun = NULL, InstanceId, VpcId) {
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param InternetGatewayId &#91;required&#93; The ID of the internet gateway.
 #' @param VpcId &#91;required&#93; The ID of the VPC.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -22511,6 +30916,8 @@ ec2_detach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 #'     with the detached network interface might still be visible. The
 #'     instance metadata will get updated when you stop and start the
 #'     instance.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -22588,6 +30995,21 @@ ec2_detach_network_interface <- function(AttachmentId, DryRun = NULL, Force = NU
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AttachTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Device = "string",
+#'   InstanceId = "string",
+#'   State = "attaching"|"attached"|"detaching"|"detached"|"busy",
+#'   VolumeId = "string",
+#'   DeleteOnTermination = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detach_volume(
@@ -22651,6 +31073,8 @@ ec2_detach_volume <- function(Device = NULL, Force = NULL, InstanceId = NULL, Vo
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detach_vpn_gateway(
@@ -22705,6 +31129,14 @@ ec2_detach_vpn_gateway <- function(VpcId, VpnGatewayId, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EbsEncryptionByDefault = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_ebs_encryption_by_default(
@@ -22749,6 +31181,52 @@ ec2_disable_ebs_encryption_by_default <- function(DryRun = NULL) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Successful = list(
+#'     list(
+#'       SnapshotId = "string",
+#'       AvailabilityZone = "string",
+#'       State = "enabling"|"optimizing"|"enabled"|"disabling"|"disabled",
+#'       StateTransitionReason = "string",
+#'       OwnerId = "string",
+#'       OwnerAlias = "string",
+#'       EnablingTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OptimizingTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EnabledTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DisablingTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DisabledTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Unsuccessful = list(
+#'     list(
+#'       SnapshotId = "string",
+#'       FastSnapshotRestoreStateErrors = list(
+#'         list(
+#'           AvailabilityZone = "string",
+#'           Error = list(
+#'             Code = "string",
+#'             Message = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -22801,6 +31279,20 @@ ec2_disable_fast_snapshot_restores <- function(AvailabilityZones, SourceSnapshot
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Propagation = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     ResourceId = "string",
+#'     ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'     TransitGatewayRouteTableId = "string",
+#'     State = "enabling"|"enabled"|"disabling"|"disabled"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_transit_gateway_route_table_propagation(
@@ -22846,6 +31338,8 @@ ec2_disable_transit_gateway_route_table_propagation <- function(TransitGatewayRo
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -22901,6 +31395,14 @@ ec2_disable_vgw_route_propagation <- function(GatewayId, RouteTableId, DryRun = 
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param VpcId &#91;required&#93; The ID of the VPC.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_vpc_classic_link(
@@ -22945,6 +31447,14 @@ ec2_disable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
 #' ec2_disable_vpc_classic_link_dns_support(VpcId)
 #'
 #' @param VpcId The ID of the VPC.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -22997,6 +31507,8 @@ ec2_disable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -23069,6 +31581,18 @@ ec2_disassociate_address <- function(AssociationId = NULL, PublicIp = NULL, DryR
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociationId = "string",
+#'   Status = list(
+#'     Code = "associating"|"associated"|"association-failed"|"disassociating"|"disassociated",
+#'     Message = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_client_vpn_target_network(
@@ -23121,6 +31645,14 @@ ec2_disassociate_client_vpn_target_network <- function(ClientVpnEndpointId, Asso
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_enclave_certificate_iam_role(
@@ -23164,6 +31696,25 @@ ec2_disassociate_enclave_certificate_iam_role <- function(CertificateArn = NULL,
 #' ec2_disassociate_iam_instance_profile(AssociationId)
 #'
 #' @param AssociationId &#91;required&#93; The ID of the IAM instance profile association.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IamInstanceProfileAssociation = list(
+#'     AssociationId = "string",
+#'     InstanceId = "string",
+#'     IamInstanceProfile = list(
+#'       Arn = "string",
+#'       Id = "string"
+#'     ),
+#'     State = "associating"|"associated"|"disassociating"|"disassociated",
+#'     Timestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -23222,6 +31773,8 @@ ec2_disassociate_iam_instance_profile <- function(AssociationId) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_route_table(
@@ -23272,6 +31825,22 @@ ec2_disassociate_route_table <- function(AssociationId, DryRun = NULL) {
 #'
 #' @param AssociationId &#91;required&#93; The association ID for the CIDR block.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Ipv6CidrBlockAssociation = list(
+#'     AssociationId = "string",
+#'     Ipv6CidrBlock = "string",
+#'     Ipv6CidrBlockState = list(
+#'       State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'       StatusMessage = "string"
+#'     )
+#'   ),
+#'   SubnetId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_subnet_cidr_block(
@@ -23318,6 +31887,26 @@ ec2_disassociate_subnet_cidr_block <- function(AssociationId) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Associations = list(
+#'     TransitGatewayMulticastDomainId = "string",
+#'     TransitGatewayAttachmentId = "string",
+#'     ResourceId = "string",
+#'     ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'     ResourceOwnerId = "string",
+#'     Subnets = list(
+#'       list(
+#'         SubnetId = "string",
+#'         State = "pendingAcceptance"|"associating"|"associated"|"disassociating"|"disassociated"|"rejected"|"failed"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -23367,6 +31956,20 @@ ec2_disassociate_transit_gateway_multicast_domain <- function(TransitGatewayMult
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Association = list(
+#'     TransitGatewayRouteTableId = "string",
+#'     TransitGatewayAttachmentId = "string",
+#'     ResourceId = "string",
+#'     ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'     State = "associating"|"associated"|"disassociating"|"disassociated"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_transit_gateway_route_table(
@@ -23412,6 +32015,32 @@ ec2_disassociate_transit_gateway_route_table <- function(TransitGatewayRouteTabl
 #' ec2_disassociate_vpc_cidr_block(AssociationId)
 #'
 #' @param AssociationId &#91;required&#93; The association ID for the CIDR block.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Ipv6CidrBlockAssociation = list(
+#'     AssociationId = "string",
+#'     Ipv6CidrBlock = "string",
+#'     Ipv6CidrBlockState = list(
+#'       State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'       StatusMessage = "string"
+#'     ),
+#'     NetworkBorderGroup = "string",
+#'     Ipv6Pool = "string"
+#'   ),
+#'   CidrBlockAssociation = list(
+#'     AssociationId = "string",
+#'     CidrBlock = "string",
+#'     CidrBlockState = list(
+#'       State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
+#'       StatusMessage = "string"
+#'     )
+#'   ),
+#'   VpcId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -23473,6 +32102,14 @@ ec2_disassociate_vpc_cidr_block <- function(AssociationId) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EbsEncryptionByDefault = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_ebs_encryption_by_default(
@@ -23530,6 +32167,52 @@ ec2_enable_ebs_encryption_by_default <- function(DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Successful = list(
+#'     list(
+#'       SnapshotId = "string",
+#'       AvailabilityZone = "string",
+#'       State = "enabling"|"optimizing"|"enabled"|"disabling"|"disabled",
+#'       StateTransitionReason = "string",
+#'       OwnerId = "string",
+#'       OwnerAlias = "string",
+#'       EnablingTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OptimizingTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EnabledTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DisablingTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DisabledTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Unsuccessful = list(
+#'     list(
+#'       SnapshotId = "string",
+#'       FastSnapshotRestoreStateErrors = list(
+#'         list(
+#'           AvailabilityZone = "string",
+#'           Error = list(
+#'             Code = "string",
+#'             Message = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_fast_snapshot_restores(
@@ -23581,6 +32264,20 @@ ec2_enable_fast_snapshot_restores <- function(AvailabilityZones, SourceSnapshotI
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Propagation = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     ResourceId = "string",
+#'     ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'     TransitGatewayRouteTableId = "string",
+#'     State = "enabling"|"enabled"|"disabling"|"disabled"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_transit_gateway_route_table_propagation(
@@ -23629,6 +32326,8 @@ ec2_enable_transit_gateway_route_table_propagation <- function(TransitGatewayRou
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -23684,6 +32383,8 @@ ec2_enable_vgw_route_propagation <- function(GatewayId, RouteTableId, DryRun = N
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param VolumeId &#91;required&#93; The ID of the volume.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -23743,6 +32444,14 @@ ec2_enable_volume_io <- function(DryRun = NULL, VolumeId) {
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param VpcId &#91;required&#93; The ID of the VPC.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_vpc_classic_link(
@@ -23790,6 +32499,14 @@ ec2_enable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
 #'
 #' @param VpcId The ID of the VPC.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_vpc_classic_link_dns_support(
@@ -23833,6 +32550,18 @@ ec2_enable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CertificateRevocationList = "string",
+#'   Status = list(
+#'     Code = "pending"|"active",
+#'     Message = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -23879,6 +32608,14 @@ ec2_export_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientConfiguration = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -23930,12 +32667,37 @@ ec2_export_client_vpn_client_configuration <- function(ClientVpnEndpointId, DryR
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ImageId &#91;required&#93; The ID of the image.
 #' @param S3ExportLocation &#91;required&#93; Information about the destination Amazon S3 bucket. The bucket must
-#' exist and grant WRITE and READ\\_ACP permissions to the AWS account
+#' exist and grant WRITE and READ_ACP permissions to the AWS account
 #' vm-import-export@@amazon.com.
 #' @param RoleName The name of the role that grants VM Import/Export permission to export
 #' images to your Amazon S3 bucket. If this parameter is not specified, the
 #' default role is named 'vmimport'.
 #' @param TagSpecifications The tags to apply to the image being exported.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   DiskImageFormat = "VMDK"|"RAW"|"VHD",
+#'   ExportImageTaskId = "string",
+#'   ImageId = "string",
+#'   RoleName = "string",
+#'   Progress = "string",
+#'   S3ExportLocation = list(
+#'     S3Bucket = "string",
+#'     S3Prefix = "string"
+#'   ),
+#'   Status = "string",
+#'   StatusMessage = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -24036,6 +32798,14 @@ ec2_export_image <- function(ClientToken = NULL, Description = NULL, DiskImageFo
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   S3Location = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$export_transit_gateway_routes(
@@ -24094,6 +32864,21 @@ ec2_export_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filter
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociatedRoles = list(
+#'     list(
+#'       AssociatedRoleArn = "string",
+#'       CertificateS3BucketName = "string",
+#'       CertificateS3ObjectKey = "string",
+#'       EncryptionKmsKeyId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_associated_enclave_certificate_iam_roles(
@@ -24142,6 +32927,20 @@ ec2_get_associated_enclave_certificate_iam_roles <- function(CertificateArn = NU
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Ipv6CidrAssociations = list(
+#'     list(
+#'       Ipv6Cidr = "string",
+#'       AssociatedResource = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -24199,6 +32998,25 @@ ec2_get_associated_ipv_6_pool_cidrs <- function(PoolId, NextToken = NULL, MaxRes
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   CapacityReservationId = "string",
+#'   InstanceType = "string",
+#'   TotalInstanceCount = 123,
+#'   AvailableInstanceCount = 123,
+#'   State = "active"|"expired"|"cancelled"|"pending"|"failed",
+#'   InstanceUsages = list(
+#'     list(
+#'       AccountId = "string",
+#'       UsedInstanceCount = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_capacity_reservation_usage(
@@ -24243,15 +33061,12 @@ ec2_get_capacity_reservation_usage <- function(CapacityReservationId, NextToken 
 #' 
 #' -   `coip-address-usage.allocation-id`
 #' 
-#' <!-- -->
 #' 
 #' -   `coip-address-usage.aws-account-id`
 #' 
-#' <!-- -->
 #' 
 #' -   `coip-address-usage.aws-service`
 #' 
-#' <!-- -->
 #' 
 #' -   `coip-address-usage.co-ip`
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
@@ -24262,6 +33077,23 @@ ec2_get_capacity_reservation_usage <- function(CapacityReservationId, NextToken 
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoipPoolId = "string",
+#'   CoipAddressUsages = list(
+#'     list(
+#'       AllocationId = "string",
+#'       AwsAccountId = "string",
+#'       AwsService = "string",
+#'       CoIp = "string"
+#'     )
+#'   ),
+#'   LocalGatewayRouteTableId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -24336,6 +33168,18 @@ ec2_get_coip_pool_usage <- function(PoolId, Filters = NULL, MaxResults = NULL, N
 #' 
 #' Default: disabled (`false`)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceId = "string",
+#'   Output = "string",
+#'   Timestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_console_output(
@@ -24393,6 +33237,15 @@ ec2_get_console_output <- function(InstanceId, DryRun = NULL, Latest = NULL) {
 #' @param WakeUp When set to `true`, acts as keystroke input and wakes up an instance
 #' that's in standby or "sleep" mode.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageData = "string",
+#'   InstanceId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_console_screenshot(
@@ -24441,6 +33294,17 @@ ec2_get_console_screenshot <- function(DryRun = NULL, InstanceId, WakeUp = NULL)
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param InstanceFamily &#91;required&#93; The instance family.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceFamilyCreditSpecification = list(
+#'     InstanceFamily = "t2"|"t3"|"t3a"|"t4g",
+#'     CpuCredits = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -24492,6 +33356,14 @@ ec2_get_default_credit_specification <- function(DryRun = NULL, InstanceFamily) 
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KmsKeyId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_ebs_default_kms_key_id(
@@ -24537,6 +33409,14 @@ ec2_get_ebs_default_kms_key_id <- function(DryRun = NULL) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EbsEncryptionByDefault = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -24586,6 +33466,20 @@ ec2_get_ebs_encryption_by_default <- function(DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   CapacityReservationGroups = list(
+#'     list(
+#'       GroupArn = "string",
+#'       OwnerId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_groups_for_capacity_reservation(
@@ -24633,6 +33527,30 @@ ec2_get_groups_for_capacity_reservation <- function(CapacityReservationId, NextT
 #'
 #' @param HostIdSet &#91;required&#93; The IDs of the Dedicated Hosts with which the reservation is associated.
 #' @param OfferingId &#91;required&#93; The offering ID of the reservation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CurrencyCode = "USD",
+#'   Purchase = list(
+#'     list(
+#'       CurrencyCode = "USD",
+#'       Duration = 123,
+#'       HostIdSet = list(
+#'         "string"
+#'       ),
+#'       HostReservationId = "string",
+#'       HourlyPrice = "string",
+#'       InstanceFamily = "string",
+#'       PaymentOption = "AllUpfront"|"PartialUpfront"|"NoUpfront",
+#'       UpfrontPrice = "string"
+#'     )
+#'   ),
+#'   TotalHourlyPrice = "string",
+#'   TotalUpfrontPrice = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -24685,6 +33603,159 @@ ec2_get_host_reservation_purchase_preview <- function(HostIdSet, OfferingId) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param InstanceId &#91;required&#93; The ID of the instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LaunchTemplateData = list(
+#'     KernelId = "string",
+#'     EbsOptimized = TRUE|FALSE,
+#'     IamInstanceProfile = list(
+#'       Arn = "string",
+#'       Name = "string"
+#'     ),
+#'     BlockDeviceMappings = list(
+#'       list(
+#'         DeviceName = "string",
+#'         VirtualName = "string",
+#'         Ebs = list(
+#'           Encrypted = TRUE|FALSE,
+#'           DeleteOnTermination = TRUE|FALSE,
+#'           Iops = 123,
+#'           KmsKeyId = "string",
+#'           SnapshotId = "string",
+#'           VolumeSize = 123,
+#'           VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'           Throughput = 123
+#'         ),
+#'         NoDevice = "string"
+#'       )
+#'     ),
+#'     NetworkInterfaces = list(
+#'       list(
+#'         AssociateCarrierIpAddress = TRUE|FALSE,
+#'         AssociatePublicIpAddress = TRUE|FALSE,
+#'         DeleteOnTermination = TRUE|FALSE,
+#'         Description = "string",
+#'         DeviceIndex = 123,
+#'         Groups = list(
+#'           "string"
+#'         ),
+#'         InterfaceType = "string",
+#'         Ipv6AddressCount = 123,
+#'         Ipv6Addresses = list(
+#'           list(
+#'             Ipv6Address = "string"
+#'           )
+#'         ),
+#'         NetworkInterfaceId = "string",
+#'         PrivateIpAddress = "string",
+#'         PrivateIpAddresses = list(
+#'           list(
+#'             Primary = TRUE|FALSE,
+#'             PrivateIpAddress = "string"
+#'           )
+#'         ),
+#'         SecondaryPrivateIpAddressCount = 123,
+#'         SubnetId = "string",
+#'         NetworkCardIndex = 123
+#'       )
+#'     ),
+#'     ImageId = "string",
+#'     InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'     KeyName = "string",
+#'     Monitoring = list(
+#'       Enabled = TRUE|FALSE
+#'     ),
+#'     Placement = list(
+#'       AvailabilityZone = "string",
+#'       Affinity = "string",
+#'       GroupName = "string",
+#'       HostId = "string",
+#'       Tenancy = "default"|"dedicated"|"host",
+#'       SpreadDomain = "string",
+#'       HostResourceGroupArn = "string",
+#'       PartitionNumber = 123
+#'     ),
+#'     RamDiskId = "string",
+#'     DisableApiTermination = TRUE|FALSE,
+#'     InstanceInitiatedShutdownBehavior = "stop"|"terminate",
+#'     UserData = "string",
+#'     TagSpecifications = list(
+#'       list(
+#'         ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ElasticGpuSpecifications = list(
+#'       list(
+#'         Type = "string"
+#'       )
+#'     ),
+#'     ElasticInferenceAccelerators = list(
+#'       list(
+#'         Type = "string",
+#'         Count = 123
+#'       )
+#'     ),
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     SecurityGroups = list(
+#'       "string"
+#'     ),
+#'     InstanceMarketOptions = list(
+#'       MarketType = "spot",
+#'       SpotOptions = list(
+#'         MaxPrice = "string",
+#'         SpotInstanceType = "one-time"|"persistent",
+#'         BlockDurationMinutes = 123,
+#'         ValidUntil = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         InstanceInterruptionBehavior = "hibernate"|"stop"|"terminate"
+#'       )
+#'     ),
+#'     CreditSpecification = list(
+#'       CpuCredits = "string"
+#'     ),
+#'     CpuOptions = list(
+#'       CoreCount = 123,
+#'       ThreadsPerCore = 123
+#'     ),
+#'     CapacityReservationSpecification = list(
+#'       CapacityReservationPreference = "open"|"none",
+#'       CapacityReservationTarget = list(
+#'         CapacityReservationId = "string",
+#'         CapacityReservationResourceGroupArn = "string"
+#'       )
+#'     ),
+#'     LicenseSpecifications = list(
+#'       list(
+#'         LicenseConfigurationArn = "string"
+#'       )
+#'     ),
+#'     HibernationOptions = list(
+#'       Configured = TRUE|FALSE
+#'     ),
+#'     MetadataOptions = list(
+#'       State = "pending"|"applied",
+#'       HttpTokens = "optional"|"required",
+#'       HttpPutResponseHopLimit = 123,
+#'       HttpEndpoint = "disabled"|"enabled"
+#'     ),
+#'     EnclaveOptions = list(
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -24743,6 +33814,20 @@ ec2_get_launch_template_data <- function(DryRun = NULL, InstanceId) {
 #' value.
 #' @param NextToken The token for the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PrefixListAssociations = list(
+#'     list(
+#'       ResourceId = "string",
+#'       ResourceOwner = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_managed_prefix_list_associations(
@@ -24793,6 +33878,20 @@ ec2_get_managed_prefix_list_associations <- function(DryRun = NULL, PrefixListId
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #' @param NextToken The token for the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entries = list(
+#'     list(
+#'       Cidr = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -24862,6 +33961,18 @@ ec2_get_managed_prefix_list_entries <- function(DryRun = NULL, PrefixListId, Tar
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceId = "string",
+#'   PasswordData = "string",
+#'   Timestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_password_data(
@@ -24913,6 +34024,53 @@ ec2_get_password_data <- function(InstanceId, DryRun = NULL) {
 #' @param ReservedInstanceIds &#91;required&#93; The IDs of the Convertible Reserved Instances to exchange.
 #' @param TargetConfigurations The configuration of the target Convertible Reserved Instance to
 #' exchange for your current Convertible Reserved Instances.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CurrencyCode = "string",
+#'   IsValidExchange = TRUE|FALSE,
+#'   OutputReservedInstancesWillExpireAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   PaymentDue = "string",
+#'   ReservedInstanceValueRollup = list(
+#'     HourlyPrice = "string",
+#'     RemainingTotalValue = "string",
+#'     RemainingUpfrontValue = "string"
+#'   ),
+#'   ReservedInstanceValueSet = list(
+#'     list(
+#'       ReservationValue = list(
+#'         HourlyPrice = "string",
+#'         RemainingTotalValue = "string",
+#'         RemainingUpfrontValue = "string"
+#'       ),
+#'       ReservedInstanceId = "string"
+#'     )
+#'   ),
+#'   TargetConfigurationValueRollup = list(
+#'     HourlyPrice = "string",
+#'     RemainingTotalValue = "string",
+#'     RemainingUpfrontValue = "string"
+#'   ),
+#'   TargetConfigurationValueSet = list(
+#'     list(
+#'       ReservationValue = list(
+#'         HourlyPrice = "string",
+#'         RemainingTotalValue = "string",
+#'         RemainingUpfrontValue = "string"
+#'       ),
+#'       TargetConfiguration = list(
+#'         InstanceCount = 123,
+#'         OfferingId = "string"
+#'       )
+#'     )
+#'   ),
+#'   ValidationFailureReason = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -24974,6 +34132,20 @@ ec2_get_reserved_instances_exchange_quote <- function(DryRun = NULL, ReservedIns
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayAttachmentPropagations = list(
+#'     list(
+#'       TransitGatewayRouteTableId = "string",
+#'       State = "enabling"|"enabled"|"disabling"|"disabled"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -25046,6 +34218,26 @@ ec2_get_transit_gateway_attachment_propagations <- function(TransitGatewayAttach
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MulticastDomainAssociations = list(
+#'     list(
+#'       TransitGatewayAttachmentId = "string",
+#'       ResourceId = "string",
+#'       ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'       ResourceOwnerId = "string",
+#'       Subnet = list(
+#'         SubnetId = "string",
+#'         State = "pendingAcceptance"|"associating"|"associated"|"disassociating"|"disassociated"|"rejected"|"failed"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -25127,6 +34319,28 @@ ec2_get_transit_gateway_multicast_domain_associations <- function(TransitGateway
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayPrefixListReferences = list(
+#'     list(
+#'       TransitGatewayRouteTableId = "string",
+#'       PrefixListId = "string",
+#'       PrefixListOwnerId = "string",
+#'       State = "pending"|"available"|"modifying"|"deleting",
+#'       Blackhole = TRUE|FALSE,
+#'       TransitGatewayAttachment = list(
+#'         TransitGatewayAttachmentId = "string",
+#'         ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'         ResourceId = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_transit_gateway_prefix_list_references(
@@ -25193,6 +34407,22 @@ ec2_get_transit_gateway_prefix_list_references <- function(TransitGatewayRouteTa
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Associations = list(
+#'     list(
+#'       TransitGatewayAttachmentId = "string",
+#'       ResourceId = "string",
+#'       ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'       State = "associating"|"associated"|"disassociating"|"disassociated"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -25261,6 +34491,22 @@ ec2_get_transit_gateway_route_table_associations <- function(TransitGatewayRoute
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayRouteTablePropagations = list(
+#'     list(
+#'       TransitGatewayAttachmentId = "string",
+#'       ResourceId = "string",
+#'       ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'       State = "enabling"|"enabled"|"disabling"|"disabled"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_transit_gateway_route_table_propagations(
@@ -25324,6 +34570,14 @@ ec2_get_transit_gateway_route_table_propagations <- function(TransitGatewayRoute
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -25442,6 +34696,53 @@ ec2_import_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
 #' @param LicenseSpecifications The ARNs of the license configurations.
 #' @param TagSpecifications The tags to apply to the image being imported.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Architecture = "string",
+#'   Description = "string",
+#'   Encrypted = TRUE|FALSE,
+#'   Hypervisor = "string",
+#'   ImageId = "string",
+#'   ImportTaskId = "string",
+#'   KmsKeyId = "string",
+#'   LicenseType = "string",
+#'   Platform = "string",
+#'   Progress = "string",
+#'   SnapshotDetails = list(
+#'     list(
+#'       Description = "string",
+#'       DeviceName = "string",
+#'       DiskImageSize = 123.0,
+#'       Format = "string",
+#'       Progress = "string",
+#'       SnapshotId = "string",
+#'       Status = "string",
+#'       StatusMessage = "string",
+#'       Url = "string",
+#'       UserBucket = list(
+#'         S3Bucket = "string",
+#'         S3Key = "string"
+#'       )
+#'     )
+#'   ),
+#'   Status = "string",
+#'   StatusMessage = "string",
+#'   LicenseSpecifications = list(
+#'     list(
+#'       LicenseConfigurationArn = "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_image(
@@ -25545,6 +34846,64 @@ ec2_import_image <- function(Architecture = NULL, ClientData = NULL, ClientToken
 #' @param LaunchSpecification The launch specification.
 #' @param Platform &#91;required&#93; The instance operating system.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConversionTask = list(
+#'     ConversionTaskId = "string",
+#'     ExpirationTime = "string",
+#'     ImportInstance = list(
+#'       Description = "string",
+#'       InstanceId = "string",
+#'       Platform = "Windows",
+#'       Volumes = list(
+#'         list(
+#'           AvailabilityZone = "string",
+#'           BytesConverted = 123,
+#'           Description = "string",
+#'           Image = list(
+#'             Checksum = "string",
+#'             Format = "VMDK"|"RAW"|"VHD",
+#'             ImportManifestUrl = "string",
+#'             Size = 123
+#'           ),
+#'           Status = "string",
+#'           StatusMessage = "string",
+#'           Volume = list(
+#'             Id = "string",
+#'             Size = 123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ImportVolume = list(
+#'       AvailabilityZone = "string",
+#'       BytesConverted = 123,
+#'       Description = "string",
+#'       Image = list(
+#'         Checksum = "string",
+#'         Format = "VMDK"|"RAW"|"VHD",
+#'         ImportManifestUrl = "string",
+#'         Size = 123
+#'       ),
+#'       Volume = list(
+#'         Id = "string",
+#'         Size = 123
+#'       )
+#'     ),
+#'     State = "active"|"cancelling"|"cancelled"|"completed",
+#'     StatusMessage = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_instance(
@@ -25642,6 +35001,22 @@ ec2_import_instance <- function(Description = NULL, DiskImages = NULL, DryRun = 
 #' @param PublicKeyMaterial &#91;required&#93; The public key. For API calls, the text must be base64-encoded. For
 #' command line tools, base64 encoding is performed for you.
 #' @param TagSpecifications The tags to apply to the imported key pair.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyFingerprint = "string",
+#'   KeyName = "string",
+#'   KeyPairId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -25743,6 +35118,37 @@ ec2_import_key_pair <- function(DryRun = NULL, KeyName, PublicKeyMaterial, TagSp
 #' @param RoleName The name of the role to use when not using the default role, 'vmimport'.
 #' @param TagSpecifications The tags to apply to the snapshot being imported.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   ImportTaskId = "string",
+#'   SnapshotTaskDetail = list(
+#'     Description = "string",
+#'     DiskImageSize = 123.0,
+#'     Encrypted = TRUE|FALSE,
+#'     Format = "string",
+#'     KmsKeyId = "string",
+#'     Progress = "string",
+#'     SnapshotId = "string",
+#'     Status = "string",
+#'     StatusMessage = "string",
+#'     Url = "string",
+#'     UserBucket = list(
+#'       S3Bucket = "string",
+#'       S3Key = "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_snapshot(
@@ -25829,6 +35235,64 @@ ec2_import_snapshot <- function(ClientData = NULL, ClientToken = NULL, Descripti
 #' @param Image &#91;required&#93; The disk image.
 #' @param Volume &#91;required&#93; The volume size.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConversionTask = list(
+#'     ConversionTaskId = "string",
+#'     ExpirationTime = "string",
+#'     ImportInstance = list(
+#'       Description = "string",
+#'       InstanceId = "string",
+#'       Platform = "Windows",
+#'       Volumes = list(
+#'         list(
+#'           AvailabilityZone = "string",
+#'           BytesConverted = 123,
+#'           Description = "string",
+#'           Image = list(
+#'             Checksum = "string",
+#'             Format = "VMDK"|"RAW"|"VHD",
+#'             ImportManifestUrl = "string",
+#'             Size = 123
+#'           ),
+#'           Status = "string",
+#'           StatusMessage = "string",
+#'           Volume = list(
+#'             Id = "string",
+#'             Size = 123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ImportVolume = list(
+#'       AvailabilityZone = "string",
+#'       BytesConverted = 123,
+#'       Description = "string",
+#'       Image = list(
+#'         Checksum = "string",
+#'         Format = "VMDK"|"RAW"|"VHD",
+#'         ImportManifestUrl = "string",
+#'         Size = 123
+#'       ),
+#'       Volume = list(
+#'         Id = "string",
+#'         Size = 123
+#'       )
+#'     ),
+#'     State = "active"|"cancelling"|"cancelled"|"completed",
+#'     StatusMessage = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_volume(
@@ -25889,6 +35353,14 @@ ec2_import_volume <- function(AvailabilityZone, Description = NULL, DryRun = NUL
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -25962,6 +35434,14 @@ ec2_modify_availability_zone_group <- function(GroupName, OptInStatus, DryRun = 
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -26049,6 +35529,14 @@ ec2_modify_capacity_reservation <- function(CapacityReservationId, InstanceCount
 #' endpoint.
 #' @param ClientConnectOptions The options for managing connection authorization for new client
 #' connections.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -26139,6 +35627,17 @@ ec2_modify_client_vpn_endpoint <- function(ClientVpnEndpointId, ServerCertificat
 #' 
 #' Valid Values: `standard` | `unlimited`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceFamilyCreditSpecification = list(
+#'     InstanceFamily = "t2"|"t3"|"t3a"|"t4g",
+#'     CpuCredits = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_default_credit_specification(
@@ -26219,6 +35718,14 @@ ec2_modify_default_credit_specification <- function(DryRun = NULL, InstanceFamil
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KmsKeyId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_ebs_default_kms_key_id(
@@ -26296,6 +35803,14 @@ ec2_modify_ebs_default_kms_key_id <- function(KmsKeyId, DryRun = NULL) {
 #' @param LaunchTemplateConfigs The launch template and overrides.
 #' @param FleetId &#91;required&#93; The ID of the EC2 Fleet.
 #' @param TargetCapacitySpecification The size of the EC2 Fleet.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -26390,6 +35905,30 @@ ec2_modify_fleet <- function(DryRun = NULL, ExcessCapacityTerminationPolicy = NU
 #' @param LoadPermission The load permission for the AFI.
 #' @param Description A description for the AFI.
 #' @param Name A name for the AFI.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FpgaImageAttribute = list(
+#'     FpgaImageId = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     LoadPermissions = list(
+#'       list(
+#'         UserId = "string",
+#'         Group = "all"
+#'       )
+#'     ),
+#'     ProductCodes = list(
+#'       list(
+#'         ProductCodeId = "string",
+#'         ProductCodeType = "devpay"|"marketplace"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -26488,6 +36027,25 @@ ec2_modify_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribut
 #' cannot specify **InstanceFamily** and **InstanceType** in the same
 #' request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Successful = list(
+#'     "string"
+#'   ),
+#'   Unsuccessful = list(
+#'     list(
+#'       Error = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       ResourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_hosts(
@@ -26570,6 +36128,8 @@ ec2_modify_hosts <- function(AutoPlacement = NULL, HostIds, HostRecovery = NULL,
 #' types that are currently within their opt-in period for longer IDs.
 #' @param UseLongIds &#91;required&#93; Indicate whether the resource should use longer IDs (17-character IDs).
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_id_format(
@@ -26651,6 +36211,8 @@ ec2_modify_id_format <- function(Resource, UseLongIds) {
 #' types that are currently within their opt-in period for longer IDs.
 #' @param UseLongIds &#91;required&#93; Indicates whether the resource should use longer IDs (17-character IDs)
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_identity_id_format(
@@ -26719,6 +36281,8 @@ ec2_modify_identity_id_format <- function(PrincipalArn, Resource, UseLongIds) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -26898,6 +36462,8 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
 #' `userData`, `disableApiTermination`, or
 #' `instanceInitiatedShutdownBehavior` attribute.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_instance_attribute(
@@ -27012,6 +36578,14 @@ ec2_modify_instance_attribute <- function(SourceDestCheck = NULL, Attribute = NU
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_instance_capacity_reservation_attributes(
@@ -27072,6 +36646,27 @@ ec2_modify_instance_capacity_reservation_attributes <- function(InstanceId, Capa
 #' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param InstanceCreditSpecifications &#91;required&#93; Information about the credit option for CPU usage.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SuccessfulInstanceCreditSpecifications = list(
+#'     list(
+#'       InstanceId = "string"
+#'     )
+#'   ),
+#'   UnsuccessfulInstanceCreditSpecifications = list(
+#'     list(
+#'       InstanceId = "string",
+#'       Error = list(
+#'         Code = "InvalidInstanceID.Malformed"|"InvalidInstanceID.NotFound"|"IncorrectInstanceState"|"InstanceCreditSpecification.NotSupported",
+#'         Message = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_instance_credit_specification(
@@ -27122,6 +36717,27 @@ ec2_modify_instance_credit_specification <- function(DryRun = NULL, ClientToken 
 #' @param InstanceId &#91;required&#93; The ID of the instance with the scheduled event.
 #' @param InstanceEventId &#91;required&#93; The ID of the event whose date and time you are modifying.
 #' @param NotBefore &#91;required&#93; The new date and time when the event will take place.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Event = list(
+#'     InstanceEventId = "string",
+#'     Code = "instance-reboot"|"system-reboot"|"system-maintenance"|"instance-retirement"|"instance-stop",
+#'     Description = "string",
+#'     NotAfter = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     NotBefore = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     NotBeforeDeadline = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -27203,6 +36819,20 @@ ec2_modify_instance_event_start_time <- function(DryRun = NULL, InstanceId, Inst
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceId = "string",
+#'   InstanceMetadataOptions = list(
+#'     State = "pending"|"applied",
+#'     HttpTokens = "optional"|"required",
+#'     HttpPutResponseHopLimit = 123,
+#'     HttpEndpoint = "disabled"|"enabled"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_instance_metadata_options(
@@ -27281,6 +36911,14 @@ ec2_modify_instance_metadata_options <- function(InstanceId, HttpTokens = NULL, 
 #' @param PartitionNumber Reserved for future use.
 #' @param HostResourceGroupArn The ARN of the host resource group in which to place the instance.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_instance_placement(
@@ -27339,6 +36977,29 @@ ec2_modify_instance_placement <- function(Affinity = NULL, GroupName = NULL, Hos
 #' @param LaunchTemplateName The name of the launch template. You must specify either the launch
 #' template ID or launch template name in the request.
 #' @param DefaultVersion The version number of the launch template to set as the default version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LaunchTemplate = list(
+#'     LaunchTemplateId = "string",
+#'     LaunchTemplateName = "string",
+#'     CreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedBy = "string",
+#'     DefaultVersionNumber = 123,
+#'     LatestVersionNumber = 123,
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -27406,6 +37067,30 @@ ec2_modify_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' @param PrefixListName A name for the prefix list.
 #' @param AddEntries One or more entries to add to the prefix list.
 #' @param RemoveEntries One or more entries to remove from the prefix list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PrefixList = list(
+#'     PrefixListId = "string",
+#'     AddressFamily = "string",
+#'     State = "create-in-progress"|"create-complete"|"create-failed"|"modify-in-progress"|"modify-complete"|"modify-failed"|"restore-in-progress"|"restore-complete"|"restore-failed"|"delete-in-progress"|"delete-complete"|"delete-failed",
+#'     StateMessage = "string",
+#'     PrefixListArn = "string",
+#'     PrefixListName = "string",
+#'     MaxEntries = 123,
+#'     Version = 123,
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     OwnerId = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -27478,6 +37163,8 @@ ec2_modify_managed_prefix_list <- function(DryRun = NULL, PrefixListId, CurrentV
 #' For more information, see [NAT
 #' Instances](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -27584,6 +37271,14 @@ ec2_modify_network_interface_attribute <- function(Attachment = NULL, Descriptio
 #' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param TargetConfigurations &#91;required&#93; The configuration settings for the Reserved Instances to modify.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReservedInstancesModificationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_reserved_instances(
@@ -27656,6 +37351,8 @@ ec2_modify_reserved_instances <- function(ReservedInstancesIds, ClientToken = NU
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -27785,6 +37482,14 @@ ec2_modify_snapshot_attribute <- function(Attribute = NULL, CreateVolumePermissi
 #' @param TargetCapacity The size of the fleet.
 #' @param OnDemandTargetCapacity The number of On-Demand Instances in the fleet.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_spot_fleet_request(
@@ -27886,6 +37591,8 @@ ec2_modify_spot_fleet_request <- function(ExcessCapacityTerminationPolicy = NULL
 #' You must set this value when you specify `true` for
 #' `MapCustomerOwnedIpOnLaunch`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_subnet_attribute(
@@ -27965,6 +37672,68 @@ ec2_modify_subnet_attribute <- function(AssignIpv6AddressOnCreation = NULL, MapP
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficMirrorFilter = list(
+#'     TrafficMirrorFilterId = "string",
+#'     IngressFilterRules = list(
+#'       list(
+#'         TrafficMirrorFilterRuleId = "string",
+#'         TrafficMirrorFilterId = "string",
+#'         TrafficDirection = "ingress"|"egress",
+#'         RuleNumber = 123,
+#'         RuleAction = "accept"|"reject",
+#'         Protocol = 123,
+#'         DestinationPortRange = list(
+#'           FromPort = 123,
+#'           ToPort = 123
+#'         ),
+#'         SourcePortRange = list(
+#'           FromPort = 123,
+#'           ToPort = 123
+#'         ),
+#'         DestinationCidrBlock = "string",
+#'         SourceCidrBlock = "string",
+#'         Description = "string"
+#'       )
+#'     ),
+#'     EgressFilterRules = list(
+#'       list(
+#'         TrafficMirrorFilterRuleId = "string",
+#'         TrafficMirrorFilterId = "string",
+#'         TrafficDirection = "ingress"|"egress",
+#'         RuleNumber = 123,
+#'         RuleAction = "accept"|"reject",
+#'         Protocol = 123,
+#'         DestinationPortRange = list(
+#'           FromPort = 123,
+#'           ToPort = 123
+#'         ),
+#'         SourcePortRange = list(
+#'           FromPort = 123,
+#'           ToPort = 123
+#'         ),
+#'         DestinationCidrBlock = "string",
+#'         SourceCidrBlock = "string",
+#'         Description = "string"
+#'       )
+#'     ),
+#'     NetworkServices = list(
+#'       "amazon-dns"
+#'     ),
+#'     Description = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_traffic_mirror_filter_network_services(
@@ -28034,6 +37803,32 @@ ec2_modify_traffic_mirror_filter_network_services <- function(TrafficMirrorFilte
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficMirrorFilterRule = list(
+#'     TrafficMirrorFilterRuleId = "string",
+#'     TrafficMirrorFilterId = "string",
+#'     TrafficDirection = "ingress"|"egress",
+#'     RuleNumber = 123,
+#'     RuleAction = "accept"|"reject",
+#'     Protocol = 123,
+#'     DestinationPortRange = list(
+#'       FromPort = 123,
+#'       ToPort = 123
+#'     ),
+#'     SourcePortRange = list(
+#'       FromPort = 123,
+#'       ToPort = 123
+#'     ),
+#'     DestinationCidrBlock = "string",
+#'     SourceCidrBlock = "string",
+#'     Description = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -28116,6 +37911,30 @@ ec2_modify_traffic_mirror_filter_rule <- function(TrafficMirrorFilterRuleId, Tra
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficMirrorSession = list(
+#'     TrafficMirrorSessionId = "string",
+#'     TrafficMirrorTargetId = "string",
+#'     TrafficMirrorFilterId = "string",
+#'     NetworkInterfaceId = "string",
+#'     OwnerId = "string",
+#'     PacketLength = 123,
+#'     SessionNumber = 123,
+#'     VirtualNetworkId = 123,
+#'     Description = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_traffic_mirror_session(
@@ -28172,6 +37991,43 @@ ec2_modify_traffic_mirror_session <- function(TrafficMirrorSessionId, TrafficMir
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGateway = list(
+#'     TransitGatewayId = "string",
+#'     TransitGatewayArn = "string",
+#'     State = "pending"|"available"|"modifying"|"deleting"|"deleted",
+#'     OwnerId = "string",
+#'     Description = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Options = list(
+#'       AmazonSideAsn = 123,
+#'       TransitGatewayCidrBlocks = list(
+#'         "string"
+#'       ),
+#'       AutoAcceptSharedAttachments = "enable"|"disable",
+#'       DefaultRouteTableAssociation = "enable"|"disable",
+#'       AssociationDefaultRouteTableId = "string",
+#'       DefaultRouteTablePropagation = "enable"|"disable",
+#'       PropagationDefaultRouteTableId = "string",
+#'       VpnEcmpSupport = "enable"|"disable",
+#'       DnsSupport = "enable"|"disable",
+#'       MulticastSupport = "enable"|"disable"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -28238,6 +38094,25 @@ ec2_modify_transit_gateway <- function(TransitGatewayId, Description = NULL, Opt
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayPrefixListReference = list(
+#'     TransitGatewayRouteTableId = "string",
+#'     PrefixListId = "string",
+#'     PrefixListOwnerId = "string",
+#'     State = "pending"|"available"|"modifying"|"deleting",
+#'     Blackhole = TRUE|FALSE,
+#'     TransitGatewayAttachment = list(
+#'       TransitGatewayAttachmentId = "string",
+#'       ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'       ResourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_transit_gateway_prefix_list_reference(
@@ -28289,6 +38164,37 @@ ec2_modify_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayVpcAttachment = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     TransitGatewayId = "string",
+#'     VpcId = "string",
+#'     VpcOwnerId = "string",
+#'     State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Options = list(
+#'       DnsSupport = "enable"|"disable",
+#'       Ipv6Support = "enable"|"disable",
+#'       ApplianceModeSupport = "enable"|"disable"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -28432,6 +38338,35 @@ ec2_modify_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #' Multi-Attach](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumeModification = list(
+#'     VolumeId = "string",
+#'     ModificationState = "modifying"|"optimizing"|"completed"|"failed",
+#'     StatusMessage = "string",
+#'     TargetSize = 123,
+#'     TargetIops = 123,
+#'     TargetVolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'     TargetThroughput = 123,
+#'     TargetMultiAttachEnabled = TRUE|FALSE,
+#'     OriginalSize = 123,
+#'     OriginalIops = 123,
+#'     OriginalVolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'     OriginalThroughput = 123,
+#'     OriginalMultiAttachEnabled = TRUE|FALSE,
+#'     Progress = 123,
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_volume(
@@ -28489,6 +38424,8 @@ ec2_modify_volume <- function(DryRun = NULL, VolumeId, Size = NULL, VolumeType =
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -28560,6 +38497,8 @@ ec2_modify_volume_attribute <- function(AutoEnableIO = NULL, VolumeId, DryRun = 
 #' You cannot modify the DNS resolution and DNS hostnames attributes in the
 #' same request. Use separate requests for each attribute.
 #' @param VpcId &#91;required&#93; The ID of the VPC.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -28661,6 +38600,14 @@ ec2_modify_vpc_attribute <- function(EnableDnsHostnames = NULL, EnableDnsSupport
 #' @param PrivateDnsEnabled (Interface endpoint) Indicates whether a private hosted zone is
 #' associated with the VPC.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_vpc_endpoint(
@@ -28730,6 +38677,14 @@ ec2_modify_vpc_endpoint <- function(DryRun = NULL, VpcEndpointId, ResetPolicy = 
 #' @param ConnectionNotificationArn The ARN for the SNS topic for the notification.
 #' @param ConnectionEvents One or more events for the endpoint. Valid values are `Accept`,
 #' `Connect`, `Delete`, and `Reject`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReturnValue = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -28803,6 +38758,14 @@ ec2_modify_vpc_endpoint_connection_notification <- function(DryRun = NULL, Conne
 #' @param RemoveGatewayLoadBalancerArns The Amazon Resource Names (ARNs) of Gateway Load Balancers to remove
 #' from your service configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_vpc_endpoint_service_configuration(
@@ -28873,6 +38836,14 @@ ec2_modify_vpc_endpoint_service_configuration <- function(DryRun = NULL, Service
 #' principals, specify an asterisk (*).
 #' @param RemoveAllowedPrincipals The Amazon Resource Names (ARN) of one or more principals. Permissions
 #' are revoked for principals in this list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReturnValue = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -28953,6 +38924,23 @@ ec2_modify_vpc_endpoint_service_permissions <- function(DryRun = NULL, ServiceId
 #' @param RequesterPeeringConnectionOptions The VPC peering connection options for the requester VPC.
 #' @param VpcPeeringConnectionId &#91;required&#93; The ID of the VPC peering connection.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccepterPeeringConnectionOptions = list(
+#'     AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+#'     AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+#'     AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+#'   ),
+#'   RequesterPeeringConnectionOptions = list(
+#'     AllowDnsResolutionFromRemoteVpc = TRUE|FALSE,
+#'     AllowEgressFromLocalClassicLinkToRemoteVpc = TRUE|FALSE,
+#'     AllowEgressFromLocalVpcToRemoteClassicLink = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_vpc_peering_connection_options(
@@ -29016,6 +39004,14 @@ ec2_modify_vpc_peering_connection_options <- function(AccepterPeeringConnectionO
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReturnValue = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -29112,6 +39108,108 @@ ec2_modify_vpc_tenancy <- function(VpcId, InstanceTenancy, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpnConnection = list(
+#'     CustomerGatewayConfiguration = "string",
+#'     CustomerGatewayId = "string",
+#'     Category = "string",
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     Type = "ipsec.1",
+#'     VpnConnectionId = "string",
+#'     VpnGatewayId = "string",
+#'     TransitGatewayId = "string",
+#'     Options = list(
+#'       EnableAcceleration = TRUE|FALSE,
+#'       StaticRoutesOnly = TRUE|FALSE,
+#'       LocalIpv4NetworkCidr = "string",
+#'       RemoteIpv4NetworkCidr = "string",
+#'       LocalIpv6NetworkCidr = "string",
+#'       RemoteIpv6NetworkCidr = "string",
+#'       TunnelInsideIpVersion = "ipv4"|"ipv6",
+#'       TunnelOptions = list(
+#'         list(
+#'           OutsideIpAddress = "string",
+#'           TunnelInsideCidr = "string",
+#'           TunnelInsideIpv6Cidr = "string",
+#'           PreSharedKey = "string",
+#'           Phase1LifetimeSeconds = 123,
+#'           Phase2LifetimeSeconds = 123,
+#'           RekeyMarginTimeSeconds = 123,
+#'           RekeyFuzzPercentage = 123,
+#'           ReplayWindowSize = 123,
+#'           DpdTimeoutSeconds = 123,
+#'           DpdTimeoutAction = "string",
+#'           Phase1EncryptionAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase2EncryptionAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase1IntegrityAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase2IntegrityAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase1DHGroupNumbers = list(
+#'             list(
+#'               Value = 123
+#'             )
+#'           ),
+#'           Phase2DHGroupNumbers = list(
+#'             list(
+#'               Value = 123
+#'             )
+#'           ),
+#'           IkeVersions = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           StartupAction = "string"
+#'         )
+#'       )
+#'     ),
+#'     Routes = list(
+#'       list(
+#'         DestinationCidrBlock = "string",
+#'         Source = "Static",
+#'         State = "pending"|"available"|"deleting"|"deleted"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     VgwTelemetry = list(
+#'       list(
+#'         AcceptedRouteCount = 123,
+#'         LastStatusChange = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         OutsideIpAddress = "string",
+#'         Status = "UP"|"DOWN",
+#'         StatusMessage = "string",
+#'         CertificateArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_vpn_connection(
@@ -29178,6 +39276,108 @@ ec2_modify_vpn_connection <- function(VpnConnectionId, TransitGatewayId = NULL, 
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpnConnection = list(
+#'     CustomerGatewayConfiguration = "string",
+#'     CustomerGatewayId = "string",
+#'     Category = "string",
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     Type = "ipsec.1",
+#'     VpnConnectionId = "string",
+#'     VpnGatewayId = "string",
+#'     TransitGatewayId = "string",
+#'     Options = list(
+#'       EnableAcceleration = TRUE|FALSE,
+#'       StaticRoutesOnly = TRUE|FALSE,
+#'       LocalIpv4NetworkCidr = "string",
+#'       RemoteIpv4NetworkCidr = "string",
+#'       LocalIpv6NetworkCidr = "string",
+#'       RemoteIpv6NetworkCidr = "string",
+#'       TunnelInsideIpVersion = "ipv4"|"ipv6",
+#'       TunnelOptions = list(
+#'         list(
+#'           OutsideIpAddress = "string",
+#'           TunnelInsideCidr = "string",
+#'           TunnelInsideIpv6Cidr = "string",
+#'           PreSharedKey = "string",
+#'           Phase1LifetimeSeconds = 123,
+#'           Phase2LifetimeSeconds = 123,
+#'           RekeyMarginTimeSeconds = 123,
+#'           RekeyFuzzPercentage = 123,
+#'           ReplayWindowSize = 123,
+#'           DpdTimeoutSeconds = 123,
+#'           DpdTimeoutAction = "string",
+#'           Phase1EncryptionAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase2EncryptionAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase1IntegrityAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase2IntegrityAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase1DHGroupNumbers = list(
+#'             list(
+#'               Value = 123
+#'             )
+#'           ),
+#'           Phase2DHGroupNumbers = list(
+#'             list(
+#'               Value = 123
+#'             )
+#'           ),
+#'           IkeVersions = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           StartupAction = "string"
+#'         )
+#'       )
+#'     ),
+#'     Routes = list(
+#'       list(
+#'         DestinationCidrBlock = "string",
+#'         Source = "Static",
+#'         State = "pending"|"available"|"deleting"|"deleted"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     VgwTelemetry = list(
+#'       list(
+#'         AcceptedRouteCount = 123,
+#'         LastStatusChange = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         OutsideIpAddress = "string",
+#'         Status = "UP"|"DOWN",
+#'         StatusMessage = "string",
+#'         CertificateArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_vpn_connection_options(
@@ -29225,6 +39425,108 @@ ec2_modify_vpn_connection_options <- function(VpnConnectionId, LocalIpv4NetworkC
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpnConnection = list(
+#'     CustomerGatewayConfiguration = "string",
+#'     CustomerGatewayId = "string",
+#'     Category = "string",
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     Type = "ipsec.1",
+#'     VpnConnectionId = "string",
+#'     VpnGatewayId = "string",
+#'     TransitGatewayId = "string",
+#'     Options = list(
+#'       EnableAcceleration = TRUE|FALSE,
+#'       StaticRoutesOnly = TRUE|FALSE,
+#'       LocalIpv4NetworkCidr = "string",
+#'       RemoteIpv4NetworkCidr = "string",
+#'       LocalIpv6NetworkCidr = "string",
+#'       RemoteIpv6NetworkCidr = "string",
+#'       TunnelInsideIpVersion = "ipv4"|"ipv6",
+#'       TunnelOptions = list(
+#'         list(
+#'           OutsideIpAddress = "string",
+#'           TunnelInsideCidr = "string",
+#'           TunnelInsideIpv6Cidr = "string",
+#'           PreSharedKey = "string",
+#'           Phase1LifetimeSeconds = 123,
+#'           Phase2LifetimeSeconds = 123,
+#'           RekeyMarginTimeSeconds = 123,
+#'           RekeyFuzzPercentage = 123,
+#'           ReplayWindowSize = 123,
+#'           DpdTimeoutSeconds = 123,
+#'           DpdTimeoutAction = "string",
+#'           Phase1EncryptionAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase2EncryptionAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase1IntegrityAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase2IntegrityAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase1DHGroupNumbers = list(
+#'             list(
+#'               Value = 123
+#'             )
+#'           ),
+#'           Phase2DHGroupNumbers = list(
+#'             list(
+#'               Value = 123
+#'             )
+#'           ),
+#'           IkeVersions = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           StartupAction = "string"
+#'         )
+#'       )
+#'     ),
+#'     Routes = list(
+#'       list(
+#'         DestinationCidrBlock = "string",
+#'         Source = "Static",
+#'         State = "pending"|"available"|"deleting"|"deleted"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     VgwTelemetry = list(
+#'       list(
+#'         AcceptedRouteCount = 123,
+#'         LastStatusChange = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         OutsideIpAddress = "string",
+#'         Status = "UP"|"DOWN",
+#'         StatusMessage = "string",
+#'         CertificateArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -29278,6 +39580,108 @@ ec2_modify_vpn_tunnel_certificate <- function(VpnConnectionId, VpnTunnelOutsideI
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpnConnection = list(
+#'     CustomerGatewayConfiguration = "string",
+#'     CustomerGatewayId = "string",
+#'     Category = "string",
+#'     State = "pending"|"available"|"deleting"|"deleted",
+#'     Type = "ipsec.1",
+#'     VpnConnectionId = "string",
+#'     VpnGatewayId = "string",
+#'     TransitGatewayId = "string",
+#'     Options = list(
+#'       EnableAcceleration = TRUE|FALSE,
+#'       StaticRoutesOnly = TRUE|FALSE,
+#'       LocalIpv4NetworkCidr = "string",
+#'       RemoteIpv4NetworkCidr = "string",
+#'       LocalIpv6NetworkCidr = "string",
+#'       RemoteIpv6NetworkCidr = "string",
+#'       TunnelInsideIpVersion = "ipv4"|"ipv6",
+#'       TunnelOptions = list(
+#'         list(
+#'           OutsideIpAddress = "string",
+#'           TunnelInsideCidr = "string",
+#'           TunnelInsideIpv6Cidr = "string",
+#'           PreSharedKey = "string",
+#'           Phase1LifetimeSeconds = 123,
+#'           Phase2LifetimeSeconds = 123,
+#'           RekeyMarginTimeSeconds = 123,
+#'           RekeyFuzzPercentage = 123,
+#'           ReplayWindowSize = 123,
+#'           DpdTimeoutSeconds = 123,
+#'           DpdTimeoutAction = "string",
+#'           Phase1EncryptionAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase2EncryptionAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase1IntegrityAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase2IntegrityAlgorithms = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Phase1DHGroupNumbers = list(
+#'             list(
+#'               Value = 123
+#'             )
+#'           ),
+#'           Phase2DHGroupNumbers = list(
+#'             list(
+#'               Value = 123
+#'             )
+#'           ),
+#'           IkeVersions = list(
+#'             list(
+#'               Value = "string"
+#'             )
+#'           ),
+#'           StartupAction = "string"
+#'         )
+#'       )
+#'     ),
+#'     Routes = list(
+#'       list(
+#'         DestinationCidrBlock = "string",
+#'         Source = "Static",
+#'         State = "pending"|"available"|"deleting"|"deleted"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     VgwTelemetry = list(
+#'       list(
+#'         AcceptedRouteCount = 123,
+#'         LastStatusChange = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         OutsideIpAddress = "string",
+#'         Status = "UP"|"DOWN",
+#'         StatusMessage = "string",
+#'         CertificateArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -29376,6 +39780,21 @@ ec2_modify_vpn_tunnel_options <- function(VpnConnectionId, VpnTunnelOutsideIpAdd
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceMonitorings = list(
+#'     list(
+#'       InstanceId = "string",
+#'       Monitoring = list(
+#'         State = "disabled"|"disabling"|"enabled"|"pending"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$monitor_instances(
@@ -29427,6 +39846,15 @@ ec2_monitor_instances <- function(InstanceIds, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param PublicIp &#91;required&#93; The Elastic IP address.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AllocationId = "string",
+#'   Status = "MoveInProgress"|"InVpc"|"InClassic"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -29513,6 +39941,19 @@ ec2_move_address_to_vpc <- function(DryRun = NULL, PublicIp) {
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param PoolTagSpecifications The tags to apply to the address pool.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ByoipCidr = list(
+#'     Cidr = "string",
+#'     Description = "string",
+#'     StatusMessage = "string",
+#'     State = "advertised"|"deprovisioned"|"failed-deprovision"|"failed-provision"|"pending-deprovision"|"pending-provision"|"provisioned"|"provisioned-not-publicly-advertisable"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$provision_byoip_cidr(
@@ -29588,6 +40029,31 @@ ec2_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContext = NULL, Publ
 #' price of USD 100, specify 100.00.
 #' @param OfferingId &#91;required&#93; The ID of the offering.
 #' @param TagSpecifications The tags to apply to the Dedicated Host Reservation during purchase.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientToken = "string",
+#'   CurrencyCode = "USD",
+#'   Purchase = list(
+#'     list(
+#'       CurrencyCode = "USD",
+#'       Duration = 123,
+#'       HostIdSet = list(
+#'         "string"
+#'       ),
+#'       HostReservationId = "string",
+#'       HourlyPrice = "string",
+#'       InstanceFamily = "string",
+#'       PaymentOption = "AllUpfront"|"PartialUpfront"|"NoUpfront",
+#'       UpfrontPrice = "string"
+#'     )
+#'   ),
+#'   TotalHourlyPrice = "string",
+#'   TotalUpfrontPrice = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -29672,6 +40138,14 @@ ec2_purchase_host_reservation <- function(ClientToken = NULL, CurrencyCode = NUL
 #' @param PurchaseTime The time at which to purchase the Reserved Instance, in UTC format (for
 #' example, *YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReservedInstancesId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$purchase_reserved_instances_offering(
@@ -29736,6 +40210,50 @@ ec2_purchase_reserved_instances_offering <- function(InstanceCount, ReservedInst
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param PurchaseRequests &#91;required&#93; The purchase requests.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScheduledInstanceSet = list(
+#'     list(
+#'       AvailabilityZone = "string",
+#'       CreateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       HourlyPrice = "string",
+#'       InstanceCount = 123,
+#'       InstanceType = "string",
+#'       NetworkPlatform = "string",
+#'       NextSlotStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Platform = "string",
+#'       PreviousSlotEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Recurrence = list(
+#'         Frequency = "string",
+#'         Interval = 123,
+#'         OccurrenceDaySet = list(
+#'           123
+#'         ),
+#'         OccurrenceRelativeToEnd = TRUE|FALSE,
+#'         OccurrenceUnit = "string"
+#'       ),
+#'       ScheduledInstanceId = "string",
+#'       SlotDurationInHours = 123,
+#'       TermEndDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TermStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TotalScheduledInstanceHours = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -29808,6 +40326,8 @@ ec2_purchase_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, 
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -29911,7 +40431,7 @@ ec2_reboot_instances <- function(InstanceIds, DryRun = NULL) {
 #' bucket must have the `aws-exec-read` canned access control list (ACL) to
 #' ensure that it can be accessed by Amazon EC2. For more information, see
 #' [Canned
-#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl)
+#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl)
 #' in the *Amazon S3 Service Developer Guide*.
 #' @param Architecture The architecture of the AMI.
 #' 
@@ -29933,7 +40453,7 @@ ec2_reboot_instances <- function(InstanceIds, DryRun = NULL) {
 #' 
 #' Constraints: 3-128 alphanumeric characters, parentheses (()), square
 #' brackets (\[\]), spaces ( ), periods (.), slashes (/), dashes (-),
-#' single quotes ('), at-signs (@@), or underscores(\\_)
+#' single quotes ('), at-signs (@@), or underscores(_)
 #' @param BillingProducts The billing product codes. Your account must be authorized to specify
 #' billing product codes. Otherwise, you can use the AWS Marketplace to
 #' bill for the use of an AMI.
@@ -29950,6 +40470,14 @@ ec2_reboot_instances <- function(InstanceIds, DryRun = NULL) {
 #' @param VirtualizationType The type of virtualization (`hvm` | `paravirtual`).
 #' 
 #' Default: `paravirtual`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -30027,6 +40555,19 @@ ec2_register_image <- function(ImageLocation = NULL, Architecture = NULL, BlockD
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param InstanceTagAttribute Information about the tag keys to register.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceTagAttribute = list(
+#'     InstanceTagKeys = list(
+#'       "string"
+#'     ),
+#'     IncludeAllTagsOfInstance = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_instance_event_notification_attributes(
@@ -30089,6 +40630,20 @@ ec2_register_instance_event_notification_attributes <- function(DryRun = NULL, I
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegisteredMulticastGroupMembers = list(
+#'     TransitGatewayMulticastDomainId = "string",
+#'     RegisteredNetworkInterfaceIds = list(
+#'       "string"
+#'     ),
+#'     GroupIpAddress = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -30153,6 +40708,20 @@ ec2_register_transit_gateway_multicast_group_members <- function(TransitGatewayM
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegisteredMulticastGroupSources = list(
+#'     TransitGatewayMulticastDomainId = "string",
+#'     RegisteredNetworkInterfaceIds = list(
+#'       "string"
+#'     ),
+#'     GroupIpAddress = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_transit_gateway_multicast_group_sources(
@@ -30206,6 +40775,26 @@ ec2_register_transit_gateway_multicast_group_sources <- function(TransitGatewayM
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Associations = list(
+#'     TransitGatewayMulticastDomainId = "string",
+#'     TransitGatewayAttachmentId = "string",
+#'     ResourceId = "string",
+#'     ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'     ResourceOwnerId = "string",
+#'     Subnets = list(
+#'       list(
+#'         SubnetId = "string",
+#'         State = "pendingAcceptance"|"associating"|"associated"|"disassociating"|"disassociated"|"rejected"|"failed"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reject_transit_gateway_multicast_domain_associations(
@@ -30252,6 +40841,40 @@ ec2_reject_transit_gateway_multicast_domain_associations <- function(TransitGate
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayPeeringAttachment = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     RequesterTgwInfo = list(
+#'       TransitGatewayId = "string",
+#'       OwnerId = "string",
+#'       Region = "string"
+#'     ),
+#'     AccepterTgwInfo = list(
+#'       TransitGatewayId = "string",
+#'       OwnerId = "string",
+#'       Region = "string"
+#'     ),
+#'     Status = list(
+#'       Code = "string",
+#'       Message = "string"
+#'     ),
+#'     State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -30302,6 +40925,37 @@ ec2_reject_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TransitGatewayVpcAttachment = list(
+#'     TransitGatewayAttachmentId = "string",
+#'     TransitGatewayId = "string",
+#'     VpcId = "string",
+#'     VpcOwnerId = "string",
+#'     State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Options = list(
+#'       DnsSupport = "enable"|"disable",
+#'       Ipv6Support = "enable"|"disable",
+#'       ApplianceModeSupport = "enable"|"disable"
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reject_transit_gateway_vpc_attachment(
@@ -30346,6 +41000,22 @@ ec2_reject_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ServiceId &#91;required&#93; The ID of the service.
 #' @param VpcEndpointIds &#91;required&#93; The IDs of one or more VPC endpoints.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Unsuccessful = list(
+#'     list(
+#'       Error = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       ResourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -30397,6 +41067,14 @@ ec2_reject_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEnd
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param VpcPeeringConnectionId &#91;required&#93; The ID of the VPC peering connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -30472,6 +41150,8 @@ ec2_reject_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$release_address(
@@ -30541,6 +41221,25 @@ ec2_release_address <- function(AllocationId = NULL, PublicIp = NULL, NetworkBor
 #'
 #' @param HostIds &#91;required&#93; The IDs of the Dedicated Hosts to release.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Successful = list(
+#'     "string"
+#'   ),
+#'   Unsuccessful = list(
+#'     list(
+#'       Error = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       ResourceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$release_hosts(
@@ -30588,6 +41287,25 @@ ec2_release_hosts <- function(HostIds) {
 #'
 #' @param IamInstanceProfile &#91;required&#93; The IAM instance profile.
 #' @param AssociationId &#91;required&#93; The ID of the existing IAM instance profile association.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IamInstanceProfileAssociation = list(
+#'     AssociationId = "string",
+#'     InstanceId = "string",
+#'     IamInstanceProfile = list(
+#'       Arn = "string",
+#'       Id = "string"
+#'     ),
+#'     State = "associating"|"associated"|"disassociating"|"disassociated",
+#'     Timestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -30641,6 +41359,14 @@ ec2_replace_iam_instance_profile_association <- function(IamInstanceProfile, Ass
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param NetworkAclId &#91;required&#93; The ID of the new network ACL to associate with the subnet.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NewAssociationId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -30719,6 +41445,8 @@ ec2_replace_network_acl_association <- function(AssociationId, DryRun = NULL, Ne
 #' type and code.
 #' @param RuleAction &#91;required&#93; Indicates whether to allow or deny the traffic that matches the rule.
 #' @param RuleNumber &#91;required&#93; The rule number of the entry to replace.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -30824,6 +41552,8 @@ ec2_replace_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egres
 #' @param RouteTableId &#91;required&#93; The ID of the route table.
 #' @param VpcPeeringConnectionId The ID of a VPC peering connection.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$replace_route(
@@ -30903,6 +41633,18 @@ ec2_replace_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBl
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param RouteTableId &#91;required&#93; The ID of the new route table to associate with the subnet.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NewAssociationId = "string",
+#'   AssociationState = list(
+#'     State = "associating"|"associated"|"disassociating"|"disassociated"|"failed",
+#'     StatusMessage = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$replace_route_table_association(
@@ -30963,6 +41705,26 @@ ec2_replace_route_table_association <- function(AssociationId, DryRun = NULL, Ro
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Route = list(
+#'     DestinationCidrBlock = "string",
+#'     PrefixListId = "string",
+#'     TransitGatewayAttachments = list(
+#'       list(
+#'         ResourceId = "string",
+#'         TransitGatewayAttachmentId = "string",
+#'         ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering"
+#'       )
+#'     ),
+#'     Type = "static"|"propagated",
+#'     State = "pending"|"active"|"blackhole"|"deleting"|"deleted"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -31049,6 +41811,8 @@ ec2_replace_transit_gateway_route <- function(DestinationCidrBlock, TransitGatew
 #' @param StartTime The time at which the reported instance health state began.
 #' @param Status &#91;required&#93; The status of all instances listed.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$report_instance_status(
@@ -31131,6 +41895,14 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param SpotFleetRequestConfig &#91;required&#93; The configuration for the Spot Fleet request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SpotFleetRequestId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -31554,6 +42326,131 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
 #' @param InstanceInterruptionBehavior The behavior when a Spot Instance is interrupted. The default is
 #' `terminate`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SpotInstanceRequests = list(
+#'     list(
+#'       ActualBlockHourlyPrice = "string",
+#'       AvailabilityZoneGroup = "string",
+#'       BlockDurationMinutes = 123,
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Fault = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       InstanceId = "string",
+#'       LaunchGroup = "string",
+#'       LaunchSpecification = list(
+#'         UserData = "string",
+#'         SecurityGroups = list(
+#'           list(
+#'             GroupName = "string",
+#'             GroupId = "string"
+#'           )
+#'         ),
+#'         AddressingType = "string",
+#'         BlockDeviceMappings = list(
+#'           list(
+#'             DeviceName = "string",
+#'             VirtualName = "string",
+#'             Ebs = list(
+#'               DeleteOnTermination = TRUE|FALSE,
+#'               Iops = 123,
+#'               SnapshotId = "string",
+#'               VolumeSize = 123,
+#'               VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+#'               KmsKeyId = "string",
+#'               Throughput = 123,
+#'               Encrypted = TRUE|FALSE
+#'             ),
+#'             NoDevice = "string"
+#'           )
+#'         ),
+#'         EbsOptimized = TRUE|FALSE,
+#'         IamInstanceProfile = list(
+#'           Arn = "string",
+#'           Name = "string"
+#'         ),
+#'         ImageId = "string",
+#'         InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'         KernelId = "string",
+#'         KeyName = "string",
+#'         NetworkInterfaces = list(
+#'           list(
+#'             AssociatePublicIpAddress = TRUE|FALSE,
+#'             DeleteOnTermination = TRUE|FALSE,
+#'             Description = "string",
+#'             DeviceIndex = 123,
+#'             Groups = list(
+#'               "string"
+#'             ),
+#'             Ipv6AddressCount = 123,
+#'             Ipv6Addresses = list(
+#'               list(
+#'                 Ipv6Address = "string"
+#'               )
+#'             ),
+#'             NetworkInterfaceId = "string",
+#'             PrivateIpAddress = "string",
+#'             PrivateIpAddresses = list(
+#'               list(
+#'                 Primary = TRUE|FALSE,
+#'                 PrivateIpAddress = "string"
+#'               )
+#'             ),
+#'             SecondaryPrivateIpAddressCount = 123,
+#'             SubnetId = "string",
+#'             AssociateCarrierIpAddress = TRUE|FALSE,
+#'             InterfaceType = "string",
+#'             NetworkCardIndex = 123
+#'           )
+#'         ),
+#'         Placement = list(
+#'           AvailabilityZone = "string",
+#'           GroupName = "string",
+#'           Tenancy = "default"|"dedicated"|"host"
+#'         ),
+#'         RamdiskId = "string",
+#'         SubnetId = "string",
+#'         Monitoring = list(
+#'           Enabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       LaunchedAvailabilityZone = "string",
+#'       ProductDescription = "Linux/UNIX"|"Linux/UNIX (Amazon VPC)"|"Windows"|"Windows (Amazon VPC)",
+#'       SpotInstanceRequestId = "string",
+#'       SpotPrice = "string",
+#'       State = "open"|"active"|"closed"|"cancelled"|"failed",
+#'       Status = list(
+#'         Code = "string",
+#'         Message = "string",
+#'         UpdateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Type = "one-time"|"persistent",
+#'       ValidFrom = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ValidUntil = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InstanceInterruptionBehavior = "hibernate"|"stop"|"terminate"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$request_spot_instances(
@@ -31753,6 +42650,14 @@ ec2_request_spot_instances <- function(AvailabilityZoneGroup = NULL, BlockDurati
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KmsKeyId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reset_ebs_default_kms_key_id(
@@ -31796,6 +42701,14 @@ ec2_reset_ebs_default_kms_key_id <- function(DryRun = NULL) {
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param FpgaImageId &#91;required&#93; The ID of the AFI.
 #' @param Attribute The attribute.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -31843,6 +42756,8 @@ ec2_reset_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribute
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -31911,6 +42826,8 @@ ec2_reset_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param InstanceId &#91;required&#93; The ID of the instance.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reset_instance_attribute(
@@ -31967,6 +42884,8 @@ ec2_reset_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId) {
 #' @param NetworkInterfaceId &#91;required&#93; The ID of the network interface.
 #' @param SourceDestCheck The source/destination checking attribute. Resets the value to `true`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reset_network_interface_attribute(
@@ -32015,6 +42934,8 @@ ec2_reset_network_interface_attribute <- function(DryRun = NULL, NetworkInterfac
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -32074,6 +42995,15 @@ ec2_reset_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL) {
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param PublicIp &#91;required&#93; The Elastic IP address.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PublicIp = "string",
+#'   Status = "MoveInProgress"|"InVpc"|"InClassic"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$restore_address_to_classic(
@@ -32130,6 +43060,30 @@ ec2_restore_address_to_classic <- function(DryRun = NULL, PublicIp) {
 #' @param PreviousVersion &#91;required&#93; The version to restore.
 #' @param CurrentVersion &#91;required&#93; The current version number for the prefix list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PrefixList = list(
+#'     PrefixListId = "string",
+#'     AddressFamily = "string",
+#'     State = "create-in-progress"|"create-complete"|"create-failed"|"modify-in-progress"|"modify-complete"|"modify-failed"|"restore-in-progress"|"restore-complete"|"restore-failed"|"delete-in-progress"|"delete-complete"|"delete-failed",
+#'     StateMessage = "string",
+#'     PrefixListArn = "string",
+#'     PrefixListName = "string",
+#'     MaxEntries = 123,
+#'     Version = 123,
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     OwnerId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$restore_managed_prefix_list_version(
@@ -32179,6 +43133,17 @@ ec2_restore_managed_prefix_list_version <- function(DryRun = NULL, PrefixListId,
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = list(
+#'     Code = "authorizing"|"active"|"failed"|"revoking",
+#'     Message = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -32259,6 +43224,50 @@ ec2_revoke_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkCidr
 #' security group.
 #' @param SourceSecurityGroupOwnerId Not supported. Use a set of IP permissions to specify a destination
 #' security group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE,
+#'   UnknownIpPermissions = list(
+#'     list(
+#'       FromPort = 123,
+#'       IpProtocol = "string",
+#'       IpRanges = list(
+#'         list(
+#'           CidrIp = "string",
+#'           Description = "string"
+#'         )
+#'       ),
+#'       Ipv6Ranges = list(
+#'         list(
+#'           CidrIpv6 = "string",
+#'           Description = "string"
+#'         )
+#'       ),
+#'       PrefixListIds = list(
+#'         list(
+#'           Description = "string",
+#'           PrefixListId = "string"
+#'         )
+#'       ),
+#'       ToPort = 123,
+#'       UserIdGroupPairs = list(
+#'         list(
+#'           Description = "string",
+#'           GroupId = "string",
+#'           GroupName = "string",
+#'           PeeringStatus = "string",
+#'           UserId = "string",
+#'           VpcId = "string",
+#'           VpcPeeringConnectionId = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -32394,6 +43403,50 @@ ec2_revoke_security_group_egress <- function(DryRun = NULL, GroupId, IpPermissio
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE,
+#'   UnknownIpPermissions = list(
+#'     list(
+#'       FromPort = 123,
+#'       IpProtocol = "string",
+#'       IpRanges = list(
+#'         list(
+#'           CidrIp = "string",
+#'           Description = "string"
+#'         )
+#'       ),
+#'       Ipv6Ranges = list(
+#'         list(
+#'           CidrIpv6 = "string",
+#'           Description = "string"
+#'         )
+#'       ),
+#'       PrefixListIds = list(
+#'         list(
+#'           Description = "string",
+#'           PrefixListId = "string"
+#'         )
+#'       ),
+#'       ToPort = 123,
+#'       UserIdGroupPairs = list(
+#'         list(
+#'           Description = "string",
+#'           GroupId = "string",
+#'           GroupName = "string",
+#'           PeeringStatus = "string",
+#'           UserId = "string",
+#'           VpcId = "string",
+#'           VpcPeeringConnectionId = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -32751,6 +43804,215 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' You can't enable AWS Nitro Enclaves and hibernation on the same
 #' instance.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Groups = list(
+#'     list(
+#'       GroupName = "string",
+#'       GroupId = "string"
+#'     )
+#'   ),
+#'   Instances = list(
+#'     list(
+#'       AmiLaunchIndex = 123,
+#'       ImageId = "string",
+#'       InstanceId = "string",
+#'       InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
+#'       KernelId = "string",
+#'       KeyName = "string",
+#'       LaunchTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Monitoring = list(
+#'         State = "disabled"|"disabling"|"enabled"|"pending"
+#'       ),
+#'       Placement = list(
+#'         AvailabilityZone = "string",
+#'         Affinity = "string",
+#'         GroupName = "string",
+#'         PartitionNumber = 123,
+#'         HostId = "string",
+#'         Tenancy = "default"|"dedicated"|"host",
+#'         SpreadDomain = "string",
+#'         HostResourceGroupArn = "string"
+#'       ),
+#'       Platform = "Windows",
+#'       PrivateDnsName = "string",
+#'       PrivateIpAddress = "string",
+#'       ProductCodes = list(
+#'         list(
+#'           ProductCodeId = "string",
+#'           ProductCodeType = "devpay"|"marketplace"
+#'         )
+#'       ),
+#'       PublicDnsName = "string",
+#'       PublicIpAddress = "string",
+#'       RamdiskId = "string",
+#'       State = list(
+#'         Code = 123,
+#'         Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+#'       ),
+#'       StateTransitionReason = "string",
+#'       SubnetId = "string",
+#'       VpcId = "string",
+#'       Architecture = "i386"|"x86_64"|"arm64",
+#'       BlockDeviceMappings = list(
+#'         list(
+#'           DeviceName = "string",
+#'           Ebs = list(
+#'             AttachTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             DeleteOnTermination = TRUE|FALSE,
+#'             Status = "attaching"|"attached"|"detaching"|"detached",
+#'             VolumeId = "string"
+#'           )
+#'         )
+#'       ),
+#'       ClientToken = "string",
+#'       EbsOptimized = TRUE|FALSE,
+#'       EnaSupport = TRUE|FALSE,
+#'       Hypervisor = "ovm"|"xen",
+#'       IamInstanceProfile = list(
+#'         Arn = "string",
+#'         Id = "string"
+#'       ),
+#'       InstanceLifecycle = "spot"|"scheduled",
+#'       ElasticGpuAssociations = list(
+#'         list(
+#'           ElasticGpuId = "string",
+#'           ElasticGpuAssociationId = "string",
+#'           ElasticGpuAssociationState = "string",
+#'           ElasticGpuAssociationTime = "string"
+#'         )
+#'       ),
+#'       ElasticInferenceAcceleratorAssociations = list(
+#'         list(
+#'           ElasticInferenceAcceleratorArn = "string",
+#'           ElasticInferenceAcceleratorAssociationId = "string",
+#'           ElasticInferenceAcceleratorAssociationState = "string",
+#'           ElasticInferenceAcceleratorAssociationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       NetworkInterfaces = list(
+#'         list(
+#'           Association = list(
+#'             CarrierIp = "string",
+#'             IpOwnerId = "string",
+#'             PublicDnsName = "string",
+#'             PublicIp = "string"
+#'           ),
+#'           Attachment = list(
+#'             AttachTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             AttachmentId = "string",
+#'             DeleteOnTermination = TRUE|FALSE,
+#'             DeviceIndex = 123,
+#'             Status = "attaching"|"attached"|"detaching"|"detached",
+#'             NetworkCardIndex = 123
+#'           ),
+#'           Description = "string",
+#'           Groups = list(
+#'             list(
+#'               GroupName = "string",
+#'               GroupId = "string"
+#'             )
+#'           ),
+#'           Ipv6Addresses = list(
+#'             list(
+#'               Ipv6Address = "string"
+#'             )
+#'           ),
+#'           MacAddress = "string",
+#'           NetworkInterfaceId = "string",
+#'           OwnerId = "string",
+#'           PrivateDnsName = "string",
+#'           PrivateIpAddress = "string",
+#'           PrivateIpAddresses = list(
+#'             list(
+#'               Association = list(
+#'                 CarrierIp = "string",
+#'                 IpOwnerId = "string",
+#'                 PublicDnsName = "string",
+#'                 PublicIp = "string"
+#'               ),
+#'               Primary = TRUE|FALSE,
+#'               PrivateDnsName = "string",
+#'               PrivateIpAddress = "string"
+#'             )
+#'           ),
+#'           SourceDestCheck = TRUE|FALSE,
+#'           Status = "available"|"associated"|"attaching"|"in-use"|"detaching",
+#'           SubnetId = "string",
+#'           VpcId = "string",
+#'           InterfaceType = "string"
+#'         )
+#'       ),
+#'       OutpostArn = "string",
+#'       RootDeviceName = "string",
+#'       RootDeviceType = "ebs"|"instance-store",
+#'       SecurityGroups = list(
+#'         list(
+#'           GroupName = "string",
+#'           GroupId = "string"
+#'         )
+#'       ),
+#'       SourceDestCheck = TRUE|FALSE,
+#'       SpotInstanceRequestId = "string",
+#'       SriovNetSupport = "string",
+#'       StateReason = list(
+#'         Code = "string",
+#'         Message = "string"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       VirtualizationType = "hvm"|"paravirtual",
+#'       CpuOptions = list(
+#'         CoreCount = 123,
+#'         ThreadsPerCore = 123
+#'       ),
+#'       CapacityReservationId = "string",
+#'       CapacityReservationSpecification = list(
+#'         CapacityReservationPreference = "open"|"none",
+#'         CapacityReservationTarget = list(
+#'           CapacityReservationId = "string",
+#'           CapacityReservationResourceGroupArn = "string"
+#'         )
+#'       ),
+#'       HibernationOptions = list(
+#'         Configured = TRUE|FALSE
+#'       ),
+#'       Licenses = list(
+#'         list(
+#'           LicenseConfigurationArn = "string"
+#'         )
+#'       ),
+#'       MetadataOptions = list(
+#'         State = "pending"|"applied",
+#'         HttpTokens = "optional"|"required",
+#'         HttpPutResponseHopLimit = 123,
+#'         HttpEndpoint = "disabled"|"enabled"
+#'       ),
+#'       EnclaveOptions = list(
+#'         Enabled = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   OwnerId = "string",
+#'   RequesterId = "string",
+#'   ReservationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$run_instances(
@@ -33009,6 +44271,16 @@ ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, Instan
 #' Zone, network, and platform of the schedule that you purchased.
 #' @param ScheduledInstanceId &#91;required&#93; The Scheduled Instance ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceIdSet = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$run_scheduled_instances(
@@ -33172,6 +44444,25 @@ ec2_run_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, Insta
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Routes = list(
+#'     list(
+#'       DestinationCidrBlock = "string",
+#'       LocalGatewayVirtualInterfaceGroupId = "string",
+#'       Type = "static"|"propagated",
+#'       State = "pending"|"active"|"blackhole"|"deleting"|"deleted",
+#'       LocalGatewayRouteTableId = "string",
+#'       LocalGatewayRouteTableArn = "string",
+#'       OwnerId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$search_local_gateway_routes(
@@ -33257,6 +44548,29 @@ ec2_search_local_gateway_routes <- function(LocalGatewayRouteTableId, Filters, M
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MulticastGroups = list(
+#'     list(
+#'       GroupIpAddress = "string",
+#'       TransitGatewayAttachmentId = "string",
+#'       SubnetId = "string",
+#'       ResourceId = "string",
+#'       ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+#'       ResourceOwnerId = "string",
+#'       NetworkInterfaceId = "string",
+#'       GroupMember = TRUE|FALSE,
+#'       GroupSource = TRUE|FALSE,
+#'       MemberType = "static"|"igmp",
+#'       SourceType = "static"|"igmp"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -33344,6 +44658,29 @@ ec2_search_transit_gateway_multicast_groups <- function(TransitGatewayMulticastD
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Routes = list(
+#'     list(
+#'       DestinationCidrBlock = "string",
+#'       PrefixListId = "string",
+#'       TransitGatewayAttachments = list(
+#'         list(
+#'           ResourceId = "string",
+#'           TransitGatewayAttachmentId = "string",
+#'           ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering"
+#'         )
+#'       ),
+#'       Type = "static"|"propagated",
+#'       State = "pending"|"active"|"blackhole"|"deleting"|"deleted"
+#'     )
+#'   ),
+#'   AdditionalRoutesAvailable = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$search_transit_gateway_routes(
@@ -33417,6 +44754,8 @@ ec2_search_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filter
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_diagnostic_interrupt(
@@ -33484,6 +44823,26 @@ ec2_send_diagnostic_interrupt <- function(InstanceId, DryRun = NULL) {
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StartingInstances = list(
+#'     list(
+#'       CurrentState = list(
+#'         Code = 123,
+#'         Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+#'       ),
+#'       InstanceId = "string",
+#'       PreviousState = list(
+#'         Code = 123,
+#'         Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_instances(
@@ -33546,6 +44905,424 @@ ec2_start_instances <- function(InstanceIds, AdditionalInfo = NULL, DryRun = NUL
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [How to Ensure
 #' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkInsightsAnalysis = list(
+#'     NetworkInsightsAnalysisId = "string",
+#'     NetworkInsightsAnalysisArn = "string",
+#'     NetworkInsightsPathId = "string",
+#'     FilterInArns = list(
+#'       "string"
+#'     ),
+#'     StartDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "running"|"succeeded"|"failed",
+#'     StatusMessage = "string",
+#'     NetworkPathFound = TRUE|FALSE,
+#'     ForwardPathComponents = list(
+#'       list(
+#'         SequenceNumber = 123,
+#'         AclRule = list(
+#'           Cidr = "string",
+#'           Egress = TRUE|FALSE,
+#'           PortRange = list(
+#'             From = 123,
+#'             To = 123
+#'           ),
+#'           Protocol = "string",
+#'           RuleAction = "string",
+#'           RuleNumber = 123
+#'         ),
+#'         Component = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         DestinationVpc = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         OutboundHeader = list(
+#'           DestinationAddresses = list(
+#'             "string"
+#'           ),
+#'           DestinationPortRanges = list(
+#'             list(
+#'               From = 123,
+#'               To = 123
+#'             )
+#'           ),
+#'           Protocol = "string",
+#'           SourceAddresses = list(
+#'             "string"
+#'           ),
+#'           SourcePortRanges = list(
+#'             list(
+#'               From = 123,
+#'               To = 123
+#'             )
+#'           )
+#'         ),
+#'         InboundHeader = list(
+#'           DestinationAddresses = list(
+#'             "string"
+#'           ),
+#'           DestinationPortRanges = list(
+#'             list(
+#'               From = 123,
+#'               To = 123
+#'             )
+#'           ),
+#'           Protocol = "string",
+#'           SourceAddresses = list(
+#'             "string"
+#'           ),
+#'           SourcePortRanges = list(
+#'             list(
+#'               From = 123,
+#'               To = 123
+#'             )
+#'           )
+#'         ),
+#'         RouteTableRoute = list(
+#'           DestinationCidr = "string",
+#'           DestinationPrefixListId = "string",
+#'           EgressOnlyInternetGatewayId = "string",
+#'           GatewayId = "string",
+#'           InstanceId = "string",
+#'           NatGatewayId = "string",
+#'           NetworkInterfaceId = "string",
+#'           Origin = "string",
+#'           TransitGatewayId = "string",
+#'           VpcPeeringConnectionId = "string"
+#'         ),
+#'         SecurityGroupRule = list(
+#'           Cidr = "string",
+#'           Direction = "string",
+#'           SecurityGroupId = "string",
+#'           PortRange = list(
+#'             From = 123,
+#'             To = 123
+#'           ),
+#'           PrefixListId = "string",
+#'           Protocol = "string"
+#'         ),
+#'         SourceVpc = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         Subnet = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         Vpc = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         )
+#'       )
+#'     ),
+#'     ReturnPathComponents = list(
+#'       list(
+#'         SequenceNumber = 123,
+#'         AclRule = list(
+#'           Cidr = "string",
+#'           Egress = TRUE|FALSE,
+#'           PortRange = list(
+#'             From = 123,
+#'             To = 123
+#'           ),
+#'           Protocol = "string",
+#'           RuleAction = "string",
+#'           RuleNumber = 123
+#'         ),
+#'         Component = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         DestinationVpc = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         OutboundHeader = list(
+#'           DestinationAddresses = list(
+#'             "string"
+#'           ),
+#'           DestinationPortRanges = list(
+#'             list(
+#'               From = 123,
+#'               To = 123
+#'             )
+#'           ),
+#'           Protocol = "string",
+#'           SourceAddresses = list(
+#'             "string"
+#'           ),
+#'           SourcePortRanges = list(
+#'             list(
+#'               From = 123,
+#'               To = 123
+#'             )
+#'           )
+#'         ),
+#'         InboundHeader = list(
+#'           DestinationAddresses = list(
+#'             "string"
+#'           ),
+#'           DestinationPortRanges = list(
+#'             list(
+#'               From = 123,
+#'               To = 123
+#'             )
+#'           ),
+#'           Protocol = "string",
+#'           SourceAddresses = list(
+#'             "string"
+#'           ),
+#'           SourcePortRanges = list(
+#'             list(
+#'               From = 123,
+#'               To = 123
+#'             )
+#'           )
+#'         ),
+#'         RouteTableRoute = list(
+#'           DestinationCidr = "string",
+#'           DestinationPrefixListId = "string",
+#'           EgressOnlyInternetGatewayId = "string",
+#'           GatewayId = "string",
+#'           InstanceId = "string",
+#'           NatGatewayId = "string",
+#'           NetworkInterfaceId = "string",
+#'           Origin = "string",
+#'           TransitGatewayId = "string",
+#'           VpcPeeringConnectionId = "string"
+#'         ),
+#'         SecurityGroupRule = list(
+#'           Cidr = "string",
+#'           Direction = "string",
+#'           SecurityGroupId = "string",
+#'           PortRange = list(
+#'             From = 123,
+#'             To = 123
+#'           ),
+#'           PrefixListId = "string",
+#'           Protocol = "string"
+#'         ),
+#'         SourceVpc = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         Subnet = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         Vpc = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         )
+#'       )
+#'     ),
+#'     Explanations = list(
+#'       list(
+#'         Acl = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         AclRule = list(
+#'           Cidr = "string",
+#'           Egress = TRUE|FALSE,
+#'           PortRange = list(
+#'             From = 123,
+#'             To = 123
+#'           ),
+#'           Protocol = "string",
+#'           RuleAction = "string",
+#'           RuleNumber = 123
+#'         ),
+#'         Address = "string",
+#'         Addresses = list(
+#'           "string"
+#'         ),
+#'         AttachedTo = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         AvailabilityZones = list(
+#'           "string"
+#'         ),
+#'         Cidrs = list(
+#'           "string"
+#'         ),
+#'         Component = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         CustomerGateway = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         Destination = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         DestinationVpc = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         Direction = "string",
+#'         ExplanationCode = "string",
+#'         IngressRouteTable = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         InternetGateway = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         LoadBalancerArn = "string",
+#'         ClassicLoadBalancerListener = list(
+#'           LoadBalancerPort = 123,
+#'           InstancePort = 123
+#'         ),
+#'         LoadBalancerListenerPort = 123,
+#'         LoadBalancerTarget = list(
+#'           Address = "string",
+#'           AvailabilityZone = "string",
+#'           Instance = list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           ),
+#'           Port = 123
+#'         ),
+#'         LoadBalancerTargetGroup = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         LoadBalancerTargetGroups = list(
+#'           list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           )
+#'         ),
+#'         LoadBalancerTargetPort = 123,
+#'         ElasticLoadBalancerListener = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         MissingComponent = "string",
+#'         NatGateway = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         NetworkInterface = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         PacketField = "string",
+#'         VpcPeeringConnection = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         Port = 123,
+#'         PortRanges = list(
+#'           list(
+#'             From = 123,
+#'             To = 123
+#'           )
+#'         ),
+#'         PrefixList = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         Protocols = list(
+#'           "string"
+#'         ),
+#'         RouteTableRoute = list(
+#'           DestinationCidr = "string",
+#'           DestinationPrefixListId = "string",
+#'           EgressOnlyInternetGatewayId = "string",
+#'           GatewayId = "string",
+#'           InstanceId = "string",
+#'           NatGatewayId = "string",
+#'           NetworkInterfaceId = "string",
+#'           Origin = "string",
+#'           TransitGatewayId = "string",
+#'           VpcPeeringConnectionId = "string"
+#'         ),
+#'         RouteTable = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         SecurityGroup = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         SecurityGroupRule = list(
+#'           Cidr = "string",
+#'           Direction = "string",
+#'           SecurityGroupId = "string",
+#'           PortRange = list(
+#'             From = 123,
+#'             To = 123
+#'           ),
+#'           PrefixListId = "string",
+#'           Protocol = "string"
+#'         ),
+#'         SecurityGroups = list(
+#'           list(
+#'             Id = "string",
+#'             Arn = "string"
+#'           )
+#'         ),
+#'         SourceVpc = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         State = "string",
+#'         Subnet = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         SubnetRouteTable = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         Vpc = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         VpcEndpoint = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         VpnConnection = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         ),
+#'         VpnGateway = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         )
+#'       )
+#'     ),
+#'     AlternatePathHints = list(
+#'       list(
+#'         ComponentId = "string",
+#'         ComponentArn = "string"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -33615,6 +45392,14 @@ ec2_start_network_insights_analysis <- function(NetworkInsightsPathId, FilterInA
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ServiceId &#91;required&#93; The ID of the endpoint service.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReturnValue = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -33722,6 +45507,26 @@ ec2_start_vpc_endpoint_service_private_dns_verification <- function(DryRun = NUL
 #' 
 #' Default: `false`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StoppingInstances = list(
+#'     list(
+#'       CurrentState = list(
+#'         Code = 123,
+#'         Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+#'       ),
+#'       InstanceId = "string",
+#'       PreviousState = list(
+#'         Code = 123,
+#'         Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_instances(
@@ -33784,6 +45589,28 @@ ec2_stop_instances <- function(InstanceIds, Hibernate = NULL, DryRun = NULL, For
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientVpnEndpointId = "string",
+#'   Username = "string",
+#'   ConnectionStatuses = list(
+#'     list(
+#'       ConnectionId = "string",
+#'       PreviousStatus = list(
+#'         Code = "active"|"failed-to-terminate"|"terminating"|"terminated",
+#'         Message = "string"
+#'       ),
+#'       CurrentStatus = list(
+#'         Code = "active"|"failed-to-terminate"|"terminating"|"terminated",
+#'         Message = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -33860,6 +45687,26 @@ ec2_terminate_client_vpn_connections <- function(ClientVpnEndpointId, Connection
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TerminatingInstances = list(
+#'     list(
+#'       CurrentState = list(
+#'         Code = 123,
+#'         Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+#'       ),
+#'       InstanceId = "string",
+#'       PreviousState = list(
+#'         Code = 123,
+#'         Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$terminate_instances(
@@ -33911,6 +45758,17 @@ ec2_terminate_instances <- function(InstanceIds, DryRun = NULL) {
 #' @param Ipv6Addresses &#91;required&#93; The IPv6 addresses to unassign from the network interface.
 #' @param NetworkInterfaceId &#91;required&#93; The ID of the network interface.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NetworkInterfaceId = "string",
+#'   UnassignedIpv6Addresses = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$unassign_ipv_6_addresses(
@@ -33956,6 +45814,8 @@ ec2_unassign_ipv_6_addresses <- function(Ipv6Addresses, NetworkInterfaceId) {
 #' @param PrivateIpAddresses &#91;required&#93; The secondary private IP addresses to unassign from the network
 #' interface. You can specify this option multiple times to unassign more
 #' than one IP address.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -34016,6 +45876,21 @@ ec2_unassign_private_ip_addresses <- function(NetworkInterfaceId, PrivateIpAddre
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceMonitorings = list(
+#'     list(
+#'       InstanceId = "string",
+#'       Monitoring = list(
+#'         State = "disabled"|"disabling"|"enabled"|"pending"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$unmonitor_instances(
@@ -34072,6 +45947,14 @@ ec2_unmonitor_instances <- function(InstanceIds, DryRun = NULL) {
 #' @param GroupName \[Default VPC\] The name of the security group. You must specify either
 #' the security group ID or the security group name in the request.
 #' @param IpPermissions &#91;required&#93; The IP permissions for the security group rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -34187,6 +46070,14 @@ ec2_update_security_group_rule_descriptions_egress <- function(DryRun = NULL, Gr
 #' request.
 #' @param IpPermissions &#91;required&#93; The IP permissions for the security group rule.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Return = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_security_group_rule_descriptions_ingress(
@@ -34295,6 +46186,19 @@ ec2_update_security_group_rule_descriptions_ingress <- function(DryRun = NULL, G
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ByoipCidr = list(
+#'     Cidr = "string",
+#'     Description = "string",
+#'     StatusMessage = "string",
+#'     State = "advertised"|"deprovisioned"|"failed-deprovision"|"failed-provision"|"pending-deprovision"|"pending-provision"|"provisioned"|"provisioned-not-publicly-advertisable"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

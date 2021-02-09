@@ -32,6 +32,18 @@ Default: If no value is provided, the default is 1000.}
 
 \item{PublicIps}{One or more Elastic IP addresses.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MovingAddressStatuses = list(
+    list(
+      MoveStatus = "movingToVpc"|"restoringToClassic",
+      PublicIp = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes your Elastic IP addresses that are being moved to the EC2-VPC
 platform, or that are being restored to the EC2-Classic platform. This

@@ -16,6 +16,10 @@ removed.}
 \item{EntityId}{[required] The identifier for the member (user, group) to be removed from the
 resource's delegates.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes a member from the resource's set of delegates.
 }

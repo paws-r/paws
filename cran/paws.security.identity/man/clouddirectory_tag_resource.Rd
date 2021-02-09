@@ -12,6 +12,10 @@ supported for directories.}
 
 \item{Tags}{[required] A list of tag key-value pairs.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 An API operation for adding tags to a resource.
 }

@@ -10,6 +10,21 @@ codedeploy_get_application(applicationName)
 \item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user
 or AWS account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  application = list(
+    applicationId = "string",
+    applicationName = "string",
+    createTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    linkedToGitHub = TRUE|FALSE,
+    gitHubAccountName = "string",
+    computePlatform = "Server"|"Lambda"|"ECS"
+  )
+)
+}
+}
 \description{
 Gets information about an application.
 }

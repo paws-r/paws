@@ -13,6 +13,15 @@ clouddirectory_list_facet_names(SchemaArn, NextToken, MaxResults)
 
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FacetNames = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the names of facets that exist in a schema.
 }

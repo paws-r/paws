@@ -14,6 +14,10 @@ Functions when tasks are assigned to a worker, or in the \href{https://docs.aws.
 when a workflow enters a task state. See
 GetActivityTaskOutput$taskToken.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Used by activity workers and task states using the
 \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback}

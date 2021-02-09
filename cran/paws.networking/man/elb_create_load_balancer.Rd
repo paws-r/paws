@@ -50,6 +50,12 @@ resolves to private IP addresses.}
 For more information about tagging your load balancer, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html}{Tag Your Classic Load Balancer}
 in the \emph{Classic Load Balancers Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DNSName = "string"
+)
+}
+}
 \description{
 Creates a Classic Load Balancer.
 

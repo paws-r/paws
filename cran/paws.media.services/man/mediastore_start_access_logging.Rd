@@ -9,6 +9,10 @@ mediastore_start_access_logging(ContainerName)
 \arguments{
 \item{ContainerName}{[required] The name of the container that you want to start access logging on.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Starts access logging on the specified container. When you enable access
 logging on a container, MediaStore delivers access logs for objects

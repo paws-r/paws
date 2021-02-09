@@ -14,6 +14,28 @@ apigateway_get_authorizers(restApiId, position, limit)
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  position = "string",
+  items = list(
+    list(
+      id = "string",
+      name = "string",
+      type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
+      providerARNs = list(
+        "string"
+      ),
+      authType = "string",
+      authorizerUri = "string",
+      authorizerCredentials = "string",
+      identitySource = "string",
+      identityValidationExpression = "string",
+      authorizerResultTtlInSeconds = 123
+    )
+  )
+)
+}
+}
 \description{
 Describe an existing Authorizers resource.<div class="seeAlso">
 

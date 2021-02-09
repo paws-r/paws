@@ -18,6 +18,120 @@ priority.}
 
 \item{Tags}{The tags to assign to the rule.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Rules = list(
+    list(
+      RuleArn = "string",
+      Priority = "string",
+      Conditions = list(
+        list(
+          Field = "string",
+          Values = list(
+            "string"
+          ),
+          HostHeaderConfig = list(
+            Values = list(
+              "string"
+            )
+          ),
+          PathPatternConfig = list(
+            Values = list(
+              "string"
+            )
+          ),
+          HttpHeaderConfig = list(
+            HttpHeaderName = "string",
+            Values = list(
+              "string"
+            )
+          ),
+          QueryStringConfig = list(
+            Values = list(
+              list(
+                Key = "string",
+                Value = "string"
+              )
+            )
+          ),
+          HttpRequestMethodConfig = list(
+            Values = list(
+              "string"
+            )
+          ),
+          SourceIpConfig = list(
+            Values = list(
+              "string"
+            )
+          )
+        )
+      ),
+      Actions = list(
+        list(
+          Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
+          TargetGroupArn = "string",
+          AuthenticateOidcConfig = list(
+            Issuer = "string",
+            AuthorizationEndpoint = "string",
+            TokenEndpoint = "string",
+            UserInfoEndpoint = "string",
+            ClientId = "string",
+            ClientSecret = "string",
+            SessionCookieName = "string",
+            Scope = "string",
+            SessionTimeout = 123,
+            AuthenticationRequestExtraParams = list(
+              "string"
+            ),
+            OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
+            UseExistingClientSecret = TRUE|FALSE
+          ),
+          AuthenticateCognitoConfig = list(
+            UserPoolArn = "string",
+            UserPoolClientId = "string",
+            UserPoolDomain = "string",
+            SessionCookieName = "string",
+            Scope = "string",
+            SessionTimeout = 123,
+            AuthenticationRequestExtraParams = list(
+              "string"
+            ),
+            OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
+          ),
+          Order = 123,
+          RedirectConfig = list(
+            Protocol = "string",
+            Port = "string",
+            Host = "string",
+            Path = "string",
+            Query = "string",
+            StatusCode = "HTTP_301"|"HTTP_302"
+          ),
+          FixedResponseConfig = list(
+            MessageBody = "string",
+            StatusCode = "string",
+            ContentType = "string"
+          ),
+          ForwardConfig = list(
+            TargetGroups = list(
+              list(
+                TargetGroupArn = "string",
+                Weight = 123
+              )
+            ),
+            TargetGroupStickinessConfig = list(
+              Enabled = TRUE|FALSE,
+              DurationSeconds = 123
+            )
+          )
+        )
+      ),
+      IsDefault = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Creates a rule for the specified listener. The listener must be
 associated with an Application Load Balancer.
@@ -154,7 +268,7 @@ in the \emph{Application Load Balancers Guide}.
 svc$create_rule(
   Actions = list(
     list(
-      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-t...",
+      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgro...",
       Type = "forward"
     )
   ),
@@ -166,7 +280,7 @@ svc$create_rule(
       )
     )
   ),
-  ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-load-ba...",
+  ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/my-...",
   Priority = 10L
 )
 }

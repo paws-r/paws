@@ -12,6 +12,21 @@ ssm_get_service_setting(SettingId)
 \verb{/ssm/parameter-store/high-throughput-enabled}, or
 \verb{/ssm/managed-instance/activation-tier}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceSetting = list(
+    SettingId = "string",
+    SettingValue = "string",
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastModifiedUser = "string",
+    ARN = "string",
+    Status = "string"
+  )
+)
+}
+}
 \description{
 \code{ServiceSetting} is an account-level setting for an AWS service. This
 setting defines how a user interacts with or uses a service or a feature

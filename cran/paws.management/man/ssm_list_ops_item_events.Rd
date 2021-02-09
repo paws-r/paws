@@ -18,6 +18,27 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Summaries = list(
+    list(
+      OpsItemId = "string",
+      EventId = "string",
+      Source = "string",
+      DetailType = "string",
+      Detail = "string",
+      CreatedBy = list(
+        Arn = "string"
+      ),
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of all OpsItem events in the current AWS account and
 Region. You can limit the results to events associated with specific

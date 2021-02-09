@@ -17,6 +17,18 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Association = list(
+    TransitGatewayRouteTableId = "string",
+    TransitGatewayAttachmentId = "string",
+    ResourceId = "string",
+    ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+    State = "associating"|"associated"|"disassociating"|"disassociated"
+  )
+)
+}
+}
 \description{
 Disassociates a resource attachment from a transit gateway route table.
 }

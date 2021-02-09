@@ -11,6 +11,10 @@ securityhub_untag_resource(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] The tag keys associated with the tags to remove from the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes one or more tags from a resource.
 }

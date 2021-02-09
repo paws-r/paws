@@ -11,6 +11,10 @@ alexaforbusiness_associate_device_with_room(DeviceArn, RoomArn)
 
 \item{RoomArn}{The ARN of the room with which to associate the device. Required.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates a device with a given room. This applies all the settings
 from the room profile to the device, and all the skills in any skill

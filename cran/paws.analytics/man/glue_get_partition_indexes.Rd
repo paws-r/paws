@@ -18,6 +18,36 @@ partition indexes.}
 
 \item{NextToken}{A continuation token, included if this is a continuation call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PartitionIndexDescriptorList = list(
+    list(
+      IndexName = "string",
+      Keys = list(
+        list(
+          Name = "string",
+          Type = "string"
+        )
+      ),
+      IndexStatus = "CREATING"|"ACTIVE"|"DELETING"|"FAILED",
+      BackfillErrors = list(
+        list(
+          Code = "ENCRYPTED_PARTITION_ERROR"|"INTERNAL_ERROR"|"INVALID_PARTITION_TYPE_DATA_ERROR"|"MISSING_PARTITION_VALUE_ERROR"|"UNSUPPORTED_PARTITION_CHARACTER_ERROR",
+          Partitions = list(
+            list(
+              Values = list(
+                "string"
+              )
+            )
+          )
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the partition indexes associated with a table.
 }

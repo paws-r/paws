@@ -20,6 +20,22 @@ is shared.}
 \item{NextToken}{The pagination token to use to retrieve the next page of results for
 this operation. If this value is null, it retrieves the first page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string",
+  SharedImagePermissionsList = list(
+    list(
+      sharedAccountId = "string",
+      imagePermissions = list(
+        allowFleet = TRUE|FALSE,
+        allowImageBuilder = TRUE|FALSE
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list that describes the permissions for shared AWS account
 IDs on a private image that you own.

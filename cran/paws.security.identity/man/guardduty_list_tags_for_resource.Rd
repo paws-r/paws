@@ -9,6 +9,14 @@ guardduty_list_tags_for_resource(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) for the given GuardDuty resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Lists tags for a resource. Tagging is currently supported for detectors,
 finding filters, IP sets, and threat intel sets, with a limit of 50 tags

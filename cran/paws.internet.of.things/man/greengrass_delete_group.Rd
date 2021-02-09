@@ -9,6 +9,10 @@ greengrass_delete_group(GroupId)
 \arguments{
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a group.
 }

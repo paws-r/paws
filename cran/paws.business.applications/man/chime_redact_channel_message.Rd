@@ -11,6 +11,13 @@ chime_redact_channel_message(ChannelArn, MessageId)
 
 \item{MessageId}{[required] The ID of the message being redacted.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelArn = "string",
+  MessageId = "string"
+)
+}
+}
 \description{
 Redacts message content, but not metadata. The message exists in the
 back end, but the action returns null content, and the state shows as

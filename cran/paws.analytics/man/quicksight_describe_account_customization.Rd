@@ -22,6 +22,19 @@ customizations to apply to the console. Omit this flag, or set it to
 \code{no-resolved}, to reveal customizations that are configured at different
 levels.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  AwsAccountId = "string",
+  Namespace = "string",
+  AccountCustomization = list(
+    DefaultTheme = "string"
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Describes the customizations associated with the provided AWS account
 and Amazon QuickSight namespace in an AWS Region. The QuickSight console

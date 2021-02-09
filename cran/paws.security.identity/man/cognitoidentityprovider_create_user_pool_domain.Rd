@@ -22,6 +22,12 @@ Cognito hosted domain instead.
 For more information about the hosted domain and custom domains, see
 \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html}{Configuring a User Pool Domain}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CloudFrontDomain = "string"
+)
+}
+}
 \description{
 Creates a new domain for a user pool.
 }

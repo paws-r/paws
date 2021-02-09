@@ -7,15 +7,25 @@
 kafka_batch_associate_scram_secret(ClusterArn, SecretArnList)
 }
 \arguments{
-\item{ClusterArn}{[required]
-<p>The Amazon Resource Name (ARN) of the cluster to be updated.</p>}
+\item{ClusterArn}{[required] The Amazon Resource Name (ARN) of the cluster to be updated.}
 
-\item{SecretArnList}{[required]
-<p>List of AWS Secrets Manager secret ARNs.</p>}
+\item{SecretArnList}{[required] List of AWS Secrets Manager secret ARNs.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterArn = "string",
+  UnprocessedScramSecrets = list(
+    list(
+      ErrorCode = "string",
+      ErrorMessage = "string",
+      SecretArn = "string"
+    )
+  )
+)
+}
 }
 \description{
-\preformatted{        <p>Associates one or more Scram Secrets with an Amazon MSK cluster.</p>
-}
+Associates one or more Scram Secrets with an Amazon MSK cluster.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_associate_scram_secret(

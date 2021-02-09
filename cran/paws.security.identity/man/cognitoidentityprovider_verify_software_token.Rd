@@ -19,6 +19,13 @@ to the service.}
 
 \item{FriendlyDeviceName}{The friendly device name.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = "SUCCESS"|"ERROR",
+  Session = "string"
+)
+}
+}
 \description{
 Use this API to register a user's entered TOTP code and mark the user's
 software token MFA status as "verified" if successful. The request takes

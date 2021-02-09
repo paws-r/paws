@@ -55,6 +55,29 @@ values of \code{HostedZoneIdMarker}, \code{TrafficPolicyInstanceNameMarker}, and
 \code{TrafficPolicyInstanceTypeMarker} represent the first traffic policy
 instance in the next group of \code{MaxItems} traffic policy instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficPolicyInstances = list(
+    list(
+      Id = "string",
+      HostedZoneId = "string",
+      Name = "string",
+      TTL = 123,
+      State = "string",
+      Message = "string",
+      TrafficPolicyId = "string",
+      TrafficPolicyVersion = 123,
+      TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+    )
+  ),
+  HostedZoneIdMarker = "string",
+  TrafficPolicyInstanceNameMarker = "string",
+  TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+  IsTruncated = TRUE|FALSE,
+  MaxItems = "string"
+)
+}
+}
 \description{
 Gets information about the traffic policy instances that you created by
 using the current AWS account.

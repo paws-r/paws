@@ -9,6 +9,23 @@ sagemaker_describe_model_package_group(ModelPackageGroupName)
 \arguments{
 \item{ModelPackageGroupName}{[required] The name of the model group to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ModelPackageGroupName = "string",
+  ModelPackageGroupArn = "string",
+  ModelPackageGroupDescription = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  CreatedBy = list(
+    UserProfileArn = "string",
+    UserProfileName = "string",
+    DomainId = "string"
+  ),
+  ModelPackageGroupStatus = "Pending"|"InProgress"|"Completed"|"Failed"|"Deleting"|"DeleteFailed"
+)
+}
+}
 \description{
 Gets a description for the specified model group.
 }

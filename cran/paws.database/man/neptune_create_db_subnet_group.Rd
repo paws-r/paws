@@ -22,6 +22,27 @@ Example: \code{mySubnetgroup}}
 
 \item{Tags}{The tags to be assigned to the new DB subnet group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBSubnetGroup = list(
+    DBSubnetGroupName = "string",
+    DBSubnetGroupDescription = "string",
+    VpcId = "string",
+    SubnetGroupStatus = "string",
+    Subnets = list(
+      list(
+        SubnetIdentifier = "string",
+        SubnetAvailabilityZone = list(
+          Name = "string"
+        ),
+        SubnetStatus = "string"
+      )
+    ),
+    DBSubnetGroupArn = "string"
+  )
+)
+}
+}
 \description{
 Creates a new DB subnet group. DB subnet groups must contain at least
 one subnet in at least two AZs in the AWS Region.

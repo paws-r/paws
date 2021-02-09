@@ -93,6 +93,29 @@ a \code{SessionDuration} parameter that specifies the maximum length of the
 console session. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html}{Creating a URL that Enables Federated Users to Access the AWS Management Console}
 in the \emph{IAM User Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Credentials = list(
+    AccessKeyId = "string",
+    SecretAccessKey = "string",
+    SessionToken = "string",
+    Expiration = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  AssumedRoleUser = list(
+    AssumedRoleId = "string",
+    Arn = "string"
+  ),
+  PackedPolicySize = 123,
+  Subject = "string",
+  SubjectType = "string",
+  Issuer = "string",
+  Audience = "string",
+  NameQualifier = "string"
+)
+}
+}
 \description{
 Returns a set of temporary security credentials for users who have been
 authenticated via a SAML authentication response. This operation
@@ -240,7 +263,7 @@ svc$assume_role_with_saml(
   DurationSeconds = 3600L,
   PrincipalArn = "arn:aws:iam::123456789012:saml-provider/SAML-test",
   RoleArn = "arn:aws:iam::123456789012:role/TestSaml",
-  SAMLAssertion = "VERYLONGENCODEDASSERTIONEXAMPLExzYW1sOkF1ZGllbmNlPmJsYW5rPC9zYW1sOkF1ZGll..."
+  SAMLAssertion = "VERYLONGENCODEDASSERTIONEXAMPLExzYW1sOkF1ZGllbmNlPmJsYW5rPC9zYW1sO..."
 )
 }
 

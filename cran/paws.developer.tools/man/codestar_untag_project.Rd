@@ -11,6 +11,10 @@ codestar_untag_project(id, tags)
 
 \item{tags}{[required] The tags to remove from the project.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes tags from a project.
 }

@@ -9,35 +9,41 @@ kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
   OpenMonitoring, KafkaVersion, LoggingInfo, NumberOfBrokerNodes, Tags)
 }
 \arguments{
-\item{BrokerNodeGroupInfo}{[required]
-<p>Information about the broker nodes in the cluster.</p>}
+\item{BrokerNodeGroupInfo}{[required] Information about the broker nodes in the cluster.}
 
-\item{ClientAuthentication}{<p>Includes all client authentication related information.</p>}
+\item{ClientAuthentication}{Includes all client authentication related information.}
 
-\item{ClusterName}{[required]
-<p>The name of the cluster.</p>}
+\item{ClusterName}{[required] The name of the cluster.}
 
-\item{ConfigurationInfo}{<p>Represents the configuration that you want MSK to use for the brokers in a cluster.</p>}
+\item{ConfigurationInfo}{Represents the configuration that you want MSK to use for the brokers in
+a cluster.}
 
-\item{EncryptionInfo}{<p>Includes all encryption-related information.</p>}
+\item{EncryptionInfo}{Includes all encryption-related information.}
 
-\item{EnhancedMonitoring}{<p>Specifies the level of monitoring for the MSK cluster. The possible values are DEFAULT, PER_BROKER, PER_TOPIC_PER_BROKER, and PER_TOPIC_PER_PARTITION.</p>}
+\item{EnhancedMonitoring}{Specifies the level of monitoring for the MSK cluster. The possible
+values are DEFAULT, PER_BROKER, PER_TOPIC_PER_BROKER, and
+PER_TOPIC_PER_PARTITION.}
 
-\item{OpenMonitoring}{<p>The settings for open monitoring.</p>}
+\item{OpenMonitoring}{The settings for open monitoring.}
 
-\item{KafkaVersion}{[required]
-<p>The version of Apache Kafka.</p>}
+\item{KafkaVersion}{[required] The version of Apache Kafka.}
 
 \item{LoggingInfo}{}
 
-\item{NumberOfBrokerNodes}{[required]
-<p>The number of broker nodes in the cluster.</p>}
+\item{NumberOfBrokerNodes}{[required] The number of broker nodes in the cluster.}
 
-\item{Tags}{<p>Create tags when creating the cluster.</p>}
+\item{Tags}{Create tags when creating the cluster.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ClusterArn = "string",
+  ClusterName = "string",
+  State = "ACTIVE"|"CREATING"|"DELETING"|"FAILED"|"HEALING"|"MAINTENANCE"|"REBOOTING_BROKER"|"UPDATING"
+)
+}
 }
 \description{
-\preformatted{        <p>Creates a new MSK cluster.</p>
-}
+Creates a new MSK cluster.
 }
 \section{Request syntax}{
 \preformatted{svc$create_cluster(

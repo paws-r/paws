@@ -16,6 +16,10 @@ Load Balancing
 \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeTargetGroups.html}{DescribeTargetGroups}
 API operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Attaches one or more target groups to the specified Auto Scaling group.
 
@@ -54,7 +58,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 svc$attach_load_balancer_target_groups(
   AutoScalingGroupName = "my-auto-scaling-group",
   TargetGroupARNs = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d..."
   )
 )
 }

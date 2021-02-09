@@ -25,6 +25,19 @@ opsItem.}
 associated tag value (\code{Value}). The maximum length of a tag key is 128
 characters. The maximum length of a tag value is 256 characters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationInfo = list(
+    ResourceGroupName = "string",
+    LifeCycle = "string",
+    OpsItemSNSTopicArn = "string",
+    OpsCenterEnabled = TRUE|FALSE,
+    CWEMonitorEnabled = TRUE|FALSE,
+    Remarks = "string"
+  )
+)
+}
+}
 \description{
 Adds an application that is created from a resource group.
 }

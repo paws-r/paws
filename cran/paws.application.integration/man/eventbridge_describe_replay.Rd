@@ -9,6 +9,38 @@ eventbridge_describe_replay(ReplayName)
 \arguments{
 \item{ReplayName}{[required] The name of the replay to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReplayName = "string",
+  ReplayArn = "string",
+  Description = "string",
+  State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
+  StateReason = "string",
+  EventSourceArn = "string",
+  Destination = list(
+    Arn = "string",
+    FilterArns = list(
+      "string"
+    )
+  ),
+  EventStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  EventEndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  EventLastReplayedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  ReplayStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  ReplayEndTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Retrieves details about a replay. Use
 \code{\link[=eventbridge_describe_replay]{describe_replay}} to determine the

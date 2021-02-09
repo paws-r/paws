@@ -14,18 +14,33 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this operation with an access point through the AWS SDKs, you
 provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ObjectLockConfiguration = list(
+    ObjectLockEnabled = "Enabled",
+    Rule = list(
+      DefaultRetention = list(
+        Mode = "GOVERNANCE"|"COMPLIANCE",
+        Days = 123,
+        Years = 123
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets the Object Lock configuration for a bucket. The rule specified in
 the Object Lock configuration will be applied by default to every new
 object placed in the specified bucket. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html}{Locking Objects}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_object_lock_configuration(

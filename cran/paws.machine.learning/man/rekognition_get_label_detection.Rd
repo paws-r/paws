@@ -27,6 +27,48 @@ alphabetically group elements for a label together. Within each label
 group, the array element are sorted by detection confidence. The default
 sort is by \code{TIMESTAMP}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+  StatusMessage = "string",
+  VideoMetadata = list(
+    Codec = "string",
+    DurationMillis = 123,
+    Format = "string",
+    FrameRate = 123.0,
+    FrameHeight = 123,
+    FrameWidth = 123
+  ),
+  NextToken = "string",
+  Labels = list(
+    list(
+      Timestamp = 123,
+      Label = list(
+        Name = "string",
+        Confidence = 123.0,
+        Instances = list(
+          list(
+            BoundingBox = list(
+              Width = 123.0,
+              Height = 123.0,
+              Left = 123.0,
+              Top = 123.0
+            ),
+            Confidence = 123.0
+          )
+        ),
+        Parents = list(
+          list(
+            Name = "string"
+          )
+        )
+      )
+    )
+  ),
+  LabelModelVersion = "string"
+)
+}
+}
 \description{
 Gets the label detection results of a Amazon Rekognition Video analysis
 started by \code{\link[=rekognition_start_label_detection]{start_label_detection}}.

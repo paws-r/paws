@@ -17,6 +17,10 @@ for.}
 
 \item{Comments}{Additional feedback about the GuardDuty findings.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Marks the specified GuardDuty findings as useful or not useful.
 }

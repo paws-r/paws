@@ -15,6 +15,10 @@ To find the cluster ID, use
 \item{TagKeyList}{[required] A list of one or more tag keys for the tags that you are removing.
 Specify only the tag keys, not the tag values.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the specified tag or tags from the specified AWS CloudHSM
 cluster.

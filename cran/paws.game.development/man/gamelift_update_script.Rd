@@ -37,6 +37,27 @@ the zip file name. It must be prepended with the string "fileb://" to
 indicate that the file data is a binary object. For example:
 \verb{--zip-file fileb://myRealtimeScript.zip}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Script = list(
+    ScriptId = "string",
+    ScriptArn = "string",
+    Name = "string",
+    Version = "string",
+    SizeOnDisk = 123,
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    StorageLocation = list(
+      Bucket = "string",
+      Key = "string",
+      RoleArn = "string",
+      ObjectVersion = "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates Realtime script metadata and content.
 

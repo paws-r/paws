@@ -15,6 +15,33 @@ response.}
 
 \item{MaxItems}{The maximum number of key groups that you want in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  KeyGroupList = list(
+    NextMarker = "string",
+    MaxItems = 123,
+    Quantity = 123,
+    Items = list(
+      list(
+        KeyGroup = list(
+          Id = "string",
+          LastModifiedTime = as.POSIXct(
+            "2015-01-01"
+          ),
+          KeyGroupConfig = list(
+            Name = "string",
+            Items = list(
+              "string"
+            ),
+            Comment = "string"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets a list of key groups.
 

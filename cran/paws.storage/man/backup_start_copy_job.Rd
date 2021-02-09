@@ -29,6 +29,15 @@ to \code{\link[=backup_start_copy_job]{start_copy_job}}.}
 
 \item{Lifecycle}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CopyJobId = "string",
+  CreationDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Starts a job to create a one-time copy of the specified resource.
 }

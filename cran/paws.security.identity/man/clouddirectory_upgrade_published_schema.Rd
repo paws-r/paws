@@ -22,6 +22,12 @@ upgraded. If schema compatibility fails, an exception would be thrown
 else the call would succeed. This parameter is optional and defaults to
 false.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UpgradedSchemaArn = "string"
+)
+}
+}
 \description{
 Upgrades a published schema under a new minor version revision using the
 current contents of \code{DevelopmentSchemaArn}.

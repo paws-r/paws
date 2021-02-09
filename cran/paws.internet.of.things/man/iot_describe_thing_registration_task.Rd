@@ -9,6 +9,27 @@ iot_describe_thing_registration_task(taskId)
 \arguments{
 \item{taskId}{[required] The task ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  taskId = "string",
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastModifiedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  templateBody = "string",
+  inputFileBucket = "string",
+  inputFileKey = "string",
+  roleArn = "string",
+  status = "InProgress"|"Completed"|"Failed"|"Cancelled"|"Cancelling",
+  message = "string",
+  successCount = 123,
+  failureCount = 123,
+  percentageProgress = 123
+)
+}
+}
 \description{
 Describes a bulk thing provisioning task.
 }

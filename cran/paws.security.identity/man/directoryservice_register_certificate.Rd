@@ -20,6 +20,12 @@ include \code{ClientLDAPS} or \code{ClientCertAuth}. The default value is
 \item{ClientCertAuthSettings}{A \code{ClientCertAuthSettings} object that contains client certificate
 authentication settings.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CertificateId = "string"
+)
+}
+}
 \description{
 Registers a certificate for a secure LDAP or client certificate
 authentication.

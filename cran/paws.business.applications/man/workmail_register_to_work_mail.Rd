@@ -15,6 +15,10 @@ resource exists.}
 
 \item{Email}{[required] The email for the user, group, or resource to be updated.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Registers an existing and disabled user, group, or resource for Amazon
 WorkMail use by associating a mailbox and calendaring capabilities. It

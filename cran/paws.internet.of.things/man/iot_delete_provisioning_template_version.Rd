@@ -11,6 +11,10 @@ iot_delete_provisioning_template_version(templateName, versionId)
 
 \item{versionId}{[required] The fleet provisioning template version ID to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a fleet provisioning template version.
 }

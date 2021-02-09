@@ -30,6 +30,15 @@ If the template doesn't include transforms, \code{Original} and \code{Processed}
 return the same template. By default, AWS CloudFormation specifies
 \code{Original}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TemplateBody = "string",
+  StagesAvailable = list(
+    "Original"|"Processed"
+  )
+)
+}
+}
 \description{
 Returns the template body for a specified stack. You can get the
 template for running or deleted stacks.

@@ -11,6 +11,18 @@ cloudformation_describe_account_limits(NextToken)
 \item{NextToken}{A string that identifies the next page of limits that you want to
 retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccountLimits = list(
+    list(
+      Name = "string",
+      Value = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves your account's AWS CloudFormation limits, such as the maximum
 number of stacks that you can create in your account. For more

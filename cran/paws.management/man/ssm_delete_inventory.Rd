@@ -33,6 +33,24 @@ without specifying the \code{DryRun} option.}
 
 \item{ClientToken}{User-provided idempotency token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DeletionId = "string",
+  TypeName = "string",
+  DeletionSummary = list(
+    TotalCount = 123,
+    RemainingCount = 123,
+    SummaryItems = list(
+      list(
+        Version = "string",
+        Count = 123,
+        RemainingCount = 123
+      )
+    )
+  )
+)
+}
+}
 \description{
 Delete a custom inventory type or the data associated with a custom
 Inventory type. Deleting a custom inventory type is also referred to as

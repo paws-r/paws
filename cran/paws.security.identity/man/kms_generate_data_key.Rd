@@ -63,6 +63,14 @@ request.}
 For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CiphertextBlob = raw,
+  Plaintext = raw,
+  KeyId = "string"
+)
+}
+}
 \description{
 Generates a unique symmetric data key for client-side encryption. This
 operation returns a plaintext copy of the data key and a copy that is
@@ -108,7 +116,7 @@ We recommend that you use the following pattern to encrypt data locally
 in your application. You can write your own code or use a client-side
 encryption library, such as the \href{https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/}{AWS Encryption SDK},
 the \href{https://docs.aws.amazon.com/dynamodb-encryption-client/latest/devguide/}{Amazon DynamoDB Encryption Client},
-or \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html}{Amazon S3 client-side encryption}
+or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html}{Amazon S3 client-side encryption}
 to do these tasks for you.
 
 To encrypt data outside of AWS KMS:

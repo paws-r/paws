@@ -19,6 +19,12 @@ model that you want to train.}
 
 \item{TestingData}{[required] The dataset to use for testing.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProjectVersionArn = "string"
+)
+}
+}
 \description{
 Creates a new version of a model and begins training. Models are managed
 as part of an Amazon Rekognition Custom Labels project. You can specify

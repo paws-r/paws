@@ -14,6 +14,10 @@ instances.}
 
 \item{tagKeys}{[required] The keys of the tags to be removed.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes specified tags from a resource.
 }

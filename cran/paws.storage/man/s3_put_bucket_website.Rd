@@ -29,7 +29,7 @@ Sets the configuration of the website that is specified in the \code{website}
 subresource. To configure a bucket as a website, you can add this
 subresource on the bucket with website configuration information such as
 the file name of the index document and any redirect rules. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
 
 This PUT operation requires the \code{S3:PutBucketWebsite} permission. By
 default, only the bucket owner can configure the website attached to a
@@ -74,7 +74,7 @@ because some requests might not be redirected.
 
 Amazon S3 has a limitation of 50 routing rules per website
 configuration. If you require more than 50 routing rules, you can use
-object redirect. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html}{Configuring an Object Redirect}
+object redirect. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html}{Configuring an Object Redirect}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \section{Request syntax}{

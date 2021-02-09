@@ -37,6 +37,28 @@ jobs whose name contains the specified string.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrainingJobSummaries = list(
+    list(
+      TrainingJobName = "string",
+      TrainingJobArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TrainingEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists training jobs.
 }

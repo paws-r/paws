@@ -12,6 +12,10 @@ greengrass_update_subscription_definition(Name,
 
 \item{SubscriptionDefinitionId}{[required] The ID of the subscription definition.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a subscription definition.
 }

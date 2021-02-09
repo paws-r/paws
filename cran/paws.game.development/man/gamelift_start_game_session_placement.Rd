@@ -40,6 +40,51 @@ offer the best possible gameplay experience for the players.}
 value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GameSessionPlacement = list(
+    PlacementId = "string",
+    GameSessionQueueName = "string",
+    Status = "PENDING"|"FULFILLED"|"CANCELLED"|"TIMED_OUT"|"FAILED",
+    GameProperties = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    MaximumPlayerSessionCount = 123,
+    GameSessionName = "string",
+    GameSessionId = "string",
+    GameSessionArn = "string",
+    GameSessionRegion = "string",
+    PlayerLatencies = list(
+      list(
+        PlayerId = "string",
+        RegionIdentifier = "string",
+        LatencyInMilliseconds = 123.0
+      )
+    ),
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    EndTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    IpAddress = "string",
+    DnsName = "string",
+    Port = 123,
+    PlacedPlayerSessions = list(
+      list(
+        PlayerId = "string",
+        PlayerSessionId = "string"
+      )
+    ),
+    GameSessionData = "string",
+    MatchmakerData = "string"
+  )
+)
+}
+}
 \description{
 Places a request for a new game session in a queue (see
 \code{\link[=gamelift_create_game_session_queue]{create_game_session_queue}}). When

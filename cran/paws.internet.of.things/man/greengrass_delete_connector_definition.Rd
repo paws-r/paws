@@ -9,6 +9,10 @@ greengrass_delete_connector_definition(ConnectorDefinitionId)
 \arguments{
 \item{ConnectorDefinitionId}{[required] The ID of the connector definition.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a connector definition.
 }

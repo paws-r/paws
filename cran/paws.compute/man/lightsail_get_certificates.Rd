@@ -28,6 +28,89 @@ Resource Names (ARNs), domain names, and tags.}
 When omitted, the response includes all of your certificates in the AWS
 Region where the request is made.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  certificates = list(
+    list(
+      certificateArn = "string",
+      certificateName = "string",
+      domainName = "string",
+      certificateDetail = list(
+        arn = "string",
+        name = "string",
+        domainName = "string",
+        status = "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED",
+        serialNumber = "string",
+        subjectAlternativeNames = list(
+          "string"
+        ),
+        domainValidationRecords = list(
+          list(
+            domainName = "string",
+            resourceRecord = list(
+              name = "string",
+              type = "string",
+              value = "string"
+            )
+          )
+        ),
+        requestFailureReason = "string",
+        inUseResourceCount = 123,
+        keyAlgorithm = "string",
+        createdAt = as.POSIXct(
+          "2015-01-01"
+        ),
+        issuedAt = as.POSIXct(
+          "2015-01-01"
+        ),
+        issuerCA = "string",
+        notBefore = as.POSIXct(
+          "2015-01-01"
+        ),
+        notAfter = as.POSIXct(
+          "2015-01-01"
+        ),
+        eligibleToRenew = "string",
+        renewalSummary = list(
+          domainValidationRecords = list(
+            list(
+              domainName = "string",
+              resourceRecord = list(
+                name = "string",
+                type = "string",
+                value = "string"
+              )
+            )
+          ),
+          renewalStatus = "PendingAutoRenewal"|"PendingValidation"|"Success"|"Failed",
+          renewalStatusReason = "string",
+          updatedAt = as.POSIXct(
+            "2015-01-01"
+          )
+        ),
+        revokedAt = as.POSIXct(
+          "2015-01-01"
+        ),
+        revocationReason = "string",
+        tags = list(
+          list(
+            key = "string",
+            value = "string"
+          )
+        ),
+        supportCode = "string"
+      ),
+      tags = list(
+        list(
+          key = "string",
+          value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns information about one or more Amazon Lightsail SSL/TLS
 certificates.

@@ -41,6 +41,111 @@ within the parent folder (the indirect activity).}
 
 \item{Marker}{The marker for the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserActivities = list(
+    list(
+      Type = "DOCUMENT_CHECKED_IN"|"DOCUMENT_CHECKED_OUT"|"DOCUMENT_RENAMED"|"DOCUMENT_VERSION_UPLOADED"|"DOCUMENT_VERSION_DELETED"|"DOCUMENT_VERSION_VIEWED"|"DOCUMENT_VERSION_DOWNLOADED"|"DOCUMENT_RECYCLED"|"DOCUMENT_RESTORED"|"DOCUMENT_REVERTED"|"DOCUMENT_SHARED"|"DOCUMENT_UNSHARED"|"DOCUMENT_SHARE_PERMISSION_CHANGED"|"DOCUMENT_SHAREABLE_LINK_CREATED"|"DOCUMENT_SHAREABLE_LINK_REMOVED"|"DOCUMENT_SHAREABLE_LINK_PERMISSION_CHANGED"|"DOCUMENT_MOVED"|"DOCUMENT_COMMENT_ADDED"|"DOCUMENT_COMMENT_DELETED"|"DOCUMENT_ANNOTATION_ADDED"|"DOCUMENT_ANNOTATION_DELETED"|"FOLDER_CREATED"|"FOLDER_DELETED"|"FOLDER_RENAMED"|"FOLDER_RECYCLED"|"FOLDER_RESTORED"|"FOLDER_SHARED"|"FOLDER_UNSHARED"|"FOLDER_SHARE_PERMISSION_CHANGED"|"FOLDER_SHAREABLE_LINK_CREATED"|"FOLDER_SHAREABLE_LINK_REMOVED"|"FOLDER_SHAREABLE_LINK_PERMISSION_CHANGED"|"FOLDER_MOVED",
+      TimeStamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      IsIndirectActivity = TRUE|FALSE,
+      OrganizationId = "string",
+      Initiator = list(
+        Id = "string",
+        Username = "string",
+        GivenName = "string",
+        Surname = "string",
+        EmailAddress = "string"
+      ),
+      Participants = list(
+        Users = list(
+          list(
+            Id = "string",
+            Username = "string",
+            GivenName = "string",
+            Surname = "string",
+            EmailAddress = "string"
+          )
+        ),
+        Groups = list(
+          list(
+            Id = "string",
+            Name = "string"
+          )
+        )
+      ),
+      ResourceMetadata = list(
+        Type = "FOLDER"|"DOCUMENT",
+        Name = "string",
+        OriginalName = "string",
+        Id = "string",
+        VersionId = "string",
+        Owner = list(
+          Id = "string",
+          Username = "string",
+          GivenName = "string",
+          Surname = "string",
+          EmailAddress = "string"
+        ),
+        ParentId = "string"
+      ),
+      OriginalParent = list(
+        Type = "FOLDER"|"DOCUMENT",
+        Name = "string",
+        OriginalName = "string",
+        Id = "string",
+        VersionId = "string",
+        Owner = list(
+          Id = "string",
+          Username = "string",
+          GivenName = "string",
+          Surname = "string",
+          EmailAddress = "string"
+        ),
+        ParentId = "string"
+      ),
+      CommentMetadata = list(
+        CommentId = "string",
+        Contributor = list(
+          Id = "string",
+          Username = "string",
+          EmailAddress = "string",
+          GivenName = "string",
+          Surname = "string",
+          OrganizationId = "string",
+          RootFolderId = "string",
+          RecycleBinFolderId = "string",
+          Status = "ACTIVE"|"INACTIVE"|"PENDING",
+          Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
+          CreatedTimestamp = as.POSIXct(
+            "2015-01-01"
+          ),
+          ModifiedTimestamp = as.POSIXct(
+            "2015-01-01"
+          ),
+          TimeZoneId = "string",
+          Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
+          Storage = list(
+            StorageUtilizedInBytes = 123,
+            StorageRule = list(
+              StorageAllocatedInBytes = 123,
+              StorageType = "UNLIMITED"|"QUOTA"
+            )
+          )
+        ),
+        CreatedTimestamp = as.POSIXct(
+          "2015-01-01"
+        ),
+        CommentStatus = "DRAFT"|"PUBLISHED"|"DELETED",
+        RecipientId = "string"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Describes the user activities in a specified time period.
 }

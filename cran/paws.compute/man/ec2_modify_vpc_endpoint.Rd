@@ -46,6 +46,12 @@ the network interface.}
 \item{PrivateDnsEnabled}{(Interface endpoint) Indicates whether a private hosted zone is
 associated with the VPC.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Return = TRUE|FALSE
+)
+}
+}
 \description{
 Modifies attributes of a specified VPC endpoint. The attributes that you
 can modify depend on the type of VPC endpoint (interface, gateway, or

@@ -12,6 +12,10 @@ servicecatalog_disassociate_tag_option_from_resource(ResourceId,
 
 \item{TagOptionId}{[required] The TagOption identifier.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disassociates the specified TagOption from the specified resource.
 }

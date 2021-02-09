@@ -9,6 +9,22 @@ chime_describe_app_instance(AppInstanceArn)
 \arguments{
 \item{AppInstanceArn}{[required] The ARN of the app instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppInstance = list(
+    AppInstanceArn = "string",
+    Name = "string",
+    Metadata = "string",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Returns the full details of an \code{AppInstance}.
 }

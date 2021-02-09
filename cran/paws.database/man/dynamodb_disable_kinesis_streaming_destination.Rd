@@ -11,6 +11,14 @@ dynamodb_disable_kinesis_streaming_destination(TableName, StreamArn)
 
 \item{StreamArn}{[required] The ARN for a Kinesis data stream.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TableName = "string",
+  StreamArn = "string",
+  DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED"
+)
+}
+}
 \description{
 Stops replication from the DynamoDB table to the Kinesis data stream.
 This is done without deleting either of the resources.

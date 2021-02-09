@@ -44,6 +44,40 @@ values in the request, Amazon Redshift returns a response with the
 subnet groups that have either or both of these tag values associated
 with them.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ClusterSubnetGroups = list(
+    list(
+      ClusterSubnetGroupName = "string",
+      Description = "string",
+      VpcId = "string",
+      SubnetGroupStatus = "string",
+      Subnets = list(
+        list(
+          SubnetIdentifier = "string",
+          SubnetAvailabilityZone = list(
+            Name = "string",
+            SupportedPlatforms = list(
+              list(
+                Name = "string"
+              )
+            )
+          ),
+          SubnetStatus = "string"
+        )
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns one or more cluster subnet group objects, which contain metadata
 about your cluster subnet groups. By default, this operation returns

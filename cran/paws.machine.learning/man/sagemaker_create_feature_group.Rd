@@ -89,6 +89,12 @@ data into the \code{OfflineStore} if an \code{OfflineStoreConfig} is provided.}
 
 \item{Tags}{Tags used to identify \code{Features} in each \code{FeatureGroup}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FeatureGroupArn = "string"
+)
+}
+}
 \description{
 Create a new \code{FeatureGroup}. A \code{FeatureGroup} is a group of \code{Features}
 defined in the \code{FeatureStore} to describe a \code{Record}.

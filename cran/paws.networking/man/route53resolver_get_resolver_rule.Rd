@@ -11,6 +11,32 @@ route53resolver_get_resolver_rule(ResolverRuleId)
 \arguments{
 \item{ResolverRuleId}{[required] The ID of the Resolver rule that you want to get information about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResolverRule = list(
+    Id = "string",
+    CreatorRequestId = "string",
+    Arn = "string",
+    DomainName = "string",
+    Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
+    StatusMessage = "string",
+    RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
+    Name = "string",
+    TargetIps = list(
+      list(
+        Ip = "string",
+        Port = 123
+      )
+    ),
+    ResolverEndpointId = "string",
+    OwnerId = "string",
+    ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
+    CreationTime = "string",
+    ModificationTime = "string"
+  )
+)
+}
+}
 \description{
 Gets information about a specified Resolver rule, such as the domain
 name that the rule forwards DNS queries for and the ID of the outbound

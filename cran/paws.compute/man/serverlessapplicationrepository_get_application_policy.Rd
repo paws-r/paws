@@ -9,6 +9,25 @@ serverlessapplicationrepository_get_application_policy(ApplicationId)
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Statements = list(
+    list(
+      Actions = list(
+        "string"
+      ),
+      PrincipalOrgIDs = list(
+        "string"
+      ),
+      Principals = list(
+        "string"
+      ),
+      StatementId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves the policy for the application.
 }

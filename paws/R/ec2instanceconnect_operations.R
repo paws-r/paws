@@ -21,6 +21,15 @@ NULL
 #' publication you must have the matching private key.
 #' @param AvailabilityZone &#91;required&#93; The availability zone the EC2 instance was launched in.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RequestId = "string",
+#'   Success = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_ssh_public_key(
@@ -39,7 +48,7 @@ NULL
 #'   AvailabilityZone = "us-west-2a",
 #'   InstanceId = "i-abcd1234",
 #'   InstanceOSUser = "ec2-user",
-#'   SSHPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3FlHqj2eqCdrGHuA6dRjfZXQ4HX5lXEIRHa..."
+#'   SSHPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3FlHqj2eqCdrGHuA6dRjfZXQ4HX5..."
 #' )
 #' }
 #'

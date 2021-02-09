@@ -17,6 +17,28 @@ are listed here.}
 operation, which can be used to return the next set of items in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  networkProfiles = list(
+    list(
+      arn = "string",
+      name = "string",
+      description = "string",
+      type = "CURATED"|"PRIVATE",
+      uplinkBandwidthBits = 123,
+      downlinkBandwidthBits = 123,
+      uplinkDelayMs = 123,
+      downlinkDelayMs = 123,
+      uplinkJitterMs = 123,
+      downlinkJitterMs = 123,
+      uplinkLossPercent = 123,
+      downlinkLossPercent = 123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns the list of available network profiles.
 }

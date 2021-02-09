@@ -23,6 +23,30 @@ response.}
 
 \item{MaxResults}{The maximum number of security standard controls to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Controls = list(
+    list(
+      StandardsControlArn = "string",
+      ControlStatus = "ENABLED"|"DISABLED",
+      DisabledReason = "string",
+      ControlStatusUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      ControlId = "string",
+      Title = "string",
+      Description = "string",
+      RemediationUrl = "string",
+      SeverityRating = "LOW"|"MEDIUM"|"HIGH"|"CRITICAL",
+      RelatedRequirements = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of security standards controls.
 

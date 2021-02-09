@@ -13,6 +13,24 @@ autoscaling_describe_lifecycle_hooks(AutoScalingGroupName,
 \item{LifecycleHookNames}{The names of one or more lifecycle hooks. If you omit this parameter,
 all lifecycle hooks are described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LifecycleHooks = list(
+    list(
+      LifecycleHookName = "string",
+      AutoScalingGroupName = "string",
+      LifecycleTransition = "string",
+      NotificationTargetARN = "string",
+      RoleARN = "string",
+      NotificationMetadata = "string",
+      HeartbeatTimeout = 123,
+      GlobalTimeout = 123,
+      DefaultResult = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the lifecycle hooks for the specified Auto Scaling group.
 }

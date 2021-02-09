@@ -18,6 +18,20 @@ results.}
 
 \item{MaxResults}{The maximimum number of results to return per page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  QueueSummaryList = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Name = "string",
+      QueueType = "STANDARD"|"AGENT"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Provides information about the queues for the specified Amazon Connect
 instance.

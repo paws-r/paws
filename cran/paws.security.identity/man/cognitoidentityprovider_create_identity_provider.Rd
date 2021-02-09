@@ -20,40 +20,40 @@ detail keys for each identity provider type.
 \itemize{
 \item For Google and Login with Amazon:
 \itemize{
-\item client\\_id
-\item client\\_secret
-\item authorize\\_scopes
+\item client_id
+\item client_secret
+\item authorize_scopes
 }
 \item For Facebook:
 \itemize{
-\item client\\_id
-\item client\\_secret
-\item authorize\\_scopes
-\item api\\_version
+\item client_id
+\item client_secret
+\item authorize_scopes
+\item api_version
 }
 \item For Sign in with Apple:
 \itemize{
-\item client\\_id
-\item team\\_id
-\item key\\_id
-\item private\\_key
-\item authorize\\_scopes
+\item client_id
+\item team_id
+\item key_id
+\item private_key
+\item authorize_scopes
 }
 \item For OIDC providers:
 \itemize{
-\item client\\_id
-\item client\\_secret
-\item attributes\\_request\\_method
-\item oidc\\_issuer
-\item authorize\\_scopes
-\item authorize\\_url \emph{if not available from discovery URL specified by
-oidc\\_issuer key}
-\item token\\_url \emph{if not available from discovery URL specified by
-oidc\\_issuer key}
-\item attributes\\_url \emph{if not available from discovery URL specified
-by oidc\\_issuer key}
-\item jwks\\_uri \emph{if not available from discovery URL specified by
-oidc\\_issuer key}
+\item client_id
+\item client_secret
+\item attributes_request_method
+\item oidc_issuer
+\item authorize_scopes
+\item authorize_url \emph{if not available from discovery URL specified by
+oidc_issuer key}
+\item token_url \emph{if not available from discovery URL specified by
+oidc_issuer key}
+\item attributes_url \emph{if not available from discovery URL specified
+by oidc_issuer key}
+\item jwks_uri \emph{if not available from discovery URL specified by
+oidc_issuer key}
 }
 \item For SAML providers:
 \itemize{
@@ -66,6 +66,31 @@ oidc\\_issuer key}
 pool attributes.}
 
 \item{IdpIdentifiers}{A list of identity provider identifiers.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityProvider = list(
+    UserPoolId = "string",
+    ProviderName = "string",
+    ProviderType = "SAML"|"Facebook"|"Google"|"LoginWithAmazon"|"SignInWithApple"|"OIDC",
+    ProviderDetails = list(
+      "string"
+    ),
+    AttributeMapping = list(
+      "string"
+    ),
+    IdpIdentifiers = list(
+      "string"
+    ),
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreationDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
 }
 \description{
 Creates an identity provider for a user pool.

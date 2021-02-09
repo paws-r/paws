@@ -13,6 +13,15 @@ dynamodb_update_time_to_live(TableName, TimeToLiveSpecification)
 \item{TimeToLiveSpecification}{[required] Represents the settings used to enable or disable Time to Live for the
 specified table.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TimeToLiveSpecification = list(
+    Enabled = TRUE|FALSE,
+    AttributeName = "string"
+  )
+)
+}
+}
 \description{
 The \code{\link[=dynamodb_update_time_to_live]{update_time_to_live}} method enables
 or disables Time to Live (TTL) for the specified table. A successful

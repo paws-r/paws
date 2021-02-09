@@ -21,6 +21,18 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WindowIdentities = list(
+    list(
+      WindowId = "string",
+      Name = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves information about the maintenance window targets or tasks that
 an instance is associated with.

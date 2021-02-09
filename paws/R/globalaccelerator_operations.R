@@ -33,6 +33,19 @@ NULL
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group for the custom
 #' routing endpoint.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointDescriptions = list(
+#'     list(
+#'       EndpointId = "string"
+#'     )
+#'   ),
+#'   EndpointGroupArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_custom_routing_endpoints(
@@ -88,6 +101,25 @@ globalaccelerator_add_custom_routing_endpoints <- function(EndpointConfiguration
 #' you provisioned. You can't advertise only a portion of the provisioned
 #' range.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ByoipCidr = list(
+#'     Cidr = "string",
+#'     State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
+#'     Events = list(
+#'       list(
+#'         Message = "string",
+#'         Timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$advertise_byoip_cidr(
@@ -130,7 +162,7 @@ globalaccelerator_advertise_byoip_cidr <- function(Cidr) {
 #' 
 #' After you make changes, you can verify that the updates are complete by
 #' checking the status of your accelerator: the status changes from
-#' IN\\_PROGRESS to DEPLOYED.
+#' IN_PROGRESS to DEPLOYED.
 #'
 #' @usage
 #' globalaccelerator_allow_custom_routing_traffic(EndpointGroupArn,
@@ -164,6 +196,8 @@ globalaccelerator_advertise_byoip_cidr <- function(Cidr) {
 #' group.
 #' 
 #' The default value is FALSE.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -250,6 +284,35 @@ globalaccelerator_allow_custom_routing_traffic <- function(EndpointGroupArn, End
 #' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
 #' in the *AWS Global Accelerator Developer Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Accelerator = list(
+#'     AcceleratorArn = "string",
+#'     Name = "string",
+#'     IpAddressType = "IPV4",
+#'     Enabled = TRUE|FALSE,
+#'     IpSets = list(
+#'       list(
+#'         IpFamily = "string",
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     DnsName = "string",
+#'     Status = "DEPLOYED"|"IN_PROGRESS",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_accelerator(
@@ -325,6 +388,35 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
 #' in the *AWS Global Accelerator Developer Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Accelerator = list(
+#'     AcceleratorArn = "string",
+#'     Name = "string",
+#'     IpAddressType = "IPV4",
+#'     Enabled = TRUE|FALSE,
+#'     IpSets = list(
+#'       list(
+#'         IpFamily = "string",
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     DnsName = "string",
+#'     Status = "DEPLOYED"|"IN_PROGRESS",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_custom_routing_accelerator(
@@ -382,6 +474,31 @@ globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressT
 #' traffic on.
 #' @param IdempotencyToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency—that is, the uniqueness—of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointGroup = list(
+#'     EndpointGroupArn = "string",
+#'     EndpointGroupRegion = "string",
+#'     DestinationDescriptions = list(
+#'       list(
+#'         FromPort = 123,
+#'         ToPort = 123,
+#'         Protocols = list(
+#'           "TCP"|"UDP"
+#'         )
+#'       )
+#'     ),
+#'     EndpointDescriptions = list(
+#'       list(
+#'         EndpointId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -443,6 +560,22 @@ globalaccelerator_create_custom_routing_endpoint_group <- function(ListenerArn, 
 #' accelerators](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html).
 #' @param IdempotencyToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency—that is, the uniqueness—of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Listener = list(
+#'     ListenerArn = "string",
+#'     PortRanges = list(
+#'       list(
+#'         FromPort = 123,
+#'         ToPort = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -530,6 +663,38 @@ globalaccelerator_create_custom_routing_listener <- function(AcceleratorArn, Por
 #' For more information, see [Port
 #' overrides](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html)
 #' in the *AWS Global Accelerator Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointGroup = list(
+#'     EndpointGroupArn = "string",
+#'     EndpointGroupRegion = "string",
+#'     EndpointDescriptions = list(
+#'       list(
+#'         EndpointId = "string",
+#'         Weight = 123,
+#'         HealthState = "INITIAL"|"HEALTHY"|"UNHEALTHY",
+#'         HealthReason = "string",
+#'         ClientIPPreservationEnabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     TrafficDialPercentage = 123.0,
+#'     HealthCheckPort = 123,
+#'     HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
+#'     HealthCheckPath = "string",
+#'     HealthCheckIntervalSeconds = 123,
+#'     ThresholdCount = 123,
+#'     PortOverrides = list(
+#'       list(
+#'         ListenerPort = 123,
+#'         EndpointPort = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -620,6 +785,24 @@ globalaccelerator_create_endpoint_group <- function(ListenerArn, EndpointGroupRe
 #' @param IdempotencyToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency—that is, the uniqueness—of the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Listener = list(
+#'     ListenerArn = "string",
+#'     PortRanges = list(
+#'       list(
+#'         FromPort = 123,
+#'         ToPort = 123
+#'       )
+#'     ),
+#'     Protocol = "TCP"|"UDP",
+#'     ClientAffinity = "NONE"|"SOURCE_IP"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_listener(
@@ -686,6 +869,8 @@ globalaccelerator_create_listener <- function(AcceleratorArn, PortRanges, Protoc
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of an accelerator.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_accelerator(
@@ -742,6 +927,8 @@ globalaccelerator_delete_accelerator <- function(AcceleratorArn) {
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom routing accelerator to
 #' delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_custom_routing_accelerator(
@@ -781,6 +968,8 @@ globalaccelerator_delete_custom_routing_accelerator <- function(AcceleratorArn) 
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_custom_routing_endpoint_group(
@@ -817,6 +1006,8 @@ globalaccelerator_delete_custom_routing_endpoint_group <- function(EndpointGroup
 #' globalaccelerator_delete_custom_routing_listener(ListenerArn)
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -855,6 +1046,8 @@ globalaccelerator_delete_custom_routing_listener <- function(ListenerArn) {
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_endpoint_group(
@@ -891,6 +1084,8 @@ globalaccelerator_delete_endpoint_group <- function(EndpointGroupArn) {
 #' globalaccelerator_delete_listener(ListenerArn)
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -933,7 +1128,7 @@ globalaccelerator_delete_listener <- function(ListenerArn) {
 #' 
 #' After you make changes, you can verify that the updates are complete by
 #' checking the status of your accelerator: the status changes from
-#' IN\\_PROGRESS to DEPLOYED.
+#' IN_PROGRESS to DEPLOYED.
 #'
 #' @usage
 #' globalaccelerator_deny_custom_routing_traffic(EndpointGroupArn,
@@ -964,6 +1159,8 @@ globalaccelerator_delete_listener <- function(ListenerArn) {
 #' group.
 #' 
 #' The default value is FALSE.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1024,6 +1221,25 @@ globalaccelerator_deny_custom_routing_traffic <- function(EndpointGroupArn, Endp
 #' @param Cidr &#91;required&#93; The address range, in CIDR notation. The prefix must be the same prefix
 #' that you specified when you provisioned the address range.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ByoipCidr = list(
+#'     Cidr = "string",
+#'     State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
+#'     Events = list(
+#'       list(
+#'         Message = "string",
+#'         Timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deprovision_byoip_cidr(
@@ -1060,6 +1276,35 @@ globalaccelerator_deprovision_byoip_cidr <- function(Cidr) {
 #' globalaccelerator_describe_accelerator(AcceleratorArn)
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Accelerator = list(
+#'     AcceleratorArn = "string",
+#'     Name = "string",
+#'     IpAddressType = "IPV4",
+#'     Enabled = TRUE|FALSE,
+#'     IpSets = list(
+#'       list(
+#'         IpFamily = "string",
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     DnsName = "string",
+#'     Status = "DEPLOYED"|"IN_PROGRESS",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1099,6 +1344,18 @@ globalaccelerator_describe_accelerator <- function(AcceleratorArn) {
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator with the attributes
 #' that you want to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AcceleratorAttributes = list(
+#'     FlowLogsEnabled = TRUE|FALSE,
+#'     FlowLogsS3Bucket = "string",
+#'     FlowLogsS3Prefix = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_accelerator_attributes(
@@ -1135,6 +1392,35 @@ globalaccelerator_describe_accelerator_attributes <- function(AcceleratorArn) {
 #' globalaccelerator_describe_custom_routing_accelerator(AcceleratorArn)
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Accelerator = list(
+#'     AcceleratorArn = "string",
+#'     Name = "string",
+#'     IpAddressType = "IPV4",
+#'     Enabled = TRUE|FALSE,
+#'     IpSets = list(
+#'       list(
+#'         IpFamily = "string",
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     DnsName = "string",
+#'     Status = "DEPLOYED"|"IN_PROGRESS",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1175,6 +1461,18 @@ globalaccelerator_describe_custom_routing_accelerator <- function(AcceleratorArn
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom routing accelerator to
 #' describe the attributes for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AcceleratorAttributes = list(
+#'     FlowLogsEnabled = TRUE|FALSE,
+#'     FlowLogsS3Bucket = "string",
+#'     FlowLogsS3Prefix = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_custom_routing_accelerator_attributes(
@@ -1213,6 +1511,31 @@ globalaccelerator_describe_custom_routing_accelerator_attributes <- function(Acc
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointGroup = list(
+#'     EndpointGroupArn = "string",
+#'     EndpointGroupRegion = "string",
+#'     DestinationDescriptions = list(
+#'       list(
+#'         FromPort = 123,
+#'         ToPort = 123,
+#'         Protocols = list(
+#'           "TCP"|"UDP"
+#'         )
+#'       )
+#'     ),
+#'     EndpointDescriptions = list(
+#'       list(
+#'         EndpointId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_custom_routing_endpoint_group(
@@ -1249,6 +1572,22 @@ globalaccelerator_describe_custom_routing_endpoint_group <- function(EndpointGro
 #' globalaccelerator_describe_custom_routing_listener(ListenerArn)
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Listener = list(
+#'     ListenerArn = "string",
+#'     PortRanges = list(
+#'       list(
+#'         FromPort = 123,
+#'         ToPort = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1287,6 +1626,38 @@ globalaccelerator_describe_custom_routing_listener <- function(ListenerArn) {
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointGroup = list(
+#'     EndpointGroupArn = "string",
+#'     EndpointGroupRegion = "string",
+#'     EndpointDescriptions = list(
+#'       list(
+#'         EndpointId = "string",
+#'         Weight = 123,
+#'         HealthState = "INITIAL"|"HEALTHY"|"UNHEALTHY",
+#'         HealthReason = "string",
+#'         ClientIPPreservationEnabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     TrafficDialPercentage = 123.0,
+#'     HealthCheckPort = 123,
+#'     HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
+#'     HealthCheckPath = "string",
+#'     HealthCheckIntervalSeconds = 123,
+#'     ThresholdCount = 123,
+#'     PortOverrides = list(
+#'       list(
+#'         ListenerPort = 123,
+#'         EndpointPort = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_endpoint_group(
@@ -1323,6 +1694,24 @@ globalaccelerator_describe_endpoint_group <- function(EndpointGroupArn) {
 #' globalaccelerator_describe_listener(ListenerArn)
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Listener = list(
+#'     ListenerArn = "string",
+#'     PortRanges = list(
+#'       list(
+#'         FromPort = 123,
+#'         ToPort = 123
+#'       )
+#'     ),
+#'     Protocol = "TCP"|"UDP",
+#'     ClientAffinity = "NONE"|"SOURCE_IP"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1363,6 +1752,38 @@ globalaccelerator_describe_listener <- function(ListenerArn) {
 #' this call. The default value is 10.
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Accelerators = list(
+#'     list(
+#'       AcceleratorArn = "string",
+#'       Name = "string",
+#'       IpAddressType = "IPV4",
+#'       Enabled = TRUE|FALSE,
+#'       IpSets = list(
+#'         list(
+#'           IpFamily = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       DnsName = "string",
+#'       Status = "DEPLOYED"|"IN_PROGRESS",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1409,6 +1830,28 @@ globalaccelerator_list_accelerators <- function(MaxResults = NULL, NextToken = N
 #' value.
 #' @param NextToken The token for the next page of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ByoipCidrs = list(
+#'     list(
+#'       Cidr = "string",
+#'       State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
+#'       Events = list(
+#'         list(
+#'           Message = "string",
+#'           Timestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_byoip_cidrs(
@@ -1450,6 +1893,38 @@ globalaccelerator_list_byoip_cidrs <- function(MaxResults = NULL, NextToken = NU
 #' return with this call. The default value is 10.
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Accelerators = list(
+#'     list(
+#'       AcceleratorArn = "string",
+#'       Name = "string",
+#'       IpAddressType = "IPV4",
+#'       Enabled = TRUE|FALSE,
+#'       IpSets = list(
+#'         list(
+#'           IpFamily = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       DnsName = "string",
+#'       Status = "DEPLOYED"|"IN_PROGRESS",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1497,6 +1972,34 @@ globalaccelerator_list_custom_routing_accelerators <- function(MaxResults = NULL
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointGroups = list(
+#'     list(
+#'       EndpointGroupArn = "string",
+#'       EndpointGroupRegion = "string",
+#'       DestinationDescriptions = list(
+#'         list(
+#'           FromPort = 123,
+#'           ToPort = 123,
+#'           Protocols = list(
+#'             "TCP"|"UDP"
+#'           )
+#'         )
+#'       ),
+#'       EndpointDescriptions = list(
+#'         list(
+#'           EndpointId = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_custom_routing_endpoint_groups(
@@ -1540,6 +2043,25 @@ globalaccelerator_list_custom_routing_endpoint_groups <- function(ListenerArn, M
 #' The default value is 10.
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Listeners = list(
+#'     list(
+#'       ListenerArn = "string",
+#'       PortRanges = list(
+#'         list(
+#'           FromPort = 123,
+#'           ToPort = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1606,6 +2128,29 @@ globalaccelerator_list_custom_routing_listeners <- function(AcceleratorArn, MaxR
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PortMappings = list(
+#'     list(
+#'       AcceleratorPort = 123,
+#'       EndpointGroupArn = "string",
+#'       EndpointId = "string",
+#'       DestinationSocketAddress = list(
+#'         IpAddress = "string",
+#'         Port = 123
+#'       ),
+#'       Protocols = list(
+#'         "TCP"|"UDP"
+#'       ),
+#'       DestinationTrafficState = "ALLOW"|"DENY"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_custom_routing_port_mappings(
@@ -1659,6 +2204,34 @@ globalaccelerator_list_custom_routing_port_mappings <- function(AcceleratorArn, 
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DestinationPortMappings = list(
+#'     list(
+#'       AcceleratorArn = "string",
+#'       AcceleratorSocketAddresses = list(
+#'         list(
+#'           IpAddress = "string",
+#'           Port = 123
+#'         )
+#'       ),
+#'       EndpointGroupArn = "string",
+#'       EndpointId = "string",
+#'       EndpointGroupRegion = "string",
+#'       DestinationSocketAddress = list(
+#'         IpAddress = "string",
+#'         Port = 123
+#'       ),
+#'       IpAddressType = "IPV4",
+#'       DestinationTrafficState = "ALLOW"|"DENY"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_custom_routing_port_mappings_by_destination(
@@ -1704,6 +2277,41 @@ globalaccelerator_list_custom_routing_port_mappings_by_destination <- function(E
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointGroups = list(
+#'     list(
+#'       EndpointGroupArn = "string",
+#'       EndpointGroupRegion = "string",
+#'       EndpointDescriptions = list(
+#'         list(
+#'           EndpointId = "string",
+#'           Weight = 123,
+#'           HealthState = "INITIAL"|"HEALTHY"|"UNHEALTHY",
+#'           HealthReason = "string",
+#'           ClientIPPreservationEnabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       TrafficDialPercentage = 123.0,
+#'       HealthCheckPort = 123,
+#'       HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
+#'       HealthCheckPath = "string",
+#'       HealthCheckIntervalSeconds = 123,
+#'       ThresholdCount = 123,
+#'       PortOverrides = list(
+#'         list(
+#'           ListenerPort = 123,
+#'           EndpointPort = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_endpoint_groups(
@@ -1748,6 +2356,27 @@ globalaccelerator_list_endpoint_groups <- function(ListenerArn, MaxResults = NUL
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Listeners = list(
+#'     list(
+#'       ListenerArn = "string",
+#'       PortRanges = list(
+#'         list(
+#'           FromPort = 123,
+#'           ToPort = 123
+#'         )
+#'       ),
+#'       Protocol = "TCP"|"UDP",
+#'       ClientAffinity = "NONE"|"SOURCE_IP"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_listeners(
@@ -1791,6 +2420,19 @@ globalaccelerator_list_listeners <- function(AcceleratorArn, MaxResults = NULL, 
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to list tags for. An
 #' ARN uniquely identifies an accelerator.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1844,6 +2486,25 @@ globalaccelerator_list_tags_for_resource <- function(ResourceArn) {
 #' @param CidrAuthorizationContext &#91;required&#93; A signed document that proves that you are authorized to bring the
 #' specified IP address range to Amazon using BYOIP.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ByoipCidr = list(
+#'     Cidr = "string",
+#'     State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
+#'     Events = list(
+#'       list(
+#'         Message = "string",
+#'         Timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$provision_byoip_cidr(
@@ -1888,6 +2549,8 @@ globalaccelerator_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContex
 #' are the virtual private cloud (VPC) subnet IDs.
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group to remove endpoints
 #' from.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1935,6 +2598,12 @@ globalaccelerator_remove_custom_routing_endpoints <- function(EndpointIds, Endpo
 #' tags to. An ARN uniquely identifies a resource.
 #' @param Tags &#91;required&#93; The tags to add to a resource. A tag consists of a key and a value that
 #' you define.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1987,6 +2656,12 @@ globalaccelerator_tag_resource <- function(ResourceArn, Tags) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Global Accelerator resource to
 #' remove tags from. An ARN uniquely identifies a resource.
 #' @param TagKeys &#91;required&#93; The tag key pairs that you want to remove from the specified resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2041,6 +2716,35 @@ globalaccelerator_untag_resource <- function(ResourceArn, TagKeys) {
 #' 
 #' If the value is set to true, the accelerator cannot be deleted. If set
 #' to false, the accelerator can be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Accelerator = list(
+#'     AcceleratorArn = "string",
+#'     Name = "string",
+#'     IpAddressType = "IPV4",
+#'     Enabled = TRUE|FALSE,
+#'     IpSets = list(
+#'       list(
+#'         IpFamily = "string",
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     DnsName = "string",
+#'     Status = "DEPLOYED"|"IN_PROGRESS",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2102,7 +2806,19 @@ globalaccelerator_update_accelerator <- function(AcceleratorArn, Name = NULL, Ip
 #' file bucket folder structure will include a double slash (//), like the
 #' following:
 #' 
-#' s3-bucket\\_name//AWSLogs/aws\\_account\\_id
+#' s3-bucket_name//AWSLogs/aws_account_id
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AcceleratorAttributes = list(
+#'     FlowLogsEnabled = TRUE|FALSE,
+#'     FlowLogsS3Bucket = "string",
+#'     FlowLogsS3Prefix = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2153,6 +2869,35 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, Flow
 #' 
 #' If the value is set to true, the accelerator cannot be deleted. If set
 #' to false, the accelerator can be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Accelerator = list(
+#'     AcceleratorArn = "string",
+#'     Name = "string",
+#'     IpAddressType = "IPV4",
+#'     Enabled = TRUE|FALSE,
+#'     IpSets = list(
+#'       list(
+#'         IpFamily = "string",
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     DnsName = "string",
+#'     Status = "DEPLOYED"|"IN_PROGRESS",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2214,7 +2959,19 @@ globalaccelerator_update_custom_routing_accelerator <- function(AcceleratorArn, 
 #' file bucket folder structure will include a double slash (//), like the
 #' following:
 #' 
-#' DOC-EXAMPLE-BUCKET//AWSLogs/aws\\_account\\_id
+#' DOC-EXAMPLE-BUCKET//AWSLogs/aws_account_id
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AcceleratorAttributes = list(
+#'     FlowLogsEnabled = TRUE|FALSE,
+#'     FlowLogsS3Bucket = "string",
+#'     FlowLogsS3Prefix = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2263,6 +3020,22 @@ globalaccelerator_update_custom_routing_accelerator_attributes <- function(Accel
 #' Separately, you set port ranges for endpoints. For more information, see
 #' [About endpoints for custom routing
 #' accelerators](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-custom-routing-endpoints.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Listener = list(
+#'     ListenerArn = "string",
+#'     PortRanges = list(
+#'       list(
+#'         FromPort = 123,
+#'         ToPort = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2344,6 +3117,38 @@ globalaccelerator_update_custom_routing_listener <- function(ListenerArn, PortRa
 #' For more information, see [Port
 #' overrides](https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html)
 #' in the *AWS Global Accelerator Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointGroup = list(
+#'     EndpointGroupArn = "string",
+#'     EndpointGroupRegion = "string",
+#'     EndpointDescriptions = list(
+#'       list(
+#'         EndpointId = "string",
+#'         Weight = 123,
+#'         HealthState = "INITIAL"|"HEALTHY"|"UNHEALTHY",
+#'         HealthReason = "string",
+#'         ClientIPPreservationEnabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     TrafficDialPercentage = 123.0,
+#'     HealthCheckPort = 123,
+#'     HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
+#'     HealthCheckPath = "string",
+#'     HealthCheckIntervalSeconds = 123,
+#'     ThresholdCount = 123,
+#'     PortOverrides = list(
+#'       list(
+#'         ListenerPort = 123,
+#'         EndpointPort = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2428,6 +3233,24 @@ globalaccelerator_update_endpoint_group <- function(EndpointGroupArn, EndpointCo
 #' 
 #' The default value is `NONE`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Listener = list(
+#'     ListenerArn = "string",
+#'     PortRanges = list(
+#'       list(
+#'         FromPort = 123,
+#'         ToPort = 123
+#'       )
+#'     ),
+#'     Protocol = "TCP"|"UDP",
+#'     ClientAffinity = "NONE"|"SOURCE_IP"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_listener(
@@ -2482,6 +3305,25 @@ globalaccelerator_update_listener <- function(ListenerArn, PortRanges = NULL, Pr
 #' globalaccelerator_withdraw_byoip_cidr(Cidr)
 #'
 #' @param Cidr &#91;required&#93; The address range, in CIDR notation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ByoipCidr = list(
+#'     Cidr = "string",
+#'     State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
+#'     Events = list(
+#'       list(
+#'         Message = "string",
+#'         Timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

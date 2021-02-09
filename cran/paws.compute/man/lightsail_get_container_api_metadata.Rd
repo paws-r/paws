@@ -7,6 +7,16 @@ current version of the Lightsail Control (lightsailctl) plugin}
 \usage{
 lightsail_get_container_api_metadata()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  metadata = list(
+    list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about Amazon Lightsail containers, such as the
 current version of the Lightsail Control (lightsailctl) plugin.

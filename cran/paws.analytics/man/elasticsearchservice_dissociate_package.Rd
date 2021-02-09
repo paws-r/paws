@@ -13,6 +13,27 @@ this value.}
 
 \item{DomainName}{[required] Name of the domain that you want to associate the package with.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DomainPackageDetails = list(
+    PackageID = "string",
+    PackageName = "string",
+    PackageType = "TXT-DICTIONARY",
+    LastUpdated = as.POSIXct(
+      "2015-01-01"
+    ),
+    DomainName = "string",
+    DomainPackageStatus = "ASSOCIATING"|"ASSOCIATION_FAILED"|"ACTIVE"|"DISSOCIATING"|"DISSOCIATION_FAILED",
+    PackageVersion = "string",
+    ReferencePath = "string",
+    ErrorDetails = list(
+      ErrorType = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Dissociates a package from the Amazon ES domain.
 }

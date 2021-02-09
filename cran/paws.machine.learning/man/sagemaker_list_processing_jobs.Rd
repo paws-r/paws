@@ -37,6 +37,30 @@ of processing jobs, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of processing jobs to return in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProcessingJobSummaries = list(
+    list(
+      ProcessingJobName = "string",
+      ProcessingJobArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ProcessingEndTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      ProcessingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+      FailureReason = "string",
+      ExitMessage = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists processing jobs that satisfy various filters.
 }

@@ -31,6 +31,30 @@ parameter to get the next set of results.}
 
 \item{StackInstanceRegion}{The name of the Region where you want to list stack instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Summaries = list(
+    list(
+      StackSetId = "string",
+      Region = "string",
+      Account = "string",
+      StackId = "string",
+      Status = "CURRENT"|"OUTDATED"|"INOPERABLE",
+      StatusReason = "string",
+      StackInstanceStatus = list(
+        DetailedStatus = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"INOPERABLE"
+      ),
+      OrganizationalUnitId = "string",
+      DriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
+      LastDriftCheckTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns summary information about stack instances that are associated
 with the specified stack set. You can filter for stack instances that

@@ -37,6 +37,12 @@ in the \emph{AWS Billing and Cost Management User Guide}.}
 
 \item{ExperimentConfig}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProcessingJobArn = "string"
+)
+}
+}
 \description{
 Creates a processing job.
 }

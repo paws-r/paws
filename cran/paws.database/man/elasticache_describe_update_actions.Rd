@@ -35,6 +35,89 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  UpdateActions = list(
+    list(
+      ReplicationGroupId = "string",
+      CacheClusterId = "string",
+      ServiceUpdateName = "string",
+      ServiceUpdateReleaseDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      ServiceUpdateSeverity = "critical"|"important"|"medium"|"low",
+      ServiceUpdateStatus = "available"|"cancelled"|"expired",
+      ServiceUpdateRecommendedApplyByDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      ServiceUpdateType = "security-update",
+      UpdateActionAvailableDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      UpdateActionStatus = "not-applied"|"waiting-to-start"|"in-progress"|"stopping"|"stopped"|"complete"|"scheduling"|"scheduled"|"not-applicable",
+      NodesUpdated = "string",
+      UpdateActionStatusModifiedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      SlaMet = "yes"|"no"|"n/a",
+      NodeGroupUpdateStatus = list(
+        list(
+          NodeGroupId = "string",
+          NodeGroupMemberUpdateStatus = list(
+            list(
+              CacheClusterId = "string",
+              CacheNodeId = "string",
+              NodeUpdateStatus = "not-applied"|"waiting-to-start"|"in-progress"|"stopping"|"stopped"|"complete",
+              NodeDeletionDate = as.POSIXct(
+                "2015-01-01"
+              ),
+              NodeUpdateStartDate = as.POSIXct(
+                "2015-01-01"
+              ),
+              NodeUpdateEndDate = as.POSIXct(
+                "2015-01-01"
+              ),
+              NodeUpdateInitiatedBy = "system"|"customer",
+              NodeUpdateInitiatedDate = as.POSIXct(
+                "2015-01-01"
+              ),
+              NodeUpdateStatusModifiedDate = as.POSIXct(
+                "2015-01-01"
+              )
+            )
+          )
+        )
+      ),
+      CacheNodeUpdateStatus = list(
+        list(
+          CacheNodeId = "string",
+          NodeUpdateStatus = "not-applied"|"waiting-to-start"|"in-progress"|"stopping"|"stopped"|"complete",
+          NodeDeletionDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          NodeUpdateStartDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          NodeUpdateEndDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          NodeUpdateInitiatedBy = "system"|"customer",
+          NodeUpdateInitiatedDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          NodeUpdateStatusModifiedDate = as.POSIXct(
+            "2015-01-01"
+          )
+        )
+      ),
+      EstimatedUpdateTime = "string",
+      Engine = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns details of the update actions
 }

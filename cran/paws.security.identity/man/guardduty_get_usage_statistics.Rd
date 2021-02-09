@@ -26,6 +26,50 @@ Set the value of this parameter to null for the first request to a list
 action. For subsequent calls, use the NextToken value returned from the
 previous request to continue listing results after the first page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UsageStatistics = list(
+    SumByAccount = list(
+      list(
+        AccountId = "string",
+        Total = list(
+          Amount = "string",
+          Unit = "string"
+        )
+      )
+    ),
+    SumByDataSource = list(
+      list(
+        DataSource = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_LOGS",
+        Total = list(
+          Amount = "string",
+          Unit = "string"
+        )
+      )
+    ),
+    SumByResource = list(
+      list(
+        Resource = "string",
+        Total = list(
+          Amount = "string",
+          Unit = "string"
+        )
+      )
+    ),
+    TopResources = list(
+      list(
+        Resource = "string",
+        Total = list(
+          Amount = "string",
+          Unit = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists Amazon GuardDuty usage statistics over the last 30 days for the
 specified detector ID. For newly enabled detectors or data sources the

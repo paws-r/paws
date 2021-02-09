@@ -20,6 +20,10 @@ in the \emph{Amazon Web Services General Reference}.}
 
 \item{TagKeys}{[required] The list of tag keys to remove from the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes one or more tags from the specified resource.
 }

@@ -24,6 +24,12 @@ example, \verb{cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789}.
 \item Digits: \code{www.digits.com}
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityId = "string"
+)
+}
+}
 \description{
 Generates (or retrieves) a Cognito ID. Supplying multiple logins will
 create an implicit linked account.

@@ -15,6 +15,10 @@ datapipeline_activate_pipeline(pipelineId, parameterValues,
 \item{startTimestamp}{The date and time to resume the pipeline. By default, the pipeline
 resumes from the last completed execution.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Validates the specified pipeline and starts processing pipeline tasks.
 If the pipeline does not pass validation, activation fails.

@@ -13,6 +13,19 @@ UTF-8 encoded characters.}
 
 \item{LanguageCode}{[required] The language of the input documents.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Entities = list(
+    list(
+      Score = 123.0,
+      Type = "BANK_ACCOUNT_NUMBER"|"BANK_ROUTING"|"CREDIT_DEBIT_NUMBER"|"CREDIT_DEBIT_CVV"|"CREDIT_DEBIT_EXPIRY"|"PIN"|"EMAIL"|"ADDRESS"|"NAME"|"PHONE"|"SSN"|"DATE_TIME"|"PASSPORT_NUMBER"|"DRIVER_ID"|"URL"|"AGE"|"USERNAME"|"PASSWORD"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"IP_ADDRESS"|"MAC_ADDRESS"|"ALL",
+      BeginOffset = 123,
+      EndOffset = 123
+    )
+  )
+)
+}
+}
 \description{
 Inspects the input text for entities that contain personally
 identifiable information (PII) and returns information about them.

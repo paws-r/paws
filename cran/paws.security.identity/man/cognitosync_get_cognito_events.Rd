@@ -10,6 +10,14 @@ cognitosync_get_cognito_events(IdentityPoolId)
 \arguments{
 \item{IdentityPoolId}{[required] The Cognito Identity Pool ID for the request}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Events = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets the events and the corresponding Lambda functions associated with
 an identity pool.

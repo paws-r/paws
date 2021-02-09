@@ -11,7 +11,7 @@ organizations_update_policy(PolicyId, Name, Description, Content)
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lowercase or uppercase
-letters, digits, or the underscore character (\\_).}
+letters, digits, or the underscore character (_).}
 
 \item{Name}{If provided, the new name for the policy.
 
@@ -25,6 +25,22 @@ ASCII character range.}
 formatted JSON that complies with the syntax for the policy's type. For
 more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html}{Service Control Policy Syntax}
 in the \emph{AWS Organizations User Guide.}}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = list(
+    PolicySummary = list(
+      Id = "string",
+      Arn = "string",
+      Name = "string",
+      Description = "string",
+      Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+      AwsManaged = TRUE|FALSE
+    ),
+    Content = "string"
+  )
+)
+}
 }
 \description{
 Updates an existing policy with a new name, description, or content. If
@@ -59,7 +75,7 @@ svc$update_policy(
 # the preceding example with a new JSON policy text string that allows S3
 # actions instead of EC2 actions:/n/n
 svc$update_policy(
-  Content = "\{ \\\\\"Version\\\\\": \\\\\"2012-10-17\\\\\", \\\\\"Statement\\\\\": \{\\\\\"Effect\\\\\": ...",
+  Content = "\{ \"Version\": \"2012-10-17\", \"Statement\": \{\"Effect\": \"Allow\", \"Action\": \"s...",
   PolicyId = "p-examplepolicyid111"
 )
 }

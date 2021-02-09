@@ -7,15 +7,13 @@
 kafka_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required]
-<p>The Amazon Resource Name (ARN) that uniquely identifies the resource that's associated with the tags.</p>}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the resource
+that's associated with the tags.}
 
-\item{Tags}{[required]
-<p>The key-value pair for the resource tag.</p>}
+\item{Tags}{[required] The key-value pair for the resource tag.}
 }
 \description{
-\preformatted{        <p>Adds tags to the specified MSK resource.</p>
-}
+Adds tags to the specified MSK resource.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

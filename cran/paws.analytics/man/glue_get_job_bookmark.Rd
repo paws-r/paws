@@ -11,6 +11,20 @@ glue_get_job_bookmark(JobName, RunId)
 
 \item{RunId}{The unique run identifier associated with this job run.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobBookmarkEntry = list(
+    JobName = "string",
+    Version = 123,
+    Run = 123,
+    Attempt = 123,
+    PreviousRunId = "string",
+    RunId = "string",
+    JobBookmark = "string"
+  )
+)
+}
+}
 \description{
 Returns information on a job bookmark entry.
 }

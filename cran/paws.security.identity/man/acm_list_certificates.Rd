@@ -23,6 +23,18 @@ number you specify, the \code{NextToken} element is sent in the response. Use
 this \code{NextToken} value in a subsequent request to retrieve additional
 items.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  CertificateSummaryList = list(
+    list(
+      CertificateArn = "string",
+      DomainName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves a list of certificate ARNs and domain names. You can request
 that only certificates that match a specific status be listed. You can

@@ -52,6 +52,12 @@ language. Currently, English ("en") and Japanese ("ja") are supported.}
 by using the \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}}
 operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  caseId = "string"
+)
+}
+}
 \description{
 Creates a case in the AWS Support Center. This operation is similar to
 how you create a case in the AWS Support Center Create Case page.

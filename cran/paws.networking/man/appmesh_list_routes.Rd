@@ -32,6 +32,29 @@ value.}
 
 \item{virtualRouterName}{[required] The name of the virtual router to list routes in.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  nextToken = "string",
+  routes = list(
+    list(
+      arn = "string",
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      meshName = "string",
+      meshOwner = "string",
+      resourceOwner = "string",
+      routeName = "string",
+      version = 123,
+      virtualRouterName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of existing routes in a service mesh.
 }

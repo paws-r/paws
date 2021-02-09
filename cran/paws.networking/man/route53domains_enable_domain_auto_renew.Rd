@@ -10,6 +10,10 @@ route53domains_enable_domain_auto_renew(DomainName)
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to enable automatic renewal for.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 This operation configures Amazon Route 53 to automatically renew the
 specified domain before the domain registration expires. The cost of

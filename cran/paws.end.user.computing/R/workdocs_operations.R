@@ -22,6 +22,8 @@ NULL
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The ID of the version.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$abort_document_version_upload(
@@ -63,6 +65,40 @@ workdocs_abort_document_version_upload <- function(AuthenticationToken = NULL, D
 #' @param UserId &#91;required&#93; The ID of the user.
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   User = list(
+#'     Id = "string",
+#'     Username = "string",
+#'     EmailAddress = "string",
+#'     GivenName = "string",
+#'     Surname = "string",
+#'     OrganizationId = "string",
+#'     RootFolderId = "string",
+#'     RecycleBinFolderId = "string",
+#'     Status = "ACTIVE"|"INACTIVE"|"PENDING",
+#'     Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ModifiedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TimeZoneId = "string",
+#'     Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
+#'     Storage = list(
+#'       StorageUtilizedInBytes = 123,
+#'       StorageRule = list(
+#'         StorageAllocatedInBytes = 123,
+#'         StorageType = "UNLIMITED"|"QUOTA"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -108,6 +144,23 @@ workdocs_activate_user <- function(UserId, AuthenticationToken = NULL) {
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param Principals &#91;required&#93; The users, groups, or organization being granted permission.
 #' @param NotificationOptions The notification options.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ShareResults = list(
+#'     list(
+#'       PrincipalId = "string",
+#'       InviteePrincipalId = "string",
+#'       Role = "VIEWER"|"CONTRIBUTOR"|"OWNER"|"COOWNER",
+#'       Status = "SUCCESS"|"FAILURE",
+#'       ShareId = "string",
+#'       StatusMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -171,6 +224,52 @@ workdocs_add_resource_permissions <- function(AuthenticationToken = NULL, Resour
 #' @param NotifyCollaborators Set this parameter to TRUE to send an email out to the document
 #' collaborators after the comment is created.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Comment = list(
+#'     CommentId = "string",
+#'     ParentId = "string",
+#'     ThreadId = "string",
+#'     Text = "string",
+#'     Contributor = list(
+#'       Id = "string",
+#'       Username = "string",
+#'       EmailAddress = "string",
+#'       GivenName = "string",
+#'       Surname = "string",
+#'       OrganizationId = "string",
+#'       RootFolderId = "string",
+#'       RecycleBinFolderId = "string",
+#'       Status = "ACTIVE"|"INACTIVE"|"PENDING",
+#'       Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TimeZoneId = "string",
+#'       Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
+#'       Storage = list(
+#'         StorageUtilizedInBytes = 123,
+#'         StorageRule = list(
+#'           StorageAllocatedInBytes = 123,
+#'           StorageType = "UNLIMITED"|"QUOTA"
+#'         )
+#'       )
+#'     ),
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "DRAFT"|"PUBLISHED"|"DELETED",
+#'     Visibility = "PUBLIC"|"PRIVATE",
+#'     RecipientId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_comment(
@@ -223,6 +322,12 @@ workdocs_create_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
 #' document version.
 #' @param CustomMetadata &#91;required&#93; Custom metadata in the form of name-value pairs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_custom_metadata(
@@ -268,6 +373,32 @@ workdocs_create_custom_metadata <- function(AuthenticationToken = NULL, Resource
 #' @param Name The name of the new folder.
 #' @param ParentFolderId &#91;required&#93; The ID of the parent folder.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Metadata = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     CreatorId = "string",
+#'     ParentFolderId = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ModifiedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+#'     Signature = "string",
+#'     Labels = list(
+#'       "string"
+#'     ),
+#'     Size = 123,
+#'     LatestVersionSize = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_folder(
@@ -311,6 +442,12 @@ workdocs_create_folder <- function(AuthenticationToken = NULL, Name = NULL, Pare
 #' @param Labels &#91;required&#93; List of labels to add to the resource.
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -364,6 +501,18 @@ workdocs_create_labels <- function(ResourceId, Labels, AuthenticationToken = NUL
 #' JSON-encoded messages using HTTPS POST.
 #' @param SubscriptionType &#91;required&#93; The notification type.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Subscription = list(
+#'     SubscriptionId = "string",
+#'     EndPoint = "string",
+#'     Protocol = "HTTPS"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_notification_subscription(
@@ -414,6 +563,40 @@ workdocs_create_notification_subscription <- function(OrganizationId, Endpoint, 
 #' @param StorageRule The amount of storage for the user.
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   User = list(
+#'     Id = "string",
+#'     Username = "string",
+#'     EmailAddress = "string",
+#'     GivenName = "string",
+#'     Surname = "string",
+#'     OrganizationId = "string",
+#'     RootFolderId = "string",
+#'     RecycleBinFolderId = "string",
+#'     Status = "ACTIVE"|"INACTIVE"|"PENDING",
+#'     Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ModifiedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TimeZoneId = "string",
+#'     Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
+#'     Storage = list(
+#'       StorageUtilizedInBytes = 123,
+#'       StorageRule = list(
+#'         StorageAllocatedInBytes = 123,
+#'         StorageType = "UNLIMITED"|"QUOTA"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -467,6 +650,8 @@ workdocs_create_user <- function(OrganizationId = NULL, Username, EmailAddress =
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deactivate_user(
@@ -509,6 +694,8 @@ workdocs_deactivate_user <- function(UserId, AuthenticationToken = NULL) {
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The ID of the document version.
 #' @param CommentId &#91;required&#93; The ID of the comment.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -558,6 +745,12 @@ workdocs_delete_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
 #' @param DeleteAll Flag to indicate removal of all custom metadata properties from the
 #' specified resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_custom_metadata(
@@ -603,6 +796,8 @@ workdocs_delete_custom_metadata <- function(AuthenticationToken = NULL, Resource
 #' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_document(
@@ -643,6 +838,8 @@ workdocs_delete_document <- function(AuthenticationToken = NULL, DocumentId) {
 #' administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_folder(
@@ -682,6 +879,8 @@ workdocs_delete_folder <- function(AuthenticationToken = NULL, FolderId) {
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
 #' administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -725,6 +924,12 @@ workdocs_delete_folder_contents <- function(AuthenticationToken = NULL, FolderId
 #' administrator credentials to access the API.
 #' @param Labels List of labels to delete from the resource.
 #' @param DeleteAll Flag to request removal of all labels from the specified resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -770,6 +975,8 @@ workdocs_delete_labels <- function(ResourceId, AuthenticationToken = NULL, Label
 #' @param SubscriptionId &#91;required&#93; The ID of the subscription.
 #' @param OrganizationId &#91;required&#93; The ID of the organization.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_notification_subscription(
@@ -810,6 +1017,8 @@ workdocs_delete_notification_subscription <- function(SubscriptionId, Organizati
 #' administrative API actions, as in accessing the API using AWS
 #' credentials.
 #' @param UserId &#91;required&#93; The ID of the user.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -872,6 +1081,113 @@ workdocs_delete_user <- function(AuthenticationToken = NULL, UserId) {
 #' @param Limit The maximum number of items to return.
 #' @param Marker The marker for the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserActivities = list(
+#'     list(
+#'       Type = "DOCUMENT_CHECKED_IN"|"DOCUMENT_CHECKED_OUT"|"DOCUMENT_RENAMED"|"DOCUMENT_VERSION_UPLOADED"|"DOCUMENT_VERSION_DELETED"|"DOCUMENT_VERSION_VIEWED"|"DOCUMENT_VERSION_DOWNLOADED"|"DOCUMENT_RECYCLED"|"DOCUMENT_RESTORED"|"DOCUMENT_REVERTED"|"DOCUMENT_SHARED"|"DOCUMENT_UNSHARED"|"DOCUMENT_SHARE_PERMISSION_CHANGED"|"DOCUMENT_SHAREABLE_LINK_CREATED"|"DOCUMENT_SHAREABLE_LINK_REMOVED"|"DOCUMENT_SHAREABLE_LINK_PERMISSION_CHANGED"|"DOCUMENT_MOVED"|"DOCUMENT_COMMENT_ADDED"|"DOCUMENT_COMMENT_DELETED"|"DOCUMENT_ANNOTATION_ADDED"|"DOCUMENT_ANNOTATION_DELETED"|"FOLDER_CREATED"|"FOLDER_DELETED"|"FOLDER_RENAMED"|"FOLDER_RECYCLED"|"FOLDER_RESTORED"|"FOLDER_SHARED"|"FOLDER_UNSHARED"|"FOLDER_SHARE_PERMISSION_CHANGED"|"FOLDER_SHAREABLE_LINK_CREATED"|"FOLDER_SHAREABLE_LINK_REMOVED"|"FOLDER_SHAREABLE_LINK_PERMISSION_CHANGED"|"FOLDER_MOVED",
+#'       TimeStamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       IsIndirectActivity = TRUE|FALSE,
+#'       OrganizationId = "string",
+#'       Initiator = list(
+#'         Id = "string",
+#'         Username = "string",
+#'         GivenName = "string",
+#'         Surname = "string",
+#'         EmailAddress = "string"
+#'       ),
+#'       Participants = list(
+#'         Users = list(
+#'           list(
+#'             Id = "string",
+#'             Username = "string",
+#'             GivenName = "string",
+#'             Surname = "string",
+#'             EmailAddress = "string"
+#'           )
+#'         ),
+#'         Groups = list(
+#'           list(
+#'             Id = "string",
+#'             Name = "string"
+#'           )
+#'         )
+#'       ),
+#'       ResourceMetadata = list(
+#'         Type = "FOLDER"|"DOCUMENT",
+#'         Name = "string",
+#'         OriginalName = "string",
+#'         Id = "string",
+#'         VersionId = "string",
+#'         Owner = list(
+#'           Id = "string",
+#'           Username = "string",
+#'           GivenName = "string",
+#'           Surname = "string",
+#'           EmailAddress = "string"
+#'         ),
+#'         ParentId = "string"
+#'       ),
+#'       OriginalParent = list(
+#'         Type = "FOLDER"|"DOCUMENT",
+#'         Name = "string",
+#'         OriginalName = "string",
+#'         Id = "string",
+#'         VersionId = "string",
+#'         Owner = list(
+#'           Id = "string",
+#'           Username = "string",
+#'           GivenName = "string",
+#'           Surname = "string",
+#'           EmailAddress = "string"
+#'         ),
+#'         ParentId = "string"
+#'       ),
+#'       CommentMetadata = list(
+#'         CommentId = "string",
+#'         Contributor = list(
+#'           Id = "string",
+#'           Username = "string",
+#'           EmailAddress = "string",
+#'           GivenName = "string",
+#'           Surname = "string",
+#'           OrganizationId = "string",
+#'           RootFolderId = "string",
+#'           RecycleBinFolderId = "string",
+#'           Status = "ACTIVE"|"INACTIVE"|"PENDING",
+#'           Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
+#'           CreatedTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ModifiedTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           TimeZoneId = "string",
+#'           Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
+#'           Storage = list(
+#'             StorageUtilizedInBytes = 123,
+#'             StorageRule = list(
+#'               StorageAllocatedInBytes = 123,
+#'               StorageType = "UNLIMITED"|"QUOTA"
+#'             )
+#'           )
+#'         ),
+#'         CreatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         CommentStatus = "DRAFT"|"PUBLISHED"|"DELETED",
+#'         RecipientId = "string"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_activities(
@@ -929,6 +1245,55 @@ workdocs_describe_activities <- function(AuthenticationToken = NULL, StartTime =
 #' @param Marker The marker for the next set of results. This marker was received from a
 #' previous call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Comments = list(
+#'     list(
+#'       CommentId = "string",
+#'       ParentId = "string",
+#'       ThreadId = "string",
+#'       Text = "string",
+#'       Contributor = list(
+#'         Id = "string",
+#'         Username = "string",
+#'         EmailAddress = "string",
+#'         GivenName = "string",
+#'         Surname = "string",
+#'         OrganizationId = "string",
+#'         RootFolderId = "string",
+#'         RecycleBinFolderId = "string",
+#'         Status = "ACTIVE"|"INACTIVE"|"PENDING",
+#'         Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
+#'         CreatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ModifiedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         TimeZoneId = "string",
+#'         Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
+#'         Storage = list(
+#'           StorageUtilizedInBytes = 123,
+#'           StorageRule = list(
+#'             StorageAllocatedInBytes = 123,
+#'             StorageType = "UNLIMITED"|"QUOTA"
+#'           )
+#'         )
+#'       ),
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "DRAFT"|"PUBLISHED"|"DELETED",
+#'       Visibility = "PUBLIC"|"PRIVATE",
+#'       RecipientId = "string"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_comments(
@@ -981,6 +1346,43 @@ workdocs_describe_comments <- function(AuthenticationToken = NULL, DocumentId, V
 #' incomplete versions.
 #' @param Fields Specify "SOURCE" to include initialized versions and a URL for the
 #' source document.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentVersions = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       ContentType = "string",
+#'       Size = 123,
+#'       Signature = "string",
+#'       Status = "INITIALIZED"|"ACTIVE",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ContentCreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ContentModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatorId = "string",
+#'       Thumbnail = list(
+#'         "string"
+#'       ),
+#'       Source = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1042,6 +1444,79 @@ workdocs_describe_document_versions <- function(AuthenticationToken = NULL, Docu
 #' @param Include The contents to include. Specify "INITIALIZED" to include initialized
 #' documents.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Folders = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       CreatorId = "string",
+#'       ParentFolderId = "string",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+#'       Signature = "string",
+#'       Labels = list(
+#'         "string"
+#'       ),
+#'       Size = 123,
+#'       LatestVersionSize = 123
+#'     )
+#'   ),
+#'   Documents = list(
+#'     list(
+#'       Id = "string",
+#'       CreatorId = "string",
+#'       ParentFolderId = "string",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LatestVersionMetadata = list(
+#'         Id = "string",
+#'         Name = "string",
+#'         ContentType = "string",
+#'         Size = 123,
+#'         Signature = "string",
+#'         Status = "INITIALIZED"|"ACTIVE",
+#'         CreatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ModifiedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ContentCreatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ContentModifiedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         CreatorId = "string",
+#'         Thumbnail = list(
+#'           "string"
+#'         ),
+#'         Source = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+#'       Labels = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_folder_contents(
@@ -1094,6 +1569,20 @@ workdocs_describe_folder_contents <- function(AuthenticationToken = NULL, Folder
 #' previous call.)
 #' @param Limit The maximum number of items to return with this call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Groups = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_groups(
@@ -1138,6 +1627,21 @@ workdocs_describe_groups <- function(AuthenticationToken = NULL, SearchQuery, Or
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #' @param Limit The maximum number of items to return with this call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Subscriptions = list(
+#'     list(
+#'       SubscriptionId = "string",
+#'       EndPoint = "string",
+#'       Protocol = "HTTPS"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1184,6 +1688,26 @@ workdocs_describe_notification_subscriptions <- function(OrganizationId, Marker 
 #' @param Limit The maximum number of items to return with this call.
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Principals = list(
+#'     list(
+#'       Id = "string",
+#'       Type = "USER"|"GROUP"|"INVITE"|"ANONYMOUS"|"ORGANIZATION",
+#'       Roles = list(
+#'         list(
+#'           Role = "VIEWER"|"CONTRIBUTOR"|"OWNER"|"COOWNER",
+#'           Type = "DIRECT"|"INHERITED"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1239,6 +1763,35 @@ workdocs_describe_resource_permissions <- function(AuthenticationToken = NULL, R
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Folders = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       CreatorId = "string",
+#'       ParentFolderId = "string",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+#'       Signature = "string",
+#'       Labels = list(
+#'         "string"
+#'       ),
+#'       Size = 123,
+#'       LatestVersionSize = 123
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_root_folders(
@@ -1293,8 +1846,46 @@ workdocs_describe_root_folders <- function(AuthenticationToken, Limit = NULL, Ma
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #' @param Limit The maximum number of items to return.
-#' @param Fields A comma-separated list of values. Specify "STORAGE\\_METADATA" to include
+#' @param Fields A comma-separated list of values. Specify "STORAGE_METADATA" to include
 #' the user storage quota and utilization information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Users = list(
+#'     list(
+#'       Id = "string",
+#'       Username = "string",
+#'       EmailAddress = "string",
+#'       GivenName = "string",
+#'       Surname = "string",
+#'       OrganizationId = "string",
+#'       RootFolderId = "string",
+#'       RecycleBinFolderId = "string",
+#'       Status = "ACTIVE"|"INACTIVE"|"PENDING",
+#'       Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TimeZoneId = "string",
+#'       Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
+#'       Storage = list(
+#'         StorageUtilizedInBytes = 123,
+#'         StorageRule = list(
+#'           StorageAllocatedInBytes = 123,
+#'           StorageType = "UNLIMITED"|"QUOTA"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   TotalNumberOfUsers = 123,
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1351,6 +1942,40 @@ workdocs_describe_users <- function(AuthenticationToken = NULL, OrganizationId =
 #'
 #' @param AuthenticationToken &#91;required&#93; Amazon WorkDocs authentication token.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   User = list(
+#'     Id = "string",
+#'     Username = "string",
+#'     EmailAddress = "string",
+#'     GivenName = "string",
+#'     Surname = "string",
+#'     OrganizationId = "string",
+#'     RootFolderId = "string",
+#'     RecycleBinFolderId = "string",
+#'     Status = "ACTIVE"|"INACTIVE"|"PENDING",
+#'     Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ModifiedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TimeZoneId = "string",
+#'     Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
+#'     Storage = list(
+#'       StorageUtilizedInBytes = 123,
+#'       StorageRule = list(
+#'         StorageAllocatedInBytes = 123,
+#'         StorageType = "UNLIMITED"|"QUOTA"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_current_user(
@@ -1391,6 +2016,58 @@ workdocs_get_current_user <- function(AuthenticationToken) {
 #' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param IncludeCustomMetadata Set this to `TRUE` to include custom metadata in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Metadata = list(
+#'     Id = "string",
+#'     CreatorId = "string",
+#'     ParentFolderId = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ModifiedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LatestVersionMetadata = list(
+#'       Id = "string",
+#'       Name = "string",
+#'       ContentType = "string",
+#'       Size = 123,
+#'       Signature = "string",
+#'       Status = "INITIALIZED"|"ACTIVE",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ContentCreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ContentModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatorId = "string",
+#'       Thumbnail = list(
+#'         "string"
+#'       ),
+#'       Source = list(
+#'         "string"
+#'       )
+#'     ),
+#'     ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+#'     Labels = list(
+#'       "string"
+#'     )
+#'   ),
+#'   CustomMetadata = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1445,6 +2122,21 @@ workdocs_get_document <- function(AuthenticationToken = NULL, DocumentId, Includ
 #' the parent folders.
 #' @param Marker This value is not supported.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Path = list(
+#'     Components = list(
+#'       list(
+#'         Id = "string",
+#'         Name = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_document_path(
@@ -1493,6 +2185,43 @@ workdocs_get_document_path <- function(AuthenticationToken = NULL, DocumentId, L
 #' the source document.
 #' @param IncludeCustomMetadata Set this to TRUE to include custom metadata in the response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Metadata = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     ContentType = "string",
+#'     Size = 123,
+#'     Signature = "string",
+#'     Status = "INITIALIZED"|"ACTIVE",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ModifiedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ContentCreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ContentModifiedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatorId = "string",
+#'     Thumbnail = list(
+#'       "string"
+#'     ),
+#'     Source = list(
+#'       "string"
+#'     )
+#'   ),
+#'   CustomMetadata = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_document_version(
@@ -1537,6 +2266,35 @@ workdocs_get_document_version <- function(AuthenticationToken = NULL, DocumentId
 #' administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #' @param IncludeCustomMetadata Set to TRUE to include custom metadata in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Metadata = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     CreatorId = "string",
+#'     ParentFolderId = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ModifiedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+#'     Signature = "string",
+#'     Labels = list(
+#'       "string"
+#'     ),
+#'     Size = 123,
+#'     LatestVersionSize = 123
+#'   ),
+#'   CustomMetadata = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1591,6 +2349,21 @@ workdocs_get_folder <- function(AuthenticationToken = NULL, FolderId, IncludeCus
 #' the parent folders.
 #' @param Marker This value is not supported.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Path = list(
+#'     Components = list(
+#'       list(
+#'         Id = "string",
+#'         Name = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_folder_path(
@@ -1640,6 +2413,79 @@ workdocs_get_folder_path <- function(AuthenticationToken = NULL, FolderId, Limit
 #' @param Limit The maximum number of resources to return.
 #' @param Marker The marker for the next set of results. This marker was received from a
 #' previous call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Folders = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       CreatorId = "string",
+#'       ParentFolderId = "string",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+#'       Signature = "string",
+#'       Labels = list(
+#'         "string"
+#'       ),
+#'       Size = 123,
+#'       LatestVersionSize = 123
+#'     )
+#'   ),
+#'   Documents = list(
+#'     list(
+#'       Id = "string",
+#'       CreatorId = "string",
+#'       ParentFolderId = "string",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LatestVersionMetadata = list(
+#'         Id = "string",
+#'         Name = "string",
+#'         ContentType = "string",
+#'         Size = 123,
+#'         Signature = "string",
+#'         Status = "INITIALIZED"|"ACTIVE",
+#'         CreatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ModifiedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ContentCreatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ContentModifiedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         CreatorId = "string",
+#'         Thumbnail = list(
+#'           "string"
+#'         ),
+#'         Source = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+#'       Labels = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1701,6 +2547,61 @@ workdocs_get_resources <- function(AuthenticationToken = NULL, UserId = NULL, Co
 #' @param DocumentSizeInBytes The size of the document, in bytes.
 #' @param ParentFolderId &#91;required&#93; The ID of the parent folder.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Metadata = list(
+#'     Id = "string",
+#'     CreatorId = "string",
+#'     ParentFolderId = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ModifiedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LatestVersionMetadata = list(
+#'       Id = "string",
+#'       Name = "string",
+#'       ContentType = "string",
+#'       Size = 123,
+#'       Signature = "string",
+#'       Status = "INITIALIZED"|"ACTIVE",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ContentCreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ContentModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatorId = "string",
+#'       Thumbnail = list(
+#'         "string"
+#'       ),
+#'       Source = list(
+#'         "string"
+#'       )
+#'     ),
+#'     ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+#'     Labels = list(
+#'       "string"
+#'     )
+#'   ),
+#'   UploadMetadata = list(
+#'     UploadUrl = "string",
+#'     SignedHeaders = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$initiate_document_version_upload(
@@ -1752,6 +2653,8 @@ workdocs_initiate_document_version_upload <- function(AuthenticationToken = NULL
 #' administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$remove_all_resource_permissions(
@@ -1796,6 +2699,8 @@ workdocs_remove_all_resource_permissions <- function(AuthenticationToken = NULL,
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param PrincipalId &#91;required&#93; The principal ID of the resource.
 #' @param PrincipalType The principal type of the resource.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1844,6 +2749,8 @@ workdocs_remove_resource_permission <- function(AuthenticationToken = NULL, Reso
 #' @param ParentFolderId The ID of the parent folder.
 #' @param ResourceState The resource state of the document. Only ACTIVE and RECYCLED are
 #' supported.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1896,6 +2803,8 @@ workdocs_update_document <- function(AuthenticationToken = NULL, DocumentId, Nam
 #' @param VersionId &#91;required&#93; The version ID of the document.
 #' @param VersionStatus The status of the version.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_document_version(
@@ -1943,6 +2852,8 @@ workdocs_update_document_version <- function(AuthenticationToken = NULL, Documen
 #' @param ParentFolderId The ID of the parent folder.
 #' @param ResourceState The resource state of the folder. Only ACTIVE and RECYCLED are accepted
 #' values from the API.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1997,6 +2908,40 @@ workdocs_update_folder <- function(AuthenticationToken = NULL, FolderId, Name = 
 #' @param Locale The locale of the user.
 #' @param GrantPoweruserPrivileges Boolean value to determine whether the user is granted Poweruser
 #' privileges.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   User = list(
+#'     Id = "string",
+#'     Username = "string",
+#'     EmailAddress = "string",
+#'     GivenName = "string",
+#'     Surname = "string",
+#'     OrganizationId = "string",
+#'     RootFolderId = "string",
+#'     RecycleBinFolderId = "string",
+#'     Status = "ACTIVE"|"INACTIVE"|"PENDING",
+#'     Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ModifiedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TimeZoneId = "string",
+#'     Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
+#'     Storage = list(
+#'       StorageUtilizedInBytes = 123,
+#'       StorageRule = list(
+#'         StorageAllocatedInBytes = 123,
+#'         StorageType = "UNLIMITED"|"QUOTA"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

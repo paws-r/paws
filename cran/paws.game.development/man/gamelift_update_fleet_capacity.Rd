@@ -19,6 +19,12 @@ set is 0.}
 \item{MaxSize}{The maximum value allowed for the fleet's instance count. Default if not
 set is 1.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FleetId = "string"
+)
+}
+}
 \description{
 Updates capacity settings for a fleet. Use this operation to specify the
 number of EC2 instances (hosts) that you want this fleet to contain.

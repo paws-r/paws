@@ -29,8 +29,8 @@ If it is not included, it defaults to a slash (/), listing all entities.
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
-ASCII character from the ! (\code{U+0021}) through the DEL character
-(\verb{U+007F}), including most punctuation characters, digits, and upper and
+ASCII character from the ! (\verb{\\u0021}) through the DEL character
+(\verb{\\u007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
 \item{PolicyUsageFilter}{The policy usage method to use for filtering the results.
@@ -57,6 +57,31 @@ If you do not include this parameter, the number of items defaults to
 results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyGroups = list(
+    list(
+      GroupName = "string",
+      GroupId = "string"
+    )
+  ),
+  PolicyUsers = list(
+    list(
+      UserName = "string",
+      UserId = "string"
+    )
+  ),
+  PolicyRoles = list(
+    list(
+      RoleName = "string",
+      RoleId = "string"
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
 }
 \description{
 Lists all IAM users, groups, and roles that the specified managed policy

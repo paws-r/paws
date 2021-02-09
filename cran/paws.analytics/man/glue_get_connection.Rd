@@ -19,6 +19,36 @@ when the caller might not have permission to use the AWS KMS key to
 decrypt the password, but it does have permission to access the rest of
 the connection properties.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Connection = list(
+    Name = "string",
+    Description = "string",
+    ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
+    MatchCriteria = list(
+      "string"
+    ),
+    ConnectionProperties = list(
+      "string"
+    ),
+    PhysicalConnectionRequirements = list(
+      SubnetId = "string",
+      SecurityGroupIdList = list(
+        "string"
+      ),
+      AvailabilityZone = "string"
+    ),
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedBy = "string"
+  )
+)
+}
+}
 \description{
 Retrieves a connection definition from the Data Catalog.
 }

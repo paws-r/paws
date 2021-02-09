@@ -15,6 +15,18 @@ value.}
 
 \item{VpcIds}{One or more VPC IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  Vpcs = list(
+    list(
+      ClassicLinkDnsSupported = TRUE|FALSE,
+      VpcId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the ClassicLink DNS support status of one or more VPCs. If
 enabled, the DNS hostname of a linked EC2-Classic instance resolves to

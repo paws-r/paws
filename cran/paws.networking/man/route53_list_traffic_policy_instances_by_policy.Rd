@@ -68,6 +68,29 @@ is \code{true}, and the values of \code{HostedZoneIdMarker},
 represent the first traffic policy instance that Amazon Route 53 will
 return if you submit another request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficPolicyInstances = list(
+    list(
+      Id = "string",
+      HostedZoneId = "string",
+      Name = "string",
+      TTL = 123,
+      State = "string",
+      Message = "string",
+      TrafficPolicyId = "string",
+      TrafficPolicyVersion = 123,
+      TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+    )
+  ),
+  HostedZoneIdMarker = "string",
+  TrafficPolicyInstanceNameMarker = "string",
+  TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+  IsTruncated = TRUE|FALSE,
+  MaxItems = "string"
+)
+}
+}
 \description{
 Gets information about the traffic policy instances that you created by
 using a specify traffic policy version.

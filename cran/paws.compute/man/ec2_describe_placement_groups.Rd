@@ -36,6 +36,26 @@ specified.}
 
 \item{GroupIds}{The IDs of the placement groups.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PlacementGroups = list(
+    list(
+      GroupName = "string",
+      State = "pending"|"available"|"deleting"|"deleted",
+      Strategy = "cluster"|"spread"|"partition",
+      PartitionCount = 123,
+      GroupId = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes the specified placement groups or all of your placement
 groups. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement groups}

@@ -19,6 +19,32 @@ identical to the ones specified in the initial request.
 
 If no \code{NextToken} is specified, the first page is retrieved.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PlatformSummaryList = list(
+    list(
+      PlatformArn = "string",
+      PlatformOwner = "string",
+      PlatformStatus = "Creating"|"Failed"|"Ready"|"Deleting"|"Deleted",
+      PlatformCategory = "string",
+      OperatingSystemName = "string",
+      OperatingSystemVersion = "string",
+      SupportedTierList = list(
+        "string"
+      ),
+      SupportedAddonList = list(
+        "string"
+      ),
+      PlatformLifecycleState = "string",
+      PlatformVersion = "string",
+      PlatformBranchName = "string",
+      PlatformBranchLifecycleState = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the platform versions available for your account in an AWS Region.
 Provides summary information about each platform version. Compare to

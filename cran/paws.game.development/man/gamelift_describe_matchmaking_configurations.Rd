@@ -24,6 +24,42 @@ is limited to 10.}
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Configurations = list(
+    list(
+      Name = "string",
+      ConfigurationArn = "string",
+      Description = "string",
+      GameSessionQueueArns = list(
+        "string"
+      ),
+      RequestTimeoutSeconds = 123,
+      AcceptanceTimeoutSeconds = 123,
+      AcceptanceRequired = TRUE|FALSE,
+      RuleSetName = "string",
+      RuleSetArn = "string",
+      NotificationTarget = "string",
+      AdditionalPlayerCount = 123,
+      CustomEventData = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      GameProperties = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      GameSessionData = "string",
+      BackfillMode = "AUTOMATIC"|"MANUAL",
+      FlexMatchMode = "STANDALONE"|"WITH_QUEUE"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the details of FlexMatch matchmaking configurations.
 

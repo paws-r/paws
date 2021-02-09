@@ -2,18 +2,21 @@
 % Please edit documentation in R/comprehend_operations.R
 \name{comprehend_delete_document_classifier}
 \alias{comprehend_delete_document_classifier}
-\title{Deletes a previously created document classifier Only those classifiers
-that are in terminated states (IN_ERROR, TRAINED) will be deleted}
+\title{Deletes a previously created document classifier}
 \usage{
 comprehend_delete_document_classifier(DocumentClassifierArn)
 }
 \arguments{
 \item{DocumentClassifierArn}{[required] The Amazon Resource Name (ARN) that identifies the document classifier.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a previously created document classifier
 
-Only those classifiers that are in terminated states (IN\\_ERROR,
+Only those classifiers that are in terminated states (IN_ERROR,
 TRAINED) will be deleted. If an active inference job is using the model,
 a \code{ResourceInUseException} will be returned.
 

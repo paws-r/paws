@@ -17,6 +17,31 @@ does not use this data, so it can be formatted as needed for use in the
 game. Player data strings for player IDs not included in the \code{PlayerIds}
 parameter are ignored.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PlayerSessions = list(
+    list(
+      PlayerSessionId = "string",
+      PlayerId = "string",
+      GameSessionId = "string",
+      FleetId = "string",
+      FleetArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      TerminationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = "RESERVED"|"ACTIVE"|"COMPLETED"|"TIMEDOUT",
+      IpAddress = "string",
+      DnsName = "string",
+      Port = 123,
+      PlayerData = "string"
+    )
+  )
+)
+}
+}
 \description{
 Reserves open slots in a game session for a group of players. Before
 players can be added, a game session must have an \code{ACTIVE} status, have

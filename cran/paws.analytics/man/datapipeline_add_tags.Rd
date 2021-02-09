@@ -11,6 +11,10 @@ datapipeline_add_tags(pipelineId, tags)
 
 \item{tags}{[required] The tags to add, as key/value pairs.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds or modifies tags for the specified pipeline.
 }

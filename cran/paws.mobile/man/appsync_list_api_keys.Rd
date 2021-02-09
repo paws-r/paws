@@ -15,6 +15,20 @@ list.}
 
 \item{maxResults}{The maximum number of results you want the request to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  apiKeys = list(
+    list(
+      id = "string",
+      description = "string",
+      expires = 123,
+      deletes = 123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the API keys for a given API.
 

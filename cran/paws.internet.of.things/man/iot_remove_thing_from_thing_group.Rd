@@ -16,6 +16,10 @@ iot_remove_thing_from_thing_group(thingGroupName, thingGroupArn,
 
 \item{thingArn}{The ARN of the thing to remove from the group.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Remove the specified thing from the specified group.
 

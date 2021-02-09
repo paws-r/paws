@@ -13,6 +13,10 @@ added or removed.}
 
 \item{DesiredNumber}{[required] The number of domain controllers desired in the directory.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds or removes domain controllers to or from the directory. Based on
 the difference between current value and new value (provided through

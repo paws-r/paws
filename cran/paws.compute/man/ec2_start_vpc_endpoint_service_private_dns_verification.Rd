@@ -16,6 +16,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ServiceId}{[required] The ID of the endpoint service.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReturnValue = TRUE|FALSE
+)
+}
+}
 \description{
 Initiates the verification process to prove that the service provider
 owns the private DNS name domain for the endpoint service.

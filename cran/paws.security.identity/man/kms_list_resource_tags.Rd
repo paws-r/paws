@@ -35,6 +35,19 @@ truncated response you just received.
 Do not attempt to construct this value. Use only the value of
 \code{NextMarker} from the truncated response you just received.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      TagKey = "string",
+      TagValue = "string"
+    )
+  ),
+  NextMarker = "string",
+  Truncated = TRUE|FALSE
+)
+}
+}
 \description{
 Returns all tags on the specified customer master key (CMK).
 

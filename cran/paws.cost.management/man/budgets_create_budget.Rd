@@ -17,6 +17,10 @@ subscriber and up to 10 email subscribers. If you include notifications
 and subscribers in your \code{\link[=budgets_create_budget]{create_budget}} call,
 AWS creates the notifications and subscribers for you.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates a budget and, if included, notifications and subscribers.
 

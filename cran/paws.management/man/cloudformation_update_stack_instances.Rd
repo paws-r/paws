@@ -86,6 +86,12 @@ received them.
 If you don't specify an operation ID, the SDK generates one
 automatically.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OperationId = "string"
+)
+}
+}
 \description{
 Updates the parameter values for stack instances for the specified
 accounts, within the specified Regions. A stack instance refers to a

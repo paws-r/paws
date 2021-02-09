@@ -8,12 +8,18 @@ resourceArn}
 mediaconnect_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that identifies the AWS Elemental MediaConnect resource to which to add tags.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that identifies the AWS Elemental
+MediaConnect resource to which to add tags.}
 
-\item{Tags}{[required] A map from tag keys to values. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.}
+\item{Tags}{[required] A map from tag keys to values. Tag keys can have a maximum character
+length of 128 characters, and tag values can have a maximum length of
+256 characters.}
 }
 \description{
-Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well.
+Associates the specified tags to a resource with the specified
+resourceArn. If existing tags on a resource are not specified in the
+request parameters, they are not changed. When a resource is deleted,
+the tags associated with that resource are deleted as well.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

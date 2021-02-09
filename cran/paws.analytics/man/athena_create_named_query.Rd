@@ -30,6 +30,12 @@ action will fail.}
 
 \item{WorkGroup}{The name of the workgroup in which the named query is being created.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NamedQueryId = "string"
+)
+}
+}
 \description{
 Creates a named query in the specified workgroup. Requires that you have
 access to the workgroup.

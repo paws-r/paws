@@ -25,6 +25,10 @@ to the document.}
 \item{SharedDocumentVersion}{(Optional) The version of the document to share. If it's not specified,
 the system choose the \code{Default} version to share.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Shares a Systems Manager document publicly or privately. If you share a
 document privately, you must specify the AWS user account IDs for those

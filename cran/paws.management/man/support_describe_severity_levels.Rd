@@ -12,6 +12,17 @@ support_describe_severity_levels(language)
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  severityLevels = list(
+    list(
+      code = "string",
+      name = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns the list of severity levels that you can assign to an AWS
 Support case. The severity level for a case is also a field in the

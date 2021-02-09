@@ -12,6 +12,10 @@ workmail_tag_resource(ResourceARN, Tags)
 
 \item{Tags}{[required] The tag key-value pairs.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Applies the specified tags to the specified Amazon WorkMail organization
 resource.

@@ -9,6 +9,17 @@ rekognition_describe_collection(CollectionId)
 \arguments{
 \item{CollectionId}{[required] The ID of the collection to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FaceCount = 123,
+  FaceModelVersion = "string",
+  CollectionARN = "string",
+  CreationTimestamp = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Describes the specified collection. You can use
 \code{\link[=rekognition_describe_collection]{describe_collection}} to get

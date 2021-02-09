@@ -10,6 +10,14 @@ cognitoidentity_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the identity pool that the tags are
 assigned to.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Lists the tags that are assigned to an Amazon Cognito identity pool.
 

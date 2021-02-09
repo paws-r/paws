@@ -19,7 +19,17 @@ service to put DNS query logs in to the specified log group. Replace
 \code{"logArn"} with the ARN of your CloudWatch Logs resource, such as a log
 group or log stream.
 
-\verb{\\\{ "Version": "2012-10-17", "Statement": \\\[ \\\{ "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": \\\{ "Service": \\\[ "route53.amazonaws.com" \\\] \\\}, "Action":"logs:PutLogEvents", "Resource": "logArn" \\\} \\\] \\\} }}
+\verb{\{ "Version": "2012-10-17", "Statement": [ \{ "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": \{ "Service": [ "route53.amazonaws.com" ] \}, "Action":"logs:PutLogEvents", "Resource": "logArn" \} ] \} }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  resourcePolicy = list(
+    policyName = "string",
+    policyDocument = "string",
+    lastUpdatedTime = 123
+  )
+)
+}
 }
 \description{
 Creates or updates a resource policy allowing other AWS services to put

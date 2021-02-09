@@ -15,6 +15,26 @@ previous call.)}
 
 \item{PageSize}{The maximum number of results to return with this call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SslPolicies = list(
+    list(
+      SslProtocols = list(
+        "string"
+      ),
+      Ciphers = list(
+        list(
+          Name = "string",
+          Priority = 123
+        )
+      ),
+      Name = "string"
+    )
+  ),
+  NextMarker = "string"
+)
+}
+}
 \description{
 Describes the specified policies or all policies used for SSL
 negotiation.

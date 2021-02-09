@@ -11,6 +11,12 @@ configservice_deliver_config_snapshot(deliveryChannelName)
 \item{deliveryChannelName}{[required] The name of the delivery channel through which the snapshot is
 delivered.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  configSnapshotId = "string"
+)
+}
+}
 \description{
 Schedules delivery of a configuration snapshot to the Amazon S3 bucket
 in the specified delivery channel. After the delivery has started, AWS

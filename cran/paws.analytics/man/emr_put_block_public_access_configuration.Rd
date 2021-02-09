@@ -27,6 +27,10 @@ feature, you must manually enable and configure it. For accounts that
 did not create an EMR cluster in a Region before this date, block public
 access is enabled by default in that Region.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates or updates an Amazon EMR block public access configuration for
 your AWS account in the current Region. For more information see

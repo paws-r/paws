@@ -37,6 +37,29 @@ in the \code{Marker} field of the response. You can retrieve the next set of
 response records by providing the returned marker value in the \code{Marker}
 parameter and retrying the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrderableClusterOptions = list(
+    list(
+      ClusterVersion = "string",
+      ClusterType = "string",
+      NodeType = "string",
+      AvailabilityZones = list(
+        list(
+          Name = "string",
+          SupportedPlatforms = list(
+            list(
+              Name = "string"
+            )
+          )
+        )
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a list of orderable cluster options. Before you create a new
 cluster you can use this operation to find what options are available,

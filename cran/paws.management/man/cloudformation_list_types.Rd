@@ -62,6 +62,24 @@ assign that token to the request object's \code{NextToken} parameter. If
 there are no remaining results, the previous response object's
 \code{NextToken} parameter is set to \code{null}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TypeSummaries = list(
+    list(
+      Type = "RESOURCE"|"MODULE",
+      TypeName = "string",
+      DefaultVersionId = "string",
+      TypeArn = "string",
+      LastUpdated = as.POSIXct(
+        "2015-01-01"
+      ),
+      Description = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns summary information about types that have been registered with
 CloudFormation.

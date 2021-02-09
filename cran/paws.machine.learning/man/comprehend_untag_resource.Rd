@@ -15,6 +15,10 @@ a given resource. For example, a tag with "Sales" as the key might be
 added to a resource to indicate its use by the sales department. Keys
 must be unique and cannot be duplicated for a particular resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes a specific tag associated with an Amazon Comprehend resource.
 }

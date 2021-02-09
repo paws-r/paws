@@ -16,6 +16,12 @@ NULL
 #' @param invitationId &#91;required&#93; The unique identifier for the invitation to accept.
 #' @param masterAccount &#91;required&#93; The AWS account ID for the account that sent the invitation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_invitation(
@@ -55,6 +61,28 @@ macie2_accept_invitation <- function(invitationId, masterAccount) {
 #' @param ids An array of strings that lists the unique identifiers for the custom
 #' data identifiers to retrieve information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   customDataIdentifiers = list(
+#'     list(
+#'       arn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       deleted = TRUE|FALSE,
+#'       description = "string",
+#'       id = "string",
+#'       name = "string"
+#'     )
+#'   ),
+#'   notFoundIdentifierIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_get_custom_data_identifiers(
@@ -87,7 +115,7 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #' Creates and defines the settings for a classification job
 #'
 #' @description
-#'  <p>Creates and defines the settings for a classification job.</p>
+#' Creates and defines the settings for a classification job.
 #'
 #' @usage
 #' macie2_create_classification_job(clientToken, customDataIdentifierIds,
@@ -103,7 +131,7 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #' after the job is created.
 #' @param jobType &#91;required&#93; The schedule for running the job. Valid values are:
 #' 
-#' -   ONE\\_TIME - Run the job only once. If you specify this value, don't
+#' -   ONE_TIME - Run the job only once. If you specify this value, don't
 #'     specify a value for the scheduleFrequency property.
 #' 
 #' -   SCHEDULED - Run the job on a daily, weekly, or monthly basis. If you
@@ -120,13 +148,22 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #' analyzes all the data in those objects.
 #' @param scheduleFrequency The recurrence pattern for running the job. To run the job only once,
 #' don't specify a value for this property and set the value for the
-#' jobType property to ONE\\_TIME.
+#' jobType property to ONE_TIME.
 #' @param tags A map of key-value pairs that specifies the tags to associate with the
 #' job.
 #' 
 #' A job can have a maximum of 50 tags. Each tag consists of a tag key and
 #' an associated tag value. The maximum length of a tag key is 128
 #' characters. The maximum length of a tag value is 256 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobArn = "string",
+#'   jobId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -286,6 +323,14 @@ macie2_create_classification_job <- function(clientToken, customDataIdentifierId
 #' a tag key is 128 characters. The maximum length of a tag value is 256
 #' characters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   customDataIdentifierId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_custom_data_identifier(
@@ -369,6 +414,15 @@ macie2_create_custom_data_identifier <- function(clientToken = NULL, description
 #' tag key and an associated tag value. The maximum length of a tag key is
 #' 128 characters. The maximum length of a tag value is 256 characters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   id = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_findings_filter(
@@ -425,7 +479,7 @@ macie2_create_findings_filter <- function(action, clientToken = NULL, descriptio
 #' Sends an Amazon Macie membership invitation to one or more accounts
 #'
 #' @description
-#'  <p>Sends an Amazon Macie membership invitation to one or more accounts.</p>
+#' Sends an Amazon Macie membership invitation to one or more accounts.
 #'
 #' @usage
 #' macie2_create_invitations(accountIds, disableEmailNotification, message)
@@ -439,6 +493,20 @@ macie2_create_findings_filter <- function(action, clientToken = NULL, descriptio
 #' account, set this value to true.
 #' @param message A custom message to include in the invitation. Amazon Macie adds this
 #' message to the standard content that it sends for an invitation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   unprocessedAccounts = list(
+#'     list(
+#'       accountId = "string",
+#'       errorCode = "ClientError"|"InternalError",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -474,7 +542,7 @@ macie2_create_invitations <- function(accountIds, disableEmailNotification = NUL
 #' Associates an account with an Amazon Macie master account
 #'
 #' @description
-#'  <p>Associates an account with an Amazon Macie master account.</p>
+#' Associates an account with an Amazon Macie master account.
 #'
 #' @usage
 #' macie2_create_member(account, tags)
@@ -486,6 +554,14 @@ macie2_create_invitations <- function(accountIds, disableEmailNotification = NUL
 #' An account can have a maximum of 50 tags. Each tag consists of a tag key
 #' and an associated tag value. The maximum length of a tag key is 128
 #' characters. The maximum length of a tag value is 256 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -523,7 +599,7 @@ macie2_create_member <- function(account, tags = NULL) {
 #' Creates sample findings
 #'
 #' @description
-#'  <p>Creates sample findings.</p>
+#' Creates sample findings.
 #'
 #' @usage
 #' macie2_create_sample_findings(findingTypes)
@@ -531,6 +607,12 @@ macie2_create_member <- function(account, tags = NULL) {
 #' @param findingTypes An array that lists one or more types of findings to include in the set
 #' of sample findings. Currently, the only supported value is
 #' Policy:IAMUser/S3BucketEncryptionDisabled.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -574,6 +656,20 @@ macie2_create_sample_findings <- function(findingTypes = NULL) {
 #' @param accountIds &#91;required&#93; An array that lists AWS account IDs, one for each account that sent an
 #' invitation to decline.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   unprocessedAccounts = list(
+#'     list(
+#'       accountId = "string",
+#'       errorCode = "ClientError"|"InternalError",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$decline_invitations(
@@ -614,6 +710,12 @@ macie2_decline_invitations <- function(accountIds) {
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource or account that the
 #' request applies to.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_custom_data_identifier(
@@ -651,6 +753,12 @@ macie2_delete_custom_data_identifier <- function(id) {
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource or account that the
 #' request applies to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -691,6 +799,20 @@ macie2_delete_findings_filter <- function(id) {
 #'
 #' @param accountIds &#91;required&#93; An array that lists AWS account IDs, one for each account that sent an
 #' invitation to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   unprocessedAccounts = list(
+#'     list(
+#'       accountId = "string",
+#'       errorCode = "ClientError"|"InternalError",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -734,6 +856,12 @@ macie2_delete_invitations <- function(accountIds) {
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource or account that the
 #' request applies to.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_member(
@@ -765,7 +893,8 @@ macie2_delete_member <- function(id) {
 #' more S3 buckets that Amazon Macie monitors and analyzes
 #'
 #' @description
-#'  <p>Retrieves (queries) statistical data and other information about one or more S3 buckets that Amazon Macie monitors and analyzes.</p>
+#' Retrieves (queries) statistical data and other information about one or
+#' more S3 buckets that Amazon Macie monitors and analyzes.
 #'
 #' @usage
 #' macie2_describe_buckets(criteria, maxResults, nextToken, sortCriteria)
@@ -776,6 +905,101 @@ macie2_delete_member <- function(id) {
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
 #' @param sortCriteria The criteria to use to sort the query results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   buckets = list(
+#'     list(
+#'       accountId = "string",
+#'       bucketArn = "string",
+#'       bucketCreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       bucketName = "string",
+#'       classifiableObjectCount = 123,
+#'       classifiableSizeInBytes = 123,
+#'       jobDetails = list(
+#'         isDefinedInJob = "TRUE"|"FALSE"|"UNKNOWN",
+#'         isMonitoredByJob = "TRUE"|"FALSE"|"UNKNOWN",
+#'         lastJobId = "string",
+#'         lastJobRunTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       lastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       objectCount = 123,
+#'       objectCountByEncryptionType = list(
+#'         customerManaged = 123,
+#'         kmsManaged = 123,
+#'         s3Managed = 123,
+#'         unencrypted = 123
+#'       ),
+#'       publicAccess = list(
+#'         effectivePermission = "PUBLIC"|"NOT_PUBLIC"|"UNKNOWN",
+#'         permissionConfiguration = list(
+#'           accountLevelPermissions = list(
+#'             blockPublicAccess = list(
+#'               blockPublicAcls = TRUE|FALSE,
+#'               blockPublicPolicy = TRUE|FALSE,
+#'               ignorePublicAcls = TRUE|FALSE,
+#'               restrictPublicBuckets = TRUE|FALSE
+#'             )
+#'           ),
+#'           bucketLevelPermissions = list(
+#'             accessControlList = list(
+#'               allowsPublicReadAccess = TRUE|FALSE,
+#'               allowsPublicWriteAccess = TRUE|FALSE
+#'             ),
+#'             blockPublicAccess = list(
+#'               blockPublicAcls = TRUE|FALSE,
+#'               blockPublicPolicy = TRUE|FALSE,
+#'               ignorePublicAcls = TRUE|FALSE,
+#'               restrictPublicBuckets = TRUE|FALSE
+#'             ),
+#'             bucketPolicy = list(
+#'               allowsPublicReadAccess = TRUE|FALSE,
+#'               allowsPublicWriteAccess = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       region = "string",
+#'       replicationDetails = list(
+#'         replicated = TRUE|FALSE,
+#'         replicatedExternally = TRUE|FALSE,
+#'         replicationAccounts = list(
+#'           "string"
+#'         )
+#'       ),
+#'       sharedAccess = "EXTERNAL"|"INTERNAL"|"NOT_SHARED"|"UNKNOWN",
+#'       sizeInBytes = 123,
+#'       sizeInBytesCompressed = 123,
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       unclassifiableObjectCount = list(
+#'         fileType = 123,
+#'         storageClass = 123,
+#'         total = 123
+#'       ),
+#'       unclassifiableObjectSizeInBytes = list(
+#'         fileType = 123,
+#'         storageClass = 123,
+#'         total = 123
+#'       ),
+#'       versioning = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -834,6 +1058,119 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
 #'
 #' @param jobId &#91;required&#93; The unique identifier for the classification job.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   clientToken = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   customDataIdentifierIds = list(
+#'     "string"
+#'   ),
+#'   description = "string",
+#'   initialRun = TRUE|FALSE,
+#'   jobArn = "string",
+#'   jobId = "string",
+#'   jobStatus = "RUNNING"|"PAUSED"|"CANCELLED"|"COMPLETE"|"IDLE"|"USER_PAUSED",
+#'   jobType = "ONE_TIME"|"SCHEDULED",
+#'   lastRunErrorStatus = list(
+#'     code = "NONE"|"ERROR"
+#'   ),
+#'   lastRunTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   name = "string",
+#'   s3JobDefinition = list(
+#'     bucketDefinitions = list(
+#'       list(
+#'         accountId = "string",
+#'         buckets = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     scoping = list(
+#'       excludes = list(
+#'         and = list(
+#'           list(
+#'             simpleScopeTerm = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'               key = "BUCKET_CREATION_DATE"|"OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"TAG",
+#'               values = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             tagScopeTerm = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'               key = "string",
+#'               tagValues = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               ),
+#'               target = "S3_OBJECT"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       includes = list(
+#'         and = list(
+#'           list(
+#'             simpleScopeTerm = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'               key = "BUCKET_CREATION_DATE"|"OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"TAG",
+#'               values = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             tagScopeTerm = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'               key = "string",
+#'               tagValues = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               ),
+#'               target = "S3_OBJECT"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   samplingPercentage = 123,
+#'   scheduleFrequency = list(
+#'     dailySchedule = list(),
+#'     monthlySchedule = list(
+#'       dayOfMonth = 123
+#'     ),
+#'     weeklySchedule = list(
+#'       dayOfWeek = "SUNDAY"|"MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY"
+#'     )
+#'   ),
+#'   statistics = list(
+#'     approximateNumberOfObjectsToProcess = 123.0,
+#'     numberOfRuns = 123.0
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   userPausedDetails = list(
+#'     jobExpiresAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     jobImminentExpirationHealthEventArn = "string",
+#'     jobPausedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_classification_job(
@@ -871,6 +1208,15 @@ macie2_describe_classification_job <- function(jobId) {
 #' @usage
 #' macie2_describe_organization_configuration()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   autoEnable = TRUE|FALSE,
+#'   maxAccountLimitReached = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_organization_configuration()
@@ -905,6 +1251,12 @@ macie2_describe_organization_configuration <- function() {
 #'
 #' @usage
 #' macie2_disable_macie()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -943,6 +1295,12 @@ macie2_disable_macie <- function() {
 #'
 #' @param adminAccountId &#91;required&#93; The AWS account ID of the delegated administrator account.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disable_organization_admin_account(
@@ -977,6 +1335,12 @@ macie2_disable_organization_admin_account <- function(adminAccountId) {
 #'
 #' @usage
 #' macie2_disassociate_from_master_account()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1013,6 +1377,12 @@ macie2_disassociate_from_master_account <- function() {
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource or account that the
 #' request applies to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1053,9 +1423,17 @@ macie2_disassociate_member <- function(id) {
 #'
 #' @param clientToken A unique, case-sensitive token that you provide to ensure the
 #' idempotency of the request.
-#' @param findingPublishingFrequency Specifies how often to publish updates to policy findings for the account. This includes publishing updates to AWS Security Hub and Amazon EventBridge (formerly called Amazon CloudWatch Events).
+#' @param findingPublishingFrequency Specifies how often to publish updates to policy findings for the
+#' account. This includes publishing updates to AWS Security Hub and Amazon
+#' EventBridge (formerly called Amazon CloudWatch Events).
 #' @param status Specifies the status for the account. To enable Amazon Macie and start
 #' all Amazon Macie activities for the account, set this value to ENABLED.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1101,6 +1479,12 @@ macie2_enable_macie <- function(clientToken = NULL, findingPublishingFrequency =
 #' @param clientToken A unique, case-sensitive token that you provide to ensure the
 #' idempotency of the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$enable_organization_admin_account(
@@ -1133,12 +1517,56 @@ macie2_enable_organization_admin_account <- function(adminAccountId, clientToken
 #' that Amazon Macie monitors and analyzes
 #'
 #' @description
-#'  <p>Retrieves (queries) aggregated statistical data for all the S3 buckets that Amazon Macie monitors and analyzes.</p>
+#' Retrieves (queries) aggregated statistical data for all the S3 buckets
+#' that Amazon Macie monitors and analyzes.
 #'
 #' @usage
 #' macie2_get_bucket_statistics(accountId)
 #'
 #' @param accountId The unique identifier for the AWS account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   bucketCount = 123,
+#'   bucketCountByEffectivePermission = list(
+#'     publiclyAccessible = 123,
+#'     publiclyReadable = 123,
+#'     publiclyWritable = 123,
+#'     unknown = 123
+#'   ),
+#'   bucketCountByEncryptionType = list(
+#'     kmsManaged = 123,
+#'     s3Managed = 123,
+#'     unencrypted = 123
+#'   ),
+#'   bucketCountBySharedAccessType = list(
+#'     external = 123,
+#'     internal = 123,
+#'     notShared = 123,
+#'     unknown = 123
+#'   ),
+#'   classifiableObjectCount = 123,
+#'   classifiableSizeInBytes = 123,
+#'   lastUpdated = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   objectCount = 123,
+#'   sizeInBytes = 123,
+#'   sizeInBytesCompressed = 123,
+#'   unclassifiableObjectCount = list(
+#'     fileType = 123,
+#'     storageClass = 123,
+#'     total = 123
+#'   ),
+#'   unclassifiableObjectSizeInBytes = list(
+#'     fileType = 123,
+#'     storageClass = 123,
+#'     total = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1177,6 +1605,20 @@ macie2_get_bucket_statistics <- function(accountId = NULL) {
 #' @usage
 #' macie2_get_classification_export_configuration()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configuration = list(
+#'     s3Destination = list(
+#'       bucketName = "string",
+#'       keyPrefix = "string",
+#'       kmsKeyArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_classification_export_configuration()
@@ -1213,6 +1655,32 @@ macie2_get_classification_export_configuration <- function() {
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource or account that the
 #' request applies to.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   deleted = TRUE|FALSE,
+#'   description = "string",
+#'   id = "string",
+#'   ignoreWords = list(
+#'     "string"
+#'   ),
+#'   keywords = list(
+#'     "string"
+#'   ),
+#'   maximumMatchDistance = 123,
+#'   name = "string",
+#'   regex = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_custom_data_identifier(
@@ -1243,7 +1711,7 @@ macie2_get_custom_data_identifier <- function(id) {
 #' Retrieves (queries) aggregated statistical data about findings
 #'
 #' @description
-#'  <p>Retrieves (queries) aggregated statistical data about findings.</p>
+#' Retrieves (queries) aggregated statistical data about findings.
 #'
 #' @usage
 #' macie2_get_finding_statistics(findingCriteria, groupBy, size,
@@ -1266,6 +1734,19 @@ macie2_get_custom_data_identifier <- function(id) {
 #'     and SensitiveData:S3Object/Personal.
 #' @param size The maximum number of items to include in each page of the response.
 #' @param sortCriteria The criteria to use to sort the query results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   countsByGroup = list(
+#'     list(
+#'       count = 123,
+#'       groupKey = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1330,6 +1811,344 @@ macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size 
 #' to retrieve.
 #' @param sortCriteria The criteria for sorting the results of the request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   findings = list(
+#'     list(
+#'       accountId = "string",
+#'       archived = TRUE|FALSE,
+#'       category = "CLASSIFICATION"|"POLICY",
+#'       classificationDetails = list(
+#'         detailedResultsLocation = "string",
+#'         jobArn = "string",
+#'         jobId = "string",
+#'         result = list(
+#'           additionalOccurrences = TRUE|FALSE,
+#'           customDataIdentifiers = list(
+#'             detections = list(
+#'               list(
+#'                 arn = "string",
+#'                 count = 123,
+#'                 name = "string",
+#'                 occurrences = list(
+#'                   cells = list(
+#'                     list(
+#'                       cellReference = "string",
+#'                       column = 123,
+#'                       columnName = "string",
+#'                       row = 123
+#'                     )
+#'                   ),
+#'                   lineRanges = list(
+#'                     list(
+#'                       end = 123,
+#'                       start = 123,
+#'                       startColumn = 123
+#'                     )
+#'                   ),
+#'                   offsetRanges = list(
+#'                     list(
+#'                       end = 123,
+#'                       start = 123,
+#'                       startColumn = 123
+#'                     )
+#'                   ),
+#'                   pages = list(
+#'                     list(
+#'                       lineRange = list(
+#'                         end = 123,
+#'                         start = 123,
+#'                         startColumn = 123
+#'                       ),
+#'                       offsetRange = list(
+#'                         end = 123,
+#'                         start = 123,
+#'                         startColumn = 123
+#'                       ),
+#'                       pageNumber = 123
+#'                     )
+#'                   ),
+#'                   records = list(
+#'                     list(
+#'                       jsonPath = "string",
+#'                       recordIndex = 123
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             totalCount = 123
+#'           ),
+#'           mimeType = "string",
+#'           sensitiveData = list(
+#'             list(
+#'               category = "FINANCIAL_INFORMATION"|"PERSONAL_INFORMATION"|"CREDENTIALS"|"CUSTOM_IDENTIFIER",
+#'               detections = list(
+#'                 list(
+#'                   count = 123,
+#'                   occurrences = list(
+#'                     cells = list(
+#'                       list(
+#'                         cellReference = "string",
+#'                         column = 123,
+#'                         columnName = "string",
+#'                         row = 123
+#'                       )
+#'                     ),
+#'                     lineRanges = list(
+#'                       list(
+#'                         end = 123,
+#'                         start = 123,
+#'                         startColumn = 123
+#'                       )
+#'                     ),
+#'                     offsetRanges = list(
+#'                       list(
+#'                         end = 123,
+#'                         start = 123,
+#'                         startColumn = 123
+#'                       )
+#'                     ),
+#'                     pages = list(
+#'                       list(
+#'                         lineRange = list(
+#'                           end = 123,
+#'                           start = 123,
+#'                           startColumn = 123
+#'                         ),
+#'                         offsetRange = list(
+#'                           end = 123,
+#'                           start = 123,
+#'                           startColumn = 123
+#'                         ),
+#'                         pageNumber = 123
+#'                       )
+#'                     ),
+#'                     records = list(
+#'                       list(
+#'                         jsonPath = "string",
+#'                         recordIndex = 123
+#'                       )
+#'                     )
+#'                   ),
+#'                   type = "string"
+#'                 )
+#'               ),
+#'               totalCount = 123
+#'             )
+#'           ),
+#'           sizeClassified = 123,
+#'           status = list(
+#'             code = "string",
+#'             reason = "string"
+#'           )
+#'         )
+#'       ),
+#'       count = 123,
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       description = "string",
+#'       id = "string",
+#'       partition = "string",
+#'       policyDetails = list(
+#'         action = list(
+#'           actionType = "AWS_API_CALL",
+#'           apiCallDetails = list(
+#'             api = "string",
+#'             apiServiceName = "string",
+#'             firstSeen = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             lastSeen = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         actor = list(
+#'           domainDetails = list(
+#'             domainName = "string"
+#'           ),
+#'           ipAddressDetails = list(
+#'             ipAddressV4 = "string",
+#'             ipCity = list(
+#'               name = "string"
+#'             ),
+#'             ipCountry = list(
+#'               code = "string",
+#'               name = "string"
+#'             ),
+#'             ipGeoLocation = list(
+#'               lat = 123.0,
+#'               lon = 123.0
+#'             ),
+#'             ipOwner = list(
+#'               asn = "string",
+#'               asnOrg = "string",
+#'               isp = "string",
+#'               org = "string"
+#'             )
+#'           ),
+#'           userIdentity = list(
+#'             assumedRole = list(
+#'               accessKeyId = "string",
+#'               accountId = "string",
+#'               arn = "string",
+#'               principalId = "string",
+#'               sessionContext = list(
+#'                 attributes = list(
+#'                   creationDate = as.POSIXct(
+#'                     "2015-01-01"
+#'                   ),
+#'                   mfaAuthenticated = TRUE|FALSE
+#'                 ),
+#'                 sessionIssuer = list(
+#'                   accountId = "string",
+#'                   arn = "string",
+#'                   principalId = "string",
+#'                   type = "string",
+#'                   userName = "string"
+#'                 )
+#'               )
+#'             ),
+#'             awsAccount = list(
+#'               accountId = "string",
+#'               principalId = "string"
+#'             ),
+#'             awsService = list(
+#'               invokedBy = "string"
+#'             ),
+#'             federatedUser = list(
+#'               accessKeyId = "string",
+#'               accountId = "string",
+#'               arn = "string",
+#'               principalId = "string",
+#'               sessionContext = list(
+#'                 attributes = list(
+#'                   creationDate = as.POSIXct(
+#'                     "2015-01-01"
+#'                   ),
+#'                   mfaAuthenticated = TRUE|FALSE
+#'                 ),
+#'                 sessionIssuer = list(
+#'                   accountId = "string",
+#'                   arn = "string",
+#'                   principalId = "string",
+#'                   type = "string",
+#'                   userName = "string"
+#'                 )
+#'               )
+#'             ),
+#'             iamUser = list(
+#'               accountId = "string",
+#'               arn = "string",
+#'               principalId = "string",
+#'               userName = "string"
+#'             ),
+#'             root = list(
+#'               accountId = "string",
+#'               arn = "string",
+#'               principalId = "string"
+#'             ),
+#'             type = "AssumedRole"|"IAMUser"|"FederatedUser"|"Root"|"AWSAccount"|"AWSService"
+#'           )
+#'         )
+#'       ),
+#'       region = "string",
+#'       resourcesAffected = list(
+#'         s3Bucket = list(
+#'           arn = "string",
+#'           createdAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           defaultServerSideEncryption = list(
+#'             encryptionType = "NONE"|"AES256"|"aws:kms"|"UNKNOWN",
+#'             kmsMasterKeyId = "string"
+#'           ),
+#'           name = "string",
+#'           owner = list(
+#'             displayName = "string",
+#'             id = "string"
+#'           ),
+#'           publicAccess = list(
+#'             effectivePermission = "PUBLIC"|"NOT_PUBLIC"|"UNKNOWN",
+#'             permissionConfiguration = list(
+#'               accountLevelPermissions = list(
+#'                 blockPublicAccess = list(
+#'                   blockPublicAcls = TRUE|FALSE,
+#'                   blockPublicPolicy = TRUE|FALSE,
+#'                   ignorePublicAcls = TRUE|FALSE,
+#'                   restrictPublicBuckets = TRUE|FALSE
+#'                 )
+#'               ),
+#'               bucketLevelPermissions = list(
+#'                 accessControlList = list(
+#'                   allowsPublicReadAccess = TRUE|FALSE,
+#'                   allowsPublicWriteAccess = TRUE|FALSE
+#'                 ),
+#'                 blockPublicAccess = list(
+#'                   blockPublicAcls = TRUE|FALSE,
+#'                   blockPublicPolicy = TRUE|FALSE,
+#'                   ignorePublicAcls = TRUE|FALSE,
+#'                   restrictPublicBuckets = TRUE|FALSE
+#'                 ),
+#'                 bucketPolicy = list(
+#'                   allowsPublicReadAccess = TRUE|FALSE,
+#'                   allowsPublicWriteAccess = TRUE|FALSE
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           tags = list(
+#'             list(
+#'               key = "string",
+#'               value = "string"
+#'             )
+#'           )
+#'         ),
+#'         s3Object = list(
+#'           bucketArn = "string",
+#'           eTag = "string",
+#'           extension = "string",
+#'           key = "string",
+#'           lastModified = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           path = "string",
+#'           publicAccess = TRUE|FALSE,
+#'           serverSideEncryption = list(
+#'             encryptionType = "NONE"|"AES256"|"aws:kms"|"UNKNOWN",
+#'             kmsMasterKeyId = "string"
+#'           ),
+#'           size = 123,
+#'           storageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"|"ONEZONE_IA"|"GLACIER",
+#'           tags = list(
+#'             list(
+#'               key = "string",
+#'               value = "string"
+#'             )
+#'           ),
+#'           versionId = "string"
+#'         )
+#'       ),
+#'       sample = TRUE|FALSE,
+#'       schemaVersion = "string",
+#'       severity = list(
+#'         description = "Low"|"Medium"|"High",
+#'         score = 123
+#'       ),
+#'       title = "string",
+#'       type = "SensitiveData:S3Object/Multiple"|"SensitiveData:S3Object/Financial"|"SensitiveData:S3Object/Personal"|"SensitiveData:S3Object/Credentials"|"SensitiveData:S3Object/CustomIdentifier"|"Policy:IAMUser/S3BucketPublic"|"Policy:IAMUser/S3BucketSharedExternally"|"Policy:IAMUser/S3BucketReplicatedExternally"|"Policy:IAMUser/S3BucketEncryptionDisabled"|"Policy:IAMUser/S3BlockPublicAccessDisabled",
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_findings(
@@ -1374,6 +2193,41 @@ macie2_get_findings <- function(findingIds, sortCriteria = NULL) {
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource or account that the
 #' request applies to.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   action = "ARCHIVE"|"NOOP",
+#'   arn = "string",
+#'   description = "string",
+#'   findingCriteria = list(
+#'     criterion = list(
+#'       list(
+#'         eq = list(
+#'           "string"
+#'         ),
+#'         eqExactMatch = list(
+#'           "string"
+#'         ),
+#'         gt = 123,
+#'         gte = 123,
+#'         lt = 123,
+#'         lte = 123,
+#'         neq = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   id = "string",
+#'   name = "string",
+#'   position = 123,
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_findings_filter(
@@ -1411,6 +2265,14 @@ macie2_get_findings_filter <- function(id) {
 #' @usage
 #' macie2_get_invitations_count()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   invitationsCount = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_invitations_count()
@@ -1446,6 +2308,22 @@ macie2_get_invitations_count <- function() {
 #' @usage
 #' macie2_get_macie_session()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   findingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS",
+#'   serviceRole = "string",
+#'   status = "PAUSED"|"ENABLED",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_macie_session()
@@ -1480,6 +2358,21 @@ macie2_get_macie_session <- function() {
 #'
 #' @usage
 #' macie2_get_master_account()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   master = list(
+#'     accountId = "string",
+#'     invitationId = "string",
+#'     invitedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     relationshipStatus = "Enabled"|"Paused"|"Invited"|"Created"|"Removed"|"Resigned"|"EmailVerificationInProgress"|"EmailVerificationFailed"|"RegionDisabled"|"AccountSuspended"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1518,6 +2411,27 @@ macie2_get_master_account <- function() {
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource or account that the
 #' request applies to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   accountId = "string",
+#'   arn = "string",
+#'   email = "string",
+#'   invitedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   masterAccountId = "string",
+#'   relationshipStatus = "Enabled"|"Paused"|"Invited"|"Created"|"Removed"|"Resigned"|"EmailVerificationInProgress"|"EmailVerificationFailed"|"RegionDisabled"|"AccountSuspended",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1563,6 +2477,34 @@ macie2_get_member <- function(id) {
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
 #' @param sortBy The criteria to use to sort the query results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   records = list(
+#'     list(
+#'       accountId = "string",
+#'       freeTrialStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       usage = list(
+#'         list(
+#'           currency = "USD",
+#'           estimatedCost = "string",
+#'           serviceLimit = list(
+#'             isServiceLimited = TRUE|FALSE,
+#'             unit = "TERABYTES",
+#'             value = 123
+#'           ),
+#'           type = "DATA_INVENTORY_EVALUATION"|"SENSITIVE_DATA_DISCOVERY"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1613,6 +2555,20 @@ macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, next
 #' @usage
 #' macie2_get_usage_totals()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   usageTotals = list(
+#'     list(
+#'       currency = "USD",
+#'       estimatedCost = "string",
+#'       type = "DATA_INVENTORY_EVALUATION"|"SENSITIVE_DATA_DISCOVERY"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_usage_totals()
@@ -1652,6 +2608,45 @@ macie2_get_usage_totals <- function() {
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
 #' @param sortCriteria The criteria to use to sort the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       bucketDefinitions = list(
+#'         list(
+#'           accountId = "string",
+#'           buckets = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       jobId = "string",
+#'       jobStatus = "RUNNING"|"PAUSED"|"CANCELLED"|"COMPLETE"|"IDLE"|"USER_PAUSED",
+#'       jobType = "ONE_TIME"|"SCHEDULED",
+#'       lastRunErrorStatus = list(
+#'         code = "NONE"|"ERROR"
+#'       ),
+#'       name = "string",
+#'       userPausedDetails = list(
+#'         jobExpiresAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         jobImminentExpirationHealthEventArn = "string",
+#'         jobPausedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1719,6 +2714,25 @@ macie2_list_classification_jobs <- function(filterCriteria = NULL, maxResults = 
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       arn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       description = "string",
+#'       id = "string",
+#'       name = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_custom_data_identifiers(
@@ -1750,7 +2764,7 @@ macie2_list_custom_data_identifiers <- function(maxResults = NULL, nextToken = N
 #' Retrieves a subset of information about one or more findings
 #'
 #' @description
-#'  <p>Retrieves a subset of information about one or more findings.</p>
+#' Retrieves a subset of information about one or more findings.
 #'
 #' @usage
 #' macie2_list_findings(findingCriteria, maxResults, nextToken,
@@ -1761,6 +2775,17 @@ macie2_list_custom_data_identifiers <- function(maxResults = NULL, nextToken = N
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
 #' @param sortCriteria The criteria to use to sort the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   findingIds = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1828,6 +2853,25 @@ macie2_list_findings <- function(findingCriteria = NULL, maxResults = NULL, next
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   findingsFilterListItems = list(
+#'     list(
+#'       action = "ARCHIVE"|"NOOP",
+#'       arn = "string",
+#'       id = "string",
+#'       name = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_findings_filters(
@@ -1870,6 +2914,24 @@ macie2_list_findings_filters <- function(maxResults = NULL, nextToken = NULL) {
 #' response.
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   invitations = list(
+#'     list(
+#'       accountId = "string",
+#'       invitationId = "string",
+#'       invitedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       relationshipStatus = "Enabled"|"Paused"|"Invited"|"Created"|"Removed"|"Resigned"|"EmailVerificationInProgress"|"EmailVerificationFailed"|"RegionDisabled"|"AccountSuspended"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1918,6 +2980,32 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
 #' response includes only current member accounts. To include all accounts,
 #' set the value for this parameter to false.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   members = list(
+#'     list(
+#'       accountId = "string",
+#'       arn = "string",
+#'       email = "string",
+#'       invitedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       masterAccountId = "string",
+#'       relationshipStatus = "Enabled"|"Paused"|"Invited"|"Created"|"Removed"|"Resigned"|"EmailVerificationInProgress"|"EmailVerificationFailed"|"RegionDisabled"|"AccountSuspended",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_members(
@@ -1962,6 +3050,20 @@ macie2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssocia
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   adminAccounts = list(
+#'     list(
+#'       accountId = "string",
+#'       status = "ENABLED"|"DISABLING_IN_PROGRESS"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_organization_admin_accounts(
@@ -2005,6 +3107,16 @@ macie2_list_organization_admin_accounts <- function(maxResults = NULL, nextToken
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the classification job, custom data
 #' identifier, findings filter, or member account.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -2044,6 +3156,20 @@ macie2_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @param configuration &#91;required&#93; The location to store data classification results in, and the encryption
 #' settings to use when storing results in that location.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configuration = list(
+#'     s3Destination = list(
+#'       bucketName = "string",
+#'       keyPrefix = "string",
+#'       kmsKeyArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2098,6 +3224,12 @@ macie2_put_classification_export_configuration <- function(configuration) {
 #' A resource can have a maximum of 50 tags. Each tag consists of a tag key
 #' and an associated tag value. The maximum length of a tag key is 128
 #' characters. The maximum length of a tag value is 256 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2157,6 +3289,14 @@ macie2_tag_resource <- function(resourceArn, tags) {
 #' @param sampleText &#91;required&#93; The sample text to inspect by using the custom data identifier. The text
 #' can contain as many as 1,000 characters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   matchCount = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$test_custom_data_identifier(
@@ -2208,6 +3348,12 @@ macie2_test_custom_data_identifier <- function(ignoreWords = NULL, keywords = NU
 #' append the tagKeys parameter and argument for each additional tag to
 #' remove, separated by an ampersand (&).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -2251,14 +3397,14 @@ macie2_untag_resource <- function(resourceArn, tagKeys) {
 #' 
 #' -   CANCELLED - Stops the job permanently and cancels it. This value is
 #'     valid only if the job's current status is IDLE, PAUSED, RUNNING, or
-#'     USER\\_PAUSED.
+#'     USER_PAUSED.
 #' 
 #'     If you specify this value and the job's current status is RUNNING,
 #'     Amazon Macie immediately begins to stop all processing tasks for the
 #'     job. You can't resume or restart a job after you cancel it.
 #' 
 #' -   RUNNING - Resumes the job. This value is valid only if the job's
-#'     current status is USER\\_PAUSED.
+#'     current status is USER_PAUSED.
 #' 
 #'     If you paused the job while it was actively running and you specify
 #'     this value less than 30 days after you paused the job, Macie
@@ -2266,7 +3412,7 @@ macie2_untag_resource <- function(resourceArn, tagKeys) {
 #'     job. Otherwise, Macie resumes the job according to the schedule and
 #'     other settings for the job.
 #' 
-#' -   USER\\_PAUSED - Pauses the job temporarily. This value is valid only
+#' -   USER_PAUSED - Pauses the job temporarily. This value is valid only
 #'     if the job's current status is IDLE or RUNNING. If you specify this
 #'     value and the job's current status is RUNNING, Macie immediately
 #'     begins to pause all processing tasks for the job.
@@ -2277,6 +3423,12 @@ macie2_untag_resource <- function(resourceArn, tagKeys) {
 #'     days, the job run expires and Macie cancels the run. To check the
 #'     expiration date, refer to the UserPausedDetails.jobExpiresAt
 #'     property.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2341,6 +3493,15 @@ macie2_update_classification_job <- function(jobId, jobStatus) {
 #' is applied to findings, relative to other filters that are also applied
 #' to the findings.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   id = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_findings_filter(
@@ -2401,10 +3562,18 @@ macie2_update_findings_filter <- function(action = NULL, description = NULL, fin
 #' @usage
 #' macie2_update_macie_session(findingPublishingFrequency, status)
 #'
-#' @param findingPublishingFrequency Specifies how often to publish updates to policy findings for the account. This includes publishing updates to AWS Security Hub and Amazon EventBridge (formerly called Amazon CloudWatch Events).
+#' @param findingPublishingFrequency Specifies how often to publish updates to policy findings for the
+#' account. This includes publishing updates to AWS Security Hub and Amazon
+#' EventBridge (formerly called Amazon CloudWatch Events).
 #' @param status Specifies whether to change the status of the account. Valid values are:
 #' ENABLED, resume all Amazon Macie activities for the account; and,
 #' PAUSED, suspend all Macie activities for the account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2438,7 +3607,8 @@ macie2_update_macie_session <- function(findingPublishingFrequency = NULL, statu
 #' account
 #'
 #' @description
-#'  <p>Enables an Amazon Macie master account to suspend or re-enable a member account.</p>
+#' Enables an Amazon Macie master account to suspend or re-enable a member
+#' account.
 #'
 #' @usage
 #' macie2_update_member_session(id, status)
@@ -2448,6 +3618,12 @@ macie2_update_macie_session <- function(findingPublishingFrequency = NULL, statu
 #' @param status &#91;required&#93; Specifies the new status for the account. Valid values are: ENABLED,
 #' resume all Amazon Macie activities for the account; and, PAUSED, suspend
 #' all Macie activities for the account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2487,6 +3663,12 @@ macie2_update_member_session <- function(id, status) {
 #'
 #' @param autoEnable &#91;required&#93; Specifies whether Amazon Macie is enabled automatically for each
 #' account, when the account is added to the AWS organization.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

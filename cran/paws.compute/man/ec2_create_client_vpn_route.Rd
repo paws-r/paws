@@ -38,6 +38,15 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = list(
+    Code = "creating"|"active"|"failed"|"deleting",
+    Message = "string"
+  )
+)
+}
+}
 \description{
 Adds a route to a network to a Client VPN endpoint. Each Client VPN
 endpoint has a route table that describes the available destination

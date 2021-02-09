@@ -11,6 +11,10 @@ servicecatalog_associate_budget_with_resource(BudgetName, ResourceId)
 
 \item{ResourceId}{[required] The resource identifier. Either a portfolio-id or a product-id.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates the specified budget with the specified resource.
 }

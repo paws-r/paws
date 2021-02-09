@@ -15,6 +15,12 @@ working storage. Each string has a minimum length of 1 and maximum
 length of 300. You can get the disk IDs from the
 \code{\link[=storagegateway_list_local_disks]{list_local_disks}} API.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Configures one or more gateway local disks as working storage for a
 gateway. This operation is only supported in the stored volume gateway

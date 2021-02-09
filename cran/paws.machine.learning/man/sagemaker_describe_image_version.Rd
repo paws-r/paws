@@ -12,6 +12,24 @@ sagemaker_describe_image_version(ImageName, Version)
 \item{Version}{The version of the image. If not specified, the latest version is
 described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BaseImage = "string",
+  ContainerImage = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  FailureReason = "string",
+  ImageArn = "string",
+  ImageVersionArn = "string",
+  ImageVersionStatus = "CREATING"|"CREATED"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED",
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  Version = 123
+)
+}
+}
 \description{
 Describes a version of a SageMaker image.
 }

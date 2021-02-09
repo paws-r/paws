@@ -11,6 +11,12 @@ sagemaker_delete_artifact(ArtifactArn, Source)
 
 \item{Source}{The URI of the source.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ArtifactArn = "string"
+)
+}
+}
 \description{
 Deletes an artifact. Either \code{ArtifactArn} or \code{Source} must be specified.
 }

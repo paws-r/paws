@@ -40,6 +40,15 @@ name.}
 \item{email}{The email address for the commit that deletes the file. If no email
 address is specified, the email address is left blank.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  commitId = "string",
+  blobId = "string",
+  treeId = "string",
+  filePath = "string"
+)
+}
+}
 \description{
 Deletes a specified file from a specified branch. A commit is created on
 the branch that contains the revision. The file still exists in the

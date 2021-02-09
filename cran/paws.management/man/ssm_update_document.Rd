@@ -30,6 +30,73 @@ Manager supports JSON and YAML documents. JSON is the default format.}
 
 \item{TargetType}{Specify a new target type for the document.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DocumentDescription = list(
+    Sha1 = "string",
+    Hash = "string",
+    HashType = "Sha256"|"Sha1",
+    Name = "string",
+    VersionName = "string",
+    Owner = "string",
+    CreatedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
+    StatusInformation = "string",
+    DocumentVersion = "string",
+    Description = "string",
+    Parameters = list(
+      list(
+        Name = "string",
+        Type = "String"|"StringList",
+        Description = "string",
+        DefaultValue = "string"
+      )
+    ),
+    PlatformTypes = list(
+      "Windows"|"Linux"
+    ),
+    DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+    SchemaVersion = "string",
+    LatestVersion = "string",
+    DefaultVersion = "string",
+    DocumentFormat = "YAML"|"JSON"|"TEXT",
+    TargetType = "string",
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    AttachmentsInformation = list(
+      list(
+        Name = "string"
+      )
+    ),
+    Requires = list(
+      list(
+        Name = "string",
+        Version = "string"
+      )
+    ),
+    Author = "string",
+    ReviewInformation = list(
+      list(
+        ReviewedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        Status = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
+        Reviewer = "string"
+      )
+    ),
+    ApprovedVersion = "string",
+    PendingReviewVersion = "string",
+    ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
+  )
+)
+}
+}
 \description{
 Updates one or more values for an SSM document.
 }

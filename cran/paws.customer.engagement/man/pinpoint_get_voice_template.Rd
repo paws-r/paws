@@ -10,7 +10,7 @@ pinpoint_get_voice_template(TemplateName, Version)
 \arguments{
 \item{TemplateName}{[required] The name of the message template. A template name must start with an
 alphanumeric character and can contain a maximum of 128 characters. The
-characters can be alphanumeric characters, underscores (\\_), or hyphens
+characters can be alphanumeric characters, underscores (_), or hyphens
 (-). Template names are case sensitive.}
 
 \item{Version}{The unique identifier for the version of the message template to update,
@@ -34,6 +34,27 @@ parameter isn't used or is set to false.
 \item For a delete operation, deletes the template, including all versions
 of the template.
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  VoiceTemplateResponse = list(
+    Arn = "string",
+    Body = "string",
+    CreationDate = "string",
+    DefaultSubstitutions = "string",
+    LanguageCode = "string",
+    LastModifiedDate = "string",
+    tags = list(
+      "string"
+    ),
+    TemplateDescription = "string",
+    TemplateName = "string",
+    TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
+    Version = "string",
+    VoiceId = "string"
+  )
+)
+}
 }
 \description{
 Retrieves the content and settings of a message template for messages

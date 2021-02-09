@@ -13,6 +13,20 @@ the next set of rules.}
 \item{MaxResults}{The maximum number of results to return in one operation. If you omit
 this parameter, the default of 500 is used.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  InsightRules = list(
+    list(
+      Name = "string",
+      State = "string",
+      Schema = "string",
+      Definition = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of all the Contributor Insights rules in your account.
 

@@ -14,7 +14,7 @@ operations.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lowercase or uppercase
-letters, digits, or the underscore character (\\_).}
+letters, digits, or the underscore character (_).}
 }
 \description{
 Deletes the specified policy from your organization. Before you perform

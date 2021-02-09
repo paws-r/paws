@@ -17,6 +17,19 @@ this table name are returned.}
 will evaluate. Use the value that was returned for
 \code{LastEvaluatedStreamArn} in the previous operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Streams = list(
+    list(
+      StreamArn = "string",
+      TableName = "string",
+      StreamLabel = "string"
+    )
+  ),
+  LastEvaluatedStreamArn = "string"
+)
+}
+}
 \description{
 Returns an array of stream ARNs associated with the current account and
 endpoint. If the \code{TableName} parameter is present, then

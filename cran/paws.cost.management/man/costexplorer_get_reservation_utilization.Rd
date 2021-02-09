@@ -30,11 +30,11 @@ operation supports only \code{DAILY} and \code{MONTHLY} granularities.}
 dimensions:
 \itemize{
 \item AZ
-\item CACHE\\_ENGINE
-\item DEPLOYMENT\\_OPTION
-\item INSTANCE\\_TYPE
-\item LINKED\\_ACCOUNT
-\item OPERATING\\_SYSTEM
+\item CACHE_ENGINE
+\item DEPLOYMENT_OPTION
+\item INSTANCE_TYPE
+\item LINKED_ACCOUNT
+\item OPERATING_SYSTEM
 \item PLATFORM
 \item REGION
 \item SERVICE
@@ -82,6 +82,86 @@ page size.}
 more objects are available, in the response, AWS provides a
 NextPageToken value that you can use in a subsequent call to get the
 next batch of objects.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  UtilizationsByTime = list(
+    list(
+      TimePeriod = list(
+        Start = "string",
+        End = "string"
+      ),
+      Groups = list(
+        list(
+          Key = "string",
+          Value = "string",
+          Attributes = list(
+            "string"
+          ),
+          Utilization = list(
+            UtilizationPercentage = "string",
+            UtilizationPercentageInUnits = "string",
+            PurchasedHours = "string",
+            PurchasedUnits = "string",
+            TotalActualHours = "string",
+            TotalActualUnits = "string",
+            UnusedHours = "string",
+            UnusedUnits = "string",
+            OnDemandCostOfRIHoursUsed = "string",
+            NetRISavings = "string",
+            TotalPotentialRISavings = "string",
+            AmortizedUpfrontFee = "string",
+            AmortizedRecurringFee = "string",
+            TotalAmortizedFee = "string",
+            RICostForUnusedHours = "string",
+            RealizedSavings = "string",
+            UnrealizedSavings = "string"
+          )
+        )
+      ),
+      Total = list(
+        UtilizationPercentage = "string",
+        UtilizationPercentageInUnits = "string",
+        PurchasedHours = "string",
+        PurchasedUnits = "string",
+        TotalActualHours = "string",
+        TotalActualUnits = "string",
+        UnusedHours = "string",
+        UnusedUnits = "string",
+        OnDemandCostOfRIHoursUsed = "string",
+        NetRISavings = "string",
+        TotalPotentialRISavings = "string",
+        AmortizedUpfrontFee = "string",
+        AmortizedRecurringFee = "string",
+        TotalAmortizedFee = "string",
+        RICostForUnusedHours = "string",
+        RealizedSavings = "string",
+        UnrealizedSavings = "string"
+      )
+    )
+  ),
+  Total = list(
+    UtilizationPercentage = "string",
+    UtilizationPercentageInUnits = "string",
+    PurchasedHours = "string",
+    PurchasedUnits = "string",
+    TotalActualHours = "string",
+    TotalActualUnits = "string",
+    UnusedHours = "string",
+    UnusedUnits = "string",
+    OnDemandCostOfRIHoursUsed = "string",
+    NetRISavings = "string",
+    TotalPotentialRISavings = "string",
+    AmortizedUpfrontFee = "string",
+    AmortizedRecurringFee = "string",
+    TotalAmortizedFee = "string",
+    RICostForUnusedHours = "string",
+    RealizedSavings = "string",
+    UnrealizedSavings = "string"
+  ),
+  NextPageToken = "string"
+)
+}
 }
 \description{
 Retrieves the reservation utilization for your account. Management

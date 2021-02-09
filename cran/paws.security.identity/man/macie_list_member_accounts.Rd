@@ -16,6 +16,17 @@ value of nextToken from the previous response to continue listing data.}
 \item{maxResults}{Use this parameter to indicate the maximum number of items that you want
 in the response. The default value is 250.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  memberAccounts = list(
+    list(
+      accountId = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all Amazon Macie Classic member accounts for the current Amazon
 Macie Classic master account.

@@ -14,6 +14,22 @@ elasticbeanstalk_describe_environment_managed_actions(EnvironmentName,
 
 \item{Status}{To show only actions with a particular status, specify a status.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ManagedActions = list(
+    list(
+      ActionId = "string",
+      ActionDescription = "string",
+      ActionType = "InstanceRefresh"|"PlatformUpdate"|"Unknown",
+      Status = "Scheduled"|"Pending"|"Running"|"Unknown",
+      WindowStartTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists an environment's upcoming and in-progress managed actions.
 }

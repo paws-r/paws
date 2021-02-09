@@ -54,7 +54,7 @@ endpoint group.
 
 After you make changes, you can verify that the updates are complete by
 checking the status of your accelerator: the status changes from
-IN\\_PROGRESS to DEPLOYED.
+IN_PROGRESS to DEPLOYED.
 }
 \section{Request syntax}{
 \preformatted{svc$allow_custom_routing_traffic(

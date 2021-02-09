@@ -10,6 +10,20 @@ emr_list_security_configurations(Marker)
 \arguments{
 \item{Marker}{The pagination token that indicates the set of results to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SecurityConfigurations = list(
+    list(
+      Name = "string",
+      CreationDateTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Lists all the security configurations visible to this account, providing
 their creation dates and times, and their names. This call returns a

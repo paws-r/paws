@@ -13,6 +13,30 @@ snowball_describe_addresses(MaxResults, NextToken)
 list of \code{ADDRESS} objects, you have the option of specifying a value for
 \code{NextToken} as the starting point for your list of returned addresses.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Addresses = list(
+    list(
+      AddressId = "string",
+      Name = "string",
+      Company = "string",
+      Street1 = "string",
+      Street2 = "string",
+      Street3 = "string",
+      City = "string",
+      StateOrProvince = "string",
+      PrefectureOrDistrict = "string",
+      Landmark = "string",
+      Country = "string",
+      PostalCode = "string",
+      PhoneNumber = "string",
+      IsRestricted = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a specified number of \code{ADDRESS} objects. Calling this API in one
 of the US regions will return addresses from the list of all addresses

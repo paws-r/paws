@@ -9,6 +9,12 @@ clouddirectory_disable_directory(DirectoryArn)
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory to disable.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DirectoryArn = "string"
+)
+}
+}
 \description{
 Disables the specified directory. Disabled directories cannot be read or
 written to. Only enabled directories can be disabled. Disabled

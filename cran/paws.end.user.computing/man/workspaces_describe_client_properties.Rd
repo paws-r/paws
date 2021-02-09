@@ -10,6 +10,19 @@ workspaces_describe_client_properties(ResourceIds)
 \arguments{
 \item{ResourceIds}{[required] The resource identifier, in the form of directory IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ClientPropertiesList = list(
+    list(
+      ResourceId = "string",
+      ClientProperties = list(
+        ReconnectEnabled = "ENABLED"|"DISABLED"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieves a list that describes one or more specified Amazon WorkSpaces
 clients.

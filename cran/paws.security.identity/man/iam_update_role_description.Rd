@@ -11,6 +11,39 @@ iam_update_role_description(RoleName, Description)
 
 \item{Description}{[required] The new description that you want to apply to the specified role.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Role = list(
+    Path = "string",
+    RoleName = "string",
+    RoleId = "string",
+    Arn = "string",
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    AssumeRolePolicyDocument = "string",
+    Description = "string",
+    MaxSessionDuration = 123,
+    PermissionsBoundary = list(
+      PermissionsBoundaryType = "PermissionsBoundaryPolicy",
+      PermissionsBoundaryArn = "string"
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    RoleLastUsed = list(
+      LastUsedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Region = "string"
+    )
+  )
+)
+}
+}
 \description{
 Use \code{\link[=iam_update_role]{update_role}} instead.
 

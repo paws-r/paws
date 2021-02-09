@@ -39,6 +39,19 @@ in the response to get the next page of results.
 If you don't specify a value for \code{MaxResults}, Route 53 returns up to
 100 configurations.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  QueryLoggingConfigs = list(
+    list(
+      Id = "string",
+      HostedZoneId = "string",
+      CloudWatchLogsLogGroupArn = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the configurations for DNS query logging that are associated with
 the current AWS account or the configuration that is associated with a

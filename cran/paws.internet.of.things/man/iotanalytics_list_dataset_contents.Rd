@@ -23,6 +23,30 @@ in the \code{\link[=iotanalytics_create_dataset]{create_dataset}} request.
 scheduled before the given time. See the field \code{triggers.schedule} in
 the \code{\link[=iotanalytics_create_dataset]{create_dataset}} request. (timestamp)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  datasetContentSummaries = list(
+    list(
+      version = "string",
+      status = list(
+        state = "CREATING"|"SUCCEEDED"|"FAILED",
+        reason = "string"
+      ),
+      creationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      scheduleTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      completionTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists information about data set contents that have been created.
 }

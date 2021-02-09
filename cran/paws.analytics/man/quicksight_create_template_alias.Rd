@@ -19,6 +19,18 @@ that start with \code{$} are reserved by QuickSight.}
 
 \item{TemplateVersionNumber}{[required] The version number of the template.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TemplateAlias = list(
+    AliasName = "string",
+    Arn = "string",
+    TemplateVersionNumber = 123
+  ),
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Creates a template alias for a template.
 }

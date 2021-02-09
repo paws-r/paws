@@ -13,6 +13,10 @@ mturk_delete_worker_block(WorkerId, Reason)
 \item{Reason}{A message that explains the reason for unblocking the Worker. The Worker
 does not see this message.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 The \code{\link[=mturk_delete_worker_block]{delete_worker_block}} operation allows
 you to reinstate a blocked Worker to work on your HITs. This operation

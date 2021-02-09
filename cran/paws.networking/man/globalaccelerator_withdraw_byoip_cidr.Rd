@@ -10,6 +10,23 @@ globalaccelerator_withdraw_byoip_cidr(Cidr)
 \arguments{
 \item{Cidr}{[required] The address range, in CIDR notation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ByoipCidr = list(
+    Cidr = "string",
+    State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
+    Events = list(
+      list(
+        Message = "string",
+        Timestamp = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Stops advertising an address range that is provisioned as an address
 pool. You can perform this operation at most once every 10 seconds, even

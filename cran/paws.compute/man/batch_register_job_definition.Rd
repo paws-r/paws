@@ -72,6 +72,14 @@ in \emph{AWS Batch User Guide}.}
 specified, it defaults to \code{EC2}. To run the job on Fargate resources,
 specify \code{FARGATE}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobDefinitionName = "string",
+  jobDefinitionArn = "string",
+  revision = 123
+)
+}
+}
 \description{
 Registers an AWS Batch job definition.
 }

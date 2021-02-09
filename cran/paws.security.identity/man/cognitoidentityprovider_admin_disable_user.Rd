@@ -11,6 +11,10 @@ cognitoidentityprovider_admin_disable_user(UserPoolId, Username)
 
 \item{Username}{[required] The user name of the user you wish to disable.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disables the specified user.
 

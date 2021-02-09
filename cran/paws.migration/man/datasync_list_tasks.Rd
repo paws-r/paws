@@ -18,6 +18,19 @@ on a specific source location, you can use
 \code{\link[=datasync_list_tasks]{list_tasks}} with filter name \code{LocationId} and
 \verb{Operator Equals} with the ARN for the location.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tasks = list(
+    list(
+      TaskArn = "string",
+      Status = "AVAILABLE"|"CREATING"|"QUEUED"|"RUNNING"|"UNAVAILABLE",
+      Name = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of all the tasks.
 }

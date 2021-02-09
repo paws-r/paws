@@ -10,6 +10,12 @@ ssm_cancel_maintenance_window_execution(WindowExecutionId)
 \arguments{
 \item{WindowExecutionId}{[required] The ID of the maintenance window execution to stop.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WindowExecutionId = "string"
+)
+}
+}
 \description{
 Stops a maintenance window execution that is already in progress and
 cancels any tasks in the window that have not already starting running.

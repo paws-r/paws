@@ -15,6 +15,16 @@ NULL
 #'
 #' @param DomainName &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FieldNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$build_suggesters(
@@ -58,6 +68,35 @@ cloudsearch_build_suggesters <- function(DomainName) {
 #' a letter or number and be at least 3 and no more than 28 characters
 #' long.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainStatus = list(
+#'     DomainId = "string",
+#'     DomainName = "string",
+#'     ARN = "string",
+#'     Created = TRUE|FALSE,
+#'     Deleted = TRUE|FALSE,
+#'     DocService = list(
+#'       Endpoint = "string"
+#'     ),
+#'     SearchService = list(
+#'       Endpoint = "string"
+#'     ),
+#'     RequiresIndexDocuments = TRUE|FALSE,
+#'     Processing = TRUE|FALSE,
+#'     SearchInstanceType = "string",
+#'     SearchPartitionCount = 123,
+#'     SearchInstanceCount = 123,
+#'     Limits = list(
+#'       MaximumReplicationCount = 123,
+#'       MaximumPartitionCount = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_domain(
@@ -100,6 +139,37 @@ cloudsearch_create_domain <- function(DomainName) {
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param AnalysisScheme &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AnalysisScheme = list(
+#'     Options = list(
+#'       AnalysisSchemeName = "string",
+#'       AnalysisSchemeLanguage = "ar"|"bg"|"ca"|"cs"|"da"|"de"|"el"|"en"|"es"|"eu"|"fa"|"fi"|"fr"|"ga"|"gl"|"he"|"hi"|"hu"|"hy"|"id"|"it"|"ja"|"ko"|"lv"|"mul"|"nl"|"no"|"pt"|"ro"|"ru"|"sv"|"th"|"tr"|"zh-Hans"|"zh-Hant",
+#'       AnalysisOptions = list(
+#'         Synonyms = "string",
+#'         Stopwords = "string",
+#'         StemmingDictionary = "string",
+#'         JapaneseTokenizationDictionary = "string",
+#'         AlgorithmicStemming = "none"|"minimal"|"light"|"full"
+#'       )
+#'     ),
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -155,6 +225,30 @@ cloudsearch_define_analysis_scheme <- function(DomainName, AnalysisScheme) {
 #' @param DomainName &#91;required&#93; 
 #' @param Expression &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Expression = list(
+#'     Options = list(
+#'       ExpressionName = "string",
+#'       ExpressionValue = "string"
+#'     ),
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$define_expression(
@@ -205,6 +299,113 @@ cloudsearch_define_expression <- function(DomainName, Expression) {
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param IndexField &#91;required&#93; The index field and field options you want to configure.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IndexField = list(
+#'     Options = list(
+#'       IndexFieldName = "string",
+#'       IndexFieldType = "int"|"double"|"literal"|"text"|"date"|"latlon"|"int-array"|"double-array"|"literal-array"|"text-array"|"date-array",
+#'       IntOptions = list(
+#'         DefaultValue = 123,
+#'         SourceField = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE,
+#'         SortEnabled = TRUE|FALSE
+#'       ),
+#'       DoubleOptions = list(
+#'         DefaultValue = 123.0,
+#'         SourceField = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE,
+#'         SortEnabled = TRUE|FALSE
+#'       ),
+#'       LiteralOptions = list(
+#'         DefaultValue = "string",
+#'         SourceField = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE,
+#'         SortEnabled = TRUE|FALSE
+#'       ),
+#'       TextOptions = list(
+#'         DefaultValue = "string",
+#'         SourceField = "string",
+#'         ReturnEnabled = TRUE|FALSE,
+#'         SortEnabled = TRUE|FALSE,
+#'         HighlightEnabled = TRUE|FALSE,
+#'         AnalysisScheme = "string"
+#'       ),
+#'       DateOptions = list(
+#'         DefaultValue = "string",
+#'         SourceField = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE,
+#'         SortEnabled = TRUE|FALSE
+#'       ),
+#'       LatLonOptions = list(
+#'         DefaultValue = "string",
+#'         SourceField = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE,
+#'         SortEnabled = TRUE|FALSE
+#'       ),
+#'       IntArrayOptions = list(
+#'         DefaultValue = 123,
+#'         SourceFields = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE
+#'       ),
+#'       DoubleArrayOptions = list(
+#'         DefaultValue = 123.0,
+#'         SourceFields = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE
+#'       ),
+#'       LiteralArrayOptions = list(
+#'         DefaultValue = "string",
+#'         SourceFields = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE
+#'       ),
+#'       TextArrayOptions = list(
+#'         DefaultValue = "string",
+#'         SourceFields = "string",
+#'         ReturnEnabled = TRUE|FALSE,
+#'         HighlightEnabled = TRUE|FALSE,
+#'         AnalysisScheme = "string"
+#'       ),
+#'       DateArrayOptions = list(
+#'         DefaultValue = "string",
+#'         SourceFields = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -337,6 +538,34 @@ cloudsearch_define_index_field <- function(DomainName, IndexField) {
 #' @param DomainName &#91;required&#93; 
 #' @param Suggester &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Suggester = list(
+#'     Options = list(
+#'       SuggesterName = "string",
+#'       DocumentSuggesterOptions = list(
+#'         SourceField = "string",
+#'         FuzzyMatching = "none"|"low"|"high",
+#'         SortExpression = "string"
+#'       )
+#'     ),
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$define_suggester(
@@ -386,6 +615,37 @@ cloudsearch_define_suggester <- function(DomainName, Suggester) {
 #' @param DomainName &#91;required&#93; 
 #' @param AnalysisSchemeName &#91;required&#93; The name of the analysis scheme you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AnalysisScheme = list(
+#'     Options = list(
+#'       AnalysisSchemeName = "string",
+#'       AnalysisSchemeLanguage = "ar"|"bg"|"ca"|"cs"|"da"|"de"|"el"|"en"|"es"|"eu"|"fa"|"fi"|"fr"|"ga"|"gl"|"he"|"hi"|"hu"|"hy"|"id"|"it"|"ja"|"ko"|"lv"|"mul"|"nl"|"no"|"pt"|"ro"|"ru"|"sv"|"th"|"tr"|"zh-Hans"|"zh-Hant",
+#'       AnalysisOptions = list(
+#'         Synonyms = "string",
+#'         Stopwords = "string",
+#'         StemmingDictionary = "string",
+#'         JapaneseTokenizationDictionary = "string",
+#'         AlgorithmicStemming = "none"|"minimal"|"light"|"full"
+#'       )
+#'     ),
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_analysis_scheme(
@@ -428,6 +688,35 @@ cloudsearch_delete_analysis_scheme <- function(DomainName, AnalysisSchemeName) {
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to permanently delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainStatus = list(
+#'     DomainId = "string",
+#'     DomainName = "string",
+#'     ARN = "string",
+#'     Created = TRUE|FALSE,
+#'     Deleted = TRUE|FALSE,
+#'     DocService = list(
+#'       Endpoint = "string"
+#'     ),
+#'     SearchService = list(
+#'       Endpoint = "string"
+#'     ),
+#'     RequiresIndexDocuments = TRUE|FALSE,
+#'     Processing = TRUE|FALSE,
+#'     SearchInstanceType = "string",
+#'     SearchPartitionCount = 123,
+#'     SearchInstanceCount = 123,
+#'     Limits = list(
+#'       MaximumReplicationCount = 123,
+#'       MaximumPartitionCount = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_domain(
@@ -468,6 +757,30 @@ cloudsearch_delete_domain <- function(DomainName) {
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param ExpressionName &#91;required&#93; The name of the `Expression` to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Expression = list(
+#'     Options = list(
+#'       ExpressionName = "string",
+#'       ExpressionValue = "string"
+#'     ),
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -512,6 +825,113 @@ cloudsearch_delete_expression <- function(DomainName, ExpressionName) {
 #' @param IndexFieldName &#91;required&#93; The name of the index field your want to remove from the domain's
 #' indexing options.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IndexField = list(
+#'     Options = list(
+#'       IndexFieldName = "string",
+#'       IndexFieldType = "int"|"double"|"literal"|"text"|"date"|"latlon"|"int-array"|"double-array"|"literal-array"|"text-array"|"date-array",
+#'       IntOptions = list(
+#'         DefaultValue = 123,
+#'         SourceField = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE,
+#'         SortEnabled = TRUE|FALSE
+#'       ),
+#'       DoubleOptions = list(
+#'         DefaultValue = 123.0,
+#'         SourceField = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE,
+#'         SortEnabled = TRUE|FALSE
+#'       ),
+#'       LiteralOptions = list(
+#'         DefaultValue = "string",
+#'         SourceField = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE,
+#'         SortEnabled = TRUE|FALSE
+#'       ),
+#'       TextOptions = list(
+#'         DefaultValue = "string",
+#'         SourceField = "string",
+#'         ReturnEnabled = TRUE|FALSE,
+#'         SortEnabled = TRUE|FALSE,
+#'         HighlightEnabled = TRUE|FALSE,
+#'         AnalysisScheme = "string"
+#'       ),
+#'       DateOptions = list(
+#'         DefaultValue = "string",
+#'         SourceField = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE,
+#'         SortEnabled = TRUE|FALSE
+#'       ),
+#'       LatLonOptions = list(
+#'         DefaultValue = "string",
+#'         SourceField = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE,
+#'         SortEnabled = TRUE|FALSE
+#'       ),
+#'       IntArrayOptions = list(
+#'         DefaultValue = 123,
+#'         SourceFields = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE
+#'       ),
+#'       DoubleArrayOptions = list(
+#'         DefaultValue = 123.0,
+#'         SourceFields = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE
+#'       ),
+#'       LiteralArrayOptions = list(
+#'         DefaultValue = "string",
+#'         SourceFields = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE
+#'       ),
+#'       TextArrayOptions = list(
+#'         DefaultValue = "string",
+#'         SourceFields = "string",
+#'         ReturnEnabled = TRUE|FALSE,
+#'         HighlightEnabled = TRUE|FALSE,
+#'         AnalysisScheme = "string"
+#'       ),
+#'       DateArrayOptions = list(
+#'         DefaultValue = "string",
+#'         SourceFields = "string",
+#'         FacetEnabled = TRUE|FALSE,
+#'         SearchEnabled = TRUE|FALSE,
+#'         ReturnEnabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_index_field(
@@ -552,6 +972,34 @@ cloudsearch_delete_index_field <- function(DomainName, IndexFieldName) {
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param SuggesterName &#91;required&#93; Specifies the name of the suggester you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Suggester = list(
+#'     Options = list(
+#'       SuggesterName = "string",
+#'       DocumentSuggesterOptions = list(
+#'         SourceField = "string",
+#'         FuzzyMatching = "none"|"low"|"high",
+#'         SortExpression = "string"
+#'       )
+#'     ),
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -603,6 +1051,39 @@ cloudsearch_delete_suggester <- function(DomainName, SuggesterName) {
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
 #' pending changes (`false`). Defaults to `false`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AnalysisSchemes = list(
+#'     list(
+#'       Options = list(
+#'         AnalysisSchemeName = "string",
+#'         AnalysisSchemeLanguage = "ar"|"bg"|"ca"|"cs"|"da"|"de"|"el"|"en"|"es"|"eu"|"fa"|"fi"|"fr"|"ga"|"gl"|"he"|"hi"|"hu"|"hy"|"id"|"it"|"ja"|"ko"|"lv"|"mul"|"nl"|"no"|"pt"|"ro"|"ru"|"sv"|"th"|"tr"|"zh-Hans"|"zh-Hant",
+#'         AnalysisOptions = list(
+#'           Synonyms = "string",
+#'           Stopwords = "string",
+#'           StemmingDictionary = "string",
+#'           JapaneseTokenizationDictionary = "string",
+#'           AlgorithmicStemming = "none"|"minimal"|"light"|"full"
+#'         )
+#'       ),
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_analysis_schemes(
@@ -651,6 +1132,27 @@ cloudsearch_describe_analysis_schemes <- function(DomainName, AnalysisSchemeName
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
 #' pending changes (`false`). Defaults to `false`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AvailabilityOptions = list(
+#'     Options = TRUE|FALSE,
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_availability_options(
@@ -697,6 +1199,30 @@ cloudsearch_describe_availability_options <- function(DomainName, Deployed = NUL
 #' Processing state) or the current, active configuration. Defaults to
 #' `false`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainEndpointOptions = list(
+#'     Options = list(
+#'       EnforceHTTPS = TRUE|FALSE,
+#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
+#'     ),
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_domain_endpoint_options(
@@ -741,6 +1267,37 @@ cloudsearch_describe_domain_endpoint_options <- function(DomainName, Deployed = 
 #' cloudsearch_describe_domains(DomainNames)
 #'
 #' @param DomainNames The names of the domains you want to include in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainStatusList = list(
+#'     list(
+#'       DomainId = "string",
+#'       DomainName = "string",
+#'       ARN = "string",
+#'       Created = TRUE|FALSE,
+#'       Deleted = TRUE|FALSE,
+#'       DocService = list(
+#'         Endpoint = "string"
+#'       ),
+#'       SearchService = list(
+#'         Endpoint = "string"
+#'       ),
+#'       RequiresIndexDocuments = TRUE|FALSE,
+#'       Processing = TRUE|FALSE,
+#'       SearchInstanceType = "string",
+#'       SearchPartitionCount = 123,
+#'       SearchInstanceCount = 123,
+#'       Limits = list(
+#'         MaximumReplicationCount = 123,
+#'         MaximumPartitionCount = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -791,6 +1348,32 @@ cloudsearch_describe_domains <- function(DomainNames = NULL) {
 #' are shown.
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
 #' pending changes (`false`). Defaults to `false`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Expressions = list(
+#'     list(
+#'       Options = list(
+#'         ExpressionName = "string",
+#'         ExpressionValue = "string"
+#'       ),
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -843,6 +1426,115 @@ cloudsearch_describe_expressions <- function(DomainName, ExpressionNames = NULL,
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
 #' pending changes (`false`). Defaults to `false`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IndexFields = list(
+#'     list(
+#'       Options = list(
+#'         IndexFieldName = "string",
+#'         IndexFieldType = "int"|"double"|"literal"|"text"|"date"|"latlon"|"int-array"|"double-array"|"literal-array"|"text-array"|"date-array",
+#'         IntOptions = list(
+#'           DefaultValue = 123,
+#'           SourceField = "string",
+#'           FacetEnabled = TRUE|FALSE,
+#'           SearchEnabled = TRUE|FALSE,
+#'           ReturnEnabled = TRUE|FALSE,
+#'           SortEnabled = TRUE|FALSE
+#'         ),
+#'         DoubleOptions = list(
+#'           DefaultValue = 123.0,
+#'           SourceField = "string",
+#'           FacetEnabled = TRUE|FALSE,
+#'           SearchEnabled = TRUE|FALSE,
+#'           ReturnEnabled = TRUE|FALSE,
+#'           SortEnabled = TRUE|FALSE
+#'         ),
+#'         LiteralOptions = list(
+#'           DefaultValue = "string",
+#'           SourceField = "string",
+#'           FacetEnabled = TRUE|FALSE,
+#'           SearchEnabled = TRUE|FALSE,
+#'           ReturnEnabled = TRUE|FALSE,
+#'           SortEnabled = TRUE|FALSE
+#'         ),
+#'         TextOptions = list(
+#'           DefaultValue = "string",
+#'           SourceField = "string",
+#'           ReturnEnabled = TRUE|FALSE,
+#'           SortEnabled = TRUE|FALSE,
+#'           HighlightEnabled = TRUE|FALSE,
+#'           AnalysisScheme = "string"
+#'         ),
+#'         DateOptions = list(
+#'           DefaultValue = "string",
+#'           SourceField = "string",
+#'           FacetEnabled = TRUE|FALSE,
+#'           SearchEnabled = TRUE|FALSE,
+#'           ReturnEnabled = TRUE|FALSE,
+#'           SortEnabled = TRUE|FALSE
+#'         ),
+#'         LatLonOptions = list(
+#'           DefaultValue = "string",
+#'           SourceField = "string",
+#'           FacetEnabled = TRUE|FALSE,
+#'           SearchEnabled = TRUE|FALSE,
+#'           ReturnEnabled = TRUE|FALSE,
+#'           SortEnabled = TRUE|FALSE
+#'         ),
+#'         IntArrayOptions = list(
+#'           DefaultValue = 123,
+#'           SourceFields = "string",
+#'           FacetEnabled = TRUE|FALSE,
+#'           SearchEnabled = TRUE|FALSE,
+#'           ReturnEnabled = TRUE|FALSE
+#'         ),
+#'         DoubleArrayOptions = list(
+#'           DefaultValue = 123.0,
+#'           SourceFields = "string",
+#'           FacetEnabled = TRUE|FALSE,
+#'           SearchEnabled = TRUE|FALSE,
+#'           ReturnEnabled = TRUE|FALSE
+#'         ),
+#'         LiteralArrayOptions = list(
+#'           DefaultValue = "string",
+#'           SourceFields = "string",
+#'           FacetEnabled = TRUE|FALSE,
+#'           SearchEnabled = TRUE|FALSE,
+#'           ReturnEnabled = TRUE|FALSE
+#'         ),
+#'         TextArrayOptions = list(
+#'           DefaultValue = "string",
+#'           SourceFields = "string",
+#'           ReturnEnabled = TRUE|FALSE,
+#'           HighlightEnabled = TRUE|FALSE,
+#'           AnalysisScheme = "string"
+#'         ),
+#'         DateArrayOptions = list(
+#'           DefaultValue = "string",
+#'           SourceFields = "string",
+#'           FacetEnabled = TRUE|FALSE,
+#'           SearchEnabled = TRUE|FALSE,
+#'           ReturnEnabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_index_fields(
@@ -887,6 +1579,31 @@ cloudsearch_describe_index_fields <- function(DomainName, FieldNames = NULL, Dep
 #' cloudsearch_describe_scaling_parameters(DomainName)
 #'
 #' @param DomainName &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScalingParameters = list(
+#'     Options = list(
+#'       DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge"|"search.small"|"search.medium"|"search.large"|"search.xlarge"|"search.2xlarge",
+#'       DesiredReplicationCount = 123,
+#'       DesiredPartitionCount = 123
+#'     ),
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -933,6 +1650,27 @@ cloudsearch_describe_scaling_parameters <- function(DomainName) {
 #' @param DomainName &#91;required&#93; The name of the domain you want to describe.
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
 #' pending changes (`false`). Defaults to `false`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessPolicies = list(
+#'     Options = "string",
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -982,6 +1720,36 @@ cloudsearch_describe_service_access_policies <- function(DomainName, Deployed = 
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
 #' pending changes (`false`). Defaults to `false`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Suggesters = list(
+#'     list(
+#'       Options = list(
+#'         SuggesterName = "string",
+#'         DocumentSuggesterOptions = list(
+#'           SourceField = "string",
+#'           FuzzyMatching = "none"|"low"|"high",
+#'           SortExpression = "string"
+#'         )
+#'       ),
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_suggesters(
@@ -1026,6 +1794,16 @@ cloudsearch_describe_suggesters <- function(DomainName, SuggesterNames = NULL, D
 #'
 #' @param DomainName &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FieldNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$index_documents(
@@ -1062,6 +1840,16 @@ cloudsearch_index_documents <- function(DomainName) {
 #' cloudsearch_list_domain_names()
 #'
 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 
 #'
@@ -1105,6 +1893,27 @@ cloudsearch_list_domain_names <- function() {
 #' setting the Multi-AZ option to true. Similarly, you can turn off the
 #' Multi-AZ option to downgrade the domain to a single Availability Zone by
 #' setting the Multi-AZ option to `false`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AvailabilityOptions = list(
+#'     Options = TRUE|FALSE,
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1153,6 +1962,30 @@ cloudsearch_update_availability_options <- function(DomainName, MultiAZ) {
 #' recommend Policy-Min-TLS-1-2-2019-07 for TLSSecurityPolicy. For
 #' compatibility with older clients, the default is
 #' Policy-Min-TLS-1-0-2019-07.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainEndpointOptions = list(
+#'     Options = list(
+#'       EnforceHTTPS = TRUE|FALSE,
+#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
+#'     ),
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1204,6 +2037,31 @@ cloudsearch_update_domain_endpoint_options <- function(DomainName, DomainEndpoin
 #' @param DomainName &#91;required&#93; 
 #' @param ScalingParameters &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScalingParameters = list(
+#'     Options = list(
+#'       DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge"|"search.small"|"search.medium"|"search.large"|"search.xlarge"|"search.2xlarge",
+#'       DesiredReplicationCount = 123,
+#'       DesiredPartitionCount = 123
+#'     ),
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_scaling_parameters(
@@ -1251,6 +2109,27 @@ cloudsearch_update_scaling_parameters <- function(DomainName, ScalingParameters)
 #' @param DomainName &#91;required&#93; 
 #' @param AccessPolicies &#91;required&#93; The access rules you want to configure. These rules replace any existing
 #' rules.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessPolicies = list(
+#'     Options = "string",
+#'     Status = list(
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateVersion = 123,
+#'       State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
+#'       PendingDeletion = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

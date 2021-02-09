@@ -17,6 +17,15 @@ unique per AWS Region for each AWS account.}
 
 \item{RevokePermissions}{The resource permissions that you want to revoke from the dataset.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DataSetArn = "string",
+  DataSetId = "string",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Updates the permissions on a dataset.
 

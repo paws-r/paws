@@ -14,6 +14,19 @@ apigateway_get_base_path_mappings(domainName, position, limit)
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  position = "string",
+  items = list(
+    list(
+      basePath = "string",
+      restApiId = "string",
+      stage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Represents a collection of BasePathMapping resources.
 }

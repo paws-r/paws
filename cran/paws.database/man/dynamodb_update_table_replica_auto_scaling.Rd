@@ -18,6 +18,95 @@ the replica to be updated.}
 \item{ReplicaUpdates}{Represents the auto scaling settings of replicas of the table that will
 be modified.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TableAutoScalingDescription = list(
+    TableName = "string",
+    TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
+    Replicas = list(
+      list(
+        RegionName = "string",
+        GlobalSecondaryIndexes = list(
+          list(
+            IndexName = "string",
+            IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
+            ProvisionedReadCapacityAutoScalingSettings = list(
+              MinimumUnits = 123,
+              MaximumUnits = 123,
+              AutoScalingDisabled = TRUE|FALSE,
+              AutoScalingRoleArn = "string",
+              ScalingPolicies = list(
+                list(
+                  PolicyName = "string",
+                  TargetTrackingScalingPolicyConfiguration = list(
+                    DisableScaleIn = TRUE|FALSE,
+                    ScaleInCooldown = 123,
+                    ScaleOutCooldown = 123,
+                    TargetValue = 123.0
+                  )
+                )
+              )
+            ),
+            ProvisionedWriteCapacityAutoScalingSettings = list(
+              MinimumUnits = 123,
+              MaximumUnits = 123,
+              AutoScalingDisabled = TRUE|FALSE,
+              AutoScalingRoleArn = "string",
+              ScalingPolicies = list(
+                list(
+                  PolicyName = "string",
+                  TargetTrackingScalingPolicyConfiguration = list(
+                    DisableScaleIn = TRUE|FALSE,
+                    ScaleInCooldown = 123,
+                    ScaleOutCooldown = 123,
+                    TargetValue = 123.0
+                  )
+                )
+              )
+            )
+          )
+        ),
+        ReplicaProvisionedReadCapacityAutoScalingSettings = list(
+          MinimumUnits = 123,
+          MaximumUnits = 123,
+          AutoScalingDisabled = TRUE|FALSE,
+          AutoScalingRoleArn = "string",
+          ScalingPolicies = list(
+            list(
+              PolicyName = "string",
+              TargetTrackingScalingPolicyConfiguration = list(
+                DisableScaleIn = TRUE|FALSE,
+                ScaleInCooldown = 123,
+                ScaleOutCooldown = 123,
+                TargetValue = 123.0
+              )
+            )
+          )
+        ),
+        ReplicaProvisionedWriteCapacityAutoScalingSettings = list(
+          MinimumUnits = 123,
+          MaximumUnits = 123,
+          AutoScalingDisabled = TRUE|FALSE,
+          AutoScalingRoleArn = "string",
+          ScalingPolicies = list(
+            list(
+              PolicyName = "string",
+              TargetTrackingScalingPolicyConfiguration = list(
+                DisableScaleIn = TRUE|FALSE,
+                ScaleInCooldown = 123,
+                ScaleOutCooldown = 123,
+                TargetValue = 123.0
+              )
+            )
+          )
+        ),
+        ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Updates auto scaling settings on your global tables at once.
 

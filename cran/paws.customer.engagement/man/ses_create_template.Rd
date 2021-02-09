@@ -10,6 +10,10 @@ ses_create_template(Template)
 \item{Template}{[required] The content of the email, composed of a subject line, an HTML part, and
 a text-only part.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates an email template. Email templates enable you to send
 personalized email to one or more destinations in a single API

@@ -27,6 +27,30 @@ NULL
 #' operation. For pagination, use the NextToken field in subsequent calls
 #' to GetEntitlements.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entitlements = list(
+#'     list(
+#'       ProductCode = "string",
+#'       Dimension = "string",
+#'       CustomerIdentifier = "string",
+#'       Value = list(
+#'         IntegerValue = 123,
+#'         DoubleValue = 123.0,
+#'         BooleanValue = TRUE|FALSE,
+#'         StringValue = "string"
+#'       ),
+#'       ExpirationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_entitlements(

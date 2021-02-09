@@ -36,18 +36,18 @@ When you configure an inventory for a \emph{source} bucket, you specify the
 whether to generate the inventory daily or weekly. You can also
 configure what object metadata to include and whether to inventory all
 object versions or only current versions. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html}{Amazon S3 Inventory}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-inventory.html}{Amazon S3 Inventory}
 in the Amazon Simple Storage Service Developer Guide.
 
 You must create a bucket policy on the \emph{destination} bucket to grant
 permissions to Amazon S3 to write objects to the bucket in the defined
-location. For an example policy, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-9}{Granting Permissions for Amazon S3 Inventory and Storage Class Analysis}.
+location. For an example policy, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html#example-bucket-policies-use-case-9}{Granting Permissions for Amazon S3 Inventory and Storage Class Analysis}.
 
 To use this operation, you must have permissions to perform the
 \code{s3:PutInventoryConfiguration} action. The bucket owner has this
 permission by default and can grant this permission to others. For more
-information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
+information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
 in the Amazon Simple Storage Service Developer Guide.
 
 \strong{Special Errors}

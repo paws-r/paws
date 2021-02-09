@@ -10,6 +10,13 @@ gamelift_resolve_alias(AliasId)
 \item{AliasId}{[required] The unique identifier of the alias that you want to retrieve a fleet ID
 for. You can use either the alias ID or ARN value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FleetId = "string",
+  FleetArn = "string"
+)
+}
+}
 \description{
 Retrieves the fleet ID that an alias is currently pointing to.
 \itemize{

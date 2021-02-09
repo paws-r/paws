@@ -18,6 +18,35 @@ across all versions of a document and can't be changed.}
 \item{DocumentFormat}{Returns the document in the specified format. The document format can be
 either JSON or YAML. JSON is the default format.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string",
+  VersionName = "string",
+  DocumentVersion = "string",
+  Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
+  StatusInformation = "string",
+  Content = "string",
+  DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+  DocumentFormat = "YAML"|"JSON"|"TEXT",
+  Requires = list(
+    list(
+      Name = "string",
+      Version = "string"
+    )
+  ),
+  AttachmentsContent = list(
+    list(
+      Name = "string",
+      Size = 123,
+      Hash = "string",
+      HashType = "Sha256",
+      Url = "string"
+    )
+  ),
+  ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
+)
+}
+}
 \description{
 Gets the contents of the specified Systems Manager document.
 }

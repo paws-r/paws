@@ -26,6 +26,21 @@ The list of packages is only considered if you set \code{packageCleanup} to
 \item{rebootAfterUse}{The updated choice for whether you want to reboot the device after use.
 The default value is \code{true}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  instanceProfile = list(
+    arn = "string",
+    packageCleanup = TRUE|FALSE,
+    excludeAppPackagesFromCleanup = list(
+      "string"
+    ),
+    rebootAfterUse = TRUE|FALSE,
+    name = "string",
+    description = "string"
+  )
+)
+}
+}
 \description{
 Updates information about an existing private device instance profile.
 }

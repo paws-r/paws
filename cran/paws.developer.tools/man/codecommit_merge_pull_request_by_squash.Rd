@@ -22,8 +22,8 @@ current commit ID of the tip of the source branch does not match this
 commit ID.}
 
 \item{conflictDetailLevel}{The level of conflict detail to use. If unspecified, the default
-FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-file has differences in both branches. If LINE\\_LEVEL is specified, a
+FILE_LEVEL is used, which returns a not-mergeable result if the same
+file has differences in both branches. If LINE_LEVEL is specified, a
 conflict is considered not mergeable if the same file in both branches
 has differences on the same line.}
 
@@ -46,6 +46,61 @@ file is created for empty folders. The default is false.}
 
 \item{conflictResolution}{If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 use when resolving conflicts during a merge.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  pullRequest = list(
+    pullRequestId = "string",
+    title = "string",
+    description = "string",
+    lastActivityDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    pullRequestStatus = "OPEN"|"CLOSED",
+    authorArn = "string",
+    pullRequestTargets = list(
+      list(
+        repositoryName = "string",
+        sourceReference = "string",
+        destinationReference = "string",
+        destinationCommit = "string",
+        sourceCommit = "string",
+        mergeBase = "string",
+        mergeMetadata = list(
+          isMerged = TRUE|FALSE,
+          mergedBy = "string",
+          mergeCommitId = "string",
+          mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
+        )
+      )
+    ),
+    clientRequestToken = "string",
+    revisionId = "string",
+    approvalRules = list(
+      list(
+        approvalRuleId = "string",
+        approvalRuleName = "string",
+        approvalRuleContent = "string",
+        ruleContentSha256 = "string",
+        lastModifiedDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        creationDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        lastModifiedUser = "string",
+        originApprovalRuleTemplate = list(
+          approvalRuleTemplateId = "string",
+          approvalRuleTemplateName = "string"
+        )
+      )
+    )
+  )
+)
+}
 }
 \description{
 Attempts to merge the source commit of a pull request into the specified

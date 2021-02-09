@@ -12,6 +12,220 @@ quicksight_describe_data_source(AwsAccountId, DataSourceId)
 \item{DataSourceId}{[required] The ID of the data source. This ID is unique per AWS Region for each AWS
 account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DataSource = list(
+    Arn = "string",
+    DataSourceId = "string",
+    Name = "string",
+    Type = "ADOBE_ANALYTICS"|"AMAZON_ELASTICSEARCH"|"ATHENA"|"AURORA"|"AURORA_POSTGRESQL"|"AWS_IOT_ANALYTICS"|"GITHUB"|"JIRA"|"MARIADB"|"MYSQL"|"ORACLE"|"POSTGRESQL"|"PRESTO"|"REDSHIFT"|"S3"|"SALESFORCE"|"SERVICENOW"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"TWITTER"|"TIMESTREAM",
+    Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    DataSourceParameters = list(
+      AmazonElasticsearchParameters = list(
+        Domain = "string"
+      ),
+      AthenaParameters = list(
+        WorkGroup = "string"
+      ),
+      AuroraParameters = list(
+        Host = "string",
+        Port = 123,
+        Database = "string"
+      ),
+      AuroraPostgreSqlParameters = list(
+        Host = "string",
+        Port = 123,
+        Database = "string"
+      ),
+      AwsIotAnalyticsParameters = list(
+        DataSetName = "string"
+      ),
+      JiraParameters = list(
+        SiteBaseUrl = "string"
+      ),
+      MariaDbParameters = list(
+        Host = "string",
+        Port = 123,
+        Database = "string"
+      ),
+      MySqlParameters = list(
+        Host = "string",
+        Port = 123,
+        Database = "string"
+      ),
+      OracleParameters = list(
+        Host = "string",
+        Port = 123,
+        Database = "string"
+      ),
+      PostgreSqlParameters = list(
+        Host = "string",
+        Port = 123,
+        Database = "string"
+      ),
+      PrestoParameters = list(
+        Host = "string",
+        Port = 123,
+        Catalog = "string"
+      ),
+      RdsParameters = list(
+        InstanceId = "string",
+        Database = "string"
+      ),
+      RedshiftParameters = list(
+        Host = "string",
+        Port = 123,
+        Database = "string",
+        ClusterId = "string"
+      ),
+      S3Parameters = list(
+        ManifestFileLocation = list(
+          Bucket = "string",
+          Key = "string"
+        )
+      ),
+      ServiceNowParameters = list(
+        SiteBaseUrl = "string"
+      ),
+      SnowflakeParameters = list(
+        Host = "string",
+        Database = "string",
+        Warehouse = "string"
+      ),
+      SparkParameters = list(
+        Host = "string",
+        Port = 123
+      ),
+      SqlServerParameters = list(
+        Host = "string",
+        Port = 123,
+        Database = "string"
+      ),
+      TeradataParameters = list(
+        Host = "string",
+        Port = 123,
+        Database = "string"
+      ),
+      TwitterParameters = list(
+        Query = "string",
+        MaxRows = 123
+      )
+    ),
+    AlternateDataSourceParameters = list(
+      list(
+        AmazonElasticsearchParameters = list(
+          Domain = "string"
+        ),
+        AthenaParameters = list(
+          WorkGroup = "string"
+        ),
+        AuroraParameters = list(
+          Host = "string",
+          Port = 123,
+          Database = "string"
+        ),
+        AuroraPostgreSqlParameters = list(
+          Host = "string",
+          Port = 123,
+          Database = "string"
+        ),
+        AwsIotAnalyticsParameters = list(
+          DataSetName = "string"
+        ),
+        JiraParameters = list(
+          SiteBaseUrl = "string"
+        ),
+        MariaDbParameters = list(
+          Host = "string",
+          Port = 123,
+          Database = "string"
+        ),
+        MySqlParameters = list(
+          Host = "string",
+          Port = 123,
+          Database = "string"
+        ),
+        OracleParameters = list(
+          Host = "string",
+          Port = 123,
+          Database = "string"
+        ),
+        PostgreSqlParameters = list(
+          Host = "string",
+          Port = 123,
+          Database = "string"
+        ),
+        PrestoParameters = list(
+          Host = "string",
+          Port = 123,
+          Catalog = "string"
+        ),
+        RdsParameters = list(
+          InstanceId = "string",
+          Database = "string"
+        ),
+        RedshiftParameters = list(
+          Host = "string",
+          Port = 123,
+          Database = "string",
+          ClusterId = "string"
+        ),
+        S3Parameters = list(
+          ManifestFileLocation = list(
+            Bucket = "string",
+            Key = "string"
+          )
+        ),
+        ServiceNowParameters = list(
+          SiteBaseUrl = "string"
+        ),
+        SnowflakeParameters = list(
+          Host = "string",
+          Database = "string",
+          Warehouse = "string"
+        ),
+        SparkParameters = list(
+          Host = "string",
+          Port = 123
+        ),
+        SqlServerParameters = list(
+          Host = "string",
+          Port = 123,
+          Database = "string"
+        ),
+        TeradataParameters = list(
+          Host = "string",
+          Port = 123,
+          Database = "string"
+        ),
+        TwitterParameters = list(
+          Query = "string",
+          MaxRows = 123
+        )
+      )
+    ),
+    VpcConnectionProperties = list(
+      VpcConnectionArn = "string"
+    ),
+    SslProperties = list(
+      DisableSsl = TRUE|FALSE
+    ),
+    ErrorInfo = list(
+      Type = "ACCESS_DENIED"|"COPY_SOURCE_NOT_FOUND"|"TIMEOUT"|"ENGINE_VERSION_NOT_SUPPORTED"|"UNKNOWN_HOST"|"GENERIC_SQL_FAILURE"|"CONFLICT"|"UNKNOWN",
+      Message = "string"
+    )
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Describes a data source.
 }

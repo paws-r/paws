@@ -12,6 +12,16 @@ sagemaker_get_search_suggestions(Resource, SuggestionQuery)
 
 \item{SuggestionQuery}{Limits the property names that are included in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PropertyNameSuggestions = list(
+    list(
+      PropertyName = "string"
+    )
+  )
+)
+}
+}
 \description{
 An auto-complete API for the search functionality in the Amazon
 SageMaker console. It returns suggestions of possible matches for the

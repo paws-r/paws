@@ -12,6 +12,36 @@ translate_get_terminology(Name, TerminologyDataFormat)
 \item{TerminologyDataFormat}{[required] The data format of the custom terminology being retrieved, either CSV or
 TMX.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TerminologyProperties = list(
+    Name = "string",
+    Description = "string",
+    Arn = "string",
+    SourceLanguageCode = "string",
+    TargetLanguageCodes = list(
+      "string"
+    ),
+    EncryptionKey = list(
+      Type = "KMS",
+      Id = "string"
+    ),
+    SizeBytes = 123,
+    TermCount = 123,
+    CreatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedAt = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  TerminologyDataLocation = list(
+    RepositoryType = "string",
+    Location = "string"
+  )
+)
+}
+}
 \description{
 Retrieves a custom terminology.
 }

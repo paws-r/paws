@@ -10,6 +10,12 @@ ses_verify_domain_identity(Domain)
 \arguments{
 \item{Domain}{[required] The domain to be verified.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VerificationToken = "string"
+)
+}
+}
 \description{
 Adds a domain to the list of identities for your Amazon SES account in
 the current AWS Region and attempts to verify it. For more information

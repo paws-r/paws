@@ -15,6 +15,31 @@ or
 
 \item{content}{[required] The updated content to replace the existing content of the comment.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  comment = list(
+    commentId = "string",
+    content = "string",
+    inReplyTo = "string",
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    authorArn = "string",
+    deleted = TRUE|FALSE,
+    clientRequestToken = "string",
+    callerReactions = list(
+      "string"
+    ),
+    reactionCounts = list(
+      123
+    )
+  )
+)
+}
+}
 \description{
 Replaces the contents of a comment.
 }

@@ -85,6 +85,67 @@ NULL
 #' @param SSESpecification Represents the settings used to enable server-side encryption on the
 #' cluster.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Cluster = list(
+#'     ClusterName = "string",
+#'     Description = "string",
+#'     ClusterArn = "string",
+#'     TotalNodes = 123,
+#'     ActiveNodes = 123,
+#'     NodeType = "string",
+#'     Status = "string",
+#'     ClusterDiscoveryEndpoint = list(
+#'       Address = "string",
+#'       Port = 123
+#'     ),
+#'     NodeIdsToRemove = list(
+#'       "string"
+#'     ),
+#'     Nodes = list(
+#'       list(
+#'         NodeId = "string",
+#'         Endpoint = list(
+#'           Address = "string",
+#'           Port = 123
+#'         ),
+#'         NodeCreateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         AvailabilityZone = "string",
+#'         NodeStatus = "string",
+#'         ParameterGroupStatus = "string"
+#'       )
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     NotificationConfiguration = list(
+#'       TopicArn = "string",
+#'       TopicStatus = "string"
+#'     ),
+#'     SubnetGroup = "string",
+#'     SecurityGroups = list(
+#'       list(
+#'         SecurityGroupIdentifier = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     IamRoleArn = "string",
+#'     ParameterGroup = list(
+#'       ParameterGroupName = "string",
+#'       ParameterApplyStatus = "string",
+#'       NodeIdsToReboot = list(
+#'         "string"
+#'       )
+#'     ),
+#'     SSEDescription = list(
+#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_cluster(
@@ -148,6 +209,17 @@ dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, Replic
 #' replication group.
 #' @param Description A description of the parameter group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ParameterGroup = list(
+#'     ParameterGroupName = "string",
+#'     Description = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_parameter_group(
@@ -187,6 +259,24 @@ dax_create_parameter_group <- function(ParameterGroupName, Description = NULL) {
 #' @param SubnetGroupName &#91;required&#93; A name for the subnet group. This value is stored as a lowercase string.
 #' @param Description A description for the subnet group
 #' @param SubnetIds &#91;required&#93; A list of VPC subnet IDs for the subnet group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SubnetGroup = list(
+#'     SubnetGroupName = "string",
+#'     Description = "string",
+#'     VpcId = "string",
+#'     Subnets = list(
+#'       list(
+#'         SubnetIdentifier = "string",
+#'         SubnetAvailabilityZone = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -238,6 +328,67 @@ dax_create_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetI
 #' @param AvailabilityZones The Availability Zone(s) from which to remove nodes.
 #' @param NodeIdsToRemove The unique identifiers of the nodes to be removed from the cluster.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Cluster = list(
+#'     ClusterName = "string",
+#'     Description = "string",
+#'     ClusterArn = "string",
+#'     TotalNodes = 123,
+#'     ActiveNodes = 123,
+#'     NodeType = "string",
+#'     Status = "string",
+#'     ClusterDiscoveryEndpoint = list(
+#'       Address = "string",
+#'       Port = 123
+#'     ),
+#'     NodeIdsToRemove = list(
+#'       "string"
+#'     ),
+#'     Nodes = list(
+#'       list(
+#'         NodeId = "string",
+#'         Endpoint = list(
+#'           Address = "string",
+#'           Port = 123
+#'         ),
+#'         NodeCreateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         AvailabilityZone = "string",
+#'         NodeStatus = "string",
+#'         ParameterGroupStatus = "string"
+#'       )
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     NotificationConfiguration = list(
+#'       TopicArn = "string",
+#'       TopicStatus = "string"
+#'     ),
+#'     SubnetGroup = "string",
+#'     SecurityGroups = list(
+#'       list(
+#'         SecurityGroupIdentifier = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     IamRoleArn = "string",
+#'     ParameterGroup = list(
+#'       ParameterGroupName = "string",
+#'       ParameterApplyStatus = "string",
+#'       NodeIdsToReboot = list(
+#'         "string"
+#'       )
+#'     ),
+#'     SSEDescription = list(
+#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$decrease_replication_factor(
@@ -285,6 +436,67 @@ dax_decrease_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #'
 #' @param ClusterName &#91;required&#93; The name of the cluster to be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Cluster = list(
+#'     ClusterName = "string",
+#'     Description = "string",
+#'     ClusterArn = "string",
+#'     TotalNodes = 123,
+#'     ActiveNodes = 123,
+#'     NodeType = "string",
+#'     Status = "string",
+#'     ClusterDiscoveryEndpoint = list(
+#'       Address = "string",
+#'       Port = 123
+#'     ),
+#'     NodeIdsToRemove = list(
+#'       "string"
+#'     ),
+#'     Nodes = list(
+#'       list(
+#'         NodeId = "string",
+#'         Endpoint = list(
+#'           Address = "string",
+#'           Port = 123
+#'         ),
+#'         NodeCreateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         AvailabilityZone = "string",
+#'         NodeStatus = "string",
+#'         ParameterGroupStatus = "string"
+#'       )
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     NotificationConfiguration = list(
+#'       TopicArn = "string",
+#'       TopicStatus = "string"
+#'     ),
+#'     SubnetGroup = "string",
+#'     SecurityGroups = list(
+#'       list(
+#'         SecurityGroupIdentifier = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     IamRoleArn = "string",
+#'     ParameterGroup = list(
+#'       ParameterGroupName = "string",
+#'       ParameterApplyStatus = "string",
+#'       NodeIdsToReboot = list(
+#'         "string"
+#'       )
+#'     ),
+#'     SSEDescription = list(
+#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_cluster(
@@ -322,6 +534,14 @@ dax_delete_cluster <- function(ClusterName) {
 #' dax_delete_parameter_group(ParameterGroupName)
 #'
 #' @param ParameterGroupName &#91;required&#93; The name of the parameter group to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeletionMessage = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -362,6 +582,14 @@ dax_delete_parameter_group <- function(ParameterGroupName) {
 #' dax_delete_subnet_group(SubnetGroupName)
 #'
 #' @param SubnetGroupName &#91;required&#93; The name of the subnet group to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeletionMessage = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -427,6 +655,70 @@ dax_delete_subnet_group <- function(SubnetGroupName) {
 #' the response includes only results beyond the token, up to the value
 #' specified by `MaxResults`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Clusters = list(
+#'     list(
+#'       ClusterName = "string",
+#'       Description = "string",
+#'       ClusterArn = "string",
+#'       TotalNodes = 123,
+#'       ActiveNodes = 123,
+#'       NodeType = "string",
+#'       Status = "string",
+#'       ClusterDiscoveryEndpoint = list(
+#'         Address = "string",
+#'         Port = 123
+#'       ),
+#'       NodeIdsToRemove = list(
+#'         "string"
+#'       ),
+#'       Nodes = list(
+#'         list(
+#'           NodeId = "string",
+#'           Endpoint = list(
+#'             Address = "string",
+#'             Port = 123
+#'           ),
+#'           NodeCreateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           AvailabilityZone = "string",
+#'           NodeStatus = "string",
+#'           ParameterGroupStatus = "string"
+#'         )
+#'       ),
+#'       PreferredMaintenanceWindow = "string",
+#'       NotificationConfiguration = list(
+#'         TopicArn = "string",
+#'         TopicStatus = "string"
+#'       ),
+#'       SubnetGroup = "string",
+#'       SecurityGroups = list(
+#'         list(
+#'           SecurityGroupIdentifier = "string",
+#'           Status = "string"
+#'         )
+#'       ),
+#'       IamRoleArn = "string",
+#'       ParameterGroup = list(
+#'         ParameterGroupName = "string",
+#'         ParameterApplyStatus = "string",
+#'         NodeIdsToReboot = list(
+#'           "string"
+#'         )
+#'       ),
+#'       SSEDescription = list(
+#'         Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_clusters(
@@ -477,6 +769,33 @@ dax_describe_clusters <- function(ClusterNames = NULL, MaxResults = NULL, NextTo
 #' pagination of results from this action. If this parameter is specified,
 #' the response includes only results beyond the token, up to the value
 #' specified by `MaxResults`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Parameters = list(
+#'     list(
+#'       ParameterName = "string",
+#'       ParameterType = "DEFAULT"|"NODE_TYPE_SPECIFIC",
+#'       ParameterValue = "string",
+#'       NodeTypeSpecificValues = list(
+#'         list(
+#'           NodeType = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Description = "string",
+#'       Source = "string",
+#'       DataType = "string",
+#'       AllowedValues = "string",
+#'       IsModifiable = "TRUE"|"FALSE"|"CONDITIONAL",
+#'       ChangeType = "IMMEDIATE"|"REQUIRES_REBOOT"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -540,6 +859,24 @@ dax_describe_default_parameters <- function(MaxResults = NULL, NextToken = NULL)
 #' the response includes only results beyond the token, up to the value
 #' specified by `MaxResults`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Events = list(
+#'     list(
+#'       SourceName = "string",
+#'       SourceType = "CLUSTER"|"PARAMETER_GROUP"|"SUBNET_GROUP",
+#'       Message = "string",
+#'       Date = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_events(
@@ -599,6 +936,20 @@ dax_describe_events <- function(SourceName = NULL, SourceType = NULL, StartTime 
 #' the response includes only results beyond the token, up to the value
 #' specified by `MaxResults`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   ParameterGroups = list(
+#'     list(
+#'       ParameterGroupName = "string",
+#'       Description = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_parameter_groups(
@@ -652,6 +1003,33 @@ dax_describe_parameter_groups <- function(ParameterGroupNames = NULL, MaxResults
 #' the response includes only results beyond the token, up to the value
 #' specified by `MaxResults`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Parameters = list(
+#'     list(
+#'       ParameterName = "string",
+#'       ParameterType = "DEFAULT"|"NODE_TYPE_SPECIFIC",
+#'       ParameterValue = "string",
+#'       NodeTypeSpecificValues = list(
+#'         list(
+#'           NodeType = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Description = "string",
+#'       Source = "string",
+#'       DataType = "string",
+#'       AllowedValues = "string",
+#'       IsModifiable = "TRUE"|"FALSE"|"CONDITIONAL",
+#'       ChangeType = "IMMEDIATE"|"REQUIRES_REBOOT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_parameters(
@@ -702,6 +1080,27 @@ dax_describe_parameters <- function(ParameterGroupName, Source = NULL, MaxResult
 #' the response includes only results beyond the token, up to the value
 #' specified by `MaxResults`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   SubnetGroups = list(
+#'     list(
+#'       SubnetGroupName = "string",
+#'       Description = "string",
+#'       VpcId = "string",
+#'       Subnets = list(
+#'         list(
+#'           SubnetIdentifier = "string",
+#'           SubnetAvailabilityZone = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_subnet_groups(
@@ -749,6 +1148,67 @@ dax_describe_subnet_groups <- function(SubnetGroupNames = NULL, MaxResults = NUL
 #' Zones. Use this parameter if you want to distribute the nodes across
 #' multiple AZs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Cluster = list(
+#'     ClusterName = "string",
+#'     Description = "string",
+#'     ClusterArn = "string",
+#'     TotalNodes = 123,
+#'     ActiveNodes = 123,
+#'     NodeType = "string",
+#'     Status = "string",
+#'     ClusterDiscoveryEndpoint = list(
+#'       Address = "string",
+#'       Port = 123
+#'     ),
+#'     NodeIdsToRemove = list(
+#'       "string"
+#'     ),
+#'     Nodes = list(
+#'       list(
+#'         NodeId = "string",
+#'         Endpoint = list(
+#'           Address = "string",
+#'           Port = 123
+#'         ),
+#'         NodeCreateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         AvailabilityZone = "string",
+#'         NodeStatus = "string",
+#'         ParameterGroupStatus = "string"
+#'       )
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     NotificationConfiguration = list(
+#'       TopicArn = "string",
+#'       TopicStatus = "string"
+#'     ),
+#'     SubnetGroup = "string",
+#'     SecurityGroups = list(
+#'       list(
+#'         SecurityGroupIdentifier = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     IamRoleArn = "string",
+#'     ParameterGroup = list(
+#'       ParameterGroupName = "string",
+#'       ParameterApplyStatus = "string",
+#'       NodeIdsToReboot = list(
+#'         "string"
+#'       )
+#'     ),
+#'     SSEDescription = list(
+#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$increase_replication_factor(
@@ -794,6 +1254,20 @@ dax_increase_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #' pagination of results from this action. If this parameter is specified,
 #' the response includes only results beyond the token.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags(
@@ -838,6 +1312,67 @@ dax_list_tags <- function(ResourceName, NextToken = NULL) {
 #' @param ClusterName &#91;required&#93; The name of the DAX cluster containing the node to be rebooted.
 #' @param NodeId &#91;required&#93; The system-assigned ID of the node to be rebooted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Cluster = list(
+#'     ClusterName = "string",
+#'     Description = "string",
+#'     ClusterArn = "string",
+#'     TotalNodes = 123,
+#'     ActiveNodes = 123,
+#'     NodeType = "string",
+#'     Status = "string",
+#'     ClusterDiscoveryEndpoint = list(
+#'       Address = "string",
+#'       Port = 123
+#'     ),
+#'     NodeIdsToRemove = list(
+#'       "string"
+#'     ),
+#'     Nodes = list(
+#'       list(
+#'         NodeId = "string",
+#'         Endpoint = list(
+#'           Address = "string",
+#'           Port = 123
+#'         ),
+#'         NodeCreateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         AvailabilityZone = "string",
+#'         NodeStatus = "string",
+#'         ParameterGroupStatus = "string"
+#'       )
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     NotificationConfiguration = list(
+#'       TopicArn = "string",
+#'       TopicStatus = "string"
+#'     ),
+#'     SubnetGroup = "string",
+#'     SecurityGroups = list(
+#'       list(
+#'         SecurityGroupIdentifier = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     IamRoleArn = "string",
+#'     ParameterGroup = list(
+#'       ParameterGroupName = "string",
+#'       ParameterApplyStatus = "string",
+#'       NodeIdsToReboot = list(
+#'         "string"
+#'       )
+#'     ),
+#'     SSEDescription = list(
+#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reboot_node(
@@ -878,6 +1413,19 @@ dax_reboot_node <- function(ClusterName, NodeId) {
 #'
 #' @param ResourceName &#91;required&#93; The name of the DAX resource to which tags should be added.
 #' @param Tags &#91;required&#93; The tags to be assigned to the DAX resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -925,6 +1473,19 @@ dax_tag_resource <- function(ResourceName, Tags) {
 #' @param ResourceName &#91;required&#93; The name of the DAX resource from which the tags should be removed.
 #' @param TagKeys &#91;required&#93; A list of tag keys. If the DAX cluster has any tags with these keys,
 #' then the tags are removed from the cluster.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -981,6 +1542,67 @@ dax_untag_resource <- function(ResourceName, TagKeys) {
 #' in the DAX cluster. If this parameter is not specified, DAX assigns the
 #' default VPC security group to each node.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Cluster = list(
+#'     ClusterName = "string",
+#'     Description = "string",
+#'     ClusterArn = "string",
+#'     TotalNodes = 123,
+#'     ActiveNodes = 123,
+#'     NodeType = "string",
+#'     Status = "string",
+#'     ClusterDiscoveryEndpoint = list(
+#'       Address = "string",
+#'       Port = 123
+#'     ),
+#'     NodeIdsToRemove = list(
+#'       "string"
+#'     ),
+#'     Nodes = list(
+#'       list(
+#'         NodeId = "string",
+#'         Endpoint = list(
+#'           Address = "string",
+#'           Port = 123
+#'         ),
+#'         NodeCreateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         AvailabilityZone = "string",
+#'         NodeStatus = "string",
+#'         ParameterGroupStatus = "string"
+#'       )
+#'     ),
+#'     PreferredMaintenanceWindow = "string",
+#'     NotificationConfiguration = list(
+#'       TopicArn = "string",
+#'       TopicStatus = "string"
+#'     ),
+#'     SubnetGroup = "string",
+#'     SecurityGroups = list(
+#'       list(
+#'         SecurityGroupIdentifier = "string",
+#'         Status = "string"
+#'       )
+#'     ),
+#'     IamRoleArn = "string",
+#'     ParameterGroup = list(
+#'       ParameterGroupName = "string",
+#'       ParameterApplyStatus = "string",
+#'       NodeIdsToReboot = list(
+#'         "string"
+#'       )
+#'     ),
+#'     SSEDescription = list(
+#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_cluster(
@@ -1030,6 +1652,17 @@ dax_update_cluster <- function(ClusterName, Description = NULL, PreferredMainten
 #' @param ParameterNameValues &#91;required&#93; An array of name-value pairs for the parameters in the group. Each
 #' element in the array represents a single parameter.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ParameterGroup = list(
+#'     ParameterGroupName = "string",
+#'     Description = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_parameter_group(
@@ -1074,6 +1707,24 @@ dax_update_parameter_group <- function(ParameterGroupName, ParameterNameValues) 
 #' @param SubnetGroupName &#91;required&#93; The name of the subnet group.
 #' @param Description A description of the subnet group.
 #' @param SubnetIds A list of subnet IDs in the subnet group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SubnetGroup = list(
+#'     SubnetGroupName = "string",
+#'     Description = "string",
+#'     VpcId = "string",
+#'     Subnets = list(
+#'       list(
+#'         SubnetIdentifier = "string",
+#'         SubnetAvailabilityZone = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

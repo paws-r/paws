@@ -19,6 +19,14 @@ NULL
 #' @param LedgerName &#91;required&#93; The name of the ledger.
 #' @param StreamId &#91;required&#93; The unique ID that QLDB assigns to each QLDB journal stream.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_journal_kinesis_stream(
@@ -76,6 +84,20 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #' `false`. The QLDB console disables deletion protection for you when you
 #' use it to delete a ledger.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Arn = "string",
+#'   State = "CREATING"|"ACTIVE"|"DELETING"|"DELETED",
+#'   CreationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DeletionProtection = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_ledger(
@@ -125,6 +147,8 @@ qldb_create_ledger <- function(Name, Tags = NULL, PermissionsMode, DeletionProte
 #'
 #' @param Name &#91;required&#93; The name of the ledger that you want to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_ledger(
@@ -165,6 +189,35 @@ qldb_delete_ledger <- function(Name) {
 #'
 #' @param LedgerName &#91;required&#93; The name of the ledger.
 #' @param StreamId &#91;required&#93; The unique ID that QLDB assigns to each QLDB journal stream.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Stream = list(
+#'     LedgerName = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InclusiveStartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExclusiveEndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     RoleArn = "string",
+#'     StreamId = "string",
+#'     Arn = "string",
+#'     Status = "ACTIVE"|"COMPLETED"|"CANCELED"|"FAILED"|"IMPAIRED",
+#'     KinesisConfiguration = list(
+#'       StreamArn = "string",
+#'       AggregationEnabled = TRUE|FALSE
+#'     ),
+#'     ErrorCause = "KINESIS_STREAM_NOT_FOUND"|"IAM_PERMISSION_REVOKED",
+#'     StreamName = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -220,6 +273,36 @@ qldb_describe_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #' @param Name &#91;required&#93; The name of the ledger.
 #' @param ExportId &#91;required&#93; The unique ID of the journal export job that you want to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExportDescription = list(
+#'     LedgerName = "string",
+#'     ExportId = "string",
+#'     ExportCreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "IN_PROGRESS"|"COMPLETED"|"CANCELLED",
+#'     InclusiveStartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExclusiveEndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     S3ExportConfiguration = list(
+#'       Bucket = "string",
+#'       Prefix = "string",
+#'       EncryptionConfiguration = list(
+#'         ObjectEncryptionType = "SSE_KMS"|"SSE_S3"|"NO_ENCRYPTION",
+#'         KmsKeyArn = "string"
+#'       )
+#'     ),
+#'     RoleArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_journal_s3_export(
@@ -259,6 +342,20 @@ qldb_describe_journal_s3_export <- function(Name, ExportId) {
 #' qldb_describe_ledger(Name)
 #'
 #' @param Name &#91;required&#93; The name of the ledger that you want to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Arn = "string",
+#'   State = "CREATING"|"ACTIVE"|"DELETING"|"DELETED",
+#'   CreationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DeletionProtection = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -340,6 +437,14 @@ qldb_describe_ledger <- function(Name) {
 #' -   (Optional) Use your customer master key (CMK) in AWS Key Management
 #'     Service (AWS KMS) for server-side encryption of your exported data.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExportId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$export_journal_to_s3(
@@ -409,12 +514,25 @@ qldb_export_journal_to_s3 <- function(Name, InclusiveStartTime, ExclusiveEndTime
 #' @param BlockAddress &#91;required&#93; The location of the block that you want to request. An address is an
 #' Amazon Ion structure that has two fields: `strandId` and `sequenceNo`.
 #' 
-#' For example: `\{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14\}`
+#' For example: `{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}`
 #' @param DigestTipAddress The latest block location covered by the digest for which to request a
 #' proof. An address is an Amazon Ion structure that has two fields:
 #' `strandId` and `sequenceNo`.
 #' 
-#' For example: `\{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49\}`
+#' For example: `{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49}`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Block = list(
+#'     IonText = "string"
+#'   ),
+#'   Proof = list(
+#'     IonText = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -461,6 +579,17 @@ qldb_get_block <- function(Name, BlockAddress, DigestTipAddress = NULL) {
 #'
 #' @param Name &#91;required&#93; The name of the ledger.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Digest = raw,
+#'   DigestTipAddress = list(
+#'     IonText = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_digest(
@@ -504,13 +633,26 @@ qldb_get_digest <- function(Name) {
 #' is an Amazon Ion structure that has two fields: `strandId` and
 #' `sequenceNo`.
 #' 
-#' For example: `\{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14\}`
+#' For example: `{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}`
 #' @param DocumentId &#91;required&#93; The unique ID of the document to be verified.
 #' @param DigestTipAddress The latest block location covered by the digest for which to request a
 #' proof. An address is an Amazon Ion structure that has two fields:
 #' `strandId` and `sequenceNo`.
 #' 
-#' For example: `\{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49\}`
+#' For example: `{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49}`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Proof = list(
+#'     IonText = "string"
+#'   ),
+#'   Revision = list(
+#'     IonText = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -574,6 +716,38 @@ qldb_get_revision <- function(Name, BlockAddress, DocumentId, DigestTipAddress =
 #' [`list_journal_kinesis_streams_for_ledger`][qldb_list_journal_kinesis_streams_for_ledger]
 #' call, you should use that value as input here.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Streams = list(
+#'     list(
+#'       LedgerName = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InclusiveStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExclusiveEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RoleArn = "string",
+#'       StreamId = "string",
+#'       Arn = "string",
+#'       Status = "ACTIVE"|"COMPLETED"|"CANCELED"|"FAILED"|"IMPAIRED",
+#'       KinesisConfiguration = list(
+#'         StreamArn = "string",
+#'         AggregationEnabled = TRUE|FALSE
+#'       ),
+#'       ErrorCause = "KINESIS_STREAM_NOT_FOUND"|"IAM_PERMISSION_REVOKED",
+#'       StreamName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_journal_kinesis_streams_for_ledger(
@@ -630,6 +804,39 @@ qldb_list_journal_kinesis_streams_for_ledger <- function(LedgerName, MaxResults 
 #' of results. If you received a value for `NextToken` in the response from
 #' a previous [`list_journal_s3_exports`][qldb_list_journal_s3_exports]
 #' call, then you should use that value as input here.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JournalS3Exports = list(
+#'     list(
+#'       LedgerName = "string",
+#'       ExportId = "string",
+#'       ExportCreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "IN_PROGRESS"|"COMPLETED"|"CANCELLED",
+#'       InclusiveStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExclusiveEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       S3ExportConfiguration = list(
+#'         Bucket = "string",
+#'         Prefix = "string",
+#'         EncryptionConfiguration = list(
+#'           ObjectEncryptionType = "SSE_KMS"|"SSE_S3"|"NO_ENCRYPTION",
+#'           KmsKeyArn = "string"
+#'         )
+#'       ),
+#'       RoleArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -689,6 +896,39 @@ qldb_list_journal_s3_exports <- function(MaxResults = NULL, NextToken = NULL) {
 #' [`list_journal_s3_exports_for_ledger`][qldb_list_journal_s3_exports_for_ledger]
 #' call, then you should use that value as input here.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JournalS3Exports = list(
+#'     list(
+#'       LedgerName = "string",
+#'       ExportId = "string",
+#'       ExportCreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "IN_PROGRESS"|"COMPLETED"|"CANCELLED",
+#'       InclusiveStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExclusiveEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       S3ExportConfiguration = list(
+#'         Bucket = "string",
+#'         Prefix = "string",
+#'         EncryptionConfiguration = list(
+#'           ObjectEncryptionType = "SSE_KMS"|"SSE_S3"|"NO_ENCRYPTION",
+#'           KmsKeyArn = "string"
+#'         )
+#'       ),
+#'       RoleArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_journal_s3_exports_for_ledger(
@@ -740,6 +980,23 @@ qldb_list_journal_s3_exports_for_ledger <- function(Name, MaxResults = NULL, Nex
 #' a previous [`list_ledgers`][qldb_list_ledgers] call, then you should use
 #' that value as input here.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Ledgers = list(
+#'     list(
+#'       Name = "string",
+#'       State = "CREATING"|"ACTIVE"|"DELETING"|"DELETED",
+#'       CreationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_ledgers(
@@ -780,6 +1037,16 @@ qldb_list_ledgers <- function(MaxResults = NULL, NextToken = NULL) {
 #' example:
 #' 
 #' `arn:aws:qldb:us-east-1:123456789012:ledger/exampleLedger`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -855,6 +1122,14 @@ qldb_list_tags_for_resource <- function(ResourceArn) {
 #' QLDB](https://docs.aws.amazon.com/qldb/latest/developerguide/limits.html#limits.naming)
 #' in the *Amazon QLDB Developer Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stream_journal_to_kinesis(
@@ -917,6 +1192,12 @@ qldb_stream_journal_to_kinesis <- function(LedgerName, RoleArn, Tags = NULL, Inc
 #' the resource, your request fails and returns an error. Tag values are
 #' case sensitive and can be null.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -961,6 +1242,12 @@ qldb_tag_resource <- function(ResourceArn, Tags) {
 #' 
 #' `arn:aws:qldb:us-east-1:123456789012:ledger/exampleLedger`
 #' @param TagKeys &#91;required&#93; The list of tag keys that you want to remove.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1011,6 +1298,20 @@ qldb_untag_resource <- function(ResourceArn, TagKeys) {
 #' [`update_ledger`][qldb_update_ledger] operation to set the flag to
 #' `false`. The QLDB console disables deletion protection for you when you
 #' use it to delete a ledger.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Arn = "string",
+#'   State = "CREATING"|"ACTIVE"|"DELETING"|"DELETED",
+#'   CreationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DeletionProtection = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

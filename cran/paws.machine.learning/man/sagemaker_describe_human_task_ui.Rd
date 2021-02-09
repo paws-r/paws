@@ -11,6 +11,21 @@ sagemaker_describe_human_task_ui(HumanTaskUiName)
 \item{HumanTaskUiName}{[required] The name of the human task user interface (worker task template) you
 want information about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HumanTaskUiArn = "string",
+  HumanTaskUiName = "string",
+  HumanTaskUiStatus = "Active"|"Deleting",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  UiTemplate = list(
+    Url = "string",
+    ContentSha256 = "string"
+  )
+)
+}
+}
 \description{
 Returns information about the requested human task user interface
 (worker task template).

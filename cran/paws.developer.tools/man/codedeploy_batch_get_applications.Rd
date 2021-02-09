@@ -10,6 +10,23 @@ codedeploy_batch_get_applications(applicationNames)
 \item{applicationNames}{[required] A list of application names separated by spaces. The maximum number of
 application names you can specify is 100.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  applicationsInfo = list(
+    list(
+      applicationId = "string",
+      applicationName = "string",
+      createTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      linkedToGitHub = TRUE|FALSE,
+      gitHubAccountName = "string",
+      computePlatform = "Server"|"Lambda"|"ECS"
+    )
+  )
+)
+}
+}
 \description{
 Gets information about one or more applications. The maximum number of
 applications that can be returned is 100.

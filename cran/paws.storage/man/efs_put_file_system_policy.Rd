@@ -26,6 +26,13 @@ making a subsequent
 \code{\link[=efs_put_file_system_policy]{put_file_system_policy}} request on the
 file system. The default value is False.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FileSystemId = "string",
+  Policy = "string"
+)
+}
+}
 \description{
 Applies an Amazon EFS \code{FileSystemPolicy} to an Amazon EFS file system. A
 file system policy is an IAM resource-based policy and can contain

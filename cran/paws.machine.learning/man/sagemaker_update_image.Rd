@@ -20,6 +20,12 @@ properties can be deleted.}
 \item{RoleArn}{The new Amazon Resource Name (ARN) for the IAM role that enables Amazon
 SageMaker to perform tasks on your behalf.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ImageArn = "string"
+)
+}
+}
 \description{
 Updates the properties of a SageMaker image. To change the image's tags,
 use the \code{\link[=sagemaker_add_tags]{add_tags}} and

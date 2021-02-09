@@ -20,6 +20,19 @@ return for this request. If you have more objects than the number you
 specify for \code{Limit}, the response includes a \code{NextMarker} value that you
 can use to get another batch of objects.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextMarker = "string",
+  RuleGroups = list(
+    list(
+      RuleGroupId = "string",
+      Name = "string",
+      MetricName = "string"
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

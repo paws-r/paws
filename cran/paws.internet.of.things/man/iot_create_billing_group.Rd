@@ -13,6 +13,14 @@ iot_create_billing_group(billingGroupName, billingGroupProperties, tags)
 
 \item{tags}{Metadata which can be used to manage the billing group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  billingGroupName = "string",
+  billingGroupArn = "string",
+  billingGroupId = "string"
+)
+}
+}
 \description{
 Creates a billing group.
 }

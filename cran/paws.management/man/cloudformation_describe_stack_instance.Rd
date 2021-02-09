@@ -16,6 +16,35 @@ stack instance information for.}
 
 \item{StackInstanceRegion}{[required] The name of a Region that's associated with this stack instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StackInstance = list(
+    StackSetId = "string",
+    Region = "string",
+    Account = "string",
+    StackId = "string",
+    ParameterOverrides = list(
+      list(
+        ParameterKey = "string",
+        ParameterValue = "string",
+        UsePreviousValue = TRUE|FALSE,
+        ResolvedValue = "string"
+      )
+    ),
+    Status = "CURRENT"|"OUTDATED"|"INOPERABLE",
+    StackInstanceStatus = list(
+      DetailedStatus = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"INOPERABLE"
+    ),
+    StatusReason = "string",
+    OrganizationalUnitId = "string",
+    DriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
+    LastDriftCheckTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Returns the stack instance that's associated with the specified stack
 set, AWS account, and Region.

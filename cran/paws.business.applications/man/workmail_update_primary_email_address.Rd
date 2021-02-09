@@ -13,6 +13,10 @@ workmail_update_primary_email_address(OrganizationId, EntityId, Email)
 
 \item{Email}{[required] The value of the email to be updated as primary.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the primary email for a user, group, or resource. The current
 email is moved into the list of aliases (or swapped between an existing

@@ -11,8 +11,15 @@ greengrass_create_group_certificate_authority(AmznClientToken, GroupId)
 
 \item{GroupId}{[required] The ID of the Greengrass group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GroupCertificateAuthorityArn = "string"
+)
+}
+}
 \description{
-Creates a CA for the group. If a CA already exists, it will rotate the existing CA.
+Creates a CA for the group. If a CA already exists, it will rotate the
+existing CA.
 }
 \section{Request syntax}{
 \preformatted{svc$create_group_certificate_authority(

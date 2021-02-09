@@ -17,6 +17,10 @@ aliases removed.}
 entries in the list are collapsed into single entries (the list is
 transformed into a set).}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Remove one or more specified aliases from a set of aliases for a given
 user.

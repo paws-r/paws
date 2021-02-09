@@ -16,8 +16,8 @@ autoscaling_put_lifecycle_hook(LifecycleHookName, AutoScalingGroupName,
 \item{LifecycleTransition}{The instance state to which you want to attach the lifecycle hook. The
 valid values are:
 \itemize{
-\item autoscaling:EC2\\_INSTANCE\\_LAUNCHING
-\item autoscaling:EC2\\_INSTANCE\\_TERMINATING
+\item autoscaling:EC2_INSTANCE_LAUNCHING
+\item autoscaling:EC2_INSTANCE_TERMINATING
 }
 
 Required for new lifecycle hooks, but optional when updating existing
@@ -60,6 +60,10 @@ API.}
 \item{DefaultResult}{Defines the action the Auto Scaling group should take when the lifecycle
 hook timeout elapses or if an unexpected failure occurs. This parameter
 can be either \code{CONTINUE} or \code{ABANDON}. The default value is \code{ABANDON}.}
+}
+\value{
+A list with the following syntax:\preformatted{list()
+}
 }
 \description{
 Creates or updates a lifecycle hook for the specified Auto Scaling

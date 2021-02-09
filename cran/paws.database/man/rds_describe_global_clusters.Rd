@@ -40,6 +40,35 @@ Constraints: Minimum 20, maximum 100.}
 this parameter is specified, the response includes only records beyond
 the marker, up to the value specified by \code{MaxRecords}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  GlobalClusters = list(
+    list(
+      GlobalClusterIdentifier = "string",
+      GlobalClusterResourceId = "string",
+      GlobalClusterArn = "string",
+      Status = "string",
+      Engine = "string",
+      EngineVersion = "string",
+      DatabaseName = "string",
+      StorageEncrypted = TRUE|FALSE,
+      DeletionProtection = TRUE|FALSE,
+      GlobalClusterMembers = list(
+        list(
+          DBClusterArn = "string",
+          Readers = list(
+            "string"
+          ),
+          IsWriter = TRUE|FALSE,
+          GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns information about Aurora global database clusters. This API
 supports pagination.

@@ -12,6 +12,34 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{MessageRequest}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MessageResponse = list(
+    ApplicationId = "string",
+    EndpointResult = list(
+      list(
+        Address = "string",
+        DeliveryStatus = "SUCCESSFUL"|"THROTTLED"|"TEMPORARY_FAILURE"|"PERMANENT_FAILURE"|"UNKNOWN_FAILURE"|"OPT_OUT"|"DUPLICATE",
+        MessageId = "string",
+        StatusCode = 123,
+        StatusMessage = "string",
+        UpdatedToken = "string"
+      )
+    ),
+    RequestId = "string",
+    Result = list(
+      list(
+        DeliveryStatus = "SUCCESSFUL"|"THROTTLED"|"TEMPORARY_FAILURE"|"PERMANENT_FAILURE"|"UNKNOWN_FAILURE"|"OPT_OUT"|"DUPLICATE",
+        MessageId = "string",
+        StatusCode = 123,
+        StatusMessage = "string",
+        UpdatedToken = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates and sends a direct message.
 }

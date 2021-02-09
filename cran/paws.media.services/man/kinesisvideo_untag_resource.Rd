@@ -12,6 +12,10 @@ want to remove tags.}
 
 \item{TagKeyList}{[required] A list of the keys of the tags that you want to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes one or more tags from a signaling channel. In the request,
 specify only a tag key or keys; don't specify the value. If you specify

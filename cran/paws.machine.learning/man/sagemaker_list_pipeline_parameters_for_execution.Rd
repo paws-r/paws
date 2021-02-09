@@ -17,6 +17,18 @@ the next set of parameters, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of parameters to return in the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PipelineParameters = list(
+    list(
+      Name = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets a list of parameters for a pipeline execution.
 }

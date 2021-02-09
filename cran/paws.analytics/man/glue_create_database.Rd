@@ -12,6 +12,10 @@ provided, the AWS account ID is used by default.}
 
 \item{DatabaseInput}{[required] The metadata for the database.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates a new database in a Data Catalog.
 }

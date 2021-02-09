@@ -18,6 +18,12 @@ guardduty_create_detector(Enable, ClientToken,
 
 \item{Tags}{The tags to be added to a new detector resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DetectorId = "string"
+)
+}
+}
 \description{
 Creates a single Amazon GuardDuty detector. A detector is a resource
 that represents the GuardDuty service. To start using GuardDuty, you

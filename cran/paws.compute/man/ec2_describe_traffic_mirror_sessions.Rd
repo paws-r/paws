@@ -37,6 +37,31 @@ value.}
 
 \item{NextToken}{The token for the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficMirrorSessions = list(
+    list(
+      TrafficMirrorSessionId = "string",
+      TrafficMirrorTargetId = "string",
+      TrafficMirrorFilterId = "string",
+      NetworkInterfaceId = "string",
+      OwnerId = "string",
+      PacketLength = 123,
+      SessionNumber = 123,
+      VirtualNetworkId = 123,
+      Description = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more Traffic Mirror sessions. By default, all Traffic
 Mirror sessions are described. Alternatively, you can filter the

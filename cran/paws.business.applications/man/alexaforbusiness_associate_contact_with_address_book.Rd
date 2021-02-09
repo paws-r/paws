@@ -12,6 +12,10 @@ alexaforbusiness_associate_contact_with_address_book(ContactArn,
 
 \item{AddressBookArn}{[required] The ARN of the address book with which to associate the contact.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates a contact with a given address book.
 }

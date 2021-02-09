@@ -10,6 +10,22 @@ gamelift_describe_runtime_configuration(FleetId)
 \item{FleetId}{[required] A unique identifier for a fleet to get the runtime configuration for.
 You can use either the fleet ID or ARN value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RuntimeConfiguration = list(
+    ServerProcesses = list(
+      list(
+        LaunchPath = "string",
+        Parameters = "string",
+        ConcurrentExecutions = 123
+      )
+    ),
+    MaxConcurrentGameSessionActivations = 123,
+    GameSessionActivationTimeoutSeconds = 123
+  )
+)
+}
+}
 \description{
 Retrieves a fleet's runtime configuration settings. The runtime
 configuration tells Amazon GameLift which server processes to run (and

@@ -17,6 +17,21 @@ operation.
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Url = "string",
+  ClientIDList = list(
+    "string"
+  ),
+  ThumbprintList = list(
+    "string"
+  ),
+  CreateDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns information about the specified OpenID Connect (OIDC) provider
 resource object in IAM.

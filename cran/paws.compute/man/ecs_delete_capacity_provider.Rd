@@ -10,6 +10,35 @@ ecs_delete_capacity_provider(capacityProvider)
 \item{capacityProvider}{[required] The short name or full Amazon Resource Name (ARN) of the capacity
 provider to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  capacityProvider = list(
+    capacityProviderArn = "string",
+    name = "string",
+    status = "ACTIVE"|"INACTIVE",
+    autoScalingGroupProvider = list(
+      autoScalingGroupArn = "string",
+      managedScaling = list(
+        status = "ENABLED"|"DISABLED",
+        targetCapacity = 123,
+        minimumScalingStepSize = 123,
+        maximumScalingStepSize = 123,
+        instanceWarmupPeriod = 123
+      ),
+      managedTerminationProtection = "ENABLED"|"DISABLED"
+    ),
+    updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+    updateStatusReason = "string",
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deletes the specified capacity provider.
 

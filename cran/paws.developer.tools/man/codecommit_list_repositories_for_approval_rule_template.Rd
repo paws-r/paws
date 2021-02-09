@@ -18,6 +18,15 @@ batch of the results.}
 \item{maxResults}{A non-zero, non-negative integer used to limit the number of returned
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  repositoryNames = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all repositories associated with the specified approval rule
 template.

@@ -21,6 +21,22 @@ which the listing of vaults should begin.}
 The number of vaults returned might be fewer than the specified limit,
 but the number of returned vaults never exceeds the limit.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VaultList = list(
+    list(
+      VaultARN = "string",
+      VaultName = "string",
+      CreationDate = "string",
+      LastInventoryDate = "string",
+      NumberOfArchives = 123,
+      SizeInBytes = 123
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 This operation lists all vaults owned by the calling user's account. The
 list returned in the response is ASCII-sorted by vault name.

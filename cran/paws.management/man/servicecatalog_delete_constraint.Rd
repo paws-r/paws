@@ -16,6 +16,10 @@ servicecatalog_delete_constraint(AcceptLanguage, Id)
 
 \item{Id}{[required] The identifier of the constraint.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified constraint.
 

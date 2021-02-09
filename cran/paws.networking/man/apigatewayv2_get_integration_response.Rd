@@ -14,6 +14,21 @@ apigatewayv2_get_integration_response(ApiId, IntegrationId,
 
 \item{IntegrationResponseId}{[required] The integration response ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
+  IntegrationResponseId = "string",
+  IntegrationResponseKey = "string",
+  ResponseParameters = list(
+    "string"
+  ),
+  ResponseTemplates = list(
+    "string"
+  ),
+  TemplateSelectionExpression = "string"
+)
+}
+}
 \description{
 Gets an IntegrationResponses.
 }

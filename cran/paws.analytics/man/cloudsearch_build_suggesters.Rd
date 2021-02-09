@@ -9,6 +9,14 @@ cloudsearch_build_suggesters(DomainName)
 \arguments{
 \item{DomainName}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FieldNames = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Indexes the search suggestions. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html#configuring-suggesters}{Configuring Suggesters}
 in the \emph{Amazon CloudSearch Developer Guide}.

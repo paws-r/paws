@@ -13,6 +13,10 @@ this parameter is an Amazon Resource Name (ARN).}
 
 \item{TagKeys}{[required] The tag key (name) of the tag to be removed.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes metadata tags from an AWS DMS resource, including replication
 instance, endpoint, security group, and migration task. For more

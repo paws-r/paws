@@ -16,6 +16,15 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VpcAttachment = list(
+    State = "attaching"|"attached"|"detaching"|"detached",
+    VpcId = "string"
+  )
+)
+}
+}
 \description{
 Attaches a virtual private gateway to a VPC. You can attach one virtual
 private gateway to one VPC at a time.

@@ -7,10 +7,16 @@
 medialive_accept_input_device_transfer(InputDeviceId)
 }
 \arguments{
-\item{InputDeviceId}{[required] The unique ID of the input device to accept. For example, hd-123456789abcdef.}
+\item{InputDeviceId}{[required] The unique ID of the input device to accept. For example,
+hd-123456789abcdef.}
+}
+\value{
+A list with the following syntax:\preformatted{list()
+}
 }
 \description{
-Accept an incoming input device transfer. The ownership of the device will transfer to your AWS account.
+Accept an incoming input device transfer. The ownership of the device
+will transfer to your AWS account.
 }
 \section{Request syntax}{
 \preformatted{svc$accept_input_device_transfer(

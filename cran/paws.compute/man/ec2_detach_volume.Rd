@@ -27,6 +27,19 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AttachTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  Device = "string",
+  InstanceId = "string",
+  State = "attaching"|"attached"|"detaching"|"detached"|"busy",
+  VolumeId = "string",
+  DeleteOnTermination = TRUE|FALSE
+)
+}
+}
 \description{
 Detaches an EBS volume from an instance. Make sure to unmount any file
 systems on the device within your operating system before detaching the

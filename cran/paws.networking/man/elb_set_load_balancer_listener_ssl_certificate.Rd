@@ -15,6 +15,10 @@ elb_set_load_balancer_listener_ssl_certificate(LoadBalancerName,
 
 \item{SSLCertificateId}{[required] The Amazon Resource Name (ARN) of the SSL certificate.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Sets the certificate that terminates the specified listener's SSL
 connections. The specified certificate replaces any prior certificate

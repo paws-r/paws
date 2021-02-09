@@ -11,8 +11,17 @@ mediaconnect_revoke_flow_entitlement(EntitlementArn, FlowArn)
 
 \item{FlowArn}{[required] The flow that you want to revoke an entitlement from.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EntitlementArn = "string",
+  FlowArn = "string"
+)
+}
+}
 \description{
-Revokes an entitlement from a flow. Once an entitlement is revoked, the content becomes unavailable to the subscriber and the associated output is removed.
+Revokes an entitlement from a flow. Once an entitlement is revoked, the
+content becomes unavailable to the subscriber and the associated output
+is removed.
 }
 \section{Request syntax}{
 \preformatted{svc$revoke_flow_entitlement(

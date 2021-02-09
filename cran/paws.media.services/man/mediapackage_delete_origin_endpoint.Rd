@@ -9,6 +9,10 @@ mediapackage_delete_origin_endpoint(Id)
 \arguments{
 \item{Id}{[required] The ID of the OriginEndpoint to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes an existing OriginEndpoint.
 }

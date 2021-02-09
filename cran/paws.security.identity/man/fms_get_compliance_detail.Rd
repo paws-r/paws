@@ -15,6 +15,30 @@ returned by \code{\link[=fms_put_policy]{put_policy}} and by
 \item{MemberAccount}{[required] The AWS account that owns the resources that you want to get the details
 for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PolicyComplianceDetail = list(
+    PolicyOwner = "string",
+    PolicyId = "string",
+    MemberAccount = "string",
+    Violators = list(
+      list(
+        ResourceId = "string",
+        ViolationReason = "WEB_ACL_MISSING_RULE_GROUP"|"RESOURCE_MISSING_WEB_ACL"|"RESOURCE_INCORRECT_WEB_ACL"|"RESOURCE_MISSING_SHIELD_PROTECTION"|"RESOURCE_MISSING_WEB_ACL_OR_SHIELD_PROTECTION"|"RESOURCE_MISSING_SECURITY_GROUP"|"RESOURCE_VIOLATES_AUDIT_SECURITY_GROUP"|"SECURITY_GROUP_UNUSED"|"SECURITY_GROUP_REDUNDANT"|"MISSING_FIREWALL"|"MISSING_FIREWALL_SUBNET_IN_AZ"|"MISSING_EXPECTED_ROUTE_TABLE"|"NETWORK_FIREWALL_POLICY_MODIFIED",
+        ResourceType = "string"
+      )
+    ),
+    EvaluationLimitExceeded = TRUE|FALSE,
+    ExpiredAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    IssueInfoMap = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns detailed compliance information about the specified member
 account. Details include resources that are in and out of compliance

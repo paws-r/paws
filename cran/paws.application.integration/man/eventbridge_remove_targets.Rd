@@ -22,6 +22,19 @@ rule is a managed rule by using
 \code{\link[=eventbridge_list_rules]{list_rules}} and checking the \code{ManagedBy}
 field of the response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedEntryCount = 123,
+  FailedEntries = list(
+    list(
+      TargetId = "string",
+      ErrorCode = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Removes the specified targets from the specified rule. When the rule is
 triggered, those targets are no longer be invoked.

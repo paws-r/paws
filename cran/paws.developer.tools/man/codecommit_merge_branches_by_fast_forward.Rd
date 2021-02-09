@@ -18,6 +18,13 @@ identify a commit (for example, a branch name or a full commit ID).}
 
 \item{targetBranch}{The branch where the merge is applied.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  commitId = "string",
+  treeId = "string"
+)
+}
+}
 \description{
 Merges two branches using the fast-forward merge strategy.
 }

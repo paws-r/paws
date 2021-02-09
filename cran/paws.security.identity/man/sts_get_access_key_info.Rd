@@ -12,6 +12,12 @@ sts_get_access_key_info(AccessKeyId)
 This parameter allows (through its regex pattern) a string of characters
 that can consist of any upper- or lowercase letter or digit.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Account = "string"
+)
+}
+}
 \description{
 Returns the account identifier for the specified access key ID.
 

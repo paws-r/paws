@@ -41,6 +41,10 @@ using the \code{Arguments} parameter in the
 \code{\link[=glue_update_dev_endpoint]{update_dev_endpoint}} APIs. If no arguments
 are provided, the version defaults to Python 2.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a specified development endpoint.
 }

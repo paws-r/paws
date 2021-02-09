@@ -34,6 +34,23 @@ defined back-end endpoint.}
 \item{stageVariables}{A key-value map of stage variables to simulate an invocation on a
 deployed Stage.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  status = 123,
+  body = "string",
+  headers = list(
+    "string"
+  ),
+  multiValueHeaders = list(
+    list(
+      "string"
+    )
+  ),
+  log = "string",
+  latency = 123
+)
+}
+}
 \description{
 Simulate the execution of a Method in your RestApi with headers,
 parameters, and an incoming request body.

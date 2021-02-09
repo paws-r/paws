@@ -11,6 +11,10 @@ securityhub_tag_resource(ResourceArn, Tags)
 
 \item{Tags}{[required] The tags to add to the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds one or more tags to a resource.
 }

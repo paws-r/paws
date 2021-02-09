@@ -41,6 +41,20 @@ this parameter is not used, then
 \code{\link[=ecs_list_attributes]{list_attributes}} returns up to 100 results and a
 \code{nextToken} value if applicable.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  attributes = list(
+    list(
+      name = "string",
+      value = "string",
+      targetType = "container-instance",
+      targetId = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the attributes for Amazon ECS resources within a specified target
 type and cluster. When you specify a target type and cluster,

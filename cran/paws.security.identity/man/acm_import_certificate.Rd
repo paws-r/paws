@@ -23,6 +23,12 @@ this field.}
 
 Note: You cannot apply tags when reimporting a certificate.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CertificateArn = "string"
+)
+}
+}
 \description{
 Imports a certificate into AWS Certificate Manager (ACM) to use with
 services that are integrated with ACM. Note that \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html}{integrated services}
@@ -58,8 +64,8 @@ imported certifica
 \item When you import a certificate by using the CLI, you must specify the
 certificate, the certificate chain, and the private key by their
 file names preceded by \verb{file://}. For example, you can specify a
-certificate saved in the \verb{C:\\\\temp} folder as
-\verb{file://C:\\\\temp\\\\certificate_to_import.pem}. If you are making an
+certificate saved in the \verb{C:\\temp} folder as
+\verb{file://C:\\temp\\certificate_to_import.pem}. If you are making an
 HTTP or HTTPS Query request, include these arguments as BLOBs.
 \item When you import a certificate by using an SDK, you must specify the
 certificate, the certificate chain, and the private key files in the

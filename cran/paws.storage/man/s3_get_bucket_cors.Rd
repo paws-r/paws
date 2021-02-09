@@ -13,6 +13,28 @@ s3_get_bucket_cors(Bucket, ExpectedBucketOwner)
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CORSRules = list(
+    list(
+      AllowedHeaders = list(
+        "string"
+      ),
+      AllowedMethods = list(
+        "string"
+      ),
+      AllowedOrigins = list(
+        "string"
+      ),
+      ExposeHeaders = list(
+        "string"
+      ),
+      MaxAgeSeconds = 123
+    )
+  )
+)
+}
+}
 \description{
 Returns the cors configuration information set for the bucket.
 
@@ -20,7 +42,7 @@ To use this operation, you must have permission to perform the
 s3:GetBucketCORS action. By default, the bucket owner has this
 permission and can grant it to others.
 
-For more information about cors, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html}{Enabling Cross-Origin Resource Sharing}.
+For more information about cors, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html}{Enabling Cross-Origin Resource Sharing}.
 
 The following operations are related to
 \code{\link[=s3_get_bucket_cors]{get_bucket_cors}}:

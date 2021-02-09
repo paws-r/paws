@@ -94,6 +94,12 @@ MaintenanceWindowTaskInvocationParameters.}
 
 \item{ClientToken}{User-provided idempotency token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  WindowTaskId = "string"
+)
+}
+}
 \description{
 Adds a new task to a maintenance window.
 }

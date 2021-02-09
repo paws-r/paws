@@ -11,6 +11,16 @@ resourcegroups_get_group(GroupName, Group)
 
 \item{Group}{The name or the ARN of the resource group to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Group = list(
+    GroupArn = "string",
+    Name = "string",
+    Description = "string"
+  )
+)
+}
+}
 \description{
 Returns information about a specified resource group.
 

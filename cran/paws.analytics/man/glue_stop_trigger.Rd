@@ -9,6 +9,12 @@ glue_stop_trigger(Name)
 \arguments{
 \item{Name}{[required] The name of the trigger to stop.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string"
+)
+}
+}
 \description{
 Stops a specified trigger.
 }

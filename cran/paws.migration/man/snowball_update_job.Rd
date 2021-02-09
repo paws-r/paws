@@ -34,6 +34,10 @@ object. The 50 TB Snowballs are only available in the US regions.}
 \item{ForwardingAddressId}{The updated ID for the forwarding address for a job. This field is not
 supported in most regions.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 While a job's \code{JobState} value is \code{New}, you can update some of the
 information associated with a job. Once the job changes to a different
@@ -94,7 +98,7 @@ action is no longer available.
 # job being created, this action is no longer available.
 svc$update_job(
   AddressId = "ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b",
-  Description = "Upgraded to Edge, shipped to Finance Dept, and requested faster shipping sp...",
+  Description = "Upgraded to Edge, shipped to Finance Dept, and requested faster ship...",
   JobId = "JID123e4567-e89b-12d3-a456-426655440000",
   ShippingOption = "NEXT_DAY",
   SnowballCapacityPreference = "T100"

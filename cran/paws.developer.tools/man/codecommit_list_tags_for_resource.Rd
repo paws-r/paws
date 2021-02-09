@@ -14,6 +14,15 @@ information about tags, if any.}
 \item{nextToken}{An enumeration token that, when provided in a request, returns the next
 batch of the results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  tags = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets information about AWS tags for a specified Amazon Resource Name
 (ARN) in AWS CodeCommit. For a list of valid resources in AWS

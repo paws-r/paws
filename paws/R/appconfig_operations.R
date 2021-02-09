@@ -22,6 +22,16 @@ NULL
 #' your AppConfig resources. Each tag consists of a key and an optional
 #' value, both of which you define.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_application(
@@ -94,6 +104,25 @@ appconfig_create_application <- function(Name, Description = NULL, Tags = NULL) 
 #' @param Tags Metadata to assign to the configuration profile. Tags help organize and
 #' categorize your AppConfig resources. Each tag consists of a key and an
 #' optional value, both of which you define.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   LocationUri = "string",
+#'   RetrievalRoleArn = "string",
+#'   Validators = list(
+#'     list(
+#'       Type = "JSON_SCHEMA"|"LAMBDA",
+#'       Content = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -190,6 +219,21 @@ appconfig_create_configuration_profile <- function(ApplicationId, Name, Descript
 #' categorize your AppConfig resources. Each tag consists of a key and an
 #' optional value, both of which you define.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   DeploymentDurationInMinutes = 123,
+#'   GrowthType = "LINEAR"|"EXPONENTIAL",
+#'   GrowthFactor = 123.0,
+#'   FinalBakeTimeInMinutes = 123,
+#'   ReplicateTo = "NONE"|"SSM_DOCUMENT"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_deployment_strategy(
@@ -249,6 +293,24 @@ appconfig_create_deployment_strategy <- function(Name, Description = NULL, Deplo
 #' @param Tags Metadata to assign to the environment. Tags help organize and categorize
 #' your AppConfig resources. Each tag consists of a key and an optional
 #' value, both of which you define.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   State = "READY_FOR_DEPLOYMENT"|"DEPLOYING"|"ROLLING_BACK"|"ROLLED_BACK",
+#'   Monitors = list(
+#'     list(
+#'       AlarmArn = "string",
+#'       AlarmRoleArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -310,6 +372,19 @@ appconfig_create_environment <- function(ApplicationId, Name, Description = NULL
 #' versions in rapid succession, specify the version of the latest hosted
 #' configuration version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   ConfigurationProfileId = "string",
+#'   VersionNumber = 123,
+#'   Description = "string",
+#'   Content = raw,
+#'   ContentType = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_hosted_configuration_version(
@@ -353,6 +428,8 @@ appconfig_create_hosted_configuration_version <- function(ApplicationId, Configu
 #'
 #' @param ApplicationId &#91;required&#93; The ID of the application to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_application(
@@ -394,6 +471,8 @@ appconfig_delete_application <- function(ApplicationId) {
 #' delete.
 #' @param ConfigurationProfileId &#91;required&#93; The ID of the configuration profile you want to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_configuration_profile(
@@ -433,6 +512,8 @@ appconfig_delete_configuration_profile <- function(ApplicationId, ConfigurationP
 #'
 #' @param DeploymentStrategyId &#91;required&#93; The ID of the deployment strategy you want to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_deployment_strategy(
@@ -471,6 +552,8 @@ appconfig_delete_deployment_strategy <- function(DeploymentStrategyId) {
 #'
 #' @param ApplicationId &#91;required&#93; The application ID that includes the environment you want to delete.
 #' @param EnvironmentId &#91;required&#93; The ID of the environment you want to delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -515,6 +598,8 @@ appconfig_delete_environment <- function(ApplicationId, EnvironmentId) {
 #' @param ConfigurationProfileId &#91;required&#93; The configuration profile ID.
 #' @param VersionNumber &#91;required&#93; The versions number to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_hosted_configuration_version(
@@ -553,6 +638,16 @@ appconfig_delete_hosted_configuration_version <- function(ApplicationId, Configu
 #' appconfig_get_application(ApplicationId)
 #'
 #' @param ApplicationId &#91;required&#93; The ID of the application you want to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -635,6 +730,16 @@ appconfig_get_application <- function(ApplicationId) {
 #' Configuration](https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-retrieving-the-configuration.html)
 #' in the *AWS AppConfig User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Content = raw,
+#'   ConfigurationVersion = "string",
+#'   ContentType = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_configuration(
@@ -679,6 +784,25 @@ appconfig_get_configuration <- function(Application, Environment, Configuration,
 #' want to get.
 #' @param ConfigurationProfileId &#91;required&#93; The ID of the configuration profile you want to get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   LocationUri = "string",
+#'   RetrievalRoleArn = "string",
+#'   Validators = list(
+#'     list(
+#'       Type = "JSON_SCHEMA"|"LAMBDA",
+#'       Content = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_configuration_profile(
@@ -718,6 +842,44 @@ appconfig_get_configuration_profile <- function(ApplicationId, ConfigurationProf
 #' @param ApplicationId &#91;required&#93; The ID of the application that includes the deployment you want to get.
 #' @param EnvironmentId &#91;required&#93; The ID of the environment that includes the deployment you want to get.
 #' @param DeploymentNumber &#91;required&#93; The sequence number of the deployment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   EnvironmentId = "string",
+#'   DeploymentStrategyId = "string",
+#'   ConfigurationProfileId = "string",
+#'   DeploymentNumber = 123,
+#'   ConfigurationName = "string",
+#'   ConfigurationLocationUri = "string",
+#'   ConfigurationVersion = "string",
+#'   Description = "string",
+#'   DeploymentDurationInMinutes = 123,
+#'   GrowthType = "LINEAR"|"EXPONENTIAL",
+#'   GrowthFactor = 123.0,
+#'   FinalBakeTimeInMinutes = 123,
+#'   State = "BAKING"|"VALIDATING"|"DEPLOYING"|"COMPLETE"|"ROLLING_BACK"|"ROLLED_BACK",
+#'   EventLog = list(
+#'     list(
+#'       EventType = "PERCENTAGE_UPDATED"|"ROLLBACK_STARTED"|"ROLLBACK_COMPLETED"|"BAKE_TIME_STARTED"|"DEPLOYMENT_STARTED"|"DEPLOYMENT_COMPLETED",
+#'       TriggeredBy = "USER"|"APPCONFIG"|"CLOUDWATCH_ALARM"|"INTERNAL_ERROR",
+#'       Description = "string",
+#'       OccurredAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   PercentageComplete = 123.0,
+#'   StartedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CompletedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -762,6 +924,21 @@ appconfig_get_deployment <- function(ApplicationId, EnvironmentId, DeploymentNum
 #'
 #' @param DeploymentStrategyId &#91;required&#93; The ID of the deployment strategy to get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   DeploymentDurationInMinutes = 123,
+#'   GrowthType = "LINEAR"|"EXPONENTIAL",
+#'   GrowthFactor = 123.0,
+#'   FinalBakeTimeInMinutes = 123,
+#'   ReplicateTo = "NONE"|"SSM_DOCUMENT"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_deployment_strategy(
@@ -805,6 +982,24 @@ appconfig_get_deployment_strategy <- function(DeploymentStrategyId) {
 #' @param ApplicationId &#91;required&#93; The ID of the application that includes the environment you want to get.
 #' @param EnvironmentId &#91;required&#93; The ID of the environment you wnat to get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   State = "READY_FOR_DEPLOYMENT"|"DEPLOYING"|"ROLLING_BACK"|"ROLLED_BACK",
+#'   Monitors = list(
+#'     list(
+#'       AlarmArn = "string",
+#'       AlarmRoleArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_environment(
@@ -845,6 +1040,19 @@ appconfig_get_environment <- function(ApplicationId, EnvironmentId) {
 #' @param ApplicationId &#91;required&#93; The application ID.
 #' @param ConfigurationProfileId &#91;required&#93; The configuration profile ID.
 #' @param VersionNumber &#91;required&#93; The version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   ConfigurationProfileId = "string",
+#'   VersionNumber = 123,
+#'   Description = "string",
+#'   Content = raw,
+#'   ContentType = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -888,6 +1096,21 @@ appconfig_get_hosted_configuration_version <- function(ApplicationId, Configurat
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -933,6 +1156,25 @@ appconfig_list_applications <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ApplicationId = "string",
+#'       Id = "string",
+#'       Name = "string",
+#'       LocationUri = "string",
+#'       ValidatorTypes = list(
+#'         "JSON_SCHEMA"|"LAMBDA"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_configuration_profiles(
@@ -975,6 +1217,26 @@ appconfig_list_configuration_profiles <- function(ApplicationId, MaxResults = NU
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       DeploymentDurationInMinutes = 123,
+#'       GrowthType = "LINEAR"|"EXPONENTIAL",
+#'       GrowthFactor = 123.0,
+#'       FinalBakeTimeInMinutes = 123,
+#'       ReplicateTo = "NONE"|"SSM_DOCUMENT"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1021,6 +1283,33 @@ appconfig_list_deployment_strategies <- function(MaxResults = NULL, NextToken = 
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       DeploymentNumber = 123,
+#'       ConfigurationName = "string",
+#'       ConfigurationVersion = "string",
+#'       DeploymentDurationInMinutes = 123,
+#'       GrowthType = "LINEAR"|"EXPONENTIAL",
+#'       GrowthFactor = 123.0,
+#'       FinalBakeTimeInMinutes = 123,
+#'       State = "BAKING"|"VALIDATING"|"DEPLOYING"|"COMPLETE"|"ROLLING_BACK"|"ROLLED_BACK",
+#'       PercentageComplete = 123.0,
+#'       StartedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CompletedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_deployments(
@@ -1065,6 +1354,29 @@ appconfig_list_deployments <- function(ApplicationId, EnvironmentId, MaxResults 
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ApplicationId = "string",
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       State = "READY_FOR_DEPLOYMENT"|"DEPLOYING"|"ROLLING_BACK"|"ROLLED_BACK",
+#'       Monitors = list(
+#'         list(
+#'           AlarmArn = "string",
+#'           AlarmRoleArn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1114,6 +1426,23 @@ appconfig_list_environments <- function(ApplicationId, MaxResults = NULL, NextTo
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ApplicationId = "string",
+#'       ConfigurationProfileId = "string",
+#'       VersionNumber = 123,
+#'       Description = "string",
+#'       ContentType = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_hosted_configuration_versions(
@@ -1153,6 +1482,16 @@ appconfig_list_hosted_configuration_versions <- function(ApplicationId, Configur
 #' appconfig_list_tags_for_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The resource ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1200,6 +1539,44 @@ appconfig_list_tags_for_resource <- function(ResourceArn) {
 #' @param Tags Metadata to assign to the deployment. Tags help organize and categorize
 #' your AppConfig resources. Each tag consists of a key and an optional
 #' value, both of which you define.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   EnvironmentId = "string",
+#'   DeploymentStrategyId = "string",
+#'   ConfigurationProfileId = "string",
+#'   DeploymentNumber = 123,
+#'   ConfigurationName = "string",
+#'   ConfigurationLocationUri = "string",
+#'   ConfigurationVersion = "string",
+#'   Description = "string",
+#'   DeploymentDurationInMinutes = 123,
+#'   GrowthType = "LINEAR"|"EXPONENTIAL",
+#'   GrowthFactor = 123.0,
+#'   FinalBakeTimeInMinutes = 123,
+#'   State = "BAKING"|"VALIDATING"|"DEPLOYING"|"COMPLETE"|"ROLLING_BACK"|"ROLLED_BACK",
+#'   EventLog = list(
+#'     list(
+#'       EventType = "PERCENTAGE_UPDATED"|"ROLLBACK_STARTED"|"ROLLBACK_COMPLETED"|"BAKE_TIME_STARTED"|"DEPLOYMENT_STARTED"|"DEPLOYMENT_COMPLETED",
+#'       TriggeredBy = "USER"|"APPCONFIG"|"CLOUDWATCH_ALARM"|"INTERNAL_ERROR",
+#'       Description = "string",
+#'       OccurredAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   PercentageComplete = 123.0,
+#'   StartedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CompletedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1251,6 +1628,44 @@ appconfig_start_deployment <- function(ApplicationId, EnvironmentId, DeploymentS
 #' @param EnvironmentId &#91;required&#93; The environment ID.
 #' @param DeploymentNumber &#91;required&#93; The sequence number of the deployment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   EnvironmentId = "string",
+#'   DeploymentStrategyId = "string",
+#'   ConfigurationProfileId = "string",
+#'   DeploymentNumber = 123,
+#'   ConfigurationName = "string",
+#'   ConfigurationLocationUri = "string",
+#'   ConfigurationVersion = "string",
+#'   Description = "string",
+#'   DeploymentDurationInMinutes = 123,
+#'   GrowthType = "LINEAR"|"EXPONENTIAL",
+#'   GrowthFactor = 123.0,
+#'   FinalBakeTimeInMinutes = 123,
+#'   State = "BAKING"|"VALIDATING"|"DEPLOYING"|"COMPLETE"|"ROLLING_BACK"|"ROLLED_BACK",
+#'   EventLog = list(
+#'     list(
+#'       EventType = "PERCENTAGE_UPDATED"|"ROLLBACK_STARTED"|"ROLLBACK_COMPLETED"|"BAKE_TIME_STARTED"|"DEPLOYMENT_STARTED"|"DEPLOYMENT_COMPLETED",
+#'       TriggeredBy = "USER"|"APPCONFIG"|"CLOUDWATCH_ALARM"|"INTERNAL_ERROR",
+#'       Description = "string",
+#'       OccurredAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   PercentageComplete = 123.0,
+#'   StartedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CompletedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_deployment(
@@ -1292,9 +1707,11 @@ appconfig_stop_deployment <- function(ApplicationId, EnvironmentId, DeploymentNu
 #' appconfig_tag_resource(ResourceArn, Tags)
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource for which to retrieve tags.
-#' @param Tags &#91;required&#93; The key-value string map. The valid character set is \[a-zA-Z+-=.\\_:/\].
+#' @param Tags &#91;required&#93; The key-value string map. The valid character set is \[a-zA-Z+-=._:/\].
 #' The tag key can be up to 128 characters and must not start with `aws:`.
 #' The tag value can be up to 256 characters.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1337,6 +1754,8 @@ appconfig_tag_resource <- function(ResourceArn, Tags) {
 #' @param ResourceArn &#91;required&#93; The ARN of the resource for which to remove tags.
 #' @param TagKeys &#91;required&#93; The tag keys to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -1378,6 +1797,16 @@ appconfig_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param ApplicationId &#91;required&#93; The application ID.
 #' @param Name The name of the application.
 #' @param Description A description of the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1424,6 +1853,25 @@ appconfig_update_application <- function(ApplicationId, Name = NULL, Description
 #' @param RetrievalRoleArn The ARN of an IAM role with permission to access the configuration at
 #' the specified LocationUri.
 #' @param Validators A list of methods for validating the configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   LocationUri = "string",
+#'   RetrievalRoleArn = "string",
+#'   Validators = list(
+#'     list(
+#'       Type = "JSON_SCHEMA"|"LAMBDA",
+#'       Content = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1508,6 +1956,21 @@ appconfig_update_configuration_profile <- function(ApplicationId, ConfigurationP
 #' targets, 4% of the targets, 8% of the targets, and continues until the
 #' configuration has been deployed to all targets.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   DeploymentDurationInMinutes = 123,
+#'   GrowthType = "LINEAR"|"EXPONENTIAL",
+#'   GrowthFactor = 123.0,
+#'   FinalBakeTimeInMinutes = 123,
+#'   ReplicateTo = "NONE"|"SSM_DOCUMENT"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_deployment_strategy(
@@ -1554,6 +2017,24 @@ appconfig_update_deployment_strategy <- function(DeploymentStrategyId, Descripti
 #' @param Name The name of the environment.
 #' @param Description A description of the environment.
 #' @param Monitors Amazon CloudWatch alarms to monitor during the deployment process.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationId = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   State = "READY_FOR_DEPLOYMENT"|"DEPLOYING"|"ROLLING_BACK"|"ROLLED_BACK",
+#'   Monitors = list(
+#'     list(
+#'       AlarmArn = "string",
+#'       AlarmRoleArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1605,6 +2086,8 @@ appconfig_update_environment <- function(ApplicationId, EnvironmentId, Name = NU
 #' @param ApplicationId &#91;required&#93; The application ID.
 #' @param ConfigurationProfileId &#91;required&#93; The configuration profile ID.
 #' @param ConfigurationVersion &#91;required&#93; The version of the configuration to validate.
+#'
+
 #'
 #' @section Request syntax:
 #' ```

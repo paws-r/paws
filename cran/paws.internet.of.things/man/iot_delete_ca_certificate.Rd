@@ -10,6 +10,10 @@ iot_delete_ca_certificate(certificateId)
 \item{certificateId}{[required] The ID of the certificate to delete. (The last part of the certificate
 ARN contains the certificate ID.)}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a registered CA certificate.
 }

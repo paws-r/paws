@@ -79,6 +79,10 @@ Amazon SNS service principle to perform the \code{s3:PutObject} and
 For an example bucket policy and usage report, see \href{https://docs.aws.amazon.com/sns/latest/dg/sms_stats.html}{Monitoring SMS Activity} in
 the \emph{Amazon SNS Developer Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Use this request to set the default settings for sending SMS messages
 and receiving daily SMS usage reports.

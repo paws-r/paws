@@ -13,6 +13,17 @@ assumed.}
 
 \item{repositoryName}{[required] The name of the repository.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  registryId = "string",
+  repositoryName = "string",
+  lifecyclePolicyText = "string",
+  lastEvaluatedAt = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Retrieves the lifecycle policy for the specified repository.
 }

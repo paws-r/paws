@@ -15,6 +15,14 @@ of searchable thing attribute names.}
 
 \item{tags}{Metadata which can be used to manage the thing type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  thingTypeName = "string",
+  thingTypeArn = "string",
+  thingTypeId = "string"
+)
+}
+}
 \description{
 Creates a new thing type.
 }

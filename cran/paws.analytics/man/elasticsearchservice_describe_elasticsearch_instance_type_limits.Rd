@@ -18,6 +18,43 @@ modify. This should be present only if we are querying for Elasticsearch
 
 \item{ElasticsearchVersion}{[required] Version of Elasticsearch for which \code{Limits} are needed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LimitsByRole = list(
+    list(
+      StorageTypes = list(
+        list(
+          StorageTypeName = "string",
+          StorageSubTypeName = "string",
+          StorageTypeLimits = list(
+            list(
+              LimitName = "string",
+              LimitValues = list(
+                "string"
+              )
+            )
+          )
+        )
+      ),
+      InstanceLimits = list(
+        InstanceCountLimits = list(
+          MinimumInstanceCount = 123,
+          MaximumInstanceCount = 123
+        )
+      ),
+      AdditionalLimits = list(
+        list(
+          LimitName = "string",
+          LimitValues = list(
+            "string"
+          )
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describe Elasticsearch Limits for a given InstanceType and
 ElasticsearchVersion. When modifying existing Domain, specify the

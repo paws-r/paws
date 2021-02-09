@@ -26,7 +26,7 @@ results. AWS Config stores intermediate files while processing
 conformance pack template.
 
 The delivery bucket name should start with awsconfigconforms. For
-example: "Resource": "arn:aws:s3:::your\\_bucket\\_name/*". For more
+example: "Resource": "arn:aws:s3:::your_bucket_name/*". For more
 information, see \href{https://docs.aws.amazon.com/config/latest/developerguide/conformance-pack-organization-apis.html}{Permissions for cross account bucket access}.}
 
 \item{DeliveryS3KeyPrefix}{The prefix for the Amazon S3 bucket.}
@@ -35,6 +35,12 @@ information, see \href{https://docs.aws.amazon.com/config/latest/developerguide/
 
 \item{ExcludedAccounts}{A list of AWS accounts to be excluded from an organization conformance
 pack while deploying a conformance pack.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationConformancePackArn = "string"
+)
+}
 }
 \description{
 Deploys conformance packs across member accounts in an AWS Organization.
@@ -60,8 +66,8 @@ You must specify either the \code{TemplateS3Uri} or the \code{TemplateBody}
 parameter, but not both. If you provide both AWS Config uses the
 \code{TemplateS3Uri} parameter and ignores the \code{TemplateBody} parameter.
 
-AWS Config sets the state of a conformance pack to CREATE\\_IN\\_PROGRESS
-and UPDATE\\_IN\\_PROGRESS until the conformance pack is created or
+AWS Config sets the state of a conformance pack to CREATE_IN_PROGRESS
+and UPDATE_IN_PROGRESS until the conformance pack is created or
 updated. You cannot update a conformance pack while it is in this state.
 
 You can create 6 conformance packs with 25 AWS Config rules in each pack

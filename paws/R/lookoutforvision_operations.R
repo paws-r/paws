@@ -53,6 +53,21 @@ NULL
 #' [`create_dataset`][lookoutforvision_create_dataset]. An idempotency
 #' token is active for 8 hours.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetMetadata = list(
+#'     DatasetType = "string",
+#'     CreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED_ROLLBACK_IN_PROGRESS"|"UPDATE_FAILED_ROLLBACK_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED",
+#'     StatusMessage = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_dataset(
@@ -133,6 +148,28 @@ lookoutforvision_create_dataset <- function(ProjectName, DatasetType, DatasetSou
 #' master key (CMK) to use for encypting the model. If this parameter is
 #' not specified, the model is encrypted by a key that AWS owns and
 #' manages.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelMetadata = list(
+#'     CreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ModelVersion = "string",
+#'     ModelArn = "string",
+#'     Description = "string",
+#'     Status = "TRAINING"|"TRAINED"|"TRAINING_FAILED"|"STARTING_HOSTING"|"HOSTED"|"HOSTING_FAILED"|"STOPPING_HOSTING"|"SYSTEM_UPDATING"|"DELETING",
+#'     StatusMessage = "string",
+#'     Performance = list(
+#'       F1Score = 123.0,
+#'       Recall = 123.0,
+#'       Precision = 123.0
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -226,6 +263,20 @@ lookoutforvision_create_model <- function(ProjectName, Description = NULL, Clien
 #' [`create_project`][lookoutforvision_create_project]. An idempotency
 #' token is active for 8 hours.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProjectMetadata = list(
+#'     ProjectArn = "string",
+#'     ProjectName = "string",
+#'     CreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_project(
@@ -298,6 +349,12 @@ lookoutforvision_create_project <- function(ProjectName, ClientToken = NULL) {
 #' [`delete_dataset`][lookoutforvision_delete_dataset]. An idempotency
 #' token is active for 8 hours.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_dataset(
@@ -350,6 +407,14 @@ lookoutforvision_delete_dataset <- function(ProjectName, DatasetType, ClientToke
 #' different value for `ClientToken` is considered a new call to
 #' [`delete_model`][lookoutforvision_delete_model]. An idempotency token is
 #' active for 8 hours.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -409,6 +474,14 @@ lookoutforvision_delete_model <- function(ProjectName, ModelVersion, ClientToken
 #' [`delete_project`][lookoutforvision_delete_project]. An idempotency
 #' token is active for 8 hours.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProjectArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_project(
@@ -451,6 +524,31 @@ lookoutforvision_delete_project <- function(ProjectName, ClientToken = NULL) {
 #' training dataset. Specify `test` to describe the test dataset. If you
 #' have a single dataset project, specify `train`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetDescription = list(
+#'     ProjectName = "string",
+#'     DatasetType = "string",
+#'     CreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED_ROLLBACK_IN_PROGRESS"|"UPDATE_FAILED_ROLLBACK_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED",
+#'     StatusMessage = "string",
+#'     ImageStats = list(
+#'       Total = 123,
+#'       Labeled = 123,
+#'       Normal = 123,
+#'       Anomaly = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_dataset(
@@ -491,6 +589,46 @@ lookoutforvision_describe_dataset <- function(ProjectName, DatasetType) {
 #' describe.
 #' @param ModelVersion &#91;required&#93; The version of the model that you want to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelDescription = list(
+#'     ModelVersion = "string",
+#'     ModelArn = "string",
+#'     CreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     Status = "TRAINING"|"TRAINED"|"TRAINING_FAILED"|"STARTING_HOSTING"|"HOSTED"|"HOSTING_FAILED"|"STOPPING_HOSTING"|"SYSTEM_UPDATING"|"DELETING",
+#'     StatusMessage = "string",
+#'     Performance = list(
+#'       F1Score = 123.0,
+#'       Recall = 123.0,
+#'       Precision = 123.0
+#'     ),
+#'     OutputConfig = list(
+#'       S3Location = list(
+#'         Bucket = "string",
+#'         Prefix = "string"
+#'       )
+#'     ),
+#'     EvaluationManifest = list(
+#'       Bucket = "string",
+#'       Key = "string"
+#'     ),
+#'     EvaluationResult = list(
+#'       Bucket = "string",
+#'       Key = "string"
+#'     ),
+#'     EvaluationEndTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     KmsKeyId = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_model(
@@ -528,6 +666,30 @@ lookoutforvision_describe_model <- function(ProjectName, ModelVersion) {
 #' lookoutforvision_describe_project(ProjectName)
 #'
 #' @param ProjectName &#91;required&#93; The name of the project that you want to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProjectDescription = list(
+#'     ProjectArn = "string",
+#'     ProjectName = "string",
+#'     CreationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Datasets = list(
+#'       list(
+#'         DatasetType = "string",
+#'         CreationTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED_ROLLBACK_IN_PROGRESS"|"UPDATE_FAILED_ROLLBACK_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED",
+#'         StatusMessage = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -584,6 +746,20 @@ lookoutforvision_describe_project <- function(ProjectName) {
 #' @param Body &#91;required&#93; The unencrypted image bytes that you want to analyze.
 #' @param ContentType &#91;required&#93; The type of the image passed in `Body`. Valid values are `image/png`
 #' (PNG format images) and `image/jpeg` (JPG format images).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DetectAnomalyResult = list(
+#'     Source = list(
+#'       Type = "string"
+#'     ),
+#'     IsAnomalous = TRUE|FALSE,
+#'     Confidence = 123.0
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -648,8 +824,19 @@ lookoutforvision_detect_anomalies <- function(ProjectName, ModelVersion, Body, C
 #' value you can specify is 100. If you specify a value greater than 100, a
 #' ValidationException error occurs. The default value is 100.
 #' @param SourceRefContains Perform a "contains" search on the values of the `source-ref` key within
-#' the dataset. For example a value of "IMG\\_17" returns all JSON Lines
-#' where the `source-ref` key value matches **IMG\\_17**.
+#' the dataset. For example a value of "IMG_17" returns all JSON Lines
+#' where the `source-ref` key value matches **IMG_17**.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetEntries = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -708,6 +895,31 @@ lookoutforvision_list_dataset_entries <- function(ProjectName, DatasetType, Labe
 #' value you can specify is 100. If you specify a value greater than 100, a
 #' ValidationException error occurs. The default value is 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Models = list(
+#'     list(
+#'       CreationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ModelVersion = "string",
+#'       ModelArn = "string",
+#'       Description = "string",
+#'       Status = "TRAINING"|"TRAINED"|"TRAINING_FAILED"|"STARTING_HOSTING"|"HOSTED"|"HOSTING_FAILED"|"STOPPING_HOSTING"|"SYSTEM_UPDATING"|"DELETING",
+#'       StatusMessage = "string",
+#'       Performance = list(
+#'         F1Score = 123.0,
+#'         Recall = 123.0,
+#'         Precision = 123.0
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_models(
@@ -752,6 +964,23 @@ lookoutforvision_list_models <- function(ProjectName, NextToken = NULL, MaxResul
 #' @param MaxResults The maximum number of results to return per paginated call. The largest
 #' value you can specify is 100. If you specify a value greater than 100, a
 #' ValidationException error occurs. The default value is 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Projects = list(
+#'     list(
+#'       ProjectArn = "string",
+#'       ProjectName = "string",
+#'       CreationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -816,6 +1045,14 @@ lookoutforvision_list_projects <- function(NextToken = NULL, MaxResults = NULL) 
 #' [`start_model`][lookoutforvision_start_model]. An idempotency token is
 #' active for 8 hours.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "RUNNING"|"STARTING"|"STOPPED"|"FAILED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_model(
@@ -869,6 +1106,14 @@ lookoutforvision_start_model <- function(ProjectName, ModelVersion, MinInference
 #' value for `ClientToken` is considered a new call to
 #' [`stop_model`][lookoutforvision_stop_model]. An idempotency token is
 #' active for 8 hours.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "RUNNING"|"STARTING"|"STOPPED"|"FAILED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -933,6 +1178,14 @@ lookoutforvision_stop_model <- function(ProjectName, ModelVersion, ClientToken =
 #' different value for `ClientToken` is considered a new call to
 #' [`update_dataset_entries`][lookoutforvision_update_dataset_entries]. An
 #' idempotency token is active for 8 hours.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED_ROLLBACK_IN_PROGRESS"|"UPDATE_FAILED_ROLLBACK_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

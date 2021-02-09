@@ -43,6 +43,14 @@ NULL
 #' the status is set to DISABLED, notifications aren't sent for the
 #' notification rule.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_notification_rule(
@@ -97,6 +105,14 @@ codestarnotifications_create_notification_rule <- function(Name, EventTypeIds, R
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule you want to
 #' delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_notification_rule(
@@ -138,6 +154,12 @@ codestarnotifications_delete_notification_rule <- function(Arn) {
 #' between that target and every notification rule in your AWS account are
 #' deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_target(
@@ -175,6 +197,43 @@ codestarnotifications_delete_target <- function(TargetAddress, ForceUnsubscribeA
 #' codestarnotifications_describe_notification_rule(Arn)
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Name = "string",
+#'   EventTypes = list(
+#'     list(
+#'       EventTypeId = "string",
+#'       ServiceName = "string",
+#'       EventTypeName = "string",
+#'       ResourceType = "string"
+#'     )
+#'   ),
+#'   Resource = "string",
+#'   Targets = list(
+#'     list(
+#'       TargetAddress = "string",
+#'       TargetType = "string",
+#'       TargetStatus = "PENDING"|"ACTIVE"|"UNREACHABLE"|"INACTIVE"|"DEACTIVATED"
+#'     )
+#'   ),
+#'   DetailType = "BASIC"|"FULL",
+#'   CreatedBy = "string",
+#'   Status = "ENABLED"|"DISABLED",
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -219,6 +278,22 @@ codestarnotifications_describe_notification_rule <- function(Arn) {
 #' @param MaxResults A non-negative integer used to limit the number of returned results. The
 #' default number is 50. The maximum number of results that can be returned
 #' is 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventTypes = list(
+#'     list(
+#'       EventTypeId = "string",
+#'       ServiceName = "string",
+#'       EventTypeName = "string",
+#'       ResourceType = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -274,6 +349,20 @@ codestarnotifications_list_event_types <- function(Filters = NULL, NextToken = N
 #' @param MaxResults A non-negative integer used to limit the number of returned results. The
 #' maximum number of results that can be returned is 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   NotificationRules = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_notification_rules(
@@ -317,6 +406,16 @@ codestarnotifications_list_notification_rules <- function(Filters = NULL, NextTo
 #' codestarnotifications_list_tags_for_resource(Arn)
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) for the notification rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -363,6 +462,21 @@ codestarnotifications_list_tags_for_resource <- function(Arn) {
 #' batch of the results.
 #' @param MaxResults A non-negative integer used to limit the number of returned results. The
 #' maximum number of results that can be returned is 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Targets = list(
+#'     list(
+#'       TargetAddress = "string",
+#'       TargetType = "string",
+#'       TargetStatus = "PENDING"|"ACTIVE"|"UNREACHABLE"|"INACTIVE"|"DEACTIVATED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -416,6 +530,14 @@ codestarnotifications_list_targets <- function(Filters = NULL, NextToken = NULL,
 #' @param ClientRequestToken An enumeration token that, when provided in a request, returns the next
 #' batch of the results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$subscribe(
@@ -459,6 +581,16 @@ codestarnotifications_subscribe <- function(Arn, Target, ClientRequestToken = NU
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule to tag.
 #' @param Tags &#91;required&#93; The list of tags to associate with the resource. Tag key names cannot
 #' start with "aws".
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -505,6 +637,14 @@ codestarnotifications_tag_resource <- function(Arn, Tags) {
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule.
 #' @param TargetAddress &#91;required&#93; The ARN of the SNS topic to unsubscribe from the notification rule.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$unsubscribe(
@@ -546,6 +686,12 @@ codestarnotifications_unsubscribe <- function(Arn, TargetAddress) {
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule from which to
 #' remove the tags.
 #' @param TagKeys &#91;required&#93; The key names of the tags to remove.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -604,6 +750,12 @@ codestarnotifications_untag_resource <- function(Arn, TagKeys) {
 #' AWS CloudWatch. FULL will include any supplemental information provided
 #' by AWS CodeStar Notifications and/or the service for the resource for
 #' which the notification is created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

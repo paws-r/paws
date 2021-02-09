@@ -18,6 +18,17 @@ minutes before and 8 minutes after this time are searched. If you omit
 The \code{time} value is specified as epoch time, the number of seconds since
 January 1, 1970, 00:00:00 UTC.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  logGroupFields = list(
+    list(
+      name = "string",
+      percent = 123
+    )
+  )
+)
+}
+}
 \description{
 Returns a list of the fields that are included in log events in the
 specified log group, along with the percentage of log events that

@@ -8,7 +8,11 @@ iot_cancel_audit_task(taskId)
 }
 \arguments{
 \item{taskId}{[required] The ID of the audit you want to cancel. You can only cancel an audit
-that is "IN\\_PROGRESS".}
+that is "IN_PROGRESS".}
+}
+\value{
+A list with the following syntax:\preformatted{list()
+}
 }
 \description{
 Cancels an audit that is in progress. The audit can be either scheduled

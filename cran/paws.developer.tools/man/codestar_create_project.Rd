@@ -28,6 +28,15 @@ the sourceCode parameter.}
 
 \item{tags}{The tags created for the project.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  arn = "string",
+  clientRequestToken = "string",
+  projectTemplateId = "string"
+)
+}
+}
 \description{
 Creates a project, including project resources. This action creates a
 project based on a submitted project request. A set of source code files

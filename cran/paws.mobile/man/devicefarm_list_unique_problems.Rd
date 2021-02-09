@@ -13,6 +13,91 @@ devicefarm_list_unique_problems(arn, nextToken)
 operation, which can be used to return the next set of items in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  uniqueProblems = list(
+    list(
+      list(
+        message = "string",
+        problems = list(
+          list(
+            run = list(
+              arn = "string",
+              name = "string"
+            ),
+            job = list(
+              arn = "string",
+              name = "string"
+            ),
+            suite = list(
+              arn = "string",
+              name = "string"
+            ),
+            test = list(
+              arn = "string",
+              name = "string"
+            ),
+            device = list(
+              arn = "string",
+              name = "string",
+              manufacturer = "string",
+              model = "string",
+              modelId = "string",
+              formFactor = "PHONE"|"TABLET",
+              platform = "ANDROID"|"IOS",
+              os = "string",
+              cpu = list(
+                frequency = "string",
+                architecture = "string",
+                clock = 123.0
+              ),
+              resolution = list(
+                width = 123,
+                height = 123
+              ),
+              heapSize = 123,
+              memory = 123,
+              image = "string",
+              carrier = "string",
+              radio = "string",
+              remoteAccessEnabled = TRUE|FALSE,
+              remoteDebugEnabled = TRUE|FALSE,
+              fleetType = "string",
+              fleetName = "string",
+              instances = list(
+                list(
+                  arn = "string",
+                  deviceArn = "string",
+                  labels = list(
+                    "string"
+                  ),
+                  status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+                  udid = "string",
+                  instanceProfile = list(
+                    arn = "string",
+                    packageCleanup = TRUE|FALSE,
+                    excludeAppPackagesFromCleanup = list(
+                      "string"
+                    ),
+                    rebootAfterUse = TRUE|FALSE,
+                    name = "string",
+                    description = "string"
+                  )
+                )
+              ),
+              availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+            ),
+            result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+            message = "string"
+          )
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets information about unique problems, such as exceptions or crashes.
 

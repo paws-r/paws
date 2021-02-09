@@ -12,6 +12,15 @@ quicksight_delete_data_source(AwsAccountId, DataSourceId)
 \item{DataSourceId}{[required] The ID of the data source. This ID is unique per AWS Region for each AWS
 account.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  DataSourceId = "string",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Deletes the data source permanently. This operation breaks all the
 datasets that reference the deleted data source.

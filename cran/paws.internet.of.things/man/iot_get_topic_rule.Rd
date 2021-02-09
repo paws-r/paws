@@ -9,6 +9,360 @@ iot_get_topic_rule(ruleName)
 \arguments{
 \item{ruleName}{[required] The name of the rule.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ruleArn = "string",
+  rule = list(
+    ruleName = "string",
+    sql = "string",
+    description = "string",
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    actions = list(
+      list(
+        dynamoDB = list(
+          tableName = "string",
+          roleArn = "string",
+          operation = "string",
+          hashKeyField = "string",
+          hashKeyValue = "string",
+          hashKeyType = "STRING"|"NUMBER",
+          rangeKeyField = "string",
+          rangeKeyValue = "string",
+          rangeKeyType = "STRING"|"NUMBER",
+          payloadField = "string"
+        ),
+        dynamoDBv2 = list(
+          roleArn = "string",
+          putItem = list(
+            tableName = "string"
+          )
+        ),
+        lambda = list(
+          functionArn = "string"
+        ),
+        sns = list(
+          targetArn = "string",
+          roleArn = "string",
+          messageFormat = "RAW"|"JSON"
+        ),
+        sqs = list(
+          roleArn = "string",
+          queueUrl = "string",
+          useBase64 = TRUE|FALSE
+        ),
+        kinesis = list(
+          roleArn = "string",
+          streamName = "string",
+          partitionKey = "string"
+        ),
+        republish = list(
+          roleArn = "string",
+          topic = "string",
+          qos = 123
+        ),
+        s3 = list(
+          roleArn = "string",
+          bucketName = "string",
+          key = "string",
+          cannedAcl = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"log-delivery-write"
+        ),
+        firehose = list(
+          roleArn = "string",
+          deliveryStreamName = "string",
+          separator = "string",
+          batchMode = TRUE|FALSE
+        ),
+        cloudwatchMetric = list(
+          roleArn = "string",
+          metricNamespace = "string",
+          metricName = "string",
+          metricValue = "string",
+          metricUnit = "string",
+          metricTimestamp = "string"
+        ),
+        cloudwatchAlarm = list(
+          roleArn = "string",
+          alarmName = "string",
+          stateReason = "string",
+          stateValue = "string"
+        ),
+        cloudwatchLogs = list(
+          roleArn = "string",
+          logGroupName = "string"
+        ),
+        elasticsearch = list(
+          roleArn = "string",
+          endpoint = "string",
+          index = "string",
+          type = "string",
+          id = "string"
+        ),
+        salesforce = list(
+          token = "string",
+          url = "string"
+        ),
+        iotAnalytics = list(
+          channelArn = "string",
+          channelName = "string",
+          batchMode = TRUE|FALSE,
+          roleArn = "string"
+        ),
+        iotEvents = list(
+          inputName = "string",
+          messageId = "string",
+          batchMode = TRUE|FALSE,
+          roleArn = "string"
+        ),
+        iotSiteWise = list(
+          putAssetPropertyValueEntries = list(
+            list(
+              entryId = "string",
+              assetId = "string",
+              propertyId = "string",
+              propertyAlias = "string",
+              propertyValues = list(
+                list(
+                  value = list(
+                    stringValue = "string",
+                    integerValue = "string",
+                    doubleValue = "string",
+                    booleanValue = "string"
+                  ),
+                  timestamp = list(
+                    timeInSeconds = "string",
+                    offsetInNanos = "string"
+                  ),
+                  quality = "string"
+                )
+              )
+            )
+          ),
+          roleArn = "string"
+        ),
+        stepFunctions = list(
+          executionNamePrefix = "string",
+          stateMachineName = "string",
+          roleArn = "string"
+        ),
+        timestream = list(
+          roleArn = "string",
+          databaseName = "string",
+          tableName = "string",
+          dimensions = list(
+            list(
+              name = "string",
+              value = "string"
+            )
+          ),
+          timestamp = list(
+            value = "string",
+            unit = "string"
+          )
+        ),
+        http = list(
+          url = "string",
+          confirmationUrl = "string",
+          headers = list(
+            list(
+              key = "string",
+              value = "string"
+            )
+          ),
+          auth = list(
+            sigv4 = list(
+              signingRegion = "string",
+              serviceName = "string",
+              roleArn = "string"
+            )
+          )
+        ),
+        kafka = list(
+          destinationArn = "string",
+          topic = "string",
+          key = "string",
+          partition = "string",
+          clientProperties = list(
+            "string"
+          )
+        )
+      )
+    ),
+    ruleDisabled = TRUE|FALSE,
+    awsIotSqlVersion = "string",
+    errorAction = list(
+      dynamoDB = list(
+        tableName = "string",
+        roleArn = "string",
+        operation = "string",
+        hashKeyField = "string",
+        hashKeyValue = "string",
+        hashKeyType = "STRING"|"NUMBER",
+        rangeKeyField = "string",
+        rangeKeyValue = "string",
+        rangeKeyType = "STRING"|"NUMBER",
+        payloadField = "string"
+      ),
+      dynamoDBv2 = list(
+        roleArn = "string",
+        putItem = list(
+          tableName = "string"
+        )
+      ),
+      lambda = list(
+        functionArn = "string"
+      ),
+      sns = list(
+        targetArn = "string",
+        roleArn = "string",
+        messageFormat = "RAW"|"JSON"
+      ),
+      sqs = list(
+        roleArn = "string",
+        queueUrl = "string",
+        useBase64 = TRUE|FALSE
+      ),
+      kinesis = list(
+        roleArn = "string",
+        streamName = "string",
+        partitionKey = "string"
+      ),
+      republish = list(
+        roleArn = "string",
+        topic = "string",
+        qos = 123
+      ),
+      s3 = list(
+        roleArn = "string",
+        bucketName = "string",
+        key = "string",
+        cannedAcl = "private"|"public-read"|"public-read-write"|"aws-exec-read"|"authenticated-read"|"bucket-owner-read"|"bucket-owner-full-control"|"log-delivery-write"
+      ),
+      firehose = list(
+        roleArn = "string",
+        deliveryStreamName = "string",
+        separator = "string",
+        batchMode = TRUE|FALSE
+      ),
+      cloudwatchMetric = list(
+        roleArn = "string",
+        metricNamespace = "string",
+        metricName = "string",
+        metricValue = "string",
+        metricUnit = "string",
+        metricTimestamp = "string"
+      ),
+      cloudwatchAlarm = list(
+        roleArn = "string",
+        alarmName = "string",
+        stateReason = "string",
+        stateValue = "string"
+      ),
+      cloudwatchLogs = list(
+        roleArn = "string",
+        logGroupName = "string"
+      ),
+      elasticsearch = list(
+        roleArn = "string",
+        endpoint = "string",
+        index = "string",
+        type = "string",
+        id = "string"
+      ),
+      salesforce = list(
+        token = "string",
+        url = "string"
+      ),
+      iotAnalytics = list(
+        channelArn = "string",
+        channelName = "string",
+        batchMode = TRUE|FALSE,
+        roleArn = "string"
+      ),
+      iotEvents = list(
+        inputName = "string",
+        messageId = "string",
+        batchMode = TRUE|FALSE,
+        roleArn = "string"
+      ),
+      iotSiteWise = list(
+        putAssetPropertyValueEntries = list(
+          list(
+            entryId = "string",
+            assetId = "string",
+            propertyId = "string",
+            propertyAlias = "string",
+            propertyValues = list(
+              list(
+                value = list(
+                  stringValue = "string",
+                  integerValue = "string",
+                  doubleValue = "string",
+                  booleanValue = "string"
+                ),
+                timestamp = list(
+                  timeInSeconds = "string",
+                  offsetInNanos = "string"
+                ),
+                quality = "string"
+              )
+            )
+          )
+        ),
+        roleArn = "string"
+      ),
+      stepFunctions = list(
+        executionNamePrefix = "string",
+        stateMachineName = "string",
+        roleArn = "string"
+      ),
+      timestream = list(
+        roleArn = "string",
+        databaseName = "string",
+        tableName = "string",
+        dimensions = list(
+          list(
+            name = "string",
+            value = "string"
+          )
+        ),
+        timestamp = list(
+          value = "string",
+          unit = "string"
+        )
+      ),
+      http = list(
+        url = "string",
+        confirmationUrl = "string",
+        headers = list(
+          list(
+            key = "string",
+            value = "string"
+          )
+        ),
+        auth = list(
+          sigv4 = list(
+            signingRegion = "string",
+            serviceName = "string",
+            roleArn = "string"
+          )
+        )
+      ),
+      kafka = list(
+        destinationArn = "string",
+        topic = "string",
+        key = "string",
+        partition = "string",
+        clientProperties = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets information about the rule.
 }

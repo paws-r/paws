@@ -12,6 +12,10 @@ service-linked role for AWS Migration Hub in your account. Otherwise,
 the role that you provide must have the \href{https://docs.aws.amazon.com/migrationhub/latest/ug/new-customer-setup.html#sms-managed}{policy and trust policy}
 described in the \emph{AWS Migration Hub User Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Allows application import from AWS Migration Hub.
 }

@@ -26,6 +26,28 @@ use \code{\link[=gamelift_tag_resource]{tag_resource}},
 remove, and view tags. The maximum tag limit may be lower than stated.
 See the AWS General Reference for actual tagging limits.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Alias = list(
+    AliasId = "string",
+    Name = "string",
+    AliasArn = "string",
+    Description = "string",
+    RoutingStrategy = list(
+      Type = "SIMPLE"|"TERMINAL",
+      FleetId = "string",
+      Message = "string"
+    ),
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates an alias for a fleet. In most situations, you can use an alias
 ID in place of a fleet ID. An alias provides a level of abstraction for

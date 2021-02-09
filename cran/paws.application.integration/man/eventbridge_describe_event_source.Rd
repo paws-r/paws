@@ -10,6 +10,21 @@ eventbridge_describe_event_source(Name)
 \arguments{
 \item{Name}{[required] The name of the partner event source to display the details of.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreatedBy = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  ExpirationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  Name = "string",
+  State = "PENDING"|"ACTIVE"|"DELETED"
+)
+}
+}
 \description{
 This operation lists details about a partner event source that is shared
 with your account.

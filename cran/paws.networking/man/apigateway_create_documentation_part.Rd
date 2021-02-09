@@ -16,6 +16,20 @@ to-be-created documentation part.}
 entity. Enclosed key-value pairs are API-specific, but only
 OpenAPI-compliant key-value pairs can be exported and, hence, published.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  location = list(
+    type = "API"|"AUTHORIZER"|"MODEL"|"RESOURCE"|"METHOD"|"PATH_PARAMETER"|"QUERY_PARAMETER"|"REQUEST_HEADER"|"REQUEST_BODY"|"RESPONSE"|"RESPONSE_HEADER"|"RESPONSE_BODY",
+    path = "string",
+    method = "string",
+    statusCode = "string",
+    name = "string"
+  ),
+  properties = "string"
+)
+}
+}
 \description{
 Create documentation part
 }

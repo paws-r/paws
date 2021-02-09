@@ -21,6 +21,14 @@ idempotency of the request.}
 
 \item{SourceVersion}{Current version of the grant.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GrantArn = "string",
+  Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+  Version = "string"
+)
+}
+}
 \description{
 Creates a new version of the specified grant.
 }

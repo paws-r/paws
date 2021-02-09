@@ -13,6 +13,18 @@ directoryservice_list_tags_for_resource(ResourceId, NextToken, Limit)
 
 \item{Limit}{Reserved for future use.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all tags on a directory.
 }

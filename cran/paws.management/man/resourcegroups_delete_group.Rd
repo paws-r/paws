@@ -11,6 +11,16 @@ resourcegroups_delete_group(GroupName, Group)
 
 \item{Group}{The name or the ARN of the resource group to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Group = list(
+    GroupArn = "string",
+    Name = "string",
+    Description = "string"
+  )
+)
+}
+}
 \description{
 Deletes the specified resource group. Deleting a resource group does not
 delete any resources that are members of the group; it only deletes the

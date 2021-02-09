@@ -12,6 +12,10 @@ iotanalytics_cancel_pipeline_reprocessing(pipelineName, reprocessingId)
 \item{reprocessingId}{[required] The ID of the reprocessing task (returned by
 \code{\link[=iotanalytics_start_pipeline_reprocessing]{start_pipeline_reprocessing}}).}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Cancels the reprocessing of data through the pipeline.
 }

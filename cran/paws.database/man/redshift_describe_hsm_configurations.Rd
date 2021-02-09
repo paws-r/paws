@@ -47,6 +47,26 @@ these tag values in the request, Amazon Redshift returns a response with
 the HSM configurations that have either or both of these tag values
 associated with them.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  HsmConfigurations = list(
+    list(
+      HsmConfigurationIdentifier = "string",
+      Description = "string",
+      HsmIpAddress = "string",
+      HsmPartitionName = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns information about the specified Amazon Redshift HSM
 configuration. If no configuration ID is specified, returns information

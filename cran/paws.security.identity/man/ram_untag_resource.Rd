@@ -12,6 +12,10 @@ ram_untag_resource(resourceShareArn, tagKeys)
 
 \item{tagKeys}{[required] The tag keys of the tags to remove.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the specified tags from the specified resource share that you
 own.

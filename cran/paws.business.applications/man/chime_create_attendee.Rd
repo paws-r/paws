@@ -16,6 +16,16 @@ existing record.}
 
 \item{Tags}{The tag key-value pairs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attendee = list(
+    ExternalUserId = "string",
+    AttendeeId = "string",
+    JoinToken = "string"
+  )
+)
+}
+}
 \description{
 Creates a new attendee for an active Amazon Chime SDK meeting. For more
 information about the Amazon Chime SDK, see \href{https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html}{Using the Amazon Chime SDK} in

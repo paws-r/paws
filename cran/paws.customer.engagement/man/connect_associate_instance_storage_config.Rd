@@ -15,6 +15,12 @@ connect_associate_instance_storage_config(InstanceId, ResourceType,
 
 \item{StorageConfig}{[required] A valid storage type.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociationId = "string"
+)
+}
+}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.

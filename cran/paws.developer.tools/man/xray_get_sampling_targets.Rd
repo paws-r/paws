@@ -10,6 +10,32 @@ xray_get_sampling_targets(SamplingStatisticsDocuments)
 \arguments{
 \item{SamplingStatisticsDocuments}{[required] Information about rules that the service is using to sample requests.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SamplingTargetDocuments = list(
+    list(
+      RuleName = "string",
+      FixedRate = 123.0,
+      ReservoirQuota = 123,
+      ReservoirQuotaTTL = as.POSIXct(
+        "2015-01-01"
+      ),
+      Interval = 123
+    )
+  ),
+  LastRuleModification = as.POSIXct(
+    "2015-01-01"
+  ),
+  UnprocessedStatistics = list(
+    list(
+      RuleName = "string",
+      ErrorCode = "string",
+      Message = "string"
+    )
+  )
+)
+}
+}
 \description{
 Requests a sampling quota for rules that the service is using to sample
 requests.

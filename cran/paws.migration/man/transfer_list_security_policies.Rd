@@ -17,6 +17,15 @@ transfer_list_security_policies(MaxResults, NextToken)
 \code{NextToken} parameter in a subsequent command to continue listing
 additional security policies.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  SecurityPolicyNames = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Lists the security policies that are attached to your file transfer
 protocol-enabled servers.

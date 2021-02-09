@@ -42,7 +42,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Sets the permissions on an existing bucket using access control lists
-(ACL). For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html}{Using ACLs}.
+(ACL). For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl_overview.html}{Using ACLs}.
 To set the ACL of a bucket, you must have \code{WRITE_ACP} permission.
 
 You can use one of the following two ways to set a bucket's permissions:
@@ -68,7 +68,7 @@ supports a set of predefined ACLs, known as \emph{canned ACLs}. Each
 canned ACL has a predefined set of grantees and permissions. Specify
 the canned ACL name as the value of \code{x-amz-acl}. If you use this
 header, you cannot use other access control-specific headers in your
-request. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL}{Canned ACL}.
+request. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL}{Canned ACL}.
 \item Specify access permissions explicitly with the \code{x-amz-grant-read},
 \code{x-amz-grant-read-acp}, \code{x-amz-grant-write-acp}, and
 \code{x-amz-grant-full-control} headers. When using these headers, you
@@ -76,7 +76,7 @@ specify explicit access permissions and grantees (AWS accounts or
 Amazon S3 groups) who will receive the permission. If you use these
 ACL-specific headers, you cannot use the \code{x-amz-acl} header to set a
 canned ACL. These parameters map to the set of permissions that
-Amazon S3 supports in an ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}.
+Amazon S3 supports in an ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Access Control List (ACL) Overview}.
 
 You specify each grantee as a type=value pair, where the type is one
 of the following:

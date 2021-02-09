@@ -40,6 +40,19 @@ in the \code{Marker} field of the response. You can retrieve the next set of
 response records by providing the returned marker value in the \code{Marker}
 parameter and retrying the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Marker = "string",
+  ClusterVersions = list(
+    list(
+      ClusterVersion = "string",
+      ClusterParameterGroupFamily = "string",
+      Description = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns descriptions of the available Amazon Redshift cluster versions.
 You can call this operation even before creating any clusters to learn

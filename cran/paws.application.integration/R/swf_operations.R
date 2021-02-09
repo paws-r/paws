@@ -82,6 +82,15 @@ NULL
 #' `closeStatusFilter`, `executionFilter`, `typeFilter` and `tagFilter` are
 #' mutually exclusive. You can specify at most one of these in a request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   count = 123,
+#'   truncated = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$count_closed_workflow_executions(
@@ -201,6 +210,15 @@ swf_count_closed_workflow_executions <- function(domain, startTimeFilter = NULL,
 #' `executionFilter`, `typeFilter` and `tagFilter` are mutually exclusive.
 #' You can specify at most one of these in a request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   count = 123,
+#'   truncated = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$count_open_workflow_executions(
@@ -284,6 +302,15 @@ swf_count_open_workflow_executions <- function(domain, startTimeFilter, typeFilt
 #' @param domain &#91;required&#93; The name of the domain that contains the task list.
 #' @param taskList &#91;required&#93; The name of the task list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   count = 123,
+#'   truncated = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$count_pending_activity_tasks(
@@ -351,6 +378,15 @@ swf_count_pending_activity_tasks <- function(domain, taskList) {
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the task list.
 #' @param taskList &#91;required&#93; The name of the task list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   count = 123,
+#'   truncated = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -427,6 +463,8 @@ swf_count_pending_decision_tasks <- function(domain, taskList) {
 #' @param domain &#91;required&#93; The name of the domain in which the activity type is registered.
 #' @param activityType &#91;required&#93; The activity type to deprecate.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deprecate_activity_type(
@@ -496,6 +534,8 @@ swf_deprecate_activity_type <- function(domain, activityType) {
 #' swf_deprecate_domain(name)
 #'
 #' @param name &#91;required&#93; The name of the domain to deprecate.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -569,6 +609,8 @@ swf_deprecate_domain <- function(name) {
 #'
 #' @param domain &#91;required&#93; The name of the domain in which the workflow type is registered.
 #' @param workflowType &#91;required&#93; The workflow type to deprecate.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -644,6 +686,37 @@ swf_deprecate_workflow_type <- function(domain, workflowType) {
 #' identified by the `name` and `version` that were supplied when the
 #' activity was registered.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   typeInfo = list(
+#'     activityType = list(
+#'       name = "string",
+#'       version = "string"
+#'     ),
+#'     status = "REGISTERED"|"DEPRECATED",
+#'     description = "string",
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     deprecationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   configuration = list(
+#'     defaultTaskStartToCloseTimeout = "string",
+#'     defaultTaskHeartbeatTimeout = "string",
+#'     defaultTaskList = list(
+#'       name = "string"
+#'     ),
+#'     defaultTaskPriority = "string",
+#'     defaultTaskScheduleToStartTimeout = "string",
+#'     defaultTaskScheduleToCloseTimeout = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_activity_type(
@@ -708,6 +781,22 @@ swf_describe_activity_type <- function(domain, activityType) {
 #'
 #' @param name &#91;required&#93; The name of the domain to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainInfo = list(
+#'     name = "string",
+#'     status = "REGISTERED"|"DEPRECATED",
+#'     description = "string",
+#'     arn = "string"
+#'   ),
+#'   configuration = list(
+#'     workflowExecutionRetentionPeriodInDays = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_domain(
@@ -771,6 +860,60 @@ swf_describe_domain <- function(name) {
 #'
 #' @param domain &#91;required&#93; The name of the domain containing the workflow execution.
 #' @param execution &#91;required&#93; The workflow execution to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   executionInfo = list(
+#'     execution = list(
+#'       workflowId = "string",
+#'       runId = "string"
+#'     ),
+#'     workflowType = list(
+#'       name = "string",
+#'       version = "string"
+#'     ),
+#'     startTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     closeTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     executionStatus = "OPEN"|"CLOSED",
+#'     closeStatus = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT",
+#'     parent = list(
+#'       workflowId = "string",
+#'       runId = "string"
+#'     ),
+#'     tagList = list(
+#'       "string"
+#'     ),
+#'     cancelRequested = TRUE|FALSE
+#'   ),
+#'   executionConfiguration = list(
+#'     taskStartToCloseTimeout = "string",
+#'     executionStartToCloseTimeout = "string",
+#'     taskList = list(
+#'       name = "string"
+#'     ),
+#'     taskPriority = "string",
+#'     childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+#'     lambdaRole = "string"
+#'   ),
+#'   openCounts = list(
+#'     openActivityTasks = 123,
+#'     openDecisionTasks = 123,
+#'     openTimers = 123,
+#'     openChildWorkflowExecutions = 123,
+#'     openLambdaFunctions = 123
+#'   ),
+#'   latestActivityTaskTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   latestExecutionContext = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -843,6 +986,37 @@ swf_describe_workflow_execution <- function(domain, execution) {
 #'
 #' @param domain &#91;required&#93; The name of the domain in which this workflow type is registered.
 #' @param workflowType &#91;required&#93; The workflow type to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   typeInfo = list(
+#'     workflowType = list(
+#'       name = "string",
+#'       version = "string"
+#'     ),
+#'     status = "REGISTERED"|"DEPRECATED",
+#'     description = "string",
+#'     creationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     deprecationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   configuration = list(
+#'     defaultTaskStartToCloseTimeout = "string",
+#'     defaultExecutionStartToCloseTimeout = "string",
+#'     defaultTaskList = list(
+#'       name = "string"
+#'     ),
+#'     defaultTaskPriority = "string",
+#'     defaultChildPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+#'     defaultLambdaRole = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -926,6 +1100,432 @@ swf_describe_workflow_type <- function(domain, workflowType) {
 #' @param reverseOrder When set to `true`, returns the events in reverse order. By default the
 #' results are returned in ascending order of the `eventTimeStamp` of the
 #' events.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   events = list(
+#'     list(
+#'       eventTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       eventType = "WorkflowExecutionStarted"|"WorkflowExecutionCancelRequested"|"WorkflowExecutionCompleted"|"CompleteWorkflowExecutionFailed"|"WorkflowExecutionFailed"|"FailWorkflowExecutionFailed"|"WorkflowExecutionTimedOut"|"WorkflowExecutionCanceled"|"CancelWorkflowExecutionFailed"|"WorkflowExecutionContinuedAsNew"|"ContinueAsNewWorkflowExecutionFailed"|"WorkflowExecutionTerminated"|"DecisionTaskScheduled"|"DecisionTaskStarted"|"DecisionTaskCompleted"|"DecisionTaskTimedOut"|"ActivityTaskScheduled"|"ScheduleActivityTaskFailed"|"ActivityTaskStarted"|"ActivityTaskCompleted"|"ActivityTaskFailed"|"ActivityTaskTimedOut"|"ActivityTaskCanceled"|"ActivityTaskCancelRequested"|"RequestCancelActivityTaskFailed"|"WorkflowExecutionSignaled"|"MarkerRecorded"|"RecordMarkerFailed"|"TimerStarted"|"StartTimerFailed"|"TimerFired"|"TimerCanceled"|"CancelTimerFailed"|"StartChildWorkflowExecutionInitiated"|"StartChildWorkflowExecutionFailed"|"ChildWorkflowExecutionStarted"|"ChildWorkflowExecutionCompleted"|"ChildWorkflowExecutionFailed"|"ChildWorkflowExecutionTimedOut"|"ChildWorkflowExecutionCanceled"|"ChildWorkflowExecutionTerminated"|"SignalExternalWorkflowExecutionInitiated"|"SignalExternalWorkflowExecutionFailed"|"ExternalWorkflowExecutionSignaled"|"RequestCancelExternalWorkflowExecutionInitiated"|"RequestCancelExternalWorkflowExecutionFailed"|"ExternalWorkflowExecutionCancelRequested"|"LambdaFunctionScheduled"|"LambdaFunctionStarted"|"LambdaFunctionCompleted"|"LambdaFunctionFailed"|"LambdaFunctionTimedOut"|"ScheduleLambdaFunctionFailed"|"StartLambdaFunctionFailed",
+#'       eventId = 123,
+#'       workflowExecutionStartedEventAttributes = list(
+#'         input = "string",
+#'         executionStartToCloseTimeout = "string",
+#'         taskStartToCloseTimeout = "string",
+#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+#'         taskList = list(
+#'           name = "string"
+#'         ),
+#'         taskPriority = "string",
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         tagList = list(
+#'           "string"
+#'         ),
+#'         continuedExecutionRunId = "string",
+#'         parentWorkflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         parentInitiatedEventId = 123,
+#'         lambdaRole = "string"
+#'       ),
+#'       workflowExecutionCompletedEventAttributes = list(
+#'         result = "string",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       completeWorkflowExecutionFailedEventAttributes = list(
+#'         cause = "UNHANDLED_DECISION"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       workflowExecutionFailedEventAttributes = list(
+#'         reason = "string",
+#'         details = "string",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       failWorkflowExecutionFailedEventAttributes = list(
+#'         cause = "UNHANDLED_DECISION"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       workflowExecutionTimedOutEventAttributes = list(
+#'         timeoutType = "START_TO_CLOSE",
+#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON"
+#'       ),
+#'       workflowExecutionCanceledEventAttributes = list(
+#'         details = "string",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       cancelWorkflowExecutionFailedEventAttributes = list(
+#'         cause = "UNHANDLED_DECISION"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       workflowExecutionContinuedAsNewEventAttributes = list(
+#'         input = "string",
+#'         decisionTaskCompletedEventId = 123,
+#'         newExecutionRunId = "string",
+#'         executionStartToCloseTimeout = "string",
+#'         taskList = list(
+#'           name = "string"
+#'         ),
+#'         taskPriority = "string",
+#'         taskStartToCloseTimeout = "string",
+#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+#'         tagList = list(
+#'           "string"
+#'         ),
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         lambdaRole = "string"
+#'       ),
+#'       continueAsNewWorkflowExecutionFailedEventAttributes = list(
+#'         cause = "UNHANDLED_DECISION"|"WORKFLOW_TYPE_DEPRECATED"|"WORKFLOW_TYPE_DOES_NOT_EXIST"|"DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_LIST_UNDEFINED"|"DEFAULT_CHILD_POLICY_UNDEFINED"|"CONTINUE_AS_NEW_WORKFLOW_EXECUTION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       workflowExecutionTerminatedEventAttributes = list(
+#'         reason = "string",
+#'         details = "string",
+#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+#'         cause = "CHILD_POLICY_APPLIED"|"EVENT_LIMIT_EXCEEDED"|"OPERATOR_INITIATED"
+#'       ),
+#'       workflowExecutionCancelRequestedEventAttributes = list(
+#'         externalWorkflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         externalInitiatedEventId = 123,
+#'         cause = "CHILD_POLICY_APPLIED"
+#'       ),
+#'       decisionTaskScheduledEventAttributes = list(
+#'         taskList = list(
+#'           name = "string"
+#'         ),
+#'         taskPriority = "string",
+#'         startToCloseTimeout = "string"
+#'       ),
+#'       decisionTaskStartedEventAttributes = list(
+#'         identity = "string",
+#'         scheduledEventId = 123
+#'       ),
+#'       decisionTaskCompletedEventAttributes = list(
+#'         executionContext = "string",
+#'         scheduledEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       decisionTaskTimedOutEventAttributes = list(
+#'         timeoutType = "START_TO_CLOSE",
+#'         scheduledEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       activityTaskScheduledEventAttributes = list(
+#'         activityType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         activityId = "string",
+#'         input = "string",
+#'         control = "string",
+#'         scheduleToStartTimeout = "string",
+#'         scheduleToCloseTimeout = "string",
+#'         startToCloseTimeout = "string",
+#'         taskList = list(
+#'           name = "string"
+#'         ),
+#'         taskPriority = "string",
+#'         decisionTaskCompletedEventId = 123,
+#'         heartbeatTimeout = "string"
+#'       ),
+#'       activityTaskStartedEventAttributes = list(
+#'         identity = "string",
+#'         scheduledEventId = 123
+#'       ),
+#'       activityTaskCompletedEventAttributes = list(
+#'         result = "string",
+#'         scheduledEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       activityTaskFailedEventAttributes = list(
+#'         reason = "string",
+#'         details = "string",
+#'         scheduledEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       activityTaskTimedOutEventAttributes = list(
+#'         timeoutType = "START_TO_CLOSE"|"SCHEDULE_TO_START"|"SCHEDULE_TO_CLOSE"|"HEARTBEAT",
+#'         scheduledEventId = 123,
+#'         startedEventId = 123,
+#'         details = "string"
+#'       ),
+#'       activityTaskCanceledEventAttributes = list(
+#'         details = "string",
+#'         scheduledEventId = 123,
+#'         startedEventId = 123,
+#'         latestCancelRequestedEventId = 123
+#'       ),
+#'       activityTaskCancelRequestedEventAttributes = list(
+#'         decisionTaskCompletedEventId = 123,
+#'         activityId = "string"
+#'       ),
+#'       workflowExecutionSignaledEventAttributes = list(
+#'         signalName = "string",
+#'         input = "string",
+#'         externalWorkflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         externalInitiatedEventId = 123
+#'       ),
+#'       markerRecordedEventAttributes = list(
+#'         markerName = "string",
+#'         details = "string",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       recordMarkerFailedEventAttributes = list(
+#'         markerName = "string",
+#'         cause = "OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       timerStartedEventAttributes = list(
+#'         timerId = "string",
+#'         control = "string",
+#'         startToFireTimeout = "string",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       timerFiredEventAttributes = list(
+#'         timerId = "string",
+#'         startedEventId = 123
+#'       ),
+#'       timerCanceledEventAttributes = list(
+#'         timerId = "string",
+#'         startedEventId = 123,
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       startChildWorkflowExecutionInitiatedEventAttributes = list(
+#'         workflowId = "string",
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         control = "string",
+#'         input = "string",
+#'         executionStartToCloseTimeout = "string",
+#'         taskList = list(
+#'           name = "string"
+#'         ),
+#'         taskPriority = "string",
+#'         decisionTaskCompletedEventId = 123,
+#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+#'         taskStartToCloseTimeout = "string",
+#'         tagList = list(
+#'           "string"
+#'         ),
+#'         lambdaRole = "string"
+#'       ),
+#'       childWorkflowExecutionStartedEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         initiatedEventId = 123
+#'       ),
+#'       childWorkflowExecutionCompletedEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         result = "string",
+#'         initiatedEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       childWorkflowExecutionFailedEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         reason = "string",
+#'         details = "string",
+#'         initiatedEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       childWorkflowExecutionTimedOutEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         timeoutType = "START_TO_CLOSE",
+#'         initiatedEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       childWorkflowExecutionCanceledEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         details = "string",
+#'         initiatedEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       childWorkflowExecutionTerminatedEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         initiatedEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       signalExternalWorkflowExecutionInitiatedEventAttributes = list(
+#'         workflowId = "string",
+#'         runId = "string",
+#'         signalName = "string",
+#'         input = "string",
+#'         decisionTaskCompletedEventId = 123,
+#'         control = "string"
+#'       ),
+#'       externalWorkflowExecutionSignaledEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         initiatedEventId = 123
+#'       ),
+#'       signalExternalWorkflowExecutionFailedEventAttributes = list(
+#'         workflowId = "string",
+#'         runId = "string",
+#'         cause = "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"|"SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
+#'         initiatedEventId = 123,
+#'         decisionTaskCompletedEventId = 123,
+#'         control = "string"
+#'       ),
+#'       externalWorkflowExecutionCancelRequestedEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         initiatedEventId = 123
+#'       ),
+#'       requestCancelExternalWorkflowExecutionInitiatedEventAttributes = list(
+#'         workflowId = "string",
+#'         runId = "string",
+#'         decisionTaskCompletedEventId = 123,
+#'         control = "string"
+#'       ),
+#'       requestCancelExternalWorkflowExecutionFailedEventAttributes = list(
+#'         workflowId = "string",
+#'         runId = "string",
+#'         cause = "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"|"REQUEST_CANCEL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
+#'         initiatedEventId = 123,
+#'         decisionTaskCompletedEventId = 123,
+#'         control = "string"
+#'       ),
+#'       scheduleActivityTaskFailedEventAttributes = list(
+#'         activityType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         activityId = "string",
+#'         cause = "ACTIVITY_TYPE_DEPRECATED"|"ACTIVITY_TYPE_DOES_NOT_EXIST"|"ACTIVITY_ID_ALREADY_IN_USE"|"OPEN_ACTIVITIES_LIMIT_EXCEEDED"|"ACTIVITY_CREATION_RATE_EXCEEDED"|"DEFAULT_SCHEDULE_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_LIST_UNDEFINED"|"DEFAULT_SCHEDULE_TO_START_TIMEOUT_UNDEFINED"|"DEFAULT_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_HEARTBEAT_TIMEOUT_UNDEFINED"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       requestCancelActivityTaskFailedEventAttributes = list(
+#'         activityId = "string",
+#'         cause = "ACTIVITY_ID_UNKNOWN"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       startTimerFailedEventAttributes = list(
+#'         timerId = "string",
+#'         cause = "TIMER_ID_ALREADY_IN_USE"|"OPEN_TIMERS_LIMIT_EXCEEDED"|"TIMER_CREATION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       cancelTimerFailedEventAttributes = list(
+#'         timerId = "string",
+#'         cause = "TIMER_ID_UNKNOWN"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       startChildWorkflowExecutionFailedEventAttributes = list(
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         cause = "WORKFLOW_TYPE_DOES_NOT_EXIST"|"WORKFLOW_TYPE_DEPRECATED"|"OPEN_CHILDREN_LIMIT_EXCEEDED"|"OPEN_WORKFLOWS_LIMIT_EXCEEDED"|"CHILD_CREATION_RATE_EXCEEDED"|"WORKFLOW_ALREADY_RUNNING"|"DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_LIST_UNDEFINED"|"DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_CHILD_POLICY_UNDEFINED"|"OPERATION_NOT_PERMITTED",
+#'         workflowId = "string",
+#'         initiatedEventId = 123,
+#'         decisionTaskCompletedEventId = 123,
+#'         control = "string"
+#'       ),
+#'       lambdaFunctionScheduledEventAttributes = list(
+#'         id = "string",
+#'         name = "string",
+#'         control = "string",
+#'         input = "string",
+#'         startToCloseTimeout = "string",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       lambdaFunctionStartedEventAttributes = list(
+#'         scheduledEventId = 123
+#'       ),
+#'       lambdaFunctionCompletedEventAttributes = list(
+#'         scheduledEventId = 123,
+#'         startedEventId = 123,
+#'         result = "string"
+#'       ),
+#'       lambdaFunctionFailedEventAttributes = list(
+#'         scheduledEventId = 123,
+#'         startedEventId = 123,
+#'         reason = "string",
+#'         details = "string"
+#'       ),
+#'       lambdaFunctionTimedOutEventAttributes = list(
+#'         scheduledEventId = 123,
+#'         startedEventId = 123,
+#'         timeoutType = "START_TO_CLOSE"
+#'       ),
+#'       scheduleLambdaFunctionFailedEventAttributes = list(
+#'         id = "string",
+#'         name = "string",
+#'         cause = "ID_ALREADY_IN_USE"|"OPEN_LAMBDA_FUNCTIONS_LIMIT_EXCEEDED"|"LAMBDA_FUNCTION_CREATION_RATE_EXCEEDED"|"LAMBDA_SERVICE_NOT_AVAILABLE_IN_REGION",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       startLambdaFunctionFailedEventAttributes = list(
+#'         scheduledEventId = 123,
+#'         cause = "ASSUME_ROLE_FAILED",
+#'         message = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1014,6 +1614,30 @@ swf_get_workflow_execution_history <- function(domain, execution, nextPageToken 
 #' @param reverseOrder When set to `true`, returns the results in reverse order. By default,
 #' the results are returned in ascending alphabetical order by `name` of
 #' the activity types.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   typeInfos = list(
+#'     list(
+#'       activityType = list(
+#'         name = "string",
+#'         version = "string"
+#'       ),
+#'       status = "REGISTERED"|"DEPRECATED",
+#'       description = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       deprecationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1145,6 +1769,42 @@ swf_list_activity_types <- function(domain, name = NULL, registrationStatus, nex
 #' results are returned in descending order of the start or the close time
 #' of the executions.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   executionInfos = list(
+#'     list(
+#'       execution = list(
+#'         workflowId = "string",
+#'         runId = "string"
+#'       ),
+#'       workflowType = list(
+#'         name = "string",
+#'         version = "string"
+#'       ),
+#'       startTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       closeTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       executionStatus = "OPEN"|"CLOSED",
+#'       closeStatus = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT",
+#'       parent = list(
+#'         workflowId = "string",
+#'         runId = "string"
+#'       ),
+#'       tagList = list(
+#'         "string"
+#'       ),
+#'       cancelRequested = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextPageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_closed_workflow_executions(
@@ -1257,6 +1917,22 @@ swf_list_closed_workflow_executions <- function(domain, startTimeFilter = NULL, 
 #' the results are returned in ascending alphabetical order by `name` of
 #' the domains.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainInfos = list(
+#'     list(
+#'       name = "string",
+#'       status = "REGISTERED"|"DEPRECATED",
+#'       description = "string",
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextPageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_domains(
@@ -1367,6 +2043,42 @@ swf_list_domains <- function(nextPageToken = NULL, registrationStatus, maximumPa
 #' `executionFilter`, `typeFilter` and `tagFilter` are mutually exclusive.
 #' You can specify at most one of these in a request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   executionInfos = list(
+#'     list(
+#'       execution = list(
+#'         workflowId = "string",
+#'         runId = "string"
+#'       ),
+#'       workflowType = list(
+#'         name = "string",
+#'         version = "string"
+#'       ),
+#'       startTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       closeTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       executionStatus = "OPEN"|"CLOSED",
+#'       closeStatus = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT",
+#'       parent = list(
+#'         workflowId = "string",
+#'         runId = "string"
+#'       ),
+#'       tagList = list(
+#'         "string"
+#'       ),
+#'       cancelRequested = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextPageToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_open_workflow_executions(
@@ -1424,6 +2136,19 @@ swf_list_open_workflow_executions <- function(domain, startTimeFilter, typeFilte
 #' swf_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Amazon SWF domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1501,6 +2226,30 @@ swf_list_tags_for_resource <- function(resourceArn) {
 #' @param reverseOrder When set to `true`, returns the results in reverse order. By default the
 #' results are returned in ascending alphabetical order of the `name` of
 #' the workflow types.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   typeInfos = list(
+#'     list(
+#'       workflowType = list(
+#'         name = "string",
+#'         version = "string"
+#'       ),
+#'       status = "REGISTERED"|"DEPRECATED",
+#'       description = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       deprecationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextPageToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1583,12 +2332,31 @@ swf_list_workflow_types <- function(domain, name = NULL, registrationStatus, nex
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
+#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
 #' the literal string `arn`.
 #' @param identity Identity of the worker making the request, recorded in the
 #' `ActivityTaskStarted` event in the workflow history. This enables
 #' diagnostic tracing when problems arise. The form of this identity is
 #' user defined.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskToken = "string",
+#'   activityId = "string",
+#'   startedEventId = 123,
+#'   workflowExecution = list(
+#'     workflowId = "string",
+#'     runId = "string"
+#'   ),
+#'   activityType = list(
+#'     name = "string",
+#'     version = "string"
+#'   ),
+#'   input = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1684,7 +2452,7 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
+#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
 #' the literal string `arn`.
 #' @param identity Identity of the decider making the request, which is recorded in the
 #' DecisionTaskStarted event in the workflow history. This enables
@@ -1715,6 +2483,443 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' @param reverseOrder When set to `true`, returns the events in reverse order. By default the
 #' results are returned in ascending order of the `eventTimestamp` of the
 #' events.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskToken = "string",
+#'   startedEventId = 123,
+#'   workflowExecution = list(
+#'     workflowId = "string",
+#'     runId = "string"
+#'   ),
+#'   workflowType = list(
+#'     name = "string",
+#'     version = "string"
+#'   ),
+#'   events = list(
+#'     list(
+#'       eventTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       eventType = "WorkflowExecutionStarted"|"WorkflowExecutionCancelRequested"|"WorkflowExecutionCompleted"|"CompleteWorkflowExecutionFailed"|"WorkflowExecutionFailed"|"FailWorkflowExecutionFailed"|"WorkflowExecutionTimedOut"|"WorkflowExecutionCanceled"|"CancelWorkflowExecutionFailed"|"WorkflowExecutionContinuedAsNew"|"ContinueAsNewWorkflowExecutionFailed"|"WorkflowExecutionTerminated"|"DecisionTaskScheduled"|"DecisionTaskStarted"|"DecisionTaskCompleted"|"DecisionTaskTimedOut"|"ActivityTaskScheduled"|"ScheduleActivityTaskFailed"|"ActivityTaskStarted"|"ActivityTaskCompleted"|"ActivityTaskFailed"|"ActivityTaskTimedOut"|"ActivityTaskCanceled"|"ActivityTaskCancelRequested"|"RequestCancelActivityTaskFailed"|"WorkflowExecutionSignaled"|"MarkerRecorded"|"RecordMarkerFailed"|"TimerStarted"|"StartTimerFailed"|"TimerFired"|"TimerCanceled"|"CancelTimerFailed"|"StartChildWorkflowExecutionInitiated"|"StartChildWorkflowExecutionFailed"|"ChildWorkflowExecutionStarted"|"ChildWorkflowExecutionCompleted"|"ChildWorkflowExecutionFailed"|"ChildWorkflowExecutionTimedOut"|"ChildWorkflowExecutionCanceled"|"ChildWorkflowExecutionTerminated"|"SignalExternalWorkflowExecutionInitiated"|"SignalExternalWorkflowExecutionFailed"|"ExternalWorkflowExecutionSignaled"|"RequestCancelExternalWorkflowExecutionInitiated"|"RequestCancelExternalWorkflowExecutionFailed"|"ExternalWorkflowExecutionCancelRequested"|"LambdaFunctionScheduled"|"LambdaFunctionStarted"|"LambdaFunctionCompleted"|"LambdaFunctionFailed"|"LambdaFunctionTimedOut"|"ScheduleLambdaFunctionFailed"|"StartLambdaFunctionFailed",
+#'       eventId = 123,
+#'       workflowExecutionStartedEventAttributes = list(
+#'         input = "string",
+#'         executionStartToCloseTimeout = "string",
+#'         taskStartToCloseTimeout = "string",
+#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+#'         taskList = list(
+#'           name = "string"
+#'         ),
+#'         taskPriority = "string",
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         tagList = list(
+#'           "string"
+#'         ),
+#'         continuedExecutionRunId = "string",
+#'         parentWorkflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         parentInitiatedEventId = 123,
+#'         lambdaRole = "string"
+#'       ),
+#'       workflowExecutionCompletedEventAttributes = list(
+#'         result = "string",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       completeWorkflowExecutionFailedEventAttributes = list(
+#'         cause = "UNHANDLED_DECISION"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       workflowExecutionFailedEventAttributes = list(
+#'         reason = "string",
+#'         details = "string",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       failWorkflowExecutionFailedEventAttributes = list(
+#'         cause = "UNHANDLED_DECISION"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       workflowExecutionTimedOutEventAttributes = list(
+#'         timeoutType = "START_TO_CLOSE",
+#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON"
+#'       ),
+#'       workflowExecutionCanceledEventAttributes = list(
+#'         details = "string",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       cancelWorkflowExecutionFailedEventAttributes = list(
+#'         cause = "UNHANDLED_DECISION"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       workflowExecutionContinuedAsNewEventAttributes = list(
+#'         input = "string",
+#'         decisionTaskCompletedEventId = 123,
+#'         newExecutionRunId = "string",
+#'         executionStartToCloseTimeout = "string",
+#'         taskList = list(
+#'           name = "string"
+#'         ),
+#'         taskPriority = "string",
+#'         taskStartToCloseTimeout = "string",
+#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+#'         tagList = list(
+#'           "string"
+#'         ),
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         lambdaRole = "string"
+#'       ),
+#'       continueAsNewWorkflowExecutionFailedEventAttributes = list(
+#'         cause = "UNHANDLED_DECISION"|"WORKFLOW_TYPE_DEPRECATED"|"WORKFLOW_TYPE_DOES_NOT_EXIST"|"DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_LIST_UNDEFINED"|"DEFAULT_CHILD_POLICY_UNDEFINED"|"CONTINUE_AS_NEW_WORKFLOW_EXECUTION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       workflowExecutionTerminatedEventAttributes = list(
+#'         reason = "string",
+#'         details = "string",
+#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+#'         cause = "CHILD_POLICY_APPLIED"|"EVENT_LIMIT_EXCEEDED"|"OPERATOR_INITIATED"
+#'       ),
+#'       workflowExecutionCancelRequestedEventAttributes = list(
+#'         externalWorkflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         externalInitiatedEventId = 123,
+#'         cause = "CHILD_POLICY_APPLIED"
+#'       ),
+#'       decisionTaskScheduledEventAttributes = list(
+#'         taskList = list(
+#'           name = "string"
+#'         ),
+#'         taskPriority = "string",
+#'         startToCloseTimeout = "string"
+#'       ),
+#'       decisionTaskStartedEventAttributes = list(
+#'         identity = "string",
+#'         scheduledEventId = 123
+#'       ),
+#'       decisionTaskCompletedEventAttributes = list(
+#'         executionContext = "string",
+#'         scheduledEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       decisionTaskTimedOutEventAttributes = list(
+#'         timeoutType = "START_TO_CLOSE",
+#'         scheduledEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       activityTaskScheduledEventAttributes = list(
+#'         activityType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         activityId = "string",
+#'         input = "string",
+#'         control = "string",
+#'         scheduleToStartTimeout = "string",
+#'         scheduleToCloseTimeout = "string",
+#'         startToCloseTimeout = "string",
+#'         taskList = list(
+#'           name = "string"
+#'         ),
+#'         taskPriority = "string",
+#'         decisionTaskCompletedEventId = 123,
+#'         heartbeatTimeout = "string"
+#'       ),
+#'       activityTaskStartedEventAttributes = list(
+#'         identity = "string",
+#'         scheduledEventId = 123
+#'       ),
+#'       activityTaskCompletedEventAttributes = list(
+#'         result = "string",
+#'         scheduledEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       activityTaskFailedEventAttributes = list(
+#'         reason = "string",
+#'         details = "string",
+#'         scheduledEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       activityTaskTimedOutEventAttributes = list(
+#'         timeoutType = "START_TO_CLOSE"|"SCHEDULE_TO_START"|"SCHEDULE_TO_CLOSE"|"HEARTBEAT",
+#'         scheduledEventId = 123,
+#'         startedEventId = 123,
+#'         details = "string"
+#'       ),
+#'       activityTaskCanceledEventAttributes = list(
+#'         details = "string",
+#'         scheduledEventId = 123,
+#'         startedEventId = 123,
+#'         latestCancelRequestedEventId = 123
+#'       ),
+#'       activityTaskCancelRequestedEventAttributes = list(
+#'         decisionTaskCompletedEventId = 123,
+#'         activityId = "string"
+#'       ),
+#'       workflowExecutionSignaledEventAttributes = list(
+#'         signalName = "string",
+#'         input = "string",
+#'         externalWorkflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         externalInitiatedEventId = 123
+#'       ),
+#'       markerRecordedEventAttributes = list(
+#'         markerName = "string",
+#'         details = "string",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       recordMarkerFailedEventAttributes = list(
+#'         markerName = "string",
+#'         cause = "OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       timerStartedEventAttributes = list(
+#'         timerId = "string",
+#'         control = "string",
+#'         startToFireTimeout = "string",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       timerFiredEventAttributes = list(
+#'         timerId = "string",
+#'         startedEventId = 123
+#'       ),
+#'       timerCanceledEventAttributes = list(
+#'         timerId = "string",
+#'         startedEventId = 123,
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       startChildWorkflowExecutionInitiatedEventAttributes = list(
+#'         workflowId = "string",
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         control = "string",
+#'         input = "string",
+#'         executionStartToCloseTimeout = "string",
+#'         taskList = list(
+#'           name = "string"
+#'         ),
+#'         taskPriority = "string",
+#'         decisionTaskCompletedEventId = 123,
+#'         childPolicy = "TERMINATE"|"REQUEST_CANCEL"|"ABANDON",
+#'         taskStartToCloseTimeout = "string",
+#'         tagList = list(
+#'           "string"
+#'         ),
+#'         lambdaRole = "string"
+#'       ),
+#'       childWorkflowExecutionStartedEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         initiatedEventId = 123
+#'       ),
+#'       childWorkflowExecutionCompletedEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         result = "string",
+#'         initiatedEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       childWorkflowExecutionFailedEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         reason = "string",
+#'         details = "string",
+#'         initiatedEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       childWorkflowExecutionTimedOutEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         timeoutType = "START_TO_CLOSE",
+#'         initiatedEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       childWorkflowExecutionCanceledEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         details = "string",
+#'         initiatedEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       childWorkflowExecutionTerminatedEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         initiatedEventId = 123,
+#'         startedEventId = 123
+#'       ),
+#'       signalExternalWorkflowExecutionInitiatedEventAttributes = list(
+#'         workflowId = "string",
+#'         runId = "string",
+#'         signalName = "string",
+#'         input = "string",
+#'         decisionTaskCompletedEventId = 123,
+#'         control = "string"
+#'       ),
+#'       externalWorkflowExecutionSignaledEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         initiatedEventId = 123
+#'       ),
+#'       signalExternalWorkflowExecutionFailedEventAttributes = list(
+#'         workflowId = "string",
+#'         runId = "string",
+#'         cause = "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"|"SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
+#'         initiatedEventId = 123,
+#'         decisionTaskCompletedEventId = 123,
+#'         control = "string"
+#'       ),
+#'       externalWorkflowExecutionCancelRequestedEventAttributes = list(
+#'         workflowExecution = list(
+#'           workflowId = "string",
+#'           runId = "string"
+#'         ),
+#'         initiatedEventId = 123
+#'       ),
+#'       requestCancelExternalWorkflowExecutionInitiatedEventAttributes = list(
+#'         workflowId = "string",
+#'         runId = "string",
+#'         decisionTaskCompletedEventId = 123,
+#'         control = "string"
+#'       ),
+#'       requestCancelExternalWorkflowExecutionFailedEventAttributes = list(
+#'         workflowId = "string",
+#'         runId = "string",
+#'         cause = "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"|"REQUEST_CANCEL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
+#'         initiatedEventId = 123,
+#'         decisionTaskCompletedEventId = 123,
+#'         control = "string"
+#'       ),
+#'       scheduleActivityTaskFailedEventAttributes = list(
+#'         activityType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         activityId = "string",
+#'         cause = "ACTIVITY_TYPE_DEPRECATED"|"ACTIVITY_TYPE_DOES_NOT_EXIST"|"ACTIVITY_ID_ALREADY_IN_USE"|"OPEN_ACTIVITIES_LIMIT_EXCEEDED"|"ACTIVITY_CREATION_RATE_EXCEEDED"|"DEFAULT_SCHEDULE_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_LIST_UNDEFINED"|"DEFAULT_SCHEDULE_TO_START_TIMEOUT_UNDEFINED"|"DEFAULT_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_HEARTBEAT_TIMEOUT_UNDEFINED"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       requestCancelActivityTaskFailedEventAttributes = list(
+#'         activityId = "string",
+#'         cause = "ACTIVITY_ID_UNKNOWN"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       startTimerFailedEventAttributes = list(
+#'         timerId = "string",
+#'         cause = "TIMER_ID_ALREADY_IN_USE"|"OPEN_TIMERS_LIMIT_EXCEEDED"|"TIMER_CREATION_RATE_EXCEEDED"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       cancelTimerFailedEventAttributes = list(
+#'         timerId = "string",
+#'         cause = "TIMER_ID_UNKNOWN"|"OPERATION_NOT_PERMITTED",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       startChildWorkflowExecutionFailedEventAttributes = list(
+#'         workflowType = list(
+#'           name = "string",
+#'           version = "string"
+#'         ),
+#'         cause = "WORKFLOW_TYPE_DOES_NOT_EXIST"|"WORKFLOW_TYPE_DEPRECATED"|"OPEN_CHILDREN_LIMIT_EXCEEDED"|"OPEN_WORKFLOWS_LIMIT_EXCEEDED"|"CHILD_CREATION_RATE_EXCEEDED"|"WORKFLOW_ALREADY_RUNNING"|"DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_TASK_LIST_UNDEFINED"|"DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED"|"DEFAULT_CHILD_POLICY_UNDEFINED"|"OPERATION_NOT_PERMITTED",
+#'         workflowId = "string",
+#'         initiatedEventId = 123,
+#'         decisionTaskCompletedEventId = 123,
+#'         control = "string"
+#'       ),
+#'       lambdaFunctionScheduledEventAttributes = list(
+#'         id = "string",
+#'         name = "string",
+#'         control = "string",
+#'         input = "string",
+#'         startToCloseTimeout = "string",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       lambdaFunctionStartedEventAttributes = list(
+#'         scheduledEventId = 123
+#'       ),
+#'       lambdaFunctionCompletedEventAttributes = list(
+#'         scheduledEventId = 123,
+#'         startedEventId = 123,
+#'         result = "string"
+#'       ),
+#'       lambdaFunctionFailedEventAttributes = list(
+#'         scheduledEventId = 123,
+#'         startedEventId = 123,
+#'         reason = "string",
+#'         details = "string"
+#'       ),
+#'       lambdaFunctionTimedOutEventAttributes = list(
+#'         scheduledEventId = 123,
+#'         startedEventId = 123,
+#'         timeoutType = "START_TO_CLOSE"
+#'       ),
+#'       scheduleLambdaFunctionFailedEventAttributes = list(
+#'         id = "string",
+#'         name = "string",
+#'         cause = "ID_ALREADY_IN_USE"|"OPEN_LAMBDA_FUNCTIONS_LIMIT_EXCEEDED"|"LAMBDA_FUNCTION_CREATION_RATE_EXCEEDED"|"LAMBDA_SERVICE_NOT_AVAILABLE_IN_REGION",
+#'         decisionTaskCompletedEventId = 123
+#'       ),
+#'       startLambdaFunctionFailedEventAttributes = list(
+#'         scheduledEventId = 123,
+#'         cause = "ASSUME_ROLE_FAILED",
+#'         message = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextPageToken = "string",
+#'   previousStartedEventId = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1819,6 +3024,14 @@ swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPa
 #' with results.
 #' @param details If specified, contains details about the progress of the task.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cancelRequested = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$record_activity_task_heartbeat(
@@ -1898,7 +3111,7 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
+#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
 #' the literal string `arn`.
 #' @param version &#91;required&#93; The version of the activity type.
 #' 
@@ -1907,7 +3120,7 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
+#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
 #' the literal string `arn`.
 #' @param description A textual description of the activity type.
 #' @param defaultTaskStartToCloseTimeout If set, specifies the default maximum duration that a worker can take to
@@ -1954,6 +3167,8 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' 
 #' The duration is specified in seconds, an integer greater than or equal
 #' to `0`. You can use `NONE` to specify unlimited duration.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -2029,7 +3244,7 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
+#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
 #' the literal string `arn`.
 #' @param description A text description of the domain.
 #' @param workflowExecutionRetentionPeriodInDays &#91;required&#93; The duration (in days) that records and histories of workflow executions
@@ -2049,6 +3264,8 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
 #' 
 #' Tags may only contain unicode letters, digits, whitespace, or these
 #' symbols: `_ . : / = + - @@`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -2139,7 +3356,7 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
+#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
 #' the literal string `arn`.
 #' @param version &#91;required&#93; The version of the workflow type.
 #' 
@@ -2150,7 +3367,7 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
+#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
 #' the literal string `arn`.
 #' @param description Textual description of the workflow type.
 #' @param defaultTaskStartToCloseTimeout If set, specifies the default maximum duration of decision tasks for
@@ -2213,6 +3430,8 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' information, see
 #' <https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html>
 #' in the *Amazon SWF Developer Guide*.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -2300,6 +3519,8 @@ swf_register_workflow_type <- function(domain, name, version, description = NULL
 #' @param workflowId &#91;required&#93; The workflowId of the workflow execution to cancel.
 #' @param runId The runId of the workflow execution to cancel.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$request_cancel_workflow_execution(
@@ -2385,6 +3606,8 @@ swf_request_cancel_workflow_execution <- function(domain, workflowId, runId = NU
 #' must also be passed. This enables it to provide its progress and respond
 #' with results.
 #' @param details Information about the cancellation.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -2473,6 +3696,8 @@ swf_respond_activity_task_canceled <- function(taskToken, details = NULL) {
 #' @param result The result of the activity task. It is a free form string that is
 #' implementation specific.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$respond_activity_task_completed(
@@ -2551,6 +3776,8 @@ swf_respond_activity_task_completed <- function(taskToken, result = NULL) {
 #' @param reason Description of the error that may assist in diagnostics.
 #' @param details Detailed information about the failure.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$respond_activity_task_failed(
@@ -2619,6 +3846,8 @@ swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details =
 #' processing this decision task. See the docs for the Decision structure
 #' for details.
 #' @param executionContext User defined context to add to workflow execution.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -2800,6 +4029,8 @@ swf_respond_decision_task_completed <- function(taskToken, decisions = NULL, exe
 #' @param input Data to attach to the `WorkflowExecutionSignaled` event in the target
 #' workflow execution's history.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$signal_workflow_execution(
@@ -2895,7 +4126,7 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
+#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
 #' the literal string `arn`.
 #' @param workflowType &#91;required&#93; The type of the workflow to start.
 #' @param taskList The task list to use for the decision tasks generated for this workflow
@@ -2909,7 +4140,7 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
+#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
 #' the literal string `arn`.
 #' @param taskPriority The task priority to use for this workflow execution. This overrides any
 #' default priority that was assigned when the workflow type was
@@ -2990,6 +4221,14 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' <https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html>
 #' in the *Amazon SWF Developer Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   runId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_workflow_execution(
@@ -3049,6 +4288,8 @@ swf_start_workflow_execution <- function(domain, workflowId, workflowType, taskL
 #' 
 #' Tags may only contain unicode letters, digits, whitespace, or these
 #' symbols: `_ . : / = + - @@`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -3158,6 +4399,8 @@ swf_tag_resource <- function(resourceArn, tags) {
 #' parameter is set nor a default child policy was specified at
 #' registration time then a fault is returned.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$terminate_workflow_execution(
@@ -3234,6 +4477,8 @@ swf_terminate_workflow_execution <- function(domain, workflowId, runId = NULL, r
 #' @param domain &#91;required&#93; The name of the domain of the deprecated activity type.
 #' @param activityType &#91;required&#93; The activity type to undeprecate.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$undeprecate_activity_type(
@@ -3300,6 +4545,8 @@ swf_undeprecate_activity_type <- function(domain, activityType) {
 #' swf_undeprecate_domain(name)
 #'
 #' @param name &#91;required&#93; The name of the domain of the deprecated workflow type.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -3371,6 +4618,8 @@ swf_undeprecate_domain <- function(name) {
 #' @param domain &#91;required&#93; The name of the domain of the deprecated workflow type.
 #' @param workflowType &#91;required&#93; The name of the domain of the deprecated workflow type.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$undeprecate_workflow_type(
@@ -3412,6 +4661,8 @@ swf_undeprecate_workflow_type <- function(domain, workflowType) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Amazon SWF domain.
 #' @param tagKeys &#91;required&#93; The list of tags to remove from the Amazon SWF domain.
+#'
+
 #'
 #' @section Request syntax:
 #' ```

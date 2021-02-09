@@ -12,6 +12,15 @@ replication group.}
 
 \item{Description}{A description of the parameter group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ParameterGroup = list(
+    ParameterGroupName = "string",
+    Description = "string"
+  )
+)
+}
+}
 \description{
 Creates a new parameter group. A parameter group is a collection of
 parameters that you apply to all of the nodes in a DAX cluster.

@@ -15,7 +15,7 @@ operations.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lowercase or uppercase
-letters, digits, or the underscore character (\\_).}
+letters, digits, or the underscore character (_).}
 
 \item{TargetId}{[required] The unique identifier (ID) of the root, OU, or account that you want to
 detach the policy from. You can get the ID from the

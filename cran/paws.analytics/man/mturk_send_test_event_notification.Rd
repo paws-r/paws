@@ -18,6 +18,10 @@ is included in the test message even if the notification specification
 does not include the event type. The notification specification does not
 filter out the test event.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 The \code{\link[=mturk_send_test_event_notification]{send_test_event_notification}}
 operation causes Amazon Mechanical Turk to send a notification message

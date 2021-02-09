@@ -11,6 +11,19 @@ quicksight_describe_account_settings(AwsAccountId)
 \item{AwsAccountId}{[required] The ID for the AWS account that contains the settings that you want to
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AccountSettings = list(
+    AccountName = "string",
+    Edition = "STANDARD"|"ENTERPRISE",
+    DefaultNamespace = "string",
+    NotificationEmail = "string"
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Describes the settings that were used when your QuickSight subscription
 was first created in this AWS account.

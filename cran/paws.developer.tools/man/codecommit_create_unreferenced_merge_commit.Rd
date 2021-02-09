@@ -23,8 +23,8 @@ identify a commit (for example, a branch name or a full commit ID).}
 \item{mergeOption}{[required] The merge option or strategy you want to use to merge the code.}
 
 \item{conflictDetailLevel}{The level of conflict detail to use. If unspecified, the default
-FILE\\_LEVEL is used, which returns a not-mergeable result if the same
-file has differences in both branches. If LINE\\_LEVEL is specified, a
+FILE_LEVEL is used, which returns a not-mergeable result if the same
+file has differences in both branches. If LINE_LEVEL is specified, a
 conflict is considered not mergeable if the same file in both branches
 has differences on the same line.}
 
@@ -47,6 +47,13 @@ false.}
 
 \item{conflictResolution}{If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 use when resolving conflicts during a merge.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  commitId = "string",
+  treeId = "string"
+)
+}
 }
 \description{
 Creates an unreferenced commit that represents the result of merging two

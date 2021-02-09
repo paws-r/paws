@@ -9,6 +9,10 @@ mturk_delete_hit(HITId)
 \arguments{
 \item{HITId}{[required] The ID of the HIT to be deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 The \code{\link[=mturk_delete_hit]{delete_hit}} operation is used to delete HIT
 that is no longer needed. Only the Requester who created the HIT can

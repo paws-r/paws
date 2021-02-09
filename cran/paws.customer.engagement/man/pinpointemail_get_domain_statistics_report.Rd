@@ -17,6 +17,51 @@ deliverability metrics for.}
 deliverability metrics for. The \code{EndDate} that you specify has to be
 less than or equal to 30 days after the \code{StartDate}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OverallVolume = list(
+    VolumeStatistics = list(
+      InboxRawCount = 123,
+      SpamRawCount = 123,
+      ProjectedInbox = 123,
+      ProjectedSpam = 123
+    ),
+    ReadRatePercent = 123.0,
+    DomainIspPlacements = list(
+      list(
+        IspName = "string",
+        InboxRawCount = 123,
+        SpamRawCount = 123,
+        InboxPercentage = 123.0,
+        SpamPercentage = 123.0
+      )
+    )
+  ),
+  DailyVolumes = list(
+    list(
+      StartDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      VolumeStatistics = list(
+        InboxRawCount = 123,
+        SpamRawCount = 123,
+        ProjectedInbox = 123,
+        ProjectedSpam = 123
+      ),
+      DomainIspPlacements = list(
+        list(
+          IspName = "string",
+          InboxRawCount = 123,
+          SpamRawCount = 123,
+          InboxPercentage = 123.0,
+          SpamPercentage = 123.0
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Retrieve inbox placement and engagement rates for the domains that you
 use to send email.

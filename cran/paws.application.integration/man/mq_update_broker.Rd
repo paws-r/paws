@@ -11,21 +11,64 @@ mq_update_broker(AuthenticationStrategy, AutoMinorVersionUpgrade,
 \arguments{
 \item{AuthenticationStrategy}{The authentication strategy used to secure the broker.}
 
-\item{AutoMinorVersionUpgrade}{Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.}
+\item{AutoMinorVersionUpgrade}{Enables automatic upgrades to new minor versions for brokers, as Apache
+releases the versions. The automatic upgrades occur during the
+maintenance window of the broker or after a manual broker reboot.}
 
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
 
 \item{Configuration}{A list of information about the configuration.}
 
-\item{EngineVersion}{The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
+\item{EngineVersion}{The version of the broker engine. For a list of supported engine
+versions, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
 
-\item{HostInstanceType}{The host instance type of the broker to upgrade to. For a list of supported instance types, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types}
+\item{HostInstanceType}{The host instance type of the broker to upgrade to. For a list of
+supported instance types, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html\#broker-instance-types}
 
-\item{LdapServerMetadata}{The metadata of the LDAP server used to authenticate and authorize connections to the broker.}
+\item{LdapServerMetadata}{The metadata of the LDAP server used to authenticate and authorize
+connections to the broker.}
 
 \item{Logs}{Enables Amazon CloudWatch logging for brokers.}
 
-\item{SecurityGroups}{The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.}
+\item{SecurityGroups}{The list of security groups (1 minimum, 5 maximum) that authorizes
+connections to brokers.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AuthenticationStrategy = "SIMPLE"|"LDAP",
+  AutoMinorVersionUpgrade = TRUE|FALSE,
+  BrokerId = "string",
+  Configuration = list(
+    Id = "string",
+    Revision = 123
+  ),
+  EngineVersion = "string",
+  HostInstanceType = "string",
+  LdapServerMetadata = list(
+    Hosts = list(
+      "string"
+    ),
+    RoleBase = "string",
+    RoleName = "string",
+    RoleSearchMatching = "string",
+    RoleSearchSubtree = TRUE|FALSE,
+    ServiceAccountUsername = "string",
+    UserBase = "string",
+    UserRoleName = "string",
+    UserSearchMatching = "string",
+    UserSearchSubtree = TRUE|FALSE
+  ),
+  Logs = list(
+    Audit = TRUE|FALSE,
+    General = TRUE|FALSE
+  ),
+  SecurityGroups = list(
+    "string"
+  )
+)
+}
 }
 \description{
 Adds a pending configuration change to a broker.

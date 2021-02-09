@@ -12,6 +12,19 @@ route53_get_traffic_policy(Id, Version)
 \item{Version}{[required] The version number of the traffic policy that you want to get
 information about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficPolicy = list(
+    Id = "string",
+    Version = 123,
+    Name = "string",
+    Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+    Document = "string",
+    Comment = "string"
+  )
+)
+}
+}
 \description{
 Gets information about a specific traffic policy version.
 

@@ -21,6 +21,10 @@ You can have up to 32,768 UTF-8 bytes across all attributes for a
 contact. Attribute keys can include only alphanumeric, dash, and
 underscore characters.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates or updates the contact attributes associated with the specified
 contact.

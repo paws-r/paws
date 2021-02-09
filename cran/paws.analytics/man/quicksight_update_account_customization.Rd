@@ -15,6 +15,19 @@ customizations for.}
 
 \item{AccountCustomization}{[required] The QuickSight customizations you're updating in the current AWS Region.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  AwsAccountId = "string",
+  Namespace = "string",
+  AccountCustomization = list(
+    DefaultTheme = "string"
+  ),
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Updates Amazon QuickSight customizations the current AWS Region.
 Currently, the only customization you can use is a theme.

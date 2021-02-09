@@ -21,6 +21,21 @@ members are only returned if the type filter in
 \item{NextToken}{The token passed by previous API calls until all requested channel
 memberships are returned..}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ChannelArn = "string",
+  ChannelMemberships = list(
+    list(
+      Member = list(
+        Arn = "string",
+        Name = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all channel memberships in a channel.
 }

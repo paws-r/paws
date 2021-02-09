@@ -13,6 +13,19 @@ devicefarm_list_samples(arn, nextToken)
 operation, which can be used to return the next set of items in the
 list.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  samples = list(
+    list(
+      arn = "string",
+      type = "CPU"|"MEMORY"|"THREADS"|"RX_RATE"|"TX_RATE"|"RX"|"TX"|"NATIVE_FRAMES"|"NATIVE_FPS"|"NATIVE_MIN_DRAWTIME"|"NATIVE_AVG_DRAWTIME"|"NATIVE_MAX_DRAWTIME"|"OPENGL_FRAMES"|"OPENGL_FPS"|"OPENGL_MIN_DRAWTIME"|"OPENGL_AVG_DRAWTIME"|"OPENGL_MAX_DRAWTIME",
+      url = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Gets information about samples, given an AWS Device Farm job ARN.
 }

@@ -14,6 +14,10 @@ applicationinsights_delete_log_pattern(ResourceGroupName,
 
 \item{PatternName}{[required] The name of the log pattern.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the specified log pattern from a \code{LogPatternSet}.
 }

@@ -11,6 +11,21 @@ workmail_describe_group(OrganizationId, GroupId)
 
 \item{GroupId}{[required] The identifier for the group to be described.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GroupId = "string",
+  Name = "string",
+  Email = "string",
+  State = "ENABLED"|"DISABLED"|"DELETED",
+  EnabledDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  DisabledDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns the data available for the group.
 }

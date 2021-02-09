@@ -18,6 +18,12 @@ NULL
 #' @param delete When set to true, AWS IoT Secure Tunneling deletes the tunnel data
 #' immediately.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$close_tunnel(
@@ -56,6 +62,52 @@ iotsecuretunneling_close_tunnel <- function(tunnelId, delete = NULL) {
 #'
 #' @param tunnelId &#91;required&#93; The tunnel to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tunnel = list(
+#'     tunnelId = "string",
+#'     tunnelArn = "string",
+#'     status = "OPEN"|"CLOSED",
+#'     sourceConnectionState = list(
+#'       status = "CONNECTED"|"DISCONNECTED",
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     destinationConnectionState = list(
+#'       status = "CONNECTED"|"DISCONNECTED",
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     description = "string",
+#'     destinationConfig = list(
+#'       thingName = "string",
+#'       services = list(
+#'         "string"
+#'       )
+#'     ),
+#'     timeoutConfig = list(
+#'       maxLifetimeTimeoutMinutes = 123
+#'     ),
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_tunnel(
@@ -92,6 +144,19 @@ iotsecuretunneling_describe_tunnel <- function(tunnelId) {
 #' iotsecuretunneling_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The resource ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -132,6 +197,28 @@ iotsecuretunneling_list_tags_for_resource <- function(resourceArn) {
 #' @param thingName The name of the IoT thing associated with the destination device.
 #' @param maxResults The maximum number of results to return at once.
 #' @param nextToken A token to retrieve the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tunnelSummaries = list(
+#'     list(
+#'       tunnelId = "string",
+#'       tunnelArn = "string",
+#'       status = "OPEN"|"CLOSED",
+#'       description = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -177,6 +264,17 @@ iotsecuretunneling_list_tunnels <- function(thingName = NULL, maxResults = NULL,
 #' @param tags A collection of tag metadata.
 #' @param destinationConfig The destination configuration for the OpenTunnel request.
 #' @param timeoutConfig Timeout configuration for a tunnel.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tunnelId = "string",
+#'   tunnelArn = "string",
+#'   sourceAccessToken = "string",
+#'   destinationAccessToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -231,6 +329,12 @@ iotsecuretunneling_open_tunnel <- function(description = NULL, tags = NULL, dest
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #' @param tags &#91;required&#93; The tags for the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -274,6 +378,12 @@ iotsecuretunneling_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The resource ARN.
 #' @param tagKeys &#91;required&#93; The keys of the tags to remove.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

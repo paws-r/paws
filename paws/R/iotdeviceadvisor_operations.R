@@ -15,6 +15,19 @@ NULL
 #' @param suiteDefinitionConfiguration Creates a Device Advisor test suite with suite definition configuration.
 #' @param tags The tags to be attached to the suite definition.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   suiteDefinitionId = "string",
+#'   suiteDefinitionArn = "string",
+#'   suiteDefinitionName = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_suite_definition(
@@ -66,6 +79,12 @@ iotdeviceadvisor_create_suite_definition <- function(suiteDefinitionConfiguratio
 #'
 #' @param suiteDefinitionId &#91;required&#93; Deletes a Device Advisor test suite with defined suite Id.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_suite_definition(
@@ -104,6 +123,38 @@ iotdeviceadvisor_delete_suite_definition <- function(suiteDefinitionId) {
 #'
 #' @param suiteDefinitionId &#91;required&#93; Requests suite definition Id with GetSuiteDefinition API call.
 #' @param suiteDefinitionVersion Requests the suite definition version of a test suite.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   suiteDefinitionId = "string",
+#'   suiteDefinitionArn = "string",
+#'   suiteDefinitionVersion = "string",
+#'   latestVersion = "string",
+#'   suiteDefinitionConfiguration = list(
+#'     suiteDefinitionName = "string",
+#'     devices = list(
+#'       list(
+#'         thingArn = "string",
+#'         certificateArn = "string"
+#'       )
+#'     ),
+#'     intendedForQualification = TRUE|FALSE,
+#'     rootGroup = "string",
+#'     devicePermissionRoleArn = "string"
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -146,6 +197,66 @@ iotdeviceadvisor_get_suite_definition <- function(suiteDefinitionId, suiteDefini
 #' @param suiteRunId &#91;required&#93; Requests the information about Device Advisor test suite run based on
 #' suite run Id.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   suiteDefinitionId = "string",
+#'   suiteDefinitionVersion = "string",
+#'   suiteRunId = "string",
+#'   suiteRunArn = "string",
+#'   suiteRunConfiguration = list(
+#'     primaryDevice = list(
+#'       thingArn = "string",
+#'       certificateArn = "string"
+#'     ),
+#'     secondaryDevice = list(
+#'       thingArn = "string",
+#'       certificateArn = "string"
+#'     ),
+#'     selectedTestList = list(
+#'       "string"
+#'     )
+#'   ),
+#'   testResult = list(
+#'     groups = list(
+#'       list(
+#'         groupId = "string",
+#'         groupName = "string",
+#'         tests = list(
+#'           list(
+#'             testCaseRunId = "string",
+#'             testCaseDefinitionId = "string",
+#'             testCaseDefinitionName = "string",
+#'             status = "PASS"|"FAIL"|"CANCELED"|"PENDING"|"RUNNING"|"PASS_WITH_WARNINGS"|"ERROR",
+#'             startTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             endTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             logUrl = "string",
+#'             warnings = "string",
+#'             failure = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   status = "PASS"|"FAIL"|"CANCELED"|"PENDING"|"RUNNING"|"PASS_WITH_WARNINGS"|"ERROR",
+#'   errorReason = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_suite_run(
@@ -187,6 +298,14 @@ iotdeviceadvisor_get_suite_run <- function(suiteDefinitionId, suiteRunId) {
 #' @param suiteDefinitionId &#91;required&#93; Device Advisor suite definition Id.
 #' @param suiteRunId &#91;required&#93; Device Advisor suite run Id.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   qualificationReportDownloadUrl = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_suite_run_report(
@@ -225,6 +344,30 @@ iotdeviceadvisor_get_suite_run_report <- function(suiteDefinitionId, suiteRunId)
 #'
 #' @param maxResults Request the list of all the Device Advisor test suites.
 #' @param nextToken Requests the Device Advisor test suites next token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   suiteDefinitionInformationList = list(
+#'     list(
+#'       suiteDefinitionId = "string",
+#'       suiteDefinitionName = "string",
+#'       defaultDevices = list(
+#'         list(
+#'           thingArn = "string",
+#'           certificateArn = "string"
+#'         )
+#'       ),
+#'       intendedForQualification = TRUE|FALSE,
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -272,6 +415,34 @@ iotdeviceadvisor_list_suite_definitions <- function(maxResults = NULL, nextToken
 #' @param maxResults MaxResults for list suite run API request.
 #' @param nextToken Next pagination token for list suite run request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   suiteRunsList = list(
+#'     list(
+#'       suiteDefinitionId = "string",
+#'       suiteDefinitionVersion = "string",
+#'       suiteDefinitionName = "string",
+#'       suiteRunId = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       startedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "PASS"|"FAIL"|"CANCELED"|"PENDING"|"RUNNING"|"PASS_WITH_WARNINGS"|"ERROR",
+#'       passed = 123,
+#'       failed = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_suite_runs(
@@ -312,6 +483,16 @@ iotdeviceadvisor_list_suite_runs <- function(suiteDefinitionId = NULL, suiteDefi
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the IoT Device Advisor resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -351,6 +532,37 @@ iotdeviceadvisor_list_tags_for_resource <- function(resourceArn) {
 #' @param intendedForQualification Lists all the qualification test cases in the test suite.
 #' @param maxResults Requests the test cases max results.
 #' @param nextToken Requests the test cases next token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   categories = list(
+#'     list(
+#'       name = "string",
+#'       tests = list(
+#'         list(
+#'           name = "string",
+#'           configuration = list(
+#'             "string"
+#'           ),
+#'           test = list(
+#'             id = "string",
+#'             testCaseVersion = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   rootGroupConfiguration = list(
+#'     "string"
+#'   ),
+#'   groupConfiguration = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -394,6 +606,18 @@ iotdeviceadvisor_list_test_cases <- function(intendedForQualification = NULL, ma
 #' @param suiteDefinitionVersion Request to start suite run based on suite definition version.
 #' @param suiteRunConfiguration Request to start suite run based on suite configuration.
 #' @param tags The tags to be attached to the suite run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   suiteRunId = "string",
+#'   suiteRunArn = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -450,6 +674,12 @@ iotdeviceadvisor_start_suite_run <- function(suiteDefinitionId, suiteDefinitionV
 #' @param resourceArn &#91;required&#93; The resource ARN of an IoT Device Advisor resource.
 #' @param tags &#91;required&#93; The tags to be attached to the IoT Device Advisor resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -490,6 +720,12 @@ iotdeviceadvisor_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The resource ARN of an IoT Device Advisor resource.
 #' @param tagKeys &#91;required&#93; List of tag keys to remove from the IoT Device Advisor resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -532,6 +768,23 @@ iotdeviceadvisor_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @param suiteDefinitionId &#91;required&#93; Updates a Device Advisor test suite with suite definition id.
 #' @param suiteDefinitionConfiguration Updates a Device Advisor test suite with suite definition configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   suiteDefinitionId = "string",
+#'   suiteDefinitionArn = "string",
+#'   suiteDefinitionName = "string",
+#'   suiteDefinitionVersion = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

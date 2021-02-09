@@ -14,8 +14,18 @@ greengrass_create_resource_definition_version(AmznClientToken,
 
 \item{Resources}{A list of resources.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  CreationTimestamp = "string",
+  Id = "string",
+  Version = "string"
+)
+}
+}
 \description{
-Creates a version of a resource definition that has already been defined.
+Creates a version of a resource definition that has already been
+defined.
 }
 \section{Request syntax}{
 \preformatted{svc$create_resource_definition_version(

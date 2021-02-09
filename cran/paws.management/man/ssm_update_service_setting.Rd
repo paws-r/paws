@@ -30,6 +30,10 @@ For the \verb{/ssm/parameter-store/high-throughput-enabled}, and
 \verb{/ssm/managed-instance/activation-tier} setting IDs, the setting value
 can be true or false.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 \code{ServiceSetting} is an account-level setting for an AWS service. This
 setting defines how a user interacts with or uses a service or a feature

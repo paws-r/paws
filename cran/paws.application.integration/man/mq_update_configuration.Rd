@@ -13,6 +13,31 @@ mq_update_configuration(ConfigurationId, Data, Description)
 
 \item{Description}{The description of the configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  Created = as.POSIXct(
+    "2015-01-01"
+  ),
+  Id = "string",
+  LatestRevision = list(
+    Created = as.POSIXct(
+      "2015-01-01"
+    ),
+    Description = "string",
+    Revision = 123
+  ),
+  Name = "string",
+  Warnings = list(
+    list(
+      AttributeName = "string",
+      ElementName = "string",
+      Reason = "DISALLOWED_ELEMENT_REMOVED"|"DISALLOWED_ATTRIBUTE_REMOVED"|"INVALID_ATTRIBUTE_VALUE_REMOVED"
+    )
+  )
+)
+}
+}
 \description{
 Updates the specified configuration.
 }

@@ -77,6 +77,42 @@ Results are sorted by \code{FilterVariable}.}
 
 \item{Limit}{The maximum number of \code{Evaluation} to include in the result.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Results = list(
+    list(
+      EvaluationId = "string",
+      MLModelId = "string",
+      EvaluationDataSourceId = "string",
+      InputDataLocationS3 = "string",
+      CreatedByIamUser = "string",
+      CreatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      Name = "string",
+      Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
+      PerformanceMetrics = list(
+        Properties = list(
+          "string"
+        )
+      ),
+      Message = "string",
+      ComputeTime = 123,
+      FinishedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      StartedAt = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of
 \code{\link[=machinelearning_describe_evaluations]{describe_evaluations}} that

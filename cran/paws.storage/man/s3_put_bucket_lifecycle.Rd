@@ -27,7 +27,7 @@ work. For new lifecycle configurations, use the updated API.
 
 Creates a new lifecycle configuration for the bucket or replaces an
 existing lifecycle configuration. For information about lifecycle
-configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html}{Object Lifecycle Management}
+configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Object Lifecycle Management}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 By default, all Amazon S3 resources, including buckets, objects, and
@@ -48,11 +48,11 @@ deny them permissions for the following actions:
 \item \code{s3:PutLifecycleConfiguration}
 }
 
-For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}
+For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 For more examples of transitioning objects to storage classes such as
-STANDARD\\_IA or ONEZONE\\_IA, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#lifecycle-configuration-examples}{Examples of Lifecycle Configuration}.
+STANDARD_IA or ONEZONE_IA, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/intro-lifecycle-rules.html#lifecycle-configuration-examples}{Examples of Lifecycle Configuration}.
 
 \strong{Related Resources}
 \itemize{
@@ -65,8 +65,8 @@ operations. A resource owner can also grant others permission to
 perform the operation. For more information, see the following
 topics in the Amazon Simple Storage Service Developer Guide:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html}{Specifying Permissions in a Policy}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}
 }
 }
 }

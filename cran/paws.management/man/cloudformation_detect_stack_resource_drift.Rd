@@ -13,6 +13,41 @@ cloudformation_detect_stack_resource_drift(StackName, LogicalResourceId)
 
 \item{LogicalResourceId}{[required] The logical name of the resource for which to return drift information.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StackResourceDrift = list(
+    StackId = "string",
+    LogicalResourceId = "string",
+    PhysicalResourceId = "string",
+    PhysicalResourceIdContext = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    ResourceType = "string",
+    ExpectedProperties = "string",
+    ActualProperties = "string",
+    PropertyDifferences = list(
+      list(
+        PropertyPath = "string",
+        ExpectedValue = "string",
+        ActualValue = "string",
+        DifferenceType = "ADD"|"REMOVE"|"NOT_EQUAL"
+      )
+    ),
+    StackResourceDriftStatus = "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED",
+    Timestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ModuleInfo = list(
+      TypeHierarchy = "string",
+      LogicalIdHierarchy = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns information about whether a resource's actual configuration
 differs, or has \emph{drifted}, from it's expected configuration, as defined

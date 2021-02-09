@@ -13,6 +13,12 @@ s3_get_bucket_policy(Bucket, ExpectedBucketOwner)
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Policy = "string"
+)
+}
+}
 \description{
 Returns the policy of a specified bucket. If you are using an identity
 other than the root user of the AWS account that owns the bucket, the
@@ -31,7 +37,7 @@ As a security precaution, the root user of the AWS account that owns a
 bucket can always use this operation, even if the policy explicitly
 denies the root user the ability to perform this action.
 
-For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html}{Using Bucket Policies and User Policies}.
+For more information about bucket policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies and User Policies}.
 
 The following operation is related to
 \code{\link[=s3_get_bucket_policy]{get_bucket_policy}}:

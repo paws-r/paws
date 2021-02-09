@@ -11,6 +11,12 @@ snowball_get_software_updates(JobId)
 \item{JobId}{[required] The ID for a job that you want to get the software update file for, for
 example \verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UpdatesURI = "string"
+)
+}
+}
 \description{
 Returns an Amazon S3 presigned URL for an update file associated with a
 specified \code{JobId}.

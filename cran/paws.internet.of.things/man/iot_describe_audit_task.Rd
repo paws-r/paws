@@ -9,6 +9,37 @@ iot_describe_audit_task(taskId)
 \arguments{
 \item{taskId}{[required] The ID of the audit whose information you want to get.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  taskStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"CANCELED",
+  taskType = "ON_DEMAND_AUDIT_TASK"|"SCHEDULED_AUDIT_TASK",
+  taskStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  taskStatistics = list(
+    totalChecks = 123,
+    inProgressChecks = 123,
+    waitingForDataCollectionChecks = 123,
+    compliantChecks = 123,
+    nonCompliantChecks = 123,
+    failedChecks = 123,
+    canceledChecks = 123
+  ),
+  scheduledAuditName = "string",
+  auditDetails = list(
+    list(
+      checkRunStatus = "IN_PROGRESS"|"WAITING_FOR_DATA_COLLECTION"|"CANCELED"|"COMPLETED_COMPLIANT"|"COMPLETED_NON_COMPLIANT"|"FAILED",
+      checkCompliant = TRUE|FALSE,
+      totalResourcesCount = 123,
+      nonCompliantResourcesCount = 123,
+      suppressedNonCompliantResourcesCount = 123,
+      errorCode = "string",
+      message = "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets information about a Device Defender audit.
 }

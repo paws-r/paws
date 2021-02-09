@@ -15,6 +15,48 @@ assigned.}
 part of the sign-in credentials to use the AWS Transfer Family service
 and perform file transfer tasks.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ServerId = "string",
+  User = list(
+    Arn = "string",
+    HomeDirectory = "string",
+    HomeDirectoryMappings = list(
+      list(
+        Entry = "string",
+        Target = "string"
+      )
+    ),
+    HomeDirectoryType = "PATH"|"LOGICAL",
+    Policy = "string",
+    PosixProfile = list(
+      Uid = 123,
+      Gid = 123,
+      SecondaryGids = list(
+        123
+      )
+    ),
+    Role = "string",
+    SshPublicKeys = list(
+      list(
+        DateImported = as.POSIXct(
+          "2015-01-01"
+        ),
+        SshPublicKeyBody = "string",
+        SshPublicKeyId = "string"
+      )
+    ),
+    Tags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    UserName = "string"
+  )
+)
+}
+}
 \description{
 Describes the user assigned to the specific file transfer
 protocol-enabled server, as identified by its \code{ServerId} property.

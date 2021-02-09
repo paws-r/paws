@@ -12,6 +12,10 @@ kinesisanalyticsv2_start_application(ApplicationName, RunConfiguration)
 \item{RunConfiguration}{[required] Identifies the run configuration (start parameters) of a Kinesis Data
 Analytics application.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Starts the specified Kinesis Data Analytics application. After creating
 an application, you must exclusively call this operation to start your

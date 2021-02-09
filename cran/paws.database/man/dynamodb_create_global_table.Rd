@@ -11,6 +11,42 @@ dynamodb_create_global_table(GlobalTableName, ReplicationGroup)
 
 \item{ReplicationGroup}{[required] The Regions where the global table needs to be created.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GlobalTableDescription = list(
+    ReplicationGroup = list(
+      list(
+        RegionName = "string",
+        ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
+        ReplicaStatusDescription = "string",
+        ReplicaStatusPercentProgress = "string",
+        KMSMasterKeyId = "string",
+        ProvisionedThroughputOverride = list(
+          ReadCapacityUnits = 123
+        ),
+        GlobalSecondaryIndexes = list(
+          list(
+            IndexName = "string",
+            ProvisionedThroughputOverride = list(
+              ReadCapacityUnits = 123
+            )
+          )
+        ),
+        ReplicaInaccessibleDateTime = as.POSIXct(
+          "2015-01-01"
+        )
+      )
+    ),
+    GlobalTableArn = "string",
+    CreationDateTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    GlobalTableStatus = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING",
+    GlobalTableName = "string"
+  )
+)
+}
+}
 \description{
 Creates a global table from an existing table. A global table creates a
 replication relationship between two or more DynamoDB tables with the

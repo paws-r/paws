@@ -14,6 +14,15 @@ batch of the results.}
 \item{maxResults}{A non-zero, non-negative integer used to limit the number of returned
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  approvalRuleTemplateNames = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists all approval rule templates in the specified AWS Region in your
 AWS account. If an AWS Region is not specified, the AWS Region where you

@@ -24,6 +24,25 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Accounts = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Email = "string",
+      Name = "string",
+      Status = "ACTIVE"|"SUSPENDED",
+      JoinedMethod = "INVITED"|"CREATED",
+      JoinedTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all the accounts in the organization. To request only the accounts
 in a specified root or organizational unit (OU), use the

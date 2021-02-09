@@ -17,6 +17,22 @@ of tape pools.}
 \item{Limit}{An optional number limit for the tape pools in the list returned by this
 call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PoolInfos = list(
+    list(
+      PoolARN = "string",
+      PoolName = "string",
+      StorageClass = "DEEP_ARCHIVE"|"GLACIER",
+      RetentionLockType = "COMPLIANCE"|"GOVERNANCE"|"NONE",
+      RetentionLockTimeInDays = 123,
+      PoolStatus = "ACTIVE"|"DELETED"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Lists custom tape pools. You specify custom tape pools to list by
 specifying one or more custom tape pool Amazon Resource Names (ARNs). If

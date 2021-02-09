@@ -14,6 +14,12 @@ datapipeline_evaluate_expression(pipelineId, objectId, expression)
 
 \item{expression}{[required] The expression to evaluate.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  evaluatedExpression = "string"
+)
+}
+}
 \description{
 Task runners call
 \code{\link[=datapipeline_evaluate_expression]{evaluate_expression}} to evaluate a

@@ -6,6 +6,22 @@
 \usage{
 iam_list_saml_providers()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SAMLProviderList = list(
+    list(
+      Arn = "string",
+      ValidUntil = as.POSIXct(
+        "2015-01-01"
+      ),
+      CreateDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists the SAML provider resource objects defined in IAM in the account.
 

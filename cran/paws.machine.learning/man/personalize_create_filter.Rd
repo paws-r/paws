@@ -17,9 +17,15 @@ format:
 
 \verb{EXCLUDE itemId WHERE INTERACTIONS.event_type in ("EVENT_TYPE")}
 
-Where "EVENT\\_TYPE" is the type of event to filter out. To filter out
-all items with any interactions history, set \code{"*"} as the EVENT\\_TYPE.
+Where "EVENT_TYPE" is the type of event to filter out. To filter out
+all items with any interactions history, set \code{"*"} as the EVENT_TYPE.
 For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/}{Using Filters with Amazon Personalize}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  filterArn = "string"
+)
+}
 }
 \description{
 Creates a recommendation filter. For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/}{Using Filters with Amazon Personalize}.

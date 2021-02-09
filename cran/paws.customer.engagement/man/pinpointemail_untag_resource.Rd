@@ -19,6 +19,10 @@ parameter and argument for each additional tag to remove, separated by
 an ampersand. For example:
 \verb{/v1/email/tags?ResourceArn=ResourceArn&TagKeys=Key1&TagKeys=Key2}}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Remove one or more tags (keys and values) from a specified resource.
 }

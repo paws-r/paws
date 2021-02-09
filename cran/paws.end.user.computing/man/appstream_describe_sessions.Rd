@@ -26,6 +26,33 @@ maximum value is 50.}
 a streaming URL or \code{SAML} for a SAML federated user. The default is to
 authenticate users using a streaming URL.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Sessions = list(
+    list(
+      Id = "string",
+      UserId = "string",
+      StackName = "string",
+      FleetName = "string",
+      State = "ACTIVE"|"PENDING"|"EXPIRED",
+      ConnectionState = "CONNECTED"|"NOT_CONNECTED",
+      StartTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      MaxExpirationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      AuthenticationType = "API"|"SAML"|"USERPOOL",
+      NetworkAccessConfiguration = list(
+        EniPrivateIpAddress = "string",
+        EniId = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a list that describes the streaming sessions for a specified
 stack and fleet. If a UserId is provided for the stack and fleet, only

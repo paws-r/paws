@@ -41,6 +41,10 @@ purpose.
 don't use it to provide sensitive information.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Confirms user registration as an admin without using a confirmation
 code. Works on any user.

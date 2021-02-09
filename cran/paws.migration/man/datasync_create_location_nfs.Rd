@@ -57,6 +57,12 @@ for more information.}
 location. The value can be an empty string. We recommend using tags to
 name your resources.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LocationArn = "string"
+)
+}
+}
 \description{
 Defines a file system on a Network File System (NFS) server that can be
 read from or written to.

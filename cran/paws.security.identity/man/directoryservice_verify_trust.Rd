@@ -10,6 +10,12 @@ directoryservice_verify_trust(TrustId)
 \arguments{
 \item{TrustId}{[required] The unique Trust ID of the trust relationship to verify.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrustId = "string"
+)
+}
+}
 \description{
 AWS Directory Service for Microsoft Active Directory allows you to
 configure and verify trust relationships.

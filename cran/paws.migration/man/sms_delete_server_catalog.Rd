@@ -6,6 +6,10 @@
 \usage{
 sms_delete_server_catalog()
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes all servers from your server catalog.
 }

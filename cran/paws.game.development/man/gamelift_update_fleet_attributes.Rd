@@ -37,6 +37,12 @@ an existing metric group name to add this fleet to the group. Or use a
 new name to create a new metric group. A fleet can only be included in
 one metric group at a time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FleetId = "string"
+)
+}
+}
 \description{
 Updates fleet properties, including name and description, for a fleet.
 To update metadata, specify the fleet ID and the property values that

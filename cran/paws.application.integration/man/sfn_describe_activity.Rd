@@ -9,6 +9,16 @@ sfn_describe_activity(activityArn)
 \arguments{
 \item{activityArn}{[required] The Amazon Resource Name (ARN) of the activity to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  activityArn = "string",
+  name = "string",
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Describes an activity.
 

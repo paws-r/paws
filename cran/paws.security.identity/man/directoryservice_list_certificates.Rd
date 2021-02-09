@@ -17,6 +17,23 @@ token comes back as \code{null}. Pass \code{null} if this is the first call.}
 
 \item{Limit}{The number of items that should show up on one page}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  CertificatesInfo = list(
+    list(
+      CertificateId = "string",
+      CommonName = "string",
+      State = "Registering"|"Registered"|"RegisterFailed"|"Deregistering"|"Deregistered"|"DeregisterFailed",
+      ExpiryDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Type = "ClientCertAuth"|"ClientLDAPS"
+    )
+  )
+)
+}
+}
 \description{
 For the specified directory, lists all the certificates registered for a
 secure LDAP or client certificate authentication.

@@ -17,6 +17,18 @@ not supported for tagging.}
 \item{MaxResults}{The \code{MaxResults} parameter sets the maximum number of results returned
 in a single page. This is for future use and is not supported currently.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns tags for a resource. Tagging is currently supported only for
 directories with a limit of 50 tags per directory. All 50 tags are

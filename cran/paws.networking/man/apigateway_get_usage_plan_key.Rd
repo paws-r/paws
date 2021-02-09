@@ -14,6 +14,15 @@ plan customer.}
 \item{keyId}{[required] [Required] The key Id of the to-be-retrieved UsagePlanKey resource
 representing a plan customer.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  id = "string",
+  type = "string",
+  value = "string",
+  name = "string"
+)
+}
+}
 \description{
 Gets a usage plan key of a given key identifier.
 }

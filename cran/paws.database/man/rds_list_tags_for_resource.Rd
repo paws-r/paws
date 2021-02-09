@@ -14,6 +14,17 @@ in the \emph{Amazon RDS User Guide}.}
 
 \item{Filters}{This parameter isn't currently supported.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TagList = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists all tags on an Amazon RDS resource.
 

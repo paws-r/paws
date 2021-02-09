@@ -28,6 +28,12 @@ pair that adds metadata to the endpoint. For example, a tag with "Sales"
 as the key might be added to an endpoint to indicate its use by the
 sales department.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointArn = "string"
+)
+}
+}
 \description{
 Creates a model-specific endpoint for synchronous inference for a
 previously trained custom model

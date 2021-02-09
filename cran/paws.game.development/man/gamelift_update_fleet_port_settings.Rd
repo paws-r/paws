@@ -15,6 +15,12 @@ either the fleet ID or ARN value.}
 
 \item{InboundPermissionRevocations}{A collection of port settings to be removed from the fleet resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FleetId = "string"
+)
+}
+}
 \description{
 Updates port settings for a fleet. To update settings, specify the fleet
 ID to be updated and list the permissions you want to update. List the

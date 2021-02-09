@@ -43,6 +43,14 @@ useful.}
 
 \item{email}{An email address for the person adding or updating the file.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  commitId = "string",
+  blobId = "string",
+  treeId = "string"
+)
+}
+}
 \description{
 Adds or updates a file in a branch in an AWS CodeCommit repository, and
 generates a commit for the addition in the specified branch.

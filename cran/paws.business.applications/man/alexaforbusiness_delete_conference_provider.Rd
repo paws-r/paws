@@ -9,6 +9,10 @@ alexaforbusiness_delete_conference_provider(ConferenceProviderArn)
 \arguments{
 \item{ConferenceProviderArn}{[required] The ARN of the conference provider.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a conference provider.
 }

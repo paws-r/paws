@@ -15,6 +15,10 @@ iot1clickprojects_create_placement(placementName, projectName,
 \item{attributes}{Optional user-defined key/value pairs providing contextual data (such as
 location or function) for the placement.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates an empty placement.
 }

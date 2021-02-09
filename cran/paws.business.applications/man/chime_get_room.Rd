@@ -12,6 +12,23 @@ chime_get_room(AccountId, RoomId)
 
 \item{RoomId}{[required] The room ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Room = list(
+    RoomId = "string",
+    Name = "string",
+    AccountId = "string",
+    CreatedBy = "string",
+    CreatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves room details, such as the room name, for a room in an Amazon
 Chime Enterprise account.

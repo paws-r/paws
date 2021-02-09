@@ -13,22 +13,34 @@ exist.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{Password}{[required] The new password for the user.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
 validate this parameter is a string of characters. That string can
-include almost any printable ASCII character from the space (\code{U+0020})
-through the end of the ASCII character range (\verb{U+00FF}). You can also
-include the tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return
-(\verb{U+000D}) characters. Any of these characters are valid in a password.
+include almost any printable ASCII character from the space (\verb{\\u0020})
+through the end of the ASCII character range (\verb{\\u00FF}). You can also
+include the tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and carriage return
+(\verb{\\u000D}) characters. Any of these characters are valid in a password.
 However, many tools, such as the AWS Management Console, might restrict
 the ability to type certain characters because they have special meaning
 within that tool.}
 
 \item{PasswordResetRequired}{Specifies whether the user is required to set a new password on next
 sign-in.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  LoginProfile = list(
+    UserName = "string",
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    PasswordResetRequired = TRUE|FALSE
+  )
+)
+}
 }
 \description{
 Creates a password for the specified user, giving the user the ability
@@ -50,7 +62,7 @@ in the \emph{IAM User Guide}.
 # The following command changes IAM user Bob's password and sets the flag
 # that required Bob to change the password the next time he signs in.
 svc$create_login_profile(
-  Password = "h]6EszR\}vJ*m",
+  Password = "h]6EszR}vJ*m",
   PasswordResetRequired = TRUE,
   UserName = "Bob"
 )

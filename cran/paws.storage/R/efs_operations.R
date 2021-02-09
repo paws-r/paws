@@ -39,6 +39,41 @@ NULL
 #' `RootDirectory`, you need to provide the `Path`, and the `CreationInfo`
 #' is optional.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientToken = "string",
+#'   Name = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   AccessPointId = "string",
+#'   AccessPointArn = "string",
+#'   FileSystemId = "string",
+#'   PosixUser = list(
+#'     Uid = 123,
+#'     Gid = 123,
+#'     SecondaryGids = list(
+#'       123
+#'     )
+#'   ),
+#'   RootDirectory = list(
+#'     Path = "string",
+#'     CreationInfo = list(
+#'       OwnerUid = 123,
+#'       OwnerGid = 123,
+#'       Permissions = "string"
+#'     )
+#'   ),
+#'   OwnerId = "string",
+#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_access_point(
@@ -205,8 +240,44 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' in the *Amazon EFS User Guide.*
 #' @param Tags A value that specifies to create one or more tags associated with the
 #' file system. Each tag is a user-defined key-value pair. Name your file
-#' system on creation by including a `"Key":"Name","Value":"\{value\}"`
+#' system on creation by including a `"Key":"Name","Value":"{value}"`
 #' key-value pair.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OwnerId = "string",
+#'   CreationToken = "string",
+#'   FileSystemId = "string",
+#'   FileSystemArn = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+#'   Name = "string",
+#'   NumberOfMountTargets = 123,
+#'   SizeInBytes = list(
+#'     Value = 123,
+#'     Timestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ValueInIA = 123,
+#'     ValueInStandard = 123
+#'   ),
+#'   PerformanceMode = "generalPurpose"|"maxIO",
+#'   Encrypted = TRUE|FALSE,
+#'   KmsKeyId = "string",
+#'   ThroughputMode = "bursting"|"provisioned",
+#'   ProvisionedThroughputInMibps = 123.0,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -384,6 +455,23 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #' @param SecurityGroups Up to five VPC security group IDs, of the form `sg-xxxxxxxx`. These must
 #' be for the same VPC as subnet specified.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OwnerId = "string",
+#'   MountTargetId = "string",
+#'   FileSystemId = "string",
+#'   SubnetId = "string",
+#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+#'   IpAddress = "string",
+#'   NetworkInterfaceId = "string",
+#'   AvailabilityZoneId = "string",
+#'   AvailabilityZoneName = "string",
+#'   VpcId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_mount_target(
@@ -444,6 +532,8 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
 #' @param FileSystemId &#91;required&#93; The ID of the file system whose tags you want to modify (String). This
 #' operation modifies the tags only, not the file system.
 #' @param Tags &#91;required&#93; An array of `Tag` objects to add. Each `Tag` object is a key-value pair.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -508,6 +598,8 @@ efs_create_tags <- function(FileSystemId, Tags) {
 #'
 #' @param AccessPointId &#91;required&#93; The ID of the access point that you want to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_access_point(
@@ -564,6 +656,8 @@ efs_delete_access_point <- function(AccessPointId) {
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system you want to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_file_system(
@@ -616,6 +710,8 @@ efs_delete_file_system <- function(FileSystemId) {
 #'
 #' @param FileSystemId &#91;required&#93; Specifies the EFS file system for which to delete the
 #' `FileSystemPolicy`.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -680,6 +776,8 @@ efs_delete_file_system_policy <- function(FileSystemId) {
 #'
 #' @param MountTargetId &#91;required&#93; The ID of the mount target to delete (String).
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_mount_target(
@@ -733,6 +831,8 @@ efs_delete_mount_target <- function(MountTargetId) {
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system whose tags you want to delete (String).
 #' @param TagKeys &#91;required&#93; A list of tag keys to delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -803,6 +903,46 @@ efs_delete_tags <- function(FileSystemId, TagKeys) {
 #' @param FileSystemId (Optional) If you provide a `FileSystemId`, EFS returns all access
 #' points for that file system; mutually exclusive with `AccessPointId`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessPoints = list(
+#'     list(
+#'       ClientToken = "string",
+#'       Name = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       AccessPointId = "string",
+#'       AccessPointArn = "string",
+#'       FileSystemId = "string",
+#'       PosixUser = list(
+#'         Uid = 123,
+#'         Gid = 123,
+#'         SecondaryGids = list(
+#'           123
+#'         )
+#'       ),
+#'       RootDirectory = list(
+#'         Path = "string",
+#'         CreationInfo = list(
+#'           OwnerUid = 123,
+#'           OwnerGid = 123,
+#'           Permissions = "string"
+#'         )
+#'       ),
+#'       OwnerId = "string",
+#'       LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_access_points(
@@ -843,6 +983,16 @@ efs_describe_access_points <- function(MaxResults = NULL, NextToken = NULL, Acce
 #'
 #' @param FileSystemId &#91;required&#93; Specifies which EFS file system to retrieve the `BackupPolicy` for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BackupPolicy = list(
+#'     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_backup_policy(
@@ -882,6 +1032,15 @@ efs_describe_backup_policy <- function(FileSystemId) {
 #' efs_describe_file_system_policy(FileSystemId)
 #'
 #' @param FileSystemId &#91;required&#93; Specifies which EFS file system to retrieve the `FileSystemPolicy` for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileSystemId = "string",
+#'   Policy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -960,6 +1119,48 @@ efs_describe_file_system_policy <- function(FileSystemId) {
 #' @param FileSystemId (Optional) ID of the file system whose description you want to retrieve
 #' (String).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   FileSystems = list(
+#'     list(
+#'       OwnerId = "string",
+#'       CreationToken = "string",
+#'       FileSystemId = "string",
+#'       FileSystemArn = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+#'       Name = "string",
+#'       NumberOfMountTargets = 123,
+#'       SizeInBytes = list(
+#'         Value = 123,
+#'         Timestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ValueInIA = 123,
+#'         ValueInStandard = 123
+#'       ),
+#'       PerformanceMode = "generalPurpose"|"maxIO",
+#'       Encrypted = TRUE|FALSE,
+#'       KmsKeyId = "string",
+#'       ThroughputMode = "bursting"|"provisioned",
+#'       ProvisionedThroughputInMibps = 123.0,
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_file_systems(
@@ -1015,6 +1216,18 @@ efs_describe_file_systems <- function(MaxItems = NULL, Marker = NULL, CreationTo
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system whose `LifecycleConfiguration` object you want
 #' to retrieve (String).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LifecyclePolicies = list(
+#'     list(
+#'       TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1073,6 +1286,16 @@ efs_describe_lifecycle_configuration <- function(FileSystemId) {
 #' efs_describe_mount_target_security_groups(MountTargetId)
 #'
 #' @param MountTargetId &#91;required&#93; The ID of the mount target whose security groups you want to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecurityGroups = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1148,6 +1371,29 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
 #' `MountTargetId` is not included in your request. Accepts either an
 #' access point ID or ARN as input.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   MountTargets = list(
+#'     list(
+#'       OwnerId = "string",
+#'       MountTargetId = "string",
+#'       FileSystemId = "string",
+#'       SubnetId = "string",
+#'       LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+#'       IpAddress = "string",
+#'       NetworkInterfaceId = "string",
+#'       AvailabilityZoneId = "string",
+#'       AvailabilityZoneName = "string",
+#'       VpcId = "string"
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_mount_targets(
@@ -1210,6 +1456,21 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
 #' specifies to continue the list from where the previous call left off.
 #' @param FileSystemId &#91;required&#93; The ID of the file system whose tag set you want to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_tags(
@@ -1266,6 +1527,20 @@ efs_describe_tags <- function(MaxItems = NULL, Marker = NULL, FileSystemId) {
 #' response. The default value is 100.
 #' @param NextToken You can use `NextToken` in a subsequent request to fetch the next page
 #' of access point descriptions if the response payload was paginated.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1324,6 +1599,8 @@ efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken 
 #' @param MountTargetId &#91;required&#93; The ID of the mount target whose security groups you want to modify.
 #' @param SecurityGroups An array of up to five VPC security group IDs.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$modify_mount_target_security_groups(
@@ -1378,6 +1655,16 @@ efs_modify_mount_target_security_groups <- function(MountTargetId, SecurityGroup
 #' @param FileSystemId &#91;required&#93; Specifies which EFS file system to update the backup policy for.
 #' @param BackupPolicy &#91;required&#93; The backup policy included in the
 #' [`put_backup_policy`][efs_put_backup_policy] request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BackupPolicy = list(
+#'     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1444,6 +1731,15 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
 #' making a subsequent
 #' [`put_file_system_policy`][efs_put_file_system_policy] request on the
 #' file system. The default value is False.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileSystemId = "string",
+#'   Policy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1519,6 +1815,18 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
 #' lifecycle management when to transition files from the Standard storage
 #' class to the Infrequent Access storage class.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LifecyclePolicies = list(
+#'     list(
+#'       TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_lifecycle_configuration(
@@ -1583,6 +1891,8 @@ efs_put_lifecycle_configuration <- function(FileSystemId, LifecyclePolicies) {
 #' @param ResourceId &#91;required&#93; The ID specifying the EFS resource that you want to create a tag for.
 #' @param Tags &#91;required&#93; 
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1631,6 +1941,8 @@ efs_tag_resource <- function(ResourceId, Tags) {
 #' @param ResourceId &#91;required&#93; Specifies the EFS resource that you want to remove tags from.
 #' @param TagKeys &#91;required&#93; The keys of the key:value tag pairs that you want to remove from the
 #' specified EFS resource.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1684,6 +1996,42 @@ efs_untag_resource <- function(ResourceId, TagKeys) {
 #' `ThroughputMode` is changed to `provisioned` on update. If you're not
 #' updating the amount of provisioned throughput for your file system, you
 #' don't need to provide this value in your request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OwnerId = "string",
+#'   CreationToken = "string",
+#'   FileSystemId = "string",
+#'   FileSystemArn = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
+#'   Name = "string",
+#'   NumberOfMountTargets = 123,
+#'   SizeInBytes = list(
+#'     Value = 123,
+#'     Timestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ValueInIA = 123,
+#'     ValueInStandard = 123
+#'   ),
+#'   PerformanceMode = "generalPurpose"|"maxIO",
+#'   Encrypted = TRUE|FALSE,
+#'   KmsKeyId = "string",
+#'   ThroughputMode = "bursting"|"provisioned",
+#'   ProvisionedThroughputInMibps = 123.0,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

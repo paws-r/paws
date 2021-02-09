@@ -13,10 +13,40 @@ s3_get_bucket_website(Bucket, ExpectedBucketOwner)
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RedirectAllRequestsTo = list(
+    HostName = "string",
+    Protocol = "http"|"https"
+  ),
+  IndexDocument = list(
+    Suffix = "string"
+  ),
+  ErrorDocument = list(
+    Key = "string"
+  ),
+  RoutingRules = list(
+    list(
+      Condition = list(
+        HttpErrorCodeReturnedEquals = "string",
+        KeyPrefixEquals = "string"
+      ),
+      Redirect = list(
+        HostName = "string",
+        HttpRedirectCode = "string",
+        Protocol = "http"|"https",
+        ReplaceKeyPrefixWith = "string",
+        ReplaceKeyWith = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns the website configuration for a bucket. To host website on
 Amazon S3, you can configure a bucket as website by adding a website
-configuration. For more information about hosting websites, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
+configuration. For more information about hosting websites, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
 
 This GET operation requires the \code{S3:GetBucketWebsite} permission. By
 default, only the bucket owner can read the bucket website

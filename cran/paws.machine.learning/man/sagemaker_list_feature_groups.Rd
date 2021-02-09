@@ -32,6 +32,26 @@ specific date and time.}
 \item{NextToken}{A token to resume pagination of
 \code{\link[=sagemaker_list_feature_groups]{list_feature_groups}} results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FeatureGroupSummaries = list(
+    list(
+      FeatureGroupName = "string",
+      FeatureGroupArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      FeatureGroupStatus = "Creating"|"Created"|"CreateFailed"|"Deleting"|"DeleteFailed",
+      OfflineStoreStatus = list(
+        Status = "Active"|"Blocked"|"Disabled",
+        BlockedReason = "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 List \code{FeatureGroup}s based on given filter and order.
 }

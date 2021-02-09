@@ -7,12 +7,19 @@
 mediaconvert_untag_resource(Arn, TagKeys)
 }
 \arguments{
-\item{Arn}{[required] The Amazon Resource Name (ARN) of the resource that you want to remove tags from. To get the ARN, send a GET request with the resource name.}
+\item{Arn}{[required] The Amazon Resource Name (ARN) of the resource that you want to remove
+tags from. To get the ARN, send a GET request with the resource name.}
 
 \item{TagKeys}{The keys of the tags that you want to remove from the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
-Remove tags from a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
+Remove tags from a MediaConvert queue, preset, or job template. For
+information about tagging, see the User Guide at
+https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

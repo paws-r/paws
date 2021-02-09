@@ -14,6 +14,14 @@ NULL
 #' @param ReportName The name of the report that you want to delete. The name must be unique,
 #' is case sensitive, and can't include spaces.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResponseMessage = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_report_definition(
@@ -61,6 +69,33 @@ costandusagereportservice_delete_report_definition <- function(ReportName = NULL
 #'
 #' @param MaxResults 
 #' @param NextToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReportDefinitions = list(
+#'     list(
+#'       ReportName = "string",
+#'       TimeUnit = "HOURLY"|"DAILY"|"MONTHLY",
+#'       Format = "textORcsv"|"Parquet",
+#'       Compression = "ZIP"|"GZIP"|"Parquet",
+#'       AdditionalSchemaElements = list(
+#'         "RESOURCES"
+#'       ),
+#'       S3Bucket = "string",
+#'       S3Prefix = "string",
+#'       S3Region = "af-south-1"|"ap-east-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-north-1"|"eu-south-1"|"me-south-1"|"sa-east-1"|"us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"cn-north-1"|"cn-northwest-1",
+#'       AdditionalArtifacts = list(
+#'         "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
+#'       ),
+#'       RefreshClosedReports = TRUE|FALSE,
+#'       ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -110,6 +145,12 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 #'
 #' @param ReportName &#91;required&#93; 
 #' @param ReportDefinition &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -165,6 +206,12 @@ costandusagereportservice_modify_report_definition <- function(ReportName, Repor
 #'
 #' @param ReportDefinition &#91;required&#93; Represents the output of the PutReportDefinition operation. The content
 #' consists of the detailed metadata and data file information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -19,6 +19,25 @@ the risk of running the operation twice. If the request includes a
 \code{CreatorRequestId} that matches an existing backup plan, that plan is
 returned. This parameter is optional.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupPlanId = "string",
+  BackupPlanArn = "string",
+  CreationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  VersionId = "string",
+  AdvancedBackupSettings = list(
+    list(
+      ResourceType = "string",
+      BackupOptions = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Creates a backup plan using a backup plan name and backup rules. A
 backup plan is a document that contains information that AWS Backup uses

@@ -22,6 +22,29 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by MaxRecords. >}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Users = list(
+    list(
+      UserId = "string",
+      UserName = "string",
+      Status = "string",
+      Engine = "string",
+      AccessString = "string",
+      UserGroupIds = list(
+        "string"
+      ),
+      Authentication = list(
+        Type = "password"|"no-password",
+        PasswordCount = 123
+      ),
+      ARN = "string"
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a list of users.
 }

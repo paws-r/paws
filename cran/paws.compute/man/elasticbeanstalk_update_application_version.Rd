@@ -23,6 +23,34 @@ If no application version is found with this label,
 
 \item{Description}{A new description for this version.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationVersion = list(
+    ApplicationVersionArn = "string",
+    ApplicationName = "string",
+    Description = "string",
+    VersionLabel = "string",
+    SourceBuildInformation = list(
+      SourceType = "Git"|"Zip",
+      SourceRepository = "CodeCommit"|"S3",
+      SourceLocation = "string"
+    ),
+    BuildArn = "string",
+    SourceBundle = list(
+      S3Bucket = "string",
+      S3Key = "string"
+    ),
+    DateCreated = as.POSIXct(
+      "2015-01-01"
+    ),
+    DateUpdated = as.POSIXct(
+      "2015-01-01"
+    ),
+    Status = "Processed"|"Unprocessed"|"Failed"|"Processing"|"Building"
+  )
+)
+}
+}
 \description{
 Updates the specified application version to have the specified
 properties.

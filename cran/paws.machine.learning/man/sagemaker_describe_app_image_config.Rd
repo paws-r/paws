@@ -9,6 +9,32 @@ sagemaker_describe_app_image_config(AppImageConfigName)
 \arguments{
 \item{AppImageConfigName}{[required] The name of the AppImageConfig to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppImageConfigArn = "string",
+  AppImageConfigName = "string",
+  CreationTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  LastModifiedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  KernelGatewayImageConfig = list(
+    KernelSpecs = list(
+      list(
+        Name = "string",
+        DisplayName = "string"
+      )
+    ),
+    FileSystemConfig = list(
+      MountPath = "string",
+      DefaultUid = 123,
+      DefaultGid = 123
+    )
+  )
+)
+}
+}
 \description{
 Describes an AppImageConfig.
 }

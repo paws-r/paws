@@ -14,6 +14,10 @@ iot1clickprojects_disassociate_device_from_placement(projectName,
 
 \item{deviceTemplateName}{[required] The device ID that should be removed from the placement.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes a physical device from a placement.
 }

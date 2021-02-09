@@ -30,6 +30,35 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Connections = list(
+    list(
+      ClientVpnEndpointId = "string",
+      Timestamp = "string",
+      ConnectionId = "string",
+      Username = "string",
+      ConnectionEstablishedTime = "string",
+      IngressBytes = "string",
+      EgressBytes = "string",
+      IngressPackets = "string",
+      EgressPackets = "string",
+      ClientIp = "string",
+      CommonName = "string",
+      Status = list(
+        Code = "active"|"failed-to-terminate"|"terminating"|"terminated",
+        Message = "string"
+      ),
+      ConnectionEndTime = "string",
+      PostureComplianceStatuses = list(
+        "string"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes active client connections and connections that have been
 terminated within the last 60 minutes for the specified Client VPN

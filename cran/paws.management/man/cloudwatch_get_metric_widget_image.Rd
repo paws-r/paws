@@ -52,6 +52,12 @@ most use cases, and all actions using an AWS SDK, you should use \code{png}.
 If you specify \code{image/png}, the HTTP response has a content-type set to
 \code{image/png}, and the body of the response is a PNG image.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  MetricWidgetImage = raw
+)
+}
+}
 \description{
 You can use the
 \code{\link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image}} API to

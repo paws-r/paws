@@ -13,6 +13,18 @@ chime_disassociate_phone_numbers_from_voice_connector(VoiceConnectorId,
 
 \item{E164PhoneNumbers}{[required] List of phone numbers, in E.164 format.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PhoneNumberErrors = list(
+    list(
+      PhoneNumberId = "string",
+      ErrorCode = "BadRequest"|"Conflict"|"Forbidden"|"NotFound"|"PreconditionFailed"|"ResourceLimitExceeded"|"ServiceFailure"|"AccessDenied"|"ServiceUnavailable"|"Throttled"|"Throttling"|"Unauthorized"|"Unprocessable"|"VoiceConnectorGroupAssociationsExist"|"PhoneNumberAssociationsExist",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Disassociates the specified phone numbers from the specified Amazon
 Chime Voice Connector.

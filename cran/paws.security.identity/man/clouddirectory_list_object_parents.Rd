@@ -27,6 +27,21 @@ object.}
 \item{IncludeAllLinksToEachParent}{When set to True, returns all ListObjectParentsResponse$ParentLinks.
 There could be multiple links between a parent-child pair.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Parents = list(
+    "string"
+  ),
+  NextToken = "string",
+  ParentLinks = list(
+    list(
+      ObjectIdentifier = "string",
+      LinkName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists parent objects that are associated with a given object in
 pagination fashion.

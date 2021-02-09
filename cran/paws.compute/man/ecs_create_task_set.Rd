@@ -96,7 +96,7 @@ have only one value.
 resources, remember that other services may have restrictions on
 allowed characters. Generally allowed characters are: letters,
 numbers, and spaces representable in UTF-8, and the following
-characters: + - = . \\_ : / @.
+characters: + - = . _ : / @.
 \item Tag keys and values are case-sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
 such as a prefix for either keys or values as it is reserved for AWS
@@ -104,6 +104,80 @@ use. You cannot edit or delete tag keys or values with this prefix.
 Tags with this prefix do not count against your tags per resource
 limit.
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  taskSet = list(
+    id = "string",
+    taskSetArn = "string",
+    serviceArn = "string",
+    clusterArn = "string",
+    startedBy = "string",
+    externalId = "string",
+    status = "string",
+    taskDefinition = "string",
+    computedDesiredCount = 123,
+    pendingCount = 123,
+    runningCount = 123,
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    updatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    launchType = "EC2"|"FARGATE",
+    capacityProviderStrategy = list(
+      list(
+        capacityProvider = "string",
+        weight = 123,
+        base = 123
+      )
+    ),
+    platformVersion = "string",
+    networkConfiguration = list(
+      awsvpcConfiguration = list(
+        subnets = list(
+          "string"
+        ),
+        securityGroups = list(
+          "string"
+        ),
+        assignPublicIp = "ENABLED"|"DISABLED"
+      )
+    ),
+    loadBalancers = list(
+      list(
+        targetGroupArn = "string",
+        loadBalancerName = "string",
+        containerName = "string",
+        containerPort = 123
+      )
+    ),
+    serviceRegistries = list(
+      list(
+        registryArn = "string",
+        port = 123,
+        containerName = "string",
+        containerPort = 123
+      )
+    ),
+    scale = list(
+      value = 123.0,
+      unit = "PERCENT"
+    ),
+    stabilityStatus = "STEADY_STATE"|"STABILIZING",
+    stabilityStatusAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    tags = list(
+      list(
+        key = "string",
+        value = "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Create a task set in the specified cluster and service. This is used

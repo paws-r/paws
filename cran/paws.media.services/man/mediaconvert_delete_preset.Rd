@@ -9,6 +9,10 @@ mediaconvert_delete_preset(Name)
 \arguments{
 \item{Name}{[required] The name of the preset to be deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Permanently delete a preset you have created.
 }

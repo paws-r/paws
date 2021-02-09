@@ -11,6 +11,10 @@ guardduty_enable_organization_admin_account(AdminAccountId)
 \item{AdminAccountId}{[required] The AWS Account ID for the organization account to be enabled as a
 GuardDuty delegated administrator.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Enables an AWS account within the organization as the GuardDuty
 delegated administrator.

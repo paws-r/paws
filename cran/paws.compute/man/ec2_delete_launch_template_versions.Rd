@@ -21,6 +21,29 @@ template ID or launch template name in the request.}
 
 \item{Versions}{[required] The version numbers of one or more launch template versions to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  SuccessfullyDeletedLaunchTemplateVersions = list(
+    list(
+      LaunchTemplateId = "string",
+      LaunchTemplateName = "string",
+      VersionNumber = 123
+    )
+  ),
+  UnsuccessfullyDeletedLaunchTemplateVersions = list(
+    list(
+      LaunchTemplateId = "string",
+      LaunchTemplateName = "string",
+      VersionNumber = 123,
+      ResponseError = list(
+        Code = "launchTemplateIdDoesNotExist"|"launchTemplateIdMalformed"|"launchTemplateNameDoesNotExist"|"launchTemplateNameMalformed"|"launchTemplateVersionDoesNotExist"|"unexpectedError",
+        Message = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deletes one or more versions of a launch template. You cannot delete the
 default version of a launch template; you must first assign a different

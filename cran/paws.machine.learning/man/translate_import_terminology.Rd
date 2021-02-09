@@ -22,6 +22,32 @@ name.}
 
 \item{EncryptionKey}{The encryption key for the custom terminology being imported.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TerminologyProperties = list(
+    Name = "string",
+    Description = "string",
+    Arn = "string",
+    SourceLanguageCode = "string",
+    TargetLanguageCodes = list(
+      "string"
+    ),
+    EncryptionKey = list(
+      Type = "KMS",
+      Id = "string"
+    ),
+    SizeBytes = 123,
+    TermCount = 123,
+    CreatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedAt = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Creates or updates a custom terminology, depending on whether or not one
 already exists for the given terminology name. Importing a terminology

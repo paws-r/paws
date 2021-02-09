@@ -45,6 +45,55 @@ DescribeOrderableDBInstanceOptions request. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords} .}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrderableDBInstanceOptions = list(
+    list(
+      Engine = "string",
+      EngineVersion = "string",
+      DBInstanceClass = "string",
+      LicenseModel = "string",
+      AvailabilityZoneGroup = "string",
+      AvailabilityZones = list(
+        list(
+          Name = "string"
+        )
+      ),
+      MultiAZCapable = TRUE|FALSE,
+      ReadReplicaCapable = TRUE|FALSE,
+      Vpc = TRUE|FALSE,
+      SupportsStorageEncryption = TRUE|FALSE,
+      StorageType = "string",
+      SupportsIops = TRUE|FALSE,
+      SupportsEnhancedMonitoring = TRUE|FALSE,
+      SupportsIAMDatabaseAuthentication = TRUE|FALSE,
+      SupportsPerformanceInsights = TRUE|FALSE,
+      MinStorageSize = 123,
+      MaxStorageSize = 123,
+      MinIopsPerDbInstance = 123,
+      MaxIopsPerDbInstance = 123,
+      MinIopsPerGib = 123.0,
+      MaxIopsPerGib = 123.0,
+      AvailableProcessorFeatures = list(
+        list(
+          Name = "string",
+          DefaultValue = "string",
+          AllowedValues = "string"
+        )
+      ),
+      SupportedEngineModes = list(
+        "string"
+      ),
+      SupportsStorageAutoscaling = TRUE|FALSE,
+      SupportsKerberosAuthentication = TRUE|FALSE,
+      OutpostCapable = TRUE|FALSE,
+      SupportsGlobalDatabases = TRUE|FALSE
+    )
+  ),
+  Marker = "string"
+)
+}
+}
 \description{
 Returns a list of orderable DB instance options for the specified
 engine.

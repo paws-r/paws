@@ -17,6 +17,17 @@ represented as seconds since the epoch, rounded down to the nearest
 hour. The default value for this parameter is 7 days from creation time.
 For more information, see .}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  apiKey = list(
+    id = "string",
+    description = "string",
+    expires = 123,
+    deletes = 123
+  )
+)
+}
+}
 \description{
 Creates a unique key that you can distribute to clients who are
 executing your API.

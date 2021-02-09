@@ -26,6 +26,12 @@ NULL
 #' and subscribers in your [`create_budget`][budgets_create_budget] call,
 #' AWS creates the notifications and subscribers for you.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_budget(
@@ -147,6 +153,16 @@ budgets_create_budget <- function(AccountId, Budget, NotificationsWithSubscriber
 #' @param ApprovalModel &#91;required&#93; This specifies if the action needs manual or automatic approval.
 #' @param Subscribers &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountId = "string",
+#'   BudgetName = "string",
+#'   ActionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_budget_action(
@@ -235,6 +251,12 @@ budgets_create_budget_action <- function(AccountId, BudgetName, NotificationType
 #' Each notification can have one SNS subscriber and up to 10 email
 #' subscribers.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_notification(
@@ -293,6 +315,12 @@ budgets_create_notification <- function(AccountId, BudgetName, Notification, Sub
 #' @param Notification &#91;required&#93; The notification that you want to create a subscriber for.
 #' @param Subscriber &#91;required&#93; The subscriber that you want to associate with a budget notification.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_subscriber(
@@ -347,6 +375,12 @@ budgets_create_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #' delete.
 #' @param BudgetName &#91;required&#93; The name of the budget that you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_budget(
@@ -386,6 +420,61 @@ budgets_delete_budget <- function(AccountId, BudgetName) {
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
 #' @param ActionId &#91;required&#93; A system-generated universally unique identifier (UUID) for the action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountId = "string",
+#'   BudgetName = "string",
+#'   Action = list(
+#'     ActionId = "string",
+#'     BudgetName = "string",
+#'     NotificationType = "ACTUAL"|"FORECASTED",
+#'     ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
+#'     ActionThreshold = list(
+#'       ActionThresholdValue = 123.0,
+#'       ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'     ),
+#'     Definition = list(
+#'       IamActionDefinition = list(
+#'         PolicyArn = "string",
+#'         Roles = list(
+#'           "string"
+#'         ),
+#'         Groups = list(
+#'           "string"
+#'         ),
+#'         Users = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ScpActionDefinition = list(
+#'         PolicyId = "string",
+#'         TargetIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       SsmActionDefinition = list(
+#'         ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
+#'         Region = "string",
+#'         InstanceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ExecutionRoleArn = "string",
+#'     ApprovalModel = "AUTOMATIC"|"MANUAL",
+#'     Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
+#'     Subscribers = list(
+#'       list(
+#'         SubscriptionType = "SNS"|"EMAIL",
+#'         Address = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -431,6 +520,12 @@ budgets_delete_budget_action <- function(AccountId, BudgetName, ActionId) {
 #' you want to delete.
 #' @param BudgetName &#91;required&#93; The name of the budget whose notification you want to delete.
 #' @param Notification &#91;required&#93; The notification that you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -484,6 +579,12 @@ budgets_delete_notification <- function(AccountId, BudgetName, Notification) {
 #' @param BudgetName &#91;required&#93; The name of the budget whose subscriber you want to delete.
 #' @param Notification &#91;required&#93; The notification whose subscriber you want to delete.
 #' @param Subscriber &#91;required&#93; The subscriber that you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -541,6 +642,67 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #' description of.
 #' @param BudgetName &#91;required&#93; The name of the budget that you want a description of.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Budget = list(
+#'     BudgetName = "string",
+#'     BudgetLimit = list(
+#'       Amount = "string",
+#'       Unit = "string"
+#'     ),
+#'     PlannedBudgetLimits = list(
+#'       list(
+#'         Amount = "string",
+#'         Unit = "string"
+#'       )
+#'     ),
+#'     CostFilters = list(
+#'       list(
+#'         "string"
+#'       )
+#'     ),
+#'     CostTypes = list(
+#'       IncludeTax = TRUE|FALSE,
+#'       IncludeSubscription = TRUE|FALSE,
+#'       UseBlended = TRUE|FALSE,
+#'       IncludeRefund = TRUE|FALSE,
+#'       IncludeCredit = TRUE|FALSE,
+#'       IncludeUpfront = TRUE|FALSE,
+#'       IncludeRecurring = TRUE|FALSE,
+#'       IncludeOtherSubscription = TRUE|FALSE,
+#'       IncludeSupport = TRUE|FALSE,
+#'       IncludeDiscount = TRUE|FALSE,
+#'       UseAmortized = TRUE|FALSE
+#'     ),
+#'     TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
+#'     TimePeriod = list(
+#'       Start = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       End = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     CalculatedSpend = list(
+#'       ActualSpend = list(
+#'         Amount = "string",
+#'         Unit = "string"
+#'       ),
+#'       ForecastedSpend = list(
+#'         Amount = "string",
+#'         Unit = "string"
+#'       )
+#'     ),
+#'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_budget(
@@ -580,6 +742,61 @@ budgets_describe_budget <- function(AccountId, BudgetName) {
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
 #' @param ActionId &#91;required&#93; A system-generated universally unique identifier (UUID) for the action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountId = "string",
+#'   BudgetName = "string",
+#'   Action = list(
+#'     ActionId = "string",
+#'     BudgetName = "string",
+#'     NotificationType = "ACTUAL"|"FORECASTED",
+#'     ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
+#'     ActionThreshold = list(
+#'       ActionThresholdValue = 123.0,
+#'       ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'     ),
+#'     Definition = list(
+#'       IamActionDefinition = list(
+#'         PolicyArn = "string",
+#'         Roles = list(
+#'           "string"
+#'         ),
+#'         Groups = list(
+#'           "string"
+#'         ),
+#'         Users = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ScpActionDefinition = list(
+#'         PolicyId = "string",
+#'         TargetIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       SsmActionDefinition = list(
+#'         ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
+#'         Region = "string",
+#'         InstanceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ExecutionRoleArn = "string",
+#'     ApprovalModel = "AUTOMATIC"|"MANUAL",
+#'     Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
+#'     Subscribers = list(
+#'       list(
+#'         SubscriptionType = "SNS"|"EMAIL",
+#'         Address = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -625,6 +842,72 @@ budgets_describe_budget_action <- function(AccountId, BudgetName, ActionId) {
 #' @param TimePeriod 
 #' @param MaxResults 
 #' @param NextToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ActionHistories = list(
+#'     list(
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
+#'       EventType = "SYSTEM"|"CREATE_ACTION"|"DELETE_ACTION"|"UPDATE_ACTION"|"EXECUTE_ACTION",
+#'       ActionHistoryDetails = list(
+#'         Message = "string",
+#'         Action = list(
+#'           ActionId = "string",
+#'           BudgetName = "string",
+#'           NotificationType = "ACTUAL"|"FORECASTED",
+#'           ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
+#'           ActionThreshold = list(
+#'             ActionThresholdValue = 123.0,
+#'             ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'           ),
+#'           Definition = list(
+#'             IamActionDefinition = list(
+#'               PolicyArn = "string",
+#'               Roles = list(
+#'                 "string"
+#'               ),
+#'               Groups = list(
+#'                 "string"
+#'               ),
+#'               Users = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             ScpActionDefinition = list(
+#'               PolicyId = "string",
+#'               TargetIds = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             SsmActionDefinition = list(
+#'               ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
+#'               Region = "string",
+#'               InstanceIds = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           ExecutionRoleArn = "string",
+#'           ApprovalModel = "AUTOMATIC"|"MANUAL",
+#'           Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
+#'           Subscribers = list(
+#'             list(
+#'               SubscriptionType = "SNS"|"EMAIL",
+#'               Address = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -678,6 +961,62 @@ budgets_describe_budget_action_histories <- function(AccountId, BudgetName, Acti
 #' @param MaxResults 
 #' @param NextToken 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Actions = list(
+#'     list(
+#'       ActionId = "string",
+#'       BudgetName = "string",
+#'       NotificationType = "ACTUAL"|"FORECASTED",
+#'       ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
+#'       ActionThreshold = list(
+#'         ActionThresholdValue = 123.0,
+#'         ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'       ),
+#'       Definition = list(
+#'         IamActionDefinition = list(
+#'           PolicyArn = "string",
+#'           Roles = list(
+#'             "string"
+#'           ),
+#'           Groups = list(
+#'             "string"
+#'           ),
+#'           Users = list(
+#'             "string"
+#'           )
+#'         ),
+#'         ScpActionDefinition = list(
+#'           PolicyId = "string",
+#'           TargetIds = list(
+#'             "string"
+#'           )
+#'         ),
+#'         SsmActionDefinition = list(
+#'           ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
+#'           Region = "string",
+#'           InstanceIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ExecutionRoleArn = "string",
+#'       ApprovalModel = "AUTOMATIC"|"MANUAL",
+#'       Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
+#'       Subscribers = list(
+#'         list(
+#'           SubscriptionType = "SNS"|"EMAIL",
+#'           Address = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_budget_actions_for_account(
@@ -720,6 +1059,62 @@ budgets_describe_budget_actions_for_account <- function(AccountId, MaxResults = 
 #' @param BudgetName &#91;required&#93; 
 #' @param MaxResults 
 #' @param NextToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Actions = list(
+#'     list(
+#'       ActionId = "string",
+#'       BudgetName = "string",
+#'       NotificationType = "ACTUAL"|"FORECASTED",
+#'       ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
+#'       ActionThreshold = list(
+#'         ActionThresholdValue = 123.0,
+#'         ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'       ),
+#'       Definition = list(
+#'         IamActionDefinition = list(
+#'           PolicyArn = "string",
+#'           Roles = list(
+#'             "string"
+#'           ),
+#'           Groups = list(
+#'             "string"
+#'           ),
+#'           Users = list(
+#'             "string"
+#'           )
+#'         ),
+#'         ScpActionDefinition = list(
+#'           PolicyId = "string",
+#'           TargetIds = list(
+#'             "string"
+#'           )
+#'         ),
+#'         SsmActionDefinition = list(
+#'           ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
+#'           Region = "string",
+#'           InstanceIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ExecutionRoleArn = "string",
+#'       ApprovalModel = "AUTOMATIC"|"MANUAL",
+#'       Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
+#'       Subscribers = list(
+#'         list(
+#'           SubscriptionType = "SNS"|"EMAIL",
+#'           Address = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -767,6 +1162,57 @@ budgets_describe_budget_actions_for_budget <- function(AccountId, BudgetName, Ma
 #' specified time period.
 #' @param MaxResults 
 #' @param NextToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BudgetPerformanceHistory = list(
+#'     BudgetName = "string",
+#'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
+#'     CostFilters = list(
+#'       list(
+#'         "string"
+#'       )
+#'     ),
+#'     CostTypes = list(
+#'       IncludeTax = TRUE|FALSE,
+#'       IncludeSubscription = TRUE|FALSE,
+#'       UseBlended = TRUE|FALSE,
+#'       IncludeRefund = TRUE|FALSE,
+#'       IncludeCredit = TRUE|FALSE,
+#'       IncludeUpfront = TRUE|FALSE,
+#'       IncludeRecurring = TRUE|FALSE,
+#'       IncludeOtherSubscription = TRUE|FALSE,
+#'       IncludeSupport = TRUE|FALSE,
+#'       IncludeDiscount = TRUE|FALSE,
+#'       UseAmortized = TRUE|FALSE
+#'     ),
+#'     TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
+#'     BudgetedAndActualAmountsList = list(
+#'       list(
+#'         BudgetedAmount = list(
+#'           Amount = "string",
+#'           Unit = "string"
+#'         ),
+#'         ActualAmount = list(
+#'           Amount = "string",
+#'           Unit = "string"
+#'         ),
+#'         TimePeriod = list(
+#'           Start = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           End = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -826,6 +1272,70 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #' @param NextToken The pagination token that you include in your request to indicate the
 #' next set of results that you want to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Budgets = list(
+#'     list(
+#'       BudgetName = "string",
+#'       BudgetLimit = list(
+#'         Amount = "string",
+#'         Unit = "string"
+#'       ),
+#'       PlannedBudgetLimits = list(
+#'         list(
+#'           Amount = "string",
+#'           Unit = "string"
+#'         )
+#'       ),
+#'       CostFilters = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
+#'       CostTypes = list(
+#'         IncludeTax = TRUE|FALSE,
+#'         IncludeSubscription = TRUE|FALSE,
+#'         UseBlended = TRUE|FALSE,
+#'         IncludeRefund = TRUE|FALSE,
+#'         IncludeCredit = TRUE|FALSE,
+#'         IncludeUpfront = TRUE|FALSE,
+#'         IncludeRecurring = TRUE|FALSE,
+#'         IncludeOtherSubscription = TRUE|FALSE,
+#'         IncludeSupport = TRUE|FALSE,
+#'         IncludeDiscount = TRUE|FALSE,
+#'         UseAmortized = TRUE|FALSE
+#'       ),
+#'       TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
+#'       TimePeriod = list(
+#'         Start = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         End = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       CalculatedSpend = list(
+#'         ActualSpend = list(
+#'           Amount = "string",
+#'           Unit = "string"
+#'         ),
+#'         ForecastedSpend = list(
+#'           Amount = "string",
+#'           Unit = "string"
+#'         )
+#'       ),
+#'       BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_budgets(
@@ -871,6 +1381,23 @@ budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = N
 #' response contains. The maximum is 100.
 #' @param NextToken The pagination token that you include in your request to indicate the
 #' next set of results that you want to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Notifications = list(
+#'     list(
+#'       NotificationType = "ACTUAL"|"FORECASTED",
+#'       ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
+#'       Threshold = 123.0,
+#'       ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
+#'       NotificationState = "OK"|"ALARM"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -919,6 +1446,20 @@ budgets_describe_notifications_for_budget <- function(AccountId, BudgetName, Max
 #' response contains. The maximum is 100.
 #' @param NextToken The pagination token that you include in your request to indicate the
 #' next set of results that you want to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Subscribers = list(
+#'     list(
+#'       SubscriptionType = "SNS"|"EMAIL",
+#'       Address = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -971,6 +1512,17 @@ budgets_describe_subscribers_for_notification <- function(AccountId, BudgetName,
 #' @param ActionId &#91;required&#93; A system-generated universally unique identifier (UUID) for the action.
 #' @param ExecutionType &#91;required&#93; The type of execution.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountId = "string",
+#'   BudgetName = "string",
+#'   ActionId = "string",
+#'   ExecutionType = "APPROVE_BUDGET_ACTION"|"RETRY_BUDGET_ACTION"|"REVERSE_BUDGET_ACTION"|"RESET_BUDGET_ACTION"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$execute_budget_action(
@@ -1022,6 +1574,12 @@ budgets_execute_budget_action <- function(AccountId, BudgetName, ActionId, Execu
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want to
 #' update.
 #' @param NewBudget &#91;required&#93; The budget that you want to update your budget to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1125,6 +1683,107 @@ budgets_update_budget <- function(AccountId, NewBudget) {
 #' @param ApprovalModel This specifies if the action needs manual or automatic approval.
 #' @param Subscribers 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountId = "string",
+#'   BudgetName = "string",
+#'   OldAction = list(
+#'     ActionId = "string",
+#'     BudgetName = "string",
+#'     NotificationType = "ACTUAL"|"FORECASTED",
+#'     ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
+#'     ActionThreshold = list(
+#'       ActionThresholdValue = 123.0,
+#'       ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'     ),
+#'     Definition = list(
+#'       IamActionDefinition = list(
+#'         PolicyArn = "string",
+#'         Roles = list(
+#'           "string"
+#'         ),
+#'         Groups = list(
+#'           "string"
+#'         ),
+#'         Users = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ScpActionDefinition = list(
+#'         PolicyId = "string",
+#'         TargetIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       SsmActionDefinition = list(
+#'         ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
+#'         Region = "string",
+#'         InstanceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ExecutionRoleArn = "string",
+#'     ApprovalModel = "AUTOMATIC"|"MANUAL",
+#'     Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
+#'     Subscribers = list(
+#'       list(
+#'         SubscriptionType = "SNS"|"EMAIL",
+#'         Address = "string"
+#'       )
+#'     )
+#'   ),
+#'   NewAction = list(
+#'     ActionId = "string",
+#'     BudgetName = "string",
+#'     NotificationType = "ACTUAL"|"FORECASTED",
+#'     ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
+#'     ActionThreshold = list(
+#'       ActionThresholdValue = 123.0,
+#'       ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
+#'     ),
+#'     Definition = list(
+#'       IamActionDefinition = list(
+#'         PolicyArn = "string",
+#'         Roles = list(
+#'           "string"
+#'         ),
+#'         Groups = list(
+#'           "string"
+#'         ),
+#'         Users = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ScpActionDefinition = list(
+#'         PolicyId = "string",
+#'         TargetIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       SsmActionDefinition = list(
+#'         ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
+#'         Region = "string",
+#'         InstanceIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ExecutionRoleArn = "string",
+#'     ApprovalModel = "AUTOMATIC"|"MANUAL",
+#'     Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
+#'     Subscribers = list(
+#'       list(
+#'         SubscriptionType = "SNS"|"EMAIL",
+#'         Address = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_budget_action(
@@ -1209,6 +1868,12 @@ budgets_update_budget_action <- function(AccountId, BudgetName, ActionId, Notifi
 #' @param OldNotification &#91;required&#93; The previous notification that is associated with a budget.
 #' @param NewNotification &#91;required&#93; The updated notification to be associated with a budget.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_notification(
@@ -1266,6 +1931,12 @@ budgets_update_notification <- function(AccountId, BudgetName, OldNotification, 
 #' @param Notification &#91;required&#93; The notification whose subscriber you want to update.
 #' @param OldSubscriber &#91;required&#93; The previous subscriber that is associated with a budget notification.
 #' @param NewSubscriber &#91;required&#93; The updated subscriber that is associated with a budget notification.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

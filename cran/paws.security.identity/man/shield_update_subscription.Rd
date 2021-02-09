@@ -15,6 +15,10 @@ request. If the \code{\link[=shield_update_subscription]{update_subscription}}
 request does not included a value for \code{AutoRenew}, the existing value
 for \code{AutoRenew} remains unchanged.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the details of an existing subscription. Only enter values for
 parameters you want to change. Empty parameters are not updated.

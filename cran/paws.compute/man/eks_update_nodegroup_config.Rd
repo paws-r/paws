@@ -22,6 +22,34 @@ update.}
 \item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  update = list(
+    id = "string",
+    status = "InProgress"|"Failed"|"Cancelled"|"Successful",
+    type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
+    params = list(
+      list(
+        type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
+        value = "string"
+      )
+    ),
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    errors = list(
+      list(
+        errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
+        errorMessage = "string",
+        resourceIds = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Updates an Amazon EKS managed node group configuration. Your node group
 continues to function during the update. The response output includes an

@@ -15,7 +15,7 @@ after you create the \code{WebACL}.}
 name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
 maximum length 128 and minimum length one. It can't contain whitespace
 or metric names reserved for AWS WAF, including "All" and
-"Default\\_Action." You can't change \code{MetricName} after you create the
+"Default_Action." You can't change \code{MetricName} after you create the
 \code{WebACL}.}
 
 \item{DefaultAction}{[required] The action that you want AWS WAF to take when a request doesn't match
@@ -26,6 +26,39 @@ with the \code{WebACL}.}
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 
 \item{Tags}{}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  WebACL = list(
+    WebACLId = "string",
+    Name = "string",
+    MetricName = "string",
+    DefaultAction = list(
+      Type = "BLOCK"|"ALLOW"|"COUNT"
+    ),
+    Rules = list(
+      list(
+        Priority = 123,
+        RuleId = "string",
+        Action = list(
+          Type = "BLOCK"|"ALLOW"|"COUNT"
+        ),
+        OverrideAction = list(
+          Type = "NONE"|"COUNT"
+        ),
+        Type = "REGULAR"|"RATE_BASED"|"GROUP",
+        ExcludedRules = list(
+          list(
+            RuleId = "string"
+          )
+        )
+      )
+    ),
+    WebACLArn = "string"
+  ),
+  ChangeToken = "string"
+)
+}
 }
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see

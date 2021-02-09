@@ -15,6 +15,55 @@ value in here to list more branches.}
 
 \item{maxResults}{The maximum number of records to list in a single response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  branches = list(
+    list(
+      branchArn = "string",
+      branchName = "string",
+      description = "string",
+      tags = list(
+        "string"
+      ),
+      stage = "PRODUCTION"|"BETA"|"DEVELOPMENT"|"EXPERIMENTAL"|"PULL_REQUEST",
+      displayName = "string",
+      enableNotification = TRUE|FALSE,
+      createTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      updateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      environmentVariables = list(
+        "string"
+      ),
+      enableAutoBuild = TRUE|FALSE,
+      customDomains = list(
+        "string"
+      ),
+      framework = "string",
+      activeJobId = "string",
+      totalNumberOfJobs = "string",
+      enableBasicAuth = TRUE|FALSE,
+      enablePerformanceMode = TRUE|FALSE,
+      thumbnailUrl = "string",
+      basicAuthCredentials = "string",
+      buildSpec = "string",
+      ttl = "string",
+      associatedResources = list(
+        "string"
+      ),
+      enablePullRequestPreview = TRUE|FALSE,
+      pullRequestEnvironmentName = "string",
+      destinationBranch = "string",
+      sourceBranch = "string",
+      backendEnvironmentArn = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the branches of an Amplify app.
 }

@@ -9,6 +9,39 @@ opsworks_describe_time_based_auto_scaling(InstanceIds)
 \arguments{
 \item{InstanceIds}{[required] An array of instance IDs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TimeBasedAutoScalingConfigurations = list(
+    list(
+      InstanceId = "string",
+      AutoScalingSchedule = list(
+        Monday = list(
+          "string"
+        ),
+        Tuesday = list(
+          "string"
+        ),
+        Wednesday = list(
+          "string"
+        ),
+        Thursday = list(
+          "string"
+        ),
+        Friday = list(
+          "string"
+        ),
+        Saturday = list(
+          "string"
+        ),
+        Sunday = list(
+          "string"
+        )
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describes time-based auto scaling configurations for specified
 instances.

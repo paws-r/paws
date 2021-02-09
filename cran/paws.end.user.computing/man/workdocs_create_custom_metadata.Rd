@@ -19,6 +19,10 @@ document version.}
 
 \item{CustomMetadata}{[required] Custom metadata in the form of name-value pairs.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds one or more custom properties to the specified resource (a folder,
 document, or version).

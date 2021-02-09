@@ -17,6 +17,10 @@ applicationinsights_update_component(ResourceGroupName, ComponentName,
 
 \item{ResourceList}{The list of resource ARNs that belong to the component.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the custom component name and/or the list of resources that make
 up the component.

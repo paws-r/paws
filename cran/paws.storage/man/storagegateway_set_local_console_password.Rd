@@ -12,6 +12,12 @@ storagegateway_set_local_console_password(GatewayARN,
 
 \item{LocalConsolePassword}{[required] The password you want to set for your VM local console.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GatewayARN = "string"
+)
+}
+}
 \description{
 Sets the password for your VM local console. When you log in to the
 local console for the first time, you log in to the VM with the default

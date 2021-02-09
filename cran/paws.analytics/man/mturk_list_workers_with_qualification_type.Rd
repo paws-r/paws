@@ -17,6 +17,28 @@ mturk_list_workers_with_qualification_type(QualificationTypeId, Status,
 
 \item{MaxResults}{Limit the number of results returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  NumResults = 123,
+  Qualifications = list(
+    list(
+      QualificationTypeId = "string",
+      WorkerId = "string",
+      GrantTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      IntegerValue = 123,
+      LocaleValue = list(
+        Country = "string",
+        Subdivision = "string"
+      ),
+      Status = "Granted"|"Revoked"
+    )
+  )
+)
+}
+}
 \description{
 The
 \code{\link[=mturk_list_workers_with_qualification_type]{list_workers_with_qualification_type}}

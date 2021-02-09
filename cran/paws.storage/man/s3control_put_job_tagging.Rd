@@ -13,6 +13,10 @@ s3control_put_job_tagging(AccountId, JobId, Tags)
 
 \item{Tags}{[required] The set of tags to associate with the S3 Batch Operations job.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Sets the supplied tag-set on an S3 Batch Operations job.
 
@@ -23,7 +27,7 @@ either replace the existing tag set entirely, or make changes within the
 existing tag set by retrieving the existing tag set using
 \code{\link[=s3control_get_job_tagging]{get_job_tagging}}, modify that tag set, and
 use this action to replace the tag set with the one you modified. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags}
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 \itemize{
 \item If you send this request with an empty tag set, Amazon S3 deletes

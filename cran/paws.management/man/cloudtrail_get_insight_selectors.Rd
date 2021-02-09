@@ -12,7 +12,7 @@ cloudtrail_get_insight_selectors(TrailName)
 name, the string must meet the following requirements:
 \itemize{
 \item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-underscores (\\_), or dashes (-)
+underscores (_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number
 \item Be between 3 and 128 characters
 \item Have no adjacent periods, underscores or dashes. Names like
@@ -23,6 +23,17 @@ underscores (\\_), or dashes (-)
 If you specify a trail ARN, it must be in the format:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  TrailARN = "string",
+  InsightSelectors = list(
+    list(
+      InsightType = "ApiCallRateInsight"
+    )
+  )
+)
+}
 }
 \description{
 Describes the settings for the Insights event selectors that you

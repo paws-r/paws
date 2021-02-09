@@ -17,6 +17,12 @@ NULL
 #' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
 #' @param evidenceFolderId &#91;required&#93; The identifier for the folder in which evidence is stored.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_assessment_report_evidence_folder(
@@ -59,6 +65,23 @@ auditmanager_associate_assessment_report_evidence_folder <- function(assessmentI
 #' @param assessmentId &#91;required&#93; The unique identifier for the specified assessment.
 #' @param evidenceFolderId &#91;required&#93; The identifier for the folder in which the evidence is stored.
 #' @param evidenceIds &#91;required&#93; The list of evidence identifiers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   evidenceIds = list(
+#'     "string"
+#'   ),
+#'   errors = list(
+#'     list(
+#'       evidenceId = "string",
+#'       errorCode = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -104,6 +127,44 @@ auditmanager_batch_associate_assessment_report_evidence <- function(assessmentId
 #'
 #' @param createDelegationRequests &#91;required&#93; The API request to batch create delegations in AWS Audit Manager.
 #' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   delegations = list(
+#'     list(
+#'       id = "string",
+#'       assessmentName = "string",
+#'       assessmentId = "string",
+#'       status = "IN_PROGRESS"|"UNDER_REVIEW"|"COMPLETE",
+#'       roleArn = "string",
+#'       roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       controlSetId = "string",
+#'       comment = "string",
+#'       createdBy = "string"
+#'     )
+#'   ),
+#'   errors = list(
+#'     list(
+#'       createDelegationRequest = list(
+#'         comment = "string",
+#'         controlSetId = "string",
+#'         roleArn = "string",
+#'         roleType = "PROCESS_OWNER"|"RESOURCE_OWNER"
+#'       ),
+#'       errorCode = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -152,6 +213,20 @@ auditmanager_batch_create_delegation_by_assessment <- function(createDelegationR
 #' @param delegationIds &#91;required&#93; The identifiers for the specified delegations.
 #' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   errors = list(
+#'     list(
+#'       delegationId = "string",
+#'       errorCode = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_delete_delegation_by_assessment(
@@ -196,6 +271,23 @@ auditmanager_batch_delete_delegation_by_assessment <- function(delegationIds, as
 #' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
 #' @param evidenceFolderId &#91;required&#93; The identifier for the folder in which evidence is stored.
 #' @param evidenceIds &#91;required&#93; The list of evidence identifiers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   evidenceIds = list(
+#'     "string"
+#'   ),
+#'   errors = list(
+#'     list(
+#'       evidenceId = "string",
+#'       errorCode = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -243,6 +335,22 @@ auditmanager_batch_disassociate_assessment_report_evidence <- function(assessmen
 #' @param controlSetId &#91;required&#93; The identifier for the specified control set.
 #' @param controlId &#91;required&#93; The identifier for the specified control.
 #' @param manualEvidence &#91;required&#93; The list of manual evidence objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   errors = list(
+#'     list(
+#'       manualEvidence = list(
+#'         s3ResourcePath = "string"
+#'       ),
+#'       errorCode = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -295,6 +403,147 @@ auditmanager_batch_import_evidence_to_assessment_control <- function(assessmentI
 #' @param roles &#91;required&#93; The list of roles for the specified assessment.
 #' @param frameworkId &#91;required&#93; The identifier for the specified framework.
 #' @param tags The tags associated with the assessment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assessment = list(
+#'     arn = "string",
+#'     awsAccount = list(
+#'       id = "string",
+#'       emailAddress = "string",
+#'       name = "string"
+#'     ),
+#'     metadata = list(
+#'       name = "string",
+#'       id = "string",
+#'       description = "string",
+#'       complianceType = "string",
+#'       status = "ACTIVE"|"INACTIVE",
+#'       assessmentReportsDestination = list(
+#'         destinationType = "S3",
+#'         destination = "string"
+#'       ),
+#'       scope = list(
+#'         awsAccounts = list(
+#'           list(
+#'             id = "string",
+#'             emailAddress = "string",
+#'             name = "string"
+#'           )
+#'         ),
+#'         awsServices = list(
+#'           list(
+#'             serviceName = "string"
+#'           )
+#'         )
+#'       ),
+#'       roles = list(
+#'         list(
+#'           roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'           roleArn = "string"
+#'         )
+#'       ),
+#'       delegations = list(
+#'         list(
+#'           id = "string",
+#'           assessmentName = "string",
+#'           assessmentId = "string",
+#'           status = "IN_PROGRESS"|"UNDER_REVIEW"|"COMPLETE",
+#'           roleArn = "string",
+#'           roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'           creationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lastUpdated = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           controlSetId = "string",
+#'           comment = "string",
+#'           createdBy = "string"
+#'         )
+#'       ),
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     framework = list(
+#'       id = "string",
+#'       arn = "string",
+#'       metadata = list(
+#'         name = "string",
+#'         description = "string",
+#'         logo = "string",
+#'         complianceType = "string"
+#'       ),
+#'       controlSets = list(
+#'         list(
+#'           id = "string",
+#'           description = "string",
+#'           status = "ACTIVE"|"UNDER_REVIEW"|"REVIEWED",
+#'           roles = list(
+#'             list(
+#'               roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'               roleArn = "string"
+#'             )
+#'           ),
+#'           controls = list(
+#'             list(
+#'               id = "string",
+#'               name = "string",
+#'               description = "string",
+#'               status = "UNDER_REVIEW"|"REVIEWED"|"INACTIVE",
+#'               response = "MANUAL"|"AUTOMATE"|"DEFER"|"IGNORE",
+#'               comments = list(
+#'                 list(
+#'                   authorName = "string",
+#'                   commentBody = "string",
+#'                   postedDate = as.POSIXct(
+#'                     "2015-01-01"
+#'                   )
+#'                 )
+#'               ),
+#'               evidenceSources = list(
+#'                 "string"
+#'               ),
+#'               evidenceCount = 123,
+#'               assessmentReportEvidenceCount = 123
+#'             )
+#'           ),
+#'           delegations = list(
+#'             list(
+#'               id = "string",
+#'               assessmentName = "string",
+#'               assessmentId = "string",
+#'               status = "IN_PROGRESS"|"UNDER_REVIEW"|"COMPLETE",
+#'               roleArn = "string",
+#'               roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'               creationTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               lastUpdated = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               controlSetId = "string",
+#'               comment = "string",
+#'               createdBy = "string"
+#'             )
+#'           ),
+#'           systemEvidenceCount = 123,
+#'           manualEvidenceCount = 123
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -367,6 +616,76 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #' or HIPAA.
 #' @param controlSets &#91;required&#93; The control sets to be associated with the framework.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   framework = list(
+#'     arn = "string",
+#'     id = "string",
+#'     name = "string",
+#'     type = "Standard"|"Custom",
+#'     complianceType = "string",
+#'     description = "string",
+#'     logo = "string",
+#'     controlSources = "string",
+#'     controlSets = list(
+#'       list(
+#'         id = "string",
+#'         name = "string",
+#'         controls = list(
+#'           list(
+#'             arn = "string",
+#'             id = "string",
+#'             type = "Standard"|"Custom",
+#'             name = "string",
+#'             description = "string",
+#'             testingInformation = "string",
+#'             actionPlanTitle = "string",
+#'             actionPlanInstructions = "string",
+#'             controlSources = "string",
+#'             controlMappingSources = list(
+#'               list(
+#'                 sourceId = "string",
+#'                 sourceName = "string",
+#'                 sourceDescription = "string",
+#'                 sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
+#'                 sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
+#'                 sourceKeyword = list(
+#'                   keywordInputType = "SELECT_FROM_LIST",
+#'                   keywordValue = "string"
+#'                 ),
+#'                 sourceFrequency = "DAILY"|"WEEKLY"|"MONTHLY",
+#'                 troubleshootingText = "string"
+#'               )
+#'             ),
+#'             createdAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             lastUpdatedAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             createdBy = "string",
+#'             lastUpdatedBy = "string",
+#'             tags = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdBy = "string",
+#'     lastUpdatedBy = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_assessment_framework(
@@ -418,6 +737,26 @@ auditmanager_create_assessment_framework <- function(name, description = NULL, c
 #' @param description The description of the assessment report.
 #' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assessmentReport = list(
+#'     id = "string",
+#'     name = "string",
+#'     description = "string",
+#'     awsAccountId = "string",
+#'     assessmentId = "string",
+#'     assessmentName = "string",
+#'     author = "string",
+#'     status = "COMPLETE"|"IN_PROGRESS"|"FAILED",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_assessment_report(
@@ -464,6 +803,50 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
 #' @param controlMappingSources &#91;required&#93; The data source that determines from where AWS Audit Manager collects
 #' evidence for the control.
 #' @param tags The tags associated with the control.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   control = list(
+#'     arn = "string",
+#'     id = "string",
+#'     type = "Standard"|"Custom",
+#'     name = "string",
+#'     description = "string",
+#'     testingInformation = "string",
+#'     actionPlanTitle = "string",
+#'     actionPlanInstructions = "string",
+#'     controlSources = "string",
+#'     controlMappingSources = list(
+#'       list(
+#'         sourceId = "string",
+#'         sourceName = "string",
+#'         sourceDescription = "string",
+#'         sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
+#'         sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
+#'         sourceKeyword = list(
+#'           keywordInputType = "SELECT_FROM_LIST",
+#'           keywordValue = "string"
+#'         ),
+#'         sourceFrequency = "DAILY"|"WEEKLY"|"MONTHLY",
+#'         troubleshootingText = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdBy = "string",
+#'     lastUpdatedBy = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -523,6 +906,12 @@ auditmanager_create_control <- function(name, description = NULL, testingInforma
 #'
 #' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_assessment(
@@ -559,6 +948,12 @@ auditmanager_delete_assessment <- function(assessmentId) {
 #' auditmanager_delete_assessment_framework(frameworkId)
 #'
 #' @param frameworkId &#91;required&#93; The identifier for the specified framework.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -598,6 +993,12 @@ auditmanager_delete_assessment_framework <- function(frameworkId) {
 #' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
 #' @param assessmentReportId &#91;required&#93; The unique identifier for the assessment report.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_assessment_report(
@@ -636,6 +1037,12 @@ auditmanager_delete_assessment_report <- function(assessmentId, assessmentReport
 #'
 #' @param controlId &#91;required&#93; The identifier for the specified control.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_control(
@@ -670,6 +1077,14 @@ auditmanager_delete_control <- function(controlId) {
 #'
 #' @usage
 #' auditmanager_deregister_account()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "ACTIVE"|"INACTIVE"|"PENDING_ACTIVATION"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -707,6 +1122,12 @@ auditmanager_deregister_account <- function() {
 #' auditmanager_deregister_organization_admin_account(adminAccountId)
 #'
 #' @param adminAccountId The identifier for the specified administrator account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -749,6 +1170,12 @@ auditmanager_deregister_organization_admin_account <- function(adminAccountId = 
 #' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
 #' @param evidenceFolderId &#91;required&#93; The identifier for the folder in which evidence is stored.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_assessment_report_evidence_folder(
@@ -785,6 +1212,14 @@ auditmanager_disassociate_assessment_report_evidence_folder <- function(assessme
 #' @usage
 #' auditmanager_get_account_status()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "ACTIVE"|"INACTIVE"|"PENDING_ACTIVATION"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_account_status()
@@ -819,6 +1254,147 @@ auditmanager_get_account_status <- function() {
 #' auditmanager_get_assessment(assessmentId)
 #'
 #' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assessment = list(
+#'     arn = "string",
+#'     awsAccount = list(
+#'       id = "string",
+#'       emailAddress = "string",
+#'       name = "string"
+#'     ),
+#'     metadata = list(
+#'       name = "string",
+#'       id = "string",
+#'       description = "string",
+#'       complianceType = "string",
+#'       status = "ACTIVE"|"INACTIVE",
+#'       assessmentReportsDestination = list(
+#'         destinationType = "S3",
+#'         destination = "string"
+#'       ),
+#'       scope = list(
+#'         awsAccounts = list(
+#'           list(
+#'             id = "string",
+#'             emailAddress = "string",
+#'             name = "string"
+#'           )
+#'         ),
+#'         awsServices = list(
+#'           list(
+#'             serviceName = "string"
+#'           )
+#'         )
+#'       ),
+#'       roles = list(
+#'         list(
+#'           roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'           roleArn = "string"
+#'         )
+#'       ),
+#'       delegations = list(
+#'         list(
+#'           id = "string",
+#'           assessmentName = "string",
+#'           assessmentId = "string",
+#'           status = "IN_PROGRESS"|"UNDER_REVIEW"|"COMPLETE",
+#'           roleArn = "string",
+#'           roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'           creationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lastUpdated = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           controlSetId = "string",
+#'           comment = "string",
+#'           createdBy = "string"
+#'         )
+#'       ),
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     framework = list(
+#'       id = "string",
+#'       arn = "string",
+#'       metadata = list(
+#'         name = "string",
+#'         description = "string",
+#'         logo = "string",
+#'         complianceType = "string"
+#'       ),
+#'       controlSets = list(
+#'         list(
+#'           id = "string",
+#'           description = "string",
+#'           status = "ACTIVE"|"UNDER_REVIEW"|"REVIEWED",
+#'           roles = list(
+#'             list(
+#'               roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'               roleArn = "string"
+#'             )
+#'           ),
+#'           controls = list(
+#'             list(
+#'               id = "string",
+#'               name = "string",
+#'               description = "string",
+#'               status = "UNDER_REVIEW"|"REVIEWED"|"INACTIVE",
+#'               response = "MANUAL"|"AUTOMATE"|"DEFER"|"IGNORE",
+#'               comments = list(
+#'                 list(
+#'                   authorName = "string",
+#'                   commentBody = "string",
+#'                   postedDate = as.POSIXct(
+#'                     "2015-01-01"
+#'                   )
+#'                 )
+#'               ),
+#'               evidenceSources = list(
+#'                 "string"
+#'               ),
+#'               evidenceCount = 123,
+#'               assessmentReportEvidenceCount = 123
+#'             )
+#'           ),
+#'           delegations = list(
+#'             list(
+#'               id = "string",
+#'               assessmentName = "string",
+#'               assessmentId = "string",
+#'               status = "IN_PROGRESS"|"UNDER_REVIEW"|"COMPLETE",
+#'               roleArn = "string",
+#'               roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'               creationTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               lastUpdated = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               controlSetId = "string",
+#'               comment = "string",
+#'               createdBy = "string"
+#'             )
+#'           ),
+#'           systemEvidenceCount = 123,
+#'           manualEvidenceCount = 123
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -857,6 +1433,76 @@ auditmanager_get_assessment <- function(assessmentId) {
 #'
 #' @param frameworkId &#91;required&#93; The identifier for the specified framework.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   framework = list(
+#'     arn = "string",
+#'     id = "string",
+#'     name = "string",
+#'     type = "Standard"|"Custom",
+#'     complianceType = "string",
+#'     description = "string",
+#'     logo = "string",
+#'     controlSources = "string",
+#'     controlSets = list(
+#'       list(
+#'         id = "string",
+#'         name = "string",
+#'         controls = list(
+#'           list(
+#'             arn = "string",
+#'             id = "string",
+#'             type = "Standard"|"Custom",
+#'             name = "string",
+#'             description = "string",
+#'             testingInformation = "string",
+#'             actionPlanTitle = "string",
+#'             actionPlanInstructions = "string",
+#'             controlSources = "string",
+#'             controlMappingSources = list(
+#'               list(
+#'                 sourceId = "string",
+#'                 sourceName = "string",
+#'                 sourceDescription = "string",
+#'                 sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
+#'                 sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
+#'                 sourceKeyword = list(
+#'                   keywordInputType = "SELECT_FROM_LIST",
+#'                   keywordValue = "string"
+#'                 ),
+#'                 sourceFrequency = "DAILY"|"WEEKLY"|"MONTHLY",
+#'                 troubleshootingText = "string"
+#'               )
+#'             ),
+#'             createdAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             lastUpdatedAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             createdBy = "string",
+#'             lastUpdatedBy = "string",
+#'             tags = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdBy = "string",
+#'     lastUpdatedBy = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_assessment_framework(
@@ -894,6 +1540,17 @@ auditmanager_get_assessment_framework <- function(frameworkId) {
 #'
 #' @param assessmentReportId &#91;required&#93; The identifier for the assessment report.
 #' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   preSignedUrl = list(
+#'     hyperlinkName = "string",
+#'     link = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -939,6 +1596,25 @@ auditmanager_get_assessment_report_url <- function(assessmentReportId, assessmen
 #' @param maxResults Represents the maximum number of results per page, or per API request
 #' call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   changeLogs = list(
+#'     list(
+#'       objectType = "ASSESSMENT"|"CONTROL_SET"|"CONTROL"|"DELEGATION"|"ASSESSMENT_REPORT",
+#'       objectName = "string",
+#'       action = "CREATE"|"UPDATE_METADATA"|"ACTIVE"|"INACTIVE"|"DELETE"|"UNDER_REVIEW"|"REVIEWED"|"IMPORT_EVIDENCE",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdBy = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_change_logs(
@@ -980,6 +1656,50 @@ auditmanager_get_change_logs <- function(assessmentId, controlSetId = NULL, cont
 #'
 #' @param controlId &#91;required&#93; The identifier for the specified control.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   control = list(
+#'     arn = "string",
+#'     id = "string",
+#'     type = "Standard"|"Custom",
+#'     name = "string",
+#'     description = "string",
+#'     testingInformation = "string",
+#'     actionPlanTitle = "string",
+#'     actionPlanInstructions = "string",
+#'     controlSources = "string",
+#'     controlMappingSources = list(
+#'       list(
+#'         sourceId = "string",
+#'         sourceName = "string",
+#'         sourceDescription = "string",
+#'         sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
+#'         sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
+#'         sourceKeyword = list(
+#'           keywordInputType = "SELECT_FROM_LIST",
+#'           keywordValue = "string"
+#'         ),
+#'         sourceFrequency = "DAILY"|"WEEKLY"|"MONTHLY",
+#'         troubleshootingText = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdBy = "string",
+#'     lastUpdatedBy = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_control(
@@ -1018,6 +1738,27 @@ auditmanager_get_control <- function(controlId) {
 #' @param nextToken The pagination token used to fetch the next set of results.
 #' @param maxResults Represents the maximum number of results per page, or per API request
 #' call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   delegations = list(
+#'     list(
+#'       id = "string",
+#'       assessmentName = "string",
+#'       assessmentId = "string",
+#'       status = "IN_PROGRESS"|"UNDER_REVIEW"|"COMPLETE",
+#'       roleArn = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       controlSetName = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1060,6 +1801,39 @@ auditmanager_get_delegations <- function(nextToken = NULL, maxResults = NULL) {
 #' @param controlSetId &#91;required&#93; The identifier for the specified control set.
 #' @param evidenceFolderId &#91;required&#93; The identifier for the folder in which the evidence is stored.
 #' @param evidenceId &#91;required&#93; The identifier for the evidence.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   evidence = list(
+#'     dataSource = "string",
+#'     evidenceAwsAccountId = "string",
+#'     time = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     eventSource = "string",
+#'     eventName = "string",
+#'     evidenceByType = "string",
+#'     resourcesIncluded = list(
+#'       list(
+#'         arn = "string",
+#'         value = "string"
+#'       )
+#'     ),
+#'     attributes = list(
+#'       "string"
+#'     ),
+#'     iamId = "string",
+#'     complianceCheck = "string",
+#'     awsOrganization = "string",
+#'     awsAccountId = "string",
+#'     evidenceFolderId = "string",
+#'     id = "string",
+#'     assessmentReportSelection = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1109,6 +1883,42 @@ auditmanager_get_evidence <- function(assessmentId, controlSetId, evidenceFolder
 #' @param maxResults Represents the maximum number of results per page, or per API request
 #' call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   evidence = list(
+#'     list(
+#'       dataSource = "string",
+#'       evidenceAwsAccountId = "string",
+#'       time = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       eventSource = "string",
+#'       eventName = "string",
+#'       evidenceByType = "string",
+#'       resourcesIncluded = list(
+#'         list(
+#'           arn = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       attributes = list(
+#'         "string"
+#'       ),
+#'       iamId = "string",
+#'       complianceCheck = "string",
+#'       awsOrganization = "string",
+#'       awsAccountId = "string",
+#'       evidenceFolderId = "string",
+#'       id = "string",
+#'       assessmentReportSelection = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_evidence_by_evidence_folder(
@@ -1155,6 +1965,35 @@ auditmanager_get_evidence_by_evidence_folder <- function(assessmentId, controlSe
 #' @param controlSetId &#91;required&#93; The identifier for the specified control set.
 #' @param evidenceFolderId &#91;required&#93; The identifier for the folder in which the evidence is stored.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   evidenceFolder = list(
+#'     name = "string",
+#'     date = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     assessmentId = "string",
+#'     controlSetId = "string",
+#'     controlId = "string",
+#'     id = "string",
+#'     dataSource = "string",
+#'     author = "string",
+#'     totalEvidence = 123,
+#'     assessmentReportSelectionCount = 123,
+#'     controlName = "string",
+#'     evidenceResourcesIncludedCount = 123,
+#'     evidenceByTypeConfigurationDataCount = 123,
+#'     evidenceByTypeManualCount = 123,
+#'     evidenceByTypeComplianceCheckCount = 123,
+#'     evidenceByTypeComplianceCheckIssuesCount = 123,
+#'     evidenceByTypeUserActivityCount = 123,
+#'     evidenceAwsServiceSourceCount = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_evidence_folder(
@@ -1199,6 +2038,38 @@ auditmanager_get_evidence_folder <- function(assessmentId, controlSetId, evidenc
 #' @param nextToken The pagination token used to fetch the next set of results.
 #' @param maxResults Represents the maximum number of results per page, or per API request
 #' call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   evidenceFolders = list(
+#'     list(
+#'       name = "string",
+#'       date = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       assessmentId = "string",
+#'       controlSetId = "string",
+#'       controlId = "string",
+#'       id = "string",
+#'       dataSource = "string",
+#'       author = "string",
+#'       totalEvidence = 123,
+#'       assessmentReportSelectionCount = 123,
+#'       controlName = "string",
+#'       evidenceResourcesIncludedCount = 123,
+#'       evidenceByTypeConfigurationDataCount = 123,
+#'       evidenceByTypeManualCount = 123,
+#'       evidenceByTypeComplianceCheckCount = 123,
+#'       evidenceByTypeComplianceCheckIssuesCount = 123,
+#'       evidenceByTypeUserActivityCount = 123,
+#'       evidenceAwsServiceSourceCount = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1247,6 +2118,38 @@ auditmanager_get_evidence_folders_by_assessment <- function(assessmentId, nextTo
 #' @param maxResults Represents the maximum number of results per page, or per API request
 #' call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   evidenceFolders = list(
+#'     list(
+#'       name = "string",
+#'       date = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       assessmentId = "string",
+#'       controlSetId = "string",
+#'       controlId = "string",
+#'       id = "string",
+#'       dataSource = "string",
+#'       author = "string",
+#'       totalEvidence = 123,
+#'       assessmentReportSelectionCount = 123,
+#'       controlName = "string",
+#'       evidenceResourcesIncludedCount = 123,
+#'       evidenceByTypeConfigurationDataCount = 123,
+#'       evidenceByTypeManualCount = 123,
+#'       evidenceByTypeComplianceCheckCount = 123,
+#'       evidenceByTypeComplianceCheckIssuesCount = 123,
+#'       evidenceByTypeUserActivityCount = 123,
+#'       evidenceAwsServiceSourceCount = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_evidence_folders_by_assessment_control(
@@ -1288,6 +2191,15 @@ auditmanager_get_evidence_folders_by_assessment_control <- function(assessmentId
 #' @usage
 #' auditmanager_get_organization_admin_account()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   adminAccountId = "string",
+#'   organizationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_organization_admin_account()
@@ -1321,6 +2233,21 @@ auditmanager_get_organization_admin_account <- function() {
 #'
 #' @usage
 #' auditmanager_get_services_in_scope()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   serviceMetadata = list(
+#'     list(
+#'       name = "string",
+#'       displayName = "string",
+#'       description = "string",
+#'       category = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1356,6 +2283,28 @@ auditmanager_get_services_in_scope <- function() {
 #' auditmanager_get_settings(attribute)
 #'
 #' @param attribute &#91;required&#93; The list of `SettingAttribute` enum values.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   settings = list(
+#'     isAwsOrgEnabled = TRUE|FALSE,
+#'     snsTopic = "string",
+#'     defaultAssessmentReportsDestination = list(
+#'       destinationType = "S3",
+#'       destination = "string"
+#'     ),
+#'     defaultProcessOwners = list(
+#'       list(
+#'         roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'         roleArn = "string"
+#'       )
+#'     ),
+#'     kmsKey = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1400,6 +2349,32 @@ auditmanager_get_settings <- function(attribute) {
 #' @param maxResults Represents the maximum number of results per page, or per API request
 #' call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   frameworkMetadataList = list(
+#'     list(
+#'       id = "string",
+#'       type = "Standard"|"Custom",
+#'       name = "string",
+#'       description = "string",
+#'       logo = "string",
+#'       complianceType = "string",
+#'       controlsCount = 123,
+#'       controlSetsCount = 123,
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_assessment_frameworks(
@@ -1441,6 +2416,28 @@ auditmanager_list_assessment_frameworks <- function(frameworkType, nextToken = N
 #' @param maxResults Represents the maximum number of results per page, or per API request
 #' call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assessmentReports = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       description = "string",
+#'       assessmentId = "string",
+#'       assessmentName = "string",
+#'       author = "string",
+#'       status = "COMPLETE"|"IN_PROGRESS"|"FAILED",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_assessment_reports(
@@ -1480,6 +2477,53 @@ auditmanager_list_assessment_reports <- function(nextToken = NULL, maxResults = 
 #' @param nextToken The pagination token used to fetch the next set of results.
 #' @param maxResults Represents the maximum number of results per page, or per API request
 #' call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assessmentMetadata = list(
+#'     list(
+#'       name = "string",
+#'       id = "string",
+#'       complianceType = "string",
+#'       status = "ACTIVE"|"INACTIVE",
+#'       roles = list(
+#'         list(
+#'           roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'           roleArn = "string"
+#'         )
+#'       ),
+#'       delegations = list(
+#'         list(
+#'           id = "string",
+#'           assessmentName = "string",
+#'           assessmentId = "string",
+#'           status = "IN_PROGRESS"|"UNDER_REVIEW"|"COMPLETE",
+#'           roleArn = "string",
+#'           roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'           creationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lastUpdated = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           controlSetId = "string",
+#'           comment = "string",
+#'           createdBy = "string"
+#'         )
+#'       ),
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1521,6 +2565,28 @@ auditmanager_list_assessments <- function(nextToken = NULL, maxResults = NULL) {
 #' @param nextToken The pagination token used to fetch the next set of results.
 #' @param maxResults Represents the maximum number of results per page, or per API request
 #' call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   controlMetadataList = list(
+#'     list(
+#'       arn = "string",
+#'       id = "string",
+#'       name = "string",
+#'       controlSources = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1567,6 +2633,17 @@ auditmanager_list_controls <- function(controlType, nextToken = NULL, maxResults
 #' @param maxResults Represents the maximum number of results per page, or per API request
 #' call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   keywords = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_keywords_for_data_source(
@@ -1608,6 +2685,28 @@ auditmanager_list_keywords_for_data_source <- function(source, nextToken = NULL,
 #' @param maxResults Represents the maximum number of results per page, or per API request
 #' call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   notifications = list(
+#'     list(
+#'       id = "string",
+#'       assessmentId = "string",
+#'       assessmentName = "string",
+#'       controlSetId = "string",
+#'       controlSetName = "string",
+#'       description = "string",
+#'       eventTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       source = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_notifications(
@@ -1646,6 +2745,16 @@ auditmanager_list_notifications <- function(nextToken = NULL, maxResults = NULL)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the specified resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -1683,6 +2792,14 @@ auditmanager_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @param kmsKey The AWS KMS key details.
 #' @param delegatedAdminAccount The delegated administrator account for AWS Audit Manager.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "ACTIVE"|"INACTIVE"|"PENDING_ACTIVATION"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1724,6 +2841,15 @@ auditmanager_register_account <- function(kmsKey = NULL, delegatedAdminAccount =
 #'
 #' @param adminAccountId &#91;required&#93; The identifier for the specified delegated administrator account.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   adminAccountId = "string",
+#'   organizationId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_organization_admin_account(
@@ -1761,6 +2887,12 @@ auditmanager_register_organization_admin_account <- function(adminAccountId) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the specified resource.
 #' @param tags &#91;required&#93; The tags to be associated with the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1802,6 +2934,12 @@ auditmanager_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the specified resource.
 #' @param tagKeys &#91;required&#93; The name or key of the tag.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1849,6 +2987,147 @@ auditmanager_untag_resource <- function(resourceArn, tagKeys) {
 #' @param assessmentReportsDestination The assessment report storage destination for the specified assessment
 #' that is being updated.
 #' @param roles The list of roles for the specified assessment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assessment = list(
+#'     arn = "string",
+#'     awsAccount = list(
+#'       id = "string",
+#'       emailAddress = "string",
+#'       name = "string"
+#'     ),
+#'     metadata = list(
+#'       name = "string",
+#'       id = "string",
+#'       description = "string",
+#'       complianceType = "string",
+#'       status = "ACTIVE"|"INACTIVE",
+#'       assessmentReportsDestination = list(
+#'         destinationType = "S3",
+#'         destination = "string"
+#'       ),
+#'       scope = list(
+#'         awsAccounts = list(
+#'           list(
+#'             id = "string",
+#'             emailAddress = "string",
+#'             name = "string"
+#'           )
+#'         ),
+#'         awsServices = list(
+#'           list(
+#'             serviceName = "string"
+#'           )
+#'         )
+#'       ),
+#'       roles = list(
+#'         list(
+#'           roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'           roleArn = "string"
+#'         )
+#'       ),
+#'       delegations = list(
+#'         list(
+#'           id = "string",
+#'           assessmentName = "string",
+#'           assessmentId = "string",
+#'           status = "IN_PROGRESS"|"UNDER_REVIEW"|"COMPLETE",
+#'           roleArn = "string",
+#'           roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'           creationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lastUpdated = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           controlSetId = "string",
+#'           comment = "string",
+#'           createdBy = "string"
+#'         )
+#'       ),
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     framework = list(
+#'       id = "string",
+#'       arn = "string",
+#'       metadata = list(
+#'         name = "string",
+#'         description = "string",
+#'         logo = "string",
+#'         complianceType = "string"
+#'       ),
+#'       controlSets = list(
+#'         list(
+#'           id = "string",
+#'           description = "string",
+#'           status = "ACTIVE"|"UNDER_REVIEW"|"REVIEWED",
+#'           roles = list(
+#'             list(
+#'               roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'               roleArn = "string"
+#'             )
+#'           ),
+#'           controls = list(
+#'             list(
+#'               id = "string",
+#'               name = "string",
+#'               description = "string",
+#'               status = "UNDER_REVIEW"|"REVIEWED"|"INACTIVE",
+#'               response = "MANUAL"|"AUTOMATE"|"DEFER"|"IGNORE",
+#'               comments = list(
+#'                 list(
+#'                   authorName = "string",
+#'                   commentBody = "string",
+#'                   postedDate = as.POSIXct(
+#'                     "2015-01-01"
+#'                   )
+#'                 )
+#'               ),
+#'               evidenceSources = list(
+#'                 "string"
+#'               ),
+#'               evidenceCount = 123,
+#'               assessmentReportEvidenceCount = 123
+#'             )
+#'           ),
+#'           delegations = list(
+#'             list(
+#'               id = "string",
+#'               assessmentName = "string",
+#'               assessmentId = "string",
+#'               status = "IN_PROGRESS"|"UNDER_REVIEW"|"COMPLETE",
+#'               roleArn = "string",
+#'               roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'               creationTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               lastUpdated = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               controlSetId = "string",
+#'               comment = "string",
+#'               createdBy = "string"
+#'             )
+#'           ),
+#'           systemEvidenceCount = 123,
+#'           manualEvidenceCount = 123
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1918,6 +3197,34 @@ auditmanager_update_assessment <- function(assessmentId, assessmentName = NULL, 
 #' @param controlStatus The status of the specified control.
 #' @param commentBody The comment body text for the specified control.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   control = list(
+#'     id = "string",
+#'     name = "string",
+#'     description = "string",
+#'     status = "UNDER_REVIEW"|"REVIEWED"|"INACTIVE",
+#'     response = "MANUAL"|"AUTOMATE"|"DEFER"|"IGNORE",
+#'     comments = list(
+#'       list(
+#'         authorName = "string",
+#'         commentBody = "string",
+#'         postedDate = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     evidenceSources = list(
+#'       "string"
+#'     ),
+#'     evidenceCount = 123,
+#'     assessmentReportEvidenceCount = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_assessment_control(
@@ -1962,6 +3269,68 @@ auditmanager_update_assessment_control <- function(assessmentId, controlSetId, c
 #' @param controlSetId &#91;required&#93; The identifier for the specified control set.
 #' @param status &#91;required&#93; The status of the control set that is being updated.
 #' @param comment &#91;required&#93; The comment related to the status update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   controlSet = list(
+#'     id = "string",
+#'     description = "string",
+#'     status = "ACTIVE"|"UNDER_REVIEW"|"REVIEWED",
+#'     roles = list(
+#'       list(
+#'         roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'         roleArn = "string"
+#'       )
+#'     ),
+#'     controls = list(
+#'       list(
+#'         id = "string",
+#'         name = "string",
+#'         description = "string",
+#'         status = "UNDER_REVIEW"|"REVIEWED"|"INACTIVE",
+#'         response = "MANUAL"|"AUTOMATE"|"DEFER"|"IGNORE",
+#'         comments = list(
+#'           list(
+#'             authorName = "string",
+#'             commentBody = "string",
+#'             postedDate = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         evidenceSources = list(
+#'           "string"
+#'         ),
+#'         evidenceCount = 123,
+#'         assessmentReportEvidenceCount = 123
+#'       )
+#'     ),
+#'     delegations = list(
+#'       list(
+#'         id = "string",
+#'         assessmentName = "string",
+#'         assessmentId = "string",
+#'         status = "IN_PROGRESS"|"UNDER_REVIEW"|"COMPLETE",
+#'         roleArn = "string",
+#'         roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'         creationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdated = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         controlSetId = "string",
+#'         comment = "string",
+#'         createdBy = "string"
+#'       )
+#'     ),
+#'     systemEvidenceCount = 123,
+#'     manualEvidenceCount = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2008,6 +3377,76 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
 #' @param complianceType The compliance type that the new custom framework supports, such as CIS
 #' or HIPAA.
 #' @param controlSets &#91;required&#93; The control sets associated with the framework.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   framework = list(
+#'     arn = "string",
+#'     id = "string",
+#'     name = "string",
+#'     type = "Standard"|"Custom",
+#'     complianceType = "string",
+#'     description = "string",
+#'     logo = "string",
+#'     controlSources = "string",
+#'     controlSets = list(
+#'       list(
+#'         id = "string",
+#'         name = "string",
+#'         controls = list(
+#'           list(
+#'             arn = "string",
+#'             id = "string",
+#'             type = "Standard"|"Custom",
+#'             name = "string",
+#'             description = "string",
+#'             testingInformation = "string",
+#'             actionPlanTitle = "string",
+#'             actionPlanInstructions = "string",
+#'             controlSources = "string",
+#'             controlMappingSources = list(
+#'               list(
+#'                 sourceId = "string",
+#'                 sourceName = "string",
+#'                 sourceDescription = "string",
+#'                 sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
+#'                 sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
+#'                 sourceKeyword = list(
+#'                   keywordInputType = "SELECT_FROM_LIST",
+#'                   keywordValue = "string"
+#'                 ),
+#'                 sourceFrequency = "DAILY"|"WEEKLY"|"MONTHLY",
+#'                 troubleshootingText = "string"
+#'               )
+#'             ),
+#'             createdAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             lastUpdatedAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             createdBy = "string",
+#'             lastUpdatedBy = "string",
+#'             tags = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdBy = "string",
+#'     lastUpdatedBy = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2061,6 +3500,147 @@ auditmanager_update_assessment_framework <- function(frameworkId, name, descript
 #' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
 #' @param status &#91;required&#93; The current status of the specified assessment.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assessment = list(
+#'     arn = "string",
+#'     awsAccount = list(
+#'       id = "string",
+#'       emailAddress = "string",
+#'       name = "string"
+#'     ),
+#'     metadata = list(
+#'       name = "string",
+#'       id = "string",
+#'       description = "string",
+#'       complianceType = "string",
+#'       status = "ACTIVE"|"INACTIVE",
+#'       assessmentReportsDestination = list(
+#'         destinationType = "S3",
+#'         destination = "string"
+#'       ),
+#'       scope = list(
+#'         awsAccounts = list(
+#'           list(
+#'             id = "string",
+#'             emailAddress = "string",
+#'             name = "string"
+#'           )
+#'         ),
+#'         awsServices = list(
+#'           list(
+#'             serviceName = "string"
+#'           )
+#'         )
+#'       ),
+#'       roles = list(
+#'         list(
+#'           roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'           roleArn = "string"
+#'         )
+#'       ),
+#'       delegations = list(
+#'         list(
+#'           id = "string",
+#'           assessmentName = "string",
+#'           assessmentId = "string",
+#'           status = "IN_PROGRESS"|"UNDER_REVIEW"|"COMPLETE",
+#'           roleArn = "string",
+#'           roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'           creationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lastUpdated = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           controlSetId = "string",
+#'           comment = "string",
+#'           createdBy = "string"
+#'         )
+#'       ),
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     framework = list(
+#'       id = "string",
+#'       arn = "string",
+#'       metadata = list(
+#'         name = "string",
+#'         description = "string",
+#'         logo = "string",
+#'         complianceType = "string"
+#'       ),
+#'       controlSets = list(
+#'         list(
+#'           id = "string",
+#'           description = "string",
+#'           status = "ACTIVE"|"UNDER_REVIEW"|"REVIEWED",
+#'           roles = list(
+#'             list(
+#'               roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'               roleArn = "string"
+#'             )
+#'           ),
+#'           controls = list(
+#'             list(
+#'               id = "string",
+#'               name = "string",
+#'               description = "string",
+#'               status = "UNDER_REVIEW"|"REVIEWED"|"INACTIVE",
+#'               response = "MANUAL"|"AUTOMATE"|"DEFER"|"IGNORE",
+#'               comments = list(
+#'                 list(
+#'                   authorName = "string",
+#'                   commentBody = "string",
+#'                   postedDate = as.POSIXct(
+#'                     "2015-01-01"
+#'                   )
+#'                 )
+#'               ),
+#'               evidenceSources = list(
+#'                 "string"
+#'               ),
+#'               evidenceCount = 123,
+#'               assessmentReportEvidenceCount = 123
+#'             )
+#'           ),
+#'           delegations = list(
+#'             list(
+#'               id = "string",
+#'               assessmentName = "string",
+#'               assessmentId = "string",
+#'               status = "IN_PROGRESS"|"UNDER_REVIEW"|"COMPLETE",
+#'               roleArn = "string",
+#'               roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'               creationTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               lastUpdated = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               controlSetId = "string",
+#'               comment = "string",
+#'               createdBy = "string"
+#'             )
+#'           ),
+#'           systemEvidenceCount = 123,
+#'           manualEvidenceCount = 123
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_assessment_status(
@@ -2107,6 +3687,50 @@ auditmanager_update_assessment_status <- function(assessmentId, status) {
 #' @param actionPlanInstructions The recommended actions to carry out if the control is not fulfilled.
 #' @param controlMappingSources &#91;required&#93; The data source that determines from where AWS Audit Manager collects
 #' evidence for the control.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   control = list(
+#'     arn = "string",
+#'     id = "string",
+#'     type = "Standard"|"Custom",
+#'     name = "string",
+#'     description = "string",
+#'     testingInformation = "string",
+#'     actionPlanTitle = "string",
+#'     actionPlanInstructions = "string",
+#'     controlSources = "string",
+#'     controlMappingSources = list(
+#'       list(
+#'         sourceId = "string",
+#'         sourceName = "string",
+#'         sourceDescription = "string",
+#'         sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
+#'         sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
+#'         sourceKeyword = list(
+#'           keywordInputType = "SELECT_FROM_LIST",
+#'           keywordValue = "string"
+#'         ),
+#'         sourceFrequency = "DAILY"|"WEEKLY"|"MONTHLY",
+#'         troubleshootingText = "string"
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdBy = "string",
+#'     lastUpdatedBy = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2170,6 +3794,28 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 #' @param defaultProcessOwners A list of the default audit owners.
 #' @param kmsKey The AWS KMS key details.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   settings = list(
+#'     isAwsOrgEnabled = TRUE|FALSE,
+#'     snsTopic = "string",
+#'     defaultAssessmentReportsDestination = list(
+#'       destinationType = "S3",
+#'       destination = "string"
+#'     ),
+#'     defaultProcessOwners = list(
+#'       list(
+#'         roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'         roleArn = "string"
+#'       )
+#'     ),
+#'     kmsKey = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_settings(
@@ -2218,6 +3864,20 @@ auditmanager_update_settings <- function(snsTopic = NULL, defaultAssessmentRepor
 #'
 #' @param s3RelativePath &#91;required&#93; The relative path of the specified Amazon S3 bucket in which the
 #' assessment report is stored.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   signatureValid = TRUE|FALSE,
+#'   signatureAlgorithm = "string",
+#'   signatureDateTime = "string",
+#'   signatureKeyId = "string",
+#'   validationErrors = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

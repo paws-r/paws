@@ -24,6 +24,26 @@ the URL encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap}.
 The value must be URL encoded.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string",
+  Bucket = "string",
+  NetworkOrigin = "Internet"|"VPC",
+  VpcConfiguration = list(
+    VpcId = "string"
+  ),
+  PublicAccessBlockConfiguration = list(
+    BlockPublicAcls = TRUE|FALSE,
+    IgnorePublicAcls = TRUE|FALSE,
+    BlockPublicPolicy = TRUE|FALSE,
+    RestrictPublicBuckets = TRUE|FALSE
+  ),
+  CreationDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns configuration information about the specified access point.
 

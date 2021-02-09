@@ -34,6 +34,24 @@ deployed Stage.}
 
 \item{additionalContext}{[Optional] A key-value map of additional context variables.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  clientStatus = 123,
+  log = "string",
+  latency = 123,
+  principalId = "string",
+  policy = "string",
+  authorization = list(
+    list(
+      "string"
+    )
+  ),
+  claims = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Simulate the execution of an Authorizer in your RestApi with headers,
 parameters, and an incoming request body.<div class="seeAlso">

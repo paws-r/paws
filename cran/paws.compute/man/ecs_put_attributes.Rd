@@ -15,6 +15,19 @@ cluster, the default cluster is assumed.}
 custom attributes per resource. You can specify up to 10 attributes in a
 single call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  attributes = list(
+    list(
+      name = "string",
+      value = "string",
+      targetType = "container-instance",
+      targetId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Create or update an attribute on an Amazon ECS resource. If the
 attribute does not exist, it is created. If the attribute exists, its

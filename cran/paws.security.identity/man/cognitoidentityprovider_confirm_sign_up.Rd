@@ -63,6 +63,10 @@ purpose.
 don't use it to provide sensitive information.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Confirms registration of a user and handles the existing alias from a
 previous user.

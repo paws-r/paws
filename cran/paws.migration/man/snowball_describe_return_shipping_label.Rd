@@ -11,6 +11,15 @@ snowball_describe_return_shipping_label(JobId)
 \item{JobId}{The automatically generated ID for a job, for example
 \verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Status = "InProgress"|"TimedOut"|"Succeeded"|"Failed",
+  ExpirationDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Information on the shipping label of a Snow device that is being
 returned to AWS.

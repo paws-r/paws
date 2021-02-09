@@ -14,6 +14,12 @@ NULL
 #' @usage
 #' servicequotas_associate_service_quota_template()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_service_quota_template()
@@ -53,6 +59,12 @@ servicequotas_associate_service_quota_template <- function() {
 #' @param ServiceCode &#91;required&#93; The service identifier.
 #' @param QuotaCode &#91;required&#93; The quota identifier.
 #' @param AwsRegion &#91;required&#93; The AWS Region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -94,6 +106,12 @@ servicequotas_delete_service_quota_increase_request_from_template <- function(Se
 #' @usage
 #' servicequotas_disassociate_service_quota_template()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_service_quota_template()
@@ -131,6 +149,40 @@ servicequotas_disassociate_service_quota_template <- function() {
 #' @param ServiceCode &#91;required&#93; The service identifier.
 #' @param QuotaCode &#91;required&#93; The quota identifier.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Quota = list(
+#'     ServiceCode = "string",
+#'     ServiceName = "string",
+#'     QuotaArn = "string",
+#'     QuotaCode = "string",
+#'     QuotaName = "string",
+#'     Value = 123.0,
+#'     Unit = "string",
+#'     Adjustable = TRUE|FALSE,
+#'     GlobalQuota = TRUE|FALSE,
+#'     UsageMetric = list(
+#'       MetricNamespace = "string",
+#'       MetricName = "string",
+#'       MetricDimensions = list(
+#'         "string"
+#'       ),
+#'       MetricStatisticRecommendation = "string"
+#'     ),
+#'     Period = list(
+#'       PeriodValue = 123,
+#'       PeriodUnit = "MICROSECOND"|"MILLISECOND"|"SECOND"|"MINUTE"|"HOUR"|"DAY"|"WEEK"
+#'     ),
+#'     ErrorReason = list(
+#'       ErrorCode = "DEPENDENCY_ACCESS_DENIED_ERROR"|"DEPENDENCY_THROTTLING_ERROR"|"DEPENDENCY_SERVICE_ERROR"|"SERVICE_QUOTA_NOT_AVAILABLE_ERROR",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_aws_default_service_quota(
@@ -167,6 +219,14 @@ servicequotas_get_aws_default_service_quota <- function(ServiceCode, QuotaCode) 
 #' @usage
 #' servicequotas_get_association_for_service_quota_template()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceQuotaTemplateAssociationStatus = "ASSOCIATED"|"DISASSOCIATED"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_association_for_service_quota_template()
@@ -201,6 +261,33 @@ servicequotas_get_association_for_service_quota_template <- function() {
 #' servicequotas_get_requested_service_quota_change(RequestId)
 #'
 #' @param RequestId &#91;required&#93; The ID of the quota increase request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RequestedQuota = list(
+#'     Id = "string",
+#'     CaseId = "string",
+#'     ServiceCode = "string",
+#'     ServiceName = "string",
+#'     QuotaCode = "string",
+#'     QuotaName = "string",
+#'     DesiredValue = 123.0,
+#'     Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
+#'     Created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Requester = "string",
+#'     QuotaArn = "string",
+#'     GlobalQuota = TRUE|FALSE,
+#'     Unit = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -241,6 +328,40 @@ servicequotas_get_requested_service_quota_change <- function(RequestId) {
 #'
 #' @param ServiceCode &#91;required&#93; The service identifier.
 #' @param QuotaCode &#91;required&#93; The quota identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Quota = list(
+#'     ServiceCode = "string",
+#'     ServiceName = "string",
+#'     QuotaArn = "string",
+#'     QuotaCode = "string",
+#'     QuotaName = "string",
+#'     Value = 123.0,
+#'     Unit = "string",
+#'     Adjustable = TRUE|FALSE,
+#'     GlobalQuota = TRUE|FALSE,
+#'     UsageMetric = list(
+#'       MetricNamespace = "string",
+#'       MetricName = "string",
+#'       MetricDimensions = list(
+#'         "string"
+#'       ),
+#'       MetricStatisticRecommendation = "string"
+#'     ),
+#'     Period = list(
+#'       PeriodValue = 123,
+#'       PeriodUnit = "MICROSECOND"|"MILLISECOND"|"SECOND"|"MINUTE"|"HOUR"|"DAY"|"WEEK"
+#'     ),
+#'     ErrorReason = list(
+#'       ErrorCode = "DEPENDENCY_ACCESS_DENIED_ERROR"|"DEPENDENCY_THROTTLING_ERROR"|"DEPENDENCY_SERVICE_ERROR"|"SERVICE_QUOTA_NOT_AVAILABLE_ERROR",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -284,6 +405,23 @@ servicequotas_get_service_quota <- function(ServiceCode, QuotaCode) {
 #' @param ServiceCode &#91;required&#93; The service identifier.
 #' @param QuotaCode &#91;required&#93; The quota identifier.
 #' @param AwsRegion &#91;required&#93; The AWS Region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceQuotaIncreaseRequestInTemplate = list(
+#'     ServiceCode = "string",
+#'     ServiceName = "string",
+#'     QuotaCode = "string",
+#'     QuotaName = "string",
+#'     DesiredValue = 123.0,
+#'     AwsRegion = "string",
+#'     Unit = "string",
+#'     GlobalQuota = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -330,6 +468,43 @@ servicequotas_get_service_quota_increase_request_from_template <- function(Servi
 #' the remaining results, if any, make another call with the token returned
 #' from this call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Quotas = list(
+#'     list(
+#'       ServiceCode = "string",
+#'       ServiceName = "string",
+#'       QuotaArn = "string",
+#'       QuotaCode = "string",
+#'       QuotaName = "string",
+#'       Value = 123.0,
+#'       Unit = "string",
+#'       Adjustable = TRUE|FALSE,
+#'       GlobalQuota = TRUE|FALSE,
+#'       UsageMetric = list(
+#'         MetricNamespace = "string",
+#'         MetricName = "string",
+#'         MetricDimensions = list(
+#'           "string"
+#'         ),
+#'         MetricStatisticRecommendation = "string"
+#'       ),
+#'       Period = list(
+#'         PeriodValue = 123,
+#'         PeriodUnit = "MICROSECOND"|"MILLISECOND"|"SECOND"|"MINUTE"|"HOUR"|"DAY"|"WEEK"
+#'       ),
+#'       ErrorReason = list(
+#'         ErrorCode = "DEPENDENCY_ACCESS_DENIED_ERROR"|"DEPENDENCY_THROTTLING_ERROR"|"DEPENDENCY_SERVICE_ERROR"|"SERVICE_QUOTA_NOT_AVAILABLE_ERROR",
+#'         ErrorMessage = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_aws_default_service_quotas(
@@ -374,6 +549,36 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, if any, make another call with the token returned
 #' from this call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   RequestedQuotas = list(
+#'     list(
+#'       Id = "string",
+#'       CaseId = "string",
+#'       ServiceCode = "string",
+#'       ServiceName = "string",
+#'       QuotaCode = "string",
+#'       QuotaName = "string",
+#'       DesiredValue = 123.0,
+#'       Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
+#'       Created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Requester = "string",
+#'       QuotaArn = "string",
+#'       GlobalQuota = TRUE|FALSE,
+#'       Unit = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -421,6 +626,36 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, if any, make another call with the token returned
 #' from this call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   RequestedQuotas = list(
+#'     list(
+#'       Id = "string",
+#'       CaseId = "string",
+#'       ServiceCode = "string",
+#'       ServiceName = "string",
+#'       QuotaCode = "string",
+#'       QuotaName = "string",
+#'       DesiredValue = 123.0,
+#'       Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
+#'       Created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Requester = "string",
+#'       QuotaArn = "string",
+#'       GlobalQuota = TRUE|FALSE,
+#'       Unit = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -471,6 +706,26 @@ servicequotas_list_requested_service_quota_change_history_by_quota <- function(S
 #' the remaining results, if any, make another call with the token returned
 #' from this call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceQuotaIncreaseRequestInTemplateList = list(
+#'     list(
+#'       ServiceCode = "string",
+#'       ServiceName = "string",
+#'       QuotaCode = "string",
+#'       QuotaName = "string",
+#'       DesiredValue = 123.0,
+#'       AwsRegion = "string",
+#'       Unit = "string",
+#'       GlobalQuota = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_service_quota_increase_requests_in_template(
@@ -517,6 +772,43 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
 #' the remaining results, if any, make another call with the token returned
 #' from this call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Quotas = list(
+#'     list(
+#'       ServiceCode = "string",
+#'       ServiceName = "string",
+#'       QuotaArn = "string",
+#'       QuotaCode = "string",
+#'       QuotaName = "string",
+#'       Value = 123.0,
+#'       Unit = "string",
+#'       Adjustable = TRUE|FALSE,
+#'       GlobalQuota = TRUE|FALSE,
+#'       UsageMetric = list(
+#'         MetricNamespace = "string",
+#'         MetricName = "string",
+#'         MetricDimensions = list(
+#'           "string"
+#'         ),
+#'         MetricStatisticRecommendation = "string"
+#'       ),
+#'       Period = list(
+#'         PeriodValue = 123,
+#'         PeriodUnit = "MICROSECOND"|"MILLISECOND"|"SECOND"|"MINUTE"|"HOUR"|"DAY"|"WEEK"
+#'       ),
+#'       ErrorReason = list(
+#'         ErrorCode = "DEPENDENCY_ACCESS_DENIED_ERROR"|"DEPENDENCY_THROTTLING_ERROR"|"DEPENDENCY_SERVICE_ERROR"|"SERVICE_QUOTA_NOT_AVAILABLE_ERROR",
+#'         ErrorMessage = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_service_quotas(
@@ -560,6 +852,20 @@ servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, Max
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, if any, make another call with the token returned
 #' from this call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Services = list(
+#'     list(
+#'       ServiceCode = "string",
+#'       ServiceName = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -605,6 +911,19 @@ servicequotas_list_services <- function(NextToken = NULL, MaxResults = NULL) {
 #' [`list_service_quotas`][servicequotas_list_service_quotas] AWS API
 #' operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -645,6 +964,23 @@ servicequotas_list_tags_for_resource <- function(ResourceARN) {
 #' @param ServiceCode &#91;required&#93; The service identifier.
 #' @param AwsRegion &#91;required&#93; The AWS Region.
 #' @param DesiredValue &#91;required&#93; The new, increased value for the quota.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceQuotaIncreaseRequestInTemplate = list(
+#'     ServiceCode = "string",
+#'     ServiceName = "string",
+#'     QuotaCode = "string",
+#'     QuotaName = "string",
+#'     DesiredValue = 123.0,
+#'     AwsRegion = "string",
+#'     Unit = "string",
+#'     GlobalQuota = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -688,6 +1024,33 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
 #' @param ServiceCode &#91;required&#93; The service identifier.
 #' @param QuotaCode &#91;required&#93; The quota identifier.
 #' @param DesiredValue &#91;required&#93; The new, increased value for the quota.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RequestedQuota = list(
+#'     Id = "string",
+#'     CaseId = "string",
+#'     ServiceCode = "string",
+#'     ServiceName = "string",
+#'     QuotaCode = "string",
+#'     QuotaName = "string",
+#'     DesiredValue = 123.0,
+#'     Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
+#'     Created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Requester = "string",
+#'     QuotaArn = "string",
+#'     GlobalQuota = TRUE|FALSE,
+#'     Unit = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -735,6 +1098,12 @@ servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode,
 #' [`list_service_quotas`][servicequotas_list_service_quotas] AWS API
 #' operation.
 #' @param Tags &#91;required&#93; The tags that you want to add to the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -786,6 +1155,12 @@ servicequotas_tag_resource <- function(ResourceARN, Tags) {
 #' [`list_service_quotas`][servicequotas_list_service_quotas] AWS API
 #' operation.
 #' @param TagKeys &#91;required&#93; The keys of the tags that you want to remove from the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

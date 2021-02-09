@@ -9,6 +9,10 @@ robomaker_cancel_simulation_job(job)
 \arguments{
 \item{job}{[required] The simulation job ARN to cancel.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Cancels the specified simulation job.
 }

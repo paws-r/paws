@@ -13,12 +13,37 @@ searching for.}
 
 \item{Filters}{[required] The filters to apply to the search. Currently, you can search only by
 user name, for example,
-\verb{"Filters": \\\[ \\\{ "Name": "QUICKSIGHT_USER", "Operator": "StringEquals", "Value": "arn:aws:quicksight:us-east-1:1:user/default/UserName1" \\\} \\\]}}
+\verb{"Filters": [ \{ "Name": "QUICKSIGHT_USER", "Operator": "StringEquals", "Value": "arn:aws:quicksight:us-east-1:1:user/default/UserName1" \} ]}}
 
 \item{NextToken}{The token for the next set of results, or null if there are no more
 results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  DashboardSummaryList = list(
+    list(
+      Arn = "string",
+      DashboardId = "string",
+      Name = "string",
+      CreatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      PublishedVersionNumber = 123,
+      LastPublishedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string",
+  Status = 123,
+  RequestId = "string"
+)
+}
 }
 \description{
 Searches for dashboards that belong to a user.

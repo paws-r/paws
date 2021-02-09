@@ -15,11 +15,27 @@ specified service.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{ServiceName}{[required] The name of the AWS service that is to be associated with the
 credentials. The service you specify here is the only service that can
 be accessed using these credentials.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ServiceSpecificCredential = list(
+    CreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    ServiceName = "string",
+    ServiceUserName = "string",
+    ServicePassword = "string",
+    ServiceSpecificCredentialId = "string",
+    UserName = "string",
+    Status = "Active"|"Inactive"
+  )
+)
+}
 }
 \description{
 Generates a set of credentials consisting of a user name and password

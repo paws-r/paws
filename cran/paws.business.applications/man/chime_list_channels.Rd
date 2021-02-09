@@ -18,6 +18,24 @@ can retrieve private channels.}
 \item{NextToken}{The token passed by previous API calls until all requested channels are
 returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Channels = list(
+    list(
+      Name = "string",
+      ChannelArn = "string",
+      Mode = "UNRESTRICTED"|"RESTRICTED",
+      Privacy = "PUBLIC"|"PRIVATE",
+      Metadata = "string",
+      LastMessageTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all Channels created under a single Chime App as a paginated list.
 You can specify filters to narrow results.

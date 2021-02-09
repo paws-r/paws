@@ -14,6 +14,10 @@ custom tracking domain.}
 
 \item{TrackingOptions}{[required]}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Modifies an association between a configuration set and a custom domain
 for open and click event tracking.

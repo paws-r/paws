@@ -43,6 +43,17 @@ Example: \code{my-cluster-param-group1}}
 
 \item{Tags}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterParameterGroup = list(
+    DBClusterParameterGroupName = "string",
+    DBParameterGroupFamily = "string",
+    Description = "string",
+    DBClusterParameterGroupArn = "string"
+  )
+)
+}
+}
 \description{
 Copies the specified DB cluster parameter group.
 

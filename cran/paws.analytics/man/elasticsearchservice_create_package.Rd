@@ -16,6 +16,29 @@ elasticsearchservice_create_package(PackageName, PackageType,
 
 \item{PackageSource}{[required] The customer S3 location \code{PackageSource} for importing the package.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PackageDetails = list(
+    PackageID = "string",
+    PackageName = "string",
+    PackageType = "TXT-DICTIONARY",
+    PackageDescription = "string",
+    PackageStatus = "COPYING"|"COPY_FAILED"|"VALIDATING"|"VALIDATION_FAILED"|"AVAILABLE"|"DELETING"|"DELETED"|"DELETE_FAILED",
+    CreatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    AvailablePackageVersion = "string",
+    ErrorDetails = list(
+      ErrorType = "string",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Create a package for use with Amazon ES domains.
 }

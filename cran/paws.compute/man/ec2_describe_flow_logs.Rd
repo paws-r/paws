@@ -44,6 +44,37 @@ value.}
 
 \item{NextToken}{The token for the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FlowLogs = list(
+    list(
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      DeliverLogsErrorMessage = "string",
+      DeliverLogsPermissionArn = "string",
+      DeliverLogsStatus = "string",
+      FlowLogId = "string",
+      FlowLogStatus = "string",
+      LogGroupName = "string",
+      ResourceId = "string",
+      TrafficType = "ACCEPT"|"REJECT"|"ALL",
+      LogDestinationType = "cloud-watch-logs"|"s3",
+      LogDestination = "string",
+      LogFormat = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      ),
+      MaxAggregationInterval = 123
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more flow logs. To view the information in your flow
 logs (the log streams for the network interfaces), you must use the

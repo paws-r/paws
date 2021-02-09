@@ -81,6 +81,12 @@ in the \emph{AWS Billing and Cost Management User Guide}.}
 
 \item{ExperimentConfig}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransformJobArn = "string"
+)
+}
+}
 \description{
 Starts a transform job. A transform job uses a trained model to get
 inferences on a dataset and saves these results to an Amazon S3 location

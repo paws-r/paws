@@ -18,6 +18,10 @@ you will set up a trust relationship.}
 \item{DnsIpAddrs}{[required] The updated IP addresses of the remote DNS server associated with the
 conditional forwarder.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a conditional forwarder that has been set up for your AWS
 directory.

@@ -12,6 +12,10 @@ workmail_untag_resource(ResourceARN, TagKeys)
 
 \item{TagKeys}{[required] The tag keys.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Untags the specified tags from the specified Amazon WorkMail
 organization resource.

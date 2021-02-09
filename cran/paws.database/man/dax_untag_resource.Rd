@@ -12,6 +12,17 @@ dax_untag_resource(ResourceName, TagKeys)
 \item{TagKeys}{[required] A list of tag keys. If the DAX cluster has any tags with these keys,
 then the tags are removed from the cluster.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Removes the association of tags from a DAX resource. You can call
 \code{\link[=dax_untag_resource]{untag_resource}} up to 5 times per second, per

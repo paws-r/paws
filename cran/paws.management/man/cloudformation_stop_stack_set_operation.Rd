@@ -13,6 +13,10 @@ operation for.}
 
 \item{OperationId}{[required] The ID of the stack operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Stops an in-progress operation on a stack set and its associated stack
 instances.

@@ -13,6 +13,10 @@ tags to. An ARN uniquely identifies a resource.}
 \item{Tags}{[required] The tags to add to a resource. A tag consists of a key and a value that
 you define.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Add tags to an accelerator resource.
 

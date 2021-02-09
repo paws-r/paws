@@ -14,6 +14,10 @@ cognitoidentityprovider_verify_user_attribute(AccessToken,
 
 \item{Code}{[required] The verification code in the request to verify user attributes.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Verifies the specified user attributes in the user pool.
 }

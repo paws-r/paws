@@ -13,6 +13,10 @@ workspaces_modify_selfservice_permissions(ResourceId,
 
 \item{SelfservicePermissions}{[required] The permissions to enable or disable self-service capabilities.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Modifies the self-service WorkSpace management capabilities for your
 users. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html}{Enable Self-Service WorkSpace Management Capabilities for Your Users}.

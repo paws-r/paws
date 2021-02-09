@@ -20,6 +20,20 @@ and the maximum value is 500.}
 \item{nameQuery}{A query parameter specifying the name of the to-be-returned usage plan
 keys.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  position = "string",
+  items = list(
+    list(
+      id = "string",
+      type = "string",
+      value = "string",
+      name = "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets all the usage plan keys representing the API keys added to a
 specified usage plan.

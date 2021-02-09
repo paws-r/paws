@@ -27,20 +27,20 @@ and a resource. It can be used for both IAM users and federated
 access users whose name matches the provided resource name. This is
 a very powerful option that offers a great deal of flexibility. For
 example, if you specify the AWS account \emph{123456789012} and
-\emph{Mary\\_Major}, all of the following are counted as approvals coming
+\emph{Mary_Major}, all of the following are counted as approvals coming
 from that user:
 \itemize{
 \item An IAM user in the account
-(arn:aws:iam::\emph{123456789012}:user/\emph{Mary\\_Major})
-\item A federated user identified in IAM as Mary\\_Major
-(arn:aws:sts::\emph{123456789012}:federated-user/\emph{Mary\\_Major})
+(arn:aws:iam::\emph{123456789012}:user/\emph{Mary_Major})
+\item A federated user identified in IAM as Mary_Major
+(arn:aws:sts::\emph{123456789012}:federated-user/\emph{Mary_Major})
 }
 
 This option does not recognize an active session of someone assuming
 the role of CodeCommitReview with a role session name of
-\emph{Mary\\_Major}
-(arn:aws:sts::\emph{123456789012}:assumed-role/CodeCommitReview/\emph{Mary\\_Major})
-unless you include a wildcard (*Mary\\_Major).
+\emph{Mary_Major}
+(arn:aws:sts::\emph{123456789012}:assumed-role/CodeCommitReview/\emph{Mary_Major})
+unless you include a wildcard (*Mary_Major).
 \item \strong{Fully qualified ARN}: This option allows you to specify the fully
 qualified Amazon Resource Name (ARN) of the IAM user or role.
 }
@@ -51,6 +51,25 @@ in the \emph{IAM User Guide}.}
 \item{approvalRuleTemplateDescription}{The description of the approval rule template. Consider providing a
 description that explains what this template does and when it might be
 appropriate to associate it with repositories.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  approvalRuleTemplate = list(
+    approvalRuleTemplateId = "string",
+    approvalRuleTemplateName = "string",
+    approvalRuleTemplateDescription = "string",
+    approvalRuleTemplateContent = "string",
+    ruleContentSha256 = "string",
+    lastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    creationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    lastModifiedUser = "string"
+  )
+)
+}
 }
 \description{
 Creates a template for approval rules that can then be associated with

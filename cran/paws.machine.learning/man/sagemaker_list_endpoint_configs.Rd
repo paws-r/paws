@@ -27,6 +27,21 @@ specified time (timestamp).}
 \item{CreationTimeAfter}{A filter that returns only endpoint configurations with a creation time
 greater than or equal to the specified time (timestamp).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointConfigs = list(
+    list(
+      EndpointConfigName = "string",
+      EndpointConfigArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists endpoint configurations.
 }

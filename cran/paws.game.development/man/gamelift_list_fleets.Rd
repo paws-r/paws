@@ -24,6 +24,15 @@ empty.}
 Use the token that is returned with a previous call to this operation.
 To start at the beginning of the result set, do not specify a value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FleetIds = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves a collection of fleet resources for this AWS account. You can
 filter the result set to find only those fleets that are deployed with a

@@ -13,6 +13,21 @@ iot_update_custom_metric(metricName, displayName)
 it doesn't have to be unique. Don't use this name as the metric
 identifier in the device metric report. Can be updated.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  metricName = "string",
+  metricArn = "string",
+  metricType = "string-list"|"ip-address-list"|"number-list"|"number",
+  displayName = "string",
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastModifiedDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Updates a Device Defender detect custom metric.
 }

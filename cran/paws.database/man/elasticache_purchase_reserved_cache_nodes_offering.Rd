@@ -24,6 +24,33 @@ Example: myreservationID}
 
 Default: \code{1}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReservedCacheNode = list(
+    ReservedCacheNodeId = "string",
+    ReservedCacheNodesOfferingId = "string",
+    CacheNodeType = "string",
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    Duration = 123,
+    FixedPrice = 123.0,
+    UsagePrice = 123.0,
+    CacheNodeCount = 123,
+    ProductDescription = "string",
+    OfferingType = "string",
+    State = "string",
+    RecurringCharges = list(
+      list(
+        RecurringChargeAmount = 123.0,
+        RecurringChargeFrequency = "string"
+      )
+    ),
+    ReservationARN = "string"
+  )
+)
+}
+}
 \description{
 Allows you to purchase a reserved cache node offering.
 }

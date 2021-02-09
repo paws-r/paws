@@ -11,6 +11,16 @@ elb_register_instances_with_load_balancer(LoadBalancerName, Instances)
 
 \item{Instances}{[required] The IDs of the instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Instances = list(
+    list(
+      InstanceId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Adds the specified instances to the specified load balancer.
 

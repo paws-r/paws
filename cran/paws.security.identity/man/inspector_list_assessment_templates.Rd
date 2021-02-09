@@ -28,6 +28,15 @@ previous response to continue listing data.}
 \item{maxResults}{You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  assessmentTemplateArns = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the assessment templates that correspond to the assessment targets
 that are specified by the ARNs of the assessment targets.

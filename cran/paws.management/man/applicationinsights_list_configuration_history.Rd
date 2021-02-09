@@ -38,6 +38,24 @@ of that parameter. Pagination continues from the end of the previous
 results that returned the \code{NextToken} value. This value is \code{null} when
 there are no more results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EventList = list(
+    list(
+      MonitoredResourceARN = "string",
+      EventStatus = "INFO"|"WARN"|"ERROR",
+      EventResourceType = "CLOUDWATCH_ALARM"|"CLOUDWATCH_LOG"|"CLOUDFORMATION"|"SSM_ASSOCIATION",
+      EventTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      EventDetail = "string",
+      EventResourceName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the INFO, WARN, and ERROR events for periodic configuration
 updates performed by Application Insights. Examples of events

@@ -30,6 +30,23 @@ If you submit a second or subsequent
 request and specify the \code{NextToken} parameter, you must use the same
 values for \code{Filters}, if any, as in the previous request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  MaxResults = 123,
+  ResolverRuleAssociations = list(
+    list(
+      Id = "string",
+      ResolverRuleId = "string",
+      Name = "string",
+      VPCId = "string",
+      Status = "CREATING"|"COMPLETE"|"DELETING"|"FAILED"|"OVERRIDDEN",
+      StatusMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Lists the associations that were created between Resolver rules and VPCs
 using the current AWS account.

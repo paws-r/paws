@@ -24,6 +24,25 @@ number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Summaries = list(
+    list(
+      OperationId = "string",
+      Action = "CREATE"|"UPDATE"|"DELETE"|"DETECT_DRIFT",
+      Status = "RUNNING"|"SUCCEEDED"|"FAILED"|"STOPPING"|"STOPPED"|"QUEUED",
+      CreationTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      EndTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns summary information about operations performed on a stack set.
 }

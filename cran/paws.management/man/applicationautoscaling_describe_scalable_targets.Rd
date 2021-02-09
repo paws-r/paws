@@ -116,6 +116,30 @@ parameter is not used, the operation returns up to 50 results and a
 
 \item{NextToken}{The token for the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScalableTargets = list(
+    list(
+      ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
+      ResourceId = "string",
+      ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
+      MinCapacity = 123,
+      MaxCapacity = 123,
+      RoleARN = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      SuspendedState = list(
+        DynamicScalingInSuspended = TRUE|FALSE,
+        DynamicScalingOutSuspended = TRUE|FALSE,
+        ScheduledScalingSuspended = TRUE|FALSE
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Gets information about the scalable targets in the specified namespace.
 

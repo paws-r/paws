@@ -23,6 +23,48 @@ batch of the results.}
 \item{maxResults}{A non-zero, non-negative integer used to limit the number of returned
 results. The default is 100 comments, but you can configure up to 500.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  commentsForComparedCommitData = list(
+    list(
+      repositoryName = "string",
+      beforeCommitId = "string",
+      afterCommitId = "string",
+      beforeBlobId = "string",
+      afterBlobId = "string",
+      location = list(
+        filePath = "string",
+        filePosition = 123,
+        relativeFileVersion = "BEFORE"|"AFTER"
+      ),
+      comments = list(
+        list(
+          commentId = "string",
+          content = "string",
+          inReplyTo = "string",
+          creationDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          lastModifiedDate = as.POSIXct(
+            "2015-01-01"
+          ),
+          authorArn = "string",
+          deleted = TRUE|FALSE,
+          clientRequestToken = "string",
+          callerReactions = list(
+            "string"
+          ),
+          reactionCounts = list(
+            123
+          )
+        )
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns information about comments made on the comparison between two
 commits.

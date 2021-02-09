@@ -2,14 +2,52 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_get_container_service_deployments}
 \alias{lightsail_get_container_service_deployments}
-\title{Returns the deployments for your Amazon Lightsail container service A
-deployment specifies the settings, such as the ports and launch command,
-of containers that are deployed to your container service}
+\title{Returns the deployments for your Amazon Lightsail container service}
 \usage{
 lightsail_get_container_service_deployments(serviceName)
 }
 \arguments{
 \item{serviceName}{[required] The name of the container service for which to return deployments.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  deployments = list(
+    list(
+      version = 123,
+      state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
+      containers = list(
+        list(
+          image = "string",
+          command = list(
+            "string"
+          ),
+          environment = list(
+            "string"
+          ),
+          ports = list(
+            "HTTP"|"HTTPS"|"TCP"|"UDP"
+          )
+        )
+      ),
+      publicEndpoint = list(
+        containerName = "string",
+        containerPort = 123,
+        healthCheck = list(
+          healthyThreshold = 123,
+          unhealthyThreshold = 123,
+          timeoutSeconds = 123,
+          intervalSeconds = 123,
+          path = "string",
+          successCodes = "string"
+        )
+      ),
+      createdAt = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Returns the deployments for your Amazon Lightsail container service

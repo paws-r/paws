@@ -27,6 +27,69 @@ value.}
 
 \item{NextToken}{The token for the next page of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrafficMirrorFilters = list(
+    list(
+      TrafficMirrorFilterId = "string",
+      IngressFilterRules = list(
+        list(
+          TrafficMirrorFilterRuleId = "string",
+          TrafficMirrorFilterId = "string",
+          TrafficDirection = "ingress"|"egress",
+          RuleNumber = 123,
+          RuleAction = "accept"|"reject",
+          Protocol = 123,
+          DestinationPortRange = list(
+            FromPort = 123,
+            ToPort = 123
+          ),
+          SourcePortRange = list(
+            FromPort = 123,
+            ToPort = 123
+          ),
+          DestinationCidrBlock = "string",
+          SourceCidrBlock = "string",
+          Description = "string"
+        )
+      ),
+      EgressFilterRules = list(
+        list(
+          TrafficMirrorFilterRuleId = "string",
+          TrafficMirrorFilterId = "string",
+          TrafficDirection = "ingress"|"egress",
+          RuleNumber = 123,
+          RuleAction = "accept"|"reject",
+          Protocol = 123,
+          DestinationPortRange = list(
+            FromPort = 123,
+            ToPort = 123
+          ),
+          SourcePortRange = list(
+            FromPort = 123,
+            ToPort = 123
+          ),
+          DestinationCidrBlock = "string",
+          SourceCidrBlock = "string",
+          Description = "string"
+        )
+      ),
+      NetworkServices = list(
+        "amazon-dns"
+      ),
+      Description = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more Traffic Mirror filters.
 }

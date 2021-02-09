@@ -7,6 +7,30 @@ have been purchased by the account}
 \usage{
 devicefarm_get_account_settings()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  accountSettings = list(
+    awsAccountNumber = "string",
+    unmeteredDevices = list(
+      123
+    ),
+    unmeteredRemoteAccessDevices = list(
+      123
+    ),
+    maxJobTimeoutMinutes = 123,
+    trialMinutes = list(
+      total = 123.0,
+      remaining = 123.0
+    ),
+    maxSlots = list(
+      123
+    ),
+    defaultJobTimeoutMinutes = 123,
+    skipAppResign = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Returns the number of unmetered iOS or unmetered Android devices that
 have been purchased by the account.

@@ -14,6 +14,10 @@ of the record in the registry does not match the expected version
 specified in the request, the \code{\link[=iot_delete_thing]{delete_thing}} request
 is rejected with a \code{VersionConflictException}.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified thing. Returns successfully with no error if the
 deletion is successful or you specify a thing that doesn't exist.

@@ -9,6 +9,21 @@ codebuild_delete_build_batch(id)
 \arguments{
 \item{id}{[required] The identifier of the batch build to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  statusCode = "string",
+  buildsDeleted = list(
+    "string"
+  ),
+  buildsNotDeleted = list(
+    list(
+      id = "string",
+      statusCode = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes a batch build.
 }

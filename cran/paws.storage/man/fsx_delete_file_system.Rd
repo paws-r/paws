@@ -18,6 +18,31 @@ using the AWS CLI or SDK.}
 
 \item{LustreConfiguration}{}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FileSystemId = "string",
+  Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
+  WindowsResponse = list(
+    FinalBackupId = "string",
+    FinalBackupTags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  ),
+  LustreResponse = list(
+    FinalBackupId = "string",
+    FinalBackupTags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deletes a file system, deleting its contents. After deletion, the file
 system no longer exists, and its data is gone. Any existing automatic

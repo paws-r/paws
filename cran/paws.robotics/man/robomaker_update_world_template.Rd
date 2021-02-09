@@ -16,6 +16,19 @@ robomaker_update_world_template(template, name, templateBody,
 
 \item{templateLocation}{The location of the world template.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  name = "string",
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastUpdatedAt = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Updates a world template.
 }

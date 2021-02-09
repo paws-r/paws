@@ -22,12 +22,18 @@ NULL
 #' @param RuleSetName &#91;required&#93; The name of the rule set to create. The name must:
 #' 
 #' -   This value can only contain ASCII letters (a-z, A-Z), numbers (0-9),
-#'     underscores (\\_), or dashes (-).
+#'     underscores (_), or dashes (-).
 #' 
 #' -   Start and end with a letter or number.
 #' 
 #' -   Contain less than 64 characters.
 #' @param OriginalRuleSetName &#91;required&#93; The name of the rule set to clone.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -84,6 +90,12 @@ ses_clone_receipt_rule_set <- function(RuleSetName, OriginalRuleSetName) {
 #'
 #' @param ConfigurationSet &#91;required&#93; A data structure that contains the name of the configuration set.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_configuration_set(
@@ -138,6 +150,12 @@ ses_create_configuration_set <- function(ConfigurationSet) {
 #' associated with.
 #' @param EventDestination &#91;required&#93; An object that describes the AWS service that email sending event
 #' information will be published to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -210,6 +228,12 @@ ses_create_configuration_set_event_destination <- function(ConfigurationSetName,
 #' associated with.
 #' @param TrackingOptions &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_configuration_set_tracking_options(
@@ -271,6 +295,8 @@ ses_create_configuration_set_tracking_options <- function(ConfigurationSetName, 
 #' @param FailureRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
 #' or her address is not successfully verified.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_custom_verification_email_template(
@@ -320,6 +346,12 @@ ses_create_custom_verification_email_template <- function(TemplateName, FromEmai
 #' @param Filter &#91;required&#93; A data structure that describes the IP address filter to create, which
 #' consists of a name, an IP address range, and whether to allow or block
 #' mail from it.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -388,6 +420,12 @@ ses_create_receipt_filter <- function(Filter) {
 #' of the rule list.
 #' @param Rule &#91;required&#93; A data structure that contains the specified rule's name, actions,
 #' recipients, domains, enabled status, scan status, and TLS policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -504,11 +542,17 @@ ses_create_receipt_rule <- function(RuleSetName, After = NULL, Rule) {
 #' @param RuleSetName &#91;required&#93; The name of the rule set to create. The name must:
 #' 
 #' -   This value can only contain ASCII letters (a-z, A-Z), numbers (0-9),
-#'     underscores (\\_), or dashes (-).
+#'     underscores (_), or dashes (-).
 #' 
 #' -   Start and end with a letter or number.
 #' 
 #' -   Contain less than 64 characters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -561,6 +605,12 @@ ses_create_receipt_rule_set <- function(RuleSetName) {
 #' @param Template &#91;required&#93; The content of the email, composed of a subject line, an HTML part, and
 #' a text-only part.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_template(
@@ -608,6 +658,12 @@ ses_create_template <- function(Template) {
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_configuration_set(
@@ -653,6 +709,12 @@ ses_delete_configuration_set <- function(ConfigurationSetName) {
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set from which to delete the event
 #' destination.
 #' @param EventDestinationName &#91;required&#93; The name of the event destination to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -705,6 +767,12 @@ ses_delete_configuration_set_event_destination <- function(ConfigurationSetName,
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set from which you want to delete the
 #' tracking options.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_configuration_set_tracking_options(
@@ -750,6 +818,8 @@ ses_delete_configuration_set_tracking_options <- function(ConfigurationSetName) 
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template that you want to
 #' delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_custom_verification_email_template(
@@ -791,6 +861,12 @@ ses_delete_custom_verification_email_template <- function(TemplateName) {
 #'
 #' @param Identity &#91;required&#93; The identity to be removed from the list of identities for the AWS
 #' Account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -857,6 +933,12 @@ ses_delete_identity <- function(Identity) {
 #' To successfully call this API, you must own the identity.
 #' @param PolicyName &#91;required&#93; The name of the policy to be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_identity_policy(
@@ -911,6 +993,12 @@ ses_delete_identity_policy <- function(Identity, PolicyName) {
 #'
 #' @param FilterName &#91;required&#93; The name of the IP address filter to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_receipt_filter(
@@ -963,6 +1051,12 @@ ses_delete_receipt_filter <- function(FilterName) {
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set that contains the receipt rule to
 #' delete.
 #' @param RuleName &#91;required&#93; The name of the receipt rule to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1021,6 +1115,12 @@ ses_delete_receipt_rule <- function(RuleSetName, RuleName) {
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_receipt_rule_set(
@@ -1068,6 +1168,12 @@ ses_delete_receipt_rule_set <- function(RuleSetName) {
 #'
 #' @param TemplateName &#91;required&#93; The name of the template to be deleted.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_template(
@@ -1105,6 +1211,8 @@ ses_delete_template <- function(TemplateName) {
 #' ses_delete_verified_email_address(EmailAddress)
 #'
 #' @param EmailAddress &#91;required&#93; An email address to be removed from the list of verified addresses.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1158,6 +1266,68 @@ ses_delete_verified_email_address <- function(EmailAddress) {
 #' @usage
 #' ses_describe_active_receipt_rule_set()
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Metadata = list(
+#'     Name = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Rules = list(
+#'     list(
+#'       Name = "string",
+#'       Enabled = TRUE|FALSE,
+#'       TlsPolicy = "Require"|"Optional",
+#'       Recipients = list(
+#'         "string"
+#'       ),
+#'       Actions = list(
+#'         list(
+#'           S3Action = list(
+#'             TopicArn = "string",
+#'             BucketName = "string",
+#'             ObjectKeyPrefix = "string",
+#'             KmsKeyArn = "string"
+#'           ),
+#'           BounceAction = list(
+#'             TopicArn = "string",
+#'             SmtpReplyCode = "string",
+#'             StatusCode = "string",
+#'             Message = "string",
+#'             Sender = "string"
+#'           ),
+#'           WorkmailAction = list(
+#'             TopicArn = "string",
+#'             OrganizationArn = "string"
+#'           ),
+#'           LambdaAction = list(
+#'             TopicArn = "string",
+#'             FunctionArn = "string",
+#'             InvocationType = "Event"|"RequestResponse"
+#'           ),
+#'           StopAction = list(
+#'             Scope = "RuleSet",
+#'             TopicArn = "string"
+#'           ),
+#'           AddHeaderAction = list(
+#'             HeaderName = "string",
+#'             HeaderValue = "string"
+#'           ),
+#'           SNSAction = list(
+#'             TopicArn = "string",
+#'             Encoding = "UTF-8"|"Base64"
+#'           )
+#'         )
+#'       ),
+#'       ScanEnabled = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_active_receipt_rule_set()
@@ -1206,6 +1376,54 @@ ses_describe_active_receipt_rule_set <- function() {
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set to describe.
 #' @param ConfigurationSetAttributeNames A list of configuration set attributes to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationSet = list(
+#'     Name = "string"
+#'   ),
+#'   EventDestinations = list(
+#'     list(
+#'       Name = "string",
+#'       Enabled = TRUE|FALSE,
+#'       MatchingEventTypes = list(
+#'         "send"|"reject"|"bounce"|"complaint"|"delivery"|"open"|"click"|"renderingFailure"
+#'       ),
+#'       KinesisFirehoseDestination = list(
+#'         IAMRoleARN = "string",
+#'         DeliveryStreamARN = "string"
+#'       ),
+#'       CloudWatchDestination = list(
+#'         DimensionConfigurations = list(
+#'           list(
+#'             DimensionName = "string",
+#'             DimensionValueSource = "messageTag"|"emailHeader"|"linkTag",
+#'             DefaultDimensionValue = "string"
+#'           )
+#'         )
+#'       ),
+#'       SNSDestination = list(
+#'         TopicARN = "string"
+#'       )
+#'     )
+#'   ),
+#'   TrackingOptions = list(
+#'     CustomRedirectDomain = "string"
+#'   ),
+#'   DeliveryOptions = list(
+#'     TlsPolicy = "Require"|"Optional"
+#'   ),
+#'   ReputationOptions = list(
+#'     SendingEnabled = TRUE|FALSE,
+#'     ReputationMetricsEnabled = TRUE|FALSE,
+#'     LastFreshStart = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_configuration_set(
@@ -1252,6 +1470,60 @@ ses_describe_configuration_set <- function(ConfigurationSetName, ConfigurationSe
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set that the receipt rule belongs to.
 #' @param RuleName &#91;required&#93; The name of the receipt rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rule = list(
+#'     Name = "string",
+#'     Enabled = TRUE|FALSE,
+#'     TlsPolicy = "Require"|"Optional",
+#'     Recipients = list(
+#'       "string"
+#'     ),
+#'     Actions = list(
+#'       list(
+#'         S3Action = list(
+#'           TopicArn = "string",
+#'           BucketName = "string",
+#'           ObjectKeyPrefix = "string",
+#'           KmsKeyArn = "string"
+#'         ),
+#'         BounceAction = list(
+#'           TopicArn = "string",
+#'           SmtpReplyCode = "string",
+#'           StatusCode = "string",
+#'           Message = "string",
+#'           Sender = "string"
+#'         ),
+#'         WorkmailAction = list(
+#'           TopicArn = "string",
+#'           OrganizationArn = "string"
+#'         ),
+#'         LambdaAction = list(
+#'           TopicArn = "string",
+#'           FunctionArn = "string",
+#'           InvocationType = "Event"|"RequestResponse"
+#'         ),
+#'         StopAction = list(
+#'           Scope = "RuleSet",
+#'           TopicArn = "string"
+#'         ),
+#'         AddHeaderAction = list(
+#'           HeaderName = "string",
+#'           HeaderValue = "string"
+#'         ),
+#'         SNSAction = list(
+#'           TopicArn = "string",
+#'           Encoding = "UTF-8"|"Base64"
+#'         )
+#'       )
+#'     ),
+#'     ScanEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1306,6 +1578,68 @@ ses_describe_receipt_rule <- function(RuleSetName, RuleName) {
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Metadata = list(
+#'     Name = "string",
+#'     CreatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Rules = list(
+#'     list(
+#'       Name = "string",
+#'       Enabled = TRUE|FALSE,
+#'       TlsPolicy = "Require"|"Optional",
+#'       Recipients = list(
+#'         "string"
+#'       ),
+#'       Actions = list(
+#'         list(
+#'           S3Action = list(
+#'             TopicArn = "string",
+#'             BucketName = "string",
+#'             ObjectKeyPrefix = "string",
+#'             KmsKeyArn = "string"
+#'           ),
+#'           BounceAction = list(
+#'             TopicArn = "string",
+#'             SmtpReplyCode = "string",
+#'             StatusCode = "string",
+#'             Message = "string",
+#'             Sender = "string"
+#'           ),
+#'           WorkmailAction = list(
+#'             TopicArn = "string",
+#'             OrganizationArn = "string"
+#'           ),
+#'           LambdaAction = list(
+#'             TopicArn = "string",
+#'             FunctionArn = "string",
+#'             InvocationType = "Event"|"RequestResponse"
+#'           ),
+#'           StopAction = list(
+#'             Scope = "RuleSet",
+#'             TopicArn = "string"
+#'           ),
+#'           AddHeaderAction = list(
+#'             HeaderName = "string",
+#'             HeaderValue = "string"
+#'           ),
+#'           SNSAction = list(
+#'             TopicArn = "string",
+#'             Encoding = "UTF-8"|"Base64"
+#'           )
+#'         )
+#'       ),
+#'       ScanEnabled = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_receipt_rule_set(
@@ -1356,6 +1690,14 @@ ses_describe_receipt_rule_set <- function(RuleSetName) {
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Enabled = TRUE|FALSE
+#' )
+#' ```
+#'
 
 #'
 #' @examples
@@ -1404,6 +1746,19 @@ ses_get_account_sending_enabled <- function() {
 #'
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template that you want to
 #' retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TemplateName = "string",
+#'   FromEmailAddress = "string",
+#'   TemplateSubject = "string",
+#'   TemplateContent = "string",
+#'   SuccessRedirectionURL = "string",
+#'   FailureRedirectionURL = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1465,6 +1820,22 @@ ses_get_custom_verification_email_template <- function(TemplateName) {
 #' @param Identities &#91;required&#93; A list of one or more verified identities - email addresses, domains, or
 #' both.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DkimAttributes = list(
+#'     list(
+#'       DkimEnabled = TRUE|FALSE,
+#'       DkimVerificationStatus = "Pending"|"Success"|"Failed"|"TemporaryFailure"|"NotStarted",
+#'       DkimTokens = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_identity_dkim_attributes(
@@ -1520,6 +1891,20 @@ ses_get_identity_dkim_attributes <- function(Identities) {
 #' ses_get_identity_mail_from_domain_attributes(Identities)
 #'
 #' @param Identities &#91;required&#93; A list of one or more identities.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MailFromDomainAttributes = list(
+#'     list(
+#'       MailFromDomain = "string",
+#'       MailFromDomainStatus = "Pending"|"Success"|"Failed"|"TemporaryFailure",
+#'       BehaviorOnMXFailure = "UseDefaultValue"|"RejectMessage"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1582,6 +1967,24 @@ ses_get_identity_mail_from_domain_attributes <- function(Identities) {
 #' its name or by using its Amazon Resource Name (ARN). Examples:
 #' `user@@example.com`, `example.com`,
 #' `arn:aws:ses:us-east-1:123456789012:identity/example.com`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotificationAttributes = list(
+#'     list(
+#'       BounceTopic = "string",
+#'       ComplaintTopic = "string",
+#'       DeliveryTopic = "string",
+#'       ForwardingEnabled = TRUE|FALSE,
+#'       HeadersInBounceNotificationsEnabled = TRUE|FALSE,
+#'       HeadersInComplaintNotificationsEnabled = TRUE|FALSE,
+#'       HeadersInDeliveryNotificationsEnabled = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1655,6 +2058,16 @@ ses_get_identity_notification_attributes <- function(Identities) {
 #' maximum of 20 policies at a time. If you do not know the names of the
 #' policies that are attached to the identity, you can use
 #' [`list_identity_policies`][ses_list_identity_policies].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policies = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1732,6 +2145,19 @@ ses_get_identity_policies <- function(Identity, PolicyNames) {
 #'
 #' @param Identities &#91;required&#93; A list of identities.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VerificationAttributes = list(
+#'     list(
+#'       VerificationStatus = "Pending"|"Success"|"Failed"|"TemporaryFailure"|"NotStarted",
+#'       VerificationToken = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_identity_verification_attributes(
@@ -1784,6 +2210,16 @@ ses_get_identity_verification_attributes <- function(Identities) {
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Max24HourSend = 123.0,
+#'   MaxSendRate = 123.0,
+#'   SentLast24Hours = 123.0
+#' )
+#' ```
+#'
 
 #'
 #' @examples
@@ -1828,6 +2264,24 @@ ses_get_send_quota <- function() {
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SendDataPoints = list(
+#'     list(
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DeliveryAttempts = 123,
+#'       Bounces = 123,
+#'       Complaints = 123,
+#'       Rejects = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 
 #'
 #' @examples
@@ -1869,6 +2323,19 @@ ses_get_send_statistics <- function() {
 #' ses_get_template(TemplateName)
 #'
 #' @param TemplateName &#91;required&#93; The name of the template you want to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Template = list(
+#'     TemplateName = "string",
+#'     SubjectPart = "string",
+#'     TextPart = "string",
+#'     HtmlPart = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1923,6 +2390,19 @@ ses_get_template <- function(TemplateName) {
 #' position of the configuration set in the configuration set list.
 #' @param MaxItems The number of configuration sets to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationSets = list(
+#'     list(
+#'       Name = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_configuration_sets(
@@ -1975,6 +2455,23 @@ ses_list_configuration_sets <- function(NextToken = NULL, MaxItems = NULL) {
 #' not specify a value, or if you specify a value less than 1 or greater
 #' than 50, the operation will return up to 50 results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CustomVerificationEmailTemplates = list(
+#'     list(
+#'       TemplateName = "string",
+#'       FromEmailAddress = "string",
+#'       TemplateSubject = "string",
+#'       SuccessRedirectionURL = "string",
+#'       FailureRedirectionURL = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_custom_verification_email_templates(
@@ -2023,6 +2520,17 @@ ses_list_custom_verification_email_templates <- function(NextToken = NULL, MaxRe
 #' @param NextToken The token to use for pagination.
 #' @param MaxItems The maximum number of identities per page. Possible values are 1-1000
 #' inclusive.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Identities = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2094,6 +2602,16 @@ ses_list_identities <- function(IdentityType = NULL, NextToken = NULL, MaxItems 
 #' 
 #' To successfully call this API, you must own the identity.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_identity_policies(
@@ -2145,6 +2663,22 @@ ses_list_identity_policies <- function(Identity) {
 #'
 #' @usage
 #' ses_list_receipt_filters()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       IpFilter = list(
+#'         Policy = "Block"|"Allow",
+#'         Cidr = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2200,6 +2734,22 @@ ses_list_receipt_filters <- function() {
 #' @param NextToken A token returned from a previous call to
 #' [`list_receipt_rule_sets`][ses_list_receipt_rule_sets] to indicate the
 #' position in the receipt rule set list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleSets = list(
+#'     list(
+#'       Name = "string",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2257,6 +2807,22 @@ ses_list_receipt_rule_sets <- function(NextToken = NULL) {
 #' specify a value less than 1 or greater than 10, the operation will
 #' return up to 10 results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TemplatesMetadata = list(
+#'     list(
+#'       Name = "string",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_templates(
@@ -2295,6 +2861,16 @@ ses_list_templates <- function(NextToken = NULL, MaxItems = NULL) {
 #' ses_list_verified_email_addresses()
 #'
 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VerifiedEmailAddresses = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 
 #'
@@ -2338,6 +2914,12 @@ ses_list_verified_email_addresses <- function() {
 #' options for.
 #' @param DeliveryOptions Specifies whether messages that use the configuration set are required
 #' to use Transport Layer Security (TLS).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2405,6 +2987,12 @@ ses_put_configuration_set_delivery_options <- function(ConfigurationSetName, Del
 #' the [Amazon SES Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_identity_policy(
@@ -2420,7 +3008,7 @@ ses_put_configuration_set_delivery_options <- function(ConfigurationSetName, Del
 #' # identity:
 #' svc$put_identity_policy(
 #'   Identity = "example.com",
-#'   Policy = "\{\"Version\":\"2008-10-17\",\"Statement\":[\{\"Sid\":\"stmt1469123904194\",...",
+#'   Policy = "\{"Version":"2008-10-17","Statement":[\{"Sid":"stmt1469123904194","Effect":...",
 #'   PolicyName = "MyPolicy"
 #' )
 #' }
@@ -2466,6 +3054,12 @@ ses_put_identity_policy <- function(Identity, PolicyName, Policy) {
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set to reorder.
 #' @param RuleNames &#91;required&#93; A list of the specified receipt rule set's receipt rules in the order
 #' that you want to put them.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2549,6 +3143,14 @@ ses_reorder_receipt_rule_set <- function(RuleSetName, RuleNames) {
 #' For more information about sending authorization, see the [Amazon SES
 #' Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2746,6 +3348,20 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' `Destination` will receive the same version of the email. You can
 #' specify up to 50 `Destination` objects within a `Destinations` array.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = list(
+#'     list(
+#'       Status = "Success"|"MessageRejected"|"MailFromDomainNotVerified"|"ConfigurationSetDoesNotExist"|"TemplateDoesNotExist"|"AccountSuspended"|"AccountThrottled"|"AccountDailyQuotaExceeded"|"InvalidSendingPoolName"|"AccountSendingPaused"|"ConfigurationSetSendingPaused"|"InvalidParameterValue"|"TransientFailure"|"Failed",
+#'       Error = "string",
+#'       MessageId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_bulk_templated_email(
@@ -2836,6 +3452,14 @@ ses_send_bulk_templated_email <- function(Source, SourceArn = NULL, ReplyToAddre
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template to use when sending
 #' the verification email.
 #' @param ConfigurationSetName Name of a configuration set to use when sending the verification email.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2985,6 +3609,14 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' @param ConfigurationSetName The name of the configuration set to use when you send an email using
 #' [`send_email`][ses_send_email].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_email(
@@ -3050,7 +3682,7 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #'     Body = list(
 #'       Html = list(
 #'         Charset = "UTF-8",
-#'         Data = "This message body contains HTML formatting. It can, for example, contain lin..."
+#'         Data = "This message body contains HTML formatting. It can, for example, cont..."
 #'       ),
 #'       Text = list(
 #'         Charset = "UTF-8",
@@ -3305,6 +3937,14 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' @param ConfigurationSetName The name of the configuration set to use when you send an email using
 #' [`send_raw_email`][ses_send_raw_email].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_raw_email(
@@ -3335,7 +3975,7 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #'   Destinations = list(),
 #'   FromArn = "",
 #'   RawMessage = list(
-#'     Data = "From: sender@example.com\\nTo: recipient@example.com\\nSubject: Test email (cont..."
+#'     Data = "From: sender@example.com\\nTo: recipient@example.com\\nSubject: Test emai..."
 #'   ),
 #'   ReturnPathArn = "",
 #'   Source = "",
@@ -3500,6 +4140,14 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' a JSON object, typically consisting of key-value pairs in which the keys
 #' correspond to replacement tags in the email template.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_templated_email(
@@ -3574,6 +4222,12 @@ ses_send_templated_email <- function(Source, Destination, ReplyToAddresses = NUL
 #' @param RuleSetName The name of the receipt rule set to make active. Setting this value to
 #' null disables all email receiving.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_active_receipt_rule_set(
@@ -3638,6 +4292,12 @@ ses_set_active_receipt_rule_set <- function(RuleSetName = NULL) {
 #' @param Identity &#91;required&#93; The identity for which DKIM signing should be enabled or disabled.
 #' @param DkimEnabled &#91;required&#93; Sets whether DKIM signing is enabled for an identity. Set to `true` to
 #' enable DKIM signing for this identity; `false` to disable it.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3710,6 +4370,12 @@ ses_set_identity_dkim_enabled <- function(Identity, DkimEnabled) {
 #' value can only be set to `false` when Amazon SNS topics are set for both
 #' `Bounce` and `Complaint` notification types.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_identity_feedback_forwarding_enabled(
@@ -3779,6 +4445,12 @@ ses_set_identity_feedback_forwarding_enabled <- function(Identity, ForwardingEna
 #' 
 #' This value can only be set when `NotificationType` is already set to use
 #' a particular Amazon SNS topic.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3860,6 +4532,12 @@ ses_set_identity_headers_in_notifications_enabled <- function(Identity, Notifica
 #' MAIL FROM domain setup is in the `Pending`, `Failed`, and
 #' `TemporaryFailure` states.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_identity_mail_from_domain(
@@ -3937,6 +4615,12 @@ ses_set_identity_mail_from_domain <- function(Identity, MailFromDomain = NULL, B
 #' is omitted from the request or a null value is passed, `SnsTopic` is
 #' cleared and publishing is disabled.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_identity_notification_topic(
@@ -3998,6 +4682,12 @@ ses_set_identity_notification_topic <- function(Identity, NotificationType, SnsT
 #' @param After The name of the receipt rule after which to place the specified receipt
 #' rule.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_receipt_rule_position(
@@ -4055,6 +4745,14 @@ ses_set_receipt_rule_position <- function(RuleSetName, RuleName, After = NULL) {
 #' a JSON object, typically consisting of key-value pairs in which the keys
 #' correspond to replacement tags in the email template.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RenderedTemplate = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$test_render_template(
@@ -4100,6 +4798,8 @@ ses_test_render_template <- function(TemplateName, TemplateData) {
 #'
 #' @param Enabled Describes whether email sending is enabled or disabled for your Amazon
 #' SES account in the current AWS Region.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -4162,6 +4862,12 @@ ses_update_account_sending_enabled <- function(Enabled = NULL) {
 #' that you want to update.
 #' @param EventDestination &#91;required&#93; The event destination object that you want to apply to the specified
 #' configuration set.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4234,6 +4940,8 @@ ses_update_configuration_set_event_destination <- function(ConfigurationSetName,
 #' the configuration set, such as bounce and complaint rates, to Amazon
 #' CloudWatch.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_configuration_set_reputation_metrics_enabled(
@@ -4292,6 +5000,8 @@ ses_update_configuration_set_reputation_metrics_enabled <- function(Configuratio
 #' @param Enabled &#91;required&#93; Describes whether email sending is enabled or disabled for the
 #' configuration set.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_configuration_set_sending_enabled(
@@ -4349,6 +5059,12 @@ ses_update_configuration_set_sending_enabled <- function(ConfigurationSetName, E
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set for which you want to update the
 #' custom tracking domain.
 #' @param TrackingOptions &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4412,6 +5128,8 @@ ses_update_configuration_set_tracking_options <- function(ConfigurationSetName, 
 #' @param FailureRedirectionURL The URL that the recipient of the verification email is sent to if his
 #' or her address is not successfully verified.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_custom_verification_email_template(
@@ -4460,6 +5178,12 @@ ses_update_custom_verification_email_template <- function(TemplateName, FromEmai
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set that the receipt rule belongs to.
 #' @param Rule &#91;required&#93; A data structure that contains the updated receipt rule information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4572,6 +5296,12 @@ ses_update_receipt_rule <- function(RuleSetName, Rule) {
 #'
 #' @param Template &#91;required&#93; 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_template(
@@ -4631,7 +5361,7 @@ ses_update_template <- function(Template) {
 #' To create the CNAME records for DKIM authentication, use the following
 #' values:
 #' 
-#' -   **Name**: *token*.\\_domainkey.*example.com*
+#' -   **Name**: *token*._domainkey.*example.com*
 #' 
 #' -   **Type**: CNAME
 #' 
@@ -4648,6 +5378,16 @@ ses_update_template <- function(Template) {
 #' ses_verify_domain_dkim(Domain)
 #'
 #' @param Domain &#91;required&#93; The name of the domain to be verified for Easy DKIM signing.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DkimTokens = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4702,6 +5442,14 @@ ses_verify_domain_dkim <- function(Domain) {
 #'
 #' @param Domain &#91;required&#93; The domain to be verified.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VerificationToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$verify_domain_identity(
@@ -4748,6 +5496,8 @@ ses_verify_domain_identity <- function(Domain) {
 #' ses_verify_email_address(EmailAddress)
 #'
 #' @param EmailAddress &#91;required&#93; The email address to be verified.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -4800,6 +5550,12 @@ ses_verify_email_address <- function(EmailAddress) {
 #' ses_verify_email_identity(EmailAddress)
 #'
 #' @param EmailAddress &#91;required&#93; The email address to be verified.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

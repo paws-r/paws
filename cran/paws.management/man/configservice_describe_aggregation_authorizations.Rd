@@ -14,6 +14,22 @@ The default is maximum. If you specify 0, AWS Config uses the default.}
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AggregationAuthorizations = list(
+    list(
+      AggregationAuthorizationArn = "string",
+      AuthorizedAccountId = "string",
+      AuthorizedAwsRegion = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a list of authorizations granted to various aggregator accounts
 and regions.

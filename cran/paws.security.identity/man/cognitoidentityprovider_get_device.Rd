@@ -11,6 +11,29 @@ cognitoidentityprovider_get_device(DeviceKey, AccessToken)
 
 \item{AccessToken}{The access token.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Device = list(
+    DeviceKey = "string",
+    DeviceAttributes = list(
+      list(
+        Name = "string",
+        Value = "string"
+      )
+    ),
+    DeviceCreateDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    DeviceLastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    DeviceLastAuthenticatedDate = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Gets the device.
 }

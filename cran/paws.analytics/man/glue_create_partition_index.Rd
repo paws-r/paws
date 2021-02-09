@@ -19,6 +19,10 @@ index.}
 \item{PartitionIndex}{[required] Specifies a \code{PartitionIndex} structure to create a partition index in an
 existing table.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates a specified partition index in an existing table.
 }

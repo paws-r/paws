@@ -25,6 +25,13 @@ request token, Amazon Comprehend generates one.}
 
 \item{TargetEventTypes}{[required] The types of events to detect in the input documents.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string",
+  JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+)
+}
+}
 \description{
 Starts an asynchronous event detection job for a collection of
 documents.

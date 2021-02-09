@@ -11,6 +11,22 @@ chime_put_voice_connector_termination(VoiceConnectorId, Termination)
 
 \item{Termination}{[required] The termination setting details to add.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Termination = list(
+    CpsLimit = 123,
+    DefaultPhoneNumber = "string",
+    CallingRegions = list(
+      "string"
+    ),
+    CidrAllowedList = list(
+      "string"
+    ),
+    Disabled = TRUE|FALSE
+  )
+)
+}
+}
 \description{
 Adds termination settings for the specified Amazon Chime Voice
 Connector.

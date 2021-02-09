@@ -12,6 +12,25 @@ serverlessapplicationrepository_put_application_policy(ApplicationId,
 
 \item{Statements}{[required] An array of policy statements applied to the application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Statements = list(
+    list(
+      Actions = list(
+        "string"
+      ),
+      PrincipalOrgIDs = list(
+        "string"
+      ),
+      Principals = list(
+        "string"
+      ),
+      StatementId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Sets the permission policy for an application. For the list of actions
 supported for this operation, see \href{https://docs.aws.amazon.com/serverlessrepo/latest/devguide/security_iam_resource-based-policy-examples.html#application-permissions}{Application Permissions}

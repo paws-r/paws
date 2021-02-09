@@ -141,6 +141,14 @@ For more information about high throughput for FIFO queues, see
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html}{Preview: High throughput for FIFO queues}
 in the \emph{Amazon Simple Queue Service Developer Guide}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Gets attributes for the specified queue.
 

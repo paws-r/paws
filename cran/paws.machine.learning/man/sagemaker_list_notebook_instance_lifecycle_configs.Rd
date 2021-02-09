@@ -37,6 +37,24 @@ before the specified time (timestamp).}
 \item{LastModifiedTimeAfter}{A filter that returns only lifecycle configurations that were modified
 after the specified time (timestamp).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  NotebookInstanceLifecycleConfigs = list(
+    list(
+      NotebookInstanceLifecycleConfigName = "string",
+      NotebookInstanceLifecycleConfigArn = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      LastModifiedTime = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists notebook instance lifestyle configurations created with the
 \code{\link[=sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config}}

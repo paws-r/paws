@@ -36,6 +36,37 @@ servicecatalog_update_product(AcceptLanguage, Id, Name, Owner,
 
 \item{RemoveTags}{The tags to remove from the product.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProductViewDetail = list(
+    ProductViewSummary = list(
+      Id = "string",
+      ProductId = "string",
+      Name = "string",
+      Owner = "string",
+      ShortDescription = "string",
+      Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+      Distributor = "string",
+      HasDefaultPath = TRUE|FALSE,
+      SupportEmail = "string",
+      SupportDescription = "string",
+      SupportUrl = "string"
+    ),
+    Status = "AVAILABLE"|"CREATING"|"FAILED",
+    ProductARN = "string",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Updates the specified product.
 }

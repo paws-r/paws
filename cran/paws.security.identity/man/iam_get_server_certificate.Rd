@@ -13,7 +13,28 @@ about.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: \\_+=,.@-}
+spaces. You can also include any of the following characters: _+=,.@-}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ServerCertificate = list(
+    ServerCertificateMetadata = list(
+      Path = "string",
+      ServerCertificateName = "string",
+      ServerCertificateId = "string",
+      Arn = "string",
+      UploadDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Expiration = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    CertificateBody = "string",
+    CertificateChain = "string"
+  )
+)
+}
 }
 \description{
 Retrieves information about the specified server certificate stored in

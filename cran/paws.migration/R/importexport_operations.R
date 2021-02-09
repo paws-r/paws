@@ -6,13 +6,22 @@ NULL
 #' This operation cancels a specified job
 #'
 #' @description
-#' This operation cancels a specified job. Only the job owner can cancel it. The operation fails if the job has already started or is complete.
+#' This operation cancels a specified job. Only the job owner can cancel
+#' it. The operation fails if the job has already started or is complete.
 #'
 #' @usage
 #' importexport_cancel_job(JobId, APIVersion)
 #'
 #' @param JobId &#91;required&#93; 
 #' @param APIVersion 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Success = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -46,7 +55,12 @@ importexport_cancel_job <- function(JobId, APIVersion = NULL) {
 #' of your data
 #'
 #' @description
-#' This operation initiates the process of scheduling an upload or download of your data. You include in the request a manifest that describes the data transfer specifics. The response to the request includes a job ID, which you can use in other operations, a signature that you use to identify your storage device, and the address where you should ship your storage device.
+#' This operation initiates the process of scheduling an upload or download
+#' of your data. You include in the request a manifest that describes the
+#' data transfer specifics. The response to the request includes a job ID,
+#' which you can use in other operations, a signature that you use to
+#' identify your storage device, and the address where you should ship your
+#' storage device.
 #'
 #' @usage
 #' importexport_create_job(JobType, Manifest, ManifestAddendum,
@@ -57,6 +71,24 @@ importexport_cancel_job <- function(JobId, APIVersion = NULL) {
 #' @param ManifestAddendum 
 #' @param ValidateOnly &#91;required&#93; 
 #' @param APIVersion 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobType = "Import"|"Export",
+#'   Signature = "string",
+#'   SignatureFileContents = "string",
+#'   WarningMessage = "string",
+#'   ArtifactList = list(
+#'     list(
+#'       Description = "string",
+#'       URL = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -93,7 +125,8 @@ importexport_create_job <- function(JobType, Manifest, ManifestAddendum = NULL, 
 #' to ship your device to AWS for processing
 #'
 #' @description
-#' This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for processing.
+#' This operation generates a pre-paid UPS shipping label that you will use
+#' to ship your device to AWS for processing.
 #'
 #' @usage
 #' importexport_get_shipping_label(jobIds, name, company, phoneNumber,
@@ -112,6 +145,15 @@ importexport_create_job <- function(JobType, Manifest, ManifestAddendum = NULL, 
 #' @param street2 
 #' @param street3 
 #' @param APIVersion 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ShippingLabelURL = "string",
+#'   Warning = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -158,13 +200,46 @@ importexport_get_shipping_label <- function(jobIds, name = NULL, company = NULL,
 #' signature value associated with the job
 #'
 #' @description
-#' This operation returns information about a job, including where the job is in the processing pipeline, the status of the results, and the signature value associated with the job. You can only return information about jobs you own.
+#' This operation returns information about a job, including where the job
+#' is in the processing pipeline, the status of the results, and the
+#' signature value associated with the job. You can only return information
+#' about jobs you own.
 #'
 #' @usage
 #' importexport_get_status(JobId, APIVersion)
 #'
 #' @param JobId &#91;required&#93; 
 #' @param APIVersion 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobType = "Import"|"Export",
+#'   LocationCode = "string",
+#'   LocationMessage = "string",
+#'   ProgressCode = "string",
+#'   ProgressMessage = "string",
+#'   Carrier = "string",
+#'   TrackingNumber = "string",
+#'   LogBucket = "string",
+#'   LogKey = "string",
+#'   ErrorCount = 123,
+#'   Signature = "string",
+#'   SignatureFileContents = "string",
+#'   CurrentManifest = "string",
+#'   CreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ArtifactList = list(
+#'     list(
+#'       Description = "string",
+#'       URL = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -197,7 +272,11 @@ importexport_get_status <- function(JobId, APIVersion = NULL) {
 #' This operation returns the jobs associated with the requester
 #'
 #' @description
-#' This operation returns the jobs associated with the requester. AWS Import/Export lists the jobs in reverse chronological order based on the date of creation. For example if Job Test1 was created 2009Dec30 and Test2 was created 2010Feb05, the ListJobs operation would return Test2 followed by Test1.
+#' This operation returns the jobs associated with the requester. AWS
+#' Import/Export lists the jobs in reverse chronological order based on the
+#' date of creation. For example if Job Test1 was created 2009Dec30 and
+#' Test2 was created 2010Feb05, the ListJobs operation would return Test2
+#' followed by Test1.
 #'
 #' @usage
 #' importexport_list_jobs(MaxJobs, Marker, APIVersion)
@@ -205,6 +284,24 @@ importexport_get_status <- function(JobId, APIVersion = NULL) {
 #' @param MaxJobs 
 #' @param Marker 
 #' @param APIVersion 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Jobs = list(
+#'     list(
+#'       JobId = "string",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       IsCanceled = TRUE|FALSE,
+#'       JobType = "Import"|"Export"
+#'     )
+#'   ),
+#'   IsTruncated = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -239,7 +336,11 @@ importexport_list_jobs <- function(MaxJobs = NULL, Marker = NULL, APIVersion = N
 #' original manifest file by supplying a new manifest file
 #'
 #' @description
-#' You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file. The manifest file attached to this request replaces the original manifest file. You can only use the operation after a CreateJob request but before the data transfer starts and you can only use it on jobs you own.
+#' You use this operation to change the parameters specified in the
+#' original manifest file by supplying a new manifest file. The manifest
+#' file attached to this request replaces the original manifest file. You
+#' can only use the operation after a CreateJob request but before the data
+#' transfer starts and you can only use it on jobs you own.
 #'
 #' @usage
 #' importexport_update_job(JobId, Manifest, JobType, ValidateOnly,
@@ -250,6 +351,21 @@ importexport_list_jobs <- function(MaxJobs = NULL, Marker = NULL, APIVersion = N
 #' @param JobType &#91;required&#93; 
 #' @param ValidateOnly &#91;required&#93; 
 #' @param APIVersion 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Success = TRUE|FALSE,
+#'   WarningMessage = "string",
+#'   ArtifactList = list(
+#'     list(
+#'       Description = "string",
+#'       URL = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

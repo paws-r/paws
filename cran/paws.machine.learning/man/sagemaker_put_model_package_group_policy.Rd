@@ -12,6 +12,12 @@ sagemaker_put_model_package_group_policy(ModelPackageGroupName,
 
 \item{ResourcePolicy}{[required] The resource policy for the model group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ModelPackageGroupArn = "string"
+)
+}
+}
 \description{
 Adds a resouce policy to control access to a model group. For
 information about resoure policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html}{Identity-based policies and resource-based policies}

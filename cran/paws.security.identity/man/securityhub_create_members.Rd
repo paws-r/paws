@@ -13,6 +13,17 @@ securityhub_create_members(AccountDetails)
 For each account, the list includes the account ID and optionally the
 email address.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UnprocessedAccounts = list(
+    list(
+      AccountId = "string",
+      ProcessingResult = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates a member association in Security Hub between the specified
 accounts and the account used to make the request, which is the master

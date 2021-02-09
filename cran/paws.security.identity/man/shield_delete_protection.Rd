@@ -9,6 +9,10 @@ shield_delete_protection(ProtectionId)
 \arguments{
 \item{ProtectionId}{[required] The unique identifier (ID) for the Protection object to be deleted.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes an AWS Shield Advanced Protection.
 }

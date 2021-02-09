@@ -37,6 +37,13 @@ duration.
 Please provide for a small grace period, usually no more than 5 minutes,
 to account for clock skew.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IdentityId = "string",
+  Token = "string"
+)
+}
+}
 \description{
 Registers (or retrieves) a Cognito \code{IdentityId} and an OpenID Connect
 token for a user authenticated by your backend authentication process.

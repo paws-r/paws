@@ -13,6 +13,21 @@ glue_get_mapping(Source, Sinks, Location)
 
 \item{Location}{Parameters for the mapping.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Mapping = list(
+    list(
+      SourceTable = "string",
+      SourcePath = "string",
+      SourceType = "string",
+      TargetTable = "string",
+      TargetPath = "string",
+      TargetType = "string"
+    )
+  )
+)
+}
+}
 \description{
 Creates mappings.
 }

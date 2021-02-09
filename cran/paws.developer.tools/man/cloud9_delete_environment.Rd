@@ -9,6 +9,10 @@ cloud9_delete_environment(environmentId)
 \arguments{
 \item{environmentId}{[required] The ID of the environment to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes an AWS Cloud9 development environment. If an Amazon EC2 instance
 is connected to the environment, also terminates the instance.

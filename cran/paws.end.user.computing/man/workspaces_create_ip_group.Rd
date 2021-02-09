@@ -15,6 +15,12 @@ workspaces_create_ip_group(GroupName, GroupDesc, UserRules, Tags)
 
 \item{Tags}{The tags. Each WorkSpaces resource can have a maximum of 50 tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GroupId = "string"
+)
+}
+}
 \description{
 Creates an IP access control group.
 

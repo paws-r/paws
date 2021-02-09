@@ -11,6 +11,10 @@ opsworkscm_delete_backup(BackupId)
 list of backup IDs. Backup IDs are in the format
 \code{ServerName-yyyyMMddHHmmssSSS}.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a backup. You can delete both manual and automated backups. This
 operation is asynchronous.

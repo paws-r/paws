@@ -37,6 +37,33 @@ NULL
 #' 
 #' -   `public:nuget-org` - for the NuGet Gallery.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repository = list(
+#'     name = "string",
+#'     administratorAccount = "string",
+#'     domainName = "string",
+#'     domainOwner = "string",
+#'     arn = "string",
+#'     description = "string",
+#'     upstreams = list(
+#'       list(
+#'         repositoryName = "string"
+#'       )
+#'     ),
+#'     externalConnections = list(
+#'       list(
+#'         externalConnectionName = "string",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget",
+#'         status = "Available"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_external_connection(
@@ -132,6 +159,25 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
 #' is false. For more information, see [Working with upstream
 #' repositories](https://docs.aws.amazon.com/codeartifact/latest/ug/repos-upstream.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   successfulVersions = list(
+#'     list(
+#'       revision = "string",
+#'       status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted"
+#'     )
+#'   ),
+#'   failedVersions = list(
+#'     list(
+#'       errorCode = "ALREADY_EXISTS"|"MISMATCHED_REVISION"|"MISMATCHED_STATUS"|"NOT_ALLOWED"|"NOT_FOUND"|"SKIPPED",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$copy_package_versions(
@@ -213,6 +259,26 @@ codeartifact_copy_package_versions <- function(domain, domainOwner = NULL, sourc
 #' in the *AWS Key Management Service Developer Guide*.
 #' @param tags One or more tag key-value pairs for the domain.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domain = list(
+#'     name = "string",
+#'     owner = "string",
+#'     arn = "string",
+#'     status = "Active"|"Deleted",
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     encryptionKey = "string",
+#'     repositoryCount = 123,
+#'     assetSizeBytes = 123,
+#'     s3BucketArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_domain(
@@ -267,6 +333,33 @@ codeartifact_create_domain <- function(domain, encryptionKey = NULL, tags = NULL
 #' more information, see [Working with upstream
 #' repositories](https://docs.aws.amazon.com/codeartifact/latest/ug/repos-upstream.html).
 #' @param tags One or more tag key-value pairs for the repository.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repository = list(
+#'     name = "string",
+#'     administratorAccount = "string",
+#'     domainName = "string",
+#'     domainOwner = "string",
+#'     arn = "string",
+#'     description = "string",
+#'     upstreams = list(
+#'       list(
+#'         repositoryName = "string"
+#'       )
+#'     ),
+#'     externalConnections = list(
+#'       list(
+#'         externalConnectionName = "string",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget",
+#'         status = "Available"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -323,6 +416,26 @@ codeartifact_create_repository <- function(domain, domainOwner = NULL, repositor
 #' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
 #' does not include dashes or spaces.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domain = list(
+#'     name = "string",
+#'     owner = "string",
+#'     arn = "string",
+#'     status = "Active"|"Deleted",
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     encryptionKey = "string",
+#'     repositoryCount = 123,
+#'     assetSizeBytes = 123,
+#'     s3BucketArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_domain(
@@ -367,6 +480,18 @@ codeartifact_delete_domain <- function(domain, domainOwner = NULL) {
 #' @param policyRevision The current revision of the resource policy to be deleted. This revision
 #' is used for optimistic locking, which prevents others from overwriting
 #' your changes to the domain's resource policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policy = list(
+#'     resourceArn = "string",
+#'     revision = "string",
+#'     document = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -451,6 +576,25 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #' 
 #' -   `Disposed`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   successfulVersions = list(
+#'     list(
+#'       revision = "string",
+#'       status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted"
+#'     )
+#'   ),
+#'   failedVersions = list(
+#'     list(
+#'       errorCode = "ALREADY_EXISTS"|"MISMATCHED_REVISION"|"MISMATCHED_STATUS"|"NOT_ALLOWED"|"NOT_FOUND"|"SKIPPED",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_package_versions(
@@ -499,6 +643,33 @@ codeartifact_delete_package_versions <- function(domain, domainOwner = NULL, rep
 #' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
 #' does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repository = list(
+#'     name = "string",
+#'     administratorAccount = "string",
+#'     domainName = "string",
+#'     domainOwner = "string",
+#'     arn = "string",
+#'     description = "string",
+#'     upstreams = list(
+#'       list(
+#'         repositoryName = "string"
+#'       )
+#'     ),
+#'     externalConnections = list(
+#'       list(
+#'         externalConnectionName = "string",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget",
+#'         status = "Available"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -558,6 +729,18 @@ codeartifact_delete_repository <- function(domain, domainOwner = NULL, repositor
 #' accidentally overwriting your changes to the repository's resource
 #' policy.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policy = list(
+#'     resourceArn = "string",
+#'     revision = "string",
+#'     document = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_repository_permissions_policy(
@@ -602,6 +785,26 @@ codeartifact_delete_repository_permissions_policy <- function(domain, domainOwne
 #' @param domain &#91;required&#93; A string that specifies the name of the requested domain.
 #' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
 #' does not include dashes or spaces.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domain = list(
+#'     name = "string",
+#'     owner = "string",
+#'     arn = "string",
+#'     status = "Active"|"Deleted",
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     encryptionKey = "string",
+#'     repositoryCount = 123,
+#'     assetSizeBytes = 123,
+#'     s3BucketArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -673,6 +876,34 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #' @param package &#91;required&#93; The name of the requested package version.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   packageVersion = list(
+#'     format = "npm"|"pypi"|"maven"|"nuget",
+#'     namespace = "string",
+#'     packageName = "string",
+#'     displayName = "string",
+#'     version = "string",
+#'     summary = "string",
+#'     homePage = "string",
+#'     sourceCodeRepository = "string",
+#'     publishedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     licenses = list(
+#'       list(
+#'         name = "string",
+#'         url = "string"
+#'       )
+#'     ),
+#'     revision = "string",
+#'     status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_package_version(
@@ -721,6 +952,33 @@ codeartifact_describe_package_version <- function(domain, domainOwner = NULL, re
 #' does not include dashes or spaces.
 #' @param repository &#91;required&#93; A string that specifies the name of the requested repository.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repository = list(
+#'     name = "string",
+#'     administratorAccount = "string",
+#'     domainName = "string",
+#'     domainOwner = "string",
+#'     arn = "string",
+#'     description = "string",
+#'     upstreams = list(
+#'       list(
+#'         repositoryName = "string"
+#'       )
+#'     ),
+#'     externalConnections = list(
+#'       list(
+#'         externalConnectionName = "string",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget",
+#'         status = "Available"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_repository(
@@ -766,6 +1024,33 @@ codeartifact_describe_repository <- function(domain, domainOwner = NULL, reposit
 #' @param repository &#91;required&#93; The name of the repository from which the external connection will be
 #' removed.
 #' @param externalConnection &#91;required&#93; The name of the external connection to be removed from the repository.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repository = list(
+#'     name = "string",
+#'     administratorAccount = "string",
+#'     domainName = "string",
+#'     domainOwner = "string",
+#'     arn = "string",
+#'     description = "string",
+#'     upstreams = list(
+#'       list(
+#'         repositoryName = "string"
+#'       )
+#'     ),
+#'     externalConnections = list(
+#'       list(
+#'         externalConnectionName = "string",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget",
+#'         status = "Available"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -861,6 +1146,25 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #' 
 #' -   `Disposed`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   successfulVersions = list(
+#'     list(
+#'       revision = "string",
+#'       status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted"
+#'     )
+#'   ),
+#'   failedVersions = list(
+#'     list(
+#'       errorCode = "ALREADY_EXISTS"|"MISMATCHED_REVISION"|"MISMATCHED_STATUS"|"NOT_ALLOWED"|"NOT_FOUND"|"SKIPPED",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$dispose_package_versions(
@@ -946,6 +1250,17 @@ codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, re
 #' authorization token to the same expiration of the user's role's
 #' temporary credentials.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   authorizationToken = "string",
+#'   expiration = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_authorization_token(
@@ -991,6 +1306,18 @@ codeartifact_get_authorization_token <- function(domain, domainOwner = NULL, dur
 #' @param domain &#91;required&#93; The name of the domain to which the resource policy is attached.
 #' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
 #' does not include dashes or spaces.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policy = list(
+#'     resourceArn = "string",
+#'     revision = "string",
+#'     document = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1067,6 +1394,17 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' @param asset &#91;required&#93; The name of the requested asset.
 #' @param packageVersionRevision The name of the package version revision that contains the requested
 #' asset.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   asset = raw,
+#'   assetName = "string",
+#'   packageVersion = "string",
+#'   packageVersionRevision = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1148,6 +1486,19 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #' @param package &#91;required&#93; The name of the package version that contains the requested readme file.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   format = "npm"|"pypi"|"maven"|"nuget",
+#'   namespace = "string",
+#'   package = "string",
+#'   version = "string",
+#'   versionRevision = "string",
+#'   readme = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_package_version_readme(
@@ -1214,6 +1565,14 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #' 
 #' -   `nuget`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositoryEndpoint = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_repository_endpoint(
@@ -1260,6 +1619,18 @@ codeartifact_get_repository_endpoint <- function(domain, domainOwner = NULL, rep
 #' @param repository &#91;required&#93; The name of the repository whose associated resource policy is to be
 #' retrieved.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policy = list(
+#'     resourceArn = "string",
+#'     revision = "string",
+#'     document = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_repository_permissions_policy(
@@ -1304,6 +1675,26 @@ codeartifact_get_repository_permissions_policy <- function(domain, domainOwner =
 #' @param nextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domains = list(
+#'     list(
+#'       name = "string",
+#'       owner = "string",
+#'       arn = "string",
+#'       status = "Active"|"Deleted",
+#'       createdTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       encryptionKey = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1381,6 +1772,28 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 #' @param nextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   format = "npm"|"pypi"|"maven"|"nuget",
+#'   namespace = "string",
+#'   package = "string",
+#'   version = "string",
+#'   versionRevision = "string",
+#'   nextToken = "string",
+#'   assets = list(
+#'     list(
+#'       name = "string",
+#'       size = 123,
+#'       hashes = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1466,6 +1879,27 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #' @param nextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   format = "npm"|"pypi"|"maven"|"nuget",
+#'   namespace = "string",
+#'   package = "string",
+#'   version = "string",
+#'   versionRevision = "string",
+#'   nextToken = "string",
+#'   dependencies = list(
+#'     list(
+#'       namespace = "string",
+#'       package = "string",
+#'       dependencyType = "string",
+#'       versionRequirement = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1561,6 +1995,25 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #' previous response in the next request to retrieve the next set of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   defaultDisplayVersion = "string",
+#'   format = "npm"|"pypi"|"maven"|"nuget",
+#'   namespace = "string",
+#'   package = "string",
+#'   versions = list(
+#'     list(
+#'       version = "string",
+#'       revision = "string",
+#'       status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_package_versions(
@@ -1643,6 +2096,21 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #' previous response in the next request to retrieve the next set of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   packages = list(
+#'     list(
+#'       format = "npm"|"pypi"|"maven"|"nuget",
+#'       namespace = "string",
+#'       package = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_packages(
@@ -1695,6 +2163,24 @@ codeartifact_list_packages <- function(domain, domainOwner = NULL, repository, f
 #' @param nextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositories = list(
+#'     list(
+#'       name = "string",
+#'       administratorAccount = "string",
+#'       domainName = "string",
+#'       domainOwner = "string",
+#'       arn = "string",
+#'       description = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1750,6 +2236,24 @@ codeartifact_list_repositories <- function(repositoryPrefix = NULL, maxResults =
 #' previous response in the next request to retrieve the next set of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositories = list(
+#'     list(
+#'       name = "string",
+#'       administratorAccount = "string",
+#'       domainName = "string",
+#'       domainOwner = "string",
+#'       arn = "string",
+#'       description = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_repositories_in_domain(
@@ -1793,6 +2297,19 @@ codeartifact_list_repositories_in_domain <- function(domain, domainOwner = NULL,
 #' codeartifact_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to get tags for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1847,6 +2364,18 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 #' changes to the domain's resource policy.
 #' @param policyDocument &#91;required&#93; A valid displayable JSON Aspen policy string to be set as the access
 #' control resource policy on the provided domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policy = list(
+#'     resourceArn = "string",
+#'     revision = "string",
+#'     document = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1908,6 +2437,18 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' @param policyDocument &#91;required&#93; A valid displayable JSON Aspen policy string to be set as the access
 #' control resource policy on the provided repository.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policy = list(
+#'     resourceArn = "string",
+#'     revision = "string",
+#'     document = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_repository_permissions_policy(
@@ -1950,6 +2491,12 @@ codeartifact_put_repository_permissions_policy <- function(domain, domainOwner =
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to add or
 #' update tags for.
 #' @param tags &#91;required&#93; The tags you want to modify or add to the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1995,6 +2542,12 @@ codeartifact_tag_resource <- function(resourceArn, tags) {
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to remove
 #' tags from.
 #' @param tagKeys &#91;required&#93; The tag key for each tag that you want to remove from the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2077,6 +2630,25 @@ codeartifact_untag_resource <- function(resourceArn, tagKeys) {
 #' is called matches `expectedStatus`.
 #' @param targetStatus &#91;required&#93; The status you want to change the package version status to.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   successfulVersions = list(
+#'     list(
+#'       revision = "string",
+#'       status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted"
+#'     )
+#'   ),
+#'   failedVersions = list(
+#'     list(
+#'       errorCode = "ALREADY_EXISTS"|"MISMATCHED_REVISION"|"MISMATCHED_STATUS"|"NOT_ALLOWED"|"NOT_FOUND"|"SKIPPED",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_package_versions_status(
@@ -2136,6 +2708,33 @@ codeartifact_update_package_versions_status <- function(domain, domainOwner = NU
 #' order when AWS CodeArtifact looks for a requested package version. For
 #' more information, see [Working with upstream
 #' repositories](https://docs.aws.amazon.com/codeartifact/latest/ug/repos-upstream.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repository = list(
+#'     name = "string",
+#'     administratorAccount = "string",
+#'     domainName = "string",
+#'     domainOwner = "string",
+#'     arn = "string",
+#'     description = "string",
+#'     upstreams = list(
+#'       list(
+#'         repositoryName = "string"
+#'       )
+#'     ),
+#'     externalConnections = list(
+#'       list(
+#'         externalConnectionName = "string",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget",
+#'         status = "Available"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -11,6 +11,16 @@ elb_deregister_instances_from_load_balancer(LoadBalancerName, Instances)
 
 \item{Instances}{[required] The IDs of the instances.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Instances = list(
+    list(
+      InstanceId = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deregisters the specified instances from the specified load balancer.
 After the instance is deregistered, it no longer receives traffic from

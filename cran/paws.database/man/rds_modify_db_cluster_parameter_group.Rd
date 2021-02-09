@@ -12,6 +12,12 @@ rds_modify_db_cluster_parameter_group(DBClusterParameterGroupName,
 
 \item{Parameters}{[required] A list of parameters in the DB cluster parameter group to modify.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterParameterGroupName = "string"
+)
+}
+}
 \description{
 Modifies the parameters of a DB cluster parameter group. To modify more
 than one parameter, submit a list of the following: \code{ParameterName},

@@ -67,6 +67,17 @@ service name pair using the format \verb{<clustername>:<servicename>}.}
 \item{onPremisesTagSet}{Information about an on-premises instance tag set. The deployment group
 includes only on-premises instances identified by all the tag groups.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  hooksNotCleanedUp = list(
+    list(
+      name = "string",
+      hook = "string"
+    )
+  )
+)
+}
+}
 \description{
 Changes information about a deployment group.
 }

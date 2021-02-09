@@ -18,6 +18,19 @@ returned on each page.}
 \item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
 request the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ConformancePackName = "string",
+  ConformancePackRuleComplianceList = list(
+    list(
+      ConfigRuleName = "string",
+      ComplianceType = "COMPLIANT"|"NON_COMPLIANT"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns compliance details for each rule in that conformance pack.
 

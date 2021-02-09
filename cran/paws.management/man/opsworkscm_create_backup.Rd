@@ -27,6 +27,43 @@ value.
 OpsWorks-CM resources.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Backup = list(
+    BackupArn = "string",
+    BackupId = "string",
+    BackupType = "AUTOMATED"|"MANUAL",
+    CreatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    Description = "string",
+    Engine = "string",
+    EngineModel = "string",
+    EngineVersion = "string",
+    InstanceProfileArn = "string",
+    InstanceType = "string",
+    KeyPair = "string",
+    PreferredBackupWindow = "string",
+    PreferredMaintenanceWindow = "string",
+    S3DataSize = 123,
+    S3DataUrl = "string",
+    S3LogUrl = "string",
+    SecurityGroupIds = list(
+      "string"
+    ),
+    ServerName = "string",
+    ServiceRoleArn = "string",
+    Status = "IN_PROGRESS"|"OK"|"FAILED"|"DELETING",
+    StatusDescription = "string",
+    SubnetIds = list(
+      "string"
+    ),
+    ToolsVersion = "string",
+    UserArn = "string"
+  )
+)
+}
+}
 \description{
 Creates an application-level backup of a server. While the server is in
 the \code{BACKING_UP} state, the server cannot be changed, and no additional

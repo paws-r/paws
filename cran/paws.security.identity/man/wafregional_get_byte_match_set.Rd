@@ -12,6 +12,26 @@ wafregional_get_byte_match_set(ByteMatchSetId)
 \code{\link[=wafregional_create_byte_match_set]{create_byte_match_set}} and by
 \code{\link[=wafregional_list_byte_match_sets]{list_byte_match_sets}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ByteMatchSet = list(
+    ByteMatchSetId = "string",
+    Name = "string",
+    ByteMatchTuples = list(
+      list(
+        FieldToMatch = list(
+          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
+          Data = "string"
+        ),
+        TargetString = raw,
+        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
+        PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+      )
+    )
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

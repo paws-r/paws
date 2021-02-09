@@ -18,6 +18,63 @@ NULL
 #' @param Entries &#91;required&#93; A list of up to 20 entries for resource permissions to be granted by
 #' batch operation to the principal.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Failures = list(
+#'     list(
+#'       RequestEntry = list(
+#'         Id = "string",
+#'         Principal = list(
+#'           DataLakePrincipalIdentifier = "string"
+#'         ),
+#'         Resource = list(
+#'           Catalog = list(),
+#'           Database = list(
+#'             CatalogId = "string",
+#'             Name = "string"
+#'           ),
+#'           Table = list(
+#'             CatalogId = "string",
+#'             DatabaseName = "string",
+#'             Name = "string",
+#'             TableWildcard = list()
+#'           ),
+#'           TableWithColumns = list(
+#'             CatalogId = "string",
+#'             DatabaseName = "string",
+#'             Name = "string",
+#'             ColumnNames = list(
+#'               "string"
+#'             ),
+#'             ColumnWildcard = list(
+#'               ExcludedColumnNames = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           DataLocation = list(
+#'             CatalogId = "string",
+#'             ResourceArn = "string"
+#'           )
+#'         ),
+#'         Permissions = list(
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         ),
+#'         PermissionsWithGrantOption = list(
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         )
+#'       ),
+#'       Error = list(
+#'         ErrorCode = "string",
+#'         ErrorMessage = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_grant_permissions(
@@ -104,6 +161,63 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #' @param Entries &#91;required&#93; A list of up to 20 entries for resource permissions to be revoked by
 #' batch operation to the principal.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Failures = list(
+#'     list(
+#'       RequestEntry = list(
+#'         Id = "string",
+#'         Principal = list(
+#'           DataLakePrincipalIdentifier = "string"
+#'         ),
+#'         Resource = list(
+#'           Catalog = list(),
+#'           Database = list(
+#'             CatalogId = "string",
+#'             Name = "string"
+#'           ),
+#'           Table = list(
+#'             CatalogId = "string",
+#'             DatabaseName = "string",
+#'             Name = "string",
+#'             TableWildcard = list()
+#'           ),
+#'           TableWithColumns = list(
+#'             CatalogId = "string",
+#'             DatabaseName = "string",
+#'             Name = "string",
+#'             ColumnNames = list(
+#'               "string"
+#'             ),
+#'             ColumnWildcard = list(
+#'               ExcludedColumnNames = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           DataLocation = list(
+#'             CatalogId = "string",
+#'             ResourceArn = "string"
+#'           )
+#'         ),
+#'         Permissions = list(
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         ),
+#'         PermissionsWithGrantOption = list(
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         )
+#'       ),
+#'       Error = list(
+#'         ErrorCode = "string",
+#'         ErrorMessage = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$batch_revoke_permissions(
@@ -189,6 +303,12 @@ lakeformation_batch_revoke_permissions <- function(CatalogId = NULL, Entries) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to
 #' deregister.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_resource(
@@ -227,6 +347,20 @@ lakeformation_deregister_resource <- function(ResourceArn) {
 #' lakeformation_describe_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The resource ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceInfo = list(
+#'     ResourceArn = "string",
+#'     RoleArn = "string",
+#'     LastModified = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -269,6 +403,43 @@ lakeformation_describe_resource <- function(ResourceArn) {
 #' Data Catalog is the persistent metadata store. It contains database
 #' definitions, table definitions, and other control information to manage
 #' your AWS Lake Formation environment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataLakeSettings = list(
+#'     DataLakeAdmins = list(
+#'       list(
+#'         DataLakePrincipalIdentifier = "string"
+#'       )
+#'     ),
+#'     CreateDatabaseDefaultPermissions = list(
+#'       list(
+#'         Principal = list(
+#'           DataLakePrincipalIdentifier = "string"
+#'         ),
+#'         Permissions = list(
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         )
+#'       )
+#'     ),
+#'     CreateTableDefaultPermissions = list(
+#'       list(
+#'         Principal = list(
+#'           DataLakePrincipalIdentifier = "string"
+#'         ),
+#'         Permissions = list(
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         )
+#'       )
+#'     ),
+#'     TrustedResourceOwners = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -319,6 +490,62 @@ lakeformation_get_data_lake_settings <- function(CatalogId = NULL) {
 #' @param NextToken A continuation token, if this is not the first call to retrieve this
 #' list.
 #' @param MaxResults The maximum number of results to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Permissions = list(
+#'     list(
+#'       Principal = list(
+#'         DataLakePrincipalIdentifier = "string"
+#'       ),
+#'       Resource = list(
+#'         Catalog = list(),
+#'         Database = list(
+#'           CatalogId = "string",
+#'           Name = "string"
+#'         ),
+#'         Table = list(
+#'           CatalogId = "string",
+#'           DatabaseName = "string",
+#'           Name = "string",
+#'           TableWildcard = list()
+#'         ),
+#'         TableWithColumns = list(
+#'           CatalogId = "string",
+#'           DatabaseName = "string",
+#'           Name = "string",
+#'           ColumnNames = list(
+#'             "string"
+#'           ),
+#'           ColumnWildcard = list(
+#'             ExcludedColumnNames = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         DataLocation = list(
+#'           CatalogId = "string",
+#'           ResourceArn = "string"
+#'         )
+#'       ),
+#'       Permissions = list(
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'       ),
+#'       PermissionsWithGrantOption = list(
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'       ),
+#'       AdditionalDetails = list(
+#'         ResourceShare = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -385,6 +612,12 @@ lakeformation_get_effective_permissions_for_path <- function(CatalogId = NULL, R
 #' @param PermissionsWithGrantOption Indicates a list of the granted permissions that the principal may pass
 #' to other users. These permissions may only be a subset of the
 #' permissions granted in the `Privileges`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -486,6 +719,62 @@ lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resourc
 #' list.
 #' @param MaxResults The maximum number of results to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PrincipalResourcePermissions = list(
+#'     list(
+#'       Principal = list(
+#'         DataLakePrincipalIdentifier = "string"
+#'       ),
+#'       Resource = list(
+#'         Catalog = list(),
+#'         Database = list(
+#'           CatalogId = "string",
+#'           Name = "string"
+#'         ),
+#'         Table = list(
+#'           CatalogId = "string",
+#'           DatabaseName = "string",
+#'           Name = "string",
+#'           TableWildcard = list()
+#'         ),
+#'         TableWithColumns = list(
+#'           CatalogId = "string",
+#'           DatabaseName = "string",
+#'           Name = "string",
+#'           ColumnNames = list(
+#'             "string"
+#'           ),
+#'           ColumnWildcard = list(
+#'             ExcludedColumnNames = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         DataLocation = list(
+#'           CatalogId = "string",
+#'           ResourceArn = "string"
+#'         )
+#'       ),
+#'       Permissions = list(
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'       ),
+#'       PermissionsWithGrantOption = list(
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'       ),
+#'       AdditionalDetails = list(
+#'         ResourceShare = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_permissions(
@@ -563,6 +852,23 @@ lakeformation_list_permissions <- function(CatalogId = NULL, Principal = NULL, R
 #' @param NextToken A continuation token, if this is not the first call to retrieve these
 #' resources.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceInfoList = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       RoleArn = "string",
+#'       LastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resources(
@@ -622,6 +928,12 @@ lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults 
 #' your AWS Lake Formation environment.
 #' @param DataLakeSettings &#91;required&#93; A structure representing a list of AWS Lake Formation principals
 #' designated as data lake administrators.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -719,6 +1031,12 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' For more information, see Using Service-Linked Roles for Lake Formation.
 #' @param RoleArn The identifier for the role that registers the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_resource(
@@ -770,6 +1088,12 @@ lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = 
 #' Metadata and Data.
 #' @param PermissionsWithGrantOption Indicates a list of permissions for which to revoke the grant option
 #' allowing the principal to pass permissions to other principals.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -850,6 +1174,12 @@ lakeformation_revoke_permissions <- function(CatalogId = NULL, Principal, Resour
 #' @param RoleArn &#91;required&#93; The new role to use for the given resource registered in AWS Lake
 #' Formation.
 #' @param ResourceArn &#91;required&#93; The resource ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -16,6 +16,10 @@ xray_put_telemetry_records(TelemetryRecords, EC2InstanceId, Hostname,
 
 \item{ResourceARN}{}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Used by the AWS X-Ray daemon to upload telemetry.
 }

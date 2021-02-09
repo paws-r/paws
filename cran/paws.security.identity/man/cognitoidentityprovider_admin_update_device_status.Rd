@@ -16,6 +16,10 @@ cognitoidentityprovider_admin_update_device_status(UserPoolId, Username,
 
 \item{DeviceRememberedStatus}{The status indicating whether a device has been remembered or not.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the device status as an administrator.
 

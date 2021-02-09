@@ -10,6 +10,10 @@ ses_delete_receipt_rule_set(RuleSetName)
 \arguments{
 \item{RuleSetName}{[required] The name of the receipt rule set to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified receipt rule set and all of the receipt rules it
 contains.

@@ -64,6 +64,18 @@ purpose.
 don't use it to provide sensitive information.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UserConfirmed = TRUE|FALSE,
+  CodeDeliveryDetails = list(
+    Destination = "string",
+    DeliveryMedium = "SMS"|"EMAIL",
+    AttributeName = "string"
+  ),
+  UserSub = "string"
+)
+}
+}
 \description{
 Registers the user in the specified user pool and creates a user name,
 password, and user attributes.

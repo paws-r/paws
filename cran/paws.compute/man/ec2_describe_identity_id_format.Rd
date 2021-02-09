@@ -22,6 +22,20 @@ root user.}
 \code{vpc-cidr-block-association} | \code{vpc-endpoint} | \code{vpc-peering-connection}
 | \code{vpn-connection} | \code{vpn-gateway}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Statuses = list(
+    list(
+      Deadline = as.POSIXct(
+        "2015-01-01"
+      ),
+      Resource = "string",
+      UseLongIds = TRUE|FALSE
+    )
+  )
+)
+}
+}
 \description{
 Describes the ID format settings for resources for the specified IAM
 user, IAM role, or root user. For example, you can view the resource

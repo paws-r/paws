@@ -13,6 +13,47 @@ health_describe_event_details(eventArns, locale)
 \item{locale}{The locale (language) to return information in. English (en) is the
 default and the only supported value at this time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  successfulSet = list(
+    list(
+      event = list(
+        arn = "string",
+        service = "string",
+        eventTypeCode = "string",
+        eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
+        region = "string",
+        availabilityZone = "string",
+        startTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        endTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        lastUpdatedTime = as.POSIXct(
+          "2015-01-01"
+        ),
+        statusCode = "open"|"closed"|"upcoming",
+        eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE"
+      ),
+      eventDescription = list(
+        latestDescription = "string"
+      ),
+      eventMetadata = list(
+        "string"
+      )
+    )
+  ),
+  failedSet = list(
+    list(
+      eventArn = "string",
+      errorName = "string",
+      errorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns detailed information about one or more specified events.
 Information includes standard event data (Region, service, and so on, as

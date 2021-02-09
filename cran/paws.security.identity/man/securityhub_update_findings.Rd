@@ -14,6 +14,10 @@ update.}
 
 \item{RecordState}{The updated record state for the finding.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 \code{\link[=securityhub_update_findings]{update_findings}} is deprecated. Instead
 of \code{\link[=securityhub_update_findings]{update_findings}}, use

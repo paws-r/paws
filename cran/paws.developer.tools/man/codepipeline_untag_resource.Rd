@@ -11,6 +11,10 @@ codepipeline_untag_resource(resourceArn, tagKeys)
 
 \item{tagKeys}{[required] The list of keys for the tags to be removed from the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes tags from an AWS resource.
 }

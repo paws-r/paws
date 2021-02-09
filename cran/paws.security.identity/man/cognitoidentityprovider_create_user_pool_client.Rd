@@ -117,7 +117,7 @@ Set to \code{implicit} to specify that the client should get the access token
 
 Set to \code{client_credentials} to specify that the client should get the
 access token (and, optionally, ID token, based on scopes) from the token
-endpoint using a combination of client and client\\_secret.}
+endpoint using a combination of client and client_secret.}
 
 \item{AllowedOAuthScopes}{The allowed OAuth scopes. Possible values provided by OAuth are:
 \code{phone}, \code{email}, \code{openid}, and \code{profile}. Possible values provided by
@@ -155,6 +155,65 @@ existence related errors are not prevented.
 After February 15th 2020, the value of \code{PreventUserExistenceErrors} will
 default to \code{ENABLED} for newly created user pool clients if no value is
 provided.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  UserPoolClient = list(
+    UserPoolId = "string",
+    ClientName = "string",
+    ClientId = "string",
+    ClientSecret = "string",
+    LastModifiedDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    CreationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    RefreshTokenValidity = 123,
+    AccessTokenValidity = 123,
+    IdTokenValidity = 123,
+    TokenValidityUnits = list(
+      AccessToken = "seconds"|"minutes"|"hours"|"days",
+      IdToken = "seconds"|"minutes"|"hours"|"days",
+      RefreshToken = "seconds"|"minutes"|"hours"|"days"
+    ),
+    ReadAttributes = list(
+      "string"
+    ),
+    WriteAttributes = list(
+      "string"
+    ),
+    ExplicitAuthFlows = list(
+      "ADMIN_NO_SRP_AUTH"|"CUSTOM_AUTH_FLOW_ONLY"|"USER_PASSWORD_AUTH"|"ALLOW_ADMIN_USER_PASSWORD_AUTH"|"ALLOW_CUSTOM_AUTH"|"ALLOW_USER_PASSWORD_AUTH"|"ALLOW_USER_SRP_AUTH"|"ALLOW_REFRESH_TOKEN_AUTH"
+    ),
+    SupportedIdentityProviders = list(
+      "string"
+    ),
+    CallbackURLs = list(
+      "string"
+    ),
+    LogoutURLs = list(
+      "string"
+    ),
+    DefaultRedirectURI = "string",
+    AllowedOAuthFlows = list(
+      "code"|"implicit"|"client_credentials"
+    ),
+    AllowedOAuthScopes = list(
+      "string"
+    ),
+    AllowedOAuthFlowsUserPoolClient = TRUE|FALSE,
+    AnalyticsConfiguration = list(
+      ApplicationId = "string",
+      ApplicationArn = "string",
+      RoleArn = "string",
+      ExternalId = "string",
+      UserDataShared = TRUE|FALSE
+    ),
+    PreventUserExistenceErrors = "LEGACY"|"ENABLED"
+  )
+)
+}
 }
 \description{
 Creates the user pool client.

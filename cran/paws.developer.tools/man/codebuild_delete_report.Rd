@@ -9,6 +9,10 @@ codebuild_delete_report(arn)
 \arguments{
 \item{arn}{[required] The ARN of the report to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a report.
 }

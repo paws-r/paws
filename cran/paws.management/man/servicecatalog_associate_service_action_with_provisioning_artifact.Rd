@@ -22,6 +22,10 @@ servicecatalog_associate_service_action_with_provisioning_artifact(
 \item \code{zh} - Chinese
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Associates a self-service action with a provisioning artifact.
 }

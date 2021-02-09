@@ -9,6 +9,21 @@ iot_describe_thing(thingName)
 \arguments{
 \item{thingName}{[required] The name of the thing.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  defaultClientId = "string",
+  thingName = "string",
+  thingId = "string",
+  thingArn = "string",
+  thingTypeName = "string",
+  attributes = list(
+    "string"
+  ),
+  version = 123,
+  billingGroupName = "string"
+)
+}
+}
 \description{
 Gets information about the specified thing.
 }

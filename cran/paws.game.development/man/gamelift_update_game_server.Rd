@@ -26,6 +26,30 @@ gameplay.}
 \item{HealthCheck}{Indicates health status of the game server. A request that includes this
 parameter updates the game server's \emph{LastHealthCheckTime} timestamp.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GameServer = list(
+    GameServerGroupName = "string",
+    GameServerGroupArn = "string",
+    GameServerId = "string",
+    InstanceId = "string",
+    ConnectionInfo = "string",
+    GameServerData = "string",
+    ClaimStatus = "CLAIMED",
+    UtilizationStatus = "AVAILABLE"|"UTILIZED",
+    RegistrationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastClaimTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastHealthCheckTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}

@@ -13,6 +13,12 @@ ssm_create_ops_metadata(ResourceId, Metadata)
 
 \item{Metadata}{Metadata for a new Application Manager application.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OpsMetadataArn = "string"
+)
+}
+}
 \description{
 If you create a new application in Application Manager, Systems Manager
 calls this API action to specify information about the new application,

@@ -37,6 +37,20 @@ value is false.
 If you are using \code{nextToken} in this operation, you must specify \code{true}
 for \code{startFromHead}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  events = list(
+    list(
+      timestamp = 123,
+      message = "string",
+      ingestionTime = 123
+    )
+  ),
+  nextForwardToken = "string",
+  nextBackwardToken = "string"
+)
+}
+}
 \description{
 Lists log events from the specified log stream. You can list all of the
 log events or filter using a time range.

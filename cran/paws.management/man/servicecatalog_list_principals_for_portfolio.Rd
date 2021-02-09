@@ -22,6 +22,18 @@ servicecatalog_list_principals_for_portfolio(AcceptLanguage,
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Principals = list(
+    list(
+      PrincipalARN = "string",
+      PrincipalType = "IAM"
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Lists all principal ARNs associated with the specified portfolio.
 }

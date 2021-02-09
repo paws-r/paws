@@ -17,6 +17,13 @@ download.}
 
 \item{layerDigest}{[required] The digest of the image layer to download.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  downloadUrl = "string",
+  layerDigest = "string"
+)
+}
+}
 \description{
 Retrieves the pre-signed Amazon S3 download URL corresponding to an
 image layer. You can only get URLs for image layers that are referenced

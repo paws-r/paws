@@ -20,7 +20,7 @@ different account, the request will fail with an HTTP
 \description{
 Creates a new lifecycle configuration for the bucket or replaces an
 existing lifecycle configuration. For information about lifecycle
-configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
 Bucket lifecycle configuration now supports specifying a lifecycle rule
 using an object key name prefix, one or more object tags, or a
@@ -49,8 +49,8 @@ S3 provides predefined actions that you can specify for current and
 noncurrent object versions.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html}{Object Lifecycle Management}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html}{Lifecycle Configuration Elements}.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Object Lifecycle Management}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/intro-lifecycle-rules.html}{Lifecycle Configuration Elements}.
 
 \strong{Permissions}
 
@@ -72,12 +72,12 @@ permissions for the following actions:
 \item s3:PutLifecycleConfiguration
 }
 
-For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
 
 The following are related to
 \code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-configuration-examples.html}{Examples of Lifecycle Configuration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-configuration-examples.html}{Examples of Lifecycle Configuration}
 \item \code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
 \item \code{\link[=s3_delete_bucket_lifecycle]{delete_bucket_lifecycle}}
 }

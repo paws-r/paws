@@ -9,6 +9,12 @@ sagemaker_delete_trial_component(TrialComponentName)
 \arguments{
 \item{TrialComponentName}{[required] The name of the component to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrialComponentArn = "string"
+)
+}
+}
 \description{
 Deletes the specified trial component. A trial component must be
 disassociated from all trials before the trial component can be deleted.

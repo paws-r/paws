@@ -11,6 +11,10 @@ ssm_delete_resource_data_sync(SyncName, SyncType)
 
 \item{SyncType}{Specify the type of resource data sync to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a Resource Data Sync configuration. After the configuration is
 deleted, changes to data on managed instances are no longer synced to or

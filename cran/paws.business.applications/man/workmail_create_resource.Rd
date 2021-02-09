@@ -15,6 +15,12 @@ is created.}
 \item{Type}{[required] The type of the new resource. The available types are \code{equipment} and
 \code{room}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceId = "string"
+)
+}
+}
 \description{
 Creates a new Amazon WorkMail resource.
 }

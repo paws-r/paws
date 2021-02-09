@@ -10,6 +10,15 @@ cloudhsm_list_hsms(NextToken)
 \item{NextToken}{The \code{NextToken} value from a previous call to
 \code{\link[=cloudhsm_list_hsms]{list_hsms}}. Pass null if this is the first call.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HsmList = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more
 information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},

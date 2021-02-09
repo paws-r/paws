@@ -10,6 +10,57 @@ cloudhsmv2_delete_cluster(ClusterId)
 \item{ClusterId}{[required] The identifier (ID) of the cluster that you are deleting. To find the
 cluster ID, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Cluster = list(
+    BackupPolicy = "DEFAULT",
+    BackupRetentionPolicy = list(
+      Type = "DAYS",
+      Value = "string"
+    ),
+    ClusterId = "string",
+    CreateTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    Hsms = list(
+      list(
+        AvailabilityZone = "string",
+        ClusterId = "string",
+        SubnetId = "string",
+        EniId = "string",
+        EniIp = "string",
+        HsmId = "string",
+        State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
+        StateMessage = "string"
+      )
+    ),
+    HsmType = "string",
+    PreCoPassword = "string",
+    SecurityGroup = "string",
+    SourceBackupId = "string",
+    State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+    StateMessage = "string",
+    SubnetMapping = list(
+      "string"
+    ),
+    VpcId = "string",
+    Certificates = list(
+      ClusterCsr = "string",
+      HsmCertificate = "string",
+      AwsHardwareCertificate = "string",
+      ManufacturerHardwareCertificate = "string",
+      ClusterCertificate = "string"
+    ),
+    TagList = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Deletes the specified AWS CloudHSM cluster. Before you can delete a
 cluster, you must delete all HSMs in the cluster. To see if the cluster

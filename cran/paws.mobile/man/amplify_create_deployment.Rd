@@ -16,6 +16,16 @@ content md5 hash as the value. If this argument is provided, the service
 will generate a unique upload URL per file. Otherwise, the service will
 only generate a single upload URL for the zipped files.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  jobId = "string",
+  fileUploadUrls = list(
+    "string"
+  ),
+  zipUploadUrl = "string"
+)
+}
+}
 \description{
 Creates a deployment for a manually deployed Amplify app. Manually
 deployed apps are not connected to a repository.

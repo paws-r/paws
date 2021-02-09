@@ -64,6 +64,35 @@ Amazon EBS does not support asymmetric CMKs.}
 
 \item{TagSpecifications}{The tags to apply to the snapshot being imported.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Description = "string",
+  ImportTaskId = "string",
+  SnapshotTaskDetail = list(
+    Description = "string",
+    DiskImageSize = 123.0,
+    Encrypted = TRUE|FALSE,
+    Format = "string",
+    KmsKeyId = "string",
+    Progress = "string",
+    SnapshotId = "string",
+    Status = "string",
+    StatusMessage = "string",
+    Url = "string",
+    UserBucket = list(
+      S3Bucket = "string",
+      S3Key = "string"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Imports a disk into an EBS snapshot.
 }

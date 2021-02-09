@@ -12,6 +12,10 @@ iot_update_indexing_configuration(thingIndexingConfiguration,
 
 \item{thingGroupIndexingConfiguration}{Thing group indexing configuration.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the search configuration.
 }

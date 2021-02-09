@@ -15,6 +15,12 @@ is detached.}
 
 \item{LinkName}{[required] The link name associated with the object that needs to be detached.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DetachedObjectIdentifier = "string"
+)
+}
+}
 \description{
 Detaches a given object from the parent object. The object that is to be
 detached from the parent is specified by the link name.

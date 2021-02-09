@@ -10,6 +10,10 @@ emr_remove_managed_scaling_policy(ClusterId)
 \item{ClusterId}{[required] Specifies the ID of the cluster from which the managed scaling policy
 will be removed.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes a managed scaling policy from a specified EMR cluster.
 }

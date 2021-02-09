@@ -9,6 +9,36 @@ globalaccelerator_describe_endpoint_group(EndpointGroupArn)
 \arguments{
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  EndpointGroup = list(
+    EndpointGroupArn = "string",
+    EndpointGroupRegion = "string",
+    EndpointDescriptions = list(
+      list(
+        EndpointId = "string",
+        Weight = 123,
+        HealthState = "INITIAL"|"HEALTHY"|"UNHEALTHY",
+        HealthReason = "string",
+        ClientIPPreservationEnabled = TRUE|FALSE
+      )
+    ),
+    TrafficDialPercentage = 123.0,
+    HealthCheckPort = 123,
+    HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
+    HealthCheckPath = "string",
+    HealthCheckIntervalSeconds = 123,
+    ThresholdCount = 123,
+    PortOverrides = list(
+      list(
+        ListenerPort = 123,
+        EndpointPort = 123
+      )
+    )
+  )
+)
+}
+}
 \description{
 Describe an endpoint group.
 }

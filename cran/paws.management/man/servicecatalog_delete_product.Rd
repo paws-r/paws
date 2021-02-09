@@ -16,6 +16,10 @@ servicecatalog_delete_product(AcceptLanguage, Id)
 
 \item{Id}{[required] The product identifier.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified product.
 

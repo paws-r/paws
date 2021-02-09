@@ -9,6 +9,30 @@ alexaforbusiness_get_contact(ContactArn)
 \arguments{
 \item{ContactArn}{[required] The ARN of the contact for which to request details.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Contact = list(
+    ContactArn = "string",
+    DisplayName = "string",
+    FirstName = "string",
+    LastName = "string",
+    PhoneNumber = "string",
+    PhoneNumbers = list(
+      list(
+        Number = "string",
+        Type = "MOBILE"|"WORK"|"HOME"
+      )
+    ),
+    SipAddresses = list(
+      list(
+        Uri = "string",
+        Type = "WORK"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets the contact details by the contact ARN.
 }

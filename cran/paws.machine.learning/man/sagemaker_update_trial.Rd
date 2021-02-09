@@ -12,6 +12,12 @@ sagemaker_update_trial(TrialName, DisplayName)
 \item{DisplayName}{The name of the trial as displayed. The name doesn't need to be unique.
 If \code{DisplayName} isn't specified, \code{TrialName} is displayed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrialArn = "string"
+)
+}
+}
 \description{
 Updates the display name of a trial.
 }

@@ -25,6 +25,27 @@ NULL
 #' By specifying the maximum number of devices, you can control the costs
 #' that you incur by running tests.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   devicePool = list(
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     type = "CURATED"|"PRIVATE",
+#'     rules = list(
+#'       list(
+#'         attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE"|"OS_VERSION"|"MODEL"|"AVAILABILITY",
+#'         operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     maxDevices = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_device_pool(
@@ -97,6 +118,23 @@ devicefarm_create_device_pool <- function(projectArn, name, description = NULL, 
 #' @param rebootAfterUse When set to `true`, Device Farm reboots the instance after a test run.
 #' The default value is `true`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   instanceProfile = list(
+#'     arn = "string",
+#'     packageCleanup = TRUE|FALSE,
+#'     excludeAppPackagesFromCleanup = list(
+#'       "string"
+#'     ),
+#'     rebootAfterUse = TRUE|FALSE,
+#'     name = "string",
+#'     description = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_instance_profile(
@@ -163,6 +201,27 @@ devicefarm_create_instance_profile <- function(name, description = NULL, package
 #' @param downlinkLossPercent Proportion of received packets that fail to arrive from 0 to 100
 #' percent.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   networkProfile = list(
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     type = "CURATED"|"PRIVATE",
+#'     uplinkBandwidthBits = 123,
+#'     downlinkBandwidthBits = 123,
+#'     uplinkDelayMs = 123,
+#'     downlinkDelayMs = 123,
+#'     uplinkJitterMs = 123,
+#'     downlinkJitterMs = 123,
+#'     uplinkLossPercent = 123,
+#'     downlinkLossPercent = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_network_profile(
@@ -213,6 +272,21 @@ devicefarm_create_network_profile <- function(projectArn, name, description = NU
 #' @param defaultJobTimeoutMinutes Sets the execution timeout value (in minutes) for a project. All test
 #' runs in this project use the specified execution timeout value unless
 #' overridden when scheduling a run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   project = list(
+#'     arn = "string",
+#'     name = "string",
+#'     defaultJobTimeoutMinutes = 123,
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -298,11 +372,11 @@ devicefarm_create_project <- function(name, defaultJobTimeoutMinutes = NULL) {
 #'     touching, and rotating the screen. You cannot run XCUITest
 #'     framework-based tests in this mode.
 #' 
-#' -   NO\\_VIDEO: You are connected to the device, but cannot interact with
+#' -   NO_VIDEO: You are connected to the device, but cannot interact with
 #'     it or view the screen. This mode has the fastest test execution
 #'     speed. You can run XCUITest framework-based tests in this mode.
 #' 
-#' -   VIDEO\\_ONLY: You can view the screen, but cannot touch or rotate it.
+#' -   VIDEO_ONLY: You can view the screen, but cannot touch or rotate it.
 #'     You can run XCUITest framework-based tests and watch the screen in
 #'     this mode.
 #' @param skipAppResign When set to `true`, for private devices, Device Farm does not sign your
@@ -311,6 +385,95 @@ devicefarm_create_project <- function(name, defaultJobTimeoutMinutes = NULL) {
 #' For more information on how Device Farm modifies your uploads during
 #' tests, see [Do you modify my
 #' app?](https://aws.amazon.com/device-farm/faqs/)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   remoteAccessSession = list(
+#'     arn = "string",
+#'     name = "string",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'     result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'     message = "string",
+#'     started = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     stopped = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     device = list(
+#'       arn = "string",
+#'       name = "string",
+#'       manufacturer = "string",
+#'       model = "string",
+#'       modelId = "string",
+#'       formFactor = "PHONE"|"TABLET",
+#'       platform = "ANDROID"|"IOS",
+#'       os = "string",
+#'       cpu = list(
+#'         frequency = "string",
+#'         architecture = "string",
+#'         clock = 123.0
+#'       ),
+#'       resolution = list(
+#'         width = 123,
+#'         height = 123
+#'       ),
+#'       heapSize = 123,
+#'       memory = 123,
+#'       image = "string",
+#'       carrier = "string",
+#'       radio = "string",
+#'       remoteAccessEnabled = TRUE|FALSE,
+#'       remoteDebugEnabled = TRUE|FALSE,
+#'       fleetType = "string",
+#'       fleetName = "string",
+#'       instances = list(
+#'         list(
+#'           arn = "string",
+#'           deviceArn = "string",
+#'           labels = list(
+#'             "string"
+#'           ),
+#'           status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'           udid = "string",
+#'           instanceProfile = list(
+#'             arn = "string",
+#'             packageCleanup = TRUE|FALSE,
+#'             excludeAppPackagesFromCleanup = list(
+#'               "string"
+#'             ),
+#'             rebootAfterUse = TRUE|FALSE,
+#'             name = "string",
+#'             description = "string"
+#'           )
+#'         )
+#'       ),
+#'       availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+#'     ),
+#'     instanceArn = "string",
+#'     remoteDebugEnabled = TRUE|FALSE,
+#'     remoteRecordEnabled = TRUE|FALSE,
+#'     remoteRecordAppArn = "string",
+#'     hostAddress = "string",
+#'     clientId = "string",
+#'     billingMethod = "METERED"|"UNMETERED",
+#'     deviceMinutes = list(
+#'       total = 123.0,
+#'       metered = 123.0,
+#'       unmetered = 123.0
+#'     ),
+#'     endpoint = "string",
+#'     deviceUdid = "string",
+#'     interactionMode = "INTERACTIVE"|"NO_VIDEO"|"VIDEO_ONLY",
+#'     skipAppResign = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -380,6 +543,21 @@ devicefarm_create_remote_access_session <- function(projectArn, deviceArn, insta
 #' @param name &#91;required&#93; Human-readable name of the Selenium testing project.
 #' @param description Human-readable description of the project.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testGridProject = list(
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_test_grid_project(
@@ -423,6 +601,17 @@ devicefarm_create_test_grid_project <- function(name, description = NULL) {
 #' [`list_test_grid_projects`][devicefarm_list_test_grid_projects]) to
 #' associate with the short-term URL.
 #' @param expiresInSeconds &#91;required&#93; Lifetime, in seconds, of the URL.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   url = "string",
+#'   expires = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -470,73 +659,94 @@ devicefarm_create_test_grid_url <- function(projectArn, expiresInSeconds) {
 #' 
 #' Must be one of the following values:
 #' 
-#' -   ANDROID\\_APP
+#' -   ANDROID_APP
 #' 
-#' -   IOS\\_APP
+#' -   IOS_APP
 #' 
-#' -   WEB\\_APP
+#' -   WEB_APP
 #' 
-#' -   EXTERNAL\\_DATA
+#' -   EXTERNAL_DATA
 #' 
-#' -   APPIUM\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE
+#' -   APPIUM_JAVA_JUNIT_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE
+#' -   APPIUM_JAVA_TESTNG_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_PYTHON\\_TEST\\_PACKAGE
+#' -   APPIUM_PYTHON_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_NODE\\_TEST\\_PACKAGE
+#' -   APPIUM_NODE_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_RUBY\\_TEST\\_PACKAGE
+#' -   APPIUM_RUBY_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE
+#' -   APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE
+#' -   APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_PYTHON\\_TEST\\_PACKAGE
+#' -   APPIUM_WEB_PYTHON_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_NODE\\_TEST\\_PACKAGE
+#' -   APPIUM_WEB_NODE_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_RUBY\\_TEST\\_PACKAGE
+#' -   APPIUM_WEB_RUBY_TEST_PACKAGE
 #' 
-#' -   CALABASH\\_TEST\\_PACKAGE
+#' -   CALABASH_TEST_PACKAGE
 #' 
-#' -   INSTRUMENTATION\\_TEST\\_PACKAGE
+#' -   INSTRUMENTATION_TEST_PACKAGE
 #' 
-#' -   UIAUTOMATION\\_TEST\\_PACKAGE
+#' -   UIAUTOMATION_TEST_PACKAGE
 #' 
-#' -   UIAUTOMATOR\\_TEST\\_PACKAGE
+#' -   UIAUTOMATOR_TEST_PACKAGE
 #' 
-#' -   XCTEST\\_TEST\\_PACKAGE
+#' -   XCTEST_TEST_PACKAGE
 #' 
-#' -   XCTEST\\_UI\\_TEST\\_PACKAGE
+#' -   XCTEST_UI_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_JAVA\\_JUNIT\\_TEST\\_SPEC
+#' -   APPIUM_JAVA_JUNIT_TEST_SPEC
 #' 
-#' -   APPIUM\\_JAVA\\_TESTNG\\_TEST\\_SPEC
+#' -   APPIUM_JAVA_TESTNG_TEST_SPEC
 #' 
-#' -   APPIUM\\_PYTHON\\_TEST\\_SPEC
+#' -   APPIUM_PYTHON_TEST_SPEC
 #' 
-#' -   APPIUM\\_NODE\\_TEST\\_SPEC
+#' -   APPIUM_NODE_TEST_SPEC
 #' 
-#' -   APPIUM\\_RUBY\\_TEST\\_SPEC
+#' -   APPIUM_RUBY_TEST_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_SPEC
+#' -   APPIUM_WEB_JAVA_JUNIT_TEST_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_SPEC
+#' -   APPIUM_WEB_JAVA_TESTNG_TEST_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_PYTHON\\_TEST\\_SPEC
+#' -   APPIUM_WEB_PYTHON_TEST_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_NODE\\_TEST\\_SPEC
+#' -   APPIUM_WEB_NODE_TEST_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_RUBY\\_TEST\\_SPEC
+#' -   APPIUM_WEB_RUBY_TEST_SPEC
 #' 
-#' -   INSTRUMENTATION\\_TEST\\_SPEC
+#' -   INSTRUMENTATION_TEST_SPEC
 #' 
-#' -   XCTEST\\_UI\\_TEST\\_SPEC
+#' -   XCTEST_UI_TEST_SPEC
 #' 
 #' If you call [`create_upload`][devicefarm_create_upload] with `WEB_APP`
 #' specified, AWS Device Farm throws an `ArgumentException` error.
 #' @param contentType The upload's content type (for example, `application/octet-stream`).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   upload = list(
+#'     arn = "string",
+#'     name = "string",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_NODE_TEST_PACKAGE"|"APPIUM_RUBY_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_NODE_TEST_PACKAGE"|"APPIUM_WEB_RUBY_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_NODE_TEST_SPEC"|"APPIUM_RUBY_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"APPIUM_WEB_NODE_TEST_SPEC"|"APPIUM_WEB_RUBY_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
+#'     status = "INITIALIZED"|"PROCESSING"|"SUCCEEDED"|"FAILED",
+#'     url = "string",
+#'     metadata = "string",
+#'     contentType = "string",
+#'     message = "string",
+#'     category = "CURATED"|"PRIVATE"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -599,6 +809,20 @@ devicefarm_create_upload <- function(projectArn, name, type, contentType = NULL)
 #' @param vpceConfigurationDescription An optional description that provides details about your VPC endpoint
 #' configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   vpceConfiguration = list(
+#'     arn = "string",
+#'     vpceConfigurationName = "string",
+#'     vpceServiceName = "string",
+#'     serviceDnsName = "string",
+#'     vpceConfigurationDescription = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_vpce_configuration(
@@ -640,6 +864,12 @@ devicefarm_create_vpce_configuration <- function(vpceConfigurationName, vpceServ
 #'
 #' @param arn &#91;required&#93; Represents the Amazon Resource Name (ARN) of the Device Farm device pool
 #' to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -689,6 +919,12 @@ devicefarm_delete_device_pool <- function(arn) {
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the instance profile you are
 #' requesting to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_instance_profile(
@@ -725,6 +961,12 @@ devicefarm_delete_instance_profile <- function(arn) {
 #' devicefarm_delete_network_profile(arn)
 #'
 #' @param arn &#91;required&#93; The ARN of the network profile to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -765,6 +1007,12 @@ devicefarm_delete_network_profile <- function(arn) {
 #'
 #' @param arn &#91;required&#93; Represents the Amazon Resource Name (ARN) of the Device Farm project to
 #' delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -812,6 +1060,12 @@ devicefarm_delete_project <- function(arn) {
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the session for which you want to
 #' delete remote access.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_remote_access_session(
@@ -858,6 +1112,12 @@ devicefarm_delete_remote_access_session <- function(arn) {
 #' devicefarm_delete_run(arn)
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) for the run to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -910,6 +1170,12 @@ devicefarm_delete_run <- function(arn) {
 #' [`create_test_grid_project`][devicefarm_create_test_grid_project] or
 #' [`list_test_grid_projects`][devicefarm_list_test_grid_projects].
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_test_grid_project(
@@ -947,6 +1213,12 @@ devicefarm_delete_test_grid_project <- function(projectArn) {
 #'
 #' @param arn &#91;required&#93; Represents the Amazon Resource Name (ARN) of the Device Farm upload to
 #' delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -996,6 +1268,12 @@ devicefarm_delete_upload <- function(arn) {
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the VPC endpoint configuration you
 #' want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_vpce_configuration(
@@ -1032,6 +1310,32 @@ devicefarm_delete_vpce_configuration <- function(arn) {
 #'
 #' @usage
 #' devicefarm_get_account_settings()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   accountSettings = list(
+#'     awsAccountNumber = "string",
+#'     unmeteredDevices = list(
+#'       123
+#'     ),
+#'     unmeteredRemoteAccessDevices = list(
+#'       123
+#'     ),
+#'     maxJobTimeoutMinutes = 123,
+#'     trialMinutes = list(
+#'       total = 123.0,
+#'       remaining = 123.0
+#'     ),
+#'     maxSlots = list(
+#'       123
+#'     ),
+#'     defaultJobTimeoutMinutes = 123,
+#'     skipAppResign = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1074,6 +1378,63 @@ devicefarm_get_account_settings <- function() {
 #' devicefarm_get_device(arn)
 #'
 #' @param arn &#91;required&#93; The device type's ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   device = list(
+#'     arn = "string",
+#'     name = "string",
+#'     manufacturer = "string",
+#'     model = "string",
+#'     modelId = "string",
+#'     formFactor = "PHONE"|"TABLET",
+#'     platform = "ANDROID"|"IOS",
+#'     os = "string",
+#'     cpu = list(
+#'       frequency = "string",
+#'       architecture = "string",
+#'       clock = 123.0
+#'     ),
+#'     resolution = list(
+#'       width = 123,
+#'       height = 123
+#'     ),
+#'     heapSize = 123,
+#'     memory = 123,
+#'     image = "string",
+#'     carrier = "string",
+#'     radio = "string",
+#'     remoteAccessEnabled = TRUE|FALSE,
+#'     remoteDebugEnabled = TRUE|FALSE,
+#'     fleetType = "string",
+#'     fleetName = "string",
+#'     instances = list(
+#'       list(
+#'         arn = "string",
+#'         deviceArn = "string",
+#'         labels = list(
+#'           "string"
+#'         ),
+#'         status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'         udid = "string",
+#'         instanceProfile = list(
+#'           arn = "string",
+#'           packageCleanup = TRUE|FALSE,
+#'           excludeAppPackagesFromCleanup = list(
+#'             "string"
+#'           ),
+#'           rebootAfterUse = TRUE|FALSE,
+#'           name = "string",
+#'           description = "string"
+#'         )
+#'       )
+#'     ),
+#'     availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1123,6 +1484,32 @@ devicefarm_get_device <- function(arn) {
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the instance you're requesting
 #' information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deviceInstance = list(
+#'     arn = "string",
+#'     deviceArn = "string",
+#'     labels = list(
+#'       "string"
+#'     ),
+#'     status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'     udid = "string",
+#'     instanceProfile = list(
+#'       arn = "string",
+#'       packageCleanup = TRUE|FALSE,
+#'       excludeAppPackagesFromCleanup = list(
+#'         "string"
+#'       ),
+#'       rebootAfterUse = TRUE|FALSE,
+#'       name = "string",
+#'       description = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_device_instance(
@@ -1159,6 +1546,27 @@ devicefarm_get_device_instance <- function(arn) {
 #' devicefarm_get_device_pool(arn)
 #'
 #' @param arn &#91;required&#93; The device pool's ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   devicePool = list(
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     type = "CURATED"|"PRIVATE",
+#'     rules = list(
+#'       list(
+#'         attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE"|"OS_VERSION"|"MODEL"|"AVAILABILITY",
+#'         operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     maxDevices = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1211,31 +1619,31 @@ devicefarm_get_device_pool <- function(arn) {
 #' 
 #' Allowed values include the following:
 #' 
-#' -   BUILTIN\\_FUZZ.
+#' -   BUILTIN_FUZZ.
 #' 
-#' -   BUILTIN\\_EXPLORER. For Android, an app explorer that traverses an
+#' -   BUILTIN_EXPLORER. For Android, an app explorer that traverses an
 #'     Android app, interacting with it and capturing screenshots at the
 #'     same time.
 #' 
-#' -   APPIUM\\_JAVA\\_JUNIT.
+#' -   APPIUM_JAVA_JUNIT.
 #' 
-#' -   APPIUM\\_JAVA\\_TESTNG.
+#' -   APPIUM_JAVA_TESTNG.
 #' 
-#' -   APPIUM\\_PYTHON.
+#' -   APPIUM_PYTHON.
 #' 
-#' -   APPIUM\\_NODE.
+#' -   APPIUM_NODE.
 #' 
-#' -   APPIUM\\_RUBY.
+#' -   APPIUM_RUBY.
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT.
+#' -   APPIUM_WEB_JAVA_JUNIT.
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG.
+#' -   APPIUM_WEB_JAVA_TESTNG.
 #' 
-#' -   APPIUM\\_WEB\\_PYTHON.
+#' -   APPIUM_WEB_PYTHON.
 #' 
-#' -   APPIUM\\_WEB\\_NODE.
+#' -   APPIUM_WEB_NODE.
 #' 
-#' -   APPIUM\\_WEB\\_RUBY.
+#' -   APPIUM_WEB_RUBY.
 #' 
 #' -   CALABASH.
 #' 
@@ -1247,9 +1655,138 @@ devicefarm_get_device_pool <- function(arn) {
 #' 
 #' -   XCTEST.
 #' 
-#' -   XCTEST\\_UI.
+#' -   XCTEST_UI.
 #' @param test Information about the uploaded test to be run against the device pool.
 #' @param configuration An object that contains information about the settings for a run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   compatibleDevices = list(
+#'     list(
+#'       device = list(
+#'         arn = "string",
+#'         name = "string",
+#'         manufacturer = "string",
+#'         model = "string",
+#'         modelId = "string",
+#'         formFactor = "PHONE"|"TABLET",
+#'         platform = "ANDROID"|"IOS",
+#'         os = "string",
+#'         cpu = list(
+#'           frequency = "string",
+#'           architecture = "string",
+#'           clock = 123.0
+#'         ),
+#'         resolution = list(
+#'           width = 123,
+#'           height = 123
+#'         ),
+#'         heapSize = 123,
+#'         memory = 123,
+#'         image = "string",
+#'         carrier = "string",
+#'         radio = "string",
+#'         remoteAccessEnabled = TRUE|FALSE,
+#'         remoteDebugEnabled = TRUE|FALSE,
+#'         fleetType = "string",
+#'         fleetName = "string",
+#'         instances = list(
+#'           list(
+#'             arn = "string",
+#'             deviceArn = "string",
+#'             labels = list(
+#'               "string"
+#'             ),
+#'             status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'             udid = "string",
+#'             instanceProfile = list(
+#'               arn = "string",
+#'               packageCleanup = TRUE|FALSE,
+#'               excludeAppPackagesFromCleanup = list(
+#'                 "string"
+#'               ),
+#'               rebootAfterUse = TRUE|FALSE,
+#'               name = "string",
+#'               description = "string"
+#'             )
+#'           )
+#'         ),
+#'         availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+#'       ),
+#'       compatible = TRUE|FALSE,
+#'       incompatibilityMessages = list(
+#'         list(
+#'           message = "string",
+#'           type = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE"|"OS_VERSION"|"MODEL"|"AVAILABILITY"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   incompatibleDevices = list(
+#'     list(
+#'       device = list(
+#'         arn = "string",
+#'         name = "string",
+#'         manufacturer = "string",
+#'         model = "string",
+#'         modelId = "string",
+#'         formFactor = "PHONE"|"TABLET",
+#'         platform = "ANDROID"|"IOS",
+#'         os = "string",
+#'         cpu = list(
+#'           frequency = "string",
+#'           architecture = "string",
+#'           clock = 123.0
+#'         ),
+#'         resolution = list(
+#'           width = 123,
+#'           height = 123
+#'         ),
+#'         heapSize = 123,
+#'         memory = 123,
+#'         image = "string",
+#'         carrier = "string",
+#'         radio = "string",
+#'         remoteAccessEnabled = TRUE|FALSE,
+#'         remoteDebugEnabled = TRUE|FALSE,
+#'         fleetType = "string",
+#'         fleetName = "string",
+#'         instances = list(
+#'           list(
+#'             arn = "string",
+#'             deviceArn = "string",
+#'             labels = list(
+#'               "string"
+#'             ),
+#'             status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'             udid = "string",
+#'             instanceProfile = list(
+#'               arn = "string",
+#'               packageCleanup = TRUE|FALSE,
+#'               excludeAppPackagesFromCleanup = list(
+#'                 "string"
+#'               ),
+#'               rebootAfterUse = TRUE|FALSE,
+#'               name = "string",
+#'               description = "string"
+#'             )
+#'           )
+#'         ),
+#'         availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+#'       ),
+#'       compatible = TRUE|FALSE,
+#'       incompatibilityMessages = list(
+#'         list(
+#'           message = "string",
+#'           type = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE"|"OS_VERSION"|"MODEL"|"AVAILABILITY"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1343,6 +1880,23 @@ devicefarm_get_device_pool_compatibility <- function(devicePoolArn, appArn = NUL
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of an instance profile.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   instanceProfile = list(
+#'     arn = "string",
+#'     packageCleanup = TRUE|FALSE,
+#'     excludeAppPackagesFromCleanup = list(
+#'       "string"
+#'     ),
+#'     rebootAfterUse = TRUE|FALSE,
+#'     name = "string",
+#'     description = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_instance_profile(
@@ -1379,6 +1933,97 @@ devicefarm_get_instance_profile <- function(arn) {
 #' devicefarm_get_job(arn)
 #'
 #' @param arn &#91;required&#93; The job's ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   job = list(
+#'     arn = "string",
+#'     name = "string",
+#'     type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'     result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'     started = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     stopped = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     counters = list(
+#'       total = 123,
+#'       passed = 123,
+#'       failed = 123,
+#'       warned = 123,
+#'       errored = 123,
+#'       stopped = 123,
+#'       skipped = 123
+#'     ),
+#'     message = "string",
+#'     device = list(
+#'       arn = "string",
+#'       name = "string",
+#'       manufacturer = "string",
+#'       model = "string",
+#'       modelId = "string",
+#'       formFactor = "PHONE"|"TABLET",
+#'       platform = "ANDROID"|"IOS",
+#'       os = "string",
+#'       cpu = list(
+#'         frequency = "string",
+#'         architecture = "string",
+#'         clock = 123.0
+#'       ),
+#'       resolution = list(
+#'         width = 123,
+#'         height = 123
+#'       ),
+#'       heapSize = 123,
+#'       memory = 123,
+#'       image = "string",
+#'       carrier = "string",
+#'       radio = "string",
+#'       remoteAccessEnabled = TRUE|FALSE,
+#'       remoteDebugEnabled = TRUE|FALSE,
+#'       fleetType = "string",
+#'       fleetName = "string",
+#'       instances = list(
+#'         list(
+#'           arn = "string",
+#'           deviceArn = "string",
+#'           labels = list(
+#'             "string"
+#'           ),
+#'           status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'           udid = "string",
+#'           instanceProfile = list(
+#'             arn = "string",
+#'             packageCleanup = TRUE|FALSE,
+#'             excludeAppPackagesFromCleanup = list(
+#'               "string"
+#'             ),
+#'             rebootAfterUse = TRUE|FALSE,
+#'             name = "string",
+#'             description = "string"
+#'           )
+#'         )
+#'       ),
+#'       availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+#'     ),
+#'     instanceArn = "string",
+#'     deviceMinutes = list(
+#'       total = 123.0,
+#'       metered = 123.0,
+#'       unmetered = 123.0
+#'     ),
+#'     videoEndpoint = "string",
+#'     videoCapture = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1425,6 +2070,27 @@ devicefarm_get_job <- function(arn) {
 #'
 #' @param arn &#91;required&#93; The ARN of the network profile to return information about.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   networkProfile = list(
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     type = "CURATED"|"PRIVATE",
+#'     uplinkBandwidthBits = 123,
+#'     downlinkBandwidthBits = 123,
+#'     uplinkDelayMs = 123,
+#'     downlinkDelayMs = 123,
+#'     uplinkJitterMs = 123,
+#'     downlinkJitterMs = 123,
+#'     uplinkLossPercent = 123,
+#'     downlinkLossPercent = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_network_profile(
@@ -1469,6 +2135,62 @@ devicefarm_get_network_profile <- function(arn) {
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   current = list(
+#'     list(
+#'       type = "PURCHASE"|"RENEW"|"SYSTEM",
+#'       offering = list(
+#'         id = "string",
+#'         description = "string",
+#'         type = "RECURRING",
+#'         platform = "ANDROID"|"IOS",
+#'         recurringCharges = list(
+#'           list(
+#'             cost = list(
+#'               amount = 123.0,
+#'               currencyCode = "USD"
+#'             ),
+#'             frequency = "MONTHLY"
+#'           )
+#'         )
+#'       ),
+#'       quantity = 123,
+#'       effectiveOn = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextPeriod = list(
+#'     list(
+#'       type = "PURCHASE"|"RENEW"|"SYSTEM",
+#'       offering = list(
+#'         id = "string",
+#'         description = "string",
+#'         type = "RECURRING",
+#'         platform = "ANDROID"|"IOS",
+#'         recurringCharges = list(
+#'           list(
+#'             cost = list(
+#'               amount = 123.0,
+#'               currencyCode = "USD"
+#'             ),
+#'             frequency = "MONTHLY"
+#'           )
+#'         )
+#'       ),
+#'       quantity = 123,
+#'       effectiveOn = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1516,6 +2238,21 @@ devicefarm_get_offering_status <- function(nextToken = NULL) {
 #'
 #' @param arn &#91;required&#93; The project's ARN.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   project = list(
+#'     arn = "string",
+#'     name = "string",
+#'     defaultJobTimeoutMinutes = 123,
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_project(
@@ -1527,7 +2264,7 @@ devicefarm_get_offering_status <- function(nextToken = NULL) {
 #' \dontrun{
 #' # The following example gets information about a specific project.
 #' svc$get_project(
-#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:5e01a8c7-c861-4c0a-b1d5-12345EXAM..."
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:5e01a8c7-c861-4c0a-b1d5-12..."
 #' )
 #' }
 #'
@@ -1561,6 +2298,95 @@ devicefarm_get_project <- function(arn) {
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the remote access session about which
 #' you want to get session information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   remoteAccessSession = list(
+#'     arn = "string",
+#'     name = "string",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'     result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'     message = "string",
+#'     started = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     stopped = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     device = list(
+#'       arn = "string",
+#'       name = "string",
+#'       manufacturer = "string",
+#'       model = "string",
+#'       modelId = "string",
+#'       formFactor = "PHONE"|"TABLET",
+#'       platform = "ANDROID"|"IOS",
+#'       os = "string",
+#'       cpu = list(
+#'         frequency = "string",
+#'         architecture = "string",
+#'         clock = 123.0
+#'       ),
+#'       resolution = list(
+#'         width = 123,
+#'         height = 123
+#'       ),
+#'       heapSize = 123,
+#'       memory = 123,
+#'       image = "string",
+#'       carrier = "string",
+#'       radio = "string",
+#'       remoteAccessEnabled = TRUE|FALSE,
+#'       remoteDebugEnabled = TRUE|FALSE,
+#'       fleetType = "string",
+#'       fleetName = "string",
+#'       instances = list(
+#'         list(
+#'           arn = "string",
+#'           deviceArn = "string",
+#'           labels = list(
+#'             "string"
+#'           ),
+#'           status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'           udid = "string",
+#'           instanceProfile = list(
+#'             arn = "string",
+#'             packageCleanup = TRUE|FALSE,
+#'             excludeAppPackagesFromCleanup = list(
+#'               "string"
+#'             ),
+#'             rebootAfterUse = TRUE|FALSE,
+#'             name = "string",
+#'             description = "string"
+#'           )
+#'         )
+#'       ),
+#'       availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+#'     ),
+#'     instanceArn = "string",
+#'     remoteDebugEnabled = TRUE|FALSE,
+#'     remoteRecordEnabled = TRUE|FALSE,
+#'     remoteRecordAppArn = "string",
+#'     hostAddress = "string",
+#'     clientId = "string",
+#'     billingMethod = "METERED"|"UNMETERED",
+#'     deviceMinutes = list(
+#'       total = 123.0,
+#'       metered = 123.0,
+#'       unmetered = 123.0
+#'     ),
+#'     endpoint = "string",
+#'     deviceUdid = "string",
+#'     interactionMode = "INTERACTIVE"|"NO_VIDEO"|"VIDEO_ONLY",
+#'     skipAppResign = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1607,6 +2433,107 @@ devicefarm_get_remote_access_session <- function(arn) {
 #'
 #' @param arn &#91;required&#93; The run's ARN.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   run = list(
+#'     arn = "string",
+#'     name = "string",
+#'     type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+#'     platform = "ANDROID"|"IOS",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'     result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'     started = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     stopped = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     counters = list(
+#'       total = 123,
+#'       passed = 123,
+#'       failed = 123,
+#'       warned = 123,
+#'       errored = 123,
+#'       stopped = 123,
+#'       skipped = 123
+#'     ),
+#'     message = "string",
+#'     totalJobs = 123,
+#'     completedJobs = 123,
+#'     billingMethod = "METERED"|"UNMETERED",
+#'     deviceMinutes = list(
+#'       total = 123.0,
+#'       metered = 123.0,
+#'       unmetered = 123.0
+#'     ),
+#'     networkProfile = list(
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       type = "CURATED"|"PRIVATE",
+#'       uplinkBandwidthBits = 123,
+#'       downlinkBandwidthBits = 123,
+#'       uplinkDelayMs = 123,
+#'       downlinkDelayMs = 123,
+#'       uplinkJitterMs = 123,
+#'       downlinkJitterMs = 123,
+#'       uplinkLossPercent = 123,
+#'       downlinkLossPercent = 123
+#'     ),
+#'     parsingResultUrl = "string",
+#'     resultCode = "PARSING_FAILED"|"VPC_ENDPOINT_SETUP_FAILED",
+#'     seed = 123,
+#'     appUpload = "string",
+#'     eventCount = 123,
+#'     jobTimeoutMinutes = 123,
+#'     devicePoolArn = "string",
+#'     locale = "string",
+#'     radios = list(
+#'       wifi = TRUE|FALSE,
+#'       bluetooth = TRUE|FALSE,
+#'       nfc = TRUE|FALSE,
+#'       gps = TRUE|FALSE
+#'     ),
+#'     location = list(
+#'       latitude = 123.0,
+#'       longitude = 123.0
+#'     ),
+#'     customerArtifactPaths = list(
+#'       iosPaths = list(
+#'         "string"
+#'       ),
+#'       androidPaths = list(
+#'         "string"
+#'       ),
+#'       deviceHostPaths = list(
+#'         "string"
+#'       )
+#'     ),
+#'     webUrl = "string",
+#'     skipAppResign = TRUE|FALSE,
+#'     testSpecArn = "string",
+#'     deviceSelectionResult = list(
+#'       filters = list(
+#'         list(
+#'           attribute = "ARN"|"PLATFORM"|"OS_VERSION"|"MODEL"|"AVAILABILITY"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
+#'           operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+#'           values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       matchedDevicesCount = 123,
+#'       maxDevices = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_run(
@@ -1618,7 +2545,7 @@ devicefarm_get_remote_access_session <- function(arn) {
 #' \dontrun{
 #' # The following example gets information about a specific test run.
 #' svc$get_run(
-#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6c6dd23/..."
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6..."
 #' )
 #' }
 #'
@@ -1651,6 +2578,44 @@ devicefarm_get_run <- function(arn) {
 #' devicefarm_get_suite(arn)
 #'
 #' @param arn &#91;required&#93; The suite's ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   suite = list(
+#'     arn = "string",
+#'     name = "string",
+#'     type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'     result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'     started = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     stopped = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     counters = list(
+#'       total = 123,
+#'       passed = 123,
+#'       failed = 123,
+#'       warned = 123,
+#'       errored = 123,
+#'       stopped = 123,
+#'       skipped = 123
+#'     ),
+#'     message = "string",
+#'     deviceMinutes = list(
+#'       total = 123.0,
+#'       metered = 123.0,
+#'       unmetered = 123.0
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1696,6 +2661,44 @@ devicefarm_get_suite <- function(arn) {
 #' devicefarm_get_test(arn)
 #'
 #' @param arn &#91;required&#93; The test's ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   test = list(
+#'     arn = "string",
+#'     name = "string",
+#'     type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'     result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'     started = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     stopped = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     counters = list(
+#'       total = 123,
+#'       passed = 123,
+#'       failed = 123,
+#'       warned = 123,
+#'       errored = 123,
+#'       stopped = 123,
+#'       skipped = 123
+#'     ),
+#'     message = "string",
+#'     deviceMinutes = list(
+#'       total = 123.0,
+#'       metered = 123.0,
+#'       unmetered = 123.0
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1743,6 +2746,21 @@ devicefarm_get_test <- function(arn) {
 #' @param projectArn &#91;required&#93; The ARN of the Selenium testing project, from either
 #' [`create_test_grid_project`][devicefarm_create_test_grid_project] or
 #' [`list_test_grid_projects`][devicefarm_list_test_grid_projects].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testGridProject = list(
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1794,6 +2812,25 @@ devicefarm_get_test_grid_project <- function(projectArn) {
 #' @param sessionId An ID associated with this session.
 #' @param sessionArn An ARN that uniquely identifies a TestGridSession.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testGridSession = list(
+#'     arn = "string",
+#'     status = "ACTIVE"|"CLOSED"|"ERRORED",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ended = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     billingMinutes = 123.0,
+#'     seleniumProperties = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_test_grid_session(
@@ -1832,6 +2869,27 @@ devicefarm_get_test_grid_session <- function(projectArn = NULL, sessionId = NULL
 #' devicefarm_get_upload(arn)
 #'
 #' @param arn &#91;required&#93; The upload's ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   upload = list(
+#'     arn = "string",
+#'     name = "string",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_NODE_TEST_PACKAGE"|"APPIUM_RUBY_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_NODE_TEST_PACKAGE"|"APPIUM_WEB_RUBY_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_NODE_TEST_SPEC"|"APPIUM_RUBY_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"APPIUM_WEB_NODE_TEST_SPEC"|"APPIUM_WEB_RUBY_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
+#'     status = "INITIALIZED"|"PROCESSING"|"SUCCEEDED"|"FAILED",
+#'     url = "string",
+#'     metadata = "string",
+#'     contentType = "string",
+#'     message = "string",
+#'     category = "CURATED"|"PRIVATE"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1881,6 +2939,20 @@ devicefarm_get_upload <- function(arn) {
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the VPC endpoint configuration you
 #' want to describe.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   vpceConfiguration = list(
+#'     arn = "string",
+#'     vpceConfigurationName = "string",
+#'     vpceServiceName = "string",
+#'     serviceDnsName = "string",
+#'     vpceConfigurationDescription = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_vpce_configuration(
@@ -1923,6 +2995,27 @@ devicefarm_get_vpce_configuration <- function(arn) {
 #' you are requesting information.
 #' @param appArn &#91;required&#93; The ARN of the app about which you are requesting information.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   appUpload = list(
+#'     arn = "string",
+#'     name = "string",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_NODE_TEST_PACKAGE"|"APPIUM_RUBY_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_NODE_TEST_PACKAGE"|"APPIUM_WEB_RUBY_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_NODE_TEST_SPEC"|"APPIUM_RUBY_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"APPIUM_WEB_NODE_TEST_SPEC"|"APPIUM_WEB_RUBY_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
+#'     status = "INITIALIZED"|"PROCESSING"|"SUCCEEDED"|"FAILED",
+#'     url = "string",
+#'     metadata = "string",
+#'     contentType = "string",
+#'     message = "string",
+#'     category = "CURATED"|"PRIVATE"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$install_to_remote_access_session(
@@ -1937,7 +3030,7 @@ devicefarm_get_vpce_configuration <- function(arn) {
 #' # remote access session.
 #' svc$install_to_remote_access_session(
 #'   appArn = "arn:aws:devicefarm:us-west-2:123456789101:app:EXAMPLE-GUID-123-456",
-#'   remoteAccessSessionArn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-1..."
+#'   remoteAccessSessionArn = "arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE..."
 #' )
 #' }
 #'
@@ -1982,6 +3075,23 @@ devicefarm_install_to_remote_access_session <- function(remoteAccessSessionArn, 
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   artifacts = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       type = "UNKNOWN"|"SCREENSHOT"|"DEVICE_LOG"|"MESSAGE_LOG"|"VIDEO_LOG"|"RESULT_LOG"|"SERVICE_LOG"|"WEBKIT_LOG"|"INSTRUMENTATION_OUTPUT"|"EXERCISER_MONKEY_OUTPUT"|"CALABASH_JSON_OUTPUT"|"CALABASH_PRETTY_OUTPUT"|"CALABASH_STANDARD_OUTPUT"|"CALABASH_JAVA_XML_OUTPUT"|"AUTOMATION_OUTPUT"|"APPIUM_SERVER_OUTPUT"|"APPIUM_JAVA_OUTPUT"|"APPIUM_JAVA_XML_OUTPUT"|"APPIUM_PYTHON_OUTPUT"|"APPIUM_PYTHON_XML_OUTPUT"|"EXPLORER_EVENT_LOG"|"EXPLORER_SUMMARY_LOG"|"APPLICATION_CRASH_REPORT"|"XCTEST_LOG"|"VIDEO"|"CUSTOMER_ARTIFACT"|"CUSTOMER_ARTIFACT_LOG"|"TESTSPEC_OUTPUT",
+#'       extension = "string",
+#'       url = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2037,6 +3147,35 @@ devicefarm_list_artifacts <- function(arn, type, nextToken = NULL) {
 #' operation, which can be used to return the next set of items in the
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deviceInstances = list(
+#'     list(
+#'       arn = "string",
+#'       deviceArn = "string",
+#'       labels = list(
+#'         "string"
+#'       ),
+#'       status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'       udid = "string",
+#'       instanceProfile = list(
+#'         arn = "string",
+#'         packageCleanup = TRUE|FALSE,
+#'         excludeAppPackagesFromCleanup = list(
+#'           "string"
+#'         ),
+#'         rebootAfterUse = TRUE|FALSE,
+#'         name = "string",
+#'         description = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_device_instances(
@@ -2086,6 +3225,30 @@ devicefarm_list_device_instances <- function(maxResults = NULL, nextToken = NULL
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   devicePools = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       type = "CURATED"|"PRIVATE",
+#'       rules = list(
+#'         list(
+#'           attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE"|"OS_VERSION"|"MODEL"|"AVAILABILITY",
+#'           operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       maxDevices = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2151,60 +3314,120 @@ devicefarm_list_device_pools <- function(arn, type = NULL, nextToken = NULL) {
 #' 
 #'     -   PLATFORM: The device platform. Valid values are ANDROID or IOS.
 #' 
-#'     -   OS\\_VERSION: The operating system version (for example, 10.3.2).
+#'     -   OS_VERSION: The operating system version (for example, 10.3.2).
 #' 
 #'     -   MODEL: The device model (for example, iPad 5th Gen).
 #' 
 #'     -   AVAILABILITY: The current availability of the device. Valid
-#'         values are AVAILABLE, HIGHLY\\_AVAILABLE, BUSY, or
-#'         TEMPORARY\\_NOT\\_AVAILABLE.
+#'         values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+#'         TEMPORARY_NOT_AVAILABLE.
 #' 
-#'     -   FORM\\_FACTOR: The device form factor. Valid values are PHONE or
+#'     -   FORM_FACTOR: The device form factor. Valid values are PHONE or
 #'         TABLET.
 #' 
 #'     -   MANUFACTURER: The device manufacturer (for example, Apple).
 #' 
-#'     -   REMOTE\\_ACCESS\\_ENABLED: Whether the device is enabled for
+#'     -   REMOTE_ACCESS_ENABLED: Whether the device is enabled for
 #'         remote access. Valid values are TRUE or FALSE.
 #' 
-#'     -   REMOTE\\_DEBUG\\_ENABLED: Whether the device is enabled for remote
+#'     -   REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote
 #'         debugging. Valid values are TRUE or FALSE. Because remote
 #'         debugging is [no longer
 #'         supported](https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html),
 #'         this attribute is ignored.
 #' 
-#'     -   INSTANCE\\_ARN: The Amazon Resource Name (ARN) of the device
+#'     -   INSTANCE_ARN: The Amazon Resource Name (ARN) of the device
 #'         instance.
 #' 
-#'     -   INSTANCE\\_LABELS: The label of the device instance.
+#'     -   INSTANCE_LABELS: The label of the device instance.
 #' 
-#'     -   FLEET\\_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
+#'     -   FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
 #' 
 #' -   Operator: The filter operator.
 #' 
 #'     -   The EQUALS operator is available for every attribute except
-#'         INSTANCE\\_LABELS.
+#'         INSTANCE_LABELS.
 #' 
-#'     -   The CONTAINS operator is available for the INSTANCE\\_LABELS and
+#'     -   The CONTAINS operator is available for the INSTANCE_LABELS and
 #'         MODEL attributes.
 #' 
-#'     -   The IN and NOT\\_IN operators are available for the ARN,
-#'         OS\\_VERSION, MODEL, MANUFACTURER, and INSTANCE\\_ARN attributes.
+#'     -   The IN and NOT_IN operators are available for the ARN,
+#'         OS_VERSION, MODEL, MANUFACTURER, and INSTANCE_ARN attributes.
 #' 
-#'     -   The LESS\\_THAN, GREATER\\_THAN, LESS\\_THAN\\_OR\\_EQUALS, and
-#'         GREATER\\_THAN\\_OR\\_EQUALS operators are also available for the
-#'         OS\\_VERSION attribute.
+#'     -   The LESS_THAN, GREATER_THAN, LESS_THAN_OR_EQUALS, and
+#'         GREATER_THAN_OR_EQUALS operators are also available for the
+#'         OS_VERSION attribute.
 #' 
 #' -   Values: An array of one or more filter values.
 #' 
-#'     -   The IN and NOT\\_IN operators take a values array that has one or
+#'     -   The IN and NOT_IN operators take a values array that has one or
 #'         more elements.
 #' 
 #'     -   The other operators require an array with a single element.
 #' 
 #'     -   In a request, the AVAILABILITY attribute takes the following
-#'         values: AVAILABLE, HIGHLY\\_AVAILABLE, BUSY, or
-#'         TEMPORARY\\_NOT\\_AVAILABLE.
+#'         values: AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+#'         TEMPORARY_NOT_AVAILABLE.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   devices = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       manufacturer = "string",
+#'       model = "string",
+#'       modelId = "string",
+#'       formFactor = "PHONE"|"TABLET",
+#'       platform = "ANDROID"|"IOS",
+#'       os = "string",
+#'       cpu = list(
+#'         frequency = "string",
+#'         architecture = "string",
+#'         clock = 123.0
+#'       ),
+#'       resolution = list(
+#'         width = 123,
+#'         height = 123
+#'       ),
+#'       heapSize = 123,
+#'       memory = 123,
+#'       image = "string",
+#'       carrier = "string",
+#'       radio = "string",
+#'       remoteAccessEnabled = TRUE|FALSE,
+#'       remoteDebugEnabled = TRUE|FALSE,
+#'       fleetType = "string",
+#'       fleetName = "string",
+#'       instances = list(
+#'         list(
+#'           arn = "string",
+#'           deviceArn = "string",
+#'           labels = list(
+#'             "string"
+#'           ),
+#'           status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'           udid = "string",
+#'           instanceProfile = list(
+#'             arn = "string",
+#'             packageCleanup = TRUE|FALSE,
+#'             excludeAppPackagesFromCleanup = list(
+#'               "string"
+#'             ),
+#'             rebootAfterUse = TRUE|FALSE,
+#'             name = "string",
+#'             description = "string"
+#'           )
+#'         )
+#'       ),
+#'       availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2266,6 +3489,26 @@ devicefarm_list_devices <- function(arn = NULL, nextToken = NULL, filters = NULL
 #' operation, which can be used to return the next set of items in the
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   instanceProfiles = list(
+#'     list(
+#'       arn = "string",
+#'       packageCleanup = TRUE|FALSE,
+#'       excludeAppPackagesFromCleanup = list(
+#'         "string"
+#'       ),
+#'       rebootAfterUse = TRUE|FALSE,
+#'       name = "string",
+#'       description = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_instance_profiles(
@@ -2306,6 +3549,100 @@ devicefarm_list_instance_profiles <- function(maxResults = NULL, nextToken = NUL
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobs = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+#'       created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'       result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'       started = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stopped = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       counters = list(
+#'         total = 123,
+#'         passed = 123,
+#'         failed = 123,
+#'         warned = 123,
+#'         errored = 123,
+#'         stopped = 123,
+#'         skipped = 123
+#'       ),
+#'       message = "string",
+#'       device = list(
+#'         arn = "string",
+#'         name = "string",
+#'         manufacturer = "string",
+#'         model = "string",
+#'         modelId = "string",
+#'         formFactor = "PHONE"|"TABLET",
+#'         platform = "ANDROID"|"IOS",
+#'         os = "string",
+#'         cpu = list(
+#'           frequency = "string",
+#'           architecture = "string",
+#'           clock = 123.0
+#'         ),
+#'         resolution = list(
+#'           width = 123,
+#'           height = 123
+#'         ),
+#'         heapSize = 123,
+#'         memory = 123,
+#'         image = "string",
+#'         carrier = "string",
+#'         radio = "string",
+#'         remoteAccessEnabled = TRUE|FALSE,
+#'         remoteDebugEnabled = TRUE|FALSE,
+#'         fleetType = "string",
+#'         fleetName = "string",
+#'         instances = list(
+#'           list(
+#'             arn = "string",
+#'             deviceArn = "string",
+#'             labels = list(
+#'               "string"
+#'             ),
+#'             status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'             udid = "string",
+#'             instanceProfile = list(
+#'               arn = "string",
+#'               packageCleanup = TRUE|FALSE,
+#'               excludeAppPackagesFromCleanup = list(
+#'                 "string"
+#'               ),
+#'               rebootAfterUse = TRUE|FALSE,
+#'               name = "string",
+#'               description = "string"
+#'             )
+#'           )
+#'         ),
+#'         availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+#'       ),
+#'       instanceArn = "string",
+#'       deviceMinutes = list(
+#'         total = 123.0,
+#'         metered = 123.0,
+#'         unmetered = 123.0
+#'       ),
+#'       videoEndpoint = "string",
+#'       videoCapture = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2360,6 +3697,30 @@ devicefarm_list_jobs <- function(arn, nextToken = NULL) {
 #' operation, which can be used to return the next set of items in the
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   networkProfiles = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       type = "CURATED"|"PRIVATE",
+#'       uplinkBandwidthBits = 123,
+#'       downlinkBandwidthBits = 123,
+#'       uplinkDelayMs = 123,
+#'       downlinkDelayMs = 123,
+#'       uplinkJitterMs = 123,
+#'       downlinkJitterMs = 123,
+#'       uplinkLossPercent = 123,
+#'       downlinkLossPercent = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_network_profiles(
@@ -2405,6 +3766,20 @@ devicefarm_list_network_profiles <- function(arn, type = NULL, nextToken = NULL)
 #' operation, which can be used to return the next set of items in the
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   offeringPromotions = list(
+#'     list(
+#'       id = "string",
+#'       description = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_offering_promotions(
@@ -2449,6 +3824,49 @@ devicefarm_list_offering_promotions <- function(nextToken = NULL) {
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   offeringTransactions = list(
+#'     list(
+#'       offeringStatus = list(
+#'         type = "PURCHASE"|"RENEW"|"SYSTEM",
+#'         offering = list(
+#'           id = "string",
+#'           description = "string",
+#'           type = "RECURRING",
+#'           platform = "ANDROID"|"IOS",
+#'           recurringCharges = list(
+#'             list(
+#'               cost = list(
+#'                 amount = 123.0,
+#'                 currencyCode = "USD"
+#'               ),
+#'               frequency = "MONTHLY"
+#'             )
+#'           )
+#'         ),
+#'         quantity = 123,
+#'         effectiveOn = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       transactionId = "string",
+#'       offeringPromotionId = "string",
+#'       createdOn = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       cost = list(
+#'         amount = 123.0,
+#'         currencyCode = "USD"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2504,6 +3922,31 @@ devicefarm_list_offering_transactions <- function(nextToken = NULL) {
 #' operation, which can be used to return the next set of items in the
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   offerings = list(
+#'     list(
+#'       id = "string",
+#'       description = "string",
+#'       type = "RECURRING",
+#'       platform = "ANDROID"|"IOS",
+#'       recurringCharges = list(
+#'         list(
+#'           cost = list(
+#'             amount = 123.0,
+#'             currencyCode = "USD"
+#'           ),
+#'           frequency = "MONTHLY"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_offerings(
@@ -2555,6 +3998,24 @@ devicefarm_list_offerings <- function(nextToken = NULL) {
 #' operation, which can be used to return the next set of items in the
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   projects = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       defaultJobTimeoutMinutes = 123,
+#'       created = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_projects(
@@ -2568,7 +4029,7 @@ devicefarm_list_offerings <- function(nextToken = NULL) {
 #' # The following example returns information about the specified project in
 #' # Device Farm.
 #' svc$list_projects(
-#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41a7-bf94-12345EXAM...",
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:7ad300ed-8183-41a7-bf94-12...",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )
 #' }
@@ -2606,6 +4067,98 @@ devicefarm_list_projects <- function(arn = NULL, nextToken = NULL) {
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   remoteAccessSessions = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'       result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'       message = "string",
+#'       started = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stopped = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       device = list(
+#'         arn = "string",
+#'         name = "string",
+#'         manufacturer = "string",
+#'         model = "string",
+#'         modelId = "string",
+#'         formFactor = "PHONE"|"TABLET",
+#'         platform = "ANDROID"|"IOS",
+#'         os = "string",
+#'         cpu = list(
+#'           frequency = "string",
+#'           architecture = "string",
+#'           clock = 123.0
+#'         ),
+#'         resolution = list(
+#'           width = 123,
+#'           height = 123
+#'         ),
+#'         heapSize = 123,
+#'         memory = 123,
+#'         image = "string",
+#'         carrier = "string",
+#'         radio = "string",
+#'         remoteAccessEnabled = TRUE|FALSE,
+#'         remoteDebugEnabled = TRUE|FALSE,
+#'         fleetType = "string",
+#'         fleetName = "string",
+#'         instances = list(
+#'           list(
+#'             arn = "string",
+#'             deviceArn = "string",
+#'             labels = list(
+#'               "string"
+#'             ),
+#'             status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'             udid = "string",
+#'             instanceProfile = list(
+#'               arn = "string",
+#'               packageCleanup = TRUE|FALSE,
+#'               excludeAppPackagesFromCleanup = list(
+#'                 "string"
+#'               ),
+#'               rebootAfterUse = TRUE|FALSE,
+#'               name = "string",
+#'               description = "string"
+#'             )
+#'           )
+#'         ),
+#'         availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+#'       ),
+#'       instanceArn = "string",
+#'       remoteDebugEnabled = TRUE|FALSE,
+#'       remoteRecordEnabled = TRUE|FALSE,
+#'       remoteRecordAppArn = "string",
+#'       hostAddress = "string",
+#'       clientId = "string",
+#'       billingMethod = "METERED"|"UNMETERED",
+#'       deviceMinutes = list(
+#'         total = 123.0,
+#'         metered = 123.0,
+#'         unmetered = 123.0
+#'       ),
+#'       endpoint = "string",
+#'       deviceUdid = "string",
+#'       interactionMode = "INTERACTIVE"|"NO_VIDEO"|"VIDEO_ONLY",
+#'       skipAppResign = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2659,6 +4212,110 @@ devicefarm_list_remote_access_sessions <- function(arn, nextToken = NULL) {
 #' operation, which can be used to return the next set of items in the
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   runs = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+#'       platform = "ANDROID"|"IOS",
+#'       created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'       result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'       started = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stopped = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       counters = list(
+#'         total = 123,
+#'         passed = 123,
+#'         failed = 123,
+#'         warned = 123,
+#'         errored = 123,
+#'         stopped = 123,
+#'         skipped = 123
+#'       ),
+#'       message = "string",
+#'       totalJobs = 123,
+#'       completedJobs = 123,
+#'       billingMethod = "METERED"|"UNMETERED",
+#'       deviceMinutes = list(
+#'         total = 123.0,
+#'         metered = 123.0,
+#'         unmetered = 123.0
+#'       ),
+#'       networkProfile = list(
+#'         arn = "string",
+#'         name = "string",
+#'         description = "string",
+#'         type = "CURATED"|"PRIVATE",
+#'         uplinkBandwidthBits = 123,
+#'         downlinkBandwidthBits = 123,
+#'         uplinkDelayMs = 123,
+#'         downlinkDelayMs = 123,
+#'         uplinkJitterMs = 123,
+#'         downlinkJitterMs = 123,
+#'         uplinkLossPercent = 123,
+#'         downlinkLossPercent = 123
+#'       ),
+#'       parsingResultUrl = "string",
+#'       resultCode = "PARSING_FAILED"|"VPC_ENDPOINT_SETUP_FAILED",
+#'       seed = 123,
+#'       appUpload = "string",
+#'       eventCount = 123,
+#'       jobTimeoutMinutes = 123,
+#'       devicePoolArn = "string",
+#'       locale = "string",
+#'       radios = list(
+#'         wifi = TRUE|FALSE,
+#'         bluetooth = TRUE|FALSE,
+#'         nfc = TRUE|FALSE,
+#'         gps = TRUE|FALSE
+#'       ),
+#'       location = list(
+#'         latitude = 123.0,
+#'         longitude = 123.0
+#'       ),
+#'       customerArtifactPaths = list(
+#'         iosPaths = list(
+#'           "string"
+#'         ),
+#'         androidPaths = list(
+#'           "string"
+#'         ),
+#'         deviceHostPaths = list(
+#'           "string"
+#'         )
+#'       ),
+#'       webUrl = "string",
+#'       skipAppResign = TRUE|FALSE,
+#'       testSpecArn = "string",
+#'       deviceSelectionResult = list(
+#'         filters = list(
+#'           list(
+#'             attribute = "ARN"|"PLATFORM"|"OS_VERSION"|"MODEL"|"AVAILABILITY"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
+#'             operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+#'             values = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         matchedDevicesCount = 123,
+#'         maxDevices = 123
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_runs(
@@ -2671,7 +4328,7 @@ devicefarm_list_remote_access_sessions <- function(arn, nextToken = NULL) {
 #' \dontrun{
 #' # The following example returns information about a specific test run.
 #' svc$list_runs(
-#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6c6dd23/...",
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:run:5e01a8c7-c861-4c0a-b1d5-5ec6e6...",
 #'   nextToken = "RW5DdDJkMWYwZjM2MzM2VHVpOHJIUXlDUXlhc2QzRGViYnc9SEXAMPLE"
 #' )
 #' }
@@ -2708,6 +4365,21 @@ devicefarm_list_runs <- function(arn, nextToken = NULL) {
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   samples = list(
+#'     list(
+#'       arn = "string",
+#'       type = "CPU"|"MEMORY"|"THREADS"|"RX_RATE"|"TX_RATE"|"RX"|"TX"|"NATIVE_FRAMES"|"NATIVE_FPS"|"NATIVE_MIN_DRAWTIME"|"NATIVE_AVG_DRAWTIME"|"NATIVE_MAX_DRAWTIME"|"OPENGL_FRAMES"|"OPENGL_FPS"|"OPENGL_MIN_DRAWTIME"|"OPENGL_AVG_DRAWTIME"|"OPENGL_MAX_DRAWTIME",
+#'       url = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2759,6 +4431,47 @@ devicefarm_list_samples <- function(arn, nextToken = NULL) {
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   suites = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+#'       created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'       result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'       started = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stopped = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       counters = list(
+#'         total = 123,
+#'         passed = 123,
+#'         failed = 123,
+#'         warned = 123,
+#'         errored = 123,
+#'         stopped = 123,
+#'         skipped = 123
+#'       ),
+#'       message = "string",
+#'       deviceMinutes = list(
+#'         total = 123.0,
+#'         metered = 123.0,
+#'         unmetered = 123.0
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2812,6 +4525,19 @@ devicefarm_list_suites <- function(arn, nextToken = NULL) {
 #' `DEVICE_INSTANCE`, `SESSION`, `DEVICE_POOL`, `DEVICE`, and
 #' `VPCE_CONFIGURATION`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -2849,6 +4575,24 @@ devicefarm_list_tags_for_resource <- function(ResourceARN) {
 #'
 #' @param maxResult Return no more than this number of results.
 #' @param nextToken From a response, used to continue a paginated listing.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testGridProjects = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       created = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2890,6 +4634,25 @@ devicefarm_list_test_grid_projects <- function(maxResult = NULL, nextToken = NUL
 #' @param sessionArn &#91;required&#93; The ARN of the session to retrieve.
 #' @param maxResult The maximum number of sessions to return per response.
 #' @param nextToken Pagination token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   actions = list(
+#'     list(
+#'       action = "string",
+#'       started = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       duration = 123,
+#'       statusCode = "string",
+#'       requestMethod = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2933,6 +4696,21 @@ devicefarm_list_test_grid_session_actions <- function(sessionArn, maxResult = NU
 #' @param type Limit results to a specified type of artifact.
 #' @param maxResult The maximum number of results to be returned by a request.
 #' @param nextToken Pagination token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   artifacts = list(
+#'     list(
+#'       filename = "string",
+#'       type = "UNKNOWN"|"VIDEO"|"SELENIUM_LOG",
+#'       url = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2982,6 +4760,28 @@ devicefarm_list_test_grid_session_artifacts <- function(sessionArn, type = NULL,
 #' @param endTimeBefore Return only sessions that ended before this time.
 #' @param maxResult Return only this many results at a time.
 #' @param nextToken Pagination token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testGridSessions = list(
+#'     list(
+#'       arn = "string",
+#'       status = "ACTIVE"|"CLOSED"|"ERRORED",
+#'       created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ended = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       billingMinutes = 123.0,
+#'       seleniumProperties = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3037,6 +4837,47 @@ devicefarm_list_test_grid_sessions <- function(projectArn, status = NULL, creati
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tests = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+#'       created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'       result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'       started = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stopped = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       counters = list(
+#'         total = 123,
+#'         passed = 123,
+#'         failed = 123,
+#'         warned = 123,
+#'         errored = 123,
+#'         stopped = 123,
+#'         skipped = 123
+#'       ),
+#'       message = "string",
+#'       deviceMinutes = list(
+#'         total = 123.0,
+#'         metered = 123.0,
+#'         unmetered = 123.0
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3096,6 +4937,93 @@ devicefarm_list_tests <- function(arn, nextToken = NULL) {
 #' operation, which can be used to return the next set of items in the
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   uniqueProblems = list(
+#'     list(
+#'       list(
+#'         message = "string",
+#'         problems = list(
+#'           list(
+#'             run = list(
+#'               arn = "string",
+#'               name = "string"
+#'             ),
+#'             job = list(
+#'               arn = "string",
+#'               name = "string"
+#'             ),
+#'             suite = list(
+#'               arn = "string",
+#'               name = "string"
+#'             ),
+#'             test = list(
+#'               arn = "string",
+#'               name = "string"
+#'             ),
+#'             device = list(
+#'               arn = "string",
+#'               name = "string",
+#'               manufacturer = "string",
+#'               model = "string",
+#'               modelId = "string",
+#'               formFactor = "PHONE"|"TABLET",
+#'               platform = "ANDROID"|"IOS",
+#'               os = "string",
+#'               cpu = list(
+#'                 frequency = "string",
+#'                 architecture = "string",
+#'                 clock = 123.0
+#'               ),
+#'               resolution = list(
+#'                 width = 123,
+#'                 height = 123
+#'               ),
+#'               heapSize = 123,
+#'               memory = 123,
+#'               image = "string",
+#'               carrier = "string",
+#'               radio = "string",
+#'               remoteAccessEnabled = TRUE|FALSE,
+#'               remoteDebugEnabled = TRUE|FALSE,
+#'               fleetType = "string",
+#'               fleetName = "string",
+#'               instances = list(
+#'                 list(
+#'                   arn = "string",
+#'                   deviceArn = "string",
+#'                   labels = list(
+#'                     "string"
+#'                   ),
+#'                   status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'                   udid = "string",
+#'                   instanceProfile = list(
+#'                     arn = "string",
+#'                     packageCleanup = TRUE|FALSE,
+#'                     excludeAppPackagesFromCleanup = list(
+#'                       "string"
+#'                     ),
+#'                     rebootAfterUse = TRUE|FALSE,
+#'                     name = "string",
+#'                     description = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+#'             ),
+#'             result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'             message = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_unique_problems(
@@ -3148,72 +5076,96 @@ devicefarm_list_unique_problems <- function(arn, nextToken = NULL) {
 #' 
 #' Must be one of the following values:
 #' 
-#' -   ANDROID\\_APP
+#' -   ANDROID_APP
 #' 
-#' -   IOS\\_APP
+#' -   IOS_APP
 #' 
-#' -   WEB\\_APP
+#' -   WEB_APP
 #' 
-#' -   EXTERNAL\\_DATA
+#' -   EXTERNAL_DATA
 #' 
-#' -   APPIUM\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE
+#' -   APPIUM_JAVA_JUNIT_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE
+#' -   APPIUM_JAVA_TESTNG_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_PYTHON\\_TEST\\_PACKAGE
+#' -   APPIUM_PYTHON_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_NODE\\_TEST\\_PACKAGE
+#' -   APPIUM_NODE_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_RUBY\\_TEST\\_PACKAGE
+#' -   APPIUM_RUBY_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_PACKAGE
+#' -   APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_PACKAGE
+#' -   APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_PYTHON\\_TEST\\_PACKAGE
+#' -   APPIUM_WEB_PYTHON_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_NODE\\_TEST\\_PACKAGE
+#' -   APPIUM_WEB_NODE_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_WEB\\_RUBY\\_TEST\\_PACKAGE
+#' -   APPIUM_WEB_RUBY_TEST_PACKAGE
 #' 
-#' -   CALABASH\\_TEST\\_PACKAGE
+#' -   CALABASH_TEST_PACKAGE
 #' 
-#' -   INSTRUMENTATION\\_TEST\\_PACKAGE
+#' -   INSTRUMENTATION_TEST_PACKAGE
 #' 
-#' -   UIAUTOMATION\\_TEST\\_PACKAGE
+#' -   UIAUTOMATION_TEST_PACKAGE
 #' 
-#' -   UIAUTOMATOR\\_TEST\\_PACKAGE
+#' -   UIAUTOMATOR_TEST_PACKAGE
 #' 
-#' -   XCTEST\\_TEST\\_PACKAGE
+#' -   XCTEST_TEST_PACKAGE
 #' 
-#' -   XCTEST\\_UI\\_TEST\\_PACKAGE
+#' -   XCTEST_UI_TEST_PACKAGE
 #' 
-#' -   APPIUM\\_JAVA\\_JUNIT\\_TEST\\_SPEC
+#' -   APPIUM_JAVA_JUNIT_TEST_SPEC
 #' 
-#' -   APPIUM\\_JAVA\\_TESTNG\\_TEST\\_SPEC
+#' -   APPIUM_JAVA_TESTNG_TEST_SPEC
 #' 
-#' -   APPIUM\\_PYTHON\\_TEST\\_SPEC
+#' -   APPIUM_PYTHON_TEST_SPEC
 #' 
-#' -   APPIUM\\_NODE\\_TEST\\_SPEC
+#' -   APPIUM_NODE_TEST_SPEC
 #' 
-#' -   APPIUM\\_RUBY\\_TEST\\_SPEC
+#' -   APPIUM_RUBY_TEST_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_JUNIT\\_TEST\\_SPEC
+#' -   APPIUM_WEB_JAVA_JUNIT_TEST_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_JAVA\\_TESTNG\\_TEST\\_SPEC
+#' -   APPIUM_WEB_JAVA_TESTNG_TEST_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_PYTHON\\_TEST\\_SPEC
+#' -   APPIUM_WEB_PYTHON_TEST_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_NODE\\_TEST\\_SPEC
+#' -   APPIUM_WEB_NODE_TEST_SPEC
 #' 
-#' -   APPIUM\\_WEB\\_RUBY\\_TEST\\_SPEC
+#' -   APPIUM_WEB_RUBY_TEST_SPEC
 #' 
-#' -   INSTRUMENTATION\\_TEST\\_SPEC
+#' -   INSTRUMENTATION_TEST_SPEC
 #' 
-#' -   XCTEST\\_UI\\_TEST\\_SPEC
+#' -   XCTEST_UI_TEST_SPEC
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   uploads = list(
+#'     list(
+#'       arn = "string",
+#'       name = "string",
+#'       created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_NODE_TEST_PACKAGE"|"APPIUM_RUBY_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_NODE_TEST_PACKAGE"|"APPIUM_WEB_RUBY_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_NODE_TEST_SPEC"|"APPIUM_RUBY_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"APPIUM_WEB_NODE_TEST_SPEC"|"APPIUM_WEB_RUBY_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
+#'       status = "INITIALIZED"|"PROCESSING"|"SUCCEEDED"|"FAILED",
+#'       url = "string",
+#'       metadata = "string",
+#'       contentType = "string",
+#'       message = "string",
+#'       category = "CURATED"|"PRIVATE"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3270,6 +5222,23 @@ devicefarm_list_uploads <- function(arn, type = NULL, nextToken = NULL) {
 #' operation, which can be used to return the next set of items in the
 #' list.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   vpceConfigurations = list(
+#'     list(
+#'       arn = "string",
+#'       vpceConfigurationName = "string",
+#'       vpceServiceName = "string",
+#'       serviceDnsName = "string",
+#'       vpceConfigurationDescription = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_vpce_configurations(
@@ -3313,6 +5282,46 @@ devicefarm_list_vpce_configurations <- function(maxResults = NULL, nextToken = N
 #' @param offeringId The ID of the offering.
 #' @param quantity The number of device slots to purchase in an offering request.
 #' @param offeringPromotionId The ID of the offering promotion to be applied to the purchase.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   offeringTransaction = list(
+#'     offeringStatus = list(
+#'       type = "PURCHASE"|"RENEW"|"SYSTEM",
+#'       offering = list(
+#'         id = "string",
+#'         description = "string",
+#'         type = "RECURRING",
+#'         platform = "ANDROID"|"IOS",
+#'         recurringCharges = list(
+#'           list(
+#'             cost = list(
+#'               amount = 123.0,
+#'               currencyCode = "USD"
+#'             ),
+#'             frequency = "MONTHLY"
+#'           )
+#'         )
+#'       ),
+#'       quantity = 123,
+#'       effectiveOn = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     transactionId = "string",
+#'     offeringPromotionId = "string",
+#'     createdOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     cost = list(
+#'       amount = 123.0,
+#'       currencyCode = "USD"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3367,6 +5376,46 @@ devicefarm_purchase_offering <- function(offeringId = NULL, quantity = NULL, off
 #'
 #' @param offeringId The ID of a request to renew an offering.
 #' @param quantity The quantity requested in an offering renewal.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   offeringTransaction = list(
+#'     offeringStatus = list(
+#'       type = "PURCHASE"|"RENEW"|"SYSTEM",
+#'       offering = list(
+#'         id = "string",
+#'         description = "string",
+#'         type = "RECURRING",
+#'         platform = "ANDROID"|"IOS",
+#'         recurringCharges = list(
+#'           list(
+#'             cost = list(
+#'               amount = 123.0,
+#'               currencyCode = "USD"
+#'             ),
+#'             frequency = "MONTHLY"
+#'           )
+#'         )
+#'       ),
+#'       quantity = 123,
+#'       effectiveOn = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     transactionId = "string",
+#'     offeringPromotionId = "string",
+#'     createdOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     cost = list(
+#'       amount = 123.0,
+#'       currencyCode = "USD"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3430,6 +5479,107 @@ devicefarm_renew_offering <- function(offeringId = NULL, quantity = NULL) {
 #' @param configuration Information about the settings for the run to be scheduled.
 #' @param executionConfiguration Specifies configuration information about a test run, such as the
 #' execution timeout (in minutes).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   run = list(
+#'     arn = "string",
+#'     name = "string",
+#'     type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+#'     platform = "ANDROID"|"IOS",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'     result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'     started = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     stopped = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     counters = list(
+#'       total = 123,
+#'       passed = 123,
+#'       failed = 123,
+#'       warned = 123,
+#'       errored = 123,
+#'       stopped = 123,
+#'       skipped = 123
+#'     ),
+#'     message = "string",
+#'     totalJobs = 123,
+#'     completedJobs = 123,
+#'     billingMethod = "METERED"|"UNMETERED",
+#'     deviceMinutes = list(
+#'       total = 123.0,
+#'       metered = 123.0,
+#'       unmetered = 123.0
+#'     ),
+#'     networkProfile = list(
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       type = "CURATED"|"PRIVATE",
+#'       uplinkBandwidthBits = 123,
+#'       downlinkBandwidthBits = 123,
+#'       uplinkDelayMs = 123,
+#'       downlinkDelayMs = 123,
+#'       uplinkJitterMs = 123,
+#'       downlinkJitterMs = 123,
+#'       uplinkLossPercent = 123,
+#'       downlinkLossPercent = 123
+#'     ),
+#'     parsingResultUrl = "string",
+#'     resultCode = "PARSING_FAILED"|"VPC_ENDPOINT_SETUP_FAILED",
+#'     seed = 123,
+#'     appUpload = "string",
+#'     eventCount = 123,
+#'     jobTimeoutMinutes = 123,
+#'     devicePoolArn = "string",
+#'     locale = "string",
+#'     radios = list(
+#'       wifi = TRUE|FALSE,
+#'       bluetooth = TRUE|FALSE,
+#'       nfc = TRUE|FALSE,
+#'       gps = TRUE|FALSE
+#'     ),
+#'     location = list(
+#'       latitude = 123.0,
+#'       longitude = 123.0
+#'     ),
+#'     customerArtifactPaths = list(
+#'       iosPaths = list(
+#'         "string"
+#'       ),
+#'       androidPaths = list(
+#'         "string"
+#'       ),
+#'       deviceHostPaths = list(
+#'         "string"
+#'       )
+#'     ),
+#'     webUrl = "string",
+#'     skipAppResign = TRUE|FALSE,
+#'     testSpecArn = "string",
+#'     deviceSelectionResult = list(
+#'       filters = list(
+#'         list(
+#'           attribute = "ARN"|"PLATFORM"|"OS_VERSION"|"MODEL"|"AVAILABILITY"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
+#'           operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+#'           values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       matchedDevicesCount = 123,
+#'       maxDevices = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3552,6 +5702,97 @@ devicefarm_schedule_run <- function(projectArn, appArn = NULL, devicePoolArn = N
 #' @param arn &#91;required&#93; Represents the Amazon Resource Name (ARN) of the Device Farm job to
 #' stop.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   job = list(
+#'     arn = "string",
+#'     name = "string",
+#'     type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'     result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'     started = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     stopped = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     counters = list(
+#'       total = 123,
+#'       passed = 123,
+#'       failed = 123,
+#'       warned = 123,
+#'       errored = 123,
+#'       stopped = 123,
+#'       skipped = 123
+#'     ),
+#'     message = "string",
+#'     device = list(
+#'       arn = "string",
+#'       name = "string",
+#'       manufacturer = "string",
+#'       model = "string",
+#'       modelId = "string",
+#'       formFactor = "PHONE"|"TABLET",
+#'       platform = "ANDROID"|"IOS",
+#'       os = "string",
+#'       cpu = list(
+#'         frequency = "string",
+#'         architecture = "string",
+#'         clock = 123.0
+#'       ),
+#'       resolution = list(
+#'         width = 123,
+#'         height = 123
+#'       ),
+#'       heapSize = 123,
+#'       memory = 123,
+#'       image = "string",
+#'       carrier = "string",
+#'       radio = "string",
+#'       remoteAccessEnabled = TRUE|FALSE,
+#'       remoteDebugEnabled = TRUE|FALSE,
+#'       fleetType = "string",
+#'       fleetName = "string",
+#'       instances = list(
+#'         list(
+#'           arn = "string",
+#'           deviceArn = "string",
+#'           labels = list(
+#'             "string"
+#'           ),
+#'           status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'           udid = "string",
+#'           instanceProfile = list(
+#'             arn = "string",
+#'             packageCleanup = TRUE|FALSE,
+#'             excludeAppPackagesFromCleanup = list(
+#'               "string"
+#'             ),
+#'             rebootAfterUse = TRUE|FALSE,
+#'             name = "string",
+#'             description = "string"
+#'           )
+#'         )
+#'       ),
+#'       availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+#'     ),
+#'     instanceArn = "string",
+#'     deviceMinutes = list(
+#'       total = 123.0,
+#'       metered = 123.0,
+#'       unmetered = 123.0
+#'     ),
+#'     videoEndpoint = "string",
+#'     videoCapture = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_job(
@@ -3588,6 +5829,95 @@ devicefarm_stop_job <- function(arn) {
 #' devicefarm_stop_remote_access_session(arn)
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the remote access session to stop.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   remoteAccessSession = list(
+#'     arn = "string",
+#'     name = "string",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'     result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'     message = "string",
+#'     started = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     stopped = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     device = list(
+#'       arn = "string",
+#'       name = "string",
+#'       manufacturer = "string",
+#'       model = "string",
+#'       modelId = "string",
+#'       formFactor = "PHONE"|"TABLET",
+#'       platform = "ANDROID"|"IOS",
+#'       os = "string",
+#'       cpu = list(
+#'         frequency = "string",
+#'         architecture = "string",
+#'         clock = 123.0
+#'       ),
+#'       resolution = list(
+#'         width = 123,
+#'         height = 123
+#'       ),
+#'       heapSize = 123,
+#'       memory = 123,
+#'       image = "string",
+#'       carrier = "string",
+#'       radio = "string",
+#'       remoteAccessEnabled = TRUE|FALSE,
+#'       remoteDebugEnabled = TRUE|FALSE,
+#'       fleetType = "string",
+#'       fleetName = "string",
+#'       instances = list(
+#'         list(
+#'           arn = "string",
+#'           deviceArn = "string",
+#'           labels = list(
+#'             "string"
+#'           ),
+#'           status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'           udid = "string",
+#'           instanceProfile = list(
+#'             arn = "string",
+#'             packageCleanup = TRUE|FALSE,
+#'             excludeAppPackagesFromCleanup = list(
+#'               "string"
+#'             ),
+#'             rebootAfterUse = TRUE|FALSE,
+#'             name = "string",
+#'             description = "string"
+#'           )
+#'         )
+#'       ),
+#'       availability = "TEMPORARY_NOT_AVAILABLE"|"BUSY"|"AVAILABLE"|"HIGHLY_AVAILABLE"
+#'     ),
+#'     instanceArn = "string",
+#'     remoteDebugEnabled = TRUE|FALSE,
+#'     remoteRecordEnabled = TRUE|FALSE,
+#'     remoteRecordAppArn = "string",
+#'     hostAddress = "string",
+#'     clientId = "string",
+#'     billingMethod = "METERED"|"UNMETERED",
+#'     deviceMinutes = list(
+#'       total = 123.0,
+#'       metered = 123.0,
+#'       unmetered = 123.0
+#'     ),
+#'     endpoint = "string",
+#'     deviceUdid = "string",
+#'     interactionMode = "INTERACTIVE"|"NO_VIDEO"|"VIDEO_ONLY",
+#'     skipAppResign = TRUE|FALSE
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3631,6 +5961,107 @@ devicefarm_stop_remote_access_session <- function(arn) {
 #'
 #' @param arn &#91;required&#93; Represents the Amazon Resource Name (ARN) of the Device Farm run to
 #' stop.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   run = list(
+#'     arn = "string",
+#'     name = "string",
+#'     type = "BUILTIN_FUZZ"|"BUILTIN_EXPLORER"|"WEB_PERFORMANCE_PROFILE"|"APPIUM_JAVA_JUNIT"|"APPIUM_JAVA_TESTNG"|"APPIUM_PYTHON"|"APPIUM_NODE"|"APPIUM_RUBY"|"APPIUM_WEB_JAVA_JUNIT"|"APPIUM_WEB_JAVA_TESTNG"|"APPIUM_WEB_PYTHON"|"APPIUM_WEB_NODE"|"APPIUM_WEB_RUBY"|"CALABASH"|"INSTRUMENTATION"|"UIAUTOMATION"|"UIAUTOMATOR"|"XCTEST"|"XCTEST_UI"|"REMOTE_ACCESS_RECORD"|"REMOTE_ACCESS_REPLAY",
+#'     platform = "ANDROID"|"IOS",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "PENDING"|"PENDING_CONCURRENCY"|"PENDING_DEVICE"|"PROCESSING"|"SCHEDULING"|"PREPARING"|"RUNNING"|"COMPLETED"|"STOPPING",
+#'     result = "PENDING"|"PASSED"|"WARNED"|"FAILED"|"SKIPPED"|"ERRORED"|"STOPPED",
+#'     started = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     stopped = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     counters = list(
+#'       total = 123,
+#'       passed = 123,
+#'       failed = 123,
+#'       warned = 123,
+#'       errored = 123,
+#'       stopped = 123,
+#'       skipped = 123
+#'     ),
+#'     message = "string",
+#'     totalJobs = 123,
+#'     completedJobs = 123,
+#'     billingMethod = "METERED"|"UNMETERED",
+#'     deviceMinutes = list(
+#'       total = 123.0,
+#'       metered = 123.0,
+#'       unmetered = 123.0
+#'     ),
+#'     networkProfile = list(
+#'       arn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       type = "CURATED"|"PRIVATE",
+#'       uplinkBandwidthBits = 123,
+#'       downlinkBandwidthBits = 123,
+#'       uplinkDelayMs = 123,
+#'       downlinkDelayMs = 123,
+#'       uplinkJitterMs = 123,
+#'       downlinkJitterMs = 123,
+#'       uplinkLossPercent = 123,
+#'       downlinkLossPercent = 123
+#'     ),
+#'     parsingResultUrl = "string",
+#'     resultCode = "PARSING_FAILED"|"VPC_ENDPOINT_SETUP_FAILED",
+#'     seed = 123,
+#'     appUpload = "string",
+#'     eventCount = 123,
+#'     jobTimeoutMinutes = 123,
+#'     devicePoolArn = "string",
+#'     locale = "string",
+#'     radios = list(
+#'       wifi = TRUE|FALSE,
+#'       bluetooth = TRUE|FALSE,
+#'       nfc = TRUE|FALSE,
+#'       gps = TRUE|FALSE
+#'     ),
+#'     location = list(
+#'       latitude = 123.0,
+#'       longitude = 123.0
+#'     ),
+#'     customerArtifactPaths = list(
+#'       iosPaths = list(
+#'         "string"
+#'       ),
+#'       androidPaths = list(
+#'         "string"
+#'       ),
+#'       deviceHostPaths = list(
+#'         "string"
+#'       )
+#'     ),
+#'     webUrl = "string",
+#'     skipAppResign = TRUE|FALSE,
+#'     testSpecArn = "string",
+#'     deviceSelectionResult = list(
+#'       filters = list(
+#'         list(
+#'           attribute = "ARN"|"PLATFORM"|"OS_VERSION"|"MODEL"|"AVAILABILITY"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE",
+#'           operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+#'           values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       matchedDevicesCount = 123,
+#'       maxDevices = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3688,6 +6119,12 @@ devicefarm_stop_run <- function(arn) {
 #' Tag keys can have a maximum character length of 128 characters. Tag
 #' values can have a maximum length of 256 characters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -3736,6 +6173,12 @@ devicefarm_tag_resource <- function(ResourceARN, Tags) {
 #' `VPCE_CONFIGURATION`.
 #' @param TagKeys &#91;required&#93; The keys of the tags to be removed.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -3778,6 +6221,32 @@ devicefarm_untag_resource <- function(ResourceARN, TagKeys) {
 #' @param profileArn The ARN of the profile that you want to associate with the device
 #' instance.
 #' @param labels An array of strings that you want to associate with the device instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deviceInstance = list(
+#'     arn = "string",
+#'     deviceArn = "string",
+#'     labels = list(
+#'       "string"
+#'     ),
+#'     status = "IN_USE"|"PREPARING"|"AVAILABLE"|"NOT_AVAILABLE",
+#'     udid = "string",
+#'     instanceProfile = list(
+#'       arn = "string",
+#'       packageCleanup = TRUE|FALSE,
+#'       excludeAppPackagesFromCleanup = list(
+#'         "string"
+#'       ),
+#'       rebootAfterUse = TRUE|FALSE,
+#'       name = "string",
+#'       description = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3847,6 +6316,27 @@ devicefarm_update_device_instance <- function(arn, profileArn = NULL, labels = N
 #' 
 #' If you use this parameter in your request, you cannot use the
 #' `maxDevices` parameter in the same request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   devicePool = list(
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     type = "CURATED"|"PRIVATE",
+#'     rules = list(
+#'       list(
+#'         attribute = "ARN"|"PLATFORM"|"FORM_FACTOR"|"MANUFACTURER"|"REMOTE_ACCESS_ENABLED"|"REMOTE_DEBUG_ENABLED"|"APPIUM_VERSION"|"INSTANCE_ARN"|"INSTANCE_LABELS"|"FLEET_TYPE"|"OS_VERSION"|"MODEL"|"AVAILABILITY",
+#'         operator = "EQUALS"|"LESS_THAN"|"LESS_THAN_OR_EQUALS"|"GREATER_THAN"|"GREATER_THAN_OR_EQUALS"|"IN"|"NOT_IN"|"CONTAINS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     maxDevices = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3927,6 +6417,23 @@ devicefarm_update_device_pool <- function(arn, name = NULL, description = NULL, 
 #' @param rebootAfterUse The updated choice for whether you want to reboot the device after use.
 #' The default value is `true`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   instanceProfile = list(
+#'     arn = "string",
+#'     packageCleanup = TRUE|FALSE,
+#'     excludeAppPackagesFromCleanup = list(
+#'       "string"
+#'     ),
+#'     rebootAfterUse = TRUE|FALSE,
+#'     name = "string",
+#'     description = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_instance_profile(
@@ -3997,6 +6504,27 @@ devicefarm_update_instance_profile <- function(arn, name = NULL, description = N
 #' @param downlinkLossPercent Proportion of received packets that fail to arrive from 0 to 100
 #' percent.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   networkProfile = list(
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     type = "CURATED"|"PRIVATE",
+#'     uplinkBandwidthBits = 123,
+#'     downlinkBandwidthBits = 123,
+#'     uplinkDelayMs = 123,
+#'     downlinkDelayMs = 123,
+#'     uplinkJitterMs = 123,
+#'     downlinkJitterMs = 123,
+#'     uplinkLossPercent = 123,
+#'     downlinkLossPercent = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_network_profile(
@@ -4051,6 +6579,21 @@ devicefarm_update_network_profile <- function(arn, name = NULL, description = NU
 #' @param defaultJobTimeoutMinutes The number of minutes a test run in the project executes before it times
 #' out.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   project = list(
+#'     arn = "string",
+#'     name = "string",
+#'     defaultJobTimeoutMinutes = 123,
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_project(
@@ -4065,7 +6608,7 @@ devicefarm_update_network_profile <- function(arn, name = NULL, description = NU
 #' # The following example updates the specified project with a new name.
 #' svc$update_project(
 #'   name = "NewName",
-#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:8f75187d-101e-4625-accc-12345EXAM..."
+#'   arn = "arn:aws:devicefarm:us-west-2:123456789101:project:8f75187d-101e-4625-accc-12..."
 #' )
 #' }
 #'
@@ -4100,6 +6643,21 @@ devicefarm_update_project <- function(arn, name = NULL, defaultJobTimeoutMinutes
 #' @param projectArn &#91;required&#93; ARN of the project to update.
 #' @param name Human-readable name for the project.
 #' @param description Human-readable description for the project.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testGridProject = list(
+#'     arn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4145,6 +6703,27 @@ devicefarm_update_test_grid_project <- function(projectArn, name = NULL, descrip
 #' @param contentType The upload's content type (for example, `application/x-yaml`).
 #' @param editContent Set to true if the YAML file has changed and must be updated. Otherwise,
 #' set to false.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   upload = list(
+#'     arn = "string",
+#'     name = "string",
+#'     created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     type = "ANDROID_APP"|"IOS_APP"|"WEB_APP"|"EXTERNAL_DATA"|"APPIUM_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_PYTHON_TEST_PACKAGE"|"APPIUM_NODE_TEST_PACKAGE"|"APPIUM_RUBY_TEST_PACKAGE"|"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE"|"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE"|"APPIUM_WEB_PYTHON_TEST_PACKAGE"|"APPIUM_WEB_NODE_TEST_PACKAGE"|"APPIUM_WEB_RUBY_TEST_PACKAGE"|"CALABASH_TEST_PACKAGE"|"INSTRUMENTATION_TEST_PACKAGE"|"UIAUTOMATION_TEST_PACKAGE"|"UIAUTOMATOR_TEST_PACKAGE"|"XCTEST_TEST_PACKAGE"|"XCTEST_UI_TEST_PACKAGE"|"APPIUM_JAVA_JUNIT_TEST_SPEC"|"APPIUM_JAVA_TESTNG_TEST_SPEC"|"APPIUM_PYTHON_TEST_SPEC"|"APPIUM_NODE_TEST_SPEC"|"APPIUM_RUBY_TEST_SPEC"|"APPIUM_WEB_JAVA_JUNIT_TEST_SPEC"|"APPIUM_WEB_JAVA_TESTNG_TEST_SPEC"|"APPIUM_WEB_PYTHON_TEST_SPEC"|"APPIUM_WEB_NODE_TEST_SPEC"|"APPIUM_WEB_RUBY_TEST_SPEC"|"INSTRUMENTATION_TEST_SPEC"|"XCTEST_UI_TEST_SPEC",
+#'     status = "INITIALIZED"|"PROCESSING"|"SUCCEEDED"|"FAILED",
+#'     url = "string",
+#'     metadata = "string",
+#'     contentType = "string",
+#'     message = "string",
+#'     category = "CURATED"|"PRIVATE"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4197,6 +6776,20 @@ devicefarm_update_upload <- function(arn, name = NULL, contentType = NULL, editC
 #' VPC. The DNS name must not already be in use on the internet.
 #' @param vpceConfigurationDescription An optional description that provides details about your VPC endpoint
 #' configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   vpceConfiguration = list(
+#'     arn = "string",
+#'     vpceConfigurationName = "string",
+#'     vpceServiceName = "string",
+#'     serviceDnsName = "string",
+#'     vpceConfigurationDescription = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

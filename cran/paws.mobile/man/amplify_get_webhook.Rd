@@ -10,6 +10,24 @@ amplify_get_webhook(webhookId)
 \arguments{
 \item{webhookId}{[required] The unique ID for a webhook.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  webhook = list(
+    webhookArn = "string",
+    webhookId = "string",
+    webhookUrl = "string",
+    branchName = "string",
+    description = "string",
+    createTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    updateTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Returns the webhook information that corresponds to a specified webhook
 ID.

@@ -21,6 +21,10 @@ stale. If you do not specify this parameter, the default value is 0,
 which indicates that the sticky session should last for the duration of
 the browser session.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Generates a stickiness policy with sticky session lifetimes controlled
 by the lifetime of the browser (user-agent) or a specified expiration

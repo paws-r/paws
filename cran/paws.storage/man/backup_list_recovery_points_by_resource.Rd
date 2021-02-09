@@ -19,6 +19,24 @@ pointed to by the next token.}
 
 \item{MaxResults}{The maximum number of items to be returned.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextToken = "string",
+  RecoveryPoints = list(
+    list(
+      RecoveryPointArn = "string",
+      CreationDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Status = "COMPLETED"|"PARTIAL"|"DELETING"|"EXPIRED",
+      EncryptionKeyArn = "string",
+      BackupSizeBytes = 123,
+      BackupVaultName = "string"
+    )
+  )
+)
+}
+}
 \description{
 Returns detailed information about recovery points of the type specified
 by a resource Amazon Resource Name (ARN).

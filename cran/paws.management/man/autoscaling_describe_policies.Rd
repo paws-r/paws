@@ -24,6 +24,61 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to be returned with each call. The default
 value is \code{50} and the maximum value is \code{100}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ScalingPolicies = list(
+    list(
+      AutoScalingGroupName = "string",
+      PolicyName = "string",
+      PolicyARN = "string",
+      PolicyType = "string",
+      AdjustmentType = "string",
+      MinAdjustmentStep = 123,
+      MinAdjustmentMagnitude = 123,
+      ScalingAdjustment = 123,
+      Cooldown = 123,
+      StepAdjustments = list(
+        list(
+          MetricIntervalLowerBound = 123.0,
+          MetricIntervalUpperBound = 123.0,
+          ScalingAdjustment = 123
+        )
+      ),
+      MetricAggregationType = "string",
+      EstimatedInstanceWarmup = 123,
+      Alarms = list(
+        list(
+          AlarmName = "string",
+          AlarmARN = "string"
+        )
+      ),
+      TargetTrackingConfiguration = list(
+        PredefinedMetricSpecification = list(
+          PredefinedMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"ALBRequestCountPerTarget",
+          ResourceLabel = "string"
+        ),
+        CustomizedMetricSpecification = list(
+          MetricName = "string",
+          Namespace = "string",
+          Dimensions = list(
+            list(
+              Name = "string",
+              Value = "string"
+            )
+          ),
+          Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+          Unit = "string"
+        ),
+        TargetValue = 123.0,
+        DisableScaleIn = TRUE|FALSE
+      ),
+      Enabled = TRUE|FALSE
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the policies for the specified Auto Scaling group.
 }

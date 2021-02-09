@@ -14,6 +14,10 @@ of \code{Submitted}, use the
 \code{\link[=elastictranscoder_list_jobs_by_status]{list_jobs_by_status}} API
 action.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 The CancelJob operation cancels an unfinished job.
 

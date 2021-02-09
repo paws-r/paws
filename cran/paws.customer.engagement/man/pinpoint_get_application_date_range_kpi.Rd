@@ -38,6 +38,42 @@ extended ISO 8601 format and use Coordinated Universal Time (UTC), for
 example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value
 should also be fewer than 90 days from the current day.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ApplicationDateRangeKpiResponse = list(
+    ApplicationId = "string",
+    EndTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    KpiName = "string",
+    KpiResult = list(
+      Rows = list(
+        list(
+          GroupedBys = list(
+            list(
+              Key = "string",
+              Type = "string",
+              Value = "string"
+            )
+          ),
+          Values = list(
+            list(
+              Key = "string",
+              Type = "string",
+              Value = "string"
+            )
+          )
+        )
+      )
+    ),
+    NextToken = "string",
+    StartTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Retrieves (queries) pre-aggregated data for a standard metric that
 applies to an application.

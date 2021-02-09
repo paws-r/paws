@@ -9,6 +9,10 @@ alexaforbusiness_delete_profile(ProfileArn)
 \arguments{
 \item{ProfileArn}{The ARN of the room profile to delete. Required.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a room profile by the profile ARN.
 }

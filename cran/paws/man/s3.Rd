@@ -124,7 +124,7 @@ Amazon Simple Storage Service
 \link[=s3_put_object_retention]{put_object_retention} \tab Places an Object Retention configuration on an object\cr
 \link[=s3_put_object_tagging]{put_object_tagging} \tab Sets the supplied tag-set to an object that already exists in a bucket\cr
 \link[=s3_put_public_access_block]{put_public_access_block} \tab Creates or modifies the PublicAccessBlock configuration for an Amazon S3 bucket\cr
-\link[=s3_restore_object]{restore_object} \tab Restores an archived copy of an object back into Amazon S3 This action is not supported by Amazon S3 on Outposts\cr
+\link[=s3_restore_object]{restore_object} \tab Restores an archived copy of an object back into Amazon S3\cr
 \link[=s3_select_object_content]{select_object_content} \tab This operation filters the contents of an Amazon S3 object based on a simple structured query language (SQL) statement\cr
 \link[=s3_upload_part]{upload_part} \tab Uploads a part in a multipart upload\cr
 \link[=s3_upload_part_copy]{upload_part_copy} \tab Uploads a part by copying data from an existing object as data source
@@ -138,7 +138,7 @@ svc <- s3()
 svc$abort_multipart_upload(
   Bucket = "examplebucket",
   Key = "bigobject",
-  UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP..."
+  UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOm..."
 )
 }
 

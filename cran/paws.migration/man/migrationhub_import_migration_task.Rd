@@ -16,6 +16,10 @@ personal data in this field.}}
 \item{DryRun}{Optional boolean flag to indicate whether any effect should take place.
 Used to test if the caller has permission to make the call.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Registers a new migration task which represents a server, database,
 etc., being migrated to AWS by a migration tool.

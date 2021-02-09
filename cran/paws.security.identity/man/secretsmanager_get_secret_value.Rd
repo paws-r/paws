@@ -51,6 +51,22 @@ rotation process. If you use this parameter then don't specify
 \code{VersionId}, then the default is to perform the operation on the version
 with the \code{VersionStage} value of \code{AWSCURRENT}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ARN = "string",
+  Name = "string",
+  VersionId = "string",
+  SecretBinary = raw,
+  SecretString = "string",
+  VersionStages = list(
+    "string"
+  ),
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Retrieves the contents of the encrypted fields \code{SecretString} or
 \code{SecretBinary} from the specified version of a secret, whichever

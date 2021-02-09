@@ -22,9 +22,9 @@ NULL
 #' creation.
 #' @param apiCachingBehavior &#91;required&#93; Caching behavior.
 #' 
-#' -   **FULL\\_REQUEST\\_CACHING**: All requests are fully cached.
+#' -   **FULL_REQUEST_CACHING**: All requests are fully cached.
 #' 
-#' -   **PER\\_RESOLVER\\_CACHING**: Individual resolvers that you specify
+#' -   **PER_RESOLVER_CACHING**: Individual resolvers that you specify
 #'     are cached.
 #' @param type &#91;required&#93; The cache instance type. Valid values are
 #' 
@@ -51,19 +51,34 @@ NULL
 #' The following legacy instance types are available, but their use is
 #' discouraged:
 #' 
-#' -   **T2\\_SMALL**: A t2.small instance type.
+#' -   **T2_SMALL**: A t2.small instance type.
 #' 
-#' -   **T2\\_MEDIUM**: A t2.medium instance type.
+#' -   **T2_MEDIUM**: A t2.medium instance type.
 #' 
-#' -   **R4\\_LARGE**: A r4.large instance type.
+#' -   **R4_LARGE**: A r4.large instance type.
 #' 
-#' -   **R4\\_XLARGE**: A r4.xlarge instance type.
+#' -   **R4_XLARGE**: A r4.xlarge instance type.
 #' 
-#' -   **R4\\_2XLARGE**: A r4.2xlarge instance type.
+#' -   **R4_2XLARGE**: A r4.2xlarge instance type.
 #' 
-#' -   **R4\\_4XLARGE**: A r4.4xlarge instance type.
+#' -   **R4_4XLARGE**: A r4.4xlarge instance type.
 #' 
-#' -   **R4\\_8XLARGE**: A r4.8xlarge instance type.
+#' -   **R4_8XLARGE**: A r4.8xlarge instance type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   apiCache = list(
+#'     ttl = 123,
+#'     apiCachingBehavior = "FULL_REQUEST_CACHING"|"PER_RESOLVER_CACHING",
+#'     transitEncryptionEnabled = TRUE|FALSE,
+#'     atRestEncryptionEnabled = TRUE|FALSE,
+#'     type = "T2_SMALL"|"T2_MEDIUM"|"R4_LARGE"|"R4_XLARGE"|"R4_2XLARGE"|"R4_4XLARGE"|"R4_8XLARGE"|"SMALL"|"MEDIUM"|"LARGE"|"XLARGE"|"LARGE_2X"|"LARGE_4X"|"LARGE_8X"|"LARGE_12X",
+#'     status = "AVAILABLE"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -113,6 +128,19 @@ appsync_create_api_cache <- function(apiId, ttl, transitEncryptionEnabled = NULL
 #' represented as seconds since the epoch, rounded down to the nearest
 #' hour. The default value for this parameter is 7 days from creation time.
 #' For more information, see .
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   apiKey = list(
+#'     id = "string",
+#'     description = "string",
+#'     expires = 123,
+#'     deletes = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -164,6 +192,58 @@ appsync_create_api_key <- function(apiId, description = NULL, expires = NULL) {
 #' @param elasticsearchConfig Amazon Elasticsearch Service settings.
 #' @param httpConfig HTTP endpoint settings.
 #' @param relationalDatabaseConfig Relational database settings.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataSource = list(
+#'     dataSourceArn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP"|"RELATIONAL_DATABASE",
+#'     serviceRoleArn = "string",
+#'     dynamodbConfig = list(
+#'       tableName = "string",
+#'       awsRegion = "string",
+#'       useCallerCredentials = TRUE|FALSE,
+#'       deltaSyncConfig = list(
+#'         baseTableTTL = 123,
+#'         deltaSyncTableName = "string",
+#'         deltaSyncTableTTL = 123
+#'       ),
+#'       versioned = TRUE|FALSE
+#'     ),
+#'     lambdaConfig = list(
+#'       lambdaFunctionArn = "string"
+#'     ),
+#'     elasticsearchConfig = list(
+#'       endpoint = "string",
+#'       awsRegion = "string"
+#'     ),
+#'     httpConfig = list(
+#'       endpoint = "string",
+#'       authorizationConfig = list(
+#'         authorizationType = "AWS_IAM",
+#'         awsIamConfig = list(
+#'           signingRegion = "string",
+#'           signingServiceName = "string"
+#'         )
+#'       )
+#'     ),
+#'     relationalDatabaseConfig = list(
+#'       relationalDatabaseSourceType = "RDS_HTTP_ENDPOINT",
+#'       rdsHttpEndpointConfig = list(
+#'         awsRegion = "string",
+#'         dbClusterIdentifier = "string",
+#'         databaseName = "string",
+#'         schema = "string",
+#'         awsSecretStoreArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -256,6 +336,23 @@ appsync_create_data_source <- function(apiId, name, description = NULL, type, se
 #' @param functionVersion &#91;required&#93; The `version` of the request mapping template. Currently the supported
 #' value is 2018-05-29.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   functionConfiguration = list(
+#'     functionId = "string",
+#'     functionArn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     dataSourceName = "string",
+#'     requestMappingTemplate = "string",
+#'     responseMappingTemplate = "string",
+#'     functionVersion = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_function(
@@ -308,6 +405,60 @@ appsync_create_function <- function(apiId, name, description = NULL, dataSourceN
 #' @param tags A `TagMap` object.
 #' @param additionalAuthenticationProviders A list of additional authentication providers for the `GraphqlApi` API.
 #' @param xrayEnabled A flag indicating whether to enable X-Ray tracing for the `GraphqlApi`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   graphqlApi = list(
+#'     name = "string",
+#'     apiId = "string",
+#'     authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+#'     logConfig = list(
+#'       fieldLogLevel = "NONE"|"ERROR"|"ALL",
+#'       cloudWatchLogsRoleArn = "string",
+#'       excludeVerboseContent = TRUE|FALSE
+#'     ),
+#'     userPoolConfig = list(
+#'       userPoolId = "string",
+#'       awsRegion = "string",
+#'       defaultAction = "ALLOW"|"DENY",
+#'       appIdClientRegex = "string"
+#'     ),
+#'     openIDConnectConfig = list(
+#'       issuer = "string",
+#'       clientId = "string",
+#'       iatTTL = 123,
+#'       authTTL = 123
+#'     ),
+#'     arn = "string",
+#'     uris = list(
+#'       "string"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     additionalAuthenticationProviders = list(
+#'       list(
+#'         authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+#'         openIDConnectConfig = list(
+#'           issuer = "string",
+#'           clientId = "string",
+#'           iatTTL = 123,
+#'           authTTL = 123
+#'         ),
+#'         userPoolConfig = list(
+#'           userPoolId = "string",
+#'           awsRegion = "string",
+#'           appIdClientRegex = "string"
+#'         )
+#'       )
+#'     ),
+#'     xrayEnabled = TRUE|FALSE,
+#'     wafWebAclArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -415,6 +566,40 @@ appsync_create_graphql_api <- function(name, logConfig = NULL, authenticationTyp
 #' @param syncConfig The `SyncConfig` for a resolver attached to a versioned datasource.
 #' @param cachingConfig The caching configuration for the resolver.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resolver = list(
+#'     typeName = "string",
+#'     fieldName = "string",
+#'     dataSourceName = "string",
+#'     resolverArn = "string",
+#'     requestMappingTemplate = "string",
+#'     responseMappingTemplate = "string",
+#'     kind = "UNIT"|"PIPELINE",
+#'     pipelineConfig = list(
+#'       functions = list(
+#'         "string"
+#'       )
+#'     ),
+#'     syncConfig = list(
+#'       conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+#'       conflictDetection = "VERSION"|"NONE",
+#'       lambdaConflictHandlerConfig = list(
+#'         lambdaConflictHandlerArn = "string"
+#'       )
+#'     ),
+#'     cachingConfig = list(
+#'       ttl = 123,
+#'       cachingKeys = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_resolver(
@@ -481,6 +666,20 @@ appsync_create_resolver <- function(apiId, typeName, fieldName, dataSourceName =
 #' documentation](https://graphql.org/learn/schema/).
 #' @param format &#91;required&#93; The type format: SDL or JSON.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   type = list(
+#'     name = "string",
+#'     description = "string",
+#'     arn = "string",
+#'     definition = "string",
+#'     format = "SDL"|"JSON"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_type(
@@ -520,6 +719,12 @@ appsync_create_type <- function(apiId, definition, format) {
 #'
 #' @param apiId &#91;required&#93; The API ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_api_cache(
@@ -557,6 +762,12 @@ appsync_delete_api_cache <- function(apiId) {
 #'
 #' @param apiId &#91;required&#93; The API ID.
 #' @param id &#91;required&#93; The ID for the API key.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -597,6 +808,12 @@ appsync_delete_api_key <- function(apiId, id) {
 #' @param apiId &#91;required&#93; The API ID.
 #' @param name &#91;required&#93; The name of the data source.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_data_source(
@@ -636,6 +853,12 @@ appsync_delete_data_source <- function(apiId, name) {
 #' @param apiId &#91;required&#93; The GraphQL API ID.
 #' @param functionId &#91;required&#93; The `Function` ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_function(
@@ -673,6 +896,12 @@ appsync_delete_function <- function(apiId, functionId) {
 #' appsync_delete_graphql_api(apiId)
 #'
 #' @param apiId &#91;required&#93; The API ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -712,6 +941,12 @@ appsync_delete_graphql_api <- function(apiId) {
 #' @param apiId &#91;required&#93; The API ID.
 #' @param typeName &#91;required&#93; The name of the resolver type.
 #' @param fieldName &#91;required&#93; The resolver field name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -753,6 +988,12 @@ appsync_delete_resolver <- function(apiId, typeName, fieldName) {
 #' @param apiId &#91;required&#93; The API ID.
 #' @param typeName &#91;required&#93; The type name.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_type(
@@ -791,6 +1032,12 @@ appsync_delete_type <- function(apiId, typeName) {
 #'
 #' @param apiId &#91;required&#93; The API ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$flush_api_cache(
@@ -827,6 +1074,21 @@ appsync_flush_api_cache <- function(apiId) {
 #' appsync_get_api_cache(apiId)
 #'
 #' @param apiId &#91;required&#93; The API ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   apiCache = list(
+#'     ttl = 123,
+#'     apiCachingBehavior = "FULL_REQUEST_CACHING"|"PER_RESOLVER_CACHING",
+#'     transitEncryptionEnabled = TRUE|FALSE,
+#'     atRestEncryptionEnabled = TRUE|FALSE,
+#'     type = "T2_SMALL"|"T2_MEDIUM"|"R4_LARGE"|"R4_XLARGE"|"R4_2XLARGE"|"R4_4XLARGE"|"R4_8XLARGE"|"SMALL"|"MEDIUM"|"LARGE"|"XLARGE"|"LARGE_2X"|"LARGE_4X"|"LARGE_8X"|"LARGE_12X",
+#'     status = "AVAILABLE"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -865,6 +1127,58 @@ appsync_get_api_cache <- function(apiId) {
 #'
 #' @param apiId &#91;required&#93; The API ID.
 #' @param name &#91;required&#93; The name of the data source.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataSource = list(
+#'     dataSourceArn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP"|"RELATIONAL_DATABASE",
+#'     serviceRoleArn = "string",
+#'     dynamodbConfig = list(
+#'       tableName = "string",
+#'       awsRegion = "string",
+#'       useCallerCredentials = TRUE|FALSE,
+#'       deltaSyncConfig = list(
+#'         baseTableTTL = 123,
+#'         deltaSyncTableName = "string",
+#'         deltaSyncTableTTL = 123
+#'       ),
+#'       versioned = TRUE|FALSE
+#'     ),
+#'     lambdaConfig = list(
+#'       lambdaFunctionArn = "string"
+#'     ),
+#'     elasticsearchConfig = list(
+#'       endpoint = "string",
+#'       awsRegion = "string"
+#'     ),
+#'     httpConfig = list(
+#'       endpoint = "string",
+#'       authorizationConfig = list(
+#'         authorizationType = "AWS_IAM",
+#'         awsIamConfig = list(
+#'           signingRegion = "string",
+#'           signingServiceName = "string"
+#'         )
+#'       )
+#'     ),
+#'     relationalDatabaseConfig = list(
+#'       relationalDatabaseSourceType = "RDS_HTTP_ENDPOINT",
+#'       rdsHttpEndpointConfig = list(
+#'         awsRegion = "string",
+#'         dbClusterIdentifier = "string",
+#'         databaseName = "string",
+#'         schema = "string",
+#'         awsSecretStoreArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -905,6 +1219,23 @@ appsync_get_data_source <- function(apiId, name) {
 #' @param apiId &#91;required&#93; The GraphQL API ID.
 #' @param functionId &#91;required&#93; The `Function` ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   functionConfiguration = list(
+#'     functionId = "string",
+#'     functionArn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     dataSourceName = "string",
+#'     requestMappingTemplate = "string",
+#'     responseMappingTemplate = "string",
+#'     functionVersion = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_function(
@@ -942,6 +1273,60 @@ appsync_get_function <- function(apiId, functionId) {
 #' appsync_get_graphql_api(apiId)
 #'
 #' @param apiId &#91;required&#93; The API ID for the GraphQL API.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   graphqlApi = list(
+#'     name = "string",
+#'     apiId = "string",
+#'     authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+#'     logConfig = list(
+#'       fieldLogLevel = "NONE"|"ERROR"|"ALL",
+#'       cloudWatchLogsRoleArn = "string",
+#'       excludeVerboseContent = TRUE|FALSE
+#'     ),
+#'     userPoolConfig = list(
+#'       userPoolId = "string",
+#'       awsRegion = "string",
+#'       defaultAction = "ALLOW"|"DENY",
+#'       appIdClientRegex = "string"
+#'     ),
+#'     openIDConnectConfig = list(
+#'       issuer = "string",
+#'       clientId = "string",
+#'       iatTTL = 123,
+#'       authTTL = 123
+#'     ),
+#'     arn = "string",
+#'     uris = list(
+#'       "string"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     additionalAuthenticationProviders = list(
+#'       list(
+#'         authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+#'         openIDConnectConfig = list(
+#'           issuer = "string",
+#'           clientId = "string",
+#'           iatTTL = 123,
+#'           authTTL = 123
+#'         ),
+#'         userPoolConfig = list(
+#'           userPoolId = "string",
+#'           awsRegion = "string",
+#'           appIdClientRegex = "string"
+#'         )
+#'       )
+#'     ),
+#'     xrayEnabled = TRUE|FALSE,
+#'     wafWebAclArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -982,6 +1367,14 @@ appsync_get_graphql_api <- function(apiId) {
 #' @param format &#91;required&#93; The schema format: SDL or JSON.
 #' @param includeDirectives A flag that specifies whether the schema introspection should contain
 #' directives.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   schema = raw
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1024,6 +1417,40 @@ appsync_get_introspection_schema <- function(apiId, format, includeDirectives = 
 #' @param typeName &#91;required&#93; The resolver type name.
 #' @param fieldName &#91;required&#93; The resolver field name.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resolver = list(
+#'     typeName = "string",
+#'     fieldName = "string",
+#'     dataSourceName = "string",
+#'     resolverArn = "string",
+#'     requestMappingTemplate = "string",
+#'     responseMappingTemplate = "string",
+#'     kind = "UNIT"|"PIPELINE",
+#'     pipelineConfig = list(
+#'       functions = list(
+#'         "string"
+#'       )
+#'     ),
+#'     syncConfig = list(
+#'       conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+#'       conflictDetection = "VERSION"|"NONE",
+#'       lambdaConflictHandlerConfig = list(
+#'         lambdaConflictHandlerArn = "string"
+#'       )
+#'     ),
+#'     cachingConfig = list(
+#'       ttl = 123,
+#'       cachingKeys = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_resolver(
@@ -1063,6 +1490,15 @@ appsync_get_resolver <- function(apiId, typeName, fieldName) {
 #'
 #' @param apiId &#91;required&#93; The API ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "PROCESSING"|"ACTIVE"|"DELETING"|"FAILED"|"SUCCESS"|"NOT_APPLICABLE",
+#'   details = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_schema_creation_status(
@@ -1101,6 +1537,20 @@ appsync_get_schema_creation_status <- function(apiId) {
 #' @param apiId &#91;required&#93; The API ID.
 #' @param typeName &#91;required&#93; The type name.
 #' @param format &#91;required&#93; The type format: SDL or JSON.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   type = list(
+#'     name = "string",
+#'     description = "string",
+#'     arn = "string",
+#'     definition = "string",
+#'     format = "SDL"|"JSON"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1150,6 +1600,22 @@ appsync_get_type <- function(apiId, typeName, format) {
 #' list.
 #' @param maxResults The maximum number of results you want the request to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   apiKeys = list(
+#'     list(
+#'       id = "string",
+#'       description = "string",
+#'       expires = 123,
+#'       deletes = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_api_keys(
@@ -1192,6 +1658,61 @@ appsync_list_api_keys <- function(apiId, nextToken = NULL, maxResults = NULL) {
 #' operation, which can be used to return the next set of items in the
 #' list.
 #' @param maxResults The maximum number of results you want the request to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataSources = list(
+#'     list(
+#'       dataSourceArn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP"|"RELATIONAL_DATABASE",
+#'       serviceRoleArn = "string",
+#'       dynamodbConfig = list(
+#'         tableName = "string",
+#'         awsRegion = "string",
+#'         useCallerCredentials = TRUE|FALSE,
+#'         deltaSyncConfig = list(
+#'           baseTableTTL = 123,
+#'           deltaSyncTableName = "string",
+#'           deltaSyncTableTTL = 123
+#'         ),
+#'         versioned = TRUE|FALSE
+#'       ),
+#'       lambdaConfig = list(
+#'         lambdaFunctionArn = "string"
+#'       ),
+#'       elasticsearchConfig = list(
+#'         endpoint = "string",
+#'         awsRegion = "string"
+#'       ),
+#'       httpConfig = list(
+#'         endpoint = "string",
+#'         authorizationConfig = list(
+#'           authorizationType = "AWS_IAM",
+#'           awsIamConfig = list(
+#'             signingRegion = "string",
+#'             signingServiceName = "string"
+#'           )
+#'         )
+#'       ),
+#'       relationalDatabaseConfig = list(
+#'         relationalDatabaseSourceType = "RDS_HTTP_ENDPOINT",
+#'         rdsHttpEndpointConfig = list(
+#'           awsRegion = "string",
+#'           dbClusterIdentifier = "string",
+#'           databaseName = "string",
+#'           schema = "string",
+#'           awsSecretStoreArn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1236,6 +1757,26 @@ appsync_list_data_sources <- function(apiId, nextToken = NULL, maxResults = NULL
 #' list.
 #' @param maxResults The maximum number of results you want the request to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   functions = list(
+#'     list(
+#'       functionId = "string",
+#'       functionArn = "string",
+#'       name = "string",
+#'       description = "string",
+#'       dataSourceName = "string",
+#'       requestMappingTemplate = "string",
+#'       responseMappingTemplate = "string",
+#'       functionVersion = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_functions(
@@ -1277,6 +1818,63 @@ appsync_list_functions <- function(apiId, nextToken = NULL, maxResults = NULL) {
 #' operation, which can be used to return the next set of items in the
 #' list.
 #' @param maxResults The maximum number of results you want the request to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   graphqlApis = list(
+#'     list(
+#'       name = "string",
+#'       apiId = "string",
+#'       authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+#'       logConfig = list(
+#'         fieldLogLevel = "NONE"|"ERROR"|"ALL",
+#'         cloudWatchLogsRoleArn = "string",
+#'         excludeVerboseContent = TRUE|FALSE
+#'       ),
+#'       userPoolConfig = list(
+#'         userPoolId = "string",
+#'         awsRegion = "string",
+#'         defaultAction = "ALLOW"|"DENY",
+#'         appIdClientRegex = "string"
+#'       ),
+#'       openIDConnectConfig = list(
+#'         issuer = "string",
+#'         clientId = "string",
+#'         iatTTL = 123,
+#'         authTTL = 123
+#'       ),
+#'       arn = "string",
+#'       uris = list(
+#'         "string"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       additionalAuthenticationProviders = list(
+#'         list(
+#'           authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+#'           openIDConnectConfig = list(
+#'             issuer = "string",
+#'             clientId = "string",
+#'             iatTTL = 123,
+#'             authTTL = 123
+#'           ),
+#'           userPoolConfig = list(
+#'             userPoolId = "string",
+#'             awsRegion = "string",
+#'             appIdClientRegex = "string"
+#'           )
+#'         )
+#'       ),
+#'       xrayEnabled = TRUE|FALSE,
+#'       wafWebAclArn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1320,6 +1918,43 @@ appsync_list_graphql_apis <- function(nextToken = NULL, maxResults = NULL) {
 #' operation, which can be used to return the next set of items in the
 #' list.
 #' @param maxResults The maximum number of results you want the request to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resolvers = list(
+#'     list(
+#'       typeName = "string",
+#'       fieldName = "string",
+#'       dataSourceName = "string",
+#'       resolverArn = "string",
+#'       requestMappingTemplate = "string",
+#'       responseMappingTemplate = "string",
+#'       kind = "UNIT"|"PIPELINE",
+#'       pipelineConfig = list(
+#'         functions = list(
+#'           "string"
+#'         )
+#'       ),
+#'       syncConfig = list(
+#'         conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+#'         conflictDetection = "VERSION"|"NONE",
+#'         lambdaConflictHandlerConfig = list(
+#'           lambdaConflictHandlerArn = "string"
+#'         )
+#'       ),
+#'       cachingConfig = list(
+#'         ttl = 123,
+#'         cachingKeys = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1367,6 +2002,43 @@ appsync_list_resolvers <- function(apiId, typeName, nextToken = NULL, maxResults
 #' list.
 #' @param maxResults The maximum number of results you want the request to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resolvers = list(
+#'     list(
+#'       typeName = "string",
+#'       fieldName = "string",
+#'       dataSourceName = "string",
+#'       resolverArn = "string",
+#'       requestMappingTemplate = "string",
+#'       responseMappingTemplate = "string",
+#'       kind = "UNIT"|"PIPELINE",
+#'       pipelineConfig = list(
+#'         functions = list(
+#'           "string"
+#'         )
+#'       ),
+#'       syncConfig = list(
+#'         conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+#'         conflictDetection = "VERSION"|"NONE",
+#'         lambdaConflictHandlerConfig = list(
+#'           lambdaConflictHandlerArn = "string"
+#'         )
+#'       ),
+#'       cachingConfig = list(
+#'         ttl = 123,
+#'         cachingKeys = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resolvers_by_function(
@@ -1406,6 +2078,16 @@ appsync_list_resolvers_by_function <- function(apiId, functionId, nextToken = NU
 #' appsync_list_tags_for_resource(resourceArn)
 #'
 #' @param resourceArn &#91;required&#93; The `GraphqlApi` ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1448,6 +2130,23 @@ appsync_list_tags_for_resource <- function(resourceArn) {
 #' operation, which can be used to return the next set of items in the
 #' list.
 #' @param maxResults The maximum number of results you want the request to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   types = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       arn = "string",
+#'       definition = "string",
+#'       format = "SDL"|"JSON"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1492,6 +2191,14 @@ appsync_list_types <- function(apiId, format, nextToken = NULL, maxResults = NUL
 #' @param apiId &#91;required&#93; The API ID.
 #' @param definition &#91;required&#93; The schema definition, in GraphQL schema language format.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "PROCESSING"|"ACTIVE"|"DELETING"|"FAILED"|"SUCCESS"|"NOT_APPLICABLE"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_schema_creation(
@@ -1530,6 +2237,12 @@ appsync_start_schema_creation <- function(apiId, definition) {
 #'
 #' @param resourceArn &#91;required&#93; The `GraphqlApi` ARN.
 #' @param tags &#91;required&#93; A `TagMap` object.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1571,6 +2284,12 @@ appsync_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The `GraphqlApi` ARN.
 #' @param tagKeys &#91;required&#93; A list of `TagKey` objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1616,9 +2335,9 @@ appsync_untag_resource <- function(resourceArn, tagKeys) {
 #' Valid values are between 1 and 3600 seconds.
 #' @param apiCachingBehavior &#91;required&#93; Caching behavior.
 #' 
-#' -   **FULL\\_REQUEST\\_CACHING**: All requests are fully cached.
+#' -   **FULL_REQUEST_CACHING**: All requests are fully cached.
 #' 
-#' -   **PER\\_RESOLVER\\_CACHING**: Individual resolvers that you specify
+#' -   **PER_RESOLVER_CACHING**: Individual resolvers that you specify
 #'     are cached.
 #' @param type &#91;required&#93; The cache instance type. Valid values are
 #' 
@@ -1645,19 +2364,34 @@ appsync_untag_resource <- function(resourceArn, tagKeys) {
 #' The following legacy instance types are available, but their use is
 #' discouraged:
 #' 
-#' -   **T2\\_SMALL**: A t2.small instance type.
+#' -   **T2_SMALL**: A t2.small instance type.
 #' 
-#' -   **T2\\_MEDIUM**: A t2.medium instance type.
+#' -   **T2_MEDIUM**: A t2.medium instance type.
 #' 
-#' -   **R4\\_LARGE**: A r4.large instance type.
+#' -   **R4_LARGE**: A r4.large instance type.
 #' 
-#' -   **R4\\_XLARGE**: A r4.xlarge instance type.
+#' -   **R4_XLARGE**: A r4.xlarge instance type.
 #' 
-#' -   **R4\\_2XLARGE**: A r4.2xlarge instance type.
+#' -   **R4_2XLARGE**: A r4.2xlarge instance type.
 #' 
-#' -   **R4\\_4XLARGE**: A r4.4xlarge instance type.
+#' -   **R4_4XLARGE**: A r4.4xlarge instance type.
 #' 
-#' -   **R4\\_8XLARGE**: A r4.8xlarge instance type.
+#' -   **R4_8XLARGE**: A r4.8xlarge instance type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   apiCache = list(
+#'     ttl = 123,
+#'     apiCachingBehavior = "FULL_REQUEST_CACHING"|"PER_RESOLVER_CACHING",
+#'     transitEncryptionEnabled = TRUE|FALSE,
+#'     atRestEncryptionEnabled = TRUE|FALSE,
+#'     type = "T2_SMALL"|"T2_MEDIUM"|"R4_LARGE"|"R4_XLARGE"|"R4_2XLARGE"|"R4_4XLARGE"|"R4_8XLARGE"|"SMALL"|"MEDIUM"|"LARGE"|"XLARGE"|"LARGE_2X"|"LARGE_4X"|"LARGE_8X"|"LARGE_12X",
+#'     status = "AVAILABLE"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1702,6 +2436,19 @@ appsync_update_api_cache <- function(apiId, ttl, apiCachingBehavior, type) {
 #' @param description A description of the purpose of the API key.
 #' @param expires The time from update time after which the API key expires. The date is
 #' represented as seconds since the epoch. For more information, see .
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   apiKey = list(
+#'     id = "string",
+#'     description = "string",
+#'     expires = 123,
+#'     deletes = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1753,6 +2500,58 @@ appsync_update_api_key <- function(apiId, id, description = NULL, expires = NULL
 #' @param elasticsearchConfig The new Elasticsearch Service configuration.
 #' @param httpConfig The new HTTP endpoint configuration.
 #' @param relationalDatabaseConfig The new relational database configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   dataSource = list(
+#'     dataSourceArn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     type = "AWS_LAMBDA"|"AMAZON_DYNAMODB"|"AMAZON_ELASTICSEARCH"|"NONE"|"HTTP"|"RELATIONAL_DATABASE",
+#'     serviceRoleArn = "string",
+#'     dynamodbConfig = list(
+#'       tableName = "string",
+#'       awsRegion = "string",
+#'       useCallerCredentials = TRUE|FALSE,
+#'       deltaSyncConfig = list(
+#'         baseTableTTL = 123,
+#'         deltaSyncTableName = "string",
+#'         deltaSyncTableTTL = 123
+#'       ),
+#'       versioned = TRUE|FALSE
+#'     ),
+#'     lambdaConfig = list(
+#'       lambdaFunctionArn = "string"
+#'     ),
+#'     elasticsearchConfig = list(
+#'       endpoint = "string",
+#'       awsRegion = "string"
+#'     ),
+#'     httpConfig = list(
+#'       endpoint = "string",
+#'       authorizationConfig = list(
+#'         authorizationType = "AWS_IAM",
+#'         awsIamConfig = list(
+#'           signingRegion = "string",
+#'           signingServiceName = "string"
+#'         )
+#'       )
+#'     ),
+#'     relationalDatabaseConfig = list(
+#'       relationalDatabaseSourceType = "RDS_HTTP_ENDPOINT",
+#'       rdsHttpEndpointConfig = list(
+#'         awsRegion = "string",
+#'         dbClusterIdentifier = "string",
+#'         databaseName = "string",
+#'         schema = "string",
+#'         awsSecretStoreArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1844,6 +2643,23 @@ appsync_update_data_source <- function(apiId, name, description = NULL, type, se
 #' @param functionVersion &#91;required&#93; The `version` of the request mapping template. Currently the supported
 #' value is 2018-05-29.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   functionConfiguration = list(
+#'     functionId = "string",
+#'     functionArn = "string",
+#'     name = "string",
+#'     description = "string",
+#'     dataSourceName = "string",
+#'     requestMappingTemplate = "string",
+#'     responseMappingTemplate = "string",
+#'     functionVersion = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_function(
@@ -1897,6 +2713,60 @@ appsync_update_function <- function(apiId, name, description = NULL, functionId,
 #' @param openIDConnectConfig The OpenID Connect configuration for the `GraphqlApi` object.
 #' @param additionalAuthenticationProviders A list of additional authentication providers for the `GraphqlApi` API.
 #' @param xrayEnabled A flag indicating whether to enable X-Ray tracing for the `GraphqlApi`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   graphqlApi = list(
+#'     name = "string",
+#'     apiId = "string",
+#'     authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+#'     logConfig = list(
+#'       fieldLogLevel = "NONE"|"ERROR"|"ALL",
+#'       cloudWatchLogsRoleArn = "string",
+#'       excludeVerboseContent = TRUE|FALSE
+#'     ),
+#'     userPoolConfig = list(
+#'       userPoolId = "string",
+#'       awsRegion = "string",
+#'       defaultAction = "ALLOW"|"DENY",
+#'       appIdClientRegex = "string"
+#'     ),
+#'     openIDConnectConfig = list(
+#'       issuer = "string",
+#'       clientId = "string",
+#'       iatTTL = 123,
+#'       authTTL = 123
+#'     ),
+#'     arn = "string",
+#'     uris = list(
+#'       "string"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     additionalAuthenticationProviders = list(
+#'       list(
+#'         authenticationType = "API_KEY"|"AWS_IAM"|"AMAZON_COGNITO_USER_POOLS"|"OPENID_CONNECT",
+#'         openIDConnectConfig = list(
+#'           issuer = "string",
+#'           clientId = "string",
+#'           iatTTL = 123,
+#'           authTTL = 123
+#'         ),
+#'         userPoolConfig = list(
+#'           userPoolId = "string",
+#'           awsRegion = "string",
+#'           appIdClientRegex = "string"
+#'         )
+#'       )
+#'     ),
+#'     xrayEnabled = TRUE|FALSE,
+#'     wafWebAclArn = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1999,6 +2869,40 @@ appsync_update_graphql_api <- function(apiId, name, logConfig = NULL, authentica
 #' @param syncConfig The `SyncConfig` for a resolver attached to a versioned datasource.
 #' @param cachingConfig The caching configuration for the resolver.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resolver = list(
+#'     typeName = "string",
+#'     fieldName = "string",
+#'     dataSourceName = "string",
+#'     resolverArn = "string",
+#'     requestMappingTemplate = "string",
+#'     responseMappingTemplate = "string",
+#'     kind = "UNIT"|"PIPELINE",
+#'     pipelineConfig = list(
+#'       functions = list(
+#'         "string"
+#'       )
+#'     ),
+#'     syncConfig = list(
+#'       conflictHandler = "OPTIMISTIC_CONCURRENCY"|"LAMBDA"|"AUTOMERGE"|"NONE",
+#'       conflictDetection = "VERSION"|"NONE",
+#'       lambdaConflictHandlerConfig = list(
+#'         lambdaConflictHandlerArn = "string"
+#'       )
+#'     ),
+#'     cachingConfig = list(
+#'       ttl = 123,
+#'       cachingKeys = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_resolver(
@@ -2062,6 +2966,20 @@ appsync_update_resolver <- function(apiId, typeName, fieldName, dataSourceName =
 #' @param typeName &#91;required&#93; The new type name.
 #' @param definition The new definition.
 #' @param format &#91;required&#93; The new type format: SDL or JSON.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   type = list(
+#'     name = "string",
+#'     description = "string",
+#'     arn = "string",
+#'     definition = "string",
+#'     format = "SDL"|"JSON"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

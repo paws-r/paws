@@ -35,9 +35,9 @@ WebSocket APIs.}
 
 \item{DisableExecuteApiEndpoint}{Specifies whether clients can invoke your API by using the default
 execute-api endpoint. By default, clients can invoke your API with the
-default https://\{api\\_id\}.execute-api.\{region\}.amazonaws.com endpoint.
-To require that clients use a custom domain name to invoke your API,
-disable the default endpoint.}
+default https://\{api_id\}.execute-api.\{region\}.amazonaws.com
+endpoint. To require that clients use a custom domain name to invoke
+your API, disable the default endpoint.}
 
 \item{Name}{The name of the API.}
 
@@ -47,18 +47,62 @@ route key of the quick create route. Additional routes may still be
 added after the API is updated. Supported only for HTTP APIs.}
 
 \item{RouteSelectionExpression}{The route selection expression for the API. For HTTP APIs, the
-routeSelectionExpression must be $\{request.method\} $\{request.path\}. If
-not provided, this will be the default for HTTP APIs. This property is
-required for WebSocket APIs.}
+routeSelectionExpression must be $\{request.method\}
+$\{request.path\}. If not provided, this will be the default for HTTP
+APIs. This property is required for WebSocket APIs.}
 
 \item{Target}{This property is part of quick create. For HTTP integrations, specify a
 fully qualified URL. For Lambda integrations, specify a function ARN.
-The type of the integration will be HTTP\\_PROXY or AWS\\_PROXY,
+The type of the integration will be HTTP_PROXY or AWS_PROXY,
 respectively. The value provided updates the integration URI and
 integration type. You can update a quick-created target, but you can't
 remove it from an API. Supported only for HTTP APIs.}
 
 \item{Version}{A version identifier for the API.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ApiEndpoint = "string",
+  ApiGatewayManaged = TRUE|FALSE,
+  ApiId = "string",
+  ApiKeySelectionExpression = "string",
+  CorsConfiguration = list(
+    AllowCredentials = TRUE|FALSE,
+    AllowHeaders = list(
+      "string"
+    ),
+    AllowMethods = list(
+      "string"
+    ),
+    AllowOrigins = list(
+      "string"
+    ),
+    ExposeHeaders = list(
+      "string"
+    ),
+    MaxAge = 123
+  ),
+  CreatedDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  Description = "string",
+  DisableSchemaValidation = TRUE|FALSE,
+  DisableExecuteApiEndpoint = TRUE|FALSE,
+  ImportInfo = list(
+    "string"
+  ),
+  Name = "string",
+  ProtocolType = "WEBSOCKET"|"HTTP",
+  RouteSelectionExpression = "string",
+  Tags = list(
+    "string"
+  ),
+  Version = "string",
+  Warnings = list(
+    "string"
+  )
+)
+}
 }
 \description{
 Updates an Api resource.

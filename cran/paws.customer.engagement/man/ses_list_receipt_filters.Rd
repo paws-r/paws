@@ -7,6 +7,20 @@ current AWS Region}
 \usage{
 ses_list_receipt_filters()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Filters = list(
+    list(
+      Name = "string",
+      IpFilter = list(
+        Policy = "Block"|"Allow",
+        Cidr = "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Lists the IP address filters associated with your AWS account in the
 current AWS Region.

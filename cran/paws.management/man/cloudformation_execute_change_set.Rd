@@ -23,6 +23,10 @@ to update a stack with the same name. You might retry
 \code{\link[=cloudformation_execute_change_set]{execute_change_set}} requests to
 ensure that AWS CloudFormation successfully received them.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a stack using the input information that was provided when the
 specified change set was created. After the call successfully completes,

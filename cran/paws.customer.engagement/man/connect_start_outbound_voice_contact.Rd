@@ -45,6 +45,12 @@ There can be up to 32,768 UTF-8 bytes across all key-value pairs per
 contact. Attribute keys can include only alphanumeric, dash, and
 underscore characters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ContactId = "string"
+)
+}
+}
 \description{
 This API places an outbound call to a contact, and then initiates the
 contact flow. It performs the actions in the contact flow that's

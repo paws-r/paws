@@ -20,6 +20,12 @@ parameter.}
 the default values. You can't use this parameter if the
 \code{ResetAllParameters} parameter is enabled.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  DBClusterParameterGroupName = "string"
+)
+}
+}
 \description{
 Modifies the parameters of a DB cluster parameter group to the default
 value. To reset specific parameters submit a list of the following:

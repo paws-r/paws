@@ -3,7 +3,7 @@
 \name{glacier_initiate_vault_lock}
 \alias{glacier_initiate_vault_lock}
 \title{This operation initiates the vault locking process by doing the
-following: - Installing a vault lock policy on the specified vault}
+following:}
 \usage{
 glacier_initiate_vault_lock(accountId, vaultName, policy)
 }
@@ -19,6 +19,12 @@ your account ID, do not include any hyphens ('-') in the ID.}
 
 \item{policy}{The vault lock policy as a JSON string, which uses "\\" as an escape
 character.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  lockId = "string"
+)
+}
 }
 \description{
 This operation initiates the vault locking process by doing the
@@ -74,7 +80,7 @@ new vault lock policy.
 svc$initiate_vault_lock(
   accountId = "-",
   policy = list(
-    Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-vault-lock\",..."
+    Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Define-vault-lock\",\"Effect..."
   ),
   vaultName = "my-vault"
 )

@@ -28,6 +28,32 @@ value.}
 \item{StartTime}{[required] The starting date and time for the events, in UTC format (for example,
 \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  HistoryRecords = list(
+    list(
+      EventInformation = list(
+        EventDescription = "string",
+        EventSubType = "string",
+        InstanceId = "string"
+      ),
+      EventType = "instanceChange"|"fleetRequestChange"|"error"|"information",
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  LastEvaluatedTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  NextToken = "string",
+  SpotFleetRequestId = "string",
+  StartTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Describes the events for the specified Spot Fleet request during the
 specified time.

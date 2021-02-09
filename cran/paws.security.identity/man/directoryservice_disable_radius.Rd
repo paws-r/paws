@@ -11,6 +11,10 @@ directoryservice_disable_radius(DirectoryId)
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory for which to disable MFA.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Disables multi-factor authentication (MFA) with the Remote
 Authentication Dial In User Service (RADIUS) server for an AD Connector

@@ -11,6 +11,18 @@ servicediscovery_get_instance(ServiceId, InstanceId)
 
 \item{InstanceId}{[required] The ID of the instance that you want to get information about.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Instance = list(
+    Id = "string",
+    CreatorRequestId = "string",
+    Attributes = list(
+      "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets information about a specified instance.
 }

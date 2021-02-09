@@ -13,8 +13,18 @@ pinpoint_create_push_template(PushNotificationTemplateRequest,
 
 \item{TemplateName}{[required] The name of the message template. A template name must start with an
 alphanumeric character and can contain a maximum of 128 characters. The
-characters can be alphanumeric characters, underscores (\\_), or hyphens
+characters can be alphanumeric characters, underscores (_), or hyphens
 (-). Template names are case sensitive.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  CreateTemplateMessageBody = list(
+    Arn = "string",
+    Message = "string",
+    RequestID = "string"
+  )
+)
+}
 }
 \description{
 Creates a message template for messages that are sent through a push

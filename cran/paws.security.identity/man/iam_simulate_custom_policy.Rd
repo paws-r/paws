@@ -29,11 +29,11 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
+(\verb{\\u0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+character set (through \verb{\\u00FF})
+\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
+carriage return (\verb{\\u000D})
 }}
 
 \item{PermissionsBoundaryPolicyInputList}{The IAM permissions boundary policy to simulate. The permissions
@@ -49,11 +49,11 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
+(\verb{\\u0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+character set (through \verb{\\u00FF})
+\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
+carriage return (\verb{\\u000D})
 }}
 
 \item{ActionNames}{[required] A list of names of API operations to evaluate in the simulation. Each
@@ -89,11 +89,11 @@ validate this parameter is a string of characters consisting of the
 following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
-(\code{U+0020}) through the end of the ASCII character range
+(\verb{\\u0020}) through the end of the ASCII character range
 \item The printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF})
-\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
-carriage return (\verb{U+000D})
+character set (through \verb{\\u00FF})
+\item The special characters tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and
+carriage return (\verb{\\u000D})
 }}
 
 \item{ResourceOwner}{An ARN representing the AWS account ID that specifies the owner of any
@@ -175,6 +175,75 @@ subsequent call that tells the service where to continue from.}
 receive a response indicating that the results are truncated. Set it to
 the value of the \code{Marker} element in the response that you received to
 indicate where the next call should start.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  EvaluationResults = list(
+    list(
+      EvalActionName = "string",
+      EvalResourceName = "string",
+      EvalDecision = "allowed"|"explicitDeny"|"implicitDeny",
+      MatchedStatements = list(
+        list(
+          SourcePolicyId = "string",
+          SourcePolicyType = "user"|"group"|"role"|"aws-managed"|"user-managed"|"resource"|"none",
+          StartPosition = list(
+            Line = 123,
+            Column = 123
+          ),
+          EndPosition = list(
+            Line = 123,
+            Column = 123
+          )
+        )
+      ),
+      MissingContextValues = list(
+        "string"
+      ),
+      OrganizationsDecisionDetail = list(
+        AllowedByOrganizations = TRUE|FALSE
+      ),
+      PermissionsBoundaryDecisionDetail = list(
+        AllowedByPermissionsBoundary = TRUE|FALSE
+      ),
+      EvalDecisionDetails = list(
+        "allowed"|"explicitDeny"|"implicitDeny"
+      ),
+      ResourceSpecificResults = list(
+        list(
+          EvalResourceName = "string",
+          EvalResourceDecision = "allowed"|"explicitDeny"|"implicitDeny",
+          MatchedStatements = list(
+            list(
+              SourcePolicyId = "string",
+              SourcePolicyType = "user"|"group"|"role"|"aws-managed"|"user-managed"|"resource"|"none",
+              StartPosition = list(
+                Line = 123,
+                Column = 123
+              ),
+              EndPosition = list(
+                Line = 123,
+                Column = 123
+              )
+            )
+          ),
+          MissingContextValues = list(
+            "string"
+          ),
+          EvalDecisionDetails = list(
+            "allowed"|"explicitDeny"|"implicitDeny"
+          ),
+          PermissionsBoundaryDecisionDetail = list(
+            AllowedByPermissionsBoundary = TRUE|FALSE
+          )
+        )
+      )
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string"
+)
+}
 }
 \description{
 Simulate how a set of IAM policies and optionally a resource-based

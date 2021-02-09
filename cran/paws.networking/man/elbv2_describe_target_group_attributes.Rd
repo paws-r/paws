@@ -9,6 +9,17 @@ elbv2_describe_target_group_attributes(TargetGroupArn)
 \arguments{
 \item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
+}
 \description{
 Describes the attributes for the specified target group.
 
@@ -33,7 +44,7 @@ in the \emph{Gateway Load Balancers Guide}
 \dontrun{
 # This example describes the attributes of the specified target group.
 svc$describe_target_group_attributes(
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targe..."
+  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/m..."
 )
 }
 

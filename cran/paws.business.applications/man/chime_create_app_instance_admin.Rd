@@ -11,6 +11,16 @@ chime_create_app_instance_admin(AppInstanceAdminArn, AppInstanceArn)
 
 \item{AppInstanceArn}{[required] The ARN of the app instance.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AppInstanceAdmin = list(
+    Arn = "string",
+    Name = "string"
+  ),
+  AppInstanceArn = "string"
+)
+}
+}
 \description{
 Promotes an \code{AppInstanceUser} to an \code{AppInstanceAdmin}. The promoted
 user can perform the following actions.

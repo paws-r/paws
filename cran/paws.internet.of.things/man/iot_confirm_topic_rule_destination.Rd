@@ -10,6 +10,10 @@ iot_confirm_topic_rule_destination(confirmationToken)
 \item{confirmationToken}{[required] The token used to confirm ownership or access to the topic rule
 confirmation URL.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Confirms a topic rule destination. When you create a rule requiring a
 destination, AWS IoT sends a confirmation message to the endpoint or

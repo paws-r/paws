@@ -19,6 +19,57 @@ value you can specify is 1000.}
 token that you can use in the subsequent request to retrieve the next
 set of text.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+  StatusMessage = "string",
+  VideoMetadata = list(
+    list(
+      Codec = "string",
+      DurationMillis = 123,
+      Format = "string",
+      FrameRate = 123.0,
+      FrameHeight = 123,
+      FrameWidth = 123
+    )
+  ),
+  AudioMetadata = list(
+    list(
+      Codec = "string",
+      DurationMillis = 123,
+      SampleRate = 123,
+      NumberOfChannels = 123
+    )
+  ),
+  NextToken = "string",
+  Segments = list(
+    list(
+      Type = "TECHNICAL_CUE"|"SHOT",
+      StartTimestampMillis = 123,
+      EndTimestampMillis = 123,
+      DurationMillis = 123,
+      StartTimecodeSMPTE = "string",
+      EndTimecodeSMPTE = "string",
+      DurationSMPTE = "string",
+      TechnicalCueSegment = list(
+        Type = "ColorBars"|"EndCredits"|"BlackFrames",
+        Confidence = 123.0
+      ),
+      ShotSegment = list(
+        Index = 123,
+        Confidence = 123.0
+      )
+    )
+  ),
+  SelectedSegmentTypes = list(
+    list(
+      Type = "TECHNICAL_CUE"|"SHOT",
+      ModelVersion = "string"
+    )
+  )
+)
+}
+}
 \description{
 Gets the segment detection results of a Amazon Rekognition Video
 analysis started by

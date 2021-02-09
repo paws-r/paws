@@ -14,7 +14,7 @@ target. You can get the ID for the policy by calling the
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lowercase or uppercase
-letters, digits, or the underscore character (\\_).}
+letters, digits, or the underscore character (_).}
 
 \item{TargetId}{[required] The unique identifier (ID) of the root, OU, or account that you want to
 attach the policy to. You can get the ID by calling the
@@ -40,10 +40,10 @@ individual account. How the policy affects accounts depends on the type
 of policy. Refer to the \emph{AWS Organizations User Guide} for information
 about each policy type:
 \itemize{
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE\\_CONTROL\\_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES_OPT_OUT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE_CONTROL_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG_POLICY}
 }
 
 This operation can be called only from the organization's management

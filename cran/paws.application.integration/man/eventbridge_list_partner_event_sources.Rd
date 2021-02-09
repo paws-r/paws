@@ -18,6 +18,18 @@ retrieves the next set of results.}
 The operation also returns a NextToken which you can use in a subsequent
 operation to retrieve the next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PartnerEventSources = list(
+    list(
+      Arn = "string",
+      Name = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 An SaaS partner can use this operation to list all the partner event
 source names that they have created. This operation is not used by AWS

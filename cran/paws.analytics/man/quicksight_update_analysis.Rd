@@ -29,6 +29,16 @@ one or more datasets.}
 that you're creating. To see the theme in the QuickSight console, make
 sure that you have access to it.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  AnalysisId = "string",
+  UpdateStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Updates an analysis in Amazon QuickSight
 }

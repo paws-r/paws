@@ -16,6 +16,15 @@ more information, see arns.}
 
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FacetNames = list(
+    "string"
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns a paginated list of \code{TypedLink} facet names for a particular
 schema. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.

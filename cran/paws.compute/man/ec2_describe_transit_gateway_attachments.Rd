@@ -42,6 +42,36 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TransitGatewayAttachments = list(
+    list(
+      TransitGatewayAttachmentId = "string",
+      TransitGatewayId = "string",
+      TransitGatewayOwnerId = "string",
+      ResourceOwnerId = "string",
+      ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
+      ResourceId = "string",
+      State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
+      Association = list(
+        TransitGatewayRouteTableId = "string",
+        State = "associating"|"associated"|"disassociating"|"disassociated"
+      ),
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes one or more attachments between resources and transit
 gateways. By default, all attachments are described. Alternatively, you

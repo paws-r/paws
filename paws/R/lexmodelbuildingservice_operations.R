@@ -34,6 +34,58 @@ NULL
 #' returned and Amazon Lex doesn't publish a new version. If you don't
 #' specify a checksum, Amazon Lex publishes the `$LATEST` version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   description = "string",
+#'   intents = list(
+#'     list(
+#'       intentName = "string",
+#'       intentVersion = "string"
+#'     )
+#'   ),
+#'   clarificationPrompt = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     maxAttempts = 123,
+#'     responseCard = "string"
+#'   ),
+#'   abortStatement = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     responseCard = "string"
+#'   ),
+#'   status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
+#'   failureReason = "string",
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   idleSessionTTLInSeconds = 123,
+#'   voiceId = "string",
+#'   checksum = "string",
+#'   version = "string",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   childDirected = TRUE|FALSE,
+#'   enableModelImprovements = TRUE|FALSE,
+#'   detectSentiment = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_bot_version(
@@ -94,6 +146,142 @@ lexmodelbuildingservice_create_bot_version <- function(name, checksum = NULL) {
 #' `PreconditionFailedException` exception and doesn't publish a new
 #' version. If you don't specify a checksum, Amazon Lex publishes the
 #' `$LATEST` version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   description = "string",
+#'   slots = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       slotConstraint = "Required"|"Optional",
+#'       slotType = "string",
+#'       slotTypeVersion = "string",
+#'       valueElicitationPrompt = list(
+#'         messages = list(
+#'           list(
+#'             contentType = "PlainText"|"SSML"|"CustomPayload",
+#'             content = "string",
+#'             groupNumber = 123
+#'           )
+#'         ),
+#'         maxAttempts = 123,
+#'         responseCard = "string"
+#'       ),
+#'       priority = 123,
+#'       sampleUtterances = list(
+#'         "string"
+#'       ),
+#'       responseCard = "string",
+#'       obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION",
+#'       defaultValueSpec = list(
+#'         defaultValueList = list(
+#'           list(
+#'             defaultValue = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   sampleUtterances = list(
+#'     "string"
+#'   ),
+#'   confirmationPrompt = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     maxAttempts = 123,
+#'     responseCard = "string"
+#'   ),
+#'   rejectionStatement = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     responseCard = "string"
+#'   ),
+#'   followUpPrompt = list(
+#'     prompt = list(
+#'       messages = list(
+#'         list(
+#'           contentType = "PlainText"|"SSML"|"CustomPayload",
+#'           content = "string",
+#'           groupNumber = 123
+#'         )
+#'       ),
+#'       maxAttempts = 123,
+#'       responseCard = "string"
+#'     ),
+#'     rejectionStatement = list(
+#'       messages = list(
+#'         list(
+#'           contentType = "PlainText"|"SSML"|"CustomPayload",
+#'           content = "string",
+#'           groupNumber = 123
+#'         )
+#'       ),
+#'       responseCard = "string"
+#'     )
+#'   ),
+#'   conclusionStatement = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     responseCard = "string"
+#'   ),
+#'   dialogCodeHook = list(
+#'     uri = "string",
+#'     messageVersion = "string"
+#'   ),
+#'   fulfillmentActivity = list(
+#'     type = "ReturnIntent"|"CodeHook",
+#'     codeHook = list(
+#'       uri = "string",
+#'       messageVersion = "string"
+#'     )
+#'   ),
+#'   parentIntentSignature = "string",
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   version = "string",
+#'   checksum = "string",
+#'   kendraConfiguration = list(
+#'     kendraIndex = "string",
+#'     queryFilterString = "string",
+#'     role = "string"
+#'   ),
+#'   inputContexts = list(
+#'     list(
+#'       name = "string"
+#'     )
+#'   ),
+#'   outputContexts = list(
+#'     list(
+#'       name = "string",
+#'       timeToLiveInSeconds = 123,
+#'       turnsToLive = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -156,6 +344,40 @@ lexmodelbuildingservice_create_intent_version <- function(name, checksum = NULL)
 #' version. If you don't specify a checksum, Amazon Lex publishes the
 #' `$LATEST` version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   description = "string",
+#'   enumerationValues = list(
+#'     list(
+#'       value = "string",
+#'       synonyms = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   version = "string",
+#'   checksum = "string",
+#'   valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
+#'   parentSlotTypeSignature = "string",
+#'   slotTypeConfigurations = list(
+#'     list(
+#'       regexConfiguration = list(
+#'         pattern = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_slot_type_version(
@@ -215,6 +437,8 @@ lexmodelbuildingservice_create_slot_type_version <- function(name, checksum = NU
 #'
 #' @param name &#91;required&#93; The name of the bot. The name is case sensitive.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_bot(
@@ -263,6 +487,8 @@ lexmodelbuildingservice_delete_bot <- function(name) {
 #' @param name &#91;required&#93; The name of the alias to delete. The name is case sensitive.
 #' @param botName &#91;required&#93; The name of the bot that the alias points to.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_bot_alias(
@@ -310,6 +536,8 @@ lexmodelbuildingservice_delete_bot_alias <- function(name, botName) {
 #' @param botAlias &#91;required&#93; An alias that points to the specific version of the Amazon Lex bot to
 #' which this association is being made.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_bot_channel_association(
@@ -355,6 +583,8 @@ lexmodelbuildingservice_delete_bot_channel_association <- function(name, botName
 #' @param version &#91;required&#93; The version of the bot to delete. You cannot delete the `$LATEST`
 #' version of the bot. To delete the `$LATEST` version, use the
 #' [`delete_bot`][lexmodelbuildingservice_delete_bot] operation.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -410,6 +640,8 @@ lexmodelbuildingservice_delete_bot_version <- function(name, version) {
 #'
 #' @param name &#91;required&#93; The name of the intent. The name is case sensitive.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_intent(
@@ -454,6 +686,8 @@ lexmodelbuildingservice_delete_intent <- function(name) {
 #' @param version &#91;required&#93; The version of the intent to delete. You cannot delete the `$LATEST`
 #' version of the intent. To delete the `$LATEST` version, use the
 #' [`delete_intent`][lexmodelbuildingservice_delete_intent] operation.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -511,6 +745,8 @@ lexmodelbuildingservice_delete_intent_version <- function(name, version) {
 #'
 #' @param name &#91;required&#93; The name of the slot type. The name is case sensitive.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_slot_type(
@@ -557,6 +793,8 @@ lexmodelbuildingservice_delete_slot_type <- function(name) {
 #' version of the slot type. To delete the `$LATEST` version, use the
 #' [`delete_slot_type`][lexmodelbuildingservice_delete_slot_type]
 #' operation.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -620,6 +858,8 @@ lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
 #' [PostText](https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html)
 #' operation request that contained the utterance.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_utterances(
@@ -661,6 +901,59 @@ lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
 #'
 #' @param name &#91;required&#93; The name of the bot. The name is case sensitive.
 #' @param versionOrAlias &#91;required&#93; The version or alias of the bot.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   description = "string",
+#'   intents = list(
+#'     list(
+#'       intentName = "string",
+#'       intentVersion = "string"
+#'     )
+#'   ),
+#'   enableModelImprovements = TRUE|FALSE,
+#'   nluIntentConfidenceThreshold = 123.0,
+#'   clarificationPrompt = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     maxAttempts = 123,
+#'     responseCard = "string"
+#'   ),
+#'   abortStatement = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     responseCard = "string"
+#'   ),
+#'   status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
+#'   failureReason = "string",
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   idleSessionTTLInSeconds = 123,
+#'   voiceId = "string",
+#'   checksum = "string",
+#'   version = "string",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   childDirected = TRUE|FALSE,
+#'   detectSentiment = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -713,6 +1006,36 @@ lexmodelbuildingservice_get_bot <- function(name, versionOrAlias) {
 #' @param name &#91;required&#93; The name of the bot alias. The name is case sensitive.
 #' @param botName &#91;required&#93; The name of the bot.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   description = "string",
+#'   botVersion = "string",
+#'   botName = "string",
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   checksum = "string",
+#'   conversationLogs = list(
+#'     logSettings = list(
+#'       list(
+#'         logType = "AUDIO"|"TEXT",
+#'         destination = "CLOUDWATCH_LOGS"|"S3",
+#'         kmsKeyArn = "string",
+#'         resourceArn = "string",
+#'         resourcePrefix = "string"
+#'       )
+#'     ),
+#'     iamRoleArn = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_bot_alias(
@@ -763,6 +1086,41 @@ lexmodelbuildingservice_get_bot_alias <- function(name, botName) {
 #' part of its name matches the substring. For example, "xyz" matches both
 #' "xyzabc" and "abcxyz."
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BotAliases = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       botVersion = "string",
+#'       botName = "string",
+#'       lastUpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       checksum = "string",
+#'       conversationLogs = list(
+#'         logSettings = list(
+#'           list(
+#'             logType = "AUDIO"|"TEXT",
+#'             destination = "CLOUDWATCH_LOGS"|"S3",
+#'             kmsKeyArn = "string",
+#'             resourceArn = "string",
+#'             resourcePrefix = "string"
+#'           )
+#'         ),
+#'         iamRoleArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_bot_aliases(
@@ -812,6 +1170,26 @@ lexmodelbuildingservice_get_bot_aliases <- function(botName, nextToken = NULL, m
 #' @param botName &#91;required&#93; The name of the Amazon Lex bot.
 #' @param botAlias &#91;required&#93; An alias pointing to the specific version of the Amazon Lex bot to which
 #' this association is being made.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   description = "string",
+#'   botAlias = "string",
+#'   botName = "string",
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   type = "Facebook"|"Slack"|"Twilio-Sms"|"Kik",
+#'   botConfiguration = list(
+#'     "string"
+#'   ),
+#'   status = "IN_PROGRESS"|"CREATED"|"FAILED",
+#'   failureReason = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -869,6 +1247,31 @@ lexmodelbuildingservice_get_bot_channel_association <- function(name, botName, b
 #' returned if any part of its name matches the substring. For example,
 #' "xyz" matches both "xyzabc" and "abcxyz." To return all bot channel
 #' associations, use a hyphen ("-") as the `nameContains` parameter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   botChannelAssociations = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       botAlias = "string",
+#'       botName = "string",
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       type = "Facebook"|"Slack"|"Twilio-Sms"|"Kik",
+#'       botConfiguration = list(
+#'         "string"
+#'       ),
+#'       status = "IN_PROGRESS"|"CREATED"|"FAILED",
+#'       failureReason = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -929,6 +1332,28 @@ lexmodelbuildingservice_get_bot_channel_associations <- function(botName, botAli
 #' @param maxResults The maximum number of bot versions to return in the response. The
 #' default is 10.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   bots = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
+#'       lastUpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       version = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_bot_versions(
@@ -958,9 +1383,7 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
 }
 .lexmodelbuildingservice$operations$get_bot_versions <- lexmodelbuildingservice_get_bot_versions
 
-#' Returns bot information as follows: - If you provide the nameContains
-#' field, the response includes information for the $LATEST version of all
-#' bots whose name contains the specified string
+#' Returns bot information as follows:
 #'
 #' @description
 #' Returns bot information as follows:
@@ -986,6 +1409,28 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
 #' @param nameContains Substring to match in bot names. A bot will be returned if any part of
 #' its name matches the substring. For example, "xyz" matches both "xyzabc"
 #' and "abcxyz."
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   bots = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
+#'       lastUpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       version = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1041,6 +1486,22 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
 #' Intents](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html)
 #' in the *Alexa Skills Kit*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   signature = "string",
+#'   supportedLocales = list(
+#'     "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
+#'   ),
+#'   slots = list(
+#'     list(
+#'       name = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_builtin_intent(
@@ -1093,6 +1554,22 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #' the next request.
 #' @param maxResults The maximum number of intents to return in the response. The default is
 #' 10.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   intents = list(
+#'     list(
+#'       signature = "string",
+#'       supportedLocales = list(
+#'         "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1151,6 +1628,22 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #' @param maxResults The maximum number of slot types to return in the response. The default
 #' is 10.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   slotTypes = list(
+#'     list(
+#'       signature = "string",
+#'       supportedLocales = list(
+#'         "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_builtin_slot_types(
@@ -1195,6 +1688,20 @@ lexmodelbuildingservice_get_builtin_slot_types <- function(locale = NULL, signat
 #' @param resourceType &#91;required&#93; The type of resource to export.
 #' @param exportType &#91;required&#93; The format of the exported data.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   version = "string",
+#'   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
+#'   exportType = "ALEXA_SKILLS_KIT"|"LEX",
+#'   exportStatus = "IN_PROGRESS"|"READY"|"FAILED",
+#'   failureReason = "string",
+#'   url = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_export(
@@ -1237,6 +1744,24 @@ lexmodelbuildingservice_get_export <- function(name, version, resourceType, expo
 #'
 #' @param importId &#91;required&#93; The identifier of the import job information to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
+#'   mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT",
+#'   importId = "string",
+#'   importStatus = "IN_PROGRESS"|"COMPLETE"|"FAILED",
+#'   failureReason = list(
+#'     "string"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_import(
@@ -1278,6 +1803,142 @@ lexmodelbuildingservice_get_import <- function(importId) {
 #'
 #' @param name &#91;required&#93; The name of the intent. The name is case sensitive.
 #' @param version &#91;required&#93; The version of the intent.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   description = "string",
+#'   slots = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       slotConstraint = "Required"|"Optional",
+#'       slotType = "string",
+#'       slotTypeVersion = "string",
+#'       valueElicitationPrompt = list(
+#'         messages = list(
+#'           list(
+#'             contentType = "PlainText"|"SSML"|"CustomPayload",
+#'             content = "string",
+#'             groupNumber = 123
+#'           )
+#'         ),
+#'         maxAttempts = 123,
+#'         responseCard = "string"
+#'       ),
+#'       priority = 123,
+#'       sampleUtterances = list(
+#'         "string"
+#'       ),
+#'       responseCard = "string",
+#'       obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION",
+#'       defaultValueSpec = list(
+#'         defaultValueList = list(
+#'           list(
+#'             defaultValue = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   sampleUtterances = list(
+#'     "string"
+#'   ),
+#'   confirmationPrompt = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     maxAttempts = 123,
+#'     responseCard = "string"
+#'   ),
+#'   rejectionStatement = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     responseCard = "string"
+#'   ),
+#'   followUpPrompt = list(
+#'     prompt = list(
+#'       messages = list(
+#'         list(
+#'           contentType = "PlainText"|"SSML"|"CustomPayload",
+#'           content = "string",
+#'           groupNumber = 123
+#'         )
+#'       ),
+#'       maxAttempts = 123,
+#'       responseCard = "string"
+#'     ),
+#'     rejectionStatement = list(
+#'       messages = list(
+#'         list(
+#'           contentType = "PlainText"|"SSML"|"CustomPayload",
+#'           content = "string",
+#'           groupNumber = 123
+#'         )
+#'       ),
+#'       responseCard = "string"
+#'     )
+#'   ),
+#'   conclusionStatement = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     responseCard = "string"
+#'   ),
+#'   dialogCodeHook = list(
+#'     uri = "string",
+#'     messageVersion = "string"
+#'   ),
+#'   fulfillmentActivity = list(
+#'     type = "ReturnIntent"|"CodeHook",
+#'     codeHook = list(
+#'       uri = "string",
+#'       messageVersion = "string"
+#'     )
+#'   ),
+#'   parentIntentSignature = "string",
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   version = "string",
+#'   checksum = "string",
+#'   kendraConfiguration = list(
+#'     kendraIndex = "string",
+#'     queryFilterString = "string",
+#'     role = "string"
+#'   ),
+#'   inputContexts = list(
+#'     list(
+#'       name = "string"
+#'     )
+#'   ),
+#'   outputContexts = list(
+#'     list(
+#'       name = "string",
+#'       timeToLiveInSeconds = 123,
+#'       turnsToLive = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1345,6 +2006,27 @@ lexmodelbuildingservice_get_intent <- function(name, version) {
 #' @param maxResults The maximum number of intent versions to return in the response. The
 #' default is 10.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   intents = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       lastUpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       version = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_intent_versions(
@@ -1374,9 +2056,7 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
 }
 .lexmodelbuildingservice$operations$get_intent_versions <- lexmodelbuildingservice_get_intent_versions
 
-#' Returns intent information as follows: - If you specify the nameContains
-#' field, returns the $LATEST version of all intents that contain the
-#' specified string
+#' Returns intent information as follows:
 #'
 #' @description
 #' Returns intent information as follows:
@@ -1401,6 +2081,27 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
 #' @param nameContains Substring to match in intent names. An intent will be returned if any
 #' part of its name matches the substring. For example, "xyz" matches both
 #' "xyzabc" and "abcxyz."
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   intents = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       lastUpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       version = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1455,6 +2156,40 @@ lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = N
 #'
 #' @param name &#91;required&#93; The name of the slot type. The name is case sensitive.
 #' @param version &#91;required&#93; The version of the slot type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   description = "string",
+#'   enumerationValues = list(
+#'     list(
+#'       value = "string",
+#'       synonyms = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   version = "string",
+#'   checksum = "string",
+#'   valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
+#'   parentSlotTypeSignature = "string",
+#'   slotTypeConfigurations = list(
+#'     list(
+#'       regexConfiguration = list(
+#'         pattern = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1525,6 +2260,27 @@ lexmodelbuildingservice_get_slot_type <- function(name, version) {
 #' @param maxResults The maximum number of slot type versions to return in the response. The
 #' default is 10.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   slotTypes = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       lastUpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       version = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_slot_type_versions(
@@ -1554,9 +2310,7 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
 }
 .lexmodelbuildingservice$operations$get_slot_type_versions <- lexmodelbuildingservice_get_slot_type_versions
 
-#' Returns slot type information as follows: - If you specify the
-#' nameContains field, returns the $LATEST version of all slot types that
-#' contain the specified string
+#' Returns slot type information as follows:
 #'
 #' @description
 #' Returns slot type information as follows:
@@ -1582,6 +2336,27 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
 #' @param nameContains Substring to match in slot type names. A slot type will be returned if
 #' any part of its name matches the substring. For example, "xyz" matches
 #' both "xyzabc" and "abcxyz."
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   slotTypes = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       lastUpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       version = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1667,6 +2442,32 @@ lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults 
 #' @param statusType &#91;required&#93; To return utterances that were recognized and handled, use `Detected`.
 #' To return utterances that were not recognized, use `Missed`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   botName = "string",
+#'   utterances = list(
+#'     list(
+#'       botVersion = "string",
+#'       utterances = list(
+#'         list(
+#'           utteranceString = "string",
+#'           count = 123,
+#'           distinctUsers = 123,
+#'           firstUtteredDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lastUtteredDate = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_utterances_view(
@@ -1709,6 +2510,19 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to get a list of tags
 #' for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1966,6 +2780,66 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' operation to update the tags on a bot. To update tags, use the
 #' [`tag_resource`][lexmodelbuildingservice_tag_resource] operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   description = "string",
+#'   intents = list(
+#'     list(
+#'       intentName = "string",
+#'       intentVersion = "string"
+#'     )
+#'   ),
+#'   enableModelImprovements = TRUE|FALSE,
+#'   nluIntentConfidenceThreshold = 123.0,
+#'   clarificationPrompt = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     maxAttempts = 123,
+#'     responseCard = "string"
+#'   ),
+#'   abortStatement = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     responseCard = "string"
+#'   ),
+#'   status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
+#'   failureReason = "string",
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   idleSessionTTLInSeconds = 123,
+#'   voiceId = "string",
+#'   checksum = "string",
+#'   version = "string",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
+#'   childDirected = TRUE|FALSE,
+#'   createVersion = TRUE|FALSE,
+#'   detectSentiment = TRUE|FALSE,
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_bot(
@@ -2117,6 +2991,42 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #' update the tags on a bot alias. To update tags, use the
 #' [`tag_resource`][lexmodelbuildingservice_tag_resource] operation.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   description = "string",
+#'   botVersion = "string",
+#'   botName = "string",
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   checksum = "string",
+#'   conversationLogs = list(
+#'     logSettings = list(
+#'       list(
+#'         logType = "AUDIO"|"TEXT",
+#'         destination = "CLOUDWATCH_LOGS"|"S3",
+#'         kmsKeyArn = "string",
+#'         resourceArn = "string",
+#'         resourcePrefix = "string"
+#'       )
+#'     ),
+#'     iamRoleArn = "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_bot_alias(
@@ -2239,8 +3149,8 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' values from the user using prompts defined in the slots. For more
 #' information, see how-it-works.
 #' @param sampleUtterances An array of utterances (strings) that a user might say to signal the
-#' intent. For example, "I want \{PizzaSize\} pizza", "Order \{Quantity\}
-#' \{PizzaSize\} pizzas".
+#' intent. For example, "I want \{PizzaSize\} pizza", "Order
+#' \{Quantity\} \{PizzaSize\} pizzas".
 #' 
 #' In each utterance, a slot name is enclosed in curly braces.
 #' @param confirmationPrompt Prompts the user to confirm the intent. This question should have a yes
@@ -2336,6 +3246,143 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' user.
 #' @param outputContexts An array of `OutputContext` objects that lists the contexts that the
 #' intent activates when the intent is fulfilled.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   description = "string",
+#'   slots = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       slotConstraint = "Required"|"Optional",
+#'       slotType = "string",
+#'       slotTypeVersion = "string",
+#'       valueElicitationPrompt = list(
+#'         messages = list(
+#'           list(
+#'             contentType = "PlainText"|"SSML"|"CustomPayload",
+#'             content = "string",
+#'             groupNumber = 123
+#'           )
+#'         ),
+#'         maxAttempts = 123,
+#'         responseCard = "string"
+#'       ),
+#'       priority = 123,
+#'       sampleUtterances = list(
+#'         "string"
+#'       ),
+#'       responseCard = "string",
+#'       obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION",
+#'       defaultValueSpec = list(
+#'         defaultValueList = list(
+#'           list(
+#'             defaultValue = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   sampleUtterances = list(
+#'     "string"
+#'   ),
+#'   confirmationPrompt = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     maxAttempts = 123,
+#'     responseCard = "string"
+#'   ),
+#'   rejectionStatement = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     responseCard = "string"
+#'   ),
+#'   followUpPrompt = list(
+#'     prompt = list(
+#'       messages = list(
+#'         list(
+#'           contentType = "PlainText"|"SSML"|"CustomPayload",
+#'           content = "string",
+#'           groupNumber = 123
+#'         )
+#'       ),
+#'       maxAttempts = 123,
+#'       responseCard = "string"
+#'     ),
+#'     rejectionStatement = list(
+#'       messages = list(
+#'         list(
+#'           contentType = "PlainText"|"SSML"|"CustomPayload",
+#'           content = "string",
+#'           groupNumber = 123
+#'         )
+#'       ),
+#'       responseCard = "string"
+#'     )
+#'   ),
+#'   conclusionStatement = list(
+#'     messages = list(
+#'       list(
+#'         contentType = "PlainText"|"SSML"|"CustomPayload",
+#'         content = "string",
+#'         groupNumber = 123
+#'       )
+#'     ),
+#'     responseCard = "string"
+#'   ),
+#'   dialogCodeHook = list(
+#'     uri = "string",
+#'     messageVersion = "string"
+#'   ),
+#'   fulfillmentActivity = list(
+#'     type = "ReturnIntent"|"CodeHook",
+#'     codeHook = list(
+#'       uri = "string",
+#'       messageVersion = "string"
+#'     )
+#'   ),
+#'   parentIntentSignature = "string",
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   version = "string",
+#'   checksum = "string",
+#'   createVersion = TRUE|FALSE,
+#'   kendraConfiguration = list(
+#'     kendraIndex = "string",
+#'     queryFilterString = "string",
+#'     role = "string"
+#'   ),
+#'   inputContexts = list(
+#'     list(
+#'       name = "string"
+#'     )
+#'   ),
+#'   outputContexts = list(
+#'     list(
+#'       name = "string",
+#'       timeToLiveInSeconds = 123,
+#'       turnsToLive = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2474,11 +3521,11 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'   conclusionStatement = list(
 #'     messages = list(
 #'       list(
-#'         content = "All right, I ordered  you a \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce...",
+#'         content = "All right, I ordered  you a {Crust} crust {Type} pizza with {Sauce} sauce.",
 #'         contentType = "PlainText"
 #'       ),
 #'       list(
-#'         content = "OK, your \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce is on the way.",
+#'         content = "OK, your {Crust} crust {Type} pizza with {Sauce} sauce is on the way.",
 #'         contentType = "PlainText"
 #'       )
 #'     ),
@@ -2488,7 +3535,7 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'     maxAttempts = 1L,
 #'     messages = list(
 #'       list(
-#'         content = "Should I order  your \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce?",
+#'         content = "Should I order  your {Crust} crust {Type} pizza with {Sauce} sauce?",
 #'         contentType = "PlainText"
 #'       )
 #'     )
@@ -2511,9 +3558,9 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'   ),
 #'   sampleUtterances = list(
 #'     "Order me a pizza.",
-#'     "Order me a \{Type\} pizza.",
-#'     "I want a \{Crust\} crust \{Type\} pizza",
-#'     "I want a \{Crust\} crust \{Type\} pizza with \{Sauce\} sauce."
+#'     "Order me a {Type} pizza.",
+#'     "I want a {Crust} crust {Type} pizza",
+#'     "I want a {Crust} crust {Type} pizza with {Sauce} sauce."
 #'   ),
 #'   slots = list(
 #'     list(
@@ -2521,9 +3568,9 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'       description = "The type of pizza to order.",
 #'       priority = 1L,
 #'       sampleUtterances = list(
-#'         "Get me a \{Type\} pizza.",
-#'         "A \{Type\} pizza please.",
-#'         "I'd like a \{Type\} pizza."
+#'         "Get me a {Type} pizza.",
+#'         "A {Type} pizza please.",
+#'         "I'd like a {Type} pizza."
 #'       ),
 #'       slotConstraint = "Required",
 #'       slotType = "DocPizzaType",
@@ -2551,8 +3598,8 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'       description = "The type of pizza crust to order.",
 #'       priority = 2L,
 #'       sampleUtterances = list(
-#'         "Make it a \{Crust\} crust.",
-#'         "I'd like a \{Crust\} crust."
+#'         "Make it a {Crust} crust.",
+#'         "I'd like a {Crust} crust."
 #'       ),
 #'       slotConstraint = "Required",
 #'       slotType = "DocPizzaCrustType",
@@ -2576,8 +3623,8 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'       description = "The type of sauce to use on the pizza.",
 #'       priority = 3L,
 #'       sampleUtterances = list(
-#'         "Make it \{Sauce\} sauce.",
-#'         "I'd like \{Sauce\} sauce."
+#'         "Make it {Sauce} sauce.",
+#'         "I'd like {Sauce} sauce."
 #'       ),
 #'       slotConstraint = "Required",
 #'       slotType = "DocPizzaSauceType",
@@ -2705,6 +3752,41 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' @param slotTypeConfigurations Configuration information that extends the parent built-in slot type.
 #' The configuration is added to the settings for the parent slot type.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   description = "string",
+#'   enumerationValues = list(
+#'     list(
+#'       value = "string",
+#'       synonyms = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   lastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   version = "string",
+#'   checksum = "string",
+#'   valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
+#'   createVersion = TRUE|FALSE,
+#'   parentSlotTypeSignature = "string",
+#'   slotTypeConfigurations = list(
+#'     list(
+#'       regexConfiguration = list(
+#'         pattern = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_slot_type(
@@ -2792,17 +3874,38 @@ lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enum
 #' [`start_import`][lexmodelbuildingservice_start_import] operation should
 #' take when there is an existing resource with the same name.
 #' 
-#' -   FAIL\\_ON\\_CONFLICT - The import operation is stopped on the first
+#' -   FAIL_ON_CONFLICT - The import operation is stopped on the first
 #'     conflict between a resource in the import file and an existing
 #'     resource. The name of the resource causing the conflict is in the
 #'     `failureReason` field of the response to the
 #'     [`get_import`][lexmodelbuildingservice_get_import] operation.
 #' 
-#'     OVERWRITE\\_LATEST - The import operation proceeds even if there is a
+#'     OVERWRITE_LATEST - The import operation proceeds even if there is a
 #'     conflict with an existing resource. The $LASTEST version of the
 #'     existing resource is overwritten with the data from the import file.
 #' @param tags A list of tags to add to the imported bot. You can only add tags when
 #' you import a bot, you can't add tags to an intent or slot type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
+#'   mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT",
+#'   importId = "string",
+#'   importStatus = "IN_PROGRESS"|"COMPLETE"|"FAILED",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   createdDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2853,6 +3956,12 @@ lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStr
 #' @param tags &#91;required&#93; A list of tag keys to add to the resource. If a tag key already exists,
 #' the existing value is replaced with the new value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -2897,6 +4006,12 @@ lexmodelbuildingservice_tag_resource <- function(resourceArn, tags) {
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove the tags from.
 #' @param tagKeys &#91;required&#93; A list of tag keys to remove from the resource. If a tag key does not
 #' exist on the resource, it is ignored.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

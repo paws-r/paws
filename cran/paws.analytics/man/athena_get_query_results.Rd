@@ -17,6 +17,40 @@ previous page call.}
 
 \item{MaxResults}{The maximum number of results (rows) to return in this request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  UpdateCount = 123,
+  ResultSet = list(
+    Rows = list(
+      list(
+        Data = list(
+          list(
+            VarCharValue = "string"
+          )
+        )
+      )
+    ),
+    ResultSetMetadata = list(
+      ColumnInfo = list(
+        list(
+          CatalogName = "string",
+          SchemaName = "string",
+          TableName = "string",
+          Name = "string",
+          Label = "string",
+          Type = "string",
+          Precision = 123,
+          Scale = 123,
+          Nullable = "NOT_NULL"|"NULLABLE"|"UNKNOWN",
+          CaseSensitive = TRUE|FALSE
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Streams the results of a single query execution specified by
 \code{QueryExecutionId} from the Athena query results location in Amazon S3.

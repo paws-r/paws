@@ -11,6 +11,10 @@ greengrass_update_core_definition(CoreDefinitionId, Name)
 
 \item{Name}{The name of the definition.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a core definition.
 }

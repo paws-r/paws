@@ -13,6 +13,19 @@ specified in the the original call. For example, if the original call
 specified an AttributeKey of 'Username' with a value of 'root', the call
 with NextToken should include those same parameters.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Trails = list(
+    list(
+      TrailARN = "string",
+      Name = "string",
+      HomeRegion = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists trails that are in the current account.
 }

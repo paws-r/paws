@@ -30,6 +30,12 @@ In the \code{Resource} section of the statement, you specify the ARNs for the
 query logging configurations that you want to share with the account
 that you specified in \code{Arn}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReturnValue = TRUE|FALSE
+)
+}
+}
 \description{
 Specifies an AWS account that you want to share a query logging
 configuration with, the query logging configuration that you want to

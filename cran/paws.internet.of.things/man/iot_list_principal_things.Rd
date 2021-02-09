@@ -15,6 +15,15 @@ results.}
 
 \item{principal}{[required] The principal.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  things = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the things associated with the specified principal. A principal
 can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito

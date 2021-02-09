@@ -16,6 +16,18 @@ serverlessapplicationrepository_list_application_dependencies(
 
 \item{SemanticVersion}{The semantic version of the application to get.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Dependencies = list(
+    list(
+      ApplicationId = "string",
+      SemanticVersion = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Retrieves the list of applications nested in the containing application.
 }

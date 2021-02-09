@@ -15,6 +15,10 @@ real-time logs to your specified CloudWatch log group.}
 \item{LogGroupName}{[required] The name of the CloudWatch log group where the real-time domain
 controller logs are forwarded.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates a subscription to forward real-time Directory Service domain
 controller security logs to the specified Amazon CloudWatch log group in

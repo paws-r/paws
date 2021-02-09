@@ -11,6 +11,36 @@ gamelift_describe_game_server_group(GameServerGroupName)
 \item{GameServerGroupName}{[required] A unique identifier for the game server group. Use either the
 GameServerGroup name or ARN value.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GameServerGroup = list(
+    GameServerGroupName = "string",
+    GameServerGroupArn = "string",
+    RoleArn = "string",
+    InstanceDefinitions = list(
+      list(
+        InstanceType = "c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge",
+        WeightedCapacity = "string"
+      )
+    ),
+    BalancingStrategy = "SPOT_ONLY"|"SPOT_PREFERRED"|"ON_DEMAND_ONLY",
+    GameServerProtectionPolicy = "NO_PROTECTION"|"FULL_PROTECTION",
+    AutoScalingGroupArn = "string",
+    Status = "NEW"|"ACTIVATING"|"ACTIVE"|"DELETE_SCHEDULED"|"DELETING"|"DELETED"|"ERROR",
+    StatusReason = "string",
+    SuspendedActions = list(
+      "REPLACE_INSTANCE_TYPES"
+    ),
+    CreationTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdatedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}

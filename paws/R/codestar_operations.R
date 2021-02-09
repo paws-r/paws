@@ -23,6 +23,14 @@ NULL
 #' @param remoteAccessAllowed Whether the team member is allowed to use an SSH public/private key pair
 #' to remotely access project resources, for example Amazon EC2 instances.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_team_member(
@@ -79,6 +87,17 @@ codestar_associate_team_member <- function(projectId, clientRequestToken = NULL,
 #' request. If this parameter is specified, the request must also include
 #' the sourceCode parameter.
 #' @param tags The tags created for the project.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   arn = "string",
+#'   clientRequestToken = "string",
+#'   projectTemplateId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -174,6 +193,23 @@ codestar_create_project <- function(name, id, description = NULL, clientRequestT
 #' public key will be used along with the user's private key for SSH
 #' access.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   userArn = "string",
+#'   displayName = "string",
+#'   emailAddress = "string",
+#'   sshPublicKey = "string",
+#'   createdTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_user_profile(
@@ -224,6 +260,15 @@ codestar_create_user_profile <- function(userArn, displayName, emailAddress, ssh
 #' (except for any buckets in Amazon S3) as well as deleting the project
 #' itself. Recommended for most use cases.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   stackId = "string",
+#'   projectArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_project(
@@ -268,6 +313,14 @@ codestar_delete_project <- function(id, clientRequestToken = NULL, deleteStack =
 #'
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the user to delete from AWS CodeStar.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   userArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_user_profile(
@@ -304,6 +357,27 @@ codestar_delete_user_profile <- function(userArn) {
 #' codestar_describe_project(id)
 #'
 #' @param id &#91;required&#93; The ID of the project.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   id = "string",
+#'   arn = "string",
+#'   description = "string",
+#'   clientRequestToken = "string",
+#'   createdTimeStamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   stackId = "string",
+#'   projectTemplateId = "string",
+#'   status = list(
+#'     state = "string",
+#'     reason = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -343,6 +417,23 @@ codestar_describe_project <- function(id) {
 #' codestar_describe_user_profile(userArn)
 #'
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the user.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   userArn = "string",
+#'   displayName = "string",
+#'   emailAddress = "string",
+#'   sshPublicKey = "string",
+#'   createdTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -388,6 +479,12 @@ codestar_describe_user_profile <- function(userArn) {
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM user or group whom you want to
 #' remove from the project.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_team_member(
@@ -428,6 +525,20 @@ codestar_disassociate_team_member <- function(projectId, userArn) {
 #' the results cannot be returned in one response.
 #' @param maxResults The maximum amount of data that can be contained in a single set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   projects = list(
+#'     list(
+#'       projectId = "string",
+#'       projectArn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -471,6 +582,19 @@ codestar_list_projects <- function(nextToken = NULL, maxResults = NULL) {
 #' @param maxResults The maximum amount of data that can be contained in a single set of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resources = list(
+#'     list(
+#'       id = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resources(
@@ -511,6 +635,17 @@ codestar_list_resources <- function(projectId, nextToken = NULL, maxResults = NU
 #' @param id &#91;required&#93; The ID of the project to get tags for.
 #' @param nextToken Reserved for future use.
 #' @param maxResults Reserved for future use.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -553,6 +688,21 @@ codestar_list_tags_for_project <- function(id, nextToken = NULL, maxResults = NU
 #' @param nextToken The continuation token for the next set of results, if the results
 #' cannot be returned in one response.
 #' @param maxResults The maximum number of team members you want returned in a response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   teamMembers = list(
+#'     list(
+#'       userArn = "string",
+#'       projectRole = "string",
+#'       remoteAccessAllowed = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -597,6 +747,22 @@ codestar_list_team_members <- function(projectId, nextToken = NULL, maxResults =
 #' cannot be returned in one response.
 #' @param maxResults The maximum number of results to return in a response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   userProfiles = list(
+#'     list(
+#'       userArn = "string",
+#'       displayName = "string",
+#'       emailAddress = "string",
+#'       sshPublicKey = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_user_profiles(
@@ -635,6 +801,16 @@ codestar_list_user_profiles <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @param id &#91;required&#93; The ID of the project you want to add a tag to.
 #' @param tags &#91;required&#93; The tags you want to add to the project.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -677,6 +853,12 @@ codestar_tag_project <- function(id, tags) {
 #' @param id &#91;required&#93; The ID of the project to remove tags from.
 #' @param tags &#91;required&#93; The tags to remove from the project.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_project(
@@ -718,6 +900,12 @@ codestar_untag_project <- function(id, tags) {
 #' @param id &#91;required&#93; The ID of the project you want to update.
 #' @param name The name of the project you want to update.
 #' @param description The description of the project, if any.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -771,6 +959,16 @@ codestar_update_project <- function(id, name = NULL, description = NULL) {
 #' this is set to True, the user must associate a public key with their
 #' profile before the user can access resources.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   userArn = "string",
+#'   projectRole = "string",
+#'   remoteAccessAllowed = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_team_member(
@@ -822,6 +1020,23 @@ codestar_update_team_member <- function(projectId, userArn, projectRole = NULL, 
 #' project owner allows the user remote access to project resources, this
 #' public key will be used along with the user's private key for SSH
 #' access.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   userArn = "string",
+#'   displayName = "string",
+#'   emailAddress = "string",
+#'   sshPublicKey = "string",
+#'   createdTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -105,6 +105,10 @@ capacity for an Amazon Keyspaces table.
 GiB) for brokers in an Amazon MSK cluster.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified scheduled action for an Application Auto Scaling
 scalable target.

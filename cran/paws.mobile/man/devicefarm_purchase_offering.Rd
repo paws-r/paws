@@ -13,6 +13,44 @@ devicefarm_purchase_offering(offeringId, quantity, offeringPromotionId)
 
 \item{offeringPromotionId}{The ID of the offering promotion to be applied to the purchase.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  offeringTransaction = list(
+    offeringStatus = list(
+      type = "PURCHASE"|"RENEW"|"SYSTEM",
+      offering = list(
+        id = "string",
+        description = "string",
+        type = "RECURRING",
+        platform = "ANDROID"|"IOS",
+        recurringCharges = list(
+          list(
+            cost = list(
+              amount = 123.0,
+              currencyCode = "USD"
+            ),
+            frequency = "MONTHLY"
+          )
+        )
+      ),
+      quantity = 123,
+      effectiveOn = as.POSIXct(
+        "2015-01-01"
+      )
+    ),
+    transactionId = "string",
+    offeringPromotionId = "string",
+    createdOn = as.POSIXct(
+      "2015-01-01"
+    ),
+    cost = list(
+      amount = 123.0,
+      currencyCode = "USD"
+    )
+  )
+)
+}
+}
 \description{
 Immediately purchases offerings for an AWS account. Offerings renew with
 the latest total purchased quantity for an offering, unless the renewal

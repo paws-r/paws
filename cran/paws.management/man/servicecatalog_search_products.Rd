@@ -27,6 +27,35 @@ includes all products to which the caller has access.}
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ProductViewSummaries = list(
+    list(
+      Id = "string",
+      ProductId = "string",
+      Name = "string",
+      Owner = "string",
+      ShortDescription = "string",
+      Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+      Distributor = "string",
+      HasDefaultPath = TRUE|FALSE,
+      SupportEmail = "string",
+      SupportDescription = "string",
+      SupportUrl = "string"
+    )
+  ),
+  ProductViewAggregations = list(
+    list(
+      list(
+        Value = "string",
+        ApproximateCount = 123
+      )
+    )
+  ),
+  NextPageToken = "string"
+)
+}
+}
 \description{
 Gets information about the products to which the caller has access.
 }

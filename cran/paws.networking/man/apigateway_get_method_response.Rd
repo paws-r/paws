@@ -16,6 +16,18 @@ apigateway_get_method_response(restApiId, resourceId, httpMethod,
 
 \item{statusCode}{[required] [Required] The status code for the MethodResponse resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  statusCode = "string",
+  responseParameters = list(
+    TRUE|FALSE
+  ),
+  responseModels = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Describes a MethodResponse resource.
 }

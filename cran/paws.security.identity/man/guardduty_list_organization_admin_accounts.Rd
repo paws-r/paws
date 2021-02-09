@@ -14,6 +14,18 @@ Set the value of this parameter to null for the first request to a list
 action. For subsequent calls, use the \code{NextToken} value returned from
 the previous request to continue listing results after the first page.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  AdminAccounts = list(
+    list(
+      AdminAccountId = "string",
+      AdminStatus = "ENABLED"|"DISABLE_IN_PROGRESS"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the accounts configured as GuardDuty delegated administrators.
 }

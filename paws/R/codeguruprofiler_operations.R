@@ -15,6 +15,24 @@ NULL
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group that we are setting up notifications
 #' for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   notificationConfiguration = list(
+#'     channels = list(
+#'       list(
+#'         eventPublishers = list(
+#'           "AnomalyDetection"
+#'         ),
+#'         id = "string",
+#'         uri = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_notification_channels(
@@ -90,6 +108,50 @@ codeguruprofiler_add_notification_channels <- function(channels, profilingGroupN
 #' -   `PT1H` — 1 hour
 #' 
 #' -   `PT5M` — 5 minutes
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTimes = list(
+#'     list(
+#'       value = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   frameMetricData = list(
+#'     list(
+#'       frameMetric = list(
+#'         frameName = "string",
+#'         threadStates = list(
+#'           "string"
+#'         ),
+#'         type = "AggregatedRelativeTotalTime"
+#'       ),
+#'       values = list(
+#'         123.0
+#'       )
+#'     )
+#'   ),
+#'   resolution = "P1D"|"PT1H"|"PT5M",
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   unprocessedEndTimes = list(
+#'     list(
+#'       list(
+#'         value = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -183,6 +245,20 @@ codeguruprofiler_batch_get_frame_metric_data <- function(endTime = NULL, frameMe
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group for which the configured agent is
 #' collecting profiling data.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configuration = list(
+#'     agentParameters = list(
+#'       "string"
+#'     ),
+#'     periodInSeconds = 123,
+#'     shouldProfile = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$configure_agent(
@@ -236,6 +312,44 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, metadata = 
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group to create.
 #' @param tags A list of tags to add to the created profiling group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   profilingGroup = list(
+#'     agentOrchestrationConfig = list(
+#'       profilingEnabled = TRUE|FALSE
+#'     ),
+#'     arn = "string",
+#'     computePlatform = "AWSLambda"|"Default",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     name = "string",
+#'     profilingStatus = list(
+#'       latestAgentOrchestratedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       latestAgentProfileReportedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       latestAggregatedProfile = list(
+#'         period = "P1D"|"PT1H"|"PT5M",
+#'         start = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_profiling_group(
@@ -281,6 +395,12 @@ codeguruprofiler_create_profiling_group <- function(agentOrchestrationConfig = N
 #'
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_profiling_group(
@@ -320,6 +440,44 @@ codeguruprofiler_delete_profiling_group <- function(profilingGroupName) {
 #' codeguruprofiler_describe_profiling_group(profilingGroupName)
 #'
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group to get information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   profilingGroup = list(
+#'     agentOrchestrationConfig = list(
+#'       profilingEnabled = TRUE|FALSE
+#'     ),
+#'     arn = "string",
+#'     computePlatform = "AWSLambda"|"Default",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     name = "string",
+#'     profilingStatus = list(
+#'       latestAgentOrchestratedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       latestAgentProfileReportedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       latestAggregatedProfile = list(
+#'         period = "P1D"|"PT1H"|"PT5M",
+#'         start = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -384,6 +542,27 @@ codeguruprofiler_describe_profiling_group <- function(profilingGroupName) {
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   reportSummaries = list(
+#'     list(
+#'       id = "string",
+#'       profileEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       profileStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       profilingGroupName = "string",
+#'       totalNumberOfFindings = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_findings_report_account_summary(
@@ -426,6 +605,24 @@ codeguruprofiler_get_findings_report_account_summary <- function(dailyReportsOnl
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group we want to get the notification
 #' configuration for.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   notificationConfiguration = list(
+#'     channels = list(
+#'       list(
+#'         eventPublishers = list(
+#'           "AnomalyDetection"
+#'         ),
+#'         id = "string",
+#'         uri = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_notification_configuration(
@@ -462,6 +659,15 @@ codeguruprofiler_get_notification_configuration <- function(profilingGroupName) 
 #' codeguruprofiler_get_policy(profilingGroupName)
 #'
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policy = "string",
+#'   revisionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -531,6 +737,16 @@ codeguruprofiler_get_policy <- function(profilingGroupName) {
 #' 1, 2020 1:15:02 PM UTC.
 #' 
 #'      <p> If you specify <code>startTime</code>, then you must also specify <code>period</code> or <code>endTime</code>, but not both. </p> 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   contentEncoding = "string",
+#'   contentType = "string",
+#'   profile = raw
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -618,6 +834,80 @@ codeguruprofiler_get_profile <- function(accept = NULL, endTime = NULL, maxDepth
 #' For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June
 #' 1, 2020 1:15:02 PM UTC.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   anomalies = list(
+#'     list(
+#'       instances = list(
+#'         list(
+#'           endTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           id = "string",
+#'           startTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           userFeedback = list(
+#'             type = "Negative"|"Positive"
+#'           )
+#'         )
+#'       ),
+#'       metric = list(
+#'         frameName = "string",
+#'         threadStates = list(
+#'           "string"
+#'         ),
+#'         type = "AggregatedRelativeTotalTime"
+#'       ),
+#'       reason = "string"
+#'     )
+#'   ),
+#'   profileEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   profileStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   profilingGroupName = "string",
+#'   recommendations = list(
+#'     list(
+#'       allMatchesCount = 123,
+#'       allMatchesSum = 123.0,
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       pattern = list(
+#'         countersToAggregate = list(
+#'           "string"
+#'         ),
+#'         description = "string",
+#'         id = "string",
+#'         name = "string",
+#'         resolutionSteps = "string",
+#'         targetFrames = list(
+#'           list(
+#'             "string"
+#'           )
+#'         ),
+#'         thresholdPercent = 123.0
+#'       ),
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       topMatches = list(
+#'         list(
+#'           frameAddress = "string",
+#'           targetFramesIndex = 123,
+#'           thresholdBreachValue = 123.0
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_recommendations(
@@ -691,6 +981,27 @@ codeguruprofiler_get_recommendations <- function(endTime, locale = NULL, profili
 #' specify `startTime` and `endTime`. This is specified using the ISO 8601
 #' format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond
 #' past June 1, 2020 1:15:02 PM UTC.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   findingsReportSummaries = list(
+#'     list(
+#'       id = "string",
+#'       profileEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       profileStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       profilingGroupName = "string",
+#'       totalNumberOfFindings = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -774,6 +1085,21 @@ codeguruprofiler_list_findings_reports <- function(dailyReportsOnly = NULL, endT
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group.
 #' @param startTime &#91;required&#93; The start time of the time range from which to list the profiles.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   profileTimes = list(
+#'     list(
+#'       start = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_profile_times(
@@ -846,6 +1172,50 @@ codeguruprofiler_list_profile_times <- function(endTime, maxResults = NULL, next
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   profilingGroupNames = list(
+#'     "string"
+#'   ),
+#'   profilingGroups = list(
+#'     list(
+#'       agentOrchestrationConfig = list(
+#'         profilingEnabled = TRUE|FALSE
+#'       ),
+#'       arn = "string",
+#'       computePlatform = "AWSLambda"|"Default",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       name = "string",
+#'       profilingStatus = list(
+#'         latestAgentOrchestratedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         latestAgentProfileReportedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         latestAggregatedProfile = list(
+#'           period = "P1D"|"PT1H"|"PT5M",
+#'           start = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_profiling_groups(
@@ -885,6 +1255,16 @@ codeguruprofiler_list_profiling_groups <- function(includeDescription = NULL, ma
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that contains the tags to
 #' return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -936,6 +1316,12 @@ codeguruprofiler_list_tags_for_resource <- function(resourceArn) {
 #' there are failures and retries.
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group with the aggregated profile that
 #' receives the submitted profiling data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -996,6 +1382,15 @@ codeguruprofiler_post_agent_profile <- function(agentProfile, contentType, profi
 #' permissions to a profiling group for the first time. If a policy already
 #' exists on the profiling group, you must specify the `revisionId`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policy = "string",
+#'   revisionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_permission(
@@ -1040,6 +1435,24 @@ codeguruprofiler_put_permission <- function(actionGroup, principals, profilingGr
 #' @param channelId &#91;required&#93; The id of the channel that we want to stop receiving notifications.
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group we want to change notification
 #' configuration for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   notificationConfiguration = list(
+#'     channels = list(
+#'       list(
+#'         eventPublishers = list(
+#'           "AnomalyDetection"
+#'         ),
+#'         id = "string",
+#'         uri = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1099,6 +1512,15 @@ codeguruprofiler_remove_notification_channel <- function(channelId, profilingGro
 #' @param revisionId &#91;required&#93; A universally unique identifier (UUID) for the revision of the
 #' resource-based policy from which you want to remove permissions.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   policy = "string",
+#'   revisionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$remove_permission(
@@ -1147,6 +1569,12 @@ codeguruprofiler_remove_permission <- function(actionGroup, profilingGroupName, 
 #' data.
 #' @param type &#91;required&#93; The feedback tpye. Thee are two valid values, `Positive` and `Negative`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$submit_feedback(
@@ -1188,6 +1616,12 @@ codeguruprofiler_submit_feedback <- function(anomalyInstanceId, comment = NULL, 
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that the tags are added
 #' to.
 #' @param tags &#91;required&#93; The list of tags that are added to the specified resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1232,6 +1666,12 @@ codeguruprofiler_tag_resource <- function(resourceArn, tags) {
 #' @param tagKeys &#91;required&#93; A list of tag keys. Existing tags of resources with keys in this list
 #' are removed from the specified resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$untag_resource(
@@ -1274,6 +1714,44 @@ codeguruprofiler_untag_resource <- function(resourceArn, tagKeys) {
 #' @param agentOrchestrationConfig &#91;required&#93; Specifies whether profiling is enabled or disabled for a profiling
 #' group.
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group to update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   profilingGroup = list(
+#'     agentOrchestrationConfig = list(
+#'       profilingEnabled = TRUE|FALSE
+#'     ),
+#'     arn = "string",
+#'     computePlatform = "AWSLambda"|"Default",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     name = "string",
+#'     profilingStatus = list(
+#'       latestAgentOrchestratedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       latestAgentProfileReportedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       latestAggregatedProfile = list(
+#'         period = "P1D"|"PT1H"|"PT5M",
+#'         start = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

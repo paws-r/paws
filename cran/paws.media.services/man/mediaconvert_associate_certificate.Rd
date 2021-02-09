@@ -8,10 +8,16 @@ with AWS Elemental MediaConvert}
 mediaconvert_associate_certificate(Arn)
 }
 \arguments{
-\item{Arn}{[required] The ARN of the ACM certificate that you want to associate with your MediaConvert resource.}
+\item{Arn}{[required] The ARN of the ACM certificate that you want to associate with your
+MediaConvert resource.}
+}
+\value{
+A list with the following syntax:\preformatted{list()
+}
 }
 \description{
-Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN) with AWS Elemental MediaConvert.
+Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN)
+with AWS Elemental MediaConvert.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_certificate(

@@ -22,6 +22,21 @@ from a previous call.)}
 returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TypeName = "string",
+  InstanceId = "string",
+  SchemaVersion = "string",
+  CaptureTime = "string",
+  Entries = list(
+    list(
+      "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 A list of inventory items returned by the request.
 }

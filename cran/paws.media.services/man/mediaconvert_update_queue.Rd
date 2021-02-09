@@ -12,9 +12,50 @@ mediaconvert_update_queue(Description, Name, ReservationPlanSettings,
 
 \item{Name}{[required] The name of the queue that you are modifying.}
 
-\item{ReservationPlanSettings}{The new details of your pricing plan for your reserved queue. When you set up a new pricing plan to replace an expired one, you enter into another 12-month commitment. When you add capacity to your queue by increasing the number of RTS, you extend the term of your commitment to 12 months from when you add capacity. After you make these commitments, you can't cancel them.}
+\item{ReservationPlanSettings}{The new details of your pricing plan for your reserved queue. When you
+set up a new pricing plan to replace an expired one, you enter into
+another 12-month commitment. When you add capacity to your queue by
+increasing the number of RTS, you extend the term of your commitment to
+12 months from when you add capacity. After you make these commitments,
+you can't cancel them.}
 
-\item{Status}{Pause or activate a queue by changing its status between ACTIVE and PAUSED. If you pause a queue, jobs in that queue won't begin. Jobs that are running when you pause the queue continue to run until they finish or result in an error.}
+\item{Status}{Pause or activate a queue by changing its status between ACTIVE and
+PAUSED. If you pause a queue, jobs in that queue won't begin. Jobs that
+are running when you pause the queue continue to run until they finish
+or result in an error.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Queue = list(
+    Arn = "string",
+    CreatedAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    Description = "string",
+    LastUpdated = as.POSIXct(
+      "2015-01-01"
+    ),
+    Name = "string",
+    PricingPlan = "ON_DEMAND"|"RESERVED",
+    ProgressingJobsCount = 123,
+    ReservationPlan = list(
+      Commitment = "ONE_YEAR",
+      ExpiresAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      PurchasedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      RenewalType = "AUTO_RENEW"|"EXPIRE",
+      ReservedSlots = 123,
+      Status = "ACTIVE"|"EXPIRED"
+    ),
+    Status = "ACTIVE"|"PAUSED",
+    SubmittedJobsCount = 123,
+    Type = "SYSTEM"|"CUSTOM"
+  )
+)
+}
 }
 \description{
 Modify one of your existing queues.

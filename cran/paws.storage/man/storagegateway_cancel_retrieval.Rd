@@ -13,6 +13,12 @@ storagegateway_cancel_retrieval(GatewayARN, TapeARN)
 \item{TapeARN}{[required] The Amazon Resource Name (ARN) of the virtual tape you want to cancel
 retrieval for.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TapeARN = "string"
+)
+}
+}
 \description{
 Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to
 a gateway after the retrieval process is initiated. The virtual tape is

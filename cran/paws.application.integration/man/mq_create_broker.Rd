@@ -13,41 +13,76 @@ mq_create_broker(AuthenticationStrategy, AutoMinorVersionUpgrade,
 \arguments{
 \item{AuthenticationStrategy}{The authentication strategy used to secure the broker.}
 
-\item{AutoMinorVersionUpgrade}{Required. Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.}
+\item{AutoMinorVersionUpgrade}{Required. Enables automatic upgrades to new minor versions for brokers,
+as Apache releases the versions. The automatic upgrades occur during the
+maintenance window of the broker or after a manual broker reboot.}
 
-\item{BrokerName}{Required. The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.}
+\item{BrokerName}{Required. The name of the broker. This value must be unique in your AWS
+account, 1-50 characters long, must contain only letters, numbers,
+dashes, and underscores, and must not contain whitespaces, brackets,
+wildcard characters, or special characters.}
 
 \item{Configuration}{A list of information about the configuration.}
 
-\item{CreatorRequestId}{The unique ID that the requester receives for the created broker. Amazon MQ passes your ID with the API action. Note: We recommend using a Universally Unique Identifier (UUID) for the creatorRequestId. You may omit the creatorRequestId if your application doesn't require idempotency.}
+\item{CreatorRequestId}{The unique ID that the requester receives for the created broker. Amazon
+MQ passes your ID with the API action. Note: We recommend using a
+Universally Unique Identifier (UUID) for the creatorRequestId. You may
+omit the creatorRequestId if your application doesn't require
+idempotency.}
 
 \item{DeploymentMode}{Required. The deployment mode of the broker.}
 
 \item{EncryptionOptions}{Encryption options for the broker.}
 
-\item{EngineType}{Required. The type of broker engine. Note: Currently, Amazon MQ supports ACTIVEMQ and RABBITMQ.}
+\item{EngineType}{Required. The type of broker engine. Note: Currently, Amazon MQ supports
+ACTIVEMQ and RABBITMQ.}
 
-\item{EngineVersion}{Required. The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
+\item{EngineVersion}{Required. The version of the broker engine. For a list of supported
+engine versions, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
 
 \item{HostInstanceType}{Required. The broker's instance type.}
 
-\item{LdapServerMetadata}{The metadata of the LDAP server used to authenticate and authorize connections to the broker.}
+\item{LdapServerMetadata}{The metadata of the LDAP server used to authenticate and authorize
+connections to the broker.}
 
 \item{Logs}{Enables Amazon CloudWatch logging for brokers.}
 
 \item{MaintenanceWindowStartTime}{The parameters that determine the WeeklyStartTime.}
 
-\item{PubliclyAccessible}{Required. Enables connections from applications outside of the VPC that hosts the broker's subnets.}
+\item{PubliclyAccessible}{Required. Enables connections from applications outside of the VPC that
+hosts the broker's subnets.}
 
-\item{SecurityGroups}{The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.}
+\item{SecurityGroups}{The list of security groups (1 minimum, 5 maximum) that authorizes
+connections to brokers.}
 
 \item{StorageType}{The broker's storage type.}
 
-\item{SubnetIds}{The list of groups that define which subnets and IP ranges the broker can use from different Availability Zones. A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet). An ACTIVE_STANDBY_MULTI_AZ deployment (ACTIVEMQ) requires two subnets. A CLUSTER_MULTI_AZ deployment (RABBITMQ) has no subnet requirements when deployed with public accessibility, deployment without public accessibility requires at least one subnet.}
+\item{SubnetIds}{The list of groups that define which subnets and IP ranges the broker
+can use from different Availability Zones. A SINGLE_INSTANCE deployment
+requires one subnet (for example, the default subnet). An
+ACTIVE_STANDBY_MULTI_AZ deployment (ACTIVEMQ) requires two subnets. A
+CLUSTER_MULTI_AZ deployment (RABBITMQ) has no subnet requirements when
+deployed with public accessibility, deployment without public
+accessibility requires at least one subnet.}
 
 \item{Tags}{Create tags when creating the broker.}
 
-\item{Users}{Required. The list of broker users (persons or applications) who can access queues and topics. For RabbitMQ brokers, one and only one administrative user is accepted and created when a broker is first provisioned. All subsequent broker users are created by making RabbitMQ API calls directly to brokers or via the RabbitMQ Web Console. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.}
+\item{Users}{Required. The list of broker users (persons or applications) who can
+access queues and topics. For RabbitMQ brokers, one and only one
+administrative user is accepted and created when a broker is first
+provisioned. All subsequent broker users are created by making RabbitMQ
+API calls directly to brokers or via the RabbitMQ Web Console. This
+value can contain only alphanumeric characters, dashes, periods,
+underscores, and tildes (- . _ ~). This value must be 2-100 characters
+long.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  BrokerArn = "string",
+  BrokerId = "string"
+)
+}
 }
 \description{
 Creates a broker. Note: This API is asynchronous.

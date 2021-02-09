@@ -13,6 +13,12 @@ FileUploadAnswer.}
 \item{QuestionIdentifier}{[required] The identifier of the question with a FileUploadAnswer, as specified in
 the QuestionForm of the HIT.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FileUploadURL = "string"
+)
+}
+}
 \description{
 The \code{\link[=mturk_get_file_upload_url]{get_file_upload_url}} operation
 generates and returns a temporary URL. You use the temporary URL to

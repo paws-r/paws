@@ -10,6 +10,10 @@ devicefarm_delete_upload(arn)
 \item{arn}{[required] Represents the Amazon Resource Name (ARN) of the Device Farm upload to
 delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes an upload given the upload ARN.
 }

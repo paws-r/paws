@@ -18,7 +18,11 @@ If you do not specify a value, the value is set to an empty string.
 Generally allowed characters are: letters, numbers, and spaces
 representable in UTF-8, and the following special characters:
 
-\\_ . : / = + \\ - @}
+_ . : / = + \\ - @}
+}
+\value{
+A list with the following syntax:\preformatted{list()
+}
 }
 \description{
 Adds or overwrites one or more tags for the specified AppStream 2.0

@@ -9,6 +9,13 @@ translate_stop_text_translation_job(JobId)
 \arguments{
 \item{JobId}{[required] The job ID of the job to be stopped.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string",
+  JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERROR"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
+)
+}
+}
 \description{
 Stops an asynchronous batch translation job that is in progress.
 

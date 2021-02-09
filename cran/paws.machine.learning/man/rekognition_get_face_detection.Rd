@@ -20,6 +20,94 @@ retrieve), Amazon Rekognition Video returns a pagination token in the
 response. You can use this pagination token to retrieve the next set of
 faces.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+  StatusMessage = "string",
+  VideoMetadata = list(
+    Codec = "string",
+    DurationMillis = 123,
+    Format = "string",
+    FrameRate = 123.0,
+    FrameHeight = 123,
+    FrameWidth = 123
+  ),
+  NextToken = "string",
+  Faces = list(
+    list(
+      Timestamp = 123,
+      Face = list(
+        BoundingBox = list(
+          Width = 123.0,
+          Height = 123.0,
+          Left = 123.0,
+          Top = 123.0
+        ),
+        AgeRange = list(
+          Low = 123,
+          High = 123
+        ),
+        Smile = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Eyeglasses = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Sunglasses = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Gender = list(
+          Value = "Male"|"Female",
+          Confidence = 123.0
+        ),
+        Beard = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Mustache = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        EyesOpen = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        MouthOpen = list(
+          Value = TRUE|FALSE,
+          Confidence = 123.0
+        ),
+        Emotions = list(
+          list(
+            Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+            Confidence = 123.0
+          )
+        ),
+        Landmarks = list(
+          list(
+            Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+            X = 123.0,
+            Y = 123.0
+          )
+        ),
+        Pose = list(
+          Roll = 123.0,
+          Yaw = 123.0,
+          Pitch = 123.0
+        ),
+        Quality = list(
+          Brightness = 123.0,
+          Sharpness = 123.0
+        ),
+        Confidence = 123.0
+      )
+    )
+  )
+)
+}
+}
 \description{
 Gets face detection results for a Amazon Rekognition Video analysis
 started by \code{\link[=rekognition_start_face_detection]{start_face_detection}}.

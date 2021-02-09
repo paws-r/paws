@@ -15,7 +15,7 @@ create an IPSet for.}
 \item{Name}{[required] The user-friendly name to identify the IPSet.
 
 Allowed characters are alphanumerics, spaces, hyphens (-), and
-underscores (\\_).}
+underscores (_).}
 
 \item{Format}{[required] The format of the file that contains the IPSet.}
 
@@ -28,6 +28,12 @@ uploaded IPSet.}
 \item{ClientToken}{The idempotency token for the create request.}
 
 \item{Tags}{The tags to be added to a new IP set resource.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  IpSetId = "string"
+)
+}
 }
 \description{
 Creates a new IPSet, which is called a trusted IP list in the console

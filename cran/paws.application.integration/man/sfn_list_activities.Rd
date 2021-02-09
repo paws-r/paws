@@ -21,6 +21,21 @@ arguments unchanged. Each pagination token expires after 24 hours. Using
 an expired pagination token will return an \emph{HTTP 400 InvalidToken}
 error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  activities = list(
+    list(
+      activityArn = "string",
+      name = "string",
+      creationDate = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the existing activities.
 

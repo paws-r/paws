@@ -13,6 +13,16 @@ NULL
 #'
 #' @param GrantArn &#91;required&#93; Amazon Resource Name (ARN) of the grant.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GrantArn = "string",
+#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'   Version = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_grant(
@@ -51,6 +61,12 @@ licensemanager_accept_grant <- function(GrantArn) {
 #'
 #' @param LicenseConsumptionToken &#91;required&#93; License consumption token.
 #' @param Beneficiary License beneficiary.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -99,6 +115,32 @@ licensemanager_check_in_license <- function(LicenseConsumptionToken, Beneficiary
 #' @param CheckoutMetadata Information about constraints.
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseArn = "string",
+#'   LicenseConsumptionToken = "string",
+#'   EntitlementsAllowed = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string",
+#'       Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
+#'     )
+#'   ),
+#'   NodeId = "string",
+#'   SignedToken = "string",
+#'   IssuedAt = "string",
+#'   Expiration = "string",
+#'   CheckoutMetadata = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -161,6 +203,26 @@ licensemanager_checkout_borrow_license <- function(LicenseArn, Entitlements, Dig
 #' @param Beneficiary License beneficiary.
 #' @param NodeId Node ID.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CheckoutType = "PROVISIONAL",
+#'   LicenseConsumptionToken = "string",
+#'   EntitlementsAllowed = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string",
+#'       Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
+#'     )
+#'   ),
+#'   SignedToken = "string",
+#'   NodeId = "string",
+#'   IssuedAt = "string",
+#'   Expiration = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$checkout_license(
@@ -218,6 +280,16 @@ licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerp
 #' @param HomeRegion &#91;required&#93; Home Region of the grant.
 #' @param AllowedOperations &#91;required&#93; Allowed operations for the grant.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GrantArn = "string",
+#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'   Version = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_grant(
@@ -270,6 +342,16 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 #' @param AllowedOperations Allowed operations for the grant.
 #' @param Status Grant status.
 #' @param SourceVersion Current version of the grant.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GrantArn = "string",
+#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -330,6 +412,16 @@ licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName
 #' @param LicenseMetadata Information about the license.
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseArn = "string",
+#'   Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
+#'   Version = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -421,8 +513,8 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #' @param LicenseCount Number of licenses managed by the license configuration.
 #' @param LicenseCountHardLimit Indicates whether hard or soft license enforcement is used. Exceeding a
 #' hard limit blocks the launch of new instances.
-#' @param LicenseRules License rules. The syntax is \\#name=value (for example,
-#' \\#allowedTenancy=EC2-DedicatedHost). The available rules vary by
+#' @param LicenseRules License rules. The syntax is \#name=value (for example,
+#' \#allowedTenancy=EC2-DedicatedHost). The available rules vary by
 #' dimension, as follows.
 #' 
 #' -   `Cores` dimension: `allowedTenancy` | `licenseAffinityToHost` |
@@ -445,6 +537,14 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #' @param Tags Tags to add to the license configuration.
 #' @param DisassociateWhenNotFound When true, disassociates a resource when software is uninstalled.
 #' @param ProductInformationList Product information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseConfigurationArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -528,6 +628,16 @@ licensemanager_create_license_configuration <- function(Name, Description = NULL
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param SourceVersion Current version of the license.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseArn = "string",
+#'   Version = "string",
+#'   Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -620,6 +730,16 @@ licensemanager_create_license_version <- function(LicenseArn, LicenseName, Produ
 #' is mapped to the amr claim of the JWT token.
 #' @param ClientToken &#91;required&#93; Idempotency token, valid for 10 minutes.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TokenId = "string",
+#'   TokenType = "REFRESH_TOKEN",
+#'   Token = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_token(
@@ -666,6 +786,16 @@ licensemanager_create_token <- function(LicenseArn, RoleArns = NULL, ExpirationI
 #' @param GrantArn &#91;required&#93; Amazon Resource Name (ARN) of the grant.
 #' @param Version &#91;required&#93; Current version of the grant.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GrantArn = "string",
+#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'   Version = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_grant(
@@ -704,6 +834,15 @@ licensemanager_delete_grant <- function(GrantArn, Version) {
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
 #' @param SourceVersion &#91;required&#93; Current version of the license.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "PENDING_DELETE"|"DELETED",
+#'   DeletionDate = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -745,6 +884,12 @@ licensemanager_delete_license <- function(LicenseArn, SourceVersion) {
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; ID of the license configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_license_configuration(
@@ -781,6 +926,12 @@ licensemanager_delete_license_configuration <- function(LicenseConfigurationArn)
 #' licensemanager_delete_token(TokenId)
 #'
 #' @param TokenId &#91;required&#93; Token ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -823,6 +974,15 @@ licensemanager_delete_token <- function(TokenId) {
 #' actually making the request. Provides an error response if you do not
 #' have the required permissions.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseConsumptionToken = "string",
+#'   Expiration = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$extend_license_consumption(
@@ -862,6 +1022,14 @@ licensemanager_extend_license_consumption <- function(LicenseConsumptionToken, D
 #'
 #' @param Token &#91;required&#93; Refresh token, encoded as a JWT token.
 #' @param TokenProperties Token properties to validate against those present in the JWT token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -904,6 +1072,27 @@ licensemanager_get_access_token <- function(Token, TokenProperties = NULL) {
 #' @param GrantArn &#91;required&#93; Amazon Resource Name (ARN) of the grant.
 #' @param Version Grant version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Grant = list(
+#'     GrantArn = "string",
+#'     GrantName = "string",
+#'     ParentArn = "string",
+#'     LicenseArn = "string",
+#'     GranteePrincipalArn = "string",
+#'     HomeRegion = "string",
+#'     GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'     StatusReason = "string",
+#'     Version = "string",
+#'     GrantedOperations = list(
+#'       "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_grant(
@@ -943,6 +1132,59 @@ licensemanager_get_grant <- function(GrantArn, Version = NULL) {
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
 #' @param Version License version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   License = list(
+#'     LicenseArn = "string",
+#'     LicenseName = "string",
+#'     ProductName = "string",
+#'     ProductSKU = "string",
+#'     Issuer = list(
+#'       Name = "string",
+#'       SignKey = "string",
+#'       KeyFingerprint = "string"
+#'     ),
+#'     HomeRegion = "string",
+#'     Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
+#'     Validity = list(
+#'       Begin = "string",
+#'       End = "string"
+#'     ),
+#'     Beneficiary = "string",
+#'     Entitlements = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string",
+#'         MaxCount = 123,
+#'         Overage = TRUE|FALSE,
+#'         Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
+#'         AllowCheckIn = TRUE|FALSE
+#'       )
+#'     ),
+#'     ConsumptionConfiguration = list(
+#'       RenewType = "None"|"Weekly"|"Monthly",
+#'       ProvisionalConfiguration = list(
+#'         MaxTimeToLiveInMinutes = 123
+#'       ),
+#'       BorrowConfiguration = list(
+#'         AllowEarlyCheckIn = TRUE|FALSE,
+#'         MaxTimeToLiveInMinutes = 123
+#'       )
+#'     ),
+#'     LicenseMetadata = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     CreateTime = "string",
+#'     Version = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_license(
@@ -981,6 +1223,64 @@ licensemanager_get_license <- function(LicenseArn, Version = NULL) {
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseConfigurationId = "string",
+#'   LicenseConfigurationArn = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   LicenseCountingType = "vCPU"|"Instance"|"Core"|"Socket",
+#'   LicenseRules = list(
+#'     "string"
+#'   ),
+#'   LicenseCount = 123,
+#'   LicenseCountHardLimit = TRUE|FALSE,
+#'   ConsumedLicenses = 123,
+#'   Status = "string",
+#'   OwnerAccountId = "string",
+#'   ConsumedLicenseSummaryList = list(
+#'     list(
+#'       ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+#'       ConsumedLicenses = 123
+#'     )
+#'   ),
+#'   ManagedResourceSummaryList = list(
+#'     list(
+#'       ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+#'       AssociationCount = 123
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ProductInformationList = list(
+#'     list(
+#'       ResourceType = "string",
+#'       ProductInformationFilterList = list(
+#'         list(
+#'           ProductInformationFilterName = "string",
+#'           ProductInformationFilterValue = list(
+#'             "string"
+#'           ),
+#'           ProductInformationFilterComparator = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   AutomatedDiscoveryInformation = list(
+#'     LastRunTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   DisassociateWhenNotFound = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_license_configuration(
@@ -1018,6 +1318,23 @@ licensemanager_get_license_configuration <- function(LicenseConfigurationArn) {
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseUsage = list(
+#'     EntitlementUsages = list(
+#'       list(
+#'         Name = "string",
+#'         ConsumedValue = "string",
+#'         MaxCount = "string",
+#'         Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_license_usage(
@@ -1052,6 +1369,20 @@ licensemanager_get_license_usage <- function(LicenseArn) {
 #'
 #' @usage
 #' licensemanager_get_service_settings()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   S3BucketArn = "string",
+#'   SnsTopicArn = "string",
+#'   OrganizationConfiguration = list(
+#'     EnableIntegration = TRUE|FALSE
+#'   ),
+#'   EnableCrossAccountsDiscovery = TRUE|FALSE,
+#'   LicenseManagerResourceShareArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1094,6 +1425,25 @@ licensemanager_get_service_settings <- function() {
 #' @param LicenseConfigurationArn &#91;required&#93; Amazon Resource Name (ARN) of a license configuration.
 #' @param MaxResults Maximum number of results to return in a single call.
 #' @param NextToken Token for the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseConfigurationAssociations = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+#'       ResourceOwnerId = "string",
+#'       AssociationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AmiAssociationScope = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1146,6 +1496,30 @@ licensemanager_list_associations_for_license_configuration <- function(LicenseCo
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Grants = list(
+#'     list(
+#'       GrantArn = "string",
+#'       GrantName = "string",
+#'       ParentArn = "string",
+#'       LicenseArn = "string",
+#'       GranteePrincipalArn = "string",
+#'       HomeRegion = "string",
+#'       GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'       StatusReason = "string",
+#'       Version = "string",
+#'       GrantedOperations = list(
+#'         "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_distributed_grants(
@@ -1197,6 +1571,33 @@ licensemanager_list_distributed_grants <- function(GrantArns = NULL, Filters = N
 #' @param LicenseConfigurationArn &#91;required&#93; Amazon Resource Name of the license configuration.
 #' @param MaxResults Maximum number of results to return in a single call.
 #' @param NextToken Token for the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseOperationFailureList = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+#'       ErrorMessage = "string",
+#'       FailureTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OperationName = "string",
+#'       ResourceOwnerId = "string",
+#'       OperationRequestedBy = "string",
+#'       MetadataList = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1254,6 +1655,63 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 #'     available licenses have been exceeded. Logical operators are
 #'     `EQUALS` | `NOT_EQUALS`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseConfigurations = list(
+#'     list(
+#'       LicenseConfigurationId = "string",
+#'       LicenseConfigurationArn = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       LicenseCountingType = "vCPU"|"Instance"|"Core"|"Socket",
+#'       LicenseRules = list(
+#'         "string"
+#'       ),
+#'       LicenseCount = 123,
+#'       LicenseCountHardLimit = TRUE|FALSE,
+#'       DisassociateWhenNotFound = TRUE|FALSE,
+#'       ConsumedLicenses = 123,
+#'       Status = "string",
+#'       OwnerAccountId = "string",
+#'       ConsumedLicenseSummaryList = list(
+#'         list(
+#'           ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+#'           ConsumedLicenses = 123
+#'         )
+#'       ),
+#'       ManagedResourceSummaryList = list(
+#'         list(
+#'           ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+#'           AssociationCount = 123
+#'         )
+#'       ),
+#'       ProductInformationList = list(
+#'         list(
+#'           ResourceType = "string",
+#'           ProductInformationFilterList = list(
+#'             list(
+#'               ProductInformationFilterName = "string",
+#'               ProductInformationFilterValue = list(
+#'                 "string"
+#'               ),
+#'               ProductInformationFilterComparator = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       AutomatedDiscoveryInformation = list(
+#'         LastRunTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_license_configurations(
@@ -1307,6 +1765,20 @@ licensemanager_list_license_configurations <- function(LicenseConfigurationArns 
 #' @param MaxResults Maximum number of results to return in a single call.
 #' @param NextToken Token for the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseSpecifications = list(
+#'     list(
+#'       LicenseConfigurationArn = "string",
+#'       AmiAssociationScope = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_license_specifications_for_resource(
@@ -1347,6 +1819,62 @@ licensemanager_list_license_specifications_for_resource <- function(ResourceArn,
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Licenses = list(
+#'     list(
+#'       LicenseArn = "string",
+#'       LicenseName = "string",
+#'       ProductName = "string",
+#'       ProductSKU = "string",
+#'       Issuer = list(
+#'         Name = "string",
+#'         SignKey = "string",
+#'         KeyFingerprint = "string"
+#'       ),
+#'       HomeRegion = "string",
+#'       Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
+#'       Validity = list(
+#'         Begin = "string",
+#'         End = "string"
+#'       ),
+#'       Beneficiary = "string",
+#'       Entitlements = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string",
+#'           MaxCount = 123,
+#'           Overage = TRUE|FALSE,
+#'           Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
+#'           AllowCheckIn = TRUE|FALSE
+#'         )
+#'       ),
+#'       ConsumptionConfiguration = list(
+#'         RenewType = "None"|"Weekly"|"Monthly",
+#'         ProvisionalConfiguration = list(
+#'           MaxTimeToLiveInMinutes = 123
+#'         ),
+#'         BorrowConfiguration = list(
+#'           AllowEarlyCheckIn = TRUE|FALSE,
+#'           MaxTimeToLiveInMinutes = 123
+#'         )
+#'       ),
+#'       LicenseMetadata = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       CreateTime = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1398,6 +1926,62 @@ licensemanager_list_license_versions <- function(LicenseArn, NextToken = NULL, M
 #' -   `Status`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Licenses = list(
+#'     list(
+#'       LicenseArn = "string",
+#'       LicenseName = "string",
+#'       ProductName = "string",
+#'       ProductSKU = "string",
+#'       Issuer = list(
+#'         Name = "string",
+#'         SignKey = "string",
+#'         KeyFingerprint = "string"
+#'       ),
+#'       HomeRegion = "string",
+#'       Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
+#'       Validity = list(
+#'         Begin = "string",
+#'         End = "string"
+#'       ),
+#'       Beneficiary = "string",
+#'       Entitlements = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string",
+#'           MaxCount = 123,
+#'           Overage = TRUE|FALSE,
+#'           Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
+#'           AllowCheckIn = TRUE|FALSE
+#'         )
+#'       ),
+#'       ConsumptionConfiguration = list(
+#'         RenewType = "None"|"Weekly"|"Monthly",
+#'         ProvisionalConfiguration = list(
+#'           MaxTimeToLiveInMinutes = 123
+#'         ),
+#'         BorrowConfiguration = list(
+#'           AllowEarlyCheckIn = TRUE|FALSE,
+#'           MaxTimeToLiveInMinutes = 123
+#'         )
+#'       ),
+#'       LicenseMetadata = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       CreateTime = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1455,6 +2039,30 @@ licensemanager_list_licenses <- function(LicenseArns = NULL, Filters = NULL, Nex
 #' -   `Status`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Grants = list(
+#'     list(
+#'       GrantArn = "string",
+#'       GrantName = "string",
+#'       ParentArn = "string",
+#'       LicenseArn = "string",
+#'       GranteePrincipalArn = "string",
+#'       HomeRegion = "string",
+#'       GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'       StatusReason = "string",
+#'       Version = "string",
+#'       GrantedOperations = list(
+#'         "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1516,6 +2124,68 @@ licensemanager_list_received_grants <- function(GrantArns = NULL, Filters = NULL
 #' -   `Issuer`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Licenses = list(
+#'     list(
+#'       LicenseArn = "string",
+#'       LicenseName = "string",
+#'       ProductName = "string",
+#'       ProductSKU = "string",
+#'       Issuer = list(
+#'         Name = "string",
+#'         SignKey = "string",
+#'         KeyFingerprint = "string"
+#'       ),
+#'       HomeRegion = "string",
+#'       Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
+#'       Validity = list(
+#'         Begin = "string",
+#'         End = "string"
+#'       ),
+#'       Beneficiary = "string",
+#'       Entitlements = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string",
+#'           MaxCount = 123,
+#'           Overage = TRUE|FALSE,
+#'           Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
+#'           AllowCheckIn = TRUE|FALSE
+#'         )
+#'       ),
+#'       ConsumptionConfiguration = list(
+#'         RenewType = "None"|"Weekly"|"Monthly",
+#'         ProvisionalConfiguration = list(
+#'           MaxTimeToLiveInMinutes = 123
+#'         ),
+#'         BorrowConfiguration = list(
+#'           AllowEarlyCheckIn = TRUE|FALSE,
+#'           MaxTimeToLiveInMinutes = 123
+#'         )
+#'       ),
+#'       LicenseMetadata = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       CreateTime = "string",
+#'       Version = "string",
+#'       ReceivedMetadata = list(
+#'         ReceivedStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"DISABLED",
+#'         AllowedOperations = list(
+#'           "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1590,6 +2260,24 @@ licensemanager_list_received_licenses <- function(LicenseArns = NULL, Filters = 
 #'     resource. Logical operators are `EQUALS` (single account) or
 #'     `EQUALS` | `NOT_EQUALS` (cross account).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceInventoryList = list(
+#'     list(
+#'       ResourceId = "string",
+#'       ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+#'       ResourceArn = "string",
+#'       Platform = "string",
+#'       PlatformVersion = "string",
+#'       ResourceOwningAccountId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resource_inventory(
@@ -1635,6 +2323,19 @@ licensemanager_list_resource_inventory <- function(MaxResults = NULL, NextToken 
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -1676,6 +2377,29 @@ licensemanager_list_tags_for_resource <- function(ResourceArn) {
 #' -   `licenseArns`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tokens = list(
+#'     list(
+#'       TokenId = "string",
+#'       TokenType = "string",
+#'       LicenseArn = "string",
+#'       ExpirationTime = "string",
+#'       TokenProperties = list(
+#'         "string"
+#'       ),
+#'       RoleArns = list(
+#'         "string"
+#'       ),
+#'       Status = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1745,6 +2469,26 @@ licensemanager_list_tokens <- function(TokenIds = NULL, Filters = NULL, NextToke
 #' -   `resourceAccount` - The ID of the account that owns the resource.
 #'     Logical operators are `EQUALS` | `NOT_EQUALS`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LicenseConfigurationUsageList = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+#'       ResourceStatus = "string",
+#'       ResourceOwnerId = "string",
+#'       AssociationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ConsumedLicenses = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_usage_for_license_configuration(
@@ -1792,6 +2536,16 @@ licensemanager_list_usage_for_license_configuration <- function(LicenseConfigura
 #'
 #' @param GrantArn &#91;required&#93; Amazon Resource Name (ARN) of the grant.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GrantArn = "string",
+#'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
+#'   Version = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$reject_grant(
@@ -1829,6 +2583,12 @@ licensemanager_reject_grant <- function(GrantArn) {
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #' @param Tags &#91;required&#93; One or more tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1873,6 +2633,12 @@ licensemanager_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #' @param TagKeys &#91;required&#93; Keys identifying the tags to remove.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1925,6 +2691,12 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param Description New description of the license configuration.
 #' @param ProductInformationList New product information.
 #' @param DisassociateWhenNotFound When true, disassociates a resource when software is uninstalled.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1996,6 +2768,12 @@ licensemanager_update_license_configuration <- function(LicenseConfigurationArn,
 #' @param AddLicenseSpecifications ARNs of the license configurations to add.
 #' @param RemoveLicenseSpecifications ARNs of the license configurations to remove.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_license_specifications_for_resource(
@@ -2050,6 +2828,12 @@ licensemanager_update_license_specifications_for_resource <- function(ResourceAr
 #' Manager alerts.
 #' @param OrganizationConfiguration Enables integration with AWS Organizations for cross-account discovery.
 #' @param EnableCrossAccountsDiscovery Activates cross-account discovery.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

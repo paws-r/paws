@@ -16,6 +16,24 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  StartingInstances = list(
+    list(
+      CurrentState = list(
+        Code = 123,
+        Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+      ),
+      InstanceId = "string",
+      PreviousState = list(
+        Code = 123,
+        Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Starts an Amazon EBS-backed instance that you've previously stopped.
 

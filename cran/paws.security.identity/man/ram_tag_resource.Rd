@@ -11,6 +11,10 @@ ram_tag_resource(resourceShareArn, tags)
 
 \item{tags}{[required] One or more tags.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds the specified tags to the specified resource share that you own.
 }

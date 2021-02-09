@@ -14,6 +14,13 @@ elasticsearchservice_purchase_reserved_elasticsearch_instance_offering(
 
 \item{InstanceCount}{The number of Elasticsearch instances to reserve.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ReservedElasticsearchInstanceId = "string",
+  ReservationName = "string"
+)
+}
+}
 \description{
 Allows you to purchase reserved Elasticsearch instances.
 }

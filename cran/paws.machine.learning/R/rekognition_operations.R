@@ -94,6 +94,81 @@ NULL
 #' To use quality filtering, the collection you are using must be
 #' associated with version 3 of the face model or higher.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SourceImageFace = list(
+#'     BoundingBox = list(
+#'       Width = 123.0,
+#'       Height = 123.0,
+#'       Left = 123.0,
+#'       Top = 123.0
+#'     ),
+#'     Confidence = 123.0
+#'   ),
+#'   FaceMatches = list(
+#'     list(
+#'       Similarity = 123.0,
+#'       Face = list(
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         Confidence = 123.0,
+#'         Landmarks = list(
+#'           list(
+#'             Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+#'             X = 123.0,
+#'             Y = 123.0
+#'           )
+#'         ),
+#'         Pose = list(
+#'           Roll = 123.0,
+#'           Yaw = 123.0,
+#'           Pitch = 123.0
+#'         ),
+#'         Quality = list(
+#'           Brightness = 123.0,
+#'           Sharpness = 123.0
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   UnmatchedFaces = list(
+#'     list(
+#'       BoundingBox = list(
+#'         Width = 123.0,
+#'         Height = 123.0,
+#'         Left = 123.0,
+#'         Top = 123.0
+#'       ),
+#'       Confidence = 123.0,
+#'       Landmarks = list(
+#'         list(
+#'           Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+#'           X = 123.0,
+#'           Y = 123.0
+#'         )
+#'       ),
+#'       Pose = list(
+#'         Roll = 123.0,
+#'         Yaw = 123.0,
+#'         Pitch = 123.0
+#'       ),
+#'       Quality = list(
+#'         Brightness = 123.0,
+#'         Sharpness = 123.0
+#'       )
+#'     )
+#'   ),
+#'   SourceImageOrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270",
+#'   TargetImageOrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$compare_faces(
@@ -184,6 +259,16 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #'
 #' @param CollectionId &#91;required&#93; ID for the collection that you are creating.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StatusCode = 123,
+#'   CollectionArn = "string",
+#'   FaceModelVersion = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_collection(
@@ -233,6 +318,14 @@ rekognition_create_collection <- function(CollectionId) {
 #' rekognition_create_project(ProjectName)
 #'
 #' @param ProjectName &#91;required&#93; The name of the project to create.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProjectArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -294,6 +387,14 @@ rekognition_create_project <- function(ProjectName) {
 #' @param OutputConfig &#91;required&#93; The Amazon S3 location to store the results of training.
 #' @param TrainingData &#91;required&#93; The dataset to use for training.
 #' @param TestingData &#91;required&#93; The dataset to use for testing.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProjectVersionArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -398,6 +499,14 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
 #' attributes to detect.
 #' @param RoleArn &#91;required&#93; ARN of the IAM role that allows access to the stream processor.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StreamProcessorArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_stream_processor(
@@ -457,6 +566,14 @@ rekognition_create_stream_processor <- function(Input, Output, Name, Settings, R
 #'
 #' @param CollectionId &#91;required&#93; ID of the collection to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StatusCode = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_collection(
@@ -506,6 +623,16 @@ rekognition_delete_collection <- function(CollectionId) {
 #'
 #' @param CollectionId &#91;required&#93; Collection from which to remove the specific faces.
 #' @param FaceIds &#91;required&#93; An array of face IDs to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeletedFaces = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -564,6 +691,14 @@ rekognition_delete_faces <- function(CollectionId, FaceIds) {
 #'
 #' @param ProjectArn &#91;required&#93; The Amazon Resource Name (ARN) of the project that you want to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "CREATING"|"CREATED"|"DELETING"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_project(
@@ -612,6 +747,14 @@ rekognition_delete_project <- function(ProjectArn) {
 #' @param ProjectVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the model version that you want to
 #' delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_project_version(
@@ -653,6 +796,12 @@ rekognition_delete_project_version <- function(ProjectVersionArn) {
 #' rekognition_delete_stream_processor(Name)
 #'
 #' @param Name &#91;required&#93; The name of the stream processor you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -696,6 +845,19 @@ rekognition_delete_stream_processor <- function(Name) {
 #' rekognition_describe_collection(CollectionId)
 #'
 #' @param CollectionId &#91;required&#93; The ID of the collection to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FaceCount = 123,
+#'   FaceModelVersion = "string",
+#'   CollectionARN = "string",
+#'   CreationTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -756,6 +918,134 @@ rekognition_describe_collection <- function(CollectionId) {
 #' value you can specify is 100. If you specify a value greater than 100, a
 #' ValidationException error occurs. The default value is 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProjectVersionDescriptions = list(
+#'     list(
+#'       ProjectVersionArn = "string",
+#'       CreationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       MinInferenceUnits = 123,
+#'       Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING",
+#'       StatusMessage = "string",
+#'       BillableTrainingTimeInSeconds = 123,
+#'       TrainingEndTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OutputConfig = list(
+#'         S3Bucket = "string",
+#'         S3KeyPrefix = "string"
+#'       ),
+#'       TrainingDataResult = list(
+#'         Input = list(
+#'           Assets = list(
+#'             list(
+#'               GroundTruthManifest = list(
+#'                 S3Object = list(
+#'                   Bucket = "string",
+#'                   Name = "string",
+#'                   Version = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Output = list(
+#'           Assets = list(
+#'             list(
+#'               GroundTruthManifest = list(
+#'                 S3Object = list(
+#'                   Bucket = "string",
+#'                   Name = "string",
+#'                   Version = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Validation = list(
+#'           Assets = list(
+#'             list(
+#'               GroundTruthManifest = list(
+#'                 S3Object = list(
+#'                   Bucket = "string",
+#'                   Name = "string",
+#'                   Version = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       TestingDataResult = list(
+#'         Input = list(
+#'           Assets = list(
+#'             list(
+#'               GroundTruthManifest = list(
+#'                 S3Object = list(
+#'                   Bucket = "string",
+#'                   Name = "string",
+#'                   Version = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           AutoCreate = TRUE|FALSE
+#'         ),
+#'         Output = list(
+#'           Assets = list(
+#'             list(
+#'               GroundTruthManifest = list(
+#'                 S3Object = list(
+#'                   Bucket = "string",
+#'                   Name = "string",
+#'                   Version = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           AutoCreate = TRUE|FALSE
+#'         ),
+#'         Validation = list(
+#'           Assets = list(
+#'             list(
+#'               GroundTruthManifest = list(
+#'                 S3Object = list(
+#'                   Bucket = "string",
+#'                   Name = "string",
+#'                   Version = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       EvaluationResult = list(
+#'         F1Score = 123.0,
+#'         Summary = list(
+#'           S3Object = list(
+#'             Bucket = "string",
+#'             Name = "string",
+#'             Version = "string"
+#'           )
+#'         )
+#'       ),
+#'       ManifestSummary = list(
+#'         S3Object = list(
+#'           Bucket = "string",
+#'           Name = "string",
+#'           Version = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_project_versions(
@@ -809,6 +1099,23 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
 #' value you can specify is 100. If you specify a value greater than 100, a
 #' ValidationException error occurs. The default value is 100.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProjectDescriptions = list(
+#'     list(
+#'       ProjectArn = "string",
+#'       CreationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "CREATING"|"CREATED"|"DELETING"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_projects(
@@ -851,6 +1158,40 @@ rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL) {
 #' rekognition_describe_stream_processor(Name)
 #'
 #' @param Name &#91;required&#93; Name of the stream processor for which you want information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   StreamProcessorArn = "string",
+#'   Status = "STOPPED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING",
+#'   StatusMessage = "string",
+#'   CreationTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdateTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Input = list(
+#'     KinesisVideoStream = list(
+#'       Arn = "string"
+#'     )
+#'   ),
+#'   Output = list(
+#'     KinesisDataStream = list(
+#'       Arn = "string"
+#'     )
+#'   ),
+#'   RoleArn = "string",
+#'   Settings = list(
+#'     FaceSearch = list(
+#'       CollectionId = "string",
+#'       FaceMatchThreshold = 123.0
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -935,6 +1276,33 @@ rekognition_describe_stream_processor <- function(Name) {
 #' specified value. If you specify a value of 0, all labels are return,
 #' regardless of the default thresholds that the model version applies.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CustomLabels = list(
+#'     list(
+#'       Name = "string",
+#'       Confidence = 123.0,
+#'       Geometry = list(
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         Polygon = list(
+#'           list(
+#'             X = 123.0,
+#'             Y = 123.0
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detect_custom_labels(
@@ -1011,15 +1379,91 @@ rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResult
 #' more information, see Images in the Amazon Rekognition developer guide.
 #' @param Attributes An array of facial attributes you want to be returned. This can be the
 #' default list of attributes or all attributes. If you don't specify a
-#' value for `Attributes` or if you specify `\\["DEFAULT"\\]`, the API
-#' returns the following subset of facial attributes: `BoundingBox`,
-#' `Confidence`, `Pose`, `Quality`, and `Landmarks`. If you provide
-#' `\\["ALL"\\]`, all facial attributes are returned, but the operation
-#' takes longer to complete.
+#' value for `Attributes` or if you specify `["DEFAULT"]`, the API returns
+#' the following subset of facial attributes: `BoundingBox`, `Confidence`,
+#' `Pose`, `Quality`, and `Landmarks`. If you provide `["ALL"]`, all facial
+#' attributes are returned, but the operation takes longer to complete.
 #' 
-#' If you provide both, `\\["ALL", "DEFAULT"\\]`, the service uses a
-#' logical AND operator to determine which attributes to return (in this
-#' case, all attributes).
+#' If you provide both, `["ALL", "DEFAULT"]`, the service uses a logical
+#' AND operator to determine which attributes to return (in this case, all
+#' attributes).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FaceDetails = list(
+#'     list(
+#'       BoundingBox = list(
+#'         Width = 123.0,
+#'         Height = 123.0,
+#'         Left = 123.0,
+#'         Top = 123.0
+#'       ),
+#'       AgeRange = list(
+#'         Low = 123,
+#'         High = 123
+#'       ),
+#'       Smile = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       Eyeglasses = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       Sunglasses = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       Gender = list(
+#'         Value = "Male"|"Female",
+#'         Confidence = 123.0
+#'       ),
+#'       Beard = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       Mustache = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       EyesOpen = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       MouthOpen = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       Emotions = list(
+#'         list(
+#'           Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+#'           Confidence = 123.0
+#'         )
+#'       ),
+#'       Landmarks = list(
+#'         list(
+#'           Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+#'           X = 123.0,
+#'           Y = 123.0
+#'         )
+#'       ),
+#'       Pose = list(
+#'         Roll = 123.0,
+#'         Yaw = 123.0,
+#'         Pitch = 123.0
+#'       ),
+#'       Quality = list(
+#'         Brightness = 123.0,
+#'         Sharpness = 123.0
+#'       ),
+#'       Confidence = 123.0
+#'     )
+#'   ),
+#'   OrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1099,11 +1543,11 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' a lighthouse, the sea, and a rock. The response includes all three
 #' labels, one for each object.
 #' 
-#' `\{Name: lighthouse, Confidence: 98.4629\}`
+#' `{Name: lighthouse, Confidence: 98.4629}`
 #' 
-#' `\{Name: rock,Confidence: 79.2097\}`
+#' `{Name: rock,Confidence: 79.2097}`
 #' 
-#' ` \{Name: sea,Confidence: 75.061\}`
+#' ` {Name: sea,Confidence: 75.061}`
 #' 
 #' In the preceding example, the operation returns one label for each of
 #' the three objects. The operation can also return multiple labels for the
@@ -1111,11 +1555,11 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' (for example, a tulip), the operation might return the following three
 #' labels.
 #' 
-#' `\{Name: flower,Confidence: 99.0562\}`
+#' `{Name: flower,Confidence: 99.0562}`
 #' 
-#' `\{Name: plant,Confidence: 99.0562\}`
+#' `{Name: plant,Confidence: 99.0562}`
 #' 
-#' `\{Name: tulip,Confidence: 99.0562\}`
+#' `{Name: tulip,Confidence: 99.0562}`
 #' 
 #' In this example, the detection algorithm more precisely identifies the
 #' flower as a tulip.
@@ -1170,6 +1614,37 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' 
 #' If `MinConfidence` is not specified, the operation returns labels with a
 #' confidence values greater than or equal to 55 percent.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Labels = list(
+#'     list(
+#'       Name = "string",
+#'       Confidence = 123.0,
+#'       Instances = list(
+#'         list(
+#'           BoundingBox = list(
+#'             Width = 123.0,
+#'             Height = 123.0,
+#'             Left = 123.0,
+#'             Top = 123.0
+#'           ),
+#'           Confidence = 123.0
+#'         )
+#'       ),
+#'       Parents = list(
+#'         list(
+#'           Name = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   OrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270",
+#'   LabelModelVersion = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1262,6 +1737,28 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #' confidence values greater than or equal to 50 percent.
 #' @param HumanLoopConfig Sets up the configuration for human evaluation, including the
 #' FlowDefinition the image will be sent to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModerationLabels = list(
+#'     list(
+#'       Confidence = 123.0,
+#'       Name = "string",
+#'       ParentName = "string"
+#'     )
+#'   ),
+#'   ModerationModelVersion = "string",
+#'   HumanLoopActivationOutput = list(
+#'     HumanLoopArn = "string",
+#'     HumanLoopActivationReasons = list(
+#'       "string"
+#'     ),
+#'     HumanLoopActivationConditionsEvaluationResults = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1361,6 +1858,59 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, Hu
 #' Amazon S3 bucket.
 #' @param SummarizationAttributes An array of PPE types that you want to summarize.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProtectiveEquipmentModelVersion = "string",
+#'   Persons = list(
+#'     list(
+#'       BodyParts = list(
+#'         list(
+#'           Name = "FACE"|"HEAD"|"LEFT_HAND"|"RIGHT_HAND",
+#'           Confidence = 123.0,
+#'           EquipmentDetections = list(
+#'             list(
+#'               BoundingBox = list(
+#'                 Width = 123.0,
+#'                 Height = 123.0,
+#'                 Left = 123.0,
+#'                 Top = 123.0
+#'               ),
+#'               Confidence = 123.0,
+#'               Type = "FACE_COVER"|"HAND_COVER"|"HEAD_COVER",
+#'               CoversBodyPart = list(
+#'                 Confidence = 123.0,
+#'                 Value = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       BoundingBox = list(
+#'         Width = 123.0,
+#'         Height = 123.0,
+#'         Left = 123.0,
+#'         Top = 123.0
+#'       ),
+#'       Confidence = 123.0,
+#'       Id = 123
+#'     )
+#'   ),
+#'   Summary = list(
+#'     PersonsWithRequiredEquipment = list(
+#'       123
+#'     ),
+#'     PersonsWithoutRequiredEquipment = list(
+#'       123
+#'     ),
+#'     PersonsIndeterminate = list(
+#'       123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detect_protective_equipment(
@@ -1455,6 +2005,37 @@ rekognition_detect_protective_equipment <- function(Image, SummarizationAttribut
 #' @param Filters Optional parameters that let you set the criteria that the text must
 #' meet to be included in your response.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TextDetections = list(
+#'     list(
+#'       DetectedText = "string",
+#'       Type = "LINE"|"WORD",
+#'       Id = 123,
+#'       ParentId = 123,
+#'       Confidence = 123.0,
+#'       Geometry = list(
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         Polygon = list(
+#'           list(
+#'             X = 123.0,
+#'             Y = 123.0
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   TextModelVersion = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$detect_text(
@@ -1527,6 +2108,17 @@ rekognition_detect_text <- function(Image, Filters = NULL) {
 #' @param Id &#91;required&#93; The ID for the celebrity. You get the celebrity ID from a call to the
 #' [`recognize_celebrities`][rekognition_recognize_celebrities] operation,
 #' which recognizes celebrities in an image.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Urls = list(
+#'     "string"
+#'   ),
+#'   Name = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1631,6 +2223,110 @@ rekognition_get_celebrity_info <- function(Id) {
 #' `ID` to sort by the celebrity identifier, specify `TIMESTAMP` to sort by
 #' the time the celebrity was recognized.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'   StatusMessage = "string",
+#'   VideoMetadata = list(
+#'     Codec = "string",
+#'     DurationMillis = 123,
+#'     Format = "string",
+#'     FrameRate = 123.0,
+#'     FrameHeight = 123,
+#'     FrameWidth = 123
+#'   ),
+#'   NextToken = "string",
+#'   Celebrities = list(
+#'     list(
+#'       Timestamp = 123,
+#'       Celebrity = list(
+#'         Urls = list(
+#'           "string"
+#'         ),
+#'         Name = "string",
+#'         Id = "string",
+#'         Confidence = 123.0,
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         Face = list(
+#'           BoundingBox = list(
+#'             Width = 123.0,
+#'             Height = 123.0,
+#'             Left = 123.0,
+#'             Top = 123.0
+#'           ),
+#'           AgeRange = list(
+#'             Low = 123,
+#'             High = 123
+#'           ),
+#'           Smile = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Eyeglasses = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Sunglasses = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Gender = list(
+#'             Value = "Male"|"Female",
+#'             Confidence = 123.0
+#'           ),
+#'           Beard = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Mustache = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           EyesOpen = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           MouthOpen = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Emotions = list(
+#'             list(
+#'               Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+#'               Confidence = 123.0
+#'             )
+#'           ),
+#'           Landmarks = list(
+#'             list(
+#'               Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+#'               X = 123.0,
+#'               Y = 123.0
+#'             )
+#'           ),
+#'           Pose = list(
+#'             Roll = 123.0,
+#'             Yaw = 123.0,
+#'             Pitch = 123.0
+#'           ),
+#'           Quality = list(
+#'             Brightness = 123.0,
+#'             Sharpness = 123.0
+#'           ),
+#'           Confidence = 123.0
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_celebrity_recognition(
@@ -1727,6 +2423,35 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #' each label group, the array element are sorted by detection confidence.
 #' The default sort is by `TIMESTAMP`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'   StatusMessage = "string",
+#'   VideoMetadata = list(
+#'     Codec = "string",
+#'     DurationMillis = 123,
+#'     Format = "string",
+#'     FrameRate = 123.0,
+#'     FrameHeight = 123,
+#'     FrameWidth = 123
+#'   ),
+#'   ModerationLabels = list(
+#'     list(
+#'       Timestamp = 123,
+#'       ModerationLabel = list(
+#'         Confidence = 123.0,
+#'         Name = "string",
+#'         ParentName = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   ModerationModelVersion = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_content_moderation(
@@ -1800,6 +2525,96 @@ rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextTok
 #' retrieve), Amazon Rekognition Video returns a pagination token in the
 #' response. You can use this pagination token to retrieve the next set of
 #' faces.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'   StatusMessage = "string",
+#'   VideoMetadata = list(
+#'     Codec = "string",
+#'     DurationMillis = 123,
+#'     Format = "string",
+#'     FrameRate = 123.0,
+#'     FrameHeight = 123,
+#'     FrameWidth = 123
+#'   ),
+#'   NextToken = "string",
+#'   Faces = list(
+#'     list(
+#'       Timestamp = 123,
+#'       Face = list(
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         AgeRange = list(
+#'           Low = 123,
+#'           High = 123
+#'         ),
+#'         Smile = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Eyeglasses = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Sunglasses = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Gender = list(
+#'           Value = "Male"|"Female",
+#'           Confidence = 123.0
+#'         ),
+#'         Beard = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Mustache = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         EyesOpen = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         MouthOpen = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Emotions = list(
+#'           list(
+#'             Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+#'             Confidence = 123.0
+#'           )
+#'         ),
+#'         Landmarks = list(
+#'           list(
+#'             Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+#'             X = 123.0,
+#'             Y = 123.0
+#'           )
+#'         ),
+#'         Pose = list(
+#'           Roll = 123.0,
+#'           Yaw = 123.0,
+#'           Pitch = 123.0
+#'         ),
+#'         Quality = list(
+#'           Brightness = 123.0,
+#'           Sharpness = 123.0
+#'         ),
+#'         Confidence = 123.0
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1889,6 +2704,122 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' faces by the time that they are recognized. Use `INDEX` to sort by
 #' recognized faces.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'   StatusMessage = "string",
+#'   NextToken = "string",
+#'   VideoMetadata = list(
+#'     Codec = "string",
+#'     DurationMillis = 123,
+#'     Format = "string",
+#'     FrameRate = 123.0,
+#'     FrameHeight = 123,
+#'     FrameWidth = 123
+#'   ),
+#'   Persons = list(
+#'     list(
+#'       Timestamp = 123,
+#'       Person = list(
+#'         Index = 123,
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         Face = list(
+#'           BoundingBox = list(
+#'             Width = 123.0,
+#'             Height = 123.0,
+#'             Left = 123.0,
+#'             Top = 123.0
+#'           ),
+#'           AgeRange = list(
+#'             Low = 123,
+#'             High = 123
+#'           ),
+#'           Smile = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Eyeglasses = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Sunglasses = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Gender = list(
+#'             Value = "Male"|"Female",
+#'             Confidence = 123.0
+#'           ),
+#'           Beard = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Mustache = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           EyesOpen = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           MouthOpen = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Emotions = list(
+#'             list(
+#'               Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+#'               Confidence = 123.0
+#'             )
+#'           ),
+#'           Landmarks = list(
+#'             list(
+#'               Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+#'               X = 123.0,
+#'               Y = 123.0
+#'             )
+#'           ),
+#'           Pose = list(
+#'             Roll = 123.0,
+#'             Yaw = 123.0,
+#'             Pitch = 123.0
+#'           ),
+#'           Quality = list(
+#'             Brightness = 123.0,
+#'             Sharpness = 123.0
+#'           ),
+#'           Confidence = 123.0
+#'         )
+#'       ),
+#'       FaceMatches = list(
+#'         list(
+#'           Similarity = 123.0,
+#'           Face = list(
+#'             FaceId = "string",
+#'             BoundingBox = list(
+#'               Width = 123.0,
+#'               Height = 123.0,
+#'               Left = 123.0,
+#'               Top = 123.0
+#'             ),
+#'             ImageId = "string",
+#'             ExternalImageId = "string",
+#'             Confidence = 123.0
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_face_search(
@@ -1977,6 +2908,50 @@ rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NU
 #' alphabetically group elements for a label together. Within each label
 #' group, the array element are sorted by detection confidence. The default
 #' sort is by `TIMESTAMP`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'   StatusMessage = "string",
+#'   VideoMetadata = list(
+#'     Codec = "string",
+#'     DurationMillis = 123,
+#'     Format = "string",
+#'     FrameRate = 123.0,
+#'     FrameHeight = 123,
+#'     FrameWidth = 123
+#'   ),
+#'   NextToken = "string",
+#'   Labels = list(
+#'     list(
+#'       Timestamp = 123,
+#'       Label = list(
+#'         Name = "string",
+#'         Confidence = 123.0,
+#'         Instances = list(
+#'           list(
+#'             BoundingBox = list(
+#'               Width = 123.0,
+#'               Height = 123.0,
+#'               Left = 123.0,
+#'               Top = 123.0
+#'             ),
+#'             Confidence = 123.0
+#'           )
+#'         ),
+#'         Parents = list(
+#'           list(
+#'             Name = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   LabelModelVersion = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2072,6 +3047,105 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
 #' person are sorted by detection confidence. The default sort is by
 #' `TIMESTAMP`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'   StatusMessage = "string",
+#'   VideoMetadata = list(
+#'     Codec = "string",
+#'     DurationMillis = 123,
+#'     Format = "string",
+#'     FrameRate = 123.0,
+#'     FrameHeight = 123,
+#'     FrameWidth = 123
+#'   ),
+#'   NextToken = "string",
+#'   Persons = list(
+#'     list(
+#'       Timestamp = 123,
+#'       Person = list(
+#'         Index = 123,
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         Face = list(
+#'           BoundingBox = list(
+#'             Width = 123.0,
+#'             Height = 123.0,
+#'             Left = 123.0,
+#'             Top = 123.0
+#'           ),
+#'           AgeRange = list(
+#'             Low = 123,
+#'             High = 123
+#'           ),
+#'           Smile = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Eyeglasses = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Sunglasses = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Gender = list(
+#'             Value = "Male"|"Female",
+#'             Confidence = 123.0
+#'           ),
+#'           Beard = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Mustache = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           EyesOpen = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           MouthOpen = list(
+#'             Value = TRUE|FALSE,
+#'             Confidence = 123.0
+#'           ),
+#'           Emotions = list(
+#'             list(
+#'               Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+#'               Confidence = 123.0
+#'             )
+#'           ),
+#'           Landmarks = list(
+#'             list(
+#'               Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+#'               X = 123.0,
+#'               Y = 123.0
+#'             )
+#'           ),
+#'           Pose = list(
+#'             Roll = 123.0,
+#'             Yaw = 123.0,
+#'             Pitch = 123.0
+#'           ),
+#'           Quality = list(
+#'             Brightness = 123.0,
+#'             Sharpness = 123.0
+#'           ),
+#'           Confidence = 123.0
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_person_tracking(
@@ -2161,6 +3235,59 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #' token that you can use in the subsequent request to retrieve the next
 #' set of text.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'   StatusMessage = "string",
+#'   VideoMetadata = list(
+#'     list(
+#'       Codec = "string",
+#'       DurationMillis = 123,
+#'       Format = "string",
+#'       FrameRate = 123.0,
+#'       FrameHeight = 123,
+#'       FrameWidth = 123
+#'     )
+#'   ),
+#'   AudioMetadata = list(
+#'     list(
+#'       Codec = "string",
+#'       DurationMillis = 123,
+#'       SampleRate = 123,
+#'       NumberOfChannels = 123
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   Segments = list(
+#'     list(
+#'       Type = "TECHNICAL_CUE"|"SHOT",
+#'       StartTimestampMillis = 123,
+#'       EndTimestampMillis = 123,
+#'       DurationMillis = 123,
+#'       StartTimecodeSMPTE = "string",
+#'       EndTimecodeSMPTE = "string",
+#'       DurationSMPTE = "string",
+#'       TechnicalCueSegment = list(
+#'         Type = "ColorBars"|"EndCredits"|"BlackFrames",
+#'         Confidence = 123.0
+#'       ),
+#'       ShotSegment = list(
+#'         Index = 123,
+#'         Confidence = 123.0
+#'       )
+#'     )
+#'   ),
+#'   SelectedSegmentTypes = list(
+#'     list(
+#'       Type = "TECHNICAL_CUE"|"SHOT",
+#'       ModelVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_segment_detection(
@@ -2240,6 +3367,51 @@ rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToke
 #' to retrieve), Amazon Rekognition Video returns a pagination token in the
 #' response. You can use this pagination token to retrieve the next set of
 #' text.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'   StatusMessage = "string",
+#'   VideoMetadata = list(
+#'     Codec = "string",
+#'     DurationMillis = 123,
+#'     Format = "string",
+#'     FrameRate = 123.0,
+#'     FrameHeight = 123,
+#'     FrameWidth = 123
+#'   ),
+#'   TextDetections = list(
+#'     list(
+#'       Timestamp = 123,
+#'       TextDetection = list(
+#'         DetectedText = "string",
+#'         Type = "LINE"|"WORD",
+#'         Id = 123,
+#'         ParentId = 123,
+#'         Confidence = 123.0,
+#'         Geometry = list(
+#'           BoundingBox = list(
+#'             Width = 123.0,
+#'             Height = 123.0,
+#'             Left = 123.0,
+#'             Top = 123.0
+#'           ),
+#'           Polygon = list(
+#'             list(
+#'               X = 123.0,
+#'               Y = 123.0
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   TextModelVersion = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2398,15 +3570,14 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' @param ExternalImageId The ID you want to assign to all the faces detected in the image.
 #' @param DetectionAttributes An array of facial attributes that you want to be returned. This can be
 #' the default list of attributes or all attributes. If you don't specify a
-#' value for `Attributes` or if you specify `\\["DEFAULT"\\]`, the API
-#' returns the following subset of facial attributes: `BoundingBox`,
-#' `Confidence`, `Pose`, `Quality`, and `Landmarks`. If you provide
-#' `\\["ALL"\\]`, all facial attributes are returned, but the operation
-#' takes longer to complete.
+#' value for `Attributes` or if you specify `["DEFAULT"]`, the API returns
+#' the following subset of facial attributes: `BoundingBox`, `Confidence`,
+#' `Pose`, `Quality`, and `Landmarks`. If you provide `["ALL"]`, all facial
+#' attributes are returned, but the operation takes longer to complete.
 #' 
-#' If you provide both, `\\["ALL", "DEFAULT"\\]`, the service uses a
-#' logical AND operator to determine which attributes to return (in this
-#' case, all attributes).
+#' If you provide both, `["ALL", "DEFAULT"]`, the service uses a logical
+#' AND operator to determine which attributes to return (in this case, all
+#' attributes).
 #' @param MaxFaces The maximum number of faces to index. The value of `MaxFaces` must be
 #' greater than or equal to 1. [`index_faces`][rekognition_index_faces]
 #' returns no more than 100 detected faces in an image, even if you specify
@@ -2438,6 +3609,172 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' 
 #' To use quality filtering, the collection you are using must be
 #' associated with version 3 of the face model or higher.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FaceRecords = list(
+#'     list(
+#'       Face = list(
+#'         FaceId = "string",
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         ImageId = "string",
+#'         ExternalImageId = "string",
+#'         Confidence = 123.0
+#'       ),
+#'       FaceDetail = list(
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         AgeRange = list(
+#'           Low = 123,
+#'           High = 123
+#'         ),
+#'         Smile = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Eyeglasses = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Sunglasses = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Gender = list(
+#'           Value = "Male"|"Female",
+#'           Confidence = 123.0
+#'         ),
+#'         Beard = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Mustache = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         EyesOpen = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         MouthOpen = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Emotions = list(
+#'           list(
+#'             Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+#'             Confidence = 123.0
+#'           )
+#'         ),
+#'         Landmarks = list(
+#'           list(
+#'             Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+#'             X = 123.0,
+#'             Y = 123.0
+#'           )
+#'         ),
+#'         Pose = list(
+#'           Roll = 123.0,
+#'           Yaw = 123.0,
+#'           Pitch = 123.0
+#'         ),
+#'         Quality = list(
+#'           Brightness = 123.0,
+#'           Sharpness = 123.0
+#'         ),
+#'         Confidence = 123.0
+#'       )
+#'     )
+#'   ),
+#'   OrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270",
+#'   FaceModelVersion = "string",
+#'   UnindexedFaces = list(
+#'     list(
+#'       Reasons = list(
+#'         "EXCEEDS_MAX_FACES"|"EXTREME_POSE"|"LOW_BRIGHTNESS"|"LOW_SHARPNESS"|"LOW_CONFIDENCE"|"SMALL_BOUNDING_BOX"|"LOW_FACE_QUALITY"
+#'       ),
+#'       FaceDetail = list(
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         AgeRange = list(
+#'           Low = 123,
+#'           High = 123
+#'         ),
+#'         Smile = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Eyeglasses = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Sunglasses = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Gender = list(
+#'           Value = "Male"|"Female",
+#'           Confidence = 123.0
+#'         ),
+#'         Beard = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Mustache = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         EyesOpen = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         MouthOpen = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Emotions = list(
+#'           list(
+#'             Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+#'             Confidence = 123.0
+#'           )
+#'         ),
+#'         Landmarks = list(
+#'           list(
+#'             Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+#'             X = 123.0,
+#'             Y = 123.0
+#'           )
+#'         ),
+#'         Pose = list(
+#'           Roll = 123.0,
+#'           Yaw = 123.0,
+#'           Pitch = 123.0
+#'         ),
+#'         Quality = list(
+#'           Brightness = 123.0,
+#'           Sharpness = 123.0
+#'         ),
+#'         Confidence = 123.0
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2516,6 +3853,20 @@ rekognition_index_faces <- function(CollectionId, Image, ExternalImageId = NULL,
 #' @param NextToken Pagination token from the previous response.
 #' @param MaxResults Maximum number of collection IDs to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CollectionIds = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string",
+#'   FaceModelVersions = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_collections(
@@ -2572,6 +3923,29 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
 #' faces.
 #' @param MaxResults Maximum number of faces to return.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Faces = list(
+#'     list(
+#'       FaceId = "string",
+#'       BoundingBox = list(
+#'         Width = 123.0,
+#'         Height = 123.0,
+#'         Left = 123.0,
+#'         Top = 123.0
+#'       ),
+#'       ImageId = "string",
+#'       ExternalImageId = "string",
+#'       Confidence = 123.0
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   FaceModelVersion = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_faces(
@@ -2626,6 +4000,20 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
 #' next set of stream processors.
 #' @param MaxResults Maximum number of stream processors you want Amazon Rekognition Video to
 #' return in the response. The default is 1000.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   StreamProcessors = list(
+#'     list(
+#'       Name = "string",
+#'       Status = "STOPPED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2707,6 +4095,76 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 #' need to base64-encode image bytes passed using the `Bytes` field. For
 #' more information, see Images in the Amazon Rekognition developer guide.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CelebrityFaces = list(
+#'     list(
+#'       Urls = list(
+#'         "string"
+#'       ),
+#'       Name = "string",
+#'       Id = "string",
+#'       Face = list(
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         Confidence = 123.0,
+#'         Landmarks = list(
+#'           list(
+#'             Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+#'             X = 123.0,
+#'             Y = 123.0
+#'           )
+#'         ),
+#'         Pose = list(
+#'           Roll = 123.0,
+#'           Yaw = 123.0,
+#'           Pitch = 123.0
+#'         ),
+#'         Quality = list(
+#'           Brightness = 123.0,
+#'           Sharpness = 123.0
+#'         )
+#'       ),
+#'       MatchConfidence = 123.0
+#'     )
+#'   ),
+#'   UnrecognizedFaces = list(
+#'     list(
+#'       BoundingBox = list(
+#'         Width = 123.0,
+#'         Height = 123.0,
+#'         Left = 123.0,
+#'         Top = 123.0
+#'       ),
+#'       Confidence = 123.0,
+#'       Landmarks = list(
+#'         list(
+#'           Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+#'           X = 123.0,
+#'           Y = 123.0
+#'         )
+#'       ),
+#'       Pose = list(
+#'         Roll = 123.0,
+#'         Yaw = 123.0,
+#'         Pitch = 123.0
+#'       ),
+#'       Quality = list(
+#'         Brightness = 123.0,
+#'         Sharpness = 123.0
+#'       )
+#'     )
+#'   ),
+#'   OrientationCorrection = "ROTATE_0"|"ROTATE_90"|"ROTATE_180"|"ROTATE_270"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$recognize_celebrities(
@@ -2778,6 +4236,32 @@ rekognition_recognize_celebrities <- function(Image) {
 #' @param FaceMatchThreshold Optional value specifying the minimum confidence in the face match to
 #' return. For example, don't return any matches where confidence in
 #' matches is less than 70%. The default value is 80%.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SearchedFaceId = "string",
+#'   FaceMatches = list(
+#'     list(
+#'       Similarity = 123.0,
+#'       Face = list(
+#'         FaceId = "string",
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         ImageId = "string",
+#'         ExternalImageId = "string",
+#'         Confidence = 123.0
+#'       )
+#'     )
+#'   ),
+#'   FaceModelVersion = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2902,6 +4386,38 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' To use quality filtering, the collection you are using must be
 #' associated with version 3 of the face model or higher.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SearchedFaceBoundingBox = list(
+#'     Width = 123.0,
+#'     Height = 123.0,
+#'     Left = 123.0,
+#'     Top = 123.0
+#'   ),
+#'   SearchedFaceConfidence = 123.0,
+#'   FaceMatches = list(
+#'     list(
+#'       Similarity = 123.0,
+#'       Face = list(
+#'         FaceId = "string",
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         ImageId = "string",
+#'         ExternalImageId = "string",
+#'         Confidence = 123.0
+#'       )
+#'     )
+#'   ),
+#'   FaceModelVersion = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$search_faces_by_image(
@@ -2998,6 +4514,14 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
 #' example, you can use `JobTag` to group related jobs and identify them in
 #' the completion notification.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_celebrity_recognition(
@@ -3087,6 +4611,14 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
 #' example, you can use `JobTag` to group related jobs and identify them in
 #' the completion notification.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_content_moderation(
@@ -3172,6 +4704,14 @@ rekognition_start_content_moderation <- function(Video, MinConfidence = NULL, Cl
 #' example, you can use `JobTag` to group related jobs and identify them in
 #' the completion notification.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_face_detection(
@@ -3253,6 +4793,14 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
 #' that's published to your Amazon Simple Notification Service topic. For
 #' example, you can use `JobTag` to group related jobs and identify them in
 #' the completion notification.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3347,6 +4895,14 @@ rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, Face
 #' example, you can use `JobTag` to group related jobs and identify them in
 #' the completion notification.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_label_detection(
@@ -3425,6 +4981,14 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
 #' example, you can use `JobTag` to group related jobs and identify them in
 #' the completion notification.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_person_tracking(
@@ -3490,6 +5054,14 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 #' represents 1 hour of processing and can support up to 5 Transaction Pers
 #' Second (TPS). Use a higher number to increase the TPS throughput of your
 #' model. You are charged for the number of inference units that you use.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3567,7 +5139,15 @@ rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUni
 #' the completion notification.
 #' @param Filters Filters for technical cue or shot detection.
 #' @param SegmentTypes &#91;required&#93; An array of segment types to detect in the video. Valid values are
-#' TECHNICAL\\_CUE and SHOT.
+#' TECHNICAL_CUE and SHOT.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3635,6 +5215,12 @@ rekognition_start_segment_detection <- function(Video, ClientRequestToken = NULL
 #'
 #' @param Name &#91;required&#93; The name of the stream processor to start processing.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_stream_processor(
@@ -3697,6 +5283,14 @@ rekognition_start_stream_processor <- function(Name) {
 #' group related jobs and identify them in the completion notification.
 #' @param Filters Optional parameters that let you set criteria the text must meet to be
 #' included in your response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3770,6 +5364,14 @@ rekognition_start_text_detection <- function(Video, ClientRequestToken = NULL, N
 #' This operation requires permissions to perform the
 #' `rekognition:StopProjectVersion` action.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_project_version(
@@ -3809,6 +5411,12 @@ rekognition_stop_project_version <- function(ProjectVersionArn) {
 #'
 #' @param Name &#91;required&#93; The name of a stream processor created by
 #' [`create_stream_processor`][rekognition_create_stream_processor].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

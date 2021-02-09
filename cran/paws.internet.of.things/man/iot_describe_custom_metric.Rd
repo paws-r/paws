@@ -9,6 +9,21 @@ iot_describe_custom_metric(metricName)
 \arguments{
 \item{metricName}{[required] The name of the custom metric.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  metricName = "string",
+  metricArn = "string",
+  metricType = "string-list"|"ip-address-list"|"number-list"|"number",
+  displayName = "string",
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastModifiedDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Gets information about a Device Defender detect custom metric.
 }

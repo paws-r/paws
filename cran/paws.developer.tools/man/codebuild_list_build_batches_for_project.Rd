@@ -27,6 +27,15 @@ by identifier.
 This specifies the next item to return. To return the beginning of the
 list, exclude this parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ids = list(
+    "string"
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Retrieves the identifiers of the build batches for a specific project.
 }

@@ -14,13 +14,30 @@ swf_poll_for_activity_task(domain, taskList, identity)
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{\\u0000-\\u001f} | \verb{\\u007f-\\u009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{identity}{Identity of the worker making the request, recorded in the
 \code{ActivityTaskStarted} event in the workflow history. This enables
 diagnostic tracing when problems arise. The form of this identity is
 user defined.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  taskToken = "string",
+  activityId = "string",
+  startedEventId = 123,
+  workflowExecution = list(
+    workflowId = "string",
+    runId = "string"
+  ),
+  activityType = list(
+    name = "string",
+    version = "string"
+  ),
+  input = "string"
+)
+}
 }
 \description{
 Used by workers to get an ActivityTask from the specified activity

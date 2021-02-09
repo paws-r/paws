@@ -6,6 +6,14 @@
 \usage{
 ses_list_verified_email_addresses()
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  VerifiedEmailAddresses = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Deprecated. Use the \code{\link[=ses_list_identities]{list_identities}} operation
 to list the email addresses and domains associated with your account.

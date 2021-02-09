@@ -12,6 +12,12 @@ glue_start_export_labels_task_run(TransformId, OutputS3Path)
 
 \item{OutputS3Path}{[required] The Amazon S3 path where you export the labels.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TaskRunId = "string"
+)
+}
+}
 \description{
 Begins an asynchronous task to export all labeled data for a particular
 transform. This task is the only label-related API call that is not part

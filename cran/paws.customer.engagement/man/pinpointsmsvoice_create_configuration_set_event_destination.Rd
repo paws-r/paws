@@ -14,6 +14,10 @@ pinpointsmsvoice_create_configuration_set_event_destination(
 
 \item{EventDestinationName}{A name that identifies the event destination.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Create a new event destination in a configuration set.
 }

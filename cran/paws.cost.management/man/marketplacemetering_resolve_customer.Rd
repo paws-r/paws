@@ -12,6 +12,13 @@ marketplacemetering_resolve_customer(RegistrationToken)
 buyer submits a registration token through the browser. The registration
 token is resolved to obtain a CustomerIdentifier and product code.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CustomerIdentifier = "string",
+  ProductCode = "string"
+)
+}
+}
 \description{
 ResolveCustomer is called by a SaaS application during the registration
 process. When a buyer visits your website during the registration

@@ -29,6 +29,10 @@ license configuration is licenseAffinityToHost.}
 
 \item{DisassociateWhenNotFound}{When true, disassociates a resource when software is uninstalled.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Modifies the attributes of an existing license configuration.
 }

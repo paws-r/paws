@@ -14,6 +14,18 @@ iot_list_policies(marker, pageSize, ascendingOrder)
 \item{ascendingOrder}{Specifies the order for results. If true, the results are returned in
 ascending creation order.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  policies = list(
+    list(
+      policyName = "string",
+      policyArn = "string"
+    )
+  ),
+  nextMarker = "string"
+)
+}
+}
 \description{
 Lists your policies.
 }

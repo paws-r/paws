@@ -37,6 +37,12 @@ NULL
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_created_artifact(
@@ -87,6 +93,12 @@ migrationhub_associate_created_artifact <- function(ProgressUpdateStream, Migrat
 #' @param DiscoveredResource &#91;required&#93; Object representing a Resource.
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -141,6 +153,12 @@ migrationhub_associate_discovered_resource <- function(ProgressUpdateStream, Mig
 #' this field.*
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -214,6 +232,12 @@ migrationhub_create_progress_update_stream <- function(ProgressUpdateStreamName,
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_progress_update_stream(
@@ -252,6 +276,17 @@ migrationhub_delete_progress_update_stream <- function(ProgressUpdateStreamName,
 #'
 #' @param ApplicationId &#91;required&#93; The configurationId in Application Discovery Service that uniquely
 #' identifies the grouped application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationStatus = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED",
+#'   LastUpdatedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -294,6 +329,31 @@ migrationhub_describe_application_state <- function(ApplicationId) {
 #' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream.
 #' @param MigrationTaskName &#91;required&#93; The identifier given to the MigrationTask. *Do not store personal data
 #' in this field.*
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MigrationTask = list(
+#'     ProgressUpdateStream = "string",
+#'     MigrationTaskName = "string",
+#'     Task = list(
+#'       Status = "NOT_STARTED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+#'       StatusDetail = "string",
+#'       ProgressPercent = 123
+#'     ),
+#'     UpdateDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ResourceAttributeList = list(
+#'       list(
+#'         Type = "IPV4_ADDRESS"|"IPV6_ADDRESS"|"MAC_ADDRESS"|"FQDN"|"VM_MANAGER_ID"|"VM_MANAGED_OBJECT_REFERENCE"|"VM_NAME"|"VM_PATH"|"BIOS_ID"|"MOTHERBOARD_SERIAL_NUMBER",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -355,6 +415,12 @@ migrationhub_describe_migration_task <- function(ProgressUpdateStream, Migration
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_created_artifact(
@@ -403,6 +469,12 @@ migrationhub_disassociate_created_artifact <- function(ProgressUpdateStream, Mig
 #' disassociated.
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -455,6 +527,12 @@ migrationhub_disassociate_discovered_resource <- function(ProgressUpdateStream, 
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$import_migration_task(
@@ -501,6 +579,23 @@ migrationhub_import_migration_task <- function(ProgressUpdateStream, MigrationTa
 #' available. To retrieve the next page of results, make the call again
 #' using the returned token in `NextToken`.
 #' @param MaxResults Maximum number of results to be returned per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationStateList = list(
+#'     list(
+#'       ApplicationId = "string",
+#'       ApplicationStatus = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED",
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -562,6 +657,20 @@ migrationhub_list_application_states <- function(ApplicationIds = NULL, NextToke
 #' using the returned token in `NextToken`.
 #' @param MaxResults Maximum number of results to be returned per page.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   CreatedArtifactList = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_created_artifacts(
@@ -608,6 +717,20 @@ migrationhub_list_created_artifacts <- function(ProgressUpdateStream, MigrationT
 #' available. To retrieve the next page of results, make the call again
 #' using the returned token in `NextToken`.
 #' @param MaxResults The maximum number of results returned per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   DiscoveredResourceList = list(
+#'     list(
+#'       ConfigurationId = "string",
+#'       Description = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -662,6 +785,26 @@ migrationhub_list_discovered_resources <- function(ProgressUpdateStream, Migrati
 #' @param MaxResults Value to specify how many results are returned per page.
 #' @param ResourceName Filter migration tasks by discovered resource name.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   MigrationTaskSummaryList = list(
+#'     list(
+#'       ProgressUpdateStream = "string",
+#'       MigrationTaskName = "string",
+#'       Status = "NOT_STARTED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+#'       ProgressPercent = 123,
+#'       StatusDetail = "string",
+#'       UpdateDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_migration_tasks(
@@ -705,6 +848,19 @@ migrationhub_list_migration_tasks <- function(NextToken = NULL, MaxResults = NUL
 #' available. To retrieve the next page of results, make the call again
 #' using the returned token in `NextToken`.
 #' @param MaxResults Filter to limit the maximum number of results to list per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProgressUpdateStreamSummaryList = list(
+#'     list(
+#'       ProgressUpdateStreamName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -752,6 +908,12 @@ migrationhub_list_progress_update_streams <- function(NextToken = NULL, MaxResul
 #' @param UpdateDateTime The timestamp when the application state changed.
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -817,6 +979,12 @@ migrationhub_notify_application_state <- function(ApplicationId, Status, UpdateD
 #' considered stale.
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -911,6 +1079,12 @@ migrationhub_notify_migration_task_state <- function(ProgressUpdateStream, Migra
 #'     maximize the chances of matching.
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
 #' Used to test if the caller has permission to make the call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

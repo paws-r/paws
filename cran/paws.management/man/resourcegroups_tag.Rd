@@ -12,6 +12,15 @@ resourcegroups_tag(Arn, Tags)
 \item{Tags}{[required] The tags to add to the specified resource group. A tag is a
 string-to-string map of key-value pairs.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Adds tags to a resource group with the specified ARN. Existing tags on a
 resource group are not changed if they are not specified in the request

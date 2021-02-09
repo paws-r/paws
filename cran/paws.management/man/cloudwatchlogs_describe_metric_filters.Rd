@@ -27,6 +27,28 @@ you include this parameter in your request, you must also include the
 include this parameter in your request, you must also include the
 \code{metricName} parameter.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  metricFilters = list(
+    list(
+      filterName = "string",
+      filterPattern = "string",
+      metricTransformations = list(
+        list(
+          metricName = "string",
+          metricNamespace = "string",
+          metricValue = "string",
+          defaultValue = 123.0
+        )
+      ),
+      creationTime = 123,
+      logGroupName = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Lists the specified metric filters. You can list all of the metric
 filters or filter the results by log name, prefix, metric name, or

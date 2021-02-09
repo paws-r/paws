@@ -23,6 +23,8 @@ NULL
 #' Valid values: Any Amazon SNS action name, for example
 #' [`publish`][sns_publish].
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_permission(
@@ -73,6 +75,14 @@ sns_add_permission <- function(TopicArn, Label, AWSAccountId, ActionName) {
 #'
 #' @param phoneNumber &#91;required&#93; The phone number for which you want to check the opt out status.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   isOptedOut = TRUE|FALSE
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$check_if_phone_number_is_opted_out(
@@ -121,6 +131,14 @@ sns_check_if_phone_number_is_opted_out <- function(phoneNumber) {
 #' of this parameter is `true` and the request has an AWS signature, then
 #' only the topic owner and the subscription owner can unsubscribe the
 #' endpoint. The unsubscribe action requires AWS authentication.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SubscriptionArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -193,10 +211,18 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
 #' letters, numbers, underscores, hyphens, and periods, and must be between
 #' 1 and 256 characters long.
 #' @param Platform &#91;required&#93; The following platforms are supported: ADM (Amazon Device Messaging),
-#' APNS (Apple Push Notification Service), APNS\\_SANDBOX, and GCM (Firebase
+#' APNS (Apple Push Notification Service), APNS_SANDBOX, and GCM (Firebase
 #' Cloud Messaging).
 #' @param Attributes &#91;required&#93; For a list of attributes, see
 #' [`set_platform_application_attributes`][sns_set_platform_application_attributes]
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PlatformApplicationArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -270,6 +296,14 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
 #' use this data. The data must be in UTF-8 format and less than 2KB.
 #' @param Attributes For a list of attributes, see
 #' [`set_endpoint_attributes`][sns_set_endpoint_attributes].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointArn = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -378,6 +412,14 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
 #' To be able to tag a topic on creation, you must have the
 #' `sns:CreateTopic` and `sns:TagResource` permissions.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TopicArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_topic(
@@ -430,6 +472,8 @@ sns_create_topic <- function(Name, Attributes = NULL, Tags = NULL) {
 #'
 #' @param EndpointArn &#91;required&#93; EndpointArn of endpoint to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_endpoint(
@@ -471,6 +515,8 @@ sns_delete_endpoint <- function(EndpointArn) {
 #'
 #' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn of platform application object to delete.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_platform_application(
@@ -510,6 +556,8 @@ sns_delete_platform_application <- function(PlatformApplicationArn) {
 #' sns_delete_topic(TopicArn)
 #'
 #' @param TopicArn &#91;required&#93; The ARN of the topic you want to delete.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -553,6 +601,16 @@ sns_delete_topic <- function(TopicArn) {
 #'
 #' @param EndpointArn &#91;required&#93; EndpointArn for GetEndpointAttributes input.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attributes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_endpoint_attributes(
@@ -595,6 +653,16 @@ sns_get_endpoint_attributes <- function(EndpointArn) {
 #' sns_get_platform_application_attributes(PlatformApplicationArn)
 #'
 #' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn for GetPlatformApplicationAttributesInput.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attributes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -642,6 +710,16 @@ sns_get_platform_application_attributes <- function(PlatformApplicationArn) {
 #' 
 #' If you don't use this parameter, Amazon SNS returns all SMS attributes.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attributes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_sms_attributes(
@@ -681,6 +759,16 @@ sns_get_sms_attributes <- function(attributes = NULL) {
 #'
 #' @param SubscriptionArn &#91;required&#93; The ARN of the subscription whose properties you want to get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attributes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_subscription_attributes(
@@ -718,6 +806,16 @@ sns_get_subscription_attributes <- function(SubscriptionArn) {
 #' sns_get_topic_attributes(TopicArn)
 #'
 #' @param TopicArn &#91;required&#93; The ARN of the topic whose properties you want to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Attributes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -776,6 +874,22 @@ sns_get_topic_attributes <- function(TopicArn) {
 #' action to retrieve additional records that are available after the first
 #' page results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Endpoints = list(
+#'     list(
+#'       EndpointArn = "string",
+#'       Attributes = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_endpoints_by_platform_application(
@@ -827,6 +941,17 @@ sns_list_endpoints_by_platform_application <- function(PlatformApplicationArn, N
 #' [`list_phone_numbers_opted_out`][sns_list_phone_numbers_opted_out]
 #' action to retrieve additional records that are available after the first
 #' page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   phoneNumbers = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -881,6 +1006,22 @@ sns_list_phone_numbers_opted_out <- function(nextToken = NULL) {
 #' retrieve additional records that are available after the first page
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PlatformApplications = list(
+#'     list(
+#'       PlatformApplicationArn = "string",
+#'       Attributes = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_platform_applications(
@@ -924,6 +1065,23 @@ sns_list_platform_applications <- function(NextToken = NULL) {
 #'
 #' @param NextToken Token returned by the previous
 #' [`list_subscriptions`][sns_list_subscriptions] request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Subscriptions = list(
+#'     list(
+#'       SubscriptionArn = "string",
+#'       Owner = "string",
+#'       Protocol = "string",
+#'       Endpoint = "string",
+#'       TopicArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -972,6 +1130,23 @@ sns_list_subscriptions <- function(NextToken = NULL) {
 #' [`list_subscriptions_by_topic`][sns_list_subscriptions_by_topic]
 #' request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Subscriptions = list(
+#'     list(
+#'       SubscriptionArn = "string",
+#'       Owner = "string",
+#'       Protocol = "string",
+#'       Endpoint = "string",
+#'       TopicArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_subscriptions_by_topic(
@@ -1012,6 +1187,19 @@ sns_list_subscriptions_by_topic <- function(TopicArn, NextToken = NULL) {
 #' sns_list_tags_for_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the topic for which to list tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1055,6 +1243,19 @@ sns_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @param NextToken Token returned by the previous [`list_topics`][sns_list_topics] request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Topics = list(
+#'     list(
+#'       TopicArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_topics(
@@ -1095,6 +1296,12 @@ sns_list_topics <- function(NextToken = NULL) {
 #' sns_opt_in_phone_number(phoneNumber)
 #'
 #' @param phoneNumber &#91;required&#93; The phone number to opt in.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1247,7 +1454,7 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' @param MessageDeduplicationId This parameter applies only to FIFO (first-in-first-out) topics. The
 #' `MessageDeduplicationId` can contain up to 128 alphanumeric characters
 #' (a-z, A-Z, 0-9) and punctuation
-#' `` (!\"#$%&\'()*+,-./:;<=>?@@\\[\\\]^_\`\{|\}~) ``.
+#' `` (!\"#$%&\'()*+,-./:;<=>?@@[\]^_\`{|}~) ``.
 #' 
 #' Every message must have a unique `MessageDeduplicationId`, which is a
 #' token used for deduplication of sent messages. If a message with a
@@ -1260,14 +1467,22 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' `MessageDeduplicationId` overrides the generated one.
 #' @param MessageGroupId This parameter applies only to FIFO (first-in-first-out) topics. The
 #' `MessageGroupId` can contain up to 128 alphanumeric characters (a-z,
-#' A-Z, 0-9) and punctuation
-#' `` (!\"#$%&\'()*+,-./:;<=>?@@\\[\\\]^_\`\{|\}~) ``.
+#' A-Z, 0-9) and punctuation `` (!\"#$%&\'()*+,-./:;<=>?@@[\]^_\`{|}~) ``.
 #' 
 #' The `MessageGroupId` is a tag that specifies that a message belongs to a
 #' specific message group. Messages that belong to the same message group
 #' are processed in a FIFO manner (however, messages in different message
 #' groups might be processed out of order). Every message must include a
 #' `MessageGroupId`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageId = "string",
+#'   SequenceNumber = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1320,6 +1535,8 @@ sns_publish <- function(TopicArn = NULL, TargetArn = NULL, PhoneNumber = NULL, M
 #'
 #' @param TopicArn &#91;required&#93; The ARN of the topic whose access control policy you wish to modify.
 #' @param Label &#91;required&#93; The unique label of the statement you want to remove.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1379,6 +1596,8 @@ sns_remove_permission <- function(TopicArn, Label) {
 #'     an app and mobile device. This is returned from the notification
 #'     service when an app and mobile device are registered with the
 #'     notification service.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1463,6 +1682,8 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
 #' 
 #' -   `SuccessFeedbackSampleRate` – Sample rate percentage (0-100) of
 #'     successfully delivered messages.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1589,6 +1810,12 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #' Activity](https://docs.aws.amazon.com/sns/latest/dg/sms_stats.html) in
 #' the *Amazon SNS Developer Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$set_sms_attributes(
@@ -1654,6 +1881,8 @@ sns_set_sms_attributes <- function(attributes) {
 #'     service that powers the subscribed endpoint becomes unavailable) are
 #'     held in the dead-letter queue for further analysis or reprocessing.
 #' @param AttributeValue The new value for the attribute in JSON format.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1738,6 +1967,8 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #'         value for the the `MessageDeduplicationId` parameter for the
 #'         [`publish`][sns_publish] action.
 #' @param AttributeValue The new value for the attribute.
+#'
+
 #'
 #' @section Request syntax:
 #' ```
@@ -1869,6 +2100,14 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #' 
 #' The default value is `false`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SubscriptionArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$subscribe(
@@ -1932,6 +2171,12 @@ sns_subscribe <- function(TopicArn, Protocol, Endpoint = NULL, Attributes = NULL
 #' @param Tags &#91;required&#93; The tags to be added to the specified topic. A tag consists of a
 #' required key and an optional value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -1984,6 +2229,8 @@ sns_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @param SubscriptionArn &#91;required&#93; The ARN of the subscription to be deleted.
 #'
+
+#'
 #' @section Request syntax:
 #' ```
 #' svc$unsubscribe(
@@ -2024,6 +2271,12 @@ sns_unsubscribe <- function(SubscriptionArn) {
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the topic from which to remove tags.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the specified topic.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

@@ -15,6 +15,10 @@ autoscaling_set_instance_protection(InstanceIds, AutoScalingGroupName,
 \item{ProtectedFromScaleIn}{[required] Indicates whether the instance is protected from termination by Amazon
 EC2 Auto Scaling when scaling in.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates the instance protection settings of the specified instances.
 

@@ -19,8 +19,12 @@ However, you can update \code{callbackOverrides} for the device templates
 using the \code{\link[=iot1clickprojects_update_project]{update_project}} API.}
 
 \item{tags}{Optional tags (metadata key/value pairs) to be associated with the
-project. For example, \verb{\\\{ \\\{"key1": "value1", "key2": "value2"\\\} \\\}}. For
+project. For example, \verb{\{ \{"key1": "value1", "key2": "value2"\} \}}. For
 more information, see \href{https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf}{AWS Tagging Strategies}.}
+}
+\value{
+A list with the following syntax:\preformatted{list()
+}
 }
 \description{
 Creates an empty project with a placement template. A project contains

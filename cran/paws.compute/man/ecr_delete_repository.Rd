@@ -15,6 +15,28 @@ registry is assumed.}
 
 \item{force}{If a repository contains images, forces the deletion.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  repository = list(
+    repositoryArn = "string",
+    registryId = "string",
+    repositoryName = "string",
+    repositoryUri = "string",
+    createdAt = as.POSIXct(
+      "2015-01-01"
+    ),
+    imageTagMutability = "MUTABLE"|"IMMUTABLE",
+    imageScanningConfiguration = list(
+      scanOnPush = TRUE|FALSE
+    ),
+    encryptionConfiguration = list(
+      encryptionType = "AES256"|"KMS",
+      kmsKey = "string"
+    )
+  )
+)
+}
+}
 \description{
 Deletes a repository. If the repository contains images, you must either
 delete all images in the repository or use the \code{force} option to delete

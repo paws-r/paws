@@ -23,6 +23,41 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Associations = list(
+    list(
+      Name = "string",
+      InstanceId = "string",
+      AssociationId = "string",
+      AssociationVersion = "string",
+      DocumentVersion = "string",
+      Targets = list(
+        list(
+          Key = "string",
+          Values = list(
+            "string"
+          )
+        )
+      ),
+      LastExecutionDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      Overview = list(
+        Status = "string",
+        DetailedStatus = "string",
+        AssociationStatusAggregatedCount = list(
+          123
+        )
+      ),
+      ScheduleExpression = "string",
+      AssociationName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Returns all State Manager associations in the current AWS account and
 Region. You can limit the results to a specific State Manager

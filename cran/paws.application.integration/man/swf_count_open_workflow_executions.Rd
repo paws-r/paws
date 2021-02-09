@@ -31,6 +31,13 @@ filter are counted.
 \code{executionFilter}, \code{typeFilter} and \code{tagFilter} are mutually exclusive.
 You can specify at most one of these in a request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  count = 123,
+  truncated = TRUE|FALSE
+)
+}
+}
 \description{
 Returns the number of open workflow executions within the given domain
 that meet the specified filtering criteria.

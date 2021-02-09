@@ -13,9 +13,16 @@ s3control_update_job_priority(AccountId, JobId, Priority)
 
 \item{Priority}{[required] The priority you want to assign to this job.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobId = "string",
+  Priority = 123
+)
+}
+}
 \description{
 Updates an existing S3 Batch Operations job's priority. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html}{S3 Batch Operations}
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-basics.html}{S3 Batch Operations}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Related actions include:

@@ -28,7 +28,7 @@ others.
 There is usually some time lag before lifecycle configuration deletion
 is fully propagated to all the Amazon S3 systems.
 
-For more information about the object expiration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#intro-lifecycle-rules-actions}{Elements to Describe Lifecycle Actions}.
+For more information about the object expiration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/intro-lifecycle-rules.html#intro-lifecycle-rules-actions}{Elements to Describe Lifecycle Actions}.
 
 Related actions include:
 \itemize{

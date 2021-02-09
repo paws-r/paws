@@ -13,6 +13,13 @@ fsx_delete_backup(BackupId, ClientRequestToken)
 idempotent deletion. This is automatically filled on your behalf when
 using the AWS CLI or SDK.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  BackupId = "string",
+  Lifecycle = "AVAILABLE"|"CREATING"|"TRANSFERRING"|"DELETED"|"FAILED"|"PENDING"
+)
+}
+}
 \description{
 Deletes an Amazon FSx backup, deleting its contents. After deletion, the
 backup no longer exists, and its data is gone.

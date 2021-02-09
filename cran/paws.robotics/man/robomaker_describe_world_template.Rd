@@ -10,6 +10,23 @@ robomaker_describe_world_template(template)
 \item{template}{[required] The Amazon Resource Name (arn) of the world template you want to
 describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  arn = "string",
+  clientRequestToken = "string",
+  name = "string",
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  lastUpdatedAt = as.POSIXct(
+    "2015-01-01"
+  ),
+  tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Describes a world template.
 }

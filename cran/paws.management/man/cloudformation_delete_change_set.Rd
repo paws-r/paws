@@ -13,6 +13,10 @@ to delete.}
 \item{StackName}{If you specified the name of a change set to delete, specify the stack
 name or ID (ARN) that is associated with it.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes the specified change set. Deleting change sets ensures that no
 one executes the wrong change set.

@@ -48,6 +48,17 @@ results as the default value for this parameter.}
 when the response from a previous call has more results than the maximum
 page size.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NextPageToken = "string",
+  Tags = list(
+    "string"
+  ),
+  ReturnSize = 123,
+  TotalSize = 123
+)
+}
+}
 \description{
 Queries for available tag keys and tag values for a specified period.
 You can search the tag values for an arbitrary string.

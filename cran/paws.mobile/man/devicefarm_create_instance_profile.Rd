@@ -25,6 +25,21 @@ The list of packages is considered only if you set \code{packageCleanup} to
 \item{rebootAfterUse}{When set to \code{true}, Device Farm reboots the instance after a test run.
 The default value is \code{true}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  instanceProfile = list(
+    arn = "string",
+    packageCleanup = TRUE|FALSE,
+    excludeAppPackagesFromCleanup = list(
+      "string"
+    ),
+    rebootAfterUse = TRUE|FALSE,
+    name = "string",
+    description = "string"
+  )
+)
+}
+}
 \description{
 Creates a profile that can be applied to one or more private fleet
 device instances.

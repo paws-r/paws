@@ -17,6 +17,24 @@ is the first call.}
 \item{Limit}{Maximum number of items to return. If this value is zero, the maximum
 number of items is specified by the limitations of the operation.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  IpRoutesInfo = list(
+    list(
+      DirectoryId = "string",
+      CidrIp = "string",
+      IpRouteStatusMsg = "Adding"|"Added"|"Removing"|"Removed"|"AddFailed"|"RemoveFailed",
+      AddedDateTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      IpRouteStatusReason = "string",
+      Description = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the address blocks that you have added to a directory.
 }

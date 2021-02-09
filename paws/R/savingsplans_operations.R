@@ -25,6 +25,14 @@ NULL
 #' idempotency of the request.
 #' @param tags One or more tags.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   savingsPlanId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_savings_plan(
@@ -71,6 +79,12 @@ savingsplans_create_savings_plan <- function(savingsPlanOfferingId, commitment, 
 #'
 #' @param savingsPlanId &#91;required&#93; The ID of the Savings Plan.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_queued_savings_plan(
@@ -112,6 +126,32 @@ savingsplans_delete_queued_savings_plan <- function(savingsPlanId) {
 #' @param nextToken The token for the next page of results.
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' additional results, make another call with the returned token value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   savingsPlanId = "string",
+#'   searchResults = list(
+#'     list(
+#'       rate = "string",
+#'       currency = "CNY"|"USD",
+#'       unit = "Hrs"|"Lambda-GB-Second"|"Request",
+#'       productType = "EC2"|"Fargate"|"Lambda",
+#'       serviceCode = "AmazonEC2"|"AmazonECS"|"AWSLambda",
+#'       usageType = "string",
+#'       operation = "string",
+#'       properties = list(
+#'         list(
+#'           name = "region"|"instanceType"|"instanceFamily"|"productDescription"|"tenancy",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -166,6 +206,40 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
 #' additional results, make another call with the returned token value.
 #' @param states The states.
 #' @param filters The filters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   savingsPlans = list(
+#'     list(
+#'       offeringId = "string",
+#'       savingsPlanId = "string",
+#'       savingsPlanArn = "string",
+#'       description = "string",
+#'       start = "string",
+#'       end = "string",
+#'       state = "payment-pending"|"payment-failed"|"active"|"retired"|"queued"|"queued-deleted",
+#'       region = "string",
+#'       ec2InstanceFamily = "string",
+#'       savingsPlanType = "Compute"|"EC2Instance",
+#'       paymentOption = "All Upfront"|"Partial Upfront"|"No Upfront",
+#'       productTypes = list(
+#'         "EC2"|"Fargate"|"Lambda"
+#'       ),
+#'       currency = "CNY"|"USD",
+#'       commitment = "string",
+#'       upfrontPaymentAmount = "string",
+#'       recurringPaymentAmount = "string",
+#'       termDurationInSeconds = 123,
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -234,6 +308,38 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 #' @param nextToken The token for the next page of results.
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' additional results, make another call with the returned token value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   searchResults = list(
+#'     list(
+#'       savingsPlanOffering = list(
+#'         offeringId = "string",
+#'         paymentOption = "All Upfront"|"Partial Upfront"|"No Upfront",
+#'         planType = "Compute"|"EC2Instance",
+#'         durationSeconds = 123,
+#'         currency = "CNY"|"USD",
+#'         planDescription = "string"
+#'       ),
+#'       rate = "string",
+#'       unit = "Hrs"|"Lambda-GB-Second"|"Request",
+#'       productType = "EC2"|"Fargate"|"Lambda",
+#'       serviceCode = "AmazonEC2"|"AmazonECS"|"AWSLambda",
+#'       usageType = "string",
+#'       operation = "string",
+#'       properties = list(
+#'         list(
+#'           name = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -318,6 +424,36 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' additional results, make another call with the returned token value.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   searchResults = list(
+#'     list(
+#'       offeringId = "string",
+#'       productTypes = list(
+#'         "EC2"|"Fargate"|"Lambda"
+#'       ),
+#'       planType = "Compute"|"EC2Instance",
+#'       description = "string",
+#'       paymentOption = "All Upfront"|"Partial Upfront"|"No Upfront",
+#'       durationSeconds = 123,
+#'       currency = "CNY"|"USD",
+#'       serviceCode = "string",
+#'       usageType = "string",
+#'       operation = "string",
+#'       properties = list(
+#'         list(
+#'           name = "region"|"instanceFamily",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_savings_plans_offerings(
@@ -392,6 +528,16 @@ savingsplans_describe_savings_plans_offerings <- function(offeringIds = NULL, pa
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_for_resource(
@@ -430,6 +576,12 @@ savingsplans_list_tags_for_resource <- function(resourceArn) {
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tags &#91;required&#93; One or more tags. For example, \{ "tags": \{"key1":"value1",
 #' "key2":"value2"\} \}.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -471,6 +623,12 @@ savingsplans_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tagKeys &#91;required&#93; The tag keys.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

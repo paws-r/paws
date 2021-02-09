@@ -29,6 +29,10 @@ devices.}
 installed on your devices and used to trust your authentication server
 during EAP negotiation.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a network profile by the network profile ARN.
 }

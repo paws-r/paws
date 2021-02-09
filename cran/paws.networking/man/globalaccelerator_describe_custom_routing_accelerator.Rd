@@ -9,6 +9,33 @@ globalaccelerator_describe_custom_routing_accelerator(AcceleratorArn)
 \arguments{
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the accelerator to describe.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Accelerator = list(
+    AcceleratorArn = "string",
+    Name = "string",
+    IpAddressType = "IPV4",
+    Enabled = TRUE|FALSE,
+    IpSets = list(
+      list(
+        IpFamily = "string",
+        IpAddresses = list(
+          "string"
+        )
+      )
+    ),
+    DnsName = "string",
+    Status = "DEPLOYED"|"IN_PROGRESS",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastModifiedTime = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
+}
 \description{
 Describe a custom routing accelerator.
 }

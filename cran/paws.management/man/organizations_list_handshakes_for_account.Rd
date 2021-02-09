@@ -33,6 +33,39 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Handshakes = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Parties = list(
+        list(
+          Id = "string",
+          Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+        )
+      ),
+      State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
+      RequestedTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ExpirationTimestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
+      Resources = list(
+        list(
+          Value = "string",
+          Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
+          Resources = list()
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the current handshakes that are associated with the account of the
 requesting user.

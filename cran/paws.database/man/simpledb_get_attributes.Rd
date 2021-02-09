@@ -14,7 +14,24 @@ simpledb_get_attributes(DomainName, ItemName, AttributeNames,
 
 \item{AttributeNames}{The names of the attributes.}
 
-\item{ConsistentRead}{Determines whether or not strong consistency should be enforced when data is read from SimpleDB. If <code>true</code>, any data previously written to SimpleDB will be returned. Otherwise, results will be consistent eventually, and the client may not see data that was written immediately before your read.}
+\item{ConsistentRead}{Determines whether or not strong consistency should be enforced when
+data is read from SimpleDB. If \code{true}, any data previously written to
+SimpleDB will be returned. Otherwise, results will be consistent
+eventually, and the client may not see data that was written immediately
+before your read.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Attributes = list(
+    list(
+      Name = "string",
+      AlternateNameEncoding = "string",
+      Value = "string",
+      AlternateValueEncoding = "string"
+    )
+  )
+)
+}
 }
 \description{
 Returns all of the attributes associated with the specified item.

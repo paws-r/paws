@@ -11,6 +11,10 @@ route53_delete_traffic_policy(Id, Version)
 
 \item{Version}{[required] The version number of the traffic policy that you want to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a traffic policy.
 

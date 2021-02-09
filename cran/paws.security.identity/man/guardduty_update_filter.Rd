@@ -24,6 +24,12 @@ findings.}
 
 \item{FindingCriteria}{Represents the criteria to be used in the filter for querying findings.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string"
+)
+}
+}
 \description{
 Updates the filter specified by the filter name.
 }

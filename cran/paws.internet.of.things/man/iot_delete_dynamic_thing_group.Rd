@@ -11,6 +11,10 @@ iot_delete_dynamic_thing_group(thingGroupName, expectedVersion)
 
 \item{expectedVersion}{The expected version of the dynamic thing group to delete.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Deletes a dynamic thing group.
 }

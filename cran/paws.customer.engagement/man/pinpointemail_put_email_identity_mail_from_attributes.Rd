@@ -31,6 +31,10 @@ deliver the email.
 These behaviors are taken when the custom MAIL FROM domain configuration
 is in the \code{Pending}, \code{Failed}, and \code{TemporaryFailure} states.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Used to enable or disable the custom Mail-From domain configuration for
 an email identity.

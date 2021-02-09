@@ -11,6 +11,16 @@ waf_get_rule_group(RuleGroupId)
 is returned by \code{\link[=waf_create_rule_group]{create_rule_group}} and by
 \code{\link[=waf_list_rule_groups]{list_rule_groups}}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RuleGroup = list(
+    RuleGroupId = "string",
+    Name = "string",
+    MetricName = "string"
+  )
+)
+}
+}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}

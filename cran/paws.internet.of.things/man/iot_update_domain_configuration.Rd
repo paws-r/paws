@@ -16,6 +16,13 @@ iot_update_domain_configuration(domainConfigurationName,
 
 \item{removeAuthorizerConfig}{Removes the authorization configuration from a domain.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  domainConfigurationName = "string",
+  domainConfigurationArn = "string"
+)
+}
+}
 \description{
 Updates values stored in the domain configuration. Domain configurations
 for default endpoints can't be updated.

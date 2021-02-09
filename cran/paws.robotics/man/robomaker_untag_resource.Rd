@@ -13,6 +13,10 @@ removing tags.}
 \item{tagKeys}{[required] A map that contains tag keys and tag values that will be unattached from
 the resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Removes the specified tags from the specified AWS RoboMaker resource.
 

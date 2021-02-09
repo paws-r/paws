@@ -26,6 +26,23 @@ NULL
 #' in
 #' MediaStore](https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Container = list(
+#'     Endpoint = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ARN = "string",
+#'     Name = "string",
+#'     Status = "ACTIVE"|"CREATING"|"DELETING",
+#'     AccessLoggingEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_container(
@@ -72,6 +89,12 @@ mediastore_create_container <- function(ContainerName, Tags = NULL) {
 #'
 #' @param ContainerName &#91;required&#93; The name of the container to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_container(
@@ -110,6 +133,12 @@ mediastore_delete_container <- function(ContainerName) {
 #' mediastore_delete_container_policy(ContainerName)
 #'
 #' @param ContainerName &#91;required&#93; The name of the container that holds the policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -154,6 +183,12 @@ mediastore_delete_container_policy <- function(ContainerName) {
 #'
 #' @param ContainerName &#91;required&#93; The name of the container to remove the policy from.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_cors_policy(
@@ -191,6 +226,12 @@ mediastore_delete_cors_policy <- function(ContainerName) {
 #' mediastore_delete_lifecycle_policy(ContainerName)
 #'
 #' @param ContainerName &#91;required&#93; The name of the container that holds the object lifecycle policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -232,6 +273,12 @@ mediastore_delete_lifecycle_policy <- function(ContainerName) {
 #'
 #' @param ContainerName &#91;required&#93; The name of the container that is associated with the metric policy that
 #' you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -277,6 +324,23 @@ mediastore_delete_metric_policy <- function(ContainerName) {
 #'
 #' @param ContainerName The name of the container to query.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Container = list(
+#'     Endpoint = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ARN = "string",
+#'     Name = "string",
+#'     Status = "ACTIVE"|"CREATING"|"DELETING",
+#'     AccessLoggingEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_container(
@@ -316,6 +380,14 @@ mediastore_describe_container <- function(ContainerName = NULL) {
 #' mediastore_get_container_policy(ContainerName)
 #'
 #' @param ContainerName &#91;required&#93; The name of the container.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -360,6 +432,30 @@ mediastore_get_container_policy <- function(ContainerName) {
 #'
 #' @param ContainerName &#91;required&#93; The name of the container that the policy is assigned to.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CorsPolicy = list(
+#'     list(
+#'       AllowedOrigins = list(
+#'         "string"
+#'       ),
+#'       AllowedMethods = list(
+#'         "PUT"|"GET"|"DELETE"|"HEAD"
+#'       ),
+#'       AllowedHeaders = list(
+#'         "string"
+#'       ),
+#'       MaxAgeSeconds = 123,
+#'       ExposeHeaders = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_cors_policy(
@@ -398,6 +494,14 @@ mediastore_get_cors_policy <- function(ContainerName) {
 #' @param ContainerName &#91;required&#93; The name of the container that the object lifecycle policy is assigned
 #' to.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LifecyclePolicy = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_lifecycle_policy(
@@ -434,6 +538,22 @@ mediastore_get_lifecycle_policy <- function(ContainerName) {
 #' mediastore_get_metric_policy(ContainerName)
 #'
 #' @param ContainerName &#91;required&#93; The name of the container that is associated with the metric policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MetricPolicy = list(
+#'     ContainerLevelMetrics = "ENABLED"|"DISABLED",
+#'     MetricPolicyRules = list(
+#'       list(
+#'         ObjectGroup = "string",
+#'         ObjectGroupName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -488,6 +608,26 @@ mediastore_get_metric_policy <- function(ContainerName) {
 #' @param MaxResults Enter the maximum number of containers in the response. Use from 1 to
 #' 255 characters.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Containers = list(
+#'     list(
+#'       Endpoint = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ARN = "string",
+#'       Name = "string",
+#'       Status = "ACTIVE"|"CREATING"|"DELETING",
+#'       AccessLoggingEnabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_containers(
@@ -525,6 +665,19 @@ mediastore_list_containers <- function(NextToken = NULL, MaxResults = NULL) {
 #' mediastore_list_tags_for_resource(Resource)
 #'
 #' @param Resource &#91;required&#93; The Amazon Resource Name (ARN) for the container.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -576,6 +729,12 @@ mediastore_list_tags_for_resource <- function(Resource) {
 #' -   One `Version` tag
 #' 
 #' -   One `Statement` tag that contains the standard tags for the policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -632,6 +791,12 @@ mediastore_put_container_policy <- function(ContainerName, Policy) {
 #'
 #' @param ContainerName &#91;required&#93; The name of the container that you want to assign the CORS policy to.
 #' @param CorsPolicy &#91;required&#93; The CORS policy to apply to the container.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -696,6 +861,12 @@ mediastore_put_cors_policy <- function(ContainerName, CorsPolicy) {
 #' policy to.
 #' @param LifecyclePolicy &#91;required&#93; The object lifecycle policy to apply to the container.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_lifecycle_policy(
@@ -744,14 +915,20 @@ mediastore_put_lifecycle_policy <- function(ContainerName, LifecyclePolicy) {
 #' 
 #' -   An object group that defines which objects to include in the group.
 #'     The definition can be a path or a file name, but it can't have more
-#'     than 900 characters. Valid characters are: a-z, A-Z, 0-9, \\_
+#'     than 900 characters. Valid characters are: a-z, A-Z, 0-9, _
 #'     (underscore), = (equal), : (colon), . (period), - (hyphen), ~
 #'     (tilde), / (forward slash), and * (asterisk). Wildcards (*) are
 #'     acceptable.
 #' 
 #' -   An object group name that allows you to refer to the object group.
 #'     The name can't have more than 30 characters. Valid characters are:
-#'     a-z, A-Z, 0-9, and \\_ (underscore).
+#'     a-z, A-Z, 0-9, and _ (underscore).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -801,6 +978,12 @@ mediastore_put_metric_policy <- function(ContainerName, MetricPolicy) {
 #'
 #' @param ContainerName &#91;required&#93; The name of the container that you want to start access logging on.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_access_logging(
@@ -840,6 +1023,12 @@ mediastore_start_access_logging <- function(ContainerName) {
 #' mediastore_stop_access_logging(ContainerName)
 #'
 #' @param ContainerName &#91;required&#93; The name of the container that you want to stop access logging on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -891,6 +1080,12 @@ mediastore_stop_access_logging <- function(ContainerName) {
 #' priority:Medium, type:Contract. The result is that your container has
 #' three tags: customer:CompanyA, priority:Medium, and type:Contract.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag_resource(
@@ -939,6 +1134,12 @@ mediastore_tag_resource <- function(Resource, Tags) {
 #' (customer:CompanyA and priority:High) and you want to remove one of the
 #' tags (priority:High), you specify the key for the tag that you want to
 #' remove (priority).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list()
+#' ```
 #'
 #' @section Request syntax:
 #' ```

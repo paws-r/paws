@@ -52,6 +52,10 @@ access to the crawler. For more information about tags in AWS Glue, see
 \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
 the developer guide.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates a new crawler with specified targets, role, configuration, and
 optional schedule. At least one crawl target must be specified, in the

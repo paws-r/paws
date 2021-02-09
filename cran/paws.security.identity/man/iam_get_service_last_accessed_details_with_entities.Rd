@@ -40,6 +40,38 @@ receive a response indicating that the results are truncated. Set it to
 the value of the \code{Marker} element in the response that you received to
 indicate where the next call should start.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  JobStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+  JobCreationDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  JobCompletionDate = as.POSIXct(
+    "2015-01-01"
+  ),
+  EntityDetailsList = list(
+    list(
+      EntityInfo = list(
+        Arn = "string",
+        Name = "string",
+        Type = "USER"|"ROLE"|"GROUP",
+        Id = "string",
+        Path = "string"
+      ),
+      LastAuthenticated = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  IsTruncated = TRUE|FALSE,
+  Marker = "string",
+  Error = list(
+    Message = "string",
+    Code = "string"
+  )
+)
+}
+}
 \description{
 After you generate a group or policy report using the
 \code{\link[=iam_generate_service_last_accessed_details]{generate_service_last_accessed_details}}

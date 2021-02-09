@@ -21,6 +21,15 @@ available.
 
 Default: \code{CURRENT}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  masterUserPassword = "string",
+  createdAt = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns the current, previous, or pending versions of the master user
 password for a Lightsail database.

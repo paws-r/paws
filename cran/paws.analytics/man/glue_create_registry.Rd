@@ -17,6 +17,17 @@ will not be any default value for this.}
 \item{Tags}{AWS tags that contain a key value pair and may be searched by console,
 command line, or API.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RegistryArn = "string",
+  RegistryName = "string",
+  Description = "string",
+  Tags = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Creates a new registry which may be used to hold a collection of
 schemas.

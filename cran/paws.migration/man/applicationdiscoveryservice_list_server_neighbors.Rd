@@ -25,6 +25,22 @@ previously specified 100 IDs for
 results along with a token. Use that token in this query to get the next
 set of 10.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  neighbors = list(
+    list(
+      sourceServerId = "string",
+      destinationServerId = "string",
+      destinationPort = 123,
+      transportProtocol = "string",
+      connectionsCount = 123
+    )
+  ),
+  nextToken = "string",
+  knownDependencyCount = 123
+)
+}
+}
 \description{
 Retrieves a list of servers that are one network hop away from a
 specified server.

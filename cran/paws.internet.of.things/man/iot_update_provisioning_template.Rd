@@ -24,6 +24,10 @@ role grants permission to provision a device.}
 
 \item{removePreProvisioningHook}{Removes pre-provisioning hook template.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Updates a fleet provisioning template.
 }

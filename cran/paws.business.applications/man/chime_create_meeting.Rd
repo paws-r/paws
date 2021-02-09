@@ -29,6 +29,25 @@ Available values: \code{af-south-1}, \code{ap-northeast-1}, \code{ap-northeast-2
 \item{NotificationsConfiguration}{The configuration for resource targets to receive notifications when
 meeting and attendee events occur.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Meeting = list(
+    MeetingId = "string",
+    ExternalMeetingId = "string",
+    MediaPlacement = list(
+      AudioHostUrl = "string",
+      AudioFallbackUrl = "string",
+      ScreenDataUrl = "string",
+      ScreenSharingUrl = "string",
+      ScreenViewingUrl = "string",
+      SignalingUrl = "string",
+      TurnControlUrl = "string"
+    ),
+    MediaRegion = "string"
+  )
+)
+}
+}
 \description{
 Creates a new Amazon Chime SDK meeting in the specified media Region
 with no initial attendees. For more information about specifying media

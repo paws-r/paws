@@ -12,6 +12,10 @@ information about AWS Glue resource ARNs, see the \href{https://docs.aws.amazon.
 
 \item{TagsToAdd}{[required] Tags to add to this resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds tags to a resource. A tag is a label you can assign to an AWS
 resource. In AWS Glue, you can tag only certain resources. For

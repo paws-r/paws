@@ -37,6 +37,46 @@ parameters must be passed explicitly for operations that take them.}
 \code{\link[=support_describe_cases]{describe_cases}} response. By default,
 communications are incuded.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  cases = list(
+    list(
+      caseId = "string",
+      displayId = "string",
+      subject = "string",
+      status = "string",
+      serviceCode = "string",
+      categoryCode = "string",
+      severityCode = "string",
+      submittedBy = "string",
+      timeCreated = "string",
+      recentCommunications = list(
+        communications = list(
+          list(
+            caseId = "string",
+            body = "string",
+            submittedBy = "string",
+            timeCreated = "string",
+            attachmentSet = list(
+              list(
+                attachmentId = "string",
+                fileName = "string"
+              )
+            )
+          )
+        ),
+        nextToken = "string"
+      ),
+      ccEmailAddresses = list(
+        "string"
+      ),
+      language = "string"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns a list of cases that you specify by passing one or more case
 IDs. You can use the \code{afterTime} and \code{beforeTime} parameters to filter

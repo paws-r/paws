@@ -14,6 +14,18 @@ in the \emph{AWS General Reference}.}
 \item{Tags}{[required] The tags that you want to add to the specified resources. A tag consists
 of a key and a value that you define.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  FailedResourcesMap = list(
+    list(
+      StatusCode = 123,
+      ErrorCode = "InternalServiceException"|"InvalidParameterException",
+      ErrorMessage = "string"
+    )
+  )
+)
+}
+}
 \description{
 Applies one or more tags to the specified resources. Note the following:
 \itemize{

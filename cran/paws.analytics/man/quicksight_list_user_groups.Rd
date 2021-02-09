@@ -21,6 +21,22 @@ the AWS account that contains your Amazon QuickSight account.}
 
 \item{MaxResults}{The maximum number of results to return from this request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  GroupList = list(
+    list(
+      Arn = "string",
+      GroupName = "string",
+      Description = "string",
+      PrincipalId = "string"
+    )
+  ),
+  NextToken = "string",
+  RequestId = "string",
+  Status = 123
+)
+}
+}
 \description{
 Lists the Amazon QuickSight groups that an Amazon QuickSight user is a
 member of.

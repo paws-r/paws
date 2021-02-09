@@ -15,6 +15,12 @@ Queue URLs and names are case-sensitive.}
 
 \item{QueueOwnerAWSAccountId}{The AWS account ID of the account that created the queue.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  QueueUrl = "string"
+)
+}
+}
 \description{
 Returns the URL of an existing Amazon SQS queue.
 

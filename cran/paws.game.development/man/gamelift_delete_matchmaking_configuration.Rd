@@ -10,6 +10,10 @@ gamelift_delete_matchmaking_configuration(Name)
 \item{Name}{[required] A unique identifier for a matchmaking configuration. You can use either
 the configuration name or ARN value.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Permanently removes a FlexMatch matchmaking configuration. To delete,
 specify the configuration name. A matchmaking configuration cannot be

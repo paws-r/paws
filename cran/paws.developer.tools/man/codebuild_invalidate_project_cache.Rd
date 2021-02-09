@@ -9,6 +9,10 @@ codebuild_invalidate_project_cache(projectName)
 \arguments{
 \item{projectName}{[required] The name of the AWS CodeBuild build project that the cache is reset for.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Resets the cache for a project.
 }

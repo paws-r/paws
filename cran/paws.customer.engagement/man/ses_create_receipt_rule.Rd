@@ -16,6 +16,10 @@ of the rule list.}
 \item{Rule}{[required] A data structure that contains the specified rule's name, actions,
 recipients, domains, enabled status, scan status, and TLS policy.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Creates a receipt rule.
 

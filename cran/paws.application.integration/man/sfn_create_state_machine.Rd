@@ -13,14 +13,16 @@ sfn_create_state_machine(name, definition, roleArn, type,
 A name must \emph{not} contain:
 \itemize{
 \item white space
-\item brackets \verb{< > \\\{ \\\} \\\[ \\\]}
+\item brackets \verb{< > \{ \} [ ]}
 \item wildcard characters \verb{? *}
-\item special characters \verb{\\" # \% \\\\ ^ | ~ \\` $ & , ; : /}
+\item special characters \verb{\\" # \% \\ ^ | ~ \\` $ & , ; : /}
 \item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
 }
 
 To enable logging with CloudWatch Logs, the name should only contain
-0-9, A-Z, a-z, - and \\_.}
+0-9, A-Z, a-z, - and _.
+
+[ ]: R:\%20}
 
 \item{definition}{[required] The Amazon States Language definition of the state machine. See \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language}.}
 
@@ -46,6 +48,15 @@ Tags may only contain Unicode letters, digits, white space, or these
 symbols: \verb{_ . : / = + - @}.}
 
 \item{tracingConfiguration}{Selects whether AWS X-Ray tracing is enabled.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  stateMachineArn = "string",
+  creationDate = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
 }
 \description{
 Creates a state machine. A state machine consists of a collection of

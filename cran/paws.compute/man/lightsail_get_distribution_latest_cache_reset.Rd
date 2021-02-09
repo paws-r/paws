@@ -17,6 +17,15 @@ a list of distribution names that you can specify.
 When omitted, the response includes the latest cache reset timestamp of
 all your distributions.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  status = "string",
+  createTime = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
+}
 \description{
 Returns the timestamp and status of the last cache reset of a specific
 Amazon Lightsail content delivery network (CDN) distribution.

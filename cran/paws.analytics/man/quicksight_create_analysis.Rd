@@ -39,6 +39,16 @@ to it.}
 \item{Tags}{Contains a map of the key-value pairs for the resource tag or tags
 assigned to the analysis.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  AnalysisId = "string",
+  CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
+  Status = 123,
+  RequestId = "string"
+)
+}
+}
 \description{
 Creates an analysis in Amazon QuickSight.
 }

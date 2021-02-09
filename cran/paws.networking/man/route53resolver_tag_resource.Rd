@@ -21,6 +21,10 @@ tags to. To get the ARN for a resource, use the applicable \code{Get} or
 
 \item{Tags}{[required] The tags that you want to add to the specified resource.}
 }
+\value{
+A list with the following syntax:\preformatted{list()
+}
+}
 \description{
 Adds one or more tags to a specified resource.
 }
